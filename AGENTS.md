@@ -6,6 +6,7 @@ Start at the [home page](README.md), then follow the [level index](levels/README
 - Each course has one principal book per language. Read `book/PLAN.md` as an outline and `book/MANUSCRIPT.md` as authored text only where that file exists. A plan is never a finished book.
 - A completed book needs at least 300 verified A4 pages and 50 substantial exercises with worked answers. Check the [book standard](BOOK_STANDARD.md) and [progress review](STRUCTURE_REVIEW.md) before claiming completion.
 - The README bookshelf's percentages are generated English **draft-chapter coverage** by area. Read the [sigil key and method](WRITING_PROGRESS.md); do not call these percentages completed books or progress in other languages.
+- The [course writing table](COURSE_WRITING_PROGRESS.md) gives the same draft-chapter measure for all 207 individual English courses and records manuscript word counts. A course with 100% draft coverage can still have an incomplete book.
 - English is the current reference. Other language folders may contain English working outlines pending translation and review; identify that state accurately.
 - Cite the exact file and original factual sources. Label fictional cases, preserve third-party rights, and do not claim academic accreditation.
 - Books lead the learning path; linked playbooks support practice.

@@ -2,7 +2,7 @@
 
 - Language: English (`en`)
 - Level: rapid course, one month; approximately 80 hours of planned study
-- Editorial state: **draft**. All 4 subject-chapters now have initial teaching text, 50 exercises and worked results. Substantive expansion, detailed exercise specifications, specialist review, editing and A4 page verification remain pending.
+- Editorial state: **draft**. All 4 subject-chapters have initial teaching text, 50 specified exercises and corresponding worked results. Substantive teaching expansion, specialist review, editing and A4 page verification remain pending.
 - Public access: this draft is available to read and study; it is **not** a complete 300-page book or a qualification.
 - Authorship and editorial responsibility: [hiagokinlevi](https://github.com/hiagokinlevi)
 - Rights: original maintainer-owned text is dedicated under [CC0 1.0](../../../../../LICENSE); cited sources retain their own rights.
@@ -183,7 +183,26 @@ This paper-and-pencil lab turns the eight fictional records into a reproducible 
 
 **Assessment rubric:** award one point each for accurate event pointers and UTC ordering, clear separation of fact from hypothesis, explicit current authority and scope, a proportionate option comparison, and a review trigger with owner. A score of 5/5 shows the artifact is internally complete for this introductory exercise; it does **not** certify incident-response competence or prove the fictional case's cause. An omitted scope or approval item must be corrected even if the other four points are present. A worked example appears in the final answer section after EX013.
 
-### 1.9 Common errors and chapter synthesis
+### 1.9 Build a decision gate from incomplete evidence
+
+An initial response is a series of **bounded decisions**, not a search for certainty before anyone acts. At the 09:05 UTC checkpoint, the Harbor Library analyst has eight supplied records, a scheduled training interval and two booking changes. The records do not say who controlled `desk-a`, whether B17 and B18 were authorized training tasks, or whether a backup could actually restore a correct schedule. These unknowns call for discriminating questions, not invented answers. The decision gate below is an original teaching model for this fictional case. It illustrates the documented roles, authority and review practices discussed in [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final); it is not a NIST-prescribed severity scale.
+
+| Gate field | Entry supported at 09:05 UTC | What would change it |
+|---|---|---|
+| Observed service effect | R3 records B17 moved; R4 records B18 cancelled; R5 records a patron report about B18. The full patron impact is unknown. | An owner-approved comparison of booking IDs, intended schedule and current state. |
+| Competing explanations | R6 makes training plausible; R1–R4 are also compatible with use of `desk-a` outside its intended purpose. | Approved training task list and appropriately authorized identity context. |
+| Possible cost of waiting | Another incorrect booking may occur if unauthorized edits continue. This is a **risk**, not an observed new edit. | A verified later audit row or report tied to the booking service. |
+| Possible cost of restriction | Front-desk work may be interrupted if `desk-a` is temporarily restricted. The cost has not been measured. | Service owner's account of staffing, alternatives and affected operations. |
+| Current authority | Classroom analysis of R1–R8; a disruptive restriction requires a separate approval under section 1.3. | A recorded incident-lead and service-owner decision with target, duration and rollback. |
+| Review condition | Reassess at 09:15 UTC or sooner on a verified unexplained edit. | Record the new item and its time of discovery before changing the decision. |
+
+One defensible choice is to preserve the supplied records, ask the training owner about B17/B18 and reconvene at the review time. This avoids an immediate service interruption but accepts the possibility of a further edit. Another defensible choice, if the service owner describes a high impact of continued changes and the approving roles are available, is to seek a temporary account restriction with a defined end and a way for staff to continue essential work. **The analyst's recommendation is not permission to execute either change.** A reviewer should ask what fact would reverse the choice, who can authorize the reversal, and how quickly the resulting harm can be observed.
+
+If the training owner confirms that B17 and B18 were on an approved task list, that weakens the hypothesis that *those two* edits were unauthorized. It does not prove the person controlling the session, nor does it settle any later B19 edit introduced in Chapter 2. If the task list excludes B18 and the owner confirms the list is complete, the training explanation for B18 weakens. If the list is unavailable, the answer is **unknown**, not “training was ruled out.” This distinction between a contradictory observation and a missing observation is fundamental to responsible incident decisions.
+
+To make the gate reproducible, a second analyst should be able to read the same R1–R8 table, recover the same event order, locate the supporting record for each claim and see the approval path. If the second analyst cannot tell whether a sentence is a supplied fact, a hypothesis or a proposed action, rewrite it. Chapter 2 adds evidence preservation and discovery-time discipline to this same case; the later records must not be imported backward into the 09:05 decision.
+
+### 1.10 Common errors and chapter synthesis
 
 - **Confusing suspicion with confirmation.** Use a hypothesis and state what would confirm or weaken it.
 - **Skipping the service owner.** A technically plausible action can cause avoidable harm to users.
@@ -196,59 +215,61 @@ Readiness is the ability to answer, under pressure, who owns the service, who ca
 
 ### Chapter 1 exercises
 
-Work from the Harbor Library records unless an exercise says otherwise. For open answers, use the rubric in the worked results.
+Work from **only R1–R8** and the fictional authority rules in Chapter 1. The case is synthetic. At the 09:00 intake and 09:05 decision checkpoints, do not cite records or interviews released in later chapters, claim a production collection took place, or infer a person's identity from an account label. Write any imagined future signal as **hypothetical**. For each answer: (1) write `HL-IR-001` and the exercise ID; (2) copy the relevant record IDs and UTC times; (3) fill the named output fields; (4) mark each conclusion as observed, inferred, unknown or proposed; (5) name an owner and approval for any new collection or service change; and (6) compare the result with the worked answer at the end of the book. The submitted table, note or decision card is the expected evidence of learning; a label without its supporting record is insufficient.
+
+**Common assessment rubric:** score an exercise **0** if its artifact is missing or presents an unsupported attribution or action as fact; **1** if it answers the question but omits a required source, limit, authority or test; **2** if all named fields are present, the reasoning follows the supplied evidence and the next step is bounded and authorized. The local requirements below specify what earns 2 points. A claimed compromise, successful restore or absence of data transfer based only on R1–R8 must be corrected regardless of the numerical score. No real website, account or patron data is needed.
 
 #### EX001 — Observation or inference
 
-Classify each statement as a direct observation, a reasonable inference requiring confirmation, or an unsupported claim: (a) R4 records a cancellation of B18; (b) desk-a was compromised; (c) R5 reports that B18 disappeared; (d) R7 proves the service can be restored in ten minutes.
+**Objective:** separate the content of a record from an explanation of that content. **Inputs:** R4, R5 and R7. **Output:** a four-row table with statement, classification, supporting record and one sentence describing the record's limit. Classify: (a) “R4 records a cancellation of B18”; (b) “`desk-a` was compromised”; (c) “R5 reports that B18 disappeared”; (d) “R7 proves the service can be restored in ten minutes.” Use the categories direct observation, hypothesis requiring confirmation and unsupported conclusion. A score of 2 requires distinguishing the *fact of a patron report* from independent proof of the patron's full experience.
 
 #### EX002 — First two questions
 
-Write two questions the response lead should ask before deciding whether to disable `desk-a`. Name the person or evidence source that could answer each.
+**Objective:** choose checks that could change the restriction decision. **Inputs:** R1–R6 and the service/authority tables. **Output:** two rows with a precise question, the fact that makes it relevant, the authorized custodian or person to ask, and how either answer changes the decision. One question must test the training explanation; the other must test who used the account or whether edits continue. Record requests rather than saying the interview or log review has already occurred. A score of 2 requires different discriminators and a named approval path for any new identity collection.
 
 #### EX003 — Service dependency
 
-Choose two dependencies from the service map. For each, explain one possible user impact and one evidence source that would help distinguish service failure from account misuse.
+**Objective:** connect an incident signal to service outcomes and evidence owners. **Inputs:** the section 1.2 service map and R1–R8. **Output:** a two-row dependency card with dependency, possible user harm, supplied pointer, missing discriminating evidence and custodian. Choose two dependencies; for each, explain what an authorized check would distinguish. Do not call a potential harm a confirmed outage. A score of 2 needs two different dependencies and a test that could separate a service-state problem from account misuse.
 
 #### EX004 — Scope boundary
 
-A learner wants to search a real public library website for a matching account name. Explain why that action is outside this lab's scope and propose a safe alternative.
+**Objective:** apply an authorization boundary to a tempting next action. **Inputs:** the section 1.4 scope statement and R1–R8. **Output:** a short scope decision with proposed action, permitted objects and operations, reason for rejection, contained alternative, and stop or escalation condition. A learner wants to search a real public library website for a matching account name. Explain what the eight supplied records permit instead, and write a hypothetical request for the additional detail if it would matter to the case. A score of 2 explicitly excludes real-site access and names the responsible approver for any future expanded scope.
 
 #### EX005 — Timeline
 
-Create a four-event timeline for R1, R3, R4 and R5 in UTC. State one ordering fact and one causal claim that the timeline does not establish.
+**Objective:** preserve event order without turning sequence into causation. **Inputs:** R1, R3, R4 and R5. **Output:** a four-row UTC table with record ID, source, time and observed event, followed by an ordering sentence and a separate unsupported-causality sentence. Keep the 09:00 case-open time outside the event table. A score of 2 orders the four events correctly and explains why precedence alone does not identify the human actor or prove why the patron's view changed.
 
 #### EX006 — Role assignment
 
-Assign the service owner, incident lead, analyst and recovery lead to these tasks: approve a potential booking outage, preserve R1–R5, coordinate the review time, and test whether a backup can restore a copy of the schedule.
+**Objective:** make recommendation, approval, execution and verification visible. **Inputs:** section 1.3's fictional roles, R7 and the classroom scope. **Output:** a four-row responsibility table for a possible booking outage, preservation of R1–R5, coordination of the next review and a contained restore test. Name the task owner, who approves it under the exercise rules and what would verify completion. Distinguish **planning** a restore test from having performed one. A score of 2 does not delegate an outage decision to the analyst or treat R7 as a tested restore.
 
 #### EX007 — Minimal incident record
 
-Draft a seven-field opening record for `HL-IR-001` using the dataset. Include status and uncertainty without claiming compromise.
+**Objective:** open a case that another analyst can continue. **Inputs:** R1–R8 and the 09:00 intake checkpoint. **Output:** exactly seven labeled fields: case ID and open time; service; reporter and source; observed signal with record IDs; current assessment and uncertainty; permitted scope and authority; next question, owner and review time. Related details may share a field. A score of 2 retains the `T-104` help-desk context from section 1.5, distinguishes the report from an independently checked booking state, and does not claim the later 09:05 decision was already executed at 09:00.
 
 #### EX008 — Evidence quality
 
-For R6, R7 and R8, write one useful conclusion and one conclusion the record does **not** support.
+**Objective:** limit claims to what three different source types actually say. **Inputs:** R6–R8. **Output:** a three-row evidence-limit table with ID and time, narrow supported conclusion, tempting unsupported conclusion, and a follow-up source or test. A score of 2 treats a scheduled activity as distinct from an approved booking change, a completed backup job as distinct from a proven restore, and a summary missing destination detail as distinct from a verified absence of transfer.
 
 #### EX009 — Decision alternatives
 
-Compare “disable `desk-a` now” and “preserve records, verify with the owner and staff member, then decide.” Give one benefit, one cost or risk, and the approval needed for each.
+**Objective:** justify a proportionate 09:05 decision under uncertainty. **Inputs:** R1–R8 and the section 1.9 gate. **Output:** a two-row option matrix for (A) seeking a temporary restriction of `desk-a` and (B) preserving R1–R8, asking the training owner and reviewing before restriction. Record expected benefit, possible service or delay cost, approver, observable success or failure and a 09:15 review trigger for each. Choose one provisionally and explain what new evidence would reverse it. A score of 2 identifies a separate approval for restriction and does not describe either risk as an already observed event.
 
 #### EX010 — Communication draft
 
-Write a two-sentence internal status update that is accurate at 09:00 UTC. Do not accuse a person or assert a breach.
+**Objective:** communicate useful action without premature attribution. **Inputs:** R1–R8 and the 09:00 intake state, *before* the 09:05 decision. **Output:** exactly two sentences for an internal service-owner audience: the first states observed service signals and uncertainty; the second names a **proposed** next check, its owner and the expected 09:05 decision checkpoint. Do not say preservation, an interview or a restriction has already been approved or performed. A score of 2 gives a source pointer and an unambiguous distinction between planned and completed work.
 
 #### EX011 — Escalation trigger
 
-Name two new observations that would justify raising urgency, and explain how each changes the risk assessment.
+**Objective:** specify when the initial choice must be reopened. **Inputs:** the R1–R8 snapshot and section 1.9. **Output:** two **hypothetical** observation/response rows with source that would verify the signal, harm or uncertainty affected, decision owner and next action. One trigger should concern continued booking change; the other should concern breadth or service impact. A score of 2 states that neither observation is present at 09:05 and avoids an automatic production action without approval.
 
 #### EX012 — Practice record
 
-Create a small decision log entry at 09:05 UTC for the authorized action “preserve a copy of R1–R5 and ask the service owner about planned training edits.” Include owner, reason and next review time.
+**Objective:** make a bounded decision auditable. **Inputs:** R1–R8, the fictional 09:05 checkpoint and section 1.3's authority matrix. **Output:** one decision log with time, action, reason with source IDs, approving role, executing role, evidence-copy scope, rejected alternative, next review time and reversal trigger. The scenario grants classroom permission for the bounded copy; do not describe a production export. A score of 2 states the question to the service owner as **pending** until answered and preserves uncertainty about account control.
 
 #### EX013 — Readiness gap
 
-Identify three readiness gaps revealed by this exercise. Prioritize one improvement that the organization can make before the next alert and define how it will verify the improvement.
+**Objective:** turn an exercise weakness into a measurable preparation change. **Inputs:** the service map, authority table, R7–R8 and the section 1.8 workshop. **Output:** a three-row gap register with missing capability, consequence and owner; then an improvement ticket with priority rationale, specific change, deadline and a pass/fail drill. A score of 2 names a test that would actually demonstrate the change, such as an owner-and-alternate decision drill or a contained restore rehearsal, rather than merely publishing a policy page.
 
 <a id="ch-02"></a>
 
@@ -499,7 +520,7 @@ These additional records are invented. Use them with R1–R16; the timestamps ar
 
 | ID | UTC time | Source | Observation |
 |---|---|---|---|
-| R17 | 09:22 | Training owner | The approved task list did not include `B19` or `B20`; the owner knows of no addendum. |
+| R17 | 09:22 | Training owner | The approved task list named `B17` and `B18` only; the owner knows of no addendum. |
 | R18 | 09:24 | Booking audit | `desk-a` changed `B20` from Room 3 to Room 1. |
 | R19 | 09:25 | Identity administrator | The current session can be revoked without deleting the account; staff would need to sign in again. |
 | R20 | 09:27 | Service-owner export | Current states of `B17`–`B20` are available in a restricted comparison copy. |
@@ -601,57 +622,57 @@ This chapter converts the earlier timeline into a bounded decision. Chapter 4 wi
 
 ### Chapter 3 exercises
 
-Use the synthetic case only. R1–R24 are available for all twelve exercises; P1/C1 and V1 are available only where an exercise explicitly calls for the Chapter 3 recovery lab. The Chapter 4 branches are **not** evidence at the 09:37 decision point. For each response, first name its record IDs and decision time; then separate observed fact from inference or proposal; finally name an authorized owner, an observable check and a limit. A reader should be able to reproduce the reasoning from this book alone. The worked results at the end provide examples, while alternative choices pass when their assumptions and verification are explicit.
+Use the synthetic case only. R1–R24 are available for all twelve exercises; P1/C1 and V1 are available only where an exercise explicitly calls for the Chapter 3 recovery lab. The Chapter 4 branches are **not** evidence at the 09:37 decision point. R17's 09:22 task list names B17/B18 only; the later B20 edit in R18 is evaluated against that already supplied list, not known to the training owner in advance. For each response, first name its record IDs and decision time; then separate observed fact from inference or proposal; finally name an authorized owner, an observable check and a limit. Submit the requested matrix, note or test plan so a reader can reproduce the reasoning from this book alone. The worked results at the end provide examples, while alternative choices pass when their assumptions and verification are explicit.
 
 Use a compact 0–2 check per exercise: **0** if the requested artifact is missing or asserts an unsupported fact, **1** if the artifact answers the question but omits evidence, authority or an important limit, and **2** if it is evidence-linked, bounded and testable. This is a practice rubric for the draft, not a formal grade. Where a question names several fields, all are required for a 2. A claim of executed action before the branch card or of complete recovery after a failed V1 audit check must be revised even if other fields are present.
 
 #### EX027 — Three different goals
 
-For session revocation, credential reset and an isolated restore test, identify which is primarily containment, which could be eradication if the cause is confirmed, and which supports recovery verification. State one uncertainty for each.
+**Objective:** distinguish a control action from a cause fix and a service test. **Inputs:** R17–R23 and sections 3.3–3.5 at 09:37 UTC. **Output:** a three-row table for proposed session revocation, credential reset and isolated restore test, with primary goal, prerequisite authority or evidence, observable success check, and one important limit. Do not claim that any of these actions has occurred. A score of 2 identifies the credential reset as only a *candidate* eradication action if credential compromise is supported, and keeps a test of a copy distinct from live-service acceptance.
 
 #### EX028 — Changed assessment
 
-Explain how R17 and R18 change the Chapter 2 assessment. Name one hypothesis they weaken, one they strengthen and one fact they still do not establish.
+**Objective:** update hypotheses without rewriting the earlier decision. **Inputs:** R9, R10, R12 and R17–R18. **Output:** a before/after 09:37 assessment note with the earlier unresolved B19 issue, what R17 adds about approved tasks, what R18 adds about B20, the hypothesis weakened, the concern strengthened, and a fact that remains unproved. Record event and availability times separately. A score of 2 does not claim the learner knew R17–R18 at the 09:20 Chapter 2 review or identify the human behind `desk-a`.
 
 #### EX029 — Decision matrix
 
-Compare session revocation with the fifteen-minute staff-write pause. Give one benefit, one operational cost, one approver and one verification check for each.
+**Objective:** select a bounded containment proposal. **Inputs:** R18–R21 and the section 3.3 comparison. **Output:** a two-row matrix for session revocation and the fifteen-minute staff-write pause, each with intended effect, path it does not cover, operational cost, approving role, executing role, post-action check and rollback. Add one sentence choosing an option provisionally at 09:37. A score of 2 names R21 as tolerance for a pause, **not** proof that a pause was approved and executed, and verifies the service cost as well as the intended block.
 
 #### EX030 — Risk of observation
 
-If the lead chooses ten more minutes of observation, write a bounded review rule: deadline, new signal that would trigger immediate intervention, and person who owns the decision.
+**Objective:** make non-intervention an explicit, reviewable choice. **Inputs:** R18, R21–R22 and the 09:37 checkpoint. **Output:** an observation decision card with approver, ten-minute deadline, proposed audit source and interval, query-coverage limit, verified trigger for early intervention, and accepted harm if another edit occurs. State what happens if logging is unavailable or the query is incomplete. A score of 2 does not treat R22's earlier narrow zero result as evidence that the next ten minutes will be quiet.
 
 #### EX031 — Evidence before change
 
-List four narrow records or facts to preserve before changing the session, when doing so does not dangerously delay harm reduction. Explain why the team might act first if edits are continuing rapidly.
+**Objective:** preserve enough context without turning preservation into a reason for unbounded delay. **Inputs:** R13, R17–R20 and R15's retention notice. **Output:** a four-row preservation request naming the source/item, bounded purpose, custodian or approval, and what the item cannot establish. Add a decision rule for when verified ongoing harm justifies an approved containment action before all four requests finish; record any omitted item and reason. A score of 2 calls the records **requests or supplied summaries** unless a new collection actually occurred and avoids bulk patron-data copying.
 
 #### EX032 — Avoid premature eradication
 
-Correct this claim: “We revoked the session, so the incident is eradicated and the attacker is gone.”
+**Objective:** repair an unsupported closure claim. **Inputs:** R17–R24 and sections 3.3–3.4. **Output:** a three-sentence correction: what a *proposed* session revocation is intended to contain, which actor/cause/path questions remain, and what cause-specific test would be needed before an eradication finding. Explain separately why R22, recorded before 09:37, cannot verify the later proposal. A score of 2 does not assert that the branch revocation happened or that a quiet, narrow query proves cause removal.
 
 #### EX033 — Recovery test
 
-Design an isolated restoration check for the booking data. Use R23 and the later P1 target as inputs, while treating the copy timestamp and restore duration as *unknowns to record*, not invented results. State the copy used, the expected B17–B20 state, a success criterion and a privacy or safety boundary. Your output is a one-paragraph test plan plus a four-row expected-state table. It should explain how the recovery lead would record pass, fail or not tested without changing a live booking.
+**Objective:** distinguish restoration planning from a measured result. **Inputs:** R23 and, **after the later lab card is released**, P1; V1 remains a separate access-and-audit trial. **Output:** a one-paragraph isolated-copy test plan plus a four-row B17–B20 expected-state table. Name the copy identifier and timestamp as fields to collect, actual restore start/end as fields to measure, service-owner-approved target, pass/fail/not-tested rule, and privacy boundary. A score of 2 keeps all four rows *not tested* until the restore is performed and never changes a live booking.
 
 #### EX034 — Backup limit
 
-What does R23 establish, and what two additional checks would be needed before calling the booking service recoverable? Apply the hypothetical two-hour RTO and thirty-minute RPO from section 3.5 to a midnight-only copy and a 09:45 interruption. Calculate the copy's age and say which objective this copy alone cannot demonstrate; do **not** assume the fictional library actually approved those targets. Show the arithmetic and identify the missing measurement for the other objective.
+**Objective:** test what a successful backup job can and cannot demonstrate. **Inputs:** R23 and the **hypothetical** two-hour RTO, thirty-minute RPO, midnight-only copy and 09:45 interruption in section 3.5. **Output:** a calculation note with `09:45 − 00:00`, comparison to the thirty-minute target, the missing timing measurement for RTO, and two additional authorized checks before calling the service recoverable. Do **not** assert that the fictional library approved those targets or that the actual backup was made at midnight. A score of 2 shows the arithmetic, separates copy age from actual data-loss measurement and identifies booking-state and elapsed-restore tests.
 
 #### EX035 — Return-to-service criteria
 
-Write three measurable acceptance checks the service owner could require before ending the staff-write pause. Use P1/C1 and V1 as the later recovery cards. For each check, name the expected result, whether the supplied card currently meets it, and who must approve or repair a failure. Conclude with a status label for the proposed return to service and one trigger for reapplying a restriction. Do not count V1's blank actor as an audit pass.
+**Objective:** require evidence for a proposed return to service. **Inputs:** P1/C1 and V1 **only after their later release**, plus the section 3.5 checklist. **Output:** three measurable acceptance rows for booking correctness, tested access behavior and audit attribution, each with expected result, current supplied result, owner and action needed. Conclude with a proposed service state, next review and one rollback trigger. A score of 2 marks B19/B20 as mismatched in C1, V1's tested access checks as limited passes, and the blank audit actor as a failure, so it does not declare unrestricted recovery.
 
 #### EX036 — Decision record
 
-Draft a six-field decision record at 09:37 UTC for a proposed session revocation. Include evidence IDs, approval owner, expected effect, side effect and next review.
+**Objective:** keep a response recommendation auditable before execution. **Inputs:** R17–R21 and the 09:37 checkpoint. **Output:** a six-field card covering time and status, evidence and uncertainty, chosen action and scope, approvers/executor, intended effect plus service side effect, and verification/fallback/review. Name the identity owner and incident lead for the proposed revocation; use R21 only for a possible pause fallback. A score of 2 gives an observable post-action test and says **proposed**, not completed.
 
 #### EX037 — Residual risk
 
-The booking page loads after the session is revoked. Explain why that alone does not justify closing the case; name two remaining questions.
+**Objective:** distinguish page availability from safe, correct service. **Inputs:** R20, R22–R24 and a **hypothetical** observation that the page loads after an approved revocation; this is not the Chapter 4 branch result. **Output:** a claim/limit note with two unresolved questions, a test and owner for each, and a proposed case status. A score of 2 asks about booking correctness and adequate post-action audit coverage, and does not use R24 to claim that no personal-data access occurred.
 
 #### EX038 — Alternative defensible choice
 
-Argue for choosing the short staff-write pause first instead of session revocation. Name the assumptions under which this is reasonable and a condition that would make you change course.
+**Objective:** defend a different containment path without inventing a unique right answer. **Inputs:** R18–R21 and the section 3.3 matrix. **Output:** a pause-first proposal with two assumptions, approving role, manual-queue plan, one immediate effectiveness check, a 15-minute review time and a condition for changing to narrower session action or a longer restriction. A score of 2 states that R21 records tolerance rather than execution, and includes reconciliation and service-owner sign-off before resuming writes.
 
 <a id="ch-04"></a>
 
@@ -745,55 +766,57 @@ The team should not call the case “resolved” merely because the tabletop end
 
 ### Chapter 4 exercises
 
-Use the four rounds and choose either Branch S or Branch P for your final decisions. The worked results give example answers and assessment criteria.
+Use the four rounds and choose either Branch S or Branch P for your final decisions. Record **event time and card-release round separately**. Round A has R1–R8, Round B adds R9–R16, Round C adds R17–R24, and Round D first supplies a branch result and only later P1/C1 and V1. Do not cite a later card to justify an earlier action; do not invent a real export, restore, account action or person behind `desk-a`. For each answer, submit the named artifact with case ID, source IDs, current round, observation versus proposal or reported action, decision owner, remaining limit and next review. A solo learner may write all roles, but must still record who would approve and who would verify a change.
+
+**Numbered-exercise rubric:** score **0** for an absent artifact or an unsupported breach, actor, executed action or recovered-service claim; **1** for an artifact that addresses the task but omits a required source, release boundary, authority or verification; **2** for an evidence-linked, authorized and reviewable artifact with every local field below. This is distinct from the six-output tabletop rubric in section 4.5. Each worked result shows one acceptable path; a different branch or conclusion can earn 2 when its assumptions, evidence and constraints are explicit.
 
 #### EX039 — Role and scope card
 
-Write a five-role card for the incident lead, analyst, service owner, recovery lead and communications contact. For each, name one responsibility; then write the authorized tabletop scope in one sentence.
+**Objective:** assign authority before observing the case outcome. **Inputs:** Round A, Chapter 1's role table and synthetic R1–R8. **Output:** a five-row role card for incident lead, analyst, service owner, recovery lead and communications contact; name each responsibility, one approval or escalation boundary and one verifiable output. Add a single sentence defining permitted objects, actions and exclusions. A score of 2 makes clear that neither a learner nor analyst can independently disrupt a real booking service.
 
 #### EX040 — Intake artifact
 
-After Round A, write a four-line case intake containing ID, first observation, affected service, uncertainty and next owner question. Cite at least two R-records.
+**Objective:** produce a reproducible first handoff without hindsight. **Inputs:** Round A only, R1–R8 and the 09:00 case-open time. **Output:** exactly four labeled lines covering case/time/service, at least two observed source events, current status and unknowns, and the owner question plus proposed 09:05 checkpoint. Cite record IDs and mark R5 as a patron report. A score of 2 does not cite R9, R17 or a later branch result and does not treat proposed preservation as already performed.
 
 #### EX041 — Evidence chronology
 
-Build a six-event UTC timeline using records from at least three rounds. Mark one apparent relationship that is temporal only, not proven causal.
+**Objective:** separate source-event time from learner availability. **Inputs:** R1–R24 after Round C; **no** Round D card. **Output:** a six-row table with ID, UTC event time, source, release round and observation, using at least one item from each of Rounds A, B and C. Add one ordering fact and one causal or identity claim that the sequence cannot prove. A score of 2 retains that R9's 09:03 event reached the learner only in Round B, while R17–R18 could not guide the 09:20 decision.
 
 #### EX042 — Competing explanations
 
-At Round B, compare training, unauthorized account use and a display/synchronization problem. For each, name one record and one missing check.
+**Objective:** maintain discriminating hypotheses at the 09:20 review. **Inputs:** R1–R16 only. **Output:** three rows for authorized training, unauthorized use of `desk-a` and display/state divergence, each with supporting record, contrary or limiting record, narrow authorized check and a result that would weaken it. Do not use R17–R18 or P1/C1; those arrive later. A score of 2 says B19 is unresolved rather than proving one explanation from the account label or a patron report.
 
 #### EX043 — Preservation request
 
-Write a narrow preservation request before R15's deadline. Include the owner who approves it, source/time range, collector and storage/access limit.
+**Objective:** request time-sensitive evidence without a fabricated deadline. **Inputs:** Round B, R9, R14–R15 and Chapter 2's preservation fields. **Output:** a request naming source, booking IDs or bounded event interval, necessary fields, policy-clock question, approving role, collector, restricted storage/access and actual collection status. R15 says detailed audit records are deleted after 24 hours unless copied; ask the custodian what starts that clock rather than calculating an exact expiry from R9 alone. A score of 2 says **requested** until a copy and collection time are documented.
 
 #### EX044 — Decision checkpoint
 
-At Round C, choose session revocation or the write pause. Justify it using R17–R21, name the approver, expected benefit, side effect, fallback and next review.
+**Objective:** make a reversible 09:37 recommendation. **Inputs:** Round C, R17–R21 and the section 3.3 option matrix. **Output:** a decision card with current evidence and uncertainty, chosen proposal, approver and executor, intended benefit, uncovered path, service cost, preservation note, fallback, verification plan and 09:45 review. A score of 2 treats R21 as tolerance rather than execution and does not cite the Branch S/P result before Round D.
 
 #### EX045 — Branch S review
 
-Assume Branch S. State two claims the branch supports and two claims it does not establish. Propose one next check.
+**Objective:** bound what a successful session action actually demonstrates. **Inputs:** Round D **Branch S only**, before P1/C1 or V1; earlier R1–R24 remain available. **Output:** a four-row claim ledger with two supported claims and two unestablished claims, each with branch pointer and limit, plus one authorized next check with scope and owner. A score of 2 limits the “no later edit” observation to the branch query's range and does not claim eradication or correct booking state.
 
 #### EX046 — Branch P review
 
-Assume Branch P. Name the manual-queue cost, a condition for resuming writes and a sign that would keep the restriction in place.
+**Objective:** account for operational effects of the pause. **Inputs:** Round D **Branch P only**, before P1/C1 or V1; R21's tolerance. **Output:** a queue-and-return note with the two pending requests, who holds them, a verification that writes were blocked, an owner-approved resume condition, a signal to keep the restriction, and the next checkpoint. A score of 2 does not mark the two requests fulfilled or the cause resolved and gives an explicit reconciliation step before resumption.
 
 #### EX047 — Recovery acceptance
 
-Create a four-item, observable return-to-service checklist for either branch. One item must concern booking correctness, one access control and one audit visibility.
+**Objective:** decide whether the supplied recovery evidence permits full release. **Inputs:** chosen branch, then the later P1/C1 and V1 cards. **Output:** a four-row return-to-service checklist covering booking correctness, authorized access, denied unauthorized access and actor/time audit visibility. For each, state expected result, current card result, owner and next test or correction; add a provisional service status and rollback trigger. A score of 2 marks B19/B20 mismatched and V1's blank actor as failed criteria rather than calling the book's simulated case recovered.
 
 #### EX048 — Internal update
 
-Write a two-sentence internal status message for 09:45 UTC. Do not assert a breach, attacker identity, complete recovery or a validated backup restore.
+**Objective:** report the action while preserving uncertainty. **Inputs:** chosen Round D branch at 09:45 UTC, **before** P1/C1 and V1 are released. **Output:** exactly two sentences for an internal service-owner audience, naming the service, a supported observation and reported branch action, current uncertainty, owner and next checkpoint. For Branch P mention the manual queue; for Branch S mention reauthentication. A score of 2 does not assert breach, attacker identity, complete recovery, a validated restore or results from later cards.
 
 #### EX049 — Improvement ticket
 
-Create one after-action ticket for a readiness gap shown by the case. Give it an owner, a due date and a measurable check.
+**Objective:** turn a case observation into a program improvement with proof of closure. **Inputs:** all four rounds, R23 or V1, and section 4.6. **Output:** one ticket with gap and evidence pointer, accountable owner, due date, bounded change, interim control and pass/fail verification. Choose either stale restore evidence or blank audit actor; do not bundle unrelated work into an untestable “improve security” task. A score of 2 explains why correcting B19/B20 alone would not close the selected program gap.
 
 #### EX050 — Final handoff and self-assessment
 
-Provide a one-paragraph handoff listing the chosen branch, evidence cited, completed fictional approvals, unresolved cause, next review and a rollback or escalation trigger. Score your six outputs using the Chapter 4 rubric and identify the weakest one to revise.
+**Objective:** give a new responder a complete, auditable state without overstating closure. **Inputs:** all rounds, one chosen branch, P1/C1, V1 and the section 4.5 rubric. **Output:** a one-paragraph handoff naming case and evidence, proposal versus branch-reported action and fictional approvers, current booking and audit failures, unresolved cause, owners, next review and rollback trigger. Add a six-row self-score (0–2 per tabletop output, maximum 12) and name the weakest output to revise. A score of 2 requires a defensible score explanation and no zero for approval or evidence scope; the handoff must distinguish the branch result from unexecuted correction or restore work.
 
 <a id="answers"></a>
 
@@ -803,55 +826,128 @@ These results are placed after the chapter material as the book's developing ans
 
 ### EX001 — Worked result
 
-(a) Direct observation in the application record. (b) Unsupported: compromise is a hypothesis. (c) Direct observation of a **report**, not independent confirmation of everything the patron experienced. (d) Unsupported: R7 states only that a backup job completed.
+| Statement | Classification | Source and limit |
+|---|---|---|
+| (a) R4 records B18 cancelled | Direct observation of the application record | R4, 08:44 UTC, states a cancellation. It does not state why it was made or whether the current patron view matches the audit. |
+| (b) `desk-a` was compromised | **Hypothesis requiring confirmation**, phrased as a finding without support | R1, 08:40, records a successful sign-in; R3–R4 record changes. Those events are compatible with unauthorized use but do not identify the person or establish compromise. |
+| (c) R5 reports B18 disappeared | Direct observation of a **report** | R5, 08:48, says what the patron reported. It does not independently verify the patron interface or the authoritative schedule. |
+| (d) R7 proves a ten-minute restore | Unsupported conclusion | R7, 08:52, reports that a backup job completed. No restore test, duration, data-consistency result or approved recovery target is supplied. |
+
+A strong response distinguishes the *observable wording* of (b) from its epistemic status: the claimed compromise is unsupported **as a fact**, while unauthorized use remains a live hypothesis. Reclassifying it as “confirmed” because an account and edits appear near each other fails the exercise.
 
 ### EX002 — Worked result
 
-Ask the service owner whether edits to B17 and B18 were authorized training work, using the training plan or change record. Ask the staff member or identity administrator whether `desk-a` was used by the expected person, through the approved contact and account-audit process. Other good questions identify affected bookings or current account activity without exceeding authority.
+| Discriminating question | Why now | Custodian and permission | Decision effect |
+|---|---|---|---|
+| Were B17's move and B18's cancellation specifically approved training tasks? | R3–R4, 08:43–08:44, show edits; R6, 08:50, shows only a scheduled training interval. | Service or training owner checks the dated, approved task list; the incident lead records the request. | An approved list naming both edits weakens an unauthorized-*edit* explanation for those records; a confirmed complete list excluding B18 strengthens concern. |
+| Was `desk-a` used by the expected staff member, and is an edit still occurring? | R1, 08:40, names an account but no human; the supplied table stops before the 09:05 checkpoint. | Incident lead seeks a narrowly scoped identity or application check from the authorized administrator; the learner does not query a real service. | An independently checked authorized session could reduce concern; a verified new unexplained edit would raise urgency and prompt a new decision. |
+
+Neither answer is in R1–R8. The lead records a **request**, its owner and the decision time. Interview recollection alone may be useful context but is not an identity proof.
 
 ### EX003 — Worked result
 
-For the identity service, an unauthorized session could permit booking edits; the sign-in and account-change records help test misuse. For the database, incorrect reservations affect patrons; the database audit log and authoritative schedule help test whether the application view is wrong. A strong answer separates possible impact from confirmed impact.
+| Dependency | Possible user effect | Supplied pointer | Missing discriminator and custodian |
+|---|---|---|---|
+| Staff identity service | If the account is being misused, further room changes may become possible; no current scope of misuse is established. | R1 sign-in at 08:40 and R2 dashboard access at 08:42. | The identity administrator, with incident-lead approval, checks a narrow session detail and account-change record. Compare to an authorized-user account; a sign-in label alone cannot identify the operator. |
+| Reservation database | An incorrect schedule could make a room appear unavailable or assigned differently to a patron. | R3–R4 record edits; R5 reports a symptom. | The service owner requests a bounded comparison of the authoritative schedule, change history and patron view for B17/B18. A database record matching an approved target favors an intended change; a mismatch may indicate a data or display problem. |
+
+Both effects are **possible**. The R5 report supports investigating a visible problem, but the exercise has not measured all users or confirmed the database's current state. Other valid pairs, such as booking application and help desk, must still name a check that distinguishes explanations.
 
 ### EX004 — Worked result
 
-The lab authorizes only the provided synthetic table. Searching or testing a real library may expose a third party's data or involve an account outside the learner's authority. Use the fictional `desk-a` records and document the missing fact as a question for the hypothetical authorized response lead.
+**Proposed action:** search a real public library site for a matching `desk-a` account. **Boundary:** this chapter authorizes reading, sorting and annotating synthetic R1–R8 during the session; it does not authorize access to a real library, real account or third-party data. **Decision:** reject the proposed search because it would expand both the object and the organization under investigation. **Contained alternative:** use R1 and R2 to state that the account signed in and opened the dashboard, while marking the human operator unknown. Draft a fictional request to the incident lead for the identity administrator to provide the minimum relevant session fields and interval *if* an actual organization approved such collection. **Stop condition:** if the answer requires a field absent from R1–R8, stop at the evidence boundary and record the unresolved question. A public page being reachable does not confer incident-response authority over it.
 
 ### EX005 — Worked result
 
-08:40 R1 sign-in; 08:43 R3 B17 edit; 08:44 R4 B18 cancellation; 08:48 R5 patron report. The sign-in preceded the edits. The ordering does not prove that the sign-in was unauthorized or that the R4 cancellation caused every aspect of the patron's report.
+| Record | Source | UTC time | Observed event |
+|---|---|---|---|
+| R1 | Identity log | 08:40 | `desk-a` sign-in succeeded. |
+| R3 | Application log | 08:43 | B17 changed from Room 2 to Room 4. |
+| R4 | Application log | 08:44 | B18 was cancelled. |
+| R5 | Help desk | 08:48 | Patron reported B18 had disappeared. |
+
+**Ordering fact:** the recorded sign-in precedes the two recorded edits, and the help-desk report follows them. **Causal limit:** temporal order does not prove that the sign-in was unauthorized, that one named person made the edits, or that R4 explains every part of the patron's experience. The 09:00 case-open time belongs to the incident record, not to the four source events. A reviewer should preserve source clocks and UTC conversion information if the underlying systems later become available.
 
 ### EX006 — Worked result
 
-Service owner: approve or reject a booking outage. Analyst: preserve R1–R5 within scope. Incident lead: coordinate the next review and decision record. Recovery lead: test restoration on an authorized copy. In a small organization one person may hold multiple roles, but approval and execution should remain explicit.
+| Task | Responsible role and authorization | Verification |
+|---|---|---|
+| Possible booking outage | Analyst and lead may recommend; **service owner** decides whether the disruption is tolerable under the fictional emergency rule; application operator would execute only after approval. | Service owner checks whether booking writes actually stopped and whether essential work has an alternative. No outage is approved in R1–R8. |
+| Preserve R1–R5 for the classroom case | Incident lead approves the bounded copy; analyst prepares it from the supplied synthetic table. | Incident lead checks IDs, UTC times, scope and storage note. This is not a production-log export. |
+| Coordinate the review | Incident lead names 09:15 UTC or a sooner verified trigger and records who must attend. | Decision record contains the time, owner and unresolved questions. |
+| Test a backup restore | Recovery lead designs and, when authorized, performs a contained restore using a copy; the service owner states the expected schedule. | Compare restored booking IDs and values with an authoritative target and measure time. R7 alone is a backup-job status, **not** this verification. |
+
+The table assigns responsibilities within the fictional exercise. A small team may combine human roles while retaining separate approval and result fields.
 
 ### EX007 — Worked result
 
-One acceptable record has ID `HL-IR-001`; opened at 09:00 UTC; service “room booking”; reporter “help desk R5”; observation “R1 sign-in, R3–R4 edits and R5 report”; status “suspicious, compromise unconfirmed”; authorized scope “synthetic R1–R8 only”; next action “verify whether edits match training and record owner approval.” Include a review time if available.
+| Seven opening fields | Model 09:00 UTC entry |
+|---|---|
+| 1. Case ID and opened at | `HL-IR-001`; 2026-10-11 09:00 UTC. |
+| 2. Service | Harbor Library room booking; service owner to be confirmed. |
+| 3. Reporter and source | Help-desk ticket `T-104`; R5 is a patron **report** at 08:48 UTC. |
+| 4. Observed signal and pointers | R1 sign-in at 08:40, R3 B17 edit at 08:43, R4 B18 cancellation at 08:44, R5 report at 08:48. |
+| 5. Assessment and uncertainty | Suspicious booking activity; account compromise, approval status of the edits and full user impact **unconfirmed**. R6 notes training but does not resolve those questions. |
+| 6. Scope and authority | Current classroom scope: inspect synthetic R1–R8 only; no real-system collection or service change approved. |
+| 7. Next question, owner and review | Incident lead asks the service/training owner whether B17/B18 were planned; review the proposed next action at 09:05 UTC. |
+
+This is an **opening** record. A later 09:05 decision can be appended with its own approval and review time. Backdating that decision into the 09:00 entry would distort the case chronology.
 
 ### EX008 — Worked result
 
-R6 supports that training was scheduled, not that these exact edits were approved. R7 supports that a backup job completed, not that restoration will meet a recovery target. R8 states that this summary has no relevant destination detail, not that no data transfer occurred.
+| Record and time | Supported conclusion | Unsupported conclusion | Follow-up within the exercise model |
+|---|---|---|---|
+| R6, 08:50 UTC | Front-desk training was scheduled for 08:30–09:00. | B17 and B18 were necessarily approved training edits. | Ask the training owner for the dated task list and approved targets. |
+| R7, 08:52 UTC | The previous night's backup job was reported complete. | The booking service can be restored correctly within a given time. | Recovery lead plans a contained restore and value comparison. |
+| R8, 08:55 UTC | The supplied network summary has no relevant destination detail. | No data transfer occurred. | Record the missing fields; any further query needs a defined purpose, source, interval and approval. |
+
+Each row preserves a useful observation without upgrading it to a conclusion the source cannot sustain. A missing field is a limit on the claim, not a negative finding.
 
 ### EX009 — Worked result
 
-Immediate disablement might stop further unauthorized changes but might disrupt legitimate staff work; it requires the designated incident or service authority. Preserve-and-verify protects evidence and reduces needless disruption but may allow harm to continue if compromise is real; it too requires authorized collection and a short review deadline. A good comparison states what new evidence would change the choice.
+| Option | Expected benefit | Possible cost | Approval and execution | Observable review |
+|---|---|---|---|---|
+| A: seek temporary restriction of `desk-a` | May stop further edits through that account if it is being misused. | Could interrupt legitimate front-desk work; another path may still exist. | Analyst recommends; incident lead and service owner approve scope and service impact; identity administrator executes. | Check whether access changed and whether essential booking work continues; end or revise the restriction at the recorded review. |
+| B: preserve R1–R8, verify B17/B18 with training owner, then decide | Retains the observed sequence and may avoid unnecessary service disruption. | An unauthorized editor could make another change while the team checks. | Incident lead approves the bounded classroom analysis; service owner owns service-impact input. | By 09:15 UTC or sooner on a verified new unexplained edit, compare the owner answer and any authorized new source. |
+
+**Provisional choice:** B under the supplied R1–R8 snapshot, because the training explanation is testable and no continuing change is yet supplied. This is not a universal answer. A verified fresh unexplained edit or high, confirmed service harm could shift the recommendation toward A, but it would still require an explicit approval. R1–R8 neither prove that waiting is harmless nor prove that immediate restriction is necessary.
 
 ### EX010 — Worked result
 
-“We are reviewing unusual booking changes associated with `desk-a` and a patron report; the cause and scope are not yet confirmed. The response lead is preserving the available records and checking whether the changes match scheduled training before the next decision at 09:15 UTC.”
+“At 09:00 UTC, application records R3–R4 show two booking changes following the R1 `desk-a` sign-in, and help-desk record R5 reports a patron concern; the cause and full service impact remain unconfirmed. The incident lead **proposes** to preserve the supplied records and ask the service owner whether the edits match scheduled training, with an approval decision at 09:05 UTC.”
+
+The first sentence identifies the source and uncertainty. The second describes a proposal, not an action already authorized or completed. Its audience is the internal service owner; a public notification would require a separate approved communications decision.
 
 ### EX011 — Worked result
 
-A fresh booking edit after the staff member denies use of the account would increase confidence of unauthorized activity and urgency. Evidence that multiple accounts made unexpected changes could expand the affected scope. Other defensible triggers include confirmed sensitive-data access, a service outage, or inability to account for continued changes, provided the response explains the evidence.
+| Hypothetical trigger, **not present in R1–R8** | How it would be verified and why it matters | Owner and next decision |
+|---|---|---|
+| A later booking-audit row shows a new edit outside a confirmed approved task list. | Application custodian checks the row's source, event time, booking ID and task-list comparison; continued change raises the cost of waiting. | Incident lead promptly reconvenes with service and identity owners to consider a bounded temporary restriction. |
+| A service-owner comparison finds several current booking assignments differ from an approved schedule. | Service owner and analyst compare only necessary booking IDs and values; a wider user-facing effect raises potential harm. | Service owner and incident lead reassess service continuity and communication, recording approval before any disruption. |
+
+The exercise asks for **triggers**, not invented case facts. A new signal must be collected or reported within authority and checked before it can support a higher-urgency statement.
 
 ### EX012 — Worked result
 
-“09:05 UTC — Incident lead approved preservation of synthetic records R1–R5 and a question to the service owner about planned training edits. Reason: preserve the observed sequence and test the leading authorized-work hypothesis without changing production access. Analyst will prepare the copy; next review 09:15 UTC.” The exact names may be fictional; the approval and review time must be explicit.
+| Decision-log field | Model entry |
+|---|---|
+| Time and action | 09:05 UTC: approve a **classroom copy** of synthetic R1–R5 and a question to the service owner about whether B17/B18 were planned training edits. |
+| Reason and pointers | R1 sign-in, R3 B17 move, R4 B18 cancellation and R5 patron report establish a sequence; R6 makes training plausible but does not approve the edits. |
+| Approver and executor | Fictional incident lead approves the bounded analysis; analyst prepares the copy and records its scope. The service owner receives a **pending** question. |
+| Boundary and rejected option | Only R1–R5 are copied; R6–R8 remain available for interpretation. Do not collect a real log or restrict a real account. Immediate `desk-a` restriction is deferred because its service cost and approval have not been resolved. |
+| Review and reversal | Reassess at 09:15 UTC or sooner on a verified new unexplained booking edit; consult the lead and service owner before changing access. |
+
+This entry does not claim the service owner has answered, that a production export occurred, or that `desk-a` is compromised. The exact role holders may be fictional, but the decision ownership and status must remain explicit.
 
 ### EX013 — Worked result
 
-Three gaps are an unconfirmed service owner, unknown clock synchronization and no recorded restore-test result. Prioritize naming the service owner and alternate, then verify the improvement by having both acknowledge a tabletop scenario and approve or reject a simulated booking outage within the agreed time. Another answer may prioritize clock or recovery testing if it states a measurable check.
+| Readiness gap | Consequence in this case | Improvement owner |
+|---|---|---|
+| Service owner and alternate are not confirmed in the opening record. | A booking interruption or account restriction could wait for an unavailable approver. | Incident lead and service manager. |
+| Cross-source clock synchronization is not documented. | R1–R8 ordering could be misleading if source clocks differ; the exercise assumes the supplied UTC values. | Identity and application custodians. |
+| No recorded restore-test result accompanies R7. | A completed backup job may not yield a correct schedule within an acceptable time. | Recovery lead and service owner. |
+
+**Priority ticket:** within the next readiness cycle, the incident lead records the room-booking service owner, alternate and after-hours contact, plus their decision authority for a simulated outage. **Verification drill:** present both a primary-owner-available and primary-owner-unavailable scenario; require the named decision maker to acknowledge each within the organization's chosen response window and to approve or reject a bounded disruption with reason and review time. Record the two elapsed times and decisions as pass/fail evidence. A published contact page without a successful drill would not close the ticket. A learner may reasonably prioritize clock or restore testing instead if the risk rationale and observable acceptance test are comparably specific.
 
 ### Chapter 1 readiness workshop — worked result
 
@@ -991,31 +1087,60 @@ With exercise-only T1, the strongest negative statement is: “The specified `ap
 
 ### EX027 — Worked result
 
-Revoking the current session is containment: it may limit that session but not another path. A credential reset could help eradicate a **confirmed credential-compromise cause**, but the cause is not yet confirmed and the reset alone may be insufficient. An isolated restore test supports recovery verification; it does not prove that the live service is safe or that bookings are correct.
+| Proposed action | Primary goal | Prerequisite | Observable check | Limit |
+|---|---|---|---|---|
+| Revoke current `desk-a` session | **Containment:** reduce the ability of that session to make further edits. | Incident-lead and identity-owner approval under the exercise policy; retain narrow records when safe. | Identity administrator confirms the specific session ended; analyst checks a defined later booking-audit interval. | Other sessions, accounts and a non-identity cause may remain. |
+| Reset a credential | **Possible eradication** only if authorized evidence supports credential compromise as a cause. | Identify the credential and mechanism, approval from the identity owner, and a plan for dependent sessions or tokens. | Confirm the old credential no longer authenticates and check related paths under approved scope. | A reset does not repair an application fault and may not invalidate every existing session. |
+| Restore a booking copy in an isolated environment | **Recovery verification** of a particular copy and procedure. | Recovery-lead test authorization, a copy identifier, an expected owner-approved target and isolated environment. | Compare restored B17–B20 values and measure time and access/audit behavior. | A successful test of a copy is not proof that the live schedule is correct or safe to reopen. |
+
+At 09:37 these are classifications and proposed checks, **not executed events**. R23 reports a prior backup success but gives no current restore result.
 
 ### EX028 — Worked result
 
-R17 weakens H1 as a full explanation because the approved task list omits `B19` and `B20`; R18 supports concern about further unexplained activity and therefore makes H2 more plausible. Neither record identifies the human or device behind `desk-a`. A good response still allows for an incomplete plan, a mistaken recollection or another system fault until checked.
+**Before the new release:** at the 09:20 Chapter 2 review, R9 showed a 09:03 B19 edit, R10 named B17/B18 in the training plan, and R12 supplied a staff recollection. B19 remained unexplained; H1 could plausibly explain the earlier planned edits but did not cover every known item. **New at 09:37:** R17, recorded 09:22, says the approved task list named B17/B18 only and no addendum was known. R18, recorded 09:24, adds a B20 edit under `desk-a`. The new edit falls outside the known task list and raises concern about continued booking changes. H1 as a **complete explanation of all four bookings** weakens; H2, account use outside the plan, gains plausibility. Neither R17 nor R18 identifies the human, device, mechanism or root cause. An unrecorded authorized change, a faulty process or a source error remains possible until checked. Event time is not the time the learner knew the item; do not justify the earlier 09:20 decision retroactively.
 
 ### EX029 — Worked result
 
-Session revocation may quickly stop the current session, but legitimate staff must reauthenticate; the incident lead and identity owner approve it under the fictional policy, and the analyst checks subsequent booking and identity records. The short write pause may stop edits through the staff workflow regardless of the session, but creates a manual queue; the service owner approves it under R21, and the operator verifies writes are paused and reviews queue entries. Neither check proves root cause removal.
+| Option | Intended effect and uncovered path | Operational cost | Approval and executor | Verification and reversal |
+|---|---|---|---|---|
+| Revoke current `desk-a` session | Stop edits through that session; other sessions and non-identity paths remain possible. | Expected staff reauthentication and possible desk delay. | Incident lead and identity owner approve; identity administrator executes a named-session action. | Administrator confirms revocation; analyst checks a new, bounded audit interval and service owner checks desk impact. A verified staff member can reauthenticate through the approved process if service work must resume. |
+| Pause staff booking writes for fifteen minutes | Stop the staff write workflow; does not settle cause, read exposure or an alternate write path. | Manual queue and potential patron delay. | R21 records service-owner **tolerance**; owner must still approve the actual pause and application operator executes it. | Operator verifies write block in the approved scope; owner inspects queue and booking state before approved resumption. |
+
+**Provisional 09:37 choice:** request session revocation first because it targets a narrower active path and preserves other staff workflows, with the short pause ready if a verified edit continues. A pause-first answer also passes if it justifies why the session link is too weak and plans the manual queue. Neither choice proves who caused the edits.
 
 ### EX030 — Worked result
 
-“Incident lead accepts ten minutes of observation until 09:47 UTC. Any additional unexplained booking edit, broad patron impact or evidence that audit records are about to disappear triggers immediate review with the service owner and identity administrator.” Other defensible triggers pass if they are observable, time-bound and assigned to an owner.
+**Decision card, 09:37 UTC:** the fictional incident lead accepts a ten-minute observation window through **09:47 UTC**, after consulting the service owner about possible booking harm. The application custodian is asked to run a bounded query for staff booking edits from 09:37 to 09:47 UTC, recording source, filters, event-time bounds, ingestion cutoff and actual collection time. R22's narrow earlier summary does not cover this proposed interval. A verified new unexplained booking edit, a service-owner-confirmed impact increase, or unavailable/incomplete logging ends the observation choice early and triggers an immediate lead review of revocation versus write pause with the identity and service owners. The accepted downside is that another wrong booking may occur while the team waits. If the query cannot run or ingestion lags beyond the review, the team must **not** report “no later edits”; it must decide under explicit reduced visibility. An unverified quiet dashboard is not a verification result.
 
 ### EX031 — Worked result
 
-Retain a narrow copy or pointer for R18's booking audit row, the available session summary R13, the approved training list R10/R17 and the current booking-state export R20, recording source and collection limits. If rapid further edits are harming patrons, an authorized containment action may be warranted before every collection finishes; record what was missed and why, rather than silently claiming complete preservation.
+| Narrow item to preserve or request | Purpose | Custodian and authority | Limit |
+|---|---|---|---|
+| R18 B20 booking-audit row and related B19 R9 row | Preserve the two edit times, IDs and values before R15's retention window removes detail. | Incident lead authorizes a bounded request to the application custodian; actual export status and collection time must be recorded. | Audit account label does not prove the human operator. |
+| R13 current-session summary and an approved detail request | Reconstruct the specific session considered for revocation. | Identity administrator under incident-lead and identity-owner scope. | R13 itself lacks device and location detail; do not invent those fields. |
+| R10 plan plus R17 training-owner statement | Compare approved tasks with B19/B20 and retain the provenance of the owner's answer. | Training owner supplies the authorized plan; analyst records its date and completeness question. | A plan may be incomplete or superseded; R17 says no addendum is *known*, not that one is impossible. |
+| R20 restricted booking-state comparison copy | Check current B17–B20 state before any correction. | Service owner controls the copy and grants necessary access to the analyst. | The supplied R20 note does not provide row values; do not substitute later C1 values into the 09:37 record. |
+
+If a verified sequence of harmful edits is continuing and waiting for all four requests would prolong harm, the lead seeks approved containment promptly. The case note then lists which items were preserved, which were merely requested, which could not be obtained in time and why. A bulk patron export is not necessary to answer the narrow booking question.
 
 ### EX032 — Worked result
 
-“The current session was revoked as a containment step. We have not established who made the edits, whether another session or path exists, or what caused the change. Eradication requires a supported cause, a targeted fix and verification that the mechanism no longer operates.” Do not equate a lack of observed new edits in a narrow range with eradication.
+“At 09:37 UTC, revocation of the current `desk-a` session is **proposed** as containment; if approved and later confirmed, it would address only that session. The supplied R1–R24 records do not identify the human operator, establish credential compromise or exclude another session, account or application fault. A cause-specific eradication claim would require an authorized investigation that supports a mechanism, a targeted change such as a credential or software fix, and a test showing that mechanism no longer works under an adequate observation scope.”
+
+R22 was recorded at 09:32 UTC, before the proposed 09:37 revocation. Its unspecified queried range cannot verify a later action, and a zero result within a narrow range would not distinguish cause removal from a missed edit. A learner may write a *conditional* “after approval and execution” note but must not turn the later Chapter 4 branch into evidence at this checkpoint.
 
 ### EX033 — Worked result
 
-Plan: the recovery lead selects an authorized isolated copy from the last backup and records its actual source timestamp, byte or object identifier, restore start and end times, and approved test environment. Compare its bookings with P1: B17 Room 4, B18 Cancelled, B19 Room 1 and B20 Room 3. A four-row comparison should mark each restored value *pass* only if it equals the corresponding P1 target; until the copy is restored, every row is *not tested*. Then make one authorized and one denied synthetic edit and check that the test audit includes both UTC time and actor. V1 is a **separate** isolated-copy test whose actor check fails; it does not provide a completed restore result. Keep patron fields out of classroom output, never overwrite the live schedule and ask the service owner to approve any later production correction. A plan without a measured result cannot claim successful restoration.
+**Plan:** after P1 is released, the recovery lead requests permission to restore an identified backup into an isolated environment. Record copy ID, source timestamp, actual restore start/end, tool and access scope; none is supplied by R23. Use P1 as the service-owner-approved comparison target, preserving original copy and test results. Limit classroom output to booking IDs and room/cancellation values; do not change live bookings or disclose patron fields. A pass requires an actual measured restore with every target row correct, recorded time, acceptable access checks and an auditable result. Until then the state is *not tested*.
+
+| Booking | P1 expected state | Restored observation | Current result |
+|---|---|---|---|
+| B17 | Room 4 | Not supplied | Not tested |
+| B18 | Cancelled | Not supplied | Not tested |
+| B19 | Room 1 | Not supplied | Not tested |
+| B20 | Room 3 | Not supplied | Not tested |
+
+After a real isolated restore within the fictional approved scope, fill the observed column and mark each row pass or fail. Then test one authorized and one denied **synthetic** edit and check the audit's UTC time and actor. V1 is a separate supplied isolated-copy trial whose actor field is blank; it is not a completed backup restore. A plan alone cannot establish that the service is recoverable or that a later production correction ran.
 
 ### EX034 — Worked result
 
@@ -1023,19 +1148,34 @@ R23 establishes that a backup job succeeded and that the most recent documented 
 
 ### EX035 — Worked result
 
-Three measurable checks are: **booking correctness**—a new restricted comparison copy shows B17/B18 matching P1 and B19/B20 corrected to P1 after service-owner approval; **access behavior**—an authorized synthetic staff edit succeeds and a tested unauthorized edit is denied in an approved scope; **audit visibility**—that authorized edit is recorded with its correct actor and UTC time. P1/C1 currently fails the first check for B19/B20. V1 supports only the two access observations in its isolated-copy scope and fails the audit-actor criterion. The service owner decides whether a temporary restricted mode is tolerable, while the application/audit owner repairs the attribution defect and the response lead records the monitoring window. An unexplained new booking edit or failed queue reconciliation triggers a renewed restriction or escalation. “The service works” is too vague to measure.
+| Acceptance check | Expected result | Current supplied state | Owner and next action |
+|---|---|---|---|
+| Booking correctness | New restricted comparison copy matches P1 for B17–B20 after approved correction. | **Fail/pending:** C1 matches B17/B18 but B19 and B20 are reversed against P1. | Service owner approves bounded correction; authorized operator acts; analyst checks a **new** copy. |
+| Access behavior | Approved synthetic staff role can edit; tested unauthorized role is denied. | **Limited pass in isolated copy:** V1 reports both observed outcomes, but not every account or live path was tested. | Identity and application owners define the acceptable production-scope verification before full release. |
+| Audit visibility | Authorized test change is recorded with correct actor and UTC time. | **Fail:** V1 has a UTC time but blank actor. | Application/audit owner repairs attribution and reruns the test; incident lead records interim monitoring. |
+
+**Proposed status:** do not declare unrestricted return to service. The service owner and incident lead may consider a time-limited restricted mode with a compensating check, named owner and near-term review, but the failed booking and audit criteria remain open. An unexplained new edit or failed manual-queue reconciliation triggers renewed restriction or escalation. A loading page or backup-success label does not override these observable failures.
 
 ### EX036 — Worked result
 
-“09:37 UTC; proposal: revoke the current `desk-a` session; basis: unplanned `B20` edit R18 and training-owner statement R17; approvers: incident lead and identity owner; expected effect: stop changes from this session; side effect: staff reauthentication and possible workflow delay; fallback: service-owner-approved short write pause under R21; next review: 09:45 UTC against booking audit and impact check.” A completed-action claim would be incorrect before the branch result is supplied.
+| Field | Model decision card at 09:37 UTC |
+|---|---|
+| 1. Time and status | 09:37 UTC, **proposal; not executed**. |
+| 2. Evidence and uncertainty | R17's approved list names B17/B18; R18 shows B20 changed at 09:24. Account operator and cause unknown. |
+| 3. Chosen action and scope | Revoke only the identified current `desk-a` session; preserve narrow available records if doing so does not delay harm reduction. |
+| 4. Approver and executor | Incident lead and identity owner approve under fictional policy; identity administrator executes only after approval. |
+| 5. Intended effect and side effect | Try to stop edits through that session; legitimate staff may need to reauthenticate and booking work may slow. |
+| 6. Verify, fallback and review | Check a specific identity revocation result, later bounded booking audit and desk impact at 09:45 UTC. If a verified edit continues, seek service-owner approval for a fifteen-minute write pause under R21's stated tolerance. |
+
+R21 does **not** mean the fallback has already been implemented. Before any Chapter 4 branch result is released, a completed-action sentence is unsupported.
 
 ### EX037 — Worked result
 
-A loading page proves only that a page responded in that check. The team still needs to know whether booking data is correct and whether unexplained edits have stopped across an adequate observation range. It also lacks a supported root cause and a tested recovery path. Keep the case open or in monitored restricted status under the organization's policy.
+**Claim:** the booking page loads after a hypothetical approved session revocation. **Limit:** a page response tests availability at one moment; it says nothing by itself about schedule correctness, authorization of edits or the completeness of later audit coverage. **Question 1, booking state:** are B17–B20 consistent with a service-owner-approved target? The service owner authorizes a restricted comparison and owns any correction; R20 says a copy is available but does not supply the row values at 09:37. **Question 2, continued change:** did an approved, sufficiently ingested audit query after the intervention show any new unexplained edit? The application custodian records source, interval, filters and cutoff; R22 is earlier and cannot answer. **Proposed status:** keep the case open with a named review and possible restricted service. R24 says no current record establishes access to another personal-data store, but it cannot close an exposure question by proving absence.
 
 ### EX038 — Worked result
 
-The write pause is reasonable if the unexplained edits could come through more than the single known session, staff can use the manual queue for fifteen minutes, and the service owner approves the cost. Verify that writes actually stop and that queued requests are reconciled. Change course if patron harm grows, the pause fails, or detailed identity evidence points to a narrower intervention with lower operational cost.
+**Pause-first proposal at 09:37 UTC:** assume the observed B19/B20 edits may not be limited to the one current session, and assume front-desk staff can safely record new requests in the manual queue for fifteen minutes. R21 supports the owner's tolerance for that cost, **not** a completed pause. Ask the service owner to approve a named fifteen-minute write restriction; the application operator implements it under that approval. Verify immediately in the approved test scope that staff booking writes are blocked while the manual queue captures requests, then inspect a new bounded audit interval. Review with the owner at 09:52 UTC, account for every queued request against an approved schedule and get explicit sign-off before resuming writes. If the block does not work, patron harm becomes unacceptable, or authorized identity evidence identifies a narrower safe action, the incident lead and service owner should reconsider revocation or a different control. The pause reduces one class of harm while leaving cause and other paths unresolved.
 
 ### Chapter 3 reconciliation lab — worked result
 
@@ -1047,51 +1187,108 @@ The write pause is reasonable if the unexplained edits could come through more t
 
 ### EX039 — Worked result
 
-Incident lead: set priorities and record approvals. Analyst: handle the supplied records and report limits. Service owner: weigh booking disruption and approve a write pause. Recovery lead: design an isolated restore and service check. Communications contact: prepare accurate internal updates and privacy coordination. Scope: reason only from R1–R24, the corresponding fictional branch card and the later P1/C1 and V1 recovery cards; make no real system changes. Combining roles is acceptable when decisions remain explicit.
+| Role | Round A responsibility | Approval or escalation boundary | Verifiable output |
+|---|---|---|---|
+| Incident lead | Set the first decision time and case scope. | Approves classroom record handling; seeks the owner for disruptive service decisions. | `HL-IR-001` decision log with 09:05 checkpoint. |
+| Analyst | Separate R1–R8 observations from hypotheses. | May recommend but cannot independently change a real account or booking service. | Evidence ledger with source IDs, UTC times and missing fields. |
+| Service owner | Explain patron impact and acceptable interruption. | Decides whether a simulated service interruption is tolerable. | Recorded decision and review trigger. |
+| Recovery lead | Plan how to test a backup and booking state. | Needs approval for a contained restore; cannot call R7 a successful restore test. | Test plan with expected data and measured-result fields. |
+| Communications contact | Prepare an accurate internal update. | Escalates privacy or external-notice questions to authorized contacts. | Status draft that states cause and impact are unconfirmed. |
+
+**Scope sentence:** “In this tabletop, read and annotate only the synthetic records released in the current round, role-play approvals, and write artifacts; do not contact a real library, access a real account or change a production service.” Combining human roles is acceptable only if approval and verification remain visible.
 
 ### EX040 — Worked result
 
-“Case `HL-IR-001`; R1 records a `desk-a` sign-in and R3–R4 record booking edits. The affected service is room booking; R5 is a patron report, not proof of compromise. Training may explain some edits but the service owner must confirm the authorized plan. The incident lead will preserve the case note and set a review time.” Four lines with equivalent facts, IDs, uncertainty and an owner question pass.
+1. **Case, time and service:** `HL-IR-001`, opened 09:00 UTC; Harbor Library room booking.
+2. **Observed signals:** R1 at 08:40 records a `desk-a` sign-in; R3 and R4 at 08:43–08:44 record B17/B18 edits; R5 at 08:48 is a patron **report**.
+3. **Assessment and limit:** booking changes warrant review; R6 shows scheduled training but compromise, approval of those edits and full patron impact are unconfirmed.
+4. **Next owner question:** incident lead proposes asking the service/training owner whether B17/B18 were approved and setting a 09:05 decision checkpoint.
+
+The line count and source pointers matter because a receiving analyst must distinguish source events from the first decision. No Round B record or 09:05 approval belongs in this Round A artifact.
 
 ### EX041 — Worked result
 
-One valid six-event timeline is R1 08:40 sign-in, R4 08:44 cancellation, R9 09:03 `B19` edit, R15 09:14 retention notice, R18 09:24 `B20` edit and R21 09:29 write-pause tolerance. The sign-in came before the edits, but this order does not prove that the sign-in was unauthorized or that it caused each edit. Other six-event selections pass when UTC order and limits are clear.
+| ID | UTC source time | Source and observation | Learner release |
+|---|---|---|---|
+| R1 | 08:40 | Identity log: `desk-a` signed in. | Round A, first decision at 09:05. |
+| R4 | 08:44 | Application log: B18 cancelled. | Round A. |
+| R9 | 09:03 | Booking audit: B19 edited. | Round B, learner's 09:20 review. |
+| R15 | 09:14 | Retention notice: detailed records kept 24 hours unless copied. | Round B. |
+| R18 | 09:24 | Booking audit: B20 edited. | Round C, before 09:37 decision. |
+| R21 | 09:29 | Service owner: fifteen-minute staff-write pause is tolerable with a manual queue. | Round C. |
+
+**Ordering:** R1 is earlier than the supplied booking edits. **Limit:** the order does not prove who used the account or that the sign-in caused every edit. R9's event time is earlier than the learner's 09:20 receipt; it is not legitimate evidence for the prior 09:05 decision. R17–R18 cannot be imported into Round B. Other six-event selections pass if they preserve these boundaries.
 
 ### EX042 — Worked result
 
-Training: R6 supports scheduled work, but ask the training owner for the complete approved task list. Unauthorized account use: R9 is unexplained, but ask for approved detailed identity evidence before attributing a user. Display/synchronization problem: R11 is compatible with a display symptom, but compare the authoritative booking state and audit because R9 records an edit. The answer should identify what would distinguish the explanations.
+| Round B explanation | Supplied support | Contrary fact or limit | Discriminating authorized check and weakening result |
+|---|---|---|---|
+| Approved training explains all edits | R6 scheduled training; R10 names B17/B18 tasks. | R9 records B19 changed and R10 does not name B19. | Training owner checks complete approved task list and dated addenda; a confirmed complete list excluding B19 weakens the *all-edits* explanation. |
+| `desk-a` was used outside its approved purpose | R9 shows B19 edited under the account; R12 reports staff did not recall it. | R13 has no device detail; recollection does not prove identity. | Incident and identity owners authorize a narrow session check; a valid documented B19 task with consistent context would weaken this hypothesis. |
+| Patron display differs from authoritative state | R11 reports a wrong-looking booking time. | R9 is an application audit edit; a display-only fault may not explain it. | Service owner compares patron view, approved target and current booking state for B19; matching views of an incorrect underlying value weaken a *display-only* explanation. |
+
+All three remain live at 09:20. R17's later task-list statement and R18's B20 edit are deliberately excluded. A hypothesis table should say what observation would change it, not merely repeat its label.
 
 ### EX043 — Worked result
 
-“Before the 24-hour deadline in R15, the incident lead authorizes the named analyst to preserve booking-audit rows for `B17`–`B20` and the relevant identity summary covering 08:30–09:30 UTC. Record source, export method and collection time; keep an unmodified authorized copy in restricted case storage and analyze a separate working copy. Limit patron details to the fields needed to test the booking question.” Do not claim an export already occurred.
+**Round B preservation request, status: requested.** The incident lead asks the application custodian to preserve booking-audit rows for B17–B19 in a bounded 08:30–09:20 UTC event interval, retaining booking ID, field change, account label, original UTC time and any source metadata needed to interpret the rows. B20 is **not yet known** at Round B, so it does not belong in this initial request. The lead asks the identity administrator for a separately authorized narrow `desk-a` session summary where needed. The named collector records the actual query, source, collection time, approved copy location and access list; only necessary fields enter the restricted case storage, and analysis uses a working copy. R15's 24-hour notice makes the request urgent, but the custodian must confirm what starts the deletion clock and the last safe collection time. Until the copy exists, neither a digest nor a completed export can be claimed. A later Round C request may expand to B20 under a new scope and approval.
 
 ### EX044 — Worked result
 
-One acceptable choice is to seek incident-lead and identity-owner approval to revoke the current session after narrow record preservation. R17–R18 show edits outside the known training tasks; the goal is to stop further changes from that session. Staff reauthentication is a side effect. The service-owner-approved write pause under R21 is a fallback if edits continue; review at 09:45 UTC. Choosing the pause first also passes if its manual-queue cost and verification are addressed.
+**Round C decision card, 09:37 UTC; status: proposed.** R17's approved list names B17/B18 only and R18 records a later B20 edit under `desk-a`; account operator and cause remain unknown. The analyst recommends revoking only the identified current `desk-a` session after noting which narrow audit and session records can be preserved without prolonging harm. Fictional incident lead and identity owner approve the proposed identity action; the identity administrator would execute it. Intended benefit: stop edits through that one session. Uncovered paths: other sessions, accounts or an application fault. Service cost: staff reauthentication and possible desk delay. If a verified unexplained edit continues, ask the service owner to approve a fifteen-minute staff-write pause; R21 records tolerance, not execution. Verify actual revocation, a later bounded booking query and front-desk impact at 09:45 UTC. A pause-first choice also passes if it names an operator, queue and reversal check. Neither branch card has been supplied at the decision point.
 
 ### EX045 — Worked result
 
-Branch S supports that the specified session was revoked and that no later edit appears in the narrow queried range. It does not establish the user behind the prior edits or rule out another account, session or unqueried period. The next check could compare the approved booking state with `B19` and inspect the authorized detailed identity record.
+| Claim after Branch S, before P1/C1 and V1 | Supported? | Basis and limit |
+|---|---|---|
+| The specified current `desk-a` session was revoked at 09:45. | Yes, as a **fictional branch report**. | Identity administrator's Branch S card; it does not cover every session. |
+| The branch's narrow booking query showed no later matching edit. | Yes, within the query's **unspecified range**. | Branch S card; exact source, filter, ingestion cutoff and later period still need recording. |
+| The human behind the earlier edits was identified. | No. | Neither the branch action nor R1–R24 identifies the human. |
+| All booking values are correct and no other edit path exists. | No. | Branch S itself says B19 remains incorrect; another account, session or source could still matter. |
+
+**Next check:** the service owner authorizes a restricted comparison of B19's current state with an approved target, while the application custodian documents the query range and retention limit. Do not borrow the later P1/C1 rows to answer this pre-card review. No supported claim of eradication follows from a narrow quiet query.
 
 ### EX046 — Worked result
 
-The manual queue accumulates two requests and may delay patrons or create reconciliation work. Resume writes only after the service owner has reviewed booking correctness, confirmed the pause worked, and approved a monitored return. Keep the restriction if unexplained edits resume, the booking state is still inconsistent or the queue cannot be reconciled safely.
+**Branch P queue-and-return note at 09:45 UTC:** the fictional service owner reports staff writes paused for fifteen minutes and a manual queue with **two pending requests**. The front-desk lead keeps request IDs, received times and desired bookings in restricted exercise notes; neither request is marked fulfilled. The application operator verifies the write block in its approved scope, and the analyst records the pause interval and audit query bounds. Before the planned 10:00 review, the service owner checks booking correctness against an approved target, assigns an operator to reconcile each queued request, and decides whether to resume writes with monitoring. A verified unexplained edit during the pause, inability to reconcile the queue or an unresolved booking-state mismatch keeps the restriction in place and returns the issue to the incident lead. The branch's no-write observation within the pause interval does not prove the account is safe after reopening. P1/C1 and V1 have not yet been released for this answer.
 
 ### EX047 — Worked result
 
-The four checks are: (1) the service owner approves B19 and B20's target values from P1 and verifies a **new** production comparison after correction; (2) an authorized staff test role can make a synthetic booking in an approved test scope; (3) the tested unauthorized role cannot edit it; and (4) the audit names the actor and UTC time for the authorized test. P1/C1 shows that check 1 is not yet met; V1 supports checks 2 and 3 only in its isolated-copy scope and **fails** check 4 because the actor is blank. Therefore the supplied cards do not justify ending the restriction unconditionally. For either branch, define who signs off, how long to monitor and what result would trigger rollback.
+| Observable acceptance item | Expected result | Supplied result after later cards | Owner and next step |
+|---|---|---|---|
+| Booking correctness | A **new** restricted comparison after approved correction matches P1 for B17–B20. | **Fail/pending:** C1 matches B17/B18, but B19 and B20 differ from P1; no production correction result exists. | Service owner approves B19/B20 correction; authorized operator acts; analyst checks a new copy. |
+| Authorized access | A permitted staff role creates a synthetic test booking in approved scope. | **Limited pass:** V1 reports this in an isolated copy only. | Identity and service owners define an acceptable later production-scope test. |
+| Denied unauthorized access | A tested unauthorized role cannot edit the synthetic booking. | **Limited pass:** V1 reports denial for that one synthetic identity and path. | Identity owner verifies the intended access policy and other relevant paths. |
+| Audit visibility | Authorized test change has correct UTC time **and actor**. | **Fail:** V1 has UTC time but blank actor. | Application/audit owner repairs and retests attribution. |
+
+**Provisional service state:** restricted or explicitly approved limited operation only, with owner and next review recorded; the cards do not support unconditional release. An unexplained new booking edit or unreconciled manual-queue item is a rollback/escalation trigger. The chosen branch changes the operational cost, not the failed P1/C1 and V1 evidence.
 
 ### EX048 — Worked result
 
-“At 09:45 UTC we are reviewing unexplained changes to several room bookings and have preserved the available case records under the incident lead's fictional authorization. The selected temporary restriction is in place, but the cause and full impact remain under review; the service owner and response lead will reassess booking correctness and access controls at the next checkpoint.” Substitute the chosen branch explicitly in an actual tabletop submission.
+**Branch S, exactly two sentences:** “At 09:45 UTC, Harbor Library is reviewing unexplained room-booking edits in R9 and R18, and the identity administrator reports that the specified `desk-a` session was revoked under the fictional approval; the staff member must reauthenticate. The incident lead and service owner will review booking correctness and the bounded audit at the next checkpoint, while the cause and wider impact remain unconfirmed.”
+
+**Branch P, exactly two sentences:** “At 09:45 UTC, Harbor Library is reviewing unexplained room-booking edits in R9 and R18, and the service owner reports a fifteen-minute staff-write pause with two requests waiting in a manual queue. The incident lead and service owner will check booking state and reconcile the queue before deciding whether to resume writes, while the cause and wider impact remain unconfirmed.”
+
+Neither update uses P1/C1 or V1, which the facilitator reveals later, or claims a completed restore. A real external update would require its own authorized review.
 
 ### EX049 — Worked result
 
-“Owner: booking service manager. Due: within 30 days of the exercise. Gap: the service owner and backup-restore evidence were not immediately available. Action: document the primary and alternate owners and run a tabletop approval drill plus an isolated restore check. Verify: both owners respond within the agreed period and the recovery lead records an actual pass/fail result with booking-state comparisons.” One narrower ticket also passes if its check is observable.
+**Ticket IR-IMPROVE-01.** **Gap and source:** V1's isolated-copy audit record contains a UTC time but a blank actor; this prevents attribution for the tested authorized change. **Owner:** application/audit owner, with incident lead accepting the result. **Due:** within 30 days of the tabletop. **Change:** trace where the actor field is lost in the synthetic test path, correct the audit mapping and document the field requirement. **Interim control:** keep the case in an approved restricted or monitored mode, with named reviewer and bounded change comparisons until the test passes. **Verification:** repeat a controlled authorized edit and a denied unauthorized edit; pass only if the authorized change's audit row includes the expected actor and UTC time, the denial is observed, and the incident lead records the evidence and scope. Correcting B19/B20 addresses particular booking values; it does **not** repair this program-level attribution defect. A different single-gap ticket for R23's stale restore test passes if it includes a dated isolated restore, measured duration, copy timestamp, booking comparison and named acceptance.
 
 ### EX050 — Worked result
 
-One acceptable handoff names Branch S, cites R17–R21 and the branch result, states that the fictional lead and identity owner approved revocation, and reports B19/B20's P1/C1 mismatches and V1's missing audit actor as later findings. Root cause and possible additional access remain unresolved. The service owner owns booking correction and acceptance; the application/audit owner owns attribution repair; the response lead sets the next checkpoint and escalation if an unexplained edit recurs. The handoff does not claim a completed restore or unrestricted service. Apply the six-output rubric: for example, timeline 2, hypotheses 2, action 2, recovery 1, status 2, improvement 1 = 10/12, with recovery as the first revision target. Other scores pass only when justified against the rubric and no approval or evidence-scope output scores zero.
+**Handoff paragraph, Branch S:** “`HL-IR-001` concerns Harbor Library room booking: R17 limits the approved training list to B17/B18, R18 records B20 changed at 09:24, and the fictional incident lead and identity owner approved the current-session revocation reported by Branch S at 09:45. The branch's narrow query showed no later matching edit in its range, but did not identify the prior operator or rule out another path. Later P1/C1 cards show B19/B20 still differ from the service-owner target, and V1's isolated test has a blank audit actor despite its limited access successes; no production correction or backup restore result is supplied. The service owner owns booking correction, queue or access acceptance and a documented restricted-service choice; the application/audit owner owns actor-field repair; the response lead reconvenes at the next named checkpoint, sooner if a verified unexplained edit appears, and records approval before any rollback or further restriction.”
+
+| Six-output self-score | Score / 2 | Reason or revision |
+|---|---:|---|
+| Timeline | 2 | IDs, UTC source times and release rounds retained. |
+| Hypotheses | 2 | Training and outside-plan use compared with a missing identity discriminator. |
+| Action record | 2 | Fictional approvers, narrow scope, effect, cost and fallback stated. |
+| Recovery plan | 1 | P1/C1 and V1 failures identified; add a copy ID, measured restore time and approval for a later isolated test. |
+| Status message | 2 | Branch action and uncertainty reported without blame. |
+| Improvement ticket | 1 | Audit repair owner and test named; add a specific due date and interim check if absent. |
+
+**Total:** 10/12 for this *example*; recovery plan is the first artifact to revise. The self-score does not turn an untested restore into a pass. A different branch can earn the same score when its queue, approvals and return condition are handled explicitly. A submission with zero for approval or evidence scope fails the section 4.5 gate regardless of its total.
 
 ### Chapter 4 tabletop — six-artifact model submission
 

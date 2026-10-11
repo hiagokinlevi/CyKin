@@ -32,4 +32,4 @@ The README bookshelf is generated locally from the same data as this table whene
 
 **Total:** 8 / 4,186 planned English chapters have draft teaching (0.2%).
 
-These percentages update when the maintainer runs the private local generator before publishing manuscript changes. They are not live GitHub computations. [Editorial status and verified book count](STRUCTURE_REVIEW.md).
+See [all 207 course percentages](COURSE_WRITING_PROGRESS.md) for the level-by-level view. These percentages update when the maintainer runs the private local generator before publishing manuscript changes. They are not live GitHub computations. [Editorial status and verified book count](STRUCTURE_REVIEW.md).
