@@ -2,7 +2,7 @@
 
 **One book for this course and language.** 4 curricular subjects are its chapters. Duration: 1 month; planned effort: approximately 80 hours. Audience: New learners. Entry knowledge: No prior security role; basic digital literacy. Intended outcome: recognize and explain the core risks; complete one guided task in incident response and cyber resilience.
 
-**Editorial state:** draft manuscript exists; page count and review pending. English reference edition.
+**Editorial state:** draft manuscript exists; release A4 validation and review pending. English reference edition.
 
 [Home](../../../../../README.md) · [Course home](../../README.md) · [Edition](../README.md) · [Chapter index](../SUBJECTS.md) · [Course skill](../../skill/SKILL.md)
 
@@ -69,7 +69,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Depth and method:** At rapid course level, learners will follow a contained worked example. Use a guided case record to distinguish observations, assumptions and the next safe action.
 
-**Worked example:** The fictional booking service with an affected staff credential and a verified backup.
+**Worked example:** The fictional booking service with suspicious staff-account activity and a successful backup job but no documented recent restore test.
 
 **Practice and exercises:** Compare three bounded actions, name each decision owner and state the evidence needed before restoration. The planned allocation is 12 exercises; authored tasks and worked answers remain a separate completion gate.
 
@@ -81,15 +81,15 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Stage 4; 80 planned A4 pages; 12 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-04)
 
-**Teaching purpose and relevance:** Integrate readiness, triage and recovery into one controlled case and show how learning is recorded after service restoration.
+**Teaching purpose and relevance:** Integrate readiness, triage and recovery into one controlled case and show how learning is recorded without claiming an untested return to service.
 
-**Concepts and techniques:** Tabletop inject; decision log; stakeholder communication; outcome measure; corrective action.
+**Concepts and techniques:** Tabletop inject; decision log; stakeholder communication; measurement contract; after-action report; corrective-action closure.
 
 **Depth and method:** At rapid course level, learners will follow a contained worked example. Use a guided case record to distinguish observations, assumptions and the next safe action.
 
-**Worked example:** A synthetic Harbor Library scenario with staged new evidence and a service-owner constraint.
+**Worked example:** A synthetic Harbor Library scenario with staged evidence, service-owner constraints and an optional replay in which the approver is unavailable.
 
-**Practice and exercises:** Complete a guided tabletop, submit a case record and assess actions against a simple after-action rubric. The planned allocation is 12 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Complete a guided tabletop, submit a six-artifact case record, compare exercise findings with technical tests and draft an evidence-linked improvement plan. The planned allocation is 12 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 03 and prepares the worked-answer appendix and final assessment. This is an editorial brief, not a completed lesson.
 
