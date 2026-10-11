@@ -13,15 +13,22 @@ Reviewed 11 October 2026. [Project introduction](README.md) · [academic area ma
 | English curricular subjects | 4,186 | One subject is one planned chapter within its course's book |
 | Course AI skills | 207 | One skill per area-and-level course; no separate subject skills |
 | Book chapter summaries across nine languages | 37,674 | Editorial summaries; other languages still contain English working outlines |
+| Individually tailored English chapter briefs | 34 of 4,186 (0.81%) | Four rapid, twelve professional and eighteen technical Incident Response chapters; the other 4,152 are template-based working summaries |
 | Revision-pinned source playbook links | 14 | Supplementary references in matching area playbook indexes |
 | Authored English manuscripts | 3 drafts | Incident Response rapid: four initial chapters and 50 exercises; Cybersecurity rapid: three chapters and 15; Security Governance rapid: one chapter and 5 |
 | Complete verified books | 0 | No 300-page A4 volume and complete 50-exercise answer set has passed review |
+
+## Completion measure
+
+The folder and plan scaffold covers **207 of 207 courses and 1,863 of 1,863 planned editions (100% of the current catalog's structural coverage)**. This is a coverage measure, not an educational-completion score. Every edition still requires authored teaching, chapter exercises and worked answers, source and technical review, and an A4 page check. **Completed editions: 0 of 1,863 (0%); 1,863 of 1,863 (100%) remain to pass the book gate.** Three English manuscripts are drafts and do not count as completed books.
+
+At the chapter-planning level, **34 of 4,186 English briefs (0.81%)** have been individually tailored to their subject. **4,152 (99.19%)** English briefs remain template-based and need editorial refinement before they can be treated as complete chapter designs. Non-English outlines are English working copies; no translated edition has been completed. A single percentage for all authoring work would be misleading until completed pages, exercises and reviews are measured consistently.
 
 The 23-area curriculum consolidates the earlier, overly fragmented specialization scaffold. Its generated folders were removed from the public reading tree. The two previously authored manuscripts were integrated into the new Cybersecurity and Security Governance course folders; no authored chapter was discarded. The earlier catalog and playbook mapping are retained in the private construction workspace for migration traceability. Fourteen linked source playbooks were reassigned to the broader areas. The [public area map](AREA_MAP.md) distinguishes this project taxonomy from official frameworks and cites the ACM/IEEE/AIS/IFIP curricular guidance, NIST and ENISA.
 
 ## What a reader can use now
 
-All nine [Incident Response course levels](levels/rapid-1-month/incident-response-resilience/README.md) now have distinct subject sequences, with shared foundations retained where appropriate. The [rapid book draft](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md) has initial teaching for all four subjects, 50 exercises and worked results. Its [subject index](levels/rapid-1-month/incident-response-resilience/en/SUBJECTS.md) links the course skill and marks all four chapters as drafts. The rapid lessons still need substantial expansion and technical review; the other eight books need authored chapters.
+All nine [Incident Response course levels](levels/rapid-1-month/incident-response-resilience/README.md) now have distinct subject sequences, with shared foundations retained where appropriate. The [rapid book draft](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md) has initial teaching for all four subjects, 50 exercises and worked results. Its [subject index](levels/rapid-1-month/incident-response-resilience/en/SUBJECTS.md) links the course skill and marks all four chapters as drafts. The four rapid, twelve professional and eighteen technical book-plan summaries now specify distinct purpose, concepts, synthetic example, activity and learning sequence. The rapid lessons still need substantial expansion and technical review; the other eight books need authored chapters.
 
 The [Cybersecurity rapid draft](levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md) contains three chapters and 15 worked exercises. The [Security Governance rapid draft](levels/rapid-1-month/security-governance-risk-compliance/en/book/MANUSCRIPT.md) contains one chapter and five. These are available for study as drafts and will be edited in the English production cycle.
 
@@ -36,9 +43,9 @@ Original maintainer-owned text is dedicated under [CC0 1.0](LICENSE), subject to
 | Step | State | Next evidence |
 |---|---|---|
 | Review existing course, project and playbook material | Sample reviewed; migration recorded | Continue per-source technical and rights checks before adaptation |
-| Consolidate broad academic areas | Structured: 23 areas across five schools | Specialist check of boundaries and ACM/NICE coverage |
+| Consolidate broad academic areas | Structured: 23 areas across five schools; each has a distinct scope, boundary, competencies and reuse decision | Specialist check of boundaries and ACM/NICE coverage |
 | Create all language, course and book-plan trees | Structured | Keep links and counts verified on each change |
-| Define course subjects and one skill per course | English structure generated | Refine subject grids and skill guidance during authorship |
+| Define course subjects and one skill per course | English structure generated; 34 Incident Response chapter briefs tailored | Refine the remaining 4,152 English briefs, subject grids and skill guidance during authorship |
 | Author Incident Response in English | Rapid four-chapter draft and 50 exercises | Expand and validate the rapid book to at least 300 A4 pages, then author professional through doctoral levels |
 | Author other English areas | Two earlier drafts retained | Resume after Incident Response priority, then cover all 207 courses |
 | Review and edit the entire English set | Pending | Complete manuscripts and specialist reviews first |

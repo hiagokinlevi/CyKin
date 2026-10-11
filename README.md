@@ -45,6 +45,8 @@ levels/<level>/<area>/
 
 **Current structure:** 9 levels × 23 areas = **207 courses and course skills**. With 9 language editions, **1,863 books are planned**. The English grades contain **4,186 subject-chapters**. These are plans, not finished books. Three English manuscripts are public drafts; **zero books have passed the complete-book gate**.
 
+**Progress, measured separately:** the folders and course/book plans cover 100% of the current 23-area catalog. Only 34 of 4,186 English chapter briefs have a manually tailored teaching outline so far; the other summaries are template-based working plans. Completed book editions: **0 of 1,863 (0%)**. All 1,863 editions still need to pass the publication gate; see the [progress review](STRUCTURE_REVIEW.md).
+
 A finished book must have **at least 300 verified A4 pages** and **50 substantive exercises with worked results**, plus technical, source, rights, language and accessibility review. The [book standard](BOOK_STANDARD.md) explains the gate.
 
 ## 1. Choose a formation level

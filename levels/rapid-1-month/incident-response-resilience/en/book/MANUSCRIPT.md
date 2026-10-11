@@ -7,7 +7,7 @@
 - Authorship and editorial responsibility: [hiagokinlevi](https://github.com/hiagokinlevi)
 - Rights: original maintainer-owned text is dedicated under [CC0 1.0](../../../../../LICENSE); cited sources retain their own rights.
 
-[Course overview](../README.md) · [Four-subject grade](../SUBJECTS.md) · [Subject skills](../SUBJECTS.md) · [Book plan](PLAN.md) · [Practice playbooks](../../../../../playbooks/incident-response-resilience/README.md)
+[Course overview](../README.md) · [Four-subject chapter index](../SUBJECTS.md) · [Course skill](../../skill/SKILL.md) · [Book plan](PLAN.md) · [Practice playbooks](../../../../../playbooks/incident-response-resilience/README.md)
 
 ## How to study this draft
 
