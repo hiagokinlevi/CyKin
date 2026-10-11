@@ -9,6 +9,8 @@
 
 [Course overview](../README.md) · [Four-subject chapter index](../SUBJECTS.md) · [Course skill](../../skill/SKILL.md) · [Book plan](PLAN.md) · [Practice playbooks](../../../../../playbooks/incident-response-resilience/README.md)
 
+[Chapter 1](#ch-01) · [Chapter 2](#ch-02) · [Chapter 3](#ch-03) · [Chapter 4](#ch-04) · [Worked results](#answers)
+
 ## How to study this draft
 
 Read a chapter's explanation and worked case before looking at its exercises. Record observations, assumptions, decisions and missing information separately. Use only the fictional systems and records provided here, or an environment you own and are authorized to test. The worked results at the end illustrate acceptable reasoning; an answer that identifies different defensible assumptions may also be valid.
@@ -262,6 +264,7 @@ By the end of this chapter, a learner should be able to:
 4. Prepare a collection note that identifies the source, collector, authority, time and integrity check for a synthetic record.
 5. Explain why a matching hash helps detect change to a copy but cannot prove that the original source was truthful.
 6. Produce a handoff that another analyst can reproduce from the same supplied records.
+7. Normalize a supplied fixed-offset timestamp to UTC and distinguish an event's time from its discovery time and a query's coverage.
 
 ### 2.1 An alert is a question to investigate
 
@@ -372,67 +375,103 @@ The byte count is a useful reproducibility check, but equal length is not equal 
 
 **Expected submission:** the two byte counts and digests, one sentence explaining why the hashes differ, a collection note for `E1.txt`, and two explicit limits on the integrity claim. **Rubric:** one point each for correct byte/digest comparison, correctly identified modification, complete source-and-authority note, and limits that distinguish copy integrity from source truth. A score of 4/4 means the classroom task is reproducible, not that a real forensic process has been completed. The exact expected output and a model note are in the final worked-results section after EX026.
 
-### 2.6 Handoff and common errors
+### 2.6 Temporal coverage lab: what the analyst knew, and when
+
+A useful timeline has at least two clocks: **event time**, as recorded by a source, and **discovery time**, when the responder received or recognized that record. A third time, **collection time**, marks when a copy was created and should be recorded separately. A query also has a **coverage interval**: the source and filters searched, the beginning and end of the search, and any ingestion delay or missing fields. These fields answer different questions. Sorting on one timestamp without naming which clock it represents can produce a fluent but false case history.
+
+The Harbor Library example makes this visible. The learner's 09:05 decision used R1–R8. R9 records a 09:03 edit but is released to the learner with R9–R16 at the 09:20 review. The later discovery does **not** move the edit forward in time, and the earlier event time does **not** make it legitimate evidence for the 09:05 decision. An analyst should preserve both times so a reviewer can reconstruct what was actually knowable at each checkpoint. This is an original classroom workflow consistent with the source-aware investigation described in [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final); that older guide does not prescribe this book's specific fixture or scoring rule.
+
+**Exercise-only card T1 — illustrative query metadata.** Imagine that a custodian now supplies the missing scope for R14: source `application-audit`; booking-edit events with event times **at or after 09:00 and before 09:12 UTC**; account filter `desk-a`; query run at 09:12 UTC. T1 is **not** one of R1–R16 and must not be used to rewrite the 09:05 decision or to pretend the original R14 supplied its own start and end. Even with T1, the statement “no further edit after R9 in this query” covers only that source, account filter and interval. It says nothing about another account, a delayed record or an edit at 09:13. Without T1, R14's exact interval remains unknown.
+
+The following optional lab runs entirely in memory with Python 3's standard library. It creates no files, sends no network requests and uses only fictional timestamps. R10's `05:04-04:00` text is an **exercise rendering** of its existing 09:04 UTC value, not a new event or a claim about any real location's timezone rules. The offset is explicit; the script does not guess one.
+
+```python
+from datetime import datetime, timezone
+
+rows = [
+    ("R9", "2026-10-11T09:03:00+00:00", "2026-10-11T09:20:00+00:00"),
+    ("R10", "2026-10-11T05:04:00-04:00", "2026-10-11T09:20:00+00:00"),
+    ("R15", "2026-10-11T09:14:00+00:00", "2026-10-11T09:20:00+00:00"),
+]
+
+for record_id, event_text, seen_text in rows:
+    event = datetime.fromisoformat(event_text).astimezone(timezone.utc)
+    seen = datetime.fromisoformat(seen_text).astimezone(timezone.utc)
+    delay = int((seen - event).total_seconds() // 60)
+    print(f"{record_id} event={event:%H:%M} UTC seen={seen:%H:%M} UTC delay={delay} min")
+```
+
+**Procedure:** (1) Before running it, convert R10's offset time by hand and predict the three delays. (2) Run the code in an authorized local scratch environment, or calculate the outputs from the shown values if Python is unavailable. (3) Make a three-row table with record ID, original timestamp including offset, normalized UTC event time, discovery time, delay and whether the record was available at 09:05. (4) Draw the coverage interval from T1 as `09:00 ≤ event < 09:12 UTC` and put R9, the T1 end and the 09:20 review on it. (5) Write two sentences: the strongest conclusion supported by R14 with T1, and the next *authorized* check needed to assess activity after 09:12. Keep the R15 retention notice separate from any assumed deletion instant.
+
+**Expected evidence:** R9 is 09:03 UTC and seen 17 minutes later; R10 is 09:04 UTC and seen 16 minutes later; R15 is 09:14 UTC and seen six minutes later. None was in the learner's R1–R8 snapshot at 09:05. With T1, R14 supports only that this narrow query showed no further matching edit before 09:12. The unqueried period after 09:12 is an **evidence gap**, not a verified quiet period. The learner should request a new bounded query or an approved source comparison, record its filter and end time, and check whether logging and ingestion were working. R15 says detailed records are deleted after 24 hours unless copied; it does not give enough deletion-policy detail here to calculate the precise expiry of R9 from its event timestamp alone.
+
+**Assessment rubric:** one point each for correct R10 normalization, three correct event-to-discovery delays, the 09:05 availability boundary, a T1 coverage statement that excludes post-09:12 activity, and a narrow authorized follow-up with retention uncertainty. Five points show the classroom reasoning is reproducible; they do not certify a real evidence acquisition or establish who edited B19. The printed output and a model coverage statement appear after the Chapter 2 synthetic-extract result in the final appendix.
+
+### 2.7 Handoff and common errors
 
 A useful handoff lets a second analyst reconstruct the decision without guessing: case ID; current time and timezone; affected service; observed facts with record IDs; live hypotheses; confidence and limits; known service impact; actions completed under which authority; evidence locations; next question; decision owner; review deadline. It should also separate the source's event time from the time the analyst learned of the event.
 
-Common errors are copying only an alert title, silently converting timezones, treating a staff recollection as proof, relying on a log summary that omits key fields, hashing a file without recording which bytes were hashed, or using a high severity label without naming harm and urgency. A careful analyst can be concise: cite the observation, state the limit and identify the next decision.
+Common errors are copying only an alert title, silently converting timezones, treating a staff recollection as proof, relying on a log summary that omits key fields or query boundaries, hashing a file without recording which bytes were hashed, or using a high severity label without naming harm and urgency. A careful analyst can be concise: cite the observation, state the limit and identify the next decision. The T1 lab also illustrates a subtle mistake: “I discovered R9 at 09:20” does not mean “R9 occurred at 09:20”; conversely, “R9 occurred at 09:03” does not mean it was available for a 09:05 decision.
 
 ### Chapter 2 exercises
 
-Use only records R1–R16 and the fictional authority described here. For open answers, compare your reasoning with the worked results at the end of this draft.
+Use only records R1–R16 and the fictional authority described here; the exercise-only T1 card is available **only** where a question names it. No answer may claim to have queried a real service, received an unprovided identity detail, proved compromise or completed an export that the learner did not make. For each exercise, cite the relevant record IDs, state the observation before the inference, and give a bounded next action or test. The named output is the artifact to submit; the worked results at the end show acceptable reasoning.
+
+**Common procedure and expected evidence:** (1) Write the exercise ID, case ID and evidence boundary at the top of the response. (2) Read the named input records and copy their IDs and relevant UTC times into the requested table or note. (3) Complete that exercise's output fields, marking unknown facts and unperformed actions rather than filling them with guesses. (4) Add the decision owner or custodian for any proposed collection or service change and a sentence limiting the conclusion. (5) Compare the resulting artifact with its matching worked result in the final appendix. Submit the named table or note with its source pointers and limits; a bare multiple-choice label or unsupported conclusion is not sufficient evidence of learning. No real account, patron record or production log is needed.
+
+Score each numbered exercise **0** when its artifact is absent or asserts an unsupported fact, **1** when it addresses the question but omits a required evidence, scope or limitation field, and **2** when the stated fields are present, reproducible and appropriately authorized. A false claim about who controlled `desk-a`, a fabricated collection time or an invented log query must be corrected regardless of the other fields. This common rubric applies to all thirteen questions; a local instruction below adds required fields for a score of 2.
 
 #### EX014 — Triage question
 
-Turn the label “suspicious booking edit” into two answerable questions. For each, name a record or owner that could help answer it.
+**Objective:** turn a detector label into testable questions. **Inputs:** R9–R16 and the Chapter 1 service map. **Output:** a two-row table with question, relevant supplied record, authorized owner or source to ask next, and an answer that would change triage. Begin with the label “suspicious booking edit” and avoid using the label as evidence. A score of 2 requires two different discriminating questions and a bounded source for each.
 
 #### EX015 — Hypothesis table
 
-For H1, H2 and H3, identify one supporting record, one limitation or contradiction, and one narrow next check. You may state that a record is weak support.
+**Objective:** keep competing explanations live. **Inputs:** H1–H3 from section 2.1 and R1–R16. **Output:** three rows, each with a supporting record, a contradiction or limit, a narrow next authorized check and what result would weaken that hypothesis. You may state that a record is weak support. A score of 2 requires at least one check that could genuinely discriminate between explanations rather than simply restating the same log.
 
 #### EX016 — Priority without false certainty
 
-Write a provisional priority statement for 09:20 UTC that separates potential harm, time sensitivity and confidence. Include a review trigger.
+**Objective:** set urgency without inventing a severity fact. **Inputs:** R9–R16 at the 09:20 discovery point. **Output:** a short decision note with separate fields for potential patron harm, retention or ongoing-activity urgency, confidence in the leading hypothesis, provisional priority, decision owner and an observable review trigger. A score of 2 requires a reason for the priority and a deadline or event, not merely a color or number.
 
 #### EX017 — What the summary cannot prove
 
-Explain why R13 does not establish that the `desk-a` session came from the expected staff device and why R14 does not prove that no later edit occurred.
+**Objective:** test the limits of negative evidence. **Inputs:** R13, R14 and, for this question only, the optional T1 metadata. **Output:** two short claim/limit pairs and one proposed follow-up query. First assess R14 *without* T1; then state exactly what T1 adds and what it still cannot cover after 09:12. Explain why R13 does not establish that the `desk-a` session came from the expected staff device. A score of 2 distinguishes missing device fields from a negative device finding and names the query's filter and interval.
 
 #### EX018 — Retention decision
 
-R15 announces a 24-hour deletion period for detailed audit records. List three facts the incident lead should know before approving a narrow export and explain why the export may need to happen before the root cause is known.
+**Objective:** prepare a proportionate preservation decision. **Inputs:** R15, R9 and the collection-note fields in section 2.3. **Output:** a three-row request to the custodian stating source and event range, deletion-policy anchor or actual deadline, and collector/authority/storage scope; add a sentence explaining why preservation may precede root-cause knowledge. Do not calculate a precise expiry merely by adding 24 hours to R9's timestamp. A score of 2 identifies both the time-sensitive risk and the privacy boundary.
 
 #### EX019 — Collection note
 
-Draft a collection note for synthetic item `E1`: the Chapter 2 booking-audit rows R9 and R14. Include source, range, collector, authority, collection time, copy location, transformation and limitation. A made-up digest is **not** required.
+**Objective:** make an exercise extract reviewable. **Inputs:** the E1 fixture in section 2.5 and R9/R14. **Output:** a collection-note table with case/item ID, source and event range, collector, authority, actual local collection time *if a file was created*, copy location, transformation and limitation. If no file was created, label the note **planned** and leave collection time and digest **not applicable**; do not pretend an export occurred. A score of 2 identifies E1 as a synthetic transcription, distinguishes original book text from the working file and records access scope. A made-up digest is not required.
 
 #### EX020 — Hash claim
 
-A learner hashes `E1.txt` twice and gets the same SHA-256 value. State two conclusions this supports and three conclusions it does not support.
+**Objective:** bound an integrity claim. **Inputs:** the named E1 bytes, the two digest checks and section 2.5. **Output:** a five-row claim table: two statements the comparison supports and three it does not, each with a one-sentence reason. Specify which file and times were checked rather than saying “the evidence is authentic.” A score of 2 distinguishes copy consistency from source truth, completeness and collection authority.
 
 #### EX021 — Time ordering
 
-Order R9, R10, R12, R15 and R16 by their stated UTC times. Identify one reason that this order alone cannot establish the cause of the `B19` edit.
+**Objective:** separate event order from causal inference. **Inputs:** R9, R10, R12, R15 and R16; use T1 only for the optional final sentence. **Output:** five ordered rows with ID, UTC event time, source and one uncertainty about cause. Mark that R9–R16 reached the learner at 09:20 despite earlier event times. Optionally state which interval T1 leaves uncovered. A score of 2 preserves event/discovery separation and does not treat temporal precedence as authorization or attribution.
 
 #### EX022 — Handoff
 
-Write a five-sentence handoff for a second analyst at 09:20 UTC. It must include evidence IDs, a live hypothesis, one uncertainty, authorized next action and the next review time.
+**Objective:** allow a second analyst to continue without guessing. **Inputs:** the Round B snapshot R1–R16 and the fictional approval path. **Output:** a five-sentence handoff at 09:20 UTC that includes case ID and service, at least two evidence IDs, a live hypothesis and alternative, one uncertainty, an authorized next action, the custodian or owner, and the 09:35 review or an observable earlier trigger. A score of 2 distinguishes a request or proposal from a completed action.
 
 #### EX023 — Impact check
 
-Specify a narrow, authorized impact check that could determine whether other bookings besides `B19` were affected. Name the owner, expected output and one privacy limit.
+**Objective:** size possible service harm without exporting unrelated patron data. **Inputs:** R9, R11, R14–R16 and the service map. **Output:** a short query request naming approver, custodian, booking identifiers or short event range, necessary fields, expected result table and privacy/access limit. The table should distinguish an audit edit, an owner-approved state and an unresolved mismatch. A score of 2 does not claim a completed count or that R14 covers the whole period.
 
 #### EX024 — Escalation threshold
 
-Choose two new observations that would justify a faster containment decision and explain how each changes either harm or urgency. Do not claim they have happened in the supplied case.
+**Objective:** define a testable escalation rule. **Inputs:** the 09:20 case state and R15's retention notice. **Output:** two **hypothetical** observation/response pairs, each naming who verifies the new signal, why it raises harm or urgency, who decides on containment and when they reconvene. Do not claim either event happened. A score of 2 uses observable triggers rather than “if things get worse.”
 
 #### EX025 — Correct a faulty note
 
-Rewrite this sentence so that it is evidence-based: “The attacker stole `desk-a`, edited every booking and exfiltrated the patron database; R13 proves it.”
+**Objective:** repair unsupported attribution and scope. **Inputs:** R9, R11, R13 and R8. **Output:** a replacement of at most three sentences with one observed booking fact, one evidence limit and one next authorized check. Then underline or list the three unsupported claims removed from the faulty note. A score of 2 does not equate R8's missing destination detail with proof of no transfer either.
 
 #### EX026 — Reproducible review
 
-Another learner claims that H1 is confirmed by R6 and R10. Give a short counter-review: what those records actually say, what they do not say about `B19`, and what evidence would make the review stronger.
+**Objective:** challenge an overconfident peer conclusion constructively. **Inputs:** R6, R9, R10 and R12. **Output:** a four-field review note: claim, directly supported facts, missing discriminator for B19, and authorized way to obtain it. Explain what outcome would change your view. A score of 2 preserves the possibility that training explains B17/B18 while leaving B19 unresolved; it does not assume the staff member is lying.
 
 <a id="ch-03"></a>
 
@@ -756,6 +795,8 @@ Create one after-action ticket for a readiness gap shown by the case. Give it an
 
 Provide a one-paragraph handoff listing the chosen branch, evidence cited, completed fictional approvals, unresolved cause, next review and a rollback or escalation trigger. Score your six outputs using the Chapter 4 rubric and identify the weakest one to revise.
 
+<a id="answers"></a>
+
 ## Worked results and assessment rubric
 
 These results are placed after the chapter material as the book's developing answer appendix. A different answer is acceptable when it cites the supplied record, states assumptions and explains authority and potential harm.
@@ -824,61 +865,129 @@ Three gaps are an unconfirmed service owner, unknown clock synchronization and n
 
 ### EX014 — Worked result
 
-“Was `B19` part of the authorized training?” can be checked with the training owner and R10, then with any approved exercise addendum. “Are other bookings currently affected?” can be checked by the service owner using a narrow booking-audit comparison. A good answer identifies a source and acknowledges that its absence or silence is not conclusive.
+| Answerable question | Supplied starting point | Authorized next source | Result that changes triage |
+|---|---|---|---|
+| Was B19 an approved training task? | R9 shows an edit; R10 lists B17/B18 but not B19 | Training owner and a dated, approved task list or addendum | A valid addendum including B19 would strengthen H1; a complete list excluding it would weaken H1 further |
+| Are bookings beyond B19 inconsistent with an owner-approved state? | R11 is a patron report; R16 requests an impact check | Service owner authorizes a narrow booking-audit and schedule comparison | Additional confirmed mismatches would increase potential harm and urgency |
+
+The first question tests authorization; the second tests scope. Neither a missing addendum nor an empty narrow query proves the opposite claim without checking source completeness and coverage.
 
 ### EX015 — Worked result
 
-H1: R6 and R10 support that some training occurred, but R10 does not list `B19`; ask the training owner for the complete task list. H2: R9 and R12 make unexpected account use plausible, but R12 is a recollection and R13 lacks device detail; ask for the authorized detailed identity record. H3: R11 could describe a display problem, but R9 records an actual application edit; compare the approved booking state and user view. Alternative hypotheses are acceptable if they cite the records and identify a discriminating check.
+| Hypothesis | Support | Contradiction or limit | Narrow authorized check | Result that weakens it |
+|---|---|---|---|---|
+| H1: training explains the edits | R6 records training; R10 names B17/B18 | R10 omits B19; R12 does not recall that edit | Training owner confirms the complete approved task list and addenda | A complete approved list still omits B19 |
+| H2: account used outside the plan | R9 records B19 changed under `desk-a` | R13 omits device and location; R12 is a recollection, not identity proof | Incident and identity owners authorize narrowly scoped session detail | A documented authorized B19 task with consistent identity evidence would weaken this explanation, though not prove every edit was safe |
+| H3: patron display and stored state diverge | R11 reports a wrong-looking time | R9 is an application audit edit; a display fault alone does not explain it | Service owner compares patron view, authoritative state and edit history for B19 | Both views show the same incorrect underlying value, weakening a *display-only* explanation |
+
+The hypotheses need not be mutually exclusive. A good answer identifies what each check can and cannot settle.
 
 ### EX016 — Worked result
 
-“Prompt review at 09:20 UTC: potential harm includes at least one possibly wrong booking and a second patron report; urgency is raised by R15's short retention period; confidence of compromise remains low to moderate because training explains some edits but not yet `B19`. Preserve authorized records, check impact and training scope, and review at 09:35 UTC or immediately if another unexplained edit appears.” The label is provisional; the reasons and trigger matter more than an arbitrary severity number.
+“**Decision owner:** incident lead. **Checkpoint:** 09:20 UTC. **Potential harm:** B19's recorded edit and R11's patron report could affect room use; broader impact has not been measured. **Time sensitivity:** R15 reports 24-hour retention of detailed audit records and a new edit could add harm. **Confidence:** training plausibly explains B17/B18 but does not yet explain B19; account misuse remains a hypothesis, not a finding. **Priority:** prompt, bounded review. **Next action:** seek approved preservation and a service-owner impact check. **Review:** 09:35 UTC or immediately on a verified new unexplained edit.” The reasons and trigger matter more than an arbitrary severity number; “low to moderate” can be replaced by a qualitative uncertainty statement if it is justified.
 
 ### EX017 — Worked result
 
-R13 is a summary of one session in the available range, without device or location fields; it cannot tie the session to a particular device or person. R14 states that no further edits are *shown within the queried range*. It does not cover later times, a different account, missing records or an incomplete export.
+**R13 claim/limit:** the available summary reports one session in its time range, but contains no device or location field. Missing detail cannot identify a device or person; it is not a finding that the session came from the expected staff device. **R14 without T1:** the summary says no further edits after R9 *within its queried range*, but the exact range and filters are absent from R14 itself. **R14 with exercise-only T1:** the illustrative query concerns `desk-a` booking edits in `application-audit` at `09:00 ≤ event < 09:12 UTC`; it does not cover later times, another account, ingestion delay or a different source. A proposed next check asks the authorized application custodian for a new bounded query beginning at 09:12 and ending at a documented, sufficiently ingested cutoff, with source, account filters and completeness recorded. Even a zero-row result would be limited to that new scope.
 
 ### EX018 — Worked result
 
-The incident lead needs the affected source and time range, the approved collector and access scope, and the deletion deadline or retention mechanism. Also useful are the expected sensitivity of patron data, storage location and access limit. The export may be time-critical because its records could disappear even if the hypothesis remains unresolved. Approval must still follow organizational procedure.
+| Needed fact | Why the lead asks |
+|---|---|
+| Which booking-audit source, booking IDs and event interval contain the R9/R14 question? | Avoid copying unrelated patron records and make the later conclusion reproducible. |
+| What exactly starts the 24-hour R15 deletion clock, and what is the custodian-confirmed last safe collection time? | R15 alone does not establish whether age is measured from event, ingestion, storage or another policy anchor. |
+| Who may approve and perform the export, where will the unmodified copy be stored, and who may read it? | Collection must have authority, restricted access and an identifiable custodian. |
+
+The analyst can ask the incident lead to decide promptly because detailed rows may disappear before the cause is established. The request is for a bounded copy and recorded policy answer, not an unapproved bulk export or a fabricated 09:03-plus-24-hours deadline.
 
 ### EX019 — Worked result
 
-“`HL-IR-001/E1`; booking-audit rows R9 and R14 in this chapter; events 09:03–09:12 UTC; copied at 09:20 UTC by the learner analyst under the fictional incident lead's classroom authorization; saved as a local training-only working note; original remains in the Markdown book; rows transcribed without changing stated event times. Limitation: the rows are synthetic and R14 summarizes only its query range. If saved as a file, record a SHA-256 value for its exact bytes and any later check.” A valid note need not invent a digest or imply production evidence.
+| Collection-note field | Model entry before a learner runs the optional fixture |
+|---|---|
+| Case/item and state | `HL-IR-001/E1`; **planned classroom transcription**, not a completed export |
+| Source and event range | Synthetic book records R9 at 09:03 UTC and R14 at 09:12 UTC; R14's underlying query interval is unspecified unless the separate T1 card is explicitly used |
+| Collector and authority | Learner analyst, within the fictional incident lead's classroom scope for supplied records only |
+| Collection time and location | **Not applicable until a file is actually created**; then record the learner's real local time, file path and access restriction |
+| Transformation and original | Fixture transcribes two rows as UTF-8 text; the book table is the retained source of the classroom transcription |
+| Limitation | No production log was acquired; a saved file cannot prove the source system's completeness, clock or identity attribution |
+
+If the learner ran `fixture.py`, replace the planned state with **completed local fixture**, record the actual creation time and scratch path, and attach the measured 235-byte SHA-256 value from the lab. Never invent a 09:20 collection time simply because the scenario's discovery checkpoint was 09:20.
 
 ### EX020 — Worked result
 
-The two readings support that the checked byte sequence produced the same digest at both checks and that no change to this copy was detected by that comparison. They do not prove that the original log was complete, that its clock or contents were correct, or that the export was collected with authority. They also do not prove that another unexamined copy is identical. A digest should be tied to a named file, method and times.
+| Claim | Supported? | Reason |
+|---|---|---|
+| The named `E1.txt` produced equal SHA-256 values at the two recorded checks | Yes, if the learner actually measured and retained both values | This is the direct comparison of the checked bytes under the stated method. |
+| No byte change was detected in that named copy between the checks | Yes, within the hash method and trustworthy-check assumptions | Equality supports a limited consistency finding, not a broader provenance claim. |
+| The original application log was complete and true | No | E1 is a transcription; the digest cannot reveal omitted or false source rows. |
+| The source clock and actor identity were correct | No | A digest has no independent clock or identity context. |
+| The export or collection had organizational authority | No | Permission is a decision record, not a property of the digest. |
+
+Specify the file, method and check times. Two matching values copied from the same mistaken note would not become proof of authenticity.
 
 ### EX021 — Worked result
 
-R9 09:03; R10 09:04; R12 09:08; R15 09:14; R16 09:16 UTC. R10 is a training-plan record observed at 09:04 in the classroom dataset; the plan may have been written earlier. This order cannot establish whether the `B19` edit was authorized, who performed it or whether it caused the patron's reported display problem.
+| Order | Record and supplied UTC time | Source |
+|---:|---|---|
+| 1 | R9, 09:03 | Booking audit: B19 edit |
+| 2 | R10, 09:04 | Training plan: B17/B18 named |
+| 3 | R12, 09:08 | Staff interview note |
+| 4 | R15, 09:14 | Retention notice |
+| 5 | R16, 09:16 | Service-owner note |
+
+These are **record event or observation times** in the fictional dataset. The learner first receives R9–R16 at the simulated 09:20 review. R10's timestamp is the time of the supplied plan record, not proof that the plan itself was first written after R9. Ordering cannot establish who made the B19 edit, whether it was authorized or whether it caused the patron's report. If optional T1 is used, its interval ends before 09:12; it supplies no coverage of later activity.
 
 ### EX022 — Worked result
 
-“At 09:20 UTC, case `HL-IR-001` includes a `B19` booking edit in R9, a plan omitting `B19` in R10 and a second patron report in R11. H1 still explains earlier training edits, while H2 remains possible for `B19`; the available identity summary R13 lacks device detail. The incident lead authorized preserving the synthetic records for this exercise and requests a narrow impact and training-scope check in the hypothetical real response. The analyst will record source and collection limits, with no account change yet. Review at 09:35 UTC or immediately if new unexplained edits occur.” Other concise handoffs pass when they include the required elements and do not overstate certainty.
+“At 09:20 UTC, `HL-IR-001` concerns the room-booking service: R9 records B19 edited and R11 records a second patron report. H1 can explain the earlier training edits, while H2 remains possible for B19 because R10 omits it and R13 gives no device detail. The fictional incident lead authorizes classroom preservation of supplied records and asks the service owner to approve a **proposed**, narrow real-world impact check; no production account or data change has occurred. The analyst will ask the training owner about any approved B19 addendum and record source and query limits. Review with the incident lead at 09:35 UTC or sooner if another verified unexplained edit appears.” A handoff must tell the receiver what was approved, what remains only a request and what would change the next decision.
 
 ### EX023 — Worked result
 
-The service owner can ask an authorized analyst to compare the application audit for the same short period with the authoritative booking state and relevant help-desk tickets. The output is a count and identifiers of possibly altered bookings, each linked to an audit row and marked confirmed or unresolved. Restrict the review to the necessary fields and people; do not export the entire patron database for this question.
+**Proposed request:** the service owner approves a named analyst to compare booking-edit audit rows for the short 08:30–09:20 UTC window with the authoritative booking state and relevant help-desk ticket identifiers, using only booking ID, changed field, old/new value, event UTC time and approved target where available. The application custodian supplies a restricted copy and records the query filter, source and collection time. The expected result schema is `booking ID | audit row | current value | owner-approved value or pending | confirmed mismatch / unresolved`. The learner can already point to B19's R9 edit but cannot supply a final count or approved target from R1–R16. Keep patron names and unrelated bookings out of the classroom output and limit the copy to the approved reviewers.
 
 ### EX024 — Worked result
 
-A new unexplained edit after 09:20 would raise urgency because harm may still be occurring. A confirmed large set of wrong reservations would raise potential harm and the need for a service-owner decision. A confirmed sensitive-data disclosure would also raise harm, but no supplied record establishes one. A strong answer identifies the new evidence required and the decision owner.
+| Hypothetical new observation | Who verifies it and why it changes triage | Decision response |
+|---|---|---|
+| A fresh booking-audit row after the 09:20 review shows a new unexplained edit | The application custodian confirms the row, source clock and booking impact; ongoing change raises urgency. | Incident lead reconvenes immediately with the identity and service owners to compare containment options. |
+| A bounded owner-approved comparison finds several currently incorrect room assignments | The service owner and analyst verify identifiers against an authoritative schedule; confirmed scope raises potential patron harm. | Incident lead and service owner promptly reconsider write restrictions and patron-service communication. |
+
+Neither observation is part of R1–R16. A confirmed sensitive-data disclosure would also raise harm, but no supplied record establishes one. The triggers are evidence requirements, not predictions.
 
 ### EX025 — Worked result
 
-“R9 records a `B19` booking edit by `desk-a`, and R11 records a patron's report. The available identity summary R13 does not identify the device or user behind the session. Unauthorized use, broad booking impact and data transfer are unconfirmed; the team will check training scope, booking impact and authorized identity detail.” This version distinguishes observations, hypotheses and missing evidence.
+“R9 records a B19 booking edit under `desk-a`, and R11 records a patron's report. R13 omits device and location detail, while R8 lacks destination detail; neither establishes who controlled the session or whether information was transferred. The incident lead will seek a service-owner impact comparison and authorized identity details before revising scope or attribution.” Removed unsupported claims: a named **attacker stole** the account; **every** booking was edited; and the patron database was **exfiltrated**. The correction does not replace those false positives with an equally unsupported claim that no transfer occurred.
 
 ### EX026 — Worked result
 
-R6 says training was scheduled; R10 says its plan names `B17` and `B18`. Neither record says that `B19` was an approved training task or that the staff member made the R9 edit. The reviewer should seek a complete approved plan or addendum and ask the training owner whether `B19` was included; authorized detailed application and identity records could then help test who performed the edit. Treat the answer as unresolved until those checks are assessed.
+| Review field | Model note |
+|---|---|
+| Peer claim | “R6 and R10 confirm H1 for all edits.” |
+| Directly supported | R6 says training was scheduled; R10 lists B17 and B18 in the plan. R9 separately records a B19 edit; R12 reports that the staff member does not recall it. |
+| Missing discriminator | A complete approved task list or dated addendum naming B19, plus a narrow authorized check of the account and application edit context. |
+| Possible update | A valid pre-existing B19 addendum would strengthen H1 for that edit, though identity still needs checking; a confirmed complete plan excluding B19 would weaken H1 for B19. |
+
+Treat the conclusion as unresolved until the owner and record checks are assessed. A constructive review explains how to change the conclusion; it does not accuse the staff member because recollection and audit attribution can both have limits.
 
 ### Chapter 2 synthetic-extract lab — worked result
 
 The script writes **235 bytes** to each file. The SHA-256 digest for `E1.txt` is `dc973f580305633eb0a75317c5bdbd9886a8fc015e14a0b17bae09be5e3a6e37`; the digest for `E1-modified.txt` is `15287410550f021dcb81e10fc1833297ffa840ee8ffa8e75867de36df64ffa4d`. The strings have equal byte length because the single ASCII digit `3` was replaced with `4`; their different digests show the modified copy is not byte-identical to the saved original. Learners should calculate the values locally rather than trust a copied answer.
 
 A model note is: “`HL-IR-001/E1`; synthetic classroom extract transcribed from book records R9 and R14; event times 09:03 and 09:12 UTC; learner-created local file `E1.txt` in a scratch directory at the learner's actual collection time; classroom authorization permits only this supplied material; 235 bytes written by `fixture.py` without a live source; SHA-256 digest recorded above; working copy stored locally and deleted after the exercise.” The collection time should be the learner's actual time, not an invented 09:18 UTC. The output is **not** an original application log, and R14 covers only its queried range. Matching digests after a repeat check support byte consistency of the checked copy; they do not prove authorized account use, complete source records or the cause of B19's change.
+
+### Chapter 2 temporal-coverage lab — worked result
+
+The optional Python script prints the following three lines for the supplied fixture:
+
+```text
+R9 event=09:03 UTC seen=09:20 UTC delay=17 min
+R10 event=09:04 UTC seen=09:20 UTC delay=16 min
+R15 event=09:14 UTC seen=09:20 UTC delay=6 min
+```
+
+R10's original exercise text is `2026-10-11T05:04:00-04:00`; adding the explicit four-hour offset yields `09:04 UTC`. The three delays are `09:20 − 09:03 = 17`, `09:20 − 09:04 = 16` and `09:20 − 09:14 = 6` minutes. The event-time order is R9, R10, R15; the learner receives all three only with the Round B release at 09:20. None can justify the learner's 09:05 decision retroactively.
+
+With exercise-only T1, the strongest negative statement is: “The specified `application-audit` query for `desk-a` booking edits in `09:00 ≤ event < 09:12 UTC` showed no further matching edit after R9.” R14 *without* T1 lacks those exact bounds. Neither version proves that no edit occurred after 09:12, through another account or in an unexamined source. A bounded request to the authorized application custodian should specify source, account filters, the new interval, an ingestion/completeness check, collector and collection time. R15 calls for a prompt retention decision; the exact deletion instant depends on policy detail not supplied here. A full-credit answer records these limits rather than filling gaps with confident words.
 
 ### EX027 — Worked result
 
@@ -1023,10 +1132,13 @@ The model earns full credit only if the learner's own six artifacts preserve the
 ## Chapter 2 glossary
 
 - **Collection note:** a record of how, when, where and under whose authority an item was obtained or copied.
+- **Coverage interval:** the time span and filters a query or source actually examined; a negative result applies only within that scope.
 - **Confidence:** the analyst's assessed support for an explanation, stated with its limits.
 - **Digest:** the output of a hash function for a specific byte sequence.
+- **Discovery time:** when the analyst received or recognized a record, distinct from the event time recorded by its source.
 - **Handoff:** a case summary sufficient for another authorized person to continue the work.
 - **Hypothesis test:** a planned check that could support or weaken an explanation.
+- **Offset:** the explicit difference between a timestamp's local clock representation and UTC, needed for an unambiguous conversion.
 - **Retention deadline:** the time after which a source may no longer preserve the needed record.
 - **Triage:** the initial assessment of potential harm, urgency, uncertainty and next authorized action.
 

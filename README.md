@@ -1,20 +1,39 @@
 # CyberABC — Cybersecurity Academic Books Collection
 
 ~~~text
-  +----------------------------------------------------------------------------+
-  |       C Y B E R A B C   /   CYBERSECURITY ACADEMIC BOOKS COLLECTION        |
-  +----------------------------------------------------------------------------+
-  |          ____   ____   _____   _____   ____   _____   ____   ____          |
-  |         | IR | | AI | | SOC | | DFIR| | NET| | WEB3| | PQC| | GRC|         |
-  |         |____| |____| |_____| |_____| |____| |_____| |____| |____|         |
-  |============================================================================|
-  |          _____   ____   _____   ____   ____   ____   ____   _____          |
-  |         | APP | | OT | | DATA| | IAM| | SEC| | GOV| | SOC| | LAB |         |
-  |         |_____| |____| |_____| |____| |____| |____| |____| |_____|         |
-  |============================================================================|
-  |                OPEN BOOKS / COURSES / EXERCISES / RESEARCH                 |
-  +----------------------------------------------------------------------------+
+  +------------------------------------------------------------------+
+  |        CYBERABC / CYBERSECURITY ACADEMIC BOOKS COLLECTION        |
+  +------------------------------------------------------------------+
+  |     ________    ________    ________    ________    ________     |
+  |    |   IR   |  |  CYBR  |  |  INFO  |  |  DATA  |  |  PRIV  |    |
+  |    |  2.2%  |  |  1.6%  |  |  0.0%  |  |  0.0%  |  |  0.0%  |    |
+  |    |________|  |________|  |________|  |________|  |________|    |
+  |==================================================================|
+  |     ________    ________    ________    ________    ________     |
+  |    |  GRC   |  | HUMAN  |  |  ARCH  |  | CRYPT  |  |  WEB3  |    |
+  |    |  0.5%  |  |  0.0%  |  |  0.0%  |  |  0.0%  |  |  0.0%  |    |
+  |    |________|  |________|  |________|  |________|  |________|    |
+  |==================================================================|
+  |     ________    ________    ________    ________    ________     |
+  |    |  IAM   |  |  NET   |  |  SYS   |  | CLOUD  |  |  APP   |    |
+  |    |  0.0%  |  |  0.0%  |  |  0.0%  |  |  0.0%  |  |  0.0%  |    |
+  |    |________|  |________|  |________|  |________|  |________|    |
+  |==================================================================|
+  |     ________    ________    ________    ________    ________     |
+  |    |  SOC   |  |  DFIR  |  |  CTI   |  |  RED   |  |   AI   |    |
+  |    |  0.0%  |  |  0.0%  |  |  0.0%  |  |  0.0%  |  |  0.0%  |    |
+  |    |________|  |________|  |________|  |________|  |________|    |
+  |==================================================================|
+  |                 ________    ________    ________                 |
+  |                |  PQC   |  |   OT   |  |  CRIT  |                |
+  |                |  0.0%  |  |  0.0%  |  |  0.0%  |                |
+  |                |________|  |________|  |________|                |
+  |==================================================================|
+  |            ENGLISH DRAFT CHAPTERS / 23 ACADEMIC AREAS            |
+  +------------------------------------------------------------------+
 ~~~
+
+**English writing progress:** each percentage is the share of that area's planned English chapters with at least 300 words of authored teaching in a manuscript draft. The bookshelf is refreshed from the manuscripts on each local publication; it does not indicate a finished book or an A4 page count. [Sigil key, exact counts and method](WRITING_PROGRESS.md).
 
 **A public, free Markdown learning library for cybersecurity, information security, data governance and digital defense.** Its long-term vision is an online university-style curriculum from first practice to advanced research.
 
@@ -45,7 +64,7 @@ levels/<level>/<area>/
 
 **Current structure:** 9 levels × 23 areas = **207 courses and course skills**. With 9 language editions, **1,863 books are planned**. The English grades contain **4,186 subject-chapters**. These are plans, not finished books. Three English manuscripts are public drafts; **zero books have passed the complete-book gate**.
 
-**Progress, measured separately:** the folders and course/book plans cover 100% of the current 23-area catalog. Only 336 of 4,186 English chapter briefs have a manually tailored teaching outline so far; the other summaries are template-based working plans. Completed book editions: **0 of 1,863 (0%)**. All 1,863 editions still need to pass the publication gate; see the [progress review](STRUCTURE_REVIEW.md).
+**Progress, measured separately:** the folders and course/book plans cover 100% of the current 23-area catalog. Only 336 of 4,186 English chapter briefs have a manually tailored teaching outline so far; the other summaries are template-based working plans. Authored English chapter drafts: **8 of 4,186 (0.2%)**, with the area-by-area method in the [writing progress table](WRITING_PROGRESS.md). Completed book editions: **0 of 1,863 (0%)**. All 1,863 editions still need to pass the publication gate; see the [progress review](STRUCTURE_REVIEW.md).
 
 A finished book must have **at least 300 verified A4 pages** and **50 substantive exercises with worked results**, plus technical, source, rights, language and accessibility review. The [book standard](BOOK_STANDARD.md) explains the gate.
 
@@ -97,7 +116,7 @@ Each linked course page lists its nine language editions, one skill, book, chapt
 
 ## First English book in progress
 
-The [Incident Response rapid-course draft](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md) contains initial teaching for four chapters, 50 exercises and 50 worked results. Chapters 1–3 now include a readiness workshop, a reproducible synthetic evidence-integrity lab and a booking-reconciliation lab, each with a worked result. Chapter 4 has a six-artifact model tabletop. It remains a **draft**: the chapters need substantial expansion, technical review and A4 verification. All 182 Incident Response chapter briefs across nine levels and 154 Cybersecurity briefs have individual teaching plans; the remaining English chapters are on the editorial work queue. The earlier [Cybersecurity](levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md) and [Security Governance](levels/rapid-1-month/security-governance-risk-compliance/en/book/MANUSCRIPT.md) drafts are preserved.
+The [Incident Response rapid-course draft](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md) contains initial teaching for four chapters, 50 exercises and 50 worked results. Chapters 1–3 now include a readiness workshop, two reproducible synthetic evidence-and-time labs, and a booking-reconciliation lab, each with worked results. Chapter 2's 13 exercises have explicit objectives, inputs and assessment criteria; Chapter 4 has a six-artifact model tabletop. It remains a **draft**: the chapters need substantial expansion, technical review and A4 verification. All 182 Incident Response chapter briefs across nine levels and 154 Cybersecurity briefs have individual teaching plans; the remaining English chapters are on the editorial work queue. The earlier [Cybersecurity](levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md) and [Security Governance](levels/rapid-1-month/security-governance-risk-compliance/en/book/MANUSCRIPT.md) drafts are preserved.
 
 ## Language sequence
 
@@ -167,6 +186,6 @@ The [project categories](CATEGORIES.md) give context for the original security s
 
 Original maintainer-owned content is public and dedicated to the public domain under [CC0 1.0](LICENSE). Accurate citation of factual sources remains an editorial requirement. Linked repositories and third-party works retain their own licenses.
 
-[Level index](levels/README.md) · [Area map](AREA_MAP.md) · [Book guide](guia-geral-cursos-e-livros.md) · [Course skills](SKILLS.md) · [Playbooks](playbooks/README.md) · [AI navigation](AI_GUIDE.md) · [Progress](STRUCTURE_REVIEW.md) · [Roadmap](ROADMAP.md) · [Sources](SOURCE_AUDIT.md) · [Rights](RIGHTS.md) · [Project categories](CATEGORIES.md)
+[Level index](levels/README.md) · [Area map](AREA_MAP.md) · [Book guide](guia-geral-cursos-e-livros.md) · [Course skills](SKILLS.md) · [Playbooks](playbooks/README.md) · [AI navigation](AI_GUIDE.md) · [Writing by area](WRITING_PROGRESS.md) · [Progress](STRUCTURE_REVIEW.md) · [Roadmap](ROADMAP.md) · [Sources](SOURCE_AUDIT.md) · [Rights](RIGHTS.md) · [Project categories](CATEGORIES.md)
 
 Construction scripts, tests and operational records stay in a separate private editorial workspace. The public repository contains reader-facing Markdown and is published directly from the maintainer's machine.

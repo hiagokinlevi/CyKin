@@ -13,6 +13,7 @@ CyberABC is a public, free Markdown learning library. Its [home page](README.md)
 | One AI skill for each course | [Skill index](SKILLS.md) |
 | Supplementary practice | [Playbook index](playbooks/README.md) |
 | Linked projects | [Project index](PROJECTS.md) |
+| Draft writing by area and sigil | [Writing-progress index](WRITING_PROGRESS.md) |
 | Progress and completion rules | [Structure review](STRUCTURE_REVIEW.md) and [book standard](BOOK_STANDARD.md) |
 | Rights and provenance | [Rights notice](RIGHTS.md) and [source audit](SOURCE_AUDIT.md) |
 
@@ -47,6 +48,8 @@ Each course has **one skill** and **one principal book per language**. Each curr
 | `playbooks/README.md` | Pointers to supplementary sources that retain their own rights |
 
 A plan is not a written lesson. A public draft is not a technically reviewed book. A completed edition requires at least 300 verified A4 pages, 50 substantive exercises with worked answers, accurate sources and editorial review under the [book standard](BOOK_STANDARD.md). The course titles describe planned educational depth; they do not confer an accredited degree.
+
+The percentages inside the README bookshelf measure **English chapter draft coverage** by area, using the method in [WRITING_PROGRESS.md](WRITING_PROGRESS.md). They are separate from tailored chapter-plan coverage and from the number of books that have passed the completion gate. Do not present a bookshelf percentage as book completion or translated-content progress.
 
 ## Language and citation rules
 
