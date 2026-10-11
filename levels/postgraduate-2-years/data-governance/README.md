@@ -4,7 +4,7 @@
 
 **Scope:** Data ownership, quality, lineage, lifecycle, stewardship, access decisions and accountable use.
 
-**Audience:** Experienced specialists. **Entry knowledge:** Prior degree or equivalent professional experience in the field; Security literacy, organizational context and evidence.
+**Audience:** Experienced specialists. **Entry knowledge:** Prior degree or equivalent professional experience in the field.
 
 **Exit goal:** lead advanced application and justify organization-scale choices in data governance. **Practical work:** critique a real-world design with sanitized evidence. **Assessment plan:** advanced case analysis and applied final project.
 

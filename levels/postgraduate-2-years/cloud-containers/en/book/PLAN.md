@@ -32,81 +32,81 @@ This subject teaches **Cloud and container security: current practice** and cont
 
 ### Chapter 03 — Cloud and container security: specialist evidence
 
-**Stage 1; 35 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 35 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cloud and container security: specialist evidence** and contributes to the postgraduate course outcome: lead advanced application and justify organization-scale choices in cloud and container security. The chapter will apply the relevant methods to cloud identity, posture, hybrid infrastructure, virtualization, containers and kubernetes. At this level, learners will critique a real-world design with sanitized evidence. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 02 and prepares Chapter 04. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Cloud and container security: specialist evidence** and contributes to the postgraduate course outcome: lead advanced application and justify organization-scale choices in cloud and container security. The chapter will apply the relevant methods to cloud identity, posture, hybrid infrastructure, virtualization, containers and kubernetes. At this level, learners will critique a real-world design with sanitized evidence. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 02 and prepares Chapter 04. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-04"></a>
 
 ### Chapter 04 — Advanced risk and ethics
 
-**Stage 2; 35 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 35 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Advanced risk and ethics** and contributes to the postgraduate course outcome: lead advanced application and justify organization-scale choices in cloud and container security. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will critique a real-world design with sanitized evidence. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 03 and prepares Chapter 05. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Advanced risk and ethics** and contributes to the postgraduate course outcome: lead advanced application and justify organization-scale choices in cloud and container security. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will critique a real-world design with sanitized evidence. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 03 and prepares Chapter 05. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-05"></a>
 
 ### Chapter 05 — Cloud and container security: design alternatives
 
-**Stage 2; 35 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 35 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cloud and container security: design alternatives** and contributes to the postgraduate course outcome: lead advanced application and justify organization-scale choices in cloud and container security. The chapter will apply the relevant methods to cloud identity, posture, hybrid infrastructure, virtualization, containers and kubernetes. At this level, learners will critique a real-world design with sanitized evidence. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 04 and prepares Chapter 06. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Cloud and container security: design alternatives** and contributes to the postgraduate course outcome: lead advanced application and justify organization-scale choices in cloud and container security. The chapter will apply the relevant methods to cloud identity, posture, hybrid infrastructure, virtualization, containers and kubernetes. At this level, learners will critique a real-world design with sanitized evidence. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 04 and prepares Chapter 06. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-06"></a>
 
 ### Chapter 06 — Cloud and container security: controlled evaluation
 
-**Stage 2; 35 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 35 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cloud and container security: controlled evaluation** and contributes to the postgraduate course outcome: lead advanced application and justify organization-scale choices in cloud and container security. The chapter will apply the relevant methods to cloud identity, posture, hybrid infrastructure, virtualization, containers and kubernetes. At this level, learners will critique a real-world design with sanitized evidence. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 05 and prepares Chapter 07. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Cloud and container security: controlled evaluation** and contributes to the postgraduate course outcome: lead advanced application and justify organization-scale choices in cloud and container security. The chapter will apply the relevant methods to cloud identity, posture, hybrid infrastructure, virtualization, containers and kubernetes. At this level, learners will critique a real-world design with sanitized evidence. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 05 and prepares Chapter 07. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-07"></a>
 
 ### Chapter 07 — Cloud and container security: organizational integration
 
-**Stage 3; 35 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 35 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cloud and container security: organizational integration** and contributes to the postgraduate course outcome: lead advanced application and justify organization-scale choices in cloud and container security. The chapter will apply the relevant methods to cloud identity, posture, hybrid infrastructure, virtualization, containers and kubernetes. At this level, learners will critique a real-world design with sanitized evidence. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 06 and prepares Chapter 08. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Cloud and container security: organizational integration** and contributes to the postgraduate course outcome: lead advanced application and justify organization-scale choices in cloud and container security. The chapter will apply the relevant methods to cloud identity, posture, hybrid infrastructure, virtualization, containers and kubernetes. At this level, learners will critique a real-world design with sanitized evidence. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 06 and prepares Chapter 08. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-08"></a>
 
 ### Chapter 08 — Cloud and container security: difficult cases
 
-**Stage 3; 35 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 35 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cloud and container security: difficult cases** and contributes to the postgraduate course outcome: lead advanced application and justify organization-scale choices in cloud and container security. The chapter will apply the relevant methods to cloud identity, posture, hybrid infrastructure, virtualization, containers and kubernetes. At this level, learners will critique a real-world design with sanitized evidence. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 07 and prepares Chapter 09. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Cloud and container security: difficult cases** and contributes to the postgraduate course outcome: lead advanced application and justify organization-scale choices in cloud and container security. The chapter will apply the relevant methods to cloud identity, posture, hybrid infrastructure, virtualization, containers and kubernetes. At this level, learners will critique a real-world design with sanitized evidence. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 07 and prepares Chapter 09. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-09"></a>
 
 ### Chapter 09 — Cloud and container security: leadership and assurance
 
-**Stage 3; 35 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 35 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cloud and container security: leadership and assurance** and contributes to the postgraduate course outcome: lead advanced application and justify organization-scale choices in cloud and container security. The chapter will apply the relevant methods to cloud identity, posture, hybrid infrastructure, virtualization, containers and kubernetes. At this level, learners will critique a real-world design with sanitized evidence. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 08 and prepares Chapter 10. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Cloud and container security: leadership and assurance** and contributes to the postgraduate course outcome: lead advanced application and justify organization-scale choices in cloud and container security. The chapter will apply the relevant methods to cloud identity, posture, hybrid infrastructure, virtualization, containers and kubernetes. At this level, learners will critique a real-world design with sanitized evidence. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 08 and prepares Chapter 10. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-10"></a>
 
 ### Chapter 10 — Research reading and critique
 
-**Stage 4; 35 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 35 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Research reading and critique** and contributes to the postgraduate course outcome: lead advanced application and justify organization-scale choices in cloud and container security. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will critique a real-world design with sanitized evidence. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 09 and prepares Chapter 11. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Research reading and critique** and contributes to the postgraduate course outcome: lead advanced application and justify organization-scale choices in cloud and container security. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will critique a real-world design with sanitized evidence. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 09 and prepares Chapter 11. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-11"></a>
 
 ### Chapter 11 — Applied project
 
-**Stage 4; 35 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 35 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Applied project** and contributes to the postgraduate course outcome: lead advanced application and justify organization-scale choices in cloud and container security. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will critique a real-world design with sanitized evidence. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 10 and prepares Chapter 12. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Applied project** and contributes to the postgraduate course outcome: lead advanced application and justify organization-scale choices in cloud and container security. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will critique a real-world design with sanitized evidence. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 10 and prepares Chapter 12. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-12"></a>
 
 ### Chapter 12 — Final review and transfer
 
-**Stage 4; 35 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 35 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Final review and transfer** and contributes to the postgraduate course outcome: lead advanced application and justify organization-scale choices in cloud and container security. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will critique a real-world design with sanitized evidence. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 11 and prepares the worked-answer appendix and final assessment. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Final review and transfer** and contributes to the postgraduate course outcome: lead advanced application and justify organization-scale choices in cloud and container security. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will critique a real-world design with sanitized evidence. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 11 and prepares the worked-answer appendix and final assessment. This paragraph is an editorial summary, not an authored lesson.
 
 ## Practical and assessment plan
 

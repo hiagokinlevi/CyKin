@@ -4,7 +4,7 @@
 
 **Scope:** Security culture, human behavior, education, ethics, law, public policy and cooperation.
 
-**Audience:** Entry-level practitioners. **Entry knowledge:** Security basics and the relevant system fundamentals; Security literacy, organizational context and evidence.
+**Audience:** Entry-level practitioners. **Entry knowledge:** Security basics and the relevant system fundamentals.
 
 **Exit goal:** operate a repeatable workflow and communicate findings in human factors and cyber policy. **Practical work:** run a supervised workflow with evidence checkpoints. **Assessment plan:** portfolio of cases, lab rubric and final practical review.
 

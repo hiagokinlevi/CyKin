@@ -45,23 +45,23 @@ levels/<level>/<area>/
 
 **Current structure:** 9 levels × 23 areas = **207 courses and course skills**. With 9 language editions, **1,863 books are planned**. The English grades contain **4,186 subject-chapters**. These are plans, not finished books. Three English manuscripts are public drafts; **zero books have passed the complete-book gate**.
 
-**Progress, measured separately:** the folders and course/book plans cover 100% of the current 23-area catalog. Only 182 of 4,186 English chapter briefs have a manually tailored teaching outline so far; the other summaries are template-based working plans. Completed book editions: **0 of 1,863 (0%)**. All 1,863 editions still need to pass the publication gate; see the [progress review](STRUCTURE_REVIEW.md).
+**Progress, measured separately:** the folders and course/book plans cover 100% of the current 23-area catalog. Only 216 of 4,186 English chapter briefs have a manually tailored teaching outline so far; the other summaries are template-based working plans. Completed book editions: **0 of 1,863 (0%)**. All 1,863 editions still need to pass the publication gate; see the [progress review](STRUCTURE_REVIEW.md).
 
 A finished book must have **at least 300 verified A4 pages** and **50 substantive exercises with worked results**, plus technical, source, rights, language and accessibility review. The [book standard](BOOK_STANDARD.md) explains the gate.
 
 ## 1. Choose a formation level
 
-| Level | Planned duration | Subjects / book | Open all 23 areas |
-|---|---:|---:|---|
-| Rapid course | 1 month | 4 | [Open level](levels/rapid-1-month/README.md) |
-| Professional course | 6 months | 12 | [Open level](levels/professional-6-months/README.md) |
-| Technical course | 18 months | 18 | [Open level](levels/technical-18-months/README.md) |
-| Technologist course | 3 years | 30 | [Open level](levels/technologist-3-years/README.md) |
-| Bachelor's course | 4 years | 40 | [Open level](levels/bachelors-4-years/README.md) |
-| Engineering course | 5 years | 50 | [Open level](levels/engineering-5-years/README.md) |
-| Postgraduate course | 2 years | 12 | [Open level](levels/postgraduate-2-years/README.md) |
-| Master's course | 2 years | 8 | [Open level](levels/masters-2-years/README.md) |
-| Doctoral research track | 2 years | 8 | [Open level](levels/doctorate-2-years/README.md) |
+| Level | Planned duration | Subjects / book | Planned exercises | Open all 23 areas |
+|---|---:|---:|---:|---|
+| Rapid course | 1 month | 4 | 50 | [Open level](levels/rapid-1-month/README.md) |
+| Professional course | 6 months | 12 | 60 | [Open level](levels/professional-6-months/README.md) |
+| Technical course | 18 months | 18 | 72 | [Open level](levels/technical-18-months/README.md) |
+| Technologist course | 3 years | 30 | 90 | [Open level](levels/technologist-3-years/README.md) |
+| Bachelor's course | 4 years | 40 | 120 | [Open level](levels/bachelors-4-years/README.md) |
+| Engineering course | 5 years | 50 | 150 | [Open level](levels/engineering-5-years/README.md) |
+| Postgraduate course | 2 years | 12 | 60 | [Open level](levels/postgraduate-2-years/README.md) |
+| Master's course | 2 years | 8 | 50 | [Open level](levels/masters-2-years/README.md) |
+| Doctoral research track | 2 years | 8 | 50 | [Open level](levels/doctorate-2-years/README.md) |
 
 ## 2. Open any area and course
 
@@ -97,7 +97,7 @@ Each linked course page lists its nine language editions, one skill, book, chapt
 
 ## First English book in progress
 
-The [Incident Response rapid-course draft](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md) contains initial teaching for four chapters, 50 exercises and 50 worked results. It remains a **draft**: the chapters need substantial expansion, technical review and A4 verification. All 182 Incident Response chapter briefs across the nine course levels now have individual teaching plans; the other 22 areas remain on the editorial work queue. The earlier [Cybersecurity](levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md) and [Security Governance](levels/rapid-1-month/security-governance-risk-compliance/en/book/MANUSCRIPT.md) drafts are preserved.
+The [Incident Response rapid-course draft](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md) contains initial teaching for four chapters, 50 exercises and 50 worked results. It remains a **draft**: the chapters need substantial expansion, technical review and A4 verification. All 182 Incident Response chapter briefs across nine levels and the 34 opening Cybersecurity briefs have individual teaching plans; the remaining English chapters are on the editorial work queue. The earlier [Cybersecurity](levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md) and [Security Governance](levels/rapid-1-month/security-governance-risk-compliance/en/book/MANUSCRIPT.md) drafts are preserved.
 
 ## Language sequence
 

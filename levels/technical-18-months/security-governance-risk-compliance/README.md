@@ -4,7 +4,7 @@
 
 **Scope:** Security strategy, risk decisions, audit evidence, assurance, policy and program measurement.
 
-**Audience:** Technical operators. **Entry knowledge:** Networks, operating systems, scripting and safe lab practice; Security literacy, organizational context and evidence.
+**Audience:** Technical operators. **Entry knowledge:** Networks, operating systems, scripting and safe lab practice.
 
 **Exit goal:** diagnose failures, configure controls and verify outcomes in security governance, risk and compliance. **Practical work:** build and troubleshoot a reproducible lab. **Assessment plan:** practical examinations, troubleshooting log and supervised project.
 

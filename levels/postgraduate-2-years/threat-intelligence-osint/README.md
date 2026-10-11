@@ -4,7 +4,7 @@
 
 **Scope:** Source assessment, adversary analysis, intelligence production and exposure monitoring.
 
-**Audience:** Experienced specialists. **Entry knowledge:** Prior degree or equivalent professional experience in the field; Systems, logs, networks and authorized lab practice.
+**Audience:** Experienced specialists. **Entry knowledge:** Prior degree or equivalent professional experience in the field.
 
 **Exit goal:** lead advanced application and justify organization-scale choices in threat intelligence and osint. **Practical work:** critique a real-world design with sanitized evidence. **Assessment plan:** advanced case analysis and applied final project.
 

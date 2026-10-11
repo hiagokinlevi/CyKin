@@ -4,7 +4,7 @@
 
 **Scope:** Security monitoring, SOC workflows, detection engineering, hunting, automation and exposure management.
 
-**Audience:** Advanced researchers. **Entry knowledge:** Research experience and a defensible original question; Systems, logs, networks and authorized lab practice.
+**Audience:** Advanced researchers. **Entry knowledge:** Research experience and a defensible original question.
 
 **Exit goal:** test an original contribution and its limits independently in security operations and blue team. **Practical work:** replicate baselines, challenge assumptions and publish evidence. **Assessment plan:** original research portfolio, thesis and defense plan.
 

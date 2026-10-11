@@ -4,7 +4,7 @@
 
 **Scope:** Security culture, human behavior, education, ethics, law, public policy and cooperation.
 
-**Audience:** Security systems designers. **Entry knowledge:** Calculus, computing, networks and systems engineering; Security literacy, organizational context and evidence.
+**Audience:** Security systems designers. **Entry knowledge:** Calculus, computing, networks and systems engineering.
 
 **Exit goal:** design, build and validate complex systems under constraints in human factors and cyber policy. **Practical work:** model tradeoffs, implement controls and test failure modes. **Assessment plan:** design dossier, verification results and engineering thesis.
 

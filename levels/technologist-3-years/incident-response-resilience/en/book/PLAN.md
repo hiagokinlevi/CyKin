@@ -25,7 +25,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 01 — Computing systems
 
-**Stage 1; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Build a service-level view of the computing components an incident workflow must protect and restore.
 
@@ -35,7 +35,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A synthetic municipal appointment service spread across three application hosts.
 
-**Practice and exercises:** Draw its component map and identify which failure can delay response or recovery. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Draw its component map and identify which failure can delay response or recovery. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on the entry knowledge and prepares Chapter 02. This is an editorial brief, not a completed lesson.
 
@@ -43,7 +43,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 02 — Networks and internet services
 
-**Stage 1; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Explain how network services create evidence and operational dependencies for an integrated response service.
 
@@ -53,7 +53,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A fictional public portal and internal API with separate DNS and gateway owners.
 
-**Practice and exercises:** Trace a request across services and name monitoring points and restoration dependencies. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Trace a request across services and name monitoring points and restoration dependencies. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 01 and prepares Chapter 03. This is an editorial brief, not a completed lesson.
 
@@ -61,7 +61,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 03 — Programming foundations
 
-**Stage 1; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Use small programs to support repeatable case processing while keeping inputs and decisions inspectable.
 
@@ -71,7 +71,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A synthetic intake script that rejects incomplete incident forms.
 
-**Practice and exercises:** Specify the parser, test malformed submissions and record rejected cases without losing originals. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Specify the parser, test malformed submissions and record rejected cases without losing originals. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 02 and prepares Chapter 04. This is an editorial brief, not a completed lesson.
 
@@ -79,7 +79,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 04 — Data models
 
-**Stage 1; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Represent incident objects consistently across tools and teams so handoffs do not silently change meaning.
 
@@ -89,7 +89,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A fictional case record joined to identity events and service tickets.
 
-**Practice and exercises:** Design a minimal case schema and show how two inconsistent fields are reconciled. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Design a minimal case schema and show how two inconsistent fields are reconciled. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 03 and prepares Chapter 05. This is an editorial brief, not a completed lesson.
 
@@ -97,7 +97,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 05 — Security literacy
 
-**Stage 1; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Connect foundational risk and control ideas to the practical choices an incident service makes.
 
@@ -107,7 +107,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A synthetic alert concerning a staff account used by a critical scheduling system.
 
-**Practice and exercises:** Explain the risk claim, its uncertainty and the control evidence needed before escalation. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Explain the risk claim, its uncertainty and the control evidence needed before escalation. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 04 and prepares Chapter 06. This is an editorial brief, not a completed lesson.
 
@@ -115,7 +115,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 06 — Operating systems and virtualization
 
-**Stage 2; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Map host and virtual-machine boundaries that affect collection, containment and recovery.
 
@@ -125,7 +125,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A synthetic virtualized application with a shared hypervisor and two guest instances.
 
-**Practice and exercises:** Compare guest-only and host-level evidence needs, then plan a reversible lab snapshot. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Compare guest-only and host-level evidence needs, then plan a reversible lab snapshot. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 05 and prepares Chapter 07. This is an editorial brief, not a completed lesson.
 
@@ -133,7 +133,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 07 — Identity and access foundations
 
-**Stage 2; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Identify who can approve, perform and audit response actions in a multi-service environment.
 
@@ -143,7 +143,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A fictional on-call rotation with service owners and a cloud administrator.
 
-**Practice and exercises:** Build an access matrix for case review, containment approval and evidence storage. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Build an access matrix for case review, containment approval and evidence storage. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 06 and prepares Chapter 08. This is an editorial brief, not a completed lesson.
 
@@ -151,7 +151,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 08 — Security architecture basics
 
-**Stage 2; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Introduce trust boundaries and resilient design choices before integrating response controls.
 
@@ -161,7 +161,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A synthetic booking platform that shares identity services with another department.
 
-**Practice and exercises:** Mark trust boundaries and compare where a monitoring or containment control belongs. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Mark trust boundaries and compare where a monitoring or containment control belongs. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 07 and prepares Chapter 09. This is an editorial brief, not a completed lesson.
 
@@ -169,7 +169,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 09 — Evidence and measurement
 
-**Stage 2; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Define what counts as defensible evidence and a useful measure of response performance.
 
@@ -179,7 +179,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A fabricated incident dashboard with missing case closure dates.
 
-**Practice and exercises:** Audit two metrics, reconstruct denominators and flag unsupported claims. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Audit two metrics, reconstruct denominators and flag unsupported claims. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 08 and prepares Chapter 10. This is an editorial brief, not a completed lesson.
 
@@ -187,7 +187,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 10 — Incident response service model and operating roles
 
-**Stage 2; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Treat response as a managed service with defined customers, authority, handoffs and review points.
 
@@ -197,7 +197,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A synthetic organization with SOC, IT operations and a service owner.
 
-**Practice and exercises:** Draft a response service charter and assign responsibility for each major decision. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Draft a response service charter and assign responsibility for each major decision. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 09 and prepares Chapter 11. This is an editorial brief, not a completed lesson.
 
@@ -205,7 +205,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 11 — Asset inventory and business-service dependencies
 
-**Stage 3; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Make inventory useful for decisions by linking technical assets to service outcomes and owners.
 
@@ -215,7 +215,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A fictional health-clinic scheduling service dependent on identity, messaging and backups.
 
-**Practice and exercises:** Build a dependency map and justify the order of preservation and recovery tasks. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Build a dependency map and justify the order of preservation and recovery tasks. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 10 and prepares Chapter 12. This is an editorial brief, not a completed lesson.
 
@@ -223,7 +223,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 12 — Evidence flows across identity, endpoint and cloud
 
-**Stage 3; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Connect telemetry from different platforms without treating every event as the same kind of proof.
 
@@ -233,7 +233,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** Synthetic identity sign-ins, endpoint alerts and cloud audit events for one case.
 
-**Practice and exercises:** Design an evidence-flow diagram and identify missing links and privacy constraints. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Design an evidence-flow diagram and identify missing links and privacy constraints. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 11 and prepares Chapter 13. This is an editorial brief, not a completed lesson.
 
@@ -241,7 +241,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 13 — Incident risk scenarios and triage thresholds
 
-**Stage 3; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Set defensible escalation thresholds that account for impact, confidence and response cost.
 
@@ -251,7 +251,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A synthetic mass-login alert during a planned migration weekend.
 
-**Practice and exercises:** Define triage rules, test boundary cases and explain when a human must override them. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Define triage rules, test boundary cases and explain when a human must override them. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 12 and prepares Chapter 14. This is an editorial brief, not a completed lesson.
 
@@ -259,7 +259,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 14 — Case intake, scope and ownership methods
 
-**Stage 3; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Turn incoming reports into scoped, accountable cases before action begins.
 
@@ -269,7 +269,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A fictional help-desk ticket with incomplete system and reporter details.
 
-**Practice and exercises:** Complete a bounded intake record and route missing facts to the right owner. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Complete a bounded intake record and route missing facts to the right owner. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 13 and prepares Chapter 15. This is an editorial brief, not a completed lesson.
 
@@ -277,7 +277,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 15 — Guided lab: reconstruct a bounded incident timeline
 
-**Stage 3; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Practice combining technical and operational records into a reviewable case chronology.
 
@@ -287,7 +287,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A synthetic log bundle and service ticket chain with clock offsets.
 
-**Practice and exercises:** Reconstruct the timeline, show disputed ordering and submit a provenance note. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Reconstruct the timeline, show disputed ordering and submit a provenance note. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 14 and prepares Chapter 16. This is an editorial brief, not a completed lesson.
 
@@ -295,7 +295,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 16 — Investigation methods across multiple data sources
 
-**Stage 4; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Compare hypotheses using independent sources while keeping the investigation within authorization.
 
@@ -305,7 +305,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A fictional account access anomaly with endpoint, network and cloud records.
 
-**Practice and exercises:** Test two explanations, name the least invasive next check and record limits. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Test two explanations, name the least invasive next check and record limits. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 15 and prepares Chapter 17. This is an editorial brief, not a completed lesson.
 
@@ -313,7 +313,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 17 — Case-management and evidence-storage tooling
 
-**Stage 4; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Specify a tool workflow that preserves case history, access boundaries and retrieval ability.
 
@@ -323,7 +323,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A simulated case platform with a shared attachment store and missing role separation.
 
-**Practice and exercises:** Configure or model case states and permissions, then test an unauthorized-access scenario. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Configure or model case states and permissions, then test an unauthorized-access scenario. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 16 and prepares Chapter 18. This is an editorial brief, not a completed lesson.
 
@@ -331,7 +331,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 18 — Containment and recovery control implementation
 
-**Stage 4; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Integrate scoped interventions with service validation and rollback rather than closing on one alert.
 
@@ -341,7 +341,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** An isolated lab service with a compromised synthetic identity and dependency on a database.
 
-**Practice and exercises:** Implement two reversible controls, measure impact and verify restoration criteria. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Implement two reversible controls, measure impact and verify restoration criteria. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 17 and prepares Chapter 19. This is an editorial brief, not a completed lesson.
 
@@ -349,7 +349,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 19 — Detection-to-response monitoring and feedback
 
-**Stage 4; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Close the loop between alert production, case decisions and control improvement.
 
@@ -359,7 +359,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A fictional detection rule repeatedly opening duplicate cases.
 
-**Practice and exercises:** Measure duplicate rate, revise the handoff and document the effect on triage time. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Measure duplicate rate, revise the handoff and document the effect on triage time. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 18 and prepares Chapter 20. This is an editorial brief, not a completed lesson.
 
@@ -367,7 +367,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 20 — Troubleshoot incomplete or contradictory case records
 
-**Stage 4; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Diagnose workflow and telemetry defects before drawing stronger conclusions from a case.
 
@@ -377,7 +377,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A synthetic case where the timeline conflicts with a change ticket.
 
-**Practice and exercises:** Trace the inconsistency to its source, repair the record and preserve the original error. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Trace the inconsistency to its source, repair the record and preserve the original error. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 19 and prepares Chapter 21. This is an editorial brief, not a completed lesson.
 
@@ -385,7 +385,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 21 — Integrate response with service management
 
-**Stage 5; 30 planned A4 pages; 1 planned exercises.** Planned; authored chapter pending.
+**Stage 5; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Coordinate security work with change, incident and continuity processes across the organization.
 
@@ -395,7 +395,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A fictional containment request during a critical payroll processing window.
 
-**Practice and exercises:** Design the coordination path and document approval, fallback and service acceptance. The planned allocation is 1 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Design the coordination path and document approval, fallback and service acceptance. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 20 and prepares Chapter 22. This is an editorial brief, not a completed lesson.
 
@@ -403,7 +403,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 22 — Automate repeatable evidence and notification tasks
 
-**Stage 5; 30 planned A4 pages; 1 planned exercises.** Planned; authored chapter pending.
+**Stage 5; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Automate bounded support tasks while keeping authority, source records and human decisions explicit.
 
@@ -413,7 +413,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A local workflow that copies approved synthetic logs and drafts a status message.
 
-**Practice and exercises:** Specify and test failure paths, duplicate runs and the human approval checkpoint. The planned allocation is 1 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Specify and test failure paths, duplicate runs and the human approval checkpoint. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 21 and prepares Chapter 23. This is an editorial brief, not a completed lesson.
 
@@ -421,7 +421,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 23 — Evaluate response latency and decision quality
 
-**Stage 5; 30 planned A4 pages; 1 planned exercises.** Planned; authored chapter pending.
+**Stage 5; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Assess operational performance without rewarding rushed or unsupported case closure.
 
@@ -431,7 +431,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A fabricated month of cases with incomplete timestamps and varied severity.
 
-**Practice and exercises:** Compute qualified metrics and explain how missing cases change the conclusion. The planned allocation is 1 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Compute qualified metrics and explain how missing cases change the conclusion. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 22 and prepares Chapter 24. This is an editorial brief, not a completed lesson.
 
@@ -439,7 +439,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 24 — Applied methods: compare two incident playbooks
 
-**Stage 5; 30 planned A4 pages; 1 planned exercises.** Planned; authored chapter pending.
+**Stage 5; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Judge whether alternative playbooks lead to safe and auditable decisions in the same scenario.
 
@@ -449,7 +449,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** Two synthetic credential-compromise playbooks with different approval gates.
 
-**Practice and exercises:** Walk both through one case, compare tradeoffs and recommend a documented revision. The planned allocation is 1 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Walk both through one case, compare tradeoffs and recommend a documented revision. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 23 and prepares Chapter 25. This is an editorial brief, not a completed lesson.
 
@@ -457,7 +457,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 25 — Team studio: build and critique a response workflow
 
-**Stage 5; 30 planned A4 pages; 1 planned exercises.** Planned; authored chapter pending.
+**Stage 5; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Combine service design, evidence flow, controls and people into one usable operating model.
 
@@ -467,7 +467,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A fictional small enterprise adding cloud and endpoint monitoring to an existing SOC.
 
-**Practice and exercises:** Draft the workflow, run a peer failure review and revise ambiguous ownership. The planned allocation is 1 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Draft the workflow, run a peer failure review and revise ambiguous ownership. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 24 and prepares Chapter 26. This is an editorial brief, not a completed lesson.
 
@@ -475,7 +475,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 26 — Operational handoff and communications practice
 
-**Stage 6; 30 planned A4 pages; 1 planned exercises.** Planned; authored chapter pending.
+**Stage 6; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Ensure case decisions remain actionable and appropriately scoped when teams or shifts change.
 
@@ -485,7 +485,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A staged incident crossing an on-call shift and a service-owner briefing.
 
-**Practice and exercises:** Prepare a technical handoff and a plain-language update, then test both for omissions. The planned allocation is 1 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Prepare a technical handoff and a plain-language update, then test both for omissions. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 25 and prepares Chapter 27. This is an editorial brief, not a completed lesson.
 
@@ -493,7 +493,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 27 — Deploy and validate an incident case workflow
 
-**Stage 6; 30 planned A4 pages; 1 planned exercises.** Planned; authored chapter pending.
+**Stage 6; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Verify that an implemented workflow preserves evidence, approvals and recoverability under normal and failed paths.
 
@@ -503,7 +503,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** An isolated case-management sandbox with role-based access and synthetic events.
 
-**Practice and exercises:** Deploy the workflow, test authorized and unauthorized paths, and record acceptance evidence. The planned allocation is 1 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Deploy the workflow, test authorized and unauthorized paths, and record acceptance evidence. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 26 and prepares Chapter 28. This is an editorial brief, not a completed lesson.
 
@@ -511,7 +511,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 28 — Field simulation with authorized stakeholders
 
-**Stage 6; 30 planned A4 pages; 1 planned exercises.** Planned; authored chapter pending.
+**Stage 6; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Exercise the integrated service under changing evidence and stakeholder constraints without affecting live systems.
 
@@ -521,7 +521,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A synthetic cross-team incident involving a cloud account and a public service.
 
-**Practice and exercises:** Run a tabletop, log decisions and assess handoffs against preagreed criteria. The planned allocation is 1 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Run a tabletop, log decisions and assess handoffs against preagreed criteria. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 27 and prepares Chapter 29. This is an editorial brief, not a completed lesson.
 
@@ -529,7 +529,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 29 — Capstone: integrated response and recovery service
 
-**Stage 6; 30 planned A4 pages; 1 planned exercises.** Planned; authored chapter pending.
+**Stage 6; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Demonstrate a complete designed service from alert intake through safe return to operation.
 
@@ -539,7 +539,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A fictional regional appointment platform with identity and database dependencies.
 
-**Practice and exercises:** Build the service design, run a bounded simulated case and submit the evidence dossier. The planned allocation is 1 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Build the service design, run a bounded simulated case and submit the evidence dossier. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 28 and prepares Chapter 30. This is an editorial brief, not a completed lesson.
 
@@ -547,7 +547,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 30 — Capstone evaluation and improvement dossier
 
-**Stage 6; 30 planned A4 pages; 1 planned exercises.** Planned; authored chapter pending.
+**Stage 6; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
 **Teaching purpose and relevance:** Evaluate the capstone's claims and turn observed shortcomings into measurable changes.
 
@@ -557,7 +557,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** The capstone artifacts, observer notes and synthetic service metrics.
 
-**Practice and exercises:** Defend design choices, quantify unresolved risks and prioritize the next release's improvements. The planned allocation is 1 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Defend design choices, quantify unresolved risks and prioritize the next release's improvements. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 29 and prepares the worked-answer appendix and final assessment. This is an editorial brief, not a completed lesson.
 

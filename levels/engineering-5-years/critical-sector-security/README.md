@@ -4,7 +4,7 @@
 
 **Scope:** Security for healthcare, energy, transport, finance and public services with sector-specific risk.
 
-**Audience:** Security systems designers. **Entry knowledge:** Calculus, computing, networks and systems engineering; Computing, security foundations and sector context.
+**Audience:** Security systems designers. **Entry knowledge:** Calculus, computing, networks and systems engineering.
 
 **Exit goal:** design, build and validate complex systems under constraints in critical infrastructure and sector security. **Practical work:** model tradeoffs, implement controls and test failure modes. **Assessment plan:** design dossier, verification results and engineering thesis.
 

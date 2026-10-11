@@ -4,7 +4,7 @@
 
 **Scope:** Protect information confidentiality, integrity and availability through policy, classification, controls and assurance.
 
-**Audience:** Technology implementers and administrators. **Entry knowledge:** Computing foundations and introductory security operations; Basic digital literacy and safe practice.
+**Audience:** Technology implementers and administrators. **Entry knowledge:** Computing foundations and introductory security operations.
 
 **Exit goal:** integrate services, controls, operations and measurement in information security. **Practical work:** implement an end-to-end service with monitored controls. **Assessment plan:** integration project, operational evidence and design review.
 

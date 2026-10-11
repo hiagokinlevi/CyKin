@@ -4,7 +4,7 @@
 
 **Scope:** Secure development, APIs, web and mobile applications, DevSecOps, dependencies and build integrity.
 
-**Audience:** Technical operators. **Entry knowledge:** Networks, operating systems, scripting and safe lab practice; Computing, network and security foundations.
+**Audience:** Technical operators. **Entry knowledge:** Networks, operating systems, scripting and safe lab practice.
 
 **Exit goal:** diagnose failures, configure controls and verify outcomes in application and software supply chain security. **Practical work:** build and troubleshoot a reproducible lab. **Assessment plan:** practical examinations, troubleshooting log and supervised project.
 

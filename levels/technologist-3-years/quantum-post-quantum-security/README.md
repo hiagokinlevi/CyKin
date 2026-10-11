@@ -4,7 +4,7 @@
 
 **Scope:** Quantum computing implications, cryptographic discovery, post-quantum migration, protocol interoperability and quantum network assurance.
 
-**Audience:** Technology implementers and administrators. **Entry knowledge:** Computing foundations and introductory security operations; Computing, security foundations and sector context.
+**Audience:** Technology implementers and administrators. **Entry knowledge:** Computing foundations and introductory security operations.
 
 **Exit goal:** integrate services, controls, operations and measurement in quantum and post-quantum security. **Practical work:** implement an end-to-end service with monitored controls. **Assessment plan:** integration project, operational evidence and design review.
 

@@ -4,7 +4,7 @@
 
 **Scope:** Smart contracts, wallets, custody, token systems, decentralized applications and on-chain or off-chain risk.
 
-**Audience:** Broad security and computing students. **Entry knowledge:** Mathematics, computing and communication foundations; Computing, network and security foundations.
+**Audience:** Broad security and computing students. **Entry knowledge:** Mathematics, computing and communication foundations.
 
 **Exit goal:** compare theories and methods, evaluate evidence and design defensible solutions in web3, blockchain and cryptoasset security. **Practical work:** compare alternatives using explicit assumptions and data. **Assessment plan:** research paper, cross-domain capstone and oral defense.
 

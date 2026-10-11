@@ -4,7 +4,7 @@
 
 **Scope:** Network protocols, segmentation, DNS, email, wireless, mobile and satellite communications.
 
-**Audience:** Technology implementers and administrators. **Entry knowledge:** Computing foundations and introductory security operations; Computing, network and security foundations.
+**Audience:** Technology implementers and administrators. **Entry knowledge:** Computing foundations and introductory security operations.
 
 **Exit goal:** integrate services, controls, operations and measurement in network and communications security. **Practical work:** implement an end-to-end service with monitored controls. **Assessment plan:** integration project, operational evidence and design review.
 

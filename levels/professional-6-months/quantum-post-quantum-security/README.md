@@ -4,7 +4,7 @@
 
 **Scope:** Quantum computing implications, cryptographic discovery, post-quantum migration, protocol interoperability and quantum network assurance.
 
-**Audience:** Entry-level practitioners. **Entry knowledge:** Security basics and the relevant system fundamentals; Computing, security foundations and sector context.
+**Audience:** Entry-level practitioners. **Entry knowledge:** Security basics and the relevant system fundamentals.
 
 **Exit goal:** operate a repeatable workflow and communicate findings in quantum and post-quantum security. **Practical work:** run a supervised workflow with evidence checkpoints. **Assessment plan:** portfolio of cases, lab rubric and final practical review.
 

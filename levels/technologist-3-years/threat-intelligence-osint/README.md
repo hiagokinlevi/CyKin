@@ -4,7 +4,7 @@
 
 **Scope:** Source assessment, adversary analysis, intelligence production and exposure monitoring.
 
-**Audience:** Technology implementers and administrators. **Entry knowledge:** Computing foundations and introductory security operations; Systems, logs, networks and authorized lab practice.
+**Audience:** Technology implementers and administrators. **Entry knowledge:** Computing foundations and introductory security operations.
 
 **Exit goal:** integrate services, controls, operations and measurement in threat intelligence and osint. **Practical work:** implement an end-to-end service with monitored controls. **Assessment plan:** integration project, operational evidence and design review.
 

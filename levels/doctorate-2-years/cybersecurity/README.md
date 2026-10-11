@@ -4,7 +4,7 @@
 
 **Scope:** Foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems.
 
-**Audience:** Advanced researchers. **Entry knowledge:** Research experience and a defensible original question; Basic digital literacy and safe practice.
+**Audience:** Advanced researchers. **Entry knowledge:** Research experience and a defensible original question.
 
 **Exit goal:** test an original contribution and its limits independently in cybersecurity. **Practical work:** replicate baselines, challenge assumptions and publish evidence. **Assessment plan:** original research portfolio, thesis and defense plan.
 

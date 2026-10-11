@@ -4,7 +4,7 @@
 
 **Scope:** Cloud identity, posture, hybrid infrastructure, virtualization, containers and Kubernetes.
 
-**Audience:** Technical operators. **Entry knowledge:** Networks, operating systems, scripting and safe lab practice; Computing, network and security foundations.
+**Audience:** Technical operators. **Entry knowledge:** Networks, operating systems, scripting and safe lab practice.
 
 **Exit goal:** diagnose failures, configure controls and verify outcomes in cloud and container security. **Practical work:** build and troubleshoot a reproducible lab. **Assessment plan:** practical examinations, troubleshooting log and supervised project.
 

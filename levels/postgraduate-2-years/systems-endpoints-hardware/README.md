@@ -4,7 +4,7 @@
 
 **Scope:** Operating systems, endpoint controls, mobile devices, firmware and hardware roots of trust.
 
-**Audience:** Experienced specialists. **Entry knowledge:** Prior degree or equivalent professional experience in the field; Computing, network and security foundations.
+**Audience:** Experienced specialists. **Entry knowledge:** Prior degree or equivalent professional experience in the field.
 
 **Exit goal:** lead advanced application and justify organization-scale choices in systems, endpoints and hardware security. **Practical work:** critique a real-world design with sanitized evidence. **Assessment plan:** advanced case analysis and applied final project.
 

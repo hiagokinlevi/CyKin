@@ -4,7 +4,7 @@
 
 **Scope:** Scoped testing, adversary emulation, red team operations and purple team validation.
 
-**Audience:** Technical operators. **Entry knowledge:** Networks, operating systems, scripting and safe lab practice; Systems, logs, networks and authorized lab practice.
+**Audience:** Technical operators. **Entry knowledge:** Networks, operating systems, scripting and safe lab practice.
 
 **Exit goal:** diagnose failures, configure controls and verify outcomes in authorized offensive security and red team. **Practical work:** build and troubleshoot a reproducible lab. **Assessment plan:** practical examinations, troubleshooting log and supervised project.
 

@@ -4,7 +4,7 @@
 
 **Scope:** Source assessment, adversary analysis, intelligence production and exposure monitoring.
 
-**Audience:** Security systems designers. **Entry knowledge:** Calculus, computing, networks and systems engineering; Systems, logs, networks and authorized lab practice.
+**Audience:** Security systems designers. **Entry knowledge:** Calculus, computing, networks and systems engineering.
 
 **Exit goal:** design, build and validate complex systems under constraints in threat intelligence and osint. **Practical work:** model tradeoffs, implement controls and test failure modes. **Assessment plan:** design dossier, verification results and engineering thesis.
 

@@ -4,7 +4,7 @@
 
 **Scope:** Secure development, APIs, web and mobile applications, DevSecOps, dependencies and build integrity.
 
-**Audience:** Broad security and computing students. **Entry knowledge:** Mathematics, computing and communication foundations; Computing, network and security foundations.
+**Audience:** Broad security and computing students. **Entry knowledge:** Mathematics, computing and communication foundations.
 
 **Exit goal:** compare theories and methods, evaluate evidence and design defensible solutions in application and software supply chain security. **Practical work:** compare alternatives using explicit assumptions and data. **Assessment plan:** research paper, cross-domain capstone and oral defense.
 

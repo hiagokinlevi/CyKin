@@ -4,7 +4,7 @@
 
 **Scope:** Smart contracts, wallets, custody, token systems, decentralized applications and on-chain or off-chain risk.
 
-**Audience:** Technology implementers and administrators. **Entry knowledge:** Computing foundations and introductory security operations; Computing, network and security foundations.
+**Audience:** Technology implementers and administrators. **Entry knowledge:** Computing foundations and introductory security operations.
 
 **Exit goal:** integrate services, controls, operations and measurement in web3, blockchain and cryptoasset security. **Practical work:** implement an end-to-end service with monitored controls. **Assessment plan:** integration project, operational evidence and design review.
 

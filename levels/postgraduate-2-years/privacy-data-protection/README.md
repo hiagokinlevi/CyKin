@@ -4,7 +4,7 @@
 
 **Scope:** Personal-data mapping, minimization, privacy engineering, rights, lawful processing and breach readiness.
 
-**Audience:** Experienced specialists. **Entry knowledge:** Prior degree or equivalent professional experience in the field; Security literacy, organizational context and evidence.
+**Audience:** Experienced specialists. **Entry knowledge:** Prior degree or equivalent professional experience in the field.
 
 **Exit goal:** lead advanced application and justify organization-scale choices in privacy and data protection. **Practical work:** critique a real-world design with sanitized evidence. **Assessment plan:** advanced case analysis and applied final project.
 

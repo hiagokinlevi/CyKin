@@ -4,7 +4,7 @@
 
 **Scope:** Cloud identity, posture, hybrid infrastructure, virtualization, containers and Kubernetes.
 
-**Audience:** Technology implementers and administrators. **Entry knowledge:** Computing foundations and introductory security operations; Computing, network and security foundations.
+**Audience:** Technology implementers and administrators. **Entry knowledge:** Computing foundations and introductory security operations.
 
 **Exit goal:** integrate services, controls, operations and measurement in cloud and container security. **Practical work:** implement an end-to-end service with monitored controls. **Assessment plan:** integration project, operational evidence and design review.
 

@@ -4,7 +4,7 @@
 
 **Scope:** Scoped testing, adversary emulation, red team operations and purple team validation.
 
-**Audience:** Broad security and computing students. **Entry knowledge:** Mathematics, computing and communication foundations; Systems, logs, networks and authorized lab practice.
+**Audience:** Broad security and computing students. **Entry knowledge:** Mathematics, computing and communication foundations.
 
 **Exit goal:** compare theories and methods, evaluate evidence and design defensible solutions in authorized offensive security and red team. **Practical work:** compare alternatives using explicit assumptions and data. **Assessment plan:** research paper, cross-domain capstone and oral defense.
 

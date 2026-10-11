@@ -32,81 +32,81 @@ This subject teaches **Authority, scope and response roles** and contributes to 
 
 ### Chapter 03 — Alert intake and severity assessment
 
-**Stage 2; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Alert intake and severity assessment** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 02 and prepares Chapter 04. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Alert intake and severity assessment** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 02 and prepares Chapter 04. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-04"></a>
 
 ### Chapter 04 — Evidence preservation and case records
 
-**Stage 2; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Evidence preservation and case records** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 03 and prepares Chapter 05. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Evidence preservation and case records** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 03 and prepares Chapter 05. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-05"></a>
 
 ### Chapter 05 — Investigation, hypotheses and timeline building
 
-**Stage 3; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Investigation, hypotheses and timeline building** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 04 and prepares Chapter 06. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Investigation, hypotheses and timeline building** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 04 and prepares Chapter 06. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-06"></a>
 
 ### Chapter 06 — Containment planning and approvals
 
-**Stage 3; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Containment planning and approvals** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 05 and prepares Chapter 07. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Containment planning and approvals** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 05 and prepares Chapter 07. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-07"></a>
 
 ### Chapter 07 — Eradication and verification
 
-**Stage 4; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Eradication and verification** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 06 and prepares Chapter 08. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Eradication and verification** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 06 and prepares Chapter 08. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-08"></a>
 
 ### Chapter 08 — Recovery, continuity and return to service
 
-**Stage 4; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Recovery, continuity and return to service** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 07 and prepares Chapter 09. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Recovery, continuity and return to service** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 07 and prepares Chapter 09. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-09"></a>
 
 ### Chapter 09 — Communications, privacy and legal coordination
 
-**Stage 5; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 5; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Communications, privacy and legal coordination** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 08 and prepares Chapter 10. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Communications, privacy and legal coordination** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 08 and prepares Chapter 10. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-10"></a>
 
 ### Chapter 10 — Playbook engineering and quality review
 
-**Stage 5; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 5; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Playbook engineering and quality review** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 09 and prepares Chapter 11. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Playbook engineering and quality review** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 09 and prepares Chapter 11. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-11"></a>
 
 ### Chapter 11 — Supervised incident simulation
 
-**Stage 6; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 6; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Supervised incident simulation** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 10 and prepares Chapter 12. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Supervised incident simulation** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 10 and prepares Chapter 12. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-12"></a>
 
 ### Chapter 12 — Case portfolio and after-action review
 
-**Stage 6; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 6; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Case portfolio and after-action review** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 11 and prepares the worked-answer appendix and final assessment. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Case portfolio and after-action review** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 11 and prepares the worked-answer appendix and final assessment. This paragraph is an editorial summary, not an authored lesson.
 
 ## Practical and assessment plan
 

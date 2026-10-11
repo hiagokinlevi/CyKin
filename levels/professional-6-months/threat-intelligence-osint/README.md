@@ -4,7 +4,7 @@
 
 **Scope:** Source assessment, adversary analysis, intelligence production and exposure monitoring.
 
-**Audience:** Entry-level practitioners. **Entry knowledge:** Security basics and the relevant system fundamentals; Systems, logs, networks and authorized lab practice.
+**Audience:** Entry-level practitioners. **Entry knowledge:** Security basics and the relevant system fundamentals.
 
 **Exit goal:** operate a repeatable workflow and communicate findings in threat intelligence and osint. **Practical work:** run a supervised workflow with evidence checkpoints. **Assessment plan:** portfolio of cases, lab rubric and final practical review.
 

@@ -4,7 +4,7 @@
 
 **Scope:** Security strategy, risk decisions, audit evidence, assurance, policy and program measurement.
 
-**Audience:** Technology implementers and administrators. **Entry knowledge:** Computing foundations and introductory security operations; Security literacy, organizational context and evidence.
+**Audience:** Technology implementers and administrators. **Entry knowledge:** Computing foundations and introductory security operations.
 
 **Exit goal:** integrate services, controls, operations and measurement in security governance, risk and compliance. **Practical work:** implement an end-to-end service with monitored controls. **Assessment plan:** integration project, operational evidence and design review.
 

@@ -4,7 +4,7 @@
 
 **Scope:** Security monitoring, SOC workflows, detection engineering, hunting, automation and exposure management.
 
-**Audience:** Technical operators. **Entry knowledge:** Networks, operating systems, scripting and safe lab practice; Systems, logs, networks and authorized lab practice.
+**Audience:** Technical operators. **Entry knowledge:** Networks, operating systems, scripting and safe lab practice.
 
 **Exit goal:** diagnose failures, configure controls and verify outcomes in security operations and blue team. **Practical work:** build and troubleshoot a reproducible lab. **Assessment plan:** practical examinations, troubleshooting log and supervised project.
 

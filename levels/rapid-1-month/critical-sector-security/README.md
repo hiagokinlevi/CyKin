@@ -4,7 +4,7 @@
 
 **Scope:** Security for healthcare, energy, transport, finance and public services with sector-specific risk.
 
-**Audience:** New learners. **Entry knowledge:** No prior security role; basic digital literacy; Computing, security foundations and sector context.
+**Audience:** New learners. **Entry knowledge:** No prior security role; basic digital literacy.
 
 **Exit goal:** recognize and explain the core risks; complete one guided task in critical infrastructure and sector security. **Practical work:** follow a contained worked example. **Assessment plan:** short quiz, observed lab and a small annotated artifact.
 

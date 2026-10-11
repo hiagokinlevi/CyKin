@@ -4,7 +4,7 @@
 
 **Scope:** Security strategy, risk decisions, audit evidence, assurance, policy and program measurement.
 
-**Audience:** Experienced specialists. **Entry knowledge:** Prior degree or equivalent professional experience in the field; Security literacy, organizational context and evidence.
+**Audience:** Experienced specialists. **Entry knowledge:** Prior degree or equivalent professional experience in the field.
 
 **Exit goal:** lead advanced application and justify organization-scale choices in security governance, risk and compliance. **Practical work:** critique a real-world design with sanitized evidence. **Assessment plan:** advanced case analysis and applied final project.
 

@@ -4,7 +4,7 @@
 
 **Scope:** Security for healthcare, energy, transport, finance and public services with sector-specific risk.
 
-**Audience:** Experienced specialists. **Entry knowledge:** Prior degree or equivalent professional experience in the field; Computing, security foundations and sector context.
+**Audience:** Experienced specialists. **Entry knowledge:** Prior degree or equivalent professional experience in the field.
 
 **Exit goal:** lead advanced application and justify organization-scale choices in critical infrastructure and sector security. **Practical work:** critique a real-world design with sanitized evidence. **Assessment plan:** advanced case analysis and applied final project.
 

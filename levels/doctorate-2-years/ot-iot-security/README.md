@@ -4,7 +4,7 @@
 
 **Scope:** Industrial control systems, SCADA, connected devices, safety and operational constraints.
 
-**Audience:** Advanced researchers. **Entry knowledge:** Research experience and a defensible original question; Computing, security foundations and sector context.
+**Audience:** Advanced researchers. **Entry knowledge:** Research experience and a defensible original question.
 
 **Exit goal:** test an original contribution and its limits independently in ot, iot and cyber-physical security. **Practical work:** replicate baselines, challenge assumptions and publish evidence. **Assessment plan:** original research portfolio, thesis and defense plan.
 

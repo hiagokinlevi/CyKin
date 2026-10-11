@@ -4,7 +4,7 @@
 
 **Scope:** Protect information confidentiality, integrity and availability through policy, classification, controls and assurance.
 
-**Audience:** Beginning researchers. **Entry knowledge:** Strong domain foundations and research-method literacy; Basic digital literacy and safe practice.
+**Audience:** Beginning researchers. **Entry knowledge:** Strong domain foundations and research-method literacy.
 
 **Exit goal:** formulate a question, evaluate prior work and produce reproducible findings in information security. **Practical work:** design and execute an ethically reviewed study. **Assessment plan:** research proposal, reproducible results and dissertation.
 

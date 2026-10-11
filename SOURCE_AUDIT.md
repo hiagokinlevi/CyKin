@@ -14,6 +14,10 @@ Reviewed 11 October 2026. The linked-source sample below covers the public defau
 
 The nine English Incident Response book plans now link [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) for the current response and risk-management framework, [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) for recovery, [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) for exercises, and [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) for forensic methods. NIST identifies Rev. 3 as superseding Rev. 2. The latter two guides date from 2006; their procedures and tool assumptions need current verification when each lesson is authored. These links are starting points, not a completed bibliography or a claim that NIST content is covered by CyberABC's CC0 dedication.
 
+## Cybersecurity primary-source leads
+
+The English Cybersecurity plans link the [NIST Cybersecurity Framework 2.0](https://www.nist.gov/publications/nist-cybersecurity-framework-csf-20) and its [official FAQ](https://www.nist.gov/cyberframework/faqs). These support the introductory vocabulary and the distinction between framework outcomes and specific technical controls. The Harbor Library learning case is fictional. The authored chapters must cite the relevant primary source beside each factual claim; the links here do not license NIST text as CyberABC content.
+
 ## Public repository samples
 
 All 13 source repositories currently have a CC BY 4.0 `LICENSE` file. Their contents are linked for study and rights review; they are **not** automatically included in CyberABC's CC0 dedication. The GitHub contributors endpoint listed only `hiagokinlevi` for each of those 13 repositories during this audit. Last observed pushes to these repositories were 7–8 May 2026. Word counts below are for the one linked sample per repository, not the repository as a whole.

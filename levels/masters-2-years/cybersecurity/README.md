@@ -4,7 +4,7 @@
 
 **Scope:** Foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems.
 
-**Audience:** Beginning researchers. **Entry knowledge:** Strong domain foundations and research-method literacy; Basic digital literacy and safe practice.
+**Audience:** Beginning researchers. **Entry knowledge:** Strong domain foundations and research-method literacy.
 
 **Exit goal:** formulate a question, evaluate prior work and produce reproducible findings in cybersecurity. **Practical work:** design and execute an ethically reviewed study. **Assessment plan:** research proposal, reproducible results and dissertation.
 

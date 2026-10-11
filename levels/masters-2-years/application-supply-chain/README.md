@@ -4,7 +4,7 @@
 
 **Scope:** Secure development, APIs, web and mobile applications, DevSecOps, dependencies and build integrity.
 
-**Audience:** Beginning researchers. **Entry knowledge:** Strong domain foundations and research-method literacy; Computing, network and security foundations.
+**Audience:** Beginning researchers. **Entry knowledge:** Strong domain foundations and research-method literacy.
 
 **Exit goal:** formulate a question, evaluate prior work and produce reproducible findings in application and software supply chain security. **Practical work:** design and execute an ethically reviewed study. **Assessment plan:** research proposal, reproducible results and dissertation.
 

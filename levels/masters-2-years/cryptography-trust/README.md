@@ -4,7 +4,7 @@
 
 **Scope:** Cryptographic principles, protocols, key management, certificates and trust infrastructure.
 
-**Audience:** Beginning researchers. **Entry knowledge:** Strong domain foundations and research-method literacy; Computing, network and security foundations.
+**Audience:** Beginning researchers. **Entry knowledge:** Strong domain foundations and research-method literacy.
 
 **Exit goal:** formulate a question, evaluate prior work and produce reproducible findings in cryptography and trust services. **Practical work:** design and execute an ethically reviewed study. **Assessment plan:** research proposal, reproducible results and dissertation.
 

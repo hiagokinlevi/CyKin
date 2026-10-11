@@ -4,7 +4,7 @@
 
 **Scope:** Cryptographic principles, protocols, key management, certificates and trust infrastructure.
 
-**Audience:** Entry-level practitioners. **Entry knowledge:** Security basics and the relevant system fundamentals; Computing, network and security foundations.
+**Audience:** Entry-level practitioners. **Entry knowledge:** Security basics and the relevant system fundamentals.
 
 **Exit goal:** operate a repeatable workflow and communicate findings in cryptography and trust services. **Practical work:** run a supervised workflow with evidence checkpoints. **Assessment plan:** portfolio of cases, lab rubric and final practical review.
 

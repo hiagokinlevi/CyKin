@@ -4,7 +4,7 @@
 
 **Scope:** Foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems.
 
-**Audience:** New learners. **Entry knowledge:** No prior security role; basic digital literacy; Basic digital literacy and safe practice.
+**Audience:** New learners. **Entry knowledge:** No prior security role; basic digital literacy.
 
 **Exit goal:** recognize and explain the core risks; complete one guided task in cybersecurity. **Practical work:** follow a contained worked example. **Assessment plan:** short quiz, observed lab and a small annotated artifact.
 

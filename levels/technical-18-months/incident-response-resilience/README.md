@@ -4,7 +4,7 @@
 
 **Scope:** Incident triage, containment, eradication, crisis management, recovery and continuity.
 
-**Audience:** Technical operators. **Entry knowledge:** Networks, operating systems, scripting and safe lab practice; Systems, logs, networks and authorized lab practice.
+**Audience:** Technical operators. **Entry knowledge:** Networks, operating systems, scripting and safe lab practice.
 
 **Exit goal:** diagnose failures, configure controls and verify outcomes in incident response and cyber resilience. **Practical work:** build and troubleshoot a reproducible lab. **Assessment plan:** practical examinations, troubleshooting log and supervised project.
 

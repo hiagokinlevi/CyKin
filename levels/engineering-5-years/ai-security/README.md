@@ -4,7 +4,7 @@
 
 **Scope:** Security of models, LLM applications, agents, data pipelines and autonomous behavior.
 
-**Audience:** Security systems designers. **Entry knowledge:** Calculus, computing, networks and systems engineering; Computing, security foundations and sector context.
+**Audience:** Security systems designers. **Entry knowledge:** Calculus, computing, networks and systems engineering.
 
 **Exit goal:** design, build and validate complex systems under constraints in ai and machine-learning security. **Practical work:** model tradeoffs, implement controls and test failure modes. **Assessment plan:** design dossier, verification results and engineering thesis.
 

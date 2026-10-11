@@ -4,7 +4,7 @@
 
 **Scope:** Scoped testing, adversary emulation, red team operations and purple team validation.
 
-**Audience:** New learners. **Entry knowledge:** No prior security role; basic digital literacy; Systems, logs, networks and authorized lab practice.
+**Audience:** New learners. **Entry knowledge:** No prior security role; basic digital literacy.
 
 **Exit goal:** recognize and explain the core risks; complete one guided task in authorized offensive security and red team. **Practical work:** follow a contained worked example. **Assessment plan:** short quiz, observed lab and a small annotated artifact.
 

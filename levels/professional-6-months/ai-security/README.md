@@ -4,7 +4,7 @@
 
 **Scope:** Security of models, LLM applications, agents, data pipelines and autonomous behavior.
 
-**Audience:** Entry-level practitioners. **Entry knowledge:** Security basics and the relevant system fundamentals; Computing, security foundations and sector context.
+**Audience:** Entry-level practitioners. **Entry knowledge:** Security basics and the relevant system fundamentals.
 
 **Exit goal:** operate a repeatable workflow and communicate findings in ai and machine-learning security. **Practical work:** run a supervised workflow with evidence checkpoints. **Assessment plan:** portfolio of cases, lab rubric and final practical review.
 

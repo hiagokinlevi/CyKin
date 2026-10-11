@@ -4,7 +4,7 @@
 
 **Scope:** Quantum computing implications, cryptographic discovery, post-quantum migration, protocol interoperability and quantum network assurance.
 
-**Audience:** Experienced specialists. **Entry knowledge:** Prior degree or equivalent professional experience in the field; Computing, security foundations and sector context.
+**Audience:** Experienced specialists. **Entry knowledge:** Prior degree or equivalent professional experience in the field.
 
 **Exit goal:** lead advanced application and justify organization-scale choices in quantum and post-quantum security. **Practical work:** critique a real-world design with sanitized evidence. **Assessment plan:** advanced case analysis and applied final project.
 

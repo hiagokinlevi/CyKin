@@ -4,7 +4,7 @@
 
 **Scope:** Operating systems, endpoint controls, mobile devices, firmware and hardware roots of trust.
 
-**Audience:** Broad security and computing students. **Entry knowledge:** Mathematics, computing and communication foundations; Computing, network and security foundations.
+**Audience:** Broad security and computing students. **Entry knowledge:** Mathematics, computing and communication foundations.
 
 **Exit goal:** compare theories and methods, evaluate evidence and design defensible solutions in systems, endpoints and hardware security. **Practical work:** compare alternatives using explicit assumptions and data. **Assessment plan:** research paper, cross-domain capstone and oral defense.
 

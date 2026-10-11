@@ -4,7 +4,7 @@
 
 **Scope:** Personal-data mapping, minimization, privacy engineering, rights, lawful processing and breach readiness.
 
-**Audience:** Technical operators. **Entry knowledge:** Networks, operating systems, scripting and safe lab practice; Security literacy, organizational context and evidence.
+**Audience:** Technical operators. **Entry knowledge:** Networks, operating systems, scripting and safe lab practice.
 
 **Exit goal:** diagnose failures, configure controls and verify outcomes in privacy and data protection. **Practical work:** build and troubleshoot a reproducible lab. **Assessment plan:** practical examinations, troubleshooting log and supervised project.
 

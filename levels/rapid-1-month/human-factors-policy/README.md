@@ -4,7 +4,7 @@
 
 **Scope:** Security culture, human behavior, education, ethics, law, public policy and cooperation.
 
-**Audience:** New learners. **Entry knowledge:** No prior security role; basic digital literacy; Security literacy, organizational context and evidence.
+**Audience:** New learners. **Entry knowledge:** No prior security role; basic digital literacy.
 
 **Exit goal:** recognize and explain the core risks; complete one guided task in human factors and cyber policy. **Practical work:** follow a contained worked example. **Assessment plan:** short quiz, observed lab and a small annotated artifact.
 

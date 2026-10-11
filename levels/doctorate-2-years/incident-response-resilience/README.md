@@ -4,7 +4,7 @@
 
 **Scope:** Incident triage, containment, eradication, crisis management, recovery and continuity.
 
-**Audience:** Advanced researchers. **Entry knowledge:** Research experience and a defensible original question; Systems, logs, networks and authorized lab practice.
+**Audience:** Advanced researchers. **Entry knowledge:** Research experience and a defensible original question.
 
 **Exit goal:** test an original contribution and its limits independently in incident response and cyber resilience. **Practical work:** replicate baselines, challenge assumptions and publish evidence. **Assessment plan:** original research portfolio, thesis and defense plan.
 

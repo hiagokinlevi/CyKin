@@ -22,91 +22,91 @@ This subject teaches **Security foundations for practitioners** and contributes 
 
 <a id="ch-02"></a>
 
-### Chapter 02 — Cybersecurity: service and stakeholder context
+### Chapter 02 — Assets, services and stakeholder needs
 
 **Stage 1; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: service and stakeholder context** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 01 and prepares Chapter 03. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Assets, services and stakeholder needs** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 01 and prepares Chapter 03. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-03"></a>
 
 ### Chapter 03 — Authorized practice and evidence handling
 
-**Stage 2; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Authorized practice and evidence handling** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in cybersecurity. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 02 and prepares Chapter 04. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Authorized practice and evidence handling** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in cybersecurity. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 02 and prepares Chapter 04. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-04"></a>
 
-### Chapter 04 — Cybersecurity: core methods
+### Chapter 04 — Threat and risk scenario framing
 
-**Stage 2; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: core methods** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 03 and prepares Chapter 05. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Threat and risk scenario framing** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 03 and prepares Chapter 05. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-05"></a>
 
-### Chapter 05 — Cybersecurity: tools and interpretation
+### Chapter 05 — Evidence sources and security signals
 
-**Stage 3; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: tools and interpretation** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 04 and prepares Chapter 06. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Evidence sources and security signals** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 04 and prepares Chapter 06. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-06"></a>
 
-### Chapter 06 — Cybersecurity: operational workflow
+### Chapter 06 — Prevent, detect, respond and recover workflow
 
-**Stage 3; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: operational workflow** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 05 and prepares Chapter 07. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Prevent, detect, respond and recover workflow** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 05 and prepares Chapter 07. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-07"></a>
 
-### Chapter 07 — Cybersecurity: controls and verification
+### Chapter 07 — Control selection and verification
 
-**Stage 4; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: controls and verification** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 06 and prepares Chapter 08. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Control selection and verification** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 06 and prepares Chapter 08. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-08"></a>
 
-### Chapter 08 — Cybersecurity: supervised case analysis
+### Chapter 08 — Supervised service-risk case analysis
 
-**Stage 4; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: supervised case analysis** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 07 and prepares Chapter 09. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Supervised service-risk case analysis** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 07 and prepares Chapter 09. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-09"></a>
 
 ### Chapter 09 — Communication, ethics and reporting
 
-**Stage 5; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 5; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Communication, ethics and reporting** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in cybersecurity. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 08 and prepares Chapter 10. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Communication, ethics and reporting** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in cybersecurity. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 08 and prepares Chapter 10. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-10"></a>
 
-### Chapter 10 — Cybersecurity: quality and troubleshooting
+### Chapter 10 — Control gaps and troubleshooting
 
-**Stage 5; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 5; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: quality and troubleshooting** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 09 and prepares Chapter 11. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Control gaps and troubleshooting** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 09 and prepares Chapter 11. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-11"></a>
 
-### Chapter 11 — Supervised laboratory
+### Chapter 11 — Supervised library-service laboratory
 
-**Stage 6; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 6; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Supervised laboratory** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 10 and prepares Chapter 12. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Supervised library-service laboratory** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 10 and prepares Chapter 12. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-12"></a>
 
 ### Chapter 12 — Practice portfolio and final review
 
-**Stage 6; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 6; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Practice portfolio and final review** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 4 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 11 and prepares the worked-answer appendix and final assessment. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Practice portfolio and final review** and contributes to the professional course outcome: operate a repeatable workflow and communicate findings in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will run a supervised workflow with evidence checkpoints. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 5 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 11 and prepares the worked-answer appendix and final assessment. This paragraph is an editorial summary, not an authored lesson.
 
 ## Practical and assessment plan
 

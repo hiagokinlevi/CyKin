@@ -4,7 +4,7 @@
 
 **Scope:** Network protocols, segmentation, DNS, email, wireless, mobile and satellite communications.
 
-**Audience:** Security systems designers. **Entry knowledge:** Calculus, computing, networks and systems engineering; Computing, network and security foundations.
+**Audience:** Security systems designers. **Entry knowledge:** Calculus, computing, networks and systems engineering.
 
 **Exit goal:** design, build and validate complex systems under constraints in network and communications security. **Practical work:** model tradeoffs, implement controls and test failure modes. **Assessment plan:** design dossier, verification results and engineering thesis.
 

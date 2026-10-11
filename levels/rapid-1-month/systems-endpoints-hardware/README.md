@@ -4,7 +4,7 @@
 
 **Scope:** Operating systems, endpoint controls, mobile devices, firmware and hardware roots of trust.
 
-**Audience:** New learners. **Entry knowledge:** No prior security role; basic digital literacy; Computing, network and security foundations.
+**Audience:** New learners. **Entry knowledge:** No prior security role; basic digital literacy.
 
 **Exit goal:** recognize and explain the core risks; complete one guided task in systems, endpoints and hardware security. **Practical work:** follow a contained worked example. **Assessment plan:** short quiz, observed lab and a small annotated artifact.
 

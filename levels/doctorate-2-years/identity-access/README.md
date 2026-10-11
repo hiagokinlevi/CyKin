@@ -4,7 +4,7 @@
 
 **Scope:** Identity lifecycle, authentication, authorization, privileged access and federation.
 
-**Audience:** Advanced researchers. **Entry knowledge:** Research experience and a defensible original question; Computing, network and security foundations.
+**Audience:** Advanced researchers. **Entry knowledge:** Research experience and a defensible original question.
 
 **Exit goal:** test an original contribution and its limits independently in identity and access management. **Practical work:** replicate baselines, challenge assumptions and publish evidence. **Assessment plan:** original research portfolio, thesis and defense plan.
 

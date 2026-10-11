@@ -4,7 +4,7 @@
 
 **Scope:** Incident triage, containment, eradication, crisis management, recovery and continuity.
 
-**Audience:** Entry-level practitioners. **Entry knowledge:** Security basics and the relevant system fundamentals; Systems, logs, networks and authorized lab practice.
+**Audience:** Entry-level practitioners. **Entry knowledge:** Security basics and the relevant system fundamentals.
 
 **Exit goal:** operate a repeatable workflow and communicate findings in incident response and cyber resilience. **Practical work:** run a supervised workflow with evidence checkpoints. **Assessment plan:** portfolio of cases, lab rubric and final practical review.
 

@@ -4,7 +4,7 @@
 
 **Scope:** Foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems.
 
-**Audience:** Technology implementers and administrators. **Entry knowledge:** Computing foundations and introductory security operations; Basic digital literacy and safe practice.
+**Audience:** Technology implementers and administrators. **Entry knowledge:** Computing foundations and introductory security operations.
 
 **Exit goal:** integrate services, controls, operations and measurement in cybersecurity. **Practical work:** implement an end-to-end service with monitored controls. **Assessment plan:** integration project, operational evidence and design review.
 

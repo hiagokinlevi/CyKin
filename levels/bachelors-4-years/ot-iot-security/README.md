@@ -4,7 +4,7 @@
 
 **Scope:** Industrial control systems, SCADA, connected devices, safety and operational constraints.
 
-**Audience:** Broad security and computing students. **Entry knowledge:** Mathematics, computing and communication foundations; Computing, security foundations and sector context.
+**Audience:** Broad security and computing students. **Entry knowledge:** Mathematics, computing and communication foundations.
 
 **Exit goal:** compare theories and methods, evaluate evidence and design defensible solutions in ot, iot and cyber-physical security. **Practical work:** compare alternatives using explicit assumptions and data. **Assessment plan:** research paper, cross-domain capstone and oral defense.
 

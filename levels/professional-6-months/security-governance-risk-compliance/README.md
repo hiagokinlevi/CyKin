@@ -4,7 +4,7 @@
 
 **Scope:** Security strategy, risk decisions, audit evidence, assurance, policy and program measurement.
 
-**Audience:** Entry-level practitioners. **Entry knowledge:** Security basics and the relevant system fundamentals; Security literacy, organizational context and evidence.
+**Audience:** Entry-level practitioners. **Entry knowledge:** Security basics and the relevant system fundamentals.
 
 **Exit goal:** operate a repeatable workflow and communicate findings in security governance, risk and compliance. **Practical work:** run a supervised workflow with evidence checkpoints. **Assessment plan:** portfolio of cases, lab rubric and final practical review.
 

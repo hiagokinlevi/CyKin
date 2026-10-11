@@ -10,6 +10,13 @@
 
 A finished book must contain at least 300 actual A4 pages and 50 substantive exercises with worked results. The current 600-page budget is a plan, not measured pages. Every chapter needs teaching, definitions, a worked example, practical activity, errors and limits, exercises and a synthesis. The final appendix holds answers keyed to the exercise IDs. Cite verifiable sources, label synthetic cases, and review for technical accuracy, rights and accessibility.
 
+## Primary source starting points
+
+- [NIST Cybersecurity Framework 2.0](https://www.nist.gov/publications/nist-cybersecurity-framework-csf-20) — a taxonomy of security outcomes and a source for discussing organizational risk; it does not prescribe a single implementation.
+- [NIST CSF 2.0 FAQ](https://www.nist.gov/cyberframework/faqs) — explanations of framework components and the Govern function.
+
+These sources guide the English teaching plan. The Harbor Library case is synthetic; factual claims in authored lessons need source-specific citations.
+
 ## Contents and chapter summaries
 
 <a id="ch-01"></a>

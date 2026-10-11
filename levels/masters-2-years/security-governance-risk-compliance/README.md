@@ -4,7 +4,7 @@
 
 **Scope:** Security strategy, risk decisions, audit evidence, assurance, policy and program measurement.
 
-**Audience:** Beginning researchers. **Entry knowledge:** Strong domain foundations and research-method literacy; Security literacy, organizational context and evidence.
+**Audience:** Beginning researchers. **Entry knowledge:** Strong domain foundations and research-method literacy.
 
 **Exit goal:** formulate a question, evaluate prior work and produce reproducible findings in security governance, risk and compliance. **Practical work:** design and execute an ethically reviewed study. **Assessment plan:** research proposal, reproducible results and dissertation.
 

@@ -4,7 +4,7 @@
 
 **Scope:** Security monitoring, SOC workflows, detection engineering, hunting, automation and exposure management.
 
-**Audience:** Entry-level practitioners. **Entry knowledge:** Security basics and the relevant system fundamentals; Systems, logs, networks and authorized lab practice.
+**Audience:** Entry-level practitioners. **Entry knowledge:** Security basics and the relevant system fundamentals.
 
 **Exit goal:** operate a repeatable workflow and communicate findings in security operations and blue team. **Practical work:** run a supervised workflow with evidence checkpoints. **Assessment plan:** portfolio of cases, lab rubric and final practical review.
 

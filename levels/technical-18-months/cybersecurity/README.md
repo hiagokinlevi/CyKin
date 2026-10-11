@@ -4,7 +4,7 @@
 
 **Scope:** Foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems.
 
-**Audience:** Technical operators. **Entry knowledge:** Networks, operating systems, scripting and safe lab practice; Basic digital literacy and safe practice.
+**Audience:** Technical operators. **Entry knowledge:** Networks, operating systems, scripting and safe lab practice.
 
 **Exit goal:** diagnose failures, configure controls and verify outcomes in cybersecurity. **Practical work:** build and troubleshoot a reproducible lab. **Assessment plan:** practical examinations, troubleshooting log and supervised project.
 

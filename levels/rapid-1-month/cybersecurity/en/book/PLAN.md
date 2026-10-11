@@ -10,6 +10,13 @@
 
 A finished book must contain at least 300 actual A4 pages and 50 substantive exercises with worked results. The current 320-page budget is a plan, not measured pages. Every chapter needs teaching, definitions, a worked example, practical activity, errors and limits, exercises and a synthesis. The final appendix holds answers keyed to the exercise IDs. Cite verifiable sources, label synthetic cases, and review for technical accuracy, rights and accessibility.
 
+## Primary source starting points
+
+- [NIST Cybersecurity Framework 2.0](https://www.nist.gov/publications/nist-cybersecurity-framework-csf-20) — a taxonomy of security outcomes and a source for discussing organizational risk; it does not prescribe a single implementation.
+- [NIST CSF 2.0 FAQ](https://www.nist.gov/cyberframework/faqs) — explanations of framework components and the Govern function.
+
+These sources guide the English teaching plan. The Harbor Library case is synthetic; factual claims in authored lessons need source-specific citations.
+
 ## Contents and chapter summaries
 
 <a id="ch-01"></a>
@@ -18,7 +25,17 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Stage 1; 80 planned A4 pages; 13 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-01)
 
-This subject teaches **Cybersecurity: foundations and decisions** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in cybersecurity. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will follow a contained worked example. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 13 exercises, then compare reasoning with the final worked-answer appendix. It builds on the entry knowledge and prepares Chapter 02. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Give new learners a way to connect security terms to a service, its people and a bounded decision.
+
+**Concepts and techniques:** Asset; dependency; confidentiality; integrity; availability; risk scenario; control.
+
+**Depth and method:** At rapid course level, learners will follow a contained worked example. Use a guided case record to distinguish observations, assumptions and the next safe action.
+
+**Worked example:** The synthetic Harbor Library booking service with reservations and an event contact list.
+
+**Practice and exercises:** Classify observed facts and assumptions, map assets and justify one proportionate control. The planned allocation is 13 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on the entry knowledge and prepares Chapter 02. This is an editorial brief, not a completed lesson.
 
 <a id="ch-02"></a>
 
@@ -26,7 +43,17 @@ This subject teaches **Cybersecurity: foundations and decisions** and contribute
 
 **Stage 2; 80 planned A4 pages; 13 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-02)
 
-This subject teaches **Scope, permission and safe practice** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will follow a contained worked example. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 13 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 01 and prepares Chapter 03. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Teach how to learn and investigate safely without treating access to a system as authorization to test it.
+
+**Concepts and techniques:** Permission; scope; stop condition; personal data; evidence handling.
+
+**Depth and method:** At rapid course level, learners will follow a contained worked example. Use a guided case record to distinguish observations, assumptions and the next safe action.
+
+**Worked example:** A fictional request to inspect the library website without a written testing scope.
+
+**Practice and exercises:** Rewrite the request as a permitted synthetic exercise with explicit limits and escalation. The planned allocation is 13 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 01 and prepares Chapter 03. This is an editorial brief, not a completed lesson.
 
 <a id="ch-03"></a>
 
@@ -34,7 +61,17 @@ This subject teaches **Scope, permission and safe practice** and contributes to 
 
 **Stage 3; 80 planned A4 pages; 12 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-03)
 
-This subject teaches **Cybersecurity: systems, data and dependencies** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will follow a contained worked example. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 12 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 02 and prepares Chapter 04. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Show how an apparently simple service depends on identity, data, network and recovery arrangements.
+
+**Concepts and techniques:** Service map; trust boundary; data flow; backup; stakeholder.
+
+**Depth and method:** At rapid course level, learners will follow a contained worked example. Use a guided case record to distinguish observations, assumptions and the next safe action.
+
+**Worked example:** The Harbor Library reservation page, staff sign-in and printed fallback schedule.
+
+**Practice and exercises:** Draw the service map and explain two different failure and recovery consequences. The planned allocation is 12 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 02 and prepares Chapter 04. This is an editorial brief, not a completed lesson.
 
 <a id="ch-04"></a>
 
@@ -42,7 +79,17 @@ This subject teaches **Cybersecurity: systems, data and dependencies** and contr
 
 **Stage 4; 80 planned A4 pages; 12 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: guided lab and applied synthesis** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will follow a contained worked example. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 12 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 03 and prepares the worked-answer appendix and final assessment. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Combine vocabulary, safe practice and service analysis in one supervised first project.
+
+**Concepts and techniques:** Risk note; control choice; evidence; limitation; review.
+
+**Depth and method:** At rapid course level, learners will follow a contained worked example. Use a guided case record to distinguish observations, assumptions and the next safe action.
+
+**Worked example:** A staged synthetic library scenario with a stale schedule and suspicious staff sign-in.
+
+**Practice and exercises:** Submit a short service-risk dossier and compare it with a worked rubric. The planned allocation is 12 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 03 and prepares the worked-answer appendix and final assessment. This is an editorial brief, not a completed lesson.
 
 ## Practical and assessment plan
 

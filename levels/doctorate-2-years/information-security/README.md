@@ -4,7 +4,7 @@
 
 **Scope:** Protect information confidentiality, integrity and availability through policy, classification, controls and assurance.
 
-**Audience:** Advanced researchers. **Entry knowledge:** Research experience and a defensible original question; Basic digital literacy and safe practice.
+**Audience:** Advanced researchers. **Entry knowledge:** Research experience and a defensible original question.
 
 **Exit goal:** test an original contribution and its limits independently in information security. **Practical work:** replicate baselines, challenge assumptions and publish evidence. **Assessment plan:** original research portfolio, thesis and defense plan.
 

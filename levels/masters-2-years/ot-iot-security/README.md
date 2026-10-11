@@ -4,7 +4,7 @@
 
 **Scope:** Industrial control systems, SCADA, connected devices, safety and operational constraints.
 
-**Audience:** Beginning researchers. **Entry knowledge:** Strong domain foundations and research-method literacy; Computing, security foundations and sector context.
+**Audience:** Beginning researchers. **Entry knowledge:** Strong domain foundations and research-method literacy.
 
 **Exit goal:** formulate a question, evaluate prior work and produce reproducible findings in ot, iot and cyber-physical security. **Practical work:** design and execute an ethically reviewed study. **Assessment plan:** research proposal, reproducible results and dissertation.
 

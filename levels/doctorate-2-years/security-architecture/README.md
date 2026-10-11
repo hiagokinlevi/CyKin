@@ -4,7 +4,7 @@
 
 **Scope:** Threat modeling, secure design, requirements, verification and system tradeoffs.
 
-**Audience:** Advanced researchers. **Entry knowledge:** Research experience and a defensible original question; Computing, network and security foundations.
+**Audience:** Advanced researchers. **Entry knowledge:** Research experience and a defensible original question.
 
 **Exit goal:** test an original contribution and its limits independently in security architecture and engineering. **Practical work:** replicate baselines, challenge assumptions and publish evidence. **Assessment plan:** original research portfolio, thesis and defense plan.
 

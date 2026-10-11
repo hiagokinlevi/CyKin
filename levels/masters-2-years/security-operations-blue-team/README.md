@@ -4,7 +4,7 @@
 
 **Scope:** Security monitoring, SOC workflows, detection engineering, hunting, automation and exposure management.
 
-**Audience:** Beginning researchers. **Entry knowledge:** Strong domain foundations and research-method literacy; Systems, logs, networks and authorized lab practice.
+**Audience:** Beginning researchers. **Entry knowledge:** Strong domain foundations and research-method literacy.
 
 **Exit goal:** formulate a question, evaluate prior work and produce reproducible findings in security operations and blue team. **Practical work:** design and execute an ethically reviewed study. **Assessment plan:** research proposal, reproducible results and dissertation.
 

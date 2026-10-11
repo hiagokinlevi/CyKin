@@ -10,15 +10,15 @@ English is the reference edition.
 |---|---|---|---:|---:|---:|---|
 | 1 | [01](book/PLAN.md#ch-01) | Security foundations for practitioners | 30 | 30 | 5 | Planned |
 | 1 | [02](book/PLAN.md#ch-02) | Identity and access management: service and stakeholder context | 30 | 30 | 5 | Planned |
-| 2 | [03](book/PLAN.md#ch-03) | Authorized practice and evidence handling | 30 | 30 | 4 | Planned |
-| 2 | [04](book/PLAN.md#ch-04) | Identity and access management: core methods | 30 | 30 | 4 | Planned |
-| 3 | [05](book/PLAN.md#ch-05) | Identity and access management: tools and interpretation | 30 | 30 | 4 | Planned |
-| 3 | [06](book/PLAN.md#ch-06) | Identity and access management: operational workflow | 30 | 30 | 4 | Planned |
-| 4 | [07](book/PLAN.md#ch-07) | Identity and access management: controls and verification | 30 | 30 | 4 | Planned |
-| 4 | [08](book/PLAN.md#ch-08) | Identity and access management: supervised case analysis | 30 | 30 | 4 | Planned |
-| 5 | [09](book/PLAN.md#ch-09) | Communication, ethics and reporting | 30 | 30 | 4 | Planned |
-| 5 | [10](book/PLAN.md#ch-10) | Identity and access management: quality and troubleshooting | 30 | 30 | 4 | Planned |
-| 6 | [11](book/PLAN.md#ch-11) | Supervised laboratory | 30 | 30 | 4 | Planned |
-| 6 | [12](book/PLAN.md#ch-12) | Practice portfolio and final review | 30 | 30 | 4 | Planned |
+| 2 | [03](book/PLAN.md#ch-03) | Authorized practice and evidence handling | 30 | 30 | 5 | Planned |
+| 2 | [04](book/PLAN.md#ch-04) | Identity and access management: core methods | 30 | 30 | 5 | Planned |
+| 3 | [05](book/PLAN.md#ch-05) | Identity and access management: tools and interpretation | 30 | 30 | 5 | Planned |
+| 3 | [06](book/PLAN.md#ch-06) | Identity and access management: operational workflow | 30 | 30 | 5 | Planned |
+| 4 | [07](book/PLAN.md#ch-07) | Identity and access management: controls and verification | 30 | 30 | 5 | Planned |
+| 4 | [08](book/PLAN.md#ch-08) | Identity and access management: supervised case analysis | 30 | 30 | 5 | Planned |
+| 5 | [09](book/PLAN.md#ch-09) | Communication, ethics and reporting | 30 | 30 | 5 | Planned |
+| 5 | [10](book/PLAN.md#ch-10) | Identity and access management: quality and troubleshooting | 30 | 30 | 5 | Planned |
+| 6 | [11](book/PLAN.md#ch-11) | Supervised laboratory | 30 | 30 | 5 | Planned |
+| 6 | [12](book/PLAN.md#ch-12) | Practice portfolio and final review | 30 | 30 | 5 | Planned |
 
 Page and exercise columns are editorial targets. The book is complete only after its content and A4 rendering meet the publication gate.

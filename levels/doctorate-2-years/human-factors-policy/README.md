@@ -4,7 +4,7 @@
 
 **Scope:** Security culture, human behavior, education, ethics, law, public policy and cooperation.
 
-**Audience:** Advanced researchers. **Entry knowledge:** Research experience and a defensible original question; Security literacy, organizational context and evidence.
+**Audience:** Advanced researchers. **Entry knowledge:** Research experience and a defensible original question.
 
 **Exit goal:** test an original contribution and its limits independently in human factors and cyber policy. **Practical work:** replicate baselines, challenge assumptions and publish evidence. **Assessment plan:** original research portfolio, thesis and defense plan.
 

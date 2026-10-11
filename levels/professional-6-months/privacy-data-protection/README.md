@@ -4,7 +4,7 @@
 
 **Scope:** Personal-data mapping, minimization, privacy engineering, rights, lawful processing and breach readiness.
 
-**Audience:** Entry-level practitioners. **Entry knowledge:** Security basics and the relevant system fundamentals; Security literacy, organizational context and evidence.
+**Audience:** Entry-level practitioners. **Entry knowledge:** Security basics and the relevant system fundamentals.
 
 **Exit goal:** operate a repeatable workflow and communicate findings in privacy and data protection. **Practical work:** run a supervised workflow with evidence checkpoints. **Assessment plan:** portfolio of cases, lab rubric and final practical review.
 

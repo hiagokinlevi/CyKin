@@ -4,7 +4,7 @@
 
 **Scope:** Source assessment, adversary analysis, intelligence production and exposure monitoring.
 
-**Audience:** Beginning researchers. **Entry knowledge:** Strong domain foundations and research-method literacy; Systems, logs, networks and authorized lab practice.
+**Audience:** Beginning researchers. **Entry knowledge:** Strong domain foundations and research-method literacy.
 
 **Exit goal:** formulate a question, evaluate prior work and produce reproducible findings in threat intelligence and osint. **Practical work:** design and execute an ethically reviewed study. **Assessment plan:** research proposal, reproducible results and dissertation.
 

@@ -4,7 +4,7 @@
 
 **Scope:** Cloud identity, posture, hybrid infrastructure, virtualization, containers and Kubernetes.
 
-**Audience:** Security systems designers. **Entry knowledge:** Calculus, computing, networks and systems engineering; Computing, network and security foundations.
+**Audience:** Security systems designers. **Entry knowledge:** Calculus, computing, networks and systems engineering.
 
 **Exit goal:** design, build and validate complex systems under constraints in cloud and container security. **Practical work:** model tradeoffs, implement controls and test failure modes. **Assessment plan:** design dossier, verification results and engineering thesis.
 

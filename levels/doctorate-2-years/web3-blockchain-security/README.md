@@ -4,7 +4,7 @@
 
 **Scope:** Smart contracts, wallets, custody, token systems, decentralized applications and on-chain or off-chain risk.
 
-**Audience:** Advanced researchers. **Entry knowledge:** Research experience and a defensible original question; Computing, network and security foundations.
+**Audience:** Advanced researchers. **Entry knowledge:** Research experience and a defensible original question.
 
 **Exit goal:** test an original contribution and its limits independently in web3, blockchain and cryptoasset security. **Practical work:** replicate baselines, challenge assumptions and publish evidence. **Assessment plan:** original research portfolio, thesis and defense plan.
 

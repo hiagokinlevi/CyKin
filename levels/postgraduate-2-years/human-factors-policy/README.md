@@ -4,7 +4,7 @@
 
 **Scope:** Security culture, human behavior, education, ethics, law, public policy and cooperation.
 
-**Audience:** Experienced specialists. **Entry knowledge:** Prior degree or equivalent professional experience in the field; Security literacy, organizational context and evidence.
+**Audience:** Experienced specialists. **Entry knowledge:** Prior degree or equivalent professional experience in the field.
 
 **Exit goal:** lead advanced application and justify organization-scale choices in human factors and cyber policy. **Practical work:** critique a real-world design with sanitized evidence. **Assessment plan:** advanced case analysis and applied final project.
 

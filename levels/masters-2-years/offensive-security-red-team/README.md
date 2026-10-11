@@ -4,7 +4,7 @@
 
 **Scope:** Scoped testing, adversary emulation, red team operations and purple team validation.
 
-**Audience:** Beginning researchers. **Entry knowledge:** Strong domain foundations and research-method literacy; Systems, logs, networks and authorized lab practice.
+**Audience:** Beginning researchers. **Entry knowledge:** Strong domain foundations and research-method literacy.
 
 **Exit goal:** formulate a question, evaluate prior work and produce reproducible findings in authorized offensive security and red team. **Practical work:** design and execute an ethically reviewed study. **Assessment plan:** research proposal, reproducible results and dissertation.
 

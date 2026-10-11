@@ -4,7 +4,7 @@
 
 **Scope:** Scoped testing, adversary emulation, red team operations and purple team validation.
 
-**Audience:** Experienced specialists. **Entry knowledge:** Prior degree or equivalent professional experience in the field; Systems, logs, networks and authorized lab practice.
+**Audience:** Experienced specialists. **Entry knowledge:** Prior degree or equivalent professional experience in the field.
 
 **Exit goal:** lead advanced application and justify organization-scale choices in authorized offensive security and red team. **Practical work:** critique a real-world design with sanitized evidence. **Assessment plan:** advanced case analysis and applied final project.
 

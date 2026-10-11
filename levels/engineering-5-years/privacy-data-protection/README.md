@@ -4,7 +4,7 @@
 
 **Scope:** Personal-data mapping, minimization, privacy engineering, rights, lawful processing and breach readiness.
 
-**Audience:** Security systems designers. **Entry knowledge:** Calculus, computing, networks and systems engineering; Security literacy, organizational context and evidence.
+**Audience:** Security systems designers. **Entry knowledge:** Calculus, computing, networks and systems engineering.
 
 **Exit goal:** design, build and validate complex systems under constraints in privacy and data protection. **Practical work:** model tradeoffs, implement controls and test failure modes. **Assessment plan:** design dossier, verification results and engineering thesis.
 

@@ -4,7 +4,7 @@
 
 **Scope:** Data ownership, quality, lineage, lifecycle, stewardship, access decisions and accountable use.
 
-**Audience:** Advanced researchers. **Entry knowledge:** Research experience and a defensible original question; Security literacy, organizational context and evidence.
+**Audience:** Advanced researchers. **Entry knowledge:** Research experience and a defensible original question.
 
 **Exit goal:** test an original contribution and its limits independently in data governance. **Practical work:** replicate baselines, challenge assumptions and publish evidence. **Assessment plan:** original research portfolio, thesis and defense plan.
 

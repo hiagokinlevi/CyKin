@@ -4,7 +4,7 @@
 
 **Scope:** Security monitoring, SOC workflows, detection engineering, hunting, automation and exposure management.
 
-**Audience:** New learners. **Entry knowledge:** No prior security role; basic digital literacy; Systems, logs, networks and authorized lab practice.
+**Audience:** New learners. **Entry knowledge:** No prior security role; basic digital literacy.
 
 **Exit goal:** recognize and explain the core risks; complete one guided task in security operations and blue team. **Practical work:** follow a contained worked example. **Assessment plan:** short quiz, observed lab and a small annotated artifact.
 

@@ -4,7 +4,7 @@
 
 **Scope:** Incident triage, containment, eradication, crisis management, recovery and continuity.
 
-**Audience:** Experienced specialists. **Entry knowledge:** Prior degree or equivalent professional experience in the field; Systems, logs, networks and authorized lab practice.
+**Audience:** Experienced specialists. **Entry knowledge:** Prior degree or equivalent professional experience in the field.
 
 **Exit goal:** lead advanced application and justify organization-scale choices in incident response and cyber resilience. **Practical work:** critique a real-world design with sanitized evidence. **Assessment plan:** advanced case analysis and applied final project.
 
