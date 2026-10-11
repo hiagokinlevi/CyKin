@@ -286,6 +286,7 @@ By the end of this chapter, a learner should be able to:
 5. Explain why a matching hash helps detect change to a copy but cannot prove that the original source was truthful.
 6. Produce a handoff that another analyst can reproduce from the same supplied records.
 7. Normalize a supplied fixed-offset timestamp to UTC and distinguish an event's time from its discovery time and a query's coverage.
+8. Explain how a delayed log arrival can change a repeated query without changing the original event time, and audit the limits of a synthetic evidence package.
 
 ### 2.1 An alert is a question to investigate
 
@@ -428,11 +429,91 @@ for record_id, event_text, seen_text in rows:
 
 **Assessment rubric:** one point each for correct R10 normalization, three correct event-to-discovery delays, the 09:05 availability boundary, a T1 coverage statement that excludes post-09:12 activity, and a narrow authorized follow-up with retention uncertainty. Five points show the classroom reasoning is reproducible; they do not certify a real evidence acquisition or establish who edited B19. The printed output and a model coverage statement appear after the Chapter 2 synthetic-extract result in the final appendix.
 
-### 2.7 Handoff and common errors
+### 2.7 Delayed log arrival: when a quiet query changes
+
+Section 2.6 established a **query envelope**: source, event-time interval, account filter and time at which a query was run. A fifth field matters when records travel through a collection pipeline: **ingestion time**, when a record becomes available to the queried store. An event may have occurred inside the requested interval yet be absent from a query run before its arrival. The absence is a statement about the store's visible contents at that query time, not a final statement about every event that happened in the interval. [NIST SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final) treats log management as a process of generating, transmitting, storing and using records. It is a 2006 high-level guide, not a specification for the exercise algorithm below. This book's delayed-arrival fixture and scoring rule are original classroom material.
+
+Use four different times or bounds in the case note. The **event time** comes from the producing application and may itself be inaccurate if the source clock is wrong. The **ingestion time** is when the queried store accepted the row; it says nothing by itself about when the analyst read it. The **query run time** is when the analyst or custodian asked the store for matching rows. The **event-time window** describes which event timestamps the query selects. A discovery time records when the result reached the response team. If the store can supply only some of these fields, mark the rest unknown. A later query returning more rows does not automatically mean a new event happened after the earlier query.
+
+The canonical Harbor Library R14 card says only that its available query showed no further booking edits after R9 **within its queried range**. T1 in section 2.6 adds an exercise-only event window and account filter. It does not supply an ingestion-completeness guarantee. At a real response desk, an analyst might request source health, pipeline delay and collector error information from the logging owner, but this beginner exercise supplies no such operating measurements. An empty interval should therefore be written as “no matching row visible in this query as run,” followed by its bounds. It should not be written as “no edit occurred.”
+
+#### Optional T2 replay: a late row in the same event window
+
+T2 is a **separate counterfactual replay**, not a new R-series record and not an amendment to the main case. Reset to the fictional 09:12 query snapshot, then imagine the following four synthetic rows. L1 transcribes R9 for this replay. L2–L4 are invented only to exercise query semantics; do not use them in EX014–EX026, Chapter 3 or the Chapter 4 tabletop unless a question explicitly names T2.
+
+| Replay row | Account | Event UTC | Ingested UTC | Classroom observation |
+|---|---|---|---|---|
+| L1 | `desk-a` | 09:03 | 09:04 | B19 booking edit, representing R9 in this replay |
+| L2 | `desk-a` | 09:10 | 09:18 | B21 booking edit, visible only after delayed ingestion |
+| L3 | `helper-b` | 09:11 | 09:11 | B22 booking edit under a different account |
+| L4 | `desk-a` | 09:12 | 09:13 | B23 booking edit at the excluded end boundary |
+
+The replay query selects `application-audit` booking edits under `desk-a` with **09:00 ≤ event time < 09:12 UTC**. Its second condition is that the row was ingested **no later than the query run time**. The end boundary is exclusive. Assume all four clocks are correct, all rows belong to the same fictional date and no other filter exists; these are classroom assumptions, not evidence about production logging. First run the mental query at 09:12, then repeat the *same event window and account filter* at 09:20. Before looking at code, predict exactly which L IDs each run returns and which exclusion rule removes each other row.
+
+This optional Python 3 standard-library program performs only the stated filtering in memory. It opens no files, sends no requests and cannot query a real service. Its minute parser is intentionally limited to a single fictional UTC day; it is not a general timestamp-normalization function.
+
+```python
+rows = [
+    ("L1", "desk-a", "09:03", "09:04"),
+    ("L2", "desk-a", "09:10", "09:18"),
+    ("L3", "helper-b", "09:11", "09:11"),
+    ("L4", "desk-a", "09:12", "09:13"),
+]
+
+def minute(utc_hhmm):
+    hour, minute_part = map(int, utc_hhmm.split(":"))
+    return hour * 60 + minute_part
+
+def visible_at(query_time):
+    return [
+        row_id for row_id, account, event_time, ingested_time in rows
+        if account == "desk-a"
+        and minute("09:00") <= minute(event_time) < minute("09:12")
+        and minute(ingested_time) <= minute(query_time)
+    ]
+
+for query_time in ("09:12", "09:20"):
+    print(query_time, ",".join(visible_at(query_time)))
+```
+
+**Work the result in three passes.** First apply only the account and event-time filters: L1 and L2 qualify, L3 fails the account filter, and L4 sits exactly at the exclusive end. Then apply the ingestion cutoff: at 09:12 L2 is not yet visible, whereas at 09:20 it is. Finally compare the two results **without changing the event times**. The extra row in the second run is a *late arrival*, not a new post-09:12 event. Its presence would cause the response lead to revisit any conclusion that relied on the first query's apparent quiet period. It would not, by itself, identify who performed the edit or prove malicious intent.
+
+The replay makes a useful operational distinction. A **complete interval** would require credible evidence that the source generated expected events, the transport accepted them, any buffering and retries were accounted for, the queried store indexed them, and the query covered the relevant source and filters through a defensible cutoff. An analyst cannot establish all that from the latest row's timestamp. A logging owner might supply a documented ingestion-lag bound or an independently monitored **watermark**, but the owner would have to state what that watermark means and what failures it excludes. This book supplies neither a watermark nor a service-level promise. A second empty query would remain bounded by its own run time and pipeline state.
+
+**Submission and rubric.** Submit a two-row `query time | returned IDs | reason for every excluded ID` table, a one-sentence correction of the overclaim “nothing happened after R9,” and a request to the fictional application/logging custodian naming the event window, account filter, query run time and ingestion-health question. Score one point each for the 09:12 result, 09:20 result, correct explanations of L3 and L4, recognition that L2's *event* time did not move, and an authorized follow-up that distinguishes query coverage from account attribution. A 5/5 answer is a sound classroom interpretation; it is not verification of a real logging pipeline. The exact output and a worked answer appear in the final appendix after the Chapter 2 temporal-coverage result.
+
+### 2.8 Evidence package audit: integrity is one link in a longer chain
+
+The E1 file in section 2.5 is a **synthetic transcription** of book records R9 and R14. Its SHA-256 value can help a second learner check whether the working bytes changed. To assess a claim about the underlying booking service, a reviewer would still need to know who supplied the source, what query or export produced it, which fields or rows were excluded, what transformations were made, whether the source clock and logging path were functioning, and whether collection was permitted. [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) discusses evidence work across data sources but explicitly does not offer an all-inclusive forensic or legal procedure. The exercise below is a training review of a small invented package, not a chain-of-custody certification.
+
+Think of three layers. The **source layer** is an application or identity system and its original records. The **copy layer** is a specific exported byte sequence plus a query or selection manifest. The **analysis layer** is the learner's chronology, hypothesis table and decision note derived from the copy. A digest for the copy can check the copy's bytes at two times. It cannot retroactively create a missing source layer or prove the analysis layer's interpretation. Conversely, a well-written analysis cannot repair a silently truncated export. Give each layer a pointer in the case record so the next reviewer knows what can actually be reopened.
+
+For the E1 classroom file, a minimal **package manifest** might contain the following fields. `Status` matters: a *planned* export and a *collected* copy are different artifacts. The example assumes the learner actually ran `fixture.py`; if they did not, they must label byte count and digest as expected values from the book, not measurements they performed.
+
+| Manifest field | Model entry after the local fixture runs | Limit the reviewer must retain |
+|---|---|---|
+| Item and status | `HL-IR-001/E1`, learner-created teaching copy | Not a production application export |
+| Source and selection | Book section 2.5 payload transcribing R9 and R14; two data rows | R14's original query bounds remain unspecified without optional T1 |
+| Authority and operator | Learner's local scratch directory under classroom permission | No permission to collect a real library's records follows |
+| Creation and transfer times | Learner's actual local creation time; later handoff time only if a handoff occurs | Do not substitute fictional event time for file creation time |
+| Bytes and integrity check | 235 bytes; SHA-256 of `E1.txt` as printed by the fixture | A matching value checks these bytes, not source truth |
+| Transformations | UTF-8 teaching text assembled by the listed Python payload | The payload omits source metadata not shown in R9/R14 |
+| Location and access | Local named file, restricted to the learner or authorized reviewer | The book provides no real storage-control evidence |
+| Supported use | Practice a bounded collection note and an integrity comparison | No attribution, exfiltration or full audit-coverage conclusion |
+
+The second learner should check the manifest against the *actual file and script*, not against a confident sentence in a handoff. Confirm the byte count and digest for the file received, read the two data rows, inspect the source and selection note, then compare the proposed conclusion with the package's stated limit. If the values match but the query selection is unknown, the second learner may say the copy is byte-consistent with the recorded digest; they may not say the queried service had no other edits. If the values differ, retain both copies and their labels in the classroom exercise, stop relying on the disputed copy, and ask which bytes were changed or transferred incorrectly. Never silently overwrite one copy with the other to make the hashes agree.
+
+**Optional peer-audit drill.** Imagine three variants of a package handed to you at the 09:20 review. Variant A contains the expected `E1.txt`, its 235-byte count, digest, script and the manifest above. Variant B contains `E1-modified.txt` but labels it `E1.txt` while retaining the original digest. Variant C contains the exact E1 bytes and digest but omits the source-selection and authority fields. For each variant, write (1) what the byte comparison supports, (2) which claim about R9/R14 remains blocked, (3) what you would ask the sender to supply and (4) whether the package is usable for a classroom *copy-integrity* demonstration versus an operational incident conclusion. This drill is separate from EX014–EX026 and uses no real data.
+
+The acceptance criterion is deliberately narrow. **Variant A** can pass the classroom copy-integrity check if the reviewer repeats the calculation; it still cannot prove R14's underlying query was complete. **Variant B** fails the claimed byte identity, regardless of whether the change was accidental or deliberate; that causal question is not answered by the digest mismatch. **Variant C** can have identical bytes yet fail the provenance and authorization review. A simple five-point rubric awards one point for distinguishing A's two kinds of claim, one for correctly rejecting B's recorded digest match, one for C's missing provenance and authority, one for a specific repair request for each variant, and one for a handoff sentence that labels every unperformed check. A model comparison is given in the final appendix.
+
+When preparing a real handoff, ask the next analyst to **reproduce one consequential claim**: locate its source pointer, re-run or review the approved selection, verify the copy if one exists, and identify the decision that would change if the claim fails. This is a quality check on the team's reasoning. It does not replace specialist evidence handling where legal, privacy, disciplinary or contractual obligations apply. Chapter 3 will use the same separation when it asks whether a successful backup job is also a tested and accepted recovery.
+
+### 2.9 Handoff and common errors
 
 A useful handoff lets a second analyst reconstruct the decision without guessing: case ID; current time and timezone; affected service; observed facts with record IDs; live hypotheses; confidence and limits; known service impact; actions completed under which authority; evidence locations; next question; decision owner; review deadline. It should also separate the source's event time from the time the analyst learned of the event.
 
-Common errors are copying only an alert title, silently converting timezones, treating a staff recollection as proof, relying on a log summary that omits key fields or query boundaries, hashing a file without recording which bytes were hashed, or using a high severity label without naming harm and urgency. A careful analyst can be concise: cite the observation, state the limit and identify the next decision. The T1 lab also illustrates a subtle mistake: “I discovered R9 at 09:20” does not mean “R9 occurred at 09:20”; conversely, “R9 occurred at 09:03” does not mean it was available for a 09:05 decision.
+Common errors are copying only an alert title, silently converting timezones, treating a staff recollection as proof, relying on a log summary that omits key fields or query boundaries, hashing a file without recording which bytes were hashed, or using a high severity label without naming harm and urgency. A careful analyst can be concise: cite the observation, state the limit and identify the next decision. T1 shows why “I discovered R9 at 09:20” does not mean “R9 occurred at 09:20”; conversely, the 09:03 event time does not mean R9 was available for a 09:05 decision. T2 adds a second trap: repeating an event-time query after delayed ingestion can reveal another row without changing the event's occurrence time. The E1 package audit keeps byte integrity, source provenance and authority separate.
 
 ### Chapter 2 exercises
 
@@ -1246,6 +1327,29 @@ R10's original exercise text is `2026-10-11T05:04:00-04:00`; adding the explicit
 
 With exercise-only T1, the strongest negative statement is: “The specified `application-audit` query for `desk-a` booking edits in `09:00 ≤ event < 09:12 UTC` showed no further matching edit after R9.” R14 *without* T1 lacks those exact bounds. Neither version proves that no edit occurred after 09:12, through another account or in an unexamined source. A bounded request to the authorized application custodian should specify source, account filters, the new interval, an ingestion/completeness check, collector and collection time. R15 calls for a prompt retention decision; the exact deletion instant depends on policy detail not supplied here. A full-credit answer records these limits rather than filling gaps with confident words.
 
+### Chapter 2 delayed-arrival T2 replay — worked result
+
+The optional in-memory program prints:
+
+```text
+09:12 L1
+09:20 L1,L2
+```
+
+Both runs use the same account filter and **09:00 ≤ event < 09:12 UTC** window. L1 qualifies in both. L2's event time is 09:10, so it belongs to that window, but its 09:18 ingestion time makes it invisible at the 09:12 query cutoff and visible at 09:20. L3 is excluded because its account is `helper-b`, even though its event and ingestion times are inside the interval. L4 is excluded because 09:12 is the *exclusive* end; its later ingestion time is not the reason it fails this particular selection.
+
+The strongest correction is: “At 09:12, the specified query showed no other visible matching edit after L1; this did not establish that the event-time interval was complete.” In the T2 replay, the repeated query would later reveal L2 and require a fresh assessment, but **L2 is not a canonical Harbor Library case fact**. The next request is to the fictional application/logging custodian: “Please confirm the exact source, `desk-a` account filter, half-open event interval, each query's run and ingestion cutoff, and whether collection or indexing lag could leave relevant rows unseen; provide a scoped follow-up result under the incident lead's approval.” The custodian's reply, not the newest event timestamp alone, would determine what completeness claim is defensible. None of the four L rows establishes the human operator or intent.
+
+### Chapter 2 evidence-package peer audit — worked result
+
+| Variant | Byte and manifest finding | Defensible classroom use | Blocked claim and repair request |
+|---|---|---|---|
+| A: expected E1 bytes and full manifest | If recalculated, 235 bytes and the recorded SHA-256 match the learner's copy; the script explains the teaching transformation. | Demonstrate consistency of the checked synthetic copy and discuss its stated limits. | It cannot prove R14's source query was complete. Ask for an authorized source/export record and exact selection metadata before making an operational coverage claim. |
+| B: modified bytes labeled E1 with the original digest | A repeat digest would differ from the recorded E1 value. The copied label does not repair the mismatch. | Use as a deliberate failure example after labeling both variants accurately. | Do not rely on the disputed file for an incident claim. Ask the sender for the original file, creation and transfer steps, and an explanation of which bytes changed; retain both versions in this exercise. |
+| C: exact E1 bytes but no selection or authority | The digest can still match, but it answers only the byte-comparison question. | Demonstrate why integrity is distinct from provenance and permission. | Do not assert complete source coverage or authorized collection. Ask for the source, selection rule, operator, scope and authority record. |
+
+A handoff that preserves these limits can say: “We can reproduce the digest of the supplied synthetic E1 bytes; we have not verified an original application export, its query completeness, a real collector's authority or the identity behind `desk-a`.” This is a better answer than “the evidence is authentic” because the latter does not identify *which* link was checked. The peer-audit drill is supplemental; it does not increase the count of 50 numbered exercises.
+
 ### EX027 — Worked result
 
 | Proposed action | Primary goal | Prerequisite | Observable check | Limit |
@@ -1531,9 +1635,12 @@ The model earns full credit only if the learner's own six artifacts preserve the
 - **Confidence:** the analyst's assessed support for an explanation, stated with its limits.
 - **Digest:** the output of a hash function for a specific byte sequence.
 - **Discovery time:** when the analyst received or recognized a record, distinct from the event time recorded by its source.
+- **Ingestion time:** when a record became available to the queried store; it may be later than the recorded event time.
 - **Handoff:** a case summary sufficient for another authorized person to continue the work.
 - **Hypothesis test:** a planned check that could support or weaken an explanation.
 - **Offset:** the explicit difference between a timestamp's local clock representation and UTC, needed for an unambiguous conversion.
+- **Package manifest:** the item, source, selection, authority, transformation, byte check, access and limits needed to review a particular copy.
+- **Query run time:** the time a search was executed against a store, distinct from event, ingestion and analyst discovery times.
 - **Retention deadline:** the time after which a source may no longer preserve the needed record.
 - **Triage:** the initial assessment of potential harm, urgency, uncertainty and next authorized action.
 
@@ -1568,5 +1675,6 @@ The model earns full credit only if the learner's own six artifacts preserve the
 6. NIST, [SP 800-34 Rev. 1, *Contingency Planning Guide for Federal Information Systems*, updated edition](https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final), November 2010. Used for the distinction between a backup status and a tested recovery plan.
 7. NIST, [SP 800-84, *Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities*](https://csrc.nist.gov/pubs/sp/800/84/final), September 2006. Used for the Chapter 4 design, conduct and evaluation of a tabletop exercise.
 8. British Library, [*Learning Lessons from the Cyber-Attack: British Library Cyber Incident Review*](https://www.bl.uk/files/v5dwkion/production/99206a2d1e9f07b35712b78f7d75fbb09560c08d.pdf/british-library-cyber-incident-review-8-march-2024.pdf?dl=), 8 March 2024. Primary institutional account used for the separate real-world source-reading activity in Chapter 3. Its text and findings are cited, not copied or relicensed.
+9. NIST, [SP 800-92, *Guide to Computer Security Log Management*](https://csrc.nist.gov/pubs/sp/800/92/final), September 2006. Background on log-management processes for Chapter 2. Its age and high-level scope are stated beside the original delayed-arrival exercise; it does not prescribe the fictional fixture or its query algorithm.
 
 All **Harbor Library** names, accounts, bookings, logs and times are invented for instruction. The **British Library** case is a separately cited real incident. Its reported facts do not describe or validate the fictional Harbor Library scenario.
