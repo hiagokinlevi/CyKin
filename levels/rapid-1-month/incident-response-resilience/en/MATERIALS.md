@@ -4,10 +4,10 @@
 
 **Teaching and examples:** each subject-chapter belongs to the one principal book. Plans describe intended content; only the linked manuscript contains authored lessons.
 
-**Labs and practice:** follow a contained worked example. Use synthetic, sanitized or explicitly authorized data. Reproducible inputs and expected results will be added as the book is written.
+**Labs and practice:** the draft has a readiness workshop in Chapter 1, two contained evidence/time labs in Chapter 2, and a read-only booking comparison lab in Chapter 3. Each uses fictional or synthetic data and has a worked result in the book's final appendix. [Read the four chapters](book/MANUSCRIPT.md#ch-01).
 
-**Projects and assessment:** short quiz, observed lab and a small annotated artifact. Rubrics and case evidence will be added with authored chapters.
+**Projects and assessment:** Chapter 4 contains a staged incident tabletop and a six-artifact model handoff. The book also includes a source-reading activity on the British Library's published incident review, clearly separated from the fictional Harbor Library case. These are draft activities pending independent editorial review.
 
-**Exercises and answers:** every completed chapter needs its own exercises; at least 50 across the book, with worked results in the final appendix of the same book. Planned exercise quotas are not authored exercises.
+**Exercises and answers:** 50 numbered exercises are drafted across the four chapters, with 50 matching worked results in the [final appendix](book/MANUSCRIPT.md#answers). The four labs and source-reading activity are supplemental; they do not inflate the numbered exercise count. The complete-book gate still requires substantial teaching, technical review and 300 verified A4 pages.
 
-**References and glossary:** verifiable primary sources and clear terms belong in the authored manuscript; linked project playbooks retain their source rights.
+**References and glossary:** the [manuscript](book/MANUSCRIPT.md) cites primary NIST publications and the British Library's own retrospective report. The cited organizations retain their own rights; supplementary playbooks retain their source rights.

@@ -614,7 +614,111 @@ This is a **paper or local-text simulation**, with no live database, account or 
 
 **Expected evidence:** a four-row reconciliation table, a three-claim test assessment, a branch-specific queue or identity note, and a signed-off *proposal* for restricted or restored operation. **Assessment rubric:** one point each for correct mismatch identification, justified correction authority, accurate V1 interpretation, branch-specific service cost, and an honest acceptance state with an owner and review trigger. A five-point response is coherent for this lab; it is not a production recovery certificate. The worked result follows EX038 in the final answer section.
 
-### 3.7 Worked decision record and synthesis
+### 3.7 Contained lab: validate a recovery comparison before proposing changes
+
+The paper comparison in section 3.6 assumes that every booking ID appears once, that the owner-approved target and the current copy use the same fields, and that the copy can be traced to a particular point in time. Those assumptions are easy to lose in a spreadsheet or an improvised script. A duplicate ID might cause one row to silently replace another in a dictionary; a missing ID might disappear from an inner join; an extra booking could be mistaken for an approved correction. This lab turns those cases into explicit **failures or review items** before anyone considers changing a booking.
+
+The objective is to produce a deterministic **read-only diff** of the four synthetic P1 and C1 rows. Use only the Python standard library and in-memory text; the script opens no file, connects to no service and does not edit any record. P1 and C1 are released **after** the 09:37 containment decision in the simulation. Their values can inform a later recovery proposal, never the earlier decision. [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) recommends planned recovery tests and improvement; the CSV schema, validation rules and output below are CyberABC's original classroom example, not a NIST procedure.
+
+**Inputs:** two miniature CSV strings with exactly `booking_id,state` columns. The `target` string transcribes the owner-approved P1 values; `current` transcribes C1. In an actual authorized recovery, the team would record the approver, copy identifier, source time, collection method and access restriction before trusting a comparison. Those provenance fields are **not** supplied by this toy script and must not be fabricated. The state values are short fictional labels, not patron information.
+
+**Step 1 — Read and validate.** Copy both parts of Listing 3.1, in order, into one local scratch Python 3 session you control. `parse_state` rejects a changed header, a blank or extra field, and a repeated booking ID. A failed input must stop the comparison; using the last duplicate row would make the output depend on input order. The program uses `csv.DictReader` so that the field names, not column position alone, drive interpretation.
+
+**Step 2 — Compare without mutation.** `compare` walks the union of booking IDs. It reports `MATCH`, `MISMATCH`, `MISSING_CURRENT` or `UNEXPECTED_CURRENT`. The two latter categories are built into the method even though the ordinary four-row fixture has neither. An ID absent from C1 is not safely interpreted as “deleted” without checking whether the export filter or collection failed. An extra ID may be an unrelated legitimate booking; it must be reviewed, not overwritten automatically.
+
+**Step 3 — Challenge the input.** The final line appends a second B20 row to the current fixture. The parser should reject it before a diff is printed for that variant. This is a deliberate malformed-input test, separate from the valid P1/C1 comparison. It demonstrates a data-quality failure rather than a new event in the Harbor Library case.
+
+**Listing 3.1, part 1 of 2 — fixture and validated parser.** The next block completes the same program.
+
+```python
+import csv
+from io import StringIO
+
+TARGET = """booking_id,state
+B17,Room 4
+B18,Cancelled
+B19,Room 1
+B20,Room 3
+"""
+
+CURRENT = """booking_id,state
+B17,Room 4
+B18,Cancelled
+B19,Room 3
+B20,Room 1
+"""
+
+
+def parse_state(label, source):
+    reader = csv.DictReader(StringIO(source))
+    if reader.fieldnames != ["booking_id", "state"]:
+        raise ValueError(f"{label}: unexpected CSV header")
+    rows = {}
+    for row in reader:
+        if None in row or not row["booking_id"] or not row["state"]:
+            raise ValueError(f"{label}: incomplete or extra field")
+        booking_id = row["booking_id"].strip()
+        state = row["state"].strip()
+        if not booking_id or not state:
+            raise ValueError(f"{label}: blank value")
+        if booking_id in rows:
+            raise ValueError(f"{label}: duplicate booking ID {booking_id}")
+        rows[booking_id] = state
+    return rows
+```
+
+**Listing 3.1, part 2 of 2 — comparison and run.** Append this block immediately after part 1 before executing.
+
+```python
+
+def compare(target, current):
+    counts = {"MATCH": 0, "MISMATCH": 0, "MISSING_CURRENT": 0,
+              "UNEXPECTED_CURRENT": 0}
+    for booking_id in sorted(set(target) | set(current)):
+        if booking_id not in current:
+            status = "MISSING_CURRENT"
+        elif booking_id not in target:
+            status = "UNEXPECTED_CURRENT"
+        elif current[booking_id] == target[booking_id]:
+            status = "MATCH"
+        else:
+            status = "MISMATCH"
+        counts[status] += 1
+        print(f"{booking_id}: {status} target={target.get(booking_id, '-')}",
+              f"current={current.get(booking_id, '-')}")
+    print("counts:", ", ".join(f"{name}={count}" for name, count in counts.items()))
+
+
+target = parse_state("target", TARGET)
+current = parse_state("current", CURRENT)
+compare(target, current)
+try:
+    parse_state("current", CURRENT + "B20,Room 1\n")
+except ValueError as error:
+    print("rejected variant:", error)
+```
+
+**Expected evidence:** four printed booking statuses, a count summary with two matches and two mismatches, and a separate rejected-duplicate message. Save the output as a classroom note along with the program text; record whether it was run and in which local Python version. The worked output appears in the final answer section. The B19/B20 differences are **proposed correction candidates**, not permission to edit. The service owner must confirm P1's authority and approve a bounded correction; an operator would then act in an authorized environment and a reviewer would compare a **new** state copy. C1 is only one point-in-time snapshot. A matching diff after a later correction would still need access and audit checks, including the failed actor field in V1.
+
+**Assessment:** award one point each for (1) rejecting a duplicate instead of silently choosing a row, (2) identifying B19/B20 as mismatches while retaining B17/B18 as matches, (3) distinguishing missing and unexpected IDs in the method, (4) recording that target approval and copy provenance are external to the script, and (5) proposing an authorized, newly verified correction without claiming it occurred. A passing 5/5 demonstrates sound use of this small comparison, not recovery of a real service. If Python is unavailable, trace the four iterations and duplicate check on paper; the expected statuses and limits are the same.
+
+### 3.8 Sourced case study: recovery beyond the backup copy
+
+Harbor Library is invented. A useful real-world contrast is the [British Library's own March 2024 review of the October 2023 cyber-attack](https://www.bl.uk/files/v5dwkion/production/99206a2d1e9f07b35712b78f7d75fbb09560c08d.pdf/british-library-cyber-incident-review-8-march-2024.pdf?dl=). The report is the institution's retrospective account, written after investigation; it is **not** a raw event log, a finding about Harbor Library or a template for a one-month course to reproduce. Its exact descriptions are time-bound to the review date. Read the cited pages when using the case and avoid extending the report's conclusions to unexamined systems.
+
+The review reports that attackers encrypted or destroyed a substantial part of the Library's server estate and that the institution had secure copies of its digital collections, yet lacked viable infrastructure on which to restore services promptly (executive summary, pp. 2–3). By December 2023, viable backup sources had been identified for collections and other data, but the report still describes restricted research services and systems needing modification, migration or replacement (pp. 2–3 and 9). A searchable catalogue returned on 15 January 2024 while other functions remained incomplete (pp. 2 and 9–10). These are **reported facts about the British Library**, not evidence about the fictional bookings B17–B20. The teaching inference is that **copy availability, platform readiness, data validation and service acceptance are different checkpoints**. A backup can exist while the environment needed to use it is missing or unsafe.
+
+The same report describes strategic and operational crisis groups coordinating technical response, approving workarounds and communicating during disrupted website and intranet service (section 3, pp. 12–13). This supports a second teaching inference: response records must name decision owners and alternate communications paths, because a status page or ordinary internal channel may itself be unavailable. The British Library's roles and governance are specific to that institution; the incident-lead/service-owner matrix in this course is a **fictional teaching arrangement**, not a claim that the real Library used it.
+
+| Source-based statement | What a learner may infer for recovery planning | What the source does **not** establish for this course |
+|---|---|---|
+| The British Library reported secure digital-collection copies but damaged restoration infrastructure. | Test both the copy **and** the ability to restore it onto an acceptable platform. | It does not give Harbor Library a usable backup, a measured restore time or an approved P1 booking target. |
+| A searchable catalogue returned while other services remained restricted. | Define acceptance separately for each user-facing service; a partial return can be useful and still be incomplete. | It does not prove that a searchable page means all data and access controls are correct. |
+| Crisis groups coordinated workarounds and communications. | Record who can authorize a temporary manual process and how staff and users will be updated. | It does not authorize a learner to pause a real booking service or contact real users. |
+
+**Guided source-reading activity:** write a three-row claim ledger with (1) a fact from the British Library report and its page or section, (2) one planning question it raises for the fictional booking service, and (3) one conclusion it cannot support about B17–B20. Include at least one row about restoration infrastructure and one about partial service. Then compare the source date with the time of your own course reading: a 2024 retrospective cannot by itself tell you the Library's current service state. The report also expresses uncertainty about the exact initial intrusion point; do not turn a likely entry point into a certain one. A model ledger appears in the final answer section. This supplementary source analysis is separate from EX027–EX038.
+
+### 3.9 Worked decision record and synthesis
 
 An acceptable **proposed**, not executed, record is: “09:37 UTC; incident lead requests identity-owner approval to revoke `desk-a`'s current session after preservation of the available narrow records. R17–R18 show an unplanned `B20` edit following the earlier `B19` concern; the goal is to reduce further booking changes. Possible cost: front-desk reauthentication. Service owner approves a fifteen-minute staff-write pause as fallback under R21. Analyst will verify whether new edits occur and report at 09:45 UTC. Root cause and exposure remain unconfirmed.”
 
@@ -1185,6 +1289,33 @@ R21 does **not** mean the fallback has already been implemented. Before any Chap
 
 **Branch and acceptance:** In Branch S, confirm the old session was revoked and monitor for new changes, but keep other sessions and the unresolved cause on the case record. In Branch P, the service owner must reconcile both queued requests before approving resumed staff writes. An acceptable proposal is *restricted or conditionally monitored service*, with the service owner and incident lead recording whether a temporary compensating check can cover the missing actor field while the application/audit owner repairs it. Set a named next review and reapply a restriction or escalate if an unexplained edit recurs. Neither branch, P1 nor V1 alone establishes full recovery. Award the five rubric points only if the row mismatches, correction authority, V1 limitation, branch cost and honest acceptance state are all explicit.
 
+### Chapter 3 CSV comparison lab — worked result
+
+Executing the complete Python 3 fixture in section 3.7 with the supplied strings prints:
+
+```text
+B17: MATCH target=Room 4 current=Room 4
+B18: MATCH target=Cancelled current=Cancelled
+B19: MISMATCH target=Room 1 current=Room 3
+B20: MISMATCH target=Room 3 current=Room 1
+counts: MATCH=2, MISMATCH=2, MISSING_CURRENT=0, UNEXPECTED_CURRENT=0
+rejected variant: current: duplicate booking ID B20
+```
+
+The comparison performs **no repair**. It says B17 and B18 match the P1 target in this transcription; B19 and B20 do not. `MISSING_CURRENT=0` and `UNEXPECTED_CURRENT=0` are statements about the four supplied CSV rows, not proof that the live database has no missing or extra bookings. Appending a duplicate B20 is rejected because two rows with the same key would make a naive last-write-wins comparison order-dependent. The program's header and field checks defend the classroom fixture against simple malformed input; they do not authenticate a source, establish owner approval or handle a production CSV dialect and all possible data errors.
+
+A responsible next artifact is a **request** for the service owner to confirm the approved P1 target and authorize correction of B19/B20 only. Record the C1 copy's provenance, the planned operator and a new post-change comparison. Keep the cause, other bookings and V1's failed actor attribution open. If the malformed variant is tested, label its rejection as a validation result, never as a fifth Harbor Library booking event.
+
+### Chapter 3 real-case source reading — worked result
+
+| Reported fact and location in the [British Library review](https://www.bl.uk/files/v5dwkion/production/99206a2d1e9f07b35712b78f7d75fbb09560c08d.pdf/british-library-cyber-incident-review-8-march-2024.pdf?dl=) | Harbor Library planning question | Unsupported leap to avoid |
+|---|---|---|
+| The British Library reported secure collection copies but an infrastructure obstacle to restoration (executive summary, pp. 2–3). | Does the recovery lead have an isolated platform on which a named booking copy can actually be restored and timed? | “R7 says Harbor Library can restore within ten minutes.” R7 has no restore measurement. |
+| The British Library reported partial catalogue return while other research services remained restricted (pp. 2 and 9–10). | Which room-booking functions must work, with correct B17–B20 state, before the service owner accepts a limited return? | “A loaded booking page means all Harbor bookings and controls are correct.” |
+| The British Library described crisis groups approving workarounds and coordinating communications (section 3, pp. 12–13). | Who approves a manual booking queue, who reconciles it and how will users receive a bounded update if ordinary channels fail? | “The fictional analyst has authority to pause a real service.” The two organizations' authorities are separate. |
+
+The report is dated **8 March 2024** and discusses an incident in **October 2023**. Its findings must be read as a dated institutional account, not a live service dashboard or an independent forensic dataset. A good answer names both the supported fact and the decision it motivates without importing British Library facts into R1–R24. The exact initial intrusion point remains uncertain in the report; a learner who states a definitive entry mechanism from this source must revise the claim.
+
 ### EX039 — Worked result
 
 | Role | Round A responsibility | Approval or escalation boundary | Verifiable output |
@@ -1344,6 +1475,8 @@ The model earns full credit only if the learner's own six artifacts preserve the
 - **Containment:** a bounded action intended to limit further harm while investigation continues.
 - **Eradication:** removal of an identified cause or persistence mechanism, followed by verification.
 - **Fallback:** an alternative action prepared if the preferred intervention fails or becomes too costly.
+- **Provenance:** the recorded origin, collection context and authority of a data copy or claim.
+- **Reconciliation:** comparison of a current state with an approved target, identifying matches and exceptions before any authorized change.
 - **Recovery acceptance:** evidence and owner sign-off needed before normal service resumes.
 - **Residual risk:** uncertainty or exposure remaining after an action has reduced some harm.
 - **Rollback trigger:** an observable condition for reversing a service change or returning to restricted mode.
@@ -1364,5 +1497,6 @@ The model earns full credit only if the learner's own six artifacts preserve the
 5. NIST, [SP 800-184, *Guide for Cybersecurity Event Recovery*](https://csrc.nist.gov/pubs/sp/800/184/final), December 2016. Used for the Chapter 3 emphasis on planned, verifiable recovery.
 6. NIST, [SP 800-34 Rev. 1, *Contingency Planning Guide for Federal Information Systems*, updated edition](https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final), November 2010. Used for the distinction between a backup status and a tested recovery plan.
 7. NIST, [SP 800-84, *Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities*](https://csrc.nist.gov/pubs/sp/800/84/final), September 2006. Used for the Chapter 4 design, conduct and evaluation of a tabletop exercise.
+8. British Library, [*Learning Lessons from the Cyber-Attack: British Library Cyber Incident Review*](https://www.bl.uk/files/v5dwkion/production/99206a2d1e9f07b35712b78f7d75fbb09560c08d.pdf/british-library-cyber-incident-review-8-march-2024.pdf?dl=), 8 March 2024. Primary institutional account used for the separate real-world source-reading activity in Chapter 3. Its text and findings are cited, not copied or relicensed.
 
-All Harbor Library names, accounts, bookings, logs and times are invented for instruction. No real incident or person is described.
+All **Harbor Library** names, accounts, bookings, logs and times are invented for instruction. The **British Library** case is a separately cited real incident. Its reported facts do not describe or validate the fictional Harbor Library scenario.
