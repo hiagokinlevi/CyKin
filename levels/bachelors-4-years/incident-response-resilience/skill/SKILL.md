@@ -1,5 +1,5 @@
 ---
-name: cyberab-incident-response-resilience-bachelor-c56c2255
+name: cyberabc-incident-response-resilience-bachelor-c56c2255
 description: "Guide a learner through the bachelor's course in Incident response and cyber resilience, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

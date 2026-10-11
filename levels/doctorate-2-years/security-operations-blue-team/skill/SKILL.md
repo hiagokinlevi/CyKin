@@ -1,5 +1,5 @@
 ---
-name: cyberab-security-operations-blue-team-doctorate-61f8c1a0
+name: cyberabc-security-operations-blue-team-doctorate-61f8c1a0
 description: "Guide a learner through the doctoral research track in Security operations and blue team, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

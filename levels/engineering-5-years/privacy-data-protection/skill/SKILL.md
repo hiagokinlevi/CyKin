@@ -1,5 +1,5 @@
 ---
-name: cyberab-privacy-data-protection-engineering-846e642b
+name: cyberabc-privacy-data-protection-engineering-846e642b
 description: "Guide a learner through the engineering course in Privacy and data protection, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberab-critical-sector-security-rapid-b7e1e8ad
+name: cyberabc-critical-sector-security-rapid-b7e1e8ad
 description: "Guide a learner through the rapid course in Critical infrastructure and sector security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

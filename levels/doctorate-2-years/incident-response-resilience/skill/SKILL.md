@@ -1,5 +1,5 @@
 ---
-name: cyberab-incident-response-resilience-doctorate-2a5da7c9
+name: cyberabc-incident-response-resilience-doctorate-2a5da7c9
 description: "Guide a learner through the doctoral research track in Incident response and cyber resilience, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

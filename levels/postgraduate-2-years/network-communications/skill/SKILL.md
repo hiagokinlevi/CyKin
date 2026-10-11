@@ -1,5 +1,5 @@
 ---
-name: cyberab-network-communications-postgraduate-339ffa34
+name: cyberabc-network-communications-postgraduate-339ffa34
 description: "Guide a learner through the postgraduate course in Network and communications security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

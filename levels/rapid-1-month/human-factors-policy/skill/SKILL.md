@@ -1,5 +1,5 @@
 ---
-name: cyberab-human-factors-policy-rapid-d0057a08
+name: cyberabc-human-factors-policy-rapid-d0057a08
 description: "Guide a learner through the rapid course in Human factors and cyber policy, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberab-offensive-security-red-team-technologist-c1fbc95a
+name: cyberabc-offensive-security-red-team-technologist-c1fbc95a
 description: "Guide a learner through the technologist course in Authorized offensive security and red team, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

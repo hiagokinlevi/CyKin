@@ -1,5 +1,5 @@
 ---
-name: cyberab-cloud-containers-technical-04cf107a
+name: cyberabc-cloud-containers-technical-04cf107a
 description: "Guide a learner through the technical course in Cloud and container security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

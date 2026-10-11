@@ -1,5 +1,5 @@
 ---
-name: cyberab-human-factors-policy-bachelor-a09738c7
+name: cyberabc-human-factors-policy-bachelor-a09738c7
 description: "Guide a learner through the bachelor's course in Human factors and cyber policy, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

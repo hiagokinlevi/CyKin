@@ -1,5 +1,5 @@
 ---
-name: cyberab-ai-security-professional-7a0b91c9
+name: cyberabc-ai-security-professional-7a0b91c9
 description: "Guide a learner through the professional course in AI and machine-learning security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

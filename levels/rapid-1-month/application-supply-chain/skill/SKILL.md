@@ -1,5 +1,5 @@
 ---
-name: cyberab-application-supply-chain-rapid-2dd7bc2a
+name: cyberabc-application-supply-chain-rapid-2dd7bc2a
 description: "Guide a learner through the rapid course in Application and software supply chain security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

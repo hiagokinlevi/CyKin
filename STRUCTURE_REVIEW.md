@@ -1,4 +1,4 @@
-# CyberAB structure and progress review
+# CyberABC structure and progress review
 
 Reviewed 11 October 2026. [Project introduction](README.md) · [academic area map](AREA_MAP.md) · [course guide](guia-geral-cursos-e-livros.md) · [source audit](SOURCE_AUDIT.md).
 

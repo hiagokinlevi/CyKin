@@ -1,5 +1,5 @@
 ---
-name: cyberab-threat-intelligence-osint-engineering-23944a13
+name: cyberabc-threat-intelligence-osint-engineering-23944a13
 description: "Guide a learner through the engineering course in Threat intelligence and OSINT, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

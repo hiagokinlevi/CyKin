@@ -1,5 +1,5 @@
 ---
-name: cyberab-ai-security-doctorate-4bea4b23
+name: cyberabc-ai-security-doctorate-4bea4b23
 description: "Guide a learner through the doctoral research track in AI and machine-learning security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

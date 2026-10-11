@@ -1,5 +1,5 @@
 ---
-name: cyberab-data-governance-postgraduate-31f223b1
+name: cyberabc-data-governance-postgraduate-31f223b1
 description: "Guide a learner through the postgraduate course in Data governance, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

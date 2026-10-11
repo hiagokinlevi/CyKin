@@ -1,5 +1,5 @@
 ---
-name: cyberab-network-communications-professional-d1e8bdad
+name: cyberabc-network-communications-professional-d1e8bdad
 description: "Guide a learner through the professional course in Network and communications security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

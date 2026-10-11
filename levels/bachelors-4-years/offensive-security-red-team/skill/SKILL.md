@@ -1,5 +1,5 @@
 ---
-name: cyberab-offensive-security-red-team-bachelor-4ca15d72
+name: cyberabc-offensive-security-red-team-bachelor-4ca15d72
 description: "Guide a learner through the bachelor's course in Authorized offensive security and red team, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

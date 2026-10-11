@@ -1,5 +1,5 @@
 ---
-name: cyberab-application-supply-chain-doctorate-84c92d28
+name: cyberabc-application-supply-chain-doctorate-84c92d28
 description: "Guide a learner through the doctoral research track in Application and software supply chain security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

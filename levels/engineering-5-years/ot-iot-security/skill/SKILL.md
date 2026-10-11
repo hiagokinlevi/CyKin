@@ -1,5 +1,5 @@
 ---
-name: cyberab-ot-iot-security-engineering-b74a5fdc
+name: cyberabc-ot-iot-security-engineering-b74a5fdc
 description: "Guide a learner through the engineering course in OT, IoT and cyber-physical security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

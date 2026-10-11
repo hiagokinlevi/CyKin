@@ -1,5 +1,5 @@
 ---
-name: cyberab-network-communications-doctorate-90319706
+name: cyberabc-network-communications-doctorate-90319706
 description: "Guide a learner through the doctoral research track in Network and communications security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

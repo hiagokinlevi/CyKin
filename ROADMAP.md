@@ -1,6 +1,6 @@
-# CyberAB learning and editorial roadmap
+# CyberABC learning and editorial roadmap
 
-**Authorship and editorial responsibility:** [hiagokinlevi](https://github.com/hiagokinlevi). This is the public learner-facing plan. Construction tools and migration records remain in the private CyberAB Engine.
+**Authorship and editorial responsibility:** [hiagokinlevi](https://github.com/hiagokinlevi). This is the public learner-facing plan. Construction tools and migration records remain in the private CyberABC Engine.
 
 ## Current curriculum
 

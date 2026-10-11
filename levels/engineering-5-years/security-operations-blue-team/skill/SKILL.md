@@ -1,5 +1,5 @@
 ---
-name: cyberab-security-operations-blue-team-engineering-5448d608
+name: cyberabc-security-operations-blue-team-engineering-5448d608
 description: "Guide a learner through the engineering course in Security operations and blue team, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

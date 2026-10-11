@@ -1,5 +1,5 @@
 ---
-name: cyberab-information-security-bachelor-2cca975e
+name: cyberabc-information-security-bachelor-2cca975e
 description: "Guide a learner through the bachelor's course in Information security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberab-threat-intelligence-osint-bachelor-10ac083a
+name: cyberabc-threat-intelligence-osint-bachelor-10ac083a
 description: "Guide a learner through the bachelor's course in Threat intelligence and OSINT, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

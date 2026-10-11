@@ -1,5 +1,5 @@
 ---
-name: cyberab-offensive-security-red-team-masters-4e8fd9df
+name: cyberabc-offensive-security-red-team-masters-4e8fd9df
 description: "Guide a learner through the master's course in Authorized offensive security and red team, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

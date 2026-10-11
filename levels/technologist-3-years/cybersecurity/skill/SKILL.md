@@ -1,5 +1,5 @@
 ---
-name: cyberab-cybersecurity-technologist-17c8da01
+name: cyberabc-cybersecurity-technologist-17c8da01
 description: "Guide a learner through the technologist course in Cybersecurity, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

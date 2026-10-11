@@ -1,5 +1,5 @@
 ---
-name: cyberab-threat-intelligence-osint-masters-e455a584
+name: cyberabc-threat-intelligence-osint-masters-e455a584
 description: "Guide a learner through the master's course in Threat intelligence and OSINT, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberab-human-factors-policy-professional-625330ab
+name: cyberabc-human-factors-policy-professional-625330ab
 description: "Guide a learner through the professional course in Human factors and cyber policy, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

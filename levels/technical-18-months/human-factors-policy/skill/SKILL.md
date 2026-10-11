@@ -1,5 +1,5 @@
 ---
-name: cyberab-human-factors-policy-technical-ed246b19
+name: cyberabc-human-factors-policy-technical-ed246b19
 description: "Guide a learner through the technical course in Human factors and cyber policy, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberab-cloud-containers-technologist-308aed90
+name: cyberabc-cloud-containers-technologist-308aed90
 description: "Guide a learner through the technologist course in Cloud and container security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

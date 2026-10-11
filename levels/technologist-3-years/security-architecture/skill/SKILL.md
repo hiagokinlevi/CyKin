@@ -1,5 +1,5 @@
 ---
-name: cyberab-security-architecture-technologist-355cab9e
+name: cyberabc-security-architecture-technologist-355cab9e
 description: "Guide a learner through the technologist course in Security architecture and engineering, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

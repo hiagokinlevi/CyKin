@@ -1,5 +1,5 @@
 ---
-name: cyberab-security-architecture-doctorate-c49b66c7
+name: cyberabc-security-architecture-doctorate-c49b66c7
 description: "Guide a learner through the doctoral research track in Security architecture and engineering, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

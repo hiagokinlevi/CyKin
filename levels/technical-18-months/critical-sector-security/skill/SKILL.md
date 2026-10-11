@@ -1,5 +1,5 @@
 ---
-name: cyberab-critical-sector-security-technical-36c3b4bc
+name: cyberabc-critical-sector-security-technical-36c3b4bc
 description: "Guide a learner through the technical course in Critical infrastructure and sector security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

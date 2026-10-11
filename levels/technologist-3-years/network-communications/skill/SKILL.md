@@ -1,5 +1,5 @@
 ---
-name: cyberab-network-communications-technologist-1f3a9d0c
+name: cyberabc-network-communications-technologist-1f3a9d0c
 description: "Guide a learner through the technologist course in Network and communications security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

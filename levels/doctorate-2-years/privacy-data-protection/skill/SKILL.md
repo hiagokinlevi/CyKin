@@ -1,5 +1,5 @@
 ---
-name: cyberab-privacy-data-protection-doctorate-e21ba9fa
+name: cyberabc-privacy-data-protection-doctorate-e21ba9fa
 description: "Guide a learner through the doctoral research track in Privacy and data protection, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

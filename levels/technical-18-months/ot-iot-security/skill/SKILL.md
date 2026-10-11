@@ -1,5 +1,5 @@
 ---
-name: cyberab-ot-iot-security-technical-7d17539f
+name: cyberabc-ot-iot-security-technical-7d17539f
 description: "Guide a learner through the technical course in OT, IoT and cyber-physical security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

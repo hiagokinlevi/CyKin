@@ -1,5 +1,5 @@
 ---
-name: cyberab-ot-iot-security-professional-7989d100
+name: cyberabc-ot-iot-security-professional-7989d100
 description: "Guide a learner through the professional course in OT, IoT and cyber-physical security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

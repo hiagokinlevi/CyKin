@@ -1,5 +1,5 @@
 ---
-name: cyberab-data-governance-professional-0cf67ac5
+name: cyberabc-data-governance-professional-0cf67ac5
 description: "Guide a learner through the professional course in Data governance, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberab-cryptography-trust-masters-b74713d6
+name: cyberabc-cryptography-trust-masters-b74713d6
 description: "Guide a learner through the master's course in Cryptography and trust services, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

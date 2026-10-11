@@ -1,5 +1,5 @@
 ---
-name: cyberab-incident-response-resilience-engineering-f9799bc7
+name: cyberabc-incident-response-resilience-engineering-f9799bc7
 description: "Guide a learner through the engineering course in Incident response and cyber resilience, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

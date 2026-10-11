@@ -1,5 +1,5 @@
 ---
-name: cyberab-identity-access-postgraduate-bab75457
+name: cyberabc-identity-access-postgraduate-bab75457
 description: "Guide a learner through the postgraduate course in Identity and access management, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

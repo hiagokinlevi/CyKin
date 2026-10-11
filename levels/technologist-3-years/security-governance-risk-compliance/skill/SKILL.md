@@ -1,5 +1,5 @@
 ---
-name: cyberab-security-governance-risk-compl-technologist-b3e21263
+name: cyberabc-security-governance-risk-compl-technologist-b3e21263
 description: "Guide a learner through the technologist course in Security governance, risk and compliance, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberab-ot-iot-security-rapid-acef2666
+name: cyberabc-ot-iot-security-rapid-acef2666
 description: "Guide a learner through the rapid course in OT, IoT and cyber-physical security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

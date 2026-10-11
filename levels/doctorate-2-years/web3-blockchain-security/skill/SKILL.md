@@ -1,5 +1,5 @@
 ---
-name: cyberab-web3-blockchain-security-doctorate-64a4aa7e
+name: cyberabc-web3-blockchain-security-doctorate-64a4aa7e
 description: "Guide a learner through the doctoral research track in Web3, blockchain and cryptoasset security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

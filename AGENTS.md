@@ -1,4 +1,4 @@
-# CyberAB reader guidance for AI agents
+# CyberABC reader guidance for AI agents
 
 Start at the [home page](README.md), then follow the [level index](levels/README.md) to a course `README.md`. Each course links its nine language editions, one [course skill index](SKILLS.md), chapter index, book plan, authored draft when present, and [supplementary playbooks](playbooks/README.md). The [AI guide](AI_GUIDE.md) explains the complete navigation route.
 

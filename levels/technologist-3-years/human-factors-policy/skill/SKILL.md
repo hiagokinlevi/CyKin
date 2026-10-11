@@ -1,5 +1,5 @@
 ---
-name: cyberab-human-factors-policy-technologist-89bca9d6
+name: cyberabc-human-factors-policy-technologist-89bca9d6
 description: "Guide a learner through the technologist course in Human factors and cyber policy, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

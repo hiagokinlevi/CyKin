@@ -1,5 +1,5 @@
 ---
-name: cyberab-security-governance-risk-compl-bachelor-a3481974
+name: cyberabc-security-governance-risk-compl-bachelor-a3481974
 description: "Guide a learner through the bachelor's course in Security governance, risk and compliance, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

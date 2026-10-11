@@ -1,5 +1,5 @@
 ---
-name: cyberab-security-architecture-professional-7f8ef4cf
+name: cyberabc-security-architecture-professional-7f8ef4cf
 description: "Guide a learner through the professional course in Security architecture and engineering, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

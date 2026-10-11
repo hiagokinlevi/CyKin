@@ -1,5 +1,5 @@
 ---
-name: cyberab-security-governance-risk-compl-technical-a9932cde
+name: cyberabc-security-governance-risk-compl-technical-a9932cde
 description: "Guide a learner through the technical course in Security governance, risk and compliance, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

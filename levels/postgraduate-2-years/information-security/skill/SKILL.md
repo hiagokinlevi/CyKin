@@ -1,5 +1,5 @@
 ---
-name: cyberab-information-security-postgraduate-26b0b6ef
+name: cyberabc-information-security-postgraduate-26b0b6ef
 description: "Guide a learner through the postgraduate course in Information security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

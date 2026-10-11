@@ -1,5 +1,5 @@
 ---
-name: cyberab-web3-blockchain-security-rapid-e027277b
+name: cyberabc-web3-blockchain-security-rapid-e027277b
 description: "Guide a learner through the rapid course in Web3, blockchain and cryptoasset security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

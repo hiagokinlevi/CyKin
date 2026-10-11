@@ -1,5 +1,5 @@
 ---
-name: cyberab-critical-sector-security-technologist-5882291b
+name: cyberabc-critical-sector-security-technologist-5882291b
 description: "Guide a learner through the technologist course in Critical infrastructure and sector security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberab-security-architecture-masters-198d04e8
+name: cyberabc-security-architecture-masters-198d04e8
 description: "Guide a learner through the master's course in Security architecture and engineering, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

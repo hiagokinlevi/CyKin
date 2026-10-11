@@ -1,5 +1,5 @@
 ---
-name: cyberab-security-architecture-rapid-ada7b449
+name: cyberabc-security-architecture-rapid-ada7b449
 description: "Guide a learner through the rapid course in Security architecture and engineering, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

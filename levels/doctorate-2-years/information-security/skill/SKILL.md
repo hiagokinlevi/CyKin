@@ -1,5 +1,5 @@
 ---
-name: cyberab-information-security-doctorate-3790bd06
+name: cyberabc-information-security-doctorate-3790bd06
 description: "Guide a learner through the doctoral research track in Information security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

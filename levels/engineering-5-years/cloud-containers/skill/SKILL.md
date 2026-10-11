@@ -1,5 +1,5 @@
 ---
-name: cyberab-cloud-containers-engineering-9b1133e6
+name: cyberabc-cloud-containers-engineering-9b1133e6
 description: "Guide a learner through the engineering course in Cloud and container security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

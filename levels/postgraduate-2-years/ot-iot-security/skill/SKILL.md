@@ -1,5 +1,5 @@
 ---
-name: cyberab-ot-iot-security-postgraduate-be36cf0c
+name: cyberabc-ot-iot-security-postgraduate-be36cf0c
 description: "Guide a learner through the postgraduate course in OT, IoT and cyber-physical security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

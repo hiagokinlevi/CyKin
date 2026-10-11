@@ -1,5 +1,5 @@
 ---
-name: cyberab-critical-sector-security-doctorate-56d0b6c8
+name: cyberabc-critical-sector-security-doctorate-56d0b6c8
 description: "Guide a learner through the doctoral research track in Critical infrastructure and sector security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

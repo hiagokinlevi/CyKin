@@ -1,5 +1,5 @@
 ---
-name: cyberab-incident-response-resilience-rapid-3881ddd8
+name: cyberabc-incident-response-resilience-rapid-3881ddd8
 description: "Guide a learner through the rapid course in Incident response and cyber resilience, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

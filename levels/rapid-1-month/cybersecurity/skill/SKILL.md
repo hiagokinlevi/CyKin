@@ -1,5 +1,5 @@
 ---
-name: cyberab-cybersecurity-rapid-07fe48b3
+name: cyberabc-cybersecurity-rapid-07fe48b3
 description: "Guide a learner through the rapid course in Cybersecurity, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

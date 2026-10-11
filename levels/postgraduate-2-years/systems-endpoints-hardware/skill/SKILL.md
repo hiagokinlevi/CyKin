@@ -1,5 +1,5 @@
 ---
-name: cyberab-systems-endpoints-hardware-postgraduate-553ab21a
+name: cyberabc-systems-endpoints-hardware-postgraduate-553ab21a
 description: "Guide a learner through the postgraduate course in Systems, endpoints and hardware security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

@@ -1,6 +1,6 @@
-# CyberAB academic areas
+# CyberABC academic areas
 
-The curriculum currently has **23 broad areas in five schools**. These are CyberAB's program categories, not an official universal list. There is no fixed numerical ceiling. The primary route is [level first](levels/README.md), then area, language, course book and chapter.
+The curriculum currently has **23 broad areas in five schools**. These are CyberABC's program categories, not an official universal list. There is no fixed numerical ceiling. The primary route is [level first](levels/README.md), then area, language, course book and chapter.
 
 The grouping is informed by the [CSEC2017 knowledge areas](https://www.acm.org/binaries/content/assets/education/curricula-recommendations/csec2017.pdf), [NIST NICE](https://www.nist.gov/itl/applied-cybersecurity/nice/nice-framework-resource-center/nice-framework-current-versions) and [ENISA ECSF](https://www.enisa.europa.eu/publications/european-cybersecurity-skills-framework-role-profiles); those sources do not issue this particular 23-area list.
 

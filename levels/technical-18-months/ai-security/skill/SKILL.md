@@ -1,5 +1,5 @@
 ---
-name: cyberab-ai-security-technical-508e06bd
+name: cyberabc-ai-security-technical-508e06bd
 description: "Guide a learner through the technical course in AI and machine-learning security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

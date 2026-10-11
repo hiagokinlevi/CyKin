@@ -1,5 +1,5 @@
 ---
-name: cyberab-security-governance-risk-compl-postgraduate-404170a6
+name: cyberabc-security-governance-risk-compl-postgraduate-404170a6
 description: "Guide a learner through the postgraduate course in Security governance, risk and compliance, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

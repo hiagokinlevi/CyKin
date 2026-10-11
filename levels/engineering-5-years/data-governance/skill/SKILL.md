@@ -1,5 +1,5 @@
 ---
-name: cyberab-data-governance-engineering-387492b7
+name: cyberabc-data-governance-engineering-387492b7
 description: "Guide a learner through the engineering course in Data governance, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

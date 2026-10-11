@@ -1,5 +1,5 @@
 ---
-name: cyberab-privacy-data-protection-postgraduate-7171b013
+name: cyberabc-privacy-data-protection-postgraduate-7171b013
 description: "Guide a learner through the postgraduate course in Privacy and data protection, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

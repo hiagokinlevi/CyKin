@@ -1,5 +1,5 @@
 ---
-name: cyberab-security-governance-risk-compl-engineering-78b8a8ad
+name: cyberabc-security-governance-risk-compl-engineering-78b8a8ad
 description: "Guide a learner through the engineering course in Security governance, risk and compliance, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

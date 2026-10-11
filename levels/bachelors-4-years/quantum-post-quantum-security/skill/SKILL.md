@@ -1,5 +1,5 @@
 ---
-name: cyberab-quantum-post-quantum-security-bachelor-37bf7d63
+name: cyberabc-quantum-post-quantum-security-bachelor-37bf7d63
 description: "Guide a learner through the bachelor's course in Quantum and post-quantum security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

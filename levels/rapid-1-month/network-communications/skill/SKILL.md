@@ -1,5 +1,5 @@
 ---
-name: cyberab-network-communications-rapid-74df54f0
+name: cyberabc-network-communications-rapid-74df54f0
 description: "Guide a learner through the rapid course in Network and communications security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

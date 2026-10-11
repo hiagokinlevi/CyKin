@@ -1,5 +1,5 @@
 ---
-name: cyberab-security-governance-risk-compl-professional-11c8d3de
+name: cyberabc-security-governance-risk-compl-professional-11c8d3de
 description: "Guide a learner through the professional course in Security governance, risk and compliance, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

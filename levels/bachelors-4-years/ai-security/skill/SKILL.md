@@ -1,5 +1,5 @@
 ---
-name: cyberab-ai-security-bachelor-95b31869
+name: cyberabc-ai-security-bachelor-95b31869
 description: "Guide a learner through the bachelor's course in AI and machine-learning security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

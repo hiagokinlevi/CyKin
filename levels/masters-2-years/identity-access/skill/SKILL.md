@@ -1,5 +1,5 @@
 ---
-name: cyberab-identity-access-masters-e85fce15
+name: cyberabc-identity-access-masters-e85fce15
 description: "Guide a learner through the master's course in Identity and access management, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberab-cryptography-trust-engineering-2aa9d7a7
+name: cyberabc-cryptography-trust-engineering-2aa9d7a7
 description: "Guide a learner through the engineering course in Cryptography and trust services, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

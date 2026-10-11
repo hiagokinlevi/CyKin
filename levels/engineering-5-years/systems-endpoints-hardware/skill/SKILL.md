@@ -1,5 +1,5 @@
 ---
-name: cyberab-systems-endpoints-hardware-engineering-74cfa3e1
+name: cyberabc-systems-endpoints-hardware-engineering-74cfa3e1
 description: "Guide a learner through the engineering course in Systems, endpoints and hardware security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

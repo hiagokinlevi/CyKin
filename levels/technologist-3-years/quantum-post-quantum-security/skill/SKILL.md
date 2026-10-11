@@ -1,5 +1,5 @@
 ---
-name: cyberab-quantum-post-quantum-security-technologist-484d0dfc
+name: cyberabc-quantum-post-quantum-security-technologist-484d0dfc
 description: "Guide a learner through the technologist course in Quantum and post-quantum security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

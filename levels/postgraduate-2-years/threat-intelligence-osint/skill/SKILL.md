@@ -1,5 +1,5 @@
 ---
-name: cyberab-threat-intelligence-osint-postgraduate-fc959229
+name: cyberabc-threat-intelligence-osint-postgraduate-fc959229
 description: "Guide a learner through the postgraduate course in Threat intelligence and OSINT, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

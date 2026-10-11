@@ -1,5 +1,5 @@
 ---
-name: cyberab-network-communications-engineering-7541b9e3
+name: cyberabc-network-communications-engineering-7541b9e3
 description: "Guide a learner through the engineering course in Network and communications security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberab-identity-access-rapid-e00b477c
+name: cyberabc-identity-access-rapid-e00b477c
 description: "Guide a learner through the rapid course in Identity and access management, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

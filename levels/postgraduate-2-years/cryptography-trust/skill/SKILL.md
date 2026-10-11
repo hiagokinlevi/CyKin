@@ -1,5 +1,5 @@
 ---
-name: cyberab-cryptography-trust-postgraduate-3967a9b8
+name: cyberabc-cryptography-trust-postgraduate-3967a9b8
 description: "Guide a learner through the postgraduate course in Cryptography and trust services, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

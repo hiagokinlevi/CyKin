@@ -1,5 +1,5 @@
 ---
-name: cyberab-web3-blockchain-security-postgraduate-4095eec1
+name: cyberabc-web3-blockchain-security-postgraduate-4095eec1
 description: "Guide a learner through the postgraduate course in Web3, blockchain and cryptoasset security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberab-security-operations-blue-team-bachelor-64af527c
+name: cyberabc-security-operations-blue-team-bachelor-64af527c
 description: "Guide a learner through the bachelor's course in Security operations and blue team, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

@@ -2,7 +2,7 @@
 
 Reviewed 11 October 2026. The linked-source sample below covers the public default-branch trees of the 13 original security software repositories. It is a **structural and editorial sample**, not a full technical validation of every tool or claim.
 
-## Current CyberAB material and migration
+## Current CyberABC material and migration
 
 - The [academic area map](AREA_MAP.md) has **23 broad areas in five schools**. The earlier, overly fragmented specialization scaffold was consolidated; its generated public folders were removed. The retired catalog remains in the private Engine migration archive. The new [course guide](guia-geral-cursos-e-livros.md) indexes **207 distinct English courses** and **1,863 planned language editions**.
 - Every course has one principal book per language. The English grades contain **4,186 curricular subjects**, each planned as one book chapter with teaching, examples and exercises and each served by its course's single skill. Course skills are public reading aids, not additional books or evidence that a lesson is complete. Plans in the other eight language folders await translation and review.
@@ -12,7 +12,7 @@ Reviewed 11 October 2026. The linked-source sample below covers the public defau
 
 ## Public repository samples
 
-All 13 source repositories currently have a CC BY 4.0 `LICENSE` file. Their contents are linked for study and rights review; they are **not** automatically included in CyberAB's CC0 dedication. The GitHub contributors endpoint listed only `hiagokinlevi` for each of those 13 repositories during this audit. Last observed pushes to these repositories were 7–8 May 2026. Word counts below are for the one linked sample per repository, not the repository as a whole.
+All 13 source repositories currently have a CC BY 4.0 `LICENSE` file. Their contents are linked for study and rights review; they are **not** automatically included in CyberABC's CC0 dedication. The GitHub contributors endpoint listed only `hiagokinlevi` for each of those 13 repositories during this audit. Last observed pushes to these repositories were 7–8 May 2026. Word counts below are for the one linked sample per repository, not the repository as a whole.
 
 | Repository | Markdown files | Sample reviewed | Sample words | Reuse decision |
 |---|---:|---|---:|---|
@@ -34,4 +34,4 @@ In this sample, none of the 13 files contained a direct external Markdown source
 
 ## Integration decision
 
-Keep the 13 repositories as linked source projects and the CyberAB course tree as the curriculum home. Place relevant source playbooks in each area's separate practice index, linked to an exact source revision. The book remains the principal teaching material. Write original explanations, safe exercises, rubrics and answers in the matching book. Do not copy CC BY material into a CC0-only book without a rights decision. Track the source path and reviewed commit in the book references when material is adapted.
+Keep the 13 repositories as linked source projects and the CyberABC course tree as the curriculum home. Place relevant source playbooks in each area's separate practice index, linked to an exact source revision. The book remains the principal teaching material. Write original explanations, safe exercises, rubrics and answers in the matching book. Do not copy CC BY material into a CC0-only book without a rights decision. Track the source path and reviewed commit in the book references when material is adapted.

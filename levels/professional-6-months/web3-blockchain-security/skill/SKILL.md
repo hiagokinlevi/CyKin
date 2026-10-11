@@ -1,5 +1,5 @@
 ---
-name: cyberab-web3-blockchain-security-professional-244bc5b9
+name: cyberabc-web3-blockchain-security-professional-244bc5b9
 description: "Guide a learner through the professional course in Web3, blockchain and cryptoasset security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

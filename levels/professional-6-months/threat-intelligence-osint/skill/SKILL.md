@@ -1,5 +1,5 @@
 ---
-name: cyberab-threat-intelligence-osint-professional-67d248b3
+name: cyberabc-threat-intelligence-osint-professional-67d248b3
 description: "Guide a learner through the professional course in Threat intelligence and OSINT, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

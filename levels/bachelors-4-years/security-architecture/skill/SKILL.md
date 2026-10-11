@@ -1,5 +1,5 @@
 ---
-name: cyberab-security-architecture-bachelor-7d649956
+name: cyberabc-security-architecture-bachelor-7d649956
 description: "Guide a learner through the bachelor's course in Security architecture and engineering, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

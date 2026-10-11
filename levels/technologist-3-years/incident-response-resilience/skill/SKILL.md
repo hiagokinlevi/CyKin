@@ -1,5 +1,5 @@
 ---
-name: cyberab-incident-response-resilience-technologist-45df67e4
+name: cyberabc-incident-response-resilience-technologist-45df67e4
 description: "Guide a learner through the technologist course in Incident response and cyber resilience, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

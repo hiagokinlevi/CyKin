@@ -1,5 +1,5 @@
 ---
-name: cyberab-quantum-post-quantum-security-doctorate-e187e3f9
+name: cyberabc-quantum-post-quantum-security-doctorate-e187e3f9
 description: "Guide a learner through the doctoral research track in Quantum and post-quantum security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

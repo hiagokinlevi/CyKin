@@ -1,5 +1,5 @@
 ---
-name: cyberab-data-governance-doctorate-9b4fec70
+name: cyberabc-data-governance-doctorate-9b4fec70
 description: "Guide a learner through the doctoral research track in Data governance, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

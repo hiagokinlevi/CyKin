@@ -1,5 +1,5 @@
 ---
-name: cyberab-data-governance-technical-f361ca61
+name: cyberabc-data-governance-technical-f361ca61
 description: "Guide a learner through the technical course in Data governance, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

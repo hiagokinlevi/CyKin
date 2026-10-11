@@ -1,5 +1,5 @@
 ---
-name: cyberab-data-governance-bachelor-dea2ce9a
+name: cyberabc-data-governance-bachelor-dea2ce9a
 description: "Guide a learner through the bachelor's course in Data governance, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberab-cloud-containers-masters-8a675037
+name: cyberabc-cloud-containers-masters-8a675037
 description: "Guide a learner through the master's course in Cloud and container security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberab-systems-endpoints-hardware-bachelor-c42ef6f0
+name: cyberabc-systems-endpoints-hardware-bachelor-c42ef6f0
 description: "Guide a learner through the bachelor's course in Systems, endpoints and hardware security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

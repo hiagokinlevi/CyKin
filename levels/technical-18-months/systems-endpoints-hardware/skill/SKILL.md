@@ -1,5 +1,5 @@
 ---
-name: cyberab-systems-endpoints-hardware-technical-9339638a
+name: cyberabc-systems-endpoints-hardware-technical-9339638a
 description: "Guide a learner through the technical course in Systems, endpoints and hardware security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberab-application-supply-chain-bachelor-1d858c59
+name: cyberabc-application-supply-chain-bachelor-1d858c59
 description: "Guide a learner through the bachelor's course in Application and software supply chain security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

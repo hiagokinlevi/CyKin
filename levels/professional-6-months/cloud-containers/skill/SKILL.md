@@ -1,5 +1,5 @@
 ---
-name: cyberab-cloud-containers-professional-ced6d055
+name: cyberabc-cloud-containers-professional-ced6d055
 description: "Guide a learner through the professional course in Cloud and container security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

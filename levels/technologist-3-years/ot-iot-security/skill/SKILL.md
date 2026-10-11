@@ -1,5 +1,5 @@
 ---
-name: cyberab-ot-iot-security-technologist-f0aff056
+name: cyberabc-ot-iot-security-technologist-f0aff056
 description: "Guide a learner through the technologist course in OT, IoT and cyber-physical security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

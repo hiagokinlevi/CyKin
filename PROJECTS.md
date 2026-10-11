@@ -1,10 +1,10 @@
 # Connected public projects
 
-**27 curated active repositories from the [hiagokinlevi account](https://github.com/hiagokinlevi?tab=repositories), checked 11 October 2026.** This inventory includes the current learning platform, 13 original security projects, two research repositories, nine forks, and two profile or website repositories. It is a project index, separate from the **23 CyberAB academic areas**. Each linked repository has its own scope, state, authorship history, and license; inclusion here does not make its contents part of a completed CyberAB course.
+**27 curated active repositories from the [hiagokinlevi account](https://github.com/hiagokinlevi?tab=repositories), checked 11 October 2026.** This inventory includes the current learning platform, 13 original security projects, two research repositories, nine forks, and two profile or website repositories. It is a project index, separate from the **23 CyberABC academic areas**. Each linked repository has its own scope, state, authorship history, and license; inclusion here does not make its contents part of a completed CyberABC course.
 
 ### Learning platform · 1
 
-- [CyberAB](https://github.com/hiagokinlevi/CyberAB) — public curriculum, study plans, books, and learner materials.
+- [CyberABC](https://github.com/hiagokinlevi/CyberABC) — public curriculum, study plans, books, and learner materials.
 
 ### Original security software · 13
 
@@ -18,7 +18,7 @@
 
 ### Study routes from the original projects
 
-Each original project links to a related CyberAB course. The course home links its nine editions, principal book, chapter index, one skill and supplementary playbooks.
+Each original project links to a related CyberABC course. The course home links its nine editions, principal book, chapter index, one skill and supplementary playbooks.
 
 | Project | Related course |
 |---|---|

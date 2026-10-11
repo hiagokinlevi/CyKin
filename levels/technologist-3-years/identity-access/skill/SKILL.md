@@ -1,5 +1,5 @@
 ---
-name: cyberab-identity-access-technologist-f01df92d
+name: cyberabc-identity-access-technologist-f01df92d
 description: "Guide a learner through the technologist course in Identity and access management, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

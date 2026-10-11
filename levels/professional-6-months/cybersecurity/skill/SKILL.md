@@ -1,5 +1,5 @@
 ---
-name: cyberab-cybersecurity-professional-430d68b2
+name: cyberabc-cybersecurity-professional-430d68b2
 description: "Guide a learner through the professional course in Cybersecurity, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberab-ot-iot-security-doctorate-154118d0
+name: cyberabc-ot-iot-security-doctorate-154118d0
 description: "Guide a learner through the doctoral research track in OT, IoT and cyber-physical security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

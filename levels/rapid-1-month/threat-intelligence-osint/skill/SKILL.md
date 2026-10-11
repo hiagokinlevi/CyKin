@@ -1,5 +1,5 @@
 ---
-name: cyberab-threat-intelligence-osint-rapid-e4268d35
+name: cyberabc-threat-intelligence-osint-rapid-e4268d35
 description: "Guide a learner through the rapid course in Threat intelligence and OSINT, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

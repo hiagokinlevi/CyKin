@@ -1,5 +1,5 @@
 ---
-name: cyberab-web3-blockchain-security-engineering-7a92cee2
+name: cyberabc-web3-blockchain-security-engineering-7a92cee2
 description: "Guide a learner through the engineering course in Web3, blockchain and cryptoasset security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberab-quantum-post-quantum-security-rapid-5cee8ae8
+name: cyberabc-quantum-post-quantum-security-rapid-5cee8ae8
 description: "Guide a learner through the rapid course in Quantum and post-quantum security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

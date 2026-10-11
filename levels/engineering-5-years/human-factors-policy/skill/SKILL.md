@@ -1,5 +1,5 @@
 ---
-name: cyberab-human-factors-policy-engineering-392796b4
+name: cyberabc-human-factors-policy-engineering-392796b4
 description: "Guide a learner through the engineering course in Human factors and cyber policy, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

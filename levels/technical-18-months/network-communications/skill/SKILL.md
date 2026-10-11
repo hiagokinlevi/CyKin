@@ -1,5 +1,5 @@
 ---
-name: cyberab-network-communications-technical-9127e379
+name: cyberabc-network-communications-technical-9127e379
 description: "Guide a learner through the technical course in Network and communications security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

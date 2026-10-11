@@ -1,5 +1,5 @@
 ---
-name: cyberab-information-security-technical-19582262
+name: cyberabc-information-security-technical-19582262
 description: "Guide a learner through the technical course in Information security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

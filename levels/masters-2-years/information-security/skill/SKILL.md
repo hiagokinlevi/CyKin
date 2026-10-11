@@ -1,5 +1,5 @@
 ---
-name: cyberab-information-security-masters-50723fc6
+name: cyberabc-information-security-masters-50723fc6
 description: "Guide a learner through the master's course in Information security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

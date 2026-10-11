@@ -1,5 +1,5 @@
 ---
-name: cyberab-threat-intelligence-osint-technologist-73ec917a
+name: cyberabc-threat-intelligence-osint-technologist-73ec917a
 description: "Guide a learner through the technologist course in Threat intelligence and OSINT, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

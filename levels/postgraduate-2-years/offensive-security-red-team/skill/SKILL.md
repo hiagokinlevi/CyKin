@@ -1,5 +1,5 @@
 ---
-name: cyberab-offensive-security-red-team-postgraduate-fb7091b6
+name: cyberabc-offensive-security-red-team-postgraduate-fb7091b6
 description: "Guide a learner through the postgraduate course in Authorized offensive security and red team, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberab-security-architecture-postgraduate-008471f8
+name: cyberabc-security-architecture-postgraduate-008471f8
 description: "Guide a learner through the postgraduate course in Security architecture and engineering, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

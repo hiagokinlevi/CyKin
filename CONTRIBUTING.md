@@ -1,6 +1,6 @@
 # Maintenance and feedback
 
-CyberAB is authored and maintained by [hiagokinlevi](https://github.com/hiagokinlevi). The repository accepts feedback through issues. Changes to the published repository are reviewed and committed by the maintainer.
+CyberABC is authored and maintained by [hiagokinlevi](https://github.com/hiagokinlevi). The repository accepts feedback through issues. Changes to the published repository are reviewed and committed by the maintainer.
 
 ## Send feedback
 

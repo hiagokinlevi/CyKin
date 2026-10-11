@@ -1,5 +1,5 @@
 ---
-name: cyberab-ai-security-technologist-9bcafc9e
+name: cyberabc-ai-security-technologist-9bcafc9e
 description: "Guide a learner through the technologist course in AI and machine-learning security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

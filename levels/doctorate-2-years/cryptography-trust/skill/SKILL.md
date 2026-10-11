@@ -1,5 +1,5 @@
 ---
-name: cyberab-cryptography-trust-doctorate-108918b8
+name: cyberabc-cryptography-trust-doctorate-108918b8
 description: "Guide a learner through the doctoral research track in Cryptography and trust services, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

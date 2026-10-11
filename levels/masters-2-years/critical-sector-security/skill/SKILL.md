@@ -1,5 +1,5 @@
 ---
-name: cyberab-critical-sector-security-masters-ffbd9620
+name: cyberabc-critical-sector-security-masters-ffbd9620
 description: "Guide a learner through the master's course in Critical infrastructure and sector security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

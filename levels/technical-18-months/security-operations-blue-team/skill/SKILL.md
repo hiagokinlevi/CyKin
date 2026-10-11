@@ -1,5 +1,5 @@
 ---
-name: cyberab-security-operations-blue-team-technical-5a2e6d97
+name: cyberabc-security-operations-blue-team-technical-5a2e6d97
 description: "Guide a learner through the technical course in Security operations and blue team, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

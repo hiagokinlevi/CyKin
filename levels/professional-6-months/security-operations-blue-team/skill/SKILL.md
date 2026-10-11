@@ -1,5 +1,5 @@
 ---
-name: cyberab-security-operations-blue-team-professional-328e1176
+name: cyberabc-security-operations-blue-team-professional-328e1176
 description: "Guide a learner through the professional course in Security operations and blue team, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

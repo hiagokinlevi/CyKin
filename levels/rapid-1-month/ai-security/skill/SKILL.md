@@ -1,5 +1,5 @@
 ---
-name: cyberab-ai-security-rapid-48249838
+name: cyberabc-ai-security-rapid-48249838
 description: "Guide a learner through the rapid course in AI and machine-learning security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

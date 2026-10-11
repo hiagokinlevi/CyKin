@@ -1,5 +1,5 @@
 ---
-name: cyberab-data-governance-technologist-e15133a5
+name: cyberabc-data-governance-technologist-e15133a5
 description: "Guide a learner through the technologist course in Data governance, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

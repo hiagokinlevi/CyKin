@@ -1,5 +1,5 @@
 ---
-name: cyberab-identity-access-doctorate-bc75271a
+name: cyberabc-identity-access-doctorate-bc75271a
 description: "Guide a learner through the doctoral research track in Identity and access management, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

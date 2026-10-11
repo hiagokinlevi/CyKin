@@ -1,5 +1,5 @@
 ---
-name: cyberab-ai-security-masters-90fa251d
+name: cyberabc-ai-security-masters-90fa251d
 description: "Guide a learner through the master's course in AI and machine-learning security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

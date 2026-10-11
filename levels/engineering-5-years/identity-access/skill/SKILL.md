@@ -1,5 +1,5 @@
 ---
-name: cyberab-identity-access-engineering-f2842ac5
+name: cyberabc-identity-access-engineering-f2842ac5
 description: "Guide a learner through the engineering course in Identity and access management, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

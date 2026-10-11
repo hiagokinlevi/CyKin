@@ -1,5 +1,5 @@
 ---
-name: cyberab-security-architecture-technical-babc0539
+name: cyberabc-security-architecture-technical-babc0539
 description: "Guide a learner through the technical course in Security architecture and engineering, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

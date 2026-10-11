@@ -1,5 +1,5 @@
 ---
-name: cyberab-critical-sector-security-professional-1b3fff27
+name: cyberabc-critical-sector-security-professional-1b3fff27
 description: "Guide a learner through the professional course in Critical infrastructure and sector security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

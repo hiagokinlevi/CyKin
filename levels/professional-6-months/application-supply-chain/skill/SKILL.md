@@ -1,5 +1,5 @@
 ---
-name: cyberab-application-supply-chain-professional-2f79da44
+name: cyberabc-application-supply-chain-professional-2f79da44
 description: "Guide a learner through the professional course in Application and software supply chain security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

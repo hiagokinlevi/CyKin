@@ -1,5 +1,5 @@
 ---
-name: cyberab-threat-intelligence-osint-doctorate-0678c210
+name: cyberabc-threat-intelligence-osint-doctorate-0678c210
 description: "Guide a learner through the doctoral research track in Threat intelligence and OSINT, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberab-information-security-professional-65440cd9
+name: cyberabc-information-security-professional-65440cd9
 description: "Guide a learner through the professional course in Information security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

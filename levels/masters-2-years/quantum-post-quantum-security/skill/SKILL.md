@@ -1,5 +1,5 @@
 ---
-name: cyberab-quantum-post-quantum-security-masters-4a88f3e7
+name: cyberabc-quantum-post-quantum-security-masters-4a88f3e7
 description: "Guide a learner through the master's course in Quantum and post-quantum security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

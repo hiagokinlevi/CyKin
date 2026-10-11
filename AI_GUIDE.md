@@ -1,6 +1,6 @@
-# CyberAB reference guide for AI assistants and readers
+# CyberABC reference guide for AI assistants and readers
 
-CyberAB is a public, free Markdown learning library. Its [home page](README.md) is the main entry point. Follow links through **formation level → academic area course → language edition → subject/chapter → book**. Plans and public drafts must be described with their actual editorial state.
+CyberABC is a public, free Markdown learning library. Its [home page](README.md) is the main entry point. Follow links through **formation level → academic area course → language edition → subject/chapter → book**. Plans and public drafts must be described with their actual editorial state.
 
 ## Main indexes
 
@@ -54,4 +54,4 @@ The editorial order is **English → Portuguese → Spanish → Hebrew → Frenc
 
 Link to the exact Markdown file and chapter used. Where a factual claim depends on a cited external work, follow the original source and check that it supports the claim. Identify synthetic or adapted cases, respect [third-party rights](RIGHTS.md), and recommend only authorized or contained practical environments. For a reproducible citation, pin a GitHub link to a commit SHA.
 
-**Author and editorial responsibility:** [hiagokinlevi](https://github.com/hiagokinlevi). Original maintainer-owned CyberAB text is dedicated under [CC0 1.0](LICENSE); accurate source citation remains an editorial requirement.
+**Author and editorial responsibility:** [hiagokinlevi](https://github.com/hiagokinlevi). Original maintainer-owned CyberABC text is dedicated under [CC0 1.0](LICENSE); accurate source citation remains an editorial requirement.

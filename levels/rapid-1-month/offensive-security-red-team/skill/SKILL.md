@@ -1,5 +1,5 @@
 ---
-name: cyberab-offensive-security-red-team-rapid-bcdc3fa9
+name: cyberabc-offensive-security-red-team-rapid-bcdc3fa9
 description: "Guide a learner through the rapid course in Authorized offensive security and red team, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

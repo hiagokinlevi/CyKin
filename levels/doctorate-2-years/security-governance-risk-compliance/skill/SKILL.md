@@ -1,5 +1,5 @@
 ---
-name: cyberab-security-governance-risk-compl-doctorate-3497c378
+name: cyberabc-security-governance-risk-compl-doctorate-3497c378
 description: "Guide a learner through the doctoral research track in Security governance, risk and compliance, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

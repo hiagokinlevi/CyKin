@@ -1,5 +1,5 @@
 ---
-name: cyberab-web3-blockchain-security-technologist-49fbf909
+name: cyberabc-web3-blockchain-security-technologist-49fbf909
 description: "Guide a learner through the technologist course in Web3, blockchain and cryptoasset security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

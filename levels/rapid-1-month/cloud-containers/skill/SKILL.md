@@ -1,5 +1,5 @@
 ---
-name: cyberab-cloud-containers-rapid-4331f7e6
+name: cyberabc-cloud-containers-rapid-4331f7e6
 description: "Guide a learner through the rapid course in Cloud and container security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

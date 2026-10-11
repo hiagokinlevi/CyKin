@@ -1,5 +1,5 @@
 ---
-name: cyberab-security-operations-blue-team-technologist-08377b03
+name: cyberabc-security-operations-blue-team-technologist-08377b03
 description: "Guide a learner through the technologist course in Security operations and blue team, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

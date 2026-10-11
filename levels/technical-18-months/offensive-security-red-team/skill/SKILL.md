@@ -1,5 +1,5 @@
 ---
-name: cyberab-offensive-security-red-team-technical-18f4c348
+name: cyberabc-offensive-security-red-team-technical-18f4c348
 description: "Guide a learner through the technical course in Authorized offensive security and red team, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

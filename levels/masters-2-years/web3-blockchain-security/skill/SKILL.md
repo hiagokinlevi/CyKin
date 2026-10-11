@@ -1,5 +1,5 @@
 ---
-name: cyberab-web3-blockchain-security-masters-53f610bd
+name: cyberabc-web3-blockchain-security-masters-53f610bd
 description: "Guide a learner through the master's course in Web3, blockchain and cryptoasset security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

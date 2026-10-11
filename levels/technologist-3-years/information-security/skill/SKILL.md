@@ -1,5 +1,5 @@
 ---
-name: cyberab-information-security-technologist-c21ee8c6
+name: cyberabc-information-security-technologist-c21ee8c6
 description: "Guide a learner through the technologist course in Information security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

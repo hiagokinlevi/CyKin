@@ -1,5 +1,5 @@
 ---
-name: cyberab-information-security-rapid-abf87bd0
+name: cyberabc-information-security-rapid-abf87bd0
 description: "Guide a learner through the rapid course in Information security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

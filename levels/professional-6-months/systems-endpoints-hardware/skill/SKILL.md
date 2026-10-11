@@ -1,5 +1,5 @@
 ---
-name: cyberab-systems-endpoints-hardware-professional-4764fea3
+name: cyberabc-systems-endpoints-hardware-professional-4764fea3
 description: "Guide a learner through the professional course in Systems, endpoints and hardware security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

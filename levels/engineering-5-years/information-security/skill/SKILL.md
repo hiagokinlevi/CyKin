@@ -1,5 +1,5 @@
 ---
-name: cyberab-information-security-engineering-2f77c0b6
+name: cyberabc-information-security-engineering-2f77c0b6
 description: "Guide a learner through the engineering course in Information security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

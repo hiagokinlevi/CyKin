@@ -1,5 +1,5 @@
 ---
-name: cyberab-privacy-data-protection-rapid-4f7b3a61
+name: cyberabc-privacy-data-protection-rapid-4f7b3a61
 description: "Guide a learner through the rapid course in Privacy and data protection, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

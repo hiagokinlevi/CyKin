@@ -1,5 +1,5 @@
 ---
-name: cyberab-cryptography-trust-professional-a4206bdb
+name: cyberabc-cryptography-trust-professional-a4206bdb
 description: "Guide a learner through the professional course in Cryptography and trust services, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

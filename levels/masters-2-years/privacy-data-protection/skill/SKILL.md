@@ -1,5 +1,5 @@
 ---
-name: cyberab-privacy-data-protection-masters-dd6b93a0
+name: cyberabc-privacy-data-protection-masters-dd6b93a0
 description: "Guide a learner through the master's course in Privacy and data protection, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

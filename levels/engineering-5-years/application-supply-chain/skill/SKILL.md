@@ -1,5 +1,5 @@
 ---
-name: cyberab-application-supply-chain-engineering-afecf193
+name: cyberabc-application-supply-chain-engineering-afecf193
 description: "Guide a learner through the engineering course in Application and software supply chain security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

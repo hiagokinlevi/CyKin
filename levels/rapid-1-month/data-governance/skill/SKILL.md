@@ -1,5 +1,5 @@
 ---
-name: cyberab-data-governance-rapid-393b36d8
+name: cyberabc-data-governance-rapid-393b36d8
 description: "Guide a learner through the rapid course in Data governance, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

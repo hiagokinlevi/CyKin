@@ -1,5 +1,5 @@
 ---
-name: cyberab-cryptography-trust-technologist-0cb8972f
+name: cyberabc-cryptography-trust-technologist-0cb8972f
 description: "Guide a learner through the technologist course in Cryptography and trust services, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

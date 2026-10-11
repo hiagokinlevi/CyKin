@@ -1,5 +1,5 @@
 ---
-name: cyberab-cryptography-trust-rapid-a49d4b1a
+name: cyberabc-cryptography-trust-rapid-a49d4b1a
 description: "Guide a learner through the rapid course in Cryptography and trust services, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

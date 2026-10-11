@@ -1,5 +1,5 @@
 ---
-name: cyberab-quantum-post-quantum-security-engineering-bae97ab4
+name: cyberabc-quantum-post-quantum-security-engineering-bae97ab4
 description: "Guide a learner through the engineering course in Quantum and post-quantum security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

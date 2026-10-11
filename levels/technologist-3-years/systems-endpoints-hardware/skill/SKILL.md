@@ -1,5 +1,5 @@
 ---
-name: cyberab-systems-endpoints-hardware-technologist-4c6ae7fc
+name: cyberabc-systems-endpoints-hardware-technologist-4c6ae7fc
 description: "Guide a learner through the technologist course in Systems, endpoints and hardware security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

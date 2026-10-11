@@ -1,5 +1,5 @@
 ---
-name: cyberab-application-supply-chain-postgraduate-8283df86
+name: cyberabc-application-supply-chain-postgraduate-8283df86
 description: "Guide a learner through the postgraduate course in Application and software supply chain security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberab-critical-sector-security-bachelor-f369794c
+name: cyberabc-critical-sector-security-bachelor-f369794c
 description: "Guide a learner through the bachelor's course in Critical infrastructure and sector security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

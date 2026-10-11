@@ -1,5 +1,5 @@
 ---
-name: cyberab-ai-security-postgraduate-392a012f
+name: cyberabc-ai-security-postgraduate-392a012f
 description: "Guide a learner through the postgraduate course in AI and machine-learning security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

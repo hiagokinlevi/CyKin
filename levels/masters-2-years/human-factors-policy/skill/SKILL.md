@@ -1,5 +1,5 @@
 ---
-name: cyberab-human-factors-policy-masters-95bbeaf1
+name: cyberabc-human-factors-policy-masters-95bbeaf1
 description: "Guide a learner through the master's course in Human factors and cyber policy, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

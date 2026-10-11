@@ -1,5 +1,5 @@
 ---
-name: cyberab-ot-iot-security-masters-35a0ad3d
+name: cyberabc-ot-iot-security-masters-35a0ad3d
 description: "Guide a learner through the master's course in OT, IoT and cyber-physical security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

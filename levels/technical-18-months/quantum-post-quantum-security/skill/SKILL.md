@@ -1,5 +1,5 @@
 ---
-name: cyberab-quantum-post-quantum-security-technical-34318756
+name: cyberabc-quantum-post-quantum-security-technical-34318756
 description: "Guide a learner through the technical course in Quantum and post-quantum security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

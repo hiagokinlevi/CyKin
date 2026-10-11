@@ -1,5 +1,5 @@
 ---
-name: cyberab-incident-response-resilience-professional-19e11913
+name: cyberabc-incident-response-resilience-professional-19e11913
 description: "Guide a learner through the professional course in Incident response and cyber resilience, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

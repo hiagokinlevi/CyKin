@@ -1,5 +1,5 @@
 ---
-name: cyberab-systems-endpoints-hardware-doctorate-ff59794a
+name: cyberabc-systems-endpoints-hardware-doctorate-ff59794a
 description: "Guide a learner through the doctoral research track in Systems, endpoints and hardware security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

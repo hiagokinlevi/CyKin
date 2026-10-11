@@ -1,5 +1,5 @@
 ---
-name: cyberab-cloud-containers-postgraduate-a110c6c1
+name: cyberabc-cloud-containers-postgraduate-a110c6c1
 description: "Guide a learner through the postgraduate course in Cloud and container security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

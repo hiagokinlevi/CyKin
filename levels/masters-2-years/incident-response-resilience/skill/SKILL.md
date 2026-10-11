@@ -1,5 +1,5 @@
 ---
-name: cyberab-incident-response-resilience-masters-306012c5
+name: cyberabc-incident-response-resilience-masters-306012c5
 description: "Guide a learner through the master's course in Incident response and cyber resilience, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

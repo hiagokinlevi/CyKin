@@ -1,5 +1,5 @@
 ---
-name: cyberab-systems-endpoints-hardware-rapid-87d5dcc2
+name: cyberabc-systems-endpoints-hardware-rapid-87d5dcc2
 description: "Guide a learner through the rapid course in Systems, endpoints and hardware security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

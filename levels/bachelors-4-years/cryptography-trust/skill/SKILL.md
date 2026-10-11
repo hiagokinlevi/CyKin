@@ -1,5 +1,5 @@
 ---
-name: cyberab-cryptography-trust-bachelor-fab8343b
+name: cyberabc-cryptography-trust-bachelor-fab8343b
 description: "Guide a learner through the bachelor's course in Cryptography and trust services, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

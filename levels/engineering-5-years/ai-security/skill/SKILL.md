@@ -1,5 +1,5 @@
 ---
-name: cyberab-ai-security-engineering-820de9ed
+name: cyberabc-ai-security-engineering-820de9ed
 description: "Guide a learner through the engineering course in AI and machine-learning security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberab-offensive-security-red-team-professional-f9cf4b73
+name: cyberabc-offensive-security-red-team-professional-f9cf4b73
 description: "Guide a learner through the professional course in Authorized offensive security and red team, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

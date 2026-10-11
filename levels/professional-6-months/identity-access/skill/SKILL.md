@@ -1,5 +1,5 @@
 ---
-name: cyberab-identity-access-professional-38f23810
+name: cyberabc-identity-access-professional-38f23810
 description: "Guide a learner through the professional course in Identity and access management, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

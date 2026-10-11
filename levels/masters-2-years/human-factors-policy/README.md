@@ -30,6 +30,6 @@ This is one course. It has **one course skill** and **one principal book in each
 
 The [English chapter index](en/SUBJECTS.md) gives every subject's status, planned effort, exercise target and links to its plan or authored draft. The book plan summarizes each chapter in full.
 
-**Related project:** [hiagokinlevi/phishing-surface-monitor](https://github.com/hiagokinlevi/phishing-surface-monitor). Its source material is supplementary and retains its own rights. Original CyberAB material is dedicated under [CC0 1.0](../../../LICENSE).
+**Related project:** [hiagokinlevi/phishing-surface-monitor](https://github.com/hiagokinlevi/phishing-surface-monitor). Its source material is supplementary and retains its own rights. Original CyberABC material is dedicated under [CC0 1.0](../../../LICENSE).
 
 **Editorial status:** a public outline or draft is available for study but is not a completed book or a recognized qualification.

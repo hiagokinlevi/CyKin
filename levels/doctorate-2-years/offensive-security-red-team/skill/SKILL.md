@@ -1,5 +1,5 @@
 ---
-name: cyberab-offensive-security-red-team-doctorate-74c7084c
+name: cyberabc-offensive-security-red-team-doctorate-74c7084c
 description: "Guide a learner through the doctoral research track in Authorized offensive security and red team, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

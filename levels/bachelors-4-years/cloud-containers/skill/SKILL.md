@@ -1,5 +1,5 @@
 ---
-name: cyberab-cloud-containers-bachelor-5d95a195
+name: cyberabc-cloud-containers-bachelor-5d95a195
 description: "Guide a learner through the bachelor's course in Cloud and container security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

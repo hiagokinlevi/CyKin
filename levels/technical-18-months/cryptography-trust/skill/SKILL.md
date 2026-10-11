@@ -1,5 +1,5 @@
 ---
-name: cyberab-cryptography-trust-technical-4fd2c9bb
+name: cyberabc-cryptography-trust-technical-4fd2c9bb
 description: "Guide a learner through the technical course in Cryptography and trust services, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

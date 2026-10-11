@@ -1,5 +1,5 @@
 ---
-name: cyberab-privacy-data-protection-technical-b6be5475
+name: cyberabc-privacy-data-protection-technical-b6be5475
 description: "Guide a learner through the technical course in Privacy and data protection, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberab-identity-access-bachelor-1d277815
+name: cyberabc-identity-access-bachelor-1d277815
 description: "Guide a learner through the bachelor's course in Identity and access management, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

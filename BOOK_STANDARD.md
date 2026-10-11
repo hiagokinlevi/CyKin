@@ -1,4 +1,4 @@
-# CyberAB study-book standard
+# CyberABC study-book standard
 
 Each of the 23 current academic areas has nine course tracks. Each track has a book location in each planned language: `en`, `pt`, `es`, `he`, `fr`, `ru`, `de`, `zh`, `ja`. This yields 207 distinct books in English and 1,863 planned language editions. A plan file is not a finished book. Markdown is the canonical authoring and public reading format; an A4 PDF is a derived format for page verification.
 

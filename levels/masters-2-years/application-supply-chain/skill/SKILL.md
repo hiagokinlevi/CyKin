@@ -1,5 +1,5 @@
 ---
-name: cyberab-application-supply-chain-masters-326326c2
+name: cyberabc-application-supply-chain-masters-326326c2
 description: "Guide a learner through the master's course in Application and software supply chain security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

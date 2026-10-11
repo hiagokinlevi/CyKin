@@ -1,5 +1,5 @@
 ---
-name: cyberab-network-communications-masters-1c76d953
+name: cyberabc-network-communications-masters-1c76d953
 description: "Guide a learner through the master's course in Network and communications security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

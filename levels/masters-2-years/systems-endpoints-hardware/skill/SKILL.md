@@ -1,5 +1,5 @@
 ---
-name: cyberab-systems-endpoints-hardware-masters-cc60edfe
+name: cyberabc-systems-endpoints-hardware-masters-cc60edfe
 description: "Guide a learner through the master's course in Systems, endpoints and hardware security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

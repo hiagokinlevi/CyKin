@@ -1,5 +1,5 @@
 ---
-name: cyberab-data-governance-masters-6dbadbbf
+name: cyberabc-data-governance-masters-6dbadbbf
 description: "Guide a learner through the master's course in Data governance, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

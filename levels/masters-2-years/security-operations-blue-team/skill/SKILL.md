@@ -1,5 +1,5 @@
 ---
-name: cyberab-security-operations-blue-team-masters-0a10392d
+name: cyberabc-security-operations-blue-team-masters-0a10392d
 description: "Guide a learner through the master's course in Security operations and blue team, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

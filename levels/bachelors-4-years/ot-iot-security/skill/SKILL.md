@@ -1,5 +1,5 @@
 ---
-name: cyberab-ot-iot-security-bachelor-8a86201e
+name: cyberabc-ot-iot-security-bachelor-8a86201e
 description: "Guide a learner through the bachelor's course in OT, IoT and cyber-physical security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

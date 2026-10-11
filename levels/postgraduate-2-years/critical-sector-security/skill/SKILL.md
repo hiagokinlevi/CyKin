@@ -1,5 +1,5 @@
 ---
-name: cyberab-critical-sector-security-postgraduate-a4c5e9e2
+name: cyberabc-critical-sector-security-postgraduate-a4c5e9e2
 description: "Guide a learner through the postgraduate course in Critical infrastructure and sector security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

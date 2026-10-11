@@ -1,5 +1,5 @@
 ---
-name: cyberab-cloud-containers-doctorate-8a31192f
+name: cyberabc-cloud-containers-doctorate-8a31192f
 description: "Guide a learner through the doctoral research track in Cloud and container security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

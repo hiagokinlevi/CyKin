@@ -1,5 +1,5 @@
 ---
-name: cyberab-incident-response-resilience-postgraduate-a136e389
+name: cyberabc-incident-response-resilience-postgraduate-a136e389
 description: "Guide a learner through the postgraduate course in Incident response and cyber resilience, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

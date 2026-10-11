@@ -1,5 +1,5 @@
 ---
-name: cyberab-web3-blockchain-security-technical-1c57f13e
+name: cyberabc-web3-blockchain-security-technical-1c57f13e
 description: "Guide a learner through the technical course in Web3, blockchain and cryptoasset security, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: cyberab-security-architecture-engineering-80b397da
+name: cyberabc-security-architecture-engineering-80b397da
 description: "Guide a learner through the engineering course in Security architecture and engineering, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

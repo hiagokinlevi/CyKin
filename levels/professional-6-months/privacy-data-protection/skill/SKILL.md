@@ -1,5 +1,5 @@
 ---
-name: cyberab-privacy-data-protection-professional-cad73455
+name: cyberabc-privacy-data-protection-professional-cad73455
 description: "Guide a learner through the professional course in Privacy and data protection, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---

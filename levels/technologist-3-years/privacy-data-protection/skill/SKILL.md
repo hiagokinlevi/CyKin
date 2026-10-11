@@ -1,5 +1,5 @@
 ---
-name: cyberab-privacy-data-protection-technologist-79a21c0e
+name: cyberabc-privacy-data-protection-technologist-79a21c0e
 description: "Guide a learner through the technologist course in Privacy and data protection, its one book, subject chapters, exercises and reviewed sources."
 license: CC0-1.0
 ---
