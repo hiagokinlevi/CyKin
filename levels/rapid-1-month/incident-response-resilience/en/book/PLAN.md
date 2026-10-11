@@ -83,13 +83,13 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Teaching purpose and relevance:** Integrate readiness, triage and recovery into one controlled case and show how learning is recorded without claiming an untested return to service.
 
-**Concepts and techniques:** Tabletop inject; decision log; stakeholder communication; measurement contract; after-action report; corrective-action closure.
+**Concepts and techniques:** Tabletop inject; decision log; audience-specific and versioned status communication; measurement contract; after-action report; corrective-action closure.
 
 **Depth and method:** At rapid course level, learners will follow a contained worked example. Use a guided case record to distinguish observations, assumptions and the next safe action.
 
-**Worked example:** A synthetic Harbor Library scenario with staged evidence, service-owner constraints and an optional replay in which the approver is unavailable.
+**Worked example:** A synthetic Harbor Library scenario with staged evidence, an unavailable-approver replay and a separate unverified-exposure message replay.
 
-**Practice and exercises:** Complete a guided tabletop, submit a six-artifact case record, compare exercise findings with technical tests and draft an evidence-linked improvement plan. The planned allocation is 12 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Complete a guided tabletop and six-artifact case record, compare exercise findings with technical tests, draft bounded messages for different audiences and plan evidence-linked improvements. The planned allocation is 12 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 03 and prepares the worked-answer appendix and final assessment. This is an editorial brief, not a completed lesson.
 
