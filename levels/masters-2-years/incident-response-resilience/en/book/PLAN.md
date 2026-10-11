@@ -10,6 +10,15 @@
 
 A finished book must contain at least 300 actual A4 pages and 50 substantive exercises with worked results. The current 600-page budget is a plan, not measured pages. Every chapter needs teaching, definitions, a worked example, practical activity, errors and limits, exercises and a synthesis. The final appendix holds answers keyed to the exercise IDs. Cite verifiable sources, label synthetic cases, and review for technical accuracy, rights and accessibility.
 
+## Primary source starting points
+
+- [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) — current incident-response recommendations within cybersecurity risk management; it supersedes Rev. 2.
+- [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) — recovery planning, testing and improvement.
+- [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) — exercise design and evaluation; a 2006 publication whose applicability must be checked during authorship.
+- [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) — forensic techniques in response; a 2006 publication whose technical details need current verification.
+
+These are source leads, not a finished chapter bibliography. Cite the relevant primary source beside each factual claim in the authored manuscript and identify any fictional case as synthetic.
+
 ## Contents and chapter summaries
 
 <a id="ch-01"></a>
@@ -18,7 +27,17 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Stage 1; 75 planned A4 pages; 7 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Research question and literature method** and contributes to the master's course outcome: formulate a question, evaluate prior work and produce reproducible findings in incident response and cyber resilience. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will design and execute an ethically reviewed study. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 7 exercises, then compare reasoning with the final worked-answer appendix. It builds on the entry knowledge and prepares Chapter 02. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Define a narrow, answerable question about incident response and search prior work reproducibly.
+
+**Concepts and techniques:** Question framing; search strategy; inclusion rule; citation trail; research gap.
+
+**Depth and method:** At master's course level, learners will design and execute an ethically reviewed study. Formulate a research question and maintain a reproducible, ethically reviewed study record.
+
+**Worked example:** A proposed comparison of two incident triage methods.
+
+**Practice and exercises:** Write a question and protocol for locating and screening relevant primary studies. The planned allocation is 7 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on the entry knowledge and prepares Chapter 02. This is an editorial brief, not a completed lesson.
 
 <a id="ch-02"></a>
 
@@ -26,7 +45,17 @@ This subject teaches **Research question and literature method** and contributes
 
 **Stage 1; 75 planned A4 pages; 7 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Advanced incident response research seminar** and contributes to the master's course outcome: formulate a question, evaluate prior work and produce reproducible findings in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will design and execute an ethically reviewed study. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 7 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 01 and prepares Chapter 03. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Critique competing models of response effectiveness before selecting a study design.
+
+**Concepts and techniques:** Theory; model assumption; operational setting; evidence quality; critique.
+
+**Depth and method:** At master's course level, learners will design and execute an ethically reviewed study. Formulate a research question and maintain a reproducible, ethically reviewed study record.
+
+**Worked example:** Two published response studies with different success measures.
+
+**Practice and exercises:** Lead a seminar comparison and state what each model leaves unexplained. The planned allocation is 7 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 01 and prepares Chapter 03. This is an editorial brief, not a completed lesson.
 
 <a id="ch-03"></a>
 
@@ -34,7 +63,17 @@ This subject teaches **Advanced incident response research seminar** and contrib
 
 **Stage 2; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Study design, ethics and reproducibility** and contributes to the master's course outcome: formulate a question, evaluate prior work and produce reproducible findings in incident response and cyber resilience. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will design and execute an ethically reviewed study. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 6 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 02 and prepares Chapter 04. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Plan a bounded investigation with consent, replicable measures and explicit validity limits.
+
+**Concepts and techniques:** Design; sampling; ethics; predeclared measure; reproducible artifact.
+
+**Depth and method:** At master's course level, learners will design and execute an ethically reviewed study. Formulate a research question and maintain a reproducible, ethically reviewed study record.
+
+**Worked example:** A synthetic tabletop study using volunteer analysts and fictional cases.
+
+**Practice and exercises:** Draft a methods and ethics protocol and test whether another reader could reproduce it. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 02 and prepares Chapter 04. This is an editorial brief, not a completed lesson.
 
 <a id="ch-04"></a>
 
@@ -42,7 +81,17 @@ This subject teaches **Study design, ethics and reproducibility** and contribute
 
 **Stage 2; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Competing explanations of response outcomes** and contributes to the master's course outcome: formulate a question, evaluate prior work and produce reproducible findings in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will design and execute an ethically reviewed study. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 6 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 03 and prepares Chapter 05. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Avoid attributing outcomes to a playbook when staffing, case mix or telemetry may explain them.
+
+**Concepts and techniques:** Confounding; alternative hypothesis; causal caution; sensitivity.
+
+**Depth and method:** At master's course level, learners will design and execute an ethically reviewed study. Formulate a research question and maintain a reproducible, ethically reviewed study record.
+
+**Worked example:** A fictional dataset where one team has both a new playbook and more experience.
+
+**Practice and exercises:** List competing explanations and design analyses that challenge the favored claim. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 03 and prepares Chapter 05. This is an editorial brief, not a completed lesson.
 
 <a id="ch-05"></a>
 
@@ -50,7 +99,17 @@ This subject teaches **Competing explanations of response outcomes** and contrib
 
 **Stage 3; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Proposal and pilot of a bounded incident study** and contributes to the master's course outcome: formulate a question, evaluate prior work and produce reproducible findings in incident response and cyber resilience. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will design and execute an ethically reviewed study. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 6 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 04 and prepares Chapter 06. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Use a small pilot to reveal measurement and procedure problems before the main study.
+
+**Concepts and techniques:** Pilot; feasibility; protocol deviation; instrument revision; stop rule.
+
+**Depth and method:** At master's course level, learners will design and execute an ethically reviewed study. Formulate a research question and maintain a reproducible, ethically reviewed study record.
+
+**Worked example:** A synthetic set of ten incident simulations with incomplete observer notes.
+
+**Practice and exercises:** Submit the proposal, run a pilot and revise the protocol with an audit trail. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 04 and prepares Chapter 06. This is an editorial brief, not a completed lesson.
 
 <a id="ch-06"></a>
 
@@ -58,7 +117,17 @@ This subject teaches **Proposal and pilot of a bounded incident study** and cont
 
 **Stage 3; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Reproducible collection and outcome analysis** and contributes to the master's course outcome: formulate a question, evaluate prior work and produce reproducible findings in incident response and cyber resilience. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will design and execute an ethically reviewed study. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 6 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 05 and prepares Chapter 07. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Produce findings from traceable data transformations and appropriately qualified estimates.
+
+**Concepts and techniques:** Data dictionary; cleaning log; analysis code; uncertainty; robustness.
+
+**Depth and method:** At master's course level, learners will design and execute an ethically reviewed study. Formulate a research question and maintain a reproducible, ethically reviewed study record.
+
+**Worked example:** A fictional pilot and main-study dataset of triage decisions.
+
+**Practice and exercises:** Publish a reproducible analysis package and test alternative outcome definitions. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 05 and prepares Chapter 07. This is an editorial brief, not a completed lesson.
 
 <a id="ch-07"></a>
 
@@ -66,7 +135,17 @@ This subject teaches **Reproducible collection and outcome analysis** and contri
 
 **Stage 4; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Dissertation on response effectiveness and limits** and contributes to the master's course outcome: formulate a question, evaluate prior work and produce reproducible findings in incident response and cyber resilience. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will design and execute an ethically reviewed study. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 6 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 06 and prepares Chapter 08. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Synthesize the study into a defensible contribution that distinguishes results from interpretation.
+
+**Concepts and techniques:** Dissertation argument; prior work; method; result; limitation.
+
+**Depth and method:** At master's course level, learners will design and execute an ethically reviewed study. Formulate a research question and maintain a reproducible, ethically reviewed study record.
+
+**Worked example:** The student's incident-study protocol, data and analysis artifacts.
+
+**Practice and exercises:** Write the dissertation and document negative results and transfer limits. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 06 and prepares Chapter 08. This is an editorial brief, not a completed lesson.
 
 <a id="ch-08"></a>
 
@@ -74,7 +153,17 @@ This subject teaches **Dissertation on response effectiveness and limits** and c
 
 **Stage 4; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Independent research review and defense** and contributes to the master's course outcome: formulate a question, evaluate prior work and produce reproducible findings in incident response and cyber resilience. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will design and execute an ethically reviewed study. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 6 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 07 and prepares the worked-answer appendix and final assessment. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Subject methods and claims to critique beyond the project team.
+
+**Concepts and techniques:** Reviewer question; counterexample; reproducibility check; revision.
+
+**Depth and method:** At master's course level, learners will design and execute an ethically reviewed study. Formulate a research question and maintain a reproducible, ethically reviewed study record.
+
+**Worked example:** An independent reader's critique of the dissertation and analysis package.
+
+**Practice and exercises:** Defend choices, reproduce key results and record revisions after review. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 07 and prepares the worked-answer appendix and final assessment. This is an editorial brief, not a completed lesson.
 
 ## Practical and assessment plan
 

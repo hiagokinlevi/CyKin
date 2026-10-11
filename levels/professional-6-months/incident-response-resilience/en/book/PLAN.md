@@ -10,6 +10,15 @@
 
 A finished book must contain at least 300 actual A4 pages and 50 substantive exercises with worked results. The current 360-page budget is a plan, not measured pages. Every chapter needs teaching, definitions, a worked example, practical activity, errors and limits, exercises and a synthesis. The final appendix holds answers keyed to the exercise IDs. Cite verifiable sources, label synthetic cases, and review for technical accuracy, rights and accessibility.
 
+## Primary source starting points
+
+- [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) — current incident-response recommendations within cybersecurity risk management; it supersedes Rev. 2.
+- [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) — recovery planning, testing and improvement.
+- [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) — exercise design and evaluation; a 2006 publication whose applicability must be checked during authorship.
+- [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) — forensic techniques in response; a 2006 publication whose technical details need current verification.
+
+These are source leads, not a finished chapter bibliography. Cite the relevant primary source beside each factual claim in the authored manuscript and identify any fictional case as synthetic.
+
 ## Contents and chapter summaries
 
 <a id="ch-01"></a>
@@ -22,7 +31,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Service inventory; roles; escalation path; logging readiness; backup and communication dependencies.
 
-**Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints. Record approvals, evidence checkpoints and a usable operational handoff.
 
 **Worked example:** A synthetic multi-service organization with incomplete ownership and telemetry maps.
 
@@ -40,7 +49,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Rules of engagement; authorization record; role separation; approval matrix; escalation.
 
-**Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints. Record approvals, evidence checkpoints and a usable operational handoff.
 
 **Worked example:** A simulated cloud account alert that could require tenant-level changes outside the analyst's scope.
 
@@ -58,7 +67,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Intake fields; corroboration; impact and confidence; severity matrix; false-positive handling.
 
-**Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints. Record approvals, evidence checkpoints and a usable operational handoff.
 
 **Worked example:** Synthetic endpoint and identity alerts about the same account with conflicting timestamps.
 
@@ -76,7 +85,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Collection plan; source identifiers; hashes where applicable; access log; retention and chain-of-custody limits.
 
-**Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints. Record approvals, evidence checkpoints and a usable operational handoff.
 
 **Worked example:** A synthetic log export and screenshot with different time zones and incomplete metadata.
 
@@ -94,7 +103,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Hypothesis table; timeline normalization; corroboration; competing explanations; confidence.
 
-**Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints. Record approvals, evidence checkpoints and a usable operational handoff.
 
 **Worked example:** A fictional account takeover case with identity, application and support-ticket records.
 
@@ -112,7 +121,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Scope of intervention; blast radius; reversibility; approval; success criterion; rollback.
 
-**Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints. Record approvals, evidence checkpoints and a usable operational handoff.
 
 **Worked example:** A synthetic credential misuse scenario where disabling one account affects a critical service.
 
@@ -130,7 +139,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Root-cause hypothesis; persistence check; control change; validation evidence; residual risk.
 
-**Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints. Record approvals, evidence checkpoints and a usable operational handoff.
 
 **Worked example:** A fictional unauthorized scheduled task with a second unverified account change.
 
@@ -148,7 +157,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Restore point; data integrity; service acceptance; staged restart; monitoring; rollback.
 
-**Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints. Record approvals, evidence checkpoints and a usable operational handoff.
 
 **Worked example:** A synthetic booking database restored from a known snapshot while application logs remain incomplete.
 
@@ -166,7 +175,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Stakeholder map; status update; data minimization; legal hold trigger; message approval.
 
-**Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints. Record approvals, evidence checkpoints and a usable operational handoff.
 
 **Worked example:** A fictional incident involving possible exposure of a subscriber contact list.
 
@@ -184,7 +193,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Trigger; decision branch; owner; safety gate; evidence checkpoint; revision control.
 
-**Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints. Record approvals, evidence checkpoints and a usable operational handoff.
 
 **Worked example:** A synthetic compromised-credential playbook missing approval and rollback steps.
 
@@ -202,7 +211,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Inject control; handoff; clock management; decision log; observer notes; stop condition.
 
-**Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints. Record approvals, evidence checkpoints and a usable operational handoff.
 
 **Worked example:** A staged simulated identity and application incident with a communications request.
 
@@ -220,7 +229,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Case selection; evidence quality; outcome metric; root-cause caution; corrective-action tracking.
 
-**Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints. Record approvals, evidence checkpoints and a usable operational handoff.
 
 **Worked example:** A portfolio of the synthetic alerts, records and tabletop artifacts from earlier chapters.
 

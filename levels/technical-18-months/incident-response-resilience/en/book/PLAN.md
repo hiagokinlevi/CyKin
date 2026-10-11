@@ -10,6 +10,15 @@
 
 A finished book must contain at least 300 actual A4 pages and 50 substantive exercises with worked results. The current 540-page budget is a plan, not measured pages. Every chapter needs teaching, definitions, a worked example, practical activity, errors and limits, exercises and a synthesis. The final appendix holds answers keyed to the exercise IDs. Cite verifiable sources, label synthetic cases, and review for technical accuracy, rights and accessibility.
 
+## Primary source starting points
+
+- [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) — current incident-response recommendations within cybersecurity risk management; it supersedes Rev. 2.
+- [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) — recovery planning, testing and improvement.
+- [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) — exercise design and evaluation; a 2006 publication whose applicability must be checked during authorship.
+- [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) — forensic techniques in response; a 2006 publication whose technical details need current verification.
+
+These are source leads, not a finished chapter bibliography. Cite the relevant primary source beside each factual claim in the authored manuscript and identify any fictional case as synthetic.
+
 ## Contents and chapter summaries
 
 <a id="ch-01"></a>
@@ -22,7 +31,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Components; dependencies; data flows; trust boundaries; failure domains.
 
-**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab. Reproduce collection and control steps in a bounded lab, including failure and rollback evidence.
 
 **Worked example:** A synthetic reservation service with an identity provider, database and backup tier.
 
@@ -40,7 +49,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Addressing; transport; DNS; TLS; packet metadata; network time.
 
-**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab. Reproduce collection and control steps in a bounded lab, including failure and rollback evidence.
 
 **Worked example:** A sanitized packet summary for the synthetic reservation service.
 
@@ -58,7 +67,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Processes; services; accounts; tokens; privileges; host logging.
 
-**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab. Reproduce collection and control steps in a bounded lab, including failure and rollback evidence.
 
 **Worked example:** Synthetic host and identity records for a service account with unusual sign-ins.
 
@@ -76,7 +85,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** CSV and JSON parsing; encodings; validation; error handling; deterministic output.
 
-**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab. Reproduce collection and control steps in a bounded lab, including failure and rollback evidence.
 
 **Worked example:** A small synthetic log bundle containing malformed records and duplicate IDs.
 
@@ -94,7 +103,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Collection scope; provenance; read-only methods; hashing; access records.
 
-**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab. Reproduce collection and control steps in a bounded lab, including failure and rollback evidence.
 
 **Worked example:** A fictional responder request that exceeds the approved host list.
 
@@ -112,7 +121,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Dependency graph; recovery point; control plane; change window; blast radius.
 
-**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab. Reproduce collection and control steps in a bounded lab, including failure and rollback evidence.
 
 **Worked example:** A synthetic identity-provider outage that affects several services.
 
@@ -130,7 +139,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Log schema; collection path; retention; coverage gap; clock source.
 
-**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab. Reproduce collection and control steps in a bounded lab, including failure and rollback evidence.
 
 **Worked example:** A fabricated inventory of host, identity and application logs with different retention periods.
 
@@ -148,7 +157,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Authentication error; host restart; network loss; telemetry lag; corroboration.
 
-**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab. Reproduce collection and control steps in a bounded lab, including failure and rollback evidence.
 
 **Worked example:** Synthetic simultaneous login failures and packet loss during scheduled maintenance.
 
@@ -166,7 +175,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Snapshot choice; volatile state; network flow; access log; integrity check.
 
-**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab. Reproduce collection and control steps in a bounded lab, including failure and rollback evidence.
 
 **Worked example:** A simulated workstation and gateway with time-limited evidence.
 
@@ -184,7 +193,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Session revocation; temporary rule; rollback; change log; acceptance test.
 
-**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab. Reproduce collection and control steps in a bounded lab, including failure and rollback evidence.
 
 **Worked example:** An isolated lab with a compromised synthetic account and a dependent application.
 
@@ -202,7 +211,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** UTC normalization; offset; drift; checksum; immutable copy.
 
-**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab. Reproduce collection and control steps in a bounded lab, including failure and rollback evidence.
 
 **Worked example:** Three synthetic logs with differing time zones and one altered export.
 
@@ -220,7 +229,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Input manifest; schema check; raw copy; normalized view; audit trail.
 
-**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab. Reproduce collection and control steps in a bounded lab, including failure and rollback evidence.
 
 **Worked example:** A supplied synthetic bundle of identity, host and application records.
 
@@ -238,7 +247,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Detection rule assumption; dropped event; duplicate signal; sensor health.
 
-**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab. Reproduce collection and control steps in a bounded lab, including failure and rollback evidence.
 
 **Worked example:** Two fictional alerts disagree about whether an account reached a protected service.
 
@@ -256,7 +265,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Input allowlist; idempotence; output log; exception path; review point.
 
-**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab. Reproduce collection and control steps in a bounded lab, including failure and rollback evidence.
 
 **Worked example:** A local script processing the prior synthetic case records.
 
@@ -274,7 +283,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Event join; entity mapping; causal caution; confidence; missingness.
 
-**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab. Reproduce collection and control steps in a bounded lab, including failure and rollback evidence.
 
 **Worked example:** Synthetic identity, application and support-desk events for one possible takeover.
 
@@ -292,7 +301,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Runbook precondition; stop condition; rollback; evidence pointer; handoff.
 
-**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab. Reproduce collection and control steps in a bounded lab, including failure and rollback evidence.
 
 **Worked example:** A fictional containment procedure with no owner or rollback check.
 
@@ -310,7 +319,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Control comparison; service acceptance; restore test; residual risk.
 
-**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab. Reproduce collection and control steps in a bounded lab, including failure and rollback evidence.
 
 **Worked example:** An isolated service whose account and database show different signs of compromise.
 
@@ -328,7 +337,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Case chronology; evidence manifest; approval log; remediation check; handoff rubric.
 
-**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At technical course level, learners will build and troubleshoot a reproducible lab. Reproduce collection and control steps in a bounded lab, including failure and rollback evidence.
 
 **Worked example:** A staged synthetic incident spanning identity, host and application logs.
 

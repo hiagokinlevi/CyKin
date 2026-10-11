@@ -10,6 +10,15 @@
 
 A finished book must contain at least 300 actual A4 pages and 50 substantive exercises with worked results. The current 320-page budget is a plan, not measured pages. Every chapter needs teaching, definitions, a worked example, practical activity, errors and limits, exercises and a synthesis. The final appendix holds answers keyed to the exercise IDs. Cite verifiable sources, label synthetic cases, and review for technical accuracy, rights and accessibility.
 
+## Primary source starting points
+
+- [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) — current incident-response recommendations within cybersecurity risk management; it supersedes Rev. 2.
+- [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) — recovery planning, testing and improvement.
+- [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) — exercise design and evaluation; a 2006 publication whose applicability must be checked during authorship.
+- [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) — forensic techniques in response; a 2006 publication whose technical details need current verification.
+
+These are source leads, not a finished chapter bibliography. Cite the relevant primary source beside each factual claim in the authored manuscript and identify any fictional case as synthetic.
+
 ## Contents and chapter summaries
 
 <a id="ch-01"></a>
@@ -22,7 +31,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Service dependencies; incident record; observation versus conclusion; decision owner; scoped authorization.
 
-**Depth and method:** At rapid course level, learners will follow a contained worked example; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At rapid course level, learners will follow a contained worked example. Use a guided case record to distinguish observations, assumptions and the next safe action.
 
 **Worked example:** A synthetic Harbor Library booking service and an unusual staff sign-in.
 
@@ -40,7 +49,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Triage question; time ordering; evidence pointer; integrity note; uncertainty and severity.
 
-**Depth and method:** At rapid course level, learners will follow a contained worked example; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At rapid course level, learners will follow a contained worked example. Use a guided case record to distinguish observations, assumptions and the next safe action.
 
 **Worked example:** Synthetic sign-in, booking-change and help-desk records with a missing clock-offset field.
 
@@ -58,7 +67,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Containment options; approval; eradication evidence; restore preconditions; rollback and review time.
 
-**Depth and method:** At rapid course level, learners will follow a contained worked example; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At rapid course level, learners will follow a contained worked example. Use a guided case record to distinguish observations, assumptions and the next safe action.
 
 **Worked example:** The fictional booking service with an affected staff credential and a verified backup.
 
@@ -76,7 +85,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Concepts and techniques:** Tabletop inject; decision log; stakeholder communication; outcome measure; corrective action.
 
-**Depth and method:** At rapid course level, learners will follow a contained worked example; they must support conclusions with a bounded case record and identify uncertainties.
+**Depth and method:** At rapid course level, learners will follow a contained worked example. Use a guided case record to distinguish observations, assumptions and the next safe action.
 
 **Worked example:** A synthetic Harbor Library scenario with staged new evidence and a service-owner constraint.
 

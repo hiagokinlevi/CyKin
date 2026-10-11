@@ -10,6 +10,15 @@
 
 A finished book must contain at least 300 actual A4 pages and 50 substantive exercises with worked results. The current 900-page budget is a plan, not measured pages. Every chapter needs teaching, definitions, a worked example, practical activity, errors and limits, exercises and a synthesis. The final appendix holds answers keyed to the exercise IDs. Cite verifiable sources, label synthetic cases, and review for technical accuracy, rights and accessibility.
 
+## Primary source starting points
+
+- [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) — current incident-response recommendations within cybersecurity risk management; it supersedes Rev. 2.
+- [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) — recovery planning, testing and improvement.
+- [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) — exercise design and evaluation; a 2006 publication whose applicability must be checked during authorship.
+- [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) — forensic techniques in response; a 2006 publication whose technical details need current verification.
+
+These are source leads, not a finished chapter bibliography. Cite the relevant primary source beside each factual claim in the authored manuscript and identify any fictional case as synthetic.
+
 ## Contents and chapter summaries
 
 <a id="ch-01"></a>
@@ -18,7 +27,17 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Stage 1; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Computing systems** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 2 exercises, then compare reasoning with the final worked-answer appendix. It builds on the entry knowledge and prepares Chapter 02. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Build a service-level view of the computing components an incident workflow must protect and restore.
+
+**Concepts and techniques:** Compute roles; storage; service dependencies; change ownership; failure domain.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** A synthetic municipal appointment service spread across three application hosts.
+
+**Practice and exercises:** Draw its component map and identify which failure can delay response or recovery. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on the entry knowledge and prepares Chapter 02. This is an editorial brief, not a completed lesson.
 
 <a id="ch-02"></a>
 
@@ -26,7 +45,17 @@ This subject teaches **Computing systems** and contributes to the technologist c
 
 **Stage 1; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Networks and internet services** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 2 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 01 and prepares Chapter 03. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Explain how network services create evidence and operational dependencies for an integrated response service.
+
+**Concepts and techniques:** Routing; DNS; transport; TLS endpoints; service availability; flow records.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** A fictional public portal and internal API with separate DNS and gateway owners.
+
+**Practice and exercises:** Trace a request across services and name monitoring points and restoration dependencies. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 01 and prepares Chapter 03. This is an editorial brief, not a completed lesson.
 
 <a id="ch-03"></a>
 
@@ -34,7 +63,17 @@ This subject teaches **Networks and internet services** and contributes to the t
 
 **Stage 1; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Programming foundations** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 2 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 02 and prepares Chapter 04. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Use small programs to support repeatable case processing while keeping inputs and decisions inspectable.
+
+**Concepts and techniques:** Data types; functions; validation; errors; tests; audit output.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** A synthetic intake script that rejects incomplete incident forms.
+
+**Practice and exercises:** Specify the parser, test malformed submissions and record rejected cases without losing originals. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 02 and prepares Chapter 04. This is an editorial brief, not a completed lesson.
 
 <a id="ch-04"></a>
 
@@ -42,7 +81,17 @@ This subject teaches **Programming foundations** and contributes to the technolo
 
 **Stage 1; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Data models** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 2 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 03 and prepares Chapter 05. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Represent incident objects consistently across tools and teams so handoffs do not silently change meaning.
+
+**Concepts and techniques:** Case ID; event schema; entity relation; version; provenance; retention.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** A fictional case record joined to identity events and service tickets.
+
+**Practice and exercises:** Design a minimal case schema and show how two inconsistent fields are reconciled. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 03 and prepares Chapter 05. This is an editorial brief, not a completed lesson.
 
 <a id="ch-05"></a>
 
@@ -50,7 +99,17 @@ This subject teaches **Data models** and contributes to the technologist course 
 
 **Stage 1; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Security literacy** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 2 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 04 and prepares Chapter 06. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Connect foundational risk and control ideas to the practical choices an incident service makes.
+
+**Concepts and techniques:** Asset; threat; vulnerability; impact; preventive and detective control; residual risk.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** A synthetic alert concerning a staff account used by a critical scheduling system.
+
+**Practice and exercises:** Explain the risk claim, its uncertainty and the control evidence needed before escalation. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 04 and prepares Chapter 06. This is an editorial brief, not a completed lesson.
 
 <a id="ch-06"></a>
 
@@ -58,7 +117,17 @@ This subject teaches **Security literacy** and contributes to the technologist c
 
 **Stage 2; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Operating systems and virtualization** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 2 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 05 and prepares Chapter 07. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Map host and virtual-machine boundaries that affect collection, containment and recovery.
+
+**Concepts and techniques:** Process; service; image; snapshot; host isolation; patch state.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** A synthetic virtualized application with a shared hypervisor and two guest instances.
+
+**Practice and exercises:** Compare guest-only and host-level evidence needs, then plan a reversible lab snapshot. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 05 and prepares Chapter 07. This is an editorial brief, not a completed lesson.
 
 <a id="ch-07"></a>
 
@@ -66,7 +135,17 @@ This subject teaches **Operating systems and virtualization** and contributes to
 
 **Stage 2; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Identity and access foundations** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 2 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 06 and prepares Chapter 08. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Identify who can approve, perform and audit response actions in a multi-service environment.
+
+**Concepts and techniques:** Principal; role; token; privilege; federation; access review.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** A fictional on-call rotation with service owners and a cloud administrator.
+
+**Practice and exercises:** Build an access matrix for case review, containment approval and evidence storage. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 06 and prepares Chapter 08. This is an editorial brief, not a completed lesson.
 
 <a id="ch-08"></a>
 
@@ -74,7 +153,17 @@ This subject teaches **Identity and access foundations** and contributes to the 
 
 **Stage 2; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Security architecture basics** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 2 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 07 and prepares Chapter 09. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Introduce trust boundaries and resilient design choices before integrating response controls.
+
+**Concepts and techniques:** Trust zone; dependency; control plane; fail-safe path; design assumption.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** A synthetic booking platform that shares identity services with another department.
+
+**Practice and exercises:** Mark trust boundaries and compare where a monitoring or containment control belongs. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 07 and prepares Chapter 09. This is an editorial brief, not a completed lesson.
 
 <a id="ch-09"></a>
 
@@ -82,7 +171,17 @@ This subject teaches **Security architecture basics** and contributes to the tec
 
 **Stage 2; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Evidence and measurement** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 2 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 08 and prepares Chapter 10. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Define what counts as defensible evidence and a useful measure of response performance.
+
+**Concepts and techniques:** Provenance; integrity; denominator; timestamp; metric validity; uncertainty.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** A fabricated incident dashboard with missing case closure dates.
+
+**Practice and exercises:** Audit two metrics, reconstruct denominators and flag unsupported claims. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 08 and prepares Chapter 10. This is an editorial brief, not a completed lesson.
 
 <a id="ch-10"></a>
 
@@ -90,7 +189,17 @@ This subject teaches **Evidence and measurement** and contributes to the technol
 
 **Stage 2; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Incident response service model and operating roles** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 2 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 09 and prepares Chapter 11. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Treat response as a managed service with defined customers, authority, handoffs and review points.
+
+**Concepts and techniques:** Service catalog; responder role; escalation; approval; service-level objective.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** A synthetic organization with SOC, IT operations and a service owner.
+
+**Practice and exercises:** Draft a response service charter and assign responsibility for each major decision. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 09 and prepares Chapter 11. This is an editorial brief, not a completed lesson.
 
 <a id="ch-11"></a>
 
@@ -98,7 +207,17 @@ This subject teaches **Incident response service model and operating roles** and
 
 **Stage 3; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Asset inventory and business-service dependencies** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 2 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 10 and prepares Chapter 12. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Make inventory useful for decisions by linking technical assets to service outcomes and owners.
+
+**Concepts and techniques:** Asset record; dependency graph; criticality; owner; recovery priority.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** A fictional health-clinic scheduling service dependent on identity, messaging and backups.
+
+**Practice and exercises:** Build a dependency map and justify the order of preservation and recovery tasks. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 10 and prepares Chapter 12. This is an editorial brief, not a completed lesson.
 
 <a id="ch-12"></a>
 
@@ -106,7 +225,17 @@ This subject teaches **Asset inventory and business-service dependencies** and c
 
 **Stage 3; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Evidence flows across identity, endpoint and cloud** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 2 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 11 and prepares Chapter 13. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Connect telemetry from different platforms without treating every event as the same kind of proof.
+
+**Concepts and techniques:** Source schema; collection path; join key; retention; access control.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** Synthetic identity sign-ins, endpoint alerts and cloud audit events for one case.
+
+**Practice and exercises:** Design an evidence-flow diagram and identify missing links and privacy constraints. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 11 and prepares Chapter 13. This is an editorial brief, not a completed lesson.
 
 <a id="ch-13"></a>
 
@@ -114,7 +243,17 @@ This subject teaches **Evidence flows across identity, endpoint and cloud** and 
 
 **Stage 3; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Incident risk scenarios and triage thresholds** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 2 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 12 and prepares Chapter 14. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Set defensible escalation thresholds that account for impact, confidence and response cost.
+
+**Concepts and techniques:** Risk scenario; threshold; severity; false positive; review trigger.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** A synthetic mass-login alert during a planned migration weekend.
+
+**Practice and exercises:** Define triage rules, test boundary cases and explain when a human must override them. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 12 and prepares Chapter 14. This is an editorial brief, not a completed lesson.
 
 <a id="ch-14"></a>
 
@@ -122,7 +261,17 @@ This subject teaches **Incident risk scenarios and triage thresholds** and contr
 
 **Stage 3; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Case intake, scope and ownership methods** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 2 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 13 and prepares Chapter 15. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Turn incoming reports into scoped, accountable cases before action begins.
+
+**Concepts and techniques:** Intake form; unique ID; authorization; owner assignment; initial hypothesis.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** A fictional help-desk ticket with incomplete system and reporter details.
+
+**Practice and exercises:** Complete a bounded intake record and route missing facts to the right owner. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 13 and prepares Chapter 15. This is an editorial brief, not a completed lesson.
 
 <a id="ch-15"></a>
 
@@ -130,7 +279,17 @@ This subject teaches **Case intake, scope and ownership methods** and contribute
 
 **Stage 3; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Guided lab: reconstruct a bounded incident timeline** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 2 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 14 and prepares Chapter 16. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Practice combining technical and operational records into a reviewable case chronology.
+
+**Concepts and techniques:** Time normalization; event linkage; evidence pointer; uncertainty; revision.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** A synthetic log bundle and service ticket chain with clock offsets.
+
+**Practice and exercises:** Reconstruct the timeline, show disputed ordering and submit a provenance note. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 14 and prepares Chapter 16. This is an editorial brief, not a completed lesson.
 
 <a id="ch-16"></a>
 
@@ -138,7 +297,17 @@ This subject teaches **Guided lab: reconstruct a bounded incident timeline** and
 
 **Stage 4; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Investigation methods across multiple data sources** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 2 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 15 and prepares Chapter 17. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Compare hypotheses using independent sources while keeping the investigation within authorization.
+
+**Concepts and techniques:** Question tree; corroboration; sampling; alternative explanation; stop rule.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** A fictional account access anomaly with endpoint, network and cloud records.
+
+**Practice and exercises:** Test two explanations, name the least invasive next check and record limits. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 15 and prepares Chapter 17. This is an editorial brief, not a completed lesson.
 
 <a id="ch-17"></a>
 
@@ -146,7 +315,17 @@ This subject teaches **Investigation methods across multiple data sources** and 
 
 **Stage 4; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Case-management and evidence-storage tooling** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 2 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 16 and prepares Chapter 18. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Specify a tool workflow that preserves case history, access boundaries and retrieval ability.
+
+**Concepts and techniques:** Case state; audit log; retention; evidence manifest; permission model.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** A simulated case platform with a shared attachment store and missing role separation.
+
+**Practice and exercises:** Configure or model case states and permissions, then test an unauthorized-access scenario. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 16 and prepares Chapter 18. This is an editorial brief, not a completed lesson.
 
 <a id="ch-18"></a>
 
@@ -154,7 +333,17 @@ This subject teaches **Case-management and evidence-storage tooling** and contri
 
 **Stage 4; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Containment and recovery control implementation** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 2 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 17 and prepares Chapter 19. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Integrate scoped interventions with service validation and rollback rather than closing on one alert.
+
+**Concepts and techniques:** Session revocation; access rule; restore check; change record; rollback.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** An isolated lab service with a compromised synthetic identity and dependency on a database.
+
+**Practice and exercises:** Implement two reversible controls, measure impact and verify restoration criteria. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 17 and prepares Chapter 19. This is an editorial brief, not a completed lesson.
 
 <a id="ch-19"></a>
 
@@ -162,7 +351,17 @@ This subject teaches **Containment and recovery control implementation** and con
 
 **Stage 4; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Detection-to-response monitoring and feedback** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 2 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 18 and prepares Chapter 20. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Close the loop between alert production, case decisions and control improvement.
+
+**Concepts and techniques:** Detection coverage; alert quality; response handoff; feedback owner; tuning metric.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** A fictional detection rule repeatedly opening duplicate cases.
+
+**Practice and exercises:** Measure duplicate rate, revise the handoff and document the effect on triage time. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 18 and prepares Chapter 20. This is an editorial brief, not a completed lesson.
 
 <a id="ch-20"></a>
 
@@ -170,7 +369,17 @@ This subject teaches **Detection-to-response monitoring and feedback** and contr
 
 **Stage 4; 30 planned A4 pages; 2 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Troubleshoot incomplete or contradictory case records** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 2 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 19 and prepares Chapter 21. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Diagnose workflow and telemetry defects before drawing stronger conclusions from a case.
+
+**Concepts and techniques:** Missing field; duplicate event; clock skew; ownership gap; repair trace.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** A synthetic case where the timeline conflicts with a change ticket.
+
+**Practice and exercises:** Trace the inconsistency to its source, repair the record and preserve the original error. The planned allocation is 2 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 19 and prepares Chapter 21. This is an editorial brief, not a completed lesson.
 
 <a id="ch-21"></a>
 
@@ -178,7 +387,17 @@ This subject teaches **Troubleshoot incomplete or contradictory case records** a
 
 **Stage 5; 30 planned A4 pages; 1 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Integrate response with service management** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 1 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 20 and prepares Chapter 22. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Coordinate security work with change, incident and continuity processes across the organization.
+
+**Concepts and techniques:** Service ticket; change approval; maintenance window; handoff; acceptance owner.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** A fictional containment request during a critical payroll processing window.
+
+**Practice and exercises:** Design the coordination path and document approval, fallback and service acceptance. The planned allocation is 1 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 20 and prepares Chapter 22. This is an editorial brief, not a completed lesson.
 
 <a id="ch-22"></a>
 
@@ -186,7 +405,17 @@ This subject teaches **Integrate response with service management** and contribu
 
 **Stage 5; 30 planned A4 pages; 1 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Automate repeatable evidence and notification tasks** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 1 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 21 and prepares Chapter 23. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Automate bounded support tasks while keeping authority, source records and human decisions explicit.
+
+**Concepts and techniques:** Trigger; idempotence; allowlist; retry; audit log; manual gate.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** A local workflow that copies approved synthetic logs and drafts a status message.
+
+**Practice and exercises:** Specify and test failure paths, duplicate runs and the human approval checkpoint. The planned allocation is 1 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 21 and prepares Chapter 23. This is an editorial brief, not a completed lesson.
 
 <a id="ch-23"></a>
 
@@ -194,7 +423,17 @@ This subject teaches **Automate repeatable evidence and notification tasks** and
 
 **Stage 5; 30 planned A4 pages; 1 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Evaluate response latency and decision quality** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 1 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 22 and prepares Chapter 24. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Assess operational performance without rewarding rushed or unsupported case closure.
+
+**Concepts and techniques:** Time-to-triage; time-to-contain; case quality; sampling bias; confidence.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** A fabricated month of cases with incomplete timestamps and varied severity.
+
+**Practice and exercises:** Compute qualified metrics and explain how missing cases change the conclusion. The planned allocation is 1 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 22 and prepares Chapter 24. This is an editorial brief, not a completed lesson.
 
 <a id="ch-24"></a>
 
@@ -202,7 +441,17 @@ This subject teaches **Evaluate response latency and decision quality** and cont
 
 **Stage 5; 30 planned A4 pages; 1 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Applied methods: compare two incident playbooks** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 1 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 23 and prepares Chapter 25. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Judge whether alternative playbooks lead to safe and auditable decisions in the same scenario.
+
+**Concepts and techniques:** Precondition; branch; evidence checkpoint; rollback; stakeholder impact.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** Two synthetic credential-compromise playbooks with different approval gates.
+
+**Practice and exercises:** Walk both through one case, compare tradeoffs and recommend a documented revision. The planned allocation is 1 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 23 and prepares Chapter 25. This is an editorial brief, not a completed lesson.
 
 <a id="ch-25"></a>
 
@@ -210,7 +459,17 @@ This subject teaches **Applied methods: compare two incident playbooks** and con
 
 **Stage 5; 30 planned A4 pages; 1 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Team studio: build and critique a response workflow** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 1 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 24 and prepares Chapter 26. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Combine service design, evidence flow, controls and people into one usable operating model.
+
+**Concepts and techniques:** Workflow map; role handoff; interface; failure injection; peer review.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** A fictional small enterprise adding cloud and endpoint monitoring to an existing SOC.
+
+**Practice and exercises:** Draft the workflow, run a peer failure review and revise ambiguous ownership. The planned allocation is 1 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 24 and prepares Chapter 26. This is an editorial brief, not a completed lesson.
 
 <a id="ch-26"></a>
 
@@ -218,7 +477,17 @@ This subject teaches **Team studio: build and critique a response workflow** and
 
 **Stage 6; 30 planned A4 pages; 1 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Operational handoff and communications practice** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 1 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 25 and prepares Chapter 27. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Ensure case decisions remain actionable and appropriately scoped when teams or shifts change.
+
+**Concepts and techniques:** Handoff minimum; audience; fact versus hypothesis; status cadence; privacy.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** A staged incident crossing an on-call shift and a service-owner briefing.
+
+**Practice and exercises:** Prepare a technical handoff and a plain-language update, then test both for omissions. The planned allocation is 1 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 25 and prepares Chapter 27. This is an editorial brief, not a completed lesson.
 
 <a id="ch-27"></a>
 
@@ -226,7 +495,17 @@ This subject teaches **Operational handoff and communications practice** and con
 
 **Stage 6; 30 planned A4 pages; 1 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Deploy and validate an incident case workflow** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 1 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 26 and prepares Chapter 28. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Verify that an implemented workflow preserves evidence, approvals and recoverability under normal and failed paths.
+
+**Concepts and techniques:** Configuration baseline; acceptance test; audit trail; failure test; rollback.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** An isolated case-management sandbox with role-based access and synthetic events.
+
+**Practice and exercises:** Deploy the workflow, test authorized and unauthorized paths, and record acceptance evidence. The planned allocation is 1 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 26 and prepares Chapter 28. This is an editorial brief, not a completed lesson.
 
 <a id="ch-28"></a>
 
@@ -234,7 +513,17 @@ This subject teaches **Deploy and validate an incident case workflow** and contr
 
 **Stage 6; 30 planned A4 pages; 1 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Field simulation with authorized stakeholders** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 1 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 27 and prepares Chapter 29. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Exercise the integrated service under changing evidence and stakeholder constraints without affecting live systems.
+
+**Concepts and techniques:** Simulation objective; inject; observer rubric; escalation; stop condition.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** A synthetic cross-team incident involving a cloud account and a public service.
+
+**Practice and exercises:** Run a tabletop, log decisions and assess handoffs against preagreed criteria. The planned allocation is 1 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 27 and prepares Chapter 29. This is an editorial brief, not a completed lesson.
 
 <a id="ch-29"></a>
 
@@ -242,7 +531,17 @@ This subject teaches **Field simulation with authorized stakeholders** and contr
 
 **Stage 6; 30 planned A4 pages; 1 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Capstone: integrated response and recovery service** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 1 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 28 and prepares Chapter 30. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Demonstrate a complete designed service from alert intake through safe return to operation.
+
+**Concepts and techniques:** Architecture; case workflow; telemetry; containment; recovery; documentation.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** A fictional regional appointment platform with identity and database dependencies.
+
+**Practice and exercises:** Build the service design, run a bounded simulated case and submit the evidence dossier. The planned allocation is 1 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 28 and prepares Chapter 30. This is an editorial brief, not a completed lesson.
 
 <a id="ch-30"></a>
 
@@ -250,7 +549,17 @@ This subject teaches **Capstone: integrated response and recovery service** and 
 
 **Stage 6; 30 planned A4 pages; 1 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Capstone evaluation and improvement dossier** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in incident response and cyber resilience. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 1 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 29 and prepares the worked-answer appendix and final assessment. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Evaluate the capstone's claims and turn observed shortcomings into measurable changes.
+
+**Concepts and techniques:** Acceptance result; failure analysis; limitation; improvement owner; reassessment plan.
+
+**Depth and method:** At technologist course level, learners will implement an end-to-end service with monitored controls. Integrate services and teams, then measure whether the implemented workflow meets acceptance criteria.
+
+**Worked example:** The capstone artifacts, observer notes and synthetic service metrics.
+
+**Practice and exercises:** Defend design choices, quantify unresolved risks and prioritize the next release's improvements. The planned allocation is 1 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 29 and prepares the worked-answer appendix and final assessment. This is an editorial brief, not a completed lesson.
 
 ## Practical and assessment plan
 

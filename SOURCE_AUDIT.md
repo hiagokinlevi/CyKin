@@ -10,6 +10,10 @@ Reviewed 11 October 2026. The linked-source sample below covers the public defau
 - Fourteen existing playbook or template links from incident-response and cloud source repositories were reassigned to broad academic areas and pinned to their source revisions. They are linked supplementary materials under their source licenses; they have not been copied into CC0 books.
 - The broad-area map consolidates former overlapping labels such as backup/recovery, privacy/data governance, network/architecture segmentation, firmware/embedded security, and individual operations tasks. The [area profiles](mapa-areas-ciberseguranca.md) record boundaries and remaining gaps. Specialist review of the new taxonomy and grids is still required.
 
+## Incident Response primary-source leads
+
+The nine English Incident Response book plans now link [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) for the current response and risk-management framework, [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) for recovery, [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) for exercises, and [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) for forensic methods. NIST identifies Rev. 3 as superseding Rev. 2. The latter two guides date from 2006; their procedures and tool assumptions need current verification when each lesson is authored. These links are starting points, not a completed bibliography or a claim that NIST content is covered by CyberABC's CC0 dedication.
+
 ## Public repository samples
 
 All 13 source repositories currently have a CC BY 4.0 `LICENSE` file. Their contents are linked for study and rights review; they are **not** automatically included in CyberABC's CC0 dedication. The GitHub contributors endpoint listed only `hiagokinlevi` for each of those 13 repositories during this audit. Last observed pushes to these repositories were 7–8 May 2026. Word counts below are for the one linked sample per repository, not the repository as a whole.

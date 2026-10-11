@@ -10,6 +10,15 @@
 
 A finished book must contain at least 300 actual A4 pages and 50 substantive exercises with worked results. The current 600-page budget is a plan, not measured pages. Every chapter needs teaching, definitions, a worked example, practical activity, errors and limits, exercises and a synthesis. The final appendix holds answers keyed to the exercise IDs. Cite verifiable sources, label synthetic cases, and review for technical accuracy, rights and accessibility.
 
+## Primary source starting points
+
+- [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) — current incident-response recommendations within cybersecurity risk management; it supersedes Rev. 2.
+- [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) — recovery planning, testing and improvement.
+- [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) — exercise design and evaluation; a 2006 publication whose applicability must be checked during authorship.
+- [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) — forensic techniques in response; a 2006 publication whose technical details need current verification.
+
+These are source leads, not a finished chapter bibliography. Cite the relevant primary source beside each factual claim in the authored manuscript and identify any fictional case as synthetic.
+
 ## Contents and chapter summaries
 
 <a id="ch-01"></a>
@@ -18,7 +27,17 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Stage 1; 75 planned A4 pages; 7 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Advanced research integrity and methods** and contributes to the doctoral research track outcome: test an original contribution and its limits independently in incident response and cyber resilience. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will replicate baselines, challenge assumptions and publish evidence. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 7 exercises, then compare reasoning with the final worked-answer appendix. It builds on the entry knowledge and prepares Chapter 02. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Establish independent standards for originality, ethics, provenance and robust inference.
+
+**Concepts and techniques:** Research integrity; preregistration; data rights; replication; validity.
+
+**Depth and method:** At doctoral research track level, learners will replicate baselines, challenge assumptions and publish evidence. Replicate baselines, test an original claim across contexts and publish its limitations and artifacts.
+
+**Worked example:** A proposed study using sensitive incident records and a public benchmark.
+
+**Practice and exercises:** Design a lawful, privacy-preserving research protocol and a reproducibility plan. The planned allocation is 7 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on the entry knowledge and prepares Chapter 02. This is an editorial brief, not a completed lesson.
 
 <a id="ch-02"></a>
 
@@ -26,7 +45,17 @@ This subject teaches **Advanced research integrity and methods** and contributes
 
 **Stage 1; 75 planned A4 pages; 7 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Research frontier in incident response systems** and contributes to the doctoral research track outcome: test an original contribution and its limits independently in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will replicate baselines, challenge assumptions and publish evidence. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 7 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 01 and prepares Chapter 03. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Identify a genuine open question by critically synthesizing the strongest available work.
+
+**Concepts and techniques:** Systematic scope; competing theory; unresolved evidence; contribution test.
+
+**Depth and method:** At doctoral research track level, learners will replicate baselines, challenge assumptions and publish evidence. Replicate baselines, test an original claim across contexts and publish its limitations and artifacts.
+
+**Worked example:** Several primary studies of decision support during incident triage.
+
+**Practice and exercises:** Build a literature map and state a falsifiable gap rather than a broad topic. The planned allocation is 7 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 01 and prepares Chapter 03. This is an editorial brief, not a completed lesson.
 
 <a id="ch-03"></a>
 
@@ -34,7 +63,17 @@ This subject teaches **Research frontier in incident response systems** and cont
 
 **Stage 2; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Original response-science contribution proposal** and contributes to the doctoral research track outcome: test an original contribution and its limits independently in incident response and cyber resilience. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will replicate baselines, challenge assumptions and publish evidence. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 6 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 02 and prepares Chapter 04. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Specify a contribution that could change understanding or practice and define what would refute it.
+
+**Concepts and techniques:** Novel mechanism; hypothesis; baseline; risk; evaluation criterion.
+
+**Depth and method:** At doctoral research track level, learners will replicate baselines, challenge assumptions and publish evidence. Replicate baselines, test an original claim across contexts and publish its limitations and artifacts.
+
+**Worked example:** A proposed method for improving incident handoffs under missing telemetry.
+
+**Practice and exercises:** Write a proposal with alternative explanations and predeclared failure conditions. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 02 and prepares Chapter 04. This is an editorial brief, not a completed lesson.
 
 <a id="ch-04"></a>
 
@@ -42,7 +81,17 @@ This subject teaches **Original response-science contribution proposal** and con
 
 **Stage 2; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Replication of baselines and pilot protocol** and contributes to the doctoral research track outcome: test an original contribution and its limits independently in incident response and cyber resilience. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will replicate baselines, challenge assumptions and publish evidence. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 6 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 03 and prepares Chapter 05. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Verify existing baselines before claiming improvement and test whether the study procedure is viable.
+
+**Concepts and techniques:** Baseline replication; dataset shift; power; pilot; reproducibility.
+
+**Depth and method:** At doctoral research track level, learners will replicate baselines, challenge assumptions and publish evidence. Replicate baselines, test an original claim across contexts and publish its limitations and artifacts.
+
+**Worked example:** A synthetic benchmark whose published baseline cannot initially be reproduced.
+
+**Practice and exercises:** Document the discrepancy, correct the protocol and run a bounded pilot. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 03 and prepares Chapter 05. This is an editorial brief, not a completed lesson.
 
 <a id="ch-05"></a>
 
@@ -50,7 +99,17 @@ This subject teaches **Replication of baselines and pilot protocol** and contrib
 
 **Stage 3; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Main study of incident decision quality** and contributes to the doctoral research track outcome: test an original contribution and its limits independently in incident response and cyber resilience. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will replicate baselines, challenge assumptions and publish evidence. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 6 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 04 and prepares Chapter 06. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Execute an ethically reviewed study that measures the proposed contribution against credible alternatives.
+
+**Concepts and techniques:** Study execution; assignment; blinded review; error analysis; uncertainty.
+
+**Depth and method:** At doctoral research track level, learners will replicate baselines, challenge assumptions and publish evidence. Replicate baselines, test an original claim across contexts and publish its limitations and artifacts.
+
+**Worked example:** Simulated incident cases scored by independent responders under two workflows.
+
+**Practice and exercises:** Run the protocol, preserve raw decisions and analyze both improvements and harms. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 04 and prepares Chapter 06. This is an editorial brief, not a completed lesson.
 
 <a id="ch-06"></a>
 
@@ -58,7 +117,17 @@ This subject teaches **Main study of incident decision quality** and contributes
 
 **Stage 3; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Independent validation across contexts** and contributes to the doctoral research track outcome: test an original contribution and its limits independently in incident response and cyber resilience. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will replicate baselines, challenge assumptions and publish evidence. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 6 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 05 and prepares Chapter 07. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Test whether the result survives different cases, organizations or operating constraints.
+
+**Concepts and techniques:** External validity; replication; heterogeneity; boundary condition.
+
+**Depth and method:** At doctoral research track level, learners will replicate baselines, challenge assumptions and publish evidence. Replicate baselines, test an original claim across contexts and publish its limitations and artifacts.
+
+**Worked example:** A second synthetic service context with different staffing and telemetry quality.
+
+**Practice and exercises:** Repeat key tests and explain where the proposed method stops working. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 05 and prepares Chapter 07. This is an editorial brief, not a completed lesson.
 
 <a id="ch-07"></a>
 
@@ -66,7 +135,17 @@ This subject teaches **Independent validation across contexts** and contributes 
 
 **Stage 4; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Peer critique and revision of claims** and contributes to the doctoral research track outcome: test an original contribution and its limits independently in incident response and cyber resilience. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will replicate baselines, challenge assumptions and publish evidence. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 6 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 06 and prepares Chapter 08. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Use independent critique to narrow claims and strengthen evidence before dissemination.
+
+**Concepts and techniques:** Adversarial review; reproducibility issue; negative result; response to critique.
+
+**Depth and method:** At doctoral research track level, learners will replicate baselines, challenge assumptions and publish evidence. Replicate baselines, test an original claim across contexts and publish its limitations and artifacts.
+
+**Worked example:** External reviewers challenge the main study's outcome definition.
+
+**Practice and exercises:** Reproduce contested analyses and revise the contribution statement accordingly. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 06 and prepares Chapter 08. This is an editorial brief, not a completed lesson.
 
 <a id="ch-08"></a>
 
@@ -74,7 +153,17 @@ This subject teaches **Peer critique and revision of claims** and contributes to
 
 **Stage 4; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Thesis synthesis and reproducibility archive** and contributes to the doctoral research track outcome: test an original contribution and its limits independently in incident response and cyber resilience. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will replicate baselines, challenge assumptions and publish evidence. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 6 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 07 and prepares the worked-answer appendix and final assessment. This paragraph is an editorial summary, not an authored lesson.
+**Teaching purpose and relevance:** Integrate the contribution, its failures and its transferable artifacts into a defensible research record.
+
+**Concepts and techniques:** Thesis argument; open artifact; data governance; limitation; future work.
+
+**Depth and method:** At doctoral research track level, learners will replicate baselines, challenge assumptions and publish evidence. Replicate baselines, test an original claim across contexts and publish its limitations and artifacts.
+
+**Worked example:** The study protocols, synthetic datasets, analysis code and reviewer exchanges.
+
+**Practice and exercises:** Assemble the archive, defend the thesis and document permissions and remaining gaps. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
+
+**Learning sequence:** Builds on Chapter 07 and prepares the worked-answer appendix and final assessment. This is an editorial brief, not a completed lesson.
 
 ## Practical and assessment plan
 

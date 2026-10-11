@@ -18,17 +18,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Stage 1; 80 planned A4 pages; 13 planned exercises.** Planned; authored chapter pending.
 
-**Teaching purpose and relevance:** Show that an incident decision depends on prior ownership, service knowledge and permission; prevent a suspicious signal from becoming an unauthorized investigation.
-
-**Concepts and techniques:** Service dependencies; incident record; observation versus conclusion; decision owner; scoped authorization.
-
-**Depth and method:** At rapid course level, learners will follow a contained worked example; they must support conclusions with a bounded case record and identify uncertainties.
-
-**Worked example:** A synthetic Harbor Library booking service and an unusual staff sign-in.
-
-**Practice and exercises:** Mark known and unknown facts on the service map, assign owners and open a bounded case record. The planned allocation is 13 exercises; authored tasks and worked answers remain a separate completion gate.
-
-**Learning sequence:** Builds on the entry knowledge and prepares Chapter 02. This is an editorial brief, not a completed lesson.
+This subject teaches **Incident readiness, roles and authorized scope** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in incident response and cyber resilience. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will follow a contained worked example. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 13 exercises, then compare reasoning with the final worked-answer appendix. It builds on the entry knowledge and prepares Chapter 02. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-02"></a>
 
@@ -36,17 +26,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Stage 2; 80 planned A4 pages; 13 planned exercises.** Planned; authored chapter pending.
 
-**Teaching purpose and relevance:** Teach the first defensible assessment of a signal while preserving what another reviewer would need to check the conclusion.
-
-**Concepts and techniques:** Triage question; time ordering; evidence pointer; integrity note; uncertainty and severity.
-
-**Depth and method:** At rapid course level, learners will follow a contained worked example; they must support conclusions with a bounded case record and identify uncertainties.
-
-**Worked example:** Synthetic sign-in, booking-change and help-desk records with a missing clock-offset field.
-
-**Practice and exercises:** Build a short timeline, separate facts from hypotheses and record what must be preserved before action. The planned allocation is 13 exercises; authored tasks and worked answers remain a separate completion gate.
-
-**Learning sequence:** Builds on Chapter 01 and prepares Chapter 03. This is an editorial brief, not a completed lesson.
+This subject teaches **Alert triage and evidence preservation** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will follow a contained worked example. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 13 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 01 and prepares Chapter 03. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-03"></a>
 
@@ -54,17 +34,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Stage 3; 80 planned A4 pages; 12 planned exercises.** Planned; authored chapter pending.
 
-**Teaching purpose and relevance:** Explain how a response choice can reduce harm while risking service disruption, evidence loss or premature closure.
-
-**Concepts and techniques:** Containment options; approval; eradication evidence; restore preconditions; rollback and review time.
-
-**Depth and method:** At rapid course level, learners will follow a contained worked example; they must support conclusions with a bounded case record and identify uncertainties.
-
-**Worked example:** The fictional booking service with an affected staff credential and a verified backup.
-
-**Practice and exercises:** Compare three bounded actions, name each decision owner and state the evidence needed before restoration. The planned allocation is 12 exercises; authored tasks and worked answers remain a separate completion gate.
-
-**Learning sequence:** Builds on Chapter 02 and prepares Chapter 04. This is an editorial brief, not a completed lesson.
+This subject teaches **Containment, eradication and recovery decisions** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will follow a contained worked example. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 12 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 02 and prepares Chapter 04. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-04"></a>
 
@@ -72,17 +42,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 **Stage 4; 80 planned A4 pages; 12 planned exercises.** Planned; authored chapter pending.
 
-**Teaching purpose and relevance:** Integrate readiness, triage and recovery into one controlled case and show how learning is recorded after service restoration.
-
-**Concepts and techniques:** Tabletop inject; decision log; stakeholder communication; outcome measure; corrective action.
-
-**Depth and method:** At rapid course level, learners will follow a contained worked example; they must support conclusions with a bounded case record and identify uncertainties.
-
-**Worked example:** A synthetic Harbor Library scenario with staged new evidence and a service-owner constraint.
-
-**Practice and exercises:** Complete a guided tabletop, submit a case record and assess actions against a simple after-action rubric. The planned allocation is 12 exercises; authored tasks and worked answers remain a separate completion gate.
-
-**Learning sequence:** Builds on Chapter 03 and prepares the worked-answer appendix and final assessment. This is an editorial brief, not a completed lesson.
+This subject teaches **Guided incident simulation and after-action review** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in incident response and cyber resilience. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will follow a contained worked example. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 12 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 03 and prepares the worked-answer appendix and final assessment. This paragraph is an editorial summary, not an authored lesson.
 
 ## Practical and assessment plan
 
