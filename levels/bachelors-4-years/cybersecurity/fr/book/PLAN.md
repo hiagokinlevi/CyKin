@@ -158,179 +158,179 @@ This subject teaches **Research methods I** and contributes to the bachelor's co
 
 <a id="ch-19"></a>
 
-### Chapter 19 — Cybersecurity: scope and theory
+### Chapter 19 — Cybersecurity models and disciplinary scope
 
 **Stage 4; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: scope and theory** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 18 and prepares Chapter 20. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Cybersecurity models and disciplinary scope** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 18 and prepares Chapter 20. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-20"></a>
 
-### Chapter 20 — Cybersecurity: foundational cases
+### Chapter 20 — Comparative failures of security assumptions
 
 **Stage 4; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: foundational cases** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 19 and prepares Chapter 21. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Comparative failures of security assumptions** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 19 and prepares Chapter 21. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-21"></a>
 
-### Chapter 21 — Cybersecurity: system models
+### Chapter 21 — Socio-technical system and adversary models
 
 **Stage 5; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: system models** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 20 and prepares Chapter 22. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Socio-technical system and adversary models** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 20 and prepares Chapter 22. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-22"></a>
 
-### Chapter 22 — Cybersecurity: data and dependencies
+### Chapter 22 — Service data, dependency and trust mapping
 
 **Stage 5; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: data and dependencies** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 21 and prepares Chapter 23. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Service data, dependency and trust mapping** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 21 and prepares Chapter 23. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-23"></a>
 
-### Chapter 23 — Cybersecurity: methods I
+### Chapter 23 — Risk and evidence appraisal
 
 **Stage 5; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: methods I** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 22 and prepares Chapter 24. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Risk and evidence appraisal** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 22 and prepares Chapter 24. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-24"></a>
 
-### Chapter 24 — Cybersecurity: controls
+### Chapter 24 — Comparative control design
 
 **Stage 5; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: controls** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 23 and prepares Chapter 25. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Comparative control design** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 23 and prepares Chapter 25. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-25"></a>
 
-### Chapter 25 — Laboratory I
+### Chapter 25 — Laboratory: analyze service hypotheses
 
 **Stage 5; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Laboratory I** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 24 and prepares Chapter 26. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Laboratory: analyze service hypotheses** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 24 and prepares Chapter 26. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-26"></a>
 
-### Chapter 26 — Cybersecurity: methods II
+### Chapter 26 — Security measurement and inference
 
 **Stage 6; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: methods II** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 25 and prepares Chapter 27. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Security measurement and inference** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 25 and prepares Chapter 27. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-27"></a>
 
-### Chapter 27 — Cybersecurity: verification
+### Chapter 27 — Assurance testing and falsification
 
 **Stage 6; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: verification** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 26 and prepares Chapter 28. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Assurance testing and falsification** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 26 and prepares Chapter 28. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-28"></a>
 
-### Chapter 28 — Cybersecurity: failure analysis
+### Chapter 28 — Failure, human error and adversarial misuse
 
 **Stage 6; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: failure analysis** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 27 and prepares Chapter 29. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Failure, human error and adversarial misuse** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 27 and prepares Chapter 29. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-29"></a>
 
-### Chapter 29 — Cybersecurity: operations
+### Chapter 29 — Security operations as a socio-technical system
 
 **Stage 6; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: operations** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 28 and prepares Chapter 30. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Security operations as a socio-technical system** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 28 and prepares Chapter 30. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-30"></a>
 
-### Chapter 30 — Laboratory II
+### Chapter 30 — Laboratory: compare detection and recovery claims
 
 **Stage 6; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Laboratory II** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 29 and prepares Chapter 31. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Laboratory: compare detection and recovery claims** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 29 and prepares Chapter 31. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-31"></a>
 
-### Chapter 31 — Cybersecurity: advanced cases
+### Chapter 31 — Cloud, software and identity boundary cases
 
 **Stage 7; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: advanced cases** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 30 and prepares Chapter 32. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Cloud, software and identity boundary cases** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 30 and prepares Chapter 32. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-32"></a>
 
-### Chapter 32 — Cybersecurity: interdisciplinary interfaces
+### Chapter 32 — Privacy, policy and organizational interfaces
 
 **Stage 7; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: interdisciplinary interfaces** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 31 and prepares Chapter 33. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Privacy, policy and organizational interfaces** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 31 and prepares Chapter 33. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-33"></a>
 
-### Chapter 33 — Research methods II
+### Chapter 33 — Research design for security outcomes
 
 **Stage 7; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Research methods II** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 32 and prepares Chapter 34. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Research design for security outcomes** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 32 and prepares Chapter 34. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-34"></a>
 
-### Chapter 34 — Comparative project
+### Chapter 34 — Comparative study of control strategies
 
 **Stage 7; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Comparative project** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 33 and prepares Chapter 35. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Comparative study of control strategies** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 33 and prepares Chapter 35. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-35"></a>
 
-### Chapter 35 — Capstone proposal
+### Chapter 35 — Capstone proposal and ethics review
 
 **Stage 7; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Capstone proposal** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 34 and prepares Chapter 36. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Capstone proposal and ethics review** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 34 and prepares Chapter 36. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-36"></a>
 
-### Chapter 36 — Field or community practice
+### Chapter 36 — Community service-security practicum
 
 **Stage 8; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Field or community practice** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 35 and prepares Chapter 37. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Community service-security practicum** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 35 and prepares Chapter 37. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-37"></a>
 
-### Chapter 37 — Evidence review seminar
+### Chapter 37 — Evidence critique and peer review seminar
 
 **Stage 8; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Evidence review seminar** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 36 and prepares Chapter 38. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Evidence critique and peer review seminar** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 36 and prepares Chapter 38. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-38"></a>
 
-### Chapter 38 — Capstone implementation
+### Chapter 38 — Capstone implementation of risk treatment
 
 **Stage 8; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Capstone implementation** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 37 and prepares Chapter 39. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Capstone implementation of risk treatment** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 37 and prepares Chapter 39. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-39"></a>
 
-### Chapter 39 — Capstone evaluation
+### Chapter 39 — Capstone evaluation and limitations
 
 **Stage 8; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Capstone evaluation** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 38 and prepares Chapter 40. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Capstone evaluation and limitations** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 38 and prepares Chapter 40. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-40"></a>
 
-### Chapter 40 — Thesis and presentation
+### Chapter 40 — Thesis and public explanation of findings
 
 **Stage 8; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Thesis and presentation** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 39 and prepares the worked-answer appendix and final assessment. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Thesis and public explanation of findings** and contributes to the bachelor's course outcome: compare theories and methods, evaluate evidence and design defensible solutions in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will compare alternatives using explicit assumptions and data. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 39 and prepares the worked-answer appendix and final assessment. This paragraph is an editorial summary, not an authored lesson.
 
 ## Practical and assessment plan
 

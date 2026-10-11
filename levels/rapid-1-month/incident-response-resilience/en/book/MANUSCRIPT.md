@@ -41,6 +41,10 @@ By the end of this chapter, a learner should be able to:
 
 An incident response team does more than react to an alarm. It prepares contacts and authority, recognizes potentially harmful activity, preserves facts, makes proportionate decisions, restores services and learns from the result. [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) places incident response recommendations throughout cybersecurity risk management as described by the [NIST Cybersecurity Framework 2.0](https://www.nist.gov/cyberframework/faqs). The framework's Govern, Identify, Protect, Detect, Respond and Recover functions are concurrent and continuous activities. A team should not wait for “Respond” to think about owners, backups, communications or evidence.
 
+There is an important distinction between a **function used to prepare for response** and an **action taken during a particular case**. The model in [NIST SP 800-61 Rev. 3, section 2.1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf) places Govern, Identify and Protect in broad preparation and risk management; Detect, Respond and Recover describe the case-facing response activities. Its improvement category connects lessons back to all of them. This is a model for organizing outcomes, not a requirement that every case move through six isolated steps. In Harbor Library, naming an authorized service owner belongs to readiness; checking today's booking edit belongs to investigation; deciding whether to restrict an account belongs to response. An improvement ticket after the exercise may change the owner's contact list before the next case.
+
+A beginner can test readiness with four questions: **What service might be harmed? Which records could show what happened? Who may approve a disruptive action? What result would show that normal service is safe to resume?** A team that cannot answer them has work to do even if its alerting system is excellent. Conversely, answering them does not establish that a particular alert is malicious. The distinction prevents a control inventory from being mistaken for an incident finding.
+
 Consider a small library that provides room reservations online. An alert may say that an administrator account signed in at an unusual hour. That is a **signal** worth examining. It does not by itself prove account compromise. A change to the reservation database may be an **event** with business effect. The team must assess context, evidence and impact before it labels the situation a confirmed **incident**. These are working definitions for this teaching case; an organization should use its own approved classification policy.
 
 The first useful question is: **Which service and people could be harmed, and what is known right now?** A team that records uncertainty can act quickly without pretending to know a root cause. A team that labels every alert “breach” risks needless disruption; a team that dismisses every alert risks delayed containment.
@@ -75,6 +79,20 @@ The analyst should not shut down a service merely because a dashboard looks unus
 
 A useful **decision record** contains a timestamp, the current situation, available options, the chosen action, the person who approved it, the evidence supporting it, expected effects and a review time. Record rejected options as well when they explain an important tradeoff. A terse record made during the incident is more reliable than a reconstructed story written weeks later.
 
+#### Separate recommendation, approval, execution and verification
+
+One person can perform more than one role in a small team, but four verbs should remain visible in the case record. The **analyst recommends** an action and cites observations. An accountable person **approves** its scope and tradeoff. An operator **executes** the bounded change. A reviewer **verifies** whether the change achieved its objective and records any harm. None of these verbs can be inferred safely from a job title alone. [NIST SP 800-61 Rev. 3, sections 2.2–2.3](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf) discusses distributed response roles and the need for documented authorities and procedures; the four-verb record below is CyberABC's teaching device for making those authorities observable.
+
+| Fictional proposal | Recommends | Approves under the exercise rules | Executes | Verifies |
+|---|---|---|---|---|
+| Keep an authorized copy of booking records | Analyst | Incident lead | Analyst | Incident lead checks scope and record pointers |
+| Temporarily restrict `desk-a` | Analyst with identity administrator | Incident lead and service owner for service impact | Identity administrator | Analyst checks access result; service owner checks front-desk work |
+| Pause room booking writes | Service owner and response lead | Service owner under the simulated emergency rule | Application operator | Service owner checks bookings and queued requests |
+
+These assignments are **fictional exercise rules**. They are not a claim about any real organization's legal authority or an instruction to disconnect a production system. A useful approval says more than “go ahead”: it names the target, action, duration, expected disruption, evidence to preserve, rollback trigger and next review. If an urgent action is needed but the designated approver cannot be reached, the response lead follows the organization's approved escalation policy; the learner must not invent authority from silence.
+
+Consider a recommendation to restrict `desk-a` after R1–R5. The analyst can state a plausible benefit: additional unauthorized edits might stop. The analyst must also state a plausible cost: front-desk staff might lose access during a busy period. Neither benefit nor cost is yet measured. A decision record that says “account compromised; disable immediately” hides both uncertainty and authority. A better provisional record is: “At 09:05 UTC, preserve the supplied records and seek the training owner's confirmation by 09:15; if an unexplained new booking edit appears, reconvene the incident lead, service owner and identity administrator for an approved restriction.” The time and threshold here belong to this synthetic case, not to a universal response policy.
+
 ### 1.4 Scope, authorization and safety
 
 This book's labs use synthetic records only. In real work, incident authority comes from organizational policy, a contract, employment duties or explicit written approval. The authorization should identify the systems, accounts, data, time window and actions allowed. Investigating a partner's system, collecting personal data, changing access rights or taking a production service offline may require additional approval.
@@ -83,6 +101,14 @@ Use the smallest action that answers the immediate question. Reading a prepared 
 
 For the Harbor Library exercise, the permitted scope is a fictional table of eight records in this chapter. Learners may annotate, sort and reason about the table. They may not attempt to contact a real library, probe a real domain or test a real account.
 
+#### Write scope as an executable boundary
+
+“Investigate the alert” is too vague to guide safe practice. A useful classroom scope has an **object** (R1–R8), an **allowed operation** (read, annotate and compare), an **excluded operation** (connect to any real service or account), a **time boundary** (the session), an **owner** (the course facilitator or learner for the local copy), and a **stop condition** (the supplied records do not answer the question). A real response plan must also specify the organization and system authority, data handling and escalation route. The classroom scope is deliberately narrower.
+
+Suppose a learner wants more device details than R8 contains. The authorized action is to write a request such as “Identity administrator: if approved, provide the sign-in device and source details for `desk-a` from 08:30 to 09:15 UTC; record the original timezone and collection method.” It is **not** to retrieve them from a real service. A request identifies a missing observation, its custodian, the smallest useful interval and the permission needed. The analyst can continue with the supplied dataset while that hypothetical request remains unanswered.
+
+Scope also affects the strength of a conclusion. If only R1–R8 are in scope, the sentence “No exfiltration occurred” is unsupported. R8 explicitly lacks destination detail, and the learner has no additional network records. A defensible sentence is “The supplied network summary does not permit a conclusion about data transfer.” This is not evasive writing: it tells the next reviewer exactly which kind of evidence is missing.
+
 ### 1.5 The first incident record
 
 Open one record before investigating deeply. A practical minimum is:
@@ -90,7 +116,7 @@ Open one record before investigating deeply. A practical minimum is:
 | Field | Example for the fictional case |
 |---|---|
 | Case ID | `HL-IR-001` |
-| Opened at | `2026-10-11 09:20 UTC` |
+| Opened at | `2026-10-11 09:00 UTC` |
 | Reporter and channel | Help-desk ticket `T-104` |
 | Service and owner | Room booking; service owner pending confirmation |
 | Observation | Two booking edits followed a staff-account sign-in outside ordinary hours |
@@ -98,7 +124,7 @@ Open one record before investigating deeply. A practical minimum is:
 | Scope and authority | Synthetic training data only |
 | Evidence pointers | Records `R1`–`R8` below |
 | Next question | Were the edits authorized by the staff member? |
-| Next review | `2026-10-11 09:45 UTC` |
+| Next review | `2026-10-11 09:15 UTC` |
 
 Use **UTC consistently** in this exercise. If a source uses another timezone, retain its original timestamp and record the conversion, including the offset. Never silently reorder events whose clocks may differ. Give each evidence item an identifier so that a later statement can cite its basis.
 
@@ -134,7 +160,37 @@ Use only these synthetic records for the exercises. They extend the worked examp
 
 R6 is a reason to check whether the edits were part of training; it is not proof that they were. R7 may support recovery planning but does not prove that a restore works. R8 cannot prove absence of data transfer. The lesson is to connect a claim to the evidence that actually supports it.
 
-### 1.8 Common errors and chapter synthesis
+#### A three-hypothesis reading of the same records
+
+Start with three explanations that are meaningfully different. **H1: authorized training** caused the booking changes. R6 makes this plausible because training was scheduled; R6 does not identify which bookings were meant to change. **H2: someone used `desk-a` without authorization.** R1–R4 are compatible with this, but they contain no proof about who controlled the session. **H3: the patron view and authoritative booking state differ.** R5 suggests a user-visible discrepancy, but R4 records a cancellation in the application audit, so H3 cannot by itself explain every observation. All three are hypotheses, and more than one contributing condition could be present.
+
+The next check should be chosen for its ability to **discriminate** among these explanations at low cost and within scope. Asking the training owner whether B17 and B18 were specified in the training plan may strengthen or weaken H1. Comparing the authoritative booking state with the patron view may test H3. Reviewing a narrowly scoped, approved identity detail record could strengthen or weaken H2. The fact that a check is useful does not itself authorize collecting that record. If permission or data is unavailable, record the limit and revisit the decision with the case owner.
+
+| Claim under review | Supplied support | Missing discriminator | Safe next step in this exercise |
+|---|---|---|---|
+| The B18 change was planned training | R6 shows training was scheduled; R4 shows the cancellation | The approved training task list | Draft a request to the training owner |
+| `desk-a` was misused | R1–R4 establish a session and edits | Authorized user's account of activity and approved identity details | Record the question and the responsible custodian |
+| The service can be restored | R7 shows a backup job completed | A tested restore and comparison with an authoritative schedule | Ask the recovery lead for a contained restore-test plan |
+
+This is an example of **evidence discipline**, not a probabilistic verdict. With this small dataset, no defensible numerical probability of compromise can be calculated. A score invented from intuition would add apparent precision without adding evidence.
+
+### 1.8 Guided readiness workshop: prepare the first decision
+
+This paper-and-pencil lab turns the eight fictional records into a reproducible case artifact. It requires no software, network connection, account, secret or real person. Work from the table in section 1.7 and the role and scope rules above. The outputs are a service card, an evidence ledger and a decision card. Keep the three artifacts together under the synthetic case ID `HL-IR-001`.
+
+**Step 1 — Define the service and authority.** On the service card, name the room-booking outcome, the identity and database dependencies, the service owner to consult and the person who can approve record collection under the exercise rules. Mark the identity administrator as a potential custodian of additional sign-in details, not as a source already consulted. Record “synthetic R1–R8 only” as the current evidence boundary.
+
+**Step 2 — Build the evidence ledger.** Copy the record IDs and UTC times for R1, R3, R4, R5, R6, R7 and R8. Add one column labelled “what this item directly records” and another labelled “what it does not prove.” For example, R7 directly reports a completed backup job; it does not establish the restored schedule or its recovery time. Do not merge the patron's report with the application audit into a single unqualified fact.
+
+**Step 3 — Set a decision checkpoint.** At the fictional 09:05 UTC checkpoint, propose either (A) preserve the supplied records and verify the training explanation before changing access, or (B) request an approved temporary restriction of `desk-a`. For the chosen option, write its expected benefit, service cost, approving role, observable result and next review time. Also record the rejected option and the evidence that would cause reconsideration. Either choice can be defended if assumptions, urgency and authority are stated; R1–R8 alone do not force a universal answer.
+
+**Step 4 — Run a counterfactual.** Imagine that at 09:08 UTC a newly supplied, verified application record shows another booking edited after the scheduled training window. This is a **fictional inject**, not part of R1–R8. State how it would change your assessment and which approval you would seek. Then remove the inject and return to the actual eight-record dataset. This separation prevents a hypothetical event from silently becoming case evidence.
+
+**Expected evidence:** three labeled artifacts with the case ID, source IDs beside every factual statement, an explicit unconfirmed-cause status, a named approver for any disruptive action, and a next review time. A reviewer should be able to reconstruct the order of events and identify which statements were observations, inferences or proposals without asking the author.
+
+**Assessment rubric:** award one point each for accurate event pointers and UTC ordering, clear separation of fact from hypothesis, explicit current authority and scope, a proportionate option comparison, and a review trigger with owner. A score of 5/5 shows the artifact is internally complete for this introductory exercise; it does **not** certify incident-response competence or prove the fictional case's cause. An omitted scope or approval item must be corrected even if the other four points are present. A worked example appears in the final answer section after EX013.
+
+### 1.9 Common errors and chapter synthesis
 
 - **Confusing suspicion with confirmation.** Use a hypothesis and state what would confirm or weaken it.
 - **Skipping the service owner.** A technically plausible action can cause avoidable harm to users.
@@ -264,9 +320,17 @@ An integrity hash can detect whether a particular byte sequence changes between 
 
 This table is a model for an **exercise note**. A real organization needs its approved preservation, retention, privacy and evidence-transfer procedures. Never collect broader data merely to make a training exercise look realistic.
 
+#### Event time, discovery time and collection time are different facts
+
+An event may occur at one time, enter a logging service later and be seen by an analyst later still. In the supplied classroom table, R9 says that an edit was recorded at 09:03 UTC. R15, at 09:14, communicates a retention rule; it does not restart the retention period for R9. Without the actual source's deletion policy, no learner can calculate an exact expiry from those two timestamps. The safe operational question is: **What is the oldest relevant record's retention deadline at its source, and how soon can an authorized custodian preserve a narrow copy?** Escalate that uncertainty instead of writing a fabricated deadline.
+
+When merging records from different systems, retain the original timestamp and its timezone or offset. Add a normalized UTC field separately and record how it was obtained. A timestamp without an offset is ambiguous; a clock that is five minutes slow may reverse apparent order. The case table supplies UTC for teaching, but a real analyst would check source clock configuration and collection delay before claiming a precise cross-system sequence. R13's summary omits device and location detail, so the absence of those fields is a **source limitation**, not a negative finding about the session.
+
+Preservation should also be **proportionate**. For the next Harbor Library decision, a bounded booking-audit interval and the account's relevant sign-in summary may be useful. Exporting all patrons, all departments or unrelated accounts could increase privacy risk without improving the decision. A narrow export can still omit a relevant event; record the selection rule and keep an authorized unmodified original when available. Chapter 2 teaches the logic of a collection request and a copy-integrity check. Production evidence handling belongs to the organization's approved procedures and qualified personnel.
+
 ### 2.4 Worked example: the second alert
 
-The following records are also fictional and extend Chapter 1. They are the complete input for this chapter's exercises. No live system or external account is involved.
+The following records are also fictional and extend Chapter 1. They are the complete input for this chapter's exercises. No live system or external account is involved. **Exercise timing:** the Chapter 1 analyst made the 09:05 decision from the then-supplied R1–R8 snapshot. This chapter releases R9–R16 to the learner at the simulated 09:20 review. Several events in the new table have earlier timestamps; the time an event occurred and the time the analyst received its record are different facts.
 
 | ID | UTC time | Source | Observation |
 |---|---|---|---|
@@ -287,7 +351,37 @@ The following records are also fictional and extend Chapter 1. They are the comp
 
 This decision does **not** clear or accuse the staff member. It states what is known, what can be lost and who may authorize the next action. If the impact check found broad damage, a containment proposal would need to reach the service owner and incident lead promptly; Chapter 3 will compare those options.
 
-### 2.5 Handoff and common errors
+### 2.5 Contained lab: preserve and check a synthetic extract
+
+The lab below is deliberately smaller than a forensic acquisition. It teaches which **bytes** a digest covers and which conclusions still require other evidence. Use a scratch directory on a computer you control, with Python 3 and no network connection. The generated text is invented for this book; it contains no real account, endpoint or patron data. Running the script writes two small files in the current directory, so choose a temporary directory first.
+
+The extract has two rows that **transcribe** R9 and R14. It is a learning fixture assembled from this chapter's table, not an original log from Harbor Library. R14 summarizes the queried audit range; it does not assert that no later edit occurred outside that range. Save and run the following as `fixture.py` inside the scratch directory:
+
+```python
+from hashlib import sha256
+from pathlib import Path
+
+payload = (
+    b"case_id|record_id|time_utc|source|observation\n"
+    b"HL-IR-001|R9|2026-10-11T09:03:00Z|booking-audit|desk-a changed B19 from Room 1 to Room 3\n"
+    b"HL-IR-001|R14|2026-10-11T09:12:00Z|application-audit|no further edits in the queried range after R9\n"
+)
+Path("E1.txt").write_bytes(payload)
+saved = Path("E1.txt").read_bytes()
+print(len(saved), sha256(saved).hexdigest())
+
+altered = saved.replace(b"Room 3", b"Room 4")
+Path("E1-modified.txt").write_bytes(altered)
+print(len(altered), sha256(altered).hexdigest())
+```
+
+**Procedure.** First, predict whether both files will have the same byte length and whether their SHA-256 digests will match. Then run the script and record both output lines. Read `E1.txt` and `E1-modified.txt` to locate the intentional one-byte change. Re-run the first digest on `E1.txt` and compare it with the saved value. Finally write a collection note identifying the exact file, byte count, local collection time, synthetic source, authorized classroom scope, transformation and storage location. If you cannot run Python, reason from the displayed bytes and use the worked result to check your conclusion; software execution is not required to answer the conceptual question.
+
+The byte count is a useful reproducibility check, but equal length is not equal content. A matching digest on `E1.txt` at two checks supports the limited statement that **the bytes checked were the same at those two times**, assuming the digest calculation and recorded values are trustworthy. A differing digest for the deliberately altered copy shows that this check detects that particular edit. Neither result verifies the truth of R9 or R14, completeness of the original query, correctness of a clock, identity of the editor, legal authority or whether data left the service. The example uses SHA-256 as an integrity check, not as proof of authenticity.
+
+**Expected submission:** the two byte counts and digests, one sentence explaining why the hashes differ, a collection note for `E1.txt`, and two explicit limits on the integrity claim. **Rubric:** one point each for correct byte/digest comparison, correctly identified modification, complete source-and-authority note, and limits that distinguish copy integrity from source truth. A score of 4/4 means the classroom task is reproducible, not that a real forensic process has been completed. The exact expected output and a model note are in the final worked-results section after EX026.
+
+### 2.6 Handoff and common errors
 
 A useful handoff lets a second analyst reconstruct the decision without guessing: case ID; current time and timezone; affected service; observed facts with record IDs; live hypotheses; confidence and limits; known service impact; actions completed under which authority; evidence locations; next question; decision owner; review deadline. It should also separate the source's event time from the time the analyst learned of the event.
 
@@ -650,6 +744,16 @@ A fresh booking edit after the staff member denies use of the account would incr
 
 Three gaps are an unconfirmed service owner, unknown clock synchronization and no recorded restore-test result. Prioritize naming the service owner and alternate, then verify the improvement by having both acknowledge a tabletop scenario and approve or reject a simulated booking outage within the agreed time. Another answer may prioritize clock or recovery testing if it states a measurable check.
 
+### Chapter 1 readiness workshop — worked result
+
+**Service card:** case `HL-IR-001`; outcome: residents can see and reserve the correct room; dependencies: staff identity service and booking database; current collection authority: the fictional incident lead permits analysis of R1–R8 only; service owner must be consulted before a booking outage. The identity administrator is listed as the custodian for a *possible* future request, not as someone already interviewed.
+
+**Evidence ledger excerpt:** R1 at 08:40 UTC directly records a successful `desk-a` sign-in; it does not identify the human controlling the session. R4 at 08:44 records B18's cancellation; it does not establish why it was cancelled. R5 at 08:48 records a patron report, not an independently verified account of every symptom. R6 at 08:50 records a scheduled training interval but not the authorized task list. R7 at 08:52 reports a completed backup job but no restore result. R8 at 08:55 has insufficient network detail to support an exfiltration conclusion. A full submission also cites R3 and preserves the original UTC order.
+
+**Decision card at 09:05 UTC:** preserve the supplied records and ask the training owner whether B17 and B18 were planned. Expected benefit: avoid an unnecessary access interruption while testing H1; possible cost: if the account is being misused, another edit could occur before review. The fictional incident lead approves the bounded record analysis; the service owner reviews service impact. Reassess at 09:15 UTC, or sooner if a verified new edit is reported. The rejected immediate-restriction option could reduce further misuse but would disrupt front-desk work and requires explicit service and identity approvals. Neither option is labelled the uniquely correct response.
+
+**Counterfactual kept separate:** if the hypothetical 09:08 edit were verified and outside training, the lead would raise urgency, preserve the new record under an updated scope and seek approval for a temporary account restriction. Once the inject is removed, the original case returns to an unconfirmed cause. The sample earns five rubric points if the full ledger, authority and review trigger are present; a learner who omits the collection boundary must revise it regardless of total score.
+
 ### EX014 — Worked result
 
 “Was `B19` part of the authorized training?” can be checked with the training owner and R10, then with any approved exercise addendum. “Are other bookings currently affected?” can be checked by the service owner using a narrow booking-audit comparison. A good answer identifies a source and acknowledges that its absence or silence is not conclusive.
@@ -701,6 +805,12 @@ A new unexplained edit after 09:20 would raise urgency because harm may still be
 ### EX026 — Worked result
 
 R6 says training was scheduled; R10 says its plan names `B17` and `B18`. Neither record says that `B19` was an approved training task or that the staff member made the R9 edit. The reviewer should seek a complete approved plan or addendum and ask the training owner whether `B19` was included; authorized detailed application and identity records could then help test who performed the edit. Treat the answer as unresolved until those checks are assessed.
+
+### Chapter 2 synthetic-extract lab — worked result
+
+The script writes **235 bytes** to each file. The SHA-256 digest for `E1.txt` is `dc973f580305633eb0a75317c5bdbd9886a8fc015e14a0b17bae09be5e3a6e37`; the digest for `E1-modified.txt` is `15287410550f021dcb81e10fc1833297ffa840ee8ffa8e75867de36df64ffa4d`. The strings have equal byte length because the single ASCII digit `3` was replaced with `4`; their different digests show the modified copy is not byte-identical to the saved original. Learners should calculate the values locally rather than trust a copied answer.
+
+A model note is: “`HL-IR-001/E1`; synthetic classroom extract transcribed from book records R9 and R14; event times 09:03 and 09:12 UTC; learner-created local file `E1.txt` in a scratch directory at the learner's actual collection time; classroom authorization permits only this supplied material; 235 bytes written by `fixture.py` without a live source; SHA-256 digest recorded above; working copy stored locally and deleted after the exercise.” The collection time should be the learner's actual time, not an invented 09:18 UTC. The output is **not** an original application log, and R14 covers only its queried range. Matching digests after a repeat check support byte consistency of the checked copy; they do not prove authorized account use, complete source records or the cause of B19's change.
 
 ### EX027 — Worked result
 

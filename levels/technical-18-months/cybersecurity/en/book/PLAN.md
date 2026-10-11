@@ -14,6 +14,7 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 - [NIST Cybersecurity Framework 2.0](https://www.nist.gov/publications/nist-cybersecurity-framework-csf-20) — a taxonomy of security outcomes and a source for discussing organizational risk; it does not prescribe a single implementation.
 - [NIST CSF 2.0 FAQ](https://www.nist.gov/cyberframework/faqs) — explanations of framework components and the Govern function.
+- [NIST SP 800-53 Rev. 5 publication and current control-catalog update](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final) — a flexible security and privacy control catalog. Check the linked newer catalog release before citing specific controls; framework mappings are not automatic equivalences.
 
 These sources guide the English teaching plan. The Harbor Library case is synthetic; factual claims in authored lessons need source-specific citations.
 

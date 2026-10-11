@@ -27,36 +27,36 @@ English is the reference edition.
 | 4 | [17](book/PLAN.md#ch-17) | Control and feedback basics | 80 | 30 | 3 | Planned |
 | 4 | [18](book/PLAN.md#ch-18) | Security architecture | 80 | 30 | 3 | Planned |
 | 4 | [19](book/PLAN.md#ch-19) | Identity and cryptography | 80 | 30 | 3 | Planned |
-| 4 | [20](book/PLAN.md#ch-20) | Cybersecurity: engineering context | 80 | 30 | 3 | Planned |
-| 5 | [21](book/PLAN.md#ch-21) | Cybersecurity: requirements | 80 | 30 | 3 | Planned |
-| 5 | [22](book/PLAN.md#ch-22) | Cybersecurity: system and data models | 80 | 30 | 3 | Planned |
-| 5 | [23](book/PLAN.md#ch-23) | Cybersecurity: threat and failure analysis | 80 | 30 | 3 | Planned |
-| 5 | [24](book/PLAN.md#ch-24) | Cybersecurity: methods I | 80 | 30 | 3 | Planned |
-| 5 | [25](book/PLAN.md#ch-25) | Design studio I | 80 | 30 | 3 | Planned |
-| 6 | [26](book/PLAN.md#ch-26) | Cybersecurity: architecture alternatives | 80 | 30 | 3 | Planned |
-| 6 | [27](book/PLAN.md#ch-27) | Cybersecurity: control design | 80 | 30 | 3 | Planned |
-| 6 | [28](book/PLAN.md#ch-28) | Cybersecurity: implementation I | 80 | 30 | 3 | Planned |
-| 6 | [29](book/PLAN.md#ch-29) | Cybersecurity: measurement | 80 | 30 | 3 | Planned |
-| 6 | [30](book/PLAN.md#ch-30) | Verification laboratory I | 80 | 30 | 3 | Planned |
-| 7 | [31](book/PLAN.md#ch-31) | Cybersecurity: implementation II | 80 | 30 | 3 | Planned |
-| 7 | [32](book/PLAN.md#ch-32) | Cybersecurity: reliability | 80 | 30 | 3 | Planned |
-| 7 | [33](book/PLAN.md#ch-33) | Cybersecurity: safety and resilience | 80 | 30 | 3 | Planned |
-| 7 | [34](book/PLAN.md#ch-34) | Cybersecurity: integration | 80 | 30 | 3 | Planned |
-| 7 | [35](book/PLAN.md#ch-35) | Design studio II | 80 | 30 | 3 | Planned |
-| 8 | [36](book/PLAN.md#ch-36) | Cybersecurity: performance and scale | 80 | 30 | 3 | Planned |
-| 8 | [37](book/PLAN.md#ch-37) | Cybersecurity: operations | 80 | 30 | 3 | Planned |
-| 8 | [38](book/PLAN.md#ch-38) | Cybersecurity: validation | 80 | 30 | 3 | Planned |
-| 8 | [39](book/PLAN.md#ch-39) | Cybersecurity: maintainability | 80 | 30 | 3 | Planned |
-| 8 | [40](book/PLAN.md#ch-40) | Verification laboratory II | 80 | 30 | 3 | Planned |
-| 9 | [41](book/PLAN.md#ch-41) | Cybersecurity: system optimization | 80 | 30 | 3 | Planned |
-| 9 | [42](book/PLAN.md#ch-42) | Cybersecurity: applied research | 80 | 30 | 3 | Planned |
-| 9 | [43](book/PLAN.md#ch-43) | Industry or public-service practice | 80 | 30 | 3 | Planned |
-| 9 | [44](book/PLAN.md#ch-44) | Engineering capstone I | 80 | 30 | 3 | Planned |
-| 9 | [45](book/PLAN.md#ch-45) | Independent design review | 80 | 30 | 3 | Planned |
-| 10 | [46](book/PLAN.md#ch-46) | Engineering capstone II | 80 | 30 | 3 | Planned |
-| 10 | [47](book/PLAN.md#ch-47) | Failure and recovery trial | 80 | 30 | 3 | Planned |
-| 10 | [48](book/PLAN.md#ch-48) | Evidence dossier | 80 | 30 | 3 | Planned |
-| 10 | [49](book/PLAN.md#ch-49) | Engineering thesis | 80 | 30 | 3 | Planned |
-| 10 | [50](book/PLAN.md#ch-50) | Final defense | 80 | 30 | 3 | Planned |
+| 4 | [20](book/PLAN.md#ch-20) | Security-engineering context and system constraints | 80 | 30 | 3 | Planned |
+| 5 | [21](book/PLAN.md#ch-21) | Security requirements and assurance claims | 80 | 30 | 3 | Planned |
+| 5 | [22](book/PLAN.md#ch-22) | Asset, data and interface models | 80 | 30 | 3 | Planned |
+| 5 | [23](book/PLAN.md#ch-23) | Adversary and fault model synthesis | 80 | 30 | 3 | Planned |
+| 5 | [24](book/PLAN.md#ch-24) | Architecture analysis and tradeoff methods | 80 | 30 | 3 | Planned |
+| 5 | [25](book/PLAN.md#ch-25) | Design studio: security requirements dossier | 80 | 30 | 3 | Planned |
+| 6 | [26](book/PLAN.md#ch-26) | Alternative trust-boundary architectures | 80 | 30 | 3 | Planned |
+| 6 | [27](book/PLAN.md#ch-27) | Control design under operational constraints | 80 | 30 | 3 | Planned |
+| 6 | [28](book/PLAN.md#ch-28) | Implement access and evidence services | 80 | 30 | 3 | Planned |
+| 6 | [29](book/PLAN.md#ch-29) | Measure control effectiveness and cost | 80 | 30 | 3 | Planned |
+| 6 | [30](book/PLAN.md#ch-30) | Verification lab: claims and counterexamples | 80 | 30 | 3 | Planned |
+| 7 | [31](book/PLAN.md#ch-31) | Implement cross-component security workflows | 80 | 30 | 3 | Planned |
+| 7 | [32](book/PLAN.md#ch-32) | Reliability of security controls and telemetry | 80 | 30 | 3 | Planned |
+| 7 | [33](book/PLAN.md#ch-33) | Safety, privacy and resilient behavior | 80 | 30 | 3 | Planned |
+| 7 | [34](book/PLAN.md#ch-34) | Integrate identity, application and network controls | 80 | 30 | 3 | Planned |
+| 7 | [35](book/PLAN.md#ch-35) | Design studio: integration and rollback | 80 | 30 | 3 | Planned |
+| 8 | [36](book/PLAN.md#ch-36) | Scale limits of security evidence pipelines | 80 | 30 | 3 | Planned |
+| 8 | [37](book/PLAN.md#ch-37) | Operate secure services under change | 80 | 30 | 3 | Planned |
+| 8 | [38](book/PLAN.md#ch-38) | Validate assurance claims end to end | 80 | 30 | 3 | Planned |
+| 8 | [39](book/PLAN.md#ch-39) | Maintain controls through lifecycle change | 80 | 30 | 3 | Planned |
+| 8 | [40](book/PLAN.md#ch-40) | Verification lab: fault injection and regression | 80 | 30 | 3 | Planned |
+| 9 | [41](book/PLAN.md#ch-41) | Optimize control portfolios under constraints | 80 | 30 | 3 | Planned |
+| 9 | [42](book/PLAN.md#ch-42) | Applied research on security system limits | 80 | 30 | 3 | Planned |
+| 9 | [43](book/PLAN.md#ch-43) | Public-service security engineering practicum | 80 | 30 | 3 | Planned |
+| 9 | [44](book/PLAN.md#ch-44) | Engineering capstone: architecture and build | 80 | 30 | 3 | Planned |
+| 9 | [45](book/PLAN.md#ch-45) | Independent review of threat and safety claims | 80 | 30 | 3 | Planned |
+| 10 | [46](book/PLAN.md#ch-46) | Engineering capstone: trial and iteration | 80 | 30 | 3 | Planned |
+| 10 | [47](book/PLAN.md#ch-47) | Failure and recovery under controlled faults | 80 | 30 | 3 | Planned |
+| 10 | [48](book/PLAN.md#ch-48) | Acceptance evidence and residual-risk dossier | 80 | 30 | 3 | Planned |
+| 10 | [49](book/PLAN.md#ch-49) | Engineering thesis on security outcomes | 80 | 30 | 3 | Planned |
+| 10 | [50](book/PLAN.md#ch-50) | Defense of design and measured evidence | 80 | 30 | 3 | Planned |
 
 Page and exercise columns are editorial targets. The book is complete only after its content and A4 rendering meet the publication gate.

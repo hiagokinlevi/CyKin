@@ -166,251 +166,251 @@ This subject teaches **Identity and cryptography** and contributes to the engine
 
 <a id="ch-20"></a>
 
-### Chapter 20 — Cybersecurity: engineering context
+### Chapter 20 — Security-engineering context and system constraints
 
 **Stage 4; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: engineering context** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 19 and prepares Chapter 21. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Security-engineering context and system constraints** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 19 and prepares Chapter 21. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-21"></a>
 
-### Chapter 21 — Cybersecurity: requirements
+### Chapter 21 — Security requirements and assurance claims
 
 **Stage 5; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: requirements** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 20 and prepares Chapter 22. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Security requirements and assurance claims** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 20 and prepares Chapter 22. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-22"></a>
 
-### Chapter 22 — Cybersecurity: system and data models
+### Chapter 22 — Asset, data and interface models
 
 **Stage 5; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: system and data models** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 21 and prepares Chapter 23. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Asset, data and interface models** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 21 and prepares Chapter 23. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-23"></a>
 
-### Chapter 23 — Cybersecurity: threat and failure analysis
+### Chapter 23 — Adversary and fault model synthesis
 
 **Stage 5; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: threat and failure analysis** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 22 and prepares Chapter 24. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Adversary and fault model synthesis** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 22 and prepares Chapter 24. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-24"></a>
 
-### Chapter 24 — Cybersecurity: methods I
+### Chapter 24 — Architecture analysis and tradeoff methods
 
 **Stage 5; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: methods I** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 23 and prepares Chapter 25. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Architecture analysis and tradeoff methods** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 23 and prepares Chapter 25. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-25"></a>
 
-### Chapter 25 — Design studio I
+### Chapter 25 — Design studio: security requirements dossier
 
 **Stage 5; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Design studio I** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 24 and prepares Chapter 26. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Design studio: security requirements dossier** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 24 and prepares Chapter 26. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-26"></a>
 
-### Chapter 26 — Cybersecurity: architecture alternatives
+### Chapter 26 — Alternative trust-boundary architectures
 
 **Stage 6; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: architecture alternatives** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 25 and prepares Chapter 27. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Alternative trust-boundary architectures** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 25 and prepares Chapter 27. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-27"></a>
 
-### Chapter 27 — Cybersecurity: control design
+### Chapter 27 — Control design under operational constraints
 
 **Stage 6; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: control design** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 26 and prepares Chapter 28. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Control design under operational constraints** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 26 and prepares Chapter 28. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-28"></a>
 
-### Chapter 28 — Cybersecurity: implementation I
+### Chapter 28 — Implement access and evidence services
 
 **Stage 6; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: implementation I** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 27 and prepares Chapter 29. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Implement access and evidence services** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 27 and prepares Chapter 29. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-29"></a>
 
-### Chapter 29 — Cybersecurity: measurement
+### Chapter 29 — Measure control effectiveness and cost
 
 **Stage 6; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: measurement** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 28 and prepares Chapter 30. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Measure control effectiveness and cost** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 28 and prepares Chapter 30. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-30"></a>
 
-### Chapter 30 — Verification laboratory I
+### Chapter 30 — Verification lab: claims and counterexamples
 
 **Stage 6; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Verification laboratory I** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 29 and prepares Chapter 31. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Verification lab: claims and counterexamples** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 29 and prepares Chapter 31. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-31"></a>
 
-### Chapter 31 — Cybersecurity: implementation II
+### Chapter 31 — Implement cross-component security workflows
 
 **Stage 7; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: implementation II** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 30 and prepares Chapter 32. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Implement cross-component security workflows** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 30 and prepares Chapter 32. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-32"></a>
 
-### Chapter 32 — Cybersecurity: reliability
+### Chapter 32 — Reliability of security controls and telemetry
 
 **Stage 7; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: reliability** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 31 and prepares Chapter 33. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Reliability of security controls and telemetry** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 31 and prepares Chapter 33. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-33"></a>
 
-### Chapter 33 — Cybersecurity: safety and resilience
+### Chapter 33 — Safety, privacy and resilient behavior
 
 **Stage 7; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: safety and resilience** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 32 and prepares Chapter 34. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Safety, privacy and resilient behavior** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 32 and prepares Chapter 34. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-34"></a>
 
-### Chapter 34 — Cybersecurity: integration
+### Chapter 34 — Integrate identity, application and network controls
 
 **Stage 7; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: integration** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 33 and prepares Chapter 35. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Integrate identity, application and network controls** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 33 and prepares Chapter 35. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-35"></a>
 
-### Chapter 35 — Design studio II
+### Chapter 35 — Design studio: integration and rollback
 
 **Stage 7; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Design studio II** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 34 and prepares Chapter 36. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Design studio: integration and rollback** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 34 and prepares Chapter 36. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-36"></a>
 
-### Chapter 36 — Cybersecurity: performance and scale
+### Chapter 36 — Scale limits of security evidence pipelines
 
 **Stage 8; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: performance and scale** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 35 and prepares Chapter 37. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Scale limits of security evidence pipelines** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 35 and prepares Chapter 37. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-37"></a>
 
-### Chapter 37 — Cybersecurity: operations
+### Chapter 37 — Operate secure services under change
 
 **Stage 8; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: operations** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 36 and prepares Chapter 38. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Operate secure services under change** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 36 and prepares Chapter 38. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-38"></a>
 
-### Chapter 38 — Cybersecurity: validation
+### Chapter 38 — Validate assurance claims end to end
 
 **Stage 8; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: validation** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 37 and prepares Chapter 39. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Validate assurance claims end to end** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 37 and prepares Chapter 39. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-39"></a>
 
-### Chapter 39 — Cybersecurity: maintainability
+### Chapter 39 — Maintain controls through lifecycle change
 
 **Stage 8; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: maintainability** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 38 and prepares Chapter 40. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Maintain controls through lifecycle change** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 38 and prepares Chapter 40. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-40"></a>
 
-### Chapter 40 — Verification laboratory II
+### Chapter 40 — Verification lab: fault injection and regression
 
 **Stage 8; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Verification laboratory II** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 39 and prepares Chapter 41. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Verification lab: fault injection and regression** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 39 and prepares Chapter 41. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-41"></a>
 
-### Chapter 41 — Cybersecurity: system optimization
+### Chapter 41 — Optimize control portfolios under constraints
 
 **Stage 9; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: system optimization** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 40 and prepares Chapter 42. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Optimize control portfolios under constraints** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 40 and prepares Chapter 42. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-42"></a>
 
-### Chapter 42 — Cybersecurity: applied research
+### Chapter 42 — Applied research on security system limits
 
 **Stage 9; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: applied research** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 41 and prepares Chapter 43. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Applied research on security system limits** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 41 and prepares Chapter 43. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-43"></a>
 
-### Chapter 43 — Industry or public-service practice
+### Chapter 43 — Public-service security engineering practicum
 
 **Stage 9; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Industry or public-service practice** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 42 and prepares Chapter 44. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Public-service security engineering practicum** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 42 and prepares Chapter 44. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-44"></a>
 
-### Chapter 44 — Engineering capstone I
+### Chapter 44 — Engineering capstone: architecture and build
 
 **Stage 9; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Engineering capstone I** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 43 and prepares Chapter 45. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Engineering capstone: architecture and build** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 43 and prepares Chapter 45. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-45"></a>
 
-### Chapter 45 — Independent design review
+### Chapter 45 — Independent review of threat and safety claims
 
 **Stage 9; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Independent design review** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 44 and prepares Chapter 46. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Independent review of threat and safety claims** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 44 and prepares Chapter 46. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-46"></a>
 
-### Chapter 46 — Engineering capstone II
+### Chapter 46 — Engineering capstone: trial and iteration
 
 **Stage 10; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Engineering capstone II** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 45 and prepares Chapter 47. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Engineering capstone: trial and iteration** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 45 and prepares Chapter 47. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-47"></a>
 
-### Chapter 47 — Failure and recovery trial
+### Chapter 47 — Failure and recovery under controlled faults
 
 **Stage 10; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Failure and recovery trial** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 46 and prepares Chapter 48. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Failure and recovery under controlled faults** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 46 and prepares Chapter 48. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-48"></a>
 
-### Chapter 48 — Evidence dossier
+### Chapter 48 — Acceptance evidence and residual-risk dossier
 
 **Stage 10; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Evidence dossier** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 47 and prepares Chapter 49. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Acceptance evidence and residual-risk dossier** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 47 and prepares Chapter 49. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-49"></a>
 
-### Chapter 49 — Engineering thesis
+### Chapter 49 — Engineering thesis on security outcomes
 
 **Stage 10; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Engineering thesis** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 48 and prepares Chapter 50. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Engineering thesis on security outcomes** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 48 and prepares Chapter 50. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-50"></a>
 
-### Chapter 50 — Final defense
+### Chapter 50 — Defense of design and measured evidence
 
 **Stage 10; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Final defense** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 49 and prepares the worked-answer appendix and final assessment. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Defense of design and measured evidence** and contributes to the engineering course outcome: design, build and validate complex systems under constraints in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will model tradeoffs, implement controls and test failure modes. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 49 and prepares the worked-answer appendix and final assessment. This paragraph is an editorial summary, not an authored lesson.
 
 ## Practical and assessment plan
 

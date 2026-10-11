@@ -86,171 +86,171 @@ This subject teaches **Evidence and measurement** and contributes to the technol
 
 <a id="ch-10"></a>
 
-### Chapter 10 — Cybersecurity: orientation
+### Chapter 10 — Service-security operating model
 
 **Stage 2; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: orientation** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 09 and prepares Chapter 11. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Service-security operating model** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 09 and prepares Chapter 11. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-11"></a>
 
-### Chapter 11 — Cybersecurity: assets and context
+### Chapter 11 — Asset inventory and ownership
 
 **Stage 3; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: assets and context** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 10 and prepares Chapter 12. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Asset inventory and ownership** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 10 and prepares Chapter 12. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-12"></a>
 
-### Chapter 12 — Cybersecurity: data flows
+### Chapter 12 — Data and trust-boundary mapping
 
 **Stage 3; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: data flows** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 11 and prepares Chapter 13. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Data and trust-boundary mapping** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 11 and prepares Chapter 13. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-13"></a>
 
-### Chapter 13 — Cybersecurity: risk scenarios
+### Chapter 13 — Scenario-based risk prioritization
 
 **Stage 3; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: risk scenarios** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 12 and prepares Chapter 14. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Scenario-based risk prioritization** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 12 and prepares Chapter 14. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-14"></a>
 
-### Chapter 14 — Cybersecurity: methods I
+### Chapter 14 — Security assessment workflow
 
 **Stage 3; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: methods I** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 13 and prepares Chapter 15. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Security assessment workflow** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 13 and prepares Chapter 15. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-15"></a>
 
-### Chapter 15 — Cybersecurity: guided lab
+### Chapter 15 — Laboratory: map services, evidence and owners
 
 **Stage 3; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: guided lab** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 14 and prepares Chapter 16. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Laboratory: map services, evidence and owners** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 14 and prepares Chapter 16. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-16"></a>
 
-### Chapter 16 — Cybersecurity: methods II
+### Chapter 16 — Control selection across the service lifecycle
 
 **Stage 4; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: methods II** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 15 and prepares Chapter 17. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Control selection across the service lifecycle** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 15 and prepares Chapter 17. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-17"></a>
 
-### Chapter 17 — Cybersecurity: tooling
+### Chapter 17 — Security tool integration and configuration
 
 **Stage 4; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: tooling** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 16 and prepares Chapter 18. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Security tool integration and configuration** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 16 and prepares Chapter 18. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-18"></a>
 
-### Chapter 18 — Cybersecurity: controls
+### Chapter 18 — Control deployment and exception handling
 
 **Stage 4; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: controls** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 17 and prepares Chapter 19. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Control deployment and exception handling** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 17 and prepares Chapter 19. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-19"></a>
 
-### Chapter 19 — Cybersecurity: monitoring
+### Chapter 19 — Monitoring outcomes and signal quality
 
 **Stage 4; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: monitoring** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 18 and prepares Chapter 20. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Monitoring outcomes and signal quality** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 18 and prepares Chapter 20. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-20"></a>
 
-### Chapter 20 — Cybersecurity: troubleshooting
+### Chapter 20 — Diagnosing drift and broken assurance
 
 **Stage 4; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: troubleshooting** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 19 and prepares Chapter 21. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Diagnosing drift and broken assurance** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 19 and prepares Chapter 21. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-21"></a>
 
-### Chapter 21 — Cybersecurity: service integration
+### Chapter 21 — Cross-service dependency management
 
 **Stage 5; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: service integration** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 20 and prepares Chapter 22. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Cross-service dependency management** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 20 and prepares Chapter 22. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-22"></a>
 
-### Chapter 22 — Cybersecurity: automation
+### Chapter 22 — Bounded automation and human approval
 
 **Stage 5; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: automation** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 21 and prepares Chapter 23. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Bounded automation and human approval** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 21 and prepares Chapter 23. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-23"></a>
 
-### Chapter 23 — Cybersecurity: evaluation
+### Chapter 23 — Security program metrics and evaluation
 
 **Stage 5; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: evaluation** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 22 and prepares Chapter 24. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Security program metrics and evaluation** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 22 and prepares Chapter 24. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-24"></a>
 
-### Chapter 24 — Applied research methods
+### Chapter 24 — Applied comparative study of control outcomes
 
 **Stage 5; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Applied research methods** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 23 and prepares Chapter 25. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Applied comparative study of control outcomes** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 23 and prepares Chapter 25. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-25"></a>
 
-### Chapter 25 — Team project studio
+### Chapter 25 — Team studio: build a service-security plan
 
 **Stage 5; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Team project studio** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 24 and prepares Chapter 26. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Team studio: build a service-security plan** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 24 and prepares Chapter 26. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-26"></a>
 
-### Chapter 26 — Cybersecurity: operational handoff
+### Chapter 26 — Operations handoff and runbooks
 
 **Stage 6; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Cybersecurity: operational handoff** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 25 and prepares Chapter 27. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Operations handoff and runbooks** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will apply the relevant methods to foundations, threats, controls, defense lifecycle, evidence and authorized practice across digital systems. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 25 and prepares Chapter 27. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-27"></a>
 
-### Chapter 27 — Deployment and validation
+### Chapter 27 — Deploy and verify a security baseline
 
 **Stage 6; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Deployment and validation** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 26 and prepares Chapter 28. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Deploy and verify a security baseline** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 26 and prepares Chapter 28. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-28"></a>
 
-### Chapter 28 — Field practice
+### Chapter 28 — Supervised field service review
 
 **Stage 6; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Field practice** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 27 and prepares Chapter 29. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Supervised field service review** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 27 and prepares Chapter 29. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-29"></a>
 
-### Chapter 29 — Capstone build
+### Chapter 29 — Capstone: integrate controls and evidence
 
 **Stage 6; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Capstone build** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 28 and prepares Chapter 30. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Capstone: integrate controls and evidence** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 28 and prepares Chapter 30. This paragraph is an editorial summary, not an authored lesson.
 
 <a id="ch-30"></a>
 
-### Chapter 30 — Capstone assessment
+### Chapter 30 — Capstone: evaluate resilience and residual risk
 
 **Stage 6; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
 
-This subject teaches **Capstone assessment** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 29 and prepares the worked-answer appendix and final assessment. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Capstone: evaluate resilience and residual risk** and contributes to the technologist course outcome: integrate services, controls, operations and measurement in cybersecurity. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will implement an end-to-end service with monitored controls. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 3 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 29 and prepares the worked-answer appendix and final assessment. This paragraph is an editorial summary, not an authored lesson.
 
 ## Practical and assessment plan
 

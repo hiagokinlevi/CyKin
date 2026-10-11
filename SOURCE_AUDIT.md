@@ -16,7 +16,7 @@ The nine English Incident Response book plans now link [NIST SP 800-61 Rev. 3](h
 
 ## Cybersecurity primary-source leads
 
-The English Cybersecurity plans link the [NIST Cybersecurity Framework 2.0](https://www.nist.gov/publications/nist-cybersecurity-framework-csf-20) and its [official FAQ](https://www.nist.gov/cyberframework/faqs). These support the introductory vocabulary and the distinction between framework outcomes and specific technical controls. The Harbor Library learning case is fictional. The authored chapters must cite the relevant primary source beside each factual claim; the links here do not license NIST text as CyberABC content.
+The English Cybersecurity plans link the [NIST Cybersecurity Framework 2.0](https://www.nist.gov/publications/nist-cybersecurity-framework-csf-20), its [official FAQ](https://www.nist.gov/cyberframework/faqs) and the [NIST SP 800-53 Rev. 5 publication and control-catalog update notice](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final). The CSF provides a taxonomy of outcomes; SP 800-53 provides a flexible catalog of controls. The NIST publication page points to a newer control-catalog release, so chapter authors must verify the exact release before citing a control. Mappings between these sources do not establish automatic equivalence. The Harbor Library learning case is fictional. Authored chapters must cite the relevant primary source beside each factual claim; these links do not license NIST text as CyberABC content.
 
 ## Public repository samples
 

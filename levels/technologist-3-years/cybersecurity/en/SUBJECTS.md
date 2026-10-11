@@ -17,26 +17,26 @@ English is the reference edition.
 | 2 | [07](book/PLAN.md#ch-07) | Identity and access foundations | 80 | 30 | 3 | Planned |
 | 2 | [08](book/PLAN.md#ch-08) | Security architecture basics | 80 | 30 | 3 | Planned |
 | 2 | [09](book/PLAN.md#ch-09) | Evidence and measurement | 80 | 30 | 3 | Planned |
-| 2 | [10](book/PLAN.md#ch-10) | Cybersecurity: orientation | 80 | 30 | 3 | Planned |
-| 3 | [11](book/PLAN.md#ch-11) | Cybersecurity: assets and context | 80 | 30 | 3 | Planned |
-| 3 | [12](book/PLAN.md#ch-12) | Cybersecurity: data flows | 80 | 30 | 3 | Planned |
-| 3 | [13](book/PLAN.md#ch-13) | Cybersecurity: risk scenarios | 80 | 30 | 3 | Planned |
-| 3 | [14](book/PLAN.md#ch-14) | Cybersecurity: methods I | 80 | 30 | 3 | Planned |
-| 3 | [15](book/PLAN.md#ch-15) | Cybersecurity: guided lab | 80 | 30 | 3 | Planned |
-| 4 | [16](book/PLAN.md#ch-16) | Cybersecurity: methods II | 80 | 30 | 3 | Planned |
-| 4 | [17](book/PLAN.md#ch-17) | Cybersecurity: tooling | 80 | 30 | 3 | Planned |
-| 4 | [18](book/PLAN.md#ch-18) | Cybersecurity: controls | 80 | 30 | 3 | Planned |
-| 4 | [19](book/PLAN.md#ch-19) | Cybersecurity: monitoring | 80 | 30 | 3 | Planned |
-| 4 | [20](book/PLAN.md#ch-20) | Cybersecurity: troubleshooting | 80 | 30 | 3 | Planned |
-| 5 | [21](book/PLAN.md#ch-21) | Cybersecurity: service integration | 80 | 30 | 3 | Planned |
-| 5 | [22](book/PLAN.md#ch-22) | Cybersecurity: automation | 80 | 30 | 3 | Planned |
-| 5 | [23](book/PLAN.md#ch-23) | Cybersecurity: evaluation | 80 | 30 | 3 | Planned |
-| 5 | [24](book/PLAN.md#ch-24) | Applied research methods | 80 | 30 | 3 | Planned |
-| 5 | [25](book/PLAN.md#ch-25) | Team project studio | 80 | 30 | 3 | Planned |
-| 6 | [26](book/PLAN.md#ch-26) | Cybersecurity: operational handoff | 80 | 30 | 3 | Planned |
-| 6 | [27](book/PLAN.md#ch-27) | Deployment and validation | 80 | 30 | 3 | Planned |
-| 6 | [28](book/PLAN.md#ch-28) | Field practice | 80 | 30 | 3 | Planned |
-| 6 | [29](book/PLAN.md#ch-29) | Capstone build | 80 | 30 | 3 | Planned |
-| 6 | [30](book/PLAN.md#ch-30) | Capstone assessment | 80 | 30 | 3 | Planned |
+| 2 | [10](book/PLAN.md#ch-10) | Service-security operating model | 80 | 30 | 3 | Planned |
+| 3 | [11](book/PLAN.md#ch-11) | Asset inventory and ownership | 80 | 30 | 3 | Planned |
+| 3 | [12](book/PLAN.md#ch-12) | Data and trust-boundary mapping | 80 | 30 | 3 | Planned |
+| 3 | [13](book/PLAN.md#ch-13) | Scenario-based risk prioritization | 80 | 30 | 3 | Planned |
+| 3 | [14](book/PLAN.md#ch-14) | Security assessment workflow | 80 | 30 | 3 | Planned |
+| 3 | [15](book/PLAN.md#ch-15) | Laboratory: map services, evidence and owners | 80 | 30 | 3 | Planned |
+| 4 | [16](book/PLAN.md#ch-16) | Control selection across the service lifecycle | 80 | 30 | 3 | Planned |
+| 4 | [17](book/PLAN.md#ch-17) | Security tool integration and configuration | 80 | 30 | 3 | Planned |
+| 4 | [18](book/PLAN.md#ch-18) | Control deployment and exception handling | 80 | 30 | 3 | Planned |
+| 4 | [19](book/PLAN.md#ch-19) | Monitoring outcomes and signal quality | 80 | 30 | 3 | Planned |
+| 4 | [20](book/PLAN.md#ch-20) | Diagnosing drift and broken assurance | 80 | 30 | 3 | Planned |
+| 5 | [21](book/PLAN.md#ch-21) | Cross-service dependency management | 80 | 30 | 3 | Planned |
+| 5 | [22](book/PLAN.md#ch-22) | Bounded automation and human approval | 80 | 30 | 3 | Planned |
+| 5 | [23](book/PLAN.md#ch-23) | Security program metrics and evaluation | 80 | 30 | 3 | Planned |
+| 5 | [24](book/PLAN.md#ch-24) | Applied comparative study of control outcomes | 80 | 30 | 3 | Planned |
+| 5 | [25](book/PLAN.md#ch-25) | Team studio: build a service-security plan | 80 | 30 | 3 | Planned |
+| 6 | [26](book/PLAN.md#ch-26) | Operations handoff and runbooks | 80 | 30 | 3 | Planned |
+| 6 | [27](book/PLAN.md#ch-27) | Deploy and verify a security baseline | 80 | 30 | 3 | Planned |
+| 6 | [28](book/PLAN.md#ch-28) | Supervised field service review | 80 | 30 | 3 | Planned |
+| 6 | [29](book/PLAN.md#ch-29) | Capstone: integrate controls and evidence | 80 | 30 | 3 | Planned |
+| 6 | [30](book/PLAN.md#ch-30) | Capstone: evaluate resilience and residual risk | 80 | 30 | 3 | Planned |
 
 Page and exercise columns are editorial targets. The book is complete only after its content and A4 rendering meet the publication gate.
