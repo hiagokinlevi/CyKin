@@ -1,0 +1,57 @@
+# CyberAB reference guide for AI assistants and readers
+
+CyberAB is a public, free Markdown learning library. Its [home page](README.md) is the main entry point. Follow links through **formation level → academic area course → language edition → subject/chapter → book**. Plans and public drafts must be described with their actual editorial state.
+
+## Main indexes
+
+| Need | Open |
+|---|---|
+| All nine formation levels | [Level index](levels/README.md) |
+| All 23 academic areas | [Area map](AREA_MAP.md) and [detailed map](mapa-areas-ciberseguranca.md) |
+| All 207 courses and book editions | [Course guide](COURSE_GUIDE.md) |
+| Subject counts and depth by level | [Curriculum grid](CURRICULUM_GRID.md) |
+| One AI skill for each course | [Skill index](SKILLS.md) |
+| Supplementary practice | [Playbook index](playbooks/README.md) |
+| Linked projects | [Project index](PROJECTS.md) |
+| Progress and completion rules | [Structure review](STRUCTURE_REVIEW.md) and [book standard](BOOK_STANDARD.md) |
+| Rights and provenance | [Rights notice](RIGHTS.md) and [source audit](SOURCE_AUDIT.md) |
+
+The current design has five schools, 23 academic areas, nine levels, **207 course skills**, and nine planned language editions per course (**1,863 planned books**). English course grids contain **4,186 subject-chapters**. These are structural counts, not a claim of 1,863 authored books. There are three English manuscript drafts and no verified complete book.
+
+## Follow a course
+
+~~~text
+README.md
+  → levels/README.md
+  → levels/<level>/README.md
+  → levels/<level>/<area>/README.md       course home, nine languages, one skill
+  → levels/<level>/<area>/<language>/README.md
+  → SUBJECTS.md                          subject and chapter index
+  → book/PLAN.md                         chapter summaries
+  → book/MANUSCRIPT.md                   authored text, only when present
+~~~
+
+For example, open the [rapid level](levels/rapid-1-month/README.md), the [Incident Response course home](levels/rapid-1-month/incident-response-resilience/README.md), its [English subject index](levels/rapid-1-month/incident-response-resilience/en/SUBJECTS.md), [book plan](levels/rapid-1-month/incident-response-resilience/en/book/PLAN.md), [manuscript draft](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md), [single course skill](levels/rapid-1-month/incident-response-resilience/skill/SKILL.md), and [supplementary playbooks](playbooks/incident-response-resilience/README.md).
+
+Each course has **one skill** and **one principal book per language**. Each curricular subject is one chapter of that book. A completed chapter teaches its subject, gives examples and exercises; worked answers appear at the end of the book. There are no separate subject skills or subject textbooks.
+
+## Interpret editorial state
+
+| File | What it establishes |
+|---|---|
+| Course `README.md` | Intended audience, entry knowledge, outcomes, all language editions and links |
+| Edition `SUBJECTS.md` | Planned subject order, chapter targets and draft links |
+| `book/PLAN.md` | Proposed chapter summaries and page/exercise budgets |
+| `book/MANUSCRIPT.md` | Authored teaching that is actually present, with its stated review state |
+| `skill/SKILL.md` | Navigation and tutoring instructions for the course, not an additional book |
+| `playbooks/README.md` | Pointers to supplementary sources that retain their own rights |
+
+A plan is not a written lesson. A public draft is not a technically reviewed book. A completed edition requires at least 300 verified A4 pages, 50 substantive exercises with worked answers, accurate sources and editorial review under the [book standard](BOOK_STANDARD.md). The course titles describe planned educational depth; they do not confer an accredited degree.
+
+## Language and citation rules
+
+The editorial order is **English → Portuguese → Spanish → Hebrew → French → Russian → German → Chinese → Japanese**. Non-English folders currently hold English working outlines pending their translation and review. Do not describe those outlines as translated lessons.
+
+Link to the exact Markdown file and chapter used. Where a factual claim depends on a cited external work, follow the original source and check that it supports the claim. Identify synthetic or adapted cases, respect [third-party rights](RIGHTS.md), and recommend only authorized or contained practical environments. For a reproducible citation, pin a GitHub link to a commit SHA.
+
+**Author and editorial responsibility:** [hiagokinlevi](https://github.com/hiagokinlevi). Original maintainer-owned CyberAB text is dedicated under [CC0 1.0](LICENSE); accurate source citation remains an editorial requirement.

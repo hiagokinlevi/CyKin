@@ -1,0 +1,19 @@
+# Study by level
+
+Choose a level first. Each level contains the same 23 academic areas; each area folder is one course with a single course skill and nine planned language editions of its principal book. A plan is not a completed book.
+
+[CyberAB home](../README.md) · [All academic areas](../AREA_MAP.md) · [Current progress](../STRUCTURE_REVIEW.md)
+
+| Level | Duration | Subjects / book | Courses |
+|---|---:|---:|---:|
+| [Rapid course](rapid-1-month/README.md) | 1 month | 4 | 23 |
+| [Professional course](professional-6-months/README.md) | 6 months | 12 | 23 |
+| [Technical course](technical-18-months/README.md) | 18 months | 18 | 23 |
+| [Technologist course](technologist-3-years/README.md) | 3 years | 30 | 23 |
+| [Bachelor's course](bachelors-4-years/README.md) | 4 years | 40 | 23 |
+| [Engineering course](engineering-5-years/README.md) | 5 years | 50 | 23 |
+| [Postgraduate course](postgraduate-2-years/README.md) | 2 years | 12 | 23 |
+| [Master's course](masters-2-years/README.md) | 2 years | 8 | 23 |
+| [Doctoral research track](doctorate-2-years/README.md) | 2 years | 8 | 23 |
+
+English is written and reviewed first. Portuguese, Spanish, Hebrew, French, Russian, German, Chinese and Japanese follow in order. Other language folders are working outlines until their editorial stage.
