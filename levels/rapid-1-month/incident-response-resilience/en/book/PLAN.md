@@ -47,13 +47,13 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Teaching purpose and relevance:** Teach the first defensible assessment of a signal while preserving what another reviewer would need to check the conclusion.
 
-**Concepts and techniques:** Triage question; event, discovery and ingestion time; query coverage; evidence pointer; copy integrity; package provenance; uncertainty and severity.
+**Concepts and techniques:** Triage question; event, discovery and ingestion time; query coverage; evidence pointer; copy integrity; package provenance; cross-source correlation keys and ambiguous joins; uncertainty and severity.
 
 **Depth and method:** At rapid course level, learners will follow a contained worked example. Use a guided case record to distinguish observations, assumptions and the next safe action.
 
-**Worked example:** Synthetic sign-in, booking-change and help-desk records, plus a separately labeled delayed-arrival replay.
+**Worked example:** Synthetic sign-in, booking-change and help-desk records, plus separate delayed-arrival and overlapping-session replays.
 
-**Practice and exercises:** Build a bounded timeline, test the limits of a quiet query and audit a synthetic evidence package before stating what can be preserved or concluded. The planned allocation is 13 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Build a bounded timeline, test quiet-query limits, audit a synthetic evidence package and classify cross-source matches without inferring a human actor. The planned allocation is 13 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 01 and prepares Chapter 03. This is an editorial brief, not a completed lesson.
 

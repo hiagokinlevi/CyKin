@@ -287,6 +287,7 @@ By the end of this chapter, a learner should be able to:
 6. Produce a handoff that another analyst can reproduce from the same supplied records.
 7. Normalize a supplied fixed-offset timestamp to UTC and distinguish an event's time from its discovery time and a query's coverage.
 8. Explain how a delayed log arrival can change a repeated query without changing the original event time, and audit the limits of a synthetic evidence package.
+9. Correlate two synthetic log sources with an explicit join key and time interval, marking ambiguous and unmatched rows without inferring a human actor.
 
 ### 2.1 An alert is a question to investigate
 
@@ -509,11 +510,96 @@ The acceptance criterion is deliberately narrow. **Variant A** can pass the clas
 
 When preparing a real handoff, ask the next analyst to **reproduce one consequential claim**: locate its source pointer, re-run or review the approved selection, verify the copy if one exists, and identify the decision that would change if the claim fails. This is a quality check on the team's reasoning. It does not replace specialist evidence handling where legal, privacy, disciplinary or contractual obligations apply. Chapter 3 will use the same separation when it asks whether a successful backup job is also a tested and accepted recovery.
 
-### 2.9 Handoff and common errors
+### 2.9 Contained lab: correlate records without inventing an actor
+
+The earlier labs examined *when* a row became visible and whether a copied file changed. A responder also needs to ask whether records from two systems refer to the **same activity**. An account label, a session identifier and a human identity are different things. If an application audit records `desk-a` but omits its session identifier, several identity sessions for that account could fit the same time. A nearby timestamp cannot choose one by itself. An exact identifier can narrow a candidate relationship, but it still does not identify the person who used the session or establish that the edit was authorized. [NIST SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final) provides high-level log-management background, and [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) discusses investigation across source types. Neither older publication prescribes this book's matching code or claims that an account/time join proves attribution. The following method is an original beginner-level teaching fixture.
+
+This is a **separate optional Q1 replay**, not a new R record or a correction to R13. In the canonical Round B evidence, R13 reports one session within its *available range* and lacks device details. Q1 deliberately supplies **two overlapping sessions** for a different synthetic comparison so a learner can see an ambiguous join. Never import Q1 into the 09:20 canonical case decision, cite it as a discovered Harbor Library production fact, or reinterpret R13 as false. Both tables below are invented, contain no patron data and use explicit UTC instants on the same fictional date. The session intervals are half-open: `start <= event < end`, so an event at the printed end time is **outside** that row.
+
+**Card Q1-A — isolated identity-session table.** The snapshot is an exercise table, not an authenticated export. `session_id` values are synthetic labels; no password, token or device identifier is supplied.
+
+| Session | Account | Start UTC | End UTC |
+|---|---|---|---|
+| `S-A` | `desk-a` | 09:00 | 09:15 |
+| `S-B` | `desk-a` | 09:02 | 09:12 |
+| `S-C` | `front-b` | 09:00 | 09:20 |
+
+**Card Q1-B — isolated application-edit table.** A blank application `session_id` means the field is **missing from this row**; it is not a statement that no session existed. The booking labels `X1`–`X4` are additional exercise-only identifiers and have no relation to B17–B20.
+
+| Edit | Account label | Event UTC | Application `session_id` | Booking |
+|---|---|---|---|---|
+| `E-A` | `desk-a` | 09:05 | blank | `X1` |
+| `E-B` | `desk-a` | 09:07 | `S-B` | `X2` |
+| `E-C` | `desk-a` | 09:18 | blank | `X3` |
+| `E-D` | `desk-a` | 09:06 | `S-X` | `X4` |
+
+The **first pass** checks account label and interval. E-A falls inside both S-A and S-B, not S-C because its account differs. E-B falls inside both by time, but its explicit `S-B` key narrows the supplied candidate set to one. E-C has no account-and-interval match: the latest supplied `desk-a` session ends at 09:15. E-D falls inside both `desk-a` intervals by time, yet its explicit `S-X` key matches neither supplied ID. A responder should not silently discard the explicit key and report either S-A or S-B as the source. That would change the meaning of the evidence to make a join succeed.
+
+The **second pass** asks whether the apparent matches deserve trust. The two tables might cover different collection windows, use clocks with different error, or have been filtered on different account identifiers. Q1 does not provide a query manifest, source-clock check, application schema showing that both `session_id` fields share one namespace, or a record of session rotation. E-C's zero matches therefore means **no row matched in this supplied table under this rule**, not that no session existed at 09:18. E-D's key mismatch may point to a missing identity row, a malformed application field or a wrong assumption about key namespaces. Its cause is unknown. Even E-B's one exact-key match does not prove who controlled S-B or why the edit occurred.
+
+#### Reproduce the four classifications locally
+
+The Python 3 standard-library program below keeps the invented rows in memory. It opens no file, makes no network request and alters no source. It validates that supplied session IDs are unique and that every interval has a start before its end; it then prints the candidates under the classroom rule. Use a scratch interpreter or reason through the rows on paper. If you change a fixture, label it a **variant** rather than rewriting Q1's original result.
+
+```python
+from datetime import datetime, timedelta
+
+DAY = "2026-10-11T"
+SESSIONS = [
+    ("S-A", "desk-a", "09:00", "09:15"),
+    ("S-B", "desk-a", "09:02", "09:12"),
+    ("S-C", "front-b", "09:00", "09:20"),
+]
+EDITS = [
+    ("E-A", "desk-a", "09:05", ""),
+    ("E-B", "desk-a", "09:07", "S-B"),
+    ("E-C", "desk-a", "09:18", ""),
+    ("E-D", "desk-a", "09:06", "S-X"),
+]
+
+
+def utc(clock):
+    value = datetime.fromisoformat(DAY + clock + "+00:00")
+    if value.utcoffset() != timedelta(0):
+        raise ValueError("expected an explicit UTC instant")
+    return value
+
+
+seen = set()
+parsed = []
+for sid, account, start, end in SESSIONS:
+    if sid in seen or utc(start) >= utc(end):
+        raise ValueError("duplicate session ID or invalid interval")
+    seen.add(sid)
+    parsed.append((sid, account, utc(start), utc(end)))
+
+for eid, account, event, explicit_sid in EDITS:
+    moment = utc(event)
+    window = [sid for sid, owner, start, end in parsed
+              if owner == account and start <= moment < end]
+    if explicit_sid:
+        matches = [sid for sid in window if sid == explicit_sid]
+        status = "KEY_AND_WINDOW_MATCH" if matches else "EXPLICIT_KEY_UNMATCHED"
+    elif len(window) == 0:
+        matches, status = [], "NO_WINDOW_MATCH"
+    elif len(window) == 1:
+        matches, status = window, "ONE_WINDOW_CANDIDATE"
+    else:
+        matches, status = window, "AMBIGUOUS_WINDOW_CANDIDATES"
+    print(f"{eid}: {status} candidates={','.join(matches) or '-'}")
+```
+
+The method has an important asymmetry. An explicit key that fails to match is **not** treated like an absent key. The former is evidence of a mismatch under the assumed schema; the latter simply leaves account/time as a weaker possible relationship. `ONE_WINDOW_CANDIDATE`, if a variant ever produces it, means one row survived this table filter, not a measured probability that the row is correct. The program never emits a person's name or a compromise verdict because neither table supplies that evidence. It also does not check that the tables are complete or that the account labels were populated consistently; those limits belong in the learner's result note.
+
+**Practice task.** Submit a four-row result table with event ID, status, candidate session IDs and one sentence stating what the result **cannot** establish. Then write a bounded custodian request for the missing query range, source-clock quality and shared session-key semantics. Identify the fictional incident lead as the person who must authorize any additional collection under the classroom role boundary; no learner may query a real identity or booking system. Finally, create a variant `Q1-V`: remove only E-B's explicit `S-B` key and predict which classification changes. Do not treat a changed result as a new canonical event.
+
+**Expected evidence:** four classifications matching the printed program output, a limitation for each, a request that names the smallest useful source and fields, and the Q1-V prediction. **Rubric (six points):** one point for correctly identifying both E-A candidates; one for E-B's key-and-window match without human attribution; one for E-C's zero-match limit; one for preserving E-D's explicit-key mismatch; one for a proportionate request including clock, coverage and schema; and one for predicting that E-B becomes ambiguous when its key is removed. A 6/6 score verifies reasoning on this fixture, not the trustworthiness of a real log join. The exact output and model request appear in the final answer appendix after the Chapter 2 evidence-package audit result.
+
+### 2.10 Handoff and common errors
 
 A useful handoff lets a second analyst reconstruct the decision without guessing: case ID; current time and timezone; affected service; observed facts with record IDs; live hypotheses; confidence and limits; known service impact; actions completed under which authority; evidence locations; next question; decision owner; review deadline. It should also separate the source's event time from the time the analyst learned of the event.
 
-Common errors are copying only an alert title, silently converting timezones, treating a staff recollection as proof, relying on a log summary that omits key fields or query boundaries, hashing a file without recording which bytes were hashed, or using a high severity label without naming harm and urgency. A careful analyst can be concise: cite the observation, state the limit and identify the next decision. T1 shows why “I discovered R9 at 09:20” does not mean “R9 occurred at 09:20”; conversely, the 09:03 event time does not mean R9 was available for a 09:05 decision. T2 adds a second trap: repeating an event-time query after delayed ingestion can reveal another row without changing the event's occurrence time. The E1 package audit keeps byte integrity, source provenance and authority separate.
+Common errors are copying only an alert title, silently converting timezones, treating a staff recollection as proof, relying on a log summary that omits key fields or query boundaries, hashing a file without recording which bytes were hashed, or using a high severity label without naming harm and urgency. A careful analyst can be concise: cite the observation, state the limit and identify the next decision. T1 shows why “I discovered R9 at 09:20” does not mean “R9 occurred at 09:20”; conversely, the 09:03 event time does not mean R9 was available for a 09:05 decision. T2 adds a second trap: repeating an event-time query after delayed ingestion can reveal another row without changing the event's occurrence time. The E1 package audit keeps byte integrity, source provenance and authority separate. Q1 adds a cross-source trap: an account/time overlap is a candidate relationship, while a missing or unmatched session key cannot be repaired by confidently naming a person.
 
 ### Chapter 2 exercises
 
@@ -1432,6 +1518,30 @@ The strongest correction is: “At 09:12, the specified query showed no other vi
 | C: exact E1 bytes but no selection or authority | The digest can still match, but it answers only the byte-comparison question. | Demonstrate why integrity is distinct from provenance and permission. | Do not assert complete source coverage or authorized collection. Ask for the source, selection rule, operator, scope and authority record. |
 
 A handoff that preserves these limits can say: “We can reproduce the digest of the supplied synthetic E1 bytes; we have not verified an original application export, its query completeness, a real collector's authority or the identity behind `desk-a`.” This is a better answer than “the evidence is authentic” because the latter does not identify *which* link was checked. The peer-audit drill is supplemental; it does not increase the count of 50 numbered exercises.
+
+### Chapter 2 Q1 correlation lab — worked result
+
+The unmodified Python fixture in section 2.9 prints exactly:
+
+```text
+E-A: AMBIGUOUS_WINDOW_CANDIDATES candidates=S-A,S-B
+E-B: KEY_AND_WINDOW_MATCH candidates=S-B
+E-C: NO_WINDOW_MATCH candidates=-
+E-D: EXPLICIT_KEY_UNMATCHED candidates=-
+```
+
+| Edit | Why the supplied rule gives that result | What it does **not** establish |
+|---|---|---|
+| E-A | At 09:05, `desk-a` has overlapping S-A (09:00–09:15) and S-B (09:02–09:12); the application row has no session key. | It does not choose a session, let alone identify a human. “Two candidates” is not a 50/50 probability estimate. |
+| E-B | At 09:07, both `desk-a` windows include the event, but the application supplies `S-B`, which survives the exact-key check in this fixture. | A matching row does not prove the account's user, intent, source authenticity or authorization. |
+| E-C | At 09:18, neither supplied `desk-a` interval covers the event. S-C covers that time but belongs to `front-b` and is excluded by the account rule. | No match in Q1 does not prove no session existed; the table may omit a session, have different coverage or use an incorrect clock. |
+| E-D | At 09:06, both `desk-a` windows cover the time, but neither has the explicit `S-X` key. The method refuses to fall back silently to account/time. | It does not prove the application row is fraudulent; the source, field mapping or export may be incomplete or inconsistent. |
+
+**Bounded request:** “Incident lead: please authorize the identity and application custodians to provide the source identifiers, query filters and actual event/collection ranges for the Q1 teaching interval, plus a documented check of each source clock and whether both `session_id` fields use the same namespace. If a real case required it, request only the session and application rows relevant to the edit interval under the organization's approved collection and privacy rules. Record any omitted range or transformation, and return an evidence pointer rather than declaring the account's human operator.” In this book Q1 is already the entire permitted fixture; the sentence models the *fields to request*, not an instruction to contact a real custodian.
+
+**Q1-V key-removal variation:** replace E-B's explicit `S-B` with a blank field while leaving all other rows unchanged. Its 09:07 `desk-a` event then has two account-and-time candidates, S-A and S-B, so it becomes `AMBIGUOUS_WINDOW_CANDIDATES candidates=S-A,S-B`. E-A, E-C and E-D keep their original classifications. The changed label comes from weaker correlation information, not from a newly discovered attacker or edit. If a student instead renames S-X to S-A, that is a **different** variant and must be labeled separately; the Q1-V task changes only one E-B field.
+
+Award the six rubric points only when the candidate sets, limits, authorized request and variant are all present. The table and code use the same half-open interval rule, so an event exactly at S-A's 09:15 end would not match S-A. A reviewer who uses an inclusive end, silently discards E-D's explicit key or reads R13's canonical one-session summary into Q1 has changed the stated exercise input and must revise the answer. This lab is supplementary; the book still contains exactly 50 numbered exercises.
 
 ### EX027 — Worked result
 
