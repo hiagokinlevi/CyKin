@@ -588,6 +588,7 @@ By the end of this chapter, a learner should be able to:
 3. Record an approval, fallback condition and next review time for a proposed intervention.
 4. Explain why a completed backup job is insufficient to claim recovery readiness.
 5. Define a small set of tests that would justify returning a fictional service to normal use.
+6. Screen candidate copies by provenance, integrity, freshness and data correctness without confusing an isolated import time with service recovery time.
 
 ### 3.1 A decision loop rather than a fixed sequence
 
@@ -783,7 +784,46 @@ except ValueError as error:
 
 **Assessment:** award one point each for (1) rejecting a duplicate instead of silently choosing a row, (2) identifying B19/B20 as mismatches while retaining B17/B18 as matches, (3) distinguishing missing and unexpected IDs in the method, (4) recording that target approval and copy provenance are external to the script, and (5) proposing an authorized, newly verified correction without claiming it occurred. A passing 5/5 demonstrates sound use of this small comparison, not recovery of a real service. If Python is unavailable, trace the four iterations and duplicate check on paper; the expected statuses and limits are the same.
 
-### 3.8 Sourced case study: recovery beyond the backup copy
+### 3.8 Guided backup-candidate and isolated-restore lab
+
+Section 3.5 introduced recovery objectives; section 3.6 compared booking states; section 3.7 checked whether the comparison itself silently discarded rows. A recovery lead must join those three kinds of evidence before proposing a return to service. The most recent copy can contain the very error being investigated. An older copy can appear correct for the four displayed bookings while omitting legitimate work. A valid checksum can show that a particular copy matches a recorded digest without showing that its source was trustworthy or that its contents meet the service owner's target. [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) provides recovery-planning and testing guidance; the three-candidate gate below is an original, deliberately small classroom method.
+
+This is an **optional exercise-only replay**, introduced after P1/C1 and V1. It does not add an event to R1–R24, does not describe a real Harbor Library backup, and cannot be used to revise the 09:37 containment choice. In this replay, imagine a service interruption at **09:45 UTC** and a candidate review at **09:46 UTC**. The service owner's illustrative targets from section 3.5 are a thirty-minute RPO and a two-hour RTO. Neither target was established by R7 or R23. The candidate descriptions below are supplied solely so a learner can practice deciding what still needs verification. The exercise assumes an approved isolated environment and permission to inspect only synthetic booking IDs; it authorizes no production restore.
+
+**Card K1 — three proposed comparison copies.** A snapshot timestamp is the claimed data point. An isolated import duration is a measured *classroom trial*, not the duration of restoring the production service. The checksum comparison is against a digest recorded with that same candidate; the exercise does not establish independent authenticity of the digest or the snapshot source.
+
+| Candidate | Claimed snapshot time | Trial evidence supplied in K1 | Four-booking observation in isolated copy |
+|---|---|---|---|
+| `K-A` | 09:00 UTC | Recorded digest matches the inspected bytes; isolated import and four-row read took 14 minutes. | B17/B18 match P1; B19 is Room 1 and B20 is Room 3. No statement is supplied about other bookings or changes after 09:00. |
+| `K-B` | 09:20 UTC | The inspected bytes differ from the recorded digest; no import was attempted. | No reliable state comparison is available from this candidate. |
+| `K-C` | 09:38 UTC | Recorded digest matches the inspected bytes; isolated import and four-row read took 11 minutes. | B17/B18 match P1; B19 is Room 3 and B20 is Room 1, as in C1. |
+
+The data-point ages relative to the hypothetical 09:45 interruption are **45, 25 and 7 minutes** respectively. The thirty-minute RPO would screen out K-A *as a stand-alone copy* if there were no verified way to recover legitimate changes after 09:00. K-B is within the time target, but its digest mismatch is a **stop-and-investigate** result: a responder cannot replace the recorded digest with one from the observed bytes and call the copy verified. K-C is fresh enough by the timestamp alone, yet its B19/B20 state conflicts with the later owner-approved P1 target. The matching digest does not cure that logical error. These observations do not prove that K-A is clean throughout, that K-B is malicious, or that K-C is unusable for every limited purpose.
+
+#### Four separate gates before a restore proposal
+
+1. **Provenance and permission.** Identify the snapshot identifier, originating system, claimed creation time and clock basis, capture method, recorded digest, custody of the copy, allowed test environment and owner who approved the test. K1 omits most of these details. A custodian should supply them in an actual case; a learner should leave the fields open rather than infer them from the candidate label. Preserve the original candidate and test a controlled working copy.
+2. **Copy integrity and usability.** Compare bytes with the previously recorded digest, then attempt a bounded isolated import with error logging and a repeatable test. A match supports only a limited byte-integrity claim; a successful import shows that the tested platform read the copy under the trial conditions. K-B fails the first check and has no second check. Neither K-A's nor K-C's successful import proves that the complete database, dependencies or access controls work.
+3. **Data correctness and loss.** Compare the isolated booking state with an owner-approved target and account for legitimate transactions between the snapshot and interruption. P1 approves only B17–B20. K-A matches those four rows but may lack later legitimate bookings; K-C contains the known B19/B20 mismatches. A real reconciliation needs a source for intervening work, its provenance, a conflict rule, and an owner who accepts any unrecoverable gap. If that evidence does not exist, the team reports an **unknown loss bound**, not “zero loss.”
+4. **Service acceptance and control.** In a safe test scope, verify authorized and unauthorized actions, actor-labelled audit records, manual-queue reconciliation, dependencies, user-facing behavior and a monitoring/rollback condition. V1 supplies two limited access observations and one failed audit-attribution observation. It does not become a pass because a different copy imported quickly. The service owner and incident lead must decide whether restricted operation with a documented compensating check is acceptable; a full-return claim requires the failed control and other acceptance criteria to be resolved.
+
+These gates can fail independently. A candidate can pass an integrity check and fail the owner's data comparison; another can match four rows and fail freshness; a third can be fresh but have an unverified copy. Writing one label such as “good backup” hides the decision. Use `PASS`, `FAIL` or `UNKNOWN` **per gate**, with the supplied observation beside it. `UNKNOWN` is not an implied pass. Where a source cannot be trusted, the correct next step is to seek a more reliable copy or independent corroboration, not to force the matrix to a single winner.
+
+#### An RPO calculation is only a screening calculation
+
+For this replay, subtract the claimed snapshot time from 09:45: K-A is 45 minutes old; K-B is 25 minutes; K-C is 7 minutes. That arithmetic tests the *age of the stated recovery point*. It does not measure the number of valid bookings lost, the effect of a write queue, whether a snapshot is internally consistent, or how far a restored application would lag once other dependencies are rebuilt. If the clock or source metadata is wrong, even the age calculation is only conditional. An RPO pass needs an acceptable recovered data point under the service owner's rules, not merely a recent filename.
+
+Likewise, **11 or 14 minutes of isolated import** is not an RTO result. The two-hour target concerns usable service after the interruption. A meaningful elapsed time would need a defined start and stop, a tested platform, data and access checks, downstream dependencies, and an acceptance decision. In this fixture, no production restart or owner acceptance occurred. Record the isolated times as component measurements and leave the service-level recovery time **unmeasured**. This avoids an attractive but invalid equation: `import duration = outage duration`.
+
+#### Practice: write a candidate decision card
+
+Create a four-row gate matrix for each candidate, using the gate names above. For each row, state one K1/P1/V1 observation and the reason the result is `PASS`, `FAIL` or `UNKNOWN`. Then write a six-line recommendation: (1) the 09:46 review time and status as *proposal*; (2) whether any candidate independently supports both data-point and correctness claims; (3) which copy, if any, merits a further isolated trial and under whose approval; (4) what records are needed to reconstruct legitimate changes after its snapshot; (5) how the failed V1 actor field and unresolved cause affect acceptance; and (6) the next review trigger and named owner. Do not combine K1 with the canonical case history as though these candidate tests had actually happened.
+
+For a variation, imagine that the only independent transaction journal also contains a gap from 09:10 to 09:18 UTC. Explain why a “replay all missing transactions” plan is no longer verified. Identify the narrowest additional source or service-owner decision that could bound the missing interval. This inject belongs to the exercise only. Removing it returns you to the K1 facts; do not add it to R1–R24 or assert a real journal gap.
+
+**Expected submission:** three candidate matrices, the six-line decision card and a two-sentence variation response. **Assessment rubric (six points):** one point each for correct age arithmetic; treating K-B's mismatch as a failed integrity gate; distinguishing K-A's four-row match from complete or timely recovery; identifying K-C's B19/B20 conflict; keeping isolated import time separate from RTO and V1's audit failure open; and proposing an authorized, reviewable next test without claiming a completed production restore. A 6/6 answer is coherent for this fixture only. The model result follows the Chapter 3 source-reading answer in the final appendix.
+
+### 3.9 Sourced case study: recovery beyond the backup copy
 
 Harbor Library is invented. A useful real-world contrast is the [British Library's own March 2024 review of the October 2023 cyber-attack](https://www.bl.uk/files/v5dwkion/production/99206a2d1e9f07b35712b78f7d75fbb09560c08d.pdf/british-library-cyber-incident-review-8-march-2024.pdf?dl=). The report is the institution's retrospective account, written after investigation; it is **not** a raw event log, a finding about Harbor Library or a template for a one-month course to reproduce. Its exact descriptions are time-bound to the review date. Read the cited pages when using the case and avoid extending the report's conclusions to unexamined systems.
 
@@ -799,7 +839,7 @@ The same report describes strategic and operational crisis groups coordinating t
 
 **Guided source-reading activity:** write a three-row claim ledger with (1) a fact from the British Library report and its page or section, (2) one planning question it raises for the fictional booking service, and (3) one conclusion it cannot support about B17–B20. Include at least one row about restoration infrastructure and one about partial service. Then compare the source date with the time of your own course reading: a 2024 retrospective cannot by itself tell you the Library's current service state. The report also expresses uncertainty about the exact initial intrusion point; do not turn a likely entry point into a certain one. A model ledger appears in the final answer section. This supplementary source analysis is separate from EX027–EX038.
 
-### 3.9 Worked decision record and synthesis
+### 3.10 Worked decision record and synthesis
 
 An acceptable **proposed**, not executed, record is: “09:37 UTC; incident lead requests identity-owner approval to revoke `desk-a`'s current session after preservation of the available narrow records. R17–R18 show an unplanned `B20` edit following the earlier `B19` concern; the goal is to reduce further booking changes. Possible cost: front-desk reauthentication. R21 records tolerance for a fifteen-minute staff-write pause; separate service-owner approval would be required before using it as a fallback. Analyst will verify whether new edits occur and report at 09:45 UTC. Root cause and exposure remain unconfirmed.”
 
@@ -1476,6 +1516,36 @@ A responsible next artifact is a **request** for the service owner to confirm th
 | The British Library described crisis groups approving workarounds and coordinating communications (section 3, pp. 12–13). | Who approves a manual booking queue, who reconciles it and how will users receive a bounded update if ordinary channels fail? | “The fictional analyst has authority to pause a real service.” The two organizations' authorities are separate. |
 
 The report is dated **8 March 2024** and discusses an incident in **October 2023**. Its findings must be read as a dated institutional account, not a live service dashboard or an independent forensic dataset. A good answer names both the supported fact and the decision it motivates without importing British Library facts into R1–R24. The exact initial intrusion point remains uncertain in the report; a learner who states a definitive entry mechanism from this source must revise the claim.
+
+### Chapter 3 backup-candidate lab — worked result
+
+This model uses K1 only as an optional replay **after** P1/C1 and V1. Each `PASS` below is restricted to the stated check; it is not a certificate for the entire candidate. A real assessor would ask for the missing provenance before relying on the listed snapshot times or digests.
+
+| Candidate | Gate | Result and supplied reason |
+|---|---|---|
+| K-A | Provenance and permission | `UNKNOWN`: K1 supplies a time and local digest comparison, but no independent source or capture chain. The exercise permits only isolated classroom inspection. |
+| K-A | Copy integrity and usability | `PASS` for the **supplied limited trial**: digest matched and a four-row isolated import was read in 14 minutes. Other tables and dependencies are untested. |
+| K-A | Data correctness and loss | `FAIL` as a stand-alone thirty-minute recovery point: 09:45 minus 09:00 is 45 minutes. B17–B20 match P1, but legitimate post-snapshot work and all other bookings are unaccounted for. |
+| K-A | Service acceptance and control | `UNKNOWN`, with a known failed audit criterion from V1: no full service test, owner acceptance or attributable actor record is supplied. |
+| K-B | Provenance and permission | `UNKNOWN`: a 09:20 timestamp alone cannot establish source authority or approval. |
+| K-B | Copy integrity and usability | `FAIL`: inspected bytes differ from the recorded digest; no isolated import was attempted. Cause of the mismatch remains unknown. |
+| K-B | Data correctness and loss | `UNKNOWN`: 25-minute nominal age meets the time screen, but no trusted booking comparison or valid import is available. |
+| K-B | Service acceptance and control | `UNKNOWN`: no K-B service trial, owner acceptance or repaired V1 actor field is supplied. |
+| K-C | Provenance and permission | `UNKNOWN`: the matching digest does not independently establish when or by whom the snapshot was captured. |
+| K-C | Copy integrity and usability | `PASS` for the **supplied limited trial**: digest matched and a four-row isolated import was read in 11 minutes; completeness is untested. |
+| K-C | Data correctness and loss | `FAIL` for return in its supplied state: seven-minute nominal age meets the time screen, but B19 and B20 conflict with P1. A later authorized correction and all other changes still need verification. |
+| K-C | Service acceptance and control | `UNKNOWN`, with V1's failed actor-attribution criterion open; the 11-minute trial is not a service-level RTO measurement. |
+
+**Six-line decision card, 09:46 UTC, proposed:**
+
+1. Status: K1 is an exercise-only candidate review; no production restore, correction or service acceptance has occurred.
+2. No candidate independently demonstrates both an acceptable data point and owner-approved correct data: K-A is old, K-B fails the digest check, and K-C contains B19/B20 mismatches.
+3. The recovery lead requests service-owner and system-custodian approval to inspect K-A and K-C provenance and repeat a fuller isolated trial; K-B is held unchanged for mismatch investigation, not “fixed” by replacing its recorded digest.
+4. The service owner and analyst request an authorized, independently sourced transaction history or manual-queue record to account for legitimate work since the chosen snapshot, plus a post-correction comparison with P1. If it is unavailable, the loss bound stays unknown.
+5. V1's blank actor field and the unconfirmed cause prevent a claim of full controlled return. A restricted-service proposal would need an explicit compensating observation, approval, named owner and review limit.
+6. The incident lead sets the next review when provenance, reconciliation and audit-attribution results are available, or sooner if unexplained edits or patron harm recur; the service owner decides whether the remaining service risk is acceptable.
+
+The hypothetical two-hour RTO remains **unmeasured**: 14 and 11 minutes describe isolated imports and four-row reads, not a production service's accepted return after the 09:45 interruption. For the variation, a 09:10–09:18 journal gap prevents claiming complete replay of K-A's post-snapshot changes or complete validation of a later candidate. Request a separately retained booking audit or manual queue with known coverage for that interval; if none exists, document the gap and ask the service owner to make a bounded decision about the unresolved data rather than asserting zero loss. The variation does not change K1 or the canonical R records.
 
 ### EX039 — Worked result
 

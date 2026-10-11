@@ -65,13 +65,13 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Teaching purpose and relevance:** Explain how a response choice can reduce harm while risking service disruption, evidence loss or premature closure.
 
-**Concepts and techniques:** Containment options; approval; eradication evidence; restore preconditions; rollback and review time.
+**Concepts and techniques:** Containment options; approval; eradication evidence; backup candidate provenance, freshness and correctness; isolated restore; rollback and review time.
 
 **Depth and method:** At rapid course level, learners will follow a contained worked example. Use a guided case record to distinguish observations, assumptions and the next safe action.
 
-**Worked example:** The fictional booking service with suspicious staff-account activity and a successful backup job but no documented recent restore test.
+**Worked example:** The fictional booking service with suspicious staff-account activity, a successful backup job without a recent restore test, and a separate three-candidate recovery replay.
 
-**Practice and exercises:** Compare three bounded actions, name each decision owner and state the evidence needed before restoration. The planned allocation is 12 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Compare three bounded actions, reconcile booking states, screen candidate copies against the recovery objectives and specify the evidence needed before service acceptance. The planned allocation is 12 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 02 and prepares Chapter 04. This is an editorial brief, not a completed lesson.
 
