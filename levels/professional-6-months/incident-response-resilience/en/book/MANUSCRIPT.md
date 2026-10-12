@@ -71,6 +71,114 @@ Suppose the learner is the CTN analyst at 08:45 UTC. A defensible handoff says: 
 
 Readiness priorities are based on **decision value and failure consequence**, not an arbitrary count of missing boxes. The missing after-hours identity route matters because a short retention window could close before the owner is reachable. The backup row matters because a completed backup job cannot answer whether slot state is correct or usable. The learner should preserve this distinction when later chapters introduce a live signal and an export deadline.
 
+### 1.4 The service boundary precedes the telemetry boundary
+
+At the C01 checkpoint, Cedar Training Network (CTN) has only a fictional readiness worksheet, not a live security event. The enrollment service's intended behavior is more useful than a list of security tools: a learner selects a class, the front end requests availability, the API checks and changes a slot, the identity layer authenticates privileged calls, a queue may send a notification, and the recovery path must reconstruct a consistent enrollment state. This is an **intended service model**, not an observed trace. It must not be narrated as if the system has been inspected.
+
+A dependency is anything whose failure could change a meaningful service outcome. Distinguish four kinds. A **functional dependency** moves or validates enrollment data; an **administrative dependency** provides decision rights and access; an **observability dependency** produces evidence about those transactions; a **recovery dependency** permits a tested return to an acceptable state. One element may belong to several classes. For example, an identity provider can be necessary for staff sign-in and for the audit record that would later explain a privileged edit.
+
+Service owners need a definition of normal behavior that is precise enough to test. "Enrollment works" is vague. An operational criterion might be: "For an authorized synthetic class with one available seat, a reservation request either commits one reservation and returns its new version, or fails without consuming the seat." This proposed invariant is a **new teaching test definition**, not a fact about CTN's implemented transaction model. A responder should ask the API owner whether partial writes, retries, and queue delays change the invariant.
+
+Consider two incorrect inventories:
+
+- "SIEM, firewall, IdP, backup" names technologies but cannot identify which one supplies the authoritative S42 state, who can access a relevant time range, or which business action it supports.
+- "API → database → backup" adds direction but omits decision owners, authorization, evidence retention, scheduled-job write paths and the ability to verify a restore.
+
+A stronger inventory contains a decision question on each edge. "API audit → request correlation" is useful only if the application actually emits a stable request identifier. "Backup → safe restoration" requires a known restore procedure, recovery owner, comparison baseline and isolated acceptance test. A completed backup job is evidence that a backup operation reported success, not proof that reconstructed S40, S41 and S42 values are correct.
+
+### 1.5 Build a graph whose edges can fail
+
+A service graph must distinguish **data flow** from **evidence flow**. A slot change may travel from scheduled job to API to data store. The corresponding evidence may instead travel from API audit to a logging collector to a retention tier, and from IdP to a different collector. The responder's correlation plan depends on whether those paths share fields such as request ID or session ID. C01 supplies no executed end-to-end correlation proof.
+
+A practical five-column source card asks:
+
+| Question | Operational answer required | Example of an unsafe shortcut |
+|---|---|---|
+| Which decision? | Determine whether a particular slot was edited by a named request ID. | "Find out what happened." |
+| Which producer? | API audit, including whether job and manual routes both emit request IDs. | "The SIEM has everything." |
+| Which time anchor? | Source event UTC, collector receipt, retention anchor and export latency. | "Logs last 24h." |
+| Which custodian and gate? | Authorized application custodian, primary and approved alternate if documented. | "Anyone on call can pull it." |
+| What would disprove coverage? | A permitted test edit not appearing in the selected export within a defined window. | "No alert means no gap." |
+
+Treat each edge as **claimed**, **test planned**, **tested-pass**, **tested-fail**, or **not observable**. Those statuses cannot be collapsed into a reassuring check mark. A source can pass one test and still lack another route. A supported, well-scoped statement is: "The known-good scheduled-path event was retrieved with slot and request identifiers within 20 minutes during training rehearsal R1." The unsupported extension is: "All enrollment writes are always logged." Even R1 requires a date, dataset, permitted tenant, operator, baseline, selection query and evidence receipt before that statement can be used.
+
+Dependency criticality is contextual. An after-hours identity contact gap may be urgent not because identity always dominates the case, but because the source might become irretrievable while the only known custodian is unreachable. A backup-restore test may be important for resilience but may not be the first response to a short retention gap. Explain the **decision affected**, not just a red/yellow/green category.
+
+### 1.6 Separate readiness assurance from incident assertions
+
+C01 is a worksheet discovered at 08:40 UTC. Its missing after-hours identity alternate and service-owner fallback are readiness defects; they do not indicate a compromise. Its "API audit: 24 hours" entry is an unverified statement. The first task is to preserve these unknowns.
+
+There are at least four plausible anchors behind the 24-hour phrase: source event age before deletion, time available in a query interface, lifetime of a queued export, or a published service/contract objective. A rolling retention period could also differ by dataset or ingestion delay. C01 does **not** tell us which interpretation applies, and a professional responder must not calculate a hard evidence-loss time from it. Ask the custodian which exact dataset, clocks, query filters, delays and deletion mechanism support the claim. Then design a permitted test near the edge, if organizational policy allows it.
+
+An operational readiness measure should pair an objective with a failure mode. For example:
+
+- Objective: retrieve a synthetic S41 scheduled-job edit with source event timestamp, slot ID and request ID within twenty minutes.
+- Input and condition: authorized nonproduction tenant, preapproved test identity, known synthetic S41 record and one scheduled write.
+- Negative control: S40 has no matching S41 request and must be absent from the S41-specific result.
+- Measurements: job trigger time, API acknowledgement, producer event time, collection start and completion, field presence and number of selected rows.
+- Failure criterion: missing audit event, missing stable request ID, unrelated S40 included, collection outside the agreed window, or undocumented clock relation.
+- Remediation proposal: ask the application custodian to repair field coverage, source routing, or query semantics; **do not** rewrite the data or claim that coverage was repaired.
+
+A negative control guards against a dangerously broad query. It does not prove that every unrelated change is excluded. Use an explicit field equality predicate for a slot and request when possible, rather than a timestamp-only proximity filter that may accidentally mix concurrent operations.
+
+### 1.7 A reproducible offline coverage rehearsal
+
+The following **new synthetic fixture** tests whether a trainee can preserve missing states rather than interpret every inventory row as operationally verified. It is not the CTN production inventory, and no source collection is carried out. It uses Python 3 standard library features only, makes no network request, writes no files and needs no credentials.
+
+~~~python
+dependencies = [
+    ("api_audit", "app_owner", "request_id", "yes"),
+    ("idp_detail", "identity_custodian", "session_id", "unknown"),
+    ("support_ticket", "support_lead", "received_at", "yes"),
+    ("backup_copy", "recovery_lead", "restore_test", "no"),
+    ("change_ledger", "service_owner", "scope_id", "unknown"),
+]
+for source, owner, key, status in dependencies:
+    print(f"C1|{source}|{owner}|{key}|{status}")
+gaps = [source for source, _, _, status in dependencies if status != "yes"]
+verified = sum(status == "yes" for *_, status in dependencies)
+print("C1|gaps=" + ",".join(gaps))
+print(f"C1|verified_sources={verified}/{len(dependencies)}")
+~~~
+
+**Executed output (Python 3, against the exact fixture above):**
+
+~~~text
+C1|api_audit|app_owner|request_id|yes
+C1|idp_detail|identity_custodian|session_id|unknown
+C1|support_ticket|support_lead|received_at|yes
+C1|backup_copy|recovery_lead|restore_test|no
+C1|change_ledger|service_owner|scope_id|unknown
+C1|gaps=idp_detail,backup_copy,change_ledger
+C1|verified_sources=2/5
+~~~
+
+Here, "yes" is **fixture status**, not actual verification of a CTN source. The denominator is five listed records, not all service components or all telemetry paths. Never report "40% ready" as an institutional maturity finding. The measurement only says two of the five classroom rows are marked yes. Change "idp_detail" to yes and run again; the gap list should shrink by one, but that still would not demonstrate an approved identity export route or a named after-hours alternate.
+
+Use a second, manual fault-injection exercise: pretend the support contact is unavailable, then attempt to follow the map to an alternate. If the alternate field is blank, the test **fails as a contact path**, even though the script still prints that the ticket source is marked yes. This contrast demonstrates why automated coverage arithmetic cannot replace operational ownership tests.
+
+### 1.8 Runbooks need decision rights as well as contact addresses
+
+A contact is a place to ask a question, not necessarily the person authorized to answer it. Draft an owner card with four independent slots: data custodian, service decision owner, execution operator and incident coordinator. The same real person might occupy multiple slots under a local policy; keep their **function at each decision** visible. For a read-only IdP export, record who grants access to protected log data and who produces the receipt. For disabling an account, record who accepts enrollment disruption and who can implement a reversible control. Do not assume the custodian is the change approver.
+
+An alternate must be established **before** the primary becomes unavailable. An invented escalation contact would conceal a readiness defect. C01's blank entries therefore remain "not supplied." A supervisor should be given an explicit choice: confirm an authorized alternate under the organization's actual policy, or record that a requested action cannot proceed via this route. The practitioner may prepare an escalation draft but cannot grant themselves privileges because a source might expire.
+
+Use the following owner unavailability test: ask an alternate to identify the approved export pathway and the exact decision they can make. Stop if the contact is unknown or cannot explain the required scope. Log the attempted rehearsal as **not performed** until it actually occurs. This is a legitimate negative finding in a readiness review; it is not evidence of breach, negligence, or authorization to use an emergency override.
+
+### 1.9 Compare a quick inventory with a defensible readiness contract
+
+A spreadsheet listing systems can be assembled rapidly and is useful for orientation, but its failure is **false completeness**. A decision-centered contract costs more effort: each source has a bounded question, selectors, clock semantics, route coverage, owner, approval condition and a verification receipt. The trade-off is worth making for high-impact decisions such as "who changed S42?" and "can a clean version be restored without erasing valid changes?"
+
+There is a similar choice between a single rehearsal and stratified tests. One scheduled-path edit can verify a narrow happy path. Distinct scheduled, manual and emergency write routes may emit different audit fields, use different identities or bypass different collection components. Separate tests avoid extrapolation. Negative tests matter, too: deliberately query S40 under the S41 selector and inspect whether false matches appear. A test that cannot fail in a defined way is a demonstration, not an assurance check.
+
+Do not stage these tests in the production environment on the strength of a learning exercise. A permitted training tenant, synthetic classes, nonpersonal identifiers, documented owner approval and a bounded cleanup plan are prerequisites. If a local laboratory cannot simulate one dependency, write "not evaluated" and design a tabletop substitute instead of fabricating an output.
+
+### 1.10 Review the readiness pack before handing it to Chapter 02
+
+A reviewer should ask whether every statement can be labeled as **model**, **proposed test**, **observed test result**, or **unverified assumption**. For C01, only the fact that a worksheet was supplied at 08:40 and its recorded omissions are scenario observations. The proposed S41/S40 tests have no observed outcome. The reviewer also checks accessibility: column headings should identify the decision being made; file paths and role abbreviations should be expanded on first use; the handoff should remain intelligible without a diagram.
+
+A defensible shift handoff gives the next responder a useful action even when nothing dramatic happened: "Before any S42 live case, obtain the authorized identity alternative, confirm the service-owner decision route and test whether source/collector clocks and retention anchors are understood. Use a limited synthetic S41 edit with S40 as negative control to check request-ID fields and retrieval latency. No CTN incident has been observed at C01." This is readiness work. Chapter 02 uses these unresolved ownership gaps when C02 later reports an S42 symptom; the next chapter must not retroactively treat C01 as an incident alert.
+
 ### Common mistakes and limits
 
 - Treating a planned log source as a collected record. Corrective action: write a rehearsal result or mark coverage unknown.
@@ -88,9 +196,13 @@ In a synthetic worksheet, build the five-row map, mark unverified fields and wri
 
 **EX002 — Evidence-readiness contract.** Input: the proposed S41 scheduled-job change and unrelated S40 control. Produce all six contract fields, including expected fields, a 20-minute collection window and a falsifiable failure signal. State that the rehearsal requires a permitted training tenant. Use the EX001 rubric, with 2 requiring a negative control.
 
+**C1 extension for EX002:** Identify the approved custodian, the request-ID coverage question, the precise start and end of the 20-minute test, and what a missing scheduled-path field would invalidate. Run the separate C1 offline fixture only to practice interpreting unknown statuses; its output is not a real collection receipt.
+
 **EX003 — Owner escalation.** Input: `C01` has no after-hours identity alternate or service-owner fallback. Write a role-based primary/alternate matrix and the exact unanswered decision if each is unavailable. No personal contacts may be invented. A 2-point result distinguishes collection permission from disruptive-action approval.
 
 **EX004 — Retention ambiguity.** Input: “API audit: 24 hours” in `C01`. Give three plausible meanings, one question to the custodian and a conservative readiness action. A 2-point result does not calculate a deletion deadline from an unanchored claim.
+
+**C1 extension for EX004:** For each proposed retention anchor, name a different measurement or record that the application custodian would need to supply. An edge-of-window rehearsal is a *proposal* until authorized and executed.
 
 **EX005 — Readiness handoff.** Input: your EX001–EX004 artifacts. Write a 90–140-word shift handoff with service outcome, top two gaps, owners, proposed tests and no incident conclusion. A 2-point result labels tests as proposed and assigns owners.
 
@@ -150,6 +262,126 @@ At the C02 checkpoint, consider three choices. **A: bounded read-only triage** c
 
 One way to compare options is a four-cell note: expected harm avoided, service harm introduced, remaining uncertainty and falsifiable verification. Do not reduce these to an unexplained numeric score. “Targeted” describes an intended scope; the operator still has to confirm the platform implements the target at that scope. If the platform only supports account-wide disablement, the team must reassess the plan rather than silently broadening it.
 
+### 2.5 An incident plan does not confer powers
+
+At 09:04 UTC, CTN support receives fictional card C02: S42 appears unavailable, noticed around 09:00. There is no authoritative state check, cause, confirmed scope or actor. A colleague asks whether to disable the shared-sounding account svc-enroll. This request is a **question**, not an approval. The readiness gaps from C01 remain open. No later identity, endpoint or API cards are available at this point. An ethical and operationally competent responder must resist importing facts from future chapters.
+
+Response roles answer different questions. The **analyst** decides what to recommend and what questions to ask. The **incident lead** prioritizes coordination and keeps a record. The **source custodian** knows the permitted way to obtain a particular dataset. The **service owner** decides what business interruption is tolerable. The **identity owner** controls identity-specific risk. The **change authority** interprets the approved emergency-change procedure. The **operator** performs only the permitted act; an **independent verifier** checks the observable effect. These are functions, not job titles. In a small organization, one person may hold several roles, but the record must retain which decision they exercised, on what basis and within which scope.
+
+A source custodian's ability to read the IdP console does not mean they can lawfully export all sign-ins. An identity operator's ability to disable an account does not mean they have the service owner's acceptance of enrollment disruption. An incident lead may ask for rapid response without independently owning every cloud or privacy decision. The **technical ability** to invoke a command, **organizational permission** to do so, and **evidence sufficiency** for choosing the action are three separate gates.
+
+This distinction is aligned with the integrated, cross-organizational response approach described in [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final). NIST does not prescribe CTN's fictional approval roles or convert a severity label into tenant administration privileges. Local policy, law, contracts and approved emergency processes remain binding.
+
+### 2.6 A bounded action is a tuple, not a verb
+
+"Disable" is not an action specification. A useful action request contains: **case identifier; action identifier and revision; observed trigger with source; exact target and environment; method/class of operation; intended effect; accepted service side effect; limits on time and objects; approving roles; operator; prerequisites; stop condition; rollback method and owner; independent observable checks; preservation obligations; expiry and review trigger**.
+
+For CTN, the target could hypothetically be one known session, one slot's write route, the svc-enroll account, or a tenant-wide policy. Those are radically different scopes. If a tool cannot perform the intended narrow restriction and instead defaults to account-wide disablement, the operator must **reject and resubmit** the request for renewed impact assessment. A software interface is not authorized to silently substitute broader behavior. The case manager should record the reason for mismatch and which approval would be necessary; no action has occurred.
+
+Write the **precondition** as a testable statement. "Bad activity detected" is not reproducible. "An approved source contains a live session identifier tied to a documented continuing prohibited action" is closer, but at C02 the needed session and join do not exist. Therefore a recommendation to revoke a session must remain conditional. A retention-risk preservation request can still proceed through a different, read-only approval route once its data and timing have been defined.
+
+An expiry is not automatically a restoration guarantee. After the maximum duration, the specified control may require an operator to restore settings, reconcile queued work, verify dependent services or await a second decision. A rollback plan should address the concrete configuration or session state and name how to detect incomplete recovery. Disabling a shared automation identity may cancel jobs or invalidate tokens that do not simply resume when re-enabled.
+
+### 2.7 Model the action lifecycle as a state machine
+
+The most consequential documentation error is to use "done" for approval, execution and verification. Keep the four states separate:
+
+1. **Proposed:** analyst has a recommended object, evidence rationale and request for review; approval and operation fields remain empty.
+2. **Approved, not executed:** named authority has granted the precise scope and limit, but the operator has not produced a receipt.
+3. **Executed, unverified:** the operator reports a method, target, change version and time; intended effects have not been independently observed.
+4. **Verified within scope:** a separate authorized check supports a particular result, with test method, observation window and residual gaps. It never licenses claims about untested routes.
+
+These states are **not** an incident lifecycle. They describe the evidentiary status of one named action. Reject an "approved" transition if the authorizer is unidentified or the scope is ambiguous; a chat message "OK" can be logged but is not automatically a valid control decision. Reject "executed" if the only evidence is a recommendation or a scheduled change. Reject "verified" if a command returned success but no independent observation of its intended effect exists.
+
+Consider a synthetic *nonproduction* action TRAIN-A01 that is **not a CTN main-case action**. This lab demonstrates the state labels without contacting identity systems.
+
+~~~python
+action = {
+    "id": "TRAIN-A01",
+    "target": "svc-enroll",
+    "scope": None,
+    "approved": False,
+    "receipt": False,
+    "checked": False,
+}
+def status(a):
+    if not a["scope"] or not a["approved"]:
+        return "PROPOSED_ONLY"
+    if not a["receipt"]:
+        return "APPROVED_NOT_EXECUTED"
+    if not a["checked"]:
+        return "EXECUTED_UNVERIFIED"
+    return "VERIFIED_WITHIN_SCOPE"
+print("C2|v0=" + status(action))
+action.update(scope="S42 only", approved=True)
+print("C2|v1=" + status(action))
+action["receipt"] = True
+print("C2|v2=" + status(action))
+action["checked"] = True
+print("C2|v3=" + status(action))
+~~~
+
+**Executed output for this exact local fixture:**
+
+~~~text
+C2|v0=PROPOSED_ONLY
+C2|v1=APPROVED_NOT_EXECUTED
+C2|v2=EXECUTED_UNVERIFIED
+C2|v3=VERIFIED_WITHIN_SCOPE
+~~~
+
+The function validates **presence of flags**, not whether an actual approver is legitimate, an operator was authorized or a check tested every route. It is deliberately insufficient as a production authorization engine. In particular, the example sets approved=True without a signature; this represents a classroom state transition, not a real decision. A sound production workflow would validate decision references, signed identities, allowed targets, expiry, separation of duties and immutable audit records. Students must not treat a passing string from this script as permission to touch any tenant.
+
+Fault injection: remove the scope after setting approved=True. The function returns PROPOSED_ONLY because a flag without a defined target is not an actionable authorization. Now set checked=True without a receipt: the state remains APPROVED_NOT_EXECUTED. These two counterexamples show why the requested sequence matters even during operational pressure.
+
+### 2.8 Build an authorization matrix for the actual decision
+
+Construct the matrix *per action* rather than per department:
+
+| Action | Recommends | Required decision owner | Performs | Independent evidence |
+|---|---|---|---|---|
+| Log case and contact service owner | Analyst | Incident lead may coordinate according to local procedure | Analyst/recorder | Ticket receipt, no system change |
+| Retrieve a restricted IdP interval | Analyst | Identity/data custodian under applicable access policy | Approved custodian | Selection, source metadata, collection receipt |
+| Revoke a precisely identified session | Analyst/identity lead | Identity and affected service owner, plus change process as required | Identity operator | Scoped session-state result and service-impact check |
+| Disable shared account | Analyst may raise risk, not execute | Service owner and emergency-change authority plus identity owner | Authorized operator | Exact account state, dependent services and rollback checks |
+| Notify learners | Communications team drafts | Authorized communications/privacy decision owner | Designated publisher | Approved message and delivery receipt, if later sent |
+
+C01 does not name an after-hours identity alternate or a fallback for an absent service owner. A matrix that assigns "supervisor" to every cell without a charter supporting that person's delegated authority is noncompliant with the exercise. The appropriate status is **unknown route, escalation pending**. A responder may use the organization's real escalation process if known; the course does not invent an emergency delegation.
+
+If normal approvers are unavailable and there is an imminent safety or availability issue, the responder should check the locally documented emergency authority and its evidence-recording requirements. The word **emergency** does not waive privacy constraints, legal obligations or least privilege by itself. The professional exercise ends at the authorization boundary, not at an imaginary break-glass action. Record urgency separately from permission.
+
+### 2.9 Compare interventions against a concrete loss model
+
+At C02, compare A: read-only validation and owner contact; B: one-session restriction; C: broad svc-enroll or tenant-policy change. Evaluate four dimensions, not just "fast/slow."
+
+**Expected harm avoided.** A prevents evidence-free disruption and can clarify service scope, but may leave a damaging action running if one exists. B could terminate an identified active session, but C02 has not identified one. C could block a much larger set of actions, including legitimate enrollment operations, yet the necessary causal link is absent.
+
+**Harm introduced.** A consumes analyst time and could cause a time-sensitive source to expire if preservation is neglected. B may interrupt scheduled work or fail if a different session is used. C may stop writes across multiple dependencies, queue failures or legitimate operator recovery. The broader the control, the larger the planned verification and rollback surface.
+
+**Uncertainty.** For A, authoritative slot state and incident scope remain unknown; its purpose is to reduce precisely those unknowns. For B, session identity and cause are not established. For C, whether the account caused the symptom and whether disabling it would protect S42 are not established.
+
+**Verification.** A can be verified by an owner-approved state result and documented intake; B needs a check of the specific session and enrollment behavior after proper authorization; C needs full dependency acceptance, evidence of scope and a rollback decision. "Console returned success" alone is not verification of user-visible outcomes.
+
+At 09:04, A is the defensible first step. It does not imply that later protective controls will never be warranted. New evidence may alter urgency and the acceptable risk of inaction; each decision should have a new timestamp and evidence basis rather than replacing the earlier record.
+
+### 2.10 Two worked decision records: one correct, one defective
+
+**Defective example:** "09:04 high severity breach, shared account hacked. Supervisor says disable; account contained successfully." This sentence invents compromise, severity, approval, execution and success. No C02 source supports those assertions. It also hides who accepted service consequences or how the account scope was verified.
+
+**Defensible example:** "09:04 C02 support report received: S42 appears unavailable, first noticed approximately 09:00. Current authoritative S42 state and cause unknown. Analyst proposes bounded read-only verification by application owner, identifies missing service-owner alternate from C01, and requests incident-lead coordination. Broad account restriction was raised by a colleague but remains unapproved and unexecuted; no containment effectiveness claim. Reassess upon owner state evidence or newly validated source signals."
+
+The second statement can be acted on by a supervisor even though it is less dramatic. It distinguishes an observation from an action proposal and does not hide the very gap the organization needs to repair.
+
+When a new evidence card arrives, make a **new version**. V1 is the 09:04 decision. V2 would include the new source and its release time; it must not modify V1 as if future knowledge were always available. Keep the original source reference and earlier scope decision for review. The C02 chapter itself does not release C03–C08, so do not use their data to justify V1.
+
+### 2.11 Handling the V2 ambiguous approval specimen
+
+The exercise's variant V2 contains the phrase "OK to act." Treat that phrase as a communication artifact in a **separate simulated branch**, not as a fact about the main C02 incident. It lacks target, operation, environment, duration, affected service acceptance, operator and verification. A clarifying message should ask which object, method, conditions and maximum time the supervisor authorizes, how the identity and service owners have approved the effects, who will execute, and who will verify or roll back.
+
+Correct case status: "V2 approval wording insufficient for a scoped disruptive change; approval unresolved, no action executed, no verified effect." If an analyst asks "Does this cover a bounded read-only preservation request?" that can narrow the exchange, but it does not turn the original sentence into blanket permission. If the scenario later produces a clear approval, retain both messages with timestamps and record the later decision as a distinct event.
+
+An incorrectly designed training system might accept any affirmative message and silently populate the approved flag. This is why the simple Python fixture is instructional only. A real workflow must independently check identity, delegated authority, scope, expiry and conflict of duties. The essential human question remains: who owns the potential service harm, and what precisely have they approved?
+
 ### Common mistakes and limits
 
 - Confusing an urgent question with permission to execute. Record a recommendation and the approval gate separately.
@@ -167,9 +399,13 @@ In groups, assign analyst, service owner, identity custodian and recorder roles.
 
 **EX007 — Action request.** Input: the cloud colleague's “disable now” question at 09:04. Draft a proposed action record with target, trigger, service risk, approval, operator, expiry and verification. Fields unsupported by C02 must say *pending*, not contain invented receipts. A 2-point result recommends a bounded first step rather than asserting account misuse.
 
+**C2 extension for EX007:** Give the action a revision and list which precise tuple fields are still blank. Compare its status with the four states in the offline TRAIN-A01 fixture; do not transfer that fixture's simulated approval to CTN.
+
 **EX008 — Option comparison.** Input: choices A, B and C in §2.4. Produce the four-cell comparison for each and select the most defensible first step at 09:04. A 2-point result explains why a later checkpoint might change the selection.
 
 **EX009 — Approval ambiguity.** Fictional variant `V2`: a supervisor writes “OK to act,” without target or duration. Compose the precise clarification request and a one-sentence case status. Do not import V2 into the main C02 decision. A 2-point result leaves action unexecuted and names missing scope.
+
+**C2 extension for EX009:** State which missing action-tuple fields prevent the phrase from crossing the approval gate. In a copy of TRAIN-A01, remove `scope` after setting its Boolean approval flag; explain the resulting state and why even that script cannot authenticate an approver.
 
 **EX010 — Decision record.** Input: C01, C02 and your EX006–EX009 work. Write a four-line decision log with observation, inference, action status and next review trigger. A 2-point result distinguishes a proposed preservation request from an approved export.
 
@@ -228,6 +464,42 @@ The team should distinguish **urgency of preserving evidence** from **confidence
 
 The runner browser in C04 might be normal scheduled automation; the S42 display in C02 might be a stale front-end view; the calendar might omit a later addendum. These are **alternative explanations**, not findings. Closing as false positive requires criteria. For example, if the application owner supplies a scoped approval for S42, the job owner shows a matching `q-144` run with a validated join key, and the authoritative slot state is correct, the team could downgrade or close according to its policy. The current cards do not provide those checks. Conversely, a confirmed unauthorized edit or additional affected slots could raise priority. State a specific observation that would change the assessment, rather than “monitor.”
 
+### 3.5 Offline time-correction and join-boundary lab
+
+This is a new synthetic Python 3 offline view of C03–C05, not an IdP query. All times and identifiers are authored classroom values, and no credentials or network calls occur. The fixed date is a **laboratory date chosen for ISO parsing**, not a claimed date of the CTN main-case events.
+
+~~~python
+from datetime import datetime, timedelta
+
+events = [
+    ("C04", "2026-10-12T08:54:00+00:00", 4),
+    ("C03", "2026-10-12T08:58:00+00:00", 0),
+    ("C05", "2026-10-12T09:01:00+00:00", 0),
+]
+for card, raw, correction_minutes in events:
+    normalized = datetime.fromisoformat(raw) + timedelta(
+        minutes=correction_minutes
+    )
+    print(
+        f"C3|{card}|{normalized:%H:%M} UTC|"
+        f"clock_correction={correction_minutes:+}m"
+    )
+print("C3|C04_C03_same_minute=True|direct_join=False")
+~~~
+
+**Output executed with these fixture values:**
+
+~~~text
+C3|C04|08:58 UTC|clock_correction=+4m
+C3|C03|08:58 UTC|clock_correction=+0m
+C3|C05|09:01 UTC|clock_correction=+0m
+C3|C04_C03_same_minute=True|direct_join=False
+~~~
+
+The final line is an explicit **analyst conclusion from the fixture**, not a computed assertion from a hidden join algorithm. A matching minute does not create a shared transaction key. In a real parser, the source's offset convention and time-zone handling would need independent validation. The code is deliberately small so the learner can inspect the sign of the correction and reproduce each visible output.
+
+Perform two safe mutations: change the C04 correction from +4 to -4 and observe the incorrect 08:50 value; then restore +4 and alter C05's application event time. Neither mutation should silently change the C03/C04 join status, because no join key appears. Write a paragraph distinguishing the **model input**, the **executed parser result**, and the **hypothesis** about relationship between the events.
+
 ### Common mistakes and limits
 
 - Ordering C04 before C03 because 08:54 appears earlier than 08:58. Normalize the known four-minute offset and retain uncertainty.
@@ -245,6 +517,8 @@ In a synthetic workbook, record the case at 09:09, then reveal C06, C07 and C08 
 **EX011 — Intake form.** Input: C02–C05 at 09:09. Produce four separate source lines with event and receipt times, source identifiers, service implication, missing fields and one next question. A 2-point result does not join `s-77` and `q-144` as fact.
 
 **EX012 — Clock reconciliation.** Input: C03 and C04. Give C04's normalized UTC estimate, the raw/normalized pair and a two-sentence explanation of what the coincidence with C03 does and does not establish. A 2-point result calculates 08:58 and preserves correlation uncertainty.
+
+**C3 extension for EX012:** Predict and run the four-line Python 3 fixture in §3.5. Change the correction sign in a separate copy and explain why a matching minute is still not a session-to-request join.
 
 **EX013 — Priority decision.** Input: C02–C08 at 09:14 and the classroom P1–P3 rubric. Choose a provisional priority, separately state impact, confidence, expiry-related urgency and a review time or event. A 2-point result can justify P2 without calling the account compromised.
 
@@ -976,6 +1250,50 @@ After the main case, reset the exercise clock and run Chapter 10's **V10** and *
 
 The stop card also has a learning purpose. If a learner proposes a broad tenant change without target, approval or rollback, pause the simulation, record the proposal verbatim, ask for its scope and compare it with the least disruptive alternative. The goal is correction with a durable artifact, not embarrassment. In a real organization a tabletop discovery becomes a readiness ticket, while any actual emergency response remains governed by the organization's approved procedures.
 
+#### Audit the release boundary before scoring a decision
+
+A good facilitator can accidentally make a weak response look strong by handing out the right evidence too soon. The learner then makes a seemingly well-supported decision that no responder at the stated checkpoint could have made. Avoid this by treating the release ledger as a **test fixture**. For every submitted decision, identify (1) its case checkpoint, (2) the actual exercise minute when it was written, (3) the set of cards the participant had received by that minute, and (4) the card release times. A card's **event time** may be earlier than its release time: C22 describes an 08:52 configuration change but is not available until 09:50. An event timestamp does not grant the earlier team access to that evidence.
+
+The card list in a decision log is a claimed dependency set, not merely a bibliography. If a 09:42 decision cites C20, the argument has a temporal defect even if C20 later supports the same action. Preserve the submitted line, mark the defect and ask the learner to reconstruct a 09:42 decision using only C17–C19 and earlier released material. If the alternative remains defensible, record the revised rationale as a **new** exercise artifact. Do not silently edit the first line or give full credit for knowledge acquired later. This separates sound judgment under uncertainty from a fortunate outcome.
+
+The following tiny, invented **L11** audit is an offline exercise. It is not an access-control system or a replay of a production incident. It assumes the facilitator actually released each named card at the printed time; a real classroom must compare the script's table with its signed release log. The exercise-minute clock is omitted from the program because its only legitimate source is the observer's record, not a value that can be inferred from CTN's UTC cards.
+
+```python
+from datetime import datetime
+
+released = {
+    "C13": "09:29", "C16": "09:35", "C17": "09:37",
+    "C18": "09:39", "C19": "09:42", "C20": "09:46",
+    "C27": "10:16", "C28": "10:20", "C29": "10:24",
+    "C30": "10:45", "C33": "11:00",
+}
+decisions = [
+    ("D1", "09:35", ["C13", "C16"]),
+    ("D2", "09:42", ["C17", "C18", "C19"]),
+    ("D3", "09:42", ["C20"]),
+    ("D4", "10:20", ["C28", "C29"]),
+    ("D5", "11:00", ["C30", "C33"]),
+]
+
+def minute(hhmm):
+    parsed = datetime.strptime(hhmm, "%H:%M")
+    return parsed.hour * 60 + parsed.minute
+
+for name, checkpoint, citations in decisions:
+    unseen = [card for card in citations if minute(released[card]) > minute(checkpoint)]
+    if unseen:
+        details = ", ".join(f"{card} at {released[card]}" for card in unseen)
+        print(f"{name}: future card at {checkpoint}: {details}")
+    else:
+        print(f"{name}: release-order check passes at {checkpoint}")
+```
+
+Run with Python 3 in an empty local directory. Expected output is reproduced in the final worked-results section. No package installation, network, credential or real customer record is needed. Then modify a **copy** of D3 to cite C19 rather than C20. The line now passes the mechanical test, but ask a harder question: does C19's one-route denial support the proposed action's claimed *all-route* effectiveness? It does not. Passing a release check is necessary for temporal integrity, not sufficient for technical validity. Similarly, D4 must not treat C28's isolated pass as C29's later production approval even after its citation is repaired.
+
+A second negative control tests the fixture itself. Remove C19 from the `released` dictionary without changing D2. The simple program will raise a `KeyError`; that is a missing release-log entry, not proof that C19 never existed. An operationally robust reviewer would classify that line as **unverifiable** and request the facilitator's release receipt. For a classroom run, restore the fixture after observing the failure. This teaches the distinction between an absent field and evidence of absence. The assessor should report how many decision rows were eligible for scoring, how many failed temporal review, and which were unassessable because of missing facilitator evidence. Never hide unassessable rows by shrinking the denominator without saying so.
+
+**Contrastive example.** An incorrect observer says, “The team cited C20 and selected the S42 hold by 09:42, so it anticipated the cause and earns O2 = 2.” A correct observer says, “C20 was unavailable at 09:42. Score the original row as temporally defective; ask whether C13–C19 support a bounded hold, and review the revised row separately. C19 shows one route only.” The second report can explain why a decision was reasonable while still exposing a training-process failure. This matters at the professional level because the person maintaining the playbook must diagnose whether the defect belongs to the participant, the facilitator's release schedule, the playbook's decision fields or the observer's scoring practice. [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) provides general guidance on designing, conducting and evaluating IT exercises; this release-audit fixture and its scoring rule are original CTN classroom material.
+
 ### Common errors and limits
 
 - Releasing C20 before the 09:42 hold check and then calling the earlier choice “obviously right.” Record the release violation and rerun that decision.
@@ -992,7 +1310,11 @@ Assign roles, print the release ledger and use only synthetic cards. Run the six
 
 **EX051 — Exercise control sheet.** Inputs: the six release windows above and objectives O1–O4. Produce a one-page sheet with objective, inject/case-time, participant artifact, observer criterion, facilitator stop rule and reset rule. Use paper only. A 2-point result keeps the three clocks distinct and never releases a later card to justify an earlier decision.
 
+**L11 extension for EX051:** Add a release-receipt column and a rule for a missing receipt. Explain why the card's event time cannot substitute for receipt time. Use the offline audit above as an optional check, then identify one decision that still needs semantic review after it passes the check.
+
 **EX052 — Time-gated decision log.** Inputs: C16–C24. Produce five or more rows covering tolerance, initial approval, execution, one-route check, extension, task action and 10:07 expiry. Mark each row's source and status. A 2-point result does not turn C16 into approval, C19 into full-route validation or C24 into complete eradication.
+
+**L11 extension for EX052:** Run D1–D5, name the two future-card errors and rewrite the 09:42 line without C20. Keep the corrected line as a new version rather than overwriting the submitted one.
 
 **EX053 — Recovery gate replay.** Inputs: C26–C30 and the five criteria in §8.4. Write two distinct isolated-test decisions and one production/monitoring handoff. Identify the first failed C27 criterion and the approval/verification boundary between C28 and C29. A 2-point result refuses a whole-snapshot restore that would overwrite S40/S41.
 
@@ -1058,6 +1380,46 @@ One useful measure is **decision-record completeness**: among the five tabletop 
 
 Metrics can reward the wrong behavior if a denominator is omitted. “Average time to containment” encourages a fast but unjustified account disablement; “percentage of alerts closed” can reward premature closure. Pair speed with safety and quality: authorized request before a verified source deadline; changes with exact approval and expiry; failed acceptance gates stopped; and case claims whose source and confidence are stated. Sample sizes in a tabletop are small. Treat a good score as a prompt for a larger supervised retest, not statistical proof.
 
+#### Decide whether an improvement is closed, rather than merely assigned
+
+An after-action ticket is a **hypothesis about a fix**. It becomes credible when a subsequent, independently observable test challenges the original failure. Separate at least five states in the portfolio: `observed defect`, `action assigned`, `change reported`, `retest observed`, and `reviewed closure candidate`. A ticket with an owner and deadline is only assigned. A merged playbook change is only a reported change. A passing rehearsal for one route may leave another route open. An independent reviewer can accept a classroom closure candidate while reserving production release for the actual organization's approval process. This vocabulary prevents a neat task board from masquerading as recovered capability.
+
+Consider the C01 alternate-owner gap. A planned repair might name an after-hours substitute in a contact table. The test must do more: in a permitted rehearsal, a facilitator sends a scoped preservation decision request at a known exercise minute, records whether the alternate receives and understands it before a declared deadline, and checks that the alternate can exercise the relevant *decision right*. A contact who answers the phone but cannot approve the action does not close the authority gap. If the primary and alternate both know the answer because they attended the design meeting, repeat the test with an unbriefed duty holder or a changed shift. The objective is transferable process behavior, not one person's memory.
+
+For C09, a future export-receipt template can require source object ID, selection window, collector, authority, byte count and digest. Those fields would improve a *new* exercise receipt. They cannot reconstruct the original missing object digest of C09 by inference. Keep C09's historical limit in the portfolio even if a later drill produces a complete receipt. The test should include a deliberately altered local copy that fails digest comparison and a missing-field control that is rejected as incomplete. This checks both the positive route and the condition that caused the earlier uncertainty.
+
+For C27, test the corrected mapping on **both** relevant write routes, inspect the new actor and request fields, preserve the failed first result, and ask whether a route not exercised could still create an unattributed change. A single dashboard green state is not enough. For C33, distinguish two improvement targets: resolving the **historical** 10:49–10:51 gateway question, if authorized sources still exist, and making **future** gateway coverage observable. A successful future retention rehearsal cannot prove what happened in the earlier missing window. Conversely, an authenticated historical delivery receipt would update the privacy assessment without proving that the monitoring fix now works. These require separate evidence paths and owners.
+
+The following **P12** fixture is a standalone, invented portfolio-quality exercise, not an update to the CTN case. Its four ticket rows are examples of what a learner might submit *after a later hypothetical rehearsal*. They contain no person, address, tenant or live credential. The rule deliberately checks only whether there is enough classroom evidence to **consider** closure; it neither approves a real change nor authenticates the supplied evidence. The reviewer must first verify that the evidence refers to the named test and its stated scope.
+
+```python
+tickets = [
+    {"id": "I1", "owner": "exercise lead", "test": "alternate receipt before deadline",
+     "result": "pass", "evidence": "signed drill row 7", "reviewer": "independent observer"},
+    {"id": "I2", "owner": "identity custodian", "test": "export receipt negative control",
+     "result": "", "evidence": "", "reviewer": "independent observer"},
+    {"id": "I3", "owner": "application owner", "test": "both routes carry actor and request",
+     "result": "fail", "evidence": "alternate route blank", "reviewer": "independent observer"},
+    {"id": "I4", "owner": "gateway custodian", "test": "future gap alarm and receipt",
+     "result": "pass", "evidence": "isolated replay 4", "reviewer": ""},
+]
+
+for ticket in tickets:
+    if not ticket["owner"] or not ticket["test"] or not ticket["result"] or not ticket["evidence"]:
+        verdict = "open: missing retest evidence"
+    elif ticket["result"] != "pass":
+        verdict = "open: failed criterion"
+    elif not ticket["reviewer"]:
+        verdict = "open: independent review pending"
+    else:
+        verdict = "classroom closure candidate"
+    print(f"{ticket['id']}: {verdict}")
+```
+
+Run this with Python 3 offline; the exact four lines appear in the worked-results section. Then make two separate copies. In one, change I1's result to `fail`: the owner and signed row still exist, but the verdict must become open. In the other, fill I4's reviewer field: the mechanical result becomes a closure candidate, yet the human reviewer must still ask whether the isolated replay represents the production gateway route and whether the **historical** C33 question remains unresolved. This is why the code says *candidate*. A field-completeness program cannot judge sampling, authenticity, safe scope or whether a measured improvement addresses the original defect.
+
+**Contrastive review.** The weak portfolio says, “All four improvements are complete; they have owners and the playbook was revised.” The stronger portfolio says, “One later classroom alternate-owner drill has a reviewable pass; the export-receipt rehearsal has no result, the alternate-route audit test failed, and the gateway test lacks independent review. None changes the historical C09 or C33 uncertainty. The next owner action, evidence request and due checkpoint remain explicit.” The stronger statement is longer because it reports the state of *each claim*, not because it inflates the measured progress. [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) covers exercise evaluation generally; P12 and its closure logic are original classroom examples.
+
 ### 12.6 Final practical defense and assessment
 
 The learner submits the index, three branch artifacts and an after-action plan. A reviewer selects one early and one late checkpoint without warning. The learner has three minutes each to reconstruct available evidence, decision status, missing source and next test. Then the reviewer presents a counterfactual: “Suppose the gateway gap later contains an authenticated delivery receipt without recipient mapping.” A defensible response **versions** the privacy assessment, requests owner-approved mapping and communication review, preserves the older 11:00 note, and does not declare 12 affected people from 12 tokens. No actual notice is sent.
@@ -1086,7 +1448,11 @@ With two learners, exchange only the portfolio index and linked artifacts. The r
 
 **EX059 — After-action plan.** Inputs: C01, C09, C27, C33 and the Chapter 11 observer notes. Produce four improvement rows with observed finding, source, contributing-condition hypothesis, owner, due checkpoint and an independent retest that can fail. A 2-point result does not claim a root cause or a control repair from an assigned ticket alone.
 
+**P12 extension for EX059:** Run the offline ticket fixture. State the evidence needed to promote each open row, and explain why a new complete export receipt cannot retroactively supply C09's absent source-object digest.
+
 **EX060 — Metrics and oral defense.** Inputs: the 4-of-5 complete classroom action records, C27/C28 gate outcomes and the counterfactual receipt in §12.6. Calculate two correctly bounded metrics, then give a 150–220-word defense of what changes in service and privacy status. A 2-point result states denominators, preserves the old 11:00 note and refuses to equate tokens with people.
+
+**P12 extension for EX060:** Report the fixture's closure-candidate ratio with its denominator and classroom-only scope. Do not turn that ratio into a production success measure or into a finding about C33's historical delivery gap.
 
 ### Subject synthesis and next step
 
@@ -1118,6 +1484,20 @@ These are model results for the **fictional** CTN case. Each exercise's local 0�
 
 **EX005 — Model handoff (102 words).** “CTN enrollment depends on the API, IdP, support and recovery services. C01 names an application and recovery lead, but it leaves the after-hours identity alternate and service-owner fallback blank. The asserted API-audit 24-hour window has no defined anchor. The response lead should ask the application custodian to test one synthetic scheduled S41 change and an unrelated S40 control, recording fields and retrieval time. The identity custodian should verify detailed-log retention and its authorized export path. The service owner should assign an emergency delegate and define an isolated restore acceptance test. These are proposed readiness checks; C01 contains no incident observation.” A shorter result can earn two points if it retains all required roles, gaps and status distinctions.
 
+**C1 worked coverage rehearsal for EX002/EX004.** Executing the exact Chapter 1 Python fixture prints:
+
+~~~text
+C1|api_audit|app_owner|request_id|yes
+C1|idp_detail|identity_custodian|session_id|unknown
+C1|support_ticket|support_lead|received_at|yes
+C1|backup_copy|recovery_lead|restore_test|no
+C1|change_ledger|service_owner|scope_id|unknown
+C1|gaps=idp_detail,backup_copy,change_ledger
+C1|verified_sources=2/5
+~~~
+
+The final fraction is two fixture rows marked `yes` out of five listed sources, **not** a CTN readiness percentage. A `yes` still lacks a real custodian receipt and route-level test. Changing `idp_detail` to `yes` in a copy shortens the gap list but does not identify an authorized alternate. A complete EX002 artifact defines the permitted S41/S40 test and its 20-minute clock; a complete EX004 artifact asks which dataset and event start the stated 24-hour period before computing any deadline. The program supplies neither answer.
+
 ### Subject 2: EX006–EX010
 
 **EX006 — Model rights matrix.** Case opening: analyst recommends/records, incident lead coordinates, no system change. Bounded IdP retrieval: analyst requests, identity custodian approves under policy and performs export; other data owners may be required by local rules. Session revocation: analyst recommends, identity owner and service owner/emergency-change role approve the named session, authorized identity operator executes and verifies. Account disablement: service owner plus emergency-change authority weigh enrollment impact; authorized operator executes only a scoped approval. External learner notification: communications/privacy owner approves content and audience; designated communicator publishes. C01 lacks the after-hours identity alternate and service-owner fallback; mark both *unknown*, rather than assign a fictional person.
@@ -1130,11 +1510,33 @@ These are model results for the **fictional** CTN case. Each exercise's local 0�
 
 **EX010 — Model four-line log.** Observation: “09:04 support received C02; S42 reportedly unavailable, first noticed around 09:00.” Inference: “Potential enrollment issue; cause and authoritative state unknown.” Action status: “Case opened, service/identity owner contact and bounded preservation request **proposed**; no export, restriction or notification recorded.” Trigger: “Revisit after owner state check, relevant source receipt, new reports or a verified retention deadline.” This preserves what the analyst knew at 09:04.
 
+**C2 worked action-state rehearsal for EX007/EX009.** Executing the exact Chapter 2 Python fixture prints:
+
+~~~text
+C2|v0=PROPOSED_ONLY
+C2|v1=APPROVED_NOT_EXECUTED
+C2|v2=EXECUTED_UNVERIFIED
+C2|v3=VERIFIED_WITHIN_SCOPE
+~~~
+
+These are toy Boolean states, not CTN action receipts. At C02, the actual account-disablement proposal is still pending with no scoped approval, execution or effect check. The action tuple must name target, environment, method, accepted service cost, authorizers, operator, duration, verification and rollback; “OK to act” in V2 lacks these fields. Removing `scope` from the fixture after setting `approved=True` returns `PROPOSED_ONLY`. Setting `checked=True` without an execution receipt leaves `APPROVED_NOT_EXECUTED`. The script cannot authenticate an approver, and V2 never becomes a main-case authorization.
+
 ### Subject 3: EX011–EX015
 
 **EX011 — Model intake lines.** C02: symptom noticed around 09:00, received 09:04, reporter observation only, ask for scoped S42 state. C03: IdP event 08:58, ingested 09:02, released 09:09, `svc-enroll`/`s-77`, no client or human field in summary, ask for authorized detail. C04: endpoint raw 08:54, normalized estimate 08:58, ingested 09:06/released 09:09, `runner-03`, no shared session key, ask whether scheduled browser activity is expected. C05: API edit 09:01, ingested 09:07/released 09:09, S42/`q-144`/`svc-enroll`, blank session, ask application custodian for authoritative state and key semantics. The four lines must remain distinct; a combined “runner session edited slot” line is unsupported.
 
 **EX012 — Model clock calculation.** C04 device displays 08:54 while measured four minutes slow; adding four minutes yields approximately **08:58 UTC**. C03's reported sign-in also occurred at 08:58, so the events are temporally coincident at the given minute precision. Because C04 lacks a session ID and the offset's uncertainty is not specified, coincidence neither proves a shared transaction nor orders the two within that minute.
+
+**C3 worked offline result:** The Chapter 3 Python fixture prints four lines:
+
+~~~text
+C3|C04|08:58 UTC|clock_correction=+4m
+C3|C03|08:58 UTC|clock_correction=+0m
+C3|C05|09:01 UTC|clock_correction=+0m
+C3|C04_C03_same_minute=True|direct_join=False
+~~~
+
+The final line is an explicit classroom interpretation, not a verified join. In the negative-control copy, changing C04's correction to `-4` makes its displayed 08:54 become 08:50, revealing the sign error. Changing C05's event time does not supply a missing session/request key. Full credit requires the correct raw-to-UTC transformation **and** the unsupported-causation limit.
 
 **EX013 — Model priority decision.** At 09:14 choose classroom **P2 provisional**. Potential impact: an S42 enrollment slot may be wrong, but present state and number of users affected are unknown. Confidence: C05 reports an edit, yet `s-77` has no verified link to `q-144`, and account sharing prevents attribution. Urgency: C08 states detailed events expire at 10:00, so ask the authorized custodian for a bounded export now. Review on the first of export receipt, S42 state, verified approval addendum, further symptoms or a short supervisor checkpoint before 10:00. A justified alternative priority can score two if tied to an explicit local rubric and no compromise claim.
 
@@ -1252,6 +1654,18 @@ Relative to the owner target, the snapshot would regress two authorized slots; c
 
 **EX055 — Model branch handoff.** Main CTN: C13 verifies wrong S42 state and C20 links `sync-override` to `q-144`; C17/C21 authorize bounded hold, C24 task disable, C27 stops release, C28/C29/C30 support limited return, and C31–C33 remain a privacy-led follow-up. Owner: incident lead coordinates, service and identity owners approve their parts; reopen on unexpected edit, failed route, new authenticated gateway record or overdue monitoring. V10 **alone**: correct slot and approved exact job within supplied scope; owner-led downgrade review, no disablement, with request for wider corroboration only if a new signal appears. V10b **alone**: approver unavailable before stated expiry; custodian-led bounded preservation and real escalation, disruption pending; revisit when a valid approver or new harm evidence appears. Each row cites only its own branch; two points require that separation and a concrete next discriminator.
 
+**L11 worked release audit for EX051–EX052.** Running the Chapter 11 Python fixture with the printed input produces:
+
+```text
+D1: release-order check passes at 09:35
+D2: release-order check passes at 09:42
+D3: future card at 09:42: C20 at 09:46
+D4: future card at 10:20: C29 at 10:24
+D5: release-order check passes at 11:00
+```
+
+D3 must be rescored without C20. A legitimate revised 09:42 line can cite C13's stored S42 state, C17's bounded approval, C18's execution receipt and C19's one-route denial; it may say the S42 hold was **observed on one route** and that alternate-route coverage is still unverified. It cannot claim the task mechanism that C20 later establishes. D4 may cite C28's isolated pass at 10:20 but must leave production approval pending until C29's 10:24 release. D1, D2 and D5 pass only a time-boundary check; each still needs authority and technical-content review. If C19's facilitator release receipt is missing, mark D2 unassessable pending that receipt rather than assuming that C19 was absent or available. Award the L11 extension's full credit only when the learner keeps the three clocks separate, preserves both flawed rows, versions the correction, and states this mechanical check's limits.
+
 ### Subject 12: EX056–EX060
 
 **EX056 — Model eight-row index.** (1) C01 08:40, readiness worksheet, missing after-hours alternate, not an incident finding; (2) C02 receipt 09:04, reported S42 symptom, not authoritative state; (3) C08 release 09:14, stated 10:00 detailed-source expiry, not proof of export; (4) C09 receipt 09:18 after 09:16 approval, two visible IdP rows, **original object/digest missing**, not a complete source certification; (5) C13 release 09:29, read-only S42 version 19 `unavailable`, not an actor; (6) C17 09:37 approval and C18 09:39 execution, not full-route effect until additional testing; (7) C27 10:16 isolated gate failure, not production success; (8) C30 10:45 limited service acceptance, not case closure; (9) C33 11:00 internal `not-dispatched` queue with **10:49–10:51 gateway gap**, neither confirmed delivery nor global nondelivery. A learner may select eight but must include both C09 and C33 and supply source/release time, status and prohibited inference in every row. Any claim based on a later C card at an earlier checkpoint must be versioned, not backdated.
@@ -1263,6 +1677,17 @@ Relative to the owner target, the snapshot would regress two authorized slots; c
 **EX059 — Model improvement rows.** C01: no after-hours alternate; hypothesis that the charter did not designate coverage; incident lead and identity owner; due **before next approved drill**; retest a reachable alternate receiving and deciding a scoped request before the drill's preannounced expiry. C09: missing original export metadata; identity custodian; due before next preservation exercise; retest object ID, byte count, SHA-256, collector, UTC time and authority in a synthetic receipt, with a negative missing-field control. C27: blank alternate-route audit actor; application owner; due before any release rehearsal; retest both manual and scheduled routes and fail the gate if either actor/request field is blank. C33: gateway interval gap; privacy steward and gateway custodian; due at the next case review, not a legal deadline; request a scoped source or record that none is available, preserve the unresolved assessment and obtain communication approval separately. A signed ticket is **assignment**, not proof of repair.
 
 **EX060 — Model metrics and defense.** Record completeness is **4/5 = 80% of the five selected classroom action proposals**, not 80% of operational incident decisions. Gate discipline is **1/1 failed isolated candidate stopped** (C27), with C28 a separately revised test; this is not 100% recovery success. A defensible oral note: “At 10:45 C30 supports limited S42 service return under further monitoring. The acceptance card is a service checkpoint, so I would keep its scope, owner and monitoring window visible to the next shift. At 11:00 C33 reports this batch's twelve tokens `not-dispatched` in the inspected queue, but the gateway window is incomplete. A later authenticated delivery receipt would create a new source line and an updated privacy assessment, not retroactively change what C33 showed. I would preserve the 11:00 note, timestamp the receipt separately, have the privacy steward assess its authenticity and scope, and request an approved token-to-contact mapping only if needed. The communications owner must review any audience text against that assessment. I cannot infer twelve affected people from twelve tokens or issue a notice myself. If the gateway custodian cannot fill the window, I would record that coverage limit explicitly and keep both hypotheses open. Service monitoring and privacy assessment remain separate. The exercise ends with an assigned follow-up and a review date, not a declaration of case closure.” Two points require both denominators, versioned evidence, owner-gated communication and bounded person-count language.
+
+**P12 worked closure audit for EX059–EX060.** The offline fixture prints:
+
+```text
+I1: classroom closure candidate
+I2: open: missing retest evidence
+I3: open: failed criterion
+I4: open: independent review pending
+```
+
+Thus **1/4 = 25% of the four invented P12 ticket rows** reaches the *classroom closure-candidate* state. It is not a percentage of actual CTN repairs, production controls or the 207-course collection. I2 needs a performed export-receipt retest with positive and missing-field controls; it cannot restore C09's historical digest. I3 requires the alternate route's actor/request fields to pass a fresh authorized test, with the failed result preserved. I4 needs independent review of the replay's source, route and coverage before even classroom closure can be considered; neither its pass flag nor a reviewer signature settles C33's historical gateway gap. I1's candidate status still depends on verifying the signed drill row and the alternate's decision right. Changing I1 to `fail` correctly changes its mechanical status to `open: failed criterion`; filling I4's reviewer field would change its mechanical status to `classroom closure candidate` but does not establish real-world effectiveness. An alternative answer should receive full credit when it preserves those distinctions and states its denominator.
 
 ## Glossary for the authored subjects
 
@@ -1280,6 +1705,8 @@ Relative to the owner target, the snapshot would regress two authorized slots; c
 - **Inject:** facilitator-released exercise information with a defined availability checkpoint; it is not evidence that the participant knew it earlier.
 - **After-action improvement:** an observed gap linked to an owner, due checkpoint and independent retest; a ticket alone is not closure.
 - **Portfolio evidence index:** a claim-to-source map that records time, status and limits so a reviewer can reproduce a decision.
+- **Release-order audit:** a check that every source cited in a decision was actually available to its author at that checkpoint; it cannot by itself validate the decision's technical content.
+- **Closure candidate:** an improvement with an observed, independently reviewed classroom retest that may be considered for closure; it is not proof that a production control works or that a historical evidence gap is resolved.
 
 ## References and case boundaries
 

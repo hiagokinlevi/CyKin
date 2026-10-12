@@ -28,8 +28,8 @@ The README bookshelf is generated locally from the same data as this table whene
 | AI | AI and machine-learning security | 0 / 182 | 0.0% | [Course](levels/rapid-1-month/ai-security/README.md) |
 | PQC | Quantum and post-quantum security | 0 / 182 | 0.0% | [Course](levels/rapid-1-month/quantum-post-quantum-security/README.md) |
 | OT | OT, IoT and cyber-physical security | 0 / 182 | 0.0% | [Course](levels/rapid-1-month/ot-iot-security/README.md) |
-| CRIT | Critical infrastructure and sector security | 106 / 182 | 58.2% | [Course](levels/rapid-1-month/critical-sector-security/README.md) |
+| CRIT | Critical infrastructure and sector security | 118 / 182 | 64.8% | [Course](levels/rapid-1-month/critical-sector-security/README.md) |
 
-**Total:** 152 / 4,186 planned English chapters have draft teaching (3.6%).
+**Total:** 164 / 4,186 planned English chapters have draft teaching (3.9%).
 
 See [all 207 course percentages](COURSE_WRITING_PROGRESS.md) for the level-by-level view. These percentages update when the maintainer runs the private local generator before publishing manuscript changes. They are not live GitHub computations. [Editorial status and verified book count](STRUCTURE_REVIEW.md).

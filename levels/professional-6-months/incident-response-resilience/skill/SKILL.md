@@ -29,9 +29,9 @@ This six-month professional course has **12 drafted subjects** and EX001–EX060
 
 | Subject | Read and teach | Learner artifact |
 |---|---|---|
-| 1. Readiness | [Chapter 1](../en/book/MANUSCRIPT.md#ch-01): service dependencies, owner gaps, falsifiable evidence-readiness test. | Source/owner map and bounded rehearsal contract; EX001–EX005. |
-| 2. Authority | [Chapter 2](../en/book/MANUSCRIPT.md#ch-02): role-specific decisions and approval-versus-execution. | Scoped action request with blank unapproved fields; EX006–EX010. |
-| 3. Triage | [Chapter 3](../en/book/MANUSCRIPT.md#ch-03): source times, provisional priority and review triggers. | Four-source intake and P2 rationale; EX011–EX015. |
+| 1. Readiness | [Chapter 1](../en/book/MANUSCRIPT.md#ch-01): service dependencies, owner gaps, falsifiable evidence-readiness test and C1 coverage fixture. | Source/owner map, bounded rehearsal contract and seven-line fixture result; EX001–EX005. |
+| 2. Authority | [Chapter 2](../en/book/MANUSCRIPT.md#ch-02): role-specific decisions, action tuple and four-state C2 fixture. | Scoped action request with blank unapproved fields and state-transition transcript; EX006–EX010. |
+| 3. Triage | [Chapter 3](../en/book/MANUSCRIPT.md#ch-03): source times, provisional priority, C3 clock fixture and review triggers. | Four-source intake, P2 rationale and four-line clock transcript; EX011–EX015. |
 | 4. Preservation | [Chapter 4](../en/book/MANUSCRIPT.md#ch-04): bounded export, receipts, checksum limits and screenshot time. | C09/C10 evidence package and local V4 hash result; EX016–EX020. |
 | 5. Investigation | [Chapter 5](../en/book/MANUSCRIPT.md#ch-05): source-traceable timeline and H1/H2/H3 discriminators. | 09:26 supervisor handoff and next-request plan; EX021–EX025. |
 | 6. Containment | [Chapter 6](../en/book/MANUSCRIPT.md#ch-06): option comparison, bounded approval, receipt and effect. | C17/C18/C19 action-state record and V6 route-coverage check; EX026–EX030. |
@@ -39,8 +39,16 @@ This six-month professional course has **12 drafted subjects** and EX001–EX060
 | 8. Recovery | [Chapter 8](../en/book/MANUSCRIPT.md#ch-08): data-target comparison, isolated no-go/pass, production and owner acceptance. | C25–C30 recovery gate and in-memory value diff; EX036–EX040. |
 | 9. Communications | [Chapter 9](../en/book/MANUSCRIPT.md#ch-09): service versus privacy status, message approval and versioning. | C31–C33 internal/public drafts and privacy referral; EX041–EX045. |
 | 10. Playbook quality | [Chapter 10](../en/book/MANUSCRIPT.md#ch-10): repair P0, walk P1 and score six design criteria. | Main-case, V10 and V10b branch artifacts; EX046–EX050. |
-| 11. Supervised simulation | [Chapter 11](../en/book/MANUSCRIPT.md#ch-11): staged case releases, separate clocks and observer rubric. | Six-checkpoint tabletop, decision log and three-branch handoff; EX051–EX055. |
-| 12. Portfolio and review | [Chapter 12](../en/book/MANUSCRIPT.md#ch-12): claim-to-source index, bounded metrics and owned retests. | Three-case portfolio, after-action plan and final defense; EX056–EX060. |
+| 11. Supervised simulation | [Chapter 11](../en/book/MANUSCRIPT.md#ch-11): staged case releases, separate clocks, L11 release-order audit and observer rubric. | Six-checkpoint tabletop, five-line offline release audit, decision log and three-branch handoff; EX051–EX055. |
+| 12. Portfolio and review | [Chapter 12](../en/book/MANUSCRIPT.md#ch-12): claim-to-source index, bounded metrics, P12 improvement-closure audit and owned retests. | Three-case portfolio, four-line offline ticket audit, after-action plan and final defense; EX056–EX060. |
+
+## Final two-chapter laboratory sequence
+
+In Chapter 11, have the learner predict L11's five release-audit lines before running the Python 3 fixture. D3 cites C20 before its 09:46 release, and D4 cites C29 before its 10:24 release. D1, D2 and D5 pass only the mechanical time check. Ask for a versioned 09:42 decision citing C13–C19 but limiting C19 to its one observed route. A missing facilitator receipt makes a line unassessable, not false. Use the L11 extensions of EX051/EX052 and their worked result without renumbering exercises. In Chapter 12, predict P12's four ticket states before executing its separate Python 3 fixture. Only I1 is a classroom closure candidate; I2 lacks a retest, I3 fails a criterion, and I4 awaits independent review. The 1/4 ratio describes only that invented fixture; no later ticket repairs the historical C09 digest or C33 gateway gap. Use the P12 extensions of EX059/EX060 and their worked result. Neither lab authenticates real records, approval or production effectiveness.
+
+## First three-chapter laboratory sequence
+
+Use C1 in Chapter 1 to distinguish a five-row classroom status count from organizational readiness. Its exact output has seven lines and three named gaps; a printed `yes` is still only a fixture value. C2 in Chapter 2 prints four action states in order; its Boolean approval flag does not authenticate an approver or grant tenant access. Removing scope returns PROPOSED_ONLY. C3 in Chapter 3 prints four clock-correction lines; C04 at 08:54 plus four minutes yields 08:58 UTC, while a shared minute does not join C03's session to C05's request. Let the learner predict outputs first, then use the final book appendix. Tie C1 to EX002/EX004, C2 to EX007/EX009 and C3 to EX012. Keep the three fixtures separate from C01–C08 case observations.
 
 ## Tutoring and feedback
 
