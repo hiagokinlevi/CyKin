@@ -6,6 +6,7 @@ CyberABC is a public, free Markdown learning library. Its [home page](README.md)
 
 | Need | Open |
 |---|---|
+| One route from the first lesson to the last, across all levels and areas | [Complete sequential study path](STUDY_PATH.md) |
 | All nine formation levels | [Level index](levels/README.md) |
 | All 23 academic areas | [Area map](AREA_MAP.md) and [detailed map](mapa-areas-ciberseguranca.md) |
 | All 207 courses and book editions | [Course guide](COURSE_GUIDE.md) |
@@ -19,10 +20,17 @@ CyberABC is a public, free Markdown learning library. Its [home page](README.md)
 
 The current design has five schools, 23 academic areas, nine levels, **207 course skills**, and nine planned language editions per course (**1,863 planned books**). English course grids contain **4,186 subject-chapters**. These are structural counts, not a claim of 1,863 authored books. There are four English manuscript drafts, including the ten-subject professional Incident Response draft, and no verified complete book.
 
+## Follow the entire curriculum in order
+
+The [study path](STUDY_PATH.md) numbers the courses **001–207**. Traverse the nine levels in their published order; within each level, traverse all 23 areas in catalog order. Open the course's `SUBJECTS.md` and traverse chapters **01 through the final numbered row**. Its **Next step** column links to the next chapter or, on the final row, the next course in the same language. After the 23rd course in a level, continue at the first area of the next level. The final doctoral course ends the route.
+
+For an AI tutor, keep a checkpoint with `{language, course_number, chapter_number, source_state, exercises_attempted, next_step}`. Use a **Draft** link only for teaching that is actually present in `MANUSCRIPT.md`; use a **Plan** link to explain future scope, never to mark a lesson complete. Ask the learner to try the chapter's authored exercises before consulting its worked answers. Cite the exact chapter and factual sources. When the required chapter has only a plan, report the gap and retain the checkpoint there; the navigation link to a later course is not evidence of completed study. Continue in English as the reference edition until the other language editions are authored and reviewed.
+
 ## Follow a course
 
 ~~~text
 README.md
+  → STUDY_PATH.md                         complete ordered route and course numbers
   → levels/README.md
   → levels/<level>/README.md
   → levels/<level>/<area>/README.md       course home, nine languages, one skill

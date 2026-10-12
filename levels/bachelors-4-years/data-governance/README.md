@@ -10,7 +10,11 @@
 
 This is one course. It has **one course skill** and **one principal book in each language edition**. Its **40 curricular subjects are the chapters of that book**. Every finished chapter must teach the subject, give worked examples and exercises; worked answers belong at the end of the same book. The 300-page A4 and 50-exercise requirements apply to a finished edition, not to the plans below.
 
-[Home](../../../README.md) · [All courses at this level](../README.md) · [Area map](../../../AREA_MAP.md) · [Project index](../../../PROJECTS.md) · [Course skill](skill/SKILL.md) · [Supplementary playbooks](../../../playbooks/data-governance/README.md)
+[Home](../../../README.md) · [Complete study path](../../../STUDY_PATH.md) · [All courses at this level](../README.md) · [Area map](../../../AREA_MAP.md) · [Project index](../../../PROJECTS.md) · [Course skill](skill/SKILL.md) · [Supplementary playbooks](../../../playbooks/data-governance/README.md)
+
+## Position in the complete study path
+
+**Course 095 of 207.** Read chapters 01–40 in the chosen language's chapter index, then continue to the next course. Previous: [Information security / Bachelor's course](../information-security/README.md). Next: [Privacy and data protection / Bachelor's course](../privacy-data-protection/README.md).
 
 ## Language editions
 

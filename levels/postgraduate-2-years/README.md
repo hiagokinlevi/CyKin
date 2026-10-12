@@ -2,7 +2,7 @@
 
 **23 area courses** · **one principal book and one course skill per area** · **9 planned book-language editions per course**.
 
-[Home](../../README.md) · [All levels](../README.md) · [Area map](../../AREA_MAP.md) · [Course skills](../../SKILLS.md)
+[Home](../../README.md) · [Sequential study path](../../STUDY_PATH.md) · [All levels](../README.md) · [Area map](../../AREA_MAP.md) · [Course skills](../../SKILLS.md)
 
 | Academic area | Course home | English subject index | English book | Editorial state |
 |---|---|---|---|---|

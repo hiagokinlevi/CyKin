@@ -10,6 +10,7 @@ Use this **one skill for the whole 1 month course**. The course has one principa
 
 ## Course sources
 
+- [Complete 207-course study path](../../../../STUDY_PATH.md): course 016, chapter order and cross-course continuation.
 - [Course home](../README.md): objectives, prerequisites, all language editions and current state.
 - [English chapter index](../en/SUBJECTS.md): subject order, chapter links and draft status.
 - [English book plan](../en/book/PLAN.md): summaries and planned exercises.
@@ -47,5 +48,9 @@ This is the **rapid introductory** course. Teach one subject at a time and use t
 ## Editorial status and language
 
 Check the [current course progress](../../../../COURSE_WRITING_PROGRESS.md) and [book standard](../../../../BOOK_STANDARD.md) before claiming a chapter or edition is complete. Four chapter drafts and 50 exercise-answer pairs are available in English, but the English book has not passed the 300-page A4 and review gate. The other language folders are working outlines until their own translation and review occur. Teach in the learner's preferred language if helpful, while identifying English as the only authored reference edition and never presenting an improvised translation as published course text.
+
+## Continue the curriculum
+
+After chapter 04, check the chapter index and the learner's exercise record. The next stop is [course 017: Digital forensics and malware analysis / Rapid course](../../digital-forensics-malware/en/SUBJECTS.md). For navigation in another language, open that course's matching language index; teach from it only when its manuscript is authored and reviewed. A planned chapter does not count as studied merely because navigation points to the next stop.
 
 Original maintainer-owned content is dedicated under [CC0 1.0](../../../../LICENSE); third-party sources retain their own rights.

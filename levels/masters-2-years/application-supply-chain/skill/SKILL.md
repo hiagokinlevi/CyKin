@@ -10,6 +10,7 @@ Use this **one skill for the whole 2 years course**. The course has one principa
 
 ## Course sources
 
+- [Complete 207-course study path](../../../../STUDY_PATH.md): course 175, chapter order and cross-course continuation.
 - [Course home](../README.md): objectives, prerequisites, all language editions and current state.
 - [English chapter index](../en/SUBJECTS.md): subject order, chapter links and draft status.
 - [English book plan](../en/book/PLAN.md): summaries and planned exercises.
@@ -22,5 +23,9 @@ Use this **one skill for the whole 2 years course**. The course has one principa
 2. Check whether that chapter is authored. If only the plan exists, say so and label any added explanation or practice as new supplementary material.
 3. Teach from the available chapter with a clear example, then use its authored exercises and worked answers. Keep the response at the course's planned depth.
 4. Cite the exact Markdown source and any underlying external reference. Use only authorized, synthetic or sanitized practical environments. Never claim accreditation or a completed 300-page book from a folder alone.
+
+## Continue the curriculum
+
+After chapter 08, check the chapter index and the learner's exercise record. The next stop is [course 176: Security operations and blue team / Master's course](../../security-operations-blue-team/en/SUBJECTS.md). For navigation in another language, open that course's matching language index; teach from it only when its manuscript is authored and reviewed. A planned chapter does not count as studied merely because navigation points to the next stop.
 
 Original maintainer-owned content is dedicated under [CC0 1.0](../../../../LICENSE); third-party sources retain their own rights.

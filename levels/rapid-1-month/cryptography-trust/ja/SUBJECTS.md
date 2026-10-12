@@ -4,13 +4,15 @@
 
 This is an English working index awaiting translation and review for this language.
 
-[Home](../../../../README.md) · [Course home](../README.md) · [Book plan](book/PLAN.md) · [Course skill](../skill/SKILL.md)
+[Home](../../../../README.md) · [Complete study path](../../../../STUDY_PATH.md) · [Course home](../README.md) · [Book plan](book/PLAN.md) · [Course skill](../skill/SKILL.md)
 
-| Week | Chapter / plan | Curricular subject | Hours | Planned A4 pages | Exercise target | Teaching state |
-|---|---|---|---:|---:|---:|---|
-| 1 | [01](book/PLAN.md#ch-01) | Cryptography and trust services: foundations and decisions | 20 | 80 | 13 | Planned |
-| 2 | [02](book/PLAN.md#ch-02) | Scope, permission and safe practice | 20 | 80 | 13 | Planned |
-| 3 | [03](book/PLAN.md#ch-03) | Cryptography and trust services: systems, data and dependencies | 20 | 80 | 12 | Planned |
-| 4 | [04](book/PLAN.md#ch-04) | Cryptography and trust services: guided lab and applied synthesis | 20 | 80 | 12 | Planned |
+**Course 008 of 207.** Read chapters 01–04 from top to bottom. For each chapter, use its Draft link when present; the numbered plan link is a summary only. Attempt exercises before consulting the book's worked answers. The final row links to the next course in this same language.
 
-Page and exercise columns are editorial targets. The book is complete only after its content and A4 rendering meet the publication gate.
+| Week | Chapter / plan | Curricular subject | Hours | Planned A4 pages | Exercise target | Teaching state | Next step |
+|---|---|---|---:|---:|---:|---|---|
+| 1 | [01](book/PLAN.md#ch-01) | Cryptography and trust services: foundations and decisions | 20 | 80 | 13 | Planned | [02 · Plan](book/PLAN.md#ch-02) |
+| 2 | [02](book/PLAN.md#ch-02) | Scope, permission and safe practice | 20 | 80 | 13 | Planned | [03 · Plan](book/PLAN.md#ch-03) |
+| 3 | [03](book/PLAN.md#ch-03) | Cryptography and trust services: systems, data and dependencies | 20 | 80 | 12 | Planned | [04 · Plan](book/PLAN.md#ch-04) |
+| 4 | [04](book/PLAN.md#ch-04) | Cryptography and trust services: guided lab and applied synthesis | 20 | 80 | 12 | Planned | [Course 009 →](../../web3-blockchain-security/ja/SUBJECTS.md) |
+
+A planned next step is a navigation target, not an authored lesson. Keep the completion position at the first unwritten chapter. Page and exercise columns are editorial targets. The book is complete only after its content and A4 rendering meet the publication gate.

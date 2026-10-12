@@ -10,6 +10,7 @@ Use this **one skill for the whole 6 months course**. The course has one princip
 
 ## Course sources
 
+- [Complete 207-course study path](../../../../STUDY_PATH.md): course 039, chapter order and cross-course continuation.
 - [Course home](../README.md): objectives, prerequisites, all language editions and current state.
 - [English chapter index](../en/SUBJECTS.md): subject order, chapter links and draft status.
 - [English book plan](../en/book/PLAN.md): summaries and planned exercises.
@@ -53,5 +54,9 @@ This six-month professional course has **12 planned subjects**. The English prin
 ## Editorial and language state
 
 Use the [course progress table](../../../../COURSE_WRITING_PROGRESS.md), [source audit](../../../../SOURCE_AUDIT.md) and [book standard](../../../../BOOK_STANDARD.md). Ten chapter drafts and 50 exercise-answer pairs are available in English; the 12-chapter, 60-exercise book is incomplete and has not passed 300 A4 pages or independent review. Other language folders are working outlines until translated and reviewed after the full English set.
+
+## Continue the curriculum
+
+After chapter 12, check the chapter index and the learner's exercise record. The next stop is [course 040: Digital forensics and malware analysis / Professional course](../../digital-forensics-malware/en/SUBJECTS.md). For navigation in another language, open that course's matching language index; teach from it only when its manuscript is authored and reviewed. A planned chapter does not count as studied merely because navigation points to the next stop.
 
 Original maintainer-owned content is dedicated under [CC0 1.0](../../../../LICENSE); third-party sources retain their own rights.

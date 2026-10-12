@@ -2,7 +2,7 @@
 
 **207 course skills, one per area-and-level course.** The course skill routes an AI client through the book and its subject-chapters; subjects do not have separate skills. A skill is not a completed textbook or an automatic installation in every AI client.
 
-[Home](README.md) · [All levels](levels/README.md) · [AI reading guide](AI_GUIDE.md)
+[Home](README.md) · [Sequential study path](STUDY_PATH.md) · [All levels](levels/README.md) · [AI reading guide](AI_GUIDE.md)
 
 ## Rapid course — 1 month
 

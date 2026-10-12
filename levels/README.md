@@ -2,7 +2,7 @@
 
 Choose a level first. Each level contains the same 23 academic areas; each area folder is one course with a single course skill and nine planned language editions of its principal book. A plan is not a completed book.
 
-[CyberABC home](../README.md) · [All academic areas](../AREA_MAP.md) · [Current progress](../STRUCTURE_REVIEW.md)
+[CyberABC home](../README.md) · [Sequential study path](../STUDY_PATH.md) · [All academic areas](../AREA_MAP.md) · [Current progress](../STRUCTURE_REVIEW.md)
 
 | Level | Duration | Subjects / book | Courses |
 |---|---:|---:|---:|
@@ -16,4 +16,4 @@ Choose a level first. Each level contains the same 23 academic areas; each area 
 | [Master's course](masters-2-years/README.md) | 2 years | 8 | 23 |
 | [Doctoral research track](doctorate-2-years/README.md) | 2 years | 8 | 23 |
 
-English is written and reviewed first. Portuguese, Spanish, Hebrew, French, Russian, German, Chinese and Japanese follow in order. Other language folders are working outlines until their editorial stage.
+For a single end-to-end route, start with the first rapid Cybersecurity chapter and follow the [numbered 207-course study path](../STUDY_PATH.md). Within each course, read its subject index from chapter 01 onward. English is written and reviewed first. Portuguese, Spanish, Hebrew, French, Russian, German, Chinese and Japanese follow in order. Other language folders are working outlines until their editorial stage.

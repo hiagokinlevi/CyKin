@@ -10,7 +10,11 @@
 
 This is one course. It has **one course skill** and **one principal book in each language edition**. Its **50 curricular subjects are the chapters of that book**. Every finished chapter must teach the subject, give worked examples and exercises; worked answers belong at the end of the same book. The 300-page A4 and 50-exercise requirements apply to a finished edition, not to the plans below.
 
-[Home](../../../README.md) · [All courses at this level](../README.md) · [Area map](../../../AREA_MAP.md) · [Project index](../../../PROJECTS.md) · [Course skill](skill/SKILL.md) · [Supplementary playbooks](../../../playbooks/identity-access/README.md)
+[Home](../../../README.md) · [Complete study path](../../../STUDY_PATH.md) · [All courses at this level](../README.md) · [Area map](../../../AREA_MAP.md) · [Project index](../../../PROJECTS.md) · [Course skill](skill/SKILL.md) · [Supplementary playbooks](../../../playbooks/identity-access/README.md)
+
+## Position in the complete study path
+
+**Course 125 of 207.** Read chapters 01–50 in the chosen language's chapter index, then continue to the next course. Previous: [Web3, blockchain and cryptoasset security / Engineering course](../web3-blockchain-security/README.md). Next: [Network and communications security / Engineering course](../network-communications/README.md).
 
 ## Language editions
 

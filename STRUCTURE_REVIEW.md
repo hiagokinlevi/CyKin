@@ -11,6 +11,7 @@ Reviewed 11 October 2026. [Project introduction](README.md) · [academic area ma
 | Distinct course designs | 207 | Nine levels per area; one principal English book planned per course |
 | Planned language editions | 1,863 | Nine language folders per course; most are structural plans only |
 | English curricular subjects | 4,186 | One subject is one planned chapter within its course's book |
+| Sequential study route | [207 courses / 4,186 English chapter positions](STUDY_PATH.md) | Level first, catalog area next, chapters in order; a linked plan remains unwritten teaching |
 | Course AI skills | 207 | One skill per area-and-level course; no separate subject skills |
 | Book chapter summaries across nine languages | 37,674 | Editorial summaries; other languages still contain English working outlines |
 | Individually tailored English chapter briefs | 336 of 4,186 (8.03%) | All 182 Incident Response chapters and 154 Cybersecurity chapters; 3,850 remain template-based working summaries |

@@ -2,7 +2,7 @@
 
 **9 formation levels × 23 areas = 207 distinct courses.** Each has one course skill and one planned principal book in each of 9 languages. The result is 1,863 planned language editions. None is a verified complete 300-page book yet.
 
-[Home](README.md) · [Browse levels](levels/README.md) · [Area map](AREA_MAP.md) · [Editorial progress](STRUCTURE_REVIEW.md)
+[Home](README.md) · [Follow the sequential study path](STUDY_PATH.md) · [Browse levels](levels/README.md) · [Area map](AREA_MAP.md) · [Editorial progress](STRUCTURE_REVIEW.md)
 
 ## Rapid course — 1 month
 

@@ -39,7 +39,9 @@
 
 **Author and editorial responsibility:** [hiagokinlevi](https://github.com/hiagokinlevi). Original maintainer-owned text is dedicated under [CC0 1.0](LICENSE); factual sources are cited and third-party works retain their own rights. Course titles are educational plans, not accredited degrees.
 
-[**Browse by formation level**](levels/README.md) · [**Start Incident Response**](levels/rapid-1-month/incident-response-resilience/README.md) · [**Read its English book draft**](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md) · [**View all 23 areas**](AREA_MAP.md) · [**Find a skill**](SKILLS.md)
+[**Follow the complete 207-course study path**](STUDY_PATH.md) · [**Browse by formation level**](levels/README.md) · [**Start Incident Response**](levels/rapid-1-month/incident-response-resilience/README.md) · [**View all 23 areas**](AREA_MAP.md) · [**Find a skill**](SKILLS.md)
+
+**Start at lesson 01:** [Cybersecurity / rapid / English](levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md#ch-01). Follow each [course's chapter index](levels/rapid-1-month/cybersecurity/en/SUBJECTS.md) and its next-step links until the last doctoral chapter. The study path marks unwritten chapters as plans, so the route is navigable even while its books are being authored.
 
 ## How this library is organized
 

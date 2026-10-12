@@ -10,7 +10,11 @@
 
 This is one course. It has **one course skill** and **one principal book in each language edition**. Its **4 curricular subjects are the chapters of that book**. Every finished chapter must teach the subject, give worked examples and exercises; worked answers belong at the end of the same book. The 300-page A4 and 50-exercise requirements apply to a finished edition, not to the plans below.
 
-[Home](../../../README.md) · [All courses at this level](../README.md) · [Area map](../../../AREA_MAP.md) · [Project index](../../../PROJECTS.md) · [Course skill](skill/SKILL.md) · [Supplementary playbooks](../../../playbooks/human-factors-policy/README.md)
+[Home](../../../README.md) · [Complete study path](../../../STUDY_PATH.md) · [All courses at this level](../README.md) · [Area map](../../../AREA_MAP.md) · [Project index](../../../PROJECTS.md) · [Course skill](skill/SKILL.md) · [Supplementary playbooks](../../../playbooks/human-factors-policy/README.md)
+
+## Position in the complete study path
+
+**Course 006 of 207.** Read chapters 01–04 in the chosen language's chapter index, then continue to the next course. Previous: [Security governance, risk and compliance / Rapid course](../security-governance-risk-compliance/README.md). Next: [Security architecture and engineering / Rapid course](../security-architecture/README.md).
 
 ## Language editions
 
