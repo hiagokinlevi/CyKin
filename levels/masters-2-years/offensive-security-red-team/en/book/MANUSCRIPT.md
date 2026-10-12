@@ -223,9 +223,9 @@ SYN-005 priority=critical score=17 impact=3 exploitability=2 exposure=1 :: servi
 
 A useful seminar slide has three columns: question the framework answers, artefact it expects (ROE, scenario, test case), and a failure mode (checkbox theatre, intel theatre, coverage theatre). Students leave knowing when not to force-fit a framework.
 
-### Extra practice note
+### 2.5c Reading a framework critically
 
-Re-read the chapter outcomes and write three sentences on how this chapter changes what you will do in the next authorized engagement on a synthetic range. Keep the note free of attack procedures and focused on scope, measurement or reporting. Aim for specificity to Cedar Bridge Mutual's training segments.
+Each framework embeds an assumption you should test before citing it in a dissertation. PTES assumes a client who can state business impact before testing starts; at Cedar Bridge Mutual the claims team could not, so Noah's scoping meeting produced a list of crown-jewel processes (claim intake, payout approval) rather than hosts. ATT&CK assumes behaviour can be named at technique granularity; a finding about a missing approval step in payouts has no technique, and forcing one (T1078, Valid Accounts) would hide the process flaw. TIBER-EU assumes a regulator-led threat-intelligence phase; a mid-sized insurer outside that regime borrows its structure but must say so. Write each assumption as one sentence in your methods chapter and state whether it held in your setting.
 
 ### 2.6 Worked example (synthetic CBM case)
 
@@ -671,9 +671,9 @@ stop reason present: yes
 events=8 phases=7
 ```
 
-### Extra practice note
+### 6.5b Handling exclusions honestly
 
-Re-read the chapter outcomes and write three sentences on how this chapter changes what you will do in the next authorized engagement on a synthetic range. Keep the note free of attack procedures and focused on scope, measurement or reporting. Aim for specificity to Cedar Bridge Mutual's training segments.
+The VLAN 40 rebuild week is the chapter's lesson in exclusions. An exclusion is legitimate only when it was named in the pre-registration with its trigger ("infrastructure rebuild affecting the test segment"), when it is applied blind to the outcome, and when the report shows the result with and without it. Here the 18-point difference becomes 16 points if the week is kept; both numbers appear in the results table, and the conclusion does not depend on the choice. An exclusion invented after seeing the data, or one that flips the conclusion, must be reported as a limitation rather than silently applied.
 
 ### 6.6 Worked example (synthetic CBM case)
 
