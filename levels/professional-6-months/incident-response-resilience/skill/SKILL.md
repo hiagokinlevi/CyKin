@@ -29,11 +29,11 @@ This six-month professional course has **12 drafted subjects** and EX001–EX060
 
 | Subject | Read and teach | Learner artifact |
 |---|---|---|
-| 1. Readiness | [Chapter 1](../en/book/MANUSCRIPT.md#ch-01): service dependencies, owner gaps, falsifiable evidence-readiness test and C1 coverage fixture. | Source/owner map, bounded rehearsal contract and seven-line fixture result; EX001–EX005. |
-| 2. Authority | [Chapter 2](../en/book/MANUSCRIPT.md#ch-02): role-specific decisions, action tuple and four-state C2 fixture. | Scoped action request with blank unapproved fields and state-transition transcript; EX006–EX010. |
-| 3. Triage | [Chapter 3](../en/book/MANUSCRIPT.md#ch-03): source times, provisional priority, C3 clock fixture and review triggers. | Four-source intake, P2 rationale and four-line clock transcript; EX011–EX015. |
-| 4. Preservation | [Chapter 4](../en/book/MANUSCRIPT.md#ch-04): bounded export, provenance layers, integrity/authenticity/completeness distinction and screenshot time. | C09/C10 package, V4 hash and C4 mutation transcript; EX016–EX020. |
-| 5. Investigation | [Chapter 5](../en/book/MANUSCRIPT.md#ch-05): source-traceable timeline, typed joins and H1/H2/H3 discriminators. | 09:26 handoff, bounded next requests and C5 join audit; EX021–EX025. |
+| 1. Readiness | [Chapter 1](../en/book/MANUSCRIPT.md#ch-01): service dependencies, owner gaps, falsifiable evidence-readiness test, original C1 fixture and integrated C1X route-coverage diagnostic. | Source/owner map, bounded rehearsal contract, original C1 output plus four-line C1X result; EX001–EX005. |
+| 2. Authority | [Chapter 2](../en/book/MANUSCRIPT.md#ch-02): role-specific decisions, action tuple, original four-state C2 fixture and integrated C2X action-scope checks. | Scoped action request with blank unapproved fields, original C2 transitions and five-line C2X result; EX006–EX010. |
+| 3. Triage | [Chapter 3](../en/book/MANUSCRIPT.md#ch-03): source times, provisional priority, C3 clock fixture, integrated C3X release gates and review triggers. | Four-source intake, P2 rationale, four-line clock transcript and five-line C3X release filter; EX011–EX015. |
+| 4. Preservation | [Chapter 4](../en/book/MANUSCRIPT.md#ch-04): bounded export, provenance layers, integrity/authenticity/completeness distinction, C4X receipt-state diagnostic and screenshot time. | C09/C10 package, V4 hash, C4 mutation transcript and six-line C4X custody-state result; EX016–EX020. |
+| 5. Investigation | [Chapter 5](../en/book/MANUSCRIPT.md#ch-05): source-traceable timeline, typed joins, C5X namespace/identifier test and H1/H2/H3 discriminators. | 09:26 handoff, bounded next requests, original C5 join audit and five-line C5X namespace check; EX021–EX025. |
 | 6. Containment | [Chapter 6](../en/book/MANUSCRIPT.md#ch-06): falsifiable control property, bounded approval, route coverage and expiry. | C17/C18/C19 action-state record, C6 state lab and V6 route check; EX026–EX030. |
 | 7. Eradication | [Chapter 7](../en/book/MANUSCRIPT.md#ch-07): validated task-to-request join, second identity path, positive/negative checks. | C20–C24 cause-to-fix contract, read-only manifest and C7 inventory-delta lab; EX031–EX035. |
 | 8. Recovery | [Chapter 8](../en/book/MANUSCRIPT.md#ch-08): data-target comparison, mandatory isolated gates, production and monitored owner acceptance. | C25–C30 recovery record, C8 mismatch/gate lab and rollback rule; EX036–EX040. |
@@ -49,6 +49,18 @@ In Chapter 11, have the learner predict L11's five release-audit lines before ru
 ## First three-chapter laboratory sequence
 
 Use C1 in Chapter 1 to distinguish a five-row classroom status count from organizational readiness. Its exact output has seven lines and three named gaps; a printed `yes` is still only a fixture value. C2 in Chapter 2 prints four action states in order; its Boolean approval flag does not authenticate an approver or grant tenant access. Removing scope returns PROPOSED_ONLY. C3 in Chapter 3 prints four clock-correction lines; C04 at 08:54 plus four minutes yields 08:58 UTC, while a shared minute does not join C03's session to C05's request. Let the learner predict outputs first, then use the final book appendix. Tie C1 to EX002/EX004, C2 to EX007/EX009 and C3 to EX012. Keep the three fixtures separate from C01–C08 case observations.
+
+## Integrated professional expansions in Chapters 1–5
+
+The first five chapters now contain additional authored **C1X–C5X** offline laboratories and extended reasoning for existing **EX001–EX025** in the *single* manuscript's final answer appendix. These additions are integrated teaching, not extra chapters, extra numbered exercises or new CTN case cards. When tutoring, preserve the earlier original C1–C5 programs and read the supplementary materials after their respective existing sections.
+
+- **C1X:** distinguish a declared successful scheduled-route record from missing manual correlation, unavailable IdP detail and an incorrectly included S40 negative control. A simulated status is not real readiness.
+- **C2X:** reject wrong operation or environment even if a fictional approval flag is true; a Boolean cannot authenticate approver identity or approve account disablement.
+- **C3X:** keep C06 and C08 withheld at the 09:09 decision despite older source event timestamps. The 09:14 P2 decision follows the separately released retention warning.
+- **C4X:** distinguish requested, approved, received and byte-checked objects, and keep C09's object/digest unknown. The C10 UTC+02:00 display normalizes only conditionally to 09:21 UTC.
+- **C5X:** distinguish string equality from validated source namespaces and a missing direct `s-77`→`q-144` join. No human actor or job provenance can be inferred from a matching label.
+
+Ask the learner to explain the negative control and source/provenance limitations for each fixture before awarding a practical score. Match the **same existing EX IDs** to the original model answer *and its integrated worked-reasoning expansion*, both in [the book appendix](../en/book/MANUSCRIPT.md#worked-answers). No exercise fixture grants access to CTN or production systems.
 
 ## Middle five-chapter laboratory sequence
 
