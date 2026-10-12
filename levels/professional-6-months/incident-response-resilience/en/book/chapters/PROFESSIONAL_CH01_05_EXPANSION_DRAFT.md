@@ -30,3 +30,83 @@ Finally, C01 names no after-hours identity alternate or service-owner fallback. 
 
 Each proposed readiness test needs: decision question; exact synthetic input and producer; permitted route and approval; a positive expected row with original UTC time, slot and request ID; an unrelated S40 negative control; a collection clock and twenty-minute acceptance window; an independent reviewer; and a failure/rollback rule. The **test authorization**, **executed rehearsal receipt**, and **service readiness acceptance** are separate states. A supervisor can approve one while declining the others. The output should tell the next responder exactly which missing field, unreachable custodian or unverified route could invalidate a future incident claim.
 
+
+### Offline laboratory C1X — distinguish source coverage from collector appearance
+
+**Purpose:** Test the logic of a four-row *declaration*, not a live CTN environment. This exercise is separate from C01, from the original C1 coverage fixture, and from any production collection. Run Python 3.10+ in a local isolated interpreter; it creates no files, changes no service and makes no network calls.
+
+The invented entries deliberately separate four failure modes. A scheduled-path declaration has the expected slot and key within the twenty-minute goal. A manual-path declaration lacks a join key even though it appears to have returned quickly. An identity-detail declaration has an identifier but no retrieval measurement. A negative-control event belongs to S40 while the requested scope is S41. Predict each state before running.
+
+~~~python
+from dataclasses import dataclass
+
+@dataclass(frozen=True)
+class Probe:
+    route: str
+    slot: str
+    wanted_slot: str
+    key: str | None
+    latency_min: int | None
+
+def assess(p):
+    if p.slot != p.wanted_slot:
+        return "FAIL_WRONG_SLOT"
+    if p.key is None:
+        return "FAIL_MISSING_JOIN_KEY"
+    if p.latency_min is None:
+        return "UNKNOWN_NOT_RETRIEVED"
+    if p.latency_min > 20:
+        return "FAIL_WINDOW"
+    return "PASS_DECLARED_FIXTURE"
+
+probes = [
+    Probe("scheduled_api", "S41", "S41", "req-demo-01", 9),
+    Probe("manual_api", "S41", "S41", None, 4),
+    Probe("identity_detail", "S41", "S41", "sid-demo-01", None),
+    Probe("negative_S40", "S40", "S41", "req-demo-02", 7),
+]
+for p in probes:
+    print(f"{p.route}: {assess(p)}")
+assert assess(probes[0]) == "PASS_DECLARED_FIXTURE"
+~~~
+
+**Executed output:**
+
+~~~text
+scheduled_api: PASS_DECLARED_FIXTURE
+manual_api: FAIL_MISSING_JOIN_KEY
+identity_detail: UNKNOWN_NOT_RETRIEVED
+negative_S40: FAIL_WRONG_SLOT
+~~~
+
+A useful interpretation states why no “overall ready” flag is produced. The scheduled test is only logically consistent *if its fields were authentic*. The manual test cannot establish a request-to-audit join. The identity test has no measured availability. The S40 control exposes a scope mismatch; silently expanding the selection to include S40 would defeat the control. Neither a plausible ID string nor a small latency number independently authenticates a log.
+
+**Adversarial control:** Replace the first probe's slot with S40 and predict FAIL_WRONG_SLOT despite an unchanged key and latency. Then restore it and replace the manual probe's missing key with `"invented"`: the code would return PASS_DECLARED_FIXTURE, demonstrating why a passing Boolean classifier is **not a producer receipt**. Do not insert these variants into the C01 case facts.
+
+**Submission and scoring:** Produce a four-row comparison, two explicit falsifiers, a proposed request to the application custodian and a short distinction between the executed *offline code* and an unexecuted *authorized route rehearsal*. Six local points: four correct classifications, one for identifying how the S40 negative control detects scope broadening, and one for preserving the authority/provenance limitations. An “all CTN logs verified” conclusion fails regardless of the numeric score.
+
+### Prioritize by decision harm, not by a readiness percentage
+
+An entry marked `yes` in the original C1 fixture is a declared teaching value. Even “2/5” is not an organizational readiness score: sources differ in criticality, time horizon and relation to safety. A source needed to preserve a short-lived identity trail may matter more to an immediate escalation than several low-value inventory cells. Conversely, a restore check may be foundational for continuity but not answer a narrow identity-attribution question. Assign each gap an **affected decision**, **failure consequence**, **last defensible decision point if known**, **safe evidence to request**, **authorizing role**, and **retest criterion**.
+
+Compare two synthetic backlog items. Item A is missing an after-hours identity alternate; its failure mode is *permission unavailable during short retention*. Item B is missing the last isolated backup restore; its failure mode is *copy existence without verified service correctness*. Neither is “complete” just because a contact number or backup job is supplied. Item A closes when an approved delegated role has been reached during a timed rehearsal and the data-owner rule is checked. Item B closes only for the tested copy, environment and target when an authorized restore has been executed, measured, compared with approved state and accepted by the service owner. Neither criterion is a generic compliance certificate.
+
+**Synthesis and next chapter boundary:** Chapter 1's C01 describes preparedness *before an incident*. The S41 training experiments here remain proposals and invented offline exercises. When C02 appears at 09:04 in Chapter 2, do not import the synthetic PASS state as evidence that CTN actually audited anything. Instead, carry the gaps forward as explicit owner/authority questions.
+
+**Continue studying — professional Chapter 01 of 12:** [← Course home](../../../README.md) · [Chapter index](../../SUBJECTS.md) · [Chapter 02 →](../MANUSCRIPT.md#ch-02).
+
+### Worked-answer expansion — EX001–EX005
+
+**Integration:** Add the following reasoning immediately after the original Subject 1 model answers and C1 original worked result. These are *extensions*, not substitute exercise IDs. The original 0–2 per-exercise rubric remains in force.
+
+**EX001 — Why each dependency supports a different decision.** A reviewable map should include five or more rows such as: API audit → “which request changed S41?” → application custodian → scheduled/manual coverage unverified; IdP → “which account/session fields can be produced?” → identity custodian → no after-hours alternate; support → “what was reported and received?” → support lead → no authoritative backend state; change ledger → “was S41 in a permitted task version?” → service owner → addendum process unknown; backup → “can selected slot values be reconstructed?” → recovery lead → restore correctness untested. Every row states *how to falsify readiness*: a missing scheduled route, unusable key, unavailable alternate or failed isolated restoration. C01 does not supply results for these tests. A table simply saying “SIEM: green” has no operational decision linkage.
+
+**EX002 — Falsifiable supervised rehearsal.** Define a permission-gated nonproduction change to S41, a known unrelated S40 event, the intended query predicate (exact slot plus stable request ID), expected producer UTC time, *start at actual test event*, twenty-minute maximum until a verified matching source receipt, and a separate observed query return. An approved test procedure is not its execution; the reviewer records both. Reject if S41 is absent, S40 is wrongly included, the ID is missing, the clock cannot be interpreted or the collection is late. The original C1 fixture's “yes” does not satisfy these conditions, and C1X's PASS_DECLARED_FIXTURE is only a consistency check. This prevents using a toy result to justify a real CTN collection.
+
+**EX003 — Missing authority is an explicit finding.** The identity custodian may have delegated evidence-export rights but the identity owner separately decides about session/account restrictions under the applicable plan. With the alternate and service-owner fallback unlisted, the correct cells are *unknown/await approved escalation*, not invented names. The incident lead can record contact attempts and seek organizational authorization; the analyst may not create an emergency power. An outcome that names a responsible role but leaves the authorization source undefined is **incomplete**, not approved.
+
+**EX004 — What “24 hours” cannot mean without proof.** A source-event retention period requires source configuration and event-time semantics. A collector query horizon requires index settings and a representative filter/ingestion check. An export queue lifetime requires request/creation and expiration receipts. These mechanisms lead to different safe collection windows; C01 supplies none. Prepare a bounded source question rather than calculating “C01 at 08:40 means expiry tomorrow at 08:40.” If an edge-of-window rehearsal is proposed, obtain consent for its **nondestructive** method; never try deleting relevant incident material to prove protection.
+
+**EX005 — Model 108-word handoff.** “At 08:40 UTC the CTN readiness worksheet identifies enrollment dependencies but not an after-hours identity alternate or a service-owner fallback. Its twenty-four-hour API audit claim has no verified source or clock anchor. I recommend two supervisor-approved rehearsals: first, use a harmless S41 scheduled change and unrelated S40 control to verify request-ID coverage and retrieval within twenty minutes; second, verify an authorized identity-custodian path when the primary is unavailable. The application owner should document manual-write audit coverage, and the recovery lead should propose an isolated restore acceptance test. All tests and approvals remain pending. C01 contains no evidence of a live incident or compromise.” Assess the stated owner, two measurable gaps, absence of invented outcomes and usable next shift action, not style alone.
+
+**Chapter 01 focal review:** C1X program independently executed, exact four lines recorded; its negative controls are reasoned within their declared fixture. EX001–EX005 each retain a corresponding answer and the original assessment criteria. NIST primary pages cited near factual framing; all C01 evidence remains readiness-only. Existing [Chapter 1](../MANUSCRIPT.md#ch-01), [Chapter 2](../MANUSCRIPT.md#ch-02) and [index](../../SUBJECTS.md) anchors already occur in the manuscript/course index.
