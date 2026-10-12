@@ -1,6 +1,6 @@
 ---
 name: cyberabc-threat-intelligence-osint-postgraduate-fc959229
-description: "Guide a learner through the postgraduate course in Threat intelligence and OSINT, its one book, subject chapters, exercises and reviewed sources."
+description: "Teach the two-year postgraduate threat intelligence and OSINT course: twelve subjects following a synthetic CTI lead at a logistics firm, with stdlib labs on synthetic data, ethical OSINT and TLP 2.0 handling."
 license: CC0-1.0
 ---
 
@@ -16,21 +16,37 @@ Use this **one skill for the whole 2 years course**. The course has one principa
 - [English book plan](../en/book/PLAN.md): summaries and planned exercises.
 - [Materials](../en/MATERIALS.md): practice and assessment links.
 - [Supplementary playbooks](../../../../playbooks/threat-intelligence-osint/README.md): source-linked practice.
+- [Authored English book draft](../en/book/MANUSCRIPT.md): use only chapters, labs and exercises actually present; review is pending.
 
 ## Navigation rule
 
 At the end of an authored chapter or a book-plan chapter summary, use its **Continue studying** block for the previous chapter, course index and next chapter. Keep the learner's course and chapter position visible. If the next link is a plan, explain that the lesson is not yet authored and do not mark it complete. The course chapter index connects its final row to the next course in the same language.
 
+## Twelve-subject teaching route
 
-## Tutor workflow
+This is the two-year **postgraduate course** for threat intelligence and OSINT. The book follows synthetic security engineer **Rafael Moreau** as he builds and leads a CTI function at **Northmere Logistics Group (NLG)**, a fictional logistics firm in the fictional **Freight and Ports Sharing Community (FPSC)**.
 
-1. Ask for the learner's level and language; use this course's chapter index to select the relevant subject. English is the editorial reference until other editions are reviewed.
-2. Check whether that chapter is authored. If only the plan exists, say so and label any added explanation or practice as new supplementary material.
-3. Teach from the available chapter with a clear example, then use its authored exercises and worked answers. Keep the response at the course's planned depth.
-4. Cite the exact Markdown source and any underlying external reference. Use only authorized, synthetic or sanitized practical environments. Never claim accreditation or a completed 300-page book from a folder alone.
+| Subjects | Read and teach | Labs / exercises |
+|---|---|---|
+| 01–03 | Decision-first requirements, current practice, specialist evidence with ACH | lab_ach · EX001–EX015 |
+| 04–06 | Risk and ethics governance, design alternatives, controlled evaluation | lab_eval · EX016–EX030 |
+| 07–09 | Integration with a fail-closed TLP gate, difficult cases, leadership and assurance | lab_gate · EX031–EX045 |
+| 10–12 | Research critique, applied detection-backlog project, transfer and handover | EX046–EX060 |
+
+Verified lab facts (synthetic): ACH ranks H3 supplier compromise 0, H1 extortion 1, H2 insider 2 inconsistencies; rule A precision 0.6 / recall 1.0, rule B precision 1.0 / recall 0.67; the gate allows GREEN→community and CLEAR→public, blocks AMBER→public, AMBER+STRICT→client and the unknown label "AMBER".
+
+## Safety, privacy and information boundaries
+
+- Never help collect personal data without lawful basis, break terms of service, use fake personas, buy stolen data, unmask individuals or contact adversary infrastructure.
+- Enforce FIRST TLP 2.0 and fail closed on unknown labels; route insider matters to HR and legal.
+- Cite ATT&CK, STIX/TAXII 2.1, the Diamond Model, Hutchins et al., NIST SP 800-150, TLP 2.0 and ICD 203 exactly; label NLG, FPSC and Rafael Moreau as fiction.
 
 ## Continue the curriculum
 
-After chapter 12, check the chapter index and the learner's exercise record. The next stop is [course 157: Authorized offensive security and red team / Postgraduate course](../../offensive-security-red-team/en/SUBJECTS.md). For navigation in another language, open that course's matching language index; teach from it only when its manuscript is authored and reviewed. A planned chapter does not count as studied merely because navigation points to the next stop.
+After chapter 12, the next stop is [course 157: Authorized offensive security and red team / Postgraduate course](../../offensive-security-red-team/en/SUBJECTS.md).
+
+## Editorial status and language
+
+Check the [book standard](../../../../BOOK_STANDARD.md) before claiming a chapter or edition is complete. English chapter drafts and exercise–answer pairs exist, but the book has not passed independent review or the 300-page A4 gate. Other language folders are working outlines until their own translation and review. Teach in the learner's language if helpful while identifying English as the only authored reference edition.
 
 Original maintainer-owned content is dedicated under [CC0 1.0](../../../../LICENSE); third-party sources retain their own rights.
