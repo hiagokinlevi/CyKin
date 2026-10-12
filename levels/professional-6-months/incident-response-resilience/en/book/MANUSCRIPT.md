@@ -1218,6 +1218,103 @@ Good conclusion: "C03/C09 report s-77 and C09 associates a runner-03 client; C04
 
 The second conclusion is operationally stronger: the supervisor can identify the exact missing evidence and the proposed owners. It also protects later lessons from retroactively changing the Chapter 05 checkpoint. Mechanism, actor, intent and authorization are separate questions with distinct evidence requirements.
 
+
+### 5.E1 A timeline is an argument with provenance, not an ordered story
+
+A professional timeline should preserve **four dimensions per row**: original producer event time (and precision), a normalized comparison time with its transformation, the case's knowledge/receipt time, and the exact claim the record can support. If the source says *approximately* 09:00, its normalized comparison time is still approximate. If a device shows 08:54 on a clock declared four minutes slow, the classroom estimate is 08:58; a professional should retain the raw 08:54 and ask about the offset's uncertainty before treating the equality with the 08:58 IdP sign-in as an exact overlap.
+
+The timeline's **scope** should be fixed before presenting it. At 09:22 C09 has been received and C10 shows a displayed unavailable slot, but neither C11 nor C12 exists in the learner's released state. A table assembled at 09:26 may use both later cards if marked as released at their actual times; a frozen 09:22 decision may not be silently rewritten with the new `batch-17` tag. An incident review should retain the earlier decision even when the hypothesis changes.
+
+Consider the following useful time uncertainties. C02 says a symptom was noticed *around* 09:00, while C05 reports an S42 edit at 09:01. If both descriptions are reliable, the symptom could precede that edit. It may concern an earlier unrelated problem, a clock difference, caching, or imprecise recollection. The correct procedure is **not** to move the support time to 09:02 to make a fluent story. Record the tension; then ask for a new, authorized discriminator such as a front-end trace linked to the reported symptom. Investigation quality improves when contradictions remain visible.
+
+At 09:26 a source-aware timeline can name C03 and C09's matching `s-77`, C09's claimed client `runner-03`, C04's independently observed runner browser, C05's application request `q-144`, and C12's self-reported `batch-17`. Its graph must not add `s-77 → q-144`: the application's session field is blank, and the job tag lacks proven producer semantics.
+
+### 5.E2 An investigative graph needs different edge types
+
+An investigation graph represents records as nodes and **typed, challengeable links** as edges. A source identifier shared within one producer can support a bounded equality statement if that producer's uniqueness/namespace contract is established. A label shared across two producers is weaker: the strings may use different namespaces, represent proxies or omit translation steps. A causal link is stronger still and needs a tested mechanism and matching operation context. Finally, a human-actor attribution needs independent evidence beyond an account, task or session label, especially when C07 explicitly says the account can be used by both automation and emergency operators.
+
+A responsible graph therefore distinguishes:
+
+| Edge type | Example in current case | What remains unproven |
+|---|---|---|
+| Source-value equality | C03 and C09 both supply `s-77` | C09 original-object completeness; person behind the account |
+| Application-key equality | C05 and C12 both name `q-144` | The external origin of the request |
+| Cross-source label similarity | C09 client `runner-03`, C04 device `runner-03` | Process-to-session identity and comparable field semantics |
+| Missing direct relationship | C09 `s-77` to C05 `q-144` | Any validated session/request join |
+| Claimed job provenance | C12 `batch-17` tag | That a real approved job emitted `q-144` |
+| Authorized task scope | C06 lists S40 and S41; C11 suggests an addendum | Existence, effective time and scope of any S42 addendum |
+
+This model is useful because *evidence can narrow a mechanism without identifying a person*. An approved scheduler run later found to emit `q-144` might support H1 for a technical path, but still would not establish who configured the task. The present checkpoint does **not** contain that validated run. Equally, C06's missing S42 in the visible calendar raises concern but does not prove that no separate approval was ever granted.
+
+### 5.E3 Choose a discriminator that can fail, not a request for “everything”
+
+A hypothesis becomes operational when the team names which result would strengthen it, which would weaken it, and what happens if the source is incomplete.
+
+**H1: an automated job wrote the wrong slot.** Current leads: scheduled use of the shared account, runner-03 client field in C09 and C12's tag. Against it: no preserved, validated job run for `q-144`, and visible approval includes S40/S41 only. Request the minimal job-run record including source, run ID, request ID, actual slot selection, event time, code/task version and job approval. If a complete, authenticated run manifest for that interval excludes `q-144`, H1 as an explanation of *that request* weakens. If the manifest is partial, absence remains unknown.
+
+**H2: the shared account was used outside the approved task scope.** Current leads: C05 S42 edit under `svc-enroll`, while C06 does not list S42. Alternative: C11 reports a possible addendum; emergency humans may share the account. Request the approved change ledger/version and bounded identity records, with documented field semantics. A valid S42 addendum plus coherent job/request path could weaken an unauthorized-use hypothesis but would not by itself establish that the current slot is correct. A denied collection does not automatically strengthen H2.
+
+**H3: the displayed symptom differs from current backend state.** Current leads: C02 and C10 are observations of a report/image, neither an authoritative S42 read. Against a *pure display-only* theory: C05 records an actual application edit which H3 must explain or accommodate. Ask the service owner to approve an authoritative S42 value/version read and a separately observed uncached view, retaining timestamps. An incorrect authoritative value would prevent the analyst from closing the incident as solely a display issue; a matching correct backend and inconsistent displayed view could strengthen the display/caching branch for that time.
+
+The strongest test is not necessarily the one most likely to confirm the analyst's favorite theory. It is the one that **changes a decision under the available authority and loss risk**. The service-owner S42 state check affects potential patron harm; the job-run/request-ID check affects the mechanism; the addendum affects authorization. Keep these questions separate even if a single custodian can coordinate them.
+
+### 5.E4 How to handle negative evidence without overpromising
+
+“No matching record” can mean different things. A scoped, healthy, known-complete query may support the absence of a particular recorded event **within its declared window**. A query with unspecified filters, delayed ingestion, unavailable historical records or a nonfunctional producer supports much less. If the cross-source identifier is missing entirely, no query on account label and time can manufacture it. A false claim that “no join means the sign-in and edit are unrelated” is as unwarranted as “the sign-in caused the edit.”
+
+The collection quality of C09 matters even though its `s-77` row is informative: missing original-object ID, byte count and digest limit claims about the acquired copy's integrity; none of those gaps means its values must be false. Preserve uncertainty instead of substituting either trust or distrust as a certainty. Another responder may later obtain those missing receipts, validate the same bytes and change the confidence rating, while the original 09:26 record remains versioned.
+
+At a supervised decision point, the analyst can record **confidence in the leading mechanism = unresolved**, **confidence that a producer reported S42 changed = supported within the supplied application record**, and **confidence that current backend state is incorrect = not measured**. Severity and intervention urgency can still be nonzero. Confidence must be attached to a *particular claim*, not to the entire case as if one percentage explained every dimension.
+
+### 5.E5 Offline lab C5X — compare identifier equality with an absent join
+
+**Environment:** Python 3 standard library, no files, requests, credentials or source modifications. The five edges are *invented representations* of the bounded source-card claims, and `C05-NEGATIVE` is an exercise-only adversarial control, **not another CTN case card**.
+
+~~~python
+edges = [
+    ("C03-C09", "same_namespace", "s-77", "s-77"),
+    ("C05-C12", "same_namespace", "q-144", "q-144"),
+    ("C09-C05", "cross_namespace", "s-77", None),
+    ("C09-C04", "cross_namespace", "runner-03", "runner-03"),
+    ("C05-NEGATIVE", "same_namespace", "q-144", "q-999"),
+]
+
+def classify(edge):
+    name, namespace, left, right = edge
+    if left is None or right is None:
+        return "UNKNOWN_MISSING_KEY"
+    if left != right:
+        return "UNMATCHED_VALUE_IN_TEST"
+    return ("VALUE_EQUAL_SEMANTICS_UNVERIFIED"
+            if namespace == "same_namespace"
+            else "LABEL_EQUAL_NAMESPACE_UNVERIFIED")
+
+for edge in edges:
+    print(edge[0], classify(edge))
+~~~
+
+**Executed output (five lines):**
+
+~~~text
+C03-C09 VALUE_EQUAL_SEMANTICS_UNVERIFIED
+C05-C12 VALUE_EQUAL_SEMANTICS_UNVERIFIED
+C09-C05 UNKNOWN_MISSING_KEY
+C09-C04 LABEL_EQUAL_NAMESPACE_UNVERIFIED
+C05-NEGATIVE UNMATCHED_VALUE_IN_TEST
+~~~
+
+The result is **not causal proof**. Even when values match, the producer's key namespace and provenance require independent verification. The direct session-to-request edge remains unknown because no shared key is supplied. **Adversarial control:** replace the `None` in C09-C05 with `"s-77"`; the displayed status would change to LABEL_EQUAL_NAMESPACE_UNVERIFIED, **not** to confirmed causal join or actor attribution. Replacing the negative q-999 with q-144 changes only the equality status in that controlled fixture. Neither mutation changes C05 or C12 source facts.
+
+**Required learner artifacts:** Five statuses, a three-hypothesis matrix, one graph distinguishing observed and unobserved edges, two least-privilege evidence requests, and a 09:26 handoff preserving current source gaps. **Five-point local scoring:** one for correct equalities, one for the missing link, one for cross-namespace ambiguity, one for the negative control and one for evidence requests that name owners and falsifiers. A learner who names a human attacker or reports `batch-17` as a validated run fails the evidence boundary.
+
+### 5.E6 An operationally usable 09:26 supervisor handoff
+
+At 09:26 the analyst's next decisions should be presented as *conditional*, rather than a recommendation to take immediate broad action. If a permitted authoritative S42 check later finds continuing wrong slot state or new harmful writes, the incident lead can ask the service/identity owners to compare Chapter 6 controls and their cost. If a verified `q-144` job-run and complete approved S42 scope later arrive, the team can review whether a downgrade is defensible. If the owner or source is unavailable, the record should say which claim is blocked and what preservation or escalation remains possible; it should not silently treat lack of evidence as safety.
+
+A complete handoff has a **decision clock** in addition to an event clock. At 09:26 C11 and C12 are usable. A reviewer must not import Chapter 6's later C13–C19 scope, approvals, execution receipts or controls into the assessment. Nor should a person be named behind `svc-enroll`: this case has a shared identity and no validated actor-to-operation edge. The next chapter's function is to plan reversible, owner-approved protection options, not to reward certainty unsupported by this chapter.
+
+**Chapter synthesis:** A source-traceable timeline and a typed evidence graph produce actionable uncertainty: identified service question, current supported observations, explicit contradictions, missing joins and prioritized requests. Keeping the missing links visible allows a supervisor to take proportionate steps if harm becomes verified, without treating a hypothesis as an observation.
+
 ### Common mistakes and limits
 
 - Writing a smooth story that hides contradictions. Preserve the approximate C02 symptom time and the exact C05 event time as separate sources.
@@ -2598,6 +2695,18 @@ C5|s-77_to_q-144|DIRECT_JOIN=NO
 ~~~
 
 Two specified fields match within the supplied fictional rows; the direct session-to-request edge is absent. The printed `DIRECT_JOIN=NO` is an analyst annotation, not an independently calculated causal finding. EX022 earns full credit only if the student requests identifier-namespace validation, declines human attribution and treats a missing key as unknown rather than proof of unrelated events.
+
+#### Chapter 5 expansion — EX021–EX025 (worked reasoning)
+
+**EX021 — Reconstruct the sources, not only the order.** Seven sufficient entries include: C06 approval event 08:50 **released 09:10** (S40/S41 only); C04 raw 08:54 estimated 08:58, ingested 09:06/released 09:09 (no session); C03 IdP 08:58, ingested 09:02/released 09:09 (`s-77`, no person); C02 approximately 09:00 symptom/09:04 receipt (report); C05 09:01 edit/09:07 ingestion/released 09:09 (`q-144`, blank session); C09 detailed identity events 08:58/08:59, received 09:18 (missing object/integrity metadata); C10 displayed 11:21 UTC+02:00 *conditionally* 09:21 UTC, received 09:22 (unknown clock/cache). C11 at 09:24 and C12 at 09:26 can be added **only** in the later final timeline. Each row includes exact card pointer and limitation; a time-sorted story without receipt/release does not meet the required artifact.
+
+**EX022 — Exact-field join reasoning.** C03/C09 share `s-77` in identity fields; C05/C12 share `q-144` in application fields. C09's `runner-03` client matches a *label* in C04 but not an authenticated process/session join. C05 has no session ID, so `s-77` cannot be directly joined to `q-144`. Request producer documentation or an approved known-good trace where the same explicit transaction/session identifier is emitted across both sources. The original C5 and new C5X lab are equality demonstrations; neither identifies a person or proves that batch-17 truly ran.
+
+**EX023 — Competing explanations with falsifiers.** H1 scheduled-job S42 mistake: tag and client are leads, but request/run validation and approved scope are missing; a trustworthy complete job manifest excluding `q-144` would weaken H1. H2 outside-scope account use: visible approval omits S42, but the possible addendum and shared account complicate intent; a valid S42 scope plus correlated authorized run could weaken H2. H3 display/state divergence: screenshot source/cache unknown and C05 reports an edit; a proven incorrect backend state would defeat an exclusively display-only answer. Each row needs a **different authorized check** that could fail; speculative certainty scores zero for source quality.
+
+**EX024 — Two bounded owner requests.** First, service/application owner to confirm *current S42 state, version, last change/request ID and observed time* by an authorized read-only selection, without other learner data; a wrong state would raise immediate service consequence, while a correct state changes the impact hypothesis. Second, job/application custodians to provide a preserved `q-144` run record, producer ID, relevant task version and approved slot list, with verified identifier semantics; a valid match changes H1, a mismatch or missing source leaves it open. The C11 addendum question should be recorded separately. No response or collection receipt is supplied at 09:26.
+
+**EX025 — Handoff model (approx. 157 words).** “At 09:26, CTN-IR-014 remains P2 provisional: C02 reports an S42 enrollment symptom and C05 records an S42 edit via q-144, but the current authoritative slot state and number affected remain unmeasured. C03 and C09 report session s-77, with C09 naming client runner-03; C04's corrected browser time is near the same minute, without a process-to-session key. C12 attaches an unverified batch-17 tag to q-144, not a proven job run. C06's visible task list covers S40/S41; C11 mentions a possible S42 addendum without producing it. C09 lacks complete source-copy provenance and C10 is a displayed symptom with unverified clock/cache. Ask the service owner for a bounded S42 state check and application/job custodians for a preserved q-144 run and validated join semantics. No human actor, approved control or collected follow-up is established. Review before further source loss or on verified harmful change.” A 140–200-word answer should preserve two live explanations, one explicit forbidden overclaim, scope/authority and next gate.
 
 ### Subject 6: EX026–EX030
 
