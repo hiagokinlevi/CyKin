@@ -1,6 +1,6 @@
 # Materials — AI and machine-learning security / Master's course / English
 
-[Edition overview](README.md) · [Chapters](SUBJECTS.md) · [One principal book plan](book/PLAN.md) · [Supplementary playbooks](../../../../playbooks/ai-security/README.md) · [Course skill](../skill/SKILL.md)
+[Edition overview](README.md) · [Chapters](SUBJECTS.md) · [One principal book plan](book/PLAN.md) · [Supplementary playbooks](../../../../playbooks/ai-security/README.md) · [Course skill](../skill/SKILL.md) · [Authored manuscript draft](book/MANUSCRIPT.md)
 
 **Teaching and examples:** each subject-chapter belongs to the one principal book. Plans describe intended content; only the linked manuscript contains authored lessons.
 
