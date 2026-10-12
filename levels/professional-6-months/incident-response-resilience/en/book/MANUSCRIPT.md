@@ -2284,6 +2284,83 @@ C9 learner release=BLOCK
 
 The flag token_map signifies unnecessary mapping detail in this simple fixture; in a real restricted message, the lawful and approved inclusion of identifiers would need a much richer rule. Even a printed REVIEW would **not** mean dispatched: the code never sends anything and does not inspect the sent field as a completed workflow. A safe variation changes approved to True in an isolated record, then explains why a second release-owner decision and a dispatch receipt would still be needed. The test prevents casual claims of transmission; it is not an access-control system.
 
+### 9.12 Communication claims need a provenance and authorization horizon
+
+A **service status** describes an owner-observed user-facing condition. A **data-impact status** concerns access, disclosure or handling of information under a separate assessment. A **communication status** records whether a particular draft was reviewed, approved and actually transmitted. These are three different evidence chains. C30's limited service acceptance at 10:45 cannot establish a privacy all-clear. C31's staging batch at 10:47 does not establish dispatch. C33's internal queue status reports not-dispatched for the inspected entries, but its gateway source contains a 10:49–10:51 gap. That gap does not demonstrate delivery **or** non-delivery; it marks a specific coverage deficit. Twelve pseudonymous queue tokens are not automatically twelve identified people.
+
+A professional incident update should have a **claim manifest**: exact audience, evidence cutoff, version, source IDs for each assertion, owner/approver, sensitivity decision, delivery channel, message state and next update. A draft and an approved message may have identical words but different operational significance. A message may be authorized but not sent; a failed send may be retried later; a sent service update may subsequently be superseded without changing what recipients originally received. Keep each stage as a dated receipt rather than using "communicated" as one status.
+
+[NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) treats reporting and coordination as incident-management concerns. The [NIST Privacy Framework](https://www.nist.gov/privacy-framework) provides a risk-management reference, not a determination of CTN's legal reporting duties or whether its token mapping is personal information. Those determinations depend on actual applicable law, contracts, source semantics and accountable legal/privacy review. The lab below uses original teaching rules; neither NIST source certifies them.
+
+### 9.13 Distinguish queue, gateway and recipient-level evidence
+
+Consider a possible messaging pipeline **only as a conceptual diagram**: staging → dispatcher → gateway → receiving system → person. Each arrow needs a real source to support it. C31 supports *staging* one mail-sync-04 batch of twelve pseudonymous tokens. C33 describes *internal queue status* for those entries and a gap in the inspected gateway log. Neither source provides message contents, an authenticated external gateway acceptance for the main case, a recipient identity mapping or final delivery. The right next request names batch ID, source coverage, event correlation semantics and exact missing interval. It is not a pretext to export the complete contact database.
+
+A **negative query** requires a declared searched frame, healthy producer, filters, ingestion horizon and source of truth before it supports even bounded absence. If the gateway is missing 10:49–10:51, writing "the mail did not leave CTN" is unsupported. Conversely, a gateway record in the separate V9 branch could support a *gateway stage* but would not prove a person read anything. V9 is released at 11:20 in its optional variant and cannot improve the canonical 11:00 note. An unverified allegation should produce a specific preservation/escalation request, not an immediate public breach statement.
+
+For privacy minimization, first establish what exact decision requires mapping a token to a person. A gateway-coverage investigation may only need the batch identifier and timestamps. Person-level mapping, if necessary, needs a separately approved purpose, restricted custodian route, field-level selection, custody controls and clear retention. Do not print contact records in a textbook or send an external status through an unapproved account.
+
+### 9.14 Two contrasted decisions under the same uncertainty
+
+**Correct 11:00 internal decision:** “C30 supports limited S42 return at 10:45 with ongoing monitoring. C31 reports twelve pseudonymous tokens staged in mail-sync-04; C33 reports these queue entries not-dispatched, with an inspected gateway gap at 10:49–10:51. External transmission, recipient identity and any notification obligation remain unestablished. Privacy steward and gateway custodian will review only the relevant batch/window; communications will prepare but not send a public service update before the appropriate approval. Next status checkpoint 12:00.” Each clause has a different producer or decision owner.
+
+**Incorrect reassurance:** “Enrollment recovered, and the queue says not-dispatched, so no data ever left and no notification is needed.” It uses a service check to settle privacy, expands a scoped queue result to all export routes and assigns legal authority to an analyst. The mirror-image incorrect alarm, “twelve people were breached,” equates token count with individuals and a source gap with transmission. A professional responder must reject both.
+
+If new evidence arrives, preserve the previous message version. The V9 gateway receipt is a separate simulated variant and may prompt a new approval review; it does not retroactively authorize the 11:00 draft. A correction should identify what newly observed fact changed, which earlier statement remains valid within its original horizon, and whether any *actually transmitted* message requires a follow-up. In the main CTN case, the learner-facing copy is still a draft.
+
+### 9.15 Offline laboratory C9X — release gates and evidence-scope limits
+
+This Python 3 standard-library fixture only classifies **invented claim cards**, without file or network access or any real message transmission. Clock arguments use compact integer HHMM values for this one-day toy exercise; they are not ISO timestamps or authenticated producer clocks. The rule refuses early V9 knowledge, unsupported universal delivery claims and an unapproved reported send.
+
+~~~python
+def assess9(as_of, claim, approved, sent, gateway_gap):
+    if claim == "V9_GATEWAY" and as_of < 1120:
+        return "FUTURE_VARIANT"
+    if sent and not approved:
+        return "INVALID_SENT_UNAPPROVED"
+    if claim == "EXTERNAL_NO_DELIVERY" and gateway_gap:
+        return "UNKNOWN_GATEWAY_COVERAGE"
+    if claim == "12_PEOPLE_AFFECTED":
+        return "MAPPING_AND_IMPACT_UNKNOWN"
+    if claim == "QUEUE_NOT_DISPATCHED":
+        return "SCOPED_QUEUE_STATUS_ONLY"
+    if claim == "SERVICE_LIMITED_RETURN":
+        return "LIMITED_C30_SERVICE_ONLY"
+    return "REVIEW_REQUIRED"
+
+CASES = [
+    ("C30", 1100, "SERVICE_LIMITED_RETURN", False, False, True),
+    ("QUEUE", 1100, "QUEUE_NOT_DISPATCHED", False, False, True),
+    ("GATEWAY", 1100, "EXTERNAL_NO_DELIVERY", False, False, True),
+    ("TOKENS", 1100, "12_PEOPLE_AFFECTED", False, False, True),
+    ("EARLY_V9", 1100, "V9_GATEWAY", False, False, True),
+    ("UNAPPROVED_SEND", 1100, "QUEUE_NOT_DISPATCHED", False, True, True),
+    ("LATE_V9", 1120, "V9_GATEWAY", False, False, True),
+]
+for name, *fields in CASES:
+    print(name + ": " + assess9(*fields))
+~~~
+
+**Literal tested output:**
+
+~~~text
+C30: LIMITED_C30_SERVICE_ONLY
+QUEUE: SCOPED_QUEUE_STATUS_ONLY
+GATEWAY: UNKNOWN_GATEWAY_COVERAGE
+TOKENS: MAPPING_AND_IMPACT_UNKNOWN
+EARLY_V9: FUTURE_VARIANT
+UNAPPROVED_SEND: INVALID_SENT_UNAPPROVED
+LATE_V9: REVIEW_REQUIRED
+~~~
+
+The **EARLY_V9** adversarial test preserves the 11:00 release boundary; **UNAPPROVED_SEND** illustrates a contradictory simulated state, not a logged CTN delivery. LATE_V9 still needs provenance and semantics review and cannot mean recipient-level delivery. Even a full set of positive flags cannot authorize a public communication, establish legal notification requirements or prove that data were exposed.
+
+**Practical activity:** Write two separate status ledgers, one for service and one for possible data transmission. Produce a five-field internal approval request, a restricted preservation question covering the 10:49–10:51 gap, a public holding message marked DRAFT, and a 12:00 review trigger. Then run C9X and explain the two adversarial rows. **Seven-point rubric:** one for each of service/data/message distinction, bounded queue result, gateway gap handling, token minimization, approval/delivery states, exact output and the release boundary. Unsupported legal conclusions are critical failures.
+
+### 9.16 Synthesis and next-step boundary
+
+An accurate message is part of incident response but cannot create evidence. At 11:00 the service has an owner-accepted *limited* return; the data assessment is open; message dispatch remains a separate approval-dependent act. Chapter 10 translates these distinctions into testable playbook decisions. The optional V9 11:20 evidence must remain isolated from the main case when evaluating its 11:00 status.
+
 ### Common errors and limits
 
 - Converting 12 queue tokens into 12 affected people without a validated mapping and scope decision.
@@ -3058,13 +3135,23 @@ The whole snapshot would regress S40/S41, while the supplied current state misse
 
 **EX041 — Model two-track status.** Service line: “At 10:45 C30 records service-owner acceptance of S42 return after C29's production checks; two-hour monitoring continues. Owner: service owner and application operator. Next checkpoint: scheduled monitoring review or any new S42 write.” Data-assessment line: “At 11:00 C31 shows 12 pseudonymous tokens in an internal staging batch; C33 reports the batch `not-dispatched` but the inspected gateway window has a 10:49–10:51 gap. External delivery and affected identities remain unconfirmed. Owner: privacy steward with queue/gateway custodians. Next checkpoint: approved scoped gateway/source review and 12:00 status.” One line must not borrow the other's confidence.
 
+**Additional professional worked reasoning:** The internal note must distinguish C30's 10:45 limited acceptance from C31's 10:47 staging batch and C33's 11:00 scoped not-dispatched queue status, with the gateway gap expressly unresolved. Name privacy steward and incident lead as different owners. Do not equate an internal queue state with every possible gateway/export path or claim twelve affected learners.
+
 **EX042 — Model restricted note.** “CTN-IR-014, 11:00 draft for the response group: C30 supports a limited S42 return to service at 10:45 after the 10:26 change and monitored checks; the application owner continues the two-hour watch. C31 reports an internal `mail-sync-04` staging batch with 12 pseudonymous recipient tokens, not 12 identified people. C33's scoped queue status says `not-dispatched` for those entries, while the inspected external-gateway records have a 10:49–10:51 gap. No external delivery or data-exposure finding is established. The privacy steward owns a bounded follow-up with the queue and gateway custodians and decides whether token mapping is needed under an approved purpose. Preserve original queue metadata and query limits. The incident lead will provide the next status at 12:00; no unsanctioned contact-list export or public data claim is approved.”
+
+**Additional professional worked reasoning:** For a learner audience, use only supported service status, monitoring, useful action and a next update; withhold internal account labels, recipient tokens, unconfirmed cause and a breach determination. The message remains DRAFT until the designated service/communications review is complete. A 12:00 update time promises another status, not proof the case will be closed by then.
 
 **EX043 — Model learner-facing draft.** “A class enrollment slot was temporarily unavailable. CTN completed service checks and returned that slot to use at 10:45 UTC. We are continuing to monitor enrollment and review the event. Learners do not need to take action based on this update. We plan to post another status by 12:00 UTC through this channel. This is a draft for service-owner and communications review and has not been sent.” The last sentence is an *editorial status line*; a real approved message would omit that sentence when sent and retain the approval receipt separately. It does not assert either exposure or no exposure.
 
+**Additional professional worked reasoning:** A privacy assessment request should identify the C31/C33 batch ID and 10:49–10:51 gap, the custodian for gateway and queue sources, selection constraints, provenance to obtain and the intended decision. Token-to-contact mapping is separate and requires privacy-owner purpose/permission; no legal hold, notification threshold, exposure or mapping result is supplied. C9X rejects inferring twelve actual people from the token count.
+
 **EX044 — Model privacy referral.** Ask the steward: (1) What do C31's token fields actually identify, and is mapping necessary for a specific decision? (2) Does C33's `not-dispatched` status cover only this batch or other paths? (3) Which bounded gateway source and time window could resolve the 10:49–10:51 gap, and who may collect it? (4) What are the verified retention and preservation requirements for the queue and gateway records? (5) Who has authority to classify data impact and decide whether any notice or preservation duty applies? The analyst offers C31–C33 source references and uncertainty, not a full contact-list request or a legal conclusion.
 
+**Additional professional worked reasoning:** At 11:00 separate the supported queue assertion (the selected internal entries are not-dispatched), the untestable global external-delivery claim due to the gateway gap, and the continuing limited service state. An empty window cannot be called a universal non-event. Request a bounded independent gateway or dispatcher record and receipt-namespace semantics. No result is a permission to issue an external message.
+
 **EX045 — Model V9 revision.** “Internal note v2, 11:20 in the **V9 simulation only**: a newly authenticated gateway receipt names `mail-sync-04`. This conflicts with the earlier `not-dispatched` queue view, which was accurate for its inspected source and time. Validate the receipt's event semantics, batch ID, content and recipient scope before concluding delivery to people. Preserve v1 and the new source; privacy steward owns the reconciled assessment.” The separate approval request asks communications and privacy owners whether the earlier learner-facing draft needs revision, what can now be stated and when to update. The new receipt does not backdate knowledge to 11:00, prove that the 10:49–10:51 gap contained a send, or identify 12 people.
+
+**Additional professional worked reasoning:** V9 is an optional 11:20 branch with an authenticated gateway receipt, not main-case C33 evidence. Preserve the original 11:00 message and produce a versioned proposed revision specifying what that gateway receipt proves and what recipient delivery, contact mapping and legal duty remain unknown. Communications and privacy owners separately assess the text; without an actual release receipt the revised note is UNSENT.
 
 **C9 draft-release gate — worked laboratory result.**
 
