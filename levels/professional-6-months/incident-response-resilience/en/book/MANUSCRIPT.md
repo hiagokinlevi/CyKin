@@ -1761,6 +1761,81 @@ The words **unexpected** and **outside approved** are labels relative to this fi
 
 **Failure injection:** remove the batch-17 entry from the observed mapping. The difference then indicates a missing approved task as well as the unexpected sync-override key, but it does not tell you whether the job actually vanished or the inventory collection was incomplete. The reviewer must request coverage metadata rather than launching a corrective disablement based on the set difference. The laboratory tests reasoning over finite sets; it is not an endpoint detection rule.
 
+### 7.12 Mechanism, corrective action and durable eradication are different claims
+
+The preserved C20 scheduler record identifies a sync-override run with q-144; the application and job custodians validated the request-ID namespace against C05. C23 finds the task absent from approved inventory, and separately finds the C22 recovery-method change unapproved. **Mechanism evidence** supports a particular task-to-edit chain. **Approval evidence** establishes that an operation was permitted or not. **Actor attribution** would require a source tying a human or principal to registration and execution. None of these statements automatically supplies the others. The task and recovery method might be related, but timestamps 08:47 and 08:52 do not establish a shared actor.
+
+**Eradication verification** has a time dimension. Reading a task's disabled flag is an immediate configuration check; seeing no run through 10:07 is a four-minute observation after C24's 10:03 report. If the task would not ordinarily run again during those four minutes, nonoccurrence has limited discrimination. A reviewer needs schedule metadata, the next expected trigger, runner inventory boundaries, source-ingestion health and a recurrence test. An unexpected re-registration or a q-144-like new S42 request must reopen the hypothesis. NIST's [SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) situates response, recovery and improvement in organizational risk management; this recurrence contract is original CyberABC teaching, not a NIST prescribed status test.
+
+A second workstream must address C22's unapproved recovery-method change under identity-owner authority. Before modifying it, preserve the configuration history and safely determine whether the method is active. Removal, associated credential/session changes, permitted integration tests and independent effect checks each need a distinct receipt. Never export or publish a real recovery secret. Disabling sync-override alone cannot certify that identity access was remediated.
+
+### 7.13 Compare two tempting narratives against the released facts
+
+**Bounded worked example.** At 09:54 the two unapproved changes are identified and remediation is still a proposal. At 09:59 C24 supplies owners' approval to disable only sync-override after preserving the task record. At 10:03 the operator reports it disabled and a read-only status agrees. No further run appears through 10:07. The defensible result is “specified task disabled with a short observed window; identity method and task recurrence unresolved.” At 10:06 the owner considers legitimate S42 costs and does not extend the separately approved C21 hold beyond 10:07. Monitoring and a new unexpected-write trigger are assigned; they do not demonstrate that the next scheduled run was blocked.
+
+**Incorrect worked example.** “An unknown task means malware, no run appeared for four minutes, and every access path was eradicated.” The conclusion converts unauthorized configuration into malicious intent, omits whether a run was scheduled in the observation period, ignores other runners and silently closes C22. It also ignores the negative control: the approved batch-17 job must remain functional after a task-specific correction. A shutdown that blocks both tasks may suppress the symptom while creating another service incident.
+
+The approved and observed job inventories may each be **partial**. A set difference identifies differences in the selected source frames; the owner must compare inventory versions, collection query, active schedulers, object identifiers and observation windows. SP 800-86's [forensic guidance](https://csrc.nist.gov/pubs/sp/800/86/final) supports treating source provenance as distinct from interpretation; its 2006 operational detail is not an endorsement of this toy comparison.
+
+### 7.14 Offline C7X — fail a recurrence test with no scheduled opportunity
+
+**Objective:** Test the logic separating proposal, authority, operator receipt, configuration effect, recurrence opportunity and legitimate integration. **Environment:** standalone Python 3 standard library, in memory; no files, credentials, scheduler actions or external connections. These flags are invented laboratory inputs, not additional CTN evidence or authentication of an approver.
+
+~~~python
+def assess7(p):
+    if not p["preserved"]:
+        return "HOLD_BASELINE_UNVERIFIED"
+    if not p["approved"]:
+        return "PROPOSED_NOT_APPROVED"
+    if not p["receipt"]:
+        return "APPROVED_NOT_EXECUTED"
+    if not p["disabled"]:
+        return "EFFECT_NOT_VERIFIED"
+    if not p["expected_fire"]:
+        return "NO_EXPECTED_TRIGGER_TESTED"
+    if p["new_run"]:
+        return "TASK_STILL_EXECUTING"
+    if not p["legitimate"]:
+        return "BUSINESS_REGRESSION"
+    return "BOUNDED_SCHEDULER_CHECK_NOT_ERADICATION"
+
+BASE = dict(preserved=True, approved=True, receipt=True, disabled=True,
+            expected_fire=True, new_run=False, legitimate=True)
+CASES = [
+    ("BASE", {}),
+    ("MISSING_BASELINE", {"preserved": False}),
+    ("NO_APPROVAL", {"approved": False}),
+    ("NO_EXECUTION", {"receipt": False}),
+    ("STATUS_UNKNOWN", {"disabled": None}),
+    ("NO_TRIGGER_ELAPSED", {"expected_fire": False}),
+    ("RECURRED", {"new_run": True}),
+    ("BATCH17_DOWN", {"legitimate": False}),
+]
+for name, changes in CASES:
+    print(name + ": " + assess7({**BASE, **changes}))
+~~~
+
+**Exact tested output:**
+
+~~~text
+BASE: BOUNDED_SCHEDULER_CHECK_NOT_ERADICATION
+MISSING_BASELINE: HOLD_BASELINE_UNVERIFIED
+NO_APPROVAL: PROPOSED_NOT_APPROVED
+NO_EXECUTION: APPROVED_NOT_EXECUTED
+STATUS_UNKNOWN: EFFECT_NOT_VERIFIED
+NO_TRIGGER_ELAPSED: NO_EXPECTED_TRIGGER_TESTED
+RECURRED: TASK_STILL_EXECUTING
+BATCH17_DOWN: BUSINESS_REGRESSION
+~~~
+
+**Adversarial control:** NO_TRIGGER_ELAPSED refuses to count a quiet period with no expected job invocation as a successful recurrence test; BATCH17_DOWN fails the legitimate-service gate even where the suspect task is reported disabled. Even BASE is only a logically consistent selected-scope exercise, never proof of complete incident eradication. A valid operational test requires verified scheduler provenance, expected fire time, and the relevant owners' authority.
+
+**Reproducible activity:** Produce two separate mechanism-to-fix cards, one for scheduler task and one for identity recovery method. Each must contain source IDs, approving owner, preserved baseline, implementation status, next expected observable opportunity, negative legitimate-service test, reopen trigger and unresolved actor question. **Seven-point rubric:** two for maintaining the two independent paths; one each for approval/execution distinction, recurrence opportunity, legitimate negative control, exact transcript and refusal to claim durable eradication. A human-attribution claim is a critical fail.
+
+### 7.15 Synthesis and handoff
+
+At 10:07, the task-specific mechanism is better supported than at 09:26 and the task has been reported disabled; the source does not prove durable nonexecution or resolve the unexpected recovery method. C21's hold extension and C24's task action are different authorizations. The Chapter 8 identity decision, data reconciliation and recovery testing are **later** evidence, not available to this 10:07 handoff.
+
 ### Common errors and limits
 
 - Calling `sync-override` an identified attacker rather than an unapproved task with a validated request link.
@@ -2818,11 +2893,19 @@ At 09:35 there is a proposal only; at 09:37 approval; at 09:39 reported enableme
 
 **EX031 — Model claim ledger.** Supported mechanism: C20's preserved scheduler record names `sync-override` run at 09:00 with `q-144`, and the custodian verified that this request ID matches C05's API namespace and C13's S42 change. Weakened interpretation: C12's `batch-17` tag alone suggested the approved job, but C14's complete manifest for that run lists only `q-140` and `q-141`. Forbidden attribution: neither C20's run nor C03/C09's `s-77` fields identifies the person who registered or operated the task. The two configuration changes in C20/C22 may be related, but no supplied source establishes that relation.
 
+**Additional professional worked reasoning:** The scheduler task-to-q-144 relation is a validated *mechanism*, C23's inventory comparison is an unapproved-change classification, and the registrant's identity and motive remain unknown. The C14 complete approved batch-17 run excludes q-144, not all possible runners; a self-reported batch label is weaker than validated producer/request semantics. Cite C20, C05, C13 and C23 separately rather than compressing them into an attacker narrative.
+
 **EX032 — Model two-path contract.** Task row: baseline = approved inventory and preserved C20 task/run copy; proposed change = disable `sync-override` only; authority = application/service owners with incident-lead coordination; positive test = scheduler status disabled and no run at next expected interval; negative test = approved `batch-17` S40/S41 path still works; monitor for re-registration or new S42 requests; reopen if either occurs. Recovery-method row: baseline = bounded C22 configuration audit and owner-approved settings; proposed change = remove unapproved method, address credentials/sessions under identity/service-owner approval; positive test = method absent and scoped old session inactive; negative test = approved integration works after change; monitor for new recovery methods; reopen on an unexpected addition. At 09:54 all changes are **proposed**, not executed. Preserve source records before altering them.
+
+**Additional professional worked reasoning:** Task workstream: preserve task and run, obtain a targeted owner decision, observe disabled state at execution and a later expected scheduled opportunity, and verify approved batch-17 S40/S41 still works. Identity workstream: preserve C22 configuration-audit evidence and request a separately authorized method/session/credential decision plus positive removal and negative legitimate-authentication tests. At 09:54 both are plans, not performed remediation.
 
 **EX033 — Model hold timeline.** C16 at 09:35 gives initial ten-minute tolerance, no authorization. C17 at 09:37 approves S42 hold until 09:47; C18 reports activation at 09:39; C19 checks one route at 09:42. C20 arrives 09:46 with task evidence. C21 records new approval at 09:46:30 for extension to 10:07 and operator receipt at 09:46:45. C24 disables the task at 10:03 after 09:59 approval. At 10:06 the owner assesses cost and residual risk and chooses no further extension; hold expires 10:07. Between expiry and C25's identity action, an unresolved recovery method and unverified write routes remain, so monitoring and a stop/escalation trigger are essential. None of these cards makes account disablement approved.
 
+**Additional professional worked reasoning:** C17 expires at 09:47; C21 is new scope-matched authority at 09:46:30 and an operator's 09:46:45 extension receipt to 10:07. C19 is a one-route protective observation only. C24 later authorizes task disablement at 09:59 and reports action at 10:03. At 10:06 the owner chooses no new hold extension. Report pending recurrence and identity questions after the 10:07 expiry, not complete containment.
+
 **EX034 — Model fixture output.** The supplied code prints exactly:
+
+**Additional professional worked reasoning:** The original code identifies sync-override and q-144 only in its two supplied inventories. Preserve both inputs, their versions, acquisition limits and request-ID namespace verification. C7X's NO_TRIGGER_ELAPSED illustrates why zero later runs cannot prove a disabled job remains suppressed without a scheduled opportunity. Neither a set difference nor a short quiet log identifies a human.
 
 ```text
 unexpected tasks: ['sync-override']
@@ -2832,6 +2915,8 @@ requests outside approved run: ['q-144']
 This compares the two provided sets only. It cannot prove the job inventory includes every runner, or that a person intentionally installed the unexpected task. If a source record were missing, a set difference could mislead; retain source provenance and the approved inventory's version alongside the output.
 
 **EX035 — Model 10:07 handoff.** “CTN-IR-014: C20's preserved scheduler record and validated request-ID semantics link `sync-override` to C05's `q-144` S42 edit. C22 separately reports an unapproved recovery-method addition with a blank actor. C23's owner checks find neither change in the approved inventory. C21's S42 hold extension was approved to 10:07; its earlier one-route check did not prove full coverage. At 09:59 the owners approved disabling only the task; the operator reported it disabled at 10:03 and no further run was observed through 10:07. The service owner allowed the hold to expire after a 10:06 review, with read-only monitoring and escalation for any new S42 edit. Identity-owner assessment, a scoped credential/session decision and service correction remain. Do not call the actor identified, the recovery method removed or eradication complete.”
+
+**Additional professional worked reasoning:** The 10:07 handoff must report C20's task/request join, distinct unapproved C22 recovery-method change, C21 authorized hold expiry, C24 approved task action and its short observed result, legitimate integration test to obtain, and owner review on recurrence. Do not import the Chapter 8 C25 identity effect, C27/C28 recovery tests or C29/C30 acceptance.
 
 **C7 inventory-delta extension — worked laboratory result.**
 
