@@ -2314,10 +2314,10 @@ This Python 3 standard-library fixture only classifies **invented claim cards**,
 
 ~~~python
 def assess9(as_of, claim, approved, sent, gateway_gap):
-    if claim == "V9_GATEWAY" and as_of < 1120:
-        return "FUTURE_VARIANT"
     if sent and not approved:
         return "INVALID_SENT_UNAPPROVED"
+    if claim == "V9_GATEWAY" and as_of < 1120:
+        return "FUTURE_VARIANT"
     if claim == "EXTERNAL_NO_DELIVERY" and gateway_gap:
         return "UNKNOWN_GATEWAY_COVERAGE"
     if claim == "12_PEOPLE_AFFECTED":
@@ -2339,6 +2339,7 @@ CASES = [
 ]
 for name, *fields in CASES:
     print(name + ": " + assess9(*fields))
+print("UNAPPROVED_EARLY_V9: " + assess9(1100, "V9_GATEWAY", False, True, True))
 ~~~
 
 **Literal tested output:**
@@ -2351,11 +2352,14 @@ TOKENS: MAPPING_AND_IMPACT_UNKNOWN
 EARLY_V9: FUTURE_VARIANT
 UNAPPROVED_SEND: INVALID_SENT_UNAPPROVED
 LATE_V9: REVIEW_REQUIRED
+UNAPPROVED_EARLY_V9: INVALID_SENT_UNAPPROVED
 ~~~
 
 The **EARLY_V9** adversarial test preserves the 11:00 release boundary; **UNAPPROVED_SEND** illustrates a contradictory simulated state, not a logged CTN delivery. LATE_V9 still needs provenance and semantics review and cannot mean recipient-level delivery. Even a full set of positive flags cannot authorize a public communication, establish legal notification requirements or prove that data were exposed.
 
 **Practical activity:** Write two separate status ledgers, one for service and one for possible data transmission. Produce a five-field internal approval request, a restricted preservation question covering the 10:49–10:51 gap, a public holding message marked DRAFT, and a 12:00 review trigger. Then run C9X and explain the two adversarial rows. **Seven-point rubric:** one for each of service/data/message distinction, bounded queue result, gateway gap handling, token minimization, approval/delivery states, exact output and the release boundary. Unsupported legal conclusions are critical failures.
+
+**Additional adversarial control — first failed condition:** The extra `UNAPPROVED_EARLY_V9` line intentionally supplies two independent defects: the V9 card was unavailable at 11:00 **and** a fictitious message was marked sent without approval. The validator reports the unauthorized-send defect first instead of allowing the future-release branch to hide it. The original seven classifications are unchanged. This is a deliberately chosen *priority of validation*, not evidence that CTN sent anything; a reviewer still records both defects. A flag claiming `sent=True` is not an authenticated dispatch receipt, and V9 remains separate from canonical C31–C33.
 
 ### 9.16 Synthesis and next-step boundary
 
@@ -3246,6 +3250,8 @@ C9 learner release=BLOCK
 ~~~
 
 Both fictional messages remain blocked: one lacks designated approval and the other lacks a reviewable release record. A local Boolean is not an authenticated CTN dispatch log. EX043 must label the learner-facing text as unsent until the relevant owner approves and a separate delivery receipt exists; C33 still cannot prove global nondelivery.
+
+**C9X adversarial clarification:** In the revised eight-line rehearsal, the original seven labels remain unchanged. An invented early V9 message with an unapproved `sent=True` flag returns `INVALID_SENT_UNAPPROVED` rather than hiding the execution inconsistency behind `FUTURE_VARIANT`. Independently, V9's actual 11:20 release is unavailable to the 11:00 main-case message. Neither result establishes dispatch or exposure; EX045's v2 remains a separate simulated correction subject to owner approval.
 
 ### Subject 10: EX046–EX050
 
