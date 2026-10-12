@@ -4046,7 +4046,7 @@ By the end of this chapter, a learner should be able to:
 
 ### 3.1 A decision loop rather than a fixed sequence
 
-The Chapter 2 triage left `B19` unexplained and identified an audit-retention deadline. As evidence changes, the incident lead needs a repeated loop: **observe → assess possible harm → compare authorized options → act → verify effect → reassess**. Containment aims to limit further harm while the cause remains under investigation. Eradication addresses a confirmed cause or persistence mechanism when the team can identify it. Recovery restores useful service under explicit checks and monitoring. These activities can overlap, and an intervention may have to be rolled back if its cost or side effects exceed its benefit.
+Chapter 2 left `B19` unexplained and identified a time-sensitive preservation risk: R15 supplies a 24-hour retention duration for detailed booking-audit records, but not the policy anchor or any verified deletion deadline. As evidence changes, the incident lead needs a repeated loop: **observe → assess possible harm → compare authorized options → act → verify effect → reassess**. Containment aims to limit further harm while the cause remains under investigation. Eradication addresses a confirmed cause or persistence mechanism when the team can identify it. Recovery restores useful service under explicit checks and monitoring. These activities can overlap, and an intervention may have to be rolled back if its cost or side effects exceed its benefit.
 
 [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) treats response and recovery as part of wider cybersecurity risk management. [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) addresses recovery from cybersecurity events. The classroom decision table below is a teaching model built for Harbor Library, not a universal playbook or an assertion that NIST mandates these exact steps.
 
@@ -4202,6 +4202,78 @@ print(f"write_pause_claim: {claim}")
 ```
 
 The final `claim` line deliberately says `SUPPORTED_FOR_TESTED_PATHS` even in a hypothetical all-blocked variant. It would still say nothing about undiscovered routes, future time windows, queue capacity or why the earlier anomalous edits occurred. In the printed W1 fixture the output is `NOT_ESTABLISHED`; the legacy-route state change is a concrete failure of the proposed write-pause claim in the isolated test. The incident lead should keep the result as a **failed validation**, ask the service owner to correct or narrow the control design, and require a new authorized test before relying on it. A manual queue may reduce service disruption, but it does not compensate for an uncontrolled write route.
+
+#### W1-SCOPE supplemental check — required route and service coverage
+
+The original W1 classifier gives a correct result for its complete fixture, but its final `all()` test silently accepts missing required routes: with only W-UI or with no rows, it can print `SUPPORTED_FOR_TESTED_PATHS`. A read response can also name `Room 2` when the independent value is actually `Room 4`. These are defects in the *teaching evaluator*, not observations of an actual control. Run the following supplemental audit **after both original W1 listings in the same scratch session**. It does not alter the five original output lines. Here W-UI and W-API are the two required write routes; W-QUEUE and W-READ are separate legitimate-service functions.
+
+```python
+# W1-SCOPE supplemental audit; requires the original PROBES and classify().
+EXPECTED = {
+    "W-UI": "write", "W-API": "write",
+    "W-QUEUE": "queue", "W-READ": "read",
+}
+
+def w1_gates(probes):
+    ids = [row[0] for row in probes]
+    if len(ids) != len(set(ids)):
+        return ("PROTECTION_UNEVALUABLE_DUPLICATE_ID",
+                "SERVICE_UNEVALUABLE_DUPLICATE_ID")
+    rows = {row[0]: row for row in probes}
+    if any(k not in EXPECTED or row[1] != EXPECTED.get(k)
+           for k, row in rows.items()):
+        return ("PROTECTION_UNEVALUABLE_UNEXPECTED_PROBE",
+                "SERVICE_UNEVALUABLE_UNEXPECTED_PROBE")
+
+    if not {"W-UI", "W-API"}.issubset(rows):
+        protection = "PROTECTION_UNEVALUABLE_MISSING_ROUTE"
+    elif all(classify(*rows[k][1:]) == "BLOCKED_IN_THIS_TEST"
+             for k in ("W-UI", "W-API")):
+        protection = "PROTECTION_TESTED_PATHS_PASS_NOT_CAUSAL"
+    else:
+        protection = "PROTECTION_TESTED_PATHS_FAIL"
+
+    if not {"W-QUEUE", "W-READ"}.issubset(rows):
+        service = "SERVICE_UNEVALUABLE_MISSING_FUNCTION"
+    else:
+        q, r = rows["W-QUEUE"], rows["W-READ"]
+        queue_ok = classify(*q[1:]) == "QUEUE_ITEM_RECORDED"
+        read_ok = (
+            classify(*r[1:]) == "READ_RETURNED_EXPECTED_VALUE"
+            and r[2] == "returned Room 2"
+            and r[3] == "Room 2"
+            and r[4] == "Room 2"
+        )
+        service = ("SERVICE_TESTED_FUNCTIONS_PASS"
+                   if queue_ok and read_ok
+                   else "SERVICE_TESTED_FUNCTIONS_FAIL")
+    return protection, service
+
+def print_w1_gate(label, probes):
+    print(f"{label}: {' | '.join(w1_gates(probes))}")
+
+both = [
+    ("W-API", "write", "rejected", "Room 2", "Room 2", "deny")
+    if row[0] == "W-API" else row
+    for row in PROBES
+]
+wrong_read = [
+    ("W-READ", "read", "returned Room 2", "Room 4", "Room 4", "read")
+    if row[0] == "W-READ" else row
+    for row in both
+]
+
+print_w1_gate("ORIGINAL_W1", PROBES)
+print_w1_gate("LEGACY_ROW_MISSING",
+              [row for row in PROBES if row[0] != "W-API"])
+print_w1_gate("NO_ROWS", [])
+print_w1_gate("BOTH_WRITES_BLOCKED", both)
+print_w1_gate("WRONG_READ_STATE", wrong_read)
+print_w1_gate("QUEUE_ROW_MISSING",
+              [row for row in both if row[0] != "W-QUEUE"])
+```
+
+Predict the six additional results before looking at the [W1-SCOPE worked result](#ir-rapid-ch03-w1-scope-result). An absent route is *unevaluated*, never blocked. Even when both named writes are blocked in this synthetic fixture, the result is not causal evidence of the proposed pause without a permitted pre-pause baseline, request-linked audit evidence and authoritative before/after reads. The queue test checks admission of one item, not eventual booking fulfillment, reconciliation capacity or recovery acceptance. No code here performs a live write or service call.
 
 **Practice submission.** Prepare (1) a four-row table of status and source fields; (2) a one-sentence containment claim with its scope and test window; (3) a decision record saying whether to rely on the pause, who must approve a change and how the manual item will be reconciled; and (4) a counterfactual W1-V in which W-UI's response remains `rejected` but its after-state becomes `Room 4`. Predict the new W-UI classification and the overall claim without changing any other field. The model output and a bounded decision appear in the final worked-results appendix. **Seven-point rubric:** one point for each of the four probe classifications, one for rejecting the broad pause claim with the W-API state evidence, one for a bounded owner-approved corrective and reconciliation plan, and one for the W1-V prediction. A 7/7 response demonstrates correct reasoning on W1, not verified containment of a real service.
 
@@ -4630,6 +4702,90 @@ assert (
 ~~~
 
 
+
+#### RB3-RECHECK supplemental audit — bind receipts to time and scope
+
+The baseline RB3 validator checks declared values but cannot inspect whether an approval was actually recorded before execution, whether a trigger was observed before approval, or whether the two post-state checks occurred after execution. A positive baseline label therefore does not establish that sequence. In a **fresh RB3-only scratch session**, run this supplement after the full 22-case program. Its receipts are new, invented classroom inputs; they are not R-series facts, authenticated records, or W1 observations. `approval_time == decision_time` and `execution_receipt_time == execution_time` are explicit assumptions of this small fixture, not universal operational rules.
+
+~~~python
+# RB3-RECHECK: requires original BASE, evaluate(), utc().
+from copy import deepcopy
+
+POSITIVE = "BOUNDED_REVERSAL_CHECKED_REVIEW_OPEN"
+RECEIPTS = {
+    "approval_ref": "APP-RB-01",
+    "approval_owner": "ServiceOwnerSim",
+    "approval_scope": {"staff-write"},
+    "approval_target": "CFG-GOOD-7",
+    "approval_time": utc("14:12"),
+    "trigger_time": utc("14:10"),
+    "execution_receipt_time": utc("14:13"),
+    "post_state_time": utc("14:14"),
+    "protection_checked_time": utc("14:15"),
+    "service_checked_time": utc("14:16"),
+    "review_as_of": utc("14:17"),
+}
+
+def rb3_recheck(packet, receipt):
+    original = evaluate(packet)
+    if original != POSITIVE:
+        return original
+    required = set(RECEIPTS)
+    if (set(receipt) != required or
+            any(receipt[key] is None for key in required)):
+        return "RECEIPT_METADATA_INCOMPLETE"
+
+    if (
+        receipt["approval_ref"] != packet["rollback_approval_receipt"]
+        or receipt["approval_owner"] != packet["rollback_owner"]
+        or receipt["approval_scope"] != packet["rollback_scope"]
+        or receipt["approval_target"] != packet["rollback_target"]
+    ):
+        return "APPROVAL_NOT_BOUND_TO_TARGET_AND_SCOPE"
+
+    start, end = packet["authorized_window"]
+    if not (
+        receipt["trigger_time"] <=
+        receipt["approval_time"] == packet["decision_time"]
+        and start <= receipt["approval_time"] <=
+        receipt["execution_receipt_time"] == packet["execution_time"] < end
+    ):
+        return "TRIGGER_APPROVAL_EXECUTION_ORDER_INVALID"
+
+    if not (
+        packet["execution_time"] <=
+        receipt["post_state_time"] <=
+        receipt["protection_checked_time"] <= receipt["review_as_of"]
+        and receipt["post_state_time"] <=
+        receipt["service_checked_time"] <= receipt["review_as_of"]
+    ):
+        return "POST_EXECUTION_EVIDENCE_TIME_INVALID"
+
+    return "BOUNDED_RECHECK_WITH_DATED_RECEIPTS_REVIEW_OPEN"
+
+def print_rb3_recheck(label, packet, changes):
+    receipt = deepcopy(RECEIPTS)
+    receipt.update(changes)
+    print(f"{label}: {rb3_recheck(packet, receipt)}")
+
+print_rb3_recheck("DATED_BASELINE", BASE, {})
+print_rb3_recheck("UNRECORDED_CHECKS", BASE,
+                  {"protection_checked_time": None})
+print_rb3_recheck("FUTURE_TRIGGER", BASE,
+                  {"trigger_time": utc("14:20")})
+print_rb3_recheck("LATE_APPROVAL", BASE,
+                  {"approval_time": utc("14:14")})
+print_rb3_recheck("WRONG_APPROVED_SCOPE", BASE,
+                  {"approval_scope": {"booking-read"}})
+print_rb3_recheck("CHECK_BEFORE_EXECUTION", BASE,
+                  {"post_state_time": utc("14:11")})
+print_rb3_recheck("PROTECTION_FAILED",
+                  {**BASE, "protection_check": False}, {})
+print_rb3_recheck("EARLY_VALID_TRIGGER", BASE,
+                  {"trigger_time": utc("14:01")})
+~~~
+
+Predict the eight additional results and compare the [RB3-RECHECK worked result](#ir-rapid-ch03-rb3-recheck-result). A real review would need trustworthy issuer-side approval and control receipts, source-clock semantics, the named operator, a verified pre-change baseline, linked request identifiers and separate protection and legitimate-service acceptance evidence. A passing synthetic check keeps human review open; it does not establish recovery or incident closure.
 
 **Before running:** predict the twenty-two scenario lines and record which gate each case tests. Run only the offline in-memory program; then compare with the [RB3 worked result](#ir-rapid-ch03-rb3-result) in the final appendix. The printed positive status describes a bounded synthetic reversal check with human review still open, never full incident recovery.
 
@@ -5661,7 +5817,7 @@ Use a compact 0–2 check per exercise: **0** if the requested artifact is missi
 
 #### EX031 — Evidence before change
 
-**Objective:** preserve enough context without turning preservation into a reason for unbounded delay. **Inputs:** R13, R17–R20 and R15's retention notice. **Output:** a four-row preservation request naming the source/item, bounded purpose, custodian or approval, and what the item cannot establish. Add a decision rule for when verified ongoing harm justifies an approved containment action before all four requests finish; record any omitted item and reason. A score of 2 calls the records **requests or supplied summaries** unless a new collection actually occurred and avoids bulk patron-data copying.
+**Objective:** preserve enough context without turning preservation into a reason for unbounded delay. **Inputs:** R9–R10, R13, R15 and R17–R20, all available within R1–R24 at the 09:37 checkpoint; use only the values supplied. R15 states a duration but not its deletion-clock anchor or an exact loss time. **Output:** a four-row preservation request naming the source/item, bounded purpose, custodian or approval, and what the item cannot establish. Add a decision rule for when verified ongoing harm justifies an approved containment action before all four requests finish; record any omitted item and reason. A score of 2 calls the records **requests or supplied summaries** unless a new collection actually occurred and avoids bulk patron-data copying.
 
 #### EX032 — Avoid premature eradication
 
@@ -7845,7 +8001,7 @@ At 09:37 these are classifications and proposed checks, **not executed events**.
 
 ### EX029 — Worked result
 
-| Option | Intended effect and uncovered path | Operational cost | Approval and executor | Verification and reversal |
+| Option | Intended effect and uncovered path | Service cost | Approval and executor | Verification and reversal |
 |---|---|---|---|---|
 | Revoke current `desk-a` session | Stop edits through that session; other sessions and non-identity paths remain possible. | Expected staff reauthentication and possible desk delay. | Incident lead and identity owner approve; identity administrator executes a named-session action. | Administrator confirms revocation; analyst checks a new, bounded audit interval and service owner checks desk impact. A verified staff member can reauthenticate through the approved process if service work must resume. |
 | Pause staff booking writes for fifteen minutes | Stop the staff write workflow; does not settle cause, read exposure or an alternate write path. | Manual queue and potential patron delay. | R21 records service-owner **tolerance**; owner must still approve the actual pause and application operator executes it. | Operator verifies write block in the approved scope; owner inspects queue and booking state before approved resumption. |
@@ -7855,6 +8011,15 @@ At 09:37 these are classifications and proposed checks, **not executed events**.
 **MQ3-linked reasoning:** R21 states a fifteen-minute pause is tolerable if staff use a manual queue; it is not an approval or execution receipt. The front-desk lead would preserve each intake receipt, while the service owner approves a reconciliation rule and the application operator verifies any approved write-path block. A matching retry may represent one logical operation with two receipts. An entry with no approval, an unknown booking, a changed expected version or a reused key with conflicting content must be held for review. Before resumption, the owner checks accepted booking state and assigns an outcome to every original entry; a proposed queue plan is not evidence that any Branch P request was fulfilled.
 
 **RB3 additional worked reasoning:** The two-row decision matrix still compares a proposed current-session revocation and a proposed fifteen-minute staff-write pause at 09:37. For revocation, the baseline would include the identified current session and the permitted reauthentication path; a verified legitimate-work failure could justify asking the incident lead and identity owner for a narrowly approved new authentication or access-restoration decision. A simple "unrevoke" claim is not automatically technically meaningful. Check that the selected protective constraint remains appropriate and that authorized staff can perform the required task within the approved scope.
+
+The required **same two options** can also be checked row by row for reversal readiness. These are *future conditional steps*, not events at 09:37:
+
+| Original option | Pre-intervention evidence | Trigger and separate reversal authority | Protection after inverse | Legitimate service after inverse |
+|---|---|---|---|---|
+| Current-session revocation | Named session; permitted sign-in and work baseline; identity and booking pointers. | Verified legitimate-work failure or failed session constraint; incident lead **and identity owner** approve a scoped sign-in or access action. | Verify the unacceptable original session path remains constrained or an approved alternative safeguard holds in scope. | Verify a permitted staff sign-in and booking task under the new approved scope. |
+| Fifteen-minute staff-write pause | Named write routes; permitted pre-pause write baseline; service and configuration reference. R21 grants no approval. | Verified bypass or owner-confirmed service harm; **service owner** and incident lead approve a new scoped inverse or replacement. | Probe each required route with request-linked response, authoritative state and coverage after the inverse. | Check permitted read/manual intake and reconcile queued requests against approved booking state before unrestricted writes. |
+
+No W1 or RB3 exercise observation becomes a completed action in the R1–R24 case.
 
 For the write-pause option, obtain a verified pre-change route/configuration reference and owner-defined legitimate operating condition; R21 says the interruption is tolerable but **does not approve** the pause. If a later independent test reported unacceptable service harm or protective ineffectiveness, the service owner would have to authorize a bounded reversal or replacement control with a named window and operator. A reported inverse must be followed by separate evidence that the appropriate protection remains and that legitimate booking service works, plus continued queue and booking-state obligations. At 09:37 neither initial action nor reversal has been executed. RB3's positive laboratory result is unrelated synthetic data, not a missing case receipt.
 
@@ -7866,10 +8031,12 @@ For the write-pause option, obtain a verified pre-change route/configuration ref
 
 | Narrow item to preserve or request | Purpose | Custodian and authority | Limit |
 |---|---|---|---|
-| R18 B20 booking-audit row and related B19 R9 row | Preserve the two edit times, IDs and values before R15's retention window removes detail. | Incident lead authorizes a bounded request to the application custodian; actual export status and collection time must be recorded. | Audit account label does not prove the human operator. |
+| R18 B20 booking-audit row and related B19 R9 row | Request the two edit times, IDs and values promptly; R15 gives a 24-hour duration but no verified deletion instant. | Incident lead authorizes a bounded request to the application custodian; actual export status and collection time must be recorded. | Audit account label does not prove the human operator. |
 | R13 current-session summary and an approved detail request | Reconstruct the specific session considered for revocation. | Identity administrator under incident-lead and identity-owner scope. | R13 itself lacks device and location detail; do not invent those fields. |
 | R10 plan plus R17 training-owner statement | Compare approved tasks with B19/B20 and retain the provenance of the owner's answer. | Training owner supplies the authorized plan; analyst records its date and completeness question. | A plan may be incomplete or superseded; R17 says no addendum is *known*, not that one is impossible. |
 | R20 restricted booking-state comparison copy | Check current B17–B20 state before any correction. | Service owner controls the copy and grants necessary access to the analyst. | The supplied R20 note does not provide row values; do not substitute later C1 values into the 09:37 record. |
+
+R9 and R18 are supplied booking-audit observations. Identifying their source rows for a preservation request does not establish that the raw rows remain retrievable or that they have been collected. R10 is a supplied training-plan observation, not proof that no later approved version exists. R15 supports urgent custodian clarification and a narrow authorized request, not a calculable deletion time. R20 describes a restricted comparison copy as available, but supplies neither itemized values nor additional learner access approval; P1/C1 remains a later exercise release.
 
 If a verified sequence of harmful edits is continuing and waiting for all four requests would prolong harm, the lead seeks approved containment promptly. The case note then lists which items were preserved, which were merely requested, which could not be obtained in time and why. A bulk patron export is not necessary to answer the narrow booking question.
 
@@ -7994,6 +8161,25 @@ The first two cases pass only the **bounded synthetic contract**. One is trigger
 **Required learner artifact:** Reproduce the twenty-two output lines. Create a three-column matrix `scenario | first failed condition | safe next owner-request`. Explain why an execution receipt without effect verification is inadequate, and why passing the legitimate-service test without passing the protection test does not constitute acceptable rollback. Identify one fact an actual operator would have to measure for each Boolean post-state check.
 
 **Acceptance criteria:** A full lab result reproduces every line, distinguishes prior intervention from separate reversal approval, rejects scope and time violations, correctly explains both post-reversal gates and keeps the human review open. A response fails if it treats the toy result as a real control operation, calls an unapproved inverse executed or equates a successful inverse with resolved root cause or complete recovery.
+
+<a id="ir-rapid-ch03-rb3-recheck-result"></a>
+
+#### RB3-RECHECK — Supplemental worked result
+
+The separately declared receipt fixture prints eight additional lines; the original 22-case transcript above remains unchanged:
+
+~~~text
+DATED_BASELINE: BOUNDED_RECHECK_WITH_DATED_RECEIPTS_REVIEW_OPEN
+UNRECORDED_CHECKS: RECEIPT_METADATA_INCOMPLETE
+FUTURE_TRIGGER: TRIGGER_APPROVAL_EXECUTION_ORDER_INVALID
+LATE_APPROVAL: TRIGGER_APPROVAL_EXECUTION_ORDER_INVALID
+WRONG_APPROVED_SCOPE: APPROVAL_NOT_BOUND_TO_TARGET_AND_SCOPE
+CHECK_BEFORE_EXECUTION: POST_EXECUTION_EVIDENCE_TIME_INVALID
+PROTECTION_FAILED: PROTECTION_NOT_ACCEPTED
+EARLY_VALID_TRIGGER: BOUNDED_RECHECK_WITH_DATED_RECEIPTS_REVIEW_OPEN
+~~~
+
+`UNRECORDED_CHECKS` refuses a missing check timestamp, while `FUTURE_TRIGGER`, `LATE_APPROVAL` and `CHECK_BEFORE_EXECUTION` reject impossible ordering. `WRONG_APPROVED_SCOPE` rejects a receipt that does not name the proposed inverse. `PROTECTION_FAILED` remains a failed post-state gate even with dated metadata. `DATED_BASELINE` and `EARLY_VALID_TRIGGER` demonstrate consistency of **declared synthetic inputs**, not authenticated execution, adequate route coverage or a completed recovery. A reviewer still needs a new owner-governed decision and separate source evidence for both post-state outcomes.
 
 <a id="ir-rapid-ch03-mq3-result"></a>
 
@@ -8169,6 +8355,23 @@ write_pause_claim: NOT_ESTABLISHED
 **W1-V counterfactual:** change only W-UI's after-state to `Room 4`, leaving its response `rejected` and audit label `deny`. The program classifies it as `WRITE_PATH_NOT_BLOCKED` because an observed value change outranks an asserted rejection. W-API remains a second `WRITE_PATH_NOT_BLOCKED`; W-QUEUE and W-READ keep their original results, and `write_pause_claim` remains `NOT_ESTABLISHED`. The conflict between W-UI's response/audit and resulting state calls for a provenance or control-path check, not a silent decision to trust the denial. W1-V is an exercise variant and does not alter the printed W1 fixture.
 
 Award the seven rubric points only when the four classifications, scoped failure claim, corrective handoff and variant are present. A learner who treats the `rejected` response alone as proof, averages the write outcomes, calls a queued request a completed booking, or imports W1's 09:40 approval into R21 must correct the result. W1 is supplementary; the book still has exactly 50 numbered exercises with matching answers.
+
+<a id="ir-rapid-ch03-w1-scope-result"></a>
+
+#### W1-SCOPE — Supplemental worked result
+
+The independent supplemental listing prints six **additional** lines after the original five:
+
+```text
+ORIGINAL_W1: PROTECTION_TESTED_PATHS_FAIL | SERVICE_TESTED_FUNCTIONS_PASS
+LEGACY_ROW_MISSING: PROTECTION_UNEVALUABLE_MISSING_ROUTE | SERVICE_TESTED_FUNCTIONS_PASS
+NO_ROWS: PROTECTION_UNEVALUABLE_MISSING_ROUTE | SERVICE_UNEVALUABLE_MISSING_FUNCTION
+BOTH_WRITES_BLOCKED: PROTECTION_TESTED_PATHS_PASS_NOT_CAUSAL | SERVICE_TESTED_FUNCTIONS_PASS
+WRONG_READ_STATE: PROTECTION_TESTED_PATHS_PASS_NOT_CAUSAL | SERVICE_TESTED_FUNCTIONS_FAIL
+QUEUE_ROW_MISSING: PROTECTION_TESTED_PATHS_PASS_NOT_CAUSAL | SERVICE_UNEVALUABLE_MISSING_FUNCTION
+```
+
+`LEGACY_ROW_MISSING` and `NO_ROWS` cannot pass the required write-route gate; the latter also lacks any service check. `WRONG_READ_STATE` shows why matching a returned label is insufficient when the independently observed state differs. `QUEUE_ROW_MISSING` cannot establish the legitimate queue function. `BOTH_WRITES_BLOCKED` supports only those tested paths in this invented trial and still cannot attribute the result to the pause without the missing baseline and linked source observations. These are separate protection and legitimate-service judgments, not a new canonical Harbor Library action.
 
 ### EX039 — Worked result
 
