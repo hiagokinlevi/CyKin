@@ -1102,7 +1102,94 @@ assert (evaluate(CASES[-1][1])
         == "ESCALATE_HOLD_DELEGATION_EXPIRED")
 ~~~
 
-Before running the program, predict which paths pass, which are held and whether escalation changes authority. Compare your 15-line transcript with the [AR1 worked result](#ir-rapid-ch01-ar1-result) in the final appendix. In particular, the **register**, not the request, controls revocation; an empty object set is not a valid bounded request.
+#### Request-bound approval check (supplementary AR1 rehearsal)
+
+The existing AR1 program correctly models the governed register's revocation flag, nonempty object scope, valid delegates, permitted custodian and approved confirmation channel. Its fifteen published results reproduce correctly. However, the core `evaluate` function tests whether a simulated approval item **exists**; it does not test whether the **issuing decision record** binds that item to the *specific* request identifier, operation, source and set of objects.
+
+For example, the original `BASE` proposal requests `TR-01` and includes a fictional generic receipt named `SIM-RECEIPT`. If the request is changed to another otherwise allowed object, `TR-02`, while the same receipt is reused, the original function returns `REHEARSAL_PATH_VALID_NOT_EXECUTED`. This is a **reproducible limitation of the toy validator**. It is not evidence that a real organization approved the second object.
+
+The pre-incident governance lesson should not call that second request approved. The simulated approval record must be associated with a stable request identifier **and** its approved operation, resource, objects and role. The following supplementary check introduces a small, independent *fictional issuer-side record* that the requester cannot silently redefine inside the evaluated card. It does not provide real identity authentication, a digital signature or a valid production permission.
+
+#### Supplementary AR1 Python 3 listing — run after the existing complete AR1 program
+
+~~~python
+# These are invented issuer-side approval records for the classroom.
+# The original AR1 program must have been executed first, so BASE,
+# PAUSE, RULES, REGISTRY and evaluate are already defined.
+SIMULATED_ISSUED_APPROVALS = {
+    ("TRAIN-001", "incident_lead"): (
+        "lead-sim", "SIM-RECEIPT",
+        "collect_training_audit", "training-audit",
+        frozenset({"TR-01"})
+    ),
+    ("PAUSE-001", "incident_lead"): (
+        "lead-sim", "SIM-RECEIPT",
+        "pause_staff_writes", "staff-write-route",
+        frozenset({"staff-write-route"})
+    ),
+    ("PAUSE-001", "service_owner"): (
+        "alternate-sim", "SIM-RECEIPT",
+        "pause_staff_writes", "staff-write-route",
+        frozenset({"staff-write-route"})
+    ),
+}
+
+def evaluate_with_approval_binding(card):
+    preliminary = evaluate(card)
+    if preliminary != "REHEARSAL_PATH_VALID_NOT_EXECUTED":
+        return preliminary
+
+    for role in RULES[card["operation"]]["roles"]:
+        item = card["approvals"][role]
+        presented = (
+            item["principal"], item["receipt"],
+            card["operation"], card["resource"],
+            frozenset(card["objects"])
+        )
+        issued = SIMULATED_ISSUED_APPROVALS.get(
+            (card.get("request_id"), role)
+        )
+        if presented != issued:
+            return "HOLD_RECEIPT_SCOPE_MISMATCH"
+    return preliminary
+
+valid_audit = {**BASE, "request_id": "TRAIN-001"}
+valid_pause = {**PAUSE, "request_id": "PAUSE-001"}
+
+reused_receipt = {
+    **valid_audit, "objects": {"TR-02"}
+}
+wrong_reference = {
+    **valid_audit, "request_id": "PAUSE-001"
+}
+
+for name, card in (
+    ("REQUEST_SCOPED_TR01", valid_audit),
+    ("REQUEST_SCOPED_PAUSE", valid_pause),
+    ("REUSED_RECEIPT_TR02", reused_receipt),
+    ("REUSED_REQUEST_ID", wrong_reference),
+):
+    print(name, evaluate_with_approval_binding(card))
+
+assert (
+    evaluate_with_approval_binding(valid_audit)
+    == "REHEARSAL_PATH_VALID_NOT_EXECUTED"
+)
+assert (
+    evaluate_with_approval_binding(valid_pause)
+    == "REHEARSAL_PATH_VALID_NOT_EXECUTED"
+)
+assert (
+    evaluate_with_approval_binding(reused_receipt)
+    == "HOLD_RECEIPT_SCOPE_MISMATCH"
+)
+assert (
+    evaluate_with_approval_binding(wrong_reference)
+    == "HOLD_RECEIPT_SCOPE_MISMATCH"
+)
+~~~
+
+Before running either program, predict which paths pass, which are held and whether escalation changes authority. Run the original listing first and compare its 15-line transcript with the [AR1 worked result](#ir-rapid-ch01-ar1-result). Then run the supplementary listing in the **same Python session** and compare its four additional lines with the request-bound worked result. Explain why `TR-02` passes the original routing check but fails the separate approval-binding check. In particular, the **register**, not the request, controls revocation; an empty object set is not a valid bounded request.
 
 ### 1.3c AR1 two-role readiness rehearsal
 **Objective:** Before a simulated incident, verify that a second person can reconstruct the correct authority route from the **current register and request packet**, identify an expired or out-of-scope delegation, and choose a safe escalation without asking the packet author to invent a missing approval.
@@ -1158,7 +1245,7 @@ For the Harbor Library exercise, the permitted scope is a fictional table of eig
 
 “Investigate the alert” is too vague to guide safe practice. A useful classroom scope has an **object** (R1–R8), an **allowed operation** (read, annotate and compare), an **excluded operation** (connect to any real service or account), a **time boundary** (the session), an **owner** (the course facilitator or learner for the local copy), and a **stop condition** (the supplied records do not answer the question). A real response plan must also specify the organization and system authority, data handling and escalation route. The classroom scope is deliberately narrower.
 
-Suppose a learner wants more device details than R8 contains. The authorized action is to write a request such as “Identity administrator: if approved, provide the sign-in device and source details for `desk-a` from 08:30 to 09:15 UTC; record the original timezone and collection method.” It is **not** to retrieve them from a real service. A request identifies a missing observation, its custodian, the smallest useful interval and the permission needed. The analyst can continue with the supplied dataset while that hypothetical request remains unanswered.
+Suppose a learner wants to investigate the device or sign-in origin associated with the reported `desk-a` authentication in **R1**. R1 identifies a successful account sign-in but does not supply a verified device, source-network context or human identity. The correct classroom step is to **propose** an authorization-bound question: “Identity administrator: if separately approved, identify the narrow sign-in source, interval, relevant device or session fields, their producer and timezone, and the method needed to preserve and verify those details.” The learner cannot perform that collection from the supplied R1–R8 table, and cannot access a real identity system on the strength of a classroom exercise. R8 is a **different source**: it is a network summary whose missing **destination detail** prevents a supported statement about data transfer. Device/session context for R1 and destination evidence missing from R8 must not be treated as the same field or the same custodial request.
 
 Scope also affects the strength of a conclusion. If only R1–R8 are in scope, the sentence “No exfiltration occurred” is unsupported. R8 explicitly lacks destination detail, and the learner has no additional network records. A defensible sentence is “The supplied network summary does not permit a conclusion about data transfer.” This is not evasive writing: it tells the next reviewer exactly which kind of evidence is missing.
 
@@ -1439,7 +1526,7 @@ Work from **only R1–R8** and the fictional authority rules in Chapter 1. The c
 
 #### EX001 — Observation or inference
 
-**Objective:** separate the content of a record from an explanation of that content. **Inputs:** R4, R5 and R7. **Output:** a four-row table with statement, classification, supporting record and one sentence describing the record's limit. Classify: (a) “R4 records a cancellation of B18”; (b) “`desk-a` was compromised”; (c) “R5 reports that B18 disappeared”; (d) “R7 proves the service can be restored in ten minutes.” Use the categories direct observation, hypothesis requiring confirmation and unsupported conclusion. A score of 2 requires distinguishing the *fact of a patron report* from independent proof of the patron's full experience.
+**Objective:** separate the content of a record from an explanation of that content. **Inputs:** R1, R3, R4, R5 and R7, all within the R1–R8 Round A release at 09:05. These are the exact source pointers for the four statements; do not use R9 or any later case result. **Output:** a four-row table with statement, classification, supporting record and one sentence describing the record's limit. Classify: (a) “R4 records a cancellation of B18”; (b) “`desk-a` was compromised”; (c) “R5 reports that B18 disappeared”; (d) “R7 proves the service can be restored in ten minutes.” Use the categories direct observation, hypothesis requiring confirmation and unsupported conclusion. A score of 2 requires distinguishing the *fact of a patron report* from independent proof of the patron's full experience.
 
 **Extension:** For each original statement, rewrite any unsupported conclusion into the narrowest defensible wording. Add one source that would be needed to upgrade the claim.
 
@@ -6986,12 +7073,12 @@ A crucial limitation is that the code's `ALLOWED` and `SCOPE` sets are **invente
 
 ### EX001 — Worked result
 
-| Statement | Classification | Source and limit |
-|---|---|---|
-| (a) R4 records B18 cancelled | Direct observation of the application record | R4, 08:44 UTC, states a cancellation. It does not state why it was made or whether the current patron view matches the audit. |
-| (b) `desk-a` was compromised | **Hypothesis requiring confirmation**, phrased as a finding without support | R1, 08:40, records a successful sign-in; R3–R4 record changes. Those events are compatible with unauthorized use but do not identify the person or establish compromise. |
-| (c) R5 reports B18 disappeared | Direct observation of a **report** | R5, 08:48, says what the patron reported. It does not independently verify the patron interface or the authoritative schedule. |
-| (d) R7 proves a ten-minute restore | Unsupported conclusion | R7, 08:52, reports that a backup job completed. No restore test, duration, data-consistency result or approved recovery target is supplied. |
+| Statement | Classification | Supporting supplied record(s) | Limit — one sentence |
+|---|---|---|---|
+| (a) “R4 records a cancellation of B18” | Direct observation **of record content** | R4, 08:44 UTC, application log | The row reports cancellation but does not demonstrate why it was authorized or whether a later patron view was correct. |
+| (b) “`desk-a` was compromised” | Hypothesis requiring confirmation; **unsupported if asserted as a confirmed finding** | R1 reports an account sign-in, and R3–R4 report booking edits | Those records do not establish unauthorized control, a human actor, intent or a completed compromise investigation. |
+| (c) “R5 reports that B18 disappeared” | Direct observation **of a patron report** | R5, 08:48 UTC, help desk | The report is evidence of what was reported, not an independent authoritative booking-state comparison. |
+| (d) “R7 proves the service can be restored in ten minutes” | Unsupported conclusion | R7, 08:52 UTC, backup monitor | A completed backup job is not an isolated restore, an elapsed recovery measurement or accepted service correctness. |
 
 A strong response distinguishes the *observable wording* of (b) from its epistemic status: the claimed compromise is unsupported **as a fact**, while unauthorized use remains a live hypothesis. Reclassifying it as “confirmed” because an account and edits appear near each other fails the exercise.
 
@@ -7010,10 +7097,10 @@ Neither answer is in R1–R8. The lead records a **request**, its owner and the 
 
 ### EX003 — Worked result
 
-| Dependency | Possible user effect | Supplied pointer | Missing discriminator and custodian |
-|---|---|---|---|
-| Staff identity service | If the account is being misused, further room changes may become possible; no current scope of misuse is established. | R1 sign-in at 08:40 and R2 dashboard access at 08:42. | The identity administrator, with incident-lead approval, checks a narrow session detail and account-change record. Compare to an authorized-user account; a sign-in label alone cannot identify the operator. |
-| Reservation database | An incorrect schedule could make a room appear unavailable or assigned differently to a patron. | R3–R4 record edits; R5 reports a symptom. | The service owner requests a bounded comparison of the authoritative schedule, change history and patron view for B17/B18. A database record matching an approved target favors an intended change; a mismatch may indicate a data or display problem. |
+| Dependency | Possible user-facing harm | Supplied Round A pointer | Missing discriminator and a negative result that would weaken the concern | Permitted custodian / requesting authority |
+|---|---|---|---|---|
+| Staff identity service | Unexpected use of a staff account might enable inappropriate booking changes; continuing misuse is unverified. | R1 account sign-in and R2 dashboard access; R3–R4 are recorded edits, not human-attribution proof. | A bounded, approved identity/session-context check might show expected account circumstances; that would weaken one hypothesis of unexpected access **without identifying the human operator or validating each edit's authorization**. | Identity administrator supplies only permitted detail after incident-lead approval; the analyst requests, not collects unilaterally. |
+| Reservation database and current booking state | Patrons could be shown incorrect room availability or an unsuitable assignment. | R3–R4 report edits and R5 reports a patron concern; no present-state comparison is provided. | An owner-approved comparison that matches the authoritative current B17/B18 values and patron display to the approved target would weaken a **selected state-discrepancy hypothesis**, without proving all rooms or users unaffected. | Service owner approves the target and comparison; application/data custodian supplies a bounded authorized view. |
 
 Both effects are **possible**. The R5 report supports investigating a visible problem, but the exercise has not measured all users or confirmed the database's current state. Other valid pairs, such as booking application and help desk, must still name a check that distinguishes explanations.
 
@@ -7140,10 +7227,10 @@ The exercise asks for **triggers**, not invented case facts. A new signal must b
 
 | Decision-log field | Model entry |
 |---|---|
-| Time and action | 09:05 UTC: approve a **classroom copy** of synthetic R1–R5 and a question to the service owner about whether B17/B18 were planned training edits. |
+| Time and action | **09:05 UTC:** the fictional incident lead approves a bounded **classroom-only** copy of synthetic R1–R5. **Actual local-copy execution: not evidenced in the model answer.** A question to the training/service owner about B17/B18 authorization is **proposed; response pending**. |
 | Reason and pointers | R1 sign-in, R3 B17 move, R4 B18 cancellation and R5 patron report establish a sequence; R6 makes training plausible but does not approve the edits. |
-| Approver and executor | Fictional incident lead approves the bounded analysis; analyst prepares the copy and records its scope. The service owner receives a **pending** question. |
-| Boundary and rejected option | Only R1–R5 are copied; R6–R8 remain available for interpretation. Do not collect a real log or restrict a real account. Immediate `desk-a` restriction is deferred because its service cost and approval have not been resolved. |
+| Approver and executor | **Approver:** fictional incident lead, for the stated classroom scope only. **Prospective executor:** learner analyst; mark `not performed` until the learner actually creates a local copy and records its true creation time, artifact and scope. The training owner has **not** yet answered the question. |
+| Boundary and rejected option | The authorized classroom-copy scope is limited to R1–R5; the model does not establish that the copy occurred. R6–R8 remain available for interpretation. Do not collect a real log or restrict a real account. Immediate `desk-a` restriction is deferred because its service cost and approval have not been resolved. |
 | Review and reversal | Reassess at 09:15 UTC or sooner on a verified new unexplained booking edit; consult the lead and service owner before changing access. |
 
 This entry does not claim the service owner has answered, that a production export occurred, or that `desk-a` is compromised. The exact role holders may be fictional, but the decision ownership and status must remain explicit.
@@ -7158,7 +7245,21 @@ This entry does not claim the service owner has answered, that a production expo
 | Cross-source clock synchronization is not documented. | R1–R8 ordering could be misleading if source clocks differ; the exercise assumes the supplied UTC values. | Identity and application custodians. |
 | No recorded restore-test result accompanies R7. | A completed backup job may not yield a correct schedule within an acceptable time. | Recovery lead and service owner. |
 
-**Priority ticket:** within the next readiness cycle, the incident lead records the room-booking service owner, alternate and after-hours contact, plus their decision authority for a simulated outage. **Verification drill:** present both a primary-owner-available and primary-owner-unavailable scenario; require the named decision maker to acknowledge each within the organization's chosen response window and to approve or reject a bounded disruption with reason and review time. Record the two elapsed times and decisions as pass/fail evidence. A published contact page without a successful drill would not close the ticket. A learner may reasonably prioritize clock or restore testing instead if the risk rationale and observable acceptance test are comparably specific.
+**Priority ticket and verification drill — worked model:**
+
+| Ticket field | Training model entry |
+|---|---|
+| Gap | The case-opening materials do not confirm the current service-owner/alternate authority route for a disruptive booking decision. |
+| Priority rationale | An unverified approver or expired alternate could delay a necessary decision or induce an unauthorized interruption; this is a **preparedness weakness**, not an observed incident failure. |
+| Accountable owner | Fictional incident lead coordinates; designated register steward and service manager own the governed appointment record. |
+| Specific change | Publish and review a **versioned governed** role/alternate record with operation/object scope, delegation issuer, validity, revocation, custodian and approved confirmation route. |
+| Proposed training deadline | **2026-10-25 UTC**, subject to explicit service-manager acceptance; a real organization's deadline must come from its own plan, not from NIST or this fiction. |
+| Positive rehearsal | A current correctly scoped primary or delegated route yields only a fictional **path-valid, not-executed** result. The independent reviewer can reconstruct the decision from the frozen register/request. |
+| Negative rehearsal | Expired/revoked delegate, wrong approver, missing receipt or expanded object scope produces **hold**, with a named approved escalation path; no source change or production control is executed. |
+| Retained acceptance evidence | Register edition/issuer, frozen request and reviewer response, input/result transcript, review date, named reviewer and any observed limitation. |
+| Failure and reopen condition | If an invalid route passes, a valid route cannot be reconstructed, or the tested governing edition changes, leave or reopen the ticket for steward correction and a separately versioned retest. |
+
+**Acceptance:** A reviewed register document **alone** does not close the ticket; the independent positive and negative rehearsal must be reproducible and the responsible owner must accept the observed result. The proposed due date is explicitly a synthetic ticket target, not a fact from R1–R8. A learner may choose a different justified gap from the original three-row register, but must supply the same accountable, measurable change and test logic.
 
 
 **AR1 worked extension:**
@@ -7219,6 +7320,23 @@ The function returns the **first** detected failure. In a real review there may 
 **Technical limits:** The model relies on invented role identifiers, a hardcoded register, synthetic receipts, declared confirmation flags and UTC-aware Python timestamps. It does not validate a corporate identity system, detect a forged approval, authenticate a person, prove a delegation was issued by a real governance owner, authorize a real collection, or execute an action. An actual program would require source provenance, verified identities, revocation information, appropriate approval evidence and permitted channels. A Python pass is **never** permission.
 
 **Learner submission:** Record the 15 output lines, classify each scenario as valid routing, held request or escalation-with-hold, explain the distinct cause of at least five negative controls, and identify which real-world records and verification procedures would be required before relying on a comparable workflow.
+
+#### Exact supplementary output — executed with Python 3
+
+~~~text
+REQUEST_SCOPED_TR01 REHEARSAL_PATH_VALID_NOT_EXECUTED
+REQUEST_SCOPED_PAUSE REHEARSAL_PATH_VALID_NOT_EXECUTED
+REUSED_RECEIPT_TR02 HOLD_RECEIPT_SCOPE_MISMATCH
+REUSED_REQUEST_ID HOLD_RECEIPT_SCOPE_MISMATCH
+~~~
+
+#### Worked explanation
+
+`REQUEST_SCOPED_TR01` and `REQUEST_SCOPED_PAUSE` match their separate invented issuance records. `REUSED_RECEIPT_TR02` changes the object from TR-01 to TR-02, retaining the previously issued classroom receipt; the request remains within the *general* allowed source set, but this **specific approval was not issued for that object**. `REUSED_REQUEST_ID` substitutes a request identifier belonging to a different operation, so the purported approval record cannot match.
+
+This is a **second-layer check**: a full positive teaching result should require both the original role/delegation route check and the request-bound issuance check. The original fifteen outputs remain correct **for what their original program actually checks**; they do not establish this additional property. The issuer records are hardcoded fictional premises; a production design would need an authenticated, governed issuer source and protection against forgery, replay and unauthorized modification. No action is performed by either program.
+
+**Review stop condition:** If a role, receipt or request binding cannot be authenticated in real response work, withhold execution and follow the organization's current authorization/escalation procedure. A teaching-only valid route does not become permission to collect data or change a service.
 
 [Return to the AR1 laboratory](#ir-rapid-ch01-ar1-lab).
 
