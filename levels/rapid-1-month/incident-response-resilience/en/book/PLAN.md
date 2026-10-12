@@ -27,15 +27,15 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Stage 1; 80 planned A4 pages; 13 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-01)
 
-**Teaching purpose and relevance:** Show that an incident decision depends on prior ownership, service knowledge and permission; prevent a suspicious signal from becoming an unauthorized investigation.
+**Teaching purpose and relevance:** Show that an incident decision depends on prior ownership, service knowledge, evidence readiness and permission; prevent a suspicious signal from becoming an unauthorized investigation.
 
-**Concepts and techniques:** Service dependencies; incident record; observation versus conclusion; decision owner; scoped authorization.
+**Concepts and techniques:** Service dependencies; testable evidence-readiness contract; source lineage and missingness; incident record; observation versus conclusion; decision owner; scoped authorization.
 
 **Depth and method:** At rapid course level, learners will follow a contained worked example. Use a guided case record to distinguish observations, assumptions and the next safe action.
 
-**Worked example:** A synthetic Harbor Library booking service and an unusual staff sign-in.
+**Worked example:** A synthetic Harbor Library booking service, a proposed D1 evidence contract and an unusual staff sign-in.
 
-**Practice and exercises:** Mark known and unknown facts on the service map, assign owners and open a bounded case record. The planned allocation is 13 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Map dependencies to bounded decision questions and source limits, assign owners and open a case record without treating planned telemetry as collected evidence. The planned allocation is 13 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on the entry knowledge and prepares Chapter 02. This is an editorial brief, not a completed lesson.
 
