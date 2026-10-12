@@ -1497,6 +1497,88 @@ C6 V6 all-route= FAIL
 
 The boolean **False** for a V6 write means denied, and **True** means accepted; the API's accepted S42 write fails V6's all-route denial criterion. The CTN state-machine deliberately has no all-route evidence. Its arbitrary three-route threshold is a teaching placeholder, **not** a known CTN route count or a real coverage estimator. A reviewer should reject the program if it is used to turn a fixture assumption into operational assurance. To extend safely, introduce a local fictional inventory with three named routes and require one independently sourced result per route; do not generate writes to a real service.
 
+### 6.12 Supervised control selection as a constrained decision
+
+A **containment objective** describes the prohibited change the team wants to prevent; an **implementation** is the particular guard, session action or account setting selected to pursue that objective. Those are not interchangeable. At 09:35, C13 supplies a service-owner-approved read of S42 as unavailable at version 19, and C14 excludes q-144 from one complete approved batch-17 manifest. Neither identifies the actor. C16 says an initial ten-minute S42 hold would be tolerable; it does not authorize a deployment. A defensible proposal therefore names *one S42 write boundary*, the initial impact tolerance, route-coverage unknowns, the approving roles and an independently observable stopping rule. It must not use C17's later approval to justify the proposal retrospectively.
+
+A supervised responder should compare three **counterfactual outcomes** before requesting a disruptive control: no further S42 changes but normal S40/S41 work remains possible; an alternate S42 route bypasses the hold; and legitimate S40/S41 writes fail because the control was applied too broadly. The first is a bounded success only for **observed routes and window**. The second is a protection failure. The third is an unacceptable business failure even if the suspicious operation was blocked. A control can therefore fail along two independent axes. Treating a dashboard's "enabled" signal as sufficient evidence of all-route behavior conceals both.
+
+There is also a fourth failure mode: the approved target and the actual target differ. If an operator is authorized to guard the S42 application route but the platform only permits account-wide disabling, the operator must hold the change and return it to the service owner and applicable change authority. The fact that the broader command is technically available is not permission to use it. This supports the organizational coordination emphasis in [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final); the CTN tuples and acceptance conditions are original teaching devices.
+
+### 6.13 Effective time, expiry and renewal are three separate receipts
+
+C17 at 09:37 authorizes a hold expiring at **09:47**. C18 at **09:39** reports g-22 enabled. Those timestamps do not describe the same event. If the hold genuinely became effective at 09:39 and expired as authorized at 09:47, the *potential effective duration* would be eight minutes, not ten. Even eight minutes is a calculated bound, not proof that every route was blocked throughout. C19's observations at 09:42 cover only one named application route and the S40 control. The correct operational record has fields for **approval window, actual activation, verified protective observations, review trigger, actual expiration/reversal and separately tested legitimate service**.
+
+The later C21 renewal is released in Chapter 7. Its 09:46:30 decision and 09:46:45 operator receipt must not appear in the Chapter 6 approval record as knowledge available at 09:42. This distinction protects both instruction and operational audit: a future rescue of a decision cannot create a historical authorization that did not exist.
+
+An expiry trigger can be implemented by a timer, an operator or a workflow; none is safe by naming the time alone. The observer should ask whether the control actually reverted, whether the original harmful route reopened, whether pending authorized S42 work needs reconciliation and whether the alternate routes were ever covered. If evidence is missing, say *effect unverified* and obtain a new owner-governed decision. Never convert an expiry rule into permission to prolong a block indefinitely or to resume unsafe writes automatically.
+
+### 6.14 Two contrasted decision examples
+
+**Defensible worked example, C13–C19:** At 09:35, the analyst documents C13's S42 state, C14's bounded exclusion of q-144 from batch-17 and C16's limited tolerance. The analyst proposes an S42-only temporary hold with a route inventory question, source-preservation request, S40/S41 service test and a fixed review. At 09:37 the distinct C17 decision authorizes that scope and expiry; at 09:39 C18 reports deployment; at 09:42 C19 supports *one observed S42 denial* and *one observed legitimate S40 acceptance*. The handoff says "reported enabled, selectively observed, other routes unverified." Its remaining tasks are an owner-led route/impact review and the impending expiry decision. It neither concludes that q-144 was malicious nor claims the cause was removed.
+
+**Seductive but incorrect example:** "The owner tolerated the hold at 09:35; therefore we disabled svc-enroll immediately, confirmed all paths blocked by the 09:42 dashboard and can extend the shutdown until attribution is finished." This statement backdates approval, broadens S42 scope to a shared account, invents an operation, turns one route into all routes and makes the extension indefinite. It would also obscure the fact that S40 success is part of the service-side acceptance condition. The corrected version must treat each action as a separate request, approval, operator report and route-specific observation.
+
+**When the test cannot safely be run:** A practitioner must not create unauthorized writes on a live enrollment platform merely to see whether the guard works. An application owner can design a known synthetic rehearsal in an isolated environment using explicitly permitted accounts and inert slot records. The case's C19 observations are already supplied; the learner can analyze them without issuing traffic.
+
+### 6.15 Offline laboratory C6X — permission versus tested route coverage
+
+**Scope:** This is a separate, entirely synthetic Python 3 standard-library exercise. No CTN source is queried or changed. The fixture labels reuse *times* of known C16–C19 decision checkpoints but the optional API-route rows are counterfactual, not canonical case facts. The purpose is to reject a falsely global protection verdict even when an operator reports success.
+
+~~~python
+from datetime import datetime
+
+def time6(s):
+    return datetime.strptime(s, "%H:%M")
+
+def assess6(approved, applied, routes, legitimate):
+    if approved is None:
+        return "PROPOSED_ONLY"
+    if applied is None:
+        return "APPROVED_NOT_APPLIED"
+    if time6(applied) < time6(approved):
+        return "INVALID_TIME_ORDER"
+    if not {"form", "api"}.issubset(routes):
+        return "COVERAGE_UNKNOWN"
+    if any(routes[k] != "deny" for k in ("form", "api")):
+        return "PROTECTION_FAIL"
+    if legitimate != "accept":
+        return "BUSINESS_FAIL"
+    return "BOUNDED_TEST_PASS"
+
+cases6 = [
+    ("C16", None, None, {}, None),
+    ("C17", "09:37", None, {}, None),
+    ("C18", "09:37", "09:39", {}, None),
+    ("C19", "09:37", "09:39", {"form": "deny"}, "accept"),
+    ("BYPASS", "09:37", "09:39", {"form": "deny", "api": "accept"}, "accept"),
+    ("SERVICE_DOWN", "09:37", "09:39", {"form": "deny", "api": "deny"}, "reject"),
+    ("LAB_PASS", "09:37", "09:39", {"form": "deny", "api": "deny"}, "accept"),
+]
+for name, *values in cases6:
+    print(name + ": " + assess6(*values))
+~~~
+
+**Exact observed output in an isolated Python 3 run:**
+
+~~~text
+C16: PROPOSED_ONLY
+C17: APPROVED_NOT_APPLIED
+C18: COVERAGE_UNKNOWN
+C19: COVERAGE_UNKNOWN
+BYPASS: PROTECTION_FAIL
+SERVICE_DOWN: BUSINESS_FAIL
+LAB_PASS: BOUNDED_TEST_PASS
+~~~
+
+For the adversarial **BYPASS** control, a form route denies an S42 write but a distinct API route accepts one; the broad containment objective fails. **SERVICE_DOWN** denies both tested writes but rejects the legitimate S40 operation, so the business gate fails independently. **LAB_PASS** is only a consistency verdict on invented observations, not real application approval or all-path production coverage; two routes were selected by the exercise author, not discovered through CTN source evidence. The canonical C19 cannot inherit any of these API outcomes.
+
+**Deliverable and scoring:** Submit seven exact states, a four-column approval/execution/protection/service ledger, the C17/C18 time comparison, a supervisor-controlled alternative if a route is unverified, and a specific expiry/rollback check. Award one point for each of three lifecycle distinctions, two for identifying the separate BYPASS and SERVICE_DOWN failures, one for the expiry bound, and one for refusing a CTN-wide claim from LAB_PASS (7 points). A fabricated operator event or an action outside the approved S42 scope is a critical error regardless of score.
+
+### 6.16 Operational synthesis and handoff to eradication
+
+A professionally useful handoff at 09:42 includes the current S42 effect scope; the C17 approval identifier/time/expiry; C18 operator report; C19's one-route observations and remaining route unknowns; which source evidence is preserved or only requested; service cost and rollback owner; and a time- or event-triggered next review. It does not name an attacker. Chapter 7 introduces a different type of evidence—the job/task mechanism—which can strengthen a cause-specific correction without rewriting this earlier containment record.
+
 ### Common errors and limits
 
 - Converting C16's tolerance into C17's approval. They are separate cards, two minutes apart, with different meanings.
@@ -2702,13 +2784,23 @@ Two specified fields match within the supplied fictional rows; the direct sessio
 
 **EX026 — Model impact ledger.** Stored state: C13's owner-approved read shows S42 version 19 `unavailable`, last request `q-144`, while its 08:30 comparison shows version 18 `open`; unknown is the extent of affected enrollments. Display symptom: C10 depicts an unavailable page at a conditional 09:21 UTC; capture clock and cache remain unverified. Approval: C15's official ledger through 09:33 has no S42 addendum, narrowing C11's possible claim; an unrecorded emergency process is still a question. Actor: C05 gives an account label and C14 excludes `q-144` from the approved `batch-17` run, but neither identifies a human. A ledger that states “attacker used `svc-enroll`” loses the evidence-boundary point.
 
+**Additional professional worked reasoning:** Preserve four separately sourced cells: C13's owner-approved S42 version-19 read, C14's one-run exclusion of q-144, C15's official-ledger check through 09:33, and C16's ten-minute *tolerance only*. A recommended S42 hold is conditional and requires incident lead/service owner approval; the shared account is not yet connected to q-144 by a trusted session key. A defensible impact ledger explicitly marks affected learner count and human operator *unknown*, not zero or malicious.
+
 **EX027 — Model option comparison.** Targeted `s-77` restriction could reduce use of that session, but the session-to-`q-144` join is absent and the identity/service owners must approve it; verification needs a session-state and service check, with identity operator rollback. A ten-minute S42 write hold narrows the harm path and preserves S40/S41, but could block legitimate S42 changes and miss an alternate route; the service owner and incident lead must approve scope/expiry, application operator executes, and a guarded-route observation plus rollback owner are required. Account-wide disablement covers more uses but may stop the approved job and other integration, so it needs broader owner/emergency-change approval and a service-wide recovery plan. At 09:35 propose the S42 hold **subject to approval**. C16 supplies tolerability, not that approval; uncertain route coverage is the principal failure mode.
+
+**Additional professional worked reasoning:** Score each option on the same target harm—another unapproved or erroneous S42 write—and on independent legitimate service continuity. A session-only restriction can miss q-144 because s-77 is not joined; account disablement can interrupt approved batch-17; a S42 hold targets smaller scope but must include route-inventory and expiry checks. The preferred 09:35 action is a **proposal** under C16, not an authorized implementation. Name the observation that would reverse the ranking.
 
 **EX028 — Model action-state timeline.** 09:35: analyst proposes a S42-only temporary hold based on C13–C16; no change yet. 09:37: C17 records incident-lead/service-owner approval for S42 only, expiry 09:47, operator and rollback owner named. 09:39: C18 reports `g-22` enabled by the application operator; execution receipt is distinct from approval. 09:42: C19 shows `q-147` denied on one S42 application route and `q-148` accepted for S40. The observed route supports partial effect; direct database or alternate API coverage is **not verified**. The account remains enabled. The next gate is the 09:47 expiry or an earlier observed bypass/legitimate harm.
 
+**Additional professional worked reasoning:** Use this precise provenance sequence: 09:35 C16 impact tolerance and analyst proposal; 09:37 C17 scoped approval expiring 09:47; 09:39 C18 operator reports g-22 enabled; 09:42 C19 observes one S42 denial q-147 and one S40 acceptance q-148. Neither 09:37 approval nor 09:39 report proves all-route enforcement. The apparent effective interval from 09:39 to 09:47 is eight minutes under a hypothetical continuous-activation assumption, not an automatically verified ten-minute block. C21 renewal belongs to the next chapter.
+
 **EX029 — Model rollback card.** Owner: application operator under service-owner and incident-lead decision. Triggers: approved 09:47 expiry without extension; evidence of an unguarded S42 write or unexpected S40/S41 denial; a legitimate enrollment impact above the owner-approved tolerance. Before rollback, preserve C17–C19 approvals, receipts and selected audit records under their custodians. On a triggering decision, operator would record configuration version, change time and authorization, then verify S42/S40/S41 behavior and monitor for renewed edits. **No actual rollback is in C17–C19**; an answer must leave execution and result blank. C21 later supersedes the expiry through a new approval, but cannot be presumed at the EX029 checkpoint.
 
+**Additional professional worked reasoning:** The expiry at 09:47 is an escalation/reversal trigger from C17, but the chapter has no actual rollback execution receipt. A bypass on a declared write route, unexpected S40/S41 denial, or service harm outside accepted tolerance also requires a new owner-led decision. Preserve source and operator evidence, then conditionally test post-action S42 protection **and** permitted enrollment behavior; resumption or renewal cannot be inferred from a clock alone. No privileged command is to be run by the learner.
+
 **EX030 — Model V6 verdict.** “The isolated V6 guard fails the **all-route** S42 containment criterion: browser-form writes are denied, but a direct API write is accepted; S40 succeeding shows the service is not globally blocked. Ask the application owner whether both routes share the guard predicate, then repeat positive S40 and negative S42 tests through each authorized path after a reviewed design change.” This is a training-tenant outcome. CTN's C19 still documents only its own observed route and should not inherit V6's bypass as an incident fact.
+
+**Additional professional worked reasoning:** V6's form write denial with a direct API acceptance is a *negative isolated all-route test*, even if S40 passes. It does not prove CTN's C19 guard failed; C19 observed only one route. Require a corrected route inventory, separate service-owner approval of the design, one labeled positive S40/S41 test and one negative S42 test **per in-scope route**, authoritative state snapshots, request/audit pointers and a failure-triggered rollback. The C6X BYPASS result gives the same logical lesson using separate invented rows, not a second incident card.
 
 **C6 containment-state extension — worked laboratory result.**
 
