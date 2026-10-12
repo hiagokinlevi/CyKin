@@ -1,5 +1,7 @@
 # Subjects and book chapters — OT, IoT and cyber-physical security / Postgraduate course / English
 
+> **Quality audit (12 Oct 2026):** the previous English draft of this book was template-generated (repeated paragraphs, one generic answer) and is withdrawn from the progress score. Chapters are being rewritten by hand; until then the manuscript is not counted as authored teaching.
+
 **One course, one principal book, 12 subjects and chapters, one course skill.** Only links marked Draft point to authored teaching; a planned chapter is a summary, not a completed lesson.
 
 English is the reference edition.
@@ -10,17 +12,17 @@ English is the reference edition.
 
 | Semester | Chapter / plan | Curricular subject | Hours | Planned A4 pages | Exercise target | Teaching state | Next step |
 |---|---|---|---:|---:|---:|---|---|
-| 1 | [01](book/PLAN.md#ch-01) | Advanced security decision-making | 50 | 35 | 5 | [Draft](book/MANUSCRIPT.md#ch-01) | [02 · Draft](book/MANUSCRIPT.md#ch-02) |
-| 1 | [02](book/PLAN.md#ch-02) | OT, IoT and cyber-physical security: current practice | 50 | 35 | 5 | [Draft](book/MANUSCRIPT.md#ch-02) | [03 · Draft](book/MANUSCRIPT.md#ch-03) |
-| 1 | [03](book/PLAN.md#ch-03) | OT, IoT and cyber-physical security: specialist evidence | 50 | 35 | 5 | [Draft](book/MANUSCRIPT.md#ch-03) | [04 · Draft](book/MANUSCRIPT.md#ch-04) |
-| 2 | [04](book/PLAN.md#ch-04) | Advanced risk and ethics | 50 | 35 | 5 | [Draft](book/MANUSCRIPT.md#ch-04) | [05 · Draft](book/MANUSCRIPT.md#ch-05) |
-| 2 | [05](book/PLAN.md#ch-05) | OT, IoT and cyber-physical security: design alternatives | 50 | 35 | 5 | [Draft](book/MANUSCRIPT.md#ch-05) | [06 · Draft](book/MANUSCRIPT.md#ch-06) |
-| 2 | [06](book/PLAN.md#ch-06) | OT, IoT and cyber-physical security: controlled evaluation | 50 | 35 | 5 | [Draft](book/MANUSCRIPT.md#ch-06) | [07 · Draft](book/MANUSCRIPT.md#ch-07) |
-| 3 | [07](book/PLAN.md#ch-07) | OT, IoT and cyber-physical security: organizational integration | 50 | 35 | 5 | [Draft](book/MANUSCRIPT.md#ch-07) | [08 · Draft](book/MANUSCRIPT.md#ch-08) |
-| 3 | [08](book/PLAN.md#ch-08) | OT, IoT and cyber-physical security: difficult cases | 50 | 35 | 5 | [Draft](book/MANUSCRIPT.md#ch-08) | [09 · Draft](book/MANUSCRIPT.md#ch-09) |
-| 3 | [09](book/PLAN.md#ch-09) | OT, IoT and cyber-physical security: leadership and assurance | 50 | 35 | 5 | [Draft](book/MANUSCRIPT.md#ch-09) | [10 · Draft](book/MANUSCRIPT.md#ch-10) |
-| 4 | [10](book/PLAN.md#ch-10) | Research reading and critique | 50 | 35 | 5 | [Draft](book/MANUSCRIPT.md#ch-10) | [11 · Draft](book/MANUSCRIPT.md#ch-11) |
-| 4 | [11](book/PLAN.md#ch-11) | Applied project | 50 | 35 | 5 | [Draft](book/MANUSCRIPT.md#ch-11) | [12 · Draft](book/MANUSCRIPT.md#ch-12) |
-| 4 | [12](book/PLAN.md#ch-12) | Final review and transfer | 50 | 35 | 5 | [Draft](book/MANUSCRIPT.md#ch-12) | [Course 161 →](../../critical-sector-security/en/SUBJECTS.md) |
+| 1 | [01](book/PLAN.md#ch-01) | Advanced security decision-making | 50 | 35 | 5 | Rewrite in progress | [02 · Plan](book/PLAN.md#ch-02) |
+| 1 | [02](book/PLAN.md#ch-02) | OT, IoT and cyber-physical security: current practice | 50 | 35 | 5 | Rewrite in progress | [03 · Plan](book/PLAN.md#ch-03) |
+| 1 | [03](book/PLAN.md#ch-03) | OT, IoT and cyber-physical security: specialist evidence | 50 | 35 | 5 | Rewrite in progress | [04 · Plan](book/PLAN.md#ch-04) |
+| 2 | [04](book/PLAN.md#ch-04) | Advanced risk and ethics | 50 | 35 | 5 | Rewrite in progress | [05 · Plan](book/PLAN.md#ch-05) |
+| 2 | [05](book/PLAN.md#ch-05) | OT, IoT and cyber-physical security: design alternatives | 50 | 35 | 5 | Rewrite in progress | [06 · Plan](book/PLAN.md#ch-06) |
+| 2 | [06](book/PLAN.md#ch-06) | OT, IoT and cyber-physical security: controlled evaluation | 50 | 35 | 5 | Rewrite in progress | [07 · Plan](book/PLAN.md#ch-07) |
+| 3 | [07](book/PLAN.md#ch-07) | OT, IoT and cyber-physical security: organizational integration | 50 | 35 | 5 | Rewrite in progress | [08 · Plan](book/PLAN.md#ch-08) |
+| 3 | [08](book/PLAN.md#ch-08) | OT, IoT and cyber-physical security: difficult cases | 50 | 35 | 5 | Rewrite in progress | [09 · Plan](book/PLAN.md#ch-09) |
+| 3 | [09](book/PLAN.md#ch-09) | OT, IoT and cyber-physical security: leadership and assurance | 50 | 35 | 5 | Rewrite in progress | [10 · Plan](book/PLAN.md#ch-10) |
+| 4 | [10](book/PLAN.md#ch-10) | Research reading and critique | 50 | 35 | 5 | Rewrite in progress | [11 · Plan](book/PLAN.md#ch-11) |
+| 4 | [11](book/PLAN.md#ch-11) | Applied project | 50 | 35 | 5 | Rewrite in progress | [12 · Plan](book/PLAN.md#ch-12) |
+| 4 | [12](book/PLAN.md#ch-12) | Final review and transfer | 50 | 35 | 5 | Rewrite in progress | [Course 161 →](../../critical-sector-security/en/SUBJECTS.md) |
 
 A planned next step is a navigation target, not an authored lesson. Keep the completion position at the first unwritten chapter. Page and exercise columns are editorial targets. The book is complete only after its content and A4 rendering meet the publication gate.
