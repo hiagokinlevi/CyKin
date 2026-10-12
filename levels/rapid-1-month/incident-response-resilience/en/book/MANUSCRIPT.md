@@ -2890,6 +2890,17 @@ def status(s):
     if s["as_of"] < rec["active_from"]:
         return "NOT_YET_ACTIVE"
 
+    if rec["term_end"] <= rec["active_from"]:
+        return "INVALID_CONTROL_TERM"
+    trail = [(kind, utc(clock)) for kind, clock in s["history"]]
+    if (
+        not trail
+        or any(trail[i][1] > trail[i + 1][1]
+               for i in range(len(trail) - 1))
+        or any(when > s["as_of"] for _, when in trail)
+    ):
+        return "HISTORY_NOT_AVAILABLE_AS_OF"
+
     # Preserve earlier steps; a release is an appended event.
     if "RELEASE_RECORDED" in [
         kind for kind, _ in s["history"]
@@ -2996,11 +3007,29 @@ assert (
     status(variant(CASES[-1][1]))
     == "RELEASE_RECORDED_RECHECK_REQUIRED"
 )
+
+# Negative controls remain outside the R-series case record.
+future_release = variant({
+    "history": BASE["history"] + (("RELEASE_RECORDED", "10:05"),)
+})
+early_review = variant({"as_of": utc("09:45")})
+invalid_term = variant({
+    "receipt": {**RECEIPT, "term_end": utc("09:35")}
+})
+for label, sample in (
+    ("FUTURE_RELEASE", future_release),
+    ("FUTURE_EFFECT_CHECK", early_review),
+    ("INVALID_TERM", invalid_term),
+):
+    print(f"{label}: {status(sample)}")
+assert status(future_release) == "HISTORY_NOT_AVAILABLE_AS_OF"
+assert status(early_review) == "HISTORY_NOT_AVAILABLE_AS_OF"
+assert status(invalid_term) == "INVALID_CONTROL_TERM"
 ~~~
 
-Before reading the final appendix, predict all sixteen output lines and explain the first blocking condition for each variant. Compare the actual run with the [HOLD2 worked result](#ir-rapid-ch02-hold2-result).
+Before reading the final appendix, predict the original sixteen output lines and the three additional negative-control lines. Explain the first blocking condition for each variant. Compare the actual run with the [HOLD2 worked result](#ir-rapid-ch02-hold2-result).
 
-**Required learner artifacts:**Reproduce all sixteen output lines; create a scenario table with the first blocking condition and a safe next request; identify why `COPY_ONLY` does not establish source hold and why `OLDEST_MISSING` does not prove deletion timing; propose a reviewer check for release and expiry that does not erase history or delete data.
+**Required learner artifacts:** Reproduce the sixteen baseline and three additional output lines; create a scenario table with the first blocking condition and a safe next request; identify why `COPY_ONLY` does not establish source hold and why `OLDEST_MISSING` does not prove deletion timing; propose a reviewer check for release and expiry that does not erase history or delete data. A future lifecycle entry cannot support an earlier `as_of` conclusion; even a consistent fixture does not authenticate a real hold.
 
 **Five-point assessment for this unnumbered lab:** One point each for exact output, correct source/object/interval coverage reasoning, separation of copy from source control, correct treatment of unavailable custodian or oldest row, and expiry/release history with explicit effect limits. The lab is supplemental and adds **no new EX identifier**.
 
@@ -3161,8 +3190,18 @@ The fixture includes an artificial returned teaching identifier, `VQ-01`. This i
 RELEASE = {"R9": "09:20", "R14": "09:20", "R15": "09:20"}
 
 def minute(clock):
-    h, m = map(int, clock.split(":"))
-    return 60 * h + m
+    if (
+        not isinstance(clock, str)
+        or len(clock) != 5
+        or clock[2] != ":"
+        or not (clock[:2] + clock[3:]).isascii()
+        or not (clock[:2] + clock[3:]).isdigit()
+    ):
+        raise ValueError("expected an HH:MM clock")
+    hour, minute_value = int(clock[:2]), int(clock[3:])
+    if not (0 <= hour < 24 and 0 <= minute_value < 60):
+        raise ValueError("clock out of range")
+    return 60 * hour + minute_value
 
 def can_use(record, decision):
     return minute(RELEASE[record]) <= minute(decision)
@@ -3194,7 +3233,16 @@ variants = [
 def assess(manifest):
     if manifest is None:
         return "UNKNOWN_MANIFEST"
-    if minute(manifest["watermark"]) > minute(manifest["run"]):
+    try:
+        run = minute(manifest["run"])
+        watermark = minute(manifest["watermark"])
+        start = minute(manifest["start"])
+        end = minute(manifest["end"])
+    except (KeyError, ValueError, TypeError):
+        return "INVALID_CLOCK"
+    if start >= end:
+        return "INVALID_QUERY_INTERVAL"
+    if watermark > run:
         return "INCONSISTENT_METADATA"
     if (
         manifest["source"] != "application-audit"
@@ -3203,7 +3251,7 @@ def assess(manifest):
         or manifest["end"] != "09:12"
     ):
         return "SCOPE_MISMATCH"
-    if minute(manifest["watermark"]) < minute(manifest["end"]):
+    if watermark < end:
         return "INGESTION_NOT_COVERED"
     if manifest["returned"] != ("VQ-01",):
         return "RESULT_NOT_AS_ASSUMED"
@@ -3217,6 +3265,8 @@ print("R15_DEADLINE:", "UNKNOWN" if policy["anchor"] is None else "REQUIRES_VALI
 
 assert assess(variants[2][1]) == "CONDITIONAL_IF_ATTESTED"
 assert policy["anchor"] is None
+print("BAD_CLOCK:", assess({**base, "run": "25:99"}))
+assert assess({**base, "run": "25:99"}) == "INVALID_CLOCK"
 ~~~
 
 #### Exact expected output — executed against the displayed fixture
@@ -3229,6 +3279,7 @@ HYPOTHETICAL_MANIFEST: CONDITIONAL_IF_ATTESTED
 OTHER_ACCOUNT: SCOPE_MISMATCH
 IMPOSSIBLE_WATERMARK: INCONSISTENT_METADATA
 R15_DEADLINE: UNKNOWN
+BAD_CLOCK: INVALID_CLOCK
 ~~~
 
 #### Annotated results and negative controls
@@ -3243,7 +3294,7 @@ R15_DEADLINE: UNKNOWN
 
 **Lab limitations:** The `minute` helper handles only single-day HH:MM timestamps; it is not a timezone or multi-day event parser. It does not authenticate query metadata or establish clock correctness. `VQ-01` is a synthetic result marker, not an application audit of R9. A conditional pass tests the *logic of the stated envelope*; it cannot prove producer completeness, an authorized export or a real incident.
 
-**Required submission:** Provide the seven output lines, a manifest-assessment table naming one uncertainty for each scenario, a two-sentence explanation of why the 09:05 decision cannot cite R9, and a preservation request that leaves R15's exact deletion deadline unknown. Add a proposed falsifier: identify the metadata or new qualifying row that would invalidate your current quiet-query conclusion.
+**Required submission:** Provide the seven baseline lines and the added clock-control line, a manifest-assessment table naming one uncertainty for each scenario, a two-sentence explanation of why the 09:05 decision cannot cite R9, and a preservation request that leaves R15's exact deletion deadline unknown. Add a proposed falsifier: identify the metadata or new qualifying row that would invalidate your current quiet-query conclusion. A syntactically plausible but out-of-range clock is not evidence of ingestion coverage.
 
 **Pass criteria:** Exact reproducibility; no release-boundary violation; no unsupported retention arithmetic; clear distinction between a declared watermark and authenticated completeness; no merger of VQ2 into R1–R16.
 
@@ -3471,6 +3522,15 @@ REPORTS = [
 The report list is preserved as four contacts. The classifier below builds a union of IDs, then checks whether each one has both values needed for a comparison. Run the three code blocks together in order in one Python session.
 
 ~~~python
+def compare_one(booking_id, target, current):
+    expected = target.get(booking_id)
+    observed = current.get(booking_id)
+    if expected is None or observed is None:
+        return "UNVERIFIED"
+    if expected == observed:
+        return "MATCH"
+    return "MISMATCH"
+
 def classify(target, current, reports):
     ids = sorted(
         set(target) | set(current) |
@@ -3486,16 +3546,7 @@ def classify(target, current, reports):
     results = {}
 
     for booking_id in ids:
-        expected = target.get(booking_id)
-        observed = current.get(booking_id)
-
-        if expected is None or observed is None:
-            status = "UNVERIFIED"
-        elif expected == observed:
-            status = "MATCH"
-        else:
-            status = "MISMATCH"
-
+        status = compare_one(booking_id, target, current)
         results[booking_id] = status
         counts[status] += 1
 
@@ -3529,19 +3580,18 @@ original = classify(TARGET, CURRENT, REPORTS)
 variant = dict(TARGET)
 variant.pop("X04")
 
-negative_status = (
-    "UNVERIFIED"
-    if variant.get("X04") is None
-    else "MISMATCH"
-)
+negative_status = compare_one("X04", variant, CURRENT)
 
 print("negative_X04_target_removed:", negative_status)
 
 assert original["X04"] == "MISMATCH"
 assert variant.get("X04") is None
+assert compare_one(
+    "X04", {**TARGET, "X04": CURRENT["X04"]}, CURRENT
+) == "MATCH"
 ~~~
 
-Compare your result with the [IM2 worked transcript and interpretation](#ir-rapid-ch02-im2-result) in the final answer appendix.
+Compare your result with the [IM2 worked transcript and interpretation](#ir-rapid-ch02-im2-result) in the final answer appendix. The silent equality assertion checks the same comparison rule used by the baseline and missing-target variant; an existing target does not always imply a mismatch.
 
 ### 2.24 Privacy-aware evidence selection and reproducible review views
 
@@ -3758,6 +3808,8 @@ EVENTS = [
     },
 ]
 
+SOURCE_SNAPSHOT = [dict(row) for row in EVENTS]
+
 ALLOWED = {
     "event_id", "booking_id", "event_time",
     "operation", "actor_account",
@@ -3766,6 +3818,9 @@ SCOPE = {"Q11"}
 REQUIRED = {"event_id", "booking_id", "event_time", "operation"}
 
 def review(label, fields, bookings):
+    if not bookings:
+        print(f"{label}: REJECT_EMPTY_SELECTION selected=0")
+        return
     if not bookings.issubset(SCOPE):
         print(f"{label}: REJECT_SCOPE selected=0")
         return
@@ -3785,6 +3840,9 @@ def review(label, fields, bookings):
         for row in EVENTS
         if row["booking_id"] in bookings
     ]
+    if not subset:
+        print(f"{label}: REJECT_NO_SOURCE_ROWS selected=0")
+        return
     print(
         f"{label}: READY rows={len(subset)} "
         f"fields={','.join(sorted(fields))}"
@@ -3793,6 +3851,7 @@ def review(label, fields, bookings):
         f"{label}: bookings="
         f"{','.join(sorted({x['booking_id'] for x in subset}))}"
     )
+    return subset
 
 review("MINIMAL", ALLOWED, {"Q11"})
 review("DROP_BOOKING", ALLOWED - {"booking_id"}, {"Q11"})
@@ -3804,9 +3863,21 @@ print(
     "rows; sensitive field retained in synthetic source only"
 )
 assert len(EVENTS) == 3 and "patron_email" in EVENTS[0]
+assert EVENTS == SOURCE_SNAPSHOT
+view = review("VIEW_CHECK", ALLOWED, {"Q11"})
+assert view is not None and len(view) == 2
+assert all("patron_email" not in row for row in view)
+review("EMPTY_REQUEST", ALLOWED, set())
+saved_events = EVENTS
+try:
+    EVENTS = [dict(saved_events[2])]  # only Q12 in this variant
+    review("NO_Q11_ROWS", ALLOWED, {"Q11"})
+finally:
+    EVENTS = saved_events
+assert EVENTS == SOURCE_SNAPSHOT
 ~~~
 
-Predict all six output lines and explain the three rejected variants before checking the [MIN2 worked result](#ir-rapid-ch02-min2-result) in the final appendix. The fixture contains no real personal data.
+Predict the six baseline and four additional output lines; explain the three original rejected variants and the two new empty-selection controls before checking the [MIN2 worked result](#ir-rapid-ch02-min2-result) in the final appendix. The fixture contains no real personal data. The returned projected view is for the approved fictional review role only; `READY` does not establish source authenticity, complete collection or real custodian permission.
 
 ### Chapter 2 exercises
 
@@ -3935,6 +4006,12 @@ Score each numbered exercise **0** when its artifact is absent or asserts an uns
 **For full credit:** A source-hold failure trigger is distinct from confirmed malicious activity or proven deletion. The incident lead coordinates an authorized preservation alternative, not an automatic disruptive action.
 
 #### EX025 — Correct a faulty note
+
+**Faulty hypothetical note to repair (exercise text, not an R-series record):**
+
+> “R9 proves an attacker stole the desk-a account. The attacker edited every booking. R8 and R11 prove the patron database was exfiltrated.”
+
+This deliberately defective note asserts account theft and an identified actor, all-booking scope, and confirmed data exfiltration without supporting evidence. Rewrite it using only R9, R11, R13 and R8; then list the three claims you discarded. Do not replace the note with an equally unsupported assertion that no transfer occurred.
 
 **Objective:** repair unsupported attribution and scope. **Inputs:** R9, R11, R13 and R8. **Output:** a replacement of at most three sentences with one observed booking fact, one evidence limit and one next authorized check. Then underline or list the three unsupported claims removed from the faulty note. A score of 2 does not equate R8's missing destination detail with proof of no transfer either.
 
@@ -7070,6 +7147,10 @@ DROP_BOOKING: REJECT_MISSING_KEY booking_id
 ADD_EMAIL: REJECT_EXTRA_FIELD patron_email
 EXPAND_SCOPE: REJECT_SCOPE selected=0
 SOURCE_UNCHANGED: 3 rows; sensitive field retained in synthetic source only
+VIEW_CHECK: READY rows=2 fields=actor_account,booking_id,event_id,event_time,operation
+VIEW_CHECK: bookings=Q11
+EMPTY_REQUEST: REJECT_EMPTY_SELECTION selected=0
+NO_Q11_ROWS: REJECT_NO_SOURCE_ROWS selected=0
 ~~~
 
 #### Worked interpretation and negative controls
@@ -7084,11 +7165,13 @@ SOURCE_UNCHANGED: 3 rows; sensitive field retained in synthetic source only
 
 **SOURCE_UNCHANGED** demonstrates that the derived projections did not delete the original teaching field. In a real process, the original would still require its own collection and retention authority; preserving a synthetic in-memory source is not a production custody demonstration.
 
+**VIEW_CHECK** returns the accepted two-row projection without the invented contact field. **EMPTY_REQUEST** and **NO_Q11_ROWS** reject, respectively, an empty booking selection and a request for Q11 when the copied fixture contains only Q12. A verified zero-result query might still inform a real investigation if its envelope and collection health were established; this classroom checker has neither receipt.
+
 A crucial limitation is that the code's `ALLOWED` and `SCOPE` sets are **invented input policies**, not permissions obtained from a real organization. The function does not verify source origin, consent, legal basis, logging completeness, identity or whether the view's fields are factually correct. It avoids publishing the fake contact values in the output, but that is not a formal anonymization guarantee.
 
-**Learner submission:** The six output lines, a table classifying the three rejected variants, a proposed transformation manifest and a two-sentence explanation of why the canonical R9/R13 evidence does not supply any real patron-contact collection or attribution proof.
+**Learner submission:** The ten output lines, a table classifying the original and added rejected variants, a proposed transformation manifest and a two-sentence explanation of why the canonical R9/R13 evidence does not supply any real patron-contact collection or attribution proof.
 
-**Assessment:** A full result predicts and reproduces all six lines, distinguishes row scope from column projection, maintains a necessary booking join key, rejects unneeded sensitive fields and states that the source and receipt status remain separate. No network or actual personal data is involved.
+**Assessment:** A full result predicts and reproduces all ten lines, distinguishes row scope from column projection, maintains a necessary booking join key, rejects unneeded sensitive fields and empty selections, and states that the source and receipt status remain separate. No network or actual personal data is involved.
 
 ### EX001 — Worked result
 
@@ -7553,7 +7636,15 @@ The five sentences remain an **internal handoff**, not a claim of completed coll
 
 **Proposed request:** ask the service owner to approve a named analyst to compare booking-edit audit rows for the short 08:30–09:20 UTC window with the authoritative booking state and relevant help-desk ticket identifiers, using only booking ID, changed field, old/new value, event UTC time and approved target where available. If approved, the application custodian would supply a restricted copy and record the query filter, source and collection time. The expected result schema is `booking ID | audit row | current value | owner-approved value or pending | confirmed mismatch / unresolved`. The learner can already point to B19's R9 edit but cannot supply a final count or approved target from R1–R16. Keep patron names and unrelated bookings out of the classroom output and limit the copy to the approved reviewers.
 
-**Further reasoning:** A well-scoped request proposes comparing the B19 audit row, any approved relevant booking targets, the current authoritative state and the patron-facing information needed to evaluate R11. The service owner would approve the business comparison; the application custodian would then confirm the exact source and selection. **Positive hypothetical result:** an authorized read shows the owner-approved B19 value reflected correctly in current authoritative state for the tested item; this narrows one state question but does not establish every patron view or the actor's identity. **Negative hypothetical result:** the current state is missing, conflicts with the approved target, or cannot be compared because the target or source is unavailable; the learner must record a mismatch or unresolved state, not invent a full impact count. The requested view excludes unrelated patron names, the newsletter list and unapproved bookings. No actual result is supplied in R1–R16.
+**Further reasoning:** A well-scoped request proposes comparing the B19 audit row, any approved relevant booking targets, the current authoritative state and the patron-facing information needed to evaluate R11. The service owner would approve the business comparison; the application custodian would then confirm the exact source and selection.
+
+**Hypothetical outcome A — verified match within the selected frame:** The owner-approved target and the current authoritative B19 value are present with their applicable versions, time and selection receipts; the values agree under the approved comparison rule. This supports a match for that selected state, not proof that every patron-facing consequence was correct or that the booking edit was authorized.
+
+**Hypothetical outcome B — verified mismatch within the selected frame:** Both trusted comparison values and their relevant versions are available, but the current authoritative B19 value differs from the approved target. This supports a specific state discrepancy for B19, pending owner review of its consequence; it does not identify an attacker or estimate all affected patrons.
+
+**Hypothetical outcome C — unverified comparison:** The approved target, current value, provenance, applicable time or required selection evidence is missing or not trustworthy. Do not label this a clean match or a confirmed mismatch. Request the missing bounded information or keep the result unverified.
+
+In all three branches, the unit is the selected booking ID, not the help-desk ticket or an affected person. The requested view excludes unrelated patron names, newsletter fields and unapproved bookings. **None of these three hypothetical outcomes is observed in R1–R16.**
 
 **IM2-linked measurement contract:** Count distinct selected booking IDs only after declaring the owner-approved target, source version, current authoritative state and comparison time. Keep the reason each row was selected. B17–B19 may form a bounded inquiry frame, but R1–R16 have no completed authoritative comparison. Proposed result columns are `booking ID | audit pointer | report pointer | approved target/version | current value/time | match/mismatch/unverified | limit`. A mismatch for one valid tested row is not an estimate of affected patrons. In the **separate invented IM2 exercise**, six encountered IDs yield two matches, two mismatches and two unverified classifications; four reports reference three distinct booking IDs. X04 has no report but is a mismatch under the fictional comparison; X05 has a report but lacks a target. Removing X04’s target changes its label to unverified without repairing any state. These are classroom outcomes only.
 
@@ -7608,6 +7699,8 @@ For a bounded booking-impact comparison, the learner should identify the selecte
 | A future source-verified unexplained booking edit after 09:20, or an owner-confirmed material booking mismatch | The application custodian checks source, selection and clock; the service owner checks the business target and affected scope. The signal could raise continuing-harm or verified-service-impact concern without naming an attacker. | Incident lead and relevant service/identity owners reconvene promptly to compare proportionate, separately authorized containment options. No control executes automatically. |
 | A future custodian-confirmed inability to protect or retrieve a necessary selected source item, or a substantiated warning that such an item is about to be lost | The application custodian identifies source, event interval, oldest expected row, selection and check time; the team distinguishes actual loss from wrong source or incomplete retrieval. This changes preservation urgency or uncertainty, not cause attribution. | Incident lead seeks an authorized alternate preservation route and escalates through the approved channel, with a near-term review. The exact R15 deletion deadline remains unknown. |
 
+**Decision-time acceptance:** For either hypothetical branch, the incident lead records the verifier, time of the qualifying observation, owner contacted, decision proposed, separate approval status and next review. At the supplied 09:20 checkpoint, 09:35 UTC remains the planned review; if either branch becomes source-verified earlier, reconvene promptly at the time of that verified trigger rather than waiting until 09:35. A confirmed source-preservation difficulty calls for a custodian/owner escalation and a separately authorized alternative, not automatic containment. An unexplained edit or owner-confirmed mismatch calls for a separate, proportionate containment assessment, not an assertion that a control was applied. Neither trigger, decision nor operational effect is already observed in R1–R16.
+
 Neither observation is part of R1–R16. A confirmed sensitive-data disclosure would also raise harm, but no supplied record establishes one. The triggers are evidence requirements, not predictions.
 
 **HOLD2/TRI2 interpretation:** The first pair prompts a human containment review; the second prompts a distinct preservation decision. A missing item or unavailable custodian does not itself prove malicious deletion, and neither future observation belongs to R1–R16. Preserve both pairs as hypothetical, with the verifier and next review explicit.
@@ -7650,6 +7743,9 @@ TERM_EXPIRED: TERM_EXPIRED_EFFECT_UNKNOWN
 RECEIPT_WINDOW_GAP: SCOPE_GAP
 RELEASE_RECORDED: RELEASE_RECORDED_RECHECK_REQUIRED
 HISTORY_RELEASE: REQUESTED -> APPROVED -> APPLIED_REPORTED -> EFFECT_CHECKED -> RELEASE_RECORDED
+FUTURE_RELEASE: HISTORY_NOT_AVAILABLE_AS_OF
+FUTURE_EFFECT_CHECK: HISTORY_NOT_AVAILABLE_AS_OF
+INVALID_TERM: INVALID_CONTROL_TERM
 ~~~
 
 #### Why the result is deliberately bounded
@@ -7661,6 +7757,8 @@ HISTORY_RELEASE: REQUESTED -> APPROVED -> APPLIED_REPORTED -> EFFECT_CHECKED -> 
 **CUSTODIAN_UNAVAILABLE** means no valid custodian confirmation is available under that scenario, not that a breach occurred or data were lost. **OLDEST_MISSING** flags an unverified historical-coverage question: perhaps the row was already absent or a retrieval filter failed; the script cannot identify why. **NO_EFFECT_PROBE** states that a reported application alone is not a verified effect.
 
 **NOT_YET_ACTIVE** rejects using a future control start as proof of present protection. **TERM_EXPIRED** records the end of the stated technical term without claiming actual source deletion. **RELEASE_RECORDED** leaves the earlier lifecycle steps intact and calls for a separately authorized state check. The final printed sequence is an **append-only teaching history**, not a reconstructed real audit trail.
+
+**FUTURE_RELEASE** and **FUTURE_EFFECT_CHECK** have entries after the chosen review instant; neither can support a past conclusion. **INVALID_TERM** has a term ending before application begins. These controls reject inconsistent fixture metadata; they do not validate any real approval, protection mechanism or post-release effect.
 
 **Important model limitations:** The fixture checks only the first applicable problem; multiple defects could coexist. An `effect_checked=True` flag does not authenticate a source query or independent protection test. A single oldest-row retrieval does not prove every applicable retention path is stopped. The code does not test actual custody, authority, legal duties, privacy rules, control-status provenance or source completeness; no delete request occurs. The HOLD2 event times and source IDs do not belong to Harbor Library's canonical Round B.
 
