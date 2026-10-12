@@ -2015,6 +2015,186 @@ Fourth, write a **privacy assessment request** of three to five sentences: ident
 
 **Assessment rubric (six points):** one point for a ledger that dates and classifies all five claims; one for an internal update that distinguishes Branch S's narrow action from the unresolved booking and audit checks; one for a patron draft that is useful without premature restoration or breach claims; one for routing M2 to a bounded privacy assessment without treating R24 as a permanent all-clear; one for naming approvals, audience and a 10:05 checkpoint; and one for retaining version history and correctly handling the Branch P or correction variation. A perfect classroom score demonstrates careful wording under these supplied facts. It does not establish that the communications route works in a real incident or that a legal notice is unnecessary. A model packet follows the F1 replay result in the final appendix.
 
+### 4.11 Controlled injects and disciplined replay
+
+An inject is useful when it changes what the team could reasonably decide. Merely adding alarming words does not produce better learning. In the Harbor Library curriculum, each release has a defined question: Round A tests first-response boundaries; Round B tests B19 explanation and preservation urgency; Round C tests protective action versus legitimate service; Round D tests whether reported containment and later recovery checks support service acceptance.
+
+The facilitator should prepare an **inject ledger** with: inject identifier, earliest release, factual content, expected decision affected, permissible source claims, prohibited inferences and fallback instructions when the learner asks for data not supplied. If an identity session detail is absent, a facilitator must not improvise a confirmed device or attacker. The appropriate reply is that the detail is unavailable in the current exercise and could be requested from a fictional custodian under the case's approval path.
+
+A facilitator may ask a student to state the *minimum missing observation* that would change the proposal. At 09:20, a complete approved task-list addendum for B19 is more discriminatory than simply repeating a general suspicion. At 09:37, confirming the exact session-to-write relationship would affect how narrowly the team can target access, while R21's tolerability statement informs the business cost of a broader pause. An inject that resolves neither question should be recognized as context rather than treated automatically as heightened confidence.
+
+Counterfactual branches require a reset. After Branch S, ask how the decision would differ under Branch P, but label the alternative as a **replay** and start from the same frozen Round C card. Otherwise the student may merge the reported revocation of Branch S with the two queued requests of Branch P and invent an impossible case record. A comparison can legitimately say that Branch S places more emphasis on session scope and staff reauthentication, while Branch P places more emphasis on paused writes, queue custody and resumption criteria.
+
+The facilitator also should not reward a student for making a production-like change when the exercise permits only tabletop role-play. Instead, score whether the student specified the approval required, the exact target and a test that would detect both intended effect and legitimate-service harm. An explicit "execution not performed" field is a valid outcome.
+
+### 4.12 Audit the six artifacts as one decision chain
+
+This exercise requires a timeline, hypothesis table, action record, recovery plan, internal status message and improvement ticket. The artifacts are not six independent writing assignments: each has an input and output relationship with the others. A late inconsistency in one may reveal an earlier missing assumption.
+
+**Artifact 1: Timeline.** Include the original source event time, release round and source ID. Its primary job is to prevent the analyst from proving causation merely through ordering or justifying an earlier decision with future evidence. Include a column for whether the item was actually available at the checkpoint. The timeline must not mix application activity with an interview note as if they had identical evidentiary semantics.
+
+**Artifact 2: Hypothesis table.** Keep at least two explanations live, including authorized training and account use outside the approved plan; a display/state discrepancy may coexist with either. For each, identify supporting, conflicting or insufficient evidence and an authorized discriminator. An account label and a staff recollection are not human attribution.
+
+**Artifact 3: Action record.** Separate recommendation, approval, execution and verification. In Round C, R19 says a session *can* be revoked and R21 says a staff-write pause is *tolerable*. Neither row confirms execution. The action record must include the expected protection, one legitimate-service negative check, uncovered routes, decision owner, fallback and review time. If an action is never executed in the round, leave its execution fields pending.
+
+**Artifact 4: Recovery plan.** A plan is not a restore receipt. Before P1/C1 and V1 are released, its expected-state and tested-result fields must be labeled pending. After those separate later cards arrive, B19 and B20 do not match the P1 target, and V1's test audit lacks the actor despite its limited positive and denied-access observations. These failures prevent unrestricted acceptance. A later approved corrective operation and **new** comparison would be needed; nothing in these cards establishes that such a production correction occurred.
+
+**Artifact 5: Status message.** Its audience and publication state matter. The exercise EX048 requests two internal sentences at the 09:45 branch result **before** P1/C1 and V1 are released; those later findings cannot be included. A separate post-D communication exercise can discuss the later mismatches because its evidence boundary is different. Label the two versions accordingly, and never transform a drafted message into a sent notice.
+
+**Artifact 6: Improvement ticket.** A ticket closes a reusable capability gap, not the individual case symptom alone. Correcting B19/B20 addresses selected bookings. Testing the missing V1 audit actor or an outdated restore rehearsal addresses whether the next response can be investigated or recovered safely. A ticket needs a directly accountable owner, due date, test fixture, evidence artifact, pass/fail rule and procedure for a failed retest.
+
+The six documents must agree on unresolved conditions. A status message claiming full recovery is inconsistent with a recovery plan that records failed booking and audit gates. A summary saying a session was revoked at 09:37 is inconsistent with the frozen Round C action proposal and the later 09:45 branch report. An evaluator should treat those as material reasoning defects, not stylistic differences.
+
+### 4.13 Compare the operational liabilities of both branches
+
+Choosing Branch S or Branch P does not change the canonical pre-branch evidence. It changes what the learner must verify and hand off.
+
+For **Branch S**, the reported session revocation is an observed *fictional branch action*, not proof of eradication. The narrow quiet query does not cover every route or time; staff reauthentication is a service effect. The next operator needs the identity-action scope and the process for restoring authorized staff access, while the service owner still needs to resolve incorrect booking state and the later V1 audit failure.
+
+For **Branch P**, a fifteen-minute staff-write pause begins at the reported 09:45 branch checkpoint and creates two pending manual requests. Those requests are not accepted reservations. The service owner must assign custody, confirm each request identifier, assess conflicts with current state and authorize reconciliation before resuming writes. At 09:54 the planned fifteen-minute interval has not yet reached its 10:00 boundary; saying the pause expired and writes resumed would be unsupported. Even after 10:00, the planned end is not a verified resumption receipt.
+
+A comparison worksheet should not ask simply "Which branch stopped the attack?" Neither branch establishes the cause, and an absence of matching audit rows could reflect limited coverage. Instead compare: protection aimed at, known service side effect, business owner, required post-action verification, unresolved routes, correction dependencies and risk of reversal.
+
+A good reversal rule is observable. For Branch S, a verified unexplained booking change after the tested session revocation can trigger reassessment of other paths and proposed controls. For Branch P, an inability to reconcile queued requests or a failed business correctness check can block write resumption. Those are criteria for another decision, not automatic authority for a real intervention.
+
+### 4.14 Control the audience and approval of each message
+
+Different audiences legitimately require different levels of technical detail. The incident lead needs decisions and pending authorities. Front-desk supervisors need permitted operating workarounds. Patrons need an accurate, usable service instruction. The privacy contact needs sufficient provenance to assess an alleged data-access event. These are related messages but not interchangeable disclosures.
+
+[NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) addresses coordination and communications in cybersecurity incident response and recovery. The audience matrix below is an original classroom adaptation; it does not decide legal notification duties.
+
+| Audience | Useful content | Avoid | Approving or coordinating role |
+|---|---|---|---|
+| Incident lead and technical owners | Case ID, action status, exact evidence, failed acceptance checks, missing fields, next decision | An unexplained "all green" verdict | Incident lead and relevant source owners |
+| Front-desk supervisor | Whether ordinary writes are available in the chosen branch, approved temporary workflow and escalation route | Account compromise claims or instructions beyond the supplied approval | Service owner and operational lead |
+| Patrons | Potential room-booking discrepancy, practical *owner-confirmed* contact route and time of next update | Account names, other patrons' details, unsupported "fully restored" claims | Communications contact and service owner |
+| Privacy contact | Scope and provenance of a specific allegation, sources to request and residual uncertainty | Treating a forwarded rumor as evidence of theft or R24 as permanent clearance | Privacy contact with incident lead |
+| External or formal notification audience | Only facts approved under the organization's relevant obligations and procedures | Legal conclusions the exercise lacks jurisdictional and evidentiary basis to make | Designated communications, legal and privacy authorities |
+
+A message is itself a controlled artifact with version, audience, approval, release time and superseded-version links. A draft is not an issued notice. When a fact changes after a message was actually sent, an authorized communications role would need to preserve the original and assess a correction; silently overwriting it destroys the history of what recipients were told. The fictional case supplies no record that an erroneous public message was sent.
+
+### 4.15 Verify improvement closure with a measured test
+
+An improvement ticket is not complete when a team marks a task "done." Completion should mean that the identified capability passed a defined test and a reviewer accepted evidence of the result. Prefer one owner and one verifiable weakness per ticket rather than an unbounded "improve the SOC" assignment.
+
+A suitable ticket has: identifier; evidence pointer; risk statement; accountable owner; deadline; planned change; prerequisites; authorized isolated test; expected positive and negative outcomes; review owner; supporting artifact; and next action on failure. The ticket can remain open despite an implementation claim if the verification result is missing.
+
+**Example — audit attribution**
+
+- **Gap:** V1's isolated authorized booking test has a UTC timestamp but blank actor.
+- **Owner:** application/audit owner; incident lead reviews closure.
+- **Change:** identify and correct the missing synthetic actor-field propagation in the tested path.
+- **Controlled test:** execute one approved fictional staff edit and one denied unauthorized edit in an isolated environment, capturing the application version, expected actor identifier, UTC event time, request key and authoritative state.
+- **Pass:** the authorized record contains the expected actor and time and matches the declared write, while the unauthorized attempt is denied with state unchanged; the reviewer can reproduce the selection.
+- **Fail:** actor remains empty, denied operation changes state, or source attribution/coverage is insufficient.
+- **Interim measure:** a named owner performs restricted comparison and escalation until a passing test and explicit closure decision are recorded.
+
+A failure should create a *new decision*, not force the score to pass. Record whether the defect was caused by the test setup, source mapping or incomplete instrumentation only after evidence supports the classification. A corrective-action ticket may legitimately close with a changed design and documented residual risk, but that is a distinct owner-approved decision—not a fabricated test pass.
+
+For a restore-readiness ticket, require an actual isolated import and owner comparison; the mere presence of a backup file does not close it. For a handoff-readiness ticket, require a blind receiver to identify current branch status, approval state, failed gates and next action without asking the original analyst. The blind handoff is a measured learning task, not proof of future production performance.
+
+### 4.16 Choose metrics that cannot be gamed by easy exercises
+
+Measure outcomes rather than counts of meetings or pages. "All personnel attended training" does not show that an analyst can distinguish an unapproved action from a proposed one. "Ten backup jobs succeeded" does not show that one approved booking dataset can be restored correctly and on time.
+
+Useful metrics for repeated, authorized exercises include the proportion of decision cards with exact source pointers, the share of approvals with separately documented execution status, the rate of handoffs that identify open booking/audit gates, and the percentage of improvement tickets closed by independently checked evidence rather than administrative status. Those metrics require clear denominators and consistent definitions. They should not be turned into a score when the sample is too small or the evidence is incomplete.
+
+The facilitator can also measure **decision latency** from card release to a justified proposal, but speed alone is not success. A student who instantly labels `desk-a` compromised and orders account removal is fast and wrong. Another who accurately cites the evidence, names the approver and proposes a short review may be slower and safer. Record both timeliness and completeness. A high score in a tabletop cannot stand in for a technical test of a network, identity provider or recovery process.
+
+For an improvement rehearsal, predefine an allowed response window and what constitutes an acceptable decision. Record the actual fictional start/end and whether the learner met *both* the time and safety criteria. Do not infer a real organization's response-level agreement or compliance posture from this classroom score.
+
+### 4.17 A valid exercise can end with open conditions
+
+A tabletop may end while the fictional incident remains unresolved. That is a valid learning result when the packet makes open questions actionable.
+
+In Branch S, the narrow revoked-session report does not prove which person previously edited bookings. In Branch P, the pause and manual queue do not prove that writes will be safe after resumption. After P1/C1 and V1, B19/B20 correctness and audit attribution are still failed acceptance criteria in the supplied test record. Neither branch establishes a completed production backup restore, full access coverage or a universal absence of data exposure.
+
+The student should state what would close each open item: source, owner, authorized test, pass/fail outcome and review deadline. A final status may therefore be "tabletop concluded; response handoff and corrective actions open" instead of "incident recovered." That distinction respects both the learner's achievement and the limits of the fictional evidence.
+
+Before handing in the final packet, run a **contradiction review**: Does the status message promise recovery while the data table fails? Does the action card imply approval from R21 alone? Does the final timeline use R9 at 09:05 or R17 at 09:20? Does a privacy message repeat M2 as fact? Does the improvement ticket claim a test passed when only a proposal exists? Resolve these as explicit revisions, preserving earlier snapshots. This final consistency check is often more educational than adding another paragraph of incident narrative.
+
+<a id="ir-rapid-ch04-f4-audit-lab"></a>
+
+### 4.18 Offline laboratory: F4-AUDIT release and assessment gate
+
+**Purpose:** Demonstrate that a six-artifact packet can score well yet fail a critical approval gate, and that a later release cannot repair an earlier frozen decision. This classroom evaluator complements the L2 scoring case, F1 unavailable-approver rehearsal and M1/M2 message activity; it does not substitute for their evidence analysis.
+
+**Environment:** Python 3 standard library, in memory. No network, files, credentials, messages or state changes. All sample scores below are invented teaching input. They are *not* grades given to a real learner.
+
+**Procedure:** Before running, predict which references are in scope for each checkpoint; identify the prohibited future reference and mixed-branch example; then predict whether an improved 11/12 packet would pass if its approval evidence were missing. Run the code and compare the exact transcript.
+
+~~~python
+LEVEL = {
+    "A": 1,
+    "B": 2,
+    "C": 3,
+    "D_BRANCH": 4,
+    "D_TARGET": 5,
+    "D_ACCESS": 6,
+    "M_REPLAY": 7,
+}
+
+RELEASE = {
+    **{f"R{i}": "A" for i in range(1, 9)},
+    **{f"R{i}": "B" for i in range(9, 17)},
+    **{f"R{i}": "C" for i in range(17, 25)},
+    "S": "D_BRANCH",
+    "P": "D_BRANCH",
+    "P1": "D_TARGET",
+    "C1": "D_TARGET",
+    "V1": "D_ACCESS",
+    "M1": "M_REPLAY",
+    "M2": "M_REPLAY",
+}
+
+def validate(snapshot, refs):
+    if "S" in refs and "P" in refs:
+        return "BRANCH_CONFLICT"
+    unknown = sorted(set(refs) - set(RELEASE))
+    if unknown:
+        return "UNKNOWN:" + ",".join(unknown)
+    future = sorted(
+        r for r in refs
+        if LEVEL[RELEASE[r]] > LEVEL[snapshot]
+    )
+    return "FUTURE:" + ",".join(future) if future else "IN_SCOPE"
+
+SAMPLES = [
+    ("A-timeline", "A", ("R1", "R4")),
+    ("B-hypotheses", "B", ("R9", "R10")),
+    ("C-action", "C", ("R18", "R21")),
+    ("D-status-S", "D_BRANCH", ("S",)),
+    ("D-recovery", "D_ACCESS", ("P1", "C1", "V1")),
+    ("D-improvement", "D_ACCESS", ("V1",)),
+]
+
+for ident, stage, refs in SAMPLES:
+    print(f"{ident}: {validate(stage, refs)}")
+
+NEGATIVES = [
+    ("NEGATIVE_FUTURE_BRANCH", "C", ("R18", "S")),
+    ("NEGATIVE_PREMATURE_RECOVERY", "D_BRANCH", ("S", "V1")),
+    ("NEGATIVE_MIXED_BRANCHES", "D_BRANCH", ("S", "P")),
+]
+
+for ident, stage, refs in NEGATIVES:
+    print(f"{ident}: {validate(stage, refs)}")
+
+def score(values, approval_ok, scope_ok):
+    total = sum(values)
+    if not approval_ok or not scope_ok:
+        return f"{total}/12 HARD_GATE_FAIL"
+    if total >= 9:
+        return f"{total}/12 CLASSROOM_THRESHOLD_MET"
+    return f"{total}/12 REVISION_REQUIRED"
+
+print("FROZEN_V1:", score((2, 1, 1, 1, 2, 1), True, True))
+print("REVISED_V2:", score((2, 2, 2, 1, 2, 2), True, True))
+print("NEGATIVE_NO_APPROVAL:", score((2, 2, 2, 1, 2, 2), False, True))
+~~~
+
+[Check the exact output and interpretation in the final worked results.](#ir-rapid-ch04-f4-audit-result)
+
 ### Chapter 4 exercises
 
 Use the four rounds and choose either Branch S or Branch P for your final decisions. Record **event time and card-release round separately**. Round A has R1–R8, Round B adds R9–R16, Round C adds R17–R24, and Round D first supplies a branch result and only later P1/C1 and V1. Do not cite a later card to justify an earlier action; do not invent a real export, restore, account action or person behind `desk-a`. For each answer, submit the named artifact with case ID, source IDs, current round, observation versus proposal or reported action, decision owner, remaining limit and next review. A solo learner may write all roles, but must still record who would approve and who would verify a change.
@@ -2043,7 +2223,7 @@ Use the four rounds and choose either Branch S or Branch P for your final decisi
 
 #### EX044 — Decision checkpoint
 
-**Objective:** make a reversible 09:37 recommendation. **Inputs:** Round C, R17–R21 and the section 3.3 option matrix. **Output:** a decision card with current evidence and uncertainty, chosen proposal, approver and executor, intended benefit, uncovered path, service cost, preservation note, fallback, verification plan and 09:45 review. A score of 2 treats R21 as tolerance rather than execution and does not cite the Branch S/P result before Round D.
+**Objective:** make a reversible 09:37 recommendation. **Inputs:** Round C, R17–R21 and the section 3.3 option matrix. **Output:** a decision card with current evidence and uncertainty, chosen proposal, approver and executor, intended benefit, uncovered path, service cost, preservation note, fallback, verification plan and 09:45 review. Give separate **proposed, approved, executed and verified** states; mark any state without a receipt *pending*. Include one check for the protective effect and a different check for legitimate staff service. A score of 2 treats R21 as tolerance rather than approval or execution and does not cite the Branch S/P result before Round D.
 
 #### EX045 — Branch S review
 
@@ -2063,7 +2243,7 @@ Use the four rounds and choose either Branch S or Branch P for your final decisi
 
 #### EX049 — Improvement ticket
 
-**Objective:** turn a case observation into a program improvement with proof of closure. **Inputs:** all four rounds, R23 or V1, and section 4.6. **Output:** one ticket with gap and evidence pointer, accountable owner, due date, bounded change, interim control and pass/fail verification. Choose either stale restore evidence or blank audit actor; do not bundle unrelated work into an untestable “improve security” task. A score of 2 explains why correcting B19/B20 alone would not close the selected program gap.
+**Objective:** turn a case observation into a program improvement with proof of closure. **Inputs:** all four rounds, R23 or V1, and sections 4.6 and 4.15. **Output:** one ticket with gap and evidence pointer, accountable owner, due date, bounded change, interim control, a positive acceptance observation, a negative failure control, retained test receipt and action if the test fails. Choose either stale restore evidence or blank audit actor; do not bundle unrelated work into an untestable “improve security” task. A score of 2 explains why correcting B19/B20 alone would not close the selected program gap.
 
 #### EX050 — Final handoff and self-assessment
 
@@ -2667,6 +2847,8 @@ All three remain live at 09:20. R17's later task-list statement and R18's B20 ed
 
 **Round C decision card, 09:37 UTC; status: proposed.** R17's approved list names B17/B18 only and R18 records a later B20 edit under `desk-a`; account operator and cause remain unknown. The analyst recommends revoking only the identified current `desk-a` session after noting which narrow audit and session records can be preserved without prolonging harm. Fictional incident lead and identity owner approve the proposed identity action; the identity administrator would execute it. Intended benefit: stop edits through that one session. Uncovered paths: other sessions, accounts or an application fault. Service cost: staff reauthentication and possible desk delay. If a verified unexplained edit continues, ask the service owner to approve a fifteen-minute staff-write pause; R21 records tolerance, not execution. Verify actual revocation, a later bounded booking query and front-desk impact at 09:45 UTC. A pause-first choice also passes if it names an operator, queue and reversal check. Neither branch card has been supplied at the decision point.
 
+**State receipts for this worked path:** proposed and fictionally approved at the Round C checkpoint; **execution pending** and **verification pending** until a later card reports them. The protective check is a new, owner-authorized query whose source, filter and interval are recorded. The separate legitimate-service check asks the desk supervisor whether approved staff can reauthenticate and continue the permitted workflow. Neither check establishes all-path eradication. The optional F1 replay has a different authority fact and must retain its own approval-pending state; do not merge it with this worked path.
+
 ### EX045 — Worked result
 
 | Claim after Branch S, before P1/C1 and V1 | Supported? | Basis and limit |
@@ -2704,6 +2886,8 @@ Neither update uses P1/C1 or V1, which the facilitator reveals later, or claims 
 ### EX049 — Worked result
 
 **Ticket IR-IMPROVE-01.** **Gap and source:** V1's isolated-copy audit record contains a UTC time but a blank actor; this prevents attribution for the tested authorized change. **Owner:** application/audit owner, with incident lead accepting the result. **Due:** within 30 days of the tabletop. **Change:** trace where the actor field is lost in the synthetic test path, correct the audit mapping and document the field requirement. **Interim control:** keep the case in an approved restricted or monitored mode, with named reviewer and bounded change comparisons until the test passes. **Verification:** repeat a controlled authorized edit and a denied unauthorized edit; pass only if the authorized change's audit row includes the expected actor and UTC time, the denial is observed, and the incident lead records the evidence and scope. Correcting B19/B20 addresses particular booking values; it does **not** repair this program-level attribution defect. A different single-gap ticket for R23's stale restore test passes if it includes a dated isolated restore, measured duration, copy timestamp, booking comparison and named acceptance.
+
+Retain the test input, application version, expected actor, request key, authoritative state, emitted audit row and reviewer receipt. The negative control fails if an unauthorized synthetic edit changes state or a deliberately omitted actor is still accepted. A failed or missing test leaves the ticket open and triggers a revised owner-approved investigation; a marked-complete implementation task is not proof that the control passed.
 
 ### EX050 — Worked result
 
@@ -2763,6 +2947,37 @@ Before any real public message, the owners must confirm that the front-desk rout
 **Correction practice:** retain the fictional overconfident sentence as `draft-v0`, labelled *never issued in this exercise*. In `draft-v1`, replace “all bookings are restored” with “P1/C1 still shows B19/B20 mismatches pending owner review” for the restricted audience, and replace “no customer information was affected” with “an unattributed exposure claim is being assessed; the supplied record has not established its truth.” Record the source card, preparation time, intended audience and approving role beside the revision. If the earlier sentence had actually been issued, the response team would need its own authorized correction decision and an auditable link between versions; this model does not claim one occurred.
 
 **Rubric check:** the ledger records five bounded claims and release points (1); the internal draft reports narrow action and open checks (1); the patron draft avoids false reassurance while offering conditional help (1); the privacy request treats M2 and R24 correctly (1); audiences, pending approvals and 10:05 review are named (1); the Branch P and correction variations preserve state and version history (1). **Model score: 6/6.** The score describes this synthetic packet only. Another short message can pass if it states the same facts, authority and limits without unnecessary case details.
+
+<a id="ir-rapid-ch04-f4-audit-result"></a>
+
+### Chapter 4 F4-AUDIT laboratory — worked result
+
+~~~text
+A-timeline: IN_SCOPE
+B-hypotheses: IN_SCOPE
+C-action: IN_SCOPE
+D-status-S: IN_SCOPE
+D-recovery: IN_SCOPE
+D-improvement: IN_SCOPE
+NEGATIVE_FUTURE_BRANCH: FUTURE:S
+NEGATIVE_PREMATURE_RECOVERY: FUTURE:V1
+NEGATIVE_MIXED_BRANCHES: BRANCH_CONFLICT
+FROZEN_V1: 8/12 REVISION_REQUIRED
+REVISED_V2: 11/12 CLASSROOM_THRESHOLD_MET
+NEGATIVE_NO_APPROVAL: 11/12 HARD_GATE_FAIL
+~~~
+
+**Interpretation of the reproduced result:** The first six rows confirm only that each displayed reference is *permitted in that stage*, not that the artifact's interpretation is correct. The first negative control rejects Branch S as evidence in Round C. The second rejects V1 at the first Branch S release; P1/C1 and V1 must enter later. The third detects mutually exclusive Branch S and P reports incorrectly combined as one case path.
+
+The frozen example totals 8/12, below the declared classroom threshold. The revised example totals 11/12 and meets the *numeric classroom* threshold if the explicit approval and evidence-scope checks also hold. Removing the approval evidence yields `HARD_GATE_FAIL` even though the score remains 11/12. The program does not decide whether a source is authentic, whether an action was truly approved or whether a recovery criterion passed: `approval_ok` and `scope_ok` are assumed input flags to be justified by a human reviewer with evidence.
+
+**Negative test:** Change `("D-status-S", "D_BRANCH", ("S",))` to include `"V1"` and observe `FUTURE:V1`. Restore the original tuple before interpreting the baseline results. A correct result proves only that the classroom release rule was enforced by the script, not that a real system is secure.
+
+**Required learner artifacts:** the exact twelve-line transcript; a six-row artifact table with checkpoint, references, proposed score, evidence pointer and one missing field; a short explanation of the approval hard gate; and a versioned correction of one deliberately premature claim. The learner must not modify actual incident records or contact an outside system.
+
+**Assessment:** Award one point each for exact transcript, correct future/mixed-branch reasoning, separation of score from critical gate, versioned non-backdating correction and explicit explanation that a tabletop score does not verify production containment/recovery. The lab is supplemental; no new numbered exercise ID is created.
+
+---
 
 ### Chapter 4 tabletop — six-artifact model submission
 
