@@ -1900,6 +1900,11 @@ BPA's integration plan has 14 work packages. A dependency graph shows that the H
 - Forgetting partner sunset dates.
 - No end-to-end tests.
 
+
+### 34.7 Integration readiness checklist
+
+Before BPA switches a partner link to hybrid key exchange, the integration owner confirms four items: the partner's stack advertises the same hybrid group, both sides log the negotiated group, a classical fallback is still allowed only where the agreed exception list permits it, and a joint test window is booked with a rollback contact on each side. A link that fails any item stays on its current configuration and is rescheduled rather than forced.
+
 ### Exercises
 
 - **EX067 — Dependency graph.** Draw (or list) the dependency graph for BPA's 5 domains. Rubric: 3 = HSM and partner dependencies visible.
@@ -2317,6 +2322,11 @@ BPA's remaining items: vessel links (high latency cost of large chains; moderate
 
 Optimization decisions should be revisited when inputs change. A new browser release that supports post-quantum certificates, a firmware update that fixes a middlebox, or a revised policy date can reorder the remaining work. Keep the ranking as a small, version-controlled table with the assumptions written beside each score, and recompute it at every quarterly review rather than treating the first ranking as a permanent plan.
 
+
+### 41.6 Optimisation that must not weaken security
+
+Shrinking handshake size by dropping intermediate certificates or caching keys for longer can save milliseconds, but each such change is reviewed against BPA's confidentiality horizon. An optimisation that shortens latency but reintroduces a classical-only path for the 25-year customs data is rejected, however large the gain.
+
 ### Exercises
 
 - **EX081 — Rank.** Rank five remaining BPA items by exposure ÷ effort with stated numbers. Rubric: 3 = method transparent and sensitivity noted.
@@ -2472,6 +2482,11 @@ A model Capstone I submission identifies 37 exposed long-lived flows, chooses hy
 
 Keep a decision log from the first day of the capstone. Each entry records the date, decision, alternatives considered, evidence and who agreed. The log feeds the architecture chapter of the thesis, answers reviewers' "why" questions quickly and protects the team when a later discovery makes an earlier decision look wrong — it shows what was known at the time. Examiners consistently rate capstones with clear decision logs higher than those with polished but unexplained designs.
 
+
+### 44.6 Agreeing the capstone baseline
+
+Capstone I begins by recording BPA's starting state: which links use hybrid key exchange, which certificates chain to classical roots, and which inventory entries are still unverified. Progress in Capstone II is measured against this baseline, so later claims of improvement can be checked by the assessor.
+
 ### Exercises
 
 - **EX087 — Scope.** Write the capstone scope statement with in/out of scope. Rubric: 3 = deliverable increment, explicit exclusions.
@@ -2574,6 +2589,11 @@ Model results: edge hybrid share 71%; VPNs — 9 of 14 partners with ML-KEM addi
 
 Capstone II is also the moment to rehearse handover. Write the operations runbook, the CBOM maintenance procedure and the agility procedure as if a different team will run the system tomorrow, then ask a peer who did not work on the project to perform one routine task — rotating a fallback expiry, adding a partner, changing the preferred group — using only the documents. Every question they ask marks a gap to close before the dossier is assembled.
 
+
+### 46.6 Handing the capstone to operations
+
+The Capstone II package goes to BPA's operations team with the configuration changes, the test evidence, the rollback steps and a list of what remains classical and why. An operations engineer replays the agility demonstration without the student present; only when that replay succeeds does the capstone count as transferable rather than a one-person result, and any step that needed the student's help is rewritten.
+
 ### Exercises
 
 - **EX091 — Agility demo plan.** Write the agility demonstration plan with success criteria. Rubric: 3 = start/end events, telemetry evidence, rollback.
@@ -2620,6 +2640,11 @@ Model trial results: (a) 41 hours; (b) HSM refused, but the runbook lacked recon
 ### Engineering note
 
 Trials should vary who is on duty. A recovery that works only when the system's designer is present is not a recovery capability; run at least one scenario with the on-call team alone and the designers observing silently. Measure not only elapsed time but also decision quality: whether the team consulted the CBOM, followed the runbook and communicated with partners at the right moments. Those observations drive the most valuable improvements.
+
+
+### 47.6 Following up the trial findings
+
+Each gap found in the trial becomes a tracked action: the missing reconciliation steps in the runbook, the partner test endpoints and the slower-than-planned 19-day partner rollout. The trial is repeated for the scenarios that failed their objective, and the repeat results are added to the evidence dossier beside the originals, so readers can see both the failure and the correction.
 
 ### Exercises
 
@@ -2671,6 +2696,11 @@ BPA's dossier index lists 126 evidence items. An auditor samples ten claims and 
 ### Engineering note
 
 Dossiers also need a maintenance owner. Evidence ages: measurements become stale, standards statuses change, partners upgrade. Assign an owner, a review frequency and an expiry date to each evidence item, so that the dossier remains a truthful description of the system rather than a snapshot of the week it was submitted. Auditors trust dossiers that show their own update history.
+
+
+### 48.7 Keeping the dossier current
+
+BPA's dossier is versioned: each update states what changed, why and who approved it. When a standard is revised or a vendor ships a new post-quantum option, the affected claims are re-checked and their evidence refreshed, and stale items are marked rather than silently removed.
 
 ### Exercises
 

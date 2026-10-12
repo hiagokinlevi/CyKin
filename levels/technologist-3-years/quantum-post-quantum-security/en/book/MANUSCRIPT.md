@@ -1825,6 +1825,11 @@ Before the assessment, score yourself against each criterion with evidence links
 - Claiming hybrid protects authentication.
 - No handover.
 
+
+### 30.9 After the assessment
+
+Within a week of the assessment the student files the examiner's questions and their answers with the capstone record, fixes any documentation gap the examiner found, and hands KLS operations a one-page summary of what the SFTP service now negotiates and what is still classical. That summary is the starting point for the next migration step.
+
 ### Exercises
 
 - **EX059 — Demo script.** Write a five-step demo script for your capstone. Rubric: 3 = build, show, break, recover, gate.
