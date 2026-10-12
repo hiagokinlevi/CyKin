@@ -5691,6 +5691,59 @@ G3-X INVALID_UNAPPROVED_EXECUTION
 NEGATIVE_AUDIT AUDIT_GATE_FAIL
 ~~~
 
+#### G3-DG adversarial follow-up: a failed gate outranks an unknown one
+
+The first G3-DG listing reports only one state per card. Its ordering hides a *known failed* protection test when the service test is unknown: `gate(True, True, False, None, True, True)` returns `EXECUTED_UNVERIFIED`. Likewise, `gate(True, True, True, True, False, None)` returns `RECOVERY_CHECKS_PENDING` despite a known failed data test. These results reproduce the code's branch order, not a defensible acceptance decision. First ask whether a required test is known to have failed; only then classify the remaining unknowns. This follow-up is a separate logic-only check and leaves the eleven original lines intact.
+
+~~~python
+def gate_strict(approved, executed, protective, legitimate, data, audit):
+    if executed and approved is not True:
+        return "INVALID_UNAPPROVED_EXECUTION"
+    if approved is not True:
+        return "PROPOSED_ONLY"
+    if executed is not True:
+        return "APPROVED_NOT_EXECUTED"
+    if protective is False:
+        return "PROTECTION_GATE_FAIL"
+    if legitimate is False:
+        return "BUSINESS_GATE_FAIL"
+    if protective is not True or legitimate is not True:
+        return "EXECUTED_UNVERIFIED"
+    if data is False:
+        return "DATA_GATE_FAIL"
+    if audit is False:
+        return "AUDIT_GATE_FAIL"
+    if data is not True or audit is not True:
+        return "RECOVERY_CHECKS_PENDING"
+    return "DECLARED_GATES_PASS_NOT_AUTHENTICATED"
+
+CASES = [
+    ("ALL_FLAGS_TRUE", (True, True, True, True, True, True)),
+    ("PROTECTION_FAIL_SERVICE_UNKNOWN", (True, True, False, None, True, True)),
+    ("SERVICE_FAIL_PROTECTION_UNKNOWN", (True, True, None, False, True, True)),
+    ("DATA_FAIL_AUDIT_UNKNOWN", (True, True, True, True, False, None)),
+    ("AUDIT_FAIL_DATA_UNKNOWN", (True, True, True, True, None, False)),
+    ("ALL_CHECKS_UNKNOWN", (True, True, None, None, None, None)),
+    ("EXECUTED_WITHOUT_APPROVAL", (False, True, True, True, True, True)),
+]
+for name, flags in CASES:
+    print(f"{name}: {gate_strict(*flags)}")
+~~~
+
+**Supplemental output (seven lines):**
+
+~~~text
+ALL_FLAGS_TRUE: DECLARED_GATES_PASS_NOT_AUTHENTICATED
+PROTECTION_FAIL_SERVICE_UNKNOWN: PROTECTION_GATE_FAIL
+SERVICE_FAIL_PROTECTION_UNKNOWN: BUSINESS_GATE_FAIL
+DATA_FAIL_AUDIT_UNKNOWN: DATA_GATE_FAIL
+AUDIT_FAIL_DATA_UNKNOWN: AUDIT_GATE_FAIL
+ALL_CHECKS_UNKNOWN: EXECUTED_UNVERIFIED
+EXECUTED_WITHOUT_APPROVAL: INVALID_UNAPPROVED_EXECUTION
+~~~
+
+Predict which gate wins when one test is `False` and another is `None`, then compare with the seven lines. `ALL_FLAGS_TRUE` is an internally consistent *assertion* in a synthetic card; it does not authenticate an approver, operator, source, clock or test scope. A real decision requires separate receipts and a service-owner acceptance decision. Neither this fixture nor its output adds an R-series observation.
+
 #### Interpretation and negative control
 
 G3-P records only a proposal. G3-A adds a fictional approval but no execution. G3-E claims execution while omitting effectiveness checks; it cannot be described as successful containment. G3-C and G3-B show why the protective and legitimate-service tests are independently necessary. G3-I has both of those bounded passes but no recovery-data or audit result. G3-D fails data correctness. G3-U fails audit attribution. G3-V passes the **declared classroom gates for that one modeled test**, but does not establish root cause, complete route coverage, production authorization or service-owner acceptance. G3-X contains an internally unacceptable claim of execution without approval and is rejected even when all other flags are true.
@@ -5928,6 +5981,65 @@ for label, sequence in [
 ~~~
 
 Compare your predictions with the [MQ3 worked transcript and review](#ir-rapid-ch03-mq3-result) in the final answer appendix.
+
+#### MQ3 intake preflight: receipt identity before simulated effect
+
+The original `simulate()` remembers an operation key only after `SIMULATED_APPLY`; it does not check whether a receipt ID was used before. In adversarial runs, two different operations both labeled `MQ-01` can both return `SIMULATED_APPLY`. If a stale X11 request first uses `KEY-Z`, a different X12 request can later reuse `KEY-Z` and apply, because the first request was never stored in `applied`. These results are limits of the teaching simulator, not evidence of real queue behavior.
+
+Review *intake identity* separately from any later approval, version or effect decision. The following standalone preflight retains the first signature for each receipt and each operation key; a duplicate receipt cannot seed a new key. Every original row remains in the returned output, including holds. A same-key, same-signature row is only a **possible retry with unknown prior effect** until a trusted outcome record is checked. Two different keys competing for the same booking may still both look new and require an owner-defined ordering rule.
+
+~~~python
+REQUESTS = [
+    ("MQ-01", "KEY-A", "X10", 2, "Room D", True),
+    ("MQ-02", "KEY-A", "X10", 2, "Room D", True),
+    ("MQ-03", "KEY-B", "X11", 4, "Room E", True),
+    ("MQ-04", "KEY-C", "X12", 1, "Room F", False),
+    ("MQ-05", "KEY-D", "X99", 0, "Room A", True),
+    ("MQ-06", "KEY-A", "X10", 2, "Room Z", True),
+    ("MQ-07", "KEY-E", "X11", 5, "Room E", True),
+    ("MQ-08", "KEY-F", "X10", 2, "Room B", True),
+]
+
+def intake_preflight(requests):
+    receipts, intents = {}, {}
+    output = []
+    for receipt, key, booking, expected, desired, approved in requests:
+        signature = (booking, expected, desired)
+        if receipt in receipts:
+            status = "HOLD_DUPLICATE_RECEIPT_ID"
+        elif key in intents and intents[key] != signature:
+            status = "HOLD_CONFLICTING_OPERATION_KEY"
+        elif key in intents:
+            status = "POSSIBLE_RETRY_EFFECT_UNKNOWN"
+        else:
+            status = "NEW_INTENT_EFFECT_UNKNOWN"
+        if receipt not in receipts:
+            receipts[receipt] = (key, signature)
+            intents.setdefault(key, signature)
+        output.append((receipt, status))
+    return output
+
+for receipt, status in intake_preflight(REQUESTS):
+    print(f"{receipt}: {status}")
+
+VARIANTS = [
+    ("DUPLICATE_RECEIPT_ID", [
+        REQUESTS[0],
+        ("MQ-01", "KEY-Z", "X11", 5, "Room F", True),
+    ]),
+    ("STALE_THEN_DIFFERENT_SAME_KEY", [
+        ("T1", "KEY-Z", "X11", 4, "Room E", True),
+        ("T2", "KEY-Z", "X12", 1, "Room F", True),
+    ]),
+    ("TWO_COMPETING_REQUESTS", [REQUESTS[0], REQUESTS[7]]),
+]
+for label, rows in VARIANTS:
+    print(label + ":")
+    for receipt, status in intake_preflight(rows):
+        print(f"  {receipt}: {status}")
+~~~
+
+Predict the eight baseline receipts and three two-row variants in the [supplemental worked transcript](#ir-rapid-ch03-mq3-intake-result). Explain why `MQ-02` is not yet a verified duplicate *effect*, why a held/stale first attempt still reserves its key's intent for conflict review, and why two competing new intents cannot be safely ordered by whichever file is read first. This in-memory check cannot authenticate approvals, guarantee atomic writes, resolve Branch P's two unnamed requests or certify durable exactly-once processing. In a real system, conditional state updates and key-to-result records would require a controlled, durable consistency design.
 
 ### Chapter 3 exercises
 
@@ -8264,11 +8376,13 @@ If Branch P is separately chosen and released, add its queue gate only after a b
 | 1. Time and status | 09:37 UTC, **proposal; not executed**. |
 | 2. Evidence and uncertainty | R17's approved list names B17/B18; R18 shows B20 changed at 09:24. Account operator and cause unknown. |
 | 3. Chosen action and scope | Revoke only the identified current `desk-a` session; preserve narrow available records if doing so does not delay harm reduction. |
-| 4. Approver and executor | Incident lead and identity owner approve under fictional policy; identity administrator executes only after approval. |
+| 4. Approver and executor | **Approval required; no receipt supplied:** the incident lead and identity owner would need to approve the exact named-session action under the fictional policy. Only after that distinct decision could the identity administrator execute it, record the actual target and time, and request scoped protective and legitimate-service checks. No approval, execution or verification is established at 09:37. |
 | 5. Intended effect and side effect | Try to stop edits through that session; legitimate staff may need to reauthenticate and booking work may slow. |
 | 6. Verify, fallback and review | Check a specific identity revocation result, later bounded booking audit and desk impact at 09:45 UTC. If a verified edit continues, seek service-owner approval for a fifteen-minute write pause under R21's stated tolerance. |
 
 R21 does **not** mean the fallback has already been implemented. Before any Chapter 4 branch result is released, a completed-action sentence is unsupported.
+
+For full credit, the six-field proposal names the decision owners and prospective operator while marking their approval, execution and effect receipts **pending**. R21 establishes tolerance for a possible short pause, not authority to implement either action.
 
 **RB3 additional worked reasoning:** The six-field card remains: **(1)** 09:37 proposal/not executed; **(2)** R17's confirmed training scope and R18's B20 edit, with actor/cause unknown; **(3)** named-current-session restriction proposal; **(4)** incident lead and identity owner approvals needed, identity administrator prospective executor; **(5)** intended protection and possible staff reauthentication cost; **(6)** proposed bounded identity/booking verification, a possible pause fallback and a 09:45 review trigger. The conditional RB3 subcard fits **inside field 6**, not as a new seventh field. It identifies the baseline and approval details to collect *before* any action, the service-harm or protection-failure signal that might trigger a **new** reversal request, the owner of that decision, a target- and time-scoped execution receipt, both post-state checks, and an open human review. Every result that is not supplied remains `pending`. No Branch S/P or RB3 execution is backdated to the 09:37 R-series case.
 
@@ -8278,7 +8392,40 @@ R21 does **not** mean the fallback has already been implemented. Before any Chap
 
 ### EX038 — Worked result
 
-**Pause-first proposal at 09:37 UTC:** assume the observed B19/B20 edits may not be limited to the one current session, and assume front-desk staff can safely record new requests in the manual queue for fifteen minutes. R21 supports the owner's tolerance for that cost, **not** a completed pause. Ask the service owner to approve a named fifteen-minute write restriction; the application operator implements it under that approval. Verify immediately in the approved test scope that staff booking writes are blocked while the manual queue captures requests, then inspect a new bounded audit interval. Review with the owner at 09:52 UTC, account for every queued request against an approved schedule and get explicit sign-off before resuming writes. If the block does not work, patron harm becomes unacceptable, or authorized identity evidence identifies a narrower safe action, the incident lead and service owner should reconsider revocation or a different control. The pause reduces one class of harm while leaving cause and other paths unresolved.
+**Pause-first proposal at 09:37 UTC:** assume the observed B19/B20 edits may not be limited to the one current session, and assume front-desk staff can safely record new requests in the manual queue for fifteen minutes. R21 supports the owner's tolerance for that cost, **not** a completed pause. Ask the service owner to approve a named fifteen-minute write restriction; only then could the application operator implement it and record the actual target and time. If applied, verify in the approved test scope that staff booking writes are blocked while the manual queue captures requests, then inspect a new bounded audit interval. Schedule a **planning and decision-status review at 09:52 UTC**, or sooner if verified new harm or a control failure requires attention. This appointment does not certify fifteen minutes of effective protection. Calculate any nominal fifteen-minute end from a trustworthy, source-linked **actual activation time**, not from the 09:37 proposal; record approval, covered write routes, independent block verification, manual-queue continuity, expiry behavior and the next owner decision separately. Neither a calculated end nor a scheduled review proves that writes resumed or queued requests were applied. Before any resumption, check current booking state, queue dispositions, access and audit, and obtain explicit service-owner sign-off. If the block does not work, patron harm becomes unacceptable, or authorized identity evidence identifies a narrower safe action, the incident lead and service owner should reconsider revocation or a different control. The pause reduces one class of harm while leaving cause and other paths unresolved.
+
+**Offline timing contrast for EX038:** Predict the planning review and the conditional end for each artificial input, then run this standard-library example. `applied_at` is only a supplied hypothetical time, **not** an authenticated operator or protective-effect receipt.
+
+~~~python
+from datetime import datetime, timedelta
+
+def time(clock):
+    return datetime.strptime(clock, "%H:%M")
+
+def timing(proposal_at, applied_at, minutes=15):
+    review = (time(proposal_at) + timedelta(minutes=minutes)).strftime("%H:%M")
+    if applied_at is None:
+        return f"planning_review={review} effective_end=UNKNOWN_NO_EXECUTION_RECEIPT"
+    if time(applied_at) < time(proposal_at):
+        return f"planning_review={review} effective_end=INVALID_PRE_PROPOSAL_TIME"
+    end = (time(applied_at) + timedelta(minutes=minutes)).strftime("%H:%M")
+    return f"planning_review={review} conditional_effective_end={end}"
+
+for label, start in [
+    ("ONLY_PROPOSED", None),
+    ("IMMEDIATE_IF_RECEIPTED", "09:37"),
+    ("DELAYED_IF_RECEIPTED", "09:42"),
+]:
+    print(label, timing("09:37", start))
+~~~
+
+~~~text
+ONLY_PROPOSED planning_review=09:52 effective_end=UNKNOWN_NO_EXECUTION_RECEIPT
+IMMEDIATE_IF_RECEIPTED planning_review=09:52 conditional_effective_end=09:52
+DELAYED_IF_RECEIPTED planning_review=09:52 conditional_effective_end=09:57
+~~~
+
+The last two lines are **counterfactual classroom variants**, not R-series or Branch P events. A pause may activate late, cover fewer routes than intended, extend beyond a technical expiry or end without safe service resumption. The 09:52 review remains useful even if the control never starts: it asks whether the plan is still appropriate, not whether protection completed.
 
 **MQ3-linked 09:37 proposal:** R21 supports tolerance only. The pause-first plan includes an empty queue-ledger schema: `receipt ID | booking/action | claimed time | approval state | expected version | prior effect | disposition | owner`. Actual entries are not supplied. Hold any entry with missing approval, conflicting key reuse, unknown current state or stale version; do not replay in arrival order by default. The service owner must approve the pause, later queue dispositions and a controlled review before resuming writes. The later Branch P card cannot be used as an observation at 09:37.
 
@@ -8371,6 +8518,34 @@ STATE: X10=Room D@v3,X11=Room E@v6,X12=Room C@v1
 ORDER_A_THEN_F: MQ-01=SIMULATED_APPLY,MQ-08=HOLD_STALE_VERSION X10=Room D@v3
 ORDER_F_THEN_A: MQ-08=SIMULATED_APPLY,MQ-01=HOLD_STALE_VERSION X10=Room B@v3
 ~~~
+
+<a id="ir-rapid-ch03-mq3-intake-result"></a>
+
+#### MQ3 intake preflight — Supplemental worked result
+
+The separate receipt-and-intent preflight in §3.13 prints eight baseline rows and three two-row variants. It classifies incoming claims before any simulated write, so its labels must not replace the original `SIMULATED_APPLY` transcript above:
+
+~~~text
+MQ-01: NEW_INTENT_EFFECT_UNKNOWN
+MQ-02: POSSIBLE_RETRY_EFFECT_UNKNOWN
+MQ-03: NEW_INTENT_EFFECT_UNKNOWN
+MQ-04: NEW_INTENT_EFFECT_UNKNOWN
+MQ-05: NEW_INTENT_EFFECT_UNKNOWN
+MQ-06: HOLD_CONFLICTING_OPERATION_KEY
+MQ-07: NEW_INTENT_EFFECT_UNKNOWN
+MQ-08: NEW_INTENT_EFFECT_UNKNOWN
+DUPLICATE_RECEIPT_ID:
+  MQ-01: NEW_INTENT_EFFECT_UNKNOWN
+  MQ-01: HOLD_DUPLICATE_RECEIPT_ID
+STALE_THEN_DIFFERENT_SAME_KEY:
+  T1: NEW_INTENT_EFFECT_UNKNOWN
+  T2: HOLD_CONFLICTING_OPERATION_KEY
+TWO_COMPETING_REQUESTS:
+  MQ-01: NEW_INTENT_EFFECT_UNKNOWN
+  MQ-08: NEW_INTENT_EFFECT_UNKNOWN
+~~~
+
+`MQ-02` could be a retry, but intake does not know whether `MQ-01` had any effect. The two T rows conflict on `KEY-Z` even though the first might later be held as stale. The two X10 requests are different new intents; preflight alone cannot choose their business order. Approval, object existence, version, prior-effect evidence and human reconciliation are still independent gates. This preflight is not an implementation of an atomic or durable queue.
 
 #### Interpreting the eight receipts
 
