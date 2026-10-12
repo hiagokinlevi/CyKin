@@ -42,7 +42,7 @@ Verified lab facts (synthetic): tuned −173.8, control −37.2, difference-in-d
 
 ## Continue the curriculum
 
-After chapter 8, the next stop is [course 177].
+After chapter 8, the next stop is [course 177: Incident response and cyber resilience / Master's course](../../incident-response-resilience/en/SUBJECTS.md).
 
 ## Editorial status and language
 
