@@ -371,6 +371,11 @@ ROE debates often need an order of magnitude, not a closed form. "Will a 5 req/s
 
 Independence of retries fails when the failure is systematic (a broken endpoint). Backlog models ignore priority and SLA; use them as a conversation starter, not as a forecast the board will quote.
 
+
+### 6.3b Choosing a retry cap from the series
+
+The geometric series gives the chance that every attempt fails as p to the power n. Sam uses it backwards: TrackScope's evidence upload must succeed 99% of the time, and synthetic runs show a 20% failure rate per attempt, so three attempts (0.8%) meet the goal while two (4%) do not. He writes the derivation into the design note so a reviewer can check the cap without rerunning experiments.
+
 ### Exercises
 
 - **EX016 — Retry traffic.** With p = 0.7 and a batch of 500 uploads, expected attempts until each succeeds once? Rubric: 3 = 500/0.7 ≈ 714 with working; 2 = one slip; 1 = formula only; 0 = none.
@@ -475,6 +480,11 @@ Two defences with overlapping intervals are not ranked. Prefer a paired design o
 ### 7.4 Errors and limits
 
 Independence of trials fails when prompts share a template. Intervals assume a fixed process; changing the model mid-test voids them. Never invent a p-value for a table you did not test.
+
+
+### 7.3b Reporting uncertainty to non-statisticians
+
+A detection rate of 7 out of 10 and a rate of 700 out of 1,000 print the same percentage but deserve very different confidence. When Sam reports PulseMap coverage to the Riverstone Transit security manager, he gives the count, the interval and one plain sentence: "we saw seven of ten test events; the true rate could plausibly be anywhere from about 40% to 90%." Managers then ask for more trials instead of treating a small sample as a fact, and the ranking of defences waits until intervals stop overlapping.
 
 ### Exercises
 
@@ -753,6 +763,11 @@ Scanners fingerprint banners; banners lie. Confirm with an application-level che
 
 Scope documents should name protocol families explicitly: "TCP 443 with HTTPS application data" is clearer than "443". If TLS interception is forbidden, say so. If only TLS 1.2+ is eligible for testing, say so. Ambiguity here becomes an argument during the engagement when someone wants to try a legacy cleartext port "just to see".
 
+
+### 11.4b Capturing only what the ROE allows
+
+Packet captures taken during an authorized test often contain data outside the engagement's purpose, such as staff credentials or passenger records in Riverstone Transit's case. Sam's capture plan names the interfaces, a filter limited to in-scope hosts, a retention period and who may open the files, and the capture is deleted on schedule.
+
 ### Exercises
 
 - **EX031 — Vantage.** Match three evidence types to the minimum vantage needed. Rubric: 3 = correct mapping (e.g. ARP table → link access; TLS cert → TCP to port; API field → authenticated session); 2 = two; 1 = one; 0 = none.
@@ -796,6 +811,11 @@ OS vendors change defaults; cite the version you observed. Do not disable securi
 ### 12.3b Image and offline analysis
 
 Full-disk images are high impact: they take systems offline, contain personal data, and tempt out-of-scope browsing. Prefer live, least-privilege reads. If an image is truly required, the ROE must name chain-of-custody, encryption at rest, who may mount it, and a destroy-by date — and the course labs still do not practice imaging real hosts.
+
+
+### 12.4b Recording host changes
+
+Any setting a tester changes on a host, even a temporary log level, is written to the engagement log with time, reason and the command used to revert it. At close-out Sam walks that list with the system owner, so no Riverstone Transit host is left in a state nobody remembers creating.
 
 ### Exercises
 
@@ -1232,6 +1252,11 @@ This engineering book assumes comfort with calculus, probability and software en
 
 Operators need runbooks and tickets; engineers need schemas, tests and ADRs. Capstone grading looks for both. A beautiful tool without a runbook fails operations; a runbook without fail-closed tests fails engineering.
 
+
+### 20.4b Who the engineering team serves
+
+The platform team's users are testers and engagement leads; its stakeholders also include the client's system owners, who never see the code but carry the risk if TrackScope fails open. Sam's requirement notes list both groups, so a feature that helps testers move faster but weakens a client safeguard is visible as a trade-off before it is built.
+
 ### Exercises
 
 - **EX058 — Framework fit.** Pair each need with PTES / SP 800-115 / ATT&CK / TIBER-EU. Rubric: 3 = four sensible pairs; 2 = three; 1 = two; 0 = none.
@@ -1388,6 +1413,11 @@ STRIDE rows become issues with links to requirements. Unowned rows are theatre. 
 
 Include "jumphost compromised" in the platform threat model: short-lived credentials, egress allow-lists, and rapid revocation. If your response is only "trust the jumphost", the analysis is incomplete.
 
+
+### 23.4b Ranking platform threats
+
+Sam ranks the STRIDE findings by consequence to the client: a tampered scope file that lets testing reach an excluded rail signalling host is first; a spoofed dashboard login that leaks coverage charts is lower. The ranking decides which mitigations land before the next engagement.
+
 ### Exercises
 
 - **EX067 — Fail open.** Describe one test that proves fail-closed. Rubric: 3 = remove policy, expect deny+alert; 2 = idea; 1 = vague; 0 = none.
@@ -1478,6 +1508,11 @@ During an engagement window, adding a new method mid-flight needs the same autho
 ### 24.1b Method dependencies
 
 Some methods require outputs of others (inventory before authenticated review). Encode dependencies in the plan so the timeline does not schedule the review on day one against an empty asset list. PulseMap can show blocked-by links for planned techniques.
+
+
+### 24.4b Reviewing a method card
+
+Before a method card enters the catalogue, a second engineer reads it as if they had never seen the method: is the purpose clear, are stop conditions observable, does it name the evidence it produces? Sam's first card for passive service inventory came back with one change: the stop condition "if the network seems slow" became "if the client's monitoring reports latency above the agreed threshold."
 
 ### Exercises
 
@@ -1978,6 +2013,11 @@ Lab result logs are evidence; retain them with the release tag. Deleting green l
 
 Photograph or export the lab environment inventory (package versions, kernel, policy key ids) into the lab report. It passed on my machine without inventory is not transferable evidence. Lab I exists to create transferable confidence for people who were not in the room, including your future self during an incident review six months later.
 
+
+### 30.4b What the first lab run proved
+
+The first verification run proved that TrackScope denies every out-of-scope address in the golden fixture set and logs each denial with the rule that fired. It did not prove behaviour under concurrent requests or with malformed scope files; Sam lists those as open items for Laboratory II.
+
 ### Exercises
 
 - **EX088 — Row.** Write the fail-closed lab row. Rubric: 3 = complete row; 2 = partial; 1 = vague; 0 = none.
@@ -2068,6 +2108,11 @@ Bulk deletes are forbidden without dual control. Soft-delete with reason is the 
 
 Document the upsert semantics in the OpenAPI description so mobile clients do not invent their own retry ids.
 
+
+### 31.4b Migration of stored findings
+
+When the findings schema gains a field, existing FindingsDesk records need a default or a backfill. Sam writes the migration to run on a copy first, compares record counts and checksums before and after, and keeps the old schema readable for one release.
+
 ### Exercises
 
 - **EX091 — Upsert.** Why is POST-without-id risky for retries? Rubric: 3 = duplicates on retry; 2 = vague; 1 = wrong; 0 = none.
@@ -2149,6 +2194,11 @@ TrackScope should health-check policy storage and event sink at start of window.
 
 Define error budgets for the deny path separately from best-effort UI budgets. Burning the UI budget on a fancy dashboard is acceptable; burning the deny budget on the same work is not. Publish both budgets so product pressure has a number to argue with instead of a vague plea for more reliability.
 
+
+### 32.4b Measuring whether targets were met
+
+An availability target is only meaningful if it is measured. TrackScope records every deny or allow decision with a timestamp, so the team can compute the share of engagement-window minutes in which the service answered within its latency budget. Last month's synthetic report showed 99.6% against a 99.5% target.
+
 ### Exercises
 
 - **EX094 — Target.** Write an availability sentence for TrackScope deny path. Rubric: 3 = windowed target + measure; 2 = vague high; 1 = five-nines joke; 0 = none.
@@ -2204,6 +2254,11 @@ Stop conditions that page only one person fail when that person is offline. Main
 ### Practice note
 
 After every real stop, run a five-minute hotwash: what fired, what lagged, what confused the client. File at least one runbook edit when possible. Stops that produce no documentation updates will recur with the same confusion, and the timeline will look identical to the chapter's 11:10 example for the wrong reasons.
+
+
+### 33.4b Proving the stop button works
+
+Before each engagement, the lead presses the stop control in the synthetic range and checks that every running method halts within the time written in the ROE. The result, with the measured time, is attached to the engagement record; an untested stop is treated as no stop.
 
 ### Exercises
 
@@ -2269,6 +2324,11 @@ Include a consumer canary that fails the deploy if poison events are not quarant
 
 Dead-letter age is an SLO chart beside deny-path latency.
 
+
+### 34.4b Ownership of the event contract
+
+Each event type on the bus has one owning team that approves changes. PulseMap consumes FindingsDesk events but cannot alter their schema; it files a request instead, which keeps the contract stable for every other consumer.
+
 ### Exercises
 
 - **EX100 — Field.** Why include policy_version on every event? Rubric: 3 = audit which ROE applied; 2 = vague; 1 = wrong; 0 = none.
@@ -2324,6 +2384,11 @@ Alongside CSV, export a short Markdown narrative generated from the same query a
 ### Practice note
 
 User research for PulseMap includes one task: explain this number to a CFO without saying we are safe. If users cannot, the UI copy has failed regardless of visual design. Record those sessions (with consent) as qualitative evidence next to the quantitative coverage formula.
+
+
+### 35.4b Testing copy with real readers
+
+Sam asks two Riverstone Transit system owners who were not involved in the design to read the report summary aloud and explain what it means. Where they hesitate or misread a severity, the wording changes; reading tests catch ambiguity that reviewers who wrote the text cannot see.
 
 ### Exercises
 
@@ -2411,6 +2476,11 @@ Publish a rate-limit economics note: cost of waiting versus cost of a client out
 
 
 Separate buckets for quiet versus noisy methods so a hungry enumerator cannot starve config review work.
+
+
+### 36.4b Load tests that respect the client
+
+Performance tests of TrackScope and the method runners use synthetic targets only. Rates measured there become the ceiling allowed in engagements, always below the client's agreed limit, so speed improvements never translate into more traffic on client systems than was signed for.
 
 ### Exercises
 
@@ -2508,6 +2578,11 @@ Store the close-out checklist result hash in FindingsDesk so incomplete close-ou
 
 Handover includes reading the last ten TrackScope denies aloud to the incoming lead.
 
+
+### 37.4b Measuring the runbook
+
+After each engagement the lead notes which runbook steps were skipped, unclear or out of date. Sam tallies these over a quarter; steps skipped most often are rewritten or removed, and the runbook's revision history shows each change with its reason.
+
 ### Exercises
 
 - **EX109 — Checklist.** List six close-out steps. Rubric: 3 = six sensible; 2 = four; 1 = two; 0 = none.
@@ -2567,6 +2642,11 @@ Disputes over validation escalate to a named adjudicator role with access to bot
 
 
 Require the re-test method id on every transition to closed for critical and high severities.
+
+
+### 38.4b Communicating a failed re-test
+
+When a re-test shows a fix did not work, the report says so plainly, includes the evidence and the date, and avoids suggesting blame. The Riverstone Transit owner receives it privately first, so the team can plan a new fix before the result reaches wider governance meetings.
 
 ### Exercises
 
@@ -2639,6 +2719,11 @@ Treat missing vacation coverage as a release blocker equal to a failing test.
 
 
 Cross-training sessions use the same synthetic fixtures as Lab I so teaching time also refreshes verification muscle.
+
+
+### 39.4b Documentation as maintenance
+
+Every module in the platform has a short README stating its purpose, owner, inputs, outputs and the tests that guard it. Sam updates these in the same pull request as code changes; reviewers reject changes that leave the README describing behaviour that no longer exists.
 
 ### Exercises
 
@@ -2739,6 +2824,11 @@ Fault-injection scripts are checked into the lab folder and pinned by SHA in the
 
 Happy-path green with malicious-pack red still fails Lab II sign-off.
 
+
+### 40.4b Sign-off evidence
+
+The Laboratory II sign-off pack holds the test plan, the run logs, the list of injected faults with observed behaviour, and the open issues with owners. An independent engineer signs only after reproducing two randomly chosen results from the pack.
+
 ### Exercises
 
 - **EX118 — Ordering.** Why create ticket before coverage count increases? Rubric: 3 = coverage must reflect recorded findings; 2 = vague; 1 = either order; 0 = none.
@@ -2830,6 +2920,11 @@ Reject optimization PRs that remove reason codes from logs even if latency impro
 
 Benchmarks cite the ROE limit next to the achieved rate so unconstrained benches are obvious.
 
+
+### 41.4b Recording optimisation decisions
+
+Each optimisation is recorded with the profile that justified it, the measured gain and any safety check it touched. When a later change slows a path, the record shows whether the earlier speed-up depended on an assumption that no longer holds.
+
 ### Exercises
 
 - **EX121 — Veto.** Give an optimization that must be rejected. Rubric: 3 = safety-weakening example; 2 = vague; 1 = okays it; 0 = none.
@@ -2894,6 +2989,11 @@ State the dual-use boundary in the thesis ethics section with a concrete refusal
 
 Negative results get the same figure quality as positive ones in the thesis template.
 
+
+### 42.4b Ethics review for platform research
+
+A study comparing detection coverage across engagements uses client data, even if summarised. Sam's proposal goes through the organisation's ethics and legal review, uses only aggregated, anonymised counts, and has each client's written consent before any result is shared outside the team.
+
 ### Exercises
 
 - **EX124 — Question.** Write one acceptable research question. Rubric: 3 = platform/process focused; 2 = borderline; 1 = exploit focused; 0 = none.
@@ -2957,6 +3057,11 @@ Agree the sanitized reconstruction with the host mentor in writing before writin
 
 
 If the host forbids even sanitized metrics, the practice report uses a fully synthetic twin scenario labelled as such.
+
+
+### 43.4b Learning from the placement
+
+Sam keeps a weekly placement journal: one thing learned about how a public transit operator actually runs security, one assumption from the course that did not hold, and one question for his supervisor. The journal becomes the reflective section of his placement report.
 
 ### Exercises
 
@@ -3025,6 +3130,11 @@ Milestone demos that skip fail-closed are graded zero for that checkpoint regard
 
 
 Proposals without lab-row mapping are returned before studio time is booked.
+
+
+### 44.4b Scoping the capstone honestly
+
+The capstone proposal states what will be built in the time available — a scope-diff tool for TrackScope with tests and a short evaluation — and what will not, such as integration with every client's ticket system. Advisors judge the project against the stated scope, not against an imagined larger one.
 
 ### Exercises
 
@@ -3097,6 +3207,11 @@ Checklist item numbers appear in the PR template as a required fill-in list.
 
 
 Repeated checklist skips by the same reviewer trigger a coaching conversation, not a silent reassignment forever.
+
+
+### 45.4b Closing review comments
+
+Every review comment ends in one of three states: fixed, with a link to the change; declined, with a reason the reviewer accepts; or carried as a known risk with an owner. Sam's design is approved only when no comment remains open without one of these states.
 
 ### Exercises
 
@@ -3209,6 +3324,11 @@ Without ops signature the release tag is not cut, even if Lab II is green.
 
 Advisor review watches the silent-run recording at 1.5x and files doc issues before sign-off.
 
+
+### 46.4b Final acceptance test
+
+Before the capstone is handed over, an operator who did not build it runs the acceptance script alone, using only the documentation. Two steps failed in Sam's first attempt because the documentation assumed knowledge he had; both were rewritten and the operator's second run passed.
+
 ### Exercises
 
 - **EX136 — Freeze.** What is allowed after feature freeze? Rubric: 3 = safety fixes only; 2 = "bugs"; 1 = features; 0 = none.
@@ -3312,6 +3432,11 @@ Scoreboard photos go into the dossier under the failure-trial evidence class.
 
 If an inject cannot be run safely even on synthetic ranges, rewrite it — do not skip and mark green.
 
+
+### 47.4b Choosing the failure to rehearse
+
+The trial rehearses the failure with the worst consequence for clients, not the easiest to stage: TrackScope losing its scope file mid-engagement. The script checks that methods stop, the lead is paged and testing resumes only after the file is restored and verified.
+
 ### Exercises
 
 - **EX139 — Inject.** Write one inject and expected safe behaviour. Rubric: 3 = both; 2 = inject only; 1 = vague; 0 = unsafe.
@@ -3411,6 +3536,11 @@ Manifest generation fails the build if any path matches a forbidden-name regex.
 
 Forbidden-name failures print the offending path so authors can fix quickly.
 
+
+### 48.4b Integrity of the dossier
+
+Each file in the evidence dossier is listed with its SHA-256 hash in a manifest, and the manifest itself is signed by the lead. A reader can confirm that nothing was added or changed after sign-off without trusting the storage location.
+
 ### Exercises
 
 - **EX142 — Manifest.** Sketch a hash manifest format (3 rows). Rubric: 3 = path+algo+digest; 2 = digests only; 1 = vague; 0 = none.
@@ -3486,6 +3616,11 @@ The threats-to-validity page is graded; leaving it blank fails the thesis gate r
 
 
 Examiners read that page first.
+
+
+### 49.4b Structure of the argument
+
+Sam's thesis states its claim in the first paragraph, presents evidence in the order a sceptical reader would demand it, and ends each chapter by stating what that chapter established and what remains uncertain. His advisor's test is whether the abstract alone tells a reader exactly what was shown.
 
 ### Exercises
 
@@ -3589,6 +3724,11 @@ Thank operators who ran synthetic trials; defense without their logs is storytel
 
 
 Keep a parking lot for examiner ideas and process it within a week while context is fresh.
+
+
+### 50.4b Rehearsing the defense
+
+Two weeks before the defense, Sam gives the talk to peers who play examiners and ask the hardest questions on the likely-questions list. He times each section, cuts slides that run over, and writes short answers for the three questions he struggled with.
 
 ### Exercises
 
