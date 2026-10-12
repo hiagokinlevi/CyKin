@@ -2,7 +2,7 @@
 
 **One book for this course and language.** 4 curricular subjects are its chapters. Duration: 1 month; planned effort: approximately 80 hours. Audience: New learners. Entry knowledge: No prior security role; basic digital literacy. Intended outcome: recognize and explain the core risks; complete one guided task in application and software supply chain security.
 
-**Editorial state:** structured outline; manuscript not yet authored. English reference edition.
+**Editorial state:** outline with an authored English draft in [MANUSCRIPT.md](MANUSCRIPT.md); review and A4 verification pending. English reference edition.
 
 [Home](../../../../../README.md) · [Course home](../../README.md) · [Edition](../README.md) · [Chapter index](../SUBJECTS.md) · [Course skill](../../skill/SKILL.md)
 
@@ -18,39 +18,39 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 ### Chapter 01 — Application and software supply chain security: foundations and decisions
 
-**Stage 1; 80 planned A4 pages; 13 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 80 planned A4 pages; 13 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-01)
 
-This subject teaches **Application and software supply chain security: foundations and decisions** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in application and software supply chain security. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will follow a contained worked example. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 13 exercises, then compare reasoning with the final worked-answer appendix. It builds on the entry knowledge and prepares Chapter 02. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Application and software supply chain security: foundations and decisions** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in application and software supply chain security. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will follow a contained worked example. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 13 exercises, then compare reasoning with the final worked-answer appendix. It builds on the entry knowledge and prepares Chapter 02. This paragraph is an editorial summary; the authored draft is linked above.
 
-**Continue studying — chapter 01 of 04 (outline):** [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (plan) →](PLAN.md#ch-02)
+**Continue studying — chapter 01 of 04 (outline):** [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (draft) →](MANUSCRIPT.md#ch-02)
 
 <a id="ch-02"></a>
 
 ### Chapter 02 — Scope, permission and safe practice
 
-**Stage 2; 80 planned A4 pages; 13 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 80 planned A4 pages; 13 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-02)
 
-This subject teaches **Scope, permission and safe practice** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in application and software supply chain security. The chapter will apply the relevant methods to secure development, apis, web and mobile applications, devsecops, dependencies and build integrity. At this level, learners will follow a contained worked example. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 13 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 01 and prepares Chapter 03. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Scope, permission and safe practice** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in application and software supply chain security. The chapter will apply the relevant methods to secure development, apis, web and mobile applications, devsecops, dependencies and build integrity. At this level, learners will follow a contained worked example. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 13 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 01 and prepares Chapter 03. This paragraph is an editorial summary; the authored draft is linked above.
 
-**Continue studying — chapter 02 of 04 (outline):** [← Chapter 01 (plan)](PLAN.md#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (plan) →](PLAN.md#ch-03)
+**Continue studying — chapter 02 of 04 (outline):** [← Chapter 01 (plan)](PLAN.md#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (draft) →](MANUSCRIPT.md#ch-03)
 
 <a id="ch-03"></a>
 
 ### Chapter 03 — Application and software supply chain security: systems, data and dependencies
 
-**Stage 3; 80 planned A4 pages; 12 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 80 planned A4 pages; 12 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-03)
 
-This subject teaches **Application and software supply chain security: systems, data and dependencies** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in application and software supply chain security. The chapter will apply the relevant methods to secure development, apis, web and mobile applications, devsecops, dependencies and build integrity. At this level, learners will follow a contained worked example. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 12 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 02 and prepares Chapter 04. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Application and software supply chain security: systems, data and dependencies** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in application and software supply chain security. The chapter will apply the relevant methods to secure development, apis, web and mobile applications, devsecops, dependencies and build integrity. At this level, learners will follow a contained worked example. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 12 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 02 and prepares Chapter 04. This paragraph is an editorial summary; the authored draft is linked above.
 
-**Continue studying — chapter 03 of 04 (outline):** [← Chapter 02 (plan)](PLAN.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (plan) →](PLAN.md#ch-04)
+**Continue studying — chapter 03 of 04 (outline):** [← Chapter 02 (plan)](PLAN.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (draft) →](MANUSCRIPT.md#ch-04)
 
 <a id="ch-04"></a>
 
 ### Chapter 04 — Application and software supply chain security: guided lab and applied synthesis
 
-**Stage 4; 80 planned A4 pages; 12 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 80 planned A4 pages; 12 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-04)
 
-This subject teaches **Application and software supply chain security: guided lab and applied synthesis** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in application and software supply chain security. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will follow a contained worked example. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 12 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 03 and prepares the worked-answer appendix and final assessment. This paragraph is an editorial summary, not an authored lesson.
+This subject teaches **Application and software supply chain security: guided lab and applied synthesis** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in application and software supply chain security. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will follow a contained worked example. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 12 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 03 and prepares the worked-answer appendix and final assessment. This paragraph is an editorial summary; the authored draft is linked above.
 
 **Continue studying — chapter 04 of 04 (outline):** [← Chapter 03 (plan)](PLAN.md#ch-03) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
