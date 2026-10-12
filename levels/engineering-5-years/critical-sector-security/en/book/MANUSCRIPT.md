@@ -181,8 +181,9 @@ Infrastructure is stocks and flows. A derivative is a rate you can compare with 
 ### Continue studying — chapter 01 of 50
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
@@ -273,8 +274,9 @@ Write rules as logic and dependencies as graphs, then let the computer check the
 ### Continue studying — chapter 02 of 50
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -329,8 +331,9 @@ Power, signal and heat are where cyber meets physical. Size backup energy for en
 ### Continue studying — chapter 03 of 50
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
@@ -424,8 +427,9 @@ Write code that is explicit about types, boundaries and failure. Implement publi
 ### Continue studying — chapter 04 of 50
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -485,8 +489,9 @@ Write to enable decisions: recommendation first, evidence and assumptions next, 
 ### Continue studying — chapter 05 of 50
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
@@ -541,8 +546,9 @@ When a flow depends on the stock, write an ODE. Linear first-order systems appro
 ### Continue studying — chapter 06 of 50
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -631,8 +637,9 @@ Probability is a model; say which kind. Bayes' rule makes base rates decisive fo
 ### Continue studying — chapter 07 of 50
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
@@ -692,8 +699,9 @@ Architecture determines both timing and trust. Control needs worst-case, not ave
 ### Continue studying — chapter 08 of 50
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
@@ -749,8 +757,9 @@ Decompose around decisions likely to change and state invariants. Make modes exp
 ### Continue studying — chapter 09 of 50
 
 [← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
@@ -806,8 +815,9 @@ Public safety comes first, honestly reported. Safety and security must be analys
 ### Continue studying — chapter 10 of 50
 
 [← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
@@ -892,8 +902,9 @@ Each network layer promises something narrow; authenticity has to be added. Indu
 ### Continue studying — chapter 11 of 50
 
 [← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
@@ -954,8 +965,9 @@ The OS determines both timing and the security baseline. Put deadlines on real-t
 ### Continue studying — chapter 12 of 50
 
 [← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
@@ -1039,8 +1051,9 @@ Model operational data deliberately, know what your historian discards, and use 
 ### Continue studying — chapter 13 of 50
 
 [← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
@@ -1100,8 +1113,9 @@ Process makes errors visible early and leaves evidence. Use a recognised secure 
 ### Continue studying — chapter 14 of 50
 
 [← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
@@ -1164,8 +1178,9 @@ Infrastructure security protects a physical service: integrity and availability 
 ### Continue studying — chapter 15 of 50
 
 [← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
@@ -1221,8 +1236,9 @@ Systems engineering moves from needs to verified, validated systems through trac
 ### Continue studying — chapter 16 of 50
 
 [← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
@@ -1315,8 +1331,9 @@ Feedback makes systems robust and credulous. A biased sensor drives a correct co
 ### Continue studying — chapter 17 of 50
 
 [← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
@@ -1376,8 +1393,9 @@ Use layered models to place assets and conduits, make the DMZ real by allowing n
 ### Continue studying — chapter 18 of 50
 
 [← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Chapter 19 →](#ch-19)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
@@ -1471,8 +1489,9 @@ Choose standard primitives for the property you need: hashes for fingerprints, M
 ### Continue studying — chapter 19 of 50
 
 [← Chapter 18](#ch-18) · [Course chapter index](../SUBJECTS.md) · [Chapter 20 →](#ch-20)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-20"></a>
 
@@ -1539,8 +1558,9 @@ Critical infrastructure is defined by consequence. Sectors differ in process, co
 ### Continue studying — chapter 20 of 50
 
 [← Chapter 19](#ch-19) · [Course chapter index](../SUBJECTS.md) · [Chapter 21 →](#ch-21)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-21"></a>
 
@@ -1608,8 +1628,9 @@ Derive requirements from consequences, stakeholders, regulations, threats and co
 ### Continue studying — chapter 21 of 50
 
 [← Chapter 20](#ch-20) · [Course chapter index](../SUBJECTS.md) · [Chapter 22 →](#ch-22)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-22"></a>
 
@@ -1669,8 +1690,9 @@ Build the inventory from several reconciled sources, model the system in functio
 ### Continue studying — chapter 22 of 50
 
 [← Chapter 21](#ch-21) · [Course chapter index](../SUBJECTS.md) · [Chapter 23 →](#ch-23)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
@@ -1763,8 +1785,9 @@ Threat models generate what could go wrong at each trust boundary; ATT&CK keeps 
 ### Continue studying — chapter 23 of 50
 
 [← Chapter 22](#ch-22) · [Course chapter index](../SUBJECTS.md) · [Chapter 24 →](#ch-24)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-24"></a>
 
@@ -1829,8 +1852,9 @@ Match each question to a method that can answer it and know each method's limit.
 ### Continue studying — chapter 24 of 50
 
 [← Chapter 23](#ch-23) · [Course chapter index](../SUBJECTS.md) · [Chapter 25 →](#ch-25)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-25"></a>
 
@@ -1897,8 +1921,9 @@ A studio turns knowledge into a design under critique. Generate genuinely differ
 ### Continue studying — chapter 25 of 50
 
 [← Chapter 24](#ch-24) · [Course chapter index](../SUBJECTS.md) · [Chapter 26 →](#ch-26)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
@@ -1968,8 +1993,9 @@ Choose architecture by how it fails and how it can be attacked. Hierarchical con
 ### Continue studying — chapter 26 of 50
 
 [← Chapter 25](#ch-25) · [Course chapter index](../SUBJECTS.md) · [Chapter 27 →](#ch-27)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-27"></a>
 
@@ -2025,8 +2051,9 @@ Design controls per scenario at prevention, detection and recovery points. Put e
 ### Continue studying — chapter 27 of 50
 
 [← Chapter 26](#ch-26) · [Course chapter index](../SUBJECTS.md) · [Chapter 28 →](#ch-28)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
@@ -2087,8 +2114,9 @@ Implement controls from specifications with tests for every "shall". Code the co
 ### Continue studying — chapter 28 of 50
 
 [← Chapter 27](#ch-27) · [Course chapter index](../SUBJECTS.md) · [Chapter 29 →](#ch-29)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-29"></a>
 
@@ -2162,8 +2190,9 @@ Measure what changes decisions: control performance, exposure and service resili
 ### Continue studying — chapter 29 of 50
 
 [← Chapter 28](#ch-28) · [Course chapter index](../SUBJECTS.md) · [Chapter 30 →](#ch-30)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-30"></a>
 
@@ -2260,8 +2289,9 @@ Verification is a planned campaign with criteria fixed in advance. Combine examp
 ### Continue studying — chapter 30 of 50
 
 [← Chapter 29](#ch-29) · [Course chapter index](../SUBJECTS.md) · [Chapter 31 →](#ch-31)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-31"></a>
 
@@ -2317,8 +2347,9 @@ Deploy in stages with entry and exit criteria and tested rollback. Manage keys a
 ### Continue studying — chapter 31 of 50
 
 [← Chapter 30](#ch-30) · [Course chapter index](../SUBJECTS.md) · [Chapter 32 →](#ch-32)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-32"></a>
 
@@ -2392,8 +2423,9 @@ Reliability is measured with failure rates, repair times and availability; serie
 ### Continue studying — chapter 32 of 50
 
 [← Chapter 31](#ch-31) · [Course chapter index](../SUBJECTS.md) · [Chapter 33 →](#ch-33)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-33"></a>
 
@@ -2444,8 +2476,9 @@ STPA treats losses as failures of control and finds unsafe control actions arisi
 ### Continue studying — chapter 33 of 50
 
 [← Chapter 32](#ch-32) · [Course chapter index](../SUBJECTS.md) · [Chapter 34 →](#ch-34)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-34"></a>
 
@@ -2501,8 +2534,9 @@ Integrate incrementally with interface tests and whole-system scenarios, because
 ### Continue studying — chapter 34 of 50
 
 [← Chapter 33](#ch-33) · [Course chapter index](../SUBJECTS.md) · [Chapter 35 →](#ch-35)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-35"></a>
 
@@ -2553,8 +2587,9 @@ Detailed design makes every earlier number meet. An assurance case connects the 
 ### Continue studying — chapter 35 of 50
 
 [← Chapter 34](#ch-34) · [Course chapter index](../SUBJECTS.md) · [Chapter 36 →](#ch-36)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-36"></a>
 
@@ -2629,8 +2664,9 @@ Queues govern latency; Little's law and simple queueing models show that delay e
 ### Continue studying — chapter 36 of 50
 
 [← Chapter 35](#ch-35) · [Course chapter index](../SUBJECTS.md) · [Chapter 37 →](#ch-37)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-37"></a>
 
@@ -2685,8 +2721,9 @@ OT security operations start with process safety and route escalation through th
 ### Continue studying — chapter 37 of 50
 
 [← Chapter 36](#ch-36) · [Course chapter index](../SUBJECTS.md) · [Chapter 38 →](#ch-38)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-38"></a>
 
@@ -2761,8 +2798,9 @@ Verification asks whether the system was built right; validation asks whether it
 ### Continue studying — chapter 38 of 50
 
 [← Chapter 37](#ch-37) · [Course chapter index](../SUBJECTS.md) · [Chapter 39 →](#ch-39)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-39"></a>
 
@@ -2817,8 +2855,9 @@ Design for decades: replaceable components, updatable software, current document
 ### Continue studying — chapter 39 of 50
 
 [← Chapter 38](#ch-38) · [Course chapter index](../SUBJECTS.md) · [Chapter 40 →](#ch-40)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-40"></a>
 
@@ -2904,8 +2943,9 @@ Fault injection exercises the error handling that ordinary tests miss. Define th
 ### Continue studying — chapter 40 of 50
 
 [← Chapter 39](#ch-39) · [Course chapter index](../SUBJECTS.md) · [Chapter 41 →](#ch-41)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-41"></a>
 
@@ -2982,8 +3022,9 @@ Formulate investment choices as optimisation with explicit objectives and constr
 ### Continue studying — chapter 41 of 50
 
 [← Chapter 40](#ch-40) · [Course chapter index](../SUBJECTS.md) · [Chapter 42 →](#ch-42)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-42"></a>
 
@@ -3039,8 +3080,9 @@ Engineering research answers a design question with checkable evidence. Pre-spec
 ### Continue studying — chapter 42 of 50
 
 [← Chapter 41](#ch-41) · [Course chapter index](../SUBJECTS.md) · [Chapter 43 →](#ch-43)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-43"></a>
 
@@ -3095,8 +3137,9 @@ Practice teaches the constraints that shape real designs. Work within a written 
 ### Continue studying — chapter 43 of 50
 
 [← Chapter 42](#ch-42) · [Course chapter index](../SUBJECTS.md) · [Chapter 44 →](#ch-44)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-44"></a>
 
@@ -3151,8 +3194,9 @@ A capstone is a scoped, built and verified system. Define the need, deliverables
 ### Continue studying — chapter 44 of 50
 
 [← Chapter 43](#ch-43) · [Course chapter index](../SUBJECTS.md) · [Chapter 45 →](#ch-45)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-45"></a>
 
@@ -3211,8 +3255,9 @@ Independent review finds what authors cannot see. Review against explicit criter
 ### Continue studying — chapter 45 of 50
 
 [← Chapter 44](#ch-44) · [Course chapter index](../SUBJECTS.md) · [Chapter 46 →](#ch-46)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-46"></a>
 
@@ -3269,8 +3314,9 @@ Freeze scope, close findings, verify the tagged version completely and keep fail
 ### Continue studying — chapter 46 of 50
 
 [← Chapter 45](#ch-45) · [Course chapter index](../SUBJECTS.md) · [Chapter 47 →](#ch-47)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-47"></a>
 
@@ -3346,8 +3392,9 @@ Recovery must be trialled to be trusted. Design trials with safety boundaries an
 ### Continue studying — chapter 47 of 50
 
 [← Chapter 46](#ch-46) · [Course chapter index](../SUBJECTS.md) · [Chapter 48 →](#ch-48)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-48"></a>
 
@@ -3409,8 +3456,9 @@ The dossier is the claim-organised, provenance-tracked body of evidence behind t
 ### Continue studying — chapter 48 of 50
 
 [← Chapter 47](#ch-47) · [Course chapter index](../SUBJECTS.md) · [Chapter 49 →](#ch-49)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-49"></a>
 
@@ -3474,8 +3522,9 @@ An engineering thesis argues from need to design to evidence. Structure it for a
 ### Continue studying — chapter 49 of 50
 
 [← Chapter 48](#ch-48) · [Course chapter index](../SUBJECTS.md) · [Chapter 50 →](#ch-50)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-50"></a>
 
@@ -3540,9 +3589,10 @@ The defense tests understanding, judgement and honesty about limits. Present nee
 <!-- cyberabc:chapter-navigation:start ch-50 -->
 ### Continue studying — chapter 50 of 50
 
-[← Chapter 49](#ch-49) · [Course chapter index](../SUBJECTS.md) · [Worked results →](#worked-results) · [Next course via chapter index →](../SUBJECTS.md)
-<!-- cyberabc:chapter-navigation:end -->
+[← Chapter 49](#ch-49) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
+This is the final chapter of this course; the index links the next course in the full study path.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
