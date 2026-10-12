@@ -165,8 +165,9 @@ Security decisions are comparisons under uncertainty. Give quantities units, sep
 ### Continue studying — chapter 01 of 40
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
@@ -217,8 +218,9 @@ Computing systems are stacks of trust, from hardware to people. OT and medical d
 ### Continue studying — chapter 02 of 40
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -307,8 +309,9 @@ Short, readable programs turn inventories into decisions. Filter, count and repo
 ### Continue studying — chapter 03 of 40
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
@@ -364,8 +367,9 @@ Good security writing states a claim, shows the evidence, makes the reasoning ex
 ### Continue studying — chapter 04 of 40
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -418,8 +422,9 @@ Security literacy is precise vocabulary applied to real consequences. Assets, th
 ### Continue studying — chapter 05 of 40
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
@@ -510,8 +515,9 @@ Sets describe inventories and permissions; logic makes rules exact and checkable
 ### Continue studying — chapter 06 of 40
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -596,8 +602,9 @@ Networks carry the assumptions of their protocols. Classic industrial protocols 
 ### Continue studying — chapter 07 of 40
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
@@ -675,8 +682,9 @@ Parsing is a security boundary. Define valid input precisely, accept only that, 
 ### Continue studying — chapter 08 of 40
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
@@ -764,8 +772,9 @@ Relational data lets you answer cross-cutting security questions with one query,
 ### Continue studying — chapter 09 of 40
 
 [← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
@@ -821,8 +830,9 @@ Authorisation defines legitimate security work. Write rules of engagement, stop 
 ### Continue studying — chapter 10 of 40
 
 [← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
@@ -877,8 +887,9 @@ The OS enforces separation, permissions and privilege; least privilege and compl
 ### Continue studying — chapter 11 of 40
 
 [← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
@@ -959,8 +970,9 @@ Probability rules are simple; their assumptions are not. Base rates decide wheth
 ### Continue studying — chapter 12 of 40
 
 [← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
@@ -1048,8 +1060,9 @@ Identity answers three different questions. Use strong, phishing-resistant authe
 ### Continue studying — chapter 13 of 40
 
 [← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
@@ -1105,8 +1118,9 @@ Privacy asks whether processing about people is appropriate, not only whether it
 ### Continue studying — chapter 14 of 40
 
 [← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
@@ -1167,8 +1181,9 @@ Evidence has a source, a method, a date and a degree of independence. Measure ou
 ### Continue studying — chapter 15 of 40
 
 [← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
@@ -1223,8 +1238,9 @@ Architecture turns principles into enforced properties: no direct path from the 
 ### Continue studying — chapter 16 of 40
 
 [← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
@@ -1311,8 +1327,9 @@ Each primitive guarantees something specific: hashes detect change only against 
 ### Continue studying — chapter 17 of 40
 
 [← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
@@ -1368,8 +1385,9 @@ Research starts with a question specific enough to be answered and disputed. Cho
 ### Continue studying — chapter 18 of 40
 
 [← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Chapter 19 →](#ch-19)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
@@ -1422,8 +1440,9 @@ Infrastructure is critical because society depends on its functions. Jurisdictio
 ### Continue studying — chapter 19 of 40
 
 [← Chapter 18](#ch-18) · [Course chapter index](../SUBJECTS.md) · [Chapter 20 →](#ch-20)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-20"></a>
 
@@ -1487,8 +1506,9 @@ The field's foundational cases teach through comparison: manual fallback, hygien
 ### Continue studying — chapter 20 of 40
 
 [← Chapter 19](#ch-19) · [Course chapter index](../SUBJECTS.md) · [Chapter 21 →](#ch-21)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-21"></a>
 
@@ -1541,8 +1561,9 @@ Control systems are loops of sensing, deciding and acting, supervised by SCADA a
 ### Continue studying — chapter 21 of 40
 
 [← Chapter 20](#ch-20) · [Course chapter index](../SUBJECTS.md) · [Chapter 22 →](#ch-22)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-22"></a>
 
@@ -1617,8 +1638,9 @@ Inventories and dependency maps are evidence with sources, dates and gaps. Addin
 ### Continue studying — chapter 22 of 40
 
 [← Chapter 21](#ch-21) · [Course chapter index](../SUBJECTS.md) · [Chapter 23 →](#ch-23)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
@@ -1670,8 +1692,9 @@ Structured risk assessment brings discipline to scope, assumptions and judgement
 ### Continue studying — chapter 23 of 40
 
 [← Chapter 22](#ch-22) · [Course chapter index](../SUBJECTS.md) · [Chapter 24 →](#ch-24)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-24"></a>
 
@@ -1730,8 +1753,9 @@ Frameworks organise outcomes; risk analysis decides priorities; mappings connect
 ### Continue studying — chapter 24 of 40
 
 [← Chapter 23](#ch-23) · [Course chapter index](../SUBJECTS.md) · [Chapter 25 →](#ch-25)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-25"></a>
 
@@ -1803,8 +1827,9 @@ Laboratory I turns separate exercises into one judgement. Trace every finding to
 ### Continue studying — chapter 25 of 40
 
 [← Chapter 24](#ch-24) · [Course chapter index](../SUBJECTS.md) · [Chapter 26 →](#ch-26)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
@@ -1861,8 +1886,9 @@ Threat modelling finds threats where data crosses trust boundaries; STPA finds u
 ### Continue studying — chapter 26 of 40
 
 [← Chapter 25](#ch-25) · [Course chapter index](../SUBJECTS.md) · [Chapter 27 →](#ch-27)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-27"></a>
 
@@ -1937,8 +1963,9 @@ Verification asks whether a control works as specified; validation asks whether 
 ### Continue studying — chapter 27 of 40
 
 [← Chapter 26](#ch-26) · [Course chapter index](../SUBJECTS.md) · [Chapter 28 →](#ch-28)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
@@ -2010,8 +2037,9 @@ Fault trees and FMEA make failure assumptions explicit, top-down and bottom-up. 
 ### Continue studying — chapter 28 of 40
 
 [← Chapter 27](#ch-27) · [Course chapter index](../SUBJECTS.md) · [Chapter 29 →](#ch-29)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-29"></a>
 
@@ -2083,8 +2111,9 @@ Security operations in critical services work hand in hand with operations: keep
 ### Continue studying — chapter 29 of 40
 
 [← Chapter 28](#ch-28) · [Course chapter index](../SUBJECTS.md) · [Chapter 30 →](#ch-30)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-30"></a>
 
@@ -2145,8 +2174,9 @@ Laboratory II combines people and evidence: decide under time pressure, reconstr
 ### Continue studying — chapter 30 of 40
 
 [← Chapter 29](#ch-29) · [Course chapter index](../SUBJECTS.md) · [Chapter 31 →](#ch-31)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-31"></a>
 
@@ -2205,8 +2235,9 @@ Advanced cases teach through failed assumptions: what operators see is real, saf
 ### Continue studying — chapter 31 of 40
 
 [← Chapter 30](#ch-30) · [Course chapter index](../SUBJECTS.md) · [Chapter 32 →](#ch-32)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-32"></a>
 
@@ -2262,8 +2293,9 @@ Security in critical services sits among law, economics, safety, human factors a
 ### Continue studying — chapter 32 of 40
 
 [← Chapter 31](#ch-31) · [Course chapter index](../SUBJECTS.md) · [Chapter 33 →](#ch-33)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-33"></a>
 
@@ -2315,8 +2347,9 @@ Qualitative methods answer how and why; they need ethics approval, consent and p
 ### Continue studying — chapter 33 of 40
 
 [← Chapter 32](#ch-32) · [Course chapter index](../SUBJECTS.md) · [Chapter 34 →](#ch-34)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-34"></a>
 
@@ -2404,8 +2437,9 @@ Comparison is the bachelor's core skill: explicit criteria, anchored scores, evi
 ### Continue studying — chapter 34 of 40
 
 [← Chapter 33](#ch-33) · [Course chapter index](../SUBJECTS.md) · [Chapter 35 →](#ch-35)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-35"></a>
 
@@ -2460,8 +2494,9 @@ A bachelor's capstone answers a real decision problem by comparing options with 
 ### Continue studying — chapter 35 of 40
 
 [← Chapter 34](#ch-34) · [Course chapter index](../SUBJECTS.md) · [Chapter 36 →](#ch-36)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-36"></a>
 
@@ -2516,8 +2551,9 @@ Field and community practice ground the course in reality. Agree scope, confiden
 ### Continue studying — chapter 36 of 40
 
 [← Chapter 35](#ch-35) · [Course chapter index](../SUBJECTS.md) · [Chapter 37 →](#ch-37)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-37"></a>
 
@@ -2594,8 +2630,9 @@ Evidence review is structured scepticism: question, data, method, results, valid
 ### Continue studying — chapter 37 of 40
 
 [← Chapter 36](#ch-36) · [Course chapter index](../SUBJECTS.md) · [Chapter 38 →](#ch-38)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-38"></a>
 
@@ -2646,8 +2683,9 @@ Implementation is disciplined evidence collection: log decisions, register evide
 ### Continue studying — chapter 38 of 40
 
 [← Chapter 37](#ch-37) · [Course chapter index](../SUBJECTS.md) · [Chapter 39 →](#ch-39)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-39"></a>
 
@@ -2715,8 +2753,9 @@ Evaluate against the criteria you set before the results, test the comparison's 
 ### Continue studying — chapter 39 of 40
 
 [← Chapter 38](#ch-38) · [Course chapter index](../SUBJECTS.md) · [Chapter 40 →](#ch-40)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-40"></a>
 
@@ -2778,9 +2817,10 @@ The thesis reports a comparison, not a story: method, results, discussion and a 
 <!-- cyberabc:chapter-navigation:start ch-40 -->
 ### Continue studying — chapter 40 of 40
 
-[← Chapter 39](#ch-39) · [Course chapter index](../SUBJECTS.md) · [Worked results →](#worked-results) · [Next course via chapter index →](../SUBJECTS.md)
-<!-- cyberabc:chapter-navigation:end -->
+[← Chapter 39](#ch-39) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
+This is the final chapter of this course; the index links the next course in the full study path.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

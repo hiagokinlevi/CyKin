@@ -4,7 +4,7 @@ description: "Tutor the forty-chapter bachelor's Critical Infrastructure and Sec
 license: CC0-1.0
 ---
 
-# Critical infrastructure and sector security — Bachelor's course course skill
+# Critical infrastructure and sector security — Bachelor's course skill
 
 Use this **one skill for the whole 4 years course**. The course has one principal book per language; each of its 40 subjects is a chapter of that book. Read the actual manuscript when available and never present a plan as a completed lesson.
 
