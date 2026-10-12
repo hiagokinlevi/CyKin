@@ -2,7 +2,7 @@
 
 **One book for this course and language.** 12 curricular subjects are its chapters. Duration: 2 years; planned effort: approximately 600 hours. Audience: Experienced specialists. Entry knowledge: Prior degree or equivalent professional experience in the field. Intended outcome: lead advanced application and justify organization-scale choices in incident response and cyber resilience.
 
-**Editorial state:** structured outline; manuscript not yet authored. English reference edition.
+**Editorial state:** draft manuscript exists; release A4 validation and review pending. English reference edition. [Read the authored draft](MANUSCRIPT.md).
 
 [Home](../../../../../README.md) · [Course home](../../README.md) · [Edition](../README.md) · [Chapter index](../SUBJECTS.md) · [Course skill](../../skill/SKILL.md)
 
@@ -27,7 +27,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 ### Chapter 01 — Advanced security decision-making
 
-**Stage 1; 35 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 35 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-01)
 
 **Teaching purpose and relevance:** Develop specialist judgment when impact, evidence and authority constraints conflict.
 
@@ -41,13 +41,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on the entry knowledge and prepares Chapter 02. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 01 of 12 (outline):** [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (plan) →](PLAN.md#ch-02)
+**Continue studying — chapter 01 of 12 (outline):** [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (draft) →](MANUSCRIPT.md#ch-02)
 
 <a id="ch-02"></a>
 
 ### Chapter 02 — Current practice in enterprise incident command
 
-**Stage 1; 35 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 35 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-02)
 
 **Teaching purpose and relevance:** Examine how command structures coordinate technical response, executives and service owners.
 
@@ -61,13 +61,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 01 and prepares Chapter 03. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 02 of 12 (outline):** [← Chapter 01 (plan)](PLAN.md#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (plan) →](PLAN.md#ch-03)
+**Continue studying — chapter 02 of 12 (outline):** [← Chapter 01 (draft)](MANUSCRIPT.md#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (draft) →](MANUSCRIPT.md#ch-03)
 
 <a id="ch-03"></a>
 
 ### Chapter 03 — Specialist evidence in complex investigations
 
-**Stage 1; 35 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 35 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-03)
 
 **Teaching purpose and relevance:** Evaluate technical findings from several specialists without overstating their certainty.
 
@@ -81,13 +81,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 02 and prepares Chapter 04. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 03 of 12 (outline):** [← Chapter 02 (plan)](PLAN.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (plan) →](PLAN.md#ch-04)
+**Continue studying — chapter 03 of 12 (outline):** [← Chapter 02 (draft)](MANUSCRIPT.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (draft) →](MANUSCRIPT.md#ch-04)
 
 <a id="ch-04"></a>
 
 ### Chapter 04 — Advanced risk and ethics
 
-**Stage 2; 35 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 35 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-04)
 
 **Teaching purpose and relevance:** Examine the harms of response actions, including privacy intrusion and service disruption.
 
@@ -101,13 +101,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 03 and prepares Chapter 05. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 04 of 12 (outline):** [← Chapter 03 (plan)](PLAN.md#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 (plan) →](PLAN.md#ch-05)
+**Continue studying — chapter 04 of 12 (outline):** [← Chapter 03 (draft)](MANUSCRIPT.md#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 (draft) →](MANUSCRIPT.md#ch-05)
 
 <a id="ch-05"></a>
 
 ### Chapter 05 — Alternatives for coordinated containment
 
-**Stage 2; 35 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 35 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-05)
 
 **Teaching purpose and relevance:** Compare organization-scale containment choices across linked systems and owners.
 
@@ -121,13 +121,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 04 and prepares Chapter 06. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 05 of 12 (outline):** [← Chapter 04 (plan)](PLAN.md#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 (plan) →](PLAN.md#ch-06)
+**Continue studying — chapter 05 of 12 (outline):** [← Chapter 04 (draft)](MANUSCRIPT.md#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 (draft) →](MANUSCRIPT.md#ch-06)
 
 <a id="ch-06"></a>
 
 ### Chapter 06 — Controlled evaluation of recovery strategies
 
-**Stage 2; 35 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 35 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-06)
 
 **Teaching purpose and relevance:** Choose and test recovery strategies under integrity and continuity constraints.
 
@@ -141,13 +141,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 05 and prepares Chapter 07. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 06 of 12 (outline):** [← Chapter 05 (plan)](PLAN.md#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 (plan) →](PLAN.md#ch-07)
+**Continue studying — chapter 06 of 12 (outline):** [← Chapter 05 (draft)](MANUSCRIPT.md#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 (draft) →](MANUSCRIPT.md#ch-07)
 
 <a id="ch-07"></a>
 
 ### Chapter 07 — Integration across legal, privacy and operations
 
-**Stage 3; 35 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 35 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-07)
 
 **Teaching purpose and relevance:** Coordinate specialist review without turning uncertain technical findings into premature legal claims.
 
@@ -161,13 +161,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 06 and prepares Chapter 08. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 07 of 12 (outline):** [← Chapter 06 (plan)](PLAN.md#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 (plan) →](PLAN.md#ch-08)
+**Continue studying — chapter 07 of 12 (outline):** [← Chapter 06 (draft)](MANUSCRIPT.md#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 (draft) →](MANUSCRIPT.md#ch-08)
 
 <a id="ch-08"></a>
 
 ### Chapter 08 — Difficult cases with conflicting evidence
 
-**Stage 3; 35 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 35 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-08)
 
 **Teaching purpose and relevance:** Practice keeping alternatives open when evidence is partial, delayed or contradictory.
 
@@ -181,13 +181,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 07 and prepares Chapter 09. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 08 of 12 (outline):** [← Chapter 07 (plan)](PLAN.md#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 (plan) →](PLAN.md#ch-09)
+**Continue studying — chapter 08 of 12 (outline):** [← Chapter 07 (draft)](MANUSCRIPT.md#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 (draft) →](MANUSCRIPT.md#ch-09)
 
 <a id="ch-09"></a>
 
 ### Chapter 09 — Response leadership and assurance decisions
 
-**Stage 3; 35 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 35 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-09)
 
 **Teaching purpose and relevance:** Turn uncertain response information into accountable direction and later assurance.
 
@@ -201,13 +201,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 08 and prepares Chapter 10. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 09 of 12 (outline):** [← Chapter 08 (plan)](PLAN.md#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 (plan) →](PLAN.md#ch-10)
+**Continue studying — chapter 09 of 12 (outline):** [← Chapter 08 (draft)](MANUSCRIPT.md#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 (draft) →](MANUSCRIPT.md#ch-10)
 
 <a id="ch-10"></a>
 
 ### Chapter 10 — Research reading and critique
 
-**Stage 4; 35 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 35 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-10)
 
 **Teaching purpose and relevance:** Use primary research critically to inform specialist practice without copying unsupported claims.
 
@@ -221,13 +221,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 09 and prepares Chapter 11. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 10 of 12 (outline):** [← Chapter 09 (plan)](PLAN.md#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 (plan) →](PLAN.md#ch-11)
+**Continue studying — chapter 10 of 12 (outline):** [← Chapter 09 (draft)](MANUSCRIPT.md#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 (draft) →](MANUSCRIPT.md#ch-11)
 
 <a id="ch-11"></a>
 
 ### Chapter 11 — Applied project: redesign an incident program
 
-**Stage 4; 35 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 35 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-11)
 
 **Teaching purpose and relevance:** Integrate specialist analysis into a practical program improvement with traceable evidence.
 
@@ -241,13 +241,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 10 and prepares Chapter 12. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 11 of 12 (outline):** [← Chapter 10 (plan)](PLAN.md#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 (plan) →](PLAN.md#ch-12)
+**Continue studying — chapter 11 of 12 (outline):** [← Chapter 10 (draft)](MANUSCRIPT.md#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 (draft) →](MANUSCRIPT.md#ch-12)
 
 <a id="ch-12"></a>
 
 ### Chapter 12 — Final review and organizational transfer plan
 
-**Stage 4; 35 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 35 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-12)
 
 **Teaching purpose and relevance:** Convert the applied project into an adoptable, reviewed change with ownership and monitoring.
 
@@ -261,7 +261,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 11 and prepares the worked-answer appendix and final assessment. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 12 of 12 (outline):** [← Chapter 11 (plan)](PLAN.md#ch-11) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+**Continue studying — chapter 12 of 12 (outline):** [← Chapter 11 (draft)](MANUSCRIPT.md#ch-11) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 ## Practical and assessment plan
 
