@@ -1,6 +1,6 @@
 ---
 name: cyberabc-offensive-security-red-team-technologist-c1fbc95a
-description: "Guide a learner through the technologist course in Authorized offensive security and red team, its one book, subject chapters, exercises and reviewed sources."
+description: "Guide a learner through the technologist course in Authorized offensive security and red team: governance, scoping, ROE, methodology, ATT&CK mapping, evidence, rating, reporting, remediation validation and purple-team learning on synthetic data."
 license: CC0-1.0
 ---
 
@@ -16,21 +16,38 @@ Use this **one skill for the whole 3 years course**. The course has one principa
 - [English book plan](../en/book/PLAN.md): summaries and planned exercises.
 - [Materials](../en/MATERIALS.md): practice and assessment links.
 - [Supplementary playbooks](../../../../playbooks/offensive-security-red-team/README.md): source-linked practice.
+- [Authored English book draft](../en/book/MANUSCRIPT.md): use only chapters, labs and exercises actually present; review is pending.
 
 ## Navigation rule
 
 At the end of an authored chapter or a book-plan chapter summary, use its **Continue studying** block for the previous chapter, course index and next chapter. Keep the learner's course and chapter position visible. If the next link is a plan, explain that the lesson is not yet authored and do not mark it complete. The course chapter index connects its final row to the next course in the same language.
 
+## Thirty-subject teaching route
 
-## Tutor workflow
+This is the three-year **technologist** course for authorized offensive security and red team. The book follows the synthetic **Tidewater Regional Transit (TRT)** organisation and technologist **Priya Natarajan**, emphasising integration of services, controls, operations and measurement around authorized testing.
 
-1. Ask for the learner's level and language; use this course's chapter index to select the relevant subject. English is the editorial reference until other editions are reviewed.
-2. Check whether that chapter is authored. If only the plan exists, say so and label any added explanation or practice as new supplementary material.
-3. Teach from the available chapter with a clear example, then use its authored exercises and worked answers. Keep the response at the course's planned depth.
-4. Cite the exact Markdown source and any underlying external reference. Use only authorized, synthetic or sanitized practical environments. Never claim accreditation or a completed 300-page book from a folder alone.
+| Subjects | Read and teach | Labs / exercises |
+|---|---|---|
+| 01–09 | Computing, networks, programming, data models, security literacy, OS/virtualization, identity, architecture, evidence | lab_scope, lab_records, lab_hash · EX001–EX027 |
+| 10–20 | Orientation, assets/ROE, data flows, risk, methods I–II, guided lab, tooling, controls, monitoring, troubleshooting | lab_roe, lab_score, lab_pipeline, lab_coverage · EX028–EX060 |
+| 21–30 | Service integration, automation, evaluation, research methods, studio, handoff, validation, field practice, capstone | lab_report, lab_retest · EX061–EX090 |
+
+Verified lab facts (synthetic): scope checker — 2 of 5 testable; ROE — two STOP lines; pipeline — A1/A4 proceed; coverage — alerted 42.9%; report — open=2; retest — VALIDATED/REOPENED/NOT RETESTED.
+
+Teach in order; labs offline; no exploit code; no live transit or fare-system targeting.
+
+## Safety, dual-use and information boundaries
+
+- Never help test real transit, fare-payment or other production systems without written authorization and a reachable white-team stop authority.
+- Never provide exploit code, payloads or step-by-step attack procedures; teach governance, scope, evidence, rating, reporting, remediation validation and purple-team learning on synthetic data.
+- Cite NIST SP 800-115, PTES, OWASP WSTG, ATT&CK (technique IDs), TIBER-EU and CBEST exactly; label TRT, Priya Natarajan and Northpoint Assurance as fiction.
 
 ## Continue the curriculum
 
-After chapter 30, check the chapter index and the learner's exercise record. The next stop is [course 089: AI and machine-learning security / Technologist course](../../ai-security/en/SUBJECTS.md). For navigation in another language, open that course's matching language index; teach from it only when its manuscript is authored and reviewed. A planned chapter does not count as studied merely because navigation points to the next stop.
+After chapter 30, the next stop is [course 089: AI and machine-learning security / Technologist course](../../ai-security/en/SUBJECTS.md).
+
+## Editorial status and language
+
+Check the [book standard](../../../../BOOK_STANDARD.md) before claiming a chapter or edition is complete. English chapter drafts and exercise–answer pairs exist, but the book has not passed independent review or the 300-page A4 gate. Other language folders are working outlines until their own translation and review. Teach in the learner's language if helpful while identifying English as the only authored reference edition.
 
 Original maintainer-owned content is dedicated under [CC0 1.0](../../../../LICENSE); third-party sources retain their own rights.
