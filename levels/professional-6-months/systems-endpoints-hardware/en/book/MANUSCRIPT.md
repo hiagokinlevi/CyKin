@@ -114,7 +114,7 @@ The operations director approves the standard after a thirty-minute walkthrough.
 
 ### Versioning the standard
 
-The standard carries a version number and change history. When a CIS Benchmark is updated or Windows moves to a new version, Seun reviews the changes and issues a new version after approval. Devices are then measured against the current version, and reports say which version they used.
+A hardening standard is not written once. CIS Benchmarks are revised, Windows and Linux versions change, and Marlowe's own needs shift. The standard therefore carries a version number and a change history listing what changed, why and who approved it. When a benchmark is updated or a new operating system version arrives, Seun reviews the differences, decides which matter for Marlowe and issues a new version after approval. Devices are measured against the current version, and every monthly report states which version it used. Without this, a fall in compliance could simply mean the standard changed, not that devices got worse.
 
 ### Worked example
 
@@ -190,15 +190,9 @@ Office laptops and Windows servers are in reasonable shape. Warehouse PCs are we
 
 Seun shows the table to the operations director with a sentence per group. The director immediately asks why warehouse PCs are behind, which leads to the next chapter.
 
-### Validating the consoles
+### Validating the consoles and setting the rhythm
 
-Consoles can be wrong. Seun asks the infrastructure team to check five devices from each group by hand, comparing their actual state with what the console reports. Two Linux servers show as compliant but have a setting changed locally after the last check-in; the team shortens the reporting interval.
-
-He records this validation in the method notes so that auditors can see the figures were tested, not just exported.
-
-### Monthly rhythm
-
-The table is produced on the first working day of each month, so trends are comparable and owners know when to expect it.
+Consoles can be wrong. Seun asks the infrastructure team to check five devices from each group by hand against what the console reports. Two Linux servers show as compliant but have a setting changed locally after their last check-in, so the team shortens the reporting interval. He records this validation in the method notes so auditors can see the figures were tested, not just exported. The table is then produced on the first working day of each month, using the same exports and groups. A fixed rhythm makes trends comparable and lets owners plan, because they know when their figures will be seen.
 
 ### Worked example
 
@@ -271,15 +265,9 @@ Server admin without MFA ranks highest at 20, since compromised admin credential
 
 The operations director agrees the order, adding that the shared warehouse logons matter for accountability after a stock discrepancy last year.
 
-### Using the result
+### Using and revisiting the ranking
 
-The ranking becomes the programme plan. Seun shares it with every owner, so each knows when their group's work happens and why. When a warehouse manager asks why encryption waits, the ranking gives a clear answer based on agreed reasoning rather than IT's preference.
-
-The ranking is reviewed at each checkpoint, since closing one gap can change the others.
-
-### Revisiting scores
-
-At month four, the warehouse agent gap is closed, and the Linux baseline score falls as compliance rises, moving the patch tail to the top.
+The ranking becomes the programme plan. Seun shares it with every owner, so each knows when their group's work happens and why; when a warehouse manager asks why encryption waits, the agreed reasoning answers. The ranking is not fixed. At each checkpoint Seun re-scores the list, because closing one gap changes the others. By month four the warehouse agent gap is closed and the Linux baseline score falls as compliance rises, which moves the laptop patch tail to the top. Re-scoring openly shows leaders that priorities follow evidence rather than whoever complained most recently.
 
 ### Worked example
 
@@ -337,13 +325,11 @@ If the jump host or MFA service fails during an emergency, admins still need a w
 
 The accounts are tested twice a year so they work when needed.
 
-### Logging admin activity
+After each test, the passwords are changed and the envelope resealed, and the test is noted in the change log.
 
-All admin sessions through the jump host are logged with the user, time and target server. Logs go to the central log service, where a monthly review checks for unexpected targets or unusual hours, following the log management approach in NIST SP 800-92.
+### Logging admin activity and service accounts
 
-### Service accounts
-
-Service accounts used by applications are reviewed too; each gets a named owner and the least rights it needs.
+All admin sessions through the jump host are logged with the user, time and target server, and the logs go to the central log service. A monthly review, following the log management approach in NIST SP 800-92, looks for unexpected targets or unusual hours. Service accounts used by applications get the same scrutiny as people: each has a named owner, the least rights its application needs and a long random password stored in the vault. Seun finds that the backup service account is a domain administrator; the infrastructure team reduces it to the backup operator rights it actually requires.
 
 ### Worked example
 
@@ -401,17 +387,11 @@ Warehouse PCs are in busy areas. Their USB ports are restricted to approved barc
 
 These physical controls support the decision to delay encryption: an unencrypted drive is less of a risk when it cannot easily be removed or read from another system.
 
+Seun records these controls in the exception entry for warehouse encryption, so the reasoning for the delay is visible to auditors.
+
 ### Working with warehouse managers
 
-Seun runs the badge sign-in pilot on one shift with a warehouse manager present. Workers find it faster than typing the old shared password. The manager becomes the change's champion for the other shifts, which matters more than any instruction from IT.
-
-### Measuring accountability
-
-After the change, warehouse system actions show individual names, which the operations director confirms is what was needed after last year's stock discrepancy.
-
-### Replacement plan
-
-The two old PCs are replaced in month three with models that support encryption and the agent.
+Seun runs the badge sign-in pilot on one shift with a warehouse manager present. Workers find it faster than typing the old shared password, and the manager becomes the change's champion for the other shifts, which matters more than any instruction from IT. Afterwards, warehouse system actions show individual names, which the operations director confirms is what was needed after last year's stock discrepancy. The two PCs too old for the detection agent are replaced in month three with models that support both the agent and encryption, closing their exceptions and adding them to the encrypted count.
 
 ### Worked example
 
@@ -469,17 +449,11 @@ The Linux appendix includes items such as disabling unused filesystems, setting 
 
 The team rolls items out in batches of ten, so that any problem can be traced to a small set of changes.
 
-### Kernel and package updates
+Each batch is recorded with its date and the compliance figure before and after.
 
-The baseline also requires security updates applied through the package manager within the patch targets, with kernel updates followed by a scheduled reboot. Live patching is considered but not adopted this year, since monthly reboots fit the maintenance window.
+### Updates, drift lessons and reporting
 
-### Lessons from drift
-
-Daily drift reports show that most drift comes from emergency fixes made directly on servers. The team agrees to back-port such fixes into the configuration code within one working day.
-
-### Reporting
-
-The Linux figure in the monthly table comes straight from the tool's compliance report, with exceptions listed beneath.
+The Linux baseline requires security updates through the package manager within the patch targets, with kernel updates followed by a scheduled reboot; live patching is considered but not adopted this year, since monthly reboots fit the maintenance window. Daily drift reports show that most drift comes from emergency fixes made directly on servers, so the team agrees to back-port such fixes into the configuration code within one working day. The Linux figure in Seun's monthly table comes straight from the tool's compliance report, with exceptions listed beneath it, so the number and its caveats always travel together.
 
 ### Worked example
 
@@ -537,23 +511,21 @@ Seun reports not just the percentage within target but the list of devices outsi
 
 In month one, the tail includes eleven laptops over thirty days, mostly belonging to drivers' supervisors who rarely connect to the office network. Cloud update management closes most of these within a month.
 
+The tail list is shared with owners each month.
+
 ### Third-party applications
 
 Operating system patches are only part of the work. Browsers, PDF readers and the route planning client also need updates. The endpoint management tool's application catalogue now updates these automatically on laptops, and the infrastructure team adds application versions to the server baseline.
 
 A monthly report shows versions of the five most common applications, and any version more than one release behind is followed up.
 
-### Communicating outages
+Applications without automatic updating are flagged as candidates for replacement.
 
-Server patching windows are announced a week ahead to operations staff, with a short message on what will be unavailable and for how long.
+Their owners are asked to find an alternative within a year.
 
-### Emergency patches
+### Outages, emergency and firmware patches
 
-For flaws in the KEV catalogue, the team patches within seven days, using an emergency change process.
-
-### Firmware patching
-
-Laptop and server firmware updates follow the same targets where vendors deliver them through managed channels.
+Server patching windows are announced a week ahead to operations staff, with a short message on what will be unavailable and for how long, so planners can route around them. For flaws listed in the CISA Known Exploited Vulnerabilities catalogue, the team patches within seven days using an emergency change process that still records what was done. Firmware is part of patching too: laptop and server firmware updates follow the same targets where vendors deliver them through managed channels, and firmware versions appear in the monthly report, because flaws below the operating system are easy to forget and hard to detect.
 
 ### Worked example
 
@@ -611,21 +583,19 @@ A good exception explains why the standard cannot be met, what risk remains, how
 
 Vague entries such as "business need" are sent back for detail.
 
+Seun keeps two good examples in the register's guidance so that owners can see what a complete entry looks like.
+
 ### Residual risk reporting
 
-Each quarter, Seun summarises exceptions by group and risk score for the operations director. The summary shows how many exceptions exist, how many are overdue, and which carry the highest residual risk. This lets the director see accepted risk in one place and decide whether to fund faster fixes.
-
-Over six months, the number of exceptions falls as hardware is replaced and vendors release updates.
-
-### Linking to the standard
-
-Exceptions are reviewed when the standard changes, since a new version may resolve or create them.
+Each quarter, Seun summarises exceptions by group and risk score for the operations director: how many exist, how many are overdue and which carry the highest residual risk. This puts all accepted risk in one place, so the director can decide whether to fund faster fixes. Over six months the number of exceptions falls as hardware is replaced and vendors release updates. Exceptions are also reviewed whenever the standard changes, because a new version may resolve an exception, for example by relaxing a setting, or create new ones by adding a requirement some devices cannot yet meet.
 
 ### Example entries
 
 By month six the register includes the two Linux servers, three old warehouse PCs, one laptop running specialist mapping software that needs an older driver, and six servers awaiting vendor updates. Each has an owner, a compensating control and an expiry date within the next year.
 
 Two earlier exceptions were closed when the vendor released fixes, showing that the register shrinks when actively managed.
+
+The register is small enough to review in half an hour, which keeps the quarterly review realistic for busy owners.
 
 ### Worked example
 
@@ -683,15 +653,11 @@ The evidence pack is a shared folder with a simple index: one section per outcom
 
 Access to the pack is limited, since it shows where weaknesses are.
 
-### Mapping to frameworks
+The pack's owner is named, and a deputy can update it during holidays, so monthly reports keep arriving even when Seun is away.
 
-The index maps each item to CIS Controls v8 safeguards and NIST SP 800-53 Rev. 5 controls, such as CM-2, CM-6, SI-2 for flaw remediation and AC-6 for least privilege. This lets auditors using either framework find what they need.
+### Mapping to frameworks and follow-up
 
-The mapping also helps answer insurer questions, which often follow similar themes.
-
-### Audit follow-up
-
-At the follow-up audit, the finding is closed. The auditor notes the clear link between standard, measurement and exceptions as good practice.
+The pack's index maps each item to CIS Controls v8 safeguards and NIST SP 800-53 Rev. 5 controls, such as CM-2, CM-6, SI-2 for flaw remediation and AC-6 for least privilege, so auditors using either framework find what they need, and insurer questions, which follow similar themes, are easier to answer. Evidence is kept for at least three years to match the audit cycle, with older monthly reports archived rather than deleted. At the follow-up audit the finding is closed, and the auditor notes the clear link between standard, measurement and exceptions as good practice.
 
 ### Insurer questions
 
@@ -699,9 +665,7 @@ Typical insurer questions ask whether MFA protects admin and remote access, whet
 
 Where an answer is partial, such as encryption on warehouse PCs, he says so and attaches the replacement plan.
 
-### Retention
-
-Evidence is kept for at least three years, matching the audit cycle, and older monthly reports are archived rather than deleted.
+He keeps a copy of each submitted questionnaire in the pack, so next year's answers can be compared with this year's.
 
 ### Worked example
 
@@ -759,9 +723,11 @@ Seun uses the same consoles, groups and definitions at month six as in month one
 
 He is cautious about attribution: several changes happened together, so he links each result to the most direct action without claiming precise effects.
 
-### Cost and effort
+Where a figure changed because the group changed size rather than because devices improved, he explains it in a footnote so the comparison stays honest.
 
-The programme used about forty days of staff time across IT and infrastructure, plus the cost of replacing eight warehouse PCs, already planned. Seun reports this so leaders can judge value, and notes that routines now need about two days a month.
+### Cost, effort and owner feedback
+
+The programme used about forty days of staff time across IT and infrastructure, plus the cost of replacing eight warehouse PCs that was already planned. Seun reports this so leaders can judge value, and notes that the routines now need about two days a month. He also asks owners how the programme affected them. They report that monthly figures helped them plan work and justify replacement budgets, which suggests that measurement has become useful to them rather than a burden imposed by IT. This feedback is the best evidence that the routines will continue after the programme ends.
 
 ### Handover of routines
 
@@ -769,15 +735,15 @@ Routines are assigned in the IT team's calendar with named people and backups. T
 
 Seun also writes a short guide explaining how to update the standard and run the quarterly exception review, so the work does not depend on him.
 
+Each routine has a one-line purpose at the top, so people understand why it matters and are less tempted to skip it when busy. The first month after handover is run jointly, with Seun watching and the new owners doing the work.
+
 ### Remaining gaps
 
 Warehouse encryption remains at 50 percent pending replacements, and phones and scanners are outside scope. Seun lists both in the final report with owners and dates, so the next phase starts from a clear position.
 
 The operations director accepts the remaining risk for now and approves the budget for the next phase.
 
-### Owner feedback
-
-Owners report that monthly figures helped them plan work and justify replacement budgets.
+The remaining gaps are added to the exceptions register, so they are reviewed quarterly like everything else rather than tracked in a separate list that could be forgotten.
 
 ### Worked example
 
@@ -835,25 +801,23 @@ The biggest surprise was how much of the work was conversation rather than confi
 
 He also learned that measurement changes behaviour. Once groups saw their figures monthly, owners began fixing gaps before being asked.
 
+Owners also started asking for figures for their own planning, which Seun had not expected. Measurement turned out to be a management tool as much as a security one.
+
 ### What he would do differently
 
-He would validate console data earlier, since the first month's figures for Linux servers were slightly optimistic. He would also involve warehouse managers from the first week rather than month two, since their support made the biggest difference to adoption.
+Seun would validate console data earlier, since the first month's Linux figures were slightly optimistic and had to be corrected publicly. He would involve warehouse managers from the first week rather than month two, because their support made the biggest difference to adoption. He would also agree the format of the monthly table with owners before the first report, rather than revising it twice. None of these changed the outcome, but each cost time and some credibility, and each is a lesson that applies to almost any measurement-led programme.
 
-### Applying the pattern elsewhere
+### Applying the pattern and developing further
 
-Claire points out that the pattern of standard, measurement, prioritisation, exceptions and evidence applies to many areas, such as network devices and cloud services. Seun plans to use it for the phone and scanner project next year, starting with a charter and a coverage table.
-
-### Professional development
-
-Seun records the programme as continuing professional development and plans a certification in IT audit to strengthen the governance side of his role.
+Claire points out that the pattern of charter, standard, measurement, prioritisation, exceptions and evidence applies to many areas, such as network devices and cloud services. Seun plans to use it for the phone and scanner project next year, starting with a charter and a coverage table. He records the programme as continuing professional development and plans a certification in IT audit to strengthen the governance side of his role. The programme ends where it began, with the audit finding, now formally closed with evidence that will be kept current.
 
 ### Advice to peers
 
 Seun's advice to peers starting a similar programme is short: begin with a charter, use recognised references, measure by group, tailor openly and keep an honest exceptions register. Above all, report regularly to the people who own the risk, so security becomes part of normal management rather than a special project.
 
-### Closing
+He also advises keeping the first version of the standard short; a standard that people can actually meet earns more trust than a complete one that nobody reaches.
 
-The programme ends with the audit finding closed.
+Expand it once people meet it.
 
 ### Worked example
 

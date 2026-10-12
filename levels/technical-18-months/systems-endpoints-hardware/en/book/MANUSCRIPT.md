@@ -110,7 +110,7 @@ Nadia records for each PC: model, serial number, TPM present and enabled, Secure
 
 ### Firmware updates
 
-PC makers release firmware updates that fix security flaws. The supplier enables firmware updates through Windows Update for supported models, so firmware stays current without visiting each desk.
+PC makers release firmware updates that fix security flaws in the code that runs before Windows starts. Because firmware sits below the operating system, a flaw there can survive a Windows reinstall, which makes these updates more important than their low profile suggests. NIST SP 800-147 describes how firmware updates should be authenticated so that only the maker's signed updates are accepted. The supplier enables firmware updates through Windows Update for supported models, so firmware stays current without visiting each desk. Updates are applied only when the PC is on mains power, since an interrupted firmware update can leave a PC unable to start, and the firmware version is recorded in the inventory.
 
 ### Worked example
 
@@ -185,7 +185,7 @@ In a sample of ten PCs, four have extra administrators, five accounts in total, 
 
 ### Leftover accounts
 
-The temp account found on PC04 was created years ago for a contractor. Leftover local accounts like this are easy to forget and may have weak passwords, so they are removed rather than just stripped of rights.
+The temp account found on PC04 was created years ago for a contractor and never removed. Leftover local accounts like this are easy to forget: they do not appear in the directory, nobody signs in with them and their passwords are often weak or shared. Because temp was also an administrator, anyone who knew its password could take full control of the PC. Removing its admin rights is not enough; the account itself is deleted after checking that no files or scheduled tasks depend on it. Nadia adds a check for unexpected local accounts to the quarterly routine, using the same export as the admin rights lab.
 
 ### Worked example
 
@@ -236,13 +236,9 @@ Multi-factor authentication asks for something more than a password, such as app
 
 Password resets are a common route for impersonation. Nadia follows a procedure: confirm identity by calling the staff member back on their known number or in person, then set a temporary password that must be changed at first sign-in. She never resets a password based only on an email request.
 
-### Shared mailboxes
+### Shared mailboxes and lockout
 
-The firm's shared mailbox for client enquiries is opened through each user's own account with delegated access, not by signing in with a shared password. This keeps MFA in place and shows who did what.
-
-### Account lockout
-
-Repeated wrong passwords lock the account for fifteen minutes, slowing guessing without locking staff out for long.
+The firm's shared mailbox for client enquiries used to be opened by signing in with a shared password. Now each user opens it through their own account with delegated access, which keeps MFA in place and shows who sent each reply. The shared mailbox's own sign-in is disabled. To slow password guessing, repeated wrong passwords lock an account for fifteen minutes. This is long enough to make guessing slow, but short enough that a staff member who mistypes a few times is not stuck until IT is free. Lockout events appear in the sign-in log, so a pattern of lockouts on one account can be noticed and investigated.
 
 ### Worked example
 
@@ -310,13 +306,9 @@ Twenty-five of thirty PCs updated within fourteen days. Five are late, the oldes
 
 Spare PCs are switched on weekly to update. The full disk is cleaned. The broken update service is repaired by the supplier using the standard repair steps. The partner's laptop is set to update when it connects.
 
-### Feature updates
+### Feature updates and pauses
 
-Besides monthly security updates, Windows receives a larger feature update each year. Each version is supported for a fixed period. The supplier plans feature updates with a pilot group first, because they can affect older applications, and makes sure no PC stays on a version past its support date.
-
-### Pausing updates
-
-During month-end, the supplier may pause feature updates, but security updates continue. Any pause has an end date recorded in the ticket, so it cannot be forgotten.
+Besides monthly security updates, Windows receives a larger feature update each year, and each version is supported for a fixed period. Feature updates can affect older applications such as the tax software, so the supplier installs them first on a pilot group and makes sure no PC stays on a version past its support date. During month-end, the busiest time for accountants, the supplier may pause feature updates, but security updates continue. Any pause is recorded in a ticket with an end date, so it cannot be forgotten. An expired pause is one of the commonest reasons small offices drift behind on updates.
 
 ### Worked example
 
@@ -367,15 +359,9 @@ Tamper protection stops users and programs from turning off Defender. The suppli
 
 When Defender blocks something, the alert appears in the console. Most are routine. If an alert says a threat was found but not removed, Nadia disconnects the PC from the network and tells the supplier immediately.
 
-### Scans and performance
+### Scans, performance and quarantine
 
-Staff sometimes complain that antivirus slows their PC. The supplier schedules full scans for lunchtime and relies on real-time protection the rest of the day. Explaining this to staff removes the reason they turned protection off in the first place, which is better than relying only on tamper protection.
-
-Nadia also checks that protection updates arrive daily; a PC with old definitions is flagged in the console.
-
-### Quarantine
-
-Blocked files go to quarantine, where they cannot run. Only the supplier may restore a quarantined file, after confirming it is safe, so staff cannot release something harmful by accident.
+Staff sometimes complain that antivirus slows their PC, which is why one turned it off before Nadia arrived. The supplier now schedules full scans for lunchtime and relies on real-time protection the rest of the day. Explaining this to staff removes the reason they turned protection off, which works better than relying only on tamper protection. Nadia also checks that protection updates arrive daily; a PC with old definitions is flagged. Blocked files go to quarantine, where they cannot run. Only the supplier may restore a quarantined file, after confirming it is safe, so a worried staff member cannot release something harmful by accident.
 
 ### Worked example
 
@@ -426,15 +412,9 @@ New software requests go to Lena, who checks the business need, and to the suppl
 
 The supplier keeps a list of approved software and versions. CIS Controls v8 Control 2 asks organisations to keep a software inventory and allow only authorised software.
 
-### Browser extensions
+### Browser extensions and unused software
 
-Browser extensions are software too. Some read every page a user visits, including client portals. The supplier sets a policy allowing only approved extensions, such as the password manager. Staff who want another extension request it through the same process as other software.
-
-Nadia explains to staff that free extensions which promise coupons or downloads often collect browsing data, which matters for a firm handling client finances.
-
-### Uninstalling unused software
-
-Software nobody uses still needs updates. Nadia lists programs not opened in six months; with users' agreement, the supplier removes them, reducing what must be patched.
+Browser extensions can read every page a user visits, including client portals. The supplier allows only approved extensions, such as the password manager, and other requests follow the normal software process. Nadia explains that free coupon or download extensions often collect browsing data, which matters for a firm handling client finances. Unused software is another quiet risk: every installed program needs updates even if nobody opens it. Nadia lists programs not opened in six months and, with each user's agreement, the supplier removes them. Fewer programs mean fewer updates to track and fewer places for flaws to hide.
 
 ### Worked example
 
@@ -491,13 +471,11 @@ Nadia writes a one-page note for staff describing what will change and why: the 
 
 She also explains what to do if something stops working: raise a ticket rather than looking for a way around it. Two tickets arrive in the first week, both resolved within a day.
 
-### Local Administrator Password Solution
+The note is kept on the shared drive and linked from the knowledge base, so new starters read the same explanation.
 
-LAPS gives every PC a unique, random local administrator password stored in the directory. If one PC's password leaked, it would not open any other PC, and the supplier can read the password when needed for repairs.
+### Local admin passwords and reviewing settings
 
-### Reviewing the settings list
-
-The ten settings are reviewed each year against the latest CIS Benchmark and Microsoft baseline, since recommendations change with new Windows versions.
+Every Windows PC has a built-in local administrator account. If all thirty share one password, a single leaked password opens every PC. Microsoft's Local Administrator Password Solution, LAPS, gives each PC a unique random password stored in the directory, readable only by the supplier for repairs, and changes it regularly. The ten-setting list itself is also reviewed each year against the latest CIS Benchmark and Microsoft security baseline, because recommendations change as Windows changes. The review is short: compare the list, note any new recommendations that matter for the firm, pilot them and update the one-page staff note.
 
 ### Worked example
 
@@ -554,17 +532,11 @@ Office desktops are encrypted as well. A break-in could take desktops as easily 
 
 Nadia also checks USB sticks used to carry client files to meetings. The firm buys encrypted sticks and asks staff to stop using personal ones.
 
-### Encryption during repair
+Desktops are verified the same way as laptops, with the encryption status and date recorded in the inventory for each machine.
 
-When a PC goes for repair, BitLocker may need suspending for a firmware update. The supplier resumes protection afterwards and Nadia checks the status the same day.
+### Encryption checks over the PC's life
 
-### Checking new PCs
-
-Every new PC's encryption status is checked on its first day, before it receives client data, and noted on the joiner checklist.
-
-### Reporting
-
-Lena receives a monthly line: PCs encrypted out of thirty.
+Encryption needs checking at several points, not just once. When a PC goes for repair, BitLocker may be suspended for a firmware update; the supplier resumes protection afterwards and Nadia checks the status the same day. Every new PC's encryption is checked on its first day, before it receives client data, and noted on the joiner checklist. Lena receives a monthly line in the IT report giving the number of PCs encrypted out of thirty. These three checks cover the moments when encryption most often goes wrong: after maintenance, at setup and through slow drift, and together they give the partners steady evidence.
 
 ### Worked example
 
@@ -621,13 +593,11 @@ Lena asks how long recovery would take. Nadia times a restore of a large client 
 
 This conversation turns backup from a technical task into a business decision, which is where it belongs.
 
-### Retention
+The timings are written into the recovery plan, so in a real event everyone knows roughly how long each restore should take and can spot one that is going wrong.
 
-The firm must keep some records for several years. The supplier sets backup retention to match, keeping monthly copies for seven years in cloud storage, and Lena confirms the period with the firm's compliance adviser.
+### Retention and the backup box
 
-### Backup box updates
-
-The storage box's own firmware is updated quarterly, since it holds every copy.
+The firm must keep some records for several years. The supplier sets backup retention to match, keeping monthly copies for seven years in cloud storage, and Lena confirms the period with the firm's compliance adviser rather than guessing. The network storage box that holds the nightly backups is itself a computer with firmware and an admin page. Because it holds every copy of the firm's files, it is an attractive target. Its firmware is updated quarterly, its admin password is unique and stored in the password manager, and its admin page is reachable only from the supplier's management PC.
 
 ### Worked example
 
@@ -684,17 +654,15 @@ Router firmware is easy to forget. Nadia adds a quarterly check to the supplier'
 
 She also checks the router's port forwarding list and finds an old rule forwarding a port to a PC that no longer exists. The rule is removed, since an open forward is an unnecessary entry point.
 
-### DNS filtering
+Each check is noted on the router's system page with the version found and any update applied, so the next technician can see the history at a glance.
 
-The supplier points office DNS to a filtering service that blocks known malicious sites. This adds a cheap layer of protection for all devices, including printers.
+### DNS filtering and router defaults
 
-### Default router settings
-
-Features such as UPnP, which lets devices open ports automatically, are turned off on the router unless something genuinely needs them.
+The supplier points the office's DNS to a filtering service that blocks known malicious sites. This adds a cheap layer of protection for every device, including printers and phones that cannot run antivirus. On the router, convenience features are turned off unless needed. UPnP, which lets devices open ports through the router automatically, is disabled, because any program on any device could otherwise expose services to the internet without anyone noticing. Wi-Fi Protected Setup is also off. Each disabled feature is noted on the router's system page, so a future technician knows it was a deliberate choice.
 
 ### Network inventory
 
-Nadia lists every device on the office network from the router's client table and matches each to the inventory; two unknown entries turn out to be staff phones on the wrong Wi-Fi.
+A network can only be checked if its devices are known. Nadia lists every device in the router's client table and matches each to the inventory. Two unknown entries turn out to be staff phones that had joined the office Wi-Fi instead of the guest network; the staff are shown how to switch, and the office Wi-Fi password is changed. She also finds a smart TV in the meeting room on the office network, which is moved to the guest network because it does not need to reach the file server. The comparison becomes a quarterly routine, since unknown devices tend to accumulate quietly.
 
 ### Worked example
 
@@ -751,17 +719,11 @@ Remote users can be impersonated as easily as office users. Before starting a re
 
 She never asks users for their passwords; if she needs to sign in as an administrator, she uses her own admin account.
 
-### Lost laptop away from the office
+Each remote session is recorded in the ticket with its start and end time, so there is a trail of who accessed which PC and why.
 
-If a laptop is lost at a client site, the user phones the office. Nadia checks encryption status, signs the user out of all sessions, resets the password and records the event for Lena, who decides whether clients need to be told.
+### Lost laptops, VPN timeouts and home printing
 
-### Home printers
-
-Staff printing client documents at home are asked to collect printouts immediately and shred them, since paper leaks are as real as digital ones.
-
-### VPN disconnection
-
-The VPN disconnects after a period of inactivity, so an unattended laptop does not stay connected to the office network.
+If a laptop is lost at a client site, the user phones the office. Nadia checks encryption status, signs the user out of all sessions, resets the password and records the event for Lena, who decides whether clients need to be told. The VPN also disconnects after a period of inactivity, so an unattended laptop does not stay connected to the office network. Finally, staff printing client documents at home are asked to collect printouts immediately and shred them when finished. Paper leaks are as real as digital ones, and a remote working guide that ignores printing leaves a gap.
 
 ### Worked example
 
@@ -818,15 +780,19 @@ When an email is reported, Nadia looks at the sender's real address, the reply-t
 
 She never forwards suspicious attachments to colleagues; the supplier handles analysis in its own safe environment.
 
+She replies to every reporter with a short thank-you and the outcome, which teaches staff what to look for next time.
+
 ### Payment change requests
 
 Accountants are targeted with emails asking to change a client's bank details. The firm's rule is that any change to payment details is confirmed by phone using a number already on file, never one in the email. Nadia includes this rule in the monthly tip.
 
 This is a process control, not a technical one, and it stops a fraud that no filter can fully catch.
 
+Staff are encouraged to call back even when the request seems to come from a known client, because compromised client mailboxes are common.
+
 ### Measuring reports
 
-Monthly report counts help Lena see whether awareness is working; more reports with fewer clicks is a good sign.
+Monthly counts help Lena see whether awareness is working. Nadia records the number of reported emails, how many were genuinely malicious and how many clicks were reported. More reports with fewer clicks is a good sign; fewer reports might mean less phishing or might mean people have stopped bothering, so the count is read alongside the quality of reports. She avoids naming individuals in the figures, because the aim is to encourage reporting. After three months, reports have doubled and the time from a click to its report has fallen from hours to minutes, which limits damage.
 
 ### Worked example
 
@@ -883,23 +849,15 @@ A joiner's PC is prepared before their first day: enrolled, encrypted and update
 
 The joiner checklist is a single page and is signed off by Nadia and the new starter.
 
-### Lost or broken devices
+The checklist also confirms that the joiner has read the short security note and knows how to report a suspicious email, so good habits start on day one rather than after the first mistake.
 
-Broken PCs under warranty are sent for repair only after the drive is removed or encryption confirmed. Lost devices are reported and recorded as in chapter 12.
+### Broken, lost and mobile devices
+
+Broken PCs under warranty are sent for repair only after the drive is removed or encryption confirmed, since repair shops handle many devices. Lost devices are reported and recorded as in chapter 12. Phones that read work email are enrolled in app protection: work email and files live inside managed apps that can be wiped without touching personal photos or messages. This lets staff use their own phones while giving the firm control of its data. Before a leaver's account is disabled, their manager confirms which files should move to shared folders, so client work is not lost with the account.
 
 ### Inventory updates
 
-Every joiner, move and leaver updates the PC inventory: who has the PC, its serial and its status. The monthly comparison with the management tool catches missed updates.
-
-At the end of the placement, the inventory matches the management tool exactly for all thirty PCs.
-
-### Mobile phones
-
-Phones that read work email are enrolled in app protection, so work data can be removed from a lost phone without wiping personal photos.
-
-### Leaver data
-
-Before a leaver's account is disabled, their manager confirms which files should move to shared folders, so client work is not lost.
+Every joiner, move and leaver changes the inventory: who has a PC, its serial number and its status. If these updates are missed, the inventory slowly stops matching reality, and checks based on it give wrong answers. Nadia adds the inventory update to the joiner and leaver checklists so it happens at the same time as the account change. A monthly comparison with the management tool catches anything missed. At the end of the placement, the inventory matches the management tool exactly for all thirty PCs, which Nadia records with the date as evidence.
 
 ### Worked example
 
@@ -952,27 +910,15 @@ NIST SP 800-128 links configuration management with documentation and change con
 
 ### Where passwords live
 
-System pages record where a password is stored, never the password itself. Router, printer and firmware passwords are kept in the password manager's IT vault, which only Nadia and the supplier can open.
+System pages record where a password is stored, never the password itself. Router, printer, firmware and storage box passwords are kept in the password manager's IT vault, which only Nadia and the supplier can open, and access is logged. This replaces a paper notebook in Lena's drawer that held every admin password in one place. Once its contents are moved and the passwords changed, the notebook is shredded. Changing the passwords matters, because anyone who had seen the notebook could still know them. The vault also records when each password was last changed, which helps plan rotations.
 
-This replaces a paper notebook in Lena's drawer, which is shredded once its contents are moved.
+### Knowledge base and templates
 
-### Knowledge base
+Common fixes become short knowledge base articles: how to reset MFA, reconnect the VPN or request software. Staff can solve simple problems themselves and new technicians learn faster; Nadia writes eight articles, each checked by the supplier. She also creates templates for system pages, tickets and change records, so every entry has the same fields and nothing important is left out. Templates make reviews faster, because reviewers know where to look for each detail, and they make gaps obvious: an empty field in a change record stands out in a way that a missing sentence in free text does not.
 
-Common fixes become short knowledge base articles: how to reset MFA, how to reconnect the VPN, how to request software. Staff can solve simple problems themselves, and new technicians learn faster.
+### Reviewing documents and changes
 
-Nadia writes eight articles during the placement, each reviewed by the supplier for accuracy.
-
-### Reviewing documents
-
-Documentation drifts like settings. Nadia adds a yearly review date to every system page, and the supplier checks pages after any major change. Out-of-date documentation can mislead someone during an outage, when accuracy matters most.
-
-### Change review
-
-Each Friday, Nadia and the supplier review the week's change records together for five minutes to spot anything unexpected or unrecorded.
-
-### Templates
-
-Nadia creates templates for system pages, tickets and change records, so every entry has the same fields and nothing important is left out. Templates also make reviews faster, because reviewers know where to look for each detail.
+Documentation drifts like settings, and out-of-date documentation can mislead someone during an outage, when accuracy matters most. Nadia adds a yearly review date to every system page, and the supplier checks pages after any major change. Changes themselves get a lighter weekly review: each Friday, Nadia and the supplier spend five minutes going through the week's change records together. The aim is to spot anything unexpected, such as a change with no reason recorded, or a change that should have triggered a documentation update. NIST SP 800-128 links configuration management with exactly this kind of change review.
 
 ### Worked example
 
@@ -1029,23 +975,15 @@ Nadia chose local admin rights and update status because both relate directly to
 
 She avoided measures needing new tools, so the project fits the placement time.
 
-### Validating the data
+Each measure also has a clear direction: fewer extra admins and more PCs updated are both unambiguously better, which keeps the report easy to read.
 
-Before relying on exports, she checks three PCs by hand: the local administrators group and the update history match the exports. She records these checks.
+### Validating and timing the measurement
 
-She also notes that two PCs were switched off during measurement; they are counted separately and checked when switched on.
-
-### Timeline
-
-Measuring takes one week, changes four weeks and re-measuring one week, with a buffer for month-end, when accountants are busiest and changes are paused.
+Before relying on exports, Nadia checks three PCs by hand: the local administrators group and update history match the exports, and she records these checks. Two PCs switched off during measurement are counted separately and checked when switched on. Exports are taken at the same time of day on a Tuesday, avoiding Monday, when PCs that were off over the weekend are still catching up; this makes before and after figures comparable. The plan allows one week to measure, four to change and one to re-measure, with a buffer for month-end, when accountants are busiest and changes are paused.
 
 ### Baseline table
 
-The baseline table shows each measure, the count, the total, the date and the export used, with offline PCs listed separately.
-
-### Measuring with care
-
-Exports are taken at the same time of day on a Tuesday, avoiding Monday when PCs that were off over the weekend are still catching up. This small choice makes the before and after numbers comparable.
+The baseline table is short on purpose. Each row shows a measure, the count, the total, the date and the export used: 12 of 30 PCs with extra administrators and 25 of 30 updated within fourteen days. Offline PCs are listed underneath rather than counted as passing or failing. Lena can read it in a minute, and Sam can check that each number has a source. Keeping the export file alongside the table means anyone can recompute the figures later, which is what makes a baseline evidence rather than a claim, and it lets the end measurement follow exactly the same steps.
 
 ### Worked example
 
@@ -1102,19 +1040,19 @@ Before removing admin rights, Nadia speaks to each of the affected staff. She as
 
 One partner asks to keep rights; Lena decides that partners follow the same rule, and the partner is given a separate admin account held by the supplier for rare needs.
 
+These conversations took about fifteen minutes each and avoided every complaint that Lena had expected.
+
 ### Checking results honestly
 
 Nadia re-measures with the same exports and steps. She notes that update results can vary month to month, so she will check again next month. She also notes that admin rights could creep back if the supplier grants them for quick fixes, which is why the quarterly check matters.
 
 The report shows both measures with counts, dates and a short explanation of the remaining late PC.
 
-### Cost
+She sends the report to Sam and Lena together, so both readers see the same numbers and caveats.
 
-The project used about twelve hours of Nadia's time and four of the supplier's.
+### Follow-up check and cost
 
-### Follow-up check
-
-One month later, Nadia repeats both measures. Admin rights remain at zero extra and updates at twenty-nine of thirty, suggesting the changes are holding.
+One month after the changes, Nadia repeats both measures with the same exports and steps. Extra admin rights remain at zero and updates at twenty-nine of thirty, which suggests the changes are holding rather than being a one-off result. She also records the effort: about twelve hours of her time and four of the supplier's. Recording cost matters for a small firm, because partners decide whether to continue a practice by comparing effort with benefit. Here the effort was modest, and the ongoing quarterly check takes under an hour, which makes the case for continuing it straightforward.
 
 ### Worked example
 
@@ -1165,33 +1103,15 @@ Scripts and notes are handed to the supplier.
 
 Sam assesses the report and Lena's feedback.
 
-### What worked
+### What worked and what the firm said
 
-Three things worked well: measuring before changing, talking to staff before removing rights, and fixing update failures by cause rather than one by one. Each made changes smoother and results clearer.
+Three things worked well: measuring before changing, talking to staff before removing rights and fixing update failures by cause rather than one by one. Each made changes smoother and results clearer. What worked less well was timing; month-end slowed progress, and Nadia would plan around it from the start. Lena's feedback notes fewer support calls about slow PCs and no new unwanted software since the changes, and she asks the institute for another placement student next year. Nadia thanks Lena, the supplier and the staff, whose cooperation made every change possible.
 
-What worked less well was timing. Month-end slowed progress, and Nadia would plan around it from the start next time.
+### Skills gained and next steps
 
-### Skills gained
+Nadia lists the skills she practised: reading firmware settings, managing accounts and rights, checking updates, verifying encryption, testing restores, handling phishing reports and writing documentation. Sam notes that these map directly to entry-level support roles. She also reflects on soft skills: explaining changes simply, listening to concerns and asking before acting. She plans to study Linux administration next and read the CIS Controls v8 implementation group 1 guide in full. For next year's student she leaves a short note: read the system pages first, ask Lena before changing anything visible and avoid month-end for changes.
 
-Nadia lists the skills she practised: reading firmware settings, managing accounts and rights, checking updates, verifying encryption, testing restores, handling phishing reports and writing documentation. Sam notes that these map directly to entry-level support roles.
-
-She also reflects on soft skills: explaining changes simply, listening to staff concerns and asking permission before acting.
-
-### Further study
-
-She plans to study Linux administration next, since many small firms now use cloud services built on it, and to read the CIS Controls v8 implementation group 1 guide in full.
-
-### Thanks
-
-Nadia thanks Lena, the supplier and the staff of Harlow & Pike.
-
-### Feedback from the firm
-
-Lena's feedback notes fewer support calls about slow PCs and no new unwanted software since the changes. She asks the institute for another placement student next year.
-
-### Advice to the next student
-
-Nadia leaves a short note for next year's student: read the system pages first, ask Lena before changing anything visible, and avoid month-end for changes.
+Sam asks her to keep a short learning log during her first job, recording each new problem and how it was solved, since that habit is what turns experience into skill.
 
 ### Worked example
 

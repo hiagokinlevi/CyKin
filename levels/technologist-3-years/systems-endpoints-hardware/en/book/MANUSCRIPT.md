@@ -206,7 +206,7 @@ Tomás works on a test virtual machine first. On live servers he only reads, usi
 
 ### Logs on Linux
 
-System logs are kept by the journal and in /var/log. The journalctl command filters by service and time, which lets Tomás see SSH sign-ins without opening raw files.
+Linux servers record events in the systemd journal and in text files under /var/log. The journalctl command filters the journal by service, priority and time, so Tomás can list SSH sign-ins for the last day with a single read-only command instead of scrolling raw files. He learns three patterns: filter by unit to see one service, filter by time window to look around an event, and filter by priority to see only errors. He also checks how long the journal is kept on each server, because a server that keeps only a day of history cannot answer questions about last week. Retention is agreed with Dev and recorded in the server notes.
 
 ### Worked example
 
@@ -258,7 +258,7 @@ Windows laptops each have a built-in local administrator account. If every lapto
 
 ### Checking firewall state
 
-Tomás also checks Defender Firewall on each profile. On two laptops the public profile is off, which matters when teachers work from cafés. He records both for the baseline work.
+Windows Defender Firewall has three profiles: domain, private and public. Laptops use the domain profile at school and the public profile in cafés, hotels and other untrusted networks. Tomás checks the profile states on his sample of laptops and finds that on two the public profile is switched off, probably changed while troubleshooting a home printer and never reverted. These are exactly the laptops that would be most exposed when a teacher works from a café. He records both for the baseline work rather than changing them himself, and notes that a central policy would prevent the setting being switched off locally in future.
 
 ### Worked example
 
@@ -310,7 +310,7 @@ The outside company connects to servers over a VPN. Tomás notes that the VPN ac
 
 ### Name resolution
 
-DNS turns names into addresses. If a device is pointed at the wrong DNS server, it can be sent to the wrong sites, so laptops should use the trust's resolver or a known filtering service.
+DNS turns names such as the trust's intranet address into IP addresses. Every connection a device makes starts with this lookup, so DNS settings quietly decide where traffic goes. If a laptop is pointed at an unknown resolver, perhaps by a home router or a public hotspot, lookups can be answered wrongly or logged by someone else. The trust's laptops use the trust's own resolver at school and a known filtering DNS service elsewhere, which also blocks many known malicious domains. Tomás checks the configured resolvers on his sample, finds one laptop with a manually set public resolver left from troubleshooting, and records it for correction.
 
 ### Worked example
 
@@ -381,7 +381,7 @@ The fix is not only cleaning up once but making leavers trigger account disablin
 
 ### Service accounts
 
-Some accounts belong to programs, such as the backup software. They should have only the rights they need, long random passwords stored securely, and a named owner who reviews them yearly.
+Some accounts belong to programs rather than people: the backup software, the scanner that saves to a shared folder and the management information system's database connection. These service accounts are easy to forget because nobody signs in with them, yet they often have broad rights and passwords that never change. Each should have only the rights its program needs, a long random password stored in the password manager, and a named owner who reviews it yearly. Tomás lists the trust's five service accounts and finds that the scanner account is a domain administrator, which is far more than saving files needs. Dev reduces it to write access on one folder.
 
 ### Worked example
 
@@ -433,9 +433,7 @@ Tomás tests each script with small synthetic inputs where he knows the right an
 
 ### Scheduling checks
 
-A script is most useful when it runs regularly. Dev schedules the account and backup checks weekly with the system scheduler, writing the output to a dated file. A dated history shows whether things are improving and lets Tomás compare weeks.
-
-He also adds a simple header to each script explaining what it reads, what it prints and who owns it, so that someone else can keep it running after the placement.
+A script is most useful when it runs on a schedule rather than when someone remembers. Dev schedules the account and backup checks weekly with the system scheduler, writing each run's output to a dated file. The dated history shows whether things are improving, and lets Tomás compare one week with another or show an auditor that the checks really ran. Each script starts with a short header explaining what it reads, what it prints and who owns it, so another technician can keep it running after the placement. If a scheduled run fails to produce its file, that absence is itself flagged in the weekly review, so a broken check cannot pass silently.
 
 ### Worked example
 
@@ -487,7 +485,7 @@ Simple designs are easier to check. Saltzer and Schroeder (1975) argued for keep
 
 ### Fail-safe thinking
 
-When something goes wrong, the safer outcome should follow. If the management agent cannot reach its server, the laptop keeps its last policy rather than dropping to an open state. If a backup check script finds no data, it reports a failure rather than silence, so a missing report is never mistaken for success.
+When something goes wrong, the safer outcome should follow by default. Saltzer and Schroeder called this fail-safe defaults: base access decisions on permission rather than exclusion. At the trust it shows up in small choices. If the management agent cannot reach its server, the laptop keeps its last policy rather than dropping to an open state. If a backup check script finds no data to read, it reports a failure rather than printing nothing, so a missing report is never mistaken for success. And if a new staff account is created without a role, it gets no access until one is assigned, rather than inheriting a broad default group.
 
 ### Worked example
 
@@ -539,9 +537,7 @@ For college work, Tomás replaces all real names and details with synthetic ones
 
 ### Retention and minimisation
 
-Keep only the data needed, for as long as needed. Tomás's exports for the project contain account names and dates, not personal details beyond that, and are deleted from his laptop at the end of the placement. The trust's own logs follow a retention period agreed with the data protection officer.
-
-When preparing college reports, he uses counts and synthetic examples. If an assessor asks for detail, he describes the method rather than sharing real records.
+Data protection asks organisations to keep only the data they need, for as long as they need it. Tomás applies this to his own work. His project exports contain account names and dates but no other personal details, and they are deleted from his laptop at the end of the placement, with the deletion noted in his log. The trust's security logs follow a retention period agreed with the data protection officer, long enough for investigations but no longer. When preparing college reports, he uses counts and synthetic examples, and if an assessor asks for detail, he describes the method rather than sharing real records.
 
 ### Worked example
 
@@ -599,7 +595,7 @@ The twelve stale directory entries turn out to include four laptops that were re
 
 ### Classroom devices
 
-The classroom tablets, which nobody clearly owned, are assigned to each school's computing lead, who now confirms their count each term.
+The classroom tablets were the one group nobody clearly owned, which is why they were missing from every list. Unowned devices drift: nobody checks their updates, nobody notices when one disappears and nobody removes them when they break. Tomás proposes that each school's computing lead owns its tablets. Each term the lead confirms the count against the management service, reports any lost or broken tablets to Dev and checks that the tablets still receive updates. Ownership does not mean the computing lead does technical work; it means one person notices and asks. The first termly count finds two tablets missing, later found in a storeroom.
 
 ### Worked example
 
@@ -730,15 +726,9 @@ Changes go to ten laptops in one school for two weeks. One problem appears: an o
 
 The baseline then goes to all laptops in two groups a week apart. Compliance rises to 86 of 94, with the rest offline over a holiday.
 
-### Explaining changes to staff
+### Explaining changes and reaching every laptop
 
-Before rollout, Dev sends staff a short note listing what will change, such as the screen lock and blocked USB autorun, and why. Questions drop when people know what to expect.
-
-Tomás also writes a one-page record of each of the fifteen settings: what it does, the chosen value and the source recommendation. This helps the next technician understand the baseline without reverse-engineering policies, and helps auditors see that choices were deliberate.
-
-### Laptops off the network
-
-Laptops that stay at home over holidays receive settings from the cloud management service when online, so they do not wait for the school network.
+Before rollout, Dev sends staff a short note listing what will change, such as the screen lock and blocked USB autorun, and why; questions drop when people know what to expect. Tomás also writes a one-page record of the fifteen settings with each value and source, so the next technician understands the baseline. One practical gap remains: laptops that stay at home over holidays never touch the school network. Because settings are delivered by the cloud management service, these laptops receive the baseline whenever they are online anywhere. Tomás confirms this by checking the policy timestamp on a laptop that was away for two weeks.
 
 ### Worked example
 
@@ -788,15 +778,11 @@ Security updates install automatically each night on Linux servers. Kernel updat
 
 Tomás measures days from release to installation for each laptop. In the first month, 70 of 94 install within 14 days; the rest are laptops rarely used. He lists them for follow-up.
 
-### Failed updates
+### Failed updates and emergency updates
 
-Each month some updates fail. Tomás groups failures by cause: pending restart, low disk space, laptop offline for the whole month. Low disk space is fixed by a clean-up task; offline laptops are chased with their owners. Grouping makes the fixes obvious.
+Each month some updates fail. Tomás groups failures by cause: pending restart, low disk space, laptop offline all month. Low disk space is fixed by a clean-up task; offline laptops are chased with their owners. He samples three laptops by hand to confirm the update history matches the console, and one mismatch reveals a laptop reporting stale data, which is re-enrolled. Separately, when an update fixes a flaw already being exploited, the rings are compressed: Dev deploys to the first ring the same day and to everyone the next day, following the risk-based approach in NIST SP 800-40 Rev. 4.
 
-He also checks that devices reported as up to date really are by sampling three laptops by hand, confirming the update history matches the management service. One mismatch reveals a laptop reporting old data, which is re-enrolled.
-
-### Emergency updates
-
-When an update fixes a flaw already being exploited, the rings are compressed: Dev deploys to the first ring the same day and everyone else the next day.
+Compressed rollouts are recorded in the change log with the reason, so they can be reviewed afterwards.
 
 ### Worked example
 
@@ -848,17 +834,11 @@ One classroom app is no longer maintained. Tomás records it as an exception wit
 
 ### Browser extensions
 
-Browser extensions can read web pages, including school systems. Tomás reviews extensions on a sample of laptops and finds several unneeded ones. Dev sets a policy allowing only approved extensions, after asking teachers which they use for lessons.
+Browser extensions can read and change the web pages a user visits, including the school's management information system. Many free extensions are harmless, but some collect browsing data or are sold to new owners who change their behaviour. Tomás reviews extensions on a sample of laptops and finds several that nobody can explain. Dev sets a policy allowing only approved extensions, after asking teachers which ones they use in lessons. Teachers can still request new extensions through the self-service process, where Dev checks the publisher and the permissions requested. This reduces both risk and clutter without stopping legitimate classroom use.
 
-This reduces both risk and clutter, and teachers can still request an extension through the self-service process.
+### Measuring currency of applications and drivers
 
-### Measuring application currency
-
-Tomás adds a monthly count of laptops running an out-of-date version of each key application. The first report shows the PDF reader problem; later reports show it stays fixed. A count that remains at zero is good evidence for auditors that application patching works.
-
-### Driver updates
-
-Device drivers, such as those for wireless and graphics, also get security fixes; Dev allows driver updates through Windows Update for supported models after the first ring.
+Tomás adds a monthly count of laptops running an out-of-date version of each key application. The first report exposes the PDF reader problem; later reports show it stays fixed, and a count that stays at zero is good evidence for auditors that application patching works. Drivers matter too: wireless and graphics drivers run with high privilege and receive security fixes. Dev allows driver updates through Windows Update for supported models after they pass the first ring, and the monthly report includes the driver version for the two most common laptop models so that any model left behind is visible.
 
 ### Worked example
 
@@ -1036,7 +1016,7 @@ If every alert demands attention, people stop reading them. Tomás suggests tuni
 
 ### Clock synchronisation
 
-All servers and laptops take time from the directory servers, which take it from a reliable external source. Without this, a sign-in on one server and a change on another cannot be put in order.
+Logs are only useful together if their timestamps agree. If one server's clock is five minutes fast, a sign-in on that server can appear to happen after a change it actually caused, and an investigation draws the wrong conclusion. All the trust's servers and laptops take time from the directory servers, which take it from a reliable external source using the network time protocol. Tomás checks the time offset on each server and finds the print server several minutes out, because its time service was disabled. Dev re-enables it, and the weekly review gains a single line confirming that all clocks are synchronised.
 
 ### Worked example
 
@@ -1088,7 +1068,7 @@ Defender includes attack surface reduction rules that block risky behaviours, su
 
 ### Linux integrity checks
 
-On Linux servers, Dev uses the package manager's verify option to check that installed system files still match their packages. A weekly run lists any changed files, which are usually explained by configuration edits recorded in the change log.
+On Linux servers the main protections are minimal services, updates and noticing unexpected change. The package manager can verify installed files against the checksums recorded in its packages, which shows when a system binary or configuration file has been altered. Dev runs this verification weekly as a read-only check. Most differences are explained by deliberate configuration edits already recorded in the change log; anything not explained is investigated. Tomás learns to read the output: a changed configuration file is usually expected, while a changed program file is unusual and worth a closer look. This gives the servers a simple integrity check without new tools.
 
 ### Worked example
 
@@ -1140,11 +1120,7 @@ Each new approved program is added to the policy through a simple request. The p
 
 ### Explaining it to staff
 
-Office staff are told that only approved programs will run and how to request a new one. Dev promises to answer requests within two working days. Clear expectations prevent frustration and stop people from trying to find workarounds when a program is blocked, which would undermine the policy.
-
-### Linux equivalent
-
-On the Linux servers, only packages from the distribution's signed repositories are installed, and home directories are mounted so programs cannot be run from them.
+Office staff are told before enforcement that only approved programs will run on their PCs and how to request a new one. Dev promises to answer requests within two working days and keeps the request form to three questions: what program, what for, and how urgent. Clear expectations prevent frustration and stop people looking for workarounds when something is blocked, which would undermine the policy. On the Linux servers the equivalent idea is simpler: only packages from the distribution's signed repositories are installed, and home directories are mounted so programs cannot be run from them, so unapproved software has nowhere easy to run.
 
 ### Worked example
 
@@ -1194,15 +1170,9 @@ Some staff read email on personal phones. The trust uses the email service's app
 
 Teachers on hotel or café wireless should use the VPN for school systems. Tomás writes a short guide with three steps.
 
-### Device loss away from school
+### Device loss and long trips
 
-If a laptop is lost on a trip, the teacher phones the school office, which contacts Dev. Dev confirms encryption in the management console, signs the user out of all sessions and resets their password. The office records the event for the data protection officer.
-
-Tomás adds this to the contact card produced in the incident chapter so that the steps are the same whether the loss happens at home, on a trip or at school.
-
-### Updates while travelling
-
-Laptops away for weeks still receive updates over the internet through the cloud management service, so a long trip does not leave them behind. Dev checks the last check-in date of travelling laptops in the weekly routine.
+If a laptop is lost on a trip, the teacher phones the school office, which contacts Dev. Dev confirms encryption in the console, signs the user out of all sessions, resets the password and records the event for the data protection officer. Tomás adds these steps to the contact card from the incident chapter so they are the same wherever the loss happens. Long trips raise a second issue: laptops away for weeks still need updates. The cloud management service delivers them over the internet, and the weekly routine checks the last check-in date of travelling laptops so any that stop reporting are followed up.
 
 ### Worked example
 
@@ -1260,7 +1230,7 @@ Writing the notes also surfaces surprises. The print server runs a web interface
 
 ### Versioned documents
 
-Baselines and role notes are kept with version history, so Dev can see when a setting was changed in the documents and compare it with the change log. When an auditor asks why a setting has a particular value, the history and the log together answer the question.
+Baselines and server role notes are stored with version history rather than as files that are overwritten. When a setting changes, Dev can see when the document changed, who changed it and compare that with the change log. When an auditor asks why a setting has a particular value, the history and the log together answer the question, which is the evidence trail NIST SP 800-128 describes for configuration management. Tomás also adds a short summary of changes at the top of each document, so readers do not need to compare versions themselves. Old versions are kept, never deleted, because past configurations explain past incidents.
 
 ### Worked example
 
@@ -1310,15 +1280,9 @@ Dev escalates to the outside company and the head teacher if pupil data may be a
 
 Tomás runs a tabletop exercise with Dev and the school business manager using a made-up lost-laptop scenario, finding that nobody knew the out-of-hours contact for the outside company.
 
-### Lessons learned
+### Lessons learned and preserving information
 
-After any real incident, Dev writes a short note: what happened, what went well, what was slow and what will change. NIST SP 800-61 treats this step as part of the incident cycle, because improvements are easiest to agree while the event is fresh.
-
-The notes are kept blameless. If people fear being blamed, they report less, and small problems become large ones.
-
-### Preserving information
-
-When the outside company may need to investigate, Dev keeps the affected laptop powered and isolated, exports its endpoint protection timeline and records who handled it. These simple steps keep useful information without any specialist tools.
+After any real incident, Dev writes a short blameless note: what happened, what went well, what was slow and what will change. NIST SP 800-61 treats this step as part of the incident cycle, because improvements are easiest to agree while the event is fresh, and blame makes people report less. During an incident, preserving information matters too. When the outside company may need to investigate, Dev keeps the affected laptop powered and isolated rather than switching it off, exports its endpoint protection timeline and records who handled it and when. These simple steps keep useful evidence without any specialist forensic tools.
 
 ### Worked example
 
@@ -1368,23 +1332,13 @@ Disposed devices are wiped following NIST SP 800-88 guidance, with certificates 
 
 Donated laptops must meet the same criteria and be enrolled before use.
 
-### Firmware support
+### Firmware support and warranty
 
-Vendors publish how long a model will receive firmware and driver updates. Laptops past that date may still run Windows but no longer get fixes for low-level flaws. Tomás adds firmware support end dates to the inventory and uses them, together with operating system support, to decide replacement order.
+Vendors publish how long each model receives firmware and driver updates. Laptops past that date may still run Windows, but no longer get fixes for low-level flaws. Tomás adds firmware support end dates and warranty end dates to the inventory and uses them, with operating system support, to set replacement order. Warranty matters because repairs after it expires often cost more than a replacement. When comparing models for purchase, he asks vendors for the support period in writing, because marketing pages change, and records the answer in the purchasing file so it can be checked later.
 
-When comparing models for purchase, he asks vendors for the support period in writing, because marketing pages may change.
+### Budgeting and reuse
 
-### Budgeting the plan
-
-Spreading replacements over three years keeps yearly spending even. Tomás presents the plan with a simple yearly cost line and the risk of delaying each group, so leaders can make an informed decision if money is short.
-
-### Reusing parts
-
-Old laptops that still receive updates are reused for less sensitive tasks, such as library catalogues, rather than kept in cupboards where they miss updates.
-
-### Recording warranty
-
-Warranty end dates sit beside support dates, since repairs after warranty often cost more than replacement.
+Spreading replacements over three years keeps yearly spending even, which suits a schools trust whose budget is set annually. Tomás presents the plan with a simple yearly cost line and the risk of delaying each group, so leaders can make an informed decision if money is short. Old laptops that still receive updates are not left in cupboards, where they would miss updates and become forgotten risks. Instead they are reused for less sensitive tasks, such as library catalogue stations, enrolled in management like every other device, and retired when their support ends.
 
 ### Worked example
 
@@ -1440,13 +1394,9 @@ Each measure was chosen because it relates to a real risk at the trust and can b
 
 Tomás avoids measures that would need new tools or access to personal data, which would slow the project and raise privacy concerns.
 
-### Timeline
+### Timeline and project risks
 
-The term is divided into three stages: two weeks to measure, six weeks to improve and two weeks to re-measure and report. A buffer week allows for school events that stop changes, such as inspections or exams.
-
-### Risks to the project
-
-The main risks are Dev being unavailable, changes disrupting teaching and laptops being offline during measurement. Each has a response: a second contact at the outside company, piloting changes, and counting offline laptops separately.
+The term is divided into three stages: two weeks to measure, six weeks to improve and two weeks to re-measure and report, with a buffer week for school events such as inspections or exams, when changes stop. Tomás also lists the risks to the project itself. Dev may be unavailable; the response is a second contact at the outside company. Changes may disrupt teaching; the response is piloting each change on a few laptops first. Laptops may be offline during measurement; the response is counting them separately rather than guessing. Writing these down at the start means a problem triggers a planned response instead of a scramble.
 
 ### Worked example
 
@@ -1498,21 +1448,11 @@ Laptops offline during the week are counted separately rather than assumed compl
 
 ### Checking the scripts against reality
 
-Before relying on the scripts, Tomás checks a few results by hand. He confirms one stale account in the directory console, opens the SSH configuration on one server, and checks encryption on two laptops. All match the script output, which gives confidence in the rest.
+Before relying on the scripts, Tomás checks a few results by hand. He confirms one stale account in the directory console, opens the SSH configuration on one server and checks encryption on two laptops. All match the script output, which gives confidence in the rest, and he records the spot checks in his method notes so his instructor can see the measurements were validated. The whole baseline takes about six hours of his time and one hour of Dev's, a cost he records because it shows the measurement can be repeated cheaply every term.
 
-He records these spot checks in the method notes, so that his instructor can see the measurements were validated.
+### Interpreting and sharing the baseline
 
-### Interpreting the baseline
-
-The baseline shows uneven strengths. Encryption is already good at 87 of 94, while laptop settings are weak at 31 of 94. This shapes the plan: encryption needs a few fixes, while the laptop baseline needs a proper pilot and rollout. Seeing this early stops Tomás spending equal time on every area.
-
-### Sharing the baseline
-
-The table is shared with the business manager with a short note that the numbers are a starting point, not a judgement on Dev's work. This framing matters, because a single technician covering two schools has had little time for checks.
-
-### Time spent
-
-Measuring took about six hours of Tomás's time and one hour of Dev's.
+The baseline shows uneven strengths. Encryption is already good at 87 of 94 laptops, while laptop settings are weak at 31 of 94. This shapes the plan: encryption needs a handful of fixes, while the laptop baseline needs a proper pilot and rollout, and seeing it early stops Tomás spending equal time on every area. The table is shared with the business manager with a note that the numbers are a starting point, not a judgement on Dev's work. That framing matters: a single technician covering two schools has had little time for checks, and blame would make him less willing to share problems.
 
 ### Worked example
 
@@ -1568,21 +1508,19 @@ Disabling the four stale accounts takes an afternoon. Before each is disabled, D
 
 The leavers form is then introduced. The school offices send it on each person's last day, and Dev confirms the account is disabled within one working day.
 
+The leavers form is reviewed after its first month: all three leavers that month were disabled on time.
+
 ### Backup alerting
 
-The failed backup on mis01 had gone unnoticed because failure emails went to a mailbox nobody checked. Alerts now go to a shared mailbox read daily by Dev and the business manager, and the weekly backup age script provides a second check.
+The failed backup on mis01 had gone unnoticed because failure emails went to a mailbox nobody checked. That is a common pattern: the backup software worked as designed, but its warning reached no one. Alerts now go to a shared mailbox read daily by Dev and the business manager, so a single absence does not hide a failure. The weekly backup age script provides a second, independent check that does not depend on email at all. Tomás tests the alerting by asking Dev to pause a non-critical job for one night; the failure email arrives and the script flags the job the next morning.
 
 ### SSH fixes
 
-Dev applies the SSH changes on a Saturday morning, testing each with a second session. The outside company's engineers are asked to confirm their keys first. Nobody is locked out.
+Dev applies the SSH changes on a Saturday morning, when nobody depends on the servers. Before disabling password sign-in on mis01, he asks the outside company's engineers to confirm that their keys work, and keeps an existing session open while testing a new one, so a mistake cannot lock him out. Each server is changed separately and checked with the lab script before moving to the next. The change log records the time, the setting and the result. Nobody is locked out, and the rerun of the lab shows all four servers compliant with no deviations.
 
-### Laptop baseline
+### Encryption and laptop baseline fixes
 
-The laptop baseline follows the pilot and rollout described in chapter 13, with the whiteboard app update completed first.
-
-### Encryption fixes
-
-The seven laptops not yet fully encrypted are handled one by one: four finish encrypting on their own, two have protection resumed after a firmware update, and one needs its TPM enabled in firmware.
+The seven laptops not yet fully encrypted are handled one by one: four finish encrypting on their own once left on overnight, two have protection resumed after a firmware update, and one needs its TPM enabled in firmware with the teacher's agreement. The laptop baseline follows the pilot and rollout described in chapter 13, with the interactive whiteboard app updated first so that SMBv1 can stay disabled. Handling the two areas in sequence rather than together means that any support call can be traced to one change, which keeps troubleshooting simple for a one-person IT team.
 
 ### Worked example
 
@@ -1632,25 +1570,13 @@ Each improvement links to a specific change, which is easier here than in larger
 
 One laptop missed the baseline due to a failed agent, since fixed.
 
-### Reading the numbers carefully
+### Reading the numbers against targets
 
-The improvements are large, but Tomás is careful in how he describes them. The measurements cover one term at one trust. Some values, such as encryption, were already high. Laptop compliance depends on laptops being online when measured; five offline laptops were checked when they returned.
+The improvements are large, but Tomás is careful how he describes them. The measurements cover one term at one trust, and some values, such as encryption, were already high. Laptop compliance depends on laptops being online, so the five offline laptops were checked when they returned. The plan had set targets of zero stale accounts, all servers SSH-compliant and at least 90 of 94 laptops on the baseline. Every target was met, with laptops at 93. He writes that the project achieved its targets for this term and that keeping them depends on the routines in the next chapter.
 
-He writes that the project achieved its targets for this term and that keeping them depends on the routines in the next chapter.
+### What did not improve, and what staff said
 
-### What did not improve
-
-Not everything moved. The classroom tablets remain outside the project, and the outside company's shared VPN account was replaced only in the final week, so its effect cannot yet be measured. Reporting these honestly shows the limits of the work.
-
-He also notes that staff time spent on the project was higher than planned, about twenty-five hours of Dev's time, mainly on the laptop baseline pilot.
-
-### Feedback from staff
-
-A short question to staff about disruption gets mostly neutral answers, with a few comments about the screen lock. This suggests the changes were acceptable, though the sample is small.
-
-### Comparing with targets
-
-The plan set targets of zero stale accounts, all servers compliant and at least 90 of 94 laptops compliant. Every target was met, with the laptop result at 93.
+Not everything moved. The classroom tablets stayed outside the project, and the outside company's shared VPN account was replaced only in the final week, so its effect cannot yet be measured. Reporting these openly shows the limits of the work. Dev's time on the project was about twenty-five hours, more than planned, mainly on the laptop pilot. A short question to staff about disruption gets mostly neutral answers, with a few comments about the screen lock. This suggests the changes were acceptable, though the sample is small, and Tomás says so rather than claiming staff approval.
 
 ### Worked example
 
@@ -1706,21 +1632,15 @@ Each routine is a short checklist with the command or console page for each step
 
 The weekly routine takes about thirty minutes. Termly tasks take half a day and are added to the school calendar so they are not forgotten during busy weeks.
 
+Each checklist ends with a line to sign and date, which becomes the record of the routine.
+
 ### Keeping scripts maintained
 
-Scripts break when exports change format. Each script prints a clear error if a column is missing, rather than producing wrong numbers. Dev is shown how to update the column names, and the scripts are stored with a short readme.
+Scripts break when exports change format, for example when the management service renames a column after an update. A broken script that prints wrong numbers is worse than one that stops. Each of Tomás's scripts therefore checks that the columns it needs exist and prints a clear error if one is missing. Dev is shown how to update the column names, and the scripts are stored with a short readme listing what each reads and prints. Tomás also includes a small synthetic test file for each script, so after any change Dev can run the test and confirm the output still matches the known answer.
 
-### Reviewing the routines
+### Reviewing routines, cover and escalation
 
-At the end of each term, Dev and the business manager spend twenty minutes reviewing whether the routines happened and whether any step should change. This keeps the routines useful rather than becoming a forgotten document.
-
-### Cover arrangements
-
-When Dev is away, the outside company runs the weekly checks under its contract, using the same checklist.
-
-### Escalation in routines
-
-Each routine names when to escalate, for example an unexplained admin group change goes to the outside company the same day.
+At the end of each term, Dev and the business manager spend twenty minutes checking whether the routines happened and whether any step should change, so the checklists stay useful rather than becoming forgotten documents. When Dev is away, the outside company runs the weekly checks under its contract using the same checklist. Each routine also says when to escalate rather than just record: an unexplained change to an administrator group or a server backup missing for two days goes to the outside company the same day. Clear escalation rules matter most when the usual person is absent and a stand-in must decide what is urgent.
 
 ### Worked example
 
@@ -1778,19 +1698,11 @@ Renée Okafor reviews a draft and asks Tomás to cut technical detail from the m
 
 ### The presentation
 
-Tomás's talk to the trust's leaders uses four slides: the problem, what was measured, what changed and what is needed next. He avoids jargon, explaining encryption as making a lost laptop's data unreadable. Leaders ask about cost and about what happens when he leaves; he points to the routines and the outside company's cover.
+Tomás's talk to the trust's leaders uses four slides: the problem, what was measured, what changed and what is needed next. He avoids jargon, explaining encryption as making a lost laptop's data unreadable and baselines as an agreed list of safe settings. Leaders ask about cost and about what happens when he leaves, and he points to the routines and the outside company's cover. He rehearses with Dev beforehand, which surfaces the cost question early. The placement is assessed on the report, the presentation and the trust's written feedback, so the talk is part of the evidence, not an extra.
 
 ### Personal reflection
 
-Tomás notes that his most useful skills were not technical tricks but careful measurement, asking before changing and writing clearly. He also notes a mistake: he initially assumed the management console was complete, and only the inventory reconciliation showed it was not. He now checks data sources before trusting them.
-
-### Assessment
-
-The placement is assessed on the report, the presentation and the trust's feedback.
-
-### Thanks
-
-Tomás thanks Dev and the school offices for their time and patience.
+Tomás notes that his most useful skills were not technical tricks but careful measurement, asking before changing and writing clearly. He also records a mistake: he first assumed the management console was a complete list of laptops, and only the inventory reconciliation showed four were missing. He now checks a data source against an independent one before trusting it. He thanks Dev and the school offices for their time and patience, since every change depended on their cooperation, and he plans to study configuration management tools next, which would replace some of his scripts with automated enforcement.
 
 ### Worked example
 
