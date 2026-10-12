@@ -468,6 +468,96 @@ Correct case status: "V2 approval wording insufficient for a scoped disruptive c
 
 An incorrectly designed training system might accept any affirmative message and silently populate the approved flag. This is why the simple Python fixture is instructional only. A real workflow must independently check identity, delegated authority, scope, expiry and conflict of duties. The essential human question remains: who owns the potential service harm, and what precisely have they approved?
 
+
+### 2.E1 Three permissions, three different forms of evidence
+
+When C02 reaches the CTN support desk at 09:04, the visible fact is a **reported S42 availability problem**, not a security compromise. The cloud colleague's proposed account disablement is a question. The practitioner should distinguish three kinds of permission.
+
+*Permission to look* concerns read-only case collection. It may still expose staff identifiers, sensitive tenant events or unrelated enrollment data, so the source custodian and relevant data owner must authorize exact source, selectors, access method and retention. *Permission to interrupt* concerns an operation changing a session, account, API route or service. It requires the owner of the affected function to accept disruption and the identity/change owner to authorize the precise effect. *Permission to publish* concerns an audience and a message; it does not follow from either technical permission. A colleague who can read a console does not thereby gain all three.
+
+Each action therefore has its own **authorization envelope**: the case and purpose, source of the trigger, named operation, smallest target and environment, start/end or lease semantics, approving role and valid delegation, executing role, service impact accepted, safeguards to preserve, success and failure observations, rollback owner, and next review. This is not a ceremonial form. If an operator discovers the cloud interface lacks session-level scope and offers account-wide disablement instead, the envelope has changed: the operator should stop and obtain a *new* authorized decision. The old decision cannot be stretched.
+
+The [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) integration of incident response with organizational risk management supports this separation of analysis and business decisions. It does **not** confer statutory authority or prescribe CTN's fictional signatories.
+
+### 2.E2 A decision's lifecycle is not its control's lifecycle
+
+A proposed restriction and an executed restriction are different artifacts. A useful professional case record keeps two ledgers:
+
+| Decision ledger | Technical/change ledger |
+|---|---|
+| Proposal ID, version, author, evidence cutoff | Operator receipt ID, method, actual target |
+| Required owners and their decision scope | Actual UTC execution time and result |
+| Approved conditions, limits and expiration | Pre/post configuration and service observations |
+| Denial or approval timestamp, if actually received | Route-specific positive and negative checks |
+| Risk owner and review trigger | Residual risks, release/rollback receipt |
+
+A signed request with no operator event must remain **approved, not executed**. An operator's success message without a reliable state or audit observation is **reported executed, effect unverified**. A narrow test showing a session rejected on one route is not proof that every token, account or integration was restricted. A refused approval also needs its own record; do not erase the proposal simply because the decision was “no.”
+
+**Contrastive example:** At 09:04, “We recommend disabling svc-enroll because S42 might be unavailable; service owner not contacted; no action taken” is a weak technical remedy but an honest action-state record. “svc-enroll contained” would falsely assert both the actor/cause and operation. A stronger proposal asks for an authorized S42 state check, names the source and minimal fields, preserves the unresolved owner route in C01, and gives the incident lead a review trigger. The improvement is in controllability and evidentiary discipline, not in dramatic language.
+
+In a supervised response, *time pressure changes escalation priority, not the logical meaning of a receipt*. An urgent decision might require the organization's documented emergency procedure; that procedure must still name what is authorized and how it is reviewed. “Emergency” alone cannot be treated as a wildcard on an account, scope or personal data.
+
+### 2.E3 Design a rollback before deciding to risk service continuity
+
+A rollback is not simply the inverse string of a command. Revoking a session can require a verified new login rather than un-revoking the original session; disabling a shared account may break an automation secret, integration queue or recovery job. Returning an earlier configuration can also reintroduce the same risk the intervention was meant to reduce.
+
+At approval time, record a *measurable protective goal* (for instance, the named session cannot perform further prohibited work) separately from *permitted service goals* (staff can use approved alternative workflows; confirmed enrollment requests remain consistent). Define a trigger for intervention failure, a trigger for unacceptable business harm, a new owner decision required for reversal, and the records to preserve before changes. The controlling service owner accepts the potential business loss; the source/identity custodian defines permitted evidence handling and technology scope; the operator has no power to rewrite these decisions.
+
+At C02 the action is still only under consideration: no target session has been supplied, so no test can yet prove a session-specific outcome. A practitioner can still prepare the *shape* of the verification: one request-linked negative test against the prohibited operation, a positive test of legitimate access, independent source/clock metadata, and a rollback checkpoint. This is preparation for Chapter 6, not a result available at 09:04.
+
+### 2.E4 A miniature authority-validation lab
+
+**Classification:** Entirely synthetic offline fixture C2X. Its positive flag is invented, not a signed decision, an account operation or a CTN source card. Python 3 standard library, read-only in memory, no environment access. The approval is bound to **one** named operation, environment and target.
+
+~~~python
+REQUEST = {"target": "S42", "action": "read_export", "environment": "training"}
+
+def decide(card):
+    if card.get("target") != REQUEST["target"] or card.get("action") != REQUEST["action"]:
+        return "HOLD_SCOPE_MISMATCH"
+    if card.get("environment") != REQUEST["environment"]:
+        return "HOLD_ENVIRONMENT"
+    if not card.get("approved_by_owner"):
+        return "HOLD_APPROVAL"
+    if not card.get("operator_receipt"):
+        return "APPROVED_NOT_EXECUTED"
+    if not card.get("independent_check"):
+        return "REPORTED_NOT_VERIFIED"
+    return "FIXTURE_GATES_DECLARED_NOT_AUTHENTICATED"
+
+cases = [
+    ("correct_scope_no_approval", {"target":"S42","action":"read_export","environment":"training","approved_by_owner":False}),
+    ("wrong_action", {"target":"S42","action":"disable_account","environment":"training","approved_by_owner":True}),
+    ("approval_only", {"target":"S42","action":"read_export","environment":"training","approved_by_owner":True}),
+    ("operator_report_only", {"target":"S42","action":"read_export","environment":"training","approved_by_owner":True,"operator_receipt":"sim-1"}),
+    ("all_flags", {"target":"S42","action":"read_export","environment":"training","approved_by_owner":True,"operator_receipt":"sim-1","independent_check":"declared"}),
+]
+for label, card in cases:
+    print(label + ": " + decide(card))
+~~~
+
+**Executed output:**
+
+~~~text
+correct_scope_no_approval: HOLD_APPROVAL
+wrong_action: HOLD_SCOPE_MISMATCH
+approval_only: APPROVED_NOT_EXECUTED
+operator_report_only: REPORTED_NOT_VERIFIED
+all_flags: FIXTURE_GATES_DECLARED_NOT_AUTHENTICATED
+~~~
+
+The **wrong-action adversarial control** is especially important: an approval for a narrow read-only S42 export cannot be recycled to disable the account. The final “pass” does not authenticate the owner or source. A production process must validate the owner identity, delegation, approved request digest/target, applicable rules, independent receipt and actual effect. These invented strings are not sufficient security controls.
+
+**Learner task:** For every line, name the first blocking evidence; then replace “training” with “production” in the last card and predict HOLD_ENVIRONMENT. Write a two-sentence supervisor request for the narrowly authorized read-only S42 question. Keep an alternative, broader account action separately proposed and unapproved. **Five points:** correct five classifications, with one point reserved for explaining why a copied favorable flag cannot authenticate approval (score each classification within the other four points). The output is reasoning on simulated fields only.
+
+### 2.E5 Decision meeting and independent handoff
+
+A useful exercise role-play has three rounds. First the analyst writes a C02-only decision note: symptom, alternative benign explanations, required service owner and proposed state check. Next a supervisor challenges the proposed account disablement: which exact new evidence would raise expected harm enough to reconsider it, which dependency could be interrupted, and what legitimate function must be preserved? Finally an independent recorder writes the current action state, making missing owner contact and absent execution receipts explicit. The second participant should be able to identify, **without asking the author**, which source request may be submitted and which disruptive option remains blocked.
+
+A supervisor should reject “approve all controls necessary” even if the analyst is well intentioned. Such language cannot be audited for target, duration, business cost or rollback. An acceptable decision says “approved to prepare a request,” “authorized to retrieve this selected interval,” or “approved this identified control until this time with these safeguards,” followed by a separate operator/effect record as applicable.
+
+**Chapter synthesis:** C02 justifies case intake, a bounded decision question and escalation. It does not justify an account-wide restriction. Later identity and endpoint cards can strengthen or weaken the action rationale, but they cannot retroactively fill a missing 09:04 approval. Chapter 3 adds those signals; Chapter 2 contributes the authority test through which any resulting proposal must pass.
+
 ### Common mistakes and limits
 
 - Confusing an urgent question with permission to execute. Record a recommendation and the approval gate separately.
@@ -2208,6 +2298,18 @@ C2|v3=VERIFIED_WITHIN_SCOPE
 ~~~
 
 These are toy Boolean states, not CTN action receipts. At C02, the actual account-disablement proposal is still pending with no scoped approval, execution or effect check. The action tuple must name target, environment, method, accepted service cost, authorizers, operator, duration, verification and rollback; “OK to act” in V2 lacks these fields. Removing `scope` from the fixture after setting `approved=True` returns `PROPOSED_ONLY`. Setting `checked=True` without an execution receipt leaves `APPROVED_NOT_EXECUTED`. The script cannot authenticate an approver, and V2 never becomes a main-case authorization.
+
+#### Chapter 2 expansion — EX006–EX010 (worked reasoning)
+
+**EX006 — Why the five rights differ.** Case opening is a recorder/incident-lead activity, not a disruptive system change. Identity export is a restricted source request requiring custodian/data-owner permission. A single session revocation requires an actual target plus identity and service owner acceptance; account-wide disablement adds emergency change authority because shared enrollment work may stop. A learner notification is a separate communications/privacy decision. For each row name recommender, approving role, operator, artifact and **unavailable alternate from C01**; do not give the analyst delegated permission by assumption.
+
+**EX007 — Versioned proposed action.** Record `CTN-IR-014 / A-01 / v1`, evidence C02 at 09:04, proposed first step a service-owner-confirmed read-only S42 state question, and conditional later account restriction whose trigger is **not yet observed**. State target and training/production distinction, legitimate enrollment cost, missing approval, missing operator, prohibited premature execution, and next check. A strong answer labels approval/collection/execution **pending** rather than inventing a 09:04 receipt. If cloud operations offers a broader operation than requested, resubmit the envelope; do not treat a shared verb as equivalent authority.
+
+**EX008 — Alternative decision calculation.** Option A sacrifices a short analyst interval but improves service-truth evidence without service shutdown. Option B may affect one future named session, but C02 lacks its identifier and causal relevance. Option C affects all shared-account enrollment paths and carries the largest unknown blast radius. The correct choice can be provisional A while explicitly naming what **new** source and event would justify a different option. State separate protective and legitimate-service tests for B/C; a dashboard result alone is insufficient.
+
+**EX009 — Why V2 fails.** “OK to act” lacks object, environment, allowed operation, service effect accepted, time bounds, operator, verification, rollback and authoritative delegation. The request for clarification must identify those fields *and* preserve the original message as an ambiguous version. Correct case state is **clarification requested; disruptive action not approved or executed**. C2X can return a favorable fixture label with invented flags; neither fixture proves the sender's authorization.
+
+**EX010 — Decision record at the correct time.** Four lines: (1) observed C02 receipt 09:04 and estimated symptom noticed 09:00; (2) current S42 state/cause unknown, no justified compromise finding; (3) case opened, limited state/owner questions proposed, no approved export/account change; (4) review when a permitted authoritative state response, corroborating event or verified evidence-loss warning arrives. A later C03 sign-in is forbidden at this checkpoint even though its event time is earlier. A concise source-linked four-line answer is preferable to a long confident story unsupported by C02.
 
 ### Subject 3: EX011–EX015
 
