@@ -1,8 +1,8 @@
 # Authorized offensive security and red team — Technologist course — English
 
-**Duration:** 3 years · **Editorial state:** authored draft; technical, editorial and A4 review pending.
+**Duration:** 3 years · **Editorial state:** structured; authored teaching pending.
 
-[Home](../../../../README.md) · [Course home](../README.md) · [Chapter index](SUBJECTS.md) · [Materials](MATERIALS.md) · [Book plan](book/PLAN.md) · [One course skill](../skill/SKILL.md) · [Draft manuscript](book/MANUSCRIPT.md) · [Playbooks](../../../../playbooks/offensive-security-red-team/README.md)
+[Home](../../../../README.md) · [Course home](../README.md) · [Chapter index](SUBJECTS.md) · [Materials](MATERIALS.md) · [Book plan](book/PLAN.md) · [One course skill](../skill/SKILL.md) · [Playbooks](../../../../playbooks/offensive-security-red-team/README.md)
 
 This language edition has one principal study book. Each curricular subject is one chapter with teaching, examples, exercises and, in the final book appendix, worked answers. The plan and chapter index map the intended material. They do not establish that unwritten chapters or translated lessons exist.
 
