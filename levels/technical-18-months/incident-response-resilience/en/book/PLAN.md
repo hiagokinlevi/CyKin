@@ -81,13 +81,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 02 and prepares Chapter 04. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 03 of 18 (outline):** [← Chapter 02 (draft)](MANUSCRIPT.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (plan) →](PLAN.md#ch-04)
+**Continue studying — chapter 03 of 18 (outline):** [← Chapter 02 (draft)](MANUSCRIPT.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (draft) →](MANUSCRIPT.md#ch-04)
 
 <a id="ch-04"></a>
 
 ### Chapter 04 — Scripting and data formats
 
-**Stage 1; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 30 planned A4 pages; 4 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-04)
 
 **Teaching purpose and relevance:** Prepare learners to handle evidence with repeatable, inspectable transformations.
 
@@ -97,17 +97,17 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A small synthetic log bundle containing malformed records and duplicate IDs.
 
-**Practice and exercises:** Write or review a bounded parser, preserve raw input and report rejected records. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Write or review a bounded parser, preserve raw input and report rejected records. The planned allocation is 4 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 03 and prepares Chapter 05. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 04 of 18 (outline):** [← Chapter 03 (draft)](MANUSCRIPT.md#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 (plan) →](PLAN.md#ch-05)
+**Continue studying — chapter 04 of 18 (outline):** [← Chapter 03 (draft)](MANUSCRIPT.md#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 (draft) →](MANUSCRIPT.md#ch-05)
 
 <a id="ch-05"></a>
 
 ### Chapter 05 — Security scope and evidence
 
-**Stage 1; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 30 planned A4 pages; 4 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-05)
 
 **Teaching purpose and relevance:** Turn authorization and evidence integrity into concrete technical constraints.
 
@@ -117,17 +117,17 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A fictional responder request that exceeds the approved host list.
 
-**Practice and exercises:** Build a collection checklist, reject out-of-scope steps and document evidence handling. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Build a collection checklist, reject out-of-scope steps and document evidence handling. The planned allocation is 4 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 04 and prepares Chapter 06. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 05 of 18 (outline):** [← Chapter 04 (plan)](PLAN.md#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 (plan) →](PLAN.md#ch-06)
+**Continue studying — chapter 05 of 18 (outline):** [← Chapter 04 (draft)](MANUSCRIPT.md#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 (draft) →](MANUSCRIPT.md#ch-06)
 
 <a id="ch-06"></a>
 
 ### Chapter 06 — Response system models and service dependencies
 
-**Stage 1; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 30 planned A4 pages; 4 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-06)
 
 **Teaching purpose and relevance:** Use architecture to plan response actions without assuming that one affected host is isolated.
 
@@ -137,17 +137,17 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A synthetic identity-provider outage that affects several services.
 
-**Practice and exercises:** Model downstream impact and compare two containment sequences. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Model downstream impact and compare two containment sequences. The planned allocation is 4 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 05 and prepares Chapter 07. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 06 of 18 (outline):** [← Chapter 05 (plan)](PLAN.md#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 (plan) →](PLAN.md#ch-07)
+**Continue studying — chapter 06 of 18 (outline):** [← Chapter 05 (draft)](MANUSCRIPT.md#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 (draft) →](MANUSCRIPT.md#ch-07)
 
 <a id="ch-07"></a>
 
 ### Chapter 07 — Event-source mapping and log retention
 
-**Stage 2; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 30 planned A4 pages; 4 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-07)
 
 **Teaching purpose and relevance:** Determine which observations can answer a triage question and when they expire.
 
@@ -157,17 +157,17 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A fabricated inventory of host, identity and application logs with different retention periods.
 
-**Practice and exercises:** Build an evidence-source matrix and prioritize preservation requests. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Build an evidence-source matrix and prioritize preservation requests. The planned allocation is 4 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 06 and prepares Chapter 08. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 07 of 18 (outline):** [← Chapter 06 (plan)](PLAN.md#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 (plan) →](PLAN.md#ch-08)
+**Continue studying — chapter 07 of 18 (outline):** [← Chapter 06 (draft)](MANUSCRIPT.md#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 (draft) →](MANUSCRIPT.md#ch-08)
 
 <a id="ch-08"></a>
 
 ### Chapter 08 — Identity, host and network failure modes
 
-**Stage 2; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 30 planned A4 pages; 4 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-08)
 
 **Teaching purpose and relevance:** Distinguish malicious-looking signals from ordinary system failure and incomplete monitoring.
 
@@ -177,11 +177,11 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** Synthetic simultaneous login failures and packet loss during scheduled maintenance.
 
-**Practice and exercises:** Compare competing failure hypotheses and request the least invasive next observation. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Compare competing failure hypotheses and request the least invasive next observation. The planned allocation is 4 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 07 and prepares Chapter 09. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 08 of 18 (outline):** [← Chapter 07 (plan)](PLAN.md#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 (plan) →](PLAN.md#ch-09)
+**Continue studying — chapter 08 of 18 (outline):** [← Chapter 07 (draft)](MANUSCRIPT.md#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 (plan) →](PLAN.md#ch-09)
 
 <a id="ch-09"></a>
 
@@ -201,7 +201,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 08 and prepares Chapter 10. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 09 of 18 (outline):** [← Chapter 08 (plan)](PLAN.md#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 (plan) →](PLAN.md#ch-10)
+**Continue studying — chapter 09 of 18 (outline):** [← Chapter 08 (draft)](MANUSCRIPT.md#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 (plan) →](PLAN.md#ch-10)
 
 <a id="ch-10"></a>
 

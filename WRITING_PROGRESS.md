@@ -6,7 +6,7 @@ The README bookshelf is generated locally from the same data as this table whene
 
 | Sigil | Academic area | Drafted / planned English chapters | Draft coverage | Start reading |
 |---|---|---:|---:|---|
-| IR | Incident response and cyber resilience | 19 / 182 | 10.4% | [Course](levels/rapid-1-month/incident-response-resilience/README.md) |
+| IR | Incident response and cyber resilience | 24 / 182 | 13.2% | [Course](levels/rapid-1-month/incident-response-resilience/README.md) |
 | CYBR | Cybersecurity | 3 / 182 | 1.6% | [Course](levels/rapid-1-month/cybersecurity/README.md) |
 | INFO | Information security | 0 / 182 | 0.0% | [Course](levels/rapid-1-month/information-security/README.md) |
 | DATA | Data governance | 0 / 182 | 0.0% | [Course](levels/rapid-1-month/data-governance/README.md) |
@@ -30,6 +30,6 @@ The README bookshelf is generated locally from the same data as this table whene
 | OT | OT, IoT and cyber-physical security | 0 / 182 | 0.0% | [Course](levels/rapid-1-month/ot-iot-security/README.md) |
 | CRIT | Critical infrastructure and sector security | 0 / 182 | 0.0% | [Course](levels/rapid-1-month/critical-sector-security/README.md) |
 
-**Total:** 23 / 4,186 planned English chapters have draft teaching (0.5%).
+**Total:** 28 / 4,186 planned English chapters have draft teaching (0.7%).
 
 See [all 207 course percentages](COURSE_WRITING_PROGRESS.md) for the level-by-level view. These percentages update when the maintainer runs the private local generator before publishing manuscript changes. They are not live GitHub computations. [Editorial status and verified book count](STRUCTURE_REVIEW.md).

@@ -1,6 +1,6 @@
 ---
 name: cyberabc-incident-response-resilience-technical-38b58084
-description: "Tutor the technical Incident Response draft through three authored English subjects, offline LLR labs and 12 worked exercises; separate observed records from identity and cause claims."
+description: "Tutor the technical Incident Response draft through eight authored English subjects, offline LLR labs and 32 worked exercises; separate observed records from identity and cause claims."
 license: CC0-1.0
 ---
 
@@ -25,24 +25,30 @@ At the end of an authored chapter or a book-plan chapter summary, use its **Cont
 
 ## Authored technical route
 
-The English book currently authors three of 18 chapters and EX001–EX012 with worked results. Teach the offline Lumen Library Reservations (LLR) fixtures at a technical operator level; Chapters 4–18 remain plans, not lessons. Keep this fictional case separate from the professional CTN case.
+The English book currently authors eight of 18 chapters and EX001–EX032 with worked results. Teach the offline Lumen Library Reservations (LLR) fixtures at a technical operator level; Chapters 9–18 remain plans, not lessons. L4–L8 are separate hypothetical branches, not additional main-case evidence. Keep LLR separate from the professional CTN case.
 
 | Subject | Read and test | Learner artifact |
 |---|---|---|
 | 1. Service architecture | [Chapter 1](../en/book/MANUSCRIPT.md#ch-01): dependency direction, failure domains, trust boundaries and offline closure. | Six-row service map, exact closure outputs and approval-gated change comparison; EX001–EX004. |
 | 2. Networks and protocols | [Chapter 2](../en/book/MANUSCRIPT.md#ch-02): bounded DNS/TCP/TLS/HTTP trace, source and endpoint limits. | Six-row claim ladder, read-only discriminator request and offline classifier; EX005–EX008. |
 | 3. Operating systems and identities | [Chapter 3](../en/book/MANUSCRIPT.md#ch-03): process, principal, session and human separation with an unjoined request. | Entity matrix, source-linked timeline and literal join-check lab; EX009–EX012. |
+| 4. Scripting and data formats | [Chapter 4](../en/book/MANUSCRIPT.md#ch-04): schema, accepted/rejected CSV rows and join limits. | Parser transcript, variants and source-semantic review; EX013–EX016. |
+| 5. Security scope and evidence | [Chapter 5](../en/book/MANUSCRIPT.md#ch-05): authorization scope, raw bytes, digests and receipts. | In-memory hash comparison and versioned collection receipts; EX017–EX020. |
+| 6. Response system models | [Chapter 6](../en/book/MANUSCRIPT.md#ch-06): route-level dependencies, control/rollback options and recovery target. | Route simulation, control matrix and restore-point challenge; EX021–EX024. |
+| 7. Event sources and retention | [Chapter 7](../en/book/MANUSCRIPT.md#ch-07): source coverage, anchors and short-lived requests. | UTC expiry calculation and bounded preservation queue; EX025–EX028. |
+| 8. Failure-mode discrimination | [Chapter 8](../en/book/MANUSCRIPT.md#ch-08): clock uncertainty, network/IdP/host/API hypotheses and variant handoff. | Corrected-time transcript and five-way discriminator matrix; EX029–EX032. |
 
 ## Technical tutoring cycle
 
 1. Ask the learner to state the component, observation, producer and decision question before presenting any command or code. Use only the literal offline fixtures in the manuscript; `.test` names and TEST-NET addresses are examples, not live targets.
 2. Have the learner predict each fixture's exact output, run it in a local Python 3 interpreter if desired, and compare the output with the worked result. The code checks a model, not a production system. Ask what changing one input does and why the variant does not rewrite the original record.
 3. Require an evidence/request artifact and a negative or business-function check. For Chapter 1 distinguish graph closure from measured impact; for Chapter 2 distinguish client-to-edge from edge-to-API; for Chapter 3 do not join `sid-88` to `r-202` from a shared principal label.
-4. Score EX001–EX012 against their 0–2 rubrics and show the [worked results](../en/book/MANUSCRIPT.md#worked-results) after the learner attempts them. Use the [chapter-end navigation](../en/book/MANUSCRIPT.md#ch-01) to move forward or back. Chapter 4 is only a plan; do not mark it studied.
+4. In Chapters 4–8, ask which literal inputs are separate L4–L8 branches. Require a rejection report, an authority-and-provenance receipt, a route-level negative test, a retention anchor and a clock-uncertainty note before interpreting any output. Never merge a branch row into N01–N06 or infer a cause from one code or timestamp.
+5. Score EX001–EX032 against their 0–2 rubrics and show the [worked results](../en/book/MANUSCRIPT.md#worked-results) after the learner attempts them. Use the [chapter-end navigation](../en/book/MANUSCRIPT.md#ch-01) to move forward or back. Chapter 9 is only a plan; do not mark it studied.
 
 ## Evidence and editorial boundaries
 
-LLR is fictional and separate from CTN. No primary source is evidence for an LLR event. RFC 5737 addresses and RFC 6761 `.test` names are documentation fixtures. A TLS handshake is not application authorization, a sampled missing API row is not proof of no request, and a shared service principal is not a human. The three authored chapters and twelve worked exercises remain a draft far short of the full technical book and 300-page A4 gate.
+LLR is fictional and separate from CTN. No primary source is evidence for an LLR event. RFC 5737 addresses and RFC 6761 `.test` names are documentation fixtures. A TLS handshake is not application authorization, a sampled missing API row is not proof of no request, and a shared service principal is not a human. L4–L8 are separate branch inputs, not main-case releases. Parser success is not a validated source; matching byte digests do not authenticate an export; calculated retention is not permission; corrected clock coincidence is not causation. Eight authored chapters and 32 worked exercises remain a draft far short of the full technical book and 300-page A4 gate.
 
 ## Continue the curriculum
 

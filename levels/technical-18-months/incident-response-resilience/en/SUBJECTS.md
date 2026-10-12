@@ -12,12 +12,12 @@ English is the reference edition.
 |---|---|---|---:|---:|---:|---|---|
 | 1 | [01](book/PLAN.md#ch-01) | Computing and service architecture | 67 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-01) | [02 · Draft](book/MANUSCRIPT.md#ch-02) |
 | 1 | [02](book/PLAN.md#ch-02) | Networks and protocols | 67 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-02) | [03 · Draft](book/MANUSCRIPT.md#ch-03) |
-| 1 | [03](book/PLAN.md#ch-03) | Operating systems and identities | 67 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-03) | [04 · Plan](book/PLAN.md#ch-04) |
-| 1 | [04](book/PLAN.md#ch-04) | Scripting and data formats | 67 | 30 | 4 | Planned | [05 · Plan](book/PLAN.md#ch-05) |
-| 1 | [05](book/PLAN.md#ch-05) | Security scope and evidence | 67 | 30 | 4 | Planned | [06 · Plan](book/PLAN.md#ch-06) |
-| 1 | [06](book/PLAN.md#ch-06) | Response system models and service dependencies | 67 | 30 | 4 | Planned | [07 · Plan](book/PLAN.md#ch-07) |
-| 2 | [07](book/PLAN.md#ch-07) | Event-source mapping and log retention | 67 | 30 | 4 | Planned | [08 · Plan](book/PLAN.md#ch-08) |
-| 2 | [08](book/PLAN.md#ch-08) | Identity, host and network failure modes | 67 | 30 | 4 | Planned | [09 · Plan](book/PLAN.md#ch-09) |
+| 1 | [03](book/PLAN.md#ch-03) | Operating systems and identities | 67 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-03) | [04 · Draft](book/MANUSCRIPT.md#ch-04) |
+| 1 | [04](book/PLAN.md#ch-04) | Scripting and data formats | 67 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-04) | [05 · Draft](book/MANUSCRIPT.md#ch-05) |
+| 1 | [05](book/PLAN.md#ch-05) | Security scope and evidence | 67 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-05) | [06 · Draft](book/MANUSCRIPT.md#ch-06) |
+| 1 | [06](book/PLAN.md#ch-06) | Response system models and service dependencies | 67 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-06) | [07 · Draft](book/MANUSCRIPT.md#ch-07) |
+| 2 | [07](book/PLAN.md#ch-07) | Event-source mapping and log retention | 67 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-07) | [08 · Draft](book/MANUSCRIPT.md#ch-08) |
+| 2 | [08](book/PLAN.md#ch-08) | Identity, host and network failure modes | 67 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-08) | [09 · Plan](book/PLAN.md#ch-09) |
 | 2 | [09](book/PLAN.md#ch-09) | Host and network evidence collection methods | 67 | 30 | 4 | Planned | [10 · Plan](book/PLAN.md#ch-10) |
 | 2 | [10](book/PLAN.md#ch-10) | Containment control configuration in a lab | 67 | 30 | 4 | Planned | [11 · Plan](book/PLAN.md#ch-11) |
 | 2 | [11](book/PLAN.md#ch-11) | Clock-offset and record-integrity verification | 67 | 30 | 4 | Planned | [12 · Plan](book/PLAN.md#ch-12) |
