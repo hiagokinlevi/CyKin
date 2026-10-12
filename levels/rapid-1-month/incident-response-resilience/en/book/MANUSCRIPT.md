@@ -331,6 +331,7 @@ By the end of this chapter, a learner should be able to:
 7. Normalize a supplied fixed-offset timestamp to UTC and distinguish an event's time from its discovery time and a query's coverage.
 8. Explain how a delayed log arrival can change a repeated query without changing the original event time, and audit the limits of a synthetic evidence package.
 9. Correlate two synthetic log sources with an explicit join key and time interval, marking ambiguous and unmatched rows without inferring a human actor.
+10. Prioritize bounded preservation requests by decision value, possible loss, authority and privacy, without reporting a requested copy as collected evidence.
 
 ### 2.1 An alert is a question to investigate
 
@@ -380,6 +381,25 @@ An integrity hash can detect whether a particular byte sequence changes between 
 
 This table is a model for an **exercise note**. A real organization needs its approved preservation, retention, privacy and evidence-transfer procedures. Never collect broader data merely to make a training exercise look realistic.
 
+#### Prioritize a preservation request before copying
+
+[NIST SP 800-61 Rev. 3, RS.AN-06 and RS.AN-07](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf) addresses the provenance, integrity and restricted access of response records, and the collection and retention of incident data under an organization's procedures. The **preservation queue** below is CyberABC's classroom method for deciding what to request next; it is not a NIST form or a substitute for an organization's policy. The question is not “Which source contains the most data?” It is “Which authorized, minimal observation could change the next decision, and which opportunity to obtain it may be lost?”
+
+Write a separate card for each candidate source. Name the **decision it could change**, the smallest relevant field and interval, its custodian, the known or unknown loss path, the approval needed, the expected handoff artifact and the claim that would remain unproved even after collection. This reuses Chapter 1's proposed evidence-readiness contract, but now the case has a live decision point. A source that may expire soon deserves immediate contact even if the cause is uncertain; a source with no confirmed loss clock may still need a parallel availability check. Do not convert the words “high priority” into an unverified deadline. Conversely, an indefinitely retained document is not automatically less important to the hypothesis: it may simply permit a later request after the fragile source is safeguarded.
+
+The queue has four distinct states: **proposed** means the analyst has written a bounded request; **approved** means the named owner authorized that scope; **collected** means a custodian actually produced or preserved a specified item; **verified** means a reviewer checked the item's selection, recorded bytes or other appropriate integrity properties and limitations. An approval is not a completed collection. A digest is not a source-coverage check. A “retention hold” is itself an operational action that needs a named authority and a confirmed effect; saying one was requested does not show that deletion stopped. For every state change, record the time, actor, source pointer and what remains pending.
+
+When two requests compete for attention, compare them without inventing a numerical risk score:
+
+| Question | What to record | Failure of a shallow answer |
+|---|---|---|
+| Decision value | Which current choice could change, and what observation would discriminate? | “Useful someday” gives no reason to expose unrelated data now. |
+| Loss and delay | What policy, observed failure or owner statement supports the loss concern? Is the policy anchor known? | Adding a stated retention period to an event timestamp may fabricate a deadline. |
+| Authority and feasibility | Who can approve, who can retrieve, which selection is feasible, and what if the custodian cannot act? | An analyst's urgency does not grant permission or prove that a source is accessible. |
+| Exposure and fidelity | Which people and fields are included, what filters or transformations are applied, and how will an unmodified authorized copy be distinguished from a working view? | A broad export increases exposure; a narrow, undocumented filter can hide relevant rows. |
+
+The first contact may be the incident lead to obtain approval, the source custodian to establish a retention anchor, or both through an approved escalation path. Several requests can proceed **in parallel**; the queue ranks decision and loss concerns, not a fixed order of technical commands. Keep the case record and the protected evidence store separate. A case note may point to an item and its access owner without copying sensitive raw records into a widely read ticket. Record the retention rule for the *collected copy* separately from the source's own deletion rule. If an expected source is unavailable, record who confirmed that, which interval or field is missing and how the next decision must be narrowed. Do not fill the gap with an invented export.
+
 #### Event time, discovery time and collection time are different facts
 
 An event may occur at one time, enter a logging service later and be seen by an analyst later still. In the supplied classroom table, R9 says that an edit was recorded at 09:03 UTC. R15, at 09:14, communicates a retention rule; it does not restart the retention period for R9. Without the actual source's deletion policy, no learner can calculate an exact expiry from those two timestamps. The safe operational question is: **What is the oldest relevant record's retention deadline at its source, and how soon can an authorized custodian preserve a narrow copy?** Escalate that uncertainty instead of writing a fabricated deadline.
@@ -410,6 +430,23 @@ The following records are also fictional and extend Chapter 1. They are the comp
 | Preserve the supplied booking and identity records in the classroom case note; request an authorized impact check in a real response. | The `B19` edit is not yet explained and detailed audit retention is short. | Incident lead authorizes; analyst records the copy. | Training-owner answer, new booking edit or the next review at 09:35 UTC. |
 
 This decision does **not** clear or accuse the staff member. It states what is known, what can be lost and who may authorize the next action. If the impact check found broad damage, a containment proposal would need to reach the service owner and incident lead promptly; Chapter 3 will compare those options.
+
+#### Worked 09:20 preservation queue
+
+The learner has received R9–R16 at the **simulated 09:20 review**. R9's printed event time is 09:03, but the learner did not have R9 for the earlier 09:05 decision. R15 reports that detailed booking-audit records are deleted after 24 hours unless an authorized copy is retained. It does **not** say whether the clock starts at event creation, ingestion, storage or another policy point; nor does it show that a copy or hold already exists. The queue below is therefore a set of **requests**, not a record of actual collection. It does not add evidence to R9–R16.
+
+| Request and decision value | Loss/coverage question | Owner and proposed minimal scope | State at 09:20 and remaining limit |
+|---|---|---|---|
+| `P-A`: detailed booking audit for B17–B19, plus R14's application-audit query description; could reconstruct recorded edits and support a separate impact comparison. | R15 names 24-hour deletion, but the policy anchor, oldest available row and exact last safe time are unknown. R14's filter and ingestion coverage are also unspecified. | Incident lead seeks approval; application custodian checks a proposed 08:30–09:20 UTC event window, booking IDs and available raw fields, then records each source, filter, run time and export method. | **Proposed.** No detailed copy, confirmed deadline, complete query or approved booking state has been supplied. |
+| `P-B`: identity-session detail relevant to `desk-a`; could test whether an application action shares a session key. | R13 is only a summary without device or location; its source retention and key semantics are unknown. | Incident lead asks identity administrator for availability, retention and a restricted time/field selection. Any cross-source join requires schema and clock checks. | **Proposed.** No person, device, location or actor attribution follows from R13. |
+| `P-C`: approved training task list and version; could test whether B19 was actually in scope. | R10 lists B17/B18; the plan's version, approval time and completeness need confirmation. No deletion deadline is supplied. | Training owner supplies only the relevant signed or approved task list and its version history through the approved case route. | **Proposed.** R12's recollection is context, not a substitute for the plan or proof of who edited B19. |
+| `P-D`: help-desk report and service comparison; could bound user-facing harm. | R11 is a report, not a measured patron count; the database and displayed view may disagree. | Service owner and help desk plan a restricted B19 comparison, separating the report from a patron-facing check and an approved state. | **Proposed.** No population-wide impact estimate or restored-service claim is supported. |
+
+`P-A` receives prompt attention because the **fictional** retention notice identifies a plausible loss path and the detailed rows could change the next containment or impact decision. The lead should seek a custodian-confirmed policy anchor and a safe collection time immediately. R9 is labeled **booking audit** while R14 is labeled **application audit**; the request must ask whether these are the same producer or two different paths, rather than treating their summaries as one complete log. `P-B` can run in parallel because its retention is unknown, not known to be unlimited. `P-C` and `P-D` remain important to interpretation and harm; they are not discarded merely because the audit may be more volatile. The proposed `P-A` range is deliberately broader than R9's single timestamp yet bounded by the booking question. It is a *request for custodian review*, not an assertion that those filters exist, that the source contains every event, or that the lead has approved exporting patron data.
+
+Suppose the application custodian later returns a restricted file. The analyst would record its actual collection time, the approved selection, source timezone, any transformation, byte count or applicable integrity check, storage/access owner and reviewer. The analyst would also ask for the **query manifest** behind R14's quiet summary: source, booking/account filters, half-open event interval, query run time, ingestion coverage and source-health limitations. Without that manifest, a copied R14 sentence still cannot establish that no edits occurred after R9. If the custodian instead reports that the detailed interval has already expired, the response lead records the failed request and who confirmed it, preserves the remaining source pointers within scope, and changes the claim from “we checked the detailed audit” to “the detailed audit was unavailable for this interval.” Neither branch may be silently backdated to 09:05.
+
+A concise 09:20 handoff can therefore say: “R9 records a B19 edit at 09:03 UTC; R10 omits B19 from the listed training tasks, and R15 reports a 24-hour detailed-audit retention rule whose anchor we have not verified. At 09:20 we **propose** `P-A` to the incident lead and ask the application custodian to confirm availability, selection and the actual policy deadline; no production copy, hold or account restriction is recorded here.” This wording lets the next analyst see both the reason for urgency and the boundary of current evidence. Exercise EX018 asks the learner to make that request independently.
 
 ### 2.5 Contained lab: preserve and check a synthetic extract
 
@@ -670,7 +707,7 @@ Score each numbered exercise **0** when its artifact is absent or asserts an uns
 
 #### EX018 — Retention decision
 
-**Objective:** prepare a proportionate preservation decision. **Inputs:** R15, R9 and the collection-note fields in section 2.3. **Output:** a three-row request to the custodian stating source and event range, deletion-policy anchor or actual deadline, and collector/authority/storage scope; add a sentence explaining why preservation may precede root-cause knowledge. Do not calculate a precise expiry merely by adding 24 hours to R9's timestamp. A score of 2 identifies both the time-sensitive risk and the privacy boundary.
+**Objective:** prepare a proportionate preservation decision. **Inputs:** R9, R13–R15, the collection-note fields in section 2.3 and the worked queue in section 2.4. **Output:** a three-row `P-A` request to the application custodian stating each source and proposed event range, deletion-policy anchor or actual deadline, and collector/authority/storage scope; add one sentence explaining why preservation may precede root-cause knowledge. Then add a two-row comparison of `P-A` with `P-B`: decision each could change, known or unknown loss path, owner, present state and why the second availability check may proceed in parallel. Do not calculate a precise expiry merely by adding 24 hours to R9's timestamp or claim either source was collected. A score of 2 identifies the time-sensitive risk, privacy boundary and proposal-versus-collection distinction for both sources.
 
 #### EX019 — Collection note
 
@@ -1524,11 +1561,18 @@ The hypotheses need not be mutually exclusive. A good answer identifies what eac
 
 | Needed fact | Why the lead asks |
 |---|---|
-| Which booking-audit source, booking IDs and event interval contain the R9/R14 question? | Avoid copying unrelated patron records and make the later conclusion reproducible. |
+| Which booking-audit source supports R9, which application-audit source produced R14, and which booking IDs and event interval would be selected from each? | Avoid silently merging source paths, copying unrelated patron records or reporting an unrepeatable quiet query. |
 | What exactly starts the 24-hour R15 deletion clock, and what is the custodian-confirmed last safe collection time? | R15 alone does not establish whether age is measured from event, ingestion, storage or another policy anchor. |
 | Who may approve and perform the export, where will the unmodified copy be stored, and who may read it? | Collection must have authority, restricted access and an identifiable custodian. |
 
 The analyst can ask the incident lead to decide promptly because detailed rows may disappear before the cause is established. The request is for a bounded copy and recorded policy answer, not an unapproved bulk export or a fabricated 09:03-plus-24-hours deadline.
+
+| Comparison at 09:20 | Decision value and loss path | Owner, state and limit |
+|---|---|---|
+| `P-A` booking and application audits | Could test the B19 edit and R14's quiet-query coverage, if the sources and selection are distinguished. R15 reports a 24-hour deletion rule, but its start point and actual source availability remain unknown. | Incident lead seeks approval; application custodian confirms each source, a narrow selection and policy. **Proposed**, not collected; no current-state or completeness proof. |
+| `P-B` identity detail | Could test whether a session key connects records, if both sources share its meaning. R13 omits device/location and no identity-source retention period is supplied. | Incident lead asks identity administrator about availability and minimal fields in parallel. **Proposed**, not collected; no human attribution. |
+
+The comparison does not mean that only `P-A` matters or that urgency authorizes a bulk identity export. A valid answer may choose a different order if it names a documented loss condition and approval path; it must leave unsupported source coverage and actor identity unresolved.
 
 ### EX019 — Worked result
 

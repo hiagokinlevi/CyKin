@@ -45,15 +45,15 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Stage 2; 80 planned A4 pages; 13 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-02)
 
-**Teaching purpose and relevance:** Teach the first defensible assessment of a signal while preserving what another reviewer would need to check the conclusion.
+**Teaching purpose and relevance:** Teach a defensible first assessment and a decision-oriented preservation queue that keeps requests, approvals, collected items and verified limits separate.
 
-**Concepts and techniques:** Triage question; event, discovery and ingestion time; query coverage; evidence pointer; copy integrity; package provenance; cross-source correlation keys and ambiguous joins; uncertainty and severity.
+**Concepts and techniques:** Triage question; event, discovery and ingestion time; query coverage; evidence pointer; preservation priority and loss path; approval and collection states; copy integrity; package provenance; cross-source correlation keys and ambiguous joins; uncertainty and severity.
 
 **Depth and method:** At rapid course level, learners will follow a contained worked example. Use a guided case record to distinguish observations, assumptions and the next safe action.
 
-**Worked example:** Synthetic sign-in, booking-change and help-desk records, plus separate delayed-arrival and overlapping-session replays.
+**Worked example:** Synthetic R9–R16 booking, identity, training and help-desk records with a 24-hour retention notice, plus separate delayed-arrival and overlapping-session replays.
 
-**Practice and exercises:** Build a bounded timeline, test quiet-query limits, audit a synthetic evidence package and classify cross-source matches without inferring a human actor. The planned allocation is 13 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Build a bounded timeline, rank minimal source requests, distinguish booking from application audit, test quiet-query limits, audit a synthetic evidence package and classify cross-source matches without inferring a human actor. The planned allocation is 13 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 01 and prepares Chapter 03. This is an editorial brief, not a completed lesson.
 
