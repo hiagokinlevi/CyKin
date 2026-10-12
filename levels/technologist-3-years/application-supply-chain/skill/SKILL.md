@@ -43,7 +43,7 @@ Verified lab facts (synthetic): greenleaf 3.1.0 and museum 2.9.8 affected, kites
 
 ## Continue the curriculum
 
-After chapter 30, the next stop is [course NNN].
+After chapter 30, the next stop is [course 084: Security operations and blue team / Technologist course](../../security-operations-blue-team/en/SUBJECTS.md).
 
 ## Editorial status and language
 
