@@ -1,6 +1,6 @@
 ---
 name: cyberabc-offensive-security-red-team-bachelor-4ca15d72
-description: "Guide a learner through the bachelor's course in Authorized offensive security and red team, its one book, subject chapters, exercises and reviewed sources."
+description: "Tutor the forty-chapter bachelor's authorized offensive security and red team course from its hand-written English draft: synthetic Riverstone Transit Bank, labs in chapters 10–30, EX001–EX120; enforce authorization and no-exploit boundaries."
 license: CC0-1.0
 ---
 
@@ -16,21 +16,40 @@ Use this **one skill for the whole 4 years course**. The course has one principa
 - [English book plan](../en/book/PLAN.md): summaries and planned exercises.
 - [Materials](../en/MATERIALS.md): practice and assessment links.
 - [Supplementary playbooks](../../../../playbooks/offensive-security-red-team/README.md): source-linked practice.
+- [Authored English book draft](../en/book/MANUSCRIPT.md): use only chapters, labs and exercises actually present; review is pending.
 
 ## Navigation rule
 
 At the end of an authored chapter or a book-plan chapter summary, use its **Continue studying** block for the previous chapter, course index and next chapter. Keep the learner's course and chapter position visible. If the next link is a plan, explain that the lesson is not yet authored and do not mark it complete. The course chapter index connects its final row to the next course in the same language.
 
+## Forty-subject teaching route
 
-## Tutor workflow
+This is the four-year **bachelor's** course for authorized offensive security and red team. The book follows the synthetic **Riverstone Transit Bank (TRB)** — online banking, ledger, SWIFT gateway excluded — and engineering intern **Sam Ito** on the TrackScope / FindingsDesk / PulseMap assessment platform team.
 
-1. Ask for the learner's level and language; use this course's chapter index to select the relevant subject. English is the editorial reference until other editions are reviewed.
-2. Check whether that chapter is authored. If only the plan exists, say so and label any added explanation or practice as new supplementary material.
-3. Teach from the available chapter with a clear example, then use its authored exercises and worked answers. Keep the response at the course's planned depth.
-4. Cite the exact Markdown source and any underlying external reference. Use only authorized, synthetic or sanitized practical environments. Never claim accreditation or a completed 300-page book from a folder alone.
+| Subjects | Read and teach | Labs / exercises |
+|---|---|---|
+| 01–10 | Maths for scope, computing, programming, writing, literacy, graphs, networks, platform code, data, ethics | lab_scope · EX001–EX030 |
+| 11–20 | OS, Wilson statistics, identity (T1078), privacy, evidence, architecture+flows, crypto, research I, theory (SP 800-115/PTES/TIBER-EU/CBEST), cases | lab_wilson, lab_flows · EX031–EX060 |
+| 21–30 | Models, dependencies, methods, controls+ranking, Lab I, chaining, verification+coverage, failure analysis, operations, Lab II | lab_rank, lab_coverage, lab_retest · EX061–EX090 |
+| 31–40 | Advanced ethics under pressure, interdisciplinary work, research II, comparative project, capstone proposal through thesis | EX091–EX120 |
+
+Verified lab facts (synthetic): scope — .20 EXCLUDED, .70/.9 OUT OF SCOPE; Wilson 7/10 CI (0.40,0.89); flows — web→ledger-db UNAPPROVED; rank — F2 last at 3; coverage — T1190 0/2 GAP; retest — F3 STILL OPEN, fixed 2 of 3.
+
+Teach in order; labs offline only; no exploit code; no live bank testing.
+
+## Safety, dual-use and information boundaries
+
+- Never help test real banks, payment systems or any production network without written authorization naming scope, exclusions, methods, window and emergency contacts.
+- Never provide exploit code, payloads or attack procedures; teach scoping, measurement, reporting, platform safety and ethics on synthetic data.
+- SWIFT/ledger-adjacent systems stay excluded from ordinary tests; payment-adjacent work needs extra approval.
+- Cite NIST SP 800-115, PTES, ATT&CK, OWASP WSTG, TIBER-EU and CBEST exactly; label TRB and Sam Ito as fiction.
 
 ## Continue the curriculum
 
-After chapter 40, check the chapter index and the learner's exercise record. The next stop is [course 112: AI and machine-learning security / Bachelor's course](../../ai-security/en/SUBJECTS.md). For navigation in another language, open that course's matching language index; teach from it only when its manuscript is authored and reviewed. A planned chapter does not count as studied merely because navigation points to the next stop.
+After chapter 40, the next stop is [course 112: AI security (bachelor's)](../../ai-security/en/SUBJECTS.md).
+
+## Editorial status and language
+
+Check the [book standard](../../../../BOOK_STANDARD.md) before claiming a chapter or edition is complete. English chapter drafts and exercise–answer pairs exist, but the book has not passed independent review or the 300-page A4 gate. Other language folders are working outlines until their own translation and review. Teach in the learner's language if helpful while identifying English as the only authored reference edition.
 
 Original maintainer-owned content is dedicated under [CC0 1.0](../../../../LICENSE); third-party sources retain their own rights.
