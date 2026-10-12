@@ -1129,6 +1129,266 @@ A useful handoff lets a second analyst reconstruct the decision without guessing
 
 Common errors are copying only an alert title, silently converting timezones, treating a staff recollection as proof, relying on a log summary that omits key fields or query boundaries, hashing a file without recording which bytes were hashed, or using a high severity label without naming harm and urgency. A careful analyst can be concise: cite the observation, state the limit and identify the next decision. T1 shows why “I discovered R9 at 09:20” does not mean “R9 occurred at 09:20”; conversely, the 09:03 event time does not mean R9 was available for a 09:05 decision. T2 adds a second trap: repeating an event-time query after delayed ingestion can reveal another row without changing the event's occurrence time. The E1 package audit keeps byte integrity, source provenance and authority separate. Q1 adds a cross-source trap: an account/time overlap is a candidate relationship, while a missing or unmatched session key cannot be repaired by confidently naming a person.
 
+### 2.14 Define the thing you are trying to count
+
+"How many were affected?" is not an answerable technical question until an analyst defines what an *affected unit* is.
+
+A **ticket** is a report submitted to a service channel. A **booking** is an application business object. An **edit event** is a recorded operation. A **patron** is a person or account associated with service use. One person may open multiple tickets, one ticket may discuss several bookings, and one booking may have several audit records. These objects must not be treated as interchangeable.
+
+In Harbor Library, R5 contains a patron report about B18; R11 is a second patron report about B19. R3, R4 and R9 describe booking changes. The supplied chapter does not include a complete current authoritative-state comparison or the population of all bookings. Therefore, at the 09:20 checkpoint, the learner can identify **specific reported concerns and recorded changes**, not an independently measured total of incorrect bookings or affected people.
+
+Before any count, write the **measurement question**:
+
+> "Among the booking IDs included in an authorized, owner-defined comparison interval, how many have a current authoritative value that differs from the approved expected state?"
+
+This is substantially narrower than:
+
+> "How many patrons were harmed by the incident?"
+
+The second question requires additional relationships and harm criteria. A room assignment discrepancy could inconvenience a patron, but whether it caused actual harm, whether multiple patrons were associated with the same room, and whether the issue was corrected before use are all separate facts.
+
+The general incident-response goal is to assess scope and consequences based on available evidence. [NIST SP 800-61 Revision 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) places response analysis and decisions within cybersecurity risk management; the measurement contract below is original instructional material, not a prescribed NIST impact score.
+
+### 2.15 Establish four levels of impact claim
+
+It helps beginners to classify claims before attempting to calculate a total.
+
+| Classification | Example claim | What it establishes | What it cannot establish alone |
+|---|---|---|---|
+| **Reported concern** | A help-desk record says that a booking looked wrong | A report was received | That the authoritative state was incorrect or every symptom occurred as described |
+| **Recorded change** | Application audit says a room assignment changed | The producer recorded a change | Whether the change was approved, harmful, durable or visible to a patron |
+| **Verified state discrepancy** | An authorized comparison finds a current value differs from an owner-approved target | A mismatch exists for the *tested object and state versions*, under the comparison's trust assumptions | The size of the unexamined population, root cause or human actor |
+| **Verified service consequence** | A service owner validates a specific failed reservation outcome | The documented scenario caused an unacceptable outcome within tested scope | Whether all patrons experienced the same effect |
+
+These classifications can apply to the same booking; they are not mutually exclusive replacement labels. A report and an audit event can support investigating one booking, while a later state comparison adds a distinct, stronger claim. The analyst should preserve the original evidence and note which new source justified the upgrade.
+
+A state discrepancy must also have a defensible reference target. "The current room is different from the old room" does not necessarily mean it is wrong: a legitimate staff edit could have been approved. The target needs an owner, version, applicable time and authority. If the target is missing, record the comparison as **unverified**, not automatically a mismatch.
+
+### 2.16 The numerator and denominator have different evidence requirements
+
+A count needs a **numerator**, the items meeting the definition, and a **denominator**, the items in the defined population against which the count could be interpreted.
+
+Suppose a restricted comparison examines five selected booking IDs and finds two confirmed mismatches. A precise statement is:
+
+> "Two of the five selected IDs have a verified mismatch under the supplied comparison rules; the other three require their own status classification."
+
+It would still be incorrect to claim:
+
+> "Forty percent of Harbor Library bookings were corrupted."
+
+The selected five could have been chosen because they were suspicious, reported or otherwise convenient. Without evidence that the five represent the entire relevant population or a valid sampling design, their observed proportion cannot be generalized to every booking.
+
+Selection may be **case-driven** rather than representative. An incident analyst often investigates the most urgent known objects first. That is appropriate for containment and service repair, but it creates a biased basis for estimating prevalence. Case selection and statistical sampling are different activities.
+
+The analyst should separate:
+
+- **Known examined frame:** the exact identifiers selected and why.
+- **Comparable items:** selected identifiers for which both approved reference and current values are available.
+- **Confirmed mismatches:** comparable items that fail the declared equality or business acceptance check.
+- **Unverified items:** records missing one of those comparison prerequisites.
+- **Unexamined population:** objects outside the selected frame or with unknown existence or completeness.
+
+Do not silently exclude unknown items from the report just to make the ratio look more favorable. Instead state, for example, "two mismatches, two matches and one unverified item within the five listed comparisons; no population-wide estimate available."
+
+This approach is useful even when no percentage is calculated. Counts expressed with explicit scopes let the next analyst decide whether to broaden the inquiry or correct known business state immediately.
+
+### 2.17 Deduplicating does not mean discarding evidence
+
+A help-desk queue may contain repeated calls, email replies or follow-up tickets about one booking. Deduplication can prevent overcounting *booking identifiers*, but it must not destroy the fact that multiple reports were received.
+
+Consider two fictional tickets referencing the same booking. For the question "How many distinct bookings have a reported concern?" the two tickets correspond to **one booking identifier**. For the question "How much help-desk demand was received?" they remain **two separate contacts**. For the question "How many people were affected?" neither answer is sufficient unless the distinct individuals and relevant outcome are reliably established.
+
+Always preserve the original ticket IDs. A normalized table may group them by booking identifier, but the grouping rule must be explicit and reversible. If a booking ID is absent or misspelled, do not make an automatic identity assumption from a similar time or room number.
+
+A dangerous shortcut is to treat multiple independent reports as multiple verified incidents or to count one booking once for each edit event. Another shortcut is to collapse all reports into one and then claim that only one person was affected. Each changes the unit without informing the reader.
+
+The source/copy/interpretation separation explained in Chapter 02 also applies here. A normalized, deduplicated view is a **derived analytical product**. Keep the source pointers and transformations visible. [NIST SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final) discusses log-management processes and the handling of event records at an organizational level. It does not specify the fictional deduplication procedure in this section.
+
+### 2.18 Missing information is an impact result, not a reason to guess
+
+An absent owner-approved target, missing current-state row, incomplete query filter or unreliable source timestamp makes some impact claims **unverified**. This classification does not say the booking is healthy or broken.
+
+A response team must distinguish:
+
+1. **Negative observation:** a defined, functioning, appropriately scoped test produced evidence supporting an absence or expected result within its bounds.
+2. **Missing observation:** the record or comparison needed for the test was not supplied or could not be trusted.
+3. **Contradictory observation:** a properly conducted comparison produced a result that fails the accepted target.
+
+A query that returns no relevant audit rows while collection health is unknown belongs in the second category for any broad absence claim. A state comparison that explicitly shows a different accepted value may support the third category—but only if the target and current value have adequate provenance.
+
+R14's quiet summary is a reminder: a bounded log query cannot certify that no changes occurred outside its query envelope. R15's 24-hour retention policy adds urgency to preserving the source needed for an impact comparison, but its exact deletion anchor remains unknown. These limits affect what can be measured as well as what can be investigated.
+
+### 2.19 A defensible impact ledger
+
+A useful impact ledger contains one row per selected business object, with separate columns for the sources that describe it. It should not put a free-form narrative in place of a test result.
+
+| Field | Explanation |
+|---|---|
+| Booking ID | Exact identifier within approved scope |
+| Selection reason | Audit edit, help-desk report or owner-defined test frame |
+| Related evidence | Pointers to source records and query or collection receipts |
+| Approved reference | Expected value, version, approval owner and applicable time |
+| Current authoritative value | Observed value, source, time and collection method |
+| Comparison state | Match, mismatch or unverified |
+| Reported service effect | Reported concern, verified consequence or not assessed |
+| Uncertainty | Missing records, source-health limits or conflicting interpretations |
+| Next action and owner | Bounded comparison, correction proposal or preservation request |
+
+An analyst should not add patron names or unrelated account details to a shared impact summary when booking identifiers and controlled references are sufficient. The service owner can evaluate business consequences and authorize further checks within the relevant privacy rules. [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) provides source-aware guidance for incorporating forensic techniques into incident response; it does not provide a blanket authorization to collect personal data.
+
+The impact ledger's **selection reason** is especially important. If every row was selected because someone complained, a ratio from those rows cannot estimate how common a problem is among people who did not complain. If the source is a partial application audit, the ledger cannot measure omitted write paths or disappeared records. State the missing part of the frame before recommending a new collection.
+
+### 2.20 Contrastive worked example at the Round B decision
+
+**Plausible but incorrect assessment:**
+
+> "R3, R4 and R9 show three booking edits, and R5 and R11 contain two patron reports. Five patrons were affected, so the incident has a confirmed five-user impact."
+
+This is an invalid unit conversion. The three application changes are not five distinct people. The two help-desk reports are observations of reports, not independent verification of two incorrect authoritative states. R3/R4 may include approved training work. Nothing in the Round B case establishes a complete distinct-patron population or the final approved booking targets.
+
+**Correct bounded assessment:**
+
+> "By the fictional 09:20 Round B review, Harbor Library has source records reporting changes to B17, B18 and B19, plus patron complaints involving B18 and B19. The approved scope and current authoritative state for those bookings have not been fully verified. The incident lead should request a bounded, service-owner-approved comparison of the relevant booking identifiers with the correct target state, preserving its source coverage and retention limitations. No total of affected patrons can yet be established from the supplied material."
+
+This assessment makes a useful decision while refusing a fabricated count. It does not need to delay all protective action until every record is available; urgency, ongoing potential harm and evidence loss remain separate considerations.
+
+### 2.21 Communicate a lower bound without claiming completeness
+
+If an authorized comparison later verifies that two selected booking states are inconsistent with approved targets, the analyst can sometimes state **at least two identified mismatches among the checked items**. That is a lower bound for the known, explicitly identified objects under the test assumptions. It is not the total affected booking count unless the investigated frame is complete.
+
+For a public message, even a correct internal count may be too specific if it exposes other patrons or could be misread as exhaustive. An internal service owner may need booking IDs, approved targets and corrective owners; a patron-facing note may only need to acknowledge a possible room-booking discrepancy and describe the owner-confirmed assistance channel. The communications role must not convert "we have identified two incorrect selected bookings" into "only two bookings were affected."
+
+A review should ask which wording remains true if additional relevant source records arrive later. "Two mismatches were identified in the approved five-object comparison" remains true, assuming that comparison was valid. "Only two bookings were affected" can become false as soon as an additional affected object is found. The first is therefore a more resilient and auditable statement.
+
+### 2.22 Failure modes and acceptance limits
+
+| Failure mode | Misleading conclusion | Safer interpretation |
+|---|---|---|
+| Repeated tickets for one booking | Each ticket represents a new affected booking | Keep ticket count and distinct booking count separate |
+| A booking changed in an audit | The change harmed a patron | Validate authorization, approved expected state and service outcome |
+| Five suspicious objects examined | Results describe the full population | State the selected frame and avoid prevalence extrapolation |
+| Reference target unavailable | No mismatch was found | Comparison is unverified, not passed |
+| Current record absent | Booking was deleted | Query, retention, source or export may be incomplete |
+| Matching source and current values | All service outcomes are correct | Check applicable version, time, authorization and user-facing result |
+| Two confirmed mismatches in a subset | Exactly two bookings were affected overall | At least two were identified within the declared subset, if trusted |
+| No new complaint in the help desk | No further harm occurred | Reporting channels and coverage are incomplete observations |
+
+A beginner has met this section's objective when they can select the correct unit, preserve source and derived identifiers, distinguish confirmed mismatch from missing comparison evidence, and write a decision-ready conclusion without claiming a measured population they never examined.
+
+<a id="ir-rapid-ch02-im2-lab"></a>
+
+### 2.23 Offline laboratory — IM2: Reports, distinct bookings and confirmed mismatches
+
+**Classification:** Independently invented, offline-only teaching fixture. IM2 is **not** an additional Harbor Library R-series release, not an approved production comparison, and not P1/C1 from Chapter 03. Identifiers X01–X05 and X99 are fictitious classroom business objects; T01–T04 are fictitious report references.
+
+**Goal:** Separate ticket count, distinct reported booking IDs, verified mismatches in an examined frame and unverified comparisons. Demonstrate how removing an approved reference changes the strength of a claim without changing the underlying hypothetical current value.
+
+**Environment:** Python 3 standard library, in memory. No file operations, network calls, credentials, database writes or real identities.
+
+**Input assumptions:** The dictionary `TARGET` supplies an artificial owner-designated comparison target; `CURRENT` supplies an artificial current-state view. These values are inputs invented for the exercise, not real owner approvals or authenticated exports. A value `None` means the target is missing. The report tuples are separate source observations; repeated booking references are preserved.
+
+Before running, predict: (a) the number of reports, (b) the number of distinct booking references in those reports, (c) which examined IDs mismatch, and (d) what happens when the reference target for X04 is removed in a *variant*.
+
+~~~python
+TARGET = {
+    "X01": "Room A",
+    "X02": "Room B",
+    "X03": "Room C",
+    "X04": "Room D",
+    "X05": None,
+}
+
+CURRENT = {
+    "X01": "Room A",
+    "X02": "Room C",
+    "X03": "Room C",
+    "X04": "Room B",
+    "X05": "Room A",
+}
+
+REPORTS = [
+    ("T01", "X02"),
+    ("T02", "X02"),
+    ("T03", "X05"),
+    ("T04", "X99"),
+]
+~~~
+
+The report list is preserved as four contacts. The classifier below builds a union of IDs, then checks whether each one has both values needed for a comparison. Run the three code blocks together in order in one Python session.
+
+~~~python
+def classify(target, current, reports):
+    ids = sorted(
+        set(target) | set(current) |
+        {booking_id for _, booking_id in reports}
+    )
+
+    counts = {
+        "MATCH": 0,
+        "MISMATCH": 0,
+        "UNVERIFIED": 0,
+    }
+
+    results = {}
+
+    for booking_id in ids:
+        expected = target.get(booking_id)
+        observed = current.get(booking_id)
+
+        if expected is None or observed is None:
+            status = "UNVERIFIED"
+        elif expected == observed:
+            status = "MATCH"
+        else:
+            status = "MISMATCH"
+
+        results[booking_id] = status
+        counts[status] += 1
+
+    distinct_report_ids = {
+        booking_id for _, booking_id in reports
+    }
+
+    print(
+        "reports:", len(reports),
+        "unique_booking_refs:", len(distinct_report_ids)
+    )
+
+    for booking_id in ids:
+        print(f"{booking_id}: {results[booking_id]}")
+
+    print(
+        "counts:",
+        ",".join(f"{key}={value}" for key, value in counts.items())
+    )
+
+    return results
+~~~
+
+The negative control removes a reference from a copy of `TARGET`; it does not change `CURRENT` or edit a booking. Predict the change in claim strength before running this final block.
+
+~~~python
+original = classify(TARGET, CURRENT, REPORTS)
+
+# Negative control: remove the approved comparison
+# value from a copy, without modifying the baseline.
+variant = dict(TARGET)
+variant.pop("X04")
+
+negative_status = (
+    "UNVERIFIED"
+    if variant.get("X04") is None
+    else "MISMATCH"
+)
+
+print("negative_X04_target_removed:", negative_status)
+
+assert original["X04"] == "MISMATCH"
+assert variant.get("X04") is None
+~~~
+
+Compare your result with the [IM2 worked transcript and interpretation](#ir-rapid-ch02-im2-result) in the final answer appendix.
+
 ### Chapter 2 exercises
 
 Use only records R1–R16 and the fictional authority described here; the exercise-only T1 card is available **only** where a question names it. No answer may claim to have queried a real service, received an unprovided identity detail, proved compromise or completed an export that the learner did not make. For each exercise, cite the relevant record IDs, state the observation before the inference, and give a bounded next action or test. The named output is the artifact to submit; the worked results at the end show acceptable reasoning.
@@ -1152,6 +1412,8 @@ Score each numbered exercise **0** when its artifact is absent or asserts an uns
 **Extension:** Require one sentence explaining why retention urgency can be high while evidence of account compromise remains inconclusive. Identify what would cause the priority to increase and what would justify a less urgent review. Do not turn an unknown deadline into a guessed timestamp.
 
 **For full credit:** The learner identifies R15's possible evidence-loss path, R9/R11's potential booking harm, unresolved attribution, the incident lead's decision authority and the 09:35 review or an earlier verified trigger.
+
+**Additional IM2 discriminator for EX016:** At Round B, distinguish the urgency to preserve R9/R11-related evidence under R15 from confidence in a cause or a measured affected-patron total. The separate IM2 fixture supplies no Harbor Library outcome.
 
 #### EX017 — What the summary cannot prove
 
@@ -1200,6 +1462,8 @@ Score each numbered exercise **0** when its artifact is absent or asserts an uns
 **Extension:** Define a positive result and a negative result for the proposed booking comparison. A positive result must distinguish recorded edits from the current authoritative state; a negative result must explain how a mismatch or missing state affects the confidence of the claim. Record which patron fields remain outside scope.
 
 **For full credit:** The learner cannot supply a measured affected-patron count from R9/R11 alone or treat R14 as complete coverage.
+
+**Additional measurement contract for EX023:** State the unit (distinct booking ID), the selected comparison frame and why it was selected, the owner-approved target/current-state fields, and separate reported concern, recorded edit, verified mismatch and unverified comparison. A case-selected numerator is not a population prevalence estimate. As optional offline practice, use IM2 to show how repeated tickets and missing targets remain visible; never import X01–X99 into the R-series case.
 
 #### EX024 — Escalation threshold
 
@@ -2435,6 +2699,8 @@ The hypotheses need not be mutually exclusive. A good answer identifies what eac
 
 **Further reasoning:** At 09:20, R9 supports investigating an unexplained B19 edit and R11 supports investigating a reported patron effect. Neither supplies a total impact count. R15 introduces an independent reason for prompt action: detailed booking audit material may be lost under a 24-hour deletion policy. Because the anchor and actual source availability are unknown, the priority note should request an immediate custodian check without publishing an exact expiry. The leading unauthorized-use explanation remains a hypothesis. "Prompt, bounded review" is defensible; a verified fresh unexplained edit or owner-confirmed broader booking damage would justify reassessment sooner than 09:35. A later complete approved task addendum could weaken the authorization concern for B19, but would not remove the need to assess record preservation.
 
+**IM2-linked reasoning:** R9 reports a B19 edit and R11 a patron concern, while R15 makes source availability time-sensitive without establishing the deletion anchor. There is no authorized target/current-state comparison or complete patron population in R1–R16. Preserving the bounded source can be urgent even when confidence in account compromise and quantified service impact is low. If a later owner-approved state check finds a mismatch, reassess potential harm; if a validated approved change explains B19, weaken the unauthorized-use hypothesis. Neither conditional outcome has occurred in Round B.
+
 ### EX017 — Worked result
 
 **R13 claim/limit:** the available summary reports one session in its time range, but contains no device or location field. Missing detail cannot identify a device or person; it is not a finding that the session came from the expected staff device. **R14 without T1:** the summary says no further edits after R9 *within its queried range*, but the exact range and filters are absent from R14 itself. **R14 with exercise-only T1:** the illustrative query concerns `desk-a` booking edits in `application-audit` at `09:00 ≤ event < 09:12 UTC`; it does not cover later times, another account, ingestion delay or a different source. A proposed next check asks the authorized application custodian for a new bounded query beginning at 09:12 and ending at a documented, sufficiently ingested cutoff, with source, account filters and completeness recorded. Even a zero-row result would be limited to that new scope.
@@ -2512,6 +2778,46 @@ The five sentences label the evidence, assessment, unanswered questions, propose
 **Proposed request:** ask the service owner to approve a named analyst to compare booking-edit audit rows for the short 08:30–09:20 UTC window with the authoritative booking state and relevant help-desk ticket identifiers, using only booking ID, changed field, old/new value, event UTC time and approved target where available. If approved, the application custodian would supply a restricted copy and record the query filter, source and collection time. The expected result schema is `booking ID | audit row | current value | owner-approved value or pending | confirmed mismatch / unresolved`. The learner can already point to B19's R9 edit but cannot supply a final count or approved target from R1–R16. Keep patron names and unrelated bookings out of the classroom output and limit the copy to the approved reviewers.
 
 **Further reasoning:** A well-scoped request proposes comparing the B19 audit row, any approved relevant booking targets, the current authoritative state and the patron-facing information needed to evaluate R11. The service owner would approve the business comparison; the application custodian would then confirm the exact source and selection. **Positive hypothetical result:** an authorized read shows the owner-approved B19 value reflected correctly in current authoritative state for the tested item; this narrows one state question but does not establish every patron view or the actor's identity. **Negative hypothetical result:** the current state is missing, conflicts with the approved target, or cannot be compared because the target or source is unavailable; the learner must record a mismatch or unresolved state, not invent a full impact count. The requested view excludes unrelated patron names, the newsletter list and unapproved bookings. No actual result is supplied in R1–R16.
+
+**IM2-linked measurement contract:** Count distinct selected booking IDs only after declaring the owner-approved target, source version, current authoritative state and comparison time. Keep the reason each row was selected. B17–B19 may form a bounded inquiry frame, but R1–R16 have no completed authoritative comparison. Proposed result columns are `booking ID | audit pointer | report pointer | approved target/version | current value/time | match/mismatch/unverified | limit`. A mismatch for one valid tested row is not an estimate of affected patrons. In the **separate invented IM2 exercise**, six encountered IDs yield two matches, two mismatches and two unverified classifications; four reports reference three distinct booking IDs. X04 has no report but is a mismatch under the fictional comparison; X05 has a report but lacks a target. Removing X04’s target changes its label to unverified without repairing any state. These are classroom outcomes only.
+
+<a id="ir-rapid-ch02-im2-result"></a>
+
+### IM2 — Worked result
+
+**Exact expected output, executed with the fixture:**
+
+~~~text
+reports: 4 unique_booking_refs: 3
+X01: MATCH
+X02: MISMATCH
+X03: MATCH
+X04: MISMATCH
+X05: UNVERIFIED
+X99: UNVERIFIED
+counts: MATCH=2,MISMATCH=2,UNVERIFIED=2
+negative_X04_target_removed: UNVERIFIED
+~~~
+
+#### Worked interpretation
+
+Four report rows refer to only three distinct booking IDs: X02 appears twice, while X05 and X99 each appear once. This is **not** a count of distinct people. Report count and distinct business-object count answer different questions.
+
+The examined comparison contains two matches, X01 and X03. X02 and X04 are mismatches under the declared synthetic target/current inputs. X05 is unverified because its target is missing, even though a current value exists. X99 is unverified because neither the target nor the current comparison row is supplied; a report references it, but the ledger has no authoritative state for it.
+
+The laboratory demonstrates a nonreported mismatch: X04 is a mismatch in the supplied comparison even though no help-desk ticket in `REPORTS` references X04. Conversely, a reported concern about X05 does not by itself prove that the current value is incorrect. This is why a report-only sample cannot reliably characterize every state discrepancy.
+
+The negative variant removes only X04's reference value. Its classification becomes `UNVERIFIED` rather than `MISMATCH`. No simulated current booking state changed. The shift is caused by weakened **evidence**, not by an automatically repaired business condition. Restore the original target after the variant and retain both results distinctly.
+
+The defensible classroom statement is: "Of six identifiers encountered across these small supplied sources, two match, two mismatch and two cannot be evaluated; four reports cover three distinct booking references. These numbers characterize only the IM2 fixture, not Harbor Library's complete bookings or patrons."
+
+#### Reproducibility and limitations
+
+The code checks exact string equality, not room availability rules, approved changes, person-to-booking relationships, clock normalization or database consistency. `None` is a local missing-value convention; a real schema must distinguish missing, null, deleted and legitimately empty state according to producer semantics.
+
+A production analyst would require source identifiers, selection manifest, approval owner, effective target version, authoritative current-state timestamp and privacy/access controls before treating the comparison as evidence. The toy script supplies none of those provenance receipts, and its computed results must never be called a measured incident impact.
+
+**Required learner artifacts:** Copy the nine-line output; produce a six-row impact ledger with evidence status and source limitations; explain in two sentences why "four affected patrons" is unsupported; and report exactly what changed in the negative test. A response fails if it equates report count with affected people, silently discards X99, claims all bookings were examined or treats the variant as a correction.
 
 ### EX024 — Worked result
 
@@ -3030,6 +3336,10 @@ The model earns full credit only if the learner's own six artifacts preserve the
 - **Query run time:** the time a search was executed against a store, distinct from event, ingestion and analyst discovery times.
 - **Retention deadline:** the time after which a source may no longer preserve the needed record.
 - **Triage:** the initial assessment of potential harm, urgency, uncertainty and next authorized action.
+
+- **Comparison frame:** the explicitly selected business objects to which a count applies; a case-selected frame is not a population sample.
+- **Impact unit:** the object being counted, such as a ticket, booking, edit or person; different units cannot be interchanged.
+- **Unverified comparison:** a selected object for which the approved target or current authoritative value is unavailable.
 
 ## Chapter 3 glossary
 
