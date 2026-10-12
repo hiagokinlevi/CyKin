@@ -208,6 +208,11 @@ Sensors measure physics: a 4–20 mA loop, a thermocouple voltage, a pulse from 
 
 Timing calculations ignore device turnaround and retries; measure on a bench before committing. Do not test signal injection on live loops.
 
+
+### 3.5 Worked example — signal levels and the time budget (synthetic ABP)
+
+T-1's level transmitter sends a 4–20 mA signal over 180 m of twisted pair to PLC-A. A 0.2 mA bias injected at a marshalling cabinet shifts the reading by 0.2/16 = 1.25 % of span, which for a 9 m³ tank is about 0.11 m³ — small enough to hide inside normal noise. The tank's time constant (volume over typical inflow, 9/1.25 ≈ 7.2 h) tells Lena how long such a bias can act before the hold-up calculation from Chapter 1 is wrong by a whole safety margin. She therefore specifies a second, independent level switch on T-1 wired to SIS-B and a periodic comparison of transmitter and switch, because a physical-layer attack on one loop cannot then silently defeat both.
+
 ### Exercises
 
 - **EX007 — Wire time.** How long does a 120-byte frame take at 19,200 bit/s with 10 bits per byte? Rubric: 3 = 62.5 ms with working; 2 = slip; 1 = method; 0 = none.
@@ -601,6 +606,11 @@ Ethics is a constraint on every later chapter. Legal text here is orientation, n
 
 Print the stop conditions on the work permit hung at the panel. Under noise and time pressure, people remember what they can see. A stop condition buried in page 12 of a PDF is a stop condition that will be missed.
 
+
+### 10.5 Worked example — a permit that says no (synthetic ABP)
+
+A contractor asks to run an active Modbus scan of PLC-A during a batch "to finish the inventory faster". Lena's permit review applies three tests: is the owner's written authorization specific to this host and technique (it is not); does a stop condition exist that an operator can trigger (none was written); and is there a passive alternative (a mirror-port capture plus the engineering project export gives the same inventory). She declines the active scan, records the reason, and issues a permit for passive capture only, with the shift lead named as the person who can stop the work. NIST SP 800-82r3 warns that active scanning can disrupt OT devices, which is the engineering reason behind the ethical one.
+
 ### Exercises
 
 - **EX028 — Refuse.** Two-sentence refusal to a request for a working PLC exploit for a graded assignment. Rubric: 3 = refuses, offers allowed alternative, cites safety; 2 = refuses only; 1 = vague; 0 = provides exploit.
@@ -798,6 +808,11 @@ Draw the data-flow: sensor to PLC to historian to replica to L4 reports. Every a
 
 Modern historians and warehouses offer row and column policies. Assessment questions become: does role R see column C? Does row filter F apply? Test with the role itself. Document the policy engine version; we ran SELECT * against an admin role proves little about analyst exposure. Draw the data-flow from sensor to PLC to historian to replica to L4 reports; every arrow needs an owner and a protocol.
 
+
+### 13.5 Worked example — a minimised historian extract (synthetic ABP)
+
+Quality engineers request "all R-101 data for last year". Lena's extract contains only the four tags the deviation investigation needs (reactor temperature, jacket temperature, agitator speed, feed valve position) at one-minute resolution, for the 11 batches under review, with batch IDs replaced by study codes and the operator-name column dropped. The extract is a read from the DMZ replica, never from the control-zone historian, and the query text and a SHA-256 hash of the output file go into the request ticket so the same rows can be reproduced or deleted later. The result is 11 × 4 tags × about 480 minutes ≈ 21,000 rows instead of tens of millions.
+
 ### Exercises
 
 - **EX037 — Permit clause.** Write a data-handling clause for a historian assessment. Rubric: 3 = replica only, column allow-list, row limit, destroy-by, no dumps; 2 = three; 1 = one; 0 = none.
@@ -845,6 +860,11 @@ Policy repos use the same dual-approval culture as PLC logic downloads. If downl
 ### 14.1b Release trains vs hotfixes
 
 Normal improvements ride a release train with Lab I/II. Safety hotfixes may skip features but not verification: a minimal fail-closed regression pack is mandatory. Tag hotfixes clearly so a window can pin either the train build or the hotfix SHA with eyes open. Version pins appear in the kickoff checklist beside the work-permit hash; if the pin and the running binary disagree, the window does not start.
+
+
+### 14.5 Worked example — reviewing a change to permit() (synthetic ABP)
+
+A pull request widens the HMI's writable range on PLC-A from 40001–40010 to 40001–40012 for a new agitator setpoint. Lena's review checklist: the requirement ID that justifies 40011–40012; new conformance vectors for 40012 (pass) and 40013 (block); unchanged default-deny for unknown sources; a version bump and changelog line; and a second reviewer from control engineering who confirms the registers' meaning in the PLC project. The merge waits for the bench run of the vectors against the actual firewall build. Software engineering discipline here is not ceremony: a one-character range error would let the HMI write a register the process design never intended.
 
 ### Exercises
 
@@ -1296,6 +1316,11 @@ Evidence objects need size caps and media-type allow-lists. Unbounded uploads be
 
 Technique tags remain optional and reviewed. Soft-delete with reason is the default; hard purge follows retention only. API clients that issue DELETE in a loop during a buggy retry get credentials revoked after a threshold.
 
+
+### 22.5 Worked example — modelling a finding without leaking the plant (synthetic ABP)
+
+Lena's data model for CNHP findings has entities Asset, Zone, Conduit, Finding and Evidence. A Finding references an Asset by key, never embeds its IP address or credentials, and stores evidence as a hash plus a pointer to the controlled evidence store. The forbidden-attribute list (passwords, full packet payloads, recipe values) is enforced by a schema check that rejects any record containing those fields. When a finding about PLC-A's open Modbus port is exported for management, it reads "Asset PLC-A, Conduit L2→L1, ATT&CK for ICS T0869 Standard Application Layer Protocol, severity high" — enough to act on, not enough to attack with.
+
 ### Exercises
 
 - **EX064 — Cardinality.** Why is ConduitSet versioned instead of edited in place? Rubric: 3 = audit of what was authorized when; 2 = vague versioning; 1 = best practice; 0 = none.
@@ -1717,6 +1742,11 @@ Code review checklists for predicate changes include: new clause, new tests, rea
 
 A five-minute fuzz harness threw a UTF-8 station name that previously crashed the decoder into an uncaught exception — which the caller treated as ALLOW. The fix returned DENY parse-error and the harness now runs in CI on every predicate change.
 
+
+### 28.5 Worked example — a clause test that caught a real bug (synthetic ABP)
+
+Each clause of the permit function gets its own test: source allowed, function code allowed, register in range, default deny. Lena's fuzzing harness then feeds 10,000 random (source, function, register) triples drawn from a seeded generator and asserts that every PASS satisfies all clauses. On the first run it found that function code 23 (read/write multiple registers) passed for HMI-1 because the implementation checked only the read half of the request. The fix rejects 23 unless explicitly listed, a clause test now pins it, and the incident note records which seed reproduced the failure, so anyone can rerun it.
+
 ### Exercises
 
 - **EX082 — Signature.** Type signature of permit and why AllowListVersion is an argument. Rubric: 3 = signature + version pin reason; 2 = signature; 1 = vague; 0 = none.
@@ -1888,6 +1918,11 @@ Independent runners record the pass. Safety failure stops the lab and opens a bl
 
 The implementer of a hotfix offered to run Lab I to save time. The reviewer refused, ran the safety rows personally, and found a path that still ALLOWed when the policy file was a directory instead of a file. Independent runners catch assumptions authors stop seeing.
 
+
+### 30.5 Worked example — reading a laboratory result honestly (synthetic ABP)
+
+Laboratory I replays a recorded day of ABP traffic plus 40 injected write attempts through the permit function and the alarm logic. Results: 40 of 40 injected writes blocked; 2 legitimate engineering writes blocked because the engineering workstation was missing from the allow-list during commissioning; 0 alarms suppressed. Lena reports the two false blocks as a design defect, not noise — in a live plant they would have stopped a scheduled recipe change — and adds a commissioning-mode vector set. The lab report states what was not tested: performance under load, serial links and SIS-B, which is out of scope by design.
+
 ### Exercises
 
 - **EX088 — Row.** Write the fail-closed lab row. Rubric: 3 = complete row; 2 = partial; 1 = vague; 0 = none.
@@ -1948,6 +1983,11 @@ A scanner import path skipped forbidden-field checks because it was trusted. Som
 
 Clients that omit the finding id on create receive 400 with a link to the upsert documentation, so retries cannot invent duplicates by accident.
 
+
+### 31.5 Worked example — idempotent upsert of asset records (synthetic ABP)
+
+Two inventory sources report PLC-A: the engineering project export and passive network discovery. Lena's upsert keys on (site, asset tag), not on IP address, because the IP changes when a controller is replaced. Each write carries the source and an observed-at time; a later observation updates firmware version only if its source is authoritative for that field (the project export wins for firmware; discovery wins for "last seen"). Replaying the same import twice produces no change — the test that proves idempotency. Without these rules, a bulk import once overwrote PLC-A's firmware field with "unknown" and hid it from an advisory check.
+
 ### Exercises
 
 - **EX091 — Upsert.** Why is POST-without-id risky for retries? Rubric: 3 = duplicates on retry; 2 = vague; 1 = wrong; 0 = none.
@@ -2004,6 +2044,11 @@ Chaos experiments run only on synthetic ranges, never during a client's signed w
 
 When the draft queue hit 50 during a store outage, Track-style discovery stopped automatically and paged Lena. Deny/allow continued. Untracked scans while findings cannot be recorded are how windows create invisible risk; back-pressure is a safety feature.
 
+
+### 32.5 Worked example — degrading safely when the collector fails (synthetic ABP)
+
+CNHP's monitoring collector sits on a mirror port. If it fails, nothing in the process should change: the design keeps the collector out of every control path. Lena's reliability targets are about evidence, not production: 99.5 % capture availability per month and alerts on loss above 0.1 %. Retries to the central store use exponential back-off with a cap so that a store outage does not flood the DMZ link shared with the historian replica. When the queue fills, the collector drops the oldest raw packets but keeps the summary records, and it raises a "visibility degraded" alert so analysts know their absence of alerts means less.
+
 ### Exercises
 
 - **EX094 — Target.** Availability sentence for the deny path. Rubric: 3 = windowed target + measure; 2 = vague high; 1 = five-nines joke; 0 = none.
@@ -2059,6 +2104,11 @@ After every real stop, run a five-minute hotwash and file at least one runbook e
 ### Field note — resume token
 
 After a stop, resume required a token issued to the process-safety contact's role and bound to AllowListVersion v1.4.2. A Boolean flip on the jumphost was removed from the UI. Resume without authority is how stop conditions become optional.
+
+
+### 33.5 Worked example — an executable stop during commissioning (synthetic ABP)
+
+During firewall cut-over on the L3–L2 conduit, the stop condition reads: "If the HMI loses PLC-A values for more than 10 seconds, or any SIS-B trip occurs, revert to the previous rule set." The revert is a single pre-staged command tested twice the day before, and the shift lead holds the authority to call it; the engineer does not argue. Resume requires a written token from the shift lead after the cause is understood. Separately, Lena confirms SIS-B's high-level trip on R-101 is hardwired and unaffected by the change, consistent with IEC 61511's expectation that the safety function stays independent.
 
 ### Exercises
 
@@ -2124,6 +2174,11 @@ Include a consumer canary that fails the deploy if poison events are not quarant
 
 Schema evolution drills once per term keep producer and consumer teams from inventing incompatible shortcuts under incident pressure.
 
+
+### 34.5 Worked example — integrating alerts with the maintenance system (synthetic ABP)
+
+CNHP alerts flow into ABP's maintenance-management system so that a "program download to PLC-A" alert can be matched to an open work order. The event contract carries an event ID, asset tag, ATT&CK for ICS technique (T0843 Program Download), time with clock source, and evidence hash. The consumer is idempotent on event ID, so a replayed alert does not create two work orders. Contract tests run in CI with fixtures from both sides; an event lacking a technique field is sent to a dead-letter queue and reviewed daily, rather than dropped. A download with no matching work order escalates to the shift lead within five minutes.
+
 ### Exercises
 
 - **EX100 — Field.** Why include policy_version on every event? Rubric: 3 = audit which rules applied; 2 = vague; 1 = wrong; 0 = none.
@@ -2183,6 +2238,11 @@ In user research, three managers explained the coverage fraction as how safe we 
 
 
 Export as the source of truth removes arguments about what a screenshot meant in a status meeting.
+
+
+### 35.5 Worked example — the studio critique (synthetic ABP)
+
+Studio II's brief: a plant manager must decide whether to approve the next CNHP phase from one screen. Lena's team shows three numbers with denominators — 31 of 44 planned ATT&CK for ICS techniques observed in testing, 6 of 9 conduits matching the zone design, SIS-B reachable from any routed zone: no — plus a short list of open high findings. Critics argued for a single risk badge; the team replied that the manager's decision depends on which conduits remain open, not on an average. The accepted design puts the open-conduit list first, because it is the item the manager can actually fund.
 
 ### Exercises
 
@@ -2259,6 +2319,11 @@ Document who may raise a rate limit and which AUTH ticket type is required. Sepa
 ### Field note — warm-up schedule
 
 The scheduler now ramps assessment polls over five minutes at window start. Instant full-rate starts had tripped unrelated vibration alarms on a neighbouring skid. Warm-up is courtesy to the process and to the people who own it.
+
+
+### 36.5 Worked example — measuring monitoring load on PLC-A (synthetic ABP)
+
+A proposed asset-health poller would read 120 holding registers from PLC-A every second. On the bench controller, Lena measures scan time with and without the poller: 18 ms baseline, 23 ms with polling, against a 50 ms watchdog. The increase is acceptable on the bench, but she still caps the poller at 120 registers every 5 seconds in production, adds a canary on one line before plant-wide rollout, and alarms if scan time exceeds 30 ms. Assessment traffic gets the same treatment: any test tool must declare its request rate, and the permit sets a maximum.
 
 ### Exercises
 
@@ -2345,6 +2410,11 @@ SSO failed during a Sunday window. The offline runbook copy and printed contact 
 
 Operations metrics include pages per window and mean time to acknowledge stops; vanity metrics like hosts touched stay off the ops dashboard.
 
+
+### 37.5 Worked example — a shift handover with security content (synthetic ABP)
+
+ABP's handover sheet gains three lines: open CNHP alerts and who owns them; any vendor remote session enabled or scheduled; and any temporary rule or bypass in force with its expiry time. On 14 March the night shift recorded a temporary firewall rule for a vendor diagnostic expiring at 06:00; the day shift checked at 06:15, found it still present, and removed it with the engineer's agreement. Without the handover line, the rule would have become a permanent conduit. Close-out of each security work order requires the evidence pointer and confirmation that temporary changes were reverted.
+
 ### Exercises
 
 - **EX109 — Checklist.** Six close-out steps. Rubric: 3 = six sensible; 2 = four; 1 = two; 0 = none.
@@ -2400,6 +2470,11 @@ When many similar findings share a root cause, re-test a sample plus the origina
 ### Field note — sample re-test
 
 Twenty HMIs shared a missing allow-list entry. Validation re-tested five plus the originally reported two, documented the sample, and left the finding open until the fleet job finished. Claiming all twenty closed after two checks would have been a measurement lie.
+
+
+### 38.5 Worked example — validation re-test of the zoning design (synthetic ABP)
+
+Six months after deployment, Lena re-runs the reachability check from Chapter 2 against the live firewall export and the passive-discovery conduit list. The export matches the design for 8 of 9 conduits; the ninth shows an undocumented L4→L3 rule added during an ERP upgrade. The validation report records the negative finding with evidence, assigns it to the network owner, and does not introduce any new test method mid-validation, so results remain comparable with the commissioning baseline. The SIS-B zone remains unreachable in both datasets, which is reported as confirmed rather than assumed.
 
 ### Exercises
 
@@ -2464,6 +2539,11 @@ API deprecation windows keep dual-run periods so Pulse-style consumers do not br
 
 
 Deletion plans for retiring a monitor include dossier export, credential revocation and archive of the code tag.
+
+
+### 39.5 Worked example — removing a fragile adapter (synthetic ABP)
+
+CNHP had a custom adapter that parsed the HMI vendor's alarm export by screen-scraping. Each HMI update broke it, and only one engineer understood it. Lena's maintainability review measures churn (11 fixes in a year), ownership (one person) and blast radius (alarm statistics for the whole plant). She replaces it with the vendor's supported OPC UA alarm interface, keeps the adapter read-only for one release as a fallback, publishes a deletion date, and writes the runbook so a second engineer can operate the new path. Fewer bespoke parts mean fewer silent failures in security evidence.
 
 ### Exercises
 
@@ -2555,6 +2635,11 @@ Seal Lab II logs with the same manifest tool the dossier uses so students practi
 
 Flaky tests are quarantined and fixed; shipping with sometimes fail-closed is shipping fail-open.
 
+
+### 40.5 Worked example — end-to-end fault injection (synthetic ABP)
+
+Laboratory II exercises the full chain on the bench: replayed traffic → permit function → alert → maintenance-system work order → dossier. Injected faults: collector power loss, clock skew of 90 seconds on PLC-A, a malformed event, and a dead-letter backlog. Results: power loss raised "visibility degraded" in 40 s; clock skew was detected by the time-source check but mis-ordered two events in the dossier until the offset correction was applied; the malformed event reached the dead-letter queue; the backlog cleared in 7 minutes. Sign-off lists the mis-ordering as an open defect with an owner.
+
 ### Exercises
 
 - **EX118 — Ordering.** Why create ticket before coverage count increases? Rubric: 3 = coverage must reflect recorded findings; 2 = vague; 1 = either order; 0 = none.
@@ -2635,6 +2720,11 @@ An optimization PR that removed reason codes from hot-path logs to save microsec
 
 Capacity headroom under the cycle budget is documented next to the token-bucket or poll schedule so the next debate starts from numbers.
 
+
+### 41.5 Worked example — optimisation with a safety veto (synthetic ABP)
+
+Production asks to shorten the R-101 batch by raising the feed rate, and asks CNHP to relax the permit function's rate limit on setpoint writes from one per 10 s to one per second to suit the faster recipe. Lena profiles first: only the charge phase needs faster writes. She proposes a phase-specific limit, applied only while the batch state is "charge", and submits it to the process safety engineer, who confirms SIS-B's high-temperature and high-level trips are unaffected. The safety engineer holds a veto over any optimisation touching a safety-relevant loop; this one passed, with a load test on the bench.
+
 ### Exercises
 
 - **EX121 — Veto.** An optimization that must be rejected. Rubric: 3 = safety-weakening example; 2 = vague; 1 = okays it; 0 = none.
@@ -2699,6 +2789,11 @@ Data sharing agreements, even for anonymized metrics, are written before student
 
 Negative results are publishable and required in the thesis template's results section.
 
+
+### 42.5 Worked example — a research question that fits the plant (synthetic ABP)
+
+Lena's applied research asks: on ABP's recorded traffic, how many days of baseline are needed before a new-conduit detector's false alerts fall below one per week? The design uses 60 days of synthetic-but-realistic traffic, sliding baselines of 3, 7, 14 and 28 days, and a pre-registered threshold. The amendment log records one change: an ERP upgrade added traffic on day 33, so that day is analysed separately rather than silently removed. Disclosure planning is part of the design: if the work reveals a product flaw, it goes to the vendor's PSIRT before publication.
+
 ### Exercises
 
 - **EX124 — Question.** One acceptable research question. Rubric: 3 = programme/process focused; 2 = borderline; 1 = exploit focused; 0 = none.
@@ -2758,6 +2853,11 @@ A public-service host forbade foreign SaaS and required FOIA-ready logs. The pra
 
 
 Clearance and need-to-know rules mean course artefacts stay synthetic; never paste restricted host text into public repositories.
+
+
+### 43.5 Worked example — translating a placement finding (synthetic ABP)
+
+On placement at a contract manufacturer, Lena observes that the vendor laptop used for PLC updates also browses the internet. Her sanitized report omits host names and addresses, describes the risk in plant terms — "a single laptop carries both internet exposure and the ability to download logic to the line controllers (ATT&CK for ICS T0843)" — and recommends a dedicated, offline-updated engineering laptop. The host organisation's clearance review approves the report before it reaches her university, and the constraints appendix states what she was not permitted to examine.
 
 ### Exercises
 
@@ -2823,6 +2923,11 @@ Advisor checkpoints are mandatory; silent drift produces unreviewable piles at t
 
 Success metrics named in Capstone I are the same metrics shown at defense — no bait and switch.
 
+
+### 44.5 Worked example — capstone milestone 1 (synthetic ABP)
+
+Lena's capstone builds a verified zone-and-conduit policy compiler: it reads a zone model and emits firewall rules plus conformance vectors. Non-goals: no live deployment, no SIS-B configuration, no active scanning. Milestone 1 success metric: for ABP's nine-conduit model, the compiler produces rules whose reachability (checked with the Chapter 2 graph code) exactly equals the design, and every rule has at least one pass and one block vector. At the checkpoint it met reachability for 9/9 conduits but produced vectors for only 7/9 rules; the gap is the milestone 2 opening item.
+
 ### Exercises
 
 - **EX130 — Non-goal.** Three non-goals for a coverage-board capstone. Rubric: 3 = three clear; 2 = two; 1 = one; 0 = none.
@@ -2886,6 +2991,11 @@ External reviewers once per term catch normalized deviance such as we always ski
 
 
 Review SLOs prevent rubber-stamping under calendar pressure; expired merges return to draft rather than auto-merge.
+
+
+### 45.5 Worked example — a dissent that changed the design (synthetic ABP)
+
+In the independent design review, an external reviewer from a water utility challenged the plan to let the monitoring collector send alerts directly to the HMI. Her argument: an alert flood could distract operators during an upset, and a compromised collector would gain a path into L2. The review checklist item "does any security component add a conduit into a control zone?" had been ticked incorrectly. The dissent is recorded verbatim, the design changes so alerts go to the SOC and the shift lead's phone instead, and the review SLO (comments answered within five working days) is met.
 
 ### Exercises
 
@@ -2970,6 +3080,11 @@ Handover to ops names the owning squad in README and CODEOWNERS before Lab II si
 
 
 Demo scripts on synthetic data are mandatory; improvised demos skip safety.
+
+
+### 46.5 Worked example — freeze and verify (synthetic ABP)
+
+At capstone II freeze, Lena tags the compiler at v1.0 and reruns all verification on a clean machine from the tag: 214 unit tests, 18 conformance vector sets, the reachability equivalence check and the bench firewall replay. One run stalled silently because the bench firewall's API rate-limited the vector loader; the fix is a timeout with an explicit failure message rather than a retry loop. Documentation includes the demo script, the list of non-goals, and a handover note naming which tests require bench hardware so a successor does not mistake skipped tests for passes.
 
 ### Exercises
 
@@ -3068,6 +3183,11 @@ Blameless correction writes tickets against components and runbooks, not against
 
 Recurrence tests close tickets only after the inject meets the SLO twice.
 
+
+### 47.5 Worked example — recovery trial on the bench (synthetic ABP)
+
+The trial scenario: PLC-A's logic is corrupted (simulated by loading a wrong program on the bench controller) during a batch. Measures: time to detect (program-change alert 35 s), time to decide (shift lead chooses safe hold, 4 min), time to restore verified logic from the offline backup (22 min) and time to resume (41 min total). The trial reveals that the backup's hash had never been recorded, so verification relied on a manual comparison. Corrective actions get owners and dates: record backup hashes, add a restore drill to the quarterly calendar, and track recurrence.
+
 ### Exercises
 
 - **EX139 — Inject.** One inject and expected safe behaviour. Rubric: 3 = both; 2 = inject only; 1 = vague; 0 = unsafe.
@@ -3136,6 +3256,11 @@ Reader checklists at the front of the dossier turn verification into a graded sk
 
 Automation makes the happy path the safe path for dossiers.
 
+
+### 48.5 Worked example — what goes in, what stays out (synthetic ABP)
+
+Lena's CNHP evidence dossier includes the zone model and its version, conformance results, laboratory reports, the validation re-test, open findings with owners and the residual-risk acceptance signed by the plant manager. It excludes raw packet captures, passwords and recipe parameters, replacing them with hashes and pointers to the controlled store; the redaction log lists each exclusion and why. Retention follows the site's record schedule: seven years for safety-relevant change records. The reader checklist on page one tells an auditor how to verify any hash against the stored originals.
+
 ### Exercises
 
 - **EX142 — Manifest.** Sketch a hash manifest format (3 rows). Rubric: 3 = path+algo+digest; 2 = digests only; 1 = vague; 0 = none.
@@ -3199,6 +3324,11 @@ Reproducibility appendices ship fixture hashes, tool SHAs and scripts — availa
 
 
 Related-work honesty prefers thin accurate citations with how-used notes over unread padding.
+
+
+### 49.5 Worked example — a thesis claim with its evidence (synthetic ABP)
+
+Lena's thesis claim, on page one: "For ABP's nine-conduit model, a compiler that generates firewall rules and conformance vectors from a zone model produced rules equivalent in reachability to the design and caught three rule errors that manual review missed." The body supports each clause: the equivalence check, the three errors with their vectors, and the manual review's results on the same rule set. Related work cites IEC 62443-3-2 for the zone-and-conduit method and NIST SP 800-82r3 for segmentation guidance, and states plainly that formal verification tools exist that the thesis did not compare against.
 
 ### Exercises
 
@@ -3278,6 +3408,11 @@ Keep a parking lot for examiner ideas and process it within a week. Thank operat
 ### Field note — ninety-day review
 
 Ninety days after defense, the owning squad, pins and corrective tickets were reviewed. One corrective had reopened; it was re-filed with a tighter SLO. Stewardship begins when the applause ends.
+
+
+### 50.5 Worked example — answering the hardest defence question (synthetic ABP)
+
+An examiner asks: "Your compiler proves reachability equals the design. What if the design is wrong?" Lena's prepared answer: the compiler verifies implementation against intent, not intent against threats; the design itself came from the consequence-driven assessment and was independently reviewed (Chapter 45); and the validation re-test (Chapter 38) found a real drift the compiler would have prevented. She closes by naming the limitation — a flawed zone model would be faithfully compiled — and the ninety-day plan to compare compiler output with a second team's independent design.
 
 ### Exercises
 
