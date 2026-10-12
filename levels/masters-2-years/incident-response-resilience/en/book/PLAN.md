@@ -2,7 +2,7 @@
 
 **One book for this course and language.** 8 curricular subjects are its chapters. Duration: 2 years; planned effort: approximately 1200 hours. Audience: Beginning researchers. Entry knowledge: Strong domain foundations and research-method literacy. Intended outcome: formulate a question, evaluate prior work and produce reproducible findings in incident response and cyber resilience.
 
-**Editorial state:** structured outline; manuscript not yet authored. English reference edition.
+**Editorial state:** draft manuscript exists; release A4 validation and review pending. English reference edition. [Read the authored draft](MANUSCRIPT.md).
 
 [Home](../../../../../README.md) · [Course home](../../README.md) · [Edition](../README.md) · [Chapter index](../SUBJECTS.md) · [Course skill](../../skill/SKILL.md)
 
@@ -27,7 +27,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 ### Chapter 01 — Research question and literature method
 
-**Stage 1; 75 planned A4 pages; 7 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 75 planned A4 pages; 7 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-01)
 
 **Teaching purpose and relevance:** Define a narrow, answerable question about incident response and search prior work reproducibly.
 
@@ -41,13 +41,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on the entry knowledge and prepares Chapter 02. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 01 of 08 (outline):** [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (plan) →](PLAN.md#ch-02)
+**Continue studying — chapter 01 of 08 (outline):** [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (draft) →](MANUSCRIPT.md#ch-02)
 
 <a id="ch-02"></a>
 
 ### Chapter 02 — Advanced incident response research seminar
 
-**Stage 1; 75 planned A4 pages; 7 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 75 planned A4 pages; 7 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-02)
 
 **Teaching purpose and relevance:** Critique competing models of response effectiveness before selecting a study design.
 
@@ -61,13 +61,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 01 and prepares Chapter 03. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 02 of 08 (outline):** [← Chapter 01 (plan)](PLAN.md#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (plan) →](PLAN.md#ch-03)
+**Continue studying — chapter 02 of 08 (outline):** [← Chapter 01 (draft)](MANUSCRIPT.md#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (draft) →](MANUSCRIPT.md#ch-03)
 
 <a id="ch-03"></a>
 
 ### Chapter 03 — Study design, ethics and reproducibility
 
-**Stage 2; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 75 planned A4 pages; 6 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-03)
 
 **Teaching purpose and relevance:** Plan a bounded investigation with consent, replicable measures and explicit validity limits.
 
@@ -81,13 +81,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 02 and prepares Chapter 04. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 03 of 08 (outline):** [← Chapter 02 (plan)](PLAN.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (plan) →](PLAN.md#ch-04)
+**Continue studying — chapter 03 of 08 (outline):** [← Chapter 02 (draft)](MANUSCRIPT.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (draft) →](MANUSCRIPT.md#ch-04)
 
 <a id="ch-04"></a>
 
 ### Chapter 04 — Competing explanations of response outcomes
 
-**Stage 2; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 75 planned A4 pages; 6 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-04)
 
 **Teaching purpose and relevance:** Avoid attributing outcomes to a playbook when staffing, case mix or telemetry may explain them.
 
@@ -101,13 +101,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 03 and prepares Chapter 05. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 04 of 08 (outline):** [← Chapter 03 (plan)](PLAN.md#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 (plan) →](PLAN.md#ch-05)
+**Continue studying — chapter 04 of 08 (outline):** [← Chapter 03 (draft)](MANUSCRIPT.md#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 (draft) →](MANUSCRIPT.md#ch-05)
 
 <a id="ch-05"></a>
 
 ### Chapter 05 — Proposal and pilot of a bounded incident study
 
-**Stage 3; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 75 planned A4 pages; 6 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-05)
 
 **Teaching purpose and relevance:** Use a small pilot to reveal measurement and procedure problems before the main study.
 
@@ -121,13 +121,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 04 and prepares Chapter 06. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 05 of 08 (outline):** [← Chapter 04 (plan)](PLAN.md#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 (plan) →](PLAN.md#ch-06)
+**Continue studying — chapter 05 of 08 (outline):** [← Chapter 04 (draft)](MANUSCRIPT.md#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 (draft) →](MANUSCRIPT.md#ch-06)
 
 <a id="ch-06"></a>
 
 ### Chapter 06 — Reproducible collection and outcome analysis
 
-**Stage 3; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 75 planned A4 pages; 6 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-06)
 
 **Teaching purpose and relevance:** Produce findings from traceable data transformations and appropriately qualified estimates.
 
@@ -141,13 +141,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 05 and prepares Chapter 07. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 06 of 08 (outline):** [← Chapter 05 (plan)](PLAN.md#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 (plan) →](PLAN.md#ch-07)
+**Continue studying — chapter 06 of 08 (outline):** [← Chapter 05 (draft)](MANUSCRIPT.md#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 (draft) →](MANUSCRIPT.md#ch-07)
 
 <a id="ch-07"></a>
 
 ### Chapter 07 — Dissertation on response effectiveness and limits
 
-**Stage 4; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 75 planned A4 pages; 6 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-07)
 
 **Teaching purpose and relevance:** Synthesize the study into a defensible contribution that distinguishes results from interpretation.
 
@@ -161,13 +161,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 06 and prepares Chapter 08. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 07 of 08 (outline):** [← Chapter 06 (plan)](PLAN.md#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 (plan) →](PLAN.md#ch-08)
+**Continue studying — chapter 07 of 08 (outline):** [← Chapter 06 (draft)](MANUSCRIPT.md#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 (draft) →](MANUSCRIPT.md#ch-08)
 
 <a id="ch-08"></a>
 
 ### Chapter 08 — Independent research review and defense
 
-**Stage 4; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 75 planned A4 pages; 6 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-08)
 
 **Teaching purpose and relevance:** Subject methods and claims to critique beyond the project team.
 
@@ -181,7 +181,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 07 and prepares the worked-answer appendix and final assessment. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 08 of 08 (outline):** [← Chapter 07 (plan)](PLAN.md#ch-07) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+**Continue studying — chapter 08 of 08 (outline):** [← Chapter 07 (draft)](MANUSCRIPT.md#ch-07) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 ## Practical and assessment plan
 
