@@ -522,7 +522,7 @@ Work from **only R1–R8** and the fictional authority rules in Chapter 1. The c
 
 **Objective:** turn an exercise weakness into a measurable preparation change. **Inputs:** the service map, authority table, R7–R8 and the section 1.8 workshop. **Output:** a three-row gap register with missing capability, consequence and owner; then an improvement ticket with priority rationale, specific change, deadline and a pass/fail drill. A score of 2 names a test that would actually demonstrate the change, such as an owner-and-alternate decision drill or a contained restore rehearsal, rather than merely publishing a policy page.
 
-**Extension:** Each improvement ticket must include a falsifiable rehearsal with a pass and failure criterion. One rehearsal should test an unavailable primary approver and the fallback decision path; another defensible choice may test log retrieval or isolated recovery.
+**Extension:** The improvement ticket must include a falsifiable rehearsal with a pass and failure criterion. A fallback-authority drill can test an unavailable primary approver; alternative defensible tickets may test log retrieval or isolated recovery.
 
 **For full credit:** Merely writing or publishing a policy does not satisfy an exercise that asks the learner to demonstrate a capability.
 
@@ -628,6 +628,30 @@ When merging records from different systems, retain the original timestamp and i
 
 Preservation should also be **proportionate**. For the next Harbor Library decision, a bounded booking-audit interval and the account's relevant sign-in summary may be useful. Exporting all patrons, all departments or unrelated accounts could increase privacy risk without improving the decision. A narrow export can still omit a relevant event; record the selection rule and keep an authorized unmodified original when available. Chapter 2 teaches the logic of a collection request and a copy-integrity check. Production evidence handling belongs to the organization's approved procedures and qualified personnel.
 
+#### Four-clock ledger and learner release
+
+A timestamp is meaningful only when its origin is identified. At minimum distinguish:
+
+- **Event time:** when the source claims an operation took place.
+- **Ingestion time:** when a receiving store made that operation's record available.
+- **Collection time:** when a specified copy or export was actually acquired.
+- **Discovery time:** when the analyst received or recognized the relevant information.
+
+A query also has a **run time**, which is distinct from its selected event-time interval. These clocks may be identical in a simple lab but differ in a real collection pipeline. Ingesting a delayed event later does not move its original event time. Collecting a record tomorrow does not mean its event occurred tomorrow.
+
+The Round B teaching checkpoint supplies a concrete example:
+
+| Record | Printed event/record time | Learner's earliest permitted availability in this chapter | Interpretation |
+|---|---|---|---|
+| R9 — B19 edit | 09:03 UTC | 09:20 UTC | The printed event is earlier; it was not available to the learner's 09:05 decision |
+| R10 — training-plan record | 09:04 UTC | 09:20 UTC | Record time does not prove when the underlying plan was originally approved |
+| R15 — retention notice | 09:14 UTC | 09:20 UTC | The notice becomes available at Round B; it gives no collection receipt or deletion anchor |
+| R16 — service-owner note | 09:16 UTC | 09:20 UTC | The note states an owner condition, not an executed account or service change |
+
+These are fictional source and release times, not measurements of real ingestion delays. The actual ingestion timestamps of the producing systems are **not supplied**. Calling the difference between printed event time and release time an observed "pipeline ingestion delay" would therefore invent a measurement. At most it is the exercise's **event-to-learner-release interval**.
+
+Time discipline protects decision review: one must assess the 09:05 decision from R1–R8, not from later-released R9 merely because R9 carries a 09:03 event timestamp. In a real case, retain original timezone or UTC offset and document normalization and clock uncertainty. [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339.html) specifies an Internet date-time representation including timezone offsets; it does not guarantee that a source clock is accurate.
+
 ### 2.4 Worked example: the second alert
 
 The following records are also fictional and extend Chapter 1. They are the complete input for this chapter's exercises. No live system or external account is involved. **Exercise timing:** the Chapter 1 analyst made the 09:05 decision from the then-supplied R1–R8 snapshot. This chapter releases R9–R16 to the learner at the simulated 09:20 review. Several events in the new table have earlier timestamps; the time an event occurred and the time the analyst received its record are different facts.
@@ -667,6 +691,26 @@ The learner has received R9–R16 at the **simulated 09:20 review**. R9's printe
 Suppose the application custodian later returns a restricted file. The analyst would record its actual collection time, the approved selection, source timezone, any transformation, byte count or applicable integrity check, storage/access owner and reviewer. The analyst would also ask for the **query manifest** behind R14's quiet summary: source, booking/account filters, half-open event interval, query run time, ingestion coverage and source-health limitations. Without that manifest, a copied R14 sentence still cannot establish that no edits occurred after R9. If the custodian instead reports that the detailed interval has already expired, the response lead records the failed request and who confirmed it, preserves the remaining source pointers within scope, and changes the claim from “we checked the detailed audit” to “the detailed audit was unavailable for this interval.” Neither branch may be silently backdated to 09:05.
 
 A concise 09:20 handoff can therefore say: “R9 records a B19 edit at 09:03 UTC; R10 omits B19 from the listed training tasks, and R15 reports a 24-hour detailed-audit retention rule whose anchor we have not verified. At 09:20 we **propose** `P-A` to the incident lead and ask the application custodian to confirm availability, selection and the actual policy deadline; no production copy, hold or account restriction is recorded here.” This wording lets the next analyst see both the reason for urgency and the boundary of current evidence. Exercise EX018 asks the learner to make that request independently.
+
+#### Preservation as an authorized transaction
+
+A useful preservation request names *why* a source matters before specifying how much data should be copied. The next question is whether B19 was an approved operation and whether the booking service's current state matches what the service owner expects. This favors bounded booking-change evidence, an approved task-list version and appropriately limited identity details—not a bulk export of all patron records.
+
+For each source request, prepare:
+
+1. **Decision purpose:** what the evidence could change.
+2. **Producer and fields:** what system is expected to know, including timestamp and identifier semantics.
+3. **Selection:** the smallest defensible time and object range, including explicit exclusions.
+4. **Custodian and authority:** who can retrieve the data and who can approve the operation.
+5. **Retention question:** whether the source still contains the interval and when it may cease to.
+6. **Receipt design:** which exact source, query, object, acquisition time and transformation would be recorded *if* collection happens.
+7. **Residual uncertainty:** which causal or completeness claims would remain unproved.
+
+The existing P-A and P-B queue illustrates this. P-A can be addressed promptly because R15 reports a deletion risk for detailed booking audits. P-B can proceed in parallel as an availability inquiry because identity-source retention is unspecified. Neither source should be treated as collected merely because the analyst assigned it priority.
+
+The states **proposed → approved → collected → verified** are not interchangeable. A written request is proposed. An incident-lead authorization covers only its recorded scope. A collected object needs an identifiable receipt. Verification identifies what was checked, such as the exact copied bytes or selection manifest, and what was *not* checked. Privacy restrictions and access controls apply to the collected copy independently of the source's original retention policy.
+
+[NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) discusses forensic work across data sources from an IT incident-response perspective and expressly does not offer legal advice or an all-inclusive procedure. Harbor Library's request card is a beginner teaching method, not a chain-of-custody certification or permission to collect real personal data.
 
 ### 2.5 Contained lab: preserve and check a synthetic extract
 
@@ -729,6 +773,28 @@ for record_id, event_text, seen_text in rows:
 **Expected evidence:** R9 is 09:03 UTC and seen 17 minutes later; R10 is 09:04 UTC and seen 16 minutes later; R15 is 09:14 UTC and seen six minutes later. None was in the learner's R1–R8 snapshot at 09:05. With T1, R14 supports only that this narrow query showed no further matching edit before 09:12. The unqueried period after 09:12 is an **evidence gap**, not a verified quiet period. The learner should request a new bounded query or an approved source comparison, record its filter and end time, and check whether logging and ingestion were working. R15 says detailed records are deleted after 24 hours unless copied; it does not give enough deletion-policy detail here to calculate the precise expiry of R9 from its event timestamp alone.
 
 **Assessment rubric:** one point each for correct R10 normalization, three correct event-to-discovery delays, the 09:05 availability boundary, a T1 coverage statement that excludes post-09:12 activity, and a narrow authorized follow-up with retention uncertainty. Five points show the classroom reasoning is reproducible; they do not certify a real evidence acquisition or establish who edited B19. The printed output and a model coverage statement appear after the Chapter 2 synthetic-extract result in the final appendix.
+
+#### A query envelope is narrower than a case conclusion
+
+A log search is a measurement operation over a specified source and filter, not a universal statement about everything that happened. An empty or apparently quiet result is meaningful only in the context of its **query envelope**:
+
+| Envelope field | What a reviewer must know |
+|---|---|
+| Producer/source | Was the booking audit, application audit or another source queried? |
+| Event-time interval | What beginning and end were selected, and was the end exclusive? |
+| Identity/booking filters | Which account, booking IDs or operation kinds were included or excluded? |
+| Query run time | When did the result reflect the available index? |
+| Ingestion completeness | Through which event-time boundary was the relevant source demonstrably indexed? |
+| Source health and retention | Were generation, collection and storage functioning during the interval? |
+| Returned rows and transformations | Were rows missing, deduplicated, normalized or otherwise transformed? |
+
+R14 is intentionally narrow: it reports no further booking edits after R9 **within its queried range**. Canonical R14 does not provide the complete envelope. R9 is labeled booking audit while R14 is labeled application audit. Treating them as a single fully covering source would silently merge producers without evidence.
+
+This distinction exposes two different kinds of "nothing found." One is **no row matched this particular query at this query time**. The other, much stronger statement would be **the necessary producers were functioning, the selection was correct, the source's relevant events were all collected and indexed, and no qualifying event occurred in the bounded interval**. The former does not establish the latter.
+
+The existing T1 exercise supplies illustrative metadata only when expressly invoked, and T2 demonstrates late arrival. The new VQ2 lab below goes a step further: it asks when the *metadata itself* would be adequate to support even a bounded negative statement. A query that covers the correct event interval but was run before ingestion had caught up is insufficient; so is a query with complete ingestion for the wrong account.
+
+[NIST SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final) provides primary guidance on log generation, collection and management. This older publication supports the need to understand those stages; the envelope and acceptance gate are original instructional models, not a NIST query specification.
 
 ### 2.7 Delayed log arrival: when a quiet query changes
 
@@ -809,6 +875,22 @@ The second learner should check the manifest against the *actual file and script
 The acceptance criterion is deliberately narrow. **Variant A** can pass the classroom copy-integrity check if the reviewer repeats the calculation; it still cannot prove R14's underlying query was complete. **Variant B** fails the claimed byte identity, regardless of whether the change was accidental or deliberate; that causal question is not answered by the digest mismatch. **Variant C** can have identical bytes yet fail the provenance and authorization review. A simple five-point rubric awards one point for distinguishing A's two kinds of claim, one for correctly rejecting B's recorded digest match, one for C's missing provenance and authority, one for a specific repair request for each variant, and one for a handoff sentence that labels every unperformed check. A model comparison is given in the final appendix.
 
 When preparing a real handoff, ask the next analyst to **reproduce one consequential claim**: locate its source pointer, re-run or review the approved selection, verify the copy if one exists, and identify the decision that would change if the claim fails. This is a quality check on the team's reasoning. It does not replace specialist evidence handling where legal, privacy, disciplinary or contractual obligations apply. Chapter 3 will use the same separation when it asks whether a successful backup job is also a tested and accepted recovery.
+
+#### Distinguish source, copy and interpretation
+
+A digest can support a byte-consistency comparison for a named object at named checks. It does not prove that the source exporter was authorized, that every relevant event was emitted, that the source clock was correct, or that the copied rows identify a human.
+
+The existing E1 laboratory already proves the narrower mechanism: two equally sized classroom files with one changed byte produce different SHA-256 values. Repeating that code here would not add learning. Instead, audit whether a proposed conclusion relies on one of three independent layers:
+
+| Layer | What it can support | What remains to check |
+|---|---|---|
+| Source | A producer is designated for the business question | Its authority, schema, health, clocks and coverage |
+| Copy | A selected byte sequence and its integrity check are documented | Source selection, permissions, transformations and missing rows |
+| Interpretation | The investigator relates records to hypotheses | Identifier meanings, competing explanations and disconfirming evidence |
+
+A perfect digest at the copy layer cannot fill a gap in the source layer. Two files could be byte-identical copies of a truncated export. A complete export might still fail to identify the person behind a shared account label. A reviewer must be able to point to the exact layer checked rather than say vaguely that "the evidence is authentic."
+
+A common false positive is to interpret R13's one-session summary as proof of a particular physical operator. R13 omits device and location details, and session counts alone do not authenticate the person at the keyboard. The existing Q1 exercise intentionally shows how matching identifiers and time windows can remain ambiguous; this proposal does not rewrite Q1 or the canonical R13.
 
 ### 2.9 Contained lab: correlate records without inventing an actor
 
@@ -895,7 +977,153 @@ The method has an important asymmetry. An explicit key that fails to match is **
 
 **Expected evidence:** four classifications matching the printed program output, a limitation for each, a request that names the smallest useful source and fields, and the Q1-V prediction. **Rubric (six points):** one point for correctly identifying both E-A candidates; one for E-B's key-and-window match without human attribution; one for E-C's zero-match limit; one for preserving E-D's explicit-key mismatch; one for a proportionate request including clock, coverage and schema; and one for predicting that E-B becomes ambiguous when its key is removed. A 6/6 score verifies reasoning on this fixture, not the trustworthiness of a real log join. The exact output and model request appear in the final answer appendix after the Chapter 2 evidence-package audit result.
 
-### 2.10 Handoff and common errors
+<a id="ir-rapid-ch02-vq2-lab"></a>
+
+### 2.10 Offline laboratory: when is a quiet-query claim defensible?
+
+**Learning purpose:** Check evidence release, query scope, ingestion-coverage metadata and an unknown retention anchor without replaying the existing T1/T2 search or E1 hash laboratory.
+
+**Classification:** Entirely synthetic classroom variant VQ2. This is **not** a new R-series observation, an amendment to R14, a real ingestion watermark or a production collection.
+
+**Environment:** Python 3 standard library, in memory. No files, network operations, credentials or service changes.
+
+#### Input interpretation and acceptance contract
+
+The VQ2 scenarios ask a *hypothetical custodian* whether a claim of no additional matching edit is even conditionally defensible for the **application-audit / desk-a / 09:00 ≤ event < 09:12 UTC** scope.
+
+The fixture includes an artificial returned teaching identifier, `VQ-01`. This is **not** R9, is not authenticated to R9, and must not be merged with canonical Harbor Library events. A hypothetical ingestion watermark claims coverage through a specified event-time boundary. Even a passing result remains conditional on the custodian's attestation that the source, metadata, clock, collection health and query actually mean what the manifest claims.
+
+**Pre-run predictions:**
+
+- The original R14 record has no complete query manifest, so the program cannot certify its scope.
+- An early watermark ending at 09:07 cannot establish ingestion completeness for the whole interval ending at 09:12.
+- A manifest for another account is irrelevant to a `desk-a`-only claim.
+- A watermark later than its own query-run time is internally inconsistent in this simplified fixture.
+- A 24-hour retention period without an anchor never yields a valid deletion deadline.
+
+#### Reproducible Python 3 code
+
+~~~python
+RELEASE = {"R9": "09:20", "R14": "09:20", "R15": "09:20"}
+
+def minute(clock):
+    h, m = map(int, clock.split(":"))
+    return 60 * h + m
+
+def can_use(record, decision):
+    return minute(RELEASE[record]) <= minute(decision)
+
+print(
+    "release:",
+    "R9@09:05=" + ("YES" if can_use("R9", "09:05") else "NO"),
+    "R9@09:20=" + ("YES" if can_use("R9", "09:20") else "NO"),
+)
+
+base = {
+    "source": "application-audit",
+    "account": "desk-a",
+    "start": "09:00",
+    "end": "09:12",
+    "run": "09:20",
+    "watermark": "09:12",
+    "returned": ("VQ-01",),
+}
+
+variants = [
+    ("CANONICAL_R14", None),
+    ("EARLY_INGESTION", {**base, "run": "09:12", "watermark": "09:07"}),
+    ("HYPOTHETICAL_MANIFEST", base),
+    ("OTHER_ACCOUNT", {**base, "account": "helper-b"}),
+    ("IMPOSSIBLE_WATERMARK", {**base, "run": "09:12", "watermark": "09:16"}),
+]
+
+def assess(manifest):
+    if manifest is None:
+        return "UNKNOWN_MANIFEST"
+    if minute(manifest["watermark"]) > minute(manifest["run"]):
+        return "INCONSISTENT_METADATA"
+    if (
+        manifest["source"] != "application-audit"
+        or manifest["account"] != "desk-a"
+        or manifest["start"] != "09:00"
+        or manifest["end"] != "09:12"
+    ):
+        return "SCOPE_MISMATCH"
+    if minute(manifest["watermark"]) < minute(manifest["end"]):
+        return "INGESTION_NOT_COVERED"
+    if manifest["returned"] != ("VQ-01",):
+        return "RESULT_NOT_AS_ASSUMED"
+    return "CONDITIONAL_IF_ATTESTED"
+
+for name, manifest in variants:
+    print(f"{name}: {assess(manifest)}")
+
+policy = {"period_hours": 24, "anchor": None}
+print("R15_DEADLINE:", "UNKNOWN" if policy["anchor"] is None else "REQUIRES_VALIDATION")
+
+assert assess(variants[2][1]) == "CONDITIONAL_IF_ATTESTED"
+assert policy["anchor"] is None
+~~~
+
+#### Exact expected output — executed against the displayed fixture
+
+~~~text
+release: R9@09:05=NO R9@09:20=YES
+CANONICAL_R14: UNKNOWN_MANIFEST
+EARLY_INGESTION: INGESTION_NOT_COVERED
+HYPOTHETICAL_MANIFEST: CONDITIONAL_IF_ATTESTED
+OTHER_ACCOUNT: SCOPE_MISMATCH
+IMPOSSIBLE_WATERMARK: INCONSISTENT_METADATA
+R15_DEADLINE: UNKNOWN
+~~~
+
+#### Annotated results and negative controls
+
+- `release` establishes only **learner availability** of R9: absent at the 09:05 Round A decision and available by the Round B review. The program has no authentic source-ingestion timestamps.
+- `CANONICAL_R14` lacks sufficient metadata. The correct conclusion is **unknown query envelope**, not "no edits happened."
+- `EARLY_INGESTION` models an under-covered interval: the declared watermark ends before the queried interval does. A result at that point cannot exclude events that had not yet arrived at the store.
+- `HYPOTHETICAL_MANIFEST` is **conditional**, not confirmed. It accepts a fully specified classroom envelope and declared ingestion boundary but has no external verification that the declaration is truthful or complete.
+- `OTHER_ACCOUNT` is a negative scope control: evidence for `helper-b` cannot establish a `desk-a` negative finding even if other metadata looks complete.
+- `IMPOSSIBLE_WATERMARK` rejects contradictory classroom metadata rather than silently treating a future watermark as a real guarantee.
+- `R15_DEADLINE` remains **UNKNOWN**. The program intentionally cannot turn a period into a deletion instant while the policy anchor is absent.
+
+**Lab limitations:** The `minute` helper handles only single-day HH:MM timestamps; it is not a timezone or multi-day event parser. It does not authenticate query metadata or establish clock correctness. `VQ-01` is a synthetic result marker, not an application audit of R9. A conditional pass tests the *logic of the stated envelope*; it cannot prove producer completeness, an authorized export or a real incident.
+
+**Required submission:** Provide the seven output lines, a manifest-assessment table naming one uncertainty for each scenario, a two-sentence explanation of why the 09:05 decision cannot cite R9, and a preservation request that leaves R15's exact deletion deadline unknown. Add a proposed falsifier: identify the metadata or new qualifying row that would invalidate your current quiet-query conclusion.
+
+**Pass criteria:** Exact reproducibility; no release-boundary violation; no unsupported retention arithmetic; clear distinction between a declared watermark and authenticated completeness; no merger of VQ2 into R1–R16.
+
+### 2.11 Contrastive 09:20 decision example
+
+**Incorrect handoff:**
+
+> "R9 proves the employee attacked B19 at 09:03. R14 proves no further edits happened, and R15 means we have exactly until 09:03 tomorrow to preserve the logs. The records are hashed, so we can declare the account compromised and close collection."
+
+The sentence makes several unsupported jumps. R9 is an application-related booking record under an account label, not verified human attribution. R14 has unspecified source/query bounds and does not prove a universal quiet period. R15 does not define its retention anchor. No completed export or digest check for the underlying canonical records is supplied. Even a genuine matching digest would not settle authorization or root cause. The analyst also confuses account-compromise confidence with preservation urgency.
+
+**Correct bounded assessment:**
+
+> "At the simulated 09:20 review, R9 reports a B19 change at 09:03 UTC; R10's supplied training plan names B17/B18 but not B19, and R12 records that the staff member does not recall B19. These observations warrant an authorized training-scope and service-impact check without identifying the human operator. R14 describes a quiet result only within its unspecified query range; R15 reports a 24-hour deletion policy whose anchor remains unknown. The incident lead should seek a bounded availability and preservation decision with the application custodian and review the matter by 09:35 UTC, or sooner on a verified new unexplained edit. No production copy, restriction or completed identity investigation is established."
+
+The better version does not avoid making a decision. It makes a *specific, reviewable next decision* without asserting evidence that is not present.
+
+### 2.12 Three-lane handoff for independent review
+
+A handoff is complete when another analyst can trace important claims to sources, identify why an apparently stronger conclusion was rejected, and continue through an authorized next step. Include an exact checkpoint, the original record IDs, owner of the next request, decision status and revisit condition.
+
+A compact handoff has three lanes:
+
+**Evidence lane:** "R9 reports B19 edited; R10 omits B19 from the supplied plan; R11 records a second patron report; R13 lacks device/location detail." These are statements about the supplied records.
+
+**Assessment lane:** "Training remains plausible for B17/B18; B19 authorization and human attribution remain unresolved; overall patron impact is not measured." These are interpretations with limits.
+
+**Action lane:** "Propose P-A; request custodian confirmation of the retention anchor and actual source coverage; ask the service owner to authorize a bounded impact comparison; review at 09:35 or on a verified fresh edit." These are plans, not completed operations.
+
+A receiver should be able to challenge the assessment without questioning whether an unseen action occurred. The handoff should say "requested" when requested, "approved" only when approval is documented, and "collected" only when a collection receipt exists. This discipline also prevents an exercise-only query manifest from being misreported as an operational source observation.
+
+The next chapter may consider containment and recovery decisions, but Chapter 2 cannot pre-authorize those changes or introduce Round C evidence. Its immediate result is a bounded, preservation-aware decision ready for review.
+
+### 2.13 Handoff and common errors
 
 A useful handoff lets a second analyst reconstruct the decision without guessing: case ID; current time and timezone; affected service; observed facts with record IDs; live hypotheses; confidence and limits; known service impact; actions completed under which authority; evidence locations; next question; decision owner; review deadline. It should also separate the source's event time from the time the analyst learned of the event.
 
@@ -921,13 +1149,25 @@ Score each numbered exercise **0** when its artifact is absent or asserts an uns
 
 **Objective:** set urgency without inventing a severity fact. **Inputs:** R9–R16 at the 09:20 discovery point. **Output:** a short decision note with separate fields for potential patron harm, retention or ongoing-activity urgency, confidence in the leading hypothesis, provisional priority, decision owner and an observable review trigger. A score of 2 requires a reason for the priority and a deadline or event, not merely a color or number.
 
+**Extension:** Require one sentence explaining why retention urgency can be high while evidence of account compromise remains inconclusive. Identify what would cause the priority to increase and what would justify a less urgent review. Do not turn an unknown deadline into a guessed timestamp.
+
+**For full credit:** The learner identifies R15's possible evidence-loss path, R9/R11's potential booking harm, unresolved attribution, the incident lead's decision authority and the 09:35 review or an earlier verified trigger.
+
 #### EX017 — What the summary cannot prove
 
 **Objective:** test the limits of negative evidence. **Inputs:** R13, R14 and, for this question only, the optional T1 metadata. **Output:** two short claim/limit pairs and one proposed follow-up query. First assess R14 *without* T1; then state exactly what T1 adds and what it still cannot cover after 09:12. Explain why R13 does not establish that the `desk-a` session came from the expected staff device. A score of 2 distinguishes missing device fields from a negative device finding and names the query's filter and interval.
 
+**Extension:** Before using optional T1, describe exactly which fields of R14's query envelope are missing. When using T1, distinguish a bounded event-time filter from an ingestion-completeness guarantee; name the first excluded boundary.
+
+**For full credit:** The learner says that even optional T1 ends before 09:12 and does not authenticate logging completeness, another account or activity at and after 09:12. R13's missing device field remains unknown rather than a negative device finding.
+
 #### EX018 — Retention decision
 
 **Objective:** prepare a proportionate preservation decision. **Inputs:** R9, R13–R15, the collection-note fields in section 2.3 and the worked queue in section 2.4. **Output:** a three-row `P-A` request to the application custodian stating each source and proposed event range, deletion-policy anchor or actual deadline, and collector/authority/storage scope; add one sentence explaining why preservation may precede root-cause knowledge. Then add a two-row comparison of `P-A` with `P-B`: decision each could change, known or unknown loss path, owner, present state and why the second availability check may proceed in parallel. Do not calculate a precise expiry merely by adding 24 hours to R9's timestamp or claim either source was collected. A score of 2 identifies the time-sensitive risk, privacy boundary and proposal-versus-collection distinction for both sources.
+
+**Extension:** Include a specific question that the application custodian must answer about the deletion-policy **anchor** and a separate question about whether the oldest requested row is still retrievable. State the status of P-A and P-B using the exact words `proposed`, `approved`, `collected` or `verified`, without skipping intermediate states.
+
+**For full credit:** A 24-hour rule is a duration, not a confirmed deletion instant; P-A's potential urgency does not authorize a bulk export or establish that a hold took effect.
 
 #### EX019 — Collection note
 
@@ -937,6 +1177,10 @@ Score each numbered exercise **0** when its artifact is absent or asserts an uns
 
 **Objective:** bound an integrity claim. **Inputs:** the named E1 bytes, the two digest checks and section 2.5. **Output:** a five-row claim table: two statements the comparison supports and three it does not, each with a one-sentence reason. Specify which file and times were checked rather than saying “the evidence is authentic.” A score of 2 distinguishes copy consistency from source truth, completeness and collection authority.
 
+**Extension:** For one claim that a matching E1 digest supports, name its exact evidence layer (copy). For one claim it cannot support, name the missing source/selection or interpretation layer. Keep the E1 lab's original numbers and bytes unchanged.
+
+**For full credit:** Matching hashes concern chosen bytes; they do not attest producer completeness, collection permission or the person responsible for B19.
+
 #### EX021 — Time ordering
 
 **Objective:** separate event order from causal inference. **Inputs:** R9, R10, R12, R15 and R16; use T1 only for the optional final sentence. **Output:** five ordered rows with ID, UTC event time, source and one uncertainty about cause. Mark that R9–R16 reached the learner at 09:20 despite earlier event times. Optionally state which interval T1 leaves uncovered. A score of 2 preserves event/discovery separation and does not treat temporal precedence as authorization or attribution.
@@ -945,9 +1189,17 @@ Score each numbered exercise **0** when its artifact is absent or asserts an uns
 
 **Objective:** allow a second analyst to continue without guessing. **Inputs:** the Round B snapshot R1–R16 and the fictional approval path. **Output:** a five-sentence handoff at 09:20 UTC that includes case ID and service, at least two evidence IDs, a live hypothesis and alternative, one uncertainty, an authorized next action, the custodian or owner, and the 09:35 review or an observable earlier trigger. A score of 2 distinguishes a request or proposal from a completed action.
 
+**Extension:** Preserve the existing five-sentence maximum. Require three distinct verbal states in those sentences: a direct record observation, an assessment with its limitation, and a next action stated as **proposed** unless actual approval/execution is supplied. Do not imply that an approved classroom exercise is a completed production collection.
+
+**For full credit:** The handoff names R9, R10 or R11 as appropriate, identifies unresolved B19 authorization, keeps R15's deadline uncertain and states the 09:35 review or earlier verified trigger.
+
 #### EX023 — Impact check
 
 **Objective:** size possible service harm without exporting unrelated patron data. **Inputs:** R9, R11, R14–R16 and the service map. **Output:** a short query request naming approver, custodian, booking identifiers or short event range, necessary fields, expected result table and privacy/access limit. The table should distinguish an audit edit, an owner-approved state and an unresolved mismatch. A score of 2 does not claim a completed count or that R14 covers the whole period.
+
+**Extension:** Define a positive result and a negative result for the proposed booking comparison. A positive result must distinguish recorded edits from the current authoritative state; a negative result must explain how a mismatch or missing state affects the confidence of the claim. Record which patron fields remain outside scope.
+
+**For full credit:** The learner cannot supply a measured affected-patron count from R9/R11 alone or treat R14 as complete coverage.
 
 #### EX024 — Escalation threshold
 
@@ -1858,9 +2110,13 @@ The hypotheses need not be mutually exclusive. A good answer identifies what eac
 
 “**Decision owner:** incident lead. **Checkpoint:** 09:20 UTC. **Potential harm:** B19's recorded edit and R11's patron report could affect room use; broader impact has not been measured. **Time sensitivity:** R15 reports 24-hour retention of detailed audit records and a new edit could add harm. **Confidence:** training plausibly explains B17/B18 but does not yet explain B19; account misuse remains a hypothesis, not a finding. **Priority:** prompt, bounded review. **Next action:** seek approved preservation and a service-owner impact check. **Review:** 09:35 UTC or immediately on a verified new unexplained edit.” The reasons and trigger matter more than an arbitrary severity number; “low to moderate” can be replaced by a qualitative uncertainty statement if it is justified.
 
+**Further reasoning:** At 09:20, R9 supports investigating an unexplained B19 edit and R11 supports investigating a reported patron effect. Neither supplies a total impact count. R15 introduces an independent reason for prompt action: detailed booking audit material may be lost under a 24-hour deletion policy. Because the anchor and actual source availability are unknown, the priority note should request an immediate custodian check without publishing an exact expiry. The leading unauthorized-use explanation remains a hypothesis. "Prompt, bounded review" is defensible; a verified fresh unexplained edit or owner-confirmed broader booking damage would justify reassessment sooner than 09:35. A later complete approved task addendum could weaken the authorization concern for B19, but would not remove the need to assess record preservation.
+
 ### EX017 — Worked result
 
 **R13 claim/limit:** the available summary reports one session in its time range, but contains no device or location field. Missing detail cannot identify a device or person; it is not a finding that the session came from the expected staff device. **R14 without T1:** the summary says no further edits after R9 *within its queried range*, but the exact range and filters are absent from R14 itself. **R14 with exercise-only T1:** the illustrative query concerns `desk-a` booking edits in `application-audit` at `09:00 ≤ event < 09:12 UTC`; it does not cover later times, another account, ingestion delay or a different source. A proposed next check asks the authorized application custodian for a new bounded query beginning at 09:12 and ending at a documented, sufficiently ingested cutoff, with source, account filters and completeness recorded. Even a zero-row result would be limited to that new scope.
+
+**Further reasoning:** Canonical R14 states only that its query showed no further edits after R9 within the queried range; its exact start, end, filters, run time and ingestion coverage are not supplied. Optional T1, when explicitly invoked, introduces `application-audit`, account `desk-a` and `09:00 ≤ event < 09:12 UTC`. It does not cover 09:12 itself, later events, another account or delayed ingestion. To investigate later activity, request a newly bounded query with a documented source, filter, interval, run time, collection status and ingestion-health check. R13's one-session summary lacks device and location details. It does not show that the session was on an expected device, and it cannot establish human attribution. A strong answer preserves both the narrower negative-query result and its untested assumptions.
 
 ### EX018 — Worked result
 
@@ -1878,6 +2134,8 @@ The analyst can ask the incident lead to decide promptly because detailed rows m
 | `P-B` identity detail | Could test whether a session key connects records, if both sources share its meaning. R13 omits device/location and no identity-source retention period is supplied. | Incident lead asks identity administrator about availability and minimal fields in parallel. **Proposed**, not collected; no human attribution. |
 
 The comparison does not mean that only `P-A` matters or that urgency authorizes a bulk identity export. A valid answer may choose a different order if it names a documented loss condition and approval path; it must leave unsupported source coverage and actor identity unresolved.
+
+**Further reasoning:** A complete P-A request asks which producer emitted the R9 booking audit and which produced R14's application-audit summary before proposing that their rows be joined. It names B17–B19, a bounded event range, minimum necessary fields and the application custodian. The custodian must establish **what starts** R15's 24-hour clock and whether the oldest relevant detailed row is still accessible. The incident lead owns approval, and the retained object would need its own source, method, access and collection receipt. At the supplied 09:20 state, P-A and P-B remain **proposed**; P-B can investigate identity-detail availability and its unknown retention in parallel. Neither request is an approved export, an effective hold or a verified copy. The inability to compute a deadline is an explicit result, not a reason to defer contacting the custodian.
 
 ### EX019 — Worked result
 
@@ -1904,6 +2162,8 @@ If the learner ran `fixture.py`, replace the planned state with **completed loca
 
 Specify the file, method and check times. Two matching values copied from the same mistaken note would not become proof of authenticity.
 
+**Further reasoning:** If the learner actually created E1 and repeated the stated SHA-256 checks, the equality supports consistency of the **named copy bytes** at those checks, subject to method and record trust. The modified E1 variant with a different digest establishes only that the modified teaching bytes differ from those of E1. The **source layer** is not authenticated by the digest: E1 was transcribed from the synthetic R9/R14 table, and the underlying canonical R14 query manifest is incomplete. The **interpretation layer** also remains uncertain: none of the copied bytes proves who controlled `desk-a` or whether B19 was authorized. A 2-point answer must name the file and distinguish copy consistency from provenance, complete coverage and permission; generic claims that the evidence is "verified authentic" fail that boundary.
+
 ### EX021 — Worked result
 
 | Order | Record and supplied UTC time | Source |
@@ -1920,9 +2180,15 @@ These are **record event or observation times** in the fictional dataset. The le
 
 “At 09:20 UTC, `HL-IR-001` concerns the room-booking service: R9 records B19 edited and R11 records a second patron report. H1 can explain the earlier training edits, while H2 remains possible for B19 because R10 omits it and R13 gives no device detail. The fictional incident lead authorizes classroom preservation of supplied records and asks the service owner to approve a **proposed**, narrow real-world impact check; no production account or data change has occurred. The analyst will ask the training owner about any approved B19 addendum and record source and query limits. Review with the incident lead at 09:35 UTC or sooner if another verified unexplained edit appears.” A handoff must tell the receiver what was approved, what remains only a request and what would change the next decision.
 
+**Further reasoning:** At 09:20 UTC, case HL-IR-001 concerns Harbor Library room bookings: R9 reports a B19 edit, while R11 records a second patron complaint. The supplied training plan in R10 names B17/B18 but not B19, so authorized training and use outside the plan remain competing explanations; the operator is not identified by R13. R14's quiet query does not establish complete subsequent activity, and R15 reports a 24-hour detailed-audit deletion policy without a verified anchor or deadline. The incident lead **proposes** a bounded P-A availability/preservation request through the application custodian and a service-owner impact check; no production copy, hold or account restriction is claimed completed. Review at 09:35 UTC or earlier on a verified unexplained booking change.
+
+The five sentences label the evidence, assessment, unanswered questions, proposed action and review trigger. A classroom preservation authorization, if separately recorded, must not be misreported as a production export.
+
 ### EX023 — Worked result
 
-**Proposed request:** the service owner approves a named analyst to compare booking-edit audit rows for the short 08:30–09:20 UTC window with the authoritative booking state and relevant help-desk ticket identifiers, using only booking ID, changed field, old/new value, event UTC time and approved target where available. The application custodian supplies a restricted copy and records the query filter, source and collection time. The expected result schema is `booking ID | audit row | current value | owner-approved value or pending | confirmed mismatch / unresolved`. The learner can already point to B19's R9 edit but cannot supply a final count or approved target from R1–R16. Keep patron names and unrelated bookings out of the classroom output and limit the copy to the approved reviewers.
+**Proposed request:** ask the service owner to approve a named analyst to compare booking-edit audit rows for the short 08:30–09:20 UTC window with the authoritative booking state and relevant help-desk ticket identifiers, using only booking ID, changed field, old/new value, event UTC time and approved target where available. If approved, the application custodian would supply a restricted copy and record the query filter, source and collection time. The expected result schema is `booking ID | audit row | current value | owner-approved value or pending | confirmed mismatch / unresolved`. The learner can already point to B19's R9 edit but cannot supply a final count or approved target from R1–R16. Keep patron names and unrelated bookings out of the classroom output and limit the copy to the approved reviewers.
+
+**Further reasoning:** A well-scoped request proposes comparing the B19 audit row, any approved relevant booking targets, the current authoritative state and the patron-facing information needed to evaluate R11. The service owner would approve the business comparison; the application custodian would then confirm the exact source and selection. **Positive hypothetical result:** an authorized read shows the owner-approved B19 value reflected correctly in current authoritative state for the tested item; this narrows one state question but does not establish every patron view or the actor's identity. **Negative hypothetical result:** the current state is missing, conflicts with the approved target, or cannot be compared because the target or source is unavailable; the learner must record a mismatch or unresolved state, not invent a full impact count. The requested view excludes unrelated patron names, the newsletter list and unapproved bookings. No actual result is supplied in R1–R16.
 
 ### EX024 — Worked result
 

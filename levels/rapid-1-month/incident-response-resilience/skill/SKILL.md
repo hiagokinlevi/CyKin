@@ -30,13 +30,17 @@ This is the **rapid introductory** course. Teach one subject at a time and use t
 | Week / subject | Read and teach | Practical evidence the learner should produce |
 |---|---|---|
 | 1 — Incident readiness | [Chapter 1](../en/book/MANUSCRIPT.md#ch-01): roles, service map, authorization, evidence-readiness contract, claim falsifiers and an offline evidence-bound lab. | A bounded case record, owner map, claim ledger, proposed test and lab transcript using R1–R8 only. |
-| 2 — Triage and preservation | [Chapter 2](../en/book/MANUSCRIPT.md#ch-02): event versus discovery time, evidence provenance, retention and competing explanations. | A justified timeline and preservation request using R1–R16 and the chapter's labeled synthetic labs. |
+| 2 — Triage and preservation | [Chapter 2](../en/book/MANUSCRIPT.md#ch-02): event versus discovery time, query-envelope coverage, retention, provenance and competing explanations. | A justified timeline, bounded preservation request, source/copy/interpretation analysis and VQ2 lab transcript using R1–R16 after 09:20. |
 | 3 — Containment, cause and recovery | [Chapter 3](../en/book/MANUSCRIPT.md#ch-03): approval, write-path testing, cause hypotheses, isolated restoration and service acceptance. | A comparison of bounded actions and a cause-to-fix verification plan using R1–R24; keep W1, P1/C1, V1 and K1 as separately released exercise fixtures. |
 | 4 — Tabletop and after-action review | [Chapter 4](../en/book/MANUSCRIPT.md#ch-04): round-based simulation, handoff, communication and measurable improvement. | Six artifacts, a scored handoff and an after-action ticket; use Branch S/P and later cards only when their round releases them. |
 
 ## Chapter 1 claim-review laboratory
 
 Use the [offline evidence-bound lab](../en/book/MANUSCRIPT.md#ir-rapid-ch01-claim-lab) only after the learner reads R1–R8 and predicts the six claim classifications. The eight printed output lines are a check of the in-memory teaching fixture, not proof of a real event. Require the learner to explain why R9 is unavailable at 09:05, why the temporary R6 removal changes only the variant, and why a supplied record cannot by itself establish a human actor, a tested restore or absence of transfer. Compare the transcript and six-row claim ledger with the worked interpretation in the chapter. Then deepen EX001, EX003, EX005, EX009, EX012 and EX013 using their matching final-book worked answers; do not create new exercise IDs.
+
+## Chapter 2 query-quality laboratory
+
+Open the [VQ2 quiet-query lab](../en/book/MANUSCRIPT.md#ir-rapid-ch02-vq2-lab) only after the 09:20 release of R9–R16. Have the learner predict seven output lines before running the in-memory Python fixture and explain each negative control: missing R14 manifest, incomplete ingestion boundary, wrong account and impossible watermark. A conditional pass depends on the hypothetical custodian's truthful source and coverage attestation; it does not authenticate R14 or make VQ-01 a canonical event. R15's 24-hour duration has no verified deletion anchor. Use the final answers to deepen EX016, EX017, EX018, EX020, EX022 and EX023 without changing their identifiers or the chapter's 0–2 rubric.
 
 ## Tutoring cycle for each subject
 
@@ -49,7 +53,7 @@ Use the [offline evidence-bound lab](../en/book/MANUSCRIPT.md#ir-rapid-ch01-clai
 ## Case and source boundaries
 
 - The canonical R1–R8 snapshot belongs to Round A and the 09:05 first decision; R9–R16 enter at the simulated 09:20 Round B review; R17–R24 enter Round C before the 09:37 decision. Event time is not the learner's receipt time.
-- Branch S or P is reported only in Round D. P1/C1 and V1 arrive later in that round. W1, K1, Q1, T1, T2, F1 and M1/M2 are labeled classroom variants; do not import their results into an earlier canonical decision.
+- Branch S or P is reported only in Round D. P1/C1 and V1 arrive later in that round. W1, K1, Q1, T1, T2, VQ2, F1 and M1/M2 are labeled classroom variants; do not import their results into an earlier canonical decision.
 - R21 records tolerance for a brief write pause, not approval or execution. R22's narrow earlier query cannot verify a later revocation. R23 reports a backup job, not a successful restore. V1's blank actor field fails its audit-attribution criterion.
 - Use the [source audit](../../../../SOURCE_AUDIT.md) and the book's references for factual claims. Identify the British Library review as a cited real incident and Harbor Library as fiction. Preserve source rights and avoid copying third-party playbooks into the CC0 book.
 - Never direct a learner to test a real account, disrupt a service, access patron records or send a notification. Such actions require the real organization's authority, environment and procedures, which the course does not supply.
