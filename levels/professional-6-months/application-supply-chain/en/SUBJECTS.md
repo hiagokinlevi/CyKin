@@ -10,17 +10,17 @@ English is the reference edition.
 
 | Month | Chapter / plan | Curricular subject | Hours | Planned A4 pages | Exercise target | Teaching state | Next step |
 |---|---|---|---:|---:|---:|---|---|
-| 1 | [01](book/PLAN.md#ch-01) | Security foundations for practitioners | 30 | 30 | 5 | Planned | [02 · Plan](book/PLAN.md#ch-02) |
-| 1 | [02](book/PLAN.md#ch-02) | Application and software supply chain security: service and stakeholder context | 30 | 30 | 5 | Planned | [03 · Plan](book/PLAN.md#ch-03) |
-| 2 | [03](book/PLAN.md#ch-03) | Authorized practice and evidence handling | 30 | 30 | 5 | Planned | [04 · Plan](book/PLAN.md#ch-04) |
-| 2 | [04](book/PLAN.md#ch-04) | Application and software supply chain security: core methods | 30 | 30 | 5 | Planned | [05 · Plan](book/PLAN.md#ch-05) |
-| 3 | [05](book/PLAN.md#ch-05) | Application and software supply chain security: tools and interpretation | 30 | 30 | 5 | Planned | [06 · Plan](book/PLAN.md#ch-06) |
-| 3 | [06](book/PLAN.md#ch-06) | Application and software supply chain security: operational workflow | 30 | 30 | 5 | Planned | [07 · Plan](book/PLAN.md#ch-07) |
-| 4 | [07](book/PLAN.md#ch-07) | Application and software supply chain security: controls and verification | 30 | 30 | 5 | Planned | [08 · Plan](book/PLAN.md#ch-08) |
-| 4 | [08](book/PLAN.md#ch-08) | Application and software supply chain security: supervised case analysis | 30 | 30 | 5 | Planned | [09 · Plan](book/PLAN.md#ch-09) |
-| 5 | [09](book/PLAN.md#ch-09) | Communication, ethics and reporting | 30 | 30 | 5 | Planned | [10 · Plan](book/PLAN.md#ch-10) |
-| 5 | [10](book/PLAN.md#ch-10) | Application and software supply chain security: quality and troubleshooting | 30 | 30 | 5 | Planned | [11 · Plan](book/PLAN.md#ch-11) |
-| 6 | [11](book/PLAN.md#ch-11) | Supervised laboratory | 30 | 30 | 5 | Planned | [12 · Plan](book/PLAN.md#ch-12) |
-| 6 | [12](book/PLAN.md#ch-12) | Practice portfolio and final review | 30 | 30 | 5 | Planned | [Course 038 →](../../security-operations-blue-team/en/SUBJECTS.md) |
+| 1 | [01](book/PLAN.md#ch-01) | Security foundations for practitioners | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-01) | [02 · Draft](book/MANUSCRIPT.md#ch-02) |
+| 1 | [02](book/PLAN.md#ch-02) | Application and software supply chain security: service and stakeholder context | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-02) | [03 · Draft](book/MANUSCRIPT.md#ch-03) |
+| 2 | [03](book/PLAN.md#ch-03) | Authorized practice and evidence handling | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-03) | [04 · Draft](book/MANUSCRIPT.md#ch-04) |
+| 2 | [04](book/PLAN.md#ch-04) | Application and software supply chain security: core methods | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-04) | [05 · Draft](book/MANUSCRIPT.md#ch-05) |
+| 3 | [05](book/PLAN.md#ch-05) | Application and software supply chain security: tools and interpretation | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-05) | [06 · Draft](book/MANUSCRIPT.md#ch-06) |
+| 3 | [06](book/PLAN.md#ch-06) | Application and software supply chain security: operational workflow | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-06) | [07 · Draft](book/MANUSCRIPT.md#ch-07) |
+| 4 | [07](book/PLAN.md#ch-07) | Application and software supply chain security: controls and verification | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-07) | [08 · Draft](book/MANUSCRIPT.md#ch-08) |
+| 4 | [08](book/PLAN.md#ch-08) | Application and software supply chain security: supervised case analysis | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-08) | [09 · Draft](book/MANUSCRIPT.md#ch-09) |
+| 5 | [09](book/PLAN.md#ch-09) | Communication, ethics and reporting | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-09) | [10 · Draft](book/MANUSCRIPT.md#ch-10) |
+| 5 | [10](book/PLAN.md#ch-10) | Application and software supply chain security: quality and troubleshooting | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-10) | [11 · Draft](book/MANUSCRIPT.md#ch-11) |
+| 6 | [11](book/PLAN.md#ch-11) | Supervised laboratory | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-11) | [12 · Draft](book/MANUSCRIPT.md#ch-12) |
+| 6 | [12](book/PLAN.md#ch-12) | Practice portfolio and final review | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-12) | [Course 038 →](../../security-operations-blue-team/en/SUBJECTS.md) |
 
 A planned next step is a navigation target, not an authored lesson. Keep the completion position at the first unwritten chapter. Page and exercise columns are editorial targets. The book is complete only after its content and A4 rendering meet the publication gate.

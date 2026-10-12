@@ -1,6 +1,6 @@
 ---
 name: cyberabc-application-supply-chain-professional-2f79da44
-description: "Guide a learner through the professional course in Application and software supply chain security, its one book, subject chapters, exercises and reviewed sources."
+description: "APP Professional course (12 ch / 60 ex)"
 license: CC0-1.0
 ---
 
@@ -16,21 +16,36 @@ Use this **one skill for the whole 6 months course**. The course has one princip
 - [English book plan](../en/book/PLAN.md): summaries and planned exercises.
 - [Materials](../en/MATERIALS.md): practice and assessment links.
 - [Supplementary playbooks](../../../../playbooks/application-supply-chain/README.md): source-linked practice.
+- [Authored English book draft](../en/book/MANUSCRIPT.md): use only chapters, labs and exercises actually present; review is pending.
 
 ## Navigation rule
 
 At the end of an authored chapter or a book-plan chapter summary, use its **Continue studying** block for the previous chapter, course index and next chapter. Keep the learner's course and chapter position visible. If the next link is a plan, explain that the lesson is not yet authored and do not mark it complete. The course chapter index connects its final row to the next course in the same language.
 
+## Twelve-subject teaching route
 
-## Tutor workflow
+This is the six-month **professional course** for application and software supply chain security. The book follows synthetic quality engineer **Priya Nair** of the fictional **Harbourline Freight**, who studies at the fictional **Westgate Professional Institute** under her mentor, security lead **Marcus Bell**. It starts with an internal package, hl-auth, that the build resolved from the public registry. From there it covers the service context, authorised practice, source controls, scanner triage, workflow and targets, controls and provenance, a supervised case, reporting, quality and a supervised lab, and ends with a portfolio.
 
-1. Ask for the learner's level and language; use this course's chapter index to select the relevant subject. English is the editorial reference until other editions are reviewed.
-2. Check whether that chapter is authored. If only the plan exists, say so and label any added explanation or practice as new supplementary material.
-3. Teach from the available chapter with a clear example, then use its authored exercises and worked answers. Keep the response at the course's planned depth.
-4. Cite the exact Markdown source and any underlying external reference. Use only authorized, synthetic or sanitized practical environments. Never claim accreditation or a completed 300-page book from a folder alone.
+| Subjects | Read and teach | Labs / exercises |
+|---|---|---|
+| 1–4 | Foundations, stakeholder context, authorised practice, source and name checks | lab_sources.py (4); EX001–EX020 |
+| 5–8 | Scanner triage, workflow, controls and verification, supervised case | lab_triage.py (5); EX021–EX040 |
+| 9–12 | Reporting and ethics, quality and remediation targets, supervised lab, portfolio | lab_sla.py (10); EX041–EX060 |
+
+Verified lab facts (synthetic): the source check flags hl-auth as an internal name resolved from the PUBLIC registry and flags yamkit as close to yamlkit; triage turns 7 raw findings into 6 unique ones, ranks sql-concat, ADV-22 and missing-authz first, and puts critical ADV-21 fourth because it is not reachable; targets were met for critical 1/2 (50%, longest 9d), high 3/4 (75%, 41d) and medium 3/4 (75%, 120d).
+
+## Safety, privacy and information boundaries
+
+- Synthetic code and data only; no exploit code, payloads, attack procedures or instructions for bypassing controls.
+- Standard-library labs that only read synthetic records; nothing is published to public registries and no public names are tested.
+- Findings are reported only through official channels and private disclosure.
 
 ## Continue the curriculum
 
-After chapter 12, check the chapter index and the learner's exercise record. The next stop is [course 038: Security operations and blue team / Professional course](../../security-operations-blue-team/en/SUBJECTS.md). For navigation in another language, open that course's matching language index; teach from it only when its manuscript is authored and reviewed. A planned chapter does not count as studied merely because navigation points to the next stop.
+After chapter 12, the next stop is [course 038: Security operations and blue team / Professional course](../../security-operations-blue-team/en/SUBJECTS.md).
+
+## Editorial status and language
+
+Check the [book standard](../../../../BOOK_STANDARD.md) before claiming a chapter or edition is complete. English chapter drafts and exercise–answer pairs exist, but the book has not passed independent review or the 300-page A4 gate. Other language folders are working outlines until their own translation and review. Teach in the learner's language if helpful while identifying English as the only authored reference edition.
 
 Original maintainer-owned content is dedicated under [CC0 1.0](../../../../LICENSE); third-party sources retain their own rights.
