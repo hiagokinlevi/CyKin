@@ -17,12 +17,12 @@ English is the reference edition.
 | 1 | [05](book/PLAN.md#ch-05) | Security scope and evidence | 67 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-05) | [06 · Draft](book/MANUSCRIPT.md#ch-06) |
 | 1 | [06](book/PLAN.md#ch-06) | Response system models and service dependencies | 67 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-06) | [07 · Draft](book/MANUSCRIPT.md#ch-07) |
 | 2 | [07](book/PLAN.md#ch-07) | Event-source mapping and log retention | 67 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-07) | [08 · Draft](book/MANUSCRIPT.md#ch-08) |
-| 2 | [08](book/PLAN.md#ch-08) | Identity, host and network failure modes | 67 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-08) | [09 · Plan](book/PLAN.md#ch-09) |
-| 2 | [09](book/PLAN.md#ch-09) | Host and network evidence collection methods | 67 | 30 | 4 | Planned | [10 · Plan](book/PLAN.md#ch-10) |
-| 2 | [10](book/PLAN.md#ch-10) | Containment control configuration in a lab | 67 | 30 | 4 | Planned | [11 · Plan](book/PLAN.md#ch-11) |
-| 2 | [11](book/PLAN.md#ch-11) | Clock-offset and record-integrity verification | 67 | 30 | 4 | Planned | [12 · Plan](book/PLAN.md#ch-12) |
-| 2 | [12](book/PLAN.md#ch-12) | Laboratory: ingest and preserve synthetic incident records | 67 | 30 | 4 | Planned | [13 · Plan](book/PLAN.md#ch-13) |
-| 3 | [13](book/PLAN.md#ch-13) | Troubleshooting conflicting alerts and missing telemetry | 66 | 30 | 4 | Planned | [14 · Plan](book/PLAN.md#ch-14) |
+| 2 | [08](book/PLAN.md#ch-08) | Identity, host and network failure modes | 67 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-08) | [09 · Draft](book/MANUSCRIPT.md#ch-09) |
+| 2 | [09](book/PLAN.md#ch-09) | Host and network evidence collection methods | 67 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-09) | [10 · Draft](book/MANUSCRIPT.md#ch-10) |
+| 2 | [10](book/PLAN.md#ch-10) | Containment control configuration in a lab | 67 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-10) | [11 · Draft](book/MANUSCRIPT.md#ch-11) |
+| 2 | [11](book/PLAN.md#ch-11) | Clock-offset and record-integrity verification | 67 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-11) | [12 · Draft](book/MANUSCRIPT.md#ch-12) |
+| 2 | [12](book/PLAN.md#ch-12) | Laboratory: ingest and preserve synthetic incident records | 67 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-12) | [13 · Draft](book/MANUSCRIPT.md#ch-13) |
+| 3 | [13](book/PLAN.md#ch-13) | Troubleshooting conflicting alerts and missing telemetry | 66 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-13) | [14 · Plan](book/PLAN.md#ch-14) |
 | 3 | [14](book/PLAN.md#ch-14) | Scripted triage with bounded inputs and audit logs | 66 | 30 | 4 | Planned | [15 · Plan](book/PLAN.md#ch-15) |
 | 3 | [15](book/PLAN.md#ch-15) | Cross-service incident timeline integration | 66 | 30 | 4 | Planned | [16 · Plan](book/PLAN.md#ch-16) |
 | 3 | [16](book/PLAN.md#ch-16) | Technical documentation and safety | 66 | 30 | 4 | Planned | [17 · Plan](book/PLAN.md#ch-17) |

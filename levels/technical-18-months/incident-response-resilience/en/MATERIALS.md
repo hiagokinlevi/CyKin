@@ -4,10 +4,10 @@
 
 **Teaching and examples:** each subject-chapter belongs to the one principal book. Plans describe intended content; only the linked manuscript contains authored lessons.
 
-**Teaching and case:** the [English manuscript](book/MANUSCRIPT.md) drafts Chapters 1–8 of 18. Its fictional Lumen Library Reservations case moves from architecture, protocols and identity to parser validation, scoped evidence, route-level controls, retention and failure discrimination. Chapters 9–18 have plans only. L4–L8 are separate teaching branches, not added main-case observations.
+**Teaching and case:** the [English manuscript](book/MANUSCRIPT.md) drafts Chapters 1–13 of 18. The fictional Lumen Library Reservations case begins with architecture, protocols, identity and evidence limits. Chapters 9–13 form a separate linked K workshop on collection, reversible containment, clock verification, ingest and conflicting alerts. Chapters 14–18 have plans only; K records are not main-case observations.
 
-**Labs and practice:** eight authored chapters contain offline Python fixtures for dependency closure, network claims, identity join limits, CSV rejection, byte integrity, route impact, expiry hypotheses and clock correction. They use literal synthetic inputs and no network or real account. A task-pause or restore decision remains a paper proposal until an authorized owner acts.
+**Labs and practice:** the thirteen authored chapters use offline fixtures for dependency closure, network and identity claims, CSV rejection, byte integrity, route impact, expiry hypotheses, clock correction, bounded collection, a reversible policy predicate, multi-source intake and alert-rule review. K9–K13 form one teaching sequence; none accesses a network, account or real tenant. Every live collection or change remains a proposal until approved.
 
-**Exercises and answers:** EX001–EX032 provide four artifacts per drafted chapter and [32 matching worked results in the same book](book/MANUSCRIPT.md#worked-results). The planned technical volume needs 18 chapters, 72 allocated exercises, substantive expansion and A4 and editorial review.
+**Exercises and answers:** EX001–EX052 provide four artifacts per drafted chapter and [52 matching worked results in the same book](book/MANUSCRIPT.md#worked-results). The planned technical volume needs 18 chapters, 72 allocated exercises, substantive expansion and A4 and editorial review.
 
-**Sources and rights:** NIST and RFC sources and Python documentation support general technical concepts; every LLR record is fictional and uses documentation-only names and addresses. Source documents retain their own rights.
+**Sources and rights:** NIST and RFC sources and Python documentation support general technical concepts; all LLR, L4–L8 and K9–K13 records are fictional. Source documents retain their own rights.

@@ -1,7 +1,7 @@
 # Incident Response and Cyber Resilience: Technical Foundations and Lab Practice
 
 - Language: English (`en`); technical course, up to 18 months; approximately 1,200 hours of planned study.
-- Editorial state: **draft**. Chapters 1–8 of 18, EX001–EX032 and their worked results are authored. Ten chapters, substantial expansion, source review, technical and accessibility review, and the 300-page A4 verification remain open.
+- Editorial state: **draft**. Chapters 1–13 of 18, EX001–EX052 and their worked results are authored. Five chapters, substantial expansion, source review, technical and accessibility review, and the 300-page A4 verification remain open.
 - Audience: technical operators learning to model services, interpret evidence and verify controls under supervision. Entry knowledge: basic networking, operating systems, scripting and permitted lab practice.
 - Author and editorial responsibility: [hiagokinlevi](https://github.com/hiagokinlevi). Original maintainer-owned teaching text is dedicated under [CC0 1.0](../../../../../LICENSE); cited standards retain their own rights.
 - Educational boundary: every system, account, log and address in the Lumen Library Reservations case is synthetic. This book grants no access or change authority for a real environment.
@@ -10,7 +10,7 @@
 
 ## How to use this draft
 
-Read chapters 1–8 in order. Each chapter is one curricular subject and begins with a technical model, then tests it against a reproducible **offline** fixture. Before reading the worked result, write the artifact requested by an exercise and explain which observation would falsify your conclusion. The remaining ten chapter positions have summaries in the [book plan](PLAN.md); those summaries are **not authored lessons**. The finished technical course targets 72 exercises, at least 50 of which must be substantive and worked in the book, plus a verified minimum of 300 A4 pages.
+Read chapters 1–13 in order. Each chapter is one curricular subject and begins with a technical model, then tests it against a reproducible **offline** fixture. Before reading the worked result, write the artifact requested by an exercise and explain which observation would falsify your conclusion. Chapters 9–13 form a separate linked K workshop; they do not add observations to the main LLR case or the L8 branch. The remaining five chapter positions have summaries in the [book plan](PLAN.md); those summaries are **not authored lessons**. The finished technical course targets 72 exercises, at least 50 of which must be substantive and worked in the book, plus a verified minimum of 300 A4 pages.
 
 The case is **Lumen Library Reservations (LLR)**, an invented reservation service. It is separate from the professional book's Cedar Training Network case. Documentation-only names and addresses follow [RFC 6761's `.test` reservation](https://www.rfc-editor.org/rfc/rfc6761.html) and [RFC 5737's TEST-NET blocks](https://www.rfc-editor.org/rfc/rfc5737.html). Do not query these names or addresses on a network; the fixtures below are sufficient. Sources support protocol and response concepts, **not** the fictional LLR observations.
 
@@ -24,9 +24,14 @@ The case is **Lumen Library Reservations (LLR)**, an invented reservation servic
 6. [Response system models and service dependencies](#ch-06) — compare route-level impact and reversible options.
 7. [Event-source mapping and log retention](#ch-07) — choose a source and prioritize time-bound requests.
 8. [Identity, host and network failure modes](#ch-08) — discriminate competing explanations with bounded clocks and sources.
-9–18. [Planned technical subjects](PLAN.md#ch-09) — collection, controlled changes, recovery and final integration; teaching remains to be written.
+9. [Host and network evidence collection methods](#ch-09) — select volatile sources and document a bounded receipt.
+10. [Containment control configuration in a lab](#ch-10) — simulate targeted, reversible denial with business-function tests.
+11. [Clock-offset and record-integrity verification](#ch-11) — compare uncertain time intervals and byte copies.
+12. [Laboratory: ingest and preserve synthetic incident records](#ch-12) — keep raw bundles, parse failures and derived views distinct.
+13. [Troubleshooting conflicting alerts and missing telemetry](#ch-13) — read rule predicates and source-coverage gaps.
+14–18. [Planned technical subjects](PLAN.md#ch-14) — scripted triage, recovery and final integration; teaching remains to be written.
 
-The worked-results appendix contains EX001–EX032, four per authored chapter. Section numbers in the manuscript are teaching sections; the course's subject index is the authoritative chapter list.
+The worked-results appendix contains EX001–EX052, four per authored chapter. Section numbers in the manuscript are teaching sections; the course's subject index is the authoritative chapter list.
 
 <a id="ch-01"></a>
 
@@ -766,12 +771,474 @@ A **negative-control variant V8** changes only F82: the IdP custodian now suppli
 
 ### Subject synthesis
 
-The packet supports several explanations, each with a different discriminator. Technical response requires source-specific, time-bounded and authorized tests; no code output, status code or calendar entry by itself assigns cause or actor. Chapter 9 is currently a **plan** for host and network evidence collection methods. Stop the required authored sequence here until that chapter is written.
+The packet supports several explanations, each with a different discriminator. Technical response requires source-specific, time-bounded and authorized tests; no code output, status code or calendar entry by itself assigns cause or actor. Chapter 9 starts a separate linked K workshop to practice evidence collection before any change proposal.
 
 <!-- cyberabc:chapter-navigation:start ch-08 -->
 ### Continue studying — chapter 08 of 18
 
-[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 plan →](PLAN.md#ch-09)
+[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-09"></a>
+
+## Chapter 9 — Host and network evidence collection methods
+
+### Learning outcomes and connection
+
+The learner will choose a collection order for host, gateway and application records, specify a narrow authority request, distinguish a network observation from an application outcome, and write a receipt for the bytes actually supplied. Chapter 8 compared failure explanations; Chapter 9 asks what evidence can test them before a volatile source disappears. Chapter 10 will use the resulting limits to evaluate a reversible containment proposal. [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) describes files, operating systems, network traffic and applications as forensic data sources from an IT perspective. Published in 2006, it is neither a current command recipe nor legal advice. The collection packet below is original, fictional training material.
+
+### 9.1 The K9–K13 workshop boundary
+
+Chapters 9–13 share **workshop K**, an isolated classroom sequence. It is separate from the main N01–N06/I01–I02/H01/A01 LLR case and from the L8 packet. K records use new identifiers; similar service names do not merge those cases. **AUTH-K** permits a trainee to inspect the literal in-memory records printed in this book and to propose a collection plan. It does not permit a query, snapshot, capture, session change or reboot in any real environment. A real collector would need a named incident decision, approved system/field/time scope, a custodian, a privacy limit, a method and an expiration.
+
+The synthetic question is: *did a reservation write complete, and what might be lost if the runner restarts?* At 12:06 UTC, the workshop provides the following claims:
+
+| Record | Producer claim | Useful question | Material limit |
+|---|---|---|---|
+| K-H1 | Runner inventory reports boot b7 at 11:58:44 and process 420 under service principal svc-book from 11:59:54. | Was this process present when the task was queued? | Snapshot time, token scope and process-to-request mapping are unknown. |
+| K-G1 | Gateway flow summary at 12:00:03 reports 840 bytes toward an API path and 120 bytes back for edge ID r-601. | Was there transport activity on this path? | Flow sizes do not show an application write, content or a database commit. |
+| K-G2 | Gateway access record at 12:00:03 reports HTTP 503 for r-601, with upstream ID u-601. | What did this gateway return? | ID mapping is a producer claim until the gateway owner validates it. |
+| K-A1 | Application sample at 12:00:04 reports u-601 as queued, not committed. | Did this sample accept a task into a queue? | Queue acceptance is not the database outcome; sample coverage is unverified. |
+| K-M1 | Calendar schedules a runner restart at 12:07. | Which source might disappear? | Scheduled is not executed; live memory lifetime is not guaranteed. |
+
+An HTTP error, a nonzero byte count and a queued task can coexist. None answers whether a correct reservation exists in the authoritative store. Ask the database custodian for an approved, bounded write receipt and the service owner for a user-outcome check. Treat the two as separate questions: a database row might exist but be unavailable to a patron, and a successful display might be stale.
+
+### 9.2 Order by volatility, value and side effects
+
+For each possible source, write five fields before proposing a tool: **decision value**, **loss window**, **owner**, **method/side effects**, and **authority state**. The host's process list, live token reference, socket state and in-memory queue are volatile, but the packet supplies no measured expiry. The gateway ring is *claimed* to retain detailed flow entries for ten minutes after event time; if its claim applies to K-G1, the calculated deadline is 12:10:03. The application sample is claimed to retain 24 hours from ingestion, but its ingestion time is not supplied. A schedule at 12:07 raises urgency for owner contact without proving a reboot will occur. A volatile host request and a timed gateway request can be sent **in parallel** under an approved incident process. “Capture everything” is neither a collection order nor a privacy-bounded scope.
+
+Different collection forms support different claims. A host status snapshot can show a process and boot identifier at collection time, not its whole lifetime. A process dump can contain secrets and alter host state; it needs a separate, more restrictive decision and method review. A flow summary can show reported endpoints, timing, volume and direction, not the application message or the principal behind it. A packet capture may contain more information, but access, storage, minimization and capture effects must be approved. An application access log might report an HTTP outcome while missing queue or database semantics. A database write audit may answer a commit question only if its producer, route coverage and transaction identifiers are validated.
+
+The proposed K-REQ-1 asks the host owner for **runner-02, process 420, boot b7**, the 11:59:50–12:00:10 UTC interval and the current 12:06 status, with source clock and collection method. The proposed K-REQ-2 asks the gateway owner for only r-601/u-601 in 12:00:00–12:00:10, original object IDs, mapping semantics, event/ingestion times and ring-retention anchor. K-REQ-3 asks the application owner for u-601 queue disposition and the database owner for a bounded, authorized commit/rollback outcome. All three requests are **pending**; AUTH-K permits only planning with these already printed rows. If an owner cannot provide a source, record who answered, when, the attempted window and the resulting uncertainty.
+
+### 9.3 A byte-level receipt on an offline packet
+
+Run the following Python 3 listing offline. The literals are newly created classroom bytes. The script hashes the exact two supplied strings and prints lengths. It does not collect host memory or traffic. The full digest is useful for comparing these two copies later only if the expected digest is kept through a trusted path; it cannot authenticate a gateway or establish a complete export. [Python's hashlib interface](https://docs.python.org/3/library/hashlib.html) is the reference for the operation, not a claim about K-G1's origin.
+
+~~~python
+from hashlib import sha256
+
+packet = {
+    "K-H1": b"boot=b7,process=420,started=11:59:54Z\n",
+    "K-G1": b"edge=r-601,upstream=u-601,to_api=840,from_api=120\n",
+}
+for object_id, raw in packet.items():
+    print(object_id, len(raw), sha256(raw).hexdigest())
+~~~
+
+In a receipt, record object ID, asserted producer, source custodian, authorized collector, approved method and scope, **collection time**, raw byte count, digest, copy identifier, access rule, parser/version and uncertainties. For this code, the producer is “exercise publisher,” the method is “literal in-memory copy,” and production origin is **not claimed**. Do not silently write “gateway export” as the producer. A derived table or screenshot needs its own object name and relationship to the raw input. If an approved live collection later used a different line ending, a digest difference could be caused by transformation; keep both bytes and explain the path rather than call it hostile alteration.
+
+### 9.4 Review a collection proposal
+
+Consider the tempting action “image runner-02 before the 12:07 restart and search all identity sessions.” It exceeds AUTH-K and may contain unrelated personal data, disrupt the runner, and consume time that could be used to preserve a narrow gateway record. Replace it with a two-track paper request: ask the host owner whether an approved, minimally invasive volatile-state capture is possible and ask the gateway custodian to preserve the stated short-window object under incident-lead approval. Ask the service owner whether delaying the **scheduled** restart is tolerable; a calendar entry alone is no permission to intervene. The collector must log side effects and keep a pre-change baseline. If the system is already down, a proposed capture method may differ from a live production method, but the authority and provenance questions remain.
+
+Two negative controls keep the reasoning honest. First, compare a known in-range gateway control transaction with r-601 under the same source path; if it is missing, a negative r-601 result is weak. Second, ask whether boot b7 is present in a before/after inventory from the same host; a changed label in a different host is not evidence of a restart of runner-02. A control has to be documented and permitted; an analyst-created row in a spreadsheet is not a producer receipt. This is the boundary between a useful collection plan and an attractive narrative.
+
+### Common errors and limits
+
+- Treating gateway bytes as proof that the API accepted or committed a reservation.
+- Treating a scheduled reboot or claimed retention duration as an observed event or guaranteed deadline.
+- Hashing a derived report while labeling the digest as the raw source object's digest.
+- Prioritizing every volatile source without considering its decision value, invasiveness and owner.
+- Expanding a proposed read to a live memory image or all-user identity export without approval.
+
+### Exercises — subject 9
+
+**EX033 — Collection matrix.** Objective: choose evidence sources by decision. Using K-H1, K-G1/G2, K-A1 and the missing database outcome, write a four-row matrix with decision question, producer, owner, loss risk, approved method proposal and one inference each source cannot support. Evidence: Markdown matrix. Rubric: 2 = source limits and missing commit explicit; 1 = sources listed without loss/authority; 0 = claims the flow proves a commit.
+
+**EX034 — Priority and authorization.** Objective: prepare a bounded 12:06 handoff. State which host and gateway owners to contact first, how the calculated 12:10:03 gateway deadline depends on an unverified retention claim, and why the host source has an unknown rather than infinite lifetime. Draft K-REQ-1 and K-REQ-2 with scope and approval status. Evidence: two requests and an order rationale. Rubric: 2 = parallel urgency, privacy and pending authority; 1 = order without scope; 0 = orders a live image under AUTH-K.
+
+**EX035 — Byte receipt.** Objective: reproduce §9.3. Run the literal program, record both exact output lines, and write a classroom receipt for K-G1 with origin claim, count, digest role, method, access and limits. Change one byte in a separate copy and explain what a mismatch proves. Evidence: transcript and two version labels. Rubric: 2 = exact outputs and bounded integrity claim; 1 = hashes without provenance; 0 = calls the packet an authenticated production capture.
+
+**EX036 — Network-versus-outcome review.** Objective: reject an overclaim. A peer says “840 bytes reached the API, so the reservation was committed and no host evidence matters.” Write a corrected claim ladder from K-G1 through K-A1 to the missing database receipt; add one positive and one negative source-coverage control and an owner-approved next request. Evidence: short review memo. Rubric: 2 = transport, queue and commit separated; 1 = uncertainty without discriminator; 0 = retains the commit claim.
+
+### Subject synthesis
+
+Collection starts with a decision and a permitted scope. K9 supplies two byte strings and four producer claims, not a certified incident package. The result is a collection plan and classroom receipt; the reservation outcome remains unknown. Chapter 10 will ask which reversible control could be considered **if** a harmful action is confirmed and authority is granted.
+
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue studying — chapter 09 of 18
+
+[← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-10"></a>
+
+## Chapter 10 — Containment control configuration in a lab
+
+### Learning outcomes and connection
+
+The learner will define a temporary rule's exact subject, action and expiration, simulate its security effect, test a legitimate workflow and rollback, and document evidence needed before any real change. Chapter 9 established an incomplete record: K-G1 traffic and K-A1 queue acceptance do not prove a commit, actor or compromise. Chapter 10 therefore uses a **separate K10 sandbox proposal**, not a response order for the K9 packet. Chapter 11 will verify clocks and record integrity before stronger temporal claims. [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) frames response choices within risk management; the rule, test accounts and expected results here are original teaching artifacts.
+
+### 10.1 Specify a control contract before a command
+
+The fictional sandbox holds four requests. **S10-1** uses session sess-K9 for a write to R42 and is labeled *suspect for the exercise*, not proven malicious. **S10-2** is the authorized worker's sess-W1 write to R40. **S10-3** is a patron read of room availability under sess-P1. **S10-4** is a read by sess-K9. All four use an invented shared service architecture; their principal labels are not human identities. The response question is whether a rule can stop S10-1 without stopping S10-2 or S10-3. A session-specific write deny is a narrower candidate than revoking the entire svc-book principal. It also has a limitation: it does not stop sess-K9 reading or using a different session.
+
+A control contract states: **trigger evidence** (source-linked harmful write, scope and continuing risk); **decision authority** (incident lead, identity/application owner and service owner as applicable); **target** (one session ID plus write route, after namespace validation); **lifetime** (short expiry and review time); **operator**; **expected security effect**; **expected service effect**; **baseline**; **positive and negative tests**; **rollback**; and **reopen condition**. A rule identifier and change-log version make an action inspectable. If the service uses independent worker paths, the negative test must include them. A green read-only page does not prove that writes still work. If session IDs can be refreshed or aliased, an identity custodian must validate the scope before the rule is proposed.
+
+In the **AUTH-K10** classroom card, the trainee may run the pure Python simulation below and draft a change ticket. Approval to change a real identity service, gateway, API or host is **pending**. A proposed denial can preserve evidence less well than a read-only observation if it terminates a session or rotates logs, so the incident lead should consider capture needs and time pressure. Conversely, delaying a verified harmful action has a cost. The contract makes that tradeoff visible rather than hiding it inside a command.
+
+### 10.2 Offline before/after/rollback simulation
+
+The listing models only route admission. It has no network access, no credentials and no database. The baseline allows all four requests; the scoped rule rejects just one session on the write route; rollback restores the baseline. The word “allowed” below means **this function's Boolean**, not that an HTTP request completed, a reservation was committed or a real policy engine behaved the same way.
+
+~~~python
+requests = [
+    ("S10-1", "sess-K9", "write"),
+    ("S10-2", "sess-W1", "write"),
+    ("S10-3", "sess-P1", "read"),
+    ("S10-4", "sess-K9", "read"),
+]
+
+def admitted(session, route, mode):
+    return not (mode == "scoped" and session == "sess-K9" and route == "write")
+
+for mode in ("baseline", "scoped", "rolled_back"):
+    active = "baseline" if mode == "rolled_back" else mode
+    results = [f"{label}={admitted(session, route, active)}"
+               for label, session, route in requests]
+    print(mode + ": " + " ".join(results))
+~~~
+
+The expected transcript has S10-1 false **only** under scoped; S10-2, S10-3 and S10-4 remain true. The rollback line matches baseline exactly. That is a **unit test of a toy predicate**. It does not establish that the gateway enforces the same route, that all client routes are enumerated, or that a token cannot change. A stronger isolated integration test would present known positive and negative transactions at every relevant route, capture the actual policy version and decision logs, and compare authoritative application/database outcomes. Production testing requires separate authority and safety constraints.
+
+### 10.3 Security effectiveness and business acceptance
+
+A useful test matrix has four columns: target route, expected policy decision, observed application result and owner-approved business result. For S10-1, the desired policy decision is deny; the system should show an unambiguous denial on the intended route and no subsequent R42 write in a **bounded** authoritative data check. For S10-2, the worker write should still complete and reconcile correctly. For S10-3, the patron should still read valid availability. For S10-4, the read remains allowed under this particular rule; that limitation must be documented, not concealed. If the harmful activity can move to another session, the plan needs broader detection and another decision, not an unsupported declaration of containment.
+
+Compare an alternative: revoking the shared svc-book principal. In the simplified dependency graph from Chapter 1, that may stop both the suspect task and the approved worker. The wider control might still be warranted under stronger evidence and risk, but the service owner must understand the cost. A temporary gateway rule might affect only one path while the worker uses a different route; conversely a route-level rule could miss direct API access. Scope is a property of the **actual enforcement points and observed tests**, not of a label such as “targeted.”
+
+The ticket should retain a pre-change baseline, who approved the exact version, when it was activated, its expiration, the operator and policy artifact digest, the test receipts and a rollback owner. A rollback is not complete because someone removed a rule: rerun the legitimate R40 write and patron read, check for queued retry effects, and retain the before/after state. If the rule never takes effect, the incident lead should reopen the hypothesis rather than claim success. If it blocks a legitimate workflow, the owner may need to roll back or replace it under the agreed emergency criteria. Chapter 6's route model helps predict which negative tests matter; Chapter 9's provenance rules say which observations can support the decision.
+
+### Common errors and limits
+
+- Issuing a real change because the workshop labels one session “suspect.”
+- Calling a Boolean unit test proof of production containment or a successful database write.
+- Testing only the targeted route and ignoring dependent worker and patron paths.
+- Treating rollback as deleting the policy while leaving queued/retry effects unmeasured.
+- Failing to set expiry, owner, policy version or a source-linked re-open condition.
+
+### Exercises — subject 10
+
+**EX037 — Control contract.** Objective: make an action reviewable. Draft the eleven contract fields in §10.1 for the K10 rule. Explicitly leave real approval pending and distinguish S10-1 from K9 observations. Evidence: versioned change ticket. Rubric: 2 = scope, authority, expiry, baseline, tests and rollback with a concrete trigger; 1 = target and test but no owner/expiry; 0 = authorizes a real change from AUTH-K10.
+
+**EX038 — Simulation and counterfactual.** Objective: test the predicate. Run §10.2 and record all three exact output lines. In a *copy*, change S10-4 from read to write and predict its scoped result without changing the original transcript. Explain what a policy-engine integration test would still need. Evidence: two transcripts and limit statement. Rubric: 2 = exact booleans and variant separation; 1 = correct original only; 0 = describes the toy result as deployment evidence.
+
+**EX039 — Positive/negative acceptance matrix.** Objective: compare security effect with service risk. Build four rows for S10-1–S10-4 naming expected decision, authoritative outcome to check, custodian and failure interpretation. Add the approved worker's retry/queue state after rollback. Evidence: matrix. Rubric: 2 = R42 stop and R40/patron continuity plus route limitation; 1 = denial only; 0 = equates HTTP status with database correctness.
+
+**EX040 — Broad-control review.** Objective: critique an alternative. A peer proposes revoking svc-book for all routes and declares the incident over because the portal still loads. Use Chapter 1's graph and K10's tests to explain at least three untested effects, one condition under which broader control might be justified, and a safer next decision. Evidence: decision note. Rubric: 2 = graph, route coverage and owner-led tradeoff; 1 = generic “too broad”; 0 = accepts static portal load as full recovery.
+
+### Subject synthesis
+
+An isolated predicate can make a control's intended scope explicit, but only a source-linked trigger, authorized deployment and service-aware tests can support a real response decision. K10 leaves all real approvals and executions pending. Chapter 11 will examine whether cross-source times and retained bytes could reliably order the claims that would feed such a decision.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue studying — chapter 10 of 18
+
+[← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-11"></a>
+
+## Chapter 11 — Clock-offset and record-integrity verification
+
+### Learning outcomes and connection
+
+The learner will normalize three source-reported timestamps to UTC, carry an uncertainty interval instead of a falsely precise order, compare raw and altered record bytes, and explain when a source claim can enter a timeline. Chapter 10 required source-linked evidence before a control. Chapter 11 tests whether that evidence's time and content survived collection and transformation. Chapter 12 will package the records with a manifest and parser report. [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339) supplies the timestamp notation used here; [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) offers older, high-level forensic source guidance, not this workshop's clock values or a legal custody rule.
+
+### 11.1 Keep four times and a measurement
+
+For one record, distinguish **event time** asserted by the producer, **ingestion time** when a receiving pipeline stored it, **collection time** when a responder obtained a copy, and **analysis time** when an analyst ran a query or transformation. A later query cannot retroactively make an earlier event time trustworthy. A receiver can also ingest a late event after the event-time retention window used by a different system. A timeline should preserve all supplied times, their time-zone offsets and the source object. Converting a string to UTC changes its representation, not the producer's clock accuracy.
+
+A clock-offset measurement answers a narrower question: at a measured moment, how far ahead or behind was one producer relative to a trusted reference? The classroom formula is **estimated UTC = parsed source time in UTC − measured source offset**. A positive offset means the producer clock was ahead; a negative offset means it was behind. Carry measurement time, uncertainty, drift assumptions and the method used to estimate offset. If a host is already offline and no direct measurement exists, do not invent a correction from neighboring events. For two event intervals A and B, a strict A-before-B conclusion requires A's *latest plausible* time to be earlier than B's *earliest plausible* time, under validated offsets and coverage. Matching corrected seconds alone do not satisfy that test.
+
+Workshop **K11** is an offline timing variant connected to K9–K10's methodological questions. It is not an additional observation in the main LLR case. Three producers report:
+
+| ID | Raw timestamp | Measured source offset | Stated uncertainty | Claim type |
+|---|---|---:|---:|---|
+| K11-I | 2026-10-11T13:00:02+01:00 | +3 s | ±1 s | IdP session check. |
+| K11-E | 2026-10-11T12:00:03+00:00 | +2 s | ±1 s | Edge access status. |
+| K11-H | 2026-10-11T08:00:01-04:00 | −1 s | ±2 s | Host process-status line. |
+
+The offset figures are supplied classroom measurements, not verified device properties. Their measurement times are omitted, so even the stated intervals are **exercise assumptions**, not production-grade clock confidence. The three text fields are not asserted to share a request or session key. A source-specific ID mapping and completeness check remain necessary.
+
+### 11.2 Reproduce a corrected timeline
+
+This Python 3 listing parses the explicit offsets, converts each raw value to UTC and subtracts the supplied source offset. It prints a time estimate and the exercise uncertainty. It does not test whether the offset was measured correctly. Run it offline or calculate it by hand. Python's [datetime documentation](https://docs.python.org/3/library/datetime.html) defines the parsing and timezone operations used.
+
+~~~python
+from datetime import datetime, timedelta, timezone
+
+rows = [
+    ("K11-I", "2026-10-11T13:00:02+01:00", 3, 1),
+    ("K11-E", "2026-10-11T12:00:03+00:00", 2, 1),
+    ("K11-H", "2026-10-11T08:00:01-04:00", -1, 2),
+]
+for name, raw, offset_seconds, uncertainty_seconds in rows:
+    parsed_utc = datetime.fromisoformat(raw).astimezone(timezone.utc)
+    estimate = parsed_utc - timedelta(seconds=offset_seconds)
+    print(name, estimate.strftime("%H:%M:%S"),
+          "+/-", str(uncertainty_seconds) + "s")
+~~~
+
+The estimates are **K11-I 11:59:59 ±1 s**, **K11-E 12:00:01 ±1 s**, and **K11-H 12:00:02 ±2 s**. On the stated assumptions, K11-I spans 11:59:58–12:00:00, K11-E spans 12:00:00–12:00:02, and K11-H spans 12:00:00–12:00:04. Their ranges touch or overlap; do not claim a strict causal sequence. Even if one pair had nonoverlapping intervals, time order alone would not establish a common transaction or actor. A separate request/session mapping would still be required.
+
+### 11.3 Byte integrity is not source truth
+
+Suppose K11-E was supplied as the literal byte line below. Store the exact bytes and any transformed display separately. The program compares its digest with an identical copy and with a variant that changes the status from 503 to 200. This is a local **change-detection** demonstration; it cannot tell whether 503 was the true gateway result before collection. A digest is meaningful only with a trusted expected value, versioned object identity and provenance.
+
+~~~python
+from hashlib import sha256
+
+raw = b"K11-E,2026-10-11T12:00:03+00:00,status=503\n"
+copy = bytes(raw)
+variant = raw.replace(b"503", b"200", 1)
+print("copy_equal:", sha256(raw).digest() == sha256(copy).digest())
+print("variant_equal:", sha256(raw).digest() == sha256(variant).digest())
+~~~
+
+Expected: **copy_equal: True** and **variant_equal: False**. Keep the original and variant objects with separate identifiers. If a derived UTC timeline normalizes time zones, it will have different bytes; that is an expected transformation, not evidence of tampering. A real receipt should also record original source name, authorized collector, method, collection time, copy count, tool version, access and chain of custody appropriate to the organization. A complete integrity story follows a particular object through all transformations; it does not merely paste one hash next to a chart.
+
+### 11.4 A bounded timeline review
+
+A defensible K11 note would read: “Under supplied, unvalidated offset estimates, three records occupy overlapping UTC intervals near noon. Their raw values have different time-zone offsets. The workshop copy of K11-E matches its local raw bytes; a deliberately altered status copy does not. Event order, source authenticity, same-request mapping and production action status remain unverified.” It then asks the source custodians for clock measurements with measurement times, source object IDs and a bounded producer mapping. If an owner reports that its clock drifted rapidly, widen or withdraw the interval rather than force a preferred order.
+
+An analyst may create a version 2 timeline when better measurements arrive. Version 2 should retain the earlier estimate, state what changed and rerun the overlap test. An irreversible containment decision should not depend on a one-second precedence claim whose uncertainty crosses both events. The next chapter turns the raw/derived distinction into a complete intake manifest.
+
+### Common errors and limits
+
+- Using a timestamp parser as evidence that a source clock was correct.
+- Sorting corrected point estimates while ignoring overlapping uncertainty intervals.
+- Joining rows because their times are close or their principal labels match.
+- Calling a changed digest “attacker tampering” when the analyst made the variant.
+- Hashing only a normalized display while claiming to verify raw source bytes.
+
+### Exercises — subject 11
+
+**EX041 — Four-time worksheet.** Objective: retain chronology provenance. For K11-I/E/H, list raw event time, parsed UTC, corrected estimate, uncertainty and missing ingestion/collection/analysis times. Explain which fields require custodian confirmation. Evidence: three-row Markdown table. Rubric: 2 = all four time roles and missing measurement context; 1 = correct conversions only; 0 = asserts verified source clocks.
+
+**EX042 — Interval proof.** Objective: assess a proposed event order. Run §11.2, give the three exact output lines and interval endpoints, then test the assertion “IdP necessarily preceded edge and host.” State one extra fact required to connect the records causally. Evidence: calculation and rebuttal. Rubric: 2 = correct intervals and no strict order at touching boundaries; 1 = point times only; 0 = claims cause from sorting.
+
+**EX043 — Integrity variant.** Objective: reproduce §11.3. Record both output lines and two object receipts for raw and variant, with the transformation and digest role. State why matching the local copy would not authenticate the producer. Evidence: versioned receipt pair. Rubric: 2 = exact booleans and source limitation; 1 = booleans without provenance; 0 = treats the status edit as observed hostile behavior.
+
+**EX044 — Corrected handoff.** Objective: communicate uncertainty. Write a 130–180-word version 1 note for a service owner with the bounded timeline, overlapping ranges, missing join, missing authority and next permitted request. Add a version 2 sentence for a hypothetical new offset measurement without rewriting the raw log. Evidence: two-version note. Rubric: 2 = clear uncertainty, owner and version relation; 1 = vague uncertainty; 0 = declares an actor or production intervention.
+
+### Subject synthesis
+
+Time conversion and byte comparison are repeatable operations, but they answer only precisely stated questions. K11 does not certify three producer clocks or create a transaction join. Chapter 12 will preserve the raw objects, their validation results and the corrected view in a single inspectable package.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue studying — chapter 11 of 18
+
+[← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-12"></a>
+
+## Chapter 12 — Laboratory: ingest and preserve synthetic incident records
+
+### Learning outcomes and connection
+
+The learner will ingest a small multi-source bundle without overwriting originals, reject malformed and duplicate rows visibly, create a manifest and distinguish a normalized view from a source-authenticated conclusion. Chapter 11 separated raw time, correction and copy integrity. Chapter 12 combines that discipline with Chapter 4's parser contract and Chapter 9's scope and custody fields. Chapter 13 will use the accepted records—and the rejected-row gap—to explain two conflicting alerts. [NIST SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final) addresses log-management processes at a high level; the following schema, parser and case are original workshop designs, not instructions attributed to that 2006 guide.
+
+### 12.1 Freeze the intake contract
+
+Workshop **K12** supplies three literal CSV strings called idp, host and app. They are synthetic bytes in this book. **AUTH-K12** allows offline inspection only; no tenant query, production log export or retention change is authorized. For each source, the manifest should record producer *claim*, supplied-by, collection time, object ID, byte count, digest, encoding, newline convention, access scope, time basis and parser version. In this classroom exercise, “supplied by” is the exercise publisher, and actual producer authenticity is unknown. Record that gap instead of inventing a custodian signature.
+
+Each CSV uses columns **event_id, event_utc, principal, session, request, kind**. An event ID need only be unique **within its source bundle**. The event time must parse as a timezone-aware UTC value ending in Z for this particular contract. IdP rows require a session; app rows require a request; host rows need neither. Principal and kind must be nonblank for all. A blank session in an app row is permitted by schema but weakens session correlation. One row can be structurally valid and still be irrelevant, false or misinterpreted. Producers may reuse an event ID in different namespaces, so the accepted key is (source, event_id), not event_id alone.
+
+The supplied packet says IdP I1 accepted session s-7 for svc-book at 11:59:59; IdP I2 denied **different** session s-8 for the same principal at 12:00:01; host H1 reports runner boot b7 at 12:00:02; app A1 reports request r-601 with session s-7 as **queued** at 12:00:03. “Queued” is neither DB commit nor patron-visible correctness. App A2 has a malformed time; a later A1 is a duplicate ID within the app bundle. Those bad rows must remain visible as rejection evidence, not quietly disappear. The app sample may also be incomplete even if all its rows parse.
+
+### 12.2 Offline parser and rejection report
+
+Run this self-contained Python 3 program on the literal strings. It does no file or network I/O. It preserves each raw string in the bundle dictionary while deriving accepted keys and explicit rejection tuples. It is deliberately small: a production parser would also need tested encoding, quoted-newline, size, header-version and export-provenance behavior. [Python's CSV documentation](https://docs.python.org/3/library/csv.html) describes the reader used; it does not authenticate any record.
+
+~~~python
+import csv
+import io
+from datetime import datetime
+
+bundle = {
+    "idp": """event_id,event_utc,principal,session,request,kind
+I1,2026-10-11T11:59:59Z,svc-book,s-7,,success
+I2,2026-10-11T12:00:01Z,svc-book,s-8,,denied
+""",
+    "host": """event_id,event_utc,principal,session,request,kind
+H1,2026-10-11T12:00:02Z,svc-book,,,boot_b7
+""",
+    "app": """event_id,event_utc,principal,session,request,kind
+A1,2026-10-11T12:00:03Z,svc-book,s-7,r-601,queued
+A2,not-a-time,svc-book,s-9,r-602,queued
+A1,2026-10-11T12:00:05Z,svc-book,s-9,r-603,queued
+""",
+}
+header = ["event_id", "event_utc", "principal", "session", "request", "kind"]
+accepted, rejected = [], []
+for source, raw in bundle.items():
+    reader = csv.DictReader(io.StringIO(raw))
+    if reader.fieldnames != header:
+        raise ValueError("unexpected header for " + source)
+    seen = set()
+    for line, row in enumerate(reader, start=2):
+        if set(row) != set(header) or any(v is None for v in row.values()):
+            rejected.append((source, line, "columns"))
+            continue
+        if not row["event_id"] or not row["principal"] or not row["kind"]:
+            rejected.append((source, line, "missing_core"))
+            continue
+        if source == "idp" and not row["session"]:
+            rejected.append((source, line, "missing_session"))
+            continue
+        if source == "app" and not row["request"]:
+            rejected.append((source, line, "missing_request"))
+            continue
+        if row["event_id"] in seen:
+            rejected.append((source, line, "duplicate_id"))
+            continue
+        try:
+            if not row["event_utc"].endswith("Z"):
+                raise ValueError("not UTC Z")
+            datetime.fromisoformat(row["event_utc"].replace("Z", "+00:00"))
+        except ValueError:
+            rejected.append((source, line, "bad_time"))
+            continue
+        seen.add(row["event_id"])
+        accepted.append(source + ":" + row["event_id"])
+print("accepted:", accepted)
+print("rejected:", rejected)
+~~~
+
+The expected accepted list is **idp:I1, idp:I2, host:H1, app:A1**. The expected rejections are **app line 3 bad_time** and **app line 4 duplicate_id**. Input line numbers are positions in the supplied strings. The script does not overwrite those strings, yet in a real intake process merely keeping a Python variable is not a durable original or a custody record. A controlled original copy, immutable/versioned storage appropriate to the environment and access logging would need an approved design.
+
+### 12.3 Manifest, normalized view and query boundary
+
+Construct a three-row manifest: **K12-idp-raw**, **K12-host-raw**, **K12-app-raw**. Each row should name the exact supplied bytes, claimed producer, exercise publisher, AUTH-K12, UTF-8 text, LF line endings, in-memory method, byte count, digest and copy/access status. Add a fourth row for **K12-derived-v1**, linked to all three raw object IDs and a code/version identifier; record accepted/rejected counts and creation time. The raw app object contains **three** data rows even though the derived view accepts only one. A report that lists just one app row without the rejection count hides an important source-quality problem.
+
+A normalized event table can retain source name, raw line, original event time, parsed UTC, principal, session, request and kind. It should **not** replace raw producer time with a Chapter 11 correction: K11 is a separate timing variant, and K12 has no measured offsets. No app row proves a database write. Literal s-7 matches between I1 and A1, but a trustworthy cross-producer join requires both custodians to validate the session namespace, export provenance and source coverage. A parser's acceptance answers “does this row satisfy this schema?” rather than “did the stated event occur?” If A2's malformed row is later corrected by its source custodian, create K12-derived-v2 and preserve the v1 rejection, reason and corrected raw object separately.
+
+Design a coverage test before using missing r-602 as evidence. Ask the app owner for a known control event in the relevant route/window, a query-run time, ingestion lag, filters, producer version, dropped-event counters and a statement about which writes emit records. If the known control is absent, the negative r-602 result is weak. If present, the interval/path confidence improves but does not become universal completeness. Do not synthesize a “fix” for A2's time to make it fit a desired story.
+
+### 12.4 Reviewer walkthrough and failure modes
+
+At review, one learner plays collector, another reviewer. The collector presents the three immutable classroom strings, receipt fields, parser version, exact output, rejected rows and derived view. The reviewer asks whether the app A1 queue status is mistaken for a commit, whether I2 denial is improperly joined to A1, and whether the original objects can be distinguished from a re-export. A strong submission can answer “unknown” with the source needed to resolve it. It identifies that line 4 repeats A1 **within app**, while I1 and H1 are allowed as source-specific IDs. It also states that a future reader must know which row IDs belong to which version.
+
+If an intake tool crashes after the first bad row, later records may be lost. If it silently coerces a time, the later alert rules may invent order. If it deduplicates only on event_id globally, it may drop legitimate rows from another producer. If it deduplicates on the entire normalized row, it might keep two conflicting rows with the same source event ID. Review the failure policy against the decision, not merely the code style. Chapter 13 treats the rejection report and missing-telemetry possibilities as first-class evidence limits.
+
+### Common errors and limits
+
+- Calling accepted rows an authenticated source or complete incident record.
+- Failing to version and retain the raw bundle and the rejection report.
+- Using a global event-ID namespace across unrelated producers.
+- Treating queue acceptance as a reservation commit.
+- Filling a malformed time by guesswork or importing K11's offsets into K12.
+
+### Exercises — subject 12
+
+**EX045 — Intake manifest.** Objective: make originals reviewable. Draft the three raw-object manifest rows plus K12-derived-v1, including source claim, supplier, authority, method, encoding, byte count/digest field, version and access rule. Mark facts not supplied as unknown. Evidence: four-row manifest. Rubric: 2 = raw/derived separation and honest provenance; 1 = object names but no scope/version; 0 = claims authenticated production export.
+
+**EX046 — Parser transcript.** Objective: reproduce §12.2. Run the code, record the two exact output lines and explain why app line 3 and line 4 are rejected in that order. In a separate variant, change the duplicate A1 to A3 and predict accepted keys without modifying the original. Evidence: original/variant transcripts. Rubric: 2 = exact keys/reasons and variant separation; 1 = counts only; 0 = drops rejected rows.
+
+**EX047 — Join and outcome boundary.** Objective: evaluate three claims: “I1 and A1 are definitely one session,” “I2 blocked A1,” and “r-601 committed.” For each, state supplied literal evidence, missing producer semantics and a bounded owner-approved request. Evidence: claim table. Rubric: 2 = literal s-7 versus validated join, s-8 distinction and queued-versus-commit limit; 1 = uncertainty without owner; 0 = declares a confirmed DB commit.
+
+**EX048 — Coverage design.** Objective: make an absence test falsifiable. Propose an in-range positive control, an out-of-range negative control and a parser-rejection counter for the app source. Explain what a missing r-602 row can and cannot mean when A2 is rejected for bad time. Evidence: coverage card and failure interpretation. Rubric: 2 = source receipt, interval/path and rejection effect; 1 = only positive control; 0 = treats missing accepted row as proof of no request.
+
+### Subject synthesis
+
+K12 produces four accepted and two rejected source rows while retaining three raw objects and one derived view. It does not authenticate the producer, order the events causally or prove a reservation commit. Chapter 13 uses that precise boundary to read two apparently contradictory alerts.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue studying — chapter 12 of 18
+
+[← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-13"></a>
+
+## Chapter 13 — Troubleshooting conflicting alerts and missing telemetry
+
+### Learning outcomes and connection
+
+The learner will reconstruct two alert predicates from the K12 accepted records, identify where their claims exceed their inputs, treat missing telemetry as a coverage question, and write a versioned escalation that does not choose an actor prematurely. Chapter 12 produced four accepted and two rejected rows; Chapter 13 asks what a detection rule may safely say about them. Chapter 14 will automate part of this triage while retaining an auditable exception path. [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) describes incident response as part of risk management, and [NIST SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final) discusses log management at a high level. Neither publication validates the invented K13 alerts or prescribes this classroom's rules.
+
+### 13.1 Translate prose back into predicates
+
+The synthetic monitor generates **AL13-A: “svc-book reached the protected reservation service”** because accepted app A1 has principal svc-book, session s-7, request r-601 and kind queued. Another monitor generates **AL13-B: “svc-book was blocked”** because accepted idp I2 has the same principal label, a **different session s-8**, and kind denied. The dramatic wording suggests disagreement. The actual predicates describe different events. AL13-A at most reports that a supplied app row says a task was **queued**. AL13-B at most reports one IdP denial for s-8. Both can be true; neither establishes a database commit, a universal block, a human actor or compromise.
+
+Before resolving an alert, collect its rule version, query/filter interval, producer and object IDs, matching row IDs, join keys, clock basis, ingestion lag and known exclusions. Ask which data source could falsify the rule's conclusion. A rule that groups only by principal may merge many sessions. A rule that says “blocked” from one denied session may hide simultaneous success in another session. A rule that says “reached” from an HTTP 202 or queued event may overstate the business outcome. A good detector makes its scope visible: “A1 reports an accepted queue entry for r-601 under a claimed s-7 field,” not “the attacker reserved a room.”
+
+The **K13 alert packet** is derived from K12; it is not an extra main-case release. K12's I1 reports s-7 success and I2 reports s-8 denial. Even the apparent I1–A1 s-7 link needs producer-validated namespace and completeness. The app A2 row for r-602 failed time validation and did not enter the accepted view. An alert query over only accepted rows could therefore report “no r-602 event” despite the raw object containing a structurally unusable r-602 line. The rejection report is part of the evidence for a telemetry-quality concern, not evidence that the request occurred as stated.
+
+### 13.2 An offline predicate check
+
+The code below models the two alert triggers and one proposed inference. It uses literal already accepted K12 fields. It does not connect to a SIEM or decide whether any event is authentic. Notice that the labels are chosen to describe what the Boolean actually checks. Run it with Python 3 or reason through the expressions by hand.
+
+~~~python
+idp = [
+    {"id": "I1", "principal": "svc-book", "session": "s-7", "kind": "success"},
+    {"id": "I2", "principal": "svc-book", "session": "s-8", "kind": "denied"},
+]
+app = {"id": "A1", "principal": "svc-book",
+       "session": "s-7", "request": "r-601", "kind": "queued"}
+print("app_queue_claim:", app["kind"] == "queued")
+print("idp_denial_claim:", any(row["kind"] == "denied" for row in idp))
+print("denial_matches_app_session:",
+      any(row["kind"] == "denied" and row["session"] == app["session"]
+          for row in idp))
+print("db_commit_in_supplied_rows:", False)
+~~~
+
+The third line is **False** because the denied I2 session is s-8, while A1 states s-7. This is a literal string comparison, not a validated cross-producer join. The fourth line is **False** because no database commit record is supplied; it is *not* evidence that the database did not commit. The wording “in supplied rows” matters. Change I2's session to s-7 in a **separate variant** and the third Boolean changes; that would make the alerts concern the same literal session label, but a source-mapping and timing review would still be needed before asserting one transaction or cause.
+
+### 13.3 Diagnose disagreement with a coverage contract
+
+Treat detection as a pipeline: **producer emission → transport → ingestion → parsing → indexing → rule query → alert rendering**. A missing alert can result from failure or filtering at any stage, or from no event. An extra alert can result from duplicate ingestion, broad joins, stale rule state or a legitimate event whose meaning was overinterpreted. For each stage, ask for a permitted observable: producer counters and schema version; transport delivery/error counts; ingestion lag and dropped-event counters; parser accepted/rejected counts; index freshness; query filters and access permissions; rule revision and matched row IDs. A dashboard's green status is useful only for the path and interval it actually tests.
+
+For K12 app data, the intake report says three raw app rows, one accepted and two rejected. That immediately limits any alert over accepted app rows. A source owner could provide a **known, in-range control event** for the same app route that should appear under the rule's filter. If absent, a negative result for r-602 is especially weak. If present, confidence increases for that route and interval, but does not certify all routes or repair A2's malformed time. An out-of-range control should **not** appear in the narrow query; if it does, the filter is suspect. The control's producer receipt must be independent of the analyst's spreadsheet. These are proposed tests under owner approval, not actions AUTH-K12 permits on real telemetry.
+
+Use three-valued language for a decision: **supported within this packet**, **contradicted within this packet**, or **unknown because the relevant source/coverage is missing**. “No confirmed database commit record in supplied rows” is supported. “The database did not commit” is unknown. “The same IdP session was both denied and queued” is contradicted by the literal IDs s-8 and s-7, but producer namespace validation remains open. This structure keeps a learner from equating missing telemetry with a negative finding.
+
+### 13.4 A versioned escalation
+
+A defensible version 1 note at the 12:06 workshop review would state: “AL13-A was triggered by the supplied app A1 queued row under s-7; AL13-B by the supplied IdP I2 denied row under s-8. The principal labels match, but the session fields differ. K12's app parser rejected two of three app rows, including r-602's malformed time. No database commit receipt or verified cross-source session mapping was supplied. The discrepancy may reflect ordinary parallel sessions, incomplete telemetry or a rule that overstates its predicate. The incident lead should request owner-approved session namespace definitions, app queue-to-commit receipts and source-health counters for the bounded window. A principal-wide revocation or announcement of compromise is not supported by this packet.” This is a classroom example, not a real incident instruction.
+
+If a validated producer mapping later proves A1 and I1 belong to the same s-7 namespace, version 2 can strengthen the **session correlation** while leaving the database outcome unknown. If a corrected app export validates an r-602 row, version 2 should add a new raw-object receipt, parser result and changed alert evaluation; it must not erase K12 v1's rejection. If a source owner reports missing ingest coverage, the correct next step is a time-bounded preservation and coverage investigation, not a guessed attacker story. A response owner may still take precautionary action based on broader evidence and risk, but that decision must be recorded separately from what these rows alone prove.
+
+### Common errors and limits
+
+- Treating alert titles as data rather than reading their rule predicates and matched records.
+- Joining two sessions by principal label or nearby time.
+- Calling an app queue record a database commit or a patron-visible success.
+- Equating a missing accepted row with no producer event while the raw rejection report exists.
+- Treating a green ingestion dashboard as proof that the precise route, filter and time window were covered.
+
+### Exercises — subject 13
+
+**EX049 — Alert predicate reconstruction.** Objective: reduce AL13-A/B to testable claims. For each alert, state exact matched source row, predicate, wording that is too broad, and a corrected title. Include the relationship between s-7 and s-8. Evidence: two-row table. Rubric: 2 = different sessions and queue/denial scopes explicit; 1 = notes conflict without predicate; 0 = declares an identified attacker.
+
+**EX050 — Predicate transcript and variant.** Objective: reproduce §13.2. Record four exact output lines, then change only I2's session to s-7 in a copy and state which line changes. Explain why the fourth line is absence of a supplied record rather than proof of no commit. Evidence: original and variant transcript. Rubric: 2 = exact booleans and bounded inference; 1 = variant correct but overstates join; 0 = calls the variant a new main-case finding.
+
+**EX051 — Sensor-health experiment.** Objective: design a discriminating telemetry check. For the app source and a 12:00:00–12:00:10 query, specify one producer-backed in-range control, one out-of-range control, the three-raw/one-accepted/two-rejected accounting, ingestion lag and rule version. Describe how each control failure changes confidence in “no r-602.” Evidence: coverage card. Rubric: 2 = stages, receipts and both control outcomes; 1 = only a generic health check; 0 = treats missing accepted row as no event.
+
+**EX052 — Versioned escalation.** Objective: synthesize a restrained decision. Write a 170–230-word version 1 note comparing alerts, stating unknown DB outcome and pending authority; then add a two-sentence version 2 if the custodians validate the s-7 mapping but cannot retrieve a DB receipt. Name one reversible option to *consider* under a separate approval, its service risk and a falsifiable trigger. Evidence: two-version handoff. Rubric: 2 = evidence, source limits, version change and owner-led decision; 1 = cautious wording without a next test; 0 = orders an unapproved broad control.
+
+### Subject synthesis
+
+The K13 alerts report different predicates over a limited and partly rejected record set. They can both be true without settling the reservation outcome. The technical job is to trace each claim through producer, parser, query, rule and business source, then preserve the unresolved branches. Chapter 14 is presently a **plan** for scripted triage with bounded inputs and an audit trail; stop the required authored sequence here until it is written.
+
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue studying — chapter 13 of 18
+
+[← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 plan →](PLAN.md#ch-14)
 
 The next chapter is an outline, not yet an authored lesson.
 <!-- cyberabc:chapter-navigation:end -->
@@ -918,6 +1385,135 @@ Correction is **reported source time − measured source offset**: edge +2 secon
 
 **EX032 — Model versioned handoff.** “Version 1, L8 teaching branch, 12:06 UTC: F81 reports one edge 503 for r-401 and F82 reports one API-to-IdP timeout. With supplied offsets, both source times estimate 12:00:01 UTC; clock uncertainty does not establish order or causation. The runner boot ID changed near this interval, while F84 is only a scheduled maintenance window. The API sample lacks a literal r-401, but the gateway may remap that identifier and source coverage is unverified. The reservation write outcome has not been measured. I request owner-approved gateway mapping, API/IdP path timing and a versioned maintenance execution receipt for 11:59:55–12:00:10, including clocks and collection limits. I do not recommend broad principal revocation or API restart from this packet: either could interrupt legitimate bookings or change useful state. Version 2, separate V8 negative control: the IdP custodian now supplies a validated success for the same mapped API request. That weakens a complete IdP outage **for this transaction**; it does not establish all identity paths as healthy or explain the edge 503. Application and network owners should compare mapped upstream deadline and path metrics next. Authority to collect or change production remains pending.” Other wording passes if it preserves variant separation, next owner and service risk.
 
+### Subject 9: EX033–EX036
+
+**EX033 — Model collection matrix.**
+
+| Decision | Proposed source and owner | Loss/authority | What the source cannot establish |
+|---|---|---|---|
+| Was process 420 present around the queued task? | K-H1 and a narrow runner-02 status request to the host owner. | Volatile state can disappear on restart; no live capture approved. | A process label does not link a person or prove the request was executed. |
+| Did the gateway observe transport and a 503 for r-601? | K-G1/G2, gateway custodian, 12:00:00–12:00:10 object and ID map. | Claimed short ring; event-time anchor to verify; request pending. | Byte counts and a 503 do not prove an API or DB write. |
+| Did the API accept a task? | K-A1, application owner, u-601 queue disposition and source coverage. | Claimed longer retention but ingestion anchor unknown; request pending. | Queued is not committed. |
+| Did a correct reservation commit? | No DB row supplied; bounded DB write audit and service-owner acceptance test requested. | Retention and collection authority unknown. | A missing receipt in this packet cannot prove no commit. |
+
+The first two owners can be contacted in parallel because both a volatile host and a short-lived gateway ring may change before a sequential request finishes. The table is a plan, not a claim that the sources have been collected.
+
+**EX034 — Model priority handoff.** “At 12:06 UTC ask the host owner and gateway custodian simultaneously for approved preservation proposals. K-REQ-1: runner-02, boot b7, process 420, 11:59:50–12:00:10 and current 12:06 status; method, side effects, clock and minimal fields to be approved by incident lead and host owner. K-REQ-2: gateway raw ring record for r-601/u-601, 12:00:00–12:00:10; source object, mapping semantics, event and ingestion times, clock and original-copy receipt, under gateway/incident-lead approval. The ten-minute event-time **claim** would put K-G1 expiry at 12:10:03, but the custodian must confirm anchor and actual retention. K-M1's 12:07 reboot is scheduled, not executed; host volatility may be sooner or later. Neither request grants a trainee collection rights.” A different order earns full credit if it gives both owners immediate attention and explains loss risk, decision value and privacy.
+
+**EX035 — Model byte transcript.**
+
+~~~text
+K-H1 38 46b24a36e2066bc021ea8a25bde6af2aec2a1ab34644787cff1fb230b2a8f804
+K-G1 50 0db143913357b002ec5be27e02bfa9ddcb24fdd53c8e2678bf205443adad04b3
+~~~
+
+Receipt K9-G-original: object K-G1; source **claimed** gateway summary; actual supplier exercise publisher; AUTH-K offline; collector trainee; method literal in-memory copy; 50 bytes; SHA-256 0db143913357b002ec5be27e02bfa9ddcb24fdd53c8e2678bf205443adad04b3; creation/collection time to record when run; access limited to classroom; gateway provenance **not established**. Receipt K9-G-variant: a separate copy with one byte deliberately changed, new digest to calculate and record; preserve K9-G-original. A mismatch proves the chosen byte sequences differ under this comparison; it does not identify when, why or by whom a real gateway record changed.
+
+**EX036 — Model claim ladder.** K-G1 supports “the supplied gateway summary reports 840 outbound and 120 inbound bytes for a path labelled r-601,” subject to producer provenance. K-G2 supports “the supplied gateway access row reports a 503,” not an application diagnosis. K-A1 reports u-601 **queued**; the gateway's r-601→u-601 mapping remains to be validated. No authoritative DB write or patron acceptance receipt is supplied, so commitment and correctness remain **unknown**. A positive control is a producer-receipted gateway transaction inside 12:00:00–12:00:10 that the same query should find; a negative control is one outside that interval that should not appear. Ask the gateway/application custodians for the bounded map and queue disposition, then the DB owner for a narrow commit receipt. The peer's commit conclusion exceeds all supplied sources.
+
+### Subject 10: EX037–EX040
+
+**EX037 — Model control contract.** Ticket K10-v1: trigger = a *future* source-validated continuing harmful R42 write, not the K9 byte count; decision authority = incident lead plus identity/application and service owners, **pending**; target = confirmed sess-K9 namespace, write route only; operator = named approved responder, pending; lifetime = short, reviewed at a specified time before automatic expiry; baseline = S10-1–4 route results and authoritative R40/R42 state; expected effect = deny S10-1 while not asserting that every route is covered; service effect = S10-2 worker write and S10-3 patron read continue; tests = policy decision, authoritative R42 no-new-write check, R40 commit/reconciliation, patron read and S10-4 known limitation; rollback = restore prior version under a named owner and rerun business checks; reopen = alternate session, route bypass or worker failure. The exact expiry and operator must be filled by the owner before a real change. The offline card approves only simulation and a draft ticket.
+
+**EX038 — Model predicate transcript.**
+
+~~~text
+baseline: S10-1=True S10-2=True S10-3=True S10-4=True
+scoped: S10-1=False S10-2=True S10-3=True S10-4=True
+rolled_back: S10-1=True S10-2=True S10-3=True S10-4=True
+~~~
+
+Changing S10-4 from **read** to **write** in a copy yields S10-4=False on the scoped line, because it now matches both the session and route conditions. Baseline and rolled-back remain True. That is a new input, not an amendment to the original K10 record. Integration testing must check the real enforcement point, route enumeration, policy/version propagation, token refresh behavior, decision logs and authoritative business outcomes in an **authorized isolated environment**. The Python predicate proves none of those.
+
+**EX039 — Model acceptance matrix.** S10-1: expected deny on sess-K9/write; identity/application owner verifies decision log and DB owner checks no new R42 write in a bounded interval; a Boolean or HTTP denial alone is incomplete. S10-2: expected allow on sess-W1/write; job owner and DB owner verify R40 reaches the authoritative state, including retries. S10-3: expected allow on sess-P1/read; service owner checks patron-visible availability with correct data. S10-4: expected allow on sess-K9/read under **this** rule; identity owner records that continued read as a residual capability rather than calling full containment. After rollback, compare queued task state and R40 reconciliation with the pre-change baseline, not just the rule list. Approval, execution and all production observations remain pending.
+
+**EX040 — Model broad-control review.** Revoking svc-book could remove the approved worker's ability to process R40, block an API authorization dependency, and prevent backup or reconciliation workflows that rely on the same principal. A static portal load tests neither reservation writes nor queue state. It also says nothing about another session, direct API path or whether the suspect R42 write stopped. A broader revocation could be justified if a source-linked, continuing harmful action and its urgency outweigh these measured business effects under owner approval. The safer current decision is to request a bounded identity/session map and service dependency test, preserve evidence, then compare a targeted and broad control contract with positive and negative checks. No production revocation is authorized by the workshop.
+
+### Subject 11: EX041–EX044
+
+**EX041 — Model four-time worksheet.**
+
+| ID | Raw event time | Parsed UTC | Corrected estimate and range | Missing time/provenance |
+|---|---|---|---|---|
+| K11-I | 13:00:02+01:00 | 12:00:02Z | 11:59:59Z ±1 s; 11:59:58–12:00:00 | Ingestion, collection, analysis and offset measurement time. |
+| K11-E | 12:00:03+00:00 | 12:00:03Z | 12:00:01Z ±1 s; 12:00:00–12:00:02 | Same missing fields and gateway source object. |
+| K11-H | 08:00:01-04:00 | 12:00:01Z | 12:00:02Z ±2 s; 12:00:00–12:00:04 | Same missing fields and host clock/drift context. |
+
+All are on 11 October 2026. The source custodians must confirm offset-measurement method/time and object identities. The parsed UTC column is a string conversion; the corrected column depends on the unvalidated classroom offset. Do not fill missing ingest/collection/analysis values with event time.
+
+**EX042 — Model interval proof.**
+
+~~~text
+K11-I 11:59:59 +/- 1s
+K11-E 12:00:01 +/- 1s
+K11-H 12:00:02 +/- 2s
+~~~
+
+I spans 11:59:58–12:00:00, E 12:00:00–12:00:02 and H 12:00:00–12:00:04 under the supplied assumptions. Since the latest I and earliest E/H meet at 12:00:00, the strict “necessarily before” claim is not justified even on the toy intervals; E/H overlap more broadly. If a later trusted measurement narrowed the intervals, temporal order alone would still not prove a common request. Ask producers for a validated, provenance-linked transaction/session mapping and clock-measurement times.
+
+**EX043 — Model integrity receipts.**
+
+~~~text
+copy_equal: True
+variant_equal: False
+~~~
+
+K11-E-raw is the literal 503 byte line supplied by the exercise publisher; local classroom authority, method in-memory literal, collector and run time to record. K11-E-copy is byte-identical to it under SHA-256 comparison. K11-E-variant is a **new** locally derived object created by replacing the first 503 with 200; its digest differs, and its receipt points to the raw object and transformation. A full receipt would also include exact byte counts, full digests, storage/access and source claim. The comparison cannot prove the publisher accurately represented a gateway or that the copy was lawfully collected in production.
+
+**EX044 — Model versioned handoff.** “Version 1, K11 classroom packet, 12:06 UTC: The IdP row parses to 12:00:02 UTC before correction, the edge row to 12:00:03, and the host row to 12:00:01. Subtracting the supplied offsets gives 11:59:59 ±1 second, 12:00:01 ±1 second and 12:00:02 ±2 seconds. Their plausible intervals touch or overlap, so this packet does not establish strict order or causality. The raw edge line and local copy have equal digests; a deliberately edited status variant does not. Neither comparison authenticates a producer. We lack ingestion and collection times, offset measurement times, source object IDs and a validated transaction join. No real access or change is authorized by the workshop. I request owner-approved clock measurements and narrow source mapping, with privacy limits, before using this timeline to recommend a control. The original bytes and this version should be retained.” Version 2 if a custodian supplies a new offset: “Record the new measurement time and uncertainty in a separate timeline version and recompute each interval. Preserve version 1 and raw source timestamps; do not silently replace them.” Equivalent 130–180-word version 1 notes pass if they retain those boundaries.
+
+### Subject 12: EX045–EX048
+
+**EX045 — Model intake manifest.**
+
+| Object | Classroom bytes and SHA-256 | Role and provenance |
+|---|---|---|
+| K12-idp-raw | 141 bytes; 134f1fb01f33770f5640e79ce9c92a341b33b8ab207b6784e6d8303c7a2f4f8e | Claimed IdP rows; supplied by exercise publisher. |
+| K12-host-raw | 93 bytes; 2c6cbf1a03ee988ed6020aaf4a8ba1698510bb5f2b0fb4cf7410a87658efeebe | Claimed host row; supplied by exercise publisher. |
+| K12-app-raw | 190 bytes; 45c4a68d92c07b25c12bcc15e7cc02521127bb31a7ab75bd18f2f917abb80973 | Claimed app rows; supplied by exercise publisher. |
+| K12-derived-v1 | New result object; digest/length to record when generated. | Parser v1, three parents above, four accepted and two rejected rows. |
+
+For all raw rows: AUTH-K12 allows only offline class inspection; method literal UTF-8/LF string in memory; collector trainee; actual run/collection time to record; access classroom only. Original production object IDs, true system custodians and emitter authenticity are **unknown**. The derived row needs its own creation time, parser code/version, rejected-row report, stored copy identifier and access rule. Do not present its bytes or digest as if they were one of the raw objects.
+
+**EX046 — Model parser transcript.**
+
+~~~text
+accepted: ['idp:I1', 'idp:I2', 'host:H1', 'app:A1']
+rejected: [('app', 3, 'bad_time'), ('app', 4, 'duplicate_id')]
+~~~
+
+App line 3 has an invalid time string and is excluded before it can enter a timeline. App line 4 repeats **A1 in the same app source**, so it is excluded even though its timestamp is parseable. In a separate copy where only the last row's event ID becomes A3, accepted gains **app:A3** after app:A1; the bad-time rejection for line 3 remains. The original raw packet and rejection transcript must remain unchanged. This schema check is not a producer-authenticity check.
+
+**EX047 — Model claim review.** “I1 and A1 are definitely one session” is too strong: both literal fields say s-7, but IdP/app owners must validate namespace, export provenance, clock and request mapping. “I2 blocked A1” is contradicted by literal **s-8 versus s-7**; ask the IdP owner for precise deny semantics and the app owner for a validated mapping before relating them. “r-601 committed” is unsupported: app A1 says **queued**; request a narrow authoritative DB write/rollback receipt plus a service-owner correctness check. Each request remains subject to real incident-lead/privacy approval. The packet can support a hypothesis and a next test, not a completed transaction or human attribution.
+
+**EX048 — Model coverage card.** In the 12:00:00–12:00:10 app query, use a source-owner-receipted synthetic control from the same route whose event and ingestion times should put it in range. Use a second known source event outside the window that should be excluded. Record producer version, source object, query time/filter, parser version, ingestion lag, dropped-event counters and **three raw/one accepted/two rejected** app rows. If the in-range control is absent, “no accepted r-602” is weak because the pipeline/query may be failing. If the out-of-range control appears, the filter is overbroad. A2's raw row already has r-602 but failed time validation; it cannot simply be counted as an accepted event or silently repaired. Ask the custodian for a corrected versioned export if that row matters.
+
+### Subject 13: EX049–EX052
+
+**EX049 — Model predicate table.**
+
+| Alert | Matched row and literal predicate | Overbroad phrase | Corrected title |
+|---|---|---|---|
+| AL13-A | App A1, principal svc-book, s-7, r-601, kind queued. | “Reached protected service” may imply authorized completion. | “Supplied app row reports r-601 queued under claimed s-7.” |
+| AL13-B | IdP I2, principal svc-book, s-8, kind denied. | “svc-book was blocked” implies all sessions/routes. | “Supplied IdP row reports one s-8 denial.” |
+
+The shared principal label is not a shared session, person or transaction. Both limited statements can be true. I1's s-7 success may be relevant, but cross-producer session mapping remains to be verified.
+
+**EX050 — Model predicate transcript.**
+
+~~~text
+app_queue_claim: True
+idp_denial_claim: True
+denial_matches_app_session: False
+db_commit_in_supplied_rows: False
+~~~
+
+If only I2's session changes to s-7 **in a copy**, the third line becomes True and the other three stay as printed. That would be a literal field match between the denied row and A1, not proof of the same request, genuine producer mapping or a DB outcome. The fourth line states the program has no DB record; it cannot show the database did not commit. Keep the counterfactual and K12 original separate.
+
+**EX051 — Model sensor-health card.** Record the app emitter's schema/version and row count, transport delivery/failed count, ingestion lag and drops, K12 parser result **3 raw, 1 accepted, 2 rejected**, index freshness, 12:00:00–12:00:10 filter/query run, AL13 rule version and matched row IDs. Have the app owner provide a receipt for a known in-range same-route control and an out-of-range control. If the in-range event is absent, the route/window may be undercovered and “no r-602” weakens. If the out-of-range event appears, the filter or indexing semantics need correction. If both behave as expected, confidence improves only for the tested source, interval and route; A2 still requires a corrected producer export before it can enter the accepted timeline. A spreadsheet-invented control earns no coverage credit.
+
+**EX052 — Model versioned escalation.** “Version 1, K13 classroom packet, 12:06 UTC: AL13-A matches app A1, which reports r-601 queued under s-7. AL13-B matches IdP I2, a denial under s-8. The principal label svc-book is shared, but these are different literal sessions. K12's app input had three raw rows and only one accepted row; A2's r-602 time failed validation and a later A1 repeated an ID. This limits a negative query over accepted rows. There is no supplied database commit receipt or verified cross-producer namespace, so I cannot say that a reservation committed, a principal was universally blocked or a person acted maliciously. Real collection and control authority remain pending. I request incident-lead-approved, privacy-bounded app/IdP mapping, source-health counters and an authoritative database outcome for the narrow interval. A targeted temporary write rule could be considered **only after** a validated continuing harmful write and service-owner approval; it could interrupt the legitimate worker or miss another route. A bounded R42 no-new-write test and R40 worker check would falsify a claimed safe control if either fails. I will preserve this version and its raw/rejected evidence.” Version 2: “The custodians now validate the s-7 namespace between I1 and A1, increasing confidence in that session association, but no DB receipt was retrieved. Commitment and actor remain unknown; the same owner-approved outcome request stays open.” Alternative 170–230-word version 1 notes pass if they preserve the two sessions, rejected rows, missing DB outcome, pending approval and falsifiable next test.
+
 ## Glossary for authored chapters
 
 - **Dependency graph:** a model of which component's behavior may be needed by another; arrows and assumptions must be explicit.
@@ -931,6 +1527,11 @@ Correction is **reported source time − measured source offset**: edge +2 secon
 - **Retention anchor:** the event, ingestion or other time from which a duration is counted.
 - **Route-level dependency:** components required for one outcome under stated assumptions.
 - **Clock offset:** measured difference between producer-reported and reference time, with uncertainty.
+- **Volatile source:** a record or state that may change or disappear quickly; its useful lifetime and safe collection method need source-specific confirmation.
+- **Control contract:** a versioned proposal naming trigger, authority, target, expiry, tests, side effects and rollback before a change.
+- **Uncertainty interval:** range around an estimated event time under stated clock-measurement assumptions.
+- **Raw object / derived view:** separately identified original bytes and an output created by a documented transformation.
+- **Alert predicate:** the actual source fields and rule conditions that produced an alert, narrower than its display title may suggest.
 
 ## References and case boundaries
 
@@ -943,3 +1544,5 @@ Correction is **reported source time − measured source offset**: edge +2 secon
 - [RFC 4180](https://www.rfc-editor.org/rfc/rfc4180.html) (2005) and [Python CSV documentation](https://docs.python.org/3/library/csv.html): CSV format and parsing behavior, not log-source authentication.
 - [Python hashlib documentation](https://docs.python.org/3/library/hashlib.html): byte-digest interface for the L5 comparison.
 - [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) (2016): recovery planning and testing; L6's route and snapshot example is original.
+- [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339) (2002): timestamp format and explicit offsets used in K11; measured clock correctness is a separate question.
+- [Python datetime documentation](https://docs.python.org/3/library/datetime.html): timezone conversion interface used in K11, not a source-clock verification method.

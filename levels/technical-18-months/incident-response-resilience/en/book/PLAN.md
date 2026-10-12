@@ -181,13 +181,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 07 and prepares Chapter 09. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 08 of 18 (outline):** [← Chapter 07 (draft)](MANUSCRIPT.md#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 (plan) →](PLAN.md#ch-09)
+**Continue studying — chapter 08 of 18 (outline):** [← Chapter 07 (draft)](MANUSCRIPT.md#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 (draft) →](MANUSCRIPT.md#ch-09)
 
 <a id="ch-09"></a>
 
 ### Chapter 09 — Host and network evidence collection methods
 
-**Stage 2; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 30 planned A4 pages; 4 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-09)
 
 **Teaching purpose and relevance:** Select collection methods that preserve useful context while limiting change to the system.
 
@@ -197,17 +197,17 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A simulated workstation and gateway with time-limited evidence.
 
-**Practice and exercises:** Choose collection order, capture provenance and state the evidence limitations. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Choose collection order, capture provenance and state the evidence limitations. The planned allocation is 4 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 08 and prepares Chapter 10. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 09 of 18 (outline):** [← Chapter 08 (draft)](MANUSCRIPT.md#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 (plan) →](PLAN.md#ch-10)
+**Continue studying — chapter 09 of 18 (outline):** [← Chapter 08 (draft)](MANUSCRIPT.md#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 (draft) →](MANUSCRIPT.md#ch-10)
 
 <a id="ch-10"></a>
 
 ### Chapter 10 — Containment control configuration in a lab
 
-**Stage 2; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 30 planned A4 pages; 4 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-10)
 
 **Teaching purpose and relevance:** Practice implementing a reversible control and verifying both security effect and service impact.
 
@@ -217,17 +217,17 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** An isolated lab with a compromised synthetic account and a dependent application.
 
-**Practice and exercises:** Configure a scoped control, test expected and unexpected effects, then roll it back. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Configure a scoped control, test expected and unexpected effects, then roll it back. The planned allocation is 4 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 09 and prepares Chapter 11. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 10 of 18 (outline):** [← Chapter 09 (plan)](PLAN.md#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 (plan) →](PLAN.md#ch-11)
+**Continue studying — chapter 10 of 18 (outline):** [← Chapter 09 (draft)](MANUSCRIPT.md#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 (draft) →](MANUSCRIPT.md#ch-11)
 
 <a id="ch-11"></a>
 
 ### Chapter 11 — Clock-offset and record-integrity verification
 
-**Stage 2; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 30 planned A4 pages; 4 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-11)
 
 **Teaching purpose and relevance:** Prevent timeline errors from being mistaken for adversary behavior.
 
@@ -237,17 +237,17 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** Three synthetic logs with differing time zones and one altered export.
 
-**Practice and exercises:** Normalize timestamps, verify integrity and annotate uncertainty in event order. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Normalize timestamps, verify integrity and annotate uncertainty in event order. The planned allocation is 4 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 10 and prepares Chapter 12. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 11 of 18 (outline):** [← Chapter 10 (plan)](PLAN.md#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 (plan) →](PLAN.md#ch-12)
+**Continue studying — chapter 11 of 18 (outline):** [← Chapter 10 (draft)](MANUSCRIPT.md#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 (draft) →](MANUSCRIPT.md#ch-12)
 
 <a id="ch-12"></a>
 
 ### Chapter 12 — Laboratory: ingest and preserve synthetic incident records
 
-**Stage 2; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 30 planned A4 pages; 4 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-12)
 
 **Teaching purpose and relevance:** Integrate intake, parsing and preservation into a repeatable small laboratory.
 
@@ -257,17 +257,17 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A supplied synthetic bundle of identity, host and application records.
 
-**Practice and exercises:** Ingest the bundle, produce a preservation manifest and reconcile parse failures. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Ingest the bundle, produce a preservation manifest and reconcile parse failures. The planned allocation is 4 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 11 and prepares Chapter 13. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 12 of 18 (outline):** [← Chapter 11 (plan)](PLAN.md#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 (plan) →](PLAN.md#ch-13)
+**Continue studying — chapter 12 of 18 (outline):** [← Chapter 11 (draft)](MANUSCRIPT.md#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 (draft) →](MANUSCRIPT.md#ch-13)
 
 <a id="ch-13"></a>
 
 ### Chapter 13 — Troubleshooting conflicting alerts and missing telemetry
 
-**Stage 3; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 30 planned A4 pages; 4 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-13)
 
 **Teaching purpose and relevance:** Diagnose why detections disagree before escalating a claim.
 
@@ -277,11 +277,11 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** Two fictional alerts disagree about whether an account reached a protected service.
 
-**Practice and exercises:** Inspect rule inputs, document the coverage gap and revise confidence. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Inspect rule inputs, document the coverage gap and revise confidence. The planned allocation is 4 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 12 and prepares Chapter 14. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 13 of 18 (outline):** [← Chapter 12 (plan)](PLAN.md#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 (plan) →](PLAN.md#ch-14)
+**Continue studying — chapter 13 of 18 (outline):** [← Chapter 12 (draft)](MANUSCRIPT.md#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 (plan) →](PLAN.md#ch-14)
 
 <a id="ch-14"></a>
 
@@ -301,7 +301,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 13 and prepares Chapter 15. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 14 of 18 (outline):** [← Chapter 13 (plan)](PLAN.md#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 (plan) →](PLAN.md#ch-15)
+**Continue studying — chapter 14 of 18 (outline):** [← Chapter 13 (draft)](MANUSCRIPT.md#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 (plan) →](PLAN.md#ch-15)
 
 <a id="ch-15"></a>
 

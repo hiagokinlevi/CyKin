@@ -18,7 +18,7 @@ CyberABC is a public, free Markdown learning library. Its [home page](README.md)
 | Progress and completion rules | [Structure review](STRUCTURE_REVIEW.md) and [book standard](BOOK_STANDARD.md) |
 | Rights and provenance | [Rights notice](RIGHTS.md) and [source audit](SOURCE_AUDIT.md) |
 
-The current design has five schools, 23 academic areas, nine levels, **207 course skills**, and nine planned language editions per course (**1,863 planned books**). English course grids contain **4,186 subject-chapters**. These are structural counts, not a claim of 1,863 authored books. There are five English manuscript drafts; the professional Incident Response draft covers all twelve subject-chapters, and the technical draft has eight of eighteen authored chapters. No book has passed the complete-book gate.
+The current design has five schools, 23 academic areas, nine levels, **207 course skills**, and nine planned language editions per course (**1,863 planned books**). English course grids contain **4,186 subject-chapters**. These are structural counts, not a claim of 1,863 authored books. There are five English manuscript drafts; the professional Incident Response draft covers all twelve subject-chapters, and the technical draft has thirteen of eighteen authored chapters. No book has passed the complete-book gate.
 
 ## Follow the entire curriculum in order
 
