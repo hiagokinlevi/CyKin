@@ -2,7 +2,7 @@
 
 **One book for this course and language.** 8 curricular subjects are its chapters. Duration: 2 years; planned effort: approximately 1600 hours. Audience: Advanced researchers. Entry knowledge: Research experience and a defensible original question. Intended outcome: test an original contribution and its limits independently in incident response and cyber resilience.
 
-**Editorial state:** structured outline; manuscript not yet authored. English reference edition.
+**Editorial state:** draft manuscript exists; release A4 validation and review pending. English reference edition.
 
 [Home](../../../../../README.md) · [Course home](../../README.md) · [Edition](../README.md) · [Chapter index](../SUBJECTS.md) · [Course skill](../../skill/SKILL.md)
 

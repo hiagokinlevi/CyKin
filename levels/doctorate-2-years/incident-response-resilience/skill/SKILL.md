@@ -16,6 +16,7 @@ Use this **one skill for the whole 2 years course**. The course has one principa
 - [English book plan](../en/book/PLAN.md): summaries and planned exercises.
 - [Materials](../en/MATERIALS.md): practice and assessment links.
 - [Supplementary playbooks](../../../../playbooks/incident-response-resilience/README.md): source-linked practice.
+- [Authored English book draft](../en/book/MANUSCRIPT.md): use only chapters and exercises actually present; review is pending.
 
 ## Navigation rule
 
