@@ -1725,6 +1725,11 @@ Sam implemented the enforcement point as a separate service with 140 lines of po
 - Rendering model output as HTML without escaping.
 - Tests that only cover the happy path.
 
+
+### 28.6b Failing closed in the enforcement point
+
+If Wrench's policy enforcement point cannot load its rules or reach its decision service, it refuses the requested tool action and tells the technician why, rather than allowing it. NRS tests this path in every release by starting the service with a missing policy file.
+
 ### Exercises
 
 - **EX082 — Decide.** What does `decide("viewer", "search", {}, True)` return and why? Rubric: 3 = "allow"; search permitted for viewer; taint matters only for high-impact tool here; 2 = value only; 1 = wrong but reasoned; 0 = none.
@@ -2024,6 +2029,11 @@ NRS opened a limited TrackEye API to a partner. Sam deployed the monitoring rule
 - Mean-and-standard-deviation thresholds that the outlier itself inflates.
 - Logging full prompts with personal data indefinitely.
 - Updates loaded without signature checks.
+
+
+### 31.6b Testing alerts end to end
+
+Each monitoring rule for Wrench and TrackEye is tested by injecting a synthetic event in staging and checking that the alert reaches the on-call engineer with enough context to act. Rules that have never fired in a test are treated as unverified.
 
 ### Exercises
 
@@ -2561,6 +2571,11 @@ Sam's integrated campaign ran 18 scenarios across TrackEye, Pulse and Wrench. Sc
 - Acceptance criteria decided after seeing results.
 - Evidence scattered across personal folders.
 
+
+### 40.6b Repeating the campaign after fixes
+
+When Laboratory II finds a failure, the fix is followed by the same campaign, not a smaller one, so NRS can show the fix worked without breaking other acceptance criteria. Both runs are kept in the evidence package with their dates and versions.
+
 ### Exercises
 
 - **EX118 — Combined scenario.** Design one combined attack-plus-failure scenario for Wrench. Rubric: 3 = specific attack + failure + expected safe behaviour + measurement; 2 = partial; 1 = vague; 0 = none.
@@ -2947,6 +2962,11 @@ Sam's team ran three scenarios on Bulletin Gate and Wrench in staging. Scenario 
 - Trials that only test technology, not people and procedures.
 - Blame-focused reviews that discourage reporting.
 - No follow-up on actions.
+
+
+### 47.6b Sharing what the trial taught
+
+The after-action summary goes beyond the AI team to the rail maintenance managers who rely on TrackEye and Wrench: what failed, how long recovery took, what changes and when. Plain language and dates matter more to them than metrics.
 
 ### Exercises
 
