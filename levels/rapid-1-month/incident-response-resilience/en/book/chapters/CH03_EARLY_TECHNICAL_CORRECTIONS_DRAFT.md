@@ -1,14 +1,14 @@
-# Chapter 3, ``3.1–3.4 — Early Technical Corrections (DRAFT)
+# Chapter 3, §§3.1–3.4 — Early Technical Corrections (DRAFT)
 
 **Editorial responsibility:** [hiagokinlevi](https://github.com/hiagokinlevi). **Edition:** English, rapid Incident Response. **State:** Proposed, independently tested correction blocks; **not integrated**, **not approved**, and not an additional book or chapter. The [principal manuscript](../MANUSCRIPT.md#ch-03) remains the sole course book.
 
 **Review baseline:** public `MANUSCRIPT.md` SHA-256 `91604bd72435c97f68a89dcd6c16af5b72a4aac80d5d6989338ff503f77af6a9` on `main` commit `fea927012751fff01fb10b029c51c250711588c7`. Keep R1–R8 at the 09:05 checkpoint, R1–R16 at 09:20, and R17–R24 available for the 09:37 decision; do not carry exercise-only W1 or RB3 receipts into any of those releases. The 322-page A4 preflight is a length measurement, not an editorial approval. These blocks are proposals for the maintainer's selective integration, not replacements for the published Python baselines.
 
-## Block A — `3.1: correct the R15 retention-clock description
+## Block A — §3.1: correct the R15 retention-clock description
 
-**Exact placement:** Replace only the opening sentence of `3.1, immediately after `### 3.1 A decision loop rather than a fixed sequence`.
+**Exact placement:** Replace only the opening sentence of §3.1, immediately after `### 3.1 A decision loop rather than a fixed sequence`.
 
-**Input and independently checkable evidence:** R15 reports a 24-hour detailed booking-audit retention rule without its anchor. Chapter 2 `2.8a explicitly warns against deriving an exact deletion instant from R9's event time. The current `3.1 sentence says that the previous triage "identified an audit-retention deadline."
+**Input and independently checkable evidence:** R15 reports a 24-hour detailed booking-audit retention rule without its anchor. Chapter 2 §2.8a explicitly warns against deriving an exact deletion instant from R9's event time. The current §3.1 sentence says that the previous triage "identified an audit-retention deadline."
 
 **Consequence:** A reader could mistake evidence-loss urgency for a confirmed countdown and assume the team knows when each item will be removed.
 
@@ -18,7 +18,7 @@
 
 The decision loop immediately following this sentence can remain unchanged. Do not derive a deadline from 09:03, nor extend the booking-audit rule to identity records.
 
-## Block B — `3.3 W1: check required route coverage and legitimate-service behavior separately
+## Block B — §3.3 W1: check required route coverage and legitimate-service behavior separately
 
 **Exact placement:** Immediately after the original W1 `write_pause_claim` line and its interpretation, before `**Practice submission.**`. In the final worked-results appendix, place the accompanying transcript after `### Chapter 3 W1 write-pause verification lab — worked result`. Do not replace or silently alter the five published original output lines.
 
@@ -111,7 +111,7 @@ QUEUE_ROW_MISSING: PROTECTION_TESTED_PATHS_PASS_NOT_CAUSAL | SERVICE_UNEVALUABLE
 
 **Acceptance distinction:** A test of a named write path requires the specific probe to be present; an absent route is **not measured**, not blocked. Read and queue acceptance are a separate service check, not implied by write-path protection. Even `BOTH_WRITES_BLOCKED` cannot demonstrate the pause *caused* the rejections without a permitted pre-pause baseline, request-linked audit pointers, source-consistent before/after reads and control activation evidence. Queue admission does not establish booking fulfillment, reconciliation capacity or recovery acceptance. The extension itself never runs a write or accesses any service.
 
-## Block C — `3.3 RB3: bind reversal approval, trigger and two post-state checks to recorded times and scope
+## Block C — §3.3 RB3: bind reversal approval, trigger and two post-state checks to recorded times and scope
 
 **Exact placement:** After the RB3 lab's complete original program and before `**Before running:** predict the twenty-two scenario lines`. In the final appendix, place the supplemental results immediately after `### RB3 — Worked result`, without replacing the 22 original published lines.
 
