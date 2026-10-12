@@ -1,6 +1,6 @@
 ---
 name: cyberabc-ot-iot-security-postgraduate-be36cf0c
-description: "Guide a learner through the postgraduate course in OT, IoT and cyber-physical security, its one book, subject chapters, exercises and reviewed sources."
+description: "Tutor the twelve-chapter postgraduate OT course from its English draft: BWRP decisions, Lab 6 controlled evaluation, EX001–EX060; enforce plant-safety boundaries."
 license: CC0-1.0
 ---
 
@@ -16,21 +16,29 @@ Use this **one skill for the whole 2 years course**. The course has one principa
 - [English book plan](../en/book/PLAN.md): summaries and planned exercises.
 - [Materials](../en/MATERIALS.md): practice and assessment links.
 - [Supplementary playbooks](../../../../playbooks/ot-iot-security/README.md): source-linked practice.
+- [Authored English book draft](../en/book/MANUSCRIPT.md): use only chapters, labs and exercises actually present; review is pending.
 
 ## Navigation rule
 
 At the end of an authored chapter or a book-plan chapter summary, use its **Continue studying** block for the previous chapter, course index and next chapter. Keep the learner's course and chapter position visible. If the next link is a plan, explain that the lesson is not yet authored and do not mark it complete. The course chapter index connects its final row to the next course in the same language.
 
+## Twelve-subject teaching route
 
-## Tutor workflow
+Postgraduate OT on synthetic **Bayside Water Reclamation Plant (BWRP)**: decisions, current practice, evidence, risk/ethics, design alternatives, controlled evaluation (Lab 6), organisational integration, difficult cases, leadership/assurance, research critique, applied project, transfer.
 
-1. Ask for the learner's level and language; use this course's chapter index to select the relevant subject. English is the editorial reference until other editions are reviewed.
-2. Check whether that chapter is authored. If only the plan exists, say so and label any added explanation or practice as new supplementary material.
-3. Teach from the available chapter with a clear example, then use its authored exercises and worked answers. Keep the response at the course's planned depth.
-4. Cite the exact Markdown source and any underlying external reference. Use only authorized, synthetic or sanitized practical environments. Never claim accreditation or a completed 300-page book from a folder alone.
+| Ch | Artefact |
+|---|---|
+| 1–5 | Decision records, practice gap list, evidence appraisal, risk acceptance, alternative scores |
+| 6 | Lab 6 evaluation report (class A/B) |
+| 7–9 | RACI, playbook, assurance argument |
+| 10–12 | Paper critique, project dossier, transfer brief |
 
-## Continue the curriculum
+## Safety
 
-After chapter 12, check the chapter index and the learner's exercise record. The next stop is [course 161: Critical infrastructure and sector security / Postgraduate course](../../critical-sector-security/en/SUBJECTS.md). For navigation in another language, open that course's matching language index; teach from it only when its manuscript is authored and reviewed. A planned chapter does not count as studied merely because navigation points to the next stop.
+No production OT access. Independent safety layers on any rig. Dual-use review. Label BWRP synthetic.
+
+## Editorial status and language
+
+Check the [book standard](../../../../BOOK_STANDARD.md) before claiming a chapter or edition is complete. English chapter drafts and exercise–answer pairs exist, but the book has not passed independent review or the 300-page A4 gate. Other language folders are working outlines until their own translation and review. Teach in the learner's language if helpful while identifying English as the only authored reference edition.
 
 Original maintainer-owned content is dedicated under [CC0 1.0](../../../../LICENSE); third-party sources retain their own rights.
