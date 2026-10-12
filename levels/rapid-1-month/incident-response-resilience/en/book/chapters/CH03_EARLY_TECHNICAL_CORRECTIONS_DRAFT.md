@@ -161,8 +161,9 @@ def rb3_recheck(packet, receipt):
 
     start, end = packet["authorized_window"]
     if not (
-        start <= receipt["trigger_time"] <=
-        receipt["approval_time"] == packet["decision_time"] <=
+        receipt["trigger_time"] <=
+        receipt["approval_time"] == packet["decision_time"]
+        and start <= receipt["approval_time"] <=
         receipt["execution_receipt_time"] == packet["execution_time"] < end
     ):
         return "TRIGGER_APPROVAL_EXECUTION_ORDER_INVALID"
@@ -196,6 +197,8 @@ print_rb3_recheck("CHECK_BEFORE_EXECUTION", BASE,
                   {"post_state_time": utc("14:11")})
 print_rb3_recheck("PROTECTION_FAILED",
                   {**BASE, "protection_check": False}, {})
+print_rb3_recheck("EARLY_VALID_TRIGGER", BASE,
+                  {"trigger_time": utc("14:01")})
 ~~~
 
 **Exact supplemental output, independently executed with Python 3:**
@@ -208,6 +211,7 @@ LATE_APPROVAL: TRIGGER_APPROVAL_EXECUTION_ORDER_INVALID
 WRONG_APPROVED_SCOPE: APPROVAL_NOT_BOUND_TO_TARGET_AND_SCOPE
 CHECK_BEFORE_EXECUTION: POST_EXECUTION_EVIDENCE_TIME_INVALID
 PROTECTION_FAILED: PROTECTION_NOT_ACCEPTED
+EARLY_VALID_TRIGGER: BOUNDED_RECHECK_WITH_DATED_RECEIPTS_REVIEW_OPEN
 ~~~
 
 **Evidence boundary:** `DATED_BASELINE` is a newly declared **synthetic supplemental** chain; it demonstrates chronological and scope consistency, not independently authenticated action. A real decision would also require original, trusted approval and control receipts, source-clock semantics, named operators, pre-change baseline provenance, linked request IDs and observed acceptance criteria. The two checks must remain separate: protected operation constrained or otherwise acceptably managed **and** legitimate service functioning in the declared scope. A passed rollback check never means that Harbor Library achieved recovery, eradication, full route coverage or incident closure. An open human reassessment and queue/booking-state obligations remain.
