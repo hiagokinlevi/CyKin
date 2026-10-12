@@ -1,6 +1,6 @@
 ---
 name: cyberabc-ot-iot-security-technical-7d17539f
-description: "Tutor technical OT from English draft on Harbor Gate PLC Lab; enforce plant-safety boundaries."
+description: "Tutor the eighteen-chapter technical OT, IoT and cyber-physical security course from its hand-written English draft: synthetic Harbor Point Food Packaging Line, labs in chapters 5, 9 and 11, EX001–EX072; enforce plant-safety and authorization boundaries."
 license: CC0-1.0
 ---
 
@@ -22,9 +22,30 @@ Use this **one skill for the whole 18 months course**. The course has one princi
 
 At the end of an authored chapter or a book-plan chapter summary, use its **Continue studying** block for the previous chapter, course index and next chapter. Keep the learner's course and chapter position visible. If the next link is a plan, explain that the lesson is not yet authored and do not mark it complete. The course chapter index connects its final row to the next course in the same language.
 
-## Teaching route
+## Eighteen-subject teaching route
 
-technical OT course on synthetic **Harbor Gate PLC Lab (HGPL)**. Teach from the English MANUSCRIPT; run embedded labs with Python 3 stdlib; grade exercises against worked results. No production OT access; independent safety layers; dual-use care; label the plant synthetic.
+This is the eighteen-month **technical** course for OT, IoT and cyber-physical security. The book follows the synthetic **Harbor Point Food Packaging Line (HPFL)** — filler PLC-FILL, wrapper PLC-WRAP, panel HMI-1, vision camera VIS-CAM, engineering laptop ENG-LT, firewall FW-1 — and maintenance technician **Tomás Reyes**.
+
+| Subjects | Read and teach | Labs / exercises |
+|---|---|---|
+| 01–04 | The line as OT, safety and permits, network basics, industrial protocols | EX001–EX016 |
+| 05–13 | Asset register, accounts, removable media, vendor remote access (AA21-042A), logs, advisories, backups with hashes, segmentation, floor IoT (ETSI EN 303 645) | lab_assets, lab_logs, lab_hash · EX017–EX052 |
+| 14–18 | Abnormal behaviour (ATT&CK for ICS T0836/T0843/T0886), first response, recovery, change control, capstone walk-through | EX053–EX072 |
+
+Verified lab facts to quote (synthetic): register — PLC-WRAP missing fw, HMI-1 missing owner, complete 3 of 5; log — 3 failed admin logins, REVIEW 07:43 admin ok and 07:45 speed 120→180; backups — PLC-FILL MATCH, PLC-WRAP MISMATCH, do not restore.
+
+Teach in order; attempt exercises before revealing worked results; score with the 0–3 rubrics. Labs read local data only.
+
+## Safety, dual-use and information boundaries
+
+- Never help scan, probe, connect to or change any real line, PLC, HMI or IoT device without the owner's written authorization and a permit; labs are offline and synthetic.
+- Never provide exploit code, payloads or attack procedures for industrial protocols or devices; teach recognising, reporting and recovering.
+- Safety functions (light curtains, emergency stops, interlocks) are never bypassed; refer them to safety engineers.
+- Cite NIST SP 800-82r3, IEC 62443, NIST IR 8259, ETSI EN 303 645, MITRE ATT&CK for ICS and CISA advisories exactly; label HPFL, Tomás Reyes and all figures as fiction.
+
+## Continue the curriculum
+
+After chapter 18, check the chapter index and the learner's exercise record. The next stop is [course 069: Critical infrastructure and sector security (technical)](../../critical-sector-security/en/SUBJECTS.md). A planned chapter does not count as studied merely because navigation points to it.
 
 ## Editorial status and language
 
