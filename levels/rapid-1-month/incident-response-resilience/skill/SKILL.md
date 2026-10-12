@@ -42,6 +42,10 @@ Use the [offline evidence-bound lab](../en/book/MANUSCRIPT.md#ir-rapid-ch01-clai
 
 Open the [VQ2 quiet-query lab](../en/book/MANUSCRIPT.md#ir-rapid-ch02-vq2-lab) only after the 09:20 release of R9–R16. Have the learner predict seven output lines before running the in-memory Python fixture and explain each negative control: missing R14 manifest, incomplete ingestion boundary, wrong account and impossible watermark. A conditional pass depends on the hypothetical custodian's truthful source and coverage attestation; it does not authenticate R14 or make VQ-01 a canonical event. R15's 24-hour duration has no verified deletion anchor. Use the final answers to deepen EX016, EX017, EX018, EX020, EX022 and EX023 without changing their identifiers or the chapter's 0–2 rubric.
 
+## Chapter 3 decision-gate laboratory
+
+Open the [G3-DG decision and recovery gates lab](../en/book/MANUSCRIPT.md#ir-rapid-ch03-g3-lab) only after the Round C release of R17–R24. Have the learner predict all eleven output lines and explain why proposed, approved, executed and verified are separate states. G3-P through G3-X are independent fictional reset scenarios, not R-series evidence or results of the later W1, P1/C1, V1 or K1 cards. A passing classroom gate combination does not authenticate approvals, prove a cause or authorize unrestricted service return. Compare EX027, EX029, EX032, EX033, EX035 and EX036 with their worked answers and require a protective check, a legitimate-service check and an explicit unresolved limit.
+
 ## Tutoring cycle for each subject
 
 1. State the learning outcome and ask one diagnostic question at this course's introductory depth. Define terms before using them; explain each decision as observation, interpretation, owner-approved action and verification.

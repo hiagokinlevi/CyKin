@@ -1244,6 +1244,20 @@ The Chapter 2 triage left `B19` unexplained and identified an audit-retention de
 
 [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) treats response and recovery as part of wider cybersecurity risk management. [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) addresses recovery from cybersecurity events. The classroom decision table below is a teaching model built for Harbor Library, not a universal playbook or an assertion that NIST mandates these exact steps.
 
+#### Three independent checks for a response control
+
+A response measure may stop a suspicious operation and still create unacceptable harm. Conversely, it may keep the service available while failing to block the concerning activity. The incident lead must not call either result unqualified success.
+
+For the Harbor Library booking service, separate three questions before selecting a control:
+
+**Protection:** What exact unwanted operation should the intervention prevent? A session revocation targets use of the named session; a pause targets staff writes along defined routes. Neither automatically prevents activity through all accounts, APIs, jobs or software defects.
+
+**Legitimate service:** What approved function may the intervention interrupt? Revocation may require staff to authenticate again; a write pause may move booking requests into a manual queue. The service owner must describe the tolerable disruption and how queued work will later be reconciled.
+
+**Verification:** What specific evidence would show that the first two expectations were met? A change ticket marked "executed" is not an effectiveness test. A quiet audit result could mean no request was attempted, the relevant source was unavailable, the query was too narrow, or the control actually prevented a change. A useful test needs a specified target, observable attempt, appropriate source coverage and independently checked business state.
+
+[NIST SP 800-61 Revision 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) places response activities within wider cybersecurity risk-management decisions. The three-question contract here is an original teaching method, not a mandatory NIST form. It matters because containment can reduce one risk while increasing another; the record must show both.
+
 ### 3.2 The case changes
 
 These additional records are invented. Use them with R1–R16; the timestamps are UTC and the records are the only authorized evidence for this exercise.
@@ -1272,6 +1286,23 @@ At 09:37 UTC, the team considers the following **hypothetical options**. No acti
 | Observe without intervention for ten minutes | Preserves normal service and may collect more context. | Unexplained edits could continue and harm more patrons. | Explicit lead decision accepting risk and a rapid review trigger. | Escalate immediately if another edit appears or a patron impact grows. |
 
 The best option depends on current activity, confidence, reversibility and the service owner's tolerance. A **reasoned classroom proposal** is to ask the incident lead and identity owner to authorize session revocation, preserve the available narrow records and have the service owner ready to pause staff writes if edits continue. Another team might choose the short write pause first if the identity session cannot be linked reliably to the edits. The learner must explain the decision, authority and fallback; no fixed option is automatically correct.
+
+#### Recommendation, approval, execution and verification receipts
+
+A decision is auditable only when each state has its own evidence. The distinction is practical, not linguistic:
+
+| State | Required evidence | Inappropriate upgrade |
+|---|---|---|
+| Proposed | Analyst's bounded option, supporting observations and expected harm reduction | Calling it approved because it sounds necessary |
+| Approved | Named accountable role, target, duration, acceptable service cost and review trigger | Calling it executed because permission was granted |
+| Executed | Operator's specific target, actual time, method/version and result receipt | Calling the effect verified because a command returned success |
+| Verified | Independent or appropriately authoritative proof of intended protection **and** acceptable legitimate service behavior, in a declared scope | Calling all identities, paths or recovery functions safe |
+
+At 09:37, a proposed session revocation could name `desk-a`'s *identified current session* as its target. The incident lead and identity owner are the proposed approving roles; an identity administrator would operate the change under the fictional rules. The expected protective result is denial of subsequent use of that session. The expected legitimate-service consequence is staff reauthentication. The evidence plan must include both, plus a new bounded booking audit after execution. R19 describes the capability to revoke, not a completed revocation.
+
+For the fifteen-minute pause, R21 provides a business *tolerance statement*, not the necessary approval of the actual target and window. An authorized operator would need the service owner's explicit decision and a means of verifying which staff-write paths are blocked. The manual queue also has an owner and reconciliation obligation. R21 must not be transformed into execution, even when the team favors the pause.
+
+A verified control result has **scope**. If one approved test shows a selected session can no longer authenticate, it does not establish that every previous token was invalidated. If one staff route rejects a write, it does not establish that a legacy route is blocked. The existing W1 fixture examines those route-specific failures independently; this expansion adds the state and acceptance logic that should surround any such test.
 
 #### Make the comparison observable
 
@@ -1576,6 +1607,14 @@ For a variation, imagine that the only independent transaction journal also cont
 
 **Expected submission:** three candidate matrices, the six-line decision card and a two-sentence variation response. **Assessment rubric (six points):** one point each for correct age arithmetic; treating K-B's mismatch as a failed integrity gate; distinguishing K-A's four-row match from complete or timely recovery; identifying K-C's B19/B20 conflict; keeping isolated import time separate from RTO and V1's audit failure open; and proposing an authorized, reviewable next test without claiming a completed production restore. A 6/6 answer is coherent for this fixture only. The model result follows the Chapter 3 source-reading answer in the final appendix.
 
+#### Return to service is a separate decision
+
+A team can reduce further edits while leaving the service unusable or its booking data wrong. Equally, a restored interface may allow unauthorized changes or fail to produce an attributable audit. The return-to-service owner therefore needs a **paired gate**: acceptable protective behavior and acceptable legitimate business behavior, plus correct state and sufficient observability. A failed mandatory gate means the full acceptance claim is blocked.
+
+Rollback is not simply "reverse the command." It needs a named owner, scope, the state or configuration to restore, the treatment of queued work, and tests for both renewed user service and restored security. If a broad pause must remain temporarily, the service owner should record how manual requests are received, protected from duplicates, later reconciled and reviewed. A risk exception is explicit, time-bounded and approved; it must not be hidden under the label "recovered."
+
+The last exercise of the chapter should therefore leave four distinct artifacts: a response decision with approval state, a causal hypothesis and falsifier, an isolated recovery test request with gate results, and an owner-reviewed service acceptance decision. No one artifact alone proves the others.
+
 ### 3.9 Sourced case study: recovery beyond the backup copy
 
 Harbor Library is invented. A useful real-world contrast is the [British Library's own March 2024 review of the October 2023 cyber-attack](https://www.bl.uk/files/v5dwkion/production/99206a2d1e9f07b35712b78f7d75fbb09560c08d.pdf/british-library-cyber-incident-review-8-march-2024.pdf?dl=). The report is the institution's retrospective account, written after investigation; it is **not** a raw event log, a finding about Harbor Library or a template for a one-month course to reproduce. Its exact descriptions are time-bound to the review date. Read the cited pages when using the case and avoid extending the report's conclusions to unexamined systems.
@@ -1592,11 +1631,115 @@ The same report describes strategic and operational crisis groups coordinating t
 
 **Guided source-reading activity:** write a three-row claim ledger with (1) a fact from the British Library report and its page or section, (2) one planning question it raises for the fictional booking service, and (3) one conclusion it cannot support about B17–B20. Include at least one row about restoration infrastructure and one about partial service. Then compare the source date with the time of your own course reading: a 2024 retrospective cannot by itself tell you the Library's current service state. The report also expresses uncertainty about the exact initial intrusion point; do not turn a likely entry point into a certain one. A model ledger appears in the final answer section. This supplementary source analysis is separate from EX027–EX038.
 
+#### Contrast: a decision record at 09:37
+
+**Plausible but incorrect:** "At 09:37 we know B20 was an attack. R21 authorizes a write pause, R22 proves the writes have stopped, and R23 proves recovery is ready. Apply the pause and close the incident after the page loads."
+
+Each asserted upgrade is wrong. R18 reports a B20 change but no human attacker or causal mechanism. R21 says a pause is tolerable, not approved or executed. R22 is a narrow earlier query, not a post-change verification. R23 is a backup/old restore-test status, not a current service-acceptance result. A loading page is not evidence of booking correctness or auditability.
+
+**Defensible 09:37 proposal:** "R17 limits the known approved task list to B17/B18 and R18 reports a further B20 edit under `desk-a`. The incident lead proposes a bounded current-session revocation, subject to identity-owner approval and preservation of feasible narrow sources. The identity administrator will verify execution if approved; the application and service owners will separately assess later edits and front-desk continuity. R21 supports discussing a short manual-queue fallback but gives no execution authority. Root cause, recovery readiness and personal-data exposure remain unresolved; reassess at the named next review or on a verified continuing edit."
+
+This record does not avoid action. It prevents recommendation, approval, execution and success from becoming a single unsupported sentence.
+
 ### 3.10 Worked decision record and synthesis
 
-An acceptable **proposed**, not executed, record is: “09:37 UTC; incident lead requests identity-owner approval to revoke `desk-a`'s current session after preservation of the available narrow records. R17–R18 show an unplanned `B20` edit following the earlier `B19` concern; the goal is to reduce further booking changes. Possible cost: front-desk reauthentication. R21 records tolerance for a fifteen-minute staff-write pause; separate service-owner approval would be required before using it as a fallback. Analyst will verify whether new edits occur and report at 09:45 UTC. Root cause and exposure remain unconfirmed.”
+Audit the defensible 09:37 proposal above as four separate receipts. This prevents a well-worded recommendation from being mistaken for a change that happened:
+
+| State | What the supplied case supports | What a later reviewer would need |
+|---|---|---|
+| Proposed | R17–R18 justify asking to revoke the identified current `desk-a` session. R21 makes a short staff-write pause a possible fallback with a known service cost. | A named decision owner, exact session or write routes, review time and a plan for the manual queue or staff reauthentication. |
+| Approved | No R1–R24 record approves either action at 09:37. Tolerating a pause is not authorizing it. | A separately recorded incident-lead and relevant identity- or service-owner approval for the chosen target and interval. |
+| Executed | No R1–R24 record states that a session was revoked or staff writes were paused. | Operator receipt with actual target, time, method and any failed or partial steps. |
+| Verified | R22 predates the proposal, and its query bounds are incomplete. It cannot show that a later change worked. | A post-action protective test tied to the selected target, a separate check of legitimate booking service, reliable source coverage and a defined failure trigger. |
+
+The proposal should set a 09:45 review or earlier review on a verified new unexplained edit. Root cause and personal-data exposure remain unresolved; the four rows do not claim a production action.
 
 This chapter converts the earlier timeline into a bounded decision. Chapter 4 will test the whole response: intake, evidence, authority, proportionate action, recovery criteria and a review of what the team would change before another incident.
+
+<a id="ir-rapid-ch03-g3-lab"></a>
+
+### 3.11 Offline laboratory: decision and recovery gates
+
+**Purpose:** Validate the logical separation of proposal, approval, execution, protective verification, legitimate service continuity, data correctness and audit attribution. This is a *new independent classroom branch*, not a replay of W1 write-path tests, the P1/C1 booking-value comparison, V1's specific observations or K1 copy selection.
+
+**Environment:** Python 3 standard library; data only in memory. No network, files, credentials or system changes. Every G3 row is a separate reset scenario, not a chronological incident timeline.
+
+**Inputs and meanings:** A value of `True` means the corresponding *fictional test card asserts* that a gate passed in its limited scope; `False` means the card asserts a failed gate; `None` means no test result is supplied. The flags are **not real approval receipts, collection evidence or actual restorations**. `protective` concerns the bounded harmful operation, `legitimate` the required legitimate business function, `data` an isolated owner-approved data check and `audit` sufficient attribution for the tested operation. The model intentionally requires all four for its most favorable limited label.
+
+#### Executable fixture
+
+~~~python
+SCENARIOS = [
+    ("G3-P", False, False, None, None, None, None),
+    ("G3-A", True, False, None, None, None, None),
+    ("G3-E", True, True, None, None, None, None),
+    ("G3-C", True, True, False, True, True, True),
+    ("G3-B", True, True, True, False, True, True),
+    ("G3-I", True, True, True, True, None, None),
+    ("G3-D", True, True, True, True, False, True),
+    ("G3-U", True, True, True, True, True, False),
+    ("G3-V", True, True, True, True, True, True),
+    ("G3-X", False, True, True, True, True, True),
+]
+
+def gate(approved, executed, protective, legitimate, data, audit):
+    if executed and not approved:
+        return "INVALID_UNAPPROVED_EXECUTION"
+    if not approved:
+        return "PROPOSED_ONLY"
+    if not executed:
+        return "APPROVED_NOT_EXECUTED"
+    if protective is None or legitimate is None:
+        return "EXECUTED_UNVERIFIED"
+    if not protective:
+        return "PROTECTION_GATE_FAIL"
+    if not legitimate:
+        return "BUSINESS_GATE_FAIL"
+    if data is None or audit is None:
+        return "RECOVERY_CHECKS_PENDING"
+    if not data:
+        return "DATA_GATE_FAIL"
+    if not audit:
+        return "AUDIT_GATE_FAIL"
+    return "BOUNDED_TEST_GATES_PASS"
+
+for ident, *fields in SCENARIOS:
+    print(ident, gate(*fields))
+
+# Negative control: invalidate attribution for the favorable test card.
+print(
+    "NEGATIVE_AUDIT",
+    gate(True, True, True, True, True, False),
+)
+~~~
+
+#### Exact expected output — executed against the displayed fixture
+
+~~~text
+G3-P PROPOSED_ONLY
+G3-A APPROVED_NOT_EXECUTED
+G3-E EXECUTED_UNVERIFIED
+G3-C PROTECTION_GATE_FAIL
+G3-B BUSINESS_GATE_FAIL
+G3-I RECOVERY_CHECKS_PENDING
+G3-D DATA_GATE_FAIL
+G3-U AUDIT_GATE_FAIL
+G3-V BOUNDED_TEST_GATES_PASS
+G3-X INVALID_UNAPPROVED_EXECUTION
+NEGATIVE_AUDIT AUDIT_GATE_FAIL
+~~~
+
+#### Interpretation and negative control
+
+G3-P records only a proposal. G3-A adds a fictional approval but no execution. G3-E claims execution while omitting effectiveness checks; it cannot be described as successful containment. G3-C and G3-B show why the protective and legitimate-service tests are independently necessary. G3-I has both of those bounded passes but no recovery-data or audit result. G3-D fails data correctness. G3-U fails audit attribution. G3-V passes the **declared classroom gates for that one modeled test**, but does not establish root cause, complete route coverage, production authorization or service-owner acceptance. G3-X contains an internally unacceptable claim of execution without approval and is rejected even when all other flags are true.
+
+The negative control changes only the audit flag of the favorable test to `False`. The output becomes `AUDIT_GATE_FAIL`: a missing or failed mandatory attribution check blocks the limited acceptance label even when protection, legitimate service and data appear satisfactory.
+
+**Important algorithmic limit:** This code is a decision-logic demonstration, not an evidence authentication engine. Setting `approved=True` does not supply a real signed approval; setting `executed=True` does not produce an operator receipt. All gates would need independent, scope-appropriate evidence in a real authorized operation. The program also does not estimate probabilities or verify that all paths were tested.
+
+**Learner artifact:** Before running, predict all eleven lines. Afterward, provide a three-column table `scenario | returned state | missing or failed evidence`. Add one sentence explaining why G3-V does not mean "recovery complete," and another showing how G3-D might require a new isolated copy or owner-approved reconciliation rather than an unconditional return. Keep G3 cards outside canonical R1–R24 and the later chapter branches.
+
+**Acceptance rubric (five-point lab, supplementary rather than a new numbered exercise):** one point each for exact output; correct lifecycle separation; independent protective and service gates; distinct data and audit failure interpretation; and an explicit bounded-evidence/canonical-release limitation. Do not claim the classroom `True` inputs were verified production observations.
 
 ### Chapter 3 exercises
 

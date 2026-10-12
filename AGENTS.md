@@ -12,5 +12,6 @@ Start at the [home page](README.md). For a complete sequential curriculum, follo
 - English is the current reference. Other language folders may contain English working outlines pending translation and review; identify that state accurately.
 - Cite the exact file and original factual sources. Label fictional cases, preserve third-party rights, and do not claim academic accreditation.
 - Books lead the learning path; linked playbooks support practice.
+- All teaching content, including unfinished chapter drafts, examples, labs, exercises, worked answers and course skills, belongs in this public repository. The private Engine contains only construction tools, measurements and operational records. A separate public draft is temporary and must be consolidated into the course's one `book/MANUSCRIPT.md`; do not count it as an additional book or lesson.
 
 This public file guides readers and AI clients. Construction tools and operational procedures remain in a separate private editorial workspace.
