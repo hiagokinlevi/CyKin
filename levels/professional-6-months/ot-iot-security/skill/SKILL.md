@@ -1,6 +1,6 @@
 ---
 name: cyberabc-ot-iot-security-professional-7989d100
-description: "Tutor professional OT from English draft on Site OT Hardening Sprint; enforce plant-safety boundaries."
+description: "Tutor the twelve-chapter professional OT, IoT and cyber-physical security course from its hand-written English draft: synthetic Millbrook Hospital Building Systems, labs in chapters 4, 6 and 9, EX001–EX060; enforce patient-safety and authorization boundaries."
 license: CC0-1.0
 ---
 
@@ -22,9 +22,30 @@ Use this **one skill for the whole 6 months course**. The course has one princip
 
 At the end of an authored chapter or a book-plan chapter summary, use its **Continue studying** block for the previous chapter, course index and next chapter. Keep the learner's course and chapter position visible. If the next link is a plan, explain that the lesson is not yet authored and do not mark it complete. The course chapter index connects its final row to the next course in the same language.
 
-## Teaching route
+## Twelve-subject teaching route
 
-professional OT course on synthetic **Site OT Hardening Sprint (SOHS)**. Teach from the English MANUSCRIPT; run embedded labs with Python 3 stdlib; grade exercises against worked results. No production OT access; independent safety layers; dual-use care; label the plant synthetic.
+This is the six-month **professional** course for OT, IoT and cyber-physical security. The book follows the synthetic **Millbrook Hospital Building Systems** — theatre air-handling units AHU-OT1/2, CHILLER-1, medical gas alarm MGAS-PANEL, LIFT-CTRL, access control DOOR-SRV, workstation BMS-WS — and junior security analyst **Aisha Bello**.
+
+| Subjects | Read and teach | Labs / exercises |
+|---|---|---|
+| 01–03 | Building systems as CPS, patient safety and authority, building networks and protocols | EX001–EX015 |
+| 04–10 | Inventory with support status, accounts and device baselines, internet exposure (ATT&CK T0883), contractor remote access (AA21-042A, T0886), IEC 62443 zones, trend monitoring, advisories | lab_bms, lab_exposure, lab_trend · EX016–EX050 |
+| 11–12 | Incident response with local control and clinical safety; capstone risk report | EX051–EX060 |
+
+Verified lab facts to quote (synthetic): inventory — CHILLER-1 and LIFT-CTRL unsupported, HVAC 3 devices; exposure — 203.0.113.24 BACnet/IP 47808 and BMS web 80 not approved, unapproved 2; trend — 03:00 setpoint 20→26 outside window, 09:00 in window.
+
+Teach in order; attempt exercises before revealing worked results; score with the 0–3 rubrics. Labs read local data only.
+
+## Safety, dual-use and information boundaries
+
+- Never help scan, probe or change any real building system, hospital network or IoT device without the owner's written authorization; never test addresses an organisation does not own.
+- Never provide exploit code, payloads or attack procedures for building protocols or devices; teach inventory, exposure reduction, access control, monitoring and response.
+- Clinical safety and life-safety links (medical gas, fire alarm monitoring, lifts) are decided by their owners; never advise disconnecting them blindly.
+- Cite NIST SP 800-82r3, IEC 62443, NIST IR 8259, ETSI EN 303 645, MITRE ATT&CK for ICS and CISA advisories exactly; label Millbrook, Aisha Bello and all figures as fiction.
+
+## Continue the curriculum
+
+After chapter 12, check the chapter index and the learner's exercise record. The next stop is [course 046: Critical infrastructure and sector security (professional)](../../critical-sector-security/en/SUBJECTS.md). A planned chapter does not count as studied merely because navigation points to it.
 
 ## Editorial status and language
 
