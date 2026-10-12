@@ -2,7 +2,7 @@
 
 **Editorial responsibility:** [hiagokinlevi](https://github.com/hiagokinlevi). **Course:** 039 / Incident Response and Cyber Resilience / Professional, six months. **Language:** English. **State:** temporary public teaching draft; not a second book or completed edition. Consolidation target: [MANUSCRIPT.md](../MANUSCRIPT.md). All original C01–C33 and EX001–EX060 IDs, original teaching, release chronology and answers remain authoritative until integrated.
 
-**Integration convention:** Insert each chapter's teaching after the final existing numbered instructional subsection and before its “Common mistakes and limits” heading. Insert the corresponding worked-answer expansion immediately after the same subject's EX results within the manuscript's [worked-answer appendix](../MANUSCRIPT.md#worked-answers). These additions do not change the subject count, exercise IDs, or navigation.
+**Integration convention:** Insert each chapter's teaching after the final existing numbered instructional subsection and before its “Common mistakes and limits” heading. Insert the corresponding worked-answer expansion immediately after the same subject's EX results within the manuscript's [worked-answer appendix](../MANUSCRIPT.md#worked-answers). The five supplementary **Continue studying** lines provide working-draft navigation only: on consolidation, preserve each chapter's existing single canonical navigation block and omit these duplicate draft-only lines. These additions do not change the subject count or exercise IDs.
 
 ## Chapter 01 — Incident lifecycle and organizational readiness
 
