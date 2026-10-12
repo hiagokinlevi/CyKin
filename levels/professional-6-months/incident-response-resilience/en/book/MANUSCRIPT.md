@@ -2585,8 +2585,10 @@ SCORES = {
 }
 
 def assess10(name, approval, receipt, data, audit):
+    if receipt and not approval:
+        return "INVALID_UNAPPROVED_EXECUTION"
     if name == "V10":
-        return "DOCUMENT_REVIEW_NO_DISRUPTION"
+        return "INVALID_BENIGN_EXECUTION" if receipt else "DOCUMENT_REVIEW_NO_DISRUPTION"
     if not approval:
         return "HOLD_AUTHORITY"
     if not receipt:
@@ -2610,6 +2612,8 @@ CASES = [
 ]
 for name, *fields in CASES:
     print(name + ": " + assess10(name, *fields))
+print("V10_FALSE_NEGATIVE: " + assess10("V10", True, True, True, True))
+print("V10B_UNAPPROVED_ACTION: " + assess10("V10b", False, True, True, True))
 ~~~
 
 **Literal tested output:**
@@ -2623,11 +2627,15 @@ C17: APPROVED_NOT_EXECUTED
 C27: NO_GO_AUDIT
 C28_ISOLATED: APPROVED_NOT_EXECUTED
 C30_DECLARED: BOUNDED_CHECK_REVIEW_OPEN
+V10_FALSE_NEGATIVE: INVALID_BENIGN_EXECUTION
+V10B_UNAPPROVED_ACTION: INVALID_UNAPPROVED_EXECUTION
 ~~~
 
 **Adversarial interpretation:** P1 can score 12/12 while V10b still blocks disruptive action. C27's failed actor audit cannot be averaged away by correct data. C28_ISOLATED reports a favorable isolated test but no *production* execution receipt. C30_DECLARED is a toy consistency result for a limited accepted scope, not proof that a production system passed every test or that the incident is closed. The V10 hardcoded branch represents only the separate provided benign fixture; no user should build production approval logic from this toy string.
 
 **Supervised practice:** Freeze P1 as draft 0.2 and write seven gate contracts, each with an unknown/stop branch. Evaluate main CTN, V10 and V10b in separate packets; record why the same input fields could support different operational choices. Run the exact C10X program, then ask a peer to challenge C27/C28 status and the unverified source semantics. **Seven-point rubric:** two for correct document scoring and its limits, two for main/negative branch distinction, one for approval-vs-execution, one for audit no-go and one for a versioned, owner-assigned retest. A real tenant action or learner-facing dispatch is forbidden.
+
+**Additional adversarial control and release rule:** The added `V10_FALSE_NEGATIVE` row inserts a fictitious reported execution into the normally benign V10 branch. A playbook that answers `DOCUMENT_REVIEW_NO_DISRUPTION` despite such a report would mask potentially unauthorized action; the corrected classifier rejects it. `V10B_UNAPPROVED_ACTION` supplies a reported action without any permitted approver and rejects it before treating the case as an ordinary escalation. These are **synthetic contradictions**, not new CTN actions. The previous eight output lines remain unchanged. This toy guard does not authenticate the approval, prove that a control actually ran, or replace the chapter's seven-gate contract. A reviewer should preserve both the unexpected action report and the source/authority evidence that would be required to investigate it.
 
 ### 10.17 Synthesis and next chapter
 
@@ -3266,6 +3274,8 @@ Both fictional messages remain blocked: one lacks designated approval and the ot
 **EX048 — Model branch table.** Main CTN: C13 confirms wrong stored state, C20 links an unapproved task to `q-144`; recommend scoped hold, follow C17/C21 approval and C18/C19 observations, then C24–C30 remediation and recovery; stop at any failed acceptance criterion such as C27. V10 only: correct slot state plus exact approved job record and no unexpected task within supplied scope; document limited negative control, **do not disable** account or send breach notice, and let the authorized supervisor decide downgrade/closure. V10b only: owner unavailable before a source-expiry warning; request authorized bounded preservation and invoke the real escalation route, but leave disruptive action pending. The three rows are separate simulations; one row's result is never imported into another's evidence.
 
 **Additional professional worked reasoning:** For the main CTN branch, cite C13–C19 at their released times; do not use C20 at the 09:35 proposal or C33 at the 10:45 service decision. The action remains a proposal until C17, reported execution until C18 and one-route observed effect after C19. A later C29/C30 return is separate, and C31–C33 never establish external delivery or absence of disclosure. A single all-green incident field would conceal these transitions.
+
+**C10X strengthened branch reasoning:** Two added adversarial rows keep the original P0/P1 scores and six branch outcomes intact. The benign V10 case becomes `INVALID_BENIGN_EXECUTION` if a simulated operator receipt is injected, and V10b becomes `INVALID_UNAPPROVED_EXECUTION` if a disruptive receipt is asserted without approval. Neither row states that CTN performed an operation. A complete EX048 response distinguishes expected safe decisions from contradictory input/receipt evidence and requests an authorized investigation of any alleged execution.
 
 **EX049 — Model score.** Using the six 0–2 criteria in §10.4, P0 scores **0 trigger/scope, 0 authority, 0 evidence, 0 containment/rollback, 1 recovery, 0 communication/review = 1/12**. The one point reflects a vague but observable “portal loads” check; it lacks data, audit and failed-test handling. P1's Gate 0 supplies trigger/scope, Gates 1–2 provenance and uncertainty, Gate 3 authority and reversible containment, Gates 4–5 cause and acceptance, and Gate 6 audience/next review. As a **document design**, it can score **2 in each = 12/12**. That is not field effectiveness: the main case, V10 and V10b walkthroughs, source/rights check and owner approval remain required. A local scorer could lower a P1 criterion only by pointing to an actual missing field or failed branch, not by changing the rubric after seeing the result.
 
