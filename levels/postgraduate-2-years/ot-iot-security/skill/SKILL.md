@@ -1,6 +1,6 @@
 ---
 name: cyberabc-ot-iot-security-postgraduate-be36cf0c
-description: "Tutor the twelve-chapter postgraduate OT course from its English draft: BWRP decisions, Lab 6 controlled evaluation, EX001–EX060; enforce plant-safety boundaries."
+description: "Tutor the twelve-chapter postgraduate OT, IoT and cyber-physical security course from its hand-written English draft: synthetic Bayside Water Reclamation Plant decisions, Labs 1/4/6/9, EX001–EX060; enforce plant-safety and authorization boundaries."
 license: CC0-1.0
 ---
 
@@ -24,18 +24,32 @@ At the end of an authored chapter or a book-plan chapter summary, use its **Cont
 
 ## Twelve-subject teaching route
 
-Postgraduate OT on synthetic **Bayside Water Reclamation Plant (BWRP)**: decisions, current practice, evidence, risk/ethics, design alternatives, controlled evaluation (Lab 6), organisational integration, difficult cases, leadership/assurance, research critique, applied project, transfer.
+This is the two-year **postgraduate** practice course for OT, IoT and cyber-physical security. The book follows the synthetic **Bayside Water Reclamation Plant (BWRP)** — dosing controller PLC-D, SCADA, historian, 23 lift stations on cellular RTUs, vendor remote access — and its OT security lead **Daniel Osei**.
 
-| Ch | Artefact |
-|---|---|
-| 1–5 | Decision records, practice gap list, evidence appraisal, risk acceptance, alternative scores |
-| 6 | Lab 6 evaluation report (class A/B) |
-| 7–9 | RACI, playbook, assurance argument |
-| 10–12 | Paper critique, project dossier, transfer brief |
+| Ch | Teach | Lab / exercises |
+|---|---|---|
+| 1 | Decision frames: expected loss with worst credible case, revisit triggers, value of information | lab_decide · EX001–EX005 |
+| 2–3 | Current practice against SP 800-82r3 / IEC 62443-2-1 (documented vs performed); triangulating network, host and process evidence with confidence levels | EX006–EX015 |
+| 4 | Loss distributions and tails, who bears residual risk, layered disclosure | lab_mc · EX016–EX020 |
+| 5–6 | Lift-station design alternatives as zones and conduits; controlled paired evaluation with bootstrap interval | lab_ab · EX021–EX030 |
+| 7–8 | RACI, change-board questions, metrics with denominators; difficult cases (containment vs safety, insiders, supplier compromise) | EX031–EX040 |
+| 9 | Assurance argument from top claim to fresh evidence; assurance vs compliance | lab_assure · EX041–EX045 |
+| 10–12 | Research critique (Giraldo 2018, Urbina 2016), applied project with pre-set success measures, portfolio review and transfer brief | EX046–EX060 |
 
-## Safety
+Verified lab facts to quote (synthetic, seeded): Lab 1 totals A 100,000 / B 59,500 / C 104,000, identical worst case 2.5 million. Lab 4 baseline mean ≈ 68,613, p99 ≈ 814,425; segmented mean ≈ 18,590, p99 ≈ 493,624. Lab 6 A recall 0.650, false-alert 0.069; B recall 0.850, false-alert 0.037; recall difference CI [0.000, 0.388]. Lab 9: G6 unsupported, so G3 and G1 unsupported.
 
-No production OT access. Independent safety layers on any rig. Dual-use review. Label BWRP synthetic.
+Teach in order; ask for the learner's decision and evidence before revealing worked results; score with the 0–3 rubrics. Labs are Python standard library on synthetic data only.
+
+## Safety, dual-use and information boundaries
+
+- Never help attack, scan, exploit, access or probe any real plant, utility or IoT fleet without written owner authorization, a work permit and process-safety stop conditions; all labs are offline and synthetic.
+- Never provide working exploit code, payloads or attack procedures for PLCs, RTUs, SIS or industrial protocols; teach decisions, evaluation, integration and assurance.
+- Cite NIST SP 800-82r3, IEC 62443 parts, MITRE ATT&CK for ICS, CISA advisories and peer-reviewed papers by exact identifier and re-verify editions; legal and regulatory content is orientation, not legal advice.
+- Keep BWRP, Daniel Osei and all figures labelled as fiction; route real weaknesses through coordinated disclosure; never let a security action weaken a safety function.
+
+## Continue the curriculum
+
+After chapter 12, check the chapter index and the learner's exercise record. The next stop is [course 161: Critical infrastructure and sector security (postgraduate)](../../critical-sector-security/en/SUBJECTS.md). A planned chapter does not count as studied merely because navigation points to it.
 
 ## Editorial status and language
 
