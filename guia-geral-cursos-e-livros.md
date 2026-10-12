@@ -242,7 +242,7 @@
 | AI and machine-learning security | [Course](levels/masters-2-years/ai-security/README.md) · [Skill](levels/masters-2-years/ai-security/skill/SKILL.md) | [Plan](levels/masters-2-years/ai-security/en/book/PLAN.md) | [Nine editions](levels/masters-2-years/ai-security/README.md) |
 | Quantum and post-quantum security | [Course](levels/masters-2-years/quantum-post-quantum-security/README.md) · [Skill](levels/masters-2-years/quantum-post-quantum-security/skill/SKILL.md) | [Plan](levels/masters-2-years/quantum-post-quantum-security/en/book/PLAN.md) | [Nine editions](levels/masters-2-years/quantum-post-quantum-security/README.md) |
 | OT, IoT and cyber-physical security | [Course](levels/masters-2-years/ot-iot-security/README.md) · [Skill](levels/masters-2-years/ot-iot-security/skill/SKILL.md) | [Plan](levels/masters-2-years/ot-iot-security/en/book/PLAN.md) | [Nine editions](levels/masters-2-years/ot-iot-security/README.md) |
-| Critical infrastructure and sector security | [Course](levels/masters-2-years/critical-sector-security/README.md) · [Skill](levels/masters-2-years/critical-sector-security/skill/SKILL.md) | [Plan](levels/masters-2-years/critical-sector-security/en/book/PLAN.md) | [Nine editions](levels/masters-2-years/critical-sector-security/README.md) |
+| Critical infrastructure and sector security | [Course](levels/masters-2-years/critical-sector-security/README.md) · [Skill](levels/masters-2-years/critical-sector-security/skill/SKILL.md) | [Draft](levels/masters-2-years/critical-sector-security/en/book/MANUSCRIPT.md) | [Nine editions](levels/masters-2-years/critical-sector-security/README.md) |
 
 ## Doctoral research track — 2 years
 

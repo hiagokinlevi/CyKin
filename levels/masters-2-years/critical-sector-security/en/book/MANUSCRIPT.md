@@ -339,6 +339,8 @@ A dissertation stands on its question. Move from topic to problem to question de
 ### Continue studying — chapter 01 of 08
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
+
+Continue to the next authored lesson.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-02"></a>
@@ -549,6 +551,8 @@ Sectors differ in what they lose, how fast and for whom; in who governs them; an
 ### Continue studying — chapter 02 of 08
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
+
+Continue to the next authored lesson.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
@@ -836,6 +840,8 @@ An unplanned infrastructure event offers no randomization, so every design is an
 ### Continue studying — chapter 03 of 08
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
+
+Continue to the next authored lesson.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-04"></a>
@@ -1080,6 +1086,8 @@ Hold several explanations at once and look for observations that separate them. 
 ### Continue studying — chapter 04 of 08
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
+
+Continue to the next authored lesson.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
@@ -1348,6 +1356,8 @@ A proposal is a contract: it fixes the question, estimands, design and analysis,
 ### Continue studying — chapter 05 of 08
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
+
+Continue to the next authored lesson.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-06"></a>
@@ -1589,6 +1599,8 @@ Keep lineage: every extract logged, audited, frozen and used only through script
 ### Continue studying — chapter 06 of 08
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
+
+Continue to the next authored lesson.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
@@ -1795,6 +1807,8 @@ Give each part of the dissertation one job and write it in the order that keeps 
 ### Continue studying — chapter 07 of 08
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
+
+Continue to the next authored lesson.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-08"></a>
@@ -2003,7 +2017,7 @@ Examiners read for coherence and are influenced by care; make the abstract, intr
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
-The chapter index links to the next course in the study path: course 185, Cybersecurity / Doctoral research track.
+This is the final chapter of this course; the index links the next course in the full study path.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>

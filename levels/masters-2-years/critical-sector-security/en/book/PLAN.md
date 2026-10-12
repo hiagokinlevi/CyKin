@@ -2,7 +2,7 @@
 
 **One book for this course and language.** 8 curricular subjects are its chapters. Duration: 2 years; planned effort: approximately 1200 hours. Audience: Beginning researchers. Entry knowledge: Strong domain foundations and research-method literacy. Intended outcome: formulate a question, evaluate prior work and produce reproducible findings in critical infrastructure and sector security.
 
-**Editorial state:** structured outline; manuscript not yet authored. English reference edition.
+**Editorial state:** draft manuscript exists; release A4 validation and review pending. English reference edition.
 
 [Home](../../../../../README.md) · [Course home](../../README.md) · [Edition](../README.md) · [Chapter index](../SUBJECTS.md) · [Course skill](../../skill/SKILL.md)
 
