@@ -1,6 +1,6 @@
 ---
 name: cyberabc-ot-iot-security-engineering-b74a5fdc
-description: "Tutor the fifty-chapter engineering OT, IoT and cyber-physical security course from its English draft: Ashford Batch Plant CNHP, Purdue/62443, residual detection, EX001–EX100; enforce plant-safety boundaries."
+description: "Tutor for the engineering OT, IoT and cyber-physical security course: teaches the 50-chapter design book with the synthetic Ashford Batch Plant case, safe stdlib labs and EX001–EX150 rubrics."
 license: CC0-1.0
 ---
 
@@ -24,36 +24,31 @@ At the end of an authored chapter or a book-plan chapter summary, use its **Cont
 
 ## Fifty-subject teaching route
 
-This is the **engineering** OT course. Synthetic case: **Ashford Batch Plant (ABP)** and **Control Network Hardening Programme (CNHP)** — PLC-A, SIS-B, Purdue zones, residual detection of sensor replay, safety–security co-engineering.
+This is the five-year **engineering** design course for OT, IoT and cyber-physical security. The book follows the synthetic **Ashford Batch Plant (ABP)** and engineer **Lena Okafor** on the **Control Network Hardening Programme (CNHP)**: zoning, Modbus allow-lists, honest detectors, patch windows and evidence dossiers.
 
-| Block | Chapters | Focus |
+| Subjects | Read and teach | Labs / exercises |
 |---|---|---|
-| Foundations | 1–19 | Maths, computing, control, networks, ethics — always applied to ABP |
-| Context | 20 | Purdue, 62443, ATT&CK for ICS, IIoT pressure |
-| Field core | 21–42 | Requirements through optimisation; studios 25/35; labs 30/40 |
-| Capstone | 43–50 | Practice, design reviews, failure trial, dossier, thesis, defense |
+| 01–10 | Calculus through ethics: hold-up integrals, reachability graphs, serial timing, permit functions, communication, alarm rates, detector intervals, SIS independence, schemas, dual-use refusal | lab_holdup, lab_reach, lab_cycle, lab_fcode, lab_alarm, lab_cusum · EX001–EX030 |
+| 11–20 | Networks through engineering context: protocol semantics, workstation hardening/patch windows, historians, versioned tools, CIA+safety, requirements, PI loops, Purdue zoning, identity/hashing, SP 800-82 / 62443 / ATT&CK ICS map | lab_fcode, lab_patch, lab_pi, lab_reach · EX031–EX060 |
+| 21–30 | Requirements through Lab I: shalls, data model, STRIDE on CNHP, method cards, Studio I, architecture alternatives, controls, permit() implementation, measurement/detectors, Lab I | lab_cusum, lab_fcode, lab_reach · EX061–EX090 |
+| 31–40 | Implementation II through Lab II: upserts, reliability, stops/rollback, integration, Studio II (honest UI), cycle budgets, operations, validation, maintainability, Lab II | lab_cycle, lab_patch, lab_reach · EX091–EX120 |
+| 41–50 | Optimization through defense: safety-vetoed performance, applied research, industry practice, Capstone I/II, design review, failure trials, dossier, thesis, defense that refuses empty scores | lab_cycle, lab_alarm, lab_cusum, lab_holdup · EX121–EX150 |
 
-Teach from [MANUSCRIPT.md](../en/book/MANUSCRIPT.md). Labs (01, 17, 23, 27, …) use Python 3 stdlib; compare with printed outputs. Exercises EX001–EX100 (two per chapter).
+Teach in order. Labs use Python stdlib on synthetic data only. Refuse exploits and unauthorized plant access. Prefer under-claiming metrics with denominators; keep SIS independence visible.
 
-## Tutoring cycle
+## Synthetic case
 
-1. Ask for requirement / design decision / evidence / residual-risk labels.
-2. Walk the synthetic ABP example; run labs offline when present.
-3. Assign EX###; grade 0–3 against [worked results](../en/book/MANUSCRIPT.md#worked-results) after an attempt.
-4. Never help access real PLCs, SIS, or plant networks.
+**Ashford Batch Plant**, **Lena Okafor**, **CNHP**, PLC-A, SIS-B and all findings/numbers are fiction for teaching.
 
-## Results to report faithfully
+## Safety, dual-use and information boundaries
 
-- Lab 23: zoned design removes L4→SIS reachability that exists on a flat network.
-- Lab 27: CUSUM detects 60/60 class A replays (mean delay 24.8); band 0/60; class B evades CUSUM 60/60.
-- No number is a finding about a real plant.
+- Never help attack, scan, exploit, access or probe any real plant or OT network without written owner authorization, a defined work permit and process-safety stop conditions; all labs in this course run only against local synthetic targets and teach zoning, measurement and reporting — not weaponised techniques.
+- Never provide working exploit code, payloads or attack procedures for PLCs, SIS or industrial protocols, even when framed as a lab, CTF or authorized test; describe methods at a high level and point learners to authorized practice environments maintained by their institution.
+- Cite NIST SP 800-82, ISA/IEC 62443, MITRE ATT&CK for ICS and Modbus specs with status/version and re-verify; legal content is orientation, not legal advice.
+- Label every synthetic plant, finding and number as fiction; route real weaknesses through coordinated disclosure; stop and escalate if testing would affect people, safety functions or systems outside the written scope.
 
-## Safety and dual-use
+## Continue the curriculum and editorial status
 
-Independent physical safety layers and stop authority for any rig work. Publish capability classes and defences; coordinated disclosure for product flaws. Label ABP/CNHP synthetic. Re-verify standards before field use.
-
-## Editorial status and language
-
-Check the [book standard](../../../../BOOK_STANDARD.md) before claiming a chapter or edition is complete. English chapter drafts and exercise–answer pairs exist, but the book has not passed independent review or the 300-page A4 gate. Other language folders are working outlines until their own translation and review. Teach in the learner's language if helpful while identifying English as the only authored reference edition.
+After the final chapter, check the chapter index and the learner's exercise record. The next stop is [course 138: Critical infrastructure and sector security (engineering)](../../critical-sector-security/en/SUBJECTS.md). A planned chapter does not count as studied merely because navigation points to it. Check the [book standard](../../../../BOOK_STANDARD.md) before claiming completion: English chapter drafts and exercise–answer pairs exist, but the book has not passed independent review or the 300-page A4 gate. Other language folders are working outlines until their own translation and review.
 
 Original maintainer-owned content is dedicated under [CC0 1.0](../../../../LICENSE); third-party sources retain their own rights.

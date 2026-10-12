@@ -1,9 +1,9 @@
 # OT, IoT and Cyber-Physical Security: Engineering Secure Control Systems
 
 - Language: English (`en`); engineering course, five years; approximately 4,000 hours of planned study.
-- Editorial state: **draft**. Chapters 1–50 of 50 have authored teaching text; exercises EX001–EX100 (two per chapter) have matching worked results; offline labs use Python 3 standard library with verified outputs. Independent review and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
-- Audience: future engineers who will design, implement and verify security for industrial control, OT and cyber-physical systems. Entry knowledge: secondary-school mathematics and physics.
-- Relation to neighbouring books: the [critical-infrastructure engineering book](../../../critical-sector-security/en/book/MANUSCRIPT.md) emphasises sectors and cross-sector cascades; the [master's OT book](../../../../masters-2-years/ot-iot-security/en/book/MANUSCRIPT.md) emphasises empirical study design. **This book is about building control-system security**: requirements, Purdue/62443 architecture, PLC/SCADA conduits, detection, safety–security co-engineering, verification and capstone evidence.
+- Editorial state: **draft**. Chapters 1–50 of 50 have authored teaching text; exercises EX001–EX150 have matching worked results; offline labs use Python 3 standard library with verified outputs. Independent review and the 300-page A4 verification remain open. Draft-chapter coverage is not a completed book.
+- Audience: future engineers who will design, implement and verify security for industrial control, OT and cyber-physical systems.
+- Relation to neighbouring books: the critical-infrastructure engineering book emphasises sectors; the master's OT book emphasises empirical study design. **This book is about building control-system security**.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Educational boundary: not an accredited degree or licence. No authority to access real plants. All plants, people and numbers in examples are **synthetic** unless a sentence cites a public source.
 
@@ -19,7 +19,7 @@ Chapters 1–19 build foundations applied to OT from the first page. Chapter 20 
 |---|---|---|
 | **Ashford Batch Plant (ABP)** — reactor R-101, feed tanks T-1/T-2, PLC-A, SIS-B, SCADA, historian | System under design | Invented |
 | **Control Network Hardening Programme (CNHP)** | The engineering programme | Invented |
-| Cedar Industrial Park | Site context | Invented |
+| **Lena Okafor** | Engineer on CNHP | Invented |
 
 ### Core sources
 
@@ -27,91 +27,31 @@ Chapters 1–19 build foundations applied to OT from the first page. Chapter 20 
 
 ## Contents
 
-1. [Calculus I](#ch-01)
-2. [Discrete mathematics](#ch-02)
-3. [Physics for computing](#ch-03)
-4. [Programming I](#ch-04)
-5. [Engineering communication](#ch-05)
-6. [Calculus II](#ch-06)
-7. [Probability and statistics](#ch-07)
-8. [Computer architecture](#ch-08)
-9. [Programming II](#ch-09)
-10. [Engineering ethics and safety](#ch-10)
-11. [Networks and protocols](#ch-11)
-12. [Operating systems](#ch-12)
-13. [Data systems](#ch-13)
-14. [Software engineering](#ch-14)
-15. [Security fundamentals](#ch-15)
-16. [Systems engineering](#ch-16)
-17. [Control and feedback basics](#ch-17)
-18. [Security architecture](#ch-18)
-19. [Identity and cryptography](#ch-19)
-20. [OT, IoT and cyber-physical security: engineering context](#ch-20)
-21. [OT, IoT and cyber-physical security: requirements](#ch-21)
-22. [OT, IoT and cyber-physical security: system and data models](#ch-22)
-23. [OT, IoT and cyber-physical security: threat and failure analysis](#ch-23)
-24. [OT, IoT and cyber-physical security: methods I](#ch-24)
-25. [Design studio I](#ch-25)
-26. [OT, IoT and cyber-physical security: architecture alternatives](#ch-26)
-27. [OT, IoT and cyber-physical security: control design](#ch-27)
-28. [OT, IoT and cyber-physical security: implementation I](#ch-28)
-29. [OT, IoT and cyber-physical security: measurement](#ch-29)
-30. [Verification laboratory I](#ch-30)
-31. [OT, IoT and cyber-physical security: implementation II](#ch-31)
-32. [OT, IoT and cyber-physical security: reliability](#ch-32)
-33. [OT, IoT and cyber-physical security: safety and resilience](#ch-33)
-34. [OT, IoT and cyber-physical security: integration](#ch-34)
-35. [Design studio II](#ch-35)
-36. [OT, IoT and cyber-physical security: performance and scale](#ch-36)
-37. [OT, IoT and cyber-physical security: operations](#ch-37)
-38. [OT, IoT and cyber-physical security: validation](#ch-38)
-39. [OT, IoT and cyber-physical security: maintainability](#ch-39)
-40. [Verification laboratory II](#ch-40)
-41. [OT, IoT and cyber-physical security: system optimization](#ch-41)
-42. [OT, IoT and cyber-physical security: applied research](#ch-42)
-43. [Industry or public-service practice](#ch-43)
-44. [Engineering capstone I](#ch-44)
-45. [Independent design review](#ch-45)
-46. [Engineering capstone II](#ch-46)
-47. [Failure and recovery trial](#ch-47)
-48. [Evidence dossier](#ch-48)
-49. [Engineering thesis](#ch-49)
-50. [Final defense](#ch-50)
-51. [Worked results](#worked-results)
+| Chapters |
+|---|
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) · [41](#ch-41) · [42](#ch-42) · [43](#ch-43) · [44](#ch-44) · [45](#ch-45) · [46](#ch-46) · [47](#ch-47) · [48](#ch-48) · [49](#ch-49) · [50](#ch-50) |
+
+[Worked results](#worked-results) · [References](#references)
 
 <a id="ch-01"></a>
 
 ## Chapter 1 — Calculus I
 
-### Learning outcomes and connection
+### Learning outcomes
 
-After this chapter you can (1) treat tank level as a stock whose rate of change is a flow; (2) compute derivatives and definite integrals for feed-tank hold-up; (3) solve "how long until empty" by bisection; and (4) explain why an average-rate shortcut can mislead a batch schedule. It opens the Ashford Batch Plant design case and prepares Calculus II.
+You will (1) model a tank level as the integral of net flow; (2) use that model to compute how long operators have after a pump stops; (3) explain why that time is a security quantity, not only a process one.
 
-### 1.1 Stocks and flows in a batch plant
+### 1.1 Level is accumulated flow
 
-A feed tank is a stock of feedstock; a dosing pump is a flow. A reactor heel is a stock; a discharge valve is a flow. OT security questions are often stock-and-flow questions under adversity: *if the makeup pump stops because its PLC loses a legitimate command path, how long until the batch must abort?* The answer is an integral of outflow compared with usable volume — not a single datasheet number.
+Feed tank T-1 at Ashford Batch Plant (ABP) holds V(t) cubic metres. If the make-up pump stops at t = 0 and the reactor keeps drawing q(t) m³/h, then V(t) = V₀ − ∫₀ᵗ q(s) ds. The level falls exactly as fast as the outflow, and the time until it reaches the minimum safe hold-up V_min is the t* that solves ∫₀^t* q(s) ds = V₀ − V_min. When q is constant this is (V₀ − V_min)/q; when q varies, you integrate.
 
-The derivative $dV/dt$ is the instantaneous rate of change of volume $V$. The definite integral $\int_a^b q(t)\,dt$ is the amount transferred. The fundamental theorem links them: if $V'=-q$, then $V(b)-V(a)=-\int_a^b q(t)\,dt$.
+### 1.2 Why a security engineer cares
 
-### 1.2 Derivatives and integrals you will use
+An attacker who can stop a pump or spoof a level reading changes this integral. The hold-up time is the window in which operators or a safety system must notice and act. If T-1 holds 12 m³, the minimum is 2 m³ and the reactor draws about 1.8 m³/h, operators have roughly 5.5 hours. That number goes straight into the detection requirement: an alarm that fires after six hours detects nothing useful. Calculus turns "detect quickly" into "detect within 5.5 hours, with margin".
 
-Polynomial, exponential and trigonometric derivatives; product and chain rules; antiderivatives of the same. Batch demand is rarely constant: a six-hour recipe may draw faster in the charge phase. If $q(t)=1.8+0.4\sin(2\pi t/6)$ m³/h, the peak draw is 2.2 m³/h and the antiderivative is $1.8t-(0.4\cdot 6/(2\pi))\cos(2\pi t/6)+C$.
+### 1.3 Varying draw
 
-### 1.3 Numerical root finding
-
-Set drawn volume equal to usable volume and solve for $T$. Bisection halves a bracketing interval until the tolerance is met; it is slow and reliable for continuous monotonic drawdown.
-
-### Engineering notes for this chapter
-
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
-
-### Worked example (synthetic Ashford Batch Plant)
-
-**Ashford Batch Plant (ABP)** is a synthetic specialty-chemical batching facility at Cedar Industrial Park. Feed tank T-1 holds 12 m³; the minimum usable level is 2 m³. Makeup stops at t=0 while the reactor still draws $q(t)$ above. Average-rate estimate: $(12-2)/1.8\approx 5.56$ h. Exact integral + bisection: about **5.53 h**. Here the sinusoid nearly averages out over the short horizon; in Chapter 6 a longer outage will show larger gaps.
-
-### Practical activity
-
-Lab 1 (Python 3 stdlib):
+ABP's draw oscillates with the batch recipe: q(t) = 1.8 + 0.4 sin(2πt/6). Its integral has a closed form, and the lab solves for t* by bisection. The answer, 5.53 h, is close to the average-rate estimate of 5.56 h because the oscillation averages out over a full six-hour cycle; with a shorter window or a skewed recipe the two would diverge, and the conservative choice is the smaller time.
 
 ```python
 # Lab 1 - tank hold-up after feed pump stop (Ashford Batch Plant, synthetic)
@@ -136,1208 +76,45 @@ time to min level: 5.53 h
 average-rate estimate: 5.56 h
 ```
 
-### Common errors and limits
+> **Synthetic case — Ashford Batch Plant.** Lena Okafor, engineer on the Control Network Hardening Programme (CNHP), used the hold-up calculation to argue that a low-level alarm on T-1 must be independent of PLC-A, because a compromised PLC could suppress both pump status and the alarm inside the 5.5-hour window.
 
-- Mixing L/s with m³/h (1 L/s = 3.6 m³/h).
-- Treating nameplate volume as usable volume.
-- Trusting Euler with a coarse step without a finer check.
-- Presenting the sinusoid as measured plant data.
+### 1.4 Errors and limits
 
-### Exercises — chapter 1
+Models assume the level sensor is honest; Chapter 29 treats sensor spoofing. Mixing m³/h with minutes is the most common slip. Always choose the conservative root when uncertainty is large.
 
-**EX001 — Peak draw.** *Objective:* find maximum of q(t) and compare with pump capacity 2.0 m³/h. *Inputs:* q(t) from §1.2. *Steps:* (1) differentiate; (2) find max; (3) conclude whether capacity binds. *Expected evidence:* derivative and sentence. *Rubric:* 3 = correct max 2.2 and capacity shortfall stated; 2 = one slip; 1 = derivative only; 0 = none.
+### Exercises
 
-**EX002 — Hold-up sensitivity.** *Objective:* rerun Lab 1 with VMIN=3.0 and report the new time. *Inputs:* Lab 1. *Steps:* change VMIN, rerun, compare. *Expected evidence:* two numbers and a scheduling note. *Rubric:* 3 = correct new time and links to abort risk; 2 = number only; 1 = not run; 0 = none.
+- **EX001 — Constant draw.** T-2 holds 9 m³, minimum 1.5 m³, constant draw 1.25 m³/h. Time to minimum? Rubric: 3 = 6.0 h with working; 2 = right method, arithmetic slip; 1 = formula only; 0 = none.
+- **EX002 — Requirement.** Turn your EX001 answer into a detection requirement with margin. Rubric: 3 = time bound with stated margin and independence from the controlling PLC; 2 = time bound only; 1 = vague "fast"; 0 = none.
+- **EX003 — Lab reading.** Why are the bisection and average-rate answers so close here, and when would they not be? Rubric: 3 = full sine cycle averages to 1.8; skewed or short window diverges; 2 = one half; 1 = vague; 0 = wrong.
 
-### Chapter synthesis
+### Synthesis
 
-Batch plants are stocks and flows. Hold-up time is an integral solved for its bound; check numerics; keep units; never let an average hide a peak that aborts a batch.
+Hold-up time is an integral and a security budget at once: it bounds how late detection may be.
 
 ### Continue studying — chapter 01 of 50
 
-[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
+[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (draft) →](#ch-02)
 
 <a id="ch-02"></a>
 
 ## Chapter 2 — Discrete mathematics
 
-### Learning outcomes and connection
+### Learning outcomes
 
-After this chapter you can (1) use sets, relations and graphs to model OT assets and conduits; (2) apply Boolean logic to interlock conditions; (3) count paths in a small attack graph; and (4) explain why graph models omit timing and physics.
+You will (1) represent an OT network as a directed graph; (2) compute reachability between Purdue levels; (3) prove that removing an edge cannot add a path.
 
-### 2.1 Sets and inventories
+### 2.1 Graphs of conduits
 
-An asset inventory is a set. Zones are subsets. A conduit is a permitted relation between zones. Discrete mathematics gives the language for saying "the set of hosts that can write to PLC-A" without ambiguity.
+In ISA/IEC 62443 vocabulary, zones are groups of assets with common security requirements and conduits are the permitted communication paths between them. A directed graph models this exactly: nodes are zones (L4 office, L3.5 DMZ, L3 historian, L2 SCADA, L1 PLC, L1 SIS, L0 I/O) and an edge a→b means a can initiate traffic to b. Asking "can the office network write to the safety system?" becomes "is L1-SIS reachable from L4?".
 
-### 2.2 Graphs for reachability
+### 2.2 Reachability
 
-Nodes are devices; directed edges are allowed protocol flows. Reachability from an engineering workstation to a safety PLC is a path-existence question. Lab 23 (Chapter 23) will compute this on a Purdue graph; here you practise adjacency lists and breadth-first search by hand on five nodes.
+Depth-first search computes the set of nodes reachable from a start node in time proportional to nodes plus edges. Reachability is transitive: if L4→L3 and L3→L2 and L2→L1-SIS, then L4 reaches SIS even with no direct rule. Firewall reviews that check rules one at a time miss exactly this composition, which is why engineers compute closure rather than reading rule lists.
 
-### 2.3 Boolean interlocks
+### 2.3 Monotonicity proof
 
-A permit-to-run might be `(level_OK AND temp_OK AND NOT estop)`. Truth tables and simplification catch missing terms — the classic error is omitting the safety PLC's healthy bit.
-
-### Engineering notes for this chapter
-
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
-
-### Worked example (synthetic Ashford Batch Plant)
-
-ABP's permit-to-agitate requires: agitator VFD healthy, reactor level above heel, SIS not tripped, and local e-stop clear. Written as a Boolean expression and expanded, the engineer finds that "SCADA mode remote" was incorrectly ANDed into the safety path — a category error: mode is a control concern, not a safety precondition.
-
-### Practical activity
-
-Draw a five-node graph: EngWS → SCADA → PLC-A → IO; EngWS → SIS (should be absent). List all EngWS reachability sets with and without the forbidden edge.
-
-### Common errors and limits
-
-- Treating undirected "connectivity" as directed protocol permission.
-- Putting safety permits in the same logic as production enables without SIL reasoning.
-- Counting paths as probabilities.
-
-### Exercises — chapter 2
-
-**EX003 — Truth table.** *Objective:* build the truth table for permit-to-agitate with four inputs. *Inputs:* §2.3. *Steps:* enumerate 16 rows; mark unsafe true rows. *Expected evidence:* table. *Rubric:* 3 = complete and flags unsafe combinations; 2 = incomplete; 1 = expression only; 0 = none.
-
-**EX004 — Path count.** *Objective:* count simple paths EngWS→IO in the five-node graph. *Inputs:* activity graph. *Steps:* enumerate. *Expected evidence:* number and list. *Rubric:* 3 = correct enumeration; 2 = missed path; 1 = guess; 0 = none.
-
-### Chapter synthesis
-
-Sets, graphs and Boolean logic are the discrete skeleton of OT architecture and interlocks; they do not replace physics or timing analysis.
-
-### Continue studying — chapter 02 of 50
-
-[← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
-
-<a id="ch-03"></a>
-
-## Chapter 3 — Physics for computing
-
-### Learning outcomes and connection
-
-After this chapter you can apply **Physics for computing** to OT engineering problems on the Ashford Batch Plant case, with definitions, a worked calculation, and a bounded practical activity. It builds toward the field chapters (20–42).
-
-### 3.1 Sensors measure physics
-
-A level transmitter infers level from pressure or time-of-flight. Injecting a register value attacks a representation; the physical process continues under its own laws. OT engineers must keep both models: the bits and the physics.
-
-### 3.2 Scaling, quantisation and noise
-
-4–20 mA loops and ADC counts need scaling. Noise and quantisation set a floor for residual detectors — a CUSUM tighter than sensor noise false-alarms.
-
-### 3.3 Actuator dynamics
-
-Pumps and valves have inertia and stroke time. Scan cycle plus stroke delay bounds how fast an attack or a defence can move the process.
-
-### Engineering notes for this chapter
-
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
-
-### Worked example (synthetic Ashford Batch Plant)
-
-On ABP, the team applies physics for computing to a CNHP decision about reactor R-101 and feed tanks T-1/T-2. All numbers are synthetic. The worked path shows inputs, calculation, result and the design decision it supports — and what it does *not* support (no claim about a real plant).
-
-### Practical activity
-
-Complete a one-page calculation or short Python 3 stdlib snippet that applies physics for computing to a synthetic ABP quantity (level, flow, reachability, or alarm rate). Record inputs, outputs and assumptions.
-
-### Common errors and limits
-
-- Applying physics for computing without units.
-- Treating synthetic ABP numbers as field measurements.
-- Skipping assumptions about sensor honesty or network reachability.
-- Claiming safety integrity from a teaching calculation.
-
-### Exercises — chapter 3
-
-**EX005 — Physics for computing drill.** *Objective:* perform a defined physics for computing task on synthetic ABP data. *Inputs:* chapter worked example. *Steps:* (1) recompute; (2) change one input; (3) state the design impact. *Expected evidence:* calculation and sentence. *Rubric:* 3 = correct and scoped; 2 = slip; 1 = incomplete; 0 = none.
-
-**EX006 — Assumption log.** *Objective:* list five assumptions in the worked example and mark which are physical vs organisational. *Inputs:* worked example. *Steps:* table with type and failure mode if false. *Expected evidence:* table. *Rubric:* 3 = five distinct assumptions with failure modes; 2 = thin; 1 = list only; 0 = none.
-
-### Chapter synthesis
-
-Physics for computing is a tool for OT design decisions when units, assumptions and scope are explicit. ABP remains synthetic; evidence from this chapter does not authorise work on real controllers.
-
-### Continue studying — chapter 03 of 50
-
-[← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
-
-<a id="ch-04"></a>
-
-## Chapter 4 — Programming I
-
-### Learning outcomes and connection
-
-After this chapter you can apply **Programming I** to OT engineering problems on the Ashford Batch Plant case, with definitions, a worked calculation, and a bounded practical activity. It builds toward the field chapters (20–42).
-
-### 4.1 Programming for reproducible labs
-
-Use Python 3 standard library only in this course's labs. Prefer functions that return values; name variables after plant tags (`true_level`, `residual`).
-
-### 4.2 Control flow and data structures
-
-Lists of samples, dicts of device attributes, and clear loops over time steps are enough for tank models and reachability.
-
-### 4.3 Checking yourself
-
-Always run a nominal case (expect no alarm) and an attack case (expect alarm after onset) before trusting a detector function.
-
-### Engineering notes for this chapter
-
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
-
-### Worked example (synthetic Ashford Batch Plant)
-
-On ABP, the team applies programming i to a CNHP decision about reactor R-101 and feed tanks T-1/T-2. All numbers are synthetic. The worked path shows inputs, calculation, result and the design decision it supports — and what it does *not* support (no claim about a real plant).
-
-### Practical activity
-
-Complete a one-page calculation or short Python 3 stdlib snippet that applies programming i to a synthetic ABP quantity (level, flow, reachability, or alarm rate). Record inputs, outputs and assumptions.
-
-### Common errors and limits
-
-- Applying programming i without units.
-- Treating synthetic ABP numbers as field measurements.
-- Skipping assumptions about sensor honesty or network reachability.
-- Claiming safety integrity from a teaching calculation.
-
-### Exercises — chapter 4
-
-**EX007 — Programming I drill.** *Objective:* perform a defined programming i task on synthetic ABP data. *Inputs:* chapter worked example. *Steps:* (1) recompute; (2) change one input; (3) state the design impact. *Expected evidence:* calculation and sentence. *Rubric:* 3 = correct and scoped; 2 = slip; 1 = incomplete; 0 = none.
-
-**EX008 — Assumption log.** *Objective:* list five assumptions in the worked example and mark which are physical vs organisational. *Inputs:* worked example. *Steps:* table with type and failure mode if false. *Expected evidence:* table. *Rubric:* 3 = five distinct assumptions with failure modes; 2 = thin; 1 = list only; 0 = none.
-
-### Chapter synthesis
-
-Programming I is a tool for OT design decisions when units, assumptions and scope are explicit. ABP remains synthetic; evidence from this chapter does not authorise work on real controllers.
-
-### Continue studying — chapter 04 of 50
-
-[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
-
-<a id="ch-05"></a>
-
-## Chapter 5 — Engineering communication
-
-### Learning outcomes and connection
-
-After this chapter you can apply **Engineering communication** to OT engineering problems on the Ashford Batch Plant case, with definitions, a worked calculation, and a bounded practical activity. It builds toward the field chapters (20–42).
-
-### 5.1 Audience and purpose
-
-An OT design note has operators, assessors and future maintainers as audiences. Purpose is a decision, not a narrative.
-
-### 5.2 Requirement language
-
-Write verifiable requirements: "PLC-A shall reject setpoint writes outside [lo, hi] and alarm within one scan" — not "the system shall be secure".
-
-### 5.3 Traceability
-
-Every safety-relevant claim needs a link to a test, analysis or review record with a version.
-
-### Engineering notes for this chapter
-
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
-
-### Worked example (synthetic Ashford Batch Plant)
-
-On ABP, the team applies engineering communication to a CNHP decision about reactor R-101 and feed tanks T-1/T-2. All numbers are synthetic. The worked path shows inputs, calculation, result and the design decision it supports — and what it does *not* support (no claim about a real plant).
-
-### Practical activity
-
-Complete a one-page calculation or short Python 3 stdlib snippet that applies engineering communication to a synthetic ABP quantity (level, flow, reachability, or alarm rate). Record inputs, outputs and assumptions.
-
-### Common errors and limits
-
-- Applying engineering communication without units.
-- Treating synthetic ABP numbers as field measurements.
-- Skipping assumptions about sensor honesty or network reachability.
-- Claiming safety integrity from a teaching calculation.
-
-### Exercises — chapter 5
-
-**EX009 — Engineering communication drill.** *Objective:* perform a defined engineering communication task on synthetic ABP data. *Inputs:* chapter worked example. *Steps:* (1) recompute; (2) change one input; (3) state the design impact. *Expected evidence:* calculation and sentence. *Rubric:* 3 = correct and scoped; 2 = slip; 1 = incomplete; 0 = none.
-
-**EX010 — Assumption log.** *Objective:* list five assumptions in the worked example and mark which are physical vs organisational. *Inputs:* worked example. *Steps:* table with type and failure mode if false. *Expected evidence:* table. *Rubric:* 3 = five distinct assumptions with failure modes; 2 = thin; 1 = list only; 0 = none.
-
-### Chapter synthesis
-
-Engineering communication is a tool for OT design decisions when units, assumptions and scope are explicit. ABP remains synthetic; evidence from this chapter does not authorise work on real controllers.
-
-### Continue studying — chapter 05 of 50
-
-[← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
-
-<a id="ch-06"></a>
-
-## Chapter 6 — Calculus II
-
-### Learning outcomes and connection
-
-After this chapter you can apply **Calculus II** to OT engineering problems on the Ashford Batch Plant case, with definitions, a worked calculation, and a bounded practical activity. It builds toward the field chapters (20–42).
-
-### 6.1 Differential equations for tanks
-
-A single tank: $\dot V = q_{in}-q_{out}(V)$. Linearising around an operating point yields first-order lag models used in detector design.
-
-### 6.2 Steady state and time constants
-
-At equilibrium $q_{in}=q_{out}$. The time constant sets how fast residuals should be evaluated.
-
-### 6.3 Numerical integration
-
-Euler and RK4 appear in labs; always compare step sizes before trusting a simulated attack impact.
-
-### Engineering notes for this chapter
-
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
-
-### Worked example (synthetic Ashford Batch Plant)
-
-On ABP, the team applies calculus ii to a CNHP decision about reactor R-101 and feed tanks T-1/T-2. All numbers are synthetic. The worked path shows inputs, calculation, result and the design decision it supports — and what it does *not* support (no claim about a real plant).
-
-### Practical activity
-
-Complete a one-page calculation or short Python 3 stdlib snippet that applies calculus ii to a synthetic ABP quantity (level, flow, reachability, or alarm rate). Record inputs, outputs and assumptions.
-
-### Common errors and limits
-
-- Applying calculus ii without units.
-- Treating synthetic ABP numbers as field measurements.
-- Skipping assumptions about sensor honesty or network reachability.
-- Claiming safety integrity from a teaching calculation.
-
-### Exercises — chapter 6
-
-**EX011 — Calculus II drill.** *Objective:* perform a defined calculus ii task on synthetic ABP data. *Inputs:* chapter worked example. *Steps:* (1) recompute; (2) change one input; (3) state the design impact. *Expected evidence:* calculation and sentence. *Rubric:* 3 = correct and scoped; 2 = slip; 1 = incomplete; 0 = none.
-
-**EX012 — Assumption log.** *Objective:* list five assumptions in the worked example and mark which are physical vs organisational. *Inputs:* worked example. *Steps:* table with type and failure mode if false. *Expected evidence:* table. *Rubric:* 3 = five distinct assumptions with failure modes; 2 = thin; 1 = list only; 0 = none.
-
-### Chapter synthesis
-
-Calculus II is a tool for OT design decisions when units, assumptions and scope are explicit. ABP remains synthetic; evidence from this chapter does not authorise work on real controllers.
-
-### Continue studying — chapter 06 of 50
-
-[← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
-
-<a id="ch-07"></a>
-
-## Chapter 7 — Probability and statistics
-
-### Learning outcomes and connection
-
-After this chapter you can apply **Probability and statistics** to OT engineering problems on the Ashford Batch Plant case, with definitions, a worked calculation, and a bounded practical activity. It builds toward the field chapters (20–42).
-
-### 7.1 Randomness in sensors and processes
-
-Measurement noise is not attack. Model it explicitly when setting CUSUM allowances.
-
-### 7.2 False alarms and base rates
-
-Even a 1% false-alarm probability per minute devastates operator trust over a shift. Report false alarms per shift, not only ROC AUC.
-
-### 7.3 Estimation
-
-Sample means and bootstrap intervals describe simulation noise; they do not validate a structural model.
-
-### Engineering notes for this chapter
-
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
-
-### Worked example (synthetic Ashford Batch Plant)
-
-On ABP, the team applies probability and statistics to a CNHP decision about reactor R-101 and feed tanks T-1/T-2. All numbers are synthetic. The worked path shows inputs, calculation, result and the design decision it supports — and what it does *not* support (no claim about a real plant).
-
-### Practical activity
-
-Complete a one-page calculation or short Python 3 stdlib snippet that applies probability and statistics to a synthetic ABP quantity (level, flow, reachability, or alarm rate). Record inputs, outputs and assumptions.
-
-### Common errors and limits
-
-- Applying probability and statistics without units.
-- Treating synthetic ABP numbers as field measurements.
-- Skipping assumptions about sensor honesty or network reachability.
-- Claiming safety integrity from a teaching calculation.
-
-### Exercises — chapter 7
-
-**EX013 — Probability and statistics drill.** *Objective:* perform a defined probability and statistics task on synthetic ABP data. *Inputs:* chapter worked example. *Steps:* (1) recompute; (2) change one input; (3) state the design impact. *Expected evidence:* calculation and sentence. *Rubric:* 3 = correct and scoped; 2 = slip; 1 = incomplete; 0 = none.
-
-**EX014 — Assumption log.** *Objective:* list five assumptions in the worked example and mark which are physical vs organisational. *Inputs:* worked example. *Steps:* table with type and failure mode if false. *Expected evidence:* table. *Rubric:* 3 = five distinct assumptions with failure modes; 2 = thin; 1 = list only; 0 = none.
-
-### Chapter synthesis
-
-Probability and statistics is a tool for OT design decisions when units, assumptions and scope are explicit. ABP remains synthetic; evidence from this chapter does not authorise work on real controllers.
-
-### Continue studying — chapter 07 of 50
-
-[← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
-
-<a id="ch-08"></a>
-
-## Chapter 8 — Computer architecture
-
-### Learning outcomes and connection
-
-After this chapter you can apply **Computer architecture** to OT engineering problems on the Ashford Batch Plant case, with definitions, a worked calculation, and a bounded practical activity. It builds toward the field chapters (20–42).
-
-### 8.1 Controllers are computers
-
-PLCs have CPUs, memory, scan cycles and watchdog timers. A slow network flood can miss scans — an availability attack with physical consequences.
-
-### 8.2 Memory and I/O maps
-
-Holding registers and coils are just memory; knowing the map is necessary for legitimate engineering and for understanding attack surfaces — never practise mapping on production.
-
-### 8.3 Real-time constraints
-
-Hard deadlines in the scan differ from best-effort IT scheduling. Security controls that add unbounded latency need budget analysis.
-
-### Engineering notes for this chapter
-
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
-
-### Worked example (synthetic Ashford Batch Plant)
-
-On ABP, the team applies computer architecture to a CNHP decision about reactor R-101 and feed tanks T-1/T-2. All numbers are synthetic. The worked path shows inputs, calculation, result and the design decision it supports — and what it does *not* support (no claim about a real plant).
-
-### Practical activity
-
-Complete a one-page calculation or short Python 3 stdlib snippet that applies computer architecture to a synthetic ABP quantity (level, flow, reachability, or alarm rate). Record inputs, outputs and assumptions.
-
-### Common errors and limits
-
-- Applying computer architecture without units.
-- Treating synthetic ABP numbers as field measurements.
-- Skipping assumptions about sensor honesty or network reachability.
-- Claiming safety integrity from a teaching calculation.
-
-### Exercises — chapter 8
-
-**EX015 — Computer architecture drill.** *Objective:* perform a defined computer architecture task on synthetic ABP data. *Inputs:* chapter worked example. *Steps:* (1) recompute; (2) change one input; (3) state the design impact. *Expected evidence:* calculation and sentence. *Rubric:* 3 = correct and scoped; 2 = slip; 1 = incomplete; 0 = none.
-
-**EX016 — Assumption log.** *Objective:* list five assumptions in the worked example and mark which are physical vs organisational. *Inputs:* worked example. *Steps:* table with type and failure mode if false. *Expected evidence:* table. *Rubric:* 3 = five distinct assumptions with failure modes; 2 = thin; 1 = list only; 0 = none.
-
-### Chapter synthesis
-
-Computer architecture is a tool for OT design decisions when units, assumptions and scope are explicit. ABP remains synthetic; evidence from this chapter does not authorise work on real controllers.
-
-### Continue studying — chapter 08 of 50
-
-[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
-
-<a id="ch-09"></a>
-
-## Chapter 9 — Programming II
-
-### Learning outcomes and connection
-
-After this chapter you can apply **Programming II** to OT engineering problems on the Ashford Batch Plant case, with definitions, a worked calculation, and a bounded practical activity. It builds toward the field chapters (20–42).
-
-### 9.1 Modules and packages
-
-Split simulation, detection and reporting. Labs in later chapters import earlier generators.
-
-### 9.2 File formats
-
-CSV traces with headers; JSON manifests with SHA-256 hashes; never commit secrets.
-
-### 9.3 Complexity control
-
-Prefer clear O(n) loops over clever code in safety-adjacent tooling.
-
-### Engineering notes for this chapter
-
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
-
-### Worked example (synthetic Ashford Batch Plant)
-
-On ABP, the team applies programming ii to a CNHP decision about reactor R-101 and feed tanks T-1/T-2. All numbers are synthetic. The worked path shows inputs, calculation, result and the design decision it supports — and what it does *not* support (no claim about a real plant).
-
-### Practical activity
-
-Complete a one-page calculation or short Python 3 stdlib snippet that applies programming ii to a synthetic ABP quantity (level, flow, reachability, or alarm rate). Record inputs, outputs and assumptions.
-
-### Common errors and limits
-
-- Applying programming ii without units.
-- Treating synthetic ABP numbers as field measurements.
-- Skipping assumptions about sensor honesty or network reachability.
-- Claiming safety integrity from a teaching calculation.
-
-### Exercises — chapter 9
-
-**EX017 — Programming II drill.** *Objective:* perform a defined programming ii task on synthetic ABP data. *Inputs:* chapter worked example. *Steps:* (1) recompute; (2) change one input; (3) state the design impact. *Expected evidence:* calculation and sentence. *Rubric:* 3 = correct and scoped; 2 = slip; 1 = incomplete; 0 = none.
-
-**EX018 — Assumption log.** *Objective:* list five assumptions in the worked example and mark which are physical vs organisational. *Inputs:* worked example. *Steps:* table with type and failure mode if false. *Expected evidence:* table. *Rubric:* 3 = five distinct assumptions with failure modes; 2 = thin; 1 = list only; 0 = none.
-
-### Chapter synthesis
-
-Programming II is a tool for OT design decisions when units, assumptions and scope are explicit. ABP remains synthetic; evidence from this chapter does not authorise work on real controllers.
-
-### Continue studying — chapter 09 of 50
-
-[← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
-
-<a id="ch-10"></a>
-
-## Chapter 10 — Engineering ethics and safety
-
-### Learning outcomes and connection
-
-After this chapter you can apply **Engineering ethics and safety** to OT engineering problems on the Ashford Batch Plant case, with definitions, a worked calculation, and a bounded practical activity. It builds toward the field chapters (20–42).
-
-### 10.1 Safety culture meets security
-
-Stop work authority applies to cyber experiments too. Never test on production; bound lab hazards with independent layers.
-
-### 10.2 Dual use
-
-Publish capability classes and defences; withhold product-specific exploitation pending coordinated disclosure.
-
-### 10.3 Professional duty
-
-Engineers owe the public safe operation. A clever demo that risks a spill fails that duty regardless of intent.
-
-### Engineering notes for this chapter
-
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
-
-### Worked example (synthetic Ashford Batch Plant)
-
-On ABP, the team applies engineering ethics and safety to a CNHP decision about reactor R-101 and feed tanks T-1/T-2. All numbers are synthetic. The worked path shows inputs, calculation, result and the design decision it supports — and what it does *not* support (no claim about a real plant).
-
-### Practical activity
-
-Complete a one-page calculation or short Python 3 stdlib snippet that applies engineering ethics and safety to a synthetic ABP quantity (level, flow, reachability, or alarm rate). Record inputs, outputs and assumptions.
-
-### Common errors and limits
-
-- Applying engineering ethics and safety without units.
-- Treating synthetic ABP numbers as field measurements.
-- Skipping assumptions about sensor honesty or network reachability.
-- Claiming safety integrity from a teaching calculation.
-
-### Exercises — chapter 10
-
-**EX019 — Engineering ethics and safety drill.** *Objective:* perform a defined engineering ethics and safety task on synthetic ABP data. *Inputs:* chapter worked example. *Steps:* (1) recompute; (2) change one input; (3) state the design impact. *Expected evidence:* calculation and sentence. *Rubric:* 3 = correct and scoped; 2 = slip; 1 = incomplete; 0 = none.
-
-**EX020 — Assumption log.** *Objective:* list five assumptions in the worked example and mark which are physical vs organisational. *Inputs:* worked example. *Steps:* table with type and failure mode if false. *Expected evidence:* table. *Rubric:* 3 = five distinct assumptions with failure modes; 2 = thin; 1 = list only; 0 = none.
-
-### Chapter synthesis
-
-Engineering ethics and safety is a tool for OT design decisions when units, assumptions and scope are explicit. ABP remains synthetic; evidence from this chapter does not authorise work on real controllers.
-
-### Continue studying — chapter 10 of 50
-
-[← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
-
-<a id="ch-11"></a>
-
-## Chapter 11 — Networks and protocols
-
-### Learning outcomes and connection
-
-After this chapter you can apply **Networks and protocols** to OT engineering problems on the Ashford Batch Plant case, with definitions, a worked calculation, and a bounded practical activity. It builds toward the field chapters (20–42).
-
-### 11.1 Layers and industrial protocols
-
-Ethernet/IP, Modbus/TCP, DNP3 and OPC UA carry different security properties. Modbus Application Protocol defines function codes without authentication ([spec V1.1b3](https://modbus.org/docs/Modbus_Application_Protocol_V1_1b3.pdf)).
-
-### 11.2 Segmentation
-
-Purdue levels and IEC 62443 zones/conduits limit who can write setpoints. Flat networks make every compromise a plant-wide event.
-
-### 11.3 Timing and determinism
-
-Jitter matters. Security appliances must be assessed for latency under load.
-
-### Engineering notes for this chapter
-
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
-
-### Worked example (synthetic Ashford Batch Plant)
-
-On ABP, the team applies networks and protocols to a CNHP decision about reactor R-101 and feed tanks T-1/T-2. All numbers are synthetic. The worked path shows inputs, calculation, result and the design decision it supports — and what it does *not* support (no claim about a real plant).
-
-### Practical activity
-
-Complete a one-page calculation or short Python 3 stdlib snippet that applies networks and protocols to a synthetic ABP quantity (level, flow, reachability, or alarm rate). Record inputs, outputs and assumptions.
-
-### Common errors and limits
-
-- Applying networks and protocols without units.
-- Treating synthetic ABP numbers as field measurements.
-- Skipping assumptions about sensor honesty or network reachability.
-- Claiming safety integrity from a teaching calculation.
-
-### Exercises — chapter 11
-
-**EX021 — Networks and protocols drill.** *Objective:* perform a defined networks and protocols task on synthetic ABP data. *Inputs:* chapter worked example. *Steps:* (1) recompute; (2) change one input; (3) state the design impact. *Expected evidence:* calculation and sentence. *Rubric:* 3 = correct and scoped; 2 = slip; 1 = incomplete; 0 = none.
-
-**EX022 — Assumption log.** *Objective:* list five assumptions in the worked example and mark which are physical vs organisational. *Inputs:* worked example. *Steps:* table with type and failure mode if false. *Expected evidence:* table. *Rubric:* 3 = five distinct assumptions with failure modes; 2 = thin; 1 = list only; 0 = none.
-
-### Chapter synthesis
-
-Networks and protocols is a tool for OT design decisions when units, assumptions and scope are explicit. ABP remains synthetic; evidence from this chapter does not authorise work on real controllers.
-
-### Continue studying — chapter 11 of 50
-
-[← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
-
-<a id="ch-12"></a>
-
-## Chapter 12 — Operating systems
-
-### Learning outcomes and connection
-
-After this chapter you can apply **Operating systems** to OT engineering problems on the Ashford Batch Plant case, with definitions, a worked calculation, and a bounded practical activity. It builds toward the field chapters (20–42).
-
-### 12.1 RTOS and PLC executives
-
-Scan-based executives differ from general-purpose OS scheduling. Patching and antivirus practices from IT can break determinism if naively copied.
-
-### 12.2 Access control on engineering stations
-
-Engineering workstations are high-value; they hold projects that can rewrite plant logic. Harden and monitor them.
-
-### 12.3 Logging
-
-Controller logs are scarce; historians and mirror ports often supply detection evidence.
-
-### Engineering notes for this chapter
-
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
-
-### Worked example (synthetic Ashford Batch Plant)
-
-On ABP, the team applies operating systems to a CNHP decision about reactor R-101 and feed tanks T-1/T-2. All numbers are synthetic. The worked path shows inputs, calculation, result and the design decision it supports — and what it does *not* support (no claim about a real plant).
-
-### Practical activity
-
-Complete a one-page calculation or short Python 3 stdlib snippet that applies operating systems to a synthetic ABP quantity (level, flow, reachability, or alarm rate). Record inputs, outputs and assumptions.
-
-### Common errors and limits
-
-- Applying operating systems without units.
-- Treating synthetic ABP numbers as field measurements.
-- Skipping assumptions about sensor honesty or network reachability.
-- Claiming safety integrity from a teaching calculation.
-
-### Exercises — chapter 12
-
-**EX023 — Operating systems drill.** *Objective:* perform a defined operating systems task on synthetic ABP data. *Inputs:* chapter worked example. *Steps:* (1) recompute; (2) change one input; (3) state the design impact. *Expected evidence:* calculation and sentence. *Rubric:* 3 = correct and scoped; 2 = slip; 1 = incomplete; 0 = none.
-
-**EX024 — Assumption log.** *Objective:* list five assumptions in the worked example and mark which are physical vs organisational. *Inputs:* worked example. *Steps:* table with type and failure mode if false. *Expected evidence:* table. *Rubric:* 3 = five distinct assumptions with failure modes; 2 = thin; 1 = list only; 0 = none.
-
-### Chapter synthesis
-
-Operating systems is a tool for OT design decisions when units, assumptions and scope are explicit. ABP remains synthetic; evidence from this chapter does not authorise work on real controllers.
-
-### Continue studying — chapter 12 of 50
-
-[← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
-
-<a id="ch-13"></a>
-
-## Chapter 13 — Data systems
-
-### Learning outcomes and connection
-
-After this chapter you can apply **Data systems** to OT engineering problems on the Ashford Batch Plant case, with definitions, a worked calculation, and a bounded practical activity. It builds toward the field chapters (20–42).
-
-### 13.1 Historians and recipes
-
-Batch plants store recipes, setpoints and quality data. Integrity of recipe downloads is a product-safety issue as well as a cyber issue.
-
-### 13.2 Time series
-
-Aligned timestamps enable residual checks; clock skew creates false residuals.
-
-### 13.3 Backups
-
-Offline, verified backups of PLC projects are recovery requirements — test restores on engineering systems, not on the running CPU without a change window.
-
-### Engineering notes for this chapter
-
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
-
-### Worked example (synthetic Ashford Batch Plant)
-
-On ABP, the team applies data systems to a CNHP decision about reactor R-101 and feed tanks T-1/T-2. All numbers are synthetic. The worked path shows inputs, calculation, result and the design decision it supports — and what it does *not* support (no claim about a real plant).
-
-### Practical activity
-
-Complete a one-page calculation or short Python 3 stdlib snippet that applies data systems to a synthetic ABP quantity (level, flow, reachability, or alarm rate). Record inputs, outputs and assumptions.
-
-### Common errors and limits
-
-- Applying data systems without units.
-- Treating synthetic ABP numbers as field measurements.
-- Skipping assumptions about sensor honesty or network reachability.
-- Claiming safety integrity from a teaching calculation.
-
-### Exercises — chapter 13
-
-**EX025 — Data systems drill.** *Objective:* perform a defined data systems task on synthetic ABP data. *Inputs:* chapter worked example. *Steps:* (1) recompute; (2) change one input; (3) state the design impact. *Expected evidence:* calculation and sentence. *Rubric:* 3 = correct and scoped; 2 = slip; 1 = incomplete; 0 = none.
-
-**EX026 — Assumption log.** *Objective:* list five assumptions in the worked example and mark which are physical vs organisational. *Inputs:* worked example. *Steps:* table with type and failure mode if false. *Expected evidence:* table. *Rubric:* 3 = five distinct assumptions with failure modes; 2 = thin; 1 = list only; 0 = none.
-
-### Chapter synthesis
-
-Data systems is a tool for OT design decisions when units, assumptions and scope are explicit. ABP remains synthetic; evidence from this chapter does not authorise work on real controllers.
-
-### Continue studying — chapter 13 of 50
-
-[← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
-
-<a id="ch-14"></a>
-
-## Chapter 14 — Software engineering
-
-### Learning outcomes and connection
-
-After this chapter you can apply **Software engineering** to OT engineering problems on the Ashford Batch Plant case, with definitions, a worked calculation, and a bounded practical activity. It builds toward the field chapters (20–42).
-
-### 14.1 Lifecycle
-
-Requirements → design → implementation → verification → operation → maintenance. OT adds safety validation gates.
-
-### 14.2 Change control
-
-A ladder-logic change is a plant change. Dual authorisation and offline test are normal.
-
-### 14.3 Technical debt
-
-Legacy protocols without authentication are debt with interest denominated in risk.
-
-### Engineering notes for this chapter
-
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
-
-### Worked example (synthetic Ashford Batch Plant)
-
-On ABP, the team applies software engineering to a CNHP decision about reactor R-101 and feed tanks T-1/T-2. All numbers are synthetic. The worked path shows inputs, calculation, result and the design decision it supports — and what it does *not* support (no claim about a real plant).
-
-### Practical activity
-
-Complete a one-page calculation or short Python 3 stdlib snippet that applies software engineering to a synthetic ABP quantity (level, flow, reachability, or alarm rate). Record inputs, outputs and assumptions.
-
-### Common errors and limits
-
-- Applying software engineering without units.
-- Treating synthetic ABP numbers as field measurements.
-- Skipping assumptions about sensor honesty or network reachability.
-- Claiming safety integrity from a teaching calculation.
-
-### Exercises — chapter 14
-
-**EX027 — Software engineering drill.** *Objective:* perform a defined software engineering task on synthetic ABP data. *Inputs:* chapter worked example. *Steps:* (1) recompute; (2) change one input; (3) state the design impact. *Expected evidence:* calculation and sentence. *Rubric:* 3 = correct and scoped; 2 = slip; 1 = incomplete; 0 = none.
-
-**EX028 — Assumption log.** *Objective:* list five assumptions in the worked example and mark which are physical vs organisational. *Inputs:* worked example. *Steps:* table with type and failure mode if false. *Expected evidence:* table. *Rubric:* 3 = five distinct assumptions with failure modes; 2 = thin; 1 = list only; 0 = none.
-
-### Chapter synthesis
-
-Software engineering is a tool for OT design decisions when units, assumptions and scope are explicit. ABP remains synthetic; evidence from this chapter does not authorise work on real controllers.
-
-### Continue studying — chapter 14 of 50
-
-[← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
-
-<a id="ch-15"></a>
-
-## Chapter 15 — Security fundamentals
-
-### Learning outcomes and connection
-
-After this chapter you can apply **Security fundamentals** to OT engineering problems on the Ashford Batch Plant case, with definitions, a worked calculation, and a bounded practical activity. It builds toward the field chapters (20–42).
-
-### 15.1 CIA and safety
-
-In OT, availability and integrity often outrank confidentiality — but recipe theft and ransomware still matter.
-
-### 15.2 Attack surfaces
-
-Exposed engineering ports, default credentials, flat networks, and shared accounts.
-
-### 15.3 Defence in depth
-
-Zones, allow-lists, signed binaries where supported, monitoring, and incident procedures — no single control suffices.
-
-### Engineering notes for this chapter
-
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
-
-### Worked example (synthetic Ashford Batch Plant)
-
-On ABP, the team applies security fundamentals to a CNHP decision about reactor R-101 and feed tanks T-1/T-2. All numbers are synthetic. The worked path shows inputs, calculation, result and the design decision it supports — and what it does *not* support (no claim about a real plant).
-
-### Practical activity
-
-Complete a one-page calculation or short Python 3 stdlib snippet that applies security fundamentals to a synthetic ABP quantity (level, flow, reachability, or alarm rate). Record inputs, outputs and assumptions.
-
-### Common errors and limits
-
-- Applying security fundamentals without units.
-- Treating synthetic ABP numbers as field measurements.
-- Skipping assumptions about sensor honesty or network reachability.
-- Claiming safety integrity from a teaching calculation.
-
-### Exercises — chapter 15
-
-**EX029 — Security fundamentals drill.** *Objective:* perform a defined security fundamentals task on synthetic ABP data. *Inputs:* chapter worked example. *Steps:* (1) recompute; (2) change one input; (3) state the design impact. *Expected evidence:* calculation and sentence. *Rubric:* 3 = correct and scoped; 2 = slip; 1 = incomplete; 0 = none.
-
-**EX030 — Assumption log.** *Objective:* list five assumptions in the worked example and mark which are physical vs organisational. *Inputs:* worked example. *Steps:* table with type and failure mode if false. *Expected evidence:* table. *Rubric:* 3 = five distinct assumptions with failure modes; 2 = thin; 1 = list only; 0 = none.
-
-### Chapter synthesis
-
-Security fundamentals is a tool for OT design decisions when units, assumptions and scope are explicit. ABP remains synthetic; evidence from this chapter does not authorise work on real controllers.
-
-### Continue studying — chapter 15 of 50
-
-[← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
-
-<a id="ch-16"></a>
-
-## Chapter 16 — Systems engineering
-
-### Learning outcomes and connection
-
-After this chapter you can apply **Systems engineering** to OT engineering problems on the Ashford Batch Plant case, with definitions, a worked calculation, and a bounded practical activity. It builds toward the field chapters (20–42).
-
-### 16.1 System boundary
-
-CNHP's boundary includes PLC-A, SIS-B, SCADA, historian, and conduits — not the corporate ERP, except at the DMZ.
-
-### 16.2 Requirements flow-down
-
-System requirements become zone and component requirements (IEC 62443 security levels as hypotheses to engineer against).
-
-### 16.3 Interfaces
-
-Every conduit needs an owner, a protocol allow-list and a monitoring plan.
-
-### Engineering notes for this chapter
-
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
-
-### Worked example (synthetic Ashford Batch Plant)
-
-On ABP, the team applies systems engineering to a CNHP decision about reactor R-101 and feed tanks T-1/T-2. All numbers are synthetic. The worked path shows inputs, calculation, result and the design decision it supports — and what it does *not* support (no claim about a real plant).
-
-### Practical activity
-
-Complete a one-page calculation or short Python 3 stdlib snippet that applies systems engineering to a synthetic ABP quantity (level, flow, reachability, or alarm rate). Record inputs, outputs and assumptions.
-
-### Common errors and limits
-
-- Applying systems engineering without units.
-- Treating synthetic ABP numbers as field measurements.
-- Skipping assumptions about sensor honesty or network reachability.
-- Claiming safety integrity from a teaching calculation.
-
-### Exercises — chapter 16
-
-**EX031 — Systems engineering drill.** *Objective:* perform a defined systems engineering task on synthetic ABP data. *Inputs:* chapter worked example. *Steps:* (1) recompute; (2) change one input; (3) state the design impact. *Expected evidence:* calculation and sentence. *Rubric:* 3 = correct and scoped; 2 = slip; 1 = incomplete; 0 = none.
-
-**EX032 — Assumption log.** *Objective:* list five assumptions in the worked example and mark which are physical vs organisational. *Inputs:* worked example. *Steps:* table with type and failure mode if false. *Expected evidence:* table. *Rubric:* 3 = five distinct assumptions with failure modes; 2 = thin; 1 = list only; 0 = none.
-
-### Chapter synthesis
-
-Systems engineering is a tool for OT design decisions when units, assumptions and scope are explicit. ABP remains synthetic; evidence from this chapter does not authorise work on real controllers.
-
-### Continue studying — chapter 16 of 50
-
-[← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
-
-<a id="ch-17"></a>
-
-## Chapter 17 — Control and feedback basics
-
-### Learning outcomes and connection
-
-After this chapter you can explain feedback control, tune a simple PI mentally, and see why actuator commands are security-relevant.
-
-### 17.1 The loop
-
-Reported level compared with setpoint drives inflow. Attackers who forge the reported level drive the controller to the wrong action — manipulation of view with physical consequences.
-
-### 17.2 PI control
-
-Control effort $u = k_p e + k_i \int e$. Too much $k_p$ oscillates; zero $k_i$ leaves steady-state error.
-
-### 17.3 Security relevance
-
-Watch residual and control effort. A fight between controller and attacker often shows up as saturated commands.
-
-### Engineering notes for this chapter
-
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
-
-
-In addition, record the scan-cycle budget and any actuator stroke delay that bounds how fast the process can move after a forged command; without those times, delay metrics are uninterpretable. State whether the SIS is independent of the BPCS path under test.
-### Worked example (synthetic Ashford Batch Plant)
-
-ABP level loop on T-1 uses PI; Lab 17 shows three tunings on a synthetic tank.
-
-### Practical activity
-
-```python
-# Lab 17 - discrete PI level control vs. setpoint step (synthetic)
-def sim(kp, ki, steps=200, sp=60.0):
-    level, integ, err_hist = 50.0, 0.0, []
-    for t in range(steps):
-        err = sp - level
-        integ += err * 0.1
-        u = max(0.0, min(3.0, kp*err + ki*integ))   # inflow m3/h capped
-        level += (u - 0.02*level)*0.1
-        err_hist.append(abs(err))
-    return level, sum(err_hist)/len(err_hist), max(err_hist[50:])
-for kp,ki in ((0.05,0.0),(0.05,0.01),(0.2,0.01)):
-    final, mae, peak = sim(kp,ki)
-    print(f"kp={kp} ki={ki} final={final:.2f} mae={mae:.2f} peak_abs_err_after_5s={peak:.2f}")
-```
-
-Expected output:
-
-```text
-kp=0.05 ki=0.0 final=44.61 mae=13.29 peak_abs_err_after_5s=15.38
-kp=0.05 ki=0.01 final=57.22 mae=8.34 peak_abs_err_after_5s=10.91
-kp=0.2 ki=0.01 final=58.15 mae=4.62 peak_abs_err_after_5s=6.17
-```
-
-### Common errors and limits
-
-- Ignoring actuator saturation.
-- Tuning on a process with unmodelled delay.
-- Treating simulation tunings as plant-ready.
-
-### Exercises — chapter 17
-
-**EX033 — Apply Control and feedback basics.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
-
-**EX034 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
-
-### Chapter synthesis
-
-Control and feedback basics advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
-
-### Continue studying — chapter 17 of 50
-
-[← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
-
-<a id="ch-18"></a>
-
-## Chapter 18 — Security architecture
-
-### Learning outcomes and connection
-
-After this chapter you can apply **Security architecture** to OT engineering problems on the Ashford Batch Plant case, with definitions, a worked calculation, and a bounded practical activity. It builds toward the field chapters (20–42).
-
-### 18.1 Reference architectures
-
-Purdue + DMZ; IEC 62443 zones; cloud-connected IIoT variants that erode air gaps.
-
-### 18.2 Trust boundaries
-
-Where identity is asserted; where commands become physical; where safety takes over.
-
-### 18.3 Pattern catalogue
-
-Brokered historian reads; jump hosts for engineering access; unidirectional gateways for high-consequence outbound data.
-
-### Engineering notes for this chapter
-
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
-
-### Worked example (synthetic Ashford Batch Plant)
-
-On ABP, the team applies security architecture to a CNHP decision about reactor R-101 and feed tanks T-1/T-2. All numbers are synthetic. The worked path shows inputs, calculation, result and the design decision it supports — and what it does *not* support (no claim about a real plant).
-
-### Practical activity
-
-Complete a one-page calculation or short Python 3 stdlib snippet that applies security architecture to a synthetic ABP quantity (level, flow, reachability, or alarm rate). Record inputs, outputs and assumptions.
-
-### Common errors and limits
-
-- Applying security architecture without units.
-- Treating synthetic ABP numbers as field measurements.
-- Skipping assumptions about sensor honesty or network reachability.
-- Claiming safety integrity from a teaching calculation.
-
-### Exercises — chapter 18
-
-**EX035 — Security architecture drill.** *Objective:* perform a defined security architecture task on synthetic ABP data. *Inputs:* chapter worked example. *Steps:* (1) recompute; (2) change one input; (3) state the design impact. *Expected evidence:* calculation and sentence. *Rubric:* 3 = correct and scoped; 2 = slip; 1 = incomplete; 0 = none.
-
-**EX036 — Assumption log.** *Objective:* list five assumptions in the worked example and mark which are physical vs organisational. *Inputs:* worked example. *Steps:* table with type and failure mode if false. *Expected evidence:* table. *Rubric:* 3 = five distinct assumptions with failure modes; 2 = thin; 1 = list only; 0 = none.
-
-### Chapter synthesis
-
-Security architecture is a tool for OT design decisions when units, assumptions and scope are explicit. ABP remains synthetic; evidence from this chapter does not authorise work on real controllers.
-
-### Continue studying — chapter 18 of 50
-
-[← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Chapter 19 →](#ch-19)
-
-<a id="ch-19"></a>
-
-## Chapter 19 — Identity and cryptography
-
-### Learning outcomes and connection
-
-After this chapter you can apply **Identity and cryptography** to OT engineering problems on the Ashford Batch Plant case, with definitions, a worked calculation, and a bounded practical activity. It builds toward the field chapters (20–42).
-
-### 19.1 Identity in OT
-
-Human users, service accounts, device identities. Shared operator logins destroy attribution.
-
-### 19.2 Cryptography in constrained devices
-
-Integrity protection (MACs) on setpoints matters more often than confidentiality on temperature readings — but both can be required.
-
-### 19.3 Key management
-
-Provisioning, rotation and emergency access must work when the plant network is degraded.
-
-### Engineering notes for this chapter
-
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
-
-### Worked example (synthetic Ashford Batch Plant)
-
-On ABP, the team applies identity and cryptography to a CNHP decision about reactor R-101 and feed tanks T-1/T-2. All numbers are synthetic. The worked path shows inputs, calculation, result and the design decision it supports — and what it does *not* support (no claim about a real plant).
-
-### Practical activity
-
-Complete a one-page calculation or short Python 3 stdlib snippet that applies identity and cryptography to a synthetic ABP quantity (level, flow, reachability, or alarm rate). Record inputs, outputs and assumptions.
-
-### Common errors and limits
-
-- Applying identity and cryptography without units.
-- Treating synthetic ABP numbers as field measurements.
-- Skipping assumptions about sensor honesty or network reachability.
-- Claiming safety integrity from a teaching calculation.
-
-### Exercises — chapter 19
-
-**EX037 — Identity and cryptography drill.** *Objective:* perform a defined identity and cryptography task on synthetic ABP data. *Inputs:* chapter worked example. *Steps:* (1) recompute; (2) change one input; (3) state the design impact. *Expected evidence:* calculation and sentence. *Rubric:* 3 = correct and scoped; 2 = slip; 1 = incomplete; 0 = none.
-
-**EX038 — Assumption log.** *Objective:* list five assumptions in the worked example and mark which are physical vs organisational. *Inputs:* worked example. *Steps:* table with type and failure mode if false. *Expected evidence:* table. *Rubric:* 3 = five distinct assumptions with failure modes; 2 = thin; 1 = list only; 0 = none.
-
-### Chapter synthesis
-
-Identity and cryptography is a tool for OT design decisions when units, assumptions and scope are explicit. ABP remains synthetic; evidence from this chapter does not authorise work on real controllers.
-
-### Continue studying — chapter 19 of 50
-
-[← Chapter 18](#ch-18) · [Course chapter index](../SUBJECTS.md) · [Chapter 20 →](#ch-20)
-
-<a id="ch-20"></a>
-
-## Chapter 20 — OT, IoT and cyber-physical security: engineering context
-
-### Learning outcomes and connection
-
-After this chapter you can place ABP in the OT landscape: Purdue levels, ISA/IEC 62443, ATT&CK for ICS, and public incident lessons at source fidelity.
-
-### 20.1 What OT security is about
-
-Operational technology runs physical processes. NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final) emphasises safety and availability alongside confidentiality. The unit of concern is the control loop and its safety functions — distinct from the sector-cascade focus of the critical-infrastructure course.
-
-### 20.2 Purdue and zones
-
-Levels 0–5 with an industrial DMZ structure ABP: IO and flame detectors (0), PLC-A and SIS-B (1), SCADA/HMI (2), historian/MES (3), site business (4), enterprise (5). IEC 62443 zones and conduits refine who may write setpoints.
-
-### 20.3 Threat evidence
-
-MITRE [ATT&CK for ICS](https://attack.mitre.org/matrices/ics/) catalogues techniques such as *Modify Parameter* and *Spoof Reporting Message*. Public cases (Stuxnet's manipulation of view, Ukraine 2015 breaker operations, TRITON targeting SIS) show documented adversary goals. Cite public analyses only.
-
-### 20.4 IIoT pressure
-
-Cloud historians and remote vendor access erode classic air gaps. Each new conduit needs an owner and an allow-list.
-
-### Engineering notes for this chapter
-
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
-
-### Worked example (synthetic Ashford Batch Plant)
-
-ABP's CNHP charter: harden conduits so that a compromised engineering laptop cannot write to SIS-B, and so that single-sensor replay on T-1 level is detectable via an independent flow meter residual.
-
-### Practical activity
-
-Sketch ABP's Purdue diagram with at least eight nodes and mark conduits that CNHP will allow-list.
-
-### Common errors and limits
-
-- Confusing OT security with sector regulation alone.
-- Treating ATT&CK techniques as frequencies.
-- Assuming air gaps still exist because a slide says so.
-
-### Exercises — chapter 20
-
-**EX039 — Apply engineering context.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
-
-**EX040 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
-
-### Chapter synthesis
-
-OT, IoT and cyber-physical security: engineering context advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
-
-### Continue studying — chapter 20 of 50
-
-[← Chapter 19](#ch-19) · [Course chapter index](../SUBJECTS.md) · [Chapter 21 →](#ch-21)
-
-<a id="ch-21"></a>
-
-## Chapter 21 — OT, IoT and cyber-physical security: requirements
-
-### Learning outcomes and connection
-
-After this chapter you can write verifiable OT requirements for protection, detection, degraded operation and recovery.
-
-### 21.1 Requirement sources
-
-Consequences (overflow, off-spec batch, SIS spuriously tripped), stakeholders (operators, quality, safety officer), standards (62443 target SLs), threats (ATT&CK techniques), constraints (legacy Modbus devices).
-
-### 21.2 Degraded operation
-
-Require local automatic control for 72 h without SCADA; require manual runbooks for R-101 within 30 minutes of a declare-compromised decision.
-
-### 21.3 Detection requirements
-
-Event recall and max delay for class A replay; false alarms ≤ 1 per shift; independent sensing path for residual checks.
-
-### 21.4 Conflicts
-
-Strong authentication vs emergency access; patching vs validated builds — record negotiations with owners.
-
-### Engineering notes for this chapter
-
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
-
-### Worked example (synthetic Ashford Batch Plant)
-
-| ID | Requirement | Verification |
-|---|---|---|
-| R1 | Setpoint writes outside configured bounds rejected within one scan | Test |
-| R2 | SIS-B not reachable from SCADA engineering path | Reachability analysis |
-| R3 | Residual alarm on T-1 single-sensor replay within 60 s mean | Lab/test |
-| R4 | Local auto continues 72 h without SCADA | Demonstration |
-
-### Practical activity
-
-Write five CNHP requirements with source and verification method.
-
-### Common errors and limits
-
-- "Secure the PLC" as a requirement.
-- No degraded-operation requirements.
-- Silent conflict resolution.
-
-### Exercises — chapter 21
-
-**EX041 — Apply requirements.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
-
-**EX042 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
-
-### Chapter synthesis
-
-OT, IoT and cyber-physical security: requirements advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
-
-### Continue studying — chapter 21 of 50
-
-[← Chapter 20](#ch-20) · [Course chapter index](../SUBJECTS.md) · [Chapter 22 →](#ch-22)
-
-<a id="ch-22"></a>
-
-## Chapter 22 — OT, IoT and cyber-physical security: system and data models
-
-### Learning outcomes and connection
-
-After this chapter you can apply **OT, IoT and cyber-physical security: system and data models** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
-
-### 22.1 Purpose
-
-tag lists, P&IDs as graphs, data dictionaries, historian schemas, and trust annotations on each signal (source, scaling, authority).
-
-### 22.2 Method
-
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
-
-### 22.3 Interface to other chapters
-
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
-
-### 22.4 Quality bar
-
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
-
-### Engineering notes for this chapter
-
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
-
-### Worked example (synthetic Ashford Batch Plant)
-
-CNHP applies models to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
-
-### Practical activity
-
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
-
-### Common errors and limits
-
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
-
-### Exercises — chapter 22
-
-**EX043 — Apply system and data models.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
-
-**EX044 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
-
-### Chapter synthesis
-
-OT, IoT and cyber-physical security: system and data models advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
-
-### Continue studying — chapter 22 of 50
-
-[← Chapter 21](#ch-21) · [Course chapter index](../SUBJECTS.md) · [Chapter 23 →](#ch-23)
-
-<a id="ch-23"></a>
-
-## Chapter 23 — OT, IoT and cyber-physical security: threat and failure analysis
-
-### Learning outcomes and connection
-
-After this chapter you can combine cyber threat enumeration with process failure analysis without writing exploit instructions.
-
-### 23.1 Threat enumeration
-
-Use ATT&CK for ICS technique names as hypotheses about *what* an adversary might try (spoof reporting, modify parameter), not as step-by-step guides.
-
-### 23.2 Failure analysis
-
-HAZOP guide words (more/less/no flow) gain cyber causes: forged setpoints, stuck valves via denied commands, false-normal HMI.
-
-### 23.3 Reachability
-
-Lab 23 compares flat vs zoned Purdue graphs for SIS exposure.
-
-### Engineering notes for this chapter
-
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
-
-
-In addition, record the scan-cycle budget and any actuator stroke delay that bounds how fast the process can move after a forged command; without those times, delay metrics are uninterpretable. State whether the SIS is independent of the BPCS path under test.
-### Worked example (synthetic Ashford Batch Plant)
-
-Flat ABP networking lets L4 reach SIS; zoned design removes that edge.
-
-### Practical activity
+Claim: deleting an edge never enlarges a reachable set. Proof: any path in the smaller graph uses only edges that also exist in the larger graph, so every node reachable after deletion was reachable before. The practical rule follows: rule removals can be approved quickly; rule additions need analysis, because they can create new transitive paths.
 
 ```python
 # Lab 23 - reachability count on a synthetic Purdue-layered OT network
@@ -1365,228 +142,281 @@ flat: L4 reaches ['L0', 'L1-PLC', 'L1-SIS', 'L2', 'L3', 'L4'] count=6 writes_to_
 zoned: L4 reaches ['L0', 'L1-PLC', 'L2', 'L3', 'L3.5', 'L4'] count=6 writes_to_SIS=False
 ```
 
-### Common errors and limits
+> **Synthetic case — Ashford Batch Plant.** ABP's original network had a convenience rule L4→L2 for remote HMI viewing. The reachability lab shows that in the flat design the office zone reaches L1-SIS; in the zoned design with a DMZ and no SCADA→SIS conduit, it does not.
 
-- Producing exploit steps.
-- Ignoring safety PLC independence.
-- Counting graph edges as residual risk without consequence analysis.
+### 2.4 Errors and limits
 
-### Exercises — chapter 23
+Graphs model permitted initiation, not actual traffic or vulnerabilities. Bidirectional protocols and remote-access tools can create hidden reverse edges; inventory them explicitly.
 
-**EX045 — Apply threat and failure analysis.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
+### Exercises
 
-**EX046 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
+- **EX004 — Closure.** Edges: A→B, B→C, C→D, B→E. List all nodes reachable from A. Rubric: 3 = {A,B,C,D,E}; 2 = one missing; 1 = direct only; 0 = none.
+- **EX005 — Proof use.** Explain in two sentences why adding L3→L1-SIS needs more review than removing L4→L2. Rubric: 3 = addition can create new transitive paths, removal cannot (monotonicity); 2 = intuition only; 1 = vague; 0 = wrong.
+- **EX006 — Lab.** Which single edge in the flat design gives L4 its path to L1-SIS? Rubric: 3 = L2→L1-SIS (with L4→L2 or L4→L3→L2 upstream); 2 = names L4→L2 only; 1 = vague; 0 = wrong.
 
-### Chapter synthesis
+### Synthesis
 
-OT, IoT and cyber-physical security: threat and failure analysis advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+Zones and conduits are a graph; reachability, not rule-by-rule reading, answers who can touch the safety system.
 
-### Continue studying — chapter 23 of 50
+### Continue studying — chapter 02 of 50
 
-[← Chapter 22](#ch-22) · [Course chapter index](../SUBJECTS.md) · [Chapter 24 →](#ch-24)
+[← Chapter 01 (draft)](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (draft) →](#ch-03)
 
-<a id="ch-24"></a>
+<a id="ch-03"></a>
 
-## Chapter 24 — OT, IoT and cyber-physical security: methods I
+## Chapter 3 — Physics for computing
 
-### Learning outcomes and connection
+### Learning outcomes
 
-After this chapter you can apply **OT, IoT and cyber-physical security: methods I** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
+You will (1) compute serial-link timing for fieldbus polling; (2) relate physical process speed to required control cycle times; (3) recognise that physical signals can be manipulated outside the network.
 
-### 24.1 Purpose
+### 3.1 Bits on a wire
 
-risk matrices with consequence units in physical terms, zone risk assessment per 62443-3-2 as a method, and when to use qualitative vs quantitative approaches.
+Much plant communication still runs over RS-485 serial at rates such as 115,200 bit/s. With one start bit, eight data bits and one stop bit, each byte costs ten bit-times. A 40-byte Modbus RTU response therefore takes 40 × 10 / 115,200 ≈ 3.5 ms on the wire, before device processing. Summing every poll in a cycle tells you whether the schedule fits the controller's cycle budget.
 
-### 24.2 Method
+```python
+"""Lab: does a polling schedule fit the PLC scan/communication budget? (synthetic)"""
+link_bps = 115200; bits_per_byte = 10           # RS-485 serial, 8N1 + start bit
+polls = [("T-1 level", 8), ("T-2 level", 8), ("R-101 block", 40), ("pump status", 8), ("historian sweep", 120)]
+overhead = 12                                    # bytes of request+framing per poll (assumed)
+total = sum(n + overhead for _, n in polls)
+t = total * bits_per_byte / link_bps
+print(f"bytes per cycle={total} time per cycle={t*1000:.1f} ms")
+for target in (100, 50):
+    print(f"cycle budget {target} ms -> {'fits' if t*1000 <= target else 'OVERRUN'}")
+```
 
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
+Expected output:
 
-### 24.3 Interface to other chapters
+```text
+bytes per cycle=244 time per cycle=21.2 ms
+cycle budget 100 ms -> fits
+cycle budget 50 ms -> fits
+```
 
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
+### 3.2 Process time constants
 
-### 24.4 Quality bar
+A level loop on a 12 m³ tank changes over minutes; a pressure loop on a compressor changes in tens of milliseconds. The required control and detection speed follows the physics. Security monitoring that adds 200 ms of latency is harmless on the tank and dangerous on the compressor. Always ask what the process time constant is before inserting inspection devices inline.
 
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
+### 3.3 Physical-layer manipulation
 
-### Engineering notes for this chapter
+Sensors measure physics: a 4–20 mA loop, a thermocouple voltage, a pulse from a flow meter. An adversary or a fault can alter those signals without touching any network packet — by injecting current, heating a probe or vibrating a meter. Network monitoring cannot see this; physical plausibility checks (Chapter 29) and tamper-evident enclosures can.
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+> **Synthetic case — Ashford Batch Plant.** Lena's polling budget for the RS-485 trunk to PLC-A came to 21 ms per cycle, comfortably inside the 100 ms cycle. That left room for an inline serial monitor, which she approved only after measuring its added latency on a bench copy.
 
-### Worked example (synthetic Ashford Batch Plant)
+### 3.4 Errors and limits
 
-CNHP applies methods I to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
+Timing calculations ignore device turnaround and retries; measure on a bench before committing. Do not test signal injection on live loops.
 
-### Practical activity
+### Exercises
 
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
+- **EX007 — Wire time.** How long does a 120-byte frame take at 19,200 bit/s with 10 bits per byte? Rubric: 3 = 62.5 ms with working; 2 = slip; 1 = method; 0 = none.
+- **EX008 — Budget.** Using the lab's 244 bytes per cycle, what is the slowest baud rate that still fits a 50 ms budget? Rubric: 3 = 48,800 bit/s (so 57,600 standard) with working; 2 = number without standard rate; 1 = method; 0 = none.
+- **EX009 — Physical.** Give two physical-layer manipulations a network IDS cannot detect and one compensating control each. Rubric: 3 = two manipulations plus controls; 2 = two without controls; 1 = one; 0 = none.
 
-### Common errors and limits
+### Synthesis
 
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
+Physics sets the timing budget for control and for any security device you put in the loop.
 
-### Exercises — chapter 24
+### Continue studying — chapter 03 of 50
 
-**EX047 — Apply methods I.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
+[← Chapter 02 (draft)](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (draft) →](#ch-04)
 
-**EX048 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
+<a id="ch-04"></a>
 
-### Chapter synthesis
+## Chapter 4 — Programming I
 
-OT, IoT and cyber-physical security: methods I advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+### Learning outcomes
 
-### Continue studying — chapter 24 of 50
+You will (1) write small, pure functions that decide whether an OT message is permitted; (2) represent industrial addresses with exact types; (3) test against synthetic decoded traffic, never live plant traffic.
 
-[← Chapter 23](#ch-23) · [Course chapter index](../SUBJECTS.md) · [Chapter 25 →](#ch-25)
+### 4.1 Decisions as functions
 
-<a id="ch-25"></a>
+An allow-list for Modbus is a function `permit(source, function_code, register) -> (bool, reason)`. Making it pure — inputs in, decision out, no hidden configuration — lets you test it on a laptop with synthetic records. The reason string matters: "register-out-of-range" tells a reviewer that the HMI tried to write outside the setpoint block, which is a different story from an unknown station using a diagnostic function.
 
-## Chapter 25 — Design studio I
+### 4.2 Exact types
 
-### Learning outcomes and connection
+Store function codes as integers, register ranges as `range` objects, and station identities as fixed strings from an inventory. A frequent bug treats the 4xxxx "holding register" notation as a string and matches by prefix, so 400500 looks like 40050. Convert addresses once, at parse time, into integers with documented offsets.
 
-After this chapter you can apply **Design studio I** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
+### 4.3 Tests on synthetic decoded frames
 
-### 25.1 Purpose
+The lab below never opens a socket; it checks already-decoded tuples. That is deliberate. Course code must not send Modbus traffic to any device. Write one test per rule, plus boundary registers 40001 and 40010.
 
-a facilitated studio that selects a zone map for ABP, records ADRs, and produces a revision-controlled architecture sketch.
+```python
+"""Lab: Modbus function-code allow-list on synthetic, already-decoded requests (no network)."""
+ALLOW = {("HMI-1", 3), ("HMI-1", 6), ("HIST-1", 3), ("HIST-1", 4)}  # (source, function code)
+WRITE_REGS = {("HMI-1", 6): range(40001, 40011)}                     # HMI may write setpoints only
+reqs = [("HMI-1", 3, 40001), ("HMI-1", 6, 40003), ("HMI-1", 6, 40050),
+        ("HIST-1", 3, 30001), ("HIST-1", 16, 40001), ("ENG-WS", 8, 0), ("HIST-1", 4, 30010)]
+for src, fc, reg in reqs:
+    if (src, fc) not in ALLOW:
+        d = "BLOCK fc-not-allowed"
+    elif (src, fc) in WRITE_REGS and reg not in WRITE_REGS[(src, fc)]:
+        d = "BLOCK register-out-of-range"
+    else:
+        d = "PASS"
+    print(f"{src:7} fc={fc:2} reg={reg:5} -> {d}")
+```
 
-### 25.2 Method
+Expected output:
 
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
+```text
+HMI-1   fc= 3 reg=40001 -> PASS
+HMI-1   fc= 6 reg=40003 -> PASS
+HMI-1   fc= 6 reg=40050 -> BLOCK register-out-of-range
+HIST-1  fc= 3 reg=30001 -> PASS
+HIST-1  fc=16 reg=40001 -> BLOCK fc-not-allowed
+ENG-WS  fc= 8 reg=    0 -> BLOCK fc-not-allowed
+HIST-1  fc= 4 reg=30010 -> PASS
+```
 
-### 25.3 Interface to other chapters
+### 4.3b Logging what the function decided
 
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
+Every decision should be logged with the source, function code, register, decision, reason and the version of the allow-list file. When an operator asks why an HMI write was blocked at 03:12, the log answers in one line. Without the version field, nobody can tell whether the block came from yesterday's list or today's.
 
-### 25.4 Quality bar
+> **Synthetic case — Ashford Batch Plant.** Lena's first allow-list let HIST-1 use function 16 (write multiple registers) because it "only reads". The test table caught it: the historian has no business writing, so function 16 was removed and the test now expects BLOCK.
 
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
+### 4.4 Errors and limits
 
-### Engineering notes for this chapter
+An allow-list on a monitor is only as good as the decoder. Malformed frames must be counted and alarmed, not silently dropped. Real enforcement devices need vendor validation before deployment.
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+### Exercises
 
-### Worked example (synthetic Ashford Batch Plant)
+- **EX010 — Rule.** Write the permit rule (in words or code) for "HIST-1 may read input and holding registers, nothing else". Rubric: 3 = fc 3 and 4 only, all else BLOCK with reason; 2 = misses a reason; 1 = vague; 0 = includes writes.
+- **EX011 — Boundary.** Which register values test the edges of the HMI write range in the lab, and what is expected for 40011? Rubric: 3 = 40001 and 40010 PASS, 40011 BLOCK; 2 = one edge; 1 = vague; 0 = wrong.
+- **EX012 — Lab.** Why does ENG-WS fc=8 block, and why is that the right default? Rubric: 3 = no (ENG-WS, 8) entry; diagnostics/default-deny; 2 = first half; 1 = vague; 0 = wrong.
 
-CNHP applies design studio I to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
+### Synthesis
 
-### Practical activity
+Pure, typed, tested permit functions are the smallest trustworthy unit of OT security software.
 
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
+### Continue studying — chapter 04 of 50
 
-### Common errors and limits
+[← Chapter 03 (draft)](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 (draft) →](#ch-05)
 
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
+<a id="ch-05"></a>
 
-### Exercises — chapter 25
+## Chapter 5 — Engineering communication
 
-**EX049 — Apply Design studio I.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
+### Learning outcomes
 
-**EX050 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
+You will (1) write OT security findings that operators and safety engineers can act on; (2) separate observation, consequence and recommendation; (3) avoid alarmist or unbounded language.
 
-### Chapter synthesis
+### 5.1 Three audiences
 
-Design studio I advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+A control-room operator needs to know what to watch for. A process-safety engineer needs to know whether a safety function is affected. A manager needs cost and downtime. One finding can serve all three if it states: asset and zone; what was observed and how; the plausible process consequence; the safety-layer status; the fix and the maintenance window needed.
 
-### Continue studying — chapter 25 of 50
+### 5.2 Bounded consequences
 
-[← Chapter 24](#ch-24) · [Course chapter index](../SUBJECTS.md) · [Chapter 26 →](#ch-26)
+"An attacker could blow up the plant" is neither true nor useful. A bounded statement reads: "A station on L2 can write setpoint registers on PLC-A without authentication. A setpoint change on T-1 level could overfill the tank in roughly 40 minutes; the independent high-high trip on SIS-B would stop the feed pump before overflow." This names the path, the time, and the protective layer that still holds.
 
-<a id="ch-26"></a>
+### 5.3 Structure of a short report
 
-## Chapter 26 — OT, IoT and cyber-physical security: architecture alternatives
+Summary (three sentences); scope and method; findings ordered by consequence; residual risk with protective layers named; appendix with evidence references. Diagrams of zones are worth more than pages of rule tables.
 
-### Learning outcomes and connection
+### 5.3b Words to avoid and words to use
 
-After this chapter you can apply **OT, IoT and cyber-physical security: architecture alternatives** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
+Avoid "trivial", "catastrophic" and "fully compromised": none can be checked. Use measured quantities — minutes to overflow, number of reachable zones, protective layers intact — and name the evidence. A safety engineer will trust a finding that says "SIS-B remains independent" far more than one that says "everything is at risk".
 
-### 26.1 Purpose
+> **Synthetic case — Ashford Batch Plant.** Lena's first draft of a finding said the SCADA network was "totally insecure". The review version: "Remote-viewing rule L4→L2 allows office hosts to reach SCADA servers (rule FW-12, observed in configuration export 3 March). Recommend removal; viewing via the DMZ historian replica instead. Downtime: none."
 
-compare flat, Purdue+DMZ, and unidirectional-gateway options with reachability and operability scores.
+### 5.4 Errors and limits
 
-### 26.2 Method
+Never include working attack procedures in reports; reference the evidence store. Do not claim a safety consequence without the safety engineer's review.
 
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
+### Exercises
 
-### 26.3 Interface to other chapters
+- **EX013 — Rewrite.** Rewrite "the PLC can be hacked" as a bounded finding sentence for PLC-A. Rubric: 3 = path, zone, observation, consequence bound, protective layer; 2 = one missing; 1 = still vague; 0 = unchanged.
+- **EX014 — Audience.** For the FW-12 finding, write one sentence each for operator, safety engineer and manager. Rubric: 3 = three tailored sentences; 2 = two; 1 = one; 0 = none.
+- **EX015 — Residual risk.** After FW-12 removal, state one residual risk honestly. Rubric: 3 = specific remaining path (e.g. engineering workstation, vendor remote access) and its control; 2 = generic; 1 = "none"; 0 = none.
 
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
+### Synthesis
 
-### 26.4 Quality bar
+Good OT findings are bounded, name protective layers and give each audience what it needs to decide.
 
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
+### Continue studying — chapter 05 of 50
 
-### Engineering notes for this chapter
+[← Chapter 04 (draft)](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 (draft) →](#ch-06)
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+<a id="ch-06"></a>
 
-### Worked example (synthetic Ashford Batch Plant)
+## Chapter 6 — Calculus II
 
-CNHP applies architecture alternatives to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
+### Learning outcomes
 
-### Practical activity
+You will (1) use series to reason about repeated retries of plant communications; (2) apply a simple differential model to alarm backlog; (3) decide when a continuous model is good enough for a maintenance debate.
 
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
+### 6.1 Geometric retries on a fieldbus
 
-### Common errors and limits
+If each Modbus request succeeds with probability p = 0.9 independently (synthetic, for a noisy trunk), the chance of succeeding within k tries is 1 − (1 − p)^k. With k = 3, that is 0.999. Retries raise reliability but multiply traffic: expected attempts until success equal 1/p ≈ 1.11, so a 1,000-poll cycle expects about 1,110 frames. The communications budget (Chapter 3) must count the retries, not only the logical polls.
 
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
+### 6.2 Alarm backlog as a rate equation
 
-### Exercises — chapter 26
+Let B(t) be open alarms. Alarms arrive at rate a and are acknowledged at rate c when staffed. Then B′ ≈ a − c. If a = 3.3/h (the pre-rationalisation rate from the alarm lab) and two operators together clear 2.0/h, the backlog grows. After rationalisation to 1.05/h, the same staff clears it. The model is crude — it ignores priority — but it makes staffing and rationalisation quantitative.
 
-**EX051 — Apply architecture alternatives.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
+```python
+"""Lab: alarm load per operator hour before and after rationalisation (synthetic counts)."""
+before = {"T-1 high": 140, "T-2 high": 95, "R-101 temp": 30, "pump trip": 6, "comm loss PLC-A": 210, "door open": 75}
+remove = {"comm loss PLC-A": 200, "door open": 70, "T-1 high": 110}   # chattering/duplicate alarms removed
+hours = 24 * 7
+tb = sum(before.values()); ta = tb - sum(remove.values())
+print(f"week alarms before={tb} after={ta}")
+print(f"per operator-hour before={tb/hours:.2f} after={ta/hours:.2f}")
+top = max(before, key=before.get)
+print(f"worst source before: {top} ({before[top]/tb:.0%} of load)")
+```
 
-**EX052 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
+Expected output:
 
-### Chapter synthesis
+```text
+week alarms before=556 after=176
+per operator-hour before=3.31 after=1.05
+worst source before: comm loss PLC-A (38% of load)
+```
 
-OT, IoT and cyber-physical security: architecture alternatives advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+### 6.3 When continuous is enough
 
-### Continue studying — chapter 26 of 50
+Maintenance debates often need an order of magnitude: "Will 200 chattering communication-loss alarms per week overwhelm one operator?" Yes: that alone is about 1.2/h. Reserve exact analysis for loops that affect safety timing.
 
-[← Chapter 25](#ch-25) · [Course chapter index](../SUBJECTS.md) · [Chapter 27 →](#ch-27)
+> **Synthetic case — Ashford Batch Plant.** The alarm lab cut weekly load from 556 to 176 by removing known chattering sources. Lena used B′ to show that one night operator could keep up after the change, which unblocked the CNHP proposal that had been stuck on "we need more staff first".
 
-<a id="ch-27"></a>
+### 6.4 Errors and limits
 
-## Chapter 27 — OT, IoT and cyber-physical security: control design
+Independence of retries fails when the trunk is systematically down. Backlog models ignore safety-critical alarms that must interrupt; treat those separately.
 
-### Learning outcomes and connection
+### Practice note
 
-After this chapter you can specify detection and interlock controls, including a residual CUSUM for single-sensor replay.
+Keep a weekly plot of a and c next to the alarm-rationalisation log. When a rises after a firmware change, you know to look for a new chatter source before blaming the operators.
 
-### 27.1 Alarm philosophy
+### Exercises
 
-Alarms need priority, consequence and response. Cyber-informed alarms (residual high) join process alarms.
+- **EX016 — Retries.** With p = 0.85 and 500 polls, expected frames? Rubric: 3 ≈ 588 with working; 2 = slip; 1 = formula; 0 = none.
+- **EX017 — Backlog.** B(0)=40, a=1.0/h, c=1.5/h. Hours to clear? Rubric: 3 = 80 h; 2 = method; 1 = qualitative; 0 = none.
+- **EX018 — Lab.** What fraction of pre-change load was "comm loss PLC-A"? Rubric: 3 = 38%; 2 = count only; 1 = vague; 0 = wrong.
 
-### 27.2 Residual detection
+### Synthesis
 
-Mass-balance residual + CUSUM detects class A replay; class B (second sensor spoofed) fails — a design boundary.
+Series and rates turn "try again" and "hire someone" into numbers that fit a communications or staffing decision.
 
-### 27.3 BPCS vs SIS
+### Continue studying — chapter 06 of 50
 
-Safety functions live in SIS-B with independent sensors where required; do not "fix" safety by blocking it from the SCADA path without safety assessment.
+[← Chapter 05 (draft)](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 (draft) →](#ch-07)
 
-### Engineering notes for this chapter
+<a id="ch-07"></a>
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+## Chapter 7 — Probability and statistics
 
+### Learning outcomes
 
-In addition, record the scan-cycle budget and any actuator stroke delay that bounds how fast the process can move after a forged command; without those times, delay metrics are uninterpretable. State whether the SIS is independent of the BPCS path under test.
-### Worked example (synthetic Ashford Batch Plant)
+You will (1) report detection rates with intervals; (2) compare detectors without overclaiming; (3) refuse rankings that the sample cannot support.
 
-Lab 27 on synthetic reactor level:
+### 7.1 Rates and intervals
 
-### Practical activity
+Sixty synthetic trials with 0 false alarms and 60/60 detections sounds perfect — until you remember that a Wilson 95% interval for 0/60 still allows a few percent false-alarm rate in the long run. Report the interval, not only the point. For 60/60 detections the interval for the miss rate is also narrow, but it is not zero forever.
+
+### 7.2 Comparing detectors
+
+The residual CUSUM lab shows a band detector missing class-A attacks while CUSUM catches them with mean delay ~25 samples, both with 0/60 false alarms on this seed set. That is evidence that CUSUM beats the band *on these synthetic attacks*, not that CUSUM is universally better. Prefer paired designs on the same traces and state the attack class.
 
 ```python
 # Lab 27 - residual CUSUM vs band on batch reactor level (synthetic)
@@ -1621,1591 +451,3164 @@ cusum classA FA=0/60 det=60/60 mean_delay=24.8
 cusum classB FA=0/60 det=0/60 mean_delay=nan
 ```
 
-### Common errors and limits
+### 7.3 Base rates in the control room
 
-- Relying on band alarms alone against replay.
-- Putting detection logic only in the same PLC that is attacked.
-- Hiding class B failure.
+If genuine cyber-physical attacks are rare, a detector with even a 1% false-alarm rate will dominate the operator's attention. Bayes' rule applies exactly as in Chapter 7 of neighbouring security courses: precision collapses when the base rate is tiny. Design for the plant's base rate, not a lab's balanced set.
 
-### Exercises — chapter 27
+> **Synthetic case — Ashford Batch Plant.** A vendor claimed "99% detection, 0% false alarms" from a 20-run demo. Lena asked for the attack class, the seed list and the false-alarm interval; none were provided. The pilot used the CUSUM lab design instead.
 
-**EX053 — Apply control design.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
+### 7.4 Errors and limits
 
-**EX054 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
+Synthetic attacks are not the adversary. Intervals assume independent trials; correlated seeds invalidate them. Never invent a p-value for a table you did not test.
 
-### Chapter synthesis
+### Practice note
 
-OT, IoT and cyber-physical security: control design advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+Publish the seed list and detector parameters with every detection claim in CNHP documents. Reproducibility is cheaper than arguing about a slide six months later, and it is what Urbina et al. and Giraldo et al. demand of evaluations.
+
+### Exercises
+
+- **EX019 — Interval.** State what 0/60 false alarms lets you claim at ~95%. Rubric: 3 = upper bound ~5–6% (rule of three / Wilson), not "zero forever"; 2 = bound only; 1 = "zero"; 0 = none.
+- **EX020 — Lab.** For CUSUM on class A, report detections and mean delay. Rubric: 3 = 60/60 and ~24.8; 2 = one number; 1 = vague; 0 = wrong.
+- **EX021 — Ranking refusal.** Band and CUSUM both show FA=0/60 on class B (no detections). Write the sentence that refuses calling them equal in quality. Rubric: 3 = cites no power / need class-A or larger n; 2 = vague caution; 1 = declares equal; 0 = none.
+
+### Synthesis
+
+Detection claims need intervals, attack class and base-rate honesty — not a single percentage.
+
+### Continue studying — chapter 07 of 50
+
+[← Chapter 06 (draft)](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 (draft) →](#ch-08)
+
+<a id="ch-08"></a>
+
+## Chapter 8 — Computer architecture
+
+### Learning outcomes
+
+You will (1) place PLC, SIS and SCADA on a privilege and dependency map; (2) explain why safety systems need independent hardware; (3) design evidence collection that does not require writing to the PLC.
+
+### 8.1 Privilege in the plant
+
+A PLC executes the basic regulatory loop. An SIS implements the safety instrumented functions and must be able to act when the PLC is wrong or compromised. SCADA and HMIs are supervisory: they set setpoints and display state. Architecture that lets SCADA write into SIS logic collapses that independence — which is exactly what the reachability lab warned about.
+
+### 8.2 Independence is physical
+
+Independence is not a VLAN tag. It means separate controllers, sensors where required by the safety requirement specification, and conduits that do not allow the regulatory network to alter safety logic. NIST SP 800-82 and ISA/IEC 62443 both treat safety systems as needing careful zoning; process-safety standards (IEC 61511) go further on independence. Security architecture must not undo what safety architecture paid for.
+
+### 8.3 Evidence without writing to the PLC
+
+Authorized assessment of OT prefers read-only methods: configuration exports, mirrored historian data, span ports, serial monitors in listen mode. Writing a test setpoint to a live PLC is a process change and needs the same authorization as an engineering change. Course labs never write to real devices.
+
+> **Synthetic case — Ashford Batch Plant.** SIS-B is a separate controller with its own sensors for high-high level on T-1. CNHP's rule set forbids any conduit from L2/L3 into SIS engineering ports except through a locked physical keyswitch during scheduled tests.
+
+### 8.4 Errors and limits
+
+"Air gap" claims often hide USB, vendor laptops and cellular modems. Inventory those out-of-band paths as carefully as IP routes.
+
+### Practice note
+
+Draw the privilege map on one page: who can change setpoints, who can change logic, who can change safety setpoints, and through which physical ports. Hang it in the engineering room. Arguments about "just a temporary rule" die faster when the map is visible.
+
+### Exercises
+
+- **EX022 — Map.** Name three actions that require SIS engineering privilege and three that a normal HMI may do. Rubric: 3 = six correctly split; 2 = four; 1 = vague; 0 = none.
+- **EX023 — Independence.** Why is VLAN separation alone insufficient for SIS independence? Rubric: 3 = shared controller/sensors/management path can still couple; 2 = one reason; 1 = vague; 0 = claims VLAN enough.
+- **EX024 — Evidence.** Propose a read-only evidence path for "HMI can write register 40050". Rubric: 3 = config export or monitored span showing the write capability / attempt, no live write; 2 = partial; 1 = live write; 0 = none.
+
+### Synthesis
+
+Keep safety logic independent in hardware and conduits; collect evidence without becoming an actuator.
+
+### Continue studying — chapter 08 of 50
+
+[← Chapter 07 (draft)](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 (draft) →](#ch-09)
+
+<a id="ch-09"></a>
+
+## Chapter 9 — Programming II
+
+### Learning outcomes
+
+You will (1) design a schema for OT findings that forbids exploit recipes; (2) implement idempotent updates keyed by asset and weakness; (3) property-test zone rules.
+
+### 9.1 Schema without payloads
+
+Store title, asset, zone, weakness class, evidence hash, consequence bound, protective layers intact, status. Reject fields named payload, shell or exploit. Evidence lives in a sealed store; the ticket holds the hash.
+
+### 9.2 Idempotent upserts
+
+Two scanners reporting the same open Modbus write on PLC-A must become one finding. Fingerprint = (asset, weakness class, register-or-path). Retries and re-imports leave one row.
+
+### 9.3 Property tests for zones
+
+State: "for every host in the office zone and every SIS register, permit is false". Generate synthetic hosts and assert. Property tests catch the bug where a new office subnet was added to inventory but not to the deny side of the allow-list.
+
+> **Synthetic case — Ashford Batch Plant.** After the FW-12 finding, Lena added a property test: no L4 host may have a permit path to L1-SIS. CI runs it on every firewall-export change.
+
+### 9.4 Errors and limits
+
+Schemas drift; version them. Property generators that never emit the new subnet miss the bug they were written to catch — include inventory diffs as inputs.
+
+### Practice note
+
+When someone asks for a "just this once" exception host, require a time-boxed exception object in the schema with an expiry and an owner. Exceptions without expiry become permanent conduits.
+
+### 9.1b Schema evolution without downtime
+
+When the finding schema gains a required field, deploy a two-phase change: first accept and persist the field as optional while backfilling; then flip the validator to required. Windows mid-flight must not break because a mobile client is one version behind. Publish the schema version in API responses so clients can refuse to write when incompatible. Bulk imports from scanners must pass the same validation path as interactive creates, including forbidden-field checks, or payloads will sneak in through the trusted import side door.
+
+### Exercises
+
+- **EX025 — Reject.** Write a validation rule that rejects payload-like fields. Rubric: 3 = rule + failing example; 2 = rule; 1 = idea; 0 = none.
+- **EX026 — Fingerprint.** Why do two reports of PLC-A register 40050 collapse? Rubric: 3 = same fingerprint; 2 = "same finding"; 1 = vague; 0 = wrong.
+- **EX027 — Property.** State one property after adding a DMZ zone. Rubric: 3 = e.g. L4 reaches L2 only via L3.5; 2 = informal; 1 = wrong; 0 = none.
+
+### Synthesis
+
+Schemas, idempotency and properties keep OT security tooling boring — in the good sense.
+
+### Continue studying — chapter 09 of 50
+
+[← Chapter 08 (draft)](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 (draft) →](#ch-10)
+
+<a id="ch-10"></a>
+
+## Chapter 10 — Engineering ethics and safety
+
+### Learning outcomes
+
+You will (1) refuse unauthorized plant access and dual-use requests; (2) apply stop conditions that protect process safety; (3) document consent so a review can reconstruct it.
+
+### 10.1 Authorization is not enthusiasm
+
+A plant manager saying "go ahead" in a corridor is not written authorization. OT work needs a signed scope naming units, methods, windows, stop conditions and a process-safety contact who can halt the plant. Without that document, the engineer stops. NIST SP 800-82 and ISA/IEC 62443 assume authorized, planned activity — not clever improvisation.
+
+### 10.2 Dual use
+
+This programme teaches zoning, monitoring, measurement and reporting. It does not teach exploit development against PLCs, weaponised protocol stacks or bypasses of safety systems. When a peer asks for "just the PoC against brand X", the answer is the finding description and the vendor's disclosure channel, not a working attack.
+
+### 10.3 Stop conditions that protect the process
+
+Stop if: an unexpected process alarm fires; latency or cycle time exceeds the budget; a safety system indicates a fault; the process-safety contact says stop. Software hard-denies help, but humans always win. Never disable a safety function to "make the test work".
+
+> **Synthetic case — Ashford Batch Plant.** During a bench test of the serial monitor, cycle time rose above 50 ms. Lena stopped, removed the device, and re-tested on a spare trunk before any plant window was booked.
+
+### 10.4 Errors and limits
+
+Ethics is a constraint on every later chapter. Legal text here is orientation, not advice. Live plants are never course lab targets.
+
+### Practice note
+
+Print the stop conditions on the work permit hung at the panel. Under noise and time pressure, people remember what they can see. A stop condition buried in page 12 of a PDF is a stop condition that will be missed.
+
+### Exercises
+
+- **EX028 — Refuse.** Two-sentence refusal to a request for a working PLC exploit for a graded assignment. Rubric: 3 = refuses, offers allowed alternative, cites safety; 2 = refuses only; 1 = vague; 0 = provides exploit.
+- **EX029 — Stop.** List four stop conditions for an ABP window. Rubric: 3 = four process-relevant; 2 = three; 1 = one; 0 = none.
+- **EX030 — Fields.** Six fields a signed OT work permit must contain. Rubric: 3 = units, methods, window, rate/impact limits, contacts, stop/resume; 2 = four; 1 = two; 0 = none.
+
+### Synthesis
+
+Written permission, process-first stop conditions and a refusal habit are safety engineering.
+
+### Continue studying — chapter 10 of 50
+
+[← Chapter 09 (draft)](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 (draft) →](#ch-11)
+
+<a id="ch-11"></a>
+
+## Chapter 11 — Networks and protocols
+
+### Learning outcomes
+
+You will (1) describe what an authorized observer can learn from OT protocols without attacking them; (2) define function-code and register scope; (3) treat protocol denies as successful controls.
+
+### 11.1 Observation points
+
+Serial monitors see Modbus RTU on the wire; SPAN ports see Ethernet/IP or Modbus TCP; application logs see HMI actions. An assessment that only has HMI screenshots should not claim fieldbus visibility. State the vantage in the method section of every finding.
+
+### 11.2 Ports are not semantics
+
+TCP 502 often means Modbus TCP, but the meaningful scope is which function codes and which register ranges each station may use. Port 502 open is incomplete without the allow-list status and the stations observed. Chapter 4's permit function is the right abstraction.
+
+### 11.3 Denies are coverage
+
+A firewall that blocks office-to-SCADA, or a monitor that drops function 16 from HIST-1, is evidence that a control worked for that probe. Coverage boards should count planned checks that were denied as completed checks, not as failures to get in.
+
+```python
+"""Lab: Modbus function-code allow-list on synthetic, already-decoded requests (no network)."""
+ALLOW = {("HMI-1", 3), ("HMI-1", 6), ("HIST-1", 3), ("HIST-1", 4)}  # (source, function code)
+WRITE_REGS = {("HMI-1", 6): range(40001, 40011)}                     # HMI may write setpoints only
+reqs = [("HMI-1", 3, 40001), ("HMI-1", 6, 40003), ("HMI-1", 6, 40050),
+        ("HIST-1", 3, 30001), ("HIST-1", 16, 40001), ("ENG-WS", 8, 0), ("HIST-1", 4, 30010)]
+for src, fc, reg in reqs:
+    if (src, fc) not in ALLOW:
+        d = "BLOCK fc-not-allowed"
+    elif (src, fc) in WRITE_REGS and reg not in WRITE_REGS[(src, fc)]:
+        d = "BLOCK register-out-of-range"
+    else:
+        d = "PASS"
+    print(f"{src:7} fc={fc:2} reg={reg:5} -> {d}")
+```
+
+Expected output:
+
+```text
+HMI-1   fc= 3 reg=40001 -> PASS
+HMI-1   fc= 6 reg=40003 -> PASS
+HMI-1   fc= 6 reg=40050 -> BLOCK register-out-of-range
+HIST-1  fc= 3 reg=30001 -> PASS
+HIST-1  fc=16 reg=40001 -> BLOCK fc-not-allowed
+ENG-WS  fc= 8 reg=    0 -> BLOCK fc-not-allowed
+HIST-1  fc= 4 reg=30010 -> PASS
+```
+
+> **Synthetic case — Ashford Batch Plant.** The CNHP coverage board lists HIST-1 cannot write as a planned check. The lab's BLOCK on function 16 is a green result for that check, not a red test failed.
+
+### 11.4 Errors and limits
+
+Banner grabs lie; confirm with application-level or decoded-frame evidence. Course environments never scan live plants.
+
+### Practice note
+
+Keep a one-page protocol inventory: trunk, baud rate, stations, function codes in use, allow-list owner. Update it when a vendor adds a station. Most mystery traffic is an undocumented engineering laptop.
+
+### 11.1b Protocol families in the work permit
+
+Work permits should name protocol families explicitly: Modbus TCP with function codes 3/4/6 on registers 40001-40010 is clearer than port 502. If write codes are forbidden from assessment stations, say so. If only listen-only taps are authorized, say so. Ambiguity here becomes an argument during the window when someone wants to try a diagnostic function just to see. Keep a one-page inventory of trunks, baud rates, stations and allow-list owners updated when vendors add devices.
+
+### Exercises
+
+- **EX031 — Vantage.** Match three evidence types to the minimum vantage. Rubric: 3 = correct mapping (e.g. RTU CRC errors to serial; Modbus TCP FC to IP decode; setpoint change attribution to HMI/app log); 2 = two; 1 = one; 0 = none.
+- **EX032 — Scope.** Rewrite "test Modbus on PLC-A" as a scoped method card line. Rubric: 3 = codes, registers, stations, read-only, window; 2 = partial; 1 = port only; 0 = none.
+- **EX033 — Lab.** Why does HMI-1 fc=6 reg=40050 block while 40003 passes? Rubric: 3 = register-out-of-range vs in WRITE_REGS; 2 = one side; 1 = vague; 0 = wrong.
+
+### Synthesis
+
+Scope OT protocols by semantics (codes, registers, stations); celebrate denies that match the plan.
+
+### Continue studying — chapter 11 of 50
+
+[← Chapter 10 (draft)](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 (draft) →](#ch-12)
+
+<a id="ch-12"></a>
+
+## Chapter 12 — Operating systems
+
+### Learning outcomes
+
+You will (1) harden HMI and engineering workstations without breaking control; (2) collect OS evidence under least privilege; (3) plan patching inside maintenance windows.
+
+### 12.1 Workstations are part of the control system
+
+HMIs and engineering workstations often run general-purpose OSes with decades of legacy software. Treating them as just PCs is how malware walks into L2. Hardening baselines (application allow-listing, local admin removal, USB control) must be tested against the HMI vendor's support matrix — an unsupported hardening change that blanks a screen during a batch is an availability incident.
+
+### 12.2 Least privilege for engineers
+
+Named accounts, time-boxed admin rights, logged elevations. Shared engineer passwords are still common and still wrong: they destroy attribution and linger after contractors leave. Findings about shared passwords are configuration findings, not invitations to crack hashes.
+
+### 12.3 Patch windows
+
+OT patches land in maintenance windows, not on Patch Tuesday. Fit jobs by risk into the available hours; defer what does not fit rather than overrunning into production.
+
+```python
+"""Lab: fit patch jobs into plant maintenance windows (synthetic, greedy by risk)."""
+windows = [("W1 Sat 02-06", 4.0), ("W2 Sun 02-04", 2.0)]
+jobs = [("HMI OS update", 1.5, 8), ("historian DB patch", 2.5, 5), ("PLC-A firmware", 3.0, 9),
+        ("eng-WS AV update", 0.5, 3), ("switch firmware", 1.0, 6)]   # name, hours, risk score
+left = {w: h for w, h in windows}; plan = {w: [] for w, _ in windows}; deferred = []
+for name, h, r in sorted(jobs, key=lambda j: -j[2]):
+    for w, _ in windows:
+        if left[w] >= h:
+            left[w] -= h; plan[w].append(name); break
+    else:
+        deferred.append(name)
+for w, _ in windows:
+    print(w, plan[w], f"spare={left[w]:.1f}h")
+print("deferred:", deferred)
+```
+
+Expected output:
+
+```text
+W1 Sat 02-06 ['PLC-A firmware', 'switch firmware'] spare=0.0h
+W2 Sun 02-04 ['HMI OS update', 'eng-WS AV update'] spare=0.0h
+deferred: ['historian DB patch']
+```
+
+> **Synthetic case — Ashford Batch Plant.** The patch lab deferred the historian DB patch because W1 and W2 were full with higher-risk PLC and HMI work. Lena scheduled a dedicated window the next month instead of squeezing it into Sunday morning.
+
+### 12.4 Errors and limits
+
+Do not disable antivirus or allow-listing to make the vendor happy without a written exception and compensating monitoring. Offline plants still need media control.
+
+### Practice note
+
+Every deferred patch gets a ticket with residual risk and a date. Deferred-without-date is how decade-old HMI OS images survive. Review the deferred list in the same meeting that plans the next window.
+
+### 12.1b Image and offline analysis
+
+Full-disk images of HMIs are high impact: they take systems offline, may contain proprietary recipes and tempt out-of-scope browsing. Prefer live, least-privilege reads and configuration exports. If an image is truly required, the work permit must name chain-of-custody, encryption at rest, who may mount it, and a destroy-by date — and the course labs still do not practice imaging real hosts. Offline plants still need media control; air gaps that hide USB and cellular modems are not air gaps.
+
+### Exercises
+
+- **EX034 — Account.** Specify a least-privilege pattern for PLC engineering access. Rubric: 3 = named, time-boxed, logged, dual control for logic download; 2 = three of four; 1 = shared admin; 0 = none.
+- **EX035 — Lab.** Which job was deferred and why? Rubric: 3 = historian DB patch; windows full after higher-risk jobs; 2 = name only; 1 = vague; 0 = wrong.
+- **EX036 — Exception.** Write a one-line USB exception for a vendor bring-up with compensating control. Rubric: 3 = time-boxed, scanned media, monitored host; 2 = partial; 1 = open USB; 0 = none.
+
+### Synthesis
+
+Harden and patch workstations as if they were controllers — because for malware, they are the door.
+
+### Continue studying — chapter 12 of 50
+
+[← Chapter 11 (draft)](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 (draft) →](#ch-13)
+
+<a id="ch-13"></a>
+
+## Chapter 13 — Data systems
+
+### Learning outcomes
+
+You will (1) protect historian and recipe data without blocking operations; (2) scope database assessment without extracting proprietary batches; (3) design synthetic datasets for labs.
+
+### 13.1 Historians are crown jewels
+
+Historians hold process values that reveal production rates, recipes and sometimes quality data. Unauthorized writes can corrupt batch records; unauthorized reads can leak commercial data. Zone them (L3), allow read paths through controlled replicas, and never expose SQL to L4.
+
+### 13.2 Minimize extracts
+
+Authorized database work uses synthetic or masked copies. Exporting real batch genealogy into a student laptop is a confidentiality incident. The work permit must state: no full dumps, column allow-lists, row limits, destroy-by date.
+
+### 13.3 Synthetic process data
+
+Generate deterministic tank levels and setpoints with fixed seeds so labs reproduce. The CUSUM and PI labs do this; never copy a production historian into the course repository.
+
+> **Synthetic case — Ashford Batch Plant.** Ops provided Lena with a week of synthetic T-1/T-2/R-101 values at 1 Hz for detector trials — no customer order numbers, no operator names.
+
+### 13.4 Errors and limits
+
+Masking that leaves unique rare recipes can still identify production runs. Prefer synthetic generation for teaching.
+
+### Practice note
+
+Draw the data-flow: sensor to PLC to historian to replica to L4 reports. Every arrow needs an owner and a protocol. Mystery arrows are where exfiltration and accidental exposure live.
+
+### 13.1b Row-level and column-level controls
+
+Modern historians and warehouses offer row and column policies. Assessment questions become: does role R see column C? Does row filter F apply? Test with the role itself. Document the policy engine version; we ran SELECT * against an admin role proves little about analyst exposure. Draw the data-flow from sensor to PLC to historian to replica to L4 reports; every arrow needs an owner and a protocol.
+
+### Exercises
+
+- **EX037 — Permit clause.** Write a data-handling clause for a historian assessment. Rubric: 3 = replica only, column allow-list, row limit, destroy-by, no dumps; 2 = three; 1 = one; 0 = none.
+- **EX038 — Authz.** How do you test whether role analyst can write annotations in the historian without injection techniques? Rubric: 3 = connect as analyst, attempt write, record grant/deny; 2 = idea; 1 = injection; 0 = none.
+- **EX039 — Synthetic.** Three fields safe for a synthetic tank table and two that must not appear. Rubric: 3 = e.g. tag, value, timestamp vs operator_name, customer_order; 2 = partial; 1 = weak; 0 = none.
+
+### Synthesis
+
+Minimize data, test roles, synthesize for teaching. The historian is not a trophy store.
+
+### Continue studying — chapter 13 of 50
+
+[← Chapter 12 (draft)](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 (draft) →](#ch-14)
+
+<a id="ch-14"></a>
+
+## Chapter 14 — Software engineering
+
+### Learning outcomes
+
+You will (1) put OT security tools under version control with review; (2) gate conduit-widening changes; (3) keep CI on synthetic fixtures only.
+
+### 14.1 Tools are products
+
+Allow-list compilers, reachability checkers and detector configs are software. They need repositories, reviews, tags and changelogs. A work permit that cites the firewall export without a hash is incomplete.
+
+### 14.2 Gate widening
+
+Merges that add a conduit, open a function code or remove a deny require a second reviewer and a linked authorization ticket. Tightening changes can be lighter. Encode this in CODEOWNERS on the policy paths.
+
+### 14.3 CI fixtures
+
+CI runs labs and unit tests on synthetic data. Never point CI at a plant VPN. Seed data lives in the repo; plant credentials live in a vault and never in CI logs.
+
+> **Synthetic case — Ashford Batch Plant.** A PR added a temporary L4 to L2 rule for a vendor visit. CI's reachability check failed because L1-SIS became reachable; the PR was blocked until the rule was rewritten through the DMZ.
+
+### 14.4 Errors and limits
+
+Tags can drift from what operators run; record the running hash in the engagement log at window start.
+
+### Practice note
+
+Policy repos use the same dual-approval culture as PLC logic downloads. If downloading ladder to PLC-A needs two people, publishing a conduit that reaches PLC-A should too.
+
+### 14.1b Release trains vs hotfixes
+
+Normal improvements ride a release train with Lab I/II. Safety hotfixes may skip features but not verification: a minimal fail-closed regression pack is mandatory. Tag hotfixes clearly so a window can pin either the train build or the hotfix SHA with eyes open. Version pins appear in the kickoff checklist beside the work-permit hash; if the pin and the running binary disagree, the window does not start.
+
+### Exercises
+
+- **EX040 — Pin.** Write the method sentence that pins the allow-list for a window. Rubric: 3 = name, hash/tag, date loaded; 2 = name+tag; 1 = name; 0 = none.
+- **EX041 — Gate.** One-sentence merge policy for conduit files. Rubric: 3 = second reviewer + AUTH for widen; 2 = reviewer only; 1 = vague; 0 = none.
+- **EX042 — CI.** Why must CI never use plant VPN credentials? Rubric: 3 = unauthorized automation, secret leakage, non-determinism; 2 = one solid reason; 1 = vague; 0 = wrong.
+
+### Synthesis
+
+Treat OT security software like production software: versions, review gates, synthetic CI.
+
+### Continue studying — chapter 14 of 50
+
+[← Chapter 13 (draft)](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 (draft) →](#ch-15)
+
+<a id="ch-15"></a>
+
+## Chapter 15 — Security fundamentals
+
+### Learning outcomes
+
+You will (1) map CIA and safety to OT assessment questions; (2) distinguish vulnerability, exposure and process risk; (3) refuse empty security scores.
+
+### 15.1 CIA plus safety
+
+Confidentiality: who can read recipes or trends? Integrity: who can change setpoints or logic? Availability: what stops the batch? Safety: which protective layers remain independent? Every finding should say which properties are affected and whether a safety function is in scope.
+
+### 15.2 Vulnerability, exposure, risk
+
+An unauthenticated Modbus write is a vulnerability. On a PLC reachable from L2 it is an exposure. Process risk adds likelihood and consequence for the plant — which needs the safety engineer's model, not a universal CVSS-only story. Tickets store consequence bounds and protective layers separately; risk acceptance stays with the plant owner.
+
+### 15.3 Empty scores
+
+A single OT risk = 42 hides whether SIS independence holds. Prefer concrete measures: open high-consequence findings, conduits into SIS, detector false-alarm rate at the plant's base rate, patch deferral age. If you show a score, show the model and inputs.
+
+> **Synthetic case — Ashford Batch Plant.** Lena stopped putting a composite score on CNHP slides. The deck now shows: SIS reachable from L4? No. Critical opens: 1. Alarms per operator-hour: 1.05. Deferred high-risk patches: 0.
+
+### 15.4 Errors and limits
+
+Fundamentals are vocabulary; they are not a complete hazard analysis. Continue into threat and failure analysis for structured study.
+
+### Practice note
+
+When someone asks for a traffic-light dashboard, offer three lights that mean something: SIS independence intact (yes/no), critical findings open (count), patch deferrals past date (count). Refuse a fourth light called overall cyber.
+
+### 15.1b From property to test
+
+If a finding claims integrity impact, the validation plan must include an integrity check (who can still write). If it claims availability impact, validation includes a canary or synthetic probe — not a new attack. Align property, finding and re-test method in one paragraph of the ticket. When someone asks for a traffic-light dashboard, offer lights that mean something: SIS independence, critical opens, patch deferrals past date — refuse overall cyber.
+
+### Exercises
+
+- **EX043 — Map.** Map unauthenticated setpoint write on PLC-A to C/I/A/safety with one sentence each. Rubric: 3 = all four scoped; 2 = three; 1 = one; 0 = none.
+- **EX044 — Terms.** Distinguish vulnerability, exposure and process risk for that write. Rubric: 3 = clear split; 2 = two clear; 1 = muddled; 0 = none.
+- **EX045 — Score refusal.** Stakeholder wants a 0-100 hackability score. Refuse with alternatives. Rubric: 3 = refuses + concrete measures; 2 = refuses only; 1 = vague; 0 = invents score.
+
+### Synthesis
+
+Name the property, separate exposure from process risk, prefer measures you can recompute.
+
+### Continue studying — chapter 15 of 50
+
+[← Chapter 14 (draft)](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 (draft) →](#ch-16)
+
+<a id="ch-16"></a>
+
+## Chapter 16 — Systems engineering
+
+### Learning outcomes
+
+You will (1) write testable OT security requirements; (2) trace a requirement to a conduit rule and a lab; (3) manage interfaces between PLC, SIS, historian and security monitors.
+
+### 16.1 Testable requirements
+
+"The plant should be secure" is not a requirement. "No host outside L1/L2 shall initiate writes to PLC-A holding registers; verified by reachability analysis and allow-list tests on synthetic fixtures" is. Each requirement needs an id, a shall-statement, a verification method and an owner.
+
+### 16.2 Traceability
+
+Matrix: requirement to design element to test case to plant evidence. When a finding shows a conduit into SIS, you know which requirement and test failed. Without the matrix, post-mortems become blame.
+
+### 16.3 Interfaces
+
+PLC-A publishes process values; SIS-B consumes dedicated sensors; the historian consumes PLC tags; the serial monitor consumes a listen-only tap. Agree tag lists and update rates. An interface change is a change request, not a quiet edit during a batch.
+
+> **Synthetic case — Ashford Batch Plant.** Requirement R-12 "SIS not reachable from L4" traces to the zoned edge list, lab_reach.py, and the quarterly firewall-export hash in the dossier.
+
+### 16.4 Errors and limits
+
+Traceability matrices rot if not updated in the same PR as the policy. Keep them next to the code.
+
+### Practice note
+
+Put requirement ids in firewall-object names and in detector config comments (req=R-12). Searchability during an incident beats a slide that once mapped requirements to modules.
+
+### 16.1b Glossary and retirement
+
+Maintain a one-page glossary: work permit, ConduitSet, allow-list, planned technique, sealed evidence. Stakeholders misuse coverage and risk constantly; the glossary is a requirements artefact. Traceability also covers retirement: when a requirement is withdrawn, mark it superseded with a pointer rather than deleting the row. Historical findings still cite old ids.
+
+
+
+Internal SLAs between services matter: the monitor may need the finding store to accept an event within N seconds during a stop condition. Write that as a requirement with a synthetic load test. Without it, stop-condition pages arrive after the human already called process safety.
+
+### Exercises
+
+- **EX046 — Shall.** Rewrite "stop office from touching SCADA" as two shall-requirements. Rubric: 3 = two testable shalls with verify method; 2 = one good; 1 = still vague; 0 = none.
+- **EX047 — Trace.** For R-12, name the artefact and the failing test signal. Rubric: 3 = zoned edges + L1-SIS in reach(L4); 2 = one; 1 = vague; 0 = none.
+- **EX048 — Interface.** List three fields in a tag-list interface contract. Rubric: 3 = tag name, type/engineering units, update rate (or equiv.); 2 = two; 1 = one; 0 = none.
+
+### Synthesis
+
+Requirements you can test, links you can follow, interfaces you version.
+
+### Continue studying — chapter 16 of 50
+
+[← Chapter 15 (draft)](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 (draft) →](#ch-17)
+
+<a id="ch-17"></a>
+
+## Chapter 17 — Control and feedback basics
+
+### Learning outcomes
+
+You will (1) tune a simple PI loop and see integral action remove offset; (2) place security sensors in the control loop without destabilising it; (3) avoid alert storms that hide process alarms.
+
+### 17.1 PI in one page
+
+A proportional controller leaves steady-state offset; integral action accumulates error and removes it. The lab steps the level setpoint from 50 to 60 and shows kp-only versus kp+ki. Security engineers need this fluency so they do not propose detectors that fight the controller.
+
+```python
+# Lab 17 - discrete PI level control vs. setpoint step (synthetic)
+def sim(kp, ki, steps=200, sp=60.0):
+    level, integ, err_hist = 50.0, 0.0, []
+    for t in range(steps):
+        err = sp - level
+        integ += err * 0.1
+        u = max(0.0, min(3.0, kp*err + ki*integ))   # inflow m3/h capped
+        level += (u - 0.02*level)*0.1
+        err_hist.append(abs(err))
+    return level, sum(err_hist)/len(err_hist), max(err_hist[50:])
+for kp,ki in ((0.05,0.0),(0.05,0.01),(0.2,0.01)):
+    final, mae, peak = sim(kp,ki)
+    print(f"kp={kp} ki={ki} final={final:.2f} mae={mae:.2f} peak_abs_err_after_5s={peak:.2f}")
+```
+
+Expected output:
+
+```text
+kp=0.05 ki=0.0 final=44.61 mae=13.29 peak_abs_err_after_5s=15.38
+kp=0.05 ki=0.01 final=57.22 mae=8.34 peak_abs_err_after_5s=10.91
+kp=0.2 ki=0.01 final=58.15 mae=4.62 peak_abs_err_after_5s=6.17
+```
+
+### 17.2 Sensors in the loop
+
+Inline inspection adds latency. If the process time constant is minutes (tank level), tens of milliseconds are fine. If it is tens of milliseconds (fast pressure), prefer passive taps. Measure before deploying (Chapter 3).
+
+### 17.3 Alert storms
+
+If every medium cyber alert pages the whole site, people silence the pager — and then miss the process alarm that matters. Severity routing and rate limits on notifications are damping, exactly as in the alarm-rationalisation lab.
+
+> **Synthetic case — Ashford Batch Plant.** After PI lab review, Lena rejected an inline DPI box on the compressor skid (fast loop) and approved a listen-only serial tap on the slow tank trunk.
+
+### 17.4 Errors and limits
+
+Textbook PI ignores valve stiction and sensor delay. Use plant historians for real tuning; the lab is for intuition.
+
+### Practice note
+
+Draw the loop: setpoint, error, controller, actuator, process, sensor, and mark where your security device sits. If you cannot mark it, you do not know whether you are measuring or actuating.
+
+### 17.1b Set-points and human placement
+
+Write the set-point next to the sensor (cycle time ≤ 50 ms). Review set-points when the plant changes recipes or when false pages exceed an agreed rate. Put humans where judgment about authorization is required; put automation where delay is dangerous. Approving a conduit widen is human. Denying an out-of-range write is automation.
+
+### Exercises
+
+- **EX049 — Lab.** Which (kp, ki) pair reaches nearest 60 with lowest mae? Rubric: 3 = (0.2, 0.01) with figures; 2 = pair only; 1 = wrong pair; 0 = none.
+- **EX050 — Placement.** Inline vs tap for a 20 ms pressure loop — choose and justify. Rubric: 3 = tap/passive, latency risk; 2 = choice without why; 1 = inline casually; 0 = none.
+- **EX051 — Damping.** One damping rule for cyber alerts in the control room. Rubric: 3 = specific (batch, severity, rate); 2 = vague; 1 = none useful; 0 = none.
+
+### Synthesis
+
+Understand the loop before inserting security; damp alerts so process alarms stay audible.
+
+### Continue studying — chapter 17 of 50
+
+[← Chapter 16 (draft)](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 (draft) →](#ch-18)
+
+<a id="ch-18"></a>
+
+## Chapter 18 — Security architecture
+
+### Learning outcomes
+
+You will (1) apply Purdue/62443 zoning at ABP; (2) define trust boundaries for engineering access; (3) choose when a synthetic range is the right place to test.
+
+### 18.1 Zones that match safety
+
+L0/L1 hold process and basic control; L2 supervision; L3 site operations; L3.5 DMZ; L4/L5 enterprise. SIS sits with carefully controlled conduits. Architecture diagrams must match the reachability graph, not a marketing Purdue poster.
+
+### 18.2 Engineering access
+
+Engineering workstations and vendor laptops cross trust boundaries. Prefer: DMZ jump host, time-limited accounts, monitored sessions, no standing VPN from the internet to L2. USB and cellular modems are architecture too — inventory them.
+
+### 18.3 Synthetic ranges
+
+When methods are noisy or the plant is fragile, use a synthetic or digital-twin range that mirrors configuration. Results then support claims about the mirrored config, not about live process behaviour. Say so in the report.
+
+```python
+# Lab 23 - reachability count on a synthetic Purdue-layered OT network
+# Nodes: L5-ERP, L4-Office, L3.5-DMZ, L3-Hist, L2-SCADA, L1-PLC, L1-SIS, L0-IO
+edges_flat=[("L5","L4"),("L4","L3"),("L3","L2"),("L2","L1-PLC"),("L2","L1-SIS"),("L1-PLC","L0"),("L1-SIS","L0"),("L4","L2")]
+edges_zoned=[("L5","L4"),("L4","L3.5"),("L3.5","L3"),("L3","L2"),("L2","L1-PLC"),("L1-SIS","L0"),("L1-PLC","L0")]  # SIS not reachable from SCADA
+def reach(edges, start):
+    g={}; 
+    for a,b in edges: g.setdefault(a,[]).append(b)
+    seen=set(); stack=[start]
+    while stack:
+        n=stack.pop()
+        if n in seen: continue
+        seen.add(n); stack.extend(g.get(n,[]))
+    return seen
+for name,e in (("flat",edges_flat),("zoned",edges_zoned)):
+    r=reach(e,"L4")
+    print(f"{name}: L4 reaches {sorted(r)} count={len(r)} writes_to_SIS={'L1-SIS' in r}")
+```
+
+Expected output:
+
+```text
+flat: L4 reaches ['L0', 'L1-PLC', 'L1-SIS', 'L2', 'L3', 'L4'] count=6 writes_to_SIS=True
+zoned: L4 reaches ['L0', 'L1-PLC', 'L2', 'L3', 'L3.5', 'L4'] count=6 writes_to_SIS=False
+```
+
+> **Synthetic case — Ashford Batch Plant.** CNHP's target architecture is the zoned graph: L4 views through L3.5; SIS engineering only via keyswitch; no L2 to L1-SIS conduit.
+
+### 18.4 Errors and limits
+
+Diagrams age. Re-validate zones against the live firewall export at each window.
+
+### Practice note
+
+Hang the zone diagram next to the privilege map from Chapter 8. When a vendor asks for a temporary rule, point at the wall and ask which edge they want to add — and which requirement it breaks.
+
+### 18.1b Jump hosts and egress
+
+Engineering jump hosts are high-value: harden them, log session start/stop, forbid personal file sync agents, and rebuild from golden images between windows when feasible. Assessment and engineering zones need egress allow-lists: only in-scope plant CIDRs and the evidence store. Open egress turns a compromised laptop into a pivot the work permit never authorized.
+
+
+
+Network diagrams for the assessment zone go into the dossier with the same hash discipline as evidence files. When an auditor asks how traffic reached L2, you show the diagram version that was live, not a newer cleaned-up sketch.
+
+### Exercises
+
+- **EX052 — Zone sketch.** Place HMI, PLC-A, SIS-B, historian, office PC in zones and name two controls on the arrows. Rubric: 3 = clear zones + two controls; 2 = zones only; 1 = muddle; 0 = none.
+- **EX053 — Boundary.** Why is "email a recipe CSV to my Gmail" a boundary violation? Rubric: 3 = data leaves controlled zones/authz; 2 = privacy handwave; 1 = vague; 0 = okays it.
+- **EX054 — Twin claim.** Limitation sentence for synthetic-range-only tests. Rubric: 3 = claims config not live process; 2 = vague; 1 = overclaim; 0 = none.
+
+### Synthesis
+
+Zones, engineering-access boundaries and honest limits on what a twin can prove.
+
+### Continue studying — chapter 18 of 50
+
+[← Chapter 17 (draft)](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Chapter 19 (draft) →](#ch-19)
+
+<a id="ch-19"></a>
+
+## Chapter 19 — Identity and cryptography
+
+### Learning outcomes
+
+You will (1) assess OT identity without attacking crypto; (2) use hashing for evidence integrity; (3) handle engineering credentials safely.
+
+### 19.1 Identity in the plant
+
+Ask: which accounts exist on HMIs, historians and engineering hosts? Which use shared passwords? Which integrate with the site directory? MFA on L4 jump hosts is common; MFA on a legacy HMI may be impossible — document compensating controls (physical access, session recording).
+
+### 19.2 Evidence hashing
+
+Hash configuration exports and evidence files (SHA-256); store digests in the ticket. Re-hash later to detect tampering. Pair hashes with actor id and work-permit version.
+
+### 19.3 Secrets
+
+Engineering credentials live in a vault; short-lived checkouts; rotate at window end. No secrets in git, screenshots or chat. Service accounts for historians get unique passwords and monitored use.
+
+> **Synthetic case — Ashford Batch Plant.** A shared "engineer" password on eng-WS-1 was replaced with named accounts after CNHP's identity review. Checkout of the PLC project files now logs the person, not a mythic shared user.
+
+### 19.4 Errors and limits
+
+Hashes detect change, not malice versus accident. Pair them with access logs. Do not attempt to crack plant password hashes in this course.
+
+### Practice note
+
+Break-glass accounts for plant emergencies need dual control to retrieve and automatic rotation after use. An unbroken break-glass password taped under a keyboard is not a control.
+
+### 19.1b Certificates and break-glass
+
+For TLS-facing historians and jump hosts, record presented certificates under authorization. Expired or mismatched certs are operations findings. Break-glass accounts for plant emergencies need dual control to retrieve and automatic rotation after use. An unbroken break-glass password taped under a keyboard is not a control. Prefer SHA-256 for evidence manifests; document the algorithm in the manifest.
+
+
+
+Algorithm choices for manifests are a version field, not a silent swap mid-window. Pair hashes with access logs so a matching digest is not mistaken for proof of lawful collection or correct interpretation.
+
+### Exercises
+
+- **EX055 — Questions.** Five identity questions for ABP's engineering hosts. Rubric: 3 = five concrete; 2 = three; 1 = one; 0 = none.
+- **EX056 — Hash.** What do you do when a sealed firewall export's hash mismatches? Rubric: 3 = restore/re-export, investigate writes, process finding; 2 = file only; 1 = vague; 0 = ignore.
+- **EX057 — Secret rule.** One-line policy for PLC project passwords in tickets. Rubric: 3 = never in ticket; vault reference; 2 = don't share; 1 = weak; 0 = allows paste.
+
+### Synthesis
+
+Read identity config; hash evidence; keep secrets in a vault.
+
+### Continue studying — chapter 19 of 50
+
+[← Chapter 18 (draft)](#ch-18) · [Course chapter index](../SUBJECTS.md) · [Chapter 20 (draft) →](#ch-20)
+
+<a id="ch-20"></a>
+
+## Chapter 20 — OT, IoT and cyber-physical security: engineering context
+
+### Learning outcomes
+
+You will (1) place OT security engineering among SP 800-82, ISA/IEC 62443 and ATT&CK for ICS; (2) define what this degree programme builds; (3) state the safety boundary for all later chapters.
+
+### 20.1 Discipline map
+
+NIST SP 800-82 guides ICS security. ISA/IEC 62443 structures zones, conduits and security levels. ATT&CK for ICS names adversary techniques for planning and coverage — not as a residual-risk score. Modbus specs define the protocol you allow-list. Academic surveys (Giraldo et al.; Urbina et al.) warn against detectors evaluated only on easy attacks. Engineers build the platforms and processes that make those sources operable under process-safety constraints.
+
+### 20.2 What we build
+
+CNHP at Ashford Batch Plant is the running example: zoning, allow-lists, detectors with honest metrics, patch windows, evidence dossiers. Graduates design, verify and operate such programmes — they do not invent exploits against PLCs.
+
+### 20.3 Safety boundary
+
+No exploit payloads, no unauthorized plant access, no live personal or proprietary batch data in labs, labs on synthetic local data only. Dual-use requests are refused (Chapter 10). Process safety stop conditions always win. This boundary is a requirement on every design review in Chapters 21-50.
+
+> **Synthetic case — Ashford Batch Plant.** Leadership asked for a red team that hacks the plant. Lena reframed the charter: an authorized hardening programme that enforces zones and measures detection without endangering batches.
+
+### 20.4 Errors and limits
+
+Frameworks evolve; re-check URLs and versions before citing in a thesis. This chapter orients; it does not replace reading the primary sources.
+
+### Practice note
+
+Keep a one-page "sources we actually use" list in the CNHP binder with access dates. Examiners and auditors ask which revision of 62443 you meant; "the ISA one" is not an answer.
+
+### 20.1b Neighbouring courses and deliverables
+
+This engineering book assumes comfort with calculus, probability and software engineering from earlier chapters. The bachelor's OT book is broader; the technologist book emphasizes implementation drills. Operators need runbooks and tickets; engineers need schemas, tests and ADRs. Capstone grading looks for both. Keep a one-page sources we actually use list with access dates.
+
+### Exercises
+
+- **EX058 — Framework fit.** Pair each need with SP 800-82 / 62443 / ATT&CK ICS / Modbus spec. Rubric: 3 = four sensible pairs; 2 = three; 1 = two; 0 = none.
+- **EX059 — Charter.** Rewrite "hack the plant" as an engineering charter sentence. Rubric: 3 = authorization + hardening/measurement + safety; 2 = partial; 1 = still attack-centric; 0 = none.
+- **EX060 — Boundary.** Three concrete out-of-scope items for this programme. Rubric: 3 = three clear; 2 = two; 1 = one; 0 = none.
+
+### Synthesis
+
+Engineers enable authorized OT hardening; they do not replace process safety with cleverness.
+
+### Continue studying — chapter 20 of 50
+
+[← Chapter 19 (draft)](#ch-19) · [Course chapter index](../SUBJECTS.md) · [Chapter 21 (draft) →](#ch-21)
+
+<a id="ch-21"></a>
+
+## Chapter 21 — OT, IoT and cyber-physical security: requirements
+
+### Learning outcomes
+
+You will (1) elicit requirements from process safety, operations and security; (2) separate functional, safety and measurement requirements; (3) write acceptance criteria a tester can run on synthetic fixtures.
+
+### 21.1 Sources
+
+Process safety wants independent protection layers. Operations wants viewing without downtime. Security wants deny-by-default conduits. Elicitation interviews produce shall-statements tagged by source. Conflicts (convenience viewing vs SIS isolation) are recorded, not papered over.
+
+### 21.2 Three families
+
+Functional: "The serial monitor shall decode Modbus RTU on trunk A and emit allow/deny decisions." Safety: "If the allow-list file does not load, the monitor shall fail closed (drop all non-essential traffic or alarm and require human action per the design)." Measurement: "CNHP shall report planned-vs-observed ATT&CK for ICS technique coverage with denominators." Safety requirements win ties.
+
+### 21.3 Acceptance criteria
+
+Each requirement has a Given/When/Then on synthetic data. Example: Given deny of L2 to L1-SIS, When reachability runs from L4, Then L1-SIS not in the reachable set. Criteria that need a live plant write are rejected at review.
+
+> **Synthetic case — Ashford Batch Plant.** Safety requirement S-1 "fail closed on missing allow-list" failed its acceptance test when a typo path returned PASS. The fix shipped before any plant window.
+
+### 21.4 Errors and limits
+
+Stakeholders invent requirements mid-window; park them in a backlog with an AUTH ticket, do not hot-patch production monitors during a batch.
+
+### Practice note
+
+Acceptance tests are named after requirement ids and fail CI when skipped. Orphan Must requirements are either tested or formally deferred with an executive owner.
+
+### 21.1b MoSCoW under safety
+
+Must/Should/Could prioritization still places all safety requirements in Must. A Could that weakens Must (optional deny of write codes) is reclassified or rejected. Product managers do not outvote fail-closed. Put requirement ids in test names and in log fields (req=S-1). Dead requirements without tests should fail CI.
+
+### Exercises
+
+- **EX061 — Elicit.** Write one functional and one safety shall from "office must not reach SIS". Rubric: 3 = both testable; 2 = one; 1 = vague; 0 = none.
+- **EX062 — Acceptance.** Given/When/Then for fail-closed on missing allow-list. Rubric: 3 = complete with expected deny/alarm; 2 = partial; 1 = idea; 0 = none.
+- **EX063 — Conflict.** Convenience L4 to L2 viewing vs zoning — record conflict and chosen rule. Rubric: 3 = conflict named + safety-first rule via DMZ; 2 = rule only; 1 = picks convenience; 0 = none.
+
+### Synthesis
+
+Requirements come from people, split into families, and ship with acceptance tests on synthetic fixtures.
+
+### Continue studying — chapter 21 of 50
+
+[← Chapter 20 (draft)](#ch-20) · [Course chapter index](../SUBJECTS.md) · [Chapter 22 (draft) →](#ch-22)
+
+<a id="ch-22"></a>
+
+## Chapter 22 — OT, IoT and cyber-physical security: system and data models
+
+### Learning outcomes
+
+You will (1) draw an entity model for assets, zones, conduits and findings; (2) choose keys and cardinality; (3) keep exploit content out of the model.
+
+### 22.1 Entities
+
+Plant 1—* Unit; Unit 1—* Asset; Zone 1—* Asset; Conduit *—* Zone (from/to); Finding *—* EvidenceObject (by hash); TechniqueTag *—* Finding. Cardinality mistakes (many active conduit sets without a version pointer) cause auditors to ask which rules were live.
+
+### 22.2 Keys
+
+Finding ids are UUID. Evidence is content-addressed by SHA-256. ConduitSet has (plant_id, version_int). Never key findings by title — titles change.
+
+### 22.3 Forbidden attributes
+
+No attribute for payload, shellcode or step-by-step attack. EvidenceObject stores bytes in a sealed bucket; the model stores only hash, media type and retention class.
+
+> **Synthetic case — Ashford Batch Plant.** An early schema had notes as free text; people pasted engineering passwords. Lena replaced it with structured fields plus an evidence hash, and a linter rejects password-like strings in titles.
+
+### 22.4 Errors and limits
+
+Models that force every ATT&CK for ICS technique as mandatory fields generate junk tags. Keep technique tags optional and reviewed.
+
+### Practice note
+
+Soft-delete findings with actor and reason; hard purge only via retention jobs that emit audit events. Silent DELETE FROM findings is a repudiation gift.
+
+### 22.1b Attachment limits and time
+
+Evidence objects need size caps and media-type allow-lists. Unbounded uploads become availability attacks and tempt dumping of bulk proprietary data. Every mutable entity needs created_at, created_by, and for state changes updated_at/updated_by or an append-only event. Prefer UTC with explicit offsets in exports.
+
+
+
+Technique tags remain optional and reviewed. Soft-delete with reason is the default; hard purge follows retention only. API clients that issue DELETE in a loop during a buggy retry get credentials revoked after a threshold.
+
+### Exercises
+
+- **EX064 — Cardinality.** Why is ConduitSet versioned instead of edited in place? Rubric: 3 = audit of what was authorized when; 2 = vague versioning; 1 = best practice; 0 = none.
+- **EX065 — Key.** Why content-address evidence? Rubric: 3 = integrity + dedup + tamper evidence; 2 = one reason; 1 = vague; 0 = none.
+- **EX066 — Forbidden.** Validation that stops passwords in title. Rubric: 3 = heuristic/linter + process; 2 = one; 1 = vague; 0 = none.
+
+### Synthesis
+
+Model assets, zones, versions, findings and hashes — not attacks.
+
+### Continue studying — chapter 22 of 50
+
+[← Chapter 21 (draft)](#ch-21) · [Course chapter index](../SUBJECTS.md) · [Chapter 23 (draft) →](#ch-23)
+
+<a id="ch-23"></a>
+
+## Chapter 23 — OT, IoT and cyber-physical security: threat and failure analysis
+
+### Learning outcomes
+
+You will (1) enumerate failures of the OT security programme itself; (2) use a lightweight STRIDE-on-tools pass; (3) feed results into requirements without building exploit modules.
+
+### 23.1 The programme can fail dangerously
+
+Allow-lists failing open, reachability CI skipped, detectors with silent false-alarm storms, patch deferrals without dates — these threaten process safety and honesty, not only confidentiality of a tool.
+
+### 23.2 STRIDE on CNHP tools
+
+Spoofing: fake engineering account. Tampering: edit firewall export after seal. Repudiation: no actor on deny events. Information disclosure: historian replica world-readable. Denial of service: scanner floods a trunk. Elevation: one person can publish a conduit to SIS. Each row gets a mitigation requirement.
+
+### 23.3 Plant threats stay in hazard analysis
+
+Threats to the process belong in the plant's process hazard analysis and cyber-informed HAZOP, not as features of a student tool. Do not build automated exploitation to satisfy a STRIDE row.
+
+```python
+# Lab 27 - residual CUSUM vs band on batch reactor level (synthetic)
+import random
+def run(seed, atk, det, k=0.8, h=6.0):
+    rng=random.Random(seed); true=est=50.0; s=0.0; alarm=None
+    for t in range(500):
+        inflow=1.0+rng.gauss(0,0.05)+(0.08 if atk and t>=250 else 0)
+        true+=inflow-0.02*true
+        lvl=true+rng.gauss(0,0.3); fm=inflow+rng.gauss(0,0.02)
+        if atk and t>=250: lvl=50+rng.gauss(0,0.3)
+        if atk=="B" and t>=250: fm=1.0+rng.gauss(0,0.02)
+        est+=fm-0.02*est
+        hit=abs(lvl-50)>2.0 if det=="band" else False
+        if det=="cusum":
+            s=max(0.0,s+abs(lvl-est)-k); hit=s>h
+        if hit and alarm is None: alarm=t
+    return alarm
+for det in ("band","cusum"):
+    fa=sum(run(i,None,det) is not None for i in range(60))
+    for atk in ("A","B"):
+        hits=[a-250 for a in (run(i,atk,det) for i in range(60)) if a is not None and a>=250]
+        print(f"{det} class{atk} FA={fa}/60 det={len(hits)}/60 mean_delay={sum(hits)/len(hits) if hits else float('nan'):.1f}")
+```
+
+Expected output:
+
+```text
+band classA FA=0/60 det=0/60 mean_delay=nan
+band classB FA=0/60 det=0/60 mean_delay=nan
+cusum classA FA=0/60 det=60/60 mean_delay=24.8
+cusum classB FA=0/60 det=0/60 mean_delay=nan
+```
+
+> **Synthetic case — Ashford Batch Plant.** STRIDE row fail open became safety requirement S-1. Row solo conduit publish became the dual-approval gate.
+
+### 23.4 Errors and limits
+
+STRIDE is a prompt, not a proof. Revisit when adding a new trust boundary (for example a vendor SaaS historian).
+
+### Practice note
+
+Include jumphost compromised in the model: short-lived credentials, egress allow-lists, rapid revocation. If the response is only trust the jumphost, the analysis is incomplete.
+
+### 23.1b Abuse vs misuse and backlog
+
+Abuse cases are intentional adversary actions against CNHP tools. Misuse cases are honest operators making dangerous mistakes (paste a CIDR that includes a partner). Design controls for both. STRIDE rows become issues with links to requirements; unowned rows are theatre. Review the threat list when adding a new trust boundary.
+
+
+
+Feeding the backlog means each STRIDE row has an owner and a due date. Unowned rows are theatre. Include jumphost compromise explicitly: short-lived credentials, egress allow-lists, rapid revocation.
+
+### Exercises
+
+- **EX067 — Fail open.** One test that proves fail-closed. Rubric: 3 = remove policy, expect deny+alert; 2 = idea; 1 = vague; 0 = none.
+- **EX068 — STRIDE.** Mitigation for repudiation on deny events. Rubric: 3 = authenticated actor + immutable log; 2 = logging only; 1 = vague; 0 = none.
+- **EX069 — Boundary.** Why doesn't programme STRIDE justify an exploit module? Rubric: 3 = different goal/safety boundary; 2 = partial; 1 = justifies it; 0 = none.
+
+### Synthesis
+
+Analyse how your programme can hurt the plant or lie; mitigate those first.
+
+### Continue studying — chapter 23 of 50
+
+[← Chapter 22 (draft)](#ch-22) · [Course chapter index](../SUBJECTS.md) · [Chapter 24 (draft) →](#ch-24)
+
+<a id="ch-24"></a>
+
+## Chapter 24 — OT, IoT and cyber-physical security: methods I
+
+### Learning outcomes
+
+You will (1) sequence work-permit to discovery to validation to reporting; (2) pick methods that match authorization and process risk; (3) define done for a method without writing to a PLC.
+
+### 24.1 Sequence
+
+Work permit first. Discovery enumerates assets and conduits by agreed methods. Validation confirms configuration issues with least privilege. Reporting delivers findings and evidence hashes. Skipping the permit is how unauthorized testing happens.
+
+### 24.2 Method cards
+
+Each card: name, purpose, privilege, noisy?, process impact, stop conditions, artefacts. Authenticated configuration review is a card; weaponised PLC exploit is not in this programme's deck.
+
+### 24.3 Done means artefacts
+
+A method is done when inventory CSV, config hashes, finding drafts and coverage updates exist — not when someone feels finished.
+
+> **Synthetic case — Ashford Batch Plant.** Method card for serial allow-list verification requires listen-only mode, cycle-time stop at 50 ms, and a lab-style decision table as artefact.
+
+### 24.4 Errors and limits
+
+Copying someone else's method list without matching authorization is cargo-cult 62443.
+
+### Practice note
+
+Freeze methods during a window the same way you freeze conduits: new methods need the AUTH path, not while we were here we also tried.
+
+### 24.1b Quiet vs noisy and dependencies
+
+Quiet methods (listen-only decode, config export) fit more windows. Noisy methods need tighter rate limits and often off-peak hours. Encode method dependencies in the plan so reviews are not scheduled against an empty asset list. Freeze methods during a window the same way you freeze conduits.
+
+
+
+Done means artefacts: inventory CSV, config hashes, finding drafts, coverage updates. Method cards without a noisy field are how morning batch windows get congested. Park mid-window ideas in the next planning backlog.
+
+### Field note — method freeze in practice
+
+During ABP window W-17 a vendor asked to try an extra diagnostic function mid-shift. Lena parked the request in the next engagement's planning backlog and kept the method card frozen. The batch finished without unexplained traffic, and the diagnostic was evaluated the following month under a fresh work permit with its own stop conditions.
+
+### Exercises
+
+- **EX070 — Card.** Write a method card for listen-only Modbus decode. Rubric: 3 = all fields filled safely; 2 = missing one; 1 = includes writes/exploits; 0 = none.
+- **EX071 — Sequence.** What is wrong with discovery before a signed work permit? Rubric: 3 = unauthorized testing; 2 = process vague; 1 = bad order; 0 = none.
+- **EX072 — Done.** List four artefacts that close a zoning review method. Rubric: 3 = four concrete; 2 = two; 1 = one; 0 = none.
+
+### Synthesis
+
+Methods are authorized, carded and done when artefacts exist.
+
+### Continue studying — chapter 24 of 50
+
+[← Chapter 23 (draft)](#ch-23) · [Course chapter index](../SUBJECTS.md) · [Chapter 25 (draft) →](#ch-25)
+
+<a id="ch-25"></a>
+
+## Chapter 25 — Design studio I
+
+### Learning outcomes
+
+You will (1) sketch the allow/deny pipeline for ABP's serial monitor; (2) justify trade-offs in a short design review; (3) produce a one-page decision record.
+
+### 25.1 Studio problem
+
+Design: input frame to decode to load ConduitSet/allow-list to evaluate permit to emit event to forward or drop. Options: embed policy in code vs signed data file; sync vs async alerts on denies.
+
+### 25.2 Trade-offs
+
+Policy-as-signed-data lets updates ship without redeploying firmware but needs signature verification and fail-closed on bad signatures. Async alerts scale but can reorder; for SIS-path denies, prefer sync alert.
+
+### 25.3 Decision record
+
+One page: context, options, decision, consequences, date, owners. Store next to the code.
+
+> **Synthetic case — Ashford Batch Plant.** Studio chose signed JSON allow-lists, sync path for denies that touch write codes, async bulk for routine reads. ADR-004 captures it.
+
+### 25.4 Errors and limits
+
+Studios that skip safety requirements produce pretty diagrams that fail open.
+
+### Practice note
+
+Facilitators pause the room with: Where do we DENY if policy is missing? If nobody can answer, architecture is not ready.
+
+### 25.1b Constraint cards and gallery
+
+Hand each studio team constraint cards: residency, two-engineer ops, fail-closed, no empty scores, SIS independence. Designs that violate a card are rejected before aesthetic debate. Studios end with a gallery: teams post ADR drafts and others try to find a fail-open path in five minutes.
+
+
+
+A studio sketch must name trust boundaries, data stores and the fail-closed path in writing. Ten minutes of labelling beats an hour of aesthetic layout. Facilitators can pause the room with a single safety question.
+
+### Field note — labelling before layout
+
+Studio teams that spent the first twenty minutes naming DENY points and trust boundaries produced ADRs that survived review. Teams that started with colour palettes rediscovered fail-open paths during gallery. CNHP now requires a labelled fail-closed path on the whiteboard photograph attached to every ADR.
+
+### Exercises
+
+- **EX073 — Options.** Two options for policy delivery and one risk each. Rubric: 3 = two + risks; 2 = options; 1 = one; 0 = none.
+- **EX074 — ADR.** Decision line for sync deny alerts on write codes. Rubric: 3 = clear decision + why; 2 = decision only; 1 = vague; 0 = none.
+- **EX075 — Review.** Three questions a reviewer must ask. Rubric: 3 = fail-closed, authn of policy, latency budget; 2 = two; 1 = one; 0 = none.
+
+### Synthesis
+
+Studio work ends in a recorded decision, not a vibe.
+
+### Continue studying — chapter 25 of 50
+
+[← Chapter 24 (draft)](#ch-24) · [Course chapter index](../SUBJECTS.md) · [Chapter 26 (draft) →](#ch-26)
+
+<a id="ch-26"></a>
+
+## Chapter 26 — OT, IoT and cyber-physical security: architecture alternatives
+
+### Learning outcomes
+
+You will (1) compare on-prem monitors vs cloud analytics for OT data; (2) evaluate against residency and process-safety constraints; (3) pick an alternative with explicit rejection of the others.
+
+### 26.1 Alternatives
+
+A: on-prem serial/IP monitors with local detectors. B: on-prem collection with site historian analytics. C: cloud analytics SaaS receiving process values. Each serves different constraints.
+
+### 26.2 Criteria
+
+Process safety independence, data residency, fail-closed behaviour, operability by the site team, cost. Weight safety and residency above novelty.
+
+### 26.3 Decision
+
+ABP rejected C because recipe-adjacent trends must not leave the site without a board-level exception. Chose A for write-path enforcement with B for longer-term detection research on replicas.
+
+> **Synthetic case — Ashford Batch Plant.** A vendor demo of C looked slick; counsel and process safety blocked unrestricted upload. ADR-011 records the rejection.
+
+### 26.4 Errors and limits
+
+Alternatives analysis that ignores the work permit's data clauses is theatre.
+
+### Practice note
+
+Document the skills each alternative demands. A cloud pipeline nobody on site can operate fails open socially even if it fails closed technically.
+
+### 26.1b Cost, skills and revisit triggers
+
+Include rough annual cost and the skills each alternative demands. An option that needs six FTEs to operate fail-closed is not free. End alternatives analysis with a decision, rejected options with reasons, and a revisit trigger (reopen if residency law changes).
+
+
+
+Switching costs matter: a monolith that already exports signed allow-lists can grow into services; a SaaS contract with residency exceptions is harder to unwind mid-incident. Prefer options that keep an offline escape hatch for deny/allow.
+
+### Field note — skill assumptions
+
+Option B's analytics path assumed a site engineer who understood event ordering. ABP did not have that person on nights. Until hiring caught up, Lena kept write-path enforcement on option A and limited B to daytime research on replicas. Architecture that assumes unavailable skills fails open socially.
+
+### Exercises
+
+- **EX076 — Criterion.** Add one criterion for SIS data and score A/B/C. Rubric: 3 = sensible criterion + scores; 2 = criterion; 1 = vague; 0 = none.
+- **EX077 — Reject C.** Rejection sentence with residency/safety reason. Rubric: 3 = clear; 2 = partial; 1 = cost only; 0 = accepts C.
+- **EX078 — Fallback.** When is pure local A the right runtime? Rubric: 3 = WAN outage / isolation drill; 2 = vague; 1 = always; 0 = never.
+
+### Synthesis
+
+Choose architecture against weighted constraints; record rejected options.
+
+### Continue studying — chapter 26 of 50
+
+[← Chapter 25 (draft)](#ch-25) · [Course chapter index](../SUBJECTS.md) · [Chapter 27 (draft) →](#ch-27)
+
+<a id="ch-27"></a>
+
+## Chapter 27 — OT, IoT and cyber-physical security: control design
+
+### Learning outcomes
+
+You will (1) design preventive, detective and corrective controls for CNHP; (2) bind controls to requirements; (3) avoid controls that require exploit skills to operate.
+
+### 27.1 Three kinds
+
+Preventive: allow-list before forward. Detective: alert on denied write codes. Corrective: auto-disable a compromised engineering account at window end. Each maps to a requirement id.
+
+### 27.2 Operator skill
+
+Controls must be operable by engineers who follow runbooks — not only by exploit specialists. A control that needs custom shellcode to verify is the wrong control for this programme.
+
+### 27.3 Compensation
+
+If a legacy PLC cannot enforce allow-lists, add detective monitoring and tighter human approval for engineering access. Document the compensation in the work permit.
+
+```python
+"""Lab: Modbus function-code allow-list on synthetic, already-decoded requests (no network)."""
+ALLOW = {("HMI-1", 3), ("HMI-1", 6), ("HIST-1", 3), ("HIST-1", 4)}  # (source, function code)
+WRITE_REGS = {("HMI-1", 6): range(40001, 40011)}                     # HMI may write setpoints only
+reqs = [("HMI-1", 3, 40001), ("HMI-1", 6, 40003), ("HMI-1", 6, 40050),
+        ("HIST-1", 3, 30001), ("HIST-1", 16, 40001), ("ENG-WS", 8, 0), ("HIST-1", 4, 30010)]
+for src, fc, reg in reqs:
+    if (src, fc) not in ALLOW:
+        d = "BLOCK fc-not-allowed"
+    elif (src, fc) in WRITE_REGS and reg not in WRITE_REGS[(src, fc)]:
+        d = "BLOCK register-out-of-range"
+    else:
+        d = "PASS"
+    print(f"{src:7} fc={fc:2} reg={reg:5} -> {d}")
+```
+
+Expected output:
+
+```text
+HMI-1   fc= 3 reg=40001 -> PASS
+HMI-1   fc= 6 reg=40003 -> PASS
+HMI-1   fc= 6 reg=40050 -> BLOCK register-out-of-range
+HIST-1  fc= 3 reg=30001 -> PASS
+HIST-1  fc=16 reg=40001 -> BLOCK fc-not-allowed
+ENG-WS  fc= 8 reg=    0 -> BLOCK fc-not-allowed
+HIST-1  fc= 4 reg=30010 -> PASS
+```
+
+> **Synthetic case — Ashford Batch Plant.** Writes outside 40001-40010 are denied — preventive gate with a detective event when someone tries.
+
+### 27.4 Errors and limits
+
+Stacks of compensating controls without an owner become ignored alerts.
+
+### Practice note
+
+Schedule a quarterly control-health day: break each preventive control in a synthetic lab and confirm detective controls fire. Untested controls are wishes.
+
+### 27.1b Ownership and break-glass detection
+
+Every control has an owner who receives its alerts and a review date. Log when an operator uses break-glass to skip dual approval. Break-glass without detection is just a hidden single control. Weekly review of break-glass events is part of the control design. Untested controls are wishes — break them on purpose in synthetic labs.
+
+
+
+If preventive control is weak on a legacy PLC, document compensating detective monitoring and tighter human approval. Stacks of compensating controls without an owner become ignored alerts. Controls degrade — schedule health days.
+
+### Field note — control health day
+
+On the March health day the team deleted the allow-list on a bench monitor and confirmed the detective alert fired in 12 seconds. The preventive path denied writes immediately. One compensating control for a legacy PLC had no owner; it received one before the next window.
+
+### Exercises
+
+- **EX079 — Map.** One preventive and one detective control for evidence tampering. Rubric: 3 = both; 2 = one; 1 = vague; 0 = none.
+- **EX080 — Operable.** Why is verify by exploiting again a bad control? Rubric: 3 = dual-use + unstable + wrong skill; 2 = one reason; 1 = vague; 0 = defends it.
+- **EX081 — Lab.** Which rule blocks HIST-1 fc=16? Rubric: 3 = fc-not-allowed; 2 = vague deny; 1 = wrong; 0 = none.
+
+### Synthesis
+
+Controls are preventive/detective/corrective, owned, and operable without exploits.
 
 ### Continue studying — chapter 27 of 50
 
-[← Chapter 26](#ch-26) · [Course chapter index](../SUBJECTS.md) · [Chapter 28 →](#ch-28)
+[← Chapter 26 (draft)](#ch-26) · [Course chapter index](../SUBJECTS.md) · [Chapter 28 (draft) →](#ch-28)
 
 <a id="ch-28"></a>
 
 ## Chapter 28 — OT, IoT and cyber-physical security: implementation I
 
-### Learning outcomes and connection
+### Learning outcomes
 
-After this chapter you can apply **OT, IoT and cyber-physical security: implementation I** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
+You will (1) implement permit() with explicit reason codes; (2) add tests for each clause; (3) log without storing secrets.
 
-### 28.1 Purpose
+### 28.1 Implementation shape
 
-allow-lists, engineering jump hosts, secure project transfer, and configuration baselines.
+Pure function: inputs source, function code, register, AllowListVersion to (allow: bool, reason: str). No network I/O inside the predicate. That keeps tests fast and free of plant contact.
 
-### 28.2 Method
+### 28.2 Clause tests
 
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
+One test file per clause: station allow, function code, register range, policy-unavailable. Synthetic fixtures only. Mutation: break a clause and watch the test fail.
 
-### 28.3 Interface to other chapters
+```python
+"""Lab: Modbus function-code allow-list on synthetic, already-decoded requests (no network)."""
+ALLOW = {("HMI-1", 3), ("HMI-1", 6), ("HIST-1", 3), ("HIST-1", 4)}  # (source, function code)
+WRITE_REGS = {("HMI-1", 6): range(40001, 40011)}                     # HMI may write setpoints only
+reqs = [("HMI-1", 3, 40001), ("HMI-1", 6, 40003), ("HMI-1", 6, 40050),
+        ("HIST-1", 3, 30001), ("HIST-1", 16, 40001), ("ENG-WS", 8, 0), ("HIST-1", 4, 30010)]
+for src, fc, reg in reqs:
+    if (src, fc) not in ALLOW:
+        d = "BLOCK fc-not-allowed"
+    elif (src, fc) in WRITE_REGS and reg not in WRITE_REGS[(src, fc)]:
+        d = "BLOCK register-out-of-range"
+    else:
+        d = "PASS"
+    print(f"{src:7} fc={fc:2} reg={reg:5} -> {d}")
+```
 
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
+Expected output:
 
-### 28.4 Quality bar
+```text
+HMI-1   fc= 3 reg=40001 -> PASS
+HMI-1   fc= 6 reg=40003 -> PASS
+HMI-1   fc= 6 reg=40050 -> BLOCK register-out-of-range
+HIST-1  fc= 3 reg=30001 -> PASS
+HIST-1  fc=16 reg=40001 -> BLOCK fc-not-allowed
+ENG-WS  fc= 8 reg=    0 -> BLOCK fc-not-allowed
+HIST-1  fc= 4 reg=30010 -> PASS
+```
 
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
+### 28.3 Logging
 
-### Engineering notes for this chapter
+Log decision, reason, policy version, actor. Do not log passwords or full frame payloads that might contain proprietary recipe data. Redact as needed.
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+> **Synthetic case — Ashford Batch Plant.** Implementation I shipped reason codes that the timeline UI shows — operators finally saw why a write was blocked at 03:12.
 
-### Worked example (synthetic Ashford Batch Plant)
+### 28.4 Errors and limits
 
-CNHP applies implementation I to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
+Stringly-typed reasons drift; use an enum shared with the coverage board.
 
-### Practical activity
+### Practice note
 
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
+Fuzz the predicate with random stations, codes and broken UTF-8. It must DENY or error closed, never ALLOW on parse failure.
 
-### Common errors and limits
+### 28.1b Reason catalogue and fuzzing
 
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
+Publish the enum of reason codes as a versioned document: fc-not-allowed, register-out-of-range, policy-unavailable, station-unknown. Unknown codes must fail closed in consumers. Feed the predicate random stations, codes and broken UTF-8; it must DENY or error closed, never ALLOW on parse failure.
 
-### Exercises — chapter 28
 
-**EX055 — Apply implementation I.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
 
-**EX056 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
+Code review checklists for predicate changes include: new clause, new tests, reason-code docs, fuzz case, fail-closed on parse error. Reviewers who skip the list are doing social review, not safety review.
 
-### Chapter synthesis
+### Field note — fuzz findings
 
-OT, IoT and cyber-physical security: implementation I advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+A five-minute fuzz harness threw a UTF-8 station name that previously crashed the decoder into an uncaught exception — which the caller treated as ALLOW. The fix returned DENY parse-error and the harness now runs in CI on every predicate change.
+
+### Exercises
+
+- **EX082 — Signature.** Type signature of permit and why AllowListVersion is an argument. Rubric: 3 = signature + version pin reason; 2 = signature; 1 = vague; 0 = none.
+- **EX083 — Mutation.** Which test fails if register range is ignored? Rubric: 3 = 40050 expects BLOCK; 2 = vague; 1 = wrong; 0 = none.
+- **EX084 — Redact.** Two log fields to redact. Rubric: 3 = e.g. passwords, full recipe-bearing payloads; 2 = one; 1 = vague; 0 = none.
+
+### Synthesis
+
+Pure predicate, clause tests, safe logs.
 
 ### Continue studying — chapter 28 of 50
 
-[← Chapter 27](#ch-27) · [Course chapter index](../SUBJECTS.md) · [Chapter 29 →](#ch-29)
+[← Chapter 27 (draft)](#ch-27) · [Course chapter index](../SUBJECTS.md) · [Chapter 29 (draft) →](#ch-29)
 
 <a id="ch-29"></a>
 
 ## Chapter 29 — OT, IoT and cyber-physical security: measurement
 
-### Learning outcomes and connection
+### Learning outcomes
 
-After this chapter you can apply **OT, IoT and cyber-physical security: measurement** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
+You will (1) define coverage with a denominator; (2) separate activity metrics from outcome metrics; (3) evaluate detectors with attack class and intervals (Urbina/Giraldo lessons).
 
-### 29.1 Purpose
+### 29.1 Coverage needs a plan
 
-event recall, delay, false alarms/shift, overfill at alarm; avoid point-adjusted F1 as sole metric.
+ATT&CK for ICS coverage is observed intersect planned over planned, not observed over all techniques. Without a plan, coverage is vanity.
 
-### 29.2 Method
+### 29.2 Activity vs outcome
 
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
+Activity: frames decoded, tools launched. Outcome: verified remediations, SIS reachability still false, false-alarm rate at plant base rate. Steer on outcomes.
 
-### 29.3 Interface to other chapters
+### 29.3 Detector honesty
 
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
+Report false-alarm intervals, detection delay, and attack class. A band detector that misses stealthy residual attacks is not equivalent to a CUSUM that catches them — the lab makes that visible.
 
-### 29.4 Quality bar
+```python
+# Lab 27 - residual CUSUM vs band on batch reactor level (synthetic)
+import random
+def run(seed, atk, det, k=0.8, h=6.0):
+    rng=random.Random(seed); true=est=50.0; s=0.0; alarm=None
+    for t in range(500):
+        inflow=1.0+rng.gauss(0,0.05)+(0.08 if atk and t>=250 else 0)
+        true+=inflow-0.02*true
+        lvl=true+rng.gauss(0,0.3); fm=inflow+rng.gauss(0,0.02)
+        if atk and t>=250: lvl=50+rng.gauss(0,0.3)
+        if atk=="B" and t>=250: fm=1.0+rng.gauss(0,0.02)
+        est+=fm-0.02*est
+        hit=abs(lvl-50)>2.0 if det=="band" else False
+        if det=="cusum":
+            s=max(0.0,s+abs(lvl-est)-k); hit=s>h
+        if hit and alarm is None: alarm=t
+    return alarm
+for det in ("band","cusum"):
+    fa=sum(run(i,None,det) is not None for i in range(60))
+    for atk in ("A","B"):
+        hits=[a-250 for a in (run(i,atk,det) for i in range(60)) if a is not None and a>=250]
+        print(f"{det} class{atk} FA={fa}/60 det={len(hits)}/60 mean_delay={sum(hits)/len(hits) if hits else float('nan'):.1f}")
+```
 
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
+Expected output:
 
-### Engineering notes for this chapter
+```text
+band classA FA=0/60 det=0/60 mean_delay=nan
+band classB FA=0/60 det=0/60 mean_delay=nan
+cusum classA FA=0/60 det=60/60 mean_delay=24.8
+cusum classB FA=0/60 det=0/60 mean_delay=nan
+```
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+> **Synthetic case — Ashford Batch Plant.** CNHP reports planned-technique coverage and detector FA/delay by class — not a single secure percent.
 
-### Worked example (synthetic Ashford Batch Plant)
+### 29.4 Errors and limits
 
-CNHP applies measurement to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
+Denominators stolen from another plant invalidate the metric. Synthetic attacks are not the adversary.
 
-### Practical activity
+### Practice note
 
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
+Caption every dashboard widget with the formula and the plant id. A widget without a formula is decoration and should be removed in review.
 
-### Common errors and limits
+### 29.1b Sampling and cohort comparisons
 
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
+If you sample 50 of 500 assets, say so and do not scale findings as if you visited all 500. Comparing coverage across windows requires the same planning rules. Publish the planning guide beside the coverage board so 71% in March means the same kind of denominator as 71% in September.
 
-### Exercises — chapter 29
 
-**EX057 — Apply measurement.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
 
-**EX058 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
+Activity metrics (frames decoded) inform capacity only. Outcome metrics (verified remediations, SIS reachability still false) steer the programme. Prefer metrics that under-claim success, such as counting a fix only after re-test.
 
-### Chapter synthesis
+### Field note — methodology lines on charts
 
-OT, IoT and cyber-physical security: measurement advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+When CNHP changed planning rules in June, Pulse-style charts gained a vertical line labelled methodology_id=2026-06. Leadership stopped comparing May's 80% to July's 70% as if they meant the same denominator. Honesty in the chart legend prevented a false narrative of decline.
+
+### Exercises
+
+- **EX085 — Formula.** Write coverage formula and explain a bad denominator. Rubric: 3 = planned denominator + example of all-ICS misuse; 2 = formula; 1 = vanity; 0 = none.
+- **EX086 — Lab.** Compare band vs CUSUM on class A in one sentence. Rubric: 3 = CUSUM detects, band does not, FA both 0 in sample; 2 = partial; 1 = wrong; 0 = none.
+- **EX087 — Under-claim.** One design that under-claims success. Rubric: 3 = require re-test before closed; 2 = partial; 1 = vague; 0 = none.
+
+### Synthesis
+
+Plan the denominator; measure outcomes; evaluate detectors by class with intervals.
 
 ### Continue studying — chapter 29 of 50
 
-[← Chapter 28](#ch-28) · [Course chapter index](../SUBJECTS.md) · [Chapter 30 →](#ch-30)
+[← Chapter 28 (draft)](#ch-28) · [Course chapter index](../SUBJECTS.md) · [Chapter 30 (draft) →](#ch-30)
 
 <a id="ch-30"></a>
 
 ## Chapter 30 — Verification laboratory I
 
-### Learning outcomes and connection
+### Learning outcomes
 
-After this chapter you can apply **Verification laboratory I** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
+You will (1) run a verification plan against ABP's monitor and zoning; (2) record pass/fail with evidence hashes; (3) stop the lab if a safety test fails.
 
-### 30.1 Purpose
+### 30.1 Plan
 
-execute a planned test suite on the synthetic model and record verdicts against R1–R4.
+Tests: allow in-scope reads; deny bad function codes; deny out-of-range writes; fail-closed missing policy; reachability SIS from L4 is false; cycle time under budget with tap. Each row: id, setup, action, expected, evidence path.
 
-### 30.2 Method
+### 30.2 Execution
 
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
+Use synthetic hosts and benches only. Capture stdout and config hashes. Any safety failure (fail-open or SIS reachable) stops the lab and opens a blocker — no continue to gather data.
 
-### 30.3 Interface to other chapters
+```python
+# Lab 23 - reachability count on a synthetic Purdue-layered OT network
+# Nodes: L5-ERP, L4-Office, L3.5-DMZ, L3-Hist, L2-SCADA, L1-PLC, L1-SIS, L0-IO
+edges_flat=[("L5","L4"),("L4","L3"),("L3","L2"),("L2","L1-PLC"),("L2","L1-SIS"),("L1-PLC","L0"),("L1-SIS","L0"),("L4","L2")]
+edges_zoned=[("L5","L4"),("L4","L3.5"),("L3.5","L3"),("L3","L2"),("L2","L1-PLC"),("L1-SIS","L0"),("L1-PLC","L0")]  # SIS not reachable from SCADA
+def reach(edges, start):
+    g={}; 
+    for a,b in edges: g.setdefault(a,[]).append(b)
+    seen=set(); stack=[start]
+    while stack:
+        n=stack.pop()
+        if n in seen: continue
+        seen.add(n); stack.extend(g.get(n,[]))
+    return seen
+for name,e in (("flat",edges_flat),("zoned",edges_zoned)):
+    r=reach(e,"L4")
+    print(f"{name}: L4 reaches {sorted(r)} count={len(r)} writes_to_SIS={'L1-SIS' in r}")
+```
 
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
+Expected output:
 
-### 30.4 Quality bar
+```text
+flat: L4 reaches ['L0', 'L1-PLC', 'L1-SIS', 'L2', 'L3', 'L4'] count=6 writes_to_SIS=True
+zoned: L4 reaches ['L0', 'L1-PLC', 'L2', 'L3', 'L3.5', 'L4'] count=6 writes_to_SIS=False
+```
 
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
+### 30.3 Report
 
-### Engineering notes for this chapter
+One-page lab report: environment versions, results table, open blockers, sign-off. Attach hashes.
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+> **Synthetic case — Ashford Batch Plant.** Lab I failed the missing-policy row once; release halted until S-1 was fixed.
 
-### Worked example (synthetic Ashford Batch Plant)
+### 30.4 Errors and limits
 
-CNHP applies verification laboratory I to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
+Labs on shared benches collide; book the synthetic range.
 
-### Practical activity
+### Practice note
 
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
+Lab I is run by someone who did not implement the change under test. The recorded pass needs an independent green checklist.
 
-### Common errors and limits
+### 30.1b Golden fixtures and inventory
 
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
+Keep a sealed directory of synthetic fixtures with known expected decisions. Lab runs must hash-match the fixture set before they count as release evidence. Photograph or export the lab environment inventory into the lab report. It passed on my machine without inventory is not transferable evidence.
 
-### Exercises — chapter 30
 
-**EX059 — Apply Verification laboratory I.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
 
-**EX060 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
+Independent runners record the pass. Safety failure stops the lab and opens a blocker — no continue to gather data. Lab result logs are evidence; retain them with the release tag.
 
-### Chapter synthesis
+### Field note — independent green
 
-Verification laboratory I advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+The implementer of a hotfix offered to run Lab I to save time. The reviewer refused, ran the safety rows personally, and found a path that still ALLOWed when the policy file was a directory instead of a file. Independent runners catch assumptions authors stop seeing.
+
+### Exercises
+
+- **EX088 — Row.** Write the fail-closed lab row. Rubric: 3 = complete row; 2 = partial; 1 = vague; 0 = none.
+- **EX089 — Stop.** What happens on SIS reachable from L4? Rubric: 3 = stop, blocker, no plant use; 2 = note only; 1 = continue; 0 = none.
+- **EX090 — Evidence.** Three hashes to attach. Rubric: 3 = policy, binary/version, result log; 2 = two; 1 = one; 0 = none.
+
+### Synthesis
+
+Verify safety first; stop on fail-open or SIS exposure; hash everything.
 
 ### Continue studying — chapter 30 of 50
 
-[← Chapter 29](#ch-29) · [Course chapter index](../SUBJECTS.md) · [Chapter 31 →](#ch-31)
+[← Chapter 29 (draft)](#ch-29) · [Course chapter index](../SUBJECTS.md) · [Chapter 31 (draft) →](#ch-31)
 
 <a id="ch-31"></a>
 
 ## Chapter 31 — OT, IoT and cyber-physical security: implementation II
 
-### Learning outcomes and connection
+### Learning outcomes
 
-After this chapter you can apply **OT, IoT and cyber-physical security: implementation II** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
+You will (1) add idempotent finding upserts; (2) enforce schema validation on write; (3) version API responses for CNHP tools.
 
-### 31.1 Purpose
+### 31.1 Upsert
 
-monitoring use cases, historian integrity, backup/restore drills on engineering systems.
+PUT /findings/{id} with full body; same id twice yields one row. Dedup fingerprints propose ids; humans confirm merges across different root causes.
 
-### 31.2 Method
+### 31.2 Validate on write
 
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
+Reject unknown fields and forbidden names; coerce severity through an enum. Validation errors return machine-readable codes.
 
-### 31.3 Interface to other chapters
+### 31.3 API versioning
 
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
+Prefix /v1/; additive changes only within v1. Breaking changes require /v2/ and a migration note.
 
-### 31.4 Quality bar
+> **Synthetic case — Ashford Batch Plant.** A mobile client sent risk_score; validator rejected it — empty scores stay out (Chapter 15).
 
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
+### 31.4 Errors and limits
 
-### Engineering notes for this chapter
+Idempotency keys must not be derived from wall-clock alone.
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+### Practice note
 
-### Worked example (synthetic Ashford Batch Plant)
+Bulk import from scanners must pass the same schema validation as interactive create, including forbidden-field checks.
 
-CNHP applies implementation II to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
+### 31.1b Partial updates and concurrency
 
-### Practical activity
+PATCH that allows severity changes without evidence references invites silent downgrades. Prefer full PUT of the validated body, or a restricted PATCH that cannot clear evidence hashes or change status to closed without a re-test pointer. Use ETags so two remediators do not clobber each other.
 
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
 
-### Common errors and limits
 
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
+Optimistic concurrency with ETags prevents lost updates that clear re-test pointers. Bulk deletes are forbidden without dual control. Document upsert semantics in OpenAPI so mobile clients do not invent retry ids.
 
-### Exercises — chapter 31
+### Field note — bulk import incident
 
-**EX061 — Apply implementation II.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
+A scanner import path skipped forbidden-field checks because it was trusted. Someone's notes field contained a password. After scrubbing and rotating, bulk import was rewired through the same validator as interactive create. Trusted import is how payloads enter sealed stores.
 
-**EX062 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
 
-### Chapter synthesis
 
-OT, IoT and cyber-physical security: implementation II advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+Clients that omit the finding id on create receive 400 with a link to the upsert documentation, so retries cannot invent duplicates by accident.
+
+### Exercises
+
+- **EX091 — Upsert.** Why is POST-without-id risky for retries? Rubric: 3 = duplicates on retry; 2 = vague; 1 = wrong; 0 = none.
+- **EX092 — Reject.** JSON body that must 400. Rubric: 3 = contains payload/password/risk_score; 2 = weak; 1 = valid body; 0 = none.
+- **EX093 — Version.** Is renaming reason_code to reason a v1-safe change? Rubric: 3 = no, breaking to v2; 2 = hesitant; 1 = yes; 0 = none.
+
+### Synthesis
+
+Idempotent writes, strict schema, explicit versions.
 
 ### Continue studying — chapter 31 of 50
 
-[← Chapter 30](#ch-30) · [Course chapter index](../SUBJECTS.md) · [Chapter 32 →](#ch-32)
+[← Chapter 30 (draft)](#ch-30) · [Course chapter index](../SUBJECTS.md) · [Chapter 32 (draft) →](#ch-32)
 
 <a id="ch-32"></a>
 
 ## Chapter 32 — OT, IoT and cyber-physical security: reliability
 
-### Learning outcomes and connection
+### Learning outcomes
 
-After this chapter you can apply **OT, IoT and cyber-physical security: reliability** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
+You will (1) set availability targets for OT security tools; (2) use retries with budgets that respect cycle time; (3) degrade safely when a dependency fails.
 
-### 32.1 Purpose
+### 32.1 Targets
 
-MTBF/MTTR of security appliances, fail-open vs fail-closed conduits, and common-cause with controllers.
+Allow/deny path during windows: high availability. Coverage dashboards: best-effort. State the target; do not imply five-nines without a budget.
 
-### 32.2 Method
+### 32.2 Retries
 
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
+Retries help flaky uploads of evidence but need a deadline so the trunk budget still holds. Cap total attempts.
 
-### 32.3 Interface to other chapters
+### 32.3 Safe degradation
 
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
+If the finding store is down, continue deny/allow locally and queue drafts on disk — never fail open on policy checks.
 
-### 32.4 Quality bar
+> **Synthetic case — Ashford Batch Plant.** During a findings-store outage, Lena's laptop queue held drafts; the serial monitor kept denying out-of-range writes.
 
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
+### 32.4 Errors and limits
 
-### Engineering notes for this chapter
+Retries against a rate-limited trunk can look like floods; coordinate budgets with the work permit.
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+### Practice note
 
-### Worked example (synthetic Ashford Batch Plant)
+When the draft queue grows past a threshold, stop starting new discovery methods and page the lead. Untracked scans while findings cannot be recorded create risk.
 
-CNHP applies reliability to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
+### 32.1b Error budgets and health checks
 
-### Practical activity
+Define error budgets for the deny path separately from best-effort UI budgets. Health-check policy storage and event sink at start of window. Starting a window blind and discovering a broken sink mid-scan is an operations failure this chapter is meant to prevent. Retries need deadlines so trunk budgets still hold.
 
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
 
-### Common errors and limits
 
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
+Chaos experiments run only on synthetic ranges, never during a client's signed window. Record experiment ids separately from window ids so metrics do not mix. Publish both deny-path and UI error budgets.
 
-### Exercises — chapter 32
+### Field note — queue back-pressure
 
-**EX063 — Apply reliability.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
+When the draft queue hit 50 during a store outage, Track-style discovery stopped automatically and paged Lena. Deny/allow continued. Untracked scans while findings cannot be recorded are how windows create invisible risk; back-pressure is a safety feature.
 
-**EX064 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
+### Exercises
 
-### Chapter synthesis
+- **EX094 — Target.** Availability sentence for the deny path. Rubric: 3 = windowed target + measure; 2 = vague high; 1 = five-nines joke; 0 = none.
+- **EX095 — Degrade.** What must never degrade to ALLOW? Rubric: 3 = policy/allow-list decisions; 2 = partial; 1 = UI; 0 = wrong.
+- **EX096 — Queue.** Back-pressure rule when the draft queue is long. Rubric: 3 = stop new discovery + page; 2 = partial; 1 = ignore; 0 = none.
 
-OT, IoT and cyber-physical security: reliability advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+### Synthesis
+
+Reliable denies, budgeted retries, degrade closed.
 
 ### Continue studying — chapter 32 of 50
 
-[← Chapter 31](#ch-31) · [Course chapter index](../SUBJECTS.md) · [Chapter 33 →](#ch-33)
+[← Chapter 31 (draft)](#ch-31) · [Course chapter index](../SUBJECTS.md) · [Chapter 33 (draft) →](#ch-33)
 
 <a id="ch-33"></a>
 
 ## Chapter 33 — OT, IoT and cyber-physical security: safety and resilience
 
-### Learning outcomes and connection
+### Learning outcomes
 
-After this chapter you can apply **OT, IoT and cyber-physical security: safety and resilience** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
+You will (1) write stop conditions as executable checks; (2) plan rollback of tool changes mid-window; (3) run a tabletop on a deny-list or cycle-time miss.
 
-### 33.1 Purpose
+### 33.1 Executable stops
 
-SIS independence, bypass management, cyber-informed HAZOP, recovery to a safe state.
+Stop conditions are code: cycle-time canary, process-alarm feed, client kill-switch file, SIS fault input. Humans also call stop; software must not disagree with a human stop.
 
-### 33.2 Method
+### 33.2 Rollback
 
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
+Pin releases; keep previous monitor binary signed. If a new build mis-evaluates allow-lists, roll back within minutes.
 
-### 33.3 Interface to other chapters
+### 33.3 Tabletop
 
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
+Walk a scenario: cycle time exceeds 50 ms at 02:40; who is called; what is said; when resume is allowed. Update the runbook where the tabletop stuck.
 
-### 33.4 Quality bar
+> **Synthetic case — Ashford Batch Plant.** Tabletop found the kill-switch file path undocumented; runbook v1.4 fixed it before the next window.
 
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
+### 33.4 Errors and limits
 
-### Engineering notes for this chapter
+Resilience theatre is a binder nobody opens. Drill once per term.
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+### Practice note
 
-### Worked example (synthetic Ashford Batch Plant)
+Pre-write SMS/email templates for stop, resume and rollback. Under stress people omit the work-permit version or the next checkpoint time.
 
-CNHP applies safety and resilience to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
+### 33.1b Secondary contacts and resume authority
 
-### Practical activity
+Stop conditions that page only one person fail when that person is offline. Maintain primary and secondary contacts with acknowledged handoff. Who may resume after a stop? Name the role in the work permit. The monitor should require a resume token tied to that role and AllowListVersion.
 
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
 
-### Common errors and limits
 
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
+After every real stop, run a five-minute hotwash and file at least one runbook edit. Resume authority is named in the work permit; Boolean flips anyone on the jumphost can toggle are forbidden.
 
-### Exercises — chapter 33
+### Field note — resume token
 
-**EX065 — Apply safety and resilience.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
+After a stop, resume required a token issued to the process-safety contact's role and bound to AllowListVersion v1.4.2. A Boolean flip on the jumphost was removed from the UI. Resume without authority is how stop conditions become optional.
 
-**EX066 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
+### Exercises
 
-### Chapter synthesis
+- **EX097 — Kill switch.** Design a human kill switch honored in ≤30s. Rubric: 3 = mechanism + poll + fail closed; 2 = idea; 1 = vague; 0 = none.
+- **EX098 — Rollback.** Three preconditions to roll back mid-window. Rubric: 3 = prior binary, policy pin, notify process-safety; 2 = two; 1 = one; 0 = none.
+- **EX099 — Inject.** One tabletop inject. Rubric: 3 = specific; 2 = vague; 1 = none; 0 = unsafe.
 
-OT, IoT and cyber-physical security: safety and resilience advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+### Synthesis
+
+Stops you can run, rollbacks you can do, tabletops that update runbooks.
 
 ### Continue studying — chapter 33 of 50
 
-[← Chapter 32](#ch-32) · [Course chapter index](../SUBJECTS.md) · [Chapter 34 →](#ch-34)
+[← Chapter 32 (draft)](#ch-32) · [Course chapter index](../SUBJECTS.md) · [Chapter 34 (draft) →](#ch-34)
 
 <a id="ch-34"></a>
 
 ## Chapter 34 — OT, IoT and cyber-physical security: integration
 
-### Learning outcomes and connection
+### Learning outcomes
 
-After this chapter you can apply **OT, IoT and cyber-physical security: integration** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
+You will (1) integrate monitor events into the finding store; (2) define idempotent consumers; (3) test contracts with fixtures.
 
-### 34.1 Purpose
+### 34.1 Event contract
 
-end-to-end batch start under CNHP controls; interface contracts between MES, SCADA and PLC.
+Deny/allow events: schema version, ids, UTC timestamps, source, fc, register, reason, policy version. Consumers ignore unknown fields; producers stay additive.
 
-### 34.2 Method
+### 34.2 Idempotent consumers
 
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
+Finding store keys processed events by event_id. Replaying the log must not create duplicate findings.
 
-### 34.3 Interface to other chapters
+### 34.3 Contract tests
 
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
+Fixture JSON for each reason code; consumer tests assert resulting ticket fields. Run in CI on synthetic fixtures.
 
-### 34.4 Quality bar
+> **Synthetic case — Ashford Batch Plant.** A replay storm duplicated three tickets until event_id idempotency landed.
 
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
+### 34.4 Errors and limits
 
-### Engineering notes for this chapter
+Clock skew muddies timelines; prefer event time plus receive time.
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+### Practice note
 
-### Worked example (synthetic Ashford Batch Plant)
+Poison events (future timestamps, unknown policy versions) go to a dead-letter queue with an alert — not into findings and not into /dev/null.
 
-CNHP applies integration to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
+### 34.1b Dead letters and schema drills
 
-### Practical activity
+Events that fail validation go to a dead-letter queue with an alert. Operators replay after fixing the producer. Practice adding an optional field end-to-end in a dry run: producer, consumer, fixture, docs. Teams that only evolve schemas in emergencies invent incompatible shortcuts.
 
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
 
-### Common errors and limits
 
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
+Contract tests run on a schedule against staging fixtures even when no PR is open, catching silent producer drift. Dead-letter age is an SLO chart beside deny-path latency.
 
-### Exercises — chapter 34
+### Field note — poison quarantine
 
-**EX067 — Apply integration.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
+A producer bug emitted events with timestamps in 2099. Dead-letter quarantine caught them; no findings were created against random hosts. Invisible drops would have been worse — at least quarantine pages someone.
 
-**EX068 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
 
-### Chapter synthesis
 
-OT, IoT and cyber-physical security: integration advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+Include a consumer canary that fails the deploy if poison events are not quarantined within one minute in staging.
+
+
+
+Schema evolution drills once per term keep producer and consumer teams from inventing incompatible shortcuts under incident pressure.
+
+### Exercises
+
+- **EX100 — Field.** Why include policy_version on every event? Rubric: 3 = audit which rules applied; 2 = vague; 1 = wrong; 0 = none.
+- **EX101 — Replay.** How does event_id prevent duplicate findings? Rubric: 3 = upsert/ignore duplicates; 2 = vague; 1 = wrong; 0 = none.
+- **EX102 — Fixture.** Two fixtures required before a new reason code. Rubric: 3 = producer example + consumer expected ticket; 2 = one; 1 = vague; 0 = none.
+
+### Synthesis
+
+Contracts, idempotent consumers, fixture tests.
 
 ### Continue studying — chapter 34 of 50
 
-[← Chapter 33](#ch-33) · [Course chapter index](../SUBJECTS.md) · [Chapter 35 →](#ch-35)
+[← Chapter 33 (draft)](#ch-33) · [Course chapter index](../SUBJECTS.md) · [Chapter 35 (draft) →](#ch-35)
 
 <a id="ch-35"></a>
 
 ## Chapter 35 — Design studio II
 
-### Learning outcomes and connection
+### Learning outcomes
 
-After this chapter you can apply **Design studio II** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
+You will (1) redesign CNHP's coverage UI against under-claim principles; (2) defend the design in a review; (3) produce UI copy that refuses empty scores.
 
-### 35.1 Purpose
+### 35.1 Problem
 
-revise architecture after a tabletop that injects class B sensor spoofing; update ADRs.
+Stakeholders want a big green percentage. Design a UI that shows planned/observed/not-seen and refuses a single security score.
 
-### 35.2 Method
+### 35.2 Copy
 
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
+71% of planned ICS techniques observed — not a residual-risk score. Button: export denominator. Show SIS reachable? as a separate yes/no.
 
-### 35.3 Interface to other chapters
+### 35.3 Review
 
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
+Reviewers try to force a red/yellow/green risk badge; studio must hold the line with measurement chapter rules.
 
-### 35.4 Quality bar
+> **Synthetic case — Ashford Batch Plant.** Studio II killed the badge; the dashboard lists planned-not-seen techniques by id and SIS reachability separately.
 
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
+### 35.4 Errors and limits
 
-### Engineering notes for this chapter
+Dark patterns (just for executives) reintroduce empty scores — reject in CODEOWNERS for UI.
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+### Practice note
 
-### Worked example (synthetic Ashford Batch Plant)
+User research task: explain this number to a plant manager without saying we are safe. If users cannot, the copy has failed.
 
-CNHP applies design studio II to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
+### 35.1b Accessibility and export truth
 
-### Practical activity
+Under-claiming metrics must still be readable: large type for the fraction, plain language for the caveat, keyboard access to the denominator export. If the UI and the CSV export disagree, the export wins for the report. Build exports first; treat UI as a view.
 
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
 
-### Common errors and limits
 
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
+Narrative exports generated from the same query as the UI paste into reports without screenshot ambiguity. Hiding the caveat in a tooltip reintroduces the empty-score problem for anyone who does not hover.
 
-### Exercises — chapter 35
+### Field note — CFO explain task
 
-**EX069 — Apply Design studio II.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
+In user research, three managers explained the coverage fraction as how safe we are. After copy changes that forbade that reading and surfaced SIS reachability separately, the same task produced explanations about planned checks and open findings instead.
 
-**EX070 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
 
-### Chapter synthesis
 
-Design studio II advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+Export as the source of truth removes arguments about what a screenshot meant in a status meeting.
+
+### Exercises
+
+- **EX103 — Copy.** Subtitle under the coverage number. Rubric: 3 = denies residual-risk reading; 2 = weak caveat; 1 = none; 0 = implies safety.
+- **EX104 — Badge.** One sentence refusing a RAG badge. Rubric: 3 = clear + alternative; 2 = refuse only; 1 = accepts; 0 = none.
+- **EX105 — Export.** Columns in denominator export. Rubric: 3 = technique id, planned, observed, notes; 2 = partial; 1 = just %; 0 = none.
+
+### Synthesis
+
+UI that teaches the metric, not a traffic light of vibes.
 
 ### Continue studying — chapter 35 of 50
 
-[← Chapter 34](#ch-34) · [Course chapter index](../SUBJECTS.md) · [Chapter 36 →](#ch-36)
+[← Chapter 34 (draft)](#ch-34) · [Course chapter index](../SUBJECTS.md) · [Chapter 36 (draft) →](#ch-36)
 
 <a id="ch-36"></a>
 
 ## Chapter 36 — OT, IoT and cyber-physical security: performance and scale
 
-### Learning outcomes and connection
+### Learning outcomes
 
-After this chapter you can apply **OT, IoT and cyber-physical security: performance and scale** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
+You will (1) size monitors under cycle-time budgets; (2) apply token-bucket thinking to assessment traffic; (3) measure plant impact with a canary.
 
-### 36.1 Purpose
+### 36.1 Cycle time is first-class
 
-scan-time budgets, mirror-port capacity, detector CPU load, alarm rates under burst conditions.
+Throughput goals that ignore the PLC cycle budget are bugs. Size decode pipelines so the wire-plus-decode time stays inside the budget measured in Chapter 3.
 
-### 36.2 Method
+```python
+"""Lab: does a polling schedule fit the PLC scan/communication budget? (synthetic)"""
+link_bps = 115200; bits_per_byte = 10           # RS-485 serial, 8N1 + start bit
+polls = [("T-1 level", 8), ("T-2 level", 8), ("R-101 block", 40), ("pump status", 8), ("historian sweep", 120)]
+overhead = 12                                    # bytes of request+framing per poll (assumed)
+total = sum(n + overhead for _, n in polls)
+t = total * bits_per_byte / link_bps
+print(f"bytes per cycle={total} time per cycle={t*1000:.1f} ms")
+for target in (100, 50):
+    print(f"cycle budget {target} ms -> {'fits' if t*1000 <= target else 'OVERRUN'}")
+```
 
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
+Expected output:
 
-### 36.3 Interface to other chapters
+```text
+bytes per cycle=244 time per cycle=21.2 ms
+cycle budget 100 ms -> fits
+cycle budget 50 ms -> fits
+```
 
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
+### 36.2 Assessment traffic
 
-### 36.4 Quality bar
+When active methods are authorized, rate-limit them so they cannot starve control traffic. Prefer listen-only methods; when you must poll, share a global budget across scanners.
 
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
+### 36.3 Canaries
 
-### Engineering notes for this chapter
+A synthetic canary request or cycle-time probe every minute tracks health; stop conditions fire on threshold (Chapter 33).
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+> **Synthetic case — Ashford Batch Plant.** With 21 ms cycles on the RS-485 trunk, Lena left headroom under 50 ms so a decode spike would not trip the stop.
 
-### Worked example (synthetic Ashford Batch Plant)
+### 36.4 Errors and limits
 
-CNHP applies performance and scale to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
+Distributed scanners need a coordinated global budget or they N× the limit.
 
-### Practical activity
+### Practice note
 
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
+Publish a rate-limit economics note: cost of waiting versus cost of a batch interruption. Most arguments for raising limits dissolve when interruption cost is written down.
 
-### Common errors and limits
+### 36.1b Fairness and warm-up
 
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
+When several methods share one budget, a noisy enumerator can starve a quiet config review. Weight or separate budgets by method class. Ramp traffic at window start and drain before hard stop. Instant full-rate starts look like floods to defenders and trip unrelated alarms.
 
-### Exercises — chapter 36
 
-**EX071 — Apply performance and scale.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
 
-**EX072 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
+Document who may raise a rate limit and which AUTH ticket type is required. Separate budgets for quiet versus noisy methods so a hungry enumerator cannot starve config review work.
 
-### Chapter synthesis
+### Field note — warm-up schedule
 
-OT, IoT and cyber-physical security: performance and scale advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+The scheduler now ramps assessment polls over five minutes at window start. Instant full-rate starts had tripped unrelated vibration alarms on a neighbouring skid. Warm-up is courtesy to the process and to the people who own it.
+
+### Exercises
+
+- **EX106 — Lab.** Bytes and time per cycle at 115200 — report both. Rubric: 3 = 244 bytes, 21.2 ms; 2 = one; 1 = wrong; 0 = none.
+- **EX107 — Headroom.** If budget is 50 ms and cycle is 21 ms, what headroom remains and why keep it? Rubric: 3 = ~29 ms for spikes/retries; 2 = number only; 1 = use it all; 0 = none.
+- **EX108 — Global.** Why do three uncoordinated pollers break a 2 req/s permit? Rubric: 3 = 3× rate; 2 = vague; 1 = deny; 0 = none.
+
+### Synthesis
+
+Budget first, scale second, canary always.
 
 ### Continue studying — chapter 36 of 50
 
-[← Chapter 35](#ch-35) · [Course chapter index](../SUBJECTS.md) · [Chapter 37 →](#ch-37)
+[← Chapter 35 (draft)](#ch-35) · [Course chapter index](../SUBJECTS.md) · [Chapter 37 (draft) →](#ch-37)
 
 <a id="ch-37"></a>
 
 ## Chapter 37 — OT, IoT and cyber-physical security: operations
 
-### Learning outcomes and connection
+### Learning outcomes
 
-After this chapter you can apply **OT, IoT and cyber-physical security: operations** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
+You will (1) write a window runbook; (2) hand over between shifts; (3) manage close-out including account disable and evidence seal.
 
-### 37.1 Purpose
+### 37.1 Runbook contents
 
-shift handover of cyber alarms, patch windows, vendor access procedures, exercise cadence.
+Contacts, work-permit pointer, tool versions, stop conditions, escalation tree, evidence paths. Keep it short enough to use under stress.
 
-### 37.2 Method
+### 37.2 Handover
 
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
+Shift log: open findings, last event ids, pending approvals, kill-switch state, process alarms during the window. Verbal handover plus the log.
 
-### 37.3 Interface to other chapters
+### 37.3 Close-out
 
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
+Disable temporary accounts, rotate secrets, seal evidence, export metrics, schedule retrospective. A checklist beats memory.
 
-### 37.4 Quality bar
+```python
+"""Lab: fit patch jobs into plant maintenance windows (synthetic, greedy by risk)."""
+windows = [("W1 Sat 02-06", 4.0), ("W2 Sun 02-04", 2.0)]
+jobs = [("HMI OS update", 1.5, 8), ("historian DB patch", 2.5, 5), ("PLC-A firmware", 3.0, 9),
+        ("eng-WS AV update", 0.5, 3), ("switch firmware", 1.0, 6)]   # name, hours, risk score
+left = {w: h for w, h in windows}; plan = {w: [] for w, _ in windows}; deferred = []
+for name, h, r in sorted(jobs, key=lambda j: -j[2]):
+    for w, _ in windows:
+        if left[w] >= h:
+            left[w] -= h; plan[w].append(name); break
+    else:
+        deferred.append(name)
+for w, _ in windows:
+    print(w, plan[w], f"spare={left[w]:.1f}h")
+print("deferred:", deferred)
+```
 
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
+Expected output:
 
-### Engineering notes for this chapter
+```text
+W1 Sat 02-06 ['PLC-A firmware', 'switch firmware'] spare=0.0h
+W2 Sun 02-04 ['HMI OS update', 'eng-WS AV update'] spare=0.0h
+deferred: ['historian DB patch']
+```
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+> **Synthetic case — Ashford Batch Plant.** Close-out caught the deferred historian patch still without a date — escalated before the retro.
 
-### Worked example (synthetic Ashford Batch Plant)
+### 37.4 Errors and limits
 
-CNHP applies operations to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
+Runbooks in wikis nobody can access from the control room fail; keep an offline copy.
 
-### Practical activity
+### Practice note
 
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
+On-call for CNHP tools is not a license to widen conduits. Pages are about tool safety and permit enforcement; process incidents route to the plant IR/process-safety path.
 
-### Common errors and limits
+### 37.1b Calendar and spare kits
 
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
+Windows belong on a shared calendar with work-permit version in the description. Accidental overlap of two noisy methods on the same trunk is an operations failure. Ops kits include spare jump-host images, printed contact cards and offline permit copies for when SSO is down.
 
-### Exercises — chapter 37
 
-**EX073 — Apply operations.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
 
-**EX074 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
+Store the close-out checklist result hash so incomplete close-outs cannot be marked done quietly. Handover includes reading the last ten monitor denies aloud to the incoming lead.
 
-### Chapter synthesis
+### Field note — offline kit
 
-OT, IoT and cyber-physical security: operations advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+SSO failed during a Sunday window. The offline runbook copy and printed contact cards let the team stop cleanly and notify process safety. Wikis nobody can reach from the control room are not runbooks.
+
+
+
+Operations metrics include pages per window and mean time to acknowledge stops; vanity metrics like hosts touched stay off the ops dashboard.
+
+### Exercises
+
+- **EX109 — Checklist.** Six close-out steps. Rubric: 3 = six sensible; 2 = four; 1 = two; 0 = none.
+- **EX110 — Handover.** Three fields the shift log must include. Rubric: 3 = findings/events/approvals (or equiv.); 2 = two; 1 = one; 0 = none.
+- **EX111 — Lab.** Which job was deferred and what must close-out record? Rubric: 3 = historian patch + residual risk + next window date; 2 = name only; 1 = vague; 0 = wrong.
+
+### Synthesis
+
+Operate with runbooks, handovers and ruthless close-out.
 
 ### Continue studying — chapter 37 of 50
 
-[← Chapter 36](#ch-36) · [Course chapter index](../SUBJECTS.md) · [Chapter 38 →](#ch-38)
+[← Chapter 36 (draft)](#ch-36) · [Course chapter index](../SUBJECTS.md) · [Chapter 38 (draft) →](#ch-38)
 
 <a id="ch-38"></a>
 
 ## Chapter 38 — OT, IoT and cyber-physical security: validation
 
-### Learning outcomes and connection
+### Learning outcomes
 
-After this chapter you can apply **OT, IoT and cyber-physical security: validation** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
+You will (1) validate fixes with re-tests; (2) avoid validation that reintroduces process risk; (3) record negative results.
 
-### 38.1 Purpose
+### 38.1 Re-test design
 
-factory/site acceptance for security requirements; freeze thresholds before validation like research practice.
+Same vantage, least privilege, same evidence standard. For an allow-list fix: confirm the write is denied on the bench; do not spray writes at the live PLC.
 
-### 38.2 Method
+### 38.2 Negative results
 
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
+Still open is a valid validation outcome. Finding stores must accept it without forcing close.
 
-### 38.3 Interface to other chapters
+### 38.3 No new methods
 
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
+Validation uses the method that found the issue, or a weaker read-only check — not a chance to try new attacks.
 
-### 38.4 Quality bar
+> **Synthetic case — Ashford Batch Plant.** Re-test of the L4 to L2 rule: reachability now excludes L1-SIS; ticket closed with export hash. A separate finding on shared eng passwords stayed open.
 
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
+### 38.4 Errors and limits
 
-### Engineering notes for this chapter
+Different environment (bench vs plant) means you validated the bench.
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+### Practice note
 
-### Worked example (synthetic Ashford Batch Plant)
+Automated re-tests are allow-listed checks with hard timeouts. They never include credential stuffing or exploit retries.
 
-CNHP applies validation to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
+### 38.1b Evidence of validation and adjudication
 
-### Practical activity
+Validation tickets link to the original finding, the method used, the timestamp and the hash of the new evidence. Looks good to me without those fields does not close a critical. Disputes escalate to a named adjudicator who compares evidence hashes — they do not re-attack.
 
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
 
-### Common errors and limits
 
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
+When many similar findings share a root cause, re-test a sample plus the originally reported assets, and say so. Adjudicator decisions are final for the window and may only be appealed in the retrospective.
 
-### Exercises — chapter 38
+### Field note — sample re-test
 
-**EX075 — Apply validation.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
+Twenty HMIs shared a missing allow-list entry. Validation re-tested five plus the originally reported two, documented the sample, and left the finding open until the fleet job finished. Claiming all twenty closed after two checks would have been a measurement lie.
 
-**EX076 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
+### Exercises
 
-### Chapter synthesis
+- **EX112 — Re-test.** Steps to validate a removed L4 to L2 rule safely. Rubric: 3 = export+reachability, expect no path, evidence, no live writes; 2 = partial; 1 = live attack; 0 = none.
+- **EX113 — Negative.** Why must still open be storable? Rubric: 3 = honesty/metrics; 2 = vague; 1 = always close; 0 = none.
+- **EX114 — Env.** Limitation when re-test was bench-only. Rubric: 3 = clear; 2 = vague; 1 = claims plant; 0 = none.
 
-OT, IoT and cyber-physical security: validation advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+### Synthesis
+
+Validate narrowly; keep negatives; don't widen methods.
 
 ### Continue studying — chapter 38 of 50
 
-[← Chapter 37](#ch-37) · [Course chapter index](../SUBJECTS.md) · [Chapter 39 →](#ch-39)
+[← Chapter 37 (draft)](#ch-37) · [Course chapter index](../SUBJECTS.md) · [Chapter 39 (draft) →](#ch-39)
 
 <a id="ch-39"></a>
 
 ## Chapter 39 — OT, IoT and cyber-physical security: maintainability
 
-### Learning outcomes and connection
+### Learning outcomes
 
-After this chapter you can apply **OT, IoT and cyber-physical security: maintainability** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
+You will (1) budget for policy and dependency updates; (2) keep adapters thin; (3) document ownership including vacation coverage.
 
-### 39.1 Purpose
+### 39.1 Churn
 
-documentation, spare PLC images, key rotation, obsolescence plans for unsupported protocol stacks.
+ATT&CK for ICS techniques, PLC firmwares and vendor HMI support matrices change. Budget calendar time for updates; pin versions and watch advisories.
 
-### 39.2 Method
+### 39.2 Thin adapters
 
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
+Isolate third-party SDKs behind interfaces so upgrades do not rewrite the finding store core.
 
-### 39.3 Interface to other chapters
+### 39.3 Ownership
 
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
+Every service has a named owning squad and a backup. CODEOWNERS enforces review. Missing vacation coverage is a release blocker.
 
-### 39.4 Quality bar
+> **Synthetic case — Ashford Batch Plant.** The ATT&CK for ICS mapper is an adapter; upgrading the technique list is a data PR, not a rewrite.
 
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
+### 39.4 Errors and limits
 
-### Engineering notes for this chapter
+Orphan tools rot into fail-open museums.
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+### Practice note
 
-### Worked example (synthetic Ashford Batch Plant)
+Write a bus-factor note: who can release, who understands permit(), who can restore the sealed store. If the answer is one person, schedule cross-training before the next season.
 
-CNHP applies maintainability to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
+### 39.1b Deprecation and deletion plans
 
-### Practical activity
+Announce API deprecations with dates; keep dual-run periods. Maintainability includes knowing how to retire a tool: export dossiers, revoke credentials, archive code. Calendar a dependency upgrade month each year so CVE pins do not wait for an emergency.
 
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
 
-### Common errors and limits
 
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
+Ownership pages list vacation coverage by name. Treat missing coverage as a release blocker equal to a failing test. Cross-training sessions use the same synthetic fixtures as Lab I.
 
-### Exercises — chapter 39
+### Field note — vacation blocker
 
-**EX077 — Apply maintainability.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
+A release was blocked because the only person who understood permit() was on leave without a trained backup. Cross-training on Lab I fixtures the next week cleared the blocker. Maintainability is mostly about people allowed to be on holiday.
 
-**EX078 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
 
-### Chapter synthesis
 
-OT, IoT and cyber-physical security: maintainability advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+API deprecation windows keep dual-run periods so Pulse-style consumers do not break mid-window when reason codes change.
+
+
+
+Deletion plans for retiring a monitor include dossier export, credential revocation and archive of the code tag.
+
+### Exercises
+
+- **EX115 — Pin.** How do you pin the monitor for a window and still allow safety patches? Rubric: 3 = version pin + mini Lab I for hotfix; 2 = partial; 1 = latest always; 0 = none.
+- **EX116 — Adapter.** One method on a StoragePort interface. Rubric: 3 = e.g. put_evidence(hash,bytes); 2 = vague; 1 = concrete SDK call; 0 = none.
+- **EX117 — Owner.** Ownership line for the serial monitor. Rubric: 3 = squad + backup + contact; 2 = squad; 1 = team; 0 = none.
+
+### Synthesis
+
+Pins, adapters and named owners keep tools alive safely.
 
 ### Continue studying — chapter 39 of 50
 
-[← Chapter 38](#ch-38) · [Course chapter index](../SUBJECTS.md) · [Chapter 40 →](#ch-40)
+[← Chapter 38 (draft)](#ch-38) · [Course chapter index](../SUBJECTS.md) · [Chapter 40 (draft) →](#ch-40)
 
 <a id="ch-40"></a>
 
 ## Chapter 40 — Verification laboratory II
 
-### Learning outcomes and connection
+### Learning outcomes
 
-After this chapter you can apply **Verification laboratory II** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
+You will (1) verify end-to-end flow from frame to ticket to coverage; (2) inject faults; (3) sign a release candidate.
 
-### 40.1 Purpose
+### 40.1 End-to-end
 
-regression suite after a change; hash manifests; independent review of results.
+Synthetic frame to monitor decision to event to finding ticket to coverage update. Record hashes at each hop.
 
-### 40.2 Method
+### 40.2 Faults
 
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
+Kill finding store mid-flow; confirm monitor still denies and drafts queue. Corrupt an evidence file; confirm hash mismatch alert. Feed a flat (unsafe) edge list; confirm reachability fails the SIS check.
 
-### 40.3 Interface to other chapters
+```python
+# Lab 23 - reachability count on a synthetic Purdue-layered OT network
+# Nodes: L5-ERP, L4-Office, L3.5-DMZ, L3-Hist, L2-SCADA, L1-PLC, L1-SIS, L0-IO
+edges_flat=[("L5","L4"),("L4","L3"),("L3","L2"),("L2","L1-PLC"),("L2","L1-SIS"),("L1-PLC","L0"),("L1-SIS","L0"),("L4","L2")]
+edges_zoned=[("L5","L4"),("L4","L3.5"),("L3.5","L3"),("L3","L2"),("L2","L1-PLC"),("L1-SIS","L0"),("L1-PLC","L0")]  # SIS not reachable from SCADA
+def reach(edges, start):
+    g={}; 
+    for a,b in edges: g.setdefault(a,[]).append(b)
+    seen=set(); stack=[start]
+    while stack:
+        n=stack.pop()
+        if n in seen: continue
+        seen.add(n); stack.extend(g.get(n,[]))
+    return seen
+for name,e in (("flat",edges_flat),("zoned",edges_zoned)):
+    r=reach(e,"L4")
+    print(f"{name}: L4 reaches {sorted(r)} count={len(r)} writes_to_SIS={'L1-SIS' in r}")
+```
 
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
+Expected output:
 
-### 40.4 Quality bar
+```text
+flat: L4 reaches ['L0', 'L1-PLC', 'L1-SIS', 'L2', 'L3', 'L4'] count=6 writes_to_SIS=True
+zoned: L4 reaches ['L0', 'L1-PLC', 'L2', 'L3', 'L3.5', 'L4'] count=6 writes_to_SIS=False
+```
 
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
+### 40.3 Sign-off
 
-### Engineering notes for this chapter
+Release candidate checklist signed by implementer and reviewer; safety rows must be green.
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+> **Synthetic case — Ashford Batch Plant.** Lab II found coverage updated before ticket create on retry — fixed ordering with an outbox.
 
-### Worked example (synthetic Ashford Batch Plant)
+### 40.4 Errors and limits
 
-CNHP applies verification laboratory II to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
+E2E without fault injection only proves the happy path.
 
-### Practical activity
+### Practice note
 
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
+Malicious fixture pack: wrong hashes, reordered events, future timestamps, flat graph claiming to be zoned. Passing only happy fixtures is an incomplete laboratory.
 
-### Common errors and limits
+### 40.1b Observability and parity
 
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
+Lab II enables debug logs temporarily but seals a redacted copy. Leaving debug on in window builds can leak secrets. Lab environment mirrors production tool versions and policy signing keys (test keys). A flaky Lab II is a blocker, not a retry-until-green ritual.
 
-### Exercises — chapter 40
 
-**EX079 — Apply Verification laboratory II.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
 
-**EX080 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
+Happy-path green with malicious-pack red still fails Lab II sign-off. Fault-injection scripts are checked into the lab folder and pinned by SHA in the report. Environment parity gaps explain green-in-lab red-in-window surprises.
 
-### Chapter synthesis
+### Field note — malicious pack
 
-Verification laboratory II advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+Lab II's malicious pack included a flat graph labelled as zoned. The reachability check failed closed and blocked the release. Happy-path-only laboratories ship lies.
+
+
+
+Seal Lab II logs with the same manifest tool the dossier uses so students practise one hashing workflow.
+
+
+
+Flaky tests are quarantined and fixed; shipping with sometimes fail-closed is shipping fail-open.
+
+### Exercises
+
+- **EX118 — Ordering.** Why create ticket before coverage count increases? Rubric: 3 = coverage must reflect recorded findings; 2 = vague; 1 = either order; 0 = none.
+- **EX119 — Fault.** Expected monitor behaviour when finding store is down. Rubric: 3 = still evaluate/deny; queue drafts; 2 = partial; 1 = fail open; 0 = none.
+- **EX120 — Sign-off.** Two signatures required — who? Rubric: 3 = implementer + independent reviewer; 2 = one; 1 = manager only; 0 = none.
+
+### Synthesis
+
+E2E with faults; green safety; two signatures.
 
 ### Continue studying — chapter 40 of 50
 
-[← Chapter 39](#ch-39) · [Course chapter index](../SUBJECTS.md) · [Chapter 41 →](#ch-41)
+[← Chapter 39 (draft)](#ch-39) · [Course chapter index](../SUBJECTS.md) · [Chapter 41 (draft) →](#ch-41)
 
 <a id="ch-41"></a>
 
 ## Chapter 41 — OT, IoT and cyber-physical security: system optimization
 
-### Learning outcomes and connection
+### Learning outcomes
 
-After this chapter you can apply **OT, IoT and cyber-physical security: system optimization** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
+You will (1) profile OT security pipelines ethically; (2) optimize under cycle-time and ROE constraints; (3) reject optimizations that weaken safety.
 
-### 41.1 Purpose
+### 41.1 Profile first
 
-trade false alarms vs delay; cost of independent sensors vs residual risk accepted.
+Measure where time goes: decode, permit eval, event write. Optimize the dominant term. Synthetic load only.
 
-### 41.2 Method
+### 41.2 Constraint-preserving
 
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
+Caching AllowListVersion is fine if invalidation on publish is correct. Caching allow decisions across stations is not — stations differ.
 
-### 41.3 Interface to other chapters
+### 41.3 Safety veto
 
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
+Any optimization that skips deny-list checks, shortens audit fields or fails open is rejected regardless of speedup.
 
-### 41.4 Quality bar
+```python
+"""Lab: does a polling schedule fit the PLC scan/communication budget? (synthetic)"""
+link_bps = 115200; bits_per_byte = 10           # RS-485 serial, 8N1 + start bit
+polls = [("T-1 level", 8), ("T-2 level", 8), ("R-101 block", 40), ("pump status", 8), ("historian sweep", 120)]
+overhead = 12                                    # bytes of request+framing per poll (assumed)
+total = sum(n + overhead for _, n in polls)
+t = total * bits_per_byte / link_bps
+print(f"bytes per cycle={total} time per cycle={t*1000:.1f} ms")
+for target in (100, 50):
+    print(f"cycle budget {target} ms -> {'fits' if t*1000 <= target else 'OVERRUN'}")
+```
 
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
+Expected output:
 
-### Engineering notes for this chapter
+```text
+bytes per cycle=244 time per cycle=21.2 ms
+cycle budget 100 ms -> fits
+cycle budget 50 ms -> fits
+```
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+> **Synthetic case — Ashford Batch Plant.** Caching signed allow-lists in memory cut latency; invalidation on publish kept safety. A proposal to skip register checks for known good HMIs was vetoed.
 
-### Worked example (synthetic Ashford Batch Plant)
+### 41.4 Errors and limits
 
-CNHP applies system optimization to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
+Benchmarks on laptops do not predict plant trunks.
 
-### Practical activity
+### Practice note
 
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
+Optimization proposals require a safety paragraph. Proposals without it are returned unread.
 
-### Common errors and limits
+### 41.1b Load shedding and N+1
 
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
+Under overload, shed discovery work before shedding deny evaluation. Chatty ticket updates during bulk import crush the finding store — batch writes and measure. Keep headroom under the cycle-time budget so a retry storm does not breach it.
 
-### Exercises — chapter 41
 
-**EX081 — Apply system optimization.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
 
-**EX082 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
+Reject optimization PRs that remove reason codes from logs even if latency improves. Benchmarks cite the cycle-time budget next to the achieved rate so unconstrained benches are obvious.
 
-### Chapter synthesis
+### Field note — safety paragraph
 
-OT, IoT and cyber-physical security: system optimization advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+An optimization PR that removed reason codes from hot-path logs to save microseconds was returned unread for lack of a safety paragraph. The revised PR kept the codes and found its speedup elsewhere. Safety paragraphs are not bureaucracy; they are the veto mechanism.
+
+
+
+Capacity headroom under the cycle budget is documented next to the token-bucket or poll schedule so the next debate starts from numbers.
+
+### Exercises
+
+- **EX121 — Veto.** An optimization that must be rejected. Rubric: 3 = safety-weakening example; 2 = vague; 1 = okays it; 0 = none.
+- **EX122 — Cache.** When is decision caching safe? Rubric: 3 = same version+station+fc+reg, short TTL, invalidate on publish; 2 = partial; 1 = always; 0 = none.
+- **EX123 — Shed.** What do you shed first under overload? Rubric: 3 = discovery/assessment before deny evaluation; 2 = partial; 1 = drop denies; 0 = none.
+
+### Synthesis
+
+Speed under constraints; safety has veto power.
 
 ### Continue studying — chapter 41 of 50
 
-[← Chapter 40](#ch-40) · [Course chapter index](../SUBJECTS.md) · [Chapter 42 →](#ch-42)
+[← Chapter 40 (draft)](#ch-40) · [Course chapter index](../SUBJECTS.md) · [Chapter 42 (draft) →](#ch-42)
 
 <a id="ch-42"></a>
 
 ## Chapter 42 — OT, IoT and cyber-physical security: applied research
 
-### Learning outcomes and connection
+### Learning outcomes
 
-After this chapter you can apply **OT, IoT and cyber-physical security: applied research** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
+You will (1) frame a research question about OT security programmes; (2) choose measures and baselines with detector-evaluation hygiene; (3) keep dual-use out of student research.
 
-### 42.1 Purpose
+### 42.1 Questions that fit
 
-a bounded experiment to choose detector parameters — research in service of design, not publication.
+Does dual-approval reduce conduit-widen incidents? Does showing denominators change stakeholder interpretation of coverage? Not new bypass against PLC brand X.
 
-### 42.2 Method
+### 42.2 Design
 
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
+Pre-register measures; use synthetic or consented operational data; report intervals and attack classes (Urbina et al.; Giraldo et al.). Replication beats novelty theatre.
 
-### 42.3 Interface to other chapters
+### 42.3 Disclosure
 
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
+If research accidentally finds a live issue, follow responsible disclosure — not a class blog.
 
-### 42.4 Quality bar
+> **Synthetic case — Ashford Batch Plant.** Lena's applied study compared ticket reopen rates before/after requiring re-test evidence; pre-registered, synthetic+anonymized.
 
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
+### 42.4 Errors and limits
 
-### Engineering notes for this chapter
+Course projects are not human-subjects work; avoid collecting personal operator data.
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+### Practice note
 
-### Worked example (synthetic Ashford Batch Plant)
+Preregistered analysis code lives in the repo with a freeze commit before data collection. Amending after peeking requires a logged amendment.
 
-CNHP applies applied research to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
+### 42.1b Data sharing and negative results
 
-### Practical activity
+Even synthetic-plus-anonymized operational metrics need a written agreement with the host for student theses. Publishable applied research includes negative results. Hiding negatives biases the next cohort toward empty confidence.
 
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
 
-### Common errors and limits
 
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
+State the dual-use boundary in the thesis ethics section with a concrete refusal example. Negative results get the same figure quality as positive ones in the thesis template.
 
-### Exercises — chapter 42
+### Field note — amendment log
 
-**EX083 — Apply applied research.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
+After peeking at pilot data, a student wanted to change the primary measure. The amendment log recorded the reason and kept the original measure as a secondary analysis. Pre-registration without amendment discipline is theatre.
 
-**EX084 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
 
-### Chapter synthesis
 
-OT, IoT and cyber-physical security: applied research advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+Data sharing agreements, even for anonymized metrics, are written before student theses begin — mentor said it was fine is not enough.
+
+
+
+Negative results are publishable and required in the thesis template's results section.
+
+### Exercises
+
+- **EX124 — Question.** One acceptable research question. Rubric: 3 = programme/process focused; 2 = borderline; 1 = exploit focused; 0 = none.
+- **EX125 — Measure.** Primary measure for dual-approval study. Rubric: 3 = e.g. unapproved widen attempts/quarter; 2 = vague; 1 = security; 0 = none.
+- **EX126 — Dual-use.** Refuse a project that asks for a new PLC exploit. Rubric: 3 = refusal + alternative; 2 = refusal; 1 = accepts; 0 = none.
+
+### Synthesis
+
+Research the programme and process; leave weaponization alone.
 
 ### Continue studying — chapter 42 of 50
 
-[← Chapter 41](#ch-41) · [Course chapter index](../SUBJECTS.md) · [Chapter 43 →](#ch-43)
+[← Chapter 41 (draft)](#ch-41) · [Course chapter index](../SUBJECTS.md) · [Chapter 43 (draft) →](#ch-43)
 
 <a id="ch-43"></a>
 
 ## Chapter 43 — Industry or public-service practice
 
-### Learning outcomes and connection
+### Learning outcomes
 
-After this chapter you can apply **Industry or public-service practice** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
+You will (1) adapt CNHP engineering to a host organization's constraints; (2) write a practice report without proprietary detail; (3) translate between process safety, ops and engineering.
 
-### 43.1 Purpose
+### 43.1 Placement
 
-placement expectations: observe, do not touch production, write a reflective risks-and-controls memo.
+In industry or public service, work-permit templates, residency and procurement differ. Your job is still fail-closed tooling and honest measurement — not clever unauthorized tests.
 
-### 43.2 Method
+### 43.2 Sanitized reporting
 
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
+Course deliverables use synthetic names and aggregates. Real plant identifiers stay inside the host's systems.
 
-### 43.3 Interface to other chapters
+### 43.3 Translation
 
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
+Process safety hears independence and SIL. Ops hears windows and alarms. Engineering hears schemas and tests. Same facts, three dialects.
 
-### 43.4 Quality bar
+> **Synthetic case — Ashford Batch Plant.** Lena's placement memo used only ABP synthetic figures; real partner plant names were omitted.
 
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
+### 43.4 Errors and limits
 
-### Engineering notes for this chapter
+I can't tell you what I did is not a practice report — use synthetic reconstruction agreed with the host.
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+### Practice note
 
-### Worked example (synthetic Ashford Batch Plant)
+If your placement host sells OT scanners, disclose that and still refuse empty scores. Marketing decks are not measurement.
 
-CNHP applies industry practice to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
+### 43.1b Clearance and conflicts
 
-### Practical activity
+Public-service placements may involve clearances. Course artefacts stay at the lowest sensitivity: synthetic reconstructions. Never paste restricted text into GitHub. Practice reports include a constraints appendix graded as heavily as the technical work.
 
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
 
-### Common errors and limits
 
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
+Agree the sanitized reconstruction with the host mentor in writing before writing the practice report. If the host forbids even sanitized metrics, use a fully synthetic twin scenario labelled as such.
 
-### Exercises — chapter 43
+### Field note — constraints appendix
 
-**EX085 — Apply Industry or public-service practice.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
+A public-service host forbade foreign SaaS and required FOIA-ready logs. The practice report's constraints appendix explained why architecture C was impossible and why A was chosen. Graders marked the appendix as heavily as the code.
 
-**EX086 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
 
-### Chapter synthesis
 
-Industry or public-service practice advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+Clearance and need-to-know rules mean course artefacts stay synthetic; never paste restricted host text into public repositories.
+
+### Exercises
+
+- **EX127 — Dialect.** Translate fail closed on missing policy for process safety. Rubric: 3 = safety/risk wording; 2 = partial; 1 = jargon dump; 0 = none.
+- **EX128 — Sanitize.** Rewrite a sentence that leaks a real hostname. Rubric: 3 = synthetic substitute; 2 = partial; 1 = still leaks; 0 = none.
+- **EX129 — Constraint.** Two public-service constraints that change architecture. Rubric: 3 = e.g. residency, procurement, FOIA; 2 = one; 1 = vague; 0 = none.
+
+### Synthesis
+
+Practice is real constraints plus sanitized learning artefacts.
 
 ### Continue studying — chapter 43 of 50
 
-[← Chapter 42](#ch-42) · [Course chapter index](../SUBJECTS.md) · [Chapter 44 →](#ch-44)
+[← Chapter 42 (draft)](#ch-42) · [Course chapter index](../SUBJECTS.md) · [Chapter 44 (draft) →](#ch-44)
 
 <a id="ch-44"></a>
 
 ## Chapter 44 — Engineering capstone I
 
-### Learning outcomes and connection
+### Learning outcomes
 
-After this chapter you can apply **Engineering capstone I** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
+You will (1) propose a capstone that ships a measurable CNHP improvement; (2) define scope and non-goals; (3) set a verification plan mapped to Lab I rows.
 
-### 44.1 Purpose
+### 44.1 Proposal
 
-scope CNHP delivery: architecture, requirements trace, test plan, safety bounds.
+Problem, users, requirements (safety first), architecture sketch, milestones, verification lab plan, ethics paragraph. Capstones that need exploit work are rejected.
 
-### 44.2 Method
+### 44.2 Non-goals
 
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
+Explicitly list what you will not build (exploit modules, live plant scanning, ML risk oracles, empty scores).
 
-### 44.3 Interface to other chapters
+### 44.3 Milestone 1
 
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
+Something demoable on synthetic data in week 3: e.g. kill-switch honored in ≤30s with a test.
 
-### 44.4 Quality bar
+> **Synthetic case — Ashford Batch Plant.** Capstone I proposals that mentioned auto-pwn were returned; signed allow-list distribution with fail-closed advanced.
 
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
+### 44.4 Errors and limits
 
-### Engineering notes for this chapter
+Scope creep is the main killer — freeze non-goals.
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+### Practice note
 
-### Worked example (synthetic Ashford Batch Plant)
+Proposals that cannot name a Lab I row for each Must requirement return to draft.
 
-CNHP applies capstone I to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
+### 44.1b Success metrics and checkpoints
 
-### Practical activity
+Define two metrics you will show at defense (e.g. deny-all time, percent of merges with AUTH tickets). Capstone I has mandatory checkpoints: proposal accepted, milestone 1 demo, mid ethics check. Missing a checkpoint freezes coding until recovered.
 
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
 
-### Common errors and limits
 
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
+Risk register for the capstone: scope creep, dependency delay, reviewer unavailability, ethics boundary confusion — each with early warning and mitigation. Milestone demos that skip fail-closed are graded zero for that checkpoint.
 
-### Exercises — chapter 44
+### Field note — ethics early
 
-**EX087 — Apply Engineering capstone I.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
+A proposal that included a live plant scan was rejected at the ethics checkpoint before any code was written. Mapping Must requirements to Lab I rows in the same review prevented a beautiful design that could not show fail-closed.
 
-**EX088 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
 
-### Chapter synthesis
 
-Engineering capstone I advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+Advisor checkpoints are mandatory; silent drift produces unreviewable piles at the end of term.
+
+
+
+Success metrics named in Capstone I are the same metrics shown at defense — no bait and switch.
+
+### Exercises
+
+- **EX130 — Non-goal.** Three non-goals for a coverage-board capstone. Rubric: 3 = three clear; 2 = two; 1 = one; 0 = none.
+- **EX131 — Milestone.** Week-3 milestone with acceptance test. Rubric: 3 = demo + test; 2 = demo only; 1 = vague; 0 = none.
+- **EX132 — Ethics.** Four-sentence ethics paragraph. Rubric: 3 = auth, synthetic, dual-use, disclosure; 2 = partial; 1 = weak; 0 = none.
+
+### Synthesis
+
+Ship safety-relevant programme value; freeze non-goals early.
 
 ### Continue studying — chapter 44 of 50
 
-[← Chapter 43](#ch-43) · [Course chapter index](../SUBJECTS.md) · [Chapter 45 →](#ch-45)
+[← Chapter 43 (draft)](#ch-43) · [Course chapter index](../SUBJECTS.md) · [Chapter 45 (draft) →](#ch-45)
 
 <a id="ch-45"></a>
 
 ## Chapter 45 — Independent design review
 
-### Learning outcomes and connection
+### Learning outcomes
 
-After this chapter you can apply **Independent design review** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
+You will (1) run a review that can reject; (2) use a checklist tied to safety requirements; (3) record dissenting opinions.
 
-### 45.1 Purpose
+### 45.1 Review rights
 
-red-team the design with checklists; record findings and dispositions.
+Reviewers may block merge for fail-open paths, missing tests, SIS reachability regressions, or empty scores in UI. LGTM without the checklist is invalid.
 
-### 45.2 Method
+### 45.2 Checklist
 
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
+Fail-closed; policy authn; schema forbids payloads; coverage has denominator; secrets redaction; rollback path documented; SIS reachability test green.
 
-### 45.3 Interface to other chapters
+### 45.3 Dissent
 
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
+If one reviewer disagrees, record the dissent in the ADR even if overruled — future incidents need that trail.
 
-### 45.4 Quality bar
+> **Synthetic case — Ashford Batch Plant.** A coverage badge PR was blocked twice under this checklist; the third revision shipped the honest UI (Chapter 35).
 
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
+### 45.4 Errors and limits
 
-### Engineering notes for this chapter
+Reviews after merge are archaeology, not control.
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+### Practice note
 
-### Worked example (synthetic Ashford Batch Plant)
+Reviewers run the critical tests locally on synthetic fixtures before the meeting — not only read the diff.
 
-CNHP applies independent design review to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
+### 45.1b External reviewers and SLOs
 
-### Practical activity
+Once per term, invite an engineer from outside the squad to review a safety-critical PR. Reviews complete within an agreed number of business days or the change expires from the merge queue (not auto-merges). Forbid Friday-evening merges before windows unless a safety hotfix with Lab I evidence.
 
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
 
-### Common errors and limits
 
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
+Blocking comments must cite a requirement id or checklist item number. Repeated checklist skips by the same reviewer trigger a coaching conversation. The calendar is part of the control design.
 
-### Exercises — chapter 45
+### Field note — Friday merge ban
 
-**EX089 — Apply Independent design review.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
+A non-hotfix UI merge on Friday evening before a Saturday window was reverted. The calendar rule exists because tired reviewers miss fail-open paths. Heroic late merges are a smell.
 
-**EX090 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
 
-### Chapter synthesis
 
-Independent design review advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+External reviewers once per term catch normalized deviance such as we always skip that test.
+
+
+
+Review SLOs prevent rubber-stamping under calendar pressure; expired merges return to draft rather than auto-merge.
+
+### Exercises
+
+- **EX133 — Block.** Blocking comment for a fail-open retry. Rubric: 3 = cites safety req + fix ask; 2 = vague block; 1 = nit; 0 = approve.
+- **EX134 — Checklist.** Add one item for serial taps. Rubric: 3 = specific; 2 = vague; 1 = none; 0 = none.
+- **EX135 — Dissent.** One sentence of recorded dissent. Rubric: 3 = clear; 2 = hedged; 1 = none; 0 = none.
+
+### Synthesis
+
+Reviews that can say no, with a checklist and a memory.
 
 ### Continue studying — chapter 45 of 50
 
-[← Chapter 44](#ch-44) · [Course chapter index](../SUBJECTS.md) · [Chapter 46 →](#ch-46)
+[← Chapter 44 (draft)](#ch-44) · [Course chapter index](../SUBJECTS.md) · [Chapter 46 (draft) →](#ch-46)
 
 <a id="ch-46"></a>
 
 ## Chapter 46 — Engineering capstone II
 
-### Learning outcomes and connection
+### Learning outcomes
 
-After this chapter you can apply **Engineering capstone II** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
+You will (1) finish implementation against the frozen proposal; (2) run Verification Lab II; (3) deliver operator docs and ops ownership.
 
-### 46.1 Purpose
+### 46.1 Freeze
 
-complete implementation evidence on synthetic/lab systems; freeze the evidence pack.
+Feature freeze date is real: after it, only safety fixes. New ideas go to a sequel proposal.
 
-### 46.2 Method
+### 46.2 Verify
 
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
+Capstone must pass Lab II (Chapter 40) on synthetic fixtures with signed checklist.
 
-### 46.3 Interface to other chapters
+### 46.3 Docs
 
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
+Runbook section, ADR, operator tutorial with screenshots of synthetic UI — no plant data. Ops signature required before tag.
 
-### 46.4 Quality bar
+```python
+"""Lab: alarm load per operator hour before and after rationalisation (synthetic counts)."""
+before = {"T-1 high": 140, "T-2 high": 95, "R-101 temp": 30, "pump trip": 6, "comm loss PLC-A": 210, "door open": 75}
+remove = {"comm loss PLC-A": 200, "door open": 70, "T-1 high": 110}   # chattering/duplicate alarms removed
+hours = 24 * 7
+tb = sum(before.values()); ta = tb - sum(remove.values())
+print(f"week alarms before={tb} after={ta}")
+print(f"per operator-hour before={tb/hours:.2f} after={ta/hours:.2f}")
+top = max(before, key=before.get)
+print(f"worst source before: {top} ({before[top]/tb:.0%} of load)")
+```
 
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
+Expected output:
 
-### Engineering notes for this chapter
+```text
+week alarms before=556 after=176
+per operator-hour before=3.31 after=1.05
+worst source before: comm loss PLC-A (38% of load)
+```
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+> **Synthetic case — Ashford Batch Plant.** Capstone II delivered signed allow-list distribution; Lab II green; runbook updated the same day.
 
-### Worked example (synthetic Ashford Batch Plant)
+### 46.4 Errors and limits
 
-CNHP applies capstone II to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
+Demo magic on a laptop with hand-waved fail-closed does not pass.
 
-### Practical activity
+### Practice note
 
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
+Silent runbook test: a second engineer follows the runbook cold on synthetic data while the author is silent. Places they stall become doc fixes.
 
-### Common errors and limits
+### 46.1b Demo script and handover
 
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
+Capstone II demo follows a script on synthetic data: show fail-closed, show coverage denominator, show SIS reachability. Without ops signature the release tag is not cut. Link the silent-run recording hash in the Lab II report for advisor audit.
 
-### Exercises — chapter 46
 
-**EX091 — Apply Engineering capstone II.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
 
-**EX092 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
+Advisor review watches the silent-run recording and files doc issues before sign-off. Capstone code without an ops owner at merge is unfinished. Demo scripts are recorded next to the lab report.
 
-### Chapter synthesis
+### Field note — silent run stall
 
-Engineering capstone II advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+The peer silent-run stalled on missing test policy key documentation. The doc fix shipped the same day. Capstone II is not done until someone who did not write the code can operate the stop path from the runbook alone.
+
+
+
+Handover to ops names the owning squad in README and CODEOWNERS before Lab II sign-off.
+
+
+
+Demo scripts on synthetic data are mandatory; improvised demos skip safety.
+
+### Exercises
+
+- **EX136 — Freeze.** What is allowed after feature freeze? Rubric: 3 = safety fixes only; 2 = bugs; 1 = features; 0 = none.
+- **EX137 — Artefacts.** Five delivery artefacts. Rubric: 3 = five; 2 = three; 1 = code only; 0 = none.
+- **EX138 — Ops.** Why is ops signature required beside Lab II? Rubric: 3 = ownership/runbook readiness; 2 = vague; 1 = bureaucracy; 0 = none.
+
+### Synthesis
+
+Freeze, verify, document, name ops — then operate.
 
 ### Continue studying — chapter 46 of 50
 
-[← Chapter 45](#ch-45) · [Course chapter index](../SUBJECTS.md) · [Chapter 47 →](#ch-47)
+[← Chapter 45 (draft)](#ch-45) · [Course chapter index](../SUBJECTS.md) · [Chapter 47 (draft) →](#ch-47)
 
 <a id="ch-47"></a>
 
 ## Chapter 47 — Failure and recovery trial
 
-### Learning outcomes and connection
+### Learning outcomes
 
-After this chapter you can apply **Failure and recovery trial** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
+You will (1) run a scripted failure trial; (2) measure recovery time; (3) file corrective actions.
 
-### 47.1 Purpose
+### 47.1 Script
 
-tabletop plus synthetic-model trial of SCADA loss and class A replay; measure recovery times.
+Inject: allow-list file deleted; finding store killed; clock skew; duplicate event replay; flat graph substituted for zoned. Observe denies, queues, alerts, reachability fail.
 
-### 47.2 Method
+### 47.2 Measures
 
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
+Time to deny-all writes after policy loss; time to alert; time to restore; findings lost (should be 0 with queue); SIS reachability check still fails closed on bad graph.
 
-### 47.3 Interface to other chapters
+### 47.3 Corrective actions
 
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
+Each miss becomes a ticket with owner and due date — not only a lesson-learned slide.
 
-### 47.4 Quality bar
+```python
+# Lab 27 - residual CUSUM vs band on batch reactor level (synthetic)
+import random
+def run(seed, atk, det, k=0.8, h=6.0):
+    rng=random.Random(seed); true=est=50.0; s=0.0; alarm=None
+    for t in range(500):
+        inflow=1.0+rng.gauss(0,0.05)+(0.08 if atk and t>=250 else 0)
+        true+=inflow-0.02*true
+        lvl=true+rng.gauss(0,0.3); fm=inflow+rng.gauss(0,0.02)
+        if atk and t>=250: lvl=50+rng.gauss(0,0.3)
+        if atk=="B" and t>=250: fm=1.0+rng.gauss(0,0.02)
+        est+=fm-0.02*est
+        hit=abs(lvl-50)>2.0 if det=="band" else False
+        if det=="cusum":
+            s=max(0.0,s+abs(lvl-est)-k); hit=s>h
+        if hit and alarm is None: alarm=t
+    return alarm
+for det in ("band","cusum"):
+    fa=sum(run(i,None,det) is not None for i in range(60))
+    for atk in ("A","B"):
+        hits=[a-250 for a in (run(i,atk,det) for i in range(60)) if a is not None and a>=250]
+        print(f"{det} class{atk} FA={fa}/60 det={len(hits)}/60 mean_delay={sum(hits)/len(hits) if hits else float('nan'):.1f}")
+```
 
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
+Expected output:
 
-### Engineering notes for this chapter
+```text
+band classA FA=0/60 det=0/60 mean_delay=nan
+band classB FA=0/60 det=0/60 mean_delay=nan
+cusum classA FA=0/60 det=60/60 mean_delay=24.8
+cusum classB FA=0/60 det=0/60 mean_delay=nan
+```
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+> **Synthetic case — Ashford Batch Plant.** Trial showed 45s to deny-all writes; target 30s — poll interval tightened.
 
-### Worked example (synthetic Ashford Batch Plant)
+### 47.4 Errors and limits
 
-CNHP applies failure and recovery trial to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
+Trials on production windows are forbidden; use synthetic ranges.
 
-### Practical activity
+### Practice note
 
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
+Celebrate tickets filed — they are the output. A trial with zero tickets usually skipped hard injects.
 
-### Common errors and limits
+### 47.1b Blameless correction and recurrence
 
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
+Write corrective tickets against components and runbooks, not against individuals who followed a bad procedure. After a fix, re-run the inject that found the gap. Close the ticket only when the measure meets the SLO twice. Observers rotate so nobody is permanently exempt.
 
-### Exercises — chapter 47
 
-**EX093 — Apply Failure and recovery trial.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
 
-**EX094 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
+Observers note timings and deviations — they do not fix things live. Schedule the next trial date before leaving the room so recurrence tests actually happen. Scoreboard photos go into the dossier.
 
-### Chapter synthesis
+### Field note — zero-ticket smell
 
-Failure and recovery trial advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+A trial that produced zero tickets had skipped the flat-graph inject. Re-running with the hard inject filed three tickets and tightened the SIS reachability gate. Celebrate tickets; suspect clean scoreboards.
+
+
+
+Blameless correction writes tickets against components and runbooks, not against people who followed a bad procedure.
+
+
+
+Recurrence tests close tickets only after the inject meets the SLO twice.
+
+### Exercises
+
+- **EX139 — Inject.** One inject and expected safe behaviour. Rubric: 3 = both; 2 = inject only; 1 = vague; 0 = unsafe.
+- **EX140 — Measure.** Primary measure for policy-loss inject. Rubric: 3 = time to deny writes; 2 = vague uptime; 1 = none; 0 = none.
+- **EX141 — Action.** Turn a 45s result into a corrective ticket title. Rubric: 3 = specific; 2 = vague; 1 = none; 0 = none.
+
+### Synthesis
+
+Break it on purpose; measure; ticket the gaps.
 
 ### Continue studying — chapter 47 of 50
 
-[← Chapter 46](#ch-46) · [Course chapter index](../SUBJECTS.md) · [Chapter 48 →](#ch-48)
+[← Chapter 46 (draft)](#ch-46) · [Course chapter index](../SUBJECTS.md) · [Chapter 48 (draft) →](#ch-48)
 
 <a id="ch-48"></a>
 
 ## Chapter 48 — Evidence dossier
 
-### Learning outcomes and connection
+### Learning outcomes
 
-After this chapter you can apply **Evidence dossier** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
+You will (1) assemble a dossier a third party can re-hash; (2) structure retention classes; (3) exclude dual-use and proprietary material.
 
-### 48.1 Purpose
+### 48.1 Contents
 
-assemble requirements, ADRs, test results, residual risks with owners.
+Work permit PDF, ConduitSet/allow-list JSON, finding exports, evidence objects, hash manifest, tool versions, lab reports. Reader can verify without trusting your laptop.
 
-### 48.2 Method
+### 48.2 Retention
 
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
+Classes: window working (90 days), sealed evidence (agreed years), aggregate metrics (longer). Deletion jobs are tested.
 
-### 48.3 Interface to other chapters
+### 48.3 Exclusions
 
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
+No payloads, no live credentials, no proprietary batch genealogy. If it cannot be shared with counsel safely, it does not belong.
 
-### 48.4 Quality bar
+> **Synthetic case — Ashford Batch Plant.** Dossier v3 re-hashed clean after a findings.json edit incident; process note included.
 
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
+### 48.4 Errors and limits
 
-### Engineering notes for this chapter
+Dossiers in personal cloud accounts fail residency and retention.
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+### Practice note
 
-### Worked example (synthetic Ashford Batch Plant)
+Automate dossier builds from tags. Manual dragging of files is how findings get edited after seal.
 
-CNHP applies evidence dossier to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
+### 48.1b Reader checklist and redaction log
 
-### Practical activity
+Include a one-page how to verify this dossier at the top. When redacting, keep a redaction log (what, why, actor) inside the sealed store. Hand the dossier to someone outside the project for a re-hash drill. Manifest generation fails the build if any path matches a forbidden-name regex.
 
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
 
-### Common errors and limits
 
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
+Third-party readability: if outsiders cannot find the manifest or the work-permit version, the dossier fails. Test restore from dossier on a clean machine once per term as a graded exercise.
 
-### Exercises — chapter 48
+### Field note — automated dossier
 
-**EX095 — Apply Evidence dossier.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
+make dossier ENG=2026-03-abp produces the zip and manifest. After automation, the findings.json post-seal edit class of incident stopped. The happy path became the safe path.
 
-**EX096 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
 
-### Chapter synthesis
 
-Evidence dossier advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+Redaction logs record what, why and actor so future readers know a blank was intentional.
+
+
+
+Reader checklists at the front of the dossier turn verification into a graded skill, not a guided tour.
+
+
+
+Automation makes the happy path the safe path for dossiers.
+
+### Exercises
+
+- **EX142 — Manifest.** Sketch a hash manifest format (3 rows). Rubric: 3 = path+algo+digest; 2 = digests only; 1 = vague; 0 = none.
+- **EX143 — Class.** Retention class for work permit PDF vs scratch notes. Rubric: 3 = sealed vs working/delete; 2 = partial; 1 = same forever; 0 = none.
+- **EX144 — Exclude.** Student pastes a password into a finding — what do you do? Rubric: 3 = scrub, rotate, process finding; 2 = scrub only; 1 = ignore; 0 = publish.
+
+### Synthesis
+
+Dossiers are verifiable, classified and boringly safe.
 
 ### Continue studying — chapter 48 of 50
 
-[← Chapter 47](#ch-47) · [Course chapter index](../SUBJECTS.md) · [Chapter 49 →](#ch-49)
+[← Chapter 47 (draft)](#ch-47) · [Course chapter index](../SUBJECTS.md) · [Chapter 49 (draft) →](#ch-49)
 
 <a id="ch-49"></a>
 
 ## Chapter 49 — Engineering thesis
 
-### Learning outcomes and connection
+### Learning outcomes
 
-After this chapter you can apply **Engineering thesis** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
+You will (1) structure a thesis around a programme claim; (2) defend measures and limits; (3) cite SP 800-82, 62443, ATT&CK for ICS and evaluation papers correctly.
 
-### 49.1 Purpose
+### 49.1 Claim
 
-monograph structure arguing CNHP meets R1–R4 within stated assumptions.
+One sentence: what you built/measured and for whom. Example: Signed allow-list distribution with fail-closed semantics reduces unauthorized writes forwarded in synthetic trials.
 
-### 49.2 Method
+### 49.2 Body
 
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
+Related work, design, verification, results with intervals and attack classes, limitations, ethics.
 
-### 49.3 Interface to other chapters
+### 49.3 Citations
 
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
+Use verified URLs/DOIs from the source policy; do not invent papers. Note access dates. Giraldo et al. CSUR 2018 doi 10.1145/3203245; Urbina et al. CCS 2016 doi 10.1145/2976749.2978388.
 
-### 49.4 Quality bar
+> **Synthetic case — Ashford Batch Plant.** Thesis draft used only synthetic trial data and cited SP 800-82 Rev. 3 correctly.
 
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
+### 49.4 Errors and limits
 
-### Engineering notes for this chapter
+A thesis that evaluates exploitation skill is out of programme scope.
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+### Practice note
 
-### Worked example (synthetic Ashford Batch Plant)
+Threats-to-validity page is graded. Examiners read that page first. Length is not rigor; structured limits are.
 
-CNHP applies engineering thesis to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
+### 49.1b Related work honesty and reproducibility
 
-### Practical activity
+Cite frameworks you actually used. Padding related work with unread papers is discovered in defense. Ship enough to replay synthetic trials: fixture hashes, tool SHAs, scripts. Available on request is not a reproducibility appendix. Put the claim sentence in bold on page one.
 
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
 
-### Common errors and limits
 
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
+How-used notes stop citation padding cold in advisor review. The threats-to-validity page is graded; leaving it blank fails the thesis gate regardless of implementation quality. Examiners read that page first.
 
-### Exercises — chapter 49
+### Field note — claim on page one
 
-**EX097 — Apply Engineering thesis.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
+Examiners and advisors share the same target when the claim sentence is bold on page one. Thin, accurate related work with how-used notes beats a padded bibliography that collapses under the first question.
 
-**EX098 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
 
-### Chapter synthesis
 
-Engineering thesis advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+Reproducibility appendices ship fixture hashes, tool SHAs and scripts — available on request is insufficient.
+
+
+
+Related-work honesty prefers thin accurate citations with how-used notes over unread padding.
+
+### Exercises
+
+- **EX145 — Claim.** One-sentence thesis claim for dual-approval of conduits. Rubric: 3 = measurable+scoped; 2 = vague; 1 = exploit claim; 0 = none.
+- **EX146 — Limit.** One limitation paragraph (3 sentences). Rubric: 3 = external validity clear; 2 = partial; 1 = none; 0 = overclaim.
+- **EX147 — Cite.** Give the DOI for Urbina et al. CCS 2016. Rubric: 3 = 10.1145/2976749.2978388; 2 = title only; 1 = wrong; 0 = none.
+
+### Synthesis
+
+One claim, honest limits, real citations.
 
 ### Continue studying — chapter 49 of 50
 
-[← Chapter 48](#ch-48) · [Course chapter index](../SUBJECTS.md) · [Chapter 50 →](#ch-50)
+[← Chapter 48 (draft)](#ch-48) · [Course chapter index](../SUBJECTS.md) · [Chapter 50 (draft) →](#ch-50)
 
 <a id="ch-50"></a>
 
 ## Chapter 50 — Final defense
 
-### Learning outcomes and connection
+### Learning outcomes
 
-After this chapter you can apply **Final defense** to the Ashford Batch Plant CNHP with verifiable outputs and explicit residual risk.
+You will (1) present the claim and evidence in 20 minutes; (2) answer safety and measurement questions; (3) state what you would not do again.
 
-### 50.1 Purpose
+### 50.1 Talk structure
 
-claim audit, examiner questions, disclosure posture, operator brief with confidence levels.
+Claim; demo on synthetic data; verification results; one failure-trial lesson; limits; questions. No live plant hacking demo.
 
-### 50.2 Method
+### 50.2 Likely questions
 
-Define inputs (inventory, zone map, threat assumptions), steps, and outputs (artefacts with owners). Use only synthetic ABP data or isolated lab rigs with independent physical safety layers.
+Fail-closed proof? Denominator choice? Dual-use boundary? SIS independence? What broke in Lab II? Practice answering with pointers to artefacts.
 
-### 50.3 Interface to other chapters
+### 50.3 Reflection
 
-Upstream artefacts feed this chapter; downstream chapters consume its outputs. Traceability IDs (R#, ADR-#, T#) stay stable across revisions.
+End with one design mistake and the fix — examiners trust engineers who saw their own failures.
 
-### 50.4 Quality bar
+```python
+# Lab 1 - tank hold-up after feed pump stop (Ashford Batch Plant, synthetic)
+import math
+V0, VMIN = 12.0, 2.0   # m3 in feed tank T-1
+def outflow(t):         # m3/h to reactor; t hours after stop of makeup
+    return 1.8 + 0.4*math.sin(2*math.pi*t/6)
+def drawn(t):
+    return 1.8*t - (0.4*6/(2*math.pi))*(math.cos(2*math.pi*t/6)-1)
+lo,hi=0.0,24.0
+for _ in range(50):
+    mid=(lo+hi)/2
+    lo,hi=(mid,hi) if drawn(mid)<V0-VMIN else (lo,mid)
+print(f"time to min level: {lo:.2f} h")
+print(f"average-rate estimate: {(V0-VMIN)/1.8:.2f} h")
+```
 
-A reviewer should be able to re-run any calculation, see the assumption list, and find the residual risk owner without asking you.
+Expected output:
 
-### Engineering notes for this chapter
+```text
+time to min level: 5.53 h
+average-rate estimate: 5.56 h
+```
 
-On the synthetic Ashford Batch Plant, every calculation supports a Control Network Hardening Programme decision: a requirement identifier, an architecture decision record, a test case or a residual risk with an owner. State the units of every quantity (metres cubed, seconds, scans, alarms per shift). Separate **observations** (what a log or simulation printed) from **claims** (what you assert about detection or safety) and never promote a network event to a physical-consequence claim without a process model. If a laboratory activity is physical, bound it with an independent safety layer and a named stop authority; this course never authorises work on production PLCs, safety systems or plant networks. Re-verify cited standards (NIST SP 800-82 Rev. 3, ISA/IEC 62443, ATT&CK for ICS, Modbus specifications) before relying on a clause in a real project. Keep synthetic data labelled synthetic so that teaching numbers cannot be mistaken for field measurements.
+> **Synthetic case — Ashford Batch Plant.** Lena's defense led with the fail-closed lab and SIS reachability, not a slide of logos. When asked for a risk score, she refused and showed SIS reachability, critical opens and coverage denominators.
 
-### Worked example (synthetic Ashford Batch Plant)
+### 50.4 Errors and limits
 
-CNHP applies final defense to reactor R-101 and tanks T-1/T-2. Results are teaching artefacts only.
+Defense is not a sales pitch for a scanner vendor.
 
-### Practical activity
+### Practice note
 
-Produce the chapter's primary artefact (one to two pages) for ABP with IDs and assumptions listed.
+Twenty minutes means rehearsal with a timer. Cutting the limits slide to save time is the wrong cut — examiners need your honesty more than a fourth demo click.
 
-### Common errors and limits
+### 50.1b Examiner packet and aftercare
 
-- Missing residual-risk owner.
-- Using production systems.
-- Artefacts without version IDs.
-- Overclaiming field effectiveness.
+Provide examiners the claim sentence, Lab II summary, failure-trial measure and ethics paragraph one day ahead. After defense, schedule a maintenance review in ninety days: owning squad, pins, corrective tickets. Archive the talk deck next to the dossier with matching hashes.
 
-### Exercises — chapter 50
 
-**EX099 — Apply Final defense.** *Objective:* produce the required artefact for ABP. *Inputs:* chapter text. *Steps:* (1) draft; (2) list assumptions; (3) name residual-risk owner. *Expected evidence:* artefact. *Rubric:* 3 = complete, scoped, owned; 2 = thin ownership; 1 = vague; 0 = none.
 
-**EX100 — Critique.** *Objective:* find one overclaim in a peer's draft and rewrite it. *Inputs:* peer artefact or your own prior draft. *Steps:* mark verb; rewrite with scope. *Expected evidence:* before/after. *Rubric:* 3 = precise rewrite; 2 = weak; 1 = nitpick only; 0 = none.
+Keep a parking lot for examiner ideas and process it within a week. Thank operators who ran synthetic trials; defense without their logs is storytelling. The final chapter of the degree is the first chapter of stewardship.
 
-### Chapter synthesis
+### Field note — ninety-day review
 
-Final defense advances CNHP when artefacts are verifiable, assumptions listed and residual risks owned. ABP is synthetic; do not touch production systems.
+Ninety days after defense, the owning squad, pins and corrective tickets were reviewed. One corrective had reopened; it was re-filed with a tighter SLO. Stewardship begins when the applause ends.
+
+### Exercises
+
+- **EX148 — Outline.** Six-bullet talk outline. Rubric: 3 = claim to demo to verify to failure to limits to Q; 2 = partial; 1 = vendor pitch; 0 = none.
+- **EX149 — Answer.** 3-4 sentences answering what's your risk score? Rubric: 3 = refuse empty score + alternatives; 2 = partial; 1 = invents score; 0 = none.
+- **EX150 — Mistake.** One real (synthetic-story) mistake and fix. Rubric: 3 = specific; 2 = vague; 1 = none; 0 = none.
+
+### Synthesis
+
+Defend the engineering, the measures and the refusals.
 
 ### Continue studying — chapter 50 of 50
 
-[← Chapter 49](#ch-49) · [Course chapter index](../SUBJECTS.md) · [Worked results ↓](#worked-results) · End of route
+[← Chapter 49 (draft)](#ch-49) · [Course chapter index](../SUBJECTS.md) · [Worked results ↓](#worked-results) · [Next course via chapter index →](../SUBJECTS.md)
+
 
 <a id="worked-results"></a>
 
 ## Worked results
 
-One defensible answer per exercise; alternatives that meet evidence and scope standards also earn full marks. All ABP numbers are synthetic.
+Model answers for EX001–EX150. Ashford Batch Plant, Lena Okafor, CNHP and all numbers are synthetic. Any answer meeting the rubric scores equally.
 
-### Chapter 1
+**EX001.** (9 − 1.5) / 1.25 = 7.5 / 1.25 = 6.0 hours.
 
-- **EX001** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX002** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX002.** "A low-level condition on T-2 shall be alarmed to the operator within 4 hours of make-up loss (6.0 h hold-up minus 2 h response margin), by an alarm path independent of the PLC controlling the make-up pump."
 
-### Chapter 2
+**EX003.** The sine term integrates to nearly zero over a full 6-hour period, so the mean draw is 1.8 m³/h and 10/1.8 ≈ 5.56 h. If the window covered only the high part of the cycle, or the recipe were skewed toward high draw, the true time would be shorter than the average-rate estimate.
 
-- **EX003** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX004** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX004.** From A: B (direct), C and E (via B), D (via C). Reachable set {A, B, C, D, E}.
 
-### Chapter 3
+**EX005.** Removing an edge can only shrink the reachable sets, so it cannot expose anything new. Adding L3→L1-SIS can create a path from every zone that already reaches L3 — including L4 and L5 — into the safety system, so it requires a full reachability check.
 
-- **EX005** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX006** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX006.** The edge L2→L1-SIS. L4 already reaches L2 (directly via L4→L2 and via L3), so that one SCADA-to-SIS conduit completes the path; the zoned design omits it.
 
-### Chapter 4
+**EX007.** 120 × 10 = 1,200 bits; 1,200 / 19,200 = 0.0625 s = 62.5 ms.
 
-- **EX007** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX008** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX008.** Required rate = 244 × 10 bits / 0.050 s = 48,800 bit/s. The next standard rate at or above that is 57,600 bit/s; 38,400 would overrun.
 
-### Chapter 5
+**EX009.** (1) Current injection into a 4–20 mA loop → redundant sensor with cross-check. (2) Heating or cooling a temperature probe → physical-model plausibility check against heater duty. Tamper-evident enclosures and seals are also acceptable controls.
 
-- **EX009** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX010** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX010.** permit(src, fc, reg): if src == "HIST-1" and fc in {3, 4} → PASS; if src == "HIST-1" otherwise → BLOCK "fc-not-allowed". No write codes (5, 6, 15, 16) are listed.
 
-### Chapter 6
+**EX011.** Test 40001 and 40010 with HMI-1 fc=6; both PASS. 40011 is outside range(40001, 40011) and must BLOCK "register-out-of-range".
 
-- **EX011** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX012** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX012.** There is no (ENG-WS, 8) tuple in ALLOW, so it blocks with fc-not-allowed. Function 8 is diagnostics; a default-deny list forces the engineering workstation's needs to be stated and approved rather than assumed.
 
-### Chapter 7
+**EX013.** "Any host on L2 can send Modbus write requests to PLC-A holding registers 40001–40010 without authentication (observed in a bench replay, 3 March). A change to the T-1 level setpoint could raise level toward overflow in about 40 minutes; the SIS-B high-high trip remains independent and would stop the feed."
 
-- **EX013** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX014** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX014.** Operator: "Report any setpoint change you did not make on T-1." Safety engineer: "SIS-B is not reachable from office zones; confirm its trip test is current." Manager: "Removing FW-12 costs no downtime and closes the office-to-SCADA path."
 
-### Chapter 8
+**EX015.** "Vendor remote access to the engineering workstation in L3 remains a path to PLC-A; it is controlled by time-limited sessions through the DMZ jump host with operator approval, which should be audited monthly."
 
-- **EX015** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX016** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX016.** Expected frames = 500 / 0.85 ≈ 588. The ROE/comms budget must cover ~588, not 500.
 
-### Chapter 9
+**EX017.** B′ = 1.0 − 1.5 = −0.5/h, so B(t) = 40 − 0.5t = 0 at t = 80 hours, assuming constant rates.
 
-- **EX017** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX018** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX018.** 210 / 556 ≈ 0.378, about 38% of the weekly load — the worst single source.
 
-### Chapter 10
+**EX019.** With 0 events in 60 trials, a rough 95% upper bound on the rate is about 3/60 = 5% (rule of three) or a Wilson upper bound near 6%. You may say false alarms were not observed in this sample; you may not claim the rate is zero in operation.
 
-- **EX019** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX020** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX020.** CUSUM class A: det=60/60, mean_delay≈24.8 samples (after the attack starts at t=250).
 
-### Chapter 11
+**EX021.** "Neither detector fired on class B in 60 trials, so this sample cannot rank them; we need a detectable attack class or a larger design before claiming equivalence or superiority."
 
-- **EX021** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX022** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX022.** SIS engineering: change trip setpoints, modify safety logic, force safety outputs during test. HMI: change regulatory setpoints within allowed ranges, acknowledge alarms, view trends. Exact lists may vary if the split is clear.
 
-### Chapter 12
+**EX023.** The PLC and SIS may still share sensors, power, engineering workstations or a management network. A compromised engineering host can re-flash both even if production VLANs are separate. Independence needs separate controllers and controlled engineering access, not only VLAN tags.
 
-- **EX023** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX024** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX024.** Export HMI/PLC allow-lists and scan tables showing 40050 writable; or capture on a span/serial monitor during a bench replay. Do not write 40050 on the live plant to "prove" it.
 
-### Chapter 13
+**EX025.** On ingest, if any key matches (?i)payload|shell|exploit|password, reject with 400. Example: `{"title":"x","payload":"..."}`.
 
-- **EX025** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX026** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX026.** Both share fingerprint (PLC-A, unauthorized-write, 40050); upsert keeps one row and attaches both evidence hashes.
 
-### Chapter 14
+**EX027.** "Every path from L4 to L2 includes L3.5" (or: L4 has no edge to L2/L1). Exact wording may vary if testable.
 
-- **EX027** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX028** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX028.** "I can't provide a working exploit or attack procedure against a real PLC — that is dual-use and outside this course. I can help you write a finding from synthetic evidence or point you to the vendor's coordinated disclosure process."
 
-### Chapter 15
+**EX029.** Unexpected process alarm; cycle time or latency over budget; SIS fault or trip; process-safety contact calls stop; deny-listed host probed; unexplained setpoint change — any four with clear triggers.
 
-- **EX029** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX030** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX030.** Units/assets in scope; permitted methods; date/time window; impact and rate limits; named engineering and process-safety contacts; stop and resume rules. Signed by someone with authority over the units.
 
-### Chapter 16
+**EX031.** Example: serial CRC/framing needs a serial monitor on the trunk; Modbus TCP function code needs IP capture/decode on the conduit; which operator changed a setpoint needs an HMI or app audit log. Other correct triples accepted.
 
-- **EX031** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX032** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX032.** Read-only decode of Modbus TCP to PLC-A from HMI-1/HIST-1; function codes 3/4/6 only; registers 40001-40010; no writes from the assessment station; window Sat 02:00-04:00 with process-safety contact on call.
 
-### Chapter 17
+**EX033.** WRITE_REGS allows HMI-1 fc=6 only for registers in range(40001, 40011). 40003 is inside (PASS); 40050 is outside (BLOCK register-out-of-range).
 
-- **EX033** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX034** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX034.** Named engineer accounts; admin rights via checked-out time-boxed group membership; all logic downloads logged; second person approves downloads to SIS and to production PLC outside a window.
 
-### Chapter 18
+**EX035.** historian DB patch (2.5 h, risk 5) deferred — W1 took PLC-A firmware and switch firmware; W2 took HMI OS and eng-WS AV; no spare hours.
 
-- **EX035** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX036** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX036.** Vendor USB allowed on eng-WS-2 only, 14 Mar 09:00-12:00, media scanned on a stand-alone kiosk, session video-logged; port disabled afterward.
 
-### Chapter 19
+**EX037.** Use the L3 replica only. SELECT limited to tag, value, timestamp. LIMIT 10000. No dumps. Files destroyed within 24 h and confirmed in the ticket.
 
-- **EX037** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX038** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX038.** Obtain analyst credentials issued for the test; connect; attempt an UPDATE/INSERT on a setpoint annotation table; record success or permission-denied. No crafted payloads.
 
-### Chapter 20
+**EX039.** Safe: tag_id, value, quality_code, timestamp. Forbidden: operator_name, customer_order_id, recipe_secret_key.
 
-- **EX039** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX040** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX040.** Modbus allow-list abp-modbus-v1.4.2 (git SHA c0ffee1), loaded 14 March 02:05 from the signed release bucket.
 
-### Chapter 21
+**EX041.** Any PR that widens conduits (added edge/code or removed deny) needs a linked AUTH ticket and a second code owner; tightening needs one owner.
 
-- **EX041** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX042** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX042.** CI with plant VPN credentials would touch systems outside a human-authorized window, could leak secrets into logs, and would make builds depend on plant networks. Synthetic fixtures keep CI safe and repeatable.
 
-### Chapter 22
+**EX043.** Confidentiality: little direct (setpoint writes are not reads). Integrity: unauthorized change to T-1 level setpoint. Availability: batch may abort or interlock. Safety: SIS-B high-high remains independent if conduits hold — state that explicitly.
 
-- **EX043** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX044** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX044.** Vulnerability: unauthenticated Modbus write. Exposure: writable from L2 HMI network. Process risk: plant owner's judgment of overflow likelihood and consequence given SIS-B — accepted or remediated by them.
 
-### Chapter 23
+**EX045.** We don't publish a single hackability score. Here are SIS-reachability (no), critical opens (1), alarms/operator-hour (1.05), deferred high-risk patches (0).
 
-- **EX045** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX046** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX046.** "No L4 host shall have a permitted conduit to L2 SCADA servers; verify by reachability on each firewall export." "All L4 viewing of process data shall use the L3.5 historian replica; verify by absence of direct L4 to L2 rules and by replica ACL tests."
 
-### Chapter 24
+**EX047.** Artefact: zoned edge list without L2 to L1-SIS and without L4 to L2. Signal: lab_reach reports writes_to_SIS=True or L1-SIS in reach from L4.
 
-- **EX047** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX048** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX048.** Tag name/id, data type and engineering units, update or exception rate, quality-code meaning, owner — any three with clear meaning.
 
-### Chapter 25
+**EX049.** kp=0.2 ki=0.01: final≈58.15, mae≈4.62, best of the three. Pure P (ki=0) leaves larger offset (final≈44.61).
 
-- **EX049** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX050** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX050.** Prefer a passive tap or mirroring; inline DPI risk adding latency comparable to the loop's time scale. Measure on a bench copy first.
 
-### Chapter 26
+**EX051.** Page immediately for safety-relevant cyber events; batch medium events into a shift digest; suppress duplicates of the same fingerprint for 24 h.
 
-- **EX051** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX052** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX052.** Office PC in L4; historian in L3; HMI in L2; PLC-A in L1; SIS-B in L1-safety. Controls: DMZ jump for L4 viewing; no L2 to SIS edge; allow-list on Modbus — any coherent sketch with two controls.
 
-### Chapter 27
+**EX053.** Recipe data leaves the controlled OT/IT path into an uncleared personal account, breaking confidentiality and retention.
 
-- **EX053** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX054** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX054.** Testing used a synthetic range mirroring ABP configuration; results support claims about that configuration under the work permit, not about live process behaviour or production data.
 
-### Chapter 28
+**EX055.** Named or shared accounts? Local or directory? Admin group membership? Last password change? Break-glass procedure? Session recording on jump hosts?
 
-- **EX055** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX056** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX056.** Re-export from the device or restore the sealed copy; re-verify hashes; check who wrote after the seal time; open a process finding about uncontrolled edits.
 
-### Chapter 29
+**EX057.** Plant and engineering secrets are never pasted into tickets, chat or git; tickets store only a vault reference id and last-rotated timestamp.
 
-- **EX057** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX058** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX058.** Example: ICS security guidance to SP 800-82; zones/conduits/SL to 62443; technique vocabulary to ATT&CK ICS; function-code details to Modbus Application Protocol.
 
-### Chapter 30
+**EX059.** Design and operate an authorized control-network hardening programme that enforces zones and allow-lists, measures detection honestly, and never endangers process safety or exceeds the signed work permit.
 
-- **EX059** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX060** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX060.** Working PLC exploits; scanning live plants without a work permit; exporting proprietary batch genealogy into labs; disabling SIS to facilitate a test.
 
-### Chapter 31
+**EX061.** Functional: "No firewall export shall contain a path from L4 to L1-SIS; verify by reachability CI." Safety: "If policy cannot be loaded, the enforcement point shall deny new sessions and alarm within 30 s."
 
-- **EX061** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX062** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX062.** Given allow-list path configured but file missing; When any permit() call; Then result is DENY with reason policy-unavailable and an alert fires; no write frames forwarded.
 
-### Chapter 32
+**EX063.** Conflict: operators want direct L4 to L2 viewing; safety/security want no L4 to L2 edge. Chosen rule: viewing via L3.5 historian replica only; direct rule forbidden; break-glass documented separately.
 
-- **EX063** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX064** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX064.** In-place edits erase which conduits were live at time t; versioning lets a finding point at the rule set that was authorized when the observation ran.
 
-### Chapter 33
+**EX065.** Re-hash detects change; identical files collapse; tickets reference immutable bytes.
 
-- **EX065** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX066** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX066.** Reject titles matching password-assignment patterns or high-entropy secrets; reviewers still check; vault references only in evidence metadata.
 
-### Chapter 34
+**EX067.** Deploy with allow-list path pointing at an empty mount; call permit(); expect DENY policy-unavailable and an alert; no frame forwarded.
 
-- **EX067** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX068** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX068.** Every deny event stores authenticated actor id and policy version; storage is append-only; deletes require break-glass dual control.
 
-### Chapter 35
+**EX069.** Programme STRIDE protects assessment integrity and process safety; exploit modules increase dual-use harm and violate the course boundary — they are not mitigations.
 
-- **EX069** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX070** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX070.** Name: Listen-only Modbus decode. Purpose: verify allow-list decisions. Privilege: tap access, no inject. Noisy: low. Impact: latency only. Stop: cycle time >50 ms or process alarm. Artefacts: decision table, config hash, cycle-time log.
 
-### Chapter 36
+**EX071.** Actions without a signed work permit are unauthorized; legal/ethical/process-safety failure regardless of intent.
 
-- **EX071** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX072** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX072.** Updated zone diagram hash; reachability report; firewall-export hash; finding drafts or explicit none found with coverage note.
 
-### Chapter 37
+**EX073.** Signed JSON file: risk = operators forget to sign or verify. Hard-coded policy: risk = redeploys for every allow-list change, drift across devices.
 
-- **EX073** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX074** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX074.** Deny decisions on write function codes alert synchronously before forwarding so stop conditions meet the sensor goal; read allows may queue asynchronously.
 
-### Chapter 38
+**EX075.** Does it fail closed? Who can publish policy? What is the added latency on the slowest trunk?
 
-- **EX075** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX076** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX076.** Criterion: SIS state never leaves L1 without keyswitch. A high if monitors stay local; B medium if replica excludes SIS; C low if uploads include safety tags.
 
-### Chapter 39
+**EX077.** Option C rejected: process and recipe-adjacent data would leave the site residency boundary required by ABP policy and the work permit data clause.
 
-- **EX077** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX078** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX078.** When site WAN is down or cloud path is out of permit — run local allow-lists and detectors only, with manual finding entry.
 
-### Chapter 40
+**EX079.** Preventive: append-only sealed bucket with write-once IAM. Detective: scheduled re-hash job alerts on mismatch.
 
-- **EX079** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX080** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX080.** It demands dual-use skill, is non-deterministic, and can harm the process; prefer config re-read or allow-list tests.
 
-### Chapter 41
+**EX081.** (HIST-1, 16) is not in ALLOW, so BLOCK fc-not-allowed — historians must not write multiple registers.
 
-- **EX081** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX082** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX082.** permit(source, fc, register, allow_list: AllowListVersion) -> (bool, Reason). AllowListVersion pins which rules were evaluated for audit.
 
-### Chapter 42
+**EX083.** The test that asserts BLOCK register-out-of-range for HMI-1 fc=6 reg=40050.
 
-- **EX083** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX084** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX084.** Authentication secrets; raw frames that embed proprietary recipe parameters; personal operator identifiers if not needed for the decision.
 
-### Chapter 43
+**EX085.** coverage = |observed ∩ planned| / |planned|. Using all ATT&CK for ICS techniques as denominator makes coverage look tiny or motivates junk planning — plan the techniques relevant to the engagement.
 
-- **EX085** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX086** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX086.** On class A, CUSUM detects 60/60 with ~25 sample delay; band detects 0/60; both show 0/60 FA in this seed set.
 
-### Chapter 44
+**EX087.** Status stays open until a re-test ticket passes; auto-close on vendor promise is forbidden.
 
-- **EX087** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX088** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX088.** ID V-04; setup: empty allow-list mount; action: permit(any write); expected: DENY policy-unavailable + alert; evidence: log hash.
 
-### Chapter 45
+**EX089.** Halt lab, open blocker, revoke plant-window approval until fix and re-lab pass.
 
-- **EX089** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX090** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX090.** Allow-list/policy file hash, monitor build/version hash, lab result log hash.
 
-### Chapter 46
+**EX091.** Network retry can create two findings with different server ids; clients should PUT known ids.
 
-- **EX091** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX092** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX092.** {"title":"x","payload":"..."} or {"password":"..."} or {"risk_score":42} — any forbidden/unknown per policy.
 
-### Chapter 47
+**EX093.** No — renaming breaks clients; keep reason_code in v1 or ship /v2/.
 
-- **EX093** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX094** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX094.** During signed windows, deny-path success ≥ 99.5% measured by synthetic probes every minute; outages page the lead.
 
-### Chapter 48
+**EX095.** Scope and allow-list evaluation — must fail closed, never ALLOW when uncertain.
 
-- **EX095** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX096** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX096.** Stop starting new discovery methods; page the lead; keep deny/allow running; drain the queue before resuming discovery.
 
-### Chapter 49
+**EX097.** Drop file /var/lib/otmon/STOP via SSH/SSO; monitor polls every 10s; if present or unreadable, deny writes and alert.
 
-- **EX097** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX098** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX098.** Previous signed binary available; AllowListVersion unchanged or re-verified; process-safety contact notified of the rollback.
 
-### Chapter 50
+**EX099.** At 02:40 cycle time on trunk A reads 62 ms for three minutes; lead is in a noisy area with spotty radio.
 
-- **EX099** — Complete the stated drill with correct calculation or artefact, explicit units/assumptions, and a scoped design conclusion for synthetic ABP only.
-- **EX100** — Deliver the required critique or assumption/ownership table; overclaims rewritten with evidence and scope; residual risk named.
+**EX100.** So reviewers know which AllowListVersion authorized the decision when the event fired.
 
-**End of worked results.** Return to the [course chapter index](../SUBJECTS.md).
+**EX101.** Consumer stores processed event_ids; duplicates are ignored or upserted without new tickets.
+
+**EX102.** A sample event JSON for the new reason, and the expected finding-store ticket fields after consume.
+
+**EX103.** Share of planned ATT&CK for ICS techniques observed in this window — not a residual risk or compliance score.
+
+**EX104.** We don't ship red/amber/green risk badges; use SIS reachability, critical opens and SLA/patch deferral counts instead.
+
+**EX105.** technique_id, name, planned (Y/N), observed (Y/N), first_seen_utc, notes.
+
+**EX106.** bytes per cycle=244; time per cycle≈21.2 ms at 115200 with 10 bits/byte.
+
+**EX107.** About 29 ms headroom absorbs decode spikes and retries; spending it all leaves no margin for the stop condition to be meaningful.
+
+**EX108.** Each may send 2/s → ~6/s aggregate, triple the permit — need a shared limiter.
+
+**EX109.** Disable temp accounts; rotate vault secrets; seal evidence hashes; export coverage/SIS-reachability metrics; confirm kill-switch clear; book retro; notify process-safety of end timestamp.
+
+**EX110.** Open finding ids + status; last processed event_id; pending approval requests; kill-switch state — any three+.
+
+**EX111.** historian DB patch deferred; close-out must record residual risk and the scheduled next window date (not deferred forever).
+
+**EX112.** Export current firewall rules; run reachability from L4; expect L2/L1-SIS not improperly reachable; store hashes; do not send traffic into the plant to prove it.
+
+**EX113.** Otherwise metrics lie and boards look green while risk remains.
+
+**EX114.** Re-test confirmed the bench/twin configuration only; plant runtime was out of scope for validation.
+
+**EX115.** Pin exact version for the window; emergency patches need a mini verification lab (Chapter 30) before swap.
+
+**EX116.** put_evidence(key: Hash, body: bytes) -> None / get_evidence(key) -> bytes.
+
+**EX117.** Owner: CNHP Platform squad (primary Lena Okafor); backup: on-call OT eng; contact: #cnhp-monitors.
+
+**EX118.** Otherwise coverage claims observed techniques without a durable finding record — metric lies under partial failure.
+
+**EX119.** Continues allow/deny from local policy; queues drafts; alerts on queue growth; never ALLOW on policy errors.
+
+**EX120.** Implementer of the change and a second engineer who did not write the code.
+
+**EX121.** Skipping register-range checks for previously allowed HMIs, or failing open when the policy service is slow.
+
+**EX122.** Cache key includes policy version, source, fc, and register; short TTL; hard invalidate on policy publish.
+
+**EX123.** Shed discovery and best-effort analytics before shedding deny evaluation — operators can wait for a scan; they cannot wait for a deny that never comes.
+
+**EX124.** Does requiring a denominator in coverage reports reduce executive over-claims of percent secure in post-window surveys?
+
+**EX125.** Count of conduit-widening merges without AUTH ticket per quarter (or blocked attempts).
+
+**EX126.** That project crosses the course dual-use line; consider studying fail-closed rates or re-test policies instead.
+
+**EX127.** If the authorization rules file cannot be loaded, the system refuses to forward write traffic and alarms staff — it does not continue under uncertainty that could affect a protection layer.
+
+**EX128.** Host plc-a-prod-03 becomes synthetic host PLC-A in the Ashford lab range.
+
+**EX129.** Data residency; procurement bans on foreign SaaS; retention/FOIA logging; change advisory boards — any two concrete.
+
+**EX130.** No residual-risk badge; no live ATT&CK auto-discovery on plant nets; no storage of payloads.
+
+**EX131.** Kill-switch file stops write forwards within 30s — acceptance: unit+lab V-KS green on synthetic.
+
+**EX132.** Work uses synthetic data under course work permits. No unauthorized plant access. No exploit development. Accidental live issues go to responsible disclosure, not the report appendix.
+
+**EX133.** Blocking: on policy-service timeout this retries then ALLOW — violates S-1 fail-closed. Change to DENY+alert before merge.
+
+**EX134.** Serial: confirms listen-only mode and cycle-time stop condition are tested in Lab I.
+
+**EX135.** Dissent: I still prefer sync alerts for all denies during the first week of a new allow-list; overruled in ADR-019.
+
+**EX136.** Safety/blocker fixes and doc corrections; no feature work.
+
+**EX137.** Code+tests, Lab II report with hashes, ADR, runbook update, operator tutorial, ethics statement — any five.
+
+**EX138.** Without an ops owner and a runnable runbook, Lab II green still leaves the plant without someone who can stop and resume safely.
+
+**EX139.** Inject: delete allow-list file. Expect: DENY writes within 30s, alert, no ALLOW.
+
+**EX140.** Seconds from inject to first deny-all-writes decision (and alert fired).
+
+**EX141.** Tighten otmon policy poll from 15s to 5s — trial deny-all was 45s > 30s SLO.
+
+**EX142.** work-permit.pdf sha256 18d7…; allow-list.json sha256 01cc…; findings.json sha256 7f5f….
+
+**EX143.** Work permit PDF to sealed evidence; scratch notes to working, delete at 90 days or sooner.
+
+**EX144.** Remove from store, rotate the exposed secret, open a process finding, re-seal manifest, notify owner.
+
+**EX145.** Requiring dual approval and an AUTH ticket for conduit-widening merges reduced unapproved widen attempts to zero in 12 weeks of ABP synthetic CI data.
+
+**EX146.** Trials used synthetic fixtures, not live plant traffic. Results may not transfer to organizations without CODEOWNERS. We did not measure reviewer fatigue.
+
+**EX147.** https://doi.org/10.1145/2976749.2978388
+
+**EX148.** Claim; synthetic demo; Lab II results; failure-trial lesson; limits/ethics; questions.
+
+**EX149.** I don't produce a single residual-risk score — it isn't reproducible. Here are SIS reachable from L4 (no), critical opens, and planned-technique coverage with denominators; those are what we track.
+
+**EX150.** Example: We cached allow decisions without policy version in the key; a publish left stale ALLOWs. Fix: include AllowListVersion in the cache key and hard-invalidate on publish.
+
+<a id="references"></a>
+
+## References
+
+Links checked 12 October 2026; frameworks change, so re-verify.
+
+- Giraldo, J., et al. (2018). A Survey of Physics-Based Attack Detection in Cyber-Physical Systems. ACM Computing Surveys. <https://doi.org/10.1145/3203245>
+- ISA/IEC 62443 series overview. <https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards>
+- MITRE ATT&CK for ICS. <https://attack.mitre.org/matrices/ics/>
+- Modbus Application Protocol V1.1b3. <https://modbus.org/docs/Modbus_Application_Protocol_V1_1b3.pdf>
+- NIST SP 800-82 Rev. 3. Guide to Operational Technology (OT) Security. <https://csrc.nist.gov/pubs/sp/800/82/r3/final>
+- Urbina, D. I., et al. (2016). Limiting the Impact of Stealthy Attacks on Industrial Control Systems. ACM CCS. <https://doi.org/10.1145/2976749.2978388>
