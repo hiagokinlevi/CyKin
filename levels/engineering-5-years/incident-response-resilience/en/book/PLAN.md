@@ -2,7 +2,7 @@
 
 **One book for this course and language.** 50 curricular subjects are its chapters. Duration: 5 years; planned effort: approximately 4000 hours. Audience: Security systems designers. Entry knowledge: Calculus, computing, networks and systems engineering. Intended outcome: design, build and validate complex systems under constraints in incident response and cyber resilience.
 
-**Editorial state:** structured outline; manuscript not yet authored. English reference edition.
+**Editorial state:** draft manuscript exists; release A4 validation and review pending. English reference edition.
 
 [Home](../../../../../README.md) · [Course home](../../README.md) · [Edition](../README.md) · [Chapter index](../SUBJECTS.md) · [Course skill](../../skill/SKILL.md)
 
@@ -27,7 +27,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 ### Chapter 01 — Calculus I
 
-**Stage 1; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-01)
 
 **Teaching purpose and relevance:** Use rates and change to reason about time-dependent service and response behavior.
 
@@ -41,13 +41,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on the entry knowledge and prepares Chapter 02. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 01 of 50 (outline):** [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (plan) →](PLAN.md#ch-02)
+**Continue studying — chapter 01 of 50 (outline):** [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (draft) →](MANUSCRIPT.md#ch-02)
 
 <a id="ch-02"></a>
 
 ### Chapter 02 — Discrete mathematics
 
-**Stage 1; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-02)
 
 **Teaching purpose and relevance:** Represent response workflows and authorization constraints as checkable structures.
 
@@ -61,13 +61,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 01 and prepares Chapter 03. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 02 of 50 (outline):** [← Chapter 01 (plan)](PLAN.md#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (plan) →](PLAN.md#ch-03)
+**Continue studying — chapter 02 of 50 (outline):** [← Chapter 01 (draft)](MANUSCRIPT.md#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (draft) →](MANUSCRIPT.md#ch-03)
 
 <a id="ch-03"></a>
 
 ### Chapter 03 — Physics for computing
 
-**Stage 1; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-03)
 
 **Teaching purpose and relevance:** Connect physical resource limits to computing failures that affect monitoring and recovery.
 
@@ -81,13 +81,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 02 and prepares Chapter 04. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 03 of 50 (outline):** [← Chapter 02 (plan)](PLAN.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (plan) →](PLAN.md#ch-04)
+**Continue studying — chapter 03 of 50 (outline):** [← Chapter 02 (draft)](MANUSCRIPT.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (draft) →](MANUSCRIPT.md#ch-04)
 
 <a id="ch-04"></a>
 
 ### Chapter 04 — Programming I
 
-**Stage 1; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-04)
 
 **Teaching purpose and relevance:** Build small, inspectable programs that preserve input evidence and expose failures.
 
@@ -101,13 +101,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 03 and prepares Chapter 05. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 04 of 50 (outline):** [← Chapter 03 (plan)](PLAN.md#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 (plan) →](PLAN.md#ch-05)
+**Continue studying — chapter 04 of 50 (outline):** [← Chapter 03 (draft)](MANUSCRIPT.md#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 (draft) →](MANUSCRIPT.md#ch-05)
 
 <a id="ch-05"></a>
 
 ### Chapter 05 — Engineering communication
 
-**Stage 1; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-05)
 
 **Teaching purpose and relevance:** Document decisions so requirements, evidence and limitations can be reviewed across disciplines.
 
@@ -121,13 +121,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 04 and prepares Chapter 06. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 05 of 50 (outline):** [← Chapter 04 (plan)](PLAN.md#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 (plan) →](PLAN.md#ch-06)
+**Continue studying — chapter 05 of 50 (outline):** [← Chapter 04 (draft)](MANUSCRIPT.md#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 (draft) →](MANUSCRIPT.md#ch-06)
 
 <a id="ch-06"></a>
 
 ### Chapter 06 — Calculus II
 
-**Stage 2; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-06)
 
 **Teaching purpose and relevance:** Analyze accumulated workload and recovery trajectories rather than only instantaneous rates.
 
@@ -141,13 +141,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 05 and prepares Chapter 07. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 06 of 50 (outline):** [← Chapter 05 (plan)](PLAN.md#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 (plan) →](PLAN.md#ch-07)
+**Continue studying — chapter 06 of 50 (outline):** [← Chapter 05 (draft)](MANUSCRIPT.md#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 (draft) →](MANUSCRIPT.md#ch-07)
 
 <a id="ch-07"></a>
 
 ### Chapter 07 — Probability and statistics
 
-**Stage 2; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-07)
 
 **Teaching purpose and relevance:** Estimate detection and response performance with uncertainty and sampling limits.
 
@@ -161,13 +161,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 06 and prepares Chapter 08. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 07 of 50 (outline):** [← Chapter 06 (plan)](PLAN.md#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 (plan) →](PLAN.md#ch-08)
+**Continue studying — chapter 07 of 50 (outline):** [← Chapter 06 (draft)](MANUSCRIPT.md#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 (draft) →](MANUSCRIPT.md#ch-08)
 
 <a id="ch-08"></a>
 
 ### Chapter 08 — Computer architecture
 
-**Stage 2; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-08)
 
 **Teaching purpose and relevance:** Explain how hardware and isolation boundaries affect evidence acquisition and service recovery.
 
@@ -181,13 +181,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 07 and prepares Chapter 09. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 08 of 50 (outline):** [← Chapter 07 (plan)](PLAN.md#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 (plan) →](PLAN.md#ch-09)
+**Continue studying — chapter 08 of 50 (outline):** [← Chapter 07 (draft)](MANUSCRIPT.md#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 (draft) →](MANUSCRIPT.md#ch-09)
 
 <a id="ch-09"></a>
 
 ### Chapter 09 — Programming II
 
-**Stage 2; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-09)
 
 **Teaching purpose and relevance:** Design robust data-processing components that can be tested under error conditions.
 
@@ -201,13 +201,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 08 and prepares Chapter 10. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 09 of 50 (outline):** [← Chapter 08 (plan)](PLAN.md#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 (plan) →](PLAN.md#ch-10)
+**Continue studying — chapter 09 of 50 (outline):** [← Chapter 08 (draft)](MANUSCRIPT.md#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 (draft) →](MANUSCRIPT.md#ch-10)
 
 <a id="ch-10"></a>
 
 ### Chapter 10 — Engineering ethics and safety
 
-**Stage 2; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-10)
 
 **Teaching purpose and relevance:** Embed authorization, privacy and service safety into engineering decisions and tests.
 
@@ -221,13 +221,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 09 and prepares Chapter 11. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 10 of 50 (outline):** [← Chapter 09 (plan)](PLAN.md#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 (plan) →](PLAN.md#ch-11)
+**Continue studying — chapter 10 of 50 (outline):** [← Chapter 09 (draft)](MANUSCRIPT.md#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 (draft) →](MANUSCRIPT.md#ch-11)
 
 <a id="ch-11"></a>
 
 ### Chapter 11 — Networks and protocols
 
-**Stage 3; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-11)
 
 **Teaching purpose and relevance:** Trace communication paths and protocol assumptions relevant to evidence and containment.
 
@@ -241,13 +241,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 10 and prepares Chapter 12. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 11 of 50 (outline):** [← Chapter 10 (plan)](PLAN.md#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 (plan) →](PLAN.md#ch-12)
+**Continue studying — chapter 11 of 50 (outline):** [← Chapter 10 (draft)](MANUSCRIPT.md#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 (draft) →](MANUSCRIPT.md#ch-12)
 
 <a id="ch-12"></a>
 
 ### Chapter 12 — Operating systems
 
-**Stage 3; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-12)
 
 **Teaching purpose and relevance:** Model host state, permissions and logs before designing collection or response agents.
 
@@ -261,13 +261,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 11 and prepares Chapter 13. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 12 of 50 (outline):** [← Chapter 11 (plan)](PLAN.md#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 (plan) →](PLAN.md#ch-13)
+**Continue studying — chapter 12 of 50 (outline):** [← Chapter 11 (draft)](MANUSCRIPT.md#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 (draft) →](MANUSCRIPT.md#ch-13)
 
 <a id="ch-13"></a>
 
 ### Chapter 13 — Data systems
 
-**Stage 3; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-13)
 
 **Teaching purpose and relevance:** Treat databases and storage as sources of evidence and as services needing integrity checks.
 
@@ -281,13 +281,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 12 and prepares Chapter 14. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 13 of 50 (outline):** [← Chapter 12 (plan)](PLAN.md#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 (plan) →](PLAN.md#ch-14)
+**Continue studying — chapter 13 of 50 (outline):** [← Chapter 12 (draft)](MANUSCRIPT.md#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 (draft) →](MANUSCRIPT.md#ch-14)
 
 <a id="ch-14"></a>
 
 ### Chapter 14 — Software engineering
 
-**Stage 3; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-14)
 
 **Teaching purpose and relevance:** Apply requirements and tests to response tooling so changes do not erase evidence or bypass controls.
 
@@ -301,13 +301,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 13 and prepares Chapter 15. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 14 of 50 (outline):** [← Chapter 13 (plan)](PLAN.md#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 (plan) →](PLAN.md#ch-15)
+**Continue studying — chapter 14 of 50 (outline):** [← Chapter 13 (draft)](MANUSCRIPT.md#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 (draft) →](MANUSCRIPT.md#ch-15)
 
 <a id="ch-15"></a>
 
 ### Chapter 15 — Security fundamentals
 
-**Stage 3; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-15)
 
 **Teaching purpose and relevance:** Translate threat models and control properties into engineering claims and verification tasks.
 
@@ -321,13 +321,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 14 and prepares Chapter 16. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 15 of 50 (outline):** [← Chapter 14 (plan)](PLAN.md#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 (plan) →](PLAN.md#ch-16)
+**Continue studying — chapter 15 of 50 (outline):** [← Chapter 14 (draft)](MANUSCRIPT.md#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 (draft) →](MANUSCRIPT.md#ch-16)
 
 <a id="ch-16"></a>
 
 ### Chapter 16 — Systems engineering
 
-**Stage 4; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-16)
 
 **Teaching purpose and relevance:** Use lifecycle and dependency methods to manage an incident service as a complex system.
 
@@ -341,13 +341,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 15 and prepares Chapter 17. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 16 of 50 (outline):** [← Chapter 15 (plan)](PLAN.md#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 (plan) →](PLAN.md#ch-17)
+**Continue studying — chapter 16 of 50 (outline):** [← Chapter 15 (draft)](MANUSCRIPT.md#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 (draft) →](MANUSCRIPT.md#ch-17)
 
 <a id="ch-17"></a>
 
 ### Chapter 17 — Control and feedback basics
 
-**Stage 4; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-17)
 
 **Teaching purpose and relevance:** Understand when a response control improves the system and when feedback causes instability or blind spots.
 
@@ -361,13 +361,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 16 and prepares Chapter 18. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 17 of 50 (outline):** [← Chapter 16 (plan)](PLAN.md#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 (plan) →](PLAN.md#ch-18)
+**Continue studying — chapter 17 of 50 (outline):** [← Chapter 16 (draft)](MANUSCRIPT.md#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 (draft) →](MANUSCRIPT.md#ch-18)
 
 <a id="ch-18"></a>
 
 ### Chapter 18 — Security architecture
 
-**Stage 4; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-18)
 
 **Teaching purpose and relevance:** Compare trust boundaries and control placement for an evidence-preserving response system.
 
@@ -381,13 +381,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 17 and prepares Chapter 19. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 18 of 50 (outline):** [← Chapter 17 (plan)](PLAN.md#ch-17) · [Course chapter index](../SUBJECTS.md) · [Chapter 19 (plan) →](PLAN.md#ch-19)
+**Continue studying — chapter 18 of 50 (outline):** [← Chapter 17 (draft)](MANUSCRIPT.md#ch-17) · [Course chapter index](../SUBJECTS.md) · [Chapter 19 (draft) →](MANUSCRIPT.md#ch-19)
 
 <a id="ch-19"></a>
 
 ### Chapter 19 — Identity and cryptography
 
-**Stage 4; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-19)
 
 **Teaching purpose and relevance:** Use identity and cryptographic properties to support authentic access and evidence integrity.
 
@@ -401,13 +401,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 18 and prepares Chapter 20. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 19 of 50 (outline):** [← Chapter 18 (plan)](PLAN.md#ch-18) · [Course chapter index](../SUBJECTS.md) · [Chapter 20 (plan) →](PLAN.md#ch-20)
+**Continue studying — chapter 19 of 50 (outline):** [← Chapter 18 (draft)](MANUSCRIPT.md#ch-18) · [Course chapter index](../SUBJECTS.md) · [Chapter 20 (draft) →](MANUSCRIPT.md#ch-20)
 
 <a id="ch-20"></a>
 
 ### Chapter 20 — Incident response engineering context and constraints
 
-**Stage 4; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-20)
 
 **Teaching purpose and relevance:** Frame incident response as a system design problem bounded by authority, time, evidence and service continuity.
 
@@ -421,13 +421,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 19 and prepares Chapter 21. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 20 of 50 (outline):** [← Chapter 19 (plan)](PLAN.md#ch-19) · [Course chapter index](../SUBJECTS.md) · [Chapter 21 (plan) →](PLAN.md#ch-21)
+**Continue studying — chapter 20 of 50 (outline):** [← Chapter 19 (draft)](MANUSCRIPT.md#ch-19) · [Course chapter index](../SUBJECTS.md) · [Chapter 21 (draft) →](MANUSCRIPT.md#ch-21)
 
 <a id="ch-21"></a>
 
 ### Chapter 21 — Response system requirements and service objectives
 
-**Stage 5; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 5; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-21)
 
 **Teaching purpose and relevance:** Convert broad response aims into measurable properties and acceptance criteria.
 
@@ -441,13 +441,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 20 and prepares Chapter 22. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 21 of 50 (outline):** [← Chapter 20 (plan)](PLAN.md#ch-20) · [Course chapter index](../SUBJECTS.md) · [Chapter 22 (plan) →](PLAN.md#ch-22)
+**Continue studying — chapter 21 of 50 (outline):** [← Chapter 20 (draft)](MANUSCRIPT.md#ch-20) · [Course chapter index](../SUBJECTS.md) · [Chapter 22 (draft) →](MANUSCRIPT.md#ch-22)
 
 <a id="ch-22"></a>
 
 ### Chapter 22 — Incident data, telemetry and provenance models
 
-**Stage 5; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 5; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-22)
 
 **Teaching purpose and relevance:** Design a data model that preserves origin and transformation history across response tools.
 
@@ -461,13 +461,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 21 and prepares Chapter 23. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 22 of 50 (outline):** [← Chapter 21 (plan)](PLAN.md#ch-21) · [Course chapter index](../SUBJECTS.md) · [Chapter 23 (plan) →](PLAN.md#ch-23)
+**Continue studying — chapter 22 of 50 (outline):** [← Chapter 21 (draft)](MANUSCRIPT.md#ch-21) · [Course chapter index](../SUBJECTS.md) · [Chapter 23 (draft) →](MANUSCRIPT.md#ch-23)
 
 <a id="ch-23"></a>
 
 ### Chapter 23 — Threat and failure analysis for response systems
 
-**Stage 5; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 5; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-23)
 
 **Teaching purpose and relevance:** Analyze both adversarial abuse and ordinary failure of response infrastructure.
 
@@ -481,13 +481,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 22 and prepares Chapter 24. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 23 of 50 (outline):** [← Chapter 22 (plan)](PLAN.md#ch-22) · [Course chapter index](../SUBJECTS.md) · [Chapter 24 (plan) →](PLAN.md#ch-24)
+**Continue studying — chapter 23 of 50 (outline):** [← Chapter 22 (draft)](MANUSCRIPT.md#ch-22) · [Course chapter index](../SUBJECTS.md) · [Chapter 24 (draft) →](MANUSCRIPT.md#ch-24)
 
 <a id="ch-24"></a>
 
 ### Chapter 24 — Evidence pipeline and decision-support methods
 
-**Stage 5; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 5; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-24)
 
 **Teaching purpose and relevance:** Design an evidence path that makes triage recommendations inspectable and reversible.
 
@@ -501,13 +501,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 23 and prepares Chapter 25. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 24 of 50 (outline):** [← Chapter 23 (plan)](PLAN.md#ch-23) · [Course chapter index](../SUBJECTS.md) · [Chapter 25 (plan) →](PLAN.md#ch-25)
+**Continue studying — chapter 24 of 50 (outline):** [← Chapter 23 (draft)](MANUSCRIPT.md#ch-23) · [Course chapter index](../SUBJECTS.md) · [Chapter 25 (draft) →](MANUSCRIPT.md#ch-25)
 
 <a id="ch-25"></a>
 
 ### Chapter 25 — Design studio: case intake and authorization model
 
-**Stage 5; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 5; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-25)
 
 **Teaching purpose and relevance:** Integrate roles, case states and permission gates into a reviewable design artifact.
 
@@ -521,13 +521,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 24 and prepares Chapter 26. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 25 of 50 (outline):** [← Chapter 24 (plan)](PLAN.md#ch-24) · [Course chapter index](../SUBJECTS.md) · [Chapter 26 (plan) →](PLAN.md#ch-26)
+**Continue studying — chapter 25 of 50 (outline):** [← Chapter 24 (draft)](MANUSCRIPT.md#ch-24) · [Course chapter index](../SUBJECTS.md) · [Chapter 26 (draft) →](MANUSCRIPT.md#ch-26)
 
 <a id="ch-26"></a>
 
 ### Chapter 26 — Alternative containment and recovery architectures
 
-**Stage 6; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 6; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-26)
 
 **Teaching purpose and relevance:** Compare architectures that trade intervention speed against availability, evidence and rollback.
 
@@ -541,13 +541,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 25 and prepares Chapter 27. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 26 of 50 (outline):** [← Chapter 25 (plan)](PLAN.md#ch-25) · [Course chapter index](../SUBJECTS.md) · [Chapter 27 (plan) →](PLAN.md#ch-27)
+**Continue studying — chapter 26 of 50 (outline):** [← Chapter 25 (draft)](MANUSCRIPT.md#ch-25) · [Course chapter index](../SUBJECTS.md) · [Chapter 27 (draft) →](MANUSCRIPT.md#ch-27)
 
 <a id="ch-27"></a>
 
 ### Chapter 27 — Control design for scoped intervention
 
-**Stage 6; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 6; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-27)
 
 **Teaching purpose and relevance:** Engineer containment controls that act only within authorization and expose their effects.
 
@@ -561,13 +561,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 26 and prepares Chapter 28. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 27 of 50 (outline):** [← Chapter 26 (plan)](PLAN.md#ch-26) · [Course chapter index](../SUBJECTS.md) · [Chapter 28 (plan) →](PLAN.md#ch-28)
+**Continue studying — chapter 27 of 50 (outline):** [← Chapter 26 (draft)](MANUSCRIPT.md#ch-26) · [Course chapter index](../SUBJECTS.md) · [Chapter 28 (draft) →](MANUSCRIPT.md#ch-28)
 
 <a id="ch-28"></a>
 
 ### Chapter 28 — Implementation of evidence capture services
 
-**Stage 6; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 6; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-28)
 
 **Teaching purpose and relevance:** Build a collection service that preserves source integrity and records every transformation.
 
@@ -581,13 +581,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 27 and prepares Chapter 29. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 28 of 50 (outline):** [← Chapter 27 (plan)](PLAN.md#ch-27) · [Course chapter index](../SUBJECTS.md) · [Chapter 29 (plan) →](PLAN.md#ch-29)
+**Continue studying — chapter 28 of 50 (outline):** [← Chapter 27 (draft)](MANUSCRIPT.md#ch-27) · [Course chapter index](../SUBJECTS.md) · [Chapter 29 (draft) →](MANUSCRIPT.md#ch-29)
 
 <a id="ch-29"></a>
 
 ### Chapter 29 — Measure triage accuracy and response latency
 
-**Stage 6; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 6; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-29)
 
 **Teaching purpose and relevance:** Evaluate whether an engineered workflow improves both decision quality and timeliness.
 
@@ -601,13 +601,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 28 and prepares Chapter 30. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 29 of 50 (outline):** [← Chapter 28 (plan)](PLAN.md#ch-28) · [Course chapter index](../SUBJECTS.md) · [Chapter 30 (plan) →](PLAN.md#ch-30)
+**Continue studying — chapter 29 of 50 (outline):** [← Chapter 28 (draft)](MANUSCRIPT.md#ch-28) · [Course chapter index](../SUBJECTS.md) · [Chapter 30 (draft) →](MANUSCRIPT.md#ch-30)
 
 <a id="ch-30"></a>
 
 ### Chapter 30 — Verification lab: evidence preservation invariants
 
-**Stage 6; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 6; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-30)
 
 **Teaching purpose and relevance:** Test properties that must hold even when inputs are malformed or services fail.
 
@@ -621,13 +621,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 29 and prepares Chapter 31. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 30 of 50 (outline):** [← Chapter 29 (plan)](PLAN.md#ch-29) · [Course chapter index](../SUBJECTS.md) · [Chapter 31 (plan) →](PLAN.md#ch-31)
+**Continue studying — chapter 30 of 50 (outline):** [← Chapter 29 (draft)](MANUSCRIPT.md#ch-29) · [Course chapter index](../SUBJECTS.md) · [Chapter 31 (draft) →](MANUSCRIPT.md#ch-31)
 
 <a id="ch-31"></a>
 
 ### Chapter 31 — Implement incident workflow orchestration
 
-**Stage 7; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 7; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-31)
 
 **Teaching purpose and relevance:** Coordinate tasks across teams without automating decisions outside delegated authority.
 
@@ -641,13 +641,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 30 and prepares Chapter 32. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 31 of 50 (outline):** [← Chapter 30 (plan)](PLAN.md#ch-30) · [Course chapter index](../SUBJECTS.md) · [Chapter 32 (plan) →](PLAN.md#ch-32)
+**Continue studying — chapter 31 of 50 (outline):** [← Chapter 30 (draft)](MANUSCRIPT.md#ch-30) · [Course chapter index](../SUBJECTS.md) · [Chapter 32 (draft) →](MANUSCRIPT.md#ch-32)
 
 <a id="ch-32"></a>
 
 ### Chapter 32 — Reliability engineering for response tooling
 
-**Stage 7; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 7; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-32)
 
 **Teaching purpose and relevance:** Design response tools to remain usable when dependencies fail during an incident.
 
@@ -661,13 +661,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 31 and prepares Chapter 33. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 32 of 50 (outline):** [← Chapter 31 (plan)](PLAN.md#ch-31) · [Course chapter index](../SUBJECTS.md) · [Chapter 33 (plan) →](PLAN.md#ch-33)
+**Continue studying — chapter 32 of 50 (outline):** [← Chapter 31 (draft)](MANUSCRIPT.md#ch-31) · [Course chapter index](../SUBJECTS.md) · [Chapter 33 (draft) →](MANUSCRIPT.md#ch-33)
 
 <a id="ch-33"></a>
 
 ### Chapter 33 — Safety and resilience under partial failure
 
-**Stage 7; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 7; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-33)
 
 **Teaching purpose and relevance:** Prevent a partial response-system failure from turning a controlled action into broader service harm.
 
@@ -681,13 +681,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 32 and prepares Chapter 34. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 33 of 50 (outline):** [← Chapter 32 (plan)](PLAN.md#ch-32) · [Course chapter index](../SUBJECTS.md) · [Chapter 34 (plan) →](PLAN.md#ch-34)
+**Continue studying — chapter 33 of 50 (outline):** [← Chapter 32 (draft)](MANUSCRIPT.md#ch-32) · [Course chapter index](../SUBJECTS.md) · [Chapter 34 (draft) →](MANUSCRIPT.md#ch-34)
 
 <a id="ch-34"></a>
 
 ### Chapter 34 — Integrate identity, endpoint and cloud response
 
-**Stage 7; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 7; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-34)
 
 **Teaching purpose and relevance:** Engineer interfaces that connect different control planes while respecting their own authorization and evidence rules.
 
@@ -701,13 +701,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 33 and prepares Chapter 35. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 34 of 50 (outline):** [← Chapter 33 (plan)](PLAN.md#ch-33) · [Course chapter index](../SUBJECTS.md) · [Chapter 35 (plan) →](PLAN.md#ch-35)
+**Continue studying — chapter 34 of 50 (outline):** [← Chapter 33 (draft)](MANUSCRIPT.md#ch-33) · [Course chapter index](../SUBJECTS.md) · [Chapter 35 (draft) →](MANUSCRIPT.md#ch-35)
 
 <a id="ch-35"></a>
 
 ### Chapter 35 — Design studio: coordinated recovery exercise
 
-**Stage 7; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 7; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-35)
 
 **Teaching purpose and relevance:** Design a recovery exercise whose success depends on service and evidence acceptance, not merely uptime.
 
@@ -721,13 +721,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 34 and prepares Chapter 36. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 35 of 50 (outline):** [← Chapter 34 (plan)](PLAN.md#ch-34) · [Course chapter index](../SUBJECTS.md) · [Chapter 36 (plan) →](PLAN.md#ch-36)
+**Continue studying — chapter 35 of 50 (outline):** [← Chapter 34 (draft)](MANUSCRIPT.md#ch-34) · [Course chapter index](../SUBJECTS.md) · [Chapter 36 (draft) →](MANUSCRIPT.md#ch-36)
 
 <a id="ch-36"></a>
 
 ### Chapter 36 — Performance and scale of event pipelines
 
-**Stage 8; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 8; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-36)
 
 **Teaching purpose and relevance:** Assess how throughput, delay and data loss affect response decisions at scale.
 
@@ -741,13 +741,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 35 and prepares Chapter 37. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 36 of 50 (outline):** [← Chapter 35 (plan)](PLAN.md#ch-35) · [Course chapter index](../SUBJECTS.md) · [Chapter 37 (plan) →](PLAN.md#ch-37)
+**Continue studying — chapter 36 of 50 (outline):** [← Chapter 35 (draft)](MANUSCRIPT.md#ch-35) · [Course chapter index](../SUBJECTS.md) · [Chapter 37 (draft) →](MANUSCRIPT.md#ch-37)
 
 <a id="ch-37"></a>
 
 ### Chapter 37 — Operating a response system with auditability
 
-**Stage 8; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 8; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-37)
 
 **Teaching purpose and relevance:** Translate a tested design into monitored operations with accountability for changes.
 
@@ -761,13 +761,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 36 and prepares Chapter 38. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 37 of 50 (outline):** [← Chapter 36 (plan)](PLAN.md#ch-36) · [Course chapter index](../SUBJECTS.md) · [Chapter 38 (plan) →](PLAN.md#ch-38)
+**Continue studying — chapter 37 of 50 (outline):** [← Chapter 36 (draft)](MANUSCRIPT.md#ch-36) · [Course chapter index](../SUBJECTS.md) · [Chapter 38 (draft) →](MANUSCRIPT.md#ch-38)
 
 <a id="ch-38"></a>
 
 ### Chapter 38 — Validate containment and restoration claims
 
-**Stage 8; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 8; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-38)
 
 **Teaching purpose and relevance:** Require measurable evidence that a response action achieved its intended security and service outcomes.
 
@@ -781,13 +781,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 37 and prepares Chapter 39. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 38 of 50 (outline):** [← Chapter 37 (plan)](PLAN.md#ch-37) · [Course chapter index](../SUBJECTS.md) · [Chapter 39 (plan) →](PLAN.md#ch-39)
+**Continue studying — chapter 38 of 50 (outline):** [← Chapter 37 (draft)](MANUSCRIPT.md#ch-37) · [Course chapter index](../SUBJECTS.md) · [Chapter 39 (draft) →](MANUSCRIPT.md#ch-39)
 
 <a id="ch-39"></a>
 
 ### Chapter 39 — Maintainability and change control for playbooks
 
-**Stage 8; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 8; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-39)
 
 **Teaching purpose and relevance:** Keep procedures accurate as tools, roles and dependencies change.
 
@@ -801,13 +801,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 38 and prepares Chapter 40. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 39 of 50 (outline):** [← Chapter 38 (plan)](PLAN.md#ch-38) · [Course chapter index](../SUBJECTS.md) · [Chapter 40 (plan) →](PLAN.md#ch-40)
+**Continue studying — chapter 39 of 50 (outline):** [← Chapter 38 (draft)](MANUSCRIPT.md#ch-38) · [Course chapter index](../SUBJECTS.md) · [Chapter 40 (draft) →](MANUSCRIPT.md#ch-40)
 
 <a id="ch-40"></a>
 
 ### Chapter 40 — Verification lab: failure injection and recovery
 
-**Stage 8; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 8; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-40)
 
 **Teaching purpose and relevance:** Demonstrate how engineered controls behave under planned faults without touching production.
 
@@ -821,13 +821,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 39 and prepares Chapter 41. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 40 of 50 (outline):** [← Chapter 39 (plan)](PLAN.md#ch-39) · [Course chapter index](../SUBJECTS.md) · [Chapter 41 (plan) →](PLAN.md#ch-41)
+**Continue studying — chapter 40 of 50 (outline):** [← Chapter 39 (draft)](MANUSCRIPT.md#ch-39) · [Course chapter index](../SUBJECTS.md) · [Chapter 41 (draft) →](MANUSCRIPT.md#ch-41)
 
 <a id="ch-41"></a>
 
 ### Chapter 41 — Optimize decisions with measured tradeoffs
 
-**Stage 9; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 9; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-41)
 
 **Teaching purpose and relevance:** Use explicit objectives and uncertainty rather than a single speed metric to choose response policies.
 
@@ -841,13 +841,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 40 and prepares Chapter 42. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 41 of 50 (outline):** [← Chapter 40 (plan)](PLAN.md#ch-40) · [Course chapter index](../SUBJECTS.md) · [Chapter 42 (plan) →](PLAN.md#ch-42)
+**Continue studying — chapter 41 of 50 (outline):** [← Chapter 40 (draft)](MANUSCRIPT.md#ch-40) · [Course chapter index](../SUBJECTS.md) · [Chapter 42 (draft) →](MANUSCRIPT.md#ch-42)
 
 <a id="ch-42"></a>
 
 ### Chapter 42 — Applied research on response-system limits
 
-**Stage 9; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 9; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-42)
 
 **Teaching purpose and relevance:** Investigate where the designed system stops supporting reliable conclusions or action.
 
@@ -861,13 +861,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 41 and prepares Chapter 43. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 42 of 50 (outline):** [← Chapter 41 (plan)](PLAN.md#ch-41) · [Course chapter index](../SUBJECTS.md) · [Chapter 43 (plan) →](PLAN.md#ch-43)
+**Continue studying — chapter 42 of 50 (outline):** [← Chapter 41 (draft)](MANUSCRIPT.md#ch-41) · [Course chapter index](../SUBJECTS.md) · [Chapter 43 (draft) →](MANUSCRIPT.md#ch-43)
 
 <a id="ch-43"></a>
 
 ### Chapter 43 — Industry or public-service response practicum
 
-**Stage 9; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 9; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-43)
 
 **Teaching purpose and relevance:** Apply engineering methods in an authorized setting with service owners and documented safeguards.
 
@@ -881,13 +881,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 42 and prepares Chapter 44. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 43 of 50 (outline):** [← Chapter 42 (plan)](PLAN.md#ch-42) · [Course chapter index](../SUBJECTS.md) · [Chapter 44 (plan) →](PLAN.md#ch-44)
+**Continue studying — chapter 43 of 50 (outline):** [← Chapter 42 (draft)](MANUSCRIPT.md#ch-42) · [Course chapter index](../SUBJECTS.md) · [Chapter 44 (draft) →](MANUSCRIPT.md#ch-44)
 
 <a id="ch-44"></a>
 
 ### Chapter 44 — Engineering capstone: design and build
 
-**Stage 9; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 9; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-44)
 
 **Teaching purpose and relevance:** Build a response system whose requirements, architecture, interfaces and tests are traceable.
 
@@ -901,13 +901,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 43 and prepares Chapter 45. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 44 of 50 (outline):** [← Chapter 43 (plan)](PLAN.md#ch-43) · [Course chapter index](../SUBJECTS.md) · [Chapter 45 (plan) →](PLAN.md#ch-45)
+**Continue studying — chapter 44 of 50 (outline):** [← Chapter 43 (draft)](MANUSCRIPT.md#ch-43) · [Course chapter index](../SUBJECTS.md) · [Chapter 45 (draft) →](MANUSCRIPT.md#ch-45)
 
 <a id="ch-45"></a>
 
 ### Chapter 45 — Independent review of security and safety claims
 
-**Stage 9; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 9; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-45)
 
 **Teaching purpose and relevance:** Invite critical challenge to the capstone before interpreting its trial as success.
 
@@ -921,13 +921,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 44 and prepares Chapter 46. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 45 of 50 (outline):** [← Chapter 44 (plan)](PLAN.md#ch-44) · [Course chapter index](../SUBJECTS.md) · [Chapter 46 (plan) →](PLAN.md#ch-46)
+**Continue studying — chapter 45 of 50 (outline):** [← Chapter 44 (draft)](MANUSCRIPT.md#ch-44) · [Course chapter index](../SUBJECTS.md) · [Chapter 46 (draft) →](MANUSCRIPT.md#ch-46)
 
 <a id="ch-46"></a>
 
 ### Chapter 46 — Engineering capstone: trial and iteration
 
-**Stage 10; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 10; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-46)
 
 **Teaching purpose and relevance:** Run the capstone under controlled scenarios and revise design based on measured failures.
 
@@ -941,13 +941,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 45 and prepares Chapter 47. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 46 of 50 (outline):** [← Chapter 45 (plan)](PLAN.md#ch-45) · [Course chapter index](../SUBJECTS.md) · [Chapter 47 (plan) →](PLAN.md#ch-47)
+**Continue studying — chapter 46 of 50 (outline):** [← Chapter 45 (draft)](MANUSCRIPT.md#ch-45) · [Course chapter index](../SUBJECTS.md) · [Chapter 47 (draft) →](MANUSCRIPT.md#ch-47)
 
 <a id="ch-47"></a>
 
 ### Chapter 47 — Failure and recovery trial with reproducible data
 
-**Stage 10; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 10; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-47)
 
 **Teaching purpose and relevance:** Validate resilience claims using a recorded fault and restoration sequence.
 
@@ -961,13 +961,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 46 and prepares Chapter 48. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 47 of 50 (outline):** [← Chapter 46 (plan)](PLAN.md#ch-46) · [Course chapter index](../SUBJECTS.md) · [Chapter 48 (plan) →](PLAN.md#ch-48)
+**Continue studying — chapter 47 of 50 (outline):** [← Chapter 46 (draft)](MANUSCRIPT.md#ch-46) · [Course chapter index](../SUBJECTS.md) · [Chapter 48 (draft) →](MANUSCRIPT.md#ch-48)
 
 <a id="ch-48"></a>
 
 ### Chapter 48 — Evidence dossier and acceptance tests
 
-**Stage 10; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 10; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-48)
 
 **Teaching purpose and relevance:** Assemble verifiable evidence that the built system satisfies each approved requirement.
 
@@ -981,13 +981,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 47 and prepares Chapter 49. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 48 of 50 (outline):** [← Chapter 47 (plan)](PLAN.md#ch-47) · [Course chapter index](../SUBJECTS.md) · [Chapter 49 (plan) →](PLAN.md#ch-49)
+**Continue studying — chapter 48 of 50 (outline):** [← Chapter 47 (draft)](MANUSCRIPT.md#ch-47) · [Course chapter index](../SUBJECTS.md) · [Chapter 49 (draft) →](MANUSCRIPT.md#ch-49)
 
 <a id="ch-49"></a>
 
 ### Chapter 49 — Engineering thesis on response performance
 
-**Stage 10; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 10; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-49)
 
 **Teaching purpose and relevance:** Interpret the capstone's measured performance and limitations as an engineering contribution.
 
@@ -1001,13 +1001,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 48 and prepares Chapter 50. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 49 of 50 (outline):** [← Chapter 48 (plan)](PLAN.md#ch-48) · [Course chapter index](../SUBJECTS.md) · [Chapter 50 (plan) →](PLAN.md#ch-50)
+**Continue studying — chapter 49 of 50 (outline):** [← Chapter 48 (draft)](MANUSCRIPT.md#ch-48) · [Course chapter index](../SUBJECTS.md) · [Chapter 50 (draft) →](MANUSCRIPT.md#ch-50)
 
 <a id="ch-50"></a>
 
 ### Chapter 50 — Final defense of design and measured results
 
-**Stage 10; 30 planned A4 pages; 3 planned exercises.** Planned; authored chapter pending.
+**Stage 10; 30 planned A4 pages; 3 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-50)
 
 **Teaching purpose and relevance:** Defend system choices under technical and operational critique using traceable evidence.
 
@@ -1021,7 +1021,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 49 and prepares the worked-answer appendix and final assessment. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 50 of 50 (outline):** [← Chapter 49 (plan)](PLAN.md#ch-49) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+**Continue studying — chapter 50 of 50 (outline):** [← Chapter 49 (draft)](MANUSCRIPT.md#ch-49) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 ## Practical and assessment plan
 
