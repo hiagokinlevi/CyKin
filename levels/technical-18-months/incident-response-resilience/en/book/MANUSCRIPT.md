@@ -632,20 +632,1138 @@ Continue to the next authored lesson.
 
 The learner will refine the Chapter 1 component graph into route-specific service dependencies, compare containment choices with their legitimate-service costs, and define a recovery target without mistaking a backup timestamp for a safe restore point. Chapters 4 and 5 established that a parsed record and a byte-identical copy still need source semantics and authority. Chapter 6 brings those limits into response design. The method is an original LLR teaching model; [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) supplies the wider risk-management context and [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) supports planning and testing recovery against mission needs.
 
-### 6.1 Component graphs are deliberately conservative
+### 6.1 Route-Specific Service Dependencies: From Architecture Assumptions to Verifiable Service Contracts
 
-Chapter 1's graph said the API depends on both identity and database. That is a useful first approximation for the **reservation outcome**, but it does not say whether each API function fails under every upstream fault. A technical responder should model **routes and modes**, not merely hosts. Search may be served from a cache during a database outage, while a new reservation write fails. The cache might be stale or disabled, so this mode must be validated with a permitted test and an owner-approved correctness criterion. The graph represents possible dependency, not guaranteed loss of each function.
+#### Learning objectives
 
-Branch **L6** is an independent, hypothetical exercise. It does not add observations to N01–N06 or prove a production LLR outage. Its stated assumptions are: the edge and API can serve a limited cached room list without a database call for five minutes; a reservation write checks identity and authoritative database; the worker needs identity and database; a new backup needs database. The five-minute cache assumption is **only** for the lab. It must not be inserted into the main case timeline. The table below states each route's needed components, decision owner and a result that would challenge the assumed path.
+After completing this section, learners should be able to:
 
-| Route | Required in L6 | Owner for a real validation | Challenge to the model |
-|---|---|---|---|
-| Cached room read | edge, api | Application and gateway owners | A stale or disabled cache gives a different result. |
-| Reservation write | edge, api, idp, db | Application, identity and database owners | A fallback authorization or queued write changes the route. |
-| Approved worker job | worker, idp, db | Job and identity owners | Job may retry or use a different credential. |
-| New backup copy | backup, db | Recovery and database owners | Existing old copies are not this route's outcome. |
+1. Explain why a component dependency graph cannot, by itself, establish the operational impact of an incident.
+2. Define route contracts with explicit preconditions, dependencies, expected outcomes, responsible owners, and falsification criteria.
+3. Distinguish configured behavior, observed execution, and verified business correctness.
+4. Investigate cache assumptions through configuration records, runtime telemetry, and bounded functional tests.
+5. Design negative tests for expired or disabled caches, identity-provider unavailability, and acknowledged writes that fail durability checks.
+6. Record evidence with precise source attribution, timestamps, observation boundaries, and unresolved uncertainties.
+7. Identify false positives and false negatives produced by incomplete dependency models.
+8. Reproduce and interpret an offline service-contract simulation without treating its results as production evidence.
 
-This matrix separates “a function might still respond” from “the whole service is correct.” A cached room list can return HTTP 200 while a reservation attempt is rejected or queued. A backup service can have an older copy while **new** backups fail. For any proposed action, name the business outcome to preserve, not just whether a process is up. A negative control is to add db to the cached-read route and compare the affected routes; this exposes the dependence of the answer on an assumption rather than a change in observed evidence.
+#### 6.1.1 Why component dependencies are not enough
+
+A dependency graph represents relationships between technical components. In Chapter 1, the Lumen Library Reservations (LLR) architecture established that the `api` component depends on `idp` and `db` to fulfill the complete reservation outcome.
+
+That statement is deliberately conservative.
+
+A dependency exists when failure of one component **can prevent** another component from fulfilling a specified function. It does not establish that every function of the dependent component fails whenever the dependency becomes unavailable.
+
+Consider two operations handled by the same application:
+
+- Displaying a previously cached list of rooms.
+- Creating a new reservation and committing it to authoritative storage.
+
+Both operations may pass through the same gateway and application process. However, their runtime requirements are different.
+
+The cached read may complete without contacting the database. Creating a reservation requires an appropriate authorization decision and a durable change to authoritative state.
+
+Therefore, the statement:
+
+> The database is unavailable, so the reservation API cannot perform any useful operation.
+
+is not necessarily correct.
+
+The opposite statement is also unsafe:
+
+> The API responds successfully, so the reservation service is healthy.
+
+A successful response from one function does not establish the correctness of another.
+
+A technical responder must distinguish three models:
+
+**Structural dependency model**
+
+Describes which components can depend on other components. It is useful for identifying potential failure propagation and selecting investigation targets.
+
+**Route-specific execution model**
+
+Describes the components and operational conditions required by a particular function, including its execution mode, fallback behavior, and data dependencies.
+
+**Service-outcome model**
+
+Describes what must be observed before the function can be considered successful from the perspective of the application and its business owner.
+
+These models answer different questions.
+
+A structural graph can suggest that `db` might affect `api`. A route-specific model can predict that a cached read might survive a database outage. An outcome contract must still establish whether the returned information is sufficiently current, belongs to the authorized requester, and satisfies the intended service function.
+
+The relationship can be expressed as:
+
+`Declared dependencies → Predicted execution behavior → Observed results → Validated business outcome`
+
+Every transition requires additional evidence.
+
+A correct dependency model improves investigation, but it is not a substitute for observation.
+
+This distinction supports the evidence-based incident analysis and risk-management approach described in [NIST SP 800-61 Revision 3, *Incident Response Recommendations and Considerations for Cybersecurity Risk Management*](https://csrc.nist.gov/pubs/sp/800/61/r3/final).
+
+#### 6.1.2 Synthetic teaching case: Lumen Library Reservations, branch L6
+
+**Case classification: Fully synthetic educational scenario.**
+
+L6 is an independent hypothetical branch of the Lumen Library Reservations case.
+
+It does not introduce new observations into the main incident records N01–N06. Its configuration values, possible failures, example events, and laboratory outputs are educational fixtures rather than evidence from a deployed service.
+
+The established L6 architecture contains the following components:
+
+| Component | Responsibility within the L6 model |
+|---|---|
+| `edge` | Receive and route client requests |
+| `api` | Process application requests and generate service responses |
+| `idp` | Support the identity and authorization decisions required by specified functions |
+| `db` | Provide authoritative reservation state |
+| `worker` | Execute approved background processing |
+| `backup` | Produce backup objects from database state |
+
+The branch defines exactly four service routes:
+
+| Route identifier | Required components in the original L6 model |
+|---|---|
+| `cached_room_read` | `edge`, `api` |
+| `reservation_write` | `edge`, `api`, `idp`, `db` |
+| `approved_worker` | `worker`, `idp`, `db` |
+| `new_backup` | `backup`, `db` |
+
+These dependency sets must remain unchanged when reproducing the original L6 model.
+
+The branch also establishes these assumptions:
+
+1. `edge` and `api` can serve limited cached room information without contacting `db` for five minutes.
+2. A reservation write requires identity verification and authoritative database access.
+3. The approved worker requires identity and database services.
+4. A new backup requires the backup service and database.
+
+The five-minute cache interval is an **invented L6 laboratory assumption**, not a verified production configuration or a guarantee that room information remains business-correct for five minutes.
+
+That distinction becomes important when designing the tests below.
+
+#### 6.1.3 Constructing an operational route contract
+
+A component list is only the beginning of a route contract.
+
+A useful technical contract must define what permits execution, what successful execution means, how that success can be checked, and who is responsible for confirming the result.
+
+For each L6 route, the contract should contain at least the following fields.
+
+| Contract field | Engineering question |
+|---|---|
+| Route identifier | Which exact function is being evaluated? |
+| Required components | Which components are required in the stated execution mode? |
+| Preconditions | What conditions must hold before execution? |
+| Expected observable result | What specific technical result should occur? |
+| Business correctness criterion | What result makes the operation acceptable to its owner? |
+| Evidence source | Which system can produce a record supporting the conclusion? |
+| Validation owner | Who understands and can confirm the function's intended behavior? |
+| Negative test | Which controlled input should cause failure or rejection? |
+| Known limitations | Which conclusions remain unsupported after a positive result? |
+
+A **precondition** is not the same as a dependency.
+
+For example, `cached_room_read` depends on `edge` and `api` under the L6 cache assumption. However, serving a cached response requires additional conditions: the cache must be enabled, an appropriate entry must exist, and the application must permit its reuse.
+
+These are operational preconditions. They do not introduce new components into the original dependency set.
+
+Likewise, `reservation_write` requires `db`, but database availability alone does not establish that a particular reservation was committed correctly.
+
+The following contracts refine the original four routes without replacing their dependencies.
+
+##### Contract A: `cached_room_read`
+
+**Required components:** `edge`, `api`.
+
+**Preconditions:**
+
+- The gateway can reach the application.
+- The cache path is enabled for the requested operation.
+- A usable cache entry exists for the appropriate request context.
+- The entry satisfies the application's configured reuse conditions.
+- The response can be associated with the correct tenant, requester, and authorized scope where applicable.
+
+**Expected observable result:**
+
+The application returns the room-list representation allowed by the cache policy.
+
+**Business correctness criteria:**
+
+The returned room information corresponds to the intended request, does not expose another user's protected information, and meets the service owner's accepted freshness requirements.
+
+**Validation owners:** Application and gateway owners.
+
+**Potential falsifiers:**
+
+- Cache configuration differs from the assumed version.
+- No eligible cache entry exists.
+- The cached representation belongs to a different authorization context.
+- The application attempts an unavailable database fallback.
+- The returned information exceeds the permitted business staleness threshold.
+
+A returned HTTP 200 is one observation. It does not close every criterion above.
+
+##### Contract B: `reservation_write`
+
+**Required components:** `edge`, `api`, `idp`, `db`.
+
+**Preconditions:**
+
+- The request reaches the application.
+- The requester has the authorization required for the intended operation.
+- The reservation input satisfies the application rules.
+- The authoritative database is accessible.
+- The service can determine whether the requested reservation is valid and whether a conflicting reservation already exists.
+
+**Expected observable result:**
+
+The service accepts or rejects the operation according to its defined rules.
+
+For an accepted reservation, the durable business state must match the accepted operation.
+
+**Business correctness criteria:**
+
+- Authorized requests are processed.
+- Unauthorized requests are rejected.
+- Accepted reservations are not silently lost.
+- Duplicate or conflicting reservations are handled according to the documented policy.
+- The reservation can be retrieved consistently with the service's declared persistence guarantees.
+
+**Validation owners:** Application, identity, and database owners.
+
+**Potential falsifiers:**
+
+- A successful response exists without an accepted database commit.
+- An unauthorized requester successfully creates a reservation.
+- A committed reservation cannot be retrieved within the expected consistency boundary.
+- A retry creates duplicate reservations contrary to the contract.
+
+A successful response is insufficient when the application has not established the corresponding durable outcome.
+
+The status codes used by an implementation also matter. HTTP 200 describes a successful request according to the method's semantics; HTTP 201 indicates resource creation, while HTTP 202 indicates acceptance for processing without guaranteeing completion. Those distinctions are defined in [RFC 9110, HTTP Semantics](https://www.rfc-editor.org/rfc/rfc9110.html).
+
+Even a 201 response must be reconciled against application and authoritative-state evidence when investigating a suspected persistence defect.
+
+##### Contract C: `approved_worker`
+
+**Required components:** `worker`, `idp`, `db`.
+
+**Preconditions:**
+
+- The scheduled job is approved and within its intended scope.
+- The worker can obtain the identity context required by the operation.
+- The database can support the intended processing.
+- The job's input and execution conditions satisfy the application rules.
+
+**Expected observable result:**
+
+The approved job completes its specified processing or produces a documented failure.
+
+**Business correctness criteria:**
+
+The expected records are processed without unauthorized changes, unintended duplication, or silent omissions.
+
+**Validation owners:** Job and identity owners.
+
+**Potential falsifiers:**
+
+- The job starts but does not complete.
+- A retry repeats a non-idempotent operation.
+- The worker uses a different credential than the documented dependency assumption.
+- A scheduler success signal disagrees with the resulting business state.
+
+A scheduler reporting success is not necessarily evidence that every intended record was processed.
+
+##### Contract D: `new_backup`
+
+**Required components:** `backup`, `db`.
+
+**Preconditions:**
+
+- The backup service can access the required database state.
+- The selected operation is configured and permitted.
+- The destination can receive the resulting backup object.
+- The backup job can report completion and object identity.
+
+**Expected observable result:**
+
+A new backup object is produced and identifiable.
+
+**Business correctness criteria:**
+
+The new object meets the documented requirements for a usable backup, subject to appropriate recovery validation.
+
+**Validation owners:** Recovery and database owners.
+
+**Potential falsifiers:**
+
+- The job reports completion without producing the expected object.
+- The generated object is incomplete or unusable.
+- The reported result actually references an older backup.
+- Backup creation succeeds technically but required records are missing.
+
+The existence of an earlier backup does not prove that `new_backup` currently functions.
+
+Determining whether a candidate backup preserves later accepted business transactions belongs to the recovery-point analysis in §6.4. The purpose here is to define and validate the new-backup route's observable contract.
+
+#### 6.1.4 An evidence model for route validation
+
+The engineering challenge is not merely deciding whether an operation appears functional. It is determining **which observations support which claims**.
+
+A useful evidence model separates five stages:
+
+1. **Declared:** A documented configuration or design claims that the function behaves in a particular way.
+2. **Deployed:** Runtime or deployment evidence indicates that the relevant configuration was applied to the intended service instance.
+3. **Exercised:** A bounded request or job was actually processed through the intended path.
+4. **Observed:** A source records a result associated with that execution.
+5. **Validated:** Independent or appropriately authoritative evidence establishes that the result satisfies the service contract.
+
+Each stage has a different evidentiary meaning.
+
+For example, a repository configuration stating:
+
+```yaml
+cache:
+  enabled: true
+  ttl_seconds: 300
+```
+
+supports the claim that a particular source configuration requests a five-minute cache lifetime.
+
+It does not prove that the production application loaded the configuration, that every application instance received it, or that the cache returned a correct entry.
+
+Those conclusions would require further evidence.
+
+Similarly, a log entry reporting `cache_hit=true` supports the claim that the producing software classified an operation as a hit. It does not independently authenticate the configuration, establish the correctness of the cache key, or prove that the returned representation was authorized.
+
+A technical responder should therefore maintain a distinction between:
+
+- **Configuration evidence:** What behavior was intended?
+- **Runtime-state evidence:** What behavior was enabled?
+- **Execution evidence:** Which path did the request take?
+- **Outcome evidence:** What happened to the business object?
+- **Coverage evidence:** Which requests, instances, or time intervals were actually examined?
+
+A conclusion is only as strong as the weakest necessary link in its evidence chain.
+
+#### 6.1.5 Validating the five-minute cache assumption
+
+The original L6 model assumes that `cached_room_read` can function for five minutes without database access.
+
+To validate an equivalent assumption in an authorized environment, an investigator should examine both configuration evidence and execution evidence.
+
+Neither is sufficient alone.
+
+##### Step 1: Identify the cache implementation and its authority
+
+Before searching logs, determine which component actually controls the caching behavior.
+
+Possible implementations include HTTP intermediaries, application memory, framework-level caches, and application-managed storage.
+
+The original L6 model does not specify a particular caching product or location.
+
+Therefore, selecting a specific implementation without additional evidence would be an unsupported architectural assumption.
+
+An investigator should request from the application owner:
+
+- The source of the active cache configuration.
+- The effective cache lifetime.
+- Whether the lifetime is absolute or refreshable.
+- The cache-key construction rules.
+- The conditions under which an entry is invalidated.
+- Whether a cache miss requires a database query.
+- Whether stale entries can be served during upstream failures.
+- Which application versions and instances use the configuration.
+
+If the application uses HTTP caching, [RFC 9111, HTTP Caching](https://www.rfc-editor.org/rfc/rfc9111.html) defines relevant concepts, including cache freshness, response age, validation, and stale-response handling.
+
+However, those HTTP rules must not automatically be assumed to describe a custom application-memory cache.
+
+A custom cache requires its own documented semantics.
+
+##### Step 2: Confirm the effective runtime configuration
+
+A configuration file in source control describes an intended state.
+
+Operational behavior depends on what was actually deployed and loaded.
+
+A validation request should identify the runtime version and effective settings associated with the route being tested.
+
+For example, a configuration record might say that the cache lifetime is 300 seconds, while an application instance is still running an earlier version with caching disabled.
+
+A successful test against one instance would not establish the state of all instances.
+
+The investigator should therefore identify the scope of the claim:
+
+> The tested application instance was configured to permit cached room reads for up to 300 seconds.
+
+That is narrower than:
+
+> All LLR application instances can serve cached room reads during database outages.
+
+The second statement requires broader coverage and evidence.
+
+##### Step 3: Correlate configuration and execution records
+
+Useful runtime records may include:
+
+| Field | Question answered |
+|---|---|
+| Request identifier | Which request generated this record? |
+| Producer identifier | Which component emitted the record? |
+| Event timestamp | When did the producer report the event? |
+| Application version | Which software version processed the request? |
+| Configuration version | Which cache policy was active? |
+| Cache decision | Was the operation classified as a hit, miss, bypass, or revalidation? |
+| Cache-entry age | How old was the entry under the producer's timing rules? |
+| Cache-key context | Which normalized request context selected the entry? |
+| Backend attempt | Did the application attempt an upstream database operation? |
+| Response status | Which status did the application emit? |
+| Result version | Which business-data version was returned? |
+
+These fields are an **instrumentation design**, not a claim that LLR already produces them.
+
+Where a field is unavailable, record that limitation explicitly rather than inventing its value.
+
+##### Step 4: Separate protocol freshness from business freshness
+
+HTTP cache freshness concerns whether a stored response can be reused under applicable caching rules. It does not independently guarantee that the underlying business information remains current.
+
+For example, a response may be reusable under a configured five-minute cache policy even though room availability changed after the representation was stored.
+
+Suppose the service owner requires displayed availability information to be no more than two minutes old.
+
+This two-minute criterion is an **additional hypothetical laboratory acceptance rule**. It is not part of the original L6 five-minute cache assumption.
+
+A representation that is 240 seconds old could be reusable under a 300-second cache policy while violating the hypothetical 120-second business freshness requirement.
+
+The technical conclusion would be:
+
+> Cache reuse is permitted by the modeled cache lifetime, but business freshness verification fails under the supplemental acceptance criterion.
+
+This does not mean the application is necessarily violating a real service agreement. That would require an owner-approved requirement and actual evidence.
+
+It demonstrates why protocol-level reuse and business-level correctness must be evaluated separately.
+
+#### 6.1.6 Negative testing: falsifying the route assumptions
+
+A negative test deliberately changes a controlled condition to determine whether the system behaves according to its contract.
+
+The purpose is not simply to make a service fail.
+
+A useful negative test answers a specific question:
+
+> If this precondition becomes false, does the observed behavior change in the predicted way, and can the result be attributed to the intended test condition?
+
+The baseline and the negative test must use comparable inputs.
+
+Otherwise, a changed result may reflect an uncontrolled difference rather than the assumption being tested.
+
+##### Negative test A: expired cache
+
+**Hypothesis:** A valid cache entry can support `cached_room_read` without database access, but once the entry expires, the same cached route cannot rely on that entry.
+
+**Controlled change:** Advance the simulated cache-entry age beyond its five-minute lifetime.
+
+**Expected behavior:** The cache entry is no longer eligible for ordinary reuse under the stated simplified policy.
+
+If the database is unavailable, a modeled fallback requiring `db` cannot supply a new result.
+
+**Required evidence:**
+
+- Initial entry age.
+- Configured cache lifetime.
+- Expiry or eligibility decision.
+- Whether a backend attempt occurred.
+- Returned response.
+- Business outcome.
+
+**Important limitation:** An implementation may have explicit stale-serving or revalidation behavior. Such behavior must be discovered and documented before treating an expired entry as necessarily unusable.
+
+RFC 9111 describes circumstances in which stale responses may be reused or validated. The simplified L6 laboratory below deliberately disables those additional behaviors so that its expected result is deterministic.
+
+##### Negative test B: disabled cache
+
+**Hypothesis:** Disabling the cache removes the assumed database-independent execution mode.
+
+**Controlled change:** Set the simulated cache-enabled condition to false.
+
+**Expected behavior:** The route must use a permitted alternate path or fail when no eligible result is available.
+
+In the offline laboratory, the alternate path requires database access.
+
+This is a **variant of the execution mode**, not a revision of the original L6 dependency set.
+
+The original `cached_room_read` contract remains:
+
+`{edge, api}`
+
+The cache-disabled variant introduces an additional runtime requirement only for the fallback path.
+
+**Required evidence:**
+
+- Original configuration.
+- Changed configuration.
+- Effective application state.
+- Cache decision.
+- Backend behavior.
+- Response result.
+
+**Interpretation:** A different result after disabling the cache demonstrates sensitivity to the changed model assumption. It does not prove that the real environment is configured this way.
+
+##### Negative test C: IdP unavailable
+
+**Hypothesis:** In the original L6 dependency model, `reservation_write` and `approved_worker` require `idp`.
+
+**Controlled change:** Set the simulated identity service to unavailable while leaving the database available.
+
+**Expected modeled impact:**
+
+- `reservation_write` cannot satisfy its required identity precondition.
+- `approved_worker` cannot satisfy its required identity precondition.
+- `cached_room_read` remains independent of `idp` in the original model.
+- `new_backup` remains independent of `idp` in the original model.
+
+These are potential effects under the declared contracts, not statements about a live system.
+
+A production investigation must distinguish complete IdP unavailability from narrower conditions such as revoking one credential, expiring one session, or rejecting one token.
+
+A single credential failure cannot automatically be treated as proof that the entire identity service is unavailable.
+
+##### Negative test D: acknowledged but non-durable reservation
+
+**Hypothesis:** An application acknowledgement does not necessarily establish that an accepted reservation has been durably committed.
+
+**Controlled change:** Simulate an application that returns an HTTP 201 response despite a failed or missing durable commit.
+
+**Expected behavior:**
+
+- The transport/application response may appear successful.
+- The persistence acceptance criterion fails.
+- The overall `reservation_write` contract must not be marked successful.
+
+**Required evidence in a real validation:**
+
+- The original request identifier.
+- Authorization outcome.
+- Application acceptance record.
+- Authoritative commit or transaction record.
+- Relevant consistency guarantees.
+- A subsequent read or other appropriate state verification.
+
+The test demonstrates that HTTP response status and durable business state are different observations.
+
+It does not demonstrate that the fictional LLR system actually lost a reservation.
+
+#### 6.1.7 Evidence records: separating observation from inference
+
+An investigation record should support later technical review without requiring the reviewer to reconstruct unstated assumptions.
+
+A useful record contains the following:
+
+| Field | Purpose |
+|---|---|
+| Evidence ID | Identify the record uniquely |
+| Case and branch | Prevent cross-contamination between independent scenarios |
+| Source | Identify the producing system or artifact |
+| Acquisition method | Explain how the record was obtained |
+| Event timestamp | Preserve the time reported by the producer |
+| Collection timestamp | Record when the investigator obtained the artifact |
+| Request or operation identifier | Support correlation within documented identifier semantics |
+| Observed result | Preserve what the source actually reports |
+| Interpretation | Separate the investigator's conclusion from source data |
+| Limitation | Identify uncertainty, missing coverage, or unverified assumptions |
+
+Consider the following fully invented L6 teaching record.
+
+**Synthetic evidence record: L6-T01**
+
+```yaml
+evidence_id: L6-T01
+case: Lumen Library Reservations
+branch: L6
+classification: synthetic_offline_fixture
+
+source:
+  name: simulated_api_cache_event
+  producer: offline_laboratory
+  authenticated_production_source: false
+
+event_timestamp_utc: "2026-10-10T12:05:00Z"
+collection_timestamp_utc: null
+
+operation:
+  route: cached_room_read
+  request_id: L6-REQ-001
+  status: 200
+
+cache:
+  configured_ttl_seconds: 300
+  simulated_entry_age_seconds: 240
+  simulated_decision: HIT
+
+interpretation:
+  protocol_reuse_assumption: within_ttl
+  business_freshness_verified: false
+
+limitations:
+  - "Synthetic record; not production telemetry."
+  - "No independent validation of cache configuration."
+  - "No authoritative current room-state comparison."
+  - "No evidence of reservation-write correctness."
+```
+
+The example contains a timestamp because the fictional event requires one. It does not claim that a real event occurred at that time.
+
+The collection timestamp remains null because no actual acquisition of a production source is being represented.
+
+The proper interpretation is limited:
+
+> A synthetic cache event reports an HTTP 200 response using a modeled entry age of 240 seconds under a 300-second reuse assumption. The record does not independently establish business freshness or current authoritative room state.
+
+An incorrect interpretation would be:
+
+> LLR was healthy at 12:05 UTC because the cache returned HTTP 200.
+
+That conclusion would improperly elevate an isolated synthetic response to verified service health.
+
+A second error would be to interpret the null collection timestamp as evidence that no collection occurred anywhere. It means only that this record has no documented production acquisition timestamp.
+
+**Evidence absence and evidence of absence are not interchangeable.**
+
+The same principle applies to missing backend logs. A query that returns no database request cannot establish that no database request occurred unless the investigator has validated source coverage, retention, identifier mapping, and the relevant observation window.
+
+#### 6.1.8 Failure modes and misleading results
+
+A route test may produce an apparently convincing result while leaving the central decision unresolved.
+
+The following situations are especially important.
+
+| Failure mode | Misleading conclusion | Required correction |
+|---|---|---|
+| Cached response returns 200 | The service is fully healthy | Verify freshness, authorization, and route-specific outcomes |
+| Cache configuration shows 300 seconds | The runtime always uses that value | Check effective deployment and instance configuration |
+| Cache-hit log exists | The returned representation was correct | Compare result version and business acceptance criteria |
+| No database log was found | The application did not contact the database | Verify telemetry coverage and query scope |
+| IdP rejects one credential | The IdP is unavailable | Distinguish principal-specific failure from service-wide failure |
+| Reservation endpoint returns 201 | The reservation is durable | Inspect authoritative commit and state verification |
+| Worker reports job success | All intended work completed correctly | Reconcile processed records and retry outcomes |
+| Backup inventory contains an object | New backup creation succeeded | Verify object identity and completion for the requested operation |
+
+False positives arise when tests appear to establish more than they actually demonstrate.
+
+For example, a successful health probe might produce a false-positive service-health assessment because it exercises only gateway responsiveness.
+
+False negatives arise when an incomplete observation suggests failure despite a functioning alternate route.
+
+For example, an analyst querying only database logs might conclude that cached reads never succeeded because no corresponding database query is present. Under L6, a valid cached read is specifically designed not to require such a query.
+
+The absence of a database request would therefore be compatible with the cache-hit hypothesis.
+
+It would not prove the hypothesis.
+
+A technically mature investigation must preserve competing explanations until the evidence discriminates between them.
+
+#### 6.1.9 Worked example: resolving conflicting indicators
+
+Consider three invented statements supplied to an L6 trainee:
+
+1. A configuration artifact declares a cache lifetime of 300 seconds.
+2. A synthetic application event reports HTTP 200 for a cached room read.
+3. The current authoritative room state has not been supplied.
+
+A superficial assessment concludes that cached-room functionality is correct.
+
+A more defensible analysis proceeds as follows.
+
+**Step 1: Identify the claim.**
+
+The candidate claim is that `cached_room_read` satisfies its route contract.
+
+**Step 2: Identify supporting observations.**
+
+The configuration artifact supports the declared reuse interval.
+
+The synthetic response supports that a response was produced in the exercise.
+
+**Step 3: Identify missing validation.**
+
+The investigator does not yet know whether the returned representation corresponds to the correct current room state, whether the cache key enforces the correct authorization context, or whether the configured policy was effectively applied in the intended runtime.
+
+**Step 4: Identify falsifiable alternatives.**
+
+The response may be stale beyond the business acceptance threshold.
+
+The cache key may select an inappropriate representation.
+
+The response may originate from a component or configuration version different from the one being investigated.
+
+**Step 5: Specify the next required evidence.**
+
+Request a bounded comparison between the returned representation and an owner-designated authoritative state, together with cache-key semantics and effective runtime configuration.
+
+**Step 6: Record the conclusion without overstatement.**
+
+> The available synthetic artifacts support the possibility of a functioning cache path, but do not establish business correctness. The route contract remains unverified.
+
+This approach is more useful than a binary healthy/unhealthy classification because it identifies exactly which missing observations could change the decision.
+
+#### 6.1.10 Reproducible offline laboratory: validate route outcomes under controlled faults
+
+**Laboratory classification:** Synthetic, isolated, and non-operational.
+
+**Purpose:** Demonstrate how route acceptance criteria can disagree with response-status observations, and how changing one precondition affects specific business functions.
+
+This laboratory complements the dependency-set calculation in §6.2. It does not replace that calculation or use live telemetry.
+
+The laboratory preserves the four original L6 dependency sets while introducing explicitly labeled simulated runtime conditions.
+
+**Requirements**
+
+- Python 3, using only its standard library.
+- No external dependencies.
+- No network connection.
+- No credentials.
+- No filesystem changes required.
+- No access to the fictional or any real service.
+
+**Supplemental teaching assumptions**
+
+The exercise uses a 300-second cache reuse interval matching the original L6 assumption.
+
+For one additional sensitivity test, it introduces a stricter **hypothetical 120-second business freshness criterion**. This is not an established LLR requirement; it is deliberately added to demonstrate the difference between cache eligibility and business correctness.
+
+The laboratory also models a simplified database fallback when the cache cannot be used. This is a controlled variant, not a new required component in the original cached-read contract.
+
+The simulated responses use HTTP 200 for successful reads and HTTP 201 for acknowledged reservation creation. These are illustrative response values. No actual HTTP server is created.
+
+##### Laboratory input and code
+
+Copy the following into a Python 3 interpreter or a local file in an authorized training environment.
+
+```python
+from copy import deepcopy
+
+# Original L6 route dependencies.
+# These sets must remain unchanged.
+
+ROUTES = {
+    "cached_room_read": {"edge", "api"},
+    "reservation_write": {"edge", "api", "idp", "db"},
+    "approved_worker": {"worker", "idp", "db"},
+    "new_backup": {"backup", "db"},
+}
+
+# Synthetic runtime assumptions.
+# These are classroom inputs, not production observations.
+
+BASE = {
+    "edge_up": True,
+    "api_up": True,
+    "worker_up": True,
+    "backup_up": True,
+    "idp_up": True,
+    "db_up": True,
+
+    "cache_enabled": True,
+    "cache_age_s": 60,
+    "cache_ttl_s": 300,
+
+    # Supplemental teaching criterion, not L6's
+    # established business policy.
+    "business_freshness_s": 120,
+
+    # Synthetic write-durability condition.
+    "durable_commit": True,
+}
+
+
+def assess(state):
+    """
+    Evaluate modeled route outcomes.
+
+    Returns synthetic acceptance results.
+    Does not contact services or collect telemetry.
+    """
+
+    # Route A: cached_room_read
+
+    if not (state["edge_up"] and state["api_up"]):
+        read_http = 503
+        read_source = "unavailable"
+        read_ok = False
+
+    elif (
+        state["cache_enabled"]
+        and state["cache_age_s"] < state["cache_ttl_s"]
+    ):
+        read_http = 200
+        read_source = "cache"
+
+        read_ok = (
+            state["cache_age_s"]
+            <= state["business_freshness_s"]
+        )
+
+    elif state["db_up"]:
+        # Explicit laboratory fallback variant.
+        read_http = 200
+        read_source = "db"
+        read_ok = True
+
+    else:
+        read_http = 503
+        read_source = "unavailable"
+        read_ok = False
+
+    # Route B: reservation_write
+
+    can_write = all(
+        state[key]
+        for key in (
+            "edge_up",
+            "api_up",
+            "idp_up",
+            "db_up",
+        )
+    )
+
+    write_http = 201 if can_write else 503
+
+    # Acknowledgement alone is insufficient.
+    write_ok = (
+        can_write
+        and state["durable_commit"]
+    )
+
+    # Route C: approved_worker
+
+    worker_ok = all(
+        state[key]
+        for key in (
+            "worker_up",
+            "idp_up",
+            "db_up",
+        )
+    )
+
+    # Route D: new_backup
+
+    backup_ok = (
+        state["backup_up"]
+        and state["db_up"]
+    )
+
+    return {
+        "read": read_ok,
+        "write": write_ok,
+        "worker": worker_ok,
+        "backup": backup_ok,
+        "read_http": read_http,
+        "read_source": read_source,
+        "write_http": write_http,
+        "committed": write_ok,
+    }
+
+
+SCENARIOS = [
+    ("BASE", {}),
+
+    (
+        "DB_DOWN_WARM_CACHE",
+        {"db_up": False},
+    ),
+
+    (
+        "CACHE_EXPIRED_DB_DOWN",
+        {
+            "db_up": False,
+            "cache_age_s": 301,
+        },
+    ),
+
+    (
+        "CACHE_DISABLED_DB_DOWN",
+        {
+            "db_up": False,
+            "cache_enabled": False,
+        },
+    ),
+
+    (
+        "IDP_DOWN_DB_UP",
+        {"idp_up": False},
+    ),
+
+    (
+        "ACK_WITHOUT_COMMIT",
+        {"durable_commit": False},
+    ),
+
+    (
+        "CACHE_SEMANTICALLY_STALE",
+        {"cache_age_s": 240},
+    ),
+]
+
+
+def label(value):
+    return "PASS" if value else "FAIL"
+
+
+for name, changes in SCENARIOS:
+    fixture = deepcopy(BASE)
+    fixture.update(changes)
+
+    result = assess(fixture)
+
+    print(
+        f"{name} | "
+        f"read={label(result['read'])}"
+        f"({result['read_http']},"
+        f"{result['read_source']}) "
+        f"write={label(result['write'])}"
+        f"({result['write_http']}) "
+        f"worker={label(result['worker'])} "
+        f"backup={label(result['backup'])}"
+    )
+
+
+# Verify that the original dependency model
+# has not been silently modified.
+
+assert ROUTES == {
+    "cached_room_read": {"edge", "api"},
+    "reservation_write": {"edge", "api", "idp", "db"},
+    "approved_worker": {"worker", "idp", "db"},
+    "new_backup": {"backup", "db"},
+}
+```
+
+##### Exact expected output
+
+```text
+BASE | read=PASS(200,cache) write=PASS(201) worker=PASS backup=PASS
+DB_DOWN_WARM_CACHE | read=PASS(200,cache) write=FAIL(503) worker=FAIL backup=FAIL
+CACHE_EXPIRED_DB_DOWN | read=FAIL(503,unavailable) write=FAIL(503) worker=FAIL backup=FAIL
+CACHE_DISABLED_DB_DOWN | read=FAIL(503,unavailable) write=FAIL(503) worker=FAIL backup=FAIL
+IDP_DOWN_DB_UP | read=PASS(200,cache) write=FAIL(503) worker=FAIL backup=PASS
+ACK_WITHOUT_COMMIT | read=PASS(200,cache) write=FAIL(201) worker=PASS backup=PASS
+CACHE_SEMANTICALLY_STALE | read=FAIL(200,cache) write=PASS(201) worker=PASS backup=PASS
+```
+
+The output was designed to be deterministic for the supplied inputs.
+
+In this laboratory, `PASS` means that a route satisfies the simplified acceptance conditions explicitly encoded by the exercise. It does not establish production service health, real authorization enforcement, database durability, or actual backup recoverability.
+
+##### Interpretation of the baseline
+
+The baseline assumes:
+
+- All modeled components are available.
+- The cache is enabled.
+- The cache entry is 60 seconds old.
+- The cache reuse interval is 300 seconds.
+- The supplemental freshness criterion is 120 seconds.
+- The simulated reservation write has a successful durable commit.
+
+All four simulated routes pass their respective simplified checks.
+
+The conclusion is restricted to the artificial input state.
+
+##### Interpretation of a database outage with a warm cache
+
+In `DB_DOWN_WARM_CACHE`, database availability becomes false.
+
+The cache remains enabled, and the entry is 60 seconds old.
+
+Consequently, the simulated cached read passes without database access.
+
+The other three routes fail because `db` is explicitly required by their original L6 contracts.
+
+This supports the structural distinction made earlier:
+
+A failure affecting an upstream dependency can impair some functions while leaving another function available under an alternate execution mode.
+
+It does not prove that a real cache would remain operational during a database outage.
+
+##### Interpretation of cache expiry
+
+In `CACHE_EXPIRED_DB_DOWN`, the simulated cache entry becomes 301 seconds old.
+
+That exceeds the 300-second reuse interval.
+
+The simplified simulator does not permit stale serving. Its fallback requires database availability, which is false.
+
+Therefore, the cached-read acceptance result changes from `PASS` to `FAIL`.
+
+This is a controlled sensitivity result.
+
+The only new runtime condition, relative to the database-down warm-cache scenario, is the cache-entry age.
+
+A student must not report that a real cache expired or that a real application failed.
+
+##### Interpretation of cache disablement
+
+In `CACHE_DISABLED_DB_DOWN`, the cache-enabled condition becomes false.
+
+The simulation cannot use the existing cache entry, even though its age remains 60 seconds.
+
+The fallback requires the unavailable database, so the cached-read route fails.
+
+The result demonstrates that configuration state matters independently of cache-entry age.
+
+The original L6 dependency set is not overwritten. The exercise evaluates a different execution condition.
+
+##### Interpretation of IdP unavailability
+
+In `IDP_DOWN_DB_UP`, the identity service is unavailable while the database remains available.
+
+The two routes requiring `idp` fail.
+
+The cached read and new-backup routes pass their simplified checks because their original dependency sets do not include `idp`.
+
+This result should not be extended to an assertion that every backup implementation is independent of identity infrastructure.
+
+It describes the stated L6 model only.
+
+##### Interpretation of an acknowledgement without a commit
+
+In `ACK_WITHOUT_COMMIT`, the simulated reservation operation returns HTTP 201.
+
+However, `durable_commit` is false.
+
+The route therefore fails its business acceptance criterion despite the success-status response.
+
+This is a deliberately injected inconsistency between acknowledgement and authoritative persistence.
+
+A real incident investigation would need application, transaction, and database evidence before concluding that such a defect occurred.
+
+##### Interpretation of a semantically stale response
+
+In `CACHE_SEMANTICALLY_STALE`, the cache entry is 240 seconds old.
+
+It remains within the modeled 300-second reuse interval.
+
+The simulator consequently returns a cached HTTP 200 response.
+
+Nevertheless, the supplemental 120-second business freshness criterion fails.
+
+The result demonstrates an important distinction:
+
+`HTTP response success ≠ Verified business correctness`
+
+The failure is defined by the additional classroom acceptance criterion, not by an established LLR service-level requirement.
+
+#### 6.1.11 Laboratory evidence worksheet
+
+Before executing each scenario, record the following:
+
+| Field | Required entry |
+|---|---|
+| Scenario name | Exact scenario identifier |
+| Model version | Original L6 model plus declared laboratory extensions |
+| Changed variable | Name and new value |
+| Unchanged assumptions | Components and conditions retained |
+| Predicted affected routes | Route identifiers |
+| Predicted business outcomes | Expected pass or fail |
+| Proposed falsifier | Output that would challenge the prediction |
+
+After execution, record:
+
+| Field | Required entry |
+|---|---|
+| Execution environment | Python interpreter and environment |
+| Actual input | Scenario dictionary applied |
+| Produced output | Exact output line |
+| Expected comparison | Match or discrepancy |
+| Explanation | Why the result follows from the modeled conditions |
+| Evidence classification | Offline simulation |
+| Unresolved operational questions | What real evidence would still be required |
+
+A well-formed laboratory report might state:
+
+> The CACHE_EXPIRED_DB_DOWN scenario changed the simulated cache-entry age from 60 to 301 seconds while retaining database unavailability. The cached-read result changed from PASS to FAIL. This result is consistent with the exercise's configured expiry and fallback rules. It provides no evidence concerning an actual LLR deployment.
+
+An inadequate report would state:
+
+> Disabling the cache caused the production reservation service to fail.
+
+The exercise performed no such operation.
+
+#### 6.1.12 Technical limitations of the model
+
+The simulator is intentionally narrow.
+
+It does not implement a network service, authentication protocol, persistent database, actual cache, or real scheduler.
+
+Its purpose is to make service-contract assumptions inspectable.
+
+The following limitations must accompany any interpretation:
+
+**No probabilistic impact model**
+
+The code calculates outcomes under declared conditions. It does not estimate the probability of an outage.
+
+**No real authentication**
+
+The `idp_up` variable represents an assumed dependency condition. It does not implement authentication, token validation, authorization policy, or session behavior.
+
+**No actual durability guarantee**
+
+The `durable_commit` variable is an injected teaching condition. The simulation does not write a transaction, flush storage, or verify database recovery guarantees.
+
+**No complete cache semantics**
+
+The cache model assumes a fixed entry age, fixed lifetime, and simplified fallback. It does not implement HTTP revalidation, stale-response extensions, distributed invalidation, cache-key variation, or concurrent updates.
+
+**No direct evidence of causation**
+
+Changing a simulated variable and observing a deterministic output establishes causation within the programmed model. It does not establish that the corresponding condition caused any real incident.
+
+**No production authorization**
+
+The laboratory grants no authority to disable caches, disconnect identity systems, alter application configuration, or perform test writes against a real environment.
+
+In production, testing must be authorized, bounded, independently observed where appropriate, and designed to avoid unintended service disruption or changes to legitimate user data.
+
+The model should therefore be treated as a teaching instrument for reasoning and hypothesis construction.
+
+#### 6.1 synthesis
+
+Route-specific dependency modeling converts a broad architectural hypothesis into a set of testable service contracts.
+
+The essential distinction is that **component availability, route execution, response success, and business correctness are separate claims**.
+
+A defensible technical assessment should therefore identify:
+
+1. The exact route and required components.
+2. The operational preconditions required for the tested execution mode.
+3. The expected observable result.
+4. The independent correctness criteria.
+5. The configuration and telemetry needed to validate the model.
+6. The negative condition that could falsify the assumption.
+7. The source and limitations of every supporting observation.
+8. The responsible owner and the next evidence request.
+
+The L6 laboratory demonstrates how different route requirements lead to different potential impacts under database or identity failure. It also demonstrates that successful responses can coexist with failed business acceptance criteria.
+
+None of these simulated outcomes establishes that LLR experienced an actual outage, lost a reservation, or executed a containment action.
+
+The next section, §6.2, formalizes dependency-set calculations. Sections §6.3 and §6.4 extend the analysis to reversible controls and recovery-point correctness.
+
+#### 6.1 primary references
+
+- [NIST SP 800-61 Revision 3 — Incident Response Recommendations and Considerations for Cybersecurity Risk Management](https://csrc.nist.gov/pubs/sp/800/61/r3/final). Incident response and cybersecurity risk-management context.
+- [RFC 9110 — HTTP Semantics](https://www.rfc-editor.org/rfc/rfc9110.html). HTTP response semantics, including successful and accepted operations.
+- [RFC 9111 — HTTP Caching](https://www.rfc-editor.org/rfc/rfc9111.html). Cache storage, freshness, age, revalidation, and stale-response handling.
+- [NIST SP 800-184 — Guide for Cybersecurity Event Recovery](https://csrc.nist.gov/pubs/sp/800/184/final). Recovery planning, testing, and validation against organizational requirements.
+
+These references support the general technical principles. They do not document or authenticate the invented LLR observations, contracts, or laboratory inputs.
 
 ### 6.2 Offline route-impact model
 
@@ -697,7 +1815,120 @@ Recovery needs at least two gates. A **technical gate** checks provenance, byte 
 
 ### Exercises — subject 6
 
-**EX021 — Route contract.** Objective: refine Chapter 1 without silently replacing it. For L6's four routes, write required components, expected user outcome, owner, one unverified fallback and a negative test. Explain why the component graph remains conservative. Evidence: four-row Markdown table. Rubric: 2 = routes and assumptions distinct; 1 = route map without correctness criterion; 0 = treats a static health probe as reservation success.
+**EX021 — Route contracts and evidence-driven validation.**
+
+**Learning objective**
+
+Construct and defend four technical route contracts, distinguish modeled dependencies from runtime preconditions, and evaluate contradictory synthetic evidence without converting assumptions into incident findings.
+
+**Provided inputs**
+
+Use only the four original L6 routes:
+
+```text
+cached_room_read = {edge, api}
+reservation_write = {edge, api, idp, db}
+approved_worker = {worker, idp, db}
+new_backup = {backup, db}
+```
+
+The following additional records are invented specifically for this exercise:
+
+**Record L6-E21-A**
+
+A configuration artifact declares that cached room responses may be reused for up to 300 seconds.
+
+**Record L6-E21-B**
+
+A synthetic application event reports an HTTP 200 response for a cached room list with a modeled entry age of 240 seconds.
+
+**Record L6-E21-C**
+
+A separate synthetic identity-service condition indicates that `idp` is unavailable.
+
+**Record L6-E21-D**
+
+A synthetic reservation-write operation reports HTTP 201, but the exercise provides no authoritative commit evidence.
+
+**Record L6-E21-E**
+
+A backup inventory lists an existing backup object, but no record of the requested new-backup operation is supplied.
+
+These records form an independent EX021 extension. They are not observations from N01–N06 and do not revise other L6 branches.
+
+**Required artifacts**
+
+Produce the following:
+
+**A. Four-route contract matrix**
+
+For each route, document:
+
+- Required components.
+- Preconditions.
+- Expected observable outcome.
+- Business correctness criterion.
+- Responsible validation owner.
+- One negative test.
+- One unresolved fallback or failure assumption.
+
+**B. Evidence classification table**
+
+For each supplied record, identify:
+
+- What it directly states.
+- Which conclusion it can support.
+- Which conclusion it cannot establish.
+- What additional evidence would be required.
+
+**C. Dependency-impact analysis**
+
+Under the stated identity-service failure, identify which routes are potentially impaired and which are not directly impaired by that failure in the original model.
+
+Explain why this prediction does not prove observed service impact.
+
+**D. Cache freshness challenge**
+
+Assume, only for the purpose of this task, that the business owner requires room information to be no more than 120 seconds old.
+
+Determine whether the 240-second cached response satisfies:
+
+1. The modeled cache reuse interval.
+2. The supplemental business freshness criterion.
+
+Explain the difference.
+
+**E. Evidence request**
+
+Prepare a bounded request for the application, identity, and database owners that could establish whether a reservation acknowledged by the API was correctly authorized and durably committed.
+
+Specify required source fields and at least one limitation of the requested evidence.
+
+**F. Final assessment**
+
+Write a short incident-analysis statement that distinguishes:
+
+- Confirmed synthetic input.
+- Model-derived prediction.
+- Unsupported inference.
+- Next validation step.
+
+**Assessment rubric**
+
+| Criterion | 0 points | 1 point | 2 points |
+|---|---|---|---|
+| Route contracts | Incorrect or incomplete dependencies | Correct dependencies but weak outcome criteria | Exact dependencies with testable outcomes, owners, and falsifiers |
+| Evidence classification | Treats synthetic records as production facts | Recognizes synthetic scope but overstates a claim | Separates observed fields, inference, source coverage, and limits |
+| Identity-failure analysis | Incorrect impact | Correct routes without reasoning | Correct impact with dependency and scope limitations |
+| Cache freshness | Equates HTTP 200 with correctness | Recognizes potential staleness | Separates reuse eligibility from business freshness |
+| Write verification | Accepts HTTP 201 as durability proof | Requests a database check without full correlation | Requires authorization, transaction correlation, authoritative state, and consistency context |
+| Final assessment | Unsupported conclusion | Partially qualified conclusion | Bounded, falsifiable conclusion with a specific next evidence request |
+
+**Maximum score:** 12 points.
+
+**Suggested interpretation:** 10–12 demonstrates strong technical reasoning; 7–9 indicates partial command of the method; below 7 requires revisiting contract definitions and evidence boundaries.
+
+**Course scoring:** Use the 12-point rubric diagnostically. Convert to the book's 0–2 exercise scale: 10–12 points = 2, 7–9 = 1, and 0–6 = 0. Any answer that treats a synthetic condition as a production incident or prescribes an unapproved live change requires correction regardless of points.
 
 **EX022 — Model outputs.** Objective: reproduce §6.2. Run or inspect the code and report the three exact lines. Then explain why adding db to cached_room_read changes the third line but not any observed LLR event. Evidence: transcript and sensitivity note. Rubric: 2 = all sets and model-versus-evidence distinction; 1 = correct sets only; 0 = claims real service impact.
 
@@ -1860,7 +3091,139 @@ Replacing E9 with E1 in the variant makes altered equal to original, so **altere
 
 ### Subject 6: EX021–EX024
 
-**EX021 — Model route contract.** Cached room read requires edge/api in L6 and aims to display a room list; the application owner must test freshness and cache-enabled behavior, with stale data as a negative condition. Reservation write requires edge/api/idp/db and aims to create an authorized, auditable booking; a negative check attempts a disallowed reservation in an isolated approved test. Approved worker requires worker/idp/db and aims to process an authorized R40/R41 job; retry and duplicate-write behavior remain unknown. New backup requires backup/db and aims to produce a restorable **new** object; an old copy's presence is not this outcome. Chapter 1's component graph is conservative about API dependency; L6 refines individual routes under a hypothetical cache assumption. A static health probe is not a successful write.
+**EX021 — Worked route-contract analysis.**
+
+#### A. Four-route contract matrix
+
+| Route | Preconditions and dependencies | Expected outcome and acceptance criterion | Owner | Negative test and unknown |
+|---|---|---|---|---|
+| `cached_room_read` | `edge`, `api`; eligible cache entry, effective cache policy, correct request context | Return an appropriate room list meeting the owner-approved freshness and authorization requirements | Application and gateway owners | Expire or disable cache in isolation; actual fallback and authorization-key behavior remain unknown |
+| `reservation_write` | `edge`, `api`, `idp`, `db`; authorized request, valid input, available authoritative state | Accept an authorized reservation and verify the required durable state | Application, identity, and database owners | Reject an unauthorized write; transaction visibility and retry semantics require validation |
+| `approved_worker` | `worker`, `idp`, `db`; approved job scope and usable credentials | Complete authorized processing with correct resulting business state | Job and identity owners | Make the required identity service unavailable in a simulation; credential fallback and retry behavior remain unknown |
+| `new_backup` | `backup`, `db`; permitted job and usable destination | Produce a new identifiable backup object meeting its acceptance criteria | Recovery and database owners | Test failed backup creation in isolation; object completeness and recoverability require verification |
+
+The matrix preserves all four original dependency sets.
+
+It adds operational preconditions without silently modifying the architecture.
+
+#### B. Evidence classification
+
+**L6-E21-A — Cache configuration**
+
+The record directly states a configured 300-second cache reuse interval.
+
+It supports the declared configuration assumption but does not establish the effective runtime state, cache-key correctness, or business freshness.
+
+Additional evidence: runtime configuration, application version, and cache decision records.
+
+**L6-E21-B — HTTP 200 cached response**
+
+The record directly reports a synthetic successful response and a modeled entry age of 240 seconds.
+
+It supports the claim that the fictional producer reported a cache response.
+
+It cannot establish current room availability, correct authorization context, or successful reservation writes.
+
+Additional evidence: owner-approved freshness requirements, returned data version, and authoritative-state comparison.
+
+**L6-E21-C — IdP unavailable**
+
+The record defines a synthetic identity-service condition.
+
+Under the original dependency model, it supports predicting possible impairment of `reservation_write` and `approved_worker`.
+
+It does not prove that any real service failed or that all identities and sessions were affected.
+
+Additional evidence: identity-service scope, actual authorization decisions, and affected-route execution records.
+
+**L6-E21-D — HTTP 201 without commit evidence**
+
+The record reports an acknowledged creation response.
+
+It does not establish that the reservation was durably committed.
+
+Additional evidence: correlated application and database transaction records, commit outcome, and state verification under the applicable consistency guarantees.
+
+**L6-E21-E — Existing backup**
+
+The record establishes only that the synthetic inventory includes an existing backup object.
+
+It does not establish successful execution of `new_backup`.
+
+Additional evidence: the requested backup job identifier, execution receipt, new object identifier, completion state, and validation result.
+
+#### C. Identity-failure impact
+
+The original L6 model assigns `idp` to:
+
+- `reservation_write`
+- `approved_worker`
+
+Therefore, those two routes are potentially impaired.
+
+The model does not assign `idp` to:
+
+- `cached_room_read`
+- `new_backup`
+
+Those routes are not directly impaired by the specified IdP failure under the original dependency assumptions.
+
+This is a predicted dependency effect, not a measured outage.
+
+The model does not specify every possible hidden infrastructure dependency, alternate credential mechanism, or operational fallback.
+
+Consequently, no production-wide impact claim is justified.
+
+#### D. Cache freshness challenge
+
+The synthetic cached response is 240 seconds old.
+
+The modeled cache lifetime is 300 seconds.
+
+Therefore:
+
+`240 < 300`
+
+The response remains within the assumed reuse interval.
+
+The supplemental business freshness requirement is 120 seconds.
+
+Therefore:
+
+`240 > 120`
+
+The response violates that stricter criterion.
+
+Two different conclusions follow:
+
+- Cache reuse eligibility: satisfied under the simplified model.
+- Business freshness: not satisfied under the supplemental requirement.
+
+HTTP 200 does not reconcile the difference.
+
+A technically correct result must preserve both statements rather than compress them into a single healthy/unhealthy label.
+
+#### E. Bounded write-verification request
+
+A suitable synthetic request to the application, identity, and database owners would be:
+
+> Please provide a bounded, authorized record set for the specified reservation operation, including its request identifier, producer timestamps, authorization decision, mapped application transaction identifier, database commit outcome, and authoritative post-operation state. Identify the source system for each record and document clock uncertainty, retention coverage, and any identifier transformations.
+
+The response should be assessed against the application’s defined consistency and durability guarantees.
+
+A matching API response and database record may strongly support the transaction's completion, but completeness remains limited by source coverage, correlation semantics, and the tested operation.
+
+The investigator should not silently infer missing records or assume that identically named identifiers from different producers are necessarily equivalent.
+
+#### F. Final technical assessment
+
+A defensible final statement is:
+
+> The supplied L6 records are synthetic. The original route model predicts potential impairment of reservation writes and approved worker jobs under an assumed IdP outage. The cached-read response is within the modeled 300-second reuse interval but exceeds the supplemental 120-second business freshness criterion. The reported HTTP 201 response does not establish durable reservation persistence, and an existing backup does not verify new-backup creation. No production incident or completed operational change is established. Further validation requires effective configuration evidence, bounded identity and application records, authoritative transaction results, and source-coverage confirmation.
+
+This statement is appropriately limited to the evidence available.
+
+It identifies what is known, what is inferred, and what would need to be tested.
 
 **EX022 — Model route outputs.**
 
