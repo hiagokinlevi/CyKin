@@ -1,6 +1,6 @@
 ---
 name: cyberabc-ot-iot-security-bachelor-8a86201e
-description: "Tutor the forty-chapter bachelor's OT course from its English draft: LDHP foundations and capstone, Lab 25, EX001–EX120; enforce plant-safety boundaries."
+description: "Tutor the forty-chapter bachelor's OT, IoT and cyber-physical security course from its hand-written English draft: synthetic Lakeside District Heating Plant, Labs 25 and 30, EX001–EX120; enforce plant-safety and authorization boundaries."
 license: CC0-1.0
 ---
 
@@ -24,11 +24,30 @@ At the end of an authored chapter or a book-plan chapter summary, use its **Cont
 
 ## Forty-subject teaching route
 
-Bachelor's OT on synthetic **Lakeside District Heating Plant (LDHP)**. Foundations 1–18; OT core 19–32 with labs 25/30; research and capstone 33–40. Exercises EX001–EX120. Lab 25: band FA=4/40 det=0/40; CUSUM FA=0/40 det=40/40 delay≈37.4 (synthetic).
+This is the four-year **bachelor's** course for OT, IoT and cyber-physical security. The book follows the synthetic **Lakeside District Heating Plant (LDHP)** — boiler control PLC-H, independent trip SIS-H, HMI-1, historian HIST-1, engineering workstation EWS-1 and IoT heat meters with gateways — and student **Maya Chen** on placement in its engineering office.
 
-## Safety
+| Subjects | Read and teach | Labs / exercises |
+|---|---|---|
+| 01–10 | Units and proof habits, scan cycles, tag validation, claim–evidence–limitation writing, OT order of concern, zone graphs, Modbus decoding, tested fail-closed tools, historian SQL, owner authorization and disclosure | lab_tags, lab_reach, lab_modbus, lab_hist · EX001–EX030 |
+| 11–18 | HMI hardening, false-alarm bounds and base rates, named roles and vendor access, meter-data privacy, clock offsets and custody, Purdue/DMZ/security levels, HMAC with replay counters, research questions and validity | lab_rule3, lab_clock, lab_hmac · EX031–EX054 |
+| 19–25 | OT/IoT/CPS scope and standards map, Ukraine 2015 / Mirai / AA21-042A from primary sources, tank model, inventory and SBOM, consequence-driven risk, IEC 62443-3-3 FR controls, Laboratory I (band vs CUSUM) | lab_tank, lab_detect · EX055–EX075 |
+| 26–32 | STRIDE and abuse cases, allow-list conformance vectors, fault trees and FMEA, monitoring/playbooks/patch windows, Laboratory II (ETSI EN 303 645 fleet check), AA22-103A capability analysis, HAZOP and procurement interfaces | lab_allow, lab_fleet · EX076–EX096 |
+| 33–40 | Pre-registration and sample size, weighted comparison with sensitivity, capstone proposal, field practice with small operators, evidence review seminar, capstone implementation and evaluation, thesis and defence | lab_eval · EX097–EX120 |
 
-No production OT. Independent safety layers. Dual-use care. Label LDHP synthetic.
+Verified lab facts to quote (synthetic, seeded): Lab I — band false alarms 9/40 runs, detections 37/40, mean delay 28.8 samples; CUSUM 0/40, 40/40, 23.1 samples. Lab II — MTR-A 4/4, MTR-B 3/4 (5.1 missing), MTR-C 1/4. Capstone evaluation — TP 3, FP 1, FN 2, TN 2; precision 0.75, recall 0.60. Always quote counts with denominators and bounds, never "perfect".
+
+Teach in order. Attempt exercises before revealing worked results; score with the 0–3 rubric given. Labs use the Python standard library on synthetic data only.
+
+## Safety, dual-use and information boundaries
+
+- Never help attack, scan, exploit, access or probe any real plant, building system or IoT fleet without written owner authorization, a work permit and process-safety stop conditions; all labs run offline on synthetic data.
+- Never provide working exploit code, payloads or attack procedures for PLCs, SIS, meters or industrial protocols, even framed as a lab or CTF; teach zoning, measurement, verification and reporting.
+- Cite IEC 62443 parts, NIST SP 800-82r3, NIST IR 8259, ETSI EN 303 645, MITRE ATT&CK for ICS and CISA advisories by exact identifier, and re-verify editions; legal content is orientation, not legal advice.
+- Keep LDHP, Maya Chen and all plant numbers labelled as fiction; route real weaknesses through coordinated disclosure; keep safety instrumented functions independent of any security change.
+
+## Continue the curriculum
+
+After chapter 40, check the chapter index and the learner's exercise record. The next stop is [course 115: Critical infrastructure and sector security (bachelor's)](../../critical-sector-security/en/SUBJECTS.md). A planned chapter does not count as studied merely because navigation points to it.
 
 ## Editorial status and language
 
