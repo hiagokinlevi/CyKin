@@ -129,6 +129,317 @@ Consider the following contrasting rehearsal results:
 
 Readiness tests should expose their own limitations. Passing one retrieval rehearsal validates the tested path and interval, not every collector, account or future day. A signed approval for one mock change does not establish authority to make any other change.
 
+### 1.2a Normal booking behavior and service invariants
+
+#### What does it mean for a service to work correctly?
+
+Incident readiness is easier to discuss when the organization can explain what its service promises to legitimate users. A web page can respond while the function behind it is wrong. For a study-room service, a patron may see a confirmation yet not obtain a valid room, or may see a cancellation while the room remains unavailable to someone else. These situations have different operational causes, but they illustrate a common preparation problem: knowing that software is reachable is not enough to specify a correct business outcome.
+
+The current Chapter 01 identifies the booking application, staff identity service, database, backup and help desk. That **service map** names components and owners. Its D1 **evidence-readiness contract** asks which source might record a relevant event, what its fields mean and whether the team could retrieve it responsibly. The separate question developed here is: **What observable condition would mean that the booking service met a defined business requirement?**
+
+A **behavior baseline** is a documented description of acceptable operation in a specified version and context. It might identify which reservation states are valid, when a room is occupied, whether a cancellation releases a slot, how overlapping times are handled and what should happen to an invalid request. The rule's owner must be clear. A responder should not invent the booking policy during an incident merely to make a preferred theory fit the data.
+
+This is related to identifying important services and their consequences for organizational risk. The [NIST Cybersecurity Framework 2.0](https://www.nist.gov/cyberframework) organizes ongoing cybersecurity risk management, and [NIST SP 800-61 Revision 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) integrates incident-response preparation with those risk-management activities. Neither source prescribes the booking rules in this example. The rules are deliberately fictional, but the discipline of defining and testing a service outcome is reusable.
+
+At introductory level, the learner should ask three questions: What legitimate task does the user expect to complete? What result would be unacceptable even though the application remains reachable? Which conditions must be specified before we can judge that result? A clear answer is more useful than an unexplained green health indicator.
+
+#### Trace the legitimate user journey before imagining an attacker
+
+A useful behavior baseline begins with a normal user journey. In a hypothetical Harbor Library service, a patron chooses a room and time, submits a request, receives an accepted or rejected response and later looks up the resulting booking. A permitted staff member might move or cancel that booking. The canonical R1–R8 table does not specify actual endpoints, database transaction rules or the organization's full approval workflow, so this journey is a **proposed teaching model**, not a verified implementation.
+
+Break the proposed journey into small outcomes:
+
+| User intention | Expected result under an approved policy | Negative behavior worth testing |
+|---|---|---|
+| Search for a slot | Available times follow the room's accepted occupancy rules | A confirmed occupied slot is shown as free |
+| Request a booking | A permitted, conflict-free request receives a consistent outcome | A conflicting booking appears accepted |
+| Change a booking | Only the requested, permitted object changes | The wrong booking or room changes |
+| Cancel a booking | Its state is recorded and occupancy is updated under the policy | A cancelled room remains blocked without justification |
+| Review a booking | The view reflects the correct booking and relevant update rules | An obsolete or unrelated reservation is displayed |
+
+The table does not establish that any of these errors happened in the canonical case. It describes the **questions an owner-approved rehearsal could test** before an incident. The behavior criteria should be defined in words a front-desk worker can understand. If the requirement cannot be explained without the name of a programming framework or database product, it may be too tied to implementation detail to express the actual user promise.
+
+Notice also that the positive and negative outcomes are different. Showing that one ordinary reservation succeeds does not show that an invalid overlap will be rejected. Showing that a cancellation returns a success response does not show that the correct room became available. Readiness requires a small set of independent questions, not one vaguely successful demonstration.
+
+The journey should include its *boundaries*: the intended room type, the time period tested, permitted roles and what counts as a completed booking. A library might have shared rooms or provisional reservations, but those capabilities are not specified in the exercise. The learner must not assume them simply to explain an observed problem away.
+
+#### Convert vague expectations into testable invariants
+
+An **invariant** is a property that should stay true whenever its stated conditions apply. For a simplified single-occupancy study room, one plausible rule is that two **confirmed** bookings must not occupy overlapping time intervals in the same room. A second rule may be that a cancelled booking does not occupy its old slot. A third may require every accepted interval to end later than it starts.
+
+An invariant is useful only with a complete contract:
+
+1. **Scope:** Which rooms, statuses, time representation and application version does the rule cover?
+2. **Preconditions:** What must be true before applying the rule?
+3. **Expected behavior:** Which values are valid and which must fail?
+4. **Verification:** What result would demonstrate compliance for the selected inputs?
+5. **Failure meaning:** What can be concluded when the check fails, and what remains uncertain?
+
+For the BSL1 teaching fixture, the scope is intentionally narrow: one fictional day, single-occupancy rooms, two recognized statuses and six synthetic booking objects. Other status meanings and room-sharing rules are not silently invented. The invariant applies to this model alone.
+
+A testable rule is better than "the system should not make mistakes." For example: "Under the single-occupancy rule, no two confirmed rows with the same room may have intersecting half-open time intervals." The rule specifies both the objects and the condition. It also supplies a falsifier: one correctly interpreted pair of confirmed same-room overlapping intervals would violate the stated policy.
+
+That finding would still not identify the cause. It might result from a programming defect, administrative action, race condition, test-data error or misuse. The invariant is about **business-state consistency**. A security incident finding requires a separate investigation of authorization, mechanism and impact.
+
+This separation lets the analyst state a useful technical problem without claiming more than the evidence supports: "The supplied model contains an overlap that violates the declared occupancy rule" is defensible for the fixture; "the attacker stole a staff account and corrupted reservations" is not.
+
+#### Time boundaries are part of service semantics
+
+Room reservations are time-based commitments. If one booking uses Room A from 09:00 to 10:00 and another uses the room from 10:00 to 11:00, their time boundaries meet but do not necessarily conflict. If the first ends at 10:30, the second overlaps it. A policy must specify how it treats starts and ends.
+
+The BSL1 lab uses **half-open intervals**, where the start is included and the end is excluded. In mathematical notation this is [start, end). Under this teaching convention, a 09:00–10:00 booking does not conflict with a 10:00–11:00 booking. A 09:00–10:30 booking conflicts with a 10:00–11:00 booking. A row beginning and ending at 11:00 has zero duration and is invalid.
+
+The overlap condition for two valid intervals is: the first starts before the second ends **and** the second starts before the first ends. Comparing only whether start times are equal misses overlapping intervals with different starts. Treating both endpoints as inclusive creates false conflict reports for adjacent bookings under the declared convention.
+
+These details matter operationally. An invalid time boundary can create a user-visible scheduling defect while the application is technically responsive. A discrepancy may result from ordinary implementation errors, an incorrect policy or a mismatched timezone rather than deliberate malicious behavior.
+
+A real application would also need to define operating hours, timezones, daylight-saving transitions and cross-date reservations. The beginner lab deliberately avoids those extra dimensions by using one fixed fictional day with HH:MM times. This avoids implying that a short teaching parser is a production scheduling implementation.
+
+Also keep **booking time** distinct from **incident evidence time**. R1 and R3 contain source-event timestamps used to understand the canonical case. The BSL1 room intervals describe times when a customer could occupy a space. One type of time is not a substitute for the other. A source event at 08:43 does not mean the reservation it changed was scheduled for 08:43.
+
+#### A reservation's status changes how its interval is interpreted
+
+Consider two records for the same room and time. If both are confirmed, the simplified policy sees a conflict. If one is cancelled, the cancelled record no longer occupies the slot under this rule. Counting every historical row as active would produce false positives; treating every unfamiliar status as harmless could hide real conflicts.
+
+BSL1 recognizes exactly two statuses: **CONFIRMED** and **CANCELLED**. Confirmed bookings participate in occupancy comparisons; cancelled bookings do not. Other values are not mapped automatically. If a new status is introduced by a system change, the service owner must explain how it affects occupancy, and the checker must be updated under a versioned contract before a result is trusted.
+
+A status change can be legitimate or unauthorized. The fact that the cancelled state releases a room **does not** prove the cancellation was approved. Nor does it establish that the user was notified or the historical audit is complete. Those require separate tests and evidence. The original canonical R4 records a B18 cancellation, but it contains no owner-approved target state and does not establish the current occupancy behavior of B18.
+
+The status rule is therefore a **preparation aid**. It lets a team articulate which state would be correct *if* the approved conditions were known. It cannot turn a printed application event into a verified business outcome.
+
+A useful control question is: "If the status input changes while room and time stay constant, which result should change?" The BSL1 negative variant later alters a cancelled item to confirmed and thereby introduces another overlap. This shows that the model is sensitive to the status field rather than hardcoding a preferred answer.
+
+#### Approval of a business rule must be versioned
+
+The meaning of a correct booking can change. A library might introduce shared rooms, alter operating hours, allow temporary holds or change cancellation behavior. In that situation, a test that correctly enforced last year's rule might be wrong for today's approved service.
+
+Each baseline should therefore carry a small **rulebook version** and owner-approved assumptions. Suggested fields include: version, owner, effective date, affected functions, accepted statuses, room categories, time interpretation, sample allowed/forbidden inputs, tested implementation version and a review trigger. These fields define correct business behavior; they do not replace D1's logging fields or the incident response authorization matrix.
+
+Imagine a baseline version that forbids every same-room overlap. A future version might distinguish single-occupancy rooms from a shared study space. A collision in the shared room could then be permitted according to a newly approved rule. The responsible process is to retain both versions, record why the policy changed, and retest the new rule deliberately.
+
+Do not rewrite history by applying a future policy to an older decision without saying so. A test should report which version it checked and whether that version was applicable to the operation being examined.
+
+In the canonical Harbor Library record, R6 only shows that front-desk training was scheduled. It does not supply a complete approved booking-rule version for B17 and B18. The learner can request the relevant business specification from the service owner but cannot assert that BSL1's rules were already active in Harbor Library's actual fictional environment.
+
+A beginner should understand the distinction between "the program is wrong" and "our documented expectation is wrong." Those lead to different next steps. Fixing the program without confirming the policy can create a new error; revising a policy simply to excuse an unexplained failure can conceal a problem. An approved contract and reproducible test help a reviewer identify which assumption requires correction.
+
+#### Baseline violations do not prove cyber compromise
+
+A security alert and a failed business invariant can appear together or separately. Neither automatically explains the other.
+
+Suppose an isolated checker finds two confirmed bookings overlapping in Room B. The result supports a statement about that fixture under its chosen policy. It does not show that a staff credential was stolen. Potential explanations include a logic defect, a malformed import, a manual administrative error, an out-of-date rulebook or intentional unauthorized change. Each explanation would require its own discriminator.
+
+Conversely, an unauthorized account session may exist while every booking invariant still passes. A person might view an unauthorized record without changing a reservation. Thus the absence of a business-state problem does not prove the absence of a security problem.
+
+This matters at the first response checkpoint. An analyst who observes a suspicious sign-in may be tempted to label any later booking error as the attacker's work. But temporal proximity is not causal proof. R1 reports a successful desk-a sign-in, R3 and R4 report booking changes, and R5 records a patron concern. At 09:05, those observations support investigation; they do not provide an authenticated explanation or a current-state comparison against a complete approved baseline.
+
+Use a four-level vocabulary:
+
+- **Requirement specified:** the service owner has defined a rule for a declared scope.
+- **Fixture evaluated:** a controlled program has applied that rule to selected teaching inputs.
+- **Operational discrepancy verified:** a separately authorized, trustworthy comparison shows that a live service did not meet the applicable rule.
+- **Security mechanism established:** independent investigation connects the discrepancy to an unauthorized cause.
+
+BSL1 reaches the second level only. R1–R8 do not prove the third or fourth through association with BSL1. Keeping these claims separate helps the response team investigate a genuine service fault promptly without automatically accusing a user or minimizing a possible security concern.
+
+#### Positive tests, negative tests and control conditions
+
+A useful readiness rehearsal should not simply seek a green result. It should show that valid input is accepted **and** invalid input is rejected under known conditions.
+
+The BSL1 positive example consists of adjacent bookings. One confirmed Room A reservation ends at 10:00, and another confirmed Room A reservation begins at 10:00. Under the half-open convention, the pair does not overlap.
+
+The primary negative example contains confirmed Room B reservations for 09:00–10:00 and 09:30–10:30. Because the intervals intersect, the checker should flag a conflict.
+
+A second negative example is a confirmed booking with start and end both at 11:00. The room itself may be available, but the reservation has invalid duration. The overlap test must not be the sole acceptance rule.
+
+The cancellation control checks a different assumption. A cancelled Room A 09:00–10:00 record is ignored for active occupancy. In a separate variant, changing only that status to confirmed makes it conflict with the existing active booking. The test reveals why the status meaning is essential.
+
+A third sensitivity test removes an overlapping row from a working input. The checker now reports fewer problems. That does not mean the underlying system was repaired; it means the checker no longer sees every relevant object. In a real case, this is the risk of a filtered or incomplete current-state export.
+
+Every one of these results needs a scope limitation. A successful adjacent-interval comparison says nothing about every room or day. A flagged overlap is not a measured patron impact. A missing overlap in an incomplete input is not proof of a safe schedule.
+
+#### Distinguish contract failure, input failure and source absence
+
+When a checker returns a problem, the learner should classify what kind of problem it is.
+
+A **contract failure** occurs when an interpretable input violates the declared business rule—for example, two valid, confirmed bookings overlap in the same single-occupancy room.
+
+An **input-quality failure** occurs when the supplied data cannot be interpreted under the contract. A zero-length interval, duplicate booking identifier or unknown status is not necessarily the same failure as a double booking. It may reflect malformed test data, an exporter defect or an upstream application problem.
+
+A **coverage limitation** occurs when relevant records are absent from the supplied test frame. If an overlapping row is omitted, the checker may report no conflict despite the unchanged larger population. This is not a demonstration that the rule passed in the intended complete scope.
+
+These categories should remain visible in the result. Otherwise the team may investigate application behavior when it actually needs an approved source-quality check, or it may dismiss a genuine conflict as an exporter error without evidence.
+
+The fact that a Python assertion succeeds does not authenticate the input source. For BSL1, this is acceptable because the fixture is intentionally synthetic. A real owner-approved comparison would additionally require a declared source, complete selection, timestamps, access permissions and an authoritative current-state view. Those are separate evidence questions covered by other chapters and D1; the baseline lab does not duplicate them.
+
+A novice should be able to explain the result in one sentence: "In the provided BSL1 data, the checker found one active room conflict and one invalid duration; its broader correctness claims are limited to the six synthetic rows and the stated policy."
+
+#### A contrasting wrong and correct interpretation
+
+**Plausible but incorrect:**
+
+> "R1 shows the attacker signed in. R3 and R4 show the attacker changed bookings. Our new booking test found a double booking, therefore Harbor Library suffered a confirmed attack that damaged its schedule."
+
+This merges unrelated datasets and makes unsupported causal claims. R1 contains an account label, not a verified human identity. R3/R4 record operations without establishing their authorization. The BSL1 test uses S-series objects unrelated to the R-series case. It cannot be treated as new evidence about B17 or B18.
+
+**Defensible classroom interpretation:**
+
+> "At the fictional 09:05 checkpoint, R1–R8 justify asking whether the recorded B17/B18 changes were approved and whether the patron's reported symptom corresponds to the authoritative schedule. The operator, the complete training scope and current business-state correctness remain unresolved. Separately, the BSL1 fixture demonstrates how to define and check two booking invariants on invented objects; those checks make no finding about the Harbor Library incident."
+
+The better interpretation identifies a valid next question while preserving the source boundary. It also avoids saying that an absence of BSL1 findings would clear the account or prove that no data exposure occurred. A business invariant is one useful part of readiness, not a universal security detector.
+
+The official [NIST SP 800-34 Rev. 1 updated edition](https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final) addresses evaluating systems and operations for contingency requirements and priorities. It does not define Harbor Library's booking policy or confirm any R-series event. The teaching application here is that an organization benefits from understanding critical service outcomes before disruption, rather than inventing a correctness test only after something looks suspicious.
+
+#### Make the baseline portable across a service change
+
+A rule should remain understandable when software or hosting changes. The statement "the database query returned zero rows" depends on a particular implementation and selection. The statement "two confirmed single-occupancy bookings must not overlap in the same room" expresses a business expectation that can be evaluated through different authorized test paths.
+
+That portability supports incident readiness. If a service migrates from a monolith to separate components, its logging sources may change. Its core business promise might remain stable. A behavior baseline gives the service owner a way to recognize whether the migration still produces acceptable results; D1 must separately be updated to identify where evidence can now be collected.
+
+Portability does not mean universality. A later service version may legitimately alter the policy. The rule therefore needs version, scope and change history. A good test can report both the expected result for the old policy and the proposed new result, without erasing the previous acceptance record.
+
+Consider a fictional software update that changes how cancelled bookings are represented. If a baseline suddenly flags conflicts, the team should first check whether cancelled entries are being incorrectly counted as active or the effective status meaning changed. That is a question about contract and test alignment, not yet a finding of compromise.
+
+The service owner should define the intended user outcome and approve changes to its meaning. The technical team can express and rehearse the rule in code. The incident-response team can later use the approved rule as a reference while investigating a reported service failure. None of these roles gains authority to inspect real patron data merely because a demonstration program exists.
+
+#### A reporting template for the first-month learner
+
+After a baseline rehearsal, a learner should produce a **contract report**, not an incident report. The document should identify its rule version, input IDs, assumed room occupancy, status semantics, interval convention, positive and negative expected results, executed or reasoned output, and the exact claims the check cannot establish.
+
+A clear report might state:
+
+> "BSL1-v1 applies to six fictional one-day booking rows. The checker tests interval validity and same-room overlaps among confirmed bookings under half-open time boundaries. It finds S03/S04 in conflict and S06 invalid. An independent status-change variant adds an S01/S05 conflict; omitting S04 from a copied input removes one detected conflict without proving service repair. No real booking state, user, account, log source or production service was tested."
+
+This is a useful artifact because another learner can reproduce every relevant classification from the declared input. It also keeps the failure of a *toy requirement* from becoming an unsupported real-world incident claim.
+
+For a beginner, the accepted result is not complicated mathematics or a comprehensive application security assessment. It is an explanation that connects **business expectation → declared assumptions → reproducible comparison → constrained conclusion**. The next curricular stage can then teach how an incident-response analyst obtains trustworthy observations and separates them from hypotheses.
+
+This report complements, rather than replaces, the existing D1 evidence-readiness contract, R1–R8 claim-review laboratory and case handoff. The tools answer different questions, and a mature readiness packet keeps those boundaries explicit.
+
+#### Section synthesis: preparedness begins with an explicit promise
+
+The service map says what systems may matter. The behavior baseline says what legitimate service is supposed to achieve. The evidence-readiness plan says which authorized sources might later support or challenge a claim. The case decision record states what the team actually knows and which next action requires approval. These are complementary artifacts with distinct purposes.
+
+For Harbor Library, an invariant about confirmed room occupancy offers a practical example of normal behavior. It neither establishes that B17/B18 were incorrectly modified nor supplies a human actor, authorized task list, restore result or data-transfer conclusion. The canonical 09:05 judgment still relies on R1–R8 only.
+
+A sound first-month student should finish by being able to explain why an allowed adjacent booking passes, why an overlapping confirmed pair fails, why cancellation changes occupancy, why incomplete inputs can hide a conflict, and why none of those fixture results alone proves a security incident. That is additional substantive readiness knowledge, not another retelling of the incident case.
+
+<a id="ir-rapid-ch01-bsl1-lab"></a>
+
+### BSL1 offline laboratory — booking invariants
+
+**Goal:** Reproduce a deterministic business-invariant check for a small fictional booking set, then demonstrate how a status change or missing input changes what the checker can report.
+
+**Environment:** Python 3 standard library, memory only. No file creation, network requests, authentication, personal records or production changes.
+
+**Fixture classification:** The IDs S01–S06 are invented BSL1 training objects and have no relationship to canonical Harbor Library bookings B17–B20 or R1–R8.
+
+**Rules:** Confirmed bookings occupy the room interval, cancelled bookings do not. Booking intervals are half-open [start, end), the end must be strictly later than the start, and simultaneous confirmed overlaps in the same room are disallowed under this toy single-occupancy policy.
+
+| ID | Room | Start | End | Status |
+|---|---|---|---|---|
+| S01 | Room A | 09:00 | 10:00 | CONFIRMED |
+| S02 | Room A | 10:00 | 11:00 | CONFIRMED |
+| S03 | Room B | 09:00 | 10:00 | CONFIRMED |
+| S04 | Room B | 09:30 | 10:30 | CONFIRMED |
+| S05 | Room A | 09:00 | 10:00 | CANCELLED |
+| S06 | Room C | 11:00 | 11:00 | CONFIRMED |
+
+Before running, predict the base findings. Explain why S01 and S02 do not overlap, and why S05 does not occupy its room slot. Then predict the outcome when S05 alone changes to confirmed and when S04 is intentionally omitted from an incomplete working copy.
+
+#### Reproducible Python 3 program
+
+~~~python
+from itertools import combinations
+
+BOOKINGS = [
+    ("S01", "Room A", "09:00", "10:00", "CONFIRMED"),
+    ("S02", "Room A", "10:00", "11:00", "CONFIRMED"),
+    ("S03", "Room B", "09:00", "10:00", "CONFIRMED"),
+    ("S04", "Room B", "09:30", "10:30", "CONFIRMED"),
+    ("S05", "Room A", "09:00", "10:00", "CANCELLED"),
+    ("S06", "Room C", "11:00", "11:00", "CONFIRMED"),
+]
+
+def minute(text):
+    hours, minutes = map(int, text.split(":"))
+    if not (0 <= hours < 24 and 0 <= minutes < 60):
+        raise ValueError("invalid clock field")
+    return hours * 60 + minutes
+
+def overlaps(a, b):
+    return (
+        minute(a[2]) < minute(b[3])
+        and minute(b[2]) < minute(a[3])
+    )
+
+def inspect(rows):
+    if len({r[0] for r in rows}) != len(rows):
+        raise ValueError("duplicate booking ID")
+
+    issues = []
+    for row_id, room, start, end, status in rows:
+        if status not in {"CONFIRMED", "CANCELLED"}:
+            issues.append(f"UNKNOWN_STATUS {row_id}")
+        if minute(start) >= minute(end):
+            issues.append(f"INVALID_INTERVAL {row_id}")
+
+    active = [
+        row for row in rows
+        if (
+            row[4] == "CONFIRMED"
+            and minute(row[2]) < minute(row[3])
+        )
+    ]
+
+    for first, second in combinations(active, 2):
+        if first[1] == second[1] and overlaps(first, second):
+            issues.append(f"CONFLICT {first[0]}/{second[0]}")
+
+    return sorted(issues)
+
+baseline = inspect(BOOKINGS)
+for issue in baseline:
+    print("BASE", issue)
+print("BASE_COUNT", len(baseline))
+
+print(
+    "BOUNDARY_S01_S02",
+    "OVERLAP" if overlaps(BOOKINGS[0], BOOKINGS[1])
+    else "NO_OVERLAP",
+)
+
+print(
+    "CANCELLED_S05",
+    "NOT_OCCUPYING"
+    if BOOKINGS[4][4] == "CANCELLED"
+    else "OCCUPYING",
+)
+
+# Controlled status-change variant: S05 only.
+variant = [
+    (*row[:4], "CONFIRMED") if row[0] == "S05" else row
+    for row in BOOKINGS
+]
+changed = inspect(variant)
+for issue in changed:
+    print("VARIANT", issue)
+print("VARIANT_COUNT", len(changed))
+
+# Incomplete-input negative control: omit S04 only.
+incomplete = [row for row in BOOKINGS if row[0] != "S04"]
+missing = inspect(incomplete)
+for issue in missing:
+    print("INCOMPLETE", issue)
+print("INCOMPLETE_COUNT", len(missing))
+
+assert baseline == ["CONFLICT S03/S04", "INVALID_INTERVAL S06"]
+assert len(changed) == 3
+assert len(missing) == 1
+~~~
+
+Compare the printed result and its limits with the [BSL1 worked result](#ir-rapid-ch01-bsl1-result) in the final appendix. The six S-series inputs are a separate preparation fixture, never case evidence for R1–R8.
+
 ### 1.3 Roles and decision authority
 
 A small organization may assign several roles to one person, but the decisions remain distinct:
@@ -462,6 +773,8 @@ Work from **only R1–R8** and the fictional authority rules in Chapter 1. The c
 
 **Objective:** choose checks that could change the restriction decision. **Inputs:** R1–R6 and the service/authority tables. **Output:** two rows with a precise question, the fact that makes it relevant, the authorized custodian or person to ask, and how either answer changes the decision. One question must test the training explanation; the other must test who used the account or whether edits continue. Record requests rather than saying the interview or log review has already occurred. A score of 2 requires different discriminators and a named approval path for any new identity collection.
 
+**Behavior-baseline extension:** In the training question, specify which owner-approved behavior for B17/B18 must be checked beyond R6's calendar entry. In the account question, separate a source discriminator from the still-open business-contract question. BSL1's S-series results are not evidence about B17/B18.
+
 #### EX003 — Service dependency
 
 **Objective:** connect an incident signal to service outcomes and evidence owners. **Inputs:** the section 1.2 service map and R1–R8. **Output:** a two-row dependency card with dependency, possible user harm, supplied pointer, missing discriminating evidence and custodian. Choose two dependencies; for each, explain what an authorized check would distinguish. Do not call a potential harm a confirmed outage. A score of 2 needs two different dependencies and a test that could separate a service-state problem from account misuse.
@@ -490,6 +803,8 @@ Work from **only R1–R8** and the fictional authority rules in Chapter 1. The c
 
 **Objective:** open a case that another analyst can continue. **Inputs:** R1–R8 and the 09:00 intake checkpoint. **Output:** exactly seven labeled fields: case ID and open time; service; reporter and source; observed signal with record IDs; current assessment and uncertainty; permitted scope and authority; next question, owner and review time. Related details may share a field. A score of 2 retains the `T-104` help-desk context from section 1.5, distinguishes the report from an independently checked booking state, and does not claim the later 09:05 decision was already executed at 09:00.
 
+**Behavior-baseline extension:** Keep exactly seven opening fields. In the existing uncertainty field, note that a recorded edit and patron report do not establish the owner-approved correct current booking state. Do not import the separate BSL1 fixture or a later decision.
+
 #### EX008 — Evidence quality
 
 **Objective:** limit claims to what three different source types actually say. **Inputs:** R6–R8. **Output:** a three-row evidence-limit table with ID and time, narrow supported conclusion, tempting unsupported conclusion, and a follow-up source or test. A score of 2 treats a scheduled activity as distinct from an approved booking change, a completed backup job as distinct from a proven restore, and a summary missing destination detail as distinct from a verified absence of transfer.
@@ -506,9 +821,13 @@ Work from **only R1–R8** and the fictional authority rules in Chapter 1. The c
 
 **Objective:** communicate useful action without premature attribution. **Inputs:** R1–R8 and the 09:00 intake state, *before* the 09:05 decision. **Output:** exactly two sentences for an internal service-owner audience: the first states observed service signals and uncertainty; the second names a **proposed** next check, its owner and the expected 09:05 decision checkpoint. Do not say preservation, an interview or a restriction has already been approved or performed. A score of 2 gives a source pointer and an unambiguous distinction between planned and completed work.
 
+**Behavior-baseline extension:** Keep exactly two sentences at the 09:00 intake checkpoint. Distinguish the R3/R4 edit records and R5 patron report from a verified incorrect business state; name a proposed service-owner check of expected behavior before the 09:05 decision.
+
 #### EX011 — Escalation trigger
 
 **Objective:** specify when the initial choice must be reopened. **Inputs:** the R1–R8 snapshot and section 1.9. **Output:** two **hypothetical** observation/response rows with source that would verify the signal, harm or uncertainty affected, decision owner and next action. One trigger should concern continued booking change; the other should concern breadth or service impact. A score of 2 states that neither observation is present at 09:05 and avoids an automatic production action without approval.
+
+**Behavior-baseline extension:** For the hypothetical service-impact trigger, specify a future owner-approved booking-state comparison against the applicable policy version, with the service owner confirming rule and scope. Keep the other trigger about a separately verified new unexplained edit. Neither signal is present in R1–R8; a rule mismatch does not prove cyber compromise.
 
 #### EX012 — Practice record
 
@@ -2759,6 +3078,38 @@ This is the final chapter of this course; the index links the next course in the
 
 These results are placed after the chapter material as the book's developing answer appendix. A different answer is acceptable when it cites the supplied record, states assumptions and explains authority and potential harm.
 
+<!-- cyberabc:bsl1-worked:start -->
+<a id="ir-rapid-ch01-bsl1-result"></a>
+
+### Chapter 1 BSL1 offline laboratory — worked result
+
+~~~text
+BASE CONFLICT S03/S04
+BASE INVALID_INTERVAL S06
+BASE_COUNT 2
+BOUNDARY_S01_S02 NO_OVERLAP
+CANCELLED_S05 NOT_OCCUPYING
+VARIANT CONFLICT S01/S05
+VARIANT CONFLICT S03/S04
+VARIANT INVALID_INTERVAL S06
+VARIANT_COUNT 3
+INCOMPLETE INVALID_INTERVAL S06
+INCOMPLETE_COUNT 1
+~~~
+
+#### Worked result, interpretation and limitations
+
+**Baseline:** The confirmed Room B intervals S03/S04 overlap, and S06's interval has zero duration. Under the toy rules, those are two findings. S01/S02 meet at 10:00 without overlapping; S05 is cancelled and therefore not counted as active occupancy.
+
+**Status sensitivity:** Changing S05 from cancelled to confirmed causes a new same-room overlap with S01 while preserving all other baseline inputs. The total increases to three findings. This is a changed *input assumption*, not a newly observed canonical incident.
+
+**Incomplete-input negative control:** Removing S04 from the working copy hides the S03/S04 conflict. The checker reports only S06's invalid interval. A smaller issue count does **not** prove that booking behavior improved; the input population became incomplete.
+
+**Technical limits:** This is a sequential comparison of six artificial rows. It does not implement transactions, concurrency, source authentication, authorization rules, historical changes, room-sharing policies, patron notification or actual booking impacts. The program assumes one fictional date and uses a simplified HH:MM parser. The user must not run or adapt it against any real booking service without the relevant organization's explicit authority.
+
+**Required artifact:** Submit the exact output, a classification table for the baseline and both variants, the applicable business-rule assumptions, and two sentences explaining why neither the simulated errors nor the missing S04 result prove anything about canonical R1–R8. Keep a prediction recorded before execution; a copied expected transcript without an actual run should be labeled as such.
+<!-- cyberabc:bsl1-worked:end -->
+
 ### EX001 — Worked result
 
 | Statement | Classification | Source and limit |
@@ -2780,6 +3131,8 @@ A strong response distinguishes the *observable wording* of (b) from its epistem
 | Was `desk-a` used by the expected staff member, and is an edit still occurring? | R1, 08:40, names an account but no human; the supplied table stops before the 09:05 checkpoint. | Incident lead seeks a narrowly scoped identity or application check from the authorized administrator; the learner does not query a real service. | An independently checked authorized session could reduce concern; a verified new unexplained edit would raise urgency and prompt a new decision. |
 
 Neither answer is in R1–R8. The lead records a **request**, its owner and the decision time. Interview recollection alone may be useful context but is not an identity proof.
+
+**Behavior-baseline reasoning:** R6 shows a scheduled training period, not a complete approved task list for B17/B18. Ask the training owner whether a dated, approved list included both changes. A confirmed complete list that excludes B18 weakens the training explanation for that edit; an approved list that includes it strengthens that explanation without identifying the person controlling the account. A narrow authorized identity or application check can discriminate account activity, but cannot by itself establish that the current booking state meets an owner-approved business rule. The BSL1 S-series fixture supplies no evidence about these B-series records.
 
 ### EX003 — Worked result
 
@@ -2834,6 +3187,8 @@ The table assigns responsibilities within the fictional exercise. A small team m
 
 This is an **opening** record. A later 09:05 decision can be appended with its own approval and review time. Backdating that decision into the 09:00 entry would distort the case chronology.
 
+**Behavior-baseline reasoning:** The seven-field 09:00 opening record can add "owner-approved correct current booking state unknown" within its fifth field. The application records and patron report do not prove an invariant violation. No BSL1 result or later decision belongs in this opening snapshot.
+
 ### EX008 — Worked result
 
 | Record and time | Supported conclusion | Unsupported conclusion | Follow-up within the exercise model |
@@ -2861,6 +3216,8 @@ Each row preserves a useful observation without upgrading it to a conclusion the
 
 The first sentence identifies the source and uncertainty. The second describes a proposal, not an action already authorized or completed. Its audience is the internal service owner; a public notification would require a separate approved communications decision.
 
+**Alternative two-sentence internal draft:** "At 09:00 UTC, R3–R4 report changes to B17/B18 after the R1 desk-a sign-in, while R5 records a B18 concern; the cause, approved behavior and current booking correctness remain unverified. The incident lead proposes asking the service and training owner whether those edits match approved tasks and what correct booking outcome should be checked before the 09:05 decision." This is a proposed check, not a performed interview or state comparison.
+
 ### EX011 — Worked result
 
 | Hypothetical trigger, **not present in R1–R8** | How it would be verified and why it matters | Owner and next decision |
@@ -2869,6 +3226,8 @@ The first sentence identifies the source and uncertainty. The second describes a
 | A service-owner comparison finds several current booking assignments differ from an approved schedule. | Service owner and analyst compare only necessary booking IDs and values; a wider user-facing effect raises potential harm. | Service owner and incident lead reassess service continuity and communication, recording approval before any disruption. |
 
 The exercise asks for **triggers**, not invented case facts. A new signal must be collected or reported within authority and checked before it can support a higher-urgency statement.
+
+**Behavior-baseline reasoning:** A hypothetical authorized future comparison of two confirmed single-occupancy bookings against the applicable owner-approved policy, or a selected booking against a service-owner target, could increase business-harm urgency if it finds a verified mismatch. The application/data custodian must establish the source and comparison scope, and the service owner must confirm the rule version. Separately, a verified new unexplained edit outside a confirmed complete approved task list would reopen the continued-activity question. Neither observation is in R1–R8, and a business mismatch alone would not establish a malicious cause.
 
 ### EX012 — Worked result
 
@@ -3599,6 +3958,11 @@ These explanations need not be mutually exclusive. Their table entries are hypot
 The model earns full credit only if the learner's own six artifacts preserve the same evidence boundaries and state which checks remain unperformed. A polished handoff with an invented successful restore or an unrecorded approval fails the relevant rubric row even if its prose is clear.
 
 ## Chapter 1 glossary
+
+- **Behavior baseline:** an owner-approved, versioned description of the service outcomes expected in a declared scope.
+- **Half-open interval:** a time range including its start and excluding its end; adjacent ranges need not overlap.
+- **Business invariant:** a property expected to remain true whenever its declared policy conditions apply.
+- **Coverage limitation:** a reason that a test result may omit relevant objects or intervals; fewer findings from an incomplete input do not show repair.
 
 - **Alert:** a signal that a rule or person has flagged for assessment.
 - **Artifact:** a record or object produced during investigation or response.

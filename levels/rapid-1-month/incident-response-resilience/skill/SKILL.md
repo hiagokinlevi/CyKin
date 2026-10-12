@@ -29,7 +29,7 @@ This is the **rapid introductory** course. Teach one subject at a time and use t
 
 | Week / subject | Read and teach | Practical evidence the learner should produce |
 |---|---|---|
-| 1 — Incident readiness | [Chapter 1](../en/book/MANUSCRIPT.md#ch-01): roles, service map, authorization, evidence-readiness contract, claim falsifiers and an offline evidence-bound lab. | A bounded case record, owner map, claim ledger, proposed test and lab transcript using R1–R8 only. |
+| 1 — Incident readiness | [Chapter 1](../en/book/MANUSCRIPT.md#ch-01): roles, service map, behavior baseline, authorization, evidence-readiness contract, claim falsifiers and two distinct offline labs. | A bounded case record, owner map, booking-rule contract, claim ledger, proposed test and separate BSL1/R1–R8 lab transcripts. |
 | 2 — Triage and preservation | [Chapter 2](../en/book/MANUSCRIPT.md#ch-02): event versus discovery time, query-envelope coverage, retention, provenance, competing explanations and scoped service-impact measurement. | A justified timeline, bounded preservation request, source/copy/interpretation analysis, VQ2 transcript and separate IM2 impact ledger; use R1–R16 only after 09:20. |
 | 3 — Containment, cause and recovery | [Chapter 3](../en/book/MANUSCRIPT.md#ch-03): approval, write-path testing, cause hypotheses, manual-queue reconciliation, isolated restoration and service acceptance. | A comparison of bounded actions and a cause-to-fix verification plan using R1–R24; keep W1, MQ3, P1/C1, V1 and K1 as separately released exercise fixtures. |
 | 4 — Tabletop and after-action review | [Chapter 4](../en/book/MANUSCRIPT.md#ch-04): round-based simulation, handoff, communication and measurable improvement. | Six artifacts, a scored handoff, F4-AUDIT release-and-score transcript and an after-action ticket; use Branch S/P and later cards only when their round releases them. |
@@ -37,6 +37,10 @@ This is the **rapid introductory** course. Teach one subject at a time and use t
 ## Chapter 1 claim-review laboratory
 
 Use the [offline evidence-bound lab](../en/book/MANUSCRIPT.md#ir-rapid-ch01-claim-lab) only after the learner reads R1–R8 and predicts the six claim classifications. The eight printed output lines are a check of the in-memory teaching fixture, not proof of a real event. Require the learner to explain why R9 is unavailable at 09:05, why the temporary R6 removal changes only the variant, and why a supplied record cannot by itself establish a human actor, a tested restore or absence of transfer. Compare the transcript and six-row claim ledger with the worked interpretation in the chapter. Then deepen EX001, EX003, EX005, EX009, EX012 and EX013 using their matching final-book worked answers; do not create new exercise IDs.
+
+## Chapter 1 booking-behavior laboratory
+
+Teach the [BSL1 booking-invariant lesson](../en/book/MANUSCRIPT.md#ir-rapid-ch01-bsl1-lab) as a **pre-incident behavior-baseline rehearsal**, distinct from D1 planned evidence sources and from the 09:05 R1–R8 case decision. Require the toy single-occupancy rule, half-open interval convention, two accepted statuses and owner-approved policy-version requirement before running Python. Ask for predictions for the adjacent-slot positive control, confirmed-overlap and zero-duration negatives, cancelled-to-confirmed variant and omitted-row coverage control. Compare all eleven printed lines with the [worked BSL1 result](../en/book/MANUSCRIPT.md#ir-rapid-ch01-bsl1-result). A fictional business-rule failure does not prove compromise; a missing input can hide a conflict. Deepen EX002, EX007, EX010 and EX011 without changing their original two-row, seven-field, two-sentence and two-trigger constraints.
 
 ## Chapter 2 query-quality laboratory
 
@@ -69,7 +73,7 @@ Open the [F4-AUDIT exercise](../en/book/MANUSCRIPT.md#ir-rapid-ch04-f4-audit-lab
 ## Case and source boundaries
 
 - The canonical R1–R8 snapshot belongs to Round A and the 09:05 first decision; R9–R16 enter at the simulated 09:20 Round B review; R17–R24 enter Round C before the 09:37 decision. Event time is not the learner's receipt time.
-- Branch S or P is reported only in Round D. P1/C1 and V1 arrive later in that round. W1, K1, Q1, IM2, MQ3, T1, T2, VQ2, F1, F4-AUDIT and M1/M2 are labeled classroom variants; do not import their results into an earlier canonical decision.
+- Branch S or P is reported only in Round D. P1/C1 and V1 arrive later in that round. BSL1, W1, K1, Q1, IM2, MQ3, T1, T2, VQ2, F1, F4-AUDIT and M1/M2 are labeled classroom variants; do not import their results into an earlier canonical decision. BSL1 S-series booking rows never become Harbor Library R-series incident observations.
 - R21 records tolerance for a brief write pause, not approval or execution. R22's narrow earlier query cannot verify a later revocation. R23 reports a backup job, not a successful restore. V1's blank actor field fails its audit-attribution criterion.
 - Use the [source audit](../../../../SOURCE_AUDIT.md) and the book's references for factual claims. Identify the British Library review as a cited real incident and Harbor Library as fiction. Preserve source rights and avoid copying third-party playbooks into the CC0 book.
 - Never direct a learner to test a real account, disrupt a service, access patron records or send a notification. Such actions require the real organization's authority, environment and procedures, which the course does not supply.
