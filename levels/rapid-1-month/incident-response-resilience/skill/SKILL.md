@@ -16,6 +16,7 @@ Use this **one skill for the whole 1 month course**. The course has one principa
 - [Materials](../en/MATERIALS.md): practice and assessment links.
 - [Supplementary playbooks](../../../../playbooks/incident-response-resilience/README.md): source-linked practice.
 - [Authored English book draft](../en/book/MANUSCRIPT.md): use only chapters and exercises actually present; review is pending.
+
 ## Four-subject teaching route
 
 This is the **rapid introductory** course. Teach one subject at a time and use the authored Markdown book as the source of the lesson. The chapter links below point to draft teaching; the [book plan](../en/book/PLAN.md) is an editorial outline, not substitute prose.

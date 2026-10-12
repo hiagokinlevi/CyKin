@@ -1,7 +1,7 @@
 # Incident Response and Cyber Resilience: Professional Practice
 
 - Language: English (`en`); professional course, six months; approximately 360 hours of planned study.
-- Editorial state: **draft**. Subjects 1–5 of 12 have authored lessons, 25 numbered exercises and 25 worked results. Subjects 6–12, expansion, technical review, editing and the 300-page A4 gate remain open.
+- Editorial state: **draft**. Subjects 1–10 of 12 have authored lessons, 50 numbered exercises and 50 worked results. Subjects 11–12, substantive expansion, technical review, editing and the 300-page A4 gate remain open.
 - Audience: new response practitioners working with a supervisor and an organization's approved procedures. Prerequisites: basic security concepts, identity, applications, logs and service ownership.
 - Author and editorial responsibility: [hiagokinlevi](https://github.com/hiagokinlevi). Original maintainer-owned text is dedicated under [CC0 1.0](../../../../../LICENSE); external sources retain their rights.
 - Educational status: this is a public learning draft, not a completed textbook, credential or authority to operate on real systems.
@@ -10,9 +10,9 @@
 
 ## How to study this draft
 
-Read the five chapters in order. Each chapter is one curricular subject. Work the exercises before opening the answer section; every exercise specifies an artifact that another responder could inspect. Keep four columns in your notes: **observation, inference, decision, verification**. A plausible inference is not a collected fact. A proposed action is not approval, execution or a measured result. These distinctions matter more than a dramatic incident narrative.
+Read the ten authored chapters in order. Each chapter is one curricular subject. Work the exercises before opening the answer section; every exercise specifies an artifact that another responder could inspect. Keep four columns in your notes: **observation, inference, decision, verification**. A plausible inference is not a collected fact. A proposed action is not approval, execution or a measured result. These distinctions matter more than a dramatic incident narrative.
 
-This course's fictional case is **Cedar Training Network (CTN)**, an invented organization with an enrollment portal. All names, accounts, ticket IDs, timestamps, systems, policies, records and retention windows below are synthetic classroom data. There are no real personal records or reachable services. Record IDs `C01`–`C12` are case cards, not externally sourced facts. A card's *event time*, *ingestion time* and *release time* can differ. Unless a chapter expressly releases a later card, use only the information available at that chapter's checkpoint. Exercise variants marked `V` are separate simulations and do not rewrite the main case.
+This course's fictional case is **Cedar Training Network (CTN)**, an invented organization with an enrollment portal. All names, accounts, ticket IDs, timestamps, systems, policies, records and retention windows below are synthetic classroom data. There are no real personal records or reachable services. Record IDs `C01`–`C33` are case cards, not externally sourced facts. A card's *event time*, *ingestion time* and *release time* can differ. Unless a chapter expressly releases a later card, use only the information available at that chapter's checkpoint. Exercise variants marked `V` and playbook specimens `P0`/`P1` are separate simulations or teaching artifacts and do not rewrite the main case.
 
 The recommended starting point for organizational incident-response outcomes is [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final). It connects response to cybersecurity risk management; it does not give CTN's analyst the authority to change a production tenant. [NIST CSF 2.0](https://www.nist.gov/publications/nist-cybersecurity-framework-csf-20) provides outcome categories rather than this book's case procedure. The exercise worksheets, scoring rubrics, synthetic data and decision gates here are original teaching devices. Older [NIST SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final) and [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) inform log-management and forensic vocabulary; their dated operational details must be checked against current tools and an organization's rules. In particular, this course does not offer legal chain-of-custody advice.
 
@@ -23,9 +23,14 @@ The recommended starting point for organizational incident-response outcomes is 
 3. [Alert intake and severity assessment](#ch-03) — reconcile signals and assign a reviewable priority.
 4. [Evidence preservation and case records](#ch-04) — collect bounded copies and document provenance and limits.
 5. [Investigation, hypotheses and timeline building](#ch-05) — test competing explanations without inventing an actor.
-6–12. Containment planning, eradication, recovery, communications, tabletop validation, improvement and professional capstone: **planned in the [book plan](PLAN.md), not yet authored**.
+6. [Containment planning and approvals](#ch-06) — compare targeted controls, authority and measured effect.
+7. [Eradication and verification](#ch-07) — link a task to an edit, preserve uncertainty and verify changed paths.
+8. [Recovery, continuity and return to service](#ch-08) — compare data candidates and apply an acceptance gate.
+9. [Communications, privacy and legal coordination](#ch-09) — issue bounded, audience-specific drafts and referrals.
+10. [Playbook engineering and quality review](#ch-10) — repair and test a supervised decision aid.
+11–12. Supervised incident simulation and case portfolio with after-action review: **planned in the [book plan](PLAN.md), not yet authored**.
 
-The five authored subjects each end with five exercises. The [worked-answer appendix](#worked-answers) holds EX001–EX025 in the same book. Its model artifacts are examples of defensible reasoning, not a substitute for the local rubric or authority checks.
+The ten authored subjects each end with five exercises. The [worked-answer appendix](#worked-answers) holds EX001–EX050 in the same book. Its model artifacts are examples of defensible reasoning, not a substitute for the local rubric or authority checks. The planned complete course contains 60 exercises, including five each in the two remaining subjects.
 
 <a id="ch-01"></a>
 
@@ -400,7 +405,444 @@ Three learners defend H1, H2 and H3, each citing source IDs, one tension and a f
 
 ### Subject synthesis and next step
 
-This five-chapter sequence moves from prepared ownership to bounded authority, triage, preservation and competing explanations. It has **not** performed containment, eradication or recovery. [Chapter 6's plan](PLAN.md#ch-06) introduces containment planning and approvals; its full lesson and exercises still need authorship. Before moving on, a learner should be able to tell another responder what was actually observed, what remains a hypothesis, which source might resolve it and who has the right to act.
+This first five-chapter sequence moves from prepared ownership to bounded authority, triage, preservation and competing explanations. It has **not yet** performed containment, eradication or recovery. [Chapter 6](#ch-06) uses the resulting handoff to compare bounded controls and approval gates. Before moving on, a learner should be able to tell another responder what was actually observed, what remains a hypothesis, which source might resolve it and who has the right to act.
+
+<a id="ch-06"></a>
+
+## Chapter 6 — Containment planning and approvals
+
+### Learning outcomes and connection
+
+The learner can compare containment options against service harm, evidence strength and rollback; draft an action-specific approval; and distinguish a reported control change from measured effect. Chapter 5 left an S42 edit, a disputed approval and an account-to-request join unresolved. A professional responder must use the new facts below to narrow the decision without treating containment as a diagnosis. The supervised artifact is an action record that could be reviewed by the service owner before any real change.
+
+### 6.1 A containment objective is narrower than a cause claim
+
+**Containment** seeks to limit further harm while investigation continues. It does not require final attribution, but it does require a named harm path and a proportionate control. At 09:26, disabling the shared `svc-enroll` account would affect a scheduled enrollment job and perhaps other services. Revoking `s-77` might be narrow, yet no record directly joins that session to `q-144`. A temporary hold on writes to one slot might preserve the rest of enrollment, but only if the application owner knows which write routes the hold covers. These are *options*, not permissions. [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) frames response choices within organizational risk management; CTN's control menu and approval form are fictional teaching tools.
+
+Separate four questions before selecting a control: **What harm do we want to prevent? What evidence makes that harm plausible now? What legitimate service will the control interrupt? What observation would tell us that the control worked or should be rolled back?** A vague “block the attacker” answers none of them. In this case, the immediate harm is another unauthorized or mistaken edit to S42, not an established human adversary. A control aimed at that harm can be justified even while the user of the shared account remains unknown.
+
+### 6.2 New evidence C13–C16 changes the option ranking
+
+The following are invented CTN records. They are released after the 09:26 Chapter 5 handoff; they cannot retroactively justify an earlier decision.
+
+| Card / release | Bounded source and result | What it changes | What it leaves open |
+|---|---|---|---|
+| C13 / 09:29 | Under service-owner approval at 09:27, an application custodian makes a read-only S42 query. Current version 19 is `unavailable`, with last recorded request `q-144`. A separately preserved 08:30 snapshot shows version 18 `open`. | The authoritative source now supports that S42's stored state changed; a display-only explanation is insufficient by itself. | The 09:00 approximate symptom time, change authority, human actor and number of affected learners. |
+| C14 / 09:31 | Job custodian supplies a bounded `batch-17` run manifest: requests `q-140`/S40 and `q-141`/S41. The custodian verifies that this manifest is complete **for this one run** and that its request IDs use the API's namespace. | `q-144` is absent from this approved run; C12's self-reported `batch-17` tag is not reliable proof of origin. | A different job or an incomplete system-wide inventory could still explain `q-144`. |
+| C15 / 09:33 | Service owner checks the authoritative change ledger through 09:33; it contains no S42 addendum to C06. | C11's “might have been included” is not supported by the approved ledger at this checkpoint. | An unrecorded emergency decision, a process gap or another source remains possible. |
+| C16 / 09:35 | Service owner says an **initial ten-minute S42 write hold would be tolerable** while preserving other slots; a longer hold would require a new impact review. | Provides an initial impact tolerance for planning. | It is not approval to enact or extend a hold, and it says nothing about guard coverage. |
+
+C13 is stronger than C10 on **stored state**, because its custodian queried the owner-designated authoritative record. Yet it is still a point-in-time read; it does not count all affected learners or explain why C02's approximate 09:00 observation precedes C05's 09:01 edit. C14 weakens the specific “approved `batch-17` made `q-144`” interpretation. It does not prove intentional misuse. C15 resolves the *visible approval* question for the official ledger through 09:33, but a missing approval record is not a person or a motive. Write those refinements in a new hypothesis version rather than overwriting Chapter 5's 09:26 view.
+
+### 6.3 Compare three candidate controls
+
+The analyst and service owner compare options at 09:35, before C17 or later cards exist:
+
+| Candidate | Potential benefit | Legitimate cost / failure mode | Required authorization and evidence of effect |
+|---|---|---|---|
+| Restrict `s-77` only | Could stop a still-active session if it is part of the write path. | `s-77` has no direct `q-144` join; the restriction may do nothing or interrupt routine integration. | Identity owner and service owner approve a named session; operator logs actual revocation and checks session state plus S42 write activity. |
+| Hold writes to S42 for at most ten minutes | Limits further S42 changes while other slots remain usable. | Legitimate S42 enrollment or correction waits; an unguarded alternate path could bypass it. | Service owner and incident lead approve exact slot, routes, expiry and rollback; application operator executes; monitor guard state and each observed route. |
+| Disable `svc-enroll` account | Could interrupt all uses of that credential. | May stop `batch-17`, staff emergency work and unrelated integration; restoration is more complex. | Identity/service owners and emergency-change authority compare broad impact; verify account state, business functions and rollback. C13–C16 alone do not favor this broad step. |
+
+The **S42 hold** is a defensible *proposal* because C13 confirms a bad current state and the service owner has described tolerable interruption. It remains conditional on exact approval and coverage review. A different local architecture could change the choice: if S42 writes bypass the application guard, the proposed hold may not achieve its objective. The option record must name that uncertainty and a stop rule. “Most narrow” does not automatically mean “effective.”
+
+### 6.4 Permission, execution and validation are distinct records
+
+At **09:37**, card `C17` records an explicit *fictional case approval*: the incident lead coordinates and the service owner authorizes the application operator to enable a **S42-only write hold**, with an automatic expiry at 09:47, a named rollback owner, monitoring of accepted and denied S42 writes, preservation of relevant audit records, and escalation if an alternate route accepts S42 writes. The approved action does **not** include disabling `svc-enroll` or changing other slots. This is a classroom case fact, not authority in a real environment.
+
+At **09:39**, `C18` is the operator's execution receipt: configuration change `g-22` is reported enabled for S42. It records operator role, target, approved change reference, start and rollback owner. The receipt does not prove that the guard covers every path. At **09:42**, `C19` is a read-only audit review: an attempted S42 write labelled `q-147` was denied through one observed application route; an S40 write `q-148` was accepted. No learner initiated these writes. This supports a narrower statement: **the guard appears active for the observed S42 route while S40 remains available**. It does not prove that direct database access or an alternate API route is blocked, nor that the source of `q-147` was malicious.
+
+| State field | At 09:35 | At 09:37 | At 09:39 | At 09:42 |
+|---|---|---|---|---|
+| S42 hold | Proposed | Approved as C17 | Reported enabled as C18 | Observed route denied one S42 request in C19 |
+| Account disablement | Alternative only | Not approved | Not executed | Still not executed |
+| All-route effectiveness | Unknown | Test/monitor required | Unknown | One route observed; alternatives remain unverified |
+
+The status field should never jump from **approved** to **effective** without an execution receipt and relevant observation. A written rollback should say what would trigger it: expiry at 09:47, a legitimate enrollment failure outside the approved tolerance, or evidence that the hold is ineffective and must be re-planned. The operator would document the actual rollback and a post-rollback service check. The book does not provide commands to modify a tenant or application; the learner's work is a decision record, using only these synthetic cards.
+
+### 6.5 A separate failure rehearsal: V6
+
+Variant `V6` is an *isolated training tenant*, not a CTN production observation. A simulated S42 guard denies a browser-form write but accepts a direct API write; an S40 control succeeds. A learner should report **partial route coverage** and fail the claimed all-route containment criterion. The correct next step is an application-owner design review of write paths and a bounded retest after an approved change. It would be incorrect to cite V6 as proof that CTN's C17 guard was bypassed; C19 supplies only the main case's one observed route. This variant teaches how a control can look successful in a dashboard yet fail at the boundary the decision actually depended on.
+
+### Common errors and limits
+
+- Converting C16's tolerance into C17's approval. They are separate cards, two minutes apart, with different meanings.
+- Treating C18's configuration receipt as proof of effective containment. C19 tests one observed path; the rest are unverified.
+- Saying C14 proves a hostile operator. It rules out `q-144` from one approved run, not all mechanisms or identities.
+- Letting the 09:47 expiry become a forgotten permanent restriction. Put expiry, rollback owner and a reminder in the decision record.
+- Reusing V6's isolated failure as a main-case finding. Label simulation variants prominently.
+
+### Practice: supervised control review
+
+Give one learner C13–C16 and ask for a two-option comparison. A second learner acts as service owner and must either reject, amend or explicitly approve a scoped action. Only then release C17–C19 and have a third learner score what was actually validated. The recorder versions the action record at 09:35, 09:37, 09:39 and 09:42. The exercise requires no access to a real system.
+
+### Exercises — subject 6
+
+**EX026 — Updated impact statement.** Inputs: C05, C10, C13–C15. Produce a four-row ledger of stored state, displayed symptom, approval scope and actor attribution, with source IDs and one unresolved question each. A 2-point answer distinguishes C13's authoritative S42 state from C10's screenshot and does not name an actor.
+
+**EX027 — Containment comparison.** Inputs: C13–C16 and the three options above. Produce benefit, business cost, permission gate, verification and rollback for each; select a *proposal* at 09:35. A 2-point answer names one reason the narrow option could still fail and does not treat C16 as approval.
+
+**EX028 — Approval-to-effect record.** Inputs: C17–C19. Make four timestamped status lines: proposal, approval, execution and observed result. Include the 09:47 expiry and state which write path remains unverified. A 2-point answer does not call the whole account disabled or all routes blocked.
+
+**EX029 — Conditional rollback.** Inputs: C17–C19. Write a rollback decision card with owner, three triggers, required service and audit checks, and a record of what must remain preserved. A 2-point answer leaves any *actual* rollback unperformed until a triggering observation and authorized operation occur.
+
+**EX030 — V6 coverage review.** Input: the isolated V6 browser/API/S40 outcomes. Write a two-sentence containment verdict, a bounded design question for the application owner and a retest criterion. A 2-point answer says the all-route criterion fails in V6 without importing that result into CTN's C19.
+
+### Subject synthesis
+
+Containment is a controlled attempt to limit further harm. C17 authorizes only the S42 hold; C18 reports execution; C19 provides limited validation. Chapter 7 examines the likely change path and a second configuration concern, while retaining the still-unverified human attribution and the expiry of the temporary hold.
+
+<a id="ch-07"></a>
+
+## Chapter 7 — Eradication and verification
+
+### Learning outcomes and connection
+
+The learner can state a cause hypothesis with evidence limits, distinguish stopping one process from removing its possible persistence paths, design positive and negative verification, and keep the service-impact owner in the decision. Chapter 6 contained one slot temporarily. This subject asks what mechanism produced `q-144` and which configurations must be assessed before the hold expires. The result is a bounded eradication decision, not a claim that a named attacker was found.
+
+### 7.1 Four different statements about cause
+
+“The unexpected task exists,” “the task's recorded run produced `q-144`,” “the task was not in the approved inventory,” and “a person intentionally installed it” are **four different claims**. A source can support the first three while leaving the fourth unknown. A professional case record should name the producer and collection method for each, then identify what would disconfirm the proposed causal chain. For example, a task run record with a request ID in a different namespace would weaken the task-to-API join. If the application custodian verifies the namespace and exact request ID, confidence in the mechanism rises, but account sharing and absent actor fields can still prevent attribution.
+
+Eradication has two parts: remove or correct a cause *if sufficiently identified*, and test whether the harmful path or configuration can recur. Deleting a suspicious object without preserving its state may destroy the very record needed to verify the mechanism. Conversely, preserving it does not require leaving it active forever. The owner must approve a sequence: preserve a bounded configuration and task-run record, plan the change and rollback, execute through an authorized operator, then verify both the expected improvement and the absence of unwanted side effects. The [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) risk-management framing supports coordinated response and improvement; the exact CTN task and change procedure are invented for this course.
+
+### 7.2 New cards C20–C23
+
+At **09:46**, the application custodian releases `C20`: a preserved scheduler record for `runner-03` shows an unrecognized task named `sync-override`, registered at **08:47**, with a run at **09:00** that logged API request **`q-144`** for S42. The custodian and application owner compare a known-good request against the scheduler and API records, confirming that these request IDs share a namespace and that C05's `q-144` is the same request. This supports the *mechanism* “this task issued the S42 edit.” It does not prove who registered the task, that `s-77` initiated it, or that the task was malicious rather than mistaken work.
+
+The approved C17 hold is due to expire at 09:47. `C21`, a **separate** case record at **09:46:30**, documents fresh service-owner and incident-lead approval to extend the S42-only hold to **10:07** after reviewing C20, the continued enrollment cost and the risk of another edit. The application operator records the extension at **09:46:45** under change `g-23`. It inherits the limited scope, monitoring and rollback owner, and adds an explicit 10:06 review before expiry. C16 covered the initial ten minutes only; C21 records a new decision for the longer interval. An extension must not be inferred from the analyst's wish to keep the control or from the mere existence of C20. The C19 one-route observation still does not certify all-route coverage.
+
+At **09:50**, the identity custodian releases `C22`: a separately retained **configuration-audit** source reports a recovery-method addition to `svc-enroll` at **08:52**, with its actor field blank. This is *not* a reconstruction of the detailed sign-in source in C08, which was stated to expire at 10:00; the two sources have different retention and fields. The recovery-method record indicates a possible continuing access path, but the team has not yet tested whether it works. At **09:54**, `C23` records the job owner's comparison with the approved task inventory and the identity owner's comparison with the official change ledger. Neither `sync-override` nor the recovery-method addition appears as an approved change through that checkpoint. The owners classify the changes as **unapproved configuration changes**. That process classification still does not identify a person or motive.
+
+| Proposition at 09:54 | Supporting cards | Limit / next check |
+|---|---|---|
+| `sync-override` caused the recorded S42 edit. | C20's run `q-144`, validated request-ID semantics, C05 and C13. | The task's origin and author are unknown; verify configuration and other scheduled routes. |
+| Approved `batch-17` made `q-144`. | C12's self-reported tag only. | C14's complete manifest for that run lacks `q-144`; treat the tag as misleading for origin. |
+| A new recovery method could enable renewed access. | C22 records its addition; C23 finds no approval. | Functional state and user/actor identity are not established; identity owner must assess safely. |
+| The S42 guard solves all risk. | C17–C19 and C21 show approval, configuration and one denied route. | Temporary, partial validation; task and identity paths need separate review. |
+
+### 7.3 Build a cause-to-fix verification contract
+
+A useful eradication contract is an explicit chain: **observed mechanism → proposed control → owner approval → preserved baseline → execution receipt → positive test → negative test → monitoring window → reopen condition**. For the task, the positive test is that its status is disabled and it does not run at its next expected schedule. A negative control is that the legitimate `batch-17` S40/S41 job still has a working path. The latter matters because disabling the entire shared account would appear to suppress the suspect task while also breaking service. The checks should use approved observations or an isolated test copy; a learner must not create a live write attempt from this textbook.
+
+For the recovery method, the identity owner should determine whether the unexpected method is active, obtain the required approval to remove it, and plan credential/session changes with service dependency checks. A check that the old `s-77` session is inactive would support a narrow containment property; it would not prove that every other access path has been removed. The team also needs to preserve enough pre-change record to understand the unapproved configuration. **Do not publish the recovery token or any secret in the case file.** The fictional cards contain no such values.
+
+The single-task conclusion is stronger than Chapter 5's hypotheses, so revise H1/H2/H3 carefully. The official `batch-17` explanation H1 is weakened by C14, while a newly discovered *different task* explains `q-144` more directly. H2's “emergency human used the shared account” remains possible as a *registration mechanism* but is not proven. H3's pure display-only mechanism is contradicted by C13's stored-state change. The updated case hypothesis is: “An unapproved `sync-override` task issued `q-144`, and an unapproved recovery-method change may be a separate persistence concern; actor and relationship between them remain unknown.” It is a versioned inference, not an incident-close statement.
+
+### 7.4 What was actually done by 10:07
+
+`C24` records a scoped decision and outcome. At **09:59**, the response lead and service owner approve disabling only `sync-override`, after the application custodian preserves its configuration and bounded run record. They do not approve deleting evidence or disabling `svc-enroll`. At **10:03**, an authorized application operator records that the task was disabled. A read-only scheduler status check agrees, and no further run appears through **10:07**. The observation window is short, and the recovery method from C22 remains unresolved. No source in C24 proves that the task cannot be re-created, that another runner lacks a copy, or that all account sessions are invalid. The word **eradicated** would therefore overstate the case at this checkpoint.
+
+At 10:06 the owner reviews the S42 hold. The task is disabled, there are no observed new S42 edits since C19, and continuing the hold would further block legitimate enrollment. The owner chooses **not** to renew it past the approved 10:07 expiry, with a read-only S42 write monitor and a stop/escalation condition if a new unexpected edit is observed. That is a risk decision under uncertainty, not proof that the service is safe. It leaves a short residual window before Chapter 8's identity and recovery actions; the handoff should name it. A team should not silently extend a time-bounded control to make a tidy story.
+
+### 7.5 Reproducible, read-only manifest comparison
+
+The following Python 3 snippet uses only invented identifiers and no files or network. It compares one approved job-run set with the observed CTN task-run set. It is a *coverage aid*, not malware detection or actor attribution.
+
+```python
+approved = {"batch-17": {"q-140", "q-141"}}
+observed = {
+    "batch-17": {"q-140", "q-141"},
+    "sync-override": {"q-144"},
+}
+approved_requests = set().union(*approved.values())
+observed_requests = set().union(*observed.values())
+print("unexpected tasks:", sorted(set(observed) - set(approved)))
+print("requests outside approved run:", sorted(observed_requests - approved_requests))
+```
+
+```text
+unexpected tasks: ['sync-override']
+requests outside approved run: ['q-144']
+```
+
+This result says that, *in this supplied two-run fixture*, one task and request are outside the approved set. It does not prove the inventory is complete for all runners or that the new task was installed intentionally. Changing the approved set in a separate `V7` variant would change the classification; a reviewer should preserve both inputs and the reason for any update.
+
+### Common errors and limits
+
+- Calling `sync-override` an identified attacker rather than an unapproved task with a validated request link.
+- Confusing a scheduler status flag with long-term absence of re-creation or alternate copies.
+- Reading C22's blank actor as “anonymous attacker.” Blank means the producer did not supply attribution.
+- Importing C22 into a 09:42 decision or pretending it was recovered from C08's expiring sign-in detail.
+- Treating a stopped task as permission to restore S42 from an arbitrary backup. Recovery must check data and legitimate changes separately.
+
+### Practice: cause-to-fix peer review
+
+One learner submits a cause-to-fix contract at 09:54. Another marks each line **observed, proposed, approved, executed or verified** and asks for an alternative explanation of the recovery-method change. Then reveal C24 and revise the contract: which tests have results, which are pending and what evidence must be preserved? Run the in-memory manifest comparison only on the supplied values. The next subject uses the residual risk and changed service state to design recovery.
+
+### Exercises — subject 7
+
+**EX031 — Mechanism versus actor.** Inputs: C05, C12, C14 and C20. Write a three-column claim ledger: supported mechanism, weakened interpretation and actor statement that remains forbidden. A 2-point result names the validated `q-144` link without joining it to `s-77` or a human.
+
+**EX032 — Two-path eradication contract.** Inputs: C20–C23. Produce separate task and recovery-method rows with baseline, proposed change, approval owner, positive/negative test, monitoring and reopen trigger. A 2-point result leaves unexecuted changes pending and preserves configuration evidence.
+
+**EX033 — Time-bounded hold review.** Inputs: C16–C21 and C24. Build a timeline of initial hold approval, extension approval, execution, 10:06 review and 10:07 expiry. State the residual risk after expiry. A 2-point result does not stretch C17 or C21 beyond their approved scope.
+
+**EX034 — Manifest fixture.** Run or hand-compute the Python fixture in §7.5; give the two exact output lists and two limits of the conclusion. A 2-point result does not classify intent or all runners from this two-run comparison.
+
+**EX035 — 10:07 eradication handoff.** Inputs: C20–C24. Write a 120–180-word handoff with what was preserved, approved, executed and verified, what still needs identity-owner action, and a stop condition. A 2-point result avoids a “fully eradicated” or “case closed” claim.
+
+### Subject synthesis
+
+C20 directly links a nonbaseline task to the S42 edit, and C24 reports that this task was disabled. The short observation window, C22 recovery-method change and unknown actor keep eradication open. Chapter 8 must restore the correct slot state, protect legitimate S40/S41 changes and test service behavior without confusing a backup copy with an accepted return to service.
+
+<a id="ch-08"></a>
+
+## Chapter 8 — Recovery, continuity and return to service
+
+### Learning outcomes and connection
+
+The learner can compare restoration options against approved target data, select a minimal correction, run an isolated acceptance gate, stage a production change and state what monitoring does and does not prove. The case still has an unavailable S42 slot, a disabled unapproved task, a recently expired hold and an unresolved identity configuration change. Recovery must maintain the legitimate S40/S41 work; a backup that predates all changes is not automatically “good.” [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) treats recovery planning, testing and improvement as part of resilience; CTN's exact acceptance sheet is an original case exercise.
+
+### 8.1 Recovery objectives are observable conditions
+
+Before restoring, define **data correctness, service behavior, identity safety, audit quality, rollback and monitoring**. A backup job's “completed” flag does not answer whether its slot values are correct, how old the data is, or whether a restored application can enroll learners. A single successful login does not validate the enrollment API or audit trail. Conversely, demanding zero residual uncertainty would prevent a reasonable return under monitored conditions. The service owner should state which criteria are mandatory at release and which gaps remain assigned for later investigation.
+
+For CTN, a sensible *classroom* target at 10:12 is: S42 `open` under the approved enrollment schedule; S40 and S41 remain `reserved` according to the authorized 08:50 change; both manual and scheduled routes can operate under their intended credentials; new edits have useful request and actor fields; a rollback can restore the pre-change version; and the service owner accepts the result after a timed observation. The target values are owner-approved case assumptions, not inferred from the backup alone. No learner should carry these values into a real production system.
+
+The containment hold from C21 expires at 10:07. At that time C24 shows `sync-override` disabled, but C22's recovery method is still unresolved. The service owner elects bounded read-only monitoring rather than another hold, documenting a stop condition for any new S42 edit. **That choice does not mean the incident is over**. It creates a residual-risk interval until the identity change and service correction are verified. Keep this interval in the recovery handoff; do not tell the story as if the hold stayed active indefinitely.
+
+### 8.2 C25–C30: identity, data, test and return
+
+The next fictional cards have separate approvals, actions and observations:
+
+| Card / release | Record | Decision significance and limit |
+|---|---|---|
+| C25 / 10:11 | At 10:08 the identity owner and service owner approve removal of the unapproved recovery method, a scoped credential change and revocation of `s-77` under CTN's emergency procedure. An authorized identity operator records completion at 10:10. A fresh IdP status query at 10:11 reports `s-77` inactive. | A specific session and method were addressed. No card proves all sessions or hidden copies are absent; legitimate `batch-17` needs a new-credential check before normal restart. |
+| C26 / 10:12 | Recovery custodian supplies a documented 08:30 snapshot, with a digest matching the supplied baseline and a read-only isolated inspection: S40/S41/S42 are all `open`. The current scoped state is S40/S41 `reserved`, S42 `unavailable`. | A whole snapshot restore would revert legitimate S40/S41 reservations. Byte integrity of the snapshot does not prove it is the right business target. |
+| C27 / 10:16 | First isolated reconciliation candidate sets S42 `open` and preserves S40/S41 `reserved`. Manual enrollment works, but the alternate API-route audit record has a **blank actor field**. | Data and one service function pass; the preannounced audit criterion fails. No production change is authorized by this lab result. |
+| C28 / 10:20 | Application owner adjusts the isolated audit mapping and reruns a synthetic manual and scheduled-route test. S42/S40/S41 match the owner target, both authorized routes work, new audit entries include actor and request fields, and a rollback copy is identified. | The revised *isolated* candidate passes its local gate. It does not repair historical C05/C09 provenance or yet prove production will behave identically. |
+| C29 / 10:30 | At 10:24 the service owner and incident lead approve a bounded production S42 correction and staged restart with rollback checkpoint. Authorized operators record changes at 10:26. At 10:30 read-only checks show S42 `open`, S40/S41 `reserved`, `batch-17` using its approved credential path, and new test transactions with audit fields. | Four minutes of observation support initial function, not sustained stability. The approval and observed results are distinct receipts. |
+| C30 / 10:45 | A 15-minute observation after C29 finds no further unexpected S42 edits or scheduled-job failures in the monitored sources. Service owner accepts a **limited return to service** at 10:45, with two more hours of monitoring and an unresolved actor/provenance task. | The accepted service outcome is narrower than “all incident questions solved.” Monitor coverage and future events can reopen the case. |
+
+C25's verification is scoped: it says `s-77` is inactive at 10:11, not that every prior session or copy is gone. C26's digest is about the snapshot bytes; its **data-point age and business correctness** require separate checks. C27 is a failed acceptance test even though the slot values look right. C28's second pass is an isolated rehearsal; C29 is the production action with its own approval, execution and verification. C30 is an owner decision after a stated window. This chain is the difference between “we restored something” and an evidence-based service return.
+
+### 8.3 Choose the least destructive data path
+
+Compare three candidates before requesting C29 approval. **Whole snapshot restore** would set S42 open but also put S40/S41 back to open, undoing approved reservations. It fails the business target despite a valid hash. **Do nothing** preserves S40/S41 but leaves S42 unavailable. **Targeted reconciliation** of S42 can preserve the legitimate S40/S41 state if the team first records current version, approved target, expected API/audit behavior and rollback. The targeted option is still not automatically safe: it needs the C27/C28 isolated gate and owner approval. This comparison is a *data correctness* argument, not a blanket rule that targeted writes are always best.
+
+The following in-memory Python 3 fixture reproduces the value comparison. It reads no files, services or personal data. The sorted output is part of the exercise answer, not proof of a live state:
+
+```python
+target = {"S40": "reserved", "S41": "reserved", "S42": "open"}
+snapshot = {"S40": "open", "S41": "open", "S42": "open"}
+current = {"S40": "reserved", "S41": "reserved", "S42": "unavailable"}
+
+for label, state in (("08:30 snapshot", snapshot), ("10:12 current", current)):
+    gaps = [f"{slot}:{state[slot]}->{target[slot]}"
+            for slot in sorted(target) if state[slot] != target[slot]]
+    print(f"{label}: {', '.join(gaps) or 'none'}")
+```
+
+```text
+08:30 snapshot: S40:open->reserved, S41:open->reserved
+10:12 current: S42:unavailable->open
+```
+
+The first line shows why a whole restore would lose approved changes. The second identifies the one value that the *provided* current-state fixture differs on. Neither line proves that the source of truth has only three slots, that a correction is authorized, or that the application will behave correctly after it. Those claims need the source, owner and functional tests above.
+
+### 8.4 An acceptance gate with a deliberate failure
+
+Preannounce the gate before seeing C27: (1) slot values match the owner-approved target; (2) both manual and scheduled routes work without a new out-of-scope write; (3) new audit records retain actor and request fields; (4) the original evidence is preserved; (5) rollback copy and owner are known. The third criterion deliberately fails in C27. It is tempting to say “four out of five is good enough” because the visible enrollment page works. That reasoning hides a control regression: the next incident might lose the attribution field entirely. In this **classroom** acceptance contract, C27 is **no-go**. The owner can revise a criterion only through a documented decision, not by rewriting the result after the test.
+
+C28 improves the isolated candidate and passes the listed local checks. For production, C29 must state how the operator will verify the same conditions and when to stop. If S42 is wrong, S40/S41 change unexpectedly, `batch-17` fails, or the new audit actor field is blank, stop the staged restart and use the named rollback owner. A rollback might restore availability but does not recreate lost historical data or undo messages already sent. It is a planned recovery path with its own verification, not a magic inverse command.
+
+The **time from the 09:04 ticket receipt to the 10:45 limited acceptance is 101 minutes** in this synthetic record. That is a measured interval with defined endpoints. It is *not* a recovery-time-objective result because CTN supplied no approved RTO target. Similarly, the 08:30 snapshot's age is not, by itself, the amount of data lost; targeted reconciliation preserved the legitimate later S40/S41 changes in this case. RTO and RPO targets must be defined by the owner and compared with actual outcomes before a compliance claim can be made.
+
+### Common errors and limits
+
+- Choosing the most recent backup without comparing its contents to the approved target and later legitimate writes.
+- Calling C28 a production success. It is an isolated copy; C29/C30 supply later operational evidence.
+- Accepting C27 despite a failed preannounced audit criterion without an explicit revised risk decision.
+- Saying C25 proves “all access removed.” It verifies one session and one method; discovery scope remains limited.
+- Treating C30's limited acceptance as incident closure, privacy resolution or a proof of no future recurrence.
+
+### Practice: recovery gate review
+
+Assign recovery custodian, application owner, service owner and observer roles. Given C25/C26, each writes the target and failure conditions *before* reading C27. Reveal C27, record a no-go rationale, then reveal C28 and require a fresh gate decision. Finally reveal C29/C30 and compare isolated, production and monitoring evidence. The practice uses only invented values and the local Python fixture; no restoration is performed by the learner.
+
+### Exercises — subject 8
+
+**EX036 — Candidate comparison.** Inputs: C13, C25 and C26. Compare whole snapshot, do-nothing and targeted-reconciliation options for S40/S41/S42 correctness, service impact, permission, rollback and remaining uncertainty. A 2-point result rejects a whole restore as currently specified without rejecting backups in general.
+
+**EX037 — Acceptance gates.** Inputs: C27 and C28. Score each against the five criteria in §8.4, name the first failed criterion, and write separate isolated-test decisions. A 2-point result records C27 no-go and C28 isolated pass without claiming production success.
+
+**EX038 — Value-diff fixture.** Run or hand-check the Python fixture in §8.3. Reproduce both exact output lines, state the value implication and one reason the code cannot authorize a real correction. A 2-point result notices both S40/S41 regression risk and S42 mismatch.
+
+**EX039 — Staged return record.** Inputs: C29/C30. Produce a timeline of approval, execution, first production checks, 15-minute observation and owner acceptance, with a rollback trigger and 2-hour monitoring owner. A 2-point result does not call 10:30 a sustained-stability result.
+
+**EX040 — Recovery handoff.** Inputs: C20–C30. Write a 130–190-word handoff with data choice, C27 failure and C28 correction, C29/C30 outcome, residual risk, unresolved actor and next checkpoint. A 2-point result distinguishes measured 101-minute interval from an unspecified RTO target.
+
+### Subject synthesis
+
+CTN's limited return is supported by a data comparison, failed and passing isolated gates, a bounded production approval, observed service behavior and a 15-minute review. The case remains open for monitoring, source-quality review and possible data questions. Chapter 9 will separate operational status messages from a new, unverified privacy signal and route notice decisions to the appropriate owner.
+
+<a id="ch-09"></a>
+
+## Chapter 9 — Communications, privacy and legal coordination
+
+### Learning outcomes and connection
+
+The learner can compose status messages for distinct audiences, preserve the boundary between service facts and an unverified data signal, route restricted-data questions to the correct owner, and version a message when evidence changes. Chapter 8 established a limited service return at 10:45. That did not answer every data question. A new queue observation makes it especially important to avoid either reassuring people without evidence or announcing a breach without one.
+
+### 9.1 A message is a decision artifact
+
+An incident message should specify **audience, purpose, known facts with time basis, unknowns, action requested of the audience, next update and approver**. A technical handoff may include case-card IDs and control limits; a learner-facing update should explain service effect and what the reader needs to do, without exposing internal account names or speculative causes. Privacy or legal review requests can cite restricted evidence under an approved access path, but the public message should not copy a contact list, a queue payload or a person's details. The [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) response framework supports coordinated communication as part of incident management; the fictional CTN approval route is an original classroom procedure.
+
+Neither a response analyst nor this book determines a legal notification obligation. The organization must ask its authorized privacy and legal decision owners to assess applicable rules, data categories, affected people, contracts and evidence. “Legal hold” is similarly not an automatic label from an alert: counsel or the organization's authorized records function decides whether a preservation duty applies and its scope. The analyst's contribution is to supply a bounded, accurate record of what is known, which sources might be lost, and which messages have already been sent.
+
+### 9.2 C31–C33: a new signal after return to service
+
+The three cards below are fictional and arrive *after* C30's service-owner acceptance:
+
+| Card / release | Source-bounded observation | What cannot be concluded |
+|---|---|---|
+| C31 / 10:48 | Notification-queue telemetry reports a staging batch `mail-sync-04` containing **12 pseudonymous recipient tokens**. A batch creation time is 10:47; no send receipt is in this card. | The tokens' identities, message content, an external delivery or disclosure. |
+| C32 / 10:52 | CTN's privacy steward says the token-to-contact mapping is restricted. A bounded review needs separate approval; the steward opens a privacy assessment request and asks the response lead to preserve queue metadata. | That the tokens are personal information in this context or that notification is legally required. |
+| C33 / 11:00 | After approval, the queue custodian supplies a scoped status record for `mail-sync-04`: its 12 entries are `not-dispatched` in the internal queue. The external gateway log has a **10:49–10:51 gap** in the inspected window. | The batch was externally delivered; or, conversely, that no other export or disclosure occurred in the gap. |
+
+C33 narrows one question: the inspected queue reports that this specific batch was not dispatched. It does **not** close a broader exposure inquiry. The gateway gap cannot be filled by imagination in either direction. Preserve the original queue status, the query range and the fact that a gap was observed; request only the additional source that could discriminate a suspected external transmission, through the privacy steward and custodian. Do not turn “12 pseudonymous tokens” into “12 affected learners” without a validated mapping and scope decision.
+
+The service status is a separate claim. C30 supports “S42 was available under the accepted test at 10:45 with two hours of monitoring.” It does not support “no personal information was accessed.” Maintaining two parallel status lines—**service return** and **data assessment**—prevents a clean technical recovery from ending an investigation prematurely. It also prevents a privacy referral from being mistaken for proof of exposure.
+
+### 9.3 Stakeholder and approval map
+
+| Audience / decision owner | Minimum useful message | Approval boundary |
+|---|---|---|
+| Incident lead and operators | Case ID, observed service state, controls executed, evidence gaps, next checkpoint, owner of each open item. | Incident lead confirms technical accuracy; restricted records stay in authorized case storage. |
+| Service owner and support desk | S42 user-facing effect, current acceptance state, support script and when to re-escalate. | Service owner approves business-state wording; support does not improvise a breach claim. |
+| Privacy steward / counsel | C31–C33 provenance, token count as observed, internal queue status, gateway gap and pending discriminator. | They decide data-handling and legal questions within their remit; the analyst does not decide notification duty. |
+| Learners / public | What enrollment function was affected, current service status, whether an action is required, next update channel/time. | Designated communications and service owner approve release; privacy/legal owner reviews data-related statements. |
+
+“Update by 12:00 UTC” is a **commitment to communicate**, not a promise that every open question will be resolved by then. If the deadline approaches without a new finding, send a bounded update saying the review continues and give a new checkpoint. Silence invites speculation; overconfident reassurance can be difficult to correct. Record message version, approver, release time and superseded text so the case chronology can explain what people were told at each stage.
+
+### 9.4 Two worked drafts at 11:00
+
+**Internal coordination note (draft, not yet sent):** “CTN-IR-014: The service owner accepted limited S42 return at 10:45 after C29's production checks and C30's 15-minute observation; two-hour monitoring continues. C31 reports an internal queue staging batch with 12 pseudonymous tokens. C33 reports those entries `not-dispatched`; the inspected gateway window has a 10:49–10:51 gap. No external delivery or data exposure finding is established. Privacy steward owns the scoped follow-up with queue/gateway custodians; incident lead owns the 12:00 status checkpoint. Preserve queue metadata and do not infer identities from token count.” This note is technical and restricted to the authorized response group.
+
+**Learner-facing holding update (draft, approval pending):** “One class enrollment slot was temporarily unavailable. It passed CTN's service checks and was returned to use at 10:45 UTC. We are continuing to monitor enrollment and review the event. No action is requested from learners at this time. We will post another update by 12:00 UTC.” This message limits itself to supported service facts. It neither asserts that data was exposed nor guarantees that it was not; the privacy and communications owners must decide whether additional wording is needed before publication. The draft is **not a sent notification** in the case record.
+
+These two drafts deliberately have different detail. The internal note needs source IDs and uncertainty to guide work. The public note needs a usable service fact and next update. An unnecessary technical account name can confuse learners and disclose internal implementation. Conversely, withholding the fact that enrollment is back would be unhelpful. Correctness is determined by evidence and the message's decision owner, not by copying the same paragraph to every audience.
+
+### 9.5 Escalation and preservation without overclaiming
+
+The privacy referral should answer: what exact record triggered concern; which data fields were actually seen; whether the observed tokens can or should be mapped under an approved purpose; what the queue's `not-dispatched` status means; what the gateway gap covers; what other systems might carry an independent send receipt; and when a decision owner needs the next answer. If a retention clock is known, include it; if not, ask the custodian rather than inventing one. Keep any proposed legal or contractual deadline with the authorized specialist, not in an unsourced exercise answer.
+
+A defensible decision log at 11:00 can read: “Privacy assessment opened, external delivery **unconfirmed**, scoped evidence request proposed, learner-facing holding text pending approval, next review 12:00.” It should also cite C31–C33 and C30 separately. If a later record confirms delivery or confirms no delivery for a complete, verified source range, version the finding and revise messages through their approvers. Do not quietly edit the old note; preserve what was known when each message was drafted or sent.
+
+### Common errors and limits
+
+- Converting 12 queue tokens into 12 affected people without a validated mapping and scope decision.
+- Saying the `not-dispatched` status proves no disclosure anywhere despite the gateway gap and other possible paths.
+- Treating a draft message as a sent notice or an analyst's draft as legal approval.
+- Copying restricted internal identifiers into a public status update when a service description suffices.
+- Promising a finding by the next-update time. Promise a status update; preserve uncertainty honestly.
+
+### Practice: audience review
+
+In an isolated exercise, assign incident lead, privacy steward, service owner and communications editor. Give each C30–C33 and the two drafts. Ask each to annotate one unsupported phrase and one missing decision owner. Approve, revise or reject the messages *as drafts*; do not send them. The recorder preserves version 1, produces version 2 with rationale and sets a 12:00 checkpoint. This is a coordination exercise, not legal advice.
+
+### Exercises — subject 9
+
+**EX041 — Two-track status ledger.** Inputs: C29–C33. Write separate service and data-assessment lines at 11:00 with source IDs, confidence, owner and next checkpoint. A 2-point result preserves C30's limited service acceptance and C33's incomplete external-delivery picture.
+
+**EX042 — Restricted coordination note.** Inputs: C30–C33. Draft a 100–160-word internal status note with the 12-token observation, `not-dispatched` status, gateway gap, ownership, evidence request and next update. A 2-point result does not announce an exposure finding.
+
+**EX043 — Learner-facing draft.** Inputs: C29/C30 and the still-open C31–C33 assessment. Write a 60–100-word holding update with service effect, current status, action required, next update and approval state. A 2-point result contains no internal account or token details and is marked unsent until approved.
+
+**EX044 — Privacy referral.** Inputs: C31–C33. Produce a five-question, privacy-limited referral to the steward that distinguishes queue status, gateway evidence, mapping need, retention and decision authority. A 2-point result does not itself decide a legal duty or request a full contact-list export.
+
+**EX045 — Versioned correction.** Variant `V9` supplies a later authenticated gateway receipt for `mail-sync-04` at 11:20, but does not identify recipients; this variant is **not** a main-case C card. Write a version-2 internal note and a message-approval request that correct, rather than erase, the earlier uncertainty. A 2-point result does not backdate the new finding or claim 12 people were affected.
+
+### Subject synthesis
+
+A recovery decision and a data assessment can move at different speeds. At 11:00 the service is under monitored return, while external delivery and data scope remain unconfirmed. Chapter 10 turns the decisions and corrections across all nine subjects into a playbook that guides a future learner without hiding approvals, evidence gaps or failed tests.
+
+<a id="ch-10"></a>
+
+## Chapter 10 — Playbook engineering and quality review
+
+### Learning outcomes and connection
+
+The learner can turn a case's decisions into a **reusable, reviewable procedure** with an entry condition, evidence boundary, role-specific approvals, tested branches, stop rules, rollback, communication gate and version history. A playbook is supplementary to this course's principal book: it supports supervised work but cannot supply authority by its mere existence. Chapters 1–9 provide the teaching and worked case; Chapters 11–12 will later exercise and assess the whole workflow.
+
+The [NIST SP 800-184 recovery guide](https://csrc.nist.gov/pubs/sp/800/184/final) discusses planning, playbook development, testing and improvement. [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) provides exercise-program guidance. The specimen below is **original CTN classroom text**, not a NIST-issued template and not a ready-to-run response command. It contains no production access, credentials or instructions for disruption.
+
+### 10.1 A defective starting playbook, P0
+
+An invented draft `P0` says:
+
+> If any sign-in alert mentions `svc-enroll`, disable the account. Restore the latest backup. Email all learners that a breach occurred. Close the case when the portal loads.
+
+The sentence is short, but it is unsafe as an operational decision aid. “Any alert” lacks service effect and source quality. “Disable” lacks an approver, target scope and dependency review; CTN's shared account supports an approved job. “Latest backup” ignores data correctness and would have reverted S40/S41 in C26. “Breach” exceeds C31–C33's evidence and bypasses privacy/communications approval. “Portal loads” does not test authoritative slot state, alternate API writes, audit attribution, monitoring or rollback. The playbook has no version, owner, source reference, handoff or stop condition.
+
+The repair should be **a set of decision gates**, not a longer paragraph that automatically performs the same actions. A useful playbook lets a novice pause safely, record uncertainty and contact the correct owner. Its success is measured by reproducible decisions and clear outputs, not by having many steps. Some steps must be conditional: if the authoritative state is correct, do not restore; if the owner is unavailable, escalate through the actual approved route; if a test fails, stop release and preserve the failure artifact.
+
+### 10.2 A bounded specimen, P1
+
+The following is `P1`, an *unapproved teaching specimen* designed from CTN's case. Its named inputs are synthetic. The real organization must adapt the scope, approvals, tools, law and contacts before use.
+
+| Gate | Entry question and permitted artifact | Owner / stop condition |
+|---|---|---|
+| 0. Open | Does a service-related signal identify a time, source, reporter and potentially affected function? Open a case and retain raw wording. | Analyst records; incident lead decides coordination. If service link is absent, route for ordinary triage without calling it compromise. |
+| 1. Bound evidence | Which source can answer current state, account/session activity and approval scope? Request minimal intervals and fields. Track event, ingestion, collection and case-receipt times. | Custodian authorizes retrieval; if retention is short, escalate the bounded request. Stop at access boundary when authority is missing. |
+| 2. Decide priority | Separate impact, confidence and loss risk. Record provisional priority and a falsifiable review trigger. | Incident lead uses local taxonomy; no priority label automatically authorizes a change. |
+| 3. Select containment | Compare targeted hold, session action and broad account action by harm prevented, service cost, reversibility and route coverage. | Service/identity owners approve the exact target, expiry, operator and rollback. If no approver or no testable scope, pause and escalate. |
+| 4. Verify cause path | Preserve relevant task/configuration, validate identifier semantics, compare with approved baseline and keep actor uncertainty explicit. | Application/identity custodians; never destroy the only copy or identify a person from an account label. |
+| 5. Return service | Compare backup and current values with the owner-approved target; test data, both service routes, audit and rollback in isolation. Stage production correction only after a recorded gate. | Recovery and service owners. Failed criterion = no-go until a documented revised test or risk acceptance. |
+| 6. Communicate and improve | Separate service status from data assessment; prepare audience-specific drafts with source limits, approver and next-update time. Record measured outcomes and assigned improvement. | Communications/privacy/legal decision owners where applicable. A draft is not a sent notice; no unsupported breach or no-breach claim. |
+
+The specimen keeps **human authority and evidence gates** visible. It does not prescribe a command or a specific vendor feature. A local implementation would need an operator runbook with safe, authorized steps, but that runbook must be reviewed against actual architecture and is outside this classroom text. Links to [supplementary Incident Response playbooks](../../../../../playbooks/incident-response-resilience/README.md) remain source-linked and retain their original rights.
+
+### 10.3 Walk the main case and a negative control
+
+For the **main CTN case**, gate 0 records C02 and service S42; gate 1 identifies C03–C05 and later C09's provenance gap; gate 2 assigns P2 at 09:14 because impact is plausible and detailed IdP records face a stated 10:00 expiry. Gate 3 does **not** disable `svc-enroll`: C13–C16 make a S42 hold a defensible proposal, C17 authorizes it and C18/C19 provide limited execution/effect observations. Gate 4 uses C20's verified `q-144` join and C22/C23's unapproved configuration findings while preserving actor uncertainty. Gate 5 rejects C27's failed audit criterion, accepts the isolated C28 rehearsal and then uses C29/C30's separate production and owner-acceptance receipts. Gate 6 drafts, but does not send, messages while C31–C33 leave external delivery unresolved.
+
+Variant `V10` is a **separate fictional negative control**: an alert names the shared account, but a service-owner read-only check finds the questioned slot correct; the job manifest includes the exact request under an approved change, and there is no unexpected task or data signal in the supplied scope. Under P1, the analyst still records the alert and sources, but the containment branch has no current harm path and should not execute a disruptive change. A supervisor may downgrade or close only after applying the organization's actual criteria and documenting the limited source scope. V10 cannot be imported as evidence that the main CTN case was harmless.
+
+Variant `V10b` tests an **unavailable approver**. The service owner does not answer before a stated log expiry. P1 permits the analyst to request a bounded preservation path from the authorized custodian and invoke the real escalation procedure. It does not let the analyst invent approval for an account disablement. The dry-run outcome is “decision pending; preservation escalated; disruptive action not executed.” If an organization cannot identify a reachable alternate, that is a readiness defect to assign and exercise, not a reason to hide the gap in the playbook.
+
+### 10.4 Score the playbook as a document, then test it
+
+Use six 0–2 criteria. **0** means absent or contradicted; **1** means present but too vague for a second responder; **2** means the condition, owner and artifact are explicit enough to test. The criteria are: (1) trigger and bounded scope, (2) roles and approvals, (3) source/provenance and uncertainty, (4) containment verification and rollback, (5) recovery acceptance with failed-test handling, and (6) audience-specific communication and next review. This scores **document quality**, not whether CTN's real controls work. The score must be supported by line references or a dry-run artifact.
+
+P0 earns **1/12** in this classroom rubric: it names a portal-load check, worth 1 under recovery because an observable condition exists, but omits authoritative data, audit and stop criteria; the other five areas lack a usable gate or actively contradict a safe boundary. P1's written gates specify all six areas, so it can earn **12/12 for designed fields**. That does not mean it is release-ready. A reviewer should still test it on the main case, V10 and V10b, inspect whether another reader makes the same decisions, and obtain technical, service-owner, privacy and language review. If a local adaptation fails a branch, retain that failure and revise the version; do not preserve the score by weakening criteria after the fact.
+
+A walk-through record needs inputs released at each stage, the branch chosen, its rationale, the owner who would approve, an expected artifact and a stop rule. An observed case card and a simulated dry-run result must be labeled separately. A good revision log reads: “P1 draft 0.2: added negative-control V10 and unavailable-approver V10b; kept gate 3 non-executable without approval; owner review pending.” A poor log says “fixed incident playbook” without naming which decision changed or how it will be tested.
+
+### 10.5 Measure outcomes without gaming them
+
+Playbook metrics should include a denominator and a quality condition. “Time to first action” can reward unsafe disruption. More useful classroom measures are: time from C08 expiry warning to an *authorized bounded preservation request*; share of action records with target/approver/expiry/verification filled; share of evidence packages with raw and normalized times; number of recovery tests stopped when a mandatory criterion failed; and time from service acceptance to an assigned improvement ticket. A metric does not replace review of the actual artifact. A one-minute response that disabled all accounts without permission is worse than a slower, bounded decision.
+
+For CTN, the response record could track the C08-to-C09 sequence, C17/C21 approval and expiry, C27 no-go, C29/C30 acceptance, and C33 privacy uncertainty. It must also track failures: C01 lacked after-hours alternates, C09 lacked original-object metadata, C12's self-reported tag misled the early hypothesis, and the first isolated restore lacked an audit actor. Assign each improvement to an owner, due date and falsifiable re-test. Those are **future work items**, not repaired controls merely because they appear in a table.
+
+### Common errors and limits
+
+- Treating a high playbook-document score as proof of technical effectiveness or accreditation.
+- Building one linear path that cannot stop for absent authority, conflicting evidence or a failed recovery test.
+- Copying P0's unsupported “breach” notice into the public branch just because a data-related card arrived.
+- Reusing a source-linked third-party playbook under this book's CC0 dedication without a rights review.
+- Closing a case when the portal loads while data, identity, audit or communications questions remain assigned.
+
+### Practice: peer walkthrough and release decision
+
+Give a second learner P1, the main case up to 09:14, then release later cards at their checkpoints. Require an actual filled gate record; the reviewer cannot use the answer appendix during the first pass. Repeat with V10 and V10b. Compare branch decisions against the preannounced rubric, record disagreements, revise P1 to draft 0.2, and list the approvals and technical tests still needed before any real operational adoption. This is a **tabletop of text**, not an exercise in a production tenant.
+
+### Exercises — subject 10
+
+**EX046 — Defect inventory.** Input: P0 and C13–C33. Name at least six distinct defects, each with the case card or learning gate it would violate and the likely harm. A 2-point result separates a missing approval from an incorrect backup target and an unsupported public notice.
+
+**EX047 — Playbook rewrite.** Input: P0 and P1. Produce a one-page seven-gate local draft (gates 0–6) with trigger, minimal evidence, approval/stop rule, result artifact and owner per gate. A 2-point result keeps it a supervised decision aid, not a command sequence or permission grant.
+
+**EX048 — Three-branch walkthrough.** Inputs: main CTN case through C33 and separate V10/V10b. Produce a three-row branch table: evidence, action status, approval gate, stopping or review condition. A 2-point result applies V10 only to its variant and does not execute a disruption under V10b.
+
+**EX049 — Quality score.** Input: P0, P1 and the six criteria in §10.4. Score each criterion 0–2 for both drafts, cite the text that earns points, and explain why 12/12 document design would still require field testing and review. A 2-point result reproduces P0's 1/12 and distinguishes design from operational proof.
+
+**EX050 — Versioned release note.** Input: EX046–EX049. Write a 100–160-word draft 0.2 release note for future Chapter 11 simulation, including three tested branches, two remaining approvals or technical checks, one owner-assigned improvement and an explicit “not for production” status. A 2-point result does not mark the book or playbook complete.
+
+### Subject synthesis and next step
+
+Ten sequential subjects now teach a supervised response path: prepare ownership, make bounded decisions, triage and preserve evidence, investigate alternatives, contain an observed harm path, test a cause-related change, restore correct service, communicate honestly and review the playbook itself. The public [plan for Chapters 11–12](PLAN.md#ch-11) remains a **plan**. Those subjects must use these artifacts in a supervised simulation and a case portfolio, then the whole 12-subject book needs deeper teaching, independent review and its 300-page A4 verification.
 
 <a id="worked-answers"></a>
 
@@ -468,6 +910,80 @@ These are model results for the **fictional** CTN case. Each exercise's local 0�
 
 **EX025 — Model handoff (156 words).** “CTN-IR-014 is P2 provisional at 09:26 because a reported enrollment symptom and C05 S42 edit merit urgent review, while the affected state and actor remain unknown. C03 reports `s-77` at 08:58; C04's corrected runner event is approximately coincident; C09 supplies client `runner-03` but lacks complete collection metadata. C05 reports `q-144` at 09:01. C12's `batch-17` is a self-reported tag, not a validated job run. C06's visible approval covers S40–S41; C11 suggests an addendum without providing one. C10 depicts an unavailable page, not authoritative S42 state. Scheduled-job error and unauthorized shared-account use remain plausible; display/cache behavior may affect the symptom. Ask the service owner for a bounded S42 state check and the job/application custodians for a `q-144` run record and join semantics. Do not attribute a human or disable the shared account on this record. Reassess after authorized results or before further evidence loss.”
 
+### Subject 6: EX026–EX030
+
+**EX026 — Model impact ledger.** Stored state: C13's owner-approved read shows S42 version 19 `unavailable`, last request `q-144`, while its 08:30 comparison shows version 18 `open`; unknown is the extent of affected enrollments. Display symptom: C10 depicts an unavailable page at a conditional 09:21 UTC; capture clock and cache remain unverified. Approval: C15's official ledger through 09:33 has no S42 addendum, narrowing C11's possible claim; an unrecorded emergency process is still a question. Actor: C05 gives an account label and C14 excludes `q-144` from the approved `batch-17` run, but neither identifies a human. A ledger that states “attacker used `svc-enroll`” loses the evidence-boundary point.
+
+**EX027 — Model option comparison.** Targeted `s-77` restriction could reduce use of that session, but the session-to-`q-144` join is absent and the identity/service owners must approve it; verification needs a session-state and service check, with identity operator rollback. A ten-minute S42 write hold narrows the harm path and preserves S40/S41, but could block legitimate S42 changes and miss an alternate route; the service owner and incident lead must approve scope/expiry, application operator executes, and a guarded-route observation plus rollback owner are required. Account-wide disablement covers more uses but may stop the approved job and other integration, so it needs broader owner/emergency-change approval and a service-wide recovery plan. At 09:35 propose the S42 hold **subject to approval**. C16 supplies tolerability, not that approval; uncertain route coverage is the principal failure mode.
+
+**EX028 — Model action-state timeline.** 09:35: analyst proposes a S42-only temporary hold based on C13–C16; no change yet. 09:37: C17 records incident-lead/service-owner approval for S42 only, expiry 09:47, operator and rollback owner named. 09:39: C18 reports `g-22` enabled by the application operator; execution receipt is distinct from approval. 09:42: C19 shows `q-147` denied on one S42 application route and `q-148` accepted for S40. The observed route supports partial effect; direct database or alternate API coverage is **not verified**. The account remains enabled. The next gate is the 09:47 expiry or an earlier observed bypass/legitimate harm.
+
+**EX029 — Model rollback card.** Owner: application operator under service-owner and incident-lead decision. Triggers: approved 09:47 expiry without extension; evidence of an unguarded S42 write or unexpected S40/S41 denial; a legitimate enrollment impact above the owner-approved tolerance. Before rollback, preserve C17–C19 approvals, receipts and selected audit records under their custodians. On a triggering decision, operator would record configuration version, change time and authorization, then verify S42/S40/S41 behavior and monitor for renewed edits. **No actual rollback is in C17–C19**; an answer must leave execution and result blank. C21 later supersedes the expiry through a new approval, but cannot be presumed at the EX029 checkpoint.
+
+**EX030 — Model V6 verdict.** “The isolated V6 guard fails the **all-route** S42 containment criterion: browser-form writes are denied, but a direct API write is accepted; S40 succeeding shows the service is not globally blocked. Ask the application owner whether both routes share the guard predicate, then repeat positive S40 and negative S42 tests through each authorized path after a reviewed design change.” This is a training-tenant outcome. CTN's C19 still documents only its own observed route and should not inherit V6's bypass as an incident fact.
+
+### Subject 7: EX031–EX035
+
+**EX031 — Model claim ledger.** Supported mechanism: C20's preserved scheduler record names `sync-override` run at 09:00 with `q-144`, and the custodian verified that this request ID matches C05's API namespace and C13's S42 change. Weakened interpretation: C12's `batch-17` tag alone suggested the approved job, but C14's complete manifest for that run lists only `q-140` and `q-141`. Forbidden attribution: neither C20's run nor C03/C09's `s-77` fields identifies the person who registered or operated the task. The two configuration changes in C20/C22 may be related, but no supplied source establishes that relation.
+
+**EX032 — Model two-path contract.** Task row: baseline = approved inventory and preserved C20 task/run copy; proposed change = disable `sync-override` only; authority = application/service owners with incident-lead coordination; positive test = scheduler status disabled and no run at next expected interval; negative test = approved `batch-17` S40/S41 path still works; monitor for re-registration or new S42 requests; reopen if either occurs. Recovery-method row: baseline = bounded C22 configuration audit and owner-approved settings; proposed change = remove unapproved method, address credentials/sessions under identity/service-owner approval; positive test = method absent and scoped old session inactive; negative test = approved integration works after change; monitor for new recovery methods; reopen on an unexpected addition. At 09:54 all changes are **proposed**, not executed. Preserve source records before altering them.
+
+**EX033 — Model hold timeline.** C16 at 09:35 gives initial ten-minute tolerance, no authorization. C17 at 09:37 approves S42 hold until 09:47; C18 reports activation at 09:39; C19 checks one route at 09:42. C20 arrives 09:46 with task evidence. C21 records new approval at 09:46:30 for extension to 10:07 and operator receipt at 09:46:45. C24 disables the task at 10:03 after 09:59 approval. At 10:06 the owner assesses cost and residual risk and chooses no further extension; hold expires 10:07. Between expiry and C25's identity action, an unresolved recovery method and unverified write routes remain, so monitoring and a stop/escalation trigger are essential. None of these cards makes account disablement approved.
+
+**EX034 — Model fixture output.** The supplied code prints exactly:
+
+```text
+unexpected tasks: ['sync-override']
+requests outside approved run: ['q-144']
+```
+
+This compares the two provided sets only. It cannot prove the job inventory includes every runner, or that a person intentionally installed the unexpected task. If a source record were missing, a set difference could mislead; retain source provenance and the approved inventory's version alongside the output.
+
+**EX035 — Model 10:07 handoff.** “CTN-IR-014: C20's preserved scheduler record and validated request-ID semantics link `sync-override` to C05's `q-144` S42 edit. C22 separately reports an unapproved recovery-method addition with a blank actor. C23's owner checks find neither change in the approved inventory. C21's S42 hold extension was approved to 10:07; its earlier one-route check did not prove full coverage. At 09:59 the owners approved disabling only the task; the operator reported it disabled at 10:03 and no further run was observed through 10:07. The service owner allowed the hold to expire after a 10:06 review, with read-only monitoring and escalation for any new S42 edit. Identity-owner assessment, a scoped credential/session decision and service correction remain. Do not call the actor identified, the recovery method removed or eradication complete.”
+
+### Subject 8: EX036–EX040
+
+**EX036 — Model candidate comparison.** Whole 08:30 snapshot: integrity is checked, S42 becomes `open`, but S40/S41 would also become `open`, overwriting later approved reservations; service owner must reject that candidate as currently specified, even if a recovery operator could technically apply it. Do nothing: S40/S41 remain correct, but S42 stays `unavailable`, so the user-facing problem persists. Targeted reconciliation: proposed S42 `open` with S40/S41 preserved as `reserved`; requires service-owner target approval, an isolated two-route/audit test, recorded current version, production change approval and rollback. Its key remaining uncertainty is whether the audited application behaves identically in production. This does not mean backups are useless: the C26 copy helps establish prior values and a recovery fallback, but is not the whole-business target.
+
+**EX037 — Model gate scores.** Use pass/fail, not a post hoc average. C27 passes the stated slot values, the tested manual function and the existence of a rollback copy; it **fails criterion 3**, because the alternate API route's new audit actor field is blank. Its isolated release decision is **no-go**, with evidence preserved and an application-owner correction requested. C28 repeats the isolated check after an audit-mapping change; the supplied card reports target data, manual and scheduled routes, actor/request fields and rollback copy present. Its decision is **isolated candidate pass**, not production acceptance. C29's separate approval and result are still needed. A learner who says C27 is 4/5 and therefore “good enough” has silently weakened the preannounced gate.
+
+**EX038 — Model value-diff output.** The in-memory code prints exactly:
+
+```text
+08:30 snapshot: S40:open->reserved, S41:open->reserved
+10:12 current: S42:unavailable->open
+```
+
+Relative to the owner target, the snapshot would regress two authorized slots; current data needs one bounded correction in this three-slot fixture. The code neither reads a production source nor approves a write. Its values must be checked with a real service owner and custodians before any operational decision.
+
+**EX039 — Model staged-return timeline.** 10:24 C29 approval: S42 correction, staged restart, rollback checkpoint and owners named. 10:26 operator receipt: bounded production change performed. 10:30 read-only checks: S42 open, S40/S41 reserved, approved `batch-17` functioning and new audit fields present. 10:45 C30: 15-minute monitored interval with no unexpected S42 edits or job failure in observed sources; service owner accepts limited return and assigns two more hours of monitoring. A mismatch in slot values, route failure or blank new actor field would trigger stop and rollback review by the named operator/owner. The four-minute result at 10:30 is an initial check, not proof of sustained stability.
+
+**EX040 — Model recovery handoff.** “The service owner rejected a whole C26 snapshot restore because it would revert approved S40/S41 reservations. C27's first isolated S42 correction passed visible data checks but failed the preannounced alternate-route audit-actor criterion; no production move followed. C28's revised isolated candidate passed the supplied data, route, audit and rollback checks. C29 then recorded a separate 10:24 production approval, 10:26 execution and 10:30 first checks. C30 reports 15 minutes of observed stability and limited owner acceptance at 10:45, with two more hours of monitoring. C25 confirms only a specific recovery-method/credential action and `s-77` inactive, not every possible access path. The identity of the person behind the unapproved task remains unknown; C09 provenance and broader exposure questions remain assigned. The 09:04-to-10:45 interval is 101 minutes, but CTN supplied no RTO target, so no RTO pass is claimed.”
+
+### Subject 9: EX041–EX045
+
+**EX041 — Model two-track status.** Service line: “At 10:45 C30 records service-owner acceptance of S42 return after C29's production checks; two-hour monitoring continues. Owner: service owner and application operator. Next checkpoint: scheduled monitoring review or any new S42 write.” Data-assessment line: “At 11:00 C31 shows 12 pseudonymous tokens in an internal staging batch; C33 reports the batch `not-dispatched` but the inspected gateway window has a 10:49–10:51 gap. External delivery and affected identities remain unconfirmed. Owner: privacy steward with queue/gateway custodians. Next checkpoint: approved scoped gateway/source review and 12:00 status.” One line must not borrow the other's confidence.
+
+**EX042 — Model restricted note.** “CTN-IR-014, 11:00 draft for the response group: C30 supports a limited S42 return to service at 10:45 after the 10:26 change and monitored checks; the application owner continues the two-hour watch. C31 reports an internal `mail-sync-04` staging batch with 12 pseudonymous recipient tokens, not 12 identified people. C33's scoped queue status says `not-dispatched` for those entries, while the inspected external-gateway records have a 10:49–10:51 gap. No external delivery or data-exposure finding is established. The privacy steward owns a bounded follow-up with the queue and gateway custodians and decides whether token mapping is needed under an approved purpose. Preserve original queue metadata and query limits. The incident lead will provide the next status at 12:00; no unsanctioned contact-list export or public data claim is approved.”
+
+**EX043 — Model learner-facing draft.** “A class enrollment slot was temporarily unavailable. CTN completed service checks and returned that slot to use at 10:45 UTC. We are continuing to monitor enrollment and review the event. Learners do not need to take action based on this update. We plan to post another status by 12:00 UTC through this channel. This is a draft for service-owner and communications review and has not been sent.” The last sentence is an *editorial status line*; a real approved message would omit that sentence when sent and retain the approval receipt separately. It does not assert either exposure or no exposure.
+
+**EX044 — Model privacy referral.** Ask the steward: (1) What do C31's token fields actually identify, and is mapping necessary for a specific decision? (2) Does C33's `not-dispatched` status cover only this batch or other paths? (3) Which bounded gateway source and time window could resolve the 10:49–10:51 gap, and who may collect it? (4) What are the verified retention and preservation requirements for the queue and gateway records? (5) Who has authority to classify data impact and decide whether any notice or preservation duty applies? The analyst offers C31–C33 source references and uncertainty, not a full contact-list request or a legal conclusion.
+
+**EX045 — Model V9 revision.** “Internal note v2, 11:20 in the **V9 simulation only**: a newly authenticated gateway receipt names `mail-sync-04`. This conflicts with the earlier `not-dispatched` queue view, which was accurate for its inspected source and time. Validate the receipt's event semantics, batch ID, content and recipient scope before concluding delivery to people. Preserve v1 and the new source; privacy steward owns the reconciled assessment.” The separate approval request asks communications and privacy owners whether the earlier learner-facing draft needs revision, what can now be stated and when to update. The new receipt does not backdate knowledge to 11:00, prove that the 10:49–10:51 gap contained a send, or identify 12 people.
+
+### Subject 10: EX046–EX050
+
+**EX046 — Model P0 defect inventory.** (1) “Any sign-in alert” omits service/impact discrimination; Chapter 3 required a bounded case. (2) Automatic account disablement lacks owners/approval and would disrupt approved `batch-17` (C14). (3) It ignores narrower S42 control and rollback (C17–C21). (4) “Latest backup” would undo approved S40/S41 reservations (C26). (5) “Portal loads” would miss C27's blank alternate-route audit actor. (6) A blanket breach email is unsupported by C31–C33 and bypasses privacy/communications review. (7) Closing on a page load discards C30 monitoring and unresolved cause/data work. (8) No source provenance, version or next checkpoint makes a second responder unable to reproduce the decision. Any six distinct, case-linked defects with likely harm satisfy the two-point criterion.
+
+**EX047 — Model seven-gate local draft.** Gate 0: a time/source/service signal opens a case; analyst preserves wording, incident lead owns classification. Gate 1: custodian receives a narrow source/time/field request; missing permission stops access, approaching retention triggers escalation. Gate 2: incident lead records impact, confidence, priority and review trigger; no action right follows from a priority label. Gate 3: service/identity owner approves target, expiry, operator, verification and rollback; absent approval stops disruptive work. Gate 4: source owner preserves and tests the cause hypothesis against an approved baseline; unknown actor remains unknown. Gate 5: recovery and service owners compare data target, two functional routes, audit and rollback, rejecting failed mandatory criteria. Gate 6: communication/privacy owners approve audience-specific messages and assign next update/improvement. Each gate produces a dated case artifact; none is an execution command.
+
+**EX048 — Model branch table.** Main CTN: C13 confirms wrong stored state, C20 links an unapproved task to `q-144`; recommend scoped hold, follow C17/C21 approval and C18/C19 observations, then C24–C30 remediation and recovery; stop at any failed acceptance criterion such as C27. V10 only: correct slot state plus exact approved job record and no unexpected task within supplied scope; document limited negative control, **do not disable** account or send breach notice, and let the authorized supervisor decide downgrade/closure. V10b only: owner unavailable before a source-expiry warning; request authorized bounded preservation and invoke the real escalation route, but leave disruptive action pending. The three rows are separate simulations; one row's result is never imported into another's evidence.
+
+**EX049 — Model score.** Using the six 0–2 criteria in §10.4, P0 scores **0 trigger/scope, 0 authority, 0 evidence, 0 containment/rollback, 1 recovery, 0 communication/review = 1/12**. The one point reflects a vague but observable “portal loads” check; it lacks data, audit and failed-test handling. P1's Gate 0 supplies trigger/scope, Gates 1–2 provenance and uncertainty, Gate 3 authority and reversible containment, Gates 4–5 cause and acceptance, and Gate 6 audience/next review. As a **document design**, it can score **2 in each = 12/12**. That is not field effectiveness: the main case, V10 and V10b walkthroughs, source/rights check and owner approval remain required. A local scorer could lower a P1 criterion only by pointing to an actual missing field or failed branch, not by changing the rubric after seeing the result.
+
+**EX050 — Model draft 0.2 release note.** “CTN response playbook draft 0.2, for Chapter 11 tabletop only; **not for production use**. The main-case walk-through required distinct C17 approval, C18 execution and C19 verification, and stopped C27's failed audit gate before recovery. The V10 negative control did not disable the shared account or announce a breach. V10b preserved the expiring-source request through an authorized custodian while leaving disruptive action pending without an approver. The service owner must approve actual containment limits and rollback; the privacy/communications owners must review audience wording. A technical reviewer must test alternate write routes and the new audit actor field in an authorized environment. The incident lead owns an improvement ticket for C01's missing after-hours alternate, due before the next rehearsal, with a reachable-contact test as its closure criterion. Version 0.2 is a reviewed classroom draft, not a completed course book.”
+
 ## Glossary for the authored subjects
 
 - **Authoritative state:** the owner-designated source used to decide the current service value; it still requires an approved, scoped check.
@@ -477,6 +993,10 @@ These are model results for the **fictional** CTN case. Each exercise's local 0�
 - **Hypothesis discriminator:** a bounded observation that could change support for competing explanations.
 - **Provenance:** recorded source, acquisition method, authority, transformations and integrity information for an artifact.
 - **Reversible proposal:** planned intervention with a target, limit, monitor and rollback owner; it is not the executed intervention.
+- **Containment:** a bounded, approved attempt to limit ongoing harm while investigation continues; its effectiveness requires observation.
+- **Eradication:** cause-related remediation with preserved baselines and verification; stopping one task alone may leave other paths.
+- **Acceptance gate:** preannounced criteria and owner decision that distinguish an isolated test pass from production return.
+- **Playbook:** versioned, supervised decision aid with entry, evidence, authority, stop, verification and improvement paths; it is not an authorization by itself.
 
 ## References and case boundaries
 
@@ -484,5 +1004,7 @@ These are model results for the **fictional** CTN case. Each exercise's local 0�
 - [NIST Cybersecurity Framework 2.0](https://www.nist.gov/publications/nist-cybersecurity-framework-csf-20) (2024): risk-management outcomes; it does not prescribe CTN's action charter.
 - [NIST SP 800-92, Guide to Computer Security Log Management](https://csrc.nist.gov/pubs/sp/800/92/final) (2006): log-management concepts; technical implementation details must be checked for present systems.
 - [NIST SP 800-86, Guide to Integrating Forensic Techniques into Incident Response](https://csrc.nist.gov/pubs/sp/800/86/final) (2006): forensic vocabulary from an IT perspective; not a legal standard or complete modern tool procedure.
+- [NIST SP 800-184, Guide for Cybersecurity Event Recovery](https://csrc.nist.gov/pubs/sp/800/184/final) (2016): recovery planning, testing, playbook development and improvement; CTN's acceptance values and procedure are original examples.
+- [NIST SP 800-84, Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities](https://csrc.nist.gov/pubs/sp/800/84/final) (2006): exercise-program background; local playbook rubric and variants are original teaching devices.
 
 All C- and V-series records and every worked scenario in this manuscript are fictional. The citations support general concepts and are not evidence that any CTN event occurred.

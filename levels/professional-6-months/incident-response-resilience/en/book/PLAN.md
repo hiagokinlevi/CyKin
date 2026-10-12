@@ -105,9 +105,9 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints. Record approvals, evidence checkpoints and a usable operational handoff.
 
-**Worked example:** A fictional account takeover case with identity, application and support-ticket records.
+**Worked example:** The fictional CTN enrollment-slot change with identity, application and support records but no direct session-to-request join.
 
-**Practice and exercises:** Construct a normalized timeline, test two hypotheses and list the next least-invasive evidence request. The planned allocation is 5 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
+**Practice and exercises:** Construct a normalized timeline, compare three hypotheses and list the next least-invasive evidence request. The planned allocation is 5 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 04 and prepares Chapter 06. This is an editorial brief, not a completed lesson.
 
@@ -115,7 +115,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 06 — Containment planning and approvals
 
-**Stage 3; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 30 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-06)
 
 **Teaching purpose and relevance:** Choose a containment sequence that reduces further harm while respecting availability and authorization.
 
@@ -123,9 +123,9 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints. Record approvals, evidence checkpoints and a usable operational handoff.
 
-**Worked example:** A synthetic credential misuse scenario where disabling one account affects a critical service.
+**Worked example:** The fictional CTN S42 write-hold proposal, separate approval, execution receipt and one-route check.
 
-**Practice and exercises:** Compare session revocation, credential rotation and temporary access limits; document owner approval. The planned allocation is 5 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Compare a slot hold, session action and account disablement; record approval scope, expiry, verification and rollback. The planned allocation is 5 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 05 and prepares Chapter 07. This is an editorial brief, not a completed lesson.
 
@@ -133,7 +133,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 07 — Eradication and verification
 
-**Stage 4; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 30 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-07)
 
 **Teaching purpose and relevance:** Distinguish removing an observed symptom from verifying that the cause and persistence paths are addressed.
 
@@ -141,9 +141,9 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints. Record approvals, evidence checkpoints and a usable operational handoff.
 
-**Worked example:** A fictional unauthorized scheduled task with a second unverified account change.
+**Worked example:** The fictional CTN task-to-request link and a separately unapproved recovery-method change with unknown actor.
 
-**Practice and exercises:** Plan eradication in a sandbox, specify post-change checks and record unresolved uncertainty. The planned allocation is 5 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Compare task and identity paths, specify positive and negative checks, and record residual uncertainty. The planned allocation is 5 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 06 and prepares Chapter 08. This is an editorial brief, not a completed lesson.
 
@@ -151,7 +151,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 08 — Recovery, continuity and return to service
 
-**Stage 4; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 30 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-08)
 
 **Teaching purpose and relevance:** Return a service safely by checking data, dependencies and monitoring before closure.
 
@@ -159,9 +159,9 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints. Record approvals, evidence checkpoints and a usable operational handoff.
 
-**Worked example:** A synthetic booking database restored from a known snapshot while application logs remain incomplete.
+**Worked example:** The fictional CTN snapshot that would regress legitimate S40/S41 changes versus a targeted S42 correction with an audit-gate retest.
 
-**Practice and exercises:** Prepare a recovery checklist and acceptance record with owners, tests and a fallback decision. The planned allocation is 5 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Compare restore candidates and complete an owner-approved isolated-test and return-to-service record. The planned allocation is 5 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 07 and prepares Chapter 09. This is an editorial brief, not a completed lesson.
 
@@ -169,7 +169,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 09 — Communications, privacy and legal coordination
 
-**Stage 5; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
+**Stage 5; 30 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-09)
 
 **Teaching purpose and relevance:** Coordinate accurate notices while separating confirmed facts from assumptions and routing sensitive questions to authorized specialists.
 
@@ -177,9 +177,9 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints. Record approvals, evidence checkpoints and a usable operational handoff.
 
-**Worked example:** A fictional incident involving possible exposure of a subscriber contact list.
+**Worked example:** The fictional CTN internal queue batch with twelve pseudonymous tokens, not-dispatched status and an unresolved gateway gap.
 
-**Practice and exercises:** Write two audience-specific updates, flag unverified claims and identify privacy or legal review points. The planned allocation is 5 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Draft separate service and privacy status, a scoped referral and an unsent learner update with approval state. The planned allocation is 5 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 08 and prepares Chapter 10. This is an editorial brief, not a completed lesson.
 
@@ -187,7 +187,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 10 — Playbook engineering and quality review
 
-**Stage 5; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
+**Stage 5; 30 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-10)
 
 **Teaching purpose and relevance:** Turn a response path into a usable playbook whose preconditions, limits and expected evidence are explicit.
 
@@ -195,9 +195,9 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Depth and method:** At professional course level, learners will run a supervised workflow with evidence checkpoints. Record approvals, evidence checkpoints and a usable operational handoff.
 
-**Worked example:** A synthetic compromised-credential playbook missing approval and rollback steps.
+**Worked example:** The fictional CTN P0 decision aid that would disable a shared account, regress valid data and make an unsupported breach claim.
 
-**Practice and exercises:** Revise the playbook, walk through a failure case and score it against a quality checklist. The planned allocation is 5 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Revise seven decision gates, walk main and negative-control branches, and score six quality criteria. The planned allocation is 5 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 09 and prepares Chapter 11. This is an editorial brief, not a completed lesson.
 

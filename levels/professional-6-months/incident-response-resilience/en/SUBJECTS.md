@@ -13,11 +13,11 @@ English is the reference edition.
 | 2 | [03](book/PLAN.md#ch-03) | Alert intake and severity assessment | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-03) |
 | 2 | [04](book/PLAN.md#ch-04) | Evidence preservation and case records | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-04) |
 | 3 | [05](book/PLAN.md#ch-05) | Investigation, hypotheses and timeline building | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-05) |
-| 3 | [06](book/PLAN.md#ch-06) | Containment planning and approvals | 30 | 30 | 5 | Planned |
-| 4 | [07](book/PLAN.md#ch-07) | Eradication and verification | 30 | 30 | 5 | Planned |
-| 4 | [08](book/PLAN.md#ch-08) | Recovery, continuity and return to service | 30 | 30 | 5 | Planned |
-| 5 | [09](book/PLAN.md#ch-09) | Communications, privacy and legal coordination | 30 | 30 | 5 | Planned |
-| 5 | [10](book/PLAN.md#ch-10) | Playbook engineering and quality review | 30 | 30 | 5 | Planned |
+| 3 | [06](book/PLAN.md#ch-06) | Containment planning and approvals | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-06) |
+| 4 | [07](book/PLAN.md#ch-07) | Eradication and verification | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-07) |
+| 4 | [08](book/PLAN.md#ch-08) | Recovery, continuity and return to service | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-08) |
+| 5 | [09](book/PLAN.md#ch-09) | Communications, privacy and legal coordination | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-09) |
+| 5 | [10](book/PLAN.md#ch-10) | Playbook engineering and quality review | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-10) |
 | 6 | [11](book/PLAN.md#ch-11) | Supervised incident simulation | 30 | 30 | 5 | Planned |
 | 6 | [12](book/PLAN.md#ch-12) | Case portfolio and after-action review | 30 | 30 | 5 | Planned |
 
