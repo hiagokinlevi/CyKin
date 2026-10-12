@@ -1,6 +1,6 @@
 # OT, IoT and cyber-physical security — Engineering course — English
 
-**Duration:** 5 years · **Editorial state:** authored draft; technical, editorial and A4 review pending.
+**Duration:** 5 years · **Editorial state:** rewrite in progress (template draft failed quality audit) 
 
 [Home](../../../../README.md) · [Course home](../README.md) · [Chapter index](SUBJECTS.md) · [Materials](MATERIALS.md) · [Book plan](book/PLAN.md) · [One course skill](../skill/SKILL.md) · [Draft manuscript](book/MANUSCRIPT.md) · [Playbooks](../../../../playbooks/ot-iot-security/README.md)
 

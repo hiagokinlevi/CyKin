@@ -1,5 +1,7 @@
 # Subjects and book chapters — OT, IoT and cyber-physical security / Rapid course / English
 
+> **Quality audit (12 Oct 2026):** the previous English draft of this book was template-generated (repeated paragraphs, one generic answer) and is withdrawn from the progress score. Chapters are being rewritten by hand; until then the manuscript is not counted as authored teaching.
+
 **One course, one principal book, 4 subjects and chapters, one course skill.** Only links marked Draft point to authored teaching; a planned chapter is a summary, not a completed lesson.
 
 English is the reference edition.
@@ -10,9 +12,9 @@ English is the reference edition.
 
 | Week | Chapter / plan | Curricular subject | Hours | Planned A4 pages | Exercise target | Teaching state | Next step |
 |---|---|---|---:|---:|---:|---|---|
-| 1 | [01](book/PLAN.md#ch-01) | OT, IoT and cyber-physical security: foundations and decisions | 20 | 80 | 13 | [Draft](book/MANUSCRIPT.md#ch-01) | [02 · Draft](book/MANUSCRIPT.md#ch-02) |
-| 2 | [02](book/PLAN.md#ch-02) | Scope, permission and safe practice | 20 | 80 | 13 | [Draft](book/MANUSCRIPT.md#ch-02) | [03 · Draft](book/MANUSCRIPT.md#ch-03) |
-| 3 | [03](book/PLAN.md#ch-03) | OT, IoT and cyber-physical security: systems, data and dependencies | 20 | 80 | 12 | [Draft](book/MANUSCRIPT.md#ch-03) | [04 · Draft](book/MANUSCRIPT.md#ch-04) |
-| 4 | [04](book/PLAN.md#ch-04) | OT, IoT and cyber-physical security: guided lab and applied synthesis | 20 | 80 | 12 | [Draft](book/MANUSCRIPT.md#ch-04) | [Course 023 →](../../critical-sector-security/en/SUBJECTS.md) |
+| 1 | [01](book/PLAN.md#ch-01) | OT, IoT and cyber-physical security: foundations and decisions | 20 | 80 | 13 | Rewrite in progress | [02 · Plan](book/PLAN.md#ch-02) |
+| 2 | [02](book/PLAN.md#ch-02) | Scope, permission and safe practice | 20 | 80 | 13 | Rewrite in progress | [03 · Plan](book/PLAN.md#ch-03) |
+| 3 | [03](book/PLAN.md#ch-03) | OT, IoT and cyber-physical security: systems, data and dependencies | 20 | 80 | 12 | Rewrite in progress | [04 · Plan](book/PLAN.md#ch-04) |
+| 4 | [04](book/PLAN.md#ch-04) | OT, IoT and cyber-physical security: guided lab and applied synthesis | 20 | 80 | 12 | Rewrite in progress | [Course 023 →](../../critical-sector-security/en/SUBJECTS.md) |
 
 A planned next step is a navigation target, not an authored lesson. Keep the completion position at the first unwritten chapter. Page and exercise columns are editorial targets. The book is complete only after its content and A4 rendering meet the publication gate.
