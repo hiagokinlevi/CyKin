@@ -1,6 +1,6 @@
 # Security operations and blue team — Technical course — English
 
-**Duration:** 18 months · **Editorial state:** structured; authored teaching pending.
+**Duration:** 18 months · **Editorial state:** authored draft; technical, editorial and A4 review pending.
 
 [Home](../../../../README.md) · [Course home](../README.md) · [Chapter index](SUBJECTS.md) · [Materials](MATERIALS.md) · [Book plan](book/PLAN.md) · [One course skill](../skill/SKILL.md) · [Playbooks](../../../../playbooks/security-operations-blue-team/README.md)
 
