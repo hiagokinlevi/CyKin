@@ -1,6 +1,6 @@
 # Threat intelligence and OSINT — Bachelor's course — English
 
-**Duration:** 4 years · **Editorial state:** structured; authored teaching pending.
+**Duration:** 4 years · **Editorial state:** authored draft; technical, editorial and A4 review pending.
 
 [Home](../../../../README.md) · [Course home](../README.md) · [Chapter index](SUBJECTS.md) · [Materials](MATERIALS.md) · [Book plan](book/PLAN.md) · [One course skill](../skill/SKILL.md) · [Playbooks](../../../../playbooks/threat-intelligence-osint/README.md)
 
