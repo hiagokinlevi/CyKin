@@ -28,6 +28,6 @@
 | AI and machine-learning security | [Open course](ai-security/README.md) | [Subjects](ai-security/en/SUBJECTS.md) | [Book plan](ai-security/en/book/PLAN.md) | Structured plan |
 | Quantum and post-quantum security | [Open course](quantum-post-quantum-security/README.md) | [Subjects](quantum-post-quantum-security/en/SUBJECTS.md) | [Book plan](quantum-post-quantum-security/en/book/PLAN.md) | Structured plan |
 | OT, IoT and cyber-physical security | [Open course](ot-iot-security/README.md) | [Subjects](ot-iot-security/en/SUBJECTS.md) | [Book plan](ot-iot-security/en/book/PLAN.md) | Structured plan |
-| Critical infrastructure and sector security | [Open course](critical-sector-security/README.md) | [Subjects](critical-sector-security/en/SUBJECTS.md) | [Book plan](critical-sector-security/en/book/PLAN.md) | Structured plan |
+| Critical infrastructure and sector security | [Open course](critical-sector-security/README.md) | [Subjects](critical-sector-security/en/SUBJECTS.md) | [Read book draft](critical-sector-security/en/book/MANUSCRIPT.md) | Authored draft |
 
 Each course home links all nine languages, its one skill, chapters, materials and supplementary playbooks. The course labels describe intended depth and duration; they do not confer a degree or accreditation.

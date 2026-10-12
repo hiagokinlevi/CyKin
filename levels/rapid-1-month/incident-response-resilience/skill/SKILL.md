@@ -29,8 +29,8 @@ This is the **rapid introductory** course. Teach one subject at a time and use t
 
 | Week / subject | Read and teach | Practical evidence the learner should produce |
 |---|---|---|
-| 1 — Incident readiness | [Chapter 1](../en/book/MANUSCRIPT.md#ch-01): roles, service map, behavior baseline, authorization, evidence-readiness contract, claim falsifiers and two distinct offline labs. | A bounded case record, owner map, booking-rule contract, claim ledger, proposed test and separate BSL1/R1–R8 lab transcripts. |
-| 2 — Triage and preservation | [Chapter 2](../en/book/MANUSCRIPT.md#ch-02): event versus discovery time, query-envelope coverage, retention, provenance, competing explanations and scoped service-impact measurement. | A justified timeline, bounded preservation request, source/copy/interpretation analysis, VQ2 transcript and separate IM2 impact ledger; use R1–R16 only after 09:20. |
+| 1 — Incident readiness | [Chapter 1](../en/book/MANUSCRIPT.md#ch-01): roles, service map, degraded-path modeling, behavior baseline, authorization, evidence-readiness contract and claim falsifiers. | A bounded case record, owner map, booking-rule contract, claim ledger and separately labeled R1–R8, BSL1 and PATH1 lab artifacts. |
+| 2 — Triage and preservation | [Chapter 2](../en/book/MANUSCRIPT.md#ch-02): event versus discovery time, query-envelope coverage, retention, provenance, competing explanations, minimal review views and scoped service-impact measurement. | A justified timeline, bounded preservation request, source/copy/interpretation analysis and separate VQ2, IM2 and MIN2 artifacts; use R1–R16 only after 09:20. |
 | 3 — Containment, cause and recovery | [Chapter 3](../en/book/MANUSCRIPT.md#ch-03): approval, write-path testing, cause hypotheses, manual-queue reconciliation, isolated restoration and service acceptance. | A comparison of bounded actions and a cause-to-fix verification plan using R1–R24; keep W1, MQ3, P1/C1, V1 and K1 as separately released exercise fixtures. |
 | 4 — Tabletop and after-action review | [Chapter 4](../en/book/MANUSCRIPT.md#ch-04): round-based simulation, handoff, communication delivery/read-back and measurable improvement. | Six artifacts, F4-AUDIT and DEL4 offline transcripts, a scored handoff and an after-action ticket; use Branch S/P and later cards only when released. |
 
@@ -42,6 +42,10 @@ Use the [offline evidence-bound lab](../en/book/MANUSCRIPT.md#ir-rapid-ch01-clai
 
 Teach the [BSL1 booking-invariant lesson](../en/book/MANUSCRIPT.md#ir-rapid-ch01-bsl1-lab) as a **pre-incident behavior-baseline rehearsal**, distinct from D1 planned evidence sources and from the 09:05 R1–R8 case decision. Require the toy single-occupancy rule, half-open interval convention, two accepted statuses and owner-approved policy-version requirement before running Python. Ask for predictions for the adjacent-slot positive control, confirmed-overlap and zero-duration negatives, cancelled-to-confirmed variant and omitted-row coverage control. Compare all eleven printed lines with the [worked BSL1 result](../en/book/MANUSCRIPT.md#ir-rapid-ch01-bsl1-result). A fictional business-rule failure does not prove compromise; a missing input can hide a conflict. Deepen EX002, EX007, EX010 and EX011 without changing their original two-row, seven-field, two-sentence and two-trigger constraints.
 
+## Chapter 1 service-path laboratory
+
+Teach [PATH1](../en/book/MANUSCRIPT.md#ir-rapid-ch01-path1-lab) as a separate **synthetic dependency model**, not as an observed Harbor Library outage. Before running the in-memory Python program, have the learner list the five modeled functions and predict all six output lines for the baseline and component failures. Ask which functions are structurally possible when the database or help desk is unavailable, then challenge the answer: manual intake is receipt of a request, not a confirmed reservation; a backup job is not tested restoration. Compare the [worked PATH1 result](../en/book/MANUSCRIPT.md#ir-rapid-ch01-path1-result). Require an owner-defined business correctness check as well as a technical availability check. Deepen EX003, EX006, EX008 and EX009 without adding exercise IDs or importing PATH1 rows into R1–R8.
+
 ## Chapter 2 query-quality laboratory
 
 Open the [VQ2 quiet-query lab](../en/book/MANUSCRIPT.md#ir-rapid-ch02-vq2-lab) only after the 09:20 release of R9–R16. Have the learner predict seven output lines before running the in-memory Python fixture and explain each negative control: missing R14 manifest, incomplete ingestion boundary, wrong account and impossible watermark. A conditional pass depends on the hypothetical custodian's truthful source and coverage attestation; it does not authenticate R14 or make VQ-01 a canonical event. R15's 24-hour duration has no verified deletion anchor. Use the final answers to deepen EX016, EX017, EX018, EX020, EX022 and EX023 without changing their identifiers or the chapter's 0–2 rubric.
@@ -49,6 +53,10 @@ Open the [VQ2 quiet-query lab](../en/book/MANUSCRIPT.md#ir-rapid-ch02-vq2-lab) o
 ## Chapter 2 service-impact laboratory
 
 Open the [IM2 service-impact lab](../en/book/MANUSCRIPT.md#ir-rapid-ch02-im2-lab) after distinguishing reports, recorded edits, verified state discrepancies and verified consequences. Ask the learner to predict all nine output lines, produce a six-row ledger and explain the X04 target-removal negative control. Four reports cover three distinct booking IDs; neither figure counts people. Compare the [worked IM2 result](../en/book/MANUSCRIPT.md#ir-rapid-ch02-im2-result) and deepen EX016 and EX023. IM2 is an independent classroom fixture, not new R-series evidence or a population-wide impact estimate.
+
+## Chapter 2 minimal-review-view laboratory
+
+Teach [MIN2](../en/book/MANUSCRIPT.md#ir-rapid-ch02-min2-lab) after the learner can separate a source record from an approved derivative review view. Have them predict all six output lines of the in-memory Python fixture and explain three rejected variants: missing join key, added contact field and out-of-scope booking. Compare the [worked MIN2 result](../en/book/MANUSCRIPT.md#ir-rapid-ch02-min2-result). The actor-account label is an invented technical correlation candidate, not human attribution; a correctly narrowed view does not authenticate its source. Deepen EX018, EX019, EX020 and EX023 without changing their required artifacts or importing MIN2 into the 09:20 R-series evidence.
 
 ## Chapter 3 decision-gate laboratory
 
@@ -77,7 +85,7 @@ Teach [DEL4](../en/book/MANUSCRIPT.md#ir-rapid-ch04-del4-lab) after the learner 
 ## Case and source boundaries
 
 - The canonical R1–R8 snapshot belongs to Round A and the 09:05 first decision; R9–R16 enter at the simulated 09:20 Round B review; R17–R24 enter Round C before the 09:37 decision. Event time is not the learner's receipt time.
-- Branch S or P is reported only in Round D. P1/C1 and V1 arrive later in that round. BSL1, W1, K1, Q1, IM2, MQ3, T1, T2, VQ2, F1, F4-AUDIT, DEL4 and M1/M2 are labeled classroom variants; do not import their results into an earlier canonical decision. BSL1 S-series booking rows never become Harbor Library R-series incident observations.
+- Branch S or P is reported only in Round D. P1/C1 and V1 arrive later in that round. BSL1, PATH1, W1, K1, Q1, IM2, MIN2, MQ3, T1, T2, VQ2, F1, F4-AUDIT, DEL4 and M1/M2 are labeled classroom variants; do not import their results into an earlier canonical decision. BSL1 S-series booking rows, PATH1 outage assumptions and MIN2 review rows never become Harbor Library R-series incident observations.
 - R21 records tolerance for a brief write pause, not approval or execution. R22's narrow earlier query cannot verify a later revocation. R23 reports a backup job, not a successful restore. V1's blank actor field fails its audit-attribution criterion.
 - Use the [source audit](../../../../SOURCE_AUDIT.md) and the book's references for factual claims. Identify the British Library review as a cited real incident and Harbor Library as fiction. Preserve source rights and avoid copying third-party playbooks into the CC0 book.
 - Never direct a learner to test a real account, disrupt a service, access patron records or send a notification. Such actions require the real organization's authority, environment and procedures, which the course does not supply.

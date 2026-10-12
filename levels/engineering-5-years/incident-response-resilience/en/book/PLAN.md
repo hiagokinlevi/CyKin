@@ -37,7 +37,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A synthetic incident queue whose arrival rate changes during a service outage.
 
-**Practice and exercises:** Model the rate, identify assumptions and explain where a simple derivative misleads. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Model the rate, identify assumptions and explain where a simple derivative misleads. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on the entry knowledge and prepares Chapter 02. This is an editorial brief, not a completed lesson.
 
@@ -57,7 +57,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A fictional approval graph for several responder roles and systems.
 
-**Practice and exercises:** Formalize valid action paths and find an invalid authorization transition. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Formalize valid action paths and find an invalid authorization transition. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 01 and prepares Chapter 03. This is an editorial brief, not a completed lesson.
 
@@ -77,7 +77,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A synthetic edge device that drops telemetry during thermal throttling.
 
-**Practice and exercises:** Explain a plausible physical failure chain and propose measurable checks. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Explain a plausible physical failure chain and propose measurable checks. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 02 and prepares Chapter 04. This is an editorial brief, not a completed lesson.
 
@@ -97,7 +97,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A local parser for synthetic case-intake records.
 
-**Practice and exercises:** Implement input validation and show that rejected records remain available for review. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Implement input validation and show that rejected records remain available for review. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 03 and prepares Chapter 05. This is an editorial brief, not a completed lesson.
 
@@ -117,7 +117,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A fictional response design brief with vague claims and missing owners.
 
-**Practice and exercises:** Rewrite the brief as testable requirements and present its unresolved assumptions. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Rewrite the brief as testable requirements and present its unresolved assumptions. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 04 and prepares Chapter 06. This is an editorial brief, not a completed lesson.
 
@@ -137,7 +137,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A synthetic incident backlog with periods of increased intake and staffing.
 
-**Practice and exercises:** Estimate accumulated delay and explain how model assumptions affect capacity planning. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Estimate accumulated delay and explain how model assumptions affect capacity planning. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 05 and prepares Chapter 07. This is an editorial brief, not a completed lesson.
 
@@ -157,7 +157,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A fabricated set of alert and case outcomes with uneven severity.
 
-**Practice and exercises:** Compute defensible measures and identify which comparisons are confounded. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Compute defensible measures and identify which comparisons are confounded. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 06 and prepares Chapter 08. This is an editorial brief, not a completed lesson.
 
@@ -177,7 +177,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A synthetic host with a virtualized workload and a shared storage device.
 
-**Practice and exercises:** Map evidence-bearing components and compare collection costs and risks. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Map evidence-bearing components and compare collection costs and risks. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 07 and prepares Chapter 09. This is an editorial brief, not a completed lesson.
 
@@ -197,7 +197,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A synthetic event-normalization service receiving malformed and duplicate records.
 
-**Practice and exercises:** Implement or review the module and demonstrate predictable failure behavior. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Implement or review the module and demonstrate predictable failure behavior. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 08 and prepares Chapter 10. This is an editorial brief, not a completed lesson.
 
@@ -217,7 +217,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A fictional request to isolate a critical care scheduling service.
 
-**Practice and exercises:** Define safety gates and an escalation path before approving a simulated intervention. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Define safety gates and an escalation path before approving a simulated intervention. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 09 and prepares Chapter 11. This is an editorial brief, not a completed lesson.
 
@@ -237,7 +237,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A synthetic multi-zone application with a gateway and remote identity service.
 
-**Practice and exercises:** Map the path and identify which logs can support a connection claim. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Map the path and identify which logs can support a connection claim. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 10 and prepares Chapter 12. This is an editorial brief, not a completed lesson.
 
@@ -257,7 +257,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A fictional workstation with scheduled tasks and two service accounts.
 
-**Practice and exercises:** Compare expected and anomalous behavior and specify safe observation points. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Compare expected and anomalous behavior and specify safe observation points. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 11 and prepares Chapter 13. This is an editorial brief, not a completed lesson.
 
@@ -277,7 +277,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A synthetic case store and booking database with different recovery points.
 
-**Practice and exercises:** Design integrity checks and order restoration steps under a stated objective. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Design integrity checks and order restoration steps under a stated objective. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 12 and prepares Chapter 14. This is an editorial brief, not a completed lesson.
 
@@ -297,7 +297,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A fictional evidence-ingest change that silently drops unknown event fields.
 
-**Practice and exercises:** Write acceptance tests and a release plan that detect the regression. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Write acceptance tests and a release plan that detect the regression. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 13 and prepares Chapter 15. This is an editorial brief, not a completed lesson.
 
@@ -317,7 +317,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A synthetic account-compromise scenario spanning several services.
 
-**Practice and exercises:** State security properties and identify evidence that would support each one. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** State security properties and identify evidence that would support each one. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 14 and prepares Chapter 16. This is an editorial brief, not a completed lesson.
 
@@ -337,7 +337,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A fictional organization deploying one response platform across several teams.
 
-**Practice and exercises:** Build a requirements trace from stakeholder need to acceptance test. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Build a requirements trace from stakeholder need to acceptance test. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 15 and prepares Chapter 17. This is an editorial brief, not a completed lesson.
 
@@ -357,7 +357,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A simulated automated alert-to-containment loop with noisy signals.
 
-**Practice and exercises:** Model the loop and identify a safe human gate and stability measure. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Model the loop and identify a safe human gate and stability measure. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 16 and prepares Chapter 18. This is an editorial brief, not a completed lesson.
 
@@ -377,7 +377,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** Two synthetic architectures for the same case-management service.
 
-**Practice and exercises:** Choose a design under explicit threat and availability constraints. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Choose a design under explicit threat and availability constraints. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 17 and prepares Chapter 19. This is an editorial brief, not a completed lesson.
 
@@ -397,7 +397,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A fictional evidence store with signed manifests and shared administrator access.
 
-**Practice and exercises:** Evaluate which claims signatures support and where role separation remains necessary. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Evaluate which claims signatures support and where role separation remains necessary. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 18 and prepares Chapter 20. This is an editorial brief, not a completed lesson.
 
@@ -417,7 +417,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A synthetic public-service organization with limited telemetry and strict uptime needs.
 
-**Practice and exercises:** Produce a context diagram and a prioritized constraint register. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Produce a context diagram and a prioritized constraint register. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 19 and prepares Chapter 21. This is an editorial brief, not a completed lesson.
 
@@ -437,7 +437,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A fictional procurement brief promising rapid response without defined evidence quality.
 
-**Practice and exercises:** Write testable requirements and flag mutually conflicting objectives. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Write testable requirements and flag mutually conflicting objectives. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 20 and prepares Chapter 22. This is an editorial brief, not a completed lesson.
 
@@ -457,7 +457,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** Synthetic identity, host and cloud events with mismatched identifiers.
 
-**Practice and exercises:** Specify normalization rules and trace one decision back to source records. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Specify normalization rules and trace one decision back to source records. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 21 and prepares Chapter 23. This is an editorial brief, not a completed lesson.
 
@@ -477,7 +477,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A fictional case platform whose notification service and evidence store share credentials.
 
-**Practice and exercises:** Build threat and failure trees and compare mitigations against service constraints. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Build threat and failure trees and compare mitigations against service constraints. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 22 and prepares Chapter 24. This is an editorial brief, not a completed lesson.
 
@@ -497,7 +497,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A synthetic alert-ranking pipeline that drops records with unknown fields.
 
-**Practice and exercises:** Specify pipeline checks and test how omissions change a responder's decision. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Specify pipeline checks and test how omissions change a responder's decision. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 23 and prepares Chapter 25. This is an editorial brief, not a completed lesson.
 
@@ -517,7 +517,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A fictional multi-tenant response service with shared and tenant-specific responders.
 
-**Practice and exercises:** Design the intake state machine and review illegal transitions with peers. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Design the intake state machine and review illegal transitions with peers. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 24 and prepares Chapter 26. This is an editorial brief, not a completed lesson.
 
@@ -537,7 +537,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** Two synthetic designs for containing a compromised identity service.
 
-**Practice and exercises:** Model failure modes and defend a choice against explicit service objectives. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Model failure modes and defend a choice against explicit service objectives. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 25 and prepares Chapter 27. This is an editorial brief, not a completed lesson.
 
@@ -557,7 +557,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A lab service with a suspect account and a protected unrelated tenant.
 
-**Practice and exercises:** Specify the control and test that it cannot affect the unrelated tenant. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Specify the control and test that it cannot affect the unrelated tenant. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 26 and prepares Chapter 28. This is an editorial brief, not a completed lesson.
 
@@ -577,7 +577,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** An isolated synthetic event source and evidence storage endpoint.
 
-**Practice and exercises:** Implement a bounded capture path and verify provenance under interrupted transfer. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Implement a bounded capture path and verify provenance under interrupted transfer. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 27 and prepares Chapter 29. This is an editorial brief, not a completed lesson.
 
@@ -597,7 +597,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A synthetic before-and-after dataset from two triage workflow versions.
 
-**Practice and exercises:** Define the population, compute measures and perform a sensitivity check. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Define the population, compute measures and perform a sensitivity check. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 28 and prepares Chapter 30. This is an editorial brief, not a completed lesson.
 
@@ -617,7 +617,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A lab evidence pipeline receiving duplicate, delayed and corrupted records.
 
-**Practice and exercises:** Write and run invariant tests and explain each failed case. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Write and run invariant tests and explain each failed case. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 29 and prepares Chapter 31. This is an editorial brief, not a completed lesson.
 
@@ -637,7 +637,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A synthetic case moving through triage, approval, containment and closure.
 
-**Practice and exercises:** Implement the state transitions and show behavior on approval timeout. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Implement the state transitions and show behavior on approval timeout. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 30 and prepares Chapter 32. This is an editorial brief, not a completed lesson.
 
@@ -657,7 +657,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A fictional alert broker outage during a high-volume case period.
 
-**Practice and exercises:** Measure the failure effect and design a tested degraded operating mode. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Measure the failure effect and design a tested degraded operating mode. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 31 and prepares Chapter 33. This is an editorial brief, not a completed lesson.
 
@@ -677,7 +677,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A lab containment controller that loses contact with its policy service.
 
-**Practice and exercises:** Define safe behavior and test automatic and manual recovery paths. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Define safe behavior and test automatic and manual recovery paths. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 32 and prepares Chapter 34. This is an editorial brief, not a completed lesson.
 
@@ -697,7 +697,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A synthetic account incident observed in identity, endpoint and cloud logs.
 
-**Practice and exercises:** Build an integration diagram and validate a cross-platform case trace. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Build an integration diagram and validate a cross-platform case trace. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 33 and prepares Chapter 35. This is an editorial brief, not a completed lesson.
 
@@ -717,7 +717,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A fictional regional portal with a database, identity service and messaging queue.
 
-**Practice and exercises:** Prepare an exercise plan, simulate a failed restore and revise the sequence. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Prepare an exercise plan, simulate a failed restore and revise the sequence. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 34 and prepares Chapter 36. This is an editorial brief, not a completed lesson.
 
@@ -737,7 +737,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** Synthetic telemetry from multiple services during an incident spike.
 
-**Practice and exercises:** Model capacity and test whether delayed events change case severity. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Model capacity and test whether delayed events change case severity. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 35 and prepares Chapter 37. This is an editorial brief, not a completed lesson.
 
@@ -757,7 +757,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A simulated response service with rotating on-call staff and monthly releases.
 
-**Practice and exercises:** Create an operations plan and audit one unauthorized configuration change. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Create an operations plan and audit one unauthorized configuration change. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 36 and prepares Chapter 38. This is an editorial brief, not a completed lesson.
 
@@ -777,7 +777,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A synthetic incident in which account access is blocked but a token remains active.
 
-**Practice and exercises:** Design verification tests and document a claim that cannot yet be supported. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Design verification tests and document a claim that cannot yet be supported. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 37 and prepares Chapter 39. This is an editorial brief, not a completed lesson.
 
@@ -797,7 +797,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A fictional response playbook whose cloud commands and approval chain are outdated.
 
-**Practice and exercises:** Revise the playbook and create a test and review schedule. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Revise the playbook and create a test and review schedule. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 38 and prepares Chapter 40. This is an editorial brief, not a completed lesson.
 
@@ -817,7 +817,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** An isolated workflow service with a simulated evidence-store outage.
 
-**Practice and exercises:** Run a bounded fault test and compare observed behavior with design claims. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Run a bounded fault test and compare observed behavior with design claims. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 39 and prepares Chapter 41. This is an editorial brief, not a completed lesson.
 
@@ -837,7 +837,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** Three synthetic containment policies with different disruption and risk profiles.
 
-**Practice and exercises:** Build a decision table and show where a small assumption change reverses the choice. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Build a decision table and show where a small assumption change reverses the choice. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 40 and prepares Chapter 42. This is an editorial brief, not a completed lesson.
 
@@ -857,7 +857,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A synthetic study of case quality under delayed or missing telemetry.
 
-**Practice and exercises:** Formulate a testable limit claim and design a reproducible experiment. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Formulate a testable limit claim and design a reproducible experiment. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 41 and prepares Chapter 43. This is an editorial brief, not a completed lesson.
 
@@ -877,7 +877,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A supervised simulation for a fictional public-service operator.
 
-**Practice and exercises:** Produce an approved plan, execute the exercise and record operational feedback. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Produce an approved plan, execute the exercise and record operational feedback. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 42 and prepares Chapter 44. This is an editorial brief, not a completed lesson.
 
@@ -897,7 +897,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A synthetic multi-service organization needing case intake and evidence preservation.
 
-**Practice and exercises:** Implement the bounded system and submit design-to-test traceability. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Implement the bounded system and submit design-to-test traceability. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 43 and prepares Chapter 45. This is an editorial brief, not a completed lesson.
 
@@ -917,7 +917,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** The capstone design dossier and an external peer-review checklist.
 
-**Practice and exercises:** Respond to findings, reproduce failures and amend unsupported claims. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Respond to findings, reproduce failures and amend unsupported claims. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 44 and prepares Chapter 46. This is an editorial brief, not a completed lesson.
 
@@ -937,7 +937,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** Several synthetic incidents with differing telemetry and approval delays.
 
-**Practice and exercises:** Execute the protocol, prioritize defects and rerun acceptance tests. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Execute the protocol, prioritize defects and rerun acceptance tests. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 45 and prepares Chapter 47. This is an editorial brief, not a completed lesson.
 
@@ -957,7 +957,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A simulated evidence-store failure during an active incident case.
 
-**Practice and exercises:** Publish the lab inputs, reproduce recovery and compare results with objectives. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Publish the lab inputs, reproduce recovery and compare results with objectives. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 46 and prepares Chapter 48. This is an editorial brief, not a completed lesson.
 
@@ -977,7 +977,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** Capstone implementation records, test outputs and unresolved defects.
 
-**Practice and exercises:** Build the evidence dossier and flag every requirement without adequate proof. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Build the evidence dossier and flag every requirement without adequate proof. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 47 and prepares Chapter 49. This is an editorial brief, not a completed lesson.
 
@@ -997,7 +997,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A reproducible evaluation of the student's response workflow.
 
-**Practice and exercises:** Write a thesis that links design decisions to outcomes and openly reports failures. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Write a thesis that links design decisions to outcomes and openly reports failures. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 48 and prepares Chapter 50. This is an editorial brief, not a completed lesson.
 
@@ -1017,7 +1017,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** The completed capstone dossier and independent review comments.
 
-**Practice and exercises:** Present the system, answer counterexamples and record required revisions. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Present the system, answer counterexamples and record required revisions. The planned allocation is 3 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 49 and prepares the worked-answer appendix and final assessment. This is an editorial brief, not a completed lesson.
 

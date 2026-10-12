@@ -180,8 +180,9 @@ The backlog derivative $\lambda - \mu$ tells you whether a response service is w
 ### Continue studying — chapter 01 of 50
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
@@ -269,8 +270,9 @@ A workflow is a labelled graph; authorisation rules are invariants over its path
 ### Continue studying — chapter 02 of 50
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -317,8 +319,9 @@ Physics limits what monitoring can see: heat throttles, media wear and clocks dr
 ### Continue studying — chapter 03 of 50
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
@@ -411,8 +414,9 @@ Write response programs that are deterministic, transparent and preserving: hash
 ### Continue studying — chapter 04 of 50
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
 
@@ -468,8 +472,9 @@ Engineering communication turns aspiration into commitments that can be checked.
 ### Continue studying — chapter 05 of 50
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
@@ -524,8 +529,9 @@ Integrals measure what people experience: accumulated backlog, waiting and lost 
 ### Continue studying — chapter 06 of 50
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -616,8 +622,9 @@ Detection and response measures are proportions with uncertainty, conditioned on
 ### Continue studying — chapter 07 of 50
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-08"></a>
 
@@ -677,8 +684,9 @@ Evidence lives at every architectural layer with different volatility and trust.
 ### Continue studying — chapter 08 of 50
 
 [← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-09"></a>
 
@@ -743,8 +751,9 @@ Robust response software treats failure as data, carries provenance on every rec
 ### Continue studying — chapter 09 of 50
 
 [← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
@@ -795,8 +804,9 @@ Ethics in response engineering is concrete: least privilege, authorisation, mini
 ### Continue studying — chapter 10 of 50
 
 [← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-11"></a>
 
@@ -853,8 +863,9 @@ Map the path, list the observation points, understand what each protocol and dev
 ### Continue studying — chapter 11 of 50
 
 [← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-12"></a>
 
@@ -905,8 +916,9 @@ Model host state explicitly, know which logs exist and how they can be defeated,
 ### Continue studying — chapter 12 of 50
 
 [← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 →](#ch-13)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-13"></a>
 
@@ -993,8 +1005,9 @@ Data systems are evidence and service at once. Use transactions, logs and checks
 ### Continue studying — chapter 13 of 50
 
 [← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-14"></a>
 
@@ -1053,8 +1066,9 @@ Response tooling is software whose defects destroy evidence quietly. Version int
 ### Continue studying — chapter 14 of 50
 
 [← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-15"></a>
 
@@ -1114,8 +1128,9 @@ Security engineering states assets, adversaries and properties precisely, turns 
 ### Continue studying — chapter 15 of 50
 
 [← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-16"></a>
 
@@ -1175,8 +1190,9 @@ Systems engineering treats the response capability as a lifecycle system of peop
 ### Continue studying — chapter 16 of 50
 
 [← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-17"></a>
 
@@ -1258,8 +1274,9 @@ Automated response is a feedback loop. Delay, noise and self-influence cause cha
 ### Continue studying — chapter 17 of 50
 
 [← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-18"></a>
 
@@ -1315,8 +1332,9 @@ Security architecture for response systems separates data, control and evidence 
 ### Continue studying — chapter 18 of 50
 
 [← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Chapter 19 →](#ch-19)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-19"></a>
 
@@ -1405,8 +1423,9 @@ Identity gives accountability; hashes give matching; MACs and signatures give in
 ### Continue studying — chapter 19 of 50
 
 [← Chapter 18](#ch-18) · [Course chapter index](../SUBJECTS.md) · [Chapter 20 →](#ch-20)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-20"></a>
 
@@ -1476,8 +1495,9 @@ Incident response engineering starts with mission, stakeholders and constraints 
 ### Continue studying — chapter 20 of 50
 
 [← Chapter 19](#ch-19) · [Course chapter index](../SUBJECTS.md) · [Chapter 21 →](#ch-21)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-21"></a>
 
@@ -1539,8 +1559,9 @@ Requirements say what the response system does; service objectives say how well,
 ### Continue studying — chapter 21 of 50
 
 [← Chapter 20](#ch-20) · [Course chapter index](../SUBJECTS.md) · [Chapter 22 →](#ch-22)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-22"></a>
 
@@ -1598,8 +1619,9 @@ A response data model keeps multiple timestamps, original and resolved identitie
 ### Continue studying — chapter 22 of 50
 
 [← Chapter 21](#ch-21) · [Course chapter index](../SUBJECTS.md) · [Chapter 23 →](#ch-23)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-23"></a>
 
@@ -1703,8 +1725,9 @@ Analyse the response system as both target and fallible machine. Fault trees wit
 ### Continue studying — chapter 23 of 50
 
 [← Chapter 22](#ch-22) · [Course chapter index](../SUBJECTS.md) · [Chapter 24 →](#ch-24)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-24"></a>
 
@@ -1792,8 +1815,9 @@ An evidence pipeline is a chain of contracts from raw record to decision. Make s
 ### Continue studying — chapter 24 of 50
 
 [← Chapter 23](#ch-23) · [Course chapter index](../SUBJECTS.md) · [Chapter 25 →](#ch-25)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-25"></a>
 
@@ -1855,8 +1879,9 @@ A case-intake design is a state machine plus an access predicate over role, tena
 ### Continue studying — chapter 25 of 50
 
 [← Chapter 24](#ch-24) · [Course chapter index](../SUBJECTS.md) · [Chapter 26 →](#ch-26)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-26"></a>
 
@@ -1921,8 +1946,9 @@ Containment architectures differ by boundary, speed, blast radius, evidence effe
 ### Continue studying — chapter 26 of 50
 
 [← Chapter 25](#ch-25) · [Course chapter index](../SUBJECTS.md) · [Chapter 27 →](#ch-27)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-27"></a>
 
@@ -2010,8 +2036,9 @@ A scoped control resolves targets explicitly, checks tenant, approval and limits
 ### Continue studying — chapter 27 of 50
 
 [← Chapter 26](#ch-26) · [Course chapter index](../SUBJECTS.md) · [Chapter 28 →](#ch-28)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-28"></a>
 
@@ -2080,8 +2107,9 @@ Evidence capture is a small protocol: read-only sources, hash before transfer, v
 ### Continue studying — chapter 28 of 50
 
 [← Chapter 27](#ch-27) · [Course chapter index](../SUBJECTS.md) · [Chapter 29 →](#ch-29)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-29"></a>
 
@@ -2134,8 +2162,9 @@ Evaluate response workflows with a pre-specified population, unit, reference sta
 ### Continue studying — chapter 29 of 50
 
 [← Chapter 28](#ch-28) · [Course chapter index](../SUBJECTS.md) · [Chapter 30 →](#ch-30)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-30"></a>
 
@@ -2245,8 +2274,9 @@ Evidence preservation is verified by invariants under hostile input: raw first, 
 ### Continue studying — chapter 30 of 50
 
 [← Chapter 29](#ch-29) · [Course chapter index](../SUBJECTS.md) · [Chapter 31 →](#ch-31)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-31"></a>
 
@@ -2352,8 +2382,9 @@ Orchestrate information and approved actions, not unauthorised decisions. Use ex
 ### Continue studying — chapter 31 of 50
 
 [← Chapter 30](#ch-30) · [Course chapter index](../SUBJECTS.md) · [Chapter 32 →](#ch-32)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-32"></a>
 
@@ -2435,8 +2466,9 @@ Compute availability honestly — series multiplies, redundancy helps only to th
 ### Continue studying — chapter 32 of 50
 
 [← Chapter 31](#ch-31) · [Course chapter index](../SUBJECTS.md) · [Chapter 33 →](#ch-33)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-33"></a>
 
@@ -2500,8 +2532,9 @@ Decide per action what is safe when dependencies fail: keep applied containment 
 ### Continue studying — chapter 33 of 50
 
 [← Chapter 32](#ch-32) · [Course chapter index](../SUBJECTS.md) · [Chapter 34 →](#ch-34)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-34"></a>
 
@@ -2556,8 +2589,9 @@ Integrating response across identity, endpoint and cloud means respecting each p
 ### Continue studying — chapter 34 of 50
 
 [← Chapter 33](#ch-33) · [Course chapter index](../SUBJECTS.md) · [Chapter 35 →](#ch-35)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-35"></a>
 
@@ -2609,8 +2643,9 @@ A recovery exercise tests claims about sequence, restore points, data cleanlines
 ### Continue studying — chapter 35 of 50
 
 [← Chapter 34](#ch-34) · [Course chapter index](../SUBJECTS.md) · [Chapter 36 →](#ch-36)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-36"></a>
 
@@ -2697,8 +2732,9 @@ Pipelines have rates, buffers and budgets. Spikes force a choice between loss an
 ### Continue studying — chapter 36 of 50
 
 [← Chapter 35](#ch-35) · [Course chapter index](../SUBJECTS.md) · [Chapter 37 →](#ch-37)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-37"></a>
 
@@ -2749,8 +2785,9 @@ Operate the response platform as a production service with separated roles, runb
 ### Continue studying — chapter 37 of 50
 
 [← Chapter 36](#ch-36) · [Course chapter index](../SUBJECTS.md) · [Chapter 38 →](#ch-38)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-38"></a>
 
@@ -2835,8 +2872,9 @@ Containment and restoration are claims about outcomes, not actions. Give each cl
 ### Continue studying — chapter 38 of 50
 
 [← Chapter 37](#ch-37) · [Course chapter index](../SUBJECTS.md) · [Chapter 39 →](#ch-39)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-39"></a>
 
@@ -2887,8 +2925,9 @@ Playbooks decay with their environment. Version them, give them owners, declare 
 ### Continue studying — chapter 39 of 50
 
 [← Chapter 38](#ch-38) · [Course chapter index](../SUBJECTS.md) · [Chapter 40 →](#ch-40)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-40"></a>
 
@@ -2985,8 +3024,9 @@ Fault injection verifies resilience claims when it is bounded, hypothesis-driven
 ### Continue studying — chapter 40 of 50
 
 [← Chapter 39](#ch-39) · [Course chapter index](../SUBJECTS.md) · [Chapter 41 →](#ch-41)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-41"></a>
 
@@ -3069,8 +3109,9 @@ Choose response policies as multi-objective decisions: filter by hard constraint
 ### Continue studying — chapter 41 of 50
 
 [← Chapter 40](#ch-40) · [Course chapter index](../SUBJECTS.md) · [Chapter 42 →](#ch-42)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-42"></a>
 
@@ -3158,8 +3199,9 @@ Applied research in engineering finds the limits of a designed system: testable 
 ### Continue studying — chapter 42 of 50
 
 [← Chapter 41](#ch-41) · [Course chapter index](../SUBJECTS.md) · [Chapter 43 →](#ch-43)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-43"></a>
 
@@ -3208,8 +3250,9 @@ A practicum applies engineering methods in a real organisation under written sco
 ### Continue studying — chapter 43 of 50
 
 [← Chapter 42](#ch-42) · [Course chapter index](../SUBJECTS.md) · [Chapter 44 →](#ch-44)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-44"></a>
 
@@ -3262,8 +3305,9 @@ The capstone builds a bounded, traceable response system: scoped for buildabilit
 ### Continue studying — chapter 44 of 50
 
 [← Chapter 43](#ch-43) · [Course chapter index](../SUBJECTS.md) · [Chapter 45 →](#ch-45)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-45"></a>
 
@@ -3329,8 +3373,9 @@ Independent review tests claims against evidence before trials are interpreted. 
 ### Continue studying — chapter 45 of 50
 
 [← Chapter 44](#ch-44) · [Course chapter index](../SUBJECTS.md) · [Chapter 46 →](#ch-46)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-46"></a>
 
@@ -3383,8 +3428,9 @@ Trials run pre-specified scenarios with ground truth and instrumentation, classi
 ### Continue studying — chapter 46 of 50
 
 [← Chapter 45](#ch-45) · [Course chapter index](../SUBJECTS.md) · [Chapter 47 →](#ch-47)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-47"></a>
 
@@ -3443,8 +3489,9 @@ A recovery trial tests the complete recovery claim with published, pinned inputs
 ### Continue studying — chapter 47 of 50
 
 [← Chapter 46](#ch-46) · [Course chapter index](../SUBJECTS.md) · [Chapter 48 →](#ch-48)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-48"></a>
 
@@ -3510,8 +3557,9 @@ The evidence dossier maps every requirement to reproducible, adequate evidence, 
 ### Continue studying — chapter 48 of 50
 
 [← Chapter 47](#ch-47) · [Course chapter index](../SUBJECTS.md) · [Chapter 49 →](#ch-49)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-49"></a>
 
@@ -3572,8 +3620,9 @@ An engineering thesis links design decisions to measured outcomes against baseli
 ### Continue studying — chapter 49 of 50
 
 [← Chapter 48](#ch-48) · [Course chapter index](../SUBJECTS.md) · [Chapter 50 →](#ch-50)
-<!-- cyberabc:chapter-navigation:end -->
 
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-50"></a>
 
@@ -3632,9 +3681,10 @@ The defense shows that the engineer knows why the system is built as it is, what
 <!-- cyberabc:chapter-navigation:start ch-50 -->
 ### Continue studying — chapter 50 of 50
 
-[← Chapter 49](#ch-49) · [Course chapter index](../SUBJECTS.md) · [Worked results →](#worked-results) · [Next course via chapter index →](../SUBJECTS.md)
-<!-- cyberabc:chapter-navigation:end -->
+[← Chapter 49](#ch-49) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
+This is the final chapter of this course; the index links the next course in the full study path.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 

@@ -3168,9 +3168,9 @@ The capstone is assessed through design review, operational evidence and the int
 <!-- cyberabc:chapter-navigation:start ch-30 -->
 ### Continue studying — chapter 30 of 30
 
-[← Chapter 29](#ch-29) · [Course chapter index](../SUBJECTS.md) · [Course 093: Cybersecurity / Bachelor's course →](../../../../bachelors-4-years/cybersecurity/en/SUBJECTS.md)
+[← Chapter 29](#ch-29) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
-This is the last chapter. Check your exercise record against the [worked results](#worked-results), then continue to the next course in the study path.
+This is the final chapter of this course; the index links the next course in the full study path.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>

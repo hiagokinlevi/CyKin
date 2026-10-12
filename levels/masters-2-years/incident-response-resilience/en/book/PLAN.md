@@ -2,7 +2,7 @@
 
 **One book for this course and language.** 8 curricular subjects are its chapters. Duration: 2 years; planned effort: approximately 1200 hours. Audience: Beginning researchers. Entry knowledge: Strong domain foundations and research-method literacy. Intended outcome: formulate a question, evaluate prior work and produce reproducible findings in incident response and cyber resilience.
 
-**Editorial state:** draft manuscript exists; release A4 validation and review pending. English reference edition. [Read the authored draft](MANUSCRIPT.md).
+**Editorial state:** draft manuscript exists; release A4 validation and review pending. English reference edition.
 
 [Home](../../../../../README.md) · [Course home](../../README.md) · [Edition](../README.md) · [Chapter index](../SUBJECTS.md) · [Course skill](../../skill/SKILL.md)
 
@@ -37,7 +37,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A proposed comparison of two incident triage methods.
 
-**Practice and exercises:** Write a question and protocol for locating and screening relevant primary studies. The planned allocation is 7 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Write a question and protocol for locating and screening relevant primary studies. The planned allocation is 7 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on the entry knowledge and prepares Chapter 02. This is an editorial brief, not a completed lesson.
 
@@ -57,7 +57,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** Two published response studies with different success measures.
 
-**Practice and exercises:** Lead a seminar comparison and state what each model leaves unexplained. The planned allocation is 7 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Lead a seminar comparison and state what each model leaves unexplained. The planned allocation is 7 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 01 and prepares Chapter 03. This is an editorial brief, not a completed lesson.
 
@@ -77,7 +77,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A synthetic tabletop study using volunteer analysts and fictional cases.
 
-**Practice and exercises:** Draft a methods and ethics protocol and test whether another reader could reproduce it. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Draft a methods and ethics protocol and test whether another reader could reproduce it. The planned allocation is 6 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 02 and prepares Chapter 04. This is an editorial brief, not a completed lesson.
 
@@ -97,7 +97,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A fictional dataset where one team has both a new playbook and more experience.
 
-**Practice and exercises:** List competing explanations and design analyses that challenge the favored claim. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** List competing explanations and design analyses that challenge the favored claim. The planned allocation is 6 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 03 and prepares Chapter 05. This is an editorial brief, not a completed lesson.
 
@@ -117,7 +117,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A synthetic set of ten incident simulations with incomplete observer notes.
 
-**Practice and exercises:** Submit the proposal, run a pilot and revise the protocol with an audit trail. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Submit the proposal, run a pilot and revise the protocol with an audit trail. The planned allocation is 6 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 04 and prepares Chapter 06. This is an editorial brief, not a completed lesson.
 
@@ -137,7 +137,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A fictional pilot and main-study dataset of triage decisions.
 
-**Practice and exercises:** Publish a reproducible analysis package and test alternative outcome definitions. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Publish a reproducible analysis package and test alternative outcome definitions. The planned allocation is 6 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 05 and prepares Chapter 07. This is an editorial brief, not a completed lesson.
 
@@ -157,7 +157,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** The student's incident-study protocol, data and analysis artifacts.
 
-**Practice and exercises:** Write the dissertation and document negative results and transfer limits. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Write the dissertation and document negative results and transfer limits. The planned allocation is 6 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 06 and prepares Chapter 08. This is an editorial brief, not a completed lesson.
 
@@ -177,7 +177,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** An independent reader's critique of the dissertation and analysis package.
 
-**Practice and exercises:** Defend choices, reproduce key results and record revisions after review. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Defend choices, reproduce key results and record revisions after review. The planned allocation is 6 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 07 and prepares the worked-answer appendix and final assessment. This is an editorial brief, not a completed lesson.
 

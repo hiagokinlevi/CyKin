@@ -440,6 +440,230 @@ assert len(missing) == 1
 
 Compare the printed result and its limits with the [BSL1 worked result](#ir-rapid-ch01-bsl1-result) in the final appendix. The six S-series inputs are a separate preparation fixture, never case evidence for R1–R8.
 
+### 1.2b Essential service paths and degraded modes
+
+#### A running component is not a delivered business service
+
+A library website may respond while the underlying booking system cannot display current rooms or accept a reservation. A backup monitor may report a completed job while no one has shown that the resulting copy can restore a correct schedule. A help desk may still take a patron's request while the computer-based reservation cannot be accepted. All three situations illustrate the same preparedness problem: the organization can truthfully say that *some* technology remains operational without establishing that the user's promised outcome is available.
+
+The existing Chapter 01 begins correctly with a service map and a D1 evidence-readiness contract. A service map tells the responder which components and owners matter. D1 asks whether useful observations could be obtained under authority, including source semantics and missing evidence. A third question is needed: **which exact user-facing functions would a component fault affect?** Answering it requires a function-specific dependency model rather than treating every component as either globally healthy or globally fatal.
+
+A **service function** is a specific operation with a defined useful result. A **technical dependency** is something required to carry out that operation in the stated architecture and mode. A **degraded mode** is a deliberately narrower operating state in which some activities continue but other service commitments cannot honestly be made.
+
+These distinctions are consistent with the emphasis on service dependencies and business function recovery in [NIST SP 800-184, *Guide for Cybersecurity Event Recovery*](https://csrc.nist.gov/pubs/sp/800/184/final) and with risk-aware response preparation in [NIST SP 800-61 Revision 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final). Those NIST publications do not specify Harbor Library's internal routes; PATH1 is original classroom reasoning material.
+
+#### Begin with the promise made to a patron
+
+Imagine five distinguishable functions for a hypothetical reservation service: an informational page responding, a current list of rooms being displayed, an authorized staff member editing a booking, a front-desk employee recording a pending request, and a new backup job obtaining its source data.
+
+The results are not interchangeable. A successful informational page response says little about reservation accuracy. An accepted staff edit is a business-state change, potentially requiring authorization and durable storage. A manual request receipt is **not** acceptance of a reservation. A backup job's access to a database is **not** a tested restore or an accepted return to service.
+
+A weak readiness statement says, "the app is available." A more useful statement says, "the authorized staff-edit function produced the expected change to the intended booking and a reviewer checked the resulting authoritative state in a controlled test." The second statement has a testable outcome and a declared scope.
+
+At rapid-course depth, learners should identify the **unit of success** before selecting a test. Is the question about reaching a page, viewing a current room, placing a reservation, collecting a pending request or producing a backup object? Each unit needs a different answer and may have different technical dependencies.
+
+This framing also improves incident communication. The service owner may legitimately approve a limited request-intake workaround, but staff must not announce that rooms are confirmed while writes are unavailable. An honest degraded-service notice should explain what the user can do, what remains pending and what must occur before confirmation is possible.
+
+#### Express path assumptions as a small dependency table
+
+The PATH1 teaching model uses components named `web`, `identity`, `database`, `helpdesk` and `backup`. These categories resemble the service map, but their **specific connections are invented**. The canonical R1–R8 records do not confirm this topology.
+
+| Fictional modeled function | Required PATH1 components | Narrow business meaning |
+|---|---|---|
+| `site_reachable` | `web` | An informational page can respond |
+| `room_view` | `web`, `database` | A room-view route is structurally possible |
+| `staff_edit` | `web`, `identity`, `database` | A staff-edit route has its modeled prerequisites |
+| `manual_intake` | `helpdesk` | A pending request can be received, not committed |
+| `new_backup_job` | `database`, `backup` | The modeled backup process can access source data |
+
+A component in a path is **required under this model**. If a required component is unavailable, the script predicts the function is impaired. If every required component is marked available, it predicts only **structural possibility**, not verified correctness. The model does not implement authentication, data persistence, cache validity, backup integrity, patron notification or performance.
+
+These limitations are not weaknesses to conceal. They define which engineering question the model answers. A small, explicit model can help identify the next owner or test, provided no one promotes its predictions into real observations.
+
+By contrast, D1's source contract asks whether an application audit or identity record could prove what actually happened. BSL1's business-rule exercise checks overlaps and cancellation semantics using separate invented booking records. PATH1 does neither. It asks which *functions* could lose their modeled prerequisites under component loss.
+
+#### A single component failure may impair several different functions
+
+Consider the independent hypothetical case where the PATH1 database becomes unavailable. Because `room_view`, `staff_edit` and `new_backup_job` all list it as required, the model predicts those three functions are impaired. The informational page and manual help-desk intake do not list it, so they remain structurally possible in this simplified design.
+
+That prediction is not equivalent to "the website is healthy." A resident might reach a page but fail to view a trustworthy room list. It is also not equivalent to "the whole library cannot help anyone." Under the fictional fallback assumption, the help desk can still receive an unconfirmed request.
+
+An identity-service failure has another shape. It impairs the modeled staff-edit path but does not necessarily impair room viewing. This does **not** establish that Harbor Library actually permits unauthenticated read access; it reflects only the independent fixture.
+
+A help-desk failure can remove the manual fallback while website-mediated paths remain structurally possible. During ordinary operation this might be inconvenient; during a wider outage it could remove the only permitted path for receiving new requests. Thus the business importance of a dependency depends on the operating context.
+
+The correct incident question is therefore not simply "which component is red?" It is **which useful function is affected, what other path remains, and what legitimate promise can still be made?** Component counts cannot substitute for that analysis.
+
+#### Single points of failure must name their affected outcome
+
+Calling a component a "single point of failure" is incomplete without naming the function it can prevent. In PATH1, failure of `web` alone prevents the informational page, room view and staff-edit route. It does not, under the stated fixture, prevent help-desk request intake or a new backup job.
+
+Likewise, the database is a single required element for the modeled room view, but not for the informational page. A real application may have additional dependencies or a working alternate route; the PATH1 table provides no evidence about them.
+
+For a function with all-required dependencies, **failure of any listed component** is sufficient to impair that particular modeled path. A real resilient design might instead have alternatives—such as two equivalent service instances or a controlled cached read. Such alternatives must be explicitly documented and tested before they are used in operational decisions.
+
+This beginner model deliberately avoids probability estimates. A list of components does not provide failure rates, correlations, repair times or evidence that alternate capacity is usable. Assigning an invented likelihood of downtime would add precision without support.
+
+The preparedness value of this reasoning is asking a service owner to identify what is truly essential and which alternate route can safely meet a narrower requirement. It does not authorize changing a production configuration.
+
+#### Available, degraded, unavailable and unknown are different conclusions
+
+A route can be **modeled available**, **modeled impaired**, **observed to work in a bounded test**, or **not yet tested**. These statements should not be collapsed into a single green/red label.
+
+For PATH1, the supplied Python fixture uses Boolean component availability and predicts structural status. Real components can fail partially: a database may answer reads while rejecting writes; an identity service may validate old sessions but not new ones; a cache may return stale content. In those circumstances a simple Boolean may hide important uncertainty.
+
+If an analyst cannot determine a component's actual state, it would be improper to enter `True` merely so the model returns a green result. Record the condition as unknown and ask what observation could resolve it. The classroom script omits a third state for simplicity; the learner must report that as a modeling limitation.
+
+A successful response from a web endpoint also does not prove that a booking change was authorized and durably committed. A help-desk receipt does not prove a room assignment exists. These are examples of **overclaiming from partial success**.
+
+An accurate report might say, "under the selected model, the informational page path remains structurally possible, while the booking write path is predicted unavailable." It should not claim that real patrons can safely use the service without a corresponding test and owner acceptance.
+
+#### Design a degraded mode with explicit boundaries
+
+A degraded mode is not simply "whatever still works." It should be defined in advance by the service owner, with conditions for activation, an approved workflow, a duration or review trigger, a message that accurately describes service limits, and a path back to normal operations.
+
+For a hypothetical request-only help-desk mode, the owner would need to answer:
+
+1. May staff receive requests while the authoritative reservation service is unavailable?
+2. Which minimum details can be collected safely and for what purpose?
+3. Does the request remain **pending** until a later authorized check?
+4. Who maintains receipt order and prevents duplicates or conflicting instructions?
+5. Who communicates the distinction between receipt and acceptance to patrons?
+6. What is the escalation route if the desk cannot keep up or the request is urgent?
+7. Who authorizes eventual reconciliation and confirms the resulting business state?
+8. What observable result ends the degraded mode?
+
+This is a **proposed business contract**, not a claim that the canonical Harbor Library help desk followed such a procedure. The later Chapter 3 MQ3 laboratory teaches detailed request reconciliation, but PATH1 asks an earlier, different question: *Would that kind of fallback function remain technically possible under a specified component fault?*
+
+Manual intake may be unavailable by policy even when the help desk is working. Staff may lack capacity, approved paper procedures or privacy safeguards. A model's technical possibility never overrides the service owner's operating constraints.
+
+A safe degraded-mode statement says, "the request may be recorded for review." A dangerous statement says, "the room is booked" when the accepted reservation has not been established.
+
+#### Readiness needs a verification plan for each function
+
+Before accepting the function table, a service owner and technical custodian should identify the test that would challenge it. A useful test plan includes:
+
+- The function and promised outcome.
+- The proposed required components.
+- The specific isolated fault or unavailable component.
+- The predicted impairment or alternative behavior.
+- The positive technical observation to look for.
+- A negative or business-safety check.
+- The responsible owner and permitted environment.
+- A source and timestamp for the actual result.
+- The limit of the conclusion and the required review.
+
+For the modeled room view, a technical response alone might be insufficient if it returns stale or unauthorized data. For staff editing, a successful request does not prove the intended authoritative value was committed. For a backup job, creation does not prove the object is recoverable. For help-desk intake, a receipt does not prove the request was accepted.
+
+This plan should be compared with existing D1 and BSL1 artifacts **without copying their content**. D1 specifies how a record could be obtained and interpreted; BSL1 defines some correct booking-state behavior; PATH1 specifies which path's prerequisites are being challenged. A real isolated test might draw on all three, but the conclusions remain separate.
+
+If the expected negative test fails, record the failure rather than silently weakening the acceptance rule. If the input data are incomplete or the supposed fault was not actually induced, report an **inconclusive test** rather than a clean pass.
+
+#### Contrast a tempting wrong conclusion with a defensible one
+
+**Incorrect hypothetical analysis:**
+
+> "The database is down but the homepage responds, so the service is healthy. Staff can take requests at the desk, which means reservations are still confirmed. The backup component remains online, so the library can already restore everything."
+
+This assumes that the informational page represents all booking functions; that a pending manual request is a completed reservation; and that a backup component or job outcome proves tested recovery. None of the claims follows from the PATH1 model, and no database outage appears in canonical R1–R8.
+
+**Correct bounded analysis:**
+
+> "In the independent PATH1 model, database unavailability predicts impairment of the room-view, staff-edit and new-backup-job paths, while the informational page and help-desk request intake remain structurally possible. Manual intake does not accept reservations, and no recovery test is supplied. These are sensitivity predictions from declared assumptions, not Harbor Library incident observations. The service owner would need to approve any degraded operating promise, and a separate authorized check would be required to establish actual function and business correctness."
+
+The improvement is not simply cautious language. It identifies the **unit of service**, the **source of the claim** and the **missing acceptance evidence**.
+
+#### Compare fault scenarios without turning them into canonical events
+
+A useful offline rehearsal changes one modeled condition at a time and records which functions change classification. The student should begin with the baseline, simulate a database failure, restore the baseline and simulate identity failure. The same process can be used for help-desk and web failures.
+
+Without resetting the model, conclusions can become mixed: a lingering database-down condition may make an identity test appear to impair more functions than it really does. The code below avoids this by evaluating independent failure sets rather than mutating the shared route definitions.
+
+Comparisons should be explained in business terms. If identity failure affects only the staff-edit path, that is different from database failure affecting viewing, editing and new-backup creation. If help-desk failure removes intake, the potential harm depends partly on whether users have another approved means of making requests.
+
+A two-component failure is useful as a negative control. With both database and help desk unavailable under PATH1, the remaining informational page cannot provide accepted booking writes or receive pending requests. It would be misleading to label that state "partially operational reservation service" without specifying the limited information-only function.
+
+The fixture provides **no frequency, probability or severity score** for these scenarios. Those require information from the service owner and measured operational evidence outside the classroom.
+
+#### Relationship to incident decisions at 09:05
+
+Return to the actual fictional Round A source set. R1 reports a `desk-a` sign-in, R3 and R4 report booking changes, R5 is a patron concern, R6 describes scheduled training, R7 reports a backup-job completion and R8 lacks sufficient destination detail. These records support questions about approval, service state and identity context. They do **not** establish any PATH1 component outage.
+
+A student might reasonably propose that the service owner clarify what would happen if the database were unavailable, or whether a request-only fallback is approved. That is a readiness question, not a finding about the incident.
+
+A PATH1 scenario must never be inserted as an additional R-series row or used to justify the 09:05 restriction decision. Likewise, the later B19/B20 events or Branch S/P results cannot be imported backward to resolve the original uncertainty.
+
+A high-quality responder can maintain two ledgers: the **canonical evidence ledger**, limited to released case records, and a **model/test ledger**, containing declared assumptions and hypothetical outcomes. This separation permits technically useful planning without fictionalizing production observations.
+
+#### Section synthesis: resilience is a bounded service promise
+
+Resilience is not a guarantee that every component stays online. It is the ability to define important user outcomes, identify how component failure could affect them, prepare acceptable narrower modes, and test what those modes actually deliver.
+
+A website may be reachable while current room viewing is impaired. A help desk may be able to receive a request without confirming a reservation. A backup job may be possible without demonstrating recovery. Recognizing these distinctions improves the quality of incident questions and makes subsequent service-owner decisions more defensible.
+
+The PATH1 laboratory is purposely small. It trains one transferable habit: **predict structural consequences, identify the business promise, and demand appropriate observation before declaring service impact or recovery**.
+
+<a id="ir-rapid-ch01-path1-lab"></a>
+
+#### PATH1 Offline Laboratory — Functional Dependencies and Degraded Service
+
+**Classification:** Independent, entirely synthetic modeling exercise. Not R1–R24, not the BSL1 booking-state fixture, not the technical-level L6 architecture and not a recorded Harbor Library outage.
+
+**Environment:** Python 3 standard library, in memory. No files, network calls, real credentials or service modifications.
+
+**Prediction task:** Before running, predict which functions remain in each scenario and whether the result means modeled staff-edit availability, request intake only or no modeled staff-edit/intake route.
+
+The summary mode classifies only the staff-edit and request-intake paths. Read the separate `available` list before saying whether room viewing or any other function remains possible.
+
+##### Complete Python program
+
+~~~python
+ROUTES = {
+    "site_reachable": {"web"},
+    "room_view": {"web", "database"},
+    "staff_edit": {"web", "identity", "database"},
+    "manual_intake": {"helpdesk"},
+    "new_backup_job": {"database", "backup"},
+}
+
+CASES = [
+    ("BASE", set()),
+    ("DATABASE_DOWN", {"database"}),
+    ("IDENTITY_DOWN", {"identity"}),
+    ("HELPDESK_DOWN", {"helpdesk"}),
+    ("WEB_DOWN", {"web"}),
+    ("DATABASE_AND_HELPDESK_DOWN", {"database", "helpdesk"}),
+]
+
+def assess_failed(failed):
+    available = sorted(
+        name for name, needs in ROUTES.items()
+        if needs.isdisjoint(failed)
+    )
+    impaired = sorted(set(ROUTES) - set(available))
+
+    if "staff_edit" in available:
+        mode = "STAFF_EDIT_PATH_MODELED"
+    elif "manual_intake" in available:
+        mode = "NO_STAFF_EDIT_INTAKE_MODELED"
+    else:
+        mode = "NO_EDIT_OR_INTAKE_PATH"
+
+    return available, impaired, mode
+
+for name, failed in CASES:
+    available, impaired, mode = assess_failed(failed)
+    print(
+        f"{name}: available={','.join(available)} "
+        f"impaired={','.join(impaired)} mode={mode}"
+    )
+
+assert assess_failed({"database"})[2] == "NO_STAFF_EDIT_INTAKE_MODELED"
+assert "room_view" not in assess_failed({"database"})[0]
+~~~
+
+Predict the six output lines before running the program, then compare your result with the [PATH1 worked result](#ir-rapid-ch01-path1-result) in the final appendix. Keep PATH1 separate from the R-series case evidence.
+
 ### 1.3 Roles and decision authority
 
 A small organization may assign several roles to one person, but the decisions remain distinct:
@@ -783,6 +1007,10 @@ Work from **only R1–R8** and the fictional authority rules in Chapter 1. The c
 
 **For full credit:** A 2-point answer explicitly connects different technical sources to different decisions. The database's current booking values cannot be inferred directly from R3–R4's edit history.
 
+**PATH1 supplementary task (after the required artifact):**
+
+**Additional requirement:** After the existing two dependency cards, choose one PATH1 modeled function and identify a component fault that would impair it. State an authorized *functional* check and a separate *business correctness* check. Do not claim that the PATH1 fault occurred in canonical R1–R8.
+
 #### EX004 — Scope boundary
 
 **Objective:** apply an authorization boundary to a tempting next action. **Inputs:** the section 1.4 scope statement and R1–R8. **Output:** a short scope decision with proposed action, permitted objects and operations, reason for rejection, contained alternative, and stop or escalation condition. A learner wants to search a real public library website for a matching account name. Explain what the eight supplied records permit instead, and write a hypothetical request for the additional detail if it would matter to the case. A score of 2 explicitly excludes real-site access and names the responsible approver for any future expanded scope.
@@ -799,6 +1027,10 @@ Work from **only R1–R8** and the fictional authority rules in Chapter 1. The c
 
 **Objective:** make recommendation, approval, execution and verification visible. **Inputs:** section 1.3's fictional roles, R7 and the classroom scope. **Output:** a four-row responsibility table for a possible booking outage, preservation of R1–R5, coordination of the next review and a contained restore test. Name the task owner, who approves it under the exercise rules and what would verify completion. Distinguish **planning** a restore test from having performed one. A score of 2 does not delegate an outage decision to the analyst or treat R7 as a tested restore.
 
+**PATH1 supplementary task (after the required artifact):**
+
+**Additional requirement:** Keep the original four-row role matrix. For the possible booking outage, distinguish an approved manual-request intake procedure from actual booking acceptance; name the service owner of the hypothetical degraded-mode decision, the help-desk custodian of receipts and the reviewer who would authorize reconciliation.
+
 #### EX007 — Minimal incident record
 
 **Objective:** open a case that another analyst can continue. **Inputs:** R1–R8 and the 09:00 intake checkpoint. **Output:** exactly seven labeled fields: case ID and open time; service; reporter and source; observed signal with record IDs; current assessment and uncertainty; permitted scope and authority; next question, owner and review time. Related details may share a field. A score of 2 retains the `T-104` help-desk context from section 1.5, distinguishes the report from an independently checked booking state, and does not claim the later 09:05 decision was already executed at 09:00.
@@ -809,6 +1041,10 @@ Work from **only R1–R8** and the fictional authority rules in Chapter 1. The c
 
 **Objective:** limit claims to what three different source types actually say. **Inputs:** R6–R8. **Output:** a three-row evidence-limit table with ID and time, narrow supported conclusion, tempting unsupported conclusion, and a follow-up source or test. A score of 2 treats a scheduled activity as distinct from an approved booking change, a completed backup job as distinct from a proven restore, and a summary missing destination detail as distinct from a verified absence of transfer.
 
+**PATH1 supplementary task (after the required artifact):**
+
+**Additional requirement:** In the R7 backup-status row, explain why modeled `new_backup_job` availability would not verify usable restore, acceptable elapsed recovery or owner-approved booking correctness. Preserve the original R6 training and R8 network-summary source limitations.
+
 #### EX009 — Decision alternatives
 
 **Objective:** justify a proportionate 09:05 decision under uncertainty. **Inputs:** R1–R8 and the section 1.9 gate. **Output:** a two-row option matrix for (A) seeking a temporary restriction of `desk-a` and (B) preserving R1–R8, asking the training owner and reviewing before restriction. Record expected benefit, possible service or delay cost, approver, observable success or failure and a 09:15 review trigger for each. Choose one provisionally and explain what new evidence would reverse it. A score of 2 identifies a separate approval for restriction and does not describe either risk as an already observed event.
@@ -816,6 +1052,12 @@ Work from **only R1–R8** and the fictional authority rules in Chapter 1. The c
 **Extension:** Add a falsifier and a business negative check to both original options. State which observation would make the learner reconsider a decision to wait and which observation would indicate an account restriction disrupted legitimate work.
 
 **For full credit:** A 2-point answer requires distinct approval, execution and verification states, not merely a preferred option.
+
+**PATH1 supplementary task (after the required artifact):**
+
+**Additional requirement:** Keep both original 09:05 options and their approvals. Add a clearly marked **counterfactual**: if a future authorized test found staff edits impaired but manual request intake possible, identify the one user promise that remains permitted and one that is prohibited. Do not replace the original evidence decision or invent a new R-series item.
+
+---
 
 #### EX010 — Communication draft
 
@@ -1708,6 +1950,271 @@ assert variant.get("X04") is None
 
 Compare your result with the [IM2 worked transcript and interpretation](#ir-rapid-ch02-im2-result) in the final answer appendix.
 
+### 2.24 Privacy-aware evidence selection and reproducible review views
+
+#### A complete source and a useful analyst view are not the same object
+
+An incident investigation often needs enough information to distinguish competing explanations. That does not mean every analyst needs every field from an application export. A raw system record may contain account labels, booking identifiers, timestamps, request identifiers and additional contact information. Some fields could help answer the immediate incident question; others may reveal personal information unrelated to it.
+
+The existing Chapter 02 already insists on bounded collection and trustworthy source provenance. It explains that byte-identical copies do not prove source completeness and that a quiet query cannot establish absence outside its envelope. This expansion asks a distinct question: **After an authorized source has been identified, which fields may a specific reviewing role receive for a specific question, and how can the transformed view remain reproducible without unnecessarily spreading unrelated information?**
+
+Three objects should be distinguished:
+
+- **Source record:** The original record or authorized copy from its named producer, with its actual selection and collection limits.
+- **Working review view:** A derived selection of rows and columns created for a specific decision purpose. It may omit or mask fields, but it must be labeled as a transformation.
+- **Decision statement:** The analyst's bounded conclusion drawn from that view, with references to the source or a custodian who can verify any omitted details.
+
+A review view is not a more authentic original just because it looks tidy. It is an analytical product. If it hides a relevant source identifier, the reviewer may lose the ability to verify what was selected. If it exposes every available patron contact field, the team may exceed its stated purpose. Both are quality failures.
+
+[NIST SP 800-122, *Guide to Protecting the Confidentiality of Personally Identifiable Information (PII)*](https://csrc.nist.gov/pubs/sp/800/122/final) provides primary guidance on identifying and protecting PII according to risk and context. It is focused on U.S. federal agencies and does not establish the privacy law or authorization rules governing the fictional Harbor Library. The field-level exercise below is original CyberABC instructional material.
+
+#### Begin with a permitted decision question, not a list of available columns
+
+Consider the question available at the 09:20 Round B review:
+
+> "Which recorded operation concerning B19 should the application custodian investigate, and which available account/time identifiers could help test the approved-training explanation?"
+
+This question may require a booking identifier, operation type, timestamp, account label, source name and record ID. It does **not** automatically require a patron's home address, email, telephone number, newsletter membership or unrelated reservations.
+
+The decision purpose comes first. Then the analyst and custodian identify the minimum relevant sources, permitted rows and columns, approval and whether any sensitive field is truly necessary. The need for personal information may change if a different authorized question is posed—for example, notifying a person about a verified service consequence. That later purpose requires its own authority and evidence.
+
+A weak collection plan says, "Export every user detail in case it becomes useful." This gives future unknown questions control over today's data exposure. A stronger plan identifies a current question and the specific fields that could discriminate among current hypotheses, with a way to request more through an authorized owner if the original selection proves insufficient.
+
+The correct goal is **proportionate access without destroying legitimate investigative capability**. It is not simply making every exported file as small as possible. An underspecified view can falsely suggest that two events are unrelated because the join identifier was removed. Conversely, a broad export may include sensitive data with no decision value.
+
+At rapid level, the student should state the question, list each requested field, describe its purpose and identify a permitted alternative if that field cannot be shared.
+
+#### Separate record selection from field projection
+
+Two distinct filtering operations commonly occur when preparing evidence for review.
+
+**Row selection** determines *which events or business objects* appear. A proposed Round B selection might concern B17–B19 over an approved interval, rather than every historical booking. The exact source and time filter must be documented. R15's deletion rule creates urgency, but does not specify a deadline anchor or authorize a broader export.
+
+**Field projection** determines *which properties* of those selected rows appear in the working view. One reviewer may need event IDs, booking IDs, timestamps, operation names and account labels. A different role may need an aggregate service-status note rather than technical identifiers. Neither view is an original log.
+
+Both transformations must be recorded. A view's reported row count is meaningless without the selection that produced it. A small number of rows may reflect a narrow scope, a data absence, a wrong filter or a broken collection path. Field projection cannot repair any of those problems.
+
+The selection plan should name the producer, approved query interval, relevant account or booking filters, source clocks, collection/ingestion limitations, collector and reviewer roles. Chapter 02 already develops those concepts for R13/R14, VQ2 and T1/T2. This supplement adds a required second line: **Which exact columns are retained or withheld for the receiving analyst, and which original source custodian can recheck an omitted field if needed?**
+
+A changed selection or projection produces a different analytical artifact and must be versioned, not silently substituted for the first output.
+
+#### The minimum view must still answer the question
+
+Removing irrelevant data is valuable only if the remaining view can support a defensible conclusion. Suppose an analyst wants to associate an application change with a reported booking symptom. If the view removes the booking identifier, the analyst may not be able to connect the records. A row with only an operation and time can be insufficient, especially when multiple requests occurred nearby.
+
+A **required correlation field** is a field necessary to compare the selected records under the approved method. Its presence does not make a correlation valid by itself. Two systems may use similarly named IDs with different namespaces or semantics. The existing Q1 laboratory demonstrates that an overlapping time window and account label can leave more than one candidate session. A privacy-aware view must not erase that uncertainty or use masking as an excuse to guess which session was involved.
+
+An application-account label such as `desk-a` can itself be sensitive operational context. It may be appropriate for a restricted technical reviewer but unnecessary for a patron-facing message. The fact that a field is not a full legal name does not make it safe for unlimited distribution.
+
+A field checklist therefore needs two explanations: **why retained** and **why not retained**. For example, keep a stable source event identifier so another reviewer can retrieve the correct raw row through an authorized custodian. Keep an operation type to distinguish edit from view. Omit a contact address if the current question does not need it. If a field's necessity is unknown, pause the release decision and ask the approving role rather than selecting it automatically.
+
+#### Pseudonymization is not the same as anonymity
+
+Sometimes a team wants to replace a directly identifying value with a less revealing label. For example, a review table might use an internal case alias instead of a patron contact address, while a restricted custodian maintains the approved mapping. Such a transformation may reduce unnecessary exposure, but it does **not** establish that a person can no longer be identified.
+
+A consistent alias may link a person's activities across multiple rows, even when the person's name is absent. Other available fields—time, booking pattern or account metadata—may allow association with a real individual when combined with additional sources. A pseudonym should therefore still be treated according to its remaining disclosure risks.
+
+Nor is a cryptographic digest of a contact address necessarily an anonymous value. Predictable inputs may be guessable, a shared digest can link repeated activity, and any reversible mapping creates a reidentification route. It would be incorrect to say, "The email was hashed, so the export contains no sensitive data." A secure pseudonymization scheme, if needed, requires a separately approved design, key protection, access control and threat assessment, beyond this introductory exercise.
+
+The MIN2 laboratory deliberately **omits** contact fields rather than generating pseudonyms. It checks that the intended reviewer receives only declared analysis columns and that the source retains its original teaching values unchanged. This is easier to audit and avoids suggesting a toy hashing operation can solve privacy risk.
+
+Anonymity is a much stronger claim than "a visible name has been replaced." Nothing in this chapter's fixture establishes irreversible anonymity.
+
+#### Keep the original available under an appropriately controlled procedure
+
+A bounded review view should not overwrite or replace the original record set. An analyst may need to verify whether a transformation omitted a relevant field or merged two events incorrectly. If the original was deleted, that review may no longer be possible.
+
+For a real authorized collection, the relevant custodian should follow organizational retention, access, preservation and evidence-handling rules. The preservation may require restricted access to fields that are not distributed to every analyst. **Protecting the source and minimizing the working copy are complementary**, not contradictory, when they are each justified by their purpose and authority.
+
+This does not mean preserving all personal data indefinitely. The original collection itself must be authorized and proportionate, and retention obligations depend on the organization's rules and applicable requirements. The book does not provide a general legal preservation order or permission to copy unrelated patron data.
+
+In Chapter 02, the E1 exercise already distinguishes a synthetic transcription from an authenticated original and shows that matching SHA-256 values support limited byte consistency. A new working view should have a **transformation manifest** and source pointer; it cannot inherit authenticity merely because its source file had a digest check.
+
+An effective manifest records: source identity, query selection, collection status, reviewer access scope, fields retained, fields deliberately omitted, transformation version, creator and creation time *if actually performed*, and the known limits. A planned transformation with no created output must remain **planned**, with no fabricated timestamp or digest.
+
+#### Privacy and investigative value can fail in opposite directions
+
+A review view can fail through **excess** or **insufficiency**.
+
+An excess-field failure occurs when the output includes contact information outside the approved purpose. The analyst may still be able to investigate, but the disclosure is broader than necessary. A missing-key failure occurs when the output omits the booking or event identifier needed for the intended comparison. This may appear more protective at first glance, but it can make the authorized review unreliable.
+
+These failures do not cancel each other. One cannot justify unnecessary contact data simply because the view contains other useful columns. One cannot call an unusable view successful just because it exposes fewer fields.
+
+A third failure occurs when the row filter expands beyond the approved objects. A view may have an entirely appropriate set of columns but include records for an unrelated booking. Field-level restrictions do not automatically justify overbroad row selection.
+
+The negative controls in MIN2 test all three conditions separately: removing the required booking key, adding a contact field and including an unapproved booking ID. The program rejects each variant instead of quietly producing a wider or less useful view.
+
+This is an original data-handling acceptance contract. It does not attempt to determine every possible category of personally identifiable information or replace a full privacy impact assessment.
+
+#### Contrastive worked example: "we have only the facts we need"
+
+**Incorrect hypothetical assessment:**
+
+> "For R9, export the full patron profile, all contact details and all newsletter fields. The analyst might need them later. After copying them, delete the original and keep only a masked table; the mask proves the evidence is anonymous and complete."
+
+The first step lacks a specific decision purpose for unrelated contact data. The second risks destroying the source context and provenance. The third converts a superficial masking operation into unsupported claims of anonymity and source completeness. None of those steps is authorized by R9 or the Round B release.
+
+**Defensible decision proposal:**
+
+> "At 09:20, R9 reports a B19 booking edit, while R10–R13 provide limited training, patron-report, recollection and session context. The analyst requests that the application custodian confirm the approved source and select only the records and fields needed to investigate the B19 operation within a bounded interval. A technical review view may retain stable event/booking IDs, event time, operation and appropriate account context, while unnecessary patron contact details remain outside that view. The source and any transformation are preserved only according to the approved collection and access rules. No export or identity finding is claimed completed."
+
+The proposal answers a specific question, names the custodian and leaves missing proof visible. It also prevents the opposite error: removing every identifier and then attributing events through timestamps alone.
+
+#### Release boundaries still govern restricted views
+
+A projection cannot make later evidence available earlier. At the 09:05 Round A checkpoint, R9–R16 do not exist in the learner's released set, even though R9 reports an event at 09:03. A review view derived from R9 is therefore **not available** for the Round A decision.
+
+At the 09:20 Round B checkpoint, R1–R16 are available as supplied synthetic cards. The learner can design an authorized review request but must not claim that a custodian delivered unprovided raw fields. R13 lacks device and location detail; privacy minimization does not entitle the learner to fill those fields with guesses. R14's query scope is incomplete; a nicely projected table cannot repair that coverage limitation.
+
+R15 adds a separate urgency to determine source retention, but its 24-hour deletion rule lacks a documented anchor. No projection can compute a defensible exact deadline without that missing policy detail.
+
+The MIN2 rows are exercise-only symbols. They are not the same as the original R-series booking values, and they cannot be used to assert how many Harbor Library patrons were affected. The IM2 exercise addresses a separate counting problem, with its own X-series data and limits; MIN2 addresses how a narrowly scoped *review view* should be constructed and rejected when its field or object policy is violated.
+
+#### Different reviewers should not automatically receive identical views
+
+Operational teams contain distinct roles. A technical analyst investigating whether a booking edit and session event might be related may need an account label and source identifier. A service owner deciding whether booking state should be corrected may need booking IDs and approved targets. A communications contact preparing a patron-facing update may need a description of the service consequence, not an internal account name or raw contact list.
+
+A single all-purpose export can encourage unnecessary forwarding between those roles. The better practice is to specify the receiving role and purpose before preparing the view, with explicit escalation when a reviewer needs more.
+
+Do not treat role restriction as a replacement for source integrity. The service owner still needs valid authoritative booking data. The privacy contact may need to assess an allegation through a different approved process. A communications role's lack of raw data must not be "fixed" by inventing missing facts.
+
+The fictional case does not define an organizational data-classification scheme or actual permissions. A course learner can design candidate views and approval questions while leaving operational implementation pending. It would be misleading to name a specific privacy law or notification threshold without the jurisdictional and organizational facts required.
+
+#### Source identifiers and account labels retain uncertainty
+
+A source event identifier lets a reviewer ask a custodian for the precise original row. It does not by itself authenticate the producer or prove that the data were complete. A booking ID connects a review row with a business object under that source's semantics; it may not be globally unique across all environments or time periods.
+
+Similarly, an account label says what the source attributed to an account or session context. It does not identify the human operator. In Harbor Library, `desk-a` is an account reference. The absence of device/location detail in R13 remains an unresolved question even if a derived view perfectly retains the account field.
+
+These limits are important because a carefully minimized view may look authoritative. Exact row IDs, tidy column names and consistent aliases can make a table appear complete. A disciplined reviewer asks which producer emitted each field, whether the join identifiers are actually comparable, whether the source query covered the intended interval and what was omitted.
+
+MIN2's `actor_account` column is therefore a fictional correlation candidate, not a human attribution result. Its inclusion is allowed only within the exercise's explicitly defined technical-review policy, not as permission to publish account details widely.
+
+#### Record transformation without pretending the source changed
+
+A derived review view is not a modified original source; it is a new analytical artifact. A transformation log should allow another authorized reviewer to repeat the same row selection and field projection if the original is still available under the applicable retention rules.
+
+For a small classroom review, record:
+
+1. The permitted question and receiving role.
+2. The approved booking/object scope.
+3. The source record count and declared producer.
+4. The exact fields retained and omitted.
+5. Any normalization of timestamps or identifiers.
+6. Whether the required correlation fields remain available.
+7. The output row count and any errors.
+8. The transformation code/version.
+9. The result's limitations and who may resolve missing fields.
+10. The fact that no real collection or release occurred.
+
+A report saying only "personal details removed" omits too much. It does not identify which personal details, which source rows, which version or whether the transformed view can answer its intended question. A report saying "privacy protected" is even less testable.
+
+The test should include negative cases. If the policy requires a booking ID and it is removed, the view must fail the task's acceptance condition. If a contact email is added, it must fail the field-minimization gate. If an unrelated booking is selected, it must fail the row-scope gate. Rejecting an unsafe requested view before producing it is a legitimate successful outcome for this exercise.
+
+#### An authorized extension is not automatic scope creep
+
+Sometimes the initial view is genuinely insufficient. Perhaps an authorized investigator cannot distinguish two records without a session identifier held in a different source. The right response is not to silently broaden every analyst's access. The investigator should document which decision depends on the missing field, why the current view is insufficient, and which custodian and approver can evaluate a targeted extension.
+
+Such a request may be granted, denied or returned for clarification. Any newly approved selection is a distinct transformation version with its own source and limits. An extension does not imply that the old view was dishonest or that the newly supplied data retroactively existed at an earlier checkpoint.
+
+A useful stopping rule is: if the evidence required for a claim is not inside the authorized current view, **stop that claim** and request additional permission or mark it unresolved. Do not use a field guessed from context to fill a missing column. If the current question can already be answered under its limits, do not collect unrelated information merely to make the record larger.
+
+A practical incident process balances confidentiality, integrity and availability of evidence. Preserving too little can prevent a needed investigation; distributing too much can create another exposure. A well-specified purpose and validation rule keeps both risks visible.
+
+#### Section synthesis: minimize the view without minimizing the truth
+
+Evidence work needs two kinds of discipline at once. The source and its provenance must remain trustworthy and correctly scoped, while each review copy should contain only the information required for that receiver's approved question. Neither a complete original nor a minimal view automatically produces a correct causal conclusion.
+
+For Harbor Library at 09:20, the right result is still a bounded investigation proposal, not a completed source export, a confirmed human actor or a population-wide impact count. MIN2 shows how a review can fail because it contains an unnecessary contact field, lacks a join identifier or reaches an unrelated booking.
+
+The transferable beginner skill is to explain **what was included, what was omitted, why both choices matter, and what the reviewer still cannot establish**.
+
+<a id="ir-rapid-ch02-min2-lab"></a>
+
+#### MIN2 Offline Laboratory — Select a Review View Without Losing Correlation
+
+**Status:** Entirely synthetic and isolated. MIN2 is not R1–R16, not a real patron export and not the earlier E1, Q1, VQ2 or IM2 fixture.
+
+**Goal:** Produce only the approved minimal technical-review fields for an approved synthetic booking selection; reject a missing join field, unnecessary contact field and expanded object scope. Preserve the original artificial source rows unchanged.
+
+**Environment:** Python 3 standard library, memory only; no files, external requests, accounts or production data.
+
+**Input meaning:** `Q11` is the only approved booking ID in this exercise. The invented `patron_email` values use reserved `example.test` addresses. The `actor_account` field is a fictitious technical label, not a human identity. A `READY` label does not prove the source is authentic, the selection complete or the query authorized in a real setting.
+
+##### Executable Python code
+
+~~~python
+EVENTS = [
+    {
+        "event_id": "SYN-A", "booking_id": "Q11",
+        "event_time": "09:03", "operation": "EDIT",
+        "actor_account": "staff-x",
+        "patron_email": "ava@example.test",
+    },
+    {
+        "event_id": "SYN-B", "booking_id": "Q11",
+        "event_time": "09:06", "operation": "VIEW",
+        "actor_account": "staff-x",
+        "patron_email": "ava@example.test",
+    },
+    {
+        "event_id": "SYN-C", "booking_id": "Q12",
+        "event_time": "09:08", "operation": "CANCEL",
+        "actor_account": "staff-y",
+        "patron_email": "bea@example.test",
+    },
+]
+
+ALLOWED = {
+    "event_id", "booking_id", "event_time",
+    "operation", "actor_account",
+}
+SCOPE = {"Q11"}
+REQUIRED = {"event_id", "booking_id", "event_time", "operation"}
+
+def review(label, fields, bookings):
+    if not bookings.issubset(SCOPE):
+        print(f"{label}: REJECT_SCOPE selected=0")
+        return
+
+    extras = fields - ALLOWED
+    if extras:
+        print(f"{label}: REJECT_EXTRA_FIELD {','.join(sorted(extras))}")
+        return
+
+    missing = REQUIRED - fields
+    if missing:
+        print(f"{label}: REJECT_MISSING_KEY {','.join(sorted(missing))}")
+        return
+
+    subset = [
+        {key: row[key] for key in sorted(fields)}
+        for row in EVENTS
+        if row["booking_id"] in bookings
+    ]
+    print(
+        f"{label}: READY rows={len(subset)} "
+        f"fields={','.join(sorted(fields))}"
+    )
+    print(
+        f"{label}: bookings="
+        f"{','.join(sorted({x['booking_id'] for x in subset}))}"
+    )
+
+review("MINIMAL", ALLOWED, {"Q11"})
+review("DROP_BOOKING", ALLOWED - {"booking_id"}, {"Q11"})
+review("ADD_EMAIL", ALLOWED | {"patron_email"}, {"Q11"})
+review("EXPAND_SCOPE", ALLOWED, {"Q11", "Q12"})
+
+print(
+    "SOURCE_UNCHANGED:", len(EVENTS),
+    "rows; sensitive field retained in synthetic source only"
+)
+assert len(EVENTS) == 3 and "patron_email" in EVENTS[0]
+~~~
+
+Predict all six output lines and explain the three rejected variants before checking the [MIN2 worked result](#ir-rapid-ch02-min2-result) in the final appendix. The fixture contains no real personal data.
+
 ### Chapter 2 exercises
 
 Use only records R1–R16 and the fictional authority described here; the exercise-only T1 card is available **only** where a question names it. No answer may claim to have queried a real service, received an unprovided identity detail, proved compromise or completed an export that the learner did not make. For each exercise, cite the relevant record IDs, state the observation before the inference, and give a bounded next action or test. The named output is the artifact to submit; the worked results at the end show acceptable reasoning.
@@ -1750,9 +2257,21 @@ Score each numbered exercise **0** when its artifact is absent or asserts an uns
 
 **For full credit:** A 24-hour rule is a duration, not a confirmed deletion instant; P-A's potential urgency does not authorize a bulk export or establish that a hold took effect.
 
+**MIN2 supplementary task (after the required artifact):**
+
+**Additional task:** Alongside the P-A and P-B proposed requests, identify the specific columns necessary for the next decision and a category of source field that should **not** automatically be distributed to the technical reviewer. Distinguish retention of a permitted source object from permission to distribute every column. Preserve the existing R15 unknown policy anchor and proposal-versus-collection states.
+
+**For full credit:** The request names the business purpose, source selection, custodians, approving role and restricted reviewer scope. No completed export or broad personal-data permission is invented.
+
 #### EX019 — Collection note
 
 **Objective:** make an exercise extract reviewable. **Inputs:** the E1 fixture in section 2.5 and R9/R14. **Output:** a collection-note table with case/item ID, source and event range, collector, authority, actual local collection time *if a file was created*, copy location, transformation and limitation. If no file was created, label the note **planned** and leave collection time and digest **not applicable**; do not pretend an export occurred. A score of 2 identifies E1 as a synthetic transcription, distinguishes original book text from the working file and records access scope. A made-up digest is not required.
+
+**MIN2 supplementary task (after the required artifact):**
+
+**Additional task:** Keep E1's original provenance and state requirements. Add a separate *planned derivative manifest*: original source pointer, approved row interval/objects, fields retained, fields excluded, transformation version and intended recipient. Do not reuse E1's digest as if it authenticated new derived bytes; compute a new digest only if a local file was actually created and measured.
+
+**For full credit:** Source and derived views are explicitly distinguished, and no collection/creation time or digest is fabricated. The original E1 transcript and its existing instructions remain unchanged.
 
 #### EX020 — Hash claim
 
@@ -1761,6 +2280,12 @@ Score each numbered exercise **0** when its artifact is absent or asserts an uns
 **Extension:** For one claim that a matching E1 digest supports, name its exact evidence layer (copy). For one claim it cannot support, name the missing source/selection or interpretation layer. Keep the E1 lab's original numbers and bytes unchanged.
 
 **For full credit:** Matching hashes concern chosen bytes; they do not attest producer completeness, collection permission or the person responsible for B19.
+
+**MIN2 supplementary task (after the required artifact):**
+
+**Additional task:** Keep the existing five-row supported/unsupported hash-claim table. Add one sentence explaining why equal digests of a source copy do not authorize sharing the source's personal fields with a broader team, and why a projected view requires its own recorded transformation and limits.
+
+**For full credit:** Byte consistency remains separate from source authenticity, completeness, permission and confidentiality. No statement that masking or hashing makes information automatically anonymous is accepted.
 
 #### EX021 — Time ordering
 
@@ -1783,6 +2308,14 @@ Score each numbered exercise **0** when its artifact is absent or asserts an uns
 **For full credit:** The learner cannot supply a measured affected-patron count from R9/R11 alone or treat R14 as complete coverage.
 
 **Additional measurement contract for EX023:** State the unit (distinct booking ID), the selected comparison frame and why it was selected, the owner-approved target/current-state fields, and separate reported concern, recorded edit, verified mismatch and unverified comparison. A case-selected numerator is not a population prevalence estimate. As optional offline practice, use IM2 to show how repeated tickets and missing targets remain visible; never import X01–X99 into the R-series case.
+
+**MIN2 supplementary task (after the required artifact):**
+
+**Additional task:** Add a field-by-field justification for a proposed restricted booking-impact comparison. Distinguish what the analyst needs to classify a selected booking discrepancy from any contact details needed for separate patron communication. The latter require a different permitted purpose and must not be silently included in the technical comparison.
+
+**For full credit:** The learner still defines the measurement unit and selected frame as taught in IM2, keeps unverified rows visible and does not infer affected people from ticket count or claim a completed comparison from R1–R16.
+
+---
 
 #### EX024 — Escalation threshold
 
@@ -3562,6 +4095,68 @@ INCOMPLETE_COUNT 1
 **Required artifact:** Submit the exact output, a classification table for the baseline and both variants, the applicable business-rule assumptions, and two sentences explaining why neither the simulated errors nor the missing S04 result prove anything about canonical R1–R8. Keep a prediction recorded before execution; a copied expected transcript without an actual run should be labeled as such.
 <!-- cyberabc:bsl1-worked:end -->
 
+<a id="ir-rapid-ch01-path1-result"></a>
+
+### PATH1 — Worked result
+
+#### Exact expected output — reproduced with Python 3
+
+~~~text
+BASE: available=manual_intake,new_backup_job,room_view,site_reachable,staff_edit impaired= mode=STAFF_EDIT_PATH_MODELED
+DATABASE_DOWN: available=manual_intake,site_reachable impaired=new_backup_job,room_view,staff_edit mode=NO_STAFF_EDIT_INTAKE_MODELED
+IDENTITY_DOWN: available=manual_intake,new_backup_job,room_view,site_reachable impaired=staff_edit mode=NO_STAFF_EDIT_INTAKE_MODELED
+HELPDESK_DOWN: available=new_backup_job,room_view,site_reachable,staff_edit impaired=manual_intake mode=STAFF_EDIT_PATH_MODELED
+WEB_DOWN: available=manual_intake,new_backup_job impaired=room_view,site_reachable,staff_edit mode=NO_STAFF_EDIT_INTAKE_MODELED
+DATABASE_AND_HELPDESK_DOWN: available=site_reachable impaired=manual_intake,new_backup_job,room_view,staff_edit mode=NO_EDIT_OR_INTAKE_PATH
+~~~
+
+#### Interpretation, negative variant and limitations
+
+With every component assumed available, the model predicts all five paths structurally possible. The label `STAFF_EDIT_PATH_MODELED` is **not** a successful or authorized reservation write.
+
+When the database is down, the informational page and manual intake remain structurally possible; room viewing, staff editing and new-backup creation are impaired in the toy model. Manual intake is only request receipt, not confirmed booking service.
+
+When identity is down, only the staff-edit path is impaired under the declared requirements. When the help desk is down, the fallback intake path disappears but the website-related routes remain. When the web component is down, request intake and the backup job remain, but the application-related functions are impaired. When both database and help desk are down, an informational page alone cannot satisfy either modeled edit or intake requirement.
+
+**Negative sensitivity variant:** Temporarily remove the `helpdesk` dependency from `manual_intake` in a copied model. The input would then incorrectly imply that request intake does not require any component. Explain how an omitted dependency can make a model appear more resilient than its actual implementation. Restore the original dictionary after the experiment.
+
+**Limits:** The script calculates only set-based structural predictions. It does not simulate partial outages, fallbacks, caching, transaction durability, authentication correctness, service-owner approval, actual request processing or business-state verification. The user must not interpret any printed line as a real Harbor Library event.
+
+**Submission:** Provide six model-result rows, two contrasted function impacts, the negative-variant interpretation and one specific authorized test that would discriminate a modeled prediction from observed service correctness. A response that claims `manual_intake` proves a completed booking fails the learning objective.
+
+<a id="ir-rapid-ch02-min2-result"></a>
+
+### MIN2 — Worked result
+
+#### Exact expected output — reproduced with Python 3
+
+~~~text
+MINIMAL: READY rows=2 fields=actor_account,booking_id,event_id,event_time,operation
+MINIMAL: bookings=Q11
+DROP_BOOKING: REJECT_MISSING_KEY booking_id
+ADD_EMAIL: REJECT_EXTRA_FIELD patron_email
+EXPAND_SCOPE: REJECT_SCOPE selected=0
+SOURCE_UNCHANGED: 3 rows; sensitive field retained in synthetic source only
+~~~
+
+#### Worked interpretation and negative controls
+
+**MINIMAL** selects two records referencing the permitted synthetic booking Q11. It retains five declared technical-review fields and excludes the contact email. Its `READY` result means only that the field/object policy accepted the requested derived view.
+
+**DROP_BOOKING** fails because removing `booking_id` destroys a required reference for the declared booking-level comparison. Removing more fields is not automatically better if the authorized task becomes impossible.
+
+**ADD_EMAIL** fails because `patron_email` is outside the approved technical-review field set. The fact that the artificial source contains the value does not authorize its distribution to this review role.
+
+**EXPAND_SCOPE** fails because Q12 is not one of the approved objects, even though all requested columns are individually permitted. Field minimization cannot repair an overbroad object selection.
+
+**SOURCE_UNCHANGED** demonstrates that the derived projections did not delete the original teaching field. In a real process, the original would still require its own collection and retention authority; preserving a synthetic in-memory source is not a production custody demonstration.
+
+A crucial limitation is that the code's `ALLOWED` and `SCOPE` sets are **invented input policies**, not permissions obtained from a real organization. The function does not verify source origin, consent, legal basis, logging completeness, identity or whether the view's fields are factually correct. It avoids publishing the fake contact values in the output, but that is not a formal anonymization guarantee.
+
+**Learner submission:** The six output lines, a table classifying the three rejected variants, a proposed transformation manifest and a two-sentence explanation of why the canonical R9/R13 evidence does not supply any real patron-contact collection or attribution proof.
+
+**Assessment:** A full result predicts and reproduces all six lines, distinguishes row scope from column projection, maintains a necessary booking join key, rejects unneeded sensitive fields and states that the source and receipt status remain separate. No network or actual personal data is involved.
+
 ### EX001 — Worked result
 
 | Statement | Classification | Source and limit |
@@ -3597,6 +4192,10 @@ Both effects are **possible**. The R5 report supports investigating a visible pr
 
 **Further reasoning:** For the identity dependency, R1 identifies a reported sign-in and R2 identifies reported dashboard access. The hypothetical harm is further incorrect staff-authorized-function use, not a measured ongoing attack. An authorized identity-session check could weaken an assumption of unexpected session context, but it must not identify a human without appropriate independent evidence. For the database dependency, R3–R4 report changes and R5 a patron symptom. An owner-approved comparison between authoritative B17/B18 values and an expected schedule could show that current state matches or differs from the owner's target. That comparison is **requested**, not performed. The two paths have different owners and do not settle each other.
 
+**PATH1 worked extension:**
+
+The staff identity source and reservation database are different dependencies with different evidence questions. R1/R2 report a sign-in and dashboard use without human attribution; R3/R4 report edits and R5 reports a patron symptom without establishing correct current state. In the separate PATH1 model, `staff_edit` requires `web`, `identity` and `database`. A modeled identity failure predicts impairment of this path but is not an observed Round A outage. A suitable future isolated test would check both an approved staff-edit operation and its independently observed authoritative result. The service owner would define business acceptance; the identity and application custodians would supply permitted technical evidence. The model cannot substitute for either.
+
 ### EX004 — Worked result
 
 **Proposed action:** search a real public library site for a matching `desk-a` account. **Boundary:** this chapter authorizes reading, sorting and annotating synthetic R1–R8 during the session; it does not authorize access to a real library, real account or third-party data. **Decision:** reject the proposed search because it would expand both the object and the organization under investigation. **Contained alternative:** use R1 and R2 to state that the account signed in and opened the dashboard, while marking the human operator unknown. Draft a fictional request to the incident lead for the identity administrator to provide the minimum relevant session fields and interval *if* an actual organization approved such collection. **Stop condition:** if the answer requires a field absent from R1–R8, stop at the evidence boundary and record the unresolved question. A public page being reachable does not confer incident-response authority over it.
@@ -3625,6 +4224,10 @@ Both effects are **possible**. The R5 report supports investigating a visible pr
 
 The table assigns responsibilities within the fictional exercise. A small team may combine human roles while retaining separate approval and result fields.
 
+**PATH1 worked extension:**
+
+The original responsibility table remains valid: analyst and incident lead coordinate the question, service owner controls acceptable business interruption, the appropriate operators execute separately authorized actions, and recovery leads design contained verification. A hypothetical request-only degraded mode would need service-owner approval, a help-desk owner for pending receipts and a later authorized reconciliation. Staff could report that a request was received for processing, not that a reservation was confirmed. PATH1 supplies only a model of intake possibility; R1–R8 supplies no approval or actual pending queue. The four-row format remains unchanged.
+
 ### EX007 — Worked result
 
 | Seven opening fields | Model 09:00 UTC entry |
@@ -3651,6 +4254,10 @@ This is an **opening** record. A later 09:05 decision can be appended with its o
 
 Each row preserves a useful observation without upgrading it to a conclusion the source cannot sustain. A missing field is a limit on the claim, not a negative finding.
 
+**PATH1 worked extension:**
+
+R6 documents scheduled training, not permission for specified booking edits. R8 lacks destination details and cannot establish absence of transfer. R7 records a completed backup job, but not a named recoverable copy, restore timing, accepted booking values or functioning restored service. PATH1's hypothetical `new_backup_job` path is another structural premise, not recovery evidence. A future contained test would identify the copy, source time, isolated test environment, expected booking values, measured result and service owner. Until such a result is supplied, recovery correctness remains unverified.
+
 ### EX009 — Worked result
 
 | Option | Expected benefit | Possible cost | Approval and execution | Observable review |
@@ -3661,6 +4268,12 @@ Each row preserves a useful observation without upgrading it to a conclusion the
 **Provisional choice:** B under the supplied R1–R8 snapshot, because the training explanation is testable and no continuing change is yet supplied. This is not a universal answer. A verified fresh unexplained edit or high, confirmed service harm could shift the recommendation toward A, but it would still require an explicit approval. R1–R8 neither prove that waiting is harmless nor prove that immediate restriction is necessary.
 
 **Further reasoning:** The provisional option to preserve R1–R8 and ask the training owner about B17/B18 is defensible because the approved task list is a direct discriminator and no later edit is supplied at this checkpoint. Its cost is a possible additional unauthorized edit if misuse is occurring. A verified new unexplained change would trigger prompt reconsideration; it is not currently observed. The alternate request to restrict `desk-a` might reduce misuse through that account, but the response owner would need explicit authority and a plan to test both the suspicious route and legitimate front-desk work. Even after approval, a proposal is not executed until an operator performs it and an appropriate observer verifies the result.
+
+**PATH1 worked extension:**
+
+At 09:05, preserving R1–R8 and seeking confirmation of B17/B18 training authorization remains a defensible provisional option; a restriction proposal remains separately subject to authority and operational impact. A **different** counterfactual service-failure model may suggest that a help desk could receive pending requests while accepted staff edits are unavailable. If an actual organization separately validated and approved such a mode, staff could promise only **receipt for later review**, not a completed reservation. A modeled fallback does not prove that the real service is available or that R1–R8 contains any outage. The incident lead should not backfill that fault into the original case or silently change the 09:05 reasoning.
+
+---
 
 ### EX010 — Worked result
 
@@ -3769,6 +4382,10 @@ The comparison does not mean that only `P-A` matters or that urgency authorizes 
 
 **Further reasoning:** A complete P-A request asks which producer emitted the R9 booking audit and which produced R14's application-audit summary before proposing that their rows be joined. It names B17–B19, a bounded event range, minimum necessary fields and the application custodian. The custodian must establish **what starts** R15's 24-hour clock and whether the oldest relevant detailed row is still accessible. The incident lead owns approval, and the retained object would need its own source, method, access and collection receipt. At the supplied 09:20 state, P-A and P-B remain **proposed**; P-B can investigate identity-detail availability and its unknown retention in parallel. Neither request is an approved export, an effective hold or a verified copy. The inability to compute a deadline is an explicit result, not a reason to defer contacting the custodian.
 
+**MIN2 worked extension:**
+
+At 09:20, P-A can be proposed to the application custodian for a bounded booking-audit selection relevant to B17–B19 and R14's source-coverage question, while P-B can ask the identity custodian about available session detail under separate approval. A technical review may need source event ID, booking ID, event time, operation type and an appropriate account/session pointer. It does not automatically need a patron contact address, newsletter membership or unrelated booking records. R15 reports a 24-hour deletion policy but not its anchor or exact deadline. Source preservation, requested field selection, reviewer access and actual collection require distinct statuses and authority. No completed export or active retention hold is supplied.
+
 ### EX019 — Worked result
 
 | Collection-note field | Model entry before a learner runs the optional fixture |
@@ -3781,6 +4398,10 @@ The comparison does not mean that only `P-A` matters or that urgency authorizes 
 | Limitation | No production log was acquired; a saved file cannot prove the source system's completeness, clock or identity attribution |
 
 If the learner ran `fixture.py`, replace the planned state with **completed local fixture**, record the actual creation time and scratch path, and attach the measured 235-byte SHA-256 value from the lab. Never invent a 09:20 collection time simply because the scenario's discovery checkpoint was 09:20.
+
+**MIN2 worked extension:**
+
+The original E1 collection note describes a **synthetic transcription** and distinguishes a planned local exercise from a file actually created by the learner. A separate review-view manifest would record the original E1/book source pointer, bounded permitted rows, retained fields, excluded fields, intended analyst role, transformation method and its version. If no derived file was made, the creation time, location and digest remain **not applicable**. If a local file was produced, record its actual creation time and compute its own measured digest if required; the original E1 digest does not attest changed bytes. The derivative remains a working selection, not an authenticated production export or evidence of source completeness.
 
 ### EX020 — Worked result
 
@@ -3795,6 +4416,10 @@ If the learner ran `fixture.py`, replace the planned state with **completed loca
 Specify the file, method and check times. Two matching values copied from the same mistaken note would not become proof of authenticity.
 
 **Further reasoning:** If the learner actually created E1 and repeated the stated SHA-256 checks, the equality supports consistency of the **named copy bytes** at those checks, subject to method and record trust. The modified E1 variant with a different digest establishes only that the modified teaching bytes differ from those of E1. The **source layer** is not authenticated by the digest: E1 was transcribed from the synthetic R9/R14 table, and the underlying canonical R14 query manifest is incomplete. The **interpretation layer** also remains uncertain: none of the copied bytes proves who controlled `desk-a` or whether B19 was authorized. A 2-point answer must name the file and distinguish copy consistency from provenance, complete coverage and permission; generic claims that the evidence is "verified authentic" fail that boundary.
+
+**MIN2 worked extension:**
+
+Matching E1 SHA-256 values at two actual checks support only a bounded consistency claim about the **specified copied bytes** and method. They do not show that the source was complete, correctly timed, lawfully collected or authorized for broader distribution. A technical reviewer may need a derived view with unnecessary contact fields excluded. The view's field policy, row scope and transformation receipt must be recorded separately from the raw copy's integrity comparison. Neither redaction nor a digest establishes anonymization or human attribution; those require their own substantiation.
 
 ### EX021 — Worked result
 
@@ -3861,6 +4486,12 @@ The code checks exact string equality, not room availability rules, approved cha
 A production analyst would require source identifiers, selection manifest, approval owner, effective target version, authoritative current-state timestamp and privacy/access controls before treating the comparison as evidence. The toy script supplies none of those provenance receipts, and its computed results must never be called a measured incident impact.
 
 **Required learner artifacts:** Copy the nine-line output; produce a six-row impact ledger with evidence status and source limitations; explain in two sentences why "four affected patrons" is unsupported; and report exactly what changed in the negative test. A response fails if it equates report count with affected people, silently discards X99, claims all bookings were examined or treats the variant as a correction.
+
+**MIN2 worked extension:**
+
+For a bounded booking-impact comparison, the learner should identify the selected booking IDs, source audit pointer, appropriate event interval, current authoritative value, approved target/version, comparison outcome and uncertainty. The permitted analyst view should not automatically include patron email, unrelated newsletter data or additional bookings. A service owner may separately authorize a communications workflow if verified consequences require reaching affected patrons, but that purpose does not retroactively expand the technical review. The canonical R1–R16 set supplies no completed authoritative impact comparison or measured affected-person count. MIN2's Q11/Q12 rows are an independent fictional field-selection exercise and cannot be used to claim an additional Harbor Library mismatch.
+
+---
 
 ### EX024 — Worked result
 
@@ -4449,6 +5080,11 @@ The model earns full credit only if the learner's own six artifacts preserve the
 
 ## Chapter 1 glossary
 
+- **Service function:** a distinct user-facing operation with a defined useful result.
+- **Technical dependency:** a component required for an operation under a declared model.
+- **Degraded mode:** an owner-approved, narrower operating state with explicit limits on what can be promised.
+- **Structural possibility:** a model prediction that prerequisites are available, not proof of successful or authorized business behavior.
+
 - **Behavior baseline:** an owner-approved, versioned description of the service outcomes expected in a declared scope.
 - **Half-open interval:** a time range including its start and excluding its end; adjacent ranges need not overlap.
 - **Business invariant:** a property expected to remain true whenever its declared policy conditions apply.
@@ -4463,6 +5099,11 @@ The model earns full credit only if the learner's own six artifacts preserve the
 - **Service owner:** the person accountable for the service's business outcome and tradeoffs.
 
 ## Chapter 2 glossary
+
+- **Derived review view:** a purpose-limited selection and projection made from a source under recorded authority, not a replacement for that source.
+- **Row selection:** the rule deciding which records or business objects enter a review view.
+- **Field projection:** the rule deciding which columns of selected records a reviewer receives.
+- **Transformation manifest:** a reproducible record of source, scope, retained fields, method, version and intended recipient.
 
 - **Collection note:** a record of how, when, where and under whose authority an item was obtained or copied.
 - **Coverage interval:** the time span and filters a query or source actually examined; a negative result applies only within that scope.
@@ -4525,5 +5166,7 @@ The model earns full credit only if the learner's own six artifacts preserve the
 9. NIST, [SP 800-92, *Guide to Computer Security Log Management*](https://csrc.nist.gov/pubs/sp/800/92/final), September 2006. Background on log-management processes for Chapter 2. Its age and high-level scope are stated beside the original delayed-arrival exercise; it does not prescribe the fictional fixture or its query algorithm.
 
 10. IETF, [RFC 9110 §9.2.2, *HTTP Semantics: Idempotent Methods*](https://www.rfc-editor.org/rfc/rfc9110.html#section-9.2.2), June 2022. Used only to distinguish HTTP method retry semantics from this book's fictional application-level operation keys; it does not guarantee exactly-once booking effects.
+
+11. NIST, [SP 800-122, *Guide to Protecting the Confidentiality of Personally Identifiable Information*](https://csrc.nist.gov/pubs/sp/800/122/final), April 2010. Used for the Chapter 2 purpose-limited reviewer-view lesson; it does not establish Harbor Library’s legal basis or authorize a real export.
 
 All **Harbor Library** names, accounts, bookings, logs and times are invented for instruction. The **British Library** case is a separately cited real incident. Its reported facts do not describe or validate the fictional Harbor Library scenario.

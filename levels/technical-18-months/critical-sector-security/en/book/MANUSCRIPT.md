@@ -2309,9 +2309,9 @@ A supervised project shows technical competence as evidence: a signed scope, a b
 <!-- cyberabc:chapter-navigation:start ch-18 -->
 ### Continue studying — chapter 18 of 18
 
-[← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Course 070: Cybersecurity / Technologist course →](../../../../technologist-3-years/cybersecurity/en/SUBJECTS.md)
+[← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
-This is the last chapter. Check your exercise record against the [worked results](#worked-results), then continue to the next course in the study path.
+This is the final chapter of this course; the index links the next course in the full study path.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>

@@ -1544,9 +1544,9 @@ A professional coordinator shows competence through checkable work products: map
 <!-- cyberabc:chapter-navigation:start ch-12 -->
 ### Continue studying — chapter 12 of 12
 
-[← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Course 047: Cybersecurity / Technical course →](../../../../technical-18-months/cybersecurity/en/SUBJECTS.md)
+[← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
-This is the last chapter. Check your exercise record against the [worked results](#worked-results), then continue to the next course in the study path.
+This is the final chapter of this course; the index links the next course in the full study path.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>

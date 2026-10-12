@@ -646,9 +646,9 @@ Failures in critical infrastructure cascade along dependencies, and backups prot
 <!-- cyberabc:chapter-navigation:start ch-04 -->
 ### Continue studying — chapter 04 of 04
 
-[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Course 024: Cybersecurity / Professional course →](../../../../professional-6-months/cybersecurity/en/SUBJECTS.md)
+[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
-This is the last chapter. Check your exercise record against the [worked results](#worked-results), then continue to the next course in the study path.
+This is the final chapter of this course; the index links the next course in the full study path.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
