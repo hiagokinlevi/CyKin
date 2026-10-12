@@ -108,6 +108,32 @@ The expected first line is `idp: ['api', 'edge', 'worker']`; the second is `db: 
 
 Before any response change, compare three questions: what harm might the current condition cause; what dependencies would the proposed change interrupt; and what observable result would justify keeping or rolling back the change? In LLR, revoking the shared worker principal might stop a suspected unauthorized job, but it can also halt legitimate reminders and reservation synchronization. The response lead can **propose** the action; identity and service owners must decide the exact principal, duration, alternative and rollback; an authorized operator executes; an observer checks both abuse path and legitimate worker function. The lab deliberately performs none of those steps. A paper plan must leave approval and execution blank until real receipts exist.
 
+### 1.6 Convert a component graph into an outcome contract
+
+A dependency graph answers “what could depend on what?” An **outcome contract** answers “what would we need to observe before declaring this service function restored?” Keep these separate. For LLR, the patron must see an available room, pass the appropriate authorization check, submit one reservation and later read the correct accepted state. A healthy gateway tests one path; it cannot establish correct authorization or a durable reservation. A backup inventory can show that copies exist, but not that a particular copy preserves all later legitimate bookings.
+
+| Decision question | Proposed observation | Custodian | Limit of a positive result |
+|---|---|---|---|
+| Can a client reach the gateway? | Bounded connection and edge request record. | Gateway owner. | Does not test API, IdP or database. |
+| Did the API handle an authorized request? | Linked request and authorization decisions. | Application and identity owners. | Does not by itself prove a durable database change. |
+| Did a reservation persist correctly? | Approved test write, authoritative state and second read. | Service and database owners. | One test does not cover every patron or historic record. |
+| Can an earlier valid state be recovered? | Isolated restore with version, integrity and business checks. | Recovery owner. | Does not authorize overwriting production. |
+
+Specify the **scope** of every check: identity, room, interval, route and test environment. If a write is approved for one synthetic patron in a test tenant, the result says only that this path worked for that case. If the later read disagrees with the write, stop the success claim even if HTTP returned a success status. The record should say “one approved read/write scenario passed at time T” rather than “LLR is fully restored.” The distinction protects service users from an apparently healthy front page masking a corrupt write path.
+
+For each arrow in §1.1, add a producer contract: expected output, fallback behavior, owner, evidence source and unknown upstream dependencies. The graph deliberately omits the IdP's dependencies and backup storage details. Mark them **unknown** rather than hiding them. When an owner later confirms a fallback, version the graph and retain the earlier version that informed the previous decision. A revised diagram is evidence of learning, not permission to rewrite the history of an action.
+
+### 1.7 Guided paper lab: predicted impact versus observed failure
+
+The following **L1-V** cards are separate hypothetical inputs; they do not amend the main LLR case or the Chapter 2 trace. Build a three-column worksheet headed *observed*, *predicted by graph* and *unknown*. Predict the graph's possible failure domains first, then reveal one card at a time.
+
+- **V1:** a static edge probe returns 200; an approved test room read returns an API error; the database owner reports a successful read-only table check. No API-to-DB write outcome or IdP status is supplied.
+- **V2:** a worker monitor reports one unfinished scheduled run; an approved patron test reads a room list; the newest backup copy predates the incident window. No reservation write or isolated restore test is supplied.
+
+**Worked result:** V1 observes static edge availability and a failing room-read path. The database table check weakens a *total database unavailability* explanation but does not test the API's query, its authorization decision or a write. V2 observes a worker symptom, one successful read and a recovery-point concern. The worker's own configuration, IdP and database paths remain alternatives. An old backup says little about present patron reads. Neither card proves an attacker or justifies a restart. Request bounded route-specific application and identity evidence for V1; request the job's error category and backup-version metadata for V2. Correct worksheets leave write correctness **unknown** on both cards.
+
+Now create a graph **variant**, adding an owner-unconfirmed fallback that lets the API serve cached room lists during a database outage. A listing may continue while writes still fail. Label this hypothetical graph **G2**; do not confuse it with card V2 or overwrite the original six-node fixture. The exercise shows why closure is a conservative prediction under stated arrows, while restoration is an observed business outcome.
+
 ### Common errors and limits
 
 - Reversing arrow direction and claiming the producer depends on its consumer. Write the dependency convention beside the graph.
@@ -194,6 +220,28 @@ Expected output is `client-to-edge: observed`, `rooms request: 503`, `API sample
 ### 2.5 Time and failure-domain caution
 
 The rows are ordered by source-reported event time, but no clock accuracy measurements are supplied. N01's TTL is a DNS cache parameter, **not** a guaranteed time during which the browser used that answer. N05's sample window brackets 12:00:03, but an async log could arrive after the interval. N06 is nearly three minutes later and tests a different endpoint. A real comparison would retain event time, collection time, source clock, interval boundaries and known lag. Chapter 3's host and identity records will add another set of time bases; they must be normalized before a causal timeline is asserted.
+
+### 2.6 Evaluate evidence across protocol boundaries
+
+The useful unit is a **claim with a boundary**, not a packet count. N02 establishes a client-to-edge TCP observation; N03 reports TLS at that edge; N04 is an HTTP response from the edge; N05 is absence of one ID in a supplied API sample. Each statement stops at a different component. The edge's 503 is positive evidence that it emitted a 503, yet its timeout label is still a producer claim about an upstream condition. [RFC 9110](https://www.rfc-editor.org/rfc/rfc9110.html) defines response semantics, not how this fictional application implements its timeout.
+
+Before requesting more data, score candidate sources by **decision value, collection cost, time sensitivity and privacy scope**. A source has high decision value when its possible outcomes change the next safe action. A broad client-side packet capture adds little if the unresolved question is whether a mapped request reached the API; it can expose unrelated traffic. A bounded edge upstream map and API receipt are better first requests, subject to owner approval.
+
+| Candidate source | If a linked row exists | If no linked row appears | Principal limit |
+|---|---|---|---|
+| Edge upstream map for the exact request/window. | Supplies attempted target and upstream ID. | Supports no attempt only after route coverage is verified. | Targeting is not API acceptance. |
+| API source for the mapped ID. | Supports API receipt under validated ID rules. | Narrows the path hypothesis only after coverage and lag checks. | Receipt is not a database commit. |
+| Client-to-edge transport summary. | Corroborates N02's connection layer. | Challenges N02 only when sources are comparable. | Cannot see API internals. |
+
+A negative query is conditional on the producer's identifier namespace, source completeness, time basis, delivery lag and filters. If any is unknown, write “no row in the supplied sample.” Save the query and transformation alongside the result; otherwise a reviewer cannot tell a missing source event from a filtering mistake. This practice follows the general log-management concern in [NIST SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final), while system-specific retention and export behavior require verification with their owners.
+
+### 2.7 Guided replay: choose a discriminator before a result
+
+This **N2-V** replay is separate from N01–N06. On paper, set two hypotheses: **H-path**, the edge's request was not accepted by the API; **H-processing**, the API accepted it but later work failed or timed out. Neither is an incident finding. Predict the most discriminating permitted record: a producer-validated edge-to-upstream ID mapping and a coverage-checked API receipt for that mapped ID.
+
+**Variant A** says a hypothetical complete API source contains that receipt and its handler later records a database timeout under the same validated ID. H-path weakens; H-processing gains support. The handler record still does not prove whether a database operation committed. **Variant B** says the edge map shows an attempted upstream connection; a complete API source has no receipt for the mapped ID; an edge-to-API transport summary reports connection failure. H-path gains support. These are mutually separate branches. Neither establishes an attacker, and neither may be imported into N01–N06.
+
+Produce a four-line decision note: supplied observation; source/coverage condition; revised hypothesis; next bounded check. A's next check is permitted API-to-DB evidence and business-state verification. B's is an owner-approved edge-to-API path check. Remove the word “complete” from either card and reconsider: a strong negative conclusion must weaken to “not found in this sample.” This negative control tests whether the learner is reasoning from evidence quality rather than only from a result string.
 
 ### Common errors and limits
 
@@ -283,6 +331,22 @@ Expected lines: `same principal label: True` and `direct session join: False`. I
 At the current checkpoint, preserve the raw snippets and a derived timeline separately; ask the identity custodian for a scoped session-to-request mapping if one exists and the application/change owners for R42 state and approval scope. The decision record should have explicit fields: `source IDs; request window; custodian; permission; expected field; what a no-result means; collection receipt; remaining uncertainty`. A read-only check must still respect data minimization and access control. If an owner later considers restriction, compare **one session**, **one task** and **whole-principal** options against the Chapter 1 dependency graph. The record needs an expiry, operator, service-health check and rollback owner before approval; this manuscript provides no actual operator procedure or credentials.
 
 Verification should include both security and legitimate-function conditions. For example, if a narrow task pause is approved, a positive check asks whether the task stopped issuing out-of-scope R42 changes; a negative/business check asks whether approved R40/R41 work still functions. A failure to see R42 changes in a short sample is not proof that the path cannot recur; record coverage and next observation. Those checks belong to later containment chapters and a separately authorized lab. Here the learner designs them without touching a service.
+
+### 3.6 Identifier scope, lifetime and fan-out
+
+An identifier becomes useful only after its **namespace, lifetime and cardinality** are known. PID 420 is local to one host and execution interval and may be reused. A principal can outlive many sessions; a session can issue many requests; a request ID may be regenerated at a gateway; a reservation ID can be changed by several requests. A one-to-many relationship cannot be inferred as one-to-one simply because one sample shows only one row. A rigorous mapping claim has the shape “producer X reports field A in record Y corresponds to field B in record Z under rule R for interval T.” Without R, draw a dotted candidate edge.
+
+For I01/H01/A01, use a join ledger with five columns: candidate edge, literal overlap, producer semantics, collection coverage and decision consequence. I01→H01 shares runner-02 and nearby time, but H01 has no session field. I01→A01 shares the svc-reserve label, but A01 has a blank session. H01→A01 has no request key. The immediate consequence is a bounded mapping request, **not** attribution of R42 to the worker. I02's denial belongs to a separate sid-89; it does not reverse I01's successful sid-88 or A01's change record.
+
+In a separate **hypothetical L3-V** branch, imagine the application custodian supplies a producer-validated r-202→sid-88 mapping with an identified source object and covered time window. That would strengthen the I01→A01 *session-level* edge. It would not prove H01's process used sid-88, that the change was approved, or that a named person initiated it. If the mapping were instead assembled in an unversioned spreadsheet without original-object references, state the weaker provenance. Do not import L3-V into the main case; A01's supplied session field remains blank. This staged branch helps a learner identify exactly which uncertainty one new source can remove.
+
+### 3.7 Paper decision lab: approval is not attribution
+
+Consider a proposed broad disablement of svc-reserve because R42 is outside CH01's visible approval. The proposed control targets a **principal**, but the suspicious observation is a **reservation change** under a label. A broad restriction might stop the worker and an API dependency together. Compare a verified single-task pause, a single-session restriction and principal revocation. For each, specify target, approver, duration, rollback owner, positive security test and legitimate-work test. Also ask whether the control covers the hypothesized route: a task pause fails if another task used the principal; a session restriction fails if an actor can create a fresh session.
+
+**Outcome A**, a hypothetical new approval ledger and producer-validated request map, shows a valid R42 addendum and maps r-202 to the approved job. The visible scope tension is resolved for this one request; keep the record and do not invent malicious intent. **Outcome B** shows a complete approval ledger with no R42 authorization, while the application source still lacks a session map. The business-approval concern strengthens, but actor attribution remains unresolved. Escalate a bounded preservation and control decision to the owners. The correct output distinguishes **approval status, request provenance and human attribution**. These are three questions, not three names for the same conclusion.
+
+Before Chapter 4, state the data-handling consequence: a missing session value must not be filled from the nearest timestamp; a reused request ID needs a namespace check; a rejected line stays in the rejection inventory. This is why the identity memo must carry raw-source references and explicit unknowns, even when the likely next action feels obvious.
 
 ### Common errors and limits
 
@@ -397,6 +461,32 @@ The two accepted rows contain **different** request IDs. Even if E1 and E2 share
 
 A technical review should probe negative controls. Change one field at a time: malformed time, duplicate ID, blank request ID, extra column, an accepted row whose source label is outside the allowed set. Predict the rejection reason and compare it with the actual result. A parser that crashes on one bad line can lose later valid lines; a parser that keeps everything without flags can contaminate a join. The failure policy must be chosen for the decision. Here invalid rows remain visible in a rejection list. They should not be “repaired” by guesswork; request a corrected export from its custodian.
 
+### 4.4 A CSV record is not always a physical line
+
+The L4 fixture is simple: one logical CSV record per physical line. That makes the enumerate-based ordinal in §4.2 coincide with the visible line number. A quoted comma or quoted newline breaks that coincidence. [RFC 4180](https://www.rfc-editor.org/rfc/rfc4180.html) describes these conventions, and the [Python CSV library](https://docs.python.org/3/library/csv.html) parses them according to its dialect. Splitting on commas or newline characters before parsing would corrupt the input. A rejection receipt must state whether its coordinate is a logical record number, a physical line number or a byte range.
+
+Use this separate, fictional **L4-Q** variant; it is not an addition to the main LLR incident:
+
+~~~csv
+event_id,event_utc,source,request_id,kind
+Q1,2026-10-11T12:05:00Z,edge,r-901,"note,review"
+Q2,2026-10-11T12:05:01Z,api,r-902,"line one
+line two"
+Q1,2026-10-11T12:05:02Z,api,r-903,write
+~~~
+
+Predict §4.2's parser output before substituting the text into its in-memory data variable. With its existing schema, Q1 and Q2 pass: the comma and newline are each part of one quoted kind field. The last Q1 is a duplicate accepted event ID. The exact lists are **accepted_ids: ['Q1', 'Q2']** and **rejected: [(4, 'duplicate_id')]**. Here 4 is the script's *logical record ordinal*: header 1, first Q1 2, Q2 3, repeated Q1 4. The repeated Q1 begins at **physical line 5**, because Q2 spans lines 3–4. Describing tuple 4 as “physical line 4” would misdirect a reviewer. To record both coordinates in a real approved parser, track the CSV reader's physical line counter around each next-record operation and retain a bounded raw excerpt or byte range.
+
+Change only the header of a **copy** to repeat event_id and omit kind. The existing header assertion must reject that file *before* row interpretation. This is desirable for the declared schema: an unchecked dictionary with repeated header names could overwrite a value. Return to the original L4-Q before reporting its accepted/rejected transcript. The negative control shows why “a parser ran” is weaker than “the expected schema was validated.”
+
+### 4.5 Make the transformation independently reviewable
+
+For a real permitted export, retain untouched bytes and an acquisition receipt first. Then check encoding, header, dialect and version; parse with bounded resource use; apply field-level rules; and emit both accepted rows **and** an explicit rejected-row report. Each output needs its own object ID, source coordinates, input digest, parser version, run time and operator. If the source changes its schema, quarantine it until an owner explains the new fields. A script that silently adapts to an unknown column order can generate plausible but false joins.
+
+The L4 check order has a subtle effect: an ID enters the seen set **only after its row is accepted**. A malformed first occurrence does not reserve the ID; a valid later occurrence might pass. That is a declared policy, not proof that the producer never reused an ID. If the decision question concerns all producer duplicates, build a separate inventory over accepted and rejected rows. Likewise, a locally unique event_id can collide across exports; uniqueness needs a source and export scope. A reviewer should record these choices beside any negative claim about a missing request.
+
+**Five-point review drill:** check exact schema; quoted-field handling; logical and physical coordinates; duplicate policy; source provenance. A correct L4-Q review says two records accepted, one logical record rejected at ordinal 4, physical line 5 for the rejected record, and no authenticated source claim. It keeps the fixture separate from N01–N06. This drill feeds Chapter 5, where the analyst must account for permission and custody of both raw and derived artifacts.
+
 ### Common errors and limits
 
 - Splitting CSV on commas instead of using a parser. Quoted fields can contain commas or line breaks.
@@ -480,6 +570,29 @@ The table is a technical control on language. A respondent can say “this fixtu
 ### 5.4 Reproducibility and limitation checklist
 
 Another trainee should be able to run the same code and compare the same bytes. Supply the original literal data, interpreter version, parser code/version, check order, selected time window, acceptance criteria and expected output. Ask a second trainee to introduce a one-byte variant and verify that the original digest remains unchanged while the variant digest differs. Then ask the harder question: what does that prove about LLR? The correct answer is “nothing about the origin or truth of LLR records beyond the supplied fixture.” A reproducible transformation supports review of a **method**, not independent authentication of a **source**.
+
+### 5.5 Custody is a sequence of bounded claims
+
+An evidence register separates **authorization**, **acquisition**, **transformation** and **interpretation**. Authorization names who allowed which source, fields, method and interval. Acquisition records the bytes actually received, source object, collector, time and receipt. Transformation identifies input/output objects, code version and rejected records. Interpretation says what the derived view supports and where it stops. None substitutes for another: a digest is not permission; permission does not prove query completeness; a clean parser run does not prove its rows describe true events.
+
+For AUTH-L5, the trainee may compare classroom bytes. If a form asks for a “production collection time,” the truthful entry is **not applicable/unknown** rather than the exercise's 12:06 supply time. The L4 parser summary is a different derivative with its own source. Do not claim the 43-byte L5-original contains the full L4 CSV: it has only a two-column header and one row. To demonstrate the L4 parser's lineage, hash the actual L4 text separately and link *that* object to the parser run. This catches a common custody error: attaching the digest of one toy object to another because both appear in the same lesson.
+
+| Gate | Question | If the answer is missing |
+|---|---|---|
+| Scope | Does approval cover this object, method and purpose? | Stop; request a bounded new decision. |
+| Acquisition | Can a reviewer identify source, method, length, time and custodian? | Record a provenance gap, not a source-authenticity claim. |
+| Transformation | Do outputs identify the exact input and all rejections? | Repeat from the retained copy; preserve both versions. |
+| Interpretation | Does the conclusion fit the source's coverage and semantics? | Narrow it and request a discriminator. |
+
+The table is a technical checklist, not a universal legal chain-of-custody rule. For a real investigation, the responsible organization defines disclosure, retention and review with its own policy and counsel. [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) supplies historical forensic-process vocabulary, but its 2006 publication cannot replace current source-specific procedures.
+
+### 5.6 Offline byte-identity and privacy replay
+
+Take the exact in-memory original from §5.2. In a separate **L5-B** variant, replace each LF newline byte with CRLF before computing a digest. The original has two LF bytes, so the variant has **45 bytes**, compared with the original's 43. The two digests should differ even if a text editor displays similar lines. Report “different byte serialization,” not “attacker tampering.” Then make a byte-for-byte copy of L5-B and confirm that its digest equals L5-B's digest. The expected equality pattern is **original = original copy; original ≠ CRLF variant; CRLF variant = its copy**. None of the equalities authenticates an exporter.
+
+For a proposed r-202 mapping request, compare two paper scopes. Request A asks for all employees' IdP sessions for a week. Request B asks the identity custodian whether a documented mapping exists for the single request and a short justified window, with field-level access and a retention deadline. AUTH-L5 authorizes **neither real request**, but B is a more bounded candidate for the incident, identity and privacy approvers. If that source does not exist, note the availability gap rather than silently expanding to A. If short-lived records will expire, escalate the *approval decision* promptly; urgency does not create collection authority.
+
+**Worked review result:** an adequate L5-B report lists 43 and 45 bytes, the three equality claims, object IDs, and the scope boundary. It rejects “matching hashes prove r-201 never reached the API,” because the classroom object is not a complete API corpus and a hash cannot establish producer coverage. The next chapter uses this four-gate model to compare a response option against a justified target and the service outcome.
 
 ### Common errors and limits
 

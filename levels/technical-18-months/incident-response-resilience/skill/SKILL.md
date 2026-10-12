@@ -29,11 +29,11 @@ The English book drafts all eighteen chapters and EX001–EX072 with worked resu
 
 | Subject | Read and test | Learner artifact |
 |---|---|---|
-| 1. Service architecture | [Chapter 1](../en/book/MANUSCRIPT.md#ch-01): dependency direction, failure domains, trust boundaries and offline closure. | Six-row service map, exact closure outputs and approval-gated change comparison; EX001–EX004. |
-| 2. Networks and protocols | [Chapter 2](../en/book/MANUSCRIPT.md#ch-02): bounded DNS/TCP/TLS/HTTP trace, source and endpoint limits. | Six-row claim ladder, read-only discriminator request and offline classifier; EX005–EX008. |
-| 3. Operating systems and identities | [Chapter 3](../en/book/MANUSCRIPT.md#ch-03): process, principal, session and human separation with an unjoined request. | Entity matrix, source-linked timeline and literal join-check lab; EX009–EX012. |
-| 4. Scripting and data formats | [Chapter 4](../en/book/MANUSCRIPT.md#ch-04): schema, accepted/rejected CSV rows and join limits. | Parser transcript, variants and source-semantic review; EX013–EX016. |
-| 5. Security scope and evidence | [Chapter 5](../en/book/MANUSCRIPT.md#ch-05): authorization scope, raw bytes, digests and receipts. | In-memory hash comparison and versioned collection receipts; EX017–EX020. |
+| 1. Service architecture | [Chapter 1](../en/book/MANUSCRIPT.md#ch-01): dependency direction, outcome contract, trust boundaries and graph variants. | Six-row service map, exact closure, L1-V paper replay and approval-gated change comparison; EX001–EX004. |
+| 2. Networks and protocols | [Chapter 2](../en/book/MANUSCRIPT.md#ch-02): bounded DNS/TCP/TLS/HTTP trace and decision-value evidence ladder. | Claim ladder, read-only discriminator request, N2-V two-branch replay and classifier; EX005–EX008. |
+| 3. Operating systems and identities | [Chapter 3](../en/book/MANUSCRIPT.md#ch-03): process/principal/session/human separation, identifier lifetime and fan-out. | Entity matrix, join ledger and L3-V approval-versus-attribution decision; EX009–EX012. |
+| 4. Scripting and data formats | [Chapter 4](../en/book/MANUSCRIPT.md#ch-04): schema, CSV physical-versus-logical lines, accepted/rejected rows and join limits. | L4 and L4-Q parser transcripts, duplicate-header negative control and review checklist; EX013–EX016. |
+| 5. Security scope and evidence | [Chapter 5](../en/book/MANUSCRIPT.md#ch-05): authorization, custody gates, raw bytes, digests and receipts. | L5-B newline-byte comparison, bounded privacy request and versioned receipts; EX017–EX020. |
 | 6. Response system models | [Chapter 6](../en/book/MANUSCRIPT.md#ch-06): route-level dependencies, control/rollback options and recovery target. | Route simulation, control matrix and restore-point challenge; EX021–EX024. |
 | 7. Event sources and retention | [Chapter 7](../en/book/MANUSCRIPT.md#ch-07): source coverage, anchors and short-lived requests. | UTC expiry calculation and bounded preservation queue; EX025–EX028. |
 | 8. Failure-mode discrimination | [Chapter 8](../en/book/MANUSCRIPT.md#ch-08): clock uncertainty, network/IdP/host/API hypotheses and variant handoff. | Corrected-time transcript and five-way discriminator matrix; EX029–EX032. |
@@ -47,6 +47,15 @@ The English book drafts all eighteen chapters and EX001–EX072 with worked resu
 | 16. Documentation and safety | [Chapter 16](../en/book/MANUSCRIPT.md#ch-16): repair an unsafe runbook; separate approval, execution, verification and rollback. | K16 stop-state transcript, redline and peer handoff; EX061–EX064. |
 | 17. Control and restore comparison | [Chapter 17](../en/book/MANUSCRIPT.md#ch-17): mandatory security/business gates for targeted, broad and isolated-restore candidates. | K17 four-line gate, paired contracts and restore card; EX065–EX068. |
 | 18. Supervised case | [Chapter 18](../en/book/MANUSCRIPT.md#ch-18): staged C18-A–D releases, source/exception manifest and decision-state handoff. | Four-version dossier, peer challenge and scored handoff; EX069–EX072. |
+
+## First-five-chapter lab checkpoints
+
+Teach the new worked replays only after the learner predicts a result. Keep each as a separately labeled fictional branch, then return to the numbered exercises and their appendix answers.
+1. In Chapter 1, request a service outcome contract and a three-column L1-V worksheet. Ask why a static 200, a database read and an old backup cannot establish a successful reservation write. Keep graph variant G2 distinct from card V2.
+2. In Chapter 2, compare H-path and H-processing before releasing N2-V A or B. Require the exact source-coverage premise; remove it as a negative control and weaken any claim of universal absence.
+3. In Chapter 3, inspect a five-column join ledger. A producer-validated session-to-request mapping in hypothetical L3-V can strengthen one edge but does not identify H01 as the actor or settle human attribution.
+4. In Chapter 4, use L4-Q to separate logical record ordinal 4 from physical line 5. Require two accepted IDs, one duplicate rejection, and a duplicate-header fail-closed control; never import L4-Q into the main incident.
+5. In Chapter 5, compare the 43-byte LF original with its 45-byte CRLF variant. Separate scope, acquisition, transformation and interpretation; matching hashes of classroom bytes do not authenticate a production exporter.
 
 ## Technical tutoring cycle
 

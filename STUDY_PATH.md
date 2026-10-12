@@ -23,6 +23,8 @@
 
 A next-course link preserves the *planned order* even when an earlier chapter remains an outline; it does not certify completion. The [Incident Response rapid draft](levels/rapid-1-month/incident-response-resilience/en/SUBJECTS.md) at course 016 may be read independently, but doing so does not fill skipped courses in this full route.
 
+**Current Incident Response technical checkpoint:** course 062 has [18 English chapter drafts and 72 worked exercises](levels/technical-18-months/incident-response-resilience/en/book/MANUSCRIPT.md#ch-01). Chapters 1–5 have received an additional substantive teaching pass with separate offline variants. Follow [its chapter index](levels/technical-18-months/incident-response-resilience/en/SUBJECTS.md) in order and use the [course skill](levels/technical-18-months/incident-response-resilience/skill/SKILL.md) for source and assessment boundaries. This checkpoint does not fill the earlier plan-only stops or complete the 300-page book.
+
 ## Language rule
 
 Follow one language code throughout a pass of the route. The tables below link the **English reference edition**. Each course home links its nine editions; every edition's `SUBJECTS.md` follows the same course and chapter order and points to the next course in that language. Production proceeds English → Portuguese → Spanish → Hebrew → French → Russian → German → Chinese → Japanese. The non-English indexes currently hold English working outlines; they are not translated lessons.
