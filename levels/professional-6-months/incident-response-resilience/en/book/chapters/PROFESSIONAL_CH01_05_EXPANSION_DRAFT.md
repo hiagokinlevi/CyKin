@@ -334,3 +334,135 @@ At the C08 release, record the reported 10:00 expiry as a **custodian claim** re
 **EX015 — Handoff (119 words).** “At 09:14, CTN-IR-014 is P2 provisional. Support reports S42 unavailable, and C05 records an S42 edit via q-144. C03 describes an svc-enroll sign-in with s-77; C04's runner browser time corrects to approximately 08:58, but no direct join identifies an operator or cause. C06 lists approved work on S40–S41 and does not show an S42 addendum. C08 reports IdP detail expiry at 10:00, so please authorize the identity custodian to preserve a narrow 08:50–09:05 source selection and provenance. In parallel ask the application owner to compare current authoritative S42 state. C01 lacks an after-hours identity alternate. Neither export nor restriction has occurred. Reassess before expiry or immediately on verified new harm.”
 
 **Chapter 03 focal review:** C3X lab independently reproduced with exactly five lines; future-evidence controls reject C06/C08 at 09:09. EX011–EX015 match the four-line intake, corrected timestamp, P2 matrix, falsifiers and 90–150-word escalation request. Official [SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) and dated [SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final) pages checked; no invented source ingestion or operational action.
+
+---
+
+## Chapter 04 — Evidence preservation and case records
+
+**Precise insertion:** After existing §4.10 “Make a preservation queue based on reversible loss and decision value” and before the original “Common mistakes and limits”. Leave the original C09/C10 source cards, V4 hash exercise and EX016–EX020 in place. This addition deepens the distinction among **source, approved collection, copied bytes, verified integrity and inferential use**.
+
+### 4.E1 Five objects in an evidence workflow
+
+Incident records are often described as a “chain of custody,” but that phrase is too easily reduced to recording a checksum. The supervised practitioner should separate at least five identifiable objects.
+
+1. **Producer record set.** The events still held by an application, identity service or storage system, under its actual retention and deletion semantics. A custodian may be able to query a subset without showing that all expected events were generated.
+2. **Selection and authorization.** A case-specific decision naming the permitted producer, account/object selectors, event interval, sensitive fields, collecting role and purpose. An approved plan does not automatically stop source deletion or deliver any bytes.
+3. **Collection event.** An operator actually retrieves defined data, records method, query, source, creation/retrieval time, object identity and destination, and reports omissions or errors.
+4. **Preserved copy and check.** Identified bytes are kept under appropriate restricted access, with a digest computed and compared as defined. Equality supports consistency of the *checked bytes* under its trust assumptions; it cannot establish truth or completeness of the producer.
+5. **Analytical derivative.** A projected CSV, redacted screenshot, normalized timeline or chart derived from preserved records. It needs source pointers, selection/transformation method and a separate copy identity; it is not the original source simply because it looks clean.
+
+The workflow has different failure conditions. A preservation **request** may be correctly scoped but never acknowledged. A collector may report success while the export lacks source metadata. A hash may match despite omission of relevant rows in the query. A screenshot may show an accurate image of a cached page but not the authoritative slot state. An analyst who collapses these distinct states into “evidence collected and verified” makes later independent review impossible.
+
+The [NIST SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) guide discusses forensic techniques and source-sensitive acquisition in response, while [SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final) addresses log-management concerns. Both publications date from 2006. Their concepts support asking about provenance and records but do not determine CTN's specific legal duties, cloud retention implementation or real collection privileges. The method below is an original teaching contract, not legal evidence-handling advice.
+
+### 4.E2 What the C09 and C10 cards really establish
+
+At 09:14, C08 reports that detailed identity events in the relevant synthetic window expire at 10:00. The analyst can **request** a narrow `svc-enroll` 08:50–09:05 UTC collection from the identity custodian. At 09:16, C09 subsequently supplies a reported approval; at 09:18 it supplies a case-copy receipt describing two events at 08:58/08:59. The material is richer than the earlier summary, but object identity, byte count and digest are not supplied. A conscientious record says: **copy received according to case card; source completeness unknown; byte-integrity comparison not possible with the supplied fields**. It does not retroactively mark the 09:14 request “received.”
+
+C10 is a different source: a support screenshot displaying “11:21 UTC+02:00,” received at 09:22. Subtracting two hours yields a **conditional displayed UTC value of 09:21**. The arithmetic does not authenticate the screenshot's capture-device clock, timezone-label correctness, page cache freshness or current authoritative S42 state. Keep the raw display string, claimed offset, conversion, receipt time and confidence in the time source in different columns. If the screenshot shows “unavailable,” that is evidence that an image displayed the symptom under its asserted capture conditions—not that the backend was unavailable at 09:21.
+
+The original V4 byte string is a **separate laboratory artifact**, with its published 34-byte length and SHA-256. It cannot be repurposed as C09's missing digest. A training participant may compute the correct V4 checksum and still have absolutely no basis for saying the C09 export was complete or unmodified. The byte layer and source-provenance layer are different evidence classes.
+
+### 4.E3 A source-hold request cannot be substituted for a retained case copy
+
+Suppose the identity custodian can preserve records at their original source but cannot yet release a selected export. That may reduce immediate loss risk, but the investigator still lacks a case copy and cannot report an integrity check. Conversely, a one-time copy may be retained while the producer continues deleting source rows under its ordinary policy. The case therefore needs two separate ledgers: **source-preservation control** and **collected-item custody**. Do not infer the first from the second.
+
+A hold ledger should name the exact source namespace and objects/interval, approved decision, reported mechanism, effective/expiry or review terms, application receipt, non-destructive effect observation, and current residual limitations. A copy ledger should name the item/source, collection authority, actual time, selector, transfer, byte count, digest/check, restricted destination and handling history. A positive digest is not a hold-effect receipt. If a source never supported a hold, state that limitation and seek an authorized alternative rather than inventing a feature.
+
+The strongest next request concerning C09 is therefore **narrow**, not “send all IdP records”: obtain the particular source object identifier, query envelope including interval semantics, collector details, byte-count/digest record if they exist and any source-health limitation. If an item is unavailable, document the unanswered field. C08's 10:00 source-expiry claim changes scheduling urgency; it does not authorize the analyst to bypass restricted access.
+
+### 4.E4 Construct a reviewable collection manifest
+
+For a supervised, authorized collection, an independent reviewer should be able to reconstruct the following chain:
+
+| Question | Evidence to seek | Failure if omitted |
+|---|---|---|
+| Why collect? | Case question, affected service, minimization rationale | Retain unrelated personal records without decision value |
+| From where? | Source namespace, collection identity, version and storage tier | Mistake an aggregate dashboard for detailed producer logs |
+| What exactly? | Query filter, account/slot, event time window, field semantics, inclusive/exclusive endpoints | Treat an empty partial query as complete event absence |
+| With whose permission? | Actual decision owner, scope, permitted operator, valid time | Assume ability to use an interface grants approval |
+| When was it collected? | Source event, ingestion, request, copy creation and receipt times, each identified | Order events by convenient file timestamps |
+| What bytes? | Copy identifier, byte count, digest algorithm/value and actual verification action | Assert authenticity from an unexamined digest claim |
+| Who could inspect it? | Restricted location, receiving role, access/transfer history | Spread raw identity/patron data to unnecessary recipients |
+| How was it transformed? | Versioned field projection, redaction, normalization and source pointers | Present a derivative as original or erase omitted context |
+
+A manifest with missing fields is not automatically dishonest; it is **incomplete for the claims those fields would support**. That is a useful result. The custodian may supplement it later, maintaining original timestamps and versions. The learner should never backfill today's digest into a historical receipt as if it were recorded at the time.
+
+### 4.E5 Controlled contrast: byte integrity, source authenticity and data meaning
+
+Take three hypothetical submissions. In **A**, a known local file has two matching SHA-256 checks but no originating source or approved selection: byte consistency is supported, source authenticity and completeness remain unknown. In **B**, a log export has a detailed query manifest and custodian signature, but its stored bytes no longer match the recorded digest: do not rely on the disputed copy until the discrepancy is investigated, even though the query metadata are plausible. In **C**, both copy identity and bytes are checked, but the application field labelled `actor` contains a shared automation account: producer provenance may be stronger, yet human attribution remains unproved.
+
+These are different axes. There is no “overall evidence verified” state that follows from any one positive check. A reviewer should score each axis and name the next bounded question: source health/completeness, exact bytes and transfer, or identifier semantics. Neither a screenshot nor a copied text transcription can answer all three.
+
+### 4.E6 Offline laboratory C4X — detect which preservation receipt is missing
+
+**Environment:** Python 3 standard library, entirely in memory. The following tuples are invented *receipt-state illustrations* and **not C09/C10 replacements**. No source export or hashing occurs. The model deliberately refuses a claim of checked bytes when approval or a received item is absent.
+
+~~~python
+from datetime import datetime, timedelta
+
+def status(card):
+    if not card["approved"]:
+        return "REQUEST_ONLY"
+    if card["received_at"] is None:
+        return "APPROVED_NOT_RECEIVED"
+    if card["object_id"] is None or card["digest"] is None:
+        return "COPY_RECEIVED_INTEGRITY_UNVERIFIED"
+    if card["checked"] is not True:
+        return "DIGEST_RECORDED_NOT_CHECKED"
+    return "COPY_BYTES_CHECKED_SOURCE_COMPLETENESS_UNKNOWN"
+
+cases = [
+    ("REQUEST", False, None, None, None, None),
+    ("APPROVAL", True, None, None, None, None),
+    ("CTN_C09_LIMIT", True, "09:18", None, None, None),
+    ("UNRECHECKED", True, "09:18", "toy-1", "sha256:toy", False),
+    ("CHECKED_FIXTURE", True, "09:18", "toy-1", "sha256:toy", True),
+]
+for name, approved, received_at, object_id, digest, checked in cases:
+    print(name, status(dict(approved=approved, received_at=received_at,
+                            object_id=object_id, digest=digest, checked=checked)))
+raw = datetime(2026, 10, 12, 11, 21)
+print("C10_UTC_CONDITIONAL", (raw - timedelta(hours=2)).strftime("%H:%M"))
+~~~
+
+**Executed output:**
+
+~~~text
+REQUEST REQUEST_ONLY
+APPROVAL APPROVED_NOT_RECEIVED
+CTN_C09_LIMIT COPY_RECEIVED_INTEGRITY_UNVERIFIED
+UNRECHECKED DIGEST_RECORDED_NOT_CHECKED
+CHECKED_FIXTURE COPY_BYTES_CHECKED_SOURCE_COMPLETENESS_UNKNOWN
+C10_UTC_CONDITIONAL 09:21
+~~~
+
+The fifth scenario uses **invented `sha256:toy` text**, not an actual digest or verified byte sequence. Its flag tests only how to label a declaration; it does not authenticate a sample. **Adversarial control:** set `checked=True` while removing the digest; the result remains COPY_RECEIVED_INTEGRITY_UNVERIFIED. Set `approved=False` on a purported received copy; the first gate says REQUEST_ONLY, demonstrating that the tuple is **inconsistent** rather than evidence of valid authority. An actual receipt system should flag contradictory states explicitly instead of treating this toy gate as comprehensive.
+
+**Required learner artifacts:** Six output lines; one missing-evidence table for C09 and C10; a source-versus-copy ledger; a least-privilege two-request preservation queue; one sentence explaining why the C10 normalized time is conditional. **Rubric, six local points:** exact transcript (two), proper C09 status and V4 separation (one), C10 clock/cache limit (one), bounded custodian/approval/provenance requests (one), and safe negative-control explanation (one). No real contact or collection is part of the exercise.
+
+### 4.E7 Build the Chapter 5 handoff from retained gaps
+
+A professional handoff should identify *what is missing in a way that changes the next investigation*. For C09, unresolved source-object ID and digest affect confidence in the retained export's provenance and integrity. For C10, unknown capture clock/cache affect conclusions about the apparent time and service state. The C03/C09 session field might suggest an identity relationship; C05's blank application session still prevents a direct link from `s-77` to `q-144`. These are three different gaps with three different custodians/tests. A single sentence “more evidence needed” does not instruct the next analyst.
+
+Do not discard the raw C10 display once it has been normalized; retain both times and the conversion method. Do not modify C09 to add a byte count not supplied. When the Chapter 5 investigation starts, source pointers should survive exactly as recorded, while competing hypotheses and derived timelines may change with each new card.
+
+**Chapter synthesis:** The evidence workflow is not completed by approval, file existence or a hash alone. C09 supplies a reported received copy but lacks key provenance/integrity fields; C10 is a limited screenshot observation. Both are useful if their uncertainties remain visible. Chapter 5 will compare their clues against other source records without converting a missing session join into proof.
+
+**Continue studying — professional Chapter 04 of 12:** [← Chapter 03](../MANUSCRIPT.md#ch-03) · [Chapter index](../../SUBJECTS.md) · [Chapter 05 →](../MANUSCRIPT.md#ch-05).
+
+### Worked-answer expansion — EX016–EX020
+
+**Integration:** Append immediately after original subject 4 C4 worked laboratory output. Preserve the original exercise questions, exact V4 digest and 0–2 rubrics.
+
+**EX016 — Proposed collection request.** At 09:14 C08 supports urgency to ask the identity custodian for a narrowly scoped 08:50–09:05 `svc-enroll` IdP detail source, preserving original timestamps, session/client fields, event IDs, producer/copy metadata and an explicit restricted location. Identity/data-owner authorization and actual collector/time are **pending**, not complete. The purpose is a bounded source availability and correlation question, not “download the tenant.” An actual expiry at 10:00 is a custodian statement in C08, not a blanket data-access permission.
+
+**EX017 — Two different receipt statuses.** C09 has a reported permission at 09:16 and case-copy receipt at 09:18 for events 08:58/08:59, but no supplied source object ID, byte count or digest; its integrity/completeness remain unverified. C10's display is 11:21 UTC+02:00, conditionally 09:21 UTC, with support receipt at 09:22, missing original capture clock/cache context. Do not make a single “09:18 verified evidence” entry for both. A receipt is evidence of receiving the claimed object, not proof of authoritative meaning.
+
+**EX018 — V4 digest and its boundary.** The published V4 payload has **34 bytes**, with SHA-256 `1407e98f466990ff5aa4eee42cd30291826490e2c910ee57887824e6946136cc`. A second digest after a one-byte mutation differs despite equal byte length. This checks the chosen classroom strings only; nothing in the 34-byte fixture can authenticate C09's actual source export. Award the integrity point for reproducible bytes **and** a clear statement that source authority and coverage remain separate.
+
+**EX019 — Conditional screenshot time.** 11:21 at an asserted UTC+02:00 offset corresponds to 09:21 UTC. C10 entered the case at 09:22, not at 09:21. Without evidence about capture-device clock accuracy, page freshness and source state, label the conversion conditional and the symptom a screenshot observation. No current backend S42 value is established by the picture.
+
+**EX020 — Decision-oriented two-source queue.** Request the C09 producer/export metadata and actual bounded query/collection receipt from the identity custodian under the existing approval, before the reported 10:00 expiry when possible. Separately request an authorized read-only S42 current version/value and last-change reference from the application/service owner, with minimal fields. The first improves evidence availability/provenance; the second informs business impact. They can proceed in parallel if custodians and permissions permit, but neither result was supplied at 09:22. Preserve those distinct questions instead of broadening the export.
+
+**Chapter 04 focal review:** C4X reproduced six lines exactly, including conditional 09:21 calculation. Its receipt-state strings are declared fixtures, not authenticated records. EX016–EX020 still align with their source cards and original answers; V4's original checksum remains unchanged. [SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) and [SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final) primary publication pages were consulted; no third-party passages reproduced.
