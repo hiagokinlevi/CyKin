@@ -34,6 +34,9 @@ This is one course. It has **one course skill** and **one principal book in each
 
 The [English chapter index](en/SUBJECTS.md) gives every subject's status, planned effort, exercise target and links to its plan or authored draft. The book plan summarizes each chapter in full.
 
+**English manuscript checkpoint (12 October 2026):** Chapters **01–05** now include additional original professional-level instruction, the five offline C1X–C5X teaching fixtures and expanded worked reasoning for **EX001–EX025** in the [single principal draft book](en/book/MANUSCRIPT.md#ch-01). There are still **12 drafted chapters and 60 existing numbered exercise-answer pairs**; no extra book or chapter was created. The principal manuscript now contains **60,432 whitespace-separated words**. Its previous **109-page A4 preflight is stale** because the manuscript changed; **no new verified A4 page count is available**. Technical and editorial review, source checks and the minimum 300-page A4 completion gate remain outstanding. Other language editions remain outlines.
+
+
 **Related project:** [hiagokinlevi/ir-playbooks-automation](https://github.com/hiagokinlevi/ir-playbooks-automation). Its source material is supplementary and retains its own rights. Original CyberABC material is dedicated under [CC0 1.0](../../../LICENSE).
 
 **Editorial status:** a public outline or draft is available for study but is not a completed book or a recognized qualification.
