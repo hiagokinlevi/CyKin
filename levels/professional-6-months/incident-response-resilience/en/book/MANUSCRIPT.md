@@ -2544,6 +2544,91 @@ C10 V10b =ESCALATE-NO-EXECUTION
 
 The CTN **authority=True** fixture represents a deliberately simplified point **after** relevant approval, not permission at the 09:35 proposal checkpoint. PROPOSE-AND-VERIFY does **not** execute anything. The toy boolean harm field discards evidence strength, impact and scope; therefore this model cannot replace the seven-gate record. Its value is to fail visibly on two unsafe shortcuts. A stronger classroom test would inject an expired approval and an unverified route; both should leave action pending until a fresh owner decision. These are proposed test cases, not reported CTN outcomes.
 
+### 10.13 Engineer a playbook as a versioned decision contract
+
+A **playbook** is not the record of a command that ran. It is an interface that receives source-bounded inputs and directs a responsible person to a documented next decision. Its minimum useful behavior is to make uncertainty actionable without granting powers to the analyst. P0's imperatives—disable, restore, email, close—are dangerous because they implicitly assume account compromise, permission, backup correctness, privacy determination and service acceptance. P1 improves structure by defining seven gates, numbered 0 through 6. But a document that names gates can still fail at runtime, so the quality review must separate *design coverage*, *dry-run decision quality* and *real-world execution evidence*.
+
+Each gate can be written as a contract with these fields: **entry evidence and release cutoff; decision question; required producer/custodian; permissible analyst output; approver and scope; operator receipt if an action occurs; independent protection and legitimate-service verification; failure/unknown branch; next reviewer and deadline**. An implementation that encodes only "true/false" loses critical distinctions. If a data source is not retrieved, the result is UNKNOWN, not FALSE. If an action is approved but no operator receipt exists, the result is APPROVED_NOT_EXECUTED, not DONE. If an isolated recovery test passes, the production gate remains pending. If a message draft is approved but not dispatched, the audience still has not been shown that message.
+
+The [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) recovery guide addresses planning, exercises and improvement. [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final), published in 2006, provides a framework for exercise design and evaluation. Neither prescribes P1's seven gates, a score of 12/12 or any CTN role/receipt. These are CyberABC teaching constructs and must be adapted to actual owner authority before any use.
+
+### 10.14 Exercise branch coverage must challenge the unsafe option
+
+A **branch test** is an input deliberately chosen to reveal whether a decision interface chooses the wrong action. Testing only the main CTN incident could produce misleading confidence: because S42 truly differs from its owner-approved target, even a crude playbook that always shuts down accounts might appear to have acted in response to harm. The negative V10 branch demonstrates the need for safe *non-disruption* when an approved run explains a correct slot state. V10b, where the service owner cannot be reached during an evidence-retention warning, tests a different failure: whether an unavailable approval is wrongly treated as emergency permission. The correct outcome is to escalate the authorized preservation question and keep the disruptive operation pending.
+
+**Two contrasted worked paths:**
+
+**Correct path:** At C02 the analyst opens a case without declaring account compromise; at C08 the analyst requests narrowly scoped IdP preservation under the proper custodian. At C13–C16 the team proposes an S42-only hold; C17, C18 and C19 separately record approval, reported configuration and one route test. At C20 the job-to-request mechanism strengthens while actor remains unknown. C27 fails the predeclared audit gate; C28 passes only isolation; C29 adds new production approval/action; C30 supplies limited acceptance. C31–C33 open a separate data inquiry and leave public messages unsent. A reliable playbook can stop between any two steps and tell a receiving operator which receipt is absent.
+
+**Incorrect path:** The analyst sees V10's shared-account alert, runs a disablement action despite its owner-approved benign run, restores a backup despite correct current state, and announces a breach. Here the control has no supported harmful path and its collateral business cost is unjustified. If an approver is absent as in V10b, a blind escalation from "not reachable" to "automatically authorized" is an even clearer failure. The repaired P1 process must protect *against action when action is unwarranted*, not merely direct faster action in an incident.
+
+### 10.15 Design measurable quality without confusing it with release approval
+
+P0's **1/12** and P1's **12/12** count the six *written-field* dimensions in the published classroom rubric. They do not count real disabled sessions, timely custodians, safe restores or delivered communications. A document can achieve 12/12 with no single operational test executed. Therefore release assessment requires **independent blind review** of a frozen version and three scenario packets: main CTN, V10 non-disruption and V10b missing approver. The evaluator records the requested gate, expected decision, actual trainee output, failed fields, permitted next action, and an owner decision on revision. A design score cannot overrule an unsafe branch.
+
+For a future program metric, define numerator, denominator, source and failure rule. "Percent of approvals documented" should count eligible *proposed actions*, not all incidents; a missing approval or wrong scope must count as failed rather than disappear from the denominator. "Percent of recovery tests passing" should include C27's no-go in the run population, not just successful C28. "Communication timeliness" should distinguish a draft produced before 12:00 from a message actually approved and sent. Avoid counting hypothetical V10/V10b actions as incidents resolved.
+
+A revision is **traceable** when it names version, exact changed gate, reason for change, new test and reviewer. A new revision should not erase the previous failure. A source-card release must be frozen for each evaluated decision: C20 may improve Gate 4 after 09:46 but cannot be cited to justify a 09:35 proposal; C33 at 11:00 cannot be cited in C30's earlier service acceptance. This is why a professional playbook needs both a case-record schema and a facilitator release log.
+
+### 10.16 Offline laboratory C10X — document score versus safe branch execution
+
+**Environment:** Python 3 standard library, in memory. The invented Boolean fields are not authenticated decision receipts, and this program cannot deploy controls or send communications. The *same* rubric can score design and still require separate authority and evidence gates for a branch.
+
+~~~python
+SCORES = {
+    "P0": (0, 0, 0, 0, 1, 0),
+    "P1": (2, 2, 2, 2, 2, 2),
+}
+
+def assess10(name, approval, receipt, data, audit):
+    if name == "V10":
+        return "DOCUMENT_REVIEW_NO_DISRUPTION"
+    if not approval:
+        return "HOLD_AUTHORITY"
+    if not receipt:
+        return "APPROVED_NOT_EXECUTED"
+    if data is not True:
+        return "NO_GO_DATA"
+    if audit is not True:
+        return "NO_GO_AUDIT"
+    return "BOUNDED_CHECK_REVIEW_OPEN"
+
+for name, values in SCORES.items():
+    print(name + ": " + str(sum(values)) + "/12")
+
+CASES = [
+    ("V10", False, False, None, None),
+    ("V10b", False, False, None, None),
+    ("C17", True, False, None, None),
+    ("C27", True, True, True, False),
+    ("C28_ISOLATED", True, False, True, True),
+    ("C30_DECLARED", True, True, True, True),
+]
+for name, *fields in CASES:
+    print(name + ": " + assess10(name, *fields))
+~~~
+
+**Literal tested output:**
+
+~~~text
+P0: 1/12
+P1: 12/12
+V10: DOCUMENT_REVIEW_NO_DISRUPTION
+V10b: HOLD_AUTHORITY
+C17: APPROVED_NOT_EXECUTED
+C27: NO_GO_AUDIT
+C28_ISOLATED: APPROVED_NOT_EXECUTED
+C30_DECLARED: BOUNDED_CHECK_REVIEW_OPEN
+~~~
+
+**Adversarial interpretation:** P1 can score 12/12 while V10b still blocks disruptive action. C27's failed actor audit cannot be averaged away by correct data. C28_ISOLATED reports a favorable isolated test but no *production* execution receipt. C30_DECLARED is a toy consistency result for a limited accepted scope, not proof that a production system passed every test or that the incident is closed. The V10 hardcoded branch represents only the separate provided benign fixture; no user should build production approval logic from this toy string.
+
+**Supervised practice:** Freeze P1 as draft 0.2 and write seven gate contracts, each with an unknown/stop branch. Evaluate main CTN, V10 and V10b in separate packets; record why the same input fields could support different operational choices. Run the exact C10X program, then ask a peer to challenge C27/C28 status and the unverified source semantics. **Seven-point rubric:** two for correct document scoring and its limits, two for main/negative branch distinction, one for approval-vs-execution, one for audit no-go and one for a versioned, owner-assigned retest. A real tenant action or learner-facing dispatch is forbidden.
+
+### 10.17 Synthesis and next chapter
+
+The repaired playbook is stronger because it makes authority, source limits, accepted business state, failed tests and unknowns visible to a second responder. It is not an executable runbook. The next chapter's staged tabletop can measure whether a supervised learner actually follows the gates under time pressure, including when a source or approver is unavailable; success in a toy decision function is not operational readiness or an accredited qualification.
+
 ### Common errors and limits
 
 - Treating a high playbook-document score as proof of technical effectiveness or accreditation.
@@ -3166,13 +3251,23 @@ Both fictional messages remain blocked: one lacks designated approval and the ot
 
 **EX046 — Model P0 defect inventory.** (1) “Any sign-in alert” omits service/impact discrimination; Chapter 3 required a bounded case. (2) Automatic account disablement lacks owners/approval and would disrupt approved `batch-17` (C14). (3) It ignores narrower S42 control and rollback (C17–C21). (4) “Latest backup” would undo approved S40/S41 reservations (C26). (5) “Portal loads” would miss C27's blank alternate-route audit actor. (6) A blanket breach email is unsupported by C31–C33 and bypasses privacy/communications review. (7) Closing on a page load discards C30 monitoring and unresolved cause/data work. (8) No source provenance, version or next checkpoint makes a second responder unable to reproduce the decision. Any six distinct, case-linked defects with likely harm satisfy the two-point criterion.
 
+**Additional professional worked reasoning:** P0 fails safe decision design because its shared-account trigger has no corroboration, its account disablement has no approved scope, its restore choice ignores S40/S41, and its breach email lacks data evidence and release authority. The portal-load statement provides one weak observable check and explains the published **1/12**, not an accepted recovery test. List a failed gate and required owner/source for every unsafe imperative.
+
 **EX047 — Model seven-gate local draft.** Gate 0: a time/source/service signal opens a case; analyst preserves wording, incident lead owns classification. Gate 1: custodian receives a narrow source/time/field request; missing permission stops access, approaching retention triggers escalation. Gate 2: incident lead records impact, confidence, priority and review trigger; no action right follows from a priority label. Gate 3: service/identity owner approves target, expiry, operator, verification and rollback; absent approval stops disruptive work. Gate 4: source owner preserves and tests the cause hypothesis against an approved baseline; unknown actor remains unknown. Gate 5: recovery and service owners compare data target, two functional routes, audit and rollback, rejecting failed mandatory criteria. Gate 6: communication/privacy owners approve audience-specific messages and assign next update/improvement. Each gate produces a dated case artifact; none is an execution command.
+
+**Additional professional worked reasoning:** P1's seven gates are 0–6, not additional chapters. A complete revision records evidence horizon, owner, action or hold, expected result and next check for each. It must separate source requests from received copies, approval from execution, isolated C28 from production C29, and data referral from external notice. The full **12/12** document-field score is necessary for this exercise's text criterion but insufficient for any release decision.
 
 **EX048 — Model branch table.** Main CTN: C13 confirms wrong stored state, C20 links an unapproved task to `q-144`; recommend scoped hold, follow C17/C21 approval and C18/C19 observations, then C24–C30 remediation and recovery; stop at any failed acceptance criterion such as C27. V10 only: correct slot state plus exact approved job record and no unexpected task within supplied scope; document limited negative control, **do not disable** account or send breach notice, and let the authorized supervisor decide downgrade/closure. V10b only: owner unavailable before a source-expiry warning; request authorized bounded preservation and invoke the real escalation route, but leave disruptive action pending. The three rows are separate simulations; one row's result is never imported into another's evidence.
 
+**Additional professional worked reasoning:** For the main CTN branch, cite C13–C19 at their released times; do not use C20 at the 09:35 proposal or C33 at the 10:45 service decision. The action remains a proposal until C17, reported execution until C18 and one-route observed effect after C19. A later C29/C30 return is separate, and C31–C33 never establish external delivery or absence of disclosure. A single all-green incident field would conceal these transitions.
+
 **EX049 — Model score.** Using the six 0–2 criteria in §10.4, P0 scores **0 trigger/scope, 0 authority, 0 evidence, 0 containment/rollback, 1 recovery, 0 communication/review = 1/12**. The one point reflects a vague but observable “portal loads” check; it lacks data, audit and failed-test handling. P1's Gate 0 supplies trigger/scope, Gates 1–2 provenance and uncertainty, Gate 3 authority and reversible containment, Gates 4–5 cause and acceptance, and Gate 6 audience/next review. As a **document design**, it can score **2 in each = 12/12**. That is not field effectiveness: the main case, V10 and V10b walkthroughs, source/rights check and owner approval remain required. A local scorer could lower a P1 criterion only by pointing to an actual missing field or failed branch, not by changing the rubric after seeing the result.
 
+**Additional professional worked reasoning:** The separate V10 specimen must select documentation/no disruption because its supplied owner state and approved run explain the alert in the tested scope; V10b must escalate preservation while holding disruptive work for an authorized service owner or valid alternate. C10X prints these differences but authenticates no approvals. A bad branch cannot be excused by P1's 12/12 score; record version, failed decision and retest.
+
 **EX050 — Model draft 0.2 release note.** “CTN response playbook draft 0.2, for Chapter 11 tabletop only; **not for production use**. The main-case walk-through required distinct C17 approval, C18 execution and C19 verification, and stopped C27's failed audit gate before recovery. The V10 negative control did not disable the shared account or announce a breach. V10b preserved the expiring-source request through an authorized custodian while leaving disruptive action pending without an approver. The service owner must approve actual containment limits and rollback; the privacy/communications owners must review audience wording. A technical reviewer must test alternate write routes and the new audit actor field in an authorized environment. The incident lead owns an improvement ticket for C01's missing after-hours alternate, due before the next rehearsal, with a reachable-contact test as its closure criterion. Version 0.2 is a reviewed classroom draft, not a completed course book.”
+
+**Additional professional worked reasoning:** A useful quality report includes the six itemized 0–2 scores, P0=1/12 and P1=12/12 for written criteria, one failing/pending receipt per selected branch, independent reviewer, frozen card release and the next revision. It must not describe C28's isolated pass as production effectiveness, C30's limited acceptance as incident closure, or an unapproved communication draft as sent. The observable improvement is a correct supervised decision on main CTN plus V10/V10b, not a generic claim of playbook certification.
 
 **C10 playbook-branch fixture — worked laboratory result.**
 
