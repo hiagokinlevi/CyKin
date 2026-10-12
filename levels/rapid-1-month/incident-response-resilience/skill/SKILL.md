@@ -31,7 +31,7 @@ This is the **rapid introductory** course. Teach one subject at a time and use t
 |---|---|---|
 | 1 — Incident readiness | [Chapter 1](../en/book/MANUSCRIPT.md#ch-01): roles, service map, authorization, evidence-readiness contract, claim falsifiers and an offline evidence-bound lab. | A bounded case record, owner map, claim ledger, proposed test and lab transcript using R1–R8 only. |
 | 2 — Triage and preservation | [Chapter 2](../en/book/MANUSCRIPT.md#ch-02): event versus discovery time, query-envelope coverage, retention, provenance, competing explanations and scoped service-impact measurement. | A justified timeline, bounded preservation request, source/copy/interpretation analysis, VQ2 transcript and separate IM2 impact ledger; use R1–R16 only after 09:20. |
-| 3 — Containment, cause and recovery | [Chapter 3](../en/book/MANUSCRIPT.md#ch-03): approval, write-path testing, cause hypotheses, isolated restoration and service acceptance. | A comparison of bounded actions and a cause-to-fix verification plan using R1–R24; keep W1, P1/C1, V1 and K1 as separately released exercise fixtures. |
+| 3 — Containment, cause and recovery | [Chapter 3](../en/book/MANUSCRIPT.md#ch-03): approval, write-path testing, cause hypotheses, manual-queue reconciliation, isolated restoration and service acceptance. | A comparison of bounded actions and a cause-to-fix verification plan using R1–R24; keep W1, MQ3, P1/C1, V1 and K1 as separately released exercise fixtures. |
 | 4 — Tabletop and after-action review | [Chapter 4](../en/book/MANUSCRIPT.md#ch-04): round-based simulation, handoff, communication and measurable improvement. | Six artifacts, a scored handoff, F4-AUDIT release-and-score transcript and an after-action ticket; use Branch S/P and later cards only when their round releases them. |
 
 ## Chapter 1 claim-review laboratory
@@ -50,6 +50,10 @@ Open the [IM2 service-impact lab](../en/book/MANUSCRIPT.md#ir-rapid-ch02-im2-lab
 
 Open the [G3-DG decision and recovery gates lab](../en/book/MANUSCRIPT.md#ir-rapid-ch03-g3-lab) only after the Round C release of R17–R24. Have the learner predict all eleven output lines and explain why proposed, approved, executed and verified are separate states. G3-P through G3-X are independent fictional reset scenarios, not R-series evidence or results of the later W1, P1/C1, V1 or K1 cards. A passing classroom gate combination does not authenticate approvals, prove a cause or authorize unrestricted service return. Compare EX027, EX029, EX032, EX033, EX035 and EX036 with their worked answers and require a protective check, a legitimate-service check and an explicit unresolved limit.
 
+## Chapter 3 manual-queue laboratory
+
+Open the [MQ3 reconciliation lab](../en/book/MANUSCRIPT.md#ir-rapid-ch03-mq3-lab) after the learner can distinguish R21's tolerance from an approved/executed pause. Ask for all eleven output lines, an eight-receipt ledger and the effect of reversing two competing X10 requests. The [worked MQ3 result](../en/book/MANUSCRIPT.md#ir-rapid-ch03-mq3-result) shows one duplicate retry, key reuse conflict, missing approval, unknown booking and stale versions under the toy rules. Require the learner to explain that MQ3's entries are not Branch P's two unnamed pending requests and cannot establish concurrent or durable application safety. Deepen EX029, EX035 and EX038 without new IDs.
+
 ## Chapter 4 release-and-assessment laboratory
 
 Open the [F4-AUDIT exercise](../en/book/MANUSCRIPT.md#ir-rapid-ch04-f4-audit-lab) after the staged Round D cards are understood. Ask the learner to predict all twelve output lines and identify a future-source reference, an impossible mixed branch and a high numeric score that still fails the approval gate. Compare the exact [worked transcript](../en/book/MANUSCRIPT.md#ir-rapid-ch04-f4-audit-result) only after the attempt. The in-memory script validates a classroom release map and sums invented rubric scores; its input flags cannot authenticate actual approvals, log coverage or production recovery. Require EX044 to separate proposal, approval, execution and verification receipts and EX049 to include positive and negative closure tests.
@@ -65,7 +69,7 @@ Open the [F4-AUDIT exercise](../en/book/MANUSCRIPT.md#ir-rapid-ch04-f4-audit-lab
 ## Case and source boundaries
 
 - The canonical R1–R8 snapshot belongs to Round A and the 09:05 first decision; R9–R16 enter at the simulated 09:20 Round B review; R17–R24 enter Round C before the 09:37 decision. Event time is not the learner's receipt time.
-- Branch S or P is reported only in Round D. P1/C1 and V1 arrive later in that round. W1, K1, Q1, IM2, T1, T2, VQ2, F1, F4-AUDIT and M1/M2 are labeled classroom variants; do not import their results into an earlier canonical decision.
+- Branch S or P is reported only in Round D. P1/C1 and V1 arrive later in that round. W1, K1, Q1, IM2, MQ3, T1, T2, VQ2, F1, F4-AUDIT and M1/M2 are labeled classroom variants; do not import their results into an earlier canonical decision.
 - R21 records tolerance for a brief write pause, not approval or execution. R22's narrow earlier query cannot verify a later revocation. R23 reports a backup job, not a successful restore. V1's blank actor field fails its audit-attribution criterion.
 - Use the [source audit](../../../../SOURCE_AUDIT.md) and the book's references for factual claims. Identify the British Library review as a cited real incident and Harbor Library as fiction. Preserve source rights and avoid copying third-party playbooks into the CC0 book.
 - Never direct a learner to test a real account, disrupt a service, access patron records or send a notification. Such actions require the real organization's authority, environment and procedures, which the course does not supply.

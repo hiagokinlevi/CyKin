@@ -2005,6 +2005,232 @@ The negative control changes only the audit flag of the favorable test to `False
 
 **Acceptance rubric (five-point lab, supplementary rather than a new numbered exercise):** one point each for exact output; correct lifecycle separation; independent protective and service gates; distinct data and audit failure interpretation; and an explicit bounded-evidence/canonical-release limitation. Do not claim the classroom `True` inputs were verified production observations.
 
+### 3.12 Reconcile a manual queue before resuming writes
+
+#### Why a pause ending is not proof that bookings are safe to accept again
+
+A bounded staff-write pause can be a reasonable containment choice while the incident lead investigates unexplained booking edits. It may also create a second operational risk: new requests arrive while ordinary application writes are blocked. If staff record those requests manually, they become **pending obligations**, not automatically accepted reservations.
+
+The existing Chapter 3 already teaches how to propose a pause, validate the configured write paths through the separate W1 laboratory, and compare authoritative booking states through P1/C1. It also says queued requests must be reconciled before approved resumption. The missing intermediate skill is determining **whether each request remains valid, has already been applied, conflicts with current state, or lacks the evidence required to apply it safely**.
+
+A pause does not make every queued instruction correct. During a pause, a staff member might copy the same request twice, a patron might retry after receiving no confirmation, an appointment time might become unavailable, or someone might submit a request that was never approved. When writes are reenabled, automatically replaying everything in arrival order could create duplicate reservations, overwrite legitimate later changes, or mislead a patron into believing an unaccepted request was confirmed.
+
+The required outcome is not "empty the queue." It is **account for every queued request with a supported disposition**: applied exactly within its authorized scope, recognized as a duplicate, held for approval, rejected as conflicting, or left pending with a named decision owner. These are process dispositions, not claims that a production booking was changed.
+
+[NIST SP 800-61 Revision 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) addresses incident response as part of cybersecurity risk management, including considering operational consequences. [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) discusses recovery planning and tests. The queue contract below is an original Harbor Library teaching method, not a prescribed NIST process or evidence of any real library service.
+
+#### Five states of a pending booking request
+
+Before discussing a replay or service resumption, distinguish five questions about every proposed manual request.
+
+**Received:** Was a request recorded, under which unique receipt ID, at what claimed time, by which authorized intake role and from which permitted channel? A row with a booking label but no trustworthy receipt might be a note or duplicate, not an actionable instruction.
+
+**Authorized:** Does the request have the approval appropriate to the specific action? A permission to collect a manual queue is not necessarily permission to edit a booking. The service owner should define the action authority and any patron confirmation required by the actual process.
+
+**Current:** Does the request still make sense relative to the *now authoritative* schedule? An old expected room/version may no longer exist. A prior room assignment is not a guarantee it remains available.
+
+**Unique in effect:** Is this a second receipt of the same intended operation, a different operation with a reused deduplication key, or a separate legitimate request? Counting receipts is not the same as counting changes.
+
+**Recorded after decision:** Is there a durable, auditable outcome for the attempted application or hold? A queue item should not disappear simply because an operator tried to apply it. A retry after an uncertain acknowledgement requires checking whether the original effect occurred.
+
+A beginner-friendly queue ledger records both the original request and its evolving review state. A useful minimum schema is:
+
+| Field | Role in the review |
+|---|---|
+| Receipt ID | Identifies a particular intake event and permits reconstruction of retries |
+| Idempotency or operation key | Identifies the logical operation *under documented service rules*; not itself evidence of authorization |
+| Requested booking and desired state | Names exactly what the request asks to change |
+| Expected version or business precondition | Defines the state the requester assumed |
+| Intake source and original time | Supports chronology and custody of the manual entry |
+| Approval and decision owner | Determines whether the requested change may be applied |
+| Latest authoritative state/version | Used to detect stale assumptions or conflicts |
+| Disposition | Applied, duplicate, held, conflict, rejected, or unresolved |
+| Operator, verification and audit pointer | Needed to defend a completed action |
+| Patron communication state | Separates received, accepted, rejected and notified |
+
+For Harbor Library, these are **proposed educational fields**. The canonical Branch P card does not provide any actual queue manifest. Its statement "two pending requests" cannot support claims about which rooms were requested, who submitted them or whether either can safely be applied.
+
+#### Duplicate receipts are not necessarily duplicate business actions
+
+Imagine a patron asks to move a booking. The front desk writes down the request, receives a repeated call, and writes a second note. Two receipts may describe **one logical requested change**.
+
+An idempotency key is an application-defined way to recognize a repeated logical operation. The crucial condition is that the service must define which exact fields constitute the same request and what outcome follows when the key is reused. A repeat with the **same key and same normalized operation** may be classified as a retry; a repeat with the **same key but different requested operation** is a conflict demanding review, not permission to overwrite the first instruction.
+
+This teaching technique is related to, but not guaranteed by, HTTP method semantics. [RFC 9110 §9.2.2](https://www.rfc-editor.org/rfc/rfc9110.html#section-9.2.2) defines idempotent methods in terms of the intended effect of repeated identical requests and cautions about automatically retrying non-idempotent methods. It does **not** grant a booking application's POST endpoint built-in exactly-once behavior or define Harbor Library's custom operation keys. The example below explicitly supplies its own key rules.
+
+A key alone cannot prevent duplicates if it is stored only in temporary client memory or checked separately from the write. In a real, authorized implementation, the key-to-result record, version precondition and business-state update would need suitable consistency and atomicity guarantees. Otherwise an application failure could commit a booking while losing the recorded acknowledgement, and the next retry might apply the same business effect again.
+
+The rapid course need not implement a distributed transaction manager. It must recognize why **"the staff did not receive a confirmation" is not the same as "the write did not occur."** The correct next step under that uncertainty is to verify the prior effect using an authorized source, not replay blindly.
+
+#### State versions prevent silent lost updates
+
+A manual request should identify what state it assumed. Suppose an instruction means "change booking X10 from its version 2 state to Room D." If another approved operation already advanced X10 to version 3, applying the old instruction without review could overwrite that newer decision.
+
+A simple state-version precondition expresses the rule:
+
+> Apply the requested change only if the current authoritative version still equals the version the request expected.
+
+If the versions differ, classify the request as **stale** and seek reconciliation. Stale does not automatically mean malicious, rejected forever or already fulfilled. It means the original operation cannot be assumed safe against the state now observed.
+
+In a real concurrent database, comparing a version and updating a value in two unprotected steps would still permit a race: another operation might change the state between the check and the write. The service would need an appropriate conditional transaction or equivalent mechanism under its database consistency model. Our offline Python example runs sequentially, so it cannot prove such concurrency safety.
+
+This also explains why an older backup is not automatically a valid replay baseline. A recovered booking state must be reconciled with accepted work and current authority before pending manual instructions can be applied. The original P1/C1 and K1 laboratories examine different parts of that recovery question; MQ3 does not supply their evidence or alter their results.
+
+#### A safe queue review is a decision sequence, not a bulk command
+
+For each request, a fictional service owner or delegated authorized reviewer should apply the following sequence:
+
+1. **Freeze intake and scope.** Preserve the original queue entries, including duplicate receipts, without editing away rejected rows. Identify the approval boundary and the relevant pause or test window.
+2. **Determine the logical operation.** Normalize only the documented fields used to distinguish identity of effect. Do not decide that two bookings match because their room names are similar.
+3. **Check authority.** Hold entries with missing or rejected approval. Neither a patron report nor a help-desk ticket is automatically permission to update authoritative state.
+4. **Check prior effect.** Look for a documented completed operation with the same key and exact request signature. A matching receipt may be a retry; a reused key with different content needs investigation.
+5. **Check object and version.** Compare the specific booking object and expected version with the authoritative state in an approved copy or environment. Missing or changed objects are explicit hold conditions.
+6. **Apply only under controlled conditions.** In a real system this would require an atomic operation and evidence of its outcome; the classroom performs no service modification.
+7. **Verify and notify separately.** Confirm the effect against authoritative state, preserve the audit link, and communicate an accepted or rejected result only after the outcome is verified and approved.
+8. **Reconcile the remainder.** An unresolved entry does not vanish when the queue closes. Assign an owner, next review and a supported notification state.
+
+This is a **processing model**, not an instruction to execute a queue against a real library. If no suitable authoritative state or approval is available, the defensible disposition is **hold**. A student should never guess a current value in order to make the simulation pass.
+
+#### Worked contrast: a confident but unsafe restart
+
+**Incorrect reasoning:**
+
+> "R21 permits a fifteen-minute pause. Branch P later reports two manual requests. At the end of the fifteen minutes the pause must have finished, so replay both requests and tell the patrons their reservations were confirmed."
+
+The sentence contains several unsupported conversions. R21 records tolerance, not actual execution. Branch P is released only later and reports two **pending** requests, not two approved or successfully processed bookings. The planned end of a pause does not prove that writes resumed or that the application, booking state, audit and manual queue passed their release tests. No canonical card supplies the two request IDs, contents or conflict status.
+
+**Defensible conditional reasoning:**
+
+> "Only after the separate Branch P release may we report that the fictional service owner described a fifteen-minute pause beginning at 09:45 with two pending manual requests. Before any proposed resumption, the service owner must obtain a bounded queue manifest, determine whether each request is still authorized and consistent with current booking state, reconcile duplicate or conflicting instructions, and record both the effect and pending exceptions. The planned 10:00 end is not proof of automatic resumption. Pending items and unresolved audit or data gates remain on the handoff."
+
+This version identifies precisely which missing evidence a later decision would need. It does not borrow the W1 test's single queued item or the P1/C1 booking comparison as if they described Branch P's two actual pending requests.
+
+#### Separate the reconciliation result from return-to-service acceptance
+
+A manual queue with every item assigned a disposition is better controlled than an unexplained queue. Still, its completion does not alone justify unrestricted booking writes.
+
+The service owner must consider at least four separate gates: (a) the control is in the intended state after the approved change; (b) the authoritative booking values are correct under an owner-approved target; (c) relevant authorized and unauthorized tests behave as expected; and (d) changes produce adequate audit identity and time fields. The Chapter 3 V1 fixture separately shows why two narrow access successes do not repair an audit record with a blank actor field.
+
+Likewise, clearing a queue by rejecting all items is not evidence of useful service. A legitimate booking function must work when permitted. A successful replay also cannot repair an unresolved account-cause hypothesis or prove that other staff-write routes are closed.
+
+A good handoff for a manual queue reports **counts with their units**, such as receipts reviewed, distinct operations recognized, simulated applications, duplicate receipts, unresolved approvals and conflicts. It never reports "all patrons served" without a source supporting that much broader claim. When one logical operation has two receipts, count both receipts in the custody ledger but count its accepted business effect only once.
+
+#### Failure modes and defensive review
+
+| Failure mode | Attractive but wrong conclusion | Required countercheck |
+|---|---|---|
+| Two receipts share the same operation key | Two bookings were applied | Compare the complete request signatures and prior-result record |
+| One key is reused for different contents | The later instruction replaces the earlier one | Hold key conflict; obtain source and authorization clarification |
+| Expected version is older than current state | Apply anyway because the request was earlier | Reconcile against accepted newer state; do not overwrite silently |
+| A booking ID is missing from the authoritative view | Treat it as newly created or deleted | Confirm source coverage and ownership before deciding |
+| The operator reports success | The booking is durably correct | Obtain authoritative post-change and audit evidence |
+| A retry has no acknowledgement | The original operation definitely failed | Check for a recorded prior effect before retrying |
+| The queue ledger has zero open items | Service is fully recovered | Independently assess state, access, audit and owner acceptance |
+| The pause's planned duration elapsed | Writes automatically resumed | Require an explicit state/approval and safe-resumption receipt |
+
+The most important technical habit is to leave ambiguous items **visible and owned**. A queue is not successfully reconciled when errors have been erased; it is reconciled when each original entry has a traceable, defensible result, including exceptions.
+
+<a id="ir-rapid-ch03-mq3-lab"></a>
+
+### 3.13 MQ3 offline laboratory — Replaying a hypothetical queue without a live write
+
+**Objective:** Distinguish duplicate receipts, conflicting key reuse, missing approval, stale state and changed processing order. This is a wholly independent synthetic laboratory. Identifiers `MQ-01`–`MQ-08`, `X10`–`X12` and `KEY-*` are **not** canonical Harbor Library records or the two unnamed Branch P requests.
+
+**Environment:** Python 3 standard library; entirely in memory. No files, network, accounts, real booking operations or external connections. The code changes only a deep-copied dictionary and does not approve any real action.
+
+**Inputs and assumptions:** Each tuple contains receipt ID, operation key, booking ID, expected state version, desired room and a fictional approved flag. The baseline state is an invented exercise dictionary. Operations are processed in the printed order and one version increment represents a simulated successful change. An operation key is remembered only after a simulated apply; an unresolved hold requires independent review. These rules are intentionally narrow and do not implement durable idempotency, concurrent locking, reliable messaging or an audit service.
+
+**Before running, predict:** Which receipt repeats an already simulated operation, which reuses the same key for different contents, which lacks approval, which refers to an unknown booking and which becomes stale because of an earlier simulated application?
+
+~~~python
+from copy import deepcopy
+
+BASE = {
+    "X10": {"room": "Room A", "version": 2},
+    "X11": {"room": "Room B", "version": 5},
+    "X12": {"room": "Room C", "version": 1},
+}
+
+REQUESTS = [
+    ("MQ-01", "KEY-A", "X10", 2, "Room D", True),
+    ("MQ-02", "KEY-A", "X10", 2, "Room D", True),
+    ("MQ-03", "KEY-B", "X11", 4, "Room E", True),
+    ("MQ-04", "KEY-C", "X12", 1, "Room F", False),
+    ("MQ-05", "KEY-D", "X99", 0, "Room A", True),
+    ("MQ-06", "KEY-A", "X10", 2, "Room Z", True),
+    ("MQ-07", "KEY-E", "X11", 5, "Room E", True),
+    ("MQ-08", "KEY-F", "X10", 2, "Room B", True),
+]
+
+~~~
+
+The next block checks approval, prior effect, object existence and expected version in that order. Run all three blocks in one Python session.
+
+~~~python
+def simulate(requests):
+    state = deepcopy(BASE)
+    applied = {}
+    results = []
+
+    for receipt, key, booking, expected, desired, approved in requests:
+        signature = (booking, expected, desired)
+
+        if not approved:
+            status = "HOLD_UNAPPROVED"
+        elif key in applied:
+            status = (
+                "DUPLICATE_RETRY"
+                if applied[key] == signature
+                else "CONFLICT_KEY_REUSE"
+            )
+        elif booking not in state:
+            status = "HOLD_UNKNOWN_BOOKING"
+        elif state[booking]["version"] != expected:
+            status = "HOLD_STALE_VERSION"
+        else:
+            state[booking]["room"] = desired
+            state[booking]["version"] += 1
+            applied[key] = signature
+            status = "SIMULATED_APPLY"
+
+        results.append((receipt, status))
+
+    return results, state
+
+
+~~~
+
+The final block prints each disposition and then runs two independent order variants from the same starting state.
+
+~~~python
+results, state = simulate(REQUESTS)
+for receipt, status in results:
+    print(f"{receipt}: {status}")
+
+print(
+    "STATE:",
+    ",".join(
+        f"{key}={value['room']}@v{value['version']}"
+        for key, value in sorted(state.items())
+    ),
+)
+
+# Negative/sensitivity control:
+# Change only the order of two competing X10 requests.
+for label, sequence in [
+    ("ORDER_A_THEN_F", [REQUESTS[0], REQUESTS[7]]),
+    ("ORDER_F_THEN_A", [REQUESTS[7], REQUESTS[0]]),
+]:
+    outcome, changed = simulate(sequence)
+    print(
+        label + ":",
+        ",".join(f"{receipt}={status}" for receipt, status in outcome),
+        f"X10={changed['X10']['room']}@v{changed['X10']['version']}",
+    )
+~~~
+
+Compare your predictions with the [MQ3 worked transcript and review](#ir-rapid-ch03-mq3-result) in the final answer appendix.
+
 ### Chapter 3 exercises
 
 Use the synthetic case only. R1–R24 are available for all twelve exercises; P1/C1 and V1 are available only where an exercise explicitly calls for the Chapter 3 recovery lab. The Chapter 4 branches are **not** evidence at the 09:37 decision point. R17's 09:22 task list names B17/B18 only; the later B20 edit in R18 is evaluated against that already supplied list, not known to the training owner in advance. For each response, first name its record IDs and decision time; then separate observed fact from inference or proposal; finally name an authorized owner, an observable check and a limit. Submit the requested matrix, note or test plan so a reader can reproduce the reasoning from this book alone. The worked results at the end provide examples, while alternative choices pass when their assumptions and verification are explicit.
@@ -2022,6 +2248,8 @@ Use a compact 0–2 check per exercise: **0** if the requested artifact is missi
 #### EX029 — Decision matrix
 
 **Objective:** select a bounded containment proposal. **Inputs:** R18–R21 and the section 3.3 comparison. **Output:** a two-row matrix for session revocation and the fifteen-minute staff-write pause, each with intended effect, path it does not cover, operational cost, approving role, executing role, post-action check and rollback. Add one sentence choosing an option provisionally at 09:37. A score of 2 names R21 as tolerance for a pause, **not** proof that a pause was approved and executed, and verifies the service cost as well as the intended block.
+
+**Additional queue requirement for EX029:** For the pause option, distinguish R21 tolerability from later approval, execution and verification. Name the front-desk queue owner, the receipt and current-state checks needed before applying an item, and a hold for a conflict or absent approval. A pending request is not an accepted booking.
 
 #### EX030 — Risk of observation
 
@@ -2047,6 +2275,8 @@ Use a compact 0–2 check per exercise: **0** if the requested artifact is missi
 
 **Objective:** require evidence for a proposed return to service. **Inputs:** P1/C1 and V1 **only after their later release**, plus the section 3.5 checklist. **Output:** three measurable acceptance rows for booking correctness, tested access behavior and audit attribution, each with expected result, current supplied result, owner and action needed. Conclude with a proposed service state, next review and one rollback trigger. A score of 2 marks B19/B20 as mismatched in C1, V1's tested access checks as limited passes, and the blank audit actor as a failure, so it does not declare unrestricted recovery.
 
+**Additional queue gate for EX035:** If the later Branch P is chosen and only after it is released, add a fourth acceptance row for its two unnamed pending manual requests. The row must require a bounded manifest, owner-approved dispositions and a check of current authoritative booking state; do not borrow MQ3 outcomes, W1 or P1/C1 as the branch queue. The B19/B20 mismatches and V1 missing actor remain independent failed gates.
+
 #### EX036 — Decision record
 
 **Objective:** keep a response recommendation auditable before execution. **Inputs:** R17–R21 and the 09:37 checkpoint. **Output:** a six-field card covering time and status, evidence and uncertainty, chosen action and scope, approvers/executor, intended effect plus service side effect, and verification/fallback/review. Name the identity owner and incident lead for the proposed revocation; use R21 only for a possible pause fallback. A score of 2 gives an observable post-action test and says **proposed**, not completed.
@@ -2058,6 +2288,8 @@ Use a compact 0–2 check per exercise: **0** if the requested artifact is missi
 #### EX038 — Alternative defensible choice
 
 **Objective:** defend a different containment path without inventing a unique right answer. **Inputs:** R18–R21 and the section 3.3 matrix. **Output:** a pause-first proposal with two assumptions, approving role, manual-queue plan, one immediate effectiveness check, a 15-minute review time and a condition for changing to narrower session action or a longer restriction. A score of 2 states that R21 records tolerance rather than execution, and includes reconciliation and service-owner sign-off before resuming writes.
+
+**Additional queue template for EX038:** At 09:37, include an empty proposed ledger with receipt ID, booking/action, claimed time, approval, expected version, prior-effect check, disposition and owner. Name at least two hold conditions and a controlled owner review before writes resume. The Branch P outcome is unavailable at this checkpoint.
 
 <!-- cyberabc:chapter-navigation:start ch-03 -->
 ### Continue studying — chapter 03 of 04
@@ -2933,6 +3165,8 @@ At 09:37 these are classifications and proposed checks, **not executed events**.
 
 **Provisional 09:37 choice:** request session revocation first because it targets a narrower active path and preserves other staff workflows, with the short pause ready if a verified edit continues. A pause-first answer also passes if it justifies why the session link is too weak and plans the manual queue. Neither choice proves who caused the edits.
 
+**MQ3-linked reasoning:** R21 states a fifteen-minute pause is tolerable if staff use a manual queue; it is not an approval or execution receipt. The front-desk lead would preserve each intake receipt, while the service owner approves a reconciliation rule and the application operator verifies any approved write-path block. A matching retry may represent one logical operation with two receipts. An entry with no approval, an unknown booking, a changed expected version or a reused key with conflicting content must be held for review. Before resumption, the owner checks accepted booking state and assigns an outcome to every original entry; a proposed queue plan is not evidence that any Branch P request was fulfilled.
+
 ### EX030 — Worked result
 
 **Decision card, 09:37 UTC:** the fictional incident lead accepts a ten-minute observation window through **09:47 UTC**, after consulting the service owner about possible booking harm. The application custodian is asked to run a bounded query for staff booking edits from 09:37 to 09:47 UTC, recording source, filters, event-time bounds, ingestion cutoff and actual collection time. R22's narrow earlier summary does not cover this proposed interval. A verified new unexplained booking edit, a service-owner-confirmed impact increase, or unavailable/incomplete logging ends the observation choice early and triggers an immediate lead review of revocation versus write pause with the identity and service owners. The accepted downside is that another wrong booking may occur while the team waits. If the query cannot run or ingestion lags beyond the review, the team must **not** report “no later edits”; it must decide under explicit reduced visibility. An unverified quiet dashboard is not a verification result.
@@ -2986,6 +3220,8 @@ R23 establishes that a backup job succeeded and that the most recent documented 
 
 **Proposed status:** do not declare unrestricted return to service. The service owner and incident lead may consider a time-limited restricted mode with a compensating check, named owner and near-term review, but the failed booking and audit criteria remain open. An unexplained new edit or failed manual-queue reconciliation triggers renewed restriction or escalation. A loading page or backup-success label does not override these observable failures.
 
+**MQ3-linked queue gate, conditional on later Branch P:** The branch reports two pending requests but does not identify either, their approval, their expected version or a completed effect. Add a separate acceptance row owned by the service owner: obtain the restricted queue manifest; compare each request with approved current booking state and prior-effect record; record applied, duplicate, held or conflicting disposition; verify authorized effect and audit; and retain unresolved items with an owner and next review. This cannot override C1's B19/B20 mismatches or V1's blank actor. MQ3's X-booking outcomes are classroom data, not the branch's pending work.
+
 ### EX036 — Worked result
 
 | Field | Model decision card at 09:37 UTC |
@@ -3006,6 +3242,57 @@ R21 does **not** mean the fallback has already been implemented. Before any Chap
 ### EX038 — Worked result
 
 **Pause-first proposal at 09:37 UTC:** assume the observed B19/B20 edits may not be limited to the one current session, and assume front-desk staff can safely record new requests in the manual queue for fifteen minutes. R21 supports the owner's tolerance for that cost, **not** a completed pause. Ask the service owner to approve a named fifteen-minute write restriction; the application operator implements it under that approval. Verify immediately in the approved test scope that staff booking writes are blocked while the manual queue captures requests, then inspect a new bounded audit interval. Review with the owner at 09:52 UTC, account for every queued request against an approved schedule and get explicit sign-off before resuming writes. If the block does not work, patron harm becomes unacceptable, or authorized identity evidence identifies a narrower safe action, the incident lead and service owner should reconsider revocation or a different control. The pause reduces one class of harm while leaving cause and other paths unresolved.
+
+**MQ3-linked 09:37 proposal:** R21 supports tolerance only. The pause-first plan includes an empty queue-ledger schema: `receipt ID | booking/action | claimed time | approval state | expected version | prior effect | disposition | owner`. Actual entries are not supplied. Hold any entry with missing approval, conflicting key reuse, unknown current state or stale version; do not replay in arrival order by default. The service owner must approve the pause, later queue dispositions and a controlled review before resuming writes. The later Branch P card cannot be used as an observation at 09:37.
+
+<a id="ir-rapid-ch03-mq3-result"></a>
+
+### MQ3 — Worked result
+
+**Exact expected output, executed in Python 3:**
+
+~~~text
+MQ-01: SIMULATED_APPLY
+MQ-02: DUPLICATE_RETRY
+MQ-03: HOLD_STALE_VERSION
+MQ-04: HOLD_UNAPPROVED
+MQ-05: HOLD_UNKNOWN_BOOKING
+MQ-06: CONFLICT_KEY_REUSE
+MQ-07: SIMULATED_APPLY
+MQ-08: HOLD_STALE_VERSION
+STATE: X10=Room D@v3,X11=Room E@v6,X12=Room C@v1
+ORDER_A_THEN_F: MQ-01=SIMULATED_APPLY,MQ-08=HOLD_STALE_VERSION X10=Room D@v3
+ORDER_F_THEN_A: MQ-08=SIMULATED_APPLY,MQ-01=HOLD_STALE_VERSION X10=Room B@v3
+~~~
+
+#### Interpreting the eight receipts
+
+- **MQ-01:** Approved under the artificial flag; X10 has expected version 2, so the local simulation applies its change to Room D and increments the version to 3. This is not a real booking confirmation.
+- **MQ-02:** Same operation key and same signature as the recorded simulated application MQ-01. Preserve this second receipt, but do not apply the business effect a second time in the fixture.
+- **MQ-03:** Requests X11 version 4, while the supplied current version is 5. The request is stale even though the approved flag is true; approval does not bypass the version requirement.
+- **MQ-04:** Holds a request for X12 because approval is false. The code does not consider the operation's desired value a valid target for the business owner.
+- **MQ-05:** Refers to absent X99. The code cannot infer whether X99 was deleted, misspelled or outside the selected source frame.
+- **MQ-06:** Reuses KEY-A but requests a different room than MQ-01. This is a **key conflict**, not an idempotent retry. Never silently overwrite the key's prior meaning.
+- **MQ-07:** Uses a distinct approved key with the matching X11 version 5; the local simulation changes its value once and increments version to 6.
+- **MQ-08:** Expects X10 version 2, but MQ-01 already advanced that object to version 3 in the simulated sequence. Hold this stale request for owner review.
+
+The final line is a state summary **inside the classroom copy only**. Neither the original BASE dictionary nor a real system has been changed. A successful status here means that the simplified sequential rules permitted the fictional operation, not that it was truly authorized or durable.
+
+#### Sensitivity test: processing order is a business decision
+
+The two ORDER scenarios are separate runs reset to the original BASE. If MQ-01 is simulated before MQ-08, X10 becomes Room D; reversing the order makes X10 become Room B. In both cases the later competing request fails the version precondition.
+
+This is not permission to select whichever result the operator prefers. It demonstrates that the order of two otherwise individually valid operations can change the accepted business outcome. A real service owner would need a documented ordering, priority or conflict rule based on approved request times, rights and current availability, together with reliable evidence that those inputs mean what the team assumes.
+
+A naive bulk replay that simply processes whichever file happens to appear first may therefore violate business intent. If the proper ordering cannot be determined, hold the competing requests and obtain an accountable decision rather than forcing an arbitrary sequence.
+
+#### Limits and negative controls
+
+The program is **not a production replay engine**. It has no independent source authentication, event-clock validation, durable key store, atomic database transaction, concurrent worker, crash recovery, queue lease, capacity check, patron notification or audit trail. The `approved` Boolean is an invented condition supplied by the exercise, not an approval receipt. Reversing two records is a sensitivity comparison, not a historical discovery.
+
+A real process would need to check all those properties through the application's approved service design and owners, and run any test only in an authorized isolated environment. Even a database transaction that applies once needs a source of truth for prior effects and an audit record if the acknowledgement is lost.
+
+**Submission:** Before consulting the worked result, provide a table with the eight receipt statuses and reasons, identify the two requests whose order changes the result, and propose one owner-approved rule that would make their sequencing defensible. Explain why the two simulated changes are not a safe plan for Branch P's unnamed pending requests. A full-credit answer must preserve duplicate receipts, hold ambiguous actions, mention version/authorization limits and avoid asserting a live booking change.
 
 ### Chapter 3 reconciliation lab — worked result
 
@@ -3353,6 +3640,10 @@ The model earns full credit only if the learner's own six artifacts preserve the
 - **Residual risk:** uncertainty or exposure remaining after an action has reduced some harm.
 - **Rollback trigger:** an observable condition for reversing a service change or returning to restricted mode.
 
+- **Idempotency key:** an application-defined identifier for a logical operation; a repeated key requires a documented signature and prior-effect check before treating it as a retry.
+- **Expected version:** the business-object state a queued request assumed; a mismatch requires review rather than a blind overwrite.
+- **Queue disposition:** the documented result or hold condition for each original manual receipt, with an accountable owner.
+
 ## Chapter 4 glossary
 
 - **After-action report:** a documented account of exercise scope, observations, limits and proposed improvements; a model classroom report is not an operational incident finding.
@@ -3374,5 +3665,7 @@ The model earns full credit only if the learner's own six artifacts preserve the
 7. NIST, [SP 800-84, *Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities*](https://csrc.nist.gov/pubs/sp/800/84/final), September 2006. Used for the Chapter 4 design, conduct and evaluation of a tabletop exercise.
 8. British Library, [*Learning Lessons from the Cyber-Attack: British Library Cyber Incident Review*](https://www.bl.uk/files/v5dwkion/production/99206a2d1e9f07b35712b78f7d75fbb09560c08d.pdf/british-library-cyber-incident-review-8-march-2024.pdf?dl=), 8 March 2024. Primary institutional account used for the separate real-world source-reading activity in Chapter 3. Its text and findings are cited, not copied or relicensed.
 9. NIST, [SP 800-92, *Guide to Computer Security Log Management*](https://csrc.nist.gov/pubs/sp/800/92/final), September 2006. Background on log-management processes for Chapter 2. Its age and high-level scope are stated beside the original delayed-arrival exercise; it does not prescribe the fictional fixture or its query algorithm.
+
+10. IETF, [RFC 9110 §9.2.2, *HTTP Semantics: Idempotent Methods*](https://www.rfc-editor.org/rfc/rfc9110.html#section-9.2.2), June 2022. Used only to distinguish HTTP method retry semantics from this book's fictional application-level operation keys; it does not guarantee exactly-once booking effects.
 
 All **Harbor Library** names, accounts, bookings, logs and times are invented for instruction. The **British Library** case is a separately cited real incident. Its reported facts do not describe or validate the fictional Harbor Library scenario.
