@@ -27,7 +27,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 ### Chapter 01 — Advanced research integrity and methods
 
-**Stage 1; 75 planned A4 pages; 7 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 75 planned A4 pages; 7 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-01)
 
 **Teaching purpose and relevance:** Establish independent standards for originality, ethics, provenance and robust inference.
 
@@ -37,17 +37,17 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A proposed study using sensitive incident records and a public benchmark.
 
-**Practice and exercises:** Design a lawful, privacy-preserving research protocol and a reproducibility plan. The planned allocation is 7 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Design a lawful, privacy-preserving research protocol and a reproducibility plan. The planned allocation is 7 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on the entry knowledge and prepares Chapter 02. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 01 of 08 (outline):** [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (plan) →](PLAN.md#ch-02)
+**Continue studying — chapter 01 of 08 (outline):** [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (draft) →](MANUSCRIPT.md#ch-02)
 
 <a id="ch-02"></a>
 
 ### Chapter 02 — Research frontier in incident response systems
 
-**Stage 1; 75 planned A4 pages; 7 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 75 planned A4 pages; 7 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-02)
 
 **Teaching purpose and relevance:** Identify a genuine open question by critically synthesizing the strongest available work.
 
@@ -57,17 +57,17 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** Several primary studies of decision support during incident triage.
 
-**Practice and exercises:** Build a literature map and state a falsifiable gap rather than a broad topic. The planned allocation is 7 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Build a literature map and state a falsifiable gap rather than a broad topic. The planned allocation is 7 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 01 and prepares Chapter 03. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 02 of 08 (outline):** [← Chapter 01 (plan)](PLAN.md#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (plan) →](PLAN.md#ch-03)
+**Continue studying — chapter 02 of 08 (outline):** [← Chapter 01 (draft)](MANUSCRIPT.md#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (draft) →](MANUSCRIPT.md#ch-03)
 
 <a id="ch-03"></a>
 
 ### Chapter 03 — Original response-science contribution proposal
 
-**Stage 2; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 75 planned A4 pages; 6 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-03)
 
 **Teaching purpose and relevance:** Specify a contribution that could change understanding or practice and define what would refute it.
 
@@ -77,17 +77,17 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A proposed method for improving incident handoffs under missing telemetry.
 
-**Practice and exercises:** Write a proposal with alternative explanations and predeclared failure conditions. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Write a proposal with alternative explanations and predeclared failure conditions. The planned allocation is 6 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 02 and prepares Chapter 04. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 03 of 08 (outline):** [← Chapter 02 (plan)](PLAN.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (plan) →](PLAN.md#ch-04)
+**Continue studying — chapter 03 of 08 (outline):** [← Chapter 02 (draft)](MANUSCRIPT.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (draft) →](MANUSCRIPT.md#ch-04)
 
 <a id="ch-04"></a>
 
 ### Chapter 04 — Replication of baselines and pilot protocol
 
-**Stage 2; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 75 planned A4 pages; 6 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-04)
 
 **Teaching purpose and relevance:** Verify existing baselines before claiming improvement and test whether the study procedure is viable.
 
@@ -97,17 +97,17 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A synthetic benchmark whose published baseline cannot initially be reproduced.
 
-**Practice and exercises:** Document the discrepancy, correct the protocol and run a bounded pilot. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Document the discrepancy, correct the protocol and run a bounded pilot. The planned allocation is 6 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 03 and prepares Chapter 05. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 04 of 08 (outline):** [← Chapter 03 (plan)](PLAN.md#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 (plan) →](PLAN.md#ch-05)
+**Continue studying — chapter 04 of 08 (outline):** [← Chapter 03 (draft)](MANUSCRIPT.md#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 (draft) →](MANUSCRIPT.md#ch-05)
 
 <a id="ch-05"></a>
 
 ### Chapter 05 — Main study of incident decision quality
 
-**Stage 3; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 75 planned A4 pages; 6 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-05)
 
 **Teaching purpose and relevance:** Execute an ethically reviewed study that measures the proposed contribution against credible alternatives.
 
@@ -117,17 +117,17 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** Simulated incident cases scored by independent responders under two workflows.
 
-**Practice and exercises:** Run the protocol, preserve raw decisions and analyze both improvements and harms. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Run the protocol, preserve raw decisions and analyze both improvements and harms. The planned allocation is 6 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 04 and prepares Chapter 06. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 05 of 08 (outline):** [← Chapter 04 (plan)](PLAN.md#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 (plan) →](PLAN.md#ch-06)
+**Continue studying — chapter 05 of 08 (outline):** [← Chapter 04 (draft)](MANUSCRIPT.md#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 (draft) →](MANUSCRIPT.md#ch-06)
 
 <a id="ch-06"></a>
 
 ### Chapter 06 — Independent validation across contexts
 
-**Stage 3; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 75 planned A4 pages; 6 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-06)
 
 **Teaching purpose and relevance:** Test whether the result survives different cases, organizations or operating constraints.
 
@@ -137,17 +137,17 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A second synthetic service context with different staffing and telemetry quality.
 
-**Practice and exercises:** Repeat key tests and explain where the proposed method stops working. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Repeat key tests and explain where the proposed method stops working. The planned allocation is 6 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 05 and prepares Chapter 07. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 06 of 08 (outline):** [← Chapter 05 (plan)](PLAN.md#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 (plan) →](PLAN.md#ch-07)
+**Continue studying — chapter 06 of 08 (outline):** [← Chapter 05 (draft)](MANUSCRIPT.md#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 (draft) →](MANUSCRIPT.md#ch-07)
 
 <a id="ch-07"></a>
 
 ### Chapter 07 — Peer critique and revision of claims
 
-**Stage 4; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 75 planned A4 pages; 6 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-07)
 
 **Teaching purpose and relevance:** Use independent critique to narrow claims and strengthen evidence before dissemination.
 
@@ -157,17 +157,17 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** External reviewers challenge the main study's outcome definition.
 
-**Practice and exercises:** Reproduce contested analyses and revise the contribution statement accordingly. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Reproduce contested analyses and revise the contribution statement accordingly. The planned allocation is 6 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 06 and prepares Chapter 08. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 07 of 08 (outline):** [← Chapter 06 (plan)](PLAN.md#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 (plan) →](PLAN.md#ch-08)
+**Continue studying — chapter 07 of 08 (outline):** [← Chapter 06 (draft)](MANUSCRIPT.md#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 (draft) →](MANUSCRIPT.md#ch-08)
 
 <a id="ch-08"></a>
 
 ### Chapter 08 — Thesis synthesis and reproducibility archive
 
-**Stage 4; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
+**Stage 4; 75 planned A4 pages; 6 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-08)
 
 **Teaching purpose and relevance:** Integrate the contribution, its failures and its transferable artifacts into a defensible research record.
 
@@ -177,11 +177,11 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** The study protocols, synthetic datasets, analysis code and reviewer exchanges.
 
-**Practice and exercises:** Assemble the archive, defend the thesis and document permissions and remaining gaps. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Assemble the archive, defend the thesis and document permissions and remaining gaps. The planned allocation is 6 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 07 and prepares the worked-answer appendix and final assessment. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 08 of 08 (outline):** [← Chapter 07 (plan)](PLAN.md#ch-07) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+**Continue studying — chapter 08 of 08 (outline):** [← Chapter 07 (draft)](MANUSCRIPT.md#ch-07) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 ## Practical and assessment plan
 
