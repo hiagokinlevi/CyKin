@@ -2052,19 +2052,19 @@ You will (1) refine the design after implementation; (2) address remaining gaps;
 
 ### 35.1 Reviewing what was built
 
-Halfway through implementation, Kofi runs a second studio with council engineers, his supervisor and two peers. Unlike the first studio, which reviewed plans, this one reviews what was actually built. He presents the deployed zone model, the measured reduction in reachable zone pairs, the unexpected denies found and fixed, and the list of host-level exceptions that accumulated during migration. Comparing the built system with the design shows where reality diverged, which is where the most useful lessons lie.
+Halfway through implementation, Kofi runs a second design studio with the council engineers, Dr Vasquez and two peers. The first studio reviewed plans; this one reviews what was actually built. He presents the deployed zone model, the measured fall in reachable zone pairs, the unexpected denies found and fixed, and the host-level exceptions that accumulated during migration. Comparing the built system with the design shows where reality diverged from intention, and those divergences are where the most useful lessons lie, because each one is either a design flaw, an implementation shortcut or a need nobody captured.
 
 ### 35.2 Gaps raised
 
-Participants raise three gaps. Staff in one office share a printer with guests in a reception area, which currently sits in the staff zone and is reachable from guest through a temporary rule added during migration. Wireless guest access at two offices still uses an older captive portal that shares hardware with staff Wi-Fi. And the management zone has grown to include a monitoring server that also needs internet access for updates, blurring its boundary.
+Participants raise three gaps. First, staff at one office share a printer with guests in reception; the printer sits in the staff zone and is reachable from guest through a temporary rule added during migration. Second, guest wireless at two offices still uses an older captive portal on the same hardware as staff wireless, so a fault or misconfiguration could join them. Third, the management zone now contains a monitoring server that also needs internet access for updates, which blurs the boundary that made management the most tightly controlled zone. Each gap is small but undermines a requirement.
 
 ### 35.3 Responses
 
-Kofi proposes a dedicated printer reachable from guest only for printing, with the temporary rule removed; replacement of the older guest Wi-Fi hardware following NIST SP 800-153 guidance on separating wireless networks; and moving the monitoring server's update traffic through the staff web filter rather than giving the management zone direct internet access. Each response is costed and scheduled, and the temporary rule is removed within a week.
+Kofi answers each gap with a specific change. A dedicated printer, reachable from guest only on the printing service, replaces the shared one, and the temporary rule is removed. The older guest wireless hardware is replaced so guest and staff networks are separated in the way NIST SP 800-153 recommends for wireless networks. The monitoring server fetches updates through the staff web filter instead of receiving direct internet access, so the management zone keeps its rule of no outbound connections. Every response is costed, given an owner and scheduled, and the temporary rule is removed within a week.
 
 ### 35.4 Presenting to stakeholders
 
-The studio ends with a short presentation to council managers. Kofi shows the reduction in reachable zone pairs, the incident scenario now blocked, and the remaining work with dates. Managers ask about disruption; he reports two short interruptions across six migrations, both resolved within the change window.
+The studio ends with a twenty-minute presentation to council managers, who care about service and cost rather than rule syntax. Kofi shows three things: the fall in reachable zone pairs, the original guest malware scenario now blocked, and the remaining work with dates and owners. Managers ask mainly about disruption, and he reports two short interruptions across six migrations, both resolved within the agreed change window. Translating technical results into service terms keeps managers' support, which matters because the remaining work, such as replacing wireless hardware, needs their budget approval.
 
 ### Worked example
 
@@ -2100,7 +2100,7 @@ You will (1) measure latency added by controls; (2) check capacity under load; (
 
 ### 36.1 Latency budget
 
-The council's phone system and file access are sensitive to delay. Kofi sets a budget: the new firewall hop must add less than one millisecond at the main office under normal load. The budget is derived from the phone provider's guidance on end-to-end delay and the measured baseline from chapter 3, leaving most of the allowance for existing equipment and distance.
+The council's phone system and file access are sensitive to delay, so the new firewall hop must not noticeably slow them. Kofi sets a budget: the firewall must add less than one millisecond at the main office under normal load. He derives this from the phone provider's guidance on acceptable end-to-end delay and the baseline measured early in the project, reserving most of the allowance for existing switches, links and distance between offices. A written budget turns a vague worry about slowness into a number that can be measured, tested and either met or missed.
 
 ### Lab — Added latency
 
@@ -2120,15 +2120,15 @@ n 20 median 0.250 p95 0.918 max 0.950 ms; budget 1.0 ms met: True
 
 ### 36.2 Reading the measurement
 
-Twenty synthetic samples give a median of 0.25 milliseconds and a 95th percentile of about 0.92, with a single sample at 0.95. The budget is met, but the tail is close to it. Kofi investigates the slow sample and links it to a burst of new connections during a backup start, consistent with the slow path behaviour described in chapter 8. He recommends staggering backup start times to avoid bursts.
+The lab reports twenty synthetic samples with a median of 0.25 milliseconds, a 95th percentile of about 0.92 and a maximum of 0.95. The budget is met, but the tail sits close to it, so Kofi looks at the slowest sample rather than stopping at the median. He links it to a burst of new connections when the nightly backup starts, which matches the slow-path behaviour for connection set-up described earlier in the course. He recommends staggering backup start times across servers, a cheap change that reduces bursts without altering any security rule.
 
 ### 36.3 Capacity under load
 
-Throughput tests in the lab with inspection features enabled show the main firewall pair can carry about twice the council's peak traffic, while branch firewalls have about three times their peak. State table usage at peak is under a third of capacity. These margins support five years of growth at the rates estimated in chapter 6.
+Latency at normal load says little about busy periods. Kofi runs throughput tests in the lab with all inspection features enabled, since vendor figures often assume features are switched off. The main firewall pair carries about twice the council's measured peak traffic, and branch firewalls about three times their local peak. The connection-state table stays below a third of capacity at peak. With the growth rates estimated in the planning chapters, these margins cover roughly five years, which matches the expected replacement cycle and avoids buying larger equipment than the council needs.
 
 ### 36.4 Scaling the policy
 
-As the council grows, the number of rules will grow too. Kofi keeps the policy template-based, so adding an office adds local subnet values rather than new rules, and sets a review trigger when the rule count rises by twenty percent, reflecting the link between rule-base size and errors.
+Traffic is not the only thing that grows; the policy grows too, and larger rule bases tend to contain more errors, as Wool's study of firewall configurations found. Kofi keeps the policy template-based, so adding an office means adding its local subnet values rather than writing new rules. He also sets a review trigger: when the total rule count rises by twenty percent from the approved baseline, the team reviews the whole policy for unused, overlapping or overly broad rules. This keeps growth deliberate rather than letting the rule base drift into the complexity that caused trouble before.
 
 ### Worked example
 
@@ -2164,19 +2164,19 @@ You will (1) define operational routines; (2) manage changes; (3) monitor health
 
 ### 37.1 Daily and weekly routines
 
-The council's engineers follow a short daily check: tunnel status, firewall pair health and any alerts overnight. Weekly, they review unexpected denies by zone pair, certificate expiry within sixty days and configuration drift reports. Monthly, they review rule usage and remove unused rules after confirming with owners. Each routine has a checklist, an expected time and a place to record results.
+Operations depend on small routines done reliably. Each morning, an engineer checks tunnel status, firewall pair health and overnight alerts, which takes about ten minutes. Weekly, the team reviews unexpected denies by zone pair, certificates expiring within sixty days and configuration drift reports from the comparison script. Monthly, they review rule usage and remove unused rules after confirming with each rule's owner. Every routine has a written checklist, an expected duration and a place to record results, so anyone can see whether checks were done and what they found.
 
 ### 37.2 Change management
 
-Policy changes follow the process designed earlier: request with reason and owner, review against needed flows, lab test, scheduled deployment and verification. Emergency changes are allowed but recorded within a working day and reviewed at the next weekly meeting. Kofi tracks change failure rate, the share of changes that cause an incident or rollback, as an operational health measure.
+Policy changes follow the process designed earlier: a request stating the reason and owner, review against the needed-flows list, a lab test against the regression suite, a scheduled deployment and verification afterwards. Emergency changes are permitted when a service is down, but they must be recorded within one working day and reviewed at the next weekly meeting, so urgency never becomes a permanent bypass. Kofi tracks the change failure rate, meaning the share of changes that cause an incident or rollback, because it shows whether the process is actually preventing mistakes.
 
 ### 37.3 Monitoring health
 
-Dashboards show tunnel availability, deny trends, firewall resource use and log arrival rate. A drop in log arrival is itself alerted, because a silent logging failure would blind monitoring without anyone noticing.
+Dashboards show tunnel availability, deny trends by zone pair, firewall processor and memory use, and the rate at which logs arrive in the central store. That last measure is easy to overlook but important. If a firewall stops sending logs, the dashboards simply go quiet, which looks exactly like a calm network. Kofi therefore alerts when log arrival from any device drops well below its normal rate. A silent logging failure would blind every other control that depends on logs, so monitoring the monitoring is treated as a core task rather than an extra.
 
 ### 37.4 On-call and escalation
 
-Out of hours, alerts for tunnel loss at critical sites or main firewall failure page the on-call engineer. Other alerts wait for the next working day. This keeps paging rare enough that engineers take each page seriously.
+Out of hours, only two kinds of alert page the on-call engineer: loss of tunnels at offices that run critical services, and failure of the main firewall pair. Everything else waits for the next working day, when it is handled through the normal routines. Kofi keeps the paging list short deliberately, because engineers who are woken often by alerts that turn out to be harmless learn to ignore pages, and an ignored page during a real outage is worse than no page at all. The list is reviewed quarterly against actual pages received.
 
 ### Learning from incidents in operation
 
@@ -2216,7 +2216,7 @@ You will (1) trace requirements to evidence; (2) identify gaps; (3) validate wit
 
 ### 38.1 Traceability
 
-Kofi links each requirement to tests and their results, building on the traceability approach from chapter 16. The table shows which requirements have passing evidence, which have failing or pending tests and which have none.
+Validation begins with traceability: linking every requirement to the tests that check it and to their latest results. Kofi builds on the table started during requirements work. For each of R1 to R8, the table lists the test identifiers, whether each test passed, failed or is pending, and the date and configuration version of the result. Reading across a row shows how well one requirement is supported; scanning the whole table shows which requirements have no evidence at all. The lab that follows builds this table from synthetic records so the gaps can be counted.
 
 ### Lab — Requirement traceability
 
@@ -2248,15 +2248,15 @@ covered 6 of 8
 
 ### 38.2 Reading the trace
 
-Six of eight requirements have tests; five pass. R6, failover within sixty seconds, is pending because the production failover test has not yet been scheduled. R5 on log retention and R8 on daily configuration backups have no tests. These gaps are easy to miss because they are operational rather than security behaviour, which is exactly why the trace is valuable.
+The lab reports that six of eight requirements have tests and five of those pass. R6, failover within sixty seconds, is pending because the production failover test has not yet been scheduled. R5, keeping logs for ninety days, and R8, daily configuration backup, have no tests at all. These gaps are easy to miss because they describe operational behaviour rather than traffic filtering, and test design naturally focuses on filtering. That is exactly why a trace is valuable: it checks coverage against the list of requirements rather than against what engineers happened to think of testing.
 
 ### 38.3 Closing gaps
 
-Kofi adds an inspection test for R5, checking the oldest record in the log store is at least ninety days old, and a test for R8, restoring yesterday's configuration backup to the lab firewall. Both pass. The production failover test is scheduled with the council and completes in forty-two seconds.
+Kofi adds two tests. For R5, an inspection test checks that the oldest record in the central log store is at least ninety days old and that the deletion job removes nothing younger. For R8, a test restores the previous day's configuration backup onto the lab firewall and confirms that it loads and passes the regression suite. Both pass. The production failover test for R6 is then scheduled with the council in an approved window and completes in forty-two seconds, inside the limit. Every requirement now has passing evidence with a date.
 
 ### 38.4 User validation
 
-Validation asks whether the system meets real needs. Office managers report on a short form whether any work was blocked after migration. Two issues are raised, both already fixed through the deny analysis, which confirms the requirements captured the needs well.
+Passing tests shows the requirements are met, but not that the requirements captured what people actually need. To check that, Kofi asks each office manager to complete a short form after migration: was any work blocked, slowed or made harder, and how was it resolved? Two issues are reported, a scanner that could not send to a shared folder and a supplier portal that failed, and both had already been found and fixed through deny analysis. This agreement between user reports and technical monitoring gives confidence that nothing important was missed.
 
 ### Verification and validation compared
 
@@ -2296,19 +2296,19 @@ You will (1) design for long-term maintenance; (2) document thoroughly; (3) redu
 
 ### 39.1 Documentation set
 
-Kofi leaves a documentation set: architecture overview, zone model, needed-flows list, policy templates, runbooks, test suite and decision records. Each document names an owner and a review date, and all are stored in version control with the configurations.
+Kofi leaves the council a documentation set designed for the engineers who will run the network after he leaves. It contains an architecture overview, the zone model, the needed-flows list, the policy templates and per-site files, operational runbooks, the regression test suite and the decision records. Each document names an owner and a review date, so responsibility is clear and stale documents are noticed. Everything is stored in version control alongside the configurations, which means documentation and configuration change together and their history can be compared when something goes wrong.
 
 ### 39.2 Simplicity over cleverness
 
-Where Kofi had a choice between a clever configuration and a plain one, he chose plain. Branch policies come from one template; naming conventions are consistent; exceptions are listed in one place. These choices make the network understandable to an engineer who joins in three years.
+Throughout the design, Kofi faced choices between clever configurations and plain ones, and he chose plain. Every branch policy comes from one template; object names follow one convention that states zone, role and site; exceptions live in a single listed file rather than scattered across rules. A clever arrangement might save a few rules, but it costs understanding, and an engineer who misunderstands a configuration is likely to break it. The test Kofi applies is whether someone joining the team in three years could explain each rule after reading the documentation for an afternoon.
 
 ### 39.3 Knowledge transfer
 
-The two council engineers lead the last three office migrations themselves, with Kofi observing. This builds confidence and exposes gaps in the documentation, which are fixed as found.
+Documents alone rarely transfer knowledge. For the last three office migrations, the two council engineers lead the work themselves while Kofi observes and answers questions only when asked. This builds their confidence and, just as importantly, exposes places where the documentation assumed knowledge they did not have. Each gap found, such as a missing step for loading certificates, is corrected immediately in the runbook. By the end, the engineers have carried out complete migrations without help, which is stronger evidence of maintainability than any amount of written material.
 
 ### 39.4 Vendor and lifecycle
 
-Firmware update schedules, support end dates and the spare equipment plan are documented, so maintenance continues after the project and replacement can be budgeted ahead of end of support.
+Equipment has a life cycle that outlasts any project. Kofi records the firmware update schedule for each device model, the vendor's announced end-of-support dates, the support contract terms and the spare equipment plan. He adds the end-of-support dates to the council's budget calendar, so replacement can be funded a year ahead rather than discovered when security updates stop. Firmware updates follow the change process and are tested in the lab first. Without this record, maintenance would depend on someone remembering vendor announcements, which is not a reliable control.
 
 ### Decision records
 
@@ -2348,19 +2348,19 @@ You will (1) run a full regression and failure suite; (2) verify against the inc
 
 ### 40.1 Full regression
 
-At the end of implementation, Kofi runs the complete lab regression suite against the final configurations of every office, generated from the templates. All positive, negative and boundary tests pass.
+At the end of implementation, Kofi runs the complete regression suite in the lab against final configurations generated from the templates for every office. The suite contains positive tests showing permitted flows work, negative tests showing forbidden flows fail, and boundary tests on ports and addresses next to permitted ones. Running it against every office, not just a sample, confirms that per-site values have not introduced site-specific errors. All tests pass, and the results are recorded with the configuration versions used, so the evidence can be reproduced later.
 
 ### 40.2 Incident scenario
 
-He reconstructs the guest laptop incident in the lab: a test machine on guest Wi-Fi attempts the same file-sharing connections. Every attempt is denied, logged and, because the attempts exceed the deny-spike threshold, an alert reaches the test on-call address within two minutes. The scenario that went unnoticed for hours in the old network is now blocked and visible.
+He then reconstructs the incident that started the project, entirely in the lab with synthetic devices: a test machine on the guest network attempts the same kinds of file-sharing connections towards internal zones that the infected laptop made. Every attempt is denied and logged, and because the number of attempts exceeds the deny-spike threshold, an alert reaches the test on-call address within two minutes. In the old flat network, the same behaviour went unnoticed for hours. The comparison is the clearest single piece of evidence that the project addressed its original problem.
 
 ### 40.3 Failure tests
 
-Failure tests disable a tunnel, power off the active main firewall and expire a test certificate. Failover works within requirements, and the certificate expiry is flagged sixty days ahead by monitoring.
+Security that fails during an outage is not enough, so the lab also tests failures. Kofi disables one tunnel at a branch and confirms traffic moves to the second within the requirement. He powers off the active main firewall and confirms the standby takes over with existing connections preserved. He issues a test certificate with a short life and confirms that monitoring flags it sixty days before expiry. Each test has a defined expected result written before it runs, so the outcome is judged against a prediction rather than interpreted afterwards.
 
 ### 40.4 Evidence
 
-Each test result is recorded with configuration versions and stored in the evidence dossier.
+Each test result is recorded with the date, the tester, the configuration and template versions, the expected result and the actual result. Failed results are kept alongside the later passing ones, with a note of the fix. All records go into the evidence dossier, indexed by requirement. Recording evidence this carefully may seem excessive for a lab, but it allows an examiner or auditor to see exactly what was tested against which configuration, and it allows the council to rerun the same tests after future changes and compare results directly.
 
 ### Regression after every change
 
@@ -2404,19 +2404,19 @@ You will (1) identify inefficiencies; (2) optimise policy and logging; (3) balan
 
 ### 41.1 Policy optimisation
 
-Usage data show three rules unused for ninety days and two group objects with stale members. After owner confirmation, they are removed, reducing the policy by about eight percent without changing behaviour, which the regression suite confirms.
+Once the network is stable, Kofi looks for waste. Rule usage data show three rules unused for ninety days and two address groups containing devices that no longer exist. He asks each rule owner to confirm the rules are no longer needed, then removes them through the normal change process, cutting the policy by about eight percent. Because removing a rule can break a rarely used flow, the regression suite is run before and after, and it confirms behaviour is unchanged. A smaller policy is easier to review and less likely to hide mistakes.
 
 ### 41.2 Logging optimisation
 
-Logging allowed flows at full detail on busy links creates more data than analysis uses. Kofi switches to flow summaries for allowed traffic while keeping full records for denies and management access. Storage drops by about forty percent while all investigations from the period remain answerable.
+Full logging of every allowed connection on busy links produces far more data than the team ever analyses, and storage costs money. Kofi switches allowed traffic to periodic flow summaries, which record source, destination, service and volume, while keeping full records for every deny and every management connection. Storage falls by about forty percent. Before making the change, he lists the questions past investigations needed to answer and checks that all of them can still be answered from summaries. Optimisation is accepted only if no needed evidence is lost.
 
 ### 41.3 Alert optimisation
 
-The deny-spike threshold, set conservatively, fired eleven times in a month, mostly from guest devices. Grouping by source and raising the threshold for the guest zone reduces alerts to three, all meaningful.
+The deny-spike alert was set conservatively at launch and fired eleven times in its first month, mostly because of guest devices repeatedly trying to reach printers or file shares they had remembered from other networks. These alerts were real but rarely important. Kofi groups denies by source device before counting and sets a higher threshold for the guest zone than for staff or servers. Alerts drop to three a month, all of which warranted a look. Fewer, more meaningful alerts mean engineers take each one seriously rather than dismissing them.
 
 ### 41.4 Cost
 
-Optimisation avoids buying additional log storage this year, saving a planned expense.
+Optimisation has a direct financial effect. The council had planned to buy additional log storage during the year because of growth projected from the launch configuration. After the logging change, current storage covers the required ninety days with room to spare, and the purchase is cancelled. Kofi records the saving and its cause in the project report, so managers can see that operational care pays off. He also notes the time engineers save on alert handling, since staff time is usually the council's largest and most constrained cost.
 
 ### Optimising for people as well as machines
 
@@ -2460,19 +2460,19 @@ You will (1) frame a research question from the project; (2) analyse data; (3) r
 
 ### 42.1 Question
 
-Kofi asks whether unexpected denies after migration predict later service complaints, which would let engineers prioritise investigation.
+Kofi frames a research question that comes directly from operating the network: do unexpected denies in the first weeks after an office migrates predict later service complaints from that office? If they do, engineers could use deny counts as an early warning and prioritise which offices to visit or call. A good applied question is narrow enough to answer with available data, useful to the partner if answered either way, and stated before the data are examined, so that the analysis tests the question rather than searching for any pattern that happens to appear.
 
 ### 42.2 Data
 
-He uses pseudonymised weekly deny counts and service desk tickets across eight migrations.
+The data are weekly counts of unexpected denies per office and service desk tickets mentioning network access, both covering eight migrations. Before analysis, office names and any staff identifiers are replaced with codes, and only counts leave the council's systems, which the information governance officer approves. Kofi also records each office's staff numbers, migration date and season, because these may explain differences. Using data the council already collects for operations avoids new monitoring of staff, which keeps the study proportionate and simplifies its ethical review.
 
 ### 42.3 Analysis
 
-Offices with more unexpected denies in week one had more tickets in weeks one and two, a positive association across eight offices. With so few offices, he reports it as suggestive only.
+Kofi plots first-week unexpected denies against tickets in the first two weeks for each office. Offices with more denies tend to have more tickets, a positive association. Because larger offices could simply have more of both, he repeats the comparison per hundred staff, and the pattern weakens but remains. With only eight offices, a single unusual office could create or hide the pattern, so he reports the direction and size of the association without a strong statistical claim, describing it as suggestive and worth testing on more data rather than established.
 
 ### 42.4 Literature
 
-The finding fits the broader observation from Wool (2004) and later work that configuration complexity relates to errors, and Sommer and Paxson's caution about generalising from limited operational data.
+He places the finding in context. Wool's 2004 study of firewall rule sets showed that configuration errors are common and grow with complexity, which supports the idea that newly introduced policies will contain gaps that surface as unexpected denies. Sommer and Paxson's 2010 paper on machine learning for intrusion detection warns how hard it is to generalise from limited operational data, which supports his caution. Linking a small local result to established work shows readers where it fits and stops it from being presented as more novel or more general than it is.
 
 ### Method and threats to validity
 
@@ -2516,19 +2516,19 @@ You will (1) work within public-sector governance; (2) engage stakeholders; (3) 
 
 ### 43.1 Governance
 
-Council changes go through a change advisory board and information governance review. Kofi learns to prepare short papers for each.
+Councils change their systems through formal governance. Significant network changes go to a change advisory board, which checks risk, timing and rollback plans, and anything touching personal data goes to information governance review. Kofi learns to write short papers for each: a page stating what will change, why, the risk of changing and of not changing, the rollback plan and who is responsible. Boards meet monthly, so a missed submission costs weeks. Treating governance as part of the engineering plan, rather than an obstacle, keeps the project on schedule.
 
 ### 43.2 Procurement
 
-Firewalls and second links are bought through public procurement frameworks, which take weeks; the schedule allows for this.
+Public bodies must buy equipment and services through procurement rules designed to ensure fair competition and value for money. The council's firewalls and second network links are bought through existing public-sector framework agreements, which are faster than a full tender but still take several weeks for quotes, approval and ordering. Kofi builds these lead times into the schedule and orders long-lead items such as links early. He also writes clear technical requirements for the purchase, so the equipment bought matches the design rather than whatever is cheapest.
 
 ### 43.3 Stakeholders
 
-Office managers, unions and the information governance officer are consulted on monitoring, ensuring logs are used only for security.
+More people are affected by the network than the IT team. Office managers care about disruption; staff representatives and unions care about whether logging will be used to monitor individuals; the information governance officer cares about lawful handling of personal data. Kofi meets each group early, explains what logs contain and that they are used for security and troubleshooting, not performance management, and records that commitment in the logging notice. Early consultation prevents objections late in the project, when they would be far more disruptive.
 
 ### 43.4 Public accountability
 
-Decisions are recorded because councils are publicly accountable for spending and data handling.
+A council spends public money and holds residents' data, so its decisions may be examined by auditors, elected members or the public through information requests. Kofi therefore records decisions, the options considered, costs and approvals in a form that a non-specialist could follow. This differs from many private-sector projects, where informal agreements may be enough. Good records also protect staff: if a decision is later questioned, the record shows it was reasoned, approved by the right body and based on the information available at the time.
 
 ### Data protection in network logs
 
@@ -2572,19 +2572,19 @@ You will (1) define the capstone scope; (2) plan evaluation; (3) set success cri
 
 ### 44.1 Scope
 
-The capstone covers the full segmentation and VPN project across eight offices.
+The capstone covers the whole segmentation and VPN project across all eight offices: the zone model, office firewalls, IKEv2 tunnels with certificates, central logging, monitoring and the operational processes that keep them working. It excludes endpoint protection and application security, which belong to other council teams, though Kofi notes where they interact, such as host firewalls on servers. Stating scope clearly protects the evaluation from being judged on things the project never aimed to change, and stops the project from quietly expanding beyond what can be finished and measured.
 
 ### 44.2 Evaluation plan
 
-Measures: reachable zone pairs, unexpected denies, VPN availability, added latency, change failure rate and requirement coverage.
+Kofi chooses six measures: reachable zone pairs, unexpected denies per week, VPN availability, latency added by the firewalls, change failure rate and requirement coverage. For each, the plan states how it is measured, from which data, over what period and by whom. Reachable pairs come from the policy model; denies and availability from central logs; latency from lab and live measurements; change failures from the change log; coverage from the traceability table. Defining measurement in advance stops later arguments about which numbers count.
 
 ### 44.3 Criteria
 
-Success means guest isolation verified, all requirements evidenced, availability above 99.9 percent and latency within budget.
+Measures need targets that define success. Kofi sets four criteria: guest isolation verified by both lab and production tests; every requirement supported by passing evidence; VPN availability above 99.9 percent over the measurement period; and added latency within the one-millisecond budget. Each criterion is clear enough that two people would agree whether it was met. The criteria are agreed with Dr Vasquez and the council before results are collected, which prevents the temptation to adjust targets after seeing the numbers.
 
 ### 44.4 Risks
 
-Risks include procurement delays and staff availability.
+Kofi lists the risks to completing the capstone. Procurement delays could postpone second links and shorten the availability measurement. Staff availability matters because migrations need council engineers present. A serious incident elsewhere in the council could pull the team away for weeks. Each risk has a likelihood, an impact and a response: links are ordered early, migrations are scheduled around known leave, and the plan identifies which measures could still be reported if time runs short. Managing project risk is part of engineering, not separate from it.
 
 ### Linking criteria to requirements
 
@@ -2632,19 +2632,19 @@ You will (1) obtain external review; (2) respond to findings; (3) record changes
 
 ### 45.1 Reviewer
 
-An engineer from a neighbouring council reviews the design and evidence.
+Kofi asks an experienced network engineer from a neighbouring council to review the design and evidence. The reviewer has no involvement in the project and no stake in its success, which is what makes the review independent. They also understand the constraints of a small public body, such as limited staff and procurement rules, so their advice is practical. Dr Vasquez agrees the choice and the scope of the review in advance. The reviewer receives read-only lab access and the documentation, but no access to production systems.
 
 ### 45.2 Findings
 
-The reviewer notes that the jump host is a single point of failure for management and recommends a second; also that guest Wi-Fi isolation should include client isolation between guests.
+The reviewer reports two significant findings. First, all administrative access passes through a single jump host, so if it fails, engineers cannot manage firewalls without breaking the management design; that makes the jump host a single point of failure. Second, guest wireless is isolated from internal zones but guests can still reach one another, so an infected guest device could attack other guests' devices. Neither finding breaks a stated requirement, which shows the value of review: it finds weaknesses the requirements themselves did not anticipate.
 
 ### 45.3 Responses
 
-A second jump host is added; client isolation is enabled on guest Wi-Fi.
+Kofi accepts both findings. A second jump host is built at a different office, with the same controls and logging, and engineers test that either can be used to manage every firewall. Client isolation is enabled on the guest wireless network so guest devices can reach the internet but not each other. Both changes go through the normal change process, are lab tested against the regression suite, and add new tests to it so that the fixes cannot later be undone silently. The responses are small, but they close real gaps.
 
 ### 45.4 Record
 
-Findings and responses are logged in the dossier.
+Every finding, the response, the date it was closed and the evidence of closure are entered in a review log that goes into the dossier. Rejected suggestions are recorded too, with reasons. The log shows examiners that the design was tested by someone outside the project and that criticism changed it. It also gives future reviewers a starting point, so they can see what was already examined and concentrate on new areas rather than repeating the same review. Unrecorded reviews lose most of their value once the reviewer has left.
 
 ### Preparing material for a reviewer
 
@@ -2692,19 +2692,19 @@ You will (1) complete implementation; (2) measure outcomes; (3) compare with cri
 
 ### 46.1 Completion
 
-All offices are migrated and VPNs redundant at three sites.
+By the end of the capstone, all eight offices are migrated to the six-zone model behind their own firewalls, the CCTV supplier reaches cameras only through the jump hosts, and the three offices with funded second links have redundant tunnels. Kofi checks completion against the original scope rather than declaring it done when work slows: each office has a signed-off migration record, a passing regression run and an entry in the operational routines. Two minor items, a label update and a diagram correction, are listed as open with owners.
 
 ### 46.2 Measures
 
-Reachable zone pairs fell from 30 to 7; unexpected denies settled at four per week; VPN availability was 99.97 percent over three months; latency within budget; change failure rate 4 percent.
+The measured outcomes are: reachable zone pairs down from thirty to seven; unexpected denies settled at around four per week across all offices; VPN availability of 99.97 percent over three months; added latency within the one-millisecond budget in both lab and live measurements; and a change failure rate of four percent. Each figure is linked to its source data in the dossier, so a reader can check how it was produced. Reporting the measures with their sources matters more than the numbers themselves, which would be unconvincing without them.
 
 ### 46.3 Criteria comparison
 
-All criteria are met.
+Kofi compares each result against the criteria agreed before measurement. Guest isolation is verified in both the lab and production. All eight requirements have passing evidence in the traceability table. Availability of 99.97 percent exceeds the 99.9 percent target. Latency is within budget. All four criteria are met. He presents this as a simple table with the criterion, the target, the result and a link to evidence, avoiding persuasive language, so the comparison speaks for itself and examiners can verify each line independently.
 
 ### 46.4 Limitations
 
-Three months of availability data; one council.
+Meeting the criteria does not make the results universal. The availability figure covers only three months, which may not include rare events such as a long provider outage. The project involved one council, so results may differ in organisations with different sizes, suppliers or skills. Some measurements, like the incident reconstruction, were possible only in the lab. Kofi states each limitation next to the result it affects rather than in a separate section that readers might skip, which helps readers judge how far the findings can be trusted and applied elsewhere.
 
 ### Interpreting the availability figure
 
@@ -2752,19 +2752,19 @@ You will (1) run a live recovery trial; (2) measure recovery; (3) learn.
 
 ### 47.1 Trial
 
-With approval, a branch firewall is replaced from spare during a weekend window.
+To prove the recovery plan works outside the lab, Kofi and the council engineers carry out a live trial: with change board approval, they replace a working branch firewall with the spare during a weekend window when the office is closed. The trial follows the recovery runbook exactly, as if the original firewall had failed, and a second engineer watches for any step that is unclear or missing. Running a recovery for real, rather than discussing it, is the only reliable way to know how long it takes.
 
 ### 47.2 Measurement
 
-Replacement and verification take two hours fifty minutes, within the four-hour target.
+The target, set in the resilience design, is to restore service at a branch within four hours of deciding to replace its firewall. Timing starts when the old unit is disconnected and stops when the regression tests for that office pass on the new one. The trial takes two hours and fifty minutes, comfortably inside the target. Kofi also records how long the office would have been without central services, and confirms that the office's local fallback arrangements would have covered that period.
 
 ### 47.3 Issues
 
-The spare had older firmware, adding thirty minutes; quarterly updates are tightened.
+The trial finds one significant issue: the spare firewall was running firmware two versions older than production, and updating it added thirty minutes. The quarterly update of the spare had been missed during a busy period. In a real outage, those thirty minutes might matter. The team adds the spare's firmware check to the monthly routine checklist, not just the quarterly one, and adds a step to the runbook to check the firmware version first. Finding this during a planned trial is far better than finding it during a real failure.
 
 ### 47.4 Lessons
 
-The runbook is updated.
+After the trial, the team holds a short review. The runbook is updated with the firmware check, a clearer step for loading the per-site configuration and a realistic time estimate for each stage. The trial report records the timeline, the issue and the changes made, and goes into the dossier as evidence for the recovery requirement. The council agrees to repeat a recovery trial each year, rotating among engineers, so that recovery skills and spare equipment both stay ready rather than decaying between rare real failures.
 
 ### Planning the trial safely
 
@@ -2812,19 +2812,19 @@ You will (1) assemble evidence; (2) organise for examiners; (3) protect sensitiv
 
 ### 48.1 Contents
 
-Requirements, trace, test results, measurements, reviews and decision records.
+The evidence dossier gathers everything that supports the thesis claims: the requirements and their rationale, the traceability table, lab and production test results, measurements of reachability, denies, availability and latency, the independent review log, the recovery trial report and the decision records. Kofi includes failures and their fixes, not only final passing results. A dossier is different from an appendix of everything produced; each item is included because a specific claim in the thesis depends on it, and anything not supporting a claim is left out.
 
 ### 48.2 Organisation
 
-Indexed by requirement and chapter.
+Examiners have limited time, so the dossier is organised for finding things quickly. The index is arranged by requirement and by thesis chapter, so a reader checking a claim can go straight to its evidence. Every item has a short identifier used in the thesis text, such as T-R1-03 for the third test of requirement R1. Items are grouped into folders by type, and a one-page guide explains the structure. Good organisation also helps the council, which will reuse the dossier for audits long after the thesis is examined.
 
 ### 48.3 Sensitivity
 
-Real addresses and names are replaced with synthetic ones.
+Real network details could help an attacker, and real names and device identifiers are personal or confidential data. Before the dossier leaves the council, Kofi replaces internal addresses with synthetic ranges, replaces device and staff names with codes, and removes supplier account details. He keeps a mapping only on council systems, so the council can relate the sanitised dossier to real devices if needed. He checks every file, including images and log extracts, because sensitive details often hide in screenshots and examples rather than main text.
 
 ### 48.4 Approval
 
-The council approves the dossier for submission.
+The council's information governance officer and network lead review the sanitised dossier and formally approve it for release to the examiners. This approval protects the council and Kofi: nobody can later claim that sensitive information was shared without permission. The approval, with date and names, is recorded in the dossier itself. Seeking approval also catches mistakes; in this case the reviewers spot one diagram still showing a real building name, which is replaced before release. Release controls are a normal part of professional work with partner data.
 
 ### Writing evidence summaries
 
@@ -2872,19 +2872,19 @@ You will (1) write the thesis; (2) structure arguments; (3) state limits.
 
 ### 49.1 Structure
 
-Problem, requirements, design, implementation, verification, evaluation, discussion.
+The thesis follows the engineering lifecycle so readers can see how each stage led to the next: the problem and context; requirements; analysis of threats and options; the chosen design; implementation and migration; verification and validation; evaluation against criteria; and discussion with conclusions. Each chapter opens by stating what it contributes and closes with what the next chapter takes from it. This structure lets a reader start with the problem and follow a continuous argument, rather than meeting a collection of separate reports.
 
 ### 49.2 Argument
 
-Each claim links to dossier evidence.
+A thesis is an argument, not a diary. Kofi's central claim is that a small public body can substantially reduce internal exposure with modest, verified segmentation without harming service. Every supporting claim in the thesis refers to evidence in the dossier by identifier, so readers can check it. Where evidence is weaker, such as the small research sample, he uses careful language and explains why. He removes sections that describe work but support no claim, which shortens the thesis and makes the argument easier to follow.
 
 ### 49.3 Limits
 
-One council, limited measurement period, small research sample.
+Dr Vasquez asks Kofi to make limits clearer, and he gathers them into a dedicated section as well as noting them beside affected results. The main limits are: a single council as the setting; a three-month availability period; a research sample of eight offices; and some evidence available only from lab tests. For each, he explains how it might affect the conclusions and what would reduce it. Clear limits make the thesis more credible, because readers trust authors who show they understand the weaknesses of their own evidence.
 
 ### 49.4 Contribution
 
-A documented, verified segmentation approach for small public bodies.
+Kofi states his contribution plainly: a documented, verified approach to segmenting a small, multi-site public-sector network, including the zone model, templated policy, migration method, test suite and evidence structure, together with measured outcomes from one real deployment. He does not claim new theory. Engineering theses often contribute by showing that known principles can be applied successfully under real constraints, and by documenting the method well enough that others can reuse it. Being precise about the contribution prevents examiners from judging the thesis against claims it never made.
 
 ### Writing the discussion chapter
 
@@ -2932,19 +2932,19 @@ You will (1) present the thesis; (2) answer questions; (3) reflect.
 
 ### 50.1 Presentation
 
-Kofi presents problem, design, evidence and limits in thirty minutes.
+The defense opens with a thirty-minute presentation. Kofi covers the problem, the design, the evidence, the limits and the contribution, using a few clear figures: the zone diagram, the reachable-pairs reduction, the traceability table and the criteria comparison. He avoids reading slides and does not try to show everything, since the examiners have read the thesis. The aim is to remind them of the argument and show that he understands it well enough to explain it simply. He keeps detailed figures on backup slides for questions.
 
 ### 50.2 Questions
 
-Examiners ask about zero trust, scaling and residual risk.
+The examiners then ask questions for about an hour. They probe three areas: whether the design really applies zero trust ideas or only uses the term; whether the approach would scale to a much larger organisation; and how much risk remains in the flows the policy still permits. Good examiners ask questions to test understanding, not to trap the candidate. Kofi listens to each question fully, asks for clarification when a question is ambiguous, and takes a moment to think before answering rather than rushing.
 
 ### 50.3 Answers
 
-He explains the design applies zero trust principles, scales via templates and leaves residual risk in permitted flows managed by host controls.
+On zero trust, Kofi explains that the design applies some principles from NIST SP 800-207, such as reducing implicit trust between zones and controlling management access tightly, but does not authenticate every request per user and device, so it is a step towards zero trust rather than a full implementation. On scale, he points to the template approach and notes where larger organisations would need automation. On residual risk, he explains that permitted flows remain exposed and are managed by host controls, patching and monitoring of allowed traffic.
 
 ### 50.4 Reflection
 
-He reflects that governance and people mattered as much as technology.
+At the end, the examiners ask what Kofi would do differently. He answers that he would involve the council's staff representatives and governance officer even earlier, and would build the traceability table from the first week rather than partway through. He reflects that the hardest parts of the project were not technical: securing time from busy engineers, winning budget, and agreeing how logs could be used. The examiners accept the thesis. His reflection, recorded in the final chapter, is that secure networks depend on people and process as much as on equipment.
 
 ### Preparing for the defense
 
