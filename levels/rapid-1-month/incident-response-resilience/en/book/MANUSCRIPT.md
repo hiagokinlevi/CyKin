@@ -4976,6 +4976,71 @@ except ValueError as error:
     print("rejected variant:", error)
 ```
 
+#### Supplemental frame check for the declared four-ID P1 exercise
+
+The read-only Listing 3.1 reports differences in *supplied* rows. It cannot detect a booking ID absent from **both** files: removing B19 from P1 and C1 yields `MATCH=2, MISMATCH=1` with zero missing-current rows; comparing two header-only files produces four zero counters. Neither output establishes that the approved four-booking test frame was present. Keep the original listing and its six-line transcript as a demonstration of a row comparison, then run the following **standalone** frame check. Its expected IDs are an independently declared premise of this fictional P1 exercise, not a method for discovering every real booking.
+
+```python
+import csv
+from io import StringIO
+
+EXPECTED_IDS = frozenset({'B17', 'B18', 'B19', 'B20'})
+P1 = '''booking_id,state
+B17,Room 4
+B18,Cancelled
+B19,Room 1
+B20,Room 3
+'''
+C1 = '''booking_id,state
+B17,Room 4
+B18,Cancelled
+B19,Room 3
+B20,Room 1
+'''
+
+def read_csv(source):
+    reader = csv.DictReader(StringIO(source))
+    if reader.fieldnames != ['booking_id', 'state']:
+        raise ValueError('bad header')
+    result = {}
+    for row in reader:
+        if None in row or not row['booking_id'] or not row['state']:
+            raise ValueError('invalid field count or empty field')
+        key, value = row['booking_id'].strip(), row['state'].strip()
+        if not key or not value or key in result:
+            raise ValueError('blank value or duplicate booking ID')
+        result[key] = value
+    return result
+
+def assess_frame(target_csv, current_csv):
+    target, current = read_csv(target_csv), read_csv(current_csv)
+    missing_target = sorted(EXPECTED_IDS - target.keys())
+    extra_target = sorted(target.keys() - EXPECTED_IDS)
+    if missing_target or extra_target:
+        return (f'REJECT_TARGET_FRAME missing={",".join(missing_target) or "-"} '
+                f'extra={",".join(extra_target) or "-"}')
+    missing_current = sorted(EXPECTED_IDS - current.keys())
+    extra_current = sorted(current.keys() - EXPECTED_IDS)
+    matches = sum(target[key] == current[key] for key in EXPECTED_IDS & current.keys())
+    mismatches = sum(target[key] != current[key] for key in EXPECTED_IDS & current.keys())
+    state = 'REVIEW_CURRENT_FRAME' if missing_current or extra_current else 'FRAME_COMPLETE_FOR_FOUR_IDS'
+    return (f'{state} MATCH={matches} MISMATCH={mismatches} '
+            f'MISSING_CURRENT={len(missing_current)} UNEXPECTED_CURRENT={len(extra_current)}')
+
+CASES = [
+    ('BASE', P1, C1),
+    ('BOTH_OMIT_B19', P1.replace('B19,Room 1\n', ''), C1.replace('B19,Room 3\n', '')),
+    ('HEADER_ONLY', 'booking_id,state\n', 'booking_id,state\n'),
+    ('MISSING_CURRENT_B20', P1, C1.replace('B20,Room 1\n', '')),
+    ('EXTRA_CURRENT_B21', P1, C1 + 'B21,Room 2\n'),
+]
+for label, expected, observed in CASES:
+    print(f'{label}: {assess_frame(expected, observed)}')
+assert assess_frame(P1, C1).startswith('FRAME_COMPLETE_FOR_FOUR_IDS')
+```
+
+Compare its five-line result with the [supplemental worked output](#ir-rapid-ch03-frame-result). A complete four-ID frame still contains B19/B20 mismatches. A missing or extra current row needs review, not an automatic edit; actual target approval, copy provenance, authorized correction and a new post-change comparison remain external to the script.
+
 **Expected evidence:** four printed booking statuses, a count summary with two matches and two mismatches, and a separate rejected-duplicate message. Save the output as a classroom note along with the program text; record whether it was run and in which local Python version. The worked output appears in the final answer section. The B19/B20 differences are **proposed correction candidates**, not permission to edit. The service owner must confirm P1's authority and approve a bounded correction; an operator would then act in an authorized environment and a reviewer would compare a **new** state copy. C1 is only one point-in-time snapshot. A matching diff after a later correction would still need access and audit checks, including the failed actor field in V1.
 
 **Assessment:** award one point each for (1) rejecting a duplicate instead of silently choosing a row, (2) identifying B19/B20 as mismatches while retaining B17/B18 as matches, (3) distinguishing missing and unexpected IDs in the method, (4) recording that target approval and copy provenance are external to the script, and (5) proposing an authorized, newly verified correction without claiming it occurred. A passing 5/5 demonstrates sound use of this small comparison, not recovery of a real service. If Python is unavailable, trace the four iterations and duplicate check on paper; the expected statuses and limits are the same.
@@ -5395,6 +5460,83 @@ assert measure(BASE) == (
     "RTO=85m_WITHIN_120m"
 )
 ~~~
+
+##### Supplemental RTE3 full-service acceptance filter
+
+The original eight-case program reproduces its stated fixture, but its `RTO` branch trusts gate flags without checking that the four required gates exist, the declared ledger is complete, all accepted writes were restored, or a technical-ready milestone exists. With otherwise green flags, removing W-B only from `restored_writes` still prints `RTO=85m_WITHIN_120m`; setting `gates={}` does the same. This is an **unsafe full-service acceptance inference**. An elapsed interval between supplied timestamps can be arithmetically plausible even when acceptance is unsupported. The supplemental validator below retains the original fixture and demonstrates why those cases must not receive a favorable *full-service* result.
+
+```python
+from copy import deepcopy
+from datetime import datetime
+
+DAY = '2026-01-15'
+RTO_TARGET_MIN, RPO_TARGET_MIN = 120, 30
+REQUIRED_GATES = {'data', 'authorized', 'denied', 'audit'}
+
+def at(clock):
+    return None if clock is None else datetime.fromisoformat(f'{DAY}T{clock}:00+00:00')
+
+BASE = {
+    'interrupted': at('09:45'), 'copy_at': at('09:35'),
+    'technical_ready': at('10:20'), 'accepted_at': at('11:10'),
+    'clock_verified': True,
+    'gates': {'data': True, 'authorized': True, 'denied': True, 'audit': True},
+    'owner_receipt': True,
+    'accepted_writes': {'W-A', 'W-B'}, 'restored_writes': {'W-A', 'W-B'},
+    'ledger_complete': True,
+}
+
+def stricter_measure(row):
+    i, s, t, a = (row[k] for k in ('interrupted', 'copy_at', 'technical_ready', 'accepted_at'))
+    clocks_ok = row['clock_verified'] is True
+    age = 'UNKNOWN'
+    if clocks_ok and i is not None and s is not None and s <= i:
+        delta = int((i-s).total_seconds() // 60)
+        age = f'{delta}m_{"WITHIN" if delta <= RPO_TARGET_MIN else "OVER"}_{RPO_TARGET_MIN}m'
+    missing = row['accepted_writes'] - row['restored_writes']
+    coverage = 'UNBOUNDED' if row['ledger_complete'] is not True else f'{len(missing)}_KNOWN_UNRECOVERED'
+    if i is None:
+        outcome = 'UNKNOWN_INTERRUPTION'
+    elif not clocks_ok:
+        outcome = 'UNKNOWN_CLOCK'
+    elif t is None:
+        outcome = 'UNKNOWN_TECHNICAL_READY'
+    elif t < i or (a is not None and (a < t or a < i)):
+        outcome = 'INVALID_ORDER'
+    elif set(row['gates']) != REQUIRED_GATES:
+        outcome = 'REQUIRED_GATES_MISSING'
+    elif any(row['gates'][k] is not True for k in REQUIRED_GATES):
+        outcome = 'NO_ACCEPTANCE_GATES'
+    elif row['ledger_complete'] is not True:
+        outcome = 'DATA_COVERAGE_UNKNOWN'
+    elif missing:
+        outcome = 'KNOWN_UNRECOVERED_WRITES'
+    elif row['owner_receipt'] is not True or a is None:
+        outcome = 'NO_OWNER_ACCEPTANCE'
+    else:
+        minutes = int((a-i).total_seconds() // 60)
+        outcome = f'{minutes}m_{"WITHIN" if minutes <= RTO_TARGET_MIN else "OVER"}_{RTO_TARGET_MIN}m'
+    return f'age={age} unrecovered={coverage} RTO={outcome}'
+
+VARIANTS = [
+    ('BASELINE', {}),
+    ('MISSING_WRITE_DESPITE_GREEN_GATES', {'restored_writes': {'W-A'}}),
+    ('INCOMPLETE_LEDGER_DESPITE_GREEN_GATES', {'ledger_complete': False}),
+    ('NO_REQUIRED_GATES', {'gates': {}}),
+    ('NO_TECHNICAL_READY', {'technical_ready': None}),
+    ('AUDIT_FAILED', {'gates': {**BASE['gates'], 'audit': False}}),
+    ('NO_OWNER_RECEIPT', {'owner_receipt': False, 'accepted_at': None}),
+    ('MISSING_INTERRUPTION', {'interrupted': None}),
+    ('BAD_TIME_ORDER', {'accepted_at': at('10:19')}),
+]
+for label, changes in VARIANTS:
+    case = deepcopy(BASE)
+    case.update(changes)
+    print(f'{label}: {stricter_measure(case)}')
+assert stricter_measure(BASE).endswith('RTO=85m_WITHIN_120m')
+```
+
+Predict the nine outputs, then compare the [supplemental worked result](#ir-rapid-ch03-rte3-guard-result). `ledger_complete` and gate flags are classroom premises, not authenticated records. The favorable baseline means only that this declared fictional scope passes the toy contract; it cannot establish complete institutional data recovery, zero actual loss, or an accepted Harbor Library service. A restricted service needs a separately approved scope and receipt.
 
 **Check your eight-line transcript and reasoning in the [final worked result](#ir-rapid-ch03-rte3-result).** The code demonstrates a declared toy contract; its flags and timestamps are not authenticated recovery receipts.
 
@@ -8066,11 +8208,32 @@ After a real isolated restore within the fictional approved scope, fill the obse
 
 **RTE3 additional reasoning:** At the canonical 09:37 Chapter 03 decision, R23 reports backup-job success and a restore test documented thirty days earlier; it does **not** supply an interruption time, isolated restoration, accepted target result or owner-accepted service. The correct plan identifies a named candidate copy and recorded time *to be collected*, an authorized isolated environment and the data, access and audit checks required before an owner may accept any returned service. The added measurement card defines a scoped service-interruption event as the intended start, technical readiness as an intermediate milestone, and signed or recorded owner acceptance after required gates as the intended stopping event. Its actual times remain `not measured`. P1's B17–B20 target values may be used **only after its later card release**, and V1 remains a separate isolated-copy access/audit trial. Neither substitutes for a measured full service recovery. A 2-point answer refuses to turn a planned isolated import or a successful backup job into a reported RTO result.
 
+**RTE3 compact measurement card — model answer for EX033:**
+
+| Required field | Model answer status |
+|---|---|
+| Essential-service interruption event | Source, owner and actual timestamp **not supplied** for canonical Harbor Library |
+| Copy and isolated restoration | Copy ID, claimed capture time, authorized isolated environment and actual start/end **to be obtained/measured** |
+| Technical-ready milestone | **Not measured**; import or page load is not service acceptance |
+| Booking correctness | After P1 release, B17–B20 target values known for the synthetic lab; no separately restored copy comparison supplied |
+| Access and audit gates | Separate V1 tests have limited permitted/denied outcomes and a **blank audit actor**; V1 is not a completed restore |
+| Owner acceptance endpoint | Scope, authority and acceptance time **not supplied**; canonical recovery elapsed time **unknown** |
+
+The four B17–B20 rows above remain *not tested* until an approved restore and new independent comparison are observed.
+
 ### EX034 — Worked result
 
 R23 establishes that a backup job succeeded and that the most recent documented restore test was thirty days earlier. In the **hypothetical** section 3.5 example, a midnight copy is 9 hours 45 minutes old at 09:45. If it were the only recoverable data source, its age exceeds the illustrative thirty-minute RPO by 9 hours 15 minutes; it cannot by itself demonstrate that target. The two-hour RTO cannot be assessed from R23 because no restore duration or successful service-acceptance time is supplied. The recovery lead must perform an authorized isolated restore, compare the restored data with P1 or another approved target, and measure elapsed time and access/audit checks. A successful backup job does not replace either check.
 
 **RTE3 additional reasoning:** The original hypothetical midnight copy at 09:45 is **9 hours 45 minutes old**, exceeding the illustrative 30-minute point target by **9 hours 15 minutes** when screened as a stand-alone copy. That arithmetic is not a measurement of accepted booking data actually lost. The actual count and earliest missing accepted time require a defined accepted-write source, verified coverage, any protected replay journal and an authoritative restored-state comparison. A gap in one source might prevent completeness assurance without proving permanent loss; an identified accepted operation missing from a tested recovery candidate is a narrower known discrepancy, not necessarily irrecoverable. R23 does not contain the required event/restore/acceptance times, and K1's separate trial import durations of 11 and 14 minutes do **not** establish a service outage duration. The hypothetical two-hour RTO cannot be marked achieved from these inputs.
+
+**Three-column evidence artifact — model answer for EX034:**
+
+| Copy age screen | Accepted-operation evidence after copy | Actual restored/verified operation result |
+|---|---|---|
+| **9h45 old; 9h15 beyond** hypothetical standalone 30m screen | **Unknown**: R23 supplies no complete, durable post-copy accepted-operation ledger or verified replay source | **Not measured**: no actual owner-approved restore, new authoritative state comparison or proven irrecoverable accepted operation |
+
+The 9h45 age and 9h15 excess are screening arithmetic, not a measured loss interval; K1 import trials do not measure an accepted-service RTO.
 
 ### EX035 — Worked result
 
@@ -8085,6 +8248,14 @@ R23 establishes that a backup job succeeded and that the most recent documented 
 **MQ3-linked queue gate, conditional on later Branch P:** The branch reports two pending requests but does not identify either, their approval, their expected version or a completed effect. Add a separate acceptance row owned by the service owner: obtain the restricted queue manifest; compare each request with approved current booking state and prior-effect record; record applied, duplicate, held or conflicting disposition; verify authorized effect and audit; and retain unresolved items with an owner and next review. This cannot override C1's B19/B20 mismatches or V1's blank actor. MQ3's X-booking outcomes are classroom data, not the branch's pending work.
 
 **RTE3 additional reasoning:** Only after the later P1/C1 and V1 releases, the supplied comparison shows B19/B20 differing from the approved P1 targets while V1 reports limited permitted/denied access tests and a **failed audit actor field**. Those are separately scoped results, and they do not establish full service acceptance. The relevant acceptance-time row therefore states: interruption start/time **not supplied for an actual completed Harbor Library recovery**, required data and audit gates **failed or unverified**, accountable service-owner acceptance **not supplied**, and service-level elapsed recovery **not measurable**. A later restricted-mode proposal would need its own declared service scope, approver, restrictions and accepted decision time; it cannot turn existing failed gates into passes. If Branch P was separately chosen, its two pending queue items remain unresolved until their own owner-approved dispositions are evidenced. RTE3's artificial 85-minute interval is a different exercise and cannot be substituted for a canonical Harbor Library completion time.
+
+**Acceptance-time evidence row — model answer for EX035:**
+
+| Acceptance check | Expected evidence | Currently available exercise result | Owner and next action |
+|---|---|---|---|
+| Scoped owner acceptance and interruption-to-service elapsed time | Verified interruption start, passed booking/access/audit gates, owner acceptance/rejection time and declared restricted/full service scope | **Unmeasured and unaccepted for full return**: C1 still mismatches P1 on B19/B20, V1 lacks its audit actor, and no canonical full-service acceptance timestamp is provided | Service owner and incident lead retain a pending decision; require new authorized booking/audit checks and a dated scoped approval before calculating elapsed recovery |
+
+If Branch P is separately chosen and released, add its queue gate only after a bounded manifest and owner-approved dispositions are available; do not borrow MQ3 results or turn a proposed restricted mode into a full-service pass.
 
 ### EX036 — Worked result
 
@@ -8251,6 +8422,19 @@ counts: MATCH=2, MISMATCH=2, MISSING_CURRENT=0, UNEXPECTED_CURRENT=0
 rejected variant: current: duplicate booking ID B20
 ```
 
+<a id="ir-rapid-ch03-frame-result"></a>
+**Supplemental four-ID frame check — worked output:**
+
+```text
+BASE: FRAME_COMPLETE_FOR_FOUR_IDS MATCH=2 MISMATCH=2 MISSING_CURRENT=0 UNEXPECTED_CURRENT=0
+BOTH_OMIT_B19: REJECT_TARGET_FRAME missing=B19 extra=-
+HEADER_ONLY: REJECT_TARGET_FRAME missing=B17,B18,B19,B20 extra=-
+MISSING_CURRENT_B20: REVIEW_CURRENT_FRAME MATCH=2 MISMATCH=1 MISSING_CURRENT=1 UNEXPECTED_CURRENT=0
+EXTRA_CURRENT_B21: REVIEW_CURRENT_FRAME MATCH=2 MISMATCH=2 MISSING_CURRENT=0 UNEXPECTED_CURRENT=1
+```
+
+The symmetric B19 omission is rejected only because this exercise separately declared B17–B20 as its required frame. A complete frame still reports two state mismatches. No program result authenticates the P1 approval or permits a live change.
+
 The comparison performs **no repair**. It says B17 and B18 match the P1 target in this transcription; B19 and B20 do not. `MISSING_CURRENT=0` and `UNEXPECTED_CURRENT=0` are statements about the four supplied CSV rows, not proof that the live database has no missing or extra bookings. Appending a duplicate B20 is rejected because two rows with the same key would make a naive last-write-wins comparison order-dependent. The program's header and field checks defend the classroom fixture against simple malformed input; they do not authenticate a source, establish owner approval or handle a production CSV dialect and all possible data errors.
 
 A responsible next artifact is a **request** for the service owner to confirm the approved P1 target and authorize correction of B19/B20 only. Record the C1 copy's provenance, the planned operator and a new post-change comparison. Keep the cause, other bookings and V1's failed actor attribution open. If the malformed variant is tested, label its rejection as a validation result, never as a fifth Harbor Library booking event.
@@ -8308,6 +8492,23 @@ KNOWN_MISSING_WRITE age=10m_WITHIN_30m unrecovered=1_KNOWN_UNRECOVERED RTO=NO_AC
 INCOMPLETE_LEDGER age=10m_WITHIN_30m unrecovered=UNBOUNDED RTO=NO_OWNER_ACCEPTANCE
 UNVERIFIED_CLOCK age=UNKNOWN unrecovered=0_KNOWN_UNRECOVERED RTO=UNKNOWN_CLOCK
 ~~~
+
+<a id="ir-rapid-ch03-rte3-guard-result"></a>
+**Supplemental acceptance-filter output:**
+
+```text
+BASELINE: age=10m_WITHIN_30m unrecovered=0_KNOWN_UNRECOVERED RTO=85m_WITHIN_120m
+MISSING_WRITE_DESPITE_GREEN_GATES: age=10m_WITHIN_30m unrecovered=1_KNOWN_UNRECOVERED RTO=KNOWN_UNRECOVERED_WRITES
+INCOMPLETE_LEDGER_DESPITE_GREEN_GATES: age=10m_WITHIN_30m unrecovered=UNBOUNDED RTO=DATA_COVERAGE_UNKNOWN
+NO_REQUIRED_GATES: age=10m_WITHIN_30m unrecovered=0_KNOWN_UNRECOVERED RTO=REQUIRED_GATES_MISSING
+NO_TECHNICAL_READY: age=10m_WITHIN_30m unrecovered=0_KNOWN_UNRECOVERED RTO=UNKNOWN_TECHNICAL_READY
+AUDIT_FAILED: age=10m_WITHIN_30m unrecovered=0_KNOWN_UNRECOVERED RTO=NO_ACCEPTANCE_GATES
+NO_OWNER_RECEIPT: age=10m_WITHIN_30m unrecovered=0_KNOWN_UNRECOVERED RTO=NO_OWNER_ACCEPTANCE
+MISSING_INTERRUPTION: age=UNKNOWN unrecovered=0_KNOWN_UNRECOVERED RTO=UNKNOWN_INTERRUPTION
+BAD_TIME_ORDER: age=10m_WITHIN_30m unrecovered=0_KNOWN_UNRECOVERED RTO=INVALID_ORDER
+```
+
+In the missing-write and incomplete-ledger variants, a claimed 09:45–11:10 interval could still be *calculated*, but it is not a defensible **full-service acceptance** interval under this test contract. Missing gates, a missing technical-ready milestone and a missing owner receipt likewise block a favorable result. The copy-age screen is distinct from evidence of recovered accepted operations; even the baseline does not prove global zero data loss.
 
 #### Worked interpretation of every scenario
 
