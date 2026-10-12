@@ -35,7 +35,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A synthetic Harbor Library booking service, a proposed D1 evidence contract and an unusual staff sign-in.
 
-**Practice and exercises:** Map dependencies to bounded decision questions and source limits, assign owners and open a case record without treating planned telemetry as collected evidence. The planned allocation is 13 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Map dependencies to bounded decision questions and source limits, assign owners and open a case record without treating planned telemetry as collected evidence. The planned allocation is 13 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on the entry knowledge and prepares Chapter 02. This is an editorial brief, not a completed lesson.
 
@@ -53,7 +53,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** Synthetic R9–R16 booking, identity, training and help-desk records with a 24-hour retention notice, plus separate delayed-arrival and overlapping-session replays.
 
-**Practice and exercises:** Build a bounded timeline, rank minimal source requests, distinguish booking from application audit, test quiet-query limits, audit a synthetic evidence package and classify cross-source matches without inferring a human actor. The planned allocation is 13 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Build a bounded timeline, rank minimal source requests, distinguish booking from application audit, test quiet-query limits, audit a synthetic evidence package and classify cross-source matches without inferring a human actor. The planned allocation is 13 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 01 and prepares Chapter 03. This is an editorial brief, not a completed lesson.
 
@@ -71,7 +71,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** The fictional booking service with suspicious staff-account activity, a separate isolated write-pause validation branch, a conditional credential-versus-application-fault cause test, a successful backup job without a recent restore test, and a three-candidate recovery replay.
 
-**Practice and exercises:** Compare bounded actions, test whether a proposed pause blocks its stated write routes, design a cause-specific eradication test, reconcile booking states, screen candidate copies against recovery objectives and define service-acceptance evidence. The planned allocation is 12 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Compare bounded actions, test whether a proposed pause blocks its stated write routes, design a cause-specific eradication test, reconcile booking states, screen candidate copies against recovery objectives and define service-acceptance evidence. The planned allocation is 12 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 02 and prepares Chapter 04. This is an editorial brief, not a completed lesson.
 
@@ -83,13 +83,13 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Teaching purpose and relevance:** Integrate readiness, triage and recovery into one controlled case and show how learning is recorded without claiming an untested return to service.
 
-**Concepts and techniques:** Tabletop inject; decision log; audience-specific and versioned status communication; measurement contract; after-action report; corrective-action closure.
+**Concepts and techniques:** Tabletop inject; decision log; evidence-linked score calibration and versioned artifact revision; audience-specific status communication; measurement contract; after-action report; corrective-action closure.
 
 **Depth and method:** At rapid course level, learners will follow a contained worked example. Use a guided case record to distinguish observations, assumptions and the next safe action.
 
-**Worked example:** A synthetic Harbor Library scenario with staged evidence, an unavailable-approver replay and a separate unverified-exposure message replay.
+**Worked example:** A synthetic Harbor Library scenario with staged evidence, a two-reviewer L2 scoring comparison, an unavailable-approver replay and a separate unverified-exposure message replay.
 
-**Practice and exercises:** Complete a guided tabletop and six-artifact case record, compare exercise findings with technical tests, draft bounded messages for different audiences and plan evidence-linked improvements. The planned allocation is 12 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Complete a guided tabletop and six-artifact case record, reconcile contested scores against frozen evidence, compare exercise findings with technical tests, draft bounded messages and plan evidence-linked improvements. The planned allocation is 12 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 03 and prepares the worked-answer appendix and final assessment. This is an editorial brief, not a completed lesson.
 

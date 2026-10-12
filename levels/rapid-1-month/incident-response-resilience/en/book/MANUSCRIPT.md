@@ -1186,6 +1186,7 @@ By the end of this chapter, a learner should be able to:
 4. Give a short, accurate internal update that protects people from premature attribution.
 5. Identify a process gap, assign an owner and define a measurable improvement check.
 6. Draft audience-specific, versioned status messages that separate operational coordination from an unverified exposure report and any formal notification decision.
+7. Calibrate a tabletop score against frozen artifacts, resolve reviewer disagreement with evidence and propose a revision without changing the earlier decision record.
 
 ### 4.1 Exercise purpose and boundaries
 
@@ -1254,6 +1255,27 @@ Use this simple rubric for each of the six outputs: **0 = absent or unsupported;
 | Improvement ticket | One gap, accountable owner, due date and verification exercise or metric. |
 
 A learner should also note inaccessible evidence and why it was not collected. Do not award points for inventing device detail, a data breach, an attacker identity or a successful restore that the scenario never supplied.
+
+#### Calibrate a score against the artifact that existed at the checkpoint
+
+A rubric is useful only if two reviewers can apply it to the **same submission**, not to what they remember the learner saying later. [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) describes exercise evaluation against criteria identified before the event. The six-output rubric above and the worked comparison below are original classroom choices. They evaluate a learner's records, not Harbor Library's real readiness.
+
+Freeze each artifact at the end of its round. Give it a version ID such as `A-intake-v1`, `B-hypotheses-v1` or `C-action-v1`, the release round and the source IDs actually available then. A later `D-recovery-v2` may improve the final packet, but it does not rewrite `C-action-v1`. Store a one-line reason for every revision. This matters because the Branch S report of revocation arrives in Round D; it cannot make a Round C proposal into an action already performed at 09:37.
+
+Consider this **invented learner packet L2**, prepared after all cards have been released. Its quoted excerpts are student answers in a separate classroom example, not new R-series observations. Two reviewers independently apply the 0–2 rubric before discussing their scores:
+
+1. **Six-row timeline — reviewers A/B: 2/2; reconciled: 2.** The learner lists R1 08:40/A, R3 08:43/A, R5 08:48/A, R9 09:03/B (received at 09:20), R18 09:24/C and R21 09:29/C, all UTC, and writes: “This order does not identify the human operator.” Source IDs, event versus release times and a causal limit are explicit.
+2. **Round B hypotheses — reviewers A/B: 2/2; reconciled: 2.** The learner writes: “R10 may support planned work; R9 leaves B19 unexplained. Misuse remains possible; R13 lacks device detail. Ask the identity owner for a bounded session association check.” Alternatives, limits and a discriminator are present without using R17.
+3. **`C-action-v1` — reviewers A/B: 2/1; reconciled: 1.** The learner writes: “Recommend revoking the current session; identity owner consulted; check again at 09:45.” This records a proposal and review, but “consulted” is not incident-lead approval. Staff cost, fallback and the test interval are missing. Branch S cannot repair this frozen Round C artifact.
+4. **`D-recovery-v1` — reviewers A/B: 1/0; reconciled: 0.** The learner writes: “V1 passed, so all bookings are correct and the audit identifies the editor.” C1 contradicts booking correctness for B19/B20, and V1's actor field is blank. The conclusion is unsupported, not merely incomplete.
+5. **Status — reviewers A/B: 2/2; reconciled: 2.** The learner writes: “Branch S reports one session revoked at 09:45; B19/B20 and audit actor remain open. Service owner and audit owner review at 10:05; cause unknown.” The action, open criteria, owners and checkpoint are bounded.
+6. **Improvement — reviewers A/B: 1/1; reconciled: 1.** The learner writes: “Fix the audit actor within 30 days.” A gap and proposed window exist, but no accountable owner, test artifact or interim observation is specified, so closure cannot be checked.
+
+The reconciled sum is **8/12**. It is below the classroom threshold of 9 and has a zero in recovery evidence, so packet L2 does not pass. Reviewers should record their disagreement rather than average `2` and `1` into `1.5`: the rubric permits only 0, 1 or 2. Reviewer A can show a source pointer that satisfies a missing field, or accept Reviewer B's score. Here no such pointer exists. A high total would not excuse an unsupported recovery claim, and a corrected final sentence would not retroactively justify the earlier Round C action.
+
+**How to revise L2.** In `C-action-v2`, keep the 09:37 proposal as a proposal; request the incident lead's approval, add the staff reauthentication cost, a fallback if a verified edit continues and a named 09:45 query with source and interval. If a separate fictional approval is later supplied, record when it arrived. In `D-recovery-v2`, list the P1/C1 comparison as two matches and two mismatches, and mark V1's tested access behavior separately from its failed actor-attribution criterion. Ask the service owner to authorize a correction and the audit owner to fix and retest the field; both remain planned until a result is supplied. In the improvement ticket, name the audit owner, an accepted due date, the interim restricted comparison and a controlled edit whose actor and UTC time a second reviewer can verify. The revised packet can earn a new score when its fields are actually present. It still cannot prove live-system containment or recovery.
+
+**Practice check:** score the six L2 excerpts yourself before reading the reconciled column. For each disagreement, point to the missing or contradicting record and decide whether the correct label is *absent/unsupported*, *incomplete* or *evidence-linked and bounded*. Then write three one-sentence revision requests for the action, recovery and improvement artifacts. The worked comparison above supplies the target scores and the paragraph above supplies acceptable revisions; EX050 asks you to perform the same calibration on your own final handoff. No production system or real personal record is needed.
 
 ### 4.6 After-action review
 
@@ -1414,7 +1436,7 @@ Use the four rounds and choose either Branch S or Branch P for your final decisi
 
 #### EX050 — Final handoff and self-assessment
 
-**Objective:** give a new responder a complete, auditable state without overstating closure. **Inputs:** all rounds, one chosen branch, P1/C1, V1 and the section 4.5 rubric. **Output:** a one-paragraph handoff naming case and evidence, proposal versus branch-reported action and fictional approvers, current booking and audit failures, unresolved cause, owners, next review and rollback trigger. Add a six-row self-score (0–2 per tabletop output, maximum 12) and name the weakest output to revise. A score of 2 requires a defensible score explanation and no zero for approval or evidence scope; the handoff must distinguish the branch result from unexecuted correction or restore work.
+**Objective:** give a new responder a complete, auditable state without overstating closure. **Inputs:** all rounds, one chosen branch, P1/C1, V1 and the section 4.5 rubric and L2 calibration. **Output:** a one-paragraph handoff naming case and evidence, proposal versus branch-reported action and fictional approvers, current booking and audit failures, unresolved cause, owners, next review and rollback trigger. Add a six-row self-score (0–2 per tabletop output, maximum 12), identify the weakest output and write one contested-score note: which artifact a second reviewer might score differently, which exact supplied record or missing field resolves the disagreement, and what revision should be versioned rather than silently replacing an earlier round. A score of 2 requires a defensible score explanation and no zero for approval or evidence scope; the handoff must distinguish the branch result from unexecuted correction or restore work.
 
 <a id="answers"></a>
 
@@ -2032,6 +2054,8 @@ Neither update uses P1/C1 or V1, which the facilitator reveals later, or claims 
 | Improvement ticket | 1 | Audit repair owner and test named; add a specific due date and interim check if absent. |
 
 **Total:** 10/12 for this *example*; recovery plan is the first artifact to revise. The self-score does not turn an untested restore into a pass. A different branch can earn the same score when its queue, approvals and return condition are handled explicitly. A submission with zero for approval or evidence scope fails the section 4.5 gate regardless of its total.
+
+**Contested-score note:** a second reviewer might give the recovery plan 0 rather than 1 if “restore complete” appeared in the submitted plan; R23 contains only a backup-job report, not a restore result. In this model packet the handoff explicitly says no restore result is supplied and identifies P1/C1 and V1 failures, so **1** is defensible for an incomplete plan. The learner should save a `recovery-plan-v2` with a proposed copy ID field, measured start/end fields, service-owner target, negative access test and rollback rule. Those fields remain planned until an isolated test supplies their results. Do not edit the earlier `C-action-v1` to include the later Branch S outcome.
 
 ### Chapter 4 F1 replay lab — worked result
 

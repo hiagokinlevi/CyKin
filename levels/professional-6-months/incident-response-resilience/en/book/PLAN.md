@@ -2,7 +2,7 @@
 
 **One book for this course and language.** 12 curricular subjects are its chapters. Duration: 6 months; planned effort: approximately 360 hours. Audience: Entry-level practitioners. Entry knowledge: Security basics and the relevant system fundamentals. Intended outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience.
 
-**Editorial state:** structured outline; manuscript not yet authored. English reference edition.
+**Editorial state:** draft manuscript exists; release A4 validation and review pending. English reference edition.
 
 [Home](../../../../../README.md) · [Course home](../../README.md) · [Edition](../README.md) · [Chapter index](../SUBJECTS.md) · [Course skill](../../skill/SKILL.md)
 
@@ -25,7 +25,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 01 — Incident lifecycle and organizational readiness
 
-**Stage 1; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 30 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-01)
 
 **Teaching purpose and relevance:** Establish how preparation, detection, response and recovery interact in a repeatable organizational workflow.
 
@@ -35,7 +35,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A synthetic multi-service organization with incomplete ownership and telemetry maps.
 
-**Practice and exercises:** Produce a readiness checklist, identify missing dependencies and prioritize two corrective actions. The planned allocation is 5 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Produce a readiness checklist, identify missing dependencies and prioritize two corrective actions. The planned allocation is 5 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on the entry knowledge and prepares Chapter 02. This is an editorial brief, not a completed lesson.
 
@@ -43,7 +43,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 02 — Authority, scope and response roles
 
-**Stage 1; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 30 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-02)
 
 **Teaching purpose and relevance:** Make the limits of responder authority operational so urgent work stays reviewable and service owners retain decision rights.
 
@@ -53,7 +53,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A simulated cloud account alert that could require tenant-level changes outside the analyst's scope.
 
-**Practice and exercises:** Draft a response charter and classify proposed actions as permitted, approval-gated or out of scope. The planned allocation is 5 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Draft a response charter and classify proposed actions as permitted, approval-gated or out of scope. The planned allocation is 5 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 01 and prepares Chapter 03. This is an editorial brief, not a completed lesson.
 
@@ -61,7 +61,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 03 — Alert intake and severity assessment
 
-**Stage 2; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 30 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-03)
 
 **Teaching purpose and relevance:** Move from raw reports to a documented priority without equating every anomaly with compromise.
 
@@ -71,7 +71,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** Synthetic endpoint and identity alerts about the same account with conflicting timestamps.
 
-**Practice and exercises:** Triage the alerts, justify severity, record uncertainty and set an explicit reassessment trigger. The planned allocation is 5 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Triage the alerts, justify severity, record uncertainty and set an explicit reassessment trigger. The planned allocation is 5 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 02 and prepares Chapter 04. This is an editorial brief, not a completed lesson.
 
@@ -79,7 +79,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 04 — Evidence preservation and case records
 
-**Stage 2; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
+**Stage 2; 30 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-04)
 
 **Teaching purpose and relevance:** Create a case trail that allows a second responder to reproduce observations without altering the source.
 
@@ -89,7 +89,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A synthetic log export and screenshot with different time zones and incomplete metadata.
 
-**Practice and exercises:** Record provenance, verify a supplied checksum and identify what cannot be concluded from the evidence. The planned allocation is 5 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Record provenance, verify a supplied checksum and identify what cannot be concluded from the evidence. The planned allocation is 5 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 03 and prepares Chapter 05. This is an editorial brief, not a completed lesson.
 
@@ -97,7 +97,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ### Chapter 05 — Investigation, hypotheses and timeline building
 
-**Stage 3; 30 planned A4 pages; 5 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 30 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-05)
 
 **Teaching purpose and relevance:** Turn preserved observations into testable explanations while retaining alternatives and gaps.
 
@@ -107,7 +107,7 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A fictional account takeover case with identity, application and support-ticket records.
 
-**Practice and exercises:** Construct a normalized timeline, test two hypotheses and list the next least-invasive evidence request. The planned allocation is 5 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Construct a normalized timeline, test two hypotheses and list the next least-invasive evidence request. The planned allocation is 5 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 04 and prepares Chapter 06. This is an editorial brief, not a completed lesson.
 

@@ -6,7 +6,7 @@ Each course's **draft coverage** is authored English subject-chapters ÷ planned
 
 | Formation level | Academic area | English draft chapters | Draft coverage | Manuscript words | A4 preflight length | Read course and book |
 |---|---|---:|---:|---:|---:|---|
-| Rapid course | Incident response and cyber resilience | 4 / 4 | 100.0% | 50,204 | 103 / 300 (34.3% of page floor) | [Course](levels/rapid-1-month/incident-response-resilience/README.md) · [Draft](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md) |
+| Rapid course | Incident response and cyber resilience | 4 / 4 | 100.0% | 51,170 | 105 / 300 (35.0% of page floor) | [Course](levels/rapid-1-month/incident-response-resilience/README.md) · [Draft](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md) |
 | Rapid course | Cybersecurity | 3 / 4 | 75.0% | 9,153 | Not measured | [Course](levels/rapid-1-month/cybersecurity/README.md) · [Draft](levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md) |
 | Rapid course | Information security | 0 / 4 | 0.0% | 0 | Not measured | [Course](levels/rapid-1-month/information-security/README.md) · [Plan](levels/rapid-1-month/information-security/en/book/PLAN.md) |
 | Rapid course | Data governance | 0 / 4 | 0.0% | 0 | Not measured | [Course](levels/rapid-1-month/data-governance/README.md) · [Plan](levels/rapid-1-month/data-governance/en/book/PLAN.md) |
@@ -29,7 +29,7 @@ Each course's **draft coverage** is authored English subject-chapters ÷ planned
 | Rapid course | Quantum and post-quantum security | 0 / 4 | 0.0% | 0 | Not measured | [Course](levels/rapid-1-month/quantum-post-quantum-security/README.md) · [Plan](levels/rapid-1-month/quantum-post-quantum-security/en/book/PLAN.md) |
 | Rapid course | OT, IoT and cyber-physical security | 0 / 4 | 0.0% | 0 | Not measured | [Course](levels/rapid-1-month/ot-iot-security/README.md) · [Plan](levels/rapid-1-month/ot-iot-security/en/book/PLAN.md) |
 | Rapid course | Critical infrastructure and sector security | 0 / 4 | 0.0% | 0 | Not measured | [Course](levels/rapid-1-month/critical-sector-security/README.md) · [Plan](levels/rapid-1-month/critical-sector-security/en/book/PLAN.md) |
-| Professional course | Incident response and cyber resilience | 0 / 12 | 0.0% | 0 | Not measured | [Course](levels/professional-6-months/incident-response-resilience/README.md) · [Plan](levels/professional-6-months/incident-response-resilience/en/book/PLAN.md) |
+| Professional course | Incident response and cyber resilience | 5 / 12 | 41.7% | 11,535 | 25 / 300 (8.3% of page floor) | [Course](levels/professional-6-months/incident-response-resilience/README.md) · [Draft](levels/professional-6-months/incident-response-resilience/en/book/MANUSCRIPT.md) |
 | Professional course | Cybersecurity | 0 / 12 | 0.0% | 0 | Not measured | [Course](levels/professional-6-months/cybersecurity/README.md) · [Plan](levels/professional-6-months/cybersecurity/en/book/PLAN.md) |
 | Professional course | Information security | 0 / 12 | 0.0% | 0 | Not measured | [Course](levels/professional-6-months/information-security/README.md) · [Plan](levels/professional-6-months/information-security/en/book/PLAN.md) |
 | Professional course | Data governance | 0 / 12 | 0.0% | 0 | Not measured | [Course](levels/professional-6-months/data-governance/README.md) · [Plan](levels/professional-6-months/data-governance/en/book/PLAN.md) |

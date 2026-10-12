@@ -34,7 +34,7 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 
 **Worked example:** The synthetic Harbor Library booking service with reservations and an event contact list.
 
-**Practice and exercises:** Classify observed facts and assumptions, map assets and justify one proportionate control. The planned allocation is 13 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Classify observed facts and assumptions, map assets and justify one proportionate control. The planned allocation is 13 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on the entry knowledge and prepares Chapter 02. This is an editorial brief, not a completed lesson.
 
@@ -52,7 +52,7 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 
 **Worked example:** A fictional request to inspect the library website without a written testing scope.
 
-**Practice and exercises:** Rewrite the request as a permitted synthetic exercise with explicit limits and escalation. The planned allocation is 13 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Rewrite the request as a permitted synthetic exercise with explicit limits and escalation. The planned allocation is 13 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 01 and prepares Chapter 03. This is an editorial brief, not a completed lesson.
 
@@ -70,7 +70,7 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 
 **Worked example:** The Harbor Library reservation page, staff sign-in and printed fallback schedule.
 
-**Practice and exercises:** Draw the service map and explain two different failure and recovery consequences. The planned allocation is 12 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Draw the service map and explain two different failure and recovery consequences. The planned allocation is 12 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 02 and prepares Chapter 04. This is an editorial brief, not a completed lesson.
 

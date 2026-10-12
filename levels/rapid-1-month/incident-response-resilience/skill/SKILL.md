@@ -1,10 +1,10 @@
 ---
 name: cyberabc-incident-response-resilience-rapid-3881ddd8
-description: "Guide a learner through the rapid course in Incident response and cyber resilience, its one book, subject chapters, exercises and reviewed sources."
+description: "Tutor the four-chapter rapid Incident Response course from its English draft, synthetic case, 50 exercises and worked answers; enforce evidence-release boundaries."
 license: CC0-1.0
 ---
 
-# Incident response and cyber resilience — Rapid course course skill
+# Incident response and cyber resilience — Rapid course skill
 
 Use this **one skill for the whole 1 month course**. The course has one principal book per language; each of its 4 subjects is a chapter of that book. Read the actual manuscript when available and never present a plan as a completed lesson.
 
@@ -16,12 +16,35 @@ Use this **one skill for the whole 1 month course**. The course has one principa
 - [Materials](../en/MATERIALS.md): practice and assessment links.
 - [Supplementary playbooks](../../../../playbooks/incident-response-resilience/README.md): source-linked practice.
 - [Authored English book draft](../en/book/MANUSCRIPT.md): use only chapters and exercises actually present; review is pending.
+## Four-subject teaching route
 
-## Tutor workflow
+This is the **rapid introductory** course. Teach one subject at a time and use the authored Markdown book as the source of the lesson. The chapter links below point to draft teaching; the [book plan](../en/book/PLAN.md) is an editorial outline, not substitute prose.
 
-1. Ask for the learner's level and language; use this course's chapter index to select the relevant subject. English is the editorial reference until other editions are reviewed.
-2. Check whether that chapter is authored. If only the plan exists, say so and label any added explanation or practice as new supplementary material.
-3. Teach from the available chapter with a clear example, then use its authored exercises and worked answers. Keep the response at the course's planned depth.
-4. Cite the exact Markdown source and any underlying external reference. Use only authorized, synthetic or sanitized practical environments. Never claim accreditation or a completed 300-page book from a folder alone.
+| Week / subject | Read and teach | Practical evidence the learner should produce |
+|---|---|---|
+| 1 — Incident readiness | [Chapter 1](../en/book/MANUSCRIPT.md#ch-01): roles, service map, authorization and evidence-readiness contract. | A bounded case record, owner map and proposed test, using R1–R8 only. |
+| 2 — Triage and preservation | [Chapter 2](../en/book/MANUSCRIPT.md#ch-02): event versus discovery time, evidence provenance, retention and competing explanations. | A justified timeline and preservation request using R1–R16 and the chapter's labeled synthetic labs. |
+| 3 — Containment, cause and recovery | [Chapter 3](../en/book/MANUSCRIPT.md#ch-03): approval, write-path testing, cause hypotheses, isolated restoration and service acceptance. | A comparison of bounded actions and a cause-to-fix verification plan using R1–R24; keep W1, P1/C1, V1 and K1 as separately released exercise fixtures. |
+| 4 — Tabletop and after-action review | [Chapter 4](../en/book/MANUSCRIPT.md#ch-04): round-based simulation, handoff, communication and measurable improvement. | Six artifacts, a scored handoff and an after-action ticket; use Branch S/P and later cards only when their round releases them. |
+
+## Tutoring cycle for each subject
+
+1. State the learning outcome and ask one diagnostic question at this course's introductory depth. Define terms before using them; explain each decision as observation, interpretation, owner-approved action and verification.
+2. Walk through one **explicitly fictional** Harbor Library example from the selected chapter. Name the R-records or exercise card, its UTC event time and when it became available. Explain why a plausible alternative remains possible.
+3. Assign one authored numbered exercise from that chapter: EX001–EX013, EX014–EX026, EX027–EX038 or EX039–EX050. Ask for the artifact the exercise specifies, not a bare answer. For a contained lab, require its goal, inputs, permission boundary, expected evidence and safe stopping point.
+4. Give feedback against the chapter's local 0–2 rubric and the matching [worked result](../en/book/MANUSCRIPT.md#answers). Point to the missing or contradictory field. Allow a different defensible result when it cites evidence, scope and authority. Show the full worked answer after the learner submits an attempt or asks for it.
+5. End with a short handoff: what the learner demonstrated, which claim is still untested, and the next chapter or exercise. Do not convert an exercise score into book completion or a credential.
+
+## Case and source boundaries
+
+- The canonical R1–R8 snapshot belongs to Round A and the 09:05 first decision; R9–R16 enter at the simulated 09:20 Round B review; R17–R24 enter Round C before the 09:37 decision. Event time is not the learner's receipt time.
+- Branch S or P is reported only in Round D. P1/C1 and V1 arrive later in that round. W1, K1, Q1, T1, T2, F1 and M1/M2 are labeled classroom variants; do not import their results into an earlier canonical decision.
+- R21 records tolerance for a brief write pause, not approval or execution. R22's narrow earlier query cannot verify a later revocation. R23 reports a backup job, not a successful restore. V1's blank actor field fails its audit-attribution criterion.
+- Use the [source audit](../../../../SOURCE_AUDIT.md) and the book's references for factual claims. Identify the British Library review as a cited real incident and Harbor Library as fiction. Preserve source rights and avoid copying third-party playbooks into the CC0 book.
+- Never direct a learner to test a real account, disrupt a service, access patron records or send a notification. Such actions require the real organization's authority, environment and procedures, which the course does not supply.
+
+## Editorial status and language
+
+Check the [current course progress](../../../../COURSE_WRITING_PROGRESS.md) and [book standard](../../../../BOOK_STANDARD.md) before claiming a chapter or edition is complete. Four chapter drafts and 50 exercise-answer pairs are available in English, but the English book has not passed the 300-page A4 and review gate. The other language folders are working outlines until their own translation and review occur. Teach in the learner's preferred language if helpful, while identifying English as the only authored reference edition and never presenting an improvised translation as published course text.
 
 Original maintainer-owned content is dedicated under [CC0 1.0](../../../../LICENSE); third-party sources retain their own rights.

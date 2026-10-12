@@ -8,11 +8,11 @@ English is the reference edition.
 
 | Month | Chapter / plan | Curricular subject | Hours | Planned A4 pages | Exercise target | Teaching state |
 |---|---|---|---:|---:|---:|---|
-| 1 | [01](book/PLAN.md#ch-01) | Incident lifecycle and organizational readiness | 30 | 30 | 5 | Planned |
-| 1 | [02](book/PLAN.md#ch-02) | Authority, scope and response roles | 30 | 30 | 5 | Planned |
-| 2 | [03](book/PLAN.md#ch-03) | Alert intake and severity assessment | 30 | 30 | 5 | Planned |
-| 2 | [04](book/PLAN.md#ch-04) | Evidence preservation and case records | 30 | 30 | 5 | Planned |
-| 3 | [05](book/PLAN.md#ch-05) | Investigation, hypotheses and timeline building | 30 | 30 | 5 | Planned |
+| 1 | [01](book/PLAN.md#ch-01) | Incident lifecycle and organizational readiness | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-01) |
+| 1 | [02](book/PLAN.md#ch-02) | Authority, scope and response roles | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-02) |
+| 2 | [03](book/PLAN.md#ch-03) | Alert intake and severity assessment | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-03) |
+| 2 | [04](book/PLAN.md#ch-04) | Evidence preservation and case records | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-04) |
+| 3 | [05](book/PLAN.md#ch-05) | Investigation, hypotheses and timeline building | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-05) |
 | 3 | [06](book/PLAN.md#ch-06) | Containment planning and approvals | 30 | 30 | 5 | Planned |
 | 4 | [07](book/PLAN.md#ch-07) | Eradication and verification | 30 | 30 | 5 | Planned |
 | 4 | [08](book/PLAN.md#ch-08) | Recovery, continuity and return to service | 30 | 30 | 5 | Planned |
