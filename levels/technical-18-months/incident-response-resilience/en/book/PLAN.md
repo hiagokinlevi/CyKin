@@ -281,13 +281,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 12 and prepares Chapter 14. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 13 of 18 (outline):** [← Chapter 12 (draft)](MANUSCRIPT.md#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 (plan) →](PLAN.md#ch-14)
+**Continue studying — chapter 13 of 18 (outline):** [← Chapter 12 (draft)](MANUSCRIPT.md#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 (draft) →](MANUSCRIPT.md#ch-14)
 
 <a id="ch-14"></a>
 
 ### Chapter 14 — Scripted triage with bounded inputs and audit logs
 
-**Stage 3; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 30 planned A4 pages; 4 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-14)
 
 **Teaching purpose and relevance:** Automate repetitive analysis without hiding assumptions or changing source evidence.
 
@@ -297,17 +297,17 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A local script processing the prior synthetic case records.
 
-**Practice and exercises:** Run the script against normal and malformed inputs; compare its output with a manual sample. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Run the script against normal and malformed inputs; compare its output with a manual sample. The planned allocation is 4 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 13 and prepares Chapter 15. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 14 of 18 (outline):** [← Chapter 13 (draft)](MANUSCRIPT.md#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 (plan) →](PLAN.md#ch-15)
+**Continue studying — chapter 14 of 18 (outline):** [← Chapter 13 (draft)](MANUSCRIPT.md#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 (draft) →](MANUSCRIPT.md#ch-15)
 
 <a id="ch-15"></a>
 
 ### Chapter 15 — Cross-service incident timeline integration
 
-**Stage 3; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 30 planned A4 pages; 4 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-15)
 
 **Teaching purpose and relevance:** Build a defensible incident narrative from several partial system views.
 
@@ -317,17 +317,17 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** Synthetic identity, application and support-desk events for one possible takeover.
 
-**Practice and exercises:** Create a cross-service timeline and mark disputed transitions and unresolved questions. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Create a cross-service timeline and mark disputed transitions and unresolved questions. The planned allocation is 4 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 14 and prepares Chapter 16. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 15 of 18 (outline):** [← Chapter 14 (plan)](PLAN.md#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 (plan) →](PLAN.md#ch-16)
+**Continue studying — chapter 15 of 18 (outline):** [← Chapter 14 (draft)](MANUSCRIPT.md#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 (draft) →](MANUSCRIPT.md#ch-16)
 
 <a id="ch-16"></a>
 
 ### Chapter 16 — Technical documentation and safety
 
-**Stage 3; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 30 planned A4 pages; 4 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-16)
 
 **Teaching purpose and relevance:** Package technical decisions so another operator can reproduce and safely continue the work.
 
@@ -337,17 +337,17 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A fictional containment procedure with no owner or rollback check.
 
-**Practice and exercises:** Revise the runbook and perform a peer walk-through of failure cases. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Revise the runbook and perform a peer walk-through of failure cases. The planned allocation is 4 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 15 and prepares Chapter 17. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 16 of 18 (outline):** [← Chapter 15 (plan)](PLAN.md#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 (plan) →](PLAN.md#ch-17)
+**Continue studying — chapter 16 of 18 (outline):** [← Chapter 15 (draft)](MANUSCRIPT.md#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 (draft) →](MANUSCRIPT.md#ch-17)
 
 <a id="ch-17"></a>
 
 ### Chapter 17 — Laboratory: compare containment and restoration options
 
-**Stage 3; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 30 planned A4 pages; 4 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-17)
 
 **Teaching purpose and relevance:** Evaluate alternative response plans against measured availability and evidence constraints.
 
@@ -357,17 +357,17 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** An isolated service whose account and database show different signs of compromise.
 
-**Practice and exercises:** Test two containment paths and one restoration path; record tradeoffs and acceptance evidence. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Test two containment paths and one restoration path; record tradeoffs and acceptance evidence. The planned allocation is 4 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 16 and prepares Chapter 18. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 17 of 18 (outline):** [← Chapter 16 (plan)](PLAN.md#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 (plan) →](PLAN.md#ch-18)
+**Continue studying — chapter 17 of 18 (outline):** [← Chapter 16 (draft)](MANUSCRIPT.md#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 (draft) →](MANUSCRIPT.md#ch-18)
 
 <a id="ch-18"></a>
 
 ### Chapter 18 — Supervised technical incident case and handoff
 
-**Stage 3; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 3; 30 planned A4 pages; 4 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-18)
 
 **Teaching purpose and relevance:** Demonstrate a complete bounded technical response with a reviewable transfer of responsibility.
 
@@ -377,11 +377,11 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A staged synthetic incident spanning identity, host and application logs.
 
-**Practice and exercises:** Submit a case dossier, defend the chosen action and hand it to a second responder. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Submit a case dossier, defend the chosen action and hand it to a second responder. The planned allocation is 4 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 17 and prepares the worked-answer appendix and final assessment. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 18 of 18 (outline):** [← Chapter 17 (plan)](PLAN.md#ch-17) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+**Continue studying — chapter 18 of 18 (outline):** [← Chapter 17 (draft)](MANUSCRIPT.md#ch-17) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 ## Practical and assessment plan
 

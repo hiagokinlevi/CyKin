@@ -1,6 +1,6 @@
 ---
 name: cyberabc-incident-response-resilience-technical-38b58084
-description: "Tutor the technical Incident Response draft through thirteen authored English subjects, offline LLR/K labs and 52 worked exercises; distinguish source claims, rule output and service outcome."
+description: "Tutor the technical Incident Response draft through eighteen authored English subjects, offline LLR/K labs and 72 worked exercises; preserve staged evidence, safety gates and service outcomes."
 license: CC0-1.0
 ---
 
@@ -25,7 +25,7 @@ At the end of an authored chapter or a book-plan chapter summary, use its **Cont
 
 ## Authored technical route
 
-The English book currently authors thirteen of 18 chapters and EX001–EX052 with worked results. Teach the offline Lumen Library Reservations (LLR) fixtures at a technical operator level; Chapters 14–18 remain plans, not lessons. L4–L8 are separate branches and K9–K13 is a linked workshop; neither adds main-case evidence. Keep LLR separate from the professional CTN case.
+The English book drafts all eighteen chapters and EX001–EX072 with worked results. Teach the offline Lumen Library Reservations (LLR) fixtures at a technical operator level. L4–L8 are separate branches and K9–K18 is a linked workshop with explicitly staged later cards; neither adds main-case evidence. Keep LLR separate from the professional CTN case. Full draft coverage does not mean a completed 300-page book.
 
 | Subject | Read and test | Learner artifact |
 |---|---|---|
@@ -42,6 +42,11 @@ The English book currently authors thirteen of 18 chapters and EX001–EX052 wit
 | 11. Clock and integrity | [Chapter 11](../en/book/MANUSCRIPT.md#ch-11): time-zone conversion, offset uncertainty and raw-byte comparison. | Three-source interval proof and versioned receipts; EX041–EX044. |
 | 12. Ingest and preserve | [Chapter 12](../en/book/MANUSCRIPT.md#ch-12): source-specific schema, raw bundle and rejection report. | K12 three-source manifest, parser transcript and coverage design; EX045–EX048. |
 | 13. Conflicting alerts | [Chapter 13](../en/book/MANUSCRIPT.md#ch-13): rule predicates, session distinction and telemetry pipeline. | K13 four-line predicate transcript and versioned escalation; EX049–EX052. |
+| 14. Scripted triage | [Chapter 14](../en/book/MANUSCRIPT.md#ch-14): source/schema allowlist, deterministic payload, exception queue and human review. | K14 five-line transcript, variant rejection and approval gate; EX053–EX056. |
+| 15. Cross-service timeline | [Chapter 15](../en/book/MANUSCRIPT.md#ch-15): event-time ordering, literal versus validated joins and separate support-desk lane. | K15 two-lane chronology, four-line transcript and versioned note; EX057–EX060. |
+| 16. Documentation and safety | [Chapter 16](../en/book/MANUSCRIPT.md#ch-16): repair an unsafe runbook; separate approval, execution, verification and rollback. | K16 stop-state transcript, redline and peer handoff; EX061–EX064. |
+| 17. Control and restore comparison | [Chapter 17](../en/book/MANUSCRIPT.md#ch-17): mandatory security/business gates for targeted, broad and isolated-restore candidates. | K17 four-line gate, paired contracts and restore card; EX065–EX068. |
+| 18. Supervised case | [Chapter 18](../en/book/MANUSCRIPT.md#ch-18): staged C18-A–D releases, source/exception manifest and decision-state handoff. | Four-version dossier, peer challenge and scored handoff; EX069–EX072. |
 
 ## Technical tutoring cycle
 
@@ -49,12 +54,12 @@ The English book currently authors thirteen of 18 chapters and EX001–EX052 wit
 2. Have the learner predict each fixture's exact output, run it in a local Python 3 interpreter if desired, and compare the output with the worked result. The code checks a model, not a production system. Ask what changing one input does and why the variant does not rewrite the original record.
 3. Require an evidence/request artifact and a negative or business-function check. For Chapter 1 distinguish graph closure from measured impact; for Chapter 2 distinguish client-to-edge from edge-to-API; for Chapter 3 do not join `sid-88` to `r-202` from a shared principal label.
 4. In Chapters 4–8, ask which literal inputs are separate L4–L8 branches. Require a rejection report, an authority-and-provenance receipt, a route-level negative test, a retention anchor and a clock-uncertainty note before interpreting any output. Never merge a branch row into N01–N06 or infer a cause from one code or timestamp.
-5. In Chapters 9–13, follow the K workshop in sequence: first a bounded collection plan and byte receipt, then a control contract with service checks, then corrected time intervals, a versioned raw/derived manifest, and finally alert predicates with coverage controls. Ask which real authority remains pending at every step. Never import K rows into the main case.
-6. Score EX001–EX052 against their 0–2 rubrics and show the [worked results](../en/book/MANUSCRIPT.md#worked-results) after the learner attempts them. Use the [chapter-end navigation](../en/book/MANUSCRIPT.md#ch-01) to move forward or back. Chapter 14 is only a plan; do not mark it studied.
+5. In Chapters 9–13, follow the K workshop in sequence: bounded collection, a control contract, corrected time, raw/derived manifest and alert predicates. In Chapters 14–18, demand a deterministic review packet, literal-versus-validated timeline, stop-state runbook, security and service gate, then a staged C18-A–D dossier. Do not release a later C18 card to justify an earlier version; do not import K rows into the main case.
+6. Score EX001–EX072 against their 0–2 rubrics; show the [worked results](../en/book/MANUSCRIPT.md#worked-results) after each attempt. For open work, accept different conclusions when evidence, falsifier, owner and scope are explicit. Require a peer to challenge the final handoff's provenance and safety gates. Use the [chapter-end navigation](../en/book/MANUSCRIPT.md#ch-01) to move forward or back.
 
 ## Evidence and editorial boundaries
 
-LLR is fictional and separate from CTN. No primary source is evidence for an LLR event. RFC 5737 addresses and RFC 6761 `.test` names are documentation fixtures. A TLS handshake is not application authorization, a sampled missing API row is not proof of no request, and a shared service principal is not a human. L4–L8 are separate branch inputs and K9–K13 is a linked workshop, not main-case releases. Transport bytes do not prove application success, a toy rule is not deployment evidence, overlapping corrected times do not establish causation, rejected rows must stay visible, and an alert title may overstate its predicate. Parser success is not a validated source; matching byte digests do not authenticate an export; calculated retention is not permission; corrected clock coincidence is not causation. Thirteen authored chapters and 52 worked exercises remain a draft far short of the full technical book and 300-page A4 gate.
+LLR is fictional and separate from CTN. No primary source is evidence for an LLR event. Documentation names and addresses are fixtures. A TLS handshake is not application authorization, a sampled missing row is not proof of no request, and a shared service principal is not a human. L4–L8 and K9–K18 are separate workshop inputs, not main-case releases. K15 D15 and K18 C18-A–D are staged additions; C18-C cannot be backdated into K12. Transport bytes do not prove application success; a toy rule or derived digest is not deployment or source-authentication evidence; rejected rows remain visible. Literal session matches, sorted clocks and a queued event do not prove causation or a DB commit. The isolated restore is a lab result, not a production recovery. Eighteen draft chapters and 72 worked exercises remain short of the 300-page A4 and review gate.
 
 ## Continue the curriculum
 

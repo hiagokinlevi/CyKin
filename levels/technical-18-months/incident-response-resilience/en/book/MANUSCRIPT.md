@@ -1,7 +1,7 @@
 # Incident Response and Cyber Resilience: Technical Foundations and Lab Practice
 
 - Language: English (`en`); technical course, up to 18 months; approximately 1,200 hours of planned study.
-- Editorial state: **draft**. Chapters 1–13 of 18, EX001–EX052 and their worked results are authored. Five chapters, substantial expansion, source review, technical and accessibility review, and the 300-page A4 verification remain open.
+- Editorial state: **draft**. Chapters 1–18 of 18, EX001–EX072 and their worked results are authored. Substantial expansion, source review, technical and accessibility review, and the 300-page A4 verification remain open. Full draft-chapter coverage is not a completed book.
 - Audience: technical operators learning to model services, interpret evidence and verify controls under supervision. Entry knowledge: basic networking, operating systems, scripting and permitted lab practice.
 - Author and editorial responsibility: [hiagokinlevi](https://github.com/hiagokinlevi). Original maintainer-owned teaching text is dedicated under [CC0 1.0](../../../../../LICENSE); cited standards retain their own rights.
 - Educational boundary: every system, account, log and address in the Lumen Library Reservations case is synthetic. This book grants no access or change authority for a real environment.
@@ -10,7 +10,7 @@
 
 ## How to use this draft
 
-Read chapters 1–13 in order. Each chapter is one curricular subject and begins with a technical model, then tests it against a reproducible **offline** fixture. Before reading the worked result, write the artifact requested by an exercise and explain which observation would falsify your conclusion. Chapters 9–13 form a separate linked K workshop; they do not add observations to the main LLR case or the L8 branch. The remaining five chapter positions have summaries in the [book plan](PLAN.md); those summaries are **not authored lessons**. The finished technical course targets 72 exercises, at least 50 of which must be substantive and worked in the book, plus a verified minimum of 300 A4 pages.
+Read chapters 1–18 in order. Each chapter is one curricular subject and tests a technical model against a reproducible **offline** fixture or a supervised case task. Before reading the worked result, write the requested artifact and explain which observation would falsify your conclusion. Chapters 9–18 form a linked K workshop with explicitly labeled later branch releases; they do not add observations to the main LLR case or the L8 branch. All 72 planned exercises now have draft prompts and worked results, but the finished technical course also requires substantial expansion and a verified minimum of 300 A4 pages.
 
 The case is **Lumen Library Reservations (LLR)**, an invented reservation service. It is separate from the professional book's Cedar Training Network case. Documentation-only names and addresses follow [RFC 6761's `.test` reservation](https://www.rfc-editor.org/rfc/rfc6761.html) and [RFC 5737's TEST-NET blocks](https://www.rfc-editor.org/rfc/rfc5737.html). Do not query these names or addresses on a network; the fixtures below are sufficient. Sources support protocol and response concepts, **not** the fictional LLR observations.
 
@@ -29,9 +29,13 @@ The case is **Lumen Library Reservations (LLR)**, an invented reservation servic
 11. [Clock-offset and record-integrity verification](#ch-11) — compare uncertain time intervals and byte copies.
 12. [Laboratory: ingest and preserve synthetic incident records](#ch-12) — keep raw bundles, parse failures and derived views distinct.
 13. [Troubleshooting conflicting alerts and missing telemetry](#ch-13) — read rule predicates and source-coverage gaps.
-14–18. [Planned technical subjects](PLAN.md#ch-14) — scripted triage, recovery and final integration; teaching remains to be written.
+14. [Scripted triage with bounded inputs and audit logs](#ch-14) — deterministic review flags, exception handling and human gate.
+15. [Cross-service incident timeline integration](#ch-15) — literal joins, source clocks, missingness and staged interpretation.
+16. [Technical documentation and safety](#ch-16) — preconditions, stop states, rollback and handoff.
+17. [Laboratory: compare containment and restoration options](#ch-17) — mandatory security and service gates.
+18. [Supervised technical incident case and handoff](#ch-18) — staged evidence, versioned dossier and peer review.
 
-The worked-results appendix contains EX001–EX052, four per authored chapter. Section numbers in the manuscript are teaching sections; the course's subject index is the authoritative chapter list.
+The worked-results appendix contains EX001–EX072, four per authored chapter. Section numbers in the manuscript are teaching sections; the course's subject index is the authoritative chapter list.
 
 <a id="ch-01"></a>
 
@@ -1233,14 +1237,423 @@ If a validated producer mapping later proves A1 and I1 belong to the same s-7 na
 
 ### Subject synthesis
 
-The K13 alerts report different predicates over a limited and partly rejected record set. They can both be true without settling the reservation outcome. The technical job is to trace each claim through producer, parser, query, rule and business source, then preserve the unresolved branches. Chapter 14 is presently a **plan** for scripted triage with bounded inputs and an audit trail; stop the required authored sequence here until it is written.
+The K13 alerts report different predicates over a limited and partly rejected record set. They can both be true without settling the reservation outcome. The technical job is to trace each claim through producer, parser, query, rule and business source, then preserve the unresolved branches. Chapter 14 turns these limited inputs into a bounded, reproducible review packet.
 
 <!-- cyberabc:chapter-navigation:start ch-13 -->
 ### Continue studying — chapter 13 of 18
 
-[← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 plan →](PLAN.md#ch-14)
+[← Chapter 12](#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 →](#ch-14)
 
-The next chapter is an outline, not yet an authored lesson.
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-14"></a>
+
+## Chapter 14 — Scripted triage with bounded inputs and audit logs
+
+### Learning outcomes and connection
+
+The learner will turn the K12 intake and K13 predicate review into a repeatable, read-only triage calculation. The result is a **proposal for human review**, not an alert adjudication or a command to contain a session. By the end, the learner can specify an allowlist, reject an unexpected field or value, reproduce a result, explain an exception queue and identify the approval boundary. Chapter 13 showed that two alerts can both match their predicates while the service outcome remains unknown. Automation must preserve that distinction. [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) is a response-process reference; the K14 script and labels are original teaching fixtures.
+
+### 14.1 The data contract is the control
+
+Imagine a responder who receives a folder called “incident logs” and writes a script that recursively reads every file, extracts any line containing svc-book and posts a conclusion. That is fast but indefensible: the folder might contain personal data outside the approved scope, old copies, malformed lines, or records from unrelated producers. A bounded triage job starts with a manifest of **specific** accepted input objects, their version, expected schema, source custodian and permitted use. The job must never infer authorization from the existence of a file. For K14 the inputs are the *synthetic, accepted* K12 rows I1, I2, H1 and A1, represented below as fixed literals. K12's rejected A2 and duplicate A1 remain in the separately retained exception report. They must not disappear from the case record merely because this job consumes an accepted view.
+
+An input allowlist has at least three levels. **Object allowlist:** K12-derived-v1 is the only approved dataset for this exercise. **Schema allowlist:** each record has id, source, time, kind and optional session/request; a producer cannot silently add an actor or “confirmed compromise” field. **Value allowlist:** source must be idp, host or app; kind is interpreted only in that source's namespace. A row called “commit” from the app is not a database commit. Namespaces and source semantics matter more than attractive column names. In a real incident, the custodian, incident lead, data minimization rule and access receipt must be documented before collection or processing.
+
+The output contract is similarly narrow: accepted IDs, exception IDs with reasons, and **review flags** with the input IDs that caused each flag. A flag must not say “compromised account” when the test is “an app row is queued.” The audit record names the algorithm version, input version, result digest, run time and reviewer state. The digest detects changes to this *derived output* when recomputed; it does not authenticate source systems. Record the raw input's own provenance separately. Avoid logging secrets or full personal-data rows in an operational audit line.
+
+Idempotence here means **the same immutable input and same algorithm version produce the same decision payload**. Do not include wall-clock time in that payload; capture execution time in a separate receipt. “Rerun” does not mean a new alert may be appended twice, a ticket reopened, or an external control executed twice. Any downstream side effect needs its own idempotency key and owner-approved policy. The Python [JSON](https://docs.python.org/3/library/json.html) and [hashlib](https://docs.python.org/3/library/hashlib.html) documentation explains the local serialization and digest interfaces; it does not certify K12 provenance.
+
+### 14.2 Offline lab: a deterministic review packet
+
+Run the following Python 3 listing locally. It does not read a file, use a network or mutate a service. The manifest and rows are copied as classroom literals. In a production implementation, cap input bytes and row counts **before** parsing, pin schemas to reviewed versions, preserve raw bytes and rejection reasons, and protect the audit stream against modification. A general JSON parser alone does not impose a safe application-specific resource limit.
+
+~~~python
+import hashlib
+import json
+
+VERSION = "K14-v1"
+ALLOWED = {
+    "idp": {"success", "denied"},
+    "host": {"boot_b7"},
+    "app": {"queued"},
+}
+rows = [
+    {"id": "I1", "source": "idp", "time": "2026-10-11T11:59:59Z", "kind": "success", "session": "s-7"},
+    {"id": "I2", "source": "idp", "time": "2026-10-11T12:00:01Z", "kind": "denied", "session": "s-8"},
+    {"id": "H1", "source": "host", "time": "2026-10-11T12:00:02Z", "kind": "boot_b7"},
+    {"id": "A1", "source": "app", "time": "2026-10-11T12:00:03Z", "kind": "queued", "session": "s-7", "request": "r-601"},
+]
+fields = {"id", "source", "time", "kind", "session", "request"}
+
+def triage(packet):
+    accepted, rejected, seen = [], [], set()
+    for row in packet:
+        ident = row.get("id", "?")
+        reason = None
+        if not set(row) <= fields:
+            reason = "unexpected_field"
+        elif row.get("source") not in ALLOWED:
+            reason = "unknown_source"
+        elif row.get("kind") not in ALLOWED[row["source"]]:
+            reason = "unknown_kind"
+        elif not all(isinstance(row.get(k), str) for k in ("id", "time", "kind")):
+            reason = "bad_required_field"
+        elif (row["source"], ident) in seen:
+            reason = "duplicate_source_id"
+        if reason:
+            rejected.append({"id": ident, "reason": reason})
+            continue
+        seen.add((row["source"], ident))
+        accepted.append(row)
+    flags = []
+    for row in accepted:
+        if row["source"] == "app" and row["kind"] == "queued":
+            flags.append({"input": row["id"], "claim": "app_reports_queued"})
+        if row["source"] == "idp" and row["kind"] == "denied":
+            flags.append({"input": row["id"], "claim": "idp_reports_denial"})
+    return {"version": VERSION, "accepted": [r["id"] for r in accepted],
+            "rejected": rejected, "flags": flags}
+
+result = triage(rows)
+canonical = json.dumps(result, sort_keys=True, separators=(",", ":")).encode()
+print("accepted:", result["accepted"])
+print("rejected:", result["rejected"])
+print("flags:", [f["claim"] + ":" + f["input"] for f in result["flags"]])
+print("same_payload:", canonical == json.dumps(triage(rows), sort_keys=True, separators=(",", ":")).encode())
+print("digest_prefix:", hashlib.sha256(canonical).hexdigest()[:12])
+~~~
+
+The first three lines are the decision payload; the fourth checks repeatability; the fifth is a local fingerprint to record with algorithm and input versions. A changed output value or VERSION changes the canonical payload, but changing an accepted input time without changing these output fields can leave this digest unchanged. Therefore retain a **separate raw-input digest** and manifest; the output digest is not an input-integrity check. **Do not** place a dynamic collection timestamp inside canonical. The correct result contains four accepted IDs, zero new rejections, and two flags: queued A1 and denied I2. It contains neither a DB result nor a validated link between the two session namespaces. K12's rejected raw rows are still part of the separate upstream exception report.
+
+### 14.3 Failure injection and review gate
+
+Make a *copy* of rows and append an app row with an extra field such as actor. That row must be rejected as unexpected_field before any review flag. Append a second row reusing app A1 and it must be rejected as duplicate_source_id. Change the original A1 kind to commit and it must be rejected as unknown_kind; the code cannot invent a DB interpretation. These are rejection tests, not new K12 evidence. The current sample does not validate timestamps, optional-field types, row limits or identifier grammar; those belong in a reviewed production contract. A deceptive input such as a duplicate key inside raw JSON must be handled at the parser boundary before reaching this dictionary-based function. Mark these limits in the case review.
+
+The human review point asks four questions: do the accepted records still match their manifest and source receipts; are the K12 raw rejections visible; do the flags quote only literal predicates; and does a proposed real action have a separate approved control contract? If any answer is no, stop at “unreviewed packet,” preserve the result version and request the missing owner evidence. A script cannot approve access or a service change.
+
+### Exercises — subject 14
+
+**EX053 — Contract and lineage.** Write an input/output contract for K14 with object, schema, source-specific meanings, output fields, resource limits, raw/derived pointers and owner approval. Identify two facts the two flags cannot establish. Evidence: one-page contract. Rubric: 2 = all boundaries and limits, 1 = useful schema but missing provenance, 0 = grants authority to a script.
+
+**EX054 — Reproducible transcript.** Execute the listing twice; record the five output lines, especially the digest prefix, and explain why identical bytes depend on both VERSION and canonical serialization. Provide a separate transcript with one extra-field row. Evidence: original and variant runs. Rubric: 2 = exact output and variant rejection without overwriting original, 1 = only counts, 0 = says digest authenticates a producer.
+
+**EX055 — Exception audit.** Add one duplicate app:A1 row and one app row with kind commit to a copy. Predict rejection order, accepted count and flag count. Reconcile these two new rejections with K12's earlier two raw rejections without treating them as one pipeline event. Evidence: two-stage exception ledger. Rubric: 2 = exact code behavior and distinct stages, 1 = correct counts but merged provenance, 0 = silently drops invalid input.
+
+**EX056 — Human review gate.** Draft a six-line review note for a colleague who proposes to auto-disable svc-book from the two flags. State what extra source and service checks would discriminate harm from ordinary failure, who decides, one business check and the status of the action. Evidence: review note. Rubric: 2 = bounded flags, owner, DB outcome and safe gate, 1 = general caution, 0 = triggers unapproved revocation.
+
+### Subject synthesis
+
+The safe product of K14 is a deterministic, reviewable packet with explicit exceptions. Its highest value is exposing the gap between literal flags and an incident decision. Chapter 15 joins partial views while keeping the same provenance and uncertainty boundaries.
+
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue studying — chapter 14 of 18
+
+[← Chapter 13](#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 →](#ch-15)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-15"></a>
+
+## Chapter 15 — Cross-service incident timeline integration
+
+### Learning outcomes and connection
+
+The learner will assemble a timeline across identity, host, application and support-desk records without promoting a matching label to a proven event chain. Chapter 14 yielded a deterministic set of claims and exceptions. Chapter 15 adds **event time**, **source time**, **collection time**, **identifier namespace**, **join quality**, **missingness** and alternative interpretations. An operator should be able to show a timeline to a service owner and state exactly which transitions remain unsupported. NIST [SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) informs response governance; the K15 packet is wholly synthetic.
+
+### 15.1 A timeline has more than one axis
+
+Use K12 accepted observations: I1 at 11:59:59 reports a success under s-7; I2 at 12:00:01 reports a denial under s-8; H1 at 12:00:02 reports host boot_b7; A1 at 12:00:03 reports r-601 queued under s-7. For this exercise add **D15**, a new *fictional support-desk report* received at 12:05:00: “A patron cannot find a booking.” D15 is a person reporting a symptom, not a transaction outcome. It gives no reservation ID, session ID or authoritative database read. This addition is a **K15 branch release**; do not retroactively claim D15 was present in K12 or the main LLR case. The K11 clock-offset worksheet concerned a separate K11 fixture; its offsets must not be silently pasted onto these K12 timestamps. Until custodians verify clocks, even strict chronological order across producers is provisional.
+
+For every row record: raw object ID and immutable version; producer; event time with offset and uncertainty if supplied; ingestion and collection times if supplied; event type and literal principal/session/request fields; whether the row passed K12 validation; and which decision it might inform. “Unknown” is a valid, consequential field. The timeline should contain *rejected* A2 and duplicate A1 in an exception lane rather than pretending they never existed. A2's unparseable event time cannot be plotted as if corrected. A dashboard that omits that lane overstates completeness.
+
+There are three join strengths. **Literal co-occurrence:** I1 and A1 both spell s-7; that is a candidate relation. **Validated mapping:** IdP and app owners confirm namespace, request propagation and source copies for the bounded interval; this can support a session relation. **Authoritative outcome:** a database receipt, with owner-verified semantics, establishes whether a write committed or rolled back. One level does not imply the next. The I2 denial under s-8 does not cancel a queued A1 under s-7. H1's boot says a host restarted; without component and dependency mapping, it cannot explain either record. D15 says a patron observed a missing booking; it may reflect a UI cache, failed write, wrong account or timing. A technical narrative should preserve these competing explanations.
+
+### 15.2 Offline join-quality worksheet
+
+This listing orders five literal classroom observations. It deliberately prints a *candidate* rather than an incident conclusion. It uses no network or filesystem. Python's [datetime](https://docs.python.org/3/library/datetime.html) parser handles these explicitly UTC strings; it does not verify the producer clocks.
+
+~~~python
+from datetime import datetime
+
+events = [
+    ("I1", "idp", "2026-10-11T11:59:59+00:00", "s-7", "success"),
+    ("I2", "idp", "2026-10-11T12:00:01+00:00", "s-8", "denied"),
+    ("H1", "host", "2026-10-11T12:00:02+00:00", "", "boot_b7"),
+    ("A1", "app", "2026-10-11T12:00:03+00:00", "s-7", "r-601 queued"),
+    ("D15", "desk", "2026-10-11T12:05:00+00:00", "", "booking missing report"),
+]
+ordered = sorted(events, key=lambda row: datetime.fromisoformat(row[2]))
+print("order:", [row[0] for row in ordered])
+matching = [(a[0], b[0]) for a in events for b in events
+            if a[1] == "idp" and b[1] == "app" and a[3] and a[3] == b[3]]
+print("literal_session_candidates:", matching)
+print("denied_app_match:", any(a[4] == "denied" and (a[0], b[0]) in matching
+                                for a in events for b in events))
+print("database_outcome:", "not supplied")
+~~~
+
+The order is I1, I2, H1, A1, D15 **under supplied event-time strings**. The +00:00 forms are normalized copies of K12's Z timestamps, not the original CSV bytes. The only literal session candidate is I1/A1. The denied-app match is False, and no DB outcome is supplied. Replacing I2's session with s-7 in a copy would change the candidate list and denied-app match, but it would not authenticate the shared namespace, give D15 an ID, or prove that a booking committed. The code's nested scan is adequate for five rows, not a scalable or fully validated correlation engine.
+
+### 15.3 Build a defensible case narrative
+
+Present a two-column narrative: **observed in supplied packet** and **interpretation requiring a test**. For example: “A1 says queued” belongs in the first column; “the application persisted r-601” belongs in the second, with a database-owner receipt request. “D15 reports missing booking” is observed; “A1 caused D15” requires a patron/reservation mapping and time-window check, under privacy approval. “I1 and A1 share s-7” is observed; “same authenticated session” requires a cross-producer map. The owner should provide the mapping definition, its valid period, and positive and negative examples; a one-off equal string is insufficient.
+
+Confidence should attach to **a claim and its evidence**, not to the whole incident. A defensible note can say “high confidence that the supplied A1 string is queued under the K12 parser rules; low confidence that this packet establishes a DB outcome.” Confidence is lower if the raw export lacks authentication, the schema changed, clocks drifted or a known in-range control failed. Define the falsifier: a validated DB rollback receipt would disprove a “committed” claim; a validated different namespace would disprove the I1/A1 session join; an out-of-window support ticket would undermine a causal ordering. Do not use “no event” unless source coverage, interval, ingestion delay and query completeness have been tested.
+
+A case handoff needs a version number. If a custodian later supplies a DB row, append a **new** timeline version with its raw receipt and an explicit note on what changed. Do not silently repair A2's bad time or overwrite a prior conclusion. NIST [SP 800-86](https://csrc.nist.gov/pubs/sp/800/86/final) is an older forensic reference for evidence-handling concepts; the exact K15 join rules are local teaching design and require system-owner validation in real work.
+
+### Exercises — subject 15
+
+**EX057 — Multi-lane chronology.** Build a five-row accepted timeline plus a separate lane for A2 and duplicate A1. List producer, time status, literal claim, candidate join, owner and unknown for each accepted row. Evidence: two-lane worksheet. Rubric: 2 = all five rows and two exceptions with uncertainty, 1 = chronology without source limits, 0 = plots A2 at a fabricated time.
+
+**EX058 — Join lab and variant.** Run §15.2, record four output lines, then change only I2's session to s-7 in a copy. Report changed lines and explain three claims the variant still cannot prove. Evidence: original/variant transcript. Rubric: 2 = exact tuples and bounded inference, 1 = correct Boolean only, 0 = calls a literal match a validated compromise.
+
+**EX059 — Competing hypotheses.** Write at least three explanations for D15's report, each with a read-only discriminating source, custodian, scope and falsifier. Include at least one ordinary service-failure explanation and one potential unauthorized-change explanation without naming an attacker as fact. Evidence: hypothesis matrix. Rubric: 2 = distinct tests and privacy/authority gate, 1 = hypotheses without tests, 0 = treats D15 as DB proof.
+
+**EX060 — Versioned escalation.** Compose a 150–220-word timeline note, then a two-sentence version 2 for a hypothetical *new* owner-validated DB rollback receipt on r-601. Preserve version 1, state whether D15 is now causally explained and identify a next service check. Evidence: versioned handoff. Rubric: 2 = proper update and still-unknown D15 link, 1 = receipt noted but causal leap, 0 = rewrites old evidence.
+
+### Subject synthesis
+
+A sorted list is not a causal narrative. K15 gains value by recording the quality of each join, rejected rows and source clocks, then specifying the next owner-approved observation. Chapter 16 turns such a bounded narrative into a procedure another operator can execute or reject safely.
+
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue studying — chapter 15 of 18
+
+[← Chapter 14](#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 →](#ch-16)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-16"></a>
+
+## Chapter 16 — Technical documentation and safety
+
+### Learning outcomes and connection
+
+The learner will write a runbook that separates **observation**, **proposal**, **approval**, **execution**, **verification**, **rollback** and **handoff**. Chapter 15 produced an uncertain timeline; that uncertainty must appear in preconditions and stop conditions, not disappear when somebody writes imperative prose. The student can repair an unsafe procedure and peer-review it against a service outcome. The safety structure is an original exercise informed by incident governance in [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) and recovery testing in [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final).
+
+### 16.1 Diagnose the unsafe draft
+
+The fictional K16 draft reads: “Revoke svc-book for all services, restart the worker, delete old logs to reduce noise, announce resolved.” Every clause fails a different test. Revocation has no trigger, target scope, decision authority, duration or expected effect; it may stop legitimate R40/R41 operations. A restart can erase volatile state and replay queued jobs. Deleting logs destroys source material and obscures provenance. “Resolved” has no database, service or negative-control evidence. The draft also conflates a recommendation with permission to act. A safe revision need not always select the narrowest control—urgency may justify a broader one—but it must make the risk/authority tradeoff explicit and measurable.
+
+Start a runbook with a **purpose and applicability statement**: “Only for a confirmed, continuing unwanted write on a validated route in the named service; otherwise preserve and investigate.” Then list the case version and exact evidence IDs that support the trigger. A high-severity label alone is insufficient. State who can authorize access and who can approve an operational change. The identity owner may know session semantics, the application owner may know routing, the DB owner may know authoritative state and the incident lead may coordinate the decision. One person's technical ability to run a command is not the same as authorization to run it.
+
+Next specify a **change contract**: target identity/session and route, protected resource, intended duration/expiry, versioned configuration, operator, approver, maintenance window if relevant, and a tested rollback method. Avoid writing a live command in the public classroom example. Make all checks observable: source-linked continuing harm, known in-range telemetry control, no new unauthorized R42 write over a bounded interval, approved R40/R41 processing, patron read correctness and audit continuity. A 403 or policy-match event alone does not show that a database mutation stopped. The “no new write” result needs an authoritative DB check and a stated coverage interval. Recovery needs an isolated restore test before any production claim.
+
+The **stop condition** must be checked before and during a change. Stop if the session map is unvalidated, the evidence source is unhealthy, the target cannot be scoped, the authorized operator or approver is absent, the rollback object is missing, or the legitimate service acceptance check fails. Stopping is a recorded state, not a silent exception. If a change has already occurred and the business negative check fails, follow the approved rollback path, reconcile queued work and record the residual risk; do not assume rollback of a rule undoes database writes.
+
+### 16.2 A reviewable runbook card
+
+| Field | K16 classroom version | Required real owner evidence |
+|---|---|---|
+| Trigger | A future, source-validated continuing unwanted R42 write; K15 does **not** establish it | DB receipt, mapped route/session, timing and case approval |
+| Evidence pointer | K12 raw manifest, K13 flags, K14 packet, K15 timeline v1 | Immutable source IDs and access receipts |
+| Proposed option | Targeted temporary write restriction on confirmed session/route | Identity/application owners validate match and bypass paths |
+| Approvals | Pending | Incident lead plus affected service/control owners |
+| Before state | R40/R41 legitimate write and patron read, R42 authoritative state | Owner-backed baseline and source-health controls |
+| After/negative tests | No new R42 write; R40/R41 and patron read still correct | DB and service receipts in bounded windows |
+| Stop/rollback | Halt on missing mapping, unhealthy telemetry or service failure; restore prior control version under owner approval | Versioned rollback artifact, operator, rehearsal and reconciliation |
+| Communication | “Proposed, pending,” then “executed,” then “verified” only with separate receipts | Named recipient, time, unresolved risks and follow-up |
+
+This card is deliberately incomplete. No actual operator, expiry or production ticket is supplied; therefore it is **not executable**. A runbook is also a knowledge-transfer artifact. The next shift needs the current case version, which observations are still open, which systems were *actually* changed, when the next review is due, and how to reach the decision owner. Do not put secrets in the handoff or copy entire customer records into a general channel.
+
+### 16.3 Offline state-machine check
+
+The following code tests the words “approved” and “verified” as distinct states. It does not call a service and cannot authorize action. The exercise input deliberately lacks a validated mapping, so the control stops before execution.
+
+~~~python
+required = {"harm_observed", "mapping_validated", "owner_approved", "baseline_saved"}
+ticket = {"harm_observed": False, "mapping_validated": False,
+          "owner_approved": False, "baseline_saved": True}
+missing = sorted(k for k in required if not ticket[k])
+print("state:", "STOP" if missing else "READY_FOR_OPERATOR")
+print("missing:", missing)
+variant = dict(ticket, harm_observed=True, mapping_validated=True,
+               owner_approved=True)
+print("variant_state:", "STOP" if any(not variant[k] for k in required)
+      else "READY_FOR_OPERATOR")
+print("variant_executed:", False)
+~~~
+
+The variant reaches READY_FOR_OPERATOR **only in the toy state machine**; it has not executed anything or verified an outcome. A peer should challenge the Boolean labels: what constitutes “mapping validated,” who signed it, what expires, and where is the receipt? A checkbox without a cited source can be false assurance. If the production source becomes unavailable between approval and action, the operator must re-evaluate the precondition rather than trusting an old screenshot.
+
+### Exercises — subject 16
+
+**EX061 — Unsafe-procedure repair.** Annotate the four original commands with risk, missing precondition, required owner and a safer, conditional replacement. Do not produce executable production commands. Evidence: redlined runbook. Rubric: 2 = all four with safety and source retention, 1 = incomplete rollback/verification, 0 = keeps log deletion or unconditional revocation.
+
+**EX062 — State-machine transcript.** Run §16.3 and record four exact output lines. Change only baseline_saved to False in the variant copy and state the new variant_state and why approval alone is not readiness. Evidence: original/variant transcript. Rubric: 2 = exact results and dependency rationale, 1 = correct state only, 0 = mistakes READY for execution.
+
+**EX063 — Stop and rollback drill.** In a paper simulation, assume a targeted rule was separately approved and applied, but R40 processing fails while a portal health page remains green. Write the stop notification, rollback evidence, queue reconciliation request and residual-risk statement. Evidence: time-stamped transition ledger with *simulated* status. Rubric: 2 = owner-led rollback plus authoritative business check, 1 = restores rule without reconciling work, 0 = announces resolved.
+
+**EX064 — Peer handoff.** Produce a one-page shift handoff with case version, input/source IDs, pending approvals, changed-versus-proposed inventory, next safe read-only test, escalation owner, privacy limit and review time. Have another learner identify one ambiguity and revise the version. Evidence: v1/v2 handoff. Rubric: 2 = auditable version change and explicit uncertainty, 1 = summary without decision gate, 0 = states an unexecuted control happened.
+
+### Subject synthesis
+
+Technical documentation is part of the control system: it makes unsafe assumptions visible before they become service changes. K16 ends with a proposed runbook and a stop-state, not a production action. Chapter 17 uses the same acceptance conditions to compare alternatives in an isolated laboratory.
+
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue studying — chapter 16 of 18
+
+[← Chapter 15](#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 →](#ch-17)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-17"></a>
+
+## Chapter 17 — Laboratory: compare containment and restoration options
+
+### Learning outcomes and connection
+
+The learner will compare two containment choices and one isolated restoration candidate against explicit security, service, evidence and rollback tests. Chapter 16 supplied the approval and stop-state contract. Here the learner must **measure a candidate against that contract** without turning a paper simulation into a claim that a production system was secured. The case still lacks proof of an unauthorized committed R42 write. NIST [SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) is a recovery-planning and testing reference; the exact K17 service outcomes are original fictional fixtures.
+
+### 17.1 Define acceptance before selecting a control
+
+The K17 classroom service contract has four outcomes. **Security:** no new unauthorized R42 write in the bounded test window, established from the authoritative database and route evidence rather than a gateway response alone. **Legitimate work:** approved R40 and R41 operations reach the intended authoritative state, including queued retry behavior. **User experience:** a patron can read correct reservation state, not merely load a static page. **Audit:** raw source and control-change records remain available, with the same collection limitations documented. The exercise also requires a prior-state control version and a named rollback owner. A candidate failing one mandatory service outcome cannot be rescued by a high average score.
+
+These are *test specifications*, not facts about LLR. K10's offline predicate showed a targeted deny could leave read access and another route intact. K12/K13 showed a queued application event and an IdP denial under a different session. K14/K15 did not resolve the DB outcome. Accordingly the trigger for any real containment remains conditional: a source-validated continuing harmful action plus incident-lead and affected-owner approval. If an organization instead faces a demonstrably urgent safety risk, its authorized decision makers can choose a broader measure; this teaching packet does not grant that authority.
+
+**Option A: targeted temporary write restriction.** Scope to a validated session and write route, with expiry. A laboratory policy match could deny sess-K9 while preserving sess-W1 and sess-P1. Its strengths are reversibility and potentially smaller service effect. Its failure modes are incomplete session mapping, bypass through another route, remaining read capability and policy evaluation at a different enforcement point. Tests must cover the actual write path and an authoritative R42 state query, plus legitimate R40/R41 and patron read. A policy log alone proves only a policy decision.
+
+**Option B: broad svc-book revocation.** This may cover multiple sessions but could stop the legitimate worker and application. A quick portal health check is not sufficient: the worker could be unable to finish R40 while the static site stays green. Revocation can also complicate evidence preservation, job replay and rollback. A broad option may be appropriate under a different validated threat and owner decision, but in this simulated candidate its business acceptance fails. Record precisely which check failed rather than labeling the option “bad” in all circumstances.
+
+**Option C: isolated restore rehearsal.** Use a versioned, verified snapshot in a disconnected test environment, then compare R40/R41 state, R42 state, audit continuity and patron query correctness against owner-approved expectations. A matching digest says the candidate bytes match a recorded copy; it does not prove that the copy is clean, recent or business-correct. The recovery point must be evaluated against later legitimate changes. An isolated test that passes has **not** performed production restoration. The DB owner and service owner still need a cutover and reconciliation plan, authority, rollback and acceptance evidence. Never erase the affected source in order to “restore” a lab result. Recovery after an incident is an operational decision with data-loss and integrity consequences.
+
+### 17.2 Side-by-side classroom measurements
+
+The table is a **fictional simulation**, released only for this lab. “Receipt” means an authoritative *classroom* DB result supplied in the K17 card, not a real database export. A test outcome marked unknown is not a pass.
+
+| Candidate | R42 new write test | R40/R41 correct | Patron read correct | Audit continuity | Interpretation |
+|---|---|---|---|---|---|
+| A targeted rule | Toy policy says deny; **DB receipt missing** | Simulated pass | Simulated pass | Simulated pass | HOLD: security outcome has no authoritative result; validate route/DB receipt. |
+| B broad revoke | Simulated no new write | **Fail:** R40 worker stops | Simulated pass | Simulated pass | FAIL mandatory business acceptance; consider rollback or a separately approved emergency exception. |
+| C isolated restore | Lab DB check shows no new R42 | Lab R40/R41 reconciliation passes | Lab patron query passes | Lab manifest passes | LAB PASS only; production cutover and post-restore state remain untested. |
+
+Why is A not a pass? “No DB receipt” is an **unknown**, even when the policy simulator denies a request. Why is C not a completed recovery? The test environment lacks live queues, current accepted transactions, real traffic, production identities and cutover timing. Why not assign a weighted score? A weighted score can conceal a failed mandatory test. Use hard gates first, then compare costs and residual risks among candidates that meet them.
+
+### 17.3 Reproducible gate and negative variant
+
+The Python 3 listing prints the table's gate outcomes. Its strings describe a simulation; no service is contacted. A variant changes only A's DB receipt to True in a copy. That raises A to LAB_PASS, but **still** says nothing about real authorization or deployment.
+
+~~~python
+candidates = {
+    "A_targeted": {"db_receipt": False, "r42_new": None,
+                   "r40_r41": True, "patron": True, "audit": True},
+    "B_broad": {"db_receipt": True, "r42_new": False,
+                "r40_r41": False, "patron": True, "audit": True},
+    "C_isolated_restore": {"db_receipt": True, "r42_new": False,
+                           "r40_r41": True, "patron": True, "audit": True},
+}
+
+def gate(record):
+    if not all(record[k] for k in ("r40_r41", "patron", "audit")):
+        return "FAIL_SERVICE_OR_AUDIT"
+    if not record["db_receipt"] or record["r42_new"] is None:
+        return "HOLD_SECURITY_EVIDENCE"
+    if record["r42_new"]:
+        return "FAIL_SECURITY"
+    return "LAB_PASS_PRODUCTION_UNPROVEN"
+
+for name, record in candidates.items():
+    print(name + ":", gate(record))
+variant = dict(candidates["A_targeted"], db_receipt=True, r42_new=False)
+print("A_variant:", gate(variant))
+~~~
+
+The order of checks is intentional: a service or audit failure stops a candidate even if the security flag looks good. If the r42_new value were True with other gates passing, FAIL_SECURITY would result. A malicious or mistaken test fixture could still lie; real acceptance requires independently sourced evidence, verified query coverage and owner sign-off. A negative test can expose an error, but a small set of passing tests never proves universal containment.
+
+### 17.4 Decision record and restoration boundary
+
+A technical decision record should include candidate version, trigger evidence, system/service owners, approved scope, pre-change baseline, lab observations, real-source evidence gaps, operator, stop conditions, rollback procedure and next review time. For this K17 packet the recommended **current state is HOLD**: continue bounded, authorized collection and service verification; do not claim any option has been deployed. If a future owner supplies a source-linked continuing harmful write and validates the route, A can be considered with a time-limited approval and the four mandatory checks. If A fails, stop or roll back under the written control contract and preserve the failure evidence. B's failed R40 result demands escalation before any broader measure. C may inform a recovery plan but is not permission for a production cutover.
+
+The work is not finished when a rule is removed or a snapshot boots. The worker's queued tasks might retry, R40/R41 might need reconciliation, and customer-visible state might differ from DB rows because of cache or index delay. Assign these to named owners and require positive and negative controls. A service that is reachable can still be incorrect. Recovery documentation should retain what was observed, what was inferred, what action actually occurred and which risks remain.
+
+### Exercises — subject 17
+
+**EX065 — Gate transcript.** Run §17.3 and record all four output lines. Change A's receipt to True but leave r42_new as None in a second copy and explain why it remains on HOLD. Evidence: three transcripts and a gate explanation. Rubric: 2 = exact gate order and unknown handling, 1 = labels without mechanism, 0 = calls A production-safe.
+
+**EX066 — Two-containment comparison.** For A and B, write a control contract with trigger, scope, expiry, owner, R42/R40/R41/read/audit tests, stop condition and rollback. Identify a bypass test for A and the observed service regression for B. Evidence: paired comparison. Rubric: 2 = security plus business checks and residual risk, 1 = one-sided comparison, 0 = ignores the R40 failure.
+
+**EX067 — Isolated restore assessment.** Given the C lab pass, design a *pre-cutover* checklist for snapshot provenance, age, digest, R40/R41 reconciliation, R42 state, queue replay, patron read and rollback. Name the owner of each sign-off and one reason a byte-perfect copy might be the wrong restore point. Evidence: restore decision card. Rubric: 2 = integrity and business correctness distinguished, 1 = digest only plus one service check, 0 = announces production recovery.
+
+**EX068 — Decision under a new finding.** A hypothetical owner-validated source now shows continuing harmful R42 writes through a route not covered by A. Revise the decision record without rewriting the earlier K17 packet. Explain whether A's lab result still addresses the route, whether B can be used despite R40 failure, and the next owner-approved test. Evidence: v1/v2 decision note. Rubric: 2 = new route, authority and service tradeoff, 1 = recommends control without falsifier, 0 = assumes the current lab packet approved a change.
+
+### Subject synthesis
+
+K17 makes the test outcomes and unknowns comparable while refusing to score away a mandatory failure. A hold, a lab pass and a production-verification result are different states. Chapter 18 asks the learner to build a supervised case dossier from staged evidence and hand it to a new operator.
+
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue studying — chapter 17 of 18
+
+[← Chapter 16](#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 →](#ch-18)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-18"></a>
+
+## Chapter 18 — Supervised technical incident case and handoff
+
+### Learning outcomes and connection
+
+The learner will integrate the course's architecture, evidence, parser, timeline, control and recovery methods into a **supervised, versioned case dossier**. The assessment is not whether the learner can tell the most confident story; it is whether another operator can reproduce the evidence trail, see an unresolved question, find the correct decision owner and safely continue. Chapter 17 gave candidate tests; Chapter 18 separates evidence released at different times and asks the learner to update conclusions without hindsight. The exercise structure draws on incident coordination in [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) and exercise design in [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final), an older publication used here for planning/evaluation concepts, not for a current tool procedure.
+
+### 18.1 Stage the case without backdating knowledge
+
+K18 remains a **fictional continuation of the K workshop**, not a new fact about the main LLR case. The instructor releases four cards in order. Learners must preserve a dossier version after each release. Do not use a later card to make an earlier decision appear obvious.
+
+| Card and release | Supplied classroom material | What it can and cannot establish |
+|---|---|---|
+| C18-A, start | K12 raw/derived manifest, I1/I2/H1/A1 accepted, A2 and duplicate A1 rejected; K13 AL13-A/B | Exact parser and rule outputs; neither DB commit nor human attribution. |
+| C18-B, after first note | IdP/app custodians validate that s-7 denotes the same session namespace for I1 and A1 in the bounded interval; they do **not** map s-8 to s-7 | Strengthens one session association, not a DB outcome or a malicious-intent claim. |
+| C18-C, after revised timeline | In an explicitly synthetic variant, the DB owner provides a versioned receipt that r-601 **rolled back**; a read-only check finds R40/R41 unchanged in that snapshot | Resolves r-601's stored outcome in this branch; does not prove why D15's patron report occurred or whether other routes were affected. |
+| C18-D, final review | Service owner says the patron-visible booking discrepancy persists in the lab UI despite the C18-C DB state; index/cache telemetry and a matching patron-reservation ID are **not supplied** | Requires an application/index investigation; cannot be erased by the rollback receipt. |
+
+C18-C is a **new branch release** for assessment. It must not be retroactively described as a K12 database receipt. The original K12 packet still lacks one. C18-D may be a delayed projection or a different booking; without a validated mapping, neither is a conclusion. The defender's response at each stage is a bounded request and decision, not a production command. At C18-A and B, the safe control state is pending. At C18-C, do not claim “resolved”: a particular rolled-back request is narrower than service correctness. At C18-D, the next test is a privacy-bounded, owner-approved patron/reservation mapping and index/cache lineage check.
+
+### 18.2 Required dossier and evidence manifest
+
+Write a cover sheet with case ID, revision, time zone, decision lead, technical lead and purpose. Then attach a **source manifest**: object ID, source custodian, source claim, version, method/authority, supplied event and collection times, original-byte digest if measured, access rule and known limitation. A training packet can say “not supplied”; it must not fabricate a hash or a chain-of-custody event. Make an accepted-versus-rejected ledger with K12's three app raw rows, one accepted and two rejected. If a derived K14 flag appears, link it to its accepted input row and algorithm version, never to “system truth.”
+
+The timeline has four columns at minimum: observed record, producer and clock confidence, relationship to another record, and unresolved alternative. Keep D15's support-desk report in its own lane. The hypothesis log should name at least two alternatives: an application/index projection issue and a write-path or authorization problem. For each, list a discriminating read-only source and a result that would weaken it. State the difference between **no receipt supplied**, **receipt says rollback**, and **no write occurred anywhere**. Only the middle claim is supported after C18-C, and only for r-601 in this branch.
+
+The **decision log** uses explicit verbs: requested, approved, simulated, executed, verified, rejected. Do not write “contained” for a K10/K17 toy predicate. A safe entry might be “Requested DB outcome for r-601; pending C18-A,” later “C18-C simulated DB receipt reviewed; this branch shows rollback; no production action executed.” Store source, reviewer and time of the change. A handoff must include the previous and next case version, why a hypothesis changed, stop condition, privacy boundary, service acceptance state and next owner's name. This is especially important when a night shift inherits an impressive looking but incomplete dashboard.
+
+### 18.3 Supervised walkthrough and peer challenge
+
+Allocate one learner as operator, one as evidence reviewer, one as service owner and one as incident lead. The operator may work only with released cards. The reviewer asks whether every factual assertion has a source pointer and whether exceptions survived transformation. The service owner tests R40/R41 and patron read as separate outcomes. The incident lead distinguishes a classroom plan from any real approval. Run a short tabletop: at each release, pause, file the current version and name one decision you **would not** make yet. The peer then introduces a falsifier, such as a failed in-range app control or a cache record from a different patron. Revision must be additive; retain the earlier version.
+
+Assess the dossier on five dimensions, each scored 0–2: **provenance** (raw/derived and exceptions traceable), **inference** (literal versus validated joins), **safety** (authority, stop and rollback states), **service verification** (R40/R41/patron outcome) and **handoff** (versioned next test and owner). Maximum 10. A score of 8 with zero on safety or provenance does not pass: those are mandatory gates. An assessor should accept different hypotheses if their discriminating tests and uncertainty are explicit. A polished narrative with no source IDs scores poorly. This capstone measures technical reasoning in a controlled learning packet, not professional certification.
+
+### 18.4 Closing the loop
+
+The best final statement is intentionally limited: “In the C18 branch, I1/A1 session namespace is validated; the supplied C18-C DB receipt reports r-601 rolled back; the reported patron discrepancy remains unresolved; no production containment or recovery is evidenced here.” The team can recommend an approved index/cache and patron-mapping check, with careful handling of personal data. If that test later contradicts the rollback receipt, open a new version and ask the DB/application owners to reconcile source semantics; do not delete the contradiction. The case is ready for **handoff**, not for a claim of universal resolution.
+
+The course's 18 subject drafts and 72 worked exercises form an initial technical manuscript. They do **not** meet the required 300 verified A4 pages or complete the source, technical, language and accessibility reviews. Work through the answer appendix as a checking tool after attempting the tasks. Then use the chapter index to continue the larger curriculum in the next course; do not treat its plan chapters as finished lessons.
+
+### Exercises — subject 18
+
+**EX069 — Staged case versions.** Produce v1 after C18-A, v2 after C18-B, v3 after C18-C and v4 after C18-D. Each version must name newly supported claims, claims still unsupported and one owner-approved next observation. Evidence: four dated, source-linked entries. Rubric: 2 = no hindsight and preserved versions, 1 = good final note but earlier versions overwritten, 0 = calls C18-C a K12 fact.
+
+**EX070 — Manifest and exception reconciliation.** Build a seven-row minimum manifest/ledger covering I1, I2, H1, accepted A1, rejected A2, rejected duplicate A1 and the separate C18-C receipt. Include method, version, raw/derived status, authority and unknown fields. Explain why the K14 output digest cannot authenticate the DB receipt. Evidence: manifest and exception table. Rubric: 2 = source lineage and no invented metadata, 1 = rows without version/authority, 0 = silently accepts rejected rows.
+
+**EX071 — Safety and service peer review.** Given a peer claim “C18-C rollback proves the incident ended; revoke svc-book just in case,” write a two-paragraph review with the exact narrower finding, unresolved D15/C18-D discrepancy, approval status, R40/R41 and patron checks, stop condition and a falsifiable next test. Evidence: peer review. Rubric: 2 = rejects both unsupported resolution and unsupported action with a concrete alternative, 1 = caution without test, 0 = approves broad revocation.
+
+**EX072 — Final handoff and rubric.** Submit a 250–350-word shift handoff with case/version, evidence manifest pointer, accepted/rejected counts, validated and unvalidated joins, C18-C scope, service status, action inventory, decision owner, privacy rule, next test and rollback/stop status. Self-score the five 0–2 dimensions and ask a peer to mark one difference. Evidence: handoff and scored review. Rubric: 2 = complete reproducible handoff and honest gate, 1 = useful summary missing one required transition, 0 = claims a course or incident finished from a plan.
+
+### Subject synthesis
+
+A technical responder finishes a handoff by making uncertainty usable: another operator knows what was seen, which copy was checked, what was rejected, who may decide, what changed and what to test next. This closes the authored chapter sequence, while substantial expansion and editorial validation remain before the book can be published as complete.
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue studying — chapter 18 of 18
+
+[← Chapter 17](#ch-17) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+
+This is the final chapter of this course; the index links the next course in the full study path.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
@@ -1514,6 +1927,93 @@ If only I2's session changes to s-7 **in a copy**, the third line becomes True a
 
 **EX052 — Model versioned escalation.** “Version 1, K13 classroom packet, 12:06 UTC: AL13-A matches app A1, which reports r-601 queued under s-7. AL13-B matches IdP I2, a denial under s-8. The principal label svc-book is shared, but these are different literal sessions. K12's app input had three raw rows and only one accepted row; A2's r-602 time failed validation and a later A1 repeated an ID. This limits a negative query over accepted rows. There is no supplied database commit receipt or verified cross-producer namespace, so I cannot say that a reservation committed, a principal was universally blocked or a person acted maliciously. Real collection and control authority remain pending. I request incident-lead-approved, privacy-bounded app/IdP mapping, source-health counters and an authoritative database outcome for the narrow interval. A targeted temporary write rule could be considered **only after** a validated continuing harmful write and service-owner approval; it could interrupt the legitimate worker or miss another route. A bounded R42 no-new-write test and R40 worker check would falsify a claimed safe control if either fails. I will preserve this version and its raw/rejected evidence.” Version 2: “The custodians now validate the s-7 namespace between I1 and A1, increasing confidence in that session association, but no DB receipt was retrieved. Commitment and actor remain unknown; the same owner-approved outcome request stays open.” Alternative 170–230-word version 1 notes pass if they preserve the two sessions, rejected rows, missing DB outcome, pending approval and falsifiable next test.
 
+### Subject 14: EX053–EX056
+
+**EX053 — Model input/output contract.** Input object = K12-derived-v1, a named, immutable classroom view of accepted I1/I2/H1/A1; source objects and K12 rejection report remain separately retained. Schema = id/source/time/kind with optional session/request; allow idp success/denied, host boot, app queued only. Set an operational ceiling on bytes and rows before JSON parse, a reviewed encoding and a duplicate-key policy; the literal lab code does **not** implement these extra guards. Output = version, ordered accepted IDs, rejected ID/reason pairs, source-linked flag labels and canonical digest. The audit receipt separately records execution time, operator, algorithm version, input version and reviewer decision without copying personal data. Incident lead/custodian approval is pending outside the classroom. Flags cannot establish a DB commit or a human/attacker identity. Full credit requires these provenance and limit fields, rather than merely listing JSON keys.
+
+**EX054 — Model transcript.**
+
+~~~text
+accepted: ['I1', 'I2', 'H1', 'A1']
+rejected: []
+flags: ['idp_reports_denial:I2', 'app_reports_queued:A1']
+same_payload: True
+digest_prefix: f879f518fa2f
+~~~
+
+The digest prefix was checked by executing the printed Python 3 listing; it is a digest of the canonical *derived* payload, not of K12 raw records. It is repeatable for this exact VERSION and canonical JSON byte serialization. Appending a copy such as {id: A4, source: app, time: 12:00:04, kind: queued, actor: unknown} gives rejected = [{id: A4, reason: unexpected_field}], while the four original accepted IDs and two flags stay unchanged. The digest necessarily changes because the rejection payload changes. Changing only an accepted row's time would leave this **output** digest unchanged, so the raw-input manifest/digest is required. This variant must be labeled separately. A production parser must additionally reject duplicate JSON keys and oversized input before constructing this dictionary.
+
+**EX055 — Model exception ledger.** With a second app:A1 row appended and then an app:A3 row whose kind is commit, the new K14 reasons are, in that order, duplicate_source_id for A1 and unknown_kind for A3. Accepted remains four, flags remains two; rejected count in **this** K14 run is two. K12 earlier had two distinct app raw-row failures: A2 bad time and a duplicate A1. Those prior failures remain in the upstream K12 exception report. Do not add the counts and call them four rejected records from one intake: they are two versions/stages, and even the ID A1 appears in separate simulated inputs. The code checks kind before duplicate, so if the repeated A1 itself had an unknown kind, unknown_kind would be reported first.
+
+**EX056 — Model review note.** “K14-v1 is a deterministic review packet over accepted K12 classroom rows. I2 says denied under s-8 and A1 says r-601 queued under s-7. They are not one proven session or DB outcome. K12's two rejected app lines remain visible. I request source-owner confirmation of session namespace and producer health, then a bounded DB outcome receipt and R40/R41 service checks under incident-lead/privacy authority. Auto-disabling svc-book could interrupt legitimate work and lacks an approved trigger, operator, expiry, route scope and rollback. Action state: **not approved, not executed**. Review again if the owner validates continuing harmful write and a reversible contract with positive and negative tests.” A full-score answer names the human gate and does not let the script promote flags to approval.
+
+### Subject 15: EX057–EX060
+
+**EX057 — Model two-lane chronology.** Accepted lane, using only the supplied event-time strings: I1/idp/11:59:59/s-7 success; I2/idp/12:00:01/s-8 denied; H1/host/12:00:02/boot_b7; A1/app/12:00:03/s-7 r-601 queued; D15/desk/12:05:00/patron report. I1–A1 are a **literal candidate** only, I2 has no literal A1 session match, H1 lacks a validated causal component map, and D15 lacks a reservation ID. The producer clock accuracy and collection times are **not supplied**; list custodians idp, host, app and desk respectively. Exception lane: A2/app/raw r-602 has invalid event time and is unplottable; later raw app A1 duplicates the source ID and is excluded. A full-score sheet keeps the exception lane, uncertainty and the new D15 branch label.
+
+**EX058 — Model original transcript.**
+
+~~~text
+order: ['I1', 'I2', 'H1', 'A1', 'D15']
+literal_session_candidates: [('I1', 'A1')]
+denied_app_match: False
+database_outcome: not supplied
+~~~
+
+If only I2's session changes to s-7 in a copy, the second line becomes [('I1', 'A1'), ('I2', 'A1')] and the third becomes True; order and database_outcome stay unchanged. This would not prove the two producers use one authenticated namespace, that I2 blocked A1, or that r-601 committed. It is a counterfactual string change, not a revision to the K12 original.
+
+**EX059 — Model hypothesis matrix.** (1) UI index lag: ask app/index owner for a bounded, read-only projection lineage for the reported patron/reservation, with privacy approval; a fresh, correct index under a matched ID would weaken this. (2) Failed or rolled-back write: ask DB owner for a read-only r-601 outcome and authoritative reservation state; a validated commit and correctly matching record would weaken it. (3) Wrong-account or support-ticket mismatch: ask desk/identity owners for a minimized patron-to-booking mapping in the approved interval; a matching ID would weaken the mismatch explanation. (4) Potential unauthorized change: ask DB/app owners for a bounded audit receipt showing actor principal, route and state transition, with a coverage control; no matched state change in a validated complete source would weaken that **specific** claim, not prove no compromise anywhere. None may be called a finding from D15 alone.
+
+**EX060 — Model versioned note.** “K15 v1, classroom packet: supplied event-time strings order I1, I2, H1, A1 and D15, subject to unverified cross-producer clocks. I1 and A1 share the literal s-7 label, pending namespace validation. I2 denies s-8, which does not itself negate s-7. H1 reports a boot; no supplied dependency trace makes it the cause. A1 reports r-601 queued, not committed. D15 is a support-desk report of a missing booking without a reservation or session ID. The K12 app input includes a bad-time A2 and duplicate A1 outside the accepted lane, so absence claims about r-602 are weak. No DB outcome or validated join to D15 is supplied. Incident-lead approval is needed for privacy-bounded owner requests. I request IdP/app mapping semantics and a narrow authoritative DB outcome for r-601, then a desk/application identity match and source-health check. No control has been approved or executed. This note preserves v1 and the rejected-row pointers.” Version 2 after the hypothetical new receipt: “A separately versioned owner-validated receipt now reports r-601 rolled back in this branch; v1 remains intact. D15 still has no validated reservation mapping and cannot yet be explained causally.” A different 150–220-word v1 is acceptable if it retains every boundary.
+
+### Subject 16: EX061–EX064
+
+**EX061 — Model redline.** Replace “revoke all svc-book” with a *proposal* for a versioned, expiring, route/session-scoped control only if a validated continuing harmful action, owner approval and a rollback artifact exist. Replace “restart worker” with read-only worker/queue inspection and a service-owner plan for preserving volatile state before any authorized restart. Replace “delete old logs” with preserve originals, access receipts, retention check and minimized derived views; log deletion is not an evidence-cleanup shortcut. Replace “announce resolved” with a status that separately names security effect, authoritative R42 result, legitimate R40/R41 state, patron correctness and remaining unknowns. Every change is pending a named decision owner. Exact command syntax is neither necessary nor safe for this paper exercise.
+
+**EX062 — Model state transcript.**
+
+~~~text
+state: STOP
+missing: ['harm_observed', 'mapping_validated', 'owner_approved']
+variant_state: READY_FOR_OPERATOR
+variant_executed: False
+~~~
+
+If baseline_saved becomes False **only in the variant copy**, variant_state becomes STOP, because the required prior-state baseline is missing even if harm, mapping and approval booleans are True. The original state is unaffected. READY_FOR_OPERATOR is a toy review state, not an execution receipt or service verification; actual sign-offs must cite owner evidence and not just toggle a Boolean.
+
+**EX063 — Model stop/rollback ledger.** “12:10 simulated approval for a scoped rule; 12:11 simulated application with control version K16-R1 and prior version K16-R0 preserved; 12:12 R40 worker check fails although static portal health is green: **STOP**, notify incident lead, identity/app/worker owners and preserve the failed test source. Under the preapproved rollback contract, restore K16-R0; obtain a control-plane receipt and recheck the exact worker path, R40/R41 authoritative state, R42 bounded write state and patron read. Ask the job owner to reconcile queued/retried tasks and the DB owner to check whether any writes occurred during the interval. Rollback of a rule does not undo those writes. Residual risk and incident status remain open until source-linked acceptance results arrive.” Times are classroom markers; no production action occurred.
+
+**EX064 — Model handoff.** A full-score v1 names K16, current evidence versions K12/K13/K14/K15, case clock, pending incident/service-owner approvals, *proposed* targeted restriction versus **no executed production change**, missing DB and session mapping, read-only source-health and outcome requests, expiry/rollback owner still to be assigned, privacy-minimized request, and next review time. A peer may notice that “DB receipt” lacks a bounded route and interval. V2 adds r-601, the requested interval and DB custodian while retaining v1. Changing the note without a version marker fails the auditability criterion.
+
+### Subject 17: EX065–EX068
+
+**EX065 — Model gate transcript.**
+
+~~~text
+A_targeted: HOLD_SECURITY_EVIDENCE
+B_broad: FAIL_SERVICE_OR_AUDIT
+C_isolated_restore: LAB_PASS_PRODUCTION_UNPROVEN
+A_variant: LAB_PASS_PRODUCTION_UNPROVEN
+~~~
+
+In the second A variant, setting only db_receipt to True leaves r42_new as None, so the result is HOLD_SECURITY_EVIDENCE. A receipt's existence without a parsed, scoped result does not settle whether a new R42 write occurred. The first A variant in the listing sets **both** fields and passes the toy gate. Neither variant grants real authority or proves production containment. Check the mandatory service/audit tests before the security result: B fails even with a simulated no-write result.
+
+**EX066 — Model paired control contracts.** A: trigger is validated continuing harmful R42 write mapped to a session and write route; identity/application/incident owners approve a short-lived versioned policy; test denied route plus *authoritative* no-new-R42, legitimate R40/R41, patron read and audit continuity; test an alternate route/session for bypass; stop on mapping/telemetry failure and roll back to the recorded prior rule under owner control. B: same validated trigger and a separately justified emergency decision; target the whole svc-book principal with explicit expected worker impact, expiry and the same outcome tests; the fictional R40 worker check **fails**, so the candidate is not a normal acceptance pass. A static portal load does not compensate. The decision owner must weigh emergency harm and service failure, record authorization, consider a narrower alternative, and retain a rollback/reconciliation path. Neither contract is a production change ticket yet.
+
+**EX067 — Model restore card.** DB/recovery custodian confirms snapshot origin, object ID, version, creation time, digest and isolation; DB owner checks R40/R41 and R42 authoritative state against an approved baseline; worker owner checks outstanding queue/replay; app/service owner checks a real patron query and correctness; incident lead decides whether a cutover plan may be proposed; privacy owner approves any patron-level comparisons. Record rollback snapshot and its test, plus how to reconcile writes after the candidate recovery point. A byte-identical copy may predate a legitimate R41 booking or contain already-corrupt data, so digest equality is necessary for one integrity claim but insufficient for a correct restore. C is an isolated lab pass only.
+
+**EX068 — Model revised decision.** V1: A's toy rule covers only the original confirmed session/route and lacks an authoritative R42 result, so hold; B fails R40 and C is isolated. V2, after the *hypothetical new owner finding*: an alternate route is producing validated harmful R42 writes, so A as tested does **not** cover the new route. B still carries an observed R40 regression and needs an explicit emergency risk decision by service/incident owners; it cannot be applied merely because A is incomplete. Request the application/identity owners' read-only route map, the DB owner's bounded outcome receipt, and an offline/isolated negative test of a versioned control covering the alternate route while checking R40/R41 and patron reads. Retain V1 and state no production execution occurred.
+
+### Subject 18: EX069–EX072
+
+**EX069 — Model four-version ledger.** V1/C18-A: literal K12/K13 observations, three raw app rows/one accepted/two rejected; no validated cross-producer session or DB outcome; request bounded mapping and DB receipt. V2/C18-B: owner-validated I1/A1 s-7 namespace; I2 s-8 remains separate; DB outcome and D15 mapping unknown; request DB outcome. V3/C18-C: a **new branch** receipt reports r-601 rolled back, R40/R41 unchanged in its snapshot; D15 remains unjoined and other routes unknown; request patron/reservation and projection lineage. V4/C18-D: service owner reports a still-visible UI discrepancy in the lab; no ID/cache/index telemetry; investigate the privacy-bounded projection and reconcile with DB owner. Each version retains earlier sources and its release time; do not backfill V1 with C18-C.
+
+**EX070 — Model manifest.** Seven rows: K12 raw idp I1 and I2 (accepted by K12-derived-v1); raw host H1 (accepted); raw app A1 (accepted); raw app A2 (bad time, rejected); raw later app A1 (duplicate source ID, rejected); C18-C DB receipt (new *assessment branch* source and version, not K12). For each, fill custodian, claimed source object, permitted method/authority, raw/derived status and supplied times; where the prompt gives no byte digest, collection time or actual access receipt, write **not supplied**. Keep the derived K12 view and K14 review packet as separately linked artifacts, rather than calling them originals. The K14 digest fingerprints K14's canonical derived bytes; it cannot prove who produced the C18-C DB receipt or authenticate raw K12 objects.
+
+**EX071 — Model peer review.** “The C18-C branch receipt, if validated under its stated source semantics, reports **r-601 rolled back**. It does not show that all routes had no unauthorized writes or that the incident ended. D15 and C18-D describe a patron-visible discrepancy without a matching reservation ID or projection source. I would request an incident-lead-approved, privacy-minimized mapping and an app/index/cache lineage check with in-range source controls; a matching healthy projection would weaken the lag hypothesis, while a mismatched owner-approved ID would change the question. No production containment has been approved or executed in this exercise. Broad svc-book revocation would endanger R40/R41 work, as the K17 simulated test showed, and lacks a validated continuing-harm trigger. The owners should preserve raw receipts, confirm current R40/R41 authoritative state and patron read, and stop a proposed change if mapping, telemetry, approval or rollback is missing. An owner may consider a revised, bounded control only after evidence and service tests are documented.” Equivalent two paragraphs pass if they give that narrower outcome and falsifiable next step.
+
+**EX072 — Model final handoff.** “K18 v4, supervised classroom case; previous versions v1–v3 retained. Evidence pointers: K12 raw manifest and K12-derived-v1, K13 AL13-A/B predicate notes, K14-v1 review packet, K15 chronology, and new C18-B/C/D branch cards. K12 app intake contains three raw rows, one accepted A1 and two rejected rows (A2 bad time, later duplicate A1); I1/I2 and H1 are separately accepted. I1 and A1 share s-7 and C18-B validates their bounded session namespace. I2 reports denied s-8; it is not a confirmed block of A1. C18-C's separately versioned DB receipt reports r-601 rolled back and R40/R41 unchanged in the checked snapshot. D15's support-desk statement and C18-D's UI discrepancy are still not mapped to that reservation. No production control or recovery was executed, approved or verified by this classroom packet. The acceptance ledger shows R40/R41 unchanged only in the C18-C snapshot, not in any current live service; patron-visible correctness remains unresolved. Source clocks and D15 identity mapping are not verified. A2's rejected time also makes an absence claim from the accepted app view unreliable. Any proposed control needs a mapped route, expiry, authorized operator, prior version, authoritative R42 check, legitimate R40/R41 and patron tests, and a practiced rollback. Next, incident lead and privacy owner authorize a minimized patron/reservation match; application/index owner supplies projection lineage and source-health controls, while the DB owner reconciles the matched authoritative state. Stop any change if target, evidence, rollback or owner approval is absent. Reopen the outcome if a new validated receipt contradicts C18-C; preserve both versions. The shift owner must report the next bounded test and its deadline, not announce resolution.” A defensible self-score is 2 provenance, 2 inference, 2 safety, 1 service verification and 2 handoff = **9/10**: patron-visible correctness remains unverified. A peer may score service verification 0 if the submission omits C18-D; then the dossier does not pass that gate and must be revised. A different 250–350-word handoff passes if source IDs, exceptions, branch limits, pending authority, owner, stop state and peer rationale are explicit.
+
 ## Glossary for authored chapters
 
 - **Dependency graph:** a model of which component's behavior may be needed by another; arrows and assumptions must be explicit.
@@ -1532,6 +2032,10 @@ If only I2's session changes to s-7 **in a copy**, the third line becomes True a
 - **Uncertainty interval:** range around an estimated event time under stated clock-measurement assumptions.
 - **Raw object / derived view:** separately identified original bytes and an output created by a documented transformation.
 - **Alert predicate:** the actual source fields and rule conditions that produced an alert, narrower than its display title may suggest.
+- **Decision payload:** stable, versioned output of a bounded transform; it is neither source authentication nor authorization to act.
+- **Exception lane:** retained rejected or unplottable source records shown beside, not silently folded into, an accepted timeline.
+- **Mandatory acceptance gate:** a security or service condition that must pass independently of any aggregate preference score.
+- **Case version:** a preserved state of evidence, inference and decisions at a specified release point; later evidence creates a new version.
 
 ## References and case boundaries
 
@@ -1546,3 +2050,5 @@ If only I2's session changes to s-7 **in a copy**, the third line becomes True a
 - [NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) (2016): recovery planning and testing; L6's route and snapshot example is original.
 - [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339) (2002): timestamp format and explicit offsets used in K11; measured clock correctness is a separate question.
 - [Python datetime documentation](https://docs.python.org/3/library/datetime.html): timezone conversion interface used in K11, not a source-clock verification method.
+- [Python JSON documentation](https://docs.python.org/3/library/json.html): serialization used for the deterministic K14 payload; input-size and schema limits remain the caller's responsibility.
+- [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) (2006): exercise planning and evaluation concepts used for the K18 tabletop; implementation details require current review.

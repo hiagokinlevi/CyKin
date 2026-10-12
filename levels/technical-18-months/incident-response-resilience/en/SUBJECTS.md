@@ -22,11 +22,11 @@ English is the reference edition.
 | 2 | [10](book/PLAN.md#ch-10) | Containment control configuration in a lab | 67 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-10) | [11 · Draft](book/MANUSCRIPT.md#ch-11) |
 | 2 | [11](book/PLAN.md#ch-11) | Clock-offset and record-integrity verification | 67 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-11) | [12 · Draft](book/MANUSCRIPT.md#ch-12) |
 | 2 | [12](book/PLAN.md#ch-12) | Laboratory: ingest and preserve synthetic incident records | 67 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-12) | [13 · Draft](book/MANUSCRIPT.md#ch-13) |
-| 3 | [13](book/PLAN.md#ch-13) | Troubleshooting conflicting alerts and missing telemetry | 66 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-13) | [14 · Plan](book/PLAN.md#ch-14) |
-| 3 | [14](book/PLAN.md#ch-14) | Scripted triage with bounded inputs and audit logs | 66 | 30 | 4 | Planned | [15 · Plan](book/PLAN.md#ch-15) |
-| 3 | [15](book/PLAN.md#ch-15) | Cross-service incident timeline integration | 66 | 30 | 4 | Planned | [16 · Plan](book/PLAN.md#ch-16) |
-| 3 | [16](book/PLAN.md#ch-16) | Technical documentation and safety | 66 | 30 | 4 | Planned | [17 · Plan](book/PLAN.md#ch-17) |
-| 3 | [17](book/PLAN.md#ch-17) | Laboratory: compare containment and restoration options | 66 | 30 | 4 | Planned | [18 · Plan](book/PLAN.md#ch-18) |
-| 3 | [18](book/PLAN.md#ch-18) | Supervised technical incident case and handoff | 66 | 30 | 4 | Planned | [Course 063 →](../../digital-forensics-malware/en/SUBJECTS.md) |
+| 3 | [13](book/PLAN.md#ch-13) | Troubleshooting conflicting alerts and missing telemetry | 66 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-13) | [14 · Draft](book/MANUSCRIPT.md#ch-14) |
+| 3 | [14](book/PLAN.md#ch-14) | Scripted triage with bounded inputs and audit logs | 66 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-14) | [15 · Draft](book/MANUSCRIPT.md#ch-15) |
+| 3 | [15](book/PLAN.md#ch-15) | Cross-service incident timeline integration | 66 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-15) | [16 · Draft](book/MANUSCRIPT.md#ch-16) |
+| 3 | [16](book/PLAN.md#ch-16) | Technical documentation and safety | 66 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-16) | [17 · Draft](book/MANUSCRIPT.md#ch-17) |
+| 3 | [17](book/PLAN.md#ch-17) | Laboratory: compare containment and restoration options | 66 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-17) | [18 · Draft](book/MANUSCRIPT.md#ch-18) |
+| 3 | [18](book/PLAN.md#ch-18) | Supervised technical incident case and handoff | 66 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-18) | [Course 063 →](../../digital-forensics-malware/en/SUBJECTS.md) |
 
 A planned next step is a navigation target, not an authored lesson. Keep the completion position at the first unwritten chapter. Page and exercise columns are editorial targets. The book is complete only after its content and A4 rendering meet the publication gate.
