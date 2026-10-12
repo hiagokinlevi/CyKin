@@ -1,3 +1,13 @@
+<!-- local-deploy-policy-2026-10-12 -->
+## Política de deploy local e GitHub Actions (12/10/2026)
+
+- Não usar GitHub Actions neste repositório para CI, deploy, agendamentos ou qualquer outra automação. Não criar, habilitar ou executar workflows em `.github/workflows`.
+- Fazer deploy diretamente de um computador local autorizado para AWS, Cloudflare ou outro provedor do projeto, usando os scripts e as credenciais locais aprovadas.
+- Antes de publicar, confirmar a conta, o ambiente e o destino, executar as validações locais adequadas e identificar a versão a implantar. Depois, verificar o resultado no provedor.
+- Se faltar um procedimento local de deploy, implementá-lo e documentá-lo antes da próxima publicação. Não reativar GitHub Actions para contornar essa falta.
+- Referências antigas a GitHub Actions em outros arquivos são legado e não anulam esta política.
+<!-- /local-deploy-policy-2026-10-12 -->
+
 # CyberABC reader guidance for AI agents
 
 Start at the [home page](README.md). For a complete sequential curriculum, follow the [study path](STUDY_PATH.md): courses 001–207, then each course's `SUBJECTS.md` rows from chapter 01 to the last, following **Next step** into the next course in the same language. The [level index](levels/README.md) supports browsing, and the [AI guide](AI_GUIDE.md) explains the route. Each course links its nine language editions, one [course skill index](SKILLS.md), chapter index, book plan, authored draft when present, and [supplementary playbooks](playbooks/README.md).
