@@ -252,6 +252,11 @@ Sofia's authorisation covers ClaimChat staging for two weeks, synthetic customer
 - Testing with real customer data.
 - Continuing after finding a live problem.
 
+
+### 3.7b Storing evidence safely
+
+Screenshots of ClaimChat responses can contain customer names, claim numbers and photos. Meridian stores test evidence in a restricted folder, uses synthetic customers wherever possible, and deletes evidence on the date written in the test plan.
+
 ### Exercises
 
 - **EX011 — Authorisation.** Write an authorisation outline for Sofia's test. Rubric: 3 = systems, activities, dates, data, contacts, signature; 2 = four; 1 = two; 0 = none.
@@ -523,6 +528,11 @@ Sofia's three findings: (1) urgent callbacks via injected uploads — high; (2) 
 - Prompt edits outside change management.
 - Controls that live only in the prompt.
 
+
+### 6.7b Closing the loop with the reporter
+
+When a claims handler reports odd ClaimChat behaviour, the security team tells them what was found and what changed. People keep reporting only when reports visibly lead somewhere, so the feedback step is part of the workflow, not a courtesy.
+
 ### Exercises
 
 - **EX026 — Workflow.** Draw the workflow for a new AI feature request. Rubric: 3 = all eight steps with owners; 2 = six; 1 = three; 0 = none.
@@ -730,6 +740,11 @@ Before ClaimChat's wider launch, a manager asks Sofia to label the disclosure fi
 - One report for all audiences.
 - Overstated certainty.
 - Changing facts under pressure.
+
+
+### 9.7b Checking the message before it goes
+
+Before a report about FraudFlag errors leaves the team, a colleague who was not involved reads it for three things: whether any customer could be identified, whether uncertainty is stated honestly, and whether the recommended action is clear. Changes are made before sending.
 
 ### Exercises
 

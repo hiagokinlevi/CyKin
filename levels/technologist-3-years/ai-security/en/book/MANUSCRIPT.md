@@ -926,6 +926,11 @@ Jonas writes six scenarios. Top three: refund fraud via injected review (impact 
 - Scores without reasons.
 - Scenarios with no linked test.
 
+
+### 13.6 Reviewing scenarios over time
+
+Brightwell reviews its AI risk scenarios each quarter and after any incident. A scenario whose likelihood has changed — for example, because Ask Brightwell gained a new tool for issuing refunds — is re-rated, and its linked tests are updated in the same review.
+
 ### Exercises
 
 - **EX037 — Scenario.** Write a full scenario for CodePilot suggesting a malicious package. Rubric: 3 = all six elements; 2 = four or five; 1 = two or three; 0 = none.
@@ -1723,6 +1728,11 @@ Jonas compares the current prompt with a "separated sections" prompt on 200 held
 - Choosing sample sizes after seeing results.
 - Testing on cases used for tuning.
 
+
+### 24.7 Sharing results inside the company
+
+A short internal note summarises each applied study for the product and support teams: the question, what was found, how confident the team is and what decision it supports. Detailed methods stay in the appendix for anyone who wants to check them.
+
 ### Exercises
 
 - **EX070 — Question.** Rewrite "is our filter good?" as a testable question. Rubric: 3 = intervention, comparison, measure, setting; 2 = three; 1 = one or two; 0 = none.
@@ -1893,6 +1903,11 @@ ReturnGuard v2 runs in shadow for two weeks. It catches 18% more known fraud but
 - Big-bang releases.
 - Attack tests against real customers.
 - Go decisions without pre-set criteria.
+
+
+### 27.7 Recording the go or no-go decision
+
+The go or no-go meeting for a new Ask Brightwell version ends with a written decision: who decided, which criteria were met, which were waived and why, and the rollback trigger. That record is what an auditor or the next release team reads first.
 
 ### Exercises
 

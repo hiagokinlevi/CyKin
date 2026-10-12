@@ -424,6 +424,11 @@ Ask Lumen's public chat endpoint had no per-session limits. A synthetic load tes
 - Request limits that ignore token cost.
 - API keys embedded in browser code.
 
+
+### 7.6b Timeouts and retries on model calls
+
+Ask Lumen calls the model provider over the network, and slow responses tempt engineers to retry aggressively. Each retry resends the patient's question and costs money; unbounded retries during an outage can multiply traffic and exhaust the rate limit for every clinic. LCH caps retries at two with a growing delay and shows patients a phone number when the model is unavailable.
+
 ### Exercises
 
 - **EX019 — TLS.** Name two things TLS protects and two it does not. Rubric: 3 = confidentiality/integrity in transit, server authentication vs malicious content, injection/misuse; 2 = three; 1 = one or two; 0 = none.
@@ -503,6 +508,11 @@ DocSort's vendor sent an updated model. Rina's integrity check compared the hash
 - Loading model files without integrity checks.
 - Tests with only benign inputs.
 
+
+### 8.6b Tests that guard the parser
+
+The module that turns model output into a booking request is the most security-relevant code in Ask Lumen, because a malformed or manipulated answer could cancel the wrong appointment. LCH keeps a test file of hostile outputs — extra fields, wrong dates, two appointment IDs — and every change to the parser must pass it before merging.
+
 ### Exercises
 
 - **EX022 — Lab reading.** Which files fail the hash check in the lab and why? Rubric: 3 = model.bin and config.yaml, both changed; 2 = one; 1 = vague; 0 = wrong.
@@ -550,6 +560,11 @@ Ask Lumen's retrieval index included staff rota documents with staff phone numbe
 - String-built SQL.
 - One retrieval index for all audiences.
 - Indefinite retention of chat logs.
+
+
+### 9.6b Deleting data on request
+
+When a patient asks LCH to delete their chat history, the deletion must reach every copy: the conversation table, logs, and any vector-store entries built from those chats. The team keeps a map of where patient text flows so a request can be completed and confirmed within the clinic's stated period.
 
 ### Exercises
 
@@ -816,6 +831,11 @@ Ask Lumen booked appointments through a service account allowed to book for any 
 - Authorization decided by the model.
 - Missing links between conversations and actions in logs.
 
+
+### 13.6b Reviewing agent permissions
+
+Every quarter, LCH lists what the Ask Lumen booking tool can actually do and compares it with what the chatbot needs. A review found the tool's account could also edit clinician schedules; that right was removed, and the review record notes who approved the remaining permissions.
+
 ### Exercises
 
 - **EX037 — AAA.** Define authentication, authorization and accounting with an Ask Lumen example each. Rubric: 3 = three correct with examples; 2 = two; 1 = one; 0 = none.
@@ -1078,6 +1098,11 @@ LCH's DocSort vendor began signing releases. Rina configured the deployment scri
 - Fetching digests and keys from the same place as the files.
 - Assuming encryption prevents model leakage.
 - Keys in source code.
+
+
+### 17.6b Verifying signatures in practice
+
+Signing NoShow's model file helps only if the loader checks the signature every time and refuses to start on failure. LCH tested this by loading a copy with one byte changed: the service refused, logged the event and kept running the previous verified version.
 
 ### Exercises
 
@@ -1983,6 +2008,11 @@ Several patients were told a clinic had closed. Timeline: a partner uploaded a l
 - Changing systems before preserving logs.
 - Actions without owners.
 
+
+### 28.7b Turning causes into fixes
+
+Each cause found in an Ask Lumen review becomes a specific change with an owner: a missing output check becomes a validator, a confusing runbook step is rewritten, an untested rollback is rehearsed. The review is closed only when each change has been made and checked, not when the meeting ends.
+
 ### Exercises
 
 - **EX082 — Causes.** Classify the leaflet incident's causes into model, data, integration and process. Rubric: 3 = correct classification; 2 = most; 1 = vague; 0 = none.
@@ -2382,6 +2412,11 @@ Rina compared four Ask Lumen configurations on 500 injected and 500 benign tasks
 - Many comparisons reported as if each were the only one.
 - Ignoring the pitfall checklist.
 
+
+### 33.6b Preregistering the comparison
+
+Before running the prompt-injection study, the LCH team writes down the hypothesis, the attack set, the metric and the threshold that would count as improvement, and stores that plan with a date. Results are then compared with the plan, which stops the team from choosing a flattering metric after seeing the data.
+
 ### Exercises
 
 - **EX097 — Design.** Design a four-condition experiment for DocSort defences. Rubric: 3 = conditions, fixed factors, seeds, paired tasks, metrics; 2 = four; 1 = vague; 0 = none.
@@ -2601,6 +2636,11 @@ Rina spent six weeks with a small charity (synthetic) that used a hosted AI assi
 - Testing beyond the agreed scope.
 - Outputs without follow-up.
 
+
+### 36.7b Leaving the setting better
+
+A field placement with a community clinic ends with something the clinic can use without the student: a one-page checklist for reviewing a chatbot vendor, written in plain language and tested with the clinic manager. The student's report records what the clinic chose to adopt and what it set aside.
+
 ### Exercises
 
 - **EX106 — Proportionate output.** Propose three outputs for a five-person firm using AI assistants. Rubric: 3 = proportionate, specific; 2 = two; 1 = generic; 0 = none.
@@ -2652,6 +2692,11 @@ Peers reviewed Rina's Safe Booking Assistant evidence. Major issue: all injected
 - Feedback without fixes.
 - Defensive responses.
 - Tests written only by the defender.
+
+
+### 37.7b Recording the seminar outcome
+
+After each seminar the presenter writes a short note listing the changes agreed, the objections not accepted and why, and any new analysis to run. The note is attached to the project record so the next reviewer can see how the evidence was challenged.
 
 ### Exercises
 
@@ -2800,6 +2845,11 @@ Rina's final evaluation: 0 cross-patient bookings in 1,000 attempts (upper bound
 - Leaving out unfavourable independent results.
 - Ignoring usability.
 
+
+### 39.6b Agreeing the verdict criteria in advance
+
+The capstone's pass criteria — for example, injection success below an agreed rate on a held-out attack set, with no increase in wrong bookings — are fixed before the final evaluation. If results fall between thresholds, the report says so plainly instead of rounding toward success.
+
 ### Exercises
 
 - **EX115 — Criteria.** Check Rina's results against her criteria and say which passed. Rubric: 3 = all stated criteria assessed correctly; 2 = most; 1 = vague; 0 = none.
@@ -2894,6 +2944,11 @@ defence=separate  exfil_calls= 0/20 any_injected_call= 0/20 benign_calls=0/20
 - Theses that describe work without evaluating it.
 - Overstated novelty.
 - Presentations without a clear main result.
+
+
+### 40.7b Making the thesis reusable
+
+The thesis package includes the synthetic datasets, the evaluation scripts, the exact model and prompt versions and a short guide to rerunning the main result. Another student should be able to reproduce the key table from the package alone; the examiner may try.
 
 ### Exercises
 

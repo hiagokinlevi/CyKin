@@ -470,6 +470,11 @@ Ana draws HelpBot's system model and marks five boundaries. The injection lab il
 - Missing retrieved content as an input.
 - Mapping to OWASP without checking each item.
 
+
+### 6.6b Drawing it for the shift
+
+Kestrel's technicians keep a one-page diagram of HelpBot on the support desk wall: the customer, the assistant, the help-article store, the ticket tool and the router-restart tool, with an arrow for every path data can take. When something goes wrong, the diagram shows which component to check first.
+
 ### Exercises
 
 - **EX021 — Diagram.** Draw HelpBot's system model with trust boundaries. Rubric: 3 = components, flows, five boundaries; 2 = three or four boundaries; 1 = components only; 0 = none.
@@ -746,6 +751,11 @@ Ana runs a 100-test harness on HelpBot staging: 40 injection, 30 disclosure, 20 
 - Ad hoc tests that cannot be repeated.
 - Canaries planted in production.
 - Detectors deployed without considering alert volume.
+
+
+### 9.6b Keeping the test set current
+
+The harness's attack prompts age as HelpBot changes. Each month a technician adds new cases from recent reports and removes ones that no longer apply, recording the change so test results from different months can still be compared.
 
 ### Exercises
 
@@ -1135,6 +1145,11 @@ Customers report HelpBot telling them to "reset to factory settings" for minor i
 - Fixing in production without staging tests.
 - Not escalating possible data exposure.
 
+
+### 13.6b Writing up the fix
+
+After troubleshooting, the technician records the symptom, the cause, the fix and how it was checked in the ticket. The next person who meets the same HelpBot symptom finds the answer in minutes instead of repeating the investigation.
+
 ### Exercises
 
 - **EX049 — Steps.** Apply the five steps to "HelpBot answers in the wrong language". Rubric: 3 = all five concretely; 2 = four; 1 = two; 0 = none.
@@ -1383,6 +1398,11 @@ Ana writes the runbook "Injected content causing actions". Step 1: confirm with 
 - Runbooks only the author can follow.
 - Changes without rollback plans.
 
+
+### 16.6b Reviewing documents on a schedule
+
+Runbooks for HelpBot and SpamShield carry a review date. A runbook past its date is flagged in the team's weekly meeting and checked against the current system; out-of-date steps on a live service are a safety risk, not just untidiness.
+
 ### Exercises
 
 - **EX061 — Control doc.** Document the HelpBot token-budget control. Rubric: 3 = purpose, config, tests, owner, limits; 2 = four; 1 = two; 0 = none.
@@ -1608,6 +1628,11 @@ Ana's project secures SpamShield's partner API. Risks: extraction, evasion, pois
 - Scope changing without record.
 - Handover by email only.
 - Reflection without specific actions.
+
+
+### 18.7b Presenting the project
+
+The supervised project ends with a ten-minute presentation to the team lead: what was built, how it was verified, what is still open and who now owns it. The lead signs the handover only when the new owner confirms they can run it alone.
 
 ### Exercises
 
