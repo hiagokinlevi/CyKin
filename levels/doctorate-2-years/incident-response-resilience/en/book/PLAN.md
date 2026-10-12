@@ -21,6 +21,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ## Contents and chapter summaries
 
+These are editorial outlines. Each chapter summary ends with links to the previous position, the course index and the next position; a **draft** link opens authored teaching, while a **plan** link opens another outline.
+
 <a id="ch-01"></a>
 
 ### Chapter 01 — Advanced research integrity and methods
@@ -38,6 +40,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 **Practice and exercises:** Design a lawful, privacy-preserving research protocol and a reproducibility plan. The planned allocation is 7 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on the entry knowledge and prepares Chapter 02. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 01 of 08 (outline):** [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (plan) →](PLAN.md#ch-02)
 
 <a id="ch-02"></a>
 
@@ -57,6 +61,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 01 and prepares Chapter 03. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 02 of 08 (outline):** [← Chapter 01 (plan)](PLAN.md#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (plan) →](PLAN.md#ch-03)
+
 <a id="ch-03"></a>
 
 ### Chapter 03 — Original response-science contribution proposal
@@ -74,6 +80,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 **Practice and exercises:** Write a proposal with alternative explanations and predeclared failure conditions. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 02 and prepares Chapter 04. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 03 of 08 (outline):** [← Chapter 02 (plan)](PLAN.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (plan) →](PLAN.md#ch-04)
 
 <a id="ch-04"></a>
 
@@ -93,6 +101,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 03 and prepares Chapter 05. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 04 of 08 (outline):** [← Chapter 03 (plan)](PLAN.md#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 (plan) →](PLAN.md#ch-05)
+
 <a id="ch-05"></a>
 
 ### Chapter 05 — Main study of incident decision quality
@@ -110,6 +120,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 **Practice and exercises:** Run the protocol, preserve raw decisions and analyze both improvements and harms. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 04 and prepares Chapter 06. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 05 of 08 (outline):** [← Chapter 04 (plan)](PLAN.md#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 (plan) →](PLAN.md#ch-06)
 
 <a id="ch-06"></a>
 
@@ -129,6 +141,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 05 and prepares Chapter 07. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 06 of 08 (outline):** [← Chapter 05 (plan)](PLAN.md#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 (plan) →](PLAN.md#ch-07)
+
 <a id="ch-07"></a>
 
 ### Chapter 07 — Peer critique and revision of claims
@@ -147,6 +161,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 06 and prepares Chapter 08. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 07 of 08 (outline):** [← Chapter 06 (plan)](PLAN.md#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 (plan) →](PLAN.md#ch-08)
+
 <a id="ch-08"></a>
 
 ### Chapter 08 — Thesis synthesis and reproducibility archive
@@ -164,6 +180,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 **Practice and exercises:** Assemble the archive, defend the thesis and document permissions and remaining gaps. The planned allocation is 6 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 07 and prepares the worked-answer appendix and final assessment. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 08 of 08 (outline):** [← Chapter 07 (plan)](PLAN.md#ch-07) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 ## Practical and assessment plan
 

@@ -19,8 +19,8 @@ English is the reference edition.
 | 4 | [07](book/PLAN.md#ch-07) | Eradication and verification | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-07) | [08 · Draft](book/MANUSCRIPT.md#ch-08) |
 | 4 | [08](book/PLAN.md#ch-08) | Recovery, continuity and return to service | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-08) | [09 · Draft](book/MANUSCRIPT.md#ch-09) |
 | 5 | [09](book/PLAN.md#ch-09) | Communications, privacy and legal coordination | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-09) | [10 · Draft](book/MANUSCRIPT.md#ch-10) |
-| 5 | [10](book/PLAN.md#ch-10) | Playbook engineering and quality review | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-10) | [11 · Plan](book/PLAN.md#ch-11) |
-| 6 | [11](book/PLAN.md#ch-11) | Supervised incident simulation | 30 | 30 | 5 | Planned | [12 · Plan](book/PLAN.md#ch-12) |
-| 6 | [12](book/PLAN.md#ch-12) | Case portfolio and after-action review | 30 | 30 | 5 | Planned | [Course 040 →](../../digital-forensics-malware/en/SUBJECTS.md) |
+| 5 | [10](book/PLAN.md#ch-10) | Playbook engineering and quality review | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-10) | [11 · Draft](book/MANUSCRIPT.md#ch-11) |
+| 6 | [11](book/PLAN.md#ch-11) | Supervised incident simulation | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-11) | [12 · Draft](book/MANUSCRIPT.md#ch-12) |
+| 6 | [12](book/PLAN.md#ch-12) | Case portfolio and after-action review | 30 | 30 | 5 | [Draft](book/MANUSCRIPT.md#ch-12) | [Course 040 →](../../digital-forensics-malware/en/SUBJECTS.md) |
 
 A planned next step is a navigation target, not an authored lesson. Keep the completion position at the first unwritten chapter. Page and exercise columns are editorial targets. The book is complete only after its content and A4 rendering meet the publication gate.

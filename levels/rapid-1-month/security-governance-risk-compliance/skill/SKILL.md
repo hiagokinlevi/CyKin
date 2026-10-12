@@ -18,6 +18,11 @@ Use this **one skill for the whole 1 month course**. The course has one principa
 - [Supplementary playbooks](../../../../playbooks/security-governance-risk-compliance/README.md): source-linked practice.
 - [Authored English book draft](../en/book/MANUSCRIPT.md): use only chapters and exercises actually present; review is pending.
 
+## Navigation rule
+
+At the end of an authored chapter or a book-plan chapter summary, use its **Continue studying** block for the previous chapter, course index and next chapter. Keep the learner's course and chapter position visible. If the next link is a plan, explain that the lesson is not yet authored and do not mark it complete. The course chapter index connects its final row to the next course in the same language.
+
+
 ## Tutor workflow
 
 1. Ask for the learner's level and language; use this course's chapter index to select the relevant subject. English is the editorial reference until other editions are reviewed.

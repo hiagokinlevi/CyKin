@@ -20,6 +20,8 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 
 ## Contents and chapter summaries
 
+These are editorial outlines. Each chapter summary ends with links to the previous position, the course index and the next position; a **draft** link opens authored teaching, while a **plan** link opens another outline.
+
 <a id="ch-01"></a>
 
 ### Chapter 01 — Cybersecurity: foundations and decisions
@@ -37,6 +39,8 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 **Practice and exercises:** Classify observed facts and assumptions, map assets and justify one proportionate control. The planned allocation is 13 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on the entry knowledge and prepares Chapter 02. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 01 of 04 (outline):** [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (draft) →](MANUSCRIPT.md#ch-02)
 
 <a id="ch-02"></a>
 
@@ -56,6 +60,8 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 
 **Learning sequence:** Builds on Chapter 01 and prepares Chapter 03. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 02 of 04 (outline):** [← Chapter 01 (draft)](MANUSCRIPT.md#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (draft) →](MANUSCRIPT.md#ch-03)
+
 <a id="ch-03"></a>
 
 ### Chapter 03 — Cybersecurity: systems, data and dependencies
@@ -74,6 +80,8 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 
 **Learning sequence:** Builds on Chapter 02 and prepares Chapter 04. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 03 of 04 (outline):** [← Chapter 02 (draft)](MANUSCRIPT.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (plan) →](PLAN.md#ch-04)
+
 <a id="ch-04"></a>
 
 ### Chapter 04 — Cybersecurity: guided lab and applied synthesis
@@ -91,6 +99,8 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 **Practice and exercises:** Submit a short service-risk dossier and compare it with a worked rubric. The planned allocation is 12 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 03 and prepares the worked-answer appendix and final assessment. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 04 of 04 (outline):** [← Chapter 03 (draft)](MANUSCRIPT.md#ch-03) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 ## Practical and assessment plan
 

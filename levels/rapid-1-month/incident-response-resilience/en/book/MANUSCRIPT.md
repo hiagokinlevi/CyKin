@@ -314,6 +314,14 @@ Work from **only R1–R8** and the fictional authority rules in Chapter 1. The c
 
 **Objective:** turn an exercise weakness into a measurable preparation change. **Inputs:** the service map, authority table, R7–R8 and the section 1.8 workshop. **Output:** a three-row gap register with missing capability, consequence and owner; then an improvement ticket with priority rationale, specific change, deadline and a pass/fail drill. A score of 2 names a test that would actually demonstrate the change, such as an owner-and-alternate decision drill or a contained restore rehearsal, rather than merely publishing a policy page.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue studying — chapter 01 of 04
+
+[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-02"></a>
 
 ## Chapter 2 — Alert triage and evidence preservation
@@ -740,6 +748,14 @@ Score each numbered exercise **0** when its artifact is absent or asserts an uns
 #### EX026 — Reproducible review
 
 **Objective:** challenge an overconfident peer conclusion constructively. **Inputs:** R6, R9, R10 and R12. **Output:** a four-field review note: claim, directly supported facts, missing discriminator for B19, and authorized way to obtain it. Explain what outcome would change your view. A score of 2 preserves the possibility that training explains B17/B18 while leaving B19 unresolved; it does not assume the staff member is lying.
+
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue studying — chapter 02 of 04
+
+[← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
 
@@ -1172,6 +1188,14 @@ Use a compact 0–2 check per exercise: **0** if the requested artifact is missi
 
 **Objective:** defend a different containment path without inventing a unique right answer. **Inputs:** R18–R21 and the section 3.3 matrix. **Output:** a pause-first proposal with two assumptions, approving role, manual-queue plan, one immediate effectiveness check, a 15-minute review time and a condition for changing to narrower session action or a longer restriction. A score of 2 states that R21 records tolerance rather than execution, and includes reconciliation and service-owner sign-off before resuming writes.
 
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue studying — chapter 03 of 04
+
+[← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-04"></a>
 
 ## Chapter 4 — Guided incident simulation and after-action review
@@ -1437,6 +1461,14 @@ Use the four rounds and choose either Branch S or Branch P for your final decisi
 #### EX050 — Final handoff and self-assessment
 
 **Objective:** give a new responder a complete, auditable state without overstating closure. **Inputs:** all rounds, one chosen branch, P1/C1, V1 and the section 4.5 rubric and L2 calibration. **Output:** a one-paragraph handoff naming case and evidence, proposal versus branch-reported action and fictional approvers, current booking and audit failures, unresolved cause, owners, next review and rollback trigger. Add a six-row self-score (0–2 per tabletop output, maximum 12), identify the weakest output and write one contested-score note: which artifact a second reviewer might score differently, which exact supplied record or missing field resolves the disagreement, and what revision should be versioned rather than silently replacing an earlier round. A score of 2 requires a defensible score explanation and no zero for approval or evidence scope; the handoff must distinguish the branch result from unexecuted correction or restore work.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue studying — chapter 04 of 04
+
+[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+
+This is the final chapter of this course; the index links the next course in the full study path.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="answers"></a>
 

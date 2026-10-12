@@ -1,6 +1,6 @@
 ---
 name: cyberabc-incident-response-resilience-professional-19e11913
-description: "Tutor the professional Incident Response course through ten authored English subjects, CTN case, 50 exercises and answers; preserve case time, evidence and authority boundaries."
+description: "Tutor the professional Incident Response course through twelve drafted English subjects, CTN case, 60 exercises and answers; preserve case time, evidence and authority boundaries."
 license: CC0-1.0
 ---
 
@@ -18,9 +18,14 @@ Use this **one skill for the whole 6 months course**. The course has one princip
 - [Supplementary playbooks](../../../../playbooks/incident-response-resilience/README.md): source-linked practice.
 - [Authored English book draft](../en/book/MANUSCRIPT.md): use only chapters and exercises actually present; review is pending.
 
-## Authored ten-subject route
+## Navigation rule
 
-This six-month professional course has **12 planned subjects**. The English principal book currently authors subjects 1–10 and EX001–EX050 with answers; subjects 11–12 remain outlines. Teach only authored subjects as published text; identify an outline or your own explanation as such.
+At the end of an authored chapter or a book-plan chapter summary, use its **Continue studying** block for the previous chapter, course index and next chapter. Keep the learner's course and chapter position visible. If the next link is a plan, explain that the lesson is not yet authored and do not mark it complete. The course chapter index connects its final row to the next course in the same language.
+
+
+## Authored twelve-subject route
+
+This six-month professional course has **12 drafted subjects** and EX001–EX060 with worked answers. All chapters have a draft start, but the book has not met the 300-page A4, independent-review or publication gate. Teach only the actual manuscript as CyberABC text and identify any added explanation as supplementary.
 
 | Subject | Read and teach | Learner artifact |
 |---|---|---|
@@ -34,13 +39,15 @@ This six-month professional course has **12 planned subjects**. The English prin
 | 8. Recovery | [Chapter 8](../en/book/MANUSCRIPT.md#ch-08): data-target comparison, isolated no-go/pass, production and owner acceptance. | C25–C30 recovery gate and in-memory value diff; EX036–EX040. |
 | 9. Communications | [Chapter 9](../en/book/MANUSCRIPT.md#ch-09): service versus privacy status, message approval and versioning. | C31–C33 internal/public drafts and privacy referral; EX041–EX045. |
 | 10. Playbook quality | [Chapter 10](../en/book/MANUSCRIPT.md#ch-10): repair P0, walk P1 and score six design criteria. | Main-case, V10 and V10b branch artifacts; EX046–EX050. |
+| 11. Supervised simulation | [Chapter 11](../en/book/MANUSCRIPT.md#ch-11): staged case releases, separate clocks and observer rubric. | Six-checkpoint tabletop, decision log and three-branch handoff; EX051–EX055. |
+| 12. Portfolio and review | [Chapter 12](../en/book/MANUSCRIPT.md#ch-12): claim-to-source index, bounded metrics and owned retests. | Three-case portfolio, after-action plan and final defense; EX056–EX060. |
 
 ## Tutoring and feedback
 
 1. Check the selected chapter's learning outcomes and ask a diagnostic question. Teach at a supervised practitioner depth: require a named service, source, custodian, decision owner and verification method, not a generic list of response phases.
-2. Release only the fictional CTN cards available at that chapter checkpoint. Chapters 1–5 receive C01–C12 in book order; Chapter 6 adds C13–C19, with C16 tolerance distinct from C17 approval; Chapter 7 adds C20–C24 and a newly approved hold extension C21; Chapter 8 adds C25–C30; Chapter 9 adds C31–C33. Chapter 10 uses the case and separate P0/P1 playbook specimens. V2, V4, V6, V9, V10 and V10b are variants, never main-case observations.
+2. Release only the fictional CTN cards available at that chapter checkpoint. Chapters 1–5 receive C01–C12 in book order; Chapter 6 adds C13–C19, with C16 tolerance distinct from C17 approval; Chapter 7 adds C20–C24 and a newly approved hold extension C21; Chapter 8 adds C25–C30; Chapter 9 adds C31–C33. Chapter 10 uses the case and separate P0/P1 playbook specimens. Chapter 11 reruns staged releases and separate V10/V10b branches; Chapter 12 audits those artifacts. V2, V4, V6, V9, V10 and V10b are variants, never main-case observations.
 3. Ask the learner to produce one numbered exercise artifact before showing its worked answer. Score against that exercise's 0–2 rule. Accept an alternative conclusion only if it cites the released sources, uncertainty and authority. Then show the matching answer in the [book appendix](../en/book/MANUSCRIPT.md#worked-answers) and explain the difference.
-4. Carry the previous artifact into the next subject: readiness → authority → timed intake → source receipts → hypotheses → scoped hold → cause-to-fix → recovery gate → audience-specific status → playbook. Ask which observation would falsify each inference. End with the next authorized, bounded question, never with an invented execution result.
+4. Carry the previous artifact into the next subject: readiness → authority → timed intake → source receipts → hypotheses → scoped hold → cause-to-fix → recovery gate → audience-specific status → playbook → tabletop → portfolio. Ask which observation would falsify each inference. End with the next authorized, bounded question, never with an invented execution result.
 
 ## Case and authority boundaries
 
@@ -53,7 +60,7 @@ This six-month professional course has **12 planned subjects**. The English prin
 
 ## Editorial and language state
 
-Use the [course progress table](../../../../COURSE_WRITING_PROGRESS.md), [source audit](../../../../SOURCE_AUDIT.md) and [book standard](../../../../BOOK_STANDARD.md). Ten chapter drafts and 50 exercise-answer pairs are available in English; the 12-chapter, 60-exercise book is incomplete and has not passed 300 A4 pages or independent review. Other language folders are working outlines until translated and reviewed after the full English set.
+Use the [course progress table](../../../../COURSE_WRITING_PROGRESS.md), [source audit](../../../../SOURCE_AUDIT.md) and [book standard](../../../../BOOK_STANDARD.md). Twelve chapter drafts and 60 exercise-answer pairs are available in English; this is draft-chapter coverage, not a complete book. The manuscript has not passed 300 A4 pages or independent review. Other language folders are working outlines until translated and reviewed after the full English set.
 
 ## Continue the curriculum
 

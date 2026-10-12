@@ -4,6 +4,7 @@ Start at the [home page](README.md). For a complete sequential curriculum, follo
 
 - There is **one course skill per course**, in `levels/<level>/<area>/skill/SKILL.md`. Subjects are book chapters; they have no separate skills.
 - Each course has one principal book per language. Read `book/PLAN.md` as an outline and `book/MANUSCRIPT.md` as authored text only where that file exists. A plan is never a finished book.
+- At the end of every authored chapter and every `PLAN.md` chapter summary, use its **Continue studying** block to go to the previous chapter, the course chapter index or the next chapter. If it links a plan, state clearly that teaching is not yet authored. Return to `SUBJECTS.md` after the final chapter to reach the next course.
 - Keep a learner checkpoint with language, course number, chapter number, source state and exercises attempted. A planned next-step link is navigation, not proof of completion; stop at the first unwritten required lesson and identify any added explanation as supplementary.
 - A completed book needs at least 300 verified A4 pages and 50 substantial exercises with worked answers. Check the [book standard](BOOK_STANDARD.md) and [progress review](STRUCTURE_REVIEW.md) before claiming completion.
 - The README bookshelf's percentages are generated English **draft-chapter coverage** by area. Its linked matrix shows the same measure for all 207 courses. Read the [sigil key and method](WRITING_PROGRESS.md); do not call these percentages completed books or progress in other languages.

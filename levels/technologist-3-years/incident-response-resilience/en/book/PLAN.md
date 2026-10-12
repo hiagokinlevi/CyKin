@@ -21,6 +21,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ## Contents and chapter summaries
 
+These are editorial outlines. Each chapter summary ends with links to the previous position, the course index and the next position; a **draft** link opens authored teaching, while a **plan** link opens another outline.
+
 <a id="ch-01"></a>
 
 ### Chapter 01 — Computing systems
@@ -38,6 +40,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 **Practice and exercises:** Draw its component map and identify which failure can delay response or recovery. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on the entry knowledge and prepares Chapter 02. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 01 of 30 (outline):** [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (plan) →](PLAN.md#ch-02)
 
 <a id="ch-02"></a>
 
@@ -57,6 +61,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 01 and prepares Chapter 03. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 02 of 30 (outline):** [← Chapter 01 (plan)](PLAN.md#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (plan) →](PLAN.md#ch-03)
+
 <a id="ch-03"></a>
 
 ### Chapter 03 — Programming foundations
@@ -74,6 +80,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 **Practice and exercises:** Specify the parser, test malformed submissions and record rejected cases without losing originals. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 02 and prepares Chapter 04. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 03 of 30 (outline):** [← Chapter 02 (plan)](PLAN.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (plan) →](PLAN.md#ch-04)
 
 <a id="ch-04"></a>
 
@@ -93,6 +101,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 03 and prepares Chapter 05. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 04 of 30 (outline):** [← Chapter 03 (plan)](PLAN.md#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 (plan) →](PLAN.md#ch-05)
+
 <a id="ch-05"></a>
 
 ### Chapter 05 — Security literacy
@@ -110,6 +120,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 **Practice and exercises:** Explain the risk claim, its uncertainty and the control evidence needed before escalation. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 04 and prepares Chapter 06. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 05 of 30 (outline):** [← Chapter 04 (plan)](PLAN.md#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 (plan) →](PLAN.md#ch-06)
 
 <a id="ch-06"></a>
 
@@ -129,6 +141,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 05 and prepares Chapter 07. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 06 of 30 (outline):** [← Chapter 05 (plan)](PLAN.md#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 (plan) →](PLAN.md#ch-07)
+
 <a id="ch-07"></a>
 
 ### Chapter 07 — Identity and access foundations
@@ -146,6 +160,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 **Practice and exercises:** Build an access matrix for case review, containment approval and evidence storage. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 06 and prepares Chapter 08. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 07 of 30 (outline):** [← Chapter 06 (plan)](PLAN.md#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 (plan) →](PLAN.md#ch-08)
 
 <a id="ch-08"></a>
 
@@ -165,6 +181,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 07 and prepares Chapter 09. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 08 of 30 (outline):** [← Chapter 07 (plan)](PLAN.md#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 (plan) →](PLAN.md#ch-09)
+
 <a id="ch-09"></a>
 
 ### Chapter 09 — Evidence and measurement
@@ -182,6 +200,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 **Practice and exercises:** Audit two metrics, reconstruct denominators and flag unsupported claims. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 08 and prepares Chapter 10. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 09 of 30 (outline):** [← Chapter 08 (plan)](PLAN.md#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 (plan) →](PLAN.md#ch-10)
 
 <a id="ch-10"></a>
 
@@ -201,6 +221,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 09 and prepares Chapter 11. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 10 of 30 (outline):** [← Chapter 09 (plan)](PLAN.md#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 (plan) →](PLAN.md#ch-11)
+
 <a id="ch-11"></a>
 
 ### Chapter 11 — Asset inventory and business-service dependencies
@@ -218,6 +240,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 **Practice and exercises:** Build a dependency map and justify the order of preservation and recovery tasks. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 10 and prepares Chapter 12. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 11 of 30 (outline):** [← Chapter 10 (plan)](PLAN.md#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 (plan) →](PLAN.md#ch-12)
 
 <a id="ch-12"></a>
 
@@ -237,6 +261,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 11 and prepares Chapter 13. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 12 of 30 (outline):** [← Chapter 11 (plan)](PLAN.md#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 (plan) →](PLAN.md#ch-13)
+
 <a id="ch-13"></a>
 
 ### Chapter 13 — Incident risk scenarios and triage thresholds
@@ -254,6 +280,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 **Practice and exercises:** Define triage rules, test boundary cases and explain when a human must override them. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 12 and prepares Chapter 14. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 13 of 30 (outline):** [← Chapter 12 (plan)](PLAN.md#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 (plan) →](PLAN.md#ch-14)
 
 <a id="ch-14"></a>
 
@@ -273,6 +301,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 13 and prepares Chapter 15. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 14 of 30 (outline):** [← Chapter 13 (plan)](PLAN.md#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 (plan) →](PLAN.md#ch-15)
+
 <a id="ch-15"></a>
 
 ### Chapter 15 — Guided lab: reconstruct a bounded incident timeline
@@ -290,6 +320,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 **Practice and exercises:** Reconstruct the timeline, show disputed ordering and submit a provenance note. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 14 and prepares Chapter 16. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 15 of 30 (outline):** [← Chapter 14 (plan)](PLAN.md#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 (plan) →](PLAN.md#ch-16)
 
 <a id="ch-16"></a>
 
@@ -309,6 +341,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 15 and prepares Chapter 17. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 16 of 30 (outline):** [← Chapter 15 (plan)](PLAN.md#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 (plan) →](PLAN.md#ch-17)
+
 <a id="ch-17"></a>
 
 ### Chapter 17 — Case-management and evidence-storage tooling
@@ -326,6 +360,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 **Practice and exercises:** Configure or model case states and permissions, then test an unauthorized-access scenario. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 16 and prepares Chapter 18. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 17 of 30 (outline):** [← Chapter 16 (plan)](PLAN.md#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 (plan) →](PLAN.md#ch-18)
 
 <a id="ch-18"></a>
 
@@ -345,6 +381,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 17 and prepares Chapter 19. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 18 of 30 (outline):** [← Chapter 17 (plan)](PLAN.md#ch-17) · [Course chapter index](../SUBJECTS.md) · [Chapter 19 (plan) →](PLAN.md#ch-19)
+
 <a id="ch-19"></a>
 
 ### Chapter 19 — Detection-to-response monitoring and feedback
@@ -362,6 +400,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 **Practice and exercises:** Measure duplicate rate, revise the handoff and document the effect on triage time. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 18 and prepares Chapter 20. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 19 of 30 (outline):** [← Chapter 18 (plan)](PLAN.md#ch-18) · [Course chapter index](../SUBJECTS.md) · [Chapter 20 (plan) →](PLAN.md#ch-20)
 
 <a id="ch-20"></a>
 
@@ -381,6 +421,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 19 and prepares Chapter 21. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 20 of 30 (outline):** [← Chapter 19 (plan)](PLAN.md#ch-19) · [Course chapter index](../SUBJECTS.md) · [Chapter 21 (plan) →](PLAN.md#ch-21)
+
 <a id="ch-21"></a>
 
 ### Chapter 21 — Integrate response with service management
@@ -398,6 +440,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 **Practice and exercises:** Design the coordination path and document approval, fallback and service acceptance. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 20 and prepares Chapter 22. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 21 of 30 (outline):** [← Chapter 20 (plan)](PLAN.md#ch-20) · [Course chapter index](../SUBJECTS.md) · [Chapter 22 (plan) →](PLAN.md#ch-22)
 
 <a id="ch-22"></a>
 
@@ -417,6 +461,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 21 and prepares Chapter 23. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 22 of 30 (outline):** [← Chapter 21 (plan)](PLAN.md#ch-21) · [Course chapter index](../SUBJECTS.md) · [Chapter 23 (plan) →](PLAN.md#ch-23)
+
 <a id="ch-23"></a>
 
 ### Chapter 23 — Evaluate response latency and decision quality
@@ -434,6 +480,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 **Practice and exercises:** Compute qualified metrics and explain how missing cases change the conclusion. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 22 and prepares Chapter 24. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 23 of 30 (outline):** [← Chapter 22 (plan)](PLAN.md#ch-22) · [Course chapter index](../SUBJECTS.md) · [Chapter 24 (plan) →](PLAN.md#ch-24)
 
 <a id="ch-24"></a>
 
@@ -453,6 +501,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 23 and prepares Chapter 25. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 24 of 30 (outline):** [← Chapter 23 (plan)](PLAN.md#ch-23) · [Course chapter index](../SUBJECTS.md) · [Chapter 25 (plan) →](PLAN.md#ch-25)
+
 <a id="ch-25"></a>
 
 ### Chapter 25 — Team studio: build and critique a response workflow
@@ -470,6 +520,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 **Practice and exercises:** Draft the workflow, run a peer failure review and revise ambiguous ownership. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 24 and prepares Chapter 26. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 25 of 30 (outline):** [← Chapter 24 (plan)](PLAN.md#ch-24) · [Course chapter index](../SUBJECTS.md) · [Chapter 26 (plan) →](PLAN.md#ch-26)
 
 <a id="ch-26"></a>
 
@@ -489,6 +541,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 25 and prepares Chapter 27. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 26 of 30 (outline):** [← Chapter 25 (plan)](PLAN.md#ch-25) · [Course chapter index](../SUBJECTS.md) · [Chapter 27 (plan) →](PLAN.md#ch-27)
+
 <a id="ch-27"></a>
 
 ### Chapter 27 — Deploy and validate an incident case workflow
@@ -506,6 +560,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 **Practice and exercises:** Deploy the workflow, test authorized and unauthorized paths, and record acceptance evidence. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 26 and prepares Chapter 28. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 27 of 30 (outline):** [← Chapter 26 (plan)](PLAN.md#ch-26) · [Course chapter index](../SUBJECTS.md) · [Chapter 28 (plan) →](PLAN.md#ch-28)
 
 <a id="ch-28"></a>
 
@@ -525,6 +581,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 27 and prepares Chapter 29. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 28 of 30 (outline):** [← Chapter 27 (plan)](PLAN.md#ch-27) · [Course chapter index](../SUBJECTS.md) · [Chapter 29 (plan) →](PLAN.md#ch-29)
+
 <a id="ch-29"></a>
 
 ### Chapter 29 — Capstone: integrated response and recovery service
@@ -543,6 +601,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 28 and prepares Chapter 30. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 29 of 30 (outline):** [← Chapter 28 (plan)](PLAN.md#ch-28) · [Course chapter index](../SUBJECTS.md) · [Chapter 30 (plan) →](PLAN.md#ch-30)
+
 <a id="ch-30"></a>
 
 ### Chapter 30 — Capstone evaluation and improvement dossier
@@ -560,6 +620,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 **Practice and exercises:** Defend design choices, quantify unresolved risks and prioritize the next release's improvements. The planned allocation is 3 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 29 and prepares the worked-answer appendix and final assessment. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 30 of 30 (outline):** [← Chapter 29 (plan)](PLAN.md#ch-29) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 ## Practical and assessment plan
 

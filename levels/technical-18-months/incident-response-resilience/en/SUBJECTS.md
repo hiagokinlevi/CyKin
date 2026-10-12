@@ -10,9 +10,9 @@ English is the reference edition.
 
 | Semester | Chapter / plan | Curricular subject | Hours | Planned A4 pages | Exercise target | Teaching state | Next step |
 |---|---|---|---:|---:|---:|---|---|
-| 1 | [01](book/PLAN.md#ch-01) | Computing and service architecture | 67 | 30 | 4 | Planned | [02 · Plan](book/PLAN.md#ch-02) |
-| 1 | [02](book/PLAN.md#ch-02) | Networks and protocols | 67 | 30 | 4 | Planned | [03 · Plan](book/PLAN.md#ch-03) |
-| 1 | [03](book/PLAN.md#ch-03) | Operating systems and identities | 67 | 30 | 4 | Planned | [04 · Plan](book/PLAN.md#ch-04) |
+| 1 | [01](book/PLAN.md#ch-01) | Computing and service architecture | 67 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-01) | [02 · Draft](book/MANUSCRIPT.md#ch-02) |
+| 1 | [02](book/PLAN.md#ch-02) | Networks and protocols | 67 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-02) | [03 · Draft](book/MANUSCRIPT.md#ch-03) |
+| 1 | [03](book/PLAN.md#ch-03) | Operating systems and identities | 67 | 30 | 4 | [Draft](book/MANUSCRIPT.md#ch-03) | [04 · Plan](book/PLAN.md#ch-04) |
 | 1 | [04](book/PLAN.md#ch-04) | Scripting and data formats | 67 | 30 | 4 | Planned | [05 · Plan](book/PLAN.md#ch-05) |
 | 1 | [05](book/PLAN.md#ch-05) | Security scope and evidence | 67 | 30 | 4 | Planned | [06 · Plan](book/PLAN.md#ch-06) |
 | 1 | [06](book/PLAN.md#ch-06) | Response system models and service dependencies | 67 | 30 | 4 | Planned | [07 · Plan](book/PLAN.md#ch-07) |

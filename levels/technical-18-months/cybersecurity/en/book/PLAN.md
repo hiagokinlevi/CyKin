@@ -20,6 +20,8 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 
 ## Contents and chapter summaries
 
+These are editorial outlines. Each chapter summary ends with links to the previous position, the course index and the next position; a **draft** link opens authored teaching, while a **plan** link opens another outline.
+
 <a id="ch-01"></a>
 
 ### Chapter 01 — Computing and service architecture
@@ -37,6 +39,8 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 **Practice and exercises:** Map components and identify which changes could affect both evidence and availability. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on the entry knowledge and prepares Chapter 02. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 01 of 18 (outline):** [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (plan) →](PLAN.md#ch-02)
 
 <a id="ch-02"></a>
 
@@ -56,6 +60,8 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 
 **Learning sequence:** Builds on Chapter 01 and prepares Chapter 03. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 02 of 18 (outline):** [← Chapter 01 (plan)](PLAN.md#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (plan) →](PLAN.md#ch-03)
+
 <a id="ch-03"></a>
 
 ### Chapter 03 — Operating systems and identities
@@ -73,6 +79,8 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 **Practice and exercises:** Compare expected maintenance activity with an unexplained privilege change. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 02 and prepares Chapter 04. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 03 of 18 (outline):** [← Chapter 02 (plan)](PLAN.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (plan) →](PLAN.md#ch-04)
 
 <a id="ch-04"></a>
 
@@ -92,6 +100,8 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 
 **Learning sequence:** Builds on Chapter 03 and prepares Chapter 05. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 04 of 18 (outline):** [← Chapter 03 (plan)](PLAN.md#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 (plan) →](PLAN.md#ch-05)
+
 <a id="ch-05"></a>
 
 ### Chapter 05 — Security scope and evidence
@@ -109,6 +119,8 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 **Practice and exercises:** Prepare a scoped checklist and identify which proposed steps must be refused. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 04 and prepares Chapter 06. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 05 of 18 (outline):** [← Chapter 04 (plan)](PLAN.md#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 (plan) →](PLAN.md#ch-06)
 
 <a id="ch-06"></a>
 
@@ -128,6 +140,8 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 
 **Learning sequence:** Builds on Chapter 05 and prepares Chapter 07. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 06 of 18 (outline):** [← Chapter 05 (plan)](PLAN.md#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 (plan) →](PLAN.md#ch-07)
+
 <a id="ch-07"></a>
 
 ### Chapter 07 — Security signal sources and data quality
@@ -145,6 +159,8 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 **Practice and exercises:** Build a source-quality matrix and prioritize a bounded collection improvement. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 06 and prepares Chapter 08. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 07 of 18 (outline):** [← Chapter 06 (plan)](PLAN.md#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 (plan) →](PLAN.md#ch-08)
 
 <a id="ch-08"></a>
 
@@ -164,6 +180,8 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 
 **Learning sequence:** Builds on Chapter 07 and prepares Chapter 09. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 08 of 18 (outline):** [← Chapter 07 (plan)](PLAN.md#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 (plan) →](PLAN.md#ch-09)
+
 <a id="ch-09"></a>
 
 ### Chapter 09 — Safe configuration and inspection methods
@@ -181,6 +199,8 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 **Practice and exercises:** Capture baseline evidence, inspect settings and draft a reversible change. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 08 and prepares Chapter 10. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 09 of 18 (outline):** [← Chapter 08 (plan)](PLAN.md#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 (plan) →](PLAN.md#ch-10)
 
 <a id="ch-10"></a>
 
@@ -200,6 +220,8 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 
 **Learning sequence:** Builds on Chapter 09 and prepares Chapter 11. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 10 of 18 (outline):** [← Chapter 09 (plan)](PLAN.md#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 (plan) →](PLAN.md#ch-11)
+
 <a id="ch-11"></a>
 
 ### Chapter 11 — Control testing and evidence quality
@@ -217,6 +239,8 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 **Practice and exercises:** Design tests and state which results would falsify the effectiveness claim. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 10 and prepares Chapter 12. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 11 of 18 (outline):** [← Chapter 10 (plan)](PLAN.md#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 (plan) →](PLAN.md#ch-12)
 
 <a id="ch-12"></a>
 
@@ -236,6 +260,8 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 
 **Learning sequence:** Builds on Chapter 11 and prepares Chapter 13. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 12 of 18 (outline):** [← Chapter 11 (plan)](PLAN.md#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 (plan) →](PLAN.md#ch-13)
+
 <a id="ch-13"></a>
 
 ### Chapter 13 — Investigate inconsistent security signals
@@ -253,6 +279,8 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 **Practice and exercises:** Trace source records and explain the uncertainty that remains. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 12 and prepares Chapter 14. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 13 of 18 (outline):** [← Chapter 12 (plan)](PLAN.md#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 (plan) →](PLAN.md#ch-14)
 
 <a id="ch-14"></a>
 
@@ -272,6 +300,8 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 
 **Learning sequence:** Builds on Chapter 13 and prepares Chapter 15. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 14 of 18 (outline):** [← Chapter 13 (plan)](PLAN.md#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 (plan) →](PLAN.md#ch-15)
+
 <a id="ch-15"></a>
 
 ### Chapter 15 — Cross-service control dependencies
@@ -289,6 +319,8 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 **Practice and exercises:** Trace the impact of an account-policy change and design a regression test. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 14 and prepares Chapter 16. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 15 of 18 (outline):** [← Chapter 14 (plan)](PLAN.md#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 (plan) →](PLAN.md#ch-16)
 
 <a id="ch-16"></a>
 
@@ -308,6 +340,8 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 
 **Learning sequence:** Builds on Chapter 15 and prepares Chapter 17. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 16 of 18 (outline):** [← Chapter 15 (plan)](PLAN.md#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 (plan) →](PLAN.md#ch-17)
+
 <a id="ch-17"></a>
 
 ### Chapter 17 — Laboratory: compare prevention, detection and recovery
@@ -326,6 +360,8 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 
 **Learning sequence:** Builds on Chapter 16 and prepares Chapter 18. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 17 of 18 (outline):** [← Chapter 16 (plan)](PLAN.md#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 (plan) →](PLAN.md#ch-18)
+
 <a id="ch-18"></a>
 
 ### Chapter 18 — Supervised service-security case and handoff
@@ -343,6 +379,8 @@ These sources guide the English teaching plan. The Harbor Library case is synthe
 **Practice and exercises:** Submit a technical dossier and defend the proposed safe next actions. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 17 and prepares the worked-answer appendix and final assessment. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 18 of 18 (outline):** [← Chapter 17 (plan)](PLAN.md#ch-17) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 ## Practical and assessment plan
 

@@ -2,7 +2,7 @@
 
 **One book for this course and language.** 18 curricular subjects are its chapters. Duration: 18 months; planned effort: approximately 1200 hours. Audience: Technical operators. Entry knowledge: Networks, operating systems, scripting and safe lab practice. Intended outcome: diagnose failures, configure controls and verify outcomes in incident response and cyber resilience.
 
-**Editorial state:** structured outline; manuscript not yet authored. English reference edition.
+**Editorial state:** draft manuscript exists; release A4 validation and review pending. English reference edition.
 
 [Home](../../../../../README.md) · [Course home](../../README.md) · [Edition](../README.md) · [Chapter index](../SUBJECTS.md) · [Course skill](../../skill/SKILL.md)
 
@@ -21,11 +21,13 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 ## Contents and chapter summaries
 
+These are editorial outlines. Each chapter summary ends with links to the previous position, the course index and the next position; a **draft** link opens authored teaching, while a **plan** link opens another outline.
+
 <a id="ch-01"></a>
 
 ### Chapter 01 — Computing and service architecture
 
-**Stage 1; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 30 planned A4 pages; 4 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-01)
 
 **Teaching purpose and relevance:** Establish the service model needed to know what an incident can affect and what a change might break.
 
@@ -35,15 +37,17 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A synthetic reservation service with an identity provider, database and backup tier.
 
-**Practice and exercises:** Draw the service map, label owners and predict two cascading failures. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Draw the service map, label owners and predict two cascading failures. The planned allocation is 4 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on the entry knowledge and prepares Chapter 02. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 01 of 18 (outline):** [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (draft) →](MANUSCRIPT.md#ch-02)
 
 <a id="ch-02"></a>
 
 ### Chapter 02 — Networks and protocols
 
-**Stage 1; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 30 planned A4 pages; 4 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-02)
 
 **Teaching purpose and relevance:** Connect incident evidence to normal network behavior before interpreting an alert.
 
@@ -53,15 +57,17 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** A sanitized packet summary for the synthetic reservation service.
 
-**Practice and exercises:** Trace a client request, identify missing context and select a bounded capture point. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Trace a client request, identify missing context and select a bounded capture point. The planned allocation is 4 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 01 and prepares Chapter 03. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 02 of 18 (outline):** [← Chapter 01 (draft)](MANUSCRIPT.md#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (draft) →](MANUSCRIPT.md#ch-03)
 
 <a id="ch-03"></a>
 
 ### Chapter 03 — Operating systems and identities
 
-**Stage 1; 30 planned A4 pages; 4 planned exercises.** Planned; authored chapter pending.
+**Stage 1; 30 planned A4 pages; 4 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-03)
 
 **Teaching purpose and relevance:** Explain how host state and identities shape both attack hypotheses and safe response choices.
 
@@ -71,9 +77,11 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Worked example:** Synthetic host and identity records for a service account with unusual sign-ins.
 
-**Practice and exercises:** Map privileges, correlate events and separate suspicious behavior from expected maintenance. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Map privileges, correlate events and separate suspicious behavior from expected maintenance. The planned allocation is 4 exercises; authored tasks and worked answers appear in the linked draft, with review pending.
 
 **Learning sequence:** Builds on Chapter 02 and prepares Chapter 04. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 03 of 18 (outline):** [← Chapter 02 (draft)](MANUSCRIPT.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (plan) →](PLAN.md#ch-04)
 
 <a id="ch-04"></a>
 
@@ -93,6 +101,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 03 and prepares Chapter 05. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 04 of 18 (outline):** [← Chapter 03 (draft)](MANUSCRIPT.md#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 (plan) →](PLAN.md#ch-05)
+
 <a id="ch-05"></a>
 
 ### Chapter 05 — Security scope and evidence
@@ -110,6 +120,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 **Practice and exercises:** Build a collection checklist, reject out-of-scope steps and document evidence handling. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 04 and prepares Chapter 06. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 05 of 18 (outline):** [← Chapter 04 (plan)](PLAN.md#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 (plan) →](PLAN.md#ch-06)
 
 <a id="ch-06"></a>
 
@@ -129,6 +141,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 05 and prepares Chapter 07. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 06 of 18 (outline):** [← Chapter 05 (plan)](PLAN.md#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 (plan) →](PLAN.md#ch-07)
+
 <a id="ch-07"></a>
 
 ### Chapter 07 — Event-source mapping and log retention
@@ -146,6 +160,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 **Practice and exercises:** Build an evidence-source matrix and prioritize preservation requests. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 06 and prepares Chapter 08. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 07 of 18 (outline):** [← Chapter 06 (plan)](PLAN.md#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 (plan) →](PLAN.md#ch-08)
 
 <a id="ch-08"></a>
 
@@ -165,6 +181,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 07 and prepares Chapter 09. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 08 of 18 (outline):** [← Chapter 07 (plan)](PLAN.md#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 (plan) →](PLAN.md#ch-09)
+
 <a id="ch-09"></a>
 
 ### Chapter 09 — Host and network evidence collection methods
@@ -182,6 +200,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 **Practice and exercises:** Choose collection order, capture provenance and state the evidence limitations. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 08 and prepares Chapter 10. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 09 of 18 (outline):** [← Chapter 08 (plan)](PLAN.md#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 (plan) →](PLAN.md#ch-10)
 
 <a id="ch-10"></a>
 
@@ -201,6 +221,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 09 and prepares Chapter 11. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 10 of 18 (outline):** [← Chapter 09 (plan)](PLAN.md#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 (plan) →](PLAN.md#ch-11)
+
 <a id="ch-11"></a>
 
 ### Chapter 11 — Clock-offset and record-integrity verification
@@ -218,6 +240,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 **Practice and exercises:** Normalize timestamps, verify integrity and annotate uncertainty in event order. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 10 and prepares Chapter 12. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 11 of 18 (outline):** [← Chapter 10 (plan)](PLAN.md#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 (plan) →](PLAN.md#ch-12)
 
 <a id="ch-12"></a>
 
@@ -237,6 +261,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 11 and prepares Chapter 13. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 12 of 18 (outline):** [← Chapter 11 (plan)](PLAN.md#ch-11) · [Course chapter index](../SUBJECTS.md) · [Chapter 13 (plan) →](PLAN.md#ch-13)
+
 <a id="ch-13"></a>
 
 ### Chapter 13 — Troubleshooting conflicting alerts and missing telemetry
@@ -254,6 +280,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 **Practice and exercises:** Inspect rule inputs, document the coverage gap and revise confidence. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 12 and prepares Chapter 14. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 13 of 18 (outline):** [← Chapter 12 (plan)](PLAN.md#ch-12) · [Course chapter index](../SUBJECTS.md) · [Chapter 14 (plan) →](PLAN.md#ch-14)
 
 <a id="ch-14"></a>
 
@@ -273,6 +301,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 13 and prepares Chapter 15. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 14 of 18 (outline):** [← Chapter 13 (plan)](PLAN.md#ch-13) · [Course chapter index](../SUBJECTS.md) · [Chapter 15 (plan) →](PLAN.md#ch-15)
+
 <a id="ch-15"></a>
 
 ### Chapter 15 — Cross-service incident timeline integration
@@ -290,6 +320,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 **Practice and exercises:** Create a cross-service timeline and mark disputed transitions and unresolved questions. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 14 and prepares Chapter 16. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 15 of 18 (outline):** [← Chapter 14 (plan)](PLAN.md#ch-14) · [Course chapter index](../SUBJECTS.md) · [Chapter 16 (plan) →](PLAN.md#ch-16)
 
 <a id="ch-16"></a>
 
@@ -309,6 +341,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 15 and prepares Chapter 17. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 16 of 18 (outline):** [← Chapter 15 (plan)](PLAN.md#ch-15) · [Course chapter index](../SUBJECTS.md) · [Chapter 17 (plan) →](PLAN.md#ch-17)
+
 <a id="ch-17"></a>
 
 ### Chapter 17 — Laboratory: compare containment and restoration options
@@ -327,6 +361,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 
 **Learning sequence:** Builds on Chapter 16 and prepares Chapter 18. This is an editorial brief, not a completed lesson.
 
+**Continue studying — chapter 17 of 18 (outline):** [← Chapter 16 (plan)](PLAN.md#ch-16) · [Course chapter index](../SUBJECTS.md) · [Chapter 18 (plan) →](PLAN.md#ch-18)
+
 <a id="ch-18"></a>
 
 ### Chapter 18 — Supervised technical incident case and handoff
@@ -344,6 +380,8 @@ These are source leads, not a finished chapter bibliography. Cite the relevant p
 **Practice and exercises:** Submit a case dossier, defend the chosen action and hand it to a second responder. The planned allocation is 4 exercises; authored tasks and worked answers remain a separate completion gate.
 
 **Learning sequence:** Builds on Chapter 17 and prepares the worked-answer appendix and final assessment. This is an editorial brief, not a completed lesson.
+
+**Continue studying — chapter 18 of 18 (outline):** [← Chapter 17 (plan)](PLAN.md#ch-17) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 ## Practical and assessment plan
 

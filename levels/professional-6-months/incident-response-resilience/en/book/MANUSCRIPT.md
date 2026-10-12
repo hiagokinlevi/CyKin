@@ -1,7 +1,7 @@
 # Incident Response and Cyber Resilience: Professional Practice
 
 - Language: English (`en`); professional course, six months; approximately 360 hours of planned study.
-- Editorial state: **draft**. Subjects 1–10 of 12 have authored lessons, 50 numbered exercises and 50 worked results. Subjects 11–12, substantive expansion, technical review, editing and the 300-page A4 gate remain open.
+- Editorial state: **draft**. All 12 subjects have authored teaching, 60 numbered exercises and 60 worked results. Substantive expansion, independent technical review, editing and the 300-page A4 gate remain open.
 - Audience: new response practitioners working with a supervisor and an organization's approved procedures. Prerequisites: basic security concepts, identity, applications, logs and service ownership.
 - Author and editorial responsibility: [hiagokinlevi](https://github.com/hiagokinlevi). Original maintainer-owned text is dedicated under [CC0 1.0](../../../../../LICENSE); external sources retain their rights.
 - Educational status: this is a public learning draft, not a completed textbook, credential or authority to operate on real systems.
@@ -10,7 +10,7 @@
 
 ## How to study this draft
 
-Read the ten authored chapters in order. Each chapter is one curricular subject. Work the exercises before opening the answer section; every exercise specifies an artifact that another responder could inspect. Keep four columns in your notes: **observation, inference, decision, verification**. A plausible inference is not a collected fact. A proposed action is not approval, execution or a measured result. These distinctions matter more than a dramatic incident narrative.
+Read the twelve authored chapters in order. Each chapter is one curricular subject. Work the exercises before opening the answer section; every exercise specifies an artifact that another responder could inspect. Keep four columns in your notes: **observation, inference, decision, verification**. A plausible inference is not a collected fact. A proposed action is not approval, execution or a measured result. These distinctions matter more than a dramatic incident narrative.
 
 This course's fictional case is **Cedar Training Network (CTN)**, an invented organization with an enrollment portal. All names, accounts, ticket IDs, timestamps, systems, policies, records and retention windows below are synthetic classroom data. There are no real personal records or reachable services. Record IDs `C01`–`C33` are case cards, not externally sourced facts. A card's *event time*, *ingestion time* and *release time* can differ. Unless a chapter expressly releases a later card, use only the information available at that chapter's checkpoint. Exercise variants marked `V` and playbook specimens `P0`/`P1` are separate simulations or teaching artifacts and do not rewrite the main case.
 
@@ -28,9 +28,10 @@ The recommended starting point for organizational incident-response outcomes is 
 8. [Recovery, continuity and return to service](#ch-08) — compare data candidates and apply an acceptance gate.
 9. [Communications, privacy and legal coordination](#ch-09) — issue bounded, audience-specific drafts and referrals.
 10. [Playbook engineering and quality review](#ch-10) — repair and test a supervised decision aid.
-11–12. Supervised incident simulation and case portfolio with after-action review: **planned in the [book plan](PLAN.md), not yet authored**.
+11. [Supervised incident simulation](#ch-11) — run a time-gated tabletop with separate facilitator, responder and observer records.
+12. [Case portfolio and after-action review](#ch-12) — defend decisions from three bounded cases and turn observations into retestable improvements.
 
-The ten authored subjects each end with five exercises. The [worked-answer appendix](#worked-answers) holds EX001–EX050 in the same book. Its model artifacts are examples of defensible reasoning, not a substitute for the local rubric or authority checks. The planned complete course contains 60 exercises, including five each in the two remaining subjects.
+The twelve authored subjects each end with five exercises. The [worked-answer appendix](#worked-answers) holds EX001–EX060 in the same book. Its model artifacts are examples of defensible reasoning, not a substitute for the local rubric or authority checks. Sixty authored exercises meet the planned exercise allocation, but do not by themselves make this a completed 300-page book.
 
 <a id="ch-01"></a>
 
@@ -96,6 +97,14 @@ In a synthetic worksheet, build the five-row map, mark unverified fields and wri
 ### Subject synthesis
 
 Readiness is a set of checked service, authority and evidence assumptions. `C01` alone cannot prove either preparedness or an incident. Carry its owner gaps and retention question into Chapter 2; do not silently fill them when the scenario becomes urgent.
+
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue studying — chapter 01 of 12
+
+[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-02"></a>
 
@@ -168,6 +177,14 @@ In groups, assign analyst, service owner, identity custodian and recorder roles.
 
 The decision right belongs to a role and a bounded action, not to the incident label. C02 supports intake and owner escalation, not a tenant-wide change. Chapter 3 will add identity and application signals; revisit the options with the new cards while preserving the 09:04 record as it was.
 
+<!-- cyberabc:chapter-navigation:start ch-02 -->
+### Continue studying — chapter 02 of 12
+
+[← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-03"></a>
 
 ## Chapter 3 — Alert intake and severity assessment
@@ -238,6 +255,14 @@ In a synthetic workbook, record the case at 09:09, then reveal C06, C07 and C08 
 ### Subject synthesis
 
 The 09:14 triage record carries uncertainty forward. `P2` is a documented workload decision driven partly by the 10:00 expiry, while account misuse remains unproven. Chapter 4 will test whether a bounded export and a screenshot can be preserved with enough provenance to support later analysis.
+
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Continue studying — chapter 03 of 12
+
+[← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-04"></a>
 
@@ -325,6 +350,14 @@ One learner prepares a C09/C10 package with a request, receipt, limitation note 
 
 C09 and C10 add detail, but the case remains open: an export has an incomplete provenance record and a screenshot is not the service's source of truth. Chapter 5 will use these bounded observations to build a timeline and test multiple explanations. The analyst must carry the missing fields into the hypothesis table rather than fill them with a story.
 
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Continue studying — chapter 04 of 12
+
+[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-05"></a>
 
 ## Chapter 5 — Investigation, hypotheses and timeline building
@@ -406,6 +439,14 @@ Three learners defend H1, H2 and H3, each citing source IDs, one tension and a f
 ### Subject synthesis and next step
 
 This first five-chapter sequence moves from prepared ownership to bounded authority, triage, preservation and competing explanations. It has **not yet** performed containment, eradication or recovery. [Chapter 6](#ch-06) uses the resulting handoff to compare bounded controls and approval gates. Before moving on, a learner should be able to tell another responder what was actually observed, what remains a hypothesis, which source might resolve it and who has the right to act.
+
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue studying — chapter 05 of 12
+
+[← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-06"></a>
 
@@ -491,6 +532,14 @@ Give one learner C13–C16 and ask for a two-option comparison. A second learner
 ### Subject synthesis
 
 Containment is a controlled attempt to limit further harm. C17 authorizes only the S42 hold; C18 reports execution; C19 provides limited validation. Chapter 7 examines the likely change path and a second configuration concern, while retaining the still-unverified human attribution and the expiry of the temporary hold.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue studying — chapter 06 of 12
+
+[← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
 
@@ -586,6 +635,14 @@ One learner submits a cause-to-fix contract at 09:54. Another marks each line **
 
 C20 directly links a nonbaseline task to the S42 edit, and C24 reports that this task was disabled. The short observation window, C22 recovery-method change and unknown actor keep eradication open. Chapter 8 must restore the correct slot state, protect legitimate S40/S41 changes and test service behavior without confusing a backup copy with an accepted return to service.
 
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue studying — chapter 07 of 12
+
+[← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-08"></a>
 
 ## Chapter 8 — Recovery, continuity and return to service
@@ -677,6 +734,14 @@ Assign recovery custodian, application owner, service owner and observer roles. 
 
 CTN's limited return is supported by a data comparison, failed and passing isolated gates, a bounded production approval, observed service behavior and a 15-minute review. The case remains open for monitoring, source-quality review and possible data questions. Chapter 9 will separate operational status messages from a new, unverified privacy signal and route notice decisions to the appropriate owner.
 
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue studying — chapter 08 of 12
+
+[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 <a id="ch-09"></a>
 
 ## Chapter 9 — Communications, privacy and legal coordination
@@ -757,6 +822,14 @@ In an isolated exercise, assign incident lead, privacy steward, service owner an
 ### Subject synthesis
 
 A recovery decision and a data assessment can move at different speeds. At 11:00 the service is under monitored return, while external delivery and data scope remain unconfirmed. Chapter 10 turns the decisions and corrections across all nine subjects into a playbook that guides a future learner without hiding approvals, evidence gaps or failed tests.
+
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue studying — chapter 09 of 12
+
+[← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Chapter 10 →](#ch-10)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-10"></a>
 
@@ -842,7 +915,190 @@ Give a second learner P1, the main case up to 09:14, then release later cards at
 
 ### Subject synthesis and next step
 
-Ten sequential subjects now teach a supervised response path: prepare ownership, make bounded decisions, triage and preserve evidence, investigate alternatives, contain an observed harm path, test a cause-related change, restore correct service, communicate honestly and review the playbook itself. The public [plan for Chapters 11–12](PLAN.md#ch-11) remains a **plan**. Those subjects must use these artifacts in a supervised simulation and a case portfolio, then the whole 12-subject book needs deeper teaching, independent review and its 300-page A4 verification.
+Ten sequential subjects now teach a supervised response path: prepare ownership, make bounded decisions, triage and preserve evidence, investigate alternatives, contain an observed harm path, test a cause-related change, restore correct service, communicate honestly and review the playbook itself. Chapters 11–12 use these artifacts in a supervised simulation and case portfolio. The full book still needs deeper teaching, independent review and 300-page A4 verification.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue studying — chapter 10 of 12
+
+[← Chapter 09](#ch-09) · [Course chapter index](../SUBJECTS.md) · [Chapter 11 →](#ch-11)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-11"></a>
+
+## Chapter 11 — Supervised incident simulation
+
+### Learning outcomes and connection
+
+The learner can run a **bounded tabletop** rather than merely recite the CTN case. Given the service map, delayed case cards, a decision charter and an observer, the learner will produce time-stamped decisions, requests, stop conditions and handoffs. Chapter 10 supplied the draft P1 playbook; this chapter tests whether another reader can use it at the moment a decision is needed. Chapter 12 will turn observed failures into a portfolio and an improvement plan. Neither exercise authorizes access to a live system.
+
+[NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) describes designing, conducting and evaluating IT exercises; it is a 2006 publication, so the CTN procedure and scoring below are **original classroom adaptations**, not a current mandatory NIST method. [CISA's tabletop package documents](https://www.cisa.gov/resources-tools/resources/ctep-package-documents) distinguish planner, facilitator/evaluator and participant materials and include an after-action template. The practical lesson is to define objectives and observation criteria *before* revealing a scenario. A tabletop can reveal a missing owner or confusing handoff; it cannot prove that a control works in production. A functional test would require separate approval, isolation, safety checks and technical evidence.
+
+### 11.1 Design a test of decisions, not a dramatic story
+
+Define four observable objectives for this rehearsal: **O1**, preserve the time-sensitive IdP source through the authorized custodian; **O2**, select a proportionate containment option and keep approval, execution and verification separate; **O3**, stop a recovery candidate when a preannounced acceptance criterion fails; **O4**, communicate service status without turning an incomplete privacy assessment into a disclosure finding. For each objective specify the evidence a reviewer should see: a bounded request, an action record, a failed-test decision and two status lines. “Respond well” has no observable threshold and cannot be scored consistently.
+
+Use three clocks. The **case clock** is the UTC time printed on C cards. The **release clock** tells the facilitator when a participant may see a card. The **exercise clock** is elapsed classroom time. A participant who receives C20 in minute 30 does not thereby place its event at 09:30 UTC. Record all three separately. This is especially important for C04's four-minute device offset, C10's conditional timezone conversion and C22's 08:52 event that is only released at 09:50. Backdating a decision with late evidence would make a poor plan look prescient.
+
+The exercise is a **discussion and paper-artifact rehearsal**. The facilitator does not issue system commands, send messages, simulate actual account changes or invent missing logs. Give each role only the approved classroom packet. Use role cards for the analyst, incident lead, service owner, identity custodian, application/recovery custodian, communications/privacy reviewer and observer. One learner may play more than one role, but the recorder still names which decision right was used. The observer should not suggest the model answer while the team is deciding.
+
+### 11.2 Facilitator packet and release ledger
+
+The packet contains the public case cards as written in Chapters 1–9, the **draft** P1 specimen, a blank decision log, an objective sheet and a stop card. It contains no private contacts, personal records or production credentials. A useful release ledger for a 70-minute classroom exercise is below. The exercise-minute ranges are a facilitation plan; the listed UTC times remain the case's own sequence.
+
+| Exercise minute | Release to participants | Decision checkpoint | Observer looks for |
+|---:|---|---|---|
+| 0–10 | C01–C02 only | Open case; identify owner gaps and safe first request. | Report distinguished from verified state; no account disablement. |
+| 10–20 | C03–C08 at their stated case releases through 09:14 | Set provisional priority; seek bounded IdP preservation before the stated 10:00 expiry. | Event, ingestion, case receipt and release times separated; request is not falsely marked collected. |
+| 20–30 | C09–C16 through 09:35 | Reconcile C09 provenance gap, conditional C10 time, C13 state, C14 manifest and C15 approval ledger; compare holds. | `s-77` is not invented as `q-144`'s actor; C16 tolerance is not treated as approval. |
+| 30–40 | C17–C24 through the 10:07 checkpoint | Record bounded hold approval, C18 execution, limited C19 check, C21 extension and expiry; review task and recovery-method paths. | C20/C22 are not imported into the earlier 09:42 decision; the 10:07 gap is named. |
+| 40–55 | C25–C30 through 10:45 | Compare snapshot with current legitimate reservations; stop C27, retest C28, distinguish C29 production and C30 monitoring acceptance. | First failed criterion is named; a valid snapshot digest is not a correct whole restore. |
+| 55–70 | C31–C33 through 11:00 | Maintain separate service and data-assessment lines; create approval-gated drafts and an unresolved-evidence request. | `not-dispatched` is confined to this inspected queue; gateway gap is neither delivery nor proof of no delivery. |
+
+At each checkpoint the facilitator asks: “What did you know *then*, what action is **proposed**, who could approve it, what result would change your decision, and when will you review?” A participant may request information absent from the packet. The facilitator replies **“not supplied”** unless a scheduled card contains it; that answer becomes an observed evidence gap, not a fictional negative test. If the team asks to disable a live account, the facilitator points to the stop card and asks for a paper approval record and an alternative. If a participant prematurely uses a later card, freeze that statement, note the timing error and ask for a decision based only on released evidence.
+
+### 11.3 A decision log that a second shift can reconstruct
+
+A useful row contains `exercise minute; case checkpoint UTC; card IDs available; observation; inference; option; approval status; operator/verification status; owner; next trigger`. Keep the *status* fields separate: requested, approved, executed, checked and accepted are different events. A row for C17 at 09:37 can say “service owner approved S42 write hold to 09:47; operator execution pending.” Only after C18 may a later row say “activated 09:39.” C19's one-route denied edit does not certify all write routes. C21 is a **new** extension approval, not an extension inferred from C17. C24's task disablement does not remove C22's recovery method.
+
+**Worked example — the failed recovery gate.** At exercise minute 45, the team sees C27. It has already written five acceptance criteria from Chapter 8: slot values, both write routes, new audit actor/request fields, preserved originals, and rollback copy/owner. The slot values and manual route pass, but the alternate-route actor field is blank. The recorder writes “isolated candidate no-go; criterion 3 failed; retain test artifact; application owner to correct mapping.” This is stronger than “4/5 pass” because the gate was conjunctive. At minute 49 C28 supplies a changed isolated candidate that passes its supplied checks; the team logs a new **isolated** result and waits for C29's distinct production approval. At minute 55 C30 supports limited service acceptance, not incident closure. The observer can reproduce the rationale without seeing an outcome chosen after the fact.
+
+### 11.4 Score the artifact, then discuss the decision
+
+Score each objective 0–2 against a preannounced artifact criterion: **0** absent or contradicted, **1** present but missing a time, source, owner or boundary, **2** complete enough that a second responder could reproduce the decision. The total is 0–8. For O1, a 2-point artifact names the C08 expiry, the 08:50–09:05 bounded window, identity custodian, permission and *pending* collection. For O2, it keeps C17/C18/C19/C21 distinct and a rollback/expiry visible. For O3, it stops C27 and states which exact criterion failed before considering C28. For O4, it separates C30's limited service return from C31–C33's unfinished external-delivery assessment and marks external text unsent until approved. A score says how well the **paper decision** was recorded, not whether CTN was secure.
+
+Two observers may disagree. They should cite the exact row and criterion, record both provisional scores and resolve only after comparing the artifact with the rubric. If a role never received an inject because the facilitator skipped it, mark the objective **not observed** and report the conduct defect; do not score the participant zero for information never released. A late correct answer cannot repair an earlier unsafe action by erasing the old log. Preserve the sequence and annotate the correction. This is how the exercise measures process quality rather than rewarding hindsight.
+
+### 11.5 Run a negative control separately
+
+After the main case, reset the exercise clock and run Chapter 10's **V10** and **V10b** as independent 8-minute branches. V10's correct slot and exact approved job record should lead to bounded documentation and an owner-led downgrade review, **not** a disruptive account action. V10b's unavailable approver before a log-expiry warning should lead to an authorized preservation escalation while disruption remains pending. Do not paste V10's correct-state observation into the main CTN case. Do not use main-case C25 to solve V10b's owner gap. A well-formed P1 playbook must support all three branches without silently acquiring more authority or evidence.
+
+The stop card also has a learning purpose. If a learner proposes a broad tenant change without target, approval or rollback, pause the simulation, record the proposal verbatim, ask for its scope and compare it with the least disruptive alternative. The goal is correction with a durable artifact, not embarrassment. In a real organization a tabletop discovery becomes a readiness ticket, while any actual emergency response remains governed by the organization's approved procedures.
+
+### Common errors and limits
+
+- Releasing C20 before the 09:42 hold check and then calling the earlier choice “obviously right.” Record the release violation and rerun that decision.
+- Treating a role-played “yes” as an operational authorization. The role card permits only a classroom decision receipt.
+- Scoring the quality of a vivid explanation while the submitted decision log lacks source IDs, owner, expiry or verification.
+- Calling C30 a complete recovery or C33 proof of no external delivery. Both are bounded observations with open follow-up.
+- Treating a tabletop's pass as a validated production control. Functional testing needs a separate, permitted test plan.
+
+### Practice: supervised 70-minute tabletop
+
+Assign roles, print the release ledger and use only synthetic cards. Run the six checkpoints, collect the decision log, the C08 preservation request, the C27 gate record and two 11:00 status lines. The observer scores O1–O4 without seeing the answer appendix. Repeat the two negative-control branches. A second learner tries to reconstruct one 09:42 and one 11:00 decision from the submitted packet; record fields they cannot recover. Finally hold a ten-minute debrief that yields one strength, one failure, one unknown and one assigned retest for Chapter 12.
+
+### Exercises — subject 11
+
+**EX051 — Exercise control sheet.** Inputs: the six release windows above and objectives O1–O4. Produce a one-page sheet with objective, inject/case-time, participant artifact, observer criterion, facilitator stop rule and reset rule. Use paper only. A 2-point result keeps the three clocks distinct and never releases a later card to justify an earlier decision.
+
+**EX052 — Time-gated decision log.** Inputs: C16–C24. Produce five or more rows covering tolerance, initial approval, execution, one-route check, extension, task action and 10:07 expiry. Mark each row's source and status. A 2-point result does not turn C16 into approval, C19 into full-route validation or C24 into complete eradication.
+
+**EX053 — Recovery gate replay.** Inputs: C26–C30 and the five criteria in §8.4. Write two distinct isolated-test decisions and one production/monitoring handoff. Identify the first failed C27 criterion and the approval/verification boundary between C28 and C29. A 2-point result refuses a whole-snapshot restore that would overwrite S40/S41.
+
+**EX054 — Observer calibration.** Input: a fictional participant artifact that correctly requests C08 preservation, records C17 approval but omits C18/C19, says “C27 failed audit,” and drafts a learner message saying “12 people exposed.” Score O1–O4 as 0, 1 or 2, with one citation per score and a correction request. A 2-point result does not reward the unsupported exposure claim.
+
+**EX055 — Three-branch handoff.** Inputs: main CTN through C33, V10 and V10b. Prepare a three-row handoff with branch-specific evidence, action status, owner, stop/review trigger and one source that would change the decision. A 2-point result keeps the variants separate and leaves V10b disruption unexecuted.
+
+### Subject synthesis
+
+A supervised simulation tests **decision traceability under staged information**. The CTN cards can reveal whether P1 helps a second responder choose, stop and hand off; they cannot demonstrate control effectiveness outside this fictional classroom. Chapter 12 will collect the decision artifacts, test their completeness and assign improvements with owners and retest criteria.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue studying — chapter 11 of 12
+
+[← Chapter 10](#ch-10) · [Course chapter index](../SUBJECTS.md) · [Chapter 12 →](#ch-12)
+
+Continue to the next authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-12"></a>
+
+## Chapter 12 — Case portfolio and after-action review
+
+### Learning outcomes and connection
+
+The learner can assemble a **source-traceable portfolio** from Chapters 1–11, defend a choice at the time it was made, distinguish an observed weakness from an unproven root-cause story, and create an after-action improvement record with a specific owner, due checkpoint and falsifiable closure test. This is the final subject of the professional course. A portfolio makes learning assessable; it is not a professional certification, forensic opinion or declaration that CTN's fictional incident is fully closed.
+
+[NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final) supports recovery planning and learning from events, while [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) and [CISA's tabletop package documents](https://www.cisa.gov/resources-tools/resources/ctep-package-documents) support exercise evaluation and improvement planning. The specific CTN portfolio, scoring and deadlines below are original teaching choices. A real after-action report must follow the organization's own governance and privacy rules.
+
+### 12.1 Portfolio structure: claims need an evidence path
+
+Submit five linked sections. **A. Service and authority** contains the C01 dependency map and the Chapter 2 action charter, with blank alternates left visible. **B. Intake and evidence** holds the 09:14 priority record, C09/C10 receipts and a source-traceable timeline. **C. Action and recovery** holds the C17–C30 decision chain, including the C27 no-go and C28 revised isolated test. **D. Communication** holds separate C30 service and C31–C33 data-assessment lines and the unsent approval request. **E. Exercise and improvement** holds the Chapter 11 release ledger, observer record, branch comparison and after-action plan. Each item needs a source ID, time basis, authoring role, status and link to the exact chapter or card; a bare screenshot or unexplained score is not a portfolio.
+
+Use an **evidence index** rather than duplicating every card. A concise row reads: `Claim: S42 version 19 unavailable at 09:29; Source: C13 read-only query; Acquired/released: 09:29; Status: observed stored state; Limit: no actor or user-impact count; Used by: containment option review`. The same index should record a *negative claim*: “C09 has no supplied original object digest; therefore this portfolio does not certify full export integrity.” A negative claim states what has not been established, not that the opposite is true. Include a version number: if the gateway gap is later filled, keep the 11:00 assessment and append a new one rather than rewrite history.
+
+### 12.2 Defend the decision at its checkpoint
+
+Hindsight can make any earlier decision look careless or heroic. Reviewers should ask: “What was available at **09:14**?” At that point C08 gave a 10:00 source-expiry warning, but C09 had not been received and C13 had not yet verified stored state. An urgent **bounded preservation request** was defensible. An account-wide disablement would have required a different harm/authority basis. At **09:35** C13 showed a wrong authoritative value, C14 weakened the approved-job explanation and C16 gave ten-minute tolerance; a **proposal** for an S42 hold became more defensible, but C17 approval was still in the future. At **10:16** C27's audit field failed the gate; at **10:20** C28 supplied a corrected isolated result, but not production approval. Defending these transitions shows professional judgment better than repeating the final narrative.
+
+For each defended choice use a four-part argument: available observations; at least one live alternative; expected harm and service cost of options; next observation that would change the choice. Then attach the owner and approval status. A reviewer can disagree with an option while accepting the reasoning as defensible if it honors the evidence and authority available then. Conversely, an outcome that happened to work does not rescue an undocumented or unauthorized decision.
+
+### 12.3 Three cases in one comparative portfolio
+
+The main CTN path, V10 and V10b are **three separate classroom cases**. The main path shows an unapproved task associated with an S42 edit and a separate unresolved identity change. V10 is a negative control with a correct slot and an exact approved job record in its supplied scope. V10b asks what to do when an approver is unavailable before a stated expiry. They test different playbook branches. They are not three observations of a single real incident.
+
+| Case | Best-supported decision at its checkpoint | Evidence/authority limit | Portfolio artifact |
+|---|---|---|---|
+| Main CTN | Preserve, then choose a scoped control under C17/C21; stop failed C27 recovery and proceed only after separate C29 approval. | Actor, C09 provenance and later C33 gateway window remain unresolved. | Versioned decision chain and two-track handoff. |
+| V10 | Record the alert and correct state; seek owner-led downgrade under local rules rather than disabling the shared account. | Negative control covers its supplied records, not every possible unseen source. | Branch record with bounded closure criteria. |
+| V10b | Escalate authorized bounded preservation while disruption remains pending. | No available action approver is supplied. | Owner-gap ticket and safe stop record. |
+
+Cross-case comparison should reveal the **invariant**: preserve provenance and authority while varying the action with evidence. It should not flatten every case into “contain first.” A tabletop facilitator may add a future variant, but it must have its own label and cannot silently repair CTN's source gaps. This is also why a playbook score of 12/12 for document design in Chapter 10 is only a hypothesis about usability until independent readers run these branches.
+
+### 12.4 After-action review: from observation to retest
+
+An after-action record needs **objective, observed result, supporting artifact, limitation, possible contributing condition, corrective action, owner, due checkpoint and closure test**. Avoid a blame conclusion from an account label or empty actor field. For example, observed: “The C01 after-hours identity alternate is blank; V10b participants had no supplied approver.” Contributing condition hypothesis: “ownership coverage was not defined in the exercise charter.” Improvement: “incident lead and identity owner designate a real alternate in the *actual* organization, obtain that role's acceptance and rehearse a call path.” Closure test: “in a later approved drill, the alternate receives a scoped request before a preannounced expiry and the observer records receipt and decision right.” Merely writing a name in a diagram would not satisfy the test.
+
+Another row concerns C27: the first isolated correction passed visible data but failed the alternate-route audit actor field. Improvement is not “ignore audit to meet time target.” The application owner should own a mapping fix, the reviewer should rerun **both** routes with a negative control, and release should stop on another blank field. A third row concerns C09: missing export-object metadata lowers confidence in a preserved copy. The identity custodian should define a bounded collection receipt with source object ID, byte count, digest, collector, time and authority; then a permitted rehearsal should produce that receipt. A fourth row keeps C33's gateway gap as an assigned evidence request, **not** a finding of delivery or nondelivery. Each row needs a deadline appropriate to the organization; this classroom uses “before the next drill” because it has no real operational calendar.
+
+### 12.5 Metrics with denominators and limits
+
+One useful measure is **decision-record completeness**: among the five tabletop action proposals selected for review, how many contain target, evidence, approver status, expiry/stop, verification and owner? If four meet all six fields, report **4/5 = 80% in this rehearsal**, with the omitted field named. Do not report 80% of CTN's live decisions or infer future control reliability. A second measure is **gate discipline**: of two isolated recovery candidates C27/C28, one failed a preannounced criterion and was stopped; record **1/1 failed candidates stopped**, not “100% recovery success.” A third is **source preservation timing**: C08 stated 10:00 expiry and C09 arrived 09:18 after a 09:16 approval; a learner can measure those case times, but the packet lacks enough detail to certify the full export's byte integrity. Report both the observed interval and the missing provenance field.
+
+Metrics can reward the wrong behavior if a denominator is omitted. “Average time to containment” encourages a fast but unjustified account disablement; “percentage of alerts closed” can reward premature closure. Pair speed with safety and quality: authorized request before a verified source deadline; changes with exact approval and expiry; failed acceptance gates stopped; and case claims whose source and confidence are stated. Sample sizes in a tabletop are small. Treat a good score as a prompt for a larger supervised retest, not statistical proof.
+
+### 12.6 Final practical defense and assessment
+
+The learner submits the index, three branch artifacts and an after-action plan. A reviewer selects one early and one late checkpoint without warning. The learner has three minutes each to reconstruct available evidence, decision status, missing source and next test. Then the reviewer presents a counterfactual: “Suppose the gateway gap later contains an authenticated delivery receipt without recipient mapping.” A defensible response **versions** the privacy assessment, requests owner-approved mapping and communication review, preserves the older 11:00 note, and does not declare 12 affected people from 12 tokens. No actual notice is sent.
+
+Use a five-criterion 0–2 assessment: **source/time traceability; authority and action status; alternative reasoning; test/rollback quality; improvement ownership**. A 2 requires a concrete artifact and stated limit, 1 a plausible but incomplete artifact, 0 a missing or contradicted one. A total of **8/10** may be a classroom pass only if neither source/time nor authority receives 0; a high total cannot offset fabricated evidence or an unauthorized action. Record the assessor's comments and a reattempt requirement when either safety-critical criterion fails. This rubric evaluates this course's portfolio; it is not a credential or claim that the manuscript has passed the book publication gate.
+
+### Common errors and limits
+
+- Presenting a polished chronological story with no source or release-time citations. Rebuild the evidence index from original cards.
+- Calling the unapproved task the *human* root cause. C20/C23 support a mechanism and approval classification, not an actor or motive.
+- Treating C30's limited service return as privacy closure. Maintain two tracks and the C33 follow-up.
+- Closing an improvement because its ticket exists. Require an owned, observed retest against the specified failure.
+- Describing a 70-minute classroom tabletop as 70 minutes of real response capability. The setting and denominator are different.
+
+### Practice: portfolio defense
+
+With two learners, exchange only the portfolio index and linked artifacts. The reviewer chooses a claimed C09 integrity statement, a C17–C21 hold statement and a C33 communication statement; ask the author to navigate to sources and name what each cannot prove. Run the V10 and V10b branch defense. Then score the five criteria and write an improvement row for every missing safety-critical field. No personal data, live tenant or production notification is involved.
+
+### Exercises — subject 12
+
+**EX056 — Evidence index.** Inputs: C01–C33 and your Chapter 11 artifacts. Create eight or more source-traceable claim rows covering readiness, intake, preservation, containment, recovery and communication. For each give case/release time, status and one prohibited inference. A 2-point result includes C09's provenance gap and C33's gateway gap.
+
+**EX057 — Checkpoint defense.** Inputs: 09:14 C08, 09:35 C13–C16, 10:16 C27 and 10:20 C28. Write a four-row decision table with available observations, alternative, owner/approval, action status and next discriminator. A 2-point result never imports a later card into an earlier row.
+
+**EX058 — Comparative cases.** Inputs: main CTN, V10 and V10b. Produce three branch records with trigger, evidence, safe decision, owner, limitation and review/closure condition. A 2-point result identifies the same provenance/authority invariant without treating the cases as one incident.
+
+**EX059 — After-action plan.** Inputs: C01, C09, C27, C33 and the Chapter 11 observer notes. Produce four improvement rows with observed finding, source, contributing-condition hypothesis, owner, due checkpoint and an independent retest that can fail. A 2-point result does not claim a root cause or a control repair from an assigned ticket alone.
+
+**EX060 — Metrics and oral defense.** Inputs: the 4-of-5 complete classroom action records, C27/C28 gate outcomes and the counterfactual receipt in §12.6. Calculate two correctly bounded metrics, then give a 150–220-word defense of what changes in service and privacy status. A 2-point result states denominators, preserves the old 11:00 note and refuses to equate tokens with people.
+
+### Subject synthesis and next step
+
+This twelve-subject draft now spans readiness, authorized response, evidence, competing explanations, containment, cause-path verification, recovery, communication, a reviewed playbook, a supervised simulation and a defensible portfolio. The 60 exercise-answer pairs support practice, but the manuscript is still **short of the required verified 300 A4 pages** and has not passed independent technical, editorial or accessibility review. The next learning level's technical course will demand deeper system modeling, reproducible labs and more explicit failure/rollback evidence. The next editorial task for this volume is substantial expansion and review, not relabeling the draft complete.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue studying — chapter 12 of 12
+
+[← Chapter 11](#ch-11) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+
+This is the final chapter of this course; the index links the next course in the full study path.
+<!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-answers"></a>
 
@@ -984,6 +1240,30 @@ Relative to the owner target, the snapshot would regress two authorized slots; c
 
 **EX050 — Model draft 0.2 release note.** “CTN response playbook draft 0.2, for Chapter 11 tabletop only; **not for production use**. The main-case walk-through required distinct C17 approval, C18 execution and C19 verification, and stopped C27's failed audit gate before recovery. The V10 negative control did not disable the shared account or announce a breach. V10b preserved the expiring-source request through an authorized custodian while leaving disruptive action pending without an approver. The service owner must approve actual containment limits and rollback; the privacy/communications owners must review audience wording. A technical reviewer must test alternate write routes and the new audit actor field in an authorized environment. The incident lead owns an improvement ticket for C01's missing after-hours alternate, due before the next rehearsal, with a reachable-contact test as its closure criterion. Version 0.2 is a reviewed classroom draft, not a completed course book.”
 
+### Subject 11: EX051–EX055
+
+**EX051 — Model control sheet.** O1 uses C08 at case 09:14, with the bounded IdP request as its artifact and a pending/approved/received distinction; O2 uses C16–C21, with an action record and expiry; O3 uses C26–C29, with a prewritten five-criterion gate and separate production decision; O4 uses C30–C33, with two status lines and an unsent message approval. The facilitator's stop rule is “no live change or message; pause on missing target/owner/approval.” The reset rule separates V10 and V10b from main CTN. The sheet has case UTC, card release and exercise-minute columns. It does **not** place C20 at the 09:42 C19 check or show C33 before the 10:45 service acceptance. Two points require an observable artifact and the time/stop fields for all four objectives.
+
+**EX052 — Model decision-log sequence.** (1) 09:35 C16: ten-minute hold *tolerable*; approval still pending. (2) 09:37 C17: service-owner **approval** for S42 to 09:47; execution pending. (3) 09:39 C18: operator **activated** named hold. (4) 09:42 C19: **one route** denied an unexpected S42 edit; other routes unknown. (5) 09:46:30 C21: new approval to 10:07; operator receipt 09:46:45; review 10:06. (6) 09:59 C24: scoped task-disable approval, with execution at 10:03 and short status observation. (7) 10:06 owner decides not to renew; 10:07 hold expires; read-only monitor and unexpected-edit escalation remain. If a response has fewer physical rows, the same seven state changes must still be reconstructible. Two points require sources, distinct authorization/execution/verification and the post-expiry uncertainty.
+
+**EX053 — Model gate replay.** The C26 snapshot's S40/S41/S42 values are all `open`, while the owner target preserves S40/S41 `reserved` and changes only S42 to `open`; therefore a whole restore fails data correctness. C27's isolated correction meets the visible values and manual-route check but fails **criterion 3, new alternate-route audit actor/request fields**, because actor is blank: **no-go**, retain result. C28's revised isolated test reports both routes, fields, target values and rollback copy: **isolated pass only**. C29 separately records 10:24 approval, 10:26 execution and 10:30 checks. C30 records a further 15-minute observation and limited acceptance at 10:45. An answer claiming C28 authorized production or C27 can be averaged into a pass is incorrect.
+
+**EX054 — Model observer calibration: 4/8.** O1 = **2** if the artifact names C08's bounded request, custodian and pending status, as specified in the question; O2 = **1** because C17 approval is recorded but C18 execution and C19 limited check are missing, so the action chain cannot be reconstructed; O3 = **1** because “C27 failed audit” recognizes a problem but does not identify the missing alternate-route actor field as criterion 3 or record a no-go before C28; O4 = **0** because “12 people exposed” contradicts C31–C33's limited token and gateway evidence and lacks approval. The correction request asks for separate execution/verification receipts, a criterion-3 stop record, and a two-track unsent communication draft. If O1's actual artifact lacks scope or pending status, its score should fall to 1 with the missing field cited; the fictional summary is not a license to assume details not written.
+
+**EX055 — Model branch handoff.** Main CTN: C13 verifies wrong S42 state and C20 links `sync-override` to `q-144`; C17/C21 authorize bounded hold, C24 task disable, C27 stops release, C28/C29/C30 support limited return, and C31–C33 remain a privacy-led follow-up. Owner: incident lead coordinates, service and identity owners approve their parts; reopen on unexpected edit, failed route, new authenticated gateway record or overdue monitoring. V10 **alone**: correct slot and approved exact job within supplied scope; owner-led downgrade review, no disablement, with request for wider corroboration only if a new signal appears. V10b **alone**: approver unavailable before stated expiry; custodian-led bounded preservation and real escalation, disruption pending; revisit when a valid approver or new harm evidence appears. Each row cites only its own branch; two points require that separation and a concrete next discriminator.
+
+### Subject 12: EX056–EX060
+
+**EX056 — Model eight-row index.** (1) C01 08:40, readiness worksheet, missing after-hours alternate, not an incident finding; (2) C02 receipt 09:04, reported S42 symptom, not authoritative state; (3) C08 release 09:14, stated 10:00 detailed-source expiry, not proof of export; (4) C09 receipt 09:18 after 09:16 approval, two visible IdP rows, **original object/digest missing**, not a complete source certification; (5) C13 release 09:29, read-only S42 version 19 `unavailable`, not an actor; (6) C17 09:37 approval and C18 09:39 execution, not full-route effect until additional testing; (7) C27 10:16 isolated gate failure, not production success; (8) C30 10:45 limited service acceptance, not case closure; (9) C33 11:00 internal `not-dispatched` queue with **10:49–10:51 gateway gap**, neither confirmed delivery nor global nondelivery. A learner may select eight but must include both C09 and C33 and supply source/release time, status and prohibited inference in every row. Any claim based on a later C card at an earlier checkpoint must be versioned, not backdated.
+
+**EX057 — Model checkpoint table.** At 09:14: C02–C08 support P2 and a time-limited bounded IdP request; preserve C06's narrow approval and C07's shared-account alternative; identity custodian approval is **pending**, C09 not yet received; next discriminator is scoped detail/provenance. At 09:35: C13 wrong S42 state, C14 complete approved-run manifest without `q-144`, C15 no recorded addendum, C16 ten-minute tolerance; compare targeted hold with account disablement; service-owner **approval still pending** until C17; next discriminator is approved hold target/coverage. At 10:16: C27 fails alternate-route actor field; application/recovery owners retain **isolated no-go**; next discriminator is revised mapping and retest. At 10:20: C28 passes supplied isolated checks; production remains pending C29 approval; next discriminator is authorized staged result and monitoring. Two points require no C17 at 09:35 and no C29 at 10:20.
+
+**EX058 — Model three-case invariant.** Main: wrong authoritative state, unapproved task mechanism, scoped approved actions and open actor/privacy questions; preserve a versioned CTN decision chain and monitor. V10: correct state plus exact approved job record within the variant scope; document the negative control and ask the service owner to apply local downgrade criteria, with no disruptive change. V10b: absent approver with a stated expiry; request bounded authorized preservation, escalate missing authority and stop a proposed disruption. Across the three, the invariant is a source/time-limited claim and an action whose authority, target and verification are recorded. A result that uses C25 to cure V10b or V10 to exonerate CTN fails the separation requirement.
+
+**EX059 — Model improvement rows.** C01: no after-hours alternate; hypothesis that the charter did not designate coverage; incident lead and identity owner; due **before next approved drill**; retest a reachable alternate receiving and deciding a scoped request before the drill's preannounced expiry. C09: missing original export metadata; identity custodian; due before next preservation exercise; retest object ID, byte count, SHA-256, collector, UTC time and authority in a synthetic receipt, with a negative missing-field control. C27: blank alternate-route audit actor; application owner; due before any release rehearsal; retest both manual and scheduled routes and fail the gate if either actor/request field is blank. C33: gateway interval gap; privacy steward and gateway custodian; due at the next case review, not a legal deadline; request a scoped source or record that none is available, preserve the unresolved assessment and obtain communication approval separately. A signed ticket is **assignment**, not proof of repair.
+
+**EX060 — Model metrics and defense.** Record completeness is **4/5 = 80% of the five selected classroom action proposals**, not 80% of operational incident decisions. Gate discipline is **1/1 failed isolated candidate stopped** (C27), with C28 a separately revised test; this is not 100% recovery success. A defensible oral note: “At 10:45 C30 supports limited S42 service return under further monitoring. The acceptance card is a service checkpoint, so I would keep its scope, owner and monitoring window visible to the next shift. At 11:00 C33 reports this batch's twelve tokens `not-dispatched` in the inspected queue, but the gateway window is incomplete. A later authenticated delivery receipt would create a new source line and an updated privacy assessment, not retroactively change what C33 showed. I would preserve the 11:00 note, timestamp the receipt separately, have the privacy steward assess its authenticity and scope, and request an approved token-to-contact mapping only if needed. The communications owner must review any audience text against that assessment. I cannot infer twelve affected people from twelve tokens or issue a notice myself. If the gateway custodian cannot fill the window, I would record that coverage limit explicitly and keep both hypotheses open. Service monitoring and privacy assessment remain separate. The exercise ends with an assigned follow-up and a review date, not a declaration of case closure.” Two points require both denominators, versioned evidence, owner-gated communication and bounded person-count language.
+
 ## Glossary for the authored subjects
 
 - **Authoritative state:** the owner-designated source used to decide the current service value; it still requires an approved, scoped check.
@@ -997,6 +1277,9 @@ Relative to the owner target, the snapshot would regress two authorized slots; c
 - **Eradication:** cause-related remediation with preserved baselines and verification; stopping one task alone may leave other paths.
 - **Acceptance gate:** preannounced criteria and owner decision that distinguish an isolated test pass from production return.
 - **Playbook:** versioned, supervised decision aid with entry, evidence, authority, stop, verification and improvement paths; it is not an authorization by itself.
+- **Inject:** facilitator-released exercise information with a defined availability checkpoint; it is not evidence that the participant knew it earlier.
+- **After-action improvement:** an observed gap linked to an owner, due checkpoint and independent retest; a ticket alone is not closure.
+- **Portfolio evidence index:** a claim-to-source map that records time, status and limits so a reviewer can reproduce a decision.
 
 ## References and case boundaries
 
@@ -1006,5 +1289,6 @@ Relative to the owner target, the snapshot would regress two authorized slots; c
 - [NIST SP 800-86, Guide to Integrating Forensic Techniques into Incident Response](https://csrc.nist.gov/pubs/sp/800/86/final) (2006): forensic vocabulary from an IT perspective; not a legal standard or complete modern tool procedure.
 - [NIST SP 800-184, Guide for Cybersecurity Event Recovery](https://csrc.nist.gov/pubs/sp/800/184/final) (2016): recovery planning, testing, playbook development and improvement; CTN's acceptance values and procedure are original examples.
 - [NIST SP 800-84, Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities](https://csrc.nist.gov/pubs/sp/800/84/final) (2006): exercise-program background; local playbook rubric and variants are original teaching devices.
+- [CISA, CTEP Package Documents](https://www.cisa.gov/resources-tools/resources/ctep-package-documents): facilitator/evaluator and after-action package leads; CTN's exercise and scoring remain original classroom material.
 
 All C- and V-series records and every worked scenario in this manuscript are fictional. The citations support general concepts and are not evidence that any CTN event occurred.

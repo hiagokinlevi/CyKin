@@ -121,6 +121,14 @@ The team has one week. It can either (a) purchase a dashboard with no assigned a
 
 Complete the six-sentence strategy test for Northstar. Mark at least two statements as assumptions or pending owner approval. Include one outcome with an owner, date, and evidence.
 
+<!-- cyberabc:chapter-navigation:start ch-01 -->
+### Continue studying — chapter 01 of 04
+
+[← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 plan →](PLAN.md#ch-02)
+
+The next chapter is an outline, not yet an authored lesson.
+<!-- cyberabc:chapter-navigation:end -->
+
 ## Sources for this chapter
 
 - [NIST Cybersecurity Framework 2.0](https://www.nist.gov/cyberframework) — framework functions and risk-management purpose.

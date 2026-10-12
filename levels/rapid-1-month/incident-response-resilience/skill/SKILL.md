@@ -18,6 +18,11 @@ Use this **one skill for the whole 1 month course**. The course has one principa
 - [Supplementary playbooks](../../../../playbooks/incident-response-resilience/README.md): source-linked practice.
 - [Authored English book draft](../en/book/MANUSCRIPT.md): use only chapters and exercises actually present; review is pending.
 
+## Navigation rule
+
+At the end of an authored chapter or a book-plan chapter summary, use its **Continue studying** block for the previous chapter, course index and next chapter. Keep the learner's course and chapter position visible. If the next link is a plan, explain that the lesson is not yet authored and do not mark it complete. The course chapter index connects its final row to the next course in the same language.
+
+
 ## Four-subject teaching route
 
 This is the **rapid introductory** course. Teach one subject at a time and use the authored Markdown book as the source of the lesson. The chapter links below point to draft teaching; the [book plan](../en/book/PLAN.md) is an editorial outline, not substitute prose.

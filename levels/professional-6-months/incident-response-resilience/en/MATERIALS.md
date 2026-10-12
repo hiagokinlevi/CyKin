@@ -4,10 +4,10 @@
 
 **Teaching and examples:** each subject-chapter belongs to the one principal book. Plans describe intended content; only the linked manuscript contains authored lessons.
 
-**Teaching and case:** the [English manuscript](book/MANUSCRIPT.md) contains Chapters 1–10 as a continuous fictional Cedar Training Network case. Subjects progress from readiness, authority, triage, preservation and investigation through containment, eradication, recovery, communication and playbook quality. Cards C01–C33 are released by checkpoint; later evidence cannot justify earlier decisions.
+**Teaching and case:** the [English manuscript](book/MANUSCRIPT.md) drafts all 12 subjects as a continuous fictional Cedar Training Network case. It progresses from readiness, authority, triage, preservation and investigation through containment, eradication, recovery, communication, playbook quality, supervised simulation and a source-traceable portfolio. Cards C01–C33 are released by checkpoint; later evidence cannot justify earlier decisions.
 
 **Labs and practice:** Chapter 4's local 34-byte SHA-256 fixture is separate from the case's incomplete IdP export. Chapter 7's approved-versus-observed task comparison and Chapter 8's restore-value comparison have exact, reproducible in-memory outputs. Supervised role, triage, evidence, recovery and playbook reviews require no real tenant access; V-series variants stay separate from the main case.
 
-**Exercises and answers:** EX001–EX050 provide five task artifacts per authored subject and [50 worked results in the same book](book/MANUSCRIPT.md#worked-answers). The planned complete course requires 12 chapters and 60 exercises, so Chapters 11–12 and ten exercises remain unwritten. Fifty exercises alone do not satisfy the complete-book standard.
+**Exercises and answers:** EX001–EX060 provide five task artifacts per drafted subject and [60 worked results in the same book](book/MANUSCRIPT.md#worked-answers). All chapter positions have a draft start, but the book remains below the 300-page A4 floor and needs substantial expansion and independent review.
 
 **Sources and glossary:** NIST primary publications are cited for general guidance; the CTN case and its decision rubrics are labeled fictional/original. Linked playbooks retain their own source rights.

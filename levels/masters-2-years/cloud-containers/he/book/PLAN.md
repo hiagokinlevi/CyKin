@@ -12,6 +12,8 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 ## Contents and chapter summaries
 
+These are editorial outlines. Each chapter summary ends with links to the previous position, the course index and the next position; a **draft** link opens authored teaching, while a **plan** link opens another outline.
+
 <a id="ch-01"></a>
 
 ### Chapter 01 — Research question and literature method
@@ -19,6 +21,8 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 **Stage 1; 75 planned A4 pages; 7 planned exercises.** Planned; authored chapter pending.
 
 This subject teaches **Research question and literature method** and contributes to the master's course outcome: formulate a question, evaluate prior work and produce reproducible findings in cloud and container security. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will design and execute an ethically reviewed study. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 7 exercises, then compare reasoning with the final worked-answer appendix. It builds on the entry knowledge and prepares Chapter 02. This paragraph is an editorial summary, not an authored lesson.
+
+**Continue studying — chapter 01 of 08 (outline):** [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (plan) →](PLAN.md#ch-02)
 
 <a id="ch-02"></a>
 
@@ -28,6 +32,8 @@ This subject teaches **Research question and literature method** and contributes
 
 This subject teaches **Cloud and container security: advanced seminar** and contributes to the master's course outcome: formulate a question, evaluate prior work and produce reproducible findings in cloud and container security. The chapter will apply the relevant methods to cloud identity, posture, hybrid infrastructure, virtualization, containers and kubernetes. At this level, learners will design and execute an ethically reviewed study. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 7 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 01 and prepares Chapter 03. This paragraph is an editorial summary, not an authored lesson.
 
+**Continue studying — chapter 02 of 08 (outline):** [← Chapter 01 (plan)](PLAN.md#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (plan) →](PLAN.md#ch-03)
+
 <a id="ch-03"></a>
 
 ### Chapter 03 — Study design, ethics and reproducibility
@@ -35,6 +41,8 @@ This subject teaches **Cloud and container security: advanced seminar** and cont
 **Stage 2; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
 
 This subject teaches **Study design, ethics and reproducibility** and contributes to the master's course outcome: formulate a question, evaluate prior work and produce reproducible findings in cloud and container security. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will design and execute an ethically reviewed study. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 6 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 02 and prepares Chapter 04. This paragraph is an editorial summary, not an authored lesson.
+
+**Continue studying — chapter 03 of 08 (outline):** [← Chapter 02 (plan)](PLAN.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (plan) →](PLAN.md#ch-04)
 
 <a id="ch-04"></a>
 
@@ -44,6 +52,8 @@ This subject teaches **Study design, ethics and reproducibility** and contribute
 
 This subject teaches **Cloud and container security: competing explanations** and contributes to the master's course outcome: formulate a question, evaluate prior work and produce reproducible findings in cloud and container security. The chapter will apply the relevant methods to cloud identity, posture, hybrid infrastructure, virtualization, containers and kubernetes. At this level, learners will design and execute an ethically reviewed study. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 6 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 03 and prepares Chapter 05. This paragraph is an editorial summary, not an authored lesson.
 
+**Continue studying — chapter 04 of 08 (outline):** [← Chapter 03 (plan)](PLAN.md#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 (plan) →](PLAN.md#ch-05)
+
 <a id="ch-05"></a>
 
 ### Chapter 05 — Proposal and pilot
@@ -51,6 +61,8 @@ This subject teaches **Cloud and container security: competing explanations** an
 **Stage 3; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
 
 This subject teaches **Proposal and pilot** and contributes to the master's course outcome: formulate a question, evaluate prior work and produce reproducible findings in cloud and container security. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will design and execute an ethically reviewed study. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 6 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 04 and prepares Chapter 06. This paragraph is an editorial summary, not an authored lesson.
+
+**Continue studying — chapter 05 of 08 (outline):** [← Chapter 04 (plan)](PLAN.md#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 (plan) →](PLAN.md#ch-06)
 
 <a id="ch-06"></a>
 
@@ -60,6 +72,8 @@ This subject teaches **Proposal and pilot** and contributes to the master's cour
 
 This subject teaches **Data collection and analysis** and contributes to the master's course outcome: formulate a question, evaluate prior work and produce reproducible findings in cloud and container security. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will design and execute an ethically reviewed study. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 6 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 05 and prepares Chapter 07. This paragraph is an editorial summary, not an authored lesson.
 
+**Continue studying — chapter 06 of 08 (outline):** [← Chapter 05 (plan)](PLAN.md#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 (plan) →](PLAN.md#ch-07)
+
 <a id="ch-07"></a>
 
 ### Chapter 07 — Dissertation writing and limitations
@@ -68,6 +82,8 @@ This subject teaches **Data collection and analysis** and contributes to the mas
 
 This subject teaches **Dissertation writing and limitations** and contributes to the master's course outcome: formulate a question, evaluate prior work and produce reproducible findings in cloud and container security. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will design and execute an ethically reviewed study. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 6 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 06 and prepares Chapter 08. This paragraph is an editorial summary, not an authored lesson.
 
+**Continue studying — chapter 07 of 08 (outline):** [← Chapter 06 (plan)](PLAN.md#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 (plan) →](PLAN.md#ch-08)
+
 <a id="ch-08"></a>
 
 ### Chapter 08 — Independent review and defense
@@ -75,6 +91,8 @@ This subject teaches **Dissertation writing and limitations** and contributes to
 **Stage 4; 75 planned A4 pages; 6 planned exercises.** Planned; authored chapter pending.
 
 This subject teaches **Independent review and defense** and contributes to the master's course outcome: formulate a question, evaluate prior work and produce reproducible findings in cloud and container security. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will design and execute an ethically reviewed study. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 6 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 07 and prepares the worked-answer appendix and final assessment. This paragraph is an editorial summary, not an authored lesson.
+
+**Continue studying — chapter 08 of 08 (outline):** [← Chapter 07 (plan)](PLAN.md#ch-07) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 ## Practical and assessment plan
 

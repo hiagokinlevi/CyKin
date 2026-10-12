@@ -12,6 +12,8 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 
 ## Contents and chapter summaries
 
+These are editorial outlines. Each chapter summary ends with links to the previous position, the course index and the next position; a **draft** link opens authored teaching, while a **plan** link opens another outline.
+
 <a id="ch-01"></a>
 
 ### Chapter 01 — Incident readiness, roles and authorized scope
@@ -19,6 +21,8 @@ A finished book must contain at least 300 actual A4 pages and 50 substantive exe
 **Stage 1; 80 planned A4 pages; 13 planned exercises.** Planned; authored chapter pending.
 
 This subject teaches **Incident readiness, roles and authorized scope** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in incident response and cyber resilience. The chapter will define the underlying terms and map the evidence and decisions that depend on them. At this level, learners will follow a contained worked example. Its worked example will use a sourced overview or clearly labeled synthetic service record. The learner will complete a concept check and bounded evidence analysis and at least 13 exercises, then compare reasoning with the final worked-answer appendix. It builds on the entry knowledge and prepares Chapter 02. This paragraph is an editorial summary, not an authored lesson.
+
+**Continue studying — chapter 01 of 04 (outline):** [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (plan) →](PLAN.md#ch-02)
 
 <a id="ch-02"></a>
 
@@ -28,6 +32,8 @@ This subject teaches **Incident readiness, roles and authorized scope** and cont
 
 This subject teaches **Alert triage and evidence preservation** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will follow a contained worked example. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 13 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 01 and prepares Chapter 03. This paragraph is an editorial summary, not an authored lesson.
 
+**Continue studying — chapter 02 of 04 (outline):** [← Chapter 01 (plan)](PLAN.md#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (plan) →](PLAN.md#ch-03)
+
 <a id="ch-03"></a>
 
 ### Chapter 03 — Containment, eradication and recovery decisions
@@ -36,6 +42,8 @@ This subject teaches **Alert triage and evidence preservation** and contributes 
 
 This subject teaches **Containment, eradication and recovery decisions** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in incident response and cyber resilience. The chapter will apply the relevant methods to incident triage, containment, eradication, crisis management, recovery and continuity. At this level, learners will follow a contained worked example. Its worked example will use a documented case or authorized synthetic scenario in this field. The learner will complete a worked analysis and contained practical exercise and at least 12 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 02 and prepares Chapter 04. This paragraph is an editorial summary, not an authored lesson.
 
+**Continue studying — chapter 03 of 04 (outline):** [← Chapter 02 (plan)](PLAN.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (plan) →](PLAN.md#ch-04)
+
 <a id="ch-04"></a>
 
 ### Chapter 04 — Guided incident simulation and after-action review
@@ -43,6 +51,8 @@ This subject teaches **Containment, eradication and recovery decisions** and con
 **Stage 4; 80 planned A4 pages; 12 planned exercises.** Planned; authored chapter pending.
 
 This subject teaches **Guided incident simulation and after-action review** and contributes to the rapid course outcome: recognize and explain the core risks; complete one guided task in incident response and cyber resilience. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will follow a contained worked example. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 12 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 03 and prepares the worked-answer appendix and final assessment. This paragraph is an editorial summary, not an authored lesson.
+
+**Continue studying — chapter 04 of 04 (outline):** [← Chapter 03 (plan)](PLAN.md#ch-03) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 ## Practical and assessment plan
 

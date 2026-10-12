@@ -18,13 +18,15 @@ CyberABC is a public, free Markdown learning library. Its [home page](README.md)
 | Progress and completion rules | [Structure review](STRUCTURE_REVIEW.md) and [book standard](BOOK_STANDARD.md) |
 | Rights and provenance | [Rights notice](RIGHTS.md) and [source audit](SOURCE_AUDIT.md) |
 
-The current design has five schools, 23 academic areas, nine levels, **207 course skills**, and nine planned language editions per course (**1,863 planned books**). English course grids contain **4,186 subject-chapters**. These are structural counts, not a claim of 1,863 authored books. There are four English manuscript drafts, including the ten-subject professional Incident Response draft, and no verified complete book.
+The current design has five schools, 23 academic areas, nine levels, **207 course skills**, and nine planned language editions per course (**1,863 planned books**). English course grids contain **4,186 subject-chapters**. These are structural counts, not a claim of 1,863 authored books. There are five English manuscript drafts; the professional Incident Response draft covers all twelve subject-chapters, and the technical draft begins with three. No book has passed the complete-book gate.
 
 ## Follow the entire curriculum in order
 
 The [study path](STUDY_PATH.md) numbers the courses **001–207**. Traverse the nine levels in their published order; within each level, traverse all 23 areas in catalog order. Open the course's `SUBJECTS.md` and traverse chapters **01 through the final numbered row**. Its **Next step** column links to the next chapter or, on the final row, the next course in the same language. After the 23rd course in a level, continue at the first area of the next level. The final doctoral course ends the route.
 
 For an AI tutor, keep a checkpoint with `{language, course_number, chapter_number, source_state, exercises_attempted, next_step}`. Use a **Draft** link only for teaching that is actually present in `MANUSCRIPT.md`; use a **Plan** link to explain future scope, never to mark a lesson complete. Ask the learner to try the chapter's authored exercises before consulting its worked answers. Cite the exact chapter and factual sources. When the required chapter has only a plan, report the gap and retain the checkpoint there; the navigation link to a later course is not evidence of completed study. Continue in English as the reference edition until the other language editions are authored and reviewed.
+
+At the end of an authored chapter or a `PLAN.md` chapter summary, follow its **Continue studying** block: previous chapter, course chapter index and next chapter. A plan labels its links as draft or plan, so do not treat an outline as a lesson. The final authored chapter of a partial book points to the next *plan* and labels it as unwritten; the final chapter of a course returns to the index, whose last row points to the next course in the same language. Keep the learner's current chapter visible when moving backward or forward.
 
 ## Follow a course
 
