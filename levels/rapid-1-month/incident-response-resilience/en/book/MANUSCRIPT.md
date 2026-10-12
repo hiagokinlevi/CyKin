@@ -675,6 +675,7 @@ By the end of this chapter, a learner should be able to:
 4. Explain why a completed backup job is insufficient to claim recovery readiness.
 5. Define a small set of tests that would justify returning a fictional service to normal use.
 6. Screen candidate copies by provenance, integrity, freshness and data correctness without confusing an isolated import time with service recovery time.
+7. Test a proposed containment control against the write paths in scope, distinguishing an observed block from a quiet log or an untested path.
 
 ### 3.1 A decision loop rather than a fixed sequence
 
@@ -726,6 +727,85 @@ A response option is an **intervention**, not a verdict about the cause. Compare
 The **no-intervention option** also needs a test and a deadline. “Observe” is a decision to accept possible further booking harm for a limited period in exchange for more information. It is not a neutral default. If the team cannot detect a new edit quickly, an observation window may be less defensible than the table suggests. If the audit is incomplete, “no new edit shown” must be reported with that limitation.
 
 Preserve the narrow records that are likely to matter before a disruptive change *when doing so does not dangerously prolong harm*. The incident lead should record which sources were captured, which could not be captured in time and why. Waiting indefinitely for a perfect evidence set could expose more patrons; acting without an evidence note can make later review harder. A proportionate decision records both costs. The comparison follows the risk-management orientation of [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final); the Harbor Library choices and matrix are original teaching examples.
+
+#### Contained W1 lab: test whether a proposed write pause actually holds
+
+A change ticket saying *pause enabled* records an operator's intention, not the control's effect. A quiet booking audit could mean the pause worked, no one tried to edit, the query omitted a path, or logging failed. To evaluate the proposed pause in section 3.3, define its **claim** before testing: during a bounded interval, staff-originated booking writes through both the ordinary interface and the legacy application route should be blocked, while read access and the approved manual queue remain usable. This is a service-specific classroom requirement, not a universal containment recommendation. A real team would identify all relevant routes with the service owner and test only under its change, privacy and safety rules. [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) frames effective response and recovery as part of risk management; the W1 test design and pass criteria are original teaching material, not a NIST procedure.
+
+W1 is a **separate fictional branch**. Its special card W1-A says that, for an isolated training copy only, the fictional service owner and incident lead approve a 09:40–09:55 UTC staff-write pause test with a manual queue. This approval does **not** exist in R1–R24. In particular, R21 says a pause is tolerable; it does not authorize one. W1's later timestamps and observations cannot be cited as facts available to the 09:37 canonical decision or the Chapter 4 tabletop. No learner is to submit a write to a live service, use a real account or infer a real incident outcome from these invented rows.
+
+Before reading the outcomes, put four questions on a test sheet: (1) Did the ordinary interface reject a labeled write and leave the isolated booking value unchanged? (2) Did the legacy route do the same? (3) Was a manual request recorded for later reconciliation rather than applied to the booking state? (4) Did a read-only request still work? Use independent *before/after state* beside the response and audit label. A response string alone can disagree with the resulting state; an absent audit line is not evidence of a block. The fixture supplies one trial per route, so even a clean result would support only those paths, values and times.
+
+**Card W1-B — isolated probe results.** The labels `W-UI`, `W-API`, `W-QUEUE` and `W-READ` are new synthetic records. `Room 2` and `Room 4` are training values unrelated to B17–B20. The queue numbers are pending-item counts, not booking-room values.
+
+| Probe and UTC time | Route and intent | Service response | Independent state before → after | Audit label |
+|---|---|---|---|---|
+| `W-UI` at 09:42 | Ordinary staff interface, booking write | rejected | `Room 2` → `Room 2` | deny |
+| `W-API` at 09:43 | Legacy application route, booking write | accepted | `Room 2` → `Room 4` | allow |
+| `W-QUEUE` at 09:44 | Manual queue, record one request | queued | `0 pending` → `1 pending` | queue |
+| `W-READ` at 09:45 | Read-only booking lookup | returned `Room 2` | `Room 2` → `Room 2` | read |
+
+Treat each row as a **separate probe with its own reset training state**. W-API's `Room 4` does not become W-READ's starting value; the table is not a continuous production trace. The fixture intentionally makes the ordinary interface block a write while the legacy route changes a value. Therefore the broad claim *all staff writes are paused* fails under the stated W1 scope. It would be incorrect to average the two write outcomes into “50% effective”: the sample is neither random nor representative, and one demonstrated route failure is enough to reject the universal claim for this fixture. The manual queue's one pending item shows it recorded a request in this test, not that capacity, reconciliation or later service acceptance was verified.
+
+**Reproduce a narrow classification.** The following standard-library Python program uses only in-memory invented rows. It does not connect to an application or change a file. It validates unique probe IDs and recognized kinds, then gives state change precedence over the service's claimed denial for write probes. The four status labels are *observations about this fixture*, not a production certification.
+
+First enter the W1 fixture:
+
+```python
+PROBES = [
+    ("W-UI", "write", "rejected", "Room 2", "Room 2", "deny"),
+    ("W-API", "write", "accepted", "Room 2", "Room 4", "allow"),
+    ("W-QUEUE", "queue", "queued", "0 pending", "1 pending", "queue"),
+    ("W-READ", "read", "returned Room 2", "Room 2", "Room 2", "read"),
+]
+```
+
+**Check the measurement, not just the classifier.** A `Room 2` → `Room 2` pair is useful only if both reads refer to the same training booking and an authoritative state view, with a recorded read time and a known consistency rule. A cached page could remain unchanged even after a successful write. Likewise, an audit label needs a request or event pointer and a collection cutoff; a delayed `deny` row could describe a different attempt. W1 supplies simplified independent values for the classroom method, but does not provide those production-grade provenance fields. This is why the code names one outcome `BLOCKED_IN_THIS_TEST`, rather than *blocked by the pause*.
+
+A **pre-pause baseline** is another missing control. If the W-UI test identity lacked write permission even before 09:40, a rejection during the pause would not show that the pause caused it. An authorized isolated rehearsal could first demonstrate that the same synthetic identity and route can perform a permitted write, reset the training state, then apply the approved pause and repeat the labeled probe. The test sheet would retain both request IDs, approval, state snapshots and timing. W1 does not supply such a baseline, so do not invent one in the worked result. The W-API state change is still enough to reject the broad pause claim *within the stated W1 fixture*, assuming its supplied independent state is reliable. In a real investigation, the owners would verify that assumption before acting on the comparison.
+
+Then run the classifier in the same scratch Python session. These two labeled listings form one program; the second uses `PROBES` from the first.
+
+```python
+def classify(kind, response, before, after, audit):
+    if kind == "write":
+        if before != after:
+            return "WRITE_PATH_NOT_BLOCKED"
+        if response == "rejected" and audit == "deny":
+            return "BLOCKED_IN_THIS_TEST"
+        return "INCONCLUSIVE_WRITE"
+    if kind == "queue":
+        if (response == "queued" and before == "0 pending"
+                and after == "1 pending" and audit == "queue"):
+            return "QUEUE_ITEM_RECORDED"
+        return "INCONCLUSIVE_QUEUE"
+    if kind == "read":
+        if (response == "returned Room 2" and before == after
+                and audit == "read"):
+            return "READ_RETURNED_EXPECTED_VALUE"
+        return "INCONCLUSIVE_READ"
+    raise ValueError("unknown probe kind")
+
+
+seen = set()
+results = {}
+for probe_id, kind, response, before, after, audit in PROBES:
+    if probe_id in seen:
+        raise ValueError("duplicate probe ID")
+    seen.add(probe_id)
+    results[probe_id] = classify(kind, response, before, after, audit)
+    print(f"{probe_id}: {results[probe_id]}")
+
+write_ids = [probe_id for probe_id, kind, *_ in PROBES if kind == "write"]
+claim = "SUPPORTED_FOR_TESTED_PATHS" if all(
+    results[probe_id] == "BLOCKED_IN_THIS_TEST" for probe_id in write_ids
+) else "NOT_ESTABLISHED"
+print(f"write_pause_claim: {claim}")
+```
+
+The final `claim` line deliberately says `SUPPORTED_FOR_TESTED_PATHS` even in a hypothetical all-blocked variant. It would still say nothing about undiscovered routes, future time windows, queue capacity or why the earlier anomalous edits occurred. In the printed W1 fixture the output is `NOT_ESTABLISHED`; the legacy-route state change is a concrete failure of the proposed write-pause claim in the isolated test. The incident lead should keep the result as a **failed validation**, ask the service owner to correct or narrow the control design, and require a new authorized test before relying on it. A manual queue may reduce service disruption, but it does not compensate for an uncontrolled write route.
+
+**Practice submission.** Prepare (1) a four-row table of status and source fields; (2) a one-sentence containment claim with its scope and test window; (3) a decision record saying whether to rely on the pause, who must approve a change and how the manual item will be reconciled; and (4) a counterfactual W1-V in which W-UI's response remains `rejected` but its after-state becomes `Room 4`. Predict the new W-UI classification and the overall claim without changing any other field. The model output and a bounded decision appear in the final worked-results appendix. **Seven-point rubric:** one point for each of the four probe classifications, one for rejecting the broad pause claim with the W-API state evidence, one for a bounded owner-approved corrective and reconciliation plan, and one for the W1-V prediction. A 7/7 response demonstrates correct reasoning on W1, not verified containment of a real service.
 
 ### 3.4 Eradication requires a supported cause
 
@@ -1700,6 +1780,35 @@ This model uses K1 only as an optional replay **after** P1/C1 and V1. Each `PASS
 
 The hypothetical two-hour RTO remains **unmeasured**: 14 and 11 minutes describe isolated imports and four-row reads, not a production service's accepted return after the 09:45 interruption. For the variation, a 09:10–09:18 journal gap prevents claiming complete replay of K-A's post-snapshot changes or complete validation of a later candidate. Request a separately retained booking audit or manual queue with known coverage for that interval; if none exists, document the gap and ask the service owner to make a bounded decision about the unresolved data rather than asserting zero loss. The variation does not change K1 or the canonical R records.
 
+### Chapter 3 W1 write-pause verification lab — worked result
+
+The unmodified in-memory program in section 3.3 prints:
+
+```text
+W-UI: BLOCKED_IN_THIS_TEST
+W-API: WRITE_PATH_NOT_BLOCKED
+W-QUEUE: QUEUE_ITEM_RECORDED
+W-READ: READ_RETURNED_EXPECTED_VALUE
+write_pause_claim: NOT_ESTABLISHED
+```
+
+| Probe | Observable basis | Limit of the classification |
+|---|---|---|
+| W-UI | The response is `rejected`, the independent state remains `Room 2`, and the audit label is `deny`. | One test of the ordinary interface during W1's time window does not establish every ordinary-interface request, future period or other write route is blocked. |
+| W-API | The independent value changes from `Room 2` to `Room 4`; the service also reports `accepted` and the audit says `allow`. | This is a demonstrated failure **inside the fictional fixture**. It does not show what would happen on a real library service, and it does not identify the cause of earlier R-series edits. |
+| W-QUEUE | The pending count rises from zero to one and the response/audit say `queued`/`queue`. | A recorded item has not been reconciled into the booking state; one item does not measure capacity or patron wait time. |
+| W-READ | The lookup returns the expected `Room 2` value with no state change and a `read` audit label. | One successful read does not establish that all required read functions or users remain available. |
+
+**Model claim:** “Under the separately approved W1 isolated-copy trial from 09:40 to 09:55 UTC, the ordinary write path blocked the one W-UI probe, but the legacy route changed a booking value at 09:43. The proposed control therefore did not establish a staff-write pause across its stated two-route scope.” This is narrower and more useful than “the pause failed everywhere,” which is not shown. A quiet R22 query, collected before W1, would add no evidence that W1 blocked an edit. R21's tolerance statement is also not W1's special approval card.
+
+**Model decision and handoff:** do not call containment achieved or lift a monitoring requirement on the strength of W1. The fictional incident lead records W-API's before/after values, the response, audit label, test window, isolated environment and approvers, then asks the service owner and application owner to inspect the legacy-route control boundary. A revised control needs a new authorized trial on both known write routes and an explicit failure or rollback condition. The front desk keeps the manual item in its restricted queue; the service owner reconciles it against the approved booking target before normal writes resume. If a real service had other write routes, they would enter a separately scoped route inventory and test plan; W1 does not certify their absence. The containment choice in the canonical R1–R24 case remains unresolved until its own authorized branch outcome is supplied.
+
+**Optional measurement-design answer:** to attribute W-UI's rejection to the proposed pause, the team would need a permitted pre-pause baseline on the *same authorized synthetic route and identity*, a reset state, a recorded change time and a repeated labeled probe under the approved pause. The state reads should name the same booking and authoritative store; the response and audit rows should be linked by request ID and bounded collection times. These checks were not supplied in W1. Therefore the observed W-UI result is a narrow tested block, not proof of causal effectiveness. The W-API changed value independently prevents a two-route containment claim in the fixture.
+
+**W1-V counterfactual:** change only W-UI's after-state to `Room 4`, leaving its response `rejected` and audit label `deny`. The program classifies it as `WRITE_PATH_NOT_BLOCKED` because an observed value change outranks an asserted rejection. W-API remains a second `WRITE_PATH_NOT_BLOCKED`; W-QUEUE and W-READ keep their original results, and `write_pause_claim` remains `NOT_ESTABLISHED`. The conflict between W-UI's response/audit and resulting state calls for a provenance or control-path check, not a silent decision to trust the denial. W1-V is an exercise variant and does not alter the printed W1 fixture.
+
+Award the seven rubric points only when the four classifications, scoped failure claim, corrective handoff and variant are present. A learner who treats the `rejected` response alone as proof, averages the write outcomes, calls a queued request a completed booking, or imports W1's 09:40 approval into R21 must correct the result. W1 is supplementary; the book still has exactly 50 numbered exercises with matching answers.
+
 ### EX039 — Worked result
 
 | Role | Round A responsibility | Approval or escalation boundary | Verifiable output |
@@ -1902,6 +2011,7 @@ The model earns full credit only if the learner's own six artifacts preserve the
 ## Chapter 3 glossary
 
 - **Containment:** a bounded action intended to limit further harm while investigation continues.
+- **Control effectiveness:** the observed effect of a proposed safeguard within a named scope and test window; an enabled setting or quiet log alone does not establish it.
 - **Eradication:** removal of an identified cause or persistence mechanism, followed by verification.
 - **Fallback:** an alternative action prepared if the preferred intervention fails or becomes too costly.
 - **Provenance:** the recorded origin, collection context and authority of a data copy or claim.
