@@ -132,9 +132,9 @@ clinics with none: ['Vale']
 
 The lab shows 12 of 60 workstations, 20 percent, on an unsupported operating system, concentrated in Harbour and North, with Vale having none. Most of the twelve are imaging or cephalometric machines. This tells Priya that the problem is mostly a vendor-dependency problem, not neglect of ordinary desktops.
 
-### Keeping it current
+### Keeping the inventory current
 
-The inventory is useful only if it stays true. Priya asks the supplier to add a monthly comparison of the console against purchasing, and to update support dates whenever a vendor publishes a lifecycle change.
+An inventory decays the moment it is finished. New workstations arrive, machines are reimaged under new names, and vendors move support end dates. Priya therefore asks the supplier to run a monthly comparison of the management console against the purchasing list and to flag any serial that appears in only one of them. She also subscribes the operations mailbox to the lifecycle announcements of each operating system and imaging vendor, so a changed support date is updated in the inventory within a week. Each monthly comparison is saved with its date, which gives auditors evidence that the inventory is maintained rather than produced once for the project.
 
 ### Worked example
 
@@ -186,9 +186,9 @@ Promises made on the phone are easily forgotten. Priya asks the vendor to confir
 
 NIST SP 800-53 Rev. 5 control SA-22 addresses unsupported system components, expecting replacement or documented justification. Kestrel cannot shift this duty to the vendor, but it can make the vendor's role explicit in the contract renewal, including notice periods before support ends.
 
-### When the vendor cannot help
+### When the vendor cannot help yet
 
-For two cephalometric machines the vendor has no certified newer release yet. Priya records the vendor's expected release quarter, asks to be told when it ships, and moves both machines to the exception process in chapter 4. This keeps the plan honest: some risks wait on others, and the record shows exactly why and until when.
+For two cephalometric machines the vendor has no certified newer release. Upgrading anyway would leave the clinic with unsupported clinical software, which is a different risk rather than a fix. Priya records the vendor's expected release quarter in writing, asks to be notified when it ships and moves both machines into the exception process described in chapter 4. The record states what is waiting on whom, and until when. This matters for governance: an unsupported machine that is known, isolated and scheduled is a managed risk, whereas one that is simply forgotten is an unmanaged one, even though the machine itself is identical in both cases.
 
 ### Worked example
 
@@ -262,7 +262,7 @@ Each exception is approved by a named manager, not the IT supplier, because acce
 
 ### Why allowlisting fits these machines
 
-Imaging PCs run a small, stable set of programs. That makes application allowlisting practical: anything not on the approved list simply does not start. On a general office desktop, where users install many tools, allowlisting is harder to maintain. Priya uses audit mode for two weeks first, collecting what actually runs, so the enforced list does not block a forgotten but necessary helper program.
+Imaging PCs run a small, stable set of programs: the capture software, its database client and a viewer. That makes application allowlisting practical, because the list of permitted software is short and rarely changes. Anything not on the list simply does not start, which protects a machine that can no longer receive operating system patches. On a general office desktop, where staff install many tools, allowlisting is much harder to maintain. Priya uses audit mode for two weeks first, collecting what actually runs, so the enforced list does not block a forgotten helper program such as the vendor's licence checker. Publisher-based rules are preferred to file-path rules, since vendor updates then keep working.
 
 ### Worked example
 
@@ -378,7 +378,7 @@ The practice management client updates are scheduled with its vendor, because da
 
 ### Emergency updates
 
-When a vendor flags an update as actively exploited, the normal three-day wait for clinics is skipped. The supplier deploys to all rings within two days, after a short check on the office machines. This exception is written into the patch plan so nobody has to argue it during a busy week.
+Most updates can follow the normal rings, but a flaw that is already being exploited changes the balance between caution and speed. NIST SP 800-40 Rev. 4 describes this as risk-based prioritisation, and the CISA Known Exploited Vulnerabilities catalogue is a practical signal that a flaw is in active use. For such updates, Kestrel's patch plan skips the normal three-day wait for clinics: the supplier checks the update on the office machines for one day and then deploys to every ring within two days. Writing this exception into the plan in advance matters, because nobody then has to argue for it during a busy clinical week when the pressure to delay is greatest.
 
 ### Worked example
 
@@ -438,7 +438,7 @@ She also checks that desktops in surgeries, which never leave the building, are 
 
 ### Testing the loss procedure
 
-Priya runs a tabletop exercise with the operations manager: a clinician reports a laptop stolen from a car. They walk through each step with a timer. The exercise shows that nobody knew who should notify the data protection officer out of hours; a name and phone number are added.
+A written procedure is only a hypothesis until someone follows it. Priya runs a tabletop exercise with the operations manager: a clinician reports at 19:00 that a laptop was stolen from a car. They walk through each step with a timer, from confirming encryption in the console to revoking sessions and recording the event. Most steps work, but the exercise shows that nobody knew who should notify the data protection officer out of hours, or how quickly. A named contact and phone number are added, and the procedure is updated with the date. A second exercise six months later confirms the gap is closed and finds no new ones.
 
 ### Worked example
 
@@ -496,13 +496,9 @@ The endpoint protection product raises its own alerts, such as blocked files or 
 
 She writes a short escalation rule: any alert on an imaging exception device, or any alert about disabled protection, is phoned to the operations manager the same day rather than waiting in a queue.
 
-### Reviewing the review
+### Reviewing the review and its blind spots
 
-Every quarter, Priya checks whether the weekly review actually happened by looking at the saved notes. Missed weeks are discussed without blame and the routine is adjusted, for example moving it to a quieter day.
-
-### Detection limits
-
-Logs show only what was recorded. An imaging PC without the protection agent produces no alerts at all, so its silence is not reassuring. Priya lists such blind spots in the exception register.
+A weekly review that quietly stops is worse than none, because everyone assumes it is happening. Each quarter Priya checks the saved review notes and counts missed weeks; missed weeks are discussed without blame and the routine is moved if needed, for example to a quieter day. She also records what the logs cannot show. An imaging PC without the protection agent produces no alerts at all, so its silence is not reassurance. These blind spots are listed against each device in the exception register, which makes clear that isolation and allowlisting, not monitoring, are the main controls for those machines.
 
 ### Worked example
 
@@ -562,11 +558,11 @@ She also identifies manual fallbacks: printed day lists so clinics can still see
 
 ### Communication during outages
 
-A short message template tells clinic managers what is affected, what to do meanwhile and when the next update will come. Having it ready saves time and reduces worried phone calls to the supplier.
+Outages create a second problem besides the technical one: uncertainty. Clinic managers phone the supplier repeatedly, staff improvise workarounds and patients are told different things at each site. Priya prepares a short message template that the supplier sends to all clinic managers when a shared system fails. It states what is affected, what staff should do meanwhile, such as using the printed day lists, and when the next update will arrive even if nothing has changed. Updates go out at fixed intervals, every hour during an outage. Having the template ready saves time, reduces calls to the supplier and keeps every clinic acting on the same information.
 
 ### Recovery for exception devices
 
-Imaging PCs on old systems are hard to rebuild because installation media and licences are old. Priya asks the vendor to confirm that a rebuild remains possible and stores the media and keys securely offline.
+Machines on old operating systems are the hardest to rebuild, because installation media, drivers and licence keys are old and may no longer be downloadable. If an exception imaging PC fails, Kestrel could find that it cannot be restored at all. Priya asks the vendor to confirm in writing that a rebuild remains possible and what it requires. The installation media, capture card drivers and licence keys are copied and stored offline with the backups, and the rebuild steps are documented. A rebuild is tested on a spare machine once. This turns a fragile dependency into a known procedure until the machines are finally replaced.
 
 ### Worked example
 
@@ -624,17 +620,13 @@ Leaders approve what they understand and can afford. Priya presents costs in thr
 
 She also shows what is not being funded, such as a full security operations service, and the risk that remains as a result. Leaders can then make an informed decision rather than assuming everything is covered.
 
-### Regulatory context
+### Regulatory context and auditor questions
 
-Dental practices hold health data and must meet data protection duties, including reporting certain breaches. Priya does not give legal advice; she lists the questions for the practice's data protection officer, such as which events need notification, and records the answers in the incident procedure.
-
-### Auditor questions
-
-She prepares short answers for common auditor questions: how is inventory kept, how are exceptions approved, how is patching measured. Each answer points to a document and a recent example.
+Dental practices hold health data and must meet data protection duties, including reporting certain breaches within set time limits. Priya does not give legal advice. Instead she lists the questions for the practice's data protection officer, such as which endpoint events need notification and who decides, and records the answers in the incident procedure. She also prepares short answers to the questions auditors usually ask: how is the inventory kept, how are exceptions approved, how is patching measured. Each answer points to a specific document and a recent example, so that an audit becomes a matter of showing evidence rather than writing explanations from memory.
 
 ### A one-page roadmap
 
-The final governance item is a one-page roadmap: quarter by quarter, what is replaced, reviewed or measured. It lets leaders see progress without reading technical detail.
+Leaders need to see where the programme is going without reading technical detail. The final governance item is a one-page roadmap set out quarter by quarter: which imaging PCs are replaced, when the exception register and baseline are reviewed, and when measures are reported. Each line names an owner. The roadmap is updated after each quarterly report, and items that slip are shown as slipped rather than silently moved. This gives the operations manager a simple way to track commitments, and it gives the supplier a clear schedule to plan engineer visits and budget against, which matters when vendor dependencies drive the timeline.
 
 ### Worked example
 
@@ -688,25 +680,15 @@ Replace the last three imaging PCs, extend checks to clinic tablets.
 
 ### Measuring the same way
 
-For a fair comparison, Priya repeats the chapter 2 method exactly: the same merge by serial, the same vendor lifecycle sources, the same per-clinic coverage check. Only then does she compare. If the method had changed, a lower unsupported count might simply reflect a different definition.
+A fair comparison needs the same method at both ends. Priya repeats the chapter 2 process exactly: the same merge by serial number, the same vendor lifecycle sources and the same per-clinic coverage check before counting. Only then does she compare figures. If the method had changed, a lower unsupported count might simply reflect a different definition or a missing clinic. She also reports costs against budget. The imaging replacements came in slightly under budget because two capture cards could be reused, while staff time ran over, mostly in vendor coordination. Both facts go in the report, because a fair evaluation covers effort as well as outcomes.
 
-She also reports costs against budget. The imaging replacements came in slightly under budget because two capture cards could be reused. Staff time was higher than planned, mostly for vendor coordination.
+### Staff experience and expectations
 
-### Staff experience
-
-A short survey of clinic managers asks whether changes disrupted work. Most report little disruption; two mention the screen-lock change. Priya includes these comments, since security that staff resent tends to be bypassed.
-
-### Comparing with expectations
-
-At the start, Priya expected to reach zero unsupported systems. The final three show that vendor timelines limit what any one organisation can do. She explains this gap rather than presenting the result as a failure, because the remaining machines are isolated, recorded and scheduled.
-
-### Sensitivity
-
-She notes that if the vendor's release slips by six months, the exception dates must be extended through the normal approval route.
+A short survey of clinic managers asks whether the changes disrupted work. Most report little disruption; two mention the screen lock, which Priya records, since security that staff resent tends to be bypassed. She also compares the outcome with her own expectation. At the start she hoped to reach zero unsupported systems; three remain because the vendor's release has not shipped. She explains this gap rather than presenting it as failure, because the remaining machines are isolated, recorded and scheduled. If the release slips by six months, the exception dates are extended through the normal approval route, not informally.
 
 ### Was the effort worth it
 
-Priya estimates staff and supplier time against risk reduced. Removing nine unsupported machines and controlling three more cost far less than one serious incident at a clinic would.
+Leaders will ask whether the year's work was good value. Priya sets the cost, roughly forty supplier days and the replacement hardware, against what was reduced: nine unsupported machines removed, three more isolated and controlled, every desktop baselined and every laptop verified encrypted. She avoids inventing a precise monetary risk figure, which would give false precision. Instead she describes the likely cost of one serious incident at a clinic, such as days of cancelled appointments and notification work, in plain terms. The comparison is qualitative but honest, and it lets the board judge value on evidence rather than on the absence of incidents alone.
 
 ### Worked example
 
@@ -760,21 +742,15 @@ Working with vendors took longer than technical changes.
 
 ### Writing for two audiences
 
-The report has two readers: the polytechnic's examiners, who look for method and evidence, and Kestrel's managers, who want decisions and costs. Priya writes one main report for examiners and a four-page summary for Kestrel, drawing from the same data so the two never disagree.
-
-In the examiner version, she includes the labs, the method for merging inventories and the reasoning behind each exception. In the Kestrel version, she leads with the decisions needed next year and their costs.
+The report has two readers with different needs. The polytechnic's examiners look for method, evidence and reasoning; Kestrel's managers want decisions, costs and dates. Priya writes one main report for the examiners and a four-page summary for Kestrel, both drawn from the same data so they never disagree. The examiner version includes the labs, the inventory merge method and the reasoning behind each exception. The Kestrel version leads with the decisions needed next year and their costs, and puts technical detail in an appendix. Writing both forces her to check that every number in the summary can be traced back to the full report.
 
 ### Citing sources well
 
-Every recommendation is linked to a source: CIS Controls v8 safeguards for inventory and supported software, NIST SP 800-40 Rev. 4 for patch planning, SP 800-92 for logs and SP 800-53 Rev. 5 control SA-22 for unsupported components. The supervisor checks that each citation supports the specific claim it is attached to, rather than being decoration.
+Every recommendation is linked to a source that actually supports it: CIS Controls v8 safeguards 1.1 and 2.2 for inventory and supported software, NIST SP 800-40 Rev. 4 for patch planning, SP 800-92 for log management and SP 800-53 Rev. 5 control SA-22 for unsupported components. Dr Hale checks each citation against the claim it is attached to, rather than accepting a list of references as decoration. Two citations are moved because they supported a general point rather than the specific one. Good citation practice also helps Kestrel later, since an auditor can follow each recommendation back to recognised guidance without asking Priya.
 
-### What she would change
+### What she would change, and who owns it next
 
-Looking back, Priya would contact the imaging vendor in the first week, not the third, since vendor scheduling drove the whole timeline. She would also agree the reporting template with managers before collecting data, so the first report would need fewer revisions.
-
-### Next owner
-
-The supplier's account manager becomes the owner of the monthly checks, and the operations manager owns the exception register.
+Looking back, Priya would contact the imaging vendor in the first week rather than the third, since vendor scheduling drove the whole timeline. She would also agree the reporting template with managers before collecting data, so the first quarterly report would need fewer revisions. For continuity, ownership is made explicit before she leaves: the supplier's account manager owns the monthly inventory and patch checks, and the operations manager owns the exception register and its quarterly review. Both names, with deputies, appear on the roadmap, so the programme does not depend on a student who has finished her project.
 
 ### Worked example
 
