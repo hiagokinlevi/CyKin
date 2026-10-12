@@ -354,6 +354,8 @@ Infrastructure research studies consequences for people through chains of physic
 ### Continue studying — chapter 01 of 08
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
+
+Continue to the next authored lesson.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-02"></a>
@@ -573,6 +575,8 @@ The infrastructure-security frontier is spread across five literatures with diff
 ### Continue studying — chapter 02 of 08
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
+
+Continue to the next authored lesson.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-03"></a>
@@ -795,6 +799,8 @@ A doctoral contribution must say what kind it is and must beat the strongest cur
 ### Continue studying — chapter 03 of 08
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
+
+Continue to the next authored lesson.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-04"></a>
@@ -1045,6 +1051,8 @@ Before comparing methods, make sure the numbers mean what they claim. Reproduce 
 ### Continue studying — chapter 04 of 08
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
+
+Continue to the next authored lesson.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-05"></a>
@@ -1336,6 +1344,8 @@ The main study compared four orderings on paired draws with an oracle bound. Cri
 ### Continue studying — chapter 05 of 08
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
+
+Continue to the next authored lesson.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-06"></a>
@@ -1532,6 +1542,8 @@ Critique is part of the method. The red team's objections became hypotheses and 
 ### Continue studying — chapter 06 of 08
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
+
+Continue to the next authored lesson.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-07"></a>
@@ -1730,6 +1742,8 @@ The thesis is an argument: claim, data, warrant, backing, qualifier and rebuttal
 ### Continue studying — chapter 07 of 08
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
+
+Continue to the next authored lesson.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="ch-08"></a>
@@ -1912,9 +1926,9 @@ The defense examines independence: the candidate must know the contribution's li
 <!-- cyberabc:chapter-navigation:start ch-08 -->
 ### Continue studying — chapter 08 of 08
 
-[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Finish the 207-course route →](../SUBJECTS.md)
 
-This is the final chapter of this course and of the 207-course study path; the chapter index marks the end of the route.
+This is the final chapter of this course and of the 207-course study path.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
@@ -2192,4 +2206,4 @@ Companion CyberABC material: the [doctoral Incident Response book](../../../inci
 
 **Case boundary.** The Riverbend Region, Port Halvard, Riverbend Electric Cooperative, Riverbend Water Authority, St. Calder Hospital, Meridian Telecom, GridWater-Sim, studies P1–P8, participants P01–P12, the Cascade Study and every number produced by the labs are invented for teaching. Sources support the general statements beside which they are cited, never the synthetic details.
 
-**Edition metadata.** Draft edition, October 2026. Reviewer: pending. A4 verification: not yet rendered.
+**Edition metadata.** Draft edition, October 2026. Reviewer: pending. A4 release verification: pending; a preliminary layout preflight is recorded in [the progress review](../../../../../STRUCTURE_REVIEW.md#a4-preflight).

@@ -6,7 +6,7 @@ Each course's **draft coverage** is authored English subject-chapters ÷ planned
 
 | Formation level | Academic area | English draft chapters | Draft coverage | Manuscript words | A4 preflight length | Read course and book |
 |---|---|---:|---:|---:|---:|---|
-| Rapid course | Incident response and cyber resilience | 4 / 4 | 100.0% | 51,314 | 105 / 300 (35.0% of page floor) | [Course](levels/rapid-1-month/incident-response-resilience/README.md) · [Draft](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md) |
+| Rapid course | Incident response and cyber resilience | 4 / 4 | 100.0% | 54,460 | 114 / 300 (38.0% of page floor) | [Course](levels/rapid-1-month/incident-response-resilience/README.md) · [Draft](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md) |
 | Rapid course | Cybersecurity | 3 / 4 | 75.0% | 9,255 | Not measured | [Course](levels/rapid-1-month/cybersecurity/README.md) · [Draft](levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md) |
 | Rapid course | Information security | 0 / 4 | 0.0% | 0 | Not measured | [Course](levels/rapid-1-month/information-security/README.md) · [Plan](levels/rapid-1-month/information-security/en/book/PLAN.md) |
 | Rapid course | Data governance | 0 / 4 | 0.0% | 0 | Not measured | [Course](levels/rapid-1-month/data-governance/README.md) · [Plan](levels/rapid-1-month/data-governance/en/book/PLAN.md) |
@@ -212,6 +212,6 @@ Each course's **draft coverage** is authored English subject-chapters ÷ planned
 | Doctoral research track | AI and machine-learning security | 0 / 8 | 0.0% | 0 | Not measured | [Course](levels/doctorate-2-years/ai-security/README.md) · [Plan](levels/doctorate-2-years/ai-security/en/book/PLAN.md) |
 | Doctoral research track | Quantum and post-quantum security | 0 / 8 | 0.0% | 0 | Not measured | [Course](levels/doctorate-2-years/quantum-post-quantum-security/README.md) · [Plan](levels/doctorate-2-years/quantum-post-quantum-security/en/book/PLAN.md) |
 | Doctoral research track | OT, IoT and cyber-physical security | 0 / 8 | 0.0% | 0 | Not measured | [Course](levels/doctorate-2-years/ot-iot-security/README.md) · [Plan](levels/doctorate-2-years/ot-iot-security/en/book/PLAN.md) |
-| Doctoral research track | Critical infrastructure and sector security | 0 / 8 | 0.0% | 0 | Not measured | [Course](levels/doctorate-2-years/critical-sector-security/README.md) · [Plan](levels/doctorate-2-years/critical-sector-security/en/book/PLAN.md) |
+| Doctoral research track | Critical infrastructure and sector security | 8 / 8 | 100.0% | 38,420 | 88 / 300 (29.3% of page floor) | [Course](levels/doctorate-2-years/critical-sector-security/README.md) · [Draft](levels/doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md) |
 
 **Release state:** 0 / 207 English books have passed the 300-page A4, substantive-exercise, source and editorial checks. Read a 100% draft-coverage value as *all chapter starts exist*, never as a finished book. [Verified edition totals](STRUCTURE_REVIEW.md).

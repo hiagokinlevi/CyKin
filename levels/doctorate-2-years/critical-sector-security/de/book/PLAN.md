@@ -92,7 +92,7 @@ This subject teaches **Thesis synthesis and reproducibility archive** and contri
 
 This subject teaches **Defense and publication plan** and contributes to the doctoral research track outcome: test an original contribution and its limits independently in critical infrastructure and sector security. The chapter will integrate earlier methods, compare alternatives and evaluate results against explicit criteria. At this level, learners will replicate baselines, challenge assumptions and publish evidence. Its worked example will use a reproducible synthetic laboratory, project or research artifact. The learner will complete a project checkpoint with an assessment rubric and at least 6 exercises, then compare reasoning with the final worked-answer appendix. It builds on Chapter 07 and prepares the worked-answer appendix and final assessment. This paragraph is an editorial summary, not an authored lesson.
 
-**Continue studying — chapter 08 of 08 (outline):** [← Chapter 07 (plan)](PLAN.md#ch-07) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+**Continue studying — chapter 08 of 08 (outline):** [← Chapter 07 (plan)](PLAN.md#ch-07) · [Course chapter index](../SUBJECTS.md) · [Finish the 207-course route →](../SUBJECTS.md)
 
 ## Practical and assessment plan
 

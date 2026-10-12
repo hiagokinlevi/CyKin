@@ -108,6 +108,27 @@ After reading the dataset in section 1.7, apply the contract to the **actual Cha
 
 An evidence-readiness contract is useful only if someone owns its **maintenance**. A service change may rename a booking field, split a write path, move a log producer or shorten retention. The owner would then re-run the authorized test and update the contract's source, meaning and collection route. The document should show its last tested scope and next review trigger; an old “green” status without those details is weaker than a current, explicit unknown. This connects Chapter 1's service map to Chapter 2's evidence handling, Chapter 3's control and recovery checks and Chapter 4's after-action improvements. It remains a preparation artifact, not a substitute for case evidence or a completed investigation.
 
+#### Test whether readiness is usable
+
+A response team may possess a policy, a contact list, monitoring software and nightly backups while still being unable to make a safe decision under pressure. The existence of a component says little about whether the team can use it correctly when a particular service is threatened.
+
+A practical readiness claim should have five parts: **capability**, **owner**, **permission**, **test**, and **failure response**. For example, "we have booking logs" is an inventory statement. A verifiable readiness statement is: "the application custodian can, with the incident lead's approval, retrieve booking changes for a specified identifier and time interval; another reviewer can check the source, filters and output; if the expected test row is absent, the custodian investigates collection and retention rather than claiming no activity occurred."
+
+This distinction matters because apparent technical success can hide failed business outcomes. A green web-health indicator may represent a responsive landing page while a reservation write fails. A successful backup-job status does not demonstrate that a restored database contains the correct schedule. A sign-in record establishes that the producing system reported an account event; it does not establish a human identity.
+
+[NIST Cybersecurity Framework 2.0](https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf) describes cybersecurity outcomes across Govern, Identify, Protect, Detect, Respond and Recover. [NIST SP 800-61 Revision 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) integrates incident-response recommendations with organizational risk management. Neither source authenticates Harbor Library's fictional observations or specifies this exercise's cards. The teaching implication is to examine whether the organization's desired outcomes can actually be demonstrated.
+
+Consider the following contrasting rehearsal results:
+
+| Claimed readiness | Weak evidence | Stronger, still bounded demonstration |
+|---|---|---|
+| An owner can authorize disruption | An owner name appears in a document | An authorized role accepts or rejects a precisely scoped fictional request with reason and review time |
+| Booking changes can be reconstructed | A dashboard exists | A custodian returns a predeclared synthetic edit, source identifier, original time and exact selection; an out-of-range control is excluded |
+| Backups support recovery | R7 reports job completion | A separate, authorized isolated restore is compared with an owner-approved booking state; **not performed in Round A** |
+| An incident can be handed off | A ticket says "investigating" | A second reviewer independently identifies observations, unknowns, scope, proposed decisions and owners |
+
+Readiness tests should expose their own limitations. Passing one retrieval rehearsal validates the tested path and interval, not every collector, account or future day. A signed approval for one mock change does not establish authority to make any other change.
+
 ### 1.3 Roles and decision authority
 
 A small organization may assign several roles to one person, but the decisions remain distinct:
@@ -210,6 +231,54 @@ The next check should be chosen for its ability to **discriminate** among these 
 
 This is an example of **evidence discipline**, not a probabilistic verdict. With this small dataset, no defensible numerical probability of compromise can be calculated. A score invented from intuition would add apparent precision without adding evidence.
 
+#### Let the service outcome set the evidence question
+
+An alert title tells a responder what a detector noticed. It does not tell the responder which business result is at risk. For Harbor Library, the meaningful outcome is that residents can see and reserve the intended study rooms and that authorized staff can manage bookings without silently corrupting the schedule.
+
+The existing service map lists a booking application, staff identity service, reservation database, nightly backup and help desk. Each has a different evidentiary purpose. An identity record can help investigate an account's authentication context; an application audit describes a reported operation; an authoritative booking-state check tests what is currently stored; a help-desk ticket records a reported user experience; a backup monitor describes a job. None should be substituted for another merely because its timestamp is convenient.
+
+A beginner should write a **decision-purpose sentence** before requesting evidence:
+
+> "I need to determine whether B17 and B18 were authorized training changes before recommending an access restriction that could interrupt front-desk work."
+
+That sentence fixes the relevant object, suspected harm, alternative explanation and pending decision. It also prevents an unjustified expansion to the unrelated newsletter contact list or all patron accounts.
+
+A useful evidence question has two outcomes, not one. Ask: "What would I conclude if the requested record confirms the hypothesis, and what would I conclude if it contradicts the hypothesis?" If neither result would change the decision, the request may not be the best first use of limited time. This is a decision-value test, not a mathematical score.
+
+For instance, the scheduled training in R6 makes an approved-operation explanation plausible, but R6 does not list B17 or B18 as approved tasks. A bounded request for the dated task list could strengthen or weaken that explanation. A broad network search, by contrast, cannot substitute for the missing task authorization merely because it might produce more data.
+
+#### Keep a claim ledger with falsifiers
+
+A record has a **producer**, a **reported event**, a **timestamp**, and a **scope**. The analyst adds an interpretation. Keeping those elements separate prevents a common logical shortcut: replacing "this source reports X" with "X happened exactly as I imagine it."
+
+Use a claim ledger with five columns:
+
+| Claim | Direct pointer | Type | Limitation | What could change the conclusion? |
+|---|---|---|---|---|
+| `desk-a` signed in | R1, 08:40, identity log | Record-content observation | No human attribution or device proof | Narrow authorized identity context and validated correlation |
+| B18 was cancelled | R4, 08:44, application log | Record-content observation | No approval or present-state confirmation | Approved task list and bounded current-state comparison |
+| Training explains the changes | R6 plus R3–R4 | Hypothesis | Calendar entry is not task authorization | Dated complete training task list |
+| Service can be restored quickly | R7 | Unsupported finding | Job completion gives neither restore duration nor correctness | Isolated restore test under owner-defined acceptance criteria |
+| No data was transferred | R8 | Unsupported finding | Destination detail is absent | Approved, fit-for-purpose network evidence and coverage check |
+
+The "direct pointer" column does not turn a synthetic row into authenticated production evidence. It identifies the exact source *within the exercise* from which a statement was drawn.
+
+A credible conclusion also needs a **falsifier**: an observation that would force the writer to change the current explanation. If the only acceptable evidence is evidence that confirms the favored theory, the analyst is not performing a meaningful test. An approved training plan excluding B18 would weaken the proposed training explanation; a plan including B18 would strengthen it for that edit but still would not establish who operated the session.
+
+When the evidence is incomplete, "unknown" is an informative state. It identifies an unfinished dependency between question and proof. It must not be changed to "false" merely because a field or record is missing. R8 illustrates this directly: the absence of destination detail is not evidence that there was no transfer.
+
+#### Keep the 09:05 information boundary explicit
+
+Incident records use more than one time concept. An event timestamp describes what a producer reported. A case-open time describes when the response record began. A decision time describes when particular information and authority were used. Later discovery is not retroactive access to evidence.
+
+In this exercise the source events R1–R8 have timestamps between 08:40 and 08:55 UTC, the case opens at 09:00, and the first decision checkpoint is 09:05. A good decision note states its **available evidence set** as explicitly as its timestamp:
+
+`case=HL-IR-001; checkpoint=09:05 UTC; available=R1–R8; later sources=not released`
+
+A peer reviewer can now ask whether every claimed fact was available to the decision maker. A later record with an earlier event time must remain excluded from this 09:05 reasoning. Otherwise the review suffers from hindsight bias: judging an earlier action as if the responder already knew facts received later.
+
+Keep hypothetical injects in separate cards. If a trainer says "imagine another edit happens at 09:08," the learner may explain how the decision *would* change, but must not silently append the imagined event to R1–R8. Restoring the baseline after the counterfactual is part of the exercise.
+
 ### 1.8 Guided readiness workshop: prepare the first decision
 
 This paper-and-pencil lab turns the eight fictional records into a reproducible case artifact. It requires no software, network connection, account, secret or real person. Work from the table in section 1.7 and the role and scope rules above. The outputs are a service card, an evidence ledger and a decision card. Keep the three artifacts together under the synthetic case ID `HL-IR-001`.
@@ -245,7 +314,126 @@ If the training owner confirms that B17 and B18 were on an approved task list, t
 
 To make the gate reproducible, a second analyst should be able to read the same R1–R8 table, recover the same event order, locate the supporting record for each claim and see the approval path. If the second analyst cannot tell whether a sentence is a supplied fact, a hypothesis or a proposed action, rewrite it. Chapter 2 adds evidence preservation and discovery-time discipline to this same case; the later records must not be imported backward into the 09:05 decision.
 
-### 1.10 Common errors and chapter synthesis
+#### Make the first decision a reproducible handoff
+
+A handoff should allow a second learner to answer six questions without asking the original analyst for undocumented context:
+
+- What service and decision are in scope?
+- Which exact record identifiers support the current observations?
+- Which hypotheses remain live, and what could disconfirm them?
+- What has merely been proposed versus approved or executed?
+- Who owns the next question or action?
+- What deadline or observed trigger requires renewed review?
+
+Compare two examples.
+
+**Insufficient:** "Suspicious admin activity. Likely breach. Investigating."
+
+**Reviewable:** "At the fictional 09:05 UTC checkpoint of HL-IR-001, R1 shows a `desk-a` sign-in, R3 and R4 report booking edits, and R5 reports a patron complaint. R6 documents scheduled training but not the authorized task list. The analyst has not identified a human actor or established compromise. The incident lead is asked to approve a bounded training-owner check and to review the service impact with the owner by 09:15 UTC; no real access restriction was performed."
+
+The longer message is not better simply because it has more words. Each clause answers a question essential to the next decision. A handoff that confuses a proposed request with a completed collection can be more dangerous than a brief handoff that clearly marks the missing evidence.
+
+[NIST SP 800-61 Revision 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) addresses incident response as an organizational capability involving multiple roles and activities. The six-question handoff above is original CyberABC instructional material, not a mandated NIST form.
+
+<a id="ir-rapid-ch01-claim-lab"></a>
+
+### 1.10 Offline laboratory: evidence-bound claim review
+
+**Goal:** Classify claims against the exact Round A release and demonstrate how a missing source changes a supported teaching statement without changing the canonical incident.
+
+**Inputs:** The eight fictional record identifiers, their existing timestamps and source types, plus six classroom claim cards. No new incident observations are introduced.
+
+**Environment:** Python 3, standard library only. The fixture is in memory, requires no accounts, reads no files, and makes no network requests.
+
+**Before running:** Predict which claims may accurately report the supplied *record contents*, which remain hypotheses, which exceed the source semantics, and which reference an unreleased record. In particular, do not treat "record content available" as "real event authenticated."
+
+~~~python
+events = [
+    ("R1", "08:40", "identity", "desk-a sign-in"),
+    ("R2", "08:42", "application", "dashboard opened"),
+    ("R3", "08:43", "application", "B17 moved"),
+    ("R4", "08:44", "application", "B18 cancelled"),
+    ("R5", "08:48", "helpdesk", "patron report"),
+    ("R6", "08:50", "staff_calendar", "training scheduled"),
+    ("R7", "08:52", "backup_monitor", "job completed"),
+    ("R8", "08:55", "network_summary", "destination detail absent"),
+]
+
+assert len(events) == len({row[0] for row in events})
+assert [row[1] for row in events] == sorted(row[1] for row in events)
+
+available = {row[0] for row in events}
+
+# Each card is an analytical claim, not another R-series event.
+claims = [
+    ("C01", {"R1"}, "record"),
+    ("C02", {"R3", "R4", "R6"}, "hypothesis"),
+    ("C03", {"R1", "R3"}, "actor"),
+    ("C04", {"R7"}, "restore"),
+    ("C05", {"R8"}, "no_transfer"),
+    ("C06", {"R9"}, "record"),
+]
+
+def classify(refs, kind, released):
+    if not refs <= released:
+        return "NOT_IN_RELEASE"
+    if kind == "record":
+        return "RECORD_CONTENT_ONLY"
+    if kind == "hypothesis":
+        return "HYPOTHESIS_ONLY"
+    return "NOT_ESTABLISHED"
+
+for name, refs, kind in claims:
+    print(name, classify(refs, kind, available))
+
+# Negative test: make a temporary incomplete copy of Round A.
+# This is not a deletion of canonical R6.
+without_r6 = available - {"R6"}
+print(
+    "NEGATIVE_R6_MISSING",
+    classify(claims[1][1], claims[1][2], without_r6),
+)
+print("EVENTS_IN_ROUND_A", len(events))
+~~~
+
+#### Exact expected output
+
+~~~text
+C01 RECORD_CONTENT_ONLY
+C02 HYPOTHESIS_ONLY
+C03 NOT_ESTABLISHED
+C04 NOT_ESTABLISHED
+C05 NOT_ESTABLISHED
+C06 NOT_IN_RELEASE
+NEGATIVE_R6_MISSING NOT_IN_RELEASE
+EVENTS_IN_ROUND_A 8
+~~~
+
+#### Worked interpretation
+
+**C01:** R1 is available. The learner may report that the *synthetic identity record* states a successful `desk-a` sign-in. The output is not an independent authentication of the record or a human attribution.
+
+**C02:** R3, R4 and R6 are all available. The training explanation can be formulated as a hypothesis, but the calendar entry does not authorize the specific edits. The code does not evaluate whether the hypothesis is true.
+
+**C03:** Account and application records exist, but the actor's identity is not established. No field in the supplied release identifies the human operating the session.
+
+**C04:** The reported backup-job completion cannot be converted into a proven restore result. No restore was executed in this fixture.
+
+**C05:** R8 omits destination detail. A claim that no transfer occurred would exceed the source.
+
+**C06:** The claim references R9, outside the Round A release. The code intentionally supplies no content for R9; the future record must not influence the 09:05 assessment.
+
+**Negative test:** Removing R6 from a temporary set makes the training-hypothesis card lack one of its referenced sources. The result changes to `NOT_IN_RELEASE` *for the temporary variant*. No historical event or canonical R6 record has changed.
+
+#### Validation, failure modes and limits
+
+The first two assertions detect duplicate identifiers or unsorted printed timestamps in this literal fixture. They do not verify synchronization of independent real systems. The algorithm deliberately checks source *availability* and a simplified claim class; it does not perform semantic parsing of incident narratives, cryptographic integrity checks, authorization checks or independent source verification.
+
+A learner who obtains the expected output has reproduced the stated classroom logic, not proven that Harbor Library experienced an incident. A learner who edits the Python input must preserve the original transcript and label the changed run as a variant.
+
+**Required artifact:** Submit (a) the exact transcript, (b) a six-row claim ledger with evidence ID, supported wording and limitation, and (c) a two-sentence difference report for the negative test. Pass only when all original Round A facts remain unchanged, unsupported findings stay blocked and the hypothetical source removal is not represented as real evidence loss.
+
+### 1.11 Common errors and chapter synthesis
 
 - **Confusing suspicion with confirmation.** Use a hypothesis and state what would confirm or weaken it.
 - **Skipping the service owner.** A technically plausible action can cause avoidable harm to users.
@@ -266,6 +454,10 @@ Work from **only R1–R8** and the fictional authority rules in Chapter 1. The c
 
 **Objective:** separate the content of a record from an explanation of that content. **Inputs:** R4, R5 and R7. **Output:** a four-row table with statement, classification, supporting record and one sentence describing the record's limit. Classify: (a) “R4 records a cancellation of B18”; (b) “`desk-a` was compromised”; (c) “R5 reports that B18 disappeared”; (d) “R7 proves the service can be restored in ten minutes.” Use the categories direct observation, hypothesis requiring confirmation and unsupported conclusion. A score of 2 requires distinguishing the *fact of a patron report* from independent proof of the patron's full experience.
 
+**Extension:** For each original statement, rewrite any unsupported conclusion into the narrowest defensible wording. Add one source that would be needed to upgrade the claim.
+
+**For full credit:** A 2-point answer must distinguish "R5 records a patron report" from "the booking interface was independently proved incorrect," and "R7 reports backup completion" from "recovery was tested." Merely selecting a label without a limiting sentence earns at most 1.
+
 #### EX002 — First two questions
 
 **Objective:** choose checks that could change the restriction decision. **Inputs:** R1–R6 and the service/authority tables. **Output:** two rows with a precise question, the fact that makes it relevant, the authorized custodian or person to ask, and how either answer changes the decision. One question must test the training explanation; the other must test who used the account or whether edits continue. Record requests rather than saying the interview or log review has already occurred. A score of 2 requires different discriminators and a named approval path for any new identity collection.
@@ -274,6 +466,10 @@ Work from **only R1–R8** and the fictional authority rules in Chapter 1. The c
 
 **Objective:** connect an incident signal to service outcomes and evidence owners. **Inputs:** the section 1.2 service map and R1–R8. **Output:** a two-row dependency card with dependency, possible user harm, supplied pointer, missing discriminating evidence and custodian. Choose two dependencies; for each, explain what an authorized check would distinguish. Do not call a potential harm a confirmed outage. A score of 2 needs two different dependencies and a test that could separate a service-state problem from account misuse.
 
+**Extension:** For each of the two chosen service dependencies, distinguish a *possible downstream business harm* from an actual observation. Name one negative test that could weaken the proposed explanation and identify who would be authorized to request it.
+
+**For full credit:** A 2-point answer explicitly connects different technical sources to different decisions. The database's current booking values cannot be inferred directly from R3–R4's edit history.
+
 #### EX004 — Scope boundary
 
 **Objective:** apply an authorization boundary to a tempting next action. **Inputs:** the section 1.4 scope statement and R1–R8. **Output:** a short scope decision with proposed action, permitted objects and operations, reason for rejection, contained alternative, and stop or escalation condition. A learner wants to search a real public library website for a matching account name. Explain what the eight supplied records permit instead, and write a hypothetical request for the additional detail if it would matter to the case. A score of 2 explicitly excludes real-site access and names the responsible approver for any future expanded scope.
@@ -281,6 +477,10 @@ Work from **only R1–R8** and the fictional authority rules in Chapter 1. The c
 #### EX005 — Timeline
 
 **Objective:** preserve event order without turning sequence into causation. **Inputs:** R1, R3, R4 and R5. **Output:** a four-row UTC table with record ID, source, time and observed event, followed by an ordering sentence and a separate unsupported-causality sentence. Keep the 09:00 case-open time outside the event table. A score of 2 orders the four events correctly and explains why precedence alone does not identify the human actor or prove why the patron's view changed.
+
+**Extension:** Add a separate checkpoint note `case opened 09:00; decision 09:05; available R1–R8`. Explain why the case-open and decision times must not be inserted into the four-row source-event chronology as if they were source events.
+
+**For full credit:** A 2-point answer preserves chronology while rejecting human attribution and unsupported causality.
 
 #### EX006 — Role assignment
 
@@ -298,6 +498,10 @@ Work from **only R1–R8** and the fictional authority rules in Chapter 1. The c
 
 **Objective:** justify a proportionate 09:05 decision under uncertainty. **Inputs:** R1–R8 and the section 1.9 gate. **Output:** a two-row option matrix for (A) seeking a temporary restriction of `desk-a` and (B) preserving R1–R8, asking the training owner and reviewing before restriction. Record expected benefit, possible service or delay cost, approver, observable success or failure and a 09:15 review trigger for each. Choose one provisionally and explain what new evidence would reverse it. A score of 2 identifies a separate approval for restriction and does not describe either risk as an already observed event.
 
+**Extension:** Add a falsifier and a business negative check to both original options. State which observation would make the learner reconsider a decision to wait and which observation would indicate an account restriction disrupted legitimate work.
+
+**For full credit:** A 2-point answer requires distinct approval, execution and verification states, not merely a preferred option.
+
 #### EX010 — Communication draft
 
 **Objective:** communicate useful action without premature attribution. **Inputs:** R1–R8 and the 09:00 intake state, *before* the 09:05 decision. **Output:** exactly two sentences for an internal service-owner audience: the first states observed service signals and uncertainty; the second names a **proposed** next check, its owner and the expected 09:05 decision checkpoint. Do not say preservation, an interview or a restriction has already been approved or performed. A score of 2 gives a source pointer and an unambiguous distinction between planned and completed work.
@@ -310,9 +514,17 @@ Work from **only R1–R8** and the fictional authority rules in Chapter 1. The c
 
 **Objective:** make a bounded decision auditable. **Inputs:** R1–R8, the fictional 09:05 checkpoint and section 1.3's authority matrix. **Output:** one decision log with time, action, reason with source IDs, approving role, executing role, evidence-copy scope, rejected alternative, next review time and reversal trigger. The scenario grants classroom permission for the bounded copy; do not describe a production export. A score of 2 states the question to the service owner as **pending** until answered and preserves uncertainty about account control.
 
+**Extension:** Record an explicit state for each activity: `proposed`, `approved classroom analysis`, `performed classroom copy` if actually done, or `not performed`. Leave the proposed training-owner answer pending until supplied.
+
+**For full credit:** A 2-point answer never reports a hypothetical request as a completed interview or a production evidence collection.
+
 #### EX013 — Readiness gap
 
 **Objective:** turn an exercise weakness into a measurable preparation change. **Inputs:** the service map, authority table, R7–R8 and the section 1.8 workshop. **Output:** a three-row gap register with missing capability, consequence and owner; then an improvement ticket with priority rationale, specific change, deadline and a pass/fail drill. A score of 2 names a test that would actually demonstrate the change, such as an owner-and-alternate decision drill or a contained restore rehearsal, rather than merely publishing a policy page.
+
+**Extension:** Each improvement ticket must include a falsifiable rehearsal with a pass and failure criterion. One rehearsal should test an unavailable primary approver and the fallback decision path; another defensible choice may test log retrieval or isolated recovery.
+
+**For full credit:** Merely writing or publishing a policy does not satisfy an exercise that asks the learner to demonstrate a capability.
 
 <!-- cyberabc:chapter-navigation:start ch-01 -->
 ### Continue studying — chapter 01 of 04
@@ -1487,6 +1699,8 @@ These results are placed after the chapter material as the book's developing ans
 
 A strong response distinguishes the *observable wording* of (b) from its epistemic status: the claimed compromise is unsupported **as a fact**, while unauthorized use remains a live hypothesis. Reclassifying it as “confirmed” because an account and edits appear near each other fails the exercise.
 
+**Further reasoning:** A correct answer can report that R4 contains a B18 cancellation and R5 contains a patron report. Neither source independently establishes the reason for the cancellation or the full current display state. "`desk-a` was compromised" is not supported as a finding; "unauthorized use is a hypothesis to investigate" is defensible. R7 reports completion of a previous-night backup job, not a ten-minute recovery. The missing upgrade evidence is an authorized account-context comparison for the actor question and a timed, isolated restore with correct booking-state verification for the recovery claim. The follow-up evidence does not already exist within R1–R8.
+
 ### EX002 — Worked result
 
 | Discriminating question | Why now | Custodian and permission | Decision effect |
@@ -1505,6 +1719,8 @@ Neither answer is in R1–R8. The lead records a **request**, its owner and the 
 
 Both effects are **possible**. The R5 report supports investigating a visible problem, but the exercise has not measured all users or confirmed the database's current state. Other valid pairs, such as booking application and help desk, must still name a check that distinguishes explanations.
 
+**Further reasoning:** For the identity dependency, R1 identifies a reported sign-in and R2 identifies reported dashboard access. The hypothetical harm is further incorrect staff-authorized-function use, not a measured ongoing attack. An authorized identity-session check could weaken an assumption of unexpected session context, but it must not identify a human without appropriate independent evidence. For the database dependency, R3–R4 report changes and R5 a patron symptom. An owner-approved comparison between authoritative B17/B18 values and an expected schedule could show that current state matches or differs from the owner's target. That comparison is **requested**, not performed. The two paths have different owners and do not settle each other.
+
 ### EX004 — Worked result
 
 **Proposed action:** search a real public library site for a matching `desk-a` account. **Boundary:** this chapter authorizes reading, sorting and annotating synthetic R1–R8 during the session; it does not authorize access to a real library, real account or third-party data. **Decision:** reject the proposed search because it would expand both the object and the organization under investigation. **Contained alternative:** use R1 and R2 to state that the account signed in and opened the dashboard, while marking the human operator unknown. Draft a fictional request to the incident lead for the identity administrator to provide the minimum relevant session fields and interval *if* an actual organization approved such collection. **Stop condition:** if the answer requires a field absent from R1–R8, stop at the evidence boundary and record the unresolved question. A public page being reachable does not confer incident-response authority over it.
@@ -1519,6 +1735,8 @@ Both effects are **possible**. The R5 report supports investigating a visible pr
 | R5 | Help desk | 08:48 | Patron reported B18 had disappeared. |
 
 **Ordering fact:** the recorded sign-in precedes the two recorded edits, and the help-desk report follows them. **Causal limit:** temporal order does not prove that the sign-in was unauthorized, that one named person made the edits, or that R4 explains every part of the patron's experience. The 09:00 case-open time belongs to the incident record, not to the four source events. A reviewer should preserve source clocks and UTC conversion information if the underlying systems later become available.
+
+**Further reasoning:** The four event rows are R1 08:40, R3 08:43, R4 08:44 and R5 08:48 UTC. The 09:00 case opening and 09:05 decision are case-workflow timestamps, not additional log events. The sequence supports an ordering statement only. It does not prove that a particular person controlled `desk-a`, that the edits were unauthorized or that the R4 change explains every aspect of R5. The correct handoff names the source for each timestamp and retains the lack of cross-source clock validation in a future real investigation.
 
 ### EX006 — Worked result
 
@@ -1564,6 +1782,8 @@ Each row preserves a useful observation without upgrading it to a conclusion the
 
 **Provisional choice:** B under the supplied R1–R8 snapshot, because the training explanation is testable and no continuing change is yet supplied. This is not a universal answer. A verified fresh unexplained edit or high, confirmed service harm could shift the recommendation toward A, but it would still require an explicit approval. R1–R8 neither prove that waiting is harmless nor prove that immediate restriction is necessary.
 
+**Further reasoning:** The provisional option to preserve R1–R8 and ask the training owner about B17/B18 is defensible because the approved task list is a direct discriminator and no later edit is supplied at this checkpoint. Its cost is a possible additional unauthorized edit if misuse is occurring. A verified new unexplained change would trigger prompt reconsideration; it is not currently observed. The alternate request to restrict `desk-a` might reduce misuse through that account, but the response owner would need explicit authority and a plan to test both the suspicious route and legitimate front-desk work. Even after approval, a proposal is not executed until an operator performs it and an appropriate observer verifies the result.
+
 ### EX010 — Worked result
 
 “At 09:00 UTC, application records R3–R4 show two booking changes following the R1 `desk-a` sign-in, and help-desk record R5 reports a patron concern; the cause and full service impact remain unconfirmed. The incident lead **proposes** to preserve the supplied records and ask the service owner whether the edits match scheduled training, with an approval decision at 09:05 UTC.”
@@ -1591,6 +1811,8 @@ The exercise asks for **triggers**, not invented case facts. A new signal must b
 
 This entry does not claim the service owner has answered, that a production export occurred, or that `desk-a` is compromised. The exact role holders may be fictional, but the decision ownership and status must remain explicit.
 
+**Further reasoning:** At 09:05 the incident lead can authorize a *classroom* copy of the synthetic R1–R5 subset and a proposed question to the training owner. If a learner has not actually made a local copy, the state is "approved exercise; copy not performed," not "collected." If performed, the learner records the real creation time and the actual file or worksheet, without inventing a production export. The training-owner response remains pending. The record should preserve the reason for deferring any account restriction, the service owner to consult and the 09:15 review condition.
+
 ### EX013 — Worked result
 
 | Readiness gap | Consequence in this case | Improvement owner |
@@ -1610,6 +1832,8 @@ This entry does not claim the service owner has answered, that a production expo
 **Decision card at 09:05 UTC:** preserve the supplied records and ask the training owner whether B17 and B18 were planned. Expected benefit: avoid an unnecessary access interruption while testing H1; possible cost: if the account is being misused, another edit could occur before review. The fictional incident lead approves the bounded record analysis; the service owner reviews service impact. Reassess at 09:15 UTC, or sooner if a verified new edit is reported. The rejected immediate-restriction option could reduce further misuse but would disrupt front-desk work and requires explicit service and identity approvals. Neither option is labelled the uniquely correct response.
 
 **Counterfactual kept separate:** if the hypothetical 09:08 edit were verified and outside training, the lead would raise urgency, preserve the new record under an updated scope and seek approval for a temporary account restriction. Once the inject is removed, the original case returns to an unconfirmed cause. The sample earns five rubric points if the full ledger, authority and review trigger are present; a learner who omits the collection boundary must revise it regardless of total score.
+
+**Further reasoning:** An incomplete approver map is resolved by a successful fallback contact and decision rehearsal, not by adding a name to a spreadsheet alone. A meaningful test presents an unavailable primary approver, records when the alternate receives the fictional case, and checks whether an authorized decision with scope and review time is recorded within a locally defined target interval. A logging-readiness gap requires retrieving the predeclared synthetic row and excluding an out-of-range control with saved filters. A recovery-readiness gap requires a separate contained restore and owner-approved booking-state comparison. Neither task is proven by R7's backup-job report. The improvement ticket should state what result constitutes failure and which owner must respond.
 
 ### EX014 — Worked result
 

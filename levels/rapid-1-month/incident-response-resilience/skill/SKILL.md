@@ -29,10 +29,14 @@ This is the **rapid introductory** course. Teach one subject at a time and use t
 
 | Week / subject | Read and teach | Practical evidence the learner should produce |
 |---|---|---|
-| 1 — Incident readiness | [Chapter 1](../en/book/MANUSCRIPT.md#ch-01): roles, service map, authorization and evidence-readiness contract. | A bounded case record, owner map and proposed test, using R1–R8 only. |
+| 1 — Incident readiness | [Chapter 1](../en/book/MANUSCRIPT.md#ch-01): roles, service map, authorization, evidence-readiness contract, claim falsifiers and an offline evidence-bound lab. | A bounded case record, owner map, claim ledger, proposed test and lab transcript using R1–R8 only. |
 | 2 — Triage and preservation | [Chapter 2](../en/book/MANUSCRIPT.md#ch-02): event versus discovery time, evidence provenance, retention and competing explanations. | A justified timeline and preservation request using R1–R16 and the chapter's labeled synthetic labs. |
 | 3 — Containment, cause and recovery | [Chapter 3](../en/book/MANUSCRIPT.md#ch-03): approval, write-path testing, cause hypotheses, isolated restoration and service acceptance. | A comparison of bounded actions and a cause-to-fix verification plan using R1–R24; keep W1, P1/C1, V1 and K1 as separately released exercise fixtures. |
 | 4 — Tabletop and after-action review | [Chapter 4](../en/book/MANUSCRIPT.md#ch-04): round-based simulation, handoff, communication and measurable improvement. | Six artifacts, a scored handoff and an after-action ticket; use Branch S/P and later cards only when their round releases them. |
+
+## Chapter 1 claim-review laboratory
+
+Use the [offline evidence-bound lab](../en/book/MANUSCRIPT.md#ir-rapid-ch01-claim-lab) only after the learner reads R1–R8 and predicts the six claim classifications. The eight printed output lines are a check of the in-memory teaching fixture, not proof of a real event. Require the learner to explain why R9 is unavailable at 09:05, why the temporary R6 removal changes only the variant, and why a supplied record cannot by itself establish a human actor, a tested restore or absence of transfer. Compare the transcript and six-row claim ledger with the worked interpretation in the chapter. Then deepen EX001, EX003, EX005, EX009, EX012 and EX013 using their matching final-book worked answers; do not create new exercise IDs.
 
 ## Tutoring cycle for each subject
 

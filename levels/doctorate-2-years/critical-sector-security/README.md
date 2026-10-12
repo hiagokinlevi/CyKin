@@ -14,13 +14,13 @@ This is one course. It has **one course skill** and **one principal book in each
 
 ## Position in the complete study path
 
-**Course 207 of 207.** Read chapters 01–08 in the chosen language's chapter index, then continue to the next course. Previous: [OT, IoT and cyber-physical security / Doctoral research track](../ot-iot-security/README.md). This is the final course.
+**Course 207 of 207.** Read chapters 01–08 in the chosen language's chapter index, then finish the 207-course study path. Previous: [OT, IoT and cyber-physical security / Doctoral research track](../ot-iot-security/README.md). This is the final course.
 
 ## Language editions
 
 | Language | Course materials | Subjects / chapters | Principal book | State |
 |---|---|---|---|---|
-| English (`en`) | [Overview](en/README.md) · [Materials](en/MATERIALS.md) | [Chapter index](en/SUBJECTS.md) | [Book plan](en/book/PLAN.md) | Structured; writing pending |
+| English (`en`) | [Overview](en/README.md) · [Materials](en/MATERIALS.md) | [Chapter index](en/SUBJECTS.md) | [Draft manuscript](en/book/MANUSCRIPT.md) | Authored draft; review pending |
 | Português (`pt`) | [Overview](pt/README.md) · [Materials](pt/MATERIALS.md) | [Chapter index](pt/SUBJECTS.md) | [Book plan](pt/book/PLAN.md) | Working outline; translation pending |
 | Español (`es`) | [Overview](es/README.md) · [Materials](es/MATERIALS.md) | [Chapter index](es/SUBJECTS.md) | [Book plan](es/book/PLAN.md) | Working outline; translation pending |
 | עברית (`he`) | [Overview](he/README.md) · [Materials](he/MATERIALS.md) | [Chapter index](he/SUBJECTS.md) | [Book plan](he/book/PLAN.md) | Working outline; translation pending |

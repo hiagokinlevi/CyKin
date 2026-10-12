@@ -20,7 +20,7 @@ Use this **one skill for the whole 2 years course**. The course has one principa
 
 ## Navigation rule
 
-At the end of an authored chapter or a book-plan chapter summary, use its **Continue studying** block for the previous chapter, course index and next chapter. Keep the learner's course and chapter position visible. If the next link is a plan, explain that the lesson is not yet authored and do not mark it complete. The course chapter index connects its final row to the next course in the same language.
+At the end of an authored chapter or a book-plan chapter summary, use its **Continue studying** block for the previous chapter, course index and next chapter. Keep the learner's course and chapter position visible. If the next link is a plan, explain that the lesson is not yet authored and do not mark it complete. The final chapter and the course chapter index mark the end of the 207-course study path; do not invent a next course.
 
 ## Eight-subject teaching route
 
