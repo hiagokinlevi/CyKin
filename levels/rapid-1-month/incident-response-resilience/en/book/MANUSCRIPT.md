@@ -2041,6 +2041,19 @@ BASE = dict(
 def review(s):
     if not set(s["refs"]).issubset(RELEASE[s["stage"]]):
         return "BLOCK_UNRELEASED_SOURCE"
+    # Declared flags must be supported by cards in this release set.
+    released_refs = set(s["refs"])
+    if s["retention_notice"] and "R15" not in released_refs:
+        return "BLOCK_UNRELEASED_CLAIM:R15"
+    if s["quiet_summary"] and "R14" not in released_refs:
+        return "BLOCK_UNRELEASED_CLAIM:R14"
+    if s["patron_report"] and not ({"R5", "R11"} & released_refs):
+        return "BLOCK_UNRELEASED_CLAIM:PATRON_REPORT"
+    if (
+        s["approved_addendum"] or s["training_scope_verified_complete"]
+        or s["addendum_names_b19"]
+    ) and not {"R9", "R10"}.issubset(released_refs):
+        return "BLOCK_UNRELEASED_CLAIM:R9_R10"
     if s["verified_fresh_edit"] and not s["variant"]:
         return "BLOCK_INVENTED_CANONICAL_EVENT"
     if not s["variant"] and any((
@@ -2207,6 +2220,8 @@ assert case(verified_fresh_edit=True) == (
 
 For the executed output, scenario interpretation and negative controls, read the [TRI2 worked result](#ir-rapid-ch02-tri2-result) in the final answer appendix. Predict the labels before opening the result.
 
+**Release-guard challenge:** After the baseline program, test three explicitly synthetic Round A variants: set `retention_notice=True` without R15, set `quiet_summary=True` without R14, and set `variant=True`, `approved_addendum=True`, `training_scope_verified_complete=True`, `addendum_names_b19=True`, `no_new_edits_verified=True` and `query_coverage_known=True` without R9/R10. The three results, respectively, must be `BLOCK_UNRELEASED_CLAIM:R15`, `BLOCK_UNRELEASED_CLAIM:R14` and `BLOCK_UNRELEASED_CLAIM:R9_R10`. No case becomes a new canonical R-series record. The 20 original TRI2 outputs remain unchanged. The guard checks the classroom release boundary; it does not authenticate a source or verify a real approval.
+
 #### Limitations and diagnostic negative tests
 
 The program does **not** read any case files, query logs, test retention policies, authenticate a source, assess human identity, or verify a business state. Values such as `owner_state_check=True`, `no_new_edits_verified=True` and `source_safeguard_confirmed=True` are **invented premises** for independent variants, not real evidence collected by the script. It cannot calculate probabilities, incident severity, actual retention deadlines or appropriate live containment.
@@ -2273,11 +2288,11 @@ An integrity hash can detect whether a particular byte sequence changes between 
 | Collection-note field | Example for a synthetic classroom export |
 |---|---|
 | Case and item | `HL-IR-001`, item `E1` |
-| Source and range | Booking audit, 08:30–09:15 UTC |
+| Source and range | **Proposed** booking-audit event-time selection, 08:30–09:15 UTC; producer, filter and available rows remain to be confirmed |
 | Collector and authority | Analyst; fictional incident lead's classroom authorization |
-| Collected at | 09:18 UTC |
-| Method | Export the supplied exercise table as UTF-8 text; keep the original table in this book |
-| Copy and access | Local training copy `E1.txt`; learner only |
+| Collected at | **Not performed** in this illustrative card; R9–R16 reach the learner only at 09:20. Record the actual later local time if a teaching copy is created |
+| Method | **Planned only:** transcribe permitted synthetic rows as UTF-8 after release in an authorized scratch directory; this is not a production export |
+| Copy and access | Planned local training copy `E1.txt` in an authorized scratch directory; learner only if created |
 | Integrity note | SHA-256 of the exact saved bytes, recorded before and after analysis if a file is created |
 | Transformation and limitation | No production source; table is invented, and export formatting can change bytes |
 
@@ -2349,11 +2364,11 @@ The following records are also fictional and extend Chapter 1. They are the comp
 | R15 | 09:14 | Retention notice | Detailed booking audit records are deleted after 24 hours unless an authorized copy is retained. |
 | R16 | 09:16 | Service-owner note | The owner requests an impact check before any account change and can approve a short booking-service pause if needed. |
 
-**Step 1: state observations.** R9 records a later edit to `B19`; R10 does not list that booking in the planned exercise; R12 records a person's recollection, not proof that no edit occurred; R14 only covers its queried range. **Step 2: compare hypotheses.** H1 explains `B17` and `B18` better than it explains `B19`. H2 gains support from the unexpected `B19` edit but is still unconfirmed because the staff member could have forgotten or the plan could be incomplete. H3 could help explain a patron display problem but does not by itself explain the application audit record. **Step 3: choose the next authorized check.** Ask the training owner whether any unlisted task involved `B19`, request a narrow impact check for affected bookings, and ask the incident lead to authorize preservation before R15's retention deadline. Set a near-term review time and revisit containment if changes resume or harm expands.
+**Step 1: state observations.** R9 records a later edit to `B19`; R10 does not list that booking in the planned exercise; R12 records a person's recollection, not proof that no edit occurred; R14 only covers its queried range. **Step 2: compare hypotheses.** H1 explains `B17` and `B18` better than it explains `B19`. H2 gains support from the unexpected `B19` edit but is still unconfirmed because the staff member could have forgotten or the plan could be incomplete. H3 could help explain a patron display problem but does not by itself explain the application audit record. **Step 3: choose the next authorized check.** Ask the training owner whether any unlisted task involved `B19`, request a narrow impact check for affected bookings, and ask the incident lead for a prompt, bounded preservation decision while the source remains available if possible. Ask the custodian to establish R15's actual policy anchor, oldest retrievable relevant record and feasible preservation route. No exact deletion deadline is supported yet. Set a near-term review time and revisit containment if changes resume or harm expands.
 
 | Case decision at 09:20 UTC | Rationale | Owner | Review trigger |
 |---|---|---|---|
-| Preserve the supplied booking and identity records in the classroom case note; request an authorized impact check in a real response. | The `B19` edit is not yet explained and detailed audit retention is short. | Incident lead authorizes; analyst records the copy. | Training-owner answer, new booking edit or the next review at 09:35 UTC. |
+| Preserve the supplied booking and identity records in the classroom case note; request an authorized impact check in a real response. | The `B19` edit is not yet explained and detailed audit retention is short. | Incident lead is the proposed approval owner for bounded analysis and a separate source request; analyst records only the synthetic case note unless a local exercise copy is actually created and documented. P-A/P-B remain proposed. | Training-owner answer, new booking edit or the next review at 09:35 UTC. |
 
 This decision does **not** clear or accuse the staff member. It states what is known, what can be lost and who may authorize the next action. If the impact check found broad damage, a containment proposal would need to reach the service owner and incident lead promptly; Chapter 3 will compare those options.
 
@@ -2396,7 +2411,7 @@ The states **proposed → approved → collected → verified** are not intercha
 
 ### 2.5 Contained lab: preserve and check a synthetic extract
 
-The lab below is deliberately smaller than a forensic acquisition. It teaches which **bytes** a digest covers and which conclusions still require other evidence. Use a scratch directory on a computer you control, with Python 3 and no network connection. The generated text is invented for this book; it contains no real account, endpoint or patron data. Running the script writes two small files in the current directory, so choose a temporary directory first.
+The lab below is deliberately smaller than a forensic acquisition. It teaches which **bytes** a digest covers and which conclusions still require other evidence. Use a new, empty, authorized scratch directory on a computer you control, with Python 3 and no network connection. The generated text is invented for this book; it contains no real account, endpoint or patron data. Running the script creates two small files in the current directory and refuses to overwrite existing names. If either name already exists, stop and choose a different scratch directory; do not remove an existing file to make the lab run.
 
 The extract has two rows that **transcribe** R9 and R14. It is a learning fixture assembled from this chapter's table, not an original log from Harbor Library. R14 summarizes the queried audit range; it does not assert that no later edit occurred outside that range. Save and run the following as `fixture.py` inside the scratch directory:
 
@@ -2409,12 +2424,14 @@ payload = (
     b"HL-IR-001|R9|2026-10-11T09:03:00Z|booking-audit|desk-a changed B19 from Room 1 to Room 3\n"
     b"HL-IR-001|R14|2026-10-11T09:12:00Z|application-audit|no further edits in the queried range after R9\n"
 )
-Path("E1.txt").write_bytes(payload)
+with Path("E1.txt").open("xb") as output:
+    output.write(payload)
 saved = Path("E1.txt").read_bytes()
 print(len(saved), sha256(saved).hexdigest())
 
 altered = saved.replace(b"Room 3", b"Room 4")
-Path("E1-modified.txt").write_bytes(altered)
+with Path("E1-modified.txt").open("xb") as output:
+    output.write(altered)
 print(len(altered), sha256(altered).hexdigest())
 ```
 
@@ -2450,11 +2467,13 @@ for record_id, event_text, seen_text in rows:
     print(f"{record_id} event={event:%H:%M} UTC seen={seen:%H:%M} UTC delay={delay} min")
 ```
 
-**Procedure:** (1) Before running it, convert R10's offset time by hand and predict the three delays. (2) Run the code in an authorized local scratch environment, or calculate the outputs from the shown values if Python is unavailable. (3) Make a three-row table with record ID, original timestamp including offset, normalized UTC event time, discovery time, delay and whether the record was available at 09:05. (4) Draw the coverage interval from T1 as `09:00 ≤ event < 09:12 UTC` and put R9, the T1 end and the 09:20 review on it. (5) Write two sentences: the strongest conclusion supported by R14 with T1, and the next *authorized* check needed to assess activity after 09:12. Keep the R15 retention notice separate from any assumed deletion instant.
+**Time-label clarification:** In this fictional program, `seen` is the 09:20 learner-release checkpoint. The three `delay` values measure event-to-learner-release intervals, **not** logging-pipeline ingestion, first detector discovery, first operator awareness or copy-collection time. Those additional times are not supplied. The printed label remains `delay` for reproducibility, but name its meaning alongside any result. A verified event timestamp after a supposedly earlier receipt under comparable clocks would require investigating the inconsistency, not accepting a negative duration as valid causal order.
 
-**Expected evidence:** R9 is 09:03 UTC and seen 17 minutes later; R10 is 09:04 UTC and seen 16 minutes later; R15 is 09:14 UTC and seen six minutes later. None was in the learner's R1–R8 snapshot at 09:05. With T1, R14 supports only that this narrow query showed no further matching edit before 09:12. The unqueried period after 09:12 is an **evidence gap**, not a verified quiet period. The learner should request a new bounded query or an approved source comparison, record its filter and end time, and check whether logging and ingestion were working. R15 says detailed records are deleted after 24 hours unless copied; it does not give enough deletion-policy detail here to calculate the precise expiry of R9 from its event timestamp alone.
+**Procedure:** (1) Before running it, convert R10's offset time by hand and predict the three delays. (2) Run the code in an authorized local scratch environment, or calculate the outputs from the shown values if Python is unavailable. (3) Make a three-row table with record ID, original timestamp including offset, normalized UTC event time, learner-release time, event-to-release interval and whether the record was available at 09:05. (4) Draw the coverage interval from T1 as `09:00 ≤ event < 09:12 UTC` and put R9, the T1 end and the 09:20 review on it. (5) Write two sentences: the strongest conclusion supported by R14 with T1, and the next *authorized* check needed to assess activity after 09:12. Keep the R15 retention notice separate from any assumed deletion instant.
 
-**Assessment rubric:** one point each for correct R10 normalization, three correct event-to-discovery delays, the 09:05 availability boundary, a T1 coverage statement that excludes post-09:12 activity, and a narrow authorized follow-up with retention uncertainty. Five points show the classroom reasoning is reproducible; they do not certify a real evidence acquisition or establish who edited B19. The printed output and a model coverage statement appear after the Chapter 2 synthetic-extract result in the final appendix.
+**Expected evidence:** R9 is 09:03 UTC and released to the learner 17 minutes later; R10 is 09:04 UTC and released 16 minutes later; R15 is 09:14 UTC and released six minutes later. None was in the learner's R1–R8 snapshot at 09:05. With T1, R14 supports only that this narrow query showed no further matching edit before 09:12. The unqueried period after 09:12 is an **evidence gap**, not a verified quiet period. The learner should request a new bounded query or an approved source comparison, record its filter and end time, and check whether logging and ingestion were working. R15 says detailed records are deleted after 24 hours unless copied; it does not give enough deletion-policy detail here to calculate the precise expiry of R9 from its event timestamp alone.
+
+**Assessment rubric:** one point each for correct R10 normalization, three correct event-to-learner-release intervals, the 09:05 availability boundary, a T1 coverage statement that excludes post-09:12 activity, and a narrow authorized follow-up with retention uncertainty. Five points show the classroom reasoning is reproducible; they do not certify a real evidence acquisition or establish who edited B19. The printed output and a model coverage statement appear after the Chapter 2 synthetic-extract result in the final appendix.
 
 #### A query envelope is narrower than a case conclusion
 
@@ -7369,6 +7388,16 @@ OWNER_VERIFIED_IMPACT R:SUPPLIED_NOT_AUTHENTICATED I:CONTESTED_OR_INCOMPLETE C:A
 SOURCE_SAFEGUARDED_IN_VARIANT R:SUPPLIED_NOT_AUTHENTICATED I:CONTESTED_OR_INCOMPLETE C:ACTOR_UNPROVEN H:REPORT_ONLY P:SOURCE_PROTECTED_IN_VARIANT K:OPEN_HYPOTHESES flags=QUIET_NOT_NEGATIVE_PROOF
 ~~~
 
+**Supplementary release-guard challenge result:**
+
+~~~text
+R15_TOO_EARLY BLOCK_UNRELEASED_CLAIM:R15
+R14_TOO_EARLY BLOCK_UNRELEASED_CLAIM:R14
+B19_WITHOUT_R9_R10 BLOCK_UNRELEASED_CLAIM:R9_R10
+~~~
+
+The first two variants declare a later card's content in a 09:05 source set; the last tries to interpret B19's training scope without either relevant card. The guard refuses the unsupported claim rather than quietly adding missing cards. None changes the twenty baseline case results or proves authentic provenance outside this fixture.
+
 #### Interpretation of positive and negative controls
 
 **ROUND_A_0905:** The selected supplied records support a reported booking concern and unresolved explanations. They do not include R15's loss notice or R9's B19 edit. The `P:NO_RELEASED_LOSS_RULE` status means no such rule was released to the learner at this checkpoint; it does **not** mean retention risk did not exist.
@@ -7430,13 +7459,13 @@ The hypotheses need not be mutually exclusive. A good answer identifies what eac
 
 ### EX018 — Worked result
 
-| Needed fact | Why the lead asks |
-|---|---|
-| Which booking-audit source supports R9, which application-audit source produced R14, and which booking IDs and event interval would be selected from each? | Avoid silently merging source paths, copying unrelated patron records or reporting an unrepeatable quiet query. |
-| What exactly starts the 24-hour R15 deletion clock, and what is the custodian-confirmed last safe collection time? | R15 alone does not establish whether age is measured from event, ingestion, storage or another policy anchor. |
-| Who may approve and perform the export, where will the unmodified copy be stored, and who may read it? | Collection must have authority, restricted access and an identifiable custodian. |
+| P-A request element | Specific source, object and proposed event interval | Policy-anchor / oldest-row question | Authority, custodian, storage and state |
+|---|---|---|---|
+| 1. Detailed booking audit relevant to R9 | **Proposed** booking-audit source for B17–B19; requested **08:30–09:20 UTC** event-time range, subject to custodian confirmation. | R15 gives a 24-hour duration but no verified start anchor or exact expiry. Which relevant row is oldest and still retrievable? | Incident lead to approve; booking/application custodian to confirm producer and availability. Restricted collector and copy location remain planned. **Proposed**, not created. |
+| 2. Application-audit summary behind R14 | Separately named application-audit source; proposed **08:30–09:20 UTC** selection for custodian review. Query filters, producer and index coverage are not supplied. | Does its own retention rule differ from R15? What interval and ingestion state did the original query actually cover? | Incident lead to approve only minimum necessary selection; application/logging custodian to specify producer, collector and restricted storage. No re-run or export shown. **Proposed**. |
+| 3. P-A authority and copy-control decision | Keep both source namespaces, object IDs and selected intervals distinct. Writing P-A does not create a collection or hold. | Confirm each source's policy anchor, earliest relevant row, potential loss path and any separate hold capability and effect check. | Incident lead owns approval under the fictional rules; name executing custodian and collector only after permission. Document intended restricted location, access list, receipts and review trigger. **Proposed**, not approved, collected or verified. |
 
-The analyst can ask the incident lead to decide promptly because detailed rows may disappear before the cause is established. The request is for a bounded copy and recorded policy answer, not an unapproved bulk export or a fabricated 09:03-plus-24-hours deadline.
+A prompt, bounded preservation proposal may be justified before the cause of B19's edit is known because a relevant source might become unavailable, but R15 alone does not prove when deletion occurs, that a hold exists or that a collection has taken place.
 
 | Comparison at 09:20 | Decision value and loss path | Owner, state and limit |
 |---|---|---|
