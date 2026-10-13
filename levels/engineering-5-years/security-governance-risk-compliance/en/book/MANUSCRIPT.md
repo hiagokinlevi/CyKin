@@ -1826,7 +1826,7 @@ n=59 deviations=0: upper bound 0.050
 
 ### 38.3 Conclusions
 
-Nadia samples fifty-nine sessions at random across the year and finds no deviations, so she concludes with ninety-five percent confidence that the deviation rate is at most five percent. She notes the conclusion covers approval only, not whether vendors did the right work. She also checks emergency sessions separately, because they follow a different path and could hide problems in an overall sample. Prof. Brenner reminds the class that sampling supports bounded statements, never certainty. Sampling emergency sessions separately keeps their different approval path from being diluted in the overall sample.
+Nadia samples fifty-nine sessions at random across the year and finds no deviations, so she concludes with ninety-five percent confidence that the deviation rate is at most five percent. She notes the conclusion covers approval only, not whether vendors did the right work. She also checks emergency sessions separately, because they follow a different approval path and their problems could be diluted in an overall sample. Prof. Brenner reminds the class that sampling supports bounded statements, never certainty, and that each stratum with its own path deserves its own sample.
 
 ### Worked example
 
@@ -1910,7 +1910,7 @@ After Ardwell upgrades its ticketing system, Nadia re-runs the verification test
 
 ### 40.2 Testing the tooling
 
-The GRC tooling itself must be verified. Nadia tests that evidence attachments cannot be altered after closure, that only authorised staff can close findings and that reports count tasks correctly. One report counts reopened findings twice, inflating the open count. She fixes the query and adds a test case. She learns that tools that produce governance evidence deserve the same rigour as the controls they track, since errors in the tool become errors in the board's view of risk. The double count of reopened findings would have overstated the open findings reported to the board.
+The GRC tooling itself must be verified. Nadia tests that evidence attachments cannot be altered after closure, that only authorised staff can close findings and that reports count tasks correctly. One report counts reopened findings twice, inflating the open count that would reach the board. She fixes the query and adds a test case. She learns that tools that produce governance evidence deserve the same rigour as the controls they track, since errors in the tool become errors in the board's view of risk.
 
 ### 40.3 Reporting regressions
 
