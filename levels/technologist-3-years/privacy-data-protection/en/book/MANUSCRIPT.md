@@ -904,7 +904,7 @@ A member receives a marketing email after withdrawing consent. Aisha investigate
 
 ### 20.2 Diagnosis
 
-She finds the withdrawal recorded in the app but not synchronised to the email platform because a nightly job failed for a week. She follows the withdrawal from the app database to the marketing platform. The app recorded the change correctly with a timestamp. The nightly job that copies preference changes to the email platform had logged errors for seven nights. During that week, 214 synthetic-equivalent withdrawals in the test copy were not transferred, so the problem affected many members, not just one.
+She finds the withdrawal recorded in the app but not synchronised to the email platform because a nightly job failed for a week. She follows the withdrawal from the app database to the marketing platform. The app recorded the change correctly with a timestamp. The nightly job that copies preference changes to the email platform had logged errors for seven nights. During that week, 214 withdrawals in the synthetic test copy were not transferred, so the problem affected many members, not just one.
 
 ### 20.3 Root cause
 
