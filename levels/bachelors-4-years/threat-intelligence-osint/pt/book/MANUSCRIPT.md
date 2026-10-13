@@ -1,7 +1,7 @@
 # Inteligência de ameaças e OSINT: um livro de bacharelado
 
 - Idioma: português do Brasil (`pt`); curso de bacharelado, quatro anos. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–8 de 40 já estão escritos em português, com os exercícios EX001–EX024 e suas resoluções com rubricas de 0 a 3 e 1 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 9–40 (EX025–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–16 de 40 já estão escritos em português, com os exercícios EX001–EX048 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 17–40 (EX049–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de graduação que se preparam para trabalhar como analistas juniores de inteligência de ameaças cibernéticas (CTI) ou para seguir na pesquisa.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limite ético: nenhuma coleta sobre pessoas privadas reais, nenhuma evasão de termos de uso, nenhuma desanonimização e nenhum contato com infraestrutura de adversários. Organizações, pessoas e indicadores são **sintéticos**, salvo quando uma frase cita uma fonte pública; os endereços usam as faixas da RFC 5737 e os domínios usam `.example`.
@@ -28,9 +28,9 @@ MITRE [ATT&CK](https://attack.mitre.org/); OASIS [STIX 2.1](https://docs.oasis-o
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) |
 
-Capítulos 9–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-09), até a chegada dos próximos lotes.
+Capítulos 17–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-17), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -510,11 +510,533 @@ Faça o parsing com código, valide de forma explícita, relate as rejeições e
 
 [← Capítulo 07 (rascunho)](#ch-07) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 09 (rascunho) →](#ch-09)
 
+<a id="ch-09"></a>
+
+## Capítulo 9 — Dados e bancos de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar uma pequena tabela de indicadores; (2) consultá-la com SQL por meio do `sqlite3` do Python; (3) encontrar indicadores desatualizados; (4) guardar os rótulos de tratamento junto com os dados.
+
+### 9.1 Por que um banco de dados
+
+Uma planilha funciona até que dois analistas a editem ao mesmo tempo. Um pequeno banco SQLite dá uma única fonte da verdade, consultas no lugar da filtragem manual e um registro do que se sabia e quando. Amara passa sua lista de indicadores de uma planilha compartilhada para o SQLite depois que dois analistas sobrescreveram as notas um do outro. O arquivo do banco entra no backup junto com os outros registros da equipe, e toda mudança é feita pelo script de importação ou por uma consulta revisada, então fica claro quem mudou o quê e quando.
+
+### 9.2 Projeto da tabela
+
+Colunas: `value`, `type`, `source`, rótulo TLP, `first_seen`, `last_seen` e `status`. Guardar o TLP em cada linha significa que as consultas podem filtrar o que pode ser compartilhado antes que qualquer coisa saia do HCHT. O status registra se um indicador está ativo, em revisão ou expirado. Amara acrescenta uma restrição para que a coluna TLP aceite apenas os cinco rótulos válidos, o que impede que um erro de digitação crie um rótulo que as consultas deixariam passar. As datas de primeira e última observação permitem à equipe mostrar por quanto tempo um indicador foi relevante, o que importa para as decisões de envelhecimento.
+
+### Laboratório — consultar o repositório
+
+```python
+"""Lab 3 (ch 09): store synthetic indicators in an in-memory SQLite database and query by TLP and age."""
+import sqlite3
+db = sqlite3.connect(":memory:")
+db.execute("create table ioc(value text primary key, type text, tlp text, last_seen text)")
+db.executemany("insert into ioc values(?,?,?,?)", [
+    ("portal-login.example", "domain", "TLP:GREEN", "2026-10-01"),
+    ("203.0.113.50", "ipv4", "TLP:AMBER", "2026-07-15"),
+    ("files.example", "domain", "TLP:CLEAR", "2026-10-08"),
+    ("198.51.100.7", "ipv4", "TLP:GREEN", "2026-05-02"),
+])
+q = "select value, tlp from ioc where tlp in ('TLP:CLEAR','TLP:GREEN') and last_seen >= ? order by value"
+for row in db.execute(q, ("2026-09-01",)):
+    print(row)
+print("stale:", db.execute("select count(*) from ioc where last_seen < '2026-09-01'").fetchone()[0])
+```
+
+Execute com `python3 lab_sql.py`. Saída verificada:
+
+```text
+('files.example', 'TLP:CLEAR')
+('portal-login.example', 'TLP:GREEN')
+stale: 2
+```
+
+### 9.3 Lendo o resultado
+
+A consulta retorna dois domínios com seus rótulos TLP: files.example em TLP:CLEAR e portal-login.example em TLP:GREEN. Uma segunda consulta conta dois indicadores cuja data last_seen é mais antiga que o limiar de revisão — candidatos a expirar. A consulta filtra pelo TLP antes de retornar as linhas, então uma lista preparada para compartilhamento não pode incluir entradas restritas por engano. Amara revisa os dois candidatos a expirar com a supervisora antes de mudar o status deles, já que um pode continuar ativo segundo uma atualização recente do HSSC.
+
+### 9.4 Envelhecimento de indicadores
+
+Endereços mudam de mãos; domínios são registrados de novo. Um indicador do ano passado pode hoje pertencer a alguém inocente. Regras de envelhecimento — revisão depois de 90 dias para endereços, prazo maior para hashes — mantêm as listas de bloqueio precisas. A Pyramid of Pain de Bianco explica o porquê: indicadores de baixo nível são baratos de mudar para os adversários. Amara aplica as regras por meio de uma consulta agendada que lista os indicadores que devem ser revisados. Cada revisão pergunta se o indicador ainda aparece em relatórios ou logs recentes. Se não aparece, ele passa para monitoramento ou expira, e o motivo é registrado. Os hashes envelhecem mais devagar porque o hash de um arquivo nunca muda, embora o arquivo possa deixar de ser usado.
+
+### 9.5 Consultas parametrizadas
+
+Sempre passe os valores como parâmetros, nunca por concatenação de strings. Isso impede que valores malformados corrompam as consultas. Os scripts de Amara usam parâmetros em toda consulta que inclui um valor vindo de um feed, mesmo quando o valor já foi validado. Às vezes os feeds trazem aspas ou pontos e vírgulas dentro de nomes de domínio desarmados à mão, e uma consulta concatenada poderia falhar ou mudar de formas inesperadas. Os parâmetros eliminam o risco por completo e deixam o código mais fácil de ler e revisar. É um hábito simples e permanente.
+
+### 9.6 Manter o histórico
+
+Quando um indicador é aposentado, mude seu status para "expired" em vez de apagar a linha. Uma investigação posterior pode perguntar se o HCHT estava bloqueando aquele endereço em um dia específico, e só um histórico de mudanças de status com datas pode responder à pergunta com honestidade. Amara acrescenta uma pequena tabela de histórico que registra cada mudança de status com a data e o analista. Isso permite responder a essas perguntas com datas, e não com a memória, e deixa a equipe medir por quanto tempo os indicadores costumam ficar ativos antes de serem aposentados.
+
+### Exemplo resolvido
+
+Antes de enviar um resumo semanal aos membros do HSSC, Amara filtra apenas as linhas rotuladas TLP:CLEAR ou TLP:GREEN. Uma linha TLP:AMBER de um parceiro é excluída automaticamente. Ela também exporta a lista de desatualizados para revisão pela equipe de rede, em vez de apagar as linhas ela mesma.
+
+> **Caso sintético.** Todas as linhas são inventadas.
+
+### Erros e limites
+
+Um banco de dados herda a qualidade de suas entradas. Os rótulos precisam ser registrados corretamente na importação.
+
+### Exercícios
+
+- **EX025 — Saída do laboratório.** O que a consulta de domínios retornou? *Rubrica:* 3 = files.example CLEAR e portal-login.example GREEN; 2 = um; 1 = só a contagem; 0 = nenhuma.
+- **EX026 — Por que guardar o TLP.** Por que manter o rótulo TLP em cada linha? *Rubrica:* 3 = filtrar por consulta os dados compartilháveis antes da liberação; 2 = parcial; 1 = decoração; 0 = nenhuma.
+- **EX027 — Tratamento dos desatualizados.** O que deve acontecer com os dois indicadores desatualizados? *Rubrica:* 3 = revisar com os responsáveis; expirar, não apagar em silêncio; 2 = apagar; 1 = manter para sempre; 0 = nenhuma.
+
+### Síntese
+
+Modele os indicadores com rótulos e datas, consulte com segurança, envelheça os indicadores e mantenha o histórico.
+
+### Continue estudando — capítulo 09 de 40
+
+[← Capítulo 08 (rascunho)](#ch-08) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 10 (rascunho) →](#ch-10)
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Ética e prática autorizada
+
+### Objetivos de aprendizagem
+
+Você vai (1) declarar os limites jurídicos e éticos da coleta de OSINT; (2) respeitar os termos de uso das plataformas; (3) aplicar princípios de proteção de dados; (4) reconhecer quando parar e perguntar.
+
+### 10.1 Público não é ilimitado
+
+Uma informação visível na internet não fica automaticamente livre para ser coletada, combinada e guardada. Leis de proteção de dados como o GDPR da UE se aplicam a dados pessoais seja qual for a forma como foram obtidos: a coleta precisa de uma base legal, de uma finalidade específica e de minimização. No Brasil, o papel equivalente cabe à Lei Geral de Proteção de Dados Pessoais (LGPD, Lei nº 13.709/2018), cujo cumprimento é fiscalizado pela Autoridade Nacional de Proteção de Dados (ANPD). Combinar fatos públicos dispersos sobre uma pessoa pode criar um perfil que a prejudica. As tarefas de Amara tratam de infraestrutura, como domínios e hospedagem, e não de pessoas. Quando uma fonte inclui dados pessoais, como o nome de um titular em um registro de domínio, ela registra apenas o que o requisito exige e anota por que aquilo foi guardado. O encarregado de proteção de dados do HCHT revisa todo ano a retenção de quaisquer dados pessoais pela equipe.
+
+### 10.2 Termos de uso
+
+As plataformas definem regras sobre acesso automatizado, uso de contas e reutilização de dados. Personas falsas, raspagem contra os termos e entrada em grupos fechados expõem o analista e o empregador a riscos jurídicos e de reputação. A política do HCHT os proíbe sem aprovação jurídica. Amara confere os termos de cada fonte pública antes de usá-la e mantém uma nota curta do que é permitido. Quando uma fonte proíbe o acesso automatizado, ela a usa manualmente ou não a usa. A aprovação da equipe jurídica é registrada junto com a fonte, para que analistas futuros conheçam a decisão e seus limites.
+
+### 10.3 Autorização
+
+Os analistas agem dentro de um mandato escrito: que perguntas, que fontes, que métodos. Interagir com infraestrutura de adversários — visitar páginas de phishing ativas a partir de um notebook de trabalho, cadastrar-se em fóruns criminosos — está fora da autoridade de uma estagiária e pode alertar os adversários ou violar a lei. O mandato de Amara lista os feeds do HSSC, os próprios logs do HCHT e uma lista curta de fontes públicas aprovadas, com os métodos permitidos para cada uma. Quando uma tarefa parece exigir algo fora da lista, como conferir uma página de phishing ativa, ela pergunta à supervisora, que pode organizar isso em um ambiente isolado ou decidir que não é necessário.
+
+### 10.4 Proporcionalidade
+
+Pergunte se a necessidade de inteligência justifica a intrusão. Identificar o provedor de hospedagem de um domínio de phishing para uma remoção é proporcional; pesquisar a vida privada de um suspeito não é trabalho da CTI e cabe, se a alguém, às autoridades policiais. Amara escreve nas notas a finalidade de cada etapa de coleta e a confere com esse teste antes de começar. Se a finalidade não pode ser declarada em termos de proteger os sistemas ou os pacientes do HCHT, a etapa é abandonada. Sua supervisora revisa todo mês uma amostra das notas para confirmar que a prática é seguida.
+
+### 10.5 Pare e pergunte
+
+Quando uma tarefa causar desconforto, faça uma pausa e pergunte à supervisora. Registre a pergunta e a resposta. O caderno de Amara tem uma página para essas perguntas, com a data, a resposta e quem a deu. No início do estágio, ela perguntou se podia buscar em uma rede social o perfil do remetente de um phishing; a resposta foi não, já que o requisito tratava do domínio, não da pessoa. Registrar a resposta evita que a mesma pergunta precise ser feita de novo e mostra aos revisores como as decisões foram tomadas.
+
+### 10.6 Códigos de ética e colegas
+
+Códigos profissionais — por exemplo, os de entidades de certificação em segurança — pedem que os membros ajam com honra e protejam a sociedade. Os colegas também ajudam: descrever uma coleta planejada a um colega muitas vezes expõe problemas que o analista não tinha notado. O HCHT faz uma breve "verificação de método" semanal, em que os estagiários apresentam qualquer fonte nova antes de usá-la. Amara apresenta sua primeira fonte nova na terceira semana. A verificação leva dez minutos. Os estagiários descrevem a fonte, o que ela responderia, seus termos e qualquer dado pessoal envolvido, e um colega faz perguntas. Várias fontes foram abandonadas ou limitadas depois de uma verificação, e as notas ficam guardadas com a lista de fontes da equipe.
+
+### Exemplo resolvido
+
+Um colega sugere criar um perfil falso para entrar em um fórum fechado onde dados hospitalares poderiam estar à venda. Amara recusa e escala o caso. A supervisora explica que, em vez disso, o HCHT vai perguntar ao HSSC e a seu fornecedor comercial de inteligência, que operam sob contratos e revisão jurídica, se dados do HCHT apareceram.
+
+> **Caso sintético.** O cenário é inventado.
+
+### Erros e limites
+
+A lei varia conforme a jurisdição; este capítulo não é aconselhamento jurídico. Consulte o encarregado de proteção de dados do HCHT.
+
+### Exercícios
+
+- **EX028 — Dados públicos.** Explique por que a visibilidade pública não torna os dados pessoais livres para coleta. *Rubrica:* 3 = a lei de proteção de dados se aplica; finalidade, minimização, dano por perfilamento; 2 = parcial; 1 = são livres; 0 = nenhuma.
+- **EX029 — Pedido do fórum.** O que Amara deve fazer quando lhe pedem para criar um perfil falso? *Rubrica:* 3 = recusar, escalar; usar parceiros autorizados; 2 = só recusar; 1 = obedecer; 0 = nenhuma.
+- **EX030 — Proporcional ou não.** Pesquisar a família de um suspeito em redes sociais é CTI proporcional? *Rubrica:* 3 = não; fora do mandato; autoridades policiais; 2 = não; 1 = sim; 0 = nenhuma.
+
+### Síntese
+
+Colete de forma lícita, siga os termos, fique dentro do mandato, pese a proporcionalidade e pergunte quando tiver dúvida.
+
+### Continue estudando — capítulo 10 de 40
+
+[← Capítulo 09 (rascunho)](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 (rascunho) →](#ch-11)
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Sistemas operacionais
+
+### Objetivos de aprendizagem
+
+Você vai (1) relacionar conceitos de sistemas operacionais a técnicas do ATT&CK; (2) identificar a telemetria de endpoint útil para conferir inteligência; (3) explicar o privilégio e seu abuso; (4) ler uma página de técnica com senso crítico.
+
+### 11.1 Processos e interpretadores de comandos
+
+Um sistema operacional executa processos, cada um iniciado por um processo pai. Os atacantes costumam usar interpretadores nativos — PowerShell, shells de comando, hosts de script —, que o ATT&CK agrupa em Command and Scripting Interpreter (T1059). Como os administradores usam as mesmas ferramentas, a detecção depende do contexto: qual processo pai, qual usuário, qual horário. Amara observa que os administradores de um hospital rodam scripts à noite para backups e atualizações, então um script noturno não é suspeito por si só. A pergunta útil é se o processo pai e a conta correspondem ao que os administradores normalmente usam.
+
+### 11.2 Privilégio
+
+As contas carregam privilégios. Os atacantes preferem contas válidas (T1078) porque usar credenciais reais parece trabalho normal. O menor privilégio limita o que uma conta roubada pode fazer. No HCHT, as contas válidas incluem contas de fornecedores usadas para a manutenção remota de sistemas clínicos. Amara aprende que a inteligência sobre credenciais roubadas de fornecedores é especialmente urgente, já que essas contas costumam ter acesso amplo. Ela confere se cada conta de fornecedor no diretório tem um responsável e uma data de expiração, e relata à equipe de identidade as que não têm um ou outro.
+
+### 11.3 Telemetria de endpoint
+
+Eventos de criação de processo com linhas de comando, eventos de logon e instalações de serviço são os logs de endpoint mais relevantes para a CTI. Se um relatório diz que um grupo executou uma tarefa agendada com um nome específico, Amara pode buscar esse nome nos dados de endpoint do HCHT. Antes de buscar, Amara confirma com a equipe de endpoint quais sistemas enviam dados de processo, já que os dispositivos médicos e alguns sistemas de laboratório não rodam o agente. Onde falta telemetria, o resultado da busca diz isso, em vez de dar a entender que nada foi encontrado.
+
+### 11.4 Ler uma página de técnica
+
+Cada página de técnica do ATT&CK tem uma descrição, exemplos de procedimento tirados de relatórios públicos, mitigações e notas de detecção. Os exemplos de procedimento mostram que alguém observou aquilo; não mostram quão comum é. Amara usa as páginas de técnica para entender o que um relatório descreve, e não para estimar a probabilidade de o HCHT vê-lo. Quando um relatório associa um incidente a uma técnica, ela lê os exemplos de procedimento para ver se a associação faz sentido. As notas de detecção dão ideias de buscas, que ela confere com a equipe de endpoint antes de executar.
+
+### 11.5 Serviços remotos
+
+Remote Services (T1021) abrange atacantes que se movem entre sistemas usando acesso remoto legítimo. Em um hospital, a área de trabalho remota é usada por fornecedores, então linhas de base de quem se conecta a onde são essenciais. Amara ajuda a equipe a montar uma linha de base das conexões de fornecedores: qual fornecedor se conecta a quais sistemas, de quais endereços e em que horários. Uma conexão fora da linha de base não prova um ataque, mas merece uma conferência rápida com o fornecedor. A linha de base é revisada a cada trimestre com a engenharia clínica, já que os calendários de manutenção mudam e novos fornecedores são acrescentados.
+
+### 11.6 Correções e situação de suporte
+
+Sistemas operacionais sem suporte não recebem mais correções, então a inteligência sobre vulnerabilidades que os afetam não tem remédio por patch. O inventário deve registrar a situação de suporte, e os alertas que tocam sistemas sem suporte disparam controles compensatórios — segmentação, acesso restrito, monitoramento extra — acordados com o responsável pelo sistema. Amara acrescenta a situação de suporte às suas notas de alerta, para que os leitores vejam na hora se a correção é possível. Os controles compensatórios são revistos quando o plano de substituição do responsável muda. Amara mantém uma lista curta dos sistemas sem suporte, com seus controles e responsáveis, para que um alerta possa ser conferido com ela depressa, e anota quando uma data de substituição foi adiada.
+
+### Exemplo resolvido
+
+O HSSC relata que um intruso em outra instituição usou a área de trabalho remota a partir de uma conta de fornecedor às 03:00. Amara pede à equipe de endpoint do HCHT os logons remotos de contas de fornecedores fora do horário comercial nos últimos 30 dias. Aparecem dois; ambos correspondem a chamados de manutenção agendada. Ela registra "conferido; nenhuma correspondência", com a consulta e as datas.
+
+> **Caso sintético.** O relatório e os logons são inventados.
+
+### Erros e limites
+
+A ausência nos logs pode significar falta de registro. Registre a cobertura ao relatar "nenhuma correspondência".
+
+### Exercícios
+
+- **EX031 — Escolha da técnica.** Um atacante entra com uma senha roubada de fornecedor. Que técnica do ATT&CK se encaixa? *Rubrica:* 3 = Valid Accounts T1078, com justificativa; 2 = só o nome; 1 = T1059; 0 = nenhuma.
+- **EX032 — Cautela com procedimentos.** O que um exemplo de procedimento em uma página do ATT&CK não diz? *Rubrica:* 3 = frequência/prevalência ou se ele visa você; 2 = parcial; 1 = diz tudo; 0 = nenhuma.
+- **EX033 — Registro de nenhuma correspondência.** O que Amara deve incluir ao registrar "nenhuma correspondência"? *Rubrica:* 3 = consulta, período, fonte de dados e lacunas de cobertura; 2 = dois; 1 = só o veredito; 0 = nenhuma.
+
+### Síntese
+
+Associe o comportamento do sistema operacional a técnicas, use a telemetria de endpoint para conferir relatórios e registre a cobertura junto com cada resultado negativo.
+
+### Continue estudando — capítulo 11 de 40
+
+[← Capítulo 10 (rascunho)](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 (rascunho) →](#ch-12)
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Probabilidade e estatística
+
+### Objetivos de aprendizagem
+
+Você vai (1) expressar a confiança analítica com palavras calibradas; (2) conferir a redação com uma escala de probabilidade; (3) explicar as taxas-base; (4) evitar a falsa precisão.
+
+### 12.1 Palavras de probabilidade estimativa
+
+Sherman Kent mostrou que os leitores interpretam "provável" em qualquer ponto entre cerca de 20% e 90%. A ICD 203 exige que os produtos analíticos expressem a probabilidade de forma consistente. As equipes adotam uma escala — por exemplo, "muito provável" para 80–95% — e a seguem. Amara usa a escala da equipe em todos os produtos e a acrescenta como nota de rodapé, para que leitores de fora da equipe possam interpretar as palavras. A descoberta de Kent mostra que o problema não é escrita descuidada, mas leituras realmente diferentes das mesmas palavras. Uma escala comum dá às palavras um significado fixo, e a nota de rodapé permite que os leitores do HSSC ou do conselho do HCHT a apliquem da mesma forma.
+
+### Laboratório — conferir palavras estimativas
+
+```python
+"""Lab 1 (ch 12): map estimative words to a published probability scale and flag misuse (synthetic)."""
+SCALE = {"almost no chance": (0, 5), "very unlikely": (5, 20), "unlikely": (20, 45),
+         "roughly even chance": (45, 55), "likely": (55, 80), "very likely": (80, 95),
+         "almost certainly": (95, 100)}
+claims = [("C1", "likely", 70), ("C2", "very likely", 60), ("C3", "unlikely", 30), ("C4", "probable", 75)]
+for cid, word, analyst_pct in claims:
+    if word not in SCALE:
+        print(cid, f"'{word}' not on team scale -> rewrite")
+        continue
+    lo, hi = SCALE[word]
+    print(cid, word, f"{analyst_pct}%", "consistent" if lo <= analyst_pct <= hi else f"INCONSISTENT (scale {lo}-{hi}%)")
+```
+
+Execute com `python3 lab_wep.py`. Saída verificada:
+
+```text
+C1 likely 70% consistent
+C2 very likely 60% INCONSISTENT (scale 80-95%)
+C3 unlikely 30% consistent
+C4 'probable' not on team scale -> rewrite
+```
+
+### 12.2 Lendo o resultado
+
+A alegação C1 diz `likely` com 70% — consistente. C2 diz `very likely`, mas atribui 60%, fora da faixa de 80–95% da equipe, então a redação exagera a confiança. C3, `unlikely` com 30%, é consistente. C4 usa `probable`, que não está na escala da equipe e precisa ser reescrita. Amara devolve o rascunho com as duas alegações inconsistentes marcadas e a escala anexada. O autor pode mudar a palavra ou mudar o número, mas precisa explicar qual julgamento é o correto. A consistência é conferida antes que qualquer coisa saia da equipe, porque os leitores de fora agirão com base na palavra que veem, e não em um número que nunca leram.
+
+### 12.3 Taxas-base
+
+Se um e-mail em dez mil é malicioso, um filtro que marca 1% dos e-mails produz sobretudo alarmes falsos, mesmo que pegue todos os phishings. Sempre pergunte pela taxa-base antes de julgar uma detecção. Amara aplica isso a uma regra de alerta proposta depois de um relatório do HSSC e descobre que a maioria dos alertas esperados seria inofensiva. A equipe estreita a regra antes de implantá-la. Depois do ajuste, a regra dispara algumas vezes por semana, e cada alerta é conferido no mesmo dia, um ritmo que a equipe consegue sustentar.
+
+### 12.4 Falsa precisão
+
+"Há 73,4% de chance de este grupo ser o responsável" implica uma medição que não existe. Use faixas. Amara substitui esses números nos rascunhos por uma palavra da escala da equipe e uma justificativa curta. Um número preciso sugere que a probabilidade foi calculada a partir de dados, quando na prática reflete o julgamento de um analista com base em evidências incompletas. As faixas são honestas quanto a isso e mais fáceis de usar pelos leitores. Se um número é necessário para um modelo, ele é dado como intervalo e rotulado como estimativa.
+
+### 12.5 Probabilidade versus confiança
+
+A probabilidade descreve quão provável é um evento; a confiança descreve a qualidade da evidência e do raciocínio por trás do julgamento. A ICD 203 pede que os analistas expressem e expliquem as duas. Amara aprende a escrever as duas em uma frase, como "provável, com confiança moderada porque só uma fonte o relata". As duas podem divergir: um evento pode ser provável enquanto a confiança é baixa, se a evidência é escassa. Os leitores precisam das duas para decidir quanto peso dar a um julgamento. Amara confere as duas partes em cada julgamento de seus rascunhos.
+
+### 12.6 Amostras pequenas
+
+Com cinco relatórios, uma menção a mais ou a menos faz uma porcentagem oscilar vinte pontos. Quando as amostras são pequenas, relate as contagens, evite ordenar valores próximos e diga que o padrão pode mudar com mais dados. A estatística não salva uma amostra que simplesmente contém pouca informação. Amara aplica isso ao resumo trimestral do HSSC. Vários trimestres têm só um punhado de relatórios por categoria, então ela pede ao HSSC que mostre as contagens ao lado de cada porcentagem e marque as classificações que dependem de um ou dois relatórios. O HSSC adota a mudança no resumo seguinte.
+
+### Exemplo resolvido
+
+Amara escreve no rascunho, em inglês, a frase `It is probable the phishing wave will reach HCHT this week` ("é provável que a onda de phishing chegue ao HCHT nesta semana"). O script marca `probable` como fora da escala. Ela reescreve: "É provável (55–80%) que funcionários do HCHT recebam e-mails desta onda nesta semana; confiança moderada, com base em relatórios do HSSC de três instituições próximas."
+
+> **Caso sintético.** O rascunho e os relatórios são inventados.
+
+### Erros e limites
+
+Escalas reduzem a ambiguidade, mas não tornam os julgamentos corretos. Acompanhe os desfechos para conferir a calibração ao longo do tempo.
+
+### Exercícios
+
+- **EX034 — Inconsistência no laboratório.** Que alegação estava inconsistente no laboratório, e por quê? *Rubrica:* 3 = C2: `very likely` com 60%, escala de 80–95%; 2 = só C2; 1 = C4; 0 = nenhuma.
+- **EX035 — Armadilha da taxa-base.** Explique por que um filtro que marca 1% dos e-mails pode produzir sobretudo alarmes falsos. *Rubrica:* 3 = taxa-base de maliciosos muito abaixo de 1%; a maioria das marcações é benigna; 2 = parcial; 1 = o filtro está quebrado; 0 = nenhuma.
+- **EX036 — Duas dimensões.** Distinga probabilidade de confiança. *Rubrica:* 3 = probabilidade do evento vs qualidade da evidência/raciocínio; 2 = parcial; 1 = são a mesma coisa; 0 = nenhuma.
+
+### Síntese
+
+Use uma escala comum, confira as taxas-base, evite a falsa precisão e declare tanto a probabilidade quanto a confiança.
+
+### Continue estudando — capítulo 12 de 40
+
+[← Capítulo 11 (rascunho)](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 (rascunho) →](#ch-13)
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Identidade e acesso
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar por que as credenciais são um alvo privilegiado; (2) ligar a inteligência de identidade aos controles; (3) tratar com responsabilidade os relatos de exposição de credenciais; (4) reconhecer, no nível conceitual, a fadiga de MFA e o roubo de sessão.
+
+### 13.1 A identidade como perímetro
+
+E-mail na nuvem e acesso remoto significam que uma senha válida pode alcançar sistemas clínicos de qualquer lugar. Valid Accounts (T1078) e Phishing (T1566) muitas vezes se combinam: o phishing captura a credencial e depois o atacante faz login. Por isso a CTI sobre phishing de credenciais leva a controles de identidade, e não só a filtros de e-mail. Amara acompanha um relatório de phishing do HSSC até seu efeito provável no HCHT: uma senha roubada usada para entrar no e-mail na nuvem a partir do exterior. As ações recomendadas vão para a equipe de identidade, além dos administradores de e-mail, e o relatório nomeia os padrões de login a vigiar, para que cada equipe saiba o que deve conferir.
+
+### 13.2 Autenticação multifator
+
+A MFA bloqueia a maioria dos ataques que dependem só da senha. Os adversários respondem disparando solicitações repetidas até que o usuário aprove uma, ou roubando tokens de sessão depois do login. A inteligência de que esses métodos estão ativos no setor justifica solicitações com correspondência de números e acesso condicional. Amara redige a recomendação com a equipe de identidade, explicando que métodos foram vistos no setor e como cada mudança responde a um deles. A correspondência de números dificulta muito a aprovação às cegas de solicitações repetidas, e o acesso condicional pode recusar logins de dispositivos não gerenciados. A equipe planeja uma implantação em etapas, para que os funcionários clínicos em estações compartilhadas não fiquem bloqueados no meio de um plantão.
+
+### 13.3 Relatos de exposição de credenciais
+
+Às vezes um parceiro relata endereços de e-mail e senhas do HCHT encontrados em um vazamento público. Trate-os como dados pessoais: restrinja o acesso, nunca cole senhas em chamados, force as redefinições por meio da equipe de identidade e informe o encarregado de proteção de dados. O papel de Amara é repassar o relato pelo canal combinado e registrar que ele foi recebido, e não testar se as senhas ainda funcionam. A equipe de identidade confere as contas e força as redefinições; o encarregado decide se a exposição precisa ser notificada. Uma nota curta registra a fonte, a data e as ações tomadas, sem nenhuma senha.
+
+### 13.4 Contas de serviço e de fornecedores
+
+Contas compartilhadas de fornecedores são difíceis de atribuir e muitas vezes ficam isentas de MFA. A inteligência sobre comprometimento de fornecedores no setor deve disparar primeiro uma revisão dessas contas. Amara ajuda a compilar uma lista das contas de fornecedores com seus responsáveis, os sistemas que alcançam, se a MFA se aplica e quando cada uma foi usada pela última vez. Várias contas não são usadas há meses e são desativadas depois de conferência com seus responsáveis. As contas que precisam continuar compartilhadas ficam restritas a endereços nomeados e são registradas com mais detalhe, para que seu uso ainda possa ser conferido.
+
+### 13.5 Medir o efeito do controle
+
+Depois de agir com base na inteligência, confira se o padrão de risco diminuiu: menos logons bem-sucedidos a partir de países novos, menos solicitações repetidas aprovadas. Amara compara as quatro semanas antes e depois da mudança, usando as mesmas consultas e anotando quaisquer outras mudanças que poderiam explicar a diferença, como um período de feriados com menos logins. Se o padrão não diminuiu, a inteligência ou o controle precisa de nova análise. Seu relatório curto inclui as contagens, o período e as limitações, e vai para a equipe de identidade e para o formulário de feedback do HSSC.
+
+### 13.6 Menor privilégio e revisões
+
+Revisões periódicas de acesso removem as contas de quem saiu e os direitos que não são mais necessários. A inteligência de que atacantes no setor estão reutilizando contas inativas transforma uma revisão de rotina em prioridade: as contas privilegiadas inativas são desativadas primeiro, e os responsáveis confirmam as que precisam continuar. Amara ajuda a equipe de identidade a preparar a lista e registra cada decisão. Os responsáveis têm duas semanas para confirmar que uma conta ainda é necessária; as contas não confirmadas são desativadas e podem ser restauradas a pedido. A revisão se repete a cada trimestre, e o número de contas privilegiadas inativas é acompanhado como medida de progresso.
+
+### Exemplo resolvido
+
+O HSSC alerta para uma campanha que envia solicitações falsas de MFA a funcionários da saúde. Amara confere os logs de login com a equipe de identidade: uma enfermeira aprovou uma solicitação às 02:14 a partir de uma localização desconhecida. A conta é redefinida, as sessões são revogadas e a enfermeira é contatada com gentileza, sem culpa. O HCHT ativa a correspondência de números.
+
+> **Caso sintético.** A campanha e o login são inventados.
+
+### Erros e limites
+
+Os dados de localização são imprecisos; viagens e VPNs causam marcações falsas. Um tratamento sem culpa mantém os funcionários relatando.
+
+### Exercícios
+
+- **EX037 — Técnicas combinadas.** Que duas técnicas do ATT&CK se combinam no phishing de credenciais seguido de login? *Rubrica:* 3 = T1566 e T1078, na ordem; 2 = os nomes; 1 = uma; 0 = nenhuma.
+- **EX038 — Tratamento do vazamento.** Liste três passos de tratamento seguro para um relato de vazamento de credenciais. *Rubrica:* 3 = restringir o acesso, nenhuma senha em chamados, redefinições pela equipe de identidade/informar o encarregado; 2 = dois; 1 = um; 0 = nenhuma.
+- **EX039 — Conferência do controle.** Como o HCHT pode saber se a correspondência de números ajudou? *Rubrica:* 3 = medir as solicitações suspeitas aprovadas/logons de risco bem-sucedidos antes vs depois; 2 = vago; 1 = supor; 0 = nenhuma.
+
+### Síntese
+
+Trate a identidade como o perímetro, transforme a inteligência sobre credenciais em controles de identidade e trate as credenciais expostas como dados pessoais.
+
+### Continue estudando — capítulo 13 de 40
+
+[← Capítulo 12 (rascunho)](#ch-12) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 14 (rascunho) →](#ch-14)
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Fundamentos de privacidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) identificar dados pessoais em produtos de inteligência; (2) ocultá-los antes do compartilhamento; (3) distinguir dados de vítimas de infraestrutura de adversários; (4) aplicar minimização e retenção.
+
+### 14.1 Dados pessoais na CTI
+
+Amostras de phishing contêm nomes e endereços dos destinatários; notas de incidente mencionam funcionários; os logs guardam os donos dos dispositivos. Pelas leis de proteção de dados, isso tudo são dados pessoais, e em um hospital parte deles pode se referir a pacientes, o que traz deveres mais rígidos. Amara mantém os dados pessoais fora de suas notas sempre que pode, usando papéis como "administrador da enfermaria" no lugar de nomes. Quando um nome é necessário, por exemplo para contatar um destinatário, ele fica no chamado do incidente, com acesso restrito, e não em notas de inteligência que circulam mais amplamente.
+
+### 14.2 Ocultação antes do compartilhamento
+
+Antes de enviar uma amostra ao HSSC, remova os e-mails e telefones dos funcionários e quaisquer identificadores de pacientes. Substitua-os por rótulos para que o sentido analítico sobreviva: "[staff-email] recebeu a mensagem". Amara confere também os anexos e os links embutidos, já que uma mensagem de phishing pode incluir o nome do destinatário em uma URL ou em um documento. A ocultação é revisada por uma segunda pessoa antes de qualquer envio, porque, uma vez compartilhada, a informação não pode ser recolhida de todos os membros. Os rótulos são consistentes, então várias amostras ainda podem ser comparadas depois da ocultação.
+
+### Laboratório — ocultar dados de uma amostra
+
+```python
+"""Lab 4 (ch 14): redact email addresses and phone numbers from a synthetic incident note before sharing."""
+import re
+note = ("Phish reported by j.okoro@halden-health.example at 09:14; caller back on +44 20 7946 0958. "
+        "Sender domain portal-login.example; reply-to billing@portal-login.example.")
+internal = re.compile(r"[\w.+-]+@halden-health\.example")
+phone = re.compile(r"\+\d[\d ]{8,}\d")
+out = internal.sub("[staff-email]", note)
+out = phone.sub("[phone]", out)
+print(out)
+print("adversary address kept:", "billing@portal-login.example" in out)
+```
+
+Execute com `python3 lab_redact.py`. Saída verificada:
+
+```text
+Phish reported by [staff-email] at 09:14; caller back on [phone]. Sender domain portal-login.example; reply-to billing@portal-login.example.
+adversary address kept: True
+```
+
+### 14.3 Lendo o resultado
+
+O e-mail e o telefone do funcionário são substituídos por marcadores. O endereço remetente do adversário é mantido, porque é o indicador de que os outros membros precisam. O script informa `adversary address kept: True`, confirmando que não ocultou demais. Amara acrescenta ao script testes para outros dados pessoais, como nomes em saudações. A ocultação em excesso removeria o que os membros do HSSC precisam; a ocultação insuficiente exporia os funcionários. Conferir as duas direções faz parte de toda mudança no script, e uma amostra de cada lote ainda é revisada por uma pessoa.
+
+### 14.4 Minimização e retenção
+
+Colete só o que a pergunta exige e guarde só pelo tempo necessário. Um prazo de retenção para amostras brutas de phishing — digamos, 90 dias — limita a exposição caso os próprios sistemas do HCHT sejam invadidos. A importação de Amara apaga automaticamente as amostras brutas quando o prazo termina, mantendo só os indicadores extraídos e um resumo com os dados ocultados. O prazo de retenção é acordado com o encarregado de proteção de dados e registrado nos procedimentos da equipe. Se uma investigação precisar de uma amostra por mais tempo, o motivo e a nova data são registrados, para que as exceções fiquem visíveis.
+
+### 14.5 Dados de pacientes
+
+Nunca compartilhe dados de pacientes pelos canais de inteligência. Se um incidente envolve prontuários, o encarregado de proteção de dados lidera, e as notificações seguem a lei, não os hábitos da CTI. Amara confere cada amostra em busca de dados de pacientes antes de qualquer outro processamento, e para se encontrar algum. O trabalho de inteligência precisa de indicadores e técnicas, não de prontuários, então nunca há motivo para enviá-los ao HSSC. Se uma mensagem de phishing contém informações de pacientes, a equipe de incidentes e o encarregado a tratam segundo os procedimentos de proteção de dados do HCHT, separadamente do trabalho de inteligência.
+
+### 14.6 Pseudonimização versus anonimização
+
+Substituir um nome por um rótulo estável é pseudonimização: os dados ainda podem ser religados por quem detém a chave, então continuam sendo dados pessoais pelo GDPR. A verdadeira anonimização remove qualquer meio razoável de reidentificação. No Brasil, a LGPD também só deixa de considerar dados pessoais os dados anonimizados (art. 12), e a Autoridade Nacional de Proteção de Dados (ANPD) fiscaliza sua aplicação. A maior parte do compartilhamento de CTI alcança apenas a primeira, então os controles de acesso continuam importando. O script de ocultação de Amara usa marcadores fixos em vez de rótulos estáveis, então os membros do HSSC não conseguem ligar um marcador a uma pessoa, mesmo ao longo de muitas amostras. Quando a ligação importa, por exemplo para mostrar que o mesmo funcionário foi visado duas vezes, a chave fica no HCHT e não é compartilhada com ninguém.
+
+### Exemplo resolvido
+
+O corpo de um e-mail de phishing inclui uma fatura falsa que cita o nome de um médico consultor real do HCHT. A ocultação automática de Amara não o pega, porque só reconhece e-mails e telefones. Sua revisão manual o encontra, e ela acrescenta uma etapa: toda amostra compartilhada recebe uma leitura humana em busca de nomes antes da liberação.
+
+> **Caso sintético.** A amostra é inventada.
+
+### Erros e limites
+
+A ocultação baseada em padrões deixa passar nomes e texto livre. Automatize os casos fáceis; revise o resto à mão.
+
+### Exercícios
+
+- **EX040 — Ocultação em excesso.** Por que o endereço remetente do adversário precisa ser mantido? *Rubrica:* 3 = é o indicador compartilhado de que os outros precisam; não é dado de vítima; 2 = parcial; 1 = ocultar tudo; 0 = nenhuma.
+- **EX041 — Nome não detectado.** Que mudança de processo se seguiu ao nome do consultor que passou? *Rubrica:* 3 = revisão humana obrigatória em busca de nomes antes da liberação; 2 = vago; 1 = nenhuma necessária; 0 = nenhuma.
+- **EX042 — Pseudônimos.** Dados com rótulos estáveis no lugar dos nomes são anônimos pelo GDPR? *Rubrica:* 3 = não, são pseudonimizados e continuam dados pessoais se puderem ser religados; 2 = não; 1 = sim; 0 = nenhuma.
+
+### Síntese
+
+Encontre os dados pessoais, oculte com cuidado, mantenha os indicadores, minimize, retenha por pouco tempo e nunca faça dados de pacientes passarem pela CTI.
+
+### Continue estudando — capítulo 14 de 40
+
+[← Capítulo 13 (rascunho)](#ch-13) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 15 (rascunho) →](#ch-15)
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Evidência e medição
+
+### Objetivos de aprendizagem
+
+Você vai (1) distinguir observação, inferência e avaliação; (2) registrar a proveniência de cada evidência; (3) medir a utilidade da inteligência; (4) separar métricas de atividade de métricas de resultado.
+
+### 15.1 Três camadas
+
+Uma observação: "o proxy registrou uma conexão a portal-login.example às 09:41". Uma inferência: "o usuário provavelmente clicou no link de phishing". Uma avaliação: "o HCHT provavelmente foi visado pela campanha do setor". Cada camada precisa de sustentação própria, e os relatórios devem rotular qual é qual. Amara marca cada frase de seus rascunhos como observação, inferência ou avaliação. Os leitores podem então ver quais afirmações são fatos tirados dos logs e quais são julgamentos, e podem contestar os julgamentos sem duvidar dos fatos. Quando chega evidência nova, uma inferência pode mudar enquanto a observação continua a mesma.
+
+### 15.2 Proveniência
+
+Para cada item, registre quem o relatou, quando, por qual canal, sob qual TLP e em que ele se baseia. Sem proveniência, um indicador copiado entre feeds parece ter muitas fontes quando tem uma — a notificação circular. O banco de dados de Amara guarda a proveniência de cada indicador, e seus relatórios citam a fonte original, e não o feed que a repetiu. Quando dois membros do HSSC relatam o mesmo domínio, ela confere se ambos o viram de forma independente ou se um copiou o relatório do outro. Só observações independentes aumentam a confiança. A notificação circular já inflou duas vezes a confiança nos resumos do HSSC, e é por isso que a comunidade agora pede aos membros que declarem sua fonte original.
+
+### 15.3 Medir a inteligência
+
+Contar os indicadores ingeridos mede atividade. As medidas de resultado perguntam: a inteligência levou a um bloqueio que impediu algo, a uma caçada que encontrou algo ou a uma decisão que mudou? Menos indicadores, e melhores, podem produzir mais valor. Amara acrescenta ao banco de indicadores uma coluna de resultado: bloqueado, caçado com resultado, caçado sem resultado ou nenhuma ação. Depois de um trimestre, ela consegue mostrar quais fontes levaram a ações e quais só acrescentaram volume. Os números ajudam a equipe a decidir quais feeds valem o tempo de processamento e quais poderiam ser abandonados.
+
+### 15.4 Feedback
+
+Os consumidores devem dizer aos produtores o que ajudou. O formulário mensal de feedback do HSSC pergunta aos membros quais itens levaram a ações. Amara o preenche com honestidade, incluindo "nenhuma ação necessária". "Nenhuma ação necessária" é um feedback útil, porque diz ao HSSC que um item não se aplicava a membros como o HCHT. Amara acrescenta uma frase explicando o porquê, como "não usamos o produto afetado". O HSSC compartilha a cada trimestre um resumo do feedback de todos os membros, que mostra quais tipos de relatório os membros consideram mais úteis.
+
+### 15.5 Tempestividade
+
+Um indicador entregue depois do fim da campanha tem pouco valor. Registre o tempo entre a primeira observação e a ação do HCHT. Amara registra o horário da primeira observação segundo o relatório de origem e o horário em que o HCHT aplicou um bloqueio ou concluiu uma caçada. A mediana do intervalo é relatada a cada trimestre. Um intervalo longo pode vir de um feed lento, de uma revisão lenta ou de um processo de mudança lento, e o registro mostra qual etapa demorou mais. Encurtar a etapa mais lenta é a melhoria mais eficaz.
+
+### 15.6 Precisão e revocação dos bloqueios
+
+A precisão pergunta que parcela dos itens bloqueados era de fato maliciosa; a revocação pergunta que parcela dos itens maliciosos foi bloqueada. Um feed com alta revocação mas baixa precisão inunda a central de atendimento com reclamações; um com alta precisão mas baixa revocação deixa passar campanhas. Acompanhe as duas, em vez de uma única contagem de "acertos". Amara mede as duas para os principais feeds a cada trimestre. A precisão é conferida por amostragem dos itens bloqueados, confirmando cada um; a revocação é mais difícil, então ela a estima a partir de incidentes e de relatórios do HSSC que depois se provaram maliciosos. Os dois números são relatados com suas contagens e seus limites.
+
+### Exemplo resolvido
+
+Três feeds relatam o mesmo domínio. Amara confere a proveniência: dois citam o terceiro. Ela registra uma fonte independente, não três, e sua confiança continua moderada. Mais tarde, ela registra que o bloqueio do domínio impediu dois cliques — uma métrica de resultado para a revisão trimestral.
+
+> **Caso sintético.** Os feeds e os cliques são inventados.
+
+### Erros e limites
+
+É difícil atribuir resultados apenas à inteligência. Relate a contribuição, não uma prova.
+
+### Exercícios
+
+- **EX043 — Rótulo da camada.** Rotule "o usuário provavelmente clicou no link" como observação, inferência ou avaliação. *Rubrica:* 3 = inferência, com justificativa; 2 = inferência; 1 = observação; 0 = nenhuma.
+- **EX044 — Notificação circular.** Como a proveniência mudou a contagem de fontes de Amara? *Rubrica:* 3 = três relatórios, uma fonte independente; 2 = parcial; 1 = três fontes; 0 = nenhuma.
+- **EX045 — Tipo de métrica.** "50.000 indicadores ingeridos neste mês" é uma métrica de atividade ou de resultado? Sugira uma alternativa de resultado. *Rubrica:* 3 = atividade; p. ex., bloqueios que impediram cliques/achados de caçadas; 2 = só atividade; 1 = resultado; 0 = nenhuma.
+
+### Síntese
+
+Separe as camadas de evidência, mantenha a proveniência, meça os resultados e dê feedback aos produtores.
+
+### Continue estudando — capítulo 15 de 40
+
+[← Capítulo 14 (rascunho)](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 (rascunho) →](#ch-16)
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Arquitetura de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever a defesa em profundidade na rede de um hospital; (2) posicionar as entradas de CTI em cada camada; (3) explicar a segmentação dos sistemas clínicos; (4) escolher onde um indicador deve ser aplicado.
+
+### 16.1 Camadas
+
+Filtragem de e-mail, proxy web, filtragem de DNS, proteção de endpoint, controles de identidade, segmentação e backups formam camadas. Nenhuma camada sozinha impede todo ataque; a inteligência ajuda a ajustar cada uma. Amara associa cada tipo de inteligência que o HCHT recebe à camada que pode usá-lo e à equipe responsável por essa camada. O mapa mostra camadas que nenhuma inteligência alcança, como os backups, e inteligência que nenhuma camada pode usar, como indicadores de sistemas que o HCHT não opera. As duas lacunas são discutidas com o líder de segurança.
+
+### 16.2 CTI em cada camada
+
+Domínios remetentes alimentam os filtros de e-mail; domínios maliciosos alimentam o DNS e o proxy; hashes alimentam as ferramentas de endpoint; a inteligência sobre técnicas orienta as regras de detecção e o endurecimento; a inteligência sobre ransomware (Data Encrypted for Impact, T1486) orienta o isolamento dos backups. Amara encaminha cada item ao responsável certo com uma explicação curta do que fazer. As listas de hashes vão para a equipe de endpoint com a fonte e a confiança; os resumos de técnicas vão para o engenheiro de detecção com ideias de buscas; a inteligência sobre ransomware vai para a infraestrutura com os riscos específicos aos backups. Cada responsável confirma o que foi feito, o que alimenta as medidas de resultado.
+
+### 16.3 Segmentação
+
+Os dispositivos clínicos ficam em zonas de rede separadas, com caminhos rigidamente limitados. A inteligência sobre movimento lateral por serviços remotos reforça o argumento para bloquear caminhos desnecessários entre as zonas administrativas e clínicas. Amara reúne relatórios do setor em que atacantes passaram de sistemas administrativos para sistemas clínicos e resume os caminhos que usaram. A equipe de rede os compara com as regras de firewall do HCHT e encontra dois caminhos que não são mais necessários, que são fechados depois de conferência com a engenharia clínica. O resumo é guardado como evidência da mudança.
+
+### 16.4 Escolher onde aplicar
+
+Bloqueie onde o indicador é confiável e o raio de impacto é aceitável. O hash de um arquivo malicioso conhecido é seguro de bloquear nos endpoints. Um endereço de nuvem compartilhado não é seguro de bloquear no firewall. Amara escreve, ao lado de cada recomendação de bloqueio, o motivo do ponto de aplicação escolhido. Quando a confiabilidade é incerta, ela recomenda monitorar primeiro e bloquear depois, se a evidência crescer. O mesmo domínio pode ser seguro de bloquear no gateway de e-mail, onde só as mensagens são afetadas, mas arriscado no DNS, onde sistemas clínicos poderiam perder o acesso ao serviço de um fornecedor.
+
+### 16.5 Revisões de arquitetura
+
+Quando o HCHT projeta um sistema novo, a equipe de CTI resume as técnicas relevantes vistas no setor para que os arquitetos possam projetar contra elas desde o início. O resumo é curto e lista as técnicas relevantes para o tipo de sistema, como o acesso remoto para um portal de fornecedores ou o phishing para um novo fluxo de e-mail. Os arquitetos o usam para conferir o projeto, e a equipe de CTI depois confere o projeto quanto às técnicas listadas. Amara ajudou no resumo para um novo sistema de laboratório.
+
+### 16.6 Os backups como consumidores de CTI
+
+A inteligência setorial de que grupos de ransomware procuram e apagam os backups antes de cifrar (T1490 Inhibit System Recovery é uma técnica relacionada do ATT&CK) diz à equipe de infraestrutura o que proteger: cópias offline ou imutáveis, credenciais separadas para a administração dos backups e testes periódicos de restauração que provem que a recuperação funciona. O resumo de Amara sobre os relatórios do setor vai para a equipe de infraestrutura, que confirma quais proteções existem. A equipe também faz um teste de restauração depois do resumo, que mostra que um conjunto de backup compartilha credenciais com a administração comum. As credenciais são separadas dentro do mês, e o resultado é registrado como desfecho da inteligência.
+
+### Exemplo resolvido
+
+Um relatório do setor descreve atacantes que cifraram servidores de arquivos depois de apagar os backups. Amara o associa a T1486 e o passa ao líder de infraestrutura com uma pergunta: os backups do HCHT são offline ou imutáveis? Em um site, não são. O líder acrescenta uma cópia imutável, citando o relatório na solicitação de mudança.
+
+> **Caso sintético.** O relatório e a lacuna de backup são inventados.
+
+### Erros e limites
+
+Mudanças de arquitetura levam tempo; a inteligência deve orientar as prioridades, não exigir um redesenho imediato.
+
+### Exercícios
+
+- **EX046 — Correspondência de camada.** Que camada deve receber o hash SHA-256 de um anexo malicioso? *Rubrica:* 3 = endpoint (e varredura de anexos de e-mail), com justificativa; 2 = endpoint; 1 = firewall; 0 = nenhuma.
+- **EX047 — Endereço de nuvem.** Por que não bloquear um endereço de nuvem compartilhado no firewall? *Rubrica:* 3 = muitos serviços legítimos o compartilham; dano colateral; 2 = parcial; 1 = sempre bloquear; 0 = nenhuma.
+- **EX048 — Pergunta sobre backups.** Que pergunta a inteligência sobre ransomware provocou, e o que mudou? *Rubrica:* 3 = os backups são offline/imutáveis? cópia imutável acrescentada em um site; 2 = um dos dois; 1 = vago; 0 = nenhuma.
+
+### Síntese
+
+Alimente cada camada com a inteligência que ela pode usar, aplique onde for confiável e inofensivo e use a inteligência sobre técnicas para moldar a arquitetura.
+
+### Continue estudando — capítulo 16 de 40
+
+[← Capítulo 15 (rascunho)](#ch-15) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 17 (rascunho) →](#ch-17)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX024 (as de EX025–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). O Halden County Health Trust, Amara Diallo, o Health Sector Sharing Circle e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX048 (as de EX049–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). O Halden County Health Trust, Amara Diallo, o Health Sector Sharing Circle e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Abdução — ela propõe a explicação mais plausível para uma observação sem prová-la.
 
@@ -564,12 +1086,61 @@ Respostas-modelo para EX001–EX024 (as de EX025–EX120 estão na edição em i
 
 **EX024.** Usar tipo mais valor como chave única e atualizar os metadados do registro existente em vez de inserir uma linha nova.
 
+**EX025.** ('files.example', 'TLP:CLEAR') e ('portal-login.example', 'TLP:GREEN'); uma contagem separada encontrou 2 indicadores desatualizados.
+
+**EX026.** Para que a consulta do resumo possa excluir automaticamente as linhas restritas e nada além do que o rótulo permite saia do HCHT.
+
+**EX027.** Enviá-los para revisão; se confirmados como desatualizados, marcá-los como expirados, com data, para que o histórico sobreviva.
+
+**EX028.** A lei de proteção de dados cobre os dados pessoais seja qual for a fonte; a coleta precisa de base legal e finalidade, deve ser mínima, e a agregação pode criar perfis nocivos.
+
+**EX029.** Recusar, avisar a supervisora e encaminhar a pergunta ao HSSC ou a um fornecedor contratado que opere sob revisão jurídica.
+
+**EX030.** Não. Isso excede o mandato da CTI e invade a vida de pessoas não envolvidas; identificar indivíduos é assunto das autoridades policiais.
+
+**EX031.** Valid Accounts (T1078): o atacante abusa de credenciais legítimas em vez de explorar software.
+
+**EX032.** Com que frequência o comportamento ocorre, ou se ele é relevante para sua organização — mostra apenas que foi observado e relatado.
+
+**EX033.** A consulta exata, o intervalo de datas, a fonte de dados pesquisada e quaisquer lacunas conhecidas na cobertura de registro.
+
+**EX034.** C2: usa `very likely` com uma estimativa de 60%, mas a escala da equipe reserva essa expressão para 80–95%.
+
+**EX035.** Se só cerca de 0,01% dos e-mails é malicioso, marcar 1% significa aproximadamente cem mensagens benignas para cada phishing real.
+
+**EX036.** A probabilidade é quão provável o evento é; a confiança é quão boas são a evidência e o raciocínio por trás dessa estimativa.
+
+**EX037.** Phishing (T1566) para obter a credencial, depois Valid Accounts (T1078) para usá-la.
+
+**EX038.** Limitar quem pode ver o relato; nunca copiar senhas em chamados; forçar as redefinições pela equipe de identidade e notificar o encarregado de proteção de dados.
+
+**EX039.** Comparar o número de solicitações suspeitas aprovadas e de logins de risco bem-sucedidos antes e depois da mudança, em períodos semelhantes.
+
+**EX040.** É infraestrutura do adversário — o indicador que os outros membros do HSSC precisam bloquear —, e não informação sobre uma vítima.
+
+**EX041.** Toda amostra agora recebe uma leitura manual em busca de nomes e identificadores em texto livre antes de ser compartilhada.
+
+**EX042.** Não. Rótulos estáveis são pseudonimização; se alguém puder religá-los, os dados continuam sendo dados pessoais.
+
+**EX043.** Inferência — vai além da conexão registrada para inferir uma ação do usuário.
+
+**EX044.** Dois dos três feeds citavam o terceiro, então havia uma única fonte independente e a confiança não aumentou.
+
+**EX045.** Atividade. Uma alternativa de resultado é o número de conexões bloqueadas que impediram a digitação de credenciais ou o número de caçadas que encontraram atividade real.
+
+**EX046.** A proteção de endpoint e a varredura de anexos de e-mail — elas inspecionam arquivos e podem bloquear hashes exatos com confiabilidade.
+
+**EX047.** Muitos serviços legítimos compartilham endereços de nuvem, então bloquear um deles poderia cortar sistemas clínicos ou administrativos.
+
+**EX048.** Os backups são offline ou imutáveis? Um site não tinha isso, então foi acrescentada uma cópia imutável.
+
 <a id="references"></a>
 ## Referências
 
-Todos os DOIs foram resolvidos em doi.org em 12 de outubro de 2026, e as normas foram conferidas nas páginas de seus editores. A lista é idêntica à da edição em inglês e cobre o livro inteiro; nenhuma das normas técnicas citadas foi verificada aqui como adotada pela ABNT, por isso são citadas em sua edição internacional. Organizações, pessoas, sistemas e números dos casos são sintéticos; somente as obras abaixo são reais.
+Todos os DOIs foram resolvidos em doi.org em 12 de outubro de 2026, e as normas foram conferidas nas páginas de seus editores. A lista é idêntica à da edição em inglês e cobre o livro inteiro, acrescida apenas da LGPD, citada nesta edição como referência brasileira e conferida em sua fonte oficial; nenhuma das normas técnicas citadas foi verificada aqui como adotada pela ABNT, por isso são citadas em sua edição internacional. Organizações, pessoas, sistemas e números dos casos são sintéticos; somente as obras abaixo são reais.
 
 - Bianco, D. (2013). The Pyramid of Pain. <https://detect-respond.blogspot.com/2013/03/the-pyramid-of-pain.html>
+- Brasil. (2018). *Lei nº 13.709, de 14 de agosto de 2018 — Lei Geral de Proteção de Dados Pessoais (LGPD)*. Diário Oficial da União. <https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm>
 - Caltagirone, S., Pendergast, A. and Betz, C. (2013). The Diamond Model of Intrusion Analysis. Technical Report ADA586960, Center for Cyber Intelligence Analysis and Threat Research. <https://www.activeresponse.org/wp-content/uploads/2013/07/diamond.pdf>
 - European Union. Regulation (EU) 2016/679 (General Data Protection Regulation). <https://eur-lex.europa.eu/eli/reg/2016/679/oj>
 - FIRST. Traffic Light Protocol (TLP) version 2.0. <https://www.first.org/tlp/>
