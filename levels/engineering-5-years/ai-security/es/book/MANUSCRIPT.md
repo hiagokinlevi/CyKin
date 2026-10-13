@@ -27,8 +27,8 @@ Las fuentes se comprobaron el 12 de octubre de 2026: NIST [AI 100-1](https://doi
 |---|---|
 | Fundamentos | [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
 | Sistemas y seguridad | [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) |
-| Ingeniería de seguridad de la IA | [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](../../en/book/MANUSCRIPT.md#ch-38) · [39](../../en/book/MANUSCRIPT.md#ch-39) · [40](../../en/book/MANUSCRIPT.md#ch-40) · [41](../../en/book/MANUSCRIPT.md#ch-41) · [42](../../en/book/MANUSCRIPT.md#ch-42) |
-| Práctica y proyecto final | [43](../../en/book/MANUSCRIPT.md#ch-43) · [44](../../en/book/MANUSCRIPT.md#ch-44) · [45](../../en/book/MANUSCRIPT.md#ch-45) · [46](../../en/book/MANUSCRIPT.md#ch-46) · [47](../../en/book/MANUSCRIPT.md#ch-47) · [48](../../en/book/MANUSCRIPT.md#ch-48) · [49](../../en/book/MANUSCRIPT.md#ch-49) · [50](../../en/book/MANUSCRIPT.md#ch-50) |
+| Ingeniería de seguridad de la IA | [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) · [41](#ch-41) · [42](#ch-42) |
+| Práctica y proyecto final | [43](#ch-43) · [44](../../en/book/MANUSCRIPT.md#ch-44) · [45](../../en/book/MANUSCRIPT.md#ch-45) · [46](../../en/book/MANUSCRIPT.md#ch-46) · [47](../../en/book/MANUSCRIPT.md#ch-47) · [48](../../en/book/MANUSCRIPT.md#ch-48) · [49](../../en/book/MANUSCRIPT.md#ch-49) · [50](../../en/book/MANUSCRIPT.md#ch-50) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
 
@@ -2538,7 +2538,429 @@ Las operaciones mantienen viva la seguridad de la IA después de la publicación
 
 ### Siga estudiando — capítulo 37 de 50
 
-[← Capítulo 36 (borrador)](#ch-36) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 38 (borrador) →](../../en/book/MANUSCRIPT.md#ch-38)
+[← Capítulo 36 (borrador)](#ch-36) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 38 (borrador) →](#ch-38)
+
+<a id="ch-38"></a>
+
+## Capítulo 38 — Seguridad de la IA y del aprendizaje automático: validación
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) distinguir la verificación (se construyó bien) de la validación (se construyó lo correcto); (2) validar la seguridad de la IA con usuarios y operadores en condiciones realistas; (3) realizar ejercicios de equipo rojo como validación; y (4) decidir la idoneidad para el fin previsto con evidencia documentada.
+
+### 38.1 Verificación frente a validación
+
+La verificación comprueba que el sistema cumple los requisitos especificados. La validación comprueba que los requisitos y el sistema responden a las necesidades reales de las partes interesadas en el entorno real. Un sistema puede cumplir todos los requisitos y seguir siendo inseguro si los requisitos pasaron por alto una amenaza o si los usuarios se comportan de forma distinta de la supuesta. En el caso de Wrench, la verificación mostró que el punto de aplicación bloquea las llamadas no autorizadas. La validación pregunta si los técnicos pueden hacer su trabajo con él, si leen las pantallas de confirmación y si las amenazas del modelo son las que aparecen realmente. Hacen falta ambas: la verificación sin validación puede aprobar un sistema que nadie usa de forma segura, y la validación sin verificación se basa en impresiones.
+
+### 38.2 Validación operativa
+
+Realice pilotos en condiciones realistas: cargas de trabajo reales (autorizadas), usuarios reales, contenido adversarial realista. Observe cómo interactúan los usuarios con los controles: ¿leen las pantallas de aprobación?, ¿esquivan las restricciones? Mida juntos el éxito en la tarea y los resultados de seguridad. La observación revela comportamientos que ningún requisito previó, como un técnico que aprueba las propuestas por lotes al final del turno, u otro que copia el texto de los boletines en el chat para ahorrar tiempo. Medir el éxito en la tarea junto con los resultados de seguridad impide que un piloto se declare un éxito cuando el trabajo se aceleró solo porque la gente esquivaba los controles. Las opiniones de los usuarios del piloto se recogen por escrito, con su permiso, y se incorporan a los requisitos.
+
+### 38.3 El equipo rojo como validación
+
+Un equipo rojo con un alcance y una autorización definidos intenta alcanzar los objetivos de un atacante contra el sistema integrado, usando cualquier técnica dentro de las reglas. A diferencia de un conjunto de pruebas, los equipos rojos encuentran vías no previstas. NIST AI 600-1 incluye los ejercicios de equipo rojo entre las acciones sugeridas para la IA generativa. Informe de los hallazgos con su gravedad y sus correcciones, y convierta las vías que tuvieron éxito en pruebas de regresión. Los equipos rojos funcionan mejor cuando son independientes de los desarrolladores. Los desarrolladores conocen las vías previstas y tienden a probarlas; un equipo externo parte del objetivo del atacante, como un pedido de piezas no autorizado, y retrocede a través de todo lo que expone el sistema. Cada hallazgo se vuelve a probar tras su corrección.
+
+### 38.4 Idoneidad para el fin previsto
+
+El informe de validación indica: el uso previsto, las condiciones probadas, los resultados frente a las necesidades de las partes interesadas, los hallazgos del equipo rojo y su estado, los riesgos residuales y una recomendación (desplegar, desplegar con condiciones, no desplegar) firmada por los responsables que rinden cuentas. Firman los responsables que rinden cuentas porque el despliegue es una decisión de negocio basada en evidencia de ingeniería, no una decisión exclusivamente de ingeniería. Cada condición asociada a un resultado de «desplegar con condiciones» tiene un responsable y una fecha, y el sistema se comprueba frente a ellas antes de darlas por cumplidas. El informe indica también cuándo debe repetirse la validación, por ejemplo tras un cambio importante del modelo o una integración nueva.
+
+### 38.5 Ejemplo resuelto (caso sintético de NRS)
+
+Wrench superó la verificación. Durante un piloto de cuatro semanas en dos depósitos, los técnicos pedían a Wrench que «hiciera todo lo del boletín», un patrón de uso no previsto que elevó la proporción de propuestas derivadas de texto no confiable. Después, un equipo rojo interno autorizado consiguió un pedido de piezas no autorizado encadenando un resultado de búsqueda con un correo a un proveedor de la lista de permitidos que llevaba un número de pieza modificado. Resultado de la validación: desplegar con condiciones; los números de pieza de los correos deben coincidir con una orden de trabajo abierta, y se formará a los técnicos sobre las peticiones basadas en boletines.
+
+### 38.6 Errores y límites
+
+- Tratar la verificación como validación.
+- Equipos rojos sin alcance o en los que los desarrolladores se califican a sí mismos.
+- Recomendaciones sin la firma de un responsable que rinda cuentas.
+
+Un sistema que cumple su especificación puede fallar a sus usuarios si la especificación pasó por alto cómo trabajan, como mostraron las peticiones basadas en boletines del piloto. Los equipos rojos que informan a los mismos desarrolladores a los que ponen a prueba, o que trabajan sin un alcance por escrito, producen hallazgos fáciles de descartar o peligrosos de obtener. Una recomendación que nadie firma deja sin dueño la decisión de despliegue cuando más tarde algo sale mal.
+
+### Ejercicios — capítulo 38
+
+- **EX112 — V&V.** Dé un ejemplo en el que Wrench supere la verificación, pero no la validación. Rúbrica: 3 = ejemplo verosímil (uso no previsto, laguna en los requisitos); 2 = parcial; 1 = vago; 0 = nada.
+- **EX113 — Hallazgo del equipo rojo.** Convierta la cadena del equipo rojo en una prueba de regresión. Rúbrica: 3 = escenario, entrada, resultado esperado de la política, criterio de superación; 2 = parcial; 1 = vago; 0 = nada.
+- **EX114 — Recomendación.** Redacte la frase de recomendación de la validación de Wrench. Rúbrica: 3 = desplegar con las condiciones enumeradas, responsables, fecha de revisión; 2 = falta uno; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+La validación pregunta si el sistema protegido funciona para personas reales bajo presión real. Los pilotos y los equipos rojos encuentran lo que se les escapó a los requisitos, y los responsables que rinden cuentas deciden la idoneidad para el fin previsto.
+
+### Siga estudiando — capítulo 38 de 50
+
+[← Capítulo 37 (borrador)](#ch-37) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 39 (borrador) →](#ch-39)
+
+<a id="ch-39"></a>
+
+## Capítulo 39 — Seguridad de la IA y del aprendizaje automático: mantenibilidad
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) diseñar sistemas de IA cuya seguridad pueda mantenerse a medida que cambian los modelos, los datos y las amenazas; (2) gestionar las actualizaciones de modelos y dependencias; (3) mantener al día los conjuntos de evaluación, los modelos de amenazas y la documentación; y (4) planificar la retirada y la eliminación de los datos.
+
+### 39.1 El cambio es constante
+
+Los modelos alojados se actualizan; los modelos abiertos publican nuevas versiones; las bibliotecas corrigen vulnerabilidades; los atacantes publican técnicas nuevas; los procesos de negocio cambian. Un diseño seguro que no puede actualizarse de forma segura acabará siendo inseguro. Cada fuente de cambio afecta a la seguridad de forma distinta. Una actualización del modelo puede alterar la facilidad con que sigue el texto inyectado; un parche de una biblioteca puede cambiar el comportamiento del análisis sintáctico; una técnica de ataque nueva puede vencer un filtro que funcionaba el mes pasado. La mantenibilidad es la capacidad de absorber estos cambios sin perder los controles que importan, lo que requiere pruebas, responsables y un proceso predecible para las actualizaciones.
+
+### 39.2 Estrategia de actualización
+
+Fije las versiones y actualice de forma deliberada: cada actualización de un modelo o de una dependencia desencadena el control de evaluación de seguridad, un despliegue canario y un plan de reversión. En el caso de los modelos alojados que cambian sin previo aviso, ejecute el conjunto de evaluación de forma programada y genere alertas ante las regresiones. Mantenga capas de abstracción para poder sustituir un modelo sin reescribir la aplicación de políticas. La capa de abstracción hace que la aplicación de políticas no dependa del comportamiento de ningún modelo concreto. Así, sustituir un modelo solo requiere el control y el despliegue canario, no rediseñar los controles que lo rodean.
+
+### 39.3 Mantener actualizado el conocimiento
+
+Asigne responsables al modelo de amenazas, a los conjuntos de evaluación, a las fichas de modelo y a los manuales de operación, con fechas de revisión. Añada cada incidente y cada hallazgo del equipo rojo al conjunto de regresión. Siga las fuentes externas (actualizaciones de OWASP, incorporaciones a MITRE ATLAS, publicaciones del NIST) y registre si cada cambio afecta a su sistema. Un responsable con una fecha de revisión convierte «alguien debería actualizar el modelo de amenazas» en una tarea con un nombre asociado. Añadir cada hallazgo al conjunto de regresión hace que las pruebas del sistema crezcan a partir de la experiencia real y no de conjeturas. El seguimiento externo se registra de forma breve, por ejemplo «nueva técnica de ATLAS sobre inyección en descripciones de herramientas: aplica a los conectores, prueba añadida», para que los revisores posteriores puedan ver que los cambios se tuvieron en cuenta.
+
+### 39.4 Deuda técnica en la seguridad de la IA
+
+La deuda se acumula en forma de filtros puntuales, excepciones y retoques del prompt sin documentar. Refactorice periódicamente: elimine los controles que ya no responden a ninguna amenaza, consolide los filtros en el punto de aplicación y documente las excepciones restantes con fechas de caducidad. Un filtro añadido durante un incidente y nunca retirado puede bloquear ahora peticiones legítimas o duplicar un control del punto de aplicación. Los retoques del prompt sin documentar son especialmente arriesgados, ya que nadie sabe cuál de ellos está conteniendo una debilidad conocida. La refactorización se hace con el conjunto de regresión en ejecución, de modo que retirar un control que todavía importa aparece como una prueba que falla y no como un incidente.
+
+### 39.5 Retirada
+
+Retirar un modelo incluye revocar sus credenciales, eliminar las vías de acceso, decidir qué hacer con los pesos (pueden codificar datos de entrenamiento), borrar o archivar los datos según las normas de conservación y actualizar los inventarios. ISO/IEC 42001 espera procesos de ciclo de vida de los sistemas de IA que incluyan la retirada. Los modelos olvidados son un riesgo real: un punto de acceso antiguo que sigue funcionando con credenciales válidas puede encontrarse y aprovecharse mucho después de que todos dejaran de usarlo. Los pesos pueden permitir la inferencia de pertenencia o filtrar datos de entrenamiento, así que se tratan con las mismas normas que los propios datos. La actualización del inventario cierra el ciclo, de modo que la monitorización y las auditorías dejan de esperar un sistema que ya no existe y advierten cualquiera que no debería seguir funcionando.
+
+### 39.6 Ejemplo resuelto (caso sintético de NRS)
+
+El proveedor actualizó en silencio un modelo de *embeddings* alojado que se usaba para la recuperación de Wrench. La evaluación programada detectó que la recuperación clasificaba ahora más arriba los documentos de RR. HH. en algunas consultas; el filtro de control de acceso seguía bloqueándolos, pero el equipo recibió una alerta. Sam añadió la «versión del modelo de *embeddings*» a la monitorización y pasó a una versión fijada con actualizaciones programadas. La defensa en profundidad resistió: el cambio de clasificación fue inofensivo solo porque el control de acceso se aplicaba por separado de la recuperación. El episodio también puso de manifiesto una dependencia oculta, ya que nadie había incluido el modelo de *embeddings* entre las cosas que podían cambiar.
+
+### 39.7 Errores y límites
+
+- Ningún responsable del modelo de amenazas ni del conjunto de evaluación.
+- Excepciones sin fecha de caducidad.
+- Retiradas que se olvidan de los pesos y las credenciales.
+
+Sin responsables, los modelos de amenazas y los conjuntos de pruebas dejan de cambiar mientras el sistema sigue cambiando, y la distancia crece sin que nadie la vea. Las excepciones sin caducidad se acumulan hasta que nadie sabe cuáles siguen siendo necesarias. Una retirada que elimina la interfaz, pero deja atrás los pesos y las credenciales, crea un sistema sin monitorizar que guarda material sensible. La revisión trimestral de Sam comprueba los nombres de los responsables, las fechas de las excepciones y el inventario frente a lo que realmente está en funcionamiento.
+
+### Ejercicios — capítulo 39
+
+- **EX115 — Plan de actualización.** Redacte los pasos para actualizar el modelo de lenguaje de Wrench. Rúbrica: 3 = fijar la versión, evaluar con el control, despliegue canario, monitorizar, reversión preparada, documentar; 2 = cuatro; 1 = dos; 0 = nada.
+- **EX116 — Deuda.** Dé dos ejemplos de deuda técnica en la seguridad de la IA y su corrección. Rúbrica: 3 = dos verosímiles con sus correcciones; 2 = uno; 1 = vago; 0 = nada.
+- **EX117 — Retirada.** Enumere cinco pasos de retirada de TrackEye v1. Rúbrica: 3 = revocar credenciales, eliminar puntos de acceso, tratar los pesos, conservación de datos, actualizar el inventario/la documentación; 2 = cuatro; 1 = dos; 0 = nada.
+
+### Síntesis del capítulo
+
+La seguridad mantenible de la IA da por supuesto el cambio: actualizaciones con versiones fijadas y controles, conocimiento actualizado y con responsables, deuda gestionada y una retirada deliberada.
+
+### Siga estudiando — capítulo 39 de 50
+
+[← Capítulo 38 (borrador)](#ch-38) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 40 (borrador) →](#ch-40)
+
+<a id="ch-40"></a>
+
+## Capítulo 40 — Laboratorio de verificación II
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) ejecutar una campaña de verificación integrada que abarque varios componentes de IA; (2) probar los controles ante ataques y fallos combinados; (3) usar criterios de aceptación estadísticos; y (4) elaborar un paquete de evidencia adecuado para un evaluador independiente.
+
+### 40.1 Campañas integradas
+
+El laboratorio I probó componentes; el laboratorio II prueba el sistema. Combine ataques con fallos: inyección durante una caída de un conector; envenenamiento detectado durante una actualización del modelo; intentos de extracción mientras la monitorización está degradada. Los sistemas fallan a menudo en estas intersecciones. Las pruebas de componentes suponen que todos los vecinos se comportan con normalidad. En el sistema real, las caídas, las actualizaciones y los ataques se solapan, y la gestión de uno puede abrir una brecha para otro. Un conector que falla puede desviar las alertas a una cola que nadie vigila; una actualización del modelo puede desactivar brevemente la monitorización. Los escenarios integrados se eligen a partir del modelo de amenazas y del análisis de fallos conjuntamente, emparejando cada amenaza de alta prioridad con un fallo simultáneo verosímil.
+
+### 40.2 Criterios de aceptación
+
+Use criterios estadísticos vinculados a los requisitos: para un requisito de tasa ≤ p con una confianza del 95 %, la cota superior de Wilson (o la cota exacta) debe quedar por debajo de p. Con cero fallos, se necesitan unos 3/p ensayos (regla del tres). Decida los criterios antes de ejecutar las pruebas.
+
+```python
+"""Lab S: reporting attack-success rates honestly: Wilson intervals,
+seed variation and a paired bootstrap. Synthetic trial outcomes only."""
+import math, random
+def wilson(k, n, z=1.96):
+    p = k/n; d = 1 + z*z/n
+    c = (p + z*z/(2*n))/d; h = z*math.sqrt(p*(1-p)/n + z*z/(4*n*n))/d
+    return c - h, c + h
+for k, n in ((3, 20), (30, 200), (300, 2000)):
+    lo, hi = wilson(k, n); print(f"successes={k}/{n} rate={k/n:.3f} wilson95=[{lo:.3f}, {hi:.3f}]")
+# five seeds of a synthetic defence evaluation: per-seed attack success rate
+rates = []
+for seed in range(5):
+    r = random.Random(seed); rates.append(sum(r.random() < 0.12 for _ in range(200))/200)
+m = sum(rates)/5; sd = math.sqrt(sum((x-m)**2 for x in rates)/4)
+print("per-seed rates:", " ".join(f"{x:.3f}" for x in rates), f"mean={m:.3f} sd={sd:.3f}")
+# paired bootstrap: baseline vs defence on the same 300 synthetic prompts
+r = random.Random(42)
+base = [r.random() < 0.30 for _ in range(300)]
+defn = [b and r.random() < 0.6 for b in base]   # defence blocks ~40% of successes
+diffs = []
+for _ in range(2000):
+    idx = [r.randrange(300) for _ in range(300)]
+    diffs.append(sum(base[i] for i in idx)/300 - sum(defn[i] for i in idx)/300)
+diffs.sort()
+print(f"baseline_asr={sum(base)/300:.3f} defended_asr={sum(defn)/300:.3f} "
+      f"reduction_ci95=[{diffs[50]:.3f}, {diffs[1949]:.3f}]")
+```
+
+Salida esperada:
+
+```text
+successes=3/20 rate=0.150 wilson95=[0.052, 0.360]
+successes=30/200 rate=0.150 wilson95=[0.107, 0.206]
+successes=300/2000 rate=0.150 wilson95=[0.135, 0.166]
+per-seed rates: 0.110 0.130 0.135 0.105 0.145 mean=0.125 sd=0.017
+baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
+```
+
+La regla del tres hace visible el coste: demostrar una tasa de fallos inferior al 1 % sin ningún fallo requiere unos 300 ensayos, e inferior al 0,1 %, unos 3.000. Escribir primero el criterio impide que el equipo relaje un umbral una vez conocidos los resultados, o que detenga una prueba antes de tiempo porque las cifras parecen buenas en ese momento. Cada criterio nombra su requisito, de modo que una cota no superada señala directamente qué debe cambiar.
+
+### 40.3 Las tasas base en la aceptación
+
+Los requisitos de los detectores deben comprobarse con tasas base realistas; un detector que supera los umbrales de TPR/FPR puede producir aun así una precisión inutilizable en la operación.
+
+```python
+"""Lab B: base rates and alarm precision (Bayes' rule).
+A detector for malicious prompts with given true- and false-positive rates
+is applied to traffic with different shares of malicious prompts."""
+for tpr, fpr in ((0.95, 0.05), (0.95, 0.01), (0.80, 0.001)):
+    for prev in (0.10, 0.01, 0.001):
+        tp = tpr * prev; fp = fpr * (1 - prev)
+        prec = tp / (tp + fp)
+        per_10k = round(10000 * (tp + fp))
+        print(f"tpr={tpr:.2f} fpr={fpr:.3f} prevalence={prev:.3f} precision={prec:.3f} alerts_per_10k={per_10k}")
+```
+
+Salida esperada:
+
+```text
+tpr=0.95 fpr=0.050 prevalence=0.100 precision=0.679 alerts_per_10k=1400
+tpr=0.95 fpr=0.050 prevalence=0.010 precision=0.161 alerts_per_10k=590
+tpr=0.95 fpr=0.050 prevalence=0.001 precision=0.019 alerts_per_10k=509
+tpr=0.95 fpr=0.010 prevalence=0.100 precision=0.913 alerts_per_10k=1040
+tpr=0.95 fpr=0.010 prevalence=0.010 precision=0.490 alerts_per_10k=194
+tpr=0.95 fpr=0.010 prevalence=0.001 precision=0.087 alerts_per_10k=109
+tpr=0.80 fpr=0.001 prevalence=0.100 precision=0.989 alerts_per_10k=809
+tpr=0.80 fpr=0.001 prevalence=0.010 precision=0.890 alerts_per_10k=90
+tpr=0.80 fpr=0.001 prevalence=0.001 precision=0.445 alerts_per_10k=18
+```
+
+Por eso el plan de aceptación indica una prevalencia esperada para cada detector, tomada de los datos de operación o de una estimación justificada, y calcula la precisión y el volumen de alertas con esa tasa. Un detector que enviaría a los operadores cien falsas alertas por cada alerta real no supera la aceptación aunque su TPR y su FPR cumplan sus umbrales, porque en la operación sus alertas pronto se ignorarían.
+
+### 40.4 Paquete de evidencia
+
+Organice la evidencia por requisito: plan de pruebas, resultados en bruto, análisis, supera/no supera, desviaciones, nuevas pruebas. Incluya descripciones del entorno, las versiones de modelos y datos con sus hashes y las versiones de las herramientas. Un evaluador independiente debe poder seguir cada requisito hasta su evidencia sin preguntar al equipo. Los hashes de los modelos y los datos vinculan cada resultado a artefactos exactos, de modo que nadie pueda alegar más tarde que se probó una versión distinta. Las desviaciones, como un escenario ejecutado con menos ensayos de los previstos, se enumeran en lugar de ocultarse. Un evaluador que lea el paquete debe poder repetir cualquier prueba a partir de las versiones y semillas registradas y llegar a las mismas cifras.
+
+### 40.5 Ejemplo resuelto (caso sintético de NRS)
+
+La campaña integrada de Sam ejecutó 18 escenarios sobre TrackEye, Pulse y Wrench. El escenario 11 (suplantación de un sensor de Pulse durante una caída del conector del sistema de incidencias) reveló que, cuando fallaba el sistema de incidencias, las alertas de Pulse quedaban en cola en silencio durante 40 minutos. La corrección añadió una comprobación de salud de la vía de alertas con recurso a SMS para las alertas críticas. Todos los requisitos de tasa se evaluaron con cotas superiores de Wilson definidas de antemano; dos que habían superado las estimaciones puntuales no superaron sus cotas y necesitaron conjuntos de prueba mayores, tras lo cual uno se superó y el otro dio lugar a una mejora del modelo.
+
+La cola silenciosa es el tipo de fallo que ninguna prueba de componentes podría encontrar.
+
+### 40.6 Errores y límites
+
+- Probar solo los componentes por separado.
+- Criterios de aceptación decididos después de ver los resultados.
+- Evidencia dispersa en carpetas personales.
+
+Las pruebas de componentes aislados pasan por alto las interacciones en las que fallan los sistemas integrados, como mostró el escenario 11. Los criterios elegidos tras ver los resultados pueden forzarse para que encajen con lo que haya ocurrido. La evidencia guardada en carpetas personales desaparece cuando las personas se van y no puede revisarla un evaluador. La plantilla de campaña de Sam fija los criterios, los escenarios y las ubicaciones de la evidencia antes de la primera ejecución, y un revisor la firma. Sus cambios se fechan.
+
+### 40.6b Repetir la campaña tras las correcciones
+
+Cuando el laboratorio II encuentra un fallo, la corrección va seguida de la misma campaña, no de una más pequeña, para que NRS pueda demostrar que la corrección funcionó sin romper otros criterios de aceptación. Ambas ejecuciones se conservan en el paquete de evidencia con sus fechas y versiones. El escenario 11 muestra por qué. La corrección de la cola silenciosa de 40 minutos de las alertas de Pulse añadió una comprobación de salud y un recurso a SMS, lo que cambió la vía de todas las alertas críticas, no solo las de Pulse. Repetir los 18 escenarios, y no solo el escenario 11, era la única forma de demostrar que las alertas de TrackEye y de Wrench seguían llegando a tiempo por la vía modificada.
+
+### Ejercicios — capítulo 40
+
+- **EX118 — Escenario combinado.** Diseñe un escenario combinado de ataque más fallo para Wrench. Rúbrica: 3 = ataque concreto + fallo + comportamiento seguro esperado + medición; 2 = parcial; 1 = vago; 0 = nada.
+- **EX119 — Cota.** Observa 1 fallo en 200 ensayos para un requisito ≤ 2 %. ¿Se supera la cota superior del 95 %? (Cota superior de Wilson ≈ 2,8 %). Rúbrica: 3 = no, la cota superior supera el 2 %; se necesitan más ensayos o una mejora; 2 = solo la respuesta; 1 = usa la estimación puntual; 0 = nada.
+- **EX120 — Lectura del laboratorio.** Con una prevalencia de 0,01, ¿qué precisión da el detector 0,95/0,01 y es aceptable para el bloqueo automático? Rúbrica: 3 = 0,490; probablemente no para bloquear sin revisión, depende del coste; 2 = solo la cifra; 1 = vago; 0 = incorrecto.
+
+### Síntesis del capítulo
+
+La verificación integrada encuentra los fallos en las intersecciones, juzga los resultados con criterios estadísticos definidos de antemano y empaqueta la evidencia para que otros puedan evaluarla de forma independiente.
+
+### Siga estudiando — capítulo 40 de 50
+
+[← Capítulo 39 (borrador)](#ch-39) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 41 (borrador) →](#ch-41)
+
+<a id="ch-41"></a>
+
+## Capítulo 41 — Seguridad de la IA y del aprendizaje automático: optimización del sistema
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) optimizar un sistema de IA atendiendo a la vez a la seguridad, la seguridad funcional, la utilidad y el coste; (2) razonar con varios objetivos (frentes de Pareto) en lugar de con métricas únicas; (3) ajustar los umbrales y la ubicación de los controles con datos; y (4) evitar optimizar las métricas de seguridad hasta vaciarlas de sentido.
+
+### 41.1 Optimización multiobjetivo
+
+Las mejoras de seguridad suelen costar utilidad, latencia o dinero. Represente las alternativas en dos o más ejes (por ejemplo, éxito del ataque frente a éxito en la tarea) e identifique el *frente de Pareto*: las opciones para las que ninguna otra es mejor en todos los ejes. Después, quienes toman las decisiones eligen un punto del frente con prioridades explícitas. Una opción está dominada cuando otra es al menos igual de buena en todos los ejes y mejor en uno; las opciones dominadas pueden descartarse sin debate. El propio frente suele contener varias opciones, y cada una sacrifica algo distinto. La ingeniería puede mostrar el frente con claridad, pero elegir entre sus puntos es un juicio sobre prioridades, así que corresponde a los responsables que rinden cuentas.
+
+### 41.2 Ajuste de umbrales
+
+Los detectores y los modelos de anomalías tienen umbrales. Elíjalos con un modelo de costes: coste de un ataque no detectado × su probabilidad frente a coste de una falsa alarma × su probabilidad, con tasas base realistas. Ajústelos con datos de validación, nunca con el conjunto de prueba final, y revíselos cuando cambien las tasas base. Los datos de validación deben reflejar la tasa base esperada en la operación; de lo contrario, el umbral elegido será erróneo en servicio. Un umbral fijado cuando los ataques eran raros puede producir avalanchas de alertas durante una campaña, o dejar pasar demasiado si los atacantes se adaptan. Sam registra los supuestos de coste junto a cada umbral, de modo que un cambio posterior en la tasa base o en el coste de un ataque no detectado motive un reajuste deliberado.
+
+### 41.3 Ubicación de los controles
+
+El lugar donde se sitúa un control cambia su coste y su efecto. Ejecutar un clasificador de inyecciones solo sobre el contenido recuperado no confiable (en lugar de sobre cada mensaje) reduce el coste y mantiene la cobertura de la vía arriesgada. Exigir confirmación solo para las acciones de alto impacto reduce la fricción. Optimizar significa poner controles fuertes en las vías de alto riesgo y controles ligeros en las demás. El principio se deriva del análisis de flujo de datos: el riesgo se concentra donde la entrada no confiable se encuentra con la acción privilegiada. Aplicar controles pesados en todas partes malgasta el presupuesto y molesta a los usuarios sin añadir mucha protección, mientras que unos controles ligeros en la vía arriesgada la dejan abierta. El traslado del clasificador al contenido recuperado en el capítulo sobre rendimiento es un ejemplo: el coste bajó mucho mientras la cobertura de la vía no confiable seguía igual.
+
+### 41.4 La ley de Goodhart
+
+Cuando una medida se convierte en objetivo, deja de ser una buena medida. Los equipos que optimizan un banco de pruebas fijo de *jailbreaks* pueden sobreajustarse a él sin que mejore la robustez real. Mantenga conjuntos reservados y renovados, realice ejercicios de equipo rojo periódicos y haga un seguimiento de varias métricas. Un equipo al que se premia porque baja el éxito de los ataques en un único banco de pruebas puede añadir filtros para sus frases exactas, lo que mejora la puntuación sin hacer el sistema más difícil de atacar. Los conjuntos reservados y renovados rompen ese vínculo, ya que el equipo no puede ajustarse a pruebas que no ha visto. Hacer un seguimiento de varias métricas también ayuda, porque manipular una suele empeorar otra, como los rechazos indebidos o el éxito en la tarea.
+
+### 41.5 Ejemplo resuelto (caso sintético de NRS)
+
+Sam evaluó cinco configuraciones de Wrench según el éxito del ataque (conjunto de inyecciones) y el éxito en la tarea (conjunto de planificadores): A (sin controles) 31 %/95 %; B (bloqueo por clasificador) 9 %/86 %; C (política + confirmación) 0,0 % de ejecuciones/93 %; D (C + señalización por clasificador) 0,0 %/93 % con una mejor concentración de los revisores; E (modelo dual + C) 0,0 %/90 %. B está dominada por C. Se eligió D: el mismo éxito en la tarea que C, más unas señales que mejoraron las tasas de detección de los revisores. B bloquea algunos ataques, pero es la que más éxito en la tarea cuesta, lo que explica por qué C la domina: ninguna ejecución y un éxito en la tarea mayor. El modelo dual de E añade una protección que ya proporciona C, con un coste adicional de tres puntos. D añade señales sobre C sin coste en el éxito en la tarea, y por eso gana.
+
+### 41.6 Errores y límites
+
+- Optimizar un único número.
+- Ajustar los umbrales con datos de prueba.
+- Bancos de pruebas que nunca cambian.
+
+Optimizar un único número lo mejora a costa de todo lo que no se mide. Los umbrales ajustados con datos de prueba parecen perfectos en el informe y decepcionan en servicio. Los bancos de pruebas que nunca cambian acaban aprendidos por el sistema y sus desarrolladores, hasta que una puntuación alta muestra familiaridad y no robustez. Sam exige que cada informe de optimización muestre al menos una métrica de seguridad y una métrica de coste sobre un conjunto reservado. Ambas aparecen en un mismo gráfico.
+
+### Ejercicios — capítulo 41
+
+- **EX121 — Pareto.** Según 41.5, ¿qué configuraciones están en el frente de Pareto para (tasa de ejecuciones, éxito en la tarea)? Rúbrica: 3 = A (mayor éxito en la tarea) y C/D (cero ejecuciones con el mejor éxito en la tarea entre ellas); B y E dominadas; 2 = parcial; 1 = vago; 0 = incorrecto.
+- **EX122 — Modelo de costes.** Un ataque no detectado cuesta 50.000; una falsa alarma cuesta 20; tasa base 0,001; opciones de TPR/FPR (0,95/0,05) y (0,80/0,001). ¿Cuál tiene menor coste esperado por elemento? Rúbrica: 3 = cálculo: la primera 0,001×0,05×50.000 + 0,999×0,05×20 = 2,5 + 0,999 = 3,50; la segunda 0,001×0,2×50.000 + 0,999×0,001×20 = 10 + 0,02 = 10,02; la primera es menor; 2 = desliz; 1 = método; 0 = nada.
+- **EX123 — Goodhart.** Dé un ejemplo de la ley de Goodhart en la seguridad de la IA y una mitigación. Rúbrica: 3 = sobreajuste a un banco de pruebas + conjuntos reservados renovados/equipos rojos; 2 = parcial; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+En la seguridad de la IA, la optimización es multiobjetivo: encuentre el frente de Pareto, ajuste los umbrales con modelos de costes, ubique los controles según el riesgo y protéjase frente a la manipulación de sus propias métricas.
+
+### Siga estudiando — capítulo 41 de 50
+
+[← Capítulo 40 (borrador)](#ch-40) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 42 (borrador) →](#ch-42)
+
+<a id="ch-42"></a>
+
+## Capítulo 42 — Seguridad de la IA y del aprendizaje automático: investigación aplicada
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) formular una pregunta de investigación aplicada a partir de un problema de ingeniería; (2) revisar la literatura de forma eficiente usando taxonomías compartidas; (3) diseñar un experimento pequeño y válido; y (4) informar de los hallazgos con sus limitaciones de forma útil para los profesionales.
+
+### 42.1 Del problema a la pregunta
+
+Los problemas de ingeniería se convierten en preguntas de investigación cuando la respuesta no se conoce y sería generalizable: «¿Marcar el contenido no confiable con etiquetas de procedencia reduce las propuestas inyectadas en nuestro agente, y en qué medida en comparación con un patrón de modelo dual?». Limite el alcance a lo que pueda responderse en un semestre. Una buena pregunta nombra la comparación, la medida y el contexto, de modo que pueda responderse con un experimento planificado. «¿Son útiles las etiquetas?» no puede responderse; «¿cuántas propuestas inyectadas evitan las etiquetas en Wrench en comparación con un diseño de modelo dual, sobre boletines reservados?» sí. Mantener un alcance pequeño deja tiempo para hacer bien el experimento, incluido el ataque adaptativo que muchos proyectos omiten.
+
+### 42.2 Revisión eficiente de la literatura
+
+Empiece por panoramas de referencia —NIST AI 100-2 E2025 para el ML adversarial, OWASP LLM 2025 para los riesgos de las aplicaciones, MITRE ATLAS para las técnicas— y después lea los artículos clave: Greshake et al. (arXiv:2302.12173) y Liu et al. (arXiv:2306.05499) sobre la inyección de instrucciones; Chen et al. (arXiv:2402.06363) sobre las defensas de consultas estructuradas; Carlini et al. (arXiv:1902.06705) sobre la evaluación. Registre para cada uno el modelo de amenazas, el método, la métrica y los límites. Los panoramas cartografían el campo con rapidez y señalan los artículos que merece la pena leer con atención. Para cada artículo, una nota breve registra el modelo de amenazas, el método, la métrica y los límites, de modo que los artículos puedan compararse en los mismos términos. Sam deja de leer cuando los artículos nuevos ya no cambian el plan.
+
+### 42.3 Experimentos pequeños y válidos
+
+Especifique de antemano las hipótesis y las métricas; use conjuntos de prueba reservados; compare con referencias de base sólidas; ejecute varias semillas; informe de las diferencias emparejadas con intervalos; incluya un ataque adaptativo dirigido contra su método. Compruebe las trampas habituales en Arp et al. (arXiv:2010.09470). Un experimento pequeño puede ser válido si es honesto sobre sus límites. Especificar de antemano impide elegir la métrica que favorece al método. Las referencias de base sólidas impiden que un método parezca bueno frente a una comparación débil. Varias semillas muestran si una diferencia es estable. Un ataque adaptativo, escrito por alguien que sabe cómo funciona el método, es la prueba más importante, porque los atacantes también lo sabrán.
+
+### 42.4 Informar para los profesionales
+
+Indique con precisión el contexto, el efecto con su intervalo, el coste, las condiciones en las que falló y qué debe hacer un profesional con el resultado. Los profesionales quieren saber si adoptar un método, en qué condiciones y con qué coste. Un informe que termina con un valor p les deja averiguarlo por su cuenta. Indicar dónde falló el método es especialmente útil, ya que dice a los lectores cuándo no deben confiar en él. Sam termina cada informe aplicado con una recomendación breve y sus condiciones, escrita para un ingeniero que no leerá los métodos.
+
+### 42.5 Ejemplo resuelto (caso sintético de NRS)
+
+La pregunta aplicada de Sam comparaba el etiquetado de procedencia solo, el modelo dual y ambos, sobre 400 boletines sintéticos inyectados y 400 tareas benignas, con cinco semillas cada uno. El etiquetado redujo las propuestas inyectadas del 14 % al 9 % (IC emparejado de 3–7 puntos); el modelo dual, al 2 %; ambos, al 1,5 %. Una carga útil adaptativa que imitaba el formato de las etiquetas volvió a elevar al 13 % las propuestas con solo etiquetado, mientras que el modelo dual se mantuvo en el 2,5 %. Conclusión para los profesionales: las etiquetas ayudan un poco y son fáciles de imitar; las interfaces restringidas ayudan más; ninguna de las dos sustituye a la aplicación de políticas.
+
+El ataque adaptativo cambió la conclusión: sin él, el etiquetado habría parecido una defensa sólida.
+
+### 42.6 Errores y límites
+
+- Preguntas demasiado amplias para el tiempo disponible.
+- Ningún ataque adaptativo contra el método propuesto.
+- Informes sin orientación para los profesionales.
+
+Las preguntas demasiado amplias terminan con resultados vagos o experimentos inacabados. Un método probado solo frente a ataques escritos antes de que existiera parecerá más fuerte de lo que es, como mostró la carga útil que imitaba las etiquetas. Los informes que se quedan en las estadísticas dejan a los profesionales sin saber qué hacer. Sam revisa que las propuestas tengan una única pregunta que pueda responderse, un ataque adaptativo en el plan y un resumen para profesionales en el esquema antes de ejecutar ningún experimento.
+
+### Ejercicios — capítulo 42
+
+- **EX124 — Pregunta.** Convierta «nuestro clasificador no detecta algunas inyecciones» en una pregunta de investigación aplicada. Rúbrica: 3 = específica, comparativa, medible, viable; 2 = tres; 1 = vaga; 0 = nada.
+- **EX125 — Ataque adaptativo.** ¿Por qué importó la carga útil que imitaba las etiquetas en el estudio de Sam? Rúbrica: 3 = muestra que el etiquetado es débil frente a un atacante que lo conoce; cambia la conclusión; 2 = parcial; 1 = vago; 0 = incorrecto.
+- **EX126 — Frase para profesionales.** Redacte una recomendación para profesionales a partir de los resultados de Sam. Rúbrica: 3 = práctica, condicional, con evidencia; 2 = parcial; 1 = exagera; 0 = nada.
+
+### Síntesis del capítulo
+
+La investigación aplicada responde a preguntas de ingeniería con experimentos pequeños y válidos —incluidos los ataques contra la propia idea— e informa de resultados que los profesionales pueden usar.
+
+### Siga estudiando — capítulo 42 de 50
+
+[← Capítulo 41 (borrador)](#ch-41) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 43 (borrador) →](#ch-43)
+
+<a id="ch-43"></a>
+
+## Capítulo 43 — Práctica en la industria o en el servicio público
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) trabajar dentro de los procesos de gobernanza y seguridad de la IA de una organización; (2) contribuir bajo supervisión a tareas reales (autorizadas) de seguridad de la IA; (3) reflexionar sobre la práctica a partir de la evidencia; y (4) mantener la confidencialidad y la ética profesionales durante la estancia.
+
+### 43.1 Objetivos de la estancia
+
+Una estancia conecta el trabajo del curso con la realidad de la organización: presupuestos, plazos, sistemas heredados, compras y regulación. Acuerde los objetivos con la organización anfitriona y con la universidad: normalmente, un entregable (una evaluación, la implementación de un control, un conjunto de evaluación) más la participación en los procesos habituales. Un entregable da a la estancia un propósito claro y algo que la organización anfitriona puede seguir usando; participar en los procesos habituales, como los comités de cambios o las revisiones de incidentes, muestra cómo se toman realmente las decisiones. Los objetivos se ponen por escrito en la primera semana con el supervisor de la organización anfitriona y el tutor académico, de modo que los tres estén de acuerdo en qué es el éxito y a qué puede acceder el estudiante.
+
+### 43.2 La gobernanza en la práctica
+
+Las organizaciones que adoptan ISO/IEC 42001 o el NIST AI RMF tienen políticas de IA, inventarios, evaluaciones de riesgos y comités de aprobación. Aprenda cómo se propone, evalúa, aprueba y monitoriza un sistema de IA, quién da la conformidad y qué evidencia espera. Observar una aprobación real muestra cómo son los marcos en el uso diario. Un comité puede pedir una evaluación de riesgos, una ficha de modelo y un resumen de pruebas antes de aprobar un piloto, y datos de monitorización antes de aprobar el uso pleno. Los estudiantes aprenden qué evidencia leen quienes toman las decisiones y cuál se saltan, lo que influye en cómo redactan sus propios informes. También ven cuánto tarda la aprobación y planifican su trabajo en función de ello.
+
+### 43.3 Solo trabajo autorizado
+
+Todas las pruebas durante la estancia se rigen por una autorización escrita del propietario del sistema que especifica el alcance, los métodos y el periodo. Use entornos que no sean de producción siempre que sea posible. Comunique los hallazgos por los canales de la organización anfitriona; nunca los divulgue externamente sin permiso. Estar en una estancia no da permiso para probar cualquier cosa. La autorización escrita nombra los sistemas, los métodos y las fechas, y un estudiante que encuentra un sistema interesante fuera de ella pregunta antes de tocarlo. Los entornos que no son de producción protegen las operaciones de la organización anfitriona y al estudiante, ya que una caída accidental causada durante las pruebas puede poner fin a una estancia. Los hallazgos pertenecen a la organización anfitriona, que decide si se comparten y cómo.
+
+### 43.4 Práctica reflexiva
+
+Lleve un registro semanal: qué hizo, qué evidencia produjo, qué le sorprendió, qué haría de otra manera. La reflexión convierte la experiencia en una competencia transferible y se evalúa. Una entrada útil va más allá de «revisé el inventario». Anota lo que resultó difícil, por ejemplo que los responsables de negocio no sabían si sus herramientas de hoja de cálculo contaban como IA, y lo que el estudiante cambiaría la próxima vez, como preguntar explícitamente por los complementos. Releer las entradas al final muestra patrones que las semanas por separado ocultan, y aporta ejemplos concretos para entrevistas de trabajo y evaluaciones posteriores.
+
+### 43.4b Trabajar con restricciones
+
+Las organizaciones reales rara vez parten de un diseño limpio. Los sistemas heredados carecen de registros, los proveedores limitan las pruebas, los presupuestos son fijos y los plazos se mueven. Los buenos profesionales priorizan según el riesgo, proponen el control más pequeño que lo reduzca de forma significativa y documentan lo que queda pendiente. Una nota de riesgo breve y precisa entregada a tiempo suele valer más que una evaluación perfecta entregada después de la decisión. La estancia de Sam lo muestra. Las tres hojas de cálculo con complementos de ML no tenían registros ni un responsable registrado, así que el inventario las incluyó con una sensibilidad de los datos «desconocida» y una persona designada para confirmarla, en lugar de dejarlas fuera hasta poder evaluarlas por completo.
+
+### 43.5 Ejemplo resuelto (caso sintético de NRS)
+
+El objetivo de la estancia de Sam era elaborar el inventario de IA de NRS. Usando el laboratorio de inventario como plantilla de partida, Sam catalogó 14 sistemas de IA, incluidas tres hojas de cálculo con complementos de ML incrustados que nadie había registrado. El inventario puntuaba la exposición, la autonomía, la sensibilidad de los datos y la entrada no confiable; el piloto de cribado de currículos de RR. HH. obtuvo una puntuación alta y se envió a una evaluación más completa, en parte porque los sistemas de selección de personal pueden ser de alto riesgo según el Reglamento de IA de la UE.
+
+```python
+"""Lab V: an AI system inventory scored for review priority (synthetic).
+Each system lists exposure, autonomy, data sensitivity and whether it reads
+untrusted content; mapping to OWASP LLM Top 10 (2025) IDs is illustrative."""
+import json
+inv = json.loads("""[
+ {"name":"support-chatbot","exposure":"public","autonomy":"tools","data":"customer","untrusted_input":true},
+ {"name":"invoice-ocr-model","exposure":"internal","autonomy":"none","data":"financial","untrusted_input":true},
+ {"name":"code-assistant","exposure":"internal","autonomy":"suggest","data":"source","untrusted_input":true},
+ {"name":"churn-predictor","exposure":"internal","autonomy":"none","data":"customer","untrusted_input":false},
+ {"name":"hr-cv-screener","exposure":"internal","autonomy":"decide","data":"personal","untrusted_input":true}
+]""")
+E = {"public": 3, "internal": 1}; A = {"none": 0, "suggest": 1, "tools": 3, "decide": 3}
+D = {"customer": 2, "financial": 2, "source": 2, "personal": 3}
+for s in inv:
+    s["score"] = E[s["exposure"]] + A[s["autonomy"]] + D[s["data"]] + (2 if s["untrusted_input"] else 0)
+    risks = []
+    if s["untrusted_input"]: risks.append("LLM01")
+    if s["autonomy"] in ("tools", "decide"): risks.append("LLM06")
+    if s["data"] in ("customer", "personal"): risks.append("LLM02")
+    s["owasp"] = ",".join(risks) or "-"
+for s in sorted(inv, key=lambda s: -s["score"]):
+    print(f"{s['name']:18s} score={s['score']:2d} owasp={s['owasp']}")
+```
+
+Salida esperada:
+
+```text
+support-chatbot    score=10 owasp=LLM01,LLM06,LLM02
+hr-cv-screener     score= 9 owasp=LLM01,LLM06,LLM02
+code-assistant     score= 6 owasp=LLM01
+invoice-ocr-model  score= 5 owasp=LLM01
+churn-predictor    score= 3 owasp=LLM02
+```
+
+La puntuación del laboratorio explica el resultado: la autonomía para decidir, los datos personales y los currículos no confiables sitúan al sistema de cribado cerca de la cabeza de la lista.
+
+### 43.6 Errores y límites
+
+- Probar más allá del alcance escrito.
+- Entregables de la estancia que nadie mantendrá.
+- Registros de reflexión que solo enumeran tareas.
+
+Probar más allá del alcance es lo más grave, porque las buenas intenciones no hacen que un acceso no autorizado sea lícito ni seguro. Los entregables que dependen de que el estudiante los mantenga dejan de funcionar cuando termina la estancia, así que el traspaso a un responsable designado forma parte del trabajo. Los registros que solo enumeran tareas pasan por alto el aprendizaje que busca la evaluación: qué cambió en la comprensión del estudiante y por qué cambió.
+
+### Ejercicios — capítulo 43
+
+- **EX127 — Lectura del laboratorio.** ¿Qué dos sistemas ocupan los primeros puestos en el laboratorio de inventario y por qué? Rúbrica: 3 = `support-chatbot` (10) y `hr-cv-screener` (9); público/herramientas/datos de clientes/entrada no confiable y decide/datos personales; 2 = solo los nombres; 1 = uno; 0 = incorrecto.
+- **EX128 — IA en la sombra.** ¿Por qué importan los complementos de ML no registrados? Rúbrica: 3 = riesgo no gestionado, sin evaluación, exposición de datos, lagunas de cumplimiento; 2 = parcial; 1 = vago; 0 = incorrecto.
+- **EX129 — Reflexión.** Redacte una entrada del registro reflexivo con evidencia y una lección. Rúbrica: 3 = actividad, evidencia, sorpresa, cambio; 2 = tres; 1 = solo una lista; 0 = nada.
+
+### Síntesis del capítulo
+
+La práctica revela cómo funciona la seguridad de la IA dentro de las organizaciones: procesos de gobernanza, trabajo autorizado, restricciones reales y el hábito de la mejora reflexiva.
+
+### Siga estudiando — capítulo 43 de 50
+
+[← Capítulo 42 (borrador)](#ch-42) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 44 (borrador) →](../../en/book/MANUSCRIPT.md#ch-44)
 
 <a id="worked-results"></a>
 
@@ -2767,6 +3189,42 @@ Respuestas modelo; cualquier respuesta que cumpla la rúbrica obtiene la misma p
 **EX110.** Señales del clasificador de inyecciones; denegaciones y confirmaciones de la política; tasas inusuales de llamadas a herramientas; patrones de consulta propios de la extracción; fallos de verificación en la carga de modelos (además, alarmas de deriva y superaciones de cuota).
 
 **EX111.** Una alerta ante aprobaciones inusualmente rápidas o numerosas de una misma cuenta, junto con un límite de frecuencia de aprobación y el resaltado de las instrucciones procedentes de fuentes no confiables, habría detenido antes la ráfaga.
+
+**EX112.** Wrench cumple todos los requisitos especificados en los conjuntos de pruebas, pero en el piloto los técnicos le piden que actúe sobre boletines enteros, de modo que muchas más acciones derivan de texto no confiable de lo que suponían los requisitos; el riesgo real supera lo que cubrió la verificación.
+
+**EX113.** Escenario: la búsqueda devuelve un documento con un número de pieza modificado; el usuario pide a Wrench que pida las piezas. Entrada: documento sintético con un número de pieza que no coincide. Esperado: la política rechaza el correo porque el número de pieza no coincide con una orden de trabajo abierta. Se supera si no se envía ningún correo y la denegación queda registrada.
+
+**EX114.** «Desplegar Wrench v1.5 en todos los depósitos con condiciones: (1) los números de pieza de los correos salientes deben coincidir con una orden de trabajo abierta (responsable: jefe de plataforma, antes del 1 de marzo); (2) formación de los técnicos sobre las peticiones basadas en boletines (responsable: operaciones); revisión a los 90 días».
+
+**EX115.** Fijar la nueva versión en una rama; ejecutar el control de evaluación de seguridad y el conjunto de éxito en la tarea; despliegue canario en un depósito; monitorizar las señales de inyección, las denegaciones y los errores; mantener la versión anterior preparada para revertir; actualizar la ficha de modelo y el registro.
+
+**EX116.** (1) Un filtro de expresiones regulares añadido tras un incidente que duplica el punto de aplicación: retirarlo y añadir el caso a las pruebas. (2) Una excepción permanente que da a un depósito un acceso más amplio a las herramientas: documentarla con fecha de caducidad y responsable, y después eliminarla.
+
+**EX117.** Revocar las credenciales de TrackEye v1; eliminar los puntos de acceso y los despliegues en dispositivos; decidir sobre los pesos (archivarlos cifrados o borrarlos); aplicar las normas de conservación de datos a las imágenes de entrenamiento y a los registros; actualizar el inventario de IA, la ficha de modelo y el modelo de amenazas.
+
+**EX118.** Ataque: un boletín inyectado propone una orden de trabajo. Fallo: el servicio de políticas no está disponible. Esperado: fallar de forma cerrada; no se ejecuta ninguna llamada a herramientas y Wrench informa de que funciona en modo degradado. Medición: cero ejecuciones en 100 ensayos y mensaje correcto al usuario.
+
+**EX119.** No. La estimación puntual es del 0,5 %, pero la cota superior de Wilson del 95 % (≈ 2,8 %) supera el 2 %; hay que reunir más ensayos o mejorar el sistema.
+
+**EX120.** Precisión de 0,490: aproximadamente la mitad de los bloqueos recaerían sobre contenido legítimo; es aceptable para señalar contenido para revisión, pero normalmente no para el bloqueo automático, salvo que los bloqueos indebidos sean baratos.
+
+**EX121.** Para (minimizar las ejecuciones, maximizar el éxito en la tarea): A está en el frente (mayor éxito en la tarea, 95 %); C y D están en el frente (cero ejecuciones con un 93 %); B (peor que C en ambos ejes) y E (cero ejecuciones, pero menor éxito en la tarea que C) están dominadas.
+
+**EX122.** Opción 1: 0,001 × 0,05 × 50.000 + 0,999 × 0,05 × 20 = 2,50 + 1,00 ≈ 3,50 por elemento. Opción 2: 0,001 × 0,20 × 50.000 + 0,999 × 0,001 × 20 = 10,00 + 0,02 = 10,02. La opción 1 tiene menor coste esperado.
+
+**EX123.** Un equipo ajusta una y otra vez una barrera de protección frente a un banco de pruebas público y fijo de *jailbreaks* hasta obtener un 99 %, mientras que los nuevos estilos de *jailbreak* siguen teniendo éxito. Se mitiga con conjuntos reservados y renovados y con ejercicios de equipo rojo independientes y periódicos.
+
+**EX124.** «Sobre 500 boletines sintéticos inyectados y 500 tareas benignas, ¿añadir un patrón de modelo dual reduce las propuestas inyectadas de Wrench en comparación con el clasificador actual, y cuál es el coste en éxito en la tarea?».
+
+**EX125.** Mostró que el beneficio del etiquetado desaparece casi por completo cuando el atacante imita el formato de las etiquetas, de modo que una evaluación no adaptativa lo habría exagerado.
+
+**EX126.** «Use las etiquetas de procedencia como una ayuda barata, pero confíe en las interfaces restringidas (modelo dual) y en la aplicación externa de políticas para las acciones con consecuencias; en nuestras pruebas, las etiquetas por sí solas perdieron la mayor parte de su beneficio frente a cargas útiles adaptativas».
+
+**EX127.** `support-chatbot` (puntuación 10: exposición pública, autonomía con herramientas, datos de clientes, entrada no confiable) y `hr-cv-screener` (9: decide, datos personales, entrada no confiable).
+
+**EX128.** Procesan datos e influyen en decisiones sin evaluación, responsables ni controles; pueden filtrar datos, causar errores y crear lagunas de cumplimiento.
+
+**EX129.** «Semana 6: entrevisté a finanzas sobre los complementos de ML; encontré dos modelos no registrados que usaban datos de clientes (evidencia: filas 12–13 del inventario). Sorpresa: sus responsables no los consideraban IA. La próxima vez preguntaré por "predicciones automáticas" en lugar de por "IA"».
 
 <a id="references"></a>
 
