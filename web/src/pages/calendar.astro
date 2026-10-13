@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { catalog, subjects } from '../lib/catalog';
+const languages = {en:'English',pt:'Português',es:'Español',he:'עברית',fr:'Français',ru:'Русский',de:'Deutsch',zh:'中文',ja:'日本語'};
+---
+<BaseLayout title="Study calendar · CyKin" description="Compare instructional weeks with actual weekday dates without inventing lessons or completion.">
+  <section class="shell calendar-shell">
+    <h1>Study calendar</h1>
+    <p>One lesson each Monday–Friday. Keep the course's weekly chapters and single book; compare its instructional baseline with the actual calendar months.</p>
+    <form id="calendar-form" method="get" action="/calendar/" class="card calendar-controls">
+      <label>Level<select name="level" id="calendar-level">{catalog.level_order.map(level => <option value={level}>{catalog.level_names[level].en}</option>)}</select></label>
+      <label>Subject<select name="area" id="calendar-area">{subjects.map(course => <option value={course.area}>{course.title}</option>)}</select></label>
+      <label>Book language<select name="lang" id="calendar-language">{Object.entries(languages).map(([code, name]) => <option value={code}>{name}</option>)}</select></label>
+      <label>Requested start<input type="date" id="calendar-start" name="start" min="1900-01-01" max="2090-12-31" required /></label>
+      <button class="button gold" type="submit">Check dates and lesson availability</button>
+    </form>
+    <p id="calendar-status" role="status" aria-live="polite">Choose a start date. Calendar positions do not mark any study complete.</p>
+    <div id="calendar-result" hidden>
+      <section class="card calendar-card" aria-label="Calendar comparison"><h2>Calendar and curriculum are different counts</h2><p id="calendar-counts"></p><p id="calendar-scope"></p><p id="calendar-availability"></p><p id="calendar-gap"></p><div id="calendar-links" class="calendar-links"></div></section>
+      <section class="card calendar-card" aria-label="Weekday allocation">
+        <label for="calendar-week">Calendar week</label><select id="calendar-week"></select>
+        <div class="calendar-table"><table><caption>One position per weekday; a source listing is not a quality review</caption><thead><tr><th scope="col">Date</th><th scope="col">Study position</th><th scope="col">Edition availability</th><th scope="col">Calendar boundary</th></tr></thead><tbody id="calendar-days"></tbody></table></div>
+      </section>
+    </div>
+    <p>Weekends are excluded. Holidays and vacations are not automatically removed. A Wednesday start creates a partial calendar week; it does not change the book's five-lesson chapters. Additional teaching may extend the sequence.</p>
+    <p>No account, progress write or automatic completion is involved. Read the <a href="/read/?path=STUDY_CALENDAR.md">calendar contract and verification limits</a> and <a href="/read/?path=CURRICULUM_GRID.md">nine-level curriculum</a>.</p>
+    <noscript><p>Use the public curriculum and course indexes to read without JavaScript. This date calculator needs JavaScript, but reading the books does not require an account.</p></noscript>
+  </section>
+  <script>
+    import { catalog } from '../lib/catalog';
+    import { buildCalendar } from '../lib/study-calendar.mjs';
+    const $ = (id: string) => document.getElementById(id)!;
+    const value = (id: string) => ($(id) as HTMLInputElement).value;
+    const query = new URLSearchParams(location.search);
+    const wanted = {level:query.get('level') || 'rapid-1-month', area:query.get('area') || 'incident-response-resilience', lang:query.get('lang') || 'en'};
+    const valid = catalog.languages.includes(wanted.lang) && catalog.courses.some(c => c.level === wanted.level && c.area === wanted.area);
+    let generation = 0;
+    function link(text: string, href: string) { const a = document.createElement('a'); a.className='button secondary'; a.textContent=text; a.href=href; return a; }
+    async function show() {
+      const run = ++generation, level = value('calendar-level'), area = value('calendar-area'), lang = value('calendar-language'), start = value('calendar-start');
+      const course = catalog.courses.find(c => c.level === level && c.area === area);
+      $('calendar-result').hidden=true;
+      if (!course || !catalog.languages.includes(lang)) { $('calendar-status').textContent='Unknown course or language; no replacement edition was selected.'; return; }
+      const baseline = course.daily_lesson_target;
+      let result;
+      try { result=buildCalendar({start,level,baseline}); }
+      catch(error) { $('calendar-status').textContent=String(error); return; }
+      const route = new URLSearchParams({level,area,lang,start});
+      if(query.has('ui')) route.set('ui',query.get('ui')!);
+      history.replaceState(null,'','/calendar/?'+route);
+      $('calendar-status').textContent='Checking the selected edition; dates are not lesson-completion records.';
+      let warning='';
+      const controller=new AbortController(), timeout=setTimeout(()=>controller.abort(),15000);
+      try {
+        const response=await fetch(`/api/courses/${level}/${area}/${lang}`,{signal:controller.signal});
+        if(!response.ok) throw new Error('The source index could not be read.');
+        const data=await response.json();
+        if(data.language!==lang || data.course?.level!==level || data.course?.area!==area || typeof data.has_daily_lessons!=='boolean' || !Array.isArray(data.lessons)) throw new Error('The response does not identify this edition.');
+        result=buildCalendar({start,level,baseline:data.course.daily_lesson_target,availabilityKnown:true,hasDailyLessons:data.has_daily_lessons,lessons:data.lessons});
+      } catch(error) { warning='Availability unknown: '+String(error)+' Calendar dates below use the build-time baseline, not a claim of zero written content.'; }
+      finally { clearTimeout(timeout); }
+      if(run!==generation)return;
+      $('calendar-counts').textContent=`${result.months} calendar month(s): ${result.first_study_date} to ${result.end_exclusive} (end excluded). ${result.nominal_weekdays} Monday–Friday positions; instructional baseline ${result.baseline}; difference ${result.baseline_difference}.`;
+      $('calendar-scope').textContent=`The baseline and indexed sequence extend through ${result.sequence_end}. ${result.alignment==='date_counts_align'?'Date counts align; this is not proof that all lessons are written or reviewed.':'Allocation review is required. Extra dates remain visible, and extra lessons are not truncated.'}`;
+      $('calendar-availability').textContent=result.availability_known?`${result.source_indexed_lessons} daily lessons listed as published by the selected edition's source index; ${result.missing_within_nominal_period} positions within the nominal period lack a published daily listing. This is metadata, not an independent check of teaching, examples, answers or editorial quality.`:warning;
+      $('calendar-gap').textContent=result.availability_known&&result.first_unavailable_day!==null?`First position without a published daily listing: ${result.first_unavailable_day}. Do not skip it or reuse another lesson merely to fill the date.`:'No completion or learner progress is inferred from this calendar.';
+      const courseURL=`/courses/${level}/${area}/?`+new URLSearchParams({lang,...(query.has('ui')?{ui:query.get('ui')!}:{})});
+      $('calendar-links').replaceChildren(link('Open this course and its lessons',courseURL),link('Read the single complete manuscript','/book/?'+new URLSearchParams({level,area,lang})));
+      const week=$('calendar-week') as HTMLSelectElement;week.replaceChildren();
+      for(const number of [...new Set(result.days.map(d=>d.calendar_week))]){const o=document.createElement('option');o.value=String(number);o.textContent=String(number);week.append(o);}
+      function renderWeek(){
+        const rows=$('calendar-days');rows.replaceChildren();
+        for(const day of result.days.filter(d=>d.calendar_week===Number(week.value))){
+          const tr=document.createElement('tr');
+          const dateCell=document.createElement('td');dateCell.textContent=day.date;dateCell.dir='ltr';
+          const position=document.createElement('td');position.textContent=`${day.day} · study week ${day.reference_study_week}`;
+          const state=document.createElement('td');
+          if(day.state==='source_indexed'){const url=new URL(courseURL,location.origin);url.searchParams.set('chapter',String(day.day));state.append(link(day.title || `Lesson ${day.day}`,url.pathname+url.search));}
+          else state.textContent=day.state==='planned'?'Planned lesson — not published':day.state==='unallocated'?'No daily unit indexed — allocation pending':'Source availability unknown';
+          const boundary=document.createElement('td');boundary.textContent=day.within_nominal_period?(day.beyond_baseline?'Inside nominal period; beyond baseline':'Inside nominal period'):'Extension beyond nominal calendar end';
+          tr.append(dateCell,position,state,boundary);rows.append(tr);
+        }
+      }
+      week.onchange=renderWeek;renderWeek();$('calendar-result').hidden=false;
+      $('calendar-status').textContent=warning||'Calendar comparison ready. Source listing and full editorial completion remain separate.';
+    }
+    $('calendar-form').addEventListener('submit',event=>{event.preventDefault();void show();});
+    if(valid){
+      for(const [id,text] of [['calendar-level',wanted.level],['calendar-area',wanted.area],['calendar-language',wanted.lang],['calendar-start',query.get('start')||'']])($(id) as HTMLInputElement).value=text;
+      if(query.has('start'))void show();
+    }else $('calendar-status').textContent='Unknown course or language in this address. Choose an explicit catalog entry; no alternative language was loaded.';
+  </script>
+</BaseLayout>
+<style>
+.calendar-shell{padding-block:3rem;max-width:1120px}.calendar-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1rem;padding:1.25rem}.calendar-controls label{display:grid;gap:.4rem}.calendar-controls select,.calendar-controls input,#calendar-week{font:inherit;padding:.65rem;min-height:44px;width:100%}.calendar-card{padding:1.5rem;margin-block:1.2rem}.calendar-links{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1rem}.calendar-table{overflow-x:auto;margin-top:1rem}.calendar-table table{width:100%;border-collapse:collapse}.calendar-table th,.calendar-table td{text-align:start;vertical-align:top;padding:.7rem;border-bottom:1px solid var(--line)}.calendar-table caption{text-align:start;padding-block:.7rem}.calendar-table :global(a){white-space:normal}.calendar-card select{max-width:220px}
+</style>
