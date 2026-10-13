@@ -235,7 +235,7 @@ async def course_details(request: Request, level: str, area: str, language: str)
         "daily_schedule_ready": daily_schedule_ready,
         "book_url": GITHUB_VIEW + manuscript_path if authored else None,
         "source_branch": "main",
-        "notice": "A published lesson may still need editorial review. A plan is not a lesson.",
+        "notice": "A published lesson may still need editorial review. A plan is not a lesson. Lesson length is not a quota.",
     }
 
 

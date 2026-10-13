@@ -6,6 +6,8 @@ Choose one of the 23 themes. In its section, choose a level to open that course'
 
 Each course guide lists all chapters in order. A manuscript chapter is available to read now; a plan is an outline, not a lesson. Chapter counts do not certify a completed book. Stop at the first unwritten required lesson.
 
+The weekday calendar sets a minimum number of lessons and no maximum. One lesson is one chapter, an example and an exercise. If the idea needs more, the course grows. English is written first. Minimums: [curriculum grid](../../CURRICULUM_GRID.md).
+
 | Theme | Theme | Theme |
 |---|---|---|
 | [Cybersecurity](#theme-cybersecurity) | [Information security](#theme-information-security) | [Data governance](#theme-data-governance) |
@@ -23,7 +25,7 @@ Each course guide lists all chapters in order. A manuscript chapter is available
 
 | Level | Lesson guide | Begin at chapter 01 | Chapters in manuscript / planned |
 |---|---|---|---:|
-| Rapid course | [Lesson guide](../../levels/rapid-1-month/cybersecurity/en/SUBJECTS.md) | [Read chapter 01](../../levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md#ch-01) | 3/4 |
+| Rapid course | [Lesson guide](../../levels/rapid-1-month/cybersecurity/en/SUBJECTS.md) | [Read chapter 01](../../levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md#ch-01) | 8/8 |
 | Professional course | [Lesson guide](../../levels/professional-6-months/cybersecurity/en/SUBJECTS.md) | [Chapter 01 is a plan only](../../levels/professional-6-months/cybersecurity/en/book/PLAN.md#ch-01) | 0/12 |
 | Technical course | [Lesson guide](../../levels/technical-18-months/cybersecurity/en/SUBJECTS.md) | [Chapter 01 is a plan only](../../levels/technical-18-months/cybersecurity/en/book/PLAN.md#ch-01) | 0/18 |
 | Technologist course | [Lesson guide](../../levels/technologist-3-years/cybersecurity/en/SUBJECTS.md) | [Chapter 01 is a plan only](../../levels/technologist-3-years/cybersecurity/en/book/PLAN.md#ch-01) | 0/30 |

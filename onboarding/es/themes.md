@@ -6,6 +6,8 @@ Elija uno de los 23 temas. En su sección, seleccione el nivel para abrir la gu�
 
 La guía de cada curso enumera todos los capítulos en orden. Un capítulo del manuscrito ya se puede leer; un plan es solo un resumen, no una lección. La cantidad de capítulos en el manuscrito no certifica que el libro esté terminado. Deténgase en la primera lección obligatoria aún no escrita.
 
+El calendario de días hábiles fija un mínimo de lecciones y no un máximo. Una lección es un capítulo, un ejemplo y un ejercicio. Si la idea necesita más, el curso crece. El inglés se escribe primero. Mínimos: [malla curricular](../../CURRICULUM_GRID.md).
+
 | Tema | Tema | Tema |
 |---|---|---|
 | [Ciberseguridad](#theme-cybersecurity) | [Seguridad de la información](#theme-information-security) | [Gobernanza de datos](#theme-data-governance) |

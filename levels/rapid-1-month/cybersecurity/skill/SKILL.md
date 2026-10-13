@@ -6,7 +6,7 @@ license: CC0-1.0
 
 # Cybersecurity — Rapid course course skill
 
-Use this **one skill for the whole 1 month course**. The course has one principal book per language; each of its 4 subjects is a chapter of that book. Read the actual manuscript when available and never present a plan as a completed lesson.
+Use this **one skill for the whole 1 month course**. The course has one principal book per language. Read the English manuscript's authored chapters and never present a plan as a completed lesson. The planning minimum is 20 lessons and there is no maximum; eight English chapters are drafted, which is not the minimum and not a finished book.
 
 ## Course sources
 

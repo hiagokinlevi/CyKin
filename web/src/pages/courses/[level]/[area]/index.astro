@@ -17,7 +17,7 @@ const levelName = catalog.level_names[course.level].en;
       <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/levels/" data-language-link>Levels</a><span>›</span><a href={levelPath(course.level)} data-language-link>{levelName}</a><span>›</span><span>{course.title}</span></nav>
       <div class="eyebrow">COURSE {String(course.number).padStart(3, '0')} · <span>{levelName}</span></div>
       <h1>{course.title}</h1>
-      <p>One course, one book. The study target is one chapter each weekday, with a worked example and an exercise. Read the chapters already published below.</p>
+      <p>One course, one book. The weekday calendar sets a minimum number of lessons and no maximum. Read the English chapters already published below.</p>
       <div class="course-heading-actions">
         <div class="field course-language"><label for="course-language">Course language</label><select id="course-language"><option value="en">English</option><option value="pt">Português</option><option value="es">Español</option><option value="he">עברית</option><option value="fr">Français</option><option value="ru">Русский</option><option value="de">Deutsch</option><option value="zh">中文</option><option value="ja">日本語</option></select></div>
         <a class="button secondary" href={subjectPath(course.area)} data-language-link>Other levels in this subject →</a>
@@ -119,15 +119,11 @@ const levelName = catalog.level_names[course.level].en;
       if (!details) return;
       const overview = $('course-overview'); overview.replaceChildren();
       const cadence = document.createElement('section'); cadence.className = 'course-cadence';
-      const cadenceLabel = document.createElement('div'); cadenceLabel.className = 'eyebrow'; cadenceLabel.textContent = 'WEEKDAY STUDY PLAN';
-      const cadenceTitle = document.createElement('h3'); cadenceTitle.textContent = `${details.course.instructional_weeks} weeks · ${details.course.daily_lesson_target} daily lessons`;
-      const cadenceCopy = document.createElement('p'); cadenceCopy.textContent = 'One chapter each Monday–Friday: learn the concept, follow a worked example, then solve an exercise. The plan applies to every language edition.';
-      const weekdays = document.createElement('div'); weekdays.className = 'course-weekdays';
-      for (const day of ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']) { const chip = document.createElement('span'); chip.textContent = day; weekdays.append(chip); }
-      const availability = document.createElement('p'); availability.className = 'course-availability'; availability.textContent = details.daily_schedule_ready
-        ? `${details.published_chapters} of ${details.course.daily_lesson_target} daily chapters published in this edition. Unpublished lessons are not available yet.`
-        : `${details.published_chapters} current chapters published. These older subject chapters are not yet the ${details.course.daily_lesson_target} distinct daily lessons required by the new schedule.`;
-      cadence.append(cadenceLabel, cadenceTitle, cadenceCopy, weekdays, availability); overview.append(cadence);
+      const cadenceLabel = document.createElement('div'); cadenceLabel.className = 'eyebrow'; cadenceLabel.textContent = 'HOW TO STUDY';
+      const cadenceTitle = document.createElement('h3'); cadenceTitle.textContent = 'Minimum lessons, no maximum';
+      const cadenceCopy = document.createElement('p'); cadenceCopy.textContent = 'Study one lesson on a weekday. The planning minimum for this level is a floor. If an idea needs another lesson to be taught well, the course grows. Chapter length follows the idea.';
+      const availability = document.createElement('p'); availability.className = 'course-availability'; availability.textContent = `${details.published_chapters} lessons published in this edition. Planning minimum: ${details.course.daily_lesson_target}. An outline is not a lesson.`;
+      cadence.append(cadenceLabel, cadenceTitle, cadenceCopy, availability); overview.append(cadence);
       const heading = document.createElement('h3'); heading.textContent = 'Your course roadmap'; overview.append(heading);
       const modules = document.createElement('div'); modules.className = 'course-module-grid';
       for (const module of details.modules) {
@@ -149,7 +145,7 @@ const levelName = catalog.level_names[course.level].en;
     function renderFacts() {
       if (!details) return;
       const facts = $('course-facts'); facts.replaceChildren(); facts.hidden = false;
-      for (const value of [`${details.course.instructional_weeks} instructional weeks`, `${details.course.daily_lesson_target} daily lessons planned`, `${details.published_chapters} current chapters published`]) {
+      for (const value of [`${details.published_chapters} lessons published`, `Planning minimum ${details.course.daily_lesson_target}`, 'English lessons first']) {
         const fact = document.createElement('span'); fact.textContent = value; facts.append(fact);
       }
     }
@@ -218,9 +214,7 @@ const levelName = catalog.level_names[course.level].en;
       if (!item) {
         $('course-kicker').textContent = `COURSE ${String(number).padStart(3, '0')}`;
         $('course-reader-title').textContent = root.querySelector('h1')?.textContent || '';
-        $('course-intro').textContent = details.daily_schedule_ready
-          ? `${details.published_chapters} of ${details.course.daily_lesson_target} daily chapters are published in this edition.`
-          : `${details.published_chapters} current chapters are published. Daily chapters are being developed toward the ${details.course.daily_lesson_target}-lesson target.`;
+        $('course-intro').textContent = `${details.published_chapters} lessons published in this edition. Planning minimum: ${details.course.daily_lesson_target}. An outline is not a lesson.`;
         if (details.book_url) source.append(link('Read the full book here →', `/book/?${new URLSearchParams({ level, area, lang: language, ...(query.has('ui') ? { ui: query.get('ui')! } : {}) })}`));
         renderOverview();
         return;

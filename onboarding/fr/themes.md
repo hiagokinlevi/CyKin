@@ -6,6 +6,8 @@ Choose one of the 23 themes. In its section, choose a level to open that course'
 
 Each course guide lists all chapters in order. A manuscript chapter is available to read now; a plan is an outline, not a lesson. Chapter counts do not certify a completed book. Stop at the first unwritten required lesson.
 
+Le calendrier des jours ouvrés fixe un minimum de leçons, sans maximum. Une leçon est un chapitre, un exemple et un exercice. Si l'idée exige davantage, le cours grandit. L'anglais est écrit d'abord. [Minimums](../../CURRICULUM_GRID.md).
+
 This edition's course outlines may still be in English; use the authored-chapter count to distinguish teaching from plans.
 
 | Theme | Theme | Theme |

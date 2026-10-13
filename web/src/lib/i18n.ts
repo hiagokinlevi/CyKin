@@ -65,9 +65,19 @@ const copy: Record<string, [string, string]> = {
   'Modules and lessons': ['Módulos e aulas', 'Módulos y lecciones'],
   'Published chapters and current curriculum blocks.': ['Capítulos publicados e blocos curriculares atuais.', 'Capítulos publicados y bloques curriculares actuales.'],
   'WEEKDAY STUDY PLAN': ['PLANO DE ESTUDO EM DIAS ÚTEIS', 'PLAN DE ESTUDIO DE LUNES A VIERNES'],
+  'HOW TO STUDY': ['COMO ESTUDAR', 'CÓMO ESTUDIAR'],
+  'One idea, taught properly': ['Uma ideia, ensinada com rigor', 'Una idea, enseñada con rigor'],
+  'Minimum lessons, no maximum': ['Mínimo de aulas, sem máximo', 'Mínimo de lecciones, sin máximo'],
+  'Study one lesson on a weekday. The planning minimum for this level is a floor. If an idea needs another lesson to be taught well, the course grows. Chapter length follows the idea.': ['Estude uma aula por dia útil. O mínimo deste nível é um piso. Se uma ideia precisar de outra aula para ser bem ensinada, o curso cresce. O tamanho do capítulo segue a ideia.', 'Estudia una lección por día hábil. El mínimo de este nivel es un piso. Si una idea necesita otra lección para enseñarse bien, el curso crece. El tamaño del capítulo sigue la idea.'],
+  'English lessons first': ['Aulas em inglês primeiro', 'Lecciones en inglés primero'],
+  'A lesson is as long as the idea needs. Read the explanation, follow the worked example, then try the exercise. There is no required chapter length or lesson quota.': ['A aula tem o tamanho que a ideia pede. Leia a explicação, acompanhe o exemplo resolvido e faça o exercício. Não há tamanho obrigatório nem cota de aulas.', 'La lección tiene el tamaño que la idea pide. Lee la explicación, sigue el ejemplo resuelto y haz el ejercicio. No hay tamaño obligatorio ni cuota de lecciones.'],
+  'Length follows the idea': ['O tamanho segue a ideia', 'El tamaño sigue la idea'],
+  'English first, then translation': ['Inglês primeiro, depois a tradução', 'Inglés primero, luego la traducción'],
   'One chapter each Monday–Friday: learn the concept, follow a worked example, then solve an exercise. The plan applies to every language edition.': ['Um capítulo de segunda a sexta: aprenda o conceito, acompanhe um exemplo resolvido e faça um exercício. O plano vale para todos os idiomas.', 'Un capítulo de lunes a viernes: aprende el concepto, sigue un ejemplo resuelto y haz un ejercicio. El plan se aplica a todos los idiomas.'],
   'Mon': ['Seg', 'Lun'], 'Tue': ['Ter', 'Mar'], 'Wed': ['Qua', 'Mié'], 'Thu': ['Qui', 'Jue'], 'Fri': ['Sex', 'Vie'],
   'One course, one book. The study target is one chapter each weekday, with a worked example and an exercise. Read the chapters already published below.': ['Um curso, um livro. A meta é um capítulo por dia útil, com exemplo resolvido e exercício. Leia abaixo os capítulos já publicados.', 'Un curso, un libro. La meta es un capítulo por día hábil, con ejemplo resuelto y ejercicio. Lee abajo los capítulos ya publicados.'],
+  'One course, one book. A lesson is as long as its idea. Read the chapters already published below.': ['Um curso, um livro. A aula tem o tamanho da ideia. Leia abaixo os capítulos já publicados.', 'Un curso, un libro. La lección tiene el tamaño de la idea. Lee abajo los capítulos ya publicados.'],
+  'One course, one book. The weekday calendar sets a minimum number of lessons and no maximum. Read the English chapters already published below.': ['Um curso, um livro. O calendário de dias úteis define um mínimo de aulas e não um máximo. Leia abaixo os capítulos em inglês já publicados.', 'Un curso, un libro. El calendario de días hábiles fija un mínimo de lecciones y no un máximo. Lee abajo los capítulos en inglés ya publicados.'],
   'Follow the subjects in their curricular order.': ['Siga as matérias na ordem curricular.', 'Sigue las materias en orden curricular.'],
   '← Course overview': ['← Visão geral do curso', '← Vista general del curso'],
   'Course overview': ['Visão geral do curso', 'Vista general del curso'],
@@ -162,6 +172,8 @@ const copy: Record<string, [string, string]> = {
   'FROM CONCEPT TO PRACTICE': ['DO CONCEITO À PRÁTICA', 'DEL CONCEPTO A LA PRÁCTICA'],
   'Learning you can verify.': ['Aprendizado que você pode verificar.', 'Aprendizaje que puedes verificar.'],
   'Each course has one book. Subjects organize modules, and the study target is one chapter every weekday, with a worked example and an exercise. The reader shows what is published and keeps previous, index and next navigation close to each lesson.': ['Cada curso tem um livro. As matérias organizam módulos; a meta é um capítulo por dia útil, com exemplo resolvido e exercício. O leitor mostra o que foi publicado e mantém a navegação entre aulas.', 'Cada curso tiene un libro. Las materias organizan módulos; la meta es un capítulo por día hábil, con ejemplo resuelto y ejercicio. El lector muestra lo publicado y mantiene la navegación entre lecciones.'],
+  'Each course has one book. A lesson is one chapter, as long as the idea needs, with a worked example and an exercise. The reader shows what is published and keeps previous, index and next navigation close to each lesson.': ['Cada curso tem um livro. Uma aula é um capítulo, do tamanho que a ideia pede, com exemplo resolvido e exercício. O leitor mostra o que foi publicado e mantém a navegação entre aulas.', 'Cada curso tiene un libro. Una lección es un capítulo, del tamaño que la idea pide, con ejemplo resuelto y ejercicio. El lector muestra lo publicado y mantiene la navegación entre lecciones.'],
+  'Each course has one book. A lesson is one chapter, as long as the idea needs, with a worked example and an exercise. The weekday calendar sets a minimum and no maximum: the book grows when the subject needs another lesson. The reader shows the English lessons already published.': ['Cada curso tem um livro. Uma aula é um capítulo, do tamanho que a ideia pede, com exemplo resolvido e exercício. O calendário de dias úteis define um mínimo e não um máximo: o livro cresce quando o assunto precisa de outra aula. O leitor mostra as aulas em inglês já publicadas.', 'Cada curso tiene un libro. Una lección es un capítulo, del tamaño que la idea pide, con ejemplo resuelto y ejercicio. El calendario de días hábiles fija un mínimo y no un máximo: el libro crece cuando el tema necesita otra lección. El lector muestra las lecciones en inglés ya publicadas.'],
   'Read the editorial standard →': ['Leia o padrão editorial →', 'Lee el estándar editorial →'],
   'Transparent source': ['Fonte transparente', 'Fuente transparente'],
   'Open text with its course and edition identified.': ['Texto aberto com curso e edição identificados.', 'Texto abierto con curso y edición identificados.'],
@@ -305,6 +317,18 @@ function dynamic(english: string, lang: Exclude<Language, 'en'>): string | null 
   if (target) return lang === 'pt' ? `${target[1]} aulas diárias previstas` : `${target[1]} lecciones diarias previstas`;
   const current = english.match(/^(\d+) current chapters published$/);
   if (current) return lang === 'pt' ? `${current[1]} capítulos atuais publicados` : `${current[1]} capítulos actuales publicados`;
+  const publishedLessons = english.match(/^(\d+) lessons published$/);
+  if (publishedLessons) return lang === 'pt' ? `${publishedLessons[1]} aulas publicadas` : `${publishedLessons[1]} lecciones publicadas`;
+  const publishedNote = english.match(/^(\d+) lessons published in this edition\. An outline is not a lesson\.$/);
+  if (publishedNote) return lang === 'pt' ? `${publishedNote[1]} aulas publicadas nesta edição. Um plano não é uma aula.` : `${publishedNote[1]} lecciones publicadas en esta edición. Un plan no es una lección.`;
+  const publishedMinimum = english.match(/^(\d+) lessons published in this edition\. Planning minimum: (\d+)\. An outline is not a lesson\.$/);
+  if (publishedMinimum) return lang === 'pt' ? `${publishedMinimum[1]} aulas publicadas nesta edição. Mínimo de planejamento: ${publishedMinimum[2]}. Um plano não é uma aula.` : `${publishedMinimum[1]} lecciones publicadas en esta edición. Mínimo de planificación: ${publishedMinimum[2]}. Un plan no es una lección.`;
+  const planningMinimum = english.match(/^Planning minimum (\d+)$/);
+  if (planningMinimum) return lang === 'pt' ? `Mínimo de planejamento ${planningMinimum[1]}` : `Mínimo de planificación ${planningMinimum[1]}`;
+  const indexWithMinimum = english.match(/^(\d+) chapters in the current index · minimum (\d+)$/);
+  if (indexWithMinimum) return lang === 'pt' ? `${indexWithMinimum[1]} capítulos no índice atual · mínimo ${indexWithMinimum[2]}` : `${indexWithMinimum[1]} capítulos en el índice actual · mínimo ${indexWithMinimum[2]}`;
+  const indexChapters = english.match(/^(\d+) chapters in the current index$/);
+  if (indexChapters) return lang === 'pt' ? `${indexChapters[1]} capítulos no índice atual` : `${indexChapters[1]} capítulos en el índice actual`;
   const directoryTarget = english.match(/^(\d+) weekday lessons planned · (\d+) current curriculum chapters$/);
   if (directoryTarget) return lang === 'pt' ? `${directoryTarget[1]} aulas por dia útil previstas · ${directoryTarget[2]} capítulos curriculares atuais` : `${directoryTarget[1]} lecciones por día hábil previstas · ${directoryTarget[2]} capítulos curriculares actuales`;
   const weeklyTitle = english.match(/^(\d+) weeks · (\d+) daily lessons$/);

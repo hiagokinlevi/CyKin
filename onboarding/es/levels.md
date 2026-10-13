@@ -6,6 +6,8 @@ Elija uno de los nueve niveles. La sección muestra los 23 temas en orden curric
 
 La guía de cada curso enumera todos los capítulos en orden. Un capítulo del manuscrito ya se puede leer; un plan es solo un resumen, no una lección. La cantidad de capítulos en el manuscrito no certifica que el libro esté terminado. Deténgase en la primera lección obligatoria aún no escrita.
 
+El calendario de días hábiles fija un mínimo de lecciones y no un máximo. Una lección es un capítulo, un ejemplo y un ejercicio. Si la idea necesita más, el curso crece. El inglés se escribe primero. Mínimos: [malla curricular](../../CURRICULUM_GRID.md).
+
 [Rápido](#level-rapid-1-month) · [Profesional](#level-professional-6-months) · [Técnico](#level-technical-18-months) · [Tecnólogo](#level-technologist-3-years) · [Grado](#level-bachelors-4-years) · [Ingeniería](#level-engineering-5-years) · [Posgrado](#level-postgraduate-2-years) · [Máster](#level-masters-2-years) · [Doctorado](#level-doctorate-2-years)
 
 <a id="level-rapid-1-month"></a>

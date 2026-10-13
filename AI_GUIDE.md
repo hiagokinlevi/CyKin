@@ -1,6 +1,6 @@
 # CyKin reference guide for AI assistants and readers
 
-**Daily lesson model:** The [curriculum grid](CURRICULUM_GRID.md) now defines five instructional weekdays per week and one distinct book chapter per day, with a worked example, exercise and worked answer. Subjects organize modules. Existing subject-chapter indexes and progress percentages describe the previous structure and must not be reported as completion of the new 20–1,300 daily-lesson targets. Each language edition must be assessed from its actual manuscript, not inferred from another edition.
+**Lesson model:** One lesson is one chapter, as long as the idea needs. The weekday calendar sets a planning minimum of 20 to 1,300 lessons by level, and there is no maximum: add another lesson when the subject needs it. Do not pad and do not invent empty lessons to reach the minimum. Judge a lesson by whether the learner can explain, distinguish, test and justify. Author in English first. Progress percentages describe drafted chapters, not completion. Read the manuscript of the selected language; do not infer it from another edition.
 
 CyKin is a public, free Markdown learning library. Its [home page](README.md) is the main entry point. Use the [two onboarding routes](README.md#comece-por-aqui): **language → topic → level → course lesson guide**, or **language → level → all topics and their lesson guides**. Both lead to the existing course editions; the directory hierarchy is not a restriction on how a learner chooses a route. Plans and public drafts must be described with their actual editorial state.
 
@@ -46,7 +46,7 @@ README.md
 
 For example, open the [rapid level](levels/rapid-1-month/README.md), the [Incident Response course home](levels/rapid-1-month/incident-response-resilience/README.md), its [English subject index](levels/rapid-1-month/incident-response-resilience/en/SUBJECTS.md), [book plan](levels/rapid-1-month/incident-response-resilience/en/book/PLAN.md), [manuscript draft](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md), [single course skill](levels/rapid-1-month/incident-response-resilience/skill/SKILL.md), and [supplementary playbooks](playbooks/incident-response-resilience/README.md).
 
-Each course has **one skill** and **one principal book per language**. Existing indexes treat each curricular subject as one legacy chapter; the new authoring model uses subjects as modules and one chapter per instructional weekday. A complete daily chapter teaches a specific concept, gives a worked example and an exercise; worked answers appear at the end of the book. There are no separate subject skills or subject textbooks.
+Each course has **one skill** and **one principal book per language**. Subjects are modules. A lesson is one chapter whose length follows the idea: a specific concept, a worked example, an exercise, and a worked answer at the end of the book. There is no fixed chapter size and no separate subject skill or subject textbook.
 
 ## Interpret editorial state
 
@@ -59,7 +59,7 @@ Each course has **one skill** and **one principal book per language**. Existing 
 | `skill/SKILL.md` | Navigation and tutoring instructions for the course, not an additional book |
 | `playbooks/README.md` | Pointers to supplementary sources that retain their own rights |
 
-A plan is not a written lesson. A public draft is not a technically reviewed book. A completed edition requires at least 300 verified A4 pages, 50 substantive exercises with worked answers, accurate sources and editorial review under the [book standard](BOOK_STANDARD.md). The course titles describe planned educational depth; they do not confer an accredited degree.
+A plan is not a written lesson. A public draft is not a technically reviewed book. A completed edition meets the [book standard](BOOK_STANDARD.md): the learning chain, worked examples, answered exercises, accurate sources and editorial review. Page count and lesson count are not completion gates. The course titles describe intended depth; they do not confer an accredited degree.
 
 The percentages inside the README bookshelf measure **English chapter draft coverage** by area, using the method in [WRITING_PROGRESS.md](WRITING_PROGRESS.md). They are separate from tailored chapter-plan coverage and from the number of books that have passed the completion gate. Do not present a bookshelf percentage as book completion or translated-content progress.
 

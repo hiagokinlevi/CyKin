@@ -37,7 +37,7 @@
 
 ## Start here
 
-[Open the CyKin study site](https://cykin.org/) and browse [by level](https://cykin.org/levels/) or [by subject](https://cykin.org/subjects/). Each level and subject leads to separate course pages, and each course has its own lesson guide and book. Subjects organize modules; the new production target is one distinct book chapter every instructional weekday, with a worked example and exercise. Existing manuscripts are being expanded from their older subject-chapter structure. Public reading requires no account.
+[Open the CyKin study site](https://cykin.org/) and browse [by level](https://cykin.org/levels/) or [by subject](https://cykin.org/subjects/). Each level and subject leads to separate course pages, and each course has its own lesson guide and book. Subjects organize modules. The weekday calendar sets a minimum number of lessons and no maximum: one chapter, a worked example and an exercise. If an idea needs more lessons, the course grows. English is written first. Existing manuscripts are being expanded from their older subject-chapter structure. Public reading requires no account.
 
 **Route 1 — one course:** 1. language → 2. subject area → 3. level → the complete lesson guide for that course.
 
@@ -48,21 +48,21 @@ The site reads book text from this repository's `main` branch; the links below p
 | Language | Route 1: choose an area | Route 2: choose a level |
 |---|---|---|
 | English | [Area → level](onboarding/en/themes.md) | [Level → all areas](onboarding/en/levels.md) |
-| Portuguese | [Area → level](onboarding/pt/themes.md) | [Level → all areas](onboarding/pt/levels.md) |
-| Spanish | [Area → level](onboarding/es/themes.md) | [Level → all areas](onboarding/es/levels.md) |
-| Hebrew | [Area → level](onboarding/he/themes.md) | [Level → all areas](onboarding/he/levels.md) |
-| French | [Area → level](onboarding/fr/themes.md) | [Level → all areas](onboarding/fr/levels.md) |
-| Russian | [Area → level](onboarding/ru/themes.md) | [Level → all areas](onboarding/ru/levels.md) |
-| German | [Area → level](onboarding/de/themes.md) | [Level → all areas](onboarding/de/levels.md) |
-| Chinese | [Area → level](onboarding/zh/themes.md) | [Level → all areas](onboarding/zh/levels.md) |
-| Japanese | [Area → level](onboarding/ja/themes.md) | [Level → all areas](onboarding/ja/levels.md) |
+| Português | [Area → level](onboarding/pt/themes.md) | [Level → all areas](onboarding/pt/levels.md) |
+| Español | [Area → level](onboarding/es/themes.md) | [Level → all areas](onboarding/es/levels.md) |
+| עברית | [Area → level](onboarding/he/themes.md) | [Level → all areas](onboarding/he/levels.md) |
+| Français | [Area → level](onboarding/fr/themes.md) | [Level → all areas](onboarding/fr/levels.md) |
+| Русский | [Area → level](onboarding/ru/themes.md) | [Level → all areas](onboarding/ru/levels.md) |
+| Deutsch | [Area → level](onboarding/de/themes.md) | [Level → all areas](onboarding/de/levels.md) |
+| 中文 | [Area → level](onboarding/zh/themes.md) | [Level → all areas](onboarding/zh/levels.md) |
+| 日本語 | [Area → level](onboarding/ja/themes.md) | [Level → all areas](onboarding/ja/levels.md) |
 
 **How to study:** open a course's lesson index (`SUBJECTS.md`), read each available chapter in `MANUSCRIPT.md`, attempt the exercises, compare the worked answers, and follow the links at the end of each chapter. A `PLAN.md` chapter is an outline rather than a written lesson. Hebrew, French, Russian, German, Chinese and Japanese currently have indexes and plans only. The bookshelf above measures initial English chapter coverage; it does not certify finished books or translations. [See coverage by language](LANGUAGE_LESSON_PROGRESS.md).
 <!-- cykin:onboarding:end -->
 
 ## How the study site works
 
-The [CyKin website](https://cykin.org/) is an in-site reader for this public curriculum. Students choose a language and browse **by level** or **by subject**, then open one separate course page for a level–area combination. The course page shows its current modules, published chapters, exercises, worked answers and previous/index/next navigation; the full principal book is also readable on the site. The weekday lesson target is shown **separately** from the chapters actually published in an edition. A plan or an untranslated outline is never a completed lesson. The site interface starts in English, detects supported browser languages, and lets readers switch among English, Portuguese and Spanish; each book's actual language and editorial state remain independent of that interface choice.
+The [CyKin website](https://cykin.org/) is an in-site reader for this public curriculum. Students choose a language and browse **by level** or **by subject**, then open one separate course page for a level–area combination. The course page shows its current modules, published chapters, exercises, worked answers and previous/index/next navigation; the full principal book is also readable on the site. The planning minimum is shown separately from the chapters actually published, and it is not a maximum. A plan or an untranslated outline is never a completed lesson. The site interface starts in English, detects supported browser languages, and lets readers switch among English, Portuguese and Spanish; each book's actual language and editorial state remain independent of that interface choice.
 
 | Layer | Responsibility | Source in this repository |
 |---|---|---|
@@ -73,7 +73,7 @@ The [CyKin website](https://cykin.org/) is an in-site reader for this public cur
 | Optional progress | Cloudflare Access protects only student progress routes; D1 stores completed lessons and exercise attempts. Books, lessons, API and MCP require no registration | [site operations](web/README.md#student-sign-in-and-progress) |
 | Hosting and publication | One Cloudflare Python Worker serves FastAPI and Astro static assets at `cykin.org`. The maintainer validates and deploys directly from an authorized local computer; GitHub Actions are not used | [`web/scripts/deploy-local.sh`](web/scripts/deploy-local.sh) and [deployment guide](web/README.md#publish-from-an-authorized-local-computer) |
 
-This architecture keeps the Markdown books as the canonical public source while giving human readers and AI clients stable site routes. The [web application README](web/README.md) contains local development, deployment and endpoint details. The [daily curriculum grid](CURRICULUM_GRID.md) defines 20 weekday lessons for the rapid month, 130 for six months and up to 1,300 for five-year engineering; **these are editorial targets, not current completion counts**.
+This architecture keeps the Markdown books as the canonical public source while giving human readers and AI clients stable site routes. The [web application README](web/README.md) contains local development, deployment and endpoint details. The [daily curriculum grid](CURRICULUM_GRID.md) sets a planning minimum of 20 weekday lessons for the rapid month, 130 for six months and 1,300 for five-year engineering, with **no maximum**. These counts are not current completion. English lessons are written first.
 
 **English writing progress:** each percentage is the share of that area's planned English chapters with at least 300 words of authored teaching in a manuscript draft. The bookshelf is refreshed from the manuscripts on each local publication; it does not indicate a finished book or an A4 page count. [Sigil key, exact counts and method](WRITING_PROGRESS.md).
 

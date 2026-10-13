@@ -6,6 +6,8 @@ Choose one of the 23 themes. In its section, choose a level to open that course'
 
 Each course guide lists all chapters in order. A manuscript chapter is available to read now; a plan is an outline, not a lesson. Chapter counts do not certify a completed book. Stop at the first unwritten required lesson.
 
+工作日日历规定最少课数，不设上限。一课是一章、一个例子和一道练习。如果内容需要，课程就增加。先写英语。[最低课数](../../CURRICULUM_GRID.md)。
+
 This edition's course outlines may still be in English; use the authored-chapter count to distinguish teaching from plans.
 
 | Theme | Theme | Theme |

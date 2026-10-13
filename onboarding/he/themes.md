@@ -6,6 +6,8 @@ Choose one of the 23 themes. In its section, choose a level to open that course'
 
 Each course guide lists all chapters in order. A manuscript chapter is available to read now; a plan is an outline, not a lesson. Chapter counts do not certify a completed book. Stop at the first unwritten required lesson.
 
+לוח ימי החול קובע מינימום שיעורים וללא מקסימום. שיעור הוא פרק, דוגמה ותרגיל. אם הרעיון דורש עוד, הקורס גדל. האנגלית נכתבת קודם. [מינימום](../../CURRICULUM_GRID.md).
+
 This edition's course outlines may still be in English; use the authored-chapter count to distinguish teaching from plans.
 
 | Theme | Theme | Theme |

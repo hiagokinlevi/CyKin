@@ -3,7 +3,7 @@
 - Edition: working draft, 11 October 2026
 - Language: English (`en`)
 - Course: rapid, one month; approximately 80 hours of planned study
-- Status: Three of four subject-chapters drafted; fifteen of fifty minimum exercises and their worked results drafted. Chapter 4 and the 300-page A4 verification are **not complete**.
+- Status: Eight English chapters drafted, with exercises EX001–EX024 and worked results. The rapid-course planning minimum is 20 lessons and there is no maximum. Technical, language and source review are **not complete**.
 - Maintainer: [hiagokinlevi](https://github.com/hiagokinlevi)
 - Original text: [CC0 1.0](../../../../../LICENSE), within the [rights notice](../../../../../RIGHTS.md). External sources linked below retain their own rights.
 
@@ -11,16 +11,18 @@
 
 Read the explanation before attempting an exercise. Work only with the fictional library described here. Keep a short notebook with the facts you observe, the assumptions you make, and the question you would ask next. Compare your responses with the worked results at the end. A plausible alternative can be correct when it identifies its assumptions and supports its decision with evidence.
 
-This is the **one principal book** for the English rapid Cybersecurity course. It incorporates the earlier Security Literacy draft. Its [subject grade](../SUBJECTS.md) and [book plan](PLAN.md) specify four chapters: one per subject. Each chapter teaches its subject with examples and exercises; worked results are gathered in the final appendix. The current text contains three draft chapters, not a completed book or qualification.
+This is the **one principal book** for the English rapid Cybersecurity course. It incorporates the earlier Security Literacy draft. Each authored chapter teaches one idea with an example and exercises. Worked results are in the final appendix. The planning minimum for this rapid book is 20 lessons, and there is no maximum. Eight drafted chapters are not that minimum and are not a finished qualification.
 
-| Subject-chapter | Planned exercises | Authored exercises | Draft status |
-|---|---:|---:|---|
-| 1. Foundations and decisions | 13 | 5 | Draft |
-| 2. Scope, permission and safe practice | 13 | 5 | Draft |
-| 3. Systems, data and dependencies | 12 | 5 | Draft |
-| 4. Guided lab and applied synthesis | 12 | 0 | Planned |
-
-The exercise allocation is a planning minimum, not a claim that the missing questions exist. The final book also needs at least 300 rendered A4 pages; no page count has been verified.
+| Subject-chapter | Authored exercises | Draft status |
+|---|---:|---|
+| 1. Foundations and decisions | EX001–EX005 | Draft |
+| 2. Scope, permission and safe practice | EX006–EX010 | Draft |
+| 3. Systems, data and dependencies | EX011–EX015 | Draft |
+| 4. Guided lab and applied synthesis | EX016–EX020 | Draft |
+| 5. What may be said about a booking | EX021 | Draft |
+| 6. A handwritten change is not a correction | EX022 | Draft |
+| 7. A pending queue during an outage | EX023 | Draft |
+| 8. A weak procedure is not yet a vulnerability | EX024 | Draft |
 
 <a id="ch-01"></a>
 
@@ -250,7 +252,7 @@ Use the fictional case only. Compare your work with the final worked-results app
 - **Rubric:** Credit for examples that match each function, recognize shared responsibility, and avoid treating the functions as a once-only sequence.
 
 <!-- cykin:chapter-navigation:start ch-01 -->
-### Continue studying — chapter 01 of 04
+### Continue studying — chapter 01 of 08
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
@@ -453,7 +455,7 @@ Keep every activity within the synthetic paper-exercise boundary. Worked results
 - **Rubric:** Credit for an observable measure, a plausible decision difference, and limits about synthetic data and one-session scope.
 
 <!-- cykin:chapter-navigation:start ch-02 -->
-### Continue studying — chapter 02 of 04
+### Continue studying — chapter 02 of 08
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
@@ -708,11 +710,573 @@ Use the model and invented records above; do not test a live service. Worked res
 - **Rubric:** Full credit requires treating the new information as a report, not as independently observed fact; changing the stale-09:00-only conclusion conditionally; and keeping the worker's decision within the approved fallback rule.
 
 <!-- cykin:chapter-navigation:start ch-03 -->
-### Continue studying — chapter 03 of 04
+### Continue studying — chapter 03 of 08
 
-[← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 plan →](PLAN.md#ch-04)
+[← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
-The next chapter is an outline, not yet an authored lesson.
+Continue to the next authored lesson.
+<!-- cykin:chapter-navigation:end -->
+
+<a id="ch-04"></a>
+
+## Chapter 4 — Cybersecurity: guided lab and applied synthesis
+
+<!-- cykin:lesson-figures:start ch-04 -->
+### Lesson map
+
+Lesson 04 published. Map, example, EX016.
+
+```mermaid
+flowchart TD
+  A["Synthetic action"] --> B{"Named in the written rule?"}
+  B -->|No| U["UNKNOWN"]
+  B -->|Yes| C{"Which action?"}
+  C -->|open-live-site| S["STOP"]
+  C -->|export-contacts| O["OUT OF SCOPE"]
+  C -->|confirm-from-printout| D{"Created after 09:00?"}
+  D -->|Yes| R["REFUSE"]
+  D -->|No| L["ALLOW"]
+  C -->|mark-pending| L
+```
+
+The diagram classifies one invented action. It does not describe a real library, and ALLOW is not proof that a room is free.
+
+### Logical drawing
+
+```text
+written rule + synthetic row
+        |
+        +-- open live site --------> STOP
+        +-- export contacts -------> OUT OF SCOPE
+        +-- confirm from 09:00 paper
+        |         |
+        |         +-- later booking exists --> REFUSE
+        |         +-- no later booking -----> ALLOW
+        +-- mark pending ----------> ALLOW
+        +-- anything else ---------> UNKNOWN
+```
+<!-- cykin:lesson-figures:end ch-04 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Apply a written rule to a synthetic staff action and name the verdict the rule produces.
+2. Separate a classification of a recorded proposal from a decision that the real service is safe.
+3. Explain why ALLOW, REFUSE, OUT OF SCOPE and STOP answer different questions.
+4. State one fact the offline script cannot know.
+5. Write a short dossier that keeps the observation, the decision and the limit in separate sentences.
+
+### 4.1 Four verdicts, one written rule
+
+Chapters 1–3 left a front-desk worker with a 09:00 paper schedule, two invented bookings, and a rule: do not confirm a later room from that paper, do not open a live site, and do not pull the event-contact list into the booking exercise. Chapter 4 turns that rule into a check a second person can rerun.
+
+The check uses four verdicts. They are labels for this exercise, not a severity scale.
+
+| Verdict | Question it answers | What it does not answer |
+|---|---|---|
+| STOP | Did this action leave the paper exercise? | Whether a real site is under attack |
+| OUT OF SCOPE | Is this data set outside the booking decision? | Whether the contact list is well protected |
+| REFUSE | Does the 09:00 snapshot omit a later booking for that room and start? | Why the booking page was unavailable |
+| ALLOW | Does the written rule permit this recorded action? | Whether Room 2 is actually free |
+| UNKNOWN | Is the action missing from the rule set? | What the owner would decide after being asked |
+
+A number such as 7.4 would hide which of these questions changed. This chapter does not score the library.
+
+### 4.2 The script reads the exercise assumption
+
+The lab below is standard-library Python. It encodes three assumptions already fixed in this book: the printout time is 09:00, `SYN-002` was created at 10:05 for Room 2 at 15:00, and event contacts are outside the booking path. It does not read the Chapter 3 owner *report* of an 11:40 offline sheet. That report is still unverified, so the script must not treat it as a newer printout.
+
+`REFUSE` fires only when a confirm-from-printout action names a room and start whose booking was created after 09:00. `ALLOW` on mark-pending means the rule accepts a pending queue. `ALLOW` on a confirmation means only that no later booking in this tiny table matches that room and start. A different room can therefore print ALLOW while remaining unknown in the real building.
+
+### 4.3 Worked example: four actions
+
+Use the same rows the script uses.
+
+| Time | Action | Why the rule speaks | Verdict |
+|---|---|---|---|
+| 11:42 | Confirm Room 2 at 15:00 from the paper | `SYN-002` was created at 10:05, after the printout | REFUSE |
+| 11:43 | Export event contacts | Announcement contacts are not the booking decision | OUT OF SCOPE |
+| 11:44 | Open the live booking site | The brief forbids production systems | STOP |
+| 11:45 | Mark the 15:00 request pending | The fallback rule allows a pending queue | ALLOW |
+
+The 11:44 line classifies a *recorded proposal*. It does not by itself halt a classroom. In a live rehearsal the owner still pauses the people, as Chapter 2 required. The script keeps going so the other three rows stay visible. That difference is a limit of the program, not a softer stop condition.
+
+### 4.4 Lab: classify the synthetic log
+
+Save this program as `lab_dossier.py` and run it with `python3 lab_dossier.py`. Do not point it at a network, a library website, or a file of real patrons. The expected output is fixed for these rows. If your output differs, the rule you ran is not the rule in this chapter.
+
+```python
+"""Harbor Library tabletop dossier. Synthetic records only."""
+
+PRINTOUT = "09:00"
+
+BOOKINGS = [
+    {"id": "SYN-001", "room": "Room 2", "start": "14:00", "created": "08:20", "status": "confirmed"},
+    {"id": "SYN-002", "room": "Room 2", "start": "15:00", "created": "10:05", "status": "confirmed"},
+]
+
+ACTIONS = [
+    {"time": "11:42", "action": "confirm-from-printout", "room": "Room 2", "start": "15:00"},
+    {"time": "11:43", "action": "export-contacts"},
+    {"time": "11:44", "action": "open-live-site"},
+    {"time": "11:45", "action": "mark-pending", "room": "Room 2", "start": "15:00"},
+]
+
+
+def minutes(clock):
+    hour, minute = clock.split(":")
+    return int(hour) * 60 + int(minute)
+
+
+def decide(action):
+    kind = action["action"]
+    if kind == "open-live-site":
+        return "STOP", "live site is outside the paper exercise"
+    if kind == "export-contacts":
+        return "OUT OF SCOPE", "event contacts are outside the booking decision"
+    if kind == "confirm-from-printout":
+        later = [
+            booking["id"]
+            for booking in BOOKINGS
+            if booking["room"] == action["room"]
+            and booking["start"] == action["start"]
+            and minutes(booking["created"]) > minutes(PRINTOUT)
+        ]
+        if later:
+            return "REFUSE", "printout 09:00 omits " + ",".join(later)
+        return "ALLOW", "no later booking is recorded for that room and start"
+    if kind == "mark-pending":
+        return "ALLOW", "pending until an approved current source"
+    return "UNKNOWN", "the written rule set does not name this action"
+
+
+def main():
+    print("printout: 09:00; bookings: 2")
+    omitted = [booking["id"] for booking in BOOKINGS if minutes(booking["created"]) > minutes(PRINTOUT)]
+    print("omitted by printout: " + ",".join(omitted))
+    counts = {"STOP": 0, "OUT OF SCOPE": 0, "REFUSE": 0, "ALLOW": 0, "UNKNOWN": 0}
+    for action in ACTIONS:
+        verdict, reason = decide(action)
+        counts[verdict] += 1
+        print(f"{action['time']} {action['action']}: {verdict}; {reason}")
+    print(
+        "STOP {STOP}; OUT OF SCOPE {OUT OF SCOPE}; REFUSE {REFUSE}; ALLOW {ALLOW}; UNKNOWN {UNKNOWN}".format(
+            **counts
+        )
+    )
+
+
+if __name__ == "__main__":
+    main()
+```
+
+Exact output, checked with Python 3:
+
+```text
+printout: 09:00; bookings: 2
+omitted by printout: SYN-002
+11:42 confirm-from-printout: REFUSE; printout 09:00 omits SYN-002
+11:43 export-contacts: OUT OF SCOPE; event contacts are outside the booking decision
+11:44 open-live-site: STOP; live site is outside the paper exercise
+11:45 mark-pending: ALLOW; pending until an approved current source
+STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0
+```
+
+The count line is a tally of these four rows. It is not a risk rating. Changing the 11:42 room to Room 4, which does not appear in `BOOKINGS`, makes that row ALLOW. The new ALLOW means the table has no later booking for Room 4 at 15:00. It does not mean a resident may have the room.
+
+### 4.5 A dossier uses only what the run showed
+
+Write six short sentences and stop. Sentence 1 names the exercise and the 09:00 assumption. Sentence 2 quotes one output line. Sentence 3 states the decision that line supports. Sentence 4 names a verdict that must not be merged with it: exporting contacts is OUT OF SCOPE, not REFUSE, because the contact list was never a booking-time comparison. Sentence 5 says the script did not inspect a reservation store and did not accept the unverified 11:40 report. Sentence 6 names the owner question that is still open: which approved source, if any, may replace the 09:00 paper.
+
+If sentence 5 is blank, the note is not ready to guide a procedure change. A blank limit lets a reader treat a classroom tally as a finding about Harbor Library's real systems, which this book does not have.
+
+### Chapter 4 summary
+
+A written rule can classify a synthetic action the same way twice. STOP, OUT OF SCOPE, REFUSE, ALLOW and UNKNOWN answer different questions. The program's ALLOW is permission under the rows it was given, not evidence that a room is free or that a reported 11:40 sheet exists. The dossier keeps the output, the decision and the limit apart.
+
+### Chapter 4 exercises
+
+Use the program and output in Section 4.4. Do not contact a real library. Worked results are in the appendix.
+
+### EX016 — Read the tally
+
+- **Objective:** Tie one verdict to the row that produced it.
+- **Input:** The exact lab output in Section 4.4.
+- **Safe condition:** Do not add bookings or open a website.
+- **Task:** Name the action that received REFUSE, the booking id the reason cites, and the assumption that makes that id absent from the paper.
+- **Expected evidence:** Three items, each taken from the output or the stated 09:00 snapshot.
+- **Rubric:** Credit only if the action is the 11:42 confirmation, the id is `SYN-002`, and the assumption is the 09:00 printout rather than an inferred attack.
+
+### EX017 — ALLOW is not availability
+
+- **Objective:** Limit what a matching rule is allowed to mean.
+- **Input:** Change only the 11:42 action so the room is Room 4 and the start remains 15:00. Leave every other row as printed.
+- **Safe condition:** Edit the synthetic table on paper or in a local copy. Do not query a live system.
+- **Task:** State the new verdict for 11:42 and write the sentence a staff member must not say to a resident.
+- **Expected evidence:** The verdict plus one prohibited claim.
+- **Rubric:** Credit for ALLOW together with a refusal to promise Room 4. An answer that calls the room free fails.
+
+### EX018 — Do not merge the verdicts
+
+- **Objective:** Keep a data-set boundary distinct from a stale-paper comparison.
+- **Input:** The 11:43 output line.
+- **Safe condition:** Reason from that line only.
+- **Task:** Explain why the export is OUT OF SCOPE rather than REFUSE, and name one fact about contact-list protection that this run does not provide.
+- **Expected evidence:** A distinction and one explicit unknown.
+- **Rubric:** Credit when REFUSE stays attached to the printout comparison and the contact list remains unmeasured.
+
+### EX019 — Script stop versus human stop
+
+- **Objective:** Notice that a classified row is not the same act as pausing people.
+- **Input:** The 11:44 STOP line and the Chapter 2 rule that a live-site proposal pauses the exercise.
+- **Safe condition:** Do not open a site to illustrate the point.
+- **Task:** Say what the program did after printing STOP, what a facilitator should do with the participants, and why those two actions differ.
+- **Expected evidence:** Three sentences.
+- **Rubric:** Credit if the program continues through 11:45 while the facilitator pauses the people and asks the owner.
+
+### EX020 — Six-sentence dossier
+
+- **Objective:** Report the run without enlarging it.
+- **Input:** Section 4.5 and the lab output.
+- **Safe condition:** Invent no outage cause, no patron, and no second system.
+- **Task:** Write the six sentences. Leave sentence 5 concrete. Do not assign a numeric score.
+- **Expected evidence:** Six sentences a classmate can check against the output.
+- **Rubric:** Credit when each sentence stays inside the run, the 11:43 line is not redescribed as REFUSE, and the 11:40 report is still unverified.
+
+<!-- cykin:chapter-navigation:start ch-04 -->
+### Continue studying — chapter 04 of 08
+
+[← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
+
+Continue to the next authored lesson.
+<!-- cykin:chapter-navigation:end -->
+
+<a id="ch-05"></a>
+
+## Chapter 5 — What may be said about a booking
+
+<!-- cykin:lesson-figures:start ch-05 -->
+### Lesson map
+
+Lesson 05 published. Map, example, EX021.
+
+```mermaid
+flowchart TD
+  Q["Resident asks who holds Room 2"] --> N{"Does the answer need a name?"}
+  N -->|No| R["Give room and time only if that is their own booking"]
+  N -->|Yes| P["Stop and ask the owner before naming anyone"]
+```
+
+The drawing limits a spoken answer. It does not prove that the booking system hides names.
+
+### Logical drawing
+
+```text
+question about another person's booking
+        |
+        +-- answer with room state only --> still check that the asker needs it
+        +-- answer with a name -----------> not authorized by this lesson
+```
+<!-- cykin:lesson-figures:end ch-05 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Separate a booking fact the asker needs from a fact about another person.
+2. Explain why a true statement can still be the wrong thing to say.
+3. Choose a reply that answers the operational question without naming a resident.
+
+### 5.1 Confidentiality is about disclosure, not secrecy of the room
+
+Confidentiality, in the ordinary security sense used in Chapter 1, means that information is not disclosed to someone who should not receive it. The room number on a library door is not confidential. The name of the person who reserved it can be, because the reservation connects a person to a place and a time. Harbor Library's exercise has no privacy statute to apply and no real patrons. The limit still matters: a practice that treats every true fact as sayable will train the wrong habit.
+
+A resident at the desk asks, "Who has Room 2 at 14:00?" The worker can see, in the synthetic table, that `SYN-001` is a confirmed booking for Room 2 at 14:00. The table in this book does not even contain a resident name. Inventing one in order to be helpful would create personal data the exercise removed on purpose in Chapter 2.
+
+### 5.2 Worked example
+
+The operational question hiding inside the spoken question is usually "Can I use Room 2 at 14:00?" That question can be answered from the booking state.
+
+| Asker's words | Fact the worker has | Reply that stays inside the exercise | Reply that leaves it |
+|---|---|---|---|
+| Who has Room 2 at 14:00? | `SYN-001` confirmed, no name stored | "That slot is already booked. I can't use this sheet to say who." | A made-up name, or a guess from the event list |
+| Is Room 2 free at 15:00? | `SYN-002` confirmed after 09:00 | "The current exercise record shows 15:00 as booked. I will not confirm a change from the 09:00 paper." | "It's free" because the paper omitted `SYN-002` |
+
+The second row reuses the stale-paper rule from Chapter 4. The new point is the first row: even a current record does not authorize naming a person who is not in the record.
+
+### 5.3 What this chapter does not decide
+
+It does not decide that every library must hide reservation names, or that a name is always sensitive. A library could have a posted public program that lists a speaker's name because that person agreed to be listed. Harbor Library's booking exercise has no such agreement and no name field. Staff who need a name for a safety reason ask the owner and record why. They do not borrow a name from the announcement contacts, which Chapter 3 left outside the booking path.
+
+### Chapter 5 summary
+
+A true booking state can be shared when it answers the asker's own question. A person's identity is a different disclosure. This exercise has no names to give, and inventing one is not customer service.
+
+### Chapter 5 exercises
+
+### EX021 — Answer the person in front of you
+
+- **Objective:** Refuse an unnecessary disclosure without hiding the room state.
+- **Input:** A resident asks who booked Room 2 at 14:00. The synthetic row is `SYN-001`, confirmed, with no name.
+- **Safe condition:** Do not invent a resident and do not open a live site.
+- **Task:** Write the reply you would say, and name the fact you deliberately leave out.
+- **Expected evidence:** One spoken reply and one withheld item.
+- **Rubric:** Credit if the slot is described as booked and no person is named or invented.
+
+<!-- cykin:chapter-navigation:start ch-05 -->
+### Continue studying — chapter 05 of 08
+
+[← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
+
+Continue to the next authored lesson.
+<!-- cykin:chapter-navigation:end -->
+
+<a id="ch-06"></a>
+
+## Chapter 6 — A handwritten change is not a correction
+
+<!-- cykin:lesson-figures:start ch-06 -->
+### Lesson map
+
+Lesson 06 published. Map, example, EX022.
+
+```mermaid
+flowchart TD
+  P["09:00 paper omits SYN-002"] --> H["Someone writes SYN-002 on the paper"]
+  H --> C{"Was that write authorized and checked?"}
+  C -->|No| K["The paper is now altered, not refreshed"]
+  C -->|Yes| V["Record who approved it and how it was checked"]
+```
+
+The diagram distinguishes an edit from a new authorized copy.
+
+### Logical drawing
+
+```text
+stale paper
+    |
+    +-- leave it and mark the request pending
+    +-- replace it with an approved later copy
+    +-- write on it so the confirmation looks allowed --> alteration
+```
+<!-- cykin:lesson-figures:end ch-06 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Tell an authorized refresh of a schedule from a handwritten addition.
+2. Explain why making the paper match the desired answer damages the record.
+3. State what evidence would be required before a later copy could replace the 09:00 paper.
+
+### 6.1 Integrity is about the record, not the wish
+
+Integrity means the information stays accurate and is changed only in an authorized way. Chapter 3 already warned that a second copy can be stale. This chapter looks at a different failure: a worker who wants to help writes `SYN-002` onto the 09:00 sheet so that a confirmation no longer looks refused. The booking may really exist in the synthetic table. The writing still changes the artifact that was supposed to be the 09:00 snapshot.
+
+After that pen mark, a classmate can no longer see what the paper said at 09:00. The lab in Chapter 4 would also change if someone edited `PRINTOUT` or the booking time so the program printed ALLOW. Both moves adjust the record to the preferred verdict. Neither move is a check.
+
+### 6.2 Worked example
+
+| Action | What is preserved | Verdict for this exercise |
+|---|---|---|
+| Leave the 09:00 sheet unmarked and mark the 15:00 request pending | The snapshot and the later booking stay distinct | Consistent with Chapter 4 |
+| Ask the owner for the reported 11:40 sheet and check its time and the presence of `SYN-002` | The new copy is still only reported until the check passes | The Chapter 3 condition |
+| Write `SYN-002` on the 09:00 sheet in pencil | The original snapshot is gone | Not a correction |
+
+The third row is the lesson. Good intent does not restore integrity. If the owner later produces a real 11:40 copy, the penciled sheet cannot serve as that copy, because its time and its author are no longer reliable.
+
+### 6.3 A limit
+
+This chapter does not claim that Harbor Library forbids all handwritten schedules. A designed offline form, with a time, an author and a check, can be an authorized copy. An anonymous pencil mark on yesterday's printout is not that form. The exercise also does not show that anyone at Harbor Library did this. It is a mistake to practice against, using the synthetic sheet only.
+
+### Chapter 6 summary
+
+Changing a snapshot so that a rule would have allowed the action destroys the evidence the rule needed. Pending, or a checked later copy, keeps the history. A pencil mark does not.
+
+### Chapter 6 exercises
+
+### EX022 — Spot the alteration
+
+- **Objective:** Reject an edit that manufactures agreement.
+- **Input:** The 09:00 sheet lists only `SYN-001`. During the outage a volunteer pencils in `SYN-002`, Room 2, 15:00, and says, "Now the paper matches the table, so we can confirm."
+- **Safe condition:** Do not confirm a room and do not alter your own copy into the answer you prefer.
+- **Task:** Say what the pencil mark did to the 09:00 record, whether confirmation is now allowed, and what you would keep instead.
+- **Expected evidence:** Three judgments.
+- **Rubric:** Credit only if the mark is called an alteration, confirmation stays refused on that sheet, and the alternative is a pending request or an owner-checked later copy.
+
+<!-- cykin:chapter-navigation:start ch-06 -->
+### Continue studying — chapter 06 of 08
+
+[← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
+
+Continue to the next authored lesson.
+<!-- cykin:chapter-navigation:end -->
+
+<a id="ch-07"></a>
+
+## Chapter 7 — A pending queue during an outage
+
+<!-- cykin:lesson-figures:start ch-07 -->
+### Lesson map
+
+Lesson 07 published. Map, example, EX023.
+
+```mermaid
+flowchart LR
+  O["Booking view unavailable"] --> D["Decision procedure still available"]
+  D --> P["Record the request as pending"]
+  P --> W["Do not invent a confirmation"]
+```
+
+Availability of a screen and availability of a safe decision are different.
+
+### Logical drawing
+
+```text
+outage of the booking view
+        |
+        +-- service unavailable
+        +-- staff procedure available --> pending queue
+        +-- confirmation from memory ----> not available as a method
+```
+<!-- cykin:lesson-figures:end ch-07 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Separate "the booking page is down" from "no decision procedure exists."
+2. Use a pending queue as a continuity method without pretending the room was confirmed.
+3. Apply the same method to a second outage without inventing a new cause.
+
+### 7.1 Availability of what
+
+Chapter 1 named availability as the property that information and the service are there when needed. At 11:30 the booking view is not there. The front desk can still be there. Those are different assets. Calling the whole library "unavailable" would erase the procedure that is still usable: write the request, mark it pending, and wait for an approved current source.
+
+A pending entry needs four fields and nothing personal: time the request was heard, room, requested start, and the words "not confirmed." Adding a resident name would repeat the Chapter 5 mistake. Adding "probably fine" would be a confirmation wearing softer clothes.
+
+### 7.2 Worked example: the next morning
+
+The next morning the view fails again from 09:10 to 09:25. A visitor asks to take Room 2 at 15:00 that day. Nothing in this book says the two outages have the same cause. The worker does not need the cause. The current approved source is still missing, and the 09:00 paper from the earlier exercise is a different day's snapshot, so it cannot confirm today's 15:00.
+
+| Field | Entry |
+|---|---|
+| Heard | 09:12 |
+| Room | Room 2 |
+| Start | 15:00 |
+| State | not confirmed |
+
+When the view returns, the worker compares the pending line with the current record before anyone tells the visitor the room is theirs. If the current record already has a booking, the visitor is told the slot is booked, still without a name. If it is free, a new booking still requires whatever approval the owner defined. This lesson does not invent that approval step.
+
+### 7.3 Limit
+
+One calm pending slip does not measure how long the library can operate this way, how many requests arrive, or whether the view will return. It also does not explain the outage. Availability work at this level is the safe next action during the gap, not a capacity study.
+
+### Chapter 7 summary
+
+A down page removes one way to see bookings. It does not authorize memory, yesterday's paper, or a verbal yes. A pending line with room, time and "not confirmed" keeps the service honest until a current source exists.
+
+### Chapter 7 exercises
+
+### EX023 — Write the pending line
+
+- **Objective:** Continue service without confirming a room.
+- **Input:** At 09:12 the booking view is down. A visitor wants Room 2 at 15:00 today. Yesterday's 09:00 paper is in the drawer.
+- **Safe condition:** Do not diagnose the outage and do not use yesterday's paper as today's source.
+- **Task:** Fill the four pending fields and state why yesterday's paper is the wrong source.
+- **Expected evidence:** The four fields and one exclusion.
+- **Rubric:** Credit if the state is "not confirmed," no name is stored, and yesterday's sheet is excluded because it is a different snapshot.
+
+<!-- cykin:chapter-navigation:start ch-07 -->
+### Continue studying — chapter 07 of 08
+
+[← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
+
+Continue to the next authored lesson.
+<!-- cykin:chapter-navigation:end -->
+
+<a id="ch-08"></a>
+
+## Chapter 8 — A weak procedure is not yet a vulnerability
+
+<!-- cykin:lesson-figures:start ch-08 -->
+### Lesson map
+
+Lesson 08 published. Map, example, EX024.
+
+```mermaid
+flowchart TD
+  W["Weak or missing procedure"] --> Q{"Could a threat source exploit or trigger it?"}
+  Q -->|Not shown| S["Call it a weakness in the exercise, not an incident"]
+  Q -->|Shown with evidence| V["Then the vulnerability claim can be examined"]
+```
+
+The test stops when the evidence stops. This case stops at the first box's "not shown" branch.
+
+### Logical drawing
+
+```text
+stale printout used as if it were current
+        |
+        +-- weak procedure: observed in the exercise design
+        +-- software flaw: not observed
+        +-- attack: not observed
+        +-- incident: not declared
+```
+<!-- cykin:lesson-figures:end ch-08 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Use "weakness" for the stale-paper habit without upgrading it to an attack.
+2. State the extra evidence a vulnerability claim would require.
+3. Refuse a lesson that treats a classroom limitation as an incident report.
+
+### 8.1 The words are not interchangeable
+
+The [NIST Computer Security Resource Center glossary](https://csrc.nist.gov/glossary/term/vulnerability) describes a vulnerability as a weakness that could be exploited or triggered by a threat source. A threat, in the same glossary, is a circumstance or event that could harm operations or assets. An incident is not the same noun as either of those. Chapter 1 already separated threat, vulnerability, event and risk. This chapter applies that split to the only failure the book has actually built: people may treat a 09:00 printout as if it were the live schedule.
+
+That habit is a weakness in the procedure. The book has not exhibited a defect in a booking program, a payload, a stolen account, or a harmed resident. Calling it a vulnerability is only fair if we also say "could be triggered" as a hypothesis and then show the trigger. We cannot show it. The library is fictional, and the outage has no measured cause.
+
+### 8.2 Worked example
+
+| Statement | Class in this book | Why |
+|---|---|---|
+| The 09:00 paper omits a booking created at 10:05 | Observation | It is in the synthetic table |
+| Staff might confirm from that paper | Weak procedure | The exercise was built so that mistake is possible |
+| An attacker took the booking page down | Unsupported | No evidence, and Chapter 4 forbids the live site |
+| The booking software has a flaw an attacker could use | Not established | No program behavior was tested |
+| The outage is a security incident | Not declared | No owner has defined it as one, and the cause is unknown |
+
+The useful decision is procedural. Keep the pending rule, stop pencil edits, and do not name people who are not in the record. Those actions reduce the weakness the exercise can demonstrate. They do not close an incident that was never opened.
+
+### 8.3 What a later lesson would need
+
+A later, more technical course can examine a software flaw when it has an authorized program, a controlled input and an observed result. This rapid lesson stops before that. If a classmate writes "critical vulnerability, score 9.1" on the dossier from Chapter 4, the number is the false precision Chapter 4 already rejected, and the noun is the wrong class. The dossier stays a record of four synthetic verdicts.
+
+### Chapter 8 summary
+
+Harbor Library's exercise shows a stale procedure and the harm that procedure can cause inside the story: a wrong confirmation, a disclosure, or a ruined snapshot. It does not show an exploitable product flaw or an attack. Use the smaller word until the evidence grows.
+
+### Chapter 8 exercises
+
+### EX024 — Choose the smaller word
+
+- **Objective:** Classify the stale-paper problem without inflating it.
+- **Input:** A classmate's note says, "The 11:30 outage was an incident caused by a critical vulnerability in the booking site."
+- **Safe condition:** Use only facts from Chapters 1–7. Do not investigate a real site.
+- **Task:** Replace the note with three sentences: what was observed, what class of problem the exercise supports, and which stronger claim remains unproven.
+- **Expected evidence:** Three sentences a reader can check against the book.
+- **Rubric:** Credit if the outage stays unexplained, the supported class is a weak procedure, and neither vulnerability nor incident is asserted as fact.
+
+<!-- cykin:chapter-navigation:start ch-08 -->
+### Continue studying — chapter 08 of 08
+
+[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+
+The chapter index leads to the next course in the study path.
 <!-- cykin:chapter-navigation:end -->
 
 ## References and source notes
@@ -725,12 +1289,14 @@ The next chapter is an outline, not yet an authored lesson.
 - [NIST CSRC glossary, “Rules of Engagement”](https://csrc.nist.gov/glossary/term/Rules_of_Engagement) — pre-agreed testing boundaries. Accessed 11 October 2026.
 - [NIST, The Cybersecurity Framework 2.0 (NIST CSWP 29)](https://doi.org/10.6028/NIST.CSWP.29) — Asset Management outcomes `ID.AM-01`, `ID.AM-02`, `ID.AM-03`, `ID.AM-04`, `ID.AM-05`, and `ID.AM-07`. Accessed 11 October 2026.
 - [OWASP, Threat Modeling Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html) — system-model elements, data flows, and trust boundaries. Accessed 11 October 2026.
+- [NIST CSRC glossary, “vulnerability”](https://csrc.nist.gov/glossary/term/vulnerability) — weakness that could be exploited or triggered by a threat source. Accessed 13 October 2026.
+- [NIST CSRC glossary, “threat”](https://csrc.nist.gov/glossary/term/threat) — circumstance or event with the potential to harm operations or assets. Accessed 13 October 2026.
 
 Harbor Library, its services, event log, and worked decisions are original fictional teaching material. No text or figures from the linked sources are reproduced here. The definitions and framework descriptions are paraphrased and tied to those primary references.
 
 ## Final appendix — worked results and assessment notes
 
-The complete edition will place all fifty or more numbered results in this final appendix of the same book. These first results let a learner check the first three subject-chapters now. Equivalent, well-supported answers may also earn full credit.
+These results match EX001–EX024. Equivalent answers earn credit when they keep the same evidence limits. Reaching the 20-lesson minimum is separate from this answer key.
 
 ### EX001 — Worked result
 
@@ -791,3 +1357,39 @@ Resident boundary: a room and time request enters the booking view; a resident m
 ### EX015 — Worked result
 
 The earlier conclusion that only a stale 09:00 paper schedule is available is weakened by the owner's new report. Add “reported approved offline schedule, refreshed 11:40” as a separate copy; mark its authority and freshness as **reported, not verified**. In a paper rehearsal, give the worker a synthetic 11:40 sheet and check that its timestamp is 11:40 and that it includes `SYN-002`. If the owner confirms this as an approved current source and the check succeeds, the worker can use it according to the approved procedure; if the check fails, keep the request pending. One remaining limitation is that a single synthetic check does not establish how reliably the real offline schedule refreshes. The correct model changes conditionally instead of defending the old diagram.
+
+### EX016 — Worked result
+
+The REFUSE line is `11:42 confirm-from-printout`. The reason names `SYN-002`. That id is absent from the paper because the exercise printout is fixed at 09:00 and the booking was created at 10:05. The output does not say an attacker caused the gap.
+
+### EX017 — Worked result
+
+Room 4 at 15:00 has no row created after 09:00, so the rule prints ALLOW and the reason says no later booking is recorded for that room and start. The staff member must not tell a resident that Room 4 is free. ALLOW here means the synthetic table did not contain a conflicting later booking.
+
+### EX018 — Worked result
+
+REFUSE compares a printout time with a booking created later. The 11:43 export never makes that comparison, so the rule returns OUT OF SCOPE. This run does not show who can download the contact list, how long it is kept, or whether a control on it works.
+
+### EX019 — Worked result
+
+After STOP, the program still prints the 11:45 mark-pending line and the final tally. A facilitator pauses the participants, does not let anyone open a site, and asks the exercise owner what happens next. The program is replaying a log; the facilitator is responsible for the people in the room.
+
+### EX020 — Worked result
+
+One acceptable note: The exercise classified four synthetic actions against a 09:00 printout. At 11:42 the program refused confirmation of Room 2 at 15:00 because the paper omits `SYN-002`. The decision is to leave that request pending rather than confirm it from the paper. The 11:43 export is out of scope, not a refused booking. The script did not open a reservation store and did not treat the reported 11:40 sheet as verified. The open question for the owner is which approved source, if any, may replace the 09:00 paper. No numeric score belongs in the note.
+
+### EX021 — Worked result
+
+Say: "Room 2 at 14:00 is already booked. This sheet does not say who, and I will not guess." Leave out any person's name. `SYN-001` identifies a synthetic booking, not a resident, so reading the id aloud is also unnecessary for the asker's question.
+
+### EX022 — Worked result
+
+The pencil mark replaces the 09:00 snapshot with a new, unauthorized line, so the sheet can no longer show what was printed. Confirmation on that altered sheet is still not allowed. Keep the request pending, or wait for a later copy whose time and author the owner can check. Do not treat the pencil as that copy.
+
+### EX023 — Worked result
+
+Heard 09:12; room Room 2; start 15:00; state not confirmed. Yesterday's 09:00 paper is a different snapshot, so it cannot show whether today's 15:00 is free. No resident name belongs on the slip, and the outage cause is not part of the entry.
+
+### EX024 — Worked result
+
+The exercise observed a 09:00 paper that omitted a later synthetic booking, and a booking view that was described as unavailable, with no tested cause. The supported class is a weak confirmation procedure. A software vulnerability, an attack, and an incident are unproven: no program flaw was demonstrated, and no owner declared an incident.

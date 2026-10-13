@@ -6,6 +6,8 @@ Escolha um dos 23 temas. Na seção do tema, selecione o nível para abrir o gui
 
 O guia de cada curso lista todos os capítulos em ordem. Um capítulo do manuscrito já pode ser lido; um plano é apenas um resumo, não uma aula. A contagem de capítulos no manuscrito não comprova que o livro foi concluído. Pare na primeira aula obrigatória ainda não escrita.
 
+O calendário de dias úteis define um mínimo de aulas e não um máximo. Uma aula é um capítulo, um exemplo e um exercício. Se a ideia precisar de mais, o curso cresce. O inglês é escrito primeiro. Mínimos: [grade curricular](../../CURRICULUM_GRID.md).
+
 | Tema | Tema | Tema |
 |---|---|---|
 | [Cibersegurança](#theme-cybersecurity) | [Segurança da informação](#theme-information-security) | [Governança de dados](#theme-data-governance) |

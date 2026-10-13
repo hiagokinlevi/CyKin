@@ -6,6 +6,8 @@ Choose one of the nine levels. Its section lists all 23 themes in curricular ord
 
 Each course guide lists all chapters in order. A manuscript chapter is available to read now; a plan is an outline, not a lesson. Chapter counts do not certify a completed book. Stop at the first unwritten required lesson.
 
+The weekday calendar sets a minimum number of lessons and no maximum. One lesson is one chapter, an example and an exercise. If the idea needs more, the course grows. English is written first. Minimums: [curriculum grid](../../CURRICULUM_GRID.md).
+
 [Rapid course](#level-rapid-1-month) · [Professional course](#level-professional-6-months) · [Technical course](#level-technical-18-months) · [Technologist course](#level-technologist-3-years) · [Bachelor's course](#level-bachelors-4-years) · [Engineering course](#level-engineering-5-years) · [Postgraduate course](#level-postgraduate-2-years) · [Master's course](#level-masters-2-years) · [Doctoral research track](#level-doctorate-2-years)
 
 <a id="level-rapid-1-month"></a>
@@ -16,7 +18,7 @@ Each course guide lists all chapters in order. A manuscript chapter is available
 
 | # | Theme | Lesson guide | Begin at chapter 01 | Chapters in manuscript / planned |
 |---:|---|---|---|---:|
-| 01 | Cybersecurity | [Lesson guide](../../levels/rapid-1-month/cybersecurity/en/SUBJECTS.md) | [Read chapter 01](../../levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md#ch-01) | 3/4 |
+| 01 | Cybersecurity | [Lesson guide](../../levels/rapid-1-month/cybersecurity/en/SUBJECTS.md) | [Read chapter 01](../../levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md#ch-01) | 8/8 |
 | 02 | Information security | [Lesson guide](../../levels/rapid-1-month/information-security/en/SUBJECTS.md) | [Read chapter 01](../../levels/rapid-1-month/information-security/en/book/MANUSCRIPT.md#ch-01) | 4/4 |
 | 03 | Data governance | [Lesson guide](../../levels/rapid-1-month/data-governance/en/SUBJECTS.md) | [Read chapter 01](../../levels/rapid-1-month/data-governance/en/book/MANUSCRIPT.md#ch-01) | 4/4 |
 | 04 | Privacy and data protection | [Lesson guide](../../levels/rapid-1-month/privacy-data-protection/en/SUBJECTS.md) | [Read chapter 01](../../levels/rapid-1-month/privacy-data-protection/en/book/MANUSCRIPT.md#ch-01) | 4/4 |

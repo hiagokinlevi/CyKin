@@ -6,6 +6,8 @@ Choose one of the nine levels. Its section lists all 23 themes in curricular ord
 
 Each course guide lists all chapters in order. A manuscript chapter is available to read now; a plan is an outline, not a lesson. Chapter counts do not certify a completed book. Stop at the first unwritten required lesson.
 
+Der Werktagskalender setzt eine Mindestzahl von Lektionen und kein Maximum. Eine Lektion ist ein Kapitel, ein Beispiel und eine Übung. Braucht die Idee mehr, wächst der Kurs. Englisch wird zuerst geschrieben. [Mindestzahlen](../../CURRICULUM_GRID.md).
+
 This edition's course outlines may still be in English; use the authored-chapter count to distinguish teaching from plans.
 
 [Rapid course](#level-rapid-1-month) · [Professional course](#level-professional-6-months) · [Technical course](#level-technical-18-months) · [Technologist course](#level-technologist-3-years) · [Bachelor's course](#level-bachelors-4-years) · [Engineering course](#level-engineering-5-years) · [Postgraduate course](#level-postgraduate-2-years) · [Master's course](#level-masters-2-years) · [Doctoral research track](#level-doctorate-2-years)

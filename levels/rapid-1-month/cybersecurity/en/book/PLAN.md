@@ -40,7 +40,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on the entry knowledge and prepares Chapter 02. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 01 of 04 (outline):** [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (draft) →](MANUSCRIPT.md#ch-02)
+**Continue studying — chapter 01 of 08 (outline):** [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (draft) →](MANUSCRIPT.md#ch-02)
 
 <a id="ch-02"></a>
 
@@ -60,7 +60,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 01 and prepares Chapter 03. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 02 of 04 (outline):** [← Chapter 01 (draft)](MANUSCRIPT.md#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (draft) →](MANUSCRIPT.md#ch-03)
+**Continue studying — chapter 02 of 08 (outline):** [← Chapter 01 (draft)](MANUSCRIPT.md#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (draft) →](MANUSCRIPT.md#ch-03)
 
 <a id="ch-03"></a>
 
@@ -80,13 +80,13 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 02 and prepares Chapter 04. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 03 of 04 (outline):** [← Chapter 02 (draft)](MANUSCRIPT.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (plan) →](PLAN.md#ch-04)
+**Continue studying — chapter 03 of 08 (outline):** [← Chapter 02 (draft)](MANUSCRIPT.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (draft) →](MANUSCRIPT.md#ch-04)
 
 <a id="ch-04"></a>
 
 ### Chapter 04 — Cybersecurity: guided lab and applied synthesis
 
-**Stage 4; 80 planned A4 pages; 12 planned exercises.** Planned; authored chapter pending.
+**Stage 4; historical page budget only; five authored exercises.** [Read authored draft](MANUSCRIPT.md#ch-04)
 
 **Teaching purpose and relevance:** Combine vocabulary, safe practice and service analysis in one supervised first project.
 
@@ -96,12 +96,44 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Worked example:** A staged synthetic library scenario with a stale schedule and suspicious staff sign-in.
 
-**Practice and exercises:** Submit a short service-risk dossier and compare it with a worked rubric. The planned allocation is 12 exercises; authored tasks and worked answers remain a separate completion gate.
+**Practice and exercises:** Compare four synthetic staff actions with a written rule and write a short dossier. The authored tasks are EX016–EX020, with worked answers in the manuscript. This plan summary is not the lesson.
 
-**Learning sequence:** Builds on Chapter 03 and prepares the worked-answer appendix and final assessment. This is an editorial brief, not a completed lesson.
+**Learning sequence:** Builds on Chapter 03 and prepares the worked-answer appendix. Read the authored chapter for the teaching.
 
-**Continue studying — chapter 04 of 04 (outline):** [← Chapter 03 (draft)](MANUSCRIPT.md#ch-03) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+**Continue studying — chapter 04 of 08 (outline):** [← Chapter 03 (draft)](MANUSCRIPT.md#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 (draft) →](MANUSCRIPT.md#ch-05)
+
+<a id="ch-05"></a>
+
+### Chapter 05 — What may be said about a booking
+
+**Authored.** [Read the lesson](MANUSCRIPT.md#ch-05). A resident may learn that a slot is booked without receiving another person's name. The exercise stores no names.
+
+**Continue studying — chapter 05 of 08 (outline):** [← Chapter 04 (draft)](MANUSCRIPT.md#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 (draft) →](MANUSCRIPT.md#ch-06)
+
+<a id="ch-06"></a>
+
+### Chapter 06 — A handwritten change is not a correction
+
+**Authored.** [Read the lesson](MANUSCRIPT.md#ch-06). Pencil on the 09:00 sheet destroys the snapshot. It is not an authorized refresh.
+
+**Continue studying — chapter 06 of 08 (outline):** [← Chapter 05 (draft)](MANUSCRIPT.md#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 (draft) →](MANUSCRIPT.md#ch-07)
+
+<a id="ch-07"></a>
+
+### Chapter 07 — A pending queue during an outage
+
+**Authored.** [Read the lesson](MANUSCRIPT.md#ch-07). The booking view can be down while a four-field pending line still prevents a false confirmation.
+
+**Continue studying — chapter 07 of 08 (outline):** [← Chapter 06 (draft)](MANUSCRIPT.md#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 (draft) →](MANUSCRIPT.md#ch-08)
+
+<a id="ch-08"></a>
+
+### Chapter 08 — A weak procedure is not yet a vulnerability
+
+**Authored.** [Read the lesson](MANUSCRIPT.md#ch-08). The stale-paper habit is a weakness in the exercise. The book does not establish a software vulnerability or an incident.
+
+**Continue studying — chapter 08 of 08 (outline):** [← Chapter 07 (draft)](MANUSCRIPT.md#ch-07) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 ## Practical and assessment plan
 
-Practice: follow a contained worked example. Assessment: short quiz, observed lab and a small annotated artifact. Allocate at least one authored exercise to every chapter and at least 50 in the whole book. Each technical exercise needs a goal, inputs, authorized scope, steps, expected evidence and a worked or rubric-based result. The final book requires a glossary, references and an A4 rendering verified under the [book standard](../../../../../BOOK_STANDARD.md).
+Practice: follow a contained worked example. Each authored exercise needs a goal, inputs, authorized scope, expected evidence and a worked result. There is no exercise quota and no page quota. Quality is defined in the [book standard](../../../../../BOOK_STANDARD.md).

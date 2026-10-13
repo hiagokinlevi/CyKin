@@ -1,14 +1,14 @@
-# Public lesson coverage — English, Portuguese and Spanish
+# Public chapter inventory — English, Portuguese and Spanish
 
 [Home](README.md) · [Book standard](BOOK_STANDARD.md) · [Complete study path](STUDY_PATH.md)
 
-Each subject is one lesson and one chapter in its language edition's single public book. A number counts a numbered chapter anchor in `MANUSCRIPT.md`; a **plan** is an outline, not a lesson. These are structural counts, not finished books or claims of technical review.
+The numerator counts numbered chapter anchors in `MANUSCRIPT.md`; the denominator counts the selected edition's current `PLAN.md` anchors. A **plan** is an outline, not a lesson. Older indexes use one chapter per subject module; migrated indexes use one chapter per instructional weekday. These mixed structural counts are **not** daily-target completion or technical approval. See the separate minimum weekday baselines in the [curriculum grid](CURRICULUM_GRID.md).
 
-**Planned:** 207 books and 4,186 lessons per language. **A finished book:** at least 300 verified A4 pages, 50 substantial exercises with worked answers, and the technical, source, rights, language and accessibility reviews in the book standard.
+**Catalog:** 207 courses and one principal book per course and language edition. The weekday calendar sets a planning minimum and no maximum. A finished book is an English lesson that has been taught, checked and reviewed; page count is not the writing target. See the book standard.
 
-| Language | Public manuscripts / 207 | Numbered lessons / planned | Lessons with explicit example heading | Lessons with detected exercise | Lessons with navigation | Lessons with Mermaid/image |
+| Language | Public manuscripts / 207 | Authored chapters / currently indexed positions | Chapters with explicit example heading | Chapters with detected exercise | Chapters with navigation | Chapters with Mermaid/image |
 |---|---:|---:|---:|---:|---:|---:|
-| English | 199/207 | 4007/4186 | 3867/4007 | 4007/4007 | 4007/4007 | 4007/4007 |
+| English | 199/207 | 4012/4190 | 3872/4012 | 4012/4012 | 4012/4012 | 4012/4012 |
 | Português | 124/207 | 2509/4186 | 2412/2509 | 2509/2509 | 2509/2509 | 2509/2509 |
 | Español | 27/207 | 516/4186 | 474/516 | 516/516 | 516/516 | 516/516 |
 
@@ -16,11 +16,11 @@ The example and visual columns detect explicit headings and Mermaid/image syntax
 
 ## Course editions
 
-Open a numbered entry to read its public lessons. A *(plan)* entry still needs authored teaching in that language.
+Open a numbered entry to read its public chapters. A *(plan)* entry still needs authored teaching in that language.
 
 | Level · academic area | English | Português | Español |
 |---|---:|---:|---:|
-| rapid-1-month · Cybersecurity | [3/4](levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/cybersecurity/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/cybersecurity/es/book/PLAN.md) |
+| rapid-1-month · Cybersecurity | [8/8](levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/cybersecurity/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/cybersecurity/es/book/PLAN.md) |
 | rapid-1-month · Information security | [4/4](levels/rapid-1-month/information-security/en/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/information-security/pt/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/information-security/es/book/MANUSCRIPT.md) |
 | rapid-1-month · Data governance | [4/4](levels/rapid-1-month/data-governance/en/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/data-governance/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/data-governance/es/book/PLAN.md) |
 | rapid-1-month · Privacy and data protection | [4/4](levels/rapid-1-month/privacy-data-protection/en/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/privacy-data-protection/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/privacy-data-protection/es/book/PLAN.md) |

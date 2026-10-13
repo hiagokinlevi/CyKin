@@ -14,7 +14,7 @@ flowchart LR
     Access --> D1[D1 lesson and exercise progress]
 ```
 
-The repository is the canonical source for one `MANUSCRIPT.md` per course and language. `SUBJECTS.md` organizes modules, `PLAN.md` records the editorial sequence, and the site reads **authored** chapters, examples and worked answers from the manuscript. The Astro catalog is built locally from the repository and carries nine-level cadence metadata for every course: five study days per instructional week and 20–1,300 distinct weekday chapters per book. That **target** is separate from the legacy subject-chapter count and the chapters currently available. A new book commit appears in the API and reader when fetched from `main`; a structural catalog or frontend change requires a validated local build and Worker deploy. Only optional saved progress crosses the Access boundary and uses D1.
+The repository is the canonical source for one `MANUSCRIPT.md` per course and language. `SUBJECTS.md` organizes modules, `PLAN.md` records the editorial sequence, and the site reads **authored** chapters, examples and worked answers from the manuscript. The weekday calendar sets a lesson minimum and no maximum. A new book commit appears in the API and reader when fetched from `main`; a structural catalog or frontend change requires a validated local build and Worker deploy. Only optional saved progress crosses the Access boundary and uses D1.
 
 ## Local development
 
@@ -32,7 +32,7 @@ Open `http://localhost:8787/`. The site and `/api/*` and `/mcp` are public. The 
 
 Readers use the separate **By level** and **By subject** menus. `/levels/` and `/subjects/` open distinct directories; `/levels/{level}/` lists the 23 separate courses at that level, and `/subjects/{area}/` lists the nine distinct levels of that subject. Each `/courses/{level}/{area}/?lang=...` page has its own lesson guide, lesson reader and navigation. `/book/?level=...&area=...&lang=...` displays the complete manuscript, and `/read/?path=...` displays course references and plans. Old `/learn/` links redirect to the corresponding course or directory. These pages render Markdown within CyKin and route book, chapter, index and reference links internally. Readers can select any of the nine planned book editions; availability is shown from the actual manuscript. The interface starts in English, follows a supported browser language (English, Portuguese or Spanish), and offers a persistent interface-language switch. The selected course edition (`lang`) remains separate from the interface translation (`ui`); an outline is never shown as a written lesson.
 
-The daily curriculum target applies to all nine language editions. Current subject chapters are displayed as the existing content blocks until an edition is expanded into its weekday sequence. The API supports chapter identifiers through `ch-1300` and exercise identifiers through `EX1300`; it does not invent missing lesson text. See the [curriculum grid](../CURRICULUM_GRID.md) and [book standard](../BOOK_STANDARD.md) for authoring and release criteria.
+The same quality rule applies to all nine language editions. The site shows the chapters that exist. It does not require a book to grow to a fixed lesson count. The API can address a chapter id that is present in the manuscript; it does not invent missing lesson text. See the [curriculum grid](../CURRICULUM_GRID.md) and [book standard](../BOOK_STANDARD.md).
 
 ## Student sign-in and progress
 
