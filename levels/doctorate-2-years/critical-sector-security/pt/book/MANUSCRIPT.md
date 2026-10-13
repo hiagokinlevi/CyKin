@@ -1,7 +1,7 @@
 # Infraestrutura Crítica e Segurança Setorial: Métodos de Pesquisa de Doutorado e Prática de Tese
 
 - Idioma: português do Brasil (`pt`); trilha de pesquisa de doutorado, dois anos; aproximadamente 1.600 horas de estudo planejado (curso 207 de 207, o último curso da [trilha de estudo](../../../../../STUDY_PATH.md)). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–4 de 8 já estão escritos em português, com os exercícios EX001–EX026 e suas resoluções; os capítulos 5–8 (EX027–EX050) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–8 de 8 têm texto didático escrito, os exercícios EX001–EX050 e as resoluções correspondentes. Revisão independente por especialistas, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
 - Público: pesquisadores avançados que já têm experiência de pesquisa e uma pergunta defensável sobre a segurança e a resiliência da infraestrutura crítica — energia, água, saúde, transporte, comunicações, finanças e serviços públicos. Conhecimento de entrada: o conteúdo planejado para as trilhas de [mestrado](../../../../masters-2-years/critical-sector-security/en/book/PLAN.md) e de [pós-graduação](../../../../postgraduate-2-years/critical-sector-security/en/book/PLAN.md) desta área (ainda esboços quando este texto foi escrito), ou experiência profissional equivalente, mais familiaridade prática com probabilidade, teoria básica dos grafos, simulação e entrevistas qualitativas. O [curso de doutorado em segurança de TO, IoT e sistemas ciberfísicos](../../../ot-iot-security/README.md), que o acompanha, estuda a fundo a camada dos sistemas de controle; este livro estuda a camada *setorial e intersetorial* que fica acima dela.
 - Autoria e responsabilidade editorial: [hiagokinlevi](https://github.com/hiagokinlevi). O texto didático original, de propriedade do mantenedor, é dedicado sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus próprios direitos e não são relicenciadas aqui.
 - Limite educacional: esta trilha é um projeto educacional independente. Não é um programa de doutorado credenciado, não concede título e não concede autorização para acessar, varrer, testar ou estudar nenhuma infraestrutura, operador, conjunto de dados ou pessoa reais. Toda organização, região, ativo, pessoa, registro, conjunto de dados, benchmark e resultado numérico de um exemplo resolvido é **sintético**, salvo quando uma frase cita explicitamente uma fonte pública. Nada neste livro é um procedimento operacional para uma concessionária real.
@@ -44,10 +44,12 @@ Toda afirmação factual sobre uma norma, uma regulamentação, um incidente pú
 2. [Infraestrutura crítica e segurança setorial: fronteira da pesquisa](#ch-02) — o panorama de políticas e normas, as famílias de modelagem de interdependências, a pesquisa de detecção e de testbeds, as evidências setoriais e uma lacuna falseável.
 3. [Proposta de contribuição original](#ch-03) — mecanismo, grafos de dependência com reservas, hipóteses, linhas de base, explicações rivais e condições de falha declaradas com antecedência.
 4. [Replicação da linha de base e piloto](#ch-04) — reproduzir um modelo de inoperabilidade e um benchmark de detecção, armadilhas de avaliação, verificação do modelo e um piloto delimitado.
+5. [Estudo principal e validação independente](#ch-05) — experimentos de simulação com incerteza, estudos de mesa com operadores, validação contra o histórico e especialistas, e um segundo contexto.
+6. [Crítica de pares e revisão](#ch-06) — circularidade modelo–política, condições de fronteira, inadequação do modelo, resultados negativos, revisão de duplo uso e estreitamento das alegações.
+7. [Síntese da tese e arquivo de reprodutibilidade](#ch-07) — estrutura do argumento, liberação de artefatos em níveis sob as regras de informação de infraestrutura, dados sintéticos e documentação do modelo.
+8. [Defesa e plano de publicação](#ch-08) — auditoria das alegações, preparação da defesa, veículos, divulgação coordenada, tradução para políticas públicas e o programa de pesquisa pós-doutoral.
 
-Capítulos 5–8: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-05), até a chegada dos próximos lotes.
-
-As [resoluções](#worked-results) contêm EX001–EX026. Um [glossário](#glossary) e as [referências](#references) encerram o livro.
+As [resoluções](#worked-results) contêm EX001–EX050. Um [glossário](#glossary) e as [referências](#references) encerram o livro.
 
 <a id="ch-01"></a>
 
@@ -1065,16 +1067,915 @@ Antes de comparar métodos, garanta que os números significam o que alegam. Rep
 <!-- cyberabc:chapter-navigation:start ch-04 -->
 ### Continue estudando — capítulo 04 de 08
 
-[← Capítulo 03](#ch-03) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 05 (inglês) →](../../en/book/MANUSCRIPT.md#ch-05)
+[← Capítulo 03](#ch-03) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
 
-Os próximos capítulos ainda estão apenas na edição em inglês.
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-05"></a>
+
+## Capítulo 5 — Estudo principal e validação independente
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo, o estudante será capaz de:
+
+1. Desenhar um experimento de simulação pareado com números aleatórios comuns, um número justificado de sorteios e um limite oráculo.
+2. Distinguir a incerteza de Monte Carlo da incerteza de parâmetros e da incerteza estrutural, e dizer qual delas um intervalo relatado descreve.
+3. Interpretar um padrão misto de hipóteses sustentadas e não sustentadas sem resgatar as favoráveis.
+4. Desenhar e analisar um estudo de exercício de mesa cego com operadores cujo desfecho seja a *consequência* das escolhas feitas, e não a preferência declarada.
+5. Validar um modelo usando evidências de validade aparente, histórica, de condições extremas e operacional, e declarar o que cada uma estabelece.
+6. Executar uma validação independente num segundo contexto selecionado segundo critérios declarados com antecedência e raciocinar sobre a transportabilidade.
+
+O Capítulo 4 verificou o simulador, reproduziu as linhas de base e pilotou os procedimentos. Este capítulo executa o estudo confirmatório exatamente como pré-registrado e então testa se seu resultado se transporta.
+
+### 5.1 Desenhando o experimento de simulação
+
+#### 5.1.1 Comparações pareadas e números aleatórios comuns
+
+Cada sorteio da simulação amostra um cenário: as durações de restauração de todos os alimentadores e as reservas de todos os serviços. Toda política é avaliada sobre *o mesmo* sorteio. Esse desenho de **números aleatórios comuns** remove da comparação a variância compartilhada entre cenários: a quantidade de interesse é a diferença por sorteio entre duas políticas, cuja variância é Var(A) + Var(B) − 2 Cov(A, B). O pareamento ajuda exatamente na medida em que as perdas das duas políticas são positivamente correlacionadas entre os sorteios. Quando duas políticas se compensam — uma protege a água num sorteio em que a outra protege as telecomunicações —, a correlação é fraca e o pareamento ajuda pouco; o EX028 mostra isso acontecendo em Riverbend. Analise as diferenças pareadas mesmo assim, porque elas são o estimando correto, mas não presuma que o pareamento garanta precisão.
+
+#### 5.1.2 Quantos sorteios?
+
+O erro-padrão de Monte Carlo de uma diferença de médias é *s_d* / √*n*, em que *s_d* é o desvio-padrão das diferenças por sorteio. No piloto (Capítulo 4), o desvio-padrão das diferenças DEP − CRITFLAG em Riverbend foi de cerca de 7 horas de serviço ponderadas, então 500 sorteios dão uma semiamplitude de 95% de cerca de 1,96 × 7 / √500 ≈ 0,6. O menor efeito de interesse para H2 é 10% da perda de CRITFLAG; como a perda de CRITFLAG em Riverbend é pequena (cerca de 4), esse limiar é de cerca de 0,4 — menor que a semiamplitude. O pré-registro fixou, portanto, uma **regra de decisão** de três vias: H2 é *sustentada* se o intervalo ficar inteiramente abaixo de −10% da perda média de CRITFLAG, *rejeitada* se ficar inteiramente acima desse limiar (uma redução de pelo menos 10% fica descartada), e *inconclusiva* nos demais casos, quando o remédio planejado eram 2.000 sorteios adicionais sem o oráculo. Registre o cálculo e a regra; não aumente *n* depois de ver um resultado "quase significativo" fora da regra que você escreveu.
+
+#### 5.1.3 O que significa um intervalo de Monte Carlo
+
+Um intervalo bootstrap ou normal sobre os sorteios da simulação descreve a **incerteza de Monte Carlo** — quanto a estimativa se moveria com mais sorteios *deste modelo, com estas distribuições de parâmetros*. Ele nada diz sobre a **incerteza de parâmetros** (se as distribuições obtidas estão certas) nem sobre a **incerteza estrutural** (se a forma do modelo está certa). Com sorteios suficientes, qualquer diferença se torna "estatisticamente significativa" dentro de um modelo. Relate os intervalos de Monte Carlo por completude, mas baseie as alegações nos tamanhos de efeito em relação ao menor efeito de interesse, e trate a incerteza de parâmetros e a estrutural com análises de sensibilidade e validação (§5.4 e Capítulo 6).
+
+### 5.2 O estudo de simulação confirmatório
+
+#### 5.2.1 O simulador
+
+O simulador baseado em eventos abaixo implementa o desenho pré-registrado. Um serviço fica indisponível enquanto seu alimentador está desenergizado além de sua reserva, ou enquanto um serviço do qual ele depende está indisponível além de sua reserva local; um atraso de reinício de uma hora segue a restauração. As equipes pegam o próximo alimentador na ordem da política assim que ficam livres. Os clientes-hora são calculados por alimentador. ORACLE enumera todas as ordenações para cada sorteio. Salve o código como `lab5_mc.py`; o Capítulo 6 o importa.
+
+```python
+# Lab 5 - paired Monte Carlo comparison of restoration orderings (offline, standard library only)
+# Event-based: a service is unavailable while its feeder is down beyond its buffer, or while a
+# service it depends on is unavailable beyond its on-site buffer; restart lag applies after restoration.
+import itertools, random, statistics
+
+RIVERBEND = {
+    "customers": {"F1": 9000, "F2": 1200, "F3": 2500, "F4": 6000},
+    "crews": 1, "dur": (2, 6, 4),          # triangular(low, high, mode) hours per feeder
+    "services": {  # name: (feeder, buffer triangular, weight, (depends_on, on-site hours) or None)
+        "WATER": ("F3", (4, 14, 8), 4.0, None),
+        "TEL":   ("F2", (4, 12, 8), 3.0, None),
+        "HOSP":  ("F2", (8, 48, 24), 5.0, ("WATER", 4.0)),
+    },
+}
+PORT_HALVARD = {
+    "customers": {"H1": 7000, "H2": 3000, "H3": 1500, "H4": 4000, "H5": 800, "H6": 5000},
+    "crews": 2, "dur": (1.5, 5, 3),
+    "services": {
+        "WATER2":   ("H4", (10, 30, 20), 4.0, None),
+        "HOSP2":    ("H2", (48, 96, 72), 5.0, ("WATER2", 6.0)),
+        "TEL2":     ("H3", (2, 6, 4), 3.0, None),
+        "DISPATCH": ("H5", (1, 3, 2), 4.0, None),
+    },
+}
+H, LAG = 72.0, 1.0
+
+def draw(region, rng, buffer_scale=1.0):
+    dur = {f: rng.triangular(*region["dur"]) for f in sorted(region["customers"])}
+    buf = {s: rng.triangular(*v[1]) * buffer_scale for s, v in sorted(region["services"].items())}
+    return dur, buf
+
+def restore_times(order, dur, crews):
+    free, done = [0.0] * crews, {}
+    for f in order:
+        i = min(range(crews), key=lambda k: free[k])
+        free[i] += dur[f]
+        done[f] = free[i]
+    return done
+
+def outage(region, done, buf):
+    """Return {service: (start, end)} of unavailability, clipped to [0, H]."""
+    out = {}
+    def solve(s):
+        if s in out:
+            return out[s]
+        feeder, _, _, dep = region["services"][s]
+        ivs = []
+        if buf[s] < done[feeder]:
+            ivs.append((buf[s], done[feeder] + LAG))
+        if dep:
+            d = solve(dep[0])
+            if d and d[0] + dep[1] < d[1]:
+                ivs.append((d[0] + dep[1], d[1]))
+        out[s] = (min(a for a, _ in ivs), max(b for _, b in ivs)) if ivs else None
+        return out[s]
+    for s in region["services"]:
+        solve(s)
+    return {s: (max(0.0, iv[0]), min(H, iv[1])) for s, iv in out.items() if iv}
+
+def evaluate(region, order, dur, buf):
+    done = restore_times(order, dur, region["crews"])
+    loss = sum(region["services"][s][2] * (e - b) for s, (b, e) in outage(region, done, buf).items() if e > b)
+    cust_h = sum(c * min(H, done[f]) for f, c in region["customers"].items()) / 1000.0
+    return loss, cust_h
+
+def silo(region):
+    return sorted(region["customers"], key=lambda f: -region["customers"][f])
+
+def critflag(region, believed_feeder=None):
+    feeder_of = {s: v[0] for s, v in region["services"].items()}
+    feeder_of.update(believed_feeder or {})   # the critical-customer list may also be out of date
+    crit = set(feeder_of.values())
+    return sorted(region["customers"], key=lambda f: (f not in crit, -region["customers"][f]))
+
+def dep(region, believed_feeder=None):
+    svc = dict(region["services"])
+    if believed_feeder:                       # planner's (possibly wrong) dependency map
+        for s, f in believed_feeder.items():
+            svc[s] = (f,) + svc[s][1:]
+    mean = {s: sum(v[1]) / 3 for s, v in svc.items()}
+    tti = {}
+    def t(s):
+        if s not in tti:
+            dep_ = svc[s][3]
+            tti[s] = min(mean[s], t(dep_[0]) + dep_[1]) if dep_ else mean[s]
+        return tti[s]
+    key = {f: min([t(s) for s, v in svc.items() if v[0] == f], default=float("inf")) for f in region["customers"]}
+    return sorted(region["customers"], key=lambda f: (key[f], -region["customers"][f]))
+
+def experiment(region, n=500, seed=7, buffer_scale=1.0, believed_feeder=None, oracle=True):
+    rng = random.Random(seed)
+    policies = {"SILO": silo(region), "CRITFLAG": critflag(region, believed_feeder), "DEP": dep(region, believed_feeder)}
+    res = {k: [] for k in list(policies) + (["ORACLE"] if oracle else [])}
+    cust = {k: [] for k in policies}
+    perms = list(itertools.permutations(region["customers"]))
+    for _ in range(n):
+        dur, buf = draw(region, rng, buffer_scale)
+        for k, order in policies.items():
+            l, c = evaluate(region, order, dur, buf)
+            res[k].append(l)
+            cust[k].append(c)
+        if oracle:
+            res["ORACLE"].append(min(evaluate(region, list(p), dur, buf)[0] for p in perms))
+    return policies, res, cust
+
+def boot_ci(x, seed=11, b=1000):
+    rng = random.Random(seed)
+    means = sorted(statistics.fmean(rng.choices(x, k=len(x))) for _ in range(b))
+    return round(means[int(0.025 * b)], 2), round(means[int(0.975 * b)], 2)
+
+if __name__ == "__main__":
+    for name, region in (("Riverbend", RIVERBEND), ("Port Halvard", PORT_HALVARD)):
+        policies, res, cust = experiment(region)
+        print(f"== {name}: orders {policies}")
+        for k, v in res.items():
+            extra = f"  customer-hours(k) {statistics.fmean(cust[k]):7.1f}" if k in cust else ""
+            print(f"  {k:8} weighted critical loss {statistics.fmean(v):6.2f}{extra}")
+        d = [a - b for a, b in zip(res["DEP"], res["CRITFLAG"])]
+        print("  DEP - CRITFLAG loss: mean", round(statistics.fmean(d), 2), "95% CI", boot_ci(d))
+        r = statistics.fmean(cust["DEP"]) / statistics.fmean(cust["SILO"]) - 1
+        r2 = statistics.fmean(cust["DEP"]) / statistics.fmean(cust["CRITFLAG"]) - 1
+        print("  DEP customer-hours vs SILO:", f"{r:+.1%}", "| vs CRITFLAG:", f"{r2:+.1%}")
+```
+
+Saída esperada:
+
+```text
+== Riverbend: orders {'SILO': ['F1', 'F4', 'F3', 'F2'], 'CRITFLAG': ['F3', 'F2', 'F1', 'F4'], 'DEP': ['F2', 'F3', 'F1', 'F4']}
+  SILO     weighted critical loss  52.75  customer-hours(k)   133.0
+  CRITFLAG weighted critical loss   3.97  customer-hours(k)   222.5
+  DEP      weighted critical loss   4.32  customer-hours(k)   227.6
+  ORACLE   weighted critical loss   1.79
+  DEP - CRITFLAG loss: mean 0.35 95% CI (-0.23, 0.97)
+  DEP customer-hours vs SILO: +71.2% | vs CRITFLAG: +2.3%
+== Port Halvard: orders {'SILO': ['H1', 'H6', 'H4', 'H2', 'H3', 'H5'], 'CRITFLAG': ['H4', 'H2', 'H3', 'H5', 'H1', 'H6'], 'DEP': ['H5', 'H3', 'H4', 'H2', 'H1', 'H6']}
+  SILO     weighted critical loss  53.93  customer-hours(k)   103.2
+  CRITFLAG weighted critical loss  31.63  customer-hours(k)   148.5
+  DEP      weighted critical loss   9.61  customer-hours(k)   163.2
+  ORACLE   weighted critical loss   9.61
+  DEP - CRITFLAG loss: mean -22.01 95% CI (-22.4, -21.59)
+  DEP customer-hours vs SILO: +58.2% | vs CRITFLAG: +9.9%
+```
+
+#### 5.2.2 Lendo os resultados à luz das hipóteses
+
+| Hipótese | Riverbend (principal) | Port Halvard (validação independente) | Veredito |
+|---|---|---|---|
+| H1: DEP reduz a perda em ≥ 20% vs SILO | 52,75 → 4,32 (−92%) | 53,93 → 9,61 (−82%) | Sustentada nas duas |
+| H2: DEP reduz a perda em ≥ 10% vs CRITFLAG | +0,35 (intervalo MC de 95% de −0,23 a 0,97), inteiramente acima do limiar de −0,40: uma redução de 10% fica descartada | −22,01 de 31,63 (−70%) | **Não sustentada** em Riverbend; sustentada em Port Halvard |
+| H3: o ganho cresce com a divergência das ordens | As ordens diferem em 2 posições (F2/F3 trocados), mas sem ganho | As ordens diferem nas 4 posições críticas; ganho grande | Em parte; Riverbend é uma anomalia a explicar (§5.2.3) |
+| H4a: clientes-hora ≤ +15% vs SILO | +71,2% | +58,2% | **Falha** nas duas |
+| H4b: clientes-hora ≤ +15% vs CRITFLAG | +2,3% | +9,9% | Sustenta-se nas duas |
+| Distância até ORACLE | DEP 4,32 vs ORACLE 1,79 | DEP 9,61 = ORACLE 9,61 | DEP longe do ótimo em Riverbend; ótimo em Port Halvard |
+
+O resumo honesto é misto. A ordenação ciente da criticidade, de *qualquer* tipo, protege os serviços críticos de forma drástica em comparação com a ordenação pelos clientes, a um custo grande em clientes-hora que a teoria de programação previu (Capítulo 3). Se a *temporização* agrega valor sobre uma lista de clientes críticos depende da região: nenhum em Riverbend, muito em Port Halvard. Aplica-se a condição de falha pré-registrada "H2 falha numa região e se sustenta na outra": estreitar a alegação para as condições que distinguem as regiões e testar o mecanismo.
+
+#### 5.2.3 Explicando a anomalia de Riverbend sem resgatar a hipótese
+
+Em Riverbend, DEP restaura F2 (telecomunicações e hospital) antes de F3 (água), porque o tempo esperado até o impacto das telecomunicações (8 h) é um pouco anterior ao da água (8,7 h). CRITFLAG restaura F3 primeiro porque ele tem mais clientes. Mas F3 protege *dois* serviços ponderados — a água diretamente e o hospital por meio de sua dependência da água —, enquanto restaurar F2 primeiro protege as telecomunicações e apenas o caminho de energia do hospital, que tem uma reserva longa. Uma regra do menor tempo até o impacto ignora os **pesos e o espalhamento**; o Capítulo 3 nomeou isso como a fraqueza conhecida da heurística. A perda muito menor de ORACLE confirma que nenhuma das regras está perto do ótimo em Riverbend.
+
+Essa explicação é post hoc. É legítimo relatá-la como uma *hipótese gerada pelo estudo confirmatório*, a ser testada em dados novos (o Capítulo 6 a testa em muitas regiões sintéticas); não é legítimo reexecutar o estudo principal com uma regra revisada e relatar isso como confirmatório.
+
+### 5.3 O estudo de exercício de mesa com operadores
+
+#### 5.3.1 Por que pessoas, e não apenas modelos
+
+Uma regra de restauração que os operadores não seguem não tem consequência. O estudo de exercício de mesa pergunta se, dada a exibição do tempo efetivo até o impacto pilotada no Capítulo 4, operadores experientes escolhem ordenações que o modelo avalia como de menor consequência, e por que sim ou por que não.
+
+#### 5.3.2 Desenho (sintético)
+
+- **Participantes.** Doze operadores e gestores de emergências (P01–P12) de três concessionárias sintéticas, recrutados por meio dos parceiros com consentimento individual, nenhum do piloto. A participação foi voluntária e sem remuneração além das despesas; os gestores não ficaram sabendo quem participou.
+- **Cruzamento intrassujeitos.** Cada participante ordenou a restauração em dois cenários isomórficos — topologia semelhante à de Port Halvard com alimentadores renomeados e posições embaralhadas —, uma vez com uma exibição convencional (número de clientes e sinalizações de clientes críticos) e uma vez com a exibição do tempo efetivo até o impacto acrescentada. A ordem das exibições e as versões dos cenários foram contrabalançadas.
+- **Cegamento.** Os cenários não continham informações sobre o desfecho; os injects foram verificados no piloto quanto a pistas prematuras. Os analistas que pontuaram as justificativas em texto livre não sabiam qual condição de exibição as produziu.
+- **Desfecho.** A *ordenação escolhida*, avaliada no simulador sobre os mesmos 500 sorteios do estudo principal — de modo que o desfecho é a consequência estimada pelo modelo da decisão do participante, e não sua preferência declarada. Secundários: tempo de decisão; códigos das justificativas.
+- **Análise.** Comparação pareada de se cada participante escolheu a ordenação DEP sob cada exibição; teste exato de McNemar sobre os pares discordantes; diferenças descritivas de consequência; análise temática das justificativas.
+
+#### 5.3.3 Resultados (sintéticos)
+
+| Exibição convencional → exibição do tempo até o impacto | Participantes |
+|---|---|
+| Não DEP → DEP | 7 |
+| Não DEP → não DEP | 5 |
+| DEP → não DEP | 0 |
+| DEP → DEP | 0 |
+
+Todos os sete pares discordantes se moveram em direção a DEP. Sob a hipótese nula de que uma troca em qualquer direção é igualmente provável, a probabilidade exata bicaudal de sete ou mais trocas numa direção em sete é 2 × 0,5⁷ = 0,0156. Com doze participantes de três concessionárias, isso é evidência de que a exibição *pode* mudar as escolhas num exercício de mesa, e não uma estimativa de com que frequência os operadores mudariam a prática. Entre os cinco que não adotaram DEP, quatro mantiveram uma ordem semelhante à de CRITFLAG. Os códigos das justificativas (dois codificadores, divergências resolvidas e registradas) incluíram: *expectativa institucional* ("o conselho nos mede pelos clientes restaurados"; 4 participantes), *desconfiança dos números das reservas* ("já vi os registros de combustível dos hospitais — nunca batem com o papel"; 3) e *logística de campo* ("as equipes já estão perto do alimentador grande"; 3). O último tema identifica uma variável que o modelo omite: o tempo de deslocamento entre os alimentadores, que torna as durações de restauração dependentes da ordem.
+
+#### 5.3.4 O que o exercício de mesa pode e não pode sustentar
+
+Ele sustenta: a exibição é compreensível; ela desloca as escolhas no exercício de mesa em direção a uma consequência modelada menor; os operadores levantam objeções específicas que o modelo precisa tratar. Ele não pode sustentar: a adoção no mundo real; efeitos sob estresse, cansaço e informação incompleta; nem efeitos em concessionárias diferentes das três amostradas. Exercícios de mesa também são performances — os participantes sabem que estão sendo observados —, o que empurra para respostas "de aparência correta".
+
+### 5.4 Validando o modelo
+
+Seguindo [Sargent (2013)](https://doi.org/10.1057/jos.2012.20), a validação é evidência de que um modelo é adequado *para o seu propósito pretendido* — aqui, classificar as ordenações de restauração pela consequência sobre os serviços críticos —, e não de que ele é "verdadeiro".
+
+| Tipo de validação | Evidência do Cascade Study (sintética) | O que estabelece | O que não estabelece |
+|---|---|---|---|
+| Validade aparente | Doze participantes do exercício de mesa e dois engenheiros parceiros revisaram a estrutura e as saídas do modelo | A estrutura é reconhecível pelos profissionais; nenhuma omissão gritante, exceto o tempo de deslocamento | Que os parâmetros estão certos |
+| Validação histórica | A queda da tempestade de gelo de 2019 em Riverbend (todas as causas, registro sintético): o modelo, com os tempos de restauração registrados dos alimentadores, previu a perda de pressão da água em 9 h e o desvio do hospital em 13 h; os registros mostram 11 h e nenhum desvio (o hospital recebeu água por caminhão em 10 h) | A temporização da falha da água está na faixa certa; o modelo omite a ajuda mútua (água por caminhão), uma reserva humana | A acurácia para cenários induzidos por ciberataques; qualquer generalização a partir de um único evento |
+| Testes de condições extremas | Reservas zero, reservas infinitas, um único alimentador, um serviço | O comportamento nos limites é sensato (invariantes do Capítulo 4) | O comportamento no interior |
+| Variabilidade dos parâmetros | Escalonamento das reservas e conjuntos de pesos (Capítulo 6) | Quais conclusões dependem de quais parâmetros | A adequação estrutural |
+| Validade operacional | Concordância entre a classificação das ordenações pelo modelo e a classificação especializada dos operadores em seis cenários: 5 das 6 primeiras escolhas coincidem | O modelo classifica as ordenações de modo muito parecido com o dos especialistas em casos familiares | Se algum dos dois está certo em casos não familiares |
+
+A validação histórica produziu uma correção importante: o modelo trata as reservas como fixas, mas os operadores reais estendem as reservas — água por caminhão, entregas de combustível, alívio de carga no hospital. Um modelo sem essas reservas humanas é **conservador quanto à consequência** e pode **exagerar o benefício da reordenação**, porque ignora alternativas que os operadores usariam de qualquer forma. A tese precisa declarar isso.
+
+### 5.5 Validação independente num segundo contexto
+
+#### 5.5.1 Seleção segundo critérios declarados com antecedência
+
+Port Halvard foi escolhida *antes* da simulação, segundo critérios derivados do mecanismo e registrados na emenda ao pré-registro do Capítulo 3: mais alimentadores críticos (quatro), divergência entre a ordem das reservas e a ordem dos clientes entre os alimentadores críticos, duas equipes e reservas hospitalares longas, apoiadas por contratos de combustível. Outro modelador construiu a configuração de Port Halvard a partir da documentação dos parceiros, sem acesso aos resultados de Riverbend. Esses passos reduzem, mas não eliminam, o risco de um contexto de validação que favoreça o método: os próprios critérios foram escolhidos para dar ao mecanismo uma chance de operar. Isso é aceitável para um teste do mecanismo, *não* para uma estimativa de com que frequência o método ajuda em regiões reais. O Capítulo 6 trata da segunda pergunta com muitas regiões geradas aleatoriamente.
+
+#### 5.5.2 Transportabilidade
+
+Um resultado se transporta de um contexto para outro quando a estrutura causal relevante para ele é compartilhada e as diferenças são medidas. [Pearl and Bareinboim (2014)](https://doi.org/10.1214/14-STS486) formalizam quando constatações experimentais podem ser transportadas entre populações. Informalmente, para o Cascade Study: o mecanismo (reservas, restauração sequencial, consequência ponderada) é compartilhado; os *moderadores* que diferem — número de alimentadores críticos, divergência das ordens, número de equipes, duração das reservas — precisam ser medidos em qualquer região-alvo antes que o resultado seja aplicado. Uma concessionária que conhece essas quatro coisas sobre si mesma pode estimar se DEP tende a superar sua lista atual; uma que não as conhece, não pode.
+
+### 5.6 Relatando o estudo principal
+
+Relate, no mínimo: o pré-registro e todas as emendas, com datas; o registro de desvios; cada hipótese com seu veredito, incluindo as falhas; os tamanhos de efeito em relação aos menores efeitos de interesse; os intervalos de Monte Carlo rotulados como tais; as distâncias até ORACLE; o desenho do exercício de mesa, o consentimento, as desistências e os resultados, com os testes exatos e os temas qualitativos; cada tipo de validação, com o que ele estabelece; e a configuração das duas regiões *no nível de detalhe permitido pelos níveis de proteção da informação* (Capítulo 7). Siga uma estrutura de relato reconhecida para estudos de simulação quando existir uma no veículo de publicação pretendido e, para o exercício de mesa, siga as expectativas de transparência da pesquisa com seres humanos na sua área.
+
+### 5.7 Erros comuns e limites
+
+- Analisar as médias de duas políticas separadamente em vez das diferenças pareadas.
+- Aumentar o número de sorteios até que uma diferença seja "significativa".
+- Apresentar um intervalo de Monte Carlo como incerteza sobre o mundo.
+- Reexecutar o estudo confirmatório com uma regra revisada depois de ver os resultados e chamá-lo de confirmatório.
+- Escolher um contexto de validação porque o método vai se sair bem nele, sem dizê-lo.
+- Medir as preferências declaradas dos operadores em vez das consequências de suas escolhas.
+- Tratar a validade aparente como validação dos parâmetros.
+
+- Ler a falha de H2 em Riverbend como motivo para revisar DEP e reexecutar o estudo principal sob o mesmo pré-registro.
+- Relatar um deslocamento estatisticamente significativo no exercício de mesa como evidência de adoção, quando doze participantes de três concessionárias mostram apenas que uma exibição pode mudar escolhas.
+- Tratar um único evento histórico, como a tempestade de gelo de 2019, como validação para cenários induzidos por ciberataques.
+- Omitir a distância até ORACLE, que mostra quão longe qualquer regra está da melhor ordenação.
+
+### Exercícios — capítulo 5
+
+**EX027 — Execute e interprete o estudo principal.** *Objetivo:* reproduzir e interpretar o Laboratório 5. *Insumos:* o código de §5.2.1. *Restrições:* off-line; registrar a saída exata. *Passos:* (1) executar o laboratório; (2) preencher a tabela de hipóteses de §5.2.2 a partir da sua saída; (3) calcular a variação relativa de DEP em relação a CRITFLAG em cada região; (4) escrever um parágrafo de resultados de 150 palavras que um revisor hostil aceitaria. *Evidência esperada:* saída, tabela, parágrafo. *Rubrica:* 3 = saída exata, H2 relatada como falha em Riverbend e sustentada em Port Halvard, falha de H4a relatada, sem resgate; 2 = números corretos, parágrafo exagera; 1 = erros; 0 = não executado.
+
+**EX028 — Pareado versus não pareado.** *Objetivo:* ver por que os números aleatórios comuns importam. *Insumos:* Laboratório 5. *Restrições:* off-line. *Passos:* (1) para Riverbend, calcular o desvio-padrão das perdas de DEP, das perdas de CRITFLAG e das diferenças por sorteio; (2) calcular um intervalo de 95% não pareado para a diferença de médias usando a aproximação normal; (3) comparar com o intervalo pareado; (4) explicar a diferença em 100 palavras. *Evidência esperada:* três desvios-padrão, dois intervalos, explicação. *Rubrica:* 3 = DPs de cerca de 6,36 (DEP), 4,57 (CRITFLAG) e 6,79 (diferenças); intervalo não pareado de cerca de −0,34 a 1,04 contra o pareado de −0,24 a 0,95; explica que o pareamento ajudou apenas modestamente porque as perdas das políticas são fracamente correlacionadas — elas se compensam quanto a qual serviço falha num dado sorteio — e que o DP das diferenças pode exceder o DP de cada política e ainda ficar abaixo de √(Var A + Var B); 2 = números certos, explicação presume que o pareamento sempre reduz a variância; 1 = erro; 0 = nada.
+
+**EX029 — Taxonomia da incerteza.** *Objetivo:* classificar a incerteza. *Insumos:* cinco afirmações: (a) "com 5.000 sorteios o intervalo se estreitaria"; (b) "o combustível do hospital pode ser menor do que o diretor de instalações disse"; (c) "o tempo de deslocamento entre os alimentadores não é modelado"; (d) "os pesos refletem os valores de um único painel"; (e) "as reservas podem não ser triangulares". *Restrições:* classificar cada uma como incerteza de Monte Carlo, de parâmetros, estrutural ou de valores e nomear o método que a trata. *Passos:* (1) classificar cada afirmação; (2) justificar a classe numa frase; (3) nomear o método que reduz ou expõe essa incerteza. *Evidência esperada:* tabela. *Rubrica:* 3 = (a) Monte Carlo, (b) parâmetros, (c) estrutural, (d) valores, (e) parâmetros ou estrutural com justificativa, com métodos adequados; 2 = um erro; 1 = dois ou mais; 0 = nada.
+
+**EX030 — Crítica do desenho do exercício de mesa.** *Objetivo:* fortalecer um desenho com seres humanos. *Insumos:* §5.3.2. *Restrições:* propor pelo menos cinco melhorias dentro dos limites éticos e práticos. *Passos:* (1) identificar as ameaças — características de demanda, amostra pequena, três concessionárias, ausência de pressão de tempo, reconhecimento dos cenários isomórficos; (2) propor uma mudança de desenho para cada uma; (3) declarar quanto custa cada mudança. *Evidência esperada:* tabela. *Rubrica:* 3 = cinco ou mais ameaças reais com mudanças viáveis e custos honestos; 2 = três ou quatro; 1 = genéricas; 0 = nada.
+
+**EX031 — Matriz de evidências de validação.** *Objetivo:* planejar a validação do seu próprio modelo. *Insumos:* um modelo da sua pesquisa ou do Cascade Study. *Restrições:* pelo menos quatro tipos de validação; para cada um, a evidência, o que ela estabelece e o que não estabelece. *Passos:* (1) escolher pelo menos quatro tipos de validação de §5.4; (2) para cada um, declarar a evidência que você coletaria; (3) declarar o que essa evidência estabelece e o que não estabelece; (4) identificar qual validação seria mais danosa à sua alegação se falhasse. *Evidência esperada:* matriz e parágrafo. *Rubrica:* 3 = tipos bem escolhidos, limites honestos, teste mais danoso identificado e planejado cedo; 2 = limites ralos; 1 = apenas validade aparente; 0 = nada.
+
+**EX032 — Memorando de transportabilidade.** *Objetivo:* aconselhar uma terceira concessionária. *Insumos:* uma concessionária sintética com cinco alimentadores, três deles com serviços críticos cuja ordem das reservas coincide com a ordem dos clientes, e uma equipe. *Restrições:* 300 palavras; usar os moderadores de §5.5.2. *Passos:* (1) medir os quatro moderadores para essa concessionária; (2) prever o ganho de DEP sobre CRITFLAG; (3) declarar de que dados você precisaria para mudar a sua previsão. *Evidência esperada:* memorando. *Rubrica:* 3 = prevê nenhum ganho porque as ordens coincidem, explica os moderadores e observa que os pesos ou o espalhamento ainda poderiam importar; 2 = previsão certa, raciocínio ralo; 1 = prevê um ganho; 0 = nada.
+
+### Síntese do capítulo
+
+O estudo principal comparou quatro ordenações sobre sorteios pareados com um limite oráculo. A ordenação ciente da criticidade, de qualquer tipo, protegeu os serviços críticos de forma drástica em comparação com a restauração pelos clientes e custou muito mais clientes-hora do que a margem declarada com antecedência — uma troca para a política pública, e não um ganho gratuito. A informação de temporização nada acrescentou a uma lista de clientes críticos em Riverbend e acrescentou muito em Port Halvard; a explicação post hoc (pesos e espalhamento ignorados por uma regra do menor tempo) é uma hipótese nova, e não um resgate. Um exercício de mesa cego mostrou que uma exibição do tempo até o impacto pode deslocar as escolhas dos operadores em direção a uma consequência modelada menor e trouxe à tona variáveis omitidas, como o tempo de deslocamento das equipes. A validação estabeleceu que o modelo é adequado para classificar ordenações em casos familiares e conservador porque omite as reservas humanas. Os intervalos de Monte Carlo descreveram apenas o ruído da simulação; a incerteza de parâmetros, a estrutural e a de valores ficam para o Capítulo 6.
+
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Continue estudando — capítulo 05 de 08
+
+[← Capítulo 04](#ch-04) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-06"></a>
+
+## Capítulo 6 — Crítica dos pares e revisão
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo, o estudante será capaz de:
+
+1. Organizar a crítica adversarial da própria tese — red-teaming interno, revisão externa estruturada e colaboração adversarial — e registrá-la.
+2. Detectar a circularidade entre modelo e política e testá-la com um descompasso deliberado do modelo.
+3. Mapear as condições de contorno com análise de sensibilidade e com muitos contextos gerados, reconhecendo que o próprio gerador é um modelo.
+4. Distinguir uma revisão confirmatória de uma exploratória e rotular cada uma.
+5. Escrever resultados negativos e estreitados de modo que sejam úteis para os outros.
+6. Conduzir uma revisão de duplo uso das constatações da pesquisa e decidir o que publicar, generalizar, adiar ou restringir.
+7. Escrever uma resposta aos revisores que mude as alegações em vez de defendê-las.
+
+O Capítulo 5 produziu um resultado misto: forte benefício sobre a ordenação pelos clientes, uma troca que não atendeu sua margem, nenhum benefício sobre as listas de sinalização crítica numa região e um grande benefício na outra. É neste capítulo que a tese conquista suas alegações tentando destruí-las.
+
+### 6.1 A crítica como método
+
+A revisão por pares na publicação chega tarde demais e é rasa demais para ser o principal controle de qualidade de um projeto de doutorado. Incorpore a crítica ao projeto:
+
+- **Red team interno.** Antes da submissão, pede-se a um colega que não trabalhou no estudo que quebre a alegação principal, com acesso ao código, aos dados e ao pré-registro. O relatório dele é respondido por escrito.
+- **Revisão externa estruturada.** Parceiros e especialistas do domínio revisam a estrutura do modelo e as alegações, usando um formulário que pede a objeção *mais forte*, e não uma impressão geral.
+- **Colaboração adversarial.** Onde um pesquisador crível defende uma visão oposta (por exemplo, que a priorização baseada na topologia é suficiente), desenhe um teste conjunto cujos desfechos os dois lados concordem de antemão que mudariam sua visão.
+- **Pré-mortem.** Imagine que a tese foi rejeitada na defesa; escreva as razões do examinador. Depois, teste cada razão.
+
+Toda crítica e toda resposta entram no registro de revisões da tese. Os examinadores confiam em trabalhos cujas fraquezas foram visivelmente atacadas.
+
+### 6.2 O relatório do red team sobre o Cascade Study (sintético)
+
+Um red team interno produziu cinco objeções principais:
+
+1. **Circularidade.** "DEP é calculada a partir das próprias reservas e do próprio mapa de dependências do modelo e depois avaliada no mesmo modelo. É claro que se sai bem. Na realidade, o mapa do planejador está errado."
+2. **Artefato das reservas curtas.** "As reservas de Riverbend são curtas em relação aos tempos de restauração. Com contratos de combustível realistas, nada do que vocês fizerem importa."
+3. **Seleção do contexto.** "Port Halvard foi escolhida para fazer o mecanismo operar. Duas regiões, uma escolhida para o método, não podem estimar com que frequência DEP ajuda."
+4. **Fraqueza da heurística.** "O próprio oráculo de vocês mostra que DEP está longe do ótimo em Riverbend. Por que alguém adotaria uma regra que vocês sabem ser subótima?"
+5. **Duplo uso.** "Vocês mostraram que a perda de serviços críticos depende de qual alimentador é restaurado primeiro e de se o mapa do planejador está certo. Isso diz a um adversário o que atacar: os dados de prioridade de restauração."
+
+Cada objeção é uma hipótese sobre o resultado. O restante do capítulo as testa.
+
+### 6.3 Atividade prática: condições de contorno, descompasso e muitas regiões
+
+O laboratório importa o simulador do Laboratório 5 (salve-o como `lab5_mc.py` na mesma pasta).
+
+```python
+# Lab 6 - boundary conditions, model mismatch and many synthetic regions (offline)
+# Save Lab 5 as lab5_mc.py in the same folder first.
+import random, statistics
+import lab5_mc as m
+
+def mean_gain(region, **kw):
+    _, res, cust = m.experiment(region, n=300, oracle=False, **kw)
+    return (statistics.fmean(res["DEP"]) - statistics.fmean(res["CRITFLAG"]),
+            statistics.fmean(res["DEP"]) - statistics.fmean(res["SILO"]))
+
+print("1) Riverbend buffer scaling: (DEP-CRITFLAG, DEP-SILO) mean loss")
+for s in (0.5, 1.0, 2.0, 4.0):
+    a, b = mean_gain(m.RIVERBEND, buffer_scale=s)
+    print(f"   scale {s:3.1f}: {a:7.2f} {b:7.2f}")
+
+print("2) Model mismatch: water plant truly on F1, planner believes F3")
+true = {**m.RIVERBEND, "services": {**m.RIVERBEND["services"], "WATER": ("F1",) + m.RIVERBEND["services"]["WATER"][1:]}}
+_, res, _ = m.experiment(true, n=300, oracle=False, believed_feeder={"WATER": "F3"})
+print("   mean loss SILO %.2f CRITFLAG %.2f DEP %.2f" % tuple(statistics.fmean(res[k]) for k in ("SILO", "CRITFLAG", "DEP")))
+
+print("3) 200 random synthetic regions: gain of DEP over CRITFLAG vs rank divergence")
+def random_region(rng):
+    feeders = [f"G{i}" for i in range(1, 6)]
+    cust = {f: rng.choice([500, 1000, 2000, 4000, 8000]) for f in feeders}
+    crit = rng.sample(feeders, 3)
+    services = {}
+    for i, f in enumerate(crit):
+        lo = rng.choice([1, 4, 12, 36])
+        services[f"S{i}"] = (f, (lo, lo * 3, lo * 2), rng.choice([3.0, 4.0, 5.0]), None)
+    return {"customers": cust, "crews": 1, "dur": (2, 6, 4), "services": services}
+def divergence(region):
+    flag = [f for f in m.critflag(region) if f in {v[0] for v in region["services"].values()}]
+    depo = [f for f in m.dep(region) if f in flag]
+    return sum(1 for a, b in zip(flag, depo) if a != b)
+rng = random.Random(2026)
+rows = []
+for _ in range(200):
+    r = random_region(rng)
+    _, res, _ = m.experiment(r, n=60, oracle=False)
+    rows.append((divergence(r), statistics.fmean(res["DEP"]) - statistics.fmean(res["CRITFLAG"])))
+for d in sorted({d for d, _ in rows}):
+    g = [x for dd, x in rows if dd == d]
+    print(f"   positions differing={d}: regions={len(g):3d} mean gain={statistics.fmean(g):7.2f} share DEP worse={sum(x > 0 for x in g)/len(g):.2f}")
+```
+
+Saída esperada:
+
+```text
+1) Riverbend buffer scaling: (DEP-CRITFLAG, DEP-SILO) mean loss
+   scale 0.5:    6.10  -86.14
+   scale 1.0:    0.38  -47.57
+   scale 2.0:    0.02   -7.25
+   scale 4.0:    0.00    0.00
+2) Model mismatch: water plant truly on F1, planner believes F3
+   mean loss SILO 29.41 CRITFLAG 26.21 DEP 22.29
+3) 200 random synthetic regions: gain of DEP over CRITFLAG vs rank divergence
+   positions differing=0: regions= 69 mean gain=   0.00 share DEP worse=0.00
+   positions differing=2: regions= 77 mean gain= -11.21 share DEP worse=0.01
+   positions differing=3: regions= 54 mean gain= -23.97 share DEP worse=0.00
+```
+
+#### 6.3.1 Objeção 1: circularidade
+
+Na parte 2, a estação de água verdadeira está em F1, mas tanto a lista de clientes críticos quanto o planejador de DEP acreditam que ela está em F3. Toda política ciente da criticidade se degrada fortemente: DEP de 4,32 para 22,29, CRITFLAG de 3,97 para 26,21. SILO na verdade melhora (52,75 → 29,41) porque restaura F1 primeiro por razões de clientes e, com isso, acaba restaurando a água. A objeção é **sustentada numa forma mais forte do que a que o red team declarou**: o valor de *qualquer* ordenação ciente da criticidade depende da acurácia do mapa de dependências. A revisão consiste em tornar a acurácia do mapa uma pré-condição declarada da alegação, acrescentar ao método um procedimento de auditoria do mapa e recomendar a medição do erro do mapa em qualquer aplicação de campo. Isso transforma uma fraqueza numa contribuição: um pré-requisito *mensurável* que as concessionárias podem verificar.
+
+#### 6.3.2 Objeção 2: reservas curtas
+
+A parte 1 escalona todas as reservas. À medida que as reservas dobram, a vantagem de DEP sobre SILO cai de 47,57 para 7,25 horas de serviço ponderadas e desaparece com quatro vezes as reservas obtidas. A objeção é **sustentada como condição de contorno**: quando as reservas excedem com folga o tempo total de restauração, a ordenação não importa para os serviços críticos. Essa é exatamente a previsão do mecanismo no Capítulo 3, então o resultado apoia o mecanismo ao mesmo tempo em que limita o escopo da alegação. Ele também revela algo que o red team não levantou: com *metade* das reservas obtidas, DEP é **pior** do que CRITFLAG em 6,10 — a fraqueza da heurística da objeção 4 cresce quando as reservas são curtas, porque os erros sobre qual alimentador protege mais serviços ponderados custam mais.
+
+#### 6.3.3 Objeção 3: seleção do contexto
+
+A parte 3 gera 200 regiões sintéticas com cinco alimentadores, três serviços críticos, números de clientes, faixas de reservas e pesos aleatórios, e as classifica por quantas posições diferem entre as ordens de CRITFLAG e de DEP entre os alimentadores críticos. Onde as ordens coincidem (69 regiões), o ganho é exatamente zero — como precisa ser. Onde diferem em duas posições (77 regiões), DEP reduz a perda média em 11,21 e é pior em cerca de 1% das regiões; onde diferem em três (54 regiões), em 23,97, nunca pior nesta amostra. O padrão previsto por H3 se sustenta em contextos que não foram escolhidos para o método.
+
+A objeção do red team é, no entanto, **parcialmente sustentada**: o gerador sorteia o número de clientes e as reservas de forma independente, e esse pressuposto fixa com que frequência a divergência ocorre. As regiões reais podem ter correlações em qualquer direção. Se os alimentadores grandes tendem a abrigar instalações com reservas longas (hospitais grandes com grandes estoques de combustível), a ordem de maior primeiro de CRITFLAG corre no sentido oposto à ordem de menor reserva primeiro de DEP, e a divergência se torna *mais* comum; se os alimentadores grandes tendem a abrigar serviços de reserva curta (centrais de telecomunicações de áreas densas, a bateria), as duas ordens concordam e a divergência se torna mais rara. A frequência da divergência nas regiões reais é uma pergunta *empírica* que a tese não pode responder com geradores sintéticos; a alegação precisa ficar condicionada à divergência, que uma concessionária pode medir sobre si mesma.
+
+#### 6.3.4 Objeção 4: uma heurística sabidamente subótima
+
+Sustentada. O limite oráculo mostra que uma regra que use os pesos e o espalhamento — por exemplo, ordenar os alimentadores pelo valor ponderado dos serviços que protegem por hora de restauração, levando em conta as dependências — poderia se sair melhor. O candidato pode desenvolver tal regra, mas ela precisa ser rotulada como **exploratória**: ela seria desenhada depois de ver os resultados confirmatórios e precisa ser confirmada em novas configurações (novas regiões, novas sementes, pré-registrada) antes que qualquer alegação seja feita. A tese pode apresentá-la legitimamente como o próximo passo mais promissor.
+
+### 6.4 Análise de sensibilidade além de um fator por vez
+
+Variar um fator por vez (reservas, depois pesos, depois durações) deixa escapar as interações — o resultado do escalonamento das reservas mostra que a fraqueza da heurística interage com a duração das reservas. A **análise de sensibilidade global** varia todos os insumos incertos juntos e reparte a variância da saída entre os insumos e suas interações; [Saltelli et al. (2008)](https://doi.org/10.1002/9780470725184) é uma introdução padrão. Para uma tese, uma sequência prática é: uma triagem de um fator por vez para encontrar os insumos que importam; um desenho estruturado (por exemplo, um fatorial sobre os poucos que importam); e então, se os recursos permitirem, índices baseados em variância. Relate do que a conclusão depende, nos termos do leitor: *"A vantagem de DEP sobre a ordenação por sinalização crítica exige divergência entre as ordens das reservas e dos clientes, um mapa de dependências sem erros de alimentador e reservas menores do que cerca de duas vezes o tempo esperado de restauração."*
+
+A sensibilidade aos valores é distinta da sensibilidade aos parâmetros. Os pesos declarados com antecedência codificam as prioridades de um único painel. Reexecute com conjuntos alternativos de pesos — pesos iguais, pesos de um segundo painel, pesos que incluam os clientes comuns — e relate se as conclusões mudam (EX034).
+
+### 6.5 Resultados negativos e estreitamento
+
+O Cascade Study tem agora uma alegação estreitada:
+
+> Em cenários sintéticos de queda na distribuição que exigem restauração manual sequencial, ordenar pelo tempo até o impacto dos serviços críticos reduz a perda ponderada de serviços críticos declarada com antecedência em relação à ordenação por sinalização de clientes críticos **somente** quando as duas ordens diferem, o mapa de dependências é acurado e as reservas são curtas em relação ao tempo de restauração; onde essas condições se verificam, a redução é grande e os clientes-hora adicionais em relação à ordenação por sinalização ficam dentro de uma margem de 15%. Qualquer ordenação ciente da criticidade protege os serviços críticos muito melhor do que a ordenação pelos clientes, a um custo em clientes-hora de cerca de 60–70% nas regiões estudadas, o que excede a margem declarada com antecedência e é uma troca de política pública, e não uma melhoria técnica. A heurística do menor tempo até o impacto pode ter desempenho inferior ao da ordenação por sinalização quando as reservas são muito curtas, porque ignora os pesos e o espalhamento.
+
+Observe o que a alegação estreitada faz: declara condições que uma concessionária pode medir; relata a margem não atendida; relata onde o método perde; e separa a constatação robusta (ordenação ciente da criticidade versus pelos clientes) da contribuição condicional (temporização versus listas). Um resultado negativo sobre H2 em Riverbend não é escondido; ele é a evidência que define o limite.
+
+**Publique os resultados negativos de forma útil.** Declare a hipótese, o desenho, o tamanho do efeito com seu intervalo e o menor efeito de interesse que ele descarta. "Nenhuma diferença significativa" é inútil; "uma redução de 10% ou mais em relação à ordenação por sinalização fica descartada em Riverbend" é útil.
+
+### 6.6 Revisão de duplo uso das constatações
+
+Aplicando as três perguntas do Capítulo 1 (§1.4.3):
+
+| Constatação | Ganho para um adversário | Valor defensivo | Decisão |
+|---|---|---|---|
+| A ordenação ciente da criticidade protege os serviços críticos; custo em clientes-hora | Desprezível: amplamente compreendido | Apoia o debate de políticas sobre as prioridades de restauração | Publicar |
+| O valor depende da acurácia do mapa de dependências | Moderado: sugere que corromper ou roubar os dados de prioridade de restauração e as listas de clientes críticos poderia amplificar um ataque | Alto: diz às concessionárias que protejam a integridade e a confidencialidade dos dados de prioridade de restauração e que auditem os mapas | Publicar em nível geral com a recomendação defensiva; nenhum exemplo de como alterar esses dados |
+| Regiões sintéticas, código e parâmetros | Baixo: lugares inventados | Alto: reprodutibilidade | Publicar (Capítulo 7, nível T0) |
+| Faixas de reservas e relações alimentador–instalação derivadas dos parceiros | Alto: informação de alvos | Baixo além do parceiro | Reter; descrever apenas faixas agregadas |
+| Justificativas do exercício de mesa | Baixo | Moderado | Publicar os temas sem identificadores de função mais concessionária |
+
+A segunda linha ilustra um padrão recorrente na pesquisa sobre infraestrutura: uma constatação de resiliência muitas vezes funciona também como uma constatação de superfície de ataque. O contexto de ameaça relevante é público — o [AA24-038A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-038a) da CISA descreve o pré-posicionamento nas redes de TI da infraestrutura, onde os dados de planejamento costumam residir —, então a recomendação defensiva (proteção da integridade e auditoria dos dados de prioridade de restauração) tem valor claro. Coordene com os parceiros e, quando apropriado, com o órgão setorial de compartilhamento de informações pertinente antes da publicação (Capítulo 8).
+
+### 6.7 Respondendo aos revisores
+
+Uma boa carta de resposta cita cada comentário, declara se ele foi aceito, parcialmente aceito ou não aceito, descreve a mudança (com a localização) e — quando não aceito — apresenta evidências, e não opiniões. Mais importante, ela **muda as alegações**, e não apenas a redação. Compare:
+
+- *Defensiva:* "Agradecemos ao revisor. Port Halvard foi selecionada segundo critérios declarados com antecedência, então o viés de seleção não é uma preocupação."
+- *Responsiva:* "Parcialmente aceito. Port Halvard foi selecionada segundo critérios derivados do mecanismo e declarados com antecedência, o que a torna um teste justo do mecanismo, mas não uma estimativa de com que frequência DEP ajuda. Acrescentamos uma análise de 200 regiões (§6.3.3), estreitamos a alegação para regiões com divergência das ordens e declaramos que a frequência da divergência nas regiões reais é desconhecida (Limitações, item 4)."
+
+### 6.8 Erros comuns e limites
+
+- Tratar a revisão por pares como um obstáculo em vez de um método.
+- Avaliar uma política apenas no modelo usado para derivá-la.
+- Relatar apenas a sensibilidade de um fator por vez.
+- Tratar um gerador de contextos aleatórios como uma amostra da realidade.
+- Apresentar uma revisão exploratória como confirmatória.
+- Escrever os resultados negativos como "não significativos".
+- Pular a revisão de duplo uso porque os resultados são "apenas simulações".
+
+- Aceitar uma objeção do red team na forma original sem testar se uma versão mais forte se sustenta, como aconteceu com a circularidade.
+- Tratar uma condição de contorno como uma derrota em vez de uma previsão confirmada do mecanismo que estreita a alegação.
+- Presumir que os pressupostos de independência de um gerador de regiões aleatórias correspondem às regiões reais, onde o número de clientes e as reservas podem ser correlacionados.
+- Escrever uma carta de resposta que agradece aos revisores e defende a alegação original em vez de mudá-la onde as evidências o exigem.
+- Publicar as faixas de reservas derivadas dos parceiros porque parecem inofensivas de forma agregada.
+
+### Exercícios — capítulo 6
+
+**EX033 — Relatório do red team.** *Objetivo:* atacar a sua própria alegação. *Insumos:* a alegação do Cascade Study antes do estreitamento (resumo do Capítulo 5) ou a sua própria. *Restrições:* pelo menos cinco objeções, cada uma declarada como hipótese testável. *Passos:* (1) escrever cada objeção; (2) dizer que evidência a sustentaria ou a descartaria; (3) desenhar o teste; (4) prever o desfecho antes de executar qualquer coisa. *Evidência esperada:* relatório. *Rubrica:* 3 = objeções específicas e testáveis, incluindo circularidade e seleção do contexto, com previsões registradas antes dos testes; 2 = uma ou duas não testáveis; 1 = genéricas; 0 = nada.
+
+**EX034 — Sensibilidade aos pesos.** *Objetivo:* testar a sensibilidade aos valores. *Insumos:* Laboratório 5 e Laboratório 6. *Restrições:* off-line. *Passos:* (1) definir todos os pesos dos serviços como 1,0 nas duas regiões; (2) reexecutar a comparação principal; (3) registrar as perdas de DEP, CRITFLAG e SILO; (4) declarar se cada veredito da tabela de hipóteses muda; (5) explicar por quê. *Evidência esperada:* código modificado, saídas, parágrafo. *Rubrica:* 3 = saídas exatas, análise correta dos vereditos, explicação ligada ao espalhamento e aos pesos; 2 = saídas certas, explicação rala; 1 = erros; 0 = não executado.
+
+**EX035 — Experimento de erro do mapa.** *Objetivo:* quantificar a fragilidade diante de erros no mapa. *Insumos:* Laboratório 6, parte 2. *Restrições:* off-line. *Passos:* (1) repetir o descompasso com a central de telecomunicações verdadeiramente em F4 enquanto os planejadores acreditam que está em F2; (2) registrar as perdas; (3) comparar com a parte 2; (4) propor um procedimento de auditoria do mapa com uma meta de acurácia mensurável. *Evidência esperada:* saídas e procedimento. *Rubrica:* 3 = saídas corretas, comparação com o descompasso da água, procedimento de auditoria mensurável (verificação de campo amostrada, taxa de acurácia, aprovação do responsável); 2 = procedimento vago; 1 = não executado corretamente; 0 = nada.
+
+**EX036 — Crítica do gerador.** *Objetivo:* reconhecer o gerador como um modelo. *Insumos:* `random_region` no Laboratório 6. *Restrições:* propor uma mudança que codifique uma correlação plausível do mundo real. *Passos:* (1) modificar o gerador para que os alimentadores maiores tendam a abrigar serviços críticos com reservas mais longas; (2) reexecutar a parte 3; (3) comparar a distribuição da divergência e dos ganhos com a parte 3 original; (4) prever, e depois verificar, o que a correlação oposta faria; (5) explicar o que isso significa para a alegação. *Evidência esperada:* código, saída, parágrafo. *Rubrica:* 3 = correlação implementada de forma sensata; o estudante percebe que essa correlação faz as ordens de CRITFLAG e de DEP correrem em sentidos opostos, de modo que a divergência se torna *mais* frequente (as regiões sem divergência caem fortemente), e explica que a correlação oposta a tornaria mais rara, então a alegação precisa continuar condicionada à divergência medida; 2 = implementação sólida, mas a direção do efeito mal interpretada; 1 = sem comparação; 0 = nada.
+
+**EX037 — Decisão de duplo uso.** *Objetivo:* decidir o tratamento de publicação. *Insumos:* quatro constatações da sua própria pesquisa ou: (a) uma lista de concessionárias de água cujo SCADA é alcançável pelo produto de acesso remoto de um fornecedor específico; (b) a observação de que os produtos de acesso remoto são um ponto de entrada comum entre os setores; (c) um método para estimar o tempo até o impacto a partir de dados públicos das instalações; (d) as estimativas de tempo até o impacto de hospitais nomeados numa cidade. *Restrições:* as três perguntas de §1.4.3. *Passos:* (1) avaliar o ganho para cada constatação; (2) avaliar o valor defensivo; (3) decidir entre publicar, generalizar, adiar e restringir; (4) declarar quem deve ser notificado antes da publicação. *Evidência esperada:* tabela. *Rubrica:* 3 = (a) restringir e notificar por divulgação coordenada, (b) publicar, (c) publicar com cuidado, (d) reter ou restringir, com raciocínio sólido; 2 = uma mal avaliada; 1 = duas ou mais; 0 = nada.
+
+**EX038 — Carta de resposta.** *Objetivo:* mudar as alegações em resposta à crítica. *Insumos:* as cinco objeções do red team em §6.2. *Restrições:* uma resposta por objeção; pelo menos duas devem levar a uma alegação mudada. *Passos:* (1) citar cada objeção; (2) marcá-la como aceita, parcialmente aceita ou não aceita; (3) descrever a mudança e sua localização; (4) apresentar evidências para qualquer não aceitação. *Evidência esperada:* carta de resposta. *Rubrica:* 3 = responsiva em vez de defensiva, alegações mudadas onde justificado, trabalho exploratório rotulado; 2 = majoritariamente responsiva; 1 = defensiva; 0 = nada.
+
+### Síntese do capítulo
+
+A crítica faz parte do método. As objeções do red team se tornaram hipóteses e testes. A circularidade foi sustentada numa forma mais forte — toda política ciente da criticidade depende de um mapa de dependências acurado —, o que se tornou uma pré-condição mensurável e uma recomendação defensiva. As reservas curtas foram confirmadas como uma condição de contorno prevista pelo mecanismo, e as reservas muito curtas expuseram a fraqueza da heurística. Uma análise de 200 regiões apoiou o mecanismo em contextos não escolhidos para ele, ao mesmo tempo em que nos lembrou de que um gerador é um modelo. A alegação estreitada declara condições mensuráveis, relata a margem não atendida e separa a constatação robusta da contribuição condicional. A revisão de duplo uso mostrou que uma constatação de resiliência também pode ser uma constatação de superfície de ataque e decidiu o que publicar e em que nível.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — capítulo 06 de 08
+
+[← Capítulo 05](#ch-05) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Síntese da tese e arquivo de reprodutibilidade
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo, o estudante será capaz de:
+
+1. Estruturar uma tese como um argumento em que cada alegação está ligada a evidência, garantia, escopo e limitação.
+2. Decidir entre uma monografia e uma tese por publicações e integrar qualquer uma delas num único argumento coerente.
+3. Desenhar um arquivo de reprodutibilidade em níveis que libere tanto quanto for lícito e seguro, sob a proteção das informações de infraestrutura.
+4. Distinguir dados sintéticos inventados de dados sintéticos calibrados a lugares reais e avaliar o risco residual de divulgação.
+5. Documentar modelos, conjuntos de dados e estudos de simulação com estruturas reconhecidas.
+6. Escrever uma seção de limitações que informe em vez de se desculpar.
+
+O Capítulo 6 produziu a alegação estreitada. Este capítulo monta a tese em torno dela e constrói o arquivo que permite que outros a verifiquem sem expor a infraestrutura que ela estuda.
+
+### 7.1 A tese como argumento
+
+Uma tese não é um relatório de tudo o que foi feito; ela é um argumento a favor de uma contribuição. Um andaime útil é a análise de argumentos de Toulmin ([Toulmin, 1958/2003](https://doi.org/10.1017/CBO9780511840005)): uma **alegação** apoiada por **dados** (evidências) por meio de uma **garantia** (a razão pela qual as evidências apoiam a alegação), com um **respaldo** para a garantia, um **qualificador** (com que força) e **refutações** (condições sob as quais a alegação falha). Aplicado à pesquisa sobre infraestrutura:
+
+| Elemento | Exemplo do Cascade Study |
+|---|---|
+| Alegação | A ordenação pelo tempo até o impacto reduz a perda ponderada de serviços críticos em relação à ordenação por sinalização crítica quando as ordens divergem, os mapas são acurados e as reservas são curtas. |
+| Dados | Simulações pareadas de Riverbend e Port Halvard; análise de 200 regiões; testes de erro do mapa e de escalonamento das reservas. |
+| Garantia | O simulador representa o esgotamento das reservas e a restauração sequencial de forma adequada para classificar as ordenações. |
+| Respaldo | Testes de verificação; reprodução das linhas de base; validação histórica da temporização da água; validade operacional contra as classificações dos especialistas. |
+| Qualificador | Em regiões sintéticas, uma única classe de cenários (quedas na distribuição que exigem restauração manual sequencial), pesos declarados com antecedência. |
+| Refutações | Erros no mapa; reservas longas; conjuntos de pesos que favorecem o espalhamento; reservas humanas e tempo de deslocamento omitidos; frequência real da divergência desconhecida. |
+
+Cada capítulo da tese deve contribuir com um elemento identificável. Um capítulo que não fornece nenhum é candidato a apêndice.
+
+### 7.2 Monografia ou tese por publicações
+
+Uma **monografia** apresenta um único argumento integrado; uma **tese por publicações** reúne artigos com uma introdução e uma conclusão integradoras. As teses sobre infraestrutura muitas vezes misturam gêneros — um artigo de modelo, um estudo empírico com operadores, uma análise de políticas —, o que combina com as teses por publicações, mas os capítulos integradores precisam fazer um trabalho real: declarar a alegação abrangente, mostrar como cada artigo contribui com dados ou respaldo, conciliar as diferenças de escopo entre os artigos e apresentar as limitações do conjunto. As normas sobre formato, declarações de coautoria e publicação prévia diferem entre instituições; esta trilha educacional não concede diplomas e não pode orientar sobre as normas de nenhuma instituição, além de apontar que elas precisam ser verificadas cedo.
+
+### 7.3 Estrutura da tese do Cascade Study
+
+1. **Introdução.** Problema, lacuna, tipos de contribuição, alegação abrangente e seu escopo.
+2. **Fundamentação.** Definições, literatura de interdependência e resiliência, prática de restauração, teoria de programação (Capítulos 1–2 deste livro).
+3. **Método.** Mecanismo, hipóteses, linhas de base, protocolo, ética e proteção da informação (Capítulo 3).
+4. **Verificação e linhas de base.** Reproduções, testes de verificação, elicitação e piloto (Capítulo 4).
+5. **Estudo principal e validação.** Simulações, exercício de mesa, validação, segunda região (Capítulo 5).
+6. **Crítica e limites.** Testes do red team, sensibilidade, análise de muitas regiões, alegação estreitada, revisão de duplo uso (Capítulo 6).
+7. **Discussão.** O que os profissionais e os formuladores de políticas podem fazer com a alegação estreitada; o que continua desconhecido.
+8. **Limitações.**
+9. **Conclusão.**
+10. **Apêndices.** Pré-registro e emendas, registro de desvios, listagem dos testes de verificação, protocolos de elicitação, materiais do exercício de mesa, manifesto do arquivo.
+
+### 7.4 O arquivo de reprodutibilidade
+
+#### 7.4.1 Objetivos e restrições
+
+A reprodutibilidade nesta área precisa satisfazer dois objetivos que puxam em direções opostas: permitir que outros verifiquem o trabalho e não publicar informações que ajudem alguém a danificar a infraestrutura ou que identifiquem pessoas. Os [princípios FAIR](https://doi.org/10.1038/sdata.2016.18) — localizáveis, acessíveis, interoperáveis, reutilizáveis — ajudam aqui porque FAIR não significa aberto: os dados podem ser localizáveis e ter suas condições de acesso claramente descritas enquanto o próprio acesso é controlado.
+
+#### 7.4.2 Níveis de liberação
+
+| Nível | Quem pode acessar | O que contém no Cascade Study | Condições |
+|---|---|---|---|
+| T0 Público | Qualquer pessoa | Código do simulador, testes, definições das regiões sintéticas, sementes, saídas, scripts de análise, materiais do exercício de mesa sem identificadores | Licença declarada; identificador persistente |
+| T1 Registrado | Pesquisadores que se registram e aceitam os termos | Faixas de elicitação agregadas, sem a identidade dos parceiros; conjuntos de cenários ampliados | Os termos de uso proíbem a reidentificação e a definição de alvos |
+| T2 Controlado | Pesquisadores aprovados sob um acordo e, quando aplicável, aprovação ética | Transcrições pseudonimizadas do exercício de mesa e justificativas codificadas | Acordo de uso de dados; ambiente seguro; auditoria |
+| T3 Retido | Não liberado; apenas descrito | Relações alimentador–instalação derivadas dos parceiros, estoques reais das reservas, mapas | Existência e natureza descritas na tese, para que os examinadores saibam o que falta e por quê |
+
+O **manifesto** do arquivo lista cada arquivo com um hash criptográfico e seu nível, para que qualquer pessoa possa verificar que os arquivos públicos são os que foram usados, e os examinadores possam ver o que existe nos níveis mais altos.
+
+#### 7.4.3 Atividade prática: construindo um manifesto em níveis
+
+```python
+# Lab 7 - build a tiered reproducibility manifest for a synthetic thesis archive (offline)
+import hashlib, json, os, tempfile
+files = {
+    "code/lab5_mc.py": b"# simulation code\n",
+    "data/synthetic_riverbend_params.csv": b"feeder,customers\nF1,9000\nF2,1200\nF3,2500\nF4,6000\n",
+    "data/partner_feeder_map.csv": b"feeder,substation,gps\nF2,SUB-7,redacted\n",
+    "results/mc_summary.json": b'{"mean_dloss": -46.86}\n',
+    "docs/operator_interview_notes.txt": b"P03: we restore by customer count\n",
+}
+RULES = [  # first matching rule wins; order matters
+    ("partner_", "T3-withheld: partner-owned infrastructure detail; describe, do not release"),
+    ("interview", "T2-controlled: human-subjects data; release only under approved access agreement"),
+    ("synthetic_", "T0-public"),
+    ("code/", "T0-public"),
+    ("results/", "T0-public"),
+]
+def tier(path):
+    for key, label in RULES:
+        if key in path:
+            return label
+    return "UNCLASSIFIED: stop and review"
+with tempfile.TemporaryDirectory() as root:
+    manifest = []
+    for rel, content in sorted(files.items()):
+        p = os.path.join(root, rel)
+        os.makedirs(os.path.dirname(p), exist_ok=True)
+        with open(p, "wb") as fh:
+            fh.write(content)
+        manifest.append({"path": rel, "sha256": hashlib.sha256(content).hexdigest()[:16], "tier": tier(rel)})
+    print(json.dumps(manifest, indent=1))
+    print("public files:", sum(m["tier"].startswith("T0") for m in manifest), "of", len(manifest))
+```
+
+Saída esperada:
+
+```text
+[
+ {
+  "path": "code/lab5_mc.py",
+  "sha256": "e9db014f8aeb90da",
+  "tier": "T0-public"
+ },
+ {
+  "path": "data/partner_feeder_map.csv",
+  "sha256": "160cefe894e75af9",
+  "tier": "T3-withheld: partner-owned infrastructure detail; describe, do not release"
+ },
+ {
+  "path": "data/synthetic_riverbend_params.csv",
+  "sha256": "66bd4b5c8f37d273",
+  "tier": "T0-public"
+ },
+ {
+  "path": "docs/operator_interview_notes.txt",
+  "sha256": "35c6e20265ce92c5",
+  "tier": "T2-controlled: human-subjects data; release only under approved access agreement"
+ },
+ {
+  "path": "results/mc_summary.json",
+  "sha256": "7bde71d2f02e64ad",
+  "tier": "T0-public"
+ }
+]
+public files: 3 of 5
+```
+
+Duas escolhas de desenho merecem atenção. Primeiro, as regras são **ordenadas** e a primeira correspondência vence: se a regra "synthetic" fosse colocada antes da regra "partner", um arquivo chamado `synthetic_partner_feeders.csv` seria publicado. Ordene primeiro as regras mais restritivas. Segundo, um arquivo sem correspondência retorna **"UNCLASSIFIED: stop and review"** em vez de um nível padrão; um pipeline de liberação deve falhar fechado. Pipelines reais também examinariam o *conteúdo* dos arquivos (coordenadas, identificadores de ativos, nomes), e não apenas os caminhos.
+
+### 7.5 Dados sintéticos: inventados versus calibrados
+
+As regiões deste livro são **inventadas**: seus números foram escolhidos para ensinar e não correspondem a nenhum lugar. Uma tese baseada num parceiro real mais provavelmente produziria dados sintéticos **calibrados** — gerados para corresponder às propriedades estatísticas dos dados reais. A calibração preserva o valor de pesquisa e também preserva parte do risco de divulgação: se a região real tem um único hospital num alimentador pequeno com uma estação de água de reserva curta, uma região sintética calibrada que preserve essas relações ainda pode apontar para ela. Avalie o risco residual explicitamente: uma pessoa informada conseguiria associar a configuração sintética a uma real? Essa associação revelaria algo que ainda não é público? Generalizar (faixas em vez de valores), perturbar e misturar várias configurações reais reduzem o risco; a avaliação e as medidas escolhidas pertencem à documentação do arquivo.
+
+### 7.6 Documentando modelos, dados e estudos
+
+- **Modelos.** Para componentes baseados em agentes, o protocolo ODD — overview, design concepts, details (visão geral, conceitos de desenho, detalhes) — dá uma estrutura padrão ([Grimm et al., 2006](https://doi.org/10.1016/j.ecolmodel.2006.04.023)). Para qualquer simulador, documente o propósito, as entidades e as variáveis de estado, os processos e o escalonamento, os insumos e suas fontes, os testes de verificação e as limitações conhecidas.
+- **Conjuntos de dados.** As datasheets registram a motivação, a composição, o processo de coleta, o pré-processamento, os usos, a distribuição e a manutenção ([Gebru et al., 2021](https://doi.org/10.1145/3458723)).
+- **Componentes aprendidos.** Se o estudo incluir um modelo aprendido (por exemplo, um detector), um model card registra o uso pretendido, as condições de avaliação e as limitações ([Mitchell et al., 2019](https://doi.org/10.1145/3287560.3287596)).
+- **Computação.** Fixe as versões da linguagem e das bibliotecas, registre as sementes, forneça um único comando que regenere todas as tabelas e figuras e inclua os testes de verificação. [Sandve et al. (2013)](https://doi.org/10.1371/journal.pcbi.1003285) dão dez regras práticas.
+
+### 7.7 Escrevendo as limitações
+
+Uma seção de limitações faz parte do argumento: ela declara as condições de refutação e sua direção provável. Seções de limitações fracas listam ressalvas genéricas ("mais pesquisas são necessárias"). As fortes dizem, para cada limitação, *o que* ela é, *como* poderia mudar o resultado e *em que direção*, e *que estudo* a resolveria. Para o Cascade Study:
+
+| Limitação | Efeito possível | Direção | Estudo que a resolve |
+|---|---|---|---|
+| Reservas humanas (água por caminhão, entregas de combustível, alívio de carga) omitidas | O modelo exagera a consequência de todas as ordenações e o benefício da reordenação | Rumo a um benefício menor | Modelar a extensão das reservas como condicionada às telecomunicações e às estradas; validar contra os registros pós-ação |
+| Tempo de deslocamento entre os alimentadores omitido | Ordenações que saltam entre alimentadores distantes custam mais do que o modelado | Rumo a um benefício menor de DEP quando os alimentadores críticos estão dispersos | Acrescentar uma matriz de tempos de deslocamento; reexecutar |
+| Apenas regiões sintéticas | Frequência da divergência nas regiões reais desconhecida | Desconhecida | Levantamento com concessionárias medindo a divergência, sob proteção T3 |
+| Pesos de um único painel | Os vereditos mudam com os pesos (EX034) | Qualquer uma | Vários painéis; relatar os vereditos por conjunto de pesos |
+| Amostra do exercício de mesa de 12 pessoas de 3 concessionárias | Evidências de adoção fracas | Rumo a um exagero da adotabilidade | Estudo maior e estratificado; piloto de campo durante exercícios |
+| Classe de cenários cibernéticos limitada a quedas na distribuição que exigem restauração manual | Não cobre ataques às ferramentas de restauração nem aos dados de prioridade | Desconhecida | Família de cenários incluindo ataques à integridade dos dados de planejamento (motivada por §6.6) |
+
+### 7.8 Exemplo resolvido: montando o arquivo
+
+O primeiro plano de arquivo do candidato colocava tudo em T2 "por segurança". A banca o rejeitou: a restrição excessiva impede a verificação e não é segura, apenas irresponsável. O plano revisado usou a tabela de níveis de §7.4.2, publicou todo o código e as configurações sintéticas em T0 com um único comando de regeneração, colocou as transcrições do exercício de mesa em T2 sob os termos de consentimento que os participantes assinaram e registrou o material T3 dos parceiros numa descrição que dizia aos examinadores exatamente quais análises dependiam dele — nenhum dos resultados confirmatórios dependia, por desenho, porque o estudo usou regiões inventadas para todas as alegações públicas e usou os dados dos parceiros apenas para as faixas de elicitação e a validade aparente. Essa decisão de desenho, tomada no Capítulo 1, é o que tornou possível um arquivo em grande parte público.
+
+### 7.9 Erros comuns e limites
+
+- Escrever a tese como um caderno de laboratório cronológico em vez de um argumento.
+- Restringir tudo, ou publicar tudo, em vez de usar níveis.
+- Igualar FAIR a aberto.
+- Tratar os dados sintéticos calibrados como automaticamente seguros.
+- Scripts de liberação que falham abertos.
+- Seções de limitações sem direção nem estudos que as resolvam.
+
+- Colocar tudo num nível restritivo por segurança, o que impede a verificação e torna o trabalho irresponsável, e não seguro.
+- Ordenar as regras de liberação de modo que um padrão permissivo como synthetic corresponda antes de um restritivo como partner.
+- Classificar os arquivos apenas pelo nome, sem examinar o conteúdo em busca de coordenadas, identificadores de ativos ou nomes.
+- Deixar que os resultados confirmatórios dependam de material retido dos parceiros, de modo que os examinadores não possam verificá-los.
+- Omitir um único comando que regenere todas as tabelas e figuras a partir dos arquivos públicos.
+
+### Exercícios — capítulo 7
+
+**EX039 — Mapa do argumento.** *Objetivo:* expor o argumento da tese. *Insumos:* a alegação estreitada de §6.5. *Restrições:* usar os seis elementos de Toulmin. *Passos:* (1) mapear a alegação; (2) marcar qual capítulo da tese fornece cada elemento; (3) identificar a garantia mais fraca e a evidência que a fortaleceria. *Evidência esperada:* mapa e parágrafo. *Rubrica:* 3 = mapa completo, garantia mais fraca corretamente identificada (adequação do modelo para regiões reais, ou reservas humanas omitidas) com um estudo de fortalecimento específico; 2 = um elemento ralo; 1 = apenas alegação e dados; 0 = nada.
+
+**EX040 — Atribuição de níveis.** *Objetivo:* atribuir níveis a um arquivo realista. *Insumos:* dez artefatos: código do simulador; testes de verificação; configuração de Riverbend; formulários de elicitação com os nomes dos parceiros; faixas de elicitação agregadas; áudio do exercício de mesa; justificativas codificadas; formulários de consentimento; o procedimento de restauração de um parceiro; figuras finais. *Restrições:* usar os quatro níveis; justificar cada um. *Passos:* (1) atribuir um nível a cada artefato; (2) justificar o nível numa linha; (3) propor uma transformação que levaria cada item restrito a um nível mais aberto. *Evidência esperada:* tabela. *Rubrica:* 3 = níveis sensatos (código, testes, configurações e figuras T0; faixas agregadas T1; justificativas codificadas T2, ou T1 se desidentificadas; áudio, formulários de consentimento e formulários de elicitação nomeados T2 ou T3; procedimento do parceiro T3) com transformações; 2 = um ou dois mal avaliados; 1 = níveis uniformes; 0 = nada.
+
+**EX041 — Manifesto que falha fechado.** *Objetivo:* melhorar o Laboratório 7. *Insumos:* Laboratório 7. *Restrições:* off-line. *Passos:* (1) acrescentar um arquivo `data/synthetic_partner_feeders.csv`; (2) mostrar que a ordem atual das regras o classifica corretamente e explicar por quê; (3) mover a regra `synthetic_` para o início, reexecutar e registrar a falha; (4) acrescentar uma verificação de conteúdo que recuse o nível público para qualquer arquivo que contenha a cadeia `SUB-`. *Evidência esperada:* código, saídas, explicação. *Rubrica:* 3 = demonstra o risco da ordenação, a verificação de conteúdo funciona, a explicação se liga ao desenho que falha fechado; 2 = parcial; 1 = não executado; 0 = nada.
+
+**EX042 — Avaliação da divulgação residual.** *Objetivo:* avaliar dados sintéticos calibrados. *Insumos:* uma região sintética calibrada a um condado real com um hospital, duas estações de água e cinco alimentadores, preservando qual alimentador abriga o hospital. *Restrições:* usar as perguntas de §7.5. *Passos:* (1) avaliar o risco de reidentificação; (2) avaliar o que uma associação revelaria; (3) propor transformações e avaliar seu custo para o valor de pesquisa. *Evidência esperada:* avaliação de uma página. *Rubrica:* 3 = reconhece a reidentificação pela estrutura única, propõe mistura ou generalização, pondera o valor de pesquisa com honestidade; 2 = avaliação rasa; 1 = declara o sintético seguro; 0 = nada.
+
+**EX043 — Documentação do modelo.** *Objetivo:* documentar o simulador do Laboratório 5. *Insumos:* código do Laboratório 5. *Restrições:* seguir os elementos de modelo de §7.6; no máximo duas páginas. *Passos:* (1) escrever o propósito, as entidades, os processos e o escalonamento; (2) listar os insumos e suas fontes; (3) listar os testes de verificação; (4) listar as limitações conhecidas, incluindo pelo menos três de §7.7. *Evidência esperada:* documento. *Rubrica:* 3 = fiel ao código (intervalos baseados em eventos, atraso de reinício, atribuição das equipes, semântica de OU para as dependências), limitações específicas; 2 = pequenas imprecisões; 1 = genérico; 0 = nada.
+
+**EX044 — Seção de limitações.** *Objetivo:* escrever limitações que informem. *Insumos:* seu próprio estudo ou o Cascade Study. *Restrições:* pelo menos cinco limitações, cada uma com efeito, direção e estudo que a resolva. *Passos:* (1) listar as limitações; (2) declarar o efeito e a direção de cada uma; (3) nomear o estudo que resolveria cada uma; (4) classificá-las por quanto poderiam mudar a alegação principal. *Evidência esperada:* tabela e parágrafo de classificação. *Rubrica:* 3 = específicas, direcionais, com estudos que as resolvam e uma classificação justificada; 2 = faltam direções em algumas; 1 = ressalvas genéricas; 0 = nada.
+
+### Síntese do capítulo
+
+A tese é um argumento: alegação, dados, garantia, respaldo, qualificador e refutações, cada um fornecido por uma parte identificável do trabalho. A pesquisa sobre infraestrutura precisa conciliar a reprodutibilidade com a proteção da infraestrutura estudada e das pessoas envolvidas; os arquivos em níveis com manifestos com hash fazem isso, e os princípios FAIR descrevem o acesso sem implicar abertura. As ferramentas de liberação devem falhar fechadas e verificar o conteúdo, e não apenas os nomes. Os dados sintéticos inventados trazem pouco risco de divulgação; os dados sintéticos calibrados precisam de uma avaliação explícita do risco residual. Documente os modelos, os dados e a computação com estruturas reconhecidas. As limitações declaram a direção e os estudos que as resolvem, o que as transforma na próxima agenda de pesquisa.
+
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — capítulo 07 de 08
+
+[← Capítulo 06](#ch-06) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Defesa e plano de publicação
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo, o estudante será capaz de:
+
+1. Auditar o registro de alegações de uma tese em busca de alegações sem apoio, sem escopo e generalizadas em excesso antes da defesa.
+2. Preparar-se para uma defesa antecipando as perguntas mais fortes dos examinadores e respondendo com evidências, escopo e limites.
+3. Planejar uma sequência de publicações em diferentes comunidades que preserve a integridade do argumento geral.
+4. Integrar a divulgação coordenada e a coordenação setorial ao cronograma de publicação quando as constatações tocarem em vulnerabilidades ou superfícies de ataque.
+5. Traduzir uma alegação de pesquisa estreitada em recomendações de política e de prática sem inflá-la.
+6. Transformar as limitações da tese num programa de pesquisa de pós-doutorado crível.
+
+O Capítulo 7 montou a tese e seu arquivo. Este capítulo prepara o candidato para defendê-la e liberá-la de forma responsável — o passo final do livro e da trilha de estudos de 207 cursos.
+
+### 8.1 A auditoria das alegações
+
+Antes da defesa, toda alegação da tese — no resumo, na introdução, nas conclusões dos capítulos e na conclusão geral — entra num **registro de alegações** com suas evidências, seu escopo e suas limitações. Os resumos e as conclusões são onde o exagero se acumula, porque são escritos por último, com pressa, em busca de impacto.
+
+#### 8.1.1 Atividade prática: uma primeira passada automatizada
+
+```python
+# Lab 8 - audit a thesis claim register before the defense (offline)
+claims = [
+    {"id": "K1", "text": "Dependency-aware restoration reduced weighted critical-service loss in the Riverbend model",
+     "evidence": ["Ch5-MC"], "scope": "synthetic model, single crew, 4 feeders", "limits": ["model-policy circularity"], "status": "supported"},
+    {"id": "K2", "text": "The benefit persists when generator fuel buffers double",
+     "evidence": ["Ch6-boundary"], "scope": "gen_scale 2-4", "limits": [], "status": "supported"},
+    {"id": "K3", "text": "Operators would adopt the dependency-aware ordering",
+     "evidence": [], "scope": "", "limits": [], "status": "supported"},
+    {"id": "K4", "text": "Dependency-aware restoration improves resilience of US utilities",
+     "evidence": ["Ch5-MC", "Ch6-PortHalvard"], "scope": "two synthetic regions", "limits": ["no field data"], "status": "supported"},
+]
+OVERREACH = ("US utilities", "all utilities", "proves", "always")
+for c in claims:
+    problems = []
+    if c["status"] == "supported" and not c["evidence"]:
+        problems.append("no evidence for a supported claim")
+    if not c["scope"]:
+        problems.append("scope missing")
+    if not c["limits"]:
+        problems.append("no stated limitation")
+    if any(w in c["text"] for w in OVERREACH) and "synthetic" in c["scope"]:
+        problems.append("text generalizes beyond its synthetic scope")
+    print(c["id"], "OK" if not problems else "; ".join(problems))
+```
+
+Saída esperada:
+
+```text
+K1 OK
+K2 no stated limitation
+K3 no evidence for a supported claim; scope missing; no stated limitation
+K4 text generalizes beyond its synthetic scope
+```
+
+O script detecta três falhas clássicas. K2 está sustentada, mas não declara nenhuma limitação — e, no entanto, o Capítulo 6 mostrou que o benefício sobre SILO encolhe fortemente à medida que as reservas crescem, então "persiste quando as reservas dobram" precisa do qualificador de que o benefício cai cerca de 85% com o dobro das reservas. K3 está marcada como sustentada sem nenhuma evidência: o exercício de mesa mostrou que uma exibição *pode deslocar escolhas num exercício de mesa*, o que não é adoção. K4 generaliza de duas regiões sintéticas para "US utilities". Um filtro por palavras-chave é tosco — ele deixaria passar "nationwide" ou "the grid" —, então o script é uma primeira passada; a auditoria decisiva é uma pessoa lendo cada alegação contra o registro.
+
+#### 8.1.2 Alegações corrigidas
+
+| ID | Texto corrigido |
+|---|---|
+| K1 | No modelo sintético de Riverbend, todas as ordenações cientes da criticidade reduziram a perda ponderada de serviços críticos em cerca de 90% em relação à ordenação pelos clientes, com cerca de 70% a mais de clientes-hora; a ordenação pelo tempo até o impacto não melhorou a ordenação por sinalização crítica ali. |
+| K2 | A vantagem da ordenação ciente da criticidade sobre a ordenação pelos clientes caiu cerca de 85% quando as reservas foram dobradas e desapareceu com quatro vezes as reservas obtidas. |
+| K3 | Num exercício de mesa com doze participantes de três concessionárias sintéticas, uma exibição do tempo até o impacto deslocou as ordenações escolhidas por sete participantes em direção à ordenação de menor consequência; a adoção na prática não foi estudada. |
+| K4 | Em duas regiões sintéticas e 200 regiões geradas, a ordenação pelo tempo até o impacto melhorou a ordenação por sinalização crítica apenas onde suas ordens divergiam; com que frequência isso ocorre nas regiões reais é desconhecido. |
+
+### 8.2 Preparando a defesa
+
+#### 8.2.1 O que os examinadores testam
+
+Os examinadores testam se o candidato é um pesquisador independente: se ele entende os limites da sua contribuição melhor do que ninguém, se consegue defender as escolhas de desenho contra as alternativas e se conhece a literatura bem o bastante para situar o trabalho. Espere perguntas de seis famílias:
+
+| Família | Exemplo de pergunta para o Cascade Study | O que uma resposta forte contém |
+|---|---|---|
+| Contribuição | "O que há de novo aqui, considerando que as concessionárias já mantêm listas de clientes críticos?" | A alegação estreitada; as condições sob as quais a temporização agrega valor; as pré-condições mensuráveis (divergência, acurácia do mapa); o enquadramento pela teoria de programação. |
+| Desenho | "Por que simulação e exercício de mesa em vez de um estudo de campo?" | Segurança e ética (nunca testar em produção); raridade dos eventos reais; o uso da validação histórica; o que um piloto de campo durante exercícios acrescentaria em seguida. |
+| Validade | "O resultado não é circular?" | O teste de descompasso; modelador independente para Port Halvard; a análise do gerador; o que continua circular. |
+| Valores | "Quem decidiu que os hospitais importam cinco vezes mais do que uma central de telecomunicações, e por que alguém deveria aceitar isso?" | O processo de elicitação, o painel, a data, a sensibilidade dos vereditos aos pesos (EX034), a declaração explícita de que os pesos são uma escolha de política. |
+| Ética e duplo uso | "Vocês acabaram de dizer aos adversários que ataquem os dados de prioridade de restauração?" | A revisão de duplo uso; publicação em nível geral; recomendação defensiva; coordenação antes da publicação. |
+| Conhecimento da área | "Como seu trabalho se relaciona com as abordagens de engenharia orientadas pela consequência?" | A lógica de consequência primeiro do CCE; a tese como contribuição para o lado da *recuperação*; diferenças na unidade de análise. |
+
+#### 8.2.2 Defesas simuladas
+
+Faça pelo menos duas defesas simuladas: uma com especialistas amigáveis do domínio e uma com um metodologista hostil de fora dele. Registre as perguntas que você não conseguiu responder bem; cada uma é uma lacuna na tese (corrija-a), uma lacuna na sua preparação (estude-a) ou uma pergunta genuinamente em aberto (diga isso na defesa — "não sei, e é assim que eu descobriria" é uma resposta forte).
+
+#### 8.2.3 Respondendo
+
+Responda à pergunta feita, depois apresente as evidências, depois declare o limite. Evite três hábitos: defender uma alegação mais forte do que a tese faz; conceder, por nervosismo, um ponto que a tese de fato trata; e preencher o silêncio com especulação. Quando um examinador propuser uma explicação alternativa que você não testou, a melhor resposta descreve o teste que a distinguiria e o que cada desfecho significaria.
+
+### 8.3 Plano de publicação
+
+#### 8.3.1 Sequenciando os artigos
+
+O Cascade Study se divide naturalmente em artigos para comunidades diferentes:
+
+1. **Artigo de métodos/PO.** A ordenação da restauração sob serviços críticos limitados por reservas: o enquadramento pela programação, o limite oráculo, a heurística e seus modos de falha, a análise de 200 regiões. Público: veículos de confiabilidade, risco e pesquisa operacional.
+2. **Artigo de segurança de infraestrutura.** A integridade do mapa de dependências como pré-condição da restauração ciente da criticidade, com os resultados de descompasso e a recomendação defensiva revisada quanto ao duplo uso. Público: veículos de proteção de infraestrutura crítica e workshops de segurança de CPS.
+3. **Artigo de fatores humanos.** O estudo de exercício de mesa: exibição, escolhas, justificativas e variáveis omitidas. Público: fatores humanos e gestão de emergências.
+4. **Nota de replicação.** A reprodução do GridWater-Sim após a correção de uma ambiguidade na ordem dos parâmetros, com os testes de verificação. Público: a comunidade do benchmark; também valiosa como artigo de dados ou de software.
+
+Publique os componentes T0 do arquivo com identificadores persistentes junto com o primeiro artigo, para que os artigos seguintes citem os mesmos artefatos versionados. Cada artigo precisa declarar o escopo da alegação geral e não deve citar outro artigo da tese como evidência mais forte do que ele é.
+
+#### 8.3.2 Preprints, embargos e resultados sensíveis
+
+Os preprints aceleram o retorno e estabelecem a prioridade. Para resultados que tocam superfícies de ataque, decida *antes* do preprint se a coordenação é necessária (§8.4); um preprint é uma publicação. Financiadores e parceiros podem ter prazos de aviso em seus acordos (Capítulo 1, §1.5.3); respeite-os, e recuse qualquer pedido que equivalha a um veto sobre as constatações.
+
+### 8.4 Divulgação coordenada e coordenação setorial
+
+A pesquisa sobre infraestrutura pode produzir três tipos de constatação sensível, cada um com sua própria via:
+
+| Constatação | Exemplo | Via |
+|---|---|---|
+| Uma vulnerabilidade de produto | Uma falha no software de gestão de interrupções de um fornecedor encontrada durante a construção do simulador | Divulgação coordenada de vulnerabilidades ao fornecedor, diretamente ou por meio de um coordenador como o [programa de CVD da CISA](https://www.cisa.gov/resources-tools/programs/coordinated-vulnerability-disclosure-cvd-program); a prática internacional é descrita na ISO/IEC 29147 (divulgação) e na ISO/IEC 30111 (tratamento). |
+| Uma fraqueza específica de uma organização | A lista de clientes críticos de um parceiro tem atribuições de alimentador erradas | Relato privado ao parceiro, sob o acordo de uso de dados; nunca publicado de forma identificável. |
+| Uma superfície de ataque em nível setorial | Os dados de prioridade de restauração e os mapas de dependências são alvos de alto valor cuja corrupção amplifica as quedas | Coordenar com os parceiros e, quando apropriado, com a organização setorial de compartilhamento de informações pertinente antes da publicação; publicar em nível geral, com recomendações defensivas. |
+
+Inclua o período de coordenação no cronograma. A CISA descreve seu processo como abrangendo o contato com o fornecedor, a análise, a coordenação da remediação e a publicação do alerta, e observa que pode divulgar após um período se o fornecedor não responder; leia a política atual em vez de confiar num resumo. A tese registra o que foi divulgado, a quem, quando e o que foi retido.
+
+### 8.5 Traduzindo para a política e a prática
+
+Os públicos de políticas precisam de recomendações que decorram das evidências e digam quão confiantes elas são. A partir da alegação estreitada do Cascade Study, as recomendações defensáveis são:
+
+1. **Explicitar a troca.** Priorizar os serviços críticos na restauração custa aos clientes comuns tempo sem energia; o tamanho desse custo deve ser estimado e discutido nos planos de emergência e, quando apropriado, em consulta pública. (Evidência forte dentro do modelo; a direção é um resultado da teoria de programação.)
+2. **Auditar os mapas de dependências.** A restauração ciente da criticidade só é tão boa quanto o mapa alimentador–instalação e os dados das reservas por trás dela; as concessionárias e seus parceiros devem verificá-los regularmente. (Evidência forte de fragilidade dentro do modelo.)
+3. **Proteger os dados de prioridade de restauração.** Trate as listas de clientes críticos, os mapas de dependências e os estoques das reservas como sensíveis e críticos quanto à integridade. (Inferência a partir dos resultados de descompasso e dos relatos públicos de ameaças; confiança moderada.)
+4. **Medir a divergência antes de mudar a prática.** Uma concessionária pode determinar se a ordenação pelo tempo até o impacto mudaria a ordem atual da sua lista crítica; se não mudar, ela nada ganha ao adotá-la. (Condicionada ao modelo; baixo custo de verificação.)
+
+Essas recomendações se encaixam naturalmente em processos de gestão de riscos que já existem — a gestão de riscos setoriais sob o NSM-22 nos Estados Unidos, as avaliações de risco das entidades críticas sob a Diretiva CER na UE —, sem alegar que qualquer autoridade deva torná-las obrigatórias. Um policy brief tem duas páginas, declara sua base de evidências e seus limites e traz links para a tese e o arquivo.
+
+### 8.6 O programa de pós-doutorado
+
+A tabela de limitações do Capítulo 7 é uma agenda de pesquisa. Um programa crível de três estudos:
+
+1. **Levantamento da divergência em regiões reais** (empírico, protegido): medir, sob proteção T3, com que frequência as ordens pelo tempo até o impacto e pela lista crítica divergem numa amostra de concessionárias. Isso responde à pergunta que os geradores sintéticos não conseguiram responder.
+2. **Modelagem das reservas humanas** (modelo + validação): representar a extensão das reservas (entregas de combustível, água por caminhão) como condicionada ao acesso às telecomunicações e às estradas, validar contra os registros pós-ação e testar de novo as alegações sobre a restauração.
+3. **Ataques à integridade dos dados de planejamento** (segurança + simulação): modelar a corrupção adversarial dos mapas de dependências e das listas de prioridade, avaliar estratégias de detecção e auditoria e estimar seu valor quanto à consequência — uma continuação direta da constatação de duplo uso, conduzida com parceiros setoriais.
+
+Cada estudo tem uma alegação falseável, um desenho seguro e um modelo de parceria, e cada um mudaria uma decisão que alguém toma.
+
+### 8.7 Exemplo resolvido: uma troca na defesa (sintética)
+
+*Examinador:* "Sua região de Port Halvard foi desenhada para fazer seu método vencer. Por que eu deveria acreditar em qualquer coisa além de Riverbend, onde ele falhou?"
+
+*Candidato:* "O senhor tem razão em que Port Halvard foi selecionada para que o mecanismo pudesse operar; os critérios de seleção foram pré-registrados antes da simulação, e outro modelador a construiu, mas ela é um teste do mecanismo, e não uma estimativa de com que frequência o método ajuda. É por isso que executei a análise de 200 regiões, em que o ganho sobre a ordenação por sinalização é exatamente zero sempre que as duas ordens coincidem e cresce com a divergência, e é por isso que a tese nada alega sobre com que frequência a divergência ocorre nas regiões reais. A falha em Riverbend faz parte da alegação: ela mostra que o método nada acrescenta onde as ordens coincidem ou onde os pesos e o espalhamento favorecem outra ordem. Se o senhor quiser uma estimativa para concessionárias reais, o estudo que eu executaria primeiro é o levantamento da divergência que descrevo na conclusão."
+
+A resposta concede o que é verdadeiro, cita as evidências específicas, reafirma a alegação estreitada e nomeia o próximo estudo. Ela não defende a alegação original, mais ampla.
+
+### 8.8 Erros comuns e limites
+
+- Resumos e conclusões que alegam mais do que os capítulos.
+- Tratar a defesa como uma apresentação em vez de um exame da independência.
+- Publicar artigos cujas alegações se desviam para além do escopo da tese.
+- Postar preprints antes de decidir se a coordenação é necessária.
+- Recomendações de política sem níveis de confiança nem links para as evidências.
+- Planos de pós-doutorado que repetem a tese em vez de tratar suas limitações.
+
+- Manter um registro de alegações, mas auditá-lo apenas por palavras-chave, o que deixa passar exageros formulados como nationwide ou the grid.
+- Responder à explicação alternativa de um examinador defendendo a alegação original em vez de descrever o teste que as distinguiria.
+- Postar o artigo de segurança de infraestrutura antes que os parceiros e o órgão setorial de compartilhamento de informações tenham sido consultados sobre a constatação da integridade do mapa.
+- Citar um artigo da tese, no artigo seguinte, como evidência mais forte do que ele é.
+- Escrever recomendações de política que impliquem uma obrigatoriedade que as evidências não sustentam.
+
+### Exercícios — capítulo 8
+
+**EX045 — Auditoria das alegações.** *Objetivo:* auditar um registro de alegações. *Insumos:* Laboratório 8. *Restrições:* off-line. *Passos:* (1) executar o laboratório e registrar a saída; (2) acrescentar uma alegação K5, "Our method makes the grid resilient to cyber attacks", com evidência `["Ch5-MC"]`, escopo "synthetic model" e limites `["no field data"]`; (3) mostrar que o script não a detecta; (4) melhorar a verificação e reexecutar; (5) escrever o texto corrigido de K5. *Evidência esperada:* código, saídas, alegação corrigida. *Rubrica:* 3 = demonstra a falha de detecção, uma verificação melhorada sensata (por exemplo, termos como "the grid" ou "resilient to" combinados com o escopo sintético), alegação corrigida devidamente delimitada; 2 = verificação melhorada, mas a alegação continua inflada; 1 = não executado; 0 = nada.
+
+**EX046 — Banco de perguntas dos examinadores.** *Objetivo:* preparar-se para a defesa. *Insumos:* sua tese ou o Cascade Study. *Restrições:* pelo menos duas perguntas em cada uma das seis famílias de §8.2.1; uma resposta-modelo de no máximo 120 palavras para as três mais difíceis. *Passos:* (1) escrever pelo menos duas perguntas em cada família; (2) marcar as três mais difíceis; (3) redigir uma resposta-modelo de no máximo 120 palavras para cada uma; (4) identificar qualquer pergunta que revele uma lacuna na tese, e não na sua preparação. *Evidência esperada:* banco de perguntas e respostas. *Rubrica:* 3 = perguntas afiadas e específicas, respostas que seguem o padrão pergunta–evidência–limite, pelo menos uma lacuna real identificada; 2 = respostas defensivas; 1 = perguntas genéricas; 0 = nada.
+
+**EX047 — Plano de publicação.** *Objetivo:* sequenciar os artigos com integridade. *Insumos:* o Cascade Study ou a sua tese. *Restrições:* de três a cinco artigos; público, alegação e evidências de cada um; versionamento do arquivo; pontos de verificação de coordenação. *Passos:* (1) listar os artigos com seus públicos; (2) declarar a alegação de cada artigo e as evidências que ele usa; (3) mapear os artefatos compartilhados e suas versões; (4) marcar onde a coordenação ou a revisão de duplo uso precisa acontecer antes da liberação. *Evidência esperada:* plano com cronograma. *Rubrica:* 3 = artigos distintos e sem sobreposição de alegações, artefatos compartilhados versionados, coordenação posicionada antes de qualquer preprint que toque superfícies de ataque; 2 = sobreposições ou pontos de verificação ausentes; 1 = apenas uma lista de títulos; 0 = nada.
+
+**EX048 — Encaminhamento da divulgação.** *Objetivo:* encaminhar constatações sensíveis. *Insumos:* quatro constatações sintéticas: (a) a concessionária parceira do simulador exporta sua lista de clientes críticos para uma página web interna sem autenticação; (b) um produto comercial de gestão de interrupções aceita importações de configuração não assinadas; (c) em três parceiros, os estoques das reservas no papel excedem os estoques físicos em 20–40%; (d) os procedimentos de rádio das equipes de restauração dependem de um único site repetidor. *Restrições:* vias de §8.4; declarar a temporização e o que é publicado. *Passos:* (1) classificar cada constatação por tipo; (2) escolher a via; (3) declarar quem é notificado e quando; (4) declarar o que acaba sendo publicado e em que nível. *Evidência esperada:* tabela. *Rubrica:* 3 = (a) relato privado ao parceiro, (b) CVD com o fornecedor ou um coordenador, (c) relatos privados mais a publicação geral da lacuna entre os estoques no papel e os físicos, (d) relato privado e uma constatação geral sobre pontos únicos de falha nas comunicações de restauração, com temporização sólida; 2 = um mal encaminhado; 1 = dois ou mais; 0 = nada.
+
+**EX049 — Policy brief.** *Objetivo:* traduzir sem inflar. *Insumos:* a alegação estreitada de §6.5 e as recomendações de §8.5. *Restrições:* duas páginas; nível de confiança e link para as evidências em toda recomendação; um parágrafo sobre o que a pesquisa não mostra. *Passos:* (1) escrever o brief; (2) marcar cada frase como evidência, inferência ou recomendação; (3) remover qualquer frase que não possa ser rastreada até a tese. *Evidência esperada:* brief com as marcações. *Rubrica:* 3 = recomendações rastreáveis e qualificadas, não constatações explícitas, linguagem acessível; 2 = algumas frases não rastreáveis; 1 = advocacia sem evidências; 0 = nada.
+
+**EX050 — Programa de pesquisa de pós-doutorado.** *Objetivo:* converter as limitações em pesquisa. *Insumos:* sua tabela de limitações do EX044 ou §7.7. *Restrições:* três estudos; cada um com uma alegação falseável, um desenho seguro, um modelo de parceria e a decisão que ele mudaria. *Passos:* (1) escolher três limitações; (2) desenhar um estudo para cada uma; (3) ordenar os estudos por dependência e valor; (4) declarar que resultado encerraria o programa. *Evidência esperada:* programa de duas páginas. *Rubrica:* 3 = os estudos tratam diretamente das limitações de maior consequência, são falseáveis e seguros e estão ordenados por dependência, com um resultado de parada honesto; 2 = um estudo fraco; 1 = repete a tese; 0 = nada.
+
+### Síntese do capítulo
+
+A defesa examina a independência: o candidato precisa conhecer os limites da contribuição melhor do que ninguém. Um registro de alegações, auditado por script e por leitura, remove os exageros que se acumulam nos resumos e nas conclusões. As perguntas dos examinadores se enquadram em famílias previsíveis; responda com evidências e limites, e nomeie o estudo que resolveria o que você não sabe. Publique em sequência, em diferentes comunidades, com artefatos compartilhados versionados, e decida sobre a coordenação antes que qualquer preprint toque uma superfície de ataque. Encaminhe de formas diferentes as vulnerabilidades, as fraquezas específicas de organizações e as superfícies de ataque em nível setorial. Traduza as alegações estreitadas em recomendações com níveis de confiança. As limitações se tornam o próximo programa de pesquisa — o fim natural de um curso de doutorado e desta trilha de estudos.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — capítulo 08 de 08
+
+[← Capítulo 07](#ch-07) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções →](#worked-results)
+
+Siga para a próxima lição escrita.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
 ## Resoluções e notas de avaliação
 
-Cada resolução mostra uma resposta defensável e explica o que a rubrica recompensa. Respostas alternativas podem receber a pontuação máxima quando atendem ao mesmo padrão de evidências, escopo e honestidade sobre os limites. Os resultados numéricos vêm dos laboratórios offline deste livro, executados com a biblioteca padrão do Python 3; se sua saída for diferente, confira primeiro a versão do Python, a semente e se você mudou a ordem dos sorteios aleatórios. Esta edição parcial traz as resoluções de EX001–EX026; as de EX027–EX050 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Cada resolução mostra uma resposta defensável e explica o que a rubrica recompensa. Respostas alternativas podem receber a pontuação máxima quando atendem ao mesmo padrão de evidências, escopo e honestidade sobre os limites. Os resultados numéricos vêm dos laboratórios offline deste livro, executados com a biblioteca padrão do Python 3; se sua saída for diferente, confira primeiro a versão do Python, a semente e se você mudou a ordem dos sorteios aleatórios.
 
 ### Capítulo 1: EX001–EX007
 
@@ -1166,6 +2067,78 @@ Não existe ciclo entre os serviços listados (nenhum serviço da lista depende 
 **EX025 — Métrica de detecção relativa à latência.** Definição: para cada segmento anômalo *k* com início *s_k*, primeiro alarme *a_k* (o primeiro índice sinalizado no segmento) e tempo até o impacto *T_k*, o segmento é "detectado antes do impacto" se *a_k* existir e (*a_k* − *s_k*) × Δ*t* < *T_k*. Com Δ*t* = 6 min e *T* = 2 h (20 passos): o primeiro alarme do segmento 1 está no deslocamento de 21 passos (2,1 h) → não; o do segmento 2 no deslocamento 0 → sim; o do segmento 3 no deslocamento de 29 passos (2,9 h) → não. Fração detectada antes do impacto = 1/3. Contraste: PA-F1 0,911, F1 por pontos 0,05, PA%K 0,05. A métrica de latência mostra que um detector sem nenhuma informação vence a reserva apenas por acaso — uma informação que o PA-F1 esconde por completo.
 
 **EX026 — Plano do piloto.** Um plano forte lista as perguntas de viabilidade (taxa de recrutamento, compreensão dos materiais, duração das sessões, captura de dados, tempo de execução, testes de invariantes), define limiares como em §4.7.2, especifica as respostas de "não prosseguir" (revisar e repilotar; mudar a via de recrutamento; reduzir o escopo), exclui os participantes do piloto do estudo principal porque eles já viram os materiais e suas escolhas estariam contaminadas, e declara explicitamente que nenhum tamanho de efeito será estimado nem relatado como evidência.
+
+### Capítulo 5: EX027–EX032
+
+**EX027 — Execute e interprete o estudo principal.** A saída exata está impressa em §5.2.1. Variação relativa de DEP em relação a CRITFLAG: Riverbend 4,32 / 3,97 − 1 = +8,8% (DEP um pouco pior); Port Halvard 9,61 / 31,63 − 1 = −69,6%. Parágrafo-modelo: "Em relação à ordenação pelos clientes, as duas ordenações cientes da criticidade reduziram a perda ponderada de serviços críticos em mais de 80% nas duas regiões sintéticas, ao mesmo tempo em que aumentaram os clientes-hora em 58–71%, o que excede a margem de 15% declarada com antecedência (H4a não atendida). Em relação à ordenação por sinalização crítica, a ordenação pelo tempo até o impacto não produziu redução em Riverbend (diferença média de +0,35, intervalo de Monte Carlo de 95% de −0,23 a 0,97; uma redução de 10% fica descartada) e produziu uma redução de 70% em Port Halvard, onde igualou o oráculo; os clientes-hora subiram 2,3% e 9,9%, respectivamente, dentro da margem (H4b atendida). Os intervalos refletem apenas o ruído da simulação."
+
+**EX028 — Pareado versus não pareado.** Riverbend, 500 sorteios: DP das perdas de DEP ≈ 6,36, das de CRITFLAG ≈ 4,57, das diferenças por sorteio ≈ 6,79. Intervalo não pareado de 95% para a diferença de médias ≈ 0,35 ± 1,96 × √((6,36² + 4,57²)/500) ≈ −0,34 a 1,04; pareado ≈ −0,24 a 0,95. O pareamento ajudou apenas modestamente. As perdas das duas políticas são fraca e positivamente correlacionadas: em muitos sorteios, uma protege a água e a outra as telecomunicações, então suas perdas se movem em direções diferentes. A variância das diferenças, Var(A) + Var(B) − 2 Cov(A, B), pode, portanto, exceder a variância de qualquer das políticas e ainda ficar abaixo da soma não pareada. Os números aleatórios comuns continuam corretos; seu ganho de precisão é uma questão empírica.
+
+**EX029 — Taxonomia da incerteza.** (a) Monte Carlo — mais sorteios. (b) Parâmetros — elicitação com incerteza, verificação dos estoques, análise de sensibilidade. (c) Estrutural — extensão do modelo (tempos de deslocamento), comparação de estruturas de modelo. (d) Valores — conjuntos alternativos de pesos, relato transparente dos vereditos por conjunto, deliberação com as partes interessadas. (e) Parâmetros (família de distribuições) ou estrutural (se a forma refletir um mecanismo como o esgotamento) — testar famílias alternativas e relatar a sensibilidade.
+
+**EX030 — Crítica do desenho do exercício de mesa.**
+
+| Ameaça | Mudança | Custo |
+|---|---|---|
+| Características de demanda (os participantes adivinham a resposta "certa") | Incluir cenários de preenchimento em que DEP não é ótima; enquadramento neutro | Sessões mais longas |
+| Amostra pequena, três concessionárias | Recrutar em mais concessionárias, estratificadas por porte | Esforço de recrutamento; mais acordos |
+| Sem pressão de tempo nem cansaço | Decisões cronometradas dentro de um exercício mais longo; inserção num exercício programado da concessionária | Realismo versus carga; consentimento dos responsáveis pelo exercício |
+| Reconhecimento dos cenários isomórficos | Variar mais as características de superfície; separar as sessões por dias | Logística; desistências |
+| Exibição testada apenas em combinação com a informação de temporização | Acrescentar um terceiro braço: lista de sinalização com os caminhos mostrados, mas sem os tempos | Mais participantes necessários |
+| Desfecho pontuado no mesmo modelo usado para desenhar DEP | Pontuar as escolhas também por um painel independente de especialistas | Tempo do painel |
+
+**EX031 — Matriz de evidências de validação.** Uma resposta forte escolhe validade aparente, histórica, de condições extremas, de variabilidade dos parâmetros e operacional; é honesta quanto à impossibilidade da validação histórica de eventos cibernéticos raros e a substitui por eventos de todas as causas com um argumento de transferência; e identifica o teste mais danoso — para o Cascade Study, a validação histórica da temporização das reservas, porque, se as reservas estiverem sistematicamente erradas, todo resultado de ordenação muda — e o programa para antes do estudo principal.
+
+**EX032 — Memorando de transportabilidade.** A concessionária tem três alimentadores críticos cuja ordem das reservas coincide com a ordem dos clientes, e uma equipe. Moderadores: divergência zero; uma equipe; reservas desconhecidas em relação ao tempo de restauração; acurácia do mapa desconhecida. Previsão: a ordenação pelo tempo até o impacto produzirá a mesma ordem que a lista crítica, então o ganho é zero. Ressalvas: se os pesos ou o espalhamento (um alimentador que protege vários serviços ponderados) diferirem, uma regra ciente dos pesos ainda poderia ajudar — isso está fora da alegação testada. Dados que mudariam a previsão: reservas corrigidas (que poderiam mudar a ordem), evidências de erros no mapa ou dependências que não estejam na lista.
+
+### Capítulo 6: EX033–EX038
+
+**EX033 — Relatório do red team.** As objeções-modelo são as de §6.2, mais, por exemplo, "o horizonte de 72 horas censura as quedas longas" (teste: estender para 120 h e contar os serviços censurados) e "as distribuições triangulares subestimam as caudas" (teste: reservas lognormais com medianas iguais). Cada objeção declara sua previsão antes do teste; por exemplo, "se a circularidade determina o resultado, um mapa errado vai eliminar a vantagem de DEP sobre SILO" — o Capítulo 6 constatou que ele reduziu a vantagem de perda de DEP sobre SILO de cerca de 48 para cerca de 7 horas de serviço ponderadas, enquanto todas as políticas cientes da criticidade se degradaram.
+
+**EX034 — Sensibilidade aos pesos.** Com todos os pesos definidos como 1,0 (500 sorteios, semente 7): Riverbend SILO 15,00, CRITFLAG 1,32, DEP 1,07, ORACLE 0,54; DEP − CRITFLAG −0,25 (intervalo de Monte Carlo de 95% de −0,41 a −0,08). Port Halvard SILO 14,95, CRITFLAG 8,61, DEP 2,49, ORACLE 2,49; DEP − CRITFLAG −6,12 (−6,24 a −6,00). Vereditos: H1 inalterada (sustentada); H2 em Riverbend muda de *rejeitada* para *inconclusiva* sob a regra pré-registrada — a estimativa pontual é uma redução de 19%, mas a extremidade superior do intervalo (−0,08) não fica inteiramente abaixo do limiar (−0,13); H2 em Port Halvard inalterada (sustentada); H4 não afetada (os clientes-hora não dependem dos pesos). Explicação: com os pesos declarados com antecedência, restaurar F3 primeiro protege dois serviços de peso alto (água 4 e o hospital via água 5), o que favorece a ordem de CRITFLAG; com pesos iguais, restaurar cedo as telecomunicações importa relativamente mais e a regra do menor tempo até o impacto de DEP ganha. Conclusão: o veredito de Riverbend depende dos valores; a tese precisa relatar os vereditos por conjunto de pesos.
+
+**EX035 — Experimento de erro do mapa.** Telecomunicações verdadeiramente em F4, planejadores acreditam em F2 (300 sorteios, semente 7, sem oráculo): SILO 29,01, CRITFLAG 26,82, DEP 31,11. Com um mapa correto, CRITFLAG e DEP escolhem ambas F4, F3, F2, F1 e chegam a 4,90. Em comparação com o descompasso da água (§6.3.1), o erro das telecomunicações prejudica DEP ainda mais: DEP se torna a pior das três políticas, porque restaura F2 primeiro, com confiança, por uma central de telecomunicações que não está lá. Procedimento de auditoria: para toda instalação crítica listada, verificação de campo por amostragem do alimentador que a abastece, todo ano e após qualquer reconfiguração da rede; meta de acurácia ≥ 98% numa amostra aleatória de pelo menos 50 pares instalação–alimentador (ou todos, se forem menos); aprovação do responsável; discrepâncias corrigidas em 30 dias; resultados da auditoria armazenados em nível controlado.
+
+**EX036 — Crítica do gerador.** Implementando "alimentadores maiores abrigam serviços de reserva mais longa" (atribuir os níveis de reserva ordenados aos alimentadores críticos ordenados por clientes, a menor reserva ao menor alimentador; 200 regiões, semente 2026): as regiões sem divergência caem de 69 para 9; divergência em duas posições, 77 regiões, ganho médio −24,85; divergência em três posições, 114 regiões, ganho médio −19,02. A correlação oposta (a menor reserva no maior alimentador) dá 162 regiões sem divergência, 35 com duas posições (ganho médio −8,65) e 3 com três (−17,24). Interpretação: o pressuposto de correlação do gerador, e não o método, controla com que frequência DEP ajuda. A alegação precisa continuar condicionada à divergência medida, e a frequência nas regiões reais precisa ser medida, e não simulada.
+
+**EX037 — Decisão de duplo uso.** (a) *Restringir e notificar*: específica, acionável, de ganho alto — divulgação coordenada por meio do fornecedor e de um coordenador; notificar as concessionárias afetadas pelos canais adequados; publicar apenas constatações agregadas após a remediação. (b) *Publicar*: padrão geral amplamente discutido em alertas públicos; valor defensivo alto. (c) *Publicar com cuidado*: o método ajuda os planejadores; evitar liberar pipelines prontos que ingiram dados públicos de instalações de lugares nomeados. (d) *Reter ou restringir*: as estimativas para hospitais nomeados são dados de alvos com pouco valor defensivo além desses hospitais; compartilhar com eles em privado, se forem acuradas.
+
+**EX038 — Carta de resposta.** Respostas-modelo: (1) circularidade — *parcialmente aceita*; testes de descompasso acrescentados, alegação condicionada à acurácia do mapa, auditoria do mapa recomendada. (2) Reservas curtas — *aceita como condição de contorno*; escalonamento das reservas acrescentado, alegação limitada a reservas menores do que cerca de duas vezes o tempo de restauração. (3) Seleção do contexto — *parcialmente aceita*; análise de 200 regiões acrescentada, alegação limitada à divergência medida, frequência nas regiões reais listada como desconhecida. (4) Fraqueza da heurística — *aceita*; regra ciente dos pesos apresentada como trabalho futuro exploratório, e não como resultado. (5) Duplo uso — *aceita*; revisão de duplo uso acrescentada; recomendação sobre os dados de prioridade de restauração publicada em nível geral após coordenação. Cada resposta cita a seção alterada.
+
+### Capítulo 7: EX039–EX044
+
+**EX039 — Mapa do argumento.** Alegação, dados, garantia, respaldo, qualificador e refutações como em §7.1, com os capítulos: dados (Capítulos 5–6), garantia (verificação do Capítulo 4 e validação do Capítulo 5), respaldo (reproduções e testes do Capítulo 4), qualificador (escopo do Capítulo 3 mais as condições do Capítulo 6), refutações (Capítulo 6 e Limitações). Garantia mais fraca: a de que o modelo classifica as ordenações de forma adequada para regiões *reais*, já que a validação histórica cobre um único evento de todas as causas e omite as reservas humanas. Fortalecimento: validação da temporização das reservas contra vários registros pós-ação, com as reservas humanas modeladas explicitamente.
+
+**EX040 — Atribuição de níveis.** Código do simulador T0; testes de verificação T0; configuração de Riverbend T0 (inventada); formulários de elicitação com os nomes dos parceiros T3 (ou T2, se os parceiros consentirem com o acesso controlado) — transformar retirando as identidades e agregando para T1; faixas de elicitação agregadas T1 (T0 se os parceiros concordarem e não restar nenhuma estrutura única); áudio do exercício de mesa T2 — destruir após a transcrição, se o consentimento assim disser; justificativas codificadas T2, ou T1 após a desidentificação e a remoção das combinações de função mais concessionária; formulários de consentimento T2 (administrativos, nunca liberados); procedimento de restauração do parceiro T3 — descrever apenas sua existência e seu papel; figuras finais T0.
+
+**EX041 — Manifesto que falha fechado.** Com a ordem original das regras, `data/synthetic_partner_feeders.csv` corresponde primeiro a `partner_` e é classificado como T3 (correto). Mover a regra `synthetic_` para o início o classifica como T0-public (errado) — um risco de ordenação. Uma verificação de conteúdo: antes de atribuir T0, ler os bytes e recusar T0 se `b"SUB-"` (ou qualquer padrão de uma lista de formatos de identificadores de ativos) ocorrer, retornando "UNCLASSIFIED: stop and review". Lição: coloque primeiro as regras mais restritivas, falhe fechado quando não houver correspondência e verifique o conteúdo além dos nomes.
+
+**EX042 — Avaliação da divulgação residual.** Risco: a configuração (um hospital, duas estações de água, cinco alimentadores, hospital num alimentador específico) é uma impressão digital estrutural quase única do condado; alguém com conhecimento local poderia associá-la. Uma associação revelaria qual alimentador atende o hospital e as reservas obtidas — informação de alvos. Transformações: misturar estruturas de vários condados; generalizar para faixas; abandonar a ligação alimentador–hospital e substituí-la por uma atribuição aleatória que preserve apenas a estatística de interesse (por exemplo, a distribuição da divergência). Custo: ligação mais fraca com o caso real; a tese precisa declarar quais resultados dependem da estrutura preservada.
+
+**EX043 — Documentação do modelo.** Propósito: classificar as ordenações de restauração pela perda ponderada de serviços críticos e pelos clientes-hora em quedas na distribuição que exigem restauração manual sequencial. Entidades: alimentadores (clientes, duração da restauração), serviços (alimentador, reserva, peso, dependência opcional com reserva local), equipes. Processos e escalonamento: as equipes pegam os alimentadores na ordem da política assim que ficam livres; os intervalos de interrupção dos serviços são calculados exatamente, do esgotamento da reserva até a restauração mais um atraso de reinício de uma hora; os intervalos de dependência começam no início da interrupção do fornecedor mais a reserva local e terminam com a restauração do fornecedor; intervalos limitados a 72 h; as dependências têm semântica de OU. Insumos: distribuições triangulares da elicitação; pesos do painel de gestão de emergências. Verificação: as invariantes e os testes unitários do EX024. Limitações: sem tempo de deslocamento; sem extensão das reservas humanas; apenas semântica de OU; reservas fixas (sem dinâmica de esgotamento); uma única classe de cenários.
+
+**EX044 — Seção de limitações.** Uma resposta forte se parece com §7.7, com cinco ou mais limitações, cada uma com efeito, direção e estudo que a resolva, e as classifica: (1) reservas humanas omitidas (poderiam reduzir todos os benefícios da reordenação), (2) regiões sintéticas (frequência da divergência desconhecida), (3) pesos (os vereditos mudam), (4) tempo de deslocamento (reduz o benefício de DEP onde os alimentadores críticos estão dispersos), (5) escala do exercício de mesa (adoção não comprovada).
+
+### Capítulo 8: EX045–EX050
+
+**EX045 — Auditoria das alegações.** A saída original sinaliza K2, K3 e K4 (ver §8.1.1). K5 é relatada como "OK" porque nenhuma das palavras-chave aparece. Verificação melhorada: estender `OVERREACH` com expressões como "the grid", "resilient to", "makes", "secure" ou, melhor, exigir uma expressão de escopo explícita ("in the synthetic…") no texto de qualquer alegação cujo campo de escopo contenha "synthetic". K5 corrigida: "Em duas regiões sintéticas, a ordenação da restauração pelo tempo até o impacto reduziu a perda modelada de serviços críticos após quedas na distribuição, sob condições declaradas; ela não previne ataques cibernéticos, e seu efeito em redes reais não foi testado."
+
+**EX046 — Banco de perguntas dos examinadores.** As três mais difíceis para o Cascade Study, com respostas-modelo: (1) "O resultado não é circular?" — responder com as evidências do descompasso e do modelador independente e admitir o que continua circular (ORACLE e DEP ainda compartilham o modelo). (2) "Por que alguém deveria aceitar os seus pesos?" — não deveria sem escrutínio; descrever a elicitação e a tabela de vereditos por conjunto de pesos; os pesos são um insumo de política que o método torna explícito. (3) "Sem um estudo de campo, o que você sabe sobre as concessionárias reais?" — que as condições para o benefício são mensuráveis; que o levantamento da divergência é o próximo estudo; que nenhuma alegação de campo é feita. Uma lacuna real revelada: a tese não tem evidências sobre se as equipes conseguem seguir um plano reordenado, dados os tempos de deslocamento — uma lacuna no trabalho, a ser declarada como limitação.
+
+**EX047 — Plano de publicação.** Como em §8.3.1, com: o arquivo T0 v1.0 liberado com o artigo 1; os artigos 2–4 citando versões do arquivo; a revisão de duplo uso e a coordenação setorial concluídas antes de qualquer preprint do artigo 2; os prazos de aviso dos parceiros respeitados nos artigos que usam as faixas de elicitação; e uma declaração, em cada artigo, de seu escopo em relação à alegação geral da tese.
+
+**EX048 — Encaminhamento da divulgação.**
+
+| Constatação | Tipo | Via e temporização | Publicado |
+|---|---|---|---|
+| (a) O parceiro expõe sua lista de clientes críticos | Específica da organização | Relato privado imediato sob o acordo de uso de dados; confirmar a correção | Nunca de forma identificável; possivelmente uma nota geral de que as listas de prioridade precisam de controle de acesso |
+| (b) Importações de configuração não assinadas num produto comercial | Vulnerabilidade de produto | CVD com o fornecedor, diretamente ou por um coordenador; publicação após a remediação ou segundo a política do coordenador | Descrição em nível de alerta após a coordenação |
+| (c) Estoques das reservas no papel versus físicos | Específica da organização e de nível setorial | Relatos privados a cada parceiro; depois, publicação geral da lacuna | Constatação agregada sem identidades |
+| (d) Site repetidor único para os rádios das equipes | Específica da organização, com relevância setorial | Relato privado à concessionária; constatação geral sobre pontos únicos de falha nas comunicações de restauração após a coordenação | Apenas a constatação geral |
+
+**EX049 — Policy brief.** Um brief forte começa pelo problema (a ordem de restauração determina quais serviços críticos falham), declara quatro recomendações com níveis de confiança e links para as evidências (§8.5), inclui um parágrafo "O que esta pesquisa não mostra" (efeitos em concessionárias reais, frequência da divergência, adoção sob estresse, qualquer efeito de prevenção cibernética), usa linguagem simples e traz links para a tese e o arquivo T0. Toda frase é marcada; as frases que não podem ser rastreadas até a tese são removidas.
+
+**EX050 — Programa de pesquisa de pós-doutorado.** Como em §8.6: (1) levantamento da divergência — alegação "a divergência ocorre em pelo menos um quarto das concessionárias pesquisadas", desenho sob proteção T3, modelo de parceria por meio das associações setoriais, decisão mudada: se promover ou não a ordenação pelo tempo até o impacto; (2) modelagem das reservas humanas — alegação "incluir as entregas de combustível e de água reduz o benefício modelado da reordenação em menos da metade", validada contra os registros pós-ação; (3) ataques à integridade dos dados de planejamento — alegação "auditorias do mapa com 98% de acurácia limitam a amplificação da consequência por dados de prioridade corrompidos a um limite declarado". Ordem: (1) primeiro, porque, se a divergência for rara, (2) e (3) importam mais do que mais trabalho de método. Resultado de parada: se o levantamento encontrar divergência em pouquíssimas concessionárias e os erros de mapa forem raros, o programa deve se voltar dos métodos de ordenação para a verificação das reservas.
 
 <a id="glossary"></a>
 
