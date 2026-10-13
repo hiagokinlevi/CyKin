@@ -50,17 +50,35 @@ Priya Nair is IT manager at the fictional Fenwick Engineering, a 200-person make
 
 A security operations function watches for signs of attack, decides which matter, and coordinates the response. Zimmerman's "Ten Strategies of a World-Class Cybersecurity Operations Center" (MITRE, 2014) and its successor, Knerler, Parker and Zimmerman's "11 Strategies" (MITRE, 2022), both stress that a SOC first needs a clear mission, authority and a defined constituency, before tools.
 
+Section one point two develops security operations for working professionals with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section one point two, Tom Reyes expects security claims to carry owners and dates.
+
 ### 1.3 Models
 
 In-house gives control and knowledge of the business but costs staff and 24-hour cover. Outsourcing to a managed security service gives night cover and tools but less context. A hybrid keeps an in-house lead who owns decisions while a provider watches out of hours. Fenwick, with no security staff, chooses hybrid.
+
+Section one point three develops security operations for working professionals with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section one point three, Tom Reyes expects security claims to carry owners and dates.
 
 ### 1.4 Mission and scope
 
 Priya's draft mission: "Detect and respond to threats against Fenwick's design data, production systems and staff accounts, around the clock, with in-house ownership of decisions." Scope includes offices, the VPN, cloud email and the factory's supervisory PCs, but not the machine controllers themselves, which the vendor manages.
 
+Section one point four develops security operations for working professionals with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section one point four, Tom Reyes expects security claims to carry owners and dates.
+
 ### 1.5 Frameworks
 
 NIST CSF 2.0 (CSWP 29, 2024) gives a shared language for outcomes; NIST SP 800-61r3 (Nelson et al., 2025) frames incident response within it. Priya uses both to explain the plan to the board.
+
+Section one point five develops security operations for working professionals with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section one point five, Tom Reyes expects security claims to carry owners and dates.
+
+Section one point five treats the case what the as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -100,25 +118,71 @@ You will (1) define who owns security operations decisions; (2) write a SOC char
 
 In March, even if someone had seen the alert, nobody had authority to disable an IT technician's account at night. Authority must be written down before it is needed.
 
+Section two point one develops governance and authority with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section two point one, Tom Reyes expects governance claims to carry owners and dates.
+
+Section two point one treats why authority matters the as testable only when evidence and ticket IDs are recorded.
+
+For section two point one, Fenwick Engineering will not accept governance work without a written trail.
+
 ### 2.2 The charter
 
 Priya writes a two-page charter: mission, scope, services, the authority to take pre-approved actions, escalation paths, and how the SOC reports. The managing director signs it.
+
+Section two point two develops governance and authority with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section two point two, Tom Reyes expects governance claims to carry owners and dates.
+
+Section two point two treats why authority matters the as testable only when evidence and ticket IDs are recorded.
+
+For section two point two, Fenwick Engineering will not accept governance work without a written trail.
 
 ### 2.3 Pre-approved actions
 
 The provider may disable any user account, block an address at the firewall and isolate an office PC without calling Fenwick first. Isolating servers or factory PCs needs Priya or her deputy, because production could stop.
 
+Section two point three develops governance and authority with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section two point three, Tom Reyes expects governance claims to carry owners and dates.
+
+Section two point three treats why authority matters the as testable only when evidence and ticket IDs are recorded.
+
 ### 2.4 Escalation
 
 Severity levels decide who is called: medium goes to the morning queue, high wakes the on-call IT person, critical wakes Priya and the operations director.
+
+Section two point four develops governance and authority with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section two point four, Tom Reyes expects governance claims to carry owners and dates.
+
+Section two point four treats why authority matters the as testable only when evidence and ticket IDs are recorded.
+
+For section two point four, Fenwick Engineering will not accept governance work without a written trail.
 
 ### 2.5 Reporting
 
 A monthly one-page report goes to the board's risk committee: incidents, coverage, open risks, decisions needed. This places the SOC within CSF 2.0's Govern function.
 
+Section two point five develops governance and authority with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section two point five, Tom Reyes expects governance claims to carry owners and dates.
+
+Section two point five treats why authority matters the as testable only when evidence and ticket IDs are recorded.
+
+For section two point five, Fenwick Engineering will not accept governance work without a written trail.
+
 ### 2.6 Privacy
 
 Monitoring staff accounts raises privacy questions. The charter states monitoring is for security only, and HR and the staff council review it.
+
+Section two point six develops governance and authority with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section two point six, Tom Reyes expects governance claims to carry owners and dates.
+
+Section two point six treats why authority matters the as testable only when evidence and ticket IDs are recorded.
+
+For section two point six, Fenwick Engineering will not accept governance work without a written trail.
 
 ### Reviewing the charter
 
@@ -162,6 +226,12 @@ You will (1) choose log sources based on risk; (2) measure coverage of critical 
 
 NIST SP 800-92 (Kent and Souppaya, 2006) advises planning log management around what the organisation needs to know. Priya starts from the March case: she needed VPN logs, domain controller logs and file-server audit logs to understand it.
 
+Section three point one develops log sources and coverage with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section three point one, Tom Reyes expects log claims to carry owners and dates.
+
+Section three point one treats choosing sources lab result as testable only when evidence and ticket IDs are recorded.
+
 ### Lab — Lab — measuring coverage
 
 ```python
@@ -189,17 +259,45 @@ overall 6/10 = 60%
 
 Overall, 6 of 10 listed assets send logs (60%). Four of five critical assets send logs; the ERP server does not. Of the high assets, CAD-WS02 and the factory HMI PC are missing. The print server is low priority.
 
+Section three point two develops log sources and coverage with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section three point two, Tom Reyes expects log claims to carry owners and dates.
+
+Section three point two treats choosing sources lab result as testable only when evidence and ticket IDs are recorded.
+
 ### 3.3 Prioritising
 
 The ERP server holds orders and prices; it goes first. CAD-WS02 is a design workstation like the one used in March. The factory HMI needs care: the vendor must approve any agent, so Priya asks for network logs at the factory firewall instead.
+
+Section three point three develops log sources and coverage with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section three point three, Tom Reyes expects log claims to carry owners and dates.
+
+Section three point three treats choosing sources lab result as testable only when evidence and ticket IDs are recorded.
 
 ### 3.4 Retention and time
 
 Logs are kept 90 days searchable, one year archived; all systems sync to the same time source.
 
+Section three point four develops log sources and coverage with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section three point four, Tom Reyes expects log claims to carry owners and dates.
+
+Section three point four treats choosing sources lab result as testable only when evidence and ticket IDs are recorded.
+
+For section three point four, Fenwick Engineering will not accept log work without a written trail.
+
 ### 3.5 Cost
 
 The provider charges by data volume. Verbose debug logs are filtered out; security-relevant events are kept.
+
+Section three point five develops log sources and coverage with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section three point five, Tom Reyes expects log claims to carry owners and dates.
+
+Section three point five treats choosing sources lab result as testable only when evidence and ticket IDs are recorded.
+
+For section three point five, Fenwick Engineering will not accept log work without a written trail.
 
 ### Audit settings
 
@@ -247,25 +345,67 @@ You will (1) map threats to ATT&CK techniques; (2) select detections from shared
 
 The March event combined valid accounts used remotely, account manipulation (adding to an admin group) and data collection from a file share. MITRE ATT&CK (Strom et al., 2018) names these behaviours so detections can be planned and compared.
 
+Section four point one develops detection with att ck and with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section four point one, Tom Reyes expects detection claims to carry owners and dates.
+
+Section four point one treats starting from threats shared as testable only when evidence and ticket IDs are recorded.
+
 ### 4.2 Shared rules
 
 SigmaHQ publishes open detection rules in a vendor-neutral format. The provider converts selected rules into its SIEM. Priya chooses rules for admin group changes, new-country VPN logins and mass file reads.
+
+Section four point two develops detection with att ck and with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section four point two, Tom Reyes expects detection claims to carry owners and dates.
+
+Section four point two treats starting from threats shared as testable only when evidence and ticket IDs are recorded.
 
 ### 4.3 Adapting
 
 Shared rules assume generic environments. Fenwick's IT team legitimately changes admin groups during maintenance, so the rule adds context: changes outside an approved change window are high; inside, low.
 
+Section four point three develops detection with att ck and with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section four point three, Tom Reyes expects detection claims to carry owners and dates.
+
+Section four point three treats starting from threats shared as testable only when evidence and ticket IDs are recorded.
+
 ### 4.4 Testing
 
 Each rule is tested by replaying the synthetic March events and a normal week.
+
+Section four point four develops detection with att ck and with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section four point four, Tom Reyes expects detection claims to carry owners and dates.
+
+Section four point four treats starting from threats shared as testable only when evidence and ticket IDs are recorded.
+
+For section four point four, Fenwick Engineering will not accept detection work without a written trail.
 
 ### 4.5 Honest coverage
 
 The coverage table lists each technique, rule, data source and tested status. Untested rules are not counted as coverage.
 
+Section four point five develops detection with att ck and with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section four point five, Tom Reyes expects detection claims to carry owners and dates.
+
+Section four point five treats starting from threats shared as testable only when evidence and ticket IDs are recorded.
+
+For section four point five, Fenwick Engineering will not accept detection work without a written trail.
+
 ### 4.6 D3FEND
 
 MITRE D3FEND (Kaloroumakis and Smith, 2021) helps describe defensive measures, such as account monitoring, in a consistent vocabulary for the board.
+
+Section four point six develops detection with att ck and with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section four point six, Tom Reyes expects detection claims to carry owners and dates.
+
+Section four point six treats starting from threats shared as testable only when evidence and ticket IDs are recorded.
+
+For section four point six, Fenwick Engineering will not accept detection work without a written trail.
 
 ### Rule ownership
 
@@ -313,25 +453,69 @@ You will (1) design an alert pipeline from SIEM to decision; (2) set triage prio
 
 Alerts flow from the SIEM to the provider's queue at night and to Fenwick's analyst by day. Each alert is acknowledged, triaged, then closed, escalated or turned into an incident. Every stage has an owner; March showed what happens when nobody owns the queue.
 
+Section five point one develops triage and the alert pipeline with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section five point one, Tom Reyes expects triage claims to carry owners and dates.
+
+Section five point one treats the pipeline priorities service as testable only when evidence and ticket IDs are recorded.
+
 ### 5.2 Priorities
 
 Priority combines rule severity with asset value from the asset list built in chapter 3. An admin change on a domain controller is critical; a macro document opened on a reception PC is low.
+
+Section five point two develops triage and the alert pipeline with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section five point two, Tom Reyes expects triage claims to carry owners and dates.
+
+Section five point two treats the pipeline priorities service as testable only when evidence and ticket IDs are recorded.
 
 ### 5.3 Service levels
 
 Critical: acknowledge in 15 minutes and call Priya. High: 30 minutes. Medium: same working day. Low: weekly review. These come from the board's first-year goal.
 
+Section five point three develops triage and the alert pipeline with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section five point three, Tom Reyes expects triage claims to carry owners and dates.
+
+Section five point three treats the pipeline priorities service as testable only when evidence and ticket IDs are recorded.
+
+For section five point three, Fenwick Engineering will not accept triage work without a written trail.
+
 ### 5.4 Triage notes
 
 Every decision has a note: what was seen, checked, decided and why. The provider's notes must be readable by Fenwick's analyst the next morning.
+
+Section five point four develops triage and the alert pipeline with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section five point four, Tom Reyes expects triage claims to carry owners and dates.
+
+Section five point four treats the pipeline priorities service as testable only when evidence and ticket IDs are recorded.
+
+For section five point four, Fenwick Engineering will not accept triage work without a written trail.
 
 ### 5.5 Unowned queues
 
 Priya removes the old shared mailbox; alerts now go only to queues with named owners and service levels.
 
+Section five point five develops triage and the alert pipeline with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section five point five, Tom Reyes expects triage claims to carry owners and dates.
+
+Section five point five treats the pipeline priorities service as testable only when evidence and ticket IDs are recorded.
+
+For section five point five, Fenwick Engineering will not accept triage work without a written trail.
+
 ### 5.6 New hire
 
 Fenwick hires Tom Reyes as its first analyst. He owns daytime triage and reviews night notes each morning.
+
+Section five point six develops triage and the alert pipeline with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section five point six, Tom Reyes expects triage claims to carry owners and dates.
+
+Section five point six treats the pipeline priorities service as testable only when evidence and ticket IDs are recorded.
+
+For section five point six, Fenwick Engineering will not accept triage work without a written trail.
 
 ### Closing well
 
@@ -379,25 +563,71 @@ You will (1) write a clear service agreement with a provider; (2) share business
 
 The service agreement lists monitored sources, service levels, pre-approved actions, contacts, reporting and exit terms. It refers to Fenwick's charter for authority.
 
+Section six point one develops working with managed security provider with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section six point one, Tom Reyes expects working claims to carry owners and dates.
+
+Section six point one treats agreement context daily handover as testable only when evidence and ticket IDs are recorded.
+
+For section six point one, Fenwick Engineering will not accept working work without a written trail.
+
 ### 6.2 Context
 
 Providers lack local knowledge. Fenwick shares the asset list, travel calendar, change windows, VIP list and normal factory shift patterns.
+
+Section six point two develops working with managed security provider with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section six point two, Tom Reyes expects working claims to carry owners and dates.
+
+Section six point two treats agreement context daily handover as testable only when evidence and ticket IDs are recorded.
+
+For section six point two, Fenwick Engineering will not accept working work without a written trail.
 
 ### 6.3 Daily handover
 
 At 08:00 the provider sends a summary of overnight alerts and open cases; Tom reviews it and replies with questions.
 
+Section six point three develops working with managed security provider with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section six point three, Tom Reyes expects working claims to carry owners and dates.
+
+Section six point three treats agreement context daily handover as testable only when evidence and ticket IDs are recorded.
+
+For section six point three, Fenwick Engineering will not accept working work without a written trail.
+
 ### 6.4 Monthly review
 
 Priya and the provider review response times, false positives, missed alerts and context updates.
+
+Section six point four develops working with managed security provider with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section six point four, Tom Reyes expects working claims to carry owners and dates.
+
+Section six point four treats agreement context daily handover as testable only when evidence and ticket IDs are recorded.
+
+For section six point four, Fenwick Engineering will not accept working work without a written trail.
 
 ### 6.5 Testing the provider
 
 Twice a year, with agreement, Fenwick runs an announced test: a test account is added to an admin group at night to see how quickly the provider responds.
 
+Section six point five develops working with managed security provider with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section six point five, Tom Reyes expects working claims to carry owners and dates.
+
+Section six point five treats agreement context daily handover as testable only when evidence and ticket IDs are recorded.
+
 ### 6.6 Exit plan
 
 If the provider fails, logs and rules must transfer to a new one; the agreement makes Fenwick the owner of both.
+
+Section six point six develops working with managed security provider with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section six point six, Tom Reyes expects working claims to carry owners and dates.
+
+Section six point six treats agreement context daily handover as testable only when evidence and ticket IDs are recorded.
+
+For section six point six, Fenwick Engineering will not accept working work without a written trail.
 
 ### Communication channels
 
@@ -441,6 +671,14 @@ You will (1) measure rule precision from triage outcomes; (2) tune noisy rules s
 
 Precision is the share of alerts that were real. Tom marks each closed alert real or benign so precision can be calculated.
 
+Section seven point one develops measuring and tuning detections with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section seven point one, Tom Reyes expects measuring claims to carry owners and dates.
+
+Section seven point one treats precision lab result base as testable only when evidence and ticket IDs are recorded.
+
+For section seven point one, Fenwick Engineering will not accept measuring work without a written trail.
+
 ### Lab — Lab — rule precision
 
 ```python
@@ -464,17 +702,49 @@ Macro document opened        alerts= 95 real=1 precision=0.01
 
 Admin group change and AV detection on server each have precision 0.33; new-country VPN login 0.07 (3 real of 40); macro document opened 0.01 (1 of 95).
 
+Section seven point two develops measuring and tuning detections with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section seven point two, Tom Reyes expects measuring claims to carry owners and dates.
+
+Section seven point two treats precision lab result base as testable only when evidence and ticket IDs are recorded.
+
+For section seven point two, Fenwick Engineering will not accept measuring work without a written trail.
+
 ### 7.3 Base rate
 
 Axelsson (2000) showed that rare attacks make even good detectors produce mostly false alarms. The macro rule fires on any document with macros, and Fenwick's finance team uses many.
+
+Section seven point three develops measuring and tuning detections with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section seven point three, Tom Reyes expects measuring claims to carry owners and dates.
+
+Section seven point three treats precision lab result base as testable only when evidence and ticket IDs are recorded.
+
+For section seven point three, Fenwick Engineering will not accept measuring work without a written trail.
 
 ### 7.4 Tuning
 
 The macro rule is narrowed to documents from outside email that start a new process. The VPN rule now checks the travel calendar first.
 
+Section seven point four develops measuring and tuning detections with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section seven point four, Tom Reyes expects measuring claims to carry owners and dates.
+
+Section seven point four treats precision lab result base as testable only when evidence and ticket IDs are recorded.
+
+For section seven point four, Fenwick Engineering will not accept measuring work without a written trail.
+
 ### 7.5 Recording
 
 Each change has a reason, expected effect and review date; real cases are checked to ensure they would still be caught.
+
+Section seven point five develops measuring and tuning detections with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section seven point five, Tom Reyes expects measuring claims to carry owners and dates.
+
+Section seven point five treats precision lab result base as testable only when evidence and ticket IDs are recorded.
+
+For section seven point five, Fenwick Engineering will not accept measuring work without a written trail.
 
 ### Validation alongside precision
 
@@ -522,25 +792,75 @@ You will (1) write an incident response plan aligned with SP 800-61r3; (2) defin
 
 Priya's plan follows NIST SP 800-61r3 (Nelson et al., 2025), which places response within CSF 2.0 functions, from preparation to recovery and improvement.
 
+Section eight point one develops incident response planning with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section eight point one, Tom Reyes expects incident claims to carry owners and dates.
+
+Section eight point one treats the plan roles severity as testable only when evidence and ticket IDs are recorded.
+
+For section eight point one, Fenwick Engineering will not accept incident work without a written trail.
+
 ### 8.2 Roles
 
 Incident lead (Priya), analyst (Tom or provider), IT operations, communications (marketing head), legal and data protection (external adviser), executive approver (managing director).
+
+Section eight point two develops incident response planning with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section eight point two, Tom Reyes expects incident claims to carry owners and dates.
+
+Section eight point two treats the plan roles severity as testable only when evidence and ticket IDs are recorded.
+
+For section eight point two, Fenwick Engineering will not accept incident work without a written trail.
 
 ### 8.3 Severity
 
 Low: single device or account, no data. Medium: data access or several systems. High: production stopped or sensitive data taken.
 
+Section eight point three develops incident response planning with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section eight point three, Tom Reyes expects incident claims to carry owners and dates.
+
+Section eight point three treats the plan roles severity as testable only when evidence and ticket IDs are recorded.
+
+For section eight point three, Fenwick Engineering will not accept incident work without a written trail.
+
 ### 8.4 Playbooks
 
 Three playbooks: compromised account, ransomware on office PCs, and suspected data theft. Each lists triggers, first steps, pre-approved actions and contacts.
+
+Section eight point four develops incident response planning with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section eight point four, Tom Reyes expects incident claims to carry owners and dates.
+
+Section eight point four treats the plan roles severity as testable only when evidence and ticket IDs are recorded.
+
+For section eight point four, Fenwick Engineering will not accept incident work without a written trail.
 
 ### 8.5 Communications
 
 Templates for staff, customers and regulators. Personal data breaches may need reporting to the data protection regulator within set deadlines, so the adviser is called early.
 
+Section eight point five develops incident response planning with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section eight point five, Tom Reyes expects incident claims to carry owners and dates.
+
+Section eight point five treats the plan roles severity as testable only when evidence and ticket IDs are recorded.
+
+For section eight point five, Fenwick Engineering will not accept incident work without a written trail.
+
 ### 8.6 Exercises
 
 A tabletop exercise each half year tests the plan with managers.
+
+Section eight point six develops incident response planning with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section eight point six, Tom Reyes expects incident claims to carry owners and dates.
+
+Section eight point six treats the plan roles severity as testable only when evidence and ticket IDs are recorded.
+
+For section eight point six, Fenwick Engineering will not accept incident work without a written trail.
+
+Section eight point six fails closed if incident evidence is missing rather than guessing.
 
 ### Contact lists and access
 
@@ -588,6 +908,14 @@ You will (1) build a cross-source timeline; (2) separate facts from inferences; 
 
 A timeline puts events from different sources in one order, so gaps and causes become visible. It is the core of most investigations.
 
+Section nine point one develops investigation and timelines with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section nine point one, Tom Reyes expects investigation claims to carry owners and dates.
+
+Section nine point one treats why timelines lab result as testable only when evidence and ticket IDs are recorded.
+
+For section nine point one, Fenwick Engineering will not accept investigation work without a written trail.
+
 ### Lab — Lab — merging sources
 
 ```python
@@ -615,21 +943,55 @@ Run with `python3 lab_timeline.py`. Verified output:
 
 The merged March timeline: 22:41 VPN login from 198.51.100.23 (new country); 22:43 j.harper added to Domain Admins; 22:47 2,310 files read in the Designs share; 22:55 session closed; 22:58 j.harper removed from Domain Admins. The removal suggests an attempt to hide the change.
 
+Section nine point two develops investigation and timelines with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section nine point two, Tom Reyes expects investigation claims to carry owners and dates.
+
+Section nine point two treats why timelines lab result as testable only when evidence and ticket IDs are recorded.
+
 ### 9.3 Facts and inferences
 
 Facts: the events above. Inference: someone other than j.harper used his account, since he was at home in the UK and his laptop showed no VPN session. Priya labels each line as fact or inference in the report.
+
+Section nine point three develops investigation and timelines with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section nine point three, Tom Reyes expects investigation claims to carry owners and dates.
+
+Section nine point three treats why timelines lab result as testable only when evidence and ticket IDs are recorded.
 
 ### 9.4 Scope
 
 Questions: how did the attacker get the password? Was MFA bypassed? Were files copied out? Email logs show j.harper entered his password on a fake VPN page two days earlier; the VPN lacked MFA; firewall logs show 1.4 GB sent to 198.51.100.23 between 22:47 and 22:55.
 
+Section nine point four develops investigation and timelines with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section nine point four, Tom Reyes expects investigation claims to carry owners and dates.
+
+Section nine point four treats why timelines lab result as testable only when evidence and ticket IDs are recorded.
+
 ### 9.5 Evidence
 
 Copies of logs are saved with time stamps and hashes, and originals stay in the SIEM. A record lists who handled each item.
 
+Section nine point five develops investigation and timelines with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section nine point five, Tom Reyes expects investigation claims to carry owners and dates.
+
+Section nine point five treats why timelines lab result as testable only when evidence and ticket IDs are recorded.
+
+For section nine point five, Fenwick Engineering will not accept investigation work without a written trail.
+
 ### 9.6 Research
 
 Hassan et al. (2019) showed that provenance (how events connect) helps reduce false alarms and speeds investigation; the same idea underlies good timelines.
+
+Section nine point six develops investigation and timelines with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section nine point six, Tom Reyes expects investigation claims to carry owners and dates.
+
+Section nine point six treats why timelines lab result as testable only when evidence and ticket IDs are recorded.
+
+For section nine point six, Fenwick Engineering will not accept investigation work without a written trail.
 
 ### Gaps stated
 
@@ -673,25 +1035,77 @@ You will (1) choose metrics that show SOC value; (2) present trends and risks to
 
 Priya picks: log coverage of critical assets, time to acknowledge critical alerts, rule precision, open high risks and exercise findings closed.
 
+Section ten point one develops metrics and reporting to the with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section ten point one, Tom Reyes expects metrics claims to carry owners and dates.
+
+Section ten point one treats choosing metrics medians and as testable only when evidence and ticket IDs are recorded.
+
+For section ten point one, Fenwick Engineering will not accept metrics work without a written trail.
+
 ### 10.2 Medians and trends
 
 Medians and month-to-month trends avoid being misled by one unusual case.
+
+Section ten point two develops metrics and reporting to the with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section ten point two, Tom Reyes expects metrics claims to carry owners and dates.
+
+Section ten point two treats choosing metrics medians and as testable only when evidence and ticket IDs are recorded.
+
+For section ten point two, Fenwick Engineering will not accept metrics work without a written trail.
+
+Section ten point two fails closed if metrics evidence is missing rather than guessing.
 
 ### 10.3 Misleading metrics
 
 "Alerts handled" looks impressive but grows with noise; Priya leaves it out.
 
+Section ten point three develops metrics and reporting to the with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section ten point three, Tom Reyes expects metrics claims to carry owners and dates.
+
+Section ten point three treats choosing metrics medians and as testable only when evidence and ticket IDs are recorded.
+
+For section ten point three, Fenwick Engineering will not accept metrics work without a written trail.
+
 ### 10.4 The board page
 
 One page: three charts, two decisions needed, one sentence per risk.
+
+Section ten point four develops metrics and reporting to the with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section ten point four, Tom Reyes expects metrics claims to carry owners and dates.
+
+Section ten point four treats choosing metrics medians and as testable only when evidence and ticket IDs are recorded.
+
+For section ten point four, Fenwick Engineering will not accept metrics work without a written trail.
+
+Section ten point four fails closed if metrics evidence is missing rather than guessing.
 
 ### 10.5 Decisions
 
 Board decisions in month five: fund MFA for the factory's remote vendor access, and approve the cost of ERP log collection.
 
+Section ten point five develops metrics and reporting to the with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section ten point five, Tom Reyes expects metrics claims to carry owners and dates.
+
+Section ten point five treats choosing metrics medians and as testable only when evidence and ticket IDs are recorded.
+
+For section ten point five, Fenwick Engineering will not accept metrics work without a written trail.
+
 ### 10.6 Honesty
 
 Reporting what went badly builds trust; the 26-minute provider test is reported with its fix.
+
+Section ten point six develops metrics and reporting to the with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section ten point six, Tom Reyes expects metrics claims to carry owners and dates.
+
+Section ten point six treats choosing metrics medians and as testable only when evidence and ticket IDs are recorded.
+
+For section ten point six, Fenwick Engineering will not accept metrics work without a written trail.
 
 ### Audience
 
@@ -739,21 +1153,59 @@ You will (1) assess SOC capability with SOC-CMM; (2) apply continuous monitoring
 
 The SOC Capability Maturity Model (van Os, 2016) assesses business, people, process, technology and services. Priya's self-assessment: process improving, people thin (one analyst), technology reliant on the provider.
 
+Section eleven point one develops maturity and continuous improvement with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section eleven point one, Tom Reyes expects maturity claims to carry owners and dates.
+
+Section eleven point one treats soc-cmm continuous monitoring research as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point one, Fenwick Engineering will not accept maturity work without a written trail.
+
 ### 11.2 Continuous monitoring
 
 NIST SP 800-137 (Dempsey et al., 2011) frames monitoring as ongoing awareness feeding risk decisions, not a one-time project.
+
+Section eleven point two develops maturity and continuous improvement with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section eleven point two, Tom Reyes expects maturity claims to carry owners and dates.
+
+Section eleven point two treats soc-cmm continuous monitoring research as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point two, Fenwick Engineering will not accept maturity work without a written trail.
 
 ### 11.3 Research
 
 Kokulu et al. (2019) interviewed SOC staff and found common issues between analysts and managers, such as disagreement on how to measure success; Priya uses this to agree metrics with Tom rather than imposing them.
 
+Section eleven point three develops maturity and continuous improvement with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section eleven point three, Tom Reyes expects maturity claims to carry owners and dates.
+
+Section eleven point three treats soc-cmm continuous monitoring research as testable only when evidence and ticket IDs are recorded.
+
 ### 11.4 Year-two plan
 
 A second analyst, ERP and factory network monitoring, a quarterly rule review and a purple-team style validation with the provider using authorised test actions only.
 
+Section eleven point four develops maturity and continuous improvement with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section eleven point four, Tom Reyes expects maturity claims to carry owners and dates.
+
+Section eleven point four treats soc-cmm continuous monitoring research as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point four, Fenwick Engineering will not accept maturity work without a written trail.
+
 ### 11.5 Lessons loop
 
 Each incident and test produces actions with owners and dates, tracked to closure.
+
+Section eleven point five develops maturity and continuous improvement with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section eleven point five, Tom Reyes expects maturity claims to carry owners and dates.
+
+Section eleven point five treats soc-cmm continuous monitoring research as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point five, Fenwick Engineering will not accept maturity work without a written trail.
 
 ### Improvement backlog
 
@@ -801,25 +1253,71 @@ You will (1) evaluate a year of security operations against goals; (2) present r
 
 Log coverage: critical 5/5, high 4/4 by month ten. Tested response plan: two tabletops, one real incident handled. Thirty-minute handling: median critical acknowledge 9 minutes, worst 26.
 
+Section twelve point one develops capstone the first year in with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section twelve point one, Tom Reyes expects capstone claims to carry owners and dates.
+
+Section twelve point one treats goals revisited real incident as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point one, Fenwick Engineering will not accept capstone work without a written trail.
+
 ### 12.2 Real incident
 
 In month nine, a buyer's account was phished. The provider saw a new-country login at 02:14, disabled the account at 02:19 under pre-approved authority, and called Priya. MFA on the VPN had blocked the attacker; the account had only been used for webmail. No data was taken.
+
+Section twelve point two develops capstone the first year in with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section twelve point two, Tom Reyes expects capstone claims to carry owners and dates.
+
+Section twelve point two treats goals revisited real incident as testable only when evidence and ticket IDs are recorded.
 
 ### 12.3 Comparison with March
 
 In March, the alert sat unseen for nine hours and 1.4 GB left. In month nine, response took five minutes and nothing left.
 
+Section twelve point three develops capstone the first year in with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section twelve point three, Tom Reyes expects capstone claims to carry owners and dates.
+
+Section twelve point three treats goals revisited real incident as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point three, Fenwick Engineering will not accept capstone work without a written trail.
+
 ### 12.4 Reflection
 
 Priya notes what she would change: hire the analyst earlier, share business context with the provider from day one, and involve the factory earlier.
+
+Section twelve point four develops capstone the first year in with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section twelve point four, Tom Reyes expects capstone claims to carry owners and dates.
+
+Section twelve point four treats goals revisited real incident as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point four, Fenwick Engineering will not accept capstone work without a written trail.
 
 ### 12.5 Ethics
 
 Monitoring staff is sensitive; the staff council's annual review found no misuse.
 
+Section twelve point five develops capstone the first year in with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section twelve point five, Tom Reyes expects capstone claims to carry owners and dates.
+
+Section twelve point five treats goals revisited real incident as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point five, Fenwick Engineering will not accept capstone work without a written trail.
+
 ### 12.6 Next steps
 
 Priya plans further study in incident response and resilience; Tom starts a technical course.
+
+Section twelve point six develops capstone the first year in with a Fenwick Engineering note Priya Nair can demo offline.
+
+Under section twelve point six, Tom Reyes expects capstone claims to carry owners and dates.
+
+Section twelve point six treats goals revisited real incident as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point six, Fenwick Engineering will not accept capstone work without a written trail.
 
 ### Costs
 
