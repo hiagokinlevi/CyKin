@@ -747,7 +747,7 @@ Cada hallazgo: título, identificadores de evidencia, activos afectados, víncul
 
 ### Ejemplo resuelto (NCS sintética)
 
-Durante el recorrido por la planta, Priya encuentra un pequeño router celular en el cuadro MP-2 etiquetado «contractor backup access». La empresa contratista explica que se instaló durante una caída de la red hace dos años y que se olvidó. Hallazgo F-07: «Un router celular no documentado en MP-2 proporciona un segundo camino remoto hacia PLC-R2 (evidencia: foto E-021, entrevista I-04)». Recomendación: retirarlo, o mantenerlo apagado y encenderlo solo a petición con la aprobación del responsable de instalaciones.
+Durante el recorrido por la planta, Priya encuentra un pequeño router celular en el cuadro MP-2 etiquetado «contractor backup access». La empresa contratista explica que se instaló durante una caída de la red hace dos años y que se olvidó. Priya lo registra como el hallazgo F-07, descrito en la sección anterior.
 
 > **Caso sintético — Northgate Cold Storage.** Los identificadores de cuadros y de hallazgos son inventados.
 
@@ -812,7 +812,7 @@ Si las lecturas de los minutos 15–30 se sustituyeran por valores en torno a 4 
 
 ### 15.4 Registrar el resultado
 
-Registre el archivo de entrada (o su hash), la versión del script, los parámetros de límite y retardo, y la salida. Otro tecnólogo debe poder reproducirlo exactamente. El registro de Priya dice: «Laboratorio 15 sobre las lecturas de la antecámara (conjunto sintético A): una desviación de 15 a 35 min, 20 min, máximo de 8,4 °C, alarma activada con retardo de 10 min. Resolución: muestreo de 5 min, por lo que el inicio es incierto hasta 5 min. Comprobación de integridad: comparación con la sonda TT-A1 de HIST, no disponible en el conjunto sintético; recogida como limitación». Con el hash del archivo de entrada y el límite de 5 °C y el retardo de 10 minutos registrados, otro tecnólogo puede volver a ejecutarlo y obtener la misma línea.
+Registre el archivo de entrada (o su hash), la versión del script, los parámetros de límite y retardo, y la salida. Otro tecnólogo debe poder reproducirlo exactamente. El registro de Priya, citado en el ejemplo resuelto de abajo, indica la desviación, cuánta incertidumbre tiene su inicio por el intervalo de muestreo y la comprobación de integridad que no pudo hacerse. Con el hash del archivo de entrada y el límite de 5 °C y el retardo de 10 minutos registrados, otro tecnólogo puede volver a ejecutarlo y obtener la misma línea.
 
 ### Ejemplo resuelto (NCS sintética)
 
@@ -1252,7 +1252,7 @@ Informe de lo que falló. Si una empresa contratista siguió usando el router ce
 
 ### Ejemplo resuelto (NCS sintética)
 
-La tabla de evaluación de Priya: seis controles, seis pruebas, cinco superadas. El fallo: el cortafuegos de la zona de cámaras permitía a CAM-DOCK llegar a HIST por un puerto web debido a una regla amplia de «cámara a servidor». Acción correctiva: restringir la regla solo a la grabadora de vídeo; nueva prueba programada.
+La tabla de evaluación de Priya: seis controles, seis pruebas, cinco superadas. La fila que falló se informa completa, con la causa, la acción correctiva y la fecha de la nueva prueba.
 
 > **Caso sintético — Northgate Cold Storage.** Los resultados son inventados.
 

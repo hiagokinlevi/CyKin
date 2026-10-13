@@ -857,7 +857,7 @@ Priya's finding F-07 follows this form: title, undocumented cellular router in M
 
 ### Worked example (synthetic NCS)
 
-During the walk-down Priya finds a small cellular router in panel MP-2 labelled "contractor backup access". The contractor explains it was installed during a network outage two years ago and forgotten. Finding F-07: "Undocumented cellular router in MP-2 provides a second remote path to PLC-R2 (evidence: photo E-021, interview I-04)." Recommendation: remove, or keep powered off and enabled only on request with the facilities manager's approval.
+During the walk-down Priya finds a small cellular router in panel MP-2 labelled "contractor backup access". The contractor explains it was installed during a network outage two years ago and forgotten. Priya records it as finding F-07, written up in the section above.
 
 > **Synthetic case — Northgate Cold Storage.** Panel and finding IDs are invented.
 
@@ -932,7 +932,7 @@ In real NCS data, HIST's probe in the anteroom would be the cross-check: a logge
 
 Record the input file (or its hash), the script version, the limit and delay parameters, and the output. Another technologist must be able to reproduce it exactly.
 
-Priya's record reads: "Lab 15 on anteroom readings (synthetic set A): one excursion 15–35 min, 20 min, peak 8.4 °C, alarm raised under 10-min delay. Resolution: 5-min sampling, so start uncertain by up to 5 min. Integrity check: compared with HIST probe TT-A1 — not available in synthetic set; listed as limitation." With the input file's hash and the limit of 5 °C and delay of 10 minutes recorded, another technologist can rerun it and get the same line.
+Priya's record, quoted in the worked example below, names the excursion, how uncertain its start time is because of the sampling interval, and the integrity check that could not be done. With the input file's hash and the limit of 5 °C and delay of 10 minutes recorded, another technologist can rerun it and get the same line.
 
 ### Worked example (synthetic NCS)
 
@@ -1440,7 +1440,7 @@ Priya's evaluation reports its one failure the same way: the camera-zone rule al
 
 ### Worked example (synthetic NCS)
 
-Priya's evaluation table: six controls, six tests, five passed. The failure: the camera-zone firewall allowed CAM-DOCK to reach HIST on a web port because of a broad "camera to server" rule. Corrective action: narrow the rule to the video recorder only; retest scheduled.
+Priya's evaluation table: six controls, six tests, five passed. The failed row is reported in full, with its cause, corrective action and retest date.
 
 > **Synthetic case — Northgate Cold Storage.** Results are invented.
 
