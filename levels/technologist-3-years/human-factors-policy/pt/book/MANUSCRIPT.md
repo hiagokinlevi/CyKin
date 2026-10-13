@@ -1,7 +1,7 @@
 # Fatores Humanos e Política Cibernética: Curso de Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso 075, curso de tecnólogo (3 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–10 de 30 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 11–30 (EX031–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 30 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3 e 9 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 21–30 (EX061–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de tecnólogo que constroem, configuram e operam controles de segurança centrados nas pessoas e serviços de reporte em organizações pequenas.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios totalizam reportes, contam avisos, calculam medianas, ordenam cenários, comparam tempos de tarefa e proporções por clínica, conferem logs de automação e sinalizam cadastros de fornecedores, sempre sobre dados sintéticos; nenhum funcionário, paciente, e-mail ou conta real está envolvido. Os testes de usabilidade usam caixas postais de teste com voluntários que sabem que estão testando ferramentas; os procedimentos de verificação são praticados em dramatizações anunciadas, nunca por engano secreto. Toda simulação de phishing mencionada é anunciada, acordada com os funcionários e relatada apenas de forma agregada. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Adams e Sasse (1999), [doi:10.1145/322796.322806](https://doi.org/10.1145/322796
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
 
-Capítulos 11–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-11), até a chegada dos próximos lotes.
+Capítulos 21–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -446,11 +446,489 @@ Mudanças de política precisam de aprovação. A linguagem simples pode perder 
 - **EX029 — Lacuna do reporte.** O que falta na política de reporte? *Rubrica:* 3 = como reportar;; 2 = método;; 1 = nada;; 0 = nenhuma.
 - **EX030 — Declaração ausente.** Que declaração de acolhimento está ausente? *Rubrica:* 3 = que reportar erros é bem-vindo;; 2 = não atribuição de culpa;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-11"></a>
+
+## Capítulo 11 — Ativos e contexto
+
+### Objetivos de aprendizagem
+
+Você vai (1) identificar os ativos que os controles centrados nas pessoas protegem; (2) descrever o contexto em que os funcionários tomam decisões de segurança; (3) priorizar os ativos pelo dano.
+
+### 11.1 Ativos
+
+Lucas lista os ativos da Brightwell com a gerente da clínica: prontuários dos pacientes, contas de pagamento, o sistema de agendamento, dados de imagem e contas dos funcionários. Ele também lista ativos menos óbvios: a confiança dos pacientes, a reputação de cada clínica e a disposição dos funcionários para reportar problemas. Esse último ativo importa porque um programa que prejudica a confiança pode tornar a organização menos segura no conjunto. Nomear a confiança como ativo lembra aos gestores que o modo como a segurança é feita importa tanto quanto o que é feito. A gerente concorda em incluir a confiança no registro de riscos.
+
+### 11.2 Contexto de decisão
+
+Lucas descreve o contexto em que os funcionários tomam decisões de segurança. As recepcionistas decidem rápido, muitas vezes enquanto falam com pacientes. Os clínicos estão concentrados no tratamento e veem o e-mail entre um atendimento e outro. Os gestores lidam com fornecedores e pagamentos, muitas vezes perto dos prazos de fechamento do mês. Cada grupo enfrenta pressões diferentes e ataques diferentes. Ele escreve um perfil de um parágrafo para cada grupo, descrevendo os momentos típicos em que uma mensagem ou ligação enganosa pode chegar e o que mais estão fazendo nessa hora, o que depois orienta o desenho dos controles. Os funcionários revisam os perfis.
+
+### 11.3 Priorização pelo dano
+
+Lucas ordena os ativos pelo dano que se seguiria a um comprometimento. Os prontuários dos pacientes vêm primeiro, por causa dos deveres de privacidade e da angústia que um vazamento causaria. As contas de pagamento vêm em segundo, porque a fraude pode custar milhares rapidamente. As contas dos funcionários vêm em terceiro, porque dão caminho até os dois primeiros. Ele observa que o risco de pagamento depende quase inteiramente de uma única decisão humana, aceitar a alteração de um dado bancário, o que o torna prioridade para um procedimento de verificação e não para conscientização geral. Os gestores concordam.
+
+### Exemplo resolvido
+
+Lucas lista ativos que incluem a confiança, traça o perfil dos contextos de decisão de três grupos e ordena os ativos pelo dano.
+
+> **Caso sintético.** O contexto é sintético.
+
+### Erros e limites
+
+As ordenações mudam conforme os serviços mudam. Os perfis generalizam.
+
+### Exercícios
+
+- **EX031 — Ativo oculto.** Que ativo menos óbvio Lucas nomeia? *Rubrica:* 3 = a disposição dos funcionários para reportar;; 2 = confiança;; 1 = nada;; 0 = nenhuma.
+
+- **EX032 — Pressão dos gestores.** Quando os gestores enfrentam pressão de pagamentos? *Rubrica:* 3 = perto dos prazos de fechamento do mês;; 2 = fechamento do mês;; 1 = nada;; 0 = nenhuma.
+
+- **EX033 — Decisão de pagamento.** Que decisão única determina o risco de pagamento? *Rubrica:* 3 = aceitar a alteração de um dado bancário;; 2 = dado bancário;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Fluxos de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) mapear como os dados de pacientes e de pagamento fluem entre pessoas e sistemas; (2) encontrar os pontos em que as pessoas lidam com dados sob pressão; (3) propor fluxos mais seguros.
+
+### 12.1 Mapeamento dos fluxos
+
+Lucas mapeia os fluxos de dados na Brightwell. Os dados dos pacientes vão dos formulários de agendamento para o sistema da clínica, depois para os clínicos e para as seguradoras nos pedidos de reembolso. Os dados de pagamento vão dos pacientes para as maquininhas de cartão e das faturas para o banco. Lucas desenha cada fluxo com as pessoas envolvidas em cada etapa. Ele descobre que algumas cartas de pacientes são enviadas a especialistas externos a partir de contas de e-mail pessoais quando o sistema da clínica está lento, o que contorna as proteções e deixa cópias fora do controle da Brightwell. Ele compartilha o mapa com a gerente da clínica.
+
+### 12.2 Pontos de pressão
+
+Lucas marca as etapas em que as pessoas lidam com dados sob pressão. As recepcionistas copiam dados entre sistemas nos períodos de movimento. Os gestores processam faturas de fornecedores no fechamento do mês. Os clínicos enviam encaminhamentos ao fim dos turnos. Em cada ponto, um erro ou um engano é mais provável porque a atenção está dividida. Ele observa que o atalho do e-mail pessoal acontece porque o método oficial leva vários minutos, enquanto o e-mail pessoal leva segundos, o que mostra mais uma vez que a conveniência guia o comportamento quando a segurança acrescenta esforço demais. Ele marca cada ponto em vermelho no mapa.
+
+### 12.3 Fluxos mais seguros
+
+Lucas propõe fluxos mais seguros. Um modelo seguro de encaminhamento dentro do sistema da clínica, que envia a especialistas cadastrados com um clique, substitui o e-mail pessoal. Faturas com dados bancários alterados ficam retidas automaticamente para confirmação por retorno de ligação. A cópia entre sistemas diminui com a integração dos sistemas de agendamento e da clínica. Cada mudança faz do caminho seguro também o caminho mais rápido. Ele apresenta as propostas com estimativas de economia de tempo, o que convence a gerente da clínica mais do que argumentos de segurança sozinhos. A gerente pede ao fornecedor um orçamento para a integração e a agenda para o próximo trimestre.
+
+### Exemplo resolvido
+
+Lucas mapeia os fluxos de pacientes e de pagamento, identifica os pontos de pressão e o atalho do e-mail pessoal e propõe caminhos seguros mais rápidos.
+
+> **Caso sintético.** Os fluxos são sintéticos.
+
+### Erros e limites
+
+A integração de sistemas pode ser cara. Os especialistas precisam estar cadastrados.
+
+### Exercícios
+
+- **EX034 — Causa do atalho.** Por que os funcionários usam e-mail pessoal para as cartas? *Rubrica:* 3 = o método oficial leva minutos e o e-mail pessoal, segundos;; 2 = rapidez;; 1 = nada;; 0 = nenhuma.
+
+- **EX035 — Correção do encaminhamento.** O que substitui o atalho do e-mail pessoal? *Rubrica:* 3 = um modelo seguro de encaminhamento com um clique;; 2 = modelo;; 1 = nada;; 0 = nenhuma.
+
+- **EX036 — Argumento persuasivo.** O que mais convenceu a gerente da clínica? *Rubrica:* 3 = as estimativas de economia de tempo;; 2 = tempo;; 1 = segurança;; 0 = nenhuma.
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Cenários de risco
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever cenários de risco realistas que envolvam pessoas; (2) estimar probabilidade e impacto de forma simples; (3) ligar os cenários aos controles.
+
+### 13.1 Escrita de cenários
+
+Lucas escreve cenários que descrevem como um ataque poderia se desenrolar na Brightwell, cada um com um atacante, um método, um alvo e um resultado. Num deles, alguém que se passa pelo fornecedor do sistema da clínica convence uma recepcionista por telefone a instalar um software de acesso remoto e depois copia os prontuários dos pacientes. Noutro, um e-mail falso de fornecedor altera os dados bancários e um gestor paga uma fatura alta ao atacante. Num terceiro, uma página falsa de login do sistema de agendamento captura a senha de uma recepcionista. Cada cenário usa detalhes sintéticos.
+
+### 13.2 Estimativa do risco
+
+Lucas estima probabilidade e impacto em escalas simples de três níveis, com a gerente da clínica. A ligação do falso fornecedor tem probabilidade média e impacto alto; a alteração falsa de fornecedor tem probabilidade alta e impacto alto; o login falso tem probabilidade alta, mas impacto médio depois que as chaves de segurança estão em uso. O laboratório multiplica as notas e ordena os cenários. Ele observa que as notas são julgamentos e que seu principal valor está em provocar a discussão sobre quais riscos tratar primeiro. A gerente revisa cada nota.
+
+### Laboratório — Ordenação dos cenários de risco
+
+```python
+# Rank risk scenarios by likelihood x impact on 1-3 scales (synthetic).
+s = [("fake vendor call", 2, 3), ("fake supplier bank change", 3, 3), ("fake booking login", 3, 2)]
+for n, l, i in sorted(s, key=lambda x: -x[1] * x[2]): print(f"{n}: {l}x{i} = {l * i}")
+```
+
+Execute com `python3 lab_scenarios.py`. Saída verificada:
+
+```text
+fake supplier bank change: 3x3 = 9
+fake vendor call: 2x3 = 6
+fake booking login: 3x2 = 6
+```
+
+### 13.3 Ligação com os controles
+
+Para cada cenário, Lucas lista os controles que o impediriam ou o limitariam. A ligação do falso fornecedor é combatida por uma regra: o acesso remoto só é concedido depois de ligar de volta para o fornecedor num número conhecido e obter a aprovação de um gestor. A alteração de fornecedor é combatida pela retenção automática e pelo retorno de ligação. O login falso é combatido pelas chaves de segurança e pelo reporte. Mapear os controles nos cenários mostra aos gestores por que cada controle existe e que risco cresceria se ele fosse retirado. Os gestores guardam a tabela.
+
+### Exemplo resolvido
+
+Lucas escreve três cenários centrados nas pessoas, ordena-os com notas simples e mapeia os controles de cada um.
+
+> **Caso sintético.** Os cenários são sintéticos.
+
+### Erros e limites
+
+As notas são subjetivas. Os cenários podem não prever métodos novos.
+
+### Exercícios
+
+- **EX037 — Cenário do fornecedor.** O que quer quem liga se passando pelo fornecedor? *Rubrica:* 3 = a instalação de um software de acesso remoto;; 2 = acesso remoto;; 1 = senhas;; 0 = nenhuma.
+
+- **EX038 — Cenário principal.** Que cenário ficou em primeiro no laboratório? *Rubrica:* 3 = a alteração falsa de fornecedor, com nota 9;; 2 = fornecedor;; 1 = nada;; 0 = nenhuma.
+
+- **EX039 — Regra de acesso remoto.** Que regra combate a ligação do falso fornecedor? *Rubrica:* 3 = retorno de ligação num número conhecido mais aprovação de um gestor;; 2 = retorno de ligação;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar um questionário anônimo curto; (2) conduzir entrevistas breves; (3) resumir os achados para a ação.
+
+### 14.1 Questionário
+
+Lucas desenha um questionário anônimo de cinco perguntas para todos os funcionários sobre o reporte de e-mails suspeitos: se sabem como reportar, se já reportaram, o que os impede, se receberam resposta e quão confiantes se sentem. Ele o mantém curto para que funcionários ocupados o respondam em dois minutos. A gerente da clínica o aprova e representantes dos funcionários revisam a redação. Ele recebe 150 respostas de 210 funcionários. O laboratório conta as respostas à pergunta sobre barreiras. Os funcionários são informados de que o questionário é anônimo e de que os resultados serão compartilhados com todos num resumo curto na próxima reunião mensal.
+
+### Laboratório — Barreiras no questionário entre 150 respostas
+
+```python
+# Survey barriers among 150 responses (multiple choice, synthetic).
+b = {"unsure IT wants it": 64, "don't know how": 41, "too busy": 33, "never heard back": 29, "fear of blame": 18}
+for k, v in sorted(b.items(), key=lambda x: -x[1]): print(f"{k}: {v}/150 = {v / 150:.0%}")
+```
+
+Execute com `python3 lab_barrier.py`. Saída verificada:
+
+```text
+unsure IT wants it: 64/150 = 43%
+don't know how: 41/150 = 27%
+too busy: 33/150 = 22%
+never heard back: 29/150 = 19%
+fear of blame: 18/150 = 12%
+```
+
+### 14.2 Entrevistas
+
+Lucas entrevista seis funcionários de funções diferentes, por quinze minutos cada, com consentimento e sem registrar nomes. Ele pede que descrevam a última mensagem suspeita que receberam e o que fizeram. As recepcionistas dizem que muitas vezes apagam os e-mails suspeitos porque não têm certeza se a TI os quer. Uma clínica conta que reportou uma vez, nunca teve retorno e por isso parou. As entrevistas dão as razões por trás dos números do questionário e sugerem correções específicas que o questionário sozinho não revelaria. Cada anotação de entrevista é conferida com a pessoa.
+
+### 14.3 Resumo para a ação
+
+Lucas resume seus achados em três pontos de ação: dizer claramente aos funcionários que reportes na dúvida são bem-vindos; acrescentar um botão de reporte para que reportar leve segundos; e responder a cada reporte no mesmo dia. Ele liga cada ponto a números do questionário e a falas das entrevistas, retirando tudo o que pudesse identificar alguém. A gerente da clínica aprova os três. Transformar os achados numa lista curta de ações ajuda gestores ocupados a decidir rápido e mantém o estudo concentrado em melhorar o serviço. Os funcionários veem o mesmo resumo.
+
+### Exemplo resolvido
+
+Lucas aplica o questionário a 150 funcionários e entrevista seis, encontra a incerteza e a falta de retorno como barreiras principais e propõe três ações.
+
+> **Caso sintético.** Os dados são sintéticos.
+
+### Erros e limites
+
+As respostas do questionário são autodeclaradas. Seis entrevistas são poucas.
+
+### Exercícios
+
+- **EX040 — Taxa de resposta.** Qual foi a taxa de resposta do questionário? *Rubrica:* 3 = cerca de 71%;; 2 = 150 de 210;; 1 = 150%;; 0 = nenhuma.
+
+- **EX041 — Barreira principal.** Qual foi a principal barreira no laboratório? *Rubrica:* 3 = não ter certeza se a TI quer o reporte, 64 de 150 ou 43%;; 2 = incerteza;; 1 = nada;; 0 = nenhuma.
+
+- **EX042 — Relato da clínica.** Por que a clínica parou de reportar? *Rubrica:* 3 = nunca teve retorno;; 2 = falta de retorno;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Laboratório guiado
+
+### Objetivos de aprendizagem
+
+Você vai (1) testar um botão de reporte com voluntários num ambiente de teste; (2) medir tempo e sucesso; (3) registrar problemas de usabilidade.
+
+### 15.1 Montagem do teste
+
+Num laboratório guiado, Lucas monta uma caixa postal de teste com e-mails sintéticos e o botão de reporte instalado. Oito funcionários voluntários participam, sabendo que estão testando o botão e não sendo testados. Cada voluntário reporta dois e-mails suspeitos sintéticos pelo método antigo, encaminhando para um endereço, e dois usando o botão. A ordem é alternada para que o aprendizado não favoreça um dos métodos. Lucas registra tempo e sucesso e anota qualquer hesitação ou confusão enquanto os voluntários trabalham. Cada sessão dura vinte minutos.
+
+### 15.2 Resultados
+
+O laboratório compara os tempos. Encaminhar leva cerca de quarenta e cinco segundos em média, em parte porque os voluntários procuram o endereço; o botão leva cerca de sete segundos. Dois voluntários encaminharam para o endereço errado. Todos têm sucesso com o botão. Os voluntários avaliam o botão como muito mais fácil. Lucas observa que o ambiente de teste é mais calmo que uma recepção movimentada, de modo que os tempos reais podem ser maiores, mas a diferença é tão grande que o botão claramente vale a adoção. Ele registra o resultado numa nota curta para a gerente da clínica.
+
+### Laboratório — Tempos de tarefa: encaminhamento versus botão
+
+```python
+# Mean task times (seconds) for eight volunteers (synthetic).
+fwd = [41, 52, 38, 47, 44, 50, 39, 49]; btn = [6, 8, 7, 7, 6, 9, 7, 6]
+print(f"forwarding {sum(fwd) / 8:.0f} s; button {sum(btn) / 8:.0f} s")
+```
+
+Execute com `python3 lab_button.py`. Saída verificada:
+
+```text
+forwarding 45 s; button 7 s
+```
+
+### 15.3 Problemas de usabilidade
+
+Lucas registra três problemas: nas telas menores da recepção, o botão aparece só num menu de excedentes; os voluntários não têm certeza se o reporte foi enviado porque nenhuma confirmação aparece; e o botão não existe no aplicativo de e-mail no celular que os clínicos usam. Ele os reporta ao prestador de TI, que ajusta o layout da barra de ferramentas e ativa uma mensagem de confirmação. O problema do celular exige outro add-in, que fica agendado. Registrar os problemas com precisão os torna mais fáceis de corrigir. Cada correção é testada de novo.
+
+### Exemplo resolvido
+
+Lucas testa o botão com oito voluntários numa caixa postal de teste, encontra grande economia de tempo e registra três problemas de usabilidade.
+
+> **Caso sintético.** O teste é sintético.
+
+### Erros e limites
+
+Condições calmas de laboratório. Amostra pequena.
+
+### Exercícios
+
+- **EX043 — Alternância da ordem.** Por que alternar a ordem dos métodos? *Rubrica:* 3 = para que o aprendizado não favoreça um método;; 2 = equidade;; 1 = nada;; 0 = nenhuma.
+
+- **EX044 — Tempos do laboratório.** Que tempos médios o laboratório mostrou? *Rubrica:* 3 = 45 segundos encaminhando e 7 segundos com o botão;; 2 = 38 economizados;; 1 = nada;; 0 = nenhuma.
+
+- **EX045 — Falta de confirmação.** Que problema a falta de confirmação causou? *Rubrica:* 3 = os voluntários não tinham certeza se o reporte foi enviado;; 2 = incerteza;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Métodos II
+
+### Objetivos de aprendizagem
+
+Você vai (1) comparar o reporte antes e depois de uma mudança; (2) considerar outras explicações; (3) usar uma implantação escalonada como comparação.
+
+### 16.1 Antes e depois
+
+Depois da introdução do botão e das respostas no mesmo dia, Lucas compara o reporte em dois meses antes e dois meses depois. Os reportes de e-mails maliciosos reais subiram e a mediana do tempo até o primeiro reporte caiu. Ele é cuidadoso: outros fatores podem ter mudado, como o número de ataques ou a cobertura na imprensa de um vazamento numa clínica odontológica. Ele confere os logs de filtragem do prestador de TI e descobre que o volume de ataques foi parecido nos dois períodos, o que torna a mudança mais convincente. Ele registra as duas verificações no relatório.
+
+### 16.2 Implantação escalonada
+
+Por causa de um atraso, quatro clínicas receberam o botão duas semanas depois das outras. Lucas usa essas duas semanas como comparação. Nesse período, as clínicas com o botão reportaram uma proporção maior de e-mails maliciosos do que as clínicas sem ele. O laboratório calcula as duas proporções. Ele observa que as clínicas não foram escolhidas ao acaso, já que o atraso se deveu a computadores mais antigos, de modo que os grupos podem ser diferentes. Ainda assim, a comparação dá mais peso ao resultado de antes e depois. Ele registra o motivo do atraso.
+
+### Laboratório — Clínicas adiantadas e atrasadas durante a quinzena escalonada
+
+```python
+# Staggered fortnight: share of malicious emails reported (synthetic).
+early = (8, 10); late = (4, 9)
+for n, (r, t) in (("early clinics", early), ("late clinics", late)): print(f"{n}: {r}/{t} = {r / t:.0%}")
+```
+
+Execute com `python3 lab_stagger.py`. Saída verificada:
+
+```text
+early clinics: 8/10 = 80%
+late clinics: 4/9 = 44%
+```
+
+### 16.3 Interpretação cuidadosa
+
+Lucas escreve que as evidências são compatíveis com a melhora do reporte graças ao botão e às respostas, apoiadas pelo volume estável de ataques e pela comparação escalonada, mas não a provam. Ele recomenda continuar o monitoramento. Marta elogia o hábito de buscar uma comparação sempre que possível, observando que muitas mudanças no trabalho podem ser avaliadas de forma mais convincente quase sem custo se alguém percebe uma comparação natural e a registra com cuidado. Ele também lista que dados adicionais fortaleceriam a conclusão, como um período mais longo de monitoramento e números das clínicas que entraram depois.
+
+### Exemplo resolvido
+
+Lucas compara antes e depois com volume de ataques estável e usa uma implantação atrasada como comparação.
+
+> **Caso sintético.** Os dados são sintéticos.
+
+### Erros e limites
+
+Grupos não aleatórios. Períodos curtos.
+
+### Exercícios
+
+- **EX046 — Verificação do volume.** Como Lucas verificou se o volume de ataques mudou? *Rubrica:* 3 = os logs de filtragem mostraram volume parecido;; 2 = logs;; 1 = nada;; 0 = nenhuma.
+
+- **EX047 — Proporções do laboratório.** Que proporções as clínicas adiantadas e atrasadas reportaram no laboratório? *Rubrica:* 3 = 80% contra 44%;; 2 = as adiantadas, mais;; 1 = nada;; 0 = nenhuma.
+
+- **EX048 — Causa do atraso.** Por que algumas clínicas atrasaram? *Rubrica:* 3 = computadores mais antigos;; 2 = hardware;; 1 = acaso;; 0 = nenhuma.
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Ferramentas
+
+### Objetivos de aprendizagem
+
+Você vai (1) selecionar ferramentas para reporte e triagem; (2) configurar as ferramentas pensando na privacidade; (3) automatizar etapas simples da triagem.
+
+### 17.1 Seleção de ferramentas
+
+Lucas ajuda a Brightwell a escolher uma ferramenta de reporte e triagem. As opções incluem o recurso de reporte embutido na plataforma de e-mail, um produto de triagem separado e uma simples caixa postal compartilhada com regras. Ele as compara em custo, facilidade para os funcionários, esforço para o prestador de TI e privacidade. O recurso embutido, com uma caixa postal compartilhada e automação simples, atende à maior parte das necessidades a baixo custo. Ele evita ferramentas que dão nota a funcionários individualmente, porque o programa existe para apoiar as pessoas, não para ranqueá-las. O prestador concorda com a escolha.
+
+### 17.2 Configuração de privacidade
+
+Lucas configura a ferramenta para que a identidade de quem reporta fique visível apenas para a pessoa da triagem, com a finalidade de enviar respostas, e não seja exportada. Os reportes com mais de noventa dias são apagados automaticamente. Os painéis mostram totais por grupos de pelo menos vinte funcionários. Ele documenta essas configurações com o responsável pela proteção de dados. Privacidade pela configuração significa que as boas intenções são garantidas pelo sistema, em vez de depender de que as pessoas se lembrem de regras sobre o que não devem olhar. O responsável aprova as configurações.
+
+### 17.3 Automação da triagem
+
+Lucas monta uma automação simples: os reportes do mesmo e-mail são agrupados; uma mensagem de agradecimento é enviada na hora; e, se o e-mail coincide com uma amostra maliciosa conhecida, um veredito padrão é enviado e o e-mail é removido de todas as caixas postais. O prestador de TI revisa só os e-mails novos. O laboratório conta quantos reportes precisaram de revisão humana numa semana sintética. A automação reduz a carga de triagem e acelera o retorno, que as entrevistas mostraram ser muito valorizado pelos funcionários. As amostras conhecidas são revisadas toda semana para manter a lista correta.
+
+### Laboratório — Reportes que precisam de revisão humana após a automação
+
+```python
+# Reports needing human review after automation in a synthetic week.
+reports = 60; duplicates = 38; known = 13
+print(f"reports {reports}; grouped duplicates {duplicates}; known-malicious auto verdicts {known}; human review {reports - duplicates - known}")
+```
+
+Execute com `python3 lab_auto.py`. Saída verificada:
+
+```text
+reports 60; grouped duplicates 38; known-malicious auto verdicts 13; human review 9
+```
+
+### Exemplo resolvido
+
+Lucas escolhe uma ferramenta embutida de baixo custo, configura limites de privacidade e automatiza o agrupamento, o agradecimento e os vereditos conhecidos.
+
+> **Caso sintético.** As ferramentas são genéricas e os dados, sintéticos.
+
+### Erros e limites
+
+Vereditos automáticos podem errar. Limites de retenção perdem o histórico.
+
+### Exercícios
+
+- **EX049 — Recurso evitado.** Que recurso de ferramenta Lucas evitou? *Rubrica:* 3 = dar nota a funcionários individualmente;; 2 = notas;; 1 = nada;; 0 = nenhuma.
+
+- **EX050 — Retenção.** Por quanto tempo os reportes são guardados? *Rubrica:* 3 = noventa dias;; 2 = 90;; 1 = para sempre;; 0 = nenhuma.
+
+- **EX051 — Carga de revisão no laboratório.** Quantos dos 60 reportes precisaram de revisão humana no laboratório? *Rubrica:* 3 = 9;; 2 = 15%;; 1 = 60;; 0 = nenhuma.
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) implementar procedimentos de verificação para pagamentos e acesso remoto; (2) escrever procedimentos que os funcionários consigam seguir sob pressão; (3) testar os procedimentos com encenação.
+
+### 18.1 Verificação de pagamentos
+
+Lucas trabalha com a gerente da clínica para implementar a verificação de pagamentos. Qualquer pedido de alteração dos dados bancários de um fornecedor fica retido automaticamente no sistema contábil. Uma segunda pessoa liga para o fornecedor no número que já consta do cadastro, nunca no número do pedido. A alteração só é liberada depois da confirmação, e a ligação é registrada. Esse controle elimina a necessidade de um gestor julgar se um e-mail parece genuíno, um julgamento que atacantes habilidosos conseguem derrotar. A equipe financeira o testa primeiro com pedidos de exemplo.
+
+### 18.2 Procedimentos claros
+
+Lucas escreve os procedimentos para alterações de pagamento e para acesso remoto de fornecedores em cartões únicos, com etapas numeradas, frases curtas e os telefones a usar. Ele coloca os cartões ao lado dos telefones da recepção e no escritório financeiro. Evita a linguagem longa de política. Segue a ideia de aceitabilidade psicológica de Saltzer e Schroeder: se um procedimento é fácil de seguir, as pessoas o seguem. Ele também acrescenta uma linha dizendo que os funcionários sempre terão apoio por tomar tempo para verificar, mesmo que quem ligou esteja irritado.
+
+### 18.3 Teste com encenação
+
+Lucas testa os procedimentos com encenação. Um colega faz o papel de alguém que liga dizendo ser o fornecedor, e as recepcionistas praticam dizer que vão retornar a ligação no número oficial. Todos sabem que é treino; ninguém é enganado. As recepcionistas acham a frase roteirizada útil porque ela permite recusar com educação. Uma sugere acrescentar ao cartão o horário de suporte do fornecedor. A encenação dá confiança para as ligações reais sem os problemas éticos e o dano à confiança dos testes secretos. A sugestão é acrescentada. O treino acontece todo mês.
+
+### Exemplo resolvido
+
+Lucas implementa retenções de pagamento com retorno de ligação, escreve cartões de procedimento e os testa com encenação anunciada.
+
+> **Caso sintético.** Os procedimentos são sintéticos; Saltzer e Schroeder (1975) é real.
+
+### Erros e limites
+
+Os cartões podem sumir. Quem liga pode ficar agressivo.
+
+### Exercícios
+
+- **EX052 — Número para retorno.** Para que número a segunda pessoa liga? *Rubrica:* 3 = o número que já consta do cadastro;; 2 = cadastro;; 1 = o do pedido;; 0 = nenhuma.
+
+- **EX053 — Linha de apoio.** Que linha foi acrescentada aos cartões? *Rubrica:* 3 = os funcionários terão apoio por tomar tempo para verificar;; 2 = apoio;; 1 = nada;; 0 = nenhuma.
+
+- **EX054 — Ética da encenação.** Por que usar encenação em vez de testes secretos? *Rubrica:* 3 = dá confiança sem engano nem dano à confiança;; 2 = ética;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Monitoramento
+
+### Objetivos de aprendizagem
+
+Você vai (1) monitorar ao longo do tempo as medidas de reporte e de verificação; (2) definir limiares simples de alerta; (3) revisar as tendências com os gestores.
+
+### 19.1 Monitoramento contínuo
+
+Lucas monta um monitoramento mensal das medidas escolhidas no capítulo 9: proporção de e-mails maliciosos reportados, tempo até o primeiro reporte, tempo até o veredito e alterações de pagamento retidas e verificadas. Os dados vêm da ferramenta de triagem e do log do sistema contábil, de modo que os funcionários não têm trabalho extra. Ele monta um gráfico simples para cada medida. O monitoramento mostra se as melhoras duram ou se apagam, o que importa porque muitos esforços de conscientização mostram ganhos iniciais que desaparecem em poucos meses. Ele compartilha os gráficos com todos os funcionários a cada trimestre.
+
+### 19.2 Limiares
+
+Lucas define limiares que disparam ação: se a mediana do tempo até o veredito passar de duas horas em qualquer mês, o prestador revisa a equipe; se a proporção reportada cair abaixo de sessenta por cento por dois meses, a equipe procura problemas como um botão quebrado. O laboratório confere seis meses de dados sintéticos contra os limiares e sinaliza um mês em que o tempo até o veredito subiu porque o prestador estava de férias. Os limiares transformam o monitoramento em ação, e não apenas em gráficos. Os dois limiares ficam escritos no procedimento.
+
+### Laboratório — Medidas mensais contra os limiares
+
+```python
+# Monthly measures against thresholds (synthetic).
+months = [(1, 0.72, 95), (2, 0.75, 80), (3, 0.78, 70), (4, 0.74, 165), (5, 0.79, 75), (6, 0.81, 65)]
+for m, share, verdict in months:
+    flags = (["verdict > 120"] if verdict > 120 else []) + (["share < 60%"] if share < 0.6 else [])
+    print(f"month {m}: reported {share:.0%}, median verdict {verdict} min {'FLAG ' + ', '.join(flags) if flags else ''}")
+```
+
+Execute com `python3 lab_monitor.py`. Saída verificada:
+
+```text
+month 1: reported 72%, median verdict 95 min 
+month 2: reported 75%, median verdict 80 min 
+month 3: reported 78%, median verdict 70 min 
+month 4: reported 74%, median verdict 165 min FLAG verdict > 120
+month 5: reported 79%, median verdict 75 min 
+month 6: reported 81%, median verdict 65 min
+```
+
+### 19.3 Revisão das tendências
+
+Lucas revisa os gráficos com a gerente da clínica a cada trimestre. Eles discutem o mês sinalizado e combinam que uma pessoa reserva deve cuidar da triagem durante as férias. Também percebem que os reportes sobem cada vez que uma mensagem de reforço é enviada e depois se estabilizam. Esse padrão sugere que lembretes breves ajudam. Revisar as tendências juntos mantém os gestores informados e envolvidos e ajuda o programa a se ajustar antes que os problemas cresçam. Eles decidem enviar um lembrete curto todo mês, com exemplos reais recentes sem dados pessoais, e verificar depois de três meses se os reportes continuam mais altos.
+
+### Exemplo resolvido
+
+Lucas monitora quatro medidas por mês, define limiares de ação, sinaliza um atraso ligado às férias e combina uma reserva para a triagem.
+
+> **Caso sintético.** Os dados são sintéticos.
+
+### Erros e limites
+
+Os limiares podem ser arbitrários. As tendências precisam de períodos mais longos.
+
+### Exercícios
+
+- **EX055 — Fontes de dados.** De onde vêm os dados do monitoramento? *Rubrica:* 3 = da ferramenta de triagem e do log contábil;; 2 = sistemas existentes;; 1 = questionários aos funcionários;; 0 = nenhuma.
+
+- **EX056 — Sinalização do laboratório.** Que mês o laboratório sinalizou e por quê? *Rubrica:* 3 = o mês 4, tempo até o veredito de 165 minutos durante as férias;; 2 = mês 4;; 1 = nada;; 0 = nenhuma.
+
+- **EX057 — Padrão dos lembretes.** Que padrão se seguiu às mensagens de reforço? *Rubrica:* 3 = os reportes subiram e depois se estabilizaram;; 2 = alta;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Solução de problemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) investigar problemas no serviço de reporte; (2) separar causas técnicas de causas humanas; (3) corrigir as causas-raiz, e não os sintomas.
+
+### 20.1 Uma queda repentina
+
+No sétimo mês, os reportes de três clínicas caem quase a zero. Lucas investiga. Confere se os ataques diminuíram, mas os logs de filtragem mostram volume normal. Ele visita uma clínica e descobre que o botão de reporte sumiu depois que uma atualização de software reiniciou a barra de ferramentas. Os funcionários supuseram que ele tinha sido retirado de propósito e não perguntaram. A causa técnica foi a atualização; a causa humana foi a incerteza sobre se o reporte ainda era desejado. Ele confere as outras duas clínicas e encontra o mesmo problema em todos os computadores da recepção.
+
+### 20.2 Separação das causas
+
+Lucas lista as duas causas. Do lado técnico, o processo de atualização não confere os add-ins. Do lado humano, os funcionários não tinham um jeito fácil de avisar a TI de que algo parecia errado com a ferramenta. Ele também confere outra clínica em que os reportes caíram pouco e encontra uma causa diferente: uma recepcionista nova não tinha sido informada sobre o reporte. Separar as causas evita aplicar uma única correção a problemas de origens diferentes, o que deixaria alguns deles sem solução. Ele registra as duas causas no log, para que cada uma tenha sua correção e seu responsável.
+
+### 20.3 Causas-raiz
+
+Lucas corrige as causas-raiz. O prestador de TI acrescenta, depois de cada atualização, uma verificação de que o botão existe em todos os computadores. A mensagem de agradecimento agora traz uma linha convidando os funcionários a avisar a TI se o botão sumir. A integração dos novos funcionários passa a incluir o reporte. Ele registra o incidente e as correções no log de solução de problemas. Marta observa que corrigir só o botão deixaria a próxima atualização causar o mesmo problema e que convidar o retorno cria um sistema de alerta precoce. O log é revisado a cada trimestre.
+
+### Exemplo resolvido
+
+Lucas atribui uma queda nos reportes a uma reinicialização da barra de ferramentas e à incerteza dos funcionários, separa as causas em duas clínicas e corrige as causas-raiz.
+
+> **Caso sintético.** O incidente é sintético.
+
+### Erros e limites
+
+As visitas tomam tempo. As verificações podem deixar passar outros add-ins.
+
+### Exercícios
+
+- **EX058 — Causa da queda.** O que causou a queda nos reportes em três clínicas? *Rubrica:* 3 = uma atualização reiniciou a barra de ferramentas e removeu o botão;; 2 = atualização;; 1 = menos ataques;; 0 = nenhuma.
+
+- **EX059 — Causa na outra clínica.** O que causou a queda menor em outra clínica? *Rubrica:* 3 = uma recepcionista nova não foi informada sobre o reporte;; 2 = integração;; 1 = nada;; 0 = nenhuma.
+
+- **EX060 — Verificação pós-atualização.** O que o prestador faz agora depois das atualizações? *Rubrica:* 3 = verifica se o botão existe em todos os computadores;; 2 = verificação;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX030 (as de EX031–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Lucas Ferreira, a professora Marta Kowalczyk, o Northgate Institute of Technology, o Brightwell Dental Group e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060 (as de EX061–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Lucas Ferreira, a professora Marta Kowalczyk, o Northgate Institute of Technology, o Brightwell Dental Group e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Quatro sistemas.
 
@@ -511,6 +989,66 @@ Respostas-modelo para EX001–EX030 (as de EX031–EX090 estão na edição em i
 **EX029.** Não diz como reportar.
 
 **EX030.** Uma declaração de que reportar erros é bem-vindo.
+
+**EX031.** A disposição dos funcionários para reportar problemas.
+
+**EX032.** Perto dos prazos de fechamento do mês.
+
+**EX033.** Aceitar a alteração de um dado bancário.
+
+**EX034.** Porque o método oficial leva minutos e o e-mail pessoal, segundos.
+
+**EX035.** Um modelo seguro de encaminhamento com um clique.
+
+**EX036.** As estimativas de economia de tempo.
+
+**EX037.** A instalação de um software de acesso remoto.
+
+**EX038.** A alteração falsa de dados bancários de fornecedor, com nota 9.
+
+**EX039.** Retorno de ligação num número conhecido mais aprovação de um gestor.
+
+**EX040.** Cerca de 71%.
+
+**EX041.** Não ter certeza se a TI quer o reporte, 64 de 150 ou 43%.
+
+**EX042.** Porque nunca teve retorno.
+
+**EX043.** Para que o aprendizado não favoreça um dos métodos.
+
+**EX044.** 45 segundos encaminhando e 7 segundos com o botão.
+
+**EX045.** Os voluntários não tinham certeza se o reporte foi enviado.
+
+**EX046.** Os logs de filtragem mostraram volume parecido.
+
+**EX047.** 80% contra 44%.
+
+**EX048.** Computadores mais antigos.
+
+**EX049.** Dar nota a funcionários individualmente.
+
+**EX050.** Noventa dias.
+
+**EX051.** 9.
+
+**EX052.** O número que já consta do cadastro.
+
+**EX053.** Que os funcionários terão apoio por tomar tempo para verificar.
+
+**EX054.** Dá confiança sem engano nem dano à confiança.
+
+**EX055.** Da ferramenta de triagem e do log contábil.
+
+**EX056.** O mês 4, com tempo até o veredito de 165 minutos durante as férias.
+
+**EX057.** Os reportes subiram e depois se estabilizaram.
+
+**EX058.** Uma atualização reiniciou a barra de ferramentas e removeu o botão.
+
+**EX059.** Uma recepcionista nova não foi informada sobre o reporte.
+
+**EX060.** Verifica se o botão existe em todos os computadores.
 
 <a id="references"></a>
 ## Referências

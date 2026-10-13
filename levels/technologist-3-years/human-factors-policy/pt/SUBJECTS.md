@@ -19,17 +19,17 @@ Edição em português do Brasil, escrita a partir da edição de referência em
 | 2 | [07](book/PLAN.md#ch-07) | Fundamentos de identidade e acesso | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-07) | [08 · Rascunho](book/MANUSCRIPT.md#ch-08) |
 | 2 | [08](book/PLAN.md#ch-08) | Fundamentos de arquitetura de segurança | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-08) | [09 · Rascunho](book/MANUSCRIPT.md#ch-09) |
 | 2 | [09](book/PLAN.md#ch-09) | Evidências e medição | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-09) | [10 · Rascunho](book/MANUSCRIPT.md#ch-10) |
-| 2 | [10](book/PLAN.md#ch-10) | Fatores humanos e política cibernética: orientação | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-10) | [11 · Plano](book/PLAN.md#ch-11) |
-| 3 | [11](book/PLAN.md#ch-11) | Fatores humanos e política cibernética: ativos e contexto | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-11)) | [12 · Plano](book/PLAN.md#ch-12) |
-| 3 | [12](book/PLAN.md#ch-12) | Fatores humanos e política cibernética: fluxos de dados | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-12)) | [13 · Plano](book/PLAN.md#ch-13) |
-| 3 | [13](book/PLAN.md#ch-13) | Fatores humanos e política cibernética: cenários de risco | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-13)) | [14 · Plano](book/PLAN.md#ch-14) |
-| 3 | [14](book/PLAN.md#ch-14) | Fatores humanos e política cibernética: métodos I | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-14)) | [15 · Plano](book/PLAN.md#ch-15) |
-| 3 | [15](book/PLAN.md#ch-15) | Fatores humanos e política cibernética: laboratório guiado | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-15)) | [16 · Plano](book/PLAN.md#ch-16) |
-| 4 | [16](book/PLAN.md#ch-16) | Fatores humanos e política cibernética: métodos II | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-16)) | [17 · Plano](book/PLAN.md#ch-17) |
-| 4 | [17](book/PLAN.md#ch-17) | Fatores humanos e política cibernética: ferramentas | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-17)) | [18 · Plano](book/PLAN.md#ch-18) |
-| 4 | [18](book/PLAN.md#ch-18) | Fatores humanos e política cibernética: controles | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-18)) | [19 · Plano](book/PLAN.md#ch-19) |
-| 4 | [19](book/PLAN.md#ch-19) | Fatores humanos e política cibernética: monitoramento | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-19)) | [20 · Plano](book/PLAN.md#ch-20) |
-| 4 | [20](book/PLAN.md#ch-20) | Fatores humanos e política cibernética: solução de problemas | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-20)) | [21 · Plano](book/PLAN.md#ch-21) |
+| 2 | [10](book/PLAN.md#ch-10) | Fatores humanos e política cibernética: orientação | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-10) | [11 · Rascunho](book/MANUSCRIPT.md#ch-11) |
+| 3 | [11](book/PLAN.md#ch-11) | Fatores humanos e política cibernética: ativos e contexto | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-11) | [12 · Rascunho](book/MANUSCRIPT.md#ch-12) |
+| 3 | [12](book/PLAN.md#ch-12) | Fatores humanos e política cibernética: fluxos de dados | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-12) | [13 · Rascunho](book/MANUSCRIPT.md#ch-13) |
+| 3 | [13](book/PLAN.md#ch-13) | Fatores humanos e política cibernética: cenários de risco | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-13) | [14 · Rascunho](book/MANUSCRIPT.md#ch-14) |
+| 3 | [14](book/PLAN.md#ch-14) | Fatores humanos e política cibernética: métodos I | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-14) | [15 · Rascunho](book/MANUSCRIPT.md#ch-15) |
+| 3 | [15](book/PLAN.md#ch-15) | Fatores humanos e política cibernética: laboratório guiado | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-15) | [16 · Rascunho](book/MANUSCRIPT.md#ch-16) |
+| 4 | [16](book/PLAN.md#ch-16) | Fatores humanos e política cibernética: métodos II | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-16) | [17 · Rascunho](book/MANUSCRIPT.md#ch-17) |
+| 4 | [17](book/PLAN.md#ch-17) | Fatores humanos e política cibernética: ferramentas | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-17) | [18 · Rascunho](book/MANUSCRIPT.md#ch-18) |
+| 4 | [18](book/PLAN.md#ch-18) | Fatores humanos e política cibernética: controles | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-18) | [19 · Rascunho](book/MANUSCRIPT.md#ch-19) |
+| 4 | [19](book/PLAN.md#ch-19) | Fatores humanos e política cibernética: monitoramento | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-19) | [20 · Rascunho](book/MANUSCRIPT.md#ch-20) |
+| 4 | [20](book/PLAN.md#ch-20) | Fatores humanos e política cibernética: solução de problemas | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-20) | [21 · Plano](book/PLAN.md#ch-21) |
 | 5 | [21](book/PLAN.md#ch-21) | Fatores humanos e política cibernética: integração de serviços | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-21)) | [22 · Plano](book/PLAN.md#ch-22) |
 | 5 | [22](book/PLAN.md#ch-22) | Fatores humanos e política cibernética: automação | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-22)) | [23 · Plano](book/PLAN.md#ch-23) |
 | 5 | [23](book/PLAN.md#ch-23) | Fatores humanos e política cibernética: avaliação | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-23)) | [24 · Plano](book/PLAN.md#ch-24) |
