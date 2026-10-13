@@ -2140,21 +2140,31 @@ You will be able to (1) state a prior belief and update it with evidence using l
 
 Triage begins with competing **hypotheses**: malicious activity, legitimate but unusual activity, misconfiguration, tool error. Chamberlin's 1890 essay on "multiple working hypotheses" and Platt's 1964 "strong inference" both argue for keeping several explanations alive and designing tests that discriminate between them. A test that every hypothesis predicts equally is useless, however much effort it costs.
 
+The Saturday identity alerts at Harbourline show the method: password spraying and a maintenance side effect are both written down at the start, and each piece of evidence is judged by how differently the two explanations predict it. Failure reason codes discriminate well; the bare fact that sign-ins failed does not, because both hypotheses expect it.
+
 ### 23.2 Priors and likelihood ratios
 
 A **prior** is your belief before new evidence, informed by base rates (how often does this alert turn out malicious here?). A **likelihood ratio** (LR) is P(evidence | H1) / P(evidence | H2): how much more expected the evidence is under one hypothesis than the other. In odds form, posterior odds = prior odds × LR. You rarely know LRs precisely, but estimating them roughly forces the right question: *would I expect to see this if the benign explanation were true?*
+
+In the maintenance example the prior came from history: 2 of 40 similar alerts were malicious.
 
 ### 23.3 Corroboration and independence
 
 Two pieces of evidence corroborate only if they are independent — not derived from the same source or failure (Chapter 2). Multiplying LRs assumes independence; if two alerts are both generated from the same sign-in log, they count once.
 
+In the maintenance example, the timing of failures and their reason code both come from the IdP log. They describe different attributes, so they are not duplicates, but a fault in that one log would affect both. That is why the worked example treats its posterior as an order of magnitude. Evidence from a separate system, such as the directory connector's own restart record, would corroborate more strongly than another field from the same log.
+
 ### 23.4 Severity
 
 Severity combines **impact** (what would be harmed if the hypothesis is true) and **confidence** (how likely it is true). A low-confidence, high-impact hypothesis may warrant urgent cheap checks; a high-confidence, low-impact one may wait.
 
+In the maintenance example, the 14 accounts include clinical staff, so impact would be high if the attack hypothesis were true. Before the reason codes were checked, confidence was low but the stakes justified quick checks within a short time limit and escalation by default if they could not be completed. Write severity as both parts, impact and confidence, so a reader can see which one is driving urgency.
+
 ### 23.5 Stopping rules and reversal conditions
 
 Triage must end with a decision: escalate, close, or monitor. A **stopping rule** says when you have enough evidence (for example posterior probability above 0.8 or below 0.05, or a time limit with default escalation for high impact). A **reversal condition** states what new evidence would change the decision; recording it makes the decision reviewable.
+
+The maintenance case closes with a reversal condition covering 48 hours: a sign-in from a new device or address for those accounts, or any invalid-password failures in the window, reopens it. That turns closure into a testable statement rather than a judgement nobody can revisit.
 
 ### 23.6 Worked example (synthetic): identity alerts during maintenance
 
@@ -2181,6 +2191,10 @@ Decision: close as maintenance-related, with a note to the IdP owner about the c
 - Ignoring base rates.
 - Closing without a reversal condition.
 - Numerical LRs here are judgements; their value is in making assumptions explicit, not in false precision.
+
+- Estimating likelihood ratios after deciding the answer, so the numbers merely decorate a conclusion already reached.
+- Using a base rate from another organization or a different alert type without saying so.
+- Writing a reversal condition so broad that it can never fire, or so narrow that it fires on every routine event.
 
 ### Exercises — chapter 23
 
@@ -2216,21 +2230,31 @@ You will be able to (1) compare containment options by expected harm; (2) weigh 
 
 Containment options trade harms: the harm the attacker could still cause, and the harm the containment itself causes (downtime, lost evidence, alerting the attacker). Doing nothing is also an option with consequences. A simple **expected-harm** comparison makes the trade-off explicit: for each option, expected harm = P(malicious) × harm if malicious under that option + harm of the option itself.
 
+For svc-integration, the harm of disabling is concrete: lab results would stop reaching clinicians for about four hours. Writing that harm beside the harm an attacker could cause stops the discussion from treating containment as free. Monitoring only is listed as an option too, with its own expected harm, so that doing nothing is a visible choice rather than a default.
+
 ### 24.2 Reversibility and blast radius
 
 Prefer reversible actions when uncertainty is high: revoking sessions can be undone (users sign in again); deleting a server cannot. The **blast radius** of containment is who else is affected: disabling a shared service account stops every service that uses it.
+
+For svc-integration, the allow-list is reversible within minutes if it blocks a legitimate host, while disabling the account interrupts lab results for hours and cannot be undone for clinicians who missed results meanwhile. Blast radius here includes the billing export, because the account is shared. Knowing every consumer of a credential before acting is the practical lesson.
 
 ### 24.3 Approval
 
 Containment of production systems requires the authority defined in advance (Chapter 21). The decision record names the decider, the options considered, the expected harms and the assumptions.
 
+For the svc-integration decision, the record would name who approved the allow-list, the three options considered, the harm estimates agreed with the lab and billing owners, and the key assumption that the attacker does not control an allowed host. If that assumption later proves false, the record shows that the decision was reasonable on what was known and identifies exactly which belief changed. Without that record, the review after the incident tends to judge the decision by its outcome alone. Write the record during the decision, not from memory afterwards.
+
 ### 24.4 Value of information
 
 If a quick check could change the decision, its expected value may justify a short delay. If no plausible result of the check would change the decision, act now. This is the decision-theoretic idea of the **value of information**.
 
+In the svc-integration case, a 20-minute check could show whether the unknown host is a new integration server. Because the allow-list is cheap and reversible, the exercise answer is to apply it now and run the check in parallel; the check matters mainly for whether disabling becomes necessary. Delay pays only when waiting for information could change the action you are about to take.
+
 ### 24.5 Sensitivity analysis
 
 Estimates of probability and harm are uncertain. Vary them across plausible ranges and see whether the preferred option changes. A decision that holds across the range is robust; one that flips at a plausible value needs either more information or a more reversible option.
+
+In Lab 24 the probability barely matters: the allow-list wins at every value tested. What matters is its assumed residual harm, and the exercise that raises it from 20 to 70 shows the best option changing completely. Name that assumption in the decision record.
 
 ### 24.6 Worked example and lab (synthetic): a shared service account
 
@@ -2281,6 +2305,9 @@ Interpretation: under these harm estimates, the allow-list dominates across all 
 - False precision: the harm scale is a structured judgement agreed with owners, not a measurement.
 - Forgetting that some actions alert the attacker; include that in harm if relevant.
 
+- Running the sensitivity analysis on the variable that is easy to vary rather than on the assumption the decision depends on.
+- Presenting expected-harm figures to owners without explaining that the scale is a judgement they helped set.
+
 ### Exercises — chapter 24
 
 Attempt each exercise before opening the [worked results](#worked-results). Every case, organization, person, address and number in an exercise is synthetic unless a cited public source is named.
@@ -2319,9 +2346,13 @@ A timeline seems simple — sort events by time — but each source has its own 
 
 When two sources record the same event (for example a sign-in seen by the IdP and the application's session start), their difference estimates the relative offset. Use several shared events and take the median to reduce the effect of processing delays. If shared events are unavailable, state the offset as unknown and widen the uncertainty of ordering.
 
+In Lab 25 the two shared sessions give offsets of 33 and 32 seconds, so the median is about thirty-two and a half seconds and the spread is one second. Two pairs are enough to illustrate the method but thin as evidence; adding a third shared event, if one exists in the bundle, would test whether the clock is steady or drifting.
+
 ### 25.3 Ordering uncertainty
 
 If two events from different sources are closer in time than the offset uncertainty, their order is not established. Mark them as "order uncertain" rather than choosing one.
+
+In Lab 25 the uncertainty is half the spread plus five seconds, roughly five and a half seconds. The fin-04 sign-in and its application session start fall within that window, as do the two rcp-02 events, so the program flags both pairs. The password view and the MFA change for fin-04 are thirteen seconds apart, beyond the window, so their order is supported under the stated assumptions. Report the uncertainty value with the timeline so a reader can check each flag.
 
 ### 25.4 The lab (synthetic)
 
@@ -2390,6 +2421,8 @@ offset estimates (s): [33.0, 32.0] median 32.5 spread 1.0
 07:41:10 IDP mfa_change fin-04 method=phone_added 
 ```
 
+The administrator's remark that the clock "may be off by a bit" is not used anywhere in the code; the offset is estimated from the shared session identifiers a91 and b17 instead. The raw strings are hashed before parsing, so the output can be tied to these exact inputs. Note what the bundle lacks: there is no source other than the application for the export of 1,820 rows, so that event rests on one log.
+
 ### 25.5 Reading the result
 
 The application clock runs about 32.5 seconds fast (after the UTC−3 conversion). Corrected, the sequence for `fin-04` is: sign-in 07:12:04; bulk export of 1,820 rows at 07:20:22; viewing a stored supplier password at 07:40:57; adding a phone MFA method at 07:41:10. The last two are 13 seconds apart — larger than the 5.5-second uncertainty used here, so the order (password view before MFA change) is supported under the stated assumptions. One artefact deserves attention: after correction, the `rcp-02` application session start (07:30:39) appears one second *before* the IdP sign-in that created it (07:30:40), which is impossible in reality. It is a residual of using a single median offset when the two pairs disagree by one second (and of printing truncated seconds). The tool correctly flags the pair as order-uncertain; a reader who ignored the flag could invent a story about a session that began before authentication. The fix is not to edit the output but to report the uncertainty, as the flag does.
@@ -2400,12 +2433,17 @@ The printed hash prefixes identify the exact raw inputs; any change to a single 
 
 A publishable entry looks like: "07:20:22 UTC (±6 s) — booking application records an export of 1,820 rows by `fin-04` (APP line 3; app clock corrected by −32.5 s estimated from two shared sessions)." The bracketed provenance can move to a footnote or appendix, but it must exist.
 
+Write separate entries for events from different sources even when they describe the same action, as with the fin-04 sign-in and session start, and link them rather than merging. A reader can then see two independent records of one moment. For the password view and MFA change, the entry should state the thirteen-second gap and the uncertainty that makes the order supportable.
+
 ### 25.7 Common errors and limits
 
 - Sorting strings from different time zones.
 - Applying an administrator's guess ("a bit off") instead of an estimate from shared events.
 - Ignoring the residual uncertainty of the offset estimate.
 - Two shared events are a thin basis; more pairs would narrow the uncertainty. If the clock drifts during the day, a single offset is wrong for distant events.
+
+- Silently correcting the impossible-looking rcp-02 order instead of reporting why it arose.
+- Treating the export of 1,820 rows as confirmed by two sources when only the application recorded it.
 
 ### Exercises — chapter 25
 
@@ -2441,21 +2479,31 @@ You will be able to (1) choose a restore point using evidence about when comprom
 
 **Recovery time objective** (RTO): how long a service can be unavailable. **Recovery point objective** (RPO): how much data loss is tolerable, measured in time. These are business decisions, set before incidents (NIST SP 800-34 Rev. 1 covers contingency planning; SP 800-184 covers cyber-event recovery). During an incident, they become constraints on choices — but a compromise can force a restore point older than the RPO, because newer copies may contain the attacker's changes.
 
+The Harbourline booking case shows the tension: Sequence A meets a tighter recovery time but rests on assuming the 9 March sign-in was benign.
+
 ### 26.2 Choosing a restore point
 
 The restore point must precede the earliest *known* malicious change with a margin reflecting uncertainty about the earliest *actual* change. Evidence for that comes from the timeline. Snapshots after that point are suspect; replicas fed continuously from the primary are suspect from the moment the compromise began.
+
+In the booking case, the earliest known malicious change is 22:14 on 11 March, but the attacker's access was first seen at 21:50 and an unexplained admin sign-in on 9 March at 03:00 has not been ruled out. The 21:00 snapshot precedes the observed access; the 9 March 02:00 snapshot precedes everything unexplained. Which one is safe depends on resolving that earlier sign-in, which is why the decision logic hinges on it.
 
 ### 26.3 Dependency order
 
 Recover in the order dependencies require: identity before applications that authenticate against it; databases before APIs; internal services before public exposure. A dependency graph (Chapter 2) gives the order; a topological sort makes it explicit.
 
+For Harbourline Booking, that means securing the identity provider and rotating admin credentials before restoring the database, then the API behind the proxy, and only then reopening access for staff. Restoring the API first would put a service online that still trusts credentials the attacker may hold. Write the order down and have the service owner confirm it, because dependencies seen from outside are often incomplete.
+
 ### 26.4 Acceptance tests
 
 Before returning a service to users, test: integrity of data (Chapter 9 checks), absence of known indicators, correct function (create/read/update test transactions), security configuration (credentials rotated, vulnerabilities fixed) and monitoring in place. The **service owner** accepts the service; the responder supplies the evidence.
 
+For the booking platform the criterion includes a scan for the known phishing domain and for any URL added by admin accounts since 9 March, plus a sample of 50 bookings checked with clinic staff. Each test has a clear pass or fail result, and the service owner signs off on the evidence rather than on reassurance.
+
 ### 26.5 Fallback and monitoring
 
 Plan what happens if recovery fails: return to degraded mode, try an older copy, or keep the manual process. After return to service, monitor more intensively for a defined period with specific indicators.
+
+For the booking platform, the fallback is Sequence B if a scan of records changed since 9 March finds indicators after Sequence A, and the monitoring period is 72 hours focused on admin sign-ins. Name the person who watches the monitoring and the action each finding triggers, otherwise heightened monitoring becomes a dashboard nobody reads.
 
 ### 26.6 Worked example (synthetic): booking platform recovery
 
@@ -2477,6 +2525,12 @@ Decision logic: if analysis of the 9 March sign-in clears it within the RTO, cho
 - Trusting replicas that mirrored the attacker's changes.
 - Recovering applications before identity and credentials are secured.
 - Returning service without owner acceptance or enhanced monitoring.
+
+- Choosing a restore point without resolving or bounding the earliest unexplained access, such as the 9 March sign-in.
+- Re-entering lost bookings from memory without checking them against clinic records.
+- Ending enhanced monitoring early because the first day was quiet.
+- Treating the read replica as a clean source when it mirrored the primary throughout the attacker's access.
+- Measuring recovery only by when the service came back, not by whether the restored data was verified as trustworthy.
 
 ### Exercises — chapter 26
 
