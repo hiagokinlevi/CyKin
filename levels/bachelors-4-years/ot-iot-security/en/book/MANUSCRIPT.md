@@ -1309,7 +1309,7 @@ t=60 level= 57.5% inflow=2.00
 steady-state error ~ 2.5 pct (P-only offset)
 ```
 
-The lab uses kp = 0.08, scaled by 10 in the inflow line to an effective gain of 0.8, a setpoint of 60 %, a starting level of 40 % and outflow fixed at 2.0, so the pump runs at its 5.0 limit at first. Its output prints the level every 10 steps: 55.0 % at t = 10, then 57.5 % from t = 20 onward with inflow 2.00. The numbers are invented for LDHP's vessel, but the shape is general: a proportional loop that cannot quite reach its setpoint.
+The lab uses kp = 0.08, scaled by 10 in the inflow line to an effective gain of 0.8, a setpoint of 60 %, a starting level of 40 % and outflow fixed at 2.0, so the pump runs at its 5.0 limit at first. Its output prints the level every 10 steps: 55.0 % at t = 10, then 57.5 % from t = 20 onward, with inflow 2.01 at t = 20 and 2.00 from t = 30. The numbers are invented for LDHP's vessel, but the shape is general: a proportional loop that cannot quite reach its setpoint.
 
 ### 21.3 Reading the model
 

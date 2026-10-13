@@ -28,7 +28,7 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [serie I
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](../../en/book/MANUSCRIPT.md#ch-19) · [20](../../en/book/MANUSCRIPT.md#ch-20) · [21](../../en/book/MANUSCRIPT.md#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) · [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) · [31](../../en/book/MANUSCRIPT.md#ch-31) · [32](../../en/book/MANUSCRIPT.md#ch-32) · [33](../../en/book/MANUSCRIPT.md#ch-33) · [34](../../en/book/MANUSCRIPT.md#ch-34) · [35](../../en/book/MANUSCRIPT.md#ch-35) · [36](../../en/book/MANUSCRIPT.md#ch-36) · [37](../../en/book/MANUSCRIPT.md#ch-37) · [38](../../en/book/MANUSCRIPT.md#ch-38) · [39](../../en/book/MANUSCRIPT.md#ch-39) · [40](../../en/book/MANUSCRIPT.md#ch-40) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) · [31](../../en/book/MANUSCRIPT.md#ch-31) · [32](../../en/book/MANUSCRIPT.md#ch-32) · [33](../../en/book/MANUSCRIPT.md#ch-33) · [34](../../en/book/MANUSCRIPT.md#ch-34) · [35](../../en/book/MANUSCRIPT.md#ch-35) · [36](../../en/book/MANUSCRIPT.md#ch-36) · [37](../../en/book/MANUSCRIPT.md#ch-37) · [38](../../en/book/MANUSCRIPT.md#ch-38) · [39](../../en/book/MANUSCRIPT.md#ch-39) · [40](../../en/book/MANUSCRIPT.md#ch-40) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
 
@@ -1069,7 +1069,329 @@ La investigación empieza con una pregunta precisa, un diseño que se ajuste a e
 
 ### Siga estudiando — capítulo 18 de 40
 
-[← Capítulo 17 (borrador)](#ch-17) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 19 (borrador) →](../../en/book/MANUSCRIPT.md#ch-19)
+[← Capítulo 17 (borrador)](#ch-17) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 19 (borrador) →](#ch-19)
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Seguridad de TO, IoT y sistemas ciberfísicos: alcance y teoría
+
+### Resultados de aprendizaje
+
+Usted podrá (1) definir TO, IIoT, IoT de consumo y sistemas ciberfísicos, y dónde se solapan; (2) explicar el lazo de realimentación como el objeto que se protege; (3) identificar las normas centrales de cada ámbito; y (4) describir por qué la ingeniería de seguridad funcional y la de ciberseguridad deben coordinarse.
+
+### 19.1 Definiciones
+
+La tecnología operativa es el hardware y el software que supervisa o controla dispositivos y procesos físicos. NIST SP 800-82r3 amplió su alcance de los «sistemas de control industrial» a la TO en general, incluidas la automatización de edificios y el transporte. Los dispositivos IoT son objetos conectados a la red con capacidad de detección o actuación; NIST IR 8259 enmarca las actividades básicas que los fabricantes deberían realizar para ellos. Un sistema ciberfísico es la combinación de computación, redes y proceso físico en un lazo cerrado.
+
+LDHP contiene los tres: PLC-H y SIS-H son TO, los contadores de calor y las pasarelas son IoT, y el lazo de temperatura de impulsión es un sistema ciberfísico.
+
+### 19.2 El lazo como activo
+
+Lo que protege un defensor de TO no es un computador sino un lazo de realimentación: sensor → controlador → actuador → proceso → sensor. Un atacante puede falsificar la lectura del sensor, cambiar la lógica o los parámetros del controlador, anular el actuador o interrumpir la comunicación que los une. Cada opción corresponde a tácticas de ATT&CK for ICS como *Impair Process Control* e *Inhibit Response Function*. El lazo de LDHP de Maya es TT-101 → PLC-H → válvula de combustible FV-12 → caldera → TT-101. Para cada elemento nombra un ataque y la salvaguarda independiente de él: SIS-H, con su propio transmisor TT-101S, cableado al corte de combustible.
+
+### 19.3 Mapa de normas
+
+IEC 62443 cubre los sistemas de automatización y control industrial para propietarios de activos, integradores y proveedores de productos. NIST SP 800-82r3 es una guía para programas de seguridad de TO. NIST IR 8259 (y 8259A) establece las capacidades básicas de ciberseguridad de los dispositivos IoT para los fabricantes. ETSI EN 303 645 es la base de referencia europea para el IoT de consumo. Se solapan, pero responden a preguntas distintas: quién debe hacer qué, y para qué tipo de sistema. Para LDHP: IEC 62443 para PLC-H y la zona de control, SP 800-82r3 para el programa, IR 8259 y EN 303 645 para los contadores y las pasarelas.
+
+### 19.4 Seguridad funcional y ciberseguridad
+
+La seguridad funcional (IEC 61508, e IEC 61511 para las industrias de proceso) supone fallos aleatorios y sistemáticos; la ciberseguridad supone un adversario. Un sistema instrumentado de seguridad debe mantenerse independiente para que una perturbación del proceso inducida por un ciberataque termine aun así en un estado seguro. Tanto IEC 62443 como IEC 61511 indican a los profesionales que coordinen ambos análisis. En LDHP, SIS-H dispara el corte del suministro de combustible por alta temperatura usando TT-101S, un transmisor separado del TT-101 de PLC-H, y el disparo está cableado. Un ciberataque que lleve a PLC-H a sobrecalentar la caldera sigue encontrándose con un disparo independiente, siempre que nada en la red pueda cambiar el punto de disparo de SIS-H.
+
+### Ejemplo resuelto (LDHP sintética)
+
+Maya traza el lazo de temperatura de impulsión de LDHP: TT-101 → PLC-H → válvula de combustible FV-12 → caldera → TT-101. Enumera un punto de ataque por elemento y la salvaguarda independiente: SIS-H, con su propio transmisor de temperatura TT-101S, cableado al corte de combustible.
+
+> **Caso sintético — Lakeside District Heating Plant.** Las etiquetas del lazo son inventadas.
+
+### Errores y límites
+
+Etiquetas como «TO» e «IoT» son comodidades; un sensor de gestión de edificios conectado por Wi-Fi es ambas cosas. No elija una norma por familiaridad con la marca; elíjala por el rol y el tipo de sistema.
+
+### Ejercicios — capítulo 19
+
+- **EX055 — Cuatro puntos de ataque en un lazo.** Nombre un punto de ataque por cada elemento del lazo de TT-101. *Rúbrica:* 3 = cuatro, uno por elemento; 2 = tres; 1 = dos; 0 = nada.
+- **EX056 — Relacionar normas con roles.** ¿Qué documento corresponde a (a) la base de referencia del producto del fabricante de contadores, (b) el propio programa de seguridad de TO de LDHP? *Rúbrica:* 3 = NIST IR 8259 o ETSI EN 303 645 / IEC 62443-4-2; y SP 800-82r3 o IEC 62443-2-1; 2 = uno; 1 = la misma respuesta para ambos; 0 = nada.
+- **EX057 — Por qué importa TT-101S.** Explique por qué SIS-H usa su propio transmisor en lugar de leer TT-101 a través de PLC-H. *Rúbrica:* 3 = una ruta TT-101/PLC falsificada o averiada dejaría ciego al SIS; independencia; 2 = parcial; 1 = coste; 0 = nada.
+
+### Síntesis del capítulo
+
+La seguridad de TO, IoT y sistemas ciberfísicos protege lazos de realimentación; la norma adecuada depende de su rol, y la independencia de la seguridad funcional no es negociable.
+
+### Siga estudiando — capítulo 19 de 40
+
+[← Capítulo 18 (borrador)](#ch-18) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 20 (borrador) →](#ch-20)
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Seguridad de TO, IoT y sistemas ciberfísicos: casos fundamentales
+
+### Resultados de aprendizaje
+
+Usted podrá (1) resumir tres incidentes documentados a partir de fuentes primarias; (2) extraer de cada uno la ruta de ataque y la lección defensiva; (3) distinguir lo que está confirmado públicamente de la especulación; y (4) relacionar cada caso con LDHP.
+
+### 20.1 Red eléctrica de Ucrania, diciembre de 2015
+
+La alerta IR-ALERT-H-16-056-01 del ICS-CERT de EE. UU. informa de que tres empresas regionales ucranianas de distribución de electricidad sufrieron ciberataques coordinados que causaron cortes que afectaron a unos 225.000 clientes. La alerta indica que los actores probablemente usaron credenciales legítimas obtenidas de antemano para el acceso remoto, borraron sistemas con el malware KillDisk, sobrescribieron algunos HMI y corrompieron el firmware de dispositivos de serie a Ethernet en las subestaciones. Se restableció el suministro, pero las empresas siguieron operando con restricciones. Lección: las credenciales robadas y el acceso remoto fueron la ruta, y la recuperación dependió de poder funcionar sin la automatización dañada.
+
+### 20.2 Mirai, 2016
+
+Antonakakis et al. («Understanding the Mirai Botnet», USENIX Security 2017) midieron una botnet que infectó cientos de miles de dispositivos IoT, en gran parte iniciando sesión por Telnet con credenciales de fábrica, y que después lanzó grandes ataques de denegación de servicio. Lección: las contraseñas por defecto universales a escala son un riesgo para la infraestructura, que es exactamente lo que prohíbe la disposición 5.1 de ETSI EN 303 645. El equivalente en LDHP son sus pasarelas de contadores: si se hubieran entregado con una misma contraseña por defecto para toda la flota, un escaneo al estilo de Mirai encontraría cada una de ellas alcanzable desde internet. MTR-B, en el capítulo 30, que no cumple la disposición 5.1, es el modelo de contador en esa situación.
+
+### 20.3 Planta de tratamiento de agua, febrero de 2021
+
+El aviso de CISA AA21-042A describe un acceso no autorizado al sistema SCADA de una planta de tratamiento de agua potable de EE. UU. a través de software de acceso remoto, con un intento de elevar los niveles de hidróxido de sodio. El personal de la planta advirtió el cambio y lo corrigió antes de que saltara la alarma del software SCADA. El aviso señala como debilidades probables un software de escritorio compartido y un sistema operativo al final de su vida útil. Lección: la vigilancia de los operadores importa, y las herramientas de acceso remoto forman parte de la superficie de ataque.
+
+El equivalente en LDHP es su propia herramienta de escritorio remoto del proveedor siempre activa, que Maya sustituyó por sesiones intermediadas de cuatro horas.
+
+### 20.4 Leer los casos con cuidado
+
+Cada fuente documenta algunos hechos y no otros. Escriba lo que dice la fuente, cítela y marque todo lo demás como inferencia. Las versiones divulgativas a menudo añaden una certeza que el informe primario no tiene. La tabla de casos de Maya sigue esta regla. Para la planta de agua de 2021 registra solo lo que afirma AA21-042A —software de acceso remoto, escritorio compartido y un sistema operativo al final de su vida útil— y marca su equivalente en LDHP, la herramienta de escritorio remoto del proveedor siempre activa, como inferencia propia. Para Mirai, el método de infección procede de la medición de Antonakakis et al., no de resúmenes de prensa. Para Ucrania, la lección que extrae, mantener procedimientos documentados de arranque manual de las calderas, está etiquetada como recomendación para LDHP y no como hallazgo de la fuente.
+
+### Ejemplo resuelto (LDHP sintética)
+
+Maya construye una tabla: caso, acceso inicial, efecto, qué lo detuvo, equivalente en LDHP. Para el caso del agua de 2021, el equivalente es la herramienta de escritorio remoto del proveedor siempre activa de LDHP (capítulo 13); para Mirai, las contraseñas por defecto de las pasarelas de contadores; para Ucrania, la necesidad de operar después de que se dañe la automatización: LDHP mantiene procedimientos documentados de arranque manual de las calderas.
+
+> **Caso sintético — Lakeside District Heating Plant.** Solo los equivalentes en LDHP son sintéticos; los tres casos proceden de las fuentes públicas citadas.
+
+### Errores y límites
+
+Las afirmaciones de atribución de las noticias no forman parte de la evidencia de este capítulo. Las lecciones de los casos solo se generalizan cuando las condiciones coinciden.
+
+### Ejercicios — capítulo 20
+
+- **EX058 — Detalles de la fuente primaria.** A partir de la alerta del ICS-CERT de 2016, indique el número aproximado de clientes afectados y una acción de los actores contra los dispositivos de campo. *Rúbrica:* 3 = ~225.000 y firmware de serie a Ethernet corrompido (o KillDisk en los HMI); 2 = uno; 1 = cifra incorrecta; 0 = nada.
+- **EX059 — El método de entrada de Mirai.** ¿Qué explotó principalmente Mirai para infectar dispositivos y qué disposición de ETSI lo aborda? *Rúbrica:* 3 = credenciales por defecto por Telnet; disposición 5.1; 2 = uno; 1 = «un día cero»; 0 = nada.
+- **EX060 — Hecho frente a inferencia.** Marque como hecho de la fuente o inferencia: (a) «un operador revirtió el cambio de hidróxido de sodio» (b) «el intruso pretendía un envenenamiento masivo». *Rúbrica:* 3 = (a) hecho de AA21-042A, (b) inferencia; 2 = uno; 1 = ambos hechos; 0 = nada.
+
+### Síntesis del capítulo
+
+Lea los incidentes en fuentes primarias, separe los hechos del relato y convierta cada uno en una pregunta concreta sobre su propia planta.
+
+### Siga estudiando — capítulo 20 de 40
+
+[← Capítulo 19 (borrador)](#ch-19) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 21 (borrador) →](#ch-21)
+
+<a id="ch-21"></a>
+
+## Capítulo 21 — Seguridad de TO, IoT y sistemas ciberfísicos: modelos de sistema
+
+### Resultados de aprendizaje
+
+Usted podrá (1) construir un modelo en tiempo discreto de un depósito o de un lazo; (2) explicar el control proporcional y su error en régimen permanente; (3) usar un modelo para predecir con qué rapidez un punto de consigna manipulado cambia el proceso; y (4) enunciar lo que deja fuera un modelo simplificado.
+
+### 21.1 Por qué modelar
+
+Un modelo convierte «el atacante cambia el punto de consigna» en «el nivel alcanza la alarma de rebose en 12 minutos». Los defensores usan ese tiempo para dimensionar la detección y la respuesta: si el proceso da 12 minutos, un detector que tarda 20 es inútil para ese escenario. Para LDHP la pregunta es concreta: si el registro 100 se escribe a 30 °C a las 02:10, ¿cuánto tardan los radiadores del distrito en enfriarse lo suficiente como para que los residentes lo noten, y cuánto hasta que las tuberías de las calles más frías corran peligro? En el ejercicio de mesa del capítulo 29, el operador restableció los 90 °C a las 02:15, cinco minutos después de la alerta. Un modelo le dice si cinco minutos son holgados o están cerca del límite y, por tanto, si la detección tiene que ser la alerta del monitor y no la llamada telefónica de un residente.
+
+### 21.2 Un depósito de compensación con control proporcional
+
+El vaso de expansión de LDHP amortigua el volumen de agua a medida que cambia la temperatura. El laboratorio modela su nivel con un controlador proporcional que fija el caudal de entrada en kp·(punto de consigna − nivel), limitado al rango de 0–5 de la bomba, frente a un caudal de salida constante.
+
+```python
+"""Lab 21: discrete-time model of a synthetic buffer tank with a proportional level loop."""
+level, sp, kp = 40.0, 60.0, 0.08
+for step in range(0, 61):
+    inflow = max(0.0, min(5.0, kp * (sp - level) * 10))
+    outflow = 2.0
+    if step % 10 == 0: print(f"t={step:2} level={level:5.1f}% inflow={inflow:4.2f}")
+    level += (inflow - outflow) * 0.5
+print("steady-state error ~", round(sp - level, 1), "pct (P-only offset)")
+```
+
+Ejecútelo con `python3 lab_tank.py`. Salida verificada:
+
+```text
+t= 0 level= 40.0% inflow=5.00
+t=10 level= 55.0% inflow=4.00
+t=20 level= 57.5% inflow=2.01
+t=30 level= 57.5% inflow=2.00
+t=40 level= 57.5% inflow=2.00
+t=50 level= 57.5% inflow=2.00
+t=60 level= 57.5% inflow=2.00
+steady-state error ~ 2.5 pct (P-only offset)
+```
+
+El laboratorio usa kp = 0,08, multiplicado por 10 en la línea del caudal de entrada para dar una ganancia efectiva de 0,8, un punto de consigna del 60 %, un nivel inicial del 40 % y un caudal de salida fijo de 2,0, así que al principio la bomba funciona en su límite de 5,0. Su salida imprime el nivel cada 10 pasos: 55,0 % en t = 10, y después 57,5 % a partir de t = 20, con un caudal de entrada de 2,01 en t = 20 y de 2,00 a partir de t = 30. Los números son inventados para el vaso de LDHP, pero la forma es general: un lazo proporcional que no llega del todo a su punto de consigna.
+
+### 21.3 Leer el modelo
+
+El nivel sube rápidamente mientras el caudal de entrada está saturado en 5 y después se estabiliza en el 57,5 % en lugar del 60 %. Esa diferencia de 2,5 puntos es el error clásico del control solo proporcional: en equilibrio, el caudal de entrada debe igualar al de salida (2,0), lo que requiere un error distinto de cero (2,0 / 0,8 = 2,5). La acción integral elimina el error; los ingenieros suelen usar control PI o PID. Para la seguridad, este error importa de una forma fácil de pasar por alto: un operador acostumbrado a ver un 57,5 % frente a un punto de consigna del 60 % no notará una pequeña diferencia adicional. Un sesgo del sensor o un cambio modesto del punto de consigna se esconden dentro de una diferencia que todos aceptan ya como normal.
+
+### 21.4 Usar el modelo para la seguridad
+
+Si un atacante mueve el punto de consigna del 60 % al 95 %, el modelo predice cuánto tarda el nivel en superar una alarma de nivel alto en el 85 %. El mismo modelo le dice cómo un sesgo del sensor de +10 puntos haría que el controlador llenara de menos el vaso. Los modelos conectan las acciones cibernéticas con el tiempo del proceso. Para usar el laboratorio de esta forma, cambie en una copia del script el punto de consigna de 60 a 95 en un paso elegido e imprima el primer paso en el que el nivel supera 85; con la bomba limitada a 5,0 frente a un caudal de salida fijo de 2,0, el nivel puede subir como máximo (5,0 − 2,0) × 0,5 = 1,5 puntos por paso. Registre juntas la modificación y la salida. Un sesgo de +10 en el sensor actúa al revés: el controlador ve el nivel 10 puntos más alto de lo que está, así que se estabiliza unos 10 puntos por debajo, y nadie lo ve en HMI-1.
+
+### Ejemplo resuelto (LDHP sintética)
+
+Con la dinámica del laboratorio, con el caudal de entrada saturado en 5 y el de salida en 2, el nivel sube (5 − 2) × 0,5 = 1,5 puntos por paso. Del régimen permanente del 57,5 % a una alarma en el 85 % hay 27,5 puntos, es decir, unos 18–19 pasos. Si un paso representa 20 segundos, los operadores tienen aproximadamente seis minutos.
+
+> **Caso sintético — Lakeside District Heating Plant.** Las ganancias del depósito y la duración del paso son inventadas.
+
+### Errores y límites
+
+Los vasos reales tienen geometría no lineal, dinámica de válvulas y ruido de medición. Un modelo validado en la operación normal puede ser erróneo en los estados extremos que busca un atacante. Nunca derive límites reales de una planta a partir de un modelo de clase.
+
+### Ejercicios — capítulo 21
+
+- **EX061 — Error con una ganancia mayor.** Si kp = 0,16 (ganancia ×10 = 1,6), ¿qué error en régimen permanente predice el modelo? *Rúbrica:* 3 = 2,0 / 1,6 = 1,25 puntos; 2 = método correcto; 1 = dice cero; 0 = nada.
+- **EX062 — Tiempo hasta la alarma.** Partiendo del 57,5 % con el caudal de entrada saturado, ¿cuántos pasos hasta que el nivel supere el 70 %? *Rúbrica:* 3 = 9 pasos (57,5 + 1,5 × 9 = 71,0); 2 = 8–9 con razonamiento; 1 = ignora el caudal de salida; 0 = nada.
+- **EX063 — Efecto del sesgo del sensor.** Si el sensor de nivel marca 10 puntos de más, ¿dónde se estabiliza el nivel real? *Rúbrica:* 3 = alrededor del 47,5 % (el controlador mantiene el nivel medido en 57,5); 2 = sentido correcto; 1 = 67,5; 0 = nada.
+
+### Síntesis del capítulo
+
+Los modelos de proceso sencillos dan a los defensores un reloj: cuánto tarda un lazo manipulado en causar daño y, por tanto, con qué rapidez deben llegar la detección y la respuesta.
+
+### Siga estudiando — capítulo 21 de 40
+
+[← Capítulo 20 (borrador)](#ch-20) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 22 (borrador) →](#ch-22)
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Seguridad de TO, IoT y sistemas ciberfísicos: datos y dependencias
+
+### Resultados de aprendizaje
+
+Usted podrá (1) construir un inventario de activos y dependencias; (2) seguir los flujos de datos desde el dispositivo de campo hasta el uso de negocio; (3) encontrar puntos únicos de fallo, incluidas personas y proveedores; y (4) usar una lista de materiales de software para razonar sobre vulnerabilidades heredadas.
+
+### 22.1 Primero, el inventario
+
+No se puede proteger lo que no se ha enumerado. NIST SP 800-82r3 sitúa el inventario de activos al comienzo de un programa de seguridad de TO. Un inventario útil registra no solo fabricante, modelo y firmware, sino también función, zona, responsable, criticidad y qué depende del activo. La lista de dependencias de Maya en este capítulo parte de un inventario así: TT-101, PLC-H con firmware v3.2, FV-12, el conmutador de control SW-2, HMI-1, el servidor de licencias LIC-1, EWS-1 y el contrato de soporte del proveedor. Registrar la v3.2 es lo que permitiría a LDHP responder el mismo día a un aviso sobre el firmware del PLC; registrar LIC-1 como dependencia de HMI-1 es lo que dejó al descubierto un punto único de fallo que ningún diagrama de red mostraba.
+
+### 22.2 Cadenas de dependencia
+
+PLC-H depende de la alimentación de 24 V, de sus módulos de E/S, del conmutador de la red de control, de la estación de ingeniería para los cambios de lógica y del proveedor para el firmware. HMI-1 depende de Windows, del servidor de licencias del entorno de ejecución del HMI y del controlador de dominio para las cuentas nominativas. Una caída del servidor de licencias que deja en blanco los HMI es un incidente de disponibilidad con causa raíz cibernética, aunque no haya ningún atacante.
+
+Maya marcó LIC-1 como el punto único de fallo oculto y preguntó al fabricante del HMI por un periodo de gracia de la licencia, que permitiría a HMI-1 seguir funcionando si LIC-1 estuviera caído durante una noche.
+
+### 22.3 Dependencias de proveedores
+
+El firmware de la pasarela de contadores incorpora una pila TCP/IP de código abierto y una biblioteca TLS. Si se publica una vulnerabilidad en la pila, todas las pasarelas la heredan. Una lista de materiales de software (SBOM) enumera esos componentes para que, cuando aparezca un aviso, la planta pueda responder «¿nos afecta?» en horas y no en semanas. Los avisos de ICS de CISA identifican los productos y versiones afectados, lo que solo sirve si su inventario registra las versiones.
+
+MTR-C, en el capítulo 30, es el caso en que una SBOM no basta: aunque muestre una pila afectada, el dispositivo no puede actualizarse.
+
+### 22.4 Las personas como dependencias
+
+Si solo un ingeniero sabe restaurar la lógica de PLC-H desde la copia de seguridad, esa persona es un punto único de fallo. Documente los procedimientos y forme a más personas. En LDHP el riesgo es mayor de noche en invierno. Si la lógica de PLC-H se corrompiera, por una descarga fallida desde EWS-1 o de forma deliberada, restaurarla requiere el último archivo de programa bueno, la versión de firmware correspondiente (v3.2 en la lista de Maya) y alguien que conozca los pasos de restauración en ese controlador. Si esa persona está de vacaciones en enero, la caldera funciona en control manual local hasta que vuelva. La recomendación de Maya fue un procedimiento de restauración escrito, probado en banco una vez al año por un segundo ingeniero, con el hash del archivo de copia de seguridad registrado junto a cada restauración probada.
+
+### Ejemplo resuelto (LDHP sintética)
+
+Maya redacta la lista de dependencias de la función de temperatura de impulsión: TT-101, PLC-H (firmware v3.2), FV-12, el conmutador de control SW-2, HMI-1, el servidor de licencias LIC-1, la estación de ingeniería EWS-1 y el contrato de soporte del proveedor. Marca LIC-1 como punto único de fallo oculto y recomienda comprobar con el fabricante del HMI el periodo de gracia de la licencia.
+
+> **Caso sintético — Lakeside District Heating Plant.** Las versiones y los nombres son inventados.
+
+### Errores y límites
+
+Un inventario construido solo con escaneo de red omite los dispositivos serie y los repuestos apagados, y el escaneo activo puede perturbar dispositivos frágiles; combine la captura pasiva, las exportaciones de configuración y los recorridos por la planta.
+
+### Ejercicios — capítulo 22
+
+- **EX064 — Campos de un registro de inventario.** Enumere seis campos para una entrada del inventario de activos de TO. *Rúbrica:* 3 = seis, incluidos versión de firmware, zona y criticidad; 2 = cuatro o cinco; 1 = solo fabricante/modelo; 0 = nada.
+- **EX065 — Responder a un aviso.** Un aviso de CISA indica como afectadas las versiones 2.0–2.4 de la biblioteca TLS de la pasarela. ¿Qué dos datos del inventario deciden si LDHP está afectada? *Rúbrica:* 3 = versión del firmware de la pasarela y versión del componente en su SBOM; 2 = uno; 1 = solo el nombre del fabricante; 0 = nada.
+- **EX066 — Un punto único oculto.** Identifique un punto único de fallo de LDHP que no sea de red y una mitigación. *Rúbrica:* 3 = p. ej., un solo ingeniero, el servidor de licencias, un único repuesto; con mitigación; 2 = solo el punto; 1 = solo un dispositivo de red; 0 = nada.
+
+### Síntesis del capítulo
+
+Los inventarios, las cadenas de dependencia y las SBOM permiten a una planta razonar sobre fallos y avisos antes de que lleguen.
+
+### Siga estudiando — capítulo 22 de 40
+
+[← Capítulo 21 (borrador)](#ch-21) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 23 (borrador) →](#ch-23)
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Seguridad de TO, IoT y sistemas ciberfísicos: métodos I
+
+### Resultados de aprendizaje
+
+Usted podrá (1) realizar una evaluación de riesgos guiada por las consecuencias para una zona; (2) usar con responsabilidad una matriz de probabilidad y consecuencia; (3) relacionar la evaluación con el flujo de trabajo de IEC 62443-3-2; y (4) registrar el riesgo residual con un responsable.
+
+### 23.1 Empezar por la consecuencia
+
+En TO, la evaluación empieza preguntando qué podría hacer el proceso que resultara inaceptable —pérdida de calefacción en invierno, sobrepresión, escaldaduras— y solo después qué rutas cibernéticas podrían causarlo. Partir de las vulnerabilidades produce largas listas de hallazgos de bajo impacto; partir de la consecuencia centra el esfuerzo en los lazos que importan. En LDHP, los resultados inaceptables son la pérdida de calefacción en 4.000 hogares en invierno y la sobretemperatura en la impulsión. El primero tiene rutas cibernéticas a través del registro 100 y de EWS-1; el segundo también tiene una ruta, pero el disparo independiente de SIS-H limita su consecuencia. Empezar ahí le indica a Maya que examine los conductos de PLC-H antes que las interfaces web de las pasarelas de contadores, aunque las pasarelas producirían más hallazgos en un escaneo.
+
+### 23.2 El flujo de trabajo de 62443-3-2 a grandes rasgos
+
+IEC 62443-3-2 describe identificar el sistema considerado, realizar una evaluación de riesgos inicial de alto nivel, dividirlo en zonas y conductos, realizar una evaluación de riesgos detallada por zona y documentar los requisitos de seguridad y los niveles de seguridad objetivo. No necesita la norma completa para practicar el razonamiento, pero cítela correctamente. Aplicado a LDHP, el sistema considerado es la planta de calderas con sus contadores. La evaluación inicial identifica la pérdida de calefacción como consecuencia dominante. La división produce la zona de control de calderas, la zona de contadores y SIS-H como zona propia. La evaluación detallada por zona produce, respectivamente, el SL-T 3, el SL-T 2 y la ausencia de conductos enrutables de Maya.
+
+### 23.3 Las matrices y sus trampas
+
+Una matriz de 5 × 5 multiplica una puntuación de probabilidad por una de consecuencia. Es una herramienta de comunicación, no aritmética: «3 × 4 = 12» no significa el doble de grave que 6. Los errores de inversión del orden se producen cuando las categorías son amplias. Mantenga siempre el escenario narrado junto a la puntuación. En LDHP, un escenario de toma de control de una pasarela de contadores puntuado 3 × 4 y otro de escritura del punto de consigna en PLC-H puntuado 2 × 5 dan 12 y 10, lo que situaría primero la pasarela. Las narraciones cuentan otra historia: la pasarela afecta a la facturación y la configuración de una calle; la escritura del punto de consigna afecta a la calefacción de todos los hogares. Mantener la narración junto al número es lo que permite a un revisor detectar esa inversión, como hace la clasificación por consecuencias de Maya en el capítulo 26 cuando sitúa la reproducción de un solo inquilino por debajo de la toma de control de la pasarela.
+
+### 23.4 Riesgo residual
+
+Después de los controles queda algo de riesgo. Debe tener un responsable que lo acepte por escrito, una fecha de revisión y las hipótesis en que se basa. Para S-3, la manipulación del punto de consigna, el riesgo residual tras los controles del capítulo 24 tiene dos partes: un empleado interno con acceso de ingeniería y una escritura desde el propio HMI-1, el origen permitido. El proyecto final de Maya demuestra después que la segunda es real: el único fallo que le quedaba a su monitor fue una escritura originada en el HMI. El responsable sería el director de la planta de LDHP, como en el ejemplo resuelto siguiente, que lo acepta por escrito bajo la hipótesis de que las cuentas nominativas hacen atribuibles esas escrituras, con una fecha de revisión seis meses después, o antes si se construye la correlación del monitor con los inicios de sesión de los operadores.
+
+### Ejemplo resuelto (LDHP sintética)
+
+Escenario S-3: malware de la oficina alcanza PLC-H a través de la regla 14 y baja el punto de consigna de impulsión (ATT&CK for ICS T0836). Consecuencia 4 (pérdida de calefacción en todo el distrito durante horas, sin heridos porque SIS-H se ocupa de la sobretemperatura, pero no de la baja temperatura). Probabilidad 3 antes de los controles. Tras eliminar la regla 14 y añadir una lista de permitidos, probabilidad 1. Residual: persiste el empleado interno con acceso de ingeniería; responsable: el director de la planta; revisión en seis meses.
+
+> **Caso sintético — Lakeside District Heating Plant.** Las puntuaciones son ilustrativas.
+
+### Errores y límites
+
+La probabilidad de los ataques dirigidos es un juicio, no una frecuencia; indique quién la juzgó y con qué fundamento. No deje que una puntuación baja oculte una consecuencia catastrófica.
+
+### Ejercicios — capítulo 23
+
+- **EX067 — Primero la consecuencia.** Escriba una consecuencia inaceptable para la zona de contadores IoT y la ruta cibernética que podría causarla. *Rúbrica:* 3 = consecuencia concreta más ruta; 2 = una de las dos; 1 = lista de vulnerabilidades; 0 = nada.
+- **EX068 — Interpretar puntuaciones de la matriz.** El escenario A puntúa 2 × 5 = 10 y el B, 5 × 2 = 10. ¿Son igual de urgentes? *Rúbrica:* 3 = no; A tiene una consecuencia catastrófica y necesita otro tratamiento; juzgar por la narración; 2 = solo «no»; 1 = sí; 0 = nada.
+- **EX069 — Registro del riesgo residual.** Escriba el enunciado de riesgo residual de S-3 tras los controles. *Rúbrica:* 3 = ruta que persiste, responsable, fecha de revisión, hipótesis; 2 = tres; 1 = «riesgo aceptado»; 0 = nada.
+
+### Síntesis del capítulo
+
+La evaluación guiada por las consecuencias, el uso honesto de las matrices y un riesgo residual con responsable convierten un registro de riesgos de TO en una herramienta de decisión y no en una hoja de cálculo.
+
+### Siga estudiando — capítulo 23 de 40
+
+[← Capítulo 22 (borrador)](#ch-22) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 24 (borrador) →](#ch-24)
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Seguridad de TO, IoT y sistemas ciberfísicos: controles
+
+### Resultados de aprendizaje
+
+Usted podrá (1) elegir controles preventivos, detectivos y correctivos para un escenario; (2) relacionarlos con los requisitos fundamentales de IEC 62443-3-3; (3) reconocer controles que podrían dañar la disponibilidad o la seguridad funcional; y (4) diseñar controles compensatorios para dispositivos heredados.
+
+### 24.1 Familias de controles
+
+IEC 62443-3-3 agrupa los requisitos de sistema en siete requisitos fundamentales: control de identificación y autenticación (FR 1), control de uso (FR 2), integridad del sistema (FR 3), confidencialidad de los datos (FR 4), flujo de datos restringido (FR 5), respuesta oportuna a los eventos (FR 6) y disponibilidad de los recursos (FR 7). Usarlos como encabezados mantiene equilibrado un plan de controles. La tabla de controles de Maya para S-3 muestra el efecto: cinco controles repartidos entre los FR 1, 3, 5, 6 y 7. Sin los encabezados, un primer borrador tiende a enumerar tres reglas de cortafuegos y nada para la recuperación, que es lo que le concierne al FR 7. Las columnas vacías, aquí FR 2 y FR 4, no son automáticamente carencias, pero cada una necesita una frase que explique por qué no se aplica a este escenario.
+
+### 24.2 Ajustar los controles a S-3
+
+Para el escenario de manipulación del punto de consigna: restringir el flujo de datos con una lista de permitidos en el cortafuegos (FR 5); exigir cuentas nominativas en HMI-1 (FR 1); añadir en la lógica de PLC-H límites de punto de consigna confirmados por el operador (en la práctica, FR 3, y un control de proceso); alertar de las escrituras de punto de consigna desde cualquier equipo distinto de HMI-1 (FR 6); mantener copias de seguridad probadas de la lógica del PLC (FR 7). La tabla de Maya registra completa la fila del límite del punto de consigna: PLC-H rechaza puntos de consigna de impulsión fuera de 70–110 °C salvo que esté activo el modo de ingeniería; FR 3; preventivo; con el modo de fallo de bloquear un cambio legítimo fuera de banda durante la puesta en marcha, mitigado con el modo de ingeniería registrado; responsable, ingeniería de control.
+
+### 24.3 Controles que hacen daño
+
+La prevención activa de intrusiones que descarta escrituras Modbus «sospechosas» puede bloquear una orden de emergencia legítima. El bloqueo de cuentas tras inicios de sesión fallidos puede dejar fuera a un operador durante un incidente. Cada control necesita una pregunta sobre su modo de fallo: si se dispara por error, ¿qué le pasa al proceso? La fila del límite del punto de consigna de Maya plantea esta pregunta y la responde: durante la puesta en marcha se rechazaría un punto de consigna legítimo fuera de 70–110 °C, así que para ese caso existe el modo de ingeniería, con registro. La misma pregunta aplicada a un dispositivo de prevención de intrusiones en línea con PLC-H tiene una respuesta peor: si descarta la escritura de emergencia de un operador durante una avería en una noche fría, el proceso pierde su única vía rápida de recuperación. Por eso LDHP supervisa de forma pasiva y aplica las restricciones con la lista de permitidos del cortafuegos, que bloquea por origen en lugar de adivinar la intención.
+
+### 24.4 Controles heredados y compensatorios
+
+El firmware de PLC-H no puede autenticar a los clientes Modbus. El enfoque compensatorio es rodearlo: limitar los conductos con una lista de permitidos para que solo HMI-1 y HIST-1 puedan alcanzarlo, supervisar el tráfico de forma pasiva y proteger la estación de ingeniería que puede cambiar su lógica. La lista de permitidos del capítulo 27 hace comprobable la primera medida: HMI-1 puede escribir los registros 100–119, HIST-1 solo puede leer y cualquier otro origen queda bloqueado. La supervisión es el sensor pasivo del conmutador de control, y la protección de EWS-1 incluye reenviar sus eventos de carga de controladores de software, que Maya añade tras leer AA22-103A en el capítulo 31. Ninguna de estas medidas cambia PLC-H; juntas deciden quién puede alcanzarlo.
+
+### Ejemplo resuelto (LDHP sintética)
+
+La tabla de Maya tiene las columnas: control, FR, previene/detecta/corrige, modo de fallo, responsable. La fila del límite del punto de consigna dice: «PLC-H rechaza puntos de consigna de impulsión fuera de 70–110 °C salvo que esté activo el modo de ingeniería — FR 3 — previene — modo de fallo: bloquea un cambio legítimo fuera de banda durante la puesta en marcha; mitigado con el modo de ingeniería con registro — responsable: ingeniería de control».
+
+> **Caso sintético — Lakeside District Heating Plant.** Los límites y los responsables son inventados.
+
+### Errores y límites
+
+Los controles enumerados pero no probados no dan ninguna garantía. La relación con los FR muestra la cobertura de las categorías, no que un requisito se cumpla en el nivel de seguridad objetivo.
+
+### Ejercicios — capítulo 24
+
+- **EX070 — Relacionar un control de la zona de contadores.** Dé un control para cada uno de los FR 1, FR 5 y FR 6 en la zona de contadores. *Rúbrica:* 3 = tres controles pertinentes bien relacionados; 2 = dos; 1 = uno; 0 = nada.
+- **EX071 — Plantear la pregunta del modo de fallo.** ¿Cuál es el modo de fallo de bloquear las cuentas del HMI tras tres contraseñas erróneas, y qué alternativa es más segura? *Rúbrica:* 3 = operador bloqueado en una emergencia; alerta con retardo o eximir las consolas de la sala de control con seguridad física; 2 = uno; 1 = vago; 0 = nada.
+- **EX072 — Compensar un dispositivo que no puede autenticar.** Enumere tres controles compensatorios para una pasarela de contadores que no puede cambiar su contraseña por defecto. *Rúbrica:* 3 = aislar, restringir la interfaz de gestión, supervisar, planificar la sustitución (tres cualesquiera); 2 = dos; 1 = uno; 0 = nada.
+
+### Síntesis del capítulo
+
+Un buen plan de controles de TO cubre los siete requisitos fundamentales, pregunta cómo falla cada control y rodea lo que no se puede corregir.
+
+### Siga estudiando — capítulo 24 de 40
+
+[← Capítulo 23 (borrador)](#ch-23) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 25 (borrador) →](../../en/book/MANUSCRIPT.md#ch-25)
 
 <a id="worked-results"></a>
 
@@ -1184,6 +1506,42 @@ Respuestas modelo para EX001–EX120. Lakeside District Heating Plant, Maya Chen
 **EX053.** Amenaza: el ruido es gaussiano idealizado, así que los resultados pueden no mantenerse con datos reales de planta con deriva y cuantificación. Mitigación: añadir perfiles de ruido extraídos de datos de proceso publicados (o un segundo modelo simulado con ruido autocorrelacionado) e informar de si cambia la clasificación.
 
 **EX054.** Urbina et al. evalúan un detector por cuánto daño puede seguir causando un atacante manteniéndose por debajo de su umbral de alarma, de modo que un detector con menos falsas alarmas pero un gran margen de impacto indetectable se considera más débil.
+
+**EX055.** Sensor: suplantar o sesgar la señal de TT-101. Controlador: cambiar el punto de consigna o la lógica de PLC-H. Actuador: forzar la apertura de FV-12 mediante una anulación manual o la manipulación de la E/S. Comunicación: interrumpir o retrasar el enlace PLC-H ↔ HMI para que los operadores pierdan la visibilidad.
+
+**EX056.** (a) NIST IR 8259 (con IR 8259A) o ETSI EN 303 645 para el fabricante de contadores; IEC 62443-4-2 si el contador se vende como componente industrial. (b) NIST SP 800-82r3 o IEC 62443-2-1 para el programa de LDHP como propietario del activo.
+
+**EX057.** Si SIS-H leyera la temperatura a través de PLC-H, un atacante que comprometiera PLC-H o falsificara TT-101 también dejaría ciego al disparo. Un transmisor separado, cableado directamente a SIS-H, mantiene la función de seguridad independiente del sistema de control que protege.
+
+**EX058.** Se vieron afectados unos 225.000 clientes; los actores corrompieron el firmware de dispositivos de serie a Ethernet en las subestaciones (el borrado de los HMI con KillDisk también es una respuesta aceptable).
+
+**EX059.** Nombres de usuario y contraseñas de fábrica o débiles, alcanzables por Telnet; la disposición 5.1 de ETSI EN 303 645 (sin contraseñas por defecto universales) lo aborda.
+
+**EX060.** (a) Hecho comunicado en CISA AA21-042A. (b) Inferencia: el aviso informa del intento de cambio, no de la intención del intruso.
+
+**EX061.** En equilibrio, caudal de entrada = caudal de salida = 2,0 = 1,6 × error, así que el error es de 1,25 puntos; el nivel se estabiliza en torno al 58,75 %.
+
+**EX062.** Cada paso saturado añade 1,5 puntos: tras 8 pasos, 69,5 %; tras 9 pasos, 71,0 %; así que 9 pasos.
+
+**EX063.** El controlador lleva el nivel *medido* al 57,5 %; con un sesgo de +10, el nivel real es del 47,5 %: el vaso está por debajo de su llenado mientras el HMI parece normal.
+
+**EX064.** Etiqueta y función del activo, fabricante y modelo, versión de firmware/software, zona y dirección de red (o enlace serie), responsable, nivel de criticidad (más ubicación y dependencias).
+
+**EX065.** La versión de firmware instalada en cada pasarela de LDHP y la versión de la biblioteca TLS que contiene ese firmware según su SBOM (o la declaración del fabricante); si la biblioteca está entre 2.0 y 2.4, las pasarelas están afectadas.
+
+**EX066.** Solo un ingeniero sabe restaurar la lógica de PLC-H desde la copia de seguridad; mitíguelo con un procedimiento de restauración escrito y probado y un segundo ingeniero formado. (El servidor de licencias del HMI o una única tarjeta de E/S de repuesto también son válidos).
+
+**EX067.** Consecuencia: lecturas de consumo falsificadas para una calle entera producen facturas erróneas y ocultan una fuga real durante semanas. Ruta: la contraseña por defecto de la pasarela de contadores permite a un atacante alterar las lecturas antes de que se firmen y se envíen a la nube.
+
+**EX068.** No. A (raro pero catastrófico) puede requerir cambios de diseño, como salvaguardas independientes, aunque sea improbable; B (frecuente pero menor) puede tratarse en la operación. Productos iguales ocultan situaciones muy distintas, así que decida con los escenarios, no con el número.
+
+**EX069.** «Residual de S-3: un empleado interno con credenciales de ingeniería en EWS-1 todavía podría cambiar los puntos de consigna de PLC-H. Supone que las cuentas nominativas y el registro están implantados. Aceptado por el director de la planta; revisión el 1 de abril del año próximo o tras cualquier cambio en el acceso de ingeniería».
+
+**EX070.** FR 1: credenciales únicas por dispositivo y cuentas de administración nominativas en las pasarelas. FR 5: las pasarelas solo pueden abrir TLS saliente hacia la nube de facturación; ninguna sesión entrante desde ella hacia la zona de control. FR 6: alertar cuando cambie la configuración de una pasarela o esta contacte con un destino desconocido.
+
+**EX071.** Un operador que se equivoca al teclear durante una perturbación estresante queda bloqueado justo cuando se necesita el control. Más seguro: retardo progresivo y alerta al jefe de turno, con el bloqueo desactivado en las consolas de la sala de control protegidas físicamente.
+
+**EX072.** Situarla en su propia VLAN con un cortafuegos que permita solo los flujos necesarios; bloquear su interfaz de gestión desde cualquier lugar excepto un servidor de salto; supervisar su tráfico en busca de destinos nuevos; programar su sustitución por un modelo conforme.
 
 <a id="references"></a>
 
