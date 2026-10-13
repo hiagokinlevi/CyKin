@@ -88,6 +88,10 @@ As estimativas de perda são incertas. As estimativas de horas podem omitir esfo
 - **EX004 — O que mudaria a decisão.** Que evidência faria Daniel mudar de ideia? *Rubrica:* 3 = resultados de simulação que predizem perdas reais com fraude;; 2 = predição;; 1 = nada;; 0 = nenhuma.
 - **EX005 — Finalidade da nota.** Por que documentar a justificativa? *Rubrica:* 3 = para que possa ser questionada e comparada depois com os resultados;; 2 = registro;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Decisões avançadas enquadram opções, pesam perda e ônus e registram a justificativa abertamente.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Fatores humanos e política cibernética: prática atual
@@ -125,6 +129,10 @@ Conversas com colegas são anedóticas. Orientação não é evidência de efeit
 - **EX008 — Lacuna do treinamento embutido.** Que evidência conflita com o treinamento embutido da Calloway? *Rubrica:* 3 = Lain et al. constataram que ele não reduzia os cliques;; 2 = Lain;; 1 = nada;; 0 = nenhuma.
 - **EX009 — Lacuna dos cartazes.** Que prática conflita com Bada et al. (2019)? *Rubrica:* 3 = cartazes alarmantes baseados no medo;; 2 = medo;; 1 = nada;; 0 = nenhuma.
 - **EX010 — Lacuna do reporte.** Por que o reporte é fraco na Calloway? *Rubrica:* 3 = o endereço de reporte está escondido;; 2 = acesso;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A prática atual muitas vezes fica atrás das evidências, e as orientações ajudam a mapear as lacunas.
 
 <a id="ch-03"></a>
 
@@ -180,6 +188,10 @@ A transferibilidade é um julgamento. Os estudos publicados favorecem resultados
 - **EX014 — Significado do intervalo.** O que significa o intervalo largo? *Rubrica:* 3 = o benefício pode ser pequeno ou nulo;; 2 = incerto;; 1 = nada;; 0 = nenhuma.
 - **EX015 — Julgamento de transferência.** Por que o achado de Lain sobre reportes provavelmente se transfere? *Rubrica:* 3 = a Calloway se parece com a grande empresa intensiva em e-mail;; 2 = semelhança;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+As evidências especializadas são avaliadas pelo desenho, lidas com incerteza e transferidas com julgamento explícito.
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Risco avançado e ética
@@ -217,6 +229,10 @@ As bancas podem aprovar conteúdo limítrofe. As revisões éticas podem virar r
 - **EX018 — Dano dos rankings.** Que dano os rankings por departamento causam? *Rubrica:* 3 = exposição pública que mina a confiança;; 2 = confiança;; 1 = nada;; 0 = nenhuma.
 - **EX019 — Membros da banca.** Quem integra a banca de revisão dos modelos? *Rubrica:* 3 = representantes dos funcionários e o RH;; 2 = representantes;; 1 = nada;; 0 = nenhuma.
 - **EX020 — Regra de desempenho.** Que regra se aplica aos resultados das simulações e às avaliações de desempenho? *Rubrica:* 3 = nunca são usados;; 2 = proibição;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+O risco centrado nas pessoas aponta para controles de processo, e a governança torna a prática ética duradoura.
 
 <a id="ch-05"></a>
 
@@ -278,6 +294,10 @@ As pontuações são subjetivas. Desenhos combinados podem sobrecarregar as equi
 - **EX023 — Sensibilidade no laboratório.** Quão robusto foi o desenho combinado no laboratório? *Rubrica:* 3 = primeiro em 10 de 10 variações de peso;; 2 = robusto;; 1 = nada;; 0 = nenhuma.
 - **EX024 — Fases.** Em que período o desenho combinado é implantado? *Rubrica:* 3 = dezoito meses;; 2 = 18;; 1 = nada;; 0 = nenhuma.
 - **EX025 — Risco da combinação.** Que risco a combinação traz? *Rubrica:* 3 = sobrecarga de projetos;; 2 = sobrecarga;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Alternativas avaliadas com pesos acordados, com testes de sensibilidade, sustentam uma seleção robusta.
 
 <a id="ch-06"></a>
 
@@ -345,6 +365,10 @@ Avaliações curtas não captam efeitos de longo prazo. Os escritórios diferem 
 - **EX029 — Sem simulações.** As simulações fizeram parte da avaliação? *Rubrica:* 3 = não;; 2 = nenhuma;; 1 = sim;; 0 = nenhuma.
 - **EX030 — Atraso máximo.** Qual foi o atraso máximo para qualquer escritório? *Rubrica:* 3 = dois meses;; 2 = 2;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Avaliações controladas podem ser justas, éticas e informativas quando a implantação é escalonada e randomizada.
+
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Fatores humanos e política cibernética: integração organizacional
@@ -383,6 +407,10 @@ A integração leva tempo. O mapeamento de frameworks pode virar papelada.
 - **EX034 — Resistência do financeiro.** Por que o financeiro resistiu ao controle de verificação? *Rubrica:* 3 = atrasava os pagamentos do fim do mês;; 2 = fim do mês;; 1 = nada;; 0 = nenhuma.
 - **EX035 — Lição da resistência.** O que a resistência muitas vezes sinaliza? *Rubrica:* 3 = um custo real;; 2 = custo;; 1 = teimosia;; 0 = nenhuma.
 
+### Síntese
+
+A integração incorpora o programa a outras funções e trata a resistência como informação.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Fatores humanos e política cibernética: casos difíceis
@@ -420,6 +448,10 @@ O apoio pode ser visto como leniência. O engajamento dos executivos pode se dis
 - **EX038 — Mensagem do executivo.** O que o CEO concordou em fazer? *Rubrica:* 3 = gravar uma mensagem acolhendo as ligações de verificação;; 2 = permissão;; 1 = nada;; 0 = nenhuma.
 - **EX039 — Causa do compartilhamento de senhas.** Que problema subjacente o reporte de compartilhamento de senhas revelou? *Rubrica:* 3 = falta de pessoal;; 2 = carga de trabalho;; 1 = malícia;; 0 = nenhuma.
 - **EX040 — Regra de sanção.** Quando se aplicam sanções pelos princípios de Daniel? *Rubrica:* 3 = apenas a atos deliberadamente danosos;; 2 = deliberados;; 1 = qualquer erro;; 0 = nenhuma.
+
+### Síntese
+
+Casos difíceis exigem princípios consistentes que protejam quem reporta e corrijam as causas sistêmicas.
 
 <a id="ch-09"></a>
 
@@ -477,6 +509,10 @@ O comprometimento dos campeões varia. Dados trimestrais são ruidosos.
 - **EX044 — Significado de garantia.** O que garantia significa aqui? *Rubrica:* 3 = evidências de que os controles funcionam e os resultados melhoram;; 2 = evidências;; 1 = listas de atividades;; 0 = nenhuma.
 - **EX045 — Resposta ao conselho.** Como Daniel respondeu se a Calloway está segura? *Rubrica:* 3 = riscos específicos reduzidos, mas o engano não foi eliminado;; 2 = franqueza;; 1 = sim;; 0 = nenhuma.
 
+### Síntese
+
+A liderança cria condições seguras, e a garantia relata as evidências com incerteza honesta.
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Leitura e crítica de pesquisas
@@ -514,6 +550,10 @@ A crítica pode descambar para a busca de defeitos. As implicações podem estic
 - **EX048 — Limite do orçamento.** Cite um limite do artigo sobre o orçamento de compliance. *Rubrica:* 3 = o orçamento é difícil de medir diretamente;; 2 = medição;; 1 = nada;; 0 = nenhuma.
 - **EX049 — Uso como lente.** Como os gestores devem tratar o orçamento de compliance? *Rubrica:* 3 = como uma lente, e não uma quantidade precisa;; 2 = lente;; 1 = número;; 0 = nenhuma.
 - **EX050 — Implicações no estatuto.** Onde Daniel registrou suas implicações? *Rubrica:* 3 = no estatuto do programa, com citações;; 2 = estatuto;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A leitura crítica pesa o que os estudos conseguem sustentar e os traduz com cuidado para a prática.
 
 <a id="ch-11"></a>
 
@@ -572,6 +612,10 @@ Períodos curtos enganam. A perda de chaves exige uma boa recuperação.
 - **EX054 — Migração dos atacantes.** Para onde os atacantes podem migrar? *Rubrica:* 3 = fraude por telefone;; 2 = telefone;; 1 = nada;; 0 = nenhuma.
 - **EX055 — Ordem dos públicos.** Quem ouviu os resultados primeiro? *Rubrica:* 3 = os funcionários;; 2 = funcionários;; 1 = o conselho;; 0 = nenhuma.
 
+### Síntese
+
+Projetos aplicados entregam controles com os usuários, medem o ônus e relatam os limites.
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Revisão final e transferência
@@ -609,6 +653,10 @@ As revisões podem ser autocomplacentes. Os guias de transferência simplificam 
 - **EX058 — Diferença no hospital.** O que importaria mais num hospital? *Rubrica:* 3 = o ônus, por causa da pressão de tempo clínica;; 2 = ônus;; 1 = nada;; 0 = nenhuma.
 - **EX059 — Distinção na transferência.** O que a transferência precisa distinguir? *Rubrica:* 3 = por que algo funcionou de como foi feito;; 2 = princípio;; 1 = nada;; 0 = nenhuma.
 - **EX060 — Artigo sugerido.** Que artigo a Dra. Holm sugeriu? *Rubrica:* 3 = sobre a avaliação escalonada;; 2 = avaliação;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A revisão final conecta as partes, separa princípios de detalhes e se compromete com o aprendizado contínuo.
 
 <a id="worked-results"></a>
 

@@ -96,6 +96,10 @@ O pré-registro não impede todo viés. O kappa depende da prevalência na amost
 - **EX006 — Resultado do kappa.** Que kappa a codificação piloto alcançou no laboratório? *Rubrica:* 3 = 0.80 em 50 reportes, concordância 0.90;; 2 = cerca de 0,8;; 1 = nada;; 0 = nenhuma.
 - **EX007 — Mudança na regra de codificação.** Que regra mudou após as divergências entre codificadores? *Rubrica:* 3 = newsletters com links de rastreamento passaram a ser definidas com mais clareza;; 2 = newsletters;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+O trabalho de doutorado sobre comportamento de segurança precisa de um resultado falseável, ética rigorosa para simulações e concordância medida sobre como os resultados são codificados.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Fatores humanos e política cibernética: fronteira da pesquisa
@@ -140,6 +144,10 @@ Mapas da literatura refletem as escolhas de quem lê. As orientações de polít
 - **EX013 — O que não se afirma.** O que a contribuição de Mireille não mede? *Rubrica:* 3 = se as violações diminuem;; 2 = violações;; 1 = nada;; 0 = nenhuma.
 - **EX014 — Partes da contribuição.** Cite duas características da contribuição planejada. *Rubrica:* 3 = setor público, dificuldade de isca fixa, pré-registro, replicação, desenho escalonado;; 2 = duas;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A fronteira passou de culpar os usuários a projetar para eles; uma contribuição precisa preenche uma lacuna mensurável sem exagerá-la.
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Proposta de contribuição original
@@ -183,6 +191,10 @@ Doze clusters dão poder estatístico limitado. Desenhos escalonados podem ser p
 - **EX019 — Alerta do profissional.** Sobre o que o profissional alertou? *Rubrica:* 3 = botões de reporte podem sobrecarregar equipes de segurança pequenas;; 2 = carga de trabalho;; 1 = nada;; 0 = nenhuma.
 - **EX020 — Resposta com triagem.** Como Mireille respondeu à preocupação com a carga de trabalho? *Rubrica:* 3 = uma etapa de triagem automatizada que agrupa reportes duplicados;; 2 = triagem;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Uma proposta forte randomiza o que pode, mede o que importa, planeja os riscos éticos e convida à contestação antes da coleta de dados.
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Replicação da linha de base e piloto
@@ -225,6 +237,10 @@ Pilotos com voluntários não são representativos. Períodos de linha de base p
 - **EX024 — Atraso no retorno.** Por que os agradecimentos chegavam atrasados? *Rubrica:* 3 = uma regra de e-mail os atrasava em duas horas;; 2 = regra de e-mail;; 1 = nada;; 0 = nenhuma.
 - **EX025 — Log de mudanças.** Por que registrar cada mudança antes do estudo principal? *Rubrica:* 3 = a transparência gera confiança nos resultados finais;; 2 = confiança;; 1 = nada;; 0 = nenhuma.
 - **EX026 — Limites do piloto.** Por que o piloto não é evidência de efeito? *Rubrica:* 3 = dois departamentos voluntários em seis semanas não podem mostrá-lo;; 2 = viabilidade;; 1 = efeito;; 0 = nenhuma.
+
+### Síntese
+
+A replicação fixa a linha de base e um piloto encontra problemas práticos, mas nenhum dos dois deve ser confundido com evidência de efeito.
 
 <a id="ch-05"></a>
 
@@ -305,6 +321,10 @@ Desfechos por departamento escondem a variação individual. Replicações em ou
 - **EX031 — Preparação da reanálise.** O que o segundo analista recebeu? *Rubrica:* 3 = dados anonimizados, pré-registro e plano, mas não o código;; 2 = sem código;; 1 = tudo;; 0 = nenhuma.
 - **EX032 — Resultado da replicação.** O que a replicação em Brenholt encontrou? *Rubrica:* 3 = um efeito menor, mas positivo;; 2 = menor;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Um estudo escalonado com verificações de fidelidade, inferência por permutação e validação independente sustenta uma afirmação estreita e crível.
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Crítica por pares e revisão
@@ -347,6 +367,10 @@ Achados exploratórios podem ser ruído. Algumas preocupações dos revisores n�
 - **EX036 — Tratamento dos subgrupos.** Como as análises de subgrupos foram reportadas? *Rubrica:* 3 = todas reportadas e rotuladas como exploratórias;; 2 = exploratórias;; 1 = selecionadas;; 0 = nenhuma.
 - **EX037 — Temas de isca excluídos.** Que temas de isca foram excluídos para evitar sofrimento? *Rubrica:* 3 = cortes salariais, luto, saúde e falsificação de sindicatos;; 2 = dois;; 1 = nada;; 0 = nenhuma.
 - **EX038 — Reclamações.** Quantas reclamações foram relatadas? *Rubrica:* 3 = duas, com sua resolução;; 2 = duas;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Uma boa revisão testa alternativas, reconhece limites, separa o trabalho confirmatório do exploratório e relata a ética abertamente.
 
 <a id="ch-07"></a>
 
@@ -412,6 +436,10 @@ Digests provam que os arquivos não mudaram, não que estão corretos. A agrega�
 - **EX043 — Revisão de privacidade.** Quem revisou o arquivo antes da divulgação? *Rubrica:* 3 = o encarregado de proteção de dados da Vantor;; 2 = DPO;; 1 = nada;; 0 = nenhuma.
 - **EX044 — Guia para profissionais.** Por que escrever um guia curto para profissionais? *Rubrica:* 3 = para que as organizações apliquem o protocolo sem a tese inteira;; 2 = adoção;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A síntese de uma tese declara contribuições e incógnitas, e um arquivo atento à privacidade permite que outras pessoas verifiquem e reutilizem o trabalho.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Defesa e plano de publicação
@@ -454,6 +482,10 @@ Recomendações de política generalizam para além de uma ou duas prefeituras. 
 - **EX048 — Três produtos.** Que três produtos ela planeja? *Rubrica:* 3 = artigo em periódico, artigo metodológico e informe para profissionais;; 2 = dois;; 1 = nada;; 0 = nenhuma.
 - **EX049 — Próximo estudo.** Qual é sua próxima pergunta de pesquisa? *Rubrica:* 3 = um estudo fatorial separando botão e retorno, e a ligação do reporte com o tempo de resposta;; 2 = fatorial;; 1 = nada;; 0 = nenhuma.
 - **EX050 — Resultado da defesa.** Qual foi o resultado da defesa? *Rubrica:* 3 = aprovada com correções menores;; 2 = aprovada;; 1 = reprovada;; 0 = nenhuma.
+
+### Síntese
+
+Uma defesa de doutorado separa evidência de especulação, transforma as descobertas em políticas éticas e define as próximas perguntas de pesquisa.
 
 <a id="worked-results"></a>
 

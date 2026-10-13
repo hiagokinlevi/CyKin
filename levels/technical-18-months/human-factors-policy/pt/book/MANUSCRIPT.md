@@ -73,6 +73,10 @@ Dois turnos podem não ser típicos. As observações não devem registrar nomes
 
 - **EX004 — Propósito da linha de base.** Por que registrar uma linha de base? *Rubrica:* 3 = para medir depois se as mudanças ajudaram;; 2 = comparação;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Uma linha de base dos sistemas e das pressões dos turnos mostra onde a segurança centrada nas pessoas é necessária.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Redes e protocolos
@@ -112,6 +116,10 @@ As etiquetas perdem efeito se usadas em excesso. Os motoristas podem não ler as
 - **EX007 — Teste dos avisos.** Onde os avisos foram testados primeiro? *Rubrica:* 3 = numa caixa postal de teste com mensagens sintéticas;; 2 = caixa postal de teste;; 1 = caixas postais reais;; 0 = nenhuma.
 
 - **EX008 — Regra para os motoristas.** Que regra Priya redigiu para os motoristas? *Rubrica:* 3 = as mudanças de rota só chegam pelo aplicativo de rotas;; 2 = só pelo aplicativo;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Os limites dos protocolos deixam a equipe julgando as mensagens; por isso, sinais simples precisam orientá-la.
 
 <a id="ch-03"></a>
 
@@ -166,6 +174,10 @@ Crachás podem ser perdidos ou compartilhados. As datas de término podem precis
 - **EX011 — Aceitação do bloqueio.** Por que um bloqueio de dois minutos é aceito? *Rubrica:* 3 = desbloquear só exige um toque;; 2 = custo baixo;; 1 = nada;; 0 = nenhuma.
 
 - **EX012 — Expiração dos temporários.** Como terminam as contas dos temporários? *Rubrica:* 3 = expiram automaticamente numa data de término;; 2 = expiração;; 1 = remoção manual;; 0 = nenhuma.
+
+### Síntese
+
+Identidades utilizáveis tornam a opção segura a mais rápida.
 
 <a id="ch-04"></a>
 
@@ -227,6 +239,10 @@ As exportações podem mudar de formato. Às vezes é possível vincular os cód
 
 - **EX016 — Campo removido.** Que campo foi removido da exportação? *Rubrica:* 3 = os endereços de e-mail de quem reporta;; 2 = endereços;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Os scripts devem ser testados, configuráveis e cuidadosos com os dados pessoais.
+
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Escopo e evidências de segurança
@@ -266,6 +282,10 @@ Expansão do escopo. A coleta de evidências toma tempo.
 - **EX019 — Registro das evidências.** O que Priya registra com cada item de evidência? *Rubrica:* 3 = a fonte e a data;; 2 = procedência;; 1 = nada;; 0 = nenhuma.
 
 - **EX020 — Evidências contrárias.** Por que registrar as evidências contrárias? *Rubrica:* 3 = escondê-las induziria a erro;; 2 = honestidade;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Escopo claro, permissão e evidências protegem as pessoas e sustentam decisões sólidas.
 
 <a id="ch-06"></a>
 
@@ -329,6 +349,10 @@ As taxas das etapas são estimativas. As etapas interagem.
 
 - **EX024 — Correção da decisão.** O que corrige a etapa de decisão? *Rubrica:* 3 = os gestores dizerem que reportes na dúvida são bem-vindos;; 2 = mensagem;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Um modelo por etapas mostra onde os reportes se perdem e qual correção importa mais.
+
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Fatores humanos e política cibernética: dados e telemetria
@@ -369,6 +393,10 @@ Acordos podem ser esquecidos. Os logs podem estar incompletos.
 
 - **EX028 — Limite dos dados de crachá.** A que se limitam os dados de crachá? *Rubrica:* 3 = investigações de segurança e contagens agregadas;; 2 = uso limitado;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Uma telemetria mínima, usada apenas para fins acordados, sustenta o monitoramento sem corroer a confiança.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Fatores humanos e política cibernética: modos de falha
@@ -408,6 +436,10 @@ As classificações se sobrepõem. As defesas têm efeitos colaterais.
 - **EX031 — Defesa contra lapsos.** Como os lapsos são reduzidos? *Rubrica:* 3 = eliminando as exigências de memória;; 2 = memória;; 1 = treinamento;; 0 = nenhuma.
 
 - **EX032 — Defesa contra a fraude.** O que reduz os enganos causados por fraude? *Rubrica:* 3 = verificação que não se baseia na aparência;; 2 = retornos de ligação;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Classificar as falhas humanas aponta defesas adequadas, que vão além de mais treinamento.
 
 <a id="ch-09"></a>
 
@@ -466,6 +498,10 @@ Viés de autodeclaração. Testes pequenos.
 
 - **EX036 — Mudança de rótulo.** Que rótulo substituiu incidente? *Rubrica:* 3 = Reportar algo estranho;; 2 = palavras simples;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Métodos combinados revelam barreiras e testam correções antes da implantação.
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Fatores humanos e política cibernética: configuração de controles
@@ -505,6 +541,10 @@ As retenções podem atrasar alterações genuínas. Os telefones do cadastro po
 - **EX039 — Controle de alteração bancária.** Como uma alteração de dados bancários é confirmada? *Rubrica:* 3 = uma segunda pessoa liga para o número do cadastro;; 2 = retorno de ligação;; 1 = resposta por e-mail;; 0 = nenhuma.
 
 - **EX040 — Valor da documentação.** Por que registrar o motivo de cada configuração? *Rubrica:* 3 = para que ninguém a remova sem entender;; 2 = justificativa;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Rotas e retenções configuradas tornam o reporte fácil e a verificação rotineira.
 
 <a id="ch-11"></a>
 
@@ -562,6 +602,10 @@ As verificações refletem um momento. Os voluntários podem não representar to
 
 - **EX044 — Uso da tabela.** Em que a tabela se transforma? *Rubrica:* 3 = na linha de base para nova verificação;; 2 = linha de base;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A verificação pelos lados técnico e do usuário, com resultados registrados, comprova que os controles funcionam.
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Laboratório isolado I
@@ -617,6 +661,10 @@ Amostra pequena. Condições calmas.
 
 - **EX048 — Acompanhamento dos motoristas.** Que acompanhamento é necessário para os motoristas? *Rubrica:* 3 = uma opção de encaminhamento mais simples;; 2 = mais simples;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Testes contidos mostram o valor das rotas diretas de reporte e precisam de limites honestos.
+
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Fatores humanos e política cibernética: solução de problemas
@@ -656,6 +704,10 @@ As verificações semanais exigem atenção. Os checklists podem ser pulados.
 - **EX051 — Correção do formulário.** O que o formulário mostra agora? *Rubrica:* 3 = um número de confirmação ou um erro;; 2 = retorno;; 1 = nada;; 0 = nenhuma.
 
 - **EX052 — Verificação semanal.** O que a verificação semanal compara? *Rubrica:* 3 = os reportes com as mensagens maliciosas entregues por centro;; 2 = razão;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A resolução de problemas encontra causas técnicas, de desenho e humanas, e a prevenção exige corrigir as três.
 
 <a id="ch-14"></a>
 
@@ -711,6 +763,10 @@ As listas de conhecidos precisam de atualização. As amostras podem deixar pass
 
 - **EX056 — Amostra mensal.** Que verificação mensal Priya acrescentou? *Rubrica:* 3 = conferir à mão dez vereditos automáticos;; 2 = amostra;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A automação acelera o retorno quando lida com o que é certo e deixa o julgamento para as pessoas.
+
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Fatores humanos e política cibernética: integração e dependências
@@ -751,6 +807,10 @@ Reservas perdem a prática se não forem usadas. Os contratos mudam.
 
 - **EX060 — Risco contratual.** Que risco de fornecedor é acompanhado no calendário? *Rubrica:* 3 = a renovação do contrato de telefonia móvel;; 2 = renovação;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A integração amplia o que o reporte enxerga, e os backups o mantêm funcionando.
+
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Documentação técnica e segurança
@@ -790,6 +850,10 @@ As revisões são puladas. As regras precisam ser aplicadas.
 - **EX063 — Regra dos dados.** Onde os dados de reporte e de cliques nunca podem ser usados? *Rubrica:* 3 = em processos disciplinares ou de desempenho;; 2 = RH;; 1 = nada;; 0 = nenhuma.
 
 - **EX064 — Perigo da desatualização.** Por que uma documentação desatualizada pode ser pior do que nenhuma? *Rubrica:* 3 = as pessoas confiam nela;; 2 = confiança equivocada;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A documentação inclui etapas, regras de ética e responsabilidades para que o serviço continue seguro e atualizado.
 
 <a id="ch-17"></a>
 
@@ -845,6 +909,10 @@ Os voluntários conheciam o propósito. Grupo pequeno.
 
 - **EX068 — Meta de resposta.** Que meta de resposta Priya recomendou? *Rubrica:* 3 = em até um dia útil;; 2 = um dia;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Exercícios contidos podem sustentar melhorias simples e baratas, como o retorno rápido.
+
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Projeto técnico supervisionado
@@ -899,6 +967,10 @@ Seis semanas é pouco. Campanhas podem inflar os reportes.
 - **EX071 — Fator de confusão.** O que, além do botão, pode ter aumentado os reportes? *Rubrica:* 3 = uma campanha de ataque na quarta semana;; 2 = campanha;; 1 = nada;; 0 = nenhuma.
 
 - **EX072 — Próximo pedido.** O que o gerente de operações pediu em seguida? *Rubrica:* 3 = estender o botão aos coletores portáteis;; 2 = coletores;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Um projeto supervisionado entrega, avalia e repassa uma melhoria prática.
 
 <a id="worked-results"></a>
 

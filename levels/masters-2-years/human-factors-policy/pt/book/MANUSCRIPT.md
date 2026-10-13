@@ -77,6 +77,10 @@ Buscas em bases de dados deixam de fora a literatura cinzenta. Documentos de ori
 - **EX006 — Lacuna encontrada.** Que lacuna Sofia registrou? *Rubrica:* 3 = poucos estudos medem efeitos em um hospital depois de uma mudança desse tipo;; 2 = hospital;; 1 = nada;; 0 = nenhuma.
 - **EX007 — O argumento de Herley.** Que fonte argumenta que os usuários rejeitam racionalmente conselhos custosos? *Rubrica:* 3 = Herley (2009);; 2 = Herley;; 1 = Whitten;; 0 = nenhuma.
 
+### Síntese
+
+Uma pergunta focada e uma busca registrada e repetível dão a uma dissertação um ponto de partida defensável.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Fatores humanos e política cibernética: seminário avançado
@@ -121,6 +125,10 @@ Modelos simplificam o comportamento. Medidas de atitude por questionário são i
 - **EX013 — Duas previsões.** Cite as duas previsões baseadas em modelos que ela acrescenta. *Rubrica:* 3 = adoção do gerenciador por atitudes e normas; mais bloqueio de tela pelo esforço liberado;; 2 = uma;; 1 = nada;; 0 = nenhuma.
 - **EX014 — Medir o orçamento.** Por que o orçamento de compliance é difícil de testar? *Rubrica:* 3 = é difícil de medir diretamente;; 2 = medição;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Teorias comportamentais são úteis quando fazem previsões distintas e testáveis sobre uma mudança real de política.
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Desenho do estudo, ética e reprodutibilidade
@@ -163,6 +171,10 @@ Séries temporais interrompidas podem ser confundidas por outras mudanças simul
 - **EX018 — Redação que normaliza.** Como Sofia reduz as respostas socialmente desejáveis? *Rubrica:* 3 = redação que normaliza a reutilização e pergunta a frequência;; 2 = redação;; 1 = nada;; 0 = nenhuma.
 - **EX019 — Comparar níveis.** Por que comparar antes e depois em vez de confiar nos níveis absolutos? *Rubrica:* 3 = a reutilização tende a ser sub-relatada de forma consistente;; 2 = relativo;; 1 = absoluto;; 0 = nenhuma.
 - **EX020 — Transcrições não compartilhadas.** O que é compartilhado no lugar das transcrições das entrevistas? *Rubrica:* 3 = o esquema de codificação e as contagens;; 2 = esquema de codificação;; 1 = transcrições;; 0 = nenhuma.
+
+### Síntese
+
+Métodos mistos, com ética cuidadosa e um plano de reprodutibilidade honesto, são adequados à pesquisa sobre o comportamento de segurança da equipe.
 
 <a id="ch-04"></a>
 
@@ -233,6 +245,10 @@ Comparações entre departamentos são confundidas pelas escolhas de adoção. S
 - **EX025 — Momento do registro.** Por que a mudança de registro não pode explicar a queda imediata? *Rubrica:* 3 = aconteceu quatro meses depois;; 2 = momento;; 1 = nada;; 0 = nenhuma.
 - **EX026 — Afirmação mais fraca.** Que explicação é apenas fracamente sustentada? *Rubrica:* 3 = a de que o gerenciador de senhas contribuiu;; 2 = gerenciador;; 1 = trocas obrigatórias;; 0 = nenhuma.
 
+### Síntese
+
+Listar e verificar explicações concorrentes permite que um estudo ordene as suas conclusões com honestidade pela força das evidências.
+
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Proposta e piloto
@@ -275,6 +291,10 @@ Pilotos pequenos deixam passar problemas raros. Revisões feitas após o piloto 
 - **EX030 — Ajuste da entrevista.** Como o roteiro de entrevista foi reordenado? *Rubrica:* 3 = começar por uma experiência recente e específica, depois opiniões mais amplas;; 2 = específico primeiro;; 1 = nada;; 0 = nenhuma.
 - **EX031 — Uso dos dados do piloto.** Os dados do piloto entram na análise principal? *Rubrica:* 3 = não;; 2 = excluídos;; 1 = sim;; 0 = nenhuma.
 - **EX032 — Palavras compartilhadas.** Que problema comum os pilotos revelam na pesquisa em segurança? *Rubrica:* 3 = pesquisadores e participantes usam as palavras de modos diferentes;; 2 = significado;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Os pilotos testam se os instrumentos significam o que o pesquisador pretende, e revisões registradas mostram aos examinadores que eles foram testados.
 
 <a id="ch-06"></a>
 
@@ -343,6 +363,10 @@ Pesquisas anônimas repetidas comparam grupos, não indivíduos. Julgamentos de 
 - **EX036 — Comparação entre grupos.** Por que a comparação do questionário é apenas entre grupos? *Rubrica:* 3 = pesquisas anônimas não ligam as mesmas pessoas;; 2 = anonimato;; 1 = nada;; 0 = nenhuma.
 - **EX037 — Motivo da baixa adoção.** Por que a adoção do gerenciador de senhas foi baixa, segundo as entrevistas? *Rubrica:* 3 = foi introduzido sem treinamento;; 2 = treinamento;; 1 = nada;; 0 = nenhuma.
 - **EX038 — Apoio à teoria.** A previsão sobre o ônus de qual teoria a evidência sustentou? *Rubrica:* 3 = o orçamento de compliance;; 2 = orçamento;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Combinar contagens, variação em questionários e temas de entrevistas dá um retrato mais completo e mais honesto do que qualquer método isolado.
 
 <a id="ch-07"></a>
 
@@ -413,6 +437,10 @@ Verificações de robustez cobrem apenas as alternativas escolhidas. As implica�
 - **EX043 — Implicações para o hospital.** O que Sofia recomendou ao hospital? *Rubrica:* 3 = manter a mudança, treinar no gerenciador e acompanhar comprometimentos;; 2 = três;; 1 = nada;; 0 = nenhuma.
 - **EX044 — Três níveis.** Em quais três níveis as implicações são declaradas? *Rubrica:* 3 = hospital, outros hospitais e políticas;; 2 = dois;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Verificações de robustez e limitações direcionais tornam as conclusões de uma dissertação críveis e com o escopo correto.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
@@ -455,6 +483,10 @@ Os parceiros ainda podem exagerar os achados. O desempenho na defesa depende da 
 - **EX048 — Afirmação correta.** O que o hospital deve dizer sobre segurança? *Rubrica:* 3 = o ônus caiu; os desfechos de segurança não foram medidos;; 2 = ônus;; 1 = a segurança melhorou;; 0 = nenhuma.
 - **EX049 — Decisão do hospital.** O que o grupo de governança decidiu? *Rubrica:* 3 = manter a política e financiar o treinamento no gerenciador;; 2 = os dois;; 1 = reverter;; 0 = nenhuma.
 - **EX050 — Habilidade principal.** Que habilidade Sofia mais valoriza? *Rubrica:* 3 = separar o que a evidência mostra do que as pessoas esperam;; 2 = evidência;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Revisão independente, uma defesa fundamentada e comunicação cuidadosa levam as descobertas de uma dissertação à prática com responsabilidade.
 
 <a id="worked-results"></a>
 
