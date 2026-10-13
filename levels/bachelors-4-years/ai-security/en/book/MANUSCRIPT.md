@@ -3125,7 +3125,7 @@ A charity with no IT staff cannot run a policy service or monitoring dashboard, 
 
 ### 36.7b Leaving the setting better
 
-A field placement with a community clinic ends with something the clinic can use without the student: a one-page checklist for reviewing a chatbot vendor, written in plain language and tested with the clinic manager. The student's report records what the clinic chose to adopt and what it set aside.
+A field placement ends with something the host organisation can use without the student: a one-page checklist for reviewing a chatbot vendor, written in plain language and tested with the clinic manager. The student's report records what the organisation chose to adopt and what it set aside.
 
 For the charity, Rina's report noted that the policy was adopted and the buying checklist was set aside. The charity's manager kept a copy of the policy and the settings notes, so a new staff member could be briefed without Rina.
 
