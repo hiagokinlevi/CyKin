@@ -3575,7 +3575,7 @@ Each worked result shows one defensible answer and explains what the rubric rewa
 
 **EX050 — Order of events.** Written order (ignoring offsets): 22:14:03 rly-01 login; 22:15:40 failed; 22:15:41 failed; 22:16:00 FLOW; 23:02:11 historian disk-quota error (the kiosk line has no time). UTC order: 22:02:11 historian; 22:14:03; 22:15:40; 22:15:41; 22:16:00. An investigator using written order would see the historian error 46 minutes *after* the failed root logins and might link it to them as an attack consequence; in UTC it happened *before*, so it cannot have been caused by them.
 
-**EX051 — Count what you drop.** Add `assert len(out) + bad == len(lines), "input/output mismatch"` (or exit with an error) after the loop; keep `unparsed_by_host` by taking the host as the third whitespace-separated token of unparsed lines where available (for the BSD line, `rly-01`). Output adds `unparsed by host: {'rly-01': 1}`. A rising unparsed count for one host means that source changed format or broke; every rule depending on it is silently blind, so the monitoring system should alert on it (Chapter 19).
+**EX051 — Count what you drop.** Add `assert len(out) + bad == len(lines), "input/output mismatch"` (or exit with an error) after the loop; keep `unparsed_by_host` by taking the host as the fourth whitespace-separated token of unparsed lines where available (for the BSD line, `rly-01`). Output adds `unparsed by host: {'rly-01': 1}`. A rising unparsed count for one host means that source changed format or broke; every rule depending on it is silently blind, so the monitoring system should alert on it (Chapter 19).
 
 ### Chapter 18: EX052–EX054
 

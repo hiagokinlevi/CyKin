@@ -22,11 +22,11 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 | 2 | [10](book/PLAN.md#ch-10) | Infraestructura crítica y seguridad sectorial: orientación | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-10) | [11 · Borrador](book/MANUSCRIPT.md#ch-11) |
 | 3 | [11](book/PLAN.md#ch-11) | Infraestructura crítica y seguridad sectorial: activos y contexto | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-11) | [12 · Borrador](book/MANUSCRIPT.md#ch-12) |
 | 3 | [12](book/PLAN.md#ch-12) | Infraestructura crítica y seguridad sectorial: flujos de datos | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-12) | [13 · Borrador](book/MANUSCRIPT.md#ch-13) |
-| 3 | [13](book/PLAN.md#ch-13) | Infraestructura crítica y seguridad sectorial: escenarios de riesgo | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-13) | [14 · Plan](book/PLAN.md#ch-14) |
-| 3 | [14](book/PLAN.md#ch-14) | Infraestructura crítica y seguridad sectorial: métodos I | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-14)) | [15 · Plan](book/PLAN.md#ch-15) |
-| 3 | [15](book/PLAN.md#ch-15) | Infraestructura crítica y seguridad sectorial: laboratorio guiado | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-15)) | [16 · Plan](book/PLAN.md#ch-16) |
-| 4 | [16](book/PLAN.md#ch-16) | Infraestructura crítica y seguridad sectorial: métodos II | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-16)) | [17 · Plan](book/PLAN.md#ch-17) |
-| 4 | [17](book/PLAN.md#ch-17) | Infraestructura crítica y seguridad sectorial: herramientas | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-17)) | [18 · Plan](book/PLAN.md#ch-18) |
+| 3 | [13](book/PLAN.md#ch-13) | Infraestructura crítica y seguridad sectorial: escenarios de riesgo | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-13) | [14 · Borrador](book/MANUSCRIPT.md#ch-14) |
+| 3 | [14](book/PLAN.md#ch-14) | Infraestructura crítica y seguridad sectorial: métodos I | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-14) | [15 · Borrador](book/MANUSCRIPT.md#ch-15) |
+| 3 | [15](book/PLAN.md#ch-15) | Infraestructura crítica y seguridad sectorial: laboratorio guiado | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-15) | [16 · Borrador](book/MANUSCRIPT.md#ch-16) |
+| 4 | [16](book/PLAN.md#ch-16) | Infraestructura crítica y seguridad sectorial: métodos II | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-16) | [17 · Borrador](book/MANUSCRIPT.md#ch-17) |
+| 4 | [17](book/PLAN.md#ch-17) | Infraestructura crítica y seguridad sectorial: herramientas | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-17) | [18 · Plan](book/PLAN.md#ch-18) |
 | 4 | [18](book/PLAN.md#ch-18) | Infraestructura crítica y seguridad sectorial: controles | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-18)) | [19 · Plan](book/PLAN.md#ch-19) |
 | 4 | [19](book/PLAN.md#ch-19) | Infraestructura crítica y seguridad sectorial: monitorización | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-19)) | [20 · Plan](book/PLAN.md#ch-20) |
 | 4 | [20](book/PLAN.md#ch-20) | Infraestructura crítica y seguridad sectorial: resolución de problemas | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-20)) | [21 · Plan](book/PLAN.md#ch-21) |
