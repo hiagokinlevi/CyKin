@@ -507,7 +507,7 @@ As relações de confiança mudam quando os fornecedores mudam; revise-as. Os pr
 
 - **EX028 — Cinco serviços.** Cite os cinco serviços de confiança que a prefeitura usa. *Rubrica:* 3 = AC pública, AC interna, assinatura de documentos, carimbo de tempo, assinaturas de webhooks de pagamento;; 2 = quatro;; 1 = dois;; 0 = nenhuma.
 
-- **EX029 — Confiança no webhook.** Quem confia em quem nos avisos de pagamento? *Rubrica:* 3 = a prefeitura confia na chave de webhook do provedor de pagamentos;; 2 = correto;; 1 = invertido;; 0 = nenhuma.
+- **EX029 — Confiança no webhook.** Quem confia em quem nos avisos de pagamento? *Rubrica:* 3 = a prefeitura confia na chave de webhook do provedor de pagamentos;; 2 = parcialmente correto;; 1 = invertido;; 0 = nenhuma.
 
 - **EX030 — Deveres de provedora.** Liste três responsabilidades de provedora nas decisões assinadas. *Rubrica:* 3 = três entre proteger a chave, documentar o processo, guardar evidências para a validação de longo prazo, revogar prontamente;; 2 = duas;; 1 = uma;; 0 = nenhuma.
 

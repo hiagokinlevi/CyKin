@@ -1701,7 +1701,7 @@ This book grants no authority to test real banks or payment systems. Labs use do
 
 ### Exercises
 
-- **EX049 — TLS vs AuthZ.** Does TLS fix IDOR? *Rubric:* 3 = no; 2 = no, without explanation; 1 = yes; 0 = none.
+- **EX049 — TLS vs AuthZ.** Does TLS fix IDOR? *Rubric:* 3 = no, because TLS does not fix authorization bugs; 2 = no, without explanation; 1 = yes; 0 = none.
 - **EX050 — Hard-coded key.** Why reject hard-coded AES keys in source? *Rubric:* 3 = key exposure in repo; not dual-control; 2 = partial; 1 = fine; 0 = none.
 - **EX051 — Hash use here.** What are SHA-256 digests used for in this course? *Rubric:* 3 = evidence integrity; 2 = partial; 1 = encrypting traffic; 0 = none.
 
@@ -3295,7 +3295,7 @@ This book grants no authority to test real banks or payment systems. Labs use do
 
 - **EX088 — Retest counts.** How many FIXED vs STILL OPEN? *Rubric:* 3 = 2 FIXED, 1 STILL OPEN; 2 = partial; 1 = all fixed; 0 = none.
 - **EX089 — Stop limit.** Stop message time limit? *Rubric:* 3 = two minutes; 2 = fast; 1 = next day; 0 = none.
-- **EX090 — F3 handling.** May the report close F3 without evidence? *Rubric:* 3 = no; 2 = no, without explanation; 1 = yes; 0 = none.
+- **EX090 — F3 handling.** May the report close F3 without evidence? *Rubric:* 3 = no; F3 stays open; 2 = no, without saying F3 stays open; 1 = yes; 0 = none.
 
 ### Synthesis
 
@@ -4281,7 +4281,7 @@ This book grants no authority to test real banks or payment systems. Labs use do
 
 - **EX112 — Statuses.** Name three diff statuses the tool prints. *Rubric:* 3 = only-in-docs, only-on-network, type conflict/match; 2 = two; 1 = one; 0 = none.
 - **EX113 — Corrupt file.** What should happen on corrupt YAML? *Rubric:* 3 = deny/fail closed with reason, non-zero exit; 2 = partial; 1 = empty success; 0 = none.
-- **EX114 — Network.** May the tool open network sockets? *Rubric:* 3 = no; 2 = no, without explanation; 1 = yes; 0 = none.
+- **EX114 — Network.** May the tool open network sockets? *Rubric:* 3 = no; it must run offline on local files; 2 = no, without explanation; 1 = yes; 0 = none.
 
 ### Synthesis
 
@@ -4433,7 +4433,7 @@ This book grants no authority to test real banks or payment systems. Labs use do
 
 - **EX115 — Independent.** Who should run the evaluation script? *Rubric:* 3 = another student/independent tester; 2 = only Sam; 1 = nobody; 0 = none.
 - **EX116 — Residual.** What residual risk remains after adoption? *Rubric:* 3 = still need ROE discipline / not a substitute for authorization; 2 = partial; 1 = zero risk; 0 = none.
-- **EX117 — Metric swap.** May Sam change metrics after seeing results? *Rubric:* 3 = no; 2 = no, without explanation; 1 = yes; 0 = none.
+- **EX117 — Metric swap.** May Sam change metrics after seeing results? *Rubric:* 3 = no; metrics stay as pre-registered; 2 = no, without explanation; 1 = yes; 0 = none.
 
 ### Synthesis
 

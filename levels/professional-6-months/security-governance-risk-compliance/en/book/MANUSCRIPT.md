@@ -633,7 +633,7 @@ Portfolios show selected work. Plans change with roles.
 - **EX057 — Data in portfolio.** What data did Lena remove from the portfolio? *Rubric:* 3 = real member or staff data;; 2 = real data;; 1 = vague;; 0 = none.
 - **EX058 — Sample challenge.** How would Lena answer a regulator questioning her sample size? *Rubric:* 3 = explain tolerable rate and confidence, offer to extend;; 2 = explain;; 1 = vague;; 0 = none.
 - **EX059 — Hardest part.** What did Lena find hardest? *Rubric:* 3 = resisting pressure to soften reports while keeping relationships;; 2 = pressure;; 1 = vague;; 0 = none.
-- **EX060 — Next role.** Which ownership will Lena take on next? *Rubric:* 3 = supplier risk;; 2 = supplier risk, without explanation;; 1 = vague;; 0 = none.
+- **EX060 — Next role.** Which ownership will Lena take on next? *Rubric:* 3 = supplier risk ownership;; 2 = supplier work in general, without risk ownership;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

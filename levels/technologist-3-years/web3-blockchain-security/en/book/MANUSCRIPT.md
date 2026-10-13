@@ -850,7 +850,7 @@ Controls without owners decay quietly as people come and go.
 
 - **EX052 — Timelock length.** How long is the administrator timelock? *Rubric:* 3 = 48 hours;; 2 = 48h;; 1 = 1 hour;; 0 = none.
 - **EX053 — Failed control test.** Which control test failed? *Rubric:* 3 = the cap was set higher than intended;; 2 = cap;; 1 = multisig;; 0 = none.
-- **EX054 — Signer list owner.** Who owns the multisig signer list? *Rubric:* 3 = the manager;; 2 = manager;; 1 = Lucas;; 0 = none.
+- **EX054 — Signer list owner.** Who owns the multisig signer list? *Rubric:* 3 = the manager;; 2 = manager, hedged with another option;; 1 = Lucas;; 0 = none.
 
 ### Synthesis
 

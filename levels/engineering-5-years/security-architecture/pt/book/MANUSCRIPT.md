@@ -2151,7 +2151,7 @@ Revisões proporcionais podem deixar passar problemas; seus limites precisam ser
 
 - **EX128 — Revisão proporcional.** O que incluiu a revisão da integração com bicicletas compartilhadas? *Rubrica:* 3 = verificação do gateway e dos tokens com escopo, verificação da classificação dos dados, modelagem de ameaças de uma hora, dois riscos residuais aceitos;; 2 = três;; 1 = vago;; 0 = nenhuma.
 
-- **EX129 — Área de desenvolvimento.** Que área de desenvolvimento seu supervisor apontou? *Rubrica:* 3 = negociação;; 2 = negociação, sem justificativa;; 1 = escrita;; 0 = nenhuma.
+- **EX129 — Área de desenvolvimento.** Que área de desenvolvimento seu supervisor apontou? *Rubrica:* 3 = negociação, ao lado do ponto forte na escrita clara;; 2 = apenas negociação;; 1 = escrita;; 0 = nenhuma.
 
 ### Síntese
 

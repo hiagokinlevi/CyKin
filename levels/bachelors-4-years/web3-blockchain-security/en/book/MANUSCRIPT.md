@@ -1021,7 +1021,7 @@ Assuming dependencies are stable leaves the system unprepared when they change o
 
 ### Exercises
 
-- **EX064 — Critical point.** Which component does the trace show is critical? *Rubric:* 3 = the issuing service;; 2 = issuing service;; 1 = the shop;; 0 = none.
+- **EX064 — Critical point.** Which component does the trace show is critical? *Rubric:* 3 = the issuing service;; 2 = issuing service, hedged with another option;; 1 = the shop;; 0 = none.
 - **EX065 — Compiler record.** Why record the exact compiler version? *Rubric:* 3 = outdated compilers are a known weakness class;; 2 = compiler risk;; 1 = style;; 0 = none.
 - **EX066 — Library response.** What happens if a library has a serious flaw? *Rubric:* 3 = stop the issuing service and mint manually with extra checks;; 2 = manual minting;; 1 = ignore;; 0 = none.
 

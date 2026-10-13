@@ -1757,7 +1757,7 @@ Automatic incident creation may cause noise. Framework mapping can become box-ti
 ### Exercises
 
 - **EX100 — Automatic action.** What happens when triage confirms a widely received malicious email? *Rubric:* 3 = an incident ticket opens and the email is removed;; 2 = ticket;; 1 = vague;; 0 = none.
-- **EX101 — CSF function.** Which CSF 2.0 function covers roles, policies and oversight? *Rubric:* 3 = Govern;; 2 = govern, without explanation;; 1 = Protect;; 0 = none.
+- **EX101 — CSF function.** Which CSF 2.0 function covers roles, policies and oversight? *Rubric:* 3 = Govern;; 2 = Govern, hedged with another function;; 1 = Protect;; 0 = none.
 - **EX102 — Risk evidence.** Which measure informs the payment fraud risk? *Rubric:* 3 = held change requests and verified fakes;; 2 = held requests;; 1 = vague;; 0 = none.
 
 ### Synthesis

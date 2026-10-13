@@ -478,7 +478,7 @@ As curvas combinadas dependem de premissas de correlação. Os limiares de apeti
 - **EX041 — Exemplo de apetite.** Dê o exemplo de limite de excedência. *Rubrica:* 3 = no máximo 5% de chance de passar de 1 milhão;; 2 = 5% em 1 milhão;; 1 = vago;; 0 = nenhuma.
 - **EX042 — Dentro do apetite.** Em que pontos a estimativa está dentro do apetite? *Rubrica:* 3 = 250 mil e 500 mil;; 2 = dois;; 1 = vago;; 0 = nenhuma.
 - **EX043 — Violação em um milhão.** Qual é a estimativa em um milhão em relação ao apetite? *Rubrica:* 3 = 8% contra 5%;; 2 = excede;; 1 = vago;; 0 = nenhuma.
-- **EX044 — Onde ocorre a violação.** Que parte da curva viola o apetite? *Rubrica:* 3 = a cauda;; 2 = cauda;; 1 = ano típico;; 0 = nenhuma.
+- **EX044 — Onde ocorre a violação.** Que parte da curva viola o apetite? *Rubrica:* 3 = a cauda;; 2 = cauda, hesitando com outra opção;; 1 = ano típico;; 0 = nenhuma.
 - **EX045 — Resposta sobre confiança.** Como Daniel respondeu se as estimativas eram confiáveis? *Rubrica:* 3 = explicou as entradas, a revisão da auditoria e as faixas;; 2 = transparência;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese

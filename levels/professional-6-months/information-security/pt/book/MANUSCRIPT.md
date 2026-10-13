@@ -69,15 +69,15 @@ Verificar sistemas sem concordância por escrito pode abalar a confiança mesmo 
 
 ### Exercícios
 
-- **EX001 — Duração do curso.** Quanto dura o curso de Daniel? *Rubrica:* 3 = seis meses;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX001 — Duração do curso.** Quanto dura o curso de Daniel? *Rubrica:* 3 = seis meses;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX002 — Registros de clientes.** Aproximadamente de quantos clientes a Corbridge guarda registros? *Rubrica:* 3 = cerca de dois mil;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX002 — Registros de clientes.** Aproximadamente de quantos clientes a Corbridge guarda registros? *Rubrica:* 3 = cerca de dois mil;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
 - **EX003 — Pergunta da liderança.** O que a Sra. Pike quer ver respondido? *Rubrica:* 3 = estamos fazendo as coisas certas, e o que vem a seguir;; 2 = as duas partes;; 1 = uma parte;; 0 = nenhuma.
 
-- **EX004 — Nota de escopo.** Por que Daniel obtém uma nota de escopo assinada? *Rubrica:* 3 = concordância por escrito antes de verificar;; 2 = correto;; 1 = vaga;; 0 = nenhuma.
+- **EX004 — Nota de escopo.** Por que Daniel obtém uma nota de escopo assinada? *Rubrica:* 3 = concordância por escrito antes de verificar;; 2 = parcialmente correto;; 1 = vaga;; 0 = nenhuma.
 
-- **EX005 — Programação necessária.** Daniel precisa escrever os scripts dos laboratórios? *Rubrica:* 3 = não, só lê-los e executá-los;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX005 — Programação necessária.** Daniel precisa escrever os scripts dos laboratórios? *Rubrica:* 3 = não, só lê-los e executá-los;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
 <a id="ch-02"></a>
 
@@ -117,13 +117,13 @@ Listar apenas os dados sensíveis deixa de fora os sistemas de que a empresa dep
 
 - **EX006 — Três objetivos.** Quais três objetivos a ISO/IEC 27000:2026 usa? *Rubrica:* 3 = confidencialidade, integridade, disponibilidade;; 2 = os três;; 1 = dois;; 0 = nenhuma.
 
-- **EX007 — Exemplo de integridade.** Dê um exemplo de integridade na Corbridge. *Rubrica:* 3 = os dados bancários de restituição dos clientes;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX007 — Exemplo de integridade.** Dê um exemplo de integridade na Corbridge. *Rubrica:* 3 = os dados bancários de restituição dos clientes;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX008 — Pico de disponibilidade.** Quando a disponibilidade importa mais? *Rubrica:* 3 = nas semanas antes dos prazos de entrega;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX008 — Pico de disponibilidade.** Quando a disponibilidade importa mais? *Rubrica:* 3 = nas semanas antes dos prazos de entrega;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX009 — Quarto item.** O que a Sra. Pike acrescentou à lista? *Rubrica:* 3 = a reputação de discrição da firma;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX009 — Quarto item.** O que a Sra. Pike acrescentou à lista? *Rubrica:* 3 = a reputação de discrição da firma;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX010 — Lição da dependência.** Por que perguntar sobre a dependência além da sensibilidade? *Rubrica:* 3 = sistemas pouco sensíveis ainda podem parar a empresa;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX010 — Lição da dependência.** Por que perguntar sobre a dependência além da sensibilidade? *Rubrica:* 3 = sistemas pouco sensíveis ainda podem parar a empresa;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-03"></a>
 
@@ -198,11 +198,11 @@ Tratar notas baseadas em julgamento como medições precisas esconde a incerteza
 
 - **EX011 — Principal risco.** Qual risco fica em primeiro lugar e com que nota? *Rubrica:* 3 = tomada da caixa postal por phishing, 16;; 2 = os dois;; 1 = um;; 0 = nenhuma.
 
-- **EX012 — Número de riscos altos.** Quantos riscos são altos? *Rubrica:* 3 = dois;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX012 — Número de riscos altos.** Quantos riscos são altos? *Rubrica:* 3 = dois;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX013 — Causa comum.** Com o que começam os dois riscos altos? *Rubrica:* 3 = um e-mail;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX013 — Causa comum.** Com o que começam os dois riscos altos? *Rubrica:* 3 = um e-mail;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX014 — Nota do fornecedor.** Por que acrescentar uma nota ao risco do fornecedor? *Rubrica:* 3 = nota baixa, mas pior caso grave;; 2 = correto;; 1 = vaga;; 0 = nenhuma.
+- **EX014 — Nota do fornecedor.** Por que acrescentar uma nota ao risco do fornecedor? *Rubrica:* 3 = nota baixa, mas pior caso grave;; 2 = parcialmente correto;; 1 = vaga;; 0 = nenhuma.
 
 - **EX015 — Boa frase de risco.** Como um risco deve ser escrito? *Rubrica:* 3 = causa e resultado numa frase curta;; 2 = os dois;; 1 = um;; 0 = nenhuma.
 
@@ -272,13 +272,13 @@ Um número geral de cobertura pode esconder lacunas nas contas mais poderosas.
 
 - **EX016 — Cobertura geral.** Qual é a cobertura geral de MFA? *Rubrica:* 3 = 44 de 70, 62,9 por cento;; 2 = os dois;; 1 = um;; 0 = nenhuma.
 
-- **EX017 — Administradores.** Quantos administradores usam MFA? *Rubrica:* 3 = 1 de 4;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX017 — Administradores.** Quantos administradores usam MFA? *Rubrica:* 3 = 1 de 4;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
 - **EX018 — Contas de serviço.** O que Daniel faz em relação às contas de serviço? *Rubrica:* 3 = restringe os locais de entrada, remove as sem uso;; 2 = os dois;; 1 = um;; 0 = nenhuma.
 
-- **EX019 — Argumento aos sócios.** Como a mudança deve ser explicada aos sócios? *Rubrica:* 3 = em termos do risco de fraude de faturas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX019 — Argumento aos sócios.** Como a mudança deve ser explicada aos sócios? *Rubrica:* 3 = em termos do risco de fraude de faturas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX020 — Quem vai primeiro.** Quem concorda em ativar a MFA primeiro? *Rubrica:* 3 = a Sra. Pike;; 2 = correto;; 1 = outra pessoa;; 0 = nenhuma.
+- **EX020 — Quem vai primeiro.** Quem concorda em ativar a MFA primeiro? *Rubrica:* 3 = a Sra. Pike;; 2 = parcialmente correto;; 1 = outra pessoa;; 0 = nenhuma.
 
 <a id="ch-05"></a>
 
@@ -318,13 +318,13 @@ Apagar registros antigos sem aprovação e sem log pode violar os deveres de ret
 
 - **EX021 — Itens da linha de base.** Cite três itens da linha de base dos notebooks. *Rubrica:* 3 = criptografia, atualizações, bloqueio de tela, contas padrão, apagamento remoto;; 2 = três;; 1 = dois;; 0 = nenhuma.
 
-- **EX022 — Conformidade.** Quantos notebooks cumpriam a linha de base depois de um mês? *Rubrica:* 3 = 55 de 60;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX022 — Conformidade.** Quantos notebooks cumpriam a linha de base depois de um mês? *Rubrica:* 3 = 55 de 60;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX023 — Arquivos antigos.** Por que remover os arquivos vencidos do servidor? *Rubrica:* 3 = risco sem benefício;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX023 — Arquivos antigos.** Por que remover os arquivos vencidos do servidor? *Rubrica:* 3 = risco sem benefício;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX024 — Regra do papel.** Que regra Daniel definiu para os originais em papel? *Rubrica:* 3 = devolvidos ou triturados em até duas semanas;; 2 = correto;; 1 = vaga;; 0 = nenhuma.
+- **EX024 — Regra do papel.** Que regra Daniel definiu para os originais em papel? *Rubrica:* 3 = devolvidos ou triturados em até duas semanas;; 2 = parcialmente correto;; 1 = vaga;; 0 = nenhuma.
 
-- **EX025 — Pen drives.** O que substituiu os pen drives? *Rubrica:* 3 = as pastas na nuvem já existentes;; 2 = correto;; 1 = outra coisa;; 0 = nenhuma.
+- **EX025 — Pen drives.** O que substituiu os pen drives? *Rubrica:* 3 = as pastas na nuvem já existentes;; 2 = parcialmente correto;; 1 = outra coisa;; 0 = nenhuma.
 
 <a id="ch-06"></a>
 
@@ -362,15 +362,15 @@ Ligar para um número informado no e-mail suspeito só leva ao criminoso.
 
 ### Exercícios
 
-- **EX026 — Padrão da fraude.** Como o desvio de pagamentos costuma funcionar? *Rubrica:* 3 = mensagem diz que os dados bancários mudaram;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX026 — Padrão da fraude.** Como o desvio de pagamentos costuma funcionar? *Rubrica:* 3 = mensagem diz que os dados bancários mudaram;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX027 — Número da ligação de volta.** Para qual número a equipe deve ligar? *Rubrica:* 3 = um já cadastrado;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX027 — Número da ligação de volta.** Para qual número a equipe deve ligar? *Rubrica:* 3 = um já cadastrado;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX028 — Mudanças urgentes.** Quem pode aprovar uma mudança no mesmo dia? *Rubrica:* 3 = apenas a sócia-gerente;; 2 = correto;; 1 = outra pessoa;; 0 = nenhuma.
+- **EX028 — Mudanças urgentes.** Quem pode aprovar uma mudança no mesmo dia? *Rubrica:* 3 = apenas a sócia-gerente;; 2 = parcialmente correto;; 1 = outra pessoa;; 0 = nenhuma.
 
-- **EX029 — Principal defesa.** O que continua sendo a principal defesa contra essa fraude? *Rubrica:* 3 = a regra de verificação;; 2 = correto;; 1 = outra coisa;; 0 = nenhuma.
+- **EX029 — Principal defesa.** O que continua sendo a principal defesa contra essa fraude? *Rubrica:* 3 = a regra de verificação;; 2 = parcialmente correto;; 1 = outra coisa;; 0 = nenhuma.
 
-- **EX030 — Tentativa barrada.** Quem barrou a tentativa de fraude? *Rubrica:* 3 = uma assistente da folha de pagamento;; 2 = correto;; 1 = outra pessoa;; 0 = nenhuma.
+- **EX030 — Tentativa barrada.** Quem barrou a tentativa de fraude? *Rubrica:* 3 = uma assistente da folha de pagamento;; 2 = parcialmente correto;; 1 = outra pessoa;; 0 = nenhuma.
 
 <a id="ch-07"></a>
 
@@ -408,15 +408,15 @@ Questionários genéricos e longos muitas vezes ficam sem resposta e deixam as l
 
 ### Exercícios
 
-- **EX031 — Acesso mais amplo.** Qual fornecedor tem o acesso mais amplo? *Rubrica:* 3 = a empresa de suporte;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX031 — Acesso mais amplo.** Qual fornecedor tem o acesso mais amplo? *Rubrica:* 3 = a empresa de suporte;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
 - **EX032 — Quatro perguntas.** Cite duas das perguntas de Daniel aos fornecedores. *Rubrica:* 3 = MFA, aviso de violação, local dos dados, fim do contrato;; 2 = duas;; 1 = uma;; 0 = nenhuma.
 
-- **EX033 — Conta compartilhada.** Que problema a empresa de suporte tinha? *Rubrica:* 3 = uma única conta de administrador compartilhada;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX033 — Conta compartilhada.** Que problema a empresa de suporte tinha? *Rubrica:* 3 = uma única conta de administrador compartilhada;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX034 — Dever de comunicação.** Em quanto tempo a empresa de suporte precisa comunicar incidentes? *Rubrica:* 3 = em até um dia útil;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX034 — Dever de comunicação.** Em quanto tempo a empresa de suporte precisa comunicar incidentes? *Rubrica:* 3 = em até um dia útil;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX035 — Plano para o fornecedor.** Por que planejar para uma violação no fornecedor, fora do controle da firma? *Rubrica:* 3 = a resposta está sob seu controle;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX035 — Plano para o fornecedor.** Por que planejar para uma violação no fornecedor, fora do controle da firma? *Rubrica:* 3 = a resposta está sob seu controle;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-08"></a>
 
@@ -454,13 +454,13 @@ Julgar a conscientização apenas pelas taxas de clique nos testes pode enganar 
 
 ### Exercícios
 
-- **EX036 — Duração da sessão.** Quanto dura cada sessão de conscientização? *Rubrica:* 3 = quinze minutos;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX036 — Duração da sessão.** Quanto dura cada sessão de conscientização? *Rubrica:* 3 = quinze minutos;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX037 — Lacuna nos desligamentos.** Por que as contas de quem saía eram desativadas com atraso? *Rubrica:* 3 = o RH mandava e-mail à empresa de suporte quando se lembrava;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX037 — Lacuna nos desligamentos.** Por que as contas de quem saía eram desativadas com atraso? *Rubrica:* 3 = o RH mandava e-mail à empresa de suporte quando se lembrava;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX038 — Verificação mensal.** O que Daniel compara todo mês? *Rubrica:* 3 = a lista de contas com a da folha de pagamento;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX038 — Verificação mensal.** O que Daniel compara todo mês? *Rubrica:* 3 = a lista de contas com a da folha de pagamento;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX039 — Comunicações obtidas.** Quantas mensagens suspeitas foram comunicadas no mês seguinte? *Rubrica:* 3 = nove;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX039 — Comunicações obtidas.** Quantas mensagens suspeitas foram comunicadas no mês seguinte? *Rubrica:* 3 = nove;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
 - **EX040 — Medida melhor.** Por que evitar julgar pelas taxas de clique nos testes? *Rubrica:* 3 = variam com a dificuldade, causam ressentimento;; 2 = os dois;; 1 = um;; 0 = nenhuma.
 
@@ -500,15 +500,15 @@ Redefinir uma senha sem remover as regras de encaminhamento deixa o atacante rec
 
 ### Exercícios
 
-- **EX041 — Coordenador.** Quem coordena os incidentes na Corbridge? *Rubrica:* 3 = Daniel;; 2 = correto;; 1 = outra pessoa;; 0 = nenhuma.
+- **EX041 — Coordenador.** Quem coordena os incidentes na Corbridge? *Rubrica:* 3 = Daniel;; 2 = parcialmente correto;; 1 = outra pessoa;; 0 = nenhuma.
 
-- **EX042 — Regra escondida.** O que o atacante tinha acrescentado à caixa postal? *Rubrica:* 3 = uma regra de encaminhamento para um endereço externo;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX042 — Regra escondida.** O que o atacante tinha acrescentado à caixa postal? *Rubrica:* 3 = uma regra de encaminhamento para um endereço externo;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX043 — Motivo da notificação.** Por que o incidente passou a exigir notificação? *Rubrica:* 3 = os e-mails encaminhados continham documentos de identidade de clientes;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX043 — Motivo da notificação.** Por que o incidente passou a exigir notificação? *Rubrica:* 3 = os e-mails encaminhados continham documentos de identidade de clientes;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX044 — Causa raiz.** Qual foi a causa raiz? *Rubrica:* 3 = senha roubada sem segundo fator;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
+- **EX044 — Causa raiz.** Qual foi a causa raiz? *Rubrica:* 3 = senha roubada sem segundo fator;; 2 = parcialmente correto;; 1 = parcial;; 0 = nenhuma.
 
-- **EX045 — Nova verificação.** Que verificação mensal foi acrescentada? *Rubrica:* 3 = regras de encaminhamento para endereços externos;; 2 = correto;; 1 = vaga;; 0 = nenhuma.
+- **EX045 — Nova verificação.** Que verificação mensal foi acrescentada? *Rubrica:* 3 = regras de encaminhamento para endereços externos;; 2 = parcialmente correto;; 1 = vaga;; 0 = nenhuma.
 
 <a id="ch-10"></a>
 
@@ -548,13 +548,13 @@ Presumir que um provedor de nuvem faz backup dos seus dados pode deixar os itens
 
 - **EX046 — Serviços principais.** Quais três serviços precisam voltar depressa? *Rubrica:* 3 = e-mail, software de contabilidade, portal dos clientes;; 2 = os três;; 1 = dois;; 0 = nenhuma.
 
-- **EX047 — Tempo de restauração.** Quanto tempo levou a restauração da caixa postal? *Rubrica:* 3 = seis horas;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX047 — Tempo de restauração.** Quanto tempo levou a restauração da caixa postal? *Rubrica:* 3 = seis horas;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX048 — Disco na mesma sala.** O que havia de errado com o backup do servidor de arquivos? *Rubrica:* 3 = copiava para um disco na mesma sala;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX048 — Disco na mesma sala.** O que havia de errado com o backup do servidor de arquivos? *Rubrica:* 3 = copiava para um disco na mesma sala;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX049 — Lacuna do exercício.** Que lacuna o exercício de mesa encontrou? *Rubrica:* 3 = ninguém sabia pedir prorrogação de prazo;; 2 = correto;; 1 = vaga;; 0 = nenhuma.
+- **EX049 — Lacuna do exercício.** Que lacuna o exercício de mesa encontrou? *Rubrica:* 3 = ninguém sabia pedir prorrogação de prazo;; 2 = parcialmente correto;; 1 = vaga;; 0 = nenhuma.
 
-- **EX050 — Revisão do plano.** Quando o plano deve ser revisado? *Rubrica:* 3 = antes de cada temporada de muito trabalho;; 2 = correto;; 1 = outra resposta;; 0 = nenhuma.
+- **EX050 — Revisão do plano.** Quando o plano deve ser revisado? *Rubrica:* 3 = antes de cada temporada de muito trabalho;; 2 = parcialmente correto;; 1 = outra resposta;; 0 = nenhuma.
 
 <a id="ch-11"></a>
 
@@ -592,15 +592,15 @@ Uma política longa de modelo que ninguém lê dá uma falsa sensação de confo
 
 ### Exercícios
 
-- **EX051 — Tamanho da política.** Qual é o tamanho da nova política de Daniel? *Rubrica:* 3 = duas páginas;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX051 — Tamanho da política.** Qual é o tamanho da nova política de Daniel? *Rubrica:* 3 = duas páginas;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX052 — Procedimentos.** Onde ficam os procedimentos detalhados? *Rubrica:* 3 = em documentos separados e vinculados;; 2 = correto;; 1 = outro lugar;; 0 = nenhuma.
+- **EX052 — Procedimentos.** Onde ficam os procedimentos detalhados? *Rubrica:* 3 = em documentos separados e vinculados;; 2 = parcialmente correto;; 1 = outro lugar;; 0 = nenhuma.
 
 - **EX053 — Custo da certificação.** O que a certificação exige? *Rubrica:* 3 = sistema de gestão, auditorias internas e externa anual;; 2 = tudo;; 1 = parte;; 0 = nenhuma.
 
-- **EX054 — Caminho intermediário.** O que Daniel recomendou em vez de certificar agora? *Rubrica:* 3 = alinhar-se às ideias principais da norma;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX054 — Caminho intermediário.** O que Daniel recomendou em vez de certificar agora? *Rubrica:* 3 = alinhar-se às ideias principais da norma;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX055 — Orientação jurídica.** Quem deve confirmar os pontos jurídicos? *Rubrica:* 3 = o consultor de proteção de dados;; 2 = correto;; 1 = outra pessoa;; 0 = nenhuma.
+- **EX055 — Orientação jurídica.** Quem deve confirmar os pontos jurídicos? *Rubrica:* 3 = o consultor de proteção de dados;; 2 = parcialmente correto;; 1 = outra pessoa;; 0 = nenhuma.
 
 <a id="ch-12"></a>
 
@@ -638,15 +638,15 @@ Os relatórios cheios de detalhes técnicos sem decisões claras muitas vezes s�
 
 ### Exercícios
 
-- **EX056 — Ordem do relatório.** O que deve vir primeiro no relatório aos sócios? *Rubrica:* 3 = as decisões necessárias;; 2 = correto;; 1 = outra coisa;; 0 = nenhuma.
+- **EX056 — Ordem do relatório.** O que deve vir primeiro no relatório aos sócios? *Rubrica:* 3 = as decisões necessárias;; 2 = parcialmente correto;; 1 = outra coisa;; 0 = nenhuma.
 
 - **EX057 — Cinco medidas.** Cite três das cinco medidas. *Rubrica:* 3 = MFA, linha de base, dias de desligamento, comunicações, teste de restauração;; 2 = três;; 1 = duas;; 0 = nenhuma.
 
-- **EX058 — Mudança da cobertura.** Como mudou a cobertura do segundo fator? *Rubrica:* 3 = de 62,9 por cento para todas as contas de pessoas;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
+- **EX058 — Mudança da cobertura.** Como mudou a cobertura do segundo fator? *Rubrica:* 3 = de 62,9 por cento para todas as contas de pessoas;; 2 = parcialmente correto;; 1 = parcial;; 0 = nenhuma.
 
-- **EX059 — Próximo cenário.** Que cenário o próximo exercício de mesa vai usar? *Rubrica:* 3 = ransomware;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX059 — Próximo cenário.** Que cenário o próximo exercício de mesa vai usar? *Rubrica:* 3 = ransomware;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX060 — Próximo curso.** Que curso Daniel faz em seguida? *Rubrica:* 3 = governança de dados;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX060 — Próximo curso.** Que curso Daniel faz em seguida? *Rubrica:* 3 = governança de dados;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
 <a id="worked-results"></a>
 

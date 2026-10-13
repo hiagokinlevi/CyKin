@@ -2414,7 +2414,7 @@ Template systems can be extended unsafely; review each new template.
 ### Exercises
 
 - **EX136 — Expiry bug.** What test failed in verification? *Rubric:* 3 = an expired study could run due to a time-zone date format;; 2 = mentions expiry;; 1 = vague;; 0 = none.
-- **EX137 — Attack result.** What did the reconstruction attack recover? *Rubric:* 3 = no individual's data;; 2 = none;; 1 = partial;; 0 = no answer.
+- **EX137 — Attack result.** What did the reconstruction attack recover? *Rubric:* 3 = nothing about any individual, because noise and the budget stopped it;; 2 = nothing, without the reason;; 1 = partial;; 0 = no answer.
 - **EX138 — Researcher view.** How did researchers judge the template approach? *Rubric:* 3 = restrictive but workable; asked for one more template;; 2 = mentions restriction;; 1 = ideal;; 0 = none.
 
 ### Synthesis

@@ -69,11 +69,11 @@ Describing problems technically rather than by business effect loses managers' a
 
 ### Exercises
 
-- **EX001 — Course format.** What kind of course is Lucía taking? *Rubric:* 3 = a part-time practitioner postgraduate diploma;; 2 = correct;; 1 = partial;; 0 = none.
-- **EX002 — Shipment volume.** About how many shipments does Corran handle daily? *Rubric:* 3 = about twelve thousand;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX003 — Report mismatch.** What is wrong with the board report definitions? *Rubric:* 3 = they differ from customer contract definitions;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX004 — Insider risk.** What risk do insiders face in research? *Rubric:* 3 = missing what outsiders see and hesitating to challenge;; 2 = correct;; 1 = partial;; 0 = none.
-- **EX005 — Problem framing.** How should problems be described? *Rubric:* 3 = by business effect;; 2 = correct;; 1 = technical;; 0 = none.
+- **EX001 — Course format.** What kind of course is Lucía taking? *Rubric:* 3 = a part-time practitioner postgraduate diploma;; 2 = partly correct;; 1 = partial;; 0 = none.
+- **EX002 — Shipment volume.** About how many shipments does Corran handle daily? *Rubric:* 3 = about twelve thousand;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX003 — Report mismatch.** What is wrong with the board report definitions? *Rubric:* 3 = they differ from customer contract definitions;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX004 — Insider risk.** What risk do insiders face in research? *Rubric:* 3 = missing what outsiders see and hesitating to challenge;; 2 = partly correct;; 1 = partial;; 0 = none.
+- **EX005 — Problem framing.** How should problems be described? *Rubric:* 3 = by business effect;; 2 = partly correct;; 1 = technical;; 0 = none.
 
 <a id="ch-02"></a>
 
@@ -111,11 +111,11 @@ Launching governance across all data at once spreads effort too thin.
 
 ### Exercises
 
-- **EX006 — Chosen model.** Which model did Lucía propose? *Rubric:* 3 = federated;; 2 = correct;; 1 = other;; 0 = none.
-- **EX007 — Office size.** How many people staff the central office? *Rubric:* 3 = two;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX008 — Group chair.** Who chairs the governance group? *Rubric:* 3 = the chief operating officer;; 2 = correct;; 1 = other;; 0 = none.
+- **EX006 — Chosen model.** Which model did Lucía propose? *Rubric:* 3 = federated;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX007 — Office size.** How many people staff the central office? *Rubric:* 3 = two;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX008 — Group chair.** Who chairs the governance group? *Rubric:* 3 = the chief operating officer;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX009 — Mandate mapping.** What three activities did Lucía map the mandate to? *Rubric:* 3 = evaluate, direct, monitor;; 2 = all;; 1 = some;; 0 = none.
-- **EX010 — First data set.** Which data set comes first? *Rubric:* 3 = shipment tracking;; 2 = correct;; 1 = other;; 0 = none.
+- **EX010 — First data set.** Which data set comes first? *Rubric:* 3 = shipment tracking;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="ch-03"></a>
 
@@ -153,11 +153,11 @@ Assigning ownership to whoever uses data most ignores who controls its creation.
 
 ### Exercises
 
-- **EX011 — Tracking owner.** Who owns tracking events? *Rubric:* 3 = the operations director;; 2 = correct;; 1 = other;; 0 = none.
-- **EX012 — Partner distinction.** What stays with carriers? *Rubric:* 3 = ownership of the source data;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX013 — Statement gap.** What gap did statements reveal? *Rubric:* 3 = no authority to approve new data uses;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX014 — Test question.** What test question did Lucía use? *Rubric:* 3 = whether sales may share tracking histories with an insurer;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX015 — Signing.** Who signs ownership statements? *Rubric:* 3 = the owners;; 2 = correct;; 1 = other;; 0 = none.
+- **EX011 — Tracking owner.** Who owns tracking events? *Rubric:* 3 = the operations director;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX012 — Partner distinction.** What stays with carriers? *Rubric:* 3 = ownership of the source data;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX013 — Statement gap.** What gap did statements reveal? *Rubric:* 3 = no authority to approve new data uses;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX014 — Test question.** What test question did Lucía use? *Rubric:* 3 = whether sales may share tracking histories with an insurer;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX015 — Signing.** Who signs ownership statements? *Rubric:* 3 = the owners;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="ch-04"></a>
 
@@ -195,11 +195,11 @@ Measuring quality without fixing causes only documents decline.
 
 ### Exercises
 
-- **EX016 — Proof contents.** What must proof of delivery include? *Rubric:* 3 = time and signature or photograph;; 2 = correct;; 1 = partial;; 0 = none.
-- **EX017 — Costliest failure.** Which failure cost most? *Rubric:* 3 = missing proof of delivery;; 2 = correct;; 1 = other;; 0 = none.
-- **EX018 — Carrier cause.** Why were a carrier's proofs missing? *Rubric:* 3 = paper notes scanned days later;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX019 — Device fix.** How were Corran devices fixed? *Rubric:* 3 = store proofs offline and send later;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX020 — Cycle value.** Where does the quality cycle's value lie? *Rubric:* 3 = the improve step;; 2 = correct;; 1 = measure;; 0 = none.
+- **EX016 — Proof contents.** What must proof of delivery include? *Rubric:* 3 = time and signature or photograph;; 2 = partly correct;; 1 = partial;; 0 = none.
+- **EX017 — Costliest failure.** Which failure cost most? *Rubric:* 3 = missing proof of delivery;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX018 — Carrier cause.** Why were a carrier's proofs missing? *Rubric:* 3 = paper notes scanned days later;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX019 — Device fix.** How were Corran devices fixed? *Rubric:* 3 = store proofs offline and send later;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX020 — Cycle value.** Where does the quality cycle's value lie? *Rubric:* 3 = the improve step;; 2 = partly correct;; 1 = measure;; 0 = none.
 
 <a id="ch-05"></a>
 
@@ -257,11 +257,11 @@ Comparing partners without considering conditions can be unfair.
 
 ### Exercises
 
-- **EX021 — Timeliness definition.** How did Lucía define timeliness? *Rubric:* 3 = delay between event and receipt by Corran;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX022 — Carrier C share.** What share of Carrier C events arrived within fifteen minutes? *Rubric:* 3 = 51.0%;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX023 — Fairness factor.** What might partly explain Carrier C's delays? *Rubric:* 3 = more rural routes with weaker signal;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX024 — Real cause.** What did Carrier C reveal as the cause? *Rubric:* 3 = batching events every half hour;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX025 — Agreement change.** What was added to renewing agreements? *Rubric:* 3 = timeliness targets;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX021 — Timeliness definition.** How did Lucía define timeliness? *Rubric:* 3 = delay between event and receipt by Corran;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX022 — Carrier C share.** What share of Carrier C events arrived within fifteen minutes? *Rubric:* 3 = 51.0%;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX023 — Fairness factor.** What might partly explain Carrier C's delays? *Rubric:* 3 = more rural routes with weaker signal;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX024 — Real cause.** What did Carrier C reveal as the cause? *Rubric:* 3 = batching events every half hour;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX025 — Agreement change.** What was added to renewing agreements? *Rubric:* 3 = timeliness targets;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-06"></a>
 
@@ -299,11 +299,11 @@ Excluding records with missing events inflates performance figures.
 
 ### Exercises
 
-- **EX026 — Contract definition.** How do contracts define on time? *Rubric:* 3 = within the promised delivery window;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX027 — Exclusion finding.** What did lineage reveal? *Rubric:* 3 = shipments without delivery events were excluded;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX028 — Catalogue platform.** Where did Lucía build catalogue entries? *Rubric:* 3 = the company wiki;; 2 = correct;; 1 = other;; 0 = none.
-- **EX029 — Bridge period.** How long were both figures shown? *Rubric:* 3 = three months;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX030 — Old measure name.** What was the old measure renamed? *Rubric:* 3 = same-day delivery;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX026 — Contract definition.** How do contracts define on time? *Rubric:* 3 = within the promised delivery window;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX027 — Exclusion finding.** What did lineage reveal? *Rubric:* 3 = shipments without delivery events were excluded;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX028 — Catalogue platform.** Where did Lucía build catalogue entries? *Rubric:* 3 = the company wiki;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX029 — Bridge period.** How long were both figures shown? *Rubric:* 3 = three months;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX030 — Old measure name.** What was the old measure renamed? *Rubric:* 3 = same-day delivery;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-07"></a>
 
@@ -367,11 +367,11 @@ Clean-ups without process changes decay quickly.
 
 ### Exercises
 
-- **EX031 — Stale share.** What share of accounts were unused over ninety days? *Rubric:* 3 = 12.5% (30 of 240);; 2 = correct;; 1 = partial;; 0 = none.
-- **EX032 — Highest priority.** Which accounts were highest priority? *Rubric:* 3 = the two both stale and unapproved;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX033 — Long-leave handling.** How were long-leave accounts handled? *Rubric:* 3 = kept with a note and expiry date;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX034 — Request change.** How did IT change the request process? *Rubric:* 3 = new access requires recorded owner approval;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX035 — Leaver control.** How are leavers' accounts handled? *Rubric:* 3 = disabled through the HR leaver process;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX031 — Stale share.** What share of accounts were unused over ninety days? *Rubric:* 3 = 12.5% (30 of 240);; 2 = partly correct;; 1 = partial;; 0 = none.
+- **EX032 — Highest priority.** Which accounts were highest priority? *Rubric:* 3 = the two both stale and unapproved;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX033 — Long-leave handling.** How were long-leave accounts handled? *Rubric:* 3 = kept with a note and expiry date;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX034 — Request change.** How did IT change the request process? *Rubric:* 3 = new access requires recorded owner approval;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX035 — Leaver control.** How are leavers' accounts handled? *Rubric:* 3 = disabled through the HR leaver process;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-08"></a>
 
@@ -409,11 +409,11 @@ New uses of employee data without notice breach purpose limitation.
 
 ### Exercises
 
-- **EX036 — Unannounced use.** What unannounced use did Lucía find? *Rubric:* 3 = monitoring driver break times;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX037 — Location retention.** How long is detailed location data kept? *Rubric:* 3 = ninety days;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX038 — Driver objection.** What did drivers object to? *Rubric:* 3 = minute-by-minute break monitoring;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX039 — Discipline safeguard.** What safeguard applies to disciplinary use? *Rubric:* 3 = second manager review with representative present;; 2 = correct;; 1 = partial;; 0 = none.
-- **EX040 — Off-duty data.** What happens to location data outside working hours? *Rubric:* 3 = switched off;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX036 — Unannounced use.** What unannounced use did Lucía find? *Rubric:* 3 = monitoring driver break times;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX037 — Location retention.** How long is detailed location data kept? *Rubric:* 3 = ninety days;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX038 — Driver objection.** What did drivers object to? *Rubric:* 3 = minute-by-minute break monitoring;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX039 — Discipline safeguard.** What safeguard applies to disciplinary use? *Rubric:* 3 = second manager review with representative present;; 2 = partly correct;; 1 = partial;; 0 = none.
+- **EX040 — Off-duty data.** What happens to location data outside working hours? *Rubric:* 3 = switched off;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-09"></a>
 
@@ -451,11 +451,11 @@ Contracts negotiated on commercial terms alone often omit data obligations.
 
 ### Exercises
 
-- **EX041 — Missing terms.** What was missing from the platform vendor contract? *Rubric:* 3 = GDPR Article 28 processor terms;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX042 — Carrier clause focus.** Which clauses matter most for carriers? *Rubric:* 3 = quality obligations;; 2 = correct;; 1 = other;; 0 = none.
-- **EX043 — Vendor assurance.** What does Lucía request from the vendor annually? *Rubric:* 3 = its independent security assurance report;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX044 — Three-month miss.** What happens after three months of missed targets? *Rubric:* 3 = a joint improvement plan;; 2 = correct;; 1 = penalties;; 0 = none.
-- **EX045 — Exit check.** What did Lucía confirm when changing fuel card provider? *Rubric:* 3 = written confirmation of deletion;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX041 — Missing terms.** What was missing from the platform vendor contract? *Rubric:* 3 = GDPR Article 28 processor terms;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX042 — Carrier clause focus.** Which clauses matter most for carriers? *Rubric:* 3 = quality obligations;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX043 — Vendor assurance.** What does Lucía request from the vendor annually? *Rubric:* 3 = its independent security assurance report;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX044 — Three-month miss.** What happens after three months of missed targets? *Rubric:* 3 = a joint improvement plan;; 2 = partly correct;; 1 = penalties;; 0 = none.
+- **EX045 — Exit check.** What did Lucía confirm when changing fuel card provider? *Rubric:* 3 = written confirmation of deletion;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-10"></a>
 
@@ -493,11 +493,11 @@ Claiming full credit for improvements with several causes damages credibility.
 
 ### Exercises
 
-- **EX046 — Activity metric.** What kind of metric did Lucía avoid? *Rubric:* 3 = activity-only metrics such as meetings held;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX047 — Report length.** How long is the quarterly report? *Rubric:* 3 = two pages;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX048 — Other cause.** What other factor might reduce disputes? *Rubric:* 3 = a new customer contract template;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX046 — Activity metric.** What kind of metric did Lucía avoid? *Rubric:* 3 = activity-only metrics such as meetings held;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX047 — Report length.** How long is the quarterly report? *Rubric:* 3 = two pages;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX048 — Other cause.** What other factor might reduce disputes? *Rubric:* 3 = a new customer contract template;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX049 — Board approvals.** What did the board approve? *Rubric:* 3 = customer master data funding and a sharing approval policy;; 2 = both;; 1 = one;; 0 = none.
-- **EX050 — Report purpose.** What turned the report into action? *Rubric:* 3 = asking for specific decisions;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX050 — Report purpose.** What turned the report into action? *Rubric:* 3 = asking for specific decisions;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-11"></a>
 
@@ -536,10 +536,10 @@ Evaluating without a baseline makes improvement impossible to show.
 ### Exercises
 
 - **EX051 — Address problem.** What problems did address differences cause? *Rubric:* 3 = misdelivered invoices and failed deliveries;; 2 = both;; 1 = one;; 0 = none.
-- **EX052 — Delivery authority.** Which system is authoritative for delivery addresses? *Rubric:* 3 = the order system;; 2 = correct;; 1 = billing;; 0 = none.
-- **EX053 — Surprise.** What unexpected issue appeared? *Rubric:* 3 = customers with several valid delivery sites;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX054 — Coinciding change.** What coinciding change did Lucía find? *Rubric:* 3 = a seasonal drop in volume;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX055 — Validation method.** How are addresses validated at entry? *Rubric:* 3 = a postcode lookup;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX052 — Delivery authority.** Which system is authoritative for delivery addresses? *Rubric:* 3 = the order system;; 2 = partly correct;; 1 = billing;; 0 = none.
+- **EX053 — Surprise.** What unexpected issue appeared? *Rubric:* 3 = customers with several valid delivery sites;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX054 — Coinciding change.** What coinciding change did Lucía find? *Rubric:* 3 = a seasonal drop in volume;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX055 — Validation method.** How are addresses validated at entry? *Rubric:* 3 = a postcode lookup;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-12"></a>
 
@@ -577,11 +577,11 @@ Capstones that end without ownership for sustaining changes fade.
 
 ### Exercises
 
-- **EX056 — Sustaining rules.** Who owns the weekly address review afterwards? *Rubric:* 3 = the sales steward;; 2 = correct;; 1 = other;; 0 = none.
-- **EX057 — Seasonality method.** How did Lucía address seasonality? *Rubric:* 3 = comparison with the same period the previous year;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX058 — Hindsight.** What would Lucía do differently? *Rubric:* 3 = check customer site structures before designing rules;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX059 — New role.** What role does Lucía take next? *Rubric:* 3 = data governance lead;; 2 = correct;; 1 = other;; 0 = none.
-- **EX060 — Proposed extension.** Which data are governed next? *Rubric:* 3 = invoice data;; 2 = correct;; 1 = other;; 0 = none.
+- **EX056 — Sustaining rules.** Who owns the weekly address review afterwards? *Rubric:* 3 = the sales steward;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX057 — Seasonality method.** How did Lucía address seasonality? *Rubric:* 3 = comparison with the same period the previous year;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX058 — Hindsight.** What would Lucía do differently? *Rubric:* 3 = check customer site structures before designing rules;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX059 — New role.** What role does Lucía take next? *Rubric:* 3 = data governance lead;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX060 — Proposed extension.** Which data are governed next? *Rubric:* 3 = invoice data;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="worked-results"></a>
 

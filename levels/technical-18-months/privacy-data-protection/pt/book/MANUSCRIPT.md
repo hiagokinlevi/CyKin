@@ -153,7 +153,7 @@ Perfis estreitos podem bloquear tarefas urgentes; defina um caminho de acesso de
 
 - **EX009 — Problema do login compartilhado.** Por que os logins compartilhados são um problema de privacidade? *Rubrica:* 3 = ninguém consegue saber quem abriu um prontuário;; 2 = menciona responsabilização;; 1 = vago;; 0 = nenhuma.
 - **EX010 — Acesso da recepção.** De que a recepção precisa no sistema clínico? *Rubrica:* 3 = consultas, contatos, situação de pagamento;; 2 = a maioria;; 1 = anotações;; 0 = nenhuma.
-- **EX011 — Contas de administrador.** Quantas contas de administrador restaram? *Rubrica:* 3 = quatro de vinte e três;; 2 = correta;; 1 = errada;; 0 = nenhuma.
+- **EX011 — Contas de administrador.** Quantas contas de administrador restaram? *Rubrica:* 3 = quatro de vinte e três;; 2 = parcialmente correta;; 1 = errada;; 0 = nenhuma.
 - **EX012 — Controle dos substitutos.** Como as contas dos substitutos são controladas agora? *Rubrica:* 3 = datas de término ligadas à escala;; 2 = menciona data de término;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-04"></a>
@@ -192,9 +192,9 @@ As regras de validação precisam de atualização quando os sistemas mudam o fo
 
 ### Exercícios
 
-- **EX013 — Campo aninhado.** Que campo desnecessário Leila encontrou na exportação JSON? *Rubrica:* 3 = histórico médico dentro das consultas;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX013 — Campo aninhado.** Que campo desnecessário Leila encontrou na exportação JSON? *Rubrica:* 3 = histórico médico dentro das consultas;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 - **EX014 — Saída do script.** Por que os scripts devem evitar imprimir nomes? *Rubrica:* 3 = as saídas acabam em chamados e chats;; 2 = menciona propagação;; 1 = vago;; 0 = nenhuma.
-- **EX015 — Ação da validação.** O que o script faz quando a validação falha? *Rubrica:* 3 = para com uma mensagem clara;; 2 = correta;; 1 = adivinha;; 0 = nenhuma.
+- **EX015 — Ação da validação.** O que o script faz quando a validação falha? *Rubrica:* 3 = para com uma mensagem clara;; 2 = parcialmente correta;; 1 = adivinha;; 0 = nenhuma.
 - **EX016 — Arquivos temporários.** Como os arquivos temporários são tratados? *Rubrica:* 3 = módulo tempfile, removidos no fim;; 2 = menciona remoção;; 1 = mantidos;; 0 = nenhuma.
 
 <a id="ch-05"></a>
@@ -236,7 +236,7 @@ O escopo se alarga aos poucos; confira-o de novo antes de cada nova tarefa.
 - **EX017 — Exclusões do escopo.** O que o primeiro escopo de Leila excluía? *Rubrica:* 3 = prontuários reais e infraestrutura do fornecedor;; 2 = os dois;; 1 = um;; 0 = nenhuma.
 - **EX018 — Pedido recusado.** Por que Leila se recusou a ver um prontuário real? *Rubrica:* 3 = fora do escopo; reproduzir com dados sintéticos;; 2 = menciona escopo;; 1 = vago;; 0 = nenhuma.
 - **EX019 — Campos da evidência.** O que cada registro de achado inclui? *Rubrica:* 3 = data, hora, sistema, método, observação, captura de tela;; 2 = a maioria;; 1 = poucos;; 0 = nenhuma.
-- **EX020 — Finalidade do hash.** O que o hash das evidências comprova? *Rubrica:* 3 = integridade, não confidencialidade;; 2 = correta;; 1 = confidencialidade;; 0 = nenhuma.
+- **EX020 — Finalidade do hash.** O que o hash das evidências comprova? *Rubrica:* 3 = integridade, não confidencialidade;; 2 = parcialmente correta;; 1 = confidencialidade;; 0 = nenhuma.
 
 <a id="ch-06"></a>
 
@@ -275,9 +275,9 @@ As bases legais são decididas pelo controlador, com aconselhamento; a equipe t�
 ### Exercícios
 
 - **EX021 — Estrutura do modelo.** Como o modelo de tratamento de Leila é organizado? *Rubrica:* 3 = por finalidade, como o registro do artigo 30;; 2 = menciona finalidade;; 1 = só sistemas;; 0 = nenhuma.
-- **EX022 — Condição do atendimento.** Que condição do artigo 9 apoia o atendimento? *Rubrica:* 3 = artigo 9(2)(h);; 2 = correta;; 1 = consentimento;; 0 = nenhuma.
-- **EX023 — Lacuna das entregas.** Que lacuna Leila encontrou no serviço de entregas? *Rubrica:* 3 = nenhum contrato de operador;; 2 = correta;; 1 = vago;; 0 = nenhuma.
-- **EX024 — Possível transferência.** Que possível transferência Leila sinalizou? *Rubrica:* 3 = o suporte do provedor de SMS fora da UE;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX022 — Condição do atendimento.** Que condição do artigo 9 apoia o atendimento? *Rubrica:* 3 = artigo 9(2)(h);; 2 = parcialmente correta;; 1 = consentimento;; 0 = nenhuma.
+- **EX023 — Lacuna das entregas.** Que lacuna Leila encontrou no serviço de entregas? *Rubrica:* 3 = nenhum contrato de operador;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
+- **EX024 — Possível transferência.** Que possível transferência Leila sinalizou? *Rubrica:* 3 = o suporte do provedor de SMS fora da UE;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-07"></a>
 
@@ -349,7 +349,7 @@ As expressões regulares deixam passar formatos incomuns; revise amostras à mã
 - **EX025 — Parcela dos logs.** Que parcela das linhas de log tinha dados pessoais? *Rubrica:* 3 = 95 de 400, 23,8%;; 2 = aproximada;; 1 = errada;; 0 = nenhuma.
 - **EX026 — Correção na origem.** O que o desenvolvedor mudou? *Rubrica:* 3 = registrar números de reserva e dígitos parciais do telefone;; 2 = menciona números de reserva;; 1 = vago;; 0 = nenhuma.
 - **EX027 — Por que os logs viajam.** Por que os logs se espalham mais que os registros? *Rubrica:* 3 = são copiados para o monitoramento e compartilhados em chamados de suporte;; 2 = menciona cópias;; 1 = vago;; 0 = nenhuma.
-- **EX028 — Retenção dos logs.** Que retenção Leila propôs para os logs detalhados? *Rubrica:* 3 = trinta dias;; 2 = correta;; 1 = noventa;; 0 = nenhuma.
+- **EX028 — Retenção dos logs.** Que retenção Leila propôs para os logs detalhados? *Rubrica:* 3 = trinta dias;; 2 = parcialmente correta;; 1 = noventa;; 0 = nenhuma.
 
 <a id="ch-08"></a>
 
@@ -389,7 +389,7 @@ A detecção depende de pessoas agirem diante dos alertas; atribua responsáveis
 
 - **EX029 — Quatro tipos.** Cite os quatro tipos de falha. *Rubrica:* 3 = destinatário errado, retenção excessiva, acesso excessivo, falha silenciosa;; 2 = todos;; 1 = dois;; 0 = nenhuma.
 - **EX030 — Detectar o silêncio.** Como as falhas silenciosas são detectadas? *Rubrica:* 3 = rotinas informam o sucesso todo dia; a falta do relatório gera alerta;; 2 = menciona diário;; 1 = vago;; 0 = nenhuma.
-- **EX031 — Conteúdo do lembrete.** O que os lembretes devem conter agora? *Rubrica:* 3 = só o nome da clínica e o horário;; 2 = correta;; 1 = todos os detalhes;; 0 = nenhuma.
+- **EX031 — Conteúdo do lembrete.** O que os lembretes devem conter agora? *Rubrica:* 3 = só o nome da clínica e o horário;; 2 = parcialmente correta;; 1 = todos os detalhes;; 0 = nenhuma.
 - **EX032 — Registro da violação.** Por que o caso do número errado foi registrado? *Rubrica:* 3 = era uma violação de dados pessoais, mesmo de baixo risco;; 2 = menciona violação;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-09"></a>
@@ -428,7 +428,7 @@ As ferramentas nativas têm limites; documente o que um método não consegue de
 
 ### Exercícios
 
-- **EX033 — Pergunta sobre as ferramentas.** Que pergunta Leila acrescentou à sua lista de ferramentas? *Rubrica:* 3 = para onde a ferramenta envia os dados que lê;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX033 — Pergunta sobre as ferramentas.** Que pergunta Leila acrescentou à sua lista de ferramentas? *Rubrica:* 3 = para onde a ferramenta envia os dados que lê;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 - **EX034 — Partes do método.** O que cada método define? *Rubrica:* 3 = pergunta, fonte, passos, saída esperada, interpretação;; 2 = a maioria;; 1 = poucos;; 0 = nenhuma.
 - **EX035 — Sementes fixas.** Por que usar sementes aleatórias fixas? *Rubrica:* 3 = dados sintéticos idênticos entre execuções;; 2 = menciona repetibilidade;; 1 = vago;; 0 = nenhuma.
 - **EX036 — Ferramentas como tratamento.** Por que as próprias ferramentas de privacidade são um risco? *Rubrica:* 3 = também tratam dados pessoais;; 2 = menciona tratamento;; 1 = vago;; 0 = nenhuma.
@@ -502,7 +502,7 @@ O nome do cookie não prova a finalidade; confira o que cada script de fato faz.
 
 ### Exercícios
 
-- **EX037 — Antes do consentimento.** Quantos cookies eram gravados antes do consentimento sem isenção? *Rubrica:* 3 = 3 de 7;; 2 = correta;; 1 = errada;; 0 = nenhuma.
+- **EX037 — Antes do consentimento.** Quantos cookies eram gravados antes do consentimento sem isenção? *Rubrica:* 3 = 3 de 7;; 2 = parcialmente correta;; 1 = errada;; 0 = nenhuma.
 - **EX038 — Cookie de idioma.** Por que o cookie de idioma era um problema? *Rubrica:* 3 = era gravado antes de o visitante escolher um idioma;; 2 = menciona escolha;; 1 = vago;; 0 = nenhuma.
 - **EX039 — Decisão sobre o pixel.** O que aconteceu com o pixel de publicidade? *Rubrica:* 3 = foi removido; ninguém precisava dele;; 2 = menciona remoção;; 1 = adiado;; 0 = nenhuma.
 - **EX040 — Verificação a cada versão.** Por que acrescentar o teste de cookies à lista de cada versão? *Rubrica:* 3 = as mudanças costumam reintroduzir tags precoces;; 2 = menciona regressões;; 1 = vago;; 0 = nenhuma.
@@ -544,9 +544,9 @@ As amostras estimam taxas; não certificam cada conta.
 ### Exercícios
 
 - **EX041 — Três perguntas.** Que três perguntas a verificação responde? *Rubrica:* 3 = desenhado corretamente, implementado como desenhado, operando ao longo do tempo;; 2 = todas;; 1 = uma;; 0 = nenhuma.
-- **EX042 — Resultado da amostra.** Quantas contas da amostra conferiram? *Rubrica:* 3 = 18 de 20;; 2 = correta;; 1 = errada;; 0 = nenhuma.
-- **EX043 — Execuções perdidas.** Por que a rotina de exclusão perdeu dois dias? *Rubrica:* 3 = reinicializações do servidor para atualizações;; 2 = correta;; 1 = vago;; 0 = nenhuma.
-- **EX044 — Situação da segmentação.** Como Leila relatou a segmentação da rede? *Rubrica:* 3 = verificada em uma clínica, ainda não nas outras sete;; 2 = correta;; 1 = verificada;; 0 = nenhuma.
+- **EX042 — Resultado da amostra.** Quantas contas da amostra conferiram? *Rubrica:* 3 = 18 de 20;; 2 = parcialmente correta;; 1 = errada;; 0 = nenhuma.
+- **EX043 — Execuções perdidas.** Por que a rotina de exclusão perdeu dois dias? *Rubrica:* 3 = reinicializações do servidor para atualizações;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
+- **EX044 — Situação da segmentação.** Como Leila relatou a segmentação da rede? *Rubrica:* 3 = verificada em uma clínica, ainda não nas outras sete;; 2 = parcialmente correta;; 1 = verificada;; 0 = nenhuma.
 
 <a id="ch-12"></a>
 
@@ -614,7 +614,7 @@ Um acesso incomum é um sinal, não uma prova; siga um procedimento justo.
 - **EX045 — Visualizações externas.** Que parcela das visualizações foi fora da clínica do funcionário? *Rubrica:* 3 = 179 de 5.060, 3,5%;; 2 = aproximada;; 1 = errada;; 0 = nenhuma.
 - **EX046 — Ponto fora da curva.** Que conta se destacou e com quantas visualizações externas? *Rubrica:* 3 = S07, com 53;; 2 = os dois;; 1 = um;; 0 = nenhuma.
 - **EX047 — Explicações.** Cite duas explicações possíveis para o padrão de S07. *Rubrica:* 3 = cargo regional, designação temporária, conta compartilhada, curiosidade;; 2 = duas;; 1 = uma;; 0 = nenhuma.
-- **EX048 — Direitos da equipe.** O que a equipe precisa saber sobre os logs de auditoria? *Rubrica:* 3 = os acessos são registrados e revisados;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX048 — Direitos da equipe.** O que a equipe precisa saber sobre os logs de auditoria? *Rubrica:* 3 = os acessos são registrados e revisados;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-13"></a>
 
@@ -653,9 +653,9 @@ Uma correção rápida só na consulta não impediria o próximo erro parecido.
 ### Exercícios
 
 - **EX049 — Primeiro passo.** O que Leila fez antes de adivinhar as causas? *Rubrica:* 3 = anotou os fatos conhecidos;; 2 = menciona fatos;; 1 = adivinhou;; 0 = nenhuma.
-- **EX050 — Campo errado.** Que campo a exportação usou por engano? *Rubrica:* 3 = o campo dos lembretes, contact_ok;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX050 — Campo errado.** Que campo a exportação usou por engano? *Rubrica:* 3 = o campo dos lembretes, contact_ok;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 - **EX051 — Três causas.** Cite as três causas que Leila encontrou. *Rubrica:* 3 = nomes confusos, nenhuma revisão, nenhuma verificação automática;; 2 = todas;; 1 = uma;; 0 = nenhuma.
-- **EX052 — Verificação automática.** O que faz a nova verificação? *Rubrica:* 3 = interrompe exportações com pacientes que não consentiram;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX052 — Verificação automática.** O que faz a nova verificação? *Rubrica:* 3 = interrompe exportações com pacientes que não consentiram;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-14"></a>
 
@@ -716,9 +716,9 @@ Os backups ainda podem guardar registros excluídos até expirarem; documente a 
 ### Exercícios
 
 - **EX053 — Além da retenção.** Quantos registros de lembretes estavam além do prazo? *Rubrica:* 3 = 712 de 1.200, 59,3%;; 2 = aproximada;; 1 = errada;; 0 = nenhuma.
-- **EX054 — Registro mais antigo.** Qual era a idade do registro mais antigo? *Rubrica:* 3 = 900 dias;; 2 = correta;; 1 = errada;; 0 = nenhuma.
+- **EX054 — Registro mais antigo.** Qual era a idade do registro mais antigo? *Rubrica:* 3 = 900 dias;; 2 = parcialmente correta;; 1 = errada;; 0 = nenhuma.
 - **EX055 — Somente relatório.** Por que rodar primeiro em modo somente relatório? *Rubrica:* 3 = pegar erros na regra antes de perder dados;; 2 = menciona erros;; 1 = vago;; 0 = nenhuma.
-- **EX056 — Exceção.** Que registros ficam retidos? *Rubrica:* 3 = os ligados a reclamações em aberto;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX056 — Exceção.** Que registros ficam retidos? *Rubrica:* 3 = os ligados a reclamações em aberto;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-15"></a>
 
@@ -758,8 +758,8 @@ Os fornecedores mudam os padrões nas atualizações; teste de novo depois de ca
 
 - **EX057 — Campos padrão.** O que a integração padrão do fornecedor pedia? *Rubrica:* 3 = nomes, e-mails, tipos de consulta, nomes dos dentistas;; 2 = a maioria;; 1 = um;; 0 = nenhuma.
 - **EX058 — Tipo de consulta.** Por que retirar o tipo de consulta? *Rubrica:* 3 = revela informações de saúde e é desnecessário;; 2 = menciona saúde;; 1 = vago;; 0 = nenhuma.
-- **EX059 — Filtro das recusas.** Onde os pacientes que recusaram são filtrados? *Rubrica:* 3 = na exportação de origem;; 2 = correta;; 1 = no fornecedor;; 0 = nenhuma.
-- **EX060 — Teste de exclusão.** Que comportamento de exclusão foi testado? *Rubrica:* 3 = a exclusão chega ao serviço de avaliações em até trinta dias;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX059 — Filtro das recusas.** Onde os pacientes que recusaram são filtrados? *Rubrica:* 3 = na exportação de origem;; 2 = parcialmente correta;; 1 = no fornecedor;; 0 = nenhuma.
+- **EX060 — Teste de exclusão.** Que comportamento de exclusão foi testado? *Rubrica:* 3 = a exclusão chega ao serviço de avaliações em até trinta dias;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-16"></a>
 
@@ -840,7 +840,7 @@ A eliminação não se aplica aos registros que a Marlow é obrigada a guardar p
 
 - **EX065 — Itens faltantes.** Que itens faltaram na resposta de acesso? *Rubrica:* 3 = histórico de lembretes, registro de avaliações, carta de encaminhamento;; 2 = dois;; 1 = um;; 0 = nenhuma.
 - **EX066 — Sistemas novos.** Por que os itens faltantes estavam em sistemas recentes? *Rubrica:* 3 = a lista não foi atualizada quando os sistemas mudaram;; 2 = menciona a lista;; 1 = vago;; 0 = nenhuma.
-- **EX067 — Eliminação dos lembretes.** O que Leila recomendou para os lembretes na eliminação? *Rubrica:* 3 = excluí-los imediatamente a pedido;; 2 = correta;; 1 = anualmente;; 0 = nenhuma.
+- **EX067 — Eliminação dos lembretes.** O que Leila recomendou para os lembretes na eliminação? *Rubrica:* 3 = excluí-los imediatamente a pedido;; 2 = parcialmente correta;; 1 = anualmente;; 0 = nenhuma.
 - **EX068 — Prontuários clínicos.** Por que os prontuários clínicos são mantidos depois dos pedidos de eliminação? *Rubrica:* 3 = as regras profissionais exigem a guarda;; 2 = menciona regras;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-18"></a>
@@ -880,8 +880,8 @@ Projetos que terminam sem entrega à operação perdem seus controles; combine o
 ### Exercícios
 
 - **EX069 — Escolha do projeto.** Por que Leila escolheu a segmentação da rede? *Rubrica:* 3 = maior controle não verificado, com exposição das imagens dos pacientes;; 2 = menciona exposição;; 1 = vago;; 0 = nenhuma.
-- **EX070 — Falha das câmeras.** O que falhou na quarta clínica? *Rubrica:* 3 = as câmeras intraorais não conseguiam enviar imagens;; 2 = correta;; 1 = vago;; 0 = nenhuma.
-- **EX071 — Risco restante.** Que risco resta depois do projeto? *Rubrica:* 3 = DICOM sem criptografia dentro da zona clínica;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX070 — Falha das câmeras.** O que falhou na quarta clínica? *Rubrica:* 3 = as câmeras intraorais não conseguiam enviar imagens;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
+- **EX071 — Risco restante.** Que risco resta depois do projeto? *Rubrica:* 3 = DICOM sem criptografia dentro da zona clínica;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 - **EX072 — Entrega.** Quem recebe a entrega? *Rubrica:* 3 = o prestador de TI e o encarregado;; 2 = os dois;; 1 = um;; 0 = nenhuma.
 
 <a id="worked-results"></a>

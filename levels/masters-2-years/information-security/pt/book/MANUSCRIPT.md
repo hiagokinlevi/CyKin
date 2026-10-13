@@ -69,19 +69,19 @@ Uma pergunta sobre se os funcionários estão seguros não pode ser respondida c
 
 ### Exercícios
 
-- **EX001 — Porte do parceiro.** Quantos funcionários a Harrowgate emprega? *Rubrica:* 3 = cerca de 2.400;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX001 — Porte do parceiro.** Quantos funcionários a Harrowgate emprega? *Rubrica:* 3 = cerca de 2.400;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX002 — Pergunta revisada.** Qual é a pergunta revisada de Priya? *Rubrica:* 3 = se as taxas de cliques dos departamentos com feedback caem mais que as da comparação;; 2 = correto;; 1 = vaga;; 0 = nenhuma.
+- **EX002 — Pergunta revisada.** Qual é a pergunta revisada de Priya? *Rubrica:* 3 = se as taxas de cliques dos departamentos com feedback caem mais que as da comparação;; 2 = parcialmente correto;; 1 = vaga;; 0 = nenhuma.
 
 - **EX003 — Quatro elementos.** Que quatro elementos a pergunta revisada nomeia? *Rubrica:* 3 = intervenção, desfecho, comparação, população;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
 
-- **EX004 — Restrição de inclusão.** Que estudos Priya inclui? *Rubrica:* 3 = os que medem comportamento;; 2 = correto;; 1 = opiniões;; 0 = nenhuma.
+- **EX004 — Restrição de inclusão.** Que estudos Priya inclui? *Rubrica:* 3 = os que medem comportamento;; 2 = parcialmente correto;; 1 = opiniões;; 0 = nenhuma.
 
-- **EX005 — Alerta de Anderson.** Que alerta o texto de Anderson dá? *Rubrica:* 3 = culpar os usuários raramente conserta os sistemas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX005 — Alerta de Anderson.** Que alerta o texto de Anderson dá? *Rubrica:* 3 = culpar os usuários raramente conserta os sistemas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 - **EX006 — Motivos registrados.** Dê um motivo de exclusão que Priya registra. *Rubrica:* 3 = ausência de medida comportamental;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
-- **EX007 — Número de incluídos.** Quantos estudos são incluídos? *Rubrica:* 3 = vinte e três;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX007 — Número de incluídos.** Quantos estudos são incluídos? *Rubrica:* 3 = vinte e três;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
 <a id="ch-02"></a>
 
@@ -119,19 +119,19 @@ Presumir que um controle funciona porque uma norma o exige confunde ter com func
 
 ### Exercícios
 
-- **EX008 — Requisito da 27001.** O que a ISO/IEC 27001:2022 (no Brasil, ABNT NBR ISO/IEC 27001:2022) exige sobre as pessoas? *Rubrica:* 3 = consciência da política e da sua contribuição;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX008 — Requisito da 27001.** O que a ISO/IEC 27001:2022 (no Brasil, ABNT NBR ISO/IEC 27001:2022) exige sobre as pessoas? *Rubrica:* 3 = consciência da política e da sua contribuição;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX009 — Papel da 27000.** O que é a ISO/IEC 27000:2026? *Rubrica:* 3 = a visão geral da família;; 2 = correto;; 1 = só vocabulário;; 0 = nenhuma.
+- **EX009 — Papel da 27000.** O que é a ISO/IEC 27000:2026? *Rubrica:* 3 = a visão geral da família;; 2 = parcialmente correto;; 1 = só vocabulário;; 0 = nenhuma.
 
-- **EX010 — Família da SP 800-53.** Que família da SP 800-53 contém os controles de treinamento? *Rubrica:* 3 = conscientização e treinamento;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+- **EX010 — Família da SP 800-53.** Que família da SP 800-53 contém os controles de treinamento? *Rubrica:* 3 = conscientização e treinamento;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
 
-- **EX011 — Função do CSF.** Que função do CSF 2.0 inclui a conscientização e o treinamento? *Rubrica:* 3 = Proteger;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+- **EX011 — Função do CSF.** Que função do CSF 2.0 inclui a conscientização e o treinamento? *Rubrica:* 3 = Proteger;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
 
-- **EX012 — Princípio de projeto.** Que princípio de Saltzer e Schroeder sustenta o feedback? *Rubrica:* 3 = aceitabilidade psicológica;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX012 — Princípio de projeto.** Que princípio de Saltzer e Schroeder sustenta o feedback? *Rubrica:* 3 = aceitabilidade psicológica;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX013 — Desfecho secundário.** Que desfecho secundário é acrescentado? *Rubrica:* 3 = taxas de relato;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX013 — Desfecho secundário.** Que desfecho secundário é acrescentado? *Rubrica:* 3 = taxas de relato;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX014 — Tamanho esperado.** Que tamanho de efeito Priya espera? *Rubrica:* 3 = alguns pontos percentuais;; 2 = correto;; 1 = grande;; 0 = nenhuma.
+- **EX014 — Tamanho esperado.** Que tamanho de efeito Priya espera? *Rubrica:* 3 = alguns pontos percentuais;; 2 = parcialmente correto;; 1 = grande;; 0 = nenhuma.
 
 <a id="ch-03"></a>
 
@@ -169,17 +169,17 @@ Usar os resultados das simulações para punir funcionários mina a confiança e
 
 ### Exercícios
 
-- **EX015 — Desenho escolhido.** Que desenho Priya usa? *Rubrica:* 3 = diferença em diferenças;; 2 = correto;; 1 = randomizado;; 0 = nenhuma.
+- **EX015 — Desenho escolhido.** Que desenho Priya usa? *Rubrica:* 3 = diferença em diferenças;; 2 = parcialmente correto;; 1 = randomizado;; 0 = nenhuma.
 
-- **EX016 — Influências compartilhadas.** O que o grupo de comparação remove? *Rubrica:* 3 = influências compartilhadas pelos dois grupos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX016 — Influências compartilhadas.** O que o grupo de comparação remove? *Rubrica:* 3 = influências compartilhadas pelos dois grupos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX017 — Verificação do pressuposto.** O que as quatro simulações anteriores mostraram? *Rubrica:* 3 = as taxas se moveram juntas;; 2 = correto;; 1 = divergiram;; 0 = nenhuma.
+- **EX017 — Verificação do pressuposto.** O que as quatro simulações anteriores mostraram? *Rubrica:* 3 = as taxas se moveram juntas;; 2 = parcialmente correto;; 1 = divergiram;; 0 = nenhuma.
 
-- **EX018 — Verificação das iscas.** Por que conferir se os e-mails eram idênticos? *Rubrica:* 3 = iscas mais difíceis distorceriam a comparação;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX018 — Verificação das iscas.** Por que conferir se os e-mails eram idênticos? *Rubrica:* 3 = iscas mais difíceis distorceriam a comparação;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX019 — Nível do relato.** Em que nível os resultados são relatados? *Rubrica:* 3 = por departamento;; 2 = correto;; 1 = individual;; 0 = nenhuma.
+- **EX019 — Nível do relato.** Em que nível os resultados são relatados? *Rubrica:* 3 = por departamento;; 2 = parcialmente correto;; 1 = individual;; 0 = nenhuma.
 
-- **EX020 — Método da incerteza.** Como a incerteza é estimada? *Rubrica:* 3 = bootstrap com mil reamostragens e semente fixa;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX020 — Método da incerteza.** Como a incerteza é estimada? *Rubrica:* 3 = bootstrap com mil reamostragens e semente fixa;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-04"></a>
 
@@ -217,17 +217,17 @@ Ignorar uma queda nos relatos esconderia um efeito colateral prejudicial.
 
 ### Exercícios
 
-- **EX021 — Rival dos modelos.** Por que variar os modelos de simulação? *Rubrica:* 3 = para que os funcionários não aprendam um único padrão;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX021 — Rival dos modelos.** Por que variar os modelos de simulação? *Rubrica:* 3 = para que os funcionários não aprendam um único padrão;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX022 — Verificação do filtro.** Como se verifica a rival do filtro de e-mail? *Rubrica:* 3 = confirmar regras idênticas entre os departamentos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX022 — Verificação do filtro.** Como se verifica a rival do filtro de e-mail? *Rubrica:* 3 = confirmar regras idênticas entre os departamentos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX023 — Medida fraca.** Que verificação depende de um relato honesto? *Rubrica:* 3 = os registros de lembretes dos gerentes;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+- **EX023 — Medida fraca.** Que verificação depende de um relato honesto? *Rubrica:* 3 = os registros de lembretes dos gerentes;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
 
-- **EX024 — Efeito colateral.** Que efeito colateral prejudicial o feedback poderia causar? *Rubrica:* 3 = menos relatos de e-mails suspeitos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX024 — Efeito colateral.** Que efeito colateral prejudicial o feedback poderia causar? *Rubrica:* 3 = menos relatos de e-mails suspeitos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX025 — Acréscimo do orientador.** Que resultado enfraquecedor o Dr. Bello acrescenta? *Rubrica:* 3 = queda apenas nos modelos repetidos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX025 — Acréscimo do orientador.** Que resultado enfraquecedor o Dr. Bello acrescenta? *Rubrica:* 3 = queda apenas nos modelos repetidos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX026 — Propósito do registro antecipado.** Por que registrar de antemão os resultados enfraquecedores? *Rubrica:* 3 = impede a reinterpretação posterior;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX026 — Propósito do registro antecipado.** Por que registrar de antemão os resultados enfraquecedores? *Rubrica:* 3 = impede a reinterpretação posterior;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-05"></a>
 
@@ -294,17 +294,17 @@ Contar cliques do scanner como cliques humanos infla o risco medido.
 
 ### Exercícios
 
-- **EX027 — Cliques brutos.** Quantos cliques brutos o piloto encontra? *Rubrica:* 3 = 239, 19,9 por cento;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX027 — Cliques brutos.** Quantos cliques brutos o piloto encontra? *Rubrica:* 3 = 239, 19,9 por cento;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX028 — Cliques do scanner.** Quantos cliques ocorrem em até dois segundos? *Rubrica:* 3 = 77;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX028 — Cliques do scanner.** Quantos cliques ocorrem em até dois segundos? *Rubrica:* 3 = 77;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX029 — Taxa humana.** Qual é a taxa de cliques humanos? *Rubrica:* 3 = 13,5 por cento;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX029 — Taxa humana.** Qual é a taxa de cliques humanos? *Rubrica:* 3 = 13,5 por cento;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX030 — Método melhor.** O que seria melhor do que o tempo? *Rubrica:* 3 = casar com os endereços conhecidos do scanner;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX030 — Método melhor.** O que seria melhor do que o tempo? *Rubrica:* 3 = casar com os endereços conhecidos do scanner;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX031 — Teste do limiar.** Que limiar alternativo é testado? *Rubrica:* 3 = cinco segundos;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX031 — Teste do limiar.** Que limiar alternativo é testado? *Rubrica:* 3 = cinco segundos;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
-- **EX032 — Novo desfecho.** Qual é o novo desfecho primário? *Rubrica:* 3 = taxa de cliques humanos excluindo os cliques em até dois segundos;; 2 = correto;; 1 = bruta;; 0 = nenhuma.
+- **EX032 — Novo desfecho.** Qual é o novo desfecho primário? *Rubrica:* 3 = taxa de cliques humanos excluindo os cliques em até dois segundos;; 2 = parcialmente correto;; 1 = bruta;; 0 = nenhuma.
 
 <a id="ch-06"></a>
 
@@ -369,17 +369,17 @@ Tratar uma taxa de cliques em simulação como taxa de violações exagera o ach
 
 ### Exercícios
 
-- **EX033 — Taxas com feedback.** Como mudaram as taxas de cliques dos departamentos com feedback? *Rubrica:* 3 = de 15,8 para 6,7 por cento;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX033 — Taxas com feedback.** Como mudaram as taxas de cliques dos departamentos com feedback? *Rubrica:* 3 = de 15,8 para 6,7 por cento;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX034 — Taxas de comparação.** Como mudaram as taxas de cliques da comparação? *Rubrica:* 3 = de 14,0 para 11,0 por cento;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX034 — Taxas de comparação.** Como mudaram as taxas de cliques da comparação? *Rubrica:* 3 = de 14,0 para 11,0 por cento;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX035 — DiD e intervalo.** Qual é a estimativa e o intervalo? *Rubrica:* 3 = menos 6,2 pontos, de menos 10,7 a menos 1,2;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX035 — DiD e intervalo.** Qual é a estimativa e o intervalo? *Rubrica:* 3 = menos 6,2 pontos, de menos 10,7 a menos 1,2;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
-- **EX036 — Rival restante.** Que rival não é totalmente descartada? *Rubrica:* 3 = os lembretes dos gerentes;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+- **EX036 — Rival restante.** Que rival não é totalmente descartada? *Rubrica:* 3 = os lembretes dos gerentes;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
 
-- **EX037 — Resultado dos relatos.** O que aconteceu com as taxas de relato? *Rubrica:* 3 = subiram um pouco nos departamentos com feedback;; 2 = correto;; 1 = caíram;; 0 = nenhuma.
+- **EX037 — Resultado dos relatos.** O que aconteceu com as taxas de relato? *Rubrica:* 3 = subiram um pouco nos departamentos com feedback;; 2 = parcialmente correto;; 1 = caíram;; 0 = nenhuma.
 
-- **EX038 — Limite do indicador.** Por que não afirmar que o feedback previne violações? *Rubrica:* 3 = os cliques em simulações são um indicador indireto;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX038 — Limite do indicador.** Por que não afirmar que o feedback previne violações? *Rubrica:* 3 = os cliques em simulações são um indicador indireto;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-07"></a>
 
@@ -417,17 +417,17 @@ Ressalvas genéricas não ajudam os leitores a julgar um resultado.
 
 ### Exercícios
 
-- **EX039 — Seção própria.** Que achado ganha uma seção própria? *Rubrica:* 3 = a correção dos cliques do scanner;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX039 — Seção própria.** Que achado ganha uma seção própria? *Rubrica:* 3 = a correção dos cliques do scanner;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
 - **EX040 — Cinco limitações.** Cite uma das cinco limitações. *Rubrica:* 3 = departamentos tratados não aleatórios;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
-- **EX041 — Detalhe da limitação.** O que Priya declara para cada limitação? *Rubrica:* 3 = como ela enviesa e em que direção;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX041 — Detalhe da limitação.** O que Priya declara para cada limitação? *Rubrica:* 3 = como ela enviesa e em que direção;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX042 — Implantação em etapas.** Por que recomendar uma implantação em etapas? *Rubrica:* 3 = a comparação continua possível;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX042 — Implantação em etapas.** Por que recomendar uma implantação em etapas? *Rubrica:* 3 = a comparação continua possível;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX043 — Extensão do resumo.** Qual é a extensão do resumo para a equipe? *Rubrica:* 3 = duas páginas;; 2 = correto;; 1 = errada;; 0 = nenhuma.
+- **EX043 — Extensão do resumo.** Qual é a extensão do resumo para a equipe? *Rubrica:* 3 = duas páginas;; 2 = parcialmente correto;; 1 = errada;; 0 = nenhuma.
 
-- **EX044 — Redação revisada.** Que redação foi revisada? *Rubrica:* 3 = frases que sugeriam descuido;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX044 — Redação revisada.** Que redação foi revisada? *Rubrica:* 3 = frases que sugeriam descuido;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-08"></a>
 
@@ -465,17 +465,17 @@ Apresentar um resultado de três departamentos como definitivo exagera a certeza
 
 ### Exercícios
 
-- **EX045 — Deixar um de fora.** O que mostra deixar de fora cada departamento? *Rubrica:* 3 = a direção se mantém, uma omissão quase toca o zero;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX045 — Deixar um de fora.** O que mostra deixar de fora cada departamento? *Rubrica:* 3 = a direção se mantém, uma omissão quase toca o zero;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX046 — Resposta sobre a confiança.** Como a Harrowgate deve tratar o resultado? *Rubrica:* 3 = animador, mas provisório;; 2 = correto;; 1 = definitivo;; 0 = nenhuma.
+- **EX046 — Resposta sobre a confiança.** Como a Harrowgate deve tratar o resultado? *Rubrica:* 3 = animador, mas provisório;; 2 = parcialmente correto;; 1 = definitivo;; 0 = nenhuma.
 
-- **EX047 — Resposta ética.** O que sugere que o feedback não foi punitivo? *Rubrica:* 3 = os relatos aumentaram;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX047 — Resposta ética.** O que sugere que o feedback não foi punitivo? *Rubrica:* 3 = os relatos aumentaram;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX048 — Decisão do comitê.** O que o comitê decide? *Rubrica:* 3 = estender a dois departamentos, manter uma comparação;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX048 — Decisão do comitê.** O que o comitê decide? *Rubrica:* 3 = estender a dois departamentos, manter uma comparação;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX049 — Pedido ao fornecedor.** O que o comitê pede ao fornecedor? *Rubrica:* 3 = endereços do scanner nas exportações;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX049 — Pedido ao fornecedor.** O que o comitê pede ao fornecedor? *Rubrica:* 3 = endereços do scanner nas exportações;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
-- **EX050 — Artigo para profissionais.** O que o Dr. Bello recomenda para um artigo voltado a profissionais? *Rubrica:* 3 = o achado do scanner;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX050 — Artigo para profissionais.** O que o Dr. Bello recomenda para um artigo voltado a profissionais? *Rubrica:* 3 = o achado do scanner;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
 <a id="worked-results"></a>
 

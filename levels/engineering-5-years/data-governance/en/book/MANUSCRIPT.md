@@ -70,7 +70,7 @@ Linear growth is an assumption; revisit it when meter roll-out plans change.
 ### Exercises
 
 - **EX001 — Daily rate.** About how many readings arrive per day? *Rubric:* 3 = about 2.16 million;; 2 = close;; 1 = wrong;; 0 = none.
-- **EX002 — Feed failure.** What might a sudden drop in the reading rate mean? *Rubric:* 3 = a failed data feed;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX002 — Feed failure.** What might a sudden drop in the reading rate mean? *Rubric:* 3 = a failed data feed;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX003 — Aggregation effect.** What does aggregating to daily totals after two years do? *Rubric:* 3 = greatly reduces storage;; 2 = mentions reduction;; 1 = vague;; 0 = none.
 
 <a id="ch-02"></a>
@@ -109,9 +109,9 @@ Formal rules can still encode the wrong requirement; validate them with data own
 
 ### Exercises
 
-- **EX004 — Empty set rule.** Which set should be empty? *Rubric:* 3 = meters with readings but no linked premise;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX005 — Function check.** How many meters mapped to two premises? *Rubric:* 3 = twelve;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX006 — Graph use.** What does following edges backwards from a report show? *Rubric:* 3 = every source it relies on;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX004 — Empty set rule.** Which set should be empty? *Rubric:* 3 = meters with readings but no linked premise;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX005 — Function check.** How many meters mapped to two premises? *Rubric:* 3 = twelve;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX006 — Graph use.** What does following edges backwards from a report show? *Rubric:* 3 = every source it relies on;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-03"></a>
 
@@ -149,8 +149,8 @@ Calibration reduces but does not remove uncertainty; report it.
 
 ### Exercises
 
-- **EX007 — Drift effect.** How does upward sensor drift affect leakage estimates? *Rubric:* 3 = leakage appears lower;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX008 — Unit error.** What did the unit confusion do to one district? *Rubric:* 3 = inflated demand a thousandfold;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX007 — Drift effect.** How does upward sensor drift affect leakage estimates? *Rubric:* 3 = leakage appears lower;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX008 — Unit error.** What did the unit confusion do to one district? *Rubric:* 3 = inflated demand a thousandfold;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX009 — Metadata fields.** Name three sensor metadata fields. *Rubric:* 3 = identifier, location, type, unit, accuracy, installation, calibration, owner;; 2 = three;; 1 = one;; 0 = none.
 
 <a id="ch-04"></a>
@@ -191,7 +191,7 @@ Validation rules in code drift from written rules; review both together.
 
 - **EX010 — Rejects file.** Why write a rejects file instead of dropping rows? *Rubric:* 3 = gives owners evidence to fix sources;; 2 = mentions evidence;; 1 = vague;; 0 = none.
 - **EX011 — Error policy.** What does fail loudly for structure, softly for content mean? *Rubric:* 3 = stop on missing columns, record bad rows and continue;; 2 = both;; 1 = one;; 0 = none.
-- **EX012 — Review find.** What did the code review find? *Rubric:* 3 = an off-by-one timestamp error;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX012 — Review find.** What did the code review find? *Rubric:* 3 = an off-by-one timestamp error;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-05"></a>
 
@@ -230,7 +230,7 @@ Short summaries can lose caveats; keep the main limitation visible.
 ### Exercises
 
 - **EX013 — Note structure.** What structure did Prof. Varga require? *Rubric:* 3 = summary, background, method, findings, impact, recommendations;; 2 = most;; 1 = few;; 0 = none.
-- **EX014 — Manager decision.** What decision did the manager make? *Rubric:* 3 = approve unit validation for every feed;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX014 — Manager decision.** What decision did the manager make? *Rubric:* 3 = approve unit validation for every feed;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX015 — Record contents.** What does a decision record contain? *Rubric:* 3 = date, decision, maker, options, evidence;; 2 = most;; 1 = one;; 0 = none.
 
 <a id="ch-06"></a>
@@ -269,8 +269,8 @@ The trapezoidal rule assumes smooth flow between samples; spikes break it.
 
 ### Exercises
 
-- **EX016 — Integration agreement.** How closely did the trapezoidal estimate match the bulk meter? *Rubric:* 3 = within half a percent;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX017 — Hourly error.** What error did hourly sampling produce? *Rubric:* 3 = about two percent;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX016 — Integration agreement.** How closely did the trapezoidal estimate match the bulk meter? *Rubric:* 3 = within half a percent;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX017 — Hourly error.** What error did hourly sampling produce? *Rubric:* 3 = about two percent;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX018 — Reconciliation components.** What does the supplied-minus-billed difference contain? *Rubric:* 3 = leakage, measurement error, timing differences;; 2 = all;; 1 = one;; 0 = none.
 
 <a id="ch-07"></a>
@@ -309,9 +309,9 @@ Control limits assume stable processes; recalculate after known changes.
 
 ### Exercises
 
-- **EX019 — Error estimate.** What error rate did the sample give? *Rubric:* 3 = 2 percent;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX019 — Error estimate.** What error rate did the sample give? *Rubric:* 3 = 2 percent;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX020 — Target judgement.** Why can the owner not claim the 3 percent target is met? *Rubric:* 3 = interval includes values above 3 percent;; 2 = mentions interval;; 1 = vague;; 0 = none.
-- **EX021 — Control signal.** What caused the out-of-limit day? *Rubric:* 3 = a firmware update on a batch of meters;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX021 — Control signal.** What caused the out-of-limit day? *Rubric:* 3 = a firmware update on a batch of meters;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-08"></a>
 
@@ -349,9 +349,9 @@ Checksums detect accidents, not tampering; use authentication for origin.
 
 ### Exercises
 
-- **EX022 — Seven-day limit.** When does a meter lose readings? *Rubric:* 3 = outage longer than its storage period;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX023 — Daylight saving.** What problem does daylight saving create? *Rubric:* 3 = apparent duplicate or missing hours;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX024 — Checksum limit.** What does a checksum not prove? *Rubric:* 3 = who sent the data;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX022 — Seven-day limit.** When does a meter lose readings? *Rubric:* 3 = outage longer than its storage period;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX023 — Daylight saving.** What problem does daylight saving create? *Rubric:* 3 = apparent duplicate or missing hours;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX024 — Checksum limit.** What does a checksum not prove? *Rubric:* 3 = who sent the data;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-09"></a>
 
@@ -390,8 +390,8 @@ Tests cover only cases someone thought of; add cases from real incidents.
 ### Exercises
 
 - **EX025 — Rule structure.** What does each rule expose? *Rubric:* 3 = name, description and function;; 2 = all;; 1 = one;; 0 = none.
-- **EX026 — Test catch.** What did the unit test reveal? *Rubric:* 3 = rule wrongly rejected meter replacements;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX027 — Domain review.** What did the metering engineer point out? *Rubric:* 3 = older meters report only daily;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX026 — Test catch.** What did the unit test reveal? *Rubric:* 3 = rule wrongly rejected meter replacements;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX027 — Domain review.** What did the metering engineer point out? *Rubric:* 3 = older meters report only daily;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-10"></a>
 
@@ -431,7 +431,7 @@ Ethical pressure is often subtle; record decisions and reasons.
 
 - **EX028 — Safety example.** Give a safety consequence of bad data. *Rubric:* 3 = wrong pressure reading leaves a hospital without water;; 2 = mentions harm;; 1 = vague;; 0 = none.
 - **EX029 — Register care.** What did Kofi recommend for the priority register? *Rubric:* 3 = yearly confirmation and strict access;; 2 = both;; 1 = one;; 0 = none.
-- **EX030 — Competence.** Why did Kofi refer the water quality change? *Rubric:* 3 = lacked chemistry competence;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX030 — Competence.** Why did Kofi refer the water quality change? *Rubric:* 3 = lacked chemistry competence;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-11"></a>
 
@@ -470,8 +470,8 @@ Flow documents age quickly; review them after network changes.
 ### Exercises
 
 - **EX031 — Owner changes.** Why could nobody answer end-to-end questions? *Rubric:* 3 = the governance owner changes at each boundary;; 2 = mentions boundaries;; 1 = vague;; 0 = none.
-- **EX032 — Industrial gap.** What gap did Kofi find on the industrial network? *Rubric:* 3 = no protocol authentication;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX033 — Late data.** When do late arrivals cluster? *Rubric:* 3 = around storms;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX032 — Industrial gap.** What gap did Kofi find on the industrial network? *Rubric:* 3 = no protocol authentication;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX033 — Late data.** When do late arrivals cluster? *Rubric:* 3 = around storms;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-12"></a>
 
@@ -509,9 +509,9 @@ Permissions drift after emergency fixes; check them regularly.
 
 ### Exercises
 
-- **EX034 — Permission fix.** What did Kofi change about the extract directory? *Rubric:* 3 = readable only by the processing account and data team;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX034 — Permission fix.** What did Kofi change about the extract directory? *Rubric:* 3 = readable only by the processing account and data team;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX035 — Job chaining.** How are jobs now protected from bad inputs? *Rubric:* 3 = each checks its predecessor succeeded with expected counts;; 2 = mentions predecessor;; 1 = vague;; 0 = none.
-- **EX036 — Patch catch.** What did the staging test catch? *Rubric:* 3 = a change in timestamp parsing;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX036 — Patch catch.** What did the staging test catch? *Rubric:* 3 = a change in timestamp parsing;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-13"></a>
 
@@ -549,8 +549,8 @@ Constraints can block urgent fixes; define a controlled override process.
 
 ### Exercises
 
-- **EX037 — Foreign key purpose.** What do foreign keys ensure here? *Rubric:* 3 = readings refer to real meters, meters to real premises;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX038 — District lists.** How many versions of the district list existed? *Rubric:* 3 = three;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX037 — Foreign key purpose.** What do foreign keys ensure here? *Rubric:* 3 = readings refer to real meters, meters to real premises;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX038 — District lists.** How many versions of the district list existed? *Rubric:* 3 = three;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX039 — History purpose.** Why keep valid-from and valid-to dates? *Rubric:* 3 = to explain past bills with facts at the time;; 2 = mentions past;; 1 = vague;; 0 = none.
 
 <a id="ch-14"></a>
@@ -590,8 +590,8 @@ Tolerances set too wide hide real changes; review them with owners.
 ### Exercises
 
 - **EX040 — Testable requirement.** Give one testable pipeline requirement. *Rubric:* 3 = accepted readings have valid meter and unit; rejects reported within an hour; totals reconcile;; 2 = one;; 1 = vague;; 0 = none.
-- **EX041 — Data test catch.** What did data tests catch? *Rubric:* 3 = a vendor file with a new column order;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX042 — Hard-coded values.** What replaced hard-coded thresholds? *Rubric:* 3 = configuration values reviewed by owners;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX041 — Data test catch.** What did data tests catch? *Rubric:* 3 = a vendor file with a new column order;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX042 — Hard-coded values.** What replaced hard-coded thresholds? *Rubric:* 3 = configuration values reviewed by owners;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-15"></a>
 
@@ -630,7 +630,7 @@ Pseudonymised data remain personal data; protect them accordingly.
 ### Exercises
 
 - **EX043 — Control data priority.** Which properties come first for control system data? *Rubric:* 3 = availability and integrity;; 2 = both;; 1 = one;; 0 = none.
-- **EX044 — Shared account.** What warehouse problem did Kofi fix? *Rubric:* 3 = shared analyst account replaced by named accounts;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX044 — Shared account.** What warehouse problem did Kofi fix? *Rubric:* 3 = shared analyst account replaced by named accounts;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX045 — Extract rules.** Name two rules for future extracts. *Rubric:* 3 = owner approval, minimal fields, encryption, expiry;; 2 = two;; 1 = one;; 0 = none.
 
 <a id="ch-16"></a>
@@ -669,9 +669,9 @@ Interface documents fail if partners are not bound by them; reference them in co
 
 ### Exercises
 
-- **EX046 — Distant symptom.** How can a meter firmware issue appear? *Rubric:* 3 = as a billing complaint;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX046 — Distant symptom.** How can a meter firmware issue appear? *Rubric:* 3 = as a billing complaint;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX047 — Interface fields.** What does an interface control document define? *Rubric:* 3 = fields, units, formats, timing, error handling, contacts;; 2 = most;; 1 = few;; 0 = none.
-- **EX048 — Weakest stage.** Which life cycle stage was least defined? *Rubric:* 3 = deletion;; 2 = correct;; 1 = other;; 0 = none.
+- **EX048 — Weakest stage.** Which life cycle stage was least defined? *Rubric:* 3 = deletion;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="ch-17"></a>
 
@@ -709,9 +709,9 @@ Too many targets overwhelm owners; keep loops focused.
 
 ### Exercises
 
-- **EX049 — Open loop.** Why was Tidewater's quality loop open? *Rubric:* 3 = no reliable corrective action step;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX049 — Open loop.** Why was Tidewater's quality loop open? *Rubric:* 3 = no reliable corrective action step;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX050 — Oscillation fix.** How did Kofi stop thresholds swinging? *Rubric:* 3 = weekly reject data and small steps;; 2 = both;; 1 = one;; 0 = none.
-- **EX051 — Loop speed.** How fast were actions recorded after naming owners? *Rubric:* 3 = one week instead of three;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX051 — Loop speed.** How fast were actions recorded after naming owners? *Rubric:* 3 = one week instead of three;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
 <a id="ch-18"></a>
 
@@ -749,9 +749,9 @@ Tags are only as good as their maintenance; audit them.
 
 ### Exercises
 
-- **EX052 — Test data rule.** What rule did Kofi propose for test environments? *Rubric:* 3 = production personal data never enter test;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX052 — Test data rule.** What rule did Kofi propose for test environments? *Rubric:* 3 = production personal data never enter test;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX053 — Tag-driven controls.** Why tie controls to metadata tags? *Rubric:* 3 = protections apply automatically and scale;; 2 = mentions automatic;; 1 = vague;; 0 = none.
-- **EX054 — Tag owner.** Who approves classification tags? *Rubric:* 3 = data owners at registration;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX054 — Tag owner.** Who approves classification tags? *Rubric:* 3 = data owners at registration;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-19"></a>
 
@@ -789,9 +789,9 @@ Keyed hashes resist outsiders but not anyone holding the key.
 
 ### Exercises
 
-- **EX055 — Stale identities.** How many removed meters still had valid identities? *Rubric:* 3 = 230;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX056 — Pseudonym status.** Are keyed-hash pseudonyms anonymous? *Rubric:* 3 = no, they remain personal data;; 2 = correct;; 1 = yes;; 0 = none.
-- **EX057 — Key location fix.** Where was a key wrongly stored? *Rubric:* 3 = in a script file;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX055 — Stale identities.** How many removed meters still had valid identities? *Rubric:* 3 = 230;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX056 — Pseudonym status.** Are keyed-hash pseudonyms anonymous? *Rubric:* 3 = no, they remain personal data;; 2 = partly correct;; 1 = yes;; 0 = none.
+- **EX057 — Key location fix.** Where was a key wrongly stored? *Rubric:* 3 = in a script file;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-20"></a>
 
@@ -829,9 +829,9 @@ Role charts do not create authority; confirm it in job descriptions.
 
 ### Exercises
 
-- **EX058 — Retention rights.** Who decided retention before the map? *Rubric:* 3 = nobody;; 2 = correct;; 1 = someone;; 0 = none.
-- **EX059 — Steward duty.** What do stewards do? *Rubric:* 3 = maintain rules and definitions day to day;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX060 — Focus indicator.** Which indicator do later chapters follow? *Rubric:* 3 = the leakage indicator reported to the regulator;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX058 — Retention rights.** Who decided retention before the map? *Rubric:* 3 = nobody;; 2 = partly correct;; 1 = someone;; 0 = none.
+- **EX059 — Steward duty.** What do stewards do? *Rubric:* 3 = maintain rules and definitions day to day;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX060 — Focus indicator.** Which indicator do later chapters follow? *Rubric:* 3 = the leakage indicator reported to the regulator;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-21"></a>
 
@@ -869,8 +869,8 @@ A threshold without a measurement method is not testable; define both.
 
 ### Exercises
 
-- **EX061 — Timeliness requirement.** What timeliness statement did Kofi write? *Rubric:* 3 = feed by 06:00 on at least 95% of days;; 2 = correct;; 1 = partial;; 0 = none.
-- **EX062 — Street conflict.** How was the street-level conflict resolved? *Rubric:* 3 = district aggregation with at least fifty properties;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX061 — Timeliness requirement.** What timeliness statement did Kofi write? *Rubric:* 3 = feed by 06:00 on at least 95% of days;; 2 = partly correct;; 1 = partial;; 0 = none.
+- **EX062 — Street conflict.** How was the street-level conflict resolved? *Rubric:* 3 = district aggregation with at least fifty properties;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX063 — Top ranks.** Which requirements ranked highest? *Rubric:* 3 = owner assignment, reconciliation and timeliness;; 2 = most;; 1 = one;; 0 = none.
 
 <a id="ch-22"></a>
@@ -939,9 +939,9 @@ Static lineage misses runtime dependencies; compare with logs.
 
 ### Exercises
 
-- **EX064 — Upstream count.** How many upstream nodes are behind the board figure? *Rubric:* 3 = seven;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX064 — Upstream count.** How many upstream nodes are behind the board figure? *Rubric:* 3 = seven;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX065 — Unowned nodes.** Which nodes had no owner? *Rubric:* 3 = field_app.manual_read and sensors.flow_raw;; 2 = both;; 1 = one;; 0 = none.
-- **EX066 — Drift check.** How does Kofi find dependencies missing from the model? *Rubric:* 3 = quarterly comparison with query logs;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX066 — Drift check.** How does Kofi find dependencies missing from the model? *Rubric:* 3 = quarterly comparison with query logs;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-23"></a>
 
@@ -979,9 +979,9 @@ Scores agreed by one person are guesses; agree them with owners.
 
 ### Exercises
 
-- **EX067 — Top risk.** Which failure ranked highest? *Rubric:* 3 = a stuck flow sensor;; 2 = correct;; 1 = other;; 0 = none.
-- **EX068 — Shared symptoms.** Why should detection serve threats and failures? *Rubric:* 3 = they often produce the same symptoms;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX069 — Sensor mitigation.** What mitigation targets stuck sensors? *Rubric:* 3 = a flat-line detector owned by network operations;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX067 — Top risk.** Which failure ranked highest? *Rubric:* 3 = a stuck flow sensor;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX068 — Shared symptoms.** Why should detection serve threats and failures? *Rubric:* 3 = they often produce the same symptoms;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX069 — Sensor mitigation.** What mitigation targets stuck sensors? *Rubric:* 3 = a flat-line detector owned by network operations;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-24"></a>
 
@@ -1020,8 +1020,8 @@ Thresholds copied from another utility ignore local conditions.
 ### Exercises
 
 - **EX070 — Sensor dimensions.** Which dimensions matter most for flow sensors? *Rubric:* 3 = accuracy and completeness;; 2 = both;; 1 = one;; 0 = none.
-- **EX071 — Accuracy method.** How is sensor accuracy checked? *Rubric:* 3 = against a portable reference meter during maintenance;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX072 — Validity limit.** What can validity rules not catch? *Rubric:* 3 = plausible but wrong values;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX071 — Accuracy method.** How is sensor accuracy checked? *Rubric:* 3 = against a portable reference meter during maintenance;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX072 — Validity limit.** What can validity rules not catch? *Rubric:* 3 = plausible but wrong values;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-25"></a>
 
@@ -1059,8 +1059,8 @@ Defending a design instead of listening wastes critique.
 
 ### Exercises
 
-- **EX073 — Central weakness.** What weakness did the panel see in the central service? *Rubric:* 3 = single point of failure;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX074 — Alert change.** How were owner notifications changed? *Rubric:* 3 = alerts only on breaches plus weekly summary;; 2 = correct;; 1 = partial;; 0 = none.
+- **EX073 — Central weakness.** What weakness did the panel see in the central service? *Rubric:* 3 = single point of failure;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX074 — Alert change.** How were owner notifications changed? *Rubric:* 3 = alerts only on breaches plus weekly summary;; 2 = partly correct;; 1 = partial;; 0 = none.
 - **EX075 — Underweighted.** What had Kofi underweighted? *Rubric:* 3 = failure and human behaviour;; 2 = both;; 1 = one;; 0 = none.
 
 <a id="ch-26"></a>
@@ -1099,9 +1099,9 @@ Fashionable architectures may not fit; score against your requirements.
 
 ### Exercises
 
-- **EX076 — Mesh weakness.** Why did the mesh score poorly at Tidewater? *Rubric:* 3 = weak cross-domain reconciliation at current maturity;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX077 — Chosen option.** Which architecture was chosen? *Rubric:* 3 = the hybrid;; 2 = correct;; 1 = other;; 0 = none.
-- **EX078 — Revisit condition.** Give one condition for revisiting the decision. *Rubric:* 3 = domain teams reaching agreed skill levels;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX076 — Mesh weakness.** Why did the mesh score poorly at Tidewater? *Rubric:* 3 = weak cross-domain reconciliation at current maturity;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX077 — Chosen option.** Which architecture was chosen? *Rubric:* 3 = the hybrid;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX078 — Revisit condition.** Give one condition for revisiting the decision. *Rubric:* 3 = domain teams reaching agreed skill levels;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-27"></a>
 
@@ -1139,9 +1139,9 @@ Controls without evidence cannot be shown to work.
 
 ### Exercises
 
-- **EX079 — Corrective example.** Give one corrective control. *Rubric:* 3 = re-requesting files, approved corrections or restating figures;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX080 — Catalogue size.** How many controls are in the catalogue? *Rubric:* 3 = thirty-one;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX081 — Testing method.** How are controls tested each quarter? *Rubric:* 3 = injecting synthetic errors in test;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX079 — Corrective example.** Give one corrective control. *Rubric:* 3 = re-requesting files, approved corrections or restating figures;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX080 — Catalogue size.** How many controls are in the catalogue? *Rubric:* 3 = thirty-one;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX081 — Testing method.** How are controls tested each quarter? *Rubric:* 3 = injecting synthetic errors in test;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-28"></a>
 
@@ -1212,9 +1212,9 @@ Averaging rule rates overstates quality; report the all-rules rate.
 
 ### Exercises
 
-- **EX082 — All-rules rate.** What share of rows passed all rules? *Rubric:* 3 = 96.5% (9,650 of 10,000);; 2 = correct;; 1 = partial;; 0 = none.
-- **EX083 — Below-previous cause.** What mainly caused readings below the previous value? *Rubric:* 3 = meter replacements starting at zero;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX084 — Miss handling.** How did Kofi handle missing the target? *Rubric:* 3 = reported it honestly with causes and fixes;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX082 — All-rules rate.** What share of rows passed all rules? *Rubric:* 3 = 96.5% (9,650 of 10,000);; 2 = partly correct;; 1 = partial;; 0 = none.
+- **EX083 — Below-previous cause.** What mainly caused readings below the previous value? *Rubric:* 3 = meter replacements starting at zero;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX084 — Miss handling.** How did Kofi handle missing the target? *Rubric:* 3 = reported it honestly with causes and fixes;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-29"></a>
 
@@ -1271,9 +1271,9 @@ Averages hide clusters; plot daily values.
 
 ### Exercises
 
-- **EX085 — Late share.** On what share of days was the feed late? *Rubric:* 3 = 12.2% (11 of 90);; 2 = correct;; 1 = partial;; 0 = none.
-- **EX086 — Cluster cause.** What caused the late week? *Rubric:* 3 = an upgrade's backup job running before the export;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX087 — Scattered days.** How many late days fell outside that week? *Rubric:* 3 = four;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX085 — Late share.** On what share of days was the feed late? *Rubric:* 3 = 12.2% (11 of 90);; 2 = partly correct;; 1 = partial;; 0 = none.
+- **EX086 — Cluster cause.** What caused the late week? *Rubric:* 3 = an upgrade's backup job running before the export;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX087 — Scattered days.** How many late days fell outside that week? *Rubric:* 3 = four;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
 <a id="ch-30"></a>
 
@@ -1311,9 +1311,9 @@ Passing injected tests does not prove completeness; state limits.
 
 ### Exercises
 
-- **EX088 — Detection count.** How many injected errors were detected at first? *Rubric:* 3 = ten of twelve;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX089 — Swapped fix.** What check catches swapped columns? *Rubric:* 3 = comparing each column's distribution with history;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX090 — Verification versus validation.** What does verification answer? *Rubric:* 3 = whether controls were built right;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX088 — Detection count.** How many injected errors were detected at first? *Rubric:* 3 = ten of twelve;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX089 — Swapped fix.** What check catches swapped columns? *Rubric:* 3 = comparing each column's distribution with history;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX090 — Verification versus validation.** What does verification answer? *Rubric:* 3 = whether controls were built right;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-31"></a>
 
@@ -1352,8 +1352,8 @@ Badges can mislead if rules are weak; link to rule descriptions.
 ### Exercises
 
 - **EX091 — Automated fields.** Which metadata are pulled automatically? *Rubric:* 3 = schema details, refresh times and quality results;; 2 = most;; 1 = one;; 0 = none.
-- **EX092 — Inheritance rule.** What classification does a derived table get? *Rubric:* 3 = never lower than its inputs;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX093 — Badge effect.** How did badges change engineers' behaviour? *Rubric:* 3 = they check badges and ask owners about poor scores;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX092 — Inheritance rule.** What classification does a derived table get? *Rubric:* 3 = never lower than its inputs;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX093 — Badge effect.** How did badges change engineers' behaviour? *Rubric:* 3 = they check badges and ask owners about poor scores;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-32"></a>
 
@@ -1414,9 +1414,9 @@ Reconciling a system with itself proves nothing; use independent records.
 
 ### Exercises
 
-- **EX094 — Reconciled share.** What share of reads reconciled? *Rubric:* 3 = 97.75%;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX095 — Missing reads effect.** How do missing reads affect leakage? *Rubric:* 3 = they overstate it;; 2 = correct;; 1 = understate;; 0 = none.
-- **EX096 — Mismatch owner.** Who owns value mismatches? *Rubric:* 3 = billing;; 2 = correct;; 1 = other;; 0 = none.
+- **EX094 — Reconciled share.** What share of reads reconciled? *Rubric:* 3 = 97.75%;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX095 — Missing reads effect.** How do missing reads affect leakage? *Rubric:* 3 = they overstate it;; 2 = partly correct;; 1 = understate;; 0 = none.
+- **EX096 — Mismatch owner.** Who owns value mismatches? *Rubric:* 3 = billing;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="ch-33"></a>
 
@@ -1454,9 +1454,9 @@ Treating safety data like business data underestimates harm.
 
 ### Exercises
 
-- **EX097 — Extra reviewer.** Who else reviews changes to safety-relevant data? *Rubric:* 3 = the operations safety engineer;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX098 — Dashboard dependency.** Why must incident response not rely on the leakage dashboard? *Rubric:* 3 = it depends on a single warehouse server;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX099 — Tabletop finding.** What did operators point out? *Rubric:* 3 = manual readings need standard forms and units;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX097 — Extra reviewer.** Who else reviews changes to safety-relevant data? *Rubric:* 3 = the operations safety engineer;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX098 — Dashboard dependency.** Why must incident response not rely on the leakage dashboard? *Rubric:* 3 = it depends on a single warehouse server;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX099 — Tabletop finding.** What did operators point out? *Rubric:* 3 = manual readings need standard forms and units;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-34"></a>
 
@@ -1494,9 +1494,9 @@ Component tests passing does not mean the system works.
 
 ### Exercises
 
-- **EX100 — Notice period.** How much notice do interface changes need? *Rubric:* 3 = two weeks with a test file;; 2 = correct;; 1 = partial;; 0 = none.
-- **EX101 — End-to-end finding.** What did the first end-to-end run reveal? *Rubric:* 3 = reconciliation results did not reach the catalogue;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX102 — Integration owner.** Who owns the end-to-end test? *Rubric:* 3 = the data governance lead;; 2 = correct;; 1 = other;; 0 = none.
+- **EX100 — Notice period.** How much notice do interface changes need? *Rubric:* 3 = two weeks with a test file;; 2 = partly correct;; 1 = partial;; 0 = none.
+- **EX101 — End-to-end finding.** What did the first end-to-end run reveal? *Rubric:* 3 = reconciliation results did not reach the catalogue;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX102 — Integration owner.** Who owns the end-to-end test? *Rubric:* 3 = the data governance lead;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="ch-35"></a>
 
@@ -1534,9 +1534,9 @@ Vendor assurances need verification; check specifications.
 
 ### Exercises
 
-- **EX103 — New component.** What new component did Kofi add? *Rubric:* 3 = a model card for the leak algorithm;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX104 — Audio check.** Do the loggers record audio? *Rubric:* 3 = no, only frequency summaries;; 2 = correct;; 1 = yes;; 0 = none.
-- **EX105 — Panel praise.** What improvement did the panel note? *Rubric:* 3 = anticipating failure and people's concerns;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX103 — New component.** What new component did Kofi add? *Rubric:* 3 = a model card for the leak algorithm;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX104 — Audio check.** Do the loggers record audio? *Rubric:* 3 = no, only frequency summaries;; 2 = partly correct;; 1 = yes;; 0 = none.
+- **EX105 — Panel praise.** What improvement did the panel note? *Rubric:* 3 = anticipating failure and people's concerns;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-36"></a>
 
@@ -1574,9 +1574,9 @@ Retiring silent controls without testing them may remove needed protection.
 
 ### Exercises
 
-- **EX106 — Volume growth.** By how much does hourly reading multiply volume? *Rubric:* 3 = twenty-four times;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX106 — Volume growth.** By how much does hourly reading multiply volume? *Rubric:* 3 = twenty-four times;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX107 — Efficiency change.** Name one efficiency change. *Rubric:* 3 = incremental processing, district partitions or ingestion checks;; 2 = one;; 1 = vague;; 0 = none.
-- **EX108 — Silent controls.** What did Kofi do before retiring silent controls? *Rubric:* 3 = tested them by injection;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX108 — Silent controls.** What did Kofi do before retiring silent controls? *Rubric:* 3 = tested them by injection;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-37"></a>
 
@@ -1614,9 +1614,9 @@ Sending estimates silently damages trust; communicate delays.
 
 ### Exercises
 
-- **EX109 — Triage time.** By when do stewards triage alerts? *Rubric:* 3 = nine in the morning;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX110 — Reporting-day failure.** What did the incident lead do when an extract failed on reporting day? *Rubric:* 3 = told the regulator figures would be a day late;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX111 — Runbook test.** How are runbooks tested? *Rubric:* 3 = a steward who did not write them follows them on a synthetic incident;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX109 — Triage time.** By when do stewards triage alerts? *Rubric:* 3 = nine in the morning;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX110 — Reporting-day failure.** What did the incident lead do when an extract failed on reporting day? *Rubric:* 3 = told the regulator figures would be a day late;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX111 — Runbook test.** How are runbooks tested? *Rubric:* 3 = a steward who did not write them follows them on a synthetic incident;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-38"></a>
 
@@ -1654,9 +1654,9 @@ User satisfaction alone does not show effectiveness; combine with outcome measur
 
 ### Exercises
 
-- **EX112 — Billing complaint.** What confused billing analysts? *Rubric:* 3 = technical rule names in alerts;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX113 — Operations fix.** How did Kofi reach operations staff? *Rubric:* 3 = key catalogue information on the control room display;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX114 — Causal caution.** What did Prof. Varga warn against? *Rubric:* 3 = claiming governance caused better leak finding without stronger evidence;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX112 — Billing complaint.** What confused billing analysts? *Rubric:* 3 = technical rule names in alerts;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX113 — Operations fix.** How did Kofi reach operations staff? *Rubric:* 3 = key catalogue information on the control room display;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX114 — Causal caution.** What did Prof. Varga warn against? *Rubric:* 3 = claiming governance caused better leak finding without stronger evidence;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-39"></a>
 
@@ -1694,8 +1694,8 @@ Governance relying on a few enthusiasts is fragile; plan for turnover.
 
 ### Exercises
 
-- **EX115 — Steward departure.** What happened when the billing steward left? *Rubric:* 3 = tariff reference data went unupdated for two months;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX116 — Leaver trigger.** What triggers successor assignment? *Rubric:* 3 = directory links that remind the governance lead;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX115 — Steward departure.** What happened when the billing steward left? *Rubric:* 3 = tariff reference data went unupdated for two months;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX116 — Leaver trigger.** What triggers successor assignment? *Rubric:* 3 = directory links that remind the governance lead;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX117 — Effort risk.** What risk did concentrated effort create? *Rubric:* 3 = burnout and single points of failure;; 2 = both;; 1 = one;; 0 = none.
 
 <a id="ch-40"></a>
@@ -1734,9 +1734,9 @@ Testing only the main path misses side routes into governed data.
 
 ### Exercises
 
-- **EX118 — New failures.** How many new tests failed? *Rubric:* 3 = two;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX119 — Contact fix.** What replaced the outdated contact list? *Rubric:* 3 = links to the on-call rota;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX120 — Side-route lesson.** Where did both failures come from? *Rubric:* 3 = components outside the main path;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX118 — New failures.** How many new tests failed? *Rubric:* 3 = two;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX119 — Contact fix.** What replaced the outdated contact list? *Rubric:* 3 = links to the on-call rota;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX120 — Side-route lesson.** Where did both failures come from? *Rubric:* 3 = components outside the main path;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-41"></a>
 
@@ -1774,8 +1774,8 @@ Optimising one team's measure can hurt the system; measure the chain.
 
 ### Exercises
 
-- **EX121 — Billing shortcut.** What did billing's shortcut cause? *Rubric:* 3 = errors pushed to slower reconciliation;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX122 — Bottleneck.** What was the bottleneck? *Rubric:* 3 = manual approval of corrections by one supervisor;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX121 — Billing shortcut.** What did billing's shortcut cause? *Rubric:* 3 = errors pushed to slower reconciliation;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX122 — Bottleneck.** What was the bottleneck? *Rubric:* 3 = manual approval of corrections by one supervisor;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX123 — Chain measures.** Name the three chain measures. *Rubric:* 3 = reading-to-figure time, on-schedule share and restatements;; 2 = all;; 1 = some;; 0 = none.
 
 <a id="ch-42"></a>
@@ -1814,9 +1814,9 @@ Recovering a planted effect does not prove a real one.
 
 ### Exercises
 
-- **EX124 — Research question.** What did Kofi ask? *Rubric:* 3 = whether breaks predict later leakage corrections;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX125 — Synthetic purpose.** Why use synthetic data with known answers? *Rubric:* 3 = to check the method can find a real effect;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX126 — Alternative explanation.** Name one alternative explanation to check. *Rubric:* 3 = district size;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX124 — Research question.** What did Kofi ask? *Rubric:* 3 = whether breaks predict later leakage corrections;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX125 — Synthetic purpose.** Why use synthetic data with known answers? *Rubric:* 3 = to check the method can find a real effect;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX126 — Alternative explanation.** Name one alternative explanation to check. *Rubric:* 3 = district size;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-43"></a>
 
@@ -1854,9 +1854,9 @@ Bypassing controls under deadline pressure erodes them; raise concerns.
 
 ### Exercises
 
-- **EX127 — Owner time.** How did Kofi respect the metering manager's time? *Rubric:* 3 = a monthly batch review of rule changes;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX128 — Regulator question.** What did the regulator's reviewer ask? *Rubric:* 3 = how Tidewater knows flow sensors are accurate;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX129 — Unapproved edit.** How did Kofi handle the unapproved edit? *Rubric:* 3 = raised it privately and the edit went for approval;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX127 — Owner time.** How did Kofi respect the metering manager's time? *Rubric:* 3 = a monthly batch review of rule changes;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX128 — Regulator question.** What did the regulator's reviewer ask? *Rubric:* 3 = how Tidewater knows flow sensors are accurate;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX129 — Unapproved edit.** How did Kofi handle the unapproved edit? *Rubric:* 3 = raised it privately and the edit went for approval;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-44"></a>
 
@@ -1894,9 +1894,9 @@ Unclear scope is the most common capstone failure; write it down.
 
 ### Exercises
 
-- **EX130 — Excluded area.** What did Kofi exclude from scope? *Rubric:* 3 = valve control logic;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX131 — Synthetic risk response.** How will Kofi check synthetic pressure data? *Rubric:* 3 = validate patterns with an operations engineer early;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX132 — Audience criterion.** Who must understand the demonstration? *Rubric:* 3 = an operations audience;; 2 = correct;; 1 = other;; 0 = none.
+- **EX130 — Excluded area.** What did Kofi exclude from scope? *Rubric:* 3 = valve control logic;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX131 — Synthetic risk response.** How will Kofi check synthetic pressure data? *Rubric:* 3 = validate patterns with an operations engineer early;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX132 — Audience criterion.** Who must understand the demonstration? *Rubric:* 3 = an operations audience;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="ch-45"></a>
 
@@ -1934,9 +1934,9 @@ Hiding known weaknesses wastes reviewers' time.
 
 ### Exercises
 
-- **EX133 — Threshold finding.** What did reviewers say about thresholds? *Rubric:* 3 = critical sensors need tighter thresholds;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX134 — Ownership change.** How was ownership split? *Rubric:* 3 = operations manager for critical sites, district managers for others;; 2 = correct;; 1 = partial;; 0 = none.
-- **EX135 — Why review.** Why are independent reviewers valuable? *Rubric:* 3 = they lack the designer's assumptions;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX133 — Threshold finding.** What did reviewers say about thresholds? *Rubric:* 3 = critical sensors need tighter thresholds;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX134 — Ownership change.** How was ownership split? *Rubric:* 3 = operations manager for critical sites, district managers for others;; 2 = partly correct;; 1 = partial;; 0 = none.
+- **EX135 — Why review.** Why are independent reviewers valuable? *Rubric:* 3 = they lack the designer's assumptions;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-46"></a>
 
@@ -1974,8 +1974,8 @@ Demonstrations that hide failures mislead; show the test log.
 
 ### Exercises
 
-- **EX136 — Late detection.** What was detected late at first? *Rubric:* 3 = missing hours at one district;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX137 — Fix for late detection.** What fixed it? *Rubric:* 3 = hourly completeness checks for critical sites;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX136 — Late detection.** What was detected late at first? *Rubric:* 3 = missing hours at one district;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX137 — Fix for late detection.** What fixed it? *Rubric:* 3 = hourly completeness checks for critical sites;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX138 — Stated limits.** Name one limit Kofi stated. *Rubric:* 3 = synthetic data or untested long-term operation;; 2 = one;; 1 = vague;; 0 = none.
 
 <a id="ch-47"></a>
@@ -2014,9 +2014,9 @@ Declaring recovery when systems restart ignores lost data; reconcile first.
 
 ### Exercises
 
-- **EX139 — Instruction problem.** Where were recovery instructions stored? *Rubric:* 3 = on the failed server;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX140 — Data gap cause.** What caused the data gap? *Rubric:* 3 = a buffer filled and overwrote older data;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX141 — Recovery definition.** When is recovery complete? *Rubric:* 3 = when data are reconciled;; 2 = correct;; 1 = restart;; 0 = none.
+- **EX139 — Instruction problem.** Where were recovery instructions stored? *Rubric:* 3 = on the failed server;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX140 — Data gap cause.** What caused the data gap? *Rubric:* 3 = a buffer filled and overwrote older data;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX141 — Recovery definition.** When is recovery complete? *Rubric:* 3 = when data are reconciled;; 2 = partly correct;; 1 = restart;; 0 = none.
 
 <a id="ch-48"></a>
 
@@ -2054,9 +2054,9 @@ Claims without evidence weaken the whole dossier; remove or support them.
 
 ### Exercises
 
-- **EX142 — Hashing purpose.** Why are evidence files hashed? *Rubric:* 3 = to confirm they have not changed;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX143 — Retention gap.** What did the retention claim reveal? *Rubric:* 3 = the rule was never configured for pressure data;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX144 — Navigation test.** How was navigation tested? *Rubric:* 3 = an unfamiliar classmate found evidence for random claims;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX142 — Hashing purpose.** Why are evidence files hashed? *Rubric:* 3 = to confirm they have not changed;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX143 — Retention gap.** What did the retention claim reveal? *Rubric:* 3 = the rule was never configured for pressure data;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX144 — Navigation test.** How was navigation tested? *Rubric:* 3 = an unfamiliar classmate found evidence for random claims;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-49"></a>
 
@@ -2094,9 +2094,9 @@ Theses organised as diaries hide the argument; organise around claims.
 
 ### Exercises
 
-- **EX145 — Thesis claim.** What does the thesis argue? *Rubric:* 3 = engineering methods make utility data governance more reliable;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX145 — Thesis claim.** What does the thesis argue? *Rubric:* 3 = engineering methods make utility data governance more reliable;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX146 — Future work.** Name one future work item. *Rubric:* 3 = real anonymised data, comparison with other utilities or long-term costs;; 2 = one;; 1 = vague;; 0 = none.
-- **EX147 — Feedback change.** How did feedback change the drafts? *Rubric:* 3 = reorganised around the argument;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX147 — Feedback change.** How did feedback change the drafts? *Rubric:* 3 = reorganised around the argument;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-50"></a>
 
@@ -2134,8 +2134,8 @@ Defending an overstated claim damages credibility; correct it.
 
 ### Exercises
 
-- **EX148 — Emergency question.** How do safety procedures handle emergencies? *Rubric:* 3 = emergency actions stay independent of approval but are recorded;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX149 — Accuracy challenge.** What did the regulator challenge? *Rubric:* 3 = accuracy was claimed but consistency was shown;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX148 — Emergency question.** How do safety procedures handle emergencies? *Rubric:* 3 = emergency actions stay independent of approval but are recorded;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX149 — Accuracy challenge.** What did the regulator challenge? *Rubric:* 3 = accuracy was claimed but consistency was shown;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX150 — Valued habits.** Which habits does Kofi value most? *Rubric:* 3 = evidence, review and honesty about limits;; 2 = all;; 1 = some;; 0 = none.
 
 <a id="worked-results"></a>

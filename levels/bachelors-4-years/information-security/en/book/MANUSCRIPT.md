@@ -69,9 +69,9 @@ Treating security as purely technical ignores people, rules and measurement.
 
 ### Exercises
 
-- **EX001 — Case size.** How many members does Ashfield have? *Rubric:* 3 = roughly 35,000;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX001 — Case size.** How many members does Ashfield have? *Rubric:* 3 = roughly 35,000;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX002 — Final year.** What does the final year include? *Rubric:* 3 = change management, group project, placement, research and dissertation;; 2 = most;; 1 = few;; 0 = none.
-- **EX003 — Weekly habit.** What journal habit does Dr. Carrow advise? *Rubric:* 3 = one security idea each week applied to Ashfield;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX003 — Weekly habit.** What journal habit does Dr. Carrow advise? *Rubric:* 3 = one security idea each week applied to Ashfield;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-02"></a>
 
@@ -109,9 +109,9 @@ Maximising one objective can damage the others.
 
 ### Exercises
 
-- **EX004 — Availability definition.** How does FIPS 199 define availability? *Rubric:* 3 = timely and reliable access and use;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX005 — Balance objective.** Which objective matters most for balances? *Rubric:* 3 = integrity;; 2 = correct;; 1 = other;; 0 = none.
-- **EX006 — Loan traceability.** Which property makes loan approvals traceable? *Rubric:* 3 = accountability;; 2 = correct;; 1 = other;; 0 = none.
+- **EX004 — Availability definition.** How does FIPS 199 define availability? *Rubric:* 3 = timely and reliable access and use;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX005 — Balance objective.** Which objective matters most for balances? *Rubric:* 3 = integrity;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX006 — Loan traceability.** Which property makes loan approvals traceable? *Rubric:* 3 = accountability;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="ch-03"></a>
 
@@ -150,8 +150,8 @@ Ignoring paper and shared folders leaves much information unprotected.
 ### Exercises
 
 - **EX007 — External recipients.** Name one external recipient of Ashfield information. *Rubric:* 3 = credit reference agency;; 2 = one;; 1 = vague;; 0 = none.
-- **EX008 — Unowned store.** Which store had no responsible person? *Rubric:* 3 = shared folders;; 2 = correct;; 1 = other;; 0 = none.
-- **EX009 — Ranking purpose.** What does ranking by harm guide? *Rubric:* 3 = where to spend security effort;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX008 — Unowned store.** Which store had no responsible person? *Rubric:* 3 = shared folders;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX009 — Ranking purpose.** What does ranking by harm guide? *Rubric:* 3 = where to spend security effort;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-04"></a>
 
@@ -189,8 +189,8 @@ Daily use of administrator accounts gives malware administrator rights.
 
 ### Exercises
 
-- **EX010 — Admin cause.** Why do some staff use administrator accounts? *Rubric:* 3 = an old application once needed it;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX011 — Update delay.** Why are some computers behind on updates? *Rubric:* 3 = staff postpone restarts;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX010 — Admin cause.** Why do some staff use administrator accounts? *Rubric:* 3 = an old application once needed it;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX011 — Update delay.** Why are some computers behind on updates? *Rubric:* 3 = staff postpone restarts;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX012 — Malware routes.** Name one way malware arrives. *Rubric:* 3 = email attachments;; 2 = one;; 1 = vague;; 0 = none.
 
 <a id="ch-05"></a>
@@ -229,9 +229,9 @@ Old firewall exceptions often stay open long after their purpose ends.
 
 ### Exercises
 
-- **EX013 — Old rule.** What old rule does Aisha find? *Rubric:* 3 = remote desktop access from anywhere;; 2 = correct;; 1 = other;; 0 = none.
-- **EX014 — Transit limits.** What does encryption in transit not protect? *Rubric:* 3 = data on a compromised server;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX015 — Member wireless.** How is member wireless protected? *Rubric:* 3 = separated from staff networks;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX013 — Old rule.** What old rule does Aisha find? *Rubric:* 3 = remote desktop access from anywhere;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX014 — Transit limits.** What does encryption in transit not protect? *Rubric:* 3 = data on a compromised server;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX015 — Member wireless.** How is member wireless protected? *Rubric:* 3 = separated from staff networks;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-06"></a>
 
@@ -269,9 +269,9 @@ Leaked security reports can help attackers.
 
 ### Exercises
 
-- **EX016 — Inactivity threshold.** Which accounts are flagged? *Rubric:* 3 = no login for ninety days;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX017 — Missing dates.** How does the script treat missing dates? *Rubric:* 3 = records them separately;; 2 = correct;; 1 = crash;; 0 = none.
-- **EX018 — Leak risk.** Why could an inactive account list help attackers? *Rubric:* 3 = it shows unmonitored logins;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX016 — Inactivity threshold.** Which accounts are flagged? *Rubric:* 3 = no login for ninety days;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX017 — Missing dates.** How does the script treat missing dates? *Rubric:* 3 = records them separately;; 2 = partly correct;; 1 = crash;; 0 = none.
+- **EX018 — Leak risk.** Why could an inactive account list help attackers? *Rubric:* 3 = it shows unmonitored logins;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-07"></a>
 
@@ -309,9 +309,9 @@ Comparing raw counts between groups of different sizes misleads.
 
 ### Exercises
 
-- **EX019 — Training rate.** What share of staff completed training? *Rubric:* 3 = 112 of 140, eighty percent;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX020 — Median closure.** What is the median closure time? *Rubric:* 3 = fifteen days;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX021 — Fair comparison.** How are branches compared fairly? *Rubric:* 3 = incidents per hundred staff;; 2 = correct;; 1 = raw;; 0 = none.
+- **EX019 — Training rate.** What share of staff completed training? *Rubric:* 3 = 112 of 140, eighty percent;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX020 — Median closure.** What is the median closure time? *Rubric:* 3 = fifteen days;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX021 — Fair comparison.** How are branches compared fairly? *Rubric:* 3 = incidents per hundred staff;; 2 = partly correct;; 1 = raw;; 0 = none.
 
 <a id="ch-08"></a>
 
@@ -350,8 +350,8 @@ Citing a standard without its edition leaves readers unsure which version applie
 ### Exercises
 
 - **EX022 — Report questions.** What four questions should a report answer? *Rubric:* 3 = problem, importance, action, owner;; 2 = all;; 1 = some;; 0 = none.
-- **EX023 — Board version.** What does the board version emphasise? *Rubric:* 3 = former employees could access records;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX024 — Edition citation.** Why cite a standard's edition? *Rubric:* 3 = standards change;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX023 — Board version.** What does the board version emphasise? *Rubric:* 3 = former employees could access records;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX024 — Edition citation.** Why cite a standard's edition? *Rubric:* 3 = standards change;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-09"></a>
 
@@ -390,8 +390,8 @@ Testing systems without written authorisation may be a crime.
 ### Exercises
 
 - **EX025 — Law types.** Name one type of law shaping security. *Rubric:* 3 = data protection law;; 2 = one;; 1 = vague;; 0 = none.
-- **EX026 — Testing rule.** What must testers always have? *Rubric:* 3 = signed authorisation defining scope;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX027 — Contract gap.** What did the card processor contract lack? *Rubric:* 3 = audit rights;; 2 = correct;; 1 = other;; 0 = none.
+- **EX026 — Testing rule.** What must testers always have? *Rubric:* 3 = signed authorisation defining scope;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX027 — Contract gap.** What did the card processor contract lack? *Rubric:* 3 = audit rights;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="ch-10"></a>
 
@@ -429,9 +429,9 @@ Using authorised access for personal curiosity is a breach of trust.
 
 ### Exercises
 
-- **EX028 — Monitoring test.** What is the key ethical test for monitoring? *Rubric:* 3 = proportionality;; 2 = correct;; 1 = other;; 0 = none.
-- **EX029 — Disclosure approach.** How should the found weakness be handled? *Rubric:* 3 = report privately via published contact;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX030 — Blocked group.** Who is unfairly affected by foreign login blocks? *Rubric:* 3 = members abroad;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX028 — Monitoring test.** What is the key ethical test for monitoring? *Rubric:* 3 = proportionality;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX029 — Disclosure approach.** How should the found weakness be handled? *Rubric:* 3 = report privately via published contact;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX030 — Blocked group.** Who is unfairly affected by foreign login blocks? *Rubric:* 3 = members abroad;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-11"></a>
 
@@ -469,9 +469,9 @@ Board reports full of technical counts rarely support decisions.
 
 ### Exercises
 
-- **EX031 — Board approves.** What does Ashfield's board approve? *Rubric:* 3 = the risk appetite;; 2 = correct;; 1 = other;; 0 = none.
-- **EX032 — Govern gap.** Which Govern outcome is weak at Ashfield? *Rubric:* 3 = supply chain risk management;; 2 = correct;; 1 = other;; 0 = none.
-- **EX033 — Appetite effect.** Which spending is justified more readily? *Rubric:* 3 = preventing data exposure;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX031 — Board approves.** What does Ashfield's board approve? *Rubric:* 3 = the risk appetite;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX032 — Govern gap.** Which Govern outcome is weak at Ashfield? *Rubric:* 3 = supply chain risk management;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX033 — Appetite effect.** Which spending is justified more readily? *Rubric:* 3 = preventing data exposure;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-12"></a>
 
@@ -510,8 +510,8 @@ Controls that nobody owns tend to stop without anyone noticing.
 ### Exercises
 
 - **EX034 — Unowned controls.** Name one control that had no owner. *Rubric:* 3 = firewall review;; 2 = one;; 1 = vague;; 0 = none.
-- **EX035 — Access conflict.** What conflict does the IT manager have? *Rubric:* 3 = creates and approves accounts;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX036 — Compensating control.** What compensates for limited separation? *Rubric:* 3 = logging admin actions with weekly review;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX035 — Access conflict.** What conflict does the IT manager have? *Rubric:* 3 = creates and approves accounts;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX036 — Compensating control.** What compensates for limited separation? *Rubric:* 3 = logging admin actions with weekly review;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-13"></a>
 
@@ -549,9 +549,9 @@ Putting technical detail in policies forces board approval for routine changes.
 
 ### Exercises
 
-- **EX037 — Standard example.** Which is an example of a standard? *Rubric:* 3 = passwords at least fourteen characters;; 2 = correct;; 1 = other;; 0 = none.
-- **EX038 — Removed detail.** What detail is removed from the policy? *Rubric:* 3 = password length;; 2 = correct;; 1 = other;; 0 = none.
-- **EX039 — Outdated policy.** What did the acceptable use policy omit? *Rubric:* 3 = cloud storage;; 2 = correct;; 1 = other;; 0 = none.
+- **EX037 — Standard example.** Which is an example of a standard? *Rubric:* 3 = passwords at least fourteen characters;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX038 — Removed detail.** What detail is removed from the policy? *Rubric:* 3 = password length;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX039 — Outdated policy.** What did the acceptable use policy omit? *Rubric:* 3 = cloud storage;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="ch-14"></a>
 
@@ -589,9 +589,9 @@ Insurance transfers some financial loss but not reputational harm.
 
 ### Exercises
 
-- **EX040 — Assessment source.** Which publication guides the risk assessment? *Rubric:* 3 = NIST SP 800-30 Revision 1;; 2 = correct;; 1 = other;; 0 = none.
+- **EX040 — Assessment source.** Which publication guides the risk assessment? *Rubric:* 3 = NIST SP 800-30 Revision 1;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX041 — Top risks.** Name one of the top three risks. *Rubric:* 3 = fake payment requests;; 2 = one;; 1 = vague;; 0 = none.
-- **EX042 — Payment treatment.** How is fake payment risk reduced? *Rubric:* 3 = call-back verification to known numbers;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX042 — Payment treatment.** How is fake payment risk reduced? *Rubric:* 3 = call-back verification to known numbers;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-15"></a>
 
@@ -629,9 +629,9 @@ Complex classification schemes are often ignored.
 
 ### Exercises
 
-- **EX043 — Forgotten device.** What forgotten asset does Aisha find? *Rubric:* 3 = a network storage device in a cupboard;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX044 — Restricted class.** Which data are restricted? *Rubric:* 3 = identity documents and payment card data;; 2 = correct;; 1 = other;; 0 = none.
-- **EX045 — Inventory upkeep.** How is the inventory kept current? *Rubric:* 3 = link to purchasing and disposal, twice-yearly check;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX043 — Forgotten device.** What forgotten asset does Aisha find? *Rubric:* 3 = a network storage device in a cupboard;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX044 — Restricted class.** Which data are restricted? *Rubric:* 3 = identity documents and payment card data;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX045 — Inventory upkeep.** How is the inventory kept current? *Rubric:* 3 = link to purchasing and disposal, twice-yearly check;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-16"></a>
 
@@ -669,9 +669,9 @@ Copying a colleague's access often grants unneeded rights.
 
 ### Exercises
 
-- **EX046 — Teller access.** What do tellers need? *Rubric:* 3 = view balances, not approve loans;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX047 — Mover problem.** What happens to movers' old access? *Rubric:* 3 = it is often kept;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX048 — Shared admin.** Who shares the administrator account? *Rubric:* 3 = IT staff and a supplier;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX046 — Teller access.** What do tellers need? *Rubric:* 3 = view balances, not approve loans;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX047 — Mover problem.** What happens to movers' old access? *Rubric:* 3 = it is often kept;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX048 — Shared admin.** Who shares the administrator account? *Rubric:* 3 = IT staff and a supplier;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-17"></a>
 
@@ -709,9 +709,9 @@ Strong login controls are bypassed if account recovery is weak.
 
 ### Exercises
 
-- **EX049 — Fingerprint weakness.** What is the weakness of fingerprints? *Rubric:* 3 = cannot be changed if copied;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX050 — Text code risk.** How can text message codes be stolen? *Rubric:* 3 = mobile number takeover;; 2 = correct;; 1 = other;; 0 = none.
-- **EX051 — Recovery weakness.** What weak recovery check did branches use? *Rubric:* 3 = date of birth and address;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX049 — Fingerprint weakness.** What is the weakness of fingerprints? *Rubric:* 3 = cannot be changed if copied;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX050 — Text code risk.** How can text message codes be stolen? *Rubric:* 3 = mobile number takeover;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX051 — Recovery weakness.** What weak recovery check did branches use? *Rubric:* 3 = date of birth and address;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-18"></a>
 
@@ -778,9 +778,9 @@ Reviews based on managers' memory miss leavers and leftover rights.
 
 ### Exercises
 
-- **EX052 — Active leavers.** How many leavers still had active accounts? *Rubric:* 3 = ten;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX053 — Excess access.** How many current staff had access beyond their role? *Rubric:* 3 = thirteen;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX054 — Excess admin.** How many of them held administrator access? *Rubric:* 3 = six;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX052 — Active leavers.** How many leavers still had active accounts? *Rubric:* 3 = ten;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX053 — Excess access.** How many current staff had access beyond their role? *Rubric:* 3 = thirteen;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX054 — Excess admin.** How many of them held administrator access? *Rubric:* 3 = six;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
 <a id="ch-19"></a>
 
@@ -818,9 +818,9 @@ Storing keys beside encrypted data defeats the encryption.
 
 ### Exercises
 
-- **EX055 — Symmetric use.** Why is symmetric encryption used for bulk data? *Rubric:* 3 = it is fast;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX056 — Hash property.** What happens when one input bit changes? *Rubric:* 3 = the fingerprint changes completely;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX057 — Backup key.** Where was the backup key stored? *Rubric:* 3 = in the same folder as backups;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX055 — Symmetric use.** Why is symmetric encryption used for bulk data? *Rubric:* 3 = it is fast;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX056 — Hash property.** What happens when one input bit changes? *Rubric:* 3 = the fingerprint changes completely;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX057 — Backup key.** Where was the backup key stored? *Rubric:* 3 = in the same folder as backups;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-20"></a>
 
@@ -858,9 +858,9 @@ Blaming staff for clicks discourages the reporting that detects attacks.
 
 ### Exercises
 
-- **EX058 — Teller topic.** What do tellers learn to spot? *Rubric:* 3 = social engineering by phone;; 2 = correct;; 1 = other;; 0 = none.
-- **EX059 — Report value.** What did one teller's report reveal? *Rubric:* 3 = several branches received the same call;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX060 — Click caution.** Why avoid click rates alone? *Rubric:* 3 = they depend on simulation difficulty;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX058 — Teller topic.** What do tellers learn to spot? *Rubric:* 3 = social engineering by phone;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX059 — Report value.** What did one teller's report reveal? *Rubric:* 3 = several branches received the same call;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX060 — Click caution.** Why avoid click rates alone? *Rubric:* 3 = they depend on simulation difficulty;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-21"></a>
 
@@ -926,9 +926,9 @@ Prioritising by severity alone ignores exposure and active exploitation.
 
 ### Exercises
 
-- **EX061 — Overdue critical.** How many critical findings are overdue? *Rubric:* 3 = five, 17.2 percent;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX062 — Overdue high.** What share of high findings is overdue? *Rubric:* 3 = 26.2 percent;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX063 — Total overdue.** How many findings are overdue overall? *Rubric:* 3 = 89 of 400;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX061 — Overdue critical.** How many critical findings are overdue? *Rubric:* 3 = five, 17.2 percent;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX062 — Overdue high.** What share of high findings is overdue? *Rubric:* 3 = 26.2 percent;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX063 — Total overdue.** How many findings are overdue overall? *Rubric:* 3 = 89 of 400;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
 <a id="ch-22"></a>
 
@@ -966,9 +966,9 @@ Default passwords published in manuals give attackers easy access.
 
 ### Exercises
 
-- **EX064 — Router problem.** What was wrong with the branch router? *Rubric:* 3 = factory default password;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX064 — Router problem.** What was wrong with the branch router? *Rubric:* 3 = factory default password;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX065 — Baseline item.** Name one desktop baseline setting. *Rubric:* 3 = disk encryption enabled;; 2 = one;; 1 = vague;; 0 = none.
-- **EX066 — Screen lock fix.** What compromise is agreed for screen lock? *Rubric:* 3 = a longer timeout;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX066 — Screen lock fix.** What compromise is agreed for screen lock? *Rubric:* 3 = a longer timeout;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-23"></a>
 
@@ -1007,8 +1007,8 @@ Logs kept only where administrators can alter them are weak evidence.
 ### Exercises
 
 - **EX067 — Alert events.** Name one automated alert event. *Rubric:* 3 = admin logins outside working hours;; 2 = one;; 1 = vague;; 0 = none.
-- **EX068 — Bulk viewing.** Why did one account view many records? *Rubric:* 3 = preparing an approved mailing list;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX069 — Clock sync.** Why synchronise clocks? *Rubric:* 3 = to order events across systems;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX068 — Bulk viewing.** Why did one account view many records? *Rubric:* 3 = preparing an approved mailing list;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX069 — Clock sync.** Why synchronise clocks? *Rubric:* 3 = to order events across systems;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-24"></a>
 
@@ -1046,9 +1046,9 @@ An incident plan that is never exercised usually contains gaps.
 
 ### Exercises
 
-- **EX070 — Plan length.** How long is the main plan? *Rubric:* 3 = four pages;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX071 — First containment.** What is isolated first for ransomware? *Rubric:* 3 = the affected computer;; 2 = correct;; 1 = branch;; 0 = none.
-- **EX072 — Exercise gap.** What gap did the exercise reveal? *Rubric:* 3 = who decides to contact the bank to stop a payment;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX070 — Plan length.** How long is the main plan? *Rubric:* 3 = four pages;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX071 — First containment.** What is isolated first for ransomware? *Rubric:* 3 = the affected computer;; 2 = partly correct;; 1 = branch;; 0 = none.
+- **EX072 — Exercise gap.** What gap did the exercise reveal? *Rubric:* 3 = who decides to contact the bank to stop a payment;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-25"></a>
 
@@ -1086,9 +1086,9 @@ Backups reachable from the network can be destroyed by ransomware.
 
 ### Exercises
 
-- **EX073 — Missing copy.** What extra backup copy does Aisha recommend? *Rubric:* 3 = offline or immutable copy away from head office;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX074 — Restore failures.** Why did some files fail to restore? *Rubric:* 3 = they were open during backup;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX075 — Core objectives.** What are core banking's objectives? *Rubric:* 3 = fifteen minutes of data, four hours to restore;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX073 — Missing copy.** What extra backup copy does Aisha recommend? *Rubric:* 3 = offline or immutable copy away from head office;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX074 — Restore failures.** Why did some files fail to restore? *Rubric:* 3 = they were open during backup;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX075 — Core objectives.** What are core banking's objectives? *Rubric:* 3 = fifteen minutes of data, four hours to restore;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-26"></a>
 
@@ -1150,9 +1150,9 @@ Storing passwords without salt lets attackers spot identical passwords.
 
 ### Exercises
 
-- **EX076 — Salt purpose.** Why use a unique salt? *Rubric:* 3 = stops comparing hashes across accounts;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX077 — Breached matches.** How many synthetic passwords were breached? *Rubric:* 3 = six, 2.0 percent;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX078 — Forced changes.** Why avoid frequent forced changes? *Rubric:* 3 = they lead to predictable patterns;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX076 — Salt purpose.** Why use a unique salt? *Rubric:* 3 = stops comparing hashes across accounts;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX077 — Breached matches.** How many synthetic passwords were breached? *Rubric:* 3 = six, 2.0 percent;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX078 — Forced changes.** Why avoid frequent forced changes? *Rubric:* 3 = they lead to predictable patterns;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-27"></a>
 
@@ -1190,9 +1190,9 @@ Certification evidence is useful only if its scope covers the services used.
 
 ### Exercises
 
-- **EX079 — Permanent access.** Which supplier had permanent remote access? *Rubric:* 3 = the IT support company;; 2 = correct;; 1 = other;; 0 = none.
-- **EX080 — Certificate caution.** When is ISO/IEC 27001 certification useful evidence? *Rubric:* 3 = when its scope covers the services used;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX081 — Missing terms.** What did two contracts lack? *Rubric:* 3 = data deletion terms;; 2 = correct;; 1 = other;; 0 = none.
+- **EX079 — Permanent access.** Which supplier had permanent remote access? *Rubric:* 3 = the IT support company;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX080 — Certificate caution.** When is ISO/IEC 27001 certification useful evidence? *Rubric:* 3 = when its scope covers the services used;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX081 — Missing terms.** What did two contracts lack? *Rubric:* 3 = data deletion terms;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="ch-28"></a>
 
@@ -1230,9 +1230,9 @@ A key hanging beside its lock offers no protection.
 
 ### Exercises
 
-- **EX082 — Door problem.** What weakens the staff-area door? *Rubric:* 3 = propped open on busy days;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX083 — Lost laptop.** Why were no data exposed from the lost laptop? *Rubric:* 3 = it was encrypted;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX084 — Basement measure.** What is recommended for basement equipment? *Rubric:* 3 = raise it off the floor;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX082 — Door problem.** What weakens the staff-area door? *Rubric:* 3 = propped open on busy days;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX083 — Lost laptop.** Why were no data exposed from the lost laptop? *Rubric:* 3 = it was encrypted;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX084 — Basement measure.** What is recommended for basement equipment? *Rubric:* 3 = raise it off the floor;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-29"></a>
 
@@ -1270,9 +1270,9 @@ Counting blocked attacks looks impressive but says little about risk.
 
 ### Exercises
 
-- **EX085 — Vanity metric.** Which metric says little about risk? *Rubric:* 3 = blocked attacks at the firewall;; 2 = correct;; 1 = other;; 0 = none.
-- **EX086 — Leaver baseline.** What is the leaver baseline? *Rubric:* 3 = ten active leaver accounts;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX087 — Report format.** What does the board report show for each measure? *Rubric:* 3 = value, target, trend and comment;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX085 — Vanity metric.** Which metric says little about risk? *Rubric:* 3 = blocked attacks at the firewall;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX086 — Leaver baseline.** What is the leaver baseline? *Rubric:* 3 = ten active leaver accounts;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX087 — Report format.** What does the board report show for each measure? *Rubric:* 3 = value, target, trend and comment;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-30"></a>
 
@@ -1310,9 +1310,9 @@ Checking that a policy exists is not the same as checking it is followed.
 
 ### Exercises
 
-- **EX088 — Sample result.** How many sampled leavers were removed within a day? *Rubric:* 3 = eight of ten;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX088 — Sample result.** How many sampled leavers were removed within a day? *Rubric:* 3 = eight of ten;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX089 — Audit finding.** Name one audit finding. *Rubric:* 3 = no review of supplier access;; 2 = one;; 1 = vague;; 0 = none.
-- **EX090 — Improvement cycle.** What cycle keeps security responsive? *Rubric:* 3 = plan, do, check, act;; 2 = correct;; 1 = other;; 0 = none.
+- **EX090 — Improvement cycle.** What cycle keeps security responsive? *Rubric:* 3 = plan, do, check, act;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="ch-31"></a>
 
@@ -1350,9 +1350,9 @@ Changes that surprise staff often produce workarounds.
 
 ### Exercises
 
-- **EX091 — Leader message.** Who explains why the change matters? *Rubric:* 3 = the chief executive;; 2 = correct;; 1 = other;; 0 = none.
-- **EX092 — Alternative method.** What is offered to staff without suitable phones? *Rubric:* 3 = hardware tokens;; 2 = correct;; 1 = other;; 0 = none.
-- **EX093 — Lagging branch.** Why did one branch lag? *Rubric:* 3 = its champion was on holiday;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX091 — Leader message.** Who explains why the change matters? *Rubric:* 3 = the chief executive;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX092 — Alternative method.** What is offered to staff without suitable phones? *Rubric:* 3 = hardware tokens;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX093 — Lagging branch.** Why did one branch lag? *Rubric:* 3 = its champion was on holiday;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-32"></a>
 
@@ -1390,9 +1390,9 @@ Presenting uncertain benefits as precise savings damages credibility.
 
 ### Exercises
 
-- **EX094 — Weekend gap.** Why could weekend attacks go unnoticed? *Rubric:* 3 = alerts reviewed only weekday mornings;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX095 — Rota drawback.** What is the drawback of the on-call rota? *Rubric:* 3 = it would exhaust two IT staff;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX096 — Board decision.** What does the board approve? *Rubric:* 3 = a one-year trial;; 2 = correct;; 1 = other;; 0 = none.
+- **EX094 — Weekend gap.** Why could weekend attacks go unnoticed? *Rubric:* 3 = alerts reviewed only weekday mornings;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX095 — Rota drawback.** What is the drawback of the on-call rota? *Rubric:* 3 = it would exhaust two IT staff;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX096 — Board decision.** What does the board approve? *Rubric:* 3 = a one-year trial;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="ch-33"></a>
 
@@ -1430,9 +1430,9 @@ Coordination work can become invisible in group projects.
 
 ### Exercises
 
-- **EX097 — Core message.** What is the campaign's core message? *Rubric:* 3 = Ashfield will never ask for your code;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX098 — Scam method.** How do scammers impersonate Ashfield? *Rubric:* 3 = by phone asking for one-time codes;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX099 — Aisha's roles.** What roles does Aisha take? *Rubric:* 3 = coordination, report and member interviews;; 2 = correct;; 1 = some;; 0 = none.
+- **EX097 — Core message.** What is the campaign's core message? *Rubric:* 3 = Ashfield will never ask for your code;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX098 — Scam method.** How do scammers impersonate Ashfield? *Rubric:* 3 = by phone asking for one-time codes;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX099 — Aisha's roles.** What roles does Aisha take? *Rubric:* 3 = coordination, report and member interviews;; 2 = partly correct;; 1 = some;; 0 = none.
 
 <a id="ch-34"></a>
 
@@ -1471,8 +1471,8 @@ A before-and-after comparison cannot by itself prove a campaign caused a change.
 ### Exercises
 
 - **EX100 — Campaign formats.** Name one campaign format. *Rubric:* 3 = branch poster;; 2 = one;; 1 = vague;; 0 = none.
-- **EX101 — Impact limit.** Why can't the group prove causation? *Rubric:* 3 = scam activity also varies;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX102 — Client value.** What did the client value most? *Rubric:* 3 = the measurement plan;; 2 = correct;; 1 = other;; 0 = none.
+- **EX101 — Impact limit.** Why can't the group prove causation? *Rubric:* 3 = scam activity also varies;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX102 — Client value.** What did the client value most? *Rubric:* 3 = the measurement plan;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="ch-35"></a>
 
@@ -1510,7 +1510,7 @@ Sharing an employer's weaknesses, even casually, can help attackers.
 
 ### Exercises
 
-- **EX103 — Placement surprise.** What surprised Aisha most? *Rubric:* 3 = persuading people was harder than technical problems;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX103 — Placement surprise.** What surprised Aisha most? *Rubric:* 3 = persuading people was harder than technical problems;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX104 — Placement contribution.** Name one contribution Aisha made. *Rubric:* 3 = simplified access review procedure;; 2 = one;; 1 = vague;; 0 = none.
 - **EX105 — Skill to develop.** Name one skill Aisha wants to develop. *Rubric:* 3 = presenting to senior managers;; 2 = one;; 1 = vague;; 0 = none.
 
@@ -1550,8 +1550,8 @@ Changing measure definitions after seeing data biases results.
 
 ### Exercises
 
-- **EX106 — Research question.** What is Aisha's narrowed question? *Rubric:* 3 = did the automated leaver process shorten removal time;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX107 — Design weakness.** What weakens a before-and-after design? *Rubric:* 3 = other changes at the same time;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX106 — Research question.** What is Aisha's narrowed question? *Rubric:* 3 = did the automated leaver process shorten removal time;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX107 — Design weakness.** What weakens a before-and-after design? *Rubric:* 3 = other changes at the same time;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX108 — Ethics condition.** Name one ethics condition. *Rubric:* 3 = anonymisation by Ashfield;; 2 = one;; 1 = vague;; 0 = none.
 
 <a id="ch-37"></a>
@@ -1590,9 +1590,9 @@ Choosing analyses after seeing results invites bias.
 
 ### Exercises
 
-- **EX109 — Stakes paragraph.** Why does leaver removal matter? *Rubric:* 3 = former accounts can be misused;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX110 — Literature gap.** What gap does Aisha find? *Rubric:* 3 = few studies measuring removal times in small organisations;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX111 — Buffer.** How long is the timeline buffer? *Rubric:* 3 = two weeks;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX109 — Stakes paragraph.** Why does leaver removal matter? *Rubric:* 3 = former accounts can be misused;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX110 — Literature gap.** What gap does Aisha find? *Rubric:* 3 = few studies measuring removal times in small organisations;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX111 — Buffer.** How long is the timeline buffer? *Rubric:* 3 = two weeks;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
 <a id="ch-38"></a>
 
@@ -1630,9 +1630,9 @@ Reporting only the median hides exceptions that reveal process gaps.
 
 ### Exercises
 
-- **EX112 — Median before.** What was the median removal time before? *Rubric:* 3 = five days;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX113 — Delay cause.** What caused most after-period delays? *Rubric:* 3 = missing end dates for temporary staff;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX114 — Staffing rival.** How is the staffing rival weakened? *Rubric:* 3 = removals were performed automatically;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX112 — Median before.** What was the median removal time before? *Rubric:* 3 = five days;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX113 — Delay cause.** What caused most after-period delays? *Rubric:* 3 = missing end dates for temporary staff;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX114 — Staffing rival.** How is the staffing rival weakened? *Rubric:* 3 = removals were performed automatically;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-39"></a>
 
@@ -1670,9 +1670,9 @@ Vague limitations such as more research is needed add little.
 
 ### Exercises
 
-- **EX115 — Moved section.** What is moved into results? *Rubric:* 3 = temporary staff delay investigation;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX116 — HR limitation.** What limitation concerns HR dates? *Rubric:* 3 = they may themselves be late;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX117 — Revision count.** How many times does Aisha revise? *Rubric:* 3 = three;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX115 — Moved section.** What is moved into results? *Rubric:* 3 = temporary staff delay investigation;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX116 — HR limitation.** What limitation concerns HR dates? *Rubric:* 3 = they may themselves be late;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX117 — Revision count.** How many times does Aisha revise? *Rubric:* 3 = three;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
 <a id="ch-40"></a>
 
@@ -1710,9 +1710,9 @@ Overstating findings under questioning damages credibility.
 
 ### Exercises
 
-- **EX118 — New risk.** What new risk could automation create? *Rubric:* 3 = wrong end dates disabling current staff;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX119 — Comparison answer.** Why was there no comparison organisation? *Rubric:* 3 = none was available;; 2 = correct;; 1 = vague;; 0 = no answer.
-- **EX120 — Adopted recommendation.** Which recommendation does Ashfield adopt? *Rubric:* 3 = temporary contract end dates;; 2 = correct;; 1 = other;; 0 = none.
+- **EX118 — New risk.** What new risk could automation create? *Rubric:* 3 = wrong end dates disabling current staff;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX119 — Comparison answer.** Why was there no comparison organisation? *Rubric:* 3 = none was available;; 2 = partly correct;; 1 = vague;; 0 = no answer.
+- **EX120 — Adopted recommendation.** Which recommendation does Ashfield adopt? *Rubric:* 3 = temporary contract end dates;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="worked-results"></a>
 

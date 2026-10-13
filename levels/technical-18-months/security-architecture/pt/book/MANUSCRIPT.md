@@ -116,7 +116,7 @@ Software antigo pode precisar de protocolos antigos. Mudanças no roteador podem
 
 - **EX007 — Correção do roteador.** Como a administração do roteador foi restringida? *Rubrica:* 3 = à rede da equipe, e não à rede de visitantes;; 2 = só equipe;; 1 = vago;; 0 = nenhuma.
 
-- **EX008 — Problema maior.** Que problema precisa de um reprojeto planejado? *Rubrica:* 3 = a rede plana;; 2 = rede plana;; 1 = impressoras;; 0 = nenhuma.
+- **EX008 — Problema maior.** Que problema precisa de um reprojeto planejado? *Rubrica:* 3 = a rede plana;; 2 = rede plana, hesitando com outra opção;; 1 = impressoras;; 0 = nenhuma.
 
 ### Síntese
 

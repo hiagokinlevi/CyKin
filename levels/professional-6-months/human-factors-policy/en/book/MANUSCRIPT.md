@@ -439,7 +439,7 @@ Near-miss sets are small. Success stories can encourage complacency.
 
 - **EX036 — What stopped payment.** What stopped the fake payment? *Rubric:* 3 = the finance system blocked it pending callback;; 2 = callback;; 1 = the assistant;; 0 = none.
 - **EX037 — Story used.** What story did the fake invoice tell? *Rubric:* 3 = a cash flow problem requiring same-day payment;; 2 = urgency;; 1 = vague;; 0 = none.
-- **EX038 — Lab top factor.** Which factor appeared in all four near misses in the lab? *Rubric:* 3 = urgency;; 2 = urgency, without explanation;; 1 = workload;; 0 = none.
+- **EX038 — Lab top factor.** Which factor appeared in all four near misses in the lab? *Rubric:* 3 = urgency;; 2 = urgency, hedged with workload;; 1 = workload;; 0 = none.
 - **EX039 — Tag issue.** What problem did the external tag have? *Rubric:* 3 = easy to miss on a busy screen;; 2 = visibility;; 1 = vague;; 0 = none.
 - **EX040 — Sharing approach.** How will the case be shared? *Rubric:* 3 = anonymously as a success story;; 2 = success;; 1 = blame;; 0 = none.
 
@@ -485,7 +485,7 @@ Monthly messages can become routine. Board attention varies.
 
 - **EX041 — Message parts.** What does each monthly message contain? *Rubric:* 3 = an example, an action and thanks;; 2 = three;; 1 = warnings;; 0 = none.
 - **EX042 — Tenant notice.** What does the tenant notice promise? *Rubric:* 3 = Ferngate never asks for bank details by email or text;; 2 = never;; 1 = vague;; 0 = none.
-- **EX043 — Simulation recommendation.** What did Grace recommend for year one? *Rubric:* 3 = no simulations;; 2 = none;; 1 = monthly;; 0 = no answer.
+- **EX043 — Simulation recommendation.** What did Grace recommend for year one? *Rubric:* 3 = no simulations in the first year;; 2 = no simulations, without the first-year limit;; 1 = monthly;; 0 = no answer.
 - **EX044 — Banned lure topics.** Which lure topics are banned if simulations are used later? *Rubric:* 3 = pay, housing or health;; 2 = distress;; 1 = vague;; 0 = none.
 - **EX045 — Report contents.** What do Grace's reports include? *Rubric:* 3 = outcomes, verified controls, near misses and burden;; 2 = outcomes;; 1 = activities;; 0 = none.
 

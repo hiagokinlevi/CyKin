@@ -70,12 +70,12 @@ Os termos de busca determinam o que é encontrado; teste termos alternativos ant
 ### Exercícios
 
 - **EX001 — Problema do parceiro.** Que problema a Prefeitura do Condado de Arden enfrenta? *Rubrica:* 3 = endereços duplicados em cinco departamentos, causando erros;; 2 = menciona duplicatas;; 1 = vago;; 0 = nenhuma.
-- **EX002 — Medida de desfecho.** Qual é a medida de desfecho de Tomás? *Rubrica:* 3 = dias entre a notificação do erro e a correção;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX003 — Grupo de comparação.** Qual é a comparação na pergunta dele? *Rubrica:* 3 = departamentos sem curadores;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX002 — Medida de desfecho.** Qual é a medida de desfecho de Tomás? *Rubrica:* 3 = dias entre a notificação do erro e a correção;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX003 — Grupo de comparação.** Qual é a comparação na pergunta dele? *Rubrica:* 3 = departamentos sem curadores;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX004 — Definição de curadoria.** Como o DAMA-DMBOK2 descreve a curadoria? *Rubrica:* 3 = responsabilização pelos dados em nome de outros;; 2 = menciona responsabilização;; 1 = vago;; 0 = nenhuma.
-- **EX005 — Critério de inclusão.** O que os estudos incluídos precisam relatar? *Rubrica:* 3 = um desfecho medido antes e depois de uma mudança de governança;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX006 — Conferência da orientadora.** Que parcela das decisões a Dra. Solberg conferiu? *Rubrica:* 3 = uma décima parte aleatória;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX007 — Lacuna na literatura.** O que a busca mostrou estar faltando? *Rubrica:* 3 = estudos que medem desfechos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX005 — Critério de inclusão.** O que os estudos incluídos precisam relatar? *Rubrica:* 3 = um desfecho medido antes e depois de uma mudança de governança;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX006 — Conferência da orientadora.** Que parcela das decisões a Dra. Solberg conferiu? *Rubrica:* 3 = uma décima parte aleatória;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX007 — Lacuna na literatura.** O que a busca mostrou estar faltando? *Rubrica:* 3 = estudos que medem desfechos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-02"></a>
 
@@ -116,9 +116,9 @@ Modelos descrevem ideais; prefeituras reais os misturam.
 - **EX008 — Três níveis.** Que níveis as três visões enfatizam? *Rubrica:* 3 = função, decisões e responsabilização do conselho;; 2 = todos;; 1 = um;; 0 = nenhuma.
 - **EX009 — Verbos da ISO.** O que faz o órgão de governança segundo a ISO/IEC 38505-1? *Rubrica:* 3 = dirige, avalia e monitora;; 2 = todos;; 1 = um;; 0 = nenhuma.
 - **EX010 — O cargo não basta.** Por que o cargo de curador pode não ter efeito? *Rubrica:* 3 = os curadores podem não ter direitos de decisão;; 2 = menciona direitos;; 1 = vago;; 0 = nenhuma.
-- **EX011 — Atualidade.** Que dimensão de qualidade são os dias até a correção? *Rubrica:* 3 = atualidade;; 2 = correto;; 1 = acurácia;; 0 = nenhuma.
-- **EX012 — Princípio da ISO 8000.** Em relação a que a qualidade é julgada na ISO 8000? *Rubrica:* 3 = requisitos declarados;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX013 — Contestação dos colegas.** Que explicação concorrente os colegas levantaram? *Rubrica:* 3 = a cultura da prefeitura;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX011 — Atualidade.** Que dimensão de qualidade são os dias até a correção? *Rubrica:* 3 = atualidade;; 2 = parcialmente correto;; 1 = acurácia;; 0 = nenhuma.
+- **EX012 — Princípio da ISO 8000.** Em relação a que a qualidade é julgada na ISO 8000? *Rubrica:* 3 = requisitos declarados;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX013 — Contestação dos colegas.** Que explicação concorrente os colegas levantaram? *Rubrica:* 3 = a cultura da prefeitura;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX014 — Condição testável.** Que condição Tomás derivou? *Rubrica:* 3 = curadores precisam de direitos de decisão e de um canal de propagação;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 
 <a id="ch-03"></a>
@@ -157,12 +157,12 @@ Tendências paralelas podem valer antes e falhar depois; fique atento a novos ev
 
 ### Exercícios
 
-- **EX015 — Por que não sortear.** Por que Tomás não pode sortear? *Rubrica:* 3 = a prefeitura escolheu os departamentos do piloto;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX016 — Nome do desenho.** Que desenho Tomás usa? *Rubrica:* 3 = diferenças em diferenças;; 2 = correto;; 1 = outro;; 0 = nenhuma.
-- **EX017 — Suposição-chave.** De que suposição o desenho depende? *Rubrica:* 3 = tendências paralelas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX015 — Por que não sortear.** Por que Tomás não pode sortear? *Rubrica:* 3 = a prefeitura escolheu os departamentos do piloto;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX016 — Nome do desenho.** Que desenho Tomás usa? *Rubrica:* 3 = diferenças em diferenças;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
+- **EX017 — Suposição-chave.** De que suposição o desenho depende? *Rubrica:* 3 = tendências paralelas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX018 — Exemplo de ameaça.** Cite uma ameaça ao desenho. *Rubrica:* 3 = atenção extra, diferença de rotatividade, mudança na notificação;; 2 = uma;; 1 = vago;; 0 = nenhuma.
-- **EX019 — Nível ético.** Em que nível o desempenho é analisado? *Rubrica:* 3 = somente no nível do departamento;; 2 = correto;; 1 = individual;; 0 = nenhuma.
-- **EX020 — Limiar de relevância.** Que limiar de relevância prática foi fixado? *Rubrica:* 3 = cinco dias;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX019 — Nível ético.** Em que nível o desempenho é analisado? *Rubrica:* 3 = somente no nível do departamento;; 2 = parcialmente correto;; 1 = individual;; 0 = nenhuma.
+- **EX020 — Limiar de relevância.** Que limiar de relevância prática foi fixado? *Rubrica:* 3 = cinco dias;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
 <a id="ch-04"></a>
 
@@ -201,9 +201,9 @@ Algumas rivais não podem ser totalmente descartadas; relate-as como limitaçõe
 ### Exercícios
 
 - **EX021 — Quatro rivais.** Cite duas explicações rivais. *Rubrica:* 3 = nova ferramenta, menor volume de erros, servidores experientes, efeito Hawthorne;; 2 = duas;; 1 = uma;; 0 = nenhuma.
-- **EX022 — Rival da ferramenta.** Por que o desenho elimina a rival da ferramenta de consulta? *Rubrica:* 3 = foi implantada em todos os departamentos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX022 — Rival da ferramenta.** Por que o desenho elimina a rival da ferramenta de consulta? *Rubrica:* 3 = foi implantada em todos os departamentos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX023 — Verificação Hawthorne.** Como Tomás vai verificar o efeito Hawthorne? *Rubrica:* 3 = entrevistas e comparação dos primeiros meses com os seguintes;; 2 = menciona meses;; 1 = vago;; 0 = nenhuma.
-- **EX024 — Medida de cultura.** Como a cultura é operacionalizada? *Rubrica:* 3 = compartilhamento informal prévio de correções;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX024 — Medida de cultura.** Como a cultura é operacionalizada? *Rubrica:* 3 = compartilhamento informal prévio de correções;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX025 — Evidência contrária.** Cite um resultado que enfraqueceria a hipótese. *Rubrica:* 3 = melhora só em meses de baixo volume, igual nos dois grupos ou só onde havia compartilhamento;; 2 = um;; 1 = vago;; 0 = nenhuma.
 - **EX026 — Falseabilidade.** Por que registrar as condições contrárias com antecedência? *Rubrica:* 3 = para não justificar resultados incômodos depois;; 2 = menciona viés;; 1 = vago;; 0 = nenhuma.
 
@@ -275,12 +275,12 @@ Uma normalização agressiva pode fundir endereços diferentes; confira uma amos
 
 ### Exercícios
 
-- **EX027 — Objetivo do piloto.** O que um piloto deve testar? *Rubrica:* 3 = se os métodos funcionam;; 2 = correto;; 1 = responder à pergunta;; 0 = nenhuma.
-- **EX028 — Correspondências exatas.** Quantas duplicatas exatas foram encontradas? *Rubrica:* 3 = nenhuma;; 2 = correto;; 1 = errado;; 0 = sem resposta.
-- **EX029 — Duplicatas normalizadas.** Quantas duplicatas apareceram depois da normalização? *Rubrica:* 3 = 384, 11,6%;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX027 — Objetivo do piloto.** O que um piloto deve testar? *Rubrica:* 3 = se os métodos funcionam;; 2 = parcialmente correto;; 1 = responder à pergunta;; 0 = nenhuma.
+- **EX028 — Correspondências exatas.** Quantas duplicatas exatas foram encontradas? *Rubrica:* 3 = nenhuma;; 2 = hesitante (poucas ou nenhuma);; 1 = errado;; 0 = sem resposta.
+- **EX029 — Duplicatas normalizadas.** Quantas duplicatas apareceram depois da normalização? *Rubrica:* 3 = 384, 11,6%;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 - **EX030 — Etapas da normalização.** Cite duas etapas da normalização. *Rubrica:* 3 = minúsculas, expansão de abreviações, redução de espaços;; 2 = duas;; 1 = uma;; 0 = nenhuma.
-- **EX031 — Novo desfecho.** Como o tempo de correção foi redefinido? *Rubrica:* 3 = dias até ficar correto nos cinco sistemas;; 2 = correto;; 1 = encerramento do chamado;; 0 = nenhuma.
-- **EX032 — Mudanças registradas.** Quando as mudanças no projeto foram registradas? *Rubrica:* 3 = antes de coletar os dados reais de desfecho;; 2 = correto;; 1 = depois;; 0 = nenhuma.
+- **EX031 — Novo desfecho.** Como o tempo de correção foi redefinido? *Rubrica:* 3 = dias até ficar correto nos cinco sistemas;; 2 = parcialmente correto;; 1 = encerramento do chamado;; 0 = nenhuma.
+- **EX032 — Mudanças registradas.** Quando as mudanças no projeto foram registradas? *Rubrica:* 3 = antes de coletar os dados reais de desfecho;; 2 = parcialmente correto;; 1 = depois;; 0 = nenhuma.
 
 <a id="ch-06"></a>
 
@@ -342,11 +342,11 @@ Um intervalo por *bootstrap* reflete a variação amostral, não o viés do dese
 
 ### Exercícios
 
-- **EX033 — Mudança com curadores.** Como mudaram os tempos de correção com curadores? *Rubrica:* 3 = de 24,1 para 14,8 dias;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX034 — Estimativa DiD.** Qual foi a estimativa de diferenças em diferenças? *Rubrica:* 3 = -7,0 dias;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX035 — Intervalo.** Qual foi o intervalo de 95%? *Rubrica:* 3 = de -9,1 a -4,8 dias;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX036 — Limiar atingido.** O intervalo ultrapassa o limiar de cinco dias? *Rubrica:* 3 = sim, inteiramente;; 2 = correto;; 1 = não;; 0 = nenhuma.
-- **EX037 — Rival cultural.** Por que a rival cultural fica enfraquecida? *Rubrica:* 3 = a tributação melhorou sem compartilhamento prévio;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX033 — Mudança com curadores.** Como mudaram os tempos de correção com curadores? *Rubrica:* 3 = de 24,1 para 14,8 dias;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+- **EX034 — Estimativa DiD.** Qual foi a estimativa de diferenças em diferenças? *Rubrica:* 3 = -7,0 dias;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+- **EX035 — Intervalo.** Qual foi o intervalo de 95%? *Rubrica:* 3 = de -9,1 a -4,8 dias;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+- **EX036 — Limiar atingido.** O intervalo ultrapassa o limiar de cinco dias? *Rubrica:* 3 = sim, inteiramente;; 2 = parcialmente correto;; 1 = não;; 0 = nenhuma.
+- **EX037 — Rival cultural.** Por que a rival cultural fica enfraquecida? *Rubrica:* 3 = a tributação melhorou sem compartilhamento prévio;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX038 — Mecanismo.** Que mecanismo as entrevistas sugeriram? *Rubrica:* 3 = padrão único de endereço e propagação semanal;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 
 <a id="ch-07"></a>
@@ -386,9 +386,9 @@ Resumos tendem a perder ressalvas; mantenha a principal limitação no resumo.
 ### Exercícios
 
 - **EX039 — Contribuição separada.** Que contribuição separada ganha seção própria? *Rubrica:* 3 = taxas de duplicidade dependem das regras de normalização;; 2 = menciona regras;; 1 = vago;; 0 = nenhuma.
-- **EX040 — Número de limitações.** Quantas limitações Tomás aponta? *Rubrica:* 3 = cinco;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX041 — Limite do acompanhamento.** Por que seis meses são uma limitação? *Rubrica:* 3 = não mostram se os ganhos se mantêm;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX042 — Frase genérica.** Que frase genérica Tomás evita? *Rubrica:* 3 = mais pesquisas são necessárias;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX040 — Número de limitações.** Quantas limitações Tomás aponta? *Rubrica:* 3 = cinco;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+- **EX041 — Limite do acompanhamento.** Por que seis meses são uma limitação? *Rubrica:* 3 = não mostram se os ganhos se mantêm;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX042 — Frase genérica.** Que frase genérica Tomás evita? *Rubrica:* 3 = mais pesquisas são necessárias;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX043 — Exemplo de recomendação.** Cite uma recomendação. *Rubrica:* 3 = estender a curadoria, medir até o último sistema, publicar as regras;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 - **EX044 — Consistência.** Por que o resumo e a dissertação precisam concordar? *Rubrica:* 3 = a inconsistência prejudica a credibilidade;; 2 = menciona credibilidade;; 1 = vago;; 0 = nenhuma.
 
@@ -428,12 +428,12 @@ Extensões a novos departamentos podem não reproduzir os efeitos do piloto; ava
 
 ### Exercícios
 
-- **EX045 — Verificação da revisora.** O que a revisora mudou no *bootstrap*? *Rubrica:* 3 = reamostragens de 2.000 para 10.000;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX046 — Placebo.** O que o teste placebo mostrou? *Rubrica:* 3 = nenhum efeito em um período anterior ao piloto;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX047 — Preocupação da banca.** O que a banca questionou? *Rubrica:* 3 = confiar em um resultado de dois departamentos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX045 — Verificação da revisora.** O que a revisora mudou no *bootstrap*? *Rubrica:* 3 = reamostragens de 2.000 para 10.000;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX046 — Placebo.** O que o teste placebo mostrou? *Rubrica:* 3 = nenhum efeito em um período anterior ao piloto;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX047 — Preocupação da banca.** O que a banca questionou? *Rubrica:* 3 = confiar em um resultado de dois departamentos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX048 — Decisão do comitê.** Para quais departamentos a curadoria se estende em seguida? *Rubrica:* 3 = bibliotecas e estacionamento;; 2 = ambos;; 1 = um;; 0 = nenhuma.
-- **EX049 — Assistência social.** Por que a assistência social aguarda? *Rubrica:* 3 = revisão de suas obrigações legais;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX050 — Valor duradouro.** Qual pode ser a parte mais útil do trabalho de Tomás? *Rubrica:* 3 = as definições de medida;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX049 — Assistência social.** Por que a assistência social aguarda? *Rubrica:* 3 = revisão de suas obrigações legais;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX050 — Valor duradouro.** Qual pode ser a parte mais útil do trabalho de Tomás? *Rubrica:* 3 = as definições de medida;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="worked-results"></a>
 

@@ -174,7 +174,7 @@ Accepting a vendor's full control of points and nodes without an exit plan leave
 ### Exercises
 
 - **EX027 — Point creator.** Which component decides how many points are created? *Rubric:* 3 = the vendor's points service;; 2 = points service;; 1 = the tills;; 0 = none.
-- **EX028 — Node operator.** Who runs the three nodes? *Rubric:* 3 = the vendor;; 2 = vendor;; 1 = Copperleaf;; 0 = none.
+- **EX028 — Node operator.** Who runs the three nodes? *Rubric:* 3 = the vendor;; 2 = vendor, hedged with another option;; 1 = Copperleaf;; 0 = none.
 - **EX029 — Concentration concern.** What concentration worries Elena? *Rubric:* 3 = one company controls points and nodes;; 2 = vendor control;; 1 = too many cafés;; 0 = none.
 - **EX030 — Off-ledger data.** What stays off the ledger? *Rubric:* 3 = names, emails and purchase details;; 2 = personal data;; 1 = balances;; 0 = none.
 - **EX031 — Linkage remedy.** What does the vendor offer against linkage? *Rubric:* 3 = a new address on request;; 2 = new address;; 1 = vague;; 0 = none.

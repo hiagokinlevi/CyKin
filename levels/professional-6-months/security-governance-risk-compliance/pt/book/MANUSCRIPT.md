@@ -589,7 +589,7 @@ Os portfólios mostram trabalhos selecionados. Os planos mudam com as funções.
 - **EX057 — Dados no portfólio.** Que dados Lena removeu do portfólio? *Rubrica:* 3 = dados reais de associados ou funcionários;; 2 = dados reais;; 1 = vago;; 0 = nenhuma.
 - **EX058 — Questionamento da amostra.** Como Lena responderia a um regulador que questionasse o tamanho da amostra? *Rubrica:* 3 = explicaria a taxa tolerável e a confiança e se ofereceria para ampliar;; 2 = explicar;; 1 = vago;; 0 = nenhuma.
 - **EX059 — Parte mais difícil.** O que Lena achou mais difícil? *Rubrica:* 3 = resistir às pressões para suavizar relatórios mantendo as relações;; 2 = pressão;; 1 = vago;; 0 = nenhuma.
-- **EX060 — Próxima função.** Que responsabilidade Lena vai assumir em seguida? *Rubrica:* 3 = o risco de fornecedores;; 2 = risco de fornecedores;; 1 = vago;; 0 = nenhuma.
+- **EX060 — Próxima função.** Que responsabilidade Lena vai assumir em seguida? *Rubrica:* 3 = a responsabilidade pelo risco de fornecedores;; 2 = trabalho com fornecedores em geral, sem a responsabilidade pelo risco;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

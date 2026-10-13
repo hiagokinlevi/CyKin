@@ -69,11 +69,11 @@ Checking systems without written agreement can damage trust even when the intent
 
 ### Exercises
 
-- **EX001 — Course length.** How long is Daniel's course? *Rubric:* 3 = six months;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX002 — Client records.** Roughly how many clients does Corbridge hold records for? *Rubric:* 3 = about two thousand;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX001 — Course length.** How long is Daniel's course? *Rubric:* 3 = six months;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX002 — Client records.** Roughly how many clients does Corbridge hold records for? *Rubric:* 3 = about two thousand;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX003 — Leadership question.** What does Mrs. Pike want answered? *Rubric:* 3 = are we doing the right things, what next;; 2 = both parts;; 1 = one part;; 0 = none.
-- **EX004 — Scope note.** Why does Daniel get a signed scope note? *Rubric:* 3 = written agreement before checking;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX005 — Coding needed.** Does Daniel need to write the lab scripts? *Rubric:* 3 = no, read and run them;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX004 — Scope note.** Why does Daniel get a signed scope note? *Rubric:* 3 = written agreement before checking;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX005 — Coding needed.** Does Daniel need to write the lab scripts? *Rubric:* 3 = no, read and run them;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
 <a id="ch-02"></a>
 
@@ -112,10 +112,10 @@ Listing only sensitive data misses systems the business depends on to operate.
 ### Exercises
 
 - **EX006 — Three goals.** Which three goals does ISO/IEC 27000:2026 use? *Rubric:* 3 = confidentiality, integrity, availability;; 2 = all three;; 1 = two;; 0 = none.
-- **EX007 — Integrity example.** Give an integrity example at Corbridge. *Rubric:* 3 = client refund bank details;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX008 — Peak availability.** When does availability matter most? *Rubric:* 3 = weeks before filing deadlines;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX009 — Fourth item.** What did Mrs. Pike add to the list? *Rubric:* 3 = the firm's reputation for discretion;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX010 — Dependency lesson.** Why ask about dependency as well as sensitivity? *Rubric:* 3 = low-sensitivity systems can still stop the business;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX007 — Integrity example.** Give an integrity example at Corbridge. *Rubric:* 3 = client refund bank details;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX008 — Peak availability.** When does availability matter most? *Rubric:* 3 = weeks before filing deadlines;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX009 — Fourth item.** What did Mrs. Pike add to the list? *Rubric:* 3 = the firm's reputation for discretion;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX010 — Dependency lesson.** Why ask about dependency as well as sensitivity? *Rubric:* 3 = low-sensitivity systems can still stop the business;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-03"></a>
 
@@ -189,9 +189,9 @@ Treating judgement-based scores as precise measurements hides uncertainty from d
 ### Exercises
 
 - **EX011 — Top risk.** Which risk ranks highest and with what score? *Rubric:* 3 = phishing mailbox takeover, 16;; 2 = both;; 1 = one;; 0 = none.
-- **EX012 — High count.** How many risks are high? *Rubric:* 3 = two;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX013 — Common cause.** What do both high risks start with? *Rubric:* 3 = an email;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX014 — Vendor note.** Why add a note to the vendor risk? *Rubric:* 3 = low score but severe worst case;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX012 — High count.** How many risks are high? *Rubric:* 3 = two;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX013 — Common cause.** What do both high risks start with? *Rubric:* 3 = an email;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX014 — Vendor note.** Why add a note to the vendor risk? *Rubric:* 3 = low score but severe worst case;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX015 — Good risk sentence.** How should a risk be written? *Rubric:* 3 = cause and result in a short sentence;; 2 = both;; 1 = one;; 0 = none.
 
 <a id="ch-04"></a>
@@ -259,10 +259,10 @@ An overall coverage figure can hide gaps in the most powerful accounts.
 ### Exercises
 
 - **EX016 — Overall coverage.** What is overall MFA coverage? *Rubric:* 3 = 44 of 70, 62.9 percent;; 2 = both;; 1 = one;; 0 = none.
-- **EX017 — Administrators.** How many administrators use MFA? *Rubric:* 3 = 1 of 4;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX017 — Administrators.** How many administrators use MFA? *Rubric:* 3 = 1 of 4;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX018 — Service accounts.** What does Daniel do about service accounts? *Rubric:* 3 = restrict sign-in locations, remove unused;; 2 = both;; 1 = one;; 0 = none.
-- **EX019 — Partner pitch.** How should the change be explained to partners? *Rubric:* 3 = in terms of invoice fraud risk;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX020 — Who first.** Who agrees to enable MFA first? *Rubric:* 3 = Mrs. Pike;; 2 = correct;; 1 = other;; 0 = none.
+- **EX019 — Partner pitch.** How should the change be explained to partners? *Rubric:* 3 = in terms of invoice fraud risk;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX020 — Who first.** Who agrees to enable MFA first? *Rubric:* 3 = Mrs. Pike;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="ch-05"></a>
 
@@ -301,10 +301,10 @@ Deleting old records without sign-off and a log can breach retention duties or l
 ### Exercises
 
 - **EX021 — Baseline items.** Name three items in the laptop baseline. *Rubric:* 3 = encryption, updates, screen lock, standard accounts, remote wipe;; 2 = three;; 1 = two;; 0 = none.
-- **EX022 — Compliance.** How many laptops met the baseline after a month? *Rubric:* 3 = 55 of 60;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX023 — Old files.** Why remove out-of-date server files? *Rubric:* 3 = risk without benefit;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX024 — Paper rule.** What rule did Daniel set for paper originals? *Rubric:* 3 = returned or shredded within two weeks;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX025 — Memory sticks.** What replaced the memory sticks? *Rubric:* 3 = the existing cloud folders;; 2 = correct;; 1 = other;; 0 = none.
+- **EX022 — Compliance.** How many laptops met the baseline after a month? *Rubric:* 3 = 55 of 60;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX023 — Old files.** Why remove out-of-date server files? *Rubric:* 3 = risk without benefit;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX024 — Paper rule.** What rule did Daniel set for paper originals? *Rubric:* 3 = returned or shredded within two weeks;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX025 — Memory sticks.** What replaced the memory sticks? *Rubric:* 3 = the existing cloud folders;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="ch-06"></a>
 
@@ -342,11 +342,11 @@ Calling a number provided in the suspicious email only reaches the criminal.
 
 ### Exercises
 
-- **EX026 — Fraud pattern.** How does payment diversion usually work? *Rubric:* 3 = message says bank details changed;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX027 — Phone-back number.** Which number should staff call? *Rubric:* 3 = one already on file;; 2 = correct;; 1 = other;; 0 = none.
-- **EX028 — Urgent changes.** Who can approve a same-day change? *Rubric:* 3 = the managing partner only;; 2 = correct;; 1 = other;; 0 = none.
-- **EX029 — Main defence.** What remains the main defence against this fraud? *Rubric:* 3 = the verification rule;; 2 = correct;; 1 = other;; 0 = none.
-- **EX030 — Stopped attempt.** Who stopped the fraud attempt? *Rubric:* 3 = a payroll assistant;; 2 = correct;; 1 = other;; 0 = none.
+- **EX026 — Fraud pattern.** How does payment diversion usually work? *Rubric:* 3 = message says bank details changed;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX027 — Phone-back number.** Which number should staff call? *Rubric:* 3 = one already on file;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX028 — Urgent changes.** Who can approve a same-day change? *Rubric:* 3 = the managing partner only;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX029 — Main defence.** What remains the main defence against this fraud? *Rubric:* 3 = the verification rule;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX030 — Stopped attempt.** Who stopped the fraud attempt? *Rubric:* 3 = a payroll assistant;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="ch-07"></a>
 
@@ -384,11 +384,11 @@ Long generic questionnaires often go unanswered and leave the real gaps unknown.
 
 ### Exercises
 
-- **EX031 — Broadest access.** Which supplier has the broadest access? *Rubric:* 3 = the support company;; 2 = correct;; 1 = other;; 0 = none.
+- **EX031 — Broadest access.** Which supplier has the broadest access? *Rubric:* 3 = the support company;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX032 — Four questions.** Name two of Daniel's supplier questions. *Rubric:* 3 = MFA, breach notice, data location, contract end;; 2 = two;; 1 = one;; 0 = none.
-- **EX033 — Shared account.** What problem did the support company have? *Rubric:* 3 = one shared administrator account;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX034 — Reporting duty.** How fast must the support company report incidents? *Rubric:* 3 = within one working day;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX035 — Vendor plan.** Why plan for a vendor breach outside the firm's control? *Rubric:* 3 = the response is within its control;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX033 — Shared account.** What problem did the support company have? *Rubric:* 3 = one shared administrator account;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX034 — Reporting duty.** How fast must the support company report incidents? *Rubric:* 3 = within one working day;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX035 — Vendor plan.** Why plan for a vendor breach outside the firm's control? *Rubric:* 3 = the response is within its control;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-08"></a>
 
@@ -426,10 +426,10 @@ Judging awareness only by test click rates can mislead and discourage staff.
 
 ### Exercises
 
-- **EX036 — Session length.** How long is each awareness session? *Rubric:* 3 = fifteen minutes;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX037 — Leaver gap.** Why were leavers' accounts disabled late? *Rubric:* 3 = HR emailed the support company when remembered;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX038 — Monthly check.** What does Daniel compare monthly? *Rubric:* 3 = account list against payroll list;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX039 — Reports gained.** How many suspicious messages were reported next month? *Rubric:* 3 = nine;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX036 — Session length.** How long is each awareness session? *Rubric:* 3 = fifteen minutes;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX037 — Leaver gap.** Why were leavers' accounts disabled late? *Rubric:* 3 = HR emailed the support company when remembered;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX038 — Monthly check.** What does Daniel compare monthly? *Rubric:* 3 = account list against payroll list;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX039 — Reports gained.** How many suspicious messages were reported next month? *Rubric:* 3 = nine;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX040 — Better measure.** Why avoid judging by test click rates? *Rubric:* 3 = vary with difficulty, cause resentment;; 2 = both;; 1 = one;; 0 = none.
 
 <a id="ch-09"></a>
@@ -468,11 +468,11 @@ Resetting a password without removing forwarding rules leaves the attacker still
 
 ### Exercises
 
-- **EX041 — Coordinator.** Who coordinates incidents at Corbridge? *Rubric:* 3 = Daniel;; 2 = correct;; 1 = other;; 0 = none.
-- **EX042 — Hidden rule.** What had the attacker added to the mailbox? *Rubric:* 3 = a forwarding rule to an outside address;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX043 — Notify why.** Why did the incident become reportable? *Rubric:* 3 = forwarded mail held client identity documents;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX044 — Root cause.** What was the root cause? *Rubric:* 3 = stolen password without a second factor;; 2 = correct;; 1 = partial;; 0 = none.
-- **EX045 — New check.** What monthly check was added? *Rubric:* 3 = forwarding rules to outside addresses;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX041 — Coordinator.** Who coordinates incidents at Corbridge? *Rubric:* 3 = Daniel;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX042 — Hidden rule.** What had the attacker added to the mailbox? *Rubric:* 3 = a forwarding rule to an outside address;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX043 — Notify why.** Why did the incident become reportable? *Rubric:* 3 = forwarded mail held client identity documents;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX044 — Root cause.** What was the root cause? *Rubric:* 3 = stolen password without a second factor;; 2 = partly correct;; 1 = partial;; 0 = none.
+- **EX045 — New check.** What monthly check was added? *Rubric:* 3 = forwarding rules to outside addresses;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-10"></a>
 
@@ -511,10 +511,10 @@ Assuming a cloud provider backs up your data can leave deleted items unrecoverab
 ### Exercises
 
 - **EX046 — Key services.** Which three services must return quickly? *Rubric:* 3 = email, accounting software, client portal;; 2 = all three;; 1 = two;; 0 = none.
-- **EX047 — Restore time.** How long did the mailbox restore take? *Rubric:* 3 = six hours;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX048 — Same-room disk.** What was wrong with the file server backup? *Rubric:* 3 = copied to a disk in the same room;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX049 — Exercise gap.** What gap did the tabletop exercise find? *Rubric:* 3 = nobody knew how to request a deadline extension;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX050 — Plan review.** When should the plan be reviewed? *Rubric:* 3 = before each busy season;; 2 = correct;; 1 = other;; 0 = none.
+- **EX047 — Restore time.** How long did the mailbox restore take? *Rubric:* 3 = six hours;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX048 — Same-room disk.** What was wrong with the file server backup? *Rubric:* 3 = copied to a disk in the same room;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX049 — Exercise gap.** What gap did the tabletop exercise find? *Rubric:* 3 = nobody knew how to request a deadline extension;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX050 — Plan review.** When should the plan be reviewed? *Rubric:* 3 = before each busy season;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="ch-11"></a>
 
@@ -552,11 +552,11 @@ A long template policy that nobody reads gives a false sense of compliance.
 
 ### Exercises
 
-- **EX051 — Policy length.** How long is Daniel's new policy? *Rubric:* 3 = two pages;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX052 — Procedures.** Where do detailed procedures go? *Rubric:* 3 = separate linked documents;; 2 = correct;; 1 = other;; 0 = none.
+- **EX051 — Policy length.** How long is Daniel's new policy? *Rubric:* 3 = two pages;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX052 — Procedures.** Where do detailed procedures go? *Rubric:* 3 = separate linked documents;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX053 — Certification cost.** What does certification require? *Rubric:* 3 = management system, internal and yearly external audits;; 2 = all;; 1 = some;; 0 = none.
-- **EX054 — Middle path.** What did Daniel recommend instead of certifying now? *Rubric:* 3 = align with the standard's main ideas;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX055 — Legal advice.** Who should confirm legal points? *Rubric:* 3 = the data protection adviser;; 2 = correct;; 1 = other;; 0 = none.
+- **EX054 — Middle path.** What did Daniel recommend instead of certifying now? *Rubric:* 3 = align with the standard's main ideas;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX055 — Legal advice.** Who should confirm legal points? *Rubric:* 3 = the data protection adviser;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="ch-12"></a>
 
@@ -594,11 +594,11 @@ Reports full of technical detail without clear decisions are often ignored by le
 
 ### Exercises
 
-- **EX056 — Report order.** What should come first in the partner report? *Rubric:* 3 = decisions needed;; 2 = correct;; 1 = other;; 0 = none.
+- **EX056 — Report order.** What should come first in the partner report? *Rubric:* 3 = decisions needed;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX057 — Five measures.** Name three of the five measures. *Rubric:* 3 = MFA, baseline, leaver days, reports, restore test;; 2 = three;; 1 = two;; 0 = none.
-- **EX058 — Coverage change.** How did second-factor coverage change? *Rubric:* 3 = 62.9 percent to all people accounts;; 2 = correct;; 1 = partial;; 0 = none.
-- **EX059 — Next scenario.** What scenario will the next tabletop use? *Rubric:* 3 = ransomware;; 2 = correct;; 1 = other;; 0 = none.
-- **EX060 — Next course.** Which course does Daniel take next? *Rubric:* 3 = data governance;; 2 = correct;; 1 = other;; 0 = none.
+- **EX058 — Coverage change.** How did second-factor coverage change? *Rubric:* 3 = 62.9 percent to all people accounts;; 2 = partly correct;; 1 = partial;; 0 = none.
+- **EX059 — Next scenario.** What scenario will the next tabletop use? *Rubric:* 3 = ransomware;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX060 — Next course.** Which course does Daniel take next? *Rubric:* 3 = data governance;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="worked-results"></a>
 

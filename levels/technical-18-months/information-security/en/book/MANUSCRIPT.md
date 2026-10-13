@@ -69,9 +69,9 @@ Practising on real systems without permission can cause harm and may be illegal.
 
 ### Exercises
 
-- **EX001 — Course length.** How long is Chloe's course? *Rubric:* 3 = eighteen months;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX002 — Device counts.** How many tablets does Westfield use? *Rubric:* 3 = 24;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX003 — IT lead.** Who is Westfield's IT lead? *Rubric:* 3 = Mr. Sam Doyle;; 2 = correct;; 1 = other;; 0 = none.
+- **EX001 — Course length.** How long is Chloe's course? *Rubric:* 3 = eighteen months;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX002 — Device counts.** How many tablets does Westfield use? *Rubric:* 3 = 24;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX003 — IT lead.** Who is Westfield's IT lead? *Rubric:* 3 = Mr. Sam Doyle;; 2 = partly correct;; 1 = other;; 0 = none.
 - **EX004 — Safe habit.** Name one of Mr. Appiah's three rules. *Rubric:* 3 = practise only with permission;; 2 = one;; 1 = vague;; 0 = none.
 
 <a id="ch-02"></a>
@@ -111,9 +111,9 @@ Printed customer lists left on counters can be read by anyone passing.
 ### Exercises
 
 - **EX005 — Three goals.** What are the three goals of information security? *Rubric:* 3 = private, accurate, available;; 2 = all;; 1 = some;; 0 = none.
-- **EX006 — Bank details goal.** Which goal matters most for supplier bank details? *Rubric:* 3 = accuracy;; 2 = correct;; 1 = other;; 0 = none.
-- **EX007 — Counter list.** What did Chloe find on a counter? *Rubric:* 3 = a printed customer delivery list;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX008 — Folder problem.** What is wrong with the shared folder? *Rubric:* 3 = every staff account can open it;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX006 — Bank details goal.** Which goal matters most for supplier bank details? *Rubric:* 3 = accuracy;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX007 — Counter list.** What did Chloe find on a counter? *Rubric:* 3 = a printed customer delivery list;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX008 — Folder problem.** What is wrong with the shared folder? *Rubric:* 3 = every staff account can open it;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-03"></a>
 
@@ -151,10 +151,10 @@ Shared logins make it impossible to know who did what.
 
 ### Exercises
 
-- **EX009 — Till login.** What do tills currently use? *Rubric:* 3 = a shared login per centre;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX010 — Laptop risk.** Why are administrator accounts risky for daily work? *Rubric:* 3 = harmful attachments get full control;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX011 — Seasonal accounts.** What did Chloe find for seasonal staff? *Rubric:* 3 = accounts still active;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX012 — Least privilege.** What does least privilege mean? *Rubric:* 3 = only the access needed for the task;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX009 — Till login.** What do tills currently use? *Rubric:* 3 = a shared login per centre;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX010 — Laptop risk.** Why are administrator accounts risky for daily work? *Rubric:* 3 = harmful attachments get full control;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX011 — Seasonal accounts.** What did Chloe find for seasonal staff? *Rubric:* 3 = accounts still active;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX012 — Least privilege.** What does least privilege mean? *Rubric:* 3 = only the access needed for the task;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-04"></a>
 
@@ -192,10 +192,10 @@ Resetting a password without confirming identity can let an attacker in.
 
 ### Exercises
 
-- **EX013 — Reuse danger.** Why use different passwords for each service? *Rubric:* 3 = leaked passwords are tried elsewhere;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX014 — Fob reason.** Why are key fobs provided? *Rubric:* 3 = some staff refuse apps on personal phones;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX015 — Reset check.** How is identity confirmed before a reset? *Rubric:* 3 = call back on the number in staff records;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX016 — Sticky note.** Where was the shop admin password found? *Rubric:* 3 = on a sticky note in the office;; 2 = correct;; 1 = other;; 0 = none.
+- **EX013 — Reuse danger.** Why use different passwords for each service? *Rubric:* 3 = leaked passwords are tried elsewhere;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX014 — Fob reason.** Why are key fobs provided? *Rubric:* 3 = some staff refuse apps on personal phones;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX015 — Reset check.** How is identity confirmed before a reset? *Rubric:* 3 = call back on the number in staff records;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX016 — Sticky note.** Where was the shop admin password found? *Rubric:* 3 = on a sticky note in the office;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="ch-05"></a>
 
@@ -233,10 +233,10 @@ Scripts that skip bad rows quietly can hide problems.
 
 ### Exercises
 
-- **EX017 — First count.** What does the first script count? *Rubric:* 3 = devices of each type;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX018 — Missing values.** How does the script treat missing values? *Rubric:* 3 = prints a warning;; 2 = correct;; 1 = stop;; 0 = none.
-- **EX019 — Output check.** How does Chloe test her output's clarity? *Rubric:* 3 = explains it to a classmate;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX020 — Restricted output.** Why keep device lists restricted? *Rubric:* 3 = they could help an attacker;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX017 — First count.** What does the first script count? *Rubric:* 3 = devices of each type;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX018 — Missing values.** How does the script treat missing values? *Rubric:* 3 = prints a warning;; 2 = partly correct;; 1 = stop;; 0 = none.
+- **EX019 — Output check.** How does Chloe test her output's clarity? *Rubric:* 3 = explains it to a classmate;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX020 — Restricted output.** Why keep device lists restricted? *Rubric:* 3 = they could help an attacker;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-06"></a>
 
@@ -275,9 +275,9 @@ Relying on a single control leaves no protection when it fails.
 ### Exercises
 
 - **EX021 — Weakness example.** Give an example of a weakness. *Rubric:* 3 = a password on a sticky note;; 2 = one;; 1 = vague;; 0 = none.
-- **EX022 — Tablet controls.** Which controls suit stolen tablets? *Rubric:* 3 = screen locks and remote wipe;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX022 — Tablet controls.** Which controls suit stolen tablets? *Rubric:* 3 = screen locks and remote wipe;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX023 — Shop layer.** Name one online shop layer. *Rubric:* 3 = multi-factor sign-in;; 2 = one;; 1 = vague;; 0 = none.
-- **EX024 — Usability principle.** What principle says security must be easy to use? *Rubric:* 3 = psychological acceptability;; 2 = correct;; 1 = other;; 0 = none.
+- **EX024 — Usability principle.** What principle says security must be easy to use? *Rubric:* 3 = psychological acceptability;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="ch-07"></a>
 
@@ -342,10 +342,10 @@ Spare devices kept switched off miss updates without anyone noticing.
 
 ### Exercises
 
-- **EX025 — Late tablets.** How many tablets are late? *Rubric:* 3 = 4 of 24, 16.7 percent;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX026 — Late tills.** How many tills are late? *Rubric:* 3 = none;; 2 = correct;; 1 = wrong;; 0 = no answer.
-- **EX027 — Spare tablets.** Why were two tablets late? *Rubric:* 3 = kept in a drawer as spares;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX028 — Overnight setting.** What setting does Mr. Doyle change for tablets? *Rubric:* 3 = automatic overnight updates while charging;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX025 — Late tablets.** How many tablets are late? *Rubric:* 3 = 4 of 24, 16.7 percent;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX026 — Late tills.** How many tills are late? *Rubric:* 3 = none of the 22 tills;; 2 = none, without checking all 22;; 1 = wrong;; 0 = no answer.
+- **EX027 — Spare tablets.** Why were two tablets late? *Rubric:* 3 = kept in a drawer as spares;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX028 — Overnight setting.** What setting does Mr. Doyle change for tablets? *Rubric:* 3 = automatic overnight updates while charging;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-08"></a>
 
@@ -414,10 +414,10 @@ Treating a simple rule as perfect leads people to trust messages it misses.
 
 ### Exercises
 
-- **EX029 — Caught count.** How many phishing emails does the rule catch? *Rubric:* 3 = 11 of 12;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX030 — False alarms.** How many genuine emails are flagged? *Rubric:* 3 = three;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX031 — Missed message.** Why was one phishing email missed? *Rubric:* 3 = it showed only one sign;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX032 — Lower threshold.** What happens if the threshold drops to one sign? *Rubric:* 3 = more false alarms;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX029 — Caught count.** How many phishing emails does the rule catch? *Rubric:* 3 = 11 of 12;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX030 — False alarms.** How many genuine emails are flagged? *Rubric:* 3 = three;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX031 — Missed message.** Why was one phishing email missed? *Rubric:* 3 = it showed only one sign;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX032 — Lower threshold.** What happens if the threshold drops to one sign? *Rubric:* 3 = more false alarms;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-09"></a>
 
@@ -456,9 +456,9 @@ Hiding a data mistake prevents the organisation limiting the harm.
 ### Exercises
 
 - **EX033 — Personal data example.** Give an example of personal data. *Rubric:* 3 = a customer's email address;; 2 = one;; 1 = vague;; 0 = none.
-- **EX034 — Driver solution.** What does Chloe suggest for drivers? *Rubric:* 3 = an app showing only their deliveries;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX035 — Request handling.** Who handles customer data requests? *Rubric:* 3 = the office manager;; 2 = correct;; 1 = till;; 0 = none.
-- **EX036 — Mistake response.** What should staff do after a misdirected email? *Rubric:* 3 = report it immediately;; 2 = correct;; 1 = hide;; 0 = none.
+- **EX034 — Driver solution.** What does Chloe suggest for drivers? *Rubric:* 3 = an app showing only their deliveries;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX035 — Request handling.** Who handles customer data requests? *Rubric:* 3 = the office manager;; 2 = partly correct;; 1 = till;; 0 = none.
+- **EX036 — Mistake response.** What should staff do after a misdirected email? *Rubric:* 3 = report it immediately;; 2 = partly correct;; 1 = hide;; 0 = none.
 
 <a id="ch-10"></a>
 
@@ -496,10 +496,10 @@ Assuming a permission change worked without testing it can leave data exposed.
 
 ### Exercises
 
-- **EX037 — Test account.** How does Chloe confirm the folder change? *Rubric:* 3 = sign in with a test till account;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX038 — Unencrypted laptops.** How many laptops were not encrypted? *Rubric:* 3 = two;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX039 — Sharing service.** What does Chloe recommend for sending files? *Rubric:* 3 = approved service with expiring links;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX040 — Screen setting.** What setting helps unlocked screens? *Rubric:* 3 = automatic lock after a few minutes;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX037 — Test account.** How does Chloe confirm the folder change? *Rubric:* 3 = sign in with a test till account;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX038 — Unencrypted laptops.** How many laptops were not encrypted? *Rubric:* 3 = two;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX039 — Sharing service.** What does Chloe recommend for sending files? *Rubric:* 3 = approved service with expiring links;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX040 — Screen setting.** What setting helps unlocked screens? *Rubric:* 3 = automatic lock after a few minutes;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-11"></a>
 
@@ -537,10 +537,10 @@ Guest devices on the staff network can reach tills and tablets.
 
 ### Exercises
 
-- **EX041 — Payment devices.** Which devices handle card payments? *Rubric:* 3 = tills and payment terminals;; 2 = correct;; 1 = other;; 0 = none.
-- **EX042 — Wireless problem.** What was wrong at one centre? *Rubric:* 3 = guest and staff shared a network and password;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX043 — Unknown device.** What was the unknown device? *Rubric:* 3 = a staff member's smart speaker;; 2 = correct;; 1 = other;; 0 = none.
-- **EX044 — Router default.** Why change default router passwords? *Rubric:* 3 = they are published online;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX041 — Payment devices.** Which devices handle card payments? *Rubric:* 3 = tills and payment terminals;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX042 — Wireless problem.** What was wrong at one centre? *Rubric:* 3 = guest and staff shared a network and password;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX043 — Unknown device.** What was the unknown device? *Rubric:* 3 = a staff member's smart speaker;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX044 — Router default.** Why change default router passwords? *Rubric:* 3 = they are published online;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-12"></a>
 
@@ -578,10 +578,10 @@ Files saved outside backed-up folders are lost if the device fails.
 
 ### Exercises
 
-- **EX045 — Ransomware meaning.** What does ransomware do? *Rubric:* 3 = locks files and demands payment;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX046 — Test frequency.** How often should restores be tested? *Rubric:* 3 = every three months;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX047 — Backup gap.** Which files were outside backups? *Rubric:* 3 = spreadsheets on the office manager's desktop;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX048 — First step.** What is the first step if ransomware is suspected? *Rubric:* 3 = stop using the device;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX045 — Ransomware meaning.** What does ransomware do? *Rubric:* 3 = locks files and demands payment;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX046 — Test frequency.** How often should restores be tested? *Rubric:* 3 = every three months;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX047 — Backup gap.** Which files were outside backups? *Rubric:* 3 = spreadsheets on the office manager's desktop;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX048 — First step.** What is the first step if ransomware is suspected? *Rubric:* 3 = stop using the device;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-13"></a>
 
@@ -620,9 +620,9 @@ Vague reports slow down the people who must act on them.
 ### Exercises
 
 - **EX049 — Report contents.** What should a good report include? *Rubric:* 3 = what, where, when, who affected, actions taken;; 2 = most;; 1 = few;; 0 = none.
-- **EX050 — Rewritten report.** What detail did Chloe add? *Rubric:* 3 = time, centre and payment message;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX051 — Till request.** What did a customer ask to do? *Rubric:* 3 = plug a phone into a till;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX052 — Follow-up.** How often does Chloe check open reports? *Rubric:* 3 = weekly;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX050 — Rewritten report.** What detail did Chloe add? *Rubric:* 3 = time, centre and payment message;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX051 — Till request.** What did a customer ask to do? *Rubric:* 3 = plug a phone into a till;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX052 — Follow-up.** How often does Chloe check open reports? *Rubric:* 3 = weekly;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
 <a id="ch-14"></a>
 
@@ -661,9 +661,9 @@ Writing passwords into documents exposes them to every reader.
 ### Exercises
 
 - **EX053 — Documented tasks.** Name one task Chloe documents. *Rubric:* 3 = resetting a till staff code;; 2 = one;; 1 = vague;; 0 = none.
-- **EX054 — Instruction test.** Who tests the tablet instructions? *Rubric:* 3 = a centre manager;; 2 = correct;; 1 = other;; 0 = none.
-- **EX055 — Change log use.** What question does the change log answer? *Rubric:* 3 = why a manager lost invoice access;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX056 — Document dates.** Why add dates to documents? *Rubric:* 3 = readers know if they are current;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX054 — Instruction test.** Who tests the tablet instructions? *Rubric:* 3 = a centre manager;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX055 — Change log use.** What question does the change log answer? *Rubric:* 3 = why a manager lost invoice access;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX056 — Document dates.** Why add dates to documents? *Rubric:* 3 = readers know if they are current;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-15"></a>
 
@@ -701,10 +701,10 @@ Granting access without approval can give people data they should not see.
 
 ### Exercises
 
-- **EX057 — Weekly list.** When does Mr. Doyle give tasks? *Rubric:* 3 = each Monday;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX058 — Help approach.** What does Chloe do before calling for help? *Rubric:* 3 = tries the documented steps;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX057 — Weekly list.** When does Mr. Doyle give tasks? *Rubric:* 3 = each Monday;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX058 — Help approach.** What does Chloe do before calling for help? *Rubric:* 3 = tries the documented steps;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX059 — Approval needed.** Name one action needing approval. *Rubric:* 3 = giving admin access;; 2 = one;; 1 = vague;; 0 = none.
-- **EX060 — Feedback goal.** What goal does Chloe set? *Rubric:* 3 = tell him within a day if a task runs late;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX060 — Feedback goal.** What goal does Chloe set? *Rubric:* 3 = tell him within a day if a task runs late;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-16"></a>
 
@@ -742,10 +742,10 @@ Letting unexpected visitors into staff areas without checking risks theft or tam
 
 ### Exercises
 
-- **EX061 — Placement pattern.** How long is the placement? *Rubric:* 3 = ten weeks, two days a week;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX062 — Loyalty request.** How does Chloe handle a loyalty points request? *Rubric:* 3 = directs the customer to till staff;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX063 — Visitor response.** What does Chloe do with the unexpected visitor? *Rubric:* 3 = asks him to wait and calls Mr. Doyle;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX064 — Improvement area.** What does Chloe want to improve? *Rubric:* 3 = understanding of networks;; 2 = correct;; 1 = other;; 0 = none.
+- **EX061 — Placement pattern.** How long is the placement? *Rubric:* 3 = ten weeks, two days a week;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX062 — Loyalty request.** How does Chloe handle a loyalty points request? *Rubric:* 3 = directs the customer to till staff;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX063 — Visitor response.** What does Chloe do with the unexpected visitor? *Rubric:* 3 = asks him to wait and calls Mr. Doyle;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX064 — Improvement area.** What does Chloe want to improve? *Rubric:* 3 = understanding of networks;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="ch-17"></a>
 
@@ -783,10 +783,10 @@ Disabling a security setting without approval to make something work can open se
 
 ### Exercises
 
-- **EX065 — Assessment time.** How long is the assessment? *Rubric:* 3 = three hours;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX066 — Unsure message.** What does Chloe do with an uncertain email? *Rubric:* 3 = notes it and explains why;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX067 — Failed restore.** What would she do if a restore failed? *Rubric:* 3 = record, report, keep the original backup;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX068 — Hidden test.** What was the hidden test? *Rubric:* 3 = disabling a security setting;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX065 — Assessment time.** How long is the assessment? *Rubric:* 3 = three hours;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX066 — Unsure message.** What does Chloe do with an uncertain email? *Rubric:* 3 = notes it and explains why;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX067 — Failed restore.** What would she do if a restore failed? *Rubric:* 3 = record, report, keep the original backup;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX068 — Hidden test.** What was the hidden test? *Rubric:* 3 = disabling a security setting;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-18"></a>
 
@@ -824,10 +824,10 @@ Relying on old sources without checking editions can spread outdated advice.
 
 ### Exercises
 
-- **EX069 — Course result.** What result does Chloe achieve? *Rubric:* 3 = a merit;; 2 = correct;; 1 = other;; 0 = none.
-- **EX070 — Westfield offer.** What does Westfield offer Chloe? *Rubric:* 3 = a part-time support role;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX071 — Weak area.** Which area does Chloe plan to strengthen? *Rubric:* 3 = networks;; 2 = correct;; 1 = other;; 0 = none.
-- **EX072 — Next course topic.** What does the data governance course cover? *Rubric:* 3 = who decides how information is collected and used;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX069 — Course result.** What result does Chloe achieve? *Rubric:* 3 = a merit;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX070 — Westfield offer.** What does Westfield offer Chloe? *Rubric:* 3 = a part-time support role;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX071 — Weak area.** Which area does Chloe plan to strengthen? *Rubric:* 3 = networks;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX072 — Next course topic.** What does the data governance course cover? *Rubric:* 3 = who decides how information is collected and used;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="worked-results"></a>
 

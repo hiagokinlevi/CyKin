@@ -114,7 +114,7 @@ Old software may need old protocols. Router changes can disrupt card terminals i
 - **EX005 — Flat network risk.** Why is the flat practice network a risk? *Rubric:* 3 = any infected PC can reach the imaging server;; 2 = spread;; 1 = vague;; 0 = none.
 - **EX006 — SMB question.** Why ask which SMB version the imaging server uses? *Rubric:* 3 = old versions have weaknesses exploited by ransomware;; 2 = ransomware;; 1 = vague;; 0 = none.
 - **EX007 — Router fix.** How was router administration restricted? *Rubric:* 3 = to the staff network, not guest wireless;; 2 = staff only;; 1 = vague;; 0 = none.
-- **EX008 — Larger issue.** What issue needs a planned redesign? *Rubric:* 3 = the flat network;; 2 = flat network;; 1 = printers;; 0 = none.
+- **EX008 — Larger issue.** What issue needs a planned redesign? *Rubric:* 3 = the flat network;; 2 = flat network, hedged with another option;; 1 = printers;; 0 = none.
 
 ### Synthesis
 

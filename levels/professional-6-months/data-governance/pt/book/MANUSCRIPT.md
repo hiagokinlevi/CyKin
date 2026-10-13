@@ -69,11 +69,11 @@ Tratar os dados de uma organização pequena como simples demais para serem gove
 
 ### Exercícios
 
-- **EX001 — Duração do curso.** Quanto dura o curso de Grace? *Rubrica:* 3 = seis meses;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX002 — Dados mais sensíveis.** Quais são os dados mais sensíveis da Northbank? *Rubrica:* 3 = os encaminhamentos de clientes;; 2 = correto;; 1 = outro;; 0 = nenhuma.
-- **EX003 — Categoria especial.** Por que os encaminhamentos podem ser dados de categoria especial? *Rubrica:* 3 = às vezes contêm informações de saúde;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX004 — Números de famílias.** O que deu errado quando o conselho perguntou sobre as famílias atendidas? *Rubrica:* 3 = os bancos usavam definições diferentes;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX005 — Meta mensurável.** Dê o exemplo de meta mensurável do curso. *Rubrica:* 3 = os seis bancos usando uma única definição de família;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX001 — Duração do curso.** Quanto dura o curso de Grace? *Rubrica:* 3 = seis meses;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+- **EX002 — Dados mais sensíveis.** Quais são os dados mais sensíveis da Northbank? *Rubrica:* 3 = os encaminhamentos de clientes;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
+- **EX003 — Categoria especial.** Por que os encaminhamentos podem ser dados de categoria especial? *Rubrica:* 3 = às vezes contêm informações de saúde;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX004 — Números de famílias.** O que deu errado quando o conselho perguntou sobre as famílias atendidas? *Rubrica:* 3 = os bancos usavam definições diferentes;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX005 — Meta mensurável.** Dê o exemplo de meta mensurável do curso. *Rubrica:* 3 = os seis bancos usando uma única definição de família;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-02"></a>
 
@@ -111,11 +111,11 @@ Apresentar a governança apenas como conformidade ignora seu valor para as decis
 
 ### Exercícios
 
-- **EX006 — Efeito de um vazamento.** Como um vazamento de encaminhamentos poderia afetar os clientes? *Rubrica:* 3 = famílias poderiam deixar de pedir ajuda;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX007 — Regra de marketing.** O que os e-mails de captação de recursos exigem? *Rubrica:* 3 = consentimento;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX006 — Efeito de um vazamento.** Como um vazamento de encaminhamentos poderia afetar os clientes? *Rubrica:* 3 = famílias poderiam deixar de pedir ajuda;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX007 — Regra de marketing.** O que os e-mails de captação de recursos exigem? *Rubrica:* 3 = consentimento;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 - **EX008 — Exemplo de decisão.** Cite uma decisão apoiada por bons dados. *Rubrica:* 3 = onde abrir um ponto de distribuição;; 2 = uma;; 1 = vago;; 0 = nenhuma.
-- **EX009 — Maiores riscos.** Que riscos ficaram no topo? *Rubrica:* 3 = dados de clientes em papel e em celulares;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
-- **EX010 — Argumento ao conselho.** O que Grace usou para explicar a necessidade de governança? *Rubrica:* 3 = sua lista ordenada de riscos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX009 — Maiores riscos.** Que riscos ficaram no topo? *Rubrica:* 3 = dados de clientes em papel e em celulares;; 2 = parcialmente correto;; 1 = parcial;; 0 = nenhuma.
+- **EX010 — Argumento ao conselho.** O que Grace usou para explicar a necessidade de governança? *Rubrica:* 3 = sua lista ordenada de riscos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-03"></a>
 
@@ -153,10 +153,10 @@ Copiar a estrutura de papéis de grandes empresas para uma pequena organização
 
 ### Exercícios
 
-- **EX011 — Dona dos doadores.** Quem é dono dos dados de doadores? *Rubrica:* 3 = a gerente de captação de recursos;; 2 = correto;; 1 = outro;; 0 = nenhuma.
-- **EX012 — Conselheira supervisora.** Qual conselheira supervisiona os dados? *Rubrica:* 3 = a que tem experiência jurídica;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX013 — Questão do encarregado.** Por que a Northbank pode precisar de um encarregado pelo tratamento de dados? *Rubrica:* 3 = tratamento em larga escala de dados de categoria especial;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX014 — Prazo dos líderes.** Em quanto tempo os líderes devem relatar problemas? *Rubrica:* 3 = em até um dia;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX011 — Dona dos doadores.** Quem é dono dos dados de doadores? *Rubrica:* 3 = a gerente de captação de recursos;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
+- **EX012 — Conselheira supervisora.** Qual conselheira supervisiona os dados? *Rubrica:* 3 = a que tem experiência jurídica;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX013 — Questão do encarregado.** Por que a Northbank pode precisar de um encarregado pelo tratamento de dados? *Rubrica:* 3 = tratamento em larga escala de dados de categoria especial;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX014 — Prazo dos líderes.** Em quanto tempo os líderes devem relatar problemas? *Rubrica:* 3 = em até um dia;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 - **EX015 — Incorporando os papéis.** Cite uma rotina que incorpora os papéis. *Rubrica:* 3 = a integração dos voluntários ou as reuniões mensais;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-04"></a>
@@ -195,11 +195,11 @@ Montar inventários só a partir de descrições deixa escapar as práticas info
 
 ### Exercícios
 
-- **EX016 — Motivo das visitas.** Por que Grace visitou pessoalmente os bancos de alimentos? *Rubrica:* 3 = para encontrar dados que as pessoas não mencionam;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX017 — Formulários antigos.** Quantos anos tinham os formulários esquecidos? *Rubrica:* 3 = cinco anos;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX018 — Lacuna da caixa de e-mail.** O que havia de errado com a caixa compartilhada? *Rubrica:* 3 = aberta a todos os funcionários, com detalhes dos casos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX019 — Ciclo de revisão.** Com que frequência o inventário é revisado? *Rubrica:* 3 = a cada seis meses;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX020 — Uso no aviso.** Que documento o inventário ajuda a escrever? *Rubrica:* 3 = o aviso de privacidade;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX016 — Motivo das visitas.** Por que Grace visitou pessoalmente os bancos de alimentos? *Rubrica:* 3 = para encontrar dados que as pessoas não mencionam;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX017 — Formulários antigos.** Quantos anos tinham os formulários esquecidos? *Rubrica:* 3 = cinco anos;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+- **EX018 — Lacuna da caixa de e-mail.** O que havia de errado com a caixa compartilhada? *Rubrica:* 3 = aberta a todos os funcionários, com detalhes dos casos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX019 — Ciclo de revisão.** Com que frequência o inventário é revisado? *Rubrica:* 3 = a cada seis meses;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+- **EX020 — Uso no aviso.** Que documento o inventário ajuda a escrever? *Rubrica:* 3 = o aviso de privacidade;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
 <a id="ch-05"></a>
 
@@ -237,11 +237,11 @@ Proibir uma prática sem oferecer alternativa leva as pessoas a continuar com el
 
 ### Exercícios
 
-- **EX021 — Regra dos dados de clientes.** Quem pode ver os encaminhamentos de clientes? *Rubrica:* 3 = voluntários nomeados do banco de alimentos correspondente;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX022 — Título do guia.** Como se chama o guia dos voluntários? *Rubrica:* 3 = Cuidando das informações das pessoas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX023 — Número de regras.** Quantas regras o guia tem? *Rubrica:* 3 = dez;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX024 — Alternativa aos celulares.** O que substituiu os celulares pessoais nas retiradas? *Rubrica:* 3 = um celular da organização em cada banco de alimentos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX025 — Pedido do conselho.** O que o conselho pediu após a aprovação? *Rubrica:* 3 = um relatório de andamento em três meses;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX021 — Regra dos dados de clientes.** Quem pode ver os encaminhamentos de clientes? *Rubrica:* 3 = voluntários nomeados do banco de alimentos correspondente;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX022 — Título do guia.** Como se chama o guia dos voluntários? *Rubrica:* 3 = Cuidando das informações das pessoas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX023 — Número de regras.** Quantas regras o guia tem? *Rubrica:* 3 = dez;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+- **EX024 — Alternativa aos celulares.** O que substituiu os celulares pessoais nas retiradas? *Rubrica:* 3 = um celular da organização em cada banco de alimentos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX025 — Pedido do conselho.** O que o conselho pediu após a aprovação? *Rubrica:* 3 = um relatório de andamento em três meses;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-06"></a>
 
@@ -300,11 +300,11 @@ Verificações de duplicatas por correspondência exata deixam passar diferença
 
 ### Exercícios
 
-- **EX026 — Distintos após normalizar.** Quantos endereços distintos restam após a normalização? *Rubrica:* 3 = 1.500;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX027 — Duplicatas reveladas.** Quantos registros duplicados a normalização revelou? *Rubrica:* 3 = 184;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX028 — Resultado da verificação exata.** O que uma verificação exata de duplicatas encontrou? *Rubrica:* 3 = nada; todos os 1.684 eram distintos;; 2 = correto;; 1 = vago;; 0 = sem resposta.
-- **EX029 — Mudança do fornecedor.** O que o fornecedor ativou? *Rubrica:* 3 = o armazenamento automático dos e-mails em minúsculas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX030 — Duração das verificações.** Quanto tempo cada verificação deve levar? *Rubrica:* 3 = menos de uma hora;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX026 — Distintos após normalizar.** Quantos endereços distintos restam após a normalização? *Rubrica:* 3 = 1.500;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+- **EX027 — Duplicatas reveladas.** Quantos registros duplicados a normalização revelou? *Rubrica:* 3 = 184;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+- **EX028 — Resultado da verificação exata.** O que uma verificação exata de duplicatas encontrou? *Rubrica:* 3 = nada; os 1.684 eram distintos como foram escritos;; 2 = nada, sem o motivo;; 1 = vago;; 0 = sem resposta.
+- **EX029 — Mudança do fornecedor.** O que o fornecedor ativou? *Rubrica:* 3 = o armazenamento automático dos e-mails em minúsculas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX030 — Duração das verificações.** Quanto tempo cada verificação deve levar? *Rubrica:* 3 = menos de uma hora;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
 <a id="ch-07"></a>
 
@@ -365,10 +365,10 @@ Tratar qualquer sim como consentimento válido ignora a necessidade de mostrar q
 
 ### Exercícios
 
-- **EX031 — Parcela com consentimento datado.** Que parcela dos doadores tinha consentimento datado? *Rubrica:* 3 = 62,7% (2.507);; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX032 — Tratamento dos brancos.** Como são tratados os registros de consentimento em branco? *Rubrica:* 3 = como não;; 2 = correto;; 1 = como sim;; 0 = nenhuma.
-- **EX033 — Fraqueza do sim sem data.** Por que os registros de sim sem data são fracos? *Rubrica:* 3 = não mostram quando nem como o consentimento foi dado;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX034 — Base dos recibos.** Que base sustenta o envio de recibos? *Rubrica:* 3 = contrato ou obrigação legal;; 2 = correto;; 1 = consentimento;; 0 = nenhuma.
+- **EX031 — Parcela com consentimento datado.** Que parcela dos doadores tinha consentimento datado? *Rubrica:* 3 = 62,7% (2.507);; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+- **EX032 — Tratamento dos brancos.** Como são tratados os registros de consentimento em branco? *Rubrica:* 3 = como não;; 2 = parcialmente correto;; 1 = como sim;; 0 = nenhuma.
+- **EX033 — Fraqueza do sim sem data.** Por que os registros de sim sem data são fracos? *Rubrica:* 3 = não mostram quando nem como o consentimento foi dado;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX034 — Base dos recibos.** Que base sustenta o envio de recibos? *Rubrica:* 3 = contrato ou obrigação legal;; 2 = parcialmente correto;; 1 = consentimento;; 0 = nenhuma.
 - **EX035 — Campos dos novos formulários.** O que os novos formulários registram automaticamente? *Rubrica:* 3 = data, texto exibido e origem;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
 
 <a id="ch-08"></a>
@@ -407,10 +407,10 @@ Manter o acesso de ex-voluntários expõe os dados muito depois de eles saírem.
 
 ### Exercícios
 
-- **EX036 — Prazo de digitalização.** Em quanto tempo os formulários de encaminhamento são digitalizados? *Rubrica:* 3 = em até uma semana;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX037 — Motivo da caixa aberta.** Por que dois bancos ainda usavam caixas abertas? *Rubrica:* 3 = o arquivo ficava em outra sala;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX036 — Prazo de digitalização.** Em quanto tempo os formulários de encaminhamento são digitalizados? *Rubrica:* 3 = em até uma semana;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+- **EX037 — Motivo da caixa aberta.** Por que dois bancos ainda usavam caixas abertas? *Rubrica:* 3 = o arquivo ficava em outra sala;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX038 — Configurações dos celulares.** Que configurações os celulares da organização têm? *Rubrica:* 3 = bloqueio de tela, criptografia e apagamento remoto;; 2 = todas;; 1 = algumas;; 0 = nenhuma.
-- **EX039 — Acessos antigos.** Quantos ex-voluntários ainda conseguiam ler o banco de doadores? *Rubrica:* 3 = três;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX039 — Acessos antigos.** Quantos ex-voluntários ainda conseguiam ler o banco de doadores? *Rubrica:* 3 = três;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 - **EX040 — Verificações do fornecedor.** O que Grace conferiu com o fornecedor do banco de dados? *Rubrica:* 3 = criptografia, backups, logs e cláusulas contratuais;; 2 = a maioria;; 1 = poucas;; 0 = nenhuma.
 
 <a id="ch-09"></a>
@@ -449,11 +449,11 @@ Aceitar anotações completas dos casos quando um formulário curto bastaria col
 
 ### Exercícios
 
-- **EX041 — Contrato da folha.** O que faltava no contrato da folha de pagamento? *Rubrica:* 3 = cláusulas de operador;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX042 — Voluntários da separação.** Os voluntários que separam alimentos precisam dos dados dos clientes? *Rubrica:* 3 = não;; 2 = correto;; 1 = sim;; 0 = nenhuma.
-- **EX043 — Regra das informações de saúde.** Quando as informações de saúde entram nos encaminhamentos? *Rubrica:* 3 = só quando relacionadas à alimentação, como alergias;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX044 — Canal dos encaminhamentos.** Como os parceiros enviam os formulários agora? *Rubrica:* 3 = por um portal seguro;; 2 = correto;; 1 = por e-mail;; 0 = nenhuma.
-- **EX045 — Prazo na saída.** Em quanto tempo o acesso de quem sai é retirado? *Rubrica:* 3 = em até uma semana;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX041 — Contrato da folha.** O que faltava no contrato da folha de pagamento? *Rubrica:* 3 = cláusulas de operador;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX042 — Voluntários da separação.** Os voluntários que separam alimentos precisam dos dados dos clientes? *Rubrica:* 3 = não;; 2 = parcialmente correto;; 1 = sim;; 0 = nenhuma.
+- **EX043 — Regra das informações de saúde.** Quando as informações de saúde entram nos encaminhamentos? *Rubrica:* 3 = só quando relacionadas à alimentação, como alergias;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX044 — Canal dos encaminhamentos.** Como os parceiros enviam os formulários agora? *Rubrica:* 3 = por um portal seguro;; 2 = parcialmente correto;; 1 = por e-mail;; 0 = nenhuma.
+- **EX045 — Prazo na saída.** Em quanto tempo o acesso de quem sai é retirado? *Rubrica:* 3 = em até uma semana;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 
 <a id="ch-10"></a>
 
@@ -491,10 +491,10 @@ Eliminar um doador que se opõe ao marketing arrisca reincluí-lo a partir de li
 
 ### Exercícios
 
-- **EX046 — Retenção dos encaminhamentos.** Por quanto tempo os encaminhamentos são guardados após a última cesta? *Rubrica:* 3 = um ano;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX047 — Quem confere a eliminação.** Quem confere os encaminhamentos antes da eliminação? *Rubrica:* 3 = um líder de banco de alimentos;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX046 — Retenção dos encaminhamentos.** Por quanto tempo os encaminhamentos são guardados após a última cesta? *Rubrica:* 3 = um ano;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+- **EX047 — Quem confere a eliminação.** Quem confere os encaminhamentos antes da eliminação? *Rubrica:* 3 = um líder de banco de alimentos;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 - **EX048 — Busca do pedido de acesso.** Onde Grace procurou os dados da ex-cliente? *Rubrica:* 3 = sistema de casos, caixa de encaminhamentos e celular da organização;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
-- **EX049 — Tratamento da objeção.** Como foi tratada a objeção do doador? *Rubrica:* 3 = marcado como sem marketing, sem eliminação;; 2 = correto;; 1 = eliminado;; 0 = nenhuma.
+- **EX049 — Tratamento da objeção.** Como foi tratada a objeção do doador? *Rubrica:* 3 = marcado como sem marketing, sem eliminação;; 2 = parcialmente correto;; 1 = eliminado;; 0 = nenhuma.
 - **EX050 — Alcance da correção.** Onde o endereço errado foi corrigido? *Rubrica:* 3 = no banco de dados e no serviço de boletins;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 
 <a id="ch-11"></a>
@@ -533,11 +533,11 @@ Culpar os voluntários pelos erros que eles relatam desestimula relatos futuros.
 
 ### Exercícios
 
-- **EX051 — Item perdido.** O que a voluntária perdeu? *Rubrica:* 3 = uma pasta com cinco formulários de encaminhamento;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX052 — Prazo da comunicação.** Em que prazo a autoridade foi comunicada? *Rubrica:* 3 = setenta e duas horas;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX053 — Famílias informadas.** Por que as famílias foram informadas diretamente? *Rubrica:* 3 = o risco para elas era alto;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX054 — Causa-raiz.** Por que os formulários foram levados para casa? *Rubrica:* 3 = o celular da organização estava ocupado;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX055 — Decisão do conselho.** O que o conselho financiou? *Rubrica:* 3 = mais celulares da organização;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX051 — Item perdido.** O que a voluntária perdeu? *Rubrica:* 3 = uma pasta com cinco formulários de encaminhamento;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX052 — Prazo da comunicação.** Em que prazo a autoridade foi comunicada? *Rubrica:* 3 = setenta e duas horas;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+- **EX053 — Famílias informadas.** Por que as famílias foram informadas diretamente? *Rubrica:* 3 = o risco para elas era alto;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX054 — Causa-raiz.** Por que os formulários foram levados para casa? *Rubrica:* 3 = o celular da organização estava ocupado;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX055 — Decisão do conselho.** O que o conselho financiou? *Rubrica:* 3 = mais celulares da organização;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
 <a id="ch-12"></a>
 
@@ -575,11 +575,11 @@ A governança que depende da memória de uma única pessoa para quando ela sai.
 
 ### Exercícios
 
-- **EX056 — Meta incompleta.** Que meta ficou incompleta? *Rubrica:* 3 = uma única definição de família nos seis bancos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX057 — Bancos que adotaram.** Quantos bancos de alimentos adotaram a definição? *Rubrica:* 3 = quatro;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX058 — Duração da transição.** Quanto dura a transição com registro duplo? *Rubrica:* 3 = três meses;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX059 — Teste do plano.** Que exercício o plano inclui? *Rubrica:* 3 = um exercício simulado de incidente;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX060 — Ferramenta de continuidade.** Onde as rotinas são documentadas? *Rubrica:* 3 = em um calendário de governança;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX056 — Meta incompleta.** Que meta ficou incompleta? *Rubrica:* 3 = uma única definição de família nos seis bancos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX057 — Bancos que adotaram.** Quantos bancos de alimentos adotaram a definição? *Rubrica:* 3 = quatro;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+- **EX058 — Duração da transição.** Quanto dura a transição com registro duplo? *Rubrica:* 3 = três meses;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+- **EX059 — Teste do plano.** Que exercício o plano inclui? *Rubrica:* 3 = um exercício simulado de incidente;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX060 — Ferramenta de continuidade.** Onde as rotinas são documentadas? *Rubrica:* 3 = em um calendário de governança;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="worked-results"></a>
 

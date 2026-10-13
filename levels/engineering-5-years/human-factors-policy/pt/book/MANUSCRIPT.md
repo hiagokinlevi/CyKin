@@ -1625,7 +1625,7 @@ A criação automática de incidentes pode gerar ruído. O mapeamento em framewo
 ### Exercícios
 
 - **EX100 — Ação automática.** O que acontece quando a triagem confirma um e-mail malicioso recebido por muitos? *Rubrica:* 3 = abre-se um chamado de incidente e o e-mail é removido;; 2 = chamado;; 1 = vago;; 0 = nenhuma.
-- **EX101 — Função do CSF.** Que função do CSF 2.0 cobre papéis, políticas e supervisão? *Rubrica:* 3 = Govern;; 2 = govern, sem justificativa;; 1 = Protect;; 0 = nenhuma.
+- **EX101 — Função do CSF.** Que função do CSF 2.0 cobre papéis, políticas e supervisão? *Rubrica:* 3 = Govern;; 2 = Govern, hesitando com outra função;; 1 = Protect;; 0 = nenhuma.
 - **EX102 — Evidência de risco.** Que medida informa o risco de fraude de pagamento? *Rubrica:* 3 = pedidos de mudança bloqueados e falsificações verificadas;; 2 = pedidos bloqueados;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese

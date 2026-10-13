@@ -680,7 +680,7 @@ A ordem dos objetivos pode ser contestada. Na prática, as classificações se c
 
 ### Exercícios
 
-- **EX043 — Prioridade dos medidores.** Que objetivo importa mais para as leituras dos medidores? *Rubrica:* 3 = integridade;; 2 = integridade, sem justificativa;; 1 = confidencialidade;; 0 = nenhuma.
+- **EX043 — Prioridade dos medidores.** Que objetivo importa mais para as leituras dos medidores? *Rubrica:* 3 = integridade, porque as leituras geram as contas;; 2 = integridade, sem justificativa;; 1 = confidencialidade;; 0 = nenhuma.
 - **EX044 — Partes do risco.** Que vulnerabilidade Nadia identificou no acesso de fornecedores? *Rubrica:* 3 = uma senha compartilhada;; 2 = senha compartilhada;; 1 = vago;; 0 = nenhuma.
 - **EX045 — Exemplo corretivo.** Dê o controle corretivo do acesso de fornecedores. *Rubrica:* 3 = procedimento testado para revogar o acesso durante incidentes;; 2 = revogar;; 1 = vago;; 0 = nenhuma.
 
@@ -722,7 +722,7 @@ As visões sistêmicas podem virar burocracia. A rastreabilidade exige manutenç
 
 - **EX046 — Finalidade do programa.** Qual é a finalidade do programa de governança da Ardwell visto como sistema? *Rubrica:* 3 = manter o risco dentro do apetite e demonstrar compliance;; 2 = finalidade;; 1 = vago;; 0 = nenhuma.
 - **EX047 — Lacunas do rastreio.** Que lacunas uma matriz de rastreabilidade revela? *Rubrica:* 3 = requisitos sem controles e controles sem testes;; 2 = lacunas;; 1 = vago;; 0 = nenhuma.
-- **EX048 — Etapa esquecida.** Que etapa do ciclo de vida costuma ser esquecida em controles e políticas? *Rubrica:* 3 = a desativação;; 2 = desativação;; 1 = desenho;; 0 = nenhuma.
+- **EX048 — Etapa esquecida.** Que etapa do ciclo de vida costuma ser esquecida em controles e políticas? *Rubrica:* 3 = a desativação;; 2 = desativação, hesitando com outra etapa;; 1 = desenho;; 0 = nenhuma.
 
 ### Síntese
 
@@ -840,7 +840,7 @@ A automação falha quando os dados de RH estão errados. Os inventários de cha
 
 ### Exercícios
 
-- **EX055 — Transição frágil.** Que transição de identidade é o ponto fraco da Ardwell? *Rubrica:* 3 = a movimentação;; 2 = quem muda de função;; 1 = desligamento;; 0 = nenhuma.
+- **EX055 — Transição frágil.** Que transição de identidade é o ponto fraco da Ardwell? *Rubrica:* 3 = a movimentação, porque os acessos antigos raramente são removidos;; 2 = movimentação, sem justificativa;; 1 = desligamento;; 0 = nenhuma.
 - **EX056 — Regra de criptografia.** Que dados a classificação da Ardwell exige criptografar? *Rubrica:* 3 = dados de pagamento e dados pessoais em notebooks;; 2 = classificação;; 1 = vago;; 0 = nenhuma.
 - **EX057 — Risco do certificado.** Por que o certificado de um único engenheiro era um risco? *Rubrica:* 3 = sem backup nem controle de vencimento, poderia vencer sem ninguém notar;; 2 = responsável;; 1 = vago;; 0 = nenhuma.
 
@@ -2079,7 +2079,7 @@ Ensaios anunciados diferem de falhas reais. As verificações diárias acrescent
 
 - **EX139 — Falhas injetadas.** Que três falhas foram injetadas? *Rubrica:* 3 = travamento do coletor, origem indisponível, arquivo de evidência alterado;; 2 = três;; 1 = vago;; 0 = nenhuma.
 - **EX140 — Detecção lenta.** Que falha foi detectada lentamente? *Rubrica:* 3 = o arquivo de evidência alterado, na verificação semanal;; 2 = adulteração;; 1 = vago;; 0 = nenhuma.
-- **EX141 — Mudança na verificação.** Com que frequência as verificações de integridade rodam depois do ensaio? *Rubrica:* 3 = diariamente;; 2 = diária;; 1 = semanal;; 0 = nenhuma.
+- **EX141 — Mudança na verificação.** Com que frequência as verificações de integridade rodam depois do ensaio? *Rubrica:* 3 = diariamente;; 2 = diariamente, hesitando com semanal;; 1 = semanal;; 0 = nenhuma.
 
 ### Síntese
 

@@ -69,10 +69,10 @@ Supor que a governança cabe só aos gestores ignora o papel diário do técnico
 
 ### Exercícios
 
-- **EX001 — Frota da Linkway.** Quantos ônibus a Linkway opera? *Rubrica:* 3 = sessenta;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX002 — Tarefas do técnico.** O que os técnicos fazem na governança? *Rubrica:* 3 = aplicam regras, conferem dados e relatam problemas;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
-- **EX003 — Finalidade do caderno.** Por que manter um caderno de atividades? *Rubrica:* 3 = evidência do trabalho para empregadores e para a avaliação;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX004 — Risco ao financiamento.** Por que as contagens de passageiros importam para o financiamento? *Rubrica:* 3 = a autoridade financia parte das linhas com base nelas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX001 — Frota da Linkway.** Quantos ônibus a Linkway opera? *Rubrica:* 3 = sessenta;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+- **EX002 — Tarefas do técnico.** O que os técnicos fazem na governança? *Rubrica:* 3 = aplicam regras, conferem dados e relatam problemas;; 2 = parcialmente correto;; 1 = parcial;; 0 = nenhuma.
+- **EX003 — Finalidade do caderno.** Por que manter um caderno de atividades? *Rubrica:* 3 = evidência do trabalho para empregadores e para a avaliação;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX004 — Risco ao financiamento.** Por que as contagens de passageiros importam para o financiamento? *Rubrica:* 3 = a autoridade financia parte das linhas com base nelas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-02"></a>
 
@@ -110,9 +110,9 @@ Ignorar como os dados são coletados esconde onde os erros começam.
 
 ### Exercícios
 
-- **EX005 — Dados de ligação.** Que conjunto de dados liga muitos outros? *Rubrica:* 3 = as tabelas de horários;; 2 = correto;; 1 = outro;; 0 = nenhuma.
-- **EX006 — Momento do envio.** Quando as contagens são enviadas? *Rubrica:* 3 = à noite, na garagem;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX007 — Dano de uma contagem ausente.** Que dano uma contagem ausente pode causar? *Rubrica:* 3 = o corte de uma viagem cheia ou a redução do financiamento;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
+- **EX005 — Dados de ligação.** Que conjunto de dados liga muitos outros? *Rubrica:* 3 = as tabelas de horários;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
+- **EX006 — Momento do envio.** Quando as contagens são enviadas? *Rubrica:* 3 = à noite, na garagem;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX007 — Dano de uma contagem ausente.** Que dano uma contagem ausente pode causar? *Rubrica:* 3 = o corte de uma viagem cheia ou a redução do financiamento;; 2 = parcialmente correto;; 1 = parcial;; 0 = nenhuma.
 - **EX008 — Principais pontos de erro.** Que pontos de erro Marta colocou no topo? *Rubrica:* 3 = sensores com defeito e envios que falham;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 
 <a id="ch-03"></a>
@@ -151,10 +151,10 @@ Texto livre para informações estruturadas torna a análise pouco confiável.
 
 ### Exercícios
 
-- **EX009 — Variações da linha.** Dê uma forma como as pessoas escreviam a linha 7. *Rubrica:* 3 = número 7 ou o ônibus do hospital;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX009 — Variações da linha.** Dê uma forma como as pessoas escreviam a linha 7. *Rubrica:* 3 = número 7 ou o ônibus do hospital;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX010 — Campos de contato removidos.** Que campos Marta removeu? *Rubrica:* 3 = o endereço completo e a data de nascimento;; 2 = ambos;; 1 = um;; 0 = nenhuma.
-- **EX011 — Problema da lista de pontos.** Que problema os funcionários encontraram na lista de pontos? *Rubrica:* 3 = pontos com o mesmo nome em linhas diferentes;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX012 — Problema do calendário.** O que era difícil no calendário? *Rubrica:* 3 = usá-lo no celular;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX011 — Problema da lista de pontos.** Que problema os funcionários encontraram na lista de pontos? *Rubrica:* 3 = pontos com o mesmo nome em linhas diferentes;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX012 — Problema do calendário.** O que era difícil no calendário? *Rubrica:* 3 = usá-lo no celular;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-04"></a>
 
@@ -192,10 +192,10 @@ Misturar números digitados com fórmulas esconde as alterações manuais.
 
 ### Exercícios
 
-- **EX013 — Abas ocultas.** Quantas abas ocultas Marta encontrou? *Rubrica:* 3 = três;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX014 — Coluna de ajustes.** Onde ficam os ajustes digitados? *Rubrica:* 3 = em uma coluna separada, com o motivo;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX015 — Verificação das viagens.** Com o que o número de viagens deve bater? *Rubrica:* 3 = com a tabela de horários do mês;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX016 — Benefício das versões.** O que versões claras permitem? *Rubrica:* 3 = enviar exatamente a versão aprovada;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX013 — Abas ocultas.** Quantas abas ocultas Marta encontrou? *Rubrica:* 3 = três;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+- **EX014 — Coluna de ajustes.** Onde ficam os ajustes digitados? *Rubrica:* 3 = em uma coluna separada, com o motivo;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX015 — Verificação das viagens.** Com o que o número de viagens deve bater? *Rubrica:* 3 = com a tabela de horários do mês;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX016 — Benefício das versões.** O que versões claras permitem? *Rubrica:* 3 = enviar exatamente a versão aprovada;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-05"></a>
 
@@ -233,10 +233,10 @@ Confiar em resultados antes de confirmar que o arquivo foi bem lido arrisca conc
 
 ### Exercícios
 
-- **EX017 — Limite de capacidade.** Que limite superior a verificação usou? *Rubrica:* 3 = cento e vinte;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX018 — Causa dos negativos.** O que causou os desembarques negativos? *Rubrica:* 3 = um defeito de sensor em um ônibus;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX019 — Acréscimo para rastrear.** O que Marta acrescentou para rastrear defeitos? *Rubrica:* 3 = o número do ônibus;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX020 — Compartilhamento de scripts.** Como os scripts são compartilhados? *Rubrica:* 3 = em uma pasta compartilhada com um leia-me;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX017 — Limite de capacidade.** Que limite superior a verificação usou? *Rubrica:* 3 = cento e vinte;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+- **EX018 — Causa dos negativos.** O que causou os desembarques negativos? *Rubrica:* 3 = um defeito de sensor em um ônibus;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX019 — Acréscimo para rastrear.** O que Marta acrescentou para rastrear defeitos? *Rubrica:* 3 = o número do ônibus;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX020 — Compartilhamento de scripts.** Como os scripts são compartilhados? *Rubrica:* 3 = em uma pasta compartilhada com um leia-me;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-06"></a>
 
@@ -274,10 +274,10 @@ Conferir só a validade deixa passar dados ausentes ou atrasados.
 
 ### Exercícios
 
-- **EX021 — Verificação da exatidão.** Como a exatidão das contagens é conferida? *Rubrica:* 3 = contagens manuais em uma amostra de viagens;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX022 — Comparação de consistência.** Com o que as contagens são comparadas para a consistência? *Rubrica:* 3 = com as vendas de passagens;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX021 — Verificação da exatidão.** Como a exatidão das contagens é conferida? *Rubrica:* 3 = contagens manuais em uma amostra de viagens;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX022 — Comparação de consistência.** Com o que as contagens são comparadas para a consistência? *Rubrica:* 3 = com as vendas de passagens;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 - **EX023 — Prioridade da autoridade.** Que dimensões mais importam para a autoridade? *Rubrica:* 3 = completude e exatidão;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
-- **EX024 — Prioridade dos planejadores.** Que dimensão mais importa para os planejadores? *Rubrica:* 3 = a pontualidade;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+- **EX024 — Prioridade dos planejadores.** Que dimensão mais importa para os planejadores? *Rubrica:* 3 = a pontualidade;; 2 = parcialmente correto;; 1 = outra;; 0 = nenhuma.
 
 <a id="ch-07"></a>
 
@@ -337,10 +337,10 @@ Porcentagens gerais escondem as linhas em que os problemas se concentram.
 
 ### Exercícios
 
-- **EX025 — Parcela da Linha 7.** Que parcela das viagens da Linha 7 estava sem contagem? *Rubrica:* 3 = 10,2%;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX026 — Total ausente.** Quantas viagens estavam sem contagem em todas as linhas? *Rubrica:* 3 = 144 de 3.600;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX027 — Causa na Linha 7.** O que causava as contagens ausentes na Linha 7? *Rubrica:* 3 = sensores de dois ônibus mais antigos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX028 — Ação provisória.** O que foi feito enquanto os sensores eram consertados? *Rubrica:* 3 = ônibus mais novos foram colocados na Linha 7;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX025 — Parcela da Linha 7.** Que parcela das viagens da Linha 7 estava sem contagem? *Rubrica:* 3 = 10,2%;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+- **EX026 — Total ausente.** Quantas viagens estavam sem contagem em todas as linhas? *Rubrica:* 3 = 144 de 3.600;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+- **EX027 — Causa na Linha 7.** O que causava as contagens ausentes na Linha 7? *Rubrica:* 3 = sensores de dois ônibus mais antigos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX028 — Ação provisória.** O que foi feito enquanto os sensores eram consertados? *Rubrica:* 3 = ônibus mais novos foram colocados na Linha 7;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-08"></a>
 
@@ -398,10 +398,10 @@ Normalizar automaticamente sem revisão pode juntar coisas diferentes.
 
 ### Exercícios
 
-- **EX029 — Distintos depois.** Quantos pontos distintos restaram após a normalização? *Rubrica:* 3 = cinco;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX030 — Risco da abreviação.** O que St pode significar além de street? *Rubrica:* 3 = saint;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX031 — Dono da lista.** Quem é o dono da lista oficial de pontos? *Rubrica:* 3 = o Sr. Hughes;; 2 = correto;; 1 = outro;; 0 = nenhuma.
-- **EX032 — Regra para pontos novos.** O que deve acontecer antes de um ponto novo aparecer? *Rubrica:* 3 = ele é acrescentado à lista oficial;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX029 — Distintos depois.** Quantos pontos distintos restaram após a normalização? *Rubrica:* 3 = cinco;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+- **EX030 — Risco da abreviação.** O que St pode significar além de street? *Rubrica:* 3 = saint;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX031 — Dono da lista.** Quem é o dono da lista oficial de pontos? *Rubrica:* 3 = o Sr. Hughes;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
+- **EX032 — Regra para pontos novos.** O que deve acontecer antes de um ponto novo aparecer? *Rubrica:* 3 = ele é acrescentado à lista oficial;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-09"></a>
 
@@ -439,10 +439,10 @@ Supor que os dados dos funcionários são menos sensíveis que os dos clientes l
 
 ### Exercícios
 
-- **EX033 — Situação das contagens.** As contagens dos sensores são dados pessoais? *Rubrica:* 3 = não;; 2 = correto;; 1 = sim;; 0 = nenhuma.
-- **EX034 — Incidente comum.** O que causa a maioria dos incidentes em empresas de ônibus? *Rubrica:* 3 = erros simples, como destinatários de e-mail errados;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX035 — Troca de turnos.** Como os motoristas devem trocar turnos? *Rubrica:* 3 = pelo sistema de troca de turnos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX036 — Eliminação das reclamações.** Que princípio a eliminação de reclamações antigas aplica? *Rubrica:* 3 = guardar os dados apenas pelo tempo necessário;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX033 — Situação das contagens.** As contagens dos sensores são dados pessoais? *Rubrica:* 3 = não;; 2 = parcialmente correto;; 1 = sim;; 0 = nenhuma.
+- **EX034 — Incidente comum.** O que causa a maioria dos incidentes em empresas de ônibus? *Rubrica:* 3 = erros simples, como destinatários de e-mail errados;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX035 — Troca de turnos.** Como os motoristas devem trocar turnos? *Rubrica:* 3 = pelo sistema de troca de turnos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX036 — Eliminação das reclamações.** Que princípio a eliminação de reclamações antigas aplica? *Rubrica:* 3 = guardar os dados apenas pelo tempo necessário;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-10"></a>
 
@@ -480,10 +480,10 @@ Logins compartilhados tornam impossível rastrear quem alterou os dados.
 
 ### Exercícios
 
-- **EX037 — Correção do login compartilhado.** O que substituiu o login compartilhado das escalas? *Rubrica:* 3 = contas individuais;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX037 — Correção do login compartilhado.** O que substituiu o login compartilhado das escalas? *Rubrica:* 3 = contas individuais;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX038 — Acesso às escalas.** Quem pode abrir a planilha de escalas agora? *Rubrica:* 3 = os gerentes de garagem e a folha de pagamento;; 2 = ambos;; 1 = um;; 0 = nenhuma.
-- **EX039 — Resposta ao phishing.** O que Marta fez com o e-mail de phishing simulado? *Rubrica:* 3 = denunciou;; 2 = correto;; 1 = clicou;; 0 = nenhuma.
-- **EX040 — Pen drive.** O que havia no pen drive encontrado? *Rubrica:* 3 = escalas antigas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX039 — Resposta ao phishing.** O que Marta fez com o e-mail de phishing simulado? *Rubrica:* 3 = denunciou;; 2 = parcialmente correto;; 1 = clicou;; 0 = nenhuma.
+- **EX040 — Pen drive.** O que havia no pen drive encontrado? *Rubrica:* 3 = escalas antigas;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-11"></a>
 
@@ -521,10 +521,10 @@ Contagens pequenas publicadas ainda podem identificar pessoas.
 
 ### Exercícios
 
-- **EX041 — Anexos de e-mail.** Anexos de e-mail são aprovados para dados pessoais? *Rubrica:* 3 = não;; 2 = correto;; 1 = sim;; 0 = nenhuma.
-- **EX042 — Prazo de resposta.** Quanto tempo a Linkway tem para responder a um pedido de acesso? *Rubrica:* 3 = um mês;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX043 — Modelo da autoridade.** Que códigos o arquivo da autoridade usa? *Rubrica:* 3 = os códigos de linha da lista oficial;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX044 — Pontos de uso baixo.** O que aconteceu com os pontos de uso muito baixo na lista do jornal? *Rubrica:* 3 = foram retirados;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX041 — Anexos de e-mail.** Anexos de e-mail são aprovados para dados pessoais? *Rubrica:* 3 = não;; 2 = parcialmente correto;; 1 = sim;; 0 = nenhuma.
+- **EX042 — Prazo de resposta.** Quanto tempo a Linkway tem para responder a um pedido de acesso? *Rubrica:* 3 = um mês;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+- **EX043 — Modelo da autoridade.** Que códigos o arquivo da autoridade usa? *Rubrica:* 3 = os códigos de linha da lista oficial;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX044 — Pontos de uso baixo.** O que aconteceu com os pontos de uso muito baixo na lista do jornal? *Rubrica:* 3 = foram retirados;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-12"></a>
 
@@ -562,9 +562,9 @@ Copiar dados pessoais para relatórios sobre a eliminação cria novas cópias a
 
 ### Exercícios
 
-- **EX045 — Prazo das reclamações.** Por quanto tempo as reclamações são guardadas após o encerramento? *Rubrica:* 3 = dois anos;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX045 — Prazo das reclamações.** Por quanto tempo as reclamações são guardadas após o encerramento? *Rubrica:* 3 = dois anos;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 - **EX046 — Campos mantidos.** Que dados das reclamações são mantidos após a eliminação? *Rubrica:* 3 = categoria, linha e data;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
-- **EX047 — Achados e perdidos.** Por quanto tempo os registros de achados e perdidos são guardados? *Rubrica:* 3 = seis meses;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX047 — Achados e perdidos.** Por quanto tempo os registros de achados e perdidos são guardados? *Rubrica:* 3 = seis meses;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
 - **EX048 — Registro da eliminação.** O que fica registrado no log de eliminação? *Rubrica:* 3 = data, número eliminado e aprovação;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
 
 <a id="ch-13"></a>
@@ -604,9 +604,9 @@ Relatos vagos de problemas causam preocupação sem ação.
 ### Exercícios
 
 - **EX049 — Conteúdo de um bom relato.** O que um relato de problema deve incluir? *Rubrica:* 3 = o quê, onde, quando, quantos, por que importa e quem foi avisado;; 2 = a maioria;; 1 = poucos;; 0 = nenhuma.
-- **EX050 — Quem revisa o registro.** Quem revisa o registro de problemas toda semana? *Rubrica:* 3 = o Sr. Hughes;; 2 = correto;; 1 = outro;; 0 = nenhuma.
-- **EX051 — Evidência do encerramento.** Como Marta encerrou o problema da Linha 7? *Rubrica:* 3 = repetiu a verificação e encontrou poucas viagens sem contagem;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX052 — Padrão encontrado.** Que padrão o registro mostrou? *Rubrica:* 3 = problemas vindos dos equipamentos dos ônibus mais antigos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX050 — Quem revisa o registro.** Quem revisa o registro de problemas toda semana? *Rubrica:* 3 = o Sr. Hughes;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
+- **EX051 — Evidência do encerramento.** Como Marta encerrou o problema da Linha 7? *Rubrica:* 3 = repetiu a verificação e encontrou poucas viagens sem contagem;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX052 — Padrão encontrado.** Que padrão o registro mostrou? *Rubrica:* 3 = problemas vindos dos equipamentos dos ônibus mais antigos;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-14"></a>
 
@@ -644,10 +644,10 @@ Procedimentos testados apenas por quem os escreveu deixam passar passos que pare
 
 ### Exercícios
 
-- **EX053 — Definição de embarques.** Como os embarques são definidos? *Rubrica:* 3 = passageiros que sobem, número inteiro de 0 a 120, registrado pelos sensores das portas;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
-- **EX054 — Lacuna no procedimento.** Onde a colega empacou? *Rubrica:* 3 = na conferência dos totais;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX053 — Definição de embarques.** Como os embarques são definidos? *Rubrica:* 3 = passageiros que sobem, número inteiro de 0 a 120, registrado pelos sensores das portas;; 2 = parcialmente correto;; 1 = parcial;; 0 = nenhuma.
+- **EX054 — Lacuna no procedimento.** Onde a colega empacou? *Rubrica:* 3 = na conferência dos totais;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 - **EX055 — Página de sumário.** O que a página de sumário lista? *Rubrica:* 3 = cada documento, seu dono e a data da última conferência;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
-- **EX056 — Alternativa ao portal.** Que caso extra o procedimento cobriu? *Rubrica:* 3 = o portal fora do ar;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX056 — Alternativa ao portal.** Que caso extra o procedimento cobriu? *Rubrica:* 3 = o portal fora do ar;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-15"></a>
 
@@ -685,10 +685,10 @@ Técnicos que alteram números informados sem a curadora contornam a responsabil
 
 ### Exercícios
 
-- **EX057 — Nome da curadora.** Quem é a curadora dos dados de passageiros? *Rubrica:* 3 = a Sra. Price;; 2 = correto;; 1 = outro;; 0 = nenhuma.
-- **EX058 — Nova verificação.** Que nova verificação a Sra. Price pediu? *Rubrica:* 3 = contagens muito mais altas que o normal;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX059 — Decisão sobre a Linha 4.** O que a Sra. Price decidiu sobre a Linha 4? *Rubrica:* 3 = manter as contagens e acrescentar uma nota explicativa;; 2 = correto;; 1 = alterar;; 0 = nenhuma.
-- **EX060 — Uso do registro da decisão.** Como o registro da decisão ajudou depois? *Rubrica:* 3 = o Sr. Hughes o encontrou depressa quando a autoridade perguntou;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX057 — Nome da curadora.** Quem é a curadora dos dados de passageiros? *Rubrica:* 3 = a Sra. Price;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
+- **EX058 — Nova verificação.** Que nova verificação a Sra. Price pediu? *Rubrica:* 3 = contagens muito mais altas que o normal;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX059 — Decisão sobre a Linha 4.** O que a Sra. Price decidiu sobre a Linha 4? *Rubrica:* 3 = manter as contagens e acrescentar uma nota explicativa;; 2 = parcialmente correto;; 1 = alterar;; 0 = nenhuma.
+- **EX060 — Uso do registro da decisão.** Como o registro da decisão ajudou depois? *Rubrica:* 3 = o Sr. Hughes o encontrou depressa quando a autoridade perguntou;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-16"></a>
 
@@ -726,9 +726,9 @@ Ajustar números para passar nas verificações esconde problemas reais.
 
 ### Exercícios
 
-- **EX061 — Duração do estágio.** Quanto tempo dura o estágio? *Rubrica:* 3 = seis semanas;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX062 — Causa da falha nos totais.** Por que a conferência dos totais falhou? *Rubrica:* 3 = faltava um envio atrasado;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX063 — Abordagem com os motoristas.** Como Marta explicou os defeitos dos sensores aos motoristas? *Rubrica:* 3 = não é culpa deles e consertar protege o financiamento da linha;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
+- **EX061 — Duração do estágio.** Quanto tempo dura o estágio? *Rubrica:* 3 = seis semanas;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+- **EX062 — Causa da falha nos totais.** Por que a conferência dos totais falhou? *Rubrica:* 3 = faltava um envio atrasado;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX063 — Abordagem com os motoristas.** Como Marta explicou os defeitos dos sensores aos motoristas? *Rubrica:* 3 = não é culpa deles e consertar protege o financiamento da linha;; 2 = parcialmente correto;; 1 = parcial;; 0 = nenhuma.
 - **EX064 — Pontos a melhorar.** Que duas coisas Marta vai melhorar? *Rubrica:* 3 = estimar o tempo das tarefas e escrever e-mails mais curtos;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
 
 <a id="ch-17"></a>
@@ -767,10 +767,10 @@ Preencher lacunas com palpites deixa os arquivos com cara de completos, mas meno
 
 ### Exercícios
 
-- **EX065 — Problemas encontrados.** Quantos problemas Marta encontrou? *Rubrica:* 3 = quatro;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX066 — Valores impossíveis.** Como Marta tratou as viagens com valores impossíveis? *Rubrica:* 3 = deixou-as de fora e as anotou;; 2 = correto;; 1 = adivinhou;; 0 = nenhuma.
-- **EX067 — Resposta sobre as médias.** Por que não preencher as contagens ausentes com médias? *Rubrica:* 3 = palpites podem estar errados; a curadora e a autoridade devem decidir;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX068 — Resultado da avaliação.** Que resultado Marta recebeu? *Rubrica:* 3 = competente com mérito;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX065 — Problemas encontrados.** Quantos problemas Marta encontrou? *Rubrica:* 3 = quatro;; 2 = parcialmente correto;; 1 = errado;; 0 = nenhuma.
+- **EX066 — Valores impossíveis.** Como Marta tratou as viagens com valores impossíveis? *Rubrica:* 3 = deixou-as de fora e as anotou;; 2 = parcialmente correto;; 1 = adivinhou;; 0 = nenhuma.
+- **EX067 — Resposta sobre as médias.** Por que não preencher as contagens ausentes com médias? *Rubrica:* 3 = palpites podem estar errados; a curadora e a autoridade devem decidir;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX068 — Resultado da avaliação.** Que resultado Marta recebeu? *Rubrica:* 3 = competente com mérito;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
 <a id="ch-18"></a>
 
@@ -808,10 +808,10 @@ Tratar a conclusão do curso como o fim do aprendizado deixa as competências se
 
 ### Exercícios
 
-- **EX069 — Oferta de emprego.** Que emprego o Sr. Hughes oferece? *Rubrica:* 3 = técnica de dados na Linkway;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX069 — Oferta de emprego.** Que emprego o Sr. Hughes oferece? *Rubrica:* 3 = técnica de dados na Linkway;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 - **EX070 — Comportamento elogiado.** Que comportamento foi elogiado? *Rubrica:* 3 = verificações cuidadosas e recusa em ajustar números;; 2 = ambos;; 1 = um;; 0 = nenhuma.
-- **EX071 — Perguntas permanentes.** Cite uma pergunta que Marta deve continuar fazendo. *Rubrica:* 3 = quem é dono de cada decisão;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX072 — Estudos futuros.** Que curso Marta pode fazer mais tarde? *Rubrica:* 3 = o curso de tecnólogo;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX071 — Perguntas permanentes.** Cite uma pergunta que Marta deve continuar fazendo. *Rubrica:* 3 = quem é dono de cada decisão;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX072 — Estudos futuros.** Que curso Marta pode fazer mais tarde? *Rubrica:* 3 = o curso de tecnólogo;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 
 <a id="worked-results"></a>
 

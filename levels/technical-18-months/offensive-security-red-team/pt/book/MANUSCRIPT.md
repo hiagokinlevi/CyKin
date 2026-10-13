@@ -1302,7 +1302,7 @@ Sistemas de transporte reais e equipamentos de tarifa nunca são testados sem um
 
 - **EX065 — Critério de aprovação.** Nomeie três requisitos de aprovação. *Rubrica:* 3 = exercício de parada, recusa, relatório coerente; 2 = dois; 1 = um; 0 = nada.
 - **EX066 — Prazo da parada.** Qual é o limite de tempo para a mensagem de parada? *Rubrica:* 3 = dois minutos; 2 = rápido; 1 = fim do dia; 0 = nada.
-- **EX067 — Honestidade do relatório.** O relatório pode marcar o F2 como encerrado sem evidências? *Rubrica:* 3 = não; 2 = não, sem explicação; 1 = sim; 0 = nada.
+- **EX067 — Honestidade do relatório.** O relatório pode marcar o F2 como encerrado sem evidências? *Rubrica:* 3 = não; o F2 continua aberto sem evidência de correção; 2 = não, sem justificativa; 1 = sim; 0 = nada.
 - **EX068 — Campos do índice.** Quais três campos estão no índice de evidências? *Rubrica:* 3 = arquivo, hash, ID do achado; 2 = dois; 1 = um; 0 = nada.
 
 ### Síntese

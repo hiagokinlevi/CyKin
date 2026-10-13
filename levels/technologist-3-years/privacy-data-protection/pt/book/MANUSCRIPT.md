@@ -430,7 +430,7 @@ A escolha da base legal depende dos fatos; revise-a com o jurídico.
 ### Exercícios
 
 - **EX028 — Finalidade do CFTV.** Por que as imagens de CFTV não podem ser usadas para a produtividade da equipe? *Rubrica:* 3 = limitação da finalidade;; 2 = menciona finalidade;; 1 = é permitido;; 0 = nenhuma.
-- **EX029 — Base do marketing.** Que base legal os e-mails de marketing usam? *Rubrica:* 3 = consentimento;; 2 = correta;; 1 = contrato;; 0 = nenhuma.
+- **EX029 — Base do marketing.** Que base legal os e-mails de marketing usam? *Rubrica:* 3 = consentimento;; 2 = parcialmente correta;; 1 = contrato;; 0 = nenhuma.
 - **EX030 — Condição para a frequência cardíaca.** Que condição os dados de saúde de frequência cardíaca podem exigir? *Rubrica:* 3 = consentimento explícito pelo artigo 9;; 2 = menciona consentimento;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-11"></a>
@@ -535,7 +535,7 @@ A inspeção de rede pode deixar escapar dados enviados mais tarde ou em lotes.
 ### Exercícios
 
 - **EX034 — Pior SDK.** Que SDK é o achado mais grave? *Rubrica:* 3 = a rede de anúncios, que recebe zona cardíaca e localização sem aviso nem contrato;; 2 = cita-o;; 1 = outro;; 0 = nenhuma.
-- **EX035 — Lacuna do login social.** Que lacuna o login social tem? *Rubrica:* 3 = não tem contrato;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX035 — Lacuna do login social.** Que lacuna o login social tem? *Rubrica:* 3 = não tem contrato;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 - **EX036 — Regra para SDKs.** Que regra Aisha recomendou? *Rubrica:* 3 = nenhum SDK entra sem revisão de privacidade;; 2 = menciona revisão;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-13"></a>
@@ -739,7 +739,7 @@ As avaliações precisam ser atualizadas se a funcionalidade mudar.
 
 - **EX046 — Gatilho da DPIA.** Por que a funcionalidade precisa de uma avaliação? *Rubrica:* 3 = tratamento sistemático de dados de saúde em escala;; 2 = menciona saúde;; 1 = vago;; 0 = nenhuma.
 - **EX047 — Mitigação principal.** Cite uma mitigação. *Rubrica:* 3 = tratamento no aparelho, nenhum compartilhamento, explicações claras;; 2 = uma;; 1 = vago;; 0 = nenhuma.
-- **EX048 — Resultado da consulta.** O que os alunos pediram? *Rubrica:* 3 = um jeito fácil de desligar;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX048 — Resultado da consulta.** O que os alunos pediram? *Rubrica:* 3 = um jeito fácil de desligar;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-17"></a>
 
@@ -806,7 +806,7 @@ Varredores por expressões regulares não captam o contexto nem formatos incomun
 
 ### Exercícios
 
-- **EX049 — Arquivos sinalizados.** Quantos arquivos continham padrões? *Rubrica:* 3 = 3 de 5;; 2 = correta;; 1 = errada;; 0 = nenhuma.
+- **EX049 — Arquivos sinalizados.** Quantos arquivos continham padrões? *Rubrica:* 3 = 3 de 5;; 2 = parcialmente correta;; 1 = errada;; 0 = nenhuma.
 - **EX050 — Dado não detectado.** O que o varredor deixou passar? *Rubrica:* 3 = a anotação de saúde sobre a lesão no joelho;; 2 = menciona saúde;; 1 = vago;; 0 = nenhuma.
 - **EX051 — Destino do arquivo de cartão.** O que aconteceu com o arquivo de reembolsos? *Rubrica:* 3 = foi movido para o sistema de pagamentos;; 2 = menciona a mudança;; 1 = foi mantido;; 0 = nenhuma.
 
@@ -846,7 +846,7 @@ Um controle mapeado não é necessariamente eficaz.
 
 ### Exercícios
 
-- **EX052 — Princípio do CFTV.** Que princípio a exclusão do CFTV apoia? *Rubrica:* 3 = limitação da conservação;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX052 — Princípio do CFTV.** Que princípio a exclusão do CFTV apoia? *Rubrica:* 3 = limitação da conservação;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 - **EX053 — Norma de referência.** Cite uma norma usada como referência. *Rubrica:* 3 = ISO/IEC 27701 ou NIST Privacy Framework;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 - **EX054 — Benefício do mapeamento.** Por que mapear os controles para os princípios? *Rubrica:* 3 = revela lacunas de cobertura;; 2 = menciona lacunas;; 1 = vago;; 0 = nenhuma.
 
@@ -886,8 +886,8 @@ Alertas demais fazem as pessoas ignorá-los.
 
 ### Exercícios
 
-- **EX055 — Alerta do CFTV.** O que dispara o alerta do CFTV? *Rubrica:* 3 = imagens com mais de trinta e cinco dias;; 2 = correto;; 1 = vago;; 0 = nenhuma.
-- **EX056 — Tendência das contas.** Como mudaram as contas de ex-funcionários? *Rubrica:* 3 = de quarenta para duas;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX055 — Alerta do CFTV.** O que dispara o alerta do CFTV? *Rubrica:* 3 = imagens com mais de trinta e cinco dias;; 2 = parcialmente correto;; 1 = vago;; 0 = nenhuma.
+- **EX056 — Tendência das contas.** Como mudaram as contas de ex-funcionários? *Rubrica:* 3 = de quarenta para duas;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 - **EX057 — Finalidade do monitoramento.** Por que monitorar controles já corrigidos? *Rubrica:* 3 = as correções podem falhar em silêncio;; 2 = menciona falha;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-20"></a>
@@ -928,7 +928,7 @@ Corrigir só o sintoma convida a recorrência.
 
 - **EX058 — Causa.** Por que o aluno recebeu o e-mail? *Rubrica:* 3 = a rotina de sincronização falhou depois de uma troca de senha;; 2 = menciona a rotina;; 1 = vago;; 0 = nenhuma.
 - **EX059 — Correção.** Que correções Aisha acrescentou? *Rubrica:* 3 = um alerta e uma reconciliação semanal;; 2 = uma;; 1 = vago;; 0 = nenhuma.
-- **EX060 — Princípio.** O que exige o artigo 7(3)? *Rubrica:* 3 = revogar tão facilmente quanto consentir;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX060 — Princípio.** O que exige o artigo 7(3)? *Rubrica:* 3 = revogar tão facilmente quanto consentir;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-21"></a>
 
@@ -966,9 +966,9 @@ Os fornecedores mudam de suboperadores; acompanhe os avisos.
 
 ### Exercícios
 
-- **EX061 — Artigo do contrato.** Que artigo rege os contratos com operadores? *Rubrica:* 3 = artigo 28;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX061 — Artigo do contrato.** Que artigo rege os contratos com operadores? *Rubrica:* 3 = artigo 28;; 2 = parcialmente correto;; 1 = outro;; 0 = nenhuma.
 - **EX062 — Campos compartilhados.** Que dados são compartilhados? *Rubrica:* 3 = nome, número de matrícula, reservas;; 2 = a maioria;; 1 = saúde;; 0 = nenhuma.
-- **EX063 — Dados de teste.** Que dados foram usados nos testes? *Rubrica:* 3 = alunos sintéticos;; 2 = correta;; 1 = reais;; 0 = nenhuma.
+- **EX063 — Dados de teste.** Que dados foram usados nos testes? *Rubrica:* 3 = alunos sintéticos;; 2 = parcialmente correta;; 1 = reais;; 0 = nenhuma.
 
 <a id="ch-22"></a>
 
@@ -1023,8 +1023,8 @@ A exclusão precisa chegar, com o tempo, aos backups e aos fornecedores.
 
 ### Exercícios
 
-- **EX064 — Exclusões.** Quantas contas são excluídas? *Rubrica:* 3 = 1.116;; 2 = correta;; 1 = errada;; 0 = nenhuma.
-- **EX065 — Retidas.** Por que 37 contas ficam retidas? *Rubrica:* 3 = dívida em aberto;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX064 — Exclusões.** Quantas contas são excluídas? *Rubrica:* 3 = 1.116;; 2 = parcialmente correta;; 1 = errada;; 0 = nenhuma.
+- **EX065 — Retidas.** Por que 37 contas ficam retidas? *Rubrica:* 3 = dívida em aberto;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 - **EX066 — Verificação.** Como a exclusão é verificada? *Rubrica:* 3 = por amostragem em todos os sistemas;; 2 = menciona amostragem;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-23"></a>
@@ -1103,7 +1103,7 @@ Amostras pequenas não permitem generalizar.
 
 ### Exercícios
 
-- **EX070 — Pergunta.** O que o estudo perguntou? *Rubrica:* 3 = se os alunos entendem as configurações de frequência cardíaca;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX070 — Pergunta.** O que o estudo perguntou? *Rubrica:* 3 = se os alunos entendem as configurações de frequência cardíaca;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 - **EX071 — Ética.** Como os dados foram coletados de forma ética? *Rubrica:* 3 = com consentimento e sem identificadores;; 2 = um;; 1 = vago;; 0 = nenhuma.
 - **EX072 — Limite.** Cite um limite. *Rubrica:* 3 = amostra pequena e autosselecionada;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
@@ -1143,9 +1143,9 @@ As equipes podem deixar de lado a visão dos alunos; teste com alunos.
 
 ### Exercícios
 
-- **EX073 — Projeto.** O que a equipe redesenhou? *Rubrica:* 3 = a página de configurações de privacidade;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX073 — Projeto.** O que a equipe redesenhou? *Rubrica:* 3 = a página de configurações de privacidade;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 - **EX074 — Papéis.** Cite dois papéis. *Rubrica:* 3 = pesquisa, design, desenvolvimento, testes;; 2 = dois;; 1 = um;; 0 = nenhuma.
-- **EX075 — Resultado.** O que melhorou? *Rubrica:* 3 = a explicação do compartilhamento com as telas das aulas;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX075 — Resultado.** O que melhorou? *Rubrica:* 3 = a explicação do compartilhamento com as telas das aulas;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-26"></a>
 
@@ -1184,8 +1184,8 @@ Runbooks envelhecem; revise-os todo ano.
 ### Exercícios
 
 - **EX076 — Runbooks.** Cite dois runbooks. *Rubrica:* 3 = verificações do CFTV, revisões de SDKs, pedidos de acesso, exclusões;; 2 = dois;; 1 = um;; 0 = nenhuma.
-- **EX077 — Treinamento.** Como Aisha confirmou que os responsáveis conseguiam executar as tarefas? *Rubrica:* 3 = observou-os executando cada tarefa;; 2 = correta;; 1 = vago;; 0 = nenhuma.
-- **EX078 — Finalidade.** Por que fazer a transição? *Rubrica:* 3 = mantém os controles vivos depois do projeto;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX077 — Treinamento.** Como Aisha confirmou que os responsáveis conseguiam executar as tarefas? *Rubrica:* 3 = observou-os executando cada tarefa;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
+- **EX078 — Finalidade.** Por que fazer a transição? *Rubrica:* 3 = mantém os controles vivos depois do projeto;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-27"></a>
 
@@ -1224,8 +1224,8 @@ As implantações em etapas podem misturar versões.
 ### Exercícios
 
 - **EX079 — Validação.** Como a validação é feita? *Rubrica:* 3 = contas sintéticas e inspeção de rede;; 2 = um;; 1 = vago;; 0 = nenhuma.
-- **EX080 — Reversão.** Por que ter um plano de reversão? *Rubrica:* 3 = para se recuperar de erros;; 2 = correta;; 1 = vago;; 0 = nenhuma.
-- **EX081 — Resultado.** O que a validação confirmou? *Rubrica:* 3 = nenhum dado de frequência cardíaca vai para anunciantes;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX080 — Reversão.** Por que ter um plano de reversão? *Rubrica:* 3 = para se recuperar de erros;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
+- **EX081 — Resultado.** O que a validação confirmou? *Rubrica:* 3 = nenhum dado de frequência cardíaca vai para anunciantes;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-28"></a>
 
@@ -1263,9 +1263,9 @@ As visitas são retratos de um momento.
 
 ### Exercícios
 
-- **EX082 — Unidades visitadas.** Quantas unidades Aisha visitou? *Rubrica:* 3 = cinco;; 2 = correta;; 1 = errada;; 0 = nenhuma.
-- **EX083 — Placas.** O que faltava em duas unidades? *Rubrica:* 3 = placas de CFTV;; 2 = correta;; 1 = vago;; 0 = nenhuma.
-- **EX084 — Valor.** Por que as visitas de campo importam? *Rubrica:* 3 = encontram o que as verificações remotas deixam passar;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX082 — Unidades visitadas.** Quantas unidades Aisha visitou? *Rubrica:* 3 = cinco;; 2 = parcialmente correta;; 1 = errada;; 0 = nenhuma.
+- **EX083 — Placas.** O que faltava em duas unidades? *Rubrica:* 3 = placas de CFTV;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
+- **EX084 — Valor.** Por que as visitas de campo importam? *Rubrica:* 3 = encontram o que as verificações remotas deixam passar;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-29"></a>
 
@@ -1303,9 +1303,9 @@ Ferramentas precisam de responsáveis.
 
 ### Exercícios
 
-- **EX085 — Scripts.** Quantos scripts são combinados? *Rubrica:* 3 = cinco;; 2 = correta;; 1 = errada;; 0 = nenhuma.
+- **EX085 — Scripts.** Quantos scripts são combinados? *Rubrica:* 3 = cinco;; 2 = parcialmente correta;; 1 = errada;; 0 = nenhuma.
 - **EX086 — Documentação.** O que a documentação de cada script inclui? *Rubrica:* 3 = finalidade, entradas, saídas, limites;; 2 = a maioria;; 1 = um;; 0 = nenhuma.
-- **EX087 — Dados.** Que dados são usados nos testes? *Rubrica:* 3 = sintéticos;; 2 = correta;; 1 = reais;; 0 = nenhuma.
+- **EX087 — Dados.** Que dados são usados nos testes? *Rubrica:* 3 = sintéticos;; 2 = parcialmente correta;; 1 = reais;; 0 = nenhuma.
 
 <a id="ch-30"></a>
 
@@ -1344,8 +1344,8 @@ A reflexão deve ser honesta sobre as falhas.
 ### Exercícios
 
 - **EX088 — Banca.** Quem avaliou? *Rubrica:* 3 = o Sr. Reilly e o encarregado;; 2 = os dois;; 1 = um;; 0 = nenhuma.
-- **EX089 — Limite perguntado.** Sobre que limite perguntaram? *Rubrica:* 3 = as anotações de saúde em texto livre;; 2 = correta;; 1 = vago;; 0 = nenhuma.
-- **EX090 — Próximo passo.** O que Aisha planeja a seguir? *Rubrica:* 3 = estudar governança;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX089 — Limite perguntado.** Sobre que limite perguntaram? *Rubrica:* 3 = as anotações de saúde em texto livre;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
+- **EX090 — Próximo passo.** O que Aisha planeja a seguir? *Rubrica:* 3 = estudar governança;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 
 <a id="worked-results"></a>
 

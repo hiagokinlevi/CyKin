@@ -245,7 +245,7 @@ A shared Wi-Fi password gives limited protection between users. Supplier promise
 - **EX035 — Checking a supplier.** Where can the library check a supplier's promises? *Rubric:* 3 = its security page or contract;; 2 = one place;; 1 = nowhere;; 0 = none.
 - **EX036 — Past outage cause.** Why did the library website show warnings last year? *Rubric:* 3 = the host's automatic renewal failed silently and the certificate expired;; 2 = expired;; 1 = hacked;; 0 = none.
 - **EX037 — Purpose of expiry.** Give one reason certificates expire. *Rubric:* 3 = limits use of a stolen key or forces refresh of settings;; 2 = one;; 1 = vague;; 0 = none.
-- **EX038 — Calendar reminders.** How far ahead does Inês set expiry reminders? *Rubric:* 3 = a month;; 2 = month;; 1 = vague;; 0 = none.
+- **EX038 — Calendar reminders.** How far ahead does Inês set expiry reminders? *Rubric:* 3 = a month;; 2 = month, hedged with another option;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

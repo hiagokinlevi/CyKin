@@ -1694,7 +1694,7 @@ Translation can oversimplify. Meetings can be dominated by senior voices.
 ### Exercises
 
 - **EX094 — Staff framing.** How was the rule framed for staff? *Rubric:* 3 = protection from pressure to judge callers;; 2 = relief;; 1 = vague;; 0 = none.
-- **EX095 — Representative concern.** What did the staff representative worry about? *Rubric:* 3 = blame;; 2 = blame, without explanation;; 1 = cost;; 0 = none.
+- **EX095 — Representative concern.** What did the staff representative worry about? *Rubric:* 3 = being blamed for mistakes;; 2 = blame, without saying for what;; 1 = cost;; 0 = none.
 - **EX096 — Meeting outcome.** What did the meeting agree? *Rubric:* 3 = minimised log, modest budget, templates and no-blame statement;; 2 = four;; 1 = vague;; 0 = none.
 
 ### Synthesis

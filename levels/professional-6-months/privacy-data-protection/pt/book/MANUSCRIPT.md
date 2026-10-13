@@ -72,8 +72,8 @@ Listas de verificação do básico não mostram se os controles de fato funciona
 - **EX001 — Exemplo de integridade.** Dê um exemplo de falha de integridade na Halden. *Rubrica:* 3 = uma anotação errada leva à rejeição;; 2 = menciona exatidão;; 1 = vago;; 0 = nenhuma.
 - **EX002 — Mais ampla que a segurança.** Por que a proteção de dados é mais ampla que a segurança? *Rubrica:* 3 = também trata de se, por que e por quanto tempo os dados são guardados;; 2 = menciona finalidade;; 1 = vago;; 0 = nenhuma.
 - **EX003 — Protegido, mas ilícito.** Como um banco de currículos bem protegido ainda pode violar a lei? *Rubrica:* 3 = guardado por tempo demais, violando a limitação da conservação;; 2 = menciona retenção;; 1 = vago;; 0 = nenhuma.
-- **EX004 — Cobertura da autenticação multifator.** Que parcela dos consultores tinha autenticação multifator? *Rubrica:* 3 = cerca de metade;; 2 = correta;; 1 = todos;; 0 = nenhuma.
-- **EX005 — Lacuna dos notebooks.** O que se descobriu sobre a criptografia dos notebooks? *Rubrica:* 3 = duas máquinas antigas sem criptografia;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX004 — Cobertura da autenticação multifator.** Que parcela dos consultores tinha autenticação multifator? *Rubrica:* 3 = cerca de metade;; 2 = parcialmente correta;; 1 = todos;; 0 = nenhuma.
+- **EX005 — Lacuna dos notebooks.** O que se descobriu sobre a criptografia dos notebooks? *Rubrica:* 3 = duas máquinas antigas sem criptografia;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-02"></a>
 
@@ -112,10 +112,10 @@ Os papéis dependem dos fatos e dos contratos; registre o raciocínio de cada um
 ### Exercícios
 
 - **EX006 — Gatilho do artigo 14.** Quando o artigo 14 se aplica na Halden? *Rubrica:* 3 = dados obtidos de sites de vagas ou redes profissionais;; 2 = menciona outras fontes;; 1 = vago;; 0 = nenhuma.
-- **EX007 — Titulares esquecidos.** Que titulares costumam ser esquecidos? *Rubrica:* 3 = as referências;; 2 = correta;; 1 = clientes;; 0 = nenhuma.
-- **EX008 — Papel do cliente.** Que papel o empregador cliente tem na sua decisão de contratação? *Rubrica:* 3 = controlador separado;; 2 = correta;; 1 = operador;; 0 = nenhuma.
-- **EX009 — Orientação sobre papéis.** Que diretrizes ajudam a definir os papéis? *Rubrica:* 3 = Diretrizes 07/2020 do EDPB;; 2 = correta;; 1 = outra;; 0 = nenhuma.
-- **EX010 — Expectativa.** O que os candidatos esperam antes de o currículo ir para um cliente? *Rubrica:* 3 = ser consultados;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX007 — Titulares esquecidos.** Que titulares costumam ser esquecidos? *Rubrica:* 3 = as referências;; 2 = parcialmente correta;; 1 = clientes;; 0 = nenhuma.
+- **EX008 — Papel do cliente.** Que papel o empregador cliente tem na sua decisão de contratação? *Rubrica:* 3 = controlador separado;; 2 = parcialmente correta;; 1 = operador;; 0 = nenhuma.
+- **EX009 — Orientação sobre papéis.** Que diretrizes ajudam a definir os papéis? *Rubrica:* 3 = Diretrizes 07/2020 do EDPB;; 2 = parcialmente correta;; 1 = outra;; 0 = nenhuma.
+- **EX010 — Expectativa.** O que os candidatos esperam antes de o currículo ir para um cliente? *Rubrica:* 3 = ser consultados;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-03"></a>
 
@@ -153,7 +153,7 @@ A autorização pode ser pouco clara em empresas pequenas; peça por escrito ant
 
 ### Exercícios
 
-- **EX011 — Pedido fora do escopo.** Que pedido Marta recusou? *Rubrica:* 3 = consultar a situação da candidatura de um amigo;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX011 — Pedido fora do escopo.** Que pedido Marta recusou? *Rubrica:* 3 = consultar a situação da candidatura de um amigo;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 - **EX012 — Limites do estágio.** Cite algo que Marta não pode fazer. *Rubrica:* 3 = contatar candidatos, mudar configurações, pesquisar por curiosidade;; 2 = um;; 1 = vago;; 0 = nenhuma.
 - **EX013 — Nomes nas capturas.** Como Marta evita capturar nomes nas telas? *Rubrica:* 3 = exemplos sintéticos ou recorte;; 2 = um;; 1 = vago;; 0 = nenhuma.
 - **EX014 — Benefício da confiança.** Por que o tratamento justo ajuda na prática? *Rubrica:* 3 = as pessoas compartilham problemas mais abertamente;; 2 = menciona abertura;; 1 = vago;; 0 = nenhuma.
@@ -223,9 +223,9 @@ Alguns registros podem ser necessários para ações judiciais; combine as exce�
 
 - **EX016 — Dados de diversidade.** O que o mapa mostrou sobre as respostas de diversidade? *Rubrica:* 3 = guardadas com nomes, embora usadas de forma anônima;; 2 = menciona nomes;; 1 = vago;; 0 = nenhuma.
 - **EX017 — Currículos vencidos.** Quantos candidatos passaram dos seis meses sem aceite do banco de talentos? *Rubrica:* 3 = 1.792 de 2.500, 71,7%;; 2 = aproximada;; 1 = errada;; 0 = nenhuma.
-- **EX018 — Banco desatualizado.** Quantos candidatos do banco de talentos estavam sem contato há mais de dois anos? *Rubrica:* 3 = 216;; 2 = correta;; 1 = errada;; 0 = nenhuma.
-- **EX019 — Base do banco de talentos.** Que base legal apoia o banco de talentos? *Rubrica:* 3 = consentimento;; 2 = correta;; 1 = contrato;; 0 = nenhuma.
-- **EX020 — Dados criminais.** Que artigo restringe os dados de registros criminais? *Rubrica:* 3 = artigo 10;; 2 = correta;; 1 = outro;; 0 = nenhuma.
+- **EX018 — Banco desatualizado.** Quantos candidatos do banco de talentos estavam sem contato há mais de dois anos? *Rubrica:* 3 = 216;; 2 = parcialmente correta;; 1 = errada;; 0 = nenhuma.
+- **EX019 — Base do banco de talentos.** Que base legal apoia o banco de talentos? *Rubrica:* 3 = consentimento;; 2 = parcialmente correta;; 1 = contrato;; 0 = nenhuma.
+- **EX020 — Dados criminais.** Que artigo restringe os dados de registros criminais? *Rubrica:* 3 = artigo 10;; 2 = parcialmente correta;; 1 = outro;; 0 = nenhuma.
 
 <a id="ch-05"></a>
 
@@ -265,9 +265,9 @@ Amostras mostram padrões, não taxas exatas; diga isso.
 
 - **EX021 — Começar pelos relatórios.** Por que começar pelos relatórios nativos? *Rubrica:* 3 = as exportações criam novas cópias;; 2 = menciona cópias;; 1 = vago;; 0 = nenhuma.
 - **EX022 — Resultado da amostra.** O que a amostra de vinte mostrou? *Rubrica:* 3 = 17 aceitaram, 2 não confirmados, 1 e-mail pessoal;; 2 = a maioria;; 1 = um;; 0 = nenhuma.
-- **EX023 — Problema principal.** Qual foi o problema principal identificado? *Rubrica:* 3 = falta de registro do aceite do candidato;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX023 — Problema principal.** Qual foi o problema principal identificado? *Rubrica:* 3 = falta de registro do aceite do candidato;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 - **EX024 — Expressão cuidadosa.** Dê uma expressão que indique incerteza. *Rubrica:* 3 = na amostra; não foi possível confirmar;; 2 = uma;; 1 = vago;; 0 = nenhuma.
-- **EX025 — Exagero.** Que palavra a Sra. Lin questionou? *Rubrica:* 3 = rotineiramente;; 2 = correta;; 1 = outra;; 0 = nenhuma.
+- **EX025 — Exagero.** Que palavra a Sra. Lin questionou? *Rubrica:* 3 = rotineiramente;; 2 = parcialmente correta;; 1 = outra;; 0 = nenhuma.
 
 <a id="ch-06"></a>
 
@@ -333,10 +333,10 @@ O laboratório simplifica o cálculo do mês; confira os prazos legais caso a ca
 ### Exercícios
 
 - **EX026 — Parcela atrasada.** Que parcela dos pedidos foi respondida com atraso? *Rubrica:* 3 = 7 de 36, 19,4%;; 2 = aproximada;; 1 = errada;; 0 = nenhuma.
-- **EX027 — Mediana.** Qual foi a mediana do tempo de resposta? *Rubrica:* 3 = 21 dias;; 2 = correta;; 1 = errada;; 0 = nenhuma.
+- **EX027 — Mediana.** Qual foi a mediana do tempo de resposta? *Rubrica:* 3 = 21 dias;; 2 = parcialmente correta;; 1 = errada;; 0 = nenhuma.
 - **EX028 — Causa do atraso.** O que costumava causar o atraso? *Rubrica:* 3 = buscas em várias caixas de e-mail e espera pelas referências;; 2 = menciona caixas;; 1 = vago;; 0 = nenhuma.
 - **EX029 — Conteúdo da resposta.** Cite duas coisas que a resposta deve incluir. *Rubrica:* 3 = finalidades, destinatários, retenção, fonte;; 2 = duas;; 1 = uma;; 0 = nenhuma.
-- **EX030 — Momento da prorrogação.** Quando as prorrogações precisam ser decididas? *Rubrica:* 3 = dentro do primeiro mês;; 2 = correta;; 1 = depois;; 0 = nenhuma.
+- **EX030 — Momento da prorrogação.** Quando as prorrogações precisam ser decididas? *Rubrica:* 3 = dentro do primeiro mês;; 2 = parcialmente correta;; 1 = depois;; 0 = nenhuma.
 
 <a id="ch-07"></a>
 
@@ -375,9 +375,9 @@ Um teste aprovado pode esconder lacunas se for estreito demais; varie os casos d
 ### Exercícios
 
 - **EX031 — Controle do aceite.** Que princípio o aceite registrado apoia? *Rubrica:* 3 = transparência e lealdade;; 2 = um;; 1 = vago;; 0 = nenhuma.
-- **EX032 — Teste que falhou.** Que teste falhou? *Rubrica:* 3 = dados de diversidade copiados por um script antigo de importação;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX032 — Teste que falhou.** Que teste falhou? *Rubrica:* 3 = dados de diversidade copiados por um script antigo de importação;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 - **EX033 — Verificações trimestrais.** Cite duas verificações trimestrais. *Rubrica:* 3 = cobertura da autenticação multifator, amostra de apresentações, sucesso da exclusão, pedidos vencidos;; 2 = duas;; 1 = uma;; 0 = nenhuma.
-- **EX034 — Resultado da amostra.** Quantas apresentações da amostra tinham aceite registrado? *Rubrica:* 3 = 10 de 10;; 2 = correta;; 1 = errada;; 0 = nenhuma.
+- **EX034 — Resultado da amostra.** Quantas apresentações da amostra tinham aceite registrado? *Rubrica:* 3 = 10 de 10;; 2 = parcialmente correta;; 1 = errada;; 0 = nenhuma.
 - **EX035 — Registrar as falhas.** Por que registrar as falhas com clareza? *Rubrica:* 3 = ninguém acredita num registro sem problemas;; 2 = menciona credibilidade;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-08"></a>
@@ -418,9 +418,9 @@ A avaliação de risco depende de fatos que podem mudar; atualize-a à medida qu
 
 - **EX036 — Item de baixo risco.** Por que o notebook era de baixo risco? *Rubrica:* 3 = criptografado, dados ininteligíveis sem a chave;; 2 = menciona criptografia;; 1 = vago;; 0 = nenhuma.
 - **EX037 — Conteúdo de alto risco.** O que tornava as anotações impressas de maior risco? *Rubrica:* 3 = nomes, empregadores, salários e informação de saúde;; 2 = a maioria;; 1 = um;; 0 = nenhuma.
-- **EX038 — Notificação.** Em que prazo a autoridade precisa ser notificada? *Rubrica:* 3 = 72 horas;; 2 = correta;; 1 = errada;; 0 = nenhuma.
+- **EX038 — Notificação.** Em que prazo a autoridade precisa ser notificada? *Rubrica:* 3 = 72 horas;; 2 = parcialmente correta;; 1 = errada;; 0 = nenhuma.
 - **EX039 — Artigo 34.** Por que uma candidata precisa ser informada diretamente? *Rubrica:* 3 = risco elevado pela informação sobre deficiência;; 2 = menciona saúde;; 1 = vago;; 0 = nenhuma.
-- **EX040 — Sem culpa.** Por que não se recomendou medida disciplinar? *Rubrica:* 3 = a consultora seguia a prática comum;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX040 — Sem culpa.** Por que não se recomendou medida disciplinar? *Rubrica:* 3 = a consultora seguia a prática comum;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-09"></a>
 
@@ -461,8 +461,8 @@ A linguagem simples precisa continuar exata; confira os pontos jurídicos com a 
 - **EX041 — Estrutura do relatório.** O que aparece na primeira página do relatório de Marta? *Rubrica:* 3 = as decisões necessárias, com razões, custos e riscos;; 2 = menciona decisões;; 1 = contexto;; 0 = nenhuma.
 - **EX042 — Pedido sobre deficiência.** O que Marta recomendou diante do pedido do cliente? *Rubrica:* 3 = perguntar aos candidatos; compartilhar só as adaptações;; 2 = menciona consentimento;; 1 = compartilhar;; 0 = nenhuma.
 - **EX043 — Nomear a equipe.** Por que não nomear consultores no relatório? *Rubrica:* 3 = foco nas causas; nomear desencoraja as comunicações;; 2 = menciona comunicações;; 1 = vago;; 0 = nenhuma.
-- **EX044 — Redação da retenção.** Como o novo aviso informa a retenção? *Rubrica:* 3 = em meses;; 2 = correta;; 1 = vaga;; 0 = nenhuma.
-- **EX045 — Teste do aviso.** Como o aviso curto foi testado? *Rubrica:* 3 = com cinco personas sintéticas;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX044 — Redação da retenção.** Como o novo aviso informa a retenção? *Rubrica:* 3 = em meses;; 2 = parcialmente correta;; 1 = vaga;; 0 = nenhuma.
+- **EX045 — Teste do aviso.** Como o aviso curto foi testado? *Rubrica:* 3 = com cinco personas sintéticas;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-10"></a>
 
@@ -501,9 +501,9 @@ Botões novos podem ser mal usados para guardar dados indefinidamente; examine s
 ### Exercícios
 
 - **EX046 — Causa das exclusões.** Por que candidatos ativos foram excluídos? *Rubrica:* 3 = a data do último contato não era atualizada para mensagens em redes profissionais;; 2 = menciona a data;; 1 = vago;; 0 = nenhuma.
-- **EX047 — Prazo do aviso.** Com quanto tempo de antecedência o consultor é avisado? *Rubrica:* 3 = sete dias;; 2 = correta;; 1 = errada;; 0 = nenhuma.
-- **EX048 — Princípio da exatidão.** Que artigo exige dados exatos? *Rubrica:* 3 = artigo 5(1)(d);; 2 = correta;; 1 = outro;; 0 = nenhuma.
-- **EX049 — Perfis sinalizados.** Como mudaram os perfis sinalizados? *Rubrica:* 3 = de trinta e um para seis;; 2 = correta;; 1 = errada;; 0 = nenhuma.
+- **EX047 — Prazo do aviso.** Com quanto tempo de antecedência o consultor é avisado? *Rubrica:* 3 = sete dias;; 2 = parcialmente correta;; 1 = errada;; 0 = nenhuma.
+- **EX048 — Princípio da exatidão.** Que artigo exige dados exatos? *Rubrica:* 3 = artigo 5(1)(d);; 2 = parcialmente correta;; 1 = outro;; 0 = nenhuma.
+- **EX049 — Perfis sinalizados.** Como mudaram os perfis sinalizados? *Rubrica:* 3 = de trinta e um para seis;; 2 = parcialmente correta;; 1 = errada;; 0 = nenhuma.
 - **EX050 — Mau uso do botão.** Como o mau uso de marcar como ativo é conferido? *Rubrica:* 3 = amostragem dos perfis prorrogados em busca de motivos;; 2 = menciona amostragem;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-11"></a>
@@ -572,10 +572,10 @@ Uma busca por nomes deixa passar identificadores indiretos, como cargos; leia os
 
 ### Exercícios
 
-- **EX051 — Nomes visíveis.** Quantos nomes de terceiros continuavam visíveis? *Rubrica:* 3 = três;; 2 = correta;; 1 = errada;; 0 = nenhuma.
+- **EX051 — Nomes visíveis.** Quantos nomes de terceiros continuavam visíveis? *Rubrica:* 3 = três;; 2 = parcialmente correta;; 1 = errada;; 0 = nenhuma.
 - **EX052 — Nomes dos funcionários.** Por que os nomes dos funcionários muitas vezes podem ficar? *Rubrica:* 3 = agiram em funções profissionais;; 2 = menciona função;; 1 = vago;; 0 = nenhuma.
 - **EX053 — Abordagem da referência.** O que Marta recomendou quanto à referência? *Rubrica:* 3 = divulgar o conteúdo; perguntar sobre o nome;; 2 = os dois;; 1 = um;; 0 = nenhuma.
-- **EX054 — Nomes da lista de finalistas.** Por que os outros candidatos foram ocultados? *Rubrica:* 3 = são terceiros sem relação com o pedido;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX054 — Nomes da lista de finalistas.** Por que os outros candidatos foram ocultados? *Rubrica:* 3 = são terceiros sem relação com o pedido;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 - **EX055 — Ocultação indiscriminada.** Por que evitar a ocultação indiscriminada? *Rubrica:* 3 = torna as respostas inúteis e injustas;; 2 = menciona justiça;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-12"></a>
@@ -618,7 +618,7 @@ Portfólios podem exagerar a contribuição individual; dê o crédito correto a
 - **EX057 — Nota de capa.** O que cada nota de capa explica? *Rubrica:* 3 = o problema, as ações, as evidências e o resultado;; 2 = a maioria;; 1 = um;; 0 = nenhuma.
 - **EX058 — Áreas de crescimento.** Que duas áreas de crescimento a Sra. Lin identificou? *Rubrica:* 3 = raciocínio jurídico sobre antecedentes e scripts;; 2 = as duas;; 1 = uma;; 0 = nenhuma.
 - **EX059 — Lacunas restantes.** Cite uma lacuna restante na Halden. *Rubrica:* 3 = contratos de verificação de antecedentes; avisos do artigo 14 da rede profissional;; 2 = uma;; 1 = vago;; 0 = nenhuma.
-- **EX060 — Próximo cargo.** Que cargo a Halden oferece a Marta? *Rubrica:* 3 = coordenadora de privacidade em meio período;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX060 — Próximo cargo.** Que cargo a Halden oferece a Marta? *Rubrica:* 3 = coordenadora de privacidade em meio período;; 2 = parcialmente correta;; 1 = vago;; 0 = nenhuma.
 
 <a id="worked-results"></a>
 

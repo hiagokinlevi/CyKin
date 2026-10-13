@@ -478,7 +478,7 @@ Splitting accounts needs application changes and testing. Masked data can still 
 ### Exercises
 
 - **EX025 — Compromise impact.** How do separate database accounts limit a shop compromise? *Rubric:* 3 = attacker gains only the shop account's limited rights;; 2 = limited;; 1 = vague;; 0 = none.
-- **EX026 — Injection count.** How many injectable queries did Lucas find in total? *Rubric:* 3 = three;; 2 = three, without explanation;; 1 = one;; 0 = none.
+- **EX026 — Injection count.** How many injectable queries did Lucas find in total? *Rubric:* 3 = three: the search query and two others built the same way;; 2 = three, without saying which;; 1 = one;; 0 = none.
 - **EX027 — Test data rule.** What data should test environments use? *Rubric:* 3 = synthetic or masked data;; 2 = synthetic;; 1 = real;; 0 = none.
 
 ### Synthesis

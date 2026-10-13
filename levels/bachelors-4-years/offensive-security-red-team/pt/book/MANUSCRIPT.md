@@ -1465,7 +1465,7 @@ Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pag
 
 ### Exercícios
 
-- **EX049 — TLS vs AuthZ.** O TLS corrige um IDOR? *Rubrica:* 3 = não; 2 = não, sem justificativa; 1 = sim; 0 = nada.
+- **EX049 — TLS vs AuthZ.** O TLS corrige um IDOR? *Rubrica:* 3 = não, porque o TLS não corrige bugs de autorização; 2 = não, sem justificativa; 1 = sim; 0 = nada.
 - **EX050 — Chave fixa no código.** Por que rejeitar chaves AES fixas no código-fonte? *Rubrica:* 3 = exposição da chave no repositório; sem controle dual; 2 = parcial; 1 = tudo bem; 0 = nada.
 - **EX051 — Uso do hash aqui.** Para que servem os digests SHA-256 neste curso? *Rubrica:* 3 = integridade das evidências; 2 = parcial; 1 = cifrar o tráfego; 0 = nada.
 
@@ -2687,7 +2687,7 @@ Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pag
 
 - **EX088 — Contagens do reteste.** Quantos FIXED e quantos STILL OPEN? *Rubrica:* 3 = 2 FIXED, 1 STILL OPEN; 2 = parcial; 1 = todos corrigidos; 0 = nada.
 - **EX089 — Limite da parada.** Qual é o limite de tempo da mensagem de parada? *Rubrica:* 3 = dois minutos; 2 = rápido; 1 = no dia seguinte; 0 = nada.
-- **EX090 — Tratamento do F3.** O relatório pode encerrar o F3 sem evidência? *Rubrica:* 3 = não; 2 = não, sem justificativa; 1 = sim; 0 = nada.
+- **EX090 — Tratamento do F3.** O relatório pode encerrar o F3 sem evidência? *Rubrica:* 3 = não; o F3 permanece aberto; 2 = não, sem dizer que o F3 permanece aberto; 1 = sim; 0 = nada.
 
 ### Síntese
 
@@ -3408,7 +3408,7 @@ Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pag
 
 - **EX112 — Flags.** Quais classes o diff sinaliza? *Rubrica:* 3 = only-in-docs, only-on-network e type-conflict (e match); 2 = parcial; 1 = uma; 0 = nada.
 - **EX113 — Falhar fechado.** O que acontece com YAML corrompido? *Rubrica:* 3 = falhar fechado com motivo claro e código de saída diferente de zero; 2 = parcial; 1 = lista vazia de allow; 0 = nada.
-- **EX114 — Rede.** A ferramenta pode exigir rede? *Rubrica:* 3 = não; precisa rodar offline em arquivos locais; 2 = parcial; 1 = sim; 0 = nada.
+- **EX114 — Rede.** A ferramenta pode exigir rede? *Rubrica:* 3 = não; precisa rodar offline em arquivos locais; 2 = não, sem justificativa; 1 = sim; 0 = nada.
 
 ### Síntese
 
@@ -3503,7 +3503,7 @@ Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pag
 
 - **EX115 — Independência.** Quem executa o script de avaliação? *Rubrica:* 3 = outro estudante ou testador independente; 2 = parcial; 1 = só Sam; 0 = nada.
 - **EX116 — Risco residual.** O que a ferramenta não substitui? *Rubrica:* 3 = a disciplina das ROE ou as verificações de autorização; 2 = parcial; 1 = tudo; 0 = nada.
-- **EX117 — Pré-registro.** As métricas podem mudar depois das pontuações? *Rubrica:* 3 = não; as métricas ficam como pré-registradas; 2 = parcial; 1 = sim; 0 = nada.
+- **EX117 — Pré-registro.** As métricas podem mudar depois das pontuações? *Rubrica:* 3 = não; as métricas ficam como pré-registradas; 2 = não, sem justificativa; 1 = sim; 0 = nada.
 
 ### Síntese
 

@@ -409,7 +409,7 @@ Untested layers give false confidence. Diagrams simplify.
 ### Exercises
 
 - **EX022 — Backup finding.** What problem did Lucas find with backups? *Rubric:* 3 = they had never been tested;; 2 = untested;; 1 = vague;; 0 = none.
-- **EX023 — Reporting layer.** Which layer does staff reporting provide? *Rubric:* 3 = detection;; 2 = detection, without explanation;; 1 = prevention;; 0 = none.
+- **EX023 — Reporting layer.** Which layer does staff reporting provide? *Rubric:* 3 = detection, letting IT block attacks early;; 2 = detection, without explanation;; 1 = prevention;; 0 = none.
 - **EX024 — Payment containment.** What contains a fake payment change? *Rubric:* 3 = a hold with callback verification;; 2 = callback;; 1 = vague;; 0 = none.
 
 ### Synthesis
@@ -1532,7 +1532,7 @@ Tools need maintenance. Re-verification needs time.
 
 - **EX085 — Tool purpose.** What is the tool's aim? *Rubric:* 3 = make callback verification quicker and more reliable;; 2 = callbacks;; 1 = vague;; 0 = none.
 - **EX086 — Manager request.** What did a manager ask for? *Rubric:* 3 = a button to call directly from the screen;; 2 = call button;; 1 = vague;; 0 = none.
-- **EX087 — Lab flags.** How many of 40 suppliers needed re-verification in the lab? *Rubric:* 3 = 7;; 2 = 7, without explanation;; 1 = vague;; 0 = none.
+- **EX087 — Lab flags.** How many of 40 suppliers needed re-verification in the lab? *Rubric:* 3 = 7 of 40;; 2 = a figure near 7 (5 to 9);; 1 = vague;; 0 = none.
 
 ### Synthesis
 

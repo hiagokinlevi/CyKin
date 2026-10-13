@@ -65,7 +65,7 @@ Maps omit informal tools. Owners may not accept responsibility.
 
 ### Exercises
 
-- **EX001 — Shared component.** Which component supports both the shop and branches? *Rubric:* 3 = the stock database;; 2 = stock database;; 1 = vague;; 0 = none.
+- **EX001 — Shared component.** Which component supports both the shop and branches? *Rubric:* 3 = the stock database;; 2 = stock database, hedged with another option;; 1 = vague;; 0 = none.
 - **EX002 — Unowned items.** Which two components had no owner? *Rubric:* 3 = route planning service and branch Wi-Fi;; 2 = two;; 1 = vague;; 0 = none.
 - **EX003 — Why owners.** Why assign owners early? *Rubric:* 3 = unowned components are where problems go unnoticed;; 2 = visibility;; 1 = vague;; 0 = none.
 - **EX004 — Service list.** Name three Fenwick services. *Rubric:* 3 = in-branch sales, online shop, deliveries;; 2 = services;; 1 = vague;; 0 = none.
@@ -320,7 +320,7 @@ Tables simplify complex links. Roles change.
 ### Exercises
 
 - **EX021 — Baseline purpose.** Why is a baseline check not busywork? *Rubric:* 3 = it supports a policy, reduces a risk and produces evidence;; 2 = purpose;; 1 = vague;; 0 = none.
-- **EX022 — Accountable person.** Who is accountable for security at Fenwick? *Rubric:* 3 = the finance director;; 2 = finance director;; 1 = IT lead;; 0 = none.
+- **EX022 — Accountable person.** Who is accountable for security at Fenwick? *Rubric:* 3 = the finance director;; 2 = finance director, hedged with another option;; 1 = IT lead;; 0 = none.
 - **EX023 — Firewall links.** Which policy and obligation do firewall reviews support? *Rubric:* 3 = network policy and card payment obligations;; 2 = links;; 1 = vague;; 0 = none.
 - **EX024 — Table use.** How does the task table help technicians? *Rubric:* 3 = prioritise when time is short;; 2 = priorities;; 1 = vague;; 0 = none.
 
@@ -442,7 +442,7 @@ Lists miss novel failures. Checks may fail too.
 
 - **EX029 — Backup failure.** How would missed backup files be detected? *Rubric:* 3 = restore tests;; 2 = restore;; 1 = vague;; 0 = none.
 - **EX030 — Silent failures.** Why must checks be scheduled? *Rubric:* 3 = some failures are silent until something breaks;; 2 = silent;; 1 = vague;; 0 = none.
-- **EX031 — Certificate owner.** Who owns the certificate expiry failure mode? *Rubric:* 3 = the IT lead;; 2 = IT lead;; 1 = vague;; 0 = none.
+- **EX031 — Certificate owner.** Who owns the certificate expiry failure mode? *Rubric:* 3 = the IT lead;; 2 = IT lead, hedged with another option;; 1 = vague;; 0 = none.
 - **EX032 — Failure mode parts.** What three things does each failure mode describe? *Rubric:* 3 = what goes wrong, how it shows, impact;; 2 = three;; 1 = vague;; 0 = none.
 
 ### Synthesis

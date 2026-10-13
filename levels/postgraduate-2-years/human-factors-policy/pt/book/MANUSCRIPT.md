@@ -362,7 +362,7 @@ Avaliações curtas não captam efeitos de longo prazo. Os escritórios diferem 
 - **EX026 — Ordem da implantação.** Como foi escolhida a ordem da implantação? *Rubrica:* 3 = por sorteio;; 2 = aleatória;; 1 = por tamanho;; 0 = nenhuma.
 - **EX027 — Medida de resultado.** Que resultado foi usado? *Rubrica:* 3 = proporção de e-mails maliciosos reportados por escritório por mês;; 2 = proporção reportada;; 1 = cliques;; 0 = nenhuma.
 - **EX028 — Estimativa no laboratório.** Que diferença dentro dos meses o laboratório encontrou? *Rubrica:* 3 = cerca de 14,4 pontos, proporção da permutação 0,001;; 2 = positiva;; 1 = vago;; 0 = nenhuma.
-- **EX029 — Sem simulações.** As simulações fizeram parte da avaliação? *Rubrica:* 3 = não;; 2 = nenhuma;; 1 = sim;; 0 = sem resposta.
+- **EX029 — Sem simulações.** As simulações fizeram parte da avaliação? *Rubrica:* 3 = não; usou apenas e-mails reais reportados;; 2 = não, sem dizer o que foi usado;; 1 = sim;; 0 = sem resposta.
 - **EX030 — Atraso máximo.** Qual foi o atraso máximo para qualquer escritório? *Rubrica:* 3 = dois meses;; 2 = 2;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
@@ -610,7 +610,7 @@ Períodos curtos enganam. A perda de chaves exige uma boa recuperação.
 - **EX052 — Duas chaves.** Por que cada pessoa registra duas chaves? *Rubrica:* 3 = como reserva, caso uma se perca;; 2 = reserva;; 1 = vago;; 0 = nenhuma.
 - **EX053 — Padrão do service desk.** O que o laboratório mostrou sobre as ligações ao service desk? *Rubrica:* 3 = subiram para 62 no primeiro mês e caíram para 31 no quarto, a partir de uma base de 45;; 2 = oscilação;; 1 = vago;; 0 = nenhuma.
 - **EX054 — Migração dos atacantes.** Para onde os atacantes podem migrar? *Rubrica:* 3 = fraude por telefone;; 2 = telefone;; 1 = vago;; 0 = nenhuma.
-- **EX055 — Ordem dos públicos.** Quem ouviu os resultados primeiro? *Rubrica:* 3 = os funcionários;; 2 = funcionários;; 1 = o conselho;; 0 = nenhuma.
+- **EX055 — Ordem dos públicos.** Quem ouviu os resultados primeiro? *Rubrica:* 3 = os funcionários, o que reforça que o programa é feito com eles;; 2 = funcionários, sem justificativa;; 1 = o conselho;; 0 = nenhuma.
 
 ### Síntese
 

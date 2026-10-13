@@ -69,9 +69,9 @@ Scripts kept outside version control become unexplainable processes.
 
 ### Exercises
 
-- **EX001 — Partner size.** How many homes does Calder Valley own? *Rubric:* 3 = about nine thousand;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX002 — Technologist role.** What do technologists build and run? *Rubric:* 3 = tools, checks and reports for governance;; 2 = correct;; 1 = partial;; 0 = none.
-- **EX003 — First problem.** Which problem does Mrs. Okonjo ask students to start with? *Rubric:* 3 = quality of repair job records;; 2 = correct;; 1 = other;; 0 = none.
+- **EX001 — Partner size.** How many homes does Calder Valley own? *Rubric:* 3 = about nine thousand;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX002 — Technologist role.** What do technologists build and run? *Rubric:* 3 = tools, checks and reports for governance;; 2 = partly correct;; 1 = partial;; 0 = none.
+- **EX003 — First problem.** Which problem does Mrs. Okonjo ask students to start with? *Rubric:* 3 = quality of repair job records;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="ch-02"></a>
 
@@ -109,9 +109,9 @@ Treating safety records like routine data delays urgent action.
 
 ### Exercises
 
-- **EX004 — Linking entity.** What links most data sets? *Rubric:* 3 = the property identifier;; 2 = correct;; 1 = other;; 0 = none.
-- **EX005 — Handoff count.** How many handoffs did Ravi find in a repair? *Rubric:* 3 = three;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX006 — Gas check frequency.** How often must gas checks happen? *Rubric:* 3 = every year;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX004 — Linking entity.** What links most data sets? *Rubric:* 3 = the property identifier;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX005 — Handoff count.** How many handoffs did Ravi find in a repair? *Rubric:* 3 = three;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX006 — Gas check frequency.** How often must gas checks happen? *Rubric:* 3 = every year;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
 <a id="ch-03"></a>
 
@@ -149,9 +149,9 @@ Conventions without guidance and checks are ignored.
 
 ### Exercises
 
-- **EX007 — Rate list versions.** How many versions of the rate list did Ravi find? *Rubric:* 3 = four;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX008 — Date order.** Why use year-month-day dates? *Rubric:* 3 = they sort correctly;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX009 — Call lists.** What did Ravi find in open folders? *Rubric:* 3 = old call lists with tenant names and phone numbers;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX007 — Rate list versions.** How many versions of the rate list did Ravi find? *Rubric:* 3 = four;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX008 — Date order.** Why use year-month-day dates? *Rubric:* 3 = they sort correctly;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX009 — Call lists.** What did Ravi find in open folders? *Rubric:* 3 = old call lists with tenant names and phone numbers;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-04"></a>
 
@@ -189,9 +189,9 @@ Uncommented queries lose their purpose; state the question.
 
 ### Exercises
 
-- **EX010 — Orphan cause.** Why did orphan jobs exist? *Rubric:* 3 = properties sold and removed with open jobs;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX011 — Duplicate rule.** How did Ravi define a duplicate job? *Rubric:* 3 = same property and problem within two days;; 2 = correct;; 1 = partial;; 0 = none.
-- **EX012 — Call centre fix.** What step did the call centre add? *Rubric:* 3 = check for open jobs at the property first;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX010 — Orphan cause.** Why did orphan jobs exist? *Rubric:* 3 = properties sold and removed with open jobs;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX011 — Duplicate rule.** How did Ravi define a duplicate job? *Rubric:* 3 = same property and problem within two days;; 2 = partly correct;; 1 = partial;; 0 = none.
+- **EX012 — Call centre fix.** What step did the call centre add? *Rubric:* 3 = check for open jobs at the property first;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-05"></a>
 
@@ -229,9 +229,9 @@ Scripts that continue quietly on bad input produce wrong results.
 
 ### Exercises
 
-- **EX013 — Naming advice.** What naming advice did Ms. Moreau give? *Rubric:* 3 = use descriptive names like count_jobs_by_status;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX014 — Missing column behaviour.** What does the script do when a column is missing? *Rubric:* 3 = stops and reports which one;; 2 = correct;; 1 = continues;; 0 = none.
-- **EX015 — Date confusion.** What date problem did Ravi find? *Rubric:* 3 = contractors used day-month and month-day order;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX013 — Naming advice.** What naming advice did Ms. Moreau give? *Rubric:* 3 = use descriptive names like count_jobs_by_status;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX014 — Missing column behaviour.** What does the script do when a column is missing? *Rubric:* 3 = stops and reports which one;; 2 = partly correct;; 1 = continues;; 0 = none.
+- **EX015 — Date confusion.** What date problem did Ravi find? *Rubric:* 3 = contractors used day-month and month-day order;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-06"></a>
 
@@ -269,9 +269,9 @@ Accepting files without validation moves source errors into reports.
 
 ### Exercises
 
-- **EX016 — CSV weakness.** What is CSV's main weakness? *Rubric:* 3 = no data types;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX017 — Failed file handling.** What happens to files failing validation? *Rubric:* 3 = held and contractor emailed a report;; 2 = correct;; 1 = partial;; 0 = none.
-- **EX018 — Version two change.** What did version two of the specification allow? *Rubric:* 3 = an optional extra column;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX016 — CSV weakness.** What is CSV's main weakness? *Rubric:* 3 = no data types;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX017 — Failed file handling.** What happens to files failing validation? *Rubric:* 3 = held and contractor emailed a report;; 2 = partly correct;; 1 = partial;; 0 = none.
+- **EX018 — Version two change.** What did version two of the specification allow? *Rubric:* 3 = an optional extra column;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-07"></a>
 
@@ -309,9 +309,9 @@ One quality score for all uses hides what matters for each.
 
 ### Exercises
 
-- **EX019 — Consistency measure.** How is consistency measured? *Rubric:* 3 = share of jobs with matching status between systems;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX019 — Consistency measure.** How is consistency measured? *Rubric:* 3 = share of jobs with matching status between systems;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX020 — Regulator focus.** Which dimensions matter for regulator reports? *Rubric:* 3 = completion dates and priorities;; 2 = both;; 1 = one;; 0 = none.
-- **EX021 — Best improvements.** Where did the best improvements come from? *Rubric:* 3 = small process changes at the source;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX021 — Best improvements.** Where did the best improvements come from? *Rubric:* 3 = small process changes at the source;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-08"></a>
 
@@ -374,9 +374,9 @@ Adding failure counts double-counts records failing several rules.
 
 ### Exercises
 
-- **EX022 — Valid share.** What share of jobs pass both rules? *Rubric:* 3 = 95.3% (5,719);; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX023 — Lowercase cause.** Where does lowercase e come from? *Rubric:* 3 = a portal that does not convert case;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX024 — Date cause.** Why were some jobs completed before being raised? *Rubric:* 3 = emergency jobs created after the fix;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX022 — Valid share.** What share of jobs pass both rules? *Rubric:* 3 = 95.3% (5,719);; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX023 — Lowercase cause.** Where does lowercase e come from? *Rubric:* 3 = a portal that does not convert case;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX024 — Date cause.** Why were some jobs completed before being raised? *Rubric:* 3 = emergency jobs created after the fix;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-09"></a>
 
@@ -414,9 +414,9 @@ Silent downstream corrections hide recurring source errors.
 
 ### Exercises
 
-- **EX025 — Cleaning problem.** Why is nightly cleaning not enough? *Rubric:* 3 = the same errors recur and guesses may be wrong;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX026 — Emergency field.** What new field supports emergency jobs? *Rubric:* 3 = time the tenant first reported the problem;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX027 — Historical corrections.** How are historical corrections marked? *Rubric:* 3 = with a reason code;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX025 — Cleaning problem.** Why is nightly cleaning not enough? *Rubric:* 3 = the same errors recur and guesses may be wrong;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX026 — Emergency field.** What new field supports emergency jobs? *Rubric:* 3 = time the tenant first reported the problem;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX027 — Historical corrections.** How are historical corrections marked? *Rubric:* 3 = with a reason code;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-10"></a>
 
@@ -454,8 +454,8 @@ Deleting old codes breaks historical reports; end-date them.
 
 ### Exercises
 
-- **EX028 — Master list owner.** Who owns the master job type list? *Rubric:* 3 = the repairs steward;; 2 = correct;; 1 = other;; 0 = none.
-- **EX029 — Change order.** What order is followed for new job types? *Rubric:* 3 = master list first, then systems;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX028 — Master list owner.** Who owns the master job type list? *Rubric:* 3 = the repairs steward;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX029 — Change order.** What order is followed for new job types? *Rubric:* 3 = master list first, then systems;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX030 — Merged types.** Which job types were merged? *Rubric:* 3 = plaster repair and wall repair;; 2 = both;; 1 = one;; 0 = none.
 
 <a id="ch-11"></a>
@@ -496,7 +496,7 @@ Merging without review can combine different people's data.
 
 - **EX031 — Duplicate effects.** Name one effect of tenant duplicates. *Rubric:* 3 = repeated letters, split rent accounts or incomplete data requests;; 2 = one;; 1 = vague;; 0 = none.
 - **EX032 — Normalisation steps.** How are names normalised? *Rubric:* 3 = remove spaces and lowercase;; 2 = both;; 1 = one;; 0 = none.
-- **EX033 — Rejected share.** What share of possible matches were different people? *Rubric:* 3 = about a fifth;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX033 — Rejected share.** What share of possible matches were different people? *Rubric:* 3 = about a fifth;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
 <a id="ch-12"></a>
 
@@ -535,8 +535,8 @@ Dictionaries without automated checks drift and lose trust.
 ### Exercises
 
 - **EX034 — Completed flag meanings.** What two meanings did the completed flag have? *Rubric:* 3 = contractor finished work versus tenant satisfaction;; 2 = both;; 1 = one;; 0 = none.
-- **EX035 — Drift check.** How does Ravi keep the dictionary current? *Rubric:* 3 = a weekly script comparing schema and entries;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX036 — Regulator answer.** What did the dictionary help answer? *Rubric:* 3 = the definition of a completed emergency repair;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX035 — Drift check.** How does Ravi keep the dictionary current? *Rubric:* 3 = a weekly script comparing schema and entries;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX036 — Regulator answer.** What did the dictionary help answer? *Rubric:* 3 = the definition of a completed emergency repair;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-13"></a>
 
@@ -574,9 +574,9 @@ Date-only calculations distort time-based targets.
 
 ### Exercises
 
-- **EX037 — Undocumented exclusion.** What was excluded without documentation? *Rubric:* 3 = jobs without a completion time;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX038 — Timestamp issue.** Why should full timestamps be used? *Rubric:* 3 = date-only calculations misstate elapsed time;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX039 — Unknown handling.** How are jobs without completion times reported now? *Rubric:* 3 = separately as unknown;; 2 = correct;; 1 = late;; 0 = none.
+- **EX037 — Undocumented exclusion.** What was excluded without documentation? *Rubric:* 3 = jobs without a completion time;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX038 — Timestamp issue.** Why should full timestamps be used? *Rubric:* 3 = date-only calculations misstate elapsed time;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX039 — Unknown handling.** How are jobs without completion times reported now? *Rubric:* 3 = separately as unknown;; 2 = partly correct;; 1 = late;; 0 = none.
 
 <a id="ch-14"></a>
 
@@ -614,9 +614,9 @@ Technologists making policy changes alone bypass accountability.
 
 ### Exercises
 
-- **EX040 — Declined request.** What change did the owner decline? *Rubric:* 3 = excluding no-access jobs from the emergency report;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX041 — Leave cover.** Who decides when the steward is on leave? *Rubric:* 3 = the deputy;; 2 = correct;; 1 = technologist;; 0 = none.
-- **EX042 — Gas finding.** What did the gas record investigation find? *Rubric:* 3 = data entry errors, not missed checks;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX040 — Declined request.** What change did the owner decline? *Rubric:* 3 = excluding no-access jobs from the emergency report;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX041 — Leave cover.** Who decides when the steward is on leave? *Rubric:* 3 = the deputy;; 2 = partly correct;; 1 = technologist;; 0 = none.
+- **EX042 — Gas finding.** What did the gas record investigation find? *Rubric:* 3 = data entry errors, not missed checks;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-15"></a>
 
@@ -654,9 +654,9 @@ Procedures written by experts skip steps newcomers need.
 
 ### Exercises
 
-- **EX043 — Missing case.** What case did Ms. Moreau ask Ravi to add? *Rubric:* 3 = what happens if the validator fails;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX044 — Stuck step.** Where did the tester get stuck? *Rubric:* 3 = step four, held file location;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX045 — Outdated risk.** Why can outdated procedures be harmful? *Rubric:* 3 = staff follow them confidently into errors;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX043 — Missing case.** What case did Ms. Moreau ask Ravi to add? *Rubric:* 3 = what happens if the validator fails;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX044 — Stuck step.** Where did the tester get stuck? *Rubric:* 3 = step four, held file location;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX045 — Outdated risk.** Why can outdated procedures be harmful? *Rubric:* 3 = staff follow them confidently into errors;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-16"></a>
 
@@ -694,9 +694,9 @@ Owners approving lists without examining them makes reviews meaningless.
 
 ### Exercises
 
-- **EX046 — Masked access.** How do repairs analysts see tenant names? *Rubric:* 3 = through a masking view;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX047 — Log patterns.** What unusual patterns are reviewed? *Rubric:* 3 = large exports or out-of-hours access;; 2 = correct;; 1 = partial;; 0 = none.
-- **EX048 — Finance view.** What did the finance view contain? *Rubric:* 3 = job identifiers, contractors and costs;; 2 = correct;; 1 = partial;; 0 = none.
+- **EX046 — Masked access.** How do repairs analysts see tenant names? *Rubric:* 3 = through a masking view;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX047 — Log patterns.** What unusual patterns are reviewed? *Rubric:* 3 = large exports or out-of-hours access;; 2 = partly correct;; 1 = partial;; 0 = none.
+- **EX048 — Finance view.** What did the finance view contain? *Rubric:* 3 = job identifiers, contractors and costs;; 2 = partly correct;; 1 = partial;; 0 = none.
 
 <a id="ch-17"></a>
 
@@ -754,9 +754,9 @@ Plain hashes without a key can be reversed by hashing known identifiers.
 
 ### Exercises
 
-- **EX049 — T1001 pseudonym.** What pseudonym did T1001 receive? *Rubric:* 3 = 083752155d81;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX050 — Key storage.** Where is the key stored? *Rubric:* 3 = the data team's restricted vault;; 2 = correct;; 1 = script;; 0 = none.
-- **EX051 — Legal status.** Are pseudonymised extracts still personal data? *Rubric:* 3 = yes;; 2 = correct;; 1 = no;; 0 = none.
+- **EX049 — T1001 pseudonym.** What pseudonym did T1001 receive? *Rubric:* 3 = 083752155d81;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX050 — Key storage.** Where is the key stored? *Rubric:* 3 = the data team's restricted vault;; 2 = partly correct;; 1 = script;; 0 = none.
+- **EX051 — Legal status.** Are pseudonymised extracts still personal data? *Rubric:* 3 = yes;; 2 = partly correct;; 1 = no;; 0 = none.
 
 <a id="ch-18"></a>
 
@@ -795,8 +795,8 @@ Corrections made only in the main system leave outdated copies elsewhere.
 ### Exercises
 
 - **EX052 — Hidden data.** What hidden data did Ravi find for the access request? *Rubric:* 3 = a duplicate record and a complaint spreadsheet;; 2 = both;; 1 = one;; 0 = none.
-- **EX053 — Phone copy.** Where was a copy of the phone number? *Rubric:* 3 = the contractor portal;; 2 = correct;; 1 = other;; 0 = none.
-- **EX054 — Retained records.** Which records were kept despite erasure? *Rubric:* 3 = rent records for financial obligations;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX053 — Phone copy.** Where was a copy of the phone number? *Rubric:* 3 = the contractor portal;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX054 — Retained records.** Which records were kept despite erasure? *Rubric:* 3 = rent records for financial obligations;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-19"></a>
 
@@ -834,9 +834,9 @@ Disposal limited to live systems leaves data in extracts and backups.
 
 ### Exercises
 
-- **EX055 — Recording retention.** How long are call recordings kept? *Rubric:* 3 = six months;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX055 — Recording retention.** How long are call recordings kept? *Rubric:* 3 = six months;; 2 = partly correct;; 1 = wrong;; 0 = none.
 - **EX056 — Kept fields.** What is kept after repair job disposal? *Rubric:* 3 = property and job type;; 2 = both;; 1 = one;; 0 = none.
-- **EX057 — Backup expiry.** When do backups expire? *Rubric:* 3 = after ninety days;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX057 — Backup expiry.** When do backups expire? *Rubric:* 3 = after ninety days;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
 <a id="ch-20"></a>
 
@@ -874,9 +874,9 @@ Exporting whole tables sends contractors fields they do not need.
 
 ### Exercises
 
-- **EX058 — Contract gap.** What was missing from contractor contracts? *Rubric:* 3 = data quality requirements;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX059 — Photo cause.** Why was one contractor's photo rate low? *Rubric:* 3 = its app crashed on large images;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX060 — Removed field.** Which field did Ravi remove from exports? *Rubric:* 3 = full date of birth;; 2 = correct;; 1 = other;; 0 = none.
+- **EX058 — Contract gap.** What was missing from contractor contracts? *Rubric:* 3 = data quality requirements;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX059 — Photo cause.** Why was one contractor's photo rate low? *Rubric:* 3 = its app crashed on large images;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX060 — Removed field.** Which field did Ravi remove from exports? *Rubric:* 3 = full date of birth;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="ch-21"></a>
 
@@ -932,9 +932,9 @@ Reporting only a share hides how late the late jobs are.
 
 ### Exercises
 
-- **EX061 — South share.** What share did the south contractor complete within twenty-four hours? *Rubric:* 3 = 74.2%;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX062 — North median.** What was the north contractor's median time? *Rubric:* 3 = 7.2 hours;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX063 — Overnight cause.** What did the south contractor reveal? *Rubric:* 3 = only one emergency team overnight;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX061 — South share.** What share did the south contractor complete within twenty-four hours? *Rubric:* 3 = 74.2%;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX062 — North median.** What was the north contractor's median time? *Rubric:* 3 = 7.2 hours;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX063 — Overnight cause.** What did the south contractor reveal? *Rubric:* 3 = only one emergency team overnight;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-22"></a>
 
@@ -972,9 +972,9 @@ Dashboards without quality indicators invite overconfidence in incomplete figure
 
 ### Exercises
 
-- **EX064 — Board view.** What does the board dashboard show? *Rubric:* 3 = twelve months of trends against targets;; 2 = correct;; 1 = partial;; 0 = none.
-- **EX065 — Amber indicator.** When does the quality indicator turn amber? *Rubric:* 3 = quality below threshold;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX066 — Retired count.** How many unused dashboards were retired? *Rubric:* 3 = two;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX064 — Board view.** What does the board dashboard show? *Rubric:* 3 = twelve months of trends against targets;; 2 = partly correct;; 1 = partial;; 0 = none.
+- **EX065 — Amber indicator.** When does the quality indicator turn amber? *Rubric:* 3 = quality below threshold;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX066 — Retired count.** How many unused dashboards were retired? *Rubric:* 3 = two;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
 <a id="ch-23"></a>
 
@@ -1012,9 +1012,9 @@ Using internal definitions for regulatory figures misreports performance.
 
 ### Exercises
 
-- **EX067 — Definition difference.** How did definitions differ? *Rubric:* 3 = completion date versus date raised;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX068 — Year difference cause.** What explained the change from last year? *Rubric:* 3 = a contractor's jobs missing from last year;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX069 — Signing owner.** Who signs off the repair figures? *Rubric:* 3 = the head of repairs;; 2 = correct;; 1 = other;; 0 = none.
+- **EX067 — Definition difference.** How did definitions differ? *Rubric:* 3 = completion date versus date raised;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX068 — Year difference cause.** What explained the change from last year? *Rubric:* 3 = a contractor's jobs missing from last year;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX069 — Signing owner.** Who signs off the repair figures? *Rubric:* 3 = the head of repairs;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="ch-24"></a>
 
@@ -1052,8 +1052,8 @@ Fixing symptoms without root causes lets issues recur.
 
 ### Exercises
 
-- **EX070 — Phone root cause.** What was the root cause of wrong phone numbers? *Rubric:* 3 = the system layout hid the phone field during calls;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX071 — Reopening measure.** What does the reopening rate show? *Rubric:* 3 = whether fixes really work;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX070 — Phone root cause.** What was the root cause of wrong phone numbers? *Rubric:* 3 = the system layout hid the phone field during calls;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX071 — Reopening measure.** What does the reopening rate show? *Rubric:* 3 = whether fixes really work;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX072 — Top causes.** Which causes produced most issues? *Rubric:* 3 = manual entry and partner data;; 2 = both;; 1 = one;; 0 = none.
 
 <a id="ch-25"></a>
@@ -1092,9 +1092,9 @@ Delaying incident reports can miss legal deadlines.
 
 ### Exercises
 
-- **EX073 — Export cause.** What caused the misdirected export? *Rubric:* 3 = an outdated postcode list after a boundary change;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX074 — Filter fix.** What did Ravi filter on instead? *Rubric:* 3 = the contractor allocation field;; 2 = correct;; 1 = other;; 0 = none.
-- **EX075 — Review style.** What do blameless reviews focus on? *Rubric:* 3 = how systems allowed the error;; 2 = correct;; 1 = who;; 0 = none.
+- **EX073 — Export cause.** What caused the misdirected export? *Rubric:* 3 = an outdated postcode list after a boundary change;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX074 — Filter fix.** What did Ravi filter on instead? *Rubric:* 3 = the contractor allocation field;; 2 = partly correct;; 1 = other;; 0 = none.
+- **EX075 — Review style.** What do blameless reviews focus on? *Rubric:* 3 = how systems allowed the error;; 2 = partly correct;; 1 = who;; 0 = none.
 
 <a id="ch-26"></a>
 
@@ -1132,8 +1132,8 @@ Jobs that run regardless of failed predecessors publish incomplete figures.
 
 ### Exercises
 
-- **EX076 — Check time.** When do checks run? *Rubric:* 3 = three in the morning;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX077 — Slowdown fix.** How did Ravi fix the slowing check job? *Rubric:* 3 = added an index;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX076 — Check time.** When do checks run? *Rubric:* 3 = three in the morning;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX077 — Slowdown fix.** How did Ravi fix the slowing check job? *Rubric:* 3 = added an index;; 2 = partly correct;; 1 = vague;; 0 = none.
 - **EX078 — Change steps.** Name the change control steps. *Rubric:* 3 = test, review, log and deploy at a quiet time;; 2 = most;; 1 = few;; 0 = none.
 
 <a id="ch-27"></a>
@@ -1172,9 +1172,9 @@ Untested documentation hides gaps until someone needs it urgently.
 
 ### Exercises
 
-- **EX079 — Handover gap.** What gap did the handover reveal? *Rubric:* 3 = how to release a held file after resend;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX080 — Skills tracking.** How does Mrs. Okonjo track who can do tasks? *Rubric:* 3 = a skills matrix;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX081 — Documentation review.** How often is a sample of documents checked? *Rubric:* 3 = quarterly;; 2 = correct;; 1 = wrong;; 0 = none.
+- **EX079 — Handover gap.** What gap did the handover reveal? *Rubric:* 3 = how to release a held file after resend;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX080 — Skills tracking.** How does Mrs. Okonjo track who can do tasks? *Rubric:* 3 = a skills matrix;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX081 — Documentation review.** How often is a sample of documents checked? *Rubric:* 3 = quarterly;; 2 = partly correct;; 1 = wrong;; 0 = none.
 
 <a id="ch-28"></a>
 
@@ -1212,9 +1212,9 @@ Sending data to personal accounts bypasses security controls.
 
 ### Exercises
 
-- **EX082 — Process lesson.** What made Ravi appreciate approval processes? *Rubric:* 3 = a colleague's untested change broke a report;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX083 — Personal email response.** What did Ravi suggest instead of personal email? *Rubric:* 3 = the approved remote access system;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX084 — Project topic.** What is Ravi's applied project topic? *Rubric:* 3 = reducing delay between completion and system update;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX082 — Process lesson.** What made Ravi appreciate approval processes? *Rubric:* 3 = a colleague's untested change broke a report;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX083 — Personal email response.** What did Ravi suggest instead of personal email? *Rubric:* 3 = the approved remote access system;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX084 — Project topic.** What is Ravi's applied project topic? *Rubric:* 3 = reducing delay between completion and system update;; 2 = partly correct;; 1 = vague;; 0 = none.
 
 <a id="ch-29"></a>
 
@@ -1253,8 +1253,8 @@ Projects that end without handover leave improvements unsupported.
 ### Exercises
 
 - **EX085 — Largest causes.** Which causes contributed most delay? *Rubric:* 3 = weekly batching by a contractor and the nightly transfer;; 2 = both;; 1 = one;; 0 = none.
-- **EX086 — Transfer change.** How often does the portal now send updates? *Rubric:* 3 = hourly;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX087 — Handover recipient.** Who receives the monitoring script? *Rubric:* 3 = the repairs steward;; 2 = correct;; 1 = other;; 0 = none.
+- **EX086 — Transfer change.** How often does the portal now send updates? *Rubric:* 3 = hourly;; 2 = partly correct;; 1 = wrong;; 0 = none.
+- **EX087 — Handover recipient.** Who receives the monitoring script? *Rubric:* 3 = the repairs steward;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="ch-30"></a>
 
@@ -1292,9 +1292,9 @@ Claiming effects synthetic data cannot show undermines credibility.
 
 ### Exercises
 
-- **EX088 — Seasonality answer.** How will seasonality be addressed? *Rubric:* 3 = the steward's monthly monitoring over a year;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX089 — Assessor suggestion.** What did assessors suggest? *Rubric:* 3 = involve contractors earlier;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX090 — Ravi's job.** What job does Ravi accept? *Rubric:* 3 = data technologist at Calder Valley;; 2 = correct;; 1 = other;; 0 = none.
+- **EX088 — Seasonality answer.** How will seasonality be addressed? *Rubric:* 3 = the steward's monthly monitoring over a year;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX089 — Assessor suggestion.** What did assessors suggest? *Rubric:* 3 = involve contractors earlier;; 2 = partly correct;; 1 = vague;; 0 = none.
+- **EX090 — Ravi's job.** What job does Ravi accept? *Rubric:* 3 = data technologist at Calder Valley;; 2 = partly correct;; 1 = other;; 0 = none.
 
 <a id="worked-results"></a>
 

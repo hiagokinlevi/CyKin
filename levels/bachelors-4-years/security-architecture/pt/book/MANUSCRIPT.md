@@ -463,7 +463,7 @@ Dividir as contas exige mudanças e testes na aplicação. Dados mascarados aind
 
 - **EX025 — Impacto do comprometimento.** Como contas de banco separadas limitam um comprometimento da loja? *Rubrica:* 3 = o atacante obtém apenas os direitos limitados da conta da loja;; 2 = limitado;; 1 = vago;; 0 = nenhuma.
 
-- **EX026 — Contagem de injeções.** Quantas consultas injetáveis Lucas encontrou no total? *Rubrica:* 3 = três;; 2 = três, sem justificativa;; 1 = uma;; 0 = nenhuma.
+- **EX026 — Contagem de injeções.** Quantas consultas injetáveis Lucas encontrou no total? *Rubrica:* 3 = três: a consulta de busca e outras duas montadas do mesmo jeito;; 2 = três, sem dizer quais;; 1 = uma;; 0 = nenhuma.
 
 - **EX027 — Regra dos dados de teste.** Que dados os ambientes de teste devem usar? *Rubrica:* 3 = dados sintéticos ou mascarados;; 2 = sintéticos;; 1 = reais;; 0 = nenhuma.
 
