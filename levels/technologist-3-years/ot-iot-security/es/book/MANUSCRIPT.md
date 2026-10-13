@@ -28,7 +28,7 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [serie I
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](../../en/book/MANUSCRIPT.md#ch-10) · [11](../../en/book/MANUSCRIPT.md#ch-11) · [12](../../en/book/MANUSCRIPT.md#ch-12) · [13](../../en/book/MANUSCRIPT.md#ch-13) · [14](../../en/book/MANUSCRIPT.md#ch-14) · [15](../../en/book/MANUSCRIPT.md#ch-15) · [16](../../en/book/MANUSCRIPT.md#ch-16) · [17](../../en/book/MANUSCRIPT.md#ch-17) · [18](../../en/book/MANUSCRIPT.md#ch-18) · [19](../../en/book/MANUSCRIPT.md#ch-19) · [20](../../en/book/MANUSCRIPT.md#ch-20) · [21](../../en/book/MANUSCRIPT.md#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) · [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](../../en/book/MANUSCRIPT.md#ch-16) · [17](../../en/book/MANUSCRIPT.md#ch-17) · [18](../../en/book/MANUSCRIPT.md#ch-18) · [19](../../en/book/MANUSCRIPT.md#ch-19) · [20](../../en/book/MANUSCRIPT.md#ch-20) · [21](../../en/book/MANUSCRIPT.md#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) · [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
 
@@ -480,7 +480,363 @@ La evidencia se vuelve fiable cuando tiene marca de tiempo y hash, se cuenta fre
 
 ### Siga estudiando — capítulo 09 de 30
 
-[← Capítulo 08 (borrador)](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 (borrador) →](../../en/book/MANUSCRIPT.md#ch-10)
+[← Capítulo 08 (borrador)](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 (borrador) →](#ch-10)
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Seguridad de TO, IoT y sistemas ciberfísicos: orientación
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) definir TO, IoT y sistemas ciberfísicos en los términos de NCS; (2) describir el lazo de control de la refrigeración; (3) nombrar los principales documentos de orientación y a quién se dirigen; y (4) explicar por qué los sistemas de seguridad funcional quedan fuera de los cambios de seguridad.
+
+### 10.1 Tres términos que se solapan
+
+La tecnología operacional supervisa y controla procesos físicos; aquí, compresores, ventiladores de evaporador y válvulas. Los dispositivos IoT son sensores y actuadores conectados a la red; aquí, los registradores inalámbricos de temperatura y las cámaras. Un sistema ciberfísico es el lazo de medir, calcular y actuar sobre el mundo físico. NCS es las tres cosas a la vez. En NCS el solapamiento se ve en una sola sala: la sonda del Congelador 2 alimenta a PLC-R1, mientras que un registrador inalámbrico en la misma sala informa a la nube a través de GW-LOG. Uno es TO, el otro IoT, y ambos describen la misma temperatura física, que es lo que hace posible la comparación de dos sondas del capítulo 24.
+
+### 10.2 El lazo de refrigeración
+
+Una sonda de temperatura del Congelador 2 informa de −21 °C; PLC-R1 la compara con el punto de consigna de −22 °C y aumenta la capacidad del compresor; se evapora más refrigerante, la sala se enfría y la sonda vuelve a informar. Un atacante que cambie el punto de consigna, falsifique la sonda o anule la orden al compresor rompe el lazo. La técnica T0836 *Modify Parameter* de ATT&CK for ICS cubre el caso del punto de consigna. El mapa de Priya de este lazo, sonda TT-F2 → PLC-R1 → compresor C-1 → evaporador → sala → TT-F2, añade dos caminos independientes: la segunda vista de la temperatura del registrador inalámbrico y el panel de detección de gas que dispara la ventilación sin PLC-R1.
+
+### 10.3 Mapa de orientaciones
+
+NIST SP 800-82r3 orienta los programas de seguridad de TO para propietarios de activos como NCS. La serie IEC 62443 cubre los sistemas de automatización y control industrial para propietarios, integradores y proveedores de productos. NIST IR 8259 describe las actividades de ciberseguridad para fabricantes de dispositivos IoT, y ETSI EN 303 645 fija una base para productos IoT de consumo, útil como lista de comprobación para comprar registradores y cámaras. Priya usa EN 303 645 exactamente con ese fin: su cuestionario para el proveedor de los registradores plantea las preguntas de 5.1, 5.2, 5.3, 5.5 y 5.8 antes de que NCS compre más. Las respuestas deciden después si hace falta un control compensatorio, como comparar las sondas de los registradores y del PLC.
+
+### 10.4 La seguridad funcional queda aparte
+
+La detección de amoníaco y la ventilación de emergencia son sistemas de seguridad para las personas. El trabajo de seguridad puede observarlos e informar sobre ellos, pero los cambios pasan por el responsable de seguridad funcional y el ingeniero de refrigeración, nunca como efecto secundario de un proyecto de cortafuegos. En NCS esta regla se aplica directamente al trabajo de Priya con el cortafuegos. Cuando trasladó las cámaras del muelle a su propia zona, confirmó con el ingeniero de refrigeración que el panel de detección de gas no tenía ninguna conexión de red a la que el cambio pudiera afectar. Si la hubiera tenido, el cambio habría ido primero al responsable de seguridad funcional. Sus informes pueden señalar que el panel de detección de gas dispara la ventilación sin PLC-R1, lo que reduce varios escenarios cibernéticos, pero ella no lo prueba ni lo reconfigura.
+
+### Ejemplo resuelto (NCS sintética)
+
+Priya traza el lazo del Congelador 2: sonda TT-F2 → PLC-R1 → compresor C-1 → evaporador → sala → TT-F2. Al lado anota los caminos independientes: los registradores inalámbricos dan a la nube una segunda vista de la temperatura, y el panel de detección de gas dispara la ventilación sin PLC-R1. Ambos reducen la probabilidad de que un solo compromiso oculte un problema.
+
+> **Caso sintético — Northgate Cold Storage.** Los nombres de las etiquetas son inventados.
+
+### Errores y límites
+
+Las normas de IoT de consumo no se aplican automáticamente a los dispositivos industriales; úselas como preguntas de referencia. Los diagramas de lazo simplifican; los sistemas reales tienen cascadas y enclavamientos.
+
+### Ejercicios — capítulo 10
+
+- **EX028 — Tres puntos de ataque en el lazo del Congelador 2.** Nombre uno por elemento: sensor, controlador, actuador. *Rúbrica:* 3 = tres puntos plausibles; 2 = dos; 1 = uno; 0 = nada.
+- **EX029 — Elegir una lista de comprobación de compra.** ¿Qué documento usaría para redactar preguntas de compra para nuevos registradores de temperatura? *Rúbrica:* 3 = ETSI EN 303 645 (o NIST IR 8259 para las actividades del fabricante) con su razón; 2 = solo el nombre; 1 = solo SP 800-82; 0 = nada.
+- **EX030 — Por qué los registradores ayudan a la integridad.** Explique cómo los registradores en la nube reducen el impacto de una lectura falsificada de TT-F2. *Rúbrica:* 3 = un camino de medición independiente revela el desacuerdo; 2 = parcial; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+Orientarse significa ver el lazo físico, saber qué orientación corresponde a qué papel y mantener los sistemas de seguridad funcional a salvo de efectos secundarios del trabajo de seguridad.
+
+### Siga estudiando — capítulo 10 de 30
+
+[← Capítulo 09 (borrador)](#ch-09) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 11 (borrador) →](#ch-11)
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Seguridad de TO, IoT y sistemas ciberfísicos: activos y contexto
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) construir un inventario combinando la documentación con la observación pasiva; (2) interpretar los conflictos entre fuentes; (3) añadir a cada activo su contexto de negocio, función y consecuencia; y (4) decidir qué hacer con los dispositivos desconocidos.
+
+### 11.1 Dos fuentes, ninguna completa
+
+La documentación de la empresa contratista de refrigeración enumera lo que se instaló; la observación pasiva del tráfico de red muestra lo que está comunicándose ahora. A la documentación se le escapan las incorporaciones posteriores; a la observación, los dispositivos silenciosos o apagados. NIST SP 800-82r3 recomienda combinar métodos en lugar de depender del escaneo activo, que puede perturbar a los dispositivos frágiles.
+
+```python
+"""Lab 11: merge two synthetic NCS asset lists and flag conflicts (no scanning)."""
+eng = {"PLC-R1": "fw 2.4", "PLC-R2": "fw 2.4", "HMI-C": "win10-ltsc", "GW-LOG": "fw 1.9"}
+seen = {"PLC-R1": "fw 2.4", "PLC-R2": "fw 2.1", "GW-LOG": "fw 1.9", "CAM-DOCK": "fw ?"}
+for a in sorted(set(eng) | set(seen)):
+    e, s = eng.get(a), seen.get(a)
+    status = "match" if e == s else ("only-in-docs" if s is None else "only-on-network" if e is None else "VERSION-CONFLICT")
+    print(f"{a:9} docs={e or '-':11} network={s or '-':8} {status}")
+```
+
+Ejecútelo con `python3 lab_inv.py`. Salida verificada:
+
+```text
+CAM-DOCK  docs=-           network=fw ?     only-on-network
+GW-LOG    docs=fw 1.9      network=fw 1.9   match
+HMI-C     docs=win10-ltsc  network=-        only-in-docs
+PLC-R1    docs=fw 2.4      network=fw 2.4   match
+PLC-R2    docs=fw 2.4      network=fw 2.1   VERSION-CONFLICT
+```
+
+En NCS, a la documentación le faltaba CAM-DOCK y a la observación le faltaba HMI-C; ninguna de las dos fuentes por sí sola era el inventario. La comparación también reveló el conflicto de versión de PLC-R2, que solo un recorrido por la planta podía resolver.
+
+### 11.2 Leer los conflictos
+
+CAM-DOCK aparece solo en la red: alguien instaló una cámara sin actualizar los registros. HMI-C aparece solo en la documentación: puede que estuviera en silencio durante la ventana de observación o que su tráfico no se capturara. PLC-R2 muestra un conflicto de versión (la documentación dice 2.4 y la red muestra 2.1), lo que importa porque un aviso de seguridad podría afectar a la 2.1 pero no a la 2.4. Priya resolvió el conflicto de PLC-R2 recorriendo la sala de máquinas con la empresa contratista y leyendo la versión en el panel frontal: 2.1. La documentación estaba equivocada; el controlador nunca se había actualizado. Corrigió el inventario con el recorrido por la planta como fuente.
+
+### 11.3 Contexto
+
+Para cada activo añada función, zona, responsable y consecuencia de su pérdida. La consecuencia de la cámara es baja para la refrigeración, pero puede ser un punto de entrada; la consecuencia de PLC-R2 es alta, así que su conflicto de versión va primero. El cuaderno de Priya da a cada una de las cinco filas esos cuatro campos. PLC-R2: control de compresores, zona de control de refrigeración, empresa contratista y responsable de instalaciones, pérdida de refrigeración en cuestión de horas. CAM-DOCK: vídeo del muelle, actualmente en la red de registradores, equipo de logística, consecuencia baja para la refrigeración pero posible punto de apoyo. La columna de consecuencias es lo que convierte cinco estados en una lista de trabajo ordenada.
+
+### 11.4 Dispositivos desconocidos
+
+Un dispositivo desconocido se investiga físicamente antes que nada: encontrarlo, identificar a su responsable, decidir si debe estar ahí. Nunca «pruebe» un dispositivo desconocido enviándole tráfico. En NCS, la dirección desconocida 10.4.2.77 vista en el capítulo 19 se rastreó así: una búsqueda física encontró una impresora del muelle conectada a un puerto de la zona de cámaras, instalada por el equipo de logística con una dirección copiada del plan de otro emplazamiento. Nadie le envió un paquete para averiguar qué era. Se trasladó, se le asignó una nueva dirección y se añadió al inventario con logística como responsable.
+
+### Ejemplo resuelto (NCS sintética)
+
+Priya recorre la sala de máquinas con la empresa contratista y lee la versión de PLC-R2 en la pantalla de su panel frontal: 2.1. La documentación estaba equivocada; el controlador nunca se actualizó. Corrige el inventario, registra el recorrido por la planta como fuente y abre un tique para planificar la actualización con la empresa contratista.
+
+> **Caso sintético — Northgate Cold Storage.** Los datos del laboratorio y el recorrido por la planta son inventados.
+
+### Errores y límites
+
+La observación pasiva depende del lugar de captura; un puerto espejo en un conmutador solo ve el tráfico de ese conmutador. La cadena de versión que comunica un dispositivo puede ser errónea o estar falseada.
+
+### Ejercicios — capítulo 11
+
+- **EX031 — Explicar `only-in-docs`.** Dé dos razones posibles por las que HMI-C no apareció en la observación de la red. *Rúbrica:* 3 = en silencio o apagada durante la ventana; el punto de captura no veía su tráfico; 2 = una; 1 = «no existe»; 0 = nada.
+- **EX032 — Priorizar los conflictos.** ¿Qué conflicto atiende Priya primero y por qué? *Rúbrica:* 3 = la versión de PLC-R2, por su consecuencia alta y la relevancia de los avisos; 2 = solo la elección; 1 = la cámara; 0 = nada.
+- **EX033 — Añadir un quinto dispositivo.** Añada `"SENS-NH3": "fw 3.0"` solo a `seen`. ¿Qué imprime el laboratorio para él? *Rúbrica:* 3 = `SENS-NH3 docs=- network=fw 3.0 only-on-network`; 2 = solo el estado; 1 = `match`; 0 = nada.
+
+### Síntesis del capítulo
+
+Un inventario digno de confianza concilia documentos, observación y recorridos por la planta, y pone la consecuencia al lado de cada fila.
+
+### Siga estudiando — capítulo 11 de 30
+
+[← Capítulo 10 (borrador)](#ch-10) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 12 (borrador) →](#ch-12)
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Seguridad de TO, IoT y sistemas ciberfísicos: flujos de datos
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) redactar una matriz de flujos aprobados; (2) comparar con ella los flujos observados; (3) interpretar los flujos no aprobados y los aprobados que no se usan; y (4) convertir la comparación en cambios del cortafuegos.
+
+### 12.1 La matriz de flujos
+
+Una matriz de flujos enumera cada conversación permitida: origen, destino, puerto y propósito. Es la tabla de conductos del capítulo 8 hecha lo bastante precisa como para ponerla a prueba. NCS tiene cuatro flujos aprobados: HMI-C hacia cada PLC por Modbus/TCP 502, el historiador consultando a PLC-R1 y GW-LOG hacia la nube del proveedor por 443.
+
+```python
+"""Lab 12: compare observed synthetic flows with the approved flow matrix."""
+approved = {("HMI-C", "PLC-R1", 502), ("HMI-C", "PLC-R2", 502), ("GW-LOG", "CLOUD-LOG", 443), ("HIST", "PLC-R1", 502)}
+observed = [("HMI-C", "PLC-R1", 502), ("GW-LOG", "CLOUD-LOG", 443), ("OFFICE-7", "PLC-R2", 502),
+            ("HIST", "PLC-R1", 502), ("GW-LOG", "PLC-R1", 502)]
+for f in observed:
+    print(f"{f[0]:8} -> {f[1]:9} :{f[2]:<4} {'approved' if f in approved else 'UNAPPROVED'}")
+print("approved but not seen:", sorted(approved - set(observed)))
+```
+
+Ejecútelo con `python3 lab_flows.py`. Salida verificada:
+
+```text
+HMI-C    -> PLC-R1    :502  approved
+GW-LOG   -> CLOUD-LOG :443  approved
+OFFICE-7 -> PLC-R2    :502  UNAPPROVED
+HIST     -> PLC-R1    :502  approved
+GW-LOG   -> PLC-R1    :502  UNAPPROVED
+approved but not seen: [('HMI-C', 'PLC-R2', 502)]
+```
+
+El laboratorio compara esos cuatro flujos aprobados con cinco conversaciones observadas. Las dos filas no aprobadas, OFFICE-7 comunicándose con PLC-R2 y GW-LOG llegando a PLC-R1, son las que hay que investigar primero, mientras que el flujo HMI-C hacia PLC-R2 que no se vio puede simplemente no haberse producido durante la captura. El capítulo 27 muestra más adelante que a la lista le faltaba la consulta del historiador a PLC-R2, un flujo aprobado que nadie había anotado.
+
+### 12.2 Flujos no aprobados
+
+Que OFFICE-7 hable Modbus con PLC-R2 es exactamente lo que permitía la regla 9. Podría ser la macro de una hoja de cálculo de un ingeniero, o software malicioso. En cualquier caso, es un camino desde la oficina hasta un controlador de compresores. Que GW-LOG hable con PLC-R1 es más extraño: la pasarela de los registradores no tiene ningún motivo para hablar Modbus. Podría ser una función de «integración» del proveedor o un indicio de compromiso. Priya rastreó ambos. OFFICE-7 ejecutaba una macro de informe energético que leía las horas de funcionamiento de los compresores en PLC-R2; el proveedor de los registradores confirmó en GW-LOG una función de «integración con PLC» no utilizada y activada por defecto, que se desactivó.
+
+### 12.3 Aprobados pero sin uso
+
+HMI-C → PLC-R2 no apareció. Quizá la ventana fue corta; quizá la HMI lee PLC-R2 a través de PLC-R1. Las aprobaciones sin uso son candidatas a eliminarse tras consultarlo con operaciones: menos caminos abiertos, menos que defender. El capítulo 27 muestra el riesgo de leer esto demasiado deprisa. La ventana de observación tampoco captó al historiador consultando a PLC-R2, así que la matriz de flujos solo recogía HIST → PLC-R1. Cuando el nuevo conjunto de reglas entró en servicio, HIST dejó de recibir etiquetas de PLC-R2 en cuatro minutos y Priya revirtió el cambio. Un flujo aprobado pero no visto es una pregunta para operaciones y los proveedores, no una prueba de que el flujo no se use.
+
+### 12.4 De la comparación al cambio
+
+Cada flujo no aprobado recibe un responsable y una decisión: aprobarlo con justificación (y actualizar la matriz) o bloquearlo. El bloqueo se hace en una ventana planificada y con operaciones informada, porque un flujo «misterioso» puede resultar ser algo que la planta necesita. Las dos decisiones de Priya: la macro energética de OFFICE-7 pasó a leer las horas de funcionamiento en la réplica del historiador en la DMZ, y el tráfico oficina → control se bloqueó en la ventana de mantenimiento del 20 de marzo, después del cambio; la función de «integración con PLC» de GW-LOG se desactivó con el acuerdo del proveedor de los registradores, y el flujo desapareció sin ningún cambio en el cortafuegos.
+
+### Ejemplo resuelto (NCS sintética)
+
+Priya pregunta en la oficina: OFFICE-7 ejecuta una macro de informe energético que lee directamente en PLC-R2 las horas de funcionamiento de los compresores. Propone leer los mismos valores en la réplica del historiador en la DMZ y después bloquear oficina → control. Para GW-LOG → PLC-R1 contacta con el proveedor de los registradores, que confirma una función de «integración con PLC» no utilizada y activada por defecto; se desactiva y el flujo desaparece.
+
+> **Caso sintético — Northgate Cold Storage.** Los flujos y las explicaciones son inventados.
+
+### Errores y límites
+
+Las ventanas de observación no captan flujos mensuales o estacionales, como los programas de desescarche o los informes de fin de mes. Los puertos no prueban el protocolo; un flujo en el 502 puede no ser Modbus.
+
+### Ejercicios — capítulo 12
+
+- **EX034 — Clasificar una observación nueva.** Añada `("HMI-C", "PLC-R2", 502)` a `observed`. ¿Qué cambia en la salida? *Rúbrica:* 3 = se imprime `approved` y la lista de no vistos queda vacía; 2 = un efecto; 1 = `UNAPPROVED`; 0 = nada.
+- **EX035 — Decisión para OFFICE-7.** Redacte el registro de decisión del flujo de OFFICE-7. *Rúbrica:* 3 = causa, camino sustitutivo a través de la DMZ, fecha del bloqueo, responsable; 2 = tres; 1 = «bloquearlo»; 0 = nada.
+- **EX036 — Por qué GW-LOG → PLC-R1 es sospechoso.** Explíquelo en dos frases. *Rúbrica:* 3 = no hay necesidad de negocio de que la pasarela de los registradores hable Modbus; conecta una zona expuesta a internet con el control; 2 = una; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+Comparar los flujos observados con una matriz aprobada encuentra los caminos que nadie pretendía, y cada uno termina en una decisión con responsable.
+
+### Siga estudiando — capítulo 12 de 30
+
+[← Capítulo 11 (borrador)](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 13 (borrador) →](#ch-13)
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Seguridad de TO, IoT y sistemas ciberfísicos: escenarios de riesgo
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) redactar escenarios de riesgo que vinculen una amenaza, un camino y una consecuencia física; (2) estimar probabilidad y consecuencia en escalas sencillas; (3) identificar las salvaguardas existentes; y (4) ordenar los escenarios para actuar.
+
+### 13.1 Estructura del escenario
+
+Un escenario útil se lee así: «[Amenaza] usa [camino] para provocar [acción], lo que lleva a [consecuencia], salvo que [salvaguarda] funcione». Para NCS: «Un ransomware de la oficina usa el flujo oficina → control para cifrar HMI-C y deja a los operadores sin pantalla; la refrigeración continúa con la lógica de los PLC, pero las alarmas son invisibles hasta que se restablece la pantalla, salvo que las alertas de los registradores en la nube lleguen al teléfono del responsable de turno». Los tres escenarios de Priya para NCS siguen esta forma: la herramienta remota de la empresa contratista usada indebidamente para cambiar los puntos de consigna de los congeladores, un ransomware de la oficina que llega a HMI-C y una cámara expuesta a internet usada como punto de apoyo.
+
+### 13.2 Escalas
+
+Una escala de consecuencias de tres puntos se adapta a un emplazamiento pequeño: 1 = molestia, 2 = pérdida de existencias o problema normativo, 3 = daño a las personas o pérdida del negocio. La probabilidad, también de 1 a 3, es un juicio basado en la exposición y en la actividad de amenazas conocida. Escriba la razón al lado de cada puntuación. Las puntuaciones de Priya muestran la escala en uso: el escenario de la herramienta de la empresa contratista tiene consecuencia 2, porque un punto de consigna cambiado supone pérdida de existencias y no daño a las personas, y probabilidad 2, porque la herramienta estaba siempre activa pero no se sabía que las credenciales de la empresa contratista estuvieran expuestas. El punto de apoyo de la cámara tiene consecuencia 1 y probabilidad 2. Cada puntuación lleva su razón escrita al lado.
+
+### 13.3 Salvaguardas
+
+Las salvaguardas existentes cambian la historia. La detección independiente de amoníaco hace improbable que una fuga de gas causada por un ciberataque pase desapercibida. Las alertas de los registradores en la nube aportan una segunda vista de la temperatura. La lógica de los PLC mantiene la refrigeración si se pierde la HMI. Enumerar las salvaguardas evita que los escenarios suenen peor de lo que son y muestra qué salvaguarda está haciendo mucho trabajo. En NCS, las alertas de los registradores en la nube sostienen el escenario de la herramienta de la empresa contratista: son la salvaguarda que revelaría un punto de consigna cambiado. Si una herramienta de la empresa contratista cambiara un punto de consigna, las alertas mostrarían que la sala se calienta antes de que las existencias se echaran a perder.
+
+### 13.4 Ordenación
+
+Ordene primero por consecuencia, después por probabilidad y después por lo barato que sea reducir el escenario. Un escenario de consecuencia 2 con una solución fácil merece a menudo actuar antes que un escenario de consecuencia 3 cuya salvaguarda ya es sólida. La ordenación de Priya sigue esta regla. Los escenarios de la herramienta de la empresa contratista y del ransomware de la oficina puntúan ambos consecuencia 2 y probabilidad 2; el ransomware queda segundo solo porque su salvaguarda, la lógica de los PLC que mantiene la refrigeración sin HMI-C, es más sólida que las alertas en la nube que protegen frente a un punto de consigna cambiado. Eliminar la regla 9 fue entonces el primero de los controles, porque era barato y reducía dos escenarios a la vez, como explica el capítulo 18.
+
+### Ejemplo resuelto (NCS sintética)
+
+Los tres primeros de Priya: (1) herramienta remota de la empresa contratista usada indebidamente para cambiar los puntos de consigna de los congeladores (consecuencia 2, probabilidad 2, salvaguarda: alertas de los registradores en la nube; solución: sesiones supervisadas); (2) un ransomware de la oficina llega a HMI-C (2, 2, salvaguarda: el PLC mantiene la refrigeración; solución: eliminar la regla 9); (3) cámara expuesta a internet usada como punto de apoyo (1, 2; solución: trasladarla a la zona de cámaras).
+
+> **Caso sintético — Northgate Cold Storage.** Las puntuaciones son ilustrativas.
+
+### Errores y límites
+
+Las escalas sencillas ocultan diferencias dentro de una categoría. La probabilidad de un ataque deliberado cambia deprisa con las noticias de campañas; revísela.
+
+### Ejercicios — capítulo 13
+
+- **EX037 — Completar la frase de un escenario.** Redacte un escenario de «lecturas falsificadas de los registradores» con la estructura de cinco partes. *Rúbrica:* 3 = las cinco partes; 2 = cuatro; 1 = vago; 0 = nada.
+- **EX038 — Puntuar con razones.** Puntúe la consecuencia del escenario 1 y justifíquela. *Rúbrica:* 3 = 2, con un razonamiento sobre existencias o seguridad alimentaria y la salvaguarda indicada; 2 = solo la puntuación; 1 = 3 sin razón; 0 = nada.
+- **EX039 — Una salvaguarda que soporta mucho peso.** ¿Qué salvaguarda aparece en más de un escenario y qué implica eso? *Rúbrica:* 3 = las alertas de los registradores en la nube (o la autonomía de los PLC); un punto único que proteger y probar; 2 = solo el nombre; 1 = errónea; 0 = nada.
+
+### Síntesis del capítulo
+
+Los escenarios conectan los caminos cibernéticos con las consecuencias físicas y las salvaguardas, y unas puntuaciones sencillas y razonadas bastan para ordenar la actuación en un emplazamiento pequeño.
+
+### Siga estudiando — capítulo 13 de 30
+
+[← Capítulo 12 (borrador)](#ch-12) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 14 (borrador) →](#ch-14)
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Seguridad de TO, IoT y sistemas ciberfísicos: métodos I
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) realizar un recorrido estructurado por el emplazamiento; (2) entrevistar con eficacia a operadores y empresas contratistas; (3) revisar exportaciones de configuración de forma segura; y (4) reunir hallazgos con referencias a la evidencia.
+
+### 14.1 Recorrido por la planta
+
+Recorra el emplazamiento con alguien que sea su responsable. Busque tomas de red en lugares extraños, routers celulares dentro de los cuadros, etiquetas con contraseñas, portátiles que se han dejado conectados, memorias USB en las HMI y dispositivos que no están en el inventario. Haga fotografías solo con permiso y evite captar pantallas que muestren datos de clientes. El recorrido de Priya por NCS encontró el elemento más importante de esta lista: un pequeño router celular en el cuadro MP-2 etiquetado «contractor backup access», instalado dos años antes durante una caída de la red y olvidado. Proporcionaba un segundo camino remoto hacia PLC-R2 que ninguna regla del cortafuegos mostraba.
+
+### 14.2 Entrevistas
+
+Pregunte a los operadores qué hacen cuando la HMI se bloquea, quién llama a la empresa contratista y qué ha cambiado recientemente. Pregunte a la empresa contratista cómo se conecta, qué herramientas usa y dónde se guardan las copias de seguridad. Las preguntas abiertas («cuénteme paso a paso una llamada de soporte remoto») revelan más que las listas de sí o no. Tome notas con el nombre, el cargo de la persona entrevistada y la fecha; separe lo que dijo de lo que usted vio.
+
+La entrevista con la empresa contratista explicó el router de MP-2 en una sola frase, registrada como I-04. El técnico de la empresa contratista dijo que el router se instaló durante una caída de internet de dos días para poder seguir llegando a PLC-R2, y que nadie lo retiró.
+
+### 14.3 Revisión de la configuración
+
+Exporte las configuraciones mediante interfaces admitidas y con cuentas de solo lectura: conjuntos de reglas del cortafuegos, ajustes de VLAN de los conmutadores, listas de usuarios de la HMI. Revise las exportaciones en su propia estación de trabajo, no en el dispositivo. Calcule el hash de las exportaciones como en el capítulo 9. En NCS la exportación del cortafuegos salió de la interfaz web de FW-1 con una cuenta de solo lectura, se guardó como fw1-0303.txt y se registró con su hash como E-014. La lista de usuarios de HMI-C se obtuvo del mismo modo, y de ahí salieron las 11 cuentas del capítulo 7. Revisar en la estación de trabajo de Priya le permitió buscar y anotar en el conjunto de reglas sin ningún riesgo de guardar por accidente un cambio en FW-1, y el hash demuestra más adelante que el archivo que revisó es el archivo que exportó.
+
+### 14.4 Reunir los hallazgos
+
+Cada hallazgo: título, identificadores de evidencia, activos afectados, vínculo con un escenario, recomendación y responsable. Un hallazgo por problema; combinar problemas que no guardan relación hace imposible cerrarlos. El hallazgo F-07 de Priya sigue esta forma: título, router celular no documentado en MP-2; evidencia, la foto E-021 y la entrevista I-04; activo afectado, PLC-R2; vínculo con el escenario de acceso remoto de la empresa contratista, porque es un segundo camino remoto; recomendación, retirarlo o mantenerlo apagado y encenderlo solo a petición con la aprobación del responsable de instalaciones; responsable, el responsable de instalaciones. No menciona la contraseña compartida de la HMI, que es un hallazgo aparte con su propio responsable y fecha de cierre, aunque Priya encontró ambos en la misma semana.
+
+### Ejemplo resuelto (NCS sintética)
+
+Durante el recorrido por la planta, Priya encuentra un pequeño router celular en el cuadro MP-2 etiquetado «contractor backup access». La empresa contratista explica que se instaló durante una caída de la red hace dos años y que se olvidó. Hallazgo F-07: «Un router celular no documentado en MP-2 proporciona un segundo camino remoto hacia PLC-R2 (evidencia: foto E-021, entrevista I-04)». Recomendación: retirarlo, o mantenerlo apagado y encenderlo solo a petición con la aprobación del responsable de instalaciones.
+
+> **Caso sintético — Northgate Cold Storage.** Los identificadores de cuadros y de hallazgos son inventados.
+
+### Errores y límites
+
+Las entrevistas reflejan la memoria; confírmelas con evidencia. Nunca reinicie ni desconecte dispositivos durante un recorrido por la planta salvo que el responsable lo pida y operaciones esté de acuerdo.
+
+### Ejercicios — capítulo 14
+
+- **EX040 — Tres objetivos del recorrido por la planta.** Enumere tres cosas que buscar en un cuadro de control. *Rúbrica:* 3 = tres pertinentes (módems, etiquetas con contraseñas, dispositivos desconocidos, portátiles conectados); 2 = dos; 1 = una; 0 = nada.
+- **EX041 — Una pregunta abierta de entrevista.** Escriba una pregunta abierta para la empresa contratista sobre el acceso remoto. *Rúbrica:* 3 = abierta y específica del proceso; 2 = abierta pero genérica; 1 = de sí o no; 0 = nada.
+- **EX042 — Redactar las opciones de recomendación del hallazgo F-07.** Dé dos opciones aceptables para el router celular y la condición de cada una. *Rúbrica:* 3 = retirarlo; o apagado por defecto y encendido previa aprobación; condiciones indicadas; 2 = solo las opciones; 1 = dejarlo como está; 0 = nada.
+
+### Síntesis del capítulo
+
+Los recorridos por la planta, las entrevistas y las revisiones de configuración de solo lectura, enlazados por identificadores de evidencia, encuentran lo que los diagramas nunca muestran.
+
+### Siga estudiando — capítulo 14 de 30
+
+[← Capítulo 13 (borrador)](#ch-13) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 15 (borrador) →](#ch-15)
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Seguridad de TO, IoT y sistemas ciberfísicos: laboratorio guiado
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) analizar datos sintéticos de registradores en busca de desviaciones de temperatura; (2) relacionar el retardo de la alarma con la consecuencia para la seguridad alimentaria; (3) reconocer cómo cambiarían el resultado unos datos falsificados; y (4) documentar el resultado de un laboratorio con sus entradas y su salida.
+
+### 15.1 La pregunta del laboratorio
+
+¿Se mantuvo la antecámara refrigerada del Congelador 2 a 5 °C o menos y, si no, durante cuánto tiempo y saltó la alarma? El laboratorio usa diez lecturas sintéticas tomadas cada cinco minutos y una alarma que solo salta cuando una desviación dura al menos 10 minutos, un retardo que evita las alarmas molestas por la apertura de puertas.
+
+```python
+"""Lab 15: find cold-room temperature excursions in synthetic logger data (minutes, degC)."""
+readings = [(0, 2.1), (5, 2.4), (10, 3.0), (15, 5.6), (20, 7.2), (25, 8.4), (30, 6.9), (35, 4.8), (40, 3.9), (45, 2.6)]
+LIMIT, ALARM_DELAY = 5.0, 10
+start = None
+for t, v in readings:
+    if v > LIMIT and start is None: start = t
+    if v <= LIMIT and start is not None:
+        dur = t - start
+        print(f"excursion {start}-{t} min, duration {dur} min, peak {max(x for s, x in readings if start <= s < t)} C, alarm {'raised' if dur >= ALARM_DELAY else 'not raised'} (delay {ALARM_DELAY} min)")
+        start = None
+```
+
+Ejecútelo con `python3 lab_excursion.py`. Salida verificada:
+
+```text
+excursion 15-35 min, duration 20 min, peak 8.4 C, alarm raised (delay 10 min)
+```
+
+Los datos de la antecámara son el conjunto sintético A, que Priya usó en su informe más abajo. El conjunto A tiene un muestreo de 5 minutos, un límite de 5 °C y un retardo de alarma de 10 minutos, los valores que repite su registro.
+
+### 15.2 Interpretación
+
+La desviación empezó en el minuto 15 y terminó en el 35, duró 20 minutos y alcanzó un máximo de 8,4 °C. La alarma saltó porque 20 ≥ 10. La salida también nos indica el límite de resolución: con muestras cada cinco minutos, el inicio real podría estar en cualquier punto entre los minutos 10 y 15. Esa incertidumbre de cinco minutos importa en un registro de seguridad alimentaria: un contrato con un cliente que admita desviaciones de hasta 20 minutos se cumpliría o se incumpliría según el punto de esa ventana en que la desviación empezara realmente. El informe de Priya indica una duración de 20 minutos, con un inicio incierto de hasta cinco, y deja el juicio contractual al responsable de calidad.
+
+### 15.3 Qué cambiaría un atacante
+
+Si las lecturas de los minutos 15–30 se sustituyeran por valores en torno a 4 °C, el script no informaría de ninguna desviación: el registro mostraría cumplimiento mientras la mercancía se calentaba. Por eso el escenario del capítulo 13 compara los datos de los registradores en la nube con la sonda propia del PLC en el historiador: dos registros independientes son mucho más difíciles de falsificar de forma coherente. El informe de Priya recoge como limitación la falta de esa comprobación cruzada: el conjunto sintético A no tiene una sonda de HIST con la que comparar. En los datos reales de NCS, la sonda de HIST en la antecámara sería la comprobación cruzada: una lectura del registrador que discrepe de ella es una pregunta antes que una desviación.
+
+### 15.4 Registrar el resultado
+
+Registre el archivo de entrada (o su hash), la versión del script, los parámetros de límite y retardo, y la salida. Otro tecnólogo debe poder reproducirlo exactamente. El registro de Priya dice: «Laboratorio 15 sobre las lecturas de la antecámara (conjunto sintético A): una desviación de 15 a 35 min, 20 min, máximo de 8,4 °C, alarma activada con retardo de 10 min. Resolución: muestreo de 5 min, por lo que el inicio es incierto hasta 5 min. Comprobación de integridad: comparación con la sonda TT-A1 de HIST, no disponible en el conjunto sintético; recogida como limitación». Con el hash del archivo de entrada y el límite de 5 °C y el retardo de 10 minutos registrados, otro tecnólogo puede volver a ejecutarlo y obtener la misma línea.
+
+### Ejemplo resuelto (NCS sintética)
+
+Priya escribe: «Laboratorio 15 sobre las lecturas de la antecámara (conjunto sintético A): una desviación de 15 a 35 min, 20 min, máximo de 8,4 °C, alarma activada con retardo de 10 min. Resolución: muestreo de 5 min, por lo que el inicio es incierto hasta 5 min. Comprobación de integridad: comparación con la sonda TT-A1 de HIST, no disponible en el conjunto sintético; recogida como limitación».
+
+> **Caso sintético — Northgate Cold Storage.** Todas las lecturas son inventadas.
+
+### Errores y límites
+
+El script supone que las lecturas están ordenadas y espaciadas por igual. Una desviación que sigue en curso en la última muestra no se notifica: un error que merece la pena corregir.
+
+### Ejercicios — capítulo 15
+
+- **EX043 — Cambiar el retardo de la alarma.** Si `ALARM_DELAY = 25`, ¿qué imprime el laboratorio? *Rúbrica:* 3 = la misma desviación, `alarm not raised (delay 25 min)`; 2 = solo el estado de la alarma; 1 = ninguna desviación; 0 = nada.
+- **EX044 — El error de la desviación sin terminar.** Añada `(50, 6.0)` a las lecturas. ¿Qué ocurre y cómo lo corregiría? *Rúbrica:* 3 = la segunda desviación no se imprime; añadir una comprobación final tras el bucle; 2 = una de las dos; 1 = dice que se imprime; 0 = nada.
+- **EX045 — Comprobación de falsificación.** Describa una comprobación que revelaría lecturas sustituidas. *Rúbrica:* 3 = comparar con una sonda independiente del PLC o del historiador o con un segundo registrador, y señalar la discrepancia; 2 = parcial; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+Un laboratorio guiado convierte lecturas en bruto en una afirmación reproducible y acotada, y muestra exactamente dónde se esconderían los datos falsificados.
+
+### Siga estudiando — capítulo 15 de 30
+
+[← Capítulo 14 (borrador)](#ch-14) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 16 (borrador) →](../../en/book/MANUSCRIPT.md#ch-16)
 
 <a id="worked-results"></a>
 
@@ -541,6 +897,42 @@ Respuestas modelo para EX001–EX090. Northgate Cold Storage, Priya Nair y todas
 **EX026.** «El 12 de octubre, 2 de los 4 certificados de registradores de temperatura comprobados estaban caducados o vencían en menos de 30 días; los otros 36 registradores todavía no se han comprobado», usando el recuento real de la comprobación de certificados.
 
 **EX027.** «De 10 registradores comprobados el 4 de marzo, 2 seguían aceptando la contraseña por defecto del proveedor; los otros 30 registradores todavía no se han comprobado».
+
+**EX028.** Sensor: falsificar o desconectar TT-F2 para que marque menos temperatura que la real. Controlador: cambiar el punto de consigna del Congelador 2 en PLC-R1 (T0836). Actuador: forzar el apagado del compresor C-1 mediante una anulación manual o la manipulación de salidas.
+
+**EX029.** ETSI EN 303 645: sus disposiciones (sin contraseñas por defecto universales, divulgación de vulnerabilidades, software actualizable, comunicación segura) se traducen directamente en preguntas de compra; NIST IR 8259 es un buen complemento para preguntar qué hace el fabricante.
+
+**EX030.** Los registradores miden el Congelador 2 de forma independiente e informan por otro camino; si TT-F2 se falsifica para que marque −22 °C mientras la sala se calienta, los datos del registrador discreparán y revelarán el problema.
+
+**EX031.** HMI-C puede haber estado inactiva o apagada durante la ventana de observación, o el puerto espejo no veía su tráfico (por ejemplo, se comunica con los PLC a través de un conmutador que no se supervisaba).
+
+**EX032.** El conflicto de versión de PLC-R2: controla los compresores (consecuencia alta), y el firmware real (2.1) determina si los avisos le afectan, mientras que la cámara tiene una consecuencia baja para la refrigeración.
+
+**EX033.** `SENS-NH3  docs=-           network=fw 3.0   only-on-network`: aparece porque el bucle recorre la unión de ambas fuentes.
+
+**EX034.** Aparece una línea nueva `HMI-C -> PLC-R2 :502 approved`, y `approved but not seen` se convierte en una lista vacía `[]`, porque ya se han observado todos los flujos aprobados.
+
+**EX035.** «Flujo OFFICE-7 → PLC-R2:502: macro de informe energético que lee las horas de funcionamiento de los compresores. Sustitución: leer las horas de funcionamiento en la réplica del historiador en la DMZ. Bloquear oficina → control el 20 de marzo en la ventana de mantenimiento, una vez cambiada la macro. Responsable: Priya Nair con el responsable de instalaciones».
+
+**EX036.** La única función de la pasarela de los registradores es reenviar temperaturas a la nube, así que no necesita hablar Modbus con un controlador de compresores. Como está conectada a internet, un flujo así enlaza un servicio externo con la zona de control.
+
+**EX037.** «Una cuenta comprometida en la nube del proveedor de los registradores (amenaza) usa el portal del proveedor (camino) para alterar las lecturas almacenadas del Congelador 2 (acción), de modo que los registros de seguridad alimentaria muestran cumplimiento durante una desviación real y se expiden existencias echadas a perder (consecuencia), salvo que el registro independiente de temperatura del PLC en HIST se compare con los datos de la nube (salvaguarda)».
+
+**EX038.** Consecuencia 2: un cambio de punto de consigna puede calentar los congeladores y obligar a desechar existencias o incumplir las normas de seguridad alimentaria, pero es improbable que dañe a las personas, porque la seguridad del amoníaco es independiente, y las alertas de los registradores en la nube limitan el tiempo que pasa desapercibido.
+
+**EX039.** Las alertas de los registradores en la nube aparecen como salvaguarda frente al uso indebido de los puntos de consigna y también dan la segunda vista cuando se pierde HMI-C; NCS debería vigilar que el propio camino de alerta funciona (alertas de prueba, estado de la pasarela), porque muchos escenarios se apoyan en él.
+
+**EX040.** Routers celulares o wifi dentro del cuadro; etiquetas o notas que muestren contraseñas; dispositivos o cables que no estén en el inventario (por ejemplo, un portátil que se ha dejado conectado a un puerto de un PLC).
+
+**EX041.** «Cuénteme paso a paso la última vez que se conectó a NCS en remoto, desde su oficina hasta el momento en que vio la pantalla de la HMI».
+
+**EX042.** Opción 1: retirar el router si la empresa contratista confirma que el camino remoto principal cubre todas las necesidades de soporte. Opción 2: mantenerlo apagado y encenderlo solo a petición, con la aprobación del responsable de instalaciones y por un tiempo indicado, si de verdad se necesita un camino de respaldo durante las caídas de la red.
+
+**EX043.** `excursion 15-35 min, duration 20 min, peak 8.4 C, alarm not raised (delay 25 min)`: la desviación no cambia, pero 20 < 25.
+
+**EX044.** La lectura del minuto 50 inicia una nueva desviación (`start = 50`), pero el bucle termina antes de que ninguna lectura vuelva a ≤ 5 °C, así que no se imprime nada. Corrección: tras el bucle, si `start is not None`, imprimir la desviación abierta con «en curso en la última muestra».
+
+**EX045.** Comparar cada lectura del registrador con la sonda propia del PLC registrada en HIST (o con un segundo registrador en la misma sala) y señalar cualquier intervalo en que difieran más de una tolerancia acordada, por ejemplo 2 °C.
 
 <a id="references"></a>
 
