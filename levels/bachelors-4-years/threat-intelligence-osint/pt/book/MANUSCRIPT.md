@@ -1588,7 +1588,7 @@ Junte as peças, siga as regras do laboratório, relate com honestidade e torne 
 
 ### Continue estudando — capítulo 25 de 40
 
-[← Capítulo 24 (rascunho)](#ch-24) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 26 (rascunho) →](#ch-26)
+[← Capítulo 24 (rascunho)](#ch-24) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 26 (plano; texto em tradução) →](PLAN.md#ch-26)
 
 <a id="worked-results"></a>
 
