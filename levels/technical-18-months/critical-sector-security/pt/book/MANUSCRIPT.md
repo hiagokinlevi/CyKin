@@ -322,7 +322,6 @@ O segundo quadro traz a função 05, uma escrita de bobina única, então regist
 
 - Alertar sobre toda escrita sem verificar se a origem é a estação de engenharia nomeada na política.
 - Tratar um quadro malformado como ataque quando ele pode ser uma exportação truncada ou uma sondagem não Modbus; relate-o primeiro como malformado.
-- Presumir que um decodificador no centro de controle vê o tráfego entre dois dispositivos no mesmo switch de estação.
 
 ### Exercícios — capítulo 2
 
@@ -1489,16 +1488,13 @@ Use a mesa de testes identificada e depois consulte o coletor pela negação cor
 
 ### 11.7 Erros comuns e limites
 
-- Apenas testes negativos; a mudança quebra as operações sem que ninguém perceba.
+- Executar apenas testes negativos e não perceber que a coleta do historiador parou.
 - Contar um teste sem evidência.
 - Relatar "5 de 6 testes passaram" em vez da situação de cada requisito.
 - Verificar uma vez e presumir para sempre; verifique de novo depois de mudanças relacionadas.
 - O Laboratório 11 trata qualquer teste falho como requisito falho; um requisito também pode estar *parcialmente* verificado, se um teste cobrir só parte do seu escopo — diga isso com palavras.
 
-- Executar apenas testes negativos e não perceber que a coleta do historiador parou.
 - Deixar o REQ-6 sem teste porque produzir uma linha de negação no coletor parecia mais difícil do que ler a regra do firewall.
-- Relatar que cinco de seis testes passaram em vez da situação de cada requisito.
-- Verificar uma vez e nunca mais depois de uma mudança relacionada.
 
 ### Exercícios — capítulo 11
 
@@ -1651,13 +1647,12 @@ Recuse a escrita inteira se algum registrador não for gravável ou algum valor 
 ### 12.8 Erros comuns e limites
 
 - Usar um socket de rede real "só para testar" e deixá-lo vinculado a todas as interfaces.
-- Aceitar escritas parciais de vários registradores.
-- Esquecer que a resposta à função 6 é um eco, e então interpretá-la errado.
-- Tratar o comportamento do laboratório como comportamento do fornecedor.
-
-- Vincular um socket real em escuta para testes e deixá-lo em todas as interfaces.
 - Aceitar uma escrita parcial de vários registradores que muda alguns registradores antes de recusar outros.
+- Esquecer que a resposta à função 6 é um eco, e então interpretá-la errado.
+- Acrescentar a função 16 na atividade 12.7 sem reutilizar a política da escrita simples, de modo que o limite de 100–400 do registrador 7 vale para um caminho de escrita e não para o outro.
+- Testar apenas a escrita permitida e nunca as recusadas; o registro das respostas de exceção é a evidência de que a política funciona.
 - Tratar o comportamento de exceções do laboratório como comportamento de um fornecedor. Declare a contenção como propriedade técnica em todo relatório de laboratório.
+
 
 ### Exercícios — capítulo 12
 
@@ -2126,7 +2121,7 @@ As metas de desempenho da CISA listam controles sobre mídias removíveis e sobr
 
 Os documentos não devem conter senhas, chaves privadas, tokens de API nem códigos de uso único. Escreva "credencial da entrada `kw-rtu-eng` do cofre" em vez da credencial. Diagramas de rede, mapas de registradores e exportações de firewall de infraestrutura crítica são sensíveis: guarde-os com controle de acesso, compartilhe-os com base na necessidade de saber e retire-os dos chamados que vão para fornecedores. Este livro imprime alguns valores falsos apenas porque eles são falsos.
 
-Escreva "credencial da entrada do cofre", em vez da própria credencial. Guarde diagramas de rede, mapas de registradores e exportações de firewall com controle de acesso e retire-os dos chamados que vão para fornecedores. Este livro imprime valores falsos apenas porque eles são falsos; trate os reais como informação de projeto sensível.
+O nome da entrada do cofre pode aparecer com segurança em um chamado de mudança, porque indica a um engenheiro autorizado onde procurar sem revelar nada que um estranho possa usar. Mapas de registradores e exportações de firewall reais merecem o mesmo cuidado que as credenciais, já que juntos descrevem como uma estação pode ser alterada e a partir de onde.
 
 ### 16.5 Exemplo resolvido: uma instrução de trabalho (sintético)
 
