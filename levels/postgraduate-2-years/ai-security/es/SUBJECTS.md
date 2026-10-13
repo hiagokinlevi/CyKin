@@ -18,9 +18,9 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 | 2 | [06](book/PLAN.md#ch-06) | Seguridad de la IA y del aprendizaje automático: evaluación controlada | 50 | 35 | 5 | [Borrador](book/MANUSCRIPT.md#ch-06) | [07 · Borrador](book/MANUSCRIPT.md#ch-07) |
 | 3 | [07](book/PLAN.md#ch-07) | Seguridad de la IA y del aprendizaje automático: integración organizativa | 50 | 35 | 5 | [Borrador](book/MANUSCRIPT.md#ch-07) | [08 · Borrador](book/MANUSCRIPT.md#ch-08) |
 | 3 | [08](book/PLAN.md#ch-08) | Seguridad de la IA y del aprendizaje automático: casos difíciles | 50 | 35 | 5 | [Borrador](book/MANUSCRIPT.md#ch-08) | [09 · Borrador](book/MANUSCRIPT.md#ch-09) |
-| 3 | [09](book/PLAN.md#ch-09) | Seguridad de la IA y del aprendizaje automático: liderazgo y aseguramiento | 50 | 35 | 5 | [Borrador](book/MANUSCRIPT.md#ch-09) | [10 · Plan](book/PLAN.md#ch-10) |
-| 4 | [10](book/PLAN.md#ch-10) | Lectura y crítica de la investigación | 50 | 35 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-10)) | [11 · Plan](book/PLAN.md#ch-11) |
-| 4 | [11](book/PLAN.md#ch-11) | Proyecto aplicado | 50 | 35 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-11)) | [12 · Plan](book/PLAN.md#ch-12) |
-| 4 | [12](book/PLAN.md#ch-12) | Revisión final y transferencia | 50 | 35 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-12)) | [Curso 159 →](../../quantum-post-quantum-security/es/SUBJECTS.md) |
+| 3 | [09](book/PLAN.md#ch-09) | Seguridad de la IA y del aprendizaje automático: liderazgo y aseguramiento | 50 | 35 | 5 | [Borrador](book/MANUSCRIPT.md#ch-09) | [10 · Borrador](book/MANUSCRIPT.md#ch-10) |
+| 4 | [10](book/PLAN.md#ch-10) | Lectura y crítica de la investigación | 50 | 35 | 5 | [Borrador](book/MANUSCRIPT.md#ch-10) | [11 · Borrador](book/MANUSCRIPT.md#ch-11) |
+| 4 | [11](book/PLAN.md#ch-11) | Proyecto aplicado | 50 | 35 | 5 | [Borrador](book/MANUSCRIPT.md#ch-11) | [12 · Borrador](book/MANUSCRIPT.md#ch-12) |
+| 4 | [12](book/PLAN.md#ch-12) | Revisión final y transferencia | 50 | 35 | 5 | [Borrador](book/MANUSCRIPT.md#ch-12) | [Curso 159 →](../../quantum-post-quantum-security/es/SUBJECTS.md) |
 
 Un siguiente paso planificado es un destino de navegación, no una lección escrita. Las columnas de páginas y ejercicios son metas editoriales. El libro solo estará completo cuando su contenido y su maquetación A4 cumplan el criterio de publicación.

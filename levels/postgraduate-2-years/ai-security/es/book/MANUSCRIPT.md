@@ -27,7 +27,7 @@ Las fuentes se comprobaron el 12 de octubre de 2026: NIST [AI 100-1](https://doi
 |---|---|
 | Decisiones y práctica actual | [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) |
 | Diseño, evaluación e integración | [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) |
-| Investigación, proyecto y transferencia | [10](../../en/book/MANUSCRIPT.md#ch-10) · [11](../../en/book/MANUSCRIPT.md#ch-11) · [12](../../en/book/MANUSCRIPT.md#ch-12) |
+| Investigación, proyecto y transferencia | [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
 
@@ -771,7 +771,239 @@ El liderazgo en seguridad de la IA convierte la evidencia en casos de aseguramie
 
 ### Siga estudiando — capítulo 09 de 12
 
-[← Capítulo 08 (borrador)](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 (borrador) →](../../en/book/MANUSCRIPT.md#ch-10)
+[← Capítulo 08 (borrador)](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 (borrador) →](#ch-10)
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Lectura y crítica de la investigación
+
+### Resultados de aprendizaje
+
+Usted podrá (1) leer con eficiencia artículos sobre seguridad de la IA; (2) criticar los modelos de amenaza, los métodos y las evaluaciones; (3) juzgar si los resultados son trasladables a su contexto; (4) seguir de forma sostenible una literatura que avanza con rapidez; y (5) redactar la crítica de un profesional.
+
+### 10.1 Leer con eficiencia
+
+Lea en tres pasadas: el resumen, las figuras y la conclusión para decidir la pertinencia; el modelo de amenaza y el método para entender la afirmación; la evaluación y las limitaciones para juzgarla. Guarde una nota de un párrafo por artículo: afirmación, modelo de amenaza, evidencia, límites y pertinencia para sus sistemas. La crítica de Amira al preprint del ejemplo resuelto que sigue usó la segunda y la tercera pasada para descubrir que faltaba el atacante adaptativo. Archive cada nota donde el equipo pueda encontrarla. Mantenga las notas lo bastante breves para leerlas en un minuto y etiquete cada una con los sistemas a los que afecta, para que puedan encontrarse cuando una decisión las necesite.
+
+### 10.2 Preguntas de crítica
+
+¿Qué puede hacer y saber el atacante? ¿Es realista el modelo de amenaza para su despliegue? ¿Se incluyen líneas base y ataques adaptativos? ¿Se miden los resultados por sus efectos y se comunican con su incertidumbre? ¿Rompería el resultado un pequeño cambio de contexto? ¿Publicaron los autores el código y los datos? Artículos como el de Carlini et al. (arXiv:1902.06705) ofrecen una lista de comprobación para las evaluaciones de robustez; Arp et al. (arXiv:2010.09470) enumeran errores habituales del aprendizaje automático aplicado a la seguridad, entre ellos el sesgo de muestreo, el fisgoneo de datos (*data snooping*) y las líneas base inadecuadas.
+
+### 10.3 Traslado a la práctica
+
+Un ataque demostrado en un modelo abierto con acceso de caja blanca puede no aplicarse a un despliegue al que solo se accede por API, aunque resultados de transferencia como los de Zou et al. (arXiv:2307.15043) muestran que algunos ataques encontrados en modelos abiertos funcionan en modelos cerrados. Una defensa evaluada con un banco de pruebas público puede fallar con su tráfico. Indique explícitamente los supuestos de traslado. Para Corvane, una defensa probada solo con bancos de pruebas públicos necesitaría probarse con correos de transportistas antes de confiar en ella. Escriba cada supuesto de traslado en la nota. Revíselo después de las pruebas.
+
+### 10.4 Mantenerse al día
+
+Siga un conjunto pequeño de fuentes: las actualizaciones de NIST y OWASP, los estudios de caso de MITRE ATLAS, los principales congresos de seguridad y de aprendizaje automático, y los servidores de preprints con escepticismo. Celebre una sesión mensual de lectura en la que una persona presente la pertinencia de un artículo para los sistemas de la empresa. En Corvane, la sesión mensual mantiene la rutina de lectura lo bastante pequeña para que sea sostenible. Rote a quien presenta y registre en cada nota qué cambió, si cambió algo, en los sistemas o los planes de Corvane como resultado. Abandone las fuentes que rara vez aportan algo pertinente y añada una cuando un compañero encuentre otra mejor.
+
+### 10.5 Ejemplo resuelto (caso sintético de Corvane)
+
+Un compañero hace circular un preprint que afirma que un nuevo filtro «elimina la inyección de *prompts*». La crítica de Amira: la evaluación usa 200 cadenas de inyección públicas sin atacante adaptativo; el éxito se mide por el texto del modelo y no por las llamadas a herramientas; no se comunica ninguna tasa de rechazos indebidos; el código no se ha publicado. Su conclusión: interesante como señal de monitorización; no es evidencia para retirar el servicio de políticas. Lo contrasta con Greshake et al. (arXiv:2302.12173), cuyas demostraciones contra aplicaciones reales motivaron el diseño de Corvane.
+
+La crítica decidió lo que el preprint podía y no podía justificar en Corvane.
+
+### 10.6 Errores y límites
+
+- Citar resúmenes sin leer las evaluaciones.
+- Suponer que los resultados son trasladables sin comprobar los modelos de amenaza.
+- Perseguir cada preprint.
+
+Cada error permite que una investigación débil oriente las decisiones. Un resumen puede afirmar más de lo que muestra la evaluación, como hacía el «elimina» del preprint. Un resultado en un modelo abierto con acceso de caja blanca puede no aplicarse a un despliegue al que solo se accede por API. Perseguir cada preprint consume un tiempo mejor empleado en unos pocos artículos pertinentes al mes. Contraste sus notas con estos tres errores antes de citar un artículo en un registro de decisión.
+
+### Ejercicios
+
+- **EX046 — Nota.** Redacte una nota de cinco campos sobre Shokri et al. (arXiv:1610.05820). Rúbrica: 3 = afirmación, modelo de amenaza, evidencia, límites, pertinencia; 2 = cuatro; 1 = dos; 0 = nada.
+- **EX047 — Crítica.** Aplique cuatro preguntas de crítica al preprint del §10.5. Rúbrica: 3 = cuatro respondidas con evidencia; 2 = tres; 1 = una o dos; 0 = ninguna.
+- **EX048 — Traslado.** ¿Cuándo importa un ataque de caja blanca para un sistema al que solo se accede por API? Rúbrica: 3 = transferencia, modelos sustitutos, base de pesos abiertos; 2 = uno o dos; 1 = vago; 0 = nunca.
+- **EX049 — Errores habituales.** Nombre tres errores habituales de Arp et al. y un ejemplo de cada uno en la evaluación de la seguridad de la IA. Rúbrica: 3 = tres con ejemplos; 2 = dos; 1 = uno; 0 = ninguno.
+- **EX050 — Plan de lectura.** Diseñe una rutina de lectura sostenible para un equipo de cinco personas. Rúbrica: 3 = fuentes, cadencia, roles, resultado; 2 = tres; 1 = vago; 0 = nada.
+
+### Síntesis
+
+Los profesionales leen la investigación por su modelo de amenaza y su evidencia, no por su titular. Critique de forma sistemática, indique los supuestos de traslado y mantenga una rutina sostenible.
+
+### Siga estudiando — capítulo 10 de 12
+
+[← Capítulo 09 (borrador)](#ch-09) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 11 (borrador) →](#ch-11)
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Proyecto aplicado
+
+### Resultados de aprendizaje
+
+Usted podrá (1) delimitar el alcance de un proyecto aplicado de seguridad de la IA con una organización; (2) planificar el trabajo, la evidencia y las decisiones; (3) ejecutarlo con autorización y de forma segura; (4) evaluar los resultados frente a los criterios; y (5) entregar resultados que la organización pueda usar.
+
+### 11.1 Delimitación del alcance
+
+Un buen proyecto responde a una decisión que la organización debe tomar: «¿Debemos activar la reprogramación autónoma?», «¿Reduce la deduplicación la fuga de nuestro modelo ajustado?». Acuerde quién toma la decisión, los sistemas incluidos en el alcance, la autorización por escrito, las reglas sobre los datos (sintéticos o aprobados), los criterios de éxito y el calendario. El proyecto de Tomás del ejemplo resuelto que sigue se delimitó así, con criterios acordados para la ventaja y la calidad de las respuestas. En el proyecto de Tomás, quien tomaba la decisión era Amira, el sistema incluido era una copia aislada del modelo de sugerencia de respuestas y los datos eran mensajes sintéticos de clientes. Ponga todo esto por escrito y consiga que se firme antes de que empiece cualquier prueba.
+
+### 11.2 Planificación
+
+Planifique por fases: línea base (estado actual y riesgo), intervención (diseño o controles), evaluación (pruebas controladas), apoyo a la decisión (informe y recomendación) y traspaso. Cada fase tiene un entregable y una revisión. Mantenga un registro de riesgos del propio proyecto: daños causados por las pruebas, exposición de datos, retrasos en el calendario. En el proyecto de Tomás, las fases fueron una medición de la fuga de línea base, la deduplicación como intervención, pruebas controladas en la copia aislada, una recomendación y el traspaso. Actualice el registro de riesgos cada semana.
+
+### 11.3 Ejecución
+
+Trabaje con copias aisladas. Registre cada prueba. Deténgase y escale si encuentra una vulnerabilidad real que afecte a los clientes; eso tiene prioridad sobre el calendario del proyecto. Celebre revisiones semanales con quien toma la decisión. Tomás trabajó solo con la copia aislada de Corvane y registró cada ejecución con sus versiones. Anote en el registro del proyecto cualquier cosa inesperada, aunque no haya cambiado el resultado, y comuníquesela a quien toma la decisión en la siguiente revisión semanal. Mantenga los datos de prueba y los registros en la copia aislada.
+
+### 11.4 Evaluación
+
+Mida frente a los criterios acordados al delimitar el alcance. Use casos reservados y adaptativos y mida los efectos secundarios. Comunique los fallos con honestidad.
+
+```python
+"""Lab M: membership inference against an overfit 1-nearest-neighbour 'model'
+that returns a confidence score. Synthetic records only; teaching model."""
+import random, math
+rng = random.Random(5)
+def rec(): 
+    y = rng.random() < 0.5
+    return [rng.gauss(0.6 if y else -0.6, 1.0) for _ in range(4)], int(y)
+members = [rec() for _ in range(150)]; nonmembers = [rec() for _ in range(150)]
+def confidence(x, y, k):
+    # k-NN vote share for the true label, computed over the training set
+    d = sorted((sum((a-b)**2 for a, b in zip(x, m)), my) for m, my in members)
+    return sum(1 for _, my in d[:k] if my == y)/k
+def auc(pos, neg):
+    s = sum((p > n) + 0.5*(p == n) for p in pos for n in neg)
+    return s/(len(pos)*len(neg))
+for k in (1, 5, 25):
+    pos = [confidence(x, y, k) for x, y in members]
+    neg = [confidence(x, y, k) for x, y in nonmembers]
+    best = max(sum(p >= t for p in pos)/len(pos) - sum(n >= t for n in neg)/len(neg)
+               for t in sorted(set(pos + neg)))
+    print(f"k={k:2d} attack_auc={auc(pos, neg):.3f} best_advantage={best:.3f}")
+```
+
+Salida esperada:
+
+```text
+k= 1 attack_auc=0.600 best_advantage=0.200
+k= 5 attack_auc=0.521 best_advantage=0.073
+k=25 attack_auc=0.520 best_advantage=0.060
+```
+
+Tomás midió la ventaja y la calidad de las respuestas frente a los criterios acordados al delimitar el alcance: una ventaja inferior a 0,1 con una pérdida de calidad de menos de 2 puntos. Comunicó ambas, incluido el coste en calidad. Si no se cumple un criterio, dígalo y explique qué haría falta para cumplirlo. Use casos reservados para la medición final e incluya casos adaptativos escritos por alguien que no construyó la defensa. Comunique las cifras con sus intervalos.
+
+### 11.5 Traspaso
+
+Entregue: el informe; el banco de evaluación y los conjuntos de pruebas, para que las pruebas puedan repetirse; los cambios de configuración; los manuales de actuación; y una lista de riesgos abiertos con sus responsables. Un proyecto que no puede repetirse cuando usted se marcha tiene un valor limitado. Tomás entregó el banco de evaluación, el trabajo de deduplicación y un manual de actuación para repetir las pruebas después de cada ajuste, de modo que Corvane puede repetir la medición. Incluya responsables designados para los riesgos abiertos y una fecha para la primera repetición de las pruebas. Compruebe que otra persona puede ejecutar el banco de evaluación antes de marcharse.
+
+### 11.6 Ejemplo resuelto (caso sintético de Corvane)
+
+Un estudiante en prácticas, Tomás, asume la pregunta de Amira: ¿reduce la fuga por inferencia de pertenencia deduplicar los mensajes de clientes antes de ajustar un modelo de sugerencia de respuestas? Criterios: ventaja del ataque inferior a 0,1 con una pérdida de menos de 2 puntos en la calidad de las respuestas. En el análogo del laboratorio, un modelo que en la práctica memoriza sus registros de entrenamiento (k = 1) da una ventaja de 0,20; a medida que generaliza (k mayor), la ventaja baja a aproximadamente 0,06–0,07. En la copia aislada de Corvane, la deduplicación reduce la ventaja de 0,17 a 0,06 con 1 punto de pérdida de calidad. Entrega el banco de evaluación, el trabajo de deduplicación y un manual de actuación para repetir las pruebas después de cada ajuste.
+
+Los criterios se cumplieron.
+
+### 11.7 Errores y límites
+
+- Proyectos sin nadie que tome la decisión.
+- Probar en producción.
+- Traspasar un informe pero no el banco de evaluación.
+
+Cada error limita el valor del proyecto. Sin alguien que tome la decisión, los resultados no tienen adónde ir. Probar en producción puede perjudicar a los clientes e incumple la autorización. Un informe sin el banco de evaluación no puede repetirse tras el siguiente ajuste, y por eso Tomás entregó su banco de evaluación y su manual de actuación. Resuelva los tres en el plan del proyecto antes de empezar el trabajo y pida a su supervisor que los confirme por escrito.
+
+### Ejercicios
+
+- **EX051 — Alcance.** Redacte en una página el alcance de un proyecto aplicado sobre la robustez de DocRead. Rúbrica: 3 = decisión, responsable, alcance, autorización, datos, criterios, calendario; 2 = cinco; 1 = tres; 0 = nada.
+- **EX052 — Riesgos del proyecto.** Enumere cuatro riesgos del proyecto con sus mitigaciones. Rúbrica: 3 = cuatro pertinentes; 2 = tres; 1 = uno o dos; 0 = ninguno.
+- **EX053 — Vulnerabilidad real.** Durante el proyecto descubre que las direcciones de clientes quedan expuestas a través de Copilot. ¿Qué hace? Rúbrica: 3 = detenerse, escalar, conservar la evidencia, seguir el proceso de incidentes; 2 = parcial; 1 = anotarlo en el informe; 0 = continuar.
+- **EX054 — Laboratorio de inferencia de pertenencia.** Interprete las filas del laboratorio para la pregunta de la deduplicación. Rúbrica: 3 = la memorización (k = 1) da la mayor ventaja, relación con la deduplicación, advertencia de modelo de juguete; 2 = parcial; 1 = vago; 0 = incorrecto.
+- **EX055 — Traspaso.** Enumere el paquete de traspaso del proyecto de Tomás. Rúbrica: 3 = informe, banco de evaluación, conjuntos de pruebas, configuración, manual de actuación, riesgos; 2 = cuatro; 1 = dos; 0 = nada.
+
+### Síntesis
+
+Los proyectos aplicados sirven a una decisión real, se ejecutan de forma segura con autorización, miden frente a criterios acordados y dejan herramientas que la organización puede reutilizar.
+
+### Siga estudiando — capítulo 11 de 12
+
+[← Capítulo 10 (borrador)](#ch-10) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 12 (borrador) →](#ch-12)
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Revisión final y transferencia
+
+### Resultados de aprendizaje
+
+Usted podrá (1) repasar los principios fundamentales del curso; (2) transferirlos a nuevas tecnologías de IA; (3) elaborar un plan de práctica personal; (4) orientar a otras personas; y (5) evaluar su propia preparación para liderar.
+
+### 12.1 Principios que conservar
+
+Decida entre opciones con una incertidumbre explícita. Relacione cada sistema con las taxonomías y después con sus propios datos, herramientas y personas afectadas. Suponga que los modelos pueden ser dirigidos; aplique las consecuencias fuera de ellos. Evalúe de forma adaptativa, mida los efectos y comunique intervalos. Integre la IA en los procesos existentes. Asegure las afirmaciones con evidencia fechada y manténgalas vigentes. Lea la investigación por su modelo de amenaza. Cada principio aparece en el trabajo de Corvane: el registro de la decisión sobre los reembolsos, la correspondencia del copiloto, el servicio de políticas y el caso de aseguramiento fechado. Úselos como lista de comprobación para el trabajo nuevo.
+
+### 12.2 Transferencia a nuevas tecnologías
+
+Seguirán llegando nuevas capacidades: agentes de uso del ordenador, entradas multimodales, modelos en el dispositivo, protocolos entre modelos. Plantee las mismas preguntas: ¿qué entrada no fiable llega al modelo? ¿Qué puede hacer? ¿Qué aplica los límites fuera de él? ¿Qué evidencia muestra que los límites se mantienen? Las entradas multimodales, por ejemplo, amplían el canal de inyección a las imágenes y el audio; el principio de separar el contenido no fiable de la autoridad sigue aplicándose. El agente de uso del ordenador de Amira, en el ejemplo resuelto que sigue, muestra la transferencia: las páginas del portal son entradas no fiables y un proxy aplica las operaciones enumeradas.
+
+### 12.3 Plan de práctica personal
+
+Planifique el próximo año: un sistema que asegurará de principio a fin; una evaluación que automatizará; un artículo al mes; una contribución a la comunidad (un conjunto de pruebas, una charla, un comentario a un marco); y compromisos éticos: pruebas autorizadas, divulgación coordinada, comunicación honesta. Haga que cada elemento sea medible y tenga una fecha. Por ejemplo, un sistema asegurado de principio a fin podría ser un sistema de nivel alto de su organización con un caso de aseguramiento fechado y una evaluación que se vuelve a ejecutar automáticamente. Revise el plan con un colega cada trimestre.
+
+### 12.4 Orientación
+
+Enseñe a los más nuevos a preguntar «¿qué puede hacer?» antes que «¿qué puede decir?». Revise sus evaluaciones en busca de casos adaptativos e intervalos. Comparta los registros de decisión para que vean el razonamiento y no solo los resultados.
+
+```python
+"""Lab B: base rates and alarm precision (Bayes' rule).
+A detector for malicious prompts with given true- and false-positive rates
+is applied to traffic with different shares of malicious prompts."""
+for tpr, fpr in ((0.95, 0.05), (0.95, 0.01), (0.80, 0.001)):
+    for prev in (0.10, 0.01, 0.001):
+        tp = tpr * prev; fp = fpr * (1 - prev)
+        prec = tp / (tp + fp)
+        per_10k = round(10000 * (tp + fp))
+        print(f"tpr={tpr:.2f} fpr={fpr:.3f} prevalence={prev:.3f} precision={prec:.3f} alerts_per_10k={per_10k}")
+```
+
+Salida esperada:
+
+```text
+tpr=0.95 fpr=0.050 prevalence=0.100 precision=0.679 alerts_per_10k=1400
+tpr=0.95 fpr=0.050 prevalence=0.010 precision=0.161 alerts_per_10k=590
+tpr=0.95 fpr=0.050 prevalence=0.001 precision=0.019 alerts_per_10k=509
+tpr=0.95 fpr=0.010 prevalence=0.100 precision=0.913 alerts_per_10k=1040
+tpr=0.95 fpr=0.010 prevalence=0.010 precision=0.490 alerts_per_10k=194
+tpr=0.95 fpr=0.010 prevalence=0.001 precision=0.087 alerts_per_10k=109
+tpr=0.80 fpr=0.001 prevalence=0.100 precision=0.989 alerts_per_10k=809
+tpr=0.80 fpr=0.001 prevalence=0.010 precision=0.890 alerts_per_10k=90
+tpr=0.80 fpr=0.001 prevalence=0.001 precision=0.445 alerts_per_10k=18
+```
+
+En Corvane, las prácticas de Tomás ilustran la idea: aprendió de los registros de decisión y las revisiones de Amira y después escribió su propio banco de evaluación y su manual de actuación. Pida a los más nuevos que expliquen su razonamiento antes de dar el suyo y revise su trabajo con los mismos principios que aplica al propio. Déjeles cometer pequeños errores en entornos seguros.
+
+### 12.5 Comprobación de la preparación
+
+¿Puede redactar un registro de decisión sobre el que un consejo pueda actuar? ¿Puede diseñar una evaluación que cambie una decisión? ¿Puede explicar por qué un detector con un 95 % de exactitud puede producir sobre todo falsas alarmas (el laboratorio: con una prevalencia del 0,1 %, la precisión es del 1,9 %)? ¿Puede guiar una decisión disputada sin ocultar la incertidumbre? Responda a cada pregunta con un ejemplo de su propio trabajo, como un registro de decisión o una evaluación, y pida a un colega que juzgue si convencería a un consejo. Donde no pueda, planifique cómo desarrollar esa capacidad este año.
+
+### 12.6 Ejemplo resuelto (caso sintético de Corvane)
+
+Un año después, Corvane planea un agente de uso del ordenador para manejar un portal heredado de un transportista. Amira aplica las mismas preguntas: las páginas del portal son entradas no fiables; los clics del agente son acciones; la aplicación de los límites debe residir en un proxy que solo permita las operaciones enumeradas con las credenciales del usuario; la evaluación necesita páginas adaptativas con instrucciones ocultas. Su registro de decisión propone primero un piloto de tres meses con operaciones de solo lectura.
+
+La propuesta sigue el mismo razonamiento que las decisiones sobre los reembolsos y la reprogramación. La evaluación y la aplicación de los límites se planifican antes de permitir cualquier operación de escritura.
+
+### 12.7 Errores y límites
+
+- Tratar cada nueva tecnología como si necesitara principios nuevos.
+- Planes sin compromisos medibles.
+- Una orientación que transmite respuestas en lugar de razonamiento.
+
+Cada error debilita la transferencia. Las nuevas tecnologías requieren las mismas preguntas sobre las entradas no fiables y la aplicación de los límites; inventar principios nuevos cada vez hace perder lo aprendido. Un plan sin compromisos medibles se abandona con facilidad. Una orientación que entrega respuestas deja a los más nuevos incapaces de razonar sobre el siguiente sistema. Revise su plan de práctica en busca de los tres.
+
+### Ejercicios
+
+- **EX056 — Principios.** Enuncie los cinco principios que enseñaría primero, con una frase cada uno. Rúbrica: 3 = cinco pertinentes; 2 = cuatro; 1 = dos; 0 = ninguno.
+- **EX057 — Transferencia.** Aplique las cuatro preguntas a un asistente de voz que puede hacer pedidos. Rúbrica: 3 = las cuatro respondidas de forma concreta; 2 = tres; 1 = una o dos; 0 = ninguna.
+- **EX058 — Tasa base.** Usando el laboratorio, explique la carga de alertas de un detector con un 1 % de falsos positivos y una prevalencia del 1 %. Rúbrica: 3 = precisión 0,49, 194 alertas por cada 10 000, implicación; 2 = solo las cifras; 1 = una; 0 = incorrecto.
+- **EX059 — Plan de práctica.** Redacte su plan para un año. Rúbrica: 3 = cinco elementos medibles, incluida la ética; 2 = cuatro; 1 = dos; 0 = nada.
+- **EX060 — Piloto.** Justifique empezar con solo lectura para el agente de uso del ordenador. Rúbrica: 3 = reversibilidad, obtención de evidencia, daño acotado, desencadenantes; 2 = tres; 1 = uno; 0 = nada.
+
+### Síntesis
+
+Los principios de este curso se transfieren a nuevas tecnologías de IA porque se refieren a la autoridad, la evidencia y la rendición de cuentas, y no a un modelo concreto. Siga practicándolos, enseñándolos y revisándolos.
+
+### Siga estudiando — capítulo 12 de 12
+
+[← Capítulo 11 (borrador)](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Resultados resueltos ↓](#worked-results) · [Siguiente curso a través del índice de capítulos →](../SUBJECTS.md)
 
 <a id="worked-results"></a>
 
@@ -903,6 +1135,48 @@ Recomendación: B.
 **EX044.** La puntuación z robusta de un cliente (unos 30) está muy por encima de la de todos los demás (todas por debajo de 2). Su volumen de consultas sugiere *scraping* o extracción. Investigue su identidad, aplique un límite de tasa y revise sus patrones de consulta.
 
 **EX045.** 2 de 12 000 es aproximadamente un 0,017 %, con una cota superior al 95 % de aproximadamente el 0,06 %. Con 60 000 reembolsos × 50 €, el peor coste plausible es de unos 1800 €, dentro del apetito de riesgo de 10 000 €. Apruébelo, mantenga la monitorización y anote como punto débil el compromiso del correo de un transportista.
+
+**EX046.** Afirmación: los modelos filtran la pertenencia al conjunto de entrenamiento a través de sus salidas. Modelo de amenaza: acceso de consulta de caja negra, con modelos sombra entrenados con datos similares. Evidencia: ataques contra varios modelos comerciales y académicos. Límites: necesita datos similares, y el efecto es más fuerte con sobreajuste. Pertinencia: el modelo de respuestas ajustado de Corvane.
+
+**EX047.**
+- Modelo de amenaza: sin especificar y no adaptativo.
+- Líneas base: ninguna.
+- Efectos: medidos por el texto, no por las llamadas a herramientas.
+- Traslado: desconocido; no se publicó código.
+
+**EX048.** Cuando el modelo desplegado se basa en un modelo de pesos abiertos o se parece a él; cuando los ataques encontrados en modelos sustitutos se transfieren (como muestran Zou et al.); o cuando se filtran los pesos del modelo.
+
+**EX049.**
+- Sesgo de muestreo: pruebas de inyección extraídas de un único conjunto de datos público.
+- Fisgoneo de datos: ajustar un filtro con el conjunto de evaluación.
+- Línea base inadecuada: comparar con la ausencia de defensa en lugar de con una simple lista de permitidos.
+
+**EX050.** Fuentes: NIST, OWASP, ATLAS y dos congresos. Cadencia: mensual. Roles: una persona que presenta, por turnos, y otra que toma notas. Resultado: una nota de pertinencia de una página archivada en la wiki, con las acciones registradas.
+
+**EX051.** Decisión: ¿pueden las salidas de DocRead alimentar la facturación sin revisión humana? Responsable: el director de operaciones. Alcance: una copia aislada de DocRead. Autorización: por escrito. Datos: escaneos sintéticos. Criterios: tasa de error por campo inferior al 1 %, sin que ningún escaneo adversario cambie los importes. Calendario: 12 semanas.
+
+**EX052.** Daños a sistemas de prueba compartidos → copia aislada. Exposición de datos → solo datos sintéticos. Retrasos en el calendario → entregables por fases. Ampliación del alcance → registro de cambios aprobado por el responsable.
+
+**EX053.** Detenga esa línea de pruebas. Conserve la evidencia. Informe de inmediato al responsable de seguridad a través del proceso de incidentes. Siga las indicaciones de contención. Reanude el proyecto solo cuando se le autorice.
+
+**EX054.** En el laboratorio, el modelo que en la práctica memoriza sus registros de entrenamiento (k = 1) da la mayor ventaja del ataque (0,20), y la ventaja baja a aproximadamente 0,06–0,07 a medida que un k mayor lo hace generalizar, así que la memorización determina cuánta pertenencia se filtra; los mensajes duplicados favorecen precisamente esa memorización. En la copia de Corvane, la deduplicación redujo la ventaja de 0,17 a 0,06. Esto respalda la deduplicación como mitigación, pero el laboratorio es un modelo de juguete, así que verifíquelo con el ajuste real.
+
+**EX055.** El informe, el banco de evaluación, los conjuntos de pruebas, el trabajo de deduplicación y su configuración, un manual de actuación para repetir las pruebas y una lista de riesgos abiertos con sus responsables.
+
+**EX056.**
+1. Decida con opciones e incertidumbre.
+2. Relacione con los datos, las herramientas y las personas del sistema.
+3. Aplique los controles fuera del modelo.
+4. Evalúe de forma adaptativa, con intervalos.
+5. Mantenga un aseguramiento fechado y revíselo.
+
+**EX057.** Entrada no fiable: la voz de quien llama, más las descripciones de productos leídas en voz alta. Capacidades: hacer pedidos y pagos. Límites externos: topes de pedido, confirmación con un segundo factor, una lista de comercios permitidos. Evidencia: pruebas de voz adaptativas y monitorización de anomalías en los pedidos.
+
+**EX058.** La precisión es de 0.490 y hay 194 alertas por cada 10 000 eventos. Aproximadamente la mitad de las alertas son falsas, por lo que la carga de revisión es considerable y los analistas pueden desconectar.
+
+**EX059.** Asegurar un sistema de principio a fin antes del segundo trimestre. Automatizar una evaluación en la integración continua. Leer 12 artículos y redactar notas. Dar una charla en un congreso o contribuir con un conjunto de pruebas. Asumir compromisos éticos: solo pruebas autorizadas y divulgación coordinada.
+
+**EX060.** El trabajo de solo lectura es reversible y no causa daños directos. Produce evidencia sobre la inyección desde las páginas del portal y crea un historial de operación. Desencadenantes para ampliarlo: cero infracciones de la política en 1000 sesiones, más una revisión independiente.
 
 <a id="references"></a>
 
