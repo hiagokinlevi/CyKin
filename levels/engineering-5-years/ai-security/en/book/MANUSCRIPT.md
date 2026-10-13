@@ -2023,21 +2023,31 @@ for case in [("viewer", "create_work_order", {}, False), ("technician", "search"
 
 It prints `deny`, `allow` and `confirm: tainted arguments` for the three cases.
 
+The order of checks matters: role first, so a viewer's request is refused before anything else is examined, then impact and taint. A technician's search with tainted arguments is allowed, because search changes nothing, while any work order needs confirmation and the tainted one says why.
+
 ### 28.2 Provenance labelling
 
 When assembling a prompt, wrap each retrieved chunk with its source and trust level, and state in the system instructions that labelled untrusted content is data. This helps the model but is *not* a security boundary; the enforcement point remains authoritative.
+
+A typical wrapper reads: '[source: supplier bulletin SB-2291, trust: external] … [end source]'. Labels improve the model's behaviour on average and give technicians context when they review a proposal, since the confirmation screen can show which labelled sources influenced it. But an attacker can write text that imitates a label or tells the model to disregard it, which is why the label informs and the enforcement point decides.
 
 ### 28.3 Output validation and secret scanning
 
 Validate structured outputs with strict parsers. Scan free-text outputs for secrets (API-key patterns, internal hostnames) and for personal data before display or sending. Escape outputs before rendering in web pages to avoid script injection (OWASP LLM05).
 
+A strict parser rejects anything outside the expected structure instead of guessing what was meant. Secret scanning uses the same patterns as code repositories and adds internal names that should never leave the organisation. Escaping matters because a model can be induced to emit script tags or links, and a chat interface that renders them would run an attacker's code in a technician's browser.
+
 ### 28.4 Testing the implementation
 
 Unit tests cover each rule; property tests generate random proposals and check invariants; adversarial tests replay a corpus of injected documents end to end and verify that no forbidden action executes.
 
+The three kinds catch different faults. Unit tests show each rule does what it says. Property tests find combinations nobody thought of, such as an empty role string. End-to-end replay checks the whole path, including adapters and logging, which is where ordering bugs hide. The replay corpus grows with every new attack pattern found, and a case once added is never removed, so old weaknesses cannot quietly return.
+
 ### 28.5 Worked example (synthetic NRS case)
 
 Sam implemented the enforcement point as a separate service with 140 lines of policy code and 60 tests. An adversarial replay of 600 synthetic injected bulletins produced 41 model proposals for work orders; all 41 were routed to confirmation with the tainted flag, and none executed automatically.
+
+Forty-one proposals in 600 is about 6.8%, well above the 2% that the requirement allows for proposals, so the replay also produced a finding for the prompt team. The enforcement point did its own job: the excess proposals reached a technician's confirmation screen marked as tainted, and nothing ran. The 60 tests are part of the build, so any change to the policy code must pass them before release.
 
 ### 28.6 Errors and limits
 
@@ -2045,6 +2055,7 @@ Sam implemented the enforcement point as a separate service with 140 lines of po
 - Rendering model output as HTML without escaping.
 - Tests that only cover the happy path.
 
+Rules stated only in the prompt are suggestions to the model, not enforcement. Unescaped output turns the chat window into an attack surface for script injection. Happy-path tests confirm that allowed actions work but never show that forbidden ones are refused. The fail-closed test described next is one example of the negative testing that every rule in the enforcement point needs, alongside replay of injected documents.
 
 ### 28.6b Failing closed in the enforcement point
 
@@ -2124,23 +2135,33 @@ per-seed rates: 0.110 0.130 0.135 0.105 0.145 mean=0.125 sd=0.017
 baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 ```
 
+The lab's first three lines show the same 15% rate with intervals narrowing as trials grow: from 5–36% at 20 trials to 13.5–16.6% at 2,000. The seed spread of 0.017 shows how much a single run can move. The paired bootstrap gives a reduction interval of 0.120 to 0.203, which excludes zero, so the defence's improvement is supported by the data rather than by one lucky sample.
+
 ### 29.3 Pitfalls
 
 Leakage between tuning and test sets inflates results; weak or non-adaptive attacks make defences look strong (Athalye et al., arXiv:1802.00420); ignoring base rates misleads about detector usefulness (Arp et al., arXiv:2010.09470). When an LLM is used as a judge of outputs, validate it against human labels on a sample and report agreement; judges can be biased toward fluent or refusing answers.
+
+Each pitfall makes results look better than they are, which is why reviewers look for them first. A surprisingly good number deserves the most scrutiny.
 
 ### 29.4 Measurement programmes
 
 A release decision needs a fixed suite (held out, versioned), thresholds tied to requirements, a schedule (each release and periodically), and ownership. Track metrics over time to detect regressions and drift. Store raw outputs so that metrics can be recomputed if definitions change.
 
+Ownership prevents the suite from decaying: someone must add new attack patterns, retire broken cases and keep thresholds aligned with requirements. Versioning means a change to the suite is visible, and results from different versions are not compared as if they were the same test. Raw outputs let analysts answer new questions later, such as how often a model refused benign tasks, without rerunning the whole campaign.
+
 ### 29.5 Worked example (synthetic NRS case)
 
 Sam's measurement plan for Wrench: injection ASR on 600 held-out tasks (requirement ≤ 2% proposals, 0 executions), false-confirmation rate on 600 benign tasks (≤ 5%), task success on 300 planner tasks (≥ 90%), each with Wilson intervals; LLM-judge labels validated on 150 human-labelled outputs (agreement 93%). Results feed the CI gate and a quarterly report.
+
+The plan pairs each security metric with a cost metric: injection success against false confirmations, which measures how often benign work is slowed. Requiring zero executions alongside the proposal limit reflects the architecture, since proposals can be stopped by the enforcement point while executions must never happen. A 93% agreement on 150 outputs shows the judge is usable but imperfect, so disagreements are reviewed by a person each quarter.
 
 ### 29.6 Errors and limits
 
 - Security metrics without cost metrics.
 - Unvalidated LLM judges.
 - Changing the suite between versions and comparing numbers anyway.
+
+A security metric alone can be improved by making the system refuse everything. An LLM judge that has not been checked against human labels may reward confident or refusing answers. Comparing numbers across different suites mixes changes in the system with changes in the test. Sam's quarterly report states the suite version on every chart and starts a new series whenever the suite changes.
 
 ### Exercises
 
@@ -2168,9 +2189,13 @@ You will (1) plan and run a contained verification campaign for an AI component 
 
 Work only in an isolated environment: no production credentials, no internet egress for components under test, synthetic or authorised data, and harmless payloads targeting reserved domains such as `.invalid`. Record a written scope and authorization even for internal labs. Reset the environment between campaigns.
 
+Reserved domains such as example.invalid can never resolve, so a payload that escapes the lab still cannot reach anyone. The written scope protects both the testers and the organisation: it says what may be attacked, by whom and when, and it makes clear that a test escaping its boundary is an incident. Resetting the environment prevents one campaign's leftovers, such as a poisoned index, from affecting the next.
+
 ### 30.2 Campaign plan
 
 For each requirement: test set, method, sample size, threshold and evidence to record. Order tests so that cheap checks run first (schema validation, policy unit tests) and expensive ones later (adversarial suites).
+
+Running cheap checks first saves time: if schema validation is broken, adversarial suites will fail for the wrong reason. The plan also states what evidence each test produces, such as logs, output files and intervals, and where it will be stored. Sample sizes come from the requirements, so the campaign can answer pass or fail rather than producing numbers too uncertain to decide.
 
 ### 30.3 Executing the campaign
 
@@ -2249,19 +2274,27 @@ output_rounding=0    queries=6 max_weight_error=0.534 label_agreement=0.882
 
 The injection lab verifies that only external controls (allowlist, separation) remove exfiltration. The extraction lab verifies that output rounding reduces fidelity of a copied linear model (agreement 1.000 → 0.882) but does not prevent a useful copy — so rounding alone cannot satisfy an extraction requirement.
 
+Running the toy labs first checks that the environment and tooling work before the real suites start.
+
 ### 30.4 The verification report
 
 For each requirement: result with interval, pass/fail, evidence location, deviations, and residual risk. Summarise for decision makers in one paragraph and list follow-up actions with owners.
 
+Deviations record anything that differed from the plan, such as a smaller sample or a changed attack, so readers know how far the result can be trusted. Residual risk is stated even for passing requirements, because passing a test does not mean the threat is gone. Follow-up actions without owners and dates tend not to happen, so the report lists both for every item.
+
 ### 30.5 Worked example (synthetic NRS case)
 
 Sam's campaign on Wrench v1.4 tested nine requirements. Eight passed. REQ-AI-021 (parts e-mail only to allowlisted suppliers) failed: a proposal used a supplier's alias address not on the list, and the adapter resolved aliases *after* the policy check. The fix moved alias resolution before the policy check; the re-test passed. The report recorded the failure, fix and re-test as evidence.
+
+The failure was an ordering bug, not a wrong rule: the allowlist was correct but checked the address before the adapter replaced the alias with the real destination.
 
 ### 30.6 Errors and limits
 
 - Labs connected to production systems.
 - Reports that hide failures fixed during the campaign.
 - Real-looking payload domains instead of reserved ones.
+
+Labs connected to production can cause real harm and contaminate results with live traffic. Reports that hide fixed failures remove the most useful evidence: that the campaign found something real and the fix was verified. Real-looking domains risk sending test payloads to someone else's server. Sam's campaign checklist confirms isolation, reserved domains and failure reporting before any suite starts, and the checklist itself goes into the evidence.
 
 ### Exercises
 
