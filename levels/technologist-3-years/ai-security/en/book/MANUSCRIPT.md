@@ -1518,7 +1518,7 @@ Check versions first: did the model, prompt, index or code change near the start
 
 ### 20.3 Safe reproduction
 
-Reproduce on staging with synthetic data. Keep production evidence read-only. If reproduction requires dangerous inputs, keep them in an access-controlled test store. For the 60-day case, Jonas reproduced the wrong answer on staging by indexing the expired page and asking about the return window, which needed no customer data. The production traces stayed read-only as evidence. Dangerous test documents, such as planted injection reviews, are kept in an access-controlled store separate from ordinary test data. Ask Brightwell's staging copies hold only synthetic customers and orders, so tests there cannot expose real personal data.
+Reproduce on staging with synthetic data. Keep production evidence read-only. If reproduction requires dangerous inputs, keep them in an access-controlled test store. For the 60-day case, Jonas reproduced the wrong answer on staging by indexing the expired page and asking about the return window, which needed no customer data. The planted injection reviews used in later tests sit in that access-controlled store, apart from ordinary test data. Ask Brightwell's staging copies hold only synthetic customers and orders, so tests there cannot expose real personal data.
 
 ### 20.4 Fix and prevent
 

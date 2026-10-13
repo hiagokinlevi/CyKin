@@ -166,7 +166,7 @@ Hannah does not access resident data, does not test the service for weaknesses, 
 
 ### 3.3 Evidence
 
-She exports role definitions, 90 days of permission usage from the provider's access logs, and image scan results. Each export is saved with time, source and her name. Ninety days covers most routine tasks the workloads perform, but may miss rare ones, so unused permissions are only candidates for removal until owners confirm them. Recording time, source and her name makes each export traceable. If a finding is challenged, Hannah can show where the evidence came from and when. Scan results are exported weekly in the same way, so the permits-web, permits-worker and reporting findings can be compared from one week to the next.
+She exports role definitions, 90 days of permission usage from the provider's access logs, and image scan results. Each export is saved with time, source and her name. Ninety days covers most routine tasks the workloads perform, but may miss rare ones, so unused permissions are only candidates for removal until owners confirm them. If a finding is challenged, Hannah can show where the evidence came from and when. Scan results are exported weekly in the same way, so the permits-web, permits-worker and reporting findings can be compared from one week to the next.
 
 ### 3.4 Integrity
 

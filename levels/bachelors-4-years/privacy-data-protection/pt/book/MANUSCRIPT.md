@@ -478,7 +478,7 @@ Durante o estágio, Elena tem acesso a dados sintéticos e às configurações r
 
 ### 10.3 Pedidos fora da autoridade
 
-Uma diretora pede a Elena que verifique, olhando os logs de e-mail, se a reclamação de um pai sobre uma violação de dados procede. Elena explica que investigar uma reclamação exige autorização do responsável pela proteção de dados e um acesso que ela não tem. Ela encaminha o pedido ao responsável. Aprende que boas intenções não criam autoridade, e que sair de seu papel poderia prejudicar as pessoas que ela quer ajudar e minar a confiança na investigação. Ela repassa o pedido a quem tem competência para tratá-lo, e registra o encaminhamento no diário.
+Uma diretora pede a Elena que verifique, olhando os logs de e-mail, se a reclamação de um pai sobre uma violação de dados procede. Elena explica que investigar uma reclamação exige autorização do responsável pela proteção de dados e um acesso que ela não tem. Ela encaminha o pedido ao responsável e passa à diretora o contato dele, para que a reclamação do pai não fique parada. Aprende que boas intenções não criam autoridade, e que sair de seu papel poderia prejudicar as pessoas que ela quer ajudar e minar a confiança na investigação.
 
 ### 10.4 Valores profissionais
 
@@ -1727,7 +1727,7 @@ Você vai (1) apoiar a proteção de dados de uma organização comunitária; (2
 
 ### 36.1 Estágio comunitário
 
-Elena passa um período como voluntária numa fictícia associação de pais que organiza colônias de férias. A associação guarda nomes, idades, alergias e contatos de emergência das crianças numa planilha compartilhada. Os voluntários mudam com frequência, e parte dos registros acabava guardada nos celulares dos monitores, que às vezes se perdem. Elena ajuda a associação a entender seus deveres como controladora, mesmo sendo um pequeno grupo de voluntários, e adapta as orientações ao pouco tempo e dinheiro de que ela dispõe. A comissão de pais acompanha o trabalho de perto.
+Elena passa um período como voluntária numa fictícia associação de pais que organiza colônias de férias. A associação guarda nomes, idades, alergias e contatos de emergência das crianças numa planilha compartilhada. Os voluntários mudam com frequência, e parte dos registros acabava guardada nos celulares dos monitores, que às vezes se perdem. Elena ajuda a associação a entender seus deveres como controladora, mesmo sendo um pequeno grupo de voluntários, e adapta as orientações ao pouco tempo e dinheiro de que ela dispõe. A comissão de pais acompanha o trabalho de perto. Alergias são dados de saúde de crianças, então um celular perdido com a planilha é mais grave do que uma lista de nomes perdida.
 
 ### 36.2 Passos práticos
 

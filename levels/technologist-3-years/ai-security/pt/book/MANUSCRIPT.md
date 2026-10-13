@@ -1443,7 +1443,7 @@ Confira primeiro as versões: o modelo, o *prompt*, o índice ou o código mudar
 
 ### 20.3 Reprodução segura
 
-Reproduza na homologação, com dados sintéticos. Mantenha as evidências de produção somente para leitura. Se a reprodução exigir entradas perigosas, guarde-as num depósito de testes com controle de acesso. No caso dos 60 dias, Jonas reproduziu a resposta errada na homologação indexando a página vencida e perguntando sobre o prazo de devolução, o que não exigiu nenhum dado de cliente. Os rastros de produção continuaram somente para leitura, como evidência. Documentos de teste perigosos, como avaliações plantadas com injeções, ficam num depósito com controle de acesso, separado dos dados de teste comuns. As cópias de homologação do Ask Brightwell contêm apenas clientes e pedidos sintéticos, de modo que os testes ali não podem expor dados pessoais reais.
+Reproduza na homologação, com dados sintéticos. Mantenha as evidências de produção somente para leitura. Se a reprodução exigir entradas perigosas, guarde-as num depósito de testes com controle de acesso. No caso dos 60 dias, Jonas reproduziu a resposta errada na homologação indexando a página vencida e perguntando sobre o prazo de devolução, o que não exigiu nenhum dado de cliente. As avaliações plantadas com injeções usadas nos testes seguintes ficam nesse depósito com controle de acesso, separadas dos dados de teste comuns. As cópias de homologação do Ask Brightwell contêm apenas clientes e pedidos sintéticos, de modo que os testes ali não podem expor dados pessoais reais.
 
 ### 20.4 Corrigir e prevenir
 

@@ -474,7 +474,7 @@ Cada constatação recebe um responsável, um prazo conforme a gravidade, uma co
 
 ### 6.4 Gestão de mudanças
 
-Atualizações de modelo, edições de *prompt*, novas fontes de documentos, novas ferramentas e mudanças de configuração alteram o comportamento. Faça-as passar pela gestão de mudanças, com um novo teste antes da liberação. Na Meridian, uma edição de *prompt* um mês depois dos testes trouxe de volta a constatação 1, que só um novo teste detectou. Escreva quais testes devem ser repetidos para cada tipo de mudança e guarde os resultados com o registro da mudança. Trate edições de *prompt*, atualizações de modelo, novas ferramentas e novas fontes de documentos como mudanças que precisam de revisão. Um registro de mudança deve nomear os testes repetidos e seus resultados.
+Atualizações de modelo, edições de *prompt*, novas fontes de documentos, novas ferramentas e mudanças de configuração alteram o comportamento. Faça-as passar pela gestão de mudanças, com um novo teste antes da liberação. Na Meridian, uma edição de *prompt* um mês depois dos testes trouxe de volta a constatação 1, que só um novo teste detectou. Escreva quais testes devem ser repetidos para cada tipo de mudança e guarde os resultados com o registro da mudança. Uma atualização de modelo normalmente exige a bateria completa, enquanto uma nova fonte de documentos exige pelo menos os testes de recuperação e de injeção sobre essa fonte.
 
 ### 6.5 Trabalho com a operação
 
