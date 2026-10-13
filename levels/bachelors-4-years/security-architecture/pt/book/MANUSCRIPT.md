@@ -1,7 +1,7 @@
 # Arquitetura e Engenharia de Segurança: Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); curso 099, curso de bacharelado (4 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–14 de 40 já estão escritos em português, com os exercícios EX001–EX042 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 15–40 (EX043–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–21 de 40 já estão escritos em português, com os exercícios EX001–EX063 e suas resoluções com rubricas de 0 a 3 e 5 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 22–40 (EX064–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de graduação que aprendem a projetar, avaliar e operar a arquitetura de segurança de organizações reais.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios avaliam lógica, buscam caminhos de ataque, calculam intervalos amostrais, pseudonimizam, medem cobertura, contam dependências, verificam o menor privilégio, ajustam uma regra de detecção, estimam uma diferença em diferenças e ponderam opções, tudo sobre dados sintéticos; nada toca um sistema real. Projetos de produção usam produtos e padrões consagrados; nunca crie sua própria criptografia. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,9 @@ Saltzer e Schroeder (1975), [doi:10.1109/PROC.1975.9939](https://doi.org/10.1109
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) |
 
-Capítulos 15–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-15), até a chegada dos próximos lotes.
+Capítulos 22–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-22), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -674,11 +674,302 @@ Dados pseudonimizados podem ser reidentificados pela combinação de campos. Os 
 
 - **EX042 — Exclusão nos backups.** Como Lucas trata a exclusão de associados nos backups? *Rubrica:* 3 = os backups expiram num calendário em vez de serem editados;; 2 = expiração;; 1 = editar os backups;; 0 = nenhuma.
 
+<a id="ch-15"></a>
+
+## Capítulo 15 — Evidências e medição
+
+### Objetivos de aprendizagem
+
+Você vai (1) escolher medições que mostrem se os controles funcionam; (2) calcular métricas de cobertura a partir de dados sintéticos; (3) apresentar as evidências com contexto.
+
+### 15.1 O que medir
+
+Hannah pergunta a Lucas como a Fernway pode saber se seus controles funcionam. Contar controles diz pouco. Ele propõe medir resultados e cobertura: a fração de contas da equipe com autenticação resistente a phishing, a fração de notebooks que atendem à baseline, o tempo entre o desligamento e a desativação da conta e o número de serviços expostos encontrados nas varreduras mensais. Cada medida se liga a um risco dos capítulos anteriores. Ele escreve as definições com precisão, por exemplo o que conta como atender à baseline, para que os números signifiquem a mesma coisa todo mês e não possam ser inflados mudando as regras.
+
+### 15.2 Calcular a cobertura
+
+Lucas escreve um script que lê exportações sintéticas do sistema de identidade e da ferramenta de gestão de dispositivos e calcula a cobertura de cada medida, desdobrada por departamento. O laboratório abaixo mostra os números gerais e o departamento com a cobertura mais fraca: a equipe do armazém tem a menor fração de autenticação resistente a phishing, porque muitos compartilham scanners e não têm dispositivos individuais. O desdobramento por departamento transforma uma média única numa ação: o armazém precisa de um projeto de autenticação diferente, talvez login por crachá nos dispositivos compartilhados, e não de um lembrete geral para se cadastrar.
+
+### Laboratório — Cobertura dos controles por departamento
+
+```python
+# Coverage of phishing-resistant auth and laptop baseline by department (synthetic export).
+staff = {"finance": (12, 11), "buying": (9, 7), "stores": (40, 22), "warehouse": (15, 2), "it": (5, 5)}
+laptops = {"finance": (12, 12), "buying": (9, 8), "stores": (14, 11), "warehouse": (3, 2), "it": (6, 6)}
+tot = sum(n for n, _ in staff.values()); ok = sum(k for _, k in staff.values())
+print(f"phishing-resistant auth: {ok}/{tot} = {ok/tot:.0%}")
+for d, (n, k) in sorted(staff.items(), key=lambda x: x[1][1] / x[1][0]): print(f"  {d:9} {k}/{n} = {k/n:.0%}")
+tl = sum(n for n, _ in laptops.values()); bl = sum(k for _, k in laptops.values())
+print(f"laptops meeting baseline: {bl}/{tl} = {bl/tl:.0%}")
+```
+
+Execute com `python3 lab_coverage.py`. Saída verificada:
+
+```text
+phishing-resistant auth: 47/81 = 58%
+  warehouse 2/15 = 13%
+  stores    22/40 = 55%
+  buying    7/9 = 78%
+  finance   11/12 = 92%
+  it        5/5 = 100%
+laptops meeting baseline: 39/44 = 89%
+```
+
+### 15.3 Evidências em contexto
+
+Lucas apresenta os resultados à direção da Fernway com contagens, porcentagens e tendências, e explica o que cada número mostra e o que não mostra. Uma alta cobertura da baseline não prova que os notebooks estão seguros, só que atendem à baseline; a própria baseline pode deixar passar riscos. Os tempos de desativação dos desligados mostram o desempenho do processo, e não se ex-funcionários usaram indevidamente o acesso. Ele também lista problemas de qualidade dos dados, como dispositivos ausentes da ferramenta de gestão. A medição constrói confiança quando seus limites são declarados ao lado dos seus resultados.
+
+### Exemplo resolvido
+
+Lucas define quatro medidas de cobertura e de tempestividade, calcula-as por departamento e apresenta os resultados com seus limites e notas sobre a qualidade dos dados.
+
+> **Caso sintético.** As exportações e os números são sintéticos.
+
+### Erros e limites
+
+As métricas de cobertura medem a presença dos controles, não sua eficácia. Dispositivos ausentes inflam a cobertura aparente.
+
+### Exercícios
+
+- **EX043 — Definição precisa.** Por que definir com precisão o que é atender à baseline? *Rubrica:* 3 = para que os números signifiquem o mesmo todo mês e não possam ser inflados por redefinição;; 2 = consistência;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX044 — Departamento mais fraco.** Que departamento teve a cobertura resistente a phishing mais fraca no laboratório, e por quê? *Rubrica:* 3 = o armazém, 2 de 15, scanners compartilhados sem dispositivos individuais;; 2 = armazém;; 1 = financeiro;; 0 = nenhuma.
+
+- **EX045 — Cautela com a cobertura.** O que uma alta cobertura da baseline não prova? *Rubrica:* 3 = que os notebooks estão seguros; só que atendem à baseline;; 2 = limite;; 1 = prova a segurança;; 0 = nenhuma.
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Arquitetura de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever o que uma arquitetura de segurança contém; (2) aplicar à Fernway o raciocínio por atributos ao estilo do SABSA; (3) produzir uma visão geral de arquitetura para uma pequena organização.
+
+### 16.1 O que uma arquitetura contém
+
+Lucas aprende que uma arquitetura de segurança é uma descrição estruturada de como a segurança é alcançada em toda a organização: princípios, os atributos de negócio que a segurança precisa sustentar, os principais componentes e serviços, como eles se conectam e quem são seus responsáveis. Não é uma lista de produtos. O Dr. Bellini apresenta o SABSA, descrito por Sherwood, Clark e Lynas (2005), que parte dos atributos de negócio, e o guia do The Open Group sobre a integração de risco e segurança no TOGAF. Ambos enfatizam que a arquitetura liga aquilo que o negócio valoriza àquilo que é construído e operado.
+
+### 16.2 Atributos para a Fernway
+
+Lucas trabalha com Hannah para definir os atributos principais da Fernway: disponível, para que a loja venda nas temporadas de pico; confiável, para que os associados confiem seus dados à Fernway; exata, para que estoque e preços estejam corretos; e em conformidade, para que as obrigações de cartões e de privacidade sejam cumpridas. Para cada atributo, ele lista os serviços que o sustentam. A disponibilidade depende da hospedagem em nuvem e da resposta a incidentes; a confiabilidade depende de identidade, privacidade e proteção do checkout. Quando alguém propõe cortar um serviço, o mapa de atributos mostra qual valor de negócio seria enfraquecido, transformando debates técnicos em debates de negócio.
+
+### 16.3 Um documento de visão geral
+
+Lucas escreve uma visão geral de arquitetura de dez páginas: princípios como negar por padrão e menor privilégio; atributos; um diagrama de zonas e serviços; os principais serviços de segurança, incluindo identidade, logging, backup e integração de pagamentos; responsáveis; e lacunas conhecidas, com planos. Ele a mantém curta para que seja lida. Hannah a apresenta ao conselho da Fernway, que pela primeira vez vê a segurança como um projeto coerente, e não como uma série de compras. A visão geral se torna a referência para as futuras revisões de projetos. Ela é revista toda primavera.
+
+### Exemplo resolvido
+
+Lucas define quatro atributos de negócio para a Fernway, mapeia os serviços que os sustentam e escreve uma visão geral de arquitetura de dez páginas apresentada ao conselho.
+
+> **Caso sintético.** Os atributos e a visão geral são sintéticos; o SABSA e o TOGAF G152 são reais.
+
+### Erros e limites
+
+As visões gerais simplificam; os detalhes ficam em documentos de apoio. Os atributos precisam ser revistos quando o negócio muda.
+
+### Exercícios
+
+- **EX046 — Não é uma lista de produtos.** Por que uma arquitetura de segurança não é uma lista de produtos? *Rubrica:* 3 = descreve princípios, atributos, serviços, conexões e responsáveis;; 2 = estrutura;; 1 = é sim;; 0 = nenhuma.
+
+- **EX047 — Uso dos atributos.** Como o mapa de atributos ajuda quando alguém propõe cortar um serviço? *Rubrica:* 3 = mostra qual valor de negócio seria enfraquecido;; 2 = valor;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX048 — Efeito no conselho.** O que a visão geral mudou para o conselho da Fernway? *Rubrica:* 3 = passaram a ver a segurança como um projeto coerente, e não como compras;; 2 = coerente;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Conceitos de criptografia
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar os principais blocos criptográficos e seus usos; (2) posicionar a criptografia na arquitetura da Fernway; (3) identificar as responsabilidades de gestão de chaves.
+
+### 17.1 Blocos de construção
+
+Lucas estuda criptografia simétrica, hashing, códigos de autenticação de mensagem, assinaturas digitais e troca de chaves, usando o livro de Katz e Lindell como base. Ele se concentra no que cada um oferece. A criptografia oferece confidencialidade; a criptografia autenticada, como o AES-GCM, também oferece integridade. Os hashes oferecem impressões digitais; os códigos de autenticação de mensagem oferecem integridade e autenticidade entre partes que compartilham uma chave; as assinaturas permitem que qualquer pessoa verifique a origem com uma chave pública. A troca de chaves permite que duas partes acordem uma chave por uma rede aberta. Os arquitetos escolhem entre eles conforme a necessidade e nunca projetam novos.
+
+### 17.2 Criptografia na Fernway
+
+Lucas mapeia onde a criptografia é usada: TLS para a loja e o e-mail; a tokenização do provedor de pagamentos, para que a Fernway nunca armazene números de cartão; webhooks do parceiro de entregas assinados com HMAC; criptografia de disco nos notebooks; backups criptografados; e a pseudonimização do capítulo 14. Para cada um, ele anota o objetivo e quem guarda a chave. Ele descobre que o segredo do webhook do parceiro de entregas é o mesmo em teste e em produção, o que significa que um vazamento de um sistema de teste permitiria forjar atualizações de entrega em produção. Ele recomenda segredos separados por ambiente.
+
+### 17.3 Responsabilidades de gestão de chaves
+
+Cada uso de criptografia cria deveres de gestão de chaves: geração, armazenamento seguro, rotação, revogação e destruição, como descreve o NIST SP 800-57 Part 1 Rev. 5. Lucas lista as chaves e os segredos da Fernway com responsáveis e períodos de rotação. Vários não tinham responsável ou nunca haviam sido rotacionados. Ele recomenda um gerenciador de segredos para os segredos das aplicações e um calendário para as renovações de certificados. Ele observa que a maioria das falhas criptográficas em pequenas organizações vem do manuseio das chaves, e não de algoritmos fracos, então a responsabilidade e a rotação merecem tanta atenção quanto a escolha do algoritmo.
+
+### Exemplo resolvido
+
+Lucas resume cinco blocos de construção, mapeia seis usos na Fernway, encontra um segredo de webhook compartilhado entre teste e produção e monta um inventário de chaves com responsáveis.
+
+> **Caso sintético.** As chaves e os segredos da Fernway são sintéticos; Katz e Lindell e o SP 800-57 Part 1 Rev. 5 são reais.
+
+### Erros e limites
+
+Chaves gerenciadas pelo provedor reduzem o ônus, mas acrescentam dependência. A rotação pode quebrar integrações se não for coordenada.
+
+### Exercícios
+
+- **EX049 — Assinatura versus MAC.** O que uma assinatura oferece que um MAC não oferece? *Rubrica:* 3 = verificação pública sem a capacidade de assinar;; 2 = verificação pública;; 1 = o mesmo;; 0 = nenhuma.
+
+- **EX050 — Segredo de webhook compartilhado.** Por que um único segredo de webhook para teste e produção é um problema? *Rubrica:* 3 = um vazamento em teste permitiria forjar atualizações em produção;; 2 = forjar;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX051 — Principal fonte de falhas.** De onde vem a maioria das falhas criptográficas em pequenas organizações? *Rubrica:* 3 = do manuseio das chaves, e não de algoritmos fracos;; 2 = chaves;; 1 = algoritmos;; 0 = nenhuma.
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Métodos de pesquisa I
+
+### Objetivos de aprendizagem
+
+Você vai (1) formular uma pergunta pesquisável sobre a segurança da Fernway; (2) escolher entre levantamento, estudo de caso e experimento; (3) planejar uma coleta de dados ética.
+
+### 18.1 Formular uma pergunta
+
+O Dr. Bellini pede a Lucas que transforme seu estágio num projeto de pesquisa. Lucas parte de um interesse vago em saber se a equipe segue a política de segurança e o estreita até uma pergunta que consegue responder: os funcionários das lojas da Fernway que receberam breves orientações presenciais na loja reportam e-mails suspeitos com mais frequência do que os que receberam apenas o módulo online? A pergunta nomeia uma população, uma intervenção, uma comparação e um desfecho. Ela pode ser respondida com dados que a Fernway já coleta por meio do seu botão de reportar phishing, e importa para Hannah porque orienta como o orçamento de treinamento é gasto.
+
+### 18.2 Escolher um método
+
+Lucas considera três métodos. Um levantamento perguntaria aos funcionários o que eles fazem, mas os autorrelatos exageram o bom comportamento. Um estudo de caso descreveria uma loja em profundidade, mas não permitiria a comparação. Um quase-experimento que compare lojas que receberam as orientações com lojas semelhantes que não receberam, usando as taxas reais de reporte, dá a resposta mais forte disponível. Wohlin e colegas (2012) descrevem como desenhar estudos assim em contextos de software e sistemas, incluindo as ameaças à validade. Lucas escolhe o quase-experimento e observa que as lojas não foram atribuídas aleatoriamente, o que limita as afirmações causais.
+
+### 18.3 Ética e dados
+
+Lucas submete o projeto ao comitê de ética da Ashgrove. Ele usará apenas contagens agregadas de reportes por loja e por mês, sem nomes individuais, e a direção da Fernway concorda por escrito. Os funcionários são informados por meio de um aviso de que os dados por loja serão usados num estudo de estudante. Ele guarda os dados nos sistemas da universidade, exclui-os depois do projeto e compartilhará apenas resultados agregados. O comitê aprova com a condição de que as lojas com menos de cinco funcionários sejam agrupadas, para que o comportamento de nenhum indivíduo possa ser inferido a partir do número de uma loja.
+
+### Exemplo resolvido
+
+Lucas estreita um interesse vago até uma pergunta comparativa, escolhe um quase-experimento em vez de levantamento e estudo de caso e obtém aprovação ética com uma condição de agrupamento das células pequenas.
+
+> **Caso sintético.** O estudo e as lojas são sintéticos; Wohlin et al. (2012) é real.
+
+### Erros e limites
+
+A atribuição não aleatória limita as afirmações causais. O uso do botão de reporte é apenas um indicador de vigilância.
+
+### Exercícios
+
+- **EX052 — Partes da pergunta.** Que quatro partes a pergunta de Lucas nomeia? *Rubrica:* 3 = população, intervenção, comparação e desfecho;; 2 = três das quatro;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX053 — Por que não um levantamento.** Por que Lucas rejeitou um levantamento como método principal? *Rubrica:* 3 = os autorrelatos exageram o bom comportamento;; 2 = viés;; 1 = custo;; 0 = nenhuma.
+
+- **EX054 — Condição das células pequenas.** Por que o comitê exigiu agrupar as lojas pequenas? *Rubrica:* 3 = para que o comportamento individual não possa ser inferido a partir do número de uma loja;; 2 = privacidade;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Arquitetura e engenharia de segurança: escopo e teoria
+
+### Objetivos de aprendizagem
+
+Você vai (1) declarar o que a arquitetura e a engenharia de segurança cobrem; (2) aplicar à Fernway os princípios de Saltzer e Schroeder; (3) relacionar a teoria às revisões práticas de projeto.
+
+### 19.1 Escopo
+
+Lucas escreve um ensaio curto sobre o escopo da área. A arquitetura de segurança descreve como a proteção é organizada em toda a organização; a engenharia de segurança é a disciplina de construir sistemas que continuam confiáveis sob ataque, como diz Anderson (2020). Ambas cobrem pessoas, processos e tecnologia, e ambas atuam ao longo do ciclo de vida, dos requisitos à desativação. O NIST SP 800-160 Vol. 1 Rev. 1 enquadra isso como engenharia de segurança de sistemas, integrada à engenharia normal, e não acrescentada no fim. Lucas observa que, numa cooperativa do tamanho da Fernway, uma pessoa muitas vezes faz as duas coisas.
+
+### 19.2 Princípios clássicos
+
+Lucas aplica à Fernway os princípios de projeto de Saltzer e Schroeder (1975). A economia de mecanismo sugere um único provedor de identidade, em vez de logins separados para cada sistema. Os padrões fail-safe significam que as contas de novos funcionários começam sem acesso. A mediação completa significa que toda requisição ao sistema de estoque é verificada, e não só a primeira. O menor privilégio significa que as contas do armazém não podem mudar preços. A aceitabilidade psicológica significa que os controles precisam se encaixar nas rotinas atarefadas das lojas, ou a equipe vai contorná-los. Ele descobre que princípios de quase cinquenta anos ainda explicam a maior parte das fraquezas da Fernway.
+
+### 19.3 A teoria nas revisões
+
+Hannah pergunta como a teoria ajuda no dia a dia. Lucas transforma os princípios em perguntas de revisão para novos projetos: qual é o acesso padrão, toda requisição é verificada, quem tem o menor privilégio necessário e a equipe vai achar o controle aceitável. Ele as usa num aplicativo proposto de escalas de trabalho e descobre que ele daria a todo gerente acesso às escalas de todas as lojas, violando o menor privilégio. O fornecedor acrescenta um escopo por loja. A teoria dá aos revisores um vocabulário compartilhado e um checklist fundamentado em décadas de experiência.
+
+### Exemplo resolvido
+
+Lucas define a área, aplica à Fernway cinco princípios de Saltzer e Schroeder e os usa para corrigir o escopo de acesso de um aplicativo de escalas.
+
+> **Caso sintético.** A Fernway e o aplicativo de escalas são sintéticos; Anderson (2020), o SP 800-160v1r1 e Saltzer e Schroeder (1975) são reais.
+
+### Erros e limites
+
+Os princípios podem entrar em conflito, como o menor privilégio versus a aceitabilidade. O julgamento continua necessário.
+
+### Exercícios
+
+- **EX055 — Padrão fail-safe.** Como a Fernway aplica os padrões fail-safe? *Rubrica:* 3 = as contas de novos funcionários começam sem acesso;; 2 = sem acesso;; 1 = acesso aberto;; 0 = nenhuma.
+
+- **EX056 — Aceitabilidade.** Por que a aceitabilidade psicológica importa nas lojas? *Rubrica:* 3 = controles que não se encaixam nas rotinas são contornados;; 2 = contorno;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX057 — Achado do aplicativo de escalas.** O que os princípios revelaram sobre o aplicativo de escalas? *Rubrica:* 3 = todo gerente podia ver todas as lojas, violando o menor privilégio;; 2 = menor privilégio;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Arquitetura e engenharia de segurança: casos fundamentais
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar incidentes publicados em busca de lições de arquitetura; (2) relacionar as lições à Fernway; (3) escrever uma análise de caso curta.
+
+### 20.1 Aprender com os casos
+
+O Dr. Bellini passa três padrões de incidentes públicos bem documentados, em vez de histórias de empresas específicas: comprometimento por meio de um fornecedor com acesso à rede, roubo de dados de um bucket de armazenamento em nuvem exposto e um ransomware que se espalhou porque os backups eram alcançáveis a partir da mesma rede. Lucas analisa cada um em busca de causas de arquitetura, e não de culpa individual. O caso do fornecedor mostra confiança excessiva; o do armazenamento mostra padrões fracos e falta de monitoramento; o do ransomware mostra um único domínio de falha. Cada um aponta para um princípio de projeto que poderia ter limitado o dano.
+
+### 20.2 Relacionar à Fernway
+
+Lucas confere a Fernway contra cada padrão. O terceirizado de montagem de lojas tem uma conta de VPN permanente com acesso amplo, o que corresponde ao padrão do fornecedor; ele recomenda acesso com prazo limitado, aprovado a cada trabalho. As imagens de produtos da Fernway ficam num bucket na nuvem, corretamente público, mas uma pasta de exportação no mesmo bucket guarda um arquivo de estoque; ele recomenda um bucket privado separado. Os backups já estão offline desde o capítulo 11. O mapeamento transforma casos abstratos em três ações concretas, ordenadas pelo tamanho da lacuna e pela facilidade da correção.
+
+### 20.3 Escrever uma análise de caso
+
+Lucas escreve cada análise numa estrutura fixa: o que aconteceu, as causas de arquitetura, o que teria limitado o impacto e a relevância para a Fernway. Ele deixa a culpa de fora e cita orientações publicadas onde se aplicam, como o SP 800-207 para limitar a confiança em fornecedores. Cada análise tem menos de uma página. Hannah as compartilha com os gestores da Fernway, que acham casos curtos e estruturados mais persuasivos do que avisos genéricos. Lucas aprende que o valor de um caso está na lição de projeto transferível, e não no drama do incidente.
+
+### Exemplo resolvido
+
+Lucas analisa três padrões de incidentes em busca de causas de arquitetura, relaciona-os à Fernway e produz três ações ordenadas em análises de uma página.
+
+> **Caso sintético.** Os padrões de incidentes são genéricos e sintéticos; o SP 800-207 é real.
+
+### Erros e limites
+
+Os padrões genéricos podem deixar passar detalhes locais. As lições dos casos precisam ser conferidas com as configurações atuais.
+
+### Exercícios
+
+- **EX058 — Padrão do fornecedor.** Que arranjo da Fernway correspondia ao padrão do fornecedor? *Rubrica:* 3 = a conta de VPN permanente e ampla do terceirizado de montagem de lojas;; 2 = terceirizado;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX059 — Correção do bucket.** O que Lucas recomendou para o bucket na nuvem? *Rubrica:* 3 = mover a pasta de exportação para um bucket privado separado;; 2 = separar;; 1 = apagar as imagens;; 0 = nenhuma.
+
+- **EX060 — Valor de um caso.** Onde está o valor de um caso? *Rubrica:* 3 = na lição de projeto transferível;; 2 = lição;; 1 = drama;; 0 = nenhuma.
+
+<a id="ch-21"></a>
+
+## Capítulo 21 — Arquitetura e engenharia de segurança: modelos de sistema
+
+### Objetivos de aprendizagem
+
+Você vai (1) construir um modelo do sistema de pedidos da Fernway; (2) identificar as fronteiras de confiança e os ativos; (3) usar o modelo numa revisão STRIDE.
+
+### 21.1 Construir o modelo
+
+Lucas desenha um diagrama de fluxo de dados do sistema de pedidos da Fernway: o navegador do cliente, a loja web, o provedor de pagamentos, o banco de dados de estoque, o aplicativo de separação do armazém e o parceiro de entregas. Ele marca os processos, os repositórios de dados, as entidades externas e os fluxos, e rotula o que cada fluxo carrega. Ele valida o diagrama com o desenvolvedor e com o gerente do armazém, que corrigem dois fluxos que ele havia deixado passar: uma importação noturna de preços de um fornecedor e um upload manual de planilha. Os modelos só são úteis se as pessoas que operam o sistema concordarem que estão corretos.
+
+### 21.2 Fronteiras e ativos
+
+Lucas marca as fronteiras de confiança onde os dados passam entre partes ou níveis de privilégio: entre o navegador e a loja, a loja e o provedor de pagamentos, a Fernway e o parceiro de entregas, e entre a rede do escritório e a nuvem. Ele lista os ativos: dados dos clientes, histórico de pedidos, preços e níveis de estoque. O upload manual de planilha atravessa uma fronteira sem nenhuma validação, o que significa que um arquivo equivocado ou malicioso poderia mudar preços em toda a loja. Marcar as fronteiras torna visíveis lacunas assim, porque toda travessia deveria ter uma verificação definida.
+
+### 21.3 Revisão STRIDE
+
+Usando as categorias STRIDE de Shostack (2014), Lucas examina cada elemento. Spoofing: os webhooks do parceiro de entregas são assinados. Tampering: o upload de planilha não tem validação. Repudiation: as mudanças de preço não são registradas com o usuário que as fez. Information disclosure: o histórico de pedidos é acessível a todas as contas da equipe. Denial of service: a loja depende de uma única região de hospedagem. Elevation of privilege: o aplicativo de separação roda com direitos de dono do banco de dados. Ele registra sete ameaças com mitigações propostas e responsáveis, e a Fernway agenda as três principais para o próximo trimestre.
+
+### Exemplo resolvido
+
+Lucas constrói e valida um modelo de fluxo de dados, marca quatro fronteiras de confiança e conduz uma revisão STRIDE que produz sete ameaças com responsáveis.
+
+> **Caso sintético.** O sistema de pedidos é sintético; Shostack (2014) é real.
+
+### Erros e limites
+
+Os modelos envelhecem à medida que os sistemas mudam. O STRIDE encontra categorias de ameaças, não todos os ataques.
+
+### Exercícios
+
+- **EX061 — Validar o modelo.** O que o desenvolvedor e o gerente do armazém acrescentaram? *Rubrica:* 3 = uma importação noturna de preços de um fornecedor e um upload manual de planilha;; 2 = um fluxo;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX062 — Travessia sem validação.** Por que o upload de planilha é uma preocupação? *Rubrica:* 3 = atravessa uma fronteira sem validação e poderia mudar preços;; 2 = validação;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX063 — Achado de repúdio.** Que lacuna de repúdio o STRIDE encontrou? *Rubrica:* 3 = as mudanças de preço não são registradas com o usuário;; 2 = logging;; 1 = nenhuma;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX042 (as de EX043–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Lucas Haddon, o Dr. Marco Bellini, Hannah Osei, a Ashgrove University, a Fernway Outdoor Co-operative e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX063 (as de EX064–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Lucas Haddon, o Dr. Marco Bellini, Hannah Osei, a Ashgrove University, a Fernway Outdoor Co-operative e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** M OR (S AND R), e (M OR S) AND R.
 
@@ -763,6 +1054,48 @@ Respostas-modelo para EX001–EX042 (as de EX043–EX120 estão na edição em i
 **EX041.** Que um atacante que calcula o hash de números de associado adivinhados consegue identificar pseudônimos sem chave, mas não os com chave sem conhecer a chave.
 
 **EX042.** Os backups expiram num calendário definido, em vez de serem editados registro por registro.
+
+**EX043.** Para que os resultados sejam comparáveis ao longo do tempo e não possam ser melhorados simplesmente mudando o que conta.
+
+**EX044.** O armazém, com 2 de 15 funcionários, porque a equipe compartilha scanners e não tem dispositivos individuais.
+
+**EX045.** Não prova que os notebooks estão seguros, só que estão em conformidade com uma baseline que pode ter lacunas.
+
+**EX046.** Porque explica como a segurança é alcançada por meio de princípios, serviços, conexões e responsáveis, e não o que foi comprado.
+
+**EX047.** Mostra qual atributo de negócio, como a confiabilidade, seria enfraquecido.
+
+**EX048.** Pela primeira vez, viram a segurança como um projeto coerente, e não como um conjunto de compras.
+
+**EX049.** Qualquer pessoa com a chave pública pode verificar, sem ser capaz de criar assinaturas.
+
+**EX050.** Porque um vazamento do ambiente de teste, menos protegido, permitiria que atacantes forjassem atualizações de entrega em produção.
+
+**EX051.** Do manuseio das chaves, como falta de responsáveis e de rotação, e não de algoritmos fracos.
+
+**EX052.** Funcionários das lojas, orientações presenciais na loja, a comparação com o módulo apenas online e as taxas de reporte.
+
+**EX053.** Porque os funcionários tendem a exagerar seu bom comportamento quando perguntados.
+
+**EX054.** Para que o comportamento de nenhum indivíduo pudesse ser inferido a partir do número de uma loja muito pequena.
+
+**EX055.** As novas contas começam sem acesso até que um papel seja concedido.
+
+**EX056.** Porque funcionários sob pressão de tempo contornam controles que não se encaixam nas suas rotinas.
+
+**EX057.** Ele dava a todo gerente acesso às escalas de todas as lojas, então o fornecedor acrescentou um escopo por loja.
+
+**EX058.** A conta de VPN permanente e com acesso amplo do terceirizado de montagem de lojas.
+
+**EX059.** Mover a exportação de estoque para um bucket privado separado, deixando públicas as imagens de produtos.
+
+**EX060.** Na lição de projeto transferível, e não nos detalhes do incidente.
+
+**EX061.** Uma importação noturna de preços de um fornecedor e um upload manual de planilha.
+
+**EX062.** Porque atravessa uma fronteira de confiança sem validação, de modo que um arquivo ruim poderia mudar preços em toda a loja.
+
+**EX063.** As mudanças de preço não são registradas com a identidade do usuário que as fez.
 
 <a id="references"></a>
 ## Referências
