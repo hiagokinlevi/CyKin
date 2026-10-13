@@ -532,7 +532,7 @@ You will (1) follow an AI-security workflow from intake to closure; (2) triage f
 
 Intake (a new AI service, change or concern) → context and data flow → risk scenarios → tests → findings → remediation → verification → closure and records. Each step has an owner and a record.
 
-At Meridian, a prompt edit is intake as much as a new service, as Sofia's re-test showed. Record each step's outcome in the tracker. At Meridian, Sofia's tracker has one row per step. A new AI service, a prompt edit or a handler's concern all start at intake, and nothing skips verification before closure. Records at each step let an auditor follow a finding from the first concern to its closure note.
+At Meridian, a prompt edit is intake as much as a new service, as Sofia's re-test showed. Record each step's outcome in the tracker. Sofia's tracker has one row per step. A new AI service, a prompt edit or a handler's concern all start at intake, and nothing skips verification before closure. Records at each step let an auditor follow a finding from the first concern to its closure note.
 
 ### 6.2 Triage
 
@@ -911,7 +911,7 @@ In the FraudFlag storm case, checking recent changes found the new form field qu
 
 Accidents often affect many users evenly and coincide with changes. Attacks often cluster by account, source or time and show deliberate variation. Keep both in mind until evidence separates them.
 
-In the garage case, the relabelling clustered by investigator and garage over three months, which pointed towards a deliberate pattern rather than an accident. In the FraudFlag storm case, the jump affected all claims evenly after a form change, which pointed to an accident. In the garage case, relabels clustered by investigator and garage, which called for a careful, confidential review. Neither conclusion was reached until the evidence supported it.
+In the FraudFlag storm case, the jump affected all claims evenly after a form change, which pointed to an accident. In the garage case, relabels clustered by investigator and garage over three months, which pointed towards a deliberate pattern rather than an accident and called for a careful, confidential review. Neither conclusion was reached until the evidence supported it.
 
 ### 10.4 Preventing recurrence
 
@@ -975,7 +975,7 @@ At Meridian, the garage case led to second review for relabels and a test set of
 
 Before submitting work, ask: what would a sceptical reviewer challenge? Where am I relying on assumptions? What did I not test?
 
-Sofia's self-review of the garage case asked whether a data issue had been properly ruled out before calling it a possible insider case. Write your answers down and keep them with the work. Write the answers down and fix what you can before the work leaves you. In the garage case, the question of whether a data issue had been ruled out is the one a sceptical reviewer would ask first, so it deserves a written answer.
+Sofia's self-review of the garage case asked whether a data issue had been properly ruled out before calling it a possible insider case. Write your answers down, keep them with the work and fix what you can before the work leaves you. In the garage case, the question of whether a data issue had been ruled out is the one a sceptical reviewer would ask first, so it deserves a written answer.
 
 ### 10.6 Worked example (synthetic Meridian case)
 

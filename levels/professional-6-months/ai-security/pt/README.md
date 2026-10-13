@@ -1,11 +1,11 @@
-# AI and machine-learning security — Professional course — Português
+# Segurança de IA e aprendizado de máquina — Profissional — Português
 
-**Duration:** 6 months · **Editorial state:** working English outline; translation and review pending.
+**Duração:** 6 meses · **Estado editorial:** rascunho escrito em português do Brasil; revisão técnica, linguística e A4 pendente.
 
-[Home](../../../../README.md) · [Course home](../README.md) · [Chapter index](SUBJECTS.md) · [Materials](MATERIALS.md) · [Book plan](book/PLAN.md) · [One course skill](../skill/SKILL.md) · [Playbooks](../../../../playbooks/ai-security/README.md)
+[Início](../../../../README.md) · [Página do curso](../README.md) · [Índice de capítulos](SUBJECTS.md) · [Materiais](MATERIALS.md) · [Manuscrito](book/MANUSCRIPT.md) · [Plano do livro](book/PLAN.md) · [Skill do curso](../skill/SKILL.md) · [Playbooks](../../../../playbooks/ai-security/README.md)
 
-This language edition has one principal study book. Each curricular subject is one chapter with teaching, examples, exercises and, in the final book appendix, worked answers. The plan and chapter index map the intended material. They do not establish that unwritten chapters or translated lessons exist.
+Esta edição tem um livro principal de estudo. Cada disciplina do currículo é um capítulo com conteúdo didático, exemplos, exercícios e, no apêndice final, resoluções. Os capítulos 1–12 de 12 estão escritos em rascunho no [manuscrito](book/MANUSCRIPT.md); casos, pessoas e organizações são sintéticos, e as saídas dos laboratórios e as citações são idênticas às da edição em inglês.
 
-English is the reference edition. The production order is English, Portuguese, Spanish, Hebrew, French, Russian, German, Chinese and Japanese; translations follow the completed English editorial review.
+O inglês é a edição de referência. A ordem de produção é inglês, português, espanhol, hebraico, francês, russo, alemão, chinês e japonês.
 
-**Publication gate:** at least 300 actual A4 pages, 50 substantive exercises with worked results, verified sources, safe reproducible practice, technical and language review. Course titles do not confer accreditation.
+**Critério de publicação:** no mínimo 300 páginas A4 reais, 50 exercícios substantivos com resoluções, fontes verificadas, prática segura e reproduzível, e revisão técnica e linguística. Os títulos dos cursos não conferem credenciamento acadêmico.
