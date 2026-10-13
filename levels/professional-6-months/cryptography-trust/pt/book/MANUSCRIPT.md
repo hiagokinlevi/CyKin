@@ -1,7 +1,7 @@
 # Criptografia e Serviços de Confiança: Curso Profissional
 
 - Idioma: português do Brasil (`pt`); curso 031, curso profissional (6 meses). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–6 de 12 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3 e 1 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 7–12 (EX031–EX060) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–12 de 12 têm texto didático escrito à mão; os exercícios EX001–EX060 têm resoluções correspondentes com rubricas de 0 a 3; os quatro laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: profissionais em início de carreira.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios sinalizam linhas de inventário, verificam notificações HMAC, comparam o PBKDF2 com salt com um hash rápido e resumem achados; não implementam nenhuma cifra. Sistemas de produção usam bibliotecas avaliadas, clientes ACME e repositórios de chaves gerenciados; nunca crie sua própria criptografia. Pessoas, organizações e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ Leia na ordem. Os capítulos acompanham uma analista júnior num provedor de ser
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) |
-
-Capítulos 7–12: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-07), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -346,11 +344,358 @@ Ciclos mensais deixam passar problemas de curta duração entre as execuções. 
 
 Um fluxo repetível, com encerramento verificado e repasses claros, transforma as verificações mensais em melhorias duradouras.
 
+<a id="ch-07"></a>
+
+## Capítulo 7 — Criptografia e serviços de confiança: controles e verificação
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar os controles das notificações de pagamento com HMAC e verificações de replay; (2) verificar as configurações de TLS contra uma linha de base; (3) escrever declarações de verificação com seus limites.
+
+### 7.1 Verificando as notificações
+
+O site de agendamento da Bayside recebe notificações de pagamento do processador. Cada uma traz uma tag HMAC-SHA-256 calculada com um segredo compartilhado sobre um carimbo de tempo e o corpo da mensagem. O código da agência deve recalcular a tag, compará-la com hmac.compare_digest e rejeitar qualquer mensagem com mais de cinco minutos. Dana não tem permissão para testar o processador em produção, então verifica a lógica num laboratório com mensagens sintéticas: uma autêntica, uma com o valor alterado e uma repetida depois de uma hora. O laboratório abaixo mostra o verificador aceitando apenas a mensagem autêntica, o que corresponde ao comportamento descrito pela agência.
+
+### Laboratório — Verificação de notificações
+
+```python
+# Verify synthetic payment notifications: HMAC-SHA-256 + 300 s replay window.
+import hmac, hashlib
+SECRET = b"synthetic-processor-secret"; NOW = 1_772_000_000; WINDOW = 300
+def tag(ts, body): return hmac.new(SECRET, str(ts).encode() + b"." + body, hashlib.sha256).hexdigest()
+def accept(ts, body, t): return NOW - ts <= WINDOW and hmac.compare_digest(tag(ts, body), t)
+body = b'{"booking":"BDG-2207","amount":"85.00"}'
+t = tag(NOW - 30, body)
+print("authentic:", accept(NOW - 30, body, t))
+print("changed amount:", accept(NOW - 30, body.replace(b"85.00", b"8.50"), t))
+print("replayed after 1 h:", accept(NOW - 3600, body, tag(NOW - 3600, body)))
+```
+
+Execute com `python3 lab_notify.py`. Saída verificada:
+
+```text
+authentic: True
+changed amount: False
+replayed after 1 h: False
+```
+
+### 7.2 Verificando as configurações de TLS
+
+Para o TLS, Dana confere cada endpoint do escopo contra a linha de base: TLS 1.3 oferecido, TLS 1.2 permitido apenas se necessário, versões mais antigas recusadas, cadeia completa servida e nome do certificado correto. Ela usa openssl s_client com opções explícitas de versão, por exemplo tentando -tls1_1 e esperando uma recusa. Cada teste registra o comando, o resultado e o horário. Onde um cliente não pode ser testado diretamente, como uma antiga estação de trabalho de imagens odontológicas, ela registra a lacuna com honestidade em vez de presumir que ela se comporta como as demais. Uma verificação é tão forte quanto os casos de fato testados.
+
+### 7.3 Declarações com limites
+
+Dana escreve as declarações de verificação numa forma fixa: o que foi verificado, como, quando, o resultado e o que não foi verificado. Por exemplo: a lógica de verificação das notificações aceitou mensagens sintéticas autênticas e rejeitou as alteradas e as repetidas num laboratório em 3 de março; o caminho do código de produção e o armazenamento do segredo não foram revisados. Essa forma protege tanto a Copperleaf quanto o cliente. Os clientes tomam decisões com base nessas declarações, então uma declaração que esconde seus limites pode levá-los a dispensar uma revisão necessária. Marcus confere cada declaração em busca de palavras como seguro ou conforme, que afirmam mais do que o teste mostrou.
+
+### Exemplo resolvido
+
+Dana executa o laboratório de notificações, testa as versões de TLS em três endpoints e escreve quatro declarações de verificação, cada uma terminando com o que não foi verificado.
+
+> **Caso sintético.** As mensagens, os segredos e os endpoints são sintéticos.
+
+### Erros e limites
+
+Verificações da lógica em laboratório não provam que o código de produção corresponde a ela. A recusa de uma versão antiga não prova que todas as opções fracas estão desativadas.
+
+### Exercícios
+
+- **EX031 — Janela de replay.** Que limite de idade o verificador impõe às notificações? *Rubrica:* 3 = cinco minutos (300 segundos);; 2 = cinco minutos;; 1 = nada;; 0 = nenhuma.
+
+- **EX032 — Valor alterado.** O que o laboratório relatou para a notificação com valor alterado? *Rubrica:* 3 = rejeitada (False) porque a tag deixou de corresponder;; 2 = rejeitada;; 1 = aceita;; 0 = nenhuma.
+
+- **EX033 — Sondagem do TLS 1.1.** Como Dana verifica que o TLS 1.1 é recusado? *Rubrica:* 3 = openssl s_client com -tls1_1, esperando falha no handshake;; 2 = comando;; 1 = presume;; 0 = nenhuma.
+
+- **EX034 — Estação de imagens.** O que Dana faz quanto à estação de imagens que não pode ser testada? *Rubrica:* 3 = registra a lacuna com honestidade em vez de presumir;; 2 = registra a lacuna;; 1 = presume que está bem;; 0 = nenhuma.
+
+- **EX035 — Palavras proibidas.** Que palavras Marcus procura nas declarações, e por quê? *Rubrica:* 3 = seguro ou conforme, porque afirmam mais do que os testes mostram;; 2 = palavras citadas;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A verificação prova um comportamento específico sob testes específicos, e declarações honestas dizem exatamente que casos foram testados.
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Criptografia e serviços de confiança: análise de caso supervisionada
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar um incidente sintético envolvendo uma chave exposta; (2) reconstruir uma linha do tempo a partir de evidências; (3) recomendar etapas de contenção e recuperação.
+
+### 8.1 O incidente
+
+Numa segunda-feira, a agência informa à Copperleaf que um desenvolvedor enviou por engano a chave privada TLS do site de agendamento para um repositório público de código na sexta-feira à noite; ela foi removida no domingo. Marcus conduz a resposta e Dana dá apoio. A chave ficou pública por cerca de quarenta horas. Ninguém sabe se alguém a copiou, e repositórios públicos são varridos constantemente por ferramentas automatizadas em busca de segredos. Marcus declara com clareza a premissa de trabalho: a chave deve ser tratada como comprometida, porque não há como provar que não foi levada, e o custo de agir é pequeno comparado com o risco.
+
+### 8.2 Montando a linha do tempo
+
+Dana reúne as evidências: o histórico de commits do repositório com os horários, o registro de remoção da agência, os detalhes do certificado e as entradas dos logs de transparência para os domínios da Bayside. Ela converte todos os horários para um único fuso e escreve uma linha do tempo: chave incluída num commit na sexta-feira às 18:42, repositório público, chave removida no domingo às 10:15, incidente relatado na segunda-feira às 08:30. Ela consulta os logs de transparência e não encontra certificados inesperados para a Bayside, o que tranquiliza, mas não prova nada, porque um atacante com a chave poderia se passar pelo certificado existente sem obter um novo. Cada entrada aponta para a fonte da sua evidência.
+
+### 8.3 Contenção e recuperação
+
+Marcus recomenda três etapas. Primeiro, gerar um novo par de chaves no servidor, obter um novo certificado e implantá-lo. Segundo, pedir à autoridade certificadora que revogue o certificado antigo, para que os clientes que verificam a revogação o rejeitem. Terceiro, rotacionar quaisquer outros segredos do mesmo repositório e acrescentar varredura de segredos ao fluxo de trabalho da agência. Remover o arquivo do repositório não basta, porque podem existir cópias e o histórico ainda pode contê-lo. Dana redige o resumo para o cliente: o que aconteceu, o que foi feito, a incerteza restante e as etapas de prevenção, escrito para o gerente da clínica.
+
+### Exemplo resolvido
+
+Dana monta uma linha do tempo de quatro entradas com links para as evidências, consulta os logs de transparência e redige o resumo para o cliente recomendando reemissão, revogação e varredura de segredos.
+
+> **Caso sintético.** O incidente, os horários e o repositório são sintéticos.
+
+### Erros e limites
+
+A verificação de revogação é inconsistente entre os clientes, então a revogação reduz o risco, mas não o elimina. Os logs podem não mostrar quem clonou um repositório público.
+
+### Exercícios
+
+- **EX036 — Premissa de trabalho.** Que premissa Marcus adotou sobre a chave, e por quê? *Rubrica:* 3 = comprometida, porque a exposição não pode ser descartada e agir é barato;; 2 = comprometida;; 1 = segura;; 0 = nenhuma.
+
+- **EX037 — Duração da exposição.** Por aproximadamente quanto tempo a chave ficou pública? *Rubrica:* 3 = cerca de quarenta horas, de sexta-feira 18:42 a domingo 10:15;; 2 = aproximado;; 1 = errado;; 0 = nenhuma.
+
+- **EX038 — Limite da tranquilidade do CT.** Por que uma consulta limpa aos logs de transparência não prova segurança? *Rubrica:* 3 = o atacante poderia se passar pelo site com o certificado e a chave existentes;; 2 = personificação;; 1 = é prova;; 0 = nenhuma.
+
+- **EX039 — Remoção não basta.** Por que apagar o arquivo do repositório é insuficiente? *Rubrica:* 3 = podem existir cópias e o histórico pode retê-lo;; 2 = cópias;; 1 = é suficiente;; 0 = nenhuma.
+
+- **EX040 — Três etapas.** Liste as três etapas de recuperação de Marcus. *Rubrica:* 3 = nova chave e novo certificado, revogar o certificado antigo, rotacionar outros segredos e acrescentar varredura;; 2 = duas;; 1 = uma;; 0 = nenhuma.
+
+### Síntese
+
+Chaves expostas são tratadas como comprometidas, recuperadas por reemissão e revogação e explicadas com uma linha do tempo clara e uma incerteza honesta.
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Comunicação, ética e relatórios
+
+### Objetivos de aprendizagem
+
+Você vai (1) estruturar um relatório de achados criptográficos; (2) classificar riscos de forma consistente; (3) aplicar a ética profissional à divulgação e à honestidade.
+
+### 9.1 Estrutura do relatório
+
+O relatório mensal da Copperleaf para a Bayside tem quatro partes. Um sumário executivo de meia página diz o que mais importa e o que o cliente deve decidir. Uma tabela de achados lista cada item com identificador, descrição simples, classificação de risco, dono e prazo. Os apêndices técnicos guardam comandos, saídas e referências para a agência e a equipe de desktops. Uma seção final lista o que não foi verificado. Dana aprende a escrever o sumário por último, depois que os achados estão confirmados, e a começar pela ação necessária em vez do histórico da investigação, porque o gerente da clínica lê apenas a primeira página.
+
+### 9.2 Classificações consistentes
+
+As classificações de risco precisam significar a mesma coisa todo mês. A Copperleaf classifica pela probabilidade e pelo impacto, cada um numa escala de três pontos, combinados em baixo, médio ou alto. Um certificado público expirado tende a ser notado e prejudica os agendamentos, então é alto. Uma chave RSA-1024 num servidor interno acessível apenas pela equipe é médio: a fraqueza é real e deve ser corrigida, mas a exploração exige antes acesso à rede. Dana escreve uma frase de justificativa para cada classificação. Quando Marcus revisa seu trabalho, ele confere se achados semelhantes em clientes diferentes receberam classificações semelhantes, o que mantém o serviço justo e defensável.
+
+### 9.3 Ética na prática
+
+A ética aparece em pequenas escolhas. Dana descobre que o próprio site da agência, fora do seu escopo, mostra o mesmo erro de cadeia; ela não o testa mais, mas menciona isso informalmente ao contato da agência. Quando um achado é constrangedor porque a própria Copperleaf fez a configuração, ela o relata como qualquer outro. Ela nunca exagera o risco para vender mais serviços, nem o minimiza para evitar uma reunião desconfortável. Se algum dia encontrasse uma falha no produto de um fornecedor que afetasse muitos clientes, seguiria a divulgação coordenada por meio da Copperleaf, sem publicá-la abertamente. Relatórios honestos são aquilo pelo que os clientes pagam.
+
+### Exemplo resolvido
+
+Dana escreve um relatório mensal da Bayside com um sumário de meia página, uma tabela de achados classificados com justificativas e um apêndice, incluindo um achado causado pela Copperleaf.
+
+> **Caso sintético.** O relatório, as classificações e o site da agência são sintéticos.
+
+### Erros e limites
+
+Escalas de três pontos escondem nuances; as justificativas carregam o detalhe. Anotações informais sobre questões fora do escopo não podem virar testes não autorizados.
+
+### Exercícios
+
+- **EX041 — Posição do sumário.** Por que escrever o sumário executivo por último? *Rubrica:* 3 = os achados precisam estar confirmados antes e o sumário começa pela ação;; 2 = confirmados;; 1 = primeiro;; 0 = nenhuma.
+
+- **EX042 — Classificação do RSA-1024 interno.** Por que a chave RSA-1024 interna é classificada como médio, e não alto? *Rubrica:* 3 = fraqueza real, mas a exploração exige acesso à rede interna;; 2 = acesso necessário;; 1 = classificada como baixo;; 0 = nenhuma.
+
+- **EX043 — Verificação entre clientes.** O que Marcus confere nas classificações entre clientes? *Rubrica:* 3 = achados semelhantes receberam classificações semelhantes;; 2 = consistência;; 1 = nada;; 0 = nenhuma.
+
+- **EX044 — Erro próprio.** Como Dana deve relatar uma fraqueza introduzida pela própria Copperleaf? *Rubrica:* 3 = exatamente como qualquer outro achado, sem escondê-la;; 2 = relatar;; 1 = escondê-la;; 0 = nenhuma.
+
+- **EX045 — Falha no produto do fornecedor.** O que deve acontecer se Dana encontrar uma falha num produto de fornecedor amplamente usado? *Rubrica:* 3 = divulgação coordenada por meio da Copperleaf, sem publicação aberta;; 2 = divulgação;; 1 = publicar abertamente;; 0 = nenhuma.
+
+### Síntese
+
+Estrutura clara, classificações consistentes e ética honesta tornam os relatórios criptográficos confiáveis e acionáveis.
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Criptografia e serviços de confiança: qualidade e solução de problemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) diagnosticar uma fraqueza de armazenamento de senhas num portal da equipe; (2) verificar uma correção que usa uma função de derivação de chaves; (3) melhorar a qualidade do fluxo com revisão e retrospectivas.
+
+### 10.1 Um achado no portal da equipe
+
+O pequeno portal de escalas da equipe da Bayside, construído pela agência, armazena as senhas dos funcionários. Durante uma revisão, Dana vê na exportação de configuração que as senhas são armazenadas como hashes SHA-256 sem salt. Hashes rápidos permitem que um atacante que roube o banco de dados teste um número enorme de palpites rapidamente e, sem salt, senhas idênticas produzem hashes idênticos. O armazenamento de senhas precisa de uma função lenta e com salt. O hashlib.pbkdf2_hmac do Python implementa o PBKDF2, e escolhas mais fortes, que exigem muita memória, incluem o scrypt da RFC 7914 e o Argon2id da RFC 9106. A recomendação de Dana é usar uma biblioteca mantida que implemente uma delas, e não projetar um esquema próprio.
+
+### 10.2 Verificando a correção
+
+A agência propõe PBKDF2-HMAC-SHA-256 com um salt aleatório de 16 bytes por usuário e uma contagem alta de iterações definida pela política, migrando cada usuário no próximo login. Dana verifica a abordagem num laboratório com usuários sintéticos: dois funcionários com a mesma senha recebem valores armazenados diferentes; a senha correta é verificada e uma errada falha; e o tempo por palpite é muito maior que o de um único SHA-256. O laboratório abaixo mostra esses resultados. Ela registra que o laboratório confirma o comportamento do método, enquanto o código de produção da agência ainda precisa de sua própria revisão.
+
+### Laboratório — PBKDF2 com salt versus hash rápido
+
+```python
+# Salted PBKDF2-HMAC-SHA-256 vs one SHA-256, synthetic staff. Teaching only; use a maintained library in production.
+import hashlib, hmac, secrets, time
+ITER = 600_000   # lab value; production iteration count comes from policy
+def store(pw):
+    s = secrets.token_bytes(16); return s, hashlib.pbkdf2_hmac("sha256", pw, s, ITER)
+def check(pw, rec): return hmac.compare_digest(hashlib.pbkdf2_hmac("sha256", pw, rec[0], ITER), rec[1])
+a, b = store(b"Rota-Clinic-3"), store(b"Rota-Clinic-3")
+print("same password, different stored values:", a[1] != b[1])
+print("correct password:", check(b"Rota-Clinic-3", a), "| wrong password:", check(b"Rota-Clinic-4", a))
+t0 = time.perf_counter(); [hashlib.sha256(b"Rota-Clinic-3").digest() for _ in range(10000)]; fast = (time.perf_counter() - t0) / 10000
+t0 = time.perf_counter(); check(b"x", a); slow = time.perf_counter() - t0
+print(f"per-guess cost ratio PBKDF2/SHA-256: {'over 10,000x' if slow / fast > 10000 else 'under 10,000x'}")
+```
+
+Execute com `python3 lab_pbkdf2.py`. Saída verificada:
+
+```text
+same password, different stored values: True
+correct password: True | wrong password: False
+per-guess cost ratio PBKDF2/SHA-256: over 10,000x
+```
+
+### 10.3 Qualidade pela revisão
+
+Erros escapam em todo fluxo de trabalho, então a Copperleaf incorpora verificações de qualidade. Cada relatório é revisado por um segundo analista antes de ir ao cliente. Depois de cada ciclo mensal, a equipe passa quinze minutos numa retrospectiva: o que deu certo, o que deu errado e uma mudança para o mês seguinte. Quando o novo teste de Dana da correção da cadeia quase deixou passar o segundo servidor, a retrospectiva levou a uma regra: endpoints com balanceamento de carga são testados uma vez por backend. Pequenas melhorias constantes como essa elevam a qualidade de todo o serviço mais do que esforços heroicos ocasionais.
+
+### Exemplo resolvido
+
+Dana documenta o achado do SHA-256 sem salt, executa o laboratório de PBKDF2 para confirmar a abordagem da agência e acrescenta uma regra de teste por backend depois de uma retrospectiva.
+
+> **Caso sintético.** O portal de escalas, os usuários e a contagem de iterações são sintéticos; a RFC 7914 e a RFC 9106 são reais.
+
+### Erros e limites
+
+Os tempos do laboratório variam conforme a máquina; mostram o custo relativo, não a velocidade de um atacante. A atualização no login deixa as contas inativas com os hashes antigos.
+
+### Exercícios
+
+- **EX046 — Fraqueza sem salt.** Cite dois problemas do armazenamento de senhas com SHA-256 sem salt. *Rubrica:* 3 = rápido de adivinhar e senhas idênticas compartilham hashes;; 2 = um;; 1 = nada;; 0 = nenhuma.
+
+- **EX047 — Senhas iguais no laboratório.** O que o laboratório de PBKDF2 mostrou para dois funcionários com a mesma senha? *Rubrica:* 3 = os valores armazenados diferiram porque os salts diferiram;; 2 = diferiram;; 1 = iguais;; 0 = nenhuma.
+
+- **EX048 — Razão de custo no laboratório.** Segundo o laboratório, como o custo do PBKDF2 se comparou ao de um SHA-256? *Rubrica:* 3 = mais de 10.000 vezes mais lento por palpite, como impresso;; 2 = mais lento;; 1 = mais rápido;; 0 = nenhuma.
+
+- **EX049 — Ressalva de produção.** O que o laboratório não prova sobre a correção da agência? *Rubrica:* 3 = que o código de produção a implementa corretamente; precisa de revisão;; 2 = revisão de código;; 1 = prova tudo;; 0 = nenhuma.
+
+- **EX050 — Regra da retrospectiva.** Que regra saiu da retrospectiva? *Rubrica:* 3 = testar endpoints com balanceamento de carga uma vez por backend;; 2 = regra;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A qualidade vem de verificar as correções com métodos sólidos e de revisões e retrospectivas constantes.
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Laboratório supervisionado
+
+### Objetivos de aprendizagem
+
+Você vai (1) montar um laboratório contido que espelha um serviço do cliente; (2) ensaiar uma renovação de certificado e sua reversão; (3) encerrar o laboratório sem deixar confiança para trás.
+
+### 11.1 Espelhando o serviço
+
+Antes que a agência renove o certificado do site de agendamento numa nova plataforma de hospedagem, Marcus pede a Dana que ensaie a renovação num laboratório contido. Ela monta uma rede virtual isolada com um servidor web que copia a configuração do site de agendamento, uma autoridade certificadora de laboratório descartável e uma máquina cliente que confia apenas nessa raiz de laboratório. Não são usadas chaves reais, dados de pacientes nem nomes de produção; os nomes de host terminam em .lab.copperleaf.example. Espelhar a configuração importa mais que espelhar o conteúdo, porque os riscos da renovação estão nos caminhos de arquivos, na ordem da cadeia e no comportamento do servidor ao recarregar, e não nas páginas web.
+
+### 11.2 Ensaio e reversão
+
+Dana escreve as etapas: gerar uma nova chave, solicitar um certificado à autoridade de laboratório, instalar o certificado com sua intermediária, recarregar o servidor e testar. De propósito, ela instala uma vez a cadeia na ordem errada e vê o cliente falhar, e depois corrige. Ela também pratica a reversão: restaurar a chave e o certificado anteriores a partir da cópia de backup e recarregar. Cronometrar cada etapa mostra que a renovação inteira leva doze minutos, com dois minutos de risco durante o recarregamento. A agência usa as etapas testadas e os tempos dela para planejar uma janela de manutenção curta para a renovação real.
+
+### 11.3 Encerrando o laboratório
+
+Quando o ensaio termina, Dana apaga a chave privada da autoridade de laboratório, remove a raiz de laboratório do cliente, destrói as máquinas virtuais e escreve uma nota de encerramento listando o que foi removido. Marcus explica por que isso importa: uma raiz de laboratório deixada em qualquer máquina permite a quem tiver sua chave criar certificados em que essa máquina confia. A nota de encerramento também registra lições para a mudança real, como conferir explicitamente a ordem da cadeia. Um laboratório supervisionado é julgado não só pelo que ensinou, mas também por ter ou não deixado algo arriscado para trás.
+
+### Exemplo resolvido
+
+Dana ensaia a renovação do agendamento num laboratório espelhado, reproduz uma falha de ordem da cadeia, pratica a reversão e encerra o laboratório com uma nota de remoção.
+
+> **Caso sintético.** Os hosts, as chaves e os tempos do laboratório são sintéticos.
+
+### Erros e limites
+
+Os laboratórios não conseguem reproduzir todas as diferenças da produção, como o cache do provedor. Uma reversão ensaiada ainda depende de um backup atual.
+
+### Exercícios
+
+- **EX051 — O que espelhar.** O que mais importa espelhar no laboratório, e por quê? *Rubrica:* 3 = a configuração, como caminhos, ordem da cadeia e comportamento ao recarregar, onde está o risco da renovação;; 2 = configuração;; 1 = conteúdo;; 0 = nenhuma.
+
+- **EX052 — Falha deliberada.** Que falha Dana reproduziu de propósito? *Rubrica:* 3 = a cadeia instalada na ordem errada;; 2 = ordem da cadeia;; 1 = nada;; 0 = nenhuma.
+
+- **EX053 — Tempo da renovação.** Quanto tempo levou a renovação ensaiada, e quanto foi risco durante o recarregamento? *Rubrica:* 3 = doze minutos, dois minutos de risco durante o recarregamento;; 2 = um número;; 1 = nada;; 0 = nenhuma.
+
+- **EX054 — Apagar a chave do laboratório.** Por que apagar a chave privada da autoridade de laboratório no encerramento? *Rubrica:* 3 = para que ninguém possa emitir certificados que uma máquina que ainda confia na raiz aceitaria;; 2 = risco de confiança;; 1 = arrumação;; 0 = nenhuma.
+
+- **EX055 — Lição levada adiante.** Cite uma lição registrada para a mudança real. *Rubrica:* 3 = conferir explicitamente a ordem da cadeia;; 2 = lição;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Ensaiar mudanças num laboratório contido reduz o risco em produção, desde que o laboratório seja encerrado de forma limpa depois.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Portfólio de prática e revisão final
+
+### Objetivos de aprendizagem
+
+Você vai (1) montar um portfólio de prática a partir de seis meses de trabalho; (2) resumir tendências dos achados com um script simples; (3) refletir sobre lacunas e planejar a continuidade do aprendizado.
+
+### 12.1 Montando o portfólio
+
+O portfólio de Dana reúne evidências do que ela sabe fazer: uma tabela de partes interessadas, um plano de testes baseado na autorização, o script de inventário e sua saída, um conjunto de declarações de verificação, a linha do tempo da chave exposta, um relatório mensal com classificações e a nota de encerramento do laboratório. Cada item é anonimizado, mantendo os nomes sintéticos da Bayside e removendo qualquer coisa real, e cada um tem uma breve nota explicando o que ela fez, o que aprendeu e o que faria de outra forma. Marcus explica que um portfólio mostra o discernimento melhor que uma lista de certificações, porque revela como ela lidou com situações incertas e confusas.
+
+### 12.2 Tendências do rastreador
+
+Para encerrar o programa, Dana resume seis meses de achados da Bayside. Ela escreve um script curto sobre uma exportação sintética do rastreador que conta os achados por categoria e por status e calcula a mediana de dias até o encerramento. O laboratório abaixo mostra o resultado: as questões de expiração e de cadeia foram as mais comuns, e a maioria foi encerrada em poucas semanas, enquanto um achado de chave fraca ficou aberto por mais tempo porque exigia a substituição de um servidor. As tendências dizem ao gerente da clínica onde investir, como na renovação automatizada, e dizem à Copperleaf onde seu fluxo de trabalho poderia melhorar.
+
+### Laboratório — Tendências dos achados
+
+```python
+# Summarise a synthetic six-month findings export.
+import collections, statistics
+rows = [("expiry/chain", "closed", 6), ("expiry/chain", "closed", 11), ("expiry/chain", "closed", 4),
+        ("expiry/chain", "closed", 19), ("weak key", "open", 142), ("legacy TLS", "closed", 33),
+        ("legacy TLS", "in progress", 58), ("secret exposure", "closed", 2), ("password storage", "closed", 27)]
+print("by category:", dict(collections.Counter(c for c, _, _ in rows).most_common()))
+print("by status:", dict(collections.Counter(s for _, s, _ in rows)))
+print("median days to close (closed only):", statistics.median(d for _, s, d in rows if s == "closed"))
+print("oldest open:", max((d, c) for c, s, d in rows if s != "closed"))
+```
+
+Execute com `python3 lab_trends.py`. Saída verificada:
+
+```text
+by category: {'expiry/chain': 4, 'legacy TLS': 2, 'weak key': 1, 'secret exposure': 1, 'password storage': 1}
+by status: {'closed': 7, 'open': 1, 'in progress': 1}
+median days to close (closed only): 11
+oldest open: (142, 'weak key')
+```
+
+### 12.3 Reflexão e próximos passos
+
+Na revisão final com Marcus, Dana lista o que faz com confiança: confirmar sinalizações, verificar o comportamento do HMAC e do TLS, escrever achados em linguagem simples e manusear evidências. Também lista lacunas: ainda não conduziu um incidente, depende de Marcus para as classificações de risco em casos incomuns e sabe pouco sobre a migração pós-quântica além do fato de que o NIST publicou as FIPS 203, 204 e 205 em 2024. Eles combinam um plano para estudar essas normas, acompanhar um líder de incidentes e assumir o ciclo mensal de um cliente. A reflexão honesta é a última habilidade profissional que o programa ensina.
+
+### Exemplo resolvido
+
+Dana monta um portfólio de sete itens, executa o laboratório de tendências e combina um plano de aprendizado que cobre a liderança de incidentes e as normas pós-quânticas.
+
+> **Caso sintético.** O portfólio, a exportação do rastreador e a revisão são sintéticos; as FIPS 203, 204 e 205 são reais.
+
+### Erros e limites
+
+Seis meses de um único cliente são uma amostra pequena para tendências. Os portfólios precisam permanecer anonimizados e sintéticos quando compartilhados.
+
+### Exercícios
+
+- **EX056 — Por que um portfólio.** Por que Marcus valoriza um portfólio mais que uma lista de certificações? *Rubrica:* 3 = mostra o discernimento em situações confusas e incertas;; 2 = discernimento;; 1 = igual;; 0 = nenhuma.
+
+- **EX057 — Categoria mais comum.** Segundo o laboratório de tendências, que categoria teve mais achados? *Rubrica:* 3 = expiry/chain, como impresso na execução;; 2 = categoria;; 1 = errada;; 0 = nenhuma.
+
+- **EX058 — Aberto há mais tempo.** Que achado ficou aberto por mais tempo, e por quê? *Rubrica:* 3 = o achado de chave fraca, que exigia a substituição de um servidor;; 2 = achado;; 1 = nada;; 0 = nenhuma.
+
+- **EX059 — Lacunas admitidas.** Cite duas lacunas que Dana admite na revisão. *Rubrica:* 3 = duas entre: não conduziu incidentes, depende do mentor para classificações incomuns, pouco conhecimento de PQC;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+
+- **EX060 — Normas PQC.** Que normas pós-quânticas do NIST seu plano inclui? *Rubrica:* 3 = FIPS 203, 204 e 205;; 2 = duas;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Um portfólio, um resumo de tendências e uma reflexão honesta transformam seis meses de prática numa base profissional crível.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX030 (as de EX031–EX060 estão na edição em inglês até a tradução dos capítulos correspondentes). Dana Whitlock, Marcus Oyelaran, a Copperleaf Managed Services, o Bayside Dental Group e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060. Dana Whitlock, Marcus Oyelaran, a Copperleaf Managed Services, o Bayside Dental Group e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Executar verificações repetíveis, guardar evidências e explicar os achados ao cliente, sem inventar criptografia.
 
@@ -411,6 +756,66 @@ Respostas-modelo para EX001–EX030 (as de EX031–EX060 estão na edição em i
 **EX029.** A equipe de desktops da Copperleaf, que gerencia os notebooks da clínica.
 
 **EX030.** Porque um fornecedor que entende por que a mudança importa costuma agir mais cedo e com mais cuidado.
+
+**EX031.** Mensagens com mais de cinco minutos, 300 segundos, são rejeitadas como possíveis replays.
+
+**EX032.** Foi rejeitada, porque o HMAC recalculado deixou de corresponder à tag.
+
+**EX033.** Executando openssl s_client com a opção -tls1_1 e confirmando que o handshake é recusado.
+
+**EX034.** Ela a registra como não testada e explica por quê, em vez de presumir que corresponde aos outros endpoints.
+
+**EX035.** Palavras como seguro e conforme, porque afirmam mais garantia do que um teste específico oferece.
+
+**EX036.** Que estava comprometida, já que ninguém podia provar que não tinha sido copiada e substituí-la custa pouco.
+
+**EX037.** Cerca de quarenta horas, de sexta-feira às 18:42 até a remoção no domingo às 10:15.
+
+**EX038.** Porque um atacante que tem a chave pode se passar pelo site usando o certificado existente, sem que apareça nenhum certificado novo.
+
+**EX039.** Outras pessoas podem já ter cópias, e o histórico do repositório ainda pode conter a chave.
+
+**EX040.** Implantar uma nova chave e um novo certificado, revogar o certificado antigo e rotacionar os outros segredos, acrescentando varredura de segredos.
+
+**EX041.** Porque só depois que os achados estão confirmados o sumário pode declarar com precisão o que importa e o que decidir.
+
+**EX042.** A fraqueza é real, mas um atacante precisaria antes de acesso à rede da equipe, o que reduz a probabilidade.
+
+**EX043.** Que achados semelhantes em clientes diferentes receberam classificações semelhantes, mantendo o serviço consistente.
+
+**EX044.** Exatamente como qualquer outro achado, com as mesmas evidências e classificação, porque a honestidade é o serviço.
+
+**EX045.** Deve passar pela divulgação coordenada ao fornecedor por meio da Copperleaf, em vez de ser publicada abertamente.
+
+**EX046.** É rápido, então os palpites são baratos, e sem salt senhas idênticas dão hashes idênticos.
+
+**EX047.** Seus valores armazenados diferiram porque cada um tinha um salt aleatório próprio.
+
+**EX048.** Na contagem de iterações do laboratório, o PBKDF2 custou mais de 10.000 vezes mais por palpite do que um único SHA-256, como a execução imprimiu.
+
+**EX049.** Não prova que o código de produção da agência está correto; esse código precisa de sua própria revisão.
+
+**EX050.** Endpoints com balanceamento de carga devem ser testados uma vez para cada servidor de backend.
+
+**EX051.** A configuração do servidor, porque os riscos da renovação estão nos caminhos, na ordem da cadeia e no recarregamento, não no conteúdo das páginas.
+
+**EX052.** Ela instalou a cadeia de certificados na ordem errada e observou o cliente falhar.
+
+**EX053.** Doze minutos no total, incluindo dois minutos de risco durante o recarregamento.
+
+**EX054.** Para que ninguém possa mais tarde emitir certificados em que uma máquina que ainda tenha a raiz de laboratório confiaria.
+
+**EX055.** Conferir explicitamente a ordem da cadeia de certificados antes de recarregar o servidor.
+
+**EX056.** Porque mostra como Dana de fato raciocinou e agiu em situações reais e incertas.
+
+**EX057.** As questões de expiração e de cadeia (expiry/chain) tiveram mais achados, como a execução mostrou.
+
+**EX058.** A chave RSA fraca no servidor da clínica, porque corrigi-la exigia substituir o servidor.
+
+**EX059.** Ela não conduziu um incidente e sabe pouco sobre a migração pós-quântica além das publicações FIPS de 2024.
+
+**EX060.** FIPS 203 (ML-KEM), FIPS 204 (ML-DSA) e FIPS 205 (SLH-DSA), publicadas em 2024.
 
 <a id="references"></a>
 ## Referências
