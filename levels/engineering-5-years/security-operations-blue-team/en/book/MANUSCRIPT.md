@@ -2533,7 +2533,7 @@ A 99.5% target leaves 0.5% of time as an allowance for downtime. This gives a cl
 
 In week one of reconciliation, the portal web servers show 99.95% completeness; the depot firewall shows 97.8% because of a UDP syslog path that drops packets under load.
 
-UDP syslog sends messages without confirmation, so packets dropped under load are simply lost. A 2.2% loss means about one denial in fifty never reaches the SIEM. Switching the depot firewall to TCP or a forwarding agent with acknowledgement and buffering would fix it, and the reconciliation report will show whether completeness rises above target.
+UDP syslog sends messages without confirmation, so packets dropped under load are simply lost. A 2.2% loss means about one denial in forty-five never reaches the SIEM. Switching the depot firewall to TCP or a forwarding agent with acknowledgement and buffering would fix it, and the reconciliation report will show whether completeness rises above target.
 
 ### Monitoring the monitors
 
