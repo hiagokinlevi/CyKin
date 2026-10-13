@@ -4,6 +4,8 @@
 
 The README bookshelf is generated locally from the same data as this table whenever the public catalog is built. Each percentage is **authored English chapter drafts ÷ planned English subject-chapters in that area across all nine courses**. A chapter counts only when its `MANUSCRIPT.md` has at least 300 whitespace-separated words of teaching before its exercises; a `PLAN.md` outline, chapter heading alone or generated summary does not count. This measures **draft coverage**, not content depth, 300-page A4 completion, technical approval or translation progress. The public books still have their separate release gate.
 
+**Publication update (2026-10-13):** The six early Chapter 2 correction units are consolidated in the [rapid Incident Response English manuscript](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#ch-02). This changes teaching and executable validation, not the chapter or exercise denominator, and does not create a translation. The integration did not recount the full 207-course catalog; existing area totals below are not newly verified by this update. The rapid book's prior 337-page report is stale for the changed source; see its [course checkpoint](COURSE_WRITING_PROGRESS.md). No complete-book status is granted by publication alone.
+
 | Sigil | Academic area | Drafted / planned English chapters | Draft coverage | Start reading |
 |---|---|---:|---:|---|
 | IR | Incident response and cyber resilience | 100 / 182 | 54.9% | [Course](levels/rapid-1-month/incident-response-resilience/README.md) |
