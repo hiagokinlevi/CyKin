@@ -28,7 +28,7 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [serie I
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](../../en/book/MANUSCRIPT.md#ch-07) · [8](../../en/book/MANUSCRIPT.md#ch-08) · [9](../../en/book/MANUSCRIPT.md#ch-09) · [10](../../en/book/MANUSCRIPT.md#ch-10) · [11](../../en/book/MANUSCRIPT.md#ch-11) · [12](../../en/book/MANUSCRIPT.md#ch-12) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
 
@@ -421,7 +421,354 @@ Una evaluación controlada empareja los tratamientos sobre datos etiquetados id�
 
 ### Siga estudiando — capítulo 06 de 12
 
-[← Capítulo 05 (borrador)](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 (borrador) →](../../en/book/MANUSCRIPT.md#ch-07)
+[← Capítulo 05 (borrador)](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 (borrador) →](#ch-07)
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Seguridad de TO, IoT y sistemas ciberfísicos: integración organizativa
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) diseñar funciones y responsabilidades de seguridad de TO entre TI, operación e ingeniería; (2) construir una matriz RACI para los procesos clave de seguridad de TO; (3) integrar la seguridad de TO en la gestión de cambios; y (4) fijar métricas que impulsen el comportamiento correcto.
+
+### 7.1 El problema de la titularidad
+
+En muchas empresas de servicios, TI es titular de la red hasta un cortafuegos, operación es titular del proceso, ingeniería es titular de los controladores y nadie es titular del espacio donde se encuentran. NIST SP 800-82r3 recomienda un equipo multifuncional para la seguridad de TO, con una autoridad claramente asignada. Integrar significa dejar por escrito quién decide, no solo quién asesora. En BWRP ese espacio incluye el cortafuegos de la DMZ, el intermediario de proveedores y los enlaces celulares con las estaciones de bombeo. Cada uno necesita un titular con nombre y autoridad para aprobar cambios y actuar en un incidente. Dejarlo por escrito suele revelar que dos equipos creían que el titular era el otro, que es exactamente la brecha que aprovecha un atacante o una avería.
+
+### 7.2 Una RACI para tres procesos
+
+Para la aprobación del acceso remoto: el supervisor de turno es Responsable de habilitar las sesiones; el responsable de seguridad de TO rinde cuentas (Accountable) de la política; el gestor de proveedores es Consultado; seguridad de TI es Informada de cada sesión. Para un cambio de la lógica del PLC: el ingeniero de control es Responsable, el jefe de ingeniería rinde cuentas, operación es Consultada y seguridad de TO es Informada y recibe una alerta. Para la declaración de un incidente de TO: el supervisor de turno es Responsable de comunicarlo, el director de la planta rinde cuentas, seguridad de TO y TI son Consultadas y el regulador es Informado cuando se alcanzan los umbrales.
+
+Compruebe en cada fila que haya exactamente una parte que rinde cuentas y al menos una persona que hace el trabajo. Comparta la tabla con cada función que nombra y pregunte si están de acuerdo; una función que se entera por la tabla de que rinde cuentas de algo todavía no lo ha aceptado. Revise la RACI tras los cambios organizativos y tras cualquier incidente que la haya puesto a prueba.
+
+### 7.3 Gestión de cambios
+
+Todo cambio en un sistema de TO pasa por un comité de cambios que ya existe para la seguridad funcional y la fiabilidad. Añadir tres preguntas de seguridad a su formulario (¿añade este cambio un conducto, modifica una cuenta o altera el firmware?) integra la seguridad sin una burocracia paralela. Cada respuesta afirmativa desencadena entonces una acción definida: un conducto nuevo necesita una regla de cortafuegos y un titular; una cuenta modificada necesita una revisión de quién puede usarla; un firmware alterado necesita una comprobación frente a los avisos del proveedor y una copia de seguridad previa. El comité ya entiende las preguntas de seguridad funcional y fiabilidad, así que las preguntas de seguridad deben formularse de la misma manera.
+
+### 7.4 Métricas
+
+Mida aquello de lo que quiere más. «Número de vulnerabilidades» premia no buscar. Mejor: porcentaje de activos de TO del inventario con versiones de firmware conocidas; mediana de días para aplicar los parches de TO de alto riesgo dentro de las ventanas disponibles; porcentaje de sesiones de proveedores con grabaciones revisadas. Cada métrica nombra un denominador. Cada métrica necesita también un valor de partida y una fecha objetivo. El cuadro de mando de BWRP parte de 14 de 23 RTU en el inventario y 0 de 37 sesiones de proveedores revisadas desde marzo, así que el avance es visible desde el primer informe. Revise cada definición con las personas a las que mide, para que la métrica cambie el comportamiento y no solo el informe.
+
+### Ejemplo resuelto (BWRP sintética)
+
+Plan de integración de Daniel: el responsable de seguridad de TO reporta al director de la planta, con una línea punteada hacia el CISO; el formulario del comité de cambios incorpora tres preguntas; un cuadro de mando trimestral muestra la completitud del inventario (hoy 14/23 RTU más 41/41 activos de la planta), la tasa de revisión de sesiones de proveedores (hoy 0/37 sesiones revisadas desde marzo) y la vigencia de las pruebas de restauración.
+
+> **Caso sintético — Bayside Water Reclamation Plant.** La estructura y las cifras son inventadas.
+
+### Errores y límites
+
+Las tablas RACI fallan si dos partes rinden cuentas a la vez. Las métricas pueden manipularse; revise las definiciones cada año.
+
+### Ejercicios — capítulo 7
+
+- **EX031 — Detectar un error en una RACI.** Un borrador indica que tanto seguridad de TI como el director de la planta rinden cuentas de la declaración de incidentes. ¿Qué está mal y cómo se corrige? *Rúbrica:* 3 = solo una parte rinde cuentas; director A, TI C; 2 = solo el problema; 1 = lo acepta; 0 = nada.
+- **EX032 — Tres preguntas para el comité de cambios.** Reescriba las tres preguntas de seguridad para que alguien no especialista pueda responderlas con sí o no. *Rúbrica:* 3 = tres preguntas claras de sí/no; 2 = dos; 1 = jerga; 0 = nada.
+- **EX033 — Una métrica contraproducente.** Explique cómo «cero hallazgos de TO abiertos» podría ser contraproducente. *Rúbrica:* 3 = desincentiva informar/buscar; incentiva cerrar sin corregir; 2 = parcial; 1 = vago; 0 = nada.
+- **EX034 — Cifra de completitud del inventario.** Calcule la completitud combinada del inventario de BWRP. *Rúbrica:* 3 = 55/64 ≈ 85,9 %; 2 = fracción correcta; 1 = solo 14/23; 0 = nada.
+- **EX035 — Elegir la línea de reporte.** Dé una ventaja de que el responsable de seguridad de TO reporte al director de la planta en lugar de al CISO. *Rúbrica:* 3 = autoridad sobre las decisiones de operación, contexto del proceso; 2 = vago; 1 = intento mínimo; 0 = nada.
+
+### Síntesis del capítulo
+
+La integración es autoridad explícita, preguntas incorporadas al proceso de cambios y métricas con denominadores que premian encontrar y corregir.
+
+### Siga estudiando — capítulo 07 de 12
+
+[← Capítulo 06 (borrador)](#ch-06) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 08 (borrador) →](#ch-08)
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Seguridad de TO, IoT y sistemas ciberfísicos: casos difíciles
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) liderar una respuesta cuando la contención y la seguridad funcional del proceso entran en conflicto; (2) gestionar un escenario interno con equidad y evidencia; (3) gestionar el compromiso de un proveedor que afecta a varios emplazamientos; y (4) comunicarse en condiciones de incertidumbre con los reguladores y el público.
+
+### 8.1 Cuando la contención pone en peligro el proceso
+
+Suponga que la evidencia apunta a un intruso en el servidor SCADA de BWRP durante una tormenta, cuando las estaciones de bombeo necesitan arranques remotos de bombas para evitar desbordamientos. Desconectar el SCADA detiene a la vez al intruso y el control remoto de los operadores. La tarea del líder es elegir la opción menos mala: mantener el SCADA conectado con una vigilancia reforzada y verificación manual de cada orden; enviar cuadrillas a las estaciones de consecuencia alta para que tomen el control local; y después aislar. NIST SP 800-82r3 subraya que la respuesta a incidentes de TO debe sopesar el impacto en la seguridad funcional y en la operación de las acciones de respuesta.
+
+### 8.2 Amenazas internas
+
+Un cambio local sin explicación en un panel de dosificación (el ejemplo del capítulo 3) podría ser un ajuste bienintencionado de un técnico o un sabotaje. Trátelo primero como una desviación del proceso, reúna evidencia sin acusar, implique a recursos humanos y a la asesoría jurídica antes de las entrevistas, y recuerde que las culturas de culpa hacen que el personal oculte los errores, lo que es peor para la seguridad. En BWRP, la evidencia ya apuntaba a un cambio local durante un período en el que el panel estaba en modo local. El siguiente paso es comprobar los cuadrantes de turnos y las órdenes de trabajo de esa franja, y preguntar al técnico qué estaba haciendo, llevando la conversación como una revisión del proceso. Solo si la explicación no encaja se convierte en un asunto disciplinario o legal.
+
+### 8.3 Compromiso de un proveedor
+
+Si un proveedor de SCADA anuncia que su servidor de actualizaciones distribuyó software manipulado, toda empresa de servicios que lo use debe determinar su exposición. Los líderes necesitan un inventario de las versiones instaladas y un registro de la procedencia de las actualizaciones. El intercambio de información sectorial ayuda; también una relación previa con el equipo de seguridad del proveedor. Para BWRP, la primera pregunta sería qué servidores SCADA y estaciones de ingeniería recibieron actualizaciones de la fuente afectada, y cuándo. Eso requiere registros guardados antes del anuncio, y por eso importa el trabajo de inventario de la lista de brechas. Los contactos con el equipo de seguridad del proveedor y con el grupo sectorial de intercambio deben establecerse antes de una crisis, no durante ella.
+
+### 8.4 Comunicar en condiciones de incertidumbre
+
+Diga a los reguladores lo que sabe, lo que no sabe, lo que está haciendo y cuándo dará la próxima actualización. Evite tanto las garantías que no puede respaldar como las especulaciones sobre la atribución. En BWRP, la declaración provisional de la 01:00 de la noche de tormenta siguió este patrón: una sesión desconocida desde el servidor SCADA, cuadrillas en las estaciones junto a la playa, la ruta externa cortada y la hora de la siguiente actualización. No afirmaba nada sobre quién era el responsable. Prepare con antelación plantillas para estas declaraciones, de modo que puedan emitirse con rapidez sin una redacción descuidada.
+
+### Ejemplo resuelto (BWRP sintética)
+
+Noche de tormenta, 23:40: la supervisión alerta de una sesión saliente desconocida desde el servidor SCADA. Daniel y el supervisor de turno acuerdan: cuadrillas en las seis estaciones junto a la playa antes de las 00:30 para tomar el control local; el SCADA sigue conectado con verificación por dos personas de cada orden remota; a las 00:35, con el control local confirmado, se corta la ruta externa del SCADA en el cortafuegos de la DMZ. El regulador recibe una declaración provisional a la 01:00 según los términos de notificación de la autorización.
+
+> **Caso sintético — Bayside Water Reclamation Plant.** El evento y los horarios son inventados.
+
+### Errores y límites
+
+La verificación por dos personas ralentiza la operación; es una medida temporal. Las declaraciones provisionales no deben retrasarse para perfeccionarlas.
+
+### Ejercicios — capítulo 8
+
+- **EX036 — Secuenciar la respuesta de una noche de tormenta.** Explique por qué se enviaron las cuadrillas antes de cortar la ruta externa. *Rúbrica:* 3 = mantener la prevención de desbordamientos mediante el control local antes de perder el control remoto; 2 = parcial; 1 = rapidez; 0 = nada.
+- **EX037 — Primeros pasos ante una posible amenaza interna.** Enumere las tres primeras acciones tras el cambio sin explicación en el panel. *Rúbrica:* 3 = poner el proceso en condiciones seguras/verificar el punto de consigna, preservar la evidencia, implicar a RR. HH./asesoría jurídica antes de las entrevistas; 2 = dos; 1 = acusar; 0 = nada.
+- **EX038 — Pregunta de exposición al proveedor.** ¿Qué dos registros permiten a BWRP responder «¿nos afectó la actualización manipulada?»? *Rúbrica:* 3 = versión instalada por equipo e historial de origen/fecha de las actualizaciones; 2 = uno; 1 = lista de proveedores; 0 = nada.
+- **EX039 — Una declaración provisional.** Redacte una declaración provisional de tres frases para el regulador. *Rúbrica:* 3 = lo conocido, lo desconocido, las acciones y la hora de la próxima actualización; 2 = tres de cuatro; 1 = especulativa; 0 = nada.
+- **EX040 — Terminar la verificación por dos personas.** Indique un criterio para terminar la medida temporal. *Rúbrica:* 3 = ruta del intruso cerrada e integridad del SCADA verificada (p. ej., reconstrucción limpia o hashes verificados), aprobación del titular; 2 = parcial; 1 = solo basado en el tiempo; 0 = nada.
+
+### Síntesis del capítulo
+
+Los casos difíciles exigen una secuencia que mantenga el proceso seguro, equidad con las personas, inventarios que respondan a las preguntas sobre proveedores y una comunicación honesta.
+
+### Siga estudiando — capítulo 08 de 12
+
+[← Capítulo 07 (borrador)](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 09 (borrador) →](#ch-09)
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Seguridad de TO, IoT y sistemas ciberfísicos: liderazgo y aseguramiento
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) estructurar un argumento de aseguramiento desde una afirmación principal hasta la evidencia; (2) encontrar de forma mecánica las afirmaciones sin respaldo; (3) distinguir el aseguramiento del cumplimiento; y (4) presentar el estado del aseguramiento a un consejo sin exagerarlo.
+
+### 9.1 Afirmaciones, argumentos, evidencia
+
+Un caso de aseguramiento enuncia una afirmación principal («el riesgo de TO de BWRP es aceptable»), la descompone en subafirmaciones y respalda cada hoja con evidencia: informes de pruebas, revisiones de configuración, registros de simulacros. Goal Structuring Notation es una forma gráfica habitual. Su valor está en que cada brecha se hace visible como una afirmación sin nada debajo.
+
+```python
+"""Lab 09: check a synthetic assurance argument: every claim needs evidence or fully supported sub-claims."""
+arg = {
+    "G1 BWRP OT risk is acceptable": ["G2 remote access controlled", "G3 dosing integrity protected", "G4 recovery tested"],
+    "G2 remote access controlled": ["E1 broker config review 2026-09", "E2 session log sample"],
+    "G3 dosing integrity protected": ["G5 setpoint limits enforced", "G6 writes monitored"],
+    "G5 setpoint limits enforced": ["E3 bench test report"],
+    "G6 writes monitored": [],
+    "G4 recovery tested": ["E4 restore drill 2025-11"],
+}
+def supported(node, path=()):
+    if node.startswith("E"): return True
+    kids = arg.get(node, [])
+    return bool(kids) and all(supported(k, path + (node,)) for k in kids)
+for g in arg:
+    print(f"{g:34} {'supported' if supported(g) else 'UNSUPPORTED'}")
+```
+
+Ejecútelo con `python3 lab_assure.py`. Salida verificada:
+
+```text
+G1 BWRP OT risk is acceptable      UNSUPPORTED
+G2 remote access controlled        supported
+G3 dosing integrity protected      UNSUPPORTED
+G5 setpoint limits enforced        supported
+G6 writes monitored                UNSUPPORTED
+G4 recovery tested                 supported
+```
+
+Escribir el argumento de este modo hace precisa la pregunta del consejo. En lugar de preguntar si la seguridad de TO es buena, pregunta qué afirmaciones tienen respaldo y cuáles no. Cada elemento de evidencia necesita además un titular y una fecha, para que el caso pueda actualizarse. El argumento de BWRP del laboratorio 9 es deliberadamente pequeño, para mostrar la estructura antes de que crezca.
+
+### 9.2 Cómo leer la comprobación
+
+G6 «writes monitored» no tiene evidencia ni subafirmaciones, así que no tiene respaldo. G3 depende de G6 y por tanto falla, y la afirmación principal G1 falla con ella. G2 y G4 tienen respaldo. La comprobación es estricta a propósito: para un consejo, una afirmación principal no puede ser verdadera en parte. La comprobación solo evalúa la estructura. No puede decir si la prueba de banco de E3 era la prueba adecuada, ni si la muestra de registros de sesiones de E2 era lo bastante grande. Esos son juicios que corresponden a un revisor. Use la comprobación mecánica para encontrar brechas con rapidez y después lea cada elemento de evidencia para ver si de verdad respalda su afirmación.
+
+### 9.3 El aseguramiento no es cumplimiento
+
+El cumplimiento muestra que existen los controles exigidos. El aseguramiento argumenta que el riesgo es aceptable dadas las amenazas y las consecuencias reales del sistema. Una planta puede cumplir una lista de verificación y aun así tener una afirmación sin respaldo en su lazo más importante, aquí la integridad de la dosificación. BWRP podría superar una lista de verificación que pregunte si el acceso remoto está controlado y si la recuperación está probada, porque G2 y G4 tienen respaldo, mientras que la afirmación que más importa a los residentes, la integridad de la dosificación, sigue sin respaldo. El aseguramiento pone esa brecha al principio del documento para el consejo, donde un informe de cumplimiento la habría escondido entre los puntos superados.
+
+### 9.4 Vigencia de la evidencia
+
+La evidencia envejece. Un simulacro de restauración de 2025-11 respalda hoy G4; dentro de dos años no lo hará. Los casos de aseguramiento maduros asignan un período de validez a cada elemento y hacen fallar las afirmaciones cuya evidencia ha caducado. Fije el período de validez según la rapidez con la que la evidencia podría dejar de ser cierta. Una revisión de la configuración del intermediario puede tener que repetirse tras cada cambio importante, mientras que un simulacro de restauración podría ser válido durante un año. Añada las fechas de caducidad al propio argumento, para que la comprobación del laboratorio 9 pueda marcar una afirmación sin respaldo cuando su evidencia caduque.
+
+### 9.5 Informar a un consejo
+
+Informe: el estado de la afirmación principal (todavía sin respaldo), qué subafirmación la bloquea, qué evidencia está prevista y cuándo. Evite los colores rojo, ámbar y verde sin las afirmaciones subyacentes; el color oculta el razonamiento. El documento de Daniel para el consejo sigue esta estructura. Dice claramente que G1 todavía no tiene respaldo, nombra a G6 como la afirmación que la bloquea, da la fecha en la que existirá la evidencia e identifica la evidencia compensatoria hasta entonces. Un miembro del consejo puede hacer a ese documento una pregunta más afinada que a una sola luz ámbar.
+
+### Ejemplo resuelto (BWRP sintética)
+
+Documento de Daniel para el consejo: «G1 todavía no tiene respaldo porque la supervisión de escrituras en PLC-D (G6) no tiene evidencia. Previsto: desplegar supervisión pasiva en la red de dosificación antes de enero y adjuntar la revisión de alertas del primer mes como evidencia E5. Hasta entonces, la evidencia compensatoria es E3 (prueba de banco de los límites del punto de consigna)».
+
+> **Caso sintético — Bayside Water Reclamation Plant.** La estructura del argumento y los identificadores de evidencia son inventados.
+
+### Errores y límites
+
+Un árbol con respaldo solo vale lo que valga la pertinencia de la evidencia; un informe de pruebas puede quedar asociado a la afirmación equivocada. Las comprobaciones mecánicas no juzgan la calidad de la evidencia.
+
+### Ejercicios — capítulo 9
+
+- **EX041 — Corregir el árbol.** Añada la evidencia «E5 monitoring review 2027-01» bajo G6. ¿Qué imprime el laboratorio para G1? *Rúbrica:* 3 = supported (todas las ramas llegan ahora a evidencia); 2 = correcto pero sin motivo; 1 = sigue sin respaldo; 0 = nada.
+- **EX042 — Una regla de caducidad.** Escriba una regla que haga fallar la evidencia de más de 18 meses y diga qué elemento fallaría primero. *Rúbrica:* 3 = regla más E4 (2025-11) como el más antiguo; 2 = uno de los dos; 1 = vago; 0 = nada.
+- **EX043 — Cumplimiento sin aseguramiento.** Dé un ejemplo en el que BWRP supera una lista de verificación pero G3 no tiene respaldo. *Rúbrica:* 3 = la lista pide cortafuegos/política, no supervisión de escrituras de dosificación; 2 = parcial; 1 = vago; 0 = nada.
+- **EX044 — Evidencia mal asociada.** Explique por qué asociar a G3 una prueba de penetración de la TI corporativa sería un error. *Rúbrica:* 3 = no es pertinente para la integridad de la red de dosificación; otro sistema; 2 = parcial; 1 = aceptable; 0 = nada.
+- **EX045 — Una frase para el consejo.** Escriba una frase que informe del estado de G1 sin códigos de color. *Rúbrica:* 3 = estado, afirmación que bloquea, plan y fecha; 2 = tres; 1 = «ámbar»; 0 = nada.
+
+### Síntesis del capítulo
+
+El aseguramiento hace auditables las afirmaciones de la dirección: cada afirmación principal se descompone hasta llegar a evidencia vigente y pertinente, y las brechas se informan como brechas.
+
+### Siga estudiando — capítulo 09 de 12
+
+[← Capítulo 08 (borrador)](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 (borrador) →](#ch-10)
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Lectura y crítica de investigación
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) criticar el modelo de amenazas, el método y la evaluación de un artículo revisado por pares sobre seguridad de TO; (2) juzgar si los resultados se trasladan a su organización; (3) sintetizar varios artículos; y (4) escribir una crítica estructurada que pueda usar un público de profesionales.
+
+### 10.1 Elegir los artículos
+
+Lea investigación primaria que aborde una decisión pendiente. Para el programa de detección de BWRP, dos artículos enmarcan el campo: Giraldo et al. (2018, *ACM Computing Surveys*, doi:10.1145/3203245), una revisión de la detección de ataques basada en la física en sistemas ciberfísicos, y Urbina et al. (2016, ACM CCS, doi:10.1145/2976749.2978388), que defiende evaluar los detectores por el impacto que puede lograr un atacante no detectado. Parta de una decisión que esté sobre la mesa, como la forma de evaluar el monitor de dosificación previsto en BWRP, y elija los artículos que guarden relación con ella. Una revisión da el mapa, y un artículo centrado en un problema da un método que probar. Anote por qué se eligió cada artículo, para poder revisar la lista de lecturas cuando cambie la decisión.
+
+### 10.2 Criticar el modelo de amenazas
+
+Pregunte qué puede observar, cambiar y saber el atacante. Urbina et al. consideran un atacante que conoce el detector y se mantiene por debajo de su umbral, una hipótesis fuerte pero realista para actores con muchos recursos. Un artículo que solo prueba ataques ingenuos exagera el valor del detector. Para BWRP, el atacante pertinente es uno que puede cambiar los valores de dosificación o las lecturas que informan de ellos. Escriba las capacidades de ese atacante en la crítica y compárelas con las del artículo. Si un artículo supone que el atacante no puede ver el detector, diga si eso es plausible para una ruta de acceso de proveedores que llega a PLC-D.
+
+### 10.3 Criticar el método y la evaluación
+
+Compruebe el banco de pruebas o el conjunto de datos (simulado, de laboratorio u operativo), las métricas, las referencias de comparación y si los umbrales se ajustaron con los datos de evaluación. Las revisiones como la de Giraldo et al. son especialmente útiles para detectar hábitos de todo el campo, por ejemplo métricas incoherentes que dificultan comparar artículos. Escriba qué mide realmente la evaluación de cada artículo y compárelo con lo que BWRP necesita saber. Un detector evaluado por su exactitud sobre datos equilibrados dice poco de las falsas alertas en una planta donde los ataques son raros. Anote también si los autores informan del impacto que podría lograr un atacante sin ser detectado, la medida que defienden Urbina et al.
+
+### 10.4 Traslado a la práctica
+
+Incluso un artículo sólido puede no trasladarse. La detección basada en la física necesita un modelo del proceso; el tratamiento biológico de BWRP es lento y no lineal, a diferencia de los lazos más rápidos de muchos bancos de pruebas. Para trasladarlo hay que preguntar: ¿tiene nuestro proceso la dinámica, los sensores y la calidad de datos que el método supone? Responda a cada pregunta con evidencia de BWRP: qué sensores hay en el lazo de dosificación, con qué frecuencia informan y cuánto ruido tienen las lecturas. Si las respuestas no alcanzan lo que el método necesita, el traslado puede requerir instrumentos nuevos o un modelo distinto. La crítica debe decir cuál de las dos cosas, en lugar de recomendar el método por la fuerza de sus resultados publicados.
+
+### 10.5 Escribir la crítica
+
+Estructura: pregunta y afirmación; modelo de amenazas; método; evidencia; traslado a BWRP; qué probaríamos primero. Manténgala en dos páginas para un público de profesionales. Cada parte debe ser breve y concreta. El párrafo sobre el traslado es el más importante para los profesionales, porque dice qué tendría que ser cierto en BWRP para que los resultados del artículo se apliquen. Termine con una prueba que la organización pueda ejecutar, como medir la desviación máxima de dosificación no detectada en su propia reproducción. Pida a un operador que la lea antes de difundirla.
+
+### Ejemplo resuelto (BWRP sintética)
+
+La crítica de Daniel concluye: la métrica de impacto de Urbina et al. es la forma correcta de evaluar el monitor de dosificación de BWRP, porque el lazo de dosificación es donde un sesgo no detectado tiene consecuencias para la salud pública; los resultados de su banco de pruebas no se trasladan directamente, así que BWRP medirá la desviación máxima de dosificación no detectada en su propia reproducción antes de elegir los umbrales.
+
+> **Caso sintético — Bayside Water Reclamation Plant.** La crítica es una ilustración; los dos artículos son reales y sus DOI están verificados.
+
+### Errores y límites
+
+Los resúmenes de artículos no son críticas. No atribuya a un artículo resultados que no presenta; cite textualmente y dé la referencia.
+
+### Ejercicios — capítulo 10
+
+- **EX046 — La hipótesis del atacante sigiloso.** ¿Por qué es razonable para BWRP suponer que el atacante conoce el detector? *Rúbrica:* 3 = los actores capaces estudian sus objetivos; la documentación y los proveedores filtran información; diseño conservador; 2 = parcial; 1 = no es razonable; 0 = nada.
+- **EX047 — Detectar el ajuste con los datos de prueba.** ¿Qué frase de una sección de método mostraría que los umbrales se ajustaron con los datos de evaluación? *Rúbrica:* 3 = umbrales elegidos para maximizar el rendimiento en el mismo conjunto de datos del que se informa; 2 = parcial; 1 = vago; 0 = nada.
+- **EX048 — Pregunta de traslado para procesos lentos.** Nombre una propiedad del proceso que limite el traslado de resultados de detección en lazos rápidos al tratamiento biológico. *Rúbrica:* 3 = dinámica lenta y no lineal/constantes de tiempo largas o sensores escasos; 2 = vago; 1 = incorrecto; 0 = nada.
+- **EX049 — Usar bien una revisión.** Indique un uso adecuado y uno inadecuado de Giraldo et al. *Rúbrica:* 3 = adecuado: cartografiar el campo y encontrar artículos primarios; inadecuado: citarlo como evidencia de que un detector concreto funciona; 2 = uno; 1 = vago; 0 = nada.
+- **EX050 — La primera prueba.** ¿Qué debería probar BWRP en primer lugar tras leer a Urbina et al.? *Rúbrica:* 3 = desviación máxima de dosificación no detectada con los umbrales actuales en su reproducción; 2 = parcial; 1 = tasa de detección; 0 = nada.
+
+### Síntesis del capítulo
+
+La crítica evalúa el modelo de amenazas, el método y el traslado, y después convierte un artículo en la primera prueba que su organización debería ejecutar.
+
+### Siga estudiando — capítulo 10 de 12
+
+[← Capítulo 09 (borrador)](#ch-09) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 11 (borrador) →](#ch-11)
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Proyecto aplicado
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) delimitar el alcance de un proyecto aplicado de seguridad de TO dentro de una restricción organizativa real; (2) planificar las partes interesadas, los hitos y los riesgos; (3) entregar un artefacto junto con un expediente de evidencia; y (4) definir las medidas de éxito antes de empezar.
+
+### 11.1 Elegir el proyecto
+
+Un proyecto aplicado de posgrado debería cambiar algo en una organización, con el acuerdo por escrito del titular, y poder terminarse en un trimestre académico. En BWRP, el proyecto de Daniel es la «supervisión pasiva de escrituras para la red de dosificación»: cierra la afirmación sin respaldo G6 del capítulo 9 y usa el método de evaluación del capítulo 6 y la medida de impacto del capítulo 10. El proyecto de supervisión supera estas pruebas. Operación e ingeniería son titulares de los sistemas que toca y pueden dar su acuerdo por escrito. Puede terminarse en doce semanas. Cierra una brecha con nombre en el caso de aseguramiento, y su resultado será medible. Un proyecto que solo produce un informe, sin cambiar nada, no alcanzaría el nivel exigido.
+
+### 11.2 Partes interesadas y restricciones
+
+Operación debe aprobar la toma de supervisión (pasiva, en un puerto espejo, instalada en una ventana de mantenimiento). Ingeniería proporciona el mapa de registros. TI proporciona el almacenamiento de registros. El regulador no tiene que aprobarlo, pero verá los resultados en el siguiente informe de aseguramiento. La lista de restricciones incluye: ningún tráfico activo en la red de dosificación, ningún cambio en PLC-D y una conservación de datos de 90 días. Escriba cada restricción como una prueba que puede fallar y compruébelas en cada hito. Si el puerto espejo no puede instalarse sin tocar la configuración de PLC-D, gana la restricción y el plan cambia. Lleve un breve registro de partes interesadas con quién acordó qué y cuándo, porque el expediente lo necesitará.
+
+### 11.3 Hitos y riesgos
+
+Semanas 1–2: acuerdo, toma instalada y captura validada. Semanas 3–6: línea de base y reglas. Semanas 7–9: evaluación controlada con una reproducción de ataques escrita de forma independiente. Semanas 10–12: expediente y traspaso. Riesgos: pérdida de paquetes en el puerto espejo (mitigación: supervisar los contadores de pérdida), fatiga de alertas de los operadores (mitigación: las alertas van primero a seguridad de TO durante 4 semanas), rotación del personal (mitigación: manual de operación escrito). Revise los riesgos en cada hito y registre si cada mitigación funciona. Si la pérdida de captura no puede controlarse antes de la semana 2, los resultados posteriores no serían fiables, así que el plan se detiene en lugar de arrastrar una línea de base débil. Proteja en especial las semanas 7 a 9, porque la evaluación es la primera fase que se recorta cuando el trabajo anterior se retrasa.
+
+### 11.4 Medidas de éxito
+
+Definidas de antemano: pérdida de captura inferior al 0,1 % durante una semana; exhaustividad de al menos 0,8 en la reproducción independiente con una tasa de falsas alertas inferior al 2 % de las ventanas normales; desviación máxima de dosificación no detectada informada; manual de operación aceptado por operación. Registre estas medidas en el acuerdo del proyecto, con la fecha y las partes interesadas que las aceptaron. La desviación máxima de dosificación no detectada no tiene objetivo porque es un hallazgo, no una nota de aprobado, pero debe informarse muestre lo que muestre. No alcanzar una medida se informa como un fallo, como hace Daniel en la semana 9.
+
+### 11.5 El expediente
+
+El expediente de evidencia contiene el acuerdo, la configuración, los informes de pruebas, los resultados de la evaluación con intervalos, las cuestiones abiertas y el traspaso. Se convierte en la evidencia E5 del caso de aseguramiento. Organice el expediente de modo que un revisor pueda seguir el proyecto desde el acuerdo hasta el traspaso sin hacer preguntas. Incluya las cifras de pérdida de captura, los recuentos de la evaluación, el incumplimiento de la semana 9 en falsas alertas y la nueva ejecución. Cuando se convierte en evidencia del caso de aseguramiento, lleva una fecha, así que su período de validez empieza entonces. Consérvelo en los registros controlados de la planta.
+
+### Ejemplo resuelto (BWRP sintética)
+
+En la semana 9, la reproducción independiente da una exhaustividad de 33/40 (0,825) y 4/160 falsas alertas (2,5 %): el objetivo de exhaustividad se cumple y el de falsas alertas no. Daniel informa del incumplimiento, endurece una regla que produjo tres de las cuatro falsas alertas y programa una nueva ejecución en lugar de redefinir el objetivo.
+
+> **Caso sintético — Bayside Water Reclamation Plant.** Los resultados del proyecto son inventados.
+
+### Errores y límites
+
+Los proyectos en organizaciones en funcionamiento se retrasan; proteja la fase de evaluación. No deje que las medidas de éxito se desplacen una vez llegados los resultados.
+
+### Ejercicios — capítulo 11
+
+- **EX051 — Comprobar los objetivos.** ¿Cumplen 33/40 y 4/160 las medidas de éxito? *Rúbrica:* 3 = exhaustividad sí (0,825 ≥ 0,8), falsas alertas no (2,5 % > 2 %); 2 = uno correcto; 1 = ambos sí; 0 = nada.
+- **EX052 — Una restricción y su motivo.** Explique a un colega de TI «ningún tráfico activo en la red de dosificación». *Rúbrica:* 3 = los dispositivos heredados pueden comportarse mal; seguridad funcional de la dosificación química; basta con lo pasivo; 2 = parcial; 1 = es la política; 0 = nada.
+- **EX053 — Mitigar la fatiga de alertas.** ¿Por qué enviar las alertas primero a seguridad de TO durante cuatro semanas? *Rúbrica:* 3 = ajustar las falsas alertas antes de que las vean los operadores; proteger la confianza; 2 = parcial; 1 = vago; 0 = nada.
+- **EX054 — Contenido del expediente.** Enumere cinco elementos del expediente. *Rúbrica:* 3 = cinco pertinentes; 2 = cuatro; 1 = solo el artefacto; 0 = nada.
+- **EX055 — Resistir el desplazamiento del objetivo.** Un patrocinador propone cambiar el objetivo de falsas alertas al 3 % «ya que estamos cerca». Responda. *Rúbrica:* 3 = mantener el objetivo, informar del incumplimiento, corregir y repetir; explicar la integridad; 2 = parcial; 1 = aceptar; 0 = nada.
+
+### Síntesis del capítulo
+
+Un proyecto aplicado cierra una brecha real con restricciones reales, con el éxito definido de antemano e informado con honestidad en un expediente que se convierte en evidencia de aseguramiento.
+
+### Siga estudiando — capítulo 11 de 12
+
+[← Capítulo 10 (borrador)](#ch-10) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 12 (borrador) →](#ch-12)
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Revisión final y transferencia
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) revisar las decisiones del curso como una cartera; (2) trasladar métodos de BWRP a otro sector; (3) escribir un informe de traspaso para un sucesor; y (4) planificar su propio desarrollo profesional continuo en seguridad de TO.
+
+### 12.1 La visión de cartera
+
+A lo largo del curso, BWRP tomó un conjunto de decisiones: acceso de proveedores intermediado (cap. 1), prioridades de brechas (cap. 2), segmentación justificada por el riesgo de cola (cap. 4), protección escalonada de las estaciones de bombeo (cap. 5), conjunto de reglas B (cap. 6), RACI y métricas (cap. 7), respuesta en la noche de tormenta (cap. 8), el caso de aseguramiento (cap. 9) y el proyecto de supervisión (cap. 11). Revisarlas juntas muestra si son coherentes: por ejemplo, la integridad de la dosificación aparece en los capítulos 3, 9, 10 y 11, señal de que es la preocupación central de la planta.
+
+Busque tensiones además de coherencia. Por ejemplo, la decisión de segmentación y el diseño de las estaciones de bombeo dependen ambos de cambios en cortafuegos y conductos, así que sus calendarios deberían alinearse. La elección del acceso de proveedores y el caso de aseguramiento se apoyan ambos en evidencia del intermediario. Enumerar estos vínculos muestra dónde un retraso en una decisión socavaría otra.
+
+### 12.2 Transferencia a otro sector
+
+Los métodos se trasladan; los parámetros no. Al pasar a un operador de calefacción urbana o a una fábrica de alimentos, siguen aplicándose el marco de decisión, las distribuciones de pérdidas, la evaluación controlada y la estructura de aseguramiento. Lo que cambia: el modelo de consecuencias (pérdida de calor o contaminación del producto en lugar de calidad del vertido), los reguladores, los protocolos predominantes y las normas de seguridad funcional vigentes. Antes de trasladarlos, escriba las hipótesis que cada método asumió en BWRP: probabilidades de incidente de organizaciones del sector del agua, un coste por hora de interrupción y los comportamientos de ataque de la reproducción. Cada una debe sustituirse por cifras del nuevo sector. La estructura de un registro de decisión o de un caso de aseguramiento se traslada sin cambios; los números que contienen, no.
+
+### 12.3 Informe de traspaso
+
+Un sucesor necesita: las decisiones abiertas y sus disparadores de revisión, el caso de aseguramiento con la evidencia caducada o ausente resaltada, las métricas y sus valores de partida, las relaciones (proveedores, contactos del regulador, grupos sectoriales de intercambio de información) y los puntos débiles conocidos. Dos páginas, con enlaces a los registros completos. Escriba el informe para un lector que nunca ha conocido a Daniel. Cada punto abierto debe nombrar su disparador y su fecha; cada métrica, su denominador y su valor de partida; cada relación, un contacto y la última vez que se usó. Enlace a los registros completos en lugar de repetirlos, y ponga la fecha del informe en su primera línea.
+
+### 12.4 Desarrollo continuo
+
+El campo avanza: NIST SP 800-82 se revisó en 2023; las partes de IEC 62443 se actualizan periódicamente; MITRE ATT&CK for ICS añade técnicas; CISA publica avisos cada semana. Plan: seguir los avisos de sus proveedores, releer el resumen de cambios de una norma cuando aparezca una nueva edición y presentar un estudio de caso al año ante colegas. Lleve un breve registro de lo que lee y de lo que cambió por ello, como una hipótesis revisada o una nueva pregunta para un proveedor. Revise el registro una vez al año con un colega. Un desarrollo que no cambia nada en la práctica es lectura; el desarrollo que deja huella en sus decisiones es lo que mantiene la credibilidad de un responsable.
+
+### Ejemplo resuelto (BWRP sintética)
+
+El informe de traspaso de Daniel empieza así: «Abierto: D-2026-14, revisar si la estimación de frecuencia de incidentes de proveedor supera 0,06 al año o tras cualquier incidente de acceso remoto. Aseguramiento: G1 respaldada desde febrero mediante E5; el simulacro de restauración E4 caduca en mayo de 2027: programarlo ya. Métricas: inventario de RTU 23/23 desde marzo; revisión de sesiones de proveedores 37/37. Punto débil: la aplicación de parches al firmware de los routers de las estaciones de bombeo no tiene ninguna ventana acordada con operación».
+
+> **Caso sintético — Bayside Water Reclamation Plant.** Todo el contenido del informe es inventado.
+
+### Errores y límites
+
+Los informes de traspaso se quedan anticuados; féchelos. Las revisiones de cartera pueden racionalizar elecciones pasadas; busque las contradicciones de forma deliberada.
+
+### Ejercicios — capítulo 12
+
+- **EX056 — Detectar una incoherencia.** Identifique una tensión entre la decisión del capítulo 5 y las métricas del capítulo 7. *Rúbrica:* 3 = los nuevos routers de las RTU (alt. 2) añaden activos/parches que aún no reflejan las métricas; 2 = otra tensión plausible; 1 = vago; 0 = nada.
+- **EX057 — Trasladar el modelo de consecuencias.** Reescriba la preocupación central de BWRP para una fábrica de alimentos. *Rúbrica:* 3 = contaminación/retirada del producto por manipulación de la receta o de la temperatura; 2 = vago; 1 = igual que en el agua; 0 = nada.
+- **EX058 — La evidencia que caduca.** ¿Cuándo debe repetirse el simulacro de restauración para que G4 siga respaldada con la regla de 18 meses? *Rúbrica:* 3 = antes de mayo de 2027; 2 = aproximadamente; 1 = incorrecto; 0 = nada.
+- **EX059 — Lo que un sucesor necesita primero.** Elija el elemento más importante del informe y justifíquelo. *Rúbrica:* 3 = elección razonada (p. ej., decisión abierta con un disparador próximo o punto débil); 2 = solo la elección; 1 = vago; 0 = nada.
+- **EX060 — Un plan de desarrollo.** Escriba un plan anual de desarrollo con tres elementos. *Rúbrica:* 3 = seguimiento de avisos, revisión de actualizaciones de normas, presentación ante colegas o equivalente; 2 = dos; 1 = uno; 0 = nada.
+
+### Síntesis del capítulo
+
+El curso termina donde empieza la práctica: una cartera de decisiones coherente, métodos que se trasladan entre sectores, un informe fechado para quien venga después y un plan para seguir aprendiendo.
+
+### Siga estudiando — capítulo 12 de 12
+
+[← Capítulo 11 (borrador)](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Resultados resueltos ↓](#worked-results) · [Siguiente curso a través del índice de capítulos →](../SUBJECTS.md)
 
 <a id="worked-results"></a>
 
@@ -488,6 +835,66 @@ Respuestas modelo para EX001–EX060. Bayside Water Reclamation Plant, Daniel Os
 **EX029.** Daniel diseñó B en parte pensando en estos tipos de ataque; las ventanas escritas por otra persona reducen la probabilidad de que el conjunto de pruebas se adapte, sin querer, a los puntos fuertes de B.
 
 **EX030.** B produce menos falsas alertas con los mismos datos y muy probablemente detecta más ataques; si en realidad es igual en exhaustividad, la organización pierde poco y puede revertir el cambio, así que el valor esperado de cambiar es positivo mientras se reúnen más datos.
+
+**EX031.** Una RACI debe tener exactamente una parte que rinde cuentas por proceso. Mantenga al director de la planta como quien rinde cuentas de la declaración de un incidente de TO y haga que seguridad de TI sea Consultada.
+
+**EX032.** (1) ¿Permitirá este cambio que algún dispositivo se comunique con un dispositivo con el que antes no podía comunicarse? (2) ¿Añadirá, eliminará o modificará este cambio alguna cuenta de usuario o contraseña? (3) ¿Instalará o actualizará este cambio software o firmware en algún dispositivo de control?
+
+**EX033.** Los equipos pueden dejar de buscar problemas, registrar hallazgos como «aceptados» sin remediarlos o dividirlos en elementos vagos, de modo que el cuadro de mando muestre cero mientras crece la exposición real.
+
+**EX034.** (14 + 41) / (23 + 41) = 55 / 64 ≈ 85,9 %, que se informa junto a la cifra específica de las RTU, 14/23 (60,9 %), para que los activos de la planta no oculten la brecha.
+
+**EX035.** El director de la planta controla las prioridades de operación y las ventanas de mantenimiento, así que las recomendaciones del responsable de seguridad de TO llegan a la persona que puede programarlas, y las decisiones se toman teniendo a la vista las consecuencias en el proceso.
+
+**EX036.** Cortar la ruta también elimina el control remoto de las bombas por parte de los operadores; con los caudales de entrada de la tormenta, perderlo podría causar desbordamientos en las estaciones junto a la playa, así que el control local tenía que estar en marcha primero para mantener el proceso seguro.
+
+**EX037.** (1) Confirmar que el punto de consigna de dosificación tiene su valor correcto y que el proceso está dentro de sus límites; (2) preservar la evidencia: comparación del programa del PLC, registro del interruptor de llave del panel, exportación del historiador con hashes; (3) implicar a recursos humanos y a la asesoría jurídica antes de hablar con las personas, tratándolo como una desviación hasta que se establezcan los hechos.
+
+**EX038.** Un registro por equipo de las versiones de software SCADA instaladas y un historial de dónde y cuándo se obtuvo cada actualización (origen, fecha, hash); juntos muestran si se instaló una compilación manipulada.
+
+**EX039.** «A las 23:40, BWRP detectó una conexión saliente inesperada desde su servidor SCADA; el tratamiento y el bombeo funcionan con normalidad bajo control local en seis estaciones. Todavía no sabemos si se alteró algún dato o configuración. La conexión externa se cerró a las 00:35, hay una investigación en curso y les daremos una actualización antes de las 09:00».
+
+**EX040.** Terminarla cuando se confirme que la ruta de acceso del intruso está cerrada y el servidor SCADA se haya reconstruido a partir de medios de confianza o su software se haya verificado frente a los hashes del proveedor, con la aprobación del director de la planta y del responsable de seguridad de TO.
+
+**EX041.** Con E5 bajo G6, G6 tiene respaldo, así que G3 (con G5 y G6 respaldadas) tiene respaldo, y G1 imprime «supported» porque G2, G3 y G4 llegan todas a evidencia.
+
+**EX042.** Regla: extraer la fecha de la etiqueta de cada evidencia y tratar un elemento como no válido si es más de 18 meses anterior a la fecha de la evaluación. E4 (simulacro de restauración, 2025-11) es el más antiguo y caducaría primero, en mayo de 2027, haciendo fallar G4 y, por tanto, G1.
+
+**EX043.** Una lista de verificación puede exigir una política de cortafuegos documentada y una política de seguridad de TO, ambas presentes en BWRP, sin preguntar si se supervisan las escrituras en el controlador de dosificación; BWRP cumple mientras G3, la afirmación sobre la integridad de la dosificación, sigue sin evidencia.
+
+**EX044.** Una prueba de penetración de la TI corporativa no dice nada sobre si los puntos de consigna de PLC-D están protegidos; abarca otros sistemas y otras amenazas, así que asociarla haría parecer que G3 está respaldada por evidencia que no guarda relación con la afirmación.
+
+**EX045.** «BWRP todavía no puede afirmar que su riesgo de TO es aceptable porque no se supervisan las escrituras en el controlador de dosificación; la supervisión estará en marcha en enero y presentaremos la revisión del primer mes en la reunión de febrero».
+
+**EX046.** Los actores con muchos recursos hacen reconocimiento y pueden obtener documentación de proveedores o exportaciones de configuración; diseñar para un atacante que conoce el detector evita una seguridad que dependa del secreto de los umbrales y da estimaciones conservadoras para un proceso con consecuencias para la salud pública.
+
+**EX047.** Por ejemplo: «Seleccionamos el umbral que maximizaba el F1 en las trazas de prueba»; ajustar y evaluar con las mismas trazas significa que el rendimiento informado es optimista.
+
+**EX048.** El tratamiento biológico tiene constantes de tiempo largas y respuestas no lineales (horas, no segundos), así que los detectores basados en residuos ajustados en lazos rápidos de bancos de pruebas pueden ver los ataques solo cuando el daño ya se ha acumulado, y los modelos son más difíciles de ajustar.
+
+**EX049.** Adecuado: usarla para cartografiar los enfoques de detección y localizar artículos primarios y debilidades de evaluación habituales. Inadecuado: citarla como prueba de que un detector concreto funciona en BWRP, porque una revisión recoge las afirmaciones de otros sin volver a probarlas.
+
+**EX050.** Reproducir los datos de dosificación de BWRP con un sesgo lento simulado y medir la mayor desviación de dosificación que se mantiene por debajo de los umbrales de alarma actuales durante un período definido: el margen de impacto del que dispone hoy un atacante no detectado.
+
+**EX051.** La exhaustividad de 33/40 = 0,825 cumple el objetivo de ≥ 0,8; 4/160 = 2,5 % de falsas alertas supera el límite del 2 %, así que una de las dos medidas todavía no se cumple.
+
+**EX052.** Algunos controladores y RTU de la red de dosificación son antiguos y pueden fallar ante tráfico inesperado, y un fallo ahí afecta a la dosificación química del agua tratada; una captura pasiva en un puerto espejo da la misma visibilidad sin ninguna posibilidad de perturbar los dispositivos.
+
+**EX053.** Las primeras semanas revelan reglas ruidosas; si los operadores reciben esas falsas alertas, aprenden a ignorar el monitor. Enviarlas primero a seguridad de TO permite ajustarlas para que los operadores solo vean alertas que se hayan ganado su confianza.
+
+**EX054.** Acuerdo del titular y alcance; configuración de la toma y de la captura con mediciones de pérdida; conjunto de reglas y su versión; informe de la evaluación controlada con recuentos e intervalos; cuestiones abiertas, manual de operación y aprobación del traspaso.
+
+**EX055.** «Fijamos el 2 % antes de ver los resultados, y moverlo ahora haría que la medida de éxito no significara nada para el caso de aseguramiento. El incumplimiento se debe sobre todo a una regla; la corregiré y repetiré la reproducción independiente, e informaremos del resultado sea cual sea».
+
+**EX056.** El capítulo 5 añade routers VPN en seis estaciones junto a la playa, pero las métricas de inventario y de parches del capítulo 7 solo cuentan las RTU y los activos de la planta, así que los nuevos routers podrían quedar fuera tanto del denominador del inventario como de la métrica de latencia de parches.
+
+**EX057.** «Integridad de la temperatura de cocción y de los parámetros de la receta en los controladores de la línea, porque su manipulación podría dar salida a producto contaminado y provocar una retirada», sustituyendo la calidad del vertido por la seguridad alimentaria.
+
+**EX058.** E4 data de noviembre de 2025, así que con una validez de 18 meses caduca en mayo de 2027; el simulacro debe repetirse y documentarse antes de esa fecha.
+
+**EX059.** El punto débil de los parches de los routers de las estaciones de bombeo, porque es el único elemento sin ningún proceso acordado; las decisiones abiertas ya tienen disparadores y titulares, mientras que una brecha de parches sin titular crece en silencio.
+
+**EX060.** (1) Revisar cada aviso ICS de CISA que nombre a los proveedores de BWRP en la semana siguiente a su publicación. (2) Leer el resumen de cambios de cada nueva parte de IEC 62443 o revisión de NIST SP 800-82 cuando se publique y actualizar la lista de brechas. (3) Presentar un estudio de caso anonimizado de BWRP al año en una reunión sectorial de intercambio de información.
 
 <a id="references"></a>
 
