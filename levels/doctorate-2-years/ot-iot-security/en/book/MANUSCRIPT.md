@@ -776,6 +776,8 @@ C4 PASS
 
 C2 must be deleted or narrowed; C3 needs a falsifier (for example "a band narrow enough to catch replay would exceed the shift false-alarm budget"). A keyword list is a crude check; the human audit still reads every claim.
 
+The keyword list in Lab 8 is deliberately short, so passing it proves little. A human audit should also catch C4's scope, which mentions three attack classes although the study defines only class A and class B; narrow it to the classes actually tested on T2 before the defense. Repeat the audit after every revision of the abstract or conclusion, and keep each run's output in the claim register's history so examiners can see how the claims narrowed.
+
 ### 8.2 Examiner question families
 
 Prepare answers for: **positioning** ("what is new beyond Page and Giraldo?"), **validity** ("why should a testbed generalize?"), **adversary** ("what does a stronger attacker do?"), **safety** ("how did you bound T2 experiments?"), **ethics** ("what did you withhold and why?"), and **impact** ("what should an operator change on Monday?"). The answer to the last is architectural: provide an independently wired second measurement of key process quantities and display predicted versus reported values.
