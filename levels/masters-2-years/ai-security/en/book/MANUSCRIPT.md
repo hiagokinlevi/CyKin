@@ -102,6 +102,8 @@ k=25 attack_auc=0.520 best_advantage=0.060
 
 1. Write your topic, then three candidate questions in PICO form; pick one and justify feasibility. 2. Write a search protocol and run it, logging counts. 3. Build a ten-row evidence matrix.
 
+For the questions, name the system, the intervention or factor, the comparison and the outcome, as Leo's question does. Judge feasibility on data, compute, time and ethics, and drop any question that fails one of them. For the search, record databases, strings, dates and counts at each stage, so someone else could repeat it. For the matrix, include whether each paper reports TPR at low FPR.
+
 ### 1.7 Errors and limits
 
 - Questions too broad to answer in a dissertation.
@@ -109,6 +111,8 @@ k=25 attack_auc=0.520 best_advantage=0.060
 - Treating a vendor blog as evidence.
 - Citing papers you have not read, or fabricating identifiers.
 - Reporting only averages for privacy attacks.
+
+Each error weakens the dissertation from the start. A broad question cannot be answered in the time. A search that stops early misses work such as the three deduplication studies Leo found. A vendor blog is a claim to verify. Uncited or invented identifiers damage trust in every other citation. Averages hide the few individuals an attack identifies confidently, which is the harm Leo studies.
 
 ### Exercises
 
@@ -139,6 +143,8 @@ You will (1) explain the main attack classes — evasion, poisoning and backdoor
 ### 2.1 The seminar format
 
 Each week one student presents a paper in fifteen minutes: claim, threat model, method, results, and three critical questions. The group discusses whether the evidence supports the claim. The aim is not to admire papers but to understand exactly what they show.
+
+Leo's presentation of Shokri et al. in the worked example below follows this format, and his third question became part of his own design. Prepare questions that a reader could answer from the paper, and note those it cannot answer, since those are often where research gaps lie.
 
 ### 2.2 Evasion
 
@@ -188,13 +194,19 @@ eps=0.75 accuracy=0.660
 eps=1.00 accuracy=0.505
 ```
 
+For Harbourline, evasion would mean wording a claim note so the classifier routes it wrongly.
+
 ### 2.3 Poisoning and backdoors
 
 Poisoning attacks control part of the training data. Availability poisoning degrades accuracy broadly; targeted and backdoor poisoning (Gu et al., arXiv:1708.06733) keep clean accuracy while a trigger causes chosen behaviour. For Harbourline, a malicious claims handler who can insert notes into the training set could teach the classifier that a phrase routes claims to fast-track approval. Defences include data provenance, filtering of outliers, and limiting who can contribute training data; none is complete.
 
+Ask, for any dataset, who can add records and whether that is logged.
+
 ### 2.4 Privacy attacks
 
 Membership inference (Shokri et al., arXiv:1610.05820) decides whether a record was in training, using differences in model confidence or loss. Training-data extraction (Carlini et al., arXiv:2012.07805) recovers verbatim sequences from generative models. Differential privacy (Abadi et al., arXiv:1607.00133) bounds how much any one record can influence the model, reducing both risks at a utility cost. For an insurer, membership itself can be sensitive ("this person made a claim").
+
+Leo's dissertation studies the first of these: whether deduplication reduces membership leakage. A claimant whose note appears many times is, on this reasoning, more exposed.
 
 ### 2.5 Model extraction
 
@@ -228,9 +240,13 @@ output_rounding=2    queries=6 max_weight_error=0.004 label_agreement=0.998
 output_rounding=0    queries=6 max_weight_error=0.534 label_agreement=0.882
 ```
 
+The lab shows the effect of output precision: with full probabilities the copy is exact, with two decimals it is nearly exact, and with whole-number rounding the copy agrees on 88% of labels. For Harbourline, returning only the triage label would make extraction harder, not impossible.
+
 ### 2.6 Prompt injection and LLM applications
 
 When an LLM processes untrusted text, that text may contain instructions (Greshake et al., arXiv:2302.12173). OWASP LLM 2025 ranks prompt injection first and lists related risks such as sensitive information disclosure, excessive agency and system prompt leakage. Harbourline's future plan — an assistant that reads claim e-mails and drafts responses — would inherit these risks.
+
+For such an assistant, a claimant's e-mail is untrusted text that could steer drafts or leak other claimants' details. That plan is outside Leo's dissertation, but the seminar should map it to the OWASP entries so Harbourline can see which risks it would add.
 
 ### 2.7 Worked example (synthetic Harbourline case)
 
@@ -240,12 +256,16 @@ Leo presented Shokri et al. His three critical questions: (1) the shadow-model a
 
 1. Present one paper using the seminar format. 2. For each attack class, write a one-line threat model for a system you know. 3. Map Harbourline's planned e-mail assistant to three OWASP LLM 2025 entries.
 
+For the presentation, prepare claim, threat model, method, results and three critical questions, as Leo did. For the threat models, name attacker knowledge, access and goal for each class. For the mapping, consider prompt injection, sensitive information disclosure and excessive agency, and say for each what the assistant could do wrong and what control would limit it.
+
 ### 2.9 Errors and limits
 
 - Describing attacks without their threat model.
 - Assuming image-domain results transfer directly to text.
 - Treating rounding or label-only output as a complete defence against extraction.
 - Ignoring that membership itself can be sensitive.
+
+Each error leads to a misleading summary. An attack without its threat model cannot be compared with a defence. Image results may not transfer, since small text edits can change meaning. Rounding made extraction harder in the lab but did not stop it. For Harbourline, the mere fact that a person made a claim can be sensitive, so membership inference is a real harm. Check your seminar notes for all four.
 
 ### Exercises
 
@@ -277,6 +297,8 @@ You will (1) choose a design (controlled experiment, observational study, case s
 
 Most master's projects in AI security are **controlled experiments**: you change one factor (deduplication on/off), hold others fixed, and measure outcomes. **Observational** studies analyse existing data without intervening (for example, logs of attempted prompt injections against a deployed assistant) and must worry about confounding. **Case studies** examine one system in depth and are useful when experiments are impossible, but they support weaker generalisation. Pick the strongest design you can run ethically and within time.
 
+Leo's question compares conditions he can control, so a controlled experiment fits.
+
 ### 3.2 Variables and controls
 
 For Leo: the *independent variable* is training-set treatment (original, exact-deduplicated, near-deduplicated). *Dependent variables* are membership-inference TPR at 1% FPR, AUC, and classifier macro-F1. *Controlled variables* include model architecture, epochs, learning rate, random seeds and evaluation split. Randomise which records go into training versus held-out sets so that members and non-members come from the same distribution — otherwise an attack may detect distribution shift rather than membership, a known pitfall. Use several seeds and report variability. Estimate sample size from a pilot (Chapter 5).
@@ -288,6 +310,8 @@ When data relates to people, apply data-protection principles: lawful basis, pur
 ### 3.4 Reproducible by design
 
 Set up from day one: a version-controlled repository; pinned environment; configuration files rather than hard-coded settings; fixed seeds; a single command to run each experiment; logs written as machine-readable records; and a data card describing provenance and processing (Gebru et al., arXiv:1803.09010). The NeurIPS reproducibility programme (Pineau et al., arXiv:2003.12206) offers a checklist worth adopting. Reproducibility is far cheaper to build in than to retrofit.
+
+Leo's design lists the repository, a lock file and a `run.py --config` interface from the start, which made his later reruns simple.
 
 ### 3.5 Worked example (synthetic Harbourline case)
 
@@ -338,12 +362,16 @@ baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 
 1. Write your design with variables, controls and randomisation. 2. Draft an ethics and data-protection section. 3. Create the repository skeleton with configuration files and a seed policy.
 
+Use Leo's design as a model: name independent, dependent and controlled variables, and say how members and non-members are drawn from the same pool. For the ethics text, say what data is used, who reviewed the plan and what will be released. For the repository, include configuration files, a lock file, a seed policy and a single command per experiment. Ask your supervisor to review all three.
+
 ### 3.7 Errors and limits
 
 - Members and non-members drawn from different distributions.
 - One seed per condition.
 - Using real personal data where synthetic data would do.
 - Hard-coded paths and settings that make reruns impossible.
+
+Each error undermines the result. Members and non-members from different distributions let the attack detect shift rather than membership. One seed cannot show variability, which Lab S makes visible. Real personal data creates the harm being studied when synthetic data would serve, as Leo's synthetic notes do. Hard-coded paths make reruns fail for anyone else, including examiners. Check your design for all four.
 
 ### Exercises
 
@@ -374,6 +402,8 @@ You will (1) list alternative explanations for an observed security effect; (2) 
 
 An observed effect — "deduplication lowered membership-inference advantage" — can have several causes. Deduplication might reduce memorisation of repeated records specifically; it might simply reduce effective training-set size and therefore change overfitting; it might change class balance; or the attack might be weaker on the new model for reasons unrelated to privacy. A dissertation that names and tests these alternatives is far stronger than one that reports the effect alone.
 
+Leo's seminar discussion raised the overfitting explanation before he had any data.
+
 ### 4.2 A catalogue of alternatives in AI security
 
 - **Generalisation vs. specific mechanism.** Privacy leakage correlates with the train–test gap. Compare treatments at matched generalisation gaps, or include a control that changes data size without deduplicating.
@@ -386,6 +416,8 @@ An observed effect — "deduplication lowered membership-inference advantage" �
 ### 4.3 Ablations and controls
 
 An *ablation* removes or varies one component to see its contribution. Leo's plan adds a fourth condition: *random removal* of the same number of records that deduplication would remove. If random removal gives the same privacy gain, the explanation is dataset size; if deduplication gives more, the duplicates matter. He also adds a control attack calibrated with reference models, which is known to be stronger at low FPR than a simple confidence threshold.
+
+Write the expected result of each condition before running.
 
 ### 4.4 Reasoning about mechanisms with the labs
 
@@ -443,13 +475,17 @@ backdoor: add n triggered class-1 points labelled 0
   poison_points= 80 clean_accuracy=0.968 attack_success=0.980
 ```
 
+For Leo, the analogy is that duplicated records may give the model a specific route to memorise them.
+
 ### 4.5 Worked example (synthetic Harbourline case)
 
-In pilot data, deduplication reduced TPR at 1% FPR from 6.1% to 3.4%. Random removal of the same number of records reduced it to 5.6%. The difference between deduplication and random removal (2.2 points) is the part plausibly attributable to removing duplicates; the remaining 0.5 points is explained by size. A calibrated attack raised all numbers but preserved the ordering. Leo's conclusion sentence changed from "deduplication protects privacy" to "most of the observed reduction in membership leakage is attributable to removing duplicated records rather than to the smaller training set, under the evaluated attack".
+In pilot data under the calibrated attack, deduplication reduced TPR at 1% FPR from 6.1% to 3.4%. Random removal of the same number of records reduced it to 5.6%. The difference between deduplication and random removal (2.2 points) is the part plausibly attributable to removing duplicates; the remaining 0.5 points is explained by size. The simple confidence-threshold attack sat near its floor in every condition (the pilot in Chapter 5 describes this), so only the calibrated attack could separate them. Leo's conclusion sentence changed from "deduplication protects privacy" to "most of the observed reduction in membership leakage is attributable to removing duplicated records rather than to the smaller training set, under the evaluated attack".
 
 ### 4.6 Practice activities
 
 1. List five competing explanations for your expected result. 2. Design one ablation and one control for each of the two most plausible. 3. Rewrite your expected conclusion at the evidence level you will have.
+
+For the list, use the catalogue above and add any explanation specific to your system. For the ablations, change one thing at a time and say what result would support each explanation. For the conclusion, write the sentence you could defend if the main effect appeared, and compare it with Leo's revised sentence, which names the attack and what was ruled out.
 
 ### 4.7 Errors and limits
 
@@ -457,6 +493,8 @@ In pilot data, deduplication reduced TPR at 1% FPR from 6.1% to 3.4%. Random rem
 - Ablations that change several things at once.
 - Using only a weak attack to evaluate a privacy defence.
 - Claiming mechanism from correlation alone.
+
+Each error lets a competing explanation survive. An effect without alternatives tested may be size, shift or chance. An ablation that changes several things cannot attribute the effect. A weak attack can make any defence look good, which is why Leo added the calibrated attack. Correlation, such as leakage tracking duplication, does not by itself show mechanism without controls like random removal. Check your plan for all four.
 
 ### Exercises
 
@@ -487,17 +525,25 @@ You will (1) write a dissertation proposal with question, background, design, an
 
 A master's proposal is typically 3,000–6,000 words. Sections: **question and motivation** (one paragraph each); **background** from your evidence matrix; **design** (Chapter 3) including competing explanations and ablations (Chapter 4); **analysis plan** with primary and secondary outcomes and the statistics you will use; **ethics and data protection**; **risks** (technical, data, schedule) with mitigations; **timeline** with milestones; and **expected contribution** stated modestly. The analysis plan is the most neglected part — write it now, before data, so later choices cannot be steered by results.
 
+Leo's proposal followed this outline.
+
 ### 5.2 The pilot
 
 A pilot runs the full pipeline at small scale. Goals: confirm the code works end to end, measure run time, measure variability of the primary outcome, check that the attack and metrics behave sensibly (for example, the undefended model is attackable), and find surprises. Pilot results are not hypothesis tests; do not report them as findings, and keep the final test data out of the pilot.
+
+Leo's pilot found a floor effect and a generator flaw. Record both in the decision log.
 
 ### 5.3 Sample size and power
 
 For rates, the normal approximation n ≈ z² p(1−p)/h² gives the trials needed for a confidence-interval half-width h. For comparisons between conditions, power analysis asks how many repetitions you need to detect a difference d with probability (power) 0.8 at significance 0.05; for paired designs, the variance of the *differences* matters. With few seeds (typical in ML), report intervals over seeds and over evaluation items rather than relying on a single significance test.
 
+Leo's pilot showed about 0.8 points of variation across seeds, which together with bootstrapping over records made five seeds adequate. Use the variation you actually observe, not a guess.
+
 ### 5.4 Revising the plan
 
 Pilots usually change something: an attack too weak to separate conditions, an evaluation that takes too long, a metric with a floor effect (all conditions near zero). Record each change in a decision log with the reason. Supervisors and examiners respond well to a proposal that shows it learned from its pilot.
+
+Leo's log records two changes from his pilot: replacing the floor-limited attack with a calibrated one, and fixing the templates that produced near-identical notes across classes. Each has a date and a reason. Keep the log with the proposal so examiners can trace the plan's evolution.
 
 ### 5.5 Worked example (synthetic Harbourline case)
 
@@ -553,12 +599,16 @@ eps=1.00 accuracy=0.505
 
 1. Write your analysis plan with primary and secondary outcomes. 2. Run a pilot and fill a decision log. 3. Compute sample size for your primary outcome.
 
+For the analysis plan, name the primary outcome, such as TPR at 1% FPR, and the secondary ones, with the statistics for each. For the pilot, run the whole pipeline at small scale, and log every change with its reason as Leo did. For the sample size, use the formula above with the variation your pilot observed, and say whether your compute budget allows it.
+
 ### 5.7 Errors and limits
 
 - Proposals without an analysis plan.
 - Reporting pilot results as findings.
 - Using test data in the pilot.
 - Ignoring floor or ceiling effects.
+
+Each error weakens the study. Without an analysis plan, later choices can be steered by results. Pilot results are not findings, because the pilot was not designed or sized for testing. Test data used in a pilot is no longer unseen. A floor effect, such as Leo's simple attack at 1–2% in every condition, hides real differences. Check your proposal for all four.
 
 ### Exercises
 
@@ -589,9 +639,13 @@ You will (1) run the main experiments exactly as planned and log deviations; (2)
 
 Freeze code at a tagged commit, lock the configuration files, and run conditions in an interleaved or randomised order so that time-dependent problems (a node slowing down, a library update) do not align with one condition. Each run writes a record: condition, seed, config hash, start and end time, metrics and paths to raw outputs. Keep a deviation log as in the pilot.
 
+Leo's runs were interleaved by condition and seed, and his deviation log recorded the missing seed-4 run and its rerun. Check the log before analysis, not after.
+
 ### 6.2 Data-quality checks
 
 Before computing anything, check: are all expected runs present? Do canary checks pass (the undefended model must be attackable; a model trained on shuffled labels should perform at chance)? Are there duplicates across splits? Are metric values within plausible ranges? These checks catch bugs that would otherwise become "findings".
+
+Leo's checks found one missing seed-4 run, which was rerun and logged before analysis. Write the checks as a script so they run the same way each time, and keep their output with the results.
 
 ### 6.3 Primary analysis
 
@@ -642,13 +696,19 @@ The lab demonstrates the three tools. With 3 of 20 successes, the Wilson interva
 
 Every security improvement has costs: accuracy, latency, refusals of legitimate requests, compute, maintainability. Report them on the same items. A privacy defence that halves leakage but drops macro-F1 by 10 points is a different proposition from one that costs 1 point. Plot the trade-off (e.g., TPR at 1% FPR versus macro-F1) for all conditions.
 
+Leo's result is the second kind: near dedup more than halved TPR at 1% FPR, to 4.2%, while macro-F1 fell by less than one point. Report both numbers together, with intervals, so readers can weigh the trade-off themselves. Do it here too.
+
 ### 6.5 Worked example (synthetic Harbourline case)
 
 Leo's main results (synthetic, five seeds, 20,000 records): TPR at 1% FPR under the calibrated attack was 9.8% (original), 7.9% (random removal), 5.1% (exact dedup) and 4.2% (near dedup). The paired difference between near dedup and random removal was 3.7 points (bootstrap 95% CI 2.6–4.9). Macro-F1 fell from 0.912 to 0.905 under near dedup. Data-quality checks found one missing seed-4 run, rerun and logged. An exploratory analysis, labelled as such, showed leakage concentrated in records that had appeared three or more times.
 
+The exploratory finding about records seen three or more times is a hypothesis for future work, not a confirmed result.
+
 ### 6.6 Practice activities
 
 1. Write a data-quality checklist for your study and run it. 2. Produce the primary table with intervals. 3. Plot the security–utility trade-off.
+
+For the checklist, include all expected runs, canary checks, duplicates across splits and plausible ranges, and run it before any analysis. For the primary table, give each condition's outcome with an interval and the number of seeds. For the plot, put the privacy metric against macro-F1 for every condition, so a reader can see the trade-off at a glance, as Leo's figure does.
 
 ### 6.7 Errors and limits
 
@@ -656,6 +716,8 @@ Leo's main results (synthetic, five seeds, 20,000 records): TPR at 1% FPR under 
 - Analysing before quality checks.
 - Mixing exploratory and confirmatory results.
 - Reporting security gains without costs.
+
+Each error biases results or hides costs. Running seeds of one condition first lets time-dependent problems align with it. Analysing before quality checks turns bugs into findings, such as a missing seed. Mixing exploratory and confirmatory results overstates certainty. Reporting gains without costs hides trade-offs, such as the drop in macro-F1 that Leo reported. Check your analysis for all four.
 
 ### Exercises
 
@@ -686,9 +748,13 @@ You will (1) structure a dissertation so every chapter serves the research quest
 
 A common structure: introduction (problem, question, contribution summary); background and related work (from your matrix); method (design, data, attacks, metrics, analysis plan); results (primary, secondary, exploratory clearly labelled); discussion (interpretation, competing explanations, implications); limitations; conclusion; references; appendices (artefacts, extra tables). Write the method so a peer could repeat it; write the results so a reader can find the answer to the research question in one table.
 
+Leo's dissertation answers its question in one table of TPR at 1% FPR and macro-F1 for the four conditions.
+
 ### 7.2 Findings versus interpretation
 
 Results state what was measured: "near deduplication reduced TPR at 1% FPR from 9.8% to 4.2%". Discussion interprets: "this suggests duplicated records drive much of the leakage, consistent with work on memorisation in language models". Keep them apart. In discussion, return to competing explanations and say which your ablations ruled out.
+
+Leo moved a recommendation that insurers should deduplicate from results to discussion and softened it. Read each results sentence and ask whether it reports a measurement; if it explains or recommends, move it.
 
 ### 7.3 Limitations by validity type
 
@@ -703,9 +769,13 @@ For each, say what you did and what remains. Limitations written this way are a 
 
 Describe attacks at the level needed for understanding and reproduction in research settings, cite the original papers, and avoid publishing operational detail that targets named live systems. Never include recovered personal data. If you found a vulnerability in a real product, follow coordinated disclosure before the dissertation is published. Label synthetic data and organisations as fiction throughout.
 
+Leo's dissertation describes the calibrated attack by citing its source and his configuration, without any recovered records. Ask your supervisor to read the attack description for operational detail before submission.
+
 ### 7.5 Artefact appendix
 
 Include repository URL and commit, environment, commands to reproduce each table, data card for the synthetic generator, model card for any released model (Mitchell et al., arXiv:1810.03993), and hashes of key files. State what is not released and why.
+
+Leo's appendix includes the synthetic generator's data card, the repository commit, commands for each table and file hashes. He states that no model is released and why. Ask a peer to reproduce one table from the appendix alone before submission. Keep it current.
 
 ### 7.6 Worked example (synthetic Harbourline case)
 
@@ -745,12 +815,16 @@ output_rounding=0    queries=6 max_weight_error=0.534 label_agreement=0.882
 
 1. Write your limitations section by validity type. 2. Mark every sentence in your results chapter as finding or interpretation and move misplaced ones. 3. Draft the artefact appendix.
 
+For the limitations, use the four validity types and say for each what you did and what remains, as Leo did for one classifier and synthetic notes. For the results chapter, mark each sentence and move interpretations to the discussion. For the appendix, list repository, commit, environment, commands, cards and hashes, and state what is not released.
+
 ### 7.8 Errors and limits
 
 - Results and discussion mixed.
 - Limitations that are generic ("more data needed").
 - Operational attack detail against named systems.
 - Recommendations stated as findings.
+
+Each error makes claims harder to trust. Mixed results and discussion blur what was measured. Generic limitations tell examiners nothing about this study. Operational detail against named systems helps attackers without helping readers. A recommendation stated as a finding claims more than the data shows, which is why Leo moved and softened his insurer recommendation. Check your draft for all four.
 
 ### Exercises
 
@@ -781,17 +855,25 @@ You will (1) commission and use independent review of code and text before submi
 
 Ask a peer who did not work on the project to (a) reproduce one main table from your artefact appendix, (b) read the method and say what they could not repeat, and (c) read the abstract and say what they think you claim. Each reveals a different problem: hidden dependencies, missing method detail, and overclaiming. A short code review focusing on metric computation and data splits is worth the time; bugs there change conclusions.
 
+Leo's peer found a silent skip of long records this way.
+
 ### 8.2 The defence presentation
 
 Twenty to thirty minutes: problem and question; design and why; results with intervals and costs; competing explanations and what ruled them out; limitations; contribution and next steps. One slide should answer the research question in a sentence with a number and an interval.
+
+Leo's answer slide gave the paired difference with its interval. Put competing explanations before limitations, since examiners will ask about them. Rehearse with a timer and a peer who asks hard questions, and prepare backup slides for the ablation and the quality checks so you can show evidence when asked.
 
 ### 8.3 Answering examiners
 
 Expect questions on design choices ("why synthetic data?"), threats to validity ("would this hold on real notes?"), statistics ("are five seeds enough?"), alternative explanations ("isn't this just overfitting?") and practice ("what should Harbourline do?"). Answer in three parts: direct answer, evidence, limit. When you do not know, say so and say how you would find out.
 
+Leo's answers in the worked example below follow this form: the ablation as evidence, the attack as the limit. Prepare written answers to each expected question and rehearse them with a peer who plays a critical examiner.
+
 ### 8.4 Corrections and dissemination
 
 Examiners often require corrections. Make each change, list it in a correction table with page references, and return it promptly. Dissemination options include a workshop paper, a public repository with the synthetic generator, and a two-page practitioner summary that states the finding, the conditions and the recommended next step — mapped where relevant to frameworks the organisation uses, such as the NIST AI RMF *Measure* and *Manage* functions or its ISO/IEC 42001 risk-treatment process.
+
+Leo's practitioner summary states deduplication as a low-cost candidate control under the evaluated attack.
 
 ### 8.5 Worked example (synthetic Harbourline case)
 
@@ -835,12 +917,16 @@ k=25 attack_auc=0.520 best_advantage=0.060
 
 1. Arrange a reproduction and abstract-reading review. 2. Build a defence deck with one answer slide. 3. Write the practitioner summary.
 
+For the review, ask a peer to reproduce one table and read the abstract, and record what they found. For the deck, include one slide that answers the question with a number and an interval, as Leo's did with the 3.7-point difference. For the summary, state the finding, the conditions and the next step, and keep it to two pages. Keep notes of what changed.
+
 ### 8.7 Errors and limits
 
 - Submitting without anyone reproducing a result.
 - Answering questions defensively without evidence.
 - Practitioner summaries that drop the conditions.
 - Ignoring required corrections' page references.
+
+Each error weakens the final stage. Without a reproduction, problems such as Leo's skipped long records reach examiners. Defensive answers without evidence lose examiners' confidence. A summary that drops conditions turns a result under one attack into a general rule. Corrections without page references are hard to check and delay the award. Check your submission for all four.
 
 ### Exercises
 
