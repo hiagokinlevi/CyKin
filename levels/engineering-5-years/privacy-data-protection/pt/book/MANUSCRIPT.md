@@ -860,7 +860,7 @@ Você vai (1) mapear o arcabouço jurídico que molda a engenharia da Pellmore; 
 
 ### 20.1 As leis aplicáveis
 
-A Pellmore atende pacientes na UE e no Brasil, então tanto o GDPR quanto a LGPD, Lei nº 13.709/2018, se aplicam. As duas definem princípios como a limitação da finalidade e a necessidade, direitos para as pessoas e deveres para as organizações. As duas tratam os dados de saúde como especialmente sensíveis: o artigo 9 do GDPR e o art. 11 da LGPD restringem o tratamento a hipóteses específicas. Zara monta uma tabela comparando as duas leis quanto às bases legais, aos direitos, à comunicação de incidentes, em que a LGPD remete ao art. 48 e à Resolução CD/ANPD nº 15/2024, e ao papel do encarregado, para que os requisitos de engenharia possam ser enunciados uma vez e atender às duas.
+A Pellmore atende pacientes na UE e no Brasil, então tanto o GDPR quanto a LGPD, Lei nº 13.709/2018, se aplicam. As duas definem princípios como a limitação da finalidade e a necessidade, direitos para as pessoas e deveres para as organizações. As duas tratam os dados de saúde como especialmente sensíveis: o artigo 9 do GDPR e o art. 11 da LGPD restringem o tratamento a hipóteses específicas. Zara monta uma tabela comparando as duas leis quanto às bases legais, aos direitos, à comunicação de incidentes, em que a LGPD remete ao art. 48 e à Resolução CD/ANPD nº 15/2024, cujo prazo é de três dias úteis, e não das 72 horas do GDPR, e ao papel do encarregado, para que os requisitos de engenharia possam ser enunciados uma vez e atender às duas.
 
 ### 20.2 Controladores e operadores
 
@@ -2067,7 +2067,7 @@ Você vai (1) conduzir um exercício de violação contra um prazo legal; (2) av
 
 ### 47.1 O cenário
 
-A Pellmore conduz um exercício de violação com Zara como observadora. No cenário sintético, o fornecedor de chat detecta uma exportação incomum às 22h de 2 de março. O fornecedor avisa a Pellmore às 9h30 de 4 de março. A Pellmore confirma que há dados pessoais envolvidos às 15h do mesmo dia. O artigo 33 do GDPR exige a notificação à autoridade de controle sem demora injustificada e, sempre que possível, em até 72 horas depois de tomar conhecimento, e o artigo 33(2) exige que o operador avise o controlador sem demora injustificada depois de tomar conhecimento. No Brasil, o art. 48 da LGPD e a Resolução CD/ANPD nº 15/2024 regulam a comunicação de incidentes. O exercício usa apenas registros sintéticos.
+A Pellmore conduz um exercício de violação com Zara como observadora. No cenário sintético, o fornecedor de chat detecta uma exportação incomum às 22h de 2 de março. O fornecedor avisa a Pellmore às 9h30 de 4 de março. A Pellmore confirma que há dados pessoais envolvidos às 15h do mesmo dia. O artigo 33 do GDPR exige a notificação à autoridade de controle sem demora injustificada e, sempre que possível, em até 72 horas depois de tomar conhecimento, e o artigo 33(2) exige que o operador avise o controlador sem demora injustificada depois de tomar conhecimento. No Brasil, o art. 48 da LGPD e a Resolução CD/ANPD nº 15/2024 regulam a comunicação de incidentes; o art. 6º da resolução fixa um prazo próprio, de três dias úteis contados do conhecimento de que o incidente afetou dados pessoais, que não se confunde com as 72 horas corridas do GDPR. O exercício usa apenas registros sintéticos.
 
 ### 47.2 O relógio
 
