@@ -602,13 +602,13 @@ MAAL's internal review of Ana's draft raised three major issues. (1) "Separation
 
 ### 6.7 Errors and limits
 
-Each of the errors listed below wastes the review. Typo lists and praise give authors nothing to act on. Experiments that would not change the decision cost months. Defensive letters leave the problem in place and lose the reviewer's trust. Limitations hidden in appendices mislead readers of the abstract, which is why Ana moved hers forward. Reworking analysis to reach significance is a form of misconduct, however it is described.
+Each of these errors wastes the review:
 
-- Reviews that only list typos or only praise.
-- Requests for experiments that would not change the decision.
-- Defensive response letters that change nothing.
-- Leaving limitations only in appendices.
-- Revising the analysis to make a weak effect look significant.
+- Reviews that only list typos or only praise, which give authors nothing to act on.
+- Requests for experiments that would not change the decision, which cost months.
+- Defensive response letters that change nothing; they leave the problem in place and lose the reviewer's trust.
+- Leaving limitations only in appendices, which misleads readers of the abstract; that is why Ana moved hers forward.
+- Revising the analysis to make a weak effect look significant; reworking analysis to reach significance is a form of misconduct, however it is described.
 
 ### Exercises
 
@@ -702,13 +702,15 @@ baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 
 ### 7.7 Errors and limits
 
-Each of the errors listed below weakens the archive or the argument. Inconsistent metrics make chapters impossible to compare. A limitation without action leaves the reader unsure whether it was addressed. Archives that depend on the author's machine or an unpinned API fail for others, as Ana's tokenizer problem showed. Releases in breach of licences or privacy can force withdrawal. Reproducibility is shown only when someone else reruns the work. A run by a labmate on a fresh machine, like the one in 7.5, is the cheapest check against several of these errors at once.
+Each of these errors weakens the archive or the argument:
 
-- Theses whose chapters use inconsistent metrics or threat models.
-- Limitations listed without the action taken.
-- Archives that require the author's home directory or an unpinned API.
-- Releasing weights or data in breach of licences or privacy.
-- Claiming reproducibility without a third-party run.
+- Theses whose chapters use inconsistent metrics or threat models, which makes chapters impossible to compare.
+- Limitations listed without the action taken, which leaves the reader unsure whether they were addressed.
+- Archives that require the author's home directory or an unpinned API; they fail for others, as Ana's tokenizer problem showed.
+- Releasing weights or data in breach of licences or privacy, which can force withdrawal.
+- Claiming reproducibility without a third-party run; reproducibility is shown only when someone else reruns the work.
+
+A run by a labmate on a fresh machine, like the one in 7.5, is the cheapest check against several of these errors at once.
 
 ### Exercises
 
@@ -762,13 +764,13 @@ Ana's mock defence lasted 45 minutes. A committee member asked: "Your strongest 
 
 ### 8.7 Errors and limits
 
-Each of the errors listed below weakens the defence or the publication. A talk mostly on background leaves no time to examine evidence. Residual risk at the end may be skipped when time runs out, which is why Ana showed hers with results. Early submission about a live product can breach a disclosure agreement. Overstated impact on standards is easy to refute. Future work should be questions, such as Ana's on tool-chaining attacks and impact bounds.
+Each of these errors weakens the defence or the publication:
 
-- Spending most of the talk on background.
-- Hiding residual risk at the end.
-- Submitting a finding about a live product before disclosure is agreed.
-- Overstating standards or regulatory impact.
-- Leaving future work as "more experiments" without questions.
+- Spending most of the talk on background, which leaves no time to examine evidence.
+- Hiding residual risk at the end, where it may be skipped when time runs out; that is why Ana showed hers with results.
+- Submitting a finding about a live product before disclosure is agreed, which can breach a disclosure agreement.
+- Overstating standards or regulatory impact, which is easy to refute.
+- Leaving future work as "more experiments" without questions; future work should be questions, such as Ana's on tool-chaining attacks and impact bounds.
 
 ### Exercises
 

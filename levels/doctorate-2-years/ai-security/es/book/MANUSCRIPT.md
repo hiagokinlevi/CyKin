@@ -30,9 +30,9 @@ Las fuentes se comprobaron el 12 de octubre de 2026: NIST [AI 100-1](https://doi
 | 2 | [3 Propuesta de contribución original](#ch-03) |
 | 2 | [4 Replicación de la línea de base y piloto](#ch-04) |
 | 3 | [5 Estudio principal y validación independiente](#ch-05) |
-| 3 | [6 Crítica de pares y revisión](../../en/book/MANUSCRIPT.md#ch-06) |
-| 4 | [7 Síntesis de la tesis y archivo de reproducibilidad](../../en/book/MANUSCRIPT.md#ch-07) |
-| 4 | [8 Defensa y plan de publicación](../../en/book/MANUSCRIPT.md#ch-08) |
+| 3 | [6 Crítica de pares y revisión](#ch-06) |
+| 4 | [7 Síntesis de la tesis y archivo de reproducibilidad](#ch-07) |
+| 4 | [8 Defensa y plan de publicación](#ch-08) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
 
@@ -566,7 +566,229 @@ Un estudio principal se gana la confianza con un protocolo congelado, un adversa
 
 ### Siga estudiando — capítulo 05 de 08
 
-[← Capítulo 04 (borrador)](#ch-04) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 06 (borrador) →](../../en/book/MANUSCRIPT.md#ch-06)
+[← Capítulo 04 (borrador)](#ch-04) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 06 (borrador) →](#ch-06)
+
+<a id="ch-06"></a>
+
+## Capítulo 6 — Crítica entre pares y revisión
+
+### Resultados de aprendizaje
+
+Usted podrá (1) revisar un artículo de seguridad de la IA con una lista de comprobación estructurada; (2) escribir críticas específicas, accionables y justas; (3) recibir críticas y separar las objeciones válidas de los malentendidos; (4) revisar afirmaciones, análisis y texto para que la evidencia y las palabras coincidan; y (5) redactar una carta de respuesta.
+
+### 6.1 Cómo revisar un artículo de seguridad de la IA
+
+Lea en tres pasadas. Primero, la afirmación: ¿qué afirma exactamente el artículo y bajo qué modelo de amenazas? Segundo, la evidencia: ¿corresponden los experimentos a los cuantificadores de la afirmación (adversario, presupuesto, modelos, tareas)? Tercero, los artefactos: ¿están disponibles el código, los datos y las configuraciones para comprobarlos? Una lista de comprobación práctica, construida a partir de arXiv:1902.06705 y arXiv:2010.09470, pregunta: ¿Es explícito el modelo de amenazas? ¿Se incluyen ataques adaptativos? ¿Son fuertes las líneas de base y se ajustan por igual? ¿Son las métricas adecuadas a las tasas base? ¿Se comunican intervalos entre semillas? ¿Hay fuga entre los datos de desarrollo y de prueba? ¿Se miden los costes de utilidad? ¿Se tratan las cuestiones éticas y la divulgación? ¿Se enuncian las limitaciones donde un lector las verá?
+
+### 6.2 Escribir críticas que ayuden
+
+Las buenas revisiones resumen primero el artículo con justicia en unas pocas frases, para que los autores vean que usted lo entendió. Después enumeran los problemas *mayores* (los que cambiarían la conclusión si no se resolvieran) por separado de los *menores*. Para cada problema mayor, diga qué está mal, por qué importa y qué evidencia lo resolvería: «La defensa se evalúa solo contra las 120 cargas útiles del trabajo previo; como la defensa modifica los delimitadores, evalúen por favor cargas útiles que falsifiquen delimitadores y comuniquen la ASR en función del número de intentos». Evite un tono que ataque a los autores. Evite pedir experimentos que no cambiarían su decisión.
+
+### 6.3 Recibir críticas
+
+Clasifique cada comentario en cuatro grupos: *correcto y subsanable* (hágalo), *correcto pero fuera del alcance* (reconózcalo y añada una limitación), *malentendido* (el texto no era claro: reescríbalo) y *desacuerdo* (responda con evidencia, con respeto). El tercer grupo es mayor de lo que esperan los autores; si un revisor cuidadoso le leyó mal, otros lectores también lo harán. Una carta de respuesta cita cada comentario e indica qué cambió y dónde. La respuesta de Ana a la petición del corpus de cargas útiles encaja en el grupo de fuera del alcance: lo reconoció y explicó la publicación con acceso controlado. Su cambio de título encaja en el primer grupo. Guarde la lista clasificada junto con la carta de respuesta.
+
+### 6.4 Revisar las afirmaciones para que encajen con la evidencia
+
+La revisión suele acotar las afirmaciones. Cambios típicos: sustituir «robusto» por «redujo la ASR bajo el modelo de amenazas evaluado»; sustituir «generaliza» por «se mantuvo en dos de tres modelos»; trasladar una limitación del apéndice al resumen; añadir una figura de la ASR frente al presupuesto del ataque; comunicar el mejor ataque del equipo rojo. Las afirmaciones que se encogen pero sobreviven son más fuertes que las amplias y frágiles. El cambio de título de Ana de «impide» a «reduce» y su comunicación de un efecto menor en el tercer modelo son ejemplos. Tras cada revisión, compruebe cada afirmación con la tabla que la respalda.
+
+### 6.5 Ejemplo resuelto (caso sintético del MAAL)
+
+La revisión interna del borrador de Ana en el MAAL planteó tres problemas mayores. (1) «La separación impide la inyección», en el título, contradecía la ASR residual del 5,8–8,9 %; cambió el título a «reduce». (2) Los dos modelos eran de una misma familia; un revisor preguntó si el efecto se transfiere. Ana añadió un tercer modelo abierto de otra familia como ejecución solo de validación: la reducción se mantuvo en dirección, pero fue menor (3,1 puntos, IC 1,4–4,9), y lo comunicó. (3) La utilidad se medía con un juez LLM. Ana añadió una auditoría humana de 200 tareas con dos anotadores, obtuvo una κ de Cohen = 0,81 y comunicó la concordancia entre el juez y los humanos. Un comentario menor pedía el corpus completo de cargas útiles; en su lugar, explicó el plan de publicación con acceso controlado del capítulo 3.
+
+### 6.6 Actividades de práctica
+
+1. Revise un artículo publicado en su área con la lista de comprobación y escriba una revisión de una página. 2. Intercambie borradores con un compañero y escríbanse cartas de respuesta. 3. Enumere cada afirmación de su resumen y la tabla o figura que la respalda. Para la revisión, use las preguntas de la lista de comprobación y separe los problemas mayores de los menores, indicando qué evidencia resolvería cada problema mayor. Para las cartas de respuesta, cite cada comentario, clasifíquelo en uno de los cuatro grupos e indique qué cambió y dónde. Para la lista de afirmaciones, cualquier afirmación sin una tabla o figura que la respalde debe eliminarse o acotarse, como se hizo con el título de Ana.
+
+### 6.7 Errores y límites
+
+Cada uno de estos errores desperdicia la revisión:
+
+- Revisiones que solo enumeran erratas o solo elogian, lo que no da a los autores nada sobre lo que actuar.
+- Peticiones de experimentos que no cambiarían la decisión, que cuestan meses.
+- Cartas de respuesta defensivas que no cambian nada; dejan el problema donde estaba y hacen perder la confianza del revisor.
+- Dejar las limitaciones solo en los apéndices, lo que induce a error a los lectores del resumen; por eso Ana adelantó las suyas.
+- Revisar el análisis para que un efecto débil parezca significativo; rehacer el análisis para alcanzar la significación es una forma de mala conducta, se describa como se describa.
+
+### Ejercicios — capítulo 6
+
+- **EX033 — Lista de comprobación.** Aplique cinco preguntas de la lista de comprobación a un artículo de su elección y registre las respuestas. Rúbrica: 3 = cinco preguntas respondidas con evidencia de página o sección; 2 = cuatro; 1 = vago; 0 = ninguna.
+- **EX034 — Problema mayor.** Escriba un comentario de problema mayor (qué, por qué, evidencia que lo resolvería) para una defensa evaluada solo con cargas útiles estáticas. Rúbrica: 3 = las tres partes; 2 = dos; 1 = una; 0 = ninguna.
+- **EX035 — Grupos.** Un revisor dice «el método no es más que una lista de permitidos». ¿Qué grupo es y cómo responde? Rúbrica: 3 = malentendido o desacuerdo; remitir a los resultados de la PI4, que comparan con la lista de permitidos sola; 2 = solo el grupo; 1 = vago; 0 = despectivo.
+- **EX036 — Acotar una afirmación.** Reescriba «nuestro método hace seguros a los agentes» para que encaje con los resultados de Ana. Rúbrica: 3 = nombra la reducción, el modelo de amenazas, los modelos y la ASR residual; 2 = parcial; 1 = sigue exagerando; 0 = sin cambios.
+- **EX037 — Concordancia.** ¿Qué le dice una κ = 0,81 y qué no le dice? Rúbrica: 3 = fuerte concordancia corregida por azar entre los anotadores; no muestra que ninguno acierte ni que el juez LLM sea válido salvo que se compare; 2 = la primera parte; 1 = vago; 0 = incorrecto.
+- **EX038 — Carta de respuesta.** Escriba el párrafo de respuesta al comentario sobre la transferencia. Rúbrica: 3 = cita el comentario, describe el experimento añadido, el resultado con su intervalo y su ubicación en el artículo; 2 = falta uno; 1 = vago; 0 = ninguno.
+
+### Síntesis del capítulo
+
+La crítica es un instrumento de validez. Revisar a otros le enseña qué evidencia persuade; revisar su propio trabajo alinea las palabras con esa evidencia, lo que normalmente significa afirmaciones más acotadas y más sólidas.
+
+### Siga estudiando — capítulo 06 de 08
+
+[← Capítulo 05 (borrador)](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 (borrador) →](#ch-07)
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Síntesis de la tesis y archivo de reproducibilidad
+
+### Resultados de aprendizaje
+
+Usted podrá (1) estructurar una tesis de modo que cada capítulo responda a una pregunta de investigación con evidencia; (2) redactar un capítulo de síntesis que enuncie las contribuciones, las limitaciones y las amenazas a la validez; (3) construir un archivo de reproducibilidad (código, configuraciones, fichas de datos, fichas de modelos, *hashes*, registros); (4) decidir qué publicar, qué someter a acceso controlado y qué retener; y (5) verificar que un desconocido puede regenerar los resultados principales.
+
+### 7.1 La tesis como argumento
+
+Una tesis es un único argumento, no un álbum de recortes de artículos. Empiece con el problema y la laguna (capítulo 2), enuncie las preguntas de investigación y las contribuciones, y después dé a cada capítulo empírico una pregunta y su respuesta. Cierre con una síntesis que integre: qué se sabe ahora que no se sabía; en qué condiciones; qué sigue abierto. Cuando la tesis incluya artículos publicados, añada texto de enlace que explique cómo encajan en el conjunto el modelo de amenazas y la terminología de cada artículo, y armonice los términos para que «tasa de éxito del ataque» signifique una sola cosa en toda la tesis.
+
+### 7.2 Amenazas a la validez
+
+Organice las limitaciones por tipo de validez. **Validez interna**: ¿podría algo distinto del tratamiento explicar el efecto (sesgo del evaluador, fuga, efectos de las semillas)? **Validez de constructo**: ¿mide la métrica la propiedad (capta el daño una «llamada no autorizada a herramienta»)? **Validez externa**: ¿se transfiere el resultado a otros modelos, herramientas, idiomas y patrones de despliegue? **Validez de la conclusión**: ¿es adecuada la estadística (potencia, multiplicidad, dependencia entre tareas)? En seguridad de la IA, añada la **validez adversarial**: ¿se probó de verdad el adversario razonable más fuerte dentro del modelo de amenazas? Para cada amenaza, indique qué hizo al respecto y qué queda pendiente.
+
+### 7.3 El archivo de reproducibilidad
+
+El archivo es el artefacto que permite a otro investigador regenerar sus figuras. Incluya: un README con los comandos exactos; el entorno (archivos de bloqueo de dependencias, receta del contenedor, notas sobre el *hardware*); el código en un *commit* etiquetado; los archivos de configuración de cada ejecución; los identificadores de los modelos y los *hashes* SHA-256 de los puntos de control que usó (no necesariamente los pesos, si la licencia prohíbe redistribuirlos); los conjuntos de datos o sus generadores con **fichas técnicas** (*datasheets*; Gebru et al., arXiv:1803.09010); **fichas de modelo** (*model cards*) para cualquier modelo que publique (Mitchell et al., arXiv:1810.03993); los registros brutos por ensayo o una razón documentada para retenerlos; el cuaderno o *script* de análisis que convierte los registros en tablas; y un manifiesto con el *hash* de cada archivo. Archive en un repositorio que asigne identificadores persistentes y elija las licencias de forma deliberada (el código, los datos y el texto pueden necesitar licencias distintas).
+
+### 7.4 Decisiones de publicación
+
+Aplique a los artefactos finales la tabla de publicación del capítulo 3. El código de la defensa, el entorno de evaluación, los generadores de tareas sintéticas y los *scripts* de análisis suelen ser públicos. Los corpus de cargas útiles adaptativas pueden someterse a acceso controlado (acceso a petición para investigadores verificados, con condiciones). Todo lo específico de un producto en servicio con nombre espera a que concluya la divulgación coordinada. No incluya datos personales. Si censura algo, diga qué se censuró y por qué, para que los revisores puedan juzgar el efecto sobre la reproducibilidad. La publicación de Ana siguió este patrón: entorno de evaluación y defensa públicos, corpus de cargas útiles con acceso controlado, tal como había previsto en su propuesta.
+
+### 7.5 Ejemplo resuelto (caso sintético del MAAL)
+
+El README del archivo de Ana contiene tres comandos: construir el contenedor, ejecutar `make pilot` (unas 2 horas de GPU) y `make main` (unas 140 horas de GPU), y después `make tables`. Un objetivo *smoke* vuelve a ejecutar 30 tareas por condición en diez minutos y comprueba que las cifras quedan dentro de tolerancias almacenadas. El manifiesto enumera 1.412 archivos con sus *hashes*. Un compañero de laboratorio que no había visto el proyecto siguió el README en una máquina nueva; la prueba de humo falló porque había cambiado la versión de un *tokenizer*, y se corrigió el archivo de bloqueo. El capítulo de síntesis de Ana enumera sus contribuciones como (1) evidencia de que la separación añade una reducción medible además de las herramientas con mínimo privilegio, (2) un entorno de evaluación de ataques adaptativos y (3) el descubrimiento de los ecos por encadenamiento de herramientas como familia residual; entre las amenazas figuran que solo hay tres modelos de dos familias y que las tareas son sintéticas.
+
+El laboratorio de estadística sirve también como comprobación del archivo: un revisor puede ejecutarlo y obtener exactamente las cifras impresas porque todos los generadores aleatorios tienen semilla.
+
+```python
+"""Lab S: reporting attack-success rates honestly: Wilson intervals,
+seed variation and a paired bootstrap. Synthetic trial outcomes only."""
+import math, random
+def wilson(k, n, z=1.96):
+    p = k/n; d = 1 + z*z/n
+    c = (p + z*z/(2*n))/d; h = z*math.sqrt(p*(1-p)/n + z*z/(4*n*n))/d
+    return c - h, c + h
+for k, n in ((3, 20), (30, 200), (300, 2000)):
+    lo, hi = wilson(k, n); print(f"successes={k}/{n} rate={k/n:.3f} wilson95=[{lo:.3f}, {hi:.3f}]")
+# five seeds of a synthetic defence evaluation: per-seed attack success rate
+rates = []
+for seed in range(5):
+    r = random.Random(seed); rates.append(sum(r.random() < 0.12 for _ in range(200))/200)
+m = sum(rates)/5; sd = math.sqrt(sum((x-m)**2 for x in rates)/4)
+print("per-seed rates:", " ".join(f"{x:.3f}" for x in rates), f"mean={m:.3f} sd={sd:.3f}")
+# paired bootstrap: baseline vs defence on the same 300 synthetic prompts
+r = random.Random(42)
+base = [r.random() < 0.30 for _ in range(300)]
+defn = [b and r.random() < 0.6 for b in base]   # defence blocks ~40% of successes
+diffs = []
+for _ in range(2000):
+    idx = [r.randrange(300) for _ in range(300)]
+    diffs.append(sum(base[i] for i in idx)/300 - sum(defn[i] for i in idx)/300)
+diffs.sort()
+print(f"baseline_asr={sum(base)/300:.3f} defended_asr={sum(defn)/300:.3f} "
+      f"reduction_ci95=[{diffs[50]:.3f}, {diffs[1949]:.3f}]")
+```
+
+Salida esperada:
+
+```text
+successes=3/20 rate=0.150 wilson95=[0.052, 0.360]
+successes=30/200 rate=0.150 wilson95=[0.107, 0.206]
+successes=300/2000 rate=0.150 wilson95=[0.135, 0.166]
+per-seed rates: 0.110 0.130 0.135 0.105 0.145 mean=0.125 sd=0.017
+baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
+```
+
+### 7.6 Actividades de práctica
+
+1. Escriba las contribuciones y la tabla de validez de su capítulo de síntesis. 2. Construya un manifiesto de los archivos de su proyecto con *hashes* SHA-256. 3. Pida a un compañero que reproduzca una figura solo a partir de su README, y registre lo que falló. Para la tabla de validez, use los cinco tipos e indique para cada amenaza qué hizo y qué queda pendiente, como hizo Ana con las familias de modelos y las tareas sintéticas. Para el manifiesto, calcule el *hash* de cada archivo del archivo y guarde la lista con él. Para la prueba con el compañero, entregue solo el README y una máquina nueva; registre cada fallo y su corrección, como la ejecución del compañero de Ana descubrió el cambio del *tokenizer*.
+
+### 7.7 Errores y límites
+
+Cada uno de estos errores debilita el archivo o el argumento:
+
+- Tesis cuyos capítulos usan métricas o modelos de amenazas incoherentes, lo que hace imposible comparar los capítulos.
+- Limitaciones enumeradas sin la acción tomada, lo que deja al lector sin saber si se abordaron.
+- Archivos que requieren el directorio personal del autor o una API sin versión fijada; fallan para los demás, como mostró el problema del *tokenizer* de Ana.
+- Publicar pesos o datos infringiendo licencias o la privacidad, lo que puede obligar a retirarlos.
+- Afirmar la reproducibilidad sin una ejecución por terceros; la reproducibilidad solo queda demostrada cuando otra persona vuelve a ejecutar el trabajo.
+
+Una ejecución por un compañero de laboratorio en una máquina nueva, como la de 7.5, es la comprobación más barata contra varios de estos errores a la vez.
+
+### Ejercicios — capítulo 7
+
+- **EX039 — Validez.** Dé una amenaza a la validez interna, una a la de constructo y una a la adversarial para el estudio de Ana, y una mitigación para cada una. Rúbrica: 3 = tres amenazas con mitigaciones; 2 = tres sin mitigaciones o dos con ellas; 1 = una; 0 = ninguna.
+- **EX040 — Lista del archivo.** Enumere ocho elementos que debe contener un archivo de reproducibilidad. Rúbrica: 3 = ocho correctos; 2 = seis; 1 = tres; 0 = menos.
+- **EX041 — Ficha de modelo.** Nombre cuatro secciones de una ficha de modelo. Rúbrica: 3 = cuatro de: detalles del modelo, uso previsto, factores, métricas, datos de evaluación, datos de entrenamiento, análisis cuantitativos, consideraciones éticas, advertencias; 2 = tres; 1 = una o dos; 0 = ninguna.
+- **EX042 — Hashes.** ¿Por qué registrar los *hashes* de los puntos de control aunque no pueda redistribuir los pesos? Rúbrica: 3 = permite a otros verificar que usan el artefacto idéntico y detecta cambios silenciosos; 2 = parcial; 1 = vago; 0 = incorrecto.
+- **EX043 — Prueba de humo.** Diseñe una prueba de humo para su archivo. Rúbrica: 3 = ejecución pequeña, semillas fijas, comparación con tolerancias, poco tiempo de ejecución, mensaje de fallo claro; 2 = tres elementos; 1 = vago; 0 = ninguno.
+- **EX044 — Reproducibilidad del laboratorio.** ¿Qué propiedad del laboratorio de estadística hace que su salida sea exactamente reproducible, y qué la rompería? Rúbrica: 3 = generadores con semilla; aleatoriedad sin semilla, cambio de biblioteca o de versión en los algoritmos aleatorios; 2 = la primera parte; 1 = vago; 0 = incorrecto.
+- **EX045 — Censura.** Redacte una nota de censura de un párrafo para un corpus de cargas útiles con acceso controlado. Rúbrica: 3 = qué, por qué, cómo solicitar el acceso, efecto sobre la reproducibilidad; 2 = tres; 1 = uno o dos; 0 = ninguno.
+
+### Síntesis del capítulo
+
+La tesis argumenta; el archivo demuestra. Una tabla de validez clara y un archivo que un desconocido ha vuelto a ejecutar de verdad convierten un conjunto de experimentos en una contribución sobre la que otros pueden construir.
+
+### Siga estudiando — capítulo 07 de 08
+
+[← Capítulo 06 (borrador)](#ch-06) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 08 (borrador) →](#ch-08)
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Defensa de la tesis y plan de publicación
+
+### Resultados de aprendizaje
+
+Usted podrá (1) preparar una defensa que presente el argumento, la evidencia y los límites en su justa proporción; (2) anticipar y responder preguntas hostiles y amistosas; (3) planificar las publicaciones, incluida la elección del foro, la evaluación de artefactos y el momento de la divulgación; (4) planificar el impacto en las normas, la gobernanza y la práctica sin exagerarlo; y (5) definir una agenda de investigación posdoctoral.
+
+### 8.1 La exposición de la defensa
+
+La exposición de la defensa tiene una sola función: permitir al tribunal comprobar que sus afirmaciones se siguen de su evidencia. Estructura: problema y laguna (10 %), preguntas de investigación y modelo de amenazas (10 %), método y líneas de base (20 %), resultados con intervalos y curvas de presupuesto (35 %), limitaciones y validez (15 %), contribuciones y trabajo futuro (10 %). Ponga el riesgo residual en una diapositiva de resultados, no en una diapositiva final de «limitaciones» para la que se acaba el tiempo. Ensaye con un tribunal simulado que incluya a alguien ajeno a su subcampo. La defensa simulada de Ana, que duró 45 minutos, siguió esta estructura. Cronometre cada parte en el ensayo.
+
+### 8.2 Anticipar las preguntas
+
+Prepare respuestas escritas para las preguntas previsibles: *¿Por qué este modelo de amenazas y no uno más fuerte? ¿Por qué estos modelos? ¿Y si la lista de permitidos basta? ¿Qué haría que su resultado fuera erróneo? ¿Cómo se sostiene esto para los modelos propietarios que no pudo probar? ¿Qué encontró el equipo rojo? ¿Qué haría de otra manera?* Para cada una, responda en tres partes: la respuesta directa, la evidencia (diapositiva o tabla) y el límite. «No lo sé, y así es como lo averiguaría» es una respuesta fuerte cuando es cierta.
+
+### 8.3 Plan de publicación
+
+Haga corresponder los capítulos con artículos. Los foros de seguridad (por ejemplo, IEEE S&P, USENIX Security, ACM CCS, NDSS) suelen ofrecer *evaluación de artefactos*, que premia el archivo del capítulo 7; los foros de aprendizaje automático suelen tener listas de comprobación de reproducibilidad. Elija según el público: las defensas destinadas a profesionales pueden necesitar además un taller o un informe técnico. Planifique los plazos en torno a la divulgación coordinada: si un hallazgo afecta a un producto desplegado, acuerde con el fabricante una fecha de divulgación antes del envío. Las prepublicaciones aceleran la retroalimentación, pero son públicas; revise las decisiones de doble uso antes de publicarlas. Mantenga una declaración de autoría y contribuciones (los roles al estilo CRediT ayudan).
+
+### 8.4 Impacto en la gobernanza y la práctica
+
+El trabajo doctoral en seguridad de la IA puede alimentar la función *Measure* del NIST AI RMF, los sistemas de gestión ISO/IEC 42001 de las organizaciones, el trabajo de conformidad con los requisitos de solidez y ciberseguridad del Reglamento de IA de la UE, los recursos comunitarios de OWASP y MITRE ATLAS, y las herramientas de código abierto. Aporte evidencia, no consignas: un método de evaluación con límites documentados es más útil para un organismo de normalización que la afirmación de que un problema está resuelto. Nunca presente su resultado como asesoramiento jurídico o certificación. La guía para profesionales de Ana es un ejemplo: presenta reducciones medidas y sus límites.
+
+### 8.5 Ejemplo resuelto (caso sintético del MAAL)
+
+La defensa simulada de Ana duró 45 minutos. Un miembro del tribunal preguntó: «Su mejor resultado es una ASR residual del 5,8 %. ¿Desplegaría esto en un agente de correo electrónico?». Su respuesta: «Por sí solo, no. Combinado con destinatarios en lista de permitidos y confirmación humana para el correo saliente, sí, porque esos controles limitan el impacto incluso cuando la inyección tiene éxito; la tesis mide la reducción adicional que aporta la separación, no la seguridad absoluta». El miembro externo preguntó por los modelos propietarios; ella mostró que su método requiere acceso de entrenamiento y explicó que, para los modelos accesibles solo por API, el entorno de evaluación sigue midiendo la ASR, pero la defensa no puede aplicarse, un límite de alcance que se deriva de la definición del sistema del capítulo 1, que nombra un modelo local de pesos abiertos. Su plan: un artículo sobre el entorno de evaluación y los ataques adaptativos para un foro de seguridad con evaluación de artefactos, otro sobre la defensa, una breve guía para profesionales y una agenda posdoctoral sobre los ataques por encadenamiento de herramientas y sobre la certificación de *cotas de impacto* en lugar de tasas de inyección.
+
+### 8.6 Actividades de práctica
+
+1. Redacte el esquema de su defensa con las proporciones de tiempo. 2. Escriba respuestas a las siete preguntas previsibles. 3. Haga corresponder los capítulos de la tesis con foros y un calendario de divulgación. Para el esquema, use las proporciones anteriores y coloque el riesgo residual en una diapositiva de resultados. Para las respuestas, siga la forma en tres partes y use la respuesta de Ana sobre el agente de correo como modelo de respuesta directa con un límite. Para el mapa de publicaciones, anote qué foros ofrecen evaluación de artefactos y dónde la divulgación debe preceder al envío, y dé fechas.
+
+### 8.7 Errores y límites
+
+Cada uno de estos errores debilita la defensa o la publicación:
+
+- Dedicar la mayor parte de la exposición al contexto, lo que no deja tiempo para examinar la evidencia.
+- Ocultar el riesgo residual al final, donde puede saltarse cuando se acaba el tiempo; por eso Ana mostró el suyo con los resultados.
+- Enviar un hallazgo sobre un producto en servicio antes de acordar la divulgación, lo que puede incumplir un acuerdo de divulgación.
+- Exagerar el impacto en las normas o en la regulación, lo que es fácil de refutar.
+- Dejar el trabajo futuro como «más experimentos» sin preguntas; el trabajo futuro deben ser preguntas, como las de Ana sobre los ataques por encadenamiento de herramientas y las cotas de impacto.
+
+### Ejercicios — capítulo 8
+
+- **EX046 — Plan de la exposición.** Reparta por secciones una defensa de 40 minutos. Rúbrica: 3 = proporciones cercanas a las de 8.1, con resultados ≥30 % y límites integrados; 2 = razonable, pero con los límites al final; 1 = cargada de contexto; 0 = ninguno.
+- **EX047 — Pregunta difícil.** Responda «¿Qué haría que su resultado fuera erróneo?» en el lugar de Ana. Rúbrica: 3 = nombra evidencia concreta (por ejemplo, una familia adaptativa que eleve la ASR al nivel de la línea de base, un efecto que desaparece en otras familias, la invalidez del evaluador) y cómo probarla; 2 = parcial; 1 = vago; 0 = ninguna.
+- **EX048 — Foro.** Elija un tipo de foro para el artículo sobre el entorno de evaluación y justifíquelo. Rúbrica: 3 = foro de seguridad con evaluación de artefactos, con razones; 2 = solo el foro; 1 = vago; 0 = ninguno.
+- **EX049 — Momento de la divulgación.** Escriba un calendario para un hallazgo que afecta a un producto desplegado. Rúbrica: 3 = informe privado, acuse de recibo, plazo acordado, publicación coordinada, nivel de detalle seguro; 2 = tres pasos; 1 = vago; 0 = publicar primero.
+- **EX050 — Gobernanza.** Nombre dos funciones o cláusulas de marcos que su trabajo podría informar, con una frase para cada una. Rúbrica: 3 = por ejemplo, la función Measure del AI RMF, el art. 15 del Reglamento de IA de la UE, el tratamiento del riesgo de ISO/IEC 42001, con frases precisas; 2 = solo los nombres; 1 = vago; 0 = incorrecto.
+- **EX051 — Agenda.** Escriba tres preguntas de investigación posdoctoral que se deriven de las limitaciones de Ana. Rúbrica: 3 = tres preguntas específicas y comprobables; 2 = dos; 1 = una; 0 = ninguna.
+- **EX052 — ¿Desplegar?** Responda la pregunta sobre el despliegue de 8.5 para su propia tesis. Rúbrica: 3 = respuesta por capas que separa la reducción medida de la seguridad absoluta, con controles complementarios; 2 = parcial; 1 = solo sí o no; 0 = ninguna.
+
+### Síntesis del capítulo
+
+Una defensa muestra que las afirmaciones se siguen de la evidencia; un plan de publicación envía esa evidencia adonde puede comprobarse, en un momento que respeta la divulgación. La siguiente agenda de investigación nace de los límites que usted ha enunciado con honestidad.
+
+### Siga estudiando — capítulo 08 de 08
+
+[← Capítulo 07 (borrador)](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Resultados resueltos ↓](#worked-results) · [Siguiente curso a través del índice de capítulos →](../SUBJECTS.md)
 
 <a id="worked-results"></a>
 
@@ -637,6 +859,46 @@ Respuestas modelo; cualquier respuesta que cumpla la rúbrica obtiene la misma p
 **EX031.** k = 1: AUC 0,600, ventaja 0,200; k = 25: AUC 0,520, ventaja 0,060. Con k = 1, el vecino más próximo de cada miembro es él mismo, así que los miembros obtienen confianza 1 para su propia etiqueta; con k mayor, la puntuación refleja la población, de modo que miembros y no miembros parecen iguales.
 
 **EX032.** Como resultado principal: comunicarlo junto a sus propias cifras y en las limitaciones del resumen, describir la familia de encadenamiento de herramientas con un nivel de abstracción seguro, acotar las afirmaciones y añadirlo al trabajo futuro.
+
+**EX033.** Las respuestas varían; una respuesta completa cita secciones sobre el modelo de amenazas, los ataques adaptativos, las líneas de base, las métricas y los intervalos.
+
+**EX034.** «Qué: la evaluación usa solo 120 cargas útiles estáticas. Por qué: la defensa cambia los delimitadores, así que los atacantes irán contra ellos; las cargas útiles estáticas no pueden medir eso. Evidencia: evaluar cargas útiles que falsifiquen delimitadores y de eco con un presupuesto declarado y comunicar la ASR frente al número de intentos.»
+
+**EX035.** Malentendido (o desacuerdo). Respuesta: «La PI4 compara la separación con y sin lista de permitidos; la tabla 5 muestra una reducción de 5,2 puntos (IC 3,9–6,6) sobre la lista de permitidos sola. Lo hemos aclarado en la introducción.»
+
+**EX036.** «Bajo nuestro modelo de amenazas, añadir la separación entre instrucciones y datos a una lista de permitidos de herramientas redujo las llamadas no autorizadas a herramientas en 5,2 puntos en dos modelos (ASR residual del 5,8 %, hasta el 8,9 % con el equipo rojo independiente); no impide la inyección.»
+
+**EX037.** κ = 0,81 significa una fuerte concordancia más allá del azar entre los dos humanos. No muestra que las etiquetas sean correctas, ni que el juez LLM sea válido, salvo que se comparen las etiquetas del juez con las humanas.
+
+**EX038.** «Revisor 2: "¿Se transfiere el efecto más allá de una familia de modelos?". Hemos añadido el modelo C, de otra familia, como ejecución solo de validación (sección 5.4, tabla 6). La reducción se mantuvo en dirección, pero fue menor: 3,1 puntos (IC al 95 %: 1,4–4,9). Ahora lo indicamos en el resumen.»
+
+**EX039.** Interna: sesgo del evaluador → etiquetas ciegas y auditoría humana. De constructo: la ASR puede no equivaler al daño → comunicar también resultados ponderados por impacto. Adversarial: ataques adaptativos escritos dentro del propio laboratorio de la autora → equipo rojo independiente con el mismo presupuesto.
+
+**EX040.** README con los comandos; entorno y archivos de bloqueo; código etiquetado; configuraciones de las ejecuciones; identificadores y *hashes* de los modelos; fichas técnicas de los datos; fichas de modelo; registros por ensayo; *scripts* de análisis; manifiesto de archivos con *hashes*; licencia; identificador persistente.
+
+**EX041.** Detalles del modelo; uso previsto; factores; métricas; datos de evaluación; datos de entrenamiento; análisis cuantitativos; consideraciones éticas; advertencias y recomendaciones (cuatro cualesquiera).
+
+**EX042.** Un *hash* permite a otros confirmar que descargaron el artefacto idéntico de la fuente original y revela actualizaciones silenciosas o manipulaciones; es esencial para la reproducibilidad y para la integridad de la cadena de suministro.
+
+**EX043.** Ejecutar 30 tareas por condición con semillas fijas en menos de 15 minutos, comparar las salidas con valores almacenados dentro de tolerancias declaradas e imprimir un resultado claro de éxito o fallo que nombre la celda de la tabla que no coincide.
+
+**EX044.** Cada generador se crea con una semilla fija. La aleatoriedad sin semilla, el no determinismo de la ejecución multihilo o un cambio del algoritmo de números aleatorios entre versiones romperían la reproducción exacta.
+
+**EX045.** «El corpus de cargas útiles adaptativas (4.100 elementos) se retiene de la publicación abierta porque contiene cargas útiles funcionales contra modelos actuales. Un subconjunto público usa canarios inofensivos. Los investigadores verificados pueden solicitar el corpus completo por correo electrónico con condiciones de uso exclusivo para investigación. Las tablas 4 a 6 pueden regenerarse a partir del corpus de acceso controlado; el subconjunto de canarios reproduce las tendencias, pero no los valores exactos.»
+
+**EX046.** Problema y laguna, 4 min; preguntas y modelo de amenazas, 4; método y líneas de base, 8; resultados con riesgo residual, 14; validez, 6; contribuciones y trabajo futuro, 4.
+
+**EX047.** Una familia de ataques adaptativos que eleve la ASR con separación al nivel de la lista de permitidos sola; la pérdida del efecto en otras familias de modelos; o evidencia de que el evaluador clasifica mal los resultados. Probarlo con un equipo rojo independiente, más familias y una auditoría humana.
+
+**EX048.** Un foro de seguridad con evaluación de artefactos (por ejemplo, USENIX Security, CCS): su público evalúa ataques y entornos de evaluación, y la evaluación de artefactos premia el archivo.
+
+**EX049.** Día 0: informe privado con evidencia; día ~7: acuse de recibo; acordar un plazo de 90 días (o negociado); coordinar la validación de la corrección; publicar tras la corrección con detalle a nivel de diseño y sin cadenas de explotación activas; reconocer el mérito y actualizar si es necesario.
+
+**EX050.** Función *Measure* del NIST AI RMF: el entorno de evaluación ofrece un método para medir la seguridad y la resiliencia. Artículo 15 del Reglamento de IA de la UE: aporta evidencia sobre la solidez frente a entradas adversariales en los sistemas de alto riesgo. (El tratamiento del riesgo de ISO/IEC 42001 también es aceptable.)
+
+**EX051.** ¿Pueden bloquearse los ecos por encadenamiento de herramientas con seguimiento del flujo de información sin una pérdida de utilidad inaceptable? ¿Podemos acotar el *impacto* de una inyección con éxito en lugar de su tasa? ¿Se transfieren las defensas por separación a entradas multimodales (imágenes, PDF)?
+
+**EX052.** Las respuestas varían; una respuesta completa separa la reducción medida de la seguridad absoluta y combina el método con límites de privilegios, confirmación y supervisión.
 
 <a id="references"></a>
 
