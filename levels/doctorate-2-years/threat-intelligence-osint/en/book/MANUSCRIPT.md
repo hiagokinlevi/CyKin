@@ -432,7 +432,7 @@ Tomas's red-cell reader attacked a point the committee had not raised: confirmed
 
 ICD 203 asks analytic products to describe source quality, express uncertainty, separate information from assumptions and judgments, incorporate alternatives, show relevance, argue clearly, explain changes of judgment, aim for accuracy and use effective visuals. A research paper about CTI should meet the same bar it measures. Tomas runs his draft against that list and finds he never stated how his own conclusion would change if outcome sources were only half as independent as assumed.
 
-Answering that question was what led to the two-assumption sensitivity analysis.
+His fix applies the ICD 203 standard on uncertainty to his own conclusion: the thesis now states how the calibration estimate moves if unresolved claims are treated first as unconfirmed and then as confirmed, using the two-assumption sensitivity analysis.
 
 ### 6.3 Point-by-point responses
 
@@ -440,7 +440,7 @@ Each reviewer comment receives a numbered reply: accepted with change (cite page
 
 Tomas's reply to the red-cell reader's follow-up-bias comment would be "accepted with change": it names the sensitivity analysis, the two assumptions about unresolved claims and the page where both ranges appear. A reader can check the reply against the thesis without re-reading the whole chapter.
 
-A declined comment needs its evidence on the page as much as an accepted one does.
+When a community partner asked him to drop a negative result, Tomas's reply was "declined", citing the pre-registered analysis plan that required reporting it; the wording change that partner also requested was "accepted with change".
 
 ### 6.4 Substantive versus cosmetic
 
@@ -520,7 +520,7 @@ State what is open, what is restricted and why, and how an authorised researcher
 
 For Tomas the restricted part is the 200 TLP:AMBER+STRICT reports and licensed vendor text. His statement names the sharing community and the licence holder as the routes for access, and the hash manifest lets an authorised researcher confirm they hold the same files.
 
-Those routes were confirmed with both parties before the statement was written.
+It also says what an authorised researcher cannot get: the reports themselves never leave the lab, so access means working on site under the same TLP:AMBER+STRICT rules that bound Tomas.
 
 ### 7.5 Machine-readable outputs
 

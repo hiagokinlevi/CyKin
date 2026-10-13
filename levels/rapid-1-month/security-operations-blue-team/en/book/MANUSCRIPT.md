@@ -45,25 +45,37 @@ You will (1) explain what security operations means for a small organisation; (2
 
 Leo Barros is office manager at the fictional Marlow & Finch, a 12-person accountancy. IT is handled by a small outside support company, BrightPath IT. On a Monday morning, a client phones to ask why partner Elaine Finch emailed asking them to pay an invoice into a new bank account. Elaine sent no such email. Leo has one month, with this rapid course, to set up basic security operations so the firm notices such things itself.
 
+The client's phone call is the only reason anyone found out. Nothing at the firm raised an alarm: no one watched sign-ins, and a hidden mailbox rule kept the clients' replies away from Elaine.
+
 ### 1.2 What security operations means
 
 Security operations is the routine of watching for signs of attack, deciding what matters and acting quickly. Large firms run a security operations centre (SOC); small firms need the same habits on a small scale. MITRE's "11 Strategies of a World-Class Cybersecurity Operations Center" (Knerler, Parker and Zimmerman, 2022) starts with knowing what you protect and who has authority, which applies to a 12-person firm as much as to a bank.
+
+For Leo, "knowing what you protect" means the client data and mailboxes, and "authority" means deciding in advance who may lock an account at 10 on a Monday morning without waiting for a partners' meeting. In this case that delay would have mattered: one client paid £4,800 into the criminal's account that morning.
 
 ### 1.3 What to protect
 
 For Marlow & Finch: client financial data, email accounts (because criminals use them for invoice fraud) and the accounts software. Email matters most because it is how money is requested.
 
+Leo ranks email first because of what happened to Elaine: one mailbox, accessed with one stolen password, was enough to send a fake invoice to two clients and hide the replies. The client data and accounts software matter too, but an attack on them would most likely start with a mailbox like hers. So most of the plan protects and watches the email accounts.
+
 ### 1.4 A few good signals
 
 A small firm cannot watch everything. Leo picks four signals: sign-ins from unusual countries or at night, new mailbox forwarding rules, multi-factor authentication (MFA) changes, and staff reports of odd emails. These cover the most common ways small firms are attacked.
+
+Each signal matches part of Elaine's incident. The criminal signed in at night from Brazil, set up a forwarding rule four minutes later, and worked on an account without MFA. The fraud was spotted only because a client phoned with an odd email. With these four signals in place, the forwarding rule alone would have produced an alert on Friday night, before any client paid.
 
 ### 1.5 Who watches, who acts
 
 BrightPath IT receives security alerts from the email service and calls Leo for anything urgent. Leo can ask BrightPath to reset passwords and block sign-ins at any hour; partners are told afterwards. This is written on one page and signed by both partners.
 
+The page also answers the question that slows small firms down: who may lock a partner out of her own mailbox? Leo may, and the partners learn afterwards. On the Monday of the fraud, Leo approved the actions at 10:05, and BrightPath had revoked Elaine's sessions three minutes later. Without the signed page, Leo would have needed to reach both partners first.
+
 ### 1.6 Frameworks in plain words
 
 NIST CSF 2.0 (CSWP 29, 2024) groups security work into Govern, Identify, Protect, Detect, Respond and Recover. Leo's plan touches each: a signed page (Govern), knowing what matters (Identify), MFA (Protect), the four signals (Detect), the call list (Respond) and backups (Recover).
+
+The framework does not add work; it checks for gaps. Before the incident, Marlow & Finch had no MFA, no alerts and no call list, so Protect, Detect and Respond were empty. Using the six words as a checklist showed Leo that his plan needed something in each, and that backups, for Recover, were the only part already in place.
 
 ### Worked example
 
@@ -111,7 +123,9 @@ You will (1) read sign-in records for unusual country and time; (2) find mailbox
 
 The email service records each sign-in with user, time and approximate country. NIST SP 800-92 (Kent and Souppaya, 2006) explains why such logs must be kept and checked; Leo asks BrightPath to keep 90 days.
 
-### Lab — Lab — unusual sign-ins
+Ninety days matters here. Elaine entered her password on the fake page on Thursday, and the client phoned on Monday, so the records needed went back only a few days. In many cases a stolen password is used weeks later, and if BrightPath kept only a week of sign-ins, the first criminal sign-in could already be gone by the time anyone looked.
+
+### Lab — unusual sign-ins
 
 ```python
 """Flag synthetic mailbox sign-ins from unusual countries or at unusual hours."""
@@ -139,21 +153,31 @@ e.finch   Sat 00:02 BR CHECK: new country, night
 
 Two of Elaine's sign-ins are flagged: Friday 23:47 and Saturday 00:02, both from Brazil (BR) and both at night. Her daytime sign-ins from the UK, and other staff's, are normal.
 
+The lab flags each sign-in for two separate reasons, a country not on the usual list and a time between 22:00 and 06:00, and prints both when both apply. Both of Elaine's Brazil sign-ins carry both flags, which makes them stronger leads than a sign-in with only one. Elaine's Friday 08:52 and 13:05 sign-ins from the UK show her own normal pattern.
+
 ### 2.3 Forwarding rules
 
 BrightPath checks Elaine's mailbox: at 23:51 on Friday a rule was created that forwards any email containing "invoice" or "payment" to an outside address and deletes the copy. This hid the fraud from Elaine.
+
+The rule explains the timeline: the criminal signed in from Brazil at 23:47 and set up the rule four minutes later. Forwarding then deleting means Elaine never saw clients' replies about the new bank account. That is why no one at the firm noticed, and why the fraud came to light only when a client phoned.
 
 ### 2.4 The story
 
 Thursday: Elaine entered her password on a fake "document shared with you" page (found in her browser history). Friday night: a criminal signed in, created the rule and sent the fake invoice to two clients. MFA was not enabled on her account.
 
+Each step has evidence. The fake page appears in Elaine's browser history. The two Brazil sign-ins appear in the sign-in records. The 23:51 forwarding rule appears in her mailbox settings. The two fake invoices appear in her sent items. Because each step has its own source, Leo can tell the partners what happened without guessing, and BrightPath knows what to undo.
+
 ### 2.5 Not jumping to conclusions
 
 A new country can be travel; Leo checks Elaine was at home. Night sign-ins can be a phone syncing; the country rules this out.
 
+Here both checks point the same way. Elaine was at home in the UK that weekend, so the Brazil sign-ins were not her travelling; and a phone syncing at night would sign in from the UK, not from Brazil. With travel and syncing ruled out, the two sign-ins become strong evidence that someone else used her password.
+
 ### 2.6 ATT&CK
 
 MITRE ATT&CK (Strom et al., 2018) lists email forwarding rules as a known collection technique; BrightPath uses this to check for similar rules on other mailboxes.
+
+The ATT&CK entry gives BrightPath a name to search for. It searched all 12 mailboxes for rules forwarding to outside addresses, found that only Elaine's had one, and checked that no other staff member had unusual sign-ins. That is how the firm knows the problem was limited to one account, not just assumed so.
 
 ### Asking the right person
 
@@ -205,25 +229,37 @@ You will (1) contain a compromised email account in the right order; (2) warn cl
 
 BrightPath's playbook for a compromised mailbox, following the response ideas in NIST SP 800-61r3 (Nelson et al., 2025): sign out all sessions, reset the password, remove the forwarding rule, turn on MFA, then review sent items and rules. Doing the reset before signing out sessions can leave the criminal connected.
 
+Turning on MFA comes after the reset because Elaine must set up the authenticator app on her phone, and that takes a few minutes. The rule is removed before the sent-items review so that no more client replies are forwarded while BrightPath works out which clients received the fake invoice.
+
 ### 3.2 Timing
 
 Leo approves at 10:05 on Monday. Sessions are revoked at 10:08, the password reset at 10:09, the rule removed at 10:11 and MFA enabled at 10:20 once Elaine sets up the app on her phone.
+
+Signing out all sessions at 10:08, before the reset at 10:09, follows the playbook's order, so the criminal could not stay connected with an old session. The full sequence took fifteen minutes from approval to MFA. In the eleven minutes between revoking sessions and enabling MFA, the account was protected by the new password only, which is why Elaine set up the app straight away.
 
 ### 3.3 Checking the money
 
 Leo calls both clients who received the fake invoice. One had not paid; the other had paid £4,800 that morning. Leo tells that client to call their bank immediately; the bank attempts a recall.
 
+Speed matters more than anything else here: a bank recall works best before the money is moved on. The client who had paid that morning called their bank at once, and the bank later recovered £3,100 of the £4,800. Leo also tells the client who had not paid to ignore the email and use the firm's known bank details.
+
 ### 3.4 Warning clients
 
 A short email from the firm's main address to all clients, approved by the partners: "We will never change our bank details by email. If you receive such a request, phone us on our usual number." No technical details, no blame.
+
+The message works because it gives clients a simple rule they can apply without understanding the attack: bank detail changes never come by email, and a phone call to a known number settles any doubt. Leo uses the firm's usual address, not Elaine's, and sends it after the forwarding rule has been removed, so the criminal cannot see or answer replies.
 
 ### 3.5 Reporting
 
 The firm reports the fraud to the national fraud reporting service and, since client contact details in Elaine's mailbox may have been viewed, asks its data protection adviser whether the regulator must be told.
 
+The data protection adviser decided the breach had to be reported because client financial details were in the mailbox, and the report was filed within the deadline. Leo's incident log, with the 23:47 sign-in, the 23:51 rule and the times of each fix, made the report quick to write.
+
 ### 3.6 Recording
 
 Leo records each action with its time in a simple incident log.
+
+Leo's log for the Monday reads: approval at 10:05, sessions revoked at 10:08, password reset at 10:09, forwarding rule removed at 10:11, MFA on at 10:20, and then each client call with its time. Each line names who did it: Leo or BrightPath. The data protection adviser used the log to write the breach report, and the lessons review used it to see which steps were quick and which were slow. Without it, both would have relied on memory a week later.
 
 ### Telling staff
 
@@ -274,25 +310,37 @@ You will (1) set up simple ongoing monitoring with a provider; (2) measure wheth
 
 BrightPath turns on alerts in the email service for the four signals from chapter 1 and sends Leo a weekly summary. Shared detection ideas such as SigmaHQ rules inspire the alert choices, though BrightPath uses the email service's built-in alerts.
 
+The alert for new forwarding rules matters most, because it would have caught Elaine's 23:51 rule on Friday night, long before the client's Monday phone call. Built-in alerts suit a firm with no security staff: BrightPath does not have to write or maintain its own rules, only check what the email service sends.
+
 ### 4.2 Measuring usefulness
 
 In the first month, there are 11 alerts: 8 for sign-ins abroad (6 were Leo's colleague on holiday in Spain, 2 a partner's phone using a roaming network), 2 MFA changes (new phones), 1 forwarding rule (a staff member forwarding to her own personal email, against policy). None were attacks, but the forwarding rule found a policy issue.
+
+Every alert was checked against a simple question, "is there an innocent explanation we can confirm?", and the answer took minutes: a holiday in Spain, a roaming phone, two new phones. The forwarding rule shows the value of the signal even without an attack: a staff member was sending firm email, possibly including client data, to a personal account.
 
 ### 4.3 Reducing noise
 
 Staff tell Leo before travelling; BrightPath adds the trip to a list so alerts are checked quickly. Axelsson (2000) explains why rare attacks make most alerts false; the aim is quick checks, not zero alerts.
 
+In the first month, 8 of the 11 alerts were sign-ins abroad and all had innocent explanations. With the travel list, a sign-in from Spain during a colleague's known holiday can be checked in a minute. The forwarding-rule and MFA alerts stay unchanged, because they are rare and each one needs a look.
+
 ### 4.4 Lessons review
 
 A 30-minute meeting asks what happened, what worked and what to change. Actions: MFA for all staff (done), phone-check rule for bank detail changes (done), staff phishing training (booked), and a twice-yearly check of who has admin rights.
+
+Each action ties to a gap the incident exposed. MFA for all staff, because Elaine's account had none. A phone-check rule, because a client paid £4,800 on the strength of an email alone. Phishing training, because Elaine entered her password on a fake page. The admin-rights check, because a mailbox with admin rights could have done far more harm.
 
 ### 4.5 Continuous monitoring
 
 NIST SP 800-137 (Dempsey et al., 2011) describes monitoring as continuous, feeding decisions over time. For Leo this means the weekly summary, the monthly partner review and yearly checks of the plan.
 
+Each of the three timescales has a job. The weekly summary shows Leo the alerts and how each was explained. The monthly review lets the partners see trends, such as the report button being used more. The yearly check asks whether the four signals and the call list still fit the firm, for example after new staff or a change of IT provider.
+
 ### 4.6 Next steps
 
 Leo plans to learn more about incident response and resilience.
+
+Each topic builds on this month's work. Incident response would turn BrightPath's mailbox playbook into a short set of playbooks for other events, such as a lost laptop or a ransomware note. Resilience starts from the firm's backups, the one part of the plan that existed before Elaine's incident, and asks whether the accounts software and client files could be restored quickly after an attack. Leo would test that by restoring one client folder.
 
 ### Worked example
 
