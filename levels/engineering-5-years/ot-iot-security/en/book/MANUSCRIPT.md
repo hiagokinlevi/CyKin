@@ -1813,9 +1813,13 @@ You will (1) design preventive, detective and corrective controls for CNHP; (2) 
 
 Preventive: allow-list before forward. Detective: alert on denied write codes. Corrective: auto-disable a compromised engineering account at window end. Each maps to a requirement id.
 
+At ABP, the allow-list on the serial monitor is preventive, the alert when HMI-1 tries to write outside 40001 to 40010 is detective, and disabling temporary engineering accounts at the end of each window is corrective. Lena records the requirement id beside each control, so a reviewer can see which requirement fails if the control is removed or weakened.
+
 ### 27.2 Operator skill
 
 Controls must be operable by engineers who follow runbooks — not only by exploit specialists. A control that needs custom shellcode to verify is the wrong control for this programme.
+
+Lena writes a runbook entry for each CNHP control describing how to check it with ordinary tools, such as replaying a synthetic frame on the bench and reading the decision log. If a control can only be verified by someone writing exploit code, she replaces it with one that can be checked safely by the site's own engineers during routine work.
 
 ### 27.3 Compensation
 
@@ -1851,9 +1855,13 @@ HIST-1  fc= 4 reg=30010 -> PASS
 
 > **Synthetic case — Ashford Batch Plant.** Writes outside 40001-40010 are denied — preventive gate with a detective event when someone tries.
 
+At ABP, compensation is written into the work permit with an owner and a review date, so it is checked rather than assumed. For a legacy PLC that cannot enforce an allow-list, Lena pairs detective monitoring on its trunk with two-person approval for engineering access.
+
 ### 27.4 Errors and limits
 
 Stacks of compensating controls without an owner become ignored alerts.
+
+Lena's control register lists every compensating control at ABP with its owner, its alerts and the date it was last tested. During the March health day, one compensating control for a legacy PLC was found with no owner, and it received one before the next window. Controls that nobody watches are counted as missing, because their alerts will be ignored when they finally fire. Ownership is reviewed at each health day.
 
 ### Practice note
 
@@ -1897,6 +1905,8 @@ You will (1) implement permit() with explicit reason codes; (2) add tests for ea
 
 Pure function: inputs source, function code, register, AllowListVersion to (allow: bool, reason: str). No network I/O inside the predicate. That keeps tests fast and free of plant contact.
 
+Lena's permit function at ABP follows this shape exactly: it takes the decoded frame fields and the allow-list version and returns a decision with a reason. Loading the allow-list and writing logs happen outside the function, so its tests run in milliseconds on synthetic data and never risk contact with the plant.
+
 ### 28.2 Clause tests
 
 One test file per clause: station allow, function code, register range, policy-unavailable. Synthetic fixtures only. Mutation: break a clause and watch the test fail.
@@ -1929,15 +1939,21 @@ ENG-WS  fc= 8 reg=    0 -> BLOCK fc-not-allowed
 HIST-1  fc= 4 reg=30010 -> PASS
 ```
 
+Lena keeps one test file per clause for ABP's permit function, with fixtures named after the requirement they check. Mutation testing confirmed each file fails when its clause is broken: deleting the register-range check, for example, made the out-of-range tests fail at once. A clause whose tests survive a mutation is treated as untested.
+
 ### 28.3 Logging
 
 Log decision, reason, policy version, actor. Do not log passwords or full frame payloads that might contain proprietary recipe data. Redact as needed.
 
 > **Synthetic case — Ashford Batch Plant.** Implementation I shipped reason codes that the timeline UI shows — operators finally saw why a write was blocked at 03:12.
 
+Lena's logs show which policy version made each decision. Frame payloads are left out because they can contain recipe values. Lena checks a sample of logs after each release to confirm nothing sensitive slipped in.
+
 ### 28.4 Errors and limits
 
 Stringly-typed reasons drift; use an enum shared with the coverage board.
+
+Lena's implementation uses a shared list of reason codes, such as register-out-of-range and policy-unavailable, published as a versioned document. The coverage board and the timeline view read the same list, so a new code cannot appear in logs without being understood elsewhere. Consumers that see an unknown code treat it as a deny and raise an alert for the tool owner. The document is reviewed with each predicate change.
 
 ### Practice note
 
@@ -1950,6 +1966,8 @@ Publish the enum of reason codes as a versioned document: fc-not-allowed, regist
 
 
 Code review checklists for predicate changes include: new clause, new tests, reason-code docs, fuzz case, fail-closed on parse error. Reviewers who skip the list are doing social review, not safety review.
+
+Lena's checklist is attached to every predicate review.
 
 ### Field note — fuzz findings
 
@@ -1986,9 +2004,13 @@ You will (1) define coverage with a denominator; (2) separate activity metrics f
 
 ATT&CK for ICS coverage is observed intersect planned over planned, not observed over all techniques. Without a plan, coverage is vanity.
 
+At ABP, Lena writes the plan of techniques to be tested before each assessment, and the coverage board counts only those. Observed techniques outside the plan are reported separately. The figure of 31 of 44 planned techniques observed means something because the 44 were chosen in advance and the planning guide is published with the board. The plan is fixed before testing.
+
 ### 29.2 Activity vs outcome
 
 Activity: frames decoded, tools launched. Outcome: verified remediations, SIS reachability still false, false-alarm rate at plant base rate. Steer on outcomes.
+
+Lena's monthly CNHP report leads with outcomes: remediations verified by re-test, whether SIS-B is still unreachable from L4, and the detector's false-alarm rate at ABP's base rate. Activity counts, such as frames decoded, appear only in a capacity appendix. Steering on activity would reward running more tools rather than fixing more problems. Outcomes are what the plant manager funds.
 
 ### 29.3 Detector honesty
 
@@ -2029,9 +2051,13 @@ cusum classB FA=0/60 det=0/60 mean_delay=nan
 
 > **Synthetic case — Ashford Batch Plant.** CNHP reports planned-technique coverage and detector FA/delay by class — not a single secure percent.
 
+Lena's pilot report for ABP lists results by attack class. Each class has its own false-alarm interval and mean delay, so a reader can see that CUSUM caught the stealthy residual attacks the band detector missed.
+
 ### 29.4 Errors and limits
 
 Denominators stolen from another plant invalidate the metric. Synthetic attacks are not the adversary.
+
+Lena never borrows a denominator from another site's plan, because ABP's techniques, assets and processes differ. If a comparison with another plant is needed, both sites must use the same planning rules, and the report says so. She also states in each report that synthetic attacks represent chosen classes, not the behaviour of a real adversary, so readers do not overrate the detection figures. Both caveats appear in every report.
 
 ### Practice note
 
@@ -2044,6 +2070,8 @@ If you sample 50 of 500 assets, say so and do not scale findings as if you visit
 
 
 Activity metrics (frames decoded) inform capacity only. Outcome metrics (verified remediations, SIS reachability still false) steer the programme. Prefer metrics that under-claim success, such as counting a fix only after re-test.
+
+ABP's planning guide is published beside the board.
 
 ### Field note — methodology lines on charts
 
@@ -2075,6 +2103,8 @@ You will (1) run a verification plan against ABP's monitor and zoning; (2) recor
 
 Tests: allow in-scope reads; deny bad function codes; deny out-of-range writes; fail-closed missing policy; reachability SIS from L4 is false; cycle time under budget with tap. Each row: id, setup, action, expected, evidence path.
 
+At ABP, each row of the plan names the requirement it checks, such as S-1 for the missing-policy row and R-12 for the reachability row. The cycle-time row uses the bench copy of the trunk to PLC-A with the tap installed, checking the time stays well under the 50 ms stop. Rows are written before the lab runs.
+
 ### 30.2 Execution
 
 Use synthetic hosts and benches only. Capture stdout and config hashes. Any safety failure (fail-open or SIS reachable) stops the lab and opens a blocker — no continue to gather data.
@@ -2105,15 +2135,21 @@ flat: L4 reaches ['L0', 'L1-PLC', 'L1-SIS', 'L2', 'L3', 'L4'] count=6 writes_to_
 zoned: L4 reaches ['L0', 'L1-PLC', 'L2', 'L3', 'L3.5', 'L4'] count=6 writes_to_SIS=False
 ```
 
+Lena's lab at ABP runs on the bench range with synthetic hosts and fixtures. When the missing-policy row failed once, the lab stopped and a blocker was opened against S-1; no further rows were run until it was fixed, because continuing would have produced results about a monitor already known to be unsafe.
+
 ### 30.3 Report
 
 One-page lab report: environment versions, results table, open blockers, sign-off. Attach hashes.
 
 > **Synthetic case — Ashford Batch Plant.** Lab I failed the missing-policy row once; release halted until S-1 was fixed.
 
+Lena's report for each Lab I run lists the tool versions, the fixture-set hash, each row's result and any open blockers, and it is signed by the independent runner. Hashes of logs and exports are attached, so a reviewer can confirm the evidence matches what was run. A report without hashes is not evidence.
+
 ### 30.4 Errors and limits
 
 Labs on shared benches collide; book the synthetic range.
+
+Lena books ABP's bench range for each lab run on the shared calendar, with the release under test in the booking. Two teams once ran different builds on the same bench at overlapping times, and their logs became impossible to separate. Since then, a lab run without a booking does not count as release evidence, and the bench is reset to a known state before each booked run. Booking takes minutes.
 
 ### Practice note
 
@@ -2126,6 +2162,8 @@ Keep a sealed directory of synthetic fixtures with known expected decisions. Lab
 
 
 Independent runners record the pass. Safety failure stops the lab and opens a blocker — no continue to gather data. Lab result logs are evidence; retain them with the release tag.
+
+Lena's fixture set is sealed and hashed.
 
 ### Field note — independent green
 
@@ -2162,9 +2200,13 @@ You will (1) add idempotent finding upserts; (2) enforce schema validation on wr
 
 PUT /findings/{id} with full body; same id twice yields one row. Dedup fingerprints propose ids; humans confirm merges across different root causes.
 
+At ABP, finding ids come from the client on create and are reused on every retry, so a network failure mid-request cannot create a duplicate. Fingerprints suggest when two findings may be the same problem, but a person confirms any merge, because two findings on PLC-A can share a register and still have different causes. Merges are logged with reasons.
+
 ### 31.2 Validate on write
 
 Reject unknown fields and forbidden names; coerce severity through an enum. Validation errors return machine-readable codes.
+
+Lena's finding store at ABP rejects any record with an unknown field or a forbidden name, such as payload or password, and returns a code saying which field failed. Severity accepts only the agreed values. The same validator runs for interactive creates and bulk imports, a lesson learned after a trusted import path once let a password through in a notes field. Errors are documented with examples.
 
 ### 31.3 API versioning
 
@@ -2172,9 +2214,13 @@ Prefix /v1/; additive changes only within v1. Breaking changes require /v2/ and 
 
 > **Synthetic case — Ashford Batch Plant.** A mobile client sent risk_score; validator rejected it — empty scores stay out (Chapter 15).
 
+Lena's API for ABP has stayed on v1 so far. Lena publishes the additive-change rule in the API documentation, and continuous integration compares each new schema with the last release to catch removed or renamed fields. If a breaking change ever becomes necessary, v1 will keep running alongside v2 for an announced period, so mobile clients and scanner imports can migrate without failing in the middle of a window.
+
 ### 31.4 Errors and limits
 
 Idempotency keys must not be derived from wall-clock alone.
+
+An idempotency key built from the current time changes between retries, so each retry looks like a new request and creates a duplicate. Lena's clients generate the key once per logical operation, store it with the pending request and reuse it until the server confirms success. The rule is documented with the API, and the client libraries enforce it, so individual developers cannot reintroduce the time-based shortcut. Reviews check this rule explicitly.
 
 ### Practice note
 
@@ -2187,6 +2233,8 @@ PATCH that allows severity changes without evidence references invites silent do
 
 
 Optimistic concurrency with ETags prevents lost updates that clear re-test pointers. Bulk deletes are forbidden without dual control. Document upsert semantics in OpenAPI so mobile clients do not invent retry ids.
+
+ETags are required on every finding update.
 
 ### Field note — bulk import incident
 
@@ -2227,9 +2275,13 @@ You will (1) set availability targets for OT security tools; (2) use retries wit
 
 Allow/deny path during windows: high availability. Coverage dashboards: best-effort. State the target; do not imply five-nines without a budget.
 
+At ABP, the deny path on the serial monitor must work throughout every window, while the coverage dashboard may be unavailable for an hour without harm. Lena writes both targets down with the budget behind each, so nobody assumes the dashboard needs the same care as enforcement, or that enforcement can tolerate the dashboard's outages. Targets are reviewed each year.
+
 ### 32.2 Retries
 
 Retries help flaky uploads of evidence but need a deadline so the trunk budget still holds. Cap total attempts.
+
+Lena's evidence uploader at ABP retries with increasing delays and gives up after a fixed number of attempts or a deadline, whichever comes first. Failed uploads stay queued on disk and are reported, so nothing is lost. Retries never run on the trunk to PLC-A, where they could crowd out control traffic and break the cycle budget. The limits are written in the permit.
 
 ### 32.3 Safe degradation
 
@@ -2237,9 +2289,13 @@ If the finding store is down, continue deny/allow locally and queue drafts on di
 
 > **Synthetic case — Ashford Batch Plant.** During a findings-store outage, Lena's laptop queue held drafts; the serial monitor kept denying out-of-range writes.
 
+Lena tests this degraded mode in Lab II on the bench. During a real outage of the finding store, drafts queued on Lena's laptop and the serial monitor kept denying out-of-range writes. When the queue reached its threshold, discovery stopped automatically and Lena was paged, so no scans ran while findings could not be recorded.
+
 ### 32.4 Errors and limits
 
 Retries against a rate-limited trunk can look like floods; coordinate budgets with the work permit.
+
+Lena's work permit at ABP states the maximum request rate for any assessment traffic on each trunk, including retries. If retries would exceed it, the tool waits instead. She coordinates with the site's monitoring team before a window, so a burst of retries is not mistaken for an attack and does not trigger an unnecessary incident response. Rates are set with the control engineers. They are reviewed yearly.
 
 ### Practice note
 
@@ -2288,9 +2344,13 @@ You will (1) write stop conditions as executable checks; (2) plan rollback of to
 
 Stop conditions are code: cycle-time canary, process-alarm feed, client kill-switch file, SIS fault input. Humans also call stop; software must not disagree with a human stop.
 
+At ABP, the serial monitor's stop logic reads the cycle-time canary, the process-alarm feed, a kill-switch file and SIS-B's fault input. Any one of them stops assessment activity at once. A human call to stop always wins, and the software has no setting that can override it or delay it until a running job finishes.
+
 ### 33.2 Rollback
 
 Pin releases; keep previous monitor binary signed. If a new build mis-evaluates allow-lists, roll back within minutes.
+
+Lena keeps the previous signed monitor build on the bench and in the window kit, so rollback is a tested command, not a rebuild. The rollback was rehearsed before the first plant window and is repeated after each major release. A rollback restores both the binary and the allow-list version that ran with it. Rollback restores the previous state within minutes. Both are pinned.
 
 ### 33.3 Tabletop
 
@@ -2298,9 +2358,13 @@ Walk a scenario: cycle time exceeds 50 ms at 02:40; who is called; what is said;
 
 > **Synthetic case — Ashford Batch Plant.** Tabletop found the kill-switch file path undocumented; runbook v1.4 fixed it before the next window.
 
+ABP's tabletops run each term with the shift lead present. The first tabletop found that the kill-switch file path was undocumented, and runbook v1.4 fixed it before the next window. Each scenario names who is called, what they are told and who may allow work to resume.
+
 ### 33.4 Errors and limits
 
 Resilience theatre is a binder nobody opens. Drill once per term.
+
+Lena's resilience drills at ABP happen once per term, use the real runbook and include at least one stop and one rollback. Each drill produces at least one runbook edit or a recorded reason why none was needed. A binder that has not been opened since the last audit is treated as untested, however complete it looks on the shelf. Drill results are filed with the runbook version. Gaps get owners.
 
 ### Practice note
 
@@ -2349,9 +2413,13 @@ You will (1) integrate monitor events into the finding store; (2) define idempot
 
 Deny/allow events: schema version, ids, UTC timestamps, source, fc, register, reason, policy version. Consumers ignore unknown fields; producers stay additive.
 
+Lena's event contract at ABP is versioned and published with fixtures for every reason code. Each event carries both the time it happened and the time it was received, plus the clock source. Producers may add fields but never remove or rename them within a version, so older consumers keep working. Fixtures are checked into the repository. Changes are reviewed.
+
 ### 34.2 Idempotent consumers
 
 Finding store keys processed events by event_id. Replaying the log must not create duplicate findings.
+
+Lena tests replay on the bench by feeding a full day's event log through the consumer twice and checking that the finding count does not change. The test caught a bug where events were keyed by timestamp instead of event_id, which duplicated three tickets during a replay storm before the fix landed. Replay tests run in continuous integration. Failures block the merge. The test runs nightly.
 
 ### 34.3 Contract tests
 
@@ -2359,9 +2427,13 @@ Fixture JSON for each reason code; consumer tests assert resulting ticket fields
 
 > **Synthetic case — Ashford Batch Plant.** A replay storm duplicated three tickets until event_id idempotency landed.
 
+Lena's contract tests run on every pull request and on a schedule. They use one fixture for each reason code and assert the ticket fields the consumer should create, such as asset, technique and severity. A scheduled run against staging catches producer changes even when no pull request is open, so drift is found before a window rather than during one.
+
 ### 34.4 Errors and limits
 
 Clock skew muddies timelines; prefer event time plus receive time.
+
+Lena's timeline view at ABP shows event time and receive time side by side, so a reader can see when a device clock is wrong. Lab II later injected a 90-second skew on PLC-A and found that two events were mis-ordered in the dossier until an offset correction was applied. Clock sources are recorded in each event for exactly this reason. Lena keeps clocks synchronised where possible. Drift is alarmed.
 
 ### Practice note
 
@@ -2374,6 +2446,8 @@ Events that fail validation go to a dead-letter queue with an alert. Operators r
 
 
 Contract tests run on a schedule against staging fixtures even when no PR is open, catching silent producer drift. Dead-letter age is an SLO chart beside deny-path latency.
+
+ABP runs a schema drill each term. Drill results are recorded.
 
 ### Field note — poison quarantine
 
