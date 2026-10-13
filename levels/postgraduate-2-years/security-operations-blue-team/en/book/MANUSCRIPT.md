@@ -1,7 +1,7 @@
 # Security Operations and Blue Team: Postgraduate Course
 
 - Language: English (`en`); course 153, Postgraduate course (2 years).
-- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; Four offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; four offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: experienced practitioners who lead or shape security operations and must make, evaluate and defend SOC decisions.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: monitor and respond only on systems you are authorised to defend; no exploit code, no payloads, no attack procedures and no instructions for evading detection. Detections are taught from the defender's side using synthetic telemetry. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -44,15 +44,15 @@ You will (1) frame SOC decisions under uncertainty with explicit costs; (2) comp
 
 ### 1.1 Decisions under uncertainty
 
-**Daniel Okoro** leads the SOC of the fictional **Meridian Health Insurance** and studies on a postgraduate programme at the fictional **Hollins College**, tutored by **Prof. Miriam Achebe**. Every night his analysts decide whether to contain, monitor or close alerts without knowing for certain what is happening. Postgraduate practice makes those decisions explicit.
+**Daniel Okoro** leads the SOC of the fictional **Meridian Health Insurance** and studies on a postgraduate programme at the fictional **Hollins College**, tutored by **Prof. Miriam Achebe**. Every night his analysts decide whether to contain, monitor or close alerts without knowing for certain what is happening. Postgraduate practice makes those decisions explicit. The contractor-account alert that opens this book is the first such decision: at 23:40, with a 30% belief that the export was malicious, the night team had to choose between stopping a legitimate batch job and risking a large disclosure of health data. Daniel's programme asks him to write down how that choice was made.
 
 ### 1.2 The case
 
-At 23:40 an alert reports a contractor account exporting claims records from an unusual address. Analysts estimate a 30% chance it is malicious. Disabling the account would stop a contractor's legitimate batch job; waiting risks a large disclosure of health data.
+At 23:40 an alert reports a contractor account exporting claims records from an unusual address. Analysts estimate a 30% chance it is malicious. Disabling the account would stop a contractor's legitimate batch job; waiting risks a large disclosure of health data. The analysts' 30% estimate came from what they could see at that moment: the address was unusual, but the account belonged to a contractor that did run batch exports. Nobody could reach the contractor at that hour, which is why the decision had to be made on partial evidence rather than after a phone call.
 
 ### 1.3 Expected cost
 
-Each option has a cost if the activity is malicious and a cost if benign. Multiplying by probabilities and summing gives an expected cost. It does not predict what will happen; it shows which option is least costly on average given current beliefs.
+Each option has a cost if the activity is malicious and a cost if benign. Multiplying by probabilities and summing gives an expected cost. It does not predict what will happen; it shows which option is least costly on average given current beliefs. For the contractor alert, the costs differ sharply by option. Containing a benign job costs a delayed batch and an apology; closing a malicious export costs a disclosure of health records. The lab sets each cost from Meridian's own estimates, so the calculation shows how the team's beliefs and values combine, not an objective price of harm.
 
 ### Lab — comparing response options
 
@@ -84,15 +84,15 @@ p(malicious)=0.30 -> lowest expected cost: contain now (disable account)
 
 ### 1.4 Reading the result
 
-At a 30% chance of malice, containing now has an expected cost of 11.6k, against 42.4k for monitoring and 180k for closing. At 5%, monitoring becomes cheaper. The best choice depends on the probability, so better evidence is worth gathering quickly.
+At a 30% chance of malice, containing now has an expected cost of 11.6k, against 42.4k for monitoring and 180k for closing. At 5%, monitoring becomes cheaper. The best choice depends on the probability, so better evidence is worth gathering quickly. This is why Daniel's analysts kept investigating after containing at 23:52. If evidence had lowered the probability well below 30%, monitoring would have become the cheaper option and the account could have been restored. The contractor's report the next morning ended the uncertainty, but the decision was made, and is judged, on the 30% known at the time.
 
 ### 1.5 Beyond numbers
 
-Costs of health-data disclosure include regulatory, contractual and human harm that is hard to price. Decisions also respect legal duties that are not trade-offs. Expected cost informs judgement; it does not replace it.
+Costs of health-data disclosure include regulatory, contractual and human harm that is hard to price. Decisions also respect legal duties that are not trade-offs. Expected cost informs judgement; it does not replace it. In the contractor case, a disclosure would have harmed policyholders whose health data was exposed, in ways a figure of 180k cannot capture, and Meridian's duty to protect that data does not depend on the arithmetic. Daniel uses the numbers to check that the choice was reasonable, then asks whether any duty points the other way.
 
 ### 1.6 Recording decisions
 
-The on-call manager logs the decision, the probability estimate, the evidence and who decided. Reviewers can later judge the decision on what was known, not on hindsight.
+The on-call manager logs the decision, the probability estimate, the evidence and who decided. Reviewers can later judge the decision on what was known, not on hindsight. For the contractor incident, the record shows containment at 23:52, the 30% estimate, the unusual address as evidence and the on-call manager as decider. When the contractor later confirmed phished credentials, nobody claimed the analysts had known; the record showed they acted on cost, which protects good decisions that might have turned out differently. Reviews of benign cases use the same record format.
 
 ### Worked example
 
@@ -130,31 +130,31 @@ You will (1) survey current SOC practice and its tensions; (2) relate practice t
 
 ### 2.1 The modern SOC
 
-Current SOCs combine SIEM or data platforms, endpoint detection, identity analytics, case management and automation. Many use managed services for some hours or functions. Knerler, Parker and Zimmerman (2022) describe eleven strategies covering mission, authority, structure, staffing, response, intelligence, data, tools, communication, measurement and expansion.
+Current SOCs combine SIEM or data platforms, endpoint detection, identity analytics, case management and automation. Many use managed services for some hours or functions. Knerler, Parker and Zimmerman (2022) describe eleven strategies covering mission, authority, structure, staffing, response, intelligence, data, tools, communication, measurement and expansion. Meridian's SOC uses most of these components but staffs only daytime hours, which the contractor incident exposed. The eleven strategies give Daniel a checklist for comparing Meridian with others in the sector, and later for choosing among night-coverage options.
 
 ### 2.2 Detection engineering
 
-Detections are increasingly managed as code in shared formats such as Sigma, mapped to MITRE ATT&CK and tested before release. This shifts SOCs from buying content to engineering it.
+Detections are increasingly managed as code in shared formats such as Sigma, mapped to MITRE ATT&CK and tested before release. This shifts SOCs from buying content to engineering it. At Meridian, the claims-export rule that fired on the contractor account is now kept in version control with a Sigma description and a mapping to ATT&CK, and every change is tested on stored alerts before release. That practice lets Daniel show the board which techniques his team covers and which it does not, and it is what makes tested coverage measurable later. Rules bought from vendors are reviewed in the same way before they are switched on.
 
 ### 2.3 Alert overload
 
-Studies continue to report alert fatigue and benign triggers (Alahmadi et al., 2022). Automation and better context are common responses, with mixed results.
+Studies continue to report alert fatigue and benign triggers (Alahmadi et al., 2022). Automation and better context are common responses, with mixed results. Meridian's own alert queue shows the pattern: many claims-access flags turn out to be benign triggers caused by project work, like the handler assigned 900 legacy claims. Daniel's response combines better context, such as assignment data as enrichment, with automation only where the decision is simple. His later critique of the Alahmadi paper led him to separate benign triggers from false positives in closure codes, so the two can be counted apart.
 
 ### 2.4 Managed detection and response
 
-Outsourcing night or tier-1 work gives coverage but risks losing local knowledge. Contracts need clear escalation, data access and quality measures.
+Outsourcing night or tier-1 work gives coverage but risks losing local knowledge. Contracts need clear escalation, data access and quality measures. For Meridian, this risk shaped the choice of a hybrid night model rather than full outsourcing. The managed provider handles tier-1 triage, while escalation goes to Meridian's own on-call engineers who know the claims system and the contractors. The contract names escalation targets, data access and quality reviews, and the first night P1 tested the runbook. Gaps in the provider's escalation notes were fixed in the runbook template rather than left to goodwill.
 
 ### 2.5 Maturity assessment
 
-The SOC-CMM (van Os, 2016) lets SOCs self-assess across business, people, process, technology and services. Meridian's last assessment showed strong tooling but weak service definitions.
+The SOC-CMM (van Os, 2016) lets SOCs self-assess across business, people, process, technology and services. Meridian's last assessment showed strong tooling but weak service definitions. The weak service definitions found by the assessment led directly to Daniel's service catalogue, which lists what the SOC provides to each business unit with scope and service levels. Meridian's next assessment will show whether the catalogue closed that gap. Using the same model each time keeps the comparison fair across years and gives the board a familiar format for progress. Daniel files the assessment evidence so the next assessor can check it.
 
 ### 2.6 Regulation
 
-Health insurers face data protection and sector regulation; incident reporting timelines shape SOC procedures.
+Health insurers face data protection and sector regulation; incident reporting timelines shape SOC procedures. For Meridian, the contractor export was a possible disclosure of health data, so legal and the data protection officer had to be informed quickly and the time of awareness recorded. Procedures name who decides whether a case is notifiable and how the SOC supports that decision with facts. The partner breach later in the book followed the same path, and the business request to delay notification was refused because these duties do not bend to a product launch.
 
 ### 2.7 Comparing with peers
 
-Daniel joins a sector forum where SOC leads share anonymised practices and metrics.
+Daniel joins a sector forum where SOC leads share anonymised practices and metrics. The forum's comparisons are anonymised, so Daniel learns from patterns rather than from named companies. It was through the forum that he noticed two peers had service catalogues while Meridian did not, which became one of his first improvements. He shares Meridian's own figures on the same basis, after checking with the CISO what may be disclosed. The forum also gives him peers to ask when a decision has no clear precedent at Meridian.
 
 ### Threat-informed defence
 
@@ -196,15 +196,15 @@ You will (1) use specialist evidence such as access logs, peer baselines and bus
 
 ### 3.1 Specialist evidence
 
-Some SOC questions need evidence beyond network and endpoint logs: application access logs, HR role data and business workload. At Meridian, claims-system logs record each record a handler opens.
+Some SOC questions need evidence beyond network and endpoint logs: application access logs, HR role data and business workload. At Meridian, claims-system logs record each record a handler opens. These sources answer questions that endpoint telemetry cannot, such as whether a handler's access matched assigned work. Using them needs agreement from the system owners and HR, and a clear purpose recorded before analysis begins. At Meridian, access to claims logs for monitoring was agreed with the claims system owner, HR and staff representatives, with the purpose written into the insider-risk policy before any baseline was computed.
 
 ### 3.2 Insider risk
 
-Insurers worry about staff viewing records without business need, for curiosity or fraud. Monitoring such access must be fair: people are compared with peers doing similar work, not with the whole company.
+Insurers worry about staff viewing records without business need, for curiosity or fraud. Monitoring such access must be fair: people are compared with peers doing similar work, not with the whole company. At Meridian, claims handlers in different teams have very different workloads, so a company-wide threshold would flag busy teams and miss unusual individuals in quiet ones. Peer comparison makes the baseline fair to each team, and the fairness policy decides who may see a flag and when. At Meridian, each peer group is one claims team.
 
 ### 3.3 Peer baselines
 
-A peer-group median is robust to one unusual person. Comparing each handler's weekly views with their team's median highlights unusual workloads.
+A peer-group median is robust to one unusual person. Comparing each handler's weekly views with their team's median highlights unusual workloads. Meridian's lab computes a weekly median of record views for each team and divides each handler's views by it, so a ratio near 1 means typical workload. A ratio well above that is a flag for review. Because the median ignores a single extreme value, the person being flagged cannot raise their own team's baseline enough to hide, and a quiet week for one colleague does not make everyone else look busy.
 
 ### Lab — peer comparison
 
@@ -237,15 +237,15 @@ team-B h15 views=  131 peer median=  128 ratio=1.02
 
 ### 3.4 Reading the result
 
-In team A, h04 viewed 1,260 records against a peer median of 410 — a ratio of 3.07, flagged for review. All other handlers in both teams are within 0.92–1.05 of their medians. Team B's lower volumes do not distort team A's comparison because each team has its own baseline.
+In team A, h04 viewed 1,260 records against a peer median of 410 — a ratio of 3.07, flagged for review. All other handlers in both teams are within 0.92–1.05 of their medians. Team B's lower volumes do not distort team A's comparison because each team has its own baseline. The result is a single flag, not a finding about h04's conduct. The review then looks for a business reason, which in this case was the assignment of 900 legacy claims for a migration project.
 
 ### 3.5 Interpreting outliers
 
-A flag is a question, not an accusation. High volume may reflect assignment to a backlog, a special project or a data-quality task.
+A flag is a question, not an accusation. High volume may reflect assignment to a backlog, a special project or a data-quality task. At Meridian, h04's flag turned out to be a migration project, and the assignment table showed every viewed record was assigned. The reviewer recorded that explanation and closed the flag without telling h04's manager, as the fairness policy requires. Adding assignment data as enrichment means similar project work will be explained before a reviewer ever sees it.
 
 ### 3.6 Fairness and privacy
 
-Insider-risk monitoring is governed by policy agreed with HR, legal and staff representatives. Reviews are done by a small, trained group; managers are not told of flags unless review finds a concern.
+Insider-risk monitoring is governed by policy agreed with HR, legal and staff representatives. Reviews are done by a small, trained group; managers are not told of flags unless review finds a concern. In h04's case, the review group checked the assignment table and closed the flag; the manager was never told. Audit of the reviewers' own searches shows that the access granted for monitoring is used only for it. Staff representatives receive annual figures on flags and outcomes, which lets them check that monitoring falls fairly across teams.
 
 ### Worked example
 
@@ -283,31 +283,31 @@ You will (1) analyse SOC risk decisions with ethical frameworks; (2) balance sec
 
 ### 4.1 Risk and ethics together
 
-SOC decisions are risk decisions with ethical content: monitoring staff, sharing data with partners and choosing whom to notify after a breach.
+SOC decisions are risk decisions with ethical content: monitoring staff, sharing data with partners and choosing whom to notify after a breach. At Meridian these choices are concrete: whether to monitor claims handlers' record access, what to share with a partner during an investigation, and when to notify policyholders after the partner breach. Each affects people who are not in the room when the decision is made, so the SOC records how their interests were weighed. Daniel's programme treats these as part of SOC work, not as matters for legal alone.
 
 ### 4.2 Ethical lenses
 
-Consequences ask which choice produces the least harm. Duties ask what obligations apply regardless of outcome, such as honesty to affected people. Fairness asks whether burdens fall equally. Using several lenses reveals considerations one would miss.
+Consequences ask which choice produces the least harm. Duties ask what obligations apply regardless of outcome, such as honesty to affected people. Fairness asks whether burdens fall equally. Using several lenses reveals considerations one would miss. For the keystroke-timing proposal, the consequence lens asked whether it would reduce account sharing; the duty lens asked whether staff had been told; the fairness lens asked whether claims staff alone would bear an intrusive measure. Together they supported the ethics review's rejection in favour of device and session checks, which meet the same purpose with less intrusion.
 
 ### 4.3 Business pressure
 
-After the contractor incident, a business manager asks the SOC to delay notifying affected policyholders until after a product launch. Legal duties and honesty make that unacceptable; Daniel escalates to the CISO and the data protection officer.
+After the contractor incident, a business manager asks the SOC to delay notifying affected policyholders until after a product launch. Legal duties and honesty make that unacceptable; Daniel escalates to the CISO and the data protection officer. Daniel's escalation is recorded with the request, the reason it was refused and who was informed. The CISO and the data protection officer then decide the notification timing on legal grounds, and the business manager is told why. The record protects the SOC if the request is later disputed, and shows that a delay requested for commercial reasons was not left to the SOC to grant or refuse alone.
 
 ### 4.4 Employee trust
 
-Heavy-handed monitoring can damage trust and reporting. Transparent policies, proportionate monitoring and fair review keep trust.
+Heavy-handed monitoring can damage trust and reporting. Transparent policies, proportionate monitoring and fair review keep trust. Meridian's insider-risk policy was written with staff representatives, which made it easier for claims handlers to accept peer comparison. If staff believed every view was watched by managers, they might stop reporting suspicious requests, which is one of the SOC's best sources of insider-risk leads. Trust is therefore part of detection, not just a matter of goodwill. Annual figures on flags shared with staff representatives support that trust.
 
 ### 4.5 Safeguards
 
-Meridian's safeguards: written purpose for each monitoring use, minimum access for reviewers, audit of SOC searches, and an ethics review for new monitoring of people.
+Meridian's safeguards: written purpose for each monitoring use, minimum access for reviewers, audit of SOC searches, and an ethics review for new monitoring of people. These safeguards were tested when the keystroke-timing monitor was proposed: the written purpose, account sharing, was examined by the ethics review and found to be achievable by less intrusive means. Audit of SOC searches also means that if an analyst browsed records out of curiosity, the SOC's own monitoring would show it. Each safeguard has an owner and is reviewed yearly.
 
 ### 4.6 Third parties
 
-Contractors and partners have access too; contracts set their security obligations and the SOC's rights to monitor and investigate.
+Contractors and partners have access too; contracts set their security obligations and the SOC's rights to monitor and investigate. The partner case later in the book depended on this: the contract's incident clause gave Meridian the right to ask for the partner's evidence, while Meridian could not see the partner's internal systems itself. Contractor contracts now also require 24/7 contacts, a change that came from the contractor-account incident. Daniel checks each new contract's security clauses with procurement before signing. The partner breach relied on both clauses at once.
 
 ### 4.7 Accountability
 
-Decisions with ethical weight are recorded with the reasoning, so they can be examined later.
+Decisions with ethical weight are recorded with the reasoning, so they can be examined later. Daniel's records of the keystroke-timing rejection and the refused notification delay both state the decision, the lenses applied, the people consulted and the alternative chosen. If a regulator or an employee later questions either decision, the record shows that it was reasoned, not improvised, and who was accountable for it. The same record format is used for decisions to monitor and for decisions not to.
 
 ### Speaking up
 
@@ -349,31 +349,31 @@ You will (1) generate alternative designs for SOC coverage; (2) evaluate in-hous
 
 ### 5.1 The design question
 
-Meridian's SOC is staffed 07:00–19:00; nights rely on on-call engineers. The contractor incident at 23:40 was caught only because the on-call engineer was awake. The board asks for 24/7 coverage options.
+Meridian's SOC is staffed 07:00–19:00; nights rely on on-call engineers. The contractor incident at 23:40 was caught only because the on-call engineer was awake. The board asks for 24/7 coverage options. The question therefore is not whether to cover nights but how. Daniel frames it as a choice among options, each scored against criteria agreed with the CISO, so the board can see why one is recommended and what it would cost. He sets the decision and its success measures down before scoring, so that the criteria cannot be adjusted after the preferred option is known.
 
 ### 5.2 Alternatives
 
-Option A: hire for in-house 24/7 (five more analysts). Option B: managed detection and response for nights. Option C: hybrid — managed tier-1 at night with in-house escalation and an automated containment playbook for high-confidence alerts.
+Option A: hire for in-house 24/7 (five more analysts). Option B: managed detection and response for nights. Option C: hybrid — managed tier-1 at night with in-house escalation and an automated containment playbook for high-confidence alerts. Each option answers the contractor incident differently. A gives Meridian analysts at 23:40 every night; B gives a provider who may not know which contractors run batch jobs; C gives a provider for first triage, Meridian's own engineers for decisions, and automation that can act within seconds on alerts above a confidence threshold. The automated playbook is limited to suspending export rights, not whole accounts.
 
 ### 5.3 Criteria
 
-Detection quality, response speed, cost, local knowledge, data control and resilience. Each is weighted with the CISO.
+Detection quality, response speed, cost, local knowledge, data control and resilience. Each is weighted with the CISO. Weighting with the CISO makes the trade-offs explicit. Data control matters more at a health insurer than at many firms, because policyholder records must stay within agreed processing; local knowledge matters because many alerts depend on knowing which contractors work which hours. Daniel records the agreed weights in the board paper before any option is scored, so nobody can say the weights were chosen to favour a result.
 
 ### 5.4 Scoring
 
-A scores high on knowledge and control but high cost and hiring risk; B is cheapest but weakest on knowledge; C balances them.
+A scores high on knowledge and control but high cost and hiring risk; B is cheapest but weakest on knowledge; C balances them. Each score has a written reason in the board paper: A's hiring risk comes from the difficulty of recruiting five analysts for nights, and B's weakness on knowledge comes from the provider not knowing Meridian's contractors and claims system. The reasons let the board challenge a score instead of the whole recommendation. A balanced score for C reflects that its weaknesses can be managed with quality reviews and automation limits.
 
 ### 5.5 Sensitivity
 
-Daniel checks whether the recommendation changes if weights shift. C stays best unless cost weight is doubled, when B wins narrowly. The recommendation is therefore robust to reasonable disagreement.
+Daniel checks whether the recommendation changes if weights shift. C stays best unless cost weight is doubled, when B wins narrowly. The recommendation is therefore robust to reasonable disagreement. The sensitivity check answers the board's obvious question: what if you weighted cost differently? Showing that C survives most plausible changes, and naming the one change under which B wins, makes the recommendation honest about where it is fragile. If the board cares mostly about cost, it can choose B knowing the trade-off it is accepting in local knowledge and escalation quality.
 
 ### 5.6 Risks of C
 
-Managed analysts may escalate too much or too little; automation could wrongly disable accounts. Mitigations: quality reviews, escalation targets, automation limits.
+Managed analysts may escalate too much or too little; automation could wrongly disable accounts. Mitigations: quality reviews, escalation targets, automation limits. Daniel's success measures for C turn these risks into numbers the board can check after six months: escalation precision above 50%, and no wrongful automated containments of critical accounts. The automation is limited to suspending export rights, not disabling accounts, so a wrong trigger disrupts less. Quality reviews sample the provider's closed alerts each month. The board paper names an owner for each mitigation.
 
 ### 5.7 Presenting
 
-The board paper shows options, scores, sensitivity and risks on two pages.
+The board paper shows options, scores, sensitivity and risks on two pages. Two pages force Daniel to choose what matters: the board sees each option's score, how the recommendation holds when weights change, and the risks of C with mitigations. Supporting detail, such as the scoring reasons, sits in an appendix for members who want it. The board chose C with a six-month review, and the paper's success measures became the review's criteria. The appendix also lists the scoring reasons and the sensitivity table.
 
 ### Stakeholder views
 
@@ -415,15 +415,15 @@ You will (1) design a controlled evaluation of a SOC process change; (2) analyse
 
 ### 6.1 The change
 
-Daniel's team writes a new triage playbook for claims-export alerts that starts with three automated enrichment lookups — assignment data, contractor status and export destination — before analyst review.
+Daniel's team writes a new triage playbook for claims-export alerts that starts with three automated enrichment lookups — assignment data, contractor status and export destination — before analyst review. The three lookups answer the questions analysts ask most often on claims-export alerts: whether the records were assigned, whether the contractor is still active, and whether the export went to an expected destination. Putting the answers in front of the analyst before review is meant to shorten triage without changing who decides. The evaluation then tests whether that happened.
 
 ### 6.2 Evaluation design
 
-For four weeks, alerts are assigned alternately to the old and new playbook by alert number, so busy and quiet periods fall into both groups. Analysts rotate between playbooks. Sixteen alerts fall in each group.
+For four weeks, alerts are assigned alternately to the old and new playbook by alert number, so busy and quiet periods fall into both groups. Analysts rotate between playbooks. Sixteen alerts fall in each group. Assigning by alert number removes the team's choice of which alerts get the new playbook, which could otherwise favour easy alerts. Rotation spreads analyst skill across both groups. The design was written before the first alert was assigned, and the sample of 32 alerts was fixed by the four-week window rather than chosen after looking at results.
 
 ### 6.3 Measure
 
-Triage time in minutes from pickup to decision, plus decision accuracy checked by a senior analyst.
+Triage time in minutes from pickup to decision, plus decision accuracy checked by a senior analyst. Triage time is taken from case-system fields, so it does not depend on analysts' memory. The senior analyst checking accuracy reviews each decision against the evidence without knowing in advance which playbook was used, as far as the case notes allow. Measuring accuracy beside speed guards against a playbook that is faster only because it skips checks, which would show up as more wrong decisions in that group.
 
 ### Lab — bootstrap difference in medians
 
@@ -452,15 +452,15 @@ bootstrap 95% interval [3.5, 11.0]
 
 ### 6.4 Reading the result
 
-The median triage time fell from 24.5 to 17.5 minutes, a difference of 7.0. The bootstrap 95% interval for the difference is 3.5 to 11.0 minutes, which excludes zero. Medians suit skewed times; bootstrapping gives an interval without assuming a distribution.
+The median triage time fell from 24.5 to 17.5 minutes, a difference of 7.0. The bootstrap 95% interval for the difference is 3.5 to 11.0 minutes, which excludes zero. Medians suit skewed times; bootstrapping gives an interval without assuming a distribution. With only 16 alerts per group, the interval is wide: the true saving could be as small as 3.5 minutes or as large as 11. Daniel reports the interval with the point estimate so that the board does not read 7.0 minutes as a precise figure. The three-month recheck adds alerts and should narrow it.
 
 ### 6.5 Accuracy
 
-The senior analyst found one wrong decision in each group, so faster triage did not cost accuracy in this sample.
+The senior analyst found one wrong decision in each group, so faster triage did not cost accuracy in this sample. One error per group in 16 alerts is too few to show that accuracy is equal; it shows only that the sample gives no sign of a loss. Daniel's report therefore says equal accuracy in this sample and plans to recheck error rates after three months of routine use, when more alerts will have been handled under the new playbook and novelty will have worn off.
 
 ### 6.6 Confounding
 
-Alternating assignment protects against time-of-day effects; rotation protects against one fast analyst using one playbook. Remaining risk: analysts knew which playbook they used and may have tried harder with the new one.
+Alternating assignment protects against time-of-day effects; rotation protects against one fast analyst using one playbook. Remaining risk: analysts knew which playbook they used and may have tried harder with the new one. Daniel states this risk in his report and plans a recheck after three months, when the new playbook has become routine and any novelty effect has faded. If the saving shrinks markedly by then, part of the original gain was probably effort rather than enrichment. Blinding analysts was not possible, because the enrichment results are visible on the screen, so the recheck is the best available control.
 
 ### Practical significance
 
@@ -506,31 +506,31 @@ You will (1) integrate the SOC with business units, IT, legal and HR; (2) define
 
 ### 7.1 The SOC in the organisation
 
-NIST CSF 2.0's Govern function places cybersecurity within enterprise risk management. The SOC is one part: it detects and responds, but depends on business units for context and on IT for action.
+NIST CSF 2.0's Govern function places cybersecurity within enterprise risk management. The SOC is one part: it detects and responds, but depends on business units for context and on IT for action. At Meridian, the SOC's place under Govern means that its risk reports go to the enterprise risk committee, not only to IT. The claims operations manager supplies context on assignment and workload; IT performs account actions; legal and the data protection officer decide on notification. The SOC coordinates these but owns only detection and investigation, which is why escalation paths matter as much as tools.
 
 ### 7.2 Service levels
 
-Daniel's service catalogue sets levels: P1 alerts acknowledged in 15 minutes, investigations started within 4 hours, monthly reports to each business unit.
+Daniel's service catalogue sets levels: P1 alerts acknowledged in 15 minutes, investigations started within 4 hours, monthly reports to each business unit. These levels came from the service catalogue Daniel drafted after comparing Meridian with forum peers. They also give the board measurable targets: the 15-minute P1 acknowledgement is the indicator that dipped in March and later recovered under the hybrid night model. Each level names who measures it and where it is reported. Each level is reported monthly to the business unit it serves, with misses explained.
 
 ### 7.3 Escalation paths
 
-For claims-system alerts, escalation goes to the claims operations manager for business context, to IT for account actions, to legal and the DPO for possible breaches, and to HR only when misconduct is suspected after review.
+For claims-system alerts, escalation goes to the claims operations manager for business context, to IT for account actions, to legal and the DPO for possible breaches, and to HR only when misconduct is suspected after review. The order protects staff: HR is involved only after review suggests misconduct, as with flags like h04's that turned out to be project work. In the partner case, escalation reached legal and the data protection officer early because health data might have been copied. The escalation runbook names a person and a deputy for each path, so nobody has to search for contacts at night.
 
 ### 7.4 Risk reporting
 
-The SOC reports risks in business terms to the enterprise risk committee: likelihood and impact of data disclosure, trends and treatment actions.
+The SOC reports risks in business terms to the enterprise risk committee: likelihood and impact of data disclosure, trends and treatment actions. For the contractor-account weakness, Daniel's report to the committee described the likelihood of a repeat, the possible disclosure of health data, and the treatment: the contractor directory, the confirmation request and the rule allowing immediate suspension of export rights. The committee tracks that treatment until the applied project reports its results, alongside other enterprise risks of similar size.
 
 ### 7.5 Hybrid model integration
 
-With the managed night service, integration includes data access agreements, an escalation runbook and a shared case system.
+With the managed night service, integration includes data access agreements, an escalation runbook and a shared case system. The provider's first night P1, a burst of failed logins to the claims portal, tested this integration. The runbook routed it to the on-call engineer, but the provider's note lacked the source network, so Daniel added that field to the escalation template. The shared case system meant both teams saw the same record, and the provider's quality was reviewed against the escalation precision target the board had set.
 
 ### 7.6 Change management
 
-New monitoring or response capabilities are introduced with communication to affected teams, training and feedback.
+New monitoring or response capabilities are introduced with communication to affected teams, training and feedback. When the automated suspension of contractor export rights was introduced, Daniel briefed procurement and contractor managers first, explaining that suspension covers only exports and is reviewed within four hours. Analysts were trained on the review step, and contractors' feedback after the first suspensions informed small changes. Introducing it silently would have made the first wrongful suspension look like an attack on contractors. Analysts practised the review step on test scenarios first.
 
 ### 7.7 Relationships
 
-Daniel meets each business unit lead quarterly; regular contact makes incident calls smoother.
+Daniel meets each business unit lead quarterly; regular contact makes incident calls smoother. These meetings paid off in the partner case: the claims operations manager already knew Daniel and could confirm within hours which weekend work had been approved. Without that relationship, the SOC would have waited for formal requests to move through several teams. Each meeting also lets business leads raise concerns about monitoring before they turn into complaints, which keeps insider-risk work acceptable to staff. Notes from each meeting record open requests and owners.
 
 ### Measuring integration
 
@@ -572,31 +572,31 @@ You will (1) handle ambiguous cases where evidence conflicts; (2) manage cases i
 
 ### 8.1 Ambiguity
 
-Difficult cases are those where evidence points in several directions, stakes are high and time is short. The SOC must decide without certainty and revise as evidence arrives.
+Difficult cases are those where evidence points in several directions, stakes are high and time is short. The SOC must decide without certainty and revise as evidence arrives. The partner case is Meridian's example: its own logs were consistent with approved overtime, while the partner's SOC suspected misuse, and policyholder health data might already be outside Meridian. Daniel's team had to act before knowing which story was true, using the expected-cost reasoning from the contractor incident and written hypotheses to guide what to collect next.
 
 ### 8.2 Case one: the partner
 
-A claims-processing partner reports that one of its staff may have copied Meridian policyholder data. Meridian's logs show the partner account accessed 2,300 records over a weekend, within its contract scope but at an unusual time.
+A claims-processing partner reports that one of its staff may have copied Meridian policyholder data. Meridian's logs show the partner account accessed 2,300 records over a weekend, within its contract scope but at an unusual time. The access sat within contract scope, so nothing in Meridian's logs proved wrongdoing; the unusual weekend timing and the partner's own report raised the question. Meridian could see what its systems recorded but not what happened to the data once the partner's staff had it. The case therefore depended on the partner's evidence and the contract's incident clause.
 
 ### 8.3 Conflicting evidence
 
-The partner says the weekend work was approved overtime; the partner's own SOC suspects misuse. Meridian cannot see the partner's internal systems.
+The partner says the weekend work was approved overtime; the partner's own SOC suspects misuse. Meridian cannot see the partner's internal systems. Daniel writes both explanations down as hypotheses and lists the evidence that would separate them: an overtime approval record from the partner's manager would support the first; an export copied to removable media would support the second. Meridian cannot gather the latter itself, so the request under the incident clause names exactly what the partner should provide and by when.
 
 ### 8.4 Actions
 
-Daniel's team preserves Meridian's logs, suspends the partner account's export rights pending review, informs the DPO and legal, and asks the partner for its evidence under the contract's incident clause.
+Daniel's team preserves Meridian's logs, suspends the partner account's export rights pending review, informs the DPO and legal, and asks the partner for its evidence under the contract's incident clause. Suspending export rights, not the whole account, follows the reasoning of the contractor incident: it limits further harm while leaving the partner's legitimate claims work running. Informing the DPO early starts the record of awareness time, which matters if the case becomes notifiable. The request for evidence cites the contract clause, so the partner knows its obligation and the deadline for meeting it.
 
 ### 8.5 Communicating uncertainty
 
-To the CISO, Daniel writes: "We know the account accessed 2,300 records within scope at unusual hours. We do not yet know whether data was copied. Likelihood of misuse: moderate, based on the partner SOC's concern. Next update: 18:00."
+To the CISO, Daniel writes: "We know the account accessed 2,300 records within scope at unusual hours. We do not yet know whether data was copied. Likelihood of misuse: moderate, based on the partner SOC's concern. Next update: 18:00." The message separates what is known from what is not, gives a likelihood with its basis, and sets a time for the next update. The CISO can act on it without having to ask what each phrase means. A fixed update time also stops repeated calls for news.
 
 ### 8.6 Revising
 
-The partner's evidence shows a USB copy of an export. The case becomes a confirmed breach; notification begins.
+The partner's evidence shows a USB copy of an export. The case becomes a confirmed breach; notification begins. Because export rights had already been suspended, the confirmed breach did not grow while the evidence was gathered. The awareness time recorded when the DPO was first informed allowed legal to calculate notification deadlines accurately. Daniel's earlier message to the CISO had said moderate likelihood, which the outcome did not contradict, and the review later judged the suspension a sound decision made before certainty.
 
 ### 8.7 Pressure
 
-Under pressure, teams jump to conclusions or freeze. Written hypotheses and update times keep thinking clear.
+Under pressure, teams jump to conclusions or freeze. Written hypotheses and update times keep thinking clear. In the partner case, Daniel's written hypotheses kept the team from settling on overtime simply because it was the comfortable explanation, and set update times stopped the team from waiting indefinitely for certainty. The CISO received updates on schedule even when there was little new, so leadership did not fill the silence with its own assumptions. The same habit applies on any night with a difficult alert.
 
 ### Regulators
 
@@ -638,11 +638,11 @@ You will (1) lead a SOC team through change; (2) provide assurance to executives
 
 ### 9.1 Leadership
 
-Leading a SOC means setting direction, protecting analysts from overload, developing people and representing the SOC to the organisation. Knerler, Parker and Zimmerman (2022) stress hiring and growing staff as a core strategy.
+Leading a SOC means setting direction, protecting analysts from overload, developing people and representing the SOC to the organisation. Knerler, Parker and Zimmerman (2022) stress hiring and growing staff as a core strategy. For Daniel, protecting analysts from overload meant pushing for the hybrid night model rather than adding night shifts to his daytime team. Developing people meant rotations into detection engineering, and representing the SOC meant the board paper and quarterly meetings with business leads. The March dip, when two analysts left, showed how much the service depends on people.
 
 ### 9.2 Assurance
 
-Executives and auditors ask: is the SOC working? Assurance answers with evidence: service-level performance, tested detection coverage, exercise results and incident outcomes.
+Executives and auditors ask: is the SOC working? Assurance answers with evidence: service-level performance, tested detection coverage, exercise results and incident outcomes. Daniel's half-year report to the audit committee uses two of these indicators, P1 acknowledgement and tested coverage of priority techniques, with incident outcomes alongside. When an auditor asked how coverage is tested, he could show the test records, which made the indicator credible. Assurance without records to back it is only a claim the committee has to trust.
 
 ### Lab — assurance indicators
 
@@ -668,19 +668,19 @@ Jun P1 acknowledged within 15 min: 21/22 = 95%  tested coverage: 68%
 
 ### 9.3 Reading the result
 
-P1 acknowledgement within 15 minutes rose from 85% in January to 95% by June, with a dip to 79% in March. Tested coverage of priority techniques rose steadily from 52% to 68%. The March dip coincided with two analysts leaving; the hybrid night model began in April.
+P1 acknowledgement within 15 minutes rose from 85% in January to 95% by June, with a dip to 79% in March. Tested coverage of priority techniques rose steadily from 52% to 68%. The March dip coincided with two analysts leaving; the hybrid night model began in April. The dip has a known cause and a known response, which is what an audit committee needs. Daniel does not claim the hybrid model caused the recovery, only that the two coincided; the six-month review is where that question will be examined.
 
 ### 9.4 Honest reporting
 
-Daniel reports the dip and its cause rather than averaging it away. Assurance that hides problems loses credibility when problems appear.
+Daniel reports the dip and its cause rather than averaging it away. Assurance that hides problems loses credibility when problems appear. In the half-year report, the March figure of 79% appears in the chart and the text, with the departure of two analysts as its cause and the hybrid night model as the response. Averaging the six months would have hidden a month in which nearly one P1 in five was acknowledged late. The committee asked about the dip, and Daniel's answer came from records rather than reassurance.
 
 ### 9.5 Culture
 
-Blameless reviews, time for learning and recognition of good escalations build a culture where analysts raise problems early.
+Blameless reviews, time for learning and recognition of good escalations build a culture where analysts raise problems early. At Meridian, good escalations are recognised in the monthly team meeting, including ones that turned out benign, such as the night P1 the on-call engineer judged needed no action. Reviews of the contractor and partner cases focused on decisions and information, not blame. Analysts who expect blame for a wrong call tend to escalate late or not at all, which is the opposite of what the SOC needs.
 
 ### 9.6 People development
 
-Each analyst has a development plan: training, rotation into detection engineering and mentoring.
+Each analyst has a development plan: training, rotation into detection engineering and mentoring. Daniel reviews each plan every six months with the analyst. Rotation into detection engineering lets analysts see how rules are written and tested, which improves their triage. His own plan includes mentoring a senior analyst toward team leadership, so the SOC does not depend on him alone. Plans are adjusted when someone leaves, as in March, so that remaining analysts are not simply given more of the same work.
 
 ### Managing the provider
 
@@ -722,31 +722,31 @@ You will (1) read SOC research papers critically; (2) assess methods, samples an
 
 ### 10.1 Why read research
 
-Research can test ideas SOCs adopt on faith. Daniel's programme asks students to critique three papers relevant to their work.
+Research can test ideas SOCs adopt on faith. Daniel's programme asks students to critique three papers relevant to their work. For Meridian, research matters when it challenges a practice the team takes for granted, such as counting every benign alert as a false positive. Daniel chose papers on analyst experience, false positives and alert ranking because each touches a decision his SOC makes every week. His critiques end with a concrete action or a reason for taking none, so the reading changes practice rather than only knowledge.
 
 ### 10.2 Paper one
 
-Kokulu et al. (2019) interviewed SOC staff and found mismatches between managers and analysts on issues such as metrics and automation. Strength: rich qualitative data from several SOCs. Limit: interview samples may not represent all SOCs.
+Kokulu et al. (2019) interviewed SOC staff and found mismatches between managers and analysts on issues such as metrics and automation. Strength: rich qualitative data from several SOCs. Limit: interview samples may not represent all SOCs. For Meridian, the paper's relevance is the mismatch on metrics: Daniel's managers value acknowledgement times, while his analysts may experience them as pressure that ignores difficult cases. His planned survey of his own analysts tests whether the mismatch exists at Meridian before changing any metric. A finding from other SOCs is a reason to ask, not an answer.
 
 ### 10.3 Paper two
 
-Alahmadi, Axon and Martinovic (2022) surveyed and interviewed SOC practitioners about false positives, finding many are benign triggers. Strength: distinguishes types of false positive. Limit: self-reported perceptions, not measured alert data.
+Alahmadi, Axon and Martinovic (2022) surveyed and interviewed SOC practitioners about false positives, finding many are benign triggers. Strength: distinguishes types of false positive. Limit: self-reported perceptions, not measured alert data. The distinction matched Meridian's experience directly: h04's flag was a benign trigger, a correct detection of activity that had a business reason. Daniel's critique concludes that Meridian will record benign triggers separately from false positives in closure codes. Because the paper measured perceptions, he will check his own closure data before changing any rule.
 
 ### 10.4 Paper three
 
-Hassan et al. (2019) proposed NoDoze, ranking alerts using provenance graphs, and evaluated it on enterprise data. Strength: quantitative evaluation. Limit: requires detailed provenance data many SOCs do not collect.
+Hassan et al. (2019) proposed NoDoze, ranking alerts using provenance graphs, and evaluated it on enterprise data. Strength: quantitative evaluation. Limit: requires detailed provenance data many SOCs do not collect. For Meridian, the method's provenance requirement is the obstacle: the SOC does not collect detailed process provenance across endpoints, so NoDoze could not be applied without new data collection. Daniel records the idea of ranking alerts by context as worth watching, and notes that Meridian's assignment enrichment is a much simpler step in the same direction. His critique states that a quantitative evaluation elsewhere does not transfer automatically to a different data set.
 
 ### 10.5 Critique structure
 
-Question, method, sample, findings, validity, relevance to practice and open questions.
+Question, method, sample, findings, validity, relevance to practice and open questions. Daniel applies the structure to each paper in the same order, which makes his three critiques comparable and shows where each is strong or weak. For Alahmadi et al., the validity point was that results are perceptions; for NoDoze, relevance to practice was limited by data Meridian lacks. The open questions in each critique became items he could test with Meridian's own data. Using one structure also makes it easy to see when a critique skips a step, such as validity.
 
 ### 10.6 Relating to Meridian
 
-Kokulu's mismatch finding prompts Daniel to survey his own analysts about metrics; Alahmadi's distinction informs how Meridian labels closed alerts.
+Kokulu's mismatch finding prompts Daniel to survey his own analysts about metrics; Alahmadi's distinction informs how Meridian labels closed alerts. Neither change is adopted on the papers' authority alone. The survey checks whether Kokulu's finding holds at Meridian, and the closure-label change will be followed by a look at Meridian's own closure data before rules are modified. Research suggests where to look; local evidence decides what to do. Daniel records both steps in his critique, so Prof. Achebe can see how each paper led to a specific action.
 
 ### 10.7 Avoiding cherry-picking
 
-Daniel searches for studies disagreeing with each paper's conclusions and notes them.
+Daniel searches for studies disagreeing with each paper's conclusions and notes them. For each paper he records at least one study that found differently or questioned the method, and states whether it changes his conclusion. This guards against choosing papers that confirm what he already believed, which is easy when the reading list is chosen by the reader. Prof. Achebe asks students to submit the disagreeing studies with their critiques. Where no disagreeing study could be found, he says so in the critique, rather than implying the conclusion is settled.
 
 ### Reading groups
 
@@ -788,31 +788,31 @@ You will (1) plan and execute an applied SOC improvement project; (2) measure ba
 
 ### 11.1 The project
 
-Daniel's applied project reduces time to contain compromised contractor accounts, the weakness exposed in chapter 1.
+Daniel's applied project reduces time to contain compromised contractor accounts, the weakness exposed in chapter 1. The contractor incident showed that containment depended on reaching contractor managers, which often failed at night. The project tests whether changes to contacts, confirmation and authority shorten that time without causing unfair disruption to contractors. Daniel sets the measures before starting, so the result can be judged against the six-month baseline rather than an impression. The project's scope is contractor accounts only; staff accounts follow the existing process.
 
 ### 11.2 Baseline
 
-Over the previous six months, four contractor compromises took a median of 3.5 hours from first alert to containment, mostly waiting for contractor managers to confirm activity.
+Over the previous six months, four contractor compromises took a median of 3.5 hours from first alert to containment, mostly waiting for contractor managers to confirm activity. Four cases make the baseline imprecise, and Daniel reconstructed it from tickets after the fact, which he later named as the main thing he would do differently. Still, the pattern was clear: most of the time was spent waiting for a contractor manager to answer. The interventions target that wait directly. A better baseline needs timestamps recorded as cases happen.
 
 ### 11.3 Interventions
 
-A contractor directory with 24/7 contacts; an automated step that sends the contractor's manager a confirmation request; and a rule allowing analysts to suspend contractor export rights immediately for high-severity alerts, with review within four hours.
+A contractor directory with 24/7 contacts; an automated step that sends the contractor's manager a confirmation request; and a rule allowing analysts to suspend contractor export rights immediately for high-severity alerts, with review within four hours. Each intervention targets the waiting time found in the baseline. The directory removes the search for a contact at night; the automated request reaches the manager without an analyst drafting a message; and the suspension rule lets analysts act before confirmation arrives. Limiting suspension to export rights and requiring review within four hours keep the authority proportionate to the uncertainty.
 
 ### 11.4 Stakeholders
 
-Procurement (contracts must require 24/7 contacts), contractor managers, IT and legal. Procurement adds a clause to new contracts.
+Procurement (contracts must require 24/7 contacts), contractor managers, IT and legal. Procurement adds a clause to new contracts. Each stakeholder had a stake in the design. Contractor managers needed to know what a confirmation request would look like and how quickly to answer; IT needed a way to suspend export rights alone; legal checked that suspension without notice fitted the contracts. Daniel met each group before launch, which made the first suspension less of a surprise to everyone involved. Legal checked the clause against existing contracts.
 
 ### 11.5 Risks
 
-Wrongful suspension disrupts contractor work; mitigated by fast review and limiting suspension to export rights, not all access.
+Wrongful suspension disrupts contractor work; mitigated by fast review and limiting suspension to export rights, not all access. The project counts wrongful suspensions as a measure, so the cost of the new rule is visible beside its benefit. Contractor managers can ask for immediate review, and every suspension is checked by a senior analyst within four hours. Limiting the action to exports means a wrongly suspended contractor can still do most of their work while the review takes place. This keeps the authority proportionate to the uncertainty at the moment of the alert.
 
 ### 11.6 Measurement
 
-Time to contain for contractor compromises and test scenarios; count of wrongful suspensions.
+Time to contain for contractor compromises and test scenarios; count of wrongful suspensions. Time to contain is measured from the first alert to the suspension of export rights, using case-system timestamps, the same definition as the baseline. Test scenarios are reported beside real compromises, because they are planned and may run faster. Wrongful suspensions are counted with their duration, so the cost of the new rule is visible next to its benefit. Daniel fixed these definitions before the first case under the new process.
 
 ### 11.7 Result
 
-Over the next four months, two real compromises and six test scenarios were contained in a median of 22 minutes. One wrongful suspension lasted 40 minutes before review restored access.
+Over the next four months, two real compromises and six test scenarios were contained in a median of 22 minutes. One wrongful suspension lasted 40 minutes before review restored access. The sample is small and mixes real cases with test scenarios, so Daniel describes the result as a large improvement on a small sample rather than a precise figure. The wrongful suspension shows the review step working; it also shows the real cost of acting early, which he reports rather than hides.
 
 ### Project governance
 
@@ -858,31 +858,31 @@ You will (1) review learning and outcomes across the programme; (2) transfer met
 
 ### 12.1 Looking back
 
-The programme took Daniel from explicit decision-making (chapter 1) through specialist evidence, ethics, design, evaluation, integration, difficult cases, assurance and research to an applied project.
+The programme took Daniel from explicit decision-making (chapter 1) through specialist evidence, ethics, design, evaluation, integration, difficult cases, assurance and research to an applied project. Each chapter added a method that the next used: the expected-cost reasoning from the contractor night reappeared in the partner case, peer baselines fed the fairness indicators, and the controlled evaluation of the triage playbook shaped how the applied project measured its result. Looking back lets Daniel see which methods he now uses without thinking and which still need practice.
 
 ### 12.2 Transferable methods
 
-Expected-cost reasoning, peer baselines, controlled evaluation with robust statistics, structured critique and honest assurance apply beyond claims and contractors.
+Expected-cost reasoning, peer baselines, controlled evaluation with robust statistics, structured critique and honest assurance apply beyond claims and contractors. Each has been used at Meridian outside its first setting: expected cost in the partner case, controlled evaluation for the managed provider's escalations, and honest assurance in the half-year report. What transfers is the discipline of stating beliefs, comparisons and uncertainty explicitly, not the particular numbers. The methods also give Daniel a shared language with the board, audit and legal, who meet the same reasoning in their own work.
 
 ### 12.3 Transfer example
 
-Daniel applies controlled evaluation to the managed provider's escalation quality, comparing escalations before and after a template change.
+Daniel applies controlled evaluation to the managed provider's escalation quality, comparing escalations before and after a template change. The comparison uses the same discipline as the triage evaluation: a defined measure, escalation precision and completeness of the provider's notes, collected the same way before and after the change. Because the template change followed the night P1 whose note lacked the source network, Daniel can check whether that gap closed. He notes that other changes at the provider during the same period could also affect the result.
 
 ### 12.4 Sustainability
 
-Improvements must survive staff changes: playbooks documented, owners named, metrics automated and reviews scheduled.
+Improvements must survive staff changes: playbooks documented, owners named, metrics automated and reviews scheduled. For the contractor project, this means the directory has an owner in procurement, the confirmation step is documented in the runbook, time to contain is reported automatically each month, and the suspension rule is reviewed yearly. If Daniel left Meridian, the improvement would continue without him. The same test is applied to the triage playbook and the service catalogue. Daniel lists each improvement with its owner, its documentation and its review date in a register that his successor would inherit.
 
 ### 12.5 Final review
 
-The programme's final review is a viva with Prof. Achebe and an external SOC leader. Questions probe judgement: "When would you not use expected cost?" "How would you know insider monitoring had become unfair?"
+The programme's final review is a viva with Prof. Achebe and an external SOC leader. Questions probe judgement: "When would you not use expected cost?" "How would you know insider monitoring had become unfair?" Both questions test whether Daniel understands the limits of his methods rather than only how to use them. An external SOC leader brings practical scepticism that a tutor alone might not, which is why the viva includes one. Daniel prepares by rereading his own decision records and the case reviews, since the examiners draw their questions from his submitted work.
 
 ### 12.6 Answers
 
-On fairness, Daniel cites indicators: rising flags concentrated in one team or role without business explanation, or complaints through staff representatives. Such signs trigger a policy review.
+On fairness, Daniel cites indicators: rising flags concentrated in one team or role without business explanation, or complaints through staff representatives. Such signs trigger a policy review. On expected cost, he answers that he would not rely on it when a legal duty settles the question, as when the business asked to delay notifying policyholders; there the duty decides, and costs only inform how to carry it out. Both answers name a concrete signal or limit rather than a general principle, which is what the examiners were looking for.
 
 ### 12.7 Development
 
-Daniel plans to mentor a senior analyst into team leadership and to present the contractor project at the sector forum.
+Daniel plans to mentor a senior analyst into team leadership and to present the contractor project at the sector forum. Mentoring a senior analyst addresses the risk shown in March, when the SOC's performance depended on a few people. Presenting the contractor project at the forum returns something to the peers whose comparisons helped him start. Both plans have dates and are recorded with his own development plan, which Prof. Achebe reviews at the end of the programme. He also plans to repeat the analyst survey a year later to see whether metrics changes helped.
 
 ### Feedback from the team
 
