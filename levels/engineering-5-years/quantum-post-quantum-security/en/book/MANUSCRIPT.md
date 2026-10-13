@@ -443,6 +443,8 @@ You will (1) reason about rare events such as decryption failures; (2) estimate 
 
 Lattice KEMs have a tiny probability that decapsulation produces the wrong key. FIPS 203's parameter sets keep it extremely small — around 2^-139 for ML-KEM-512 and smaller for the larger sets — far below any rate an engineer will observe. The expected number of failures in *N* operations is *N*·*p*. Lab P shows why a probability like 2^-20, fine for many engineering purposes, would be unacceptable for a KEM used billions of times, while 2^-139 is negligible at any scale.
 
+The decision rule is simple: multiply by the largest number of operations the system will ever perform and check that the product stays far below one.
+
 ### 7.2 Practical activity — Lab P
 
 ```python
@@ -466,23 +468,33 @@ p = 2^ -139, 1e+09 operations -> expected failures 1.435e-33
 p = 2^ -139, 1e+15 operations -> expected failures 1.435e-27
 ```
 
+Read the six lines in pairs. At 2^-20, a billion operations already produce nearly a thousand expected failures, so such a scheme would fail visibly every day at BPA's scale. At 2^-40, a billion operations look safe, but a quadrillion, roughly the global volume of a widely deployed protocol over some years, gives about 900. At 2^-139 even the larger count leaves an expected 1.4 × 10^-27, which is why decryption failure is not a design concern for ML-KEM at all. Extend the loop with 1e18 operations and confirm the conclusion does not change.
+
 ### 7.3 Confidence intervals
 
 When measuring handshake failure rates after enabling a hybrid group, report an interval, not just a point. For small proportions use the Wilson interval (Chapter 37's canary lab uses it). The *rule of three* gives a quick bound: if zero failures occur in *n* trials, the 95% upper bound on the rate is about 3/*n*.
+
+The rule follows from requiring that zero failures in n trials has at most a 5% chance: (1 − p)^n = 0.05 gives p ≈ 3/n. It holds only when trials are independent; failures caused by one broken proxy cluster at one site, so a canary spread across several sites gives a more honest bound than the same count from one.
 
 ### 7.4 Statistical versus cryptographic security
 
 A statistical test that finds no failures in a million runs says only that the rate is probably below 3 × 10^-6. Cryptographic security levels such as 2^-128 cannot be established by testing; they come from analysis. Engineers test to find bugs, not to prove security.
 
+To show a rate below 2^-128 by testing, one would need around 10^39 trials, far beyond any computer. Tests are still worth running, because an implementation bug usually produces failures at a rate of one in a few hundred or thousand, which a modest test campaign catches quickly. A clean test run therefore rules out gross bugs while leaving the security claim to the published analysis.
+
 ### 7.5 Worked example
 
 BPA's pilot sees 0 handshake failures in 12,000 hybrid connections at one site. The rule of three bounds the failure rate below 2.5 × 10^-4 (95%). Is that good enough to roll out to 2 million daily connections? At the bound, up to 500 failures per day could still occur — so the gate needs a larger canary before full rollout.
+
+To bring the bound down to about one failure per day at 2 million connections, the rate must be shown below 5 × 10^-7, which by the rule of three needs about 6 million clean connections. BPA can reach that by widening the canary to several sites for a few days, which also tests different middleboxes.
 
 ### 7.6 Common errors and limits
 
 - "No failures observed" interpreted as "rate is zero".
 - Confusing a decryption-failure probability with a security level.
 - Ignoring that operations multiply: rare per event is not rare per year.
+
+The first error leads teams to declare success after a small pilot, as in the worked example where zero failures in 12,000 still allowed 500 a day. The second confuses two numbers: ML-KEM's 2^-139 failure probability is a reliability figure, while category 3 describes the work an attacker needs. The third is fixed by multiplying per-event rates by annual volume before judging them.
 
 ### Exercises
 
@@ -509,27 +521,39 @@ You will (1) relate algorithm performance to processor features such as vector u
 
 Lattice schemes spend most of their time in polynomial multiplication via the number-theoretic transform and in hashing with SHAKE. Vector instructions (AVX2 on x86, NEON on ARM) parallelize coefficient operations, making ML-KEM very fast on servers. Constrained microcontrollers without vector units are slower but often still acceptable; memory, not speed, is usually the limit there.
 
+For BPA this means the TLS servers will spend more time sending bytes than computing; benchmark results that show ML-KEM key generation faster than X25519 on a server do not carry over to a crane controller.
+
 ### 8.2 Side channels
 
 Execution time, cache access patterns and power draw can reveal secrets if they depend on secret values. The "KyberSlash" findings showed that a division by a constant whose dividend depended on secret data leaked timing in several Kyber implementations ([Bernstein et al. 2024](https://eprint.iacr.org/2024/1049)). Constant-time coding — no secret-dependent branches, memory indices or variable-time instructions — is a requirement, not an optimization.
+
+The fix in that case was to replace the division with a multiplication and shift that take the same time for every input. Reviews look for the same pattern elsewhere: any branch, table lookup or division whose input depends on a key or a decrypted value. Tools that run code with secret-marked inputs and flag such dependencies help, but they need to be run on the compiled binary, because compilers can reintroduce branches that the source did not have.
 
 ### 8.3 Memory and code size
 
 ML-DSA signing needs several kilobytes of working memory; SLH-DSA signatures are large but keys are tiny; stateful hash-based schemes need non-volatile state that must never roll back. On a gate scanner with 64 KB of RAM, the choice of signature verification algorithm is an architecture decision.
 
+An ML-DSA-44 verifier needs the 1,312-byte public key, the 2,420-byte signature and a working area for the matrix expansion, which some implementations keep small by generating rows on demand. A verifier that fits by recomputing data trades speed for memory, which a scanner verifying one update per month can easily afford. The architecture review records which trade-off was chosen and why.
+
 ### 8.4 HSMs and secure elements
 
 Private keys at BPA's certificate authority live in an HSM. Migration needs HSM firmware that supports ML-DSA and possibly LMS/XMSS with state protection, validated under the relevant certification program. HSM upgrade cycles are often years long — a classic constraint on migration schedules.
 
+BPA's plan therefore asks its HSM vendor three questions now: which post-quantum algorithms the current firmware supports, when certified firmware will be available, and whether existing hardware can be upgraded or must be replaced. The answers set the earliest date for issuing ML-DSA certificates, which in turn constrains every later migration step for authentication.
+
 ### 8.5 Worked example
 
 BPA's crane controllers verify firmware signatures in a bootloader with 32 KB of flash available. ML-DSA-44 verification code and a 1,312-byte public key may fit; an LMS verifier is smaller and needs only hashing, and since only verification happens on the device, LMS's state problem stays at the signing server. The architecture review records both options and their memory budgets.
+
+The decision also depends on how often firmware is signed. LMS keys can sign only a fixed number of messages, for example 2^10 or 2^15, and losing the signer's state can cause key reuse. With a few releases a year, a key with 2^15 signatures will last indefinitely, so the risk sits in the signing server's backup procedure, not in capacity.
 
 ### 8.6 Common errors and limits
 
 - Benchmarking only on servers.
 - Assuming a correct implementation is constant-time.
 - Forgetting HSM procurement lead times.
+
+Server benchmarks hide the memory limits that decide what fits on a gate scanner or crane controller, so each device class needs its own measurement. A correct implementation can still leak timing, as the KyberSlash case showed, which is why constant-time behaviour is tested separately from known answers. HSM upgrades can take years, so the request goes out before the software work starts, as BPA did with its certificate authority.
 
 ### Exercises
 
@@ -556,27 +580,39 @@ You will (1) structure code so that algorithms are replaceable; (2) parse and va
 
 Write code against interfaces — `kem.encapsulate(public_key)`, `signer.sign(message)` — not against algorithm-specific functions. An algorithm identifier, chosen by policy, selects the implementation. This is the programming basis of crypto-agility ([CSWP 39](https://doi.org/10.6028/NIST.CSWP.39-upd1)): migration becomes a configuration change plus testing, not a rewrite.
 
+The policy file names an algorithm per use, such as ML-DSA-65 for e-document signatures, and the code never mentions it. When BPA later moves from a hybrid to a pure post-quantum setting, the change is one line in policy plus the test run. Code review checks that no module bypasses the interface by importing an algorithm library directly.
+
 ### 9.2 Input validation
 
 Post-quantum keys and ciphertexts have fixed lengths per parameter set. FIPS 203 requires checks on encapsulation keys (a modulus check that encoded coefficients are below *q*) and decapsulation keys before use. Code should reject wrong lengths before calling a library and never "pad" or "truncate" to make inputs fit.
+
+An ML-KEM-768 encapsulation key must be exactly 1,184 bytes and a ciphertext exactly 1,088. Checking these lengths first gives a clear error message and avoids passing malformed data into code that might behave unpredictably. The modulus check catches keys whose coefficients were encoded with values of 3329 or higher, which a malicious peer might send to probe for implementation weaknesses.
 
 ### 9.3 Testing beyond examples
 
 Known-answer tests confirm exact outputs. Property-based tests check invariants over many random inputs: decapsulate(encapsulate(pk)) yields the same key; a signature verifies for the signed message and fails for any one-bit change. Negative tests matter as much as positive ones.
 
+A property test for BPA's signer runs a thousand random messages, signs each, verifies each, then flips one random bit in the message and in the signature and expects both checks to fail. A test that only checks successful verification would pass even if `verify` always returned true, which is precisely the bug negative tests exist to catch.
+
 ### 9.4 Dependencies
 
 Pin versions of cryptographic libraries, track their advisories and record which algorithms and parameter sets each exposes. Draft-era names (e.g. "Kyber768") and final names (ML-KEM-768) are not interchangeable: the final standard changed details, so draft implementations do not interoperate with FIPS 203.
 
+BPA's dependency file records the library name, the exact version, and the algorithms that version provides under final names. When a library release renames or removes a draft algorithm, the build fails at upgrade time rather than at a partner's handshake. Advisory tracking matters because post-quantum libraries are newer and have had more security fixes per year than mature RSA code.
+
 ### 9.5 Worked example
 
 BPA's e-document service calls `rsa_sign()` in 41 places. Refactoring introduces `Signer` with implementations `RSA-PSS-3072` and `ML-DSA-65`, selected by a policy file. A test suite runs every call path with both. The diff is large once; the next migration will be small.
+
+The 41 call sites are first found by searching for `rsa_sign`, then each is checked for assumptions such as a fixed 384-byte signature length in a database column. ML-DSA-65 signatures are 3,309 bytes, so the schema change is part of the same work item. The policy file starts with RSA-PSS-3072 so nothing changes for users until the switch.
 
 ### 9.6 Common errors and limits
 
 - Hard-coding algorithm names and key lengths.
 - Treating draft and final algorithm versions as the same.
 - Testing only success paths.
+
+Hard-coded names turn each future migration into a code change at every call site, which is exactly what the `Signer` refactoring removed. Draft and final versions differ in details, so a library still offering Kyber768 will not interoperate with ML-KEM-768. Testing only success paths leaves validation and error handling unchecked, and attackers target precisely those paths with malformed keys and ciphertexts.
 
 ### Engineering note
 
@@ -607,27 +643,39 @@ You will (1) apply professional ethics to cryptographic migration decisions; (2)
 
 Engineering codes of ethics place public welfare first. In PQC work this means protecting people whose data will remain sensitive for decades — medical, legal, customs and personal records — even though harm, if it comes, comes years after the engineer's decision. It also means honesty: neither minimizing the risk ("quantum is science fiction") nor inflating it to sell ("RSA will be broken next year").
 
+For a BPA engineer, honesty means stating the range of expert estimates and the 25-year record lifetime side by side, without picking the date that suits the budget.
+
 ### 10.2 Who bears the risk
 
 Data subjects bear harvest-now-decrypt-later risk, but they rarely decide migration budgets. An ethical engineer makes this asymmetry visible in decision memos: "If we postpone, customs declarants' commercial data recorded from now until migration may become readable by a future adversary."
+
+The memo then names who decides and who would be harmed, so the board sees that postponing transfers risk to people outside the room. Quantifying exposure, as in the 8.0 versus 16.3 TB comparison, makes the transfer concrete. It also gives declarants' representatives something to ask about when BPA reports on data protection.
 
 ### 10.3 Safety interactions
 
 Cryptographic changes can break availability: an oversized handshake that a middlebox drops, a firmware signature that a bootloader cannot verify, a certificate that a medical device rejects. In safety-related systems — cranes, port traffic control — a failed update can stop operations or create hazards. Change management with rollback plans, testing in isolated environments and staged rollouts is an ethical duty, not bureaucracy.
 
+In practice, BPA's crane firmware change is tested on a spare controller, rolled out to one crane, and held for a week before the rest.
+
 ### 10.4 Responsible disclosure and testing limits
 
 If testing reveals a vulnerability in a product, report it to the vendor and give time to fix before publishing. Never test systems you are not authorized to test, and never run downgrade experiments on production traffic.
 
+For BPA's teams, authorization means a written scope that names systems, dates and allowed techniques. A downgrade test that strips the hybrid group from a ClientHello belongs in a lab copy of the portal, not on the live service where it could break partners' sessions. Findings in vendor products go to the vendor first, with a disclosure date agreed in advance.
+
 ### 10.5 Worked example
 
 A vendor offers BPA a "quantum-proof" appliance using an unpublished algorithm. Ethical evaluation: an unvetted algorithm offers no assurance (Rainbow and SIKE were broken despite years of public scrutiny — [Beullens 2022](https://eprint.iacr.org/2022/214), [Castryck and Decru 2022](https://eprint.iacr.org/2022/975)); the marketing overstates; the engineer's duty is to recommend standardized algorithms and to say why, even if the vendor is a friend of management.
+
+The written evaluation goes to the board, not only to the vendor, so the reasons survive any later pressure to reverse it.
 
 ### 10.6 Common errors and limits
 
 - Deferring migration because the harm is far away.
 - Accepting marketing terms like "quantum-proof".
 - Rolling out cryptographic changes to safety systems without rollback.
+
+Deferral feels safe because nobody is harmed this year, but recorded customs traffic accumulates exposure every month the decision waits. "Quantum-proof" claims should prompt a request for the algorithm, its standard and its review history. Safety systems such as crane controllers need tested rollback before any firmware signature change, since a device that rejects its own update can halt operations.
 
 ### Exercises
 
@@ -658,23 +706,33 @@ In TLS 1.3 ([RFC 8446](https://www.rfc-editor.org/rfc/rfc8446.html)) the client 
 
 An Ethernet path typically carries 1,500-byte IP packets, about 1,460 bytes of TCP payload. A ClientHello with a hybrid share often exceeds that and needs two TCP segments. TCP handles this transparently, but some middleboxes and servers inspect only the first packet. Google reported such incompatibilities when Chrome began offering hybrid Kyber ([Chromium Blog 2023](https://blog.chromium.org/2023/08/protecting-chrome-traffic-with-hybrid.html)). Over UDP (QUIC, DTLS, IKEv2) larger messages raise fragmentation and amplification-limit issues that protocol designers handle explicitly.
 
+Testing therefore covers the whole path, including proxies and load balancers.
+
 ### 11.3 Other protocols
 
 IKEv2 VPNs add post-quantum key exchange through additional exchanges ([RFC 9370](https://www.rfc-editor.org/rfc/rfc9370.html) defines multiple key exchanges in IKEv2). SSH implementations have deployed hybrid key exchange methods combining a lattice KEM with X25519. DNSSEC is mostly a signature problem: post-quantum signatures are much larger than today's ECDSA signatures, which strains UDP responses.
+
+Each protocol needs its own plan. BPA's site-to-site VPN can add an ML-KEM exchange through RFC 9370 once both gateways support it; SSH administration can switch to a hybrid method with a configuration change on servers and clients; DNSSEC must wait for standards that fit large signatures into DNS responses, so it stays in the inventory as a tracked dependency.
 
 ### 11.4 Ossification
 
 When middleboxes assume protocol fields never change, new values break connections. TLS 1.3 introduced GREASE ([RFC 8701](https://www.rfc-editor.org/rfc/rfc8701.html)) — random reserved values — to keep implementations tolerant. Post-quantum migration is a test of ossification: the protocol allows it, but deployed equipment may not.
 
+BPA's test plan sends hybrid ClientHellos through every inspection device on the path to partner portals before enabling them. A device that resets the connection is logged with its firmware version, and the vendor is asked for a fix. This turns ossification from a surprise outage into a list of known items with owners and dates.
+
 ### 11.5 Worked example
 
 BPA's terminal staff report that the shipping-line portal fails through the old inspection proxy after enabling a hybrid group. Packet traces show the proxy resetting connections whose ClientHello spans two segments. Options: update proxy firmware, bypass inspection for that destination, or temporarily disable the hybrid group only on that path while the vendor fixes it — keeping it everywhere else.
+
+The targeted exception is the right choice because the proxy fault affects only one path, while the harvest risk applies to all traffic. The exception is recorded with an expiry date and an owner, so it cannot become permanent. Once the vendor's firmware is installed, the test from the lab is rerun before the hybrid group is enabled again on that path.
 
 ### 11.6 Common errors and limits
 
 - Assuming hybrid key exchange also migrates certificates.
 - Forgetting UDP protocols' size limits.
 - Rolling back PQC globally for a local middlebox fault.
+
+Hybrid key exchange protects recorded traffic but leaves authentication on RSA or ECDSA certificates, which need their own migration. UDP protocols such as QUIC and IKEv2 must handle size explicitly because they lack TCP's segmentation. A global rollback for one proxy throws away protection for every other path, as the shipping-line portal case showed; a time-limited exception for that one path keeps everything else protected.
 
 ### Exercises
 
@@ -701,27 +759,39 @@ You will (1) locate cryptographic libraries and configuration in an operating sy
 
 On a Linux server, TLS usually comes from a shared library (OpenSSL, GnuTLS, NSS, BoringSSL in some applications), SSH from OpenSSH, VPNs from kernel IPsec plus a user-space IKE daemon. Applications may also bundle their own libraries — Java, Go and Rust programs often do. An inventory that checks only the system library misses statically linked or bundled cryptography.
 
+Finding bundled code requires checking binaries and application packages, not just the package manager. For a Go binary, the build information lists the cryptographic modules compiled in; for Java, the configured security providers show which library handles TLS. These checks belong in the inventory script so every host is assessed the same way.
+
 ### 12.2 System-wide policies
 
 Some distributions provide system-wide cryptographic policies that set default algorithms for all libraries that honour them. Policies are a powerful agility lever: changing one profile can enable hybrid groups or disable weak algorithms across many services. Their limit is coverage — applications with bundled libraries ignore them.
+
+BPA uses the policy to enable the hybrid group on all services that use the system library in a single change, then checks each service's handshake to confirm it took effect. Services that do not show the hybrid group after the change are exactly those with bundled libraries, so the policy rollout doubles as a test of inventory coverage.
 
 ### 12.3 Secure boot and updates
 
 Firmware verifies the bootloader's signature, which verifies the kernel's, and so on. These signatures must remain verifiable for the device's lifetime, which may exceed a decade. That makes boot chains early candidates for hash-based signatures (LMS, XMSS per [SP 800-208](https://doi.org/10.6028/NIST.SP.800-208)), which CNSA 2.0 also prioritizes for software and firmware signing.
 
+A device shipped in 2026 with a fifteen-year life will still verify updates in 2041, so the boot key chosen now must remain secure for that whole period. Changing the root of trust later may need physical access or may be impossible, which is why boot chains get first priority rather than last.
+
 ### 12.4 Entropy and key storage
 
 Keys need good randomness from the OS (`getrandom`), especially at early boot and in virtual machines. Private keys belong in protected storage — HSMs, TPMs or OS keystores — never in world-readable files.
 
+Virtual machines cloned from one image can start with identical random state, so keys generated at first boot may repeat across hosts. Waiting for `getrandom` to report that the pool is ready, and generating keys after boot completes, avoids that. On BPA's terminal servers, TLS private keys are stored in the TPM-backed keystore and audited monthly for file-permission drift.
+
 ### 12.5 Worked example
 
 BPA's inventory of a terminal server finds OpenSSL 3.x as the system library, a Java application with its own provider, a Go binary statically linked, and an IPsec daemon. Enabling hybrid TLS through the system policy affects only the first; the other two need application changes. The migration plan records one work item per cryptographic provider, not per server.
+
+Counting by provider gives four work items for this server, with different owners: the platform team for OpenSSL and IPsec, the application team for Java, and the developers of the Go service, who must rebuild with a newer toolchain. A plan counted per server would have marked this host done after the policy change while two of its four providers were untouched.
 
 ### 12.6 Common errors and limits
 
 - Assuming one policy change migrates the whole host.
 - Ignoring boot-chain signatures because they are "not network".
 - Storing keys in configuration directories.
+
+The worked example showed a policy change reaching only one of four providers on a single host. Boot-chain signatures matter because they must stay valid for the device's life and are hard to replace, so they come first in signing migrations. Keys kept in configuration directories are copied into backups and images, where they may outlive the systems they were meant to protect.
 
 ### Exercises
 
