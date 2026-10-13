@@ -859,7 +859,7 @@ month 2: reported 75%, median verdict 80 min
 month 3: reported 78%, median verdict 70 min 
 month 4: reported 74%, median verdict 165 min FLAG verdict > 120
 month 5: reported 79%, median verdict 75 min 
-month 6: reported 81%, median verdict 65 min
+month 6: reported 81%, median verdict 65 min 
 ```
 
 ### 19.3 Revisão das tendências
