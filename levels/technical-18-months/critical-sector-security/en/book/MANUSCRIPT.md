@@ -118,7 +118,7 @@ Two consequences matter for security work. First, a slow link (a congested cellu
 
 Modern control centres run their SCADA servers, historians and directory on virtualization hosts, often shared between services. A shared hypervisor, directory, time source or storage array is a point where a fault in one sector becomes a fault in several. Lab 15 in Chapter 15 traces these dependencies with code; here, simply learn to mark every shared component on the diagram with the services that depend on it.
 
-At KVROC the same virtualization cluster runs scada-01, hist-02 and the hospital BMS server, so a host outage or a bad patch can affect water and healthcare monitoring together. Mark each shared component with every service that depends on it, and ask who owns the host when those services disagree about a change window.
+At KVROC the host esx-02 runs the SCADA server, the historian and the hospital BMS server, so its outage or a bad patch can affect water and healthcare monitoring together. Mark each shared component with every service that depends on it, and ask who owns the host when those services disagree about a change window.
 
 ### 1.5 Worked example: the Kestrel Vale operations centre (synthetic)
 
