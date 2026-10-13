@@ -20,7 +20,7 @@ This is one course. It has **one course skill** and **one principal book in each
 
 | Language | Course materials | Subjects / chapters | Principal book | State |
 |---|---|---|---|---|
-| English (`en`) | [Overview](en/README.md) · [Materials](en/MATERIALS.md) | [Chapter index](en/SUBJECTS.md) | [Draft manuscript](en/book/MANUSCRIPT.md) | Authored draft; review pending |
+| English (`en`) | [Overview](en/README.md) · [Materials](en/MATERIALS.md) | [Chapter index](en/SUBJECTS.md) | [Read public book](en/book/MANUSCRIPT.md) | Public manuscript; editorial review pending |
 | Português (`pt`) | [Overview](pt/README.md) · [Materials](pt/MATERIALS.md) | [Chapter index](pt/SUBJECTS.md) | [Book plan](pt/book/PLAN.md) | Working outline; translation pending |
 | Español (`es`) | [Overview](es/README.md) · [Materials](es/MATERIALS.md) | [Chapter index](es/SUBJECTS.md) | [Book plan](es/book/PLAN.md) | Working outline; translation pending |
 | עברית (`he`) | [Overview](he/README.md) · [Materials](he/MATERIALS.md) | [Chapter index](he/SUBJECTS.md) | [Book plan](he/book/PLAN.md) | Working outline; translation pending |
@@ -32,11 +32,11 @@ This is one course. It has **one course skill** and **one principal book in each
 
 ## English chapter sequence
 
-The [English chapter index](en/SUBJECTS.md) gives every subject's status, planned effort, exercise target and links to its plan or authored draft. The book plan summarizes each chapter in full.
+The [English chapter index](en/SUBJECTS.md) gives every subject's status, planned effort, exercise target and links to its plan or public lesson. The book plan summarizes each chapter in full.
 
 **English manuscript checkpoint (12 October 2026):** Chapters **01–10** now include additional original professional-level instruction, the ten offline C1X–C10X teaching fixtures and expanded worked reasoning for **EX001–EX050** in the [single principal draft book](en/book/MANUSCRIPT.md#ch-01). There are still **12 drafted chapters and 60 existing numbered exercise-answer pairs**; no extra book or chapter was created. The principal manuscript now contains **68,399 whitespace-separated words** after integration of Chapters 06–10. The verified **132-page A4 baseline applies only to the earlier SHA-256 66783cb9490293ffbdfd573f30f82b45aa24fa6a12ffbebf57ae9f93c8b87790**; the newly edited manuscript has **no verified A4 page count yet**. Technical and editorial review, source checks and the minimum 300-page A4 completion gate remain outstanding. Other language editions remain outlines.
 
 
 **Related project:** [hiagokinlevi/ir-playbooks-automation](https://github.com/hiagokinlevi/ir-playbooks-automation). Its source material is supplementary and retains its own rights. Original CyberABC material is dedicated under [CC0 1.0](../../../LICENSE).
 
-**Editorial status:** a public outline or draft is available for study but is not a completed book or a recognized qualification.
+**Editorial status:** a public manuscript is readable while editorial review remains pending; a plan is an outline, not a completed book or recognized qualification.

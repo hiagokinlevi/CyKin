@@ -1,16 +1,16 @@
 # Asignaturas y capítulos del libro — Seguridad cuántica y poscuántica / Maestría / Español
 
-**Un curso, un libro principal, 8 asignaturas y capítulos, una skill del curso.** Solo los enlaces marcados como Borrador llevan a contenido didáctico escrito; un capítulo planificado es un resumen, no una lección terminada.
+**Un curso, un libro principal, 8 asignaturas y capítulos, una skill del curso.** Los enlaces marcados como Lección abren contenido didáctico publicado; un capítulo planificado es un resumen, no una lección terminada.
 
 Edición en español neutro, escrita a partir de la edición de referencia en inglés; revisión técnica y lingüística pendiente.
 
 [Inicio](../../../../README.md) · [Ruta de estudio completa](../../../../STUDY_PATH.md) · [Página del curso](../README.md) · [Plan del libro](book/PLAN.md) · [Skill del curso](../skill/SKILL.md)
 
-**Curso 182 de 207.** Lea los capítulos 01–08 de arriba abajo. Para cada capítulo, use el enlace Borrador; el enlace numerado del plan es solo un resumen. Intente resolver los ejercicios antes de consultar los resultados resueltos al final del libro. La última fila lleva al siguiente curso en este mismo idioma.
+**Curso 182 de 207.** Lea los capítulos 01–08 de arriba abajo. Para cada capítulo, use el enlace Lección; el enlace numerado del plan es solo un resumen. Intente resolver los ejercicios antes de consultar los resultados resueltos al final del libro. La última fila lleva al siguiente curso en este mismo idioma.
 
 | Semestre | Capítulo / plan | Asignatura | Horas | Páginas A4 previstas | Meta de ejercicios | Estado didáctico | Siguiente paso |
 |---|---|---|---:|---:|---:|---|---|
-| 1 | [01](book/PLAN.md#ch-01) | Pregunta de investigación y método de revisión de la literatura | 150 | 75 | 7 | [Borrador](book/MANUSCRIPT.md#ch-01) | [02 · Plan](book/PLAN.md#ch-02) |
+| 1 | [01](book/PLAN.md#ch-01) | Pregunta de investigación y método de revisión de la literatura | 150 | 75 | 7 | [Lección](book/MANUSCRIPT.md#ch-01) | [02 · Plan](book/PLAN.md#ch-02) |
 | 1 | [02](book/PLAN.md#ch-02) | Seguridad cuántica y poscuántica: seminario avanzado | 150 | 75 | 7 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-02)) | [03 · Plan](book/PLAN.md#ch-03) |
 | 2 | [03](book/PLAN.md#ch-03) | Diseño del estudio, ética y reproducibilidad | 150 | 75 | 6 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-03)) | [04 · Plan](book/PLAN.md#ch-04) |
 | 2 | [04](book/PLAN.md#ch-04) | Seguridad cuántica y poscuántica: explicaciones en competencia | 150 | 75 | 6 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-04)) | [05 · Plan](book/PLAN.md#ch-05) |

@@ -2,7 +2,7 @@
 
 **Duration:** 1 month · **Publication:** public principal manuscript available for study. **Editorial review:** draft; full technical, editorial and current-source A4 review pending.
 
-[Home](../../../../README.md) · [Course home](../README.md) · [Chapter index](SUBJECTS.md) · [Materials](MATERIALS.md) · [Book plan](book/PLAN.md) · [One course skill](../skill/SKILL.md) · [Published manuscript](book/MANUSCRIPT.md) · [Playbooks](../../../../playbooks/incident-response-resilience/README.md)
+[Home](../../../../README.md) · [Course home](../README.md) · [Chapter index](SUBJECTS.md) · [Materials](MATERIALS.md) · [Read public book](book/MANUSCRIPT.md) · [Book plan](book/PLAN.md) · [One course skill](../skill/SKILL.md) · [Published manuscript](book/MANUSCRIPT.md) · [Playbooks](../../../../playbooks/incident-response-resilience/README.md)
 
 This language edition has one principal study book. Each curricular subject is one chapter with teaching, examples, exercises and, in the final book appendix, worked answers. The plan and chapter index map the intended material. They do not establish that unwritten chapters or translated lessons exist.
 
@@ -21,6 +21,6 @@ This language edition has one principal study book. Each curricular subject is o
 
 **Reading and review are separate:** Continue studying Chapter 2 in its published order. The editor's next independent review position is [2.9 — cross-source correlation](book/MANUSCRIPT.md#ir-rapid-ch02-q1-lab); this does not certify earlier learner completion or imply that later teaching is unwritten.
 
-English is the reference edition. The production order is English, Portuguese, Spanish, Hebrew, French, Russian, German, Chinese and Japanese; translations follow the completed English editorial review.
+English is the reference edition. English, Portuguese and Spanish are current lesson-writing priorities; every edition requires its own technical and language review.
 
 **Publication gate:** at least 300 actual A4 pages, 50 substantive exercises with worked results, verified sources, safe reproducible practice, technical and language review. Course titles do not confer accreditation.
