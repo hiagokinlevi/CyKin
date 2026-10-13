@@ -27,13 +27,13 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 | 3 | [15](book/PLAN.md#ch-15) | Evidencia y medición | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-15) | [16 · Borrador](book/MANUSCRIPT.md#ch-16) |
 | 4 | [16](book/PLAN.md#ch-16) | Arquitectura de seguridad | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-16) | [17 · Borrador](book/MANUSCRIPT.md#ch-17) |
 | 4 | [17](book/PLAN.md#ch-17) | Conceptos de criptografía | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-17) | [18 · Borrador](book/MANUSCRIPT.md#ch-18) |
-| 4 | [18](book/PLAN.md#ch-18) | Métodos de investigación I | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-18) | [19 · Plan](book/PLAN.md#ch-19) |
-| 4 | [19](book/PLAN.md#ch-19) | Seguridad de TO, IoT y sistemas ciberfísicos: alcance y teoría | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-19)) | [20 · Plan](book/PLAN.md#ch-20) |
-| 4 | [20](book/PLAN.md#ch-20) | Seguridad de TO, IoT y sistemas ciberfísicos: casos fundamentales | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-20)) | [21 · Plan](book/PLAN.md#ch-21) |
-| 5 | [21](book/PLAN.md#ch-21) | Seguridad de TO, IoT y sistemas ciberfísicos: modelos de sistema | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-21)) | [22 · Plan](book/PLAN.md#ch-22) |
-| 5 | [22](book/PLAN.md#ch-22) | Seguridad de TO, IoT y sistemas ciberfísicos: datos y dependencias | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-22)) | [23 · Plan](book/PLAN.md#ch-23) |
-| 5 | [23](book/PLAN.md#ch-23) | Seguridad de TO, IoT y sistemas ciberfísicos: métodos I | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-23)) | [24 · Plan](book/PLAN.md#ch-24) |
-| 5 | [24](book/PLAN.md#ch-24) | Seguridad de TO, IoT y sistemas ciberfísicos: controles | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-24)) | [25 · Plan](book/PLAN.md#ch-25) |
+| 4 | [18](book/PLAN.md#ch-18) | Métodos de investigación I | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-18) | [19 · Borrador](book/MANUSCRIPT.md#ch-19) |
+| 4 | [19](book/PLAN.md#ch-19) | Seguridad de TO, IoT y sistemas ciberfísicos: alcance y teoría | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-19) | [20 · Borrador](book/MANUSCRIPT.md#ch-20) |
+| 4 | [20](book/PLAN.md#ch-20) | Seguridad de TO, IoT y sistemas ciberfísicos: casos fundamentales | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-20) | [21 · Borrador](book/MANUSCRIPT.md#ch-21) |
+| 5 | [21](book/PLAN.md#ch-21) | Seguridad de TO, IoT y sistemas ciberfísicos: modelos de sistema | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-21) | [22 · Borrador](book/MANUSCRIPT.md#ch-22) |
+| 5 | [22](book/PLAN.md#ch-22) | Seguridad de TO, IoT y sistemas ciberfísicos: datos y dependencias | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-22) | [23 · Borrador](book/MANUSCRIPT.md#ch-23) |
+| 5 | [23](book/PLAN.md#ch-23) | Seguridad de TO, IoT y sistemas ciberfísicos: métodos I | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-23) | [24 · Borrador](book/MANUSCRIPT.md#ch-24) |
+| 5 | [24](book/PLAN.md#ch-24) | Seguridad de TO, IoT y sistemas ciberfísicos: controles | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-24) | [25 · Plan](book/PLAN.md#ch-25) |
 | 5 | [25](book/PLAN.md#ch-25) | Laboratorio I | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-25)) | [26 · Plan](book/PLAN.md#ch-26) |
 | 6 | [26](book/PLAN.md#ch-26) | Seguridad de TO, IoT y sistemas ciberfísicos: métodos II | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-26)) | [27 · Plan](book/PLAN.md#ch-27) |
 | 6 | [27](book/PLAN.md#ch-27) | Seguridad de TO, IoT y sistemas ciberfísicos: verificación | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-27)) | [28 · Plan](book/PLAN.md#ch-28) |

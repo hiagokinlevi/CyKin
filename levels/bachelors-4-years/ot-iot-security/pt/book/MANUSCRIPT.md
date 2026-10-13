@@ -1304,7 +1304,7 @@ t=60 level= 57.5% inflow=2.00
 steady-state error ~ 2.5 pct (P-only offset)
 ```
 
-O laboratório usa kp = 0,08, multiplicado por 10 na linha da vazão de entrada, o que dá um ganho efetivo de 0,8, um setpoint de 60 %, um nível inicial de 40 % e a vazão de saída fixa em 2,0, de modo que a bomba começa no seu limite de 5,0. A saída imprime o nível a cada 10 passos: 55,0 % em t = 10, depois 57,5 % a partir de t = 20, com vazão de entrada de 2,00. Os números são inventados para o vaso da LDHP, mas a forma é geral: uma malha proporcional que não consegue alcançar exatamente o seu setpoint.
+O laboratório usa kp = 0,08, multiplicado por 10 na linha da vazão de entrada, o que dá um ganho efetivo de 0,8, um setpoint de 60 %, um nível inicial de 40 % e a vazão de saída fixa em 2,0, de modo que a bomba começa no seu limite de 5,0. A saída imprime o nível a cada 10 passos: 55,0 % em t = 10, depois 57,5 % a partir de t = 20, com vazão de entrada de 2,01 em t = 20 e 2,00 a partir de t = 30. Os números são inventados para o vaso da LDHP, mas a forma é geral: uma malha proporcional que não consegue alcançar exatamente o seu setpoint.
 
 ### 21.3 Lendo o modelo
 
