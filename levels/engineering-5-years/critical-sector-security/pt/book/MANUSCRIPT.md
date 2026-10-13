@@ -3080,7 +3080,7 @@ Com um punhado de candidatos, enumere todos os subconjuntos ($2^n$). A programa�
 
 ### 41.3 Múltiplos objetivos e incerteza
 
-Os investimentos em segurança equilibram custo, redução de risco, operabilidade e outros bens. Uma solução é **ótima de Pareto** se nenhuma outra solução é melhor num objetivo sem ser pior em outro; apresente o conjunto de Pareto, e não uma única resposta ponderada. Os benefícios são estimativas incertas; teste se o conjunto ótimo muda quando os benefícios variam dentro de faixas plausíveis. Escolhas robustas — as que são boas em vários cenários — muitas vezes são preferíveis a escolhas ótimas apenas sob estimativas pontuais. Para o TMRP, a verificação de robustez do EX082 varia cada benefício em vinte por cento e encontra o ótimo inalterado.
+Os investimentos em segurança equilibram custo, redução de risco, operabilidade e outros bens. Uma solução é **ótima de Pareto** se nenhuma outra solução é melhor num objetivo sem ser pior em outro; apresente o conjunto de Pareto, e não uma única resposta ponderada. Os benefícios são estimativas incertas; teste se o conjunto ótimo muda quando os benefícios variam dentro de faixas plausíveis. Escolhas robustas — as que são boas em vários cenários — muitas vezes são preferíveis a escolhas ótimas apenas sob estimativas pontuais. Para o TMRP, a verificação de robustez do EX082 varia cada benefício em vinte por cento e constata que três das catorze execuções mudam o ótimo, de modo que a última parte da carteira é um quase empate.
 
 ### 41.4 Interações
 
@@ -3088,7 +3088,7 @@ Os benefícios raramente são aditivos. A telemetria autenticada e o monitoramen
 
 ### 41.5 Exemplo resolvido: portfólio da fase 1 do TMRP (sintético)
 
-Sete controles candidatos com custos e benefícios sintéticos, orçamento de 250 mil (Laboratório 16). A gulosa pela razão escolhe os backups off-line, o modo manual local, a telemetria autenticada e o endurecimento da estação de engenharia: custo de 215 mil, benefício de 480 mil. A busca exaustiva encontra um conjunto melhor — telemetria autenticada, modo manual local, backups off-line e RTUs de reserva — com custo de 250 mil e benefício de 530 mil. A gulosa escolheu cedo o barato endurecimento da estação de trabalho e depois não teve como pagar as RTUs de reserva. A equipe apresenta os dois, observa que as estimativas de benefício têm grande incerteza e mostra que o ótimo exaustivo continua ótimo se cada benefício variar ±20% individualmente (EX082) — uma verificação de robustez, e não uma prova.
+Sete controles candidatos com custos e benefícios sintéticos, orçamento de 250 mil (Laboratório 16). A gulosa pela razão escolhe os backups off-line, o modo manual local, a telemetria autenticada e o endurecimento da estação de engenharia: custo de 215 mil, benefício de 480 mil. A busca exaustiva encontra um conjunto melhor — telemetria autenticada, modo manual local, backups off-line e RTUs de reserva — com custo de 250 mil e benefício de 530 mil. A gulosa escolheu cedo o barato endurecimento da estação de trabalho e depois não teve como pagar as RTUs de reserva. A equipe apresenta os dois, observa que as estimativas de benefício têm grande incerteza e mostra que, quando cada benefício varia ±20% individualmente, a telemetria autenticada e o modo manual local permanecem em todos os ótimos, enquanto três execuções substituem os backups off-line e as RTUs de reserva pelo gerador de reserva (EX082) — uma verificação de robustez, e não uma prova.
 
 ### 41.6 Atividade prática: Laboratório 16
 
