@@ -1,7 +1,7 @@
 # Inteligência de ameaças e OSINT: um livro de bacharelado
 
 - Idioma: português do Brasil (`pt`); curso de bacharelado, quatro anos. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–16 de 40 já estão escritos em português, com os exercícios EX001–EX048 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 17–40 (EX049–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 40 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 21–40 (EX061–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de graduação que se preparam para trabalhar como analistas juniores de inteligência de ameaças cibernéticas (CTI) ou para seguir na pesquisa.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limite ético: nenhuma coleta sobre pessoas privadas reais, nenhuma evasão de termos de uso, nenhuma desanonimização e nenhum contato com infraestrutura de adversários. Organizações, pessoas e indicadores são **sintéticos**, salvo quando uma frase cita uma fonte pública; os endereços usam as faixas da RFC 5737 e os domínios usam `.example`.
@@ -28,9 +28,9 @@ MITRE [ATT&CK](https://attack.mitre.org/); OASIS [STIX 2.1](https://docs.oasis-o
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
 
-Capítulos 17–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-17), até a chegada dos próximos lotes.
+Capítulos 21–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1032,11 +1032,243 @@ Alimente cada camada com a inteligência que ela pode usar, aplique onde for con
 
 [← Capítulo 15 (rascunho)](#ch-15) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 17 (rascunho) →](#ch-17)
 
+<a id="ch-17"></a>
+
+## Capítulo 17 — Conceitos de criptografia
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar hash, cifragem e assinaturas no nível dos conceitos; (2) entender o que o hash de um arquivo prova; (3) relacionar certificados à infraestrutura de phishing; (4) lidar com canais de inteligência cifrados.
+
+### 17.1 Hashes
+
+Um hash criptográfico como o SHA-256 associa um arquivo a uma impressão digital de tamanho fixo. Arquivos idênticos dão hashes idênticos; mudar um byte muda o hash por completo. Isso torna os hashes indicadores precisos — e frágeis, porque os adversários alteram arquivos com facilidade. A Pirâmide da Dor de Bianco coloca os hashes na base: fáceis para os defensores, triviais de mudar para os atacantes. Amara usa hashes para correspondências exatas em buscas nos endpoints, mas não depende só deles. Quando um relatório lista hashes, ela também procura o comportamento e as técnicas descritos, que duram mais.
+
+### 17.2 Cifragem
+
+A cifragem protege a confidencialidade. O ransomware abusa dela (T1486). O TLS protege o tráfego web, inclusive o tráfego de comando dos adversários. Por isso a cifragem define o que os defensores conseguem ver. Amara anota que o proxy do HCHT só vê os nomes de servidor no tráfego cifrado, como decidiram as equipes de privacidade e jurídica. Isso significa que indicadores de domínio são úteis, mas indicadores baseados em URLs completas muitas vezes não podem ser conferidos. A inteligência sobre ransomware vai para a proteção dos backups, já que a cifragem feita por atacantes não pode ser desfeita sem a chave. Cada limitação é registrada para que os leitores entendam o que significa uma busca sem resultados.
+
+### 17.3 Assinaturas e certificados
+
+Assinaturas digitais mostram quem assinou os dados e que eles não foram alterados. Certificados vinculam um nome de domínio a uma chave. Certificados gratuitos e automatizados fazem com que sites de phishing exibam rotineiramente um cadeado; o cadeado prova a cifragem, não a legitimidade. Amara explica isso no material de conscientização da equipe: o cadeado significa que a conexão é privada, não que o site pertence ao HCHT. Software assinado de fornecedores confiáveis também é conferido, porque uma chave de assinatura roubada pode fazer código malicioso parecer legítimo. Relatórios do setor sobre esses roubos são repassados à equipe de endpoint.
+
+### 17.4 Transparência de certificados
+
+Certificados de confiança pública são registrados em logs públicos. Buscar neles nomes parecidos com os domínios do HCHT pode revelar sites imitadores cedo — um método de OSINT ético e passivo. Amara faz buscas manuais ocasionais por nomes próximos aos domínios do HCHT e aos nomes de seus hospitais; transformá-las depois num processo regular vira o seu projeto final. Novas correspondências são conferidas apenas pela consulta de registros públicos; os sites ativos não são visitados a partir de notebooks do HCHT. Imitadores confirmados são comunicados à equipe de e-mail para bloqueio e, quando cabível, ao registrador para remoção, com a evidência registrada. Os resultados ficam nos registros da equipe.
+
+### 17.5 Proteger a inteligência
+
+O HSSC distribui material TLP:AMBER por um portal cifrado. Baixá-lo em dispositivos pessoais ou encaminhá-lo por e-mail comum viola o acordo de compartilhamento. Amara lê material AMBER apenas em dispositivos do HCHT e guarda qualquer trecho na pasta restrita da equipe. Quando um item AMBER precisa chegar a outra equipe do HCHT, ela envia um resumo pelo sistema interno de chamados, o que o acordo permite, em vez de encaminhar o original. As regras estão explicadas nas suas notas de integração. Violações são comunicadas ao HSSC.
+
+### 17.6 Correspondência aproximada e parcial
+
+Como um byte alterado derrota um hash exato, algumas ferramentas calculam hashes de similaridade que pontuam o quanto dois arquivos se parecem. Eles ajudam a agrupar variantes, mas produzem pontuações, não provas; uma similaridade alta entre dois instaladores benignos é comum. Trate-os como pistas para revisão humana. Amara usa as pontuações de similaridade apenas para escolher quais arquivos comparar à mão. Uma pontuação alta leva a um exame mais detido dos dois arquivos, de suas fontes e do que fazem; ela nunca basta sozinha para rotular um arquivo como malicioso ou incluí-lo numa lista de bloqueio. Amara registra a pontuação e o resultado da revisão juntos.
+
+### Exemplo resolvido
+
+Um funcionário pergunta se um site é seguro "porque tem cadeado". Amara explica que o cadeado significa que a conexão é cifrada, não que o site é genuíno. Depois consulta os registros de transparência de certificados e descobre que o domínio imitador obteve seu certificado há dois dias — o que é compatível com uma infraestrutura nova de phishing.
+
+> **Caso sintético.** O site é inventado.
+
+### Erros e limites
+
+Correspondências de hash identificam apenas arquivos exatos. Certificados novos também são comuns em sites legítimos.
+
+### Exercícios
+
+- **EX049 — Fragilidade do hash.** Por que os hashes ficam na base da Pirâmide da Dor? *Rubrica:* 3 = o adversário os muda trivialmente; precisos, mas frágeis; 2 = parcial; 1 = difíceis de mudar; 0 = nenhuma.
+- **EX050 — O mito do cadeado.** O que o cadeado do navegador prova? *Rubrica:* 3 = conexão cifrada com quem detém o certificado daquele nome; não a legitimidade; 2 = cifragem; 1 = site seguro; 0 = nenhuma.
+- **EX051 — Verificação passiva.** Cite uma fonte passiva de OSINT para detectar cedo domínios imitadores. *Rubrica:* 3 = logs de transparência de certificados, com justificativa; 2 = o nome; 1 = visitar os sites; 0 = nenhuma.
+
+### Síntese
+
+Entenda o que os artefatos criptográficos provam, use a transparência de certificados de forma passiva e proteja a inteligência restrita em trânsito.
+
+### Continue estudando — capítulo 17 de 40
+
+[← Capítulo 16 (rascunho)](#ch-16) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 18 (rascunho) →](#ch-18)
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Métodos de pesquisa I
+
+### Objetivos de aprendizagem
+
+Você vai (1) formular uma pergunta pesquisável; (2) escolher métodos qualitativos ou quantitativos; (3) desenhar um pequeno esquema de codificação para relatórios; (4) considerar a aprovação ética para pesquisas com pessoas.
+
+### 18.1 Perguntas de pesquisa
+
+"A CTI é útil?" é amplo demais. "Quais tipos de relatório do HSSC levaram os membros a tomar uma ação defensiva em 2026?" nomeia uma população, um período e um desfecho. Boas perguntas podem ser respondidas com dados disponíveis e lícitos. Amara refina a própria pergunta várias vezes com a orientadora até que fique estreita o bastante. Cada versão é anotada, para que ela possa mostrar como a pergunta evoluiu e por que algumas versões mais amplas foram abandonadas. A pergunta final pode ser respondida com os formulários de retorno do HSSC, que os membros concordaram que fossem usados em pesquisa.
+
+### 18.2 Métodos
+
+Métodos quantitativos contam — quantos relatórios mencionam phishing. Métodos qualitativos interpretam — como os analistas descrevem a confiança. Muitos estudos de CTI combinam os dois: codificam relatórios, contam os códigos e depois entrevistam analistas. Amara planeja um estudo misto: contar os tipos de relatório e as ações a partir dos formulários de retorno e depois entrevistar alguns analistas para entender por que alguns tipos levaram a ações. Cada método cobre uma fraqueza do outro: as contagens mostram padrões, as entrevistas os explicam. Amara explica a escolha no seu plano de pesquisa e lista o que cada método não consegue mostrar.
+
+### 18.3 Esquema de codificação
+
+Defina as categorias de antemão, com exemplos: "rota de entrada: phishing (T1566), aplicação pública explorada (T1190), conta válida (T1078), desconhecida". Dois codificadores rotulam os mesmos relatórios e comparam; as divergências refinam as definições. Amara escreve o esquema de codificação com definições e um exemplo por código, e os dois codificadores praticam antes em relatórios de fora do estudo. A concordância é medida antes da discussão, para que mostre o quanto as definições são claras. Códigos que causam divergência repetida são reescritos ou fundidos, e as mudanças são registradas com o motivo.
+
+### 18.4 Amostragem
+
+Relatórios públicos são uma amostra enviesada — os fornecedores publicam o que é interessante ou vendável. Declare o viés em vez de fingir que a amostra representa todos os incidentes. O estudo de Amara usa os formulários de retorno do HSSC, que têm o seu próprio viés: os membros que os preenchem podem ser mais engajados que os outros. Ela declara isso e compara o número de membros que responderam com o total. Os leitores podem então julgar até onde os resultados se aplicam à comunidade inteira e a outros setores com práticas de compartilhamento diferentes.
+
+### 18.5 Ética
+
+Entrevistas com analistas exigem consentimento informado e, numa universidade, revisão ética. Não peça aos participantes que revelem conteúdo restrito por TLP. O roteiro de entrevista de Amara pergunta sobre a prática em termos gerais, como o modo pelo qual os analistas julgam se um relatório é relevante, sem pedir o conteúdo dos relatórios. Os participantes podem parar a qualquer momento. As notas são anonimizadas e guardadas em sistemas da universidade, e o comitê de ética aprova o plano antes de qualquer entrevista. O coordenador do HSSC é informado, mas não vê as respostas individuais.
+
+### 18.6 Busca na literatura
+
+Antes de coletar dados, busque trabalhos anteriores: artigos revisados por pares, normas e relatórios de praticantes respeitados. Registre os termos de busca e as bases para que a revisão possa ser repetida, e anote quando uma fonte é um blog de fornecedor e não uma pesquisa revisada. A busca de Amara encontra poucos estudos sobre pequenas comunidades setoriais. Ela registra cada busca com a data, os termos e as bases, e lista as fontes incluídas e excluídas, com os motivos. Os relatórios de praticantes são mantidos, mas rotulados, e as suas afirmações são conferidas com trabalhos revisados sempre que possível. A lacuna que ela encontra na pesquisa sobre pequenas comunidades passa a fazer parte da justificativa do seu estudo.
+
+### Confiabilidade entre codificadores
+
+Quando dois codificadores rotulam vinte relatórios, conte quantas vezes concordam e discuta cada divergência. Uma divergência persistente numa categoria costuma indicar que a sua definição é vaga — por exemplo, se um link malicioso numa mensagem de texto conta como phishing. Aperte a definição, acrescente um exemplo e recodifique uma amostra nova para conferir se a concordância melhorou antes de analisar o conjunto completo.
+
+### Exemplo resolvido
+
+A primeira pergunta de Amara, "O que os hackers fazem com os hospitais?", é refinada com a tutora para "Quais técnicas de acesso inicial aparecem em relatórios públicos de incidentes de 2025–2026 sobre prestadores de saúde europeus?". Ela esboça um esquema de codificação de quatro categorias e o testa em cinco relatórios sintéticos.
+
+> **Caso sintético.** Os relatórios do piloto são inventados.
+
+### Erros e limites
+
+Amostras pequenas não sustentam afirmações fortes. Relate os limites do método junto com os achados.
+
+### Exercícios
+
+- **EX052 — Afiar uma pergunta.** Reescreva "A CTI é útil?" como uma pergunta pesquisável. *Rubrica:* 3 = população, período, desfecho mensurável; 2 = dois deles; 1 = ainda vaga; 0 = nenhuma.
+- **EX053 — Viés público.** Descreva um viés dos relatórios públicos de incidentes. *Rubrica:* 3 = seleção — os fornecedores publicam casos notáveis ou vendáveis, então as contagens se distorcem; 2 = vago; 1 = tentativa mínima; 0 = nenhuma.
+- **EX054 — Regra das entrevistas.** O que Amara precisa obter antes de entrevistar analistas? *Rubrica:* 3 = consentimento informado e revisão ética; evitar conteúdo restrito; 2 = só o consentimento; 1 = vago; 0 = nenhuma.
+
+### Síntese
+
+Faça perguntas estreitas, combine métodos com bom senso, codifique de forma consistente, admita o viés de amostragem e respeite a ética da pesquisa.
+
+### Continue estudando — capítulo 18 de 40
+
+[← Capítulo 17 (rascunho)](#ch-17) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 19 (rascunho) →](#ch-19)
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Inteligência de ameaças e OSINT: escopo e teoria
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir CTI e OSINT; (2) explicar o papel de modelos como a cadeia de intrusão (kill chain) e o Modelo Diamante; (3) descrever os padrões de compartilhamento — STIX, TAXII, TLP; (4) situar a CTI na gestão de riscos.
+
+### 19.1 Definições
+
+A inteligência de ameaças cibernéticas é o conhecimento analisado sobre a intenção, a capacidade e a atividade dos adversários que apoia decisões defensivas. A OSINT é a inteligência derivada de fontes publicamente disponíveis, coletadas de forma lícita. A NIST SP 800-150 apresenta o compartilhamento de informações sobre ameaças como um modo de as organizações melhorarem as defesas coletivamente. Para o HCHT, a palavra que define é "apoia": um item que não ajuda numa decisão sobre a defesa do trust é informação, por mais interessante que seja. Amara mantém as definições na primeira página do caderno e as usa para triar o que chega a cada dia, para que o tempo de análise vá para itens capazes de mudar o que o HCHT faz.
+
+### 19.2 Modelos
+
+A cadeia de intrusão de Hutchins, Cloppert e Amin (2011) divide as intrusões em fases, do reconhecimento às ações sobre os objetivos, mostrando que os defensores podem agir em qualquer fase. O Modelo Diamante (Caltagirone et al., 2013) descreve cada evento por adversário, capacidade, infraestrutura e vítima. O MITRE ATT&CK cataloga técnicas observadas em intrusões reais. Cada modelo destaca coisas diferentes, por isso Amara aplica os três a um relatório do HSSC e compara os resultados. A cadeia de intrusão mostra que o ataque foi detido na entrega; o Modelo Diamante liga a sua infraestrutura a um evento anterior; o ATT&CK lista as técnicas para o trabalho de detecção.
+
+### 19.3 Padrões de compartilhamento
+
+O STIX 2.1 define um vocabulário JSON para indicadores, agentes de ameaça, padrões de ataque e relações. O TAXII 2.1 define como trocar STIX sobre HTTPS. Os rótulos FIRST TLP 2.0 dizem aos destinatários com que amplitude podem compartilhar. O HCHT recebe o material do HSSC por TAXII e o guarda no seu próprio banco de dados, mapeado para campos STIX sempre que possível. Amara aprende que a marcação TLP acompanha cada objeto, de modo que um script pode conferir se um objeto pode ser compartilhado antes de sair do HCHT. Seguir os padrões significa que as ferramentas do HCHT leem o que os outros membros enviam sem conversão sob medida, o que poupa tempo numa equipe pequena.
+
+### 19.4 CTI e risco
+
+A CTI muda as estimativas de probabilidade nas avaliações de risco e indica quais controles priorizar. Sem vínculo com decisões de risco, a CTI vira um serviço de notícias. As notas de Amara sobre cada item terminam com o risco que ele afeta: qual sistema, qual consequência e como a probabilidade pode ter mudado. Quando o líder de segurança atualiza o registro de riscos do HCHT, essas notas são a evidência de cada mudança. Itens que não mudam nenhum risco são arquivados para buscas futuras, o que mantém os relatórios da equipe focados em decisões, não em notícias.
+
+### 19.5 Teoria e prática
+
+Modelos são lentes, não leis. Cada um simplifica; os analistas escolhem o que responde à pergunta em questão. Amara aprende isso quando um relatório do HSSC se encaixa mal na cadeia de intrusão: o atacante usou uma conta roubada de fornecedor e pulou a entrega por completo. O modelo ainda ajuda, mostrando quais fases foram puladas, mas não força o evento a uma forma que ele não tem. Ela anota o descompasso na sua análise, o que é mais honesto do que forçar cada fase a ter uma entrada, e explica em qual modelo se apoiou no lugar.
+
+### 19.6 Escolher um modelo
+
+Use a cadeia de intrusão quando a pergunta for onde interromper uma intrusão, o Modelo Diamante quando for como os eventos se conectam por infraestrutura ou capacidade compartilhadas, e o ATT&CK quando for quais comportamentos detectar. Misturá-los não é problema se o relatório disser qual lente produziu cada conclusão. Amara acrescenta a cada relatório uma linha que nomeia o modelo usado em cada conclusão. Os leitores podem então julgar cada conclusão pelas forças e limites da lente por trás dela, e um revisor pode perguntar se outro modelo teria levado a outro lugar. A linha custa poucas palavras e evita uma confusão comum.
+
+### Exemplo resolvido
+
+Amara descreve um evento de phishing com o Modelo Diamante: adversário desconhecido; capacidade, uma página de coleta de credenciais; infraestrutura, portal-login.example; vítima, um auxiliar financeiro do HCHT. Depois o situa na cadeia de intrusão, na entrega, e o mapeia para T1566. Cada lente responde a uma pergunta diferente.
+
+> **Caso sintético.** O evento é inventado.
+
+### Erros e limites
+
+A linearidade da cadeia de intrusão falha em ataques internos ou na nuvem. O ATT&CK reflete o comportamento relatado, não a população inteira.
+
+### Exercícios
+
+- **EX055 — Escolha do modelo.** Que modelo você usaria para perguntar "onde poderíamos ter detido esta intrusão"? *Rubrica:* 3 = cadeia de intrusão, com justificativa; 2 = o nome; 1 = TLP; 0 = nenhuma.
+- **EX056 — STIX vs TAXII.** Diferencie o STIX 2.1 do TAXII 2.1. *Rubrica:* 3 = STIX é o formato de dados; TAXII é o protocolo de transporte sobre HTTPS; 2 = parcial; 1 = são a mesma coisa; 0 = nenhuma.
+- **EX057 — Sem risco.** O que acontece quando a CTI não está ligada a decisões de risco? *Rubrica:* 3 = vira notícia sem ação nem prioridade; 2 = parcial; 1 = vago; 0 = nenhuma.
+
+### Síntese
+
+A CTI é apoio à decisão construído sobre modelos e compartilhado por meio de padrões; escolha a lente certa e ligue-a ao risco.
+
+### Continue estudando — capítulo 19 de 40
+
+[← Capítulo 18 (rascunho)](#ch-18) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 20 (rascunho) →](#ch-20)
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Inteligência de ameaças e OSINT: casos fundadores
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar casos publicados que moldaram a prática de CTI; (2) extrair lições sem repetir detalhes de ataque; (3) comparar casos usando modelos; (4) relacionar as lições ao HCHT.
+
+### 20.1 O artigo da cadeia de intrusão
+
+Hutchins et al. descreveram defensores que acompanhavam um adversário persistente ao longo de intrusões repetidas, usando indicadores de fases anteriores para bloquear tentativas posteriores. A lição: a inteligência de uma intrusão protege contra a próxima, e os defensores ganham quando analisam também as tentativas que falharam. Amara aplica isso no HCHT registrando as tentativas de phishing bloqueadas com o mesmo cuidado que as bem-sucedidas. Padrões nas tentativas que falharam, como a mesma infraestrutura de envio, costumam aparecer antes que um ataque tenha sucesso. Ela também anota que fase cada tentativa alcançou.
+
+### 20.2 Relatos sobre grupos
+
+Relatos públicos sobre grupos de longa atuação, catalogados em entradas de grupo do ATT&CK como G0016 (APT29), mostraram que os adversários reutilizam técnicas de forma mais estável que a infraestrutura. A lição: a detecção por comportamento dura mais que as listas de indicadores. Amara usa essa lição ao decidir como gastar o tempo limitado da equipe: uma detecção para uma técnica vista em muitos relatórios do setor vale mais esforço que atualizar uma longa lista de endereços que podem mudar na semana seguinte. Os indicadores ainda importam para bloqueios rápidos, mas espera-se que envelheçam, enquanto as detecções por comportamento são revistas com menos frequência e continuam úteis por mais tempo.
+
+### 20.3 Ransomware contra a saúde
+
+Muitos alertas públicos descrevem ransomware interrompendo hospitais. Lições comuns: phishing ou serviços expostos como entrada, abuso de contas válidas, cifragem para impacto (T1486) e o papel decisivo de backups isolados e testados. Amara lê vários alertas públicos e lista as lições recorrentes numa tabela curta para a equipe de infraestrutura do HCHT. A tabela sustenta o pedido de verba da equipe para isolar os backups e testar restaurações com mais frequência. Ela cita cada alerta, para que a evidência possa ser conferida e atualizada quando surgirem alertas novos, e indica sobre quais lições o HCHT já agiu.
+
+### 20.4 Cadeia de suprimentos
+
+Comprometimentos de atualizações de software confiáveis (Supply Chain Compromise, T1195) mostraram que canais confiáveis podem entregar código malicioso. A lição para o HCHT: a inteligência sobre fornecedores e o monitoramento de atualizações importam. O HCHT depende de muitos fornecedores de software clínico e administrativo, e alguns enviam atualizações automaticamente. Amara ajuda a compilar uma lista desses fornecedores e dos sistemas que eles atualizam, para que a inteligência sobre o comprometimento de um fornecedor possa ser conferida com ela em minutos. A equipe de infraestrutura acrescenta monitoramento de mudanças inesperadas após atualizações nos sistemas mais críticos, e a lista é revista a cada trimestre.
+
+### 20.5 Ler casos com ética
+
+Estudos de caso ensinam padrões; reproduzir malware ou procedimentos passo a passo é desnecessário e inadequado nos trabalhos do curso. Os trabalhos de Amara descrevem os casos no nível das técnicas e das lições, citando fontes públicas. Ela não baixa amostras nem repete passos de ataque, nem mesmo em laboratório, porque o curso pede compreensão defensiva. Se um caso parece exigir detalhe técnico mais profundo, ela pergunta à orientadora se é necessário e como obtê-lo com segurança, e registra a resposta com as suas notas.
+
+### 20.6 Comparar casos
+
+Uma tabela de comparação ajuda: para cada caso, liste a técnica de entrada, a abordagem de persistência, o impacto e a lição defensiva. Padrões entre as linhas — as credenciais aparecem de novo e de novo — são mais úteis que qualquer história dramática isolada, e a tabela mantém a atenção na defesa, e não na mística do adversário. Amara monta uma tabela assim a partir de cinco casos públicos. Duas linhas compartilham o uso de credenciais roubadas, e três terminam em cifragem e numa recuperação longa. Ela apresenta a tabela à equipe de segurança como um resumo das defesas que mais importaram, com cada linha citando a sua fonte pública, e acrescenta casos novos a cada trimestre.
+
+### Do caso à pergunta local
+
+Cada caso deve terminar com uma pergunta para o HCHT: monitoramos as atualizações dos fornecedores, os backups estão isolados, perceberíamos o abuso de uma conta válida à noite? Escrever essa pergunta transforma a história numa verificação concreta que um responsável pode responder em uma semana.
+
+### Exemplo resolvido
+
+Amara monta uma tabela com três casos públicos de ransomware no setor de saúde: rota de entrada, tempo até o impacto, situação dos backups, tempo de recuperação. Dois se recuperaram mais rápido porque os backups estavam offline. Ela apresenta a tabela, com as fontes, numa sessão de aprendizagem da equipe.
+
+> **Caso sintético.** A tabela e a sessão de Amara são inventadas; casos reais seriam citados a partir de fontes públicas.
+
+### Erros e limites
+
+Os casos publicados privilegiam eventos dramáticos. Evite generalizar demais a partir deles.
+
+### Exercícios
+
+- **EX058 — Lição da cadeia de intrusão.** Enuncie a principal lição do artigo de Hutchins et al. para os defensores. *Rubrica:* 3 = a inteligência de cada intrusão (inclusive as que falharam) bloqueia fases/tentativas posteriores; 2 = parcial; 1 = vago; 0 = nenhuma.
+- **EX059 — Comportamento vs infraestrutura.** Por que a detecção por comportamento dura mais que as listas de indicadores? *Rubrica:* 3 = as técnicas mudam menos que domínios/endereços; 2 = parcial; 1 = o contrário; 0 = nenhuma.
+- **EX060 — Padrão dos backups.** Que padrão a tabela de ransomware de Amara revelou? *Rubrica:* 3 = backups offline → recuperação mais rápida; 2 = parcial; 1 = vago; 0 = nenhuma.
+
+### Síntese
+
+Os casos fundadores ensinam lições duradouras: reutilize a inteligência entre intrusões, detecte comportamento, proteja os backups, vigie os fornecedores.
+
+### Continue estudando — capítulo 20 de 40
+
+[← Capítulo 19 (rascunho)](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 (rascunho) →](#ch-21)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX048 (as de EX049–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). O Halden County Health Trust, Amara Diallo, o Health Sector Sharing Circle e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060 (as de EX061–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). O Halden County Health Trust, Amara Diallo, o Health Sector Sharing Circle e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Abdução — ela propõe a explicação mais plausível para uma observação sem prová-la.
 
@@ -1133,6 +1365,30 @@ Respostas-modelo para EX001–EX048 (as de EX049–EX120 estão na edição em i
 **EX047.** Muitos serviços legítimos compartilham endereços de nuvem, então bloquear um deles poderia cortar sistemas clínicos ou administrativos.
 
 **EX048.** Os backups são offline ou imutáveis? Um site não tinha isso, então foi acrescentada uma cópia imutável.
+
+**EX049.** Mudar um byte do arquivo cria um hash novo, então o adversário quase nada paga para escapar de um bloqueio por hash.
+
+**EX050.** Que a conexão é cifrada com quem detém um certificado válido para aquele nome — não que o site seja honesto.
+
+**EX051.** Logs de transparência de certificados: eles registram publicamente os certificados novos, então nomes imitadores aparecem sem contato com o site.
+
+**EX052.** Exemplo: "Que parcela dos alertas do HSSC em 2026 levou os membros a relatar uma ação defensiva em até 30 dias?"
+
+**EX053.** Viés de seleção: os fornecedores publicam casos incomuns ou comercialmente úteis, então intrusões comuns e sem graça ficam sub-representadas.
+
+**EX054.** Consentimento informado de cada participante e aprovação ética da universidade; as perguntas devem evitar material restrito.
+
+**EX055.** A cadeia de intrusão, porque ela expõe as fases em que os defensores podem detectar ou interromper o ataque.
+
+**EX056.** O STIX 2.1 é a linguagem JSON que descreve a informação sobre ameaças; o TAXII 2.1 é o protocolo HTTPS para trocá-la.
+
+**EX057.** Ela vira um feed de notícias: leitura interessante que não muda nenhum controle nem prioridade.
+
+**EX058.** Os defensores podem usar o que aprendem com cada tentativa de intrusão, mesmo as que falharam, para deter o mesmo adversário em fases anteriores da próxima vez.
+
+**EX059.** Os adversários mudam domínios e endereços a baixo custo, mas as suas técnicas e hábitos mudam devagar.
+
+**EX060.** As organizações com backups offline se recuperaram mais rápido que as sem eles.
 
 <a id="references"></a>
 ## Referências
