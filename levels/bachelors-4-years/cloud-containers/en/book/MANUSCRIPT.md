@@ -631,7 +631,7 @@ If a weekly report suddenly shows ten new findings, the changelog helps decide w
 
 ### Running regularly
 
-The checker runs weekly against fresh exports, and its reports are saved with the export date and code version. Comparing weekly reports shows whether findings are being fixed or new ones appearing. Samuel adds a short section at the top of each report listing what changed since the previous week, which is what the cloud team reads first. Over the term, weekly reports show findings falling from 41 to 12, with the remaining ones assigned to owners and dates.
+The checker runs weekly against fresh exports, and its reports are saved with the export date and code version. Comparing weekly reports shows whether findings are being fixed or new ones appearing. Samuel adds a short section at the top of each report listing what changed since the previous week, which is what the cloud team reads first. Over the term, weekly reports show findings falling from 41 to 9, with the remaining ones assigned to owners and dates.
 
 ### Sharing
 
