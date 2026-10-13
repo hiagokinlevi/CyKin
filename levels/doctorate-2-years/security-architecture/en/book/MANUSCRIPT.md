@@ -1,7 +1,7 @@
 # Security Architecture and Engineering: Doctoral Research Track
 
 - Language: English (`en`); course 191, Doctoral research track (2 years).
-- Editorial state: **draft**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; four offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **draft**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: doctoral candidates testing whether an architecture practice changes security outcomes.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the labs compute agreement, a difference-in-differences estimate with a permutation check and archive digests on synthetic data; nothing touches a real organisation. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
