@@ -1,7 +1,7 @@
 # Governança de Dados: Curso Técnico
 
 - Idioma: português do Brasil (`pt`); curso 049, curso técnico (18 meses). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–12 de 18 já estão escritos em português, com os exercícios EX001–EX048 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 13–18 (EX049–EX072) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–18 de 18 têm texto didático escrito à mão; os exercícios EX001–EX072 têm resoluções correspondentes com rubricas de 0 a 3; os dois laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de curso técnico que se preparam para trabalhar como técnicos de dados, registrando, conferindo, corrigindo e protegendo dados segundo regras acordadas.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios comparam uma tabela de horários sintética com os registros de contagem de passageiros para encontrar, por linha, as viagens sem contagem, e normalizam nomes sintéticos de pontos de ônibus para descobrir quantos pontos reais existem por trás das variações. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ Wang e Strong (1996); GDPR; LGPD. Lista completa em [Referências](#references).
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
-
-Capítulos 13–18: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-13), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -569,11 +567,257 @@ Copiar dados pessoais para relatórios sobre a eliminação cria novas cópias a
 - **EX047 — Achados e perdidos.** Por quanto tempo os registros de achados e perdidos são guardados? *Rubrica:* 3 = seis meses;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 - **EX048 — Registro da eliminação.** O que fica registrado no log de eliminação? *Rubrica:* 3 = data, número eliminado e aprovação;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
 
+<a id="ch-13"></a>
+
+## Capítulo 13 — Relatando problemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) relatar problemas de dados com clareza; (2) usar um registro de problemas; (3) acompanhar os problemas até a correção.
+
+### 13.1 O que faz um bom relato
+
+Marta aprende que um bom relato de problema diz o que foi visto, onde, quando, quantos registros são afetados, por que isso importa e quem já foi avisado. O Sr. Osei mostra dois relatos sobre o mesmo problema. Um diz que as contagens parecem erradas. O outro diz que a Linha 7 tem 122 viagens sem contagem em março, cerca de dez por cento, o que pode reduzir o financiamento. Marta percebe que o segundo relato permite agir na hora, enquanto o primeiro só causa preocupação. Desde então, ela passa a escrever todos os seus relatos no segundo estilo, com números e consequências.
+
+### 13.2 O registro de problemas
+
+A Linkway começa um registro de problemas simples em uma planilha compartilhada, com colunas para data, quem relatou, descrição, dados afetados, impacto, dono, situação e correção. Marta registra o problema das contagens da Linha 7, o dos nomes dos pontos e o das reclamações antigas, vistos em capítulos anteriores. O Sr. Hughes revisa o registro toda semana e designa os donos. Marta observa que o registro impede que os problemas sejam esquecidos quando as pessoas estão ocupadas com outras tarefas. Cada entrada tem dono e situação, e o Sr. Hughes as atualiza conforme avançam, de modo que o registro sempre mostra o estágio de cada problema.
+
+### 13.3 Acompanhando até o fim
+
+Um problema só é encerrado quando a correção é conferida. Depois que os sensores da Linha 7 são consertados, Marta executa de novo sua verificação de contagens ausentes e vê que a Linha 7 agora tem pouquíssimas viagens sem contagem. Ela registra o resultado e encerra o problema. No caso dos nomes dos pontos, confere se o site e o sistema de reclamações ainda têm nomes antigos antes de encerrar. O Sr. Osei explica que encerrar problemas sem conferir muitas vezes faz com que eles voltem sem que ninguém perceba. Os dois continuam resolvidos nos meses seguintes, o que Marta confirma repetindo as verificações todo mês.
+
+### 13.4 Percebendo padrões
+
+Depois de três meses, Marta olha o registro e vê que vários problemas vêm dos equipamentos dos ônibus mais antigos. Ela comenta isso com o Sr. Hughes, que leva a questão ao gerente da frota como um problema mais amplo, e não como defeitos isolados. O gerente da frota planeja a modernização dos sensores de todos os ônibus mais antigos. Marta aprende que um registro pode revelar padrões que os relatos individuais escondem, o que ajuda os gestores a corrigir causas maiores. O Sr. Hughes acrescenta ao registro uma coluna para o tipo de causa, para que padrões assim apareçam com mais facilidade nas próximas revisões.
+
+### Exemplo resolvido
+
+Marta escreve relatos de problemas específicos, mantém um registro compartilhado revisado toda semana, encerra os problemas só depois de conferir as correções e percebe um padrão de defeitos nos equipamentos dos ônibus mais antigos que leva a uma modernização planejada.
+
+> **Caso sintético.** Os problemas são sintéticos.
+
+### Erros e limites
+
+Relatos vagos de problemas causam preocupação sem ação.
+
+### Exercícios
+
+- **EX049 — Conteúdo de um bom relato.** O que um relato de problema deve incluir? *Rubrica:* 3 = o quê, onde, quando, quantos, por que importa e quem foi avisado;; 2 = a maioria;; 1 = poucos;; 0 = nenhuma.
+- **EX050 — Quem revisa o registro.** Quem revisa o registro de problemas toda semana? *Rubrica:* 3 = o Sr. Hughes;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX051 — Evidência do encerramento.** Como Marta encerrou o problema da Linha 7? *Rubrica:* 3 = repetiu a verificação e encontrou poucas viagens sem contagem;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX052 — Padrão encontrado.** Que padrão o registro mostrou? *Rubrica:* 3 = problemas vindos dos equipamentos dos ônibus mais antigos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Documentação simples
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever um verbete de dicionário de dados; (2) escrever um procedimento curto; (3) manter os documentos fáceis de encontrar.
+
+### 14.1 Verbetes do dicionário
+
+Marta escreve os verbetes do dicionário para o arquivo de contagens de passageiros. Para cada campo, registra o nome, o significado em palavras simples, o formato, os valores permitidos e a origem. Para embarques, escreve: número de passageiros que sobem durante a viagem, número inteiro de zero a cento e vinte, registrado pelos sensores das portas. Ela confere cada verbete com o Sr. Hughes. Observa que definições claras impedem que as pessoas adivinhem o significado dos campos quando montam relatórios. O Sr. Hughes sugere duas pequenas correções, que ela faz no mesmo dia antes de publicar o dicionário.
+
+### 14.2 Um procedimento curto
+
+Marta escreve um procedimento para o arquivo mensal da autoridade: executar a verificação de contagens ausentes, corrigir ou anotar os problemas, preparar o arquivo a partir do modelo, conferir os totais com o relatório mensal, obter a aprovação do Sr. Hughes e enviar pelo portal. Cada passo é numerado e diz quem o executa. Ela mantém a linguagem simples e acrescenta o que fazer se o portal estiver fora do ar, o que aconteceu uma vez durante o curso. O Sr. Hughes aprova o procedimento e pede que ele seja usado todo mês por quem preparar o arquivo.
+
+### 14.3 Testando os documentos
+
+Marta pede a uma colega de turma que prepare um arquivo de treino para a autoridade usando apenas seu procedimento. A colega empaca na conferência dos totais, porque o procedimento não diz com qual relatório comparar. Marta acrescenta o nome e o local do relatório. A colega então conclui sem ajuda. O Sr. Osei explica que testar os documentos com alguém novo mostra onde faltam passos que parecem óbvios para quem escreveu. Marta registra a mudança e o motivo na seção de histórico do procedimento, para que os leitores futuros vejam como o documento melhorou com o tempo.
+
+### 14.4 Encontrando os documentos
+
+Marta guarda o dicionário, os procedimentos e os scripts em uma única pasta compartilhada, com uma página de sumário que lista cada documento, seu dono e a data da última conferência. O Sr. Hughes pede à equipe que use a página de sumário em vez de procurar nos e-mails. Marta aprende que os documentos só ajudam se as pessoas conseguem encontrá-los depressa, e que as datas mostram se um documento provavelmente ainda está correto. Ela confere a página de sumário a cada trimestre durante o estágio, atualiza as datas dos documentos revisados e sinaliza os que não consegue confirmar.
+
+### Exemplo resolvido
+
+Marta escreve verbetes do dicionário conferidos com o Sr. Hughes e um procedimento numerado para o arquivo da autoridade, com uma alternativa para o portal fora do ar, testa-o com uma colega que encontra a falta do nome de um relatório e guarda os documentos com uma página de sumário datada.
+
+> **Caso sintético.** Os documentos são sintéticos.
+
+### Erros e limites
+
+Procedimentos testados apenas por quem os escreveu deixam passar passos que parecem óbvios.
+
+### Exercícios
+
+- **EX053 — Definição de embarques.** Como os embarques são definidos? *Rubrica:* 3 = passageiros que sobem, número inteiro de 0 a 120, registrado pelos sensores das portas;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
+- **EX054 — Lacuna no procedimento.** Onde a colega empacou? *Rubrica:* 3 = na conferência dos totais;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX055 — Página de sumário.** O que a página de sumário lista? *Rubrica:* 3 = cada documento, seu dono e a data da última conferência;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
+- **EX056 — Alternativa ao portal.** Que caso extra o procedimento cobriu? *Rubrica:* 3 = o portal fora do ar;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Trabalhando com um curador
+
+### Objetivos de aprendizagem
+
+Você vai (1) entender o papel do curador de dados; (2) apoiar um curador em tarefas regulares; (3) escalar decisões corretamente.
+
+### 15.1 O papel da curadora
+
+A Linkway nomeia uma curadora para os dados de passageiros, uma planejadora chamada Sra. Price, enquanto o Sr. Hughes continua como responsável pelos dados, supervisionando todos eles. O Sr. Osei explica que os curadores cuidam no dia a dia do significado, da qualidade e das regras de uma área de dados e decidem muitas questões práticas. Técnicos como Marta apoiam os curadores executando verificações, preparando informações e fazendo as mudanças aprovadas. Marta observa que saber quem é a curadora lhe diz para onde levar as perguntas sobre dados de passageiros. A Sra. Price recebe bem seu apoio.
+
+### 15.2 Apoio regular
+
+Marta prepara um resumo semanal para a Sra. Price: contagens ausentes por linha, valores inválidos, atrasos de envio e problemas em aberto. A Sra. Price o revisa e decide o que acompanhar. Quando ela pede uma nova verificação para contagens muito mais altas que o normal, Marta a escreve e a acrescenta ao resumo. Marta aprende que resumos curtos e regulares ajudam os curadores a acompanhar a qualidade sem passar longas horas com os dados. O resumo toma de Marta cerca de uma hora por semana, e a Sra. Price o lê em poucos minutos antes da reunião de segunda-feira.
+
+### 15.3 Escalando decisões
+
+Um planejador pede a Marta que altere as contagens do mês anterior na Linha 4, porque uma excursão escolar usou um ônibus regular e inflou os números. Marta sabe que isso mudaria números informados à autoridade. Ela diz ao planejador que a decisão cabe à Sra. Price e repassa o pedido com os detalhes. A Sra. Price decide manter as contagens, mas acrescentar uma nota explicando a excursão, e a autoridade aceita. Marta registra o pedido e a decisão no registro de problemas, e o planejador agradece por ela ter levado o pedido à pessoa certa em vez de fazer a mudança por conta própria.
+
+### 15.4 Mantendo registros
+
+Marta registra cada decisão da Sra. Price no registro de problemas ou em uma lista de decisões, com a data e o motivo. Quando a autoridade pergunta mais tarde sobre a nota da Linha 4, o Sr. Hughes encontra a decisão rapidamente. O Sr. Osei observa que as decisões registradas protegem todos: a curadora pode mostrar seu raciocínio, a técnica pode mostrar que seguiu instruções e a empresa pode explicar seus números. Marta mantém a lista de decisões ao lado do registro de problemas, e a Sra. Price a revisa todo mês para garantir que os motivos estejam claros para quem os ler um ano depois.
+
+### Exemplo resolvido
+
+Marta apoia a curadora, a Sra. Price, com resumos semanais e uma nova verificação de contagens altas, repassa a ela um pedido para alterar as contagens da Linha 4, registra a decisão de acrescentar uma nota e vê o registro responder a uma pergunta posterior da autoridade.
+
+> **Caso sintético.** Os papéis são sintéticos.
+
+### Erros e limites
+
+Técnicos que alteram números informados sem a curadora contornam a responsabilização.
+
+### Exercícios
+
+- **EX057 — Nome da curadora.** Quem é a curadora dos dados de passageiros? *Rubrica:* 3 = a Sra. Price;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX058 — Nova verificação.** Que nova verificação a Sra. Price pediu? *Rubrica:* 3 = contagens muito mais altas que o normal;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX059 — Decisão sobre a Linha 4.** O que a Sra. Price decidiu sobre a Linha 4? *Rubrica:* 3 = manter as contagens e acrescentar uma nota explicativa;; 2 = correto;; 1 = alterar;; 0 = nenhuma.
+- **EX060 — Uso do registro da decisão.** Como o registro da decisão ajudou depois? *Rubrica:* 3 = o Sr. Hughes o encontrou depressa quando a autoridade perguntou;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Prática no trabalho
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar as competências do curso em um local de trabalho; (2) lidar com as pressões reais do trabalho; (3) refletir sobre o comportamento profissional.
+
+### 16.1 O estágio
+
+Marta passa seis semanas estagiando no escritório da Linkway. Todos os exemplos aqui continuam sintéticos. Ela executa as verificações semanais, prepara o arquivo da autoridade, atualiza a lista de pontos e ajuda a responder a pedidos de dados. Descobre que o trabalho chega de forma imprevisível, com pedidos urgentes interrompendo as tarefas planejadas. Aprende a manter uma lista curta de tarefas por dia, combinando as prioridades com o Sr. Hughes quando chegam dois pedidos urgentes ao mesmo tempo. O Sr. Hughes registra no relatório de estágio que ela lidou com as interrupções com calma e o manteve informado sobre o que estava esperando.
+
+### 16.2 Pressão e atalhos
+
+No dia do prazo do arquivo da autoridade, a conferência dos totais falha por uma pequena diferença. Um colega sugere ajustar um número para fechar a conta e enviar o arquivo no prazo. Marta se recusa, descobre que faltava um envio atrasado da noite anterior, espera que ele chegue e manda o arquivo com uma hora de atraso, acompanhado de uma nota. O Sr. Hughes a apoia. Ela aprende que pequenos atalhos sob pressão podem criar problemas maiores depois. A autoridade aceita a explicação sem questionar, e o episódio vira exemplo nas conversas da equipe sobre prazos e qualidade.
+
+### 16.3 Comunicação
+
+Marta explica suas verificações aos motoristas e à equipe da garagem, que às vezes veem o trabalho com dados como crítica. Quando relata que o sensor de um ônibus está falhando, explica que não é culpa do motorista e que consertá-lo protege o financiamento da linha dele. Os motoristas passam a mencionar com mais disposição os problemas de equipamento. Ela aprende que explicar por que os dados importam ajuda as pessoas a cooperar em vez de se sentirem culpadas. Depois, dois motoristas relatam defeitos nos sensores de seus ônibus antes que as verificações de Marta os encontrem, o que acelera a manutenção e mantém as contagens completas.
+
+### 16.4 Reflexão
+
+Marta escreve no caderno uma reflexão sobre o estágio. Observa que as competências mais úteis foram conferir com cuidado, relatar com clareza e saber quando perguntar. Ficou surpresa com o quanto de seu trabalho envolvia conversar com pessoas. Ela lista duas coisas a melhorar: estimar quanto tempo as tarefas levam e escrever e-mails mais curtos. O Sr. Osei e o Sr. Hughes acrescentam comentários, que ela vai usar para se preparar para a avaliação prática. Ela planeja pequenos exercícios para cada melhoria, como cronometrar suas tarefas durante uma semana e comparar as estimativas com o tempo real.
+
+### Exemplo resolvido
+
+Marta executa verificações e atende a pedidos no estágio, recusa-se a ajustar um número sob pressão de prazo e encontra, em vez disso, um envio atrasado, explica os defeitos dos sensores aos motoristas sem culpá-los e reflete sobre suas competências.
+
+> **Caso sintético.** O estágio é sintético.
+
+### Erros e limites
+
+Ajustar números para passar nas verificações esconde problemas reais.
+
+### Exercícios
+
+- **EX061 — Duração do estágio.** Quanto tempo dura o estágio? *Rubrica:* 3 = seis semanas;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX062 — Causa da falha nos totais.** Por que a conferência dos totais falhou? *Rubrica:* 3 = faltava um envio atrasado;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX063 — Abordagem com os motoristas.** Como Marta explicou os defeitos dos sensores aos motoristas? *Rubrica:* 3 = não é culpa deles e consertar protege o financiamento da linha;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
+- **EX064 — Pontos a melhorar.** Que duas coisas Marta vai melhorar? *Rubrica:* 3 = estimar o tempo das tarefas e escrever e-mails mais curtos;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Avaliação prática
+
+### Objetivos de aprendizagem
+
+Você vai (1) concluir uma tarefa prática com dados sob avaliação; (2) documentar seu trabalho; (3) explicar suas escolhas a um avaliador.
+
+### 17.1 A tarefa
+
+Na avaliação prática, Marta recebe um mês sintético de dados da Linkway com problemas escondidos. Ela precisa conferir os dados, encontrar e relatar os problemas, preparar o arquivo da autoridade, atualizar o registro de problemas e explicar seu trabalho a um avaliador. Tem um dia de trabalho. Ela planeja o tempo: uma hora lendo os dados e os documentos, três horas nas verificações, duas horas no arquivo e no registro e uma hora preparando a explicação. Escreve o plano no topo de suas anotações de trabalho, para que o avaliador veja como ela usou o tempo.
+
+### 17.2 Fazendo as verificações
+
+Marta executa seus scripts de validade e de contagens ausentes, compara as contagens com as vendas de passagens e confere os nomes dos pontos com a lista oficial. Encontra quatro problemas: uma linha com muitas contagens ausentes, um ônibus com valores impossíveis, dois pontos com nomes antigos e um dia com envios atrasados. Ela registra cada um no registro de problemas com as contagens, as causas prováveis e quem deve ser avisado, seguindo o formato que praticou. Também anota quais problemas afetariam o financiamento, para que os mais importantes sejam tratados primeiro.
+
+### 17.3 Preparando o arquivo
+
+Marta prepara o arquivo da autoridade, deixando de fora as viagens com valores impossíveis e anotando-as na nota de encaminhamento, em vez de inventar substitutos. Ela confere os totais com o relatório mensal, ajustando pelas viagens excluídas, e lista a linha com contagens ausentes para que a autoridade entenda a lacuna. Salva o trabalho com nomes claros em uma pasta datada. Observa que ser transparente sobre as lacunas é melhor do que escondê-las. O avaliador anota depois que o arquivo e a nota de encaminhamento estariam prontos para serem enviados à autoridade.
+
+### 17.4 Explicando ao avaliador
+
+O avaliador pergunta por que Marta não preencheu as contagens ausentes com médias. Ela explica que adivinhar deixaria o arquivo com cara de completo, mas poderia estar errado, e que a curadora e a autoridade é que devem decidir como tratar as lacunas. O avaliador também pergunta como ela impediria que o problema dos nomes dos pontos voltasse. Ela explica a lista oficial e a regra de que os pontos novos entram primeiro nela. O avaliador classifica seu trabalho como competente com mérito. Marta registra os comentários do avaliador no caderno, para usá-los no início de sua vida profissional.
+
+### Exemplo resolvido
+
+Marta planeja uma avaliação de um dia, encontra com suas verificações quatro problemas escondidos e os registra, prepara o arquivo da autoridade anotando abertamente as exclusões e explica por que não adivinhou os valores ausentes.
+
+> **Caso sintético.** A avaliação é sintética.
+
+### Erros e limites
+
+Preencher lacunas com palpites deixa os arquivos com cara de completos, mas menos confiáveis.
+
+### Exercícios
+
+- **EX065 — Problemas encontrados.** Quantos problemas Marta encontrou? *Rubrica:* 3 = quatro;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX066 — Valores impossíveis.** Como Marta tratou as viagens com valores impossíveis? *Rubrica:* 3 = deixou-as de fora e as anotou;; 2 = correto;; 1 = adivinhou;; 0 = nenhuma.
+- **EX067 — Resposta sobre as médias.** Por que não preencher as contagens ausentes com médias? *Rubrica:* 3 = palpites podem estar errados; a curadora e a autoridade devem decidir;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX068 — Resultado da avaliação.** Que resultado Marta recebeu? *Rubrica:* 3 = competente com mérito;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Revisão e próximos passos
+
+### Objetivos de aprendizagem
+
+Você vai (1) revisar as competências adquiridas no curso; (2) planejar a continuidade dos estudos; (3) entender como a governança de dados continua no trabalho.
+
+### 18.1 Competências adquiridas
+
+Marta revisa seu caderno. Ela sabe desenhar formulários, organizar planilhas, escrever verificações em Python, aplicar dimensões de qualidade, normalizar nomes, tratar dados pessoais com cuidado, seguir regras de retenção, relatar e registrar problemas, escrever documentação e apoiar uma curadora. Observa que cada competência se liga a uma ideia de governança: regras, responsabilidade, qualidade e proteção. Sente-se segura para lidar com tarefas de dados no trabalho e para saber quando pedir decisões. Ela lista cada competência com o capítulo em que a praticou e um exemplo do estágio, para descrever sua experiência a futuros empregadores.
+
+### 18.2 Devolutiva
+
+O Sr. Osei e o Sr. Hughes dão a devolutiva final. Elogiam suas verificações cuidadosas e sua recusa em ajustar números sob pressão. Sugerem que ela continue aprendendo Python e pense em cursar o curso de tecnólogo mais tarde. O Sr. Hughes lhe oferece um emprego de técnica de dados na Linkway. Marta aceita, contente porque seu trabalho do estágio com as contagens e os nomes dos pontos vai continuar no novo cargo. Ela registra a devolutiva no caderno e agradece aos dois pelo apoio durante o curso, especialmente nas semanas movimentadas do estágio na Linkway.
+
+### 18.3 Governança no trabalho
+
+O Sr. Osei explica que a governança não termina com o curso. Na Linkway, Marta vai executar verificações, manter registros e documentos atualizados e apoiar os curadores à medida que a empresa muda, por exemplo quando chegam ônibus ou linhas novos. Ela deve continuar perguntando quem é dono de cada decisão, se os dados são bons o bastante para seu uso e se os dados pessoais são tratados corretamente. Essas perguntas continuam úteis em qualquer trabalho com dados. Marta as escreve na última página do caderno, onde pode encontrá-las depressa ao enfrentar novas tarefas com dados.
+
+### 18.4 Próximos passos
+
+Marta planeja manter o caderno na Linkway e entrar em uma comunidade profissional de técnicos de dados. Também planeja aprender mais sobre privacidade, já que boa parte de seu trabalho envolve dados pessoais. O próximo curso desta área trata de privacidade e proteção de dados, onde os dados governados encontram os direitos das pessoas que eles descrevem. O Sr. Osei lhe deseja sucesso e lembra que é o trabalho cuidadoso e honesto que torna os dados confiáveis. Marta agradece ao Sr. Osei pelo ensino e começa na Linkway no mês seguinte, com o caderno sempre à mão.
+
+### Exemplo resolvido
+
+Marta revisa suas competências, dos formulários à curadoria, recebe elogios e uma oferta de emprego na Linkway, aprende que a governança continua no trabalho por meio de perguntas diárias e planeja estudar mais sobre privacidade.
+
+> **Caso sintético.** A revisão é sintética.
+
+### Erros e limites
+
+Tratar a conclusão do curso como o fim do aprendizado deixa as competências se apagarem.
+
+### Exercícios
+
+- **EX069 — Oferta de emprego.** Que emprego o Sr. Hughes oferece? *Rubrica:* 3 = técnica de dados na Linkway;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX070 — Comportamento elogiado.** Que comportamento foi elogiado? *Rubrica:* 3 = verificações cuidadosas e recusa em ajustar números;; 2 = ambos;; 1 = um;; 0 = nenhuma.
+- **EX071 — Perguntas permanentes.** Cite uma pergunta que Marta deve continuar fazendo. *Rubrica:* 3 = quem é dono de cada decisão;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX072 — Estudos futuros.** Que curso Marta pode fazer mais tarde? *Rubrica:* 3 = o curso de tecnólogo;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX048 (as de EX049–EX072 estão na edição em inglês até a tradução dos capítulos correspondentes). Marta Kowalski, o Sr. Daniel Osei, a Southport Technical College, a Linkway Buses e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX072. Marta Kowalski, o Sr. Daniel Osei, a Southport Technical College, a Linkway Buses e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Sessenta ônibus.
 
@@ -670,6 +914,54 @@ Respostas-modelo para EX001–EX048 (as de EX049–EX072 estão na edição em i
 **EX047.** Seis meses.
 
 **EX048.** A data, o número de registros eliminados e a aprovação do dono.
+
+**EX049.** O que foi visto, onde, quando, quantos registros, por que importa e quem foi avisado.
+
+**EX050.** O Sr. Hughes.
+
+**EX051.** Ela repetiu a verificação e confirmou que poucas viagens estavam sem contagem.
+
+**EX052.** Vários problemas vinham dos equipamentos dos ônibus mais antigos.
+
+**EX053.** Passageiros que sobem, número inteiro de zero a 120, registrado pelos sensores das portas.
+
+**EX054.** Na conferência dos totais.
+
+**EX055.** Cada documento, seu dono e a data da última conferência.
+
+**EX056.** O que fazer se o portal estiver fora do ar.
+
+**EX057.** A Sra. Price, uma planejadora.
+
+**EX058.** Uma verificação de contagens muito mais altas que o normal.
+
+**EX059.** Manter as contagens e acrescentar uma nota sobre a excursão escolar.
+
+**EX060.** Permitiu ao Sr. Hughes responder depressa à pergunta da autoridade.
+
+**EX061.** Seis semanas.
+
+**EX062.** Faltava um envio atrasado da noite anterior.
+
+**EX063.** Que os defeitos não eram culpa deles e que consertá-los protege o financiamento.
+
+**EX064.** Estimar quanto tempo as tarefas levam e escrever e-mails mais curtos.
+
+**EX065.** Quatro.
+
+**EX066.** Deixou-as de fora e as anotou na nota de encaminhamento.
+
+**EX067.** Palpites podem estar errados, e a curadora e a autoridade é que devem decidir.
+
+**EX068.** Competente com mérito.
+
+**EX069.** Técnica de dados na Linkway.
+
+**EX070.** Verificações cuidadosas e a recusa em ajustar números sob pressão.
+
+**EX071.** Quem é dono de cada decisão.
+
+**EX072.** O curso de tecnólogo.
 
 <a id="references"></a>
 ## Referências

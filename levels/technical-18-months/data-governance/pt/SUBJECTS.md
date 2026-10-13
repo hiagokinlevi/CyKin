@@ -21,12 +21,12 @@ Edição em português do Brasil, escrita a partir da edição de referência em
 | 2 | [09](book/PLAN.md#ch-09) | Dados pessoais no trabalho | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-09) | [10 · Rascunho](book/MANUSCRIPT.md#ch-10) |
 | 2 | [10](book/PLAN.md#ch-10) | Mantendo os dados seguros | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-10) | [11 · Rascunho](book/MANUSCRIPT.md#ch-11) |
 | 2 | [11](book/PLAN.md#ch-11) | Compartilhamento e solicitações | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-11) | [12 · Rascunho](book/MANUSCRIPT.md#ch-12) |
-| 2 | [12](book/PLAN.md#ch-12) | Guardando e eliminando registros | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-12) | [13 · Plano](book/PLAN.md#ch-13) |
-| 3 | [13](book/PLAN.md#ch-13) | Relatando problemas | 66 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-13)) | [14 · Plano](book/PLAN.md#ch-14) |
-| 3 | [14](book/PLAN.md#ch-14) | Documentação simples | 66 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-14)) | [15 · Plano](book/PLAN.md#ch-15) |
-| 3 | [15](book/PLAN.md#ch-15) | Trabalhando com um curador | 66 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-15)) | [16 · Plano](book/PLAN.md#ch-16) |
-| 3 | [16](book/PLAN.md#ch-16) | Prática no trabalho | 66 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-16)) | [17 · Plano](book/PLAN.md#ch-17) |
-| 3 | [17](book/PLAN.md#ch-17) | Avaliação prática | 66 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-17)) | [18 · Plano](book/PLAN.md#ch-18) |
-| 3 | [18](book/PLAN.md#ch-18) | Revisão e próximos passos | 66 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-18)) | [Curso 050 →](../../privacy-data-protection/pt/SUBJECTS.md) |
+| 2 | [12](book/PLAN.md#ch-12) | Guardando e eliminando registros | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-12) | [13 · Rascunho](book/MANUSCRIPT.md#ch-13) |
+| 3 | [13](book/PLAN.md#ch-13) | Relatando problemas | 66 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-13) | [14 · Rascunho](book/MANUSCRIPT.md#ch-14) |
+| 3 | [14](book/PLAN.md#ch-14) | Documentação simples | 66 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-14) | [15 · Rascunho](book/MANUSCRIPT.md#ch-15) |
+| 3 | [15](book/PLAN.md#ch-15) | Trabalhando com um curador | 66 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-15) | [16 · Rascunho](book/MANUSCRIPT.md#ch-16) |
+| 3 | [16](book/PLAN.md#ch-16) | Prática no trabalho | 66 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-16) | [17 · Rascunho](book/MANUSCRIPT.md#ch-17) |
+| 3 | [17](book/PLAN.md#ch-17) | Avaliação prática | 66 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-17) | [18 · Rascunho](book/MANUSCRIPT.md#ch-18) |
+| 3 | [18](book/PLAN.md#ch-18) | Revisão e próximos passos | 66 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-18) | [Curso 050 →](../../privacy-data-protection/pt/SUBJECTS.md) |
 
 Um próximo passo planejado é um destino de navegação, não uma lição escrita. As colunas de páginas e exercícios são metas editoriais. O livro só estará completo quando seu conteúdo e a renderização em A4 atenderem ao critério de publicação.
