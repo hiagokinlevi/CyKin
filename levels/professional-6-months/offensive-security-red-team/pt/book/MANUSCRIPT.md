@@ -1,7 +1,7 @@
 # Segurança Ofensiva Autorizada e Red Team: Um Guia para o Profissional
 
 - Idioma: português do Brasil (`pt`); curso profissional, seis meses; aproximadamente 360 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–8 de 12 já estão escritos em português, com os exercícios EX001–EX040 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 9–12 (EX041–EX060) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–12 de 12 têm texto didático escrito à mão; os exercícios EX001–EX060 têm resoluções correspondentes; os laboratórios offline usam a biblioteca padrão do Python 3, e suas saídas foram incorporadas a partir de execuções reais. A revisão independente e a verificação de 300 páginas A4 continuam em aberto.
 - Público: profissionais em início de carreira que entram na equipe de segurança de uma organização.
 - Relação com os livros vizinhos: o [livro do curso rápido](../../../../rapid-1-month/offensive-security-red-team/pt/book/MANUSCRIPT.md) é uma introdução em quatro capítulos; o [livro do técnico](../../../../technical-18-months/offensive-security-red-team/pt/book/MANUSCRIPT.md) se aprofunda em ferramentas e verificação. **Este livro é um guia compacto para o profissional.**
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -28,9 +28,7 @@ NIST [SP 800-115](https://doi.org/10.6028/NIST.SP.800-115); [PTES](https://pente
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) |
-
-Capítulos 9–12: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-09), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -588,11 +586,309 @@ O trabalho de caso separa fatos de suposições, age apenas dentro do escopo e e
 
 [← Capítulo 07 (rascunho)](#ch-07) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 09 (rascunho) →](#ch-09)
 
+<a id="ch-09"></a>
+
+## Capítulo 9 — Comunicação, ética e relatórios
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever para executivos e para engenheiros; (2) lidar com pressão para esconder constatações; (3) aplicar a ética da divulgação responsável; (4) estruturar o relatório da HCU.
+
+### 9.1 Duas vozes
+
+Os executivos recebem risco, associados afetados, decisões e datas. Os engenheiros recebem reprodução, evidências e orientação de correção. Misturar as duas coisas produz um relatório que ninguém termina de ler. Leo escreve dois parágrafos para a constatação do cookie-flag, que compartilham os mesmos fatos. O parágrafo para o CISO trata do risco às sessões dos associados, pede uma única decisão, a data de 1º de novembro para a correção do cookie, e nomeia a equipe de segurança de aplicações como responsável. O parágrafo para a segurança de aplicações traz os passos de reprodução e a correção com Secure e HttpOnly, citando o cabeçalho de resposta da homologação e os atributos de Set-Cookie que estão faltando.
+
+### 9.2 Pressão
+
+Alguém pode pedir que uma constatação seja retirada antes de um exame. A resposta de Leo: as constatações ficam; os responsáveis podem acrescentar uma resposta da gestão. A ética vence a conveniência. Os pedidos costumam chegar nas semanas anteriores ao exame anual, quando os responsáveis temem um item aberto na lista dos examinadores. No exemplo resolvido, o pedido veio de um gerente de produto e dizia respeito à constatação de open redirect. Leo manteve a constatação, avisou o supervisor no mesmo dia e se ofereceu para colocar o plano de correção do gerente ao lado da constatação, como resposta da gestão. O registro escrito do pedido vai para as notas do engajamento, para que os examinadores vejam que a constatação sobreviveu à pressão; suavizar fatos sob pressão destrói a confiança quando os examinadores perguntam depois.
+
+### 9.3 Tratamento responsável
+
+Não publique constatações da HCU. Não as compartilhe com amigos. Bugs de fornecedores encontrados em software de terceiros seguem o caminho de divulgação do fornecedor somente com aprovação do CISO. As constatações da HCU ficam dentro do público acordado: a lista de distribuição do relatório nomeia o CISO, o responsável de produto do internet banking, a segurança de aplicações e a equipe de rede, e ninguém mais. Amigos e publicações públicas nunca são público. Se Leo encontrar um bug em um produto de fornecedor usado na HCU, ele para, registra o bug nas notas do ENG-440 com o produto e a versão e pergunta ao CISO antes de usar qualquer caminho de divulgação ao fornecedor.
+
+### 9.4 Estrutura do relatório
+
+Resumo executivo; escopo e métodos; constatações por severidade; observações positivas; plano de reteste; apêndices. O relatório do ENG-440 de Leo segue essa ordem para que o CISO leia primeiro o resumo e as decisões, enquanto os engenheiros abrem os apêndices em busca das evidências. O resumo executivo cabe em uma página e termina com as decisões que o CISO precisa tomar neste mês. Cada apêndice é referenciado pelo número da constatação, para que um engenheiro vá direto às evidências. Omitir as observações positivas ou o plano de reteste deixa os líderes sem equilíbrio ou sem próximo passo.
+
+### 9.5 Linguagem de testes guiados por ameaças
+
+Se a HCU vier a patrocinar um teste no estilo CBEST ou TIBER-EU, os relatórios também descreverão cenários e lacunas de detecção, ainda sem publicar detalhes de exploração. Os relatórios atuais de Leo ficam dentro da revisão web e de VPN da HCU. A linha de escopo do relatório do ENG-440 diz revisão de configuração web e de VPN, palavra por palavra como nas ROE assinadas, para que os examinadores que leem as notas de método não vejam um exercício guiado por ameaças que a HCU não patrocinou. Chamar o ENG-440 de guiado por ameaças também implicaria trabalho de inteligência e um white team que a HCU nunca organizou. Leo mantém a linguagem do CBEST e do TIBER-EU fora do ENG-440 até que o CISO financie esse programa separadamente.
+
+### 9.6 Observações positivas
+
+Os relatórios também devem registrar o que funcionou: MFA nos logins da equipe na VPN, resposta rápida do SOC à mensagem de início, isolamento limpo da homologação. As observações positivas mostram equilíbrio e dizem aos líderes quais investimentos estão dando retorno; líderes que só veem falhas não conseguem dizer quais investimentos manter. Leo limita a observação sobre a VPN aos logins comuns da equipe, porque a constatação da senha de administrador compartilhada mostra que o caminho administrativo ainda não exigia um segundo fator. Cada observação positiva traz evidências, como o tempo que o SOC levou para confirmar a mensagem de início. Manter a homologação isolada é um investimento que o CISO consegue defender na época do orçamento, porque o relatório mostra que ele se sustentou.
+
+### 9.7 Recomendações claras
+
+A recomendação de cada constatação nomeia uma mudança concreta, o papel do responsável e uma data sugerida. "Melhorar a segurança" não é recomendação; "configurar Secure e HttpOnly no cookie de sessão da aplicação de internet banking até 1º de novembro, responsável: segurança de aplicações" é. Linhas vagas do tipo "melhorar a segurança" são reescritas antes de o relatório sair da equipe, e cada linha reescrita nomeia o responsável e a mudança, para que os tickets possam ser abertos sem uma reunião de decodificação. O ticket aberto a partir da linha do cookie é o T-15, que só ficou pronto para fechamento depois que o responsável e a verificação que o `lab_ticket` apontou como ausentes foram preenchidos.
+
+### 9.8 Revisão antes do envio
+
+Um colega lê o resumo executivo em busca de linguagem de culpa, decisões ausentes e jargão não explicado. Essa revisão leva cerca de dez minutos e acontece antes de o resumo chegar ao CISO. Detectar linguagem de culpa, decisões ausentes e jargão antes do envio evita reescrever tudo na véspera de uma reunião com os examinadores. O revisor é alguém de fora do ENG-440, para que o resumo seja lido por uma pessoa que não acompanhou os testes. Os comentários entram no rascunho como alterações controladas, e Leo resolve cada um antes de o relatório sair da equipe.
+
+### Exemplo resolvido (HCU sintética)
+
+Um gerente de produto pede a Leo que retire a constatação de open redirect até depois do exame. Leo recusa, oferece-se para incluir o plano de correção do gerente ao lado da constatação e informa o supervisor.
+
+> **Caso sintético — Harborline Credit Union (HCU).** A cooperativa de crédito, Leo Okonkwo e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Políticas e leis locais variam; siga a autorização da HCU e a sua jurisdição. Este livro nunca autoriza testes em sistemas reais.
+
+### Exercícios
+
+- **EX041 — Frase executiva.** Escreva uma frase executiva sobre o open redirect no internet banking. *Rubrica:* 3 = risco aos associados + pedido de decisão; 2 = parcial; 1 = só jargão; 0 = nada.
+- **EX042 — Detalhe para engenheiros.** De quais três pontos técnicos os engenheiros precisam? *Rubrica:* 3 = reprodução, referência às evidências, orientação de correção; 2 = dois; 1 = um; 0 = nada.
+- **EX043 — Pedido de retirada.** Como Leo responde a um pedido para retirar uma constatação? *Rubrica:* 3 = recusa; oferece resposta da gestão; avisa o supervisor; 2 = recusa; 1 = retira; 0 = nada.
+- **EX044 — Blog público.** Leo pode escrever em um blog sobre as constatações da HCU depois do teste? *Rubrica:* 3 = não; são confidenciais nos termos do acordo; 2 = não; 1 = sim, anonimizadas à vontade; 0 = nada.
+- **EX045 — Ordem do relatório.** Ordene: apêndices, resumo executivo, constatações. *Rubrica:* 3 = resumo, constatações, apêndices; 2 = parcial; 1 = errado; 0 = nada.
+
+### Síntese
+
+Diga a verdade na voz certa; nunca retire constatações sob pressão; mantenha os resultados dentro do acordo.
+
+### Continue estudando — capítulo 09 de 12
+
+[← Capítulo 08 (rascunho)](#ch-08) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 10 (rascunho) →](#ch-10)
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Qualidade e solução de problemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) revisar tickets quanto à completude; (2) destravar uma correção parada; (3) medir a qualidade do engajamento; (4) corrigir falhas de processo sem buscar culpados.
+
+### 10.1 Tickets completos
+
+Cada ticket de correção precisa de um responsável, um prazo e uma nota de verificação. Tickets incompletos escondem risco. O `lab_ticket` marca o T-15 como incompleto em owner e verified, e o T-18 como incompleto em due date; Leo não os conta como prontos para fechamento. T-12 e T-21 são os dois tickets prontos para fechamento, cada um com responsável, prazo e verificação preenchidos, por isso o laboratório mostra dois de quatro tickets prontos para fechamento. Tickets completos são os únicos que não escondem nada, e é por isso que um ticket com qualquer campo em branco fica fora da contagem de prontos para fechamento, por mais perto que sua correção pareça estar.
+
+### 10.2 Correções paradas
+
+Se um prazo vence, Leo verifica se o responsável mudou, se a correção está bloqueada ou se a constatação foi mal compreendida — e então escala com fatos. No T-18, a lacuna é o prazo, por isso Leo combina um com a equipe de rede antes de escalar qualquer coisa. O escalonamento então leva esses fatos em uma linha do tempo de uma página, e não apenas frustração. Um prazo parado sem essa linha do tempo vira uma discussão de humor; com ela, o CISO pode redistribuir o trabalho ou aceitar o risco em uma única reunião, sem precisar decifrar o humor de ninguém.
+
+### 10.3 Métricas de qualidade
+
+Métricas úteis: porcentagem de constatações com responsável, mediana do tempo até o reteste, contagem de pausas de escopo. Métricas de vaidade (contagem bruta de constatações) enganam.
+
+```python
+"""Lab 10: check synthetic remediation tickets for owner, due date and verification note."""
+tickets = [
+    {"id": "T-12", "owner": "app-sec", "due": "2026-11-01", "verified": "retest ok"},
+    {"id": "T-15", "owner": "", "due": "2026-11-01", "verified": ""},
+    {"id": "T-18", "owner": "network", "due": "", "verified": "pending"},
+    {"id": "T-21", "owner": "app-sec", "due": "2026-10-20", "verified": "retest ok"},
+]
+for t in tickets:
+    gaps = [k for k in ("owner", "due", "verified") if not t[k]]
+    print(f"{t['id']} {'OK' if not gaps else 'INCOMPLETE: ' + ','.join(gaps)}")
+print("closed-ready:", sum(1 for t in tickets if t["owner"] and t["due"] and t["verified"] == "retest ok"))
+```
+
+Execute com `python3 lab_ticket.py`. Saída verificada:
+
+```text
+T-12 OK
+T-15 INCOMPLETE: owner,verified
+T-18 INCOMPLETE: due
+T-21 OK
+closed-ready: 2
+```
+
+O laboratório mostra dois de quatro tickets prontos para fechamento. Leo informa ao CISO essa taxa de higiene, a mediana do tempo até o reteste e a contagem de pausas de escopo. Contagens brutas de constatações sem validação ficam fora dos slides de gestão.
+
+A mediana do tempo até o reteste vai da nota do responsável dizendo que a correção está no ar até o registro de aprovação ou reprovação de Leo no ticket. A contagem de pausas de escopo inclui a pergunta sobre o nome de host das 09:40, mostrando ao CISO que as pausas acontecem e são registradas.
+
+### 10.4 Correções de processo sem culpados
+
+Se dois tickets ficaram sem responsável, melhore o modelo, em vez de apenas criticar as pessoas. Depois que dois tickets ficaram sem responsável, Leo atualiza o modelo para que o responsável seja obrigatório na criação, e o rastreador agora se recusa a salvar um novo ticket até que o campo de responsável tenha um nome. As correções de processo impedem que a mesma lacuna volte no mês seguinte. Correções de processo sem culpados são melhores do que apontar indivíduos; a qualidade dos tickets na Harborline Credit Union não pode depender de heróis que se lembrem de perguntar, por isso a HCU mede mudanças no modelo, e não quem esqueceu no mês passado.
+
+### 10.5 Solução de problemas nos testes
+
+Quando um reteste falha inesperadamente, verifique se você atingiu o mesmo sistema e a mesma versão que o responsável corrigiu. Antes de marcar um reteste como reprovado, Leo compara nomes de host, portas e versões de build com a nota de mudança do responsável; se não coincidirem, ele agenda um esclarecimento do alvo. Atingir o slot de homologação errado desperdiça o tempo de todos e cria uma falsa reprovação que envenena a confiança no rastreador. A solução de problemas em um reteste começa pela identidade do alvo, e não pela culpa de quem fez a correção. Cada divergência que ele encontra é anotada no ticket, para que o responsável e Leo concordem sobre o alvo antes do próximo reteste.
+
+### 10.6 Reprovações no reteste
+
+Se um reteste ainda encontra o problema, Leo arquiva as evidências, mantém o ticket aberto e pergunta se a correção foi implantada no sistema que ele testou. Muitos "retestes reprovados" são divergências de versão, e não trabalho ignorado. Divergências de versão são comuns quando os responsáveis corrigem a produção e Leo ainda aponta para um build antigo da homologação. A nota de reteste de Leo registra qual build ele atingiu e qual build o responsável implantou, para que qualquer divergência fique visível, e esclarecer o alvo muitas vezes transforma um reteste reprovado em um ajuste de agenda, em vez de uma conversa sobre culpa. Quando o build certo é atingido e o problema persiste, o ticket continua aberto, com as novas evidências anexadas.
+
+### 10.7 Qualidade por amostragem
+
+Uma vez por mês, Leo sorteia cinco tickets fechados e verifica se existem evidências de verificação. A falta de evidências reabre o ticket, com uma nota ao responsável. Os cinco tickets da amostra são escolhidos ao acaso entre os fechados no mês anterior. A amostragem detecta cedo a deriva do processo; a amostragem mensal é como a Harborline Credit Union percebe a deriva antes de um examinador, e um fechamento sem verificação é rejeitado na revisão semanal. Um ticket reaberto conta contra os números de fechamento que Leo informa ao CISO até que novas evidências de reteste sejam anexadas.
+
+### 10.8 Escada de escalonamento
+
+Os tickets atrasados vão primeiro ao responsável, depois ao gestor do responsável e depois ao CISO, com o prazo original e o número de lembretes. A escada é escrita para que o escalonamento não seja pessoal, e Leo a segue para que um atraso não vire uma briga pessoal. Cada degrau tem uma espera fixa, para que o gestor do responsável só saiba de um atraso depois que o responsável teve a chance de responder. O CISO vê o prazo original e quantos lembretes já foram enviados, o que torna a próxima decisão simples. Essa decisão — redistribuir, prorrogar ou aceitar o risco — é escrita de volta no ticket.
+
+### Exemplo resolvido (HCU sintética)
+
+A verificação de tickets de Leo mostra T-12 e T-21 prontos para fechamento; o T-15 não tem responsável nem verificação; o T-18 não tem prazo. Ele atribui o T-15 à segurança de aplicações, define o prazo do T-18 com a equipe de rede e atualiza o modelo de ticket para exigir esses campos.
+
+> **Caso sintético — Harborline Credit Union (HCU).** A cooperativa de crédito, Leo Okonkwo e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Políticas e leis locais variam; siga a autorização da HCU e a sua jurisdição. Este livro nunca autoriza testes em sistemas reais.
+
+### Exercícios
+
+- **EX046 — Contagem de prontos para fechamento.** O que o laboratório imprime para closed-ready? *Rubrica:* 3 = closed-ready: 2; 2 = 2; 1 = 4; 0 = nada.
+- **EX047 — Lacunas do T-15.** O que está errado com o T-15? *Rubrica:* 3 = faltam o responsável e a verificação; 2 = um dos dois; 1 = vago; 0 = nada.
+- **EX048 — Perguntas sobre a parada.** Dê duas perguntas que Leo faz quando um prazo atrasa. *Rubrica:* 3 = duas entre mudança de responsável, bloqueio, mal-entendido, prioridade; 2 = uma; 1 = culpa; 0 = nada.
+- **EX049 — Métrica ruim.** Por que o "número de constatações" é uma métrica de qualidade fraca? *Rubrica:* 3 = incentiva o ruído / pune a definição cuidadosa do escopo; 2 = parcial; 1 = é a melhor; 0 = nada.
+- **EX050 — Correção no modelo.** Que mudança no modelo evita as lacunas do T-15/T-18? *Rubrica:* 3 = exigir responsável, prazo e verificação antes que o ticket saia da triagem; 2 = parcial; 1 = vago; 0 = nada.
+
+### Síntese
+
+Qualidade é ter tickets completos, métricas honestas e correções de processo quando a mesma lacuna se repete.
+
+### Continue estudando — capítulo 10 de 12
+
+[← Capítulo 09 (rascunho)](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 (rascunho) →](#ch-11)
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Laboratório supervisionado
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir um laboratório supervisionado usando apenas dados sintéticos e os laboratórios anteriores; (2) produzir um minirrelatório; (3) revisar a verificação de escopo de outro aluno; (4) refletir sobre os erros.
+
+### 11.1 Instruções do laboratório
+
+Usando as saídas já produzidas de `lab_roe`, `lab_severity` e `lab_ticket`, monte um minirrelatório em três partes para a HCU: prontidão da autorização, resultado do filtro de descoberta e higiene da correção. A prontidão da autorização usa o `lab_roe`; o filtro de descoberta usa o `lab_severity`; a higiene da correção usa o `lab_ticket`. Cada parte do minirrelatório começa com a saída do laboratório colada literalmente, seguida da decisão que ela sustenta. O minirrelatório do ENG-CLASS-11 liga as três saídas a decisões da HCU — `emergency_contact` ausente, três de cinco mantidos com FLOOR 0.6, dois de quatro prontos para fechamento —, e não a elogios às ferramentas.
+
+### 11.2 Revisão por pares
+
+Troque as notas de verificação de escopo com um colega. Pontue de 0 a 3: exclusões presentes, contato de emergência presente, métodos compatíveis com as ROE. O colega escreve uma pontuação e um motivo de uma linha para cada item, para que o supervisor veja por que um rascunho foi devolvido. Uma pontuação abaixo de três em qualquer item significa que Leo corrige o rascunho antes da aprovação do supervisor. Exclusões, contato de emergência e associação de métodos são as mesmas verificações que interrompem uma janela real. O item do contato de emergência é o que mais importa, porque um campo vazio interrompeu o próprio rascunho de Leo no exemplo resolvido do capítulo 3.
+
+### 11.3 Reflexão
+
+Escreva três linhas: o que você quase fez errado, o que detectou o erro, o que você vai fazer da próxima vez. Cada linha de reflexão nomeia a verificação que detectou o erro, como o `lab_roe` no caso do contato vazio. Linhas honestas sobre quase erros — quase começar com `emergency_contact` vazio — ensinam mais do que uma pontuação perfeita sem aprendizado, e a reflexão de Leo depois do ENG-CLASS-11 vira atualizações da checklist para ROE reais. O supervisor lê as três linhas antes de assinar, e uma reflexão que afirma não ter havido nenhum quase erro é devolvida, porque a reflexão é pontuada pelo aprendizado, e não por uma execução perfeita sem nada escrito.
+
+### 11.4 Aprovação do supervisor
+
+O supervisor só assina se as exclusões e o contato de emergência estiverem presentes, as ROE estiverem completas e nenhum alvo fora do escopo aparecer. Sem essa assinatura, o ENG-CLASS-11 continua sendo apenas prática e não entra no portfólio de Leo como exercício de engajamento concluído. Um laboratório assinado também registra o nome do supervisor e a data, para que o portfólio mostre quem conferiu as exclusões. A aprovação existe para impor as exclusões antes que os hábitos se formem, porque hábitos formados sob pressão de tempo são difíceis de desfazer, e faz com que eles se formem sob as mesmas regras de parada do ENG-440.
+
+### 11.5 Tempo limitado
+
+O laboratório acontece em uma única sessão, com parada rígida, para praticar a disciplina de janela. Quando o relógio para, Leo para de digitar e guarda no cofre o que tem. As partes inacabadas viram notas, e não minutos extras silenciosos. Um minirrelatório parcial guardado no cofre dentro do prazo vale mais do que um completo terminado depois da parada. O supervisor anota o horário de parada no registro do laboratório, o que torna visível qualquer minuto extra. A disciplina de janela sob a pressão do ENG-CLASS-11 corresponde à parada das 12:00 de sábado no ENG-440, para que o hábito se transfira para as janelas reais que afetam os associados.
+
+### 11.6 Regra de pares
+
+Durante o laboratório supervisionado, um aluno conduz e outro confere as ROE a cada passo. Os papéis se invertem na metade. Quem confere pode interromper quem conduz a qualquer momento; as interrupções são pontuadas como boas detecções, e não como falhas. Interromper quem conduz por causa de um método não associado ou de uma exclusão ausente é um sucesso para a dupla. Leo aprende os dois papéis para poder ser tanto o condutor cuidadoso quanto o verificador das ROE em um engajamento real.
+
+A dupla registra cada interrupção no registro do operador, com o passo, a linha das ROE que falhou e quem a apontou, para que o instrutor pontue as detecções a partir do registro, e não da memória. Inverter os papéis na metade significa que nenhum dos alunos passa o laboratório inteiro apenas digitando comandos ou apenas lendo as ROE.
+
+### 11.7 Pacote de evidências do laboratório
+
+O apêndice do minirrelatório inclui as saídas brutas dos laboratórios (`lab_roe`, `lab_severity`, `lab_ticket`), para que o supervisor consiga recalcular as mesmas conclusões. O pacote contém a saída do `lab_roe`, a lista de itens mantidos do `lab_severity`, as contagens de higiene do `lab_ticket` e o caminho no cofre das capturas de tela. Capturas de tela de chat são opcionais; saídas reproduzíveis são obrigatórias, porque capturas de chat sem as saídas brutas não provam o mesmo trabalho. Supervisores que conseguem recalcular as constatações mantidas e os tickets incompletos confiam no minirrelatório, e examinadores e supervisores devem conseguir reconstruir o exercício sem pedir o folclore a Leo.
+
+### 11.8 Limpeza
+
+Ao fim do laboratório, Leo apaga da área de trabalho as cópias locais das evidências sintéticas e confirma que o cofre guarda a única cópia. A limpeza faz parte da checklist avaliada: um arquivo esquecido na área de trabalho ou tokens esquecidos em uma pasta pessoal reprovam o laboratório, mesmo que o relatório seja excelente. A cópia das evidências de aula no cofre é então apagada na data agendada que corresponde à regra de trinta dias praticada para ROE reais. O hábito se transfere para o ENG-440, onde cópias pessoais de evidências são proibidas.
+
+### 11.9 Depois da assinatura
+
+Quando o supervisor assina, Leo arquiva o minirrelatório sob o ENG-CLASS-11 e agenda um debrief de quinze minutos com o mentor para transformar as linhas de reflexão em atualizações da checklist do processo real de ROE. O debrief transforma reflexão em mudança de processo: se Leo quase pulou uma verificação de exclusões, a checklist real das ROE ganha um lembrete mais forte. Ele arquiva a reflexão e as atualizações da checklist antes da próxima janela sintética. Arquivar sob o ENG-CLASS-11 mantém o trabalho de aula separado dos tickets de produção. Uma assinatura sem essas atualizações repete o mesmo quase erro; o portfólio só ganha o ENG-CLASS-11 quando o ciclo se fecha.
+
+### Exemplo resolvido (HCU sintética)
+
+A reflexão de Leo: "Quase agendei sem contato de emergência; a checklist detectou; da próxima vez, rodo o `lab_roe` antes de propor qualquer janela." O supervisor assina o minirrelatório dele.
+
+> **Caso sintético — Harborline Credit Union (HCU).** A cooperativa de crédito, Leo Okonkwo e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Políticas e leis locais variam; siga a autorização da HCU e a sua jurisdição. Este livro nunca autoriza testes em sistemas reais.
+
+### Exercícios
+
+- **EX051 — Partes do minirrelatório.** Cite as três seções das instruções do laboratório. *Rubrica:* 3 = prontidão da autorização, filtro de descoberta, higiene da correção; 2 = duas; 1 = uma; 0 = nada.
+- **EX052 — Item da pontuação entre pares.** Cite dois itens pontuados na revisão por pares. *Rubrica:* 3 = dois entre exclusões, contato de emergência, compatibilidade dos métodos; 2 = um; 1 = vago; 0 = nada.
+- **EX053 — Recusa do supervisor.** Que item ausente faz o supervisor se recusar a assinar? *Rubrica:* 3 = exclusões ausentes, contato de emergência ausente ou alvo fora do escopo presente; 2 = parcial; 1 = poucas constatações; 0 = nada.
+- **EX054 — Qualidade da reflexão.** O que torna útil uma linha de reflexão? *Rubrica:* 3 = erro específico, o que o detectou, próximo comportamento; 2 = parcial; 1 = "fui bem"; 0 = nada.
+- **EX055 — Apenas sintético.** Por que este laboratório proíbe varreduras ao vivo na HCU? *Rubrica:* 3 = autorização/limites de sala de aula; dados sintéticos bastam para as habilidades; 2 = parcial; 1 = ao vivo não tem problema; 0 = nada.
+
+### Síntese
+
+O laboratório supervisionado prova que você sabe recusar autorizações incompletas, filtrar ruído e fechar o ciclo — com dados sintéticos.
+
+### Continue estudando — capítulo 11 de 12
+
+[← Capítulo 10 (rascunho)](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 (rascunho) →](#ch-12)
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Portfólio de prática e revisão final
+
+### Objetivos de aprendizagem
+
+Você vai (1) montar um portfólio com os artefatos deste curso; (2) apresentá-lo a um supervisor; (3) identificar lacunas para o próximo curso; (4) reafirmar as regras de segurança permanentes.
+
+### 12.1 Conteúdo do portfólio
+
+Resultado da checklist das ROE; saída da verificação de escopo; lista de constatações filtrada; um parágrafo executivo de constatação; um parágrafo de constatação para engenheiros; captura de tela da higiene dos tickets; reflexão do laboratório supervisionado. Cada artefato é um que Leo produziu neste curso, com datas. Junto com eles, o portfólio contém o plano com escopo, as constatações validadas com hashes das evidências, o relatório no estilo do ENG-440 e as notas de reteste. Juntos, eles mostram que ele sabe definir escopo, filtrar, escrever para dois públicos, acompanhar correções e refletir — as entregas do profissional descritas no capítulo 1. Apenas dados sintéticos de associados; identificadores reais nunca entram no pacote.
+
+### 12.2 Apresentação
+
+Dez minutos: contexto da HCU, como você se manteve no escopo, as duas principais constatações, o plano de verificação e o que você ainda não vai fazer sozinho. A apresentação ao CISO começa pelas decisões necessárias e depois passa ao método e aos apêndices de evidências. Leo pratica uma versão de dez minutos para que a urgência do dia de pagamento não force um despejo cheio de jargão que enterre o responsável e o prazo do cookie-flag. Seus dez minutos terminam com o que ele ainda não vai fazer sozinho, como conduzir um cenário guiado por ameaças. A honestidade sobre os limites faz parte da apresentação, e não é uma nota de rodapé.
+
+### 12.3 Lacunas
+
+Leo registra que ainda não conduziu um cenário guiado por ameaças (no estilo CBEST/TIBER) nem uma passagem completa pelo WSTG — temas de cursos mais longos. Essas lacunas entram no plano de desenvolvimento dele, ao lado do portfólio. Cursos mais longos e prática supervisionada as fecham; reivindicá-las agora deturparia sua prontidão. Os limites da própria HCU, a exclusão do AS/400 e a ausência de um exercício guiado por ameaças, são escritos no portfólio como limites assumidos, e não escondidos, para que os examinadores não inventem uma cobertura que não vão encontrar nas ROE. Nomear as lacunas mostra julgamento.
+
+### 12.4 Regras permanentes
+
+Sem autorização, não há teste. Nada de código de exploração em sistemas reais. Parar significa parar. As evidências permanecem controladas. Leo imprime essas quatro linhas na capa do portfólio e na primeira página de toda pasta de engajamento; elas são as regras permanentes quando a pressão aumenta antes de um exame. A capa também reafirma as regras das ROE sem as quais Leo não começa: homologação primeiro, nada de password spraying, parar se dados de associados aparecerem inesperadamente e apagar em até 30 dias. Ela traz ainda a regra do contato de emergência, porque esse campo vazio quase deu início à primeira janela de Leo, e ele continua sem começar enquanto o campo `emergency_contact` não estiver preenchido.
+
+### 12.5 Passagem de bastão
+
+Guarde o portfólio no registro de treinamento da HCU, para que o próximo supervisor veja evidências, e não apenas uma marca de conclusão. Uma marca de conclusão sem artefatos obriga o próximo supervisor a redescobrir os pontos fortes e as lacunas de Leo; o registro de treinamento deve se abrir para as evidências. A passagem para o próximo analista inclui o caminho no cofre, a situação dos tickets abertos T-15 e T-18 e o campo de contato de emergência agora preenchido. Um e-mail sozinho não é passagem de bastão e deixa o próximo analista adivinhando, por isso uma demonstração guiada do ambiente de jump é agendada antes de Leo se afastar.
+
+### 12.6 Integridade do portfólio
+
+Os artefatos do portfólio precisam ser os que Leo realmente produziu neste curso, com datas. Substituí-los por amostras bem acabadas tiradas da internet deturpa a habilidade e é tratado como desonestidade acadêmica; relatórios de exemplo baixados, por mais bem acabados que sejam, não são evidência da habilidade de Leo, e examinadores que pedirem que ele explique um artefato que não escreveu vão perceber. A integridade do portfólio também significa hashes nos arquivos de evidência e um registro de alterações quando uma constatação é atualizada depois da revisão por pares. Edições discretas depois da assinatura são recusadas; o CISO vê o mesmo pacote que o colega revisou.
+
+### 12.7 Formação continuada
+
+Depois da aceitação, Leo agenda uma habilidade para aprofundar a cada mês — neste trimestre, o gerenciamento de sessões do OWASP WSTG na homologação, sob autorização — e a registra ao lado do portfólio, para que o progresso fique visível nas revisões. A formação continuada de Leo também inclui atualizações do WSTG e revisões da técnica T1078 do ATT&CK, registradas ao lado do portfólio para que os examinadores vejam que ele está atualizado. Palestras em conferências que publicariam caminhos específicos da HCU ficam fora da lista de formação continuada de propósito. A habilidade do mês é escolhida entre as lacunas do plano de desenvolvimento dele, de modo que uma passagem completa pelo WSTG é construída uma área por vez.
+
+### 12.8 Reafirmação de segurança na capa do portfólio
+
+A primeira página do portfólio de Leo declara: nenhum sistema real foi testado neste curso; todos os laboratórios usaram dados sintéticos; código de exploração não foi usado nem solicitado. Quem abre o portfólio vê primeiro esse limite de segurança: apenas laboratórios sintéticos, nenhuma varredura ao vivo na HCU, nenhum código de exploração. Essa reafirmação protege Leo e a HCU se o arquivo for compartilhado com um novo supervisor ou examinador. A capa também reafirma que os testes encontram, sob permissão por escrito, o que a aplicação de patches, os logs e o treinamento deixaram passar, e que um relatório limpo ainda deixa o endurecimento do dia a dia para as equipes de produto e de rede. A linguagem de segurança não é um apêndice; é a primeira página.
+
+### Exemplo resolvido (HCU sintética)
+
+Leo apresenta; o supervisor aceita o portfólio com uma ação: acrescentar o quase erro do contato de emergência à página de integração da equipe. Link do próximo curso: Segurança de IA (043).
+
+> **Caso sintético — Harborline Credit Union (HCU).** A cooperativa de crédito, Leo Okonkwo e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Políticas e leis locais variam; siga a autorização da HCU e a sua jurisdição. Este livro nunca autoriza testes em sistemas reais.
+
+### Exercícios
+
+- **EX056 — Artefatos do portfólio.** Liste cinco artefatos do portfólio. *Rubrica:* 3 = cinco da lista de conteúdo; 2 = três; 1 = um; 0 = nada.
+- **EX057 — O que a apresentação precisa dizer.** O que Leo precisa dizer sobre o escopo na apresentação? *Rubrica:* 3 = como ele se manteve no escopo / exclusões / pausar para perguntar; 2 = parcial; 1 = pular o assunto; 0 = nada.
+- **EX058 — Honestidade sobre lacunas.** Por que listar lacunas no portfólio? *Rubrica:* 3 = mostra os limites; orienta o próximo treinamento; gera confiança; 2 = parcial; 1 = esconder as lacunas; 0 = nada.
+- **EX059 — Regra permanente.** Enuncie a regra permanente sobre código de exploração. *Rubrica:* 3 = nunca em sistemas reais / não ensinado para uso fora da política de laboratório autorizado; 2 = parcial; 1 = tudo bem se tiver cuidado; 0 = nada.
+- **EX060 — Próximo curso.** Qual é o número e o tema do próximo curso? *Rubrica:* 3 = 043 Segurança de IA; 2 = IA; 1 = errado; 0 = nada.
+
+### Síntese
+
+Um portfólio prova a prática autorizada; as lacunas e as regras de segurança acompanham você até o próximo curso.
+
+### Continue estudando — capítulo 12 de 12
+
+[← Capítulo 11 (rascunho)](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções ↓](#worked-results) · [Próximo curso pelo índice de capítulos →](../SUBJECTS.md)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX040 (as de EX041–EX060 estão na edição em inglês até a tradução dos capítulos correspondentes). A Harborline Credit Union, Leo Okonkwo e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060. A Harborline Credit Union, Leo Okonkwo e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Arquitetura, monitoramento de segurança e resposta a incidentes (aplicação de patches e treinamento da equipe também contam).
 
@@ -673,6 +969,46 @@ Respostas-modelo para EX001–EX040 (as de EX041–EX060 estão na edição em i
 **EX039.** Uma senha de VPN exposta fora da HCU poderia permitir que alguém alcançasse serviços da equipe; esse risco precisa de visibilidade imediata do CISO.
 
 **EX040.** T1078 Valid Accounts.
+
+**EX041.** "O internet banking pode enviar associados para sites controlados por atacantes depois do login; pedimos aprovação para corrigir em até sete dias."
+
+**EX042.** Passos de reprodução, referência às evidências e orientação concreta de correção.
+
+**EX043.** Recusar a remoção, oferecer-se para incluir uma resposta da gestão ao lado da constatação e informar o supervisor sobre o pedido.
+
+**EX044.** Não. Os resultados do engajamento são confidenciais nos termos do acordo, a menos que a HCU autorize explicitamente uma divulgação pública.
+
+**EX045.** Resumo executivo, depois as constatações, depois os apêndices.
+
+**EX046.** `closed-ready: 2`
+
+**EX047.** INCOMPLETE: owner,verified (faltam o responsável e a verificação).
+
+**EX048.** O responsável mudou? Que bloqueio está em aberto? A constatação foi mal compreendida?
+
+**EX049.** Ela recompensa o registro de ruído e pune a validação cuidadosa; a severidade e a qualidade do fechamento importam mais.
+
+**EX050.** Tornar obrigatórios os campos de responsável, prazo e verificação antes que um ticket saia da triagem.
+
+**EX051.** Prontidão da autorização, resultado do filtro de descoberta e higiene da correção.
+
+**EX052.** Exclusões presentes; contato de emergência presente; métodos compatíveis com as ROE.
+
+**EX053.** Exclusões ausentes, contato de emergência ausente ou qualquer alvo fora do escopo no plano.
+
+**EX054.** Ela nomeia um quase erro específico, o que o detectou e um comportamento concreto para a próxima vez.
+
+**EX055.** A autorização de sala de aula cobre apenas exercícios sintéticos; uma varredura ao vivo exige ROE próprias e colocaria serviços reais em risco.
+
+**EX056.** Resultado da checklist das ROE, saída da verificação de escopo, constatações filtradas, parágrafo executivo, parágrafo para engenheiros (os tickets e a reflexão também contam).
+
+**EX057.** Como ele se manteve dentro das ROE, incluindo as exclusões e pelo menos um exemplo de pausar para perguntar.
+
+**EX058.** Limites honestos orientam o próximo curso e mostram ao supervisor o que ainda não deve ser atribuído sem supervisão.
+
+**EX059.** Nunca usar código de exploração contra sistemas reais; este curso não o fornece.
+
+**EX060.** Curso 043: segurança de IA.
 
 <a id="references"></a>
 ## Referências

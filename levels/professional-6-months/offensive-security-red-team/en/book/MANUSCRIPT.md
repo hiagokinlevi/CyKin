@@ -598,69 +598,35 @@ You will (1) write for executives and for engineers; (2) handle pressure to hide
 
 ### 9.1 Two voices
 
-Executives get risk, affected members, decisions and dates. Engineers get reproduction, evidence and fix guidance. Mixing them produces a report nobody finishes.
-
-Leo drafts two paragraphs for the cookie-flag finding: one for the CISO on member-session risk and the decision needed, and one for app-sec with reproduction steps and the Secure and HttpOnly fix. Both share the same facts.
-
-The CISO paragraph asks for one decision, the 1 November date for the cookie fix, and names app-sec as owner. The app-sec paragraph quotes the staging response header and the Set-Cookie attributes that are missing.
+Executives get risk, affected members, decisions and dates. Engineers get reproduction, evidence and fix guidance. Mixing them produces a report nobody finishes. Leo drafts two paragraphs for the cookie-flag finding that share the same facts. The CISO paragraph covers member-session risk, asks for one decision, the 1 November date for the cookie fix, and names app-sec as owner. The app-sec paragraph gives reproduction steps and the Secure and HttpOnly fix, quoting the staging response header and the Set-Cookie attributes that are missing.
 
 ### 9.2 Pressure
 
-Someone may ask to drop a finding before an exam. Leo's answer: findings stay; owners may add a management response. Ethics beat convenience.
-
-Requests usually arrive in the weeks before the annual exam, when owners fear an open item on the examiner list. Leo keeps the finding, invites a management response, and records the request. Softening facts under pressure destroys trust when examiners ask later.
-
-In the worked example the request came from a product manager and concerned the open-redirect finding. Leo told his supervisor the same day and offered to place the manager's remediation plan beside the finding. The written record of the request goes into the engagement notes, so examiners can see the finding survived pressure.
+Someone may ask to drop a finding before an exam. Leo's answer: findings stay; owners may add a management response. Ethics beat convenience. Requests usually arrive in the weeks before the annual exam, when owners fear an open item on the examiner list. In the worked example the request came from a product manager and concerned the open-redirect finding. Leo kept the finding, told his supervisor the same day and offered to place the manager's remediation plan beside the finding as a management response. The written record of the request goes into the engagement notes, so examiners can see the finding survived pressure; softening facts under pressure destroys trust when examiners ask later.
 
 ### 9.3 Responsible handling
 
-Do not publish HCU findings publicly. Do not share with friends. Vendor bugs found in third-party software follow the vendor's disclosure path only with CISO approval.
-
-HCU findings stay inside the agreed audience. If Leo finds a bug in a vendor product used at HCU, he stops and asks the CISO before any vendor disclosure path is used. Friends and public posts are never an audience.
-
-The report's distribution list names the CISO, the online-banking product owner, app-sec and the network team, and nobody else. A vendor bug would be logged in the ENG-440 notes with product and version, pending the CISO's decision on disclosure.
+Do not publish HCU findings publicly. Do not share with friends. Vendor bugs found in third-party software follow the vendor's disclosure path only with CISO approval. HCU findings stay inside the agreed audience: the report's distribution list names the CISO, the online-banking product owner, app-sec and the network team, and nobody else. Friends and public posts are never an audience. If Leo finds a bug in a vendor product used at HCU, he stops and logs it in the ENG-440 notes with product and version, and asks the CISO before any vendor disclosure path is used.
 
 ### 9.4 Report structure
 
-Executive summary; scope and methods; findings by severity; positive observations; retest plan; appendices.
-
-Leo's ENG-440 report follows that order so the CISO can read the summary and decisions first, while engineers open the appendices for evidence. Skipping positive observations or the retest plan leaves leaders without balance or a next step.
-
-Each appendix is referenced by finding number, so an engineer can jump straight to the evidence. The executive summary fits on one page and ends with the decisions the CISO must take this month.
+Executive summary; scope and methods; findings by severity; positive observations; retest plan; appendices. Leo's ENG-440 report follows that order so the CISO can read the summary and decisions first, while engineers open the appendices for evidence. The executive summary fits on one page and ends with the decisions the CISO must take this month. Each appendix is referenced by finding number, so an engineer can jump straight to the evidence. Skipping positive observations or the retest plan leaves leaders without balance or a next step.
 
 ### 9.5 Threat-led language
 
-If HCU later sponsors a CBEST or TIBER-EU style test, reports also describe scenarios and detection gaps, still without publishing exploit detail.
-
-Leo's current reports stay within HCU's web and VPN review. Threat-led language is a future skill; he does not pretend a configuration review was a CBEST-style scenario.
-
-The scope line in the ENG-440 report reads web and VPN configuration review, matching the signed ROE word for word. Calling ENG-440 threat-led would also imply intelligence work and a white team that HCU never organised.
-
-Examiners reading the method notes should see a web and VPN configuration review, not a threat-led exercise HCU has not sponsored. Leo keeps CBEST and TIBER-EU language out of ENG-440 until the CISO funds that programme separately.
+If HCU later sponsors a CBEST or TIBER-EU style test, reports also describe scenarios and detection gaps, still without publishing exploit detail. Leo's current reports stay within HCU's web and VPN review. The scope line in the ENG-440 report reads web and VPN configuration review, matching the signed ROE word for word, so examiners reading the method notes do not see a threat-led exercise HCU has not sponsored. Calling ENG-440 threat-led would also imply intelligence work and a white team that HCU never organised. Leo keeps CBEST and TIBER-EU language out of ENG-440 until the CISO funds that programme separately.
 
 ### 9.6 Positive observations
 
-Reports should also note what worked: MFA on staff VPN logins, rapid SOC response to the start message, clean staging isolation. Positive observations show balance and tell leaders which investments are paying off.
-
-Leo limits the VPN observation to ordinary staff logins, because the shared admin password finding shows that the admin path did not yet require a second factor. Leaders who only see failures cannot tell which investments to keep.
-
-Each positive observation carries evidence, such as the time the SOC took to acknowledge the start message. Keeping staging isolated is an investment the CISO can defend at budget time because the report shows it held.
+Reports should also note what worked: MFA on staff VPN logins, rapid SOC response to the start message, clean staging isolation. Positive observations show balance and tell leaders which investments are paying off; leaders who only see failures cannot tell which investments to keep. Leo limits the VPN observation to ordinary staff logins, because the shared admin password finding shows that the admin path did not yet require a second factor. Each positive observation carries evidence, such as the time the SOC took to acknowledge the start message. Keeping staging isolated is an investment the CISO can defend at budget time because the report shows it held.
 
 ### 9.7 Clear recommendations
 
-Each finding's recommendation names a concrete change, an owner role and a suggested date. "Improve security" is not a recommendation; "set Cookie Secure and HttpOnly on the session cookie in the online-banking app by 1 November, owner: app-sec" is.
-
-For the cookie finding, Leo writes the Secure and HttpOnly change, app-sec as owner, and a date such as 1 November. Vague improve-security lines are rewritten before the report leaves the team.
-
-The ticket opened from that line is T-15, which only became closed-ready once lab_ticket's missing owner was filled. Each rewritten line names the owner and the change, so tickets can be opened without a decoding meeting.
+Each finding's recommendation names a concrete change, an owner role and a suggested date. "Improve security" is not a recommendation; "set Cookie Secure and HttpOnly on the session cookie in the online-banking app by 1 November, owner: app-sec" is. Vague improve-security lines are rewritten before the report leaves the team, and each rewritten line names the owner and the change, so tickets can be opened without a decoding meeting. The ticket opened from the cookie line is T-15, which only became closed-ready once the owner and verification that lab_ticket reported missing were filled.
 
 ### 9.8 Review before send
 
-A peer reads the executive summary for blame language, missing decisions and unexplained jargon. Ten minutes of review prevents a rewrite under examiner pressure.
-
-That review takes about ten minutes and happens before the summary reaches the CISO. Catching those before send avoids a rewrite the night before an examiner meeting.
-
-The peer is someone outside ENG-440, so the summary is read by a person who did not sit through the testing. Comments go into the draft as tracked changes, and Leo resolves each one before the report leaves the team.
+A peer reads the executive summary for blame language, missing decisions and unexplained jargon. That review takes about ten minutes and happens before the summary reaches the CISO. Catching blame language, missing decisions and jargon before send avoids a rewrite the night before an examiner meeting. The peer is someone outside ENG-440, so the summary is read by a person who did not sit through the testing. Comments go into the draft as tracked changes, and Leo resolves each one before the report leaves the team.
 
 ### Worked example (synthetic HCU)
 
@@ -698,21 +664,11 @@ You will (1) review tickets for completeness; (2) troubleshoot a stalled remedia
 
 ### 10.1 Complete tickets
 
-Each remediation ticket needs an owner, a due date and a verification note. Incomplete tickets hide risk.
-
-lab_ticket marks T-15 incomplete for owner and verified, and T-18 incomplete for due date. Leo does not count those as closed-ready. Complete tickets are the only ones that hide nothing.
-
-T-12 and T-21 are the two closed-ready tickets, each with owner, due date and verification filled. Leo does not count those as closed-ready; the lab shows two of four tickets closed-ready, and complete tickets are the only ones that hide nothing.
+Each remediation ticket needs an owner, a due date and a verification note. Incomplete tickets hide risk. lab_ticket marks T-15 incomplete for owner and verified, and T-18 incomplete for due date; Leo does not count those as closed-ready. T-12 and T-21 are the two closed-ready tickets, each with owner, due date and verification filled, so the lab shows two of four tickets closed-ready. Complete tickets are the only ones that hide nothing, which is why a ticket with any blank field stays off the closed-ready count however close its fix appears to be.
 
 ### 10.2 Stalled fixes
 
-If a due date passes, Leo checks whether the owner changed, the fix is blocked, or the finding was misunderstood — then escalates with facts.
-
-When a due date passes, Leo checks facts first: new owner, blocked dependency, or misunderstood finding. Escalation then carries those facts, not frustration.
-
-For T-18 the gap is a due date, so Leo agrees one with the network team before anything is escalated. Escalation then carries those facts on a one-page timeline, not frustration alone, so the CISO can decide without decoding mood.
-
-Facts first — new owner, blocked dependency, or misunderstood finding — then escalate. A stalled due date without that timeline becomes a mood argument; with it, the CISO can reassign or accept risk in one meeting.
+If a due date passes, Leo checks whether the owner changed, the fix is blocked, or the finding was misunderstood — then escalates with facts. For T-18 the gap is a due date, so Leo agrees one with the network team before anything is escalated. Escalation then carries those facts on a one-page timeline, not frustration alone. A stalled due date without that timeline becomes a mood argument; with it, the CISO can reassign or accept risk in one meeting without decoding mood.
 
 ### 10.3 Quality metrics
 
@@ -748,47 +704,23 @@ Median time to retest runs from the owner's fix-live note to Leo's pass or fail 
 
 ### 10.4 Blameless process fixes
 
-If two tickets lacked owners, improve the template rather than only criticising people.
-
-After two tickets lacked owners, Leo updates the template so owner is required at creation. Process fixes stop the same gap from returning next month.
-
-After the change, the tracker refuses to save a new ticket until the owner field holds a name. Process fixes stop the same gap from returning next month; ticket quality at Harborline Credit Union must not depend on heroes remembering to ask.
-
-After two tickets lacked owners, requiring owner at creation stopped the gap from returning. Blameless process fixes beat naming individuals; Harborline Credit Union measures template changes, not who forgot last month.
+If two tickets lacked owners, improve the template rather than only criticising people. After two tickets lacked owners, Leo updates the template so owner is required at creation, and the tracker now refuses to save a new ticket until the owner field holds a name. Process fixes stop the same gap from returning next month. Blameless process fixes beat naming individuals; ticket quality at Harborline Credit Union must not depend on heroes remembering to ask, so HCU measures template changes, not who forgot last month.
 
 ### 10.5 Troubleshooting tests
 
-When a retest fails unexpectedly, verify you hit the same system and version the owner fixed.
-
-Before he marks a retest failed, Leo matches hostnames, ports and build versions to the owner's change note so the wrong staging slot is not blamed. Hitting the wrong staging slot wastes everyone's time.
-
-A retest fail requires hostname, port and build version checked against the change note; otherwise Leo schedules a target clarification instead. It also creates a false fail that poisons trust in the tracker.
-
-Confirming hostnames, ports and build versions against the owner's change note prevents false fails on the wrong staging slot. Troubleshooting a retest starts with target identity, not with blame for the fix author.
+When a retest fails unexpectedly, verify you hit the same system and version the owner fixed. Before he marks a retest failed, Leo matches hostnames, ports and build versions to the owner's change note; if they do not match, he schedules a target clarification instead. Hitting the wrong staging slot wastes everyone's time and creates a false fail that poisons trust in the tracker. Troubleshooting a retest starts with target identity, not with blame for the fix author. Each mismatch he finds is noted on the ticket, so the owner and Leo agree on the target before the next retest.
 
 ### 10.6 Retest failures
 
-If a retest still finds the issue, Leo files evidence, keeps the ticket open, and asks whether the fix was deployed to the system he tested. Many "failed retests" are version mismatches, not ignored work.
-
-Version mismatches are common when owners fix production and Leo still points at an old staging build. Clarifying the target often turns a failed retest into a scheduling fix rather than a blame conversation.
-
-Leo's retest note records which build he hit and which build the owner deployed, so any mismatch is visible. When the right build is reached and the issue persists, the ticket stays open with the new evidence attached.
+If a retest still finds the issue, Leo files evidence, keeps the ticket open, and asks whether the fix was deployed to the system he tested. Many "failed retests" are version mismatches, not ignored work. Version mismatches are common when owners fix production and Leo still points at an old staging build. Leo's retest note records which build he hit and which build the owner deployed, so any mismatch is visible, and clarifying the target often turns a failed retest into a scheduling fix rather than a blame conversation. When the right build is reached and the issue persists, the ticket stays open with the new evidence attached.
 
 ### 10.7 Sampling quality
 
-Once a month Leo samples five closed tickets and checks that evidence of verification exists. Missing evidence reopens the ticket. Sampling catches process drift early.
-
-If verification evidence is missing, the ticket reopens with a note to the owner. Monthly sampling is how HCU notices drift before an examiner does.
-
-The five sampled tickets are picked at random from those closed in the previous month. Monthly sampling is how Harborline Credit Union notices drift before an examiner does; closure without verification is rejected in the weekly review.
+Once a month Leo samples five closed tickets and checks that evidence of verification exists. Missing evidence reopens the ticket with a note to the owner. The five sampled tickets are picked at random from those closed in the previous month. Sampling catches process drift early; monthly sampling is how Harborline Credit Union notices drift before an examiner does, and closure without verification is rejected in the weekly review. A reopened ticket counts against the closure figures Leo reports to the CISO until fresh retest evidence is attached.
 
 ### 10.8 Escalation ladder
 
-Tickets slip first to the owner, then to the owner's manager, then to the CISO with the original due date and the number of nudges. The ladder is written so escalation is not personal.
-
-Leo follows the written ladder so a slip is not a personal fight. The CISO sees the original due date and how many nudges already happened, which makes the next decision straightforward.
-
-Each rung has a fixed wait, so the owner's manager hears about a slip only after the owner has had a chance to answer. The CISO's decision, whether to reassign, extend or accept the risk, is written back onto the ticket.
+Tickets slip first to the owner, then to the owner's manager, then to the CISO with the original due date and the number of nudges. The ladder is written so escalation is not personal, and Leo follows it so a slip is not a personal fight. Each rung has a fixed wait, so the owner's manager hears about a slip only after the owner has had a chance to answer. The CISO sees the original due date and how many nudges already happened, which makes the next decision straightforward. That decision, whether to reassign, extend or accept the risk, is written back onto the ticket.
 
 ### Worked example (synthetic HCU)
 
@@ -826,49 +758,23 @@ You will (1) run a supervised lab using only synthetic data and prior labs; (2) 
 
 ### 11.1 Lab brief
 
-Using lab_roe, lab_severity and lab_ticket outputs already produced, build a three-part mini report for HCU: authorization readiness, discovery filter result, remediation hygiene.
-
-Authorization readiness uses lab_roe; discovery filter uses lab_severity; remediation hygiene uses lab_ticket. The mini report ties the three outputs to HCU decisions, not to tool praise.
-
-Each part of the mini report starts with the lab output pasted verbatim, followed by the decision it supports. The mini report for ENG-CLASS-11 ties the three outputs to HCU decisions — missing emergency_contact, three of five kept at FLOOR 0.6, two of four closed-ready — not to tool praise.
+Using lab_roe, lab_severity and lab_ticket outputs already produced, build a three-part mini report for HCU: authorization readiness, discovery filter result, remediation hygiene. Authorization readiness uses lab_roe; discovery filter uses lab_severity; remediation hygiene uses lab_ticket. Each part of the mini report starts with the lab output pasted verbatim, followed by the decision it supports. The mini report for ENG-CLASS-11 ties the three outputs to HCU decisions — missing emergency_contact, three of five kept at FLOOR 0.6, two of four closed-ready — not to tool praise.
 
 ### 11.2 Peer review
 
-Swap scope-check notes with a peer. Score 0–3 on: exclusions present, emergency contact present, methods match ROE.
-
-A peer score below three on any item means Leo fixes the draft before the supervisor gate. Exclusions, emergency contact and method mapping are the same checks that stop a real window.
-
-The peer writes a score and a one-line reason for each item, so the supervisor can see why a draft was sent back. The emergency contact item matters most, because an empty field stopped Leo's own draft in the worked example.
+Swap scope-check notes with a peer. Score 0–3 on: exclusions present, emergency contact present, methods match ROE. The peer writes a score and a one-line reason for each item, so the supervisor can see why a draft was sent back. A peer score below three on any item means Leo fixes the draft before the supervisor gate. Exclusions, emergency contact and method mapping are the same checks that stop a real window. The emergency contact item matters most, because an empty field stopped Leo's own draft in Chapter 3's worked example.
 
 ### 11.3 Reflection
 
-Write three lines: what you nearly did wrong, what caught it, what you will do next time.
-
-Leo's reflection after ENG-CLASS-11 becomes checklist updates for real ROEs. Honest lines about near-misses teach more than a perfect score with no learning.
-
-Each reflection line names the check that caught the mistake, such as lab_roe for the empty contact. The supervisor reads the three lines before signing, and a reflection that claims no near-miss is sent back.
-
-Honest near-miss lines — almost starting with empty emergency_contact — become checklist updates for real ROEs. Reflection after ENG-CLASS-11 is scored for learning, not for a perfect run with nothing written down.
+Write three lines: what you nearly did wrong, what caught it, what you will do next time. Each reflection line names the check that caught the mistake, such as lab_roe for the empty contact. Honest near-miss lines — almost starting with empty emergency_contact — teach more than a perfect score with no learning, and Leo's reflection after ENG-CLASS-11 becomes checklist updates for real ROEs. The supervisor reads the three lines before signing, and a reflection that claims no near-miss is sent back, because reflection is scored for learning, not for a perfect run with nothing written down.
 
 ### 11.4 Supervisor gate
 
-The supervisor signs only if exclusions and emergency contact are present and no out-of-scope target appears.
-
-Without that signature, the lab is practice only and does not enter Leo's portfolio as a completed engagement exercise. The gate exists to enforce exclusions before habits form.
-
-A signed lab also records the supervisor's name and date, so the portfolio shows who checked the exclusions. A complete ROE is part of the same gate, because habits formed under time pressure are hard to undo.
-
-The supervisor gate enforces exclusions and a complete ROE before the lab enters the portfolio. Without that signature ENG-CLASS-11 stays practice only, so habits form under the same stop rules as ENG-440.
+The supervisor signs only if exclusions and emergency contact are present, the ROE is complete and no out-of-scope target appears. Without that signature, ENG-CLASS-11 stays practice only and does not enter Leo's portfolio as a completed engagement exercise. A signed lab also records the supervisor's name and date, so the portfolio shows who checked the exclusions. The gate exists to enforce exclusions before habits form, because habits formed under time pressure are hard to undo, and it makes them form under the same stop rules as ENG-440.
 
 ### 11.5 Time box
 
-The lab runs in one sitting with a hard stop, practising window discipline.
-
-When the clock stops, Leo stops typing and vaults what he has. Unfinished parts become notes, not silent extra minutes, so window discipline is practised under the same pressure as ENG-440.
-
-A partial mini report vaulted on time scores better than a complete one finished after the stop. The supervisor notes the stop time on the lab record, which makes any extra minutes visible.
-
-Unfinished parts become notes at the clock stop, not silent extra minutes. Window discipline under ENG-CLASS-11 pressure matches the Saturday 12:00 stop so the habit transfers to real member-facing windows.
+The lab runs in one sitting with a hard stop, practising window discipline. When the clock stops, Leo stops typing and vaults what he has. Unfinished parts become notes, not silent extra minutes. A partial mini report vaulted on time scores better than a complete one finished after the stop. The supervisor notes the stop time on the lab record, which makes any extra minutes visible. Window discipline under ENG-CLASS-11 pressure matches the Saturday 12:00 stop on ENG-440, so the habit transfers to real member-facing windows.
 
 ### 11.6 Pairing rule
 
@@ -880,27 +786,15 @@ The pair records each halt in the operator log with the step, the ROE line it fa
 
 ### 11.7 Lab evidence pack
 
-The mini report appendix includes the raw lab outputs (lab_roe, lab_severity, lab_ticket) so the supervisor can recompute the same conclusions. Screenshots of chat are optional; reproducible outputs are required.
-
-Supervisors who can recompute kept findings and incomplete tickets trust the mini report. Chat screenshots without the raw outputs do not prove the same work.
-
-The lab evidence pack includes lab_roe output, lab_severity kept list, lab_ticket hygiene counts, and the vault path for screenshots. Examiners and supervisors should reconstruct the exercise without asking Leo for folklore.
+The mini report appendix includes the raw lab outputs (lab_roe, lab_severity, lab_ticket) so the supervisor can recompute the same conclusions. The pack holds the lab_roe output, the lab_severity kept list, the lab_ticket hygiene counts and the vault path for screenshots. Screenshots of chat are optional; reproducible outputs are required, because chat screenshots without the raw outputs do not prove the same work. Supervisors who can recompute kept findings and incomplete tickets trust the mini report, and examiners and supervisors should reconstruct the exercise without asking Leo for folklore.
 
 ### 11.8 Cleanup
 
-At lab end, Leo deletes local copies of synthetic evidence from the desktop and confirms the vault holds the only copy. Cleanup is part of the graded checklist.
-
-Graded cleanup means a leftover file on the desktop fails the lab even if the report is excellent. The habit transfers to ENG-440, where personal copies of evidence are forbidden.
-
-Cleanup deletes classroom evidence on the diary date that matches the thirty-day rule practised for real ROEs. Leftover tokens in a personal folder fail the cleanup check even if the report was excellent.
+At lab end, Leo deletes local copies of synthetic evidence from the desktop and confirms the vault holds the only copy. Cleanup is part of the graded checklist: a leftover file on the desktop or leftover tokens in a personal folder fail the lab even if the report is excellent. The vault copy of classroom evidence is then deleted on the diary date that matches the thirty-day rule practised for real ROEs. The habit transfers to ENG-440, where personal copies of evidence are forbidden.
 
 ### 11.9 After sign-off
 
-When the supervisor signs, Leo files the mini report under ENG-CLASS-11 and schedules a fifteen-minute debrief with his mentor to turn the reflection lines into checklist updates for the real ROE process.
-
-The debrief turns reflection into process change: if Leo nearly skipped an exclusion check, the real ROE checklist gets a stronger prompt. Filing under ENG-CLASS-11 keeps classroom work separate from production tickets.
-
-After sign-off, Leo files the reflection and checklist updates before the next synthetic window. Sign-off without those updates repeats the same near-miss; the portfolio only gains ENG-CLASS-11 when the loop is closed.
+When the supervisor signs, Leo files the mini report under ENG-CLASS-11 and schedules a fifteen-minute debrief with his mentor to turn the reflection lines into checklist updates for the real ROE process. The debrief turns reflection into process change: if Leo nearly skipped an exclusion check, the real ROE checklist gets a stronger prompt. He files the reflection and checklist updates before the next synthetic window. Filing under ENG-CLASS-11 keeps classroom work separate from production tickets. Sign-off without those updates repeats the same near-miss; the portfolio only gains ENG-CLASS-11 when the loop is closed.
 
 ### Worked example (synthetic HCU)
 
@@ -938,75 +832,35 @@ You will (1) assemble a portfolio of artifacts from this course; (2) present to 
 
 ### 12.1 Portfolio contents
 
-ROE checklist result; scope-check output; filtered finding list; one executive finding paragraph; one engineer finding paragraph; ticket hygiene screenshot; reflection from the supervised lab.
-
-Each artefact is one Leo produced in this course, with dates. Together they show he can scope, filter, write for two audiences, track remediation and reflect — the practitioner outputs from Chapter 1.
-
-The portfolio holds the scoped plan, ROE checklist output, validated findings with evidence hashes, the ENG-440-style report, retest notes and the ENG-CLASS-11 reflection. Synthetic member data only; real identifiers never enter the pack.
+ROE checklist result; scope-check output; filtered finding list; one executive finding paragraph; one engineer finding paragraph; ticket hygiene screenshot; reflection from the supervised lab. Each artefact is one Leo produced in this course, with dates. Alongside them the portfolio holds the scoped plan, validated findings with evidence hashes, the ENG-440-style report and retest notes. Together they show he can scope, filter, write for two audiences, track remediation and reflect — the practitioner outputs from Chapter 1. Synthetic member data only; real identifiers never enter the pack.
 
 ### 12.2 Presentation
 
-Ten minutes: context of HCU, how you stayed in scope, top two findings, verification plan, what you will not do alone yet.
-
-Leo's ten minutes end with what he will not do alone yet, such as leading a threat-led scenario. Honesty about limits is part of the presentation, not a footnote.
-
-Presentation to the CISO leads with decisions needed, then method and evidence appendices. Leo practises a ten-minute cut so payday urgency does not force a jargon-heavy dump that buries the cookie-flag owner and due date.
+Ten minutes: context of HCU, how you stayed in scope, top two findings, verification plan, what you will not do alone yet. Presentation to the CISO leads with decisions needed, then method and evidence appendices. Leo practises a ten-minute cut so payday urgency does not force a jargon-heavy dump that buries the cookie-flag owner and due date. His ten minutes end with what he will not do alone yet, such as leading a threat-led scenario. Honesty about limits is part of the presentation, not a footnote.
 
 ### 12.3 Gaps
 
-Leo notes he has not yet led a threat-led (CBEST/TIBER-style) scenario or a full WSTG pass — topics for longer courses.
-
-Those gaps go on his development plan beside the portfolio. Longer courses and supervised practice close them; claiming them now would misrepresent readiness.
-
-Gaps such as AS/400 exclusion and no threat-led exercise yet are stated as owned limits, not hidden. The portfolio names what Harborline Credit Union has not yet authorized so examiners do not invent coverage.
-
-AS/400 exclusion and the absence of a threat-led exercise are owned limits written in the portfolio. Hiding gaps invents coverage examiners will not find in the ROE; naming them shows judgment.
+Leo notes he has not yet led a threat-led (CBEST/TIBER-style) scenario or a full WSTG pass — topics for longer courses. Those gaps go on his development plan beside the portfolio. Longer courses and supervised practice close them; claiming them now would misrepresent readiness. HCU's own limits, the AS/400 exclusion and the absence of a threat-led exercise, are written in the portfolio as owned limits, not hidden, so examiners do not invent coverage they will not find in the ROE. Naming gaps shows judgment.
 
 ### 12.4 Standing rules
 
-No authorization, no test. No exploit code on real systems. Stop means stop. Evidence stays controlled.
-
-Leo prints those four lines on the portfolio cover and on the first page of every engagement folder. They are the standing rules when pressure rises before an exam.
-
-Standing rules on the portfolio cover restate staging first, no password spraying, stop if member data appears unexpectedly, and delete within 30 days. Those rules match the ROE Leo will not start without.
-
-The cover also carries the emergency contact rule, because that empty field nearly started Leo's first window. In particular, he still will not start without the emergency_contact field filled.
+No authorization, no test. No exploit code on real systems. Stop means stop. Evidence stays controlled. Leo prints those four lines on the portfolio cover and on the first page of every engagement folder; they are the standing rules when pressure rises before an exam. The cover also restates the ROE rules Leo will not start without: staging first, no password spraying, stop if member data appears unexpectedly, and delete within 30 days. It carries the emergency contact rule too, because that empty field nearly started Leo's first window, and he still will not start without the emergency_contact field filled.
 
 ### 12.5 Handoff
 
-Store the portfolio in HCU's training record so the next supervisor sees evidence, not only a completion tick.
-
-A completion tick without artefacts forces the next supervisor to rediscover Leo's strengths and gaps. The training record should open to evidence.
-
-Handoff to the next analyst includes the vault path, open tickets T-15 and T-18 status, and the emergency contact field now filled. Email alone is not handoff; a walkthrough of the jump environment is scheduled before Leo steps away.
-
-Evidence in the record is what makes the handoff real: vault path, T-15 and T-18 status, filled emergency contact, and a scheduled jump-environment walkthrough. Email alone leaves the next analyst guessing.
+Store the portfolio in HCU's training record so the next supervisor sees evidence, not only a completion tick. A completion tick without artefacts forces the next supervisor to rediscover Leo's strengths and gaps; the training record should open to evidence. Handoff to the next analyst includes the vault path, the status of open tickets T-15 and T-18, and the emergency contact field now filled. Email alone is not handoff and leaves the next analyst guessing, so a walkthrough of the jump environment is scheduled before Leo steps away.
 
 ### 12.6 Portfolio integrity
 
-Artifacts in the portfolio must be the ones Leo actually produced in this course, with dates. Replacing them with polished samples from the internet misrepresents skill and is treated as academic dishonesty.
-
-Downloaded sample reports, however polished, are not evidence of Leo's skill. HCU treats substitution as academic dishonesty, and examiners who ask Leo to explain an artefact he did not write will notice.
-
-Portfolio integrity means hashes on evidence files and a changelog when a finding is updated after peer review. Quiet edits after sign-off are refused; the CISO sees the same pack the peer reviewed.
+Artifacts in the portfolio must be the ones Leo actually produced in this course, with dates. Replacing them with polished samples from the internet misrepresents skill and is treated as academic dishonesty; downloaded sample reports, however polished, are not evidence of Leo's skill, and examiners who ask him to explain an artefact he did not write will notice. Portfolio integrity also means hashes on evidence files and a changelog when a finding is updated after peer review. Quiet edits after sign-off are refused; the CISO sees the same pack the peer reviewed.
 
 ### 12.7 Continuing education
 
-After acceptance, Leo schedules one skill to deepen each month — this quarter, OWASP WSTG session management — and records it next to the portfolio so progress is visible.
-
-This quarter he deepens OWASP WSTG session management on staging under authorization. The monthly note next to the portfolio makes progress visible in reviews.
-
-Continuing education for Leo includes WSTG updates and ATT&CK technique refreshes for T1078, not conference talks that publish HCU-specific paths. He logs what he studied beside the portfolio so examiners see currency.
-
-WSTG updates and ATT&CK refreshes for T1078 are logged beside the portfolio so currency is visible. Conference talks that would publish HCU-specific paths stay off the continuing-education list on purpose.
+After acceptance, Leo schedules one skill to deepen each month — this quarter, OWASP WSTG session management on staging under authorization — and records it next to the portfolio so progress is visible in reviews. Continuing education for Leo also includes WSTG updates and ATT&CK technique refreshes for T1078, logged beside the portfolio so examiners see currency. Conference talks that would publish HCU-specific paths stay off the continuing-education list on purpose. The monthly skill is chosen from the gaps on his development plan, so a full WSTG pass is built up one area at a time.
 
 ### 12.8 Safety restatement on the portfolio cover
 
-The first page of Leo's portfolio states: no real systems were tested in this course; all labs used synthetic data; exploit code was neither used nor requested.
-
-Readers who open the portfolio first see the safety boundary: synthetic labs only, no live HCU scanning, no exploit code. That restatement protects Leo and HCU if the file is shared with a new supervisor or examiner.
-
-The portfolio cover restates that testing finds what patching, logging and training missed under written permission, and that a clean report still leaves everyday hardening to product and network teams. Safety language is not an appendix; it is the first page.
+The first page of Leo's portfolio states: no real systems were tested in this course; all labs used synthetic data; exploit code was neither used nor requested. Readers who open the portfolio first see that safety boundary: synthetic labs only, no live HCU scanning, no exploit code. That restatement protects Leo and HCU if the file is shared with a new supervisor or examiner. The cover also restates that testing finds what patching, logging and training missed under written permission, and that a clean report still leaves everyday hardening to product and network teams. Safety language is not an appendix; it is the first page.
 
 ### Worked example (synthetic HCU)
 
@@ -1020,7 +874,7 @@ Local policies and laws differ; follow HCU's authorization and your jurisdiction
 
 ### Exercises
 
-- **EX056 — Seven artifacts.** List five portfolio artifacts. *Rubric:* 3 = five from the contents list; 2 = three; 1 = one; 0 = none.
+- **EX056 — Portfolio artifacts.** List five portfolio artifacts. *Rubric:* 3 = five from the contents list; 2 = three; 1 = one; 0 = none.
 - **EX057 — Presentation must-say.** What must Leo say about scope in the presentation? *Rubric:* 3 = how he stayed in scope / exclusions / pause-to-ask; 2 = partial; 1 = skip it; 0 = none.
 - **EX058 — Gap honesty.** Why list gaps in the portfolio? *Rubric:* 3 = shows limits; guides next training; builds trust; 2 = partial; 1 = hide gaps; 0 = none.
 - **EX059 — Standing rule.** State the standing rule about exploit code. *Rubric:* 3 = never on real systems / not taught for use outside auth lab policy; 2 = partial; 1 = ok if careful; 0 = none.
