@@ -1,7 +1,7 @@
 # Fatores Humanos e Política Cibernética: Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); curso 098, curso de bacharelado (4 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 40 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3 e 7 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 21–40 (EX061–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 40 já estão escritos em português, com os exercícios EX001–EX090 e suas resoluções com rubricas de 0 a 3 e 13 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 31–40 (EX091–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de bacharelado que aprendem a estudar, projetar e avaliar o comportamento de segurança e os reportes numa pequena organização pública.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios contam reportes, calculam taxas, intervalos de Wilson, funis e medianas e consultam SQLite sobre dados sintéticos; nenhum funcionário, usuário, e-mail ou conta real está envolvido. Toda simulação de phishing descrita é anunciada, acordada com os representantes dos funcionários, evita iscas que explorem sofrimento pessoal e é relatada apenas de forma agregada; os testes de usabilidade usam uma caixa postal de teste com voluntários que sabem que estão testando a ferramenta, e não sendo testados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,9 @@ Adams e Sasse (1999), [doi:10.1145/322796.322806](https://doi.org/10.1145/322796
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
 
-Capítulos 21–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
+Capítulos 31–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -913,11 +913,477 @@ Casos sintéticos podem deixar de fora detalhes reais. Regras simples têm exce�
 - **EX059 — Onde estão os fatores.** Onde está a maioria dos fatores no caso? *Rubrica:* 3 = no sistema, e não na pessoa;; 2 = sistema;; 1 = a atendente;; 0 = nenhuma.
 - **EX060 — Contato nomeado.** O que faz o contato nomeado? *Rubrica:* 3 = verifica qualquer pedido oficial;; 2 = verificar;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-21"></a>
+
+## Capítulo 21 — Fatores humanos e política cibernética: modelos de sistema
+
+### Objetivos de aprendizagem
+
+Você vai (1) modelar o processo de reporte como um sistema com entradas, etapas e retorno; (2) identificar atrasos e pontos de perda; (3) usar o modelo para priorizar melhorias.
+
+### 21.1 Um modelo de processo
+
+Nadia modela o processo de reporte da Ashcombe como um sistema. A entrada é um e-mail suspeito que chega à caixa de entrada de um funcionário. Seguem-se as etapas: a pessoa nota algo estranho, decide se vai reportar, descobre como reportar, envia o reporte, a TI o analisa e a TI responde. O retorno da TI influencia se a pessoa vai reportar da próxima vez. Desenhar o processo com caixas e setas a ajuda a ver que reportar não é um ato único, mas uma cadeia, e que qualquer elo fraco dessa cadeia pode impedir que um alerta chegue à TI.
+
+### 21.2 Atrasos e perdas
+
+Em cada etapa, alguns reportes se perdem ou atrasam. Alguns funcionários não notam os sinais; outros notam, mas decidem não se dar ao trabalho; alguns não encontram o endereço de reporte; e a TI, com duas pessoas, pode levar um dia para responder. Nadia estima, a partir do questionário e dos registros da TI, quantos reportes potenciais sobrevivem a cada etapa. O laboratório multiplica as taxas das etapas para estimar quantos de cada cem e-mails suspeitos se tornam reportes com resposta. O resultado mostra que a etapa de decisão é a que mais perde.
+
+### Laboratório — Funil de reporte, de notar a receber resposta
+
+```python
+# Reporting funnel for 100 suspicious emails (synthetic step rates).
+steps = [("notice", 0.70), ("decide to report", 0.45), ("find how to report", 0.85), ("receive reply", 0.90)]
+n = 100.0
+for s, r in steps:
+    n2 = n * r; print(f"{s}: {n:.0f} -> {n2:.0f} (lose {n - n2:.0f})"); n = n2
+print(f"replied reports per 100: {n:.0f}")
+```
+
+Execute com `python3 lab_funnel.py`. Saída verificada:
+
+```text
+notice: 100 -> 70 (lose 30)
+decide to report: 70 -> 32 (lose 38)
+find how to report: 32 -> 27 (lose 5)
+receive reply: 27 -> 24 (lose 3)
+replied reports per 100: 24
+```
+
+### 21.3 Priorizar
+
+O modelo ajuda Nadia a priorizar. Melhorar a etapa de decisão, dando aos funcionários a confiança de que reportar é bem-vindo mesmo na dúvida, aumentaria os reportes mais do que melhorar a percepção por meio de treinamento. Acrescentar um botão de reporte ajudaria na etapa de descobrir como reportar. Respostas mais rápidas da TI fortaleceriam o retorno para reportes futuros. Ela ordena as melhorias pelo número de reportes extras que cada uma produziria por unidade de esforço. Um modelo de sistema desloca a atenção de apelos vagos por conscientização para etapas específicas em que as pessoas precisam de apoio. Os gestores aprovam a ordenação.
+
+### Exemplo resolvido
+
+Nadia modela o reporte como uma cadeia, estima as perdas em cada etapa e prioriza a etapa de decisão.
+
+> **Caso sintético.** As taxas são sintéticas.
+
+### Erros e limites
+
+As taxas das etapas são estimativas grosseiras. As etapas interagem.
+
+### Exercícios
+
+- **EX061 — Visão de cadeia.** Por que modelar o reporte como uma cadeia? *Rubrica:* 3 = qualquer etapa fraca pode barrar um alerta;; 2 = elo fraco;; 1 = ato único;; 0 = nenhuma.
+- **EX062 — Sobreviventes do funil.** Quantos de 100 e-mails suspeitos se tornam reportes com resposta no laboratório? *Rubrica:* 3 = cerca de 24;; 2 = 24;; 1 = nada;; 0 = nenhuma.
+- **EX063 — Maior perda.** Que etapa mais perde? *Rubrica:* 3 = a decisão de reportar;; 2 = decisão;; 1 = notar;; 0 = nenhuma.
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Fatores humanos e política cibernética: dados e dependências
+
+### Objetivos de aprendizagem
+
+Você vai (1) identificar os dados e as pessoas de que o processo de reporte depende; (2) analisar pontos únicos de falha; (3) reduzir a dependência de indivíduos.
+
+### 22.1 Dependências
+
+Nadia lista aquilo de que o processo de reporte depende: o sistema de e-mail, o endereço de reporte, as duas pessoas da TI, os gestores de unidade que repassam reportes verbais e uma planilha compartilhada em que a TI registra os reportes. Ela também lista os fluxos de dados: os reportes trazem cabeçalhos de e-mail e às vezes conteúdo pessoal, e a planilha contém nomes de funcionários. Mapear as dependências mostra o que precisa funcionar para que o reporte dê certo e quais dados precisam de proteção, já que um log de reportes vazado poderia revelar quem reportou o quê e desestimular futuros reportes dos colegas.
+
+### 22.2 Pontos únicos de falha
+
+Um ponto único de falha é uma parte cuja perda interrompe todo o processo. Nadia encontra dois: uma única analista de TI trata quase todos os reportes, e o endereço de reporte encaminha para a caixa de entrada pessoal dela. Quando ela está de férias, os reportes ficam sem resposta por dias. Em duas unidades, os gestores são a única rota para os funcionários que não usam e-mail no trabalho. Essas dependências de indivíduos tornam o processo frágil, sobretudo numa organização pequena, em que a rotatividade ou uma doença pode facilmente afastar uma pessoa-chave.
+
+### 22.3 Reduzir a dependência
+
+Nadia propõe uma caixa postal de reporte compartilhada, monitorada pelas duas pessoas da TI, com uma confirmação automática para que quem reporta saiba que a mensagem chegou. Ela sugere um formulário impresso simples nas unidades para os funcionários sem e-mail, recolhido diariamente. Recomenda remover os nomes dos funcionários do log e registrar apenas a unidade e o veredito, em linha com a minimização de dados. Essas mudanças custam pouco, mas tornam o processo robusto a ausências. Reduzir a dependência de indivíduos é um tema ao qual ela voltará nas operações e no trabalho de conclusão.
+
+### Exemplo resolvido
+
+Nadia mapeia dependências e dados, encontra pontos únicos de falha na TI e nos gestores e propõe uma caixa postal compartilhada, formulários impressos e um log minimizado.
+
+> **Caso sintético.** O processo é sintético.
+
+### Erros e limites
+
+Caixas postais compartilhadas precisam de responsáveis claros. Formulários em papel podem se perder.
+
+### Exercícios
+
+- **EX064 — Risco do log.** Por que um log de reportes vazado é prejudicial? *Rubrica:* 3 = poderia revelar quem reportou o quê;; 2 = nomes;; 1 = nada;; 0 = nenhuma.
+- **EX065 — Dependência da TI.** Que ponto único de falha envolve a TI? *Rubrica:* 3 = uma única analista cuja caixa de entrada recebe os reportes;; 2 = uma pessoa;; 1 = nada;; 0 = nenhuma.
+- **EX066 — Confirmação.** O que a confirmação automática faz? *Rubrica:* 3 = avisa a quem reportou que a mensagem chegou;; 2 = confirmação;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Fatores humanos e política cibernética: métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar dados de questionário sobre barreiras ao reporte; (2) codificar respostas de entrevistas em temas; (3) combinar ambos em achados.
+
+### 23.1 Análise do questionário
+
+O questionário anônimo de Nadia recebeu 84 respostas de 120 funcionários. Ela perguntou quais barreiras tornavam o reporte menos provável, permitindo várias respostas. O laboratório conta quantas vezes cada barreira foi escolhida. A barreira mais comum é a dúvida sobre se um e-mail é suspeito o suficiente, seguida de não saber como reportar e do receio de parecer tolo. Ela relata contagens e porcentagens e observa que quem respondeu pode diferir de quem não respondeu, talvez por ser mais engajado, de modo que os resultados descrevem quem respondeu, e não todos os funcionários. Ela compartilha as contagens com os funcionários.
+
+### Laboratório — Contagem das barreiras relatadas
+
+```python
+# Barrier counts from 84 synthetic survey responses (multiple choice).
+b = {"unsure if suspicious enough": 45, "don't know how to report": 28, "worry about looking foolish": 19, "too busy": 17, "never hear back": 12}
+for k, v in sorted(b.items(), key=lambda x: -x[1]): print(f"{k}: {v}/84 = {v / 84:.0%}")
+```
+
+Execute com `python3 lab_barriers.py`. Saída verificada:
+
+```text
+unsure if suspicious enough: 45/84 = 54%
+don't know how to report: 28/84 = 33%
+worry about looking foolish: 19/84 = 23%
+too busy: 17/84 = 20%
+never hear back: 12/84 = 14%
+```
+
+### 23.2 Codificar entrevistas
+
+Nadia entrevista oito atendentes de balcão por cerca de vinte minutos cada, fazendo anotações sem nomes. Lê as anotações várias vezes e rotula trechos com códigos como dúvida, pressa, sem resposta e constrangimento. Agrupa os códigos em temas: incerteza, pressão de tempo, falta de retorno e risco social. Uma segunda estudante codifica duas entrevistas de forma independente, e as duas comparam os resultados, discutindo as divergências para refinar as definições dos códigos. Essa verificação simples melhora a consistência e torna a codificação menos dependente da interpretação de uma única pessoa. Elas concordam na maioria dos códigos.
+
+### 23.3 Combinar os achados
+
+Nadia combina o questionário e as entrevistas. O questionário mostra que a incerteza é a barreira mais comum; as entrevistas a explicam: os funcionários temem desperdiçar o tempo da TI e nunca ouviram que reportes na dúvida são bem-vindos. A falta de retorno aparece nas entrevistas, embora não esteja entre as principais escolhas do questionário, o que sugere que ela importa mais do que o questionário captou. Seus achados são que a Ashcombe deve dizer explicitamente aos funcionários que reportem na dúvida, tornar o reporte mais rápido e responder a todos os reportes. Cada achado está ligado à sua evidência.
+
+### Exemplo resolvido
+
+Nadia conta as barreiras de 84 respostas ao questionário, codifica as entrevistas em temas com uma segunda codificadora e combina os métodos em achados.
+
+> **Caso sintético.** Os dados são sintéticos.
+
+### Erros e limites
+
+Viés de resposta no questionário. A codificação continua sendo interpretativa.
+
+### Exercícios
+
+- **EX067 — Taxa de resposta.** Qual foi a taxa de resposta do questionário? *Rubrica:* 3 = 70%;; 2 = 84 de 120;; 1 = 84%;; 0 = nenhuma.
+- **EX068 — Barreira principal.** Qual foi a barreira principal e sua proporção? *Rubrica:* 3 = dúvida sobre se é suspeito o suficiente, 45 de 84 ou 54%;; 2 = incerteza;; 1 = nada;; 0 = nenhuma.
+- **EX069 — Segunda codificadora.** Por que uma segunda estudante codificou entrevistas? *Rubrica:* 3 = para verificar a consistência dos códigos;; 2 = consistência;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Fatores humanos e política cibernética: controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) desenhar controles que tratem as barreiras identificadas; (2) aplicar nudges éticos; (3) avaliar o ônus dos controles.
+
+### 24.1 Controles a partir dos achados
+
+Nadia desenha controles ligados a seus achados. Para tratar a incerteza, a Ashcombe declarará com clareza que reportes na dúvida são bem-vindos e agradecerá a cada pessoa que reportar. Para tratar a dificuldade, um botão de reporte será acrescentado ao cliente de e-mail. Para tratar a falta de retorno, a TI responderá em até um dia útil com um veredito curto. Para tratar o risco de falsificação de identidade por telefone, serão introduzidos a regra de não revelação e o contato nomeado. Cada controle remonta a uma evidência, o que ajuda os gestores a ver por que ele é necessário e o que deve mudar.
+
+### 24.2 Nudges éticos
+
+Um nudge é uma pequena mudança de design que facilita uma escolha sem impô-la. Nadia propõe posicionar o botão de reporte em destaque e mostrar um lembrete curto quando e-mails externos pedirem pagamento ou senhas. Ela define limites: os nudges devem ser transparentes, os funcionários devem poder ignorá-los e eles nunca devem manipular as pessoas pelo medo. Ela observa que Bada, Sasse e Nurse (2019) alertaram que mensagens baseadas no medo podem sair pela culatra. Os nudges respeitam a autonomia e, ao mesmo tempo, reduzem o esforço de fazer a coisa segura.
+
+### 24.3 Avaliar o ônus
+
+Todo controle acrescenta algum esforço. Nadia estima quanto tempo por semana cada controle custa aos funcionários: o botão de reporte economiza tempo em comparação com o encaminhamento; os lembretes acrescentam alguns segundos; a regra de não revelação reduz conversas telefônicas difíceis. Ela apresenta uma estimativa geral que mostra uma economia líquida de tempo dos funcionários. Também observa que os controles devem ser revistos depois de três meses quanto a ônus inesperados, como lembretes que aparecem com frequência excessiva. Avaliar o ônus antes da implantação reflete a ideia do orçamento de compliance e ajuda a manter os controles sustentáveis.
+
+### Exemplo resolvido
+
+Nadia desenha quatro controles a partir dos achados, define limites éticos para os nudges e estima o ônus para os funcionários.
+
+> **Caso sintético.** Os controles são sintéticos; Bada et al. (2019) é real.
+
+### Erros e limites
+
+As estimativas de ônus podem ser otimistas. Os nudges perdem força com a familiaridade.
+
+### Exercícios
+
+- **EX070 — Controle de retorno.** Que controle trata a falta de retorno? *Rubrica:* 3 = a TI responde em até um dia útil;; 2 = resposta;; 1 = nada;; 0 = nenhuma.
+- **EX071 — Limites dos nudges.** Que limites se aplicam aos nudges? *Rubrica:* 3 = transparentes, ignoráveis e não baseados no medo;; 2 = limites;; 1 = nada;; 0 = nenhuma.
+- **EX072 — Momento da revisão.** Quando os controles devem ser revistos quanto ao ônus? *Rubrica:* 3 = depois de três meses;; 2 = três meses;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Laboratório I
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir um teste controlado do botão de reporte com voluntários; (2) medir o tempo e o sucesso da tarefa; (3) relatar os resultados com seus limites.
+
+### 25.1 Planejar o teste
+
+No primeiro laboratório, Nadia testa o botão de reporte com dez funcionários voluntários, usando uma caixa postal de teste cheia de e-mails sintéticos. Nenhuma caixa de entrada real é usada, e os voluntários sabem que se trata de um teste do botão, e não deles. Pede-se a cada voluntário que reporte dois e-mails suspeitos, uma vez encaminhando-o para o endereço e outra com o botão. Ela registra o tempo da tarefa e se o reporte deu certo. O plano tem aprovação ética, e os voluntários podem parar a qualquer momento. Cada sessão leva dez minutos.
+
+### 25.2 Medir
+
+O laboratório compara os tempos da tarefa. O encaminhamento leva cerca de quarenta segundos em média, porque as pessoas precisam encontrar o endereço e acrescentar uma nota. O botão leva cerca de seis segundos. Os dez voluntários conseguem com o botão; dois não conseguem encaminhar corretamente porque digitam o endereço errado. Nadia também pede aos voluntários que avaliem a facilidade numa escala de cinco pontos. As avaliações favorecem fortemente o botão. O teste mostra que uma pequena mudança de design elimina boa parte do esforço que desestimulava o reporte. Ela registra cada tempo numa tabela.
+
+### Laboratório — Tempo da tarefa: encaminhamento versus botão
+
+```python
+# Task times in seconds for ten volunteers (synthetic).
+fwd = [35, 42, 38, 51, 33, 44, 39, 36, 47, 35]
+btn = [5, 7, 6, 6, 5, 8, 6, 5, 7, 5]
+print(f"forwarding mean {sum(fwd) / 10:.0f} s; button mean {sum(btn) / 10:.0f} s; saving {sum(fwd) / 10 - sum(btn) / 10:.0f} s")
+```
+
+Execute com `python3 lab_button.py`. Saída verificada:
+
+```text
+forwarding mean 40 s; button mean 6 s; saving 34 s
+```
+
+### 25.3 Relatar os resultados
+
+Nadia relata os resultados numa nota curta, com uma tabela de tempos e taxas de sucesso. Acrescenta os limites: os voluntários podem ser mais confiantes do que os funcionários típicos; o teste usou um computador de mesa, e não celulares; e dez pessoas são uma amostra pequena. Ela recomenda implantar o botão e depois conferir os tempos reais de reporte. Declarar os limites com honestidade torna os gestores mais propensos a confiar no resultado, porque eles conseguem ver o que ele mostra e o que não mostra. Os gestores aceitam a nota.
+
+### Exemplo resolvido
+
+Nadia testa um botão de reporte com dez voluntários numa caixa postal de teste, encontra uma grande economia de tempo e relata os limites.
+
+> **Caso sintético.** O teste é sintético.
+
+### Erros e limites
+
+Os voluntários não são típicos. As condições do laboratório diferem das de um balcão movimentado.
+
+### Exercícios
+
+- **EX073 — Caixa postal de teste.** Por que usar uma caixa postal de teste? *Rubrica:* 3 = para que nenhuma caixa de entrada real seja envolvida;; 2 = controlado;; 1 = nada;; 0 = nenhuma.
+- **EX074 — Tempos médios.** Quais foram os tempos médios do encaminhamento e do botão? *Rubrica:* 3 = 40 e 6 segundos;; 2 = 34 segundos economizados;; 1 = nada;; 0 = nenhuma.
+- **EX075 — Falhas de encaminhamento.** Quantos voluntários não conseguiram encaminhar corretamente? *Rubrica:* 3 = dois;; 2 = 2;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Fatores humanos e política cibernética: métodos II
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar a mudança ao longo do tempo com dados de antes e depois; (2) reconhecer fatores de confusão; (3) usar um grupo de comparação quando possível.
+
+### 26.1 Antes e depois
+
+Depois que a Ashcombe acrescenta o botão de reporte, declara que reportes na dúvida são bem-vindos e promete respostas, Nadia compara os reportes de antes e de depois. Nos três meses anteriores, os funcionários reportaram em média 12 e-mails suspeitos por mês; nos três meses seguintes, 31. Ela calcula a mudança e observa que é grande. Ainda assim, uma simples comparação antes e depois não consegue dizer se as mudanças causaram o aumento, porque outras coisas podem ter mudado no mesmo período, como o número de ataques. Ela plota os dois períodos.
+
+### 26.2 Confusão
+
+Um fator de confusão é algo que afeta tanto o momento de uma mudança quanto o resultado. Nadia considera vários: uma campanha nacional de phishing contra bibliotecas durante o período posterior, a cobertura jornalística de uma violação numa biblioteca e a chegada de novos funcionários. Qualquer um deles poderia ter aumentado os reportes. Ela consulta os registros da TI e descobre que os e-mails maliciosos também subiram, de 3 para 5 por mês, o que poderia explicar parte do aumento. Considerar abertamente os fatores de confusão é essencial para não afirmar mais do que as evidências sustentam.
+
+### 26.3 Grupos de comparação
+
+Nadia aprende que um grupo de comparação ajuda a separar os efeitos. Duas unidades receberam o botão um mês depois das demais por causa de um atraso técnico. Nesse mês, os reportes nas unidades que o receberam antes subiram fortemente, enquanto nas que o receberam depois pouco mudaram. O laboratório calcula os reportes por cem funcionários de cada grupo naquele mês. A diferença sustenta a ideia de que as mudanças, e não apenas eventos externos, aumentaram os reportes. Ela observa que os grupos não foram escolhidos ao acaso, de modo que podem diferir também em outros aspectos.
+
+### Laboratório — Unidades adiantadas e atrasadas no mês da implantação
+
+```python
+# Rollout month: reports per hundred staff for early and late branches (synthetic).
+early = (25, 96); late = (2, 24)
+for name, (r, s) in (("early", early), ("late", late)): print(f"{name}: {r} reports / {s} staff = {100 * r / s:.0f} per 100")
+```
+
+Execute com `python3 lab_compare.py`. Saída verificada:
+
+```text
+early: 25 reports / 96 staff = 26 per 100
+late: 2 reports / 24 staff = 8 per 100
+```
+
+### Exemplo resolvido
+
+Nadia compara os reportes de antes e depois, considera os fatores de confusão e usa uma implantação atrasada como grupo de comparação.
+
+> **Caso sintético.** Os dados são sintéticos.
+
+### Erros e limites
+
+Grupos não aleatórios podem diferir. Um mês é pouco tempo.
+
+### Exercícios
+
+- **EX076 — Mudança mensal.** Como mudou a média mensal de reportes? *Rubrica:* 3 = de 12 para 31;; 2 = aumento de 19;; 1 = nada;; 0 = nenhuma.
+- **EX077 — Fator de confusão encontrado.** Que fator de confusão os registros da TI revelaram? *Rubrica:* 3 = os e-mails maliciosos subiram de 3 para 5 por mês;; 2 = mais ataques;; 1 = nada;; 0 = nenhuma.
+- **EX078 — Taxas dos grupos.** Que taxas as unidades adiantadas e atrasadas mostraram no mês da implantação? *Rubrica:* 3 = 26 contra 8 por cem funcionários;; 2 = adiantadas mais altas;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Fatores humanos e política cibernética: verificação
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar se os controles funcionam conforme especificado; (2) conferir os controles do lado do usuário; (3) registrar as evidências da verificação.
+
+### 27.1 Comportamento especificado
+
+A verificação confere se cada controle faz o que deveria. Nadia lista as especificações: o botão aparece em todas as caixas postais dos funcionários; os reportes chegam à caixa postal compartilhada; uma confirmação é enviada em até um minuto; as respostas são enviadas em até um dia útil; e o cartão do procedimento telefônico está em todos os balcões. Ela testa cada uma com e-mails sintéticos e uma lista de verificação para visitas às unidades. A verificação difere da avaliação: não pergunta se o reporte melhorou, apenas se os controles estão implantados e funcionando corretamente. A TI aprova a lista antes.
+
+### 27.2 Verificações do lado do usuário
+
+Nadia confere os controles do lado do usuário, e não apenas pelo console da TI. Ela faz login com uma conta de funcionário de teste num computador de balcão e num notebook e reporta um e-mail sintético. No computador de balcão, o botão fica escondido atrás de um menu por causa de uma configuração de tela menor. A TI ajusta o layout. Ela também pede a três funcionários que encontrem o cartão do procedimento telefônico; uma unidade o havia guardado numa gaveta. As verificações do lado do usuário revelam problemas que as verificações técnicas não pegam, porque testam o que as pessoas de fato veem.
+
+### 27.3 Registrar as evidências
+
+Nadia registra cada verificação com data, método, resultado e correção. Das oito verificações, seis passaram na primeira vez e duas foram corrigidas e testadas de novo. Ela guarda o registro com os documentos do programa, para que possa ser repetido depois de mudanças. Registrar falhas e correções demonstra que a verificação foi genuína, e não uma formalidade. O Dr. Prescott observa que organizações pequenas muitas vezes pulam essa etapa, mas o registro se torna valioso quando os funcionários mudam ou quando auditores perguntam como os controles foram conferidos. O registro tem duas páginas.
+
+### Exemplo resolvido
+
+Nadia verifica cinco especificações, encontra um botão escondido e um cartão fora do lugar por meio de verificações do lado do usuário e registra oito verificações.
+
+> **Caso sintético.** As verificações são sintéticas.
+
+### Erros e limites
+
+As verificações mostram um momento no tempo. Mudanças de layout podem reintroduzir problemas.
+
+### Exercícios
+
+- **EX079 — Verificação versus avaliação.** O que a verificação não pergunta? *Rubrica:* 3 = se o reporte melhorou;; 2 = resultados;; 1 = nada;; 0 = nenhuma.
+- **EX080 — Problema no balcão.** Que problema apareceu nos computadores de balcão? *Rubrica:* 3 = o botão estava escondido atrás de um menu;; 2 = escondido;; 1 = nada;; 0 = nenhuma.
+- **EX081 — Registro das verificações.** Quantas das oito verificações passaram na primeira vez? *Rubrica:* 3 = seis;; 2 = 6;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Fatores humanos e política cibernética: análise de falhas
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar um quase incidente sem atribuir culpa; (2) classificar os fatores contribuintes; (3) transformar a análise em melhorias.
+
+### 28.1 Um quase incidente
+
+Durante o ano, uma atendente de unidade quase pagou uma fatura falsa de fornecimento de livros. O e-mail veio de um domínio parecido com o de um fornecedor real e pedia pagamento em novos dados bancários. A atendente o encaminhou ao analista financeiro, que notou a mudança nos dados e ligou para o fornecedor usando o número do cadastro. Nadia analisa esse quase incidente. Quase incidentes são valiosos porque revelam fraquezas sem causar danos, mas as pessoas só os compartilham se confiarem que não serão culpadas.
+
+### 28.2 Fatores contribuintes
+
+Nadia classifica os fatores em individuais, da tarefa, técnicos e organizacionais. No plano individual, a atendente era nova e não conhecia os fornecedores. A tarefa era rotineira, por isso não despertou suspeita. No plano técnico, o domínio parecido passou nas verificações de e-mail e não tinha alerta de mensagem externa. No plano organizacional, não havia regra exigindo verificação de mudanças de dados bancários, embora o analista financeiro tenha verificado por hábito. O laboratório totaliza os fatores deste e de outros quatro quase incidentes registrados naquele ano, mostrando que os fatores organizacionais aparecem com mais frequência. Cada fator é anotado numa tabela.
+
+### Laboratório — Fatores contribuintes em cinco quase incidentes
+
+```python
+# Contributing factors across five near misses (synthetic).
+nm = [{"individual", "technical", "organisational"}, {"task", "organisational"}, {"technical", "organisational"},
+      {"individual", "organisational"}, {"task", "technical", "organisational"}]
+for f in ("organisational", "technical", "individual", "task"): print(f, sum(f in s for s in nm), "of", len(nm))
+```
+
+Execute com `python3 lab_factors.py`. Saída verificada:
+
+```text
+organisational 5 of 5
+technical 3 of 5
+individual 2 of 5
+task 2 of 5
+```
+
+### 28.3 Melhorias
+
+Nadia propõe melhorias associadas aos fatores: uma regra escrita de que qualquer mudança de dados bancários deve ser verificada por telefone, usando um número conhecido; uma etiqueta de e-mail externo; e uma familiarização com os fornecedores para os novos funcionários. Ela elogia o hábito do analista financeiro e recomenda transformá-lo em regra, em vez de depender de uma pessoa. Compartilha a análise com os funcionários, sem nomes, para mostrar que reportar quase incidentes leva a mudanças úteis. A análise sem culpados estimula futuros reportes de quase incidentes e erros. Os gestores aprovam as três medidas.
+
+### Exemplo resolvido
+
+Nadia analisa sem culpa o quase incidente da fatura falsa, classifica os fatores e propõe uma regra de verificação e etiquetas de e-mail externo.
+
+> **Caso sintético.** O quase incidente é sintético.
+
+### Erros e limites
+
+As classes de fatores se sobrepõem. Cinco quase incidentes são um conjunto pequeno.
+
+### Exercícios
+
+- **EX082 — Valor do quase incidente.** Por que os quase incidentes são valiosos? *Rubrica:* 3 = revelam fraquezas sem causar danos;; 2 = aprendizado;; 1 = nada;; 0 = nenhuma.
+- **EX083 — Classe mais comum.** Que classe de fator mais apareceu no laboratório? *Rubrica:* 3 = organizacional, em 5 de 5;; 2 = organizacional;; 1 = individual;; 0 = nenhuma.
+- **EX084 — Do hábito à regra.** O que Nadia fez com o hábito do analista financeiro? *Rubrica:* 3 = transformou-o numa regra escrita;; 2 = regra;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Fatores humanos e política cibernética: operações
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir as tarefas de rotina que sustentam o programa; (2) planejar reciclagens e simulações éticas; (3) tratar o retorno dos funcionários.
+
+### 29.1 Tarefas de rotina
+
+Um programa se apaga sem cuidados de rotina. Nadia rascunha um calendário para a Ashcombe: a TI confere a caixa postal compartilhada diariamente e responde em até um dia; todo mês, a TI compartilha uma nota curta sobre e-mails suspeitos recentes; todo trimestre, os gestores revisam os números de reporte por grupo de unidades; todo ano, o programa é revisto. Cada tarefa tem um responsável e um substituto. O calendário é pequeno o bastante para uma equipe de TI de duas pessoas, o que importa porque um plano ambicioso que não pode ser sustentado desmoronaria rapidamente. Os gestores aprovam o calendário.
+
+### 29.2 Reciclagens e simulações
+
+Nadia propõe reciclagens de cinco minutos nas reuniões de equipe, usando exemplos reais recentes sem dados pessoais. Ela pondera se deve haver phishing simulado e recomenda apenas um pequeno número, no máximo duas vezes por ano, sob as regras do capítulo 10: programa anunciado, modelos acordados com os representantes dos funcionários, nenhuma isca sobre salário ou saúde, retorno imediato e gentil e apenas resultados agregados. Ela classifica os modelos com a NIST Phish Scale, para que os resultados possam ser comparados de um ano para outro. Também pede aos representantes dos funcionários que revisem os temas das reciclagens a cada trimestre.
+
+### 29.3 Retorno dos funcionários
+
+Os funcionários podem comentar o programa por meio de um formulário de retorno e nas reuniões de equipe. Nadia espera algumas reclamações, sobretudo sobre as simulações, e propõe que cada uma seja respondida pessoalmente e registrada por tema. Se um modelo incomodar os funcionários, ele é retirado. Responder bem ao retorno mostra aos funcionários que o programa os respeita, o que sustenta a confiança da qual os reportes dependem. O retorno também revela problemas práticos, como lembretes que aparecem com frequência excessiva, que os gestores de outro modo talvez não percebessem. Os temas são relatados aos gestores a cada trimestre.
+
+### Exemplo resolvido
+
+Nadia rascunha um calendário sustentável, planeja reciclagens breves e simulações éticas limitadas e organiza o tratamento do retorno.
+
+> **Caso sintético.** Os planos são sintéticos; a Phish Scale é real.
+
+### Erros e limites
+
+Os calendários escorregam sob pressão. Poucas simulações geram dados limitados.
+
+### Exercícios
+
+- **EX085 — Frequência das simulações.** Com que frequência Nadia recomenda simulações? *Rubrica:* 3 = no máximo duas vezes por ano;; 2 = duas vezes;; 1 = mensalmente;; 0 = nenhuma.
+- **EX086 — Classificação dos modelos.** Por que classificar os modelos com a Phish Scale? *Rubrica:* 3 = para que os resultados possam ser comparados entre anos;; 2 = comparação;; 1 = nada;; 0 = nenhuma.
+- **EX087 — Modelo que incomoda.** O que acontece com um modelo que incomoda os funcionários? *Rubrica:* 3 = é retirado;; 2 = retirar;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Laboratório II
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar o efeito da rapidez da resposta sobre os reportes posteriores; (2) apresentar resultados com sua incerteza; (3) recomendar mudanças a partir das evidências.
+
+### 30.1 A pergunta sobre a rapidez da resposta
+
+As entrevistas sugeriram que o retorno importa. No segundo laboratório, Nadia analisa os registros da TI para ver se os funcionários que receberam resposta em até um dia tinham mais probabilidade de reportar de novo em três meses do que os que receberam resposta tardia ou nenhuma. Os dados são registros sintéticos que refletem o padrão do ano, com os funcionários identificados apenas por códigos aleatórios. Ela sabe que a comparação é observacional: quem recebeu respostas rápidas pode diferir dos demais, por exemplo por trabalhar em unidades próximas da TI.
+
+### 30.2 Análise
+
+O laboratório conta os reportes repetidos em dois grupos. Dos 40 funcionários cujo primeiro reporte recebeu resposta em até um dia, 26 reportaram de novo; dos 30 que receberam resposta tardia ou nenhuma, 9 reportaram de novo. Nadia calcula as proporções e um intervalo de Wilson para cada uma. Os intervalos não se sobrepõem, o que sugere uma diferença real, embora não necessariamente causal. Ela observa que o resultado é compatível com as entrevistas, o que reforça sua confiança de que o retorno importa. Os intervalos vão de 50% a 78% e de 17% a 48%. Ela confere as contagens duas vezes.
+
+### Laboratório — Reportes repetidos após respostas rápidas e lentas
+
+```python
+# Repeat reporting after fast vs slow replies, with Wilson intervals (synthetic).
+from math import sqrt
+def wilson(k, n, z=1.96):
+    p = k / n; d = 1 + z * z / n; c = (p + z * z / (2 * n)) / d; h = z * sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / d
+    return c - h, c + h
+for name, k, n in (("fast reply", 26, 40), ("slow or none", 9, 30)):
+    lo, hi = wilson(k, n); print(f"{name}: {k}/{n} = {k / n:.0%} (95% CI {lo:.0%} to {hi:.0%})")
+```
+
+Execute com `python3 lab_reply.py`. Saída verificada:
+
+```text
+fast reply: 26/40 = 65% (95% CI 50% to 78%)
+slow or none: 9/30 = 30% (95% CI 17% to 48%)
+```
+
+### 30.3 Recomendações
+
+Nadia recomenda que a TI responda a todos os reportes em até um dia útil, usando modelos curtos para ganhar tempo, e que a caixa postal compartilhada seja monitorada pelas duas pessoas da TI, para evitar atrasos durante as férias. Ela sugere conferir a medida de novo depois de seis meses. Apresenta o resultado aos gestores como evidência a favor de uma mudança barata, com limites honestos quanto à causalidade. Os gestores aprovam os modelos, e a TI concorda em acompanhar os tempos de resposta como parte da revisão trimestral. Os modelos ficam prontos em uma semana.
+
+### Exemplo resolvido
+
+Nadia compara os reportes repetidos após respostas rápidas e lentas, encontra 65% contra 30% com intervalos que não se sobrepõem e recomenda respostas rápidas.
+
+> **Caso sintético.** Os dados são sintéticos.
+
+### Erros e limites
+
+Dados observacionais não provam causalidade. Os grupos podem diferir.
+
+### Exercícios
+
+- **EX088 — Taxas dos grupos.** Que taxas de repetição os dois grupos mostraram? *Rubrica:* 3 = 65% após respostas rápidas e 30% após lentas ou nenhuma;; 2 = 26/40 e 9/30;; 1 = nada;; 0 = nenhuma.
+- **EX089 — Resultado dos intervalos.** O que os intervalos mostraram? *Rubrica:* 3 = não se sobrepuseram;; 2 = separados;; 1 = sobreposição;; 0 = nenhuma.
+- **EX090 — Cautela quanto à causalidade.** Por que o resultado não pode provar causalidade? *Rubrica:* 3 = os dados são observacionais e os grupos podem diferir;; 2 = observacionais;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX060 (as de EX061–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Nadia Farouk, o Dr. Owen Prescott, a Fenmoor University, a Ashcombe Community Library Network, a Dunmore Libraries e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX090 (as de EX091–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Nadia Farouk, o Dr. Owen Prescott, a Fenmoor University, a Ashcombe Community Library Network, a Dunmore Libraries e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** 40 reportes por cem funcionários, já que 48 dividido por 120 dá 0,4.
 
@@ -1038,6 +1504,66 @@ Respostas-modelo para EX001–EX060 (as de EX061–EX120 estão na edição em i
 **EX059.** No sistema, como a falta de procedimentos, e não na pessoa.
 
 **EX060.** Verifica qualquer pedido oficial antes que dados sejam compartilhados.
+
+**EX061.** Porque qualquer etapa fraca pode impedir que um alerta chegue à TI.
+
+**EX062.** Cerca de 24 de cada 100.
+
+**EX063.** A etapa de decisão, em que os funcionários escolhem se vão se dar ao trabalho.
+
+**EX064.** Poderia revelar quem reportou o quê e desestimular os reportes.
+
+**EX065.** Uma única analista de TI trata a maioria dos reportes pela caixa de entrada pessoal dela.
+
+**EX066.** Avisa a quem reportou que o reporte chegou.
+
+**EX067.** 70%, já que 84 de 120 funcionários responderam.
+
+**EX068.** A dúvida sobre se um e-mail era suspeito o suficiente, escolhida por 45 de 84 (54%).
+
+**EX069.** Para verificar e melhorar a consistência da codificação.
+
+**EX070.** A TI responde a todos os reportes em até um dia útil, com um veredito.
+
+**EX071.** Devem ser transparentes, fáceis de ignorar e nunca manipular pelo medo.
+
+**EX072.** Depois de três meses.
+
+**EX073.** Para que nenhuma caixa de entrada ou e-mail real seja envolvido.
+
+**EX074.** Cerca de 40 segundos para o encaminhamento e 6 segundos para o botão.
+
+**EX075.** Dois, porque digitaram o endereço errado.
+
+**EX076.** De 12 para 31 por mês.
+
+**EX077.** Os e-mails maliciosos subiram de 3 para 5 por mês.
+
+**EX078.** Unidades adiantadas, 26, e atrasadas, 8 reportes por cem funcionários.
+
+**EX079.** Se o reporte melhorou; ela confere apenas se os controles funcionam.
+
+**EX080.** O botão estava escondido atrás de um menu por causa de uma configuração de tela.
+
+**EX081.** Seis; duas foram corrigidas e testadas de novo.
+
+**EX082.** Revelam fraquezas sem causar danos.
+
+**EX083.** Fatores organizacionais, presentes em todos os cinco quase incidentes.
+
+**EX084.** Recomendou transformar o hábito de verificar por telefone numa regra escrita.
+
+**EX085.** No máximo duas vezes por ano, sob regras acordadas.
+
+**EX086.** Para que os resultados possam ser comparados entre anos.
+
+**EX087.** É retirado.
+
+**EX088.** 65% (26 de 40) após respostas rápidas e 30% (9 de 30) após respostas lentas ou nenhuma.
+
+**EX089.** Não se sobrepuseram, o que sugere uma diferença real.
+
+**EX090.** Porque os dados são observacionais e os grupos podem diferir em outros aspectos.
 
 <a id="references"></a>
 ## Referências
