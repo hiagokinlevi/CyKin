@@ -3317,57 +3317,85 @@ You will (1) analyse multi-finding cases; (2) prioritise under board pressure; (
 
 Ranked findings, unfinished retest, board asking to bury F3 before earnings.
 
+The advanced case packet stacks pressure on purpose: a ranked findings list, a retest still open and a board request to bury F3 before an earnings call. Learners must keep the finding visible while drafting management responses that sit beside it, not over it. Sam refuses any edit that deletes F3 from the ranked table. The packet trains resistance with artefacts rather than with slogans. Students leave knowing what a bury request looks like on paper.
+
 ### 31.2 Ethics
 
 Findings stay; management responses allowed beside them.
+
+Ethics here is concrete: the finding remains in the engagement file, and leadership may attach a response explaining timing or compensating controls. Erasure is not a response. Sam teaches the difference between contextualising risk and hiding it. Graded work that soft-deletes F3 fails regardless of eloquence. The rule protects the bank from self-deception more than it protects the tester's ego. A response that argues for delayed patching can still be honest if the finding line itself never moves. Students mark where the response begins so it cannot be mistaken for an edit to the finding.
 
 ### 31.3 Prioritisation
 
 Payment-adjacent and unapproved ledger flows first.
 
+When everything feels urgent, payment-adjacent paths and unapproved ledger flows still go first. Sam's ranking rubric weights blast radius toward money movement and integrity of books. Cosmetic findings wait even if a vice president emails twice. Learners practice saying which item is first and why, in language an executive can hear. Prioritisation without a money lens is theatre at a bank. Ties break toward whichever item still lacks a compensating control in production. The spoken ranking is recorded in the case notes for the debrief.
+
 ### 31.4 Communication
 
 Prepare exec and engineer versions.
+
+One finding needs two reads: an executive version that states decision, date and residual risk, and an engineer version that carries reproduction and fix detail. Sam generates both from the same FindingsDesk fields so severity words cannot drift. Learners who invent a softer executive score fail the consistency check. Translation is not spin. Clear dual versions prevent hallway summaries from rewriting the risk. Both versions carry the same finding identifier so nobody can claim they described different issues. Peer review compares the two pages side by side before anything is mailed.
 
 ### 31.5 Legal
 
 Involve legal if disclosure duties may apply — Sam escalates, does not decide alone.
 
+When a finding might trigger disclosure duties, Sam escalates to legal with facts and does not invent a legal conclusion. Interns and juniors especially must not bargain privately with product managers about silence. The escalation path is written on the method wall. Graded scenarios punish solo bargaining. Legal may still say no duty applies; the point is that Sam is not the one who decides. Escalation notes stick to timestamps, systems touched and data classes involved. If legal asks for more detail, Sam adds evidence paths rather than opinions.
+
 ### 31.6 Record
 
 Keep the bury request in the engagement file.
 
-### 31.7 31.7 Applied note
+Pressure emails belong in the file with a factual header, even when the answer is a firm no. Deleting the request protects feelings and destroys history. Sam forwards bury attempts to the CISO alias so the reply becomes institutional memory. Learners practice filing without editorialising. Future ethics classes need artefacts, not legends. Redaction for teaching copies happens later; the engagement file itself stays complete. Headers include the finding id and the time the message arrived.
+
+### 31.7 Forward pressure to CISO
 
 Pressure emails are forwarded to the CISO alias with a short factual header. Sam does not debate earnings calendars with product managers alone. The alias reply becomes the record.
 
-### 31.8 31.8 Escalation SLA
+Debating alone invites a compromise that never reaches governance. The alias forces the conversation into a channel with retention and witnesses. Sam's header states what was asked and what finding it targets, without adjectives. Product managers learn that earnings calendars do not edit ranked tables. The reply, whatever it says, is the artefact the programme later teaches from.
+
+### 31.8 Escalation SLA
 
 Pressure-to-bury emails get a same-day acknowledgment from the CISO alias even if the full reply waits. Silence looks like assent.
 
-### 31.9 31.9 Optics vs integrity
+Acknowledgment is not agreement; it is proof the message was seen. Sam tracks median acknowledgment time on his ethics slides because slow silence teaches the wrong lesson. Same-day replies can be short: received, under review, do not alter the finding meanwhile. Full analysis may take longer. Culture dies in the gap where nobody answers. Backup coverage on the alias is staffed whenever the primary is travelling. The acknowledgment template lives next to the other engagement macros.
+
+### 31.9 Optics versus integrity
 
 Training slides include a past anonymised bury request and the CISO reply supporting the tester. Culture is taught with artefacts.
 
-### 31.10 31.11 Scene
+Slides that only say "act with integrity" lose to a real redacted email thread. Sam's deck shows the ask, the forward and the supporting reply. Students see that refusal can be backed from the top. Optics pressure becomes discussable instead of mythical. Artefacts outlast slogans when the next earnings season arrives. Each term Sam checks that the redactions still hide living people and live tickers. Broken redactions pull the slide from the deck until repaired.
+
+### 31.10 Printed bury-request thread
 
 The bury-request email and CISO reply are printed (redacted) in ethics class. Students see that refusal is supported. Culture is evidence, not slogans.
 
-### 31.11 31.12 Extension
+Passing the paper around changes the room. People who assumed testers stand alone read a CISO sentence that backs the file. Sam watches posture shift more than he listens to discussion points. Evidence of support is itself a control against future pressure. Classes that only lecture about courage produce quieter courage. Printed copies are collected at the end so uncontrolled scans do not wander. A sign-out sheet records which table held which copy during the exercise.
+
+### 31.11 Vote then read the reply
 
 Ethics class votes on whether they would have refused; then they read the CISO reply. Most change their vote. Artefacts teach.
 
-### 31.12 31.14 Note 11
+The vote comes first so honesty about fear is possible. After the reply is read, many who voted to comply flip, which is the lesson: support was imaginable once they saw it. Sam does not shame the first vote. He wants people to notice how artefacts rewrite what feels possible. Teaching without the second beat would only measure baseline anxiety.
+
+### 31.12 Ethics folder access logs
 
 Redacted pressure artefacts live in the ethics folder with access logs.
 
-### 31.13 31.16 Pad
+Sensitive teaching material still needs accountability. Access logs show who opened the redacted thread and when. Sam reviews unexpected readers termly with the programme lead. The logs deter gossip packaging and support investigations if something leaks. Transparency about access is part of treating the artefacts with respect. Accounts that only need the lecture slides never receive folder rights. Service accounts used for backup are listed so they do not look like prowlers.
+
+### 31.13 Termly access review
 
 Ethics folder access logs are reviewed termly for unexpected readers.
 
-### 31.14 31.18 Final
+A folder without review becomes a rumour mill with a password. Termly checks catch shared credentials and idle curiosity from accounts that should not browse pressure cases. Sam files oddities as process notes, not as public accusations. Most anomalies are boring mistakes; the review still matters. Governance of teaching materials mirrors governance of engagement evidence. Findings from the review feed the next term's access-control checklist. The checklist is short enough that busy leads actually finish it.
+
+### 31.14 Measure CISO response time
 
 CISO alias response time is measured. Sam's ethics slides include the median response time to pressure emails. Slow silence is tracked as a risk to culture.
+
+What gets measured gets staffed. Publishing the median keeps leadership aware that silence has a cost beyond one awkward email. Sam is careful never to publish contents, only timing. When the median slips, the programme asks for backup coverage on the alias. Culture risk belongs on a dashboard beside technical risk. A rising median triggers a staffing conversation before the next earnings window. The metric resets each quarter so old crises do not hide new delays.
 
 ### Worked example (synthetic TRB)
 
@@ -3405,57 +3433,85 @@ You will (1) work with legal, HR, SOC and developers; (2) translate findings; (3
 
 Contracts, disclosure, privacy — Sam brings facts, not legal conclusions.
 
+Legal partners need a clean factual packet: systems touched, data classes, timestamps and whether customer data left the bank. Sam refuses to draft conclusions about breach notification statutes; that is counsel's lane. The interface works when red teamers speak precisely and stay inside evidence. Vague adjectives force lawyers to re-investigate what the tester already knew. A one-page fact sheet attached to the ticket beats a long narrative email.  Fact sheets travel better across counsel rotations than heroic memory does.
+
 ### 32.2 HR
 
 Staff-affecting simulations need HR paths.
+
+Phishing or social exercises that can touch staff records or performance perceptions require an HR path before launch. Sam's checklist asks who will see names, how long identifiers live and how complaints will be handled. Skipping HR once created a grievance that outlived the finding. The path is a named contact and a written consent boundary, not a friendly hallway nod. Findings that implicate a person's conduct go through HR language review before wide distribution.  People-impacting work without an HR path is treated as a scope defect.
 
 ### 32.3 SOC
 
 Detection engineering consumes ATT&CK tags and timelines.
 
+SOC engineers can use red-team output only when technique tags and stage times are present. Sam's chain diagrams feed detection backlog items with those fields already filled. A screenshot without a technique id is a story; a tagged timeline is a work order. Purple synergy fails when red teamers dump lore and expect analysts to invent structure. PulseMap imports are rejected if required tags are blank.  Tagged timelines are how detection work begins rather than how arguments begin.
+
 ### 32.4 Developers
 
 Want reproduction and safe fix patterns.
+
+Developers ask for exact reproduction steps and a fix pattern that will not brick payments. Sam includes a minimal request, expected response and a suggested guard that stays inside the service's change rules. Heroic exploit write-ups without a safe patch shape waste engineering sprints. FindingsDesk templates force a reproduction block before a finding can leave draft. When a fix is unclear, Sam schedules a fifteen-minute huddle rather than guessing in prose.  Reproducible steps are the courtesy developers remember next quarter.
 
 ### 32.5 Executives
 
 Want decisions and dates.
 
+Executives need the decision required, the date it is needed and the residual if they wait. Sam keeps executive notes under half a page and links deeper detail rather than pasting it. Metaphor-heavy briefings lose to a table with three rows. The interface fails when testers perform expertise instead of enabling a choice. Every executive note ends with a single asked decision in plain text, and dates are calendar dates.  A crisp ask is kinder than a brilliant digression when calendars are full.
+
 ### 32.6 Friction
 
 Procurement and change windows are real; plan for them.
 
-### 32.7 32.7 Applied note
+Brilliant findings die when the fix needs a vendor change during a freeze. Sam asks early which remedies require procurement or a change window and records those constraints beside the finding. Planning for friction is not lowering severity; it is sequencing work the bank can actually do. Engagement kickoffs include a five-minute constraint scan with the owner. Surprise freezes still happen; documented constraints make rescheduling calmer.  Calendar literacy is part of technical maturity in regulated firms.
+
+### 32.7 Generated translation packets
 
 Translation packets are generated from FindingsDesk fields so exec and engineer texts cannot disagree on CVSS-like scores or asset ids. Sam once found a drift of severity words between emails; templates removed it.
 
-### 32.8 32.8 Glossary bridge
+Generated packets pull severity, asset ids and titles from the same rows the ticket uses. Manual rephrasing is allowed for clarity but not for score changes. Sam's drift incident taught the team that copy-paste between audiences invents two truths. Templates made the dual versions boring and consistent. Reviewers spot-check that generated numbers match the ticket before sending.  One source of severity numbers beats two clever paraphrases.
+
+### 32.8 Glossary for legal readers
 
 A mini glossary maps "conduit", "control", and "finding" for legal readers. Sam attaches it when legal joins late.
 
-### 32.9 32.9 RACI snippet
+Shared words hide different meanings across professions. The mini glossary is one screen and travels as an attachment, not a lecture. Sam updates it when a new misunderstanding appears in a thread. Late-joining counsel get the glossary in the first packet so the second meeting is shorter. Argument about definitions mid-crisis is how deadlines slip.  Shared definitions shorten every later meeting by minutes that add up across a quarter.
+
+### 32.9 Finding RACI fields
 
 Each major finding carries a tiny RACI: who fixes, who verifies, who accepts. Sam fills it in FindingsDesk fields.
 
-### 32.10 32.11 Scene
+Unowned findings age into folklore. The tiny RACI sits on the ticket so accountability is visible without a separate programme management ritual. Sam will not move a major finding to in-progress without the three names. Acceptors must have authority to own residual risk; friends of the team do not qualify. Empty RACI fields block status transitions in the workflow.  Named roles turn findings into scheduled work instead of ambient guilt.
+
+### 32.10 Confirm RACI autosuggest
 
 RACI fields auto-suggest owners from the asset register. Sam still confirms with a human. Autosuggest without confirmation once mailed a finding to a former employee.
 
-### 32.11 32.12 Extension
+Autosuggest is a convenience that can become a confidentiality incident. Sam's confirmation call is short and logged with a timestamp on the ticket. The former-employee mail became a teaching case about trusting directories after HR events. Humans still beat stale graphs when stakes include private vulnerability detail. Confirmation is mandatory even when the suggestion looks obviously right.  Human confirmation is cheap insurance against directory rot.
+
+### 32.11 Deactivated owner near miss
 
 RACI autosuggest once chose a deactivated user; confirmation call caught it. Sam keeps the call even when busy.
 
-### 32.12 32.14 Note 11
+Deactivated users lingering in the asset register are a quiet failure mode. The confirmation call caught the miss before mail merged. Sam refuses to drop the call on busy days because busy days are when shortcuts concentrate. A two-minute live check beats a day of recall. Platform tickets now flag deactivated owners in red beside the suggestion.  Near misses that change both UI and habit are the reviews worth keeping.
+
+### 32.12 Owner-confirmed timestamps
 
 Confirmation calls are logged as "owner confirmed 15:04" in the ticket.
 
-### 32.13 32.16 Pad
+A bare checkbox saying confirmed ages poorly when auditors ask who spoke. The log line names the act and the clock so later readers can reconstruct diligence. Sam pastes the line immediately after the call while memory is fresh. Tickets without the line bounce from peer review. The format is dull on purpose so people actually use it.  Timestamped diligence survives staff turnover cleanly and keeps auditors from guessing. The discipline sounds small until the first time it prevents a messy recall.
+
+### 32.13 Business-hours confirmation rule
 
 Owner confirmed timestamps must be during business hours unless on-call is noted.
 
-### 32.14 32.18 Final
+Night confirmations happen, but they need an on-call note so nobody assumes a sleepy accidental yes. Sam's validator warns when the timestamp falls outside business hours without the note. The rule protects owners as much as it protects the process. On-call notes name the rotation and the ticket that authorised off-hours contact. False urgency is easier to spot when the clock is disciplined.  Clock rules make urgency claims easier to audit later when memories disagree.
+
+### 32.14 Monthly legal office hours
 
 Interdisciplinary office hours invite legal monthly. Sam brings one finding and asks how they would phrase disclosure duties. The mutual translation compounds.
+
+Monthly office hours beat emergency-only contact. Sam brings a single live finding stripped of drama and asks counsel how they would frame duties. Legal brings questions about what evidence they wish testers captured earlier. Both sides leave with sharper templates. Attendance is short and recurring so trust accumulates.  Recurring low-stakes practice beats rare high-stakes translation under deadline heat.
 
 ### Worked example (synthetic TRB)
 
@@ -3493,57 +3549,85 @@ You will (1) analyse purple-team results; (2) respect threats to validity; (3) r
 
 Use intervals; avoid p-hacking by switching metrics post hoc.
 
+Analysis plans name the metric and the interval before data collection starts. Sam rejects study drafts that keep three spare metrics in the drawer for a prettier slide. Intervals communicate uncertainty; point estimates alone invite false precision. Post-hoc switches are allowed only as exploratory notes clearly labeled as such. The lab's report template has a locked metrics box that cannot be edited after data land. Precommitment is how classroom studies stay honest when results disappoint.
+
 ### 33.2 Validity
 
 Staging, alert fatigue, shared accounts threaten generalisation.
+
+Validity sections must name threats that actually apply to TRB-like environments. Staging that lacks production noise, analysts drowning in alerts and shared admin accounts all warp what a detection score means. Sam's rubric docks reports that only mention sample size. Threats are paired with a mitigation or an explicit limit on claims. Readers should know how far the result can travel. Overclaiming from a tidy lab is a validity failure, not a marketing win.
 
 ### 33.3 Adaptive evaluation
 
 Adversaries adapt; static test sets age.
 
+Evaluation that never refreshes becomes a museum of last year's tricks. Sam logs when attackers or internal systems change enough to stale a static test. Adaptive evaluation schedules refresh triggers, not only annual reviews. A perfect score on a frozen set can hide a blind spot that opened last month. The research group treats staleness as a first-class risk. Living opponents require living tests if assurance language is going to mean anything. Refresh triggers belong in the plan, not in a guilty afterthought.
+
 ### 33.4 Disclosure of limits
 
 Every study lists limits in the abstract.
+
+Limits buried on page twelve might as well not exist for busy readers. Sam requires at least three limits in the abstract: environment, sample and adversary adaptation. The PDF build fails if the list is shorter. Naming limits early is a feature that builds trust with skeptical reviewers. Students who hide limits to look strong lose points for scientific manners. Abstracts that admit weakness teach better judgment than abstracts that boast. Putting limits up front trains readers to trust the rest of the page.
 
 ### 33.5 Data sharing
 
 Synthetic datasets preferred for sharing.
 
+Raw TRB logs do not leave the bank for a classroom paper. Sam's default is a synthetic dataset with documented generators and known ground truth. When real traces are essential, sharing stays inside approved research environments with access logs. Synthetic does not mean toy; generators encode the skew the study cares about. Reviewers receive generator notes so they can judge realism. Preferring synthetic data keeps publication ambitions from becoming data leaks. Generator notes let outsiders judge realism without touching bank logs.
+
 ### 33.6 Ethics revisit
 
 Re-check approvals if methods expand mid-study.
 
-### 33.7 33.7 Applied note
+Scope creep in methods can outrun the original ethics approval. Sam pauses collection when a new technique appears and files an amendment before continuing. Students sometimes treat approval as a one-time gate; the course treats it as a living bound. Expanding into staff-affecting steps reopens the HR path as well. Unapproved expansion voids the study for course credit. Ethics that cannot be revisited is decoration, not control. Amendments are cheaper than discoveries that ethics never authorised.
+
+### 33.7 Three validity threats
 
 Validity sections list at least three threats every time: environment, sample size, and adversary adaptation. Sam's template will not compile the report PDF if the list has fewer than three.
 
-### 33.8 33.8 Adaptation log
+The three-threat minimum stops empty validity theatre. Environment covers staging versus production differences students love to ignore. Sample size covers the quiet n that inflated a percentage. Adversary adaptation covers the fact that last quarter's payload may be loud now. Mechanical enforcement keeps tired writers from skipping the hard paragraph. Templates that refuse to compile soft sections raise the scientific floor.
+
+### 33.8 Adaptation log
 
 When attackers or systems change, Sam logs which static tests are stale. The log feeds the next trial's design.
 
-### 33.9 33.9 Stale-test date
+The adaptation log is a dated list of what changed and which tests it wounds. Sam reviews it before proposing a new trial so the design does not pretend the world froze. Entries cite tickets or intel notes rather than vibes. Tests marked stale cannot support assurance claims until refreshed. The log is short enough to read at the start of planning meetings. Design that ignores the log repeats last year's blind spots with new confidence.
+
+### 33.9 Stale-test date
 
 Tests carry a review-by date. Past-due tests cannot support assurance claims until refreshed.
 
-### 33.10 33.11 Scene
+Every packaged test has a review-by date beside its name. Past-due tests may still run for training, but they cannot be cited in assurance language. Sam's assurance checklist asks whether any red-dated tests were cited and requires a no. Dates force an adult conversation about refresh funding. Eternal tests are a fantasy that regulated banks cannot afford. Expiry dates on tests are how research hygiene becomes operational hygiene.
+
+### 33.10 Traffic-light test ages
 
 Stale-test dates turn orange at thirty days and red at ninety. Red tests cannot be cited in assurance statements until re-run. Sam likes traffic lights more than paragraphs of policy.
 
-### 33.11 33.12 Extension
+Colour on the dashboard beats a policy PDF nobody opens. Orange means schedule a refresh; red means citation is blocked. Sam showed leadership the lights once and funding for refresh work became easier to explain. Students learn the same lights in the lab so the habit transfers. Policy paragraphs remain for auditors; operators steer by colour. Visible aging turns abstract freshness rules into daily decisions.
+
+### 33.11 Orange schedule, red block
 
 Orange tests get scheduled; red tests block citations. Sam's assurance checklist literally asks "any red tests cited?" with a no-box required.
 
-### 33.12 33.14 Note 11
+Scheduling is the constructive response to orange; blocking is the hard response to red. The checklist's no-box is a forced pause before someone pastes an old score into a board pack. Sam has rejected packs that left the box blank. Automation later queries the same state the human checklist asks about. Humans and bots agreeing on red is the goal. Forced questions catch the citation that hope would have smuggled through.
+
+### 33.12 Traffic-light API in builds
 
 Traffic-light API is queried by the report build; red citations fail the build.
 
-### 33.13 33.16 Pad
+Report builds call the traffic-light service and fail closed on red citations. Authors see which test id tripped the build and must refresh or remove the claim. Sam prefers a failing build to a polite warning that busy people dismiss. The API is simple on purpose: status by test id, nothing more. Offline builds that cannot reach the API also fail rather than assume green. Failing closed keeps stale assurance language out of finished PDFs.
+
+### 33.13 Offline builds fail closed
 
 Report builds call the traffic-light API; offline builds fail closed.
 
-### 33.14 33.18 Final
+Convenience builds on laptops without network used to skip the check. That skip was a hole large enough to drive a stale claim through. Sam changed the default so offline equals fail until someone deliberately uses an approved offline bundle with pinned statuses. Pinned bundles expire quickly. The annoyance is cheaper than a board pack citing a red test. Network-optional honesty is still honesty when the fallback is denial. Pinned offline bundles expire fast so convenience cannot become a back door.
+
+### 33.14 Ban on prove without threshold
 
 Research office hours ban the word "prove" unless a pre-registered threshold is cited. Sam rings a small bell. The room self-corrects by week three.
+
+Casual prove-talk inflates what a classroom study can carry. The bell is slightly silly and extremely effective at interrupting the habit. Speakers must cite the pre-registered threshold or rephrase as supports or consistent with. By week three the room mostly self-corrects before the bell. Language discipline is part of research methods, not pedantry. Small rituals can police big epistemic bad habits without lengthy lectures.
 
 ### Worked example (synthetic TRB)
 
@@ -3581,65 +3665,97 @@ You will (1) compare two assessment approaches; (2) use TRB criteria; (3) recomm
 
 Quarterly WSTG-style web test vs annual threat-led scenario exercise.
 
+The comparative project sets two real options against each other rather than against a fantasy of infinite budget. Quarterly web tests following a WSTG-style method cover common application flaws on a steady rhythm. An annual threat-led scenario digs deeper into adversary paths but consumes far more hours. Sam refuses a third option that claims to do both at full intensity every quarter. Honest options make the later recommendation defensible. Choosing among feasible programmes beats designing an unfunded masterpiece. Boards remember the constraint longer than the adjective that sold the mix.
+
 ### 34.2 Criteria
 
 Cost, coverage, detection learning, operational risk, examiner expectations.
+
+Criteria are fixed before scores are filled so the answer cannot steer the rubric. Cost includes staff hours and vendor invoices; coverage asks what asset classes are touched; detection learning asks what the SOC gains; operational risk asks what could break; examiner expectations ask what supervisors will look for. Sam weights the criteria with the sponsor before scoring begins. Hidden criteria that appear in the recommendation paragraph are a fail. A public rubric is how comparative work earns the right to advise spending. Students who skip that row usually rediscover it during an awkward defence question.
 
 ### 34.3 Evidence
 
 Use synthetic past results and Wilson intervals.
 
+Evidence for the comparison comes from synthetic past results with Wilson intervals around detection and coverage rates. Point estimates without intervals make small samples look decisive. Sam's tables show the interval beside every rate the slide will cite. Synthetic history keeps the exercise shareable while still punishing sloppy stats. Students who drop the intervals to tidy a chart lose marks for evidence hygiene. Interval literacy belongs in programme design, not only in research electives. The facilitator guide flags this moment as where optimism tries to re-enter.
+
 ### 34.4 Recommendation
 
 Mix: keep quarterly web tests; fund threat-led every other year.
+
+The recommended mix keeps quarterly web tests for steady coverage and funds a threat-led scenario every other year. Annual threat-led scored well on learning and poorly on capacity; the biennial cadence won on the capacity row. Sam states what the mix intentionally leaves on the table so sponsors cannot invent full annual depth later. Recommendations name the cut, not only the prize. A mix that admits limits survives contact with the budget committee. Peer reviewers initial the appendix when the supporting file is present.
 
 ### 34.5 Non-goals
 
 Not recommending zero testing.
 
+One explicit non-goal is recommending zero testing as a savings measure. Another is pretending vendor marketing slides are evidence. Sam prints non-goals beside the options so the debate cannot quietly redefine success. Comparative projects that skip non-goals drift into whichever option the loudest voice likes. Clear refusals keep the recommendation honest when pressure rises. A third non-goal is scoring options on prestige rather than on the published criteria. Saying what you will not recommend is part of recommending well. Changing the story after the vote is treated as a new proposal, not a clarification.
+
 ### 34.6 Presentation
 
 Ten slides, decisions last.
 
-### 34.7 34.7 Applied note
+The presentation is capped at ten slides with the decision on the final one. Front-loading theatre and hiding the ask is graded as a miss. Sam's coaching is to put criteria and capacity arithmetic before adjectives. Executives who only see the last slide still deserve a self-explanatory decision box. Appendix material stays in the appendix. Speaker notes may be rich; the visible deck stays lean. Short decks force the comparison to carry the weight instead of the speaker's charm. Quiet arithmetic outperforms confident narrative when hours are scarce.
+
+### 34.7 Capacity to execute row
 
 Comparison tables include a "capacity to execute" row. Threat-led every year scored high on learning and low on capacity; every other year won. Ignoring capacity produces shelfware programmes.
 
-### 34.8 34.8 Cost honesty
+Learning scores seduce sponsors; capacity scores keep programmes real. Sam's table made the annual threat-led option look excellent until the capacity row turned red. Shelfware programmes are how banks buy prestige and ship nothing. The row uses last year's hours, not optimism. When capacity is ignored, the recommendation becomes fiction. Execution capacity is a criterion with the same dignity as coverage. The next cohort inherits the file so folklore cannot replace measurement.
+
+### 34.8 Cost honesty
 
 Comparison tables include staff hours, not only vendor invoices. Internal quarterly tests are not free.
 
-### 34.9 34.9 Capacity row data
+Invoice-only costing makes internal work look free and biases the table toward busywork the staff already cannot finish. Sam converts hours to cost with a published internal rate so apples match apples. Hidden overtime is still cost even when finance has not booked it. Students who omit hours fail the honesty check on the rubric. Sponsors deserve the full price of the mix. Cost honesty prevents comparative theatre from laundering unpaid labour. Sponsors notice when the painful answer arrives before the comforting one.
+
+### 34.9 Capacity row data
 
 Capacity estimates come from last year's hours, not optimism. Sam cites the hours file.
 
-### 34.10 34.11 Scene
+Optimism is not a dataset. Sam attaches the time-tracking export hash beside the capacity row so reviewers can recompute. Handmade estimates once undercounted threat-led work by roughly forty percent. Citing the file turns a debate about vibes into a debate about arithmetic. Future years update the file rather than inventing a new folklore number. Evidence-backed capacity rows are how mixes stay fundable after leadership changes. Forwardable artefacts outperform spoken assurances that fade by Friday. Graders look for the refusal as carefully as they look for the recommendation.
+
+### 34.10 Hours arithmetic scene
 
 Capacity row: last year threat-led consumed 1,200 hours. Quarterly web tests consumed 400. The mix recommendation falls out of the arithmetic more than out of fashion.
 
-### 34.11 34.12 Extension
+The scene is a quiet spreadsheet moment rather than a dramatic pitch. Twelve hundred hours beside four hundred makes the biennial threat-led choice feel inevitable. Sam lets the numbers speak before he narrates them. Fashionable frameworks lose to arithmetic when the room is tired. Students practice reading the row aloud without apology. When the arithmetic is solid, the recommendation needs less theatre to survive. Graders look for the refusal as carefully as they look for the recommendation in this comparative cycle.
+
+### 34.11 Time-tracking export
 
 Hours file is exported from time tracking, not remembered. Sam's first handmade estimate was 40% low. Humility is a spreadsheet.
 
-### 34.12 34.14 Note 11
+Memory compresses painful projects and inflates tidy ones. The export ends arguments about whether last year was really that heavy. Sam keeps the undercount story in the facilitator guide as a humility prompt. Hashes on the export stop quiet edits after the meeting. Comparative work inherits the same evidence manners as findings work. Spreadsheets that embarrass the author are still better than confident fiction. A missing hash is treated like a missing signature on the capacity claim.
+
+### 34.12 Hours export in appendix
 
 Hours export is attached to the comparative project appendix as evidence.
 
-### 34.13 34.16 Pad
+Appendix evidence lets a skeptical board member recompute without calling Sam at night. The export is stripped of personal names where policy requires and keeps role labels. Missing exports make the capacity row look decorative. Sam's checklist for the project packet lists the export beside the slide deck. Attachments are how arithmetic becomes auditable. A recommendation without its hours appendix is an opinion in nice fonts. Visual schedules expose collisions that percentage slides politely hide. Finance questions get sharper when the page still makes sense without the speaker.
+
+### 34.13 Refuse handmade hour estimates
 
 Comparative appendices refuse handmade hour estimates without a time-tracking export hash.
 
-### 34.14 34.18 Final
+The refusal is mechanical: no hash, no capacity claim. Sam would rather delay a board date than bless a guessed row. Handmade numbers return through the side door whenever the rule is soft. Students learn to request exports early because late requests slip. Harshness here protects everyone from a programme that cannot be staffed. Guarding the capacity row is guarding the recommendation's integrity. Finance questions get sharper when the page still makes sense without the speaker in this comparative cycle. Undercounts from memory are archived as cautionary footnotes in the guide.
+
+### 34.14 What would you cut first
 
 Comparative project defences ask "what would you cut first if budget halves?". Sam prepares that answer before the nice answer. Capacity thinking is the point.
 
-### 34.15 34.19 Boost
+The cut question reveals whether the student understood capacity or only memorised a mix slogan. Sam answers with which quarter of web testing shrinks and which threat-led elements wait. Preparing the painful answer first keeps the nice answer from sounding naive. Sponsors trust advisors who can retreat in good order. Capacity thinking is the real exam hiding inside the project. Knowing what to cut is part of knowing what to fund.
+
+### 34.15 Two-year calendar visual
 
 When presenting the mix recommendation, Sam brings a one-page calendar for two years showing quarterly web tests and a shaded threat-led quarter. Visual capacity beats abstract ratios. Executives approve calendars more readily than adjectives like "robust programme". He leaves copies of the calendar in the board portal the same day.
 
-### 34.16 34.20 Extra
+A calendar makes collisions with freezes and examiner visits obvious. Shading the threat-led quarter prevents silent double booking of the same staff. Abstract ratios invite head-nods; calendars invite real questions. Same-day portal upload stops hallway versions from drifting. Visual artefacts travel when speakers cannot. Calendars convert programme poetry into something finance can schedule.
+
+### 34.16 Calendar PDF for finance
 
 Two-year calendar PDF is the artefact boards forward to finance.
+
+Finance rarely forwards slide decks with metaphors intact. The one-page calendar PDF survives forwarding chains and still shows when money and people are needed. Sam versions the PDF with a date in the footer so stale copies are obvious. If finance asks for a third year, the model extends without rewriting the story. Artefacts designed for forwarding are artefacts designed for decisions. The forwarded calendar is often the only page that still matters a month later. Same-day uploads prevent unofficial copies from becoming the record.
 
 ### Worked example (synthetic TRB)
 
@@ -3677,57 +3793,85 @@ You will (1) write a scoped capstone proposal; (2) list non-goals; (3) define su
 
 Build a scope-diff tool for TrackScope with tests and a short evaluation on synthetic inventories.
 
+The capstone builds a scope-diff tool that compares TrackScope inventories across time and flags drift. Deliverables are the tool, automated tests and a short evaluation on synthetic inventories with planted changes. Sam sizes the scope so a bachelor's term can finish without borrowing nights from another course. Success means trustworthy diffs, not a platform rewrite. The proposal states which inventory fields are in scope for comparison. A narrow tool that ships beats a wide vision that stalls.
+
 ### 35.2 Non-goals
 
 No integration with every ticket system; no exploit modules.
+
+Non-goals keep the build from becoming a career in connectors. No integration with every ticket system, no exploit modules and no LLM summariser in version one. Sam prints the list on the proposal cover in bold so mid-project enthusiasm has something to hit. Advisors grade violations of printed non-goals as scope failures. Friends will suggest extras; the cover is the answer. Printed refusals are easier to enforce than remembered intentions. Bold cover text only works if someone is willing to point at it mid-argument.
 
 ### 35.3 Metrics
 
 Precision/recall on planted inventory drifts; fail-closed on corrupt files.
 
+Evaluation metrics are precision and recall on planted inventory drifts, plus a hard fail-closed result on corrupt files. Dashboards that look pretty while swallowing garbage do not pass. Sam plants known adds, removes and field changes so scores are grounded. Fail-closed means the tool refuses to emit a diff when the file cannot be parsed safely. Metric definitions are frozen before the evaluation run. Planted truth is how a student tool earns a serious score. Checkpoint demos that chase polish usually hide a broken fail-closed path.
+
 ### 35.4 Risks
 
 Time, data access, reviewer availability.
+
+Primary risks are calendar time, access to realistic synthetic generators and reviewer availability for checkpoints. Sam lists mitigations: a vertical slice early, generators already used in prior labs and booked advisor slots. Unowned risks become surprises in week ten. The proposal rates each risk as high, medium or low with a trigger to escalate. Risks about ego and feature envy are written down too. Named risks with mitigations are part of engineering, not preamble filler. Synthetic inventories keep the capstone from becoming a data-handling incident. A tempting feature waits for its own proposal rather than hitchhiking on v1.
 
 ### 35.5 Advisor
 
 Checkpoints every two weeks.
 
+Advisor checkpoints every two weeks keep the build honest. Each checkpoint demos a control property such as fail-closed rather than only new screens. Sam books the slots at proposal time so availability risk is already mitigated. Missed checkpoints without notice pause merge privileges until a recovery plan exists. The cadence is a feature of the education, not bureaucracy. Regular demos catch creep while the code is still small enough to redirect. A tempting feature waits for its own proposal rather than hitchhiking on v1 during build week. Photographing the poster into the README makes the boundary travel with the code.
+
 ### 35.6 Ethics
 
 Synthetic inventories only.
 
-### 35.7 35.7 Applied note
+The capstone uses synthetic inventories only; live TRB exports stay out of student laptops. Generators document how realism was approximated so evaluators are not misled. Sam's ethics note restates that even synthetic staff-like names stay inside course machines. Any urge to peek at production inventories is a stop condition. Ethics here is mostly about data diet discipline. Synthetic-only rules keep ambition from becoming an access incident. Photographing the poster into the README makes the boundary travel with the code during build week. Dated evidence of the boundary stops later readers from claiming amnesia.
+
+### 35.7 Bold non-goals on cover
 
 Non-goals are printed on the proposal cover in bold. Sam's advisor grades whether a mid-project feature creep violated a printed non-goal. Bold text makes the violation embarrassing enough to stop.
 
-### 35.8 35.8 Checkpoint demos
+Embarrassment is an underrated control. When a friend suggests an LLM summariser, Sam points at the bold line rather than inventing a new argument. Advisors ask students to read the non-goal aloud when creep appears. Cover printing costs pennies and saves weeks. Soft non-goals that live only in a paragraph get ignored under excitement. Make the boundary socially costly to cross and fewer people cross it.
+
+### 35.8 Checkpoint demos
 
 Every two weeks Sam demos fail-closed, not new UI chrome. Advisors grade control of scope creep.
 
-### 35.9 35.9 Cover non-goals
+Chrome is seductive; control properties are the grade. Sam's demo script opens with a corrupt file and shows the refusal before any happy path. Advisors who only see screenshots miss the safety behaviour. Students learn to rehearse the boring demo until it is crisp. Creep often arrives dressed as a small UI improvement. Demoing the refusal first sets the tone for the whole checkpoint. Quizzes that force a spoken no train the muscle the build will need.
+
+### 35.9 Non-goals posters at the desk
 
 Printers in the lab reprint non-goals posters for Sam's desk during build week.
 
-### 35.10 35.11 Scene
+A poster at eye level beats a PDF buried in a folder. Build week is when tempting ideas peak, so the printer runs then on purpose. Visitors who joke about the poster still read it. Sam replaces torn copies rather than letting the wall go blank. Physical reminders sound old-fashioned and still change behaviour. Desk-level boundaries catch the idea before it becomes a branch. Scope tools earn trust by refusing corrupt input more than by drawing charts. Two-week cadence keeps surprises small enough to correct without heroics.
+
+### 35.10 LLM suggestion refused
 
 Mid-build, a friend suggests adding LLM summarisation of findings. Sam points at the bold non-goals. The feature waits for a new proposal. Bold text earns its ink.
 
-### 35.11 35.12 Extension
+The scene is ordinary and that is why it matters. Sam does not debate model quality; he points at the cover and parks the idea. The friend is not wrong about usefulness; the timing is wrong for v1. Waiting for a new proposal keeps evaluation metrics coherent. Cohorts retell the scene because it is easy to imitate. A calm point at bold text beats a long argument about roadmap purity.
+
+### 35.11 No LLM in v1 on poster
 
 Non-goals poster includes "no LLM feature in v1". Visitors laugh; Sam points at the signed proposal. Laughter is fine; creep is not.
 
-### 35.12 35.14 Note 11
+Laughter often greets explicit bans on fashionable tools. Sam treats the laugh as proof the boundary is visible. The signed proposal backs the poster when someone claims the ban was informal. v2 can revisit models with its own metrics and ethics note. Fashion pressure is predictable; the poster makes the answer predictable too. Visible bans survive jokes better than quiet assumptions do. Printers and posters sound quaint until they stop a late-night merge argument.
+
+### 35.12 Poster photo in README
 
 Non-goals poster is photographed into the capstone repo README.
 
-### 35.13 35.16 Pad
+The README photograph timestamps the boundary beside the code. Future readers cloning the repo see what v1 refused without hunting email. Sam rejects README edits that crop the non-goals out of the image. Documentation that travels with the repository outlives slide decks. A picture of a poster is still evidence of intent. Repo-native boundaries keep remote collaborators inside the same fence. Friends pitching extras are part of the test environment, not a distraction from it. Failing closed on garbage files is a product requirement, not a nice-to-have.
+
+### 35.13 Dated poster photograph
 
 README photograph of non-goals must be dated within the build week.
 
-### 35.14 35.18 Final
+An undated photo could be theatre from another term. Sam requires the camera date or a visible dated slip in the frame. Build-week dating ties the boundary to the work actually underway. Old photos of old bans do not cover new temptations. Small dating rules keep evidence meaningful. Fresh photographs make the non-goals claim checkable. Failing closed on garbage files is a product requirement, not a nice-to-have during build week. Precision and recall on planted drifts beat vibes about whether the tool feels smart.
+
+### 35.14 Non-goals quiz at checkpoints
 
 Proposal checkpoints include a non-goals quiz: advisor names a tempting feature; Sam must say no and point to the cover. Failing the quiz delays code merge.
+
+The quiz is short and slightly awkward on purpose. Saying no out loud under advisor eyes prepares Sam for friends and sponsors. Merge delays sound harsh until the first prevented sprawl. Students swap tempting features each checkpoint so answers cannot be memorised emptily. Spoken refusal is a deliverable. If you cannot point to the cover and refuse, you are not ready to merge. Precision and recall on planted drifts beat vibes about whether the tool feels smart during build week.
 
 ### Worked example (synthetic TRB)
 
