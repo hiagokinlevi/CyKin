@@ -2660,25 +2660,37 @@ You will (1) contribute to a sharing community responsibly; (2) prepare an item 
 
 During field practice Amara spends four weeks with HSSC's coordination desk, under its membership agreement and a confidentiality undertaking. She sees how items arrive, are checked and are distributed.
 
+Amara's role is to observe and help with routine checks, not to make sharing decisions. The undertaking forbids her from using anything she sees at HSSC in her HCHT work unless it was distributed to HCHT through the normal channel. She keeps a log of her tasks, separate from any member information, which she later uses for her reflective journal and placement report.
+
 ### 36.2 Preparing a contribution
 
 A good contribution is relevant to members, verified, redacted, labelled with TLP and clear about confidence. It includes what was observed, when, and what members can do. NIST SP 800-150 notes that organisations should establish sharing rules and protect sensitive information before contributing.
+
+Amara helps prepare an HCHT contribution about a phishing campaign, using the redaction script and the source grading she learned earlier. The desk checks it, asks her to state the confidence more clearly and publishes it at TLP:GREEN. Two members later report the same sender in their own logs, which raises confidence for everyone.
 
 ### 36.3 Community norms
 
 Respect labels absolutely; credit sources; correct errors publicly within the community; do not use member information for commercial advantage. Trust is the community's only currency.
 
+Amara sees these norms applied when a member mistakenly forwards a TLP:AMBER item to a supplier. The desk asks the member to recall it, records the incident and reminds all members of the rules without naming anyone. The norm of public correction applies to errors in content, while handling mistakes are dealt with privately, so members are not afraid to report them. Trust survives because the response is consistent and fair.
+
 ### 36.4 Feedback
 
 When a member reports that an indicator caused false positives, the desk updates the item and thanks them. Feedback is how the community learns.
+
+Amara helps process feedback during her placement: she records each report of a false positive, checks the item's evidence and drafts an update for the desk to approve. One indicator turned out to be a shared hosting address and was withdrawn. Members who report problems see their feedback acted on, which encourages them to report again.
 
 ### 36.5 Reflection
 
 Amara keeps a reflective journal: what surprised her, what she would do differently, what professional standards she saw tested.
 
+She writes an entry at the end of each day, while details are fresh, and reviews the journal weekly. One entry records her surprise at how much of the desk's time goes to checking labels and redaction rather than analysis. Another notes a moment when she was unsure whether she could discuss an item with her HCHT supervisor, and how she resolved it by asking the desk. The journal becomes evidence for her placement assessment.
+
 ### 36.6 Community practice beyond work
 
 Some students volunteer with public-interest projects, such as helping small charities understand phishing. Such work needs the same discipline: clear scope agreed in writing, no access to systems without permission, and no collection of personal data beyond what the charity asks to protect.
+
+Amara volunteers for a few hours with a local charity. With the manager's written agreement, she runs a short session on recognising phishing and reviews the charity's email settings with its volunteer administrator. She does not log in to any system herself, and the session uses examples from public sources rather than HCHT or HSSC material. Her notes record the scope and what was agreed.
 
 ### Mentoring
 
@@ -2720,25 +2732,37 @@ You will (1) critique a published intelligence report; (2) separate evidence fro
 
 Each student brings a public vendor or government CTI report and leads a 20-minute critique. The class asks: what is claimed, what evidence supports it, how confident should we be, and what is missing?
 
+Amara chooses a government report on ransomware in health care, because its subject is close to her internship. She reads it twice, marks every claim with its evidence and drafts questions for the class. The format keeps critique focused on what readers can verify, rather than on the report's reputation or style.
+
 ### 37.2 ICD 203 standards
 
 ICD 203 lists analytic tradecraft standards, including describing source quality, expressing uncertainty, distinguishing intelligence from assumptions and judgments, considering alternatives, and being relevant and logically argued. They make a useful checklist for any report.
+
+Amara uses the standards as a checklist for her critique, marking each as met, partly met or not met with an example. The report she reviews describes sources clearly but rarely separates assumptions from judgments. She suggests how the main judgment could be rewritten to make its assumptions explicit. The class agrees that the checklist makes critique more consistent between students.
 
 ### 37.3 Evidence versus assertion
 
 A report saying "the actor is state-sponsored" without citing evidence is asserting. One that lists infrastructure overlap, tooling and timing — and states confidence — is arguing.
 
+Amara marks each attribution claim in her report as asserted or argued. Most claims about the actor's motives are asserted, while claims about techniques are well argued with indicators and timing. She explains that asserted claims are not necessarily wrong, but a reader cannot check them and should treat them as the author's opinion until evidence appears.
+
 ### 37.4 Alternatives
 
 Did the report consider other explanations? A false-flag possibility, a shared tool sold to many criminals, or coincidence?
+
+Amara's chosen report considers no alternatives, so she proposes two: a criminal affiliate using leaked tooling, and coincidence in timing between two unrelated intrusions. For each, she lists what evidence would support or rule it out. The class discusses whether the report's conclusion would survive these tests. Considering alternatives strengthens a conclusion that survives them and exposes one that does not. The class adopts this habit.
 
 ### 37.5 Constructive critique
 
 Start with what the report does well; then name specific gaps; propose improvements. Critique the work, not the authors.
 
+Amara opens her critique by noting the report's clear timeline and good use of public advisories. She then names two specific gaps, with page references, and proposes improvements for each. Classmates follow the same structure in their feedback to her, which keeps the discussion respectful and useful. Her tutor notes that specific critique is more helpful than general praise or general criticism.
+
 ### 37.6 Commercial context
 
 Vendor reports also market products. That does not make them wrong, but it shapes what is emphasised — threats their product detects, dramatic names, large numbers. Note the publisher's interest alongside the evidence quality, and look for independent corroboration of headline figures.
+
+Amara notes the publisher's product focus in her critique. Her report's headline figure for affected organisations comes from the vendor's own customer telemetry, which may not represent all victims. She looks for the same figure in a government source and finds a smaller estimate based on reported incidents. Presenting both with their sources lets readers see why they differ.
 
 ### Leading the discussion
 
@@ -2780,25 +2804,37 @@ You will (1) implement the capstone process in small, testable steps; (2) keep a
 
 Amara builds her lookalike process in stages: a generator that produces candidate names from HCHT's domains using simple rules (character swaps, added words like "portal" or "login", different top-level domains); a matcher that compares candidates with a downloaded, public certificate-transparency extract; a triage sheet. Each stage is tested on synthetic inputs before use.
 
+Amara keeps the rules simple at first so that the number of candidates stays manageable, and adds more only when a test shows a gap. Each stage writes its output to a file, so she can check results between stages and rerun one stage without repeating the others.
+
 ### 38.2 Decision log
 
 Each design choice is dated with reasons: "Dropped homoglyph rule for Cyrillic letters — produced 4,000 candidates, mostly noise; revisit later." The log becomes part of the final report.
+
+Amara writes entries on the day of each decision and never edits old ones; a changed decision gets a new entry that refers to the old. The log helped when her supervisor asked why a common trick was not covered: the entry showed the rule had been tried and why it was dropped. In the thesis, the log becomes an appendix that shows how the design developed.
 
 ### 38.3 Scope changes
 
 Midway, the supervisor asks to include HSSC member domains. Amara records the request, estimates extra effort, and agrees with her tutor to include only three members as a pilot, keeping the original deliverables intact.
 
+The pilot with three members tests whether the process works for domains HCHT does not own, which raises new questions about who receives the results. Amara agrees with the HSSC desk that matches for member domains go to the desk, not directly to members, under the community's normal rules. The change is recorded in the decision log and in a dated addendum to her proposal.
+
 ### 38.4 Data protection
 
 Downloaded extracts are stored on the HCHT analysis server, not a personal laptop. Results go to the supervisor only. Domains matching individuals' names are excluded from reports unless clearly impersonating HCHT.
+
+Amara checks the exclusion rule on test data before using it. Domains that look like personal names are rarely relevant to HCHT and could expose private individuals if included. Where a personal-looking domain clearly impersonates HCHT, it is included with a note explaining why. Extracts are deleted from the server after the project, as the proposal promised.
 
 ### 38.5 Weekly checks
 
 Every week Amara runs the matcher, triages new matches and records precision: how many flagged domains the supervisor judged suspicious.
 
+Amara records each week's precision in a small table with the number flagged and the number judged suspicious, along with the time spent. The supervisor's judgment is recorded with a short reason, so later reviewers can see what counted as suspicious. Weekly figures vary widely because numbers are small, so Amara also keeps a running total for the month. Results go to the supervisor on Fridays.
+
 ### 38.6 Testing with synthetic inputs
 
 Before using real extracts, Amara writes a synthetic list containing known lookalikes, unrelated names and edge cases such as uppercase letters and trailing dots. The matcher must flag exactly the planted lookalikes. When a change to the rules is made, the same test is rerun so regressions show up immediately.
+
+Amara's tests caught one error early. A rule for added words ignored uppercase letters in the extract, so a planted lookalike with capitals was missed. The test failed, the matcher was fixed to normalise case and the test passed. Without the planted list, the bug would have hidden real lookalikes for weeks.
 
 ### Worked example
 
@@ -2836,29 +2872,43 @@ You will (1) evaluate the capstone against its success measures; (2) compute pre
 
 Evaluation returns to the proposal's measures. Amara planned to report precision, analyst time and number of relevant lookalikes in a pilot month.
 
+Amara writes the evaluation in the same order as the proposal's measures, so readers can match each result to its target. Where she could not measure something as planned, she says so and explains the substitute. She also reports what was not in the proposal but proved important, such as the time spent tuning rules in the first week.
+
 ### 39.2 Results
 
 Over four weeks, the matcher flagged 25 domains; the supervisor judged 6 suspicious, giving precision of 24%. Analyst time averaged 50 minutes per week. One suspicious domain led to a takedown request.
+
+Amara reports the counts as well as the percentage, so readers can see the precision rests on 25 domains. Most false positives were domains belonging to unrelated organisations with similar names, which the feedback below addresses. Fifty minutes a week is within what the supervisor said the team could sustain. The takedown request was made by HCHT's security lead after reviewing the evidence, as the proposal's scope required.
 
 ### 39.3 Recall
 
 Recall — the share of all real lookalikes found — cannot be measured directly because the total is unknown. Amara estimates partial recall by checking whether three lookalikes reported independently by HSSC during the month were caught: two were, one used a pattern her rules lacked.
 
+Amara reports this as a rough indication, not a recall figure, since three cases are far too few to estimate a rate. The missed lookalike is added to the synthetic test list so that the next version of the rules is tested against it.
+
 ### 39.4 User feedback
 
 The supervisor values the weekly sheet but asks for fewer obvious false positives, such as domains belonging to unrelated organisations with similar initials.
+
+Amara adds a filter for domains registered long ago to organisations with similar initials, tests it on the month's data and finds it would have removed most of the obvious false positives without losing any suspicious domains. The change is recorded in the decision log and will be tested on new data before it is adopted. She thanks the supervisor for specific feedback, which made the fix easy to design.
 
 ### 39.5 Limitations
 
 Only certificate-issuing domains are visible; domains without certificates are missed. Rules are English-centric. One month is short.
 
+Amara explains each limitation's likely effect. Missing domains without certificates means some lookalikes, such as those used only for email, are not seen at all. English-centric rules miss tricks based on other languages common in the region. A single month may not include a large campaign, so precision and time could differ in a busier period. She suggests how each limit could be reduced.
+
 ### 39.6 Future work
 
 Add rules for the missed pattern, filter domains with long legitimate histories, and test for three more months.
 
+Amara writes each item as a task with an expected result, so a successor knows what to do and how to tell if it worked. The missed pattern is a combined hyphen and added word, which a single new rule can cover. Filtering long histories should reduce false positives, as the feedback suggested. Three more months would show whether results hold in different conditions.
+
 ### 39.7 Cost and benefit
 
 Fifty minutes a week is modest compared with the effort of responding to a successful credential-phishing campaign. The evaluation states the cost plainly and avoids claiming savings it cannot measure; the benefit is presented as earlier warning of six suspicious domains, one of which was taken down.
+
+Amara presents both figures side by side. She describes what is uncertain, such as whether any of the six domains would have been used in an attack. The security lead judges that the cost is justified for a further trial, which is the decision the evaluation was meant to support. Amara includes the lead's view as feedback rather than as a measured benefit.
 
 ### Comparing with the baseline
 
@@ -2900,25 +2950,37 @@ You will (1) structure a bachelor's thesis in CTI; (2) present findings to techn
 
 Abstract, introduction, background (models: kill chain, Diamond, ATT&CK; standards: STIX/TAXII 2.1, TLP 2.0, SP 800-150), method, implementation, evaluation, discussion, ethics and limitations, conclusion, references and appendices (decision log, coding sheets).
 
+Amara drafts the method and implementation chapters first, since they rely on her decision log and are the most concrete. The background chapter explains only the models and standards that her work uses, citing each. The ethics and limitations chapter brings together the decisions recorded throughout the project, so readers see how risks were handled.
+
 ### 40.2 Public versus restricted
 
 Theses are often published by the university. Any TLP:AMBER or RED material from HSSC must be excluded or replaced by synthetic examples. HCHT domains and names may need anonymising with the trust's agreement. Ask HCHT to review the final draft for sensitive content.
+
+Amara replaces all HSSC examples with synthetic ones that show the same patterns, and uses "a regional health trust" for HCHT in the public version. The full version, with real results, is kept on HCHT systems. HCHT's security lead reviews the draft and asks for two further changes, which Amara makes before submission.
 
 ### 40.3 The presentation
 
 Ten minutes: problem, approach, key result, limits, what HCHT should do next. One chart showing precision over weeks says more than five tables.
 
+Amara's chart shows weekly flags and suspicious domains as two lines, which makes the precision visible without a table. She rehearses with her supervisor and cuts a slide on rules that took too long to explain. Backup slides hold the detailed tables for questions. She ends with a single recommendation for HCHT and the cost of following it, which matches the one-page summary for managers.
+
 ### 40.4 Two audiences
 
 Examiners want method and rigour. HCHT managers want "should we keep doing this?" Prepare a one-page summary for managers with a clear recommendation and its cost.
+
+Amara's one-page summary recommends continuing the process for three more months with the new filter, at about an hour a week, and reviewing it then. It lists the six suspicious domains found as the main benefit and the missed pattern as the main gap. HCHT's manager approves the extension based on the page, without needing the full thesis.
 
 ### 40.5 Answering questions
 
 Answer with evidence and admit what you did not measure. "I don't know, but here is how I would find out" is a strong answer.
 
+In her presentation, an examiner asks whether the process would detect lookalikes of HSSC member domains at scale. Amara explains that the three-member pilot found it workable but too small to judge, and describes how she would test it. Another asks about recall, and she explains why it could not be measured directly and what her partial check showed.
+
 ### 40.6 After the thesis
 
 Hand the process over properly: documentation, scripts in HCHT's repository, a named owner and a short training session. A capstone that stops when the student leaves delivers little lasting value; a handed-over process keeps protecting the organisation.
+
+Amara hands the process to a named analyst at HCHT. The scripts move into HCHT's repository with the test list and a guide covering the weekly run, triage rules and the decision log. Amara runs one training session and watches the analyst complete a full week alone. Open questions, including the missed pattern, are listed for the new owner, and she remains available for questions during the next semester.
 
 ### Citing standards correctly
 
