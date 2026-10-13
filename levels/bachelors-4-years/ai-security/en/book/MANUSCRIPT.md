@@ -1078,7 +1078,7 @@ For NoShow, the answers showed that personal data entered training, that any sta
 
 ### 14.4b Prompts and logs
 
-Personal data also flows through prompts and logs. If staff paste patient details into an AI assistant, those details may be stored by the provider or appear in logs. Configure retention and training opt-outs where the provider offers them, redact identifiers before sending when possible, and train staff on what may be shared.
+If staff paste patient details into an AI assistant, those details may be stored by the provider or appear in logs. Configure retention and training opt-outs where the provider offers them, redact identifiers before sending when possible, and train staff on what may be shared.
 
 Redaction can be automated for structured identifiers such as patient numbers, but free text needs care: a patient may type a diagnosis or a relative's name anywhere in a message.
 

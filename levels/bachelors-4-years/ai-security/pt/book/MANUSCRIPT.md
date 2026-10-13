@@ -892,7 +892,7 @@ Pergunte: quais dados pessoais entram no treinamento, na recuperação, nos prom
 
 ### 14.4b Prompts e logs
 
-Dados pessoais também passam por prompts e logs. Se funcionários colam dados de pacientes num assistente de IA, esses dados podem ser armazenados pelo provedor ou aparecer em logs. Configure a retenção e a recusa ao uso para treinamento quando o provedor oferecer essas opções, oculte identificadores antes do envio sempre que possível e treine os funcionários sobre o que pode ser compartilhado. A ocultação pode ser automatizada para identificadores estruturados, como números de pacientes, mas o texto livre exige cuidado: um paciente pode digitar um diagnóstico ou o nome de um parente em qualquer ponto de uma mensagem.
+Se funcionários colam dados de pacientes num assistente de IA, esses dados podem ser armazenados pelo provedor ou aparecer em logs. Configure a retenção e a recusa ao uso para treinamento quando o provedor oferecer essas opções, oculte identificadores antes do envio sempre que possível e treine os funcionários sobre o que pode ser compartilhado. A ocultação pode ser automatizada para identificadores estruturados, como números de pacientes, mas o texto livre exige cuidado: um paciente pode digitar um diagnóstico ou o nome de um parente em qualquer ponto de uma mensagem.
 
 ### 14.5 Exemplo resolvido (caso sintético da LCH)
 
