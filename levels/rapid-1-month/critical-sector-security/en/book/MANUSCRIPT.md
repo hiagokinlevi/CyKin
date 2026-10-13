@@ -136,6 +136,8 @@ Notice what Sam did *not* do: investigate, test the link, restart the PC, or tou
 
 Pick an essential service you use (your water supplier, local hospital, bus company or bank). In no more than one page, write: the function it delivers to people; who would be harmed first if it stopped for a day; one risk sentence with cause, event and consequence; and one thing you are assuming. Keep it general — use public information only and do not probe the service in any way.
 
+Swap pages with a classmate who chose a different service and check each other's risk sentence: does it name a cause, an event and a consequence for people? Then compare who you said would be harmed first. A hospital and a bus company give very different answers, which is exactly the point of thinking in functions.
+
 ### 1.8 Common errors and limits
 
 - Thinking security is only about passwords and data. In essential services, start with safety and continuity.
@@ -143,6 +145,9 @@ Pick an essential service you use (your water supplier, local hospital, bus comp
 - Trying to fix things yourself. Your job at this level is to notice and report.
 - Treating one incident summary as the full story. Public reports are deliberately incomplete.
 - This chapter simplifies: real organizations use formal risk methods, and laws on critical services differ by country.
+
+- Assuming that whoever noticed a problem should own it. Sam noticed the sticky-note password, but the practice manager decides what to do about it.
+- Forgetting to mark assumptions. Sam's note that MedBook logins may lack a second factor is labelled as unknown, not stated as fact.
 
 ### Exercises — chapter 1
 
@@ -276,6 +281,8 @@ Sam labels the report TLP:AMBER+STRICT when emailing it to Novak — it stays in
 
 Write your own "boundary card": five things you may do and five things you may not do with the systems at your workplace or school, written in your own words. Then write a report, using the five questions of 2.4, about a suspicious email you have received personally (remove personal details). Do not click anything in it to gather more facts.
 
+Keep the boundary card somewhere you will see it, and compare it with a classmate's: if one of you allows something the other forbids, check which is right against the may and may-not table. In the email report, item 4 should say honestly what you did, even if that was opening the message. Mark the possible effect as a guess, as Sam did in the contractor report.
+
 ### 2.9 Common errors and limits
 
 - Confusing access with permission.
@@ -284,6 +291,9 @@ Write your own "boundary card": five things you may do and five things you may n
 - Verifying a caller's identity using contact details they gave you.
 - Over-sharing: posting a screenshot of a weakness "to warn people".
 - Limits: this chapter is general guidance, not legal advice. Laws on unauthorized access and on reporting duties differ by country and sector; follow your organization's policy.
+
+- Accepting a name-drop such as "K. Ito said it was fine" as permission, when only the owner can authorize work.
+- Sharing a labelled report more widely than its label allows, as Sam avoided by keeping the contractor report inside the clinic.
 
 ### Exercises — chapter 2
 
@@ -419,6 +429,8 @@ Sam marks three questions, not conclusions: Is LinkNet a single point of failure
 
 Choose a public essential service near you (or the Larkfield Water plant described above). Using only public information and common sense, draw a simple dependency sketch: the service in the middle, upstream dependencies on the left, downstream dependants on the right. Circle anything shared, star any possible single point of failure, and write one question you would ask the owner. Do not contact or probe the service.
 
+Compare your sketch with Sam's clinic dependency table: did you remember people and suppliers as well as power and water? If you chose Larkfield Water, your sketch should show the clinic and households on the downstream side and should treat LinkNet as shared. Write your question for the owner so that it can be answered yes or no.
+
 ### 3.8 Common errors and limits
 
 - Thinking only of computers and forgetting people, suppliers and buildings.
@@ -427,6 +439,9 @@ Choose a public essential service near you (or the Larkfield Water plant describ
 - Assuming a backup works without asking what *it* depends on.
 - Stating guesses as facts; in this chapter, a dependency list is a set of questions for the owner.
 - Limits: real OT architectures are far more varied than the simple picture in 3.2.
+
+- Forgetting that one person can be a single point of failure, like the one nurse who knows the clinic's fridge alarm.
+- Contacting a supplier or utility to check a dependency yourself, instead of passing the question to the owner.
 
 ### Exercises — chapter 3
 
