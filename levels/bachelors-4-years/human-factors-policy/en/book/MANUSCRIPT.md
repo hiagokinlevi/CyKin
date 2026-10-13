@@ -1,7 +1,7 @@
 # Human Factors and Cyber Policy: Bachelor's Course
 
 - Language: English (`en`); course 098, Bachelor's course (4 years).
-- Editorial state: **draft**. Chapters 1–40 of 40 have hand-written teaching text; exercises EX001–EX120 have matching worked results with 0–3 rubrics; sixteen offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **draft**. Chapters 1–40 of 40 have hand-written teaching text; exercises EX001–EX120 have matching worked results with 0–3 rubrics; fifteen offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: bachelor's students learning to study, design and evaluate security behaviour and reporting in a small public organisation.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the labs count reports, compute rates, Wilson intervals, funnels and medians and query SQLite on synthetic data; no real staff, members, emails or accounts are involved. Any phishing simulation described is announced, agreed with staff representatives, avoids lures exploiting personal distress and is reported only in aggregate; usability tests use a test mailbox with volunteers who know they are testing the tool, not being tested. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
