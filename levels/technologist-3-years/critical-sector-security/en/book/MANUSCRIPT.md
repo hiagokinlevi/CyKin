@@ -1039,7 +1039,7 @@ In LANTERN the path to watch is the supplier route: Kell's time-bound account re
 
 Architecture limits what can happen; it does not show what does happen. Verification needs flows, logs and tests (Chapters 2, 19 and 23).
 
-Fallowmere examples: the R2 control cards would be less independent than they look if vendor session logging and the vendor account were administered by the same Kell login.
+A Fallowmere example: the control cards for risk R2 (Chapter 18) would be less independent than they look if vendor session logging and the vendor account were administered by the same Kell login.
 
 ### Exercises — chapter 8
 
@@ -1720,7 +1720,7 @@ After this chapter you should be able to:
 - add **freshness** (time window) and **ordering** (sequence numbers) to defeat replay;
 - test the build with deliberately bad messages and record the results as evidence.
 
-This is the first guided build of LANTERN's core component. Chapter 3's validator checks that messages are well-formed and plausible; it cannot tell whether a message really came from a station. Here you add authentication. The design is deliberately simple so that every line can be understood; a production design would add key management and transport security (Chapter 15 ("What this build does not do")).
+This is the first guided build of LANTERN's core component. Chapter 3's validator checks that messages are well-formed and plausible; it cannot tell whether a message really came from a station. Here you add authentication. The design is deliberately simple so that every line can be understood; a production design would add key management and transport security (see "What this build does not do" below).
 
 ### 15.1 Integrity and authenticity
 
@@ -1959,7 +1959,7 @@ Log what you will need to answer the questions you will be asked: who logged in,
 
 ### 17.2 Time
 
-Order events across systems requires agreed time. Synchronize every host with a trusted time source using NTP ([RFC 5905](https://www.rfc-editor.org/rfc/rfc5905)); in LANTERN the relays take time from two internal servers and serve it to stations. Record timestamps in a format with explicit offset, such as those defined in [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339), and convert to UTC for analysis. Monitor clock offset itself: a host whose time source has failed drifts slowly and silently.
+Ordering events across systems requires agreed time. Synchronize every host with a trusted time source using NTP ([RFC 5905](https://www.rfc-editor.org/rfc/rfc5905)); in LANTERN the relays take time from two internal servers and serve it to stations. Record timestamps in a format with explicit offset, such as those defined in [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339), and convert to UTC for analysis. Monitor clock offset itself: a host whose time source has failed drifts slowly and silently.
 
 ### 17.3 Structured logs and syslog
 
@@ -2307,7 +2307,7 @@ Most of an implementer's working life is spent on faults. In critical services s
 
 1. **Define the symptom precisely**: what is wrong, since when, for whom, measured how. "PS-07 and PS-09 show gaps on the dashboard since about 22:50" — not "telemetry is broken".
 2. **Check impact and safety first**: does anyone need to act on the physical process now? Tell Water operations what they can and cannot rely on.
-3. **Preserve before you change**: copy the relevant logs, configurations and outputs, with times, before restarting or reconfiguring anything (Chapter 20 ("Preserve before you change")).
+3. **Preserve before you change**: copy the relevant logs, configurations and outputs, with times, before restarting or reconfiguring anything (see "Preserve before you change" below).
 4. **List hypotheses**, including at least one non-malicious and one malicious explanation, and what evidence would distinguish them.
 5. **Test the cheapest discriminating hypothesis first**, using reads before writes.
 6. **Change one thing at a time**, under the appropriate change type (Chapter 14), recording each change.
@@ -2337,7 +2337,7 @@ Missing telemetry is LANTERN's commonest symptom. The data themselves usually di
 
 Operators report dashboard gaps for PS-07 and PS-09. Lab 20 examines twelve sequence numbers from each station. PS-07 is missing sequence numbers 5–8 with prompt arrival for the rest: data were lost. PS-09 has every sequence number and arrives promptly by the relay's clock, but station timestamps are about 422 seconds behind: its clock is wrong, and the dashboard window misses all its points. The two symptoms looked identical on the dashboard; the causes and the fixes are completely different.
 
-For PS-09, the next question is *why* the clock is wrong: has the station lost its NTP path to the relay (a conduit change? Chapter 2), or has someone changed the station's time configuration? The first is a fault; the second may be a security event. A clock offset of exactly seven minutes is unusual for drift — drift is gradual. Preserve the relay's NTP logs and the conduit configuration before anyone resets the clock.
+For PS-09, the next question is *why* the clock is wrong: has the station lost its NTP path to the relay (a conduit change? Chapter 2), or has someone changed the station's time configuration? The first is a fault; the second may be a security event. A constant offset of about seven minutes on every message is unusual for drift — drift is gradual. Preserve the relay's NTP logs and the conduit configuration before anyone resets the clock.
 
 For PS-07, the gap of four consecutive messages could be a carrier drop, a station restart, or relay rejects. Check the relay's reject log for those times before calling BayTel: if there were MAC failures at PS-07 then, the cause is in key handling (Chapter 18), not the carrier.
 
@@ -2588,7 +2588,7 @@ dry run only: 3 auto-fix steps, 2 need a change ticket
 guard: drifted hosts 2 of 3 -> HALT and escalate (possible bad source of truth)
 ```
 
-Read the halt first. Two of three relays drifted, more than half the fleet, so the run stopped before applying anything. Then read the plan per host: RLY-02's password authentication and public time servers are on the auto-fix list; RLY-03's debug listener, older relay package and missing log forwarding are not, and become tickets. Before approving any fix on RLY-03, copy its local logs, because without forwarding they may be the only record of when the debug listener appeared.
+Read the halt first. Two of three relays drifted, more than half the fleet, so the run stopped before applying anything. Then read the plan per host: RLY-02's password authentication and public time servers, and RLY-03's missing log forwarding, are on the auto-fix list; RLY-03's debug listener and older relay package are not, and become tickets. Before approving any fix on RLY-03, copy its local logs, because without forwarding they may be the only record of when the debug listener appeared.
 
 ### 22.8 Common errors and limits
 
@@ -2656,14 +2656,14 @@ Rule C's 8 of 8 is the case: a perfect record whose lower bound, 0.68, misses 0.
 
 Each control that is "not yet shown" needs either improvement (fix the rule, the source, the configuration) or more tests (if the issue is only sample size). Record the next test date. Each control "shown effective" is re-tested on a schedule, because controls degrade.
 
-Lab 23 sorts its four controls this way. Rule C needs only more tests: two or three further successes would lift its lower bound above 0.70. Rule B needs improvement first, by exporting the missing station switch's flows to the SIEM, then a retest. FIM needs both: more frequent checks on critical files, then more tests. Backup restore needs the decryption key added to the runbook, then new drills.
+Lab 23 sorts its four controls this way. Rule C needs only more tests: one further success would just reach 0.70 (0.701), and a second would give a margin (0.722). Rule B needs improvement first, by exporting the missing station switch's flows to the SIEM, then a retest. FIM needs both: more frequent checks on critical files, then more tests. Backup restore needs the decryption key added to the runbook, then new drills.
 
 ### 23.5 Worked example: a quarter's control tests (synthetic)
 
 Lab 23 applies the claim rule to six controls. Two are shown effective: Rule A detected 12 of 12 brute-force tests in a median of 2 minutes (lower bound 0.76), and the relay rejected all 40 MAC-failure tests (lower bound 0.91). Four are not yet shown, for different reasons:
 
 - **Rule B** (corporate→station Modbus) detected only 7 of 10. Investigation shows the three misses were test flows to a PLC on a station switch whose flows are not exported to the SIEM — a source gap, not a rule fault.
-- **Rule C** (station silent) detected 8 of 8 in a median of 16 minutes against a 20-minute target, but the lower bound is 0.68. Here the only problem is sample size: two or three more successful tests would meet the rule.
+- **Rule C** (station silent) detected 8 of 8 in a median of 16 minutes against a 20-minute target, but the lower bound is 0.68. Here the only problem is sample size: one more successful test would just meet the rule, and two would meet it with a margin.
 - **FIM** detected 4 of 6 unapproved changes, with a median of 1,440 minutes because the integrity check runs once a day. It needs both improvement (more frequent checks on critical files) and more tests.
 - **Backup restore** met its target 9 of 10 times; the lower bound 0.60 is below 0.70. The one failure was a missing decryption key in the restore runbook — a fixable process issue.
 
@@ -2938,7 +2938,7 @@ A LANTERN handover pack contains:
 - **Service description** — purpose, customers, architecture with zones, conduits and management paths (Chapter 8), and the design properties that must be preserved.
 - **Ownership** — service owner, technical owner, security owner, customer contacts, supplier contacts, with roles and out-of-hours numbers.
 - **Service levels** — what customers can expect (telemetry within 60 s, value age shown, RTO 4 h for the historian) and how they are measured (Chapter 9).
-- **Runbooks** for routine and emergency tasks (Chapter 26 ("Runbooks that work at 03:00")).
+- **Runbooks** for routine and emergency tasks (see "Runbooks that work at 03:00" below).
 - **Control cards** for every control, with last evidence dates (Chapter 18).
 - **Monitoring** — every rule with its first action, and the self-monitoring checks (Chapter 19).
 - **Open items** — known issues, accepted risks with owners, compensating controls with end dates.
@@ -2968,7 +2968,7 @@ During reverse shadowing, the FSTS operations team is given a test Rule C alert 
 
 ### 26.6 Practical activity: write and test a runbook
 
-Write the runbook "Respond to Rule C — station silent" using the structure in Chapter 26 ("Runbooks that work at 03:00"), including the decision point from Chapter 26 ("Worked example: a handover that found three gaps"). Ask a colleague (or, if studying alone, yourself after a day's break) to follow it against the Lab 20 data and note every place they hesitated.
+Write the runbook "Respond to Rule C — station silent" using the structure in "Runbooks that work at 03:00" above, including the decision point from the worked example above ("a handover that found three gaps"). Ask a colleague (or, if studying alone, yourself after a day's break) to follow it against the Lab 20 data and note every place they hesitated.
 
 Use the handover's lesson as the decision point: after calling the Water control room, check the relay's MAC-failure log for the silent station before calling BayTel. In the handover test the injected cause was a key mismatch, and the runbook without that step sent the on-call technologist to the carrier. With the Lab 20 data, the same step separates PS-07's lost messages from PS-09's clock offset.
 
@@ -3174,7 +3174,7 @@ You visit PS-07 with Water's engineer to read the PLC firmware (for Chapter 16's
 
 ### 28.8 Practical activity: site work plan
 
-Write a site work plan for the PS-09 visit (Chapter 11 discrepancies: firmware not independently verified, station silent for three weeks). Include every element of Chapter 28 ("Planning a visit"), safety notes, the evidence you intend to collect, what you will not touch, and how findings will be recorded and raised.
+Write a site work plan for the PS-09 visit (Chapter 11 discrepancies: firmware not independently verified, station silent for three weeks). Include every element of "Planning a visit" above, safety notes, the evidence you intend to collect, what you will not touch, and how findings will be recorded and raised.
 
 For PS-09, the plan's evidence list should include the RTU's firmware read from the device, the station clock against the relay's, and the state of the NTP path, given the 422-second offset found in Chapter 20. List what you will not touch, such as the RTU configuration and the gateway's key file, and who raises the change if a modem like PS-07's is found.
 
@@ -3186,8 +3186,6 @@ For PS-09, the plan's evidence list should include the RTU's firmware read from 
 - Photographs that capture passwords or sensitive screens.
 - Treating operations staff as obstacles rather than partners.
 - Exercises without stop conditions.
-
-The PS-07 visit avoided the third error: the modem was recorded and removed later under Water's change.
 
 Unplugging PS-07's modem on the spot would have been the third error, however obviously unused it looked; Water confirmed first that nothing depended on it, and the engineer raised the change.
 
@@ -3316,7 +3314,7 @@ Each component was "correct" by its own chapter's tests. Chapter 3 warned agains
 
 ### 29.5 Building the real capstone
 
-The project version of the capstone, done in a team (Chapter 25), builds the same shape with real components in a lab: three relay virtual machines, a historian database, log forwarding to a collector, the normalizer, three monitoring rules plus self-monitoring, configuration as code with a drift check, a backup and timed restore, runbooks and a handover pack. Use only lab equipment or simulated stations. The deliverable is the **service evidence record**: for each requirement in Chapter 29 ("What the capstone must demonstrate"), the test performed, its date, the raw output, the result against a pre-stated claim rule (Chapter 23), and the open items.
+The project version of the capstone, done in a team (Chapter 25), builds the same shape with real components in a lab: three relay virtual machines, a historian database, log forwarding to a collector, the normalizer, three monitoring rules plus self-monitoring, configuration as code with a drift check, a backup and timed restore, runbooks and a handover pack. Use only lab equipment or simulated stations. The deliverable is the **service evidence record**: for each requirement in "What the capstone must demonstrate" above, the test performed, its date, the raw output, the result against a pre-stated claim rule (Chapter 23), and the open items.
 
 ### 29.6 Common errors and limits
 
@@ -3334,7 +3332,7 @@ An injected forgery built with the station's real key would test nothing; the te
 
 **EX085 — Reproduce the defect.** *Objective:* find and explain an integration defect. *Inputs:* Lab 29. *Constraints:* change only the sequence number of the out-of-range test. *Steps:* (1) set it to 1000 and run; (2) report stored count, alert count and which messages were lost; (3) explain the cause in terms of the order of checks. *Expected evidence:* output and explanation. *Rubric:* 3 = stored 225, alert_count 103, 99 genuine PS-07 readings rejected as replays, explanation that state was updated for an authentic but out-of-range message; 2 = numbers right, explanation thin; 1 = not run; 0 = none.
 
-**EX086 — Fix it.** *Objective:* correct the defect without opening a replay hole. *Inputs:* Lab 29 with sequence 1000. *Constraints:* standard library only; replays must still be rejected. *Steps:* (1) implement a maximum sequence jump of 1,000 (reject larger jumps with a distinct event `seq_jump_reject`) or another defensible fix; (2) run with sequence 1000 and with sequence 20; (3) show that the replay test is still rejected in both. *Expected evidence:* code and both outputs. *Rubric:* 3 = jump of 980 (20→1000) is within 1,000 — so the learner must notice that a bound of 1,000 does not catch this case and choose a tighter or time-based bound (for example jump no more than the elapsed minutes plus a margin), with stored 324 restored and replay still rejected; 2 = fix works for this case but reasoning about the bound missing; 1 = removes replay protection; 0 = none.
+**EX086 — Fix it.** *Objective:* correct the defect without opening a replay hole. *Inputs:* Lab 29 with sequence 1000. *Constraints:* standard library only; replays must still be rejected. *Steps:* (1) implement a maximum sequence jump of 1,000 (reject larger jumps with a distinct event `seq_jump_reject`) or another defensible fix; (2) run with sequence 1000 and with sequence 20; (3) show that the replay test is still rejected in both. *Expected evidence:* code and both outputs. *Rubric:* 3 = jump of 981 (19→1000) is within 1,000 — so the learner must notice that a bound of 1,000 does not catch this case and choose a tighter or time-based bound (for example jump no more than the elapsed minutes plus a margin), with stored 324 restored and replay still rejected; 2 = fix works for this case but reasoning about the bound missing; 1 = removes replay protection; 0 = none.
 
 **EX087 — Evidence record review.** *Objective:* check a record as an assessor. *Inputs:* the Lab 29 output with sequence 20. *Constraints:* checks only from the record and the lab source. *Steps:* (1) verify the counts add up; (2) recompute the digest from the printed JSON and compare its first 24 characters; (3) list three limits the record should state. *Expected evidence:* calculations and list. *Rubric:* 3 = 327 = 324 + 3 confirmed; digest recomputed by hashing the exact JSON string; limits such as synthetic data, no field devices or carrier, single run, no adaptive adversary, no load at scale; 2 = two parts; 1 = one; 0 = none.
 
@@ -3397,7 +3395,7 @@ Team B, in contrast, reports Rule C's extra tests, FIM's 4 of 6 and an untested 
 
 ### 30.5 Worked example: two capstone summaries (synthetic)
 
-Team A: "LANTERN is fully secured with HMAC, validation, monitoring and backups. All tests passed." Team B: "Four of four injected faults were detected in the final run (record digest aa40e3905d17…). Rule C met its claim rule only after four further successful tests (12/12, lower bound 0.76); FIM detection is not yet shown (4/6, daily checks too slow — change raised). We found and fixed a replay-state defect during integration (Chapter 29). The historian restore met its 4-hour RTO in 9 of 10 drills; the failure was a runbook gap, fixed and re-tested. We have not tested key compromise or carrier failure at scale." Team B's summary scores higher on every criterion except perhaps confidence — and confidence is not a criterion.
+Team A: "LANTERN is fully secured with HMAC, validation, monitoring and backups. All tests passed." Team B: "Four of four injected faults were detected in the final run (record digest aa40e3905d17…). Rule C met its claim rule only after further tests (12/12 after four more successes, lower bound 0.76); FIM detection is not yet shown (4/6, daily checks too slow — change raised). We found and fixed a replay-state defect during integration (Chapter 29). The historian restore met its 4-hour RTO in 9 of 10 drills; the failure was a runbook gap, fixed and re-tested. We have not tested key compromise or carrier failure at scale." Team B's summary scores higher on every criterion except perhaps confidence — and confidence is not a criterion.
 
 ### 30.6 Looking back: the method
 
@@ -3411,7 +3409,7 @@ Services and threats change; so do standards. Keep a short continuing-practice p
 
 ### 30.8 Practical activity: self-assessment
 
-Score your capstone against Chapter 30 ("Assessment rubric") before your assessor does. For every criterion below 3, write what evidence would raise it and when you could produce it.
+Score your capstone against the assessment rubric above before your assessor does. For every criterion below 3, write what evidence would raise it and when you could produce it.
 
 Use Team B's summary as the standard for the evidence each score needs. If Rule C met its claim rule in your record only after extra tests, say so and give the counts, as Team B did with 12 of 12 and lower bound 0.76. If FIM is not yet shown in your record, score that criterion honestly and name the change that would raise it, such as more frequent integrity checks on critical files, with a date for the retest. A self-assessment that differs from the assessor's by more than one point on any criterion usually means evidence was missing, not that the work was weak.
 
@@ -3483,7 +3481,7 @@ Each worked result shows one defensible answer and explains what the rubric rewa
 
 ### Chapter 6: EX016–EX018
 
-**EX016 — Hardening review.** Bind SSH to the management interface only (normal change, because a mistake locks administrators out); remove the debug listener on 0.0.0.0:9000 (normal change, after preserving evidence of who enabled it — Chapter 20); disable RPC on port 111 (standard change if a procedure exists); remove the compiler and desktop environment (standard change); move the relay from `root` to a dedicated `relay` account with filesystem restrictions (normal change with testing). Each change has a reason tied to Chapter 6 ("Hardening as subtraction")–6.2.
+**EX016 — Hardening review.** Bind SSH to the management interface only (normal change, because a mistake locks administrators out); remove the debug listener on 0.0.0.0:9000 (normal change, after preserving evidence of who enabled it — Chapter 20); disable RPC on port 111 (standard change if a procedure exists); remove the compiler and desktop environment (standard change); move the relay from `root` to a dedicated `relay` account with filesystem restrictions (normal change with testing). Each change has a reason tied to Sections 6.1–6.2.
 
 **EX017 — Protect the baseline.** Design 1: after each approved change, the baseline is exported to a write-once store off the host (an append-only bucket or a server the relay administrators cannot modify). Design 2: the baseline file is signed with a key held by the security team, not on the relay; the comparison verifies the signature first. An attacker with root on the relay can alter files and even the local baseline copy, but cannot alter the off-host or signed baseline undetected. Because the comparison tool on the relay could itself be subverted, also run the comparison from outside (collect hashes remotely, or compare collected files off-host).
 
