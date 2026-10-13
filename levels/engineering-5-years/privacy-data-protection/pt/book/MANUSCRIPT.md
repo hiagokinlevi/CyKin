@@ -1,7 +1,7 @@
 # Privacidade e Proteção de Dados: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 119, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–40 de 50 já estão escritos em português, com os exercícios EX001–EX120 e suas resoluções com rubricas de 0 a 3 e 7 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 41–50 (EX121–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–45 de 50 já estão escritos em português, com os exercícios EX001–EX135 e suas resoluções com rubricas de 0 a 3 e 7 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 46–50 (EX136–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que projetam, verificam e operam a privacidade e a proteção de dados como propriedades de um sistema real.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios executam resposta aleatorizada, consultas de retenção, verificações de fluxos de dados, pontuação de DPIA, contagens de minimização, confiabilidade da eliminação, orçamentos de privacidade, um relógio de incidente e resumos criptográficos de evidências, sempre sobre dados sintéticos. A análise jurídica é didática e não constitui aconselhamento jurídico; a LGPD e os atos da ANPD são citados pelo texto oficial e parafraseados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Regulamento (UE) 2016/679 (GDPR); Lei nº 13.709/2018 (LGPD); Diretrizes 4/2019,
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) · [41](#ch-41) · [42](#ch-42) · [43](#ch-43) · [44](#ch-44) · [45](#ch-45) |
 
-Capítulos 41–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-41), até a chegada dos próximos lotes.
+Capítulos 46–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-46), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1819,11 +1819,211 @@ Passar nos testes não prova a ausência de vulnerabilidades.
 - **EX119 — Regra das saídas legadas.** Que regra Zara acrescentou depois do vazamento estatístico? *Rubrica:* 3 = procurar as saídas da abordagem anterior sempre que uma nova proteção for introduzida;; 2 = menciona legado;; 1 = nenhuma;; 0 = nenhuma.
 - **EX120 — Valor da independência.** Por que contratar testes independentes depois de testes internos rigorosos? *Rubrica:* 3 = hábitos diferentes encontram problemas diferentes, como o vazamento no preenchimento automático;; 2 = menciona independência;; 1 = desnecessário;; 0 = nenhuma.
 
+<a id="ch-41"></a>
+
+## Capítulo 41 — Privacidade e proteção de dados: otimização do sistema
+
+### Objetivos de aprendizagem
+
+Você vai (1) otimizar a privacidade e a utilidade em conjunto; (2) eliminar tratamentos redundantes; (3) medir o efeito da otimização.
+
+### 41.1 Objetivos da otimização
+
+No último ano, Zara procura maneiras de melhorar a plataforma da Pellmore como um todo. Ela define os objetivos: reduzir os dados pessoais mantidos, reduzir as etapas de tratamento que lidam com dados identificáveis e manter ou melhorar a qualidade do serviço. Ela mede a situação atual: total de registros identificáveis, número de serviços com acesso a dados clínicos e tempo mediano de resposta aos pedidos de direitos. Definir primeiro objetivos mensuráveis impede que a otimização vire uma faxina vaga, e permite que ela relate o progresso em números que os gestores e o encarregado consigam conferir.
+
+### 41.2 Eliminação de redundâncias
+
+Zara rastreia os caminhos de tratamento e encontra redundâncias: três serviços mantêm, cada um, um cache de nomes de pacientes para exibição. Ela substitui os caches por um único serviço de nomes, que só devolve nomes a chamadores autorizados. Também descobre que as gravações de vídeo são convertidas para dois formatos, e os dois são armazenados. Só um é usado. Remover o segundo formato reduz pela metade o armazenamento de vídeo. Cada mudança reduz a exposição sem prejudicar o serviço, o que ela apresenta como o tipo mais fácil de melhoria de privacidade, muitas vezes escondido em sistemas que cresceram sem planejamento.
+
+### 41.3 Trade-offs
+
+Algumas otimizações envolvem trade-offs. Encurtar a retenção dos logs de chat de um ano para seis meses reduz a exposição, mas pode atrapalhar o acompanhamento clínico. Zara consulta os médicos, que concordam que seis meses bastam para a maioria dos casos, com a opção de guardar logs específicos no prontuário quando forem clinicamente relevantes. Ela documenta a decisão com o raciocínio. Ela observa que a otimização em privacidade raramente é um exercício puramente técnico, porque o ajuste certo muitas vezes depende de um julgamento clínico e jurídico que os engenheiros precisam buscar, em vez de presumir.
+
+### 41.4 Medição do efeito
+
+Depois de três meses, Zara mede de novo. Os registros identificáveis caíram cerca de um terço, os serviços com acesso clínico caíram de onze para seis e os pedidos de direitos são respondidos mais depressa, porque os dados estão em menos lugares. Ela relata os resultados com sua incerteza e indica quais mudanças mais contribuíram. O Prof. Holm observa que as melhorias de privacidade muitas vezes melhoram também outras qualidades, como o custo e o desempenho, o que ajuda os engenheiros de privacidade a conquistar apoio para novos trabalhos em toda a organização. Os custos de armazenamento também caíram de forma visível.
+
+### Exemplo resolvido
+
+Zara define objetivos mensuráveis de otimização, remove os caches de nomes duplicados e um formato de vídeo sem uso, encurta a retenção do chat com o acordo dos médicos e mede uma queda de um terço nos registros identificáveis.
+
+> **Caso sintético.** Os números são sintéticos.
+
+### Erros e limites
+
+Comparações de antes e depois podem incluir mudanças não relacionadas; anote os outros eventos do período.
+
+### Exercícios
+
+- **EX121 — Caches de nomes.** Como Zara eliminou os caches de nomes redundantes? *Rubrica:* 3 = substituiu os três caches por um serviço de nomes para chamadores autorizados;; 2 = menciona caches;; 1 = nada;; 0 = nenhuma.
+- **EX122 — Trade-off clínico.** Como a retenção dos logs de chat foi encurtada com segurança? *Rubrica:* 3 = os médicos concordaram com seis meses, com a opção de guardar os logs no prontuário quando relevantes;; 2 = menciona os médicos;; 1 = nada;; 0 = nenhuma.
+- **EX123 — Serviços com acesso.** Como mudou o número de serviços com acesso clínico? *Rubrica:* 3 = de onze para seis;; 2 = só a direção;; 1 = errado;; 0 = nenhuma.
+
+<a id="ch-42"></a>
+
+## Capítulo 42 — Privacidade e proteção de dados: pesquisa aplicada
+
+### Objetivos de aprendizagem
+
+Você vai (1) formular uma questão de pesquisa aplicada a partir da prática de engenharia; (2) revisar as evidências; (3) desenhar um estudo pequeno.
+
+### 42.1 A questão
+
+O módulo de pesquisa aplicada pede que Zara investigue uma questão vinda da prática. Ela escolhe: os pacientes entendem a funcionalidade de compartilhamento com cuidadores bem o bastante para fazer escolhas informadas? A questão importa porque o consentimento e o controle dependem da compreensão. Ela a formula como um estudo de compreensão: depois de configurar o compartilhamento, os participantes conseguem dizer corretamente o que o cuidador pode ver? Ela define como sucesso pelo menos oitenta por cento de respostas corretas, critério fixado antes da coleta dos dados, e explica no plano do estudo por que escolheu esse limiar.
+
+### 42.2 Evidências
+
+Zara revisa pesquisas sobre tomada de decisão em privacidade. Acquisti, Brandimarte e Loewenstein (2015) descrevem a incerteza, a dependência do contexto e a maleabilidade das preferências de privacidade. Pesquisas sobre avisos de privacidade mostram que as pessoas raramente leem políticas longas. Ela observa que as evidências favorecem explicações curtas e contextuais e testar a compreensão diretamente, em vez de presumi-la. Também busca orientações sobre o consentimento informado, usando as Diretrizes 05/2020 do EDPB para entender o que informado significa na lei, e compara isso com a medida prática de compreensão que pretende usar. A lei e a compreensão são comparadas lado a lado.
+
+### 42.3 Desenho do estudo
+
+O estudo usa trinta voluntários com contas de teste sintéticas. Cada um configura o compartilhamento para um cenário e depois responde a cinco perguntas sobre o que o cuidador pode ver. Zara compara duas versões da tela de configuração: a atual e uma com uma pré-visualização que mostra exatamente o que o cuidador verá. Os participantes são distribuídos aleatoriamente. Ela mantém o estudo pequeno e de baixo risco, com aprovação ética da Corwen, sem dados de saúde reais e com direito de desistência. Ela registra previamente a análise que compara a compreensão entre as versões.
+
+### 42.4 Resultados e uso
+
+A compreensão com a tela atual é de 71% de acertos; com a pré-visualização, de 90%. A diferença favorece a adoção da pré-visualização. Zara relata o resultado com ressalvas: amostra pequena, voluntários que podem ter mais segurança com aplicativos que o paciente médio e cenários em vez de relações reais. A Pellmore adota a pré-visualização e planeja monitorar as mudanças de compartilhamento feitas depois da configuração como sinal do mundo real. Ela reflete que a pesquisa aplicada pode ser pequena e ainda assim útil quando responde a uma questão de projeto específica com um critério declarado antes. O critério foi fixado com antecedência.
+
+### Exemplo resolvido
+
+Zara pergunta se os pacientes entendem o compartilhamento com cuidadores, distribui aleatoriamente trinta voluntários entre duas telas e encontra 71% contra 90% de compreensão, o que leva a Pellmore a adotar uma pré-visualização.
+
+> **Caso sintético.** O estudo é sintético; Acquisti et al. (2015) e as Diretrizes 05/2020 do EDPB são reais.
+
+### Erros e limites
+
+Os voluntários podem não representar os pacientes com pouca familiaridade digital.
+
+### Exercícios
+
+- **EX124 — Critério de sucesso.** Que critério Zara fixou antes do estudo? *Rubrica:* 3 = pelo menos 80% de compreensão correta;; 2 = menciona limiar;; 1 = nenhum;; 0 = nenhuma.
+- **EX125 — Efeito da pré-visualização.** Que compreensão as duas telas alcançaram? *Rubrica:* 3 = 71% na atual, 90% na pré-visualização;; 2 = um número;; 1 = errado;; 0 = nenhuma.
+- **EX126 — Ressalva do estudo.** Cite uma ressalva ao resultado de compreensão. *Rubrica:* 3 = amostra pequena, voluntários confiantes ou cenários em vez de relações reais;; 2 = ressalva vaga;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-43"></a>
+
+## Capítulo 43 — Prática na indústria ou no serviço público
+
+### Objetivos de aprendizagem
+
+Você vai (1) trabalhar dentro da governança de privacidade de uma organização; (2) lidar com demandas conflitantes das partes interessadas; (3) refletir sobre a prática profissional.
+
+### 43.1 Trabalho na governança
+
+Zara passa um período na equipe de privacidade da Pellmore como engenheira júnior. Ela participa do comitê diretor de privacidade, onde se reúnem o encarregado e os líderes de engenharia, da área clínica e da área comercial. Ela aprende que as decisões equilibram deveres legais, confiança dos pacientes, necessidades clínicas e metas de negócio. Seu papel é explicar com clareza as opções técnicas e suas consequências. Ela percebe que os engenheiros que apresentam opções com evidências e trade-offs são mais ouvidos que os que só dizem o que não pode ser feito, e ajusta seu próprio estilo de acordo.
+
+### 43.2 Demandas conflitantes
+
+A equipe comercial propõe compartilhar dados agregados de uso com uma seguradora parceira. O encarregado se preocupa com a reidentificação e com a compatibilidade de finalidades. Zara analisa o pedido: a seguradora quer o uso por clínica e por condição. Ela mostra que condições pouco frequentes em clínicas pequenas poderiam identificar pacientes e propõe publicar apenas agregados regionais com privacidade diferencial, dentro do orçamento de publicação já existente. A seguradora aceita os dados regionais. O comitê registra a decisão. Ela aprende que alternativas técnicas muitas vezes resolvem conflitos aparentes. A seguradora queria dados no nível do registro.
+
+### 43.3 Conduta profissional
+
+Durante o período, um gestor pede a Zara que extraia depressa o histórico completo de um paciente para responder a uma reclamação. Ela confere a finalidade e confirma que o processo de reclamações só permite acessar os registros pertinentes. Ela recupera apenas o necessário e registra o acesso. O gestor fica impaciente no início, mas aceita o processo. Ela reflete que a conduta profissional em privacidade muitas vezes consiste em pequenos atos de disciplina sob pressão de tempo, que juntos constroem a cultura de uma organização mais do que as políticas escritas conseguem construir.
+
+### 43.4 Reflexão
+
+No fim do período, Zara escreve um relatório reflexivo. Ela anota que subestimou o quanto o trabalho de privacidade é comunicação e negociação, e superestimou a frequência de problemas puramente técnicos. Também anota que a independência do encarregado, protegida pelo artigo 38 do GDPR, deu ao comitê uma voz que a pressão comercial não conseguia derrubar com facilidade. O Prof. Holm a incentiva a continuar refletindo ao longo da carreira, porque a prática muda mais depressa do que qualquer curso consegue prever. Ela mantém um diário reflexivo.
+
+### Exemplo resolvido
+
+Zara atua na governança de privacidade da Pellmore, resolve um pedido de dados de uma seguradora com agregados regionais com privacidade diferencial, recupera só os registros necessários para uma reclamação e reflete sobre a comunicação e a independência do encarregado.
+
+> **Caso sintético.** O comitê e os pedidos são sintéticos; o artigo 38 do GDPR é real.
+
+### Erros e limites
+
+Um único estágio mostra a cultura de uma única organização; outras são diferentes.
+
+### Exercícios
+
+- **EX127 — Pedido da seguradora.** Como o pedido da seguradora foi resolvido? *Rubrica:* 3 = agregados regionais com privacidade diferencial, dentro do orçamento de publicação;; 2 = menciona agregados;; 1 = compartilhamento total;; 0 = nenhuma.
+- **EX128 — Acesso para a reclamação.** Como Zara tratou o pedido do histórico completo de um paciente? *Rubrica:* 3 = conferiu a finalidade, recuperou só os registros pertinentes e registrou o acesso;; 2 = menciona finalidade;; 1 = entregou tudo;; 0 = nenhuma.
+- **EX129 — Independência do encarregado.** Por que a independência do encarregado importou no comitê? *Rubrica:* 3 = deu uma voz que a pressão comercial não conseguia derrubar com facilidade;; 2 = menciona independência;; 1 = irrelevante;; 0 = nenhuma.
+
+<a id="ch-44"></a>
+
+## Capítulo 44 — Projeto final de engenharia I
+
+### Objetivos de aprendizagem
+
+Você vai (1) delimitar um projeto final de engenharia em privacidade; (2) definir requisitos e critérios de aceitação; (3) planejar os riscos e a verificação.
+
+### 44.1 Escopo do projeto final
+
+O projeto final de Zara é projetar e construir para a Pellmore um serviço de dados de pesquisa que preserve a privacidade. Os pesquisadores devem conseguir analisar os desfechos das consultas sem receber registros identificáveis. O serviço precisa apoiar estudos aprovados, impor limites de finalidade e de prazo e publicar apenas saídas seguras. Ela limita o escopo a um único tipo de análise, contagens e taxas de desfechos por condição e por região, para que o projeto possa ser concluído e verificado de forma adequada dentro do ano, em vez de se espalhar de forma rasa por muitas funcionalidades. O escopo estreito permite uma verificação profunda.
+
+### 44.2 Requisitos
+
+Zara escreve os requisitos: as análises rodam dentro do serviço, nunca sobre registros exportados; cada estudo tem um protocolo aprovado com data de expiração; as saídas passam por verificações automáticas de contagens pequenas e são liberadas com privacidade diferencial quando forem publicadas; toda consulta é registrada; e os pacientes que recusaram a pesquisa são excluídos. Ela rastreia cada requisito até as disposições do GDPR sobre as garantias para pesquisa no artigo 89 e até as disposições da LGPD sobre os órgãos de pesquisa, como o art. 13, registrando quais requisitos são deveres legais e quais são escolhas de projeto.
+
+### 44.3 Riscos
+
+Zara lista os riscos do projeto final: pesquisadores combinando saídas para reconstruir pessoas, bugs de implementação na geração de ruído, listas de recusa não sincronizadas e crescimento do escopo por pesquisadores que querem acesso no nível do registro. Para cada um ela define controles e testes. Para a reconstrução, usa por estudo o orçamento de publicação do Capítulo 36. Para as recusas, reutiliza o serviço de consentimento. Também lista os riscos do projeto, como atrasos na aprovação, e reserva tempo de folga, porque um projeto final atrasado tende a cortar primeiro a verificação. O risco de aprovação é mitigado reservando cedo o comitê de ética.
+
+### 44.4 Plano de verificação
+
+Zara planeja a verificação antes de construir. Os testes vão conferir que nenhuma consulta devolve registros, que as contagens pequenas são bloqueadas, que os limites de orçamento barram consultas em excesso, que as recusas são excluídas e que estudos expirados não podem rodar. Um colega independente vai tentar ataques de reconstrução. Ela fixa critérios de aceitação: todos os testes passam e o ataque não recupera os dados de nenhuma pessoa. O Prof. Holm aprova o plano, observando que definir a verificação primeiro é a melhor proteção contra um projeto final que funciona em demonstrações, mas falha no uso real. Os casos de teste vêm antes do código.
+
+### Exemplo resolvido
+
+Zara delimita um serviço de dados de pesquisa para contagens de desfechos, escreve requisitos rastreados até o artigo 89 do GDPR e a LGPD, lista os riscos técnicos e de projeto e planeja a verificação com critérios de aceitação.
+
+> **Caso sintético.** O serviço é sintético; o artigo 89 do GDPR e a LGPD são reais.
+
+### Erros e limites
+
+O escopo estreito limita a utilidade; planeje extensões depois da verificação.
+
+### Exercícios
+
+- **EX130 — Limite do projeto final.** Por que limitar o projeto final a contagens e taxas de desfechos? *Rubrica:* 3 = para concluir e verificar adequadamente dentro do ano;; 2 = menciona tempo;; 1 = escopo amplo;; 0 = nenhuma.
+- **EX131 — Controle da reconstrução.** Como o projeto limita os ataques de reconstrução? *Rubrica:* 3 = um orçamento de privacidade diferencial por estudo;; 2 = menciona ruído;; 1 = nada;; 0 = nenhuma.
+- **EX132 — Verificação primeiro.** Por que planejar a verificação antes de construir? *Rubrica:* 3 = evita um sistema que só funciona em demonstrações;; 2 = menciona qualidade;; 1 = depois;; 0 = nenhuma.
+
+<a id="ch-45"></a>
+
+## Capítulo 45 — Revisão independente de projeto
+
+### Objetivos de aprendizagem
+
+Você vai (1) preparar um projeto para revisão independente; (2) responder às constatações; (3) registrar as decisões depois da revisão.
+
+### 45.1 Preparação da revisão
+
+Antes de construir, Zara submete o projeto final a uma banca de revisão independente: um engenheiro de privacidade de outra empresa, uma pesquisadora e o encarregado. Ela entrega diagramas de arquitetura, requisitos, análise de riscos e o plano de verificação. Também lista as próprias dúvidas, como se a agregação regional basta para as condições raras. O Prof. Holm explica que admitir as dúvidas ajuda os revisores a se concentrarem nas fraquezas reais, em vez de caçar erros básicos, e torna a revisão mais útil para todos os envolvidos. Os revisores recebem o código com antecedência.
+
+### 45.2 Constatações
+
+A banca levanta quatro constatações. A pesquisadora diz que as taxas de desfechos das condições raras terão ruído demais para serem úteis em nível regional. O engenheiro de privacidade diz que o log de consultas contém as consultas dos pesquisadores, que podem revelar interesses de pesquisa sensíveis e precisam ser protegidas. O encarregado pergunta como os pacientes serão informados sobre o uso em pesquisa. O engenheiro também observa que a verificação de recusa roda no momento da consulta, de modo que um paciente que recuse no meio do estudo ainda pode aparecer em resultados intermediários guardados em cache.
+
+### 45.3 Respostas
+
+Zara responde a cada constatação. Para as condições raras, ela permite a agregação nacional e um período de acumulação mais longo, trocando atualidade por acurácia. Restringe o acesso ao log de consultas aos auditores. Acrescenta uma seção ao aviso de privacidade e um registro público dos estudos aprovados. Para as recusas, elimina o cache dos resultados intermediários e reexecuta os estudos do zero a cada publicação. Ela registra quais constatações mudaram o projeto e quais aceitou como riscos residuais, com os motivos, para que futuros revisores possam ver a lógica de cada decisão tomada.
+
+### 45.4 Depois da revisão
+
+A banca aceita o projeto revisado. Zara observa que a constatação sobre as recusas foi a mais importante, porque dizia respeito ao direito do paciente de se opor, que seu projeto teria minado em silêncio. Ela também aprende que revisores com formações diferentes encontram problemas diferentes: a pesquisadora se concentrou na utilidade, o engenheiro nos vazamentos técnicos e o encarregado na transparência. Ela acrescenta a revisão independente como etapa padrão para qualquer novo serviço de dados da Pellmore e se oferece para participar de bancas futuras. As bancas se reúnem a cada trimestre.
+
+### Exemplo resolvido
+
+A revisão do projeto de Zara aponta o ruído nas condições raras, os logs de consulta sensíveis, a transparência e as recusas em cache; ela responde com agregação nacional, logs restritos, um registro público de estudos e a eliminação do cache.
+
+> **Caso sintético.** A banca é sintética.
+
+### Erros e limites
+
+As bancas de revisão podem deixar passar problemas fora de sua especialidade; combine-as com testes.
+
+### Exercícios
+
+- **EX133 — Recusa em cache.** Qual era o problema das recusas em cache? *Rubrica:* 3 = pacientes que recusassem no meio do estudo poderiam continuar em resultados intermediários em cache;; 2 = menciona cache;; 1 = nenhum;; 0 = nenhuma.
+- **EX134 — Sensibilidade do log de consultas.** Por que proteger o log de consultas? *Rubrica:* 3 = as consultas revelam interesses sensíveis dos pesquisadores;; 2 = menciona privacidade;; 1 = desnecessário;; 0 = nenhuma.
+- **EX135 — Condições raras.** Como Zara tratou o ruído nas condições raras? *Rubrica:* 3 = agregação nacional e períodos de acumulação mais longos;; 2 = uma parte;; 1 = ignorou;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX120 (as de EX121–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Zara Mbeki, o Prof. Anders Holm, a Corwen Polytechnic, a Pellmore Telehealth e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX135 (as de EX136–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Zara Mbeki, o Prof. Anders Holm, a Corwen Polytechnic, a Pellmore Telehealth e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Com a eliminação após um prazo fixo, a entrada iguala a saída, e os dados armazenados se estabilizam.
 
@@ -2064,6 +2264,36 @@ Respostas-modelo para EX001–EX120 (as de EX121–EX150 estão na edição em i
 **EX119.** Quando uma proteção for introduzida, encontrar e revisar as saídas produzidas pela abordagem anterior.
 
 **EX120.** Testadores independentes trazem outras premissas e encontraram o vazamento no preenchimento automático que a turma deixou passar.
+
+**EX121.** Ela substituiu os três caches por um único serviço de nomes que só responde a chamadores autorizados.
+
+**EX122.** Depois do acordo dos médicos, a retenção passou a seis meses, com os logs relevantes guardados no prontuário.
+
+**EX123.** Caiu de onze para seis.
+
+**EX124.** Pelo menos oitenta por cento de respostas corretas sobre o que o cuidador pode ver.
+
+**EX125.** 71% com a tela atual e 90% com a pré-visualização.
+
+**EX126.** A amostra era pequena, e os voluntários podem ter mais segurança com aplicativos que os pacientes típicos.
+
+**EX127.** Com o fornecimento de agregados regionais com privacidade diferencial, em vez de dados por clínica.
+
+**EX128.** Ela confirmou a finalidade da reclamação, recuperou só os registros pertinentes e registrou o acesso.
+
+**EX129.** O artigo 38 protege o encarregado, então as preocupações de privacidade não podiam simplesmente ser derrubadas por interesses comerciais.
+
+**EX130.** Um escopo estreito permite concluir e verificar adequadamente.
+
+**EX131.** Cada estudo recebe um orçamento de privacidade fixo, o que limita o quanto se aprende combinando saídas.
+
+**EX132.** Definir os testes primeiro protege contra um sistema que parece bom, mas falha no uso real.
+
+**EX133.** Resultados intermediários guardados em cache antes de uma recusa ainda poderiam incluir aquele paciente.
+
+**EX134.** As consultas podem revelar o que os pesquisadores estão investigando, o que é sensível.
+
+**EX135.** Agregando em nível nacional e por períodos mais longos.
 
 <a id="references"></a>
 ## Referências
