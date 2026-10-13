@@ -231,7 +231,7 @@ You will (1) read and write JSON and CSV in Python; (2) summarise inventory expo
 
 Inventories arrive as JSON from APIs and CSV from spreadsheets and scanners. Python's `json` and `csv` modules read both. Always check the fields you need are present and have expected types.
 
-At HHG, scanner exports come as CSV and the endpoint inventory as JSON. Check the record count and field names before trusting any summary. If a field is missing or has the wrong type, stop and report it rather than guessing. At HHG, the scanner's CSV later gained a new column, which a script reading by name handled without change.
+At HHG, scanner exports come as CSV and the endpoint inventory as JSON. Check the record count and field names before trusting any summary. If a field is missing or has the wrong type, stop and report it rather than guessing.
 
 ### 4.2 Practical activity — Lab J
 
@@ -680,7 +680,7 @@ Without the lab test, the scanner would have produced a false report that the wh
 
 Validate one TLS client tool against three lab server settings and record the results.
 
-Set up three lab servers or three configurations on one server: hybrid preferred, hybrid offered but not preferred, and classical only. Run the tool against each, record its version and output, and say whether it correctly told the three apart. If it did not, note what it reported and whether a newer version fixes it. Keep the results as the tool's validation record and repeat after each upgrade.
+Set up three lab servers or three configurations on one server: hybrid preferred, hybrid offered but not preferred, and classical only. Run the tool against each, record its version and output, and say whether it correctly told the three apart. If it did not, note what it reported and whether a newer version fixes it. File these results in the tool's validation record described in 9.3.
 
 ### 9.7 Reading sizes
 
@@ -970,7 +970,7 @@ Follow the steps in order: build the isolated lab, configure hybrid first, test 
 
 Keep the lab network separate from home or office networks; use generated test keys; destroy the lab when finished or snapshot it with notes. Never point lab tools at production hosts by mistake: use hostnames that cannot resolve outside the lab, and double-check targets before running commands.
 
-Record in the report where the lab ran and how it was isolated. Record the lab's network layout and the target names in the report, so others can check that the lab stayed isolated. If you suspect a command reached a real host, stop and report it.
+Record in the report where the lab ran, its network layout and the target names, so others can check that the lab stayed isolated. If you suspect a command reached a real host, stop and report it.
 
 ### 12.8 Common errors and limits
 
@@ -1113,7 +1113,7 @@ You will (1) automate routine checks of negotiation and configuration; (2) use c
 
 Schedule scripts to: run a client check against each in-scope service daily; parse logs for hybrid share; audit configuration exports for presence and preference. Send results to the dashboard and alert on changes.
 
-At HHG, the nightly job against 14 endpoints is an example. Store results with dates so each run can be compared with the last, and make sure every target is in scope. Send results to the dashboard and alert only on changes that need action. Keep the scripts under version control with their target list, and review both together.
+At HHG, the nightly job against 14 endpoints is an example. Store results with dates so each run can be compared with the last, and make sure every target is in scope. Raise alerts only for changes that need action. Keep the scripts under version control with their target list, and review both together.
 
 ### 14.2 Practical activity — Lab K
 
@@ -1262,7 +1262,7 @@ The script stores the algorithm name with each tag and chooses algorithms from a
 
 ### 15.5 Worked example
 
-The channel SFTP flow: travel agency client (partner) → HHG SFTP server (HHG) → internal processor (HHG) → reservations DB (HHG, managed service). After upgrading OpenSSH and enabling hybrid KEX, 5 of 9 agencies negotiate hybrid; four use old clients. HHG sends them a notice with a test endpoint and a twelve-month window.
+The channel SFTP flow: travel agency client (partner) → HHG SFTP server (HHG) → internal processor (HHG) → reservations DB (managed service provider). After upgrading OpenSSH and enabling hybrid KEX, 5 of 9 agencies negotiate hybrid; four use old clients. HHG sends them a notice with a test endpoint and a twelve-month window.
 
 The flow shows that one upgrade at HHG protects only part of the path. Five agencies benefit now; the other four depend on their own client upgrades. Each hop and its evidence goes into the dependency list.
 
@@ -1276,7 +1276,7 @@ Pick a flow such as the agency bookings or guest portal logins. List each hop wi
 
 Keep a simple dependency list: hop, controller, request sent, answer, evidence grade, next follow-up date. Review it monthly. Dependencies that never get answered are risks to raise with your manager, not tasks to forget.
 
-At HHG, the four agencies on old clients are in the list with their notice dates. When an answer arrives, update the evidence grade and the CBOM together. At HHG the list includes the four agencies on old SFTP clients, with their notice dates and the twelve-month window, and the managed database provider's request. Remove an entry only when the hop is verified or the dependency is formally accepted.
+When an answer arrives, update the evidence grade and the CBOM together. At HHG the list includes the four agencies on old SFTP clients, with their notice dates and the twelve-month window, and the managed database provider's request. Remove an entry only when the hop is verified or the dependency is formally accepted.
 
 ### 15.8 Common errors and limits
 
@@ -1354,7 +1354,7 @@ Use the same headings: symptoms, checks, actions, rollback, confirmation and who
 
 Runbooks are read under pressure, often at night. Use short numbered steps, exact commands, expected outputs and clear stop points ("if the share has not recovered after step 4, call the platform lead"). Avoid long explanations in the steps; link to background instead.
 
-Test each runbook with someone who did not write it. At HHG, the hybrid share drop runbook gives the 30-minute confirmation point and names whom to call next. Test each runbook with someone who did not write it, ideally in the lab at the end of a shift, and fix any step that made them hesitate.
+At HHG, the hybrid share drop runbook gives the 30-minute confirmation point and names whom to call next. Test each runbook with someone who did not write it, ideally in the lab at the end of a shift, and fix any step that made them hesitate.
 
 ### 16.8 Common errors and limits
 
@@ -1624,7 +1624,7 @@ Model answers; any answer meeting the rubric scores equally. Numbers about HHG a
 
 **EX039.** "Product: firewall model X, firmware 5.2.1 at Summit. Evidence: TLS ClientHello of 1,530 bytes dropped (lab reproduction attached). Request: fix or configuration guidance and target release date."
 
-**EX040.** 3/5,000 has a Wilson upper bound of about 0.18 %, above the 0.09 % budget; the sample is too small to show safety.
+**EX040.** 3/5,000 has a Wilson upper bound of about 0.18 %, above the 0.09 % limit (baseline plus budget); the sample is too small to show safety.
 
 **EX041.** Store each night's negotiated group per host; diff with the previous night; alert when any host changes from hybrid to classical.
 
@@ -1657,6 +1657,8 @@ Model answers; any answer meeting the rubric scores equally. Numbers about HHG a
 ## Eighteen-subject teaching route
 
 This is the **technical** course for hands-on operators, following the synthetic **Halden Hotel Group (HHG)** through checks, configuration, verification, troubleshooting, automation, documentation and contained labs.
+
+<a id="references"></a>
 
 ## References
 
