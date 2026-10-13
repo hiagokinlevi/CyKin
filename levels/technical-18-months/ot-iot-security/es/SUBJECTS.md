@@ -15,13 +15,13 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 | 1 | [03](book/PLAN.md#ch-03) | Nociones básicas de redes en la línea | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-03) | [04 · Borrador](book/MANUSCRIPT.md#ch-04) |
 | 1 | [04](book/PLAN.md#ch-04) | Protocolos industriales al nivel del operador | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-04) | [05 · Borrador](book/MANUSCRIPT.md#ch-05) |
 | 1 | [05](book/PLAN.md#ch-05) | Mantener un registro de activos | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-05) | [06 · Borrador](book/MANUSCRIPT.md#ch-06) |
-| 1 | [06](book/PLAN.md#ch-06) | Cuentas y contraseñas en las HMI y las herramientas de ingeniería | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-06) | [07 · Plan](book/PLAN.md#ch-07) |
-| 2 | [07](book/PLAN.md#ch-07) | Soportes extraíbles y portátiles | 67 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-07)) | [08 · Plan](book/PLAN.md#ch-08) |
-| 2 | [08](book/PLAN.md#ch-08) | Acceso remoto de los proveedores | 67 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-08)) | [09 · Plan](book/PLAN.md#ch-09) |
-| 2 | [09](book/PLAN.md#ch-09) | Leer registros y alarmas | 67 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-09)) | [10 · Plan](book/PLAN.md#ch-10) |
-| 2 | [10](book/PLAN.md#ch-10) | Parches y avisos de seguridad | 67 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-10)) | [11 · Plan](book/PLAN.md#ch-11) |
-| 2 | [11](book/PLAN.md#ch-11) | Copias de seguridad y restauración | 67 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-11)) | [12 · Plan](book/PLAN.md#ch-12) |
-| 2 | [12](book/PLAN.md#ch-12) | Segmentación y reglas del cortafuegos | 67 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-12)) | [13 · Plan](book/PLAN.md#ch-13) |
+| 1 | [06](book/PLAN.md#ch-06) | Cuentas y contraseñas en las HMI y las herramientas de ingeniería | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-06) | [07 · Borrador](book/MANUSCRIPT.md#ch-07) |
+| 2 | [07](book/PLAN.md#ch-07) | Soportes extraíbles y portátiles | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-07) | [08 · Borrador](book/MANUSCRIPT.md#ch-08) |
+| 2 | [08](book/PLAN.md#ch-08) | Acceso remoto de los proveedores | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-08) | [09 · Borrador](book/MANUSCRIPT.md#ch-09) |
+| 2 | [09](book/PLAN.md#ch-09) | Leer registros y alarmas | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-09) | [10 · Borrador](book/MANUSCRIPT.md#ch-10) |
+| 2 | [10](book/PLAN.md#ch-10) | Parches y avisos de seguridad | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-10) | [11 · Borrador](book/MANUSCRIPT.md#ch-11) |
+| 2 | [11](book/PLAN.md#ch-11) | Copias de seguridad y restauración | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-11) | [12 · Borrador](book/MANUSCRIPT.md#ch-12) |
+| 2 | [12](book/PLAN.md#ch-12) | Segmentación y reglas del cortafuegos | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-12) | [13 · Plan](book/PLAN.md#ch-13) |
 | 3 | [13](book/PLAN.md#ch-13) | Dispositivos IoT en la planta de fabricación | 66 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-13)) | [14 · Plan](book/PLAN.md#ch-14) |
 | 3 | [14](book/PLAN.md#ch-14) | Reconocer el comportamiento anómalo | 66 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-14)) | [15 · Plan](book/PLAN.md#ch-15) |
 | 3 | [15](book/PLAN.md#ch-15) | Notificar un incidente y primeras acciones | 66 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-15)) | [16 · Plan](book/PLAN.md#ch-16) |

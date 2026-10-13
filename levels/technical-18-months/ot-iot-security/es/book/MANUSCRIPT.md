@@ -28,7 +28,7 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [serie I
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](../../en/book/MANUSCRIPT.md#ch-07) · [8](../../en/book/MANUSCRIPT.md#ch-08) · [9](../../en/book/MANUSCRIPT.md#ch-09) · [10](../../en/book/MANUSCRIPT.md#ch-10) · [11](../../en/book/MANUSCRIPT.md#ch-11) · [12](../../en/book/MANUSCRIPT.md#ch-12) · [13](../../en/book/MANUSCRIPT.md#ch-13) · [14](../../en/book/MANUSCRIPT.md#ch-14) · [15](../../en/book/MANUSCRIPT.md#ch-15) · [16](../../en/book/MANUSCRIPT.md#ch-16) · [17](../../en/book/MANUSCRIPT.md#ch-17) · [18](../../en/book/MANUSCRIPT.md#ch-18) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](../../en/book/MANUSCRIPT.md#ch-13) · [14](../../en/book/MANUSCRIPT.md#ch-14) · [15](../../en/book/MANUSCRIPT.md#ch-15) · [16](../../en/book/MANUSCRIPT.md#ch-16) · [17](../../en/book/MANUSCRIPT.md#ch-17) · [18](../../en/book/MANUSCRIPT.md#ch-18) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
 
@@ -360,7 +360,374 @@ Las cuentas nominativas, las credenciales predeterminadas cambiadas y el uso lim
 
 ### Siga estudiando — capítulo 06 de 18
 
-[← Capítulo 05 (borrador)](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 (borrador) →](../../en/book/MANUSCRIPT.md#ch-07)
+[← Capítulo 05 (borrador)](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 (borrador) →](#ch-07)
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Soportes extraíbles y portátiles
+
+### Resultados de aprendizaje
+
+Usted podrá (1) explicar cómo las memorias USB y los portátiles introducen malware en las plantas; (2) aplicar una rutina de análisis y registro para los soportes; y (3) decidir qué portátiles pueden conectarse a la línea.
+
+### 7.1 Cómo cruza el malware el aislamiento
+
+Las líneas sin conexión a internet siguen recibiendo archivos: actualizaciones de firmware, archivos de recetas, herramientas de proveedores y fotografías. Cada uno llega en una memoria USB o en un portátil que ha estado en otros sitios. NIST SP 800-82r3 señala los soportes extraíbles como una vía habitual de entrada a la TO, y hay incidentes muy conocidos que se propagaron exactamente así. En HPFL, que un proveedor llegue con un archivo de receta en una memoria personal es algo rutinario. El archivo puede ser inofensivo, pero la memoria ha estado en otras plantas y oficinas. Trate cada archivo que entra en la línea como sujeto a la misma rutina, por fiable que sea su origen.
+
+### 7.2 Una rutina para los soportes
+
+Use solo memorias proporcionadas por el emplazamiento. Antes de que una memoria llegue a un dispositivo de la línea, analícela en una estación de análisis dedicada y actualizada situada fuera de la línea, anote en un registro el número de la memoria, los nombres de los archivos, el resultado del análisis y la persona, y mantenga la memoria bajo control hasta que se use. Las memorias desconocidas encontradas en el suelo se entregan a seguridad; nunca se conectan «para ver de quién son».
+
+En HPFL la estación de análisis está fuera de la línea y las memorias del emplazamiento están numeradas, por ejemplo HP-07. El registro permite a cualquiera rastrear un archivo hasta su origen si más adelante aparece un problema. Revise el registro durante los recorridos; una memoria que no figura en él es un hallazgo.
+
+### 7.3 Portátiles
+
+Solo ENG-LT y los portátiles de proveedores aprobados se conectan a los equipos de la línea. Un portátil aprobado tiene los parches al día, ejecuta antimalware, no tiene software personal y se revisa antes de cada visita. Si el portátil de un proveedor no puede cumplir esa norma, se usa en su lugar un portátil del emplazamiento con las herramientas del proveedor instaladas. Mantenga en el registro una lista de los portátiles aprobados con su responsable y la fecha de la última revisión de cada uno. En HPFL, ENG-LT es el único portátil del emplazamiento autorizado para programar los PLC. Un portátil de proveedor que no puede revisarse no se conecta; el proveedor usa en su lugar un portátil del emplazamiento con sus herramientas.
+
+### 7.4 Transferir archivos sin USB
+
+Algunos emplazamientos mueven los archivos mediante un servidor de transferencia controlado en la DMZ en lugar de memorias. Así queda constancia de cada archivo y desaparece por completo la necesidad de conectar soportes a los dispositivos de la línea. En HPFL la DMZ ya alberga un servidor de transferencia de archivos. Los archivos que llegan a él pueden analizarse automáticamente y registrarse con el remitente y la hora, y los dispositivos de la línea los recogen a través de un conducto documentado. Sacar las memorias de la rutina también elimina el riesgo de que una se pierda en la planta.
+
+### Ejemplo resuelto (HPFL sintética)
+
+Un proveedor llega con un archivo de receta en una memoria personal. Tomás lleva la memoria a la estación de análisis, copia el archivo en la memoria del emplazamiento HP-07 tras un análisis limpio, anota «HP-07, recipe_v12.csv, limpio, Tomás, 09:30» y entrega HP-07 al ingeniero de control. La memoria personal vuelve al proveedor sin haberse conectado a nada de la línea.
+
+> **Caso sintético — HPFL.** El proveedor, los números de las memorias y el archivo son inventados.
+
+### Errores y límites
+
+Un análisis limpio solo significa que no se encontró malware conocido; un malware nuevo puede pasar. Mantenga la rutina de todos modos: reduce la mayor parte del riesgo y deja constancia si algo sale mal.
+
+### Ejercicios — capítulo 7
+
+- **EX025 — Encontrada en el suelo.** Junto a HMI-1 hay una memoria USB etiquetada «Nóminas 2026». ¿Qué hace usted? *Rúbrica:* 3 = no conectarla; entregarla a seguridad o al supervisor; anotar dónde se encontró; 2 = solo entregarla; 1 = revisarla en un PC de oficina; 0 = conectarla a la HMI.
+- **EX026 — Campos del registro de soportes.** Enumere cuatro campos del registro de soportes. *Rúbrica:* 3 = identificador de la memoria, archivos, resultado del análisis, persona y hora; 2 = tres; 1 = uno; 0 = nada.
+- **EX027 — Qué significa un análisis limpio.** Un compañero dice: «el análisis salió limpio, así que el archivo es seguro». Corrija la afirmación. *Rúbrica:* 3 = solo que no se encontró malware conocido; son posibles amenazas nuevas; la rutina sigue reduciendo el riesgo; 2 = parcial; 1 = estar de acuerdo; 0 = nada.
+- **EX028 — Rechazo del portátil del proveedor.** El portátil del proveedor no tiene antimalware. ¿Qué alternativa permite seguir con el trabajo? *Rúbrica:* 3 = portátil del emplazamiento con las herramientas del proveedor, o transferir los archivos por la estación de análisis; 2 = solo reprogramar; 1 = permitirlo igualmente; 0 = nada.
+
+### Síntesis del capítulo
+
+Todo archivo que entra en la línea sigue un camino analizado, registrado y controlado; los soportes desconocidos nunca tocan los dispositivos de la línea.
+
+### Siga estudiando — capítulo 07 de 18
+
+[← Capítulo 06 (borrador)](#ch-06) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 08 (borrador) →](#ch-08)
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Acceso remoto de los proveedores
+
+### Resultados de aprendizaje
+
+Usted podrá (1) describir cómo acceden los proveedores a distancia a los sistemas de la planta; (2) explicar las lecciones del aviso de 2021 sobre la planta de agua de Oldsmar; y (3) llevar una sesión remota siguiendo una lista de comprobación sencilla.
+
+### 8.1 Por qué se conectan los proveedores
+
+Los fabricantes de máquinas dan soporte remoto a sus equipos para diagnosticar averías sin desplazarse. Es útil, pero un enlace permanente y siempre activo hacia la línea es también una entrada permanente para cualquiera que robe las credenciales. En HPFL, el fabricante de la envolvedora necesita de vez en cuando leer los registros de averías. Esa necesidad es real, y rechazar todo acceso remoto supondría esperar días a una visita. La respuesta es permitir el acceso solo por una ruta controlada, para un trabajo concreto y bajo la vigilancia del emplazamiento.
+
+### 8.2 Qué encontró el aviso
+
+El aviso de CISA AA21-042A describe el compromiso de una instalación de tratamiento de agua de EE. UU. en 2021 en el que se usó software de acceso remoto para llegar a un sistema de control. Sus recomendaciones incluyen usar autenticación multifactor, contraseñas robustas para el escritorio remoto, cerrar los puertos de escritorio remoto que no se usen y auditar las conexiones remotas. Esos puntos se aplican directamente a una línea de envasado. En HPFL eso significa comprobar que no se ejecuta software de escritorio remoto directamente en HMI-1 ni en ENG-LT, que las cuentas de los proveedores usan autenticación multifactor y que las sesiones remotas se registran y se revisan. La reunión de lecciones aprendidas del capítulo 16 encontró más tarde un puerto de escritorio remoto en HMI-1 abierto por un contratista, justo el tipo de ruta contra el que advierte el aviso.
+
+### 8.3 Un patrón más seguro
+
+El acceso remoto pasa por una única pasarela controlada por el emplazamiento en la DMZ, nunca por software instalado directamente en las HMI. Cada proveedor tiene una cuenta nominativa con autenticación multifactor. La conexión está desactivada por defecto y se activa para la ventana de una sesión con ticket. Alguien del emplazamiento vigila la sesión y puede terminarla. Las sesiones se registran y se revisan. Recoja el patrón en un procedimiento breve que los proveedores reciban antes de su primera sesión. El supervisor abre un ticket con una franja horaria; el técnico activa la cuenta y vigila. Si un proveedor pide acceso permanente, la petición va al supervisor y normalmente se rechaza.
+
+### 8.4 Terminar la sesión
+
+Cuando termina el trabajo, la cuenta se vuelve a desactivar, se deja constancia del cambio y el operador confirma que la línea se comporta con normalidad. Una sesión que se deja activada «para la próxima vez» es el fallo más común. En HPFL, Tomás desactivó la cuenta del proveedor a las 14:38, antes de que se cerrara la ventana, y anotó en el ticket las horas de inicio y fin. Revise las cuentas de proveedores cada semana para confirmar que ninguna se ha quedado activada. Una cuenta encontrada activada fuera de un ticket se notifica como hallazgo. Confirme también que el cambio del proveedor figura en el registro.
+
+### Ejemplo resuelto (HPFL sintética)
+
+El fabricante de la envolvedora necesita leer un registro de averías. El supervisor abre el ticket 4471 para las 14:00–14:45. Tomás activa la cuenta del proveedor en la pasarela, vigila la pantalla compartida, ve que el ingeniero solo abre el visor de averías y desactiva la cuenta a las 14:38. Anota la sesión en el ticket con las horas de inicio y fin.
+
+> **Caso sintético — HPFL.** El ticket, el proveedor y los horarios son inventados.
+
+### Errores y límites
+
+Algunas máquinas llegan con módems celulares integrados para el soporte del proveedor; eluden por completo la pasarela y hay que localizarlos y controlarlos. Vigilar una sesión no permite detectarlo todo; el registro y la revisión añaden una segunda comprobación.
+
+### Ejercicios — capítulo 8
+
+- **EX029 — Recomendaciones del aviso.** Nombre tres recomendaciones de AA21-042A. *Rúbrica:* 3 = tres entre MFA, contraseñas robustas de RDP, cerrar los puertos RDP sin uso, auditar las conexiones remotas; 2 = dos; 1 = una; 0 = nada.
+- **EX030 — Enlace siempre activo.** Explique por qué «el enlace del proveedor está siempre activo para que el soporte sea más rápido» es un riesgo. *Rúbrica:* 3 = entrada permanente para credenciales robadas, uso sin vigilancia; 2 = riesgo vago; 1 = estar de acuerdo; 0 = nada.
+- **EX031 — Registro de la sesión.** ¿Qué debería escribir Tomás en el ticket 4471 tras la sesión? *Rúbrica:* 3 = nombre o cuenta del proveedor, inicio y fin, qué se hizo, cuenta desactivada, línea normal; 2 = parte; 1 = «hecho»; 0 = nada.
+- **EX032 — El módem oculto.** Durante un recorrido por la planta, Tomás encuentra un módem celular en el armario de la llenadora. ¿Por qué es importante? *Rúbrica:* 3 = elude la pasarela, la MFA y el registro; camino no gestionado; notificarlo al responsable; 2 = uno; 1 = retirarlo él mismo; 0 = nada.
+
+### Síntesis del capítulo
+
+El acceso de los proveedores pasa por una sola pasarela, con cuentas nominativas y multifactor, activadas solo durante ventanas vigiladas y registradas.
+
+### Siga estudiando — capítulo 08 de 18
+
+[← Capítulo 07 (borrador)](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 09 (borrador) →](#ch-09)
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Leer registros y alarmas
+
+### Resultados de aprendizaje
+
+Usted podrá (1) distinguir las alarmas de proceso de los eventos relevantes para la seguridad; (2) filtrar un registro con un script breve; y (3) decidir cuándo un patrón exige escalarlo.
+
+### 9.1 Dos tipos de mensajes
+
+Las HMI y los PLC notifican alarmas de proceso, como falta de película o un atasco. También registran inicios de sesión, cambios de configuración y descargas de programas. Las alarmas de proceso las gestionan los operadores; el segundo tipo le dice quién hizo qué al sistema, y ahí es donde suelen aparecer las pistas de seguridad. En HPFL las alarmas de falta de película y de atasco corresponden a los operadores. Los inicios de sesión, los cambios de puntos de consigna y las descargas de programas son los registros que hay que exportar y conservar. Separar ambos tipos mantiene la revisión de seguridad lo bastante breve como para hacerla todos los días.
+
+### 9.2 Patrones que importan
+
+Varios inicios de sesión fallidos seguidos de uno correcto pueden significar que alguien adivinó una contraseña. Un punto de consigna cambiado fuera de un trabajo planificado, una descarga de programa que nadie esperaba o un inicio de sesión de administrador a una hora extraña merecen una revisión. Un evento aislado suele ser inocente; lo que importa es la secuencia.
+
+```python
+"""Lab 9: filter a synthetic HMI event log for security-relevant entries."""
+log = """06:02 HMI-1 login operator1 ok
+06:15 PLC-FILL alarm low-film
+07:40 HMI-1 login admin fail
+07:41 HMI-1 login admin fail
+07:41 HMI-1 login admin fail
+07:43 HMI-1 login admin ok
+07:45 PLC-WRAP setpoint speed 120->180 by admin
+08:10 PLC-FILL alarm jam-cleared"""
+fails = 0
+for line in log.splitlines():
+    t, dev, kind, *rest = line.split()
+    if kind == "login" and rest[-1] == "fail":
+        fails += 1
+    if kind == "setpoint" or (kind == "login" and rest[0] == "admin" and rest[-1] == "ok"):
+        print("REVIEW", line)
+print("failed logins:", fails)
+```
+
+Ejecútelo con `python3 lab_logs.py`. Salida verificada:
+
+```text
+REVIEW 07:43 HMI-1 login admin ok
+REVIEW 07:45 PLC-WRAP setpoint speed 120->180 by admin
+failed logins: 3
+```
+
+En HPFL el laboratorio muestra exactamente este tipo de secuencia: tres inicios de sesión de administrador fallidos, uno correcto y, dos minutos después, un cambio de velocidad. Cada evento por separado podría pasarse por alto. Juntos plantean una pregunta que necesita respuesta del supervisor.
+
+### 9.3 Leer la salida
+
+El script cuenta tres inicios de sesión de administrador fallidos y después muestra un inicio de sesión de administrador correcto a las 07:43 y un cambio de velocidad de la envolvedora de 120 a 180 dos minutos después. En conjunto es una historia que merece comprobarse: ¿había un cambio planificado a las 07:45 y quién tenía la sesión iniciada? El script no explica lo que ocurrió; solo selecciona las líneas sobre las que conviene preguntar. El paso siguiente es comprobar si había un cambio planificado y quién estaba de turno. En HPFL la respuesta resultó ser inocente, pero aun así la secuencia merecía comprobarse.
+
+### 9.4 Escale, no investigue solo
+
+El trabajo de Tomás es advertir y notificar con evidencia: las líneas del registro, la hora y lo que hizo la línea. El ingeniero de control y el responsable de seguridad deciden lo que ocurre después. Notifique adjuntando las líneas del registro, la hora en que las advirtió y lo que estaba haciendo la línea en ese momento. No inicie sesión en los dispositivos para indagar más ni cambie contraseñas por su cuenta. Si el ingeniero de control pide más evidencia, le dirá qué recoger y cómo. Guarde una copia de lo que notificó y de cuándo lo envió.
+
+### 9.5 La hora importa
+
+Los registros solo son comparables si los relojes de los dispositivos coinciden. Indique en su informe cualquier diferencia de reloj que conozca. Si HMI-1 y PLC-WRAP difieren en varios minutos, un cambio de punto de consigna podría parecer anterior al inicio de sesión que lo causó. Pregunte al ingeniero de control cómo se ajustan los relojes en la línea y anote en el registro de activos cualquier desfase conocido. Al exportar registros, anote la hora de su reloj y la hora que muestra cada dispositivo, para poder corregir la diferencia más tarde. Un reloj que deriva varios minutos puede hacer que una secuencia inocente parezca sospechosa, u ocultar una sospechosa.
+
+### Ejemplo resuelto (HPFL sintética)
+
+Tomás pregunta al supervisor; no había ningún cambio planificado. El operador del turno de noche explica que olvidó la contraseña de administrador, lo intentó tres veces, luego la recordó y subió la velocidad para recuperar un retraso en la producción. El cambio se revierte, se deja constancia de él y se retira a los operadores el uso de la cuenta de administrador para cambiar la velocidad.
+
+> **Caso sintético — HPFL.** El registro y la explicación son inventados.
+
+### Errores y límites
+
+Los registros de los dispositivos pequeños son cortos y pueden sobrescribirse en pocos días, así que expórtelos con regularidad. Una explicación inocente también debe quedar registrada.
+
+### Ejercicios — capítulo 9
+
+- **EX033 — Clasificar las entradas.** ¿Qué líneas del registro del laboratorio son alarmas de proceso y cuáles son relevantes para la seguridad? *Rúbrica:* 3 = `low-film` y `jam-cleared` son de proceso; los inicios de sesión y el punto de consigna, de seguridad; 2 = la mayoría; 1 = una; 0 = nada.
+- **EX034 — Cinco fallos.** Si se añaden dos líneas más de administrador fallidas antes de las 07:43, ¿qué imprime la última línea? *Rúbrica:* 3 = `failed logins: 5`; 2 = 5; 1 = 3; 0 = nada.
+- **EX035 — Por qué importa la secuencia.** Explique por qué el inicio de sesión de las 07:43 importa más tras los fallos que por sí solo. *Rúbrica:* 3 = un acierto tras varios fallos sugiere que se adivinó la contraseña; ligado al cambio de punto de consigna; 2 = un punto; 1 = «es administrador»; 0 = nada.
+- **EX036 — Contenido del informe.** Escriba los cuatro hechos que incluye Tomás al notificar el cambio de las 07:45. *Rúbrica:* 3 = hora, dispositivo, valores del cambio, cuenta y secuencia de inicios de sesión (más el efecto en la línea); 2 = tres; 1 = uno; 0 = nada.
+
+### Síntesis del capítulo
+
+Las pistas de seguridad están en los registros de inicios de sesión y de cambios; son las secuencias, no las líneas sueltas, las que justifican escalar.
+
+### Siga estudiando — capítulo 09 de 18
+
+[← Capítulo 08 (borrador)](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 (borrador) →](#ch-10)
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Parches y avisos de seguridad
+
+### Resultados de aprendizaje
+
+Usted podrá (1) leer un aviso de ICS y encontrar los datos que importan; (2) cotejar un aviso con el registro de activos; y (3) explicar por qué las plantas suelen mitigar antes de aplicar el parche.
+
+### 10.1 De dónde vienen los avisos
+
+Los fabricantes y CISA publican avisos sobre productos industriales; el índice de CISA los enumera con los nombres de los productos, las versiones afectadas, el impacto y las mitigaciones. Un aviso es el punto de partida, no la decisión. En HPFL, el ingeniero de control y Tomás revisan los avisos de los fabricantes de PLC-FILL, PLC-WRAP, HMI-1 y VIS-CAM. Cotejar cada uno con el registro les indica rápidamente si hace falta alguna acción, y los campos de firmware del registro son los que lo hacen posible. Anote en el expediente de dónde procede cada aviso, cuándo se leyó y si se ha revisado después.
+
+### 10.2 Leer un aviso
+
+Busque cinco datos: producto y modelo, versiones afectadas, qué podría hacer un atacante, si necesita acceso de red o físico, y la corrección o solución provisional del fabricante. Después consulte el registro: ¿tenemos ese modelo, con esa versión, alcanzable de esa manera? En HPFL, el aviso que afectaba a PLC-WRAP requería acceso de red a su puerto de programación, y FW-1 ya solo lo permitía desde ENG-LT. Responder a las cinco preguntas lo dejó claro en pocos minutos. Anote las respuestas en el expediente del aviso, incluso cuando el resultado sea que no hace falta ninguna acción.
+
+### 10.3 Por qué no aplicar el parche de inmediato
+
+Una actualización de firmware en un PLC lo detiene, puede cambiar su comportamiento y necesita probarse con el programa. Las plantas de alimentación necesitan además controles de calidad tras los cambios. Por eso el orden habitual es: confirmar la exposición, aplicar rápidamente una mitigación (por ejemplo, bloquear el servicio vulnerable en el cortafuegos) y después programar el parche para una parada planificada con un plan de vuelta atrás. En HPFL la mitigación para PLC-WRAP ya estaba aplicada en FW-1, y el parche se programó para una parada planificada tres semanas después. El plan de vuelta atrás debería nombrar el programa guardado y la versión de firmware a la que volver si la actualización causa problemas.
+
+### 10.4 Dejar constancia de la decisión
+
+Cada aviso tiene un expediente: si se aplica o no, por qué, la mitigación, la fecha prevista del parche y el responsable. Decidir no aplicar el parche, con los motivos y una fecha de revisión, sigue siendo una decisión. Guarde los expedientes en un solo lugar, vinculados al registro, para que un lector posterior pueda ver qué avisos se consideraron y por qué. Revise los asuntos abiertos cada mes. Un expediente sin fecha de revisión tiende a olvidarse. En HPFL el expediente del aviso de PLC-WRAP nombraba como mitigación la regla ya existente de FW-1 e indicaba la fecha de la parada planificada para el parche. Cuando se aplica el parche, el expediente se cierra con la nueva versión de firmware.
+
+### 10.5 Actualizaciones de las HMI y los portátiles
+
+Las HMI basadas en Windows y ENG-LT también necesitan actualizaciones del sistema operativo, pero solo las que haya aprobado el fabricante de la HMI, instaladas durante paradas planificadas. Pregunte al fabricante de la HMI qué actualizaciones están aprobadas y anote cada una en el registro y en el ticket de cambio. Tras actualizar, compruebe que las pantallas muestran valores correctos y que HMI-1 sigue comunicándose con ambos PLC. Las actualizaciones de ENG-LT siguen el mismo enfoque planificado. Conserve la imagen anterior o un punto de restauración para poder deshacer la actualización si fallan las pantallas o la comunicación. Nunca deje que una HMI se actualice sola desde internet; eso exigiría una conexión que la línea no debería tener.
+
+### Ejemplo resuelto (HPFL sintética)
+
+Un aviso sintético indica que el firmware 2.0 del modelo de PLC de la envolvedora permite cambios de programa sin autenticación a través de la red. El registro (tras el capítulo 5) dice que PLC-WRAP ejecuta la versión 2.0. El ingeniero de control confirma que FW-1 ya bloquea el puerto de programación para todo salvo ENG-LT, lo anota como mitigación y programa el firmware 2.3 para la siguiente parada planificada, dentro de tres semanas.
+
+> **Caso sintético — HPFL.** El aviso y las versiones son inventados; los avisos reales están en cisa.gov.
+
+### Errores y límites
+
+Los avisos pueden revisarse; vuelva a comprobarlos antes de actuar. Las cadenas de versión pueden indicarse de forma distinta en las etiquetas y en el software.
+
+### Ejercicios — capítulo 10
+
+- **EX037 — Cinco datos.** Enumere los cinco datos que hay que extraer de un aviso. *Rúbrica:* 3 = producto y modelo, versiones, impacto, acceso necesario, corrección o solución provisional; 2 = cuatro; 1 = dos; 0 = nada.
+- **EX038 — ¿Se aplica?** Un aviso afecta a las versiones anteriores a la 2.2 del modelo de PLC-FILL; PLC-FILL ejecuta la 3.2. ¿Se aplica? *Rúbrica:* 3 = no, la 3.2 es posterior; anotarlo como no aplicable con el motivo; 2 = no; 1 = sí; 0 = nada.
+- **EX039 — Mitigar primero.** ¿Por qué mitiga el ingeniero en FW-1 antes de aplicar el parche a PLC-WRAP? *Rúbrica:* 3 = el parche exige parada, pruebas y control de calidad; el cortafuegos reduce ya la exposición; 2 = un motivo; 1 = «pereza»; 0 = nada.
+- **EX040 — Expediente de un parche aplazado.** Escriba el expediente del aviso para PLC-WRAP. *Rúbrica:* 3 = se aplica, motivo, mitigación, fecha prevista, responsable, revisión; 2 = la mayoría; 1 = «parchear más tarde»; 0 = nada.
+
+### Síntesis del capítulo
+
+Los avisos se cotejan con el registro, se mitigan rápidamente y el parche se aplica en una parada planificada y probada.
+
+### Siga estudiando — capítulo 10 de 18
+
+[← Capítulo 09 (borrador)](#ch-09) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 11 (borrador) →](#ch-11)
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Copias de seguridad y restauración
+
+### Resultados de aprendizaje
+
+Usted podrá (1) enumerar lo que hay que copiar en una línea; (2) verificar la integridad de las copias de seguridad con hashes; y (3) explicar por qué hay que probar una restauración.
+
+### 11.1 Qué copiar
+
+Los programas de los PLC, los proyectos y pantallas de las HMI, los archivos de recetas, las configuraciones de los dispositivos (conmutadores, cortafuegos, ajustes de la cámara) y los datos de la licencia del software de ingeniería. Sin ellos, recuperarse de un fallo o un ataque significa reconstruirlo todo de memoria. En HPFL eso significa los programas de PLC-FILL y PLC-WRAP, el proyecto de HMI-1, los archivos de recetas, los ajustes de VIS-CAM y las configuraciones de FW-1 y de los conmutadores de la línea. Enumere cada elemento en el registro con la fecha de su última copia. Un elemento que falta en la lista probablemente falte también en las copias.
+
+### 11.2 Dónde guardar las copias
+
+Al menos una copia fuera de la red de la línea, idealmente sin conexión, para que un malware que cifre la línea no pueda alcanzarla. Etiquete cada una con el dispositivo, la fecha y la versión. En HPFL el ingeniero de control mantiene un almacén sin conexión, que es donde se encontró una copia más antigua y coincidente del programa de la envolvedora. Guarde al menos dos copias de cada copia de seguridad importante y anote dónde está cada una. Compruebe que la copia sin conexión es accesible durante un turno de noche. Anote quién puede sacar una copia del emplazamiento.
+
+### 11.3 Comprobar la integridad
+
+Un hash como SHA-256 es una huella de un archivo: cualquier cambio da un valor distinto. Anote el hash al hacer la copia; compruébelo antes de restaurar.
+
+```python
+"""Lab 11: verify synthetic PLC backup files against recorded SHA-256 values."""
+import hashlib
+files = {"PLC-FILL_2026-09.bak": b"fill program v3.2 rungs 1-140",
+         "PLC-WRAP_2026-09.bak": b"wrap program v2.0 rungs 1-88 edited"}
+recorded = {"PLC-FILL_2026-09.bak": hashlib.sha256(b"fill program v3.2 rungs 1-140").hexdigest(),
+            "PLC-WRAP_2026-09.bak": hashlib.sha256(b"wrap program v2.0 rungs 1-88").hexdigest()}
+for name, data in files.items():
+    h = hashlib.sha256(data).hexdigest()
+    print(f"{name:22} {h[:12]} {'MATCH' if h == recorded[name] else 'MISMATCH - do not restore'}")
+```
+
+Ejecútelo con `python3 lab_hash.py`. Salida verificada:
+
+```text
+PLC-FILL_2026-09.bak   0278a5f83d56 MATCH
+PLC-WRAP_2026-09.bak   9974ecb17bab MISMATCH - do not restore
+```
+
+Guarde los hashes separados de las copias, por ejemplo en el ticket de cambio o en un registro, para que quien altere una copia no pueda alterar también su hash. El Lab 11 comprueba dos archivos de copia de seguridad frente a los hashes anotados y muestra cómo se ve una discrepancia.
+
+### 11.4 Leer el resultado
+
+La copia de la llenadora coincide con su hash anotado. La de la envolvedora no: su contenido se editó después de anotar el hash. Restaurarla podría cargar un programa que nadie aprobó, así que se aparta y se notifica. Una discrepancia no prueba un ataque; prueba que el archivo cambió después de anotarse su hash. En HPFL la edición se atribuyó a un ajuste aprobado pero no registrado. El procedimiento se actualizó para que cada cambio produzca una nueva copia y un nuevo hash en el mismo ticket.
+
+### 11.5 Restauraciones de prueba
+
+Una copia que nunca se ha restaurado es una esperanza, no un plan. Una o dos veces al año, restaure un programa en un PLC de repuesto o de laboratorio y compárelo con el que está en funcionamiento. Anote la restauración de prueba en el registro con la fecha, el dispositivo, la copia utilizada y el resultado. Si una restauración falla, averigüe por qué antes de que un fallo real le obligue a hacerlo. En HPFL podría usarse para ello un PLC de repuesto de la estantería, tras comprobar que figura como repuesto en el registro.
+
+### 11.6 Con qué frecuencia
+
+Haga una copia tras cada cambio aprobado y en una fecha mensual fija, lo que ocurra primero, para que la copia buena más reciente nunca vaya muy por detrás del programa en funcionamiento. En HPFL las copias de septiembre eran las más recientes antes de la edición del programa de la envolvedora, y por eso un cambio aprobado posterior sin copia nueva causó confusión. Vincule las copias a los tickets de cambio para que cada cambio aprobado produzca una copia y un hash nuevos. Compruebe cada mes que la copia más reciente de cada dispositivo es posterior a su último cambio aprobado. Si no lo es, haga una copia nueva y calcule su hash antes del siguiente turno.
+
+### Ejemplo resuelto (HPFL sintética)
+
+Tomás notifica la discrepancia. El ingeniero de control encuentra en el almacén sin conexión una copia más antigua que coincide y compara el archivo editado: alguien añadió una línea al programa de la envolvedora después de la copia de septiembre sin ticket de cambio. La edición se atribuye a un ajuste aprobado pero no registrado; se actualizan el registro y el procedimiento.
+
+> **Caso sintético — HPFL.** Los archivos y los hashes los genera el laboratorio con contenidos inventados.
+
+### Errores y límites
+
+Un hash coincidente prueba que el archivo no ha cambiado desde que se anotó, no que la versión anotada fuera buena. Los hashes deben guardarse separados de las copias.
+
+### Ejercicios — capítulo 11
+
+- **EX041 — Lista de copias.** Nombre cinco cosas que hay que copiar en la línea HPFL. *Rúbrica:* 3 = cinco elementos correctos; 2 = cuatro; 1 = dos; 0 = nada.
+- **EX042 — Decisión ante una discrepancia.** ¿Qué hace Tomás con la copia de la envolvedora marcada `MISMATCH`? *Rúbrica:* 3 = no restaurarla; apartarla; notificarla; buscar una copia verificada; 2 = solo notificarla; 1 = restaurarla igualmente; 0 = nada.
+- **EX043 — Un byte cambiado.** Si se cambiara un carácter de los datos de la llenadora, ¿qué imprimiría el laboratorio para ese archivo? *Rúbrica:* 3 = un hash distinto y `MISMATCH - do not restore`; 2 = discrepancia; 1 = coincidencia; 0 = nada.
+- **EX044 — Dónde guardar los hashes.** ¿Por qué se guardan los hashes aparte de los archivos de copia? *Rúbrica:* 3 = un atacante que altere las copias podría alterar también los hashes guardados en el mismo lugar; 2 = vago; 1 = espacio; 0 = nada.
+
+### Síntesis del capítulo
+
+Las copias se guardan sin conexión, etiquetadas, con su hash y con restauraciones de prueba; una discrepancia detiene la restauración.
+
+### Siga estudiando — capítulo 11 de 18
+
+[← Capítulo 10 (borrador)](#ch-10) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 12 (borrador) →](#ch-12)
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Segmentación y reglas del cortafuegos
+
+### Resultados de aprendizaje
+
+Usted podrá (1) explicar con palabras sencillas las zonas y conductos de IEC 62443; (2) leer una tabla de reglas de cortafuegos; y (3) detectar reglas que debilitan la segmentación.
+
+### 12.1 Zonas y conductos
+
+IEC 62443 agrupa en zonas los activos con necesidades de seguridad similares y llama conductos a las conexiones controladas entre ellas. En HPFL: la zona de la línea (PLC, HMI, cámara), una DMZ (copia del historiador, pasarela de acceso remoto, servidor de transferencia de archivos) y la zona de oficinas. El tráfico solo cruza por conductos protegidos por cortafuegos y documentados. Describa cada conducto con su finalidad, el tráfico que permite y su responsable. En HPFL los conductos son la línea enviando datos al historiador de la DMZ, ENG-LT accediendo a los PLC y el acceso de proveedores a través de la pasarela de la DMZ. Cualquier otra cosa que cruce el límite de una zona es un hallazgo.
+
+### 12.2 La DMZ
+
+Los usuarios de oficina quieren datos de producción; la línea no debe aceptar conexiones desde la oficina. Por eso la línea envía los datos a un servidor de la DMZ y la oficina los lee allí. Así ninguna conexión necesita ir directamente de la oficina a la línea. En HPFL la línea envía los datos a la copia del historiador en la DMZ y los usuarios de oficina los leen allí. El acceso de proveedores y la transferencia de archivos también terminan en la DMZ. De este modo FW-1 no necesita ninguna regla que deje entrar a los equipos de oficina directamente en la línea, que es justo el tipo de regla que elimina el ejemplo resuelto siguiente.
+
+### 12.3 Leer las reglas
+
+Cada regla tiene origen, destino, puerto y acción, y se lee de arriba abajo; gana la primera coincidencia. Una última regla de «denegar todo» hace que quede bloqueado todo lo que no esté en la lista. Leer de arriba abajo importa porque una regla amplia de permitir situada por encima de una denegación estrecha deja inútil la denegación. Al revisar una tabla, pregunte por cada regla quién es su responsable, por qué existe y si una regla superior ya decide sobre ese mismo tráfico. La tabla de FW-1 en HPFL tiene cuatro reglas, lo que facilita practicarlo.
+
+### 12.4 Reglas débiles
+
+Busque orígenes «cualquiera», rangos de puertos amplios, reglas sin comentario ni responsable y reglas temporales que nunca se eliminaron. Cada una debe cuestionarse y justificarse o eliminarse mediante el control de cambios. En HPFL la regla 3, de cualquier equipo de oficina a cualquier equipo de la línea y marcada «temp 2025», mostraba a la vez todas estas señales de alerta. Se eliminó mediante el control de cambios y se probó en la siguiente parada. Anote cada pregunta planteada y su respuesta, para que una regla eliminada no vuelva a añadirse más tarde sin revisión.
+
+### 12.5 No edite por su cuenta
+
+Los cambios en el cortafuegos los hace el responsable de la red con un ticket de cambio y un plan de vuelta atrás; una regla equivocada puede detener la línea. Si encuentra una regla débil, notifíquela con el número de la regla y su motivo. El responsable de la red decide cómo cambiarla, prepara una vuelta atrás y prueba en una parada planificada. Su papel es advertir y explicar el riesgo. En HPFL el responsable de la red eliminó la regla 3 solo después de abrir un cambio y acordar una prueba en la siguiente parada. Una regla modificada por otra persona, por buena que sea su intención, no deja constancia ni vuelta atrás, y podría detener la línea.
+
+### Ejemplo resuelto (HPFL sintética)
+
+Tomás revisa la tabla de FW-1 con el responsable de la red. La regla 1 permite a ENG-LT acceder al puerto de programación de los PLC; la regla 2 deja que la línea envíe datos al historiador de la DMZ; la regla 3, «office any → line any allow — temp 2025», no tiene responsable. La regla 4 lo deniega todo. Abren un cambio para eliminar la regla 3, prueban en la siguiente parada y después la línea funciona con normalidad.
+
+> **Caso sintético — HPFL.** La tabla de reglas es inventada.
+
+### Errores y límites
+
+Una buena tabla de reglas puede quedar anulada por un conmutador no gestionado o un módem que eluda el cortafuegos; los recorridos por la planta y los diagramas complementan la revisión de las reglas.
+
+### Ejercicios — capítulo 12
+
+- **EX045 — Zonas de HPFL.** Nombre las tres zonas de HPFL y un activo de cada una. *Rúbrica:* 3 = línea, DMZ y oficinas con activos correctos; 2 = dos; 1 = una; 0 = nada.
+- **EX046 — Primera coincidencia.** Con la regla 3 por encima de la regla 4, ¿qué ocurre con el tráfico de oficina hacia HMI-1? *Rúbrica:* 3 = lo permite la regla 3 antes de que se aplique la denegación; 2 = se permite; 1 = se deniega; 0 = nada.
+- **EX047 — Por qué una DMZ.** Explique cómo la DMZ permite al personal de oficina ver datos de producción sin conectarse a la línea. *Rúbrica:* 3 = la línea envía a un servidor de la DMZ, la oficina lee allí, sin regla de oficina a línea; 2 = parcial; 1 = «es más seguro»; 0 = nada.
+- **EX048 — Eliminar una regla.** Describa los pasos seguros para eliminar la regla 3. *Rúbrica:* 3 = ticket de cambio, confirmación del responsable, ventana planificada, vuelta atrás, prueba, registro; 2 = parte; 1 = borrarla ya; 0 = nada.
+
+### Síntesis del capítulo
+
+Las zonas se separan mediante conductos documentados y con responsable; las reglas amplias o sin responsable se eliminan mediante el control de cambios.
+
+### Siga estudiando — capítulo 12 de 18
+
+[← Capítulo 11 (borrador)](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 13 (borrador) →](../../en/book/MANUSCRIPT.md#ch-13)
 
 <a id="worked-results"></a>
 
@@ -415,6 +782,54 @@ Respuestas modelo para EX001–EX072. Harbor Point Food Packaging Line, Tomás R
 **EX023.** Fotografiar la nota como evidencia, retirarla, avisar al supervisor y al ingeniero de control y redactar un informe breve; el ingeniero cambia la contraseña en una parada planificada y revisa los inicios de sesión de administrador recientes.
 
 **EX024.** No. La supervisión rutinaria solo necesita derechos de visualización; usar la cuenta de administrador a diario hace más probables los cambios accidentales y los daños por robo de sesión, así que se reserva para los trabajos planificados.
+
+**EX025.** Dejarla sin conectar, anotar dónde y cuándo se encontró y entregarla a seguridad o al supervisor; dejar caer memorias con etiquetas tentadoras es un truco conocido para conseguir que alguien las conecte.
+
+**EX026.** Identificador de la memoria, nombres de los archivos, resultado del análisis, la persona que la maneja, y la fecha y la hora.
+
+**EX027.** «Limpio» significa que el analizador no encontró malware conocido; un malware nuevo o no reconocido aún puede pasar, así que el archivo tiene menos riesgo, no es seguro, y el registro conserva un rastro por si surgen problemas.
+
+**EX028.** Usar un portátil gestionado del emplazamiento con el software del proveedor instalado, o analizar los archivos del proveedor y llevarlos en una memoria del emplazamiento, de modo que el portátil no gestionado nunca se conecte a la línea.
+
+**EX029.** Usar autenticación multifactor; usar contraseñas robustas para el escritorio remoto; cerrar los puertos de escritorio remoto que no se usen; auditar la actividad de las conexiones remotas.
+
+**EX030.** Cualquiera que tenga las credenciales del proveedor puede usar un enlace permanentemente activado a cualquier hora, sin que nadie vigile, así que una contraseña robada se convierte en un camino inmediato hacia la línea.
+
+**EX031.** Proveedor y cuenta usada, inicio a las 14:00 y fin a las 14:38, «solo se consultó el registro de averías de la envolvedora, sin cambios», cuenta desactivada, el operador confirmó el funcionamiento normal.
+
+**EX032.** Un módem ofrece una ruta hacia la línea que se salta la pasarela, la MFA y el registro; Tomás debería fotografiarlo y notificarlo al supervisor y al ingeniero de control en lugar de desconectarlo él mismo.
+
+**EX033.** `06:15 low-film` y `08:10 jam-cleared` son alarmas de proceso; los inicios de sesión de las 06:02 y de las 07:40–07:43 y el cambio de punto de consigna de las 07:45 son relevantes para la seguridad.
+
+**EX034.** `failed logins: 5`: el contador aumenta con cada línea de inicio de sesión que termina en `fail`.
+
+**EX035.** Un acierto justo después de varios fallos sugiere que la contraseña se adivinó o se encontró, y dos minutos después la misma cuenta cambió la velocidad de la envolvedora; por sí solo, un inicio de sesión de administrador podría ser simplemente un trabajo planificado.
+
+**EX036.** A las 07:45, en PLC-WRAP, la cuenta de administrador cambió el punto de consigna de velocidad de 120 a 180; esa cuenta inició sesión a las 07:43 tras tres fallos desde las 07:40; no se conocía ningún cambio planificado.
+
+**EX037.** Producto y modelo; versiones afectadas; qué podría hacer un atacante; si se necesita acceso de red o físico; la corrección o solución provisional del fabricante.
+
+**EX038.** No. Solo están afectadas las versiones anteriores a la 2.2 y PLC-FILL ejecuta la 3.2; anote «no aplicable: ejecuta la 3.2» con la fecha y quién lo comprobó.
+
+**EX039.** Actualizar el PLC exige una parada de producción, pruebas con el programa y controles de calidad, que tardan semanas en organizarse; restringir el puerto de programación en FW-1 reduce la exposición desde hoy.
+
+**EX040.** «Se aplica: PLC-WRAP, firmware 2.0. Mitigación: FW-1 solo permite el puerto de programación desde ENG-LT. Parche a la 2.3 en la parada planificada dentro de tres semanas. Responsable: ingeniero de control. Revisar si cambia la mitigación.»
+
+**EX041.** Los programas de PLC-FILL y PLC-WRAP, el proyecto de HMI-1, los archivos de recetas, las configuraciones de FW-1 y de los conmutadores, y los ajustes de VIS-CAM.
+
+**EX042.** No la restaura; la etiqueta como sospechosa, notifica la discrepancia al ingeniero de control y ayuda a localizar una copia más antigua cuyo hash coincida.
+
+**EX043.** Imprime un prefijo de hash de 12 caracteres distinto para `PLC-FILL_2026-09.bak` y `MISMATCH - do not restore`, porque cualquier cambio altera el valor SHA-256.
+
+**EX044.** Quien pudiera modificar las copias en el mismo lugar podría reescribir también los hashes guardados para que coincidieran, y la comprobación no probaría nada.
+
+**EX045.** Zona de la línea: PLC-WRAP; DMZ: la copia del historiador o la pasarela de acceso remoto; zona de oficinas: los PC del personal.
+
+**EX046.** Se permite: la regla 3 coincide con el tráfico de oficina hacia cualquier equipo de la línea antes de llegar a la denegación final, así que HMI-1 es accesible desde todos los PC de oficina.
+
+**EX047.** Los sistemas de la línea envían datos hacia un servidor de la DMZ; los usuarios de oficina solo se conectan a ese servidor, así que no hay ninguna regla que permita a los equipos de oficina iniciar conexiones hacia la zona de la línea.
+
+**EX048.** Abrir un ticket de cambio, confirmar con el responsable de la red que nada depende de la regla 3, programar una parada planificada, conservar la configuración anterior como vuelta atrás, eliminar la regla, comprobar que funcionan la línea y los flujos hacia la DMZ, y anotar el resultado.
 
 <a id="references"></a>
 
