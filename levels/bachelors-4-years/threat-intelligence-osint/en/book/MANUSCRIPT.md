@@ -1535,7 +1535,7 @@ For example, intelligence about attacks on infusion pumps goes to clinical engin
 
 If forty items arrive per week and each takes thirty minutes to analyse, twenty analyst-hours are needed. Two people with other duties may provide eight. Without triage the backlog grows by about twenty-four items weekly; writing this arithmetic down makes the case for stricter filters or more staff in plain terms.
 
-Amara presents this calculation to the security lead. The numbers make the trade-off plain. The lead agrees to the triage rule and asks for a monthly report of the queue, so growth is noticed early. Amara also measures her analysis time per item, which turns out closer to twenty minutes for routine items, and updates the arithmetic.
+Amara presents this calculation to the security lead. The lead agrees to the triage rule and asks for a monthly report of the queue, so growth is noticed early. Amara also measures her analysis time per item, which turns out closer to twenty minutes for routine items, and updates the arithmetic.
 
 ### Service levels
 
