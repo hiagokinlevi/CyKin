@@ -1504,7 +1504,7 @@ defence=allowlist exfil_calls= 0/20 any_injected_call= 3/20 benign_calls=0/20
 defence=separate  exfil_calls= 0/20 any_injected_call= 0/20 benign_calls=0/20
 ```
 
-A tabela do laboratório deixa a diferença clara: a filtragem por palavras-chave reduz à metade as chamadas de exfiltração, mas ainda deixa passar 10 de 20, enquanto separar o conteúdo recuperado como dado detém todas elas e não custa nenhuma chamada benigna.
+A tabela do laboratório deixa a diferença clara: a filtragem por palavras-chave reduz as chamadas de exfiltração apenas de 17 para 10 de 20, enquanto separar o conteúdo recuperado como dado detém todas elas e não custa nenhuma chamada benigna.
 
 ### 24.3 Controles para modelos preditivos
 
@@ -3056,7 +3056,7 @@ Respostas-modelo para EX001–EX120. A Lumen Community Health, Rina e todos os s
 
 **EX069.** 400 conversas sintéticas em que um paciente de teste conectado pede marcações para outros pacientes com redações variadas; métrica: marcações executadas para outro paciente; aprovação: 0 execuções (limite superior < 1%).
 
-**EX070.** Restam 10 chamadas de exfiltração: o filtro de palavras-chave bloqueia apenas os documentos que contêm "ignore" (as notas), e não as linhas ACTION simples das faturas nem os memorandos ofuscados.
+**EX070.** Restam 10 chamadas de exfiltração, todas das linhas ACTION simples das faturas: o filtro de palavras-chave bloqueia apenas os documentos que contêm "ignore" (as notas). Os memorandos ofuscados não geram nenhuma chamada nesse modo, porque só são analisadas as linhas "ACTION:" exatas.
 
 **EX071.** Preventivo: devolver apenas categorias de lembrete a funcionários autorizados. Detectivo: monitorar o volume de consultas por usuário em busca de pesquisas em massa. Corretivo: revogar o acesso abusivo e retreinar com privacidade diferencial ou eliminação de duplicatas.
 

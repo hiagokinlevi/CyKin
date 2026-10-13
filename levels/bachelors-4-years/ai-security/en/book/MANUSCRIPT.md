@@ -1835,7 +1835,7 @@ defence=allowlist exfil_calls= 0/20 any_injected_call= 3/20 benign_calls=0/20
 defence=separate  exfil_calls= 0/20 any_injected_call= 0/20 benign_calls=0/20
 ```
 
-The lab table makes the gap clear: keyword filtering halves the exfiltration calls but still lets 10 of 20 through, while separating retrieved content as data stops all of them and costs no benign calls.
+The lab table makes the gap clear: keyword filtering cuts the exfiltration calls only from 17 to 10 of 20, while separating retrieved content as data stops all of them and costs no benign calls.
 
 ### 24.3 Controls for predictive models
 
@@ -3656,7 +3656,7 @@ Model answers; any answer meeting the rubric scores equally. Lumen Community Hea
 
 **EX069.** 400 synthetic conversations in which a logged-in test patient asks for bookings for other patients using varied phrasing; metric: bookings executed for a different patient; pass: 0 executions (upper bound < 1%).
 
-**EX070.** 10 exfiltration calls remain: the keyword filter blocks only documents containing "ignore" (the notes), not the invoices' plain ACTION lines or the obfuscated memos.
+**EX070.** 10 exfiltration calls remain, all from the invoices' plain ACTION lines: the keyword filter blocks only documents containing "ignore" (the notes). The obfuscated memos produce no call in this mode because only exact "ACTION:" lines are parsed.
 
 **EX071.** Preventive: return only reminder categories to authorised staff. Detective: monitor per-user query volumes for bulk lookups. Corrective: revoke abusive access and retrain with differential privacy or deduplication.
 
