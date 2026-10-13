@@ -39,11 +39,11 @@ Toda afirmación factual sobre una ley, una norma, un incidente o un estudio pub
 1. [Cálculo I](#ch-01)
 2. [Matemática discreta](#ch-02)
 3. [Física para la computación](#ch-03)
-4. [Programación I](../../en/book/MANUSCRIPT.md#ch-04)
-5. [Comunicación en ingeniería](../../en/book/MANUSCRIPT.md#ch-05)
-6. [Cálculo II](../../en/book/MANUSCRIPT.md#ch-06)
-7. [Probabilidad y estadística](../../en/book/MANUSCRIPT.md#ch-07)
-8. [Arquitectura de computadoras](../../en/book/MANUSCRIPT.md#ch-08)
+4. [Programación I](#ch-04)
+5. [Comunicación en ingeniería](#ch-05)
+6. [Cálculo II](#ch-06)
+7. [Probabilidad y estadística](#ch-07)
+8. [Arquitectura de computadoras](#ch-08)
 9. [Programación II](../../en/book/MANUSCRIPT.md#ch-09)
 10. [Ética y seguridad en ingeniería](../../en/book/MANUSCRIPT.md#ch-10)
 11. [Redes y protocolos](../../en/book/MANUSCRIPT.md#ch-11)
@@ -339,7 +339,395 @@ La energía, la señal y el calor son el punto donde lo cibernético se encuentr
 <!-- cyberabc:chapter-navigation:start ch-03 -->
 ### Siga estudiando — capítulo 03 de 50
 
-[← Capítulo 02](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 →](../../en/book/MANUSCRIPT.md#ch-04)
+[← Capítulo 02](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-04"></a>
+
+## Capítulo 4 — Programación I
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) escribir programas pequeños y correctos en Python con funciones, bucles, condicionales, bytes y diccionarios; (2) implementar un algoritmo publicado, el CRC-16 de Modbus RTU, y probarlo contra un vector conocido; (3) analizar entradas binarias no confiables de forma defensiva, rechazando los datos malformados en lugar de repararlos; y (4) explicar por qué el código de análisis sintáctico es crítico para la seguridad en la infraestructura. Convierte en código la lógica del capítulo 2 y prepara el capítulo 9.
+
+### 4.1 Los programas como descripciones precisas
+
+Un programa es una descripción de un cálculo lo bastante precisa para una máquina. El software de infraestructura debe ser preciso en tres cosas que los principiantes confunden: los **tipos** (un byte no es un carácter; un registro entero no es un número de coma flotante), los **límites** (qué ocurre en el primer y el último elemento, en cero, en el máximo) y la **falla** (qué hace el programa con una entrada que no esperaba). En este libro se usa Python porque su biblioteca estándar cubre bytes, hashing y simulación sin instalar nada. Su tipo `bytes` es inmutable y, al indexarlo, devuelve enteros; `int.from_bytes(b, "big")` convierte con un orden de bytes explícito.
+
+### 4.2 Implementar la suma de verificación de un protocolo
+
+Modbus es un protocolo industrial muy longevo; su forma serie (RTU) termina cada trama con una verificación de redundancia cíclica de 16 bits, enviada con el byte bajo primero, tal como la definen las [especificaciones del protocolo de aplicación Modbus y de línea serie publicadas por la Modbus Organization](https://www.modbus.org/file/secure/modbusprotocolspecification.pdf). Un CRC detecta con alta probabilidad la corrupción accidental, como el ruido en una línea serie. **No** es un mecanismo de seguridad: cualquiera puede calcular un CRC válido para una trama falsificada. Aprenda pronto la diferencia: integridad frente a la naturaleza frente a integridad frente a un adversario (capítulo 19).
+
+El CRC estándar de Modbus empieza en 0xFFFF, aplica XOR de cada byte sobre los bits bajos y desplaza a la derecha ocho veces, aplicando XOR con 0xA001 cuando el bit expulsado es 1. Un vector de prueba muy difundido es la petición `01 03 00 00 00 0A` (unidad 1, leer 10 registros de retención desde la dirección 0), cuyos bytes de CRC son `C5 CD`. Probar contra un vector antes de usar su función no es negociable.
+
+### 4.3 Análisis sintáctico defensivo
+
+Un analizador que lee datos de un dispositivo de campo, de una red o de un archivo es la frontera entre el mundo exterior y las suposiciones de su programa. Reglas: compruebe la longitud antes de indexar; compruebe la integridad (CRC) antes de confiar en cualquier campo; compruebe cada campo contra lo que usted pidió (unidad, función, número de bytes); compruebe los valores contra los límites físicos; ante cualquier falla, **rechace e informe**: no adivine. Las listas de debilidades comunes de OWASP y CWE ([CWE Top 25](https://cwe.mitre.org/top25/)) están dominadas por errores de manejo de entradas: lecturas y escrituras fuera de límites, validación de entradas inadecuada, desbordamiento de enteros.
+
+### 4.4 Ejemplo resuelto: lectura del nivel de Hollin Hill (sintético)
+
+La RTU de LRWA en PS3 devuelve dos registros: el nivel del depósito en centímetros y la presión de salida en kPa. El Lab 3 construye la trama de petición y luego analiza cinco respuestas: una correcta, una con un solo bit invertido, una excepción Modbus, un valor fuera del rango físico del tanque (65535 cm, un registro sin inicializar) y una trama truncada. Cada caso erróneo se rechaza con un motivo sobre el que un operador o un analista de registros puede actuar.
+
+Cada motivo de rechazo está redactado para que apunte a una causa: una falla de CRC sugiere ruido en la línea, una excepción apunta al propio estado de la RTU y una falla de rango sugiere una avería o un registro sin inicializar que mantenimiento debe investigar.
+
+### 4.5 Actividad práctica: Lab 3
+
+```python
+# Lab 3 - Modbus RTU CRC-16 and a defensive response parser (offline)
+def crc16(data: bytes) -> int:
+    crc = 0xFFFF
+    for b in data:
+        crc ^= b
+        for _ in range(8):
+            crc = (crc >> 1) ^ 0xA001 if crc & 1 else crc >> 1
+    return crc
+def frame(body: bytes) -> bytes:
+    c = crc16(body); return body + bytes([c & 0xFF, c >> 8])   # low byte first
+req = frame(bytes.fromhex("01030000000A"))
+print("request:", req.hex(" "))
+def parse(resp: bytes, unit=1, count=2, lo=0, hi=4000):
+    if len(resp) < 5: return "reject: short"
+    if crc16(resp[:-2]) != resp[-2] | resp[-1] << 8: return "reject: crc"
+    if resp[0] != unit: return "reject: unit"
+    if resp[1] & 0x80: return f"reject: exception {resp[2]}"
+    if resp[1] != 3 or resp[2] != 2 * count or len(resp) != 5 + 2 * count: return "reject: shape"
+    vals = [int.from_bytes(resp[3 + 2*i:5 + 2*i], "big") for i in range(count)]
+    if any(not lo <= v <= hi for v in vals): return f"reject: range {vals}"
+    return f"ok {vals}"
+good = frame(bytes.fromhex("010304") + (3150).to_bytes(2, "big") + (212).to_bytes(2, "big"))
+tests = {"good": good, "bitflip": good[:4] + bytes([good[4] ^ 1]) + good[5:],
+         "exception": frame(bytes.fromhex("018302")), "outrange": frame(bytes.fromhex("010304FFFF00D4")),
+         "truncated": good[:6]}
+for k, v in tests.items(): print(f"{k:9} {parse(v)}")
+```
+
+Salida esperada:
+
+```text
+request: 01 03 00 00 00 0a c5 cd
+good      ok [3150, 212]
+bitflip   reject: crc
+exception reject: exception 2
+outrange  reject: range [65535, 212]
+truncated reject: crc
+```
+
+La trama truncada se rechaza en la comprobación de CRC porque sus dos últimos bytes no son un CRC; un analizador que comprobara primero la forma daría un motivo más claro. Ambos órdenes son seguros; la propiedad importante es que nada se acepta con evidencia parcial.
+
+Observe que la respuesta correcta se decodifica como un nivel de 3.150 cm y una presión de 212 kPa, ambos dentro de los límites físicos configurados en el analizador. El caso fuera de rango muestra por qué reparar es peligroso: recortar 65.535 al máximo de 4.000 cm informaría de un depósito lleno cuando el registro nunca se había escrito. Rechazarlo con el valor bruto en el motivo da al personal de mantenimiento la pista que necesita y da a un investigador evidencia de que el valor no era simplemente ruido en la línea.
+
+### 4.6 Errores comunes y límites
+
+- Errores de orden de bytes (los registros Modbus son *big-endian*; el CRC se transmite con el byte bajo primero).
+- Indexar antes de comprobar la longitud; confiar en un campo de longitud dentro del mensaje.
+- Tratar un CRC como autenticación.
+- «Reparar» una entrada errónea (recortar 65535 a 4000) en lugar de rechazarla, lo que oculta fallas y ataques.
+- Escribir pruebas solo para el camino feliz.
+
+Cada punto tiene una prueba correspondiente en el Lab 3 o en el EX008. Un analizador que supera esas pruebas pero nunca se comprobó contra una trama truncada o malformada solo se ha probado para el camino feliz, y la primera línea serie ruidosa de una estación de bombeo mostrará qué hace con una entrada que no esperaba. Escriba primero las pruebas de falla, porque son las que importan cuando algo sale mal en el campo.
+
+### Ejercicios — capítulo 4
+
+**EX007 — CRC a mano y con código.** *Objetivo:* verificar una implementación. *Entradas:* Lab 3. *Pasos:* (1) calcule con la función el CRC de `01 06 00 01 00 03` (escribir un único registro); (2) invierta un bit de los datos y muestre que el CRC cambia; (3) explique en dos frases por qué el CRC no detiene a un atacante en la línea serie. *Evidencia esperada:* valores hexadecimales y explicación. *Rúbrica:* 3 = CRC correcto (verifíquelo con el resultado resuelto), demostración, afirmación de seguridad correcta; 2 = falta uno; 1 = código no ejecutado; 0 = nada.
+
+**EX008 — Endurecimiento del analizador.** *Objetivo:* mejorar el informe de errores sin debilitar las comprobaciones. *Entradas:* `parse()`. *Pasos:* reordene las comprobaciones para que una trama truncada informe «short» o «shape» antes del CRC, añada una comprobación que rechace una respuesta cuyo identificador de unidad sea 0 (difusión) y añada dos casos de prueba. *Evidencia esperada:* diff del código y salidas. *Rúbrica:* 3 = se conservan todos los rechazos originales, comprobaciones nuevas correctas, pruebas incluidas; 2 = se pierde un rechazo; 1 = sin probar; 0 = nada.
+
+### Síntesis del capítulo
+
+Escriba código explícito sobre tipos, límites y fallas. Implemente los algoritmos publicados contra los vectores de prueba publicados. Trate cada analizador como una frontera de seguridad: longitud, integridad, forma y, después, significado físico; y rechace con un motivo en lugar de adivinar. Mantenga separadas en su mente la detección de errores accidentales (CRC) y la integridad frente a adversarios (MAC y firmas).
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Siga estudiando — capítulo 04 de 50
+
+[← Capítulo 03](#ch-03) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-05"></a>
+
+## Capítulo 5 — Comunicación en ingeniería
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) escribir un requisito que pueda verificarse; (2) producir una nota de diseño de una página, un registro de decisión y un informe de pruebas que otro ingeniero pueda comprobar; (3) presentar el riesgo y la incertidumbre a operadores, directivos y reguladores sin exagerarlos ni ocultarlos; y (4) tratar adecuadamente en los documentos los detalles sensibles de la infraestructura. Se apoya en los capítulos 1–4, cuyos números ahora tiene que comunicar, y prepara los talleres de diseño (capítulos 25 y 35).
+
+### 5.1 Escribir para decidir
+
+Los documentos de ingeniería existen para que alguien pueda tomar o comprobar una decisión. Empiece por la decisión y su fundamento; ponga las derivaciones después. Una buena nota de diseño responde, en este orden: qué se decide, qué opciones se consideraron, la recomendación, la evidencia y los supuestos en que se basa, qué cambiaría la recomendación y quién debe aprobarla. Los **registros de decisiones de arquitectura** (notas breves, fechadas y numeradas que registran una decisión, su contexto y sus consecuencias) mantienen visibles las razones de un diseño años después, cuando el equipo original ya se ha ido.
+
+### 5.2 Requisitos que pueden verificarse
+
+Un requisito es un enunciado que el sistema debe cumplir, redactado de modo que una prueba, un análisis, una inspección o una demostración puedan mostrar si lo cumple. El [NASA Systems Engineering Handbook](https://www.nasa.gov/reference/systems-engineering-handbook/) recomienda requisitos necesarios, inequívocos, verificables, factibles y trazables. Compare «La telemetría deberá ser segura» (no verificable) con «Cada mensaje de telemetría de una RTU de campo al centro de control deberá llevar un código de autenticación de mensajes sobre su contenido y un contador monótono; el receptor deberá rechazar los mensajes que fallen cualquiera de las dos comprobaciones y generar una alarma en menos de 60 s» (verificable mediante prueba). Use «deberá» para los requisitos, mantenga un requisito por frase y dé a cada uno un identificador.
+
+### 5.3 Números, incertidumbre y figuras
+
+Informe los números con unidades, el método que los produjo y su incertidumbre o sus supuestos: «autonomía de 14,6 h (modelo de demanda integrada, inicio a las 06:00, nivel inicial del 85 %; 17,3 h si se supone la demanda media)». Prefiera tablas para los valores exactos, gráficos de líneas para las series temporales y nunca un gráfico sin ejes rotulados y unidades. Evite la falsa precisión: una autonomía de batería calculada con cargas estimadas es «unas 19 h», no «18,83 h». Haga que las figuras se lean en escala de grises y por personas con deficiencias en la visión del color.
+
+En LRWA, la cifra de autonomía del expediente del TMRP lleva su hora de inicio y su nivel inicial, para que nadie la cite en otro escenario.
+
+### 5.4 Comunicar el riesgo a distintos lectores
+
+Los operadores necesitan saber qué hacer y cuándo; los directivos, la consecuencia, el costo y las opciones; los reguladores, evidencia de cumplimiento y de razonamiento. El mismo hallazgo («las consignas remotas se aceptan sin autenticación») se convierte, para un operador, en «hasta que se corrija, confirme por teléfono con la sala de control cualquier cambio de consigna inesperado»; para un directivo, en «una orden falsificada podría arrancar o detener bombas; costo de la corrección 120 k, tres meses»; para un regulador, en una brecha de control mapeada con un plan fechado. Ninguna de estas versiones puede contradecir a otra.
+
+### 5.5 Información sensible
+
+Los documentos de infraestructura contienen a menudo direcciones de red, modelos de dispositivos, vulnerabilidades y límites de capacidad. Marque los documentos según su sensibilidad, compártalos según la necesidad de saber y elimine detalles de las versiones destinadas a públicos amplios. Los informes públicos y los trabajos de los estudiantes deben describir los sistemas al nivel de la [guía de seguridad de TO del NIST (SP 800-82 Rev. 3)](https://csrc.nist.gov/pubs/sp/800/82/r3/final), es decir, patrones de arquitectura, y no las debilidades concretas de un operador identificado.
+
+En este libro todas las cifras de LRWA son sintéticas, pero practique el hábito de todos modos: marque las notas de diseño para uso interno, mantenga las direcciones de red fuera de las diapositivas y produzca una versión reducida para públicos ajenos al equipo de ingeniería.
+
+### 5.6 Ejemplo resuelto: un registro de decisión del TMRP (sintético)
+
+> **ADR-007 — Autenticar la telemetría de campo en la capa de aplicación.** *Fecha:* 2026-03-04. *Estado:* aceptada. *Contexto:* el tráfico RTU–SCADA atraviesa una red LTE privada operada por un tercero; el cifrado LTE termina en el operador. *Opciones:* (a) confiar en el cifrado del operador; (b) túneles IPsec por RTU; (c) HMAC en la capa de aplicación con contadores. *Decisión:* (c), con (b) donde las RTU lo admitan. *Consecuencias:* +22 bytes por mensaje (Lab 8); se requiere gestión de claves (capítulo 19); las RTU heredadas de PS1 y PS2 necesitan una pasarela. *Revisar si:* cambia el contrato con el operador o el firmware de las RTU incorpora protocolos seguros nativos.
+
+### 5.7 Actividad práctica
+
+Reescriba en forma verificable tres requisitos vagos de un encargo sintético («el sistema deberá ser resiliente», «las alarmas deberán ser oportunas», «los registros deberán estar protegidos»), cada uno con un método de verificación. Para cada reescritura, nombre la evidencia que mostraría que el requisito se cumple: una prueba con un criterio de aprobación, un análisis con supuestos enunciados, una inspección o una demostración. Use el contexto de LRWA cuando ayude. Un sistema resiliente podría convertirse en una autonomía enunciada durante un corte de la red eléctrica, las alarmas oportunas en una meta de latencia para una proporción enunciada de eventos, y los registros protegidos en una protección de integridad con anclas guardadas fuera de la zona de control, como exige más adelante R8. Mantenga cada enunciado en un solo requisito.
+
+### 5.8 Errores comunes y límites
+
+- Enterrar la recomendación; escribir una cronología en lugar de un argumento.
+- Requisitos que contienen «y/o», «según corresponda», «fácil de usar», «seguro».
+- Números sin unidades, método ni incertidumbre.
+- Historias distintas para públicos distintos.
+- Compartir en exceso detalles sensibles, o compartir tan poco que los revisores no pueden comprobar el trabajo.
+
+La mayoría de estos errores aparece primero en los conjuntos de requisitos. Un requisito que contiene «seguro» no puede probarse, así que o se abandona discretamente o se da por cumplido sin evidencia. Las historias distintas para públicos distintos son igual de dañinas: si la nota al operador, el resumen al directivo y la declaración al regulador del EX010 discrepan sobre la batería de PS4, quien lea dos de ellas no confiará en ninguna.
+
+### Ejercicios — capítulo 5
+
+**EX009 — Hágalo verificable.** *Objetivo:* escribir requisitos que puedan probarse. *Entradas:* los tres requisitos vagos de §5.7. *Pasos:* reescriba cada uno como uno o más enunciados con «deberá», con un identificador y un método de verificación (prueba, análisis, inspección, demostración). *Evidencia esperada:* tabla. *Rúbrica:* 3 = cada uno medible, único y factible, con un método adecuado; 2 = uno sigue siendo vago; 1 = solo cambio de redacción; 0 = nada.
+
+**EX010 — Tres públicos.** *Objetivo:* comunicar un hallazgo de forma coherente. *Entradas:* «La batería de telemetría de PS4 dura 6 h al fin de vida; el requisito R5 es de 24 h». *Pasos:* escriba una nota de dos frases para el operador, un resumen de 100 palabras con opciones para el directivo y una declaración de brecha dirigida al regulador. *Evidencia esperada:* tres textos. *Rúbrica:* 3 = hechos coherentes, acciones adecuadas a cada público, sin exceso de detalles sensibles; 2 = una incoherencia; 1 = el mismo texto tres veces; 0 = nada.
+
+### Síntesis del capítulo
+
+Escriba para permitir decisiones: primero la recomendación, después la evidencia y los supuestos y, al final, las condiciones de cambio. Haga que cada requisito sea verificable y trazable; informe los números con unidades, métodos e incertidumbre; adapte el mensaje, no los hechos, al lector; y trate los detalles de la infraestructura como información sensible con un público definido.
+
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Siga estudiando — capítulo 05 de 50
+
+[← Capítulo 04](#ch-04) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-06"></a>
+
+## Capítulo 6 — Cálculo II
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) escribir una ecuación diferencial ordinaria (EDO) de primer orden para una existencia con caudal de entrada y de salida; (2) resolver analíticamente EDO lineales de primer orden, incluida la aproximación exponencial al equilibrio y su constante de tiempo; (3) resolver EDO numéricamente y controlar el error debido al tamaño del paso; y (4) usar series y sensibilidad (derivadas parciales) para ver qué parámetro importa más para un margen de resiliencia. Amplía el capítulo 1 y prepara el capítulo 17 (control).
+
+### 6.1 Las existencias con realimentación se convierten en ecuaciones diferenciales
+
+El depósito del capítulo 1 tenía un caudal de salida conocido y ningún caudal de entrada. Las existencias reales tienen flujos que dependen de la propia existencia. El agua que sale de un tanque abierto por un orificio depende de la carga hidráulica sobre él; el cloro residual decae a una tasa proporcional a su concentración; la tensión en bornes de una batería cae con su estado de carga. Cuando la tasa depende de la cantidad, se obtiene una ecuación como $dx/dt = f(x, t)$. El caso importante más simple es lineal: $dx/dt = -kx + u$, con una constante $k > 0$ y una entrada $u$.
+
+### 6.2 La solución lineal de primer orden y la constante de tiempo
+
+Con $u$ constante, la solución es $x(t) = x_\infty + (x_0 - x_\infty)e^{-kt}$, donde $x_\infty = u/k$ es el equilibrio. La **constante de tiempo** $\tau = 1/k$ es el tiempo necesario para cerrar alrededor del 63 % de la brecha; tras $3\tau$ se cierra alrededor del 95 %, tras $5\tau$ alrededor del 99 %. Los ingenieros usan $\tau$ para razonar sobre la rapidez con que un sistema responde a un cambio, y sobre la rapidez con que responde a un ataque. Ejemplo: el cloro libre de un tanque de almacenamiento decae con una constante de primer orden; si $k = 0.05$ por hora, $\tau = 20$ h. Si la dosificación se detiene (por una avería o por una orden maliciosa), el residual se reduce a la mitad en $\ln 2/k \approx 13.9$ h. Esa es la ventana en la que un operador debe darse cuenta y actuar antes de que el residual caiga por debajo del mínimo reglamentario.
+
+### 6.3 Solución numérica y error
+
+En la práctica, la mayoría de las EDO son no lineales o están impulsadas por entradas medidas, así que se resuelven numéricamente. El método de Euler explícito, $x_{n+1} = x_n + h f(x_n, t_n)$, tiene un error global proporcional al paso $h$; reducir $h$ a la mitad reduce el error aproximadamente a la mitad. El método de Heun y el método clásico de Runge–Kutta de cuarto orden reducen el error mucho más rápido para el mismo $h$. Haga siempre una **comprobación de convergencia con el tamaño del paso**: si reducir $h$ a la mitad cambia la respuesta que le interesa más que su tolerancia, el paso es demasiado grande. En los sistemas rígidos (con algunos componentes mucho más rápidos que otros), los métodos explícitos pueden volverse inestables salvo que $h$ sea muy pequeño; Euler sobre $dx/dt = -kx$ es inestable para $h > 2/k$.
+
+### 6.4 Sensibilidad: ¿qué supuesto importa?
+
+Un margen de diseño depende de varios parámetros: nivel inicial, demanda, tasa de fugas, capacidad de bombeo. La derivada parcial del margen respecto de cada parámetro, multiplicada por el rango plausible de ese parámetro, muestra qué incertidumbre domina. Para la autonomía $T = V/q$ con demanda constante, $\partial T/\partial V = 1/q$ y $\partial T/\partial q = -V/q^2$; un error del 10 % en la demanda mueve $T$ aproximadamente lo mismo que un error del 10 % en el volumen utilizable, pero en sentido contrario. Las series de Taylor dan la misma intuición en los modelos no lineales: cerca de un punto nominal, $f(x + \Delta) \approx f(x) + f'(x)\Delta$.
+
+### 6.5 Ejemplo resuelto: pérdida de la dosificación de cloro (sintético)
+
+El residual a la salida de Hollin Hill de LRWA se mantiene en 0,8 mg/L; el mínimo de operación sintético es de 0,2 mg/L. Con la dosificación detenida y un decaimiento de primer orden $k = 0.05$ h⁻¹, el residual llega a 0,2 mg/L cuando $0.8e^{-0.05t} = 0.2$, es decir, $t = \ln 4 / 0.05 \approx 27.7$ h. Si el calor eleva $k$ a 0,08 h⁻¹, la ventana se reduce a 17,3 h. El equipo de diseño redacta el requisito R9: *la pérdida de la dosificación deberá generar una alarma en menos de 15 minutos, con independencia de los informes de estado del propio controlador de dosificación*, porque un controlador comprometido podría informar de una operación normal. La EDO se convirtió en un requisito de tiempo de detección con margen.
+
+### 6.6 Actividad práctica
+
+Modifique el Lab 1 para incluir un caudal de entrada constante de 120 m³/h procedente de una única bomba superviviente y una fuga de primer orden de $0.01V$ m³/h. Integre con Euler con tres tamaños de paso y halle analíticamente el nivel de equilibrio haciendo $dV/dt = 0$ con la demanda sustituida por su media. Informe el nivel de equilibrio y compárelo con la capacidad y el piso del depósito. Con una bomba a 120 metros cúbicos por hora frente a una demanda media de 150, la existencia debe seguir bajando salvo que la fuga compense la diferencia, así que compruebe si su respuesta analítica es físicamente posible antes de confiar en ella. Después confirme que las ejecuciones de Euler convergen a medida que el paso se reduce. El sentido del ejercicio es la combinación: una comprobación analítica, un resultado numérico y una prueba de convergencia que coincidan entre sí.
+
+### 6.7 Errores comunes y límites
+
+- Usar un decaimiento exponencial cuando el proceso no es de primer orden.
+- Informar una solución numérica sin comprobación del tamaño del paso.
+- Ignorar que los parámetros (tasas de decaimiento, demanda) derivan con la temperatura y la estación.
+- Analizar la sensibilidad de un parámetro cada vez cuando los parámetros interactúan; para interacciones fuertes, use métodos globales ([Saltelli et al., 2008](https://doi.org/10.1002/9780470725184)).
+
+En el ejemplo del cloro, un equipo que usara todo el año la constante de decaimiento del tiempo fresco creería tener 27,7 horas cuando el verano deja unas 17. La alarma de 15 minutos de R9 se eligió teniendo en cuenta ese rango estacional, y por eso el requisito no depende de la constante exacta.
+
+### Ejercicios — capítulo 6
+
+**EX011 — De la constante de tiempo al requisito.** *Objetivo:* convertir la dinámica en un requisito de tiempo de detección. *Entradas:* §6.5. *Pasos:* (1) calcule la ventana con $k = 0.12$ h⁻¹; (2) si los operadores necesitan 4 h para restablecer la dosificación manualmente, calcule el último momento aceptable para la alarma; (3) redacte el requisito. *Evidencia esperada:* números y requisito. *Rúbrica:* 3 = ventana y margen correctos y un requisito verificable independiente del controlador; 2 = un desliz; 1 = solo números; 0 = nada.
+
+**EX012 — Estabilidad de Euler.** *Objetivo:* ver la inestabilidad numérica. *Entradas:* $dx/dt = -kx$, $k = 0.5$, $x_0 = 1$. *Pasos:* calcule cinco pasos de Euler con $h = 1$, $h = 3$ y $h = 5$ y compárelos con la solución exacta. *Evidencia esperada:* tabla y explicación. *Rúbrica:* 3 = valores correctos y explicación de la inestabilidad para $h > 2/k$; 2 = valores correctos, explicación débil; 1 = un solo tamaño de paso; 0 = nada.
+
+### Síntesis del capítulo
+
+Cuando un flujo depende de la existencia, escriba una EDO. Los sistemas lineales de primer orden se aproximan al equilibrio de forma exponencial con una constante de tiempo $\tau$; ese número se convierte en un requisito de detección y respuesta. Resuelva numéricamente con comprobaciones de convergencia y atención a la estabilidad. Use la sensibilidad para averiguar qué supuesto domina un margen, y diseñe una detección que no dependa del componente bajo sospecha.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Siga estudiando — capítulo 06 de 50
+
+[← Capítulo 05](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Probabilidad y estadística
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) aplicar la regla de Bayes a las alarmas y explicar el problema de la tasa base; (2) calcular la disponibilidad de caminos redundantes con y sin falla de causa común; (3) modelar eventos raros con la distribución de Poisson; y (4) resumir datos con una incertidumbre honesta, incluido cuándo desconfiar de una muestra pequeña. Se apoya en los capítulos 1–6 y prepara los capítulos 23 (análisis de fallas), 29 (medición) y 32 (confiabilidad).
+
+### 7.1 La probabilidad como modelo de la incertidumbre
+
+Una probabilidad es un número entre 0 y 1 asociado a un evento bajo un modelo. Los ingenieros usan tres lecturas: frecuencia a largo plazo (fallas de bombas por año en una flota), grado de creencia (la estimación de un experto sobre la capacidad de un adversario) y margen de diseño (una meta como una disponibilidad del 99,9 %). Sea explícito sobre cuál quiere decir; mezclarlas es la forma en que los registros de riesgos se vuelven ficción. Las reglas básicas: $P(A \cup B) = P(A) + P(B) - P(A\cap B)$; $P(A \cap B) = P(A)P(B\mid A)$; la independencia significa $P(B\mid A) = P(B)$.
+
+### 7.2 La regla de Bayes y el problema de la tasa base
+
+$P(H\mid E) = P(E\mid H)P(H)/P(E)$. Aplíquela a una alarma de intrusión: suponga que los ataques ocurren en el 0,1 % de las ventanas horarias, que el detector se activa en el 95 % de los ataques (tasa de verdaderos positivos) y en el 1 % de las ventanas benignas (tasa de falsos positivos). La probabilidad de que una alarma signifique un ataque es solo de alrededor del 8,7 %. La mayoría de las alarmas son falsas incluso con un detector «99 % preciso», porque las ventanas benignas superan con mucho a los ataques. Por eso los operadores aprenden a ignorar las alarmas, y por eso el diseño de alarmas debe informar la tasa de alarmas esperada y el **valor predictivo positivo**, no solo la exactitud. [Sommer y Paxson (2010)](https://doi.org/10.1109/SP.2010.25) analizan este y otros obstáculos relacionados para la detección de anomalías en redes operativas.
+
+### 7.3 Redundancia y causa común
+
+Si un camino de comunicaciones está disponible con probabilidad $a$ y los caminos fallan de forma independiente, $n$ caminos dan $1-(1-a)^n$. La independencia es el supuesto que falla en la práctica: los caminos que comparten un alimentador eléctrico, un proveedor, una configuración o una vulnerabilidad explotable fallan juntos. El **modelo del factor beta** asigna una fracción $\beta$ de la indisponibilidad de cada unidad a causas comunes que inutilizan todas las unidades a la vez. Con $a = 0.98$ y $\beta = 0.05$, dos caminos tienen una indisponibilidad ≈ 0,00136 en lugar de 0,0004: la causa común domina. En seguridad, una vulnerabilidad de software idéntica en ambos caminos es una causa común con $\beta$ cercano a 1 frente a un adversario que la conoce.
+
+### 7.4 Eventos raros: el modelo de Poisson
+
+Si los eventos llegan de forma independiente a una tasa media $\lambda$ por año, su número en un año sigue una distribución de Poisson: $P(N=k) = e^{-\lambda}\lambda^k/k!$. Con $\lambda = 0.5$ cortes largos de la red eléctrica por año, $P(N \ge 1) \approx 0.39$. Poisson supone una tasa constante e independencia; las tormentas, las campañas de ataques y el envejecimiento violan ambas cosas, así que trátelo como una primera aproximación. Para LRWA, un corte largo de la red eléctrica de más de cuatro horas es el evento que pone a prueba a la vez R5 y la reserva del hospital. Si los cortes se agrupan en tormentas, la cifra de Poisson subestima la probabilidad de dos cortes en pocos días, así que el equipo del TMRP la contrasta con los registros de cortes de la distribuidora antes de usarla en el árbol de fallas.
+
+### 7.5 Describir los datos con honestidad
+
+Informe un valor central con su dispersión (mediana y rango intercuartílico para datos asimétricos, como la duración de los cortes), el tamaño de la muestra y cómo se recogieron los datos. Un intervalo de confianza describe la incertidumbre de muestreo bajo un modelo; no dice nada del sesgo en lo que se registró. Las muestras pequeñas de eventos raros son especialmente traicioneras: cero fallas en 3 años de operación no significa riesgo cero. La «regla del tres» da una cota superior aproximada al 95 % de $3/n$ para una tasa cuando se observan 0 eventos en $n$ ensayos o unidades de tiempo.
+
+### 7.6 Ejemplo resuelto: ¿debe LRWA avisar al ingeniero de guardia? (sintético)
+
+El TMRP propone un detector de anomalías de red en el centro de control con las tasas de §7.2. Evaluado sobre ventanas horarias, avisaría unas 0,26 veces al día (aproximadamente una vez cada cuatro días) y alrededor del 91 % de los avisos serían falsos. El equipo decide: avisar solo cuando la alarma de red coincida con una anomalía del proceso (cambio de consigna inesperado o desequilibrio de caudales) y enviar las alarmas de red aisladas a una cola de revisión para el siguiente día hábil. La decisión se justifica por la tasa base, y su costo (una respuesta más lenta ante un ataque sigiloso que solo afecte a la red) queda anotado en el registro de riesgos.
+
+### 7.7 Actividad práctica: Lab 4
+
+```python
+# Lab 4 - base rates, redundancy and rare events (synthetic numbers, offline)
+import math
+prior, tpr, fpr = 0.001, 0.95, 0.01
+ppv = tpr * prior / (tpr * prior + fpr * (1 - prior))
+print(f"P(attack | alarm) = {ppv:.3f}")
+alarms_per_day = 24 * (tpr * prior + fpr * (1 - prior))
+print(f"expected alarms per day (hourly windows) = {alarms_per_day:.3f}")
+a = 0.98
+for n in (1, 2, 3): print(f"{n} independent paths at {a}: availability {1 - (1 - a) ** n:.6f}")
+beta = 0.05   # beta-factor common-cause share of unavailability
+q = 1 - a
+print(f"2 paths with beta={beta}: unavailability {(1 - beta) ** 2 * q ** 2 + beta * q:.6f}")
+lam = 0.5
+print(f"P(>=1 grid outage >4 h per year | lambda={lam}) = {1 - math.exp(-lam):.3f}")
+print(f"P(>=2) = {1 - math.exp(-lam) * (1 + lam):.4f}")
+```
+
+Salida esperada:
+
+```text
+P(attack | alarm) = 0.087
+expected alarms per day (hourly windows) = 0.263
+1 independent paths at 0.98: availability 0.980000
+2 independent paths at 0.98: availability 0.999600
+3 independent paths at 0.98: availability 0.999992
+2 paths with beta=0.05: unavailability 0.001361
+P(>=1 grid outage >4 h per year | lambda=0.5) = 0.393
+P(>=2) = 0.0902
+```
+
+Las dos primeras líneas repiten el resultado de la tasa base del ejemplo resuelto: menos de una alarma de cada diez sería un ataque real, y el detector avisaría aproximadamente una vez cada cuatro días. Las líneas de redundancia muestran con qué rapidez los caminos independientes mejoran la disponibilidad, y la línea del factor beta muestra cómo una causa común del cinco por ciento anula la mayor parte de esa ganancia. Las líneas de Poisson dan la probabilidad de al menos uno, y de al menos dos, cortes largos de la red eléctrica en un año con la tasa supuesta por LRWA.
+
+### 7.8 Errores comunes y límites
+
+- Informar la exactitud del detector sin la tasa base ni el valor predictivo.
+- Multiplicar disponibilidades como si fueran independientes cuando los caminos comparten causas.
+- Usar Poisson para eventos agrupados.
+- Tratar cero fallas observadas como probabilidad cero.
+- Estimaciones puntuales sin tamaño de muestra ni método de recogida.
+
+Cada error tiene un ejemplo en LRWA. Avisar al ingeniero de guardia ante cada alarma de red ignora la tasa base. Tratar los dos caminos LTE como independientes ignora su alimentador compartido. Usar Poisson para los cortes por tormentas oculta la agrupación, y tres años tranquilos en PS4 no prueban que las bombas no puedan fallar juntas.
+
+### Ejercicios — capítulo 7
+
+**EX013 — Sensibilidad a la tasa base.** *Objetivo:* ver cómo el valor predictivo depende de la prevalencia. *Entradas:* Lab 4. *Pasos:* calcule el VPP para probabilidades previas de 0,0001, 0,001 y 0,01 con el mismo detector, y para la previa de 0,001 con una TFP de 0,001. *Evidencia esperada:* cuatro valores y una recomendación sobre qué parámetro mejorar. *Rúbrica:* 3 = valores correctos y la idea de que reducir la TFP es lo que más importa con prevalencia baja; 2 = valores correctos; 1 = un valor; 0 = nada.
+
+**EX014 — Causa común en la telemetría.** *Objetivo:* cuantificar la diversidad. *Entradas:* dos caminos LTE de operadores distintos ($a = 0.98$ cada uno). *Pasos:* calcule la indisponibilidad para $\beta$ = 0, 0,05 y 0,2; nombre dos causas comunes reales que estos caminos podrían seguir compartiendo. *Evidencia esperada:* tres números y dos causas. *Rúbrica:* 3 = números correctos y causas compartidas plausibles (energía del sitio, torre o red de retorno compartidas, mismo firmware del módem); 2 = causas genéricas; 1 = un número; 0 = nada.
+
+### Síntesis del capítulo
+
+La probabilidad es un modelo; diga de qué tipo. La regla de Bayes hace que las tasas base sean decisivas para las alarmas; la redundancia solo funciona en la medida en que las fallas son independientes, y las causas comunes, incluidas las vulnerabilidades compartidas, suelen dominar. Poisson es un punto de partida para los eventos raros. Describa los datos con su dispersión, el tamaño de la muestra y el método de recogida, y nunca trate la ausencia de fallas observadas como prueba de seguridad.
+
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Siga estudiando — capítulo 07 de 50
+
+[← Capítulo 06](#ch-06) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Arquitectura de computadoras
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) describir cómo interactúan el procesador, la jerarquía de memoria y la E/S, y por qué esto importa para el control en tiempo real; (2) explicar la arquitectura de los controladores lógicos programables (PLC), las RTU y los controladores embebidos; (3) relacionar las características del hardware (niveles de privilegio, protección de memoria, arranque seguro, raíces de confianza en hardware) con las garantías de seguridad; y (4) explicar cómo las optimizaciones de desempeño, como las cachés y la especulación, crean vulnerabilidades. Se apoya en el capítulo 3 y prepara el capítulo 12 (sistemas operativos).
+
+### 8.1 El modelo de máquina
+
+Un procesador busca instrucciones en la memoria, las decodifica y las ejecuta, y lee y escribe datos en registros y en memoria. La memoria es una jerarquía (registros, cachés, memoria principal, almacenamiento), en la que cada nivel es más grande y más lento. Los dispositivos de E/S se conectan mediante buses e interrupciones; una interrupción suspende la ejecución normal para que el procesador atienda a un dispositivo. El **determinismo**, es decir, conocer el tiempo de peor caso de una operación, importa más en control que la velocidad media: una rutina de protección de bombas que suele tardar 1 ms pero en ocasiones tarda 50 ms por una avalancha de fallos de caché o por la recolección de basura puede incumplir su plazo.
+
+### 8.2 PLC, RTU y controladores embebidos
+
+Un PLC ejecuta un **ciclo de barrido**: leer las entradas, ejecutar el programa del usuario, escribir las salidas, realizar las comunicaciones y los diagnósticos, y repetir, a menudo cada 10–100 ms. Su programa se escribe en lenguajes normalizados en IEC 61131-3 (lógica de escalera, diagramas de bloques de funciones, texto estructurado). Una RTU está diseñada para sitios remotos: recoge mediciones, aplica una lógica sencilla y se comunica por enlaces de larga distancia, tolerando una conectividad intermitente. Ambos tienen una vida larga: un equipo instalado hoy puede funcionar entre quince y veinticinco años, de modo que las características de seguridad que elija ahora deben seguir siendo aceptables en la década de 2040. Muchos controladores heredados aceptan cambios de programa de cualquiera que pueda alcanzarlos por la red; Stuxnet explotó el camino desde una estación de ingeniería hasta la lógica del PLC, según el análisis de [Langner (2011)](https://doi.org/10.1109/MSP.2011.67).
+
+### 8.3 Soporte del hardware para la seguridad
+
+- Los **niveles de privilegio** separan el código del núcleo del código de usuario; una falla en el código de usuario no puede sobrescribir directamente el núcleo.
+- Las **unidades de protección de memoria** (MPU) y las **unidades de gestión de memoria** (MMU) imponen qué código puede acceder a qué memoria; la MPU es común en microcontroladores que carecen de una MMU completa.
+- El marcado de **no ejecución** impide que se ejecuten las regiones de datos.
+- El **arranque seguro** verifica una firma criptográfica en cada etapa del firmware antes de ejecutarla, anclada en una raíz de confianza inmutable (código en ROM o claves grabadas en fusibles). Protege contra la modificación persistente del firmware, no contra una imagen correctamente firmada pero vulnerable.
+- Los **módulos de plataforma confiable** y los elementos seguros almacenan las claves de modo que el software no pueda extraerlas.
+
+### 8.4 Cuando la velocidad crea filtraciones
+
+Las cachés y la ejecución especulativa hacen rápidos a los procesadores porque adivinan y conservan estado, y ese estado puede filtrarse. [Kocher et al. (2019)](https://doi.org/10.1109/SP.2019.00002) mostraron que la ejecución especulativa puede dirigirse para leer memoria a través de fronteras de protección (Spectre). [Kim et al. (2014)](https://doi.org/10.1109/ISCA.2014.6853210) mostraron que el acceso repetido a la DRAM puede invertir bits en filas adyacentes (Rowhammer). Estos problemas importan sobre todo donde el código no confiable comparte hardware con el código confiable (servidores virtualizados del centro de control, nube compartida) y menos en un PLC de propósito único. La lección de ingeniería: el hardware forma parte de la superficie de ataque, y el aislamiento que depende de hardware compartido debe justificarse.
+
+### 8.5 Ejemplo resuelto: elección de una plataforma de RTU (sintético)
+
+El TMRP compara dos RTU candidatas. *RTU-A:* madura, determinista, sin arranque seguro, actualizaciones de firmware sin firmar, cambios de programa autenticados solo con una contraseña compartida. *RTU-B:* arranque seguro con firmware firmado por el proveedor, autenticación basada en roles para los cambios de programa, almacenamiento de claves en hardware, pero una respuesta de peor caso a las peticiones de comunicación 200 ms más lenta y un producto nuevo con un historial de campo limitado. El equipo puntúa ambas frente a los requisitos: R1 (telemetría autenticada) necesita almacenamiento de claves, lo que favorece a B; R7 (alarma en menos de 60 s) la cumplen ambas, porque 200 ms es despreciable; la mantenibilidad durante 20 años favorece a un proveedor con un ciclo de vida de desarrollo seguro publicado. El registro de decisión selecciona B para los sitios nuevos y una pasarela para los sitios heredados con RTU-A, con un piloto para recoger datos de confiabilidad en campo antes del despliegue en toda la flota.
+
+### 8.6 Actividad práctica
+
+Para una familia de microcontroladores o de PLC de su elección, lea el manual público de seguridad del proveedor (o una hoja de datos) y complete una tabla: separación de privilegios, protección de memoria, arranque seguro, actualizaciones firmadas, almacenamiento de claves, programación autenticada. Marque cada una como «sí / no / configurable / desconocido» con la cita de su fuente. Use solo documentos públicos. Anote el título, la versión y la fecha del documento de cada entrada, porque las características de seguridad cambian entre versiones de firmware. Donde el manual no diga nada, marque la característica como desconocida en lugar de adivinar, y anote la pregunta que haría al proveedor. La tabla es la misma comparación que el equipo del TMRP hizo entre RTU-A y RTU-B, y muestra rápidamente si un producto puede admitir telemetría autenticada y almacenamiento de claves sin una pasarela.
+
+### 8.7 Errores comunes y límites
+
+- Equiparar «rápido» con «determinista».
+- Suponer que el arranque seguro impide la explotación de un firmware firmado.
+- Ignorar la vida útil de 20 años al elegir las características criptográficas y de actualización.
+- Tratar como absoluto el aislamiento por hardware en servidores compartidos.
+- Tratar el marketing del proveedor como evidencia; pida documentación y pruebe.
+
+La comparación de RTU muestra estos errores en la práctica. RTU-A es determinista pero no puede proteger claves, así que la velocidad por sí sola no la hace adecuada. El arranque seguro de RTU-B no detiene un cambio de lógica malicioso pero firmado legítimamente, y por eso el acceso de programación basado en roles figura junto a él. Ambas deben poder seguir recibiendo soporte en la década de 2040, y el piloto existe porque las afirmaciones del proveedor no son evidencia de campo.
+
+### Ejercicios — capítulo 8
+
+**EX015 — Presupuesto del ciclo de barrido.** *Objetivo:* razonar sobre el determinismo. *Entradas:* ciclo de barrido de un PLC de 20 ms nominales y 45 ms en el peor caso; un requisito de protección de bomba que exige disparar en menos de 100 ms desde una señal de aspiración baja, filtrada contra rebotes durante dos barridos consecutivos. *Pasos:* calcule la latencia de disparo en el peor caso (muestreo de la entrada justo después de una lectura, dos barridos para confirmar, escritura de la salida). *Evidencia esperada:* cálculo y conclusión. *Rúbrica:* 3 = peor caso correcto, incluido el retardo de muestreo, y juicio frente a los 100 ms; 2 = se omite el retardo de muestreo; 1 = solo el barrido nominal; 0 = nada.
+
+**EX016 — Lo que aporta el arranque seguro.** *Objetivo:* delimitar con precisión un control. *Entradas:* RTU-B de §8.5. *Pasos:* enumere dos ataques que el arranque seguro impide, dos que no impide y el control complementario para cada uno de estos últimos. *Evidencia esperada:* tabla. *Rúbrica:* 3 = alcance exacto (impide el firmware persistente sin firmar; no impide las explotaciones en tiempo de ejecución ni los cambios de lógica maliciosos mediante la programación legítima), controles adecuados; 2 = un error; 1 = genérico; 0 = nada.
+
+### Síntesis del capítulo
+
+La arquitectura determina tanto la temporización como la confianza. El control necesita el desempeño del peor caso, no el medio. Los PLC y las RTU son máquinas longevas basadas en ciclos de barrido cuyas características de seguridad deben seguir siendo adecuadas dentro de décadas. Los mecanismos de hardware (privilegio, protección de memoria, arranque seguro, almacenamiento de claves) dan garantías específicas y limitadas; las características de desempeño pueden filtrar información a través de las fronteras. Indique exactamente contra qué protege cada mecanismo.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Siga estudiando — capítulo 08 de 50
+
+[← Capítulo 07](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 09 →](../../en/book/MANUSCRIPT.md#ch-09)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -367,6 +755,36 @@ Cada resultado muestra una respuesta defendible. Los resultados numéricos se ob
 **EX005.** Energía diaria: 26 W × 24 h + 15 W × 10 h = 774 Wh en la carga. Divida por la eficiencia 0,85, la fracción utilizable 0,6 y el factor de fin de vida 0,8: 774 / (0,85 × 0,6 × 0,8) ≈ 1.897 Wh nominales, ≈ 79 Ah a 24 V. Se necesita un banco estándar de 80 Ah o mayor; el banco de 65 Ah de §3.5 ya no cumple R5 en invierno.
 
 **EX006.** Respuesta modelo: «El cifrado LTE protege la confidencialidad y, según la configuración, la integridad del tráfico en el tramo de radio; no hace nada por la disponibilidad. Un inhibidor de señal o una caída del operador reducen la relación señal/ruido por debajo de lo que el enlace necesita, y ninguna clave lo impide. Además, el cifrado termina en el operador, de modo que no autentica nuestras RTU ante nuestro SCADA de extremo a extremo. Para la disponibilidad: (1) diseñar los sitios para que funcionen en modo automático local durante 72 h sin telemetría y alarmar la pérdida de enlace en el SCADA en menos de 60 s; (2) ofrecer un camino diverso (un segundo operador con otras torres y otra alimentación, o satélite) para los sitios más críticos; (3) monitorear la calidad del enlace para distinguir una inhibición de señal de una caída.»
+
+### Capítulo 4
+
+**EX007.** `01 06 00 01 00 03` → bytes de CRC `98 0B` (trama `01 06 00 01 00 03 98 0b`). Cambiar el último byte de datos a `02` da `59 CB`. Un atacante en la línea serie calcula el CRC de una trama falsificada exactamente igual que el maestro legítimo, porque el algoritmo no tiene ningún secreto; el CRC solo detecta la corrupción accidental.
+
+**EX008.** Mueva `len(resp) < 5` y una comprobación de longitud completa (`len(resp) == 5 + 2*count` para respuestas normales, 5 para excepciones) antes del CRC; después, el CRC; después, `if resp[0] == 0: return "reject: broadcast"` y la comprobación de unidad; después, función y número de bytes; y, por último, el rango. Pruebas: trama truncada → "reject: shape"; trama con unidad 0 y CRC válido → "reject: broadcast". Todos los casos originales siguen generando un rechazo. (Las peticiones de difusión no reciben respuesta en Modbus; una respuesta de la unidad 0 está malformada.)
+
+### Capítulo 5
+
+**EX009.** Ejemplo: «R10 — El sistema deberá mantener el suministro de agua tratada a St Brenna's dentro de la presión contractual durante la pérdida de cualquier estación de bombeo individual durante al menos 24 h (análisis + ensayo)». «R7 — Las alarmas prioritarias deberán mostrarse en las pantallas de los operadores en menos de 60 s desde el evento de campo para el 99 % de los eventos, en una medición de 30 días (prueba)». «R8 — Los registros de seguridad deberán reenviarse fuera del equipo en menos de 5 min y protegerse en su integridad con anclas diarias guardadas fuera de la zona de control; la modificación de cualquier registro almacenado deberá poder detectarse (prueba)».
+
+**EX010.** Operador: «La telemetría de PS4 puede quedarse a oscuras tras unas 6 h sin red eléctrica. Si se pierde la telemetría de PS4 durante un corte de energía, envíe al técnico de guardia a leer los manómetros locales al cumplirse las 4 h». Directivo: «La batería de telemetría de PS4 dura unas 6 h al fin de vida frente a un requisito de 24 h (R5). Durante un corte largo perderíamos la visibilidad, no el suministro, en la alimentación del hospital. Opciones: sustituirla por un banco de 80 Ah (≈ costo de una visita al sitio más el equipo, dos semanas) o añadir una toma para un pequeño generador; medida provisional: regla de envío del técnico». Regulador: «Brecha: R5 (24 h de autonomía de la telemetría) no se cumple en PS4 (6 h medidas al fin de vida). Procedimiento compensatorio vigente desde [fecha]; corrección prevista para [fecha]».
+
+### Capítulo 6
+
+**EX011.** Con $k = 0.12$ h⁻¹: ventana = ln 4 / 0,12 ≈ 11,6 h. Con 4 h para el restablecimiento manual, la alarma debe llegar en menos de ≈ 7,6 h; con un margen de seguridad, especifique mucho menos. Requisito: «La pérdida de la dosificación de cloro deberá alarmarse en la sala de control en menos de 30 min, detectada por un analizador y un registrador independientes del controlador de dosificación». Los 30 min dejan un margen amplio incluso con el decaimiento del peor caso en tiempo cálido.
+
+**EX012.** Exacta: 0,6065; 0,3679; 0,2231; 0,1353; 0,0821 en t = 1…5. Euler h = 1: 0,5; 0,25; 0,125; 0,0625; 0,0312 (estable, subestima). h = 3 (factor −0,5): −0,5; 0,25; −0,125; 0,0625; −0,0312: oscila de signo, físicamente sin sentido aunque decae. h = 5 (factor −1,5): −1,5; 2,25; −3,375; 5,06; −7,59: inestable. Euler explícito sobre $x' = -kx$ multiplica por $(1 - kh)$ en cada paso; $|1 - kh| > 1$ cuando $h > 2/k = 4$.
+
+### Capítulo 7
+
+**EX013.** VPP: 0,009 (previa 0,0001), 0,087 (0,001), 0,490 (0,01); con previa 0,001 y TFP 0,001: 0,487. Reducir diez veces la tasa de falsos positivos mejora el valor predictivo aproximadamente tanto como multiplicar por diez la prevalencia; con tasas base bajas, la TFP es el parámetro que vale la pena mejorar.
+
+**EX014.** Indisponibilidad: β = 0 → 0,0004; β = 0,05 → 0,00136; β = 0,2 → 0,00426. Causas compartidas: energía y batería del sitio; mástil de antena o gabinete; mismo modelo de módem y mismo firmware; red de retorno compartida o acuerdos de itinerancia entre operadores; misma plataforma de aprovisionamiento de SIM.
+
+### Capítulo 8
+
+**EX015.** Peor caso: la señal de aspiración baja aparece justo después de una lectura de entradas, así que se ve por primera vez en el barrido siguiente (hasta 45 ms después); la confirmación requiere un segundo barrido consecutivo (45 ms); la salida se escribe al final de ese barrido. Peor caso ≈ 45 + 45 + 45 = 135 ms (más el retardo del módulo de salida), lo que incumple los 100 ms. Corrección: reducir el barrido de peor caso, filtrar los rebotes con un temporizador en una tarea más rápida o usar un disparo cableado.
+
+**EX016.** El arranque seguro impide: (1) la instalación persistente de firmware sin firmar o modificado; (2) arrancar una imagen degradada a una versión anterior, si se aplica la protección contra reversión. No impide: (1) la explotación en tiempo de ejecución de una vulnerabilidad del firmware firmado → parches, validación de entradas, restricción de red; (2) cambios de lógica maliciosos pero legítimos a través de la interfaz de ingeniería → programación autenticada y basada en roles, con detección de cambios y registro.
 
 <a id="glossary"></a>
 
