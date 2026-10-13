@@ -2092,6 +2092,8 @@ You will (1) choose metrics for AI-security properties (attack success rate, rob
 
 Always pair a security metric with a cost metric measured on the same items.
 
+Pairing prevents an easy win: any system can reach zero attack success by refusing every request, and only a cost metric on the same items reveals it. Measuring both on one set also lets the two be read together, item by item.
+
 ### 29.2 Uncertainty
 
 Use Wilson intervals for rates, bootstrap for averaged metrics, and paired bootstrap for comparisons. Report seeds and their spread.
@@ -3488,17 +3490,25 @@ You will (1) plan and run a controlled failure-and-recovery trial for an AI syst
 
 A recovery plan that has never been exercised is a hypothesis. A trial tests whether people, tools and procedures detect, contain and recover from realistic failures and attacks within target times.
 
+Plans assume things that may not hold under pressure: that the on-call engineer can find the runbook, that credentials can be revoked quickly, that a clean model version is available. A trial checks those assumptions with real people and tools in a safe setting. Failures found in a trial cost an afternoon; the same failures found in an incident cost much more, and the trial's timings become the evidence that recovery targets are realistic.
+
 ### 47.2 Planning
 
 Define scenarios (for example: poisoned training batch discovered; injected document causes tool proposals; signed model fails verification at deployment; monitoring service down during an extraction attempt), objectives, safety rules, observers, success criteria and a stop condition. Run in a staging environment with synthetic data. Inform participants of the exercise window but not the scenario details, so detection is realistic.
+
+Keeping scenario details from participants makes detection times meaningful. A stop condition, such as any sign of impact outside staging, ends the trial at once and is agreed in advance with the system owners.
 
 ### 47.3 Metrics
 
 Time to detect, time to contain, time to recover, correctness of actions, communication quality and data loss. Compare with targets in requirements (for example, contain tool misuse within 15 minutes).
 
+Times are taken from logs rather than memory, so they can be checked. Correctness of actions asks whether responders did the right thing, not just something quickly: revoking the right credential matters more than revoking any credential fast. Communication quality covers whether managers and affected users were told what they needed to know in time, which observers assess against an agreed checklist.
+
 ### 47.4 After-action review
 
 Within a week, hold a blameless review: what happened, what worked, what did not, and actions with owners. Update runbooks, monitoring and design.
+
+Blameless does not mean without accountability: actions have owners and dates, and the next trial checks whether they were done. The focus is on conditions that made mistakes likely, such as an unclear runbook step or a missing alert, because fixing those helps whoever is on call next time. A short written summary keeps the lessons available after the people involved have moved on.
 
 ### 47.5 Worked example (synthetic NRS case)
 
@@ -3510,6 +3520,7 @@ Sam's team ran three scenarios on Bulletin Gate and Wrench in staging. Scenario 
 - Blame-focused reviews that discourage reporting.
 - No follow-up on actions.
 
+A trial that only tests whether software fails over misses the slow phone call, the unclear runbook and the engineer who cannot find a password. Reviews that look for someone to blame teach people to hide problems, which makes the next incident harder to detect. Actions without follow-up mean the same gaps appear in next year's trial; Scenario C's heartbeat alert was checked in the next trial before any other result was accepted.
 
 ### 47.6b Sharing what the trial taught
 
@@ -3541,6 +3552,8 @@ You will (1) assemble an evidence dossier that supports a safety-and-security ca
 
 The dossier is the complete, organised body of evidence that the system meets its requirements and that its residual risks are understood and accepted. It supports the safety-and-security case and is what an assessor, client or regulator would examine.
 
+The dossier is assembled throughout the project, not at the end. Each test report, review and trial result is filed with its versions as it is produced, so the final task is organising and linking rather than searching. An assessor should be able to start from any claim and reach the evidence for it in a few steps, and start from any piece of evidence and see which claim it supports.
+
 ### 48.2 Structure
 
 1. Summary: system, intended use, claims, residual risks, recommendation.
@@ -3552,6 +3565,8 @@ The dossier is the complete, organised body of evidence that the system meets it
 7. Configuration: versions and hashes of code, models, data, prompts.
 8. Documentation: model cards, datasheets, runbooks.
 9. Residual-risk register with owners and review dates.
+
+The order follows an assessor's questions. The summary answers what is claimed, the case why it should be believed, and the matrix where to check.
 
 ### 48.3 Integrity and reproducibility
 
@@ -3588,19 +3603,27 @@ model.bin       MISMATCH
 tokenizer.json  OK
 ```
 
+A manifest shows that evidence was not changed after it was produced; reproducibility shows that it can be produced again. Recording seeds, environments and versions makes reruns possible years later, for example when a regulator asks about a past release. Version control adds a history of when each piece of evidence was added and by whom, which helps an assessor understand how the dossier grew.
+
 ### 48.4 Honest residual risk
 
 List what was not tested, what failed and was accepted, and what depends on assumptions (for example, "technicians read approval screens"). Regulators and clients trust dossiers that state limits.
 
+Assumptions deserve particular care because they are invisible until they fail. Bulletin Gate assumes supplier bulletins arrive through an authenticated channel; if that assumption breaks, an attacker could send bulletins directly. Writing the assumption down, with what would show it no longer holds, turns it into something the operators can monitor. A residual-risk entry also names who accepted the risk and when it will be reviewed.
+
 ### 48.5 Worked example (synthetic NRS case)
 
 Sam's Bulletin Gate dossier had 41 requirements, 39 passed, one passed after a fix and re-test, and one (image attachments) was formally out of scope. Residual risks included adaptive attacks beyond the tested set, dependence on supplier channel authentication and reviewer attention. The evidence manifest listed 312 files with SHA-256 hashes; an assessor reran the evaluation harness from the dossier and reproduced the headline numbers within their intervals.
+
+The reproduction by the assessor is the dossier's strongest evidence, since it shows the results came from the recorded system and not from an unrepeatable run.
 
 ### 48.6 Errors and limits
 
 - Dossiers that collect documents without linking them to claims.
 - Missing versions and hashes.
 - Residual-risk sections that say "none".
+
+A folder of documents without links to claims leaves the assessor to build the argument, and they may build a different one. Missing versions mean nobody can tell which system a result describes. A residual-risk register that says 'none' is never true and suggests the team did not look. Sam's dossier template refuses to build if any claim has no evidence link or any evidence file has no hash.
 
 ### Exercises
 
@@ -3628,27 +3651,39 @@ You will (1) write an engineering thesis that presents the problem, design, impl
 
 Introduction (problem, client, objectives); background (AI-security concepts and frameworks: NIST AI RMF and AI 100-2 E2025, OWASP LLM 2025, MITRE ATLAS, relevant regulation such as the EU AI Act); requirements and threat model; design and alternatives; implementation; verification and validation; recovery trial; discussion (what worked, what did not, why); limitations and future work; conclusion; appendices (dossier summary, traceability matrix).
 
+The structure follows the engineering work, so the dossier supplies most of the content. Background is kept short and selective, covering only what readers need to understand the design. The discussion explains why things worked or failed, which is where the thesis adds understanding beyond the dossier's list of results.
+
 ### 49.2 Positioning
 
 Explain how your design relates to known patterns and research: for prompt injection, Greshake et al. (arXiv:2302.12173) on indirect injection and Chen et al. (arXiv:2402.06363) on structured queries; for evaluation discipline, Carlini et al. (arXiv:1902.06705). State what is new in your engineering context even if the ideas are known.
+
+Engineering theses rarely invent new attacks or defences. Their contribution is usually applying known ideas to a specific setting, combining them in a useful way and measuring what happens. Saying so plainly is more convincing than claiming novelty. For Bulletin Gate, the quarantine pattern is known; the contribution is a schema with no free text, its measured effect on adaptive attacks and its accuracy cost.
 
 ### 49.3 Critical evaluation
 
 Evaluate against requirements and stakeholder needs, compare with alternatives, and discuss threats to validity: synthetic data, limited adaptive attacks, small user studies. Avoid marketing language.
 
+Critical evaluation asks whether the evidence supports the claims and what else could explain the results. Synthetic data may be easier than real bulletins; an adaptive set written by one team in two weeks may miss attacks a determined adversary would find. Comparing with alternatives, such as a classifier-only design, shows whether the chosen approach was worth its cost. Words like 'secure' or 'robust' without conditions are replaced by measured statements.
+
 ### 49.4 Writing for two audiences
 
 The body is for assessors; an executive summary and a two-page practitioner note translate the results into decisions. Keep numbers consistent across all of them.
 
+Executives want the decision and its risk; practitioners want to know whether to adopt the method and what it costs. The body keeps the full argument for assessors. Consistent numbers matter because a reader who finds a different figure in the summary than in the results will doubt both. Sam generates key figures from one results file so all three documents quote the same values.
+
 ### 49.5 Worked example (synthetic NRS case)
 
 Sam's thesis concluded that Bulletin Gate eliminated instruction text from records reaching Wrench in all 300 adaptive cases (95% upper bound ≈ 1%) with a 1.1-point accuracy cost, and that the main remaining risks were outside the gate: approval behaviour and supplier channel authentication. Sam's limitations section noted that adaptive attacks were written by one other student team in two weeks and that real bulletins might contain formats not represented in the synthetic corpus.
+
+Pointing to risks outside the gate is part of honest evaluation: the gate solved its own problem, but the system's security still depends on people and channels the thesis did not change.
 
 ### 49.6 Errors and limits
 
 - Theses that narrate work without evaluating it.
 - Inconsistent numbers across summary and body.
 - Overstated novelty.
+
+A thesis that narrates what the team did, week by week, leaves the reader to judge whether it worked. Inconsistent numbers suggest careless work even when the underlying results are sound. Overstated novelty invites examiners to find prior work and discount the rest. Sam's final check compares every figure in the summary with the results file and every claim of contribution with the positioning chapter.
 
 ### Exercises
 
@@ -3676,13 +3711,19 @@ You will (1) present and defend the capstone and thesis before an examination pa
 
 Twenty-five minutes: problem and client (3), requirements and threat model (4), design and alternatives (5), verification, validation and recovery trial results (8), residual risks and limitations (3), conclusions and next steps (2). Show one slide that states the main claim with its evidence and bound.
 
+The allocation gives most time to results, since that is where the panel decides whether the claims hold. The main-claim slide gives the audience something precise to test: for Bulletin Gate, zero instruction strings in 300 adaptive cases, an upper bound near 1%, and a 1.1-point accuracy cost. Everything else in the talk supports or qualifies that slide.
+
 ### 50.2 Likely questions
 
 "What happens if the quarantined model is replaced by a stronger one that follows injected instructions better?" "Why not just use a classifier?" "What is your residual risk and who accepted it?" "How would this hold under the EU AI Act for a high-risk system?" "What did the red team find and what did you change?" "What would you do with twice the time?" Answer directly, show evidence, state the limit.
 
+Preparing written answers to these in advance shows where the evidence is thin, before the panel finds it.
+
 ### 50.3 Professional development
 
 AI security changes quickly. Plan how you will stay current: follow NIST, OWASP and MITRE ATLAS updates; read key venues; participate in authorised red-team exercises and community projects; maintain an evaluation portfolio; and keep ethical commitments — authorised testing, coordinated disclosure, honest claims.
+
+Staying current is planned like any other work: a few hours a month reading updates, a record of what changed and whether it affects systems one maintains, and occasional participation in authorised exercises to keep skills honest. An evaluation portfolio of reproducible experiments shows employers what a graduate can do. Ethical commitments become habits through repetition, so they are practised on every project, not saved for difficult moments.
 
 ### 50.4 Worked example (synthetic NRS case)
 
@@ -3738,6 +3779,8 @@ The panel also asked Sam to rerun the injection lab live to illustrate why exter
 - Spending most of the time on background.
 - Claims that depend on the model behaving well.
 - Legal conclusions beyond competence.
+
+A defence that hides limitations invites the panel to search for them, while one that states them shows judgement. Answering a question that was not asked, or arguing with the panel, wastes the short time available. Claiming legal conclusions is outside an engineer's role; pointing to legal counsel, as Sam did on the AI Act, is the correct answer. The correction requested, a clearer owner table, is small because the residual risks themselves were already stated.
 
 ### Exercises
 
