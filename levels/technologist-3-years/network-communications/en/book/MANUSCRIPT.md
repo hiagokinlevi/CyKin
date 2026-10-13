@@ -443,6 +443,8 @@ To show improvement, Tomás measures before changes and again afterwards. Before
 
 Tomás reports indicators in a short table with the before value, the after value, the target and a one-line comment. He adds sample sizes and dates. He avoids percentages for very small counts, writing "2 of 2 switches" rather than "100 percent". The report is shared with Gareth and the head teacher monthly during the placement. Simple, honest reporting builds trust and lets the school see progress without needing technical expertise, while still giving technical readers the detail they need.
 
+Writing 2 of 2 switches also shows the reader how little evidence lies behind the figure.
+
 ### Worked example
 
 Before values: thirty reachable zone pairs, four unapproved services, thirty-nine leftover accounts and two Telnet switches.
@@ -1171,6 +1173,8 @@ changed lines: 2
 ### 22.3 Reading the drift
 
 The synthetic comparison of the library switch's approved and running configuration shows two changes. Port 2 moved from the student zone to the staff zone, and Telnet has been re-enabled. Either could have a good explanation, such as a temporary fix, but neither went through change control. Gareth checks: a teacher asked for a staff connection in the library, and Telnet was enabled by mistake during a firmware update. Port 2 is approved with a change record; Telnet is disabled again.
+
+Recording the cause of each change also shows that firmware updates need a configuration check afterwards.
 
 ### 22.4 Automating safely
 

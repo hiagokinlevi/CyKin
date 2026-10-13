@@ -118,6 +118,8 @@ You will (1) survey current research on network policy, detection and zero trust
 
 Research on firewall policy has moved from counting errors to analysing policies formally. Tools compare rules to find shadowing and redundancy, and studies such as Wool (2004) show that error counts grow with rule-base size. NIST SP 800-41 Rev. 1 recommends regular policy review, documented rule purposes and removal of unneeded rules, but gives little evidence on which review methods work. That gap between guidance and evidence is where Ines locates her contribution: an evaluated review procedure rather than another detection algorithm.
 
+Her study therefore measures what reviewers find and miss under a defined procedure, rather than how many rule errors a tool can count.
+
 ### 2.2 Detection research
 
 Network intrusion detection has a long research history, from Paxson's Bro system in 1999 to statistical and machine learning methods. Sommer and Paxson (2010) argued that machine learning often struggles in this setting because attacks are rare, traffic is diverse and errors are costly. Axelsson (2000) showed how low base rates turn even accurate detectors into sources of many false alarms. Ines reads these works because policy hygiene and detection interact: a cleaner rule base makes alerts easier to interpret and reduces the space detectors must cover.

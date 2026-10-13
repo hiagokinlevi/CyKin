@@ -108,6 +108,8 @@ Internet routing relies on BGP, in which networks announce the address blocks th
 
 RFC 2827, known as BCP 38, recommends that networks drop packets from customers whose source addresses do not belong to those customers. This ingress filtering limits spoofed traffic, which is used to hide attackers and amplify denial-of-service attacks. It costs the filtering network little but mostly benefits others, which is why adoption has been uneven. SP 800-189 repeats the recommendation. Fenwick Valley filters business customers with static addresses but not residential customers, because staff worried about breaking unusual customer setups years ago.
 
+Extending filtering to residential customers would therefore need tests of those unusual setups, not just a change of policy.
+
 ### 2.4 Gap analysis
 
 Marta compares the provider's state with current guidance. Gaps include IKEv1 on three peers, pre-shared keys on five, published authorisations but no validation of received routes, and incomplete ingress filtering. She notes strengths too: good inventory of network devices, central logging and a capable operations team. A gap analysis is more useful when it lists strengths as well as weaknesses, because strengths show what the organisation can build on and help prioritise changes that fit existing skills and tools rather than requiring new ones.

@@ -336,6 +336,8 @@ You will (1) explain IP addressing and subnets; (2) use CIDR notation; (3) check
 
 An IPv4 address has 32 bits, usually written as four decimal numbers. CIDR notation, such as 10.20.1.0/25, gives a network address and the number of bits fixed as the network prefix; the remaining bits identify hosts. A /24 leaves eight host bits, 256 addresses; a /25 leaves seven, 128 addresses. Two addresses in each block are traditionally reserved, for the network itself and broadcast, so a /25 has 126 usable hosts. Private ranges such as 10.0.0.0/8 are used inside organisations and are not routed on the internet.
 
+So the block 10.20.1.0/25 runs from 10.20.1.0 to 10.20.1.127: hosts take .1 to .126, and .127 is the broadcast address.
+
 ### 7.2 Planning subnets for groups
 
 Priya proposes one subnet per group for a clinic: staff, clinical devices, guest wireless and network management. Each is sized for current devices plus growth, rounded up to a power of two. Management gets a small /28 because only switches and access points live there. Separate subnets do not by themselves stop traffic, since routers forward between them, but they give each group a distinct address range that firewall rules can refer to, which is the foundation for any segmentation design.
@@ -1413,6 +1415,8 @@ Testing checks behaviour by sending traffic; verification also checks that the c
 ### 27.2 DNS checks
 
 Name resolution is a quiet but important dependency. Priya verifies that each group uses the intended DNS server, that the clinic's internal names resolve only internally, and that external queries go through the provider's resolver rather than directly to arbitrary servers. NIST SP 800-81-2 offers guidance on secure DNS deployment. Controlling DNS supports security in two ways: it prevents some malware from using its own resolvers, and DNS logs show which names devices look up, which can reveal infections early.
+
+A clinic device that suddenly queries an unfamiliar external resolver is therefore worth investigating, because the bypass itself is a signal.
 
 ### 27.3 Configuration drift
 
