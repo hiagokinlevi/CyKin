@@ -28,7 +28,7 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [serie I
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) · [31](../../en/book/MANUSCRIPT.md#ch-31) · [32](../../en/book/MANUSCRIPT.md#ch-32) · [33](../../en/book/MANUSCRIPT.md#ch-33) · [34](../../en/book/MANUSCRIPT.md#ch-34) · [35](../../en/book/MANUSCRIPT.md#ch-35) · [36](../../en/book/MANUSCRIPT.md#ch-36) · [37](../../en/book/MANUSCRIPT.md#ch-37) · [38](../../en/book/MANUSCRIPT.md#ch-38) · [39](../../en/book/MANUSCRIPT.md#ch-39) · [40](../../en/book/MANUSCRIPT.md#ch-40) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](../../en/book/MANUSCRIPT.md#ch-31) · [32](../../en/book/MANUSCRIPT.md#ch-32) · [33](../../en/book/MANUSCRIPT.md#ch-33) · [34](../../en/book/MANUSCRIPT.md#ch-34) · [35](../../en/book/MANUSCRIPT.md#ch-35) · [36](../../en/book/MANUSCRIPT.md#ch-36) · [37](../../en/book/MANUSCRIPT.md#ch-37) · [38](../../en/book/MANUSCRIPT.md#ch-38) · [39](../../en/book/MANUSCRIPT.md#ch-39) · [40](../../en/book/MANUSCRIPT.md#ch-40) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
 
@@ -1391,7 +1391,385 @@ Un buen plan de controles de TO cubre los siete requisitos fundamentales, pregun
 
 ### Siga estudiando — capítulo 24 de 40
 
-[← Capítulo 23 (borrador)](#ch-23) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 25 (borrador) →](../../en/book/MANUSCRIPT.md#ch-25)
+[← Capítulo 23 (borrador)](#ch-23) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 25 (borrador) →](#ch-25)
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Laboratorio I
+
+### Resultados de aprendizaje
+
+Usted podrá (1) ejecutar un experimento reproducible de detectores con semillas fijas; (2) comparar una banda fija con un detector CUSUM en falsas alarmas, detección y retardo; (3) comunicar resultados con sus denominadores; y (4) relacionar los resultados con la crítica de la evaluación de Urbina et al. (2016).
+
+### 25.1 El experimento
+
+El laboratorio simula la temperatura de impulsión de LDHP a 90 °C con ruido gaussiano (σ = 1 °C). En las ejecuciones con ataque, a partir de la muestra 100 una rampa lenta añade 0,08 °C por muestra: una deriva sigilosa del punto de consigna en el espíritu de ATT&CK for ICS T0836. El detector de banda da la alarma cuando la lectura sale de 90 ± 3,5 °C. CUSUM acumula las desviaciones positivas menos una holgura de 0,5 °C y da la alarma por encima de 12.
+
+```python
+"""Lab 25: compare a fixed band and a CUSUM detector on synthetic supply temperature."""
+import random
+def run(seed, attack):
+    rnd = random.Random(seed); s = 0.0; band = cus = None
+    for t in range(200):
+        x = 90 + rnd.gauss(0, 1.0) + (0.08 * (t - 100) if attack and t >= 100 else 0)
+        if band is None and abs(x - 90) > 3.5: band = t
+        s = max(0.0, s + (x - 90) - 0.5)
+        if cus is None and s > 12: cus = t
+    return band, cus
+fa_b = sum(run(s, False)[0] is not None for s in range(40)); fa_c = sum(run(s, False)[1] is not None for s in range(40))
+det = [run(1000 + s, True) for s in range(40)]
+db = [b for b, _ in det if b is not None and b >= 100]; dc = [c for _, c in det if c is not None and c >= 100]
+print(f"band : false alarms {fa_b}/40, detections {len(db)}/40, mean delay {sum(b-100 for b in db)/max(1,len(db)):.1f}")
+print(f"cusum: false alarms {fa_c}/40, detections {len(dc)}/40, mean delay {sum(c-100 for c in dc)/max(1,len(dc)):.1f}")
+```
+
+Ejecútelo con `python3 lab_detect.py`. Salida verificada:
+
+```text
+band : false alarms 9/40, detections 37/40, mean delay 28.8
+cusum: false alarms 0/40, detections 40/40, mean delay 23.1
+```
+
+Con σ = 1 °C, los límites de ±3,5 °C de la banda están a 3,5 desviaciones típicas, así que las falsas alarmas son raras por muestra, pero no por ejecución de 200 muestras.
+
+### 25.2 Interpretar la salida
+
+En 40 ejecuciones tranquilas, la banda dio falsas alarmas en 9 ejecuciones —con σ = 1 °C, una sola muestra más allá de 3,5 σ es rara, pero en 200 muestras por ejecución ocurre—, mientras que CUSUM no dio ninguna. Frente a la rampa, CUSUM detectó las 40 ejecuciones con un retardo medio de 23,1 muestras; la banda detectó 37 de 40 (contando solo las alarmas en la muestra 100 o después) con un retardo medio de 28,8. Como la banda también se dispara con el ruido, algunas de sus «detecciones» son desviaciones afortunadas del ruido.
+
+Las cotas de Wilson concretan la comparación: las 9 ejecuciones con falsa alarma de 40 de la banda dan aproximadamente entre un 12 % y un 38 %.
+
+### 25.3 Comunicar con honestidad
+
+Escriba: «CUSUM 0/40 ejecuciones con falsa alarma (cota superior de Wilson al 95 % ≈ 8,8 %), 40/40 detecciones, retardo medio de 23,1 muestras, semillas 0–39 tranquilas y 1000–1039 con ataque». No escriba «CUSUM es perfecto». Urbina et al. preguntarían además qué rampa podría sostener un atacante por debajo del umbral de CUSUM: una pendiente menor podría evadirlo durante mucho más tiempo. La línea de la banda debe comunicarse de la misma forma: «banda 9/40 ejecuciones con falsa alarma (intervalo de Wilson al 95 % de aproximadamente un 12 % a un 38 %), 37/40 detecciones en la muestra 100 o después, retardo medio de 28,8 muestras». El seguimiento de Maya, que reduce la pendiente a la mitad, a 0,04 °C por muestra, con las mismas semillas, responde a la pregunta de Urbina para un punto de la curva.
+
+### Ejemplo resuelto (LDHP sintética)
+
+Maya reduce la pendiente del ataque a la mitad, a 0,04 °C/muestra, en una copia del script y registra el cambio en el retardo, conservando las semillas. Así convierte un resultado en una curva y muestra el compromiso del atacante entre velocidad y sigilo.
+
+> **Caso sintético — Lakeside District Heating Plant.** Todos los datos son simulados; las semillas hacen reproducible la salida.
+
+### Errores y límites
+
+El ruido gaussiano e independiente es optimista. Los umbrales se fijaron a mano sobre la misma familia de datos con la que se evalúan.
+
+### Ejercicios — capítulo 25
+
+- **EX073 — Leer las ejecuciones con falsa alarma.** Indique el recuento de falsas alarmas del detector de banda y dé una cota superior al 95 % para el de CUSUM. *Rúbrica:* 3 = 9/40 la banda; CUSUM 0/40 con una cota superior de ≈7,5–8,8 %; 2 = uno; 1 = «CUSUM 0 %»; 0 = nada.
+- **EX074 — ¿Para qué el término de holgura?** Explique el papel de la holgura de 0,5 °C en CUSUM. *Rúbrica:* 3 = resta el ruido esperado para que la suma tienda a cero en operación normal y solo crezca ante un desplazamiento sostenido; 2 = parcial; 1 = «reduce las alarmas»; 0 = nada.
+- **EX075 — Aplicar la crítica del sigilo.** Describa un experimento adicional inspirado en Urbina et al. *Rúbrica:* 3 = barrer la pendiente/el tamaño del ataque para encontrar el mayor impacto no detectado dentro de una ventana de tiempo; 2 = variar el umbral; 1 = solo más semillas; 0 = nada.
+
+### Síntesis del capítulo
+
+Un resultado de laboratorio es un recuento sobre semillas con cotas y un modelo de atacante; cambiar el atacante es el siguiente experimento, no una ocurrencia tardía.
+
+### Siga estudiando — capítulo 25 de 40
+
+[← Capítulo 24 (borrador)](#ch-24) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 26 (borrador) →](#ch-26)
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Seguridad de TO, IoT y sistemas ciberfísicos: métodos II
+
+### Resultados de aprendizaje
+
+Usted podrá (1) aplicar un modelado de amenazas al estilo STRIDE a un diagrama de flujo de datos del sistema de contadores; (2) traducir las amenazas a técnicas de ATT&CK for ICS cuando proceda; (3) escribir casos de abuso con precondiciones; y (4) priorizar las mitigaciones frente a la clasificación por consecuencias del capítulo 23.
+
+### 26.1 Diagramas de flujo de datos
+
+Dibuje los procesos (círculos), los almacenes de datos (líneas paralelas), las entidades externas (cajas) y los flujos de datos (flechas), y después marque los límites de confianza donde los datos pasan de una zona a otra. El sistema de contadores de LDHP: contadores → pasarela (radio) → pasarela → nube de facturación (TLS) → nube → base de datos de facturación → réplica del historiador (exportación unidireccional para el equilibrado de la red). En LDHP, el enlace de radio de los contadores a la pasarela y el enlace ascendente TLS de la pasarela a la nube de facturación son límites de confianza, y también lo es la exportación unidireccional a la réplica del historiador. Cada límite es donde la tabla STRIDE de Maya hace sus preguntas; un diagrama sin ellos pondría las lecturas de los hogares y los datos de las calderas en la misma zona de confianza.
+
+### 26.2 STRIDE por elemento
+
+Suplantación (*Spoofing*), Manipulación (*Tampering*), Repudio (*Repudiation*), Divulgación de información (*Information disclosure*), Denegación de servicio (*Denial of service*) y Elevación de privilegios (*Elevation of privilege*) dan una lista de preguntas guía. En el enlace de radio contador–pasarela: suplantación (un contador falso), manipulación (lecturas alteradas), divulgación de información (consumo de los hogares). En la pasarela: elevación de privilegios a través de su interfaz web. STRIDE se diseñó para el software, así que añada una pregunta propia de TO: *consecuencia física*, ¿puede esta amenaza cambiar el suministro de calor?
+
+La tabla de Maya produjo 14 amenazas en total. Las tres primeras por consecuencia fueron la toma de control de una pasarela que envía una configuración maliciosa a todos los contadores de su calle, la manipulación de las lecturas en tránsito y el compromiso de una cuenta en la nube que expone el historial de todos los hogares.
+
+### 26.3 Casos de abuso
+
+Un caso de abuso enuncia actor, precondición, acción y resultado. «Un inquilino con equipos de radio y conocimiento del protocolo de los contadores (precondición: no hay autenticación de mensajes en el enlace de radio) reproduce las lecturas más bajas del mes pasado (acción) para que se reduzca la factura (resultado)». Escribir las precondiciones hace evidente la mitigación: autenticar las lecturas y usar contadores, como en el capítulo 17. La reproducción del inquilino ocupa un lugar bajo en la tabla de Maya porque su resultado es una sola factura reducida; aun así, el caso de abuso importa porque el mismo contador ausente permitiría a un atacante con acceso a la pasarela reproducir las lecturas de toda una calle. El laboratorio de HMAC del capítulo 17 muestra la corrección: el mensaje reproducido se rechaza por su contador aunque su etiqueta sea correcta.
+
+### 26.4 Relación con ATT&CK
+
+No todas las amenazas de IoT tienen una técnica de ATT&CK for ICS, y no pasa nada. Cuando la tienen —pasarela alcanzada desde internet (T0883), servicios remotos abusados (T0886)—, registre el identificador para enlazarlo con la inteligencia de amenazas. Para el sistema de contadores de LDHP, T0883 corresponde a una interfaz de gestión de la pasarela alcanzable desde internet, y T0886, al abuso de un servicio remoto usado para gestionar las pasarelas. Las amenazas a nivel de hogar, como la de un inquilino que reproduce la lectura del mes pasado, no tienen técnica de ATT&CK for ICS, porque el marco describe ataques al control industrial y no fraudes de facturación. La tabla de Maya deja esas filas en blanco en la columna de técnica en lugar de forzar una correspondencia pobre, y anota en su lugar la disposición de ETSI EN 303 645 que se aplica.
+
+### Ejemplo resuelto (LDHP sintética)
+
+La tabla de Maya da 14 amenazas. Clasificadas por consecuencia, las tres primeras son: la toma de control de una pasarela que envía una configuración maliciosa a todos los contadores de su calle; la manipulación de las lecturas en tránsito; el compromiso de la cuenta en la nube que expone el historial de todos los hogares. La reproducción por un inquilino queda más abajo: es real, pero se limita a una factura.
+
+> **Caso sintético — Lakeside District Heating Plant.** La lista de amenazas es el resultado de un ejercicio, no la evaluación de un producto real.
+
+### Errores y límites
+
+Un modelo de amenazas solo es tan completo como su diagrama. STRIDE enumera amenazas, no probabilidades. Vuelva a ejecutar el modelo cuando cambie la arquitectura.
+
+### Ejercicios — capítulo 26
+
+- **EX076 — STRIDE en el límite de confianza.** Nombre una amenaza para cada una de S, T y D en el flujo de la pasarela a la nube. *Rúbrica:* 3 = tres amenazas plausibles; 2 = dos; 1 = una; 0 = nada.
+- **EX077 — Escribir un caso de abuso.** Escriba un caso de abuso para la interfaz web de la pasarela. *Rúbrica:* 3 = actor, precondición, acción, resultado; 2 = tres; 1 = vago; 0 = nada.
+- **EX078 — Situar la reproducción por debajo de la toma de la pasarela.** Justifique la clasificación. *Rúbrica:* 3 = alcance del impacto (una factura frente a una calle entera/la configuración) y consecuencia; 2 = parcial; 1 = solo «menos probable»; 0 = nada.
+
+### Síntesis del capítulo
+
+El modelado de amenazas convierte un diagrama en una lista clasificada de casos de abuso cuyas precondiciones apuntan directamente a las mitigaciones.
+
+### Siga estudiando — capítulo 26 de 40
+
+[← Capítulo 25 (borrador)](#ch-25) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 27 (borrador) →](#ch-27)
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Seguridad de TO, IoT y sistemas ciberfísicos: verificación
+
+### Resultados de aprendizaje
+
+Usted podrá (1) escribir vectores de prueba para una política de lista de permitidos; (2) incluir casos límite, negativos y de origen desconocido; (3) ejecutar pruebas de conformidad sin conexión antes de cualquier despliegue; y (4) explicar por qué la evidencia de verificación forma parte del ciclo de vida de IEC 62443.
+
+### 27.1 Las políticas necesitan pruebas
+
+Un cortafuegos o una lista de permitidos que entiende el protocolo es código, aunque esté escrito como reglas. Verificar significa mostrar, con evidencia registrada, que la política permite lo que necesitan las operaciones y bloquea lo que debe. IEC 62443-4-1 (ciclo de vida de desarrollo seguro de productos) y las actividades de puesta en marcha del integrador de sistemas esperan ambas pruebas documentadas. La política de LDHP para PLC-H es lo bastante pequeña como para enunciarla en una línea: HMI-1 puede leer con el código de función 3 y escribir los registros 100–119 con el código de función 6, HIST-1 puede leer con los códigos de función 3 y 4, y cualquier otro origen y función queda bloqueado. El laboratorio convierte esa línea en seis vectores con resultados esperados. Una política que nunca se ha ejecutado contra vectores como estos es una conjetura sobre lo que hace el cortafuegos.
+
+### 27.2 Diseñar los vectores
+
+Unos buenos vectores incluyen: cada par permitido (origen, función); cada límite de un rango de registros (primero, último, uno después del último); un origen permitido que usa una función prohibida; un origen desconocido; y una función de escritura que la planta nunca usa (16, escritura múltiple). Los resultados esperados se escriben antes de ejecutar la prueba.
+
+```python
+"""Lab 27: conformance test of a Modbus allow-list against a test vector table."""
+ALLOW = {("HMI-1", 3), ("HMI-1", 6), ("HIST-1", 3), ("HIST-1", 4)}
+WRITE_RANGE = range(100, 120)
+def permit(src, fc, reg):
+    if (src, fc) not in ALLOW: return "BLOCK"
+    if fc == 6 and reg not in WRITE_RANGE: return "BLOCK"
+    return "PASS"
+vectors = [("HMI-1", 3, 100, "PASS"), ("HMI-1", 6, 119, "PASS"), ("HMI-1", 6, 120, "BLOCK"),
+           ("HIST-1", 6, 105, "BLOCK"), ("ENG-WS", 16, 100, "BLOCK"), ("HIST-1", 4, 10, "PASS")]
+fails = 0
+for src, fc, reg, want in vectors:
+    got = permit(src, fc, reg); fails += got != want
+    print(f"{src:6} fc={fc:2} reg={reg:3} want={want:5} got={got:5} {'ok' if got == want else 'FAIL'}")
+print("failures:", fails, "of", len(vectors))
+```
+
+Ejecútelo con `python3 lab_allow.py`. Salida verificada:
+
+```text
+HMI-1  fc= 3 reg=100 want=PASS  got=PASS  ok
+HMI-1  fc= 6 reg=119 want=PASS  got=PASS  ok
+HMI-1  fc= 6 reg=120 want=BLOCK got=BLOCK ok
+HIST-1 fc= 6 reg=105 want=BLOCK got=BLOCK ok
+ENG-WS fc=16 reg=100 want=BLOCK got=BLOCK ok
+HIST-1 fc= 4 reg= 10 want=PASS  got=PASS  ok
+failures: 0 of 6
+```
+
+En el laboratorio, los seis vectores son: HMI-1 leyendo el registro 100; HMI-1 escribiendo el 119, el último registro permitido; HMI-1 escribiendo el 120, uno después del final; HIST-1 escribiendo el 105; ENG-WS usando la función 16; e HIST-1 leyendo con la función 4.
+
+### 27.3 Leer el resultado
+
+Los seis vectores coinciden. Observe el vector 3: el registro 120 está uno después del final de `range(100, 120)`, así que debe bloquearse: el clásico error de límite por uno. El vector 4 confirma que el historiador no puede escribir ni siquiera dentro del rango escribible. Una ejecución limpia es evidencia solo para estos seis casos; no dice nada del código de función 23 (lectura/escritura múltiple) salvo que usted lo añada. La solicitud de cambio de un colega de Maya muestra cómo se mantienen los vectores: ampliar el rango escribible de HMI-1 para incluir el registro 120, destinado a un nuevo punto de consigna de velocidad de bomba, supuso cambiar a PASS el resultado esperado del vector 3, añadir un vector nuevo (HMI-1, 6, 121, BLOCK) y solo entonces editar `WRITE_RANGE`.
+
+### 27.4 Del laboratorio a la planta
+
+Antes de desplegar una política en el cortafuegos de la zona de control de LDHP, los mismos vectores se reproducen en un entorno de banco con el dispositivo real, primero en modo de supervisión, y el resultado se adjunta a la incidencia de cambio. El modo de supervisión significa que el cortafuegos registra lo que habría bloqueado sin bloquearlo. En LDHP, ese periodo debería cubrir al menos una semana completa, incluida la ejecución del informe semanal y una ventana de mantenimiento, porque un origen legítimo que solo escribe ocasionalmente, como EWS-1 durante un cambio de lógica, aparecería de otro modo por primera vez como una escritura bloqueada en mitad del turno de un operador. La incidencia de cambio lleva entonces los resultados de los vectores en banco, el registro del modo de supervisión y el acuerdo del jefe de turno para aplicar la política.
+
+### Ejemplo resuelto (LDHP sintética)
+
+Un colega propone ampliar el rango escribible de HMI-1 para incluir el registro 120 (un nuevo punto de consigna de velocidad de bomba). Maya cambia primero a PASS el resultado esperado del vector 3, añade el vector (HMI-1, 6, 121, BLOCK), después edita `WRITE_RANGE` a `range(100, 121)` y vuelve a ejecutar. El cambio de las pruebas se revisa junto con el cambio de la política.
+
+> **Caso sintético — Lakeside District Heating Plant.** Los números de registro son inventados.
+
+### Errores y límites
+
+Las pruebas escritas después del código tienden a confirmar lo que hace el código, no lo que necesita la planta. La conformidad sin conexión no demuestra el rendimiento del dispositivo bajo carga.
+
+### Ejercicios — capítulo 27
+
+- **EX079 — Un código de función que falta.** Añada un vector para (HMI-1, 23, 105). ¿Qué debería esperar y qué devuelve el laboratorio? *Rúbrica:* 3 = esperar BLOCK; el laboratorio devuelve BLOCK porque (HMI-1, 23) no está en ALLOW; 2 = uno; 1 = PASS; 0 = nada.
+- **EX080 — Límites tras el cambio de rango.** Tras `WRITE_RANGE = range(100, 121)`, enumere los dos vectores de límite que conservaría. *Rúbrica:* 3 = reg 120 PASS y reg 121 BLOCK; 2 = uno; 1 = solo 119; 0 = nada.
+- **EX081 — Escribir antes las expectativas.** ¿Por qué escribir los resultados esperados antes de ejecutar? *Rúbrica:* 3 = evita confirmar el comportamiento del código; vincula las pruebas al requisito operativo; 2 = parcial; 1 = «buena práctica»; 0 = nada.
+
+### Síntesis del capítulo
+
+La verificación es una lista escrita de decisiones esperadas, que incluye límites y desconocidos, ejecutada antes del despliegue y conservada como evidencia.
+
+### Siga estudiando — capítulo 27 de 40
+
+[← Capítulo 26 (borrador)](#ch-26) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 28 (borrador) →](#ch-28)
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Seguridad de TO, IoT y sistemas ciberfísicos: análisis de fallos
+
+### Resultados de aprendizaje
+
+Usted podrá (1) construir un árbol de fallos para la pérdida de la calefacción urbana; (2) combinar puertas AND y OR con probabilidades sencillas; (3) añadir eventos inducidos por ciberataques a un análisis de estilo de seguridad funcional; y (4) usar el análisis de modos de fallo y efectos (AMFE) para una pasarela IoT.
+
+### 28.1 Árboles de fallos
+
+Un árbol de fallos parte de un evento superior no deseado y lo descompone en causas unidas por puertas. Una puerta OR significa que cualquier hijo causa el padre; una puerta AND necesita todos los hijos. Para eventos independientes, P(OR) ≈ suma de las probabilidades cuando son pequeñas, y P(AND) = producto. Para el evento superior de LDHP, el árbol de pérdida de calefacción durante cuatro horas de este capítulo, la puerta OR de la cima significa que basta con una rama cualquiera; la puerta AND bajo la rama (c) significa que el ataque solo tiene éxito si se cumplen sus tres condiciones. Si cada una de esas tres tuviera una probabilidad de 0,1 y fueran realmente independientes, la rama (c) sería 0,001; los párrafos siguientes explican por qué una causa cibernética rompe esa hipótesis.
+
+### 28.2 Añadir eventos cibernéticos
+
+Evento superior: pérdida de calefacción en el distrito durante más de cuatro horas. Hijos de la OR: (a) las dos calderas disparan y no pueden volver a arrancar; (b) las bombas de circulación se detienen; (c) el punto de consigna de impulsión se manipula y no se detecta durante cuatro horas. El evento (c) es a su vez una AND: escritura no autorizada del punto de consigna *y* los operadores no lo advierten *y* el detector falla. Los eventos cibernéticos rompen la hipótesis de independencia: un solo intruso puede causar a la vez varios fallos «independientes», así que trate con cuidado la causa común.
+
+En LDHP, un intruso con acceso a HMI-1 podría escribir el punto de consigna y además silenciar la pantalla de alarmas en la que confían los operadores para advertirlo.
+
+### 28.3 AMFE para la pasarela
+
+El AMFE enumera cada componente, sus modos de fallo, sus efectos, su detección y su gravedad. Los modos de fallo de la pasarela incluyen la pérdida de alimentación (faltan lecturas; se detecta por latido), el firmware corrupto (datos mal formados; se detecta por validación), la manipulación de la configuración (lecturas falsas pero plausibles; difícil de detectar) y la caducidad del certificado (enlace ascendente rechazado; se detecta por supervisión). Para LDHP, la manipulación de la configuración es la fila en la que hay que detenerse: una pasarela configurada para multiplicar cada lectura por 0,9 produce números plausibles que superan las comprobaciones de validación y de latido, y solo aparecería al comparar los totales de las pasarelas con el calor que sale de la planta. Por esta razón la clasificación STRIDE de Maya pone en primer lugar la toma de control de la pasarela. La caducidad del certificado, en cambio, es fácil de detectar y fácil de prevenir con una alerta de renovación, así que ocupa un lugar bajo aunque detenga todas las lecturas.
+
+### Ejemplo resuelto (LDHP sintética)
+
+Probabilidades anuales (ilustrativas): escritura no autorizada 0,05; los operadores no la advierten durante cuatro horas 0,2; el detector falla 0,1. P(c) = 0,05 × 0,2 × 0,1 = 0,001. Las dos calderas no vuelven a arrancar 0,002; bombas 0,003. P(superior) ≈ 0,002 + 0,003 + 0,001 = 0,006 al año. Pero si el intruso también puede suprimir las alarmas del HMI, «los operadores no lo advierten» deja de ser 0,2 y la independencia de la puerta AND se derrumba: P(c) puede acercarse a 0,05 × 1 × 0,1 = 0,005.
+
+> **Caso sintético — Lakeside District Heating Plant.** Todas las probabilidades son inventadas con fines ilustrativos y no deben reutilizarse.
+
+### 28.4 Vista de pajarita
+
+Un diagrama de pajarita sitúa el evento superior en el centro, las amenazas y las barreras preventivas a la izquierda, y las consecuencias con las barreras de mitigación a la derecha. Ayuda a los operadores a ver que SIS-H es una barrera de mitigación para la sobretemperatura, pero no ofrece nada frente a la baja temperatura causada por un punto de consigna rebajado. La contribución de Maya al HAZOP del capítulo 32 señala lo mismo desde el otro lado: el disparo por alta temperatura de SIS-H es la salvaguarda para un punto de consigna manipulado que sobrecalienta la caldera, pero un punto de consigna rebajado a 30 °C, como en el ejercicio de mesa del capítulo 29, causa la pérdida de calefacción sin acercarse nunca a un punto de disparo. Para esa consecuencia, las barreras están a la izquierda de la pajarita: la lista de permitidos del cortafuegos, las cuentas nominativas, los límites de punto de consigna de 70–110 °C de PLC-H y la alerta del monitor.
+
+### Errores y límites
+
+Las probabilidades de los eventos adversarios son juicios; preséntelas como rangos. Los árboles de fallos omiten las interacciones que no se dibujan.
+
+### Ejercicios — capítulo 28
+
+- **EX082 — Calcular una puerta AND cibernética.** Con escritura 0,1, los operadores no lo advierten 0,3 y el detector falla 0,2, calcule P(c). *Rúbrica:* 3 = 0,006; 2 = método correcto; 1 = suma en lugar de multiplicar; 0 = nada.
+- **EX083 — Causa común.** Explique cómo una sola intrusión puede romper la independencia de la puerta AND. *Rúbrica:* 3 = el mismo actor suprime las alarmas/ciega al detector, así que los eventos están correlacionados; 2 = parcial; 1 = vago; 0 = nada.
+- **EX084 — Una línea de AMFE.** Escriba la fila de AMFE para la caducidad del certificado de la pasarela. *Rúbrica:* 3 = modo, efecto, detección, gravedad, acción; 2 = cuatro; 1 = solo el modo; 0 = nada.
+
+### Síntesis del capítulo
+
+Los árboles de fallos y el AMFE incorporan los eventos cibernéticos a la ingeniería de fiabilidad, siempre que usted cuestione la independencia que a los adversarios se les paga por romper.
+
+### Siga estudiando — capítulo 28 de 40
+
+[← Capítulo 27 (borrador)](#ch-27) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 29 (borrador) →](#ch-29)
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Seguridad de TO, IoT y sistemas ciberfísicos: operaciones
+
+### Resultados de aprendizaje
+
+Usted podrá (1) diseñar un flujo de trabajo de supervisión de seguridad de TO con los operadores en el circuito; (2) escribir un paso de un manual de respuesta a incidentes que respete la seguridad del proceso; (3) planificar la aplicación de parches dentro de las ventanas de mantenimiento; y (4) dirigir un ejercicio de mesa.
+
+### 29.1 Una supervisión en la que confíen los operadores
+
+La supervisión pasiva de la red en el conmutador de control de LDHP construye una línea base de quién habla con quién. Las alertas —un equipo nuevo que habla Modbus, una escritura desde un origen inesperado, una descarga de firmware— van a un analista de seguridad que llama al jefe de turno antes de que nadie toque la planta. NIST SP 800-82r3 subraya que la respuesta a incidentes en TO debe coordinarse con operaciones, porque las propias acciones de contención pueden causar una perturbación del proceso.
+
+En LDHP, la alerta del ejercicio de mesa de este capítulo, una escritura Modbus en el registro 100 desde 10.20.4.17, en la VLAN de oficina, es exactamente el caso del «origen inesperado».
+
+### 29.2 Pasos del manual
+
+Los buenos pasos de un manual de TO nombran a quien decide y el estado seguro. «Aislar PLC-H de la red» es peligroso si los operadores pierden el HMI. Mejor: «El jefe de turno decide si pasar la caldera a control manual local; solo entonces el analista bloquea el origen sospechoso en el cortafuegos». El ejercicio de mesa de este capítulo siguió este orden: el analista llamó al jefe de turno a las 02:12, el operador restableció el punto de consigna de impulsión de 30 °C a 90 °C a las 02:15 y el jefe de turno aprobó bloquear 10.20.4.17 en el cortafuegos a las 02:18. El bloqueo llegó después de que el proceso estuviera seguro, no antes, y después de que lo decidiera una persona con nombre.
+
+### 29.3 Parches en ventanas
+
+LDHP tiene una ventana de mantenimiento mensual de cuatro horas. Los parches se prueban en un HMI de banco, se clasifican por riesgo (exposición × consecuencia) y se aplican en ese orden hasta llenar la ventana; el resto se aplaza con una incidencia fechada y controles compensatorios. IEC TR 62443-2-3 trata la gestión de parches en entornos IACS. En un mes con una corrección de firmware para PLC-H, una actualización de Windows para HMI-1 y un parche para las pasarelas, la clasificación pone primero a PLC-H solo si la corrección aborda una ruta expuesta; de lo contrario, HMI-1, que alberga las cuentas nominativas de los operadores y está expuesto a EWS-1 y al servidor de salto, puede ir primero. Lo que se aplace recibe una incidencia fechada y los controles compensatorios del capítulo 24.
+
+### 29.4 Ejercicios de mesa
+
+Un ejercicio de mesa ensaya un escenario sobre el papel: a quién se llama, qué se decide, qué información falta. Revela carencias sin poner en riesgo el proceso. El ejercicio de mesa de LDHP partió de una alerta a las 02:10 de una noche de enero: una escritura Modbus en el registro 100 de PLC-H desde 10.20.4.17, en la VLAN de oficina. El analista llamó al jefe de turno a las 02:12, el operador restableció el punto de consigna a 90 °C a las 02:15 y el jefe de turno aprobó bloquear la dirección a las 02:18. La carencia que encontró era corriente e importante: nadie tenía el teléfono nocturno del administrador del cortafuegos. Un incidente real habría encontrado la misma carencia con menos tiempo para corregirla.
+
+### Ejemplo resuelto (LDHP sintética)
+
+Escenario del ejercicio de mesa: a las 02:10 de una noche de enero, el monitor alerta «Modbus write to PLC-H register 100 from 10.20.4.17 (office VLAN)». Recorrido: el analista llama al jefe de turno (02:12); el operador confirma que el punto de consigna de impulsión cambió a 30 °C y restablece 90 °C (02:15); el jefe de turno aprueba bloquear 10.20.4.17 en el cortafuegos (02:18); comienza la recogida de evidencia. Carencia encontrada: nadie tenía el teléfono nocturno del administrador del cortafuegos.
+
+> **Caso sintético — Lakeside District Heating Plant.** Las horas, las direcciones y la carencia son inventadas.
+
+### Errores y límites
+
+Los manuales se deterioran a medida que cambian el personal y las redes; revíselos después de cada ejercicio. El bloqueo automático en TO debería ser excepcional y acordado de antemano.
+
+### Ejercicios — capítulo 29
+
+- **EX085 — Reescribir un paso peligroso del manual.** Reescriba de forma segura «Apagar de inmediato el servidor SCADA». *Rúbrica:* 3 = quien decide, primero el estado seguro del proceso y después la contención; 2 = parcial; 1 = sin cambios; 0 = nada.
+- **EX086 — Llenar una ventana.** Hay parches que necesitan 1,5 h (riesgo 9), 2 h (riesgo 6), 1 h (riesgo 8) y 1 h (riesgo 3) en una ventana de 4 h. ¿Cuáles entran? *Rúbrica:* 3 = riesgo 9, 8 y 3 (3,5 h), con el parche de riesgo 6 aplazado en una incidencia fechada; 2 = conjunto correcto, sin registro del aplazamiento; 1 = se excede de la ventana; 0 = nada.
+- **EX087 — Corregir la carencia del ejercicio de mesa.** Proponga una corrección para el número de teléfono que faltaba y cómo probarla. *Rúbrica:* 3 = lista de guardias en el manual más una llamada de prueba en el siguiente ejercicio; 2 = una de las dos; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+La seguridad de las operaciones de TO mantiene a los operadores al mando del proceso, aplica parches por riesgo dentro de las ventanas y ensaya hasta que las carencias se encuentran sobre el papel y no a las 2 de la madrugada.
+
+### Siga estudiando — capítulo 29 de 40
+
+[← Capítulo 28 (borrador)](#ch-28) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 30 (borrador) →](#ch-30)
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Laboratorio II
+
+### Resultados de aprendizaje
+
+Usted podrá (1) evaluar una flota IoT sintética frente a disposiciones seleccionadas de ETSI EN 303 645; (2) comunicar las carencias por dispositivo y de toda la flota; (3) relacionar las disposiciones con las actividades de los fabricantes de NIST IR 8259; y (4) priorizar la remediación.
+
+### 30.1 La base de referencia
+
+ETSI EN 303 645 V2.1.1 establece 13 disposiciones de ciberseguridad para el IoT de consumo, más disposiciones de protección de datos. Este laboratorio comprueba cuatro: 5.1 (sin contraseñas por defecto universales), 5.2 (implantar un medio para gestionar los informes de vulnerabilidades), 5.3 (mantener el software actualizado) y 5.5 (comunicar de forma segura). NIST IR 8259 cubre un terreno similar desde el lado del proceso del fabricante, por ejemplo, la planificación de las actualizaciones y la comunicación con los clientes.
+
+```python
+"""Lab 30: score a synthetic IoT meter fleet against selected ETSI EN 303 645 provisions."""
+fleet = {"MTR-A": {"unique_pw": True, "vuln_policy": True, "update": True, "tls": True},
+         "MTR-B": {"unique_pw": False, "vuln_policy": True, "update": True, "tls": True},
+         "MTR-C": {"unique_pw": True, "vuln_policy": False, "update": False, "tls": False}}
+PROV = {"unique_pw": "5.1 no universal default passwords", "vuln_policy": "5.2 vulnerability disclosure",
+        "update": "5.3 software updatable", "tls": "5.5 secure communication"}
+for dev, f in fleet.items():
+    miss = [PROV[k] for k, v in f.items() if not v]
+    print(f"{dev}: {4-len(miss)}/4 met; missing: {miss or 'none'}")
+print("fleet-wide gaps:", sorted({k for f in fleet.values() for k, v in f.items() if not v}))
+```
+
+Ejecútelo con `python3 lab_fleet.py`. Salida verificada:
+
+```text
+MTR-A: 4/4 met; missing: none
+MTR-B: 3/4 met; missing: ['5.1 no universal default passwords']
+MTR-C: 1/4 met; missing: ['5.2 vulnerability disclosure', '5.3 software updatable', '5.5 secure communication']
+fleet-wide gaps: ['tls', 'unique_pw', 'update', 'vuln_policy']
+```
+
+Los tres modelos de contador del laboratorio responden a un breve cuestionario sobre esas cuatro disposiciones; el script informa de cuáles cumple cada uno y de lo que le falta a la flota.
+
+### 30.2 Leer el resultado de la flota
+
+MTR-A cumple las cuatro. MTR-B solo incumple la 5.1, lo que se corrige forzando credenciales únicas en la instalación. MTR-C incumple tres disposiciones: no tiene política de divulgación, ni mecanismo de actualización, ni comunicación segura. La lista de carencias de toda la flota contiene las cuatro disposiciones, lo que parece alarmante pero se debe solo a dos modelos; comunique ambas vistas. La vista por dispositivo le dice a Maya qué corregir en cada modelo de contador, mientras que la vista de la flota le dice al director de LDHP qué disposiciones faltan en algún punto del parque. Leer solo la lista de la flota sugeriría cuatro problemas distintos en todos los contadores, cuando MTR-A está limpio y tres de las cuatro carencias recaen solo en MTR-C.
+
+### 30.3 Priorizar
+
+La gravedad depende de la consecuencia y de la facilidad de corrección. La falta de capacidad de actualización de MTR-C es estructural —no se puede parchear—, así que la planificación de su sustitución empieza ya. La contraseña por defecto de MTR-B es el vector clásico de Mirai (capítulo 20) y es urgente, pero barata. La tabla de remediación de Maya sigue ese orden. MTR-B se corrige en dos semanas, en la siguiente visita de lectura de contadores. MTR-C recibe de inmediato controles compensatorios —aislamiento detrás de la pasarela, con TLS terminado allí— y una sustitución programada en 12 meses, porque ningún cambio de configuración puede cumplir la 5.3. MTR-A no necesita nada por ahora, pero se vuelve a comprobar cada vez que cambia su firmware, ya que un resultado favorable describe una sola versión.
+
+### 30.4 Límites de la evaluación por lista de comprobación
+
+«Cumple la 5.3» es en este laboratorio un booleano procedente de un cuestionario. Una evaluación real comprueba la evidencia: ¿verifica firmas el mecanismo de actualización, y se publican realmente actualizaciones? Para los contadores de LDHP, eso significa pedir a cada fabricante evidencia en lugar de respuestas. Para el «cumple la 5.3» de MTR-A, significa un paquete de actualización firmado y la fecha de la última actualización publicada. Para la 5.1, un restablecimiento de fábrica que siga dando una contraseña única. Para la 5.5, la versión de TLS y la gestión de certificados observadas en el banco. Solo las afirmaciones de MTR-A tendrían que comprobarse así en primer lugar, porque sus cuatro «sí» son los que ahora mismo sustentan una decisión de no actuar.
+
+### Ejemplo resuelto (LDHP sintética)
+
+Tabla de remediación de Maya: MTR-B: restablecer contraseñas únicas durante la siguiente visita de lectura de contadores, 2 semanas. MTR-C: aislar detrás de la pasarela con terminación TLS como control compensatorio para la 5.5, solicitar el contacto de divulgación del fabricante, programar la sustitución en 12 meses porque no puede cumplirse la 5.3. MTR-A: ninguna acción; volver a comprobar cuando cambie el firmware.
+
+> **Caso sintético — Lakeside District Heating Plant.** Los modelos de dispositivo y las respuestas son inventados.
+
+### 30.5 Reproducir y ampliar el laboratorio
+
+Cambie el diccionario de un solo dispositivo cada vez y vuelva a ejecutar, registrando la salida junto a la modificación. Si dos estudiantes obtienen resultados distintos con los mismos diccionarios, compare las versiones de Python y el archivo exacto; el script es determinista y nunca debería diferir. Una primera modificación útil es poner a true el `unique_pw` de MTR-B y confirmar que su línea pasa a 4/4, mientras la lista de carencias de la flota pierde `unique_pw` y conserva las tres carencias de MTR-C; una segunda es dar a MTR-C una política de divulgación y comprobar que solo desaparece la 5.2 de su lista de incumplimientos. Si la lista de la flota no cambia como usted predijo, lea la agregación del script antes de fiarse de su modificación.
+
+### Errores y límites
+
+ETSI EN 303 645 se dirige a dispositivos de consumo; los contadores de un distrito pueden estar sujetos a otros regímenes. Las cuatro disposiciones comprobadas son un subconjunto.
+
+### Ejercicios — capítulo 30
+
+- **EX088 — Añadir una disposición.** Añada `"secure_storage"` asignada a la 5.4 con MTR-A True, MTR-B True, MTR-C False. ¿Qué imprime ahora MTR-C? *Rúbrica:* 3 = detecta el 4 fijo en el código (imprime 0/4), lo corrige y obtiene 1/5 con cuatro disposiciones incumplidas; 2 = una de las dos cosas; 1 = dice 1/4; 0 = nada.
+- **EX089 — Por qué engañan las carencias de toda la flota.** Explique por qué «carencias de toda la flota: las cuatro» podría engañar a un directivo. *Rúbrica:* 3 = lo causan dos modelos; la vista por dispositivo muestra la mayoría de los problemas en MTR-C; 2 = parcial; 1 = vago; 0 = nada.
+- **EX090 — Evidencia para la 5.3.** ¿Qué evidencia pediría a un fabricante para aceptar «software actualizable»? *Rúbrica:* 3 = mecanismo de actualización firmado, historial de actualizaciones publicado/periodo de soporte, prueba de actualización en banco; 2 = dos; 1 = el fabricante dice que sí; 0 = nada.
+
+### Síntesis del capítulo
+
+Las evaluaciones frente a una base de referencia son útiles cuando se comunican por dispositivo y por flota, se respaldan con evidencia y se convierten en un plan de remediación con fechas.
+
+### Siga estudiando — capítulo 30 de 40
+
+[← Capítulo 29 (borrador)](#ch-29) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 31 (borrador) →](../../en/book/MANUSCRIPT.md#ch-31)
 
 <a id="worked-results"></a>
 
@@ -1542,6 +1920,42 @@ Respuestas modelo para EX001–EX120. Lakeside District Heating Plant, Maya Chen
 **EX071.** Un operador que se equivoca al teclear durante una perturbación estresante queda bloqueado justo cuando se necesita el control. Más seguro: retardo progresivo y alerta al jefe de turno, con el bloqueo desactivado en las consolas de la sala de control protegidas físicamente.
 
 **EX072.** Situarla en su propia VLAN con un cortafuegos que permita solo los flujos necesarios; bloquear su interfaz de gestión desde cualquier lugar excepto un servidor de salto; supervisar su tráfico en busca de destinos nuevos; programar su sustitución por un modelo conforme.
+
+**EX073.** Banda: falsas alarmas en 9 de 40 ejecuciones tranquilas. CUSUM: 0 de 40, con una cota superior al 95 % de aproximadamente un 7,5 % (regla del tres) o un 8,8 % (Wilson), así que «no se observaron falsas alarmas», no «nunca».
+
+**EX074.** La holgura (valor de referencia) se resta de cada desviación para que, con el ruido normal, la suma acumulada vuelva una y otra vez a cero; solo un desplazamiento sostenido mayor que la holgura la hace crecer hasta el umbral, lo que suprime las alarmas por ruido de una sola muestra.
+
+**EX075.** Barrer la pendiente de la rampa (p. ej., 0,005–0,08 °C/muestra) y, para cada una, registrar la desviación de temperatura alcanzada antes de que CUSUM dé la alarma; la mayor desviación lograda sin ser detectado en un horizonte fijo es la métrica de impacto del ataque sigiloso que recomiendan Urbina et al.
+
+**EX076.** S: un atacante presenta a la pasarela un punto de conexión falso de la nube (servidor suplantado) si la validación de certificados es débil. T: lecturas alteradas en el trayecto por un proxy comprometido. D: se inunda el enlace ascendente de la pasarela o se inhibe su módem celular para que las lecturas no se entreguen.
+
+**EX077.** Actor: un atacante externo en internet. Precondición: la interfaz web de la pasarela es alcanzable desde internet y sigue usando la contraseña por defecto del fabricante. Acción: inicia sesión y sube un firmware o una configuración modificados. Resultado: los 40 contadores que hay detrás de esa pasarela comunican lecturas falsas y la pasarela puede usarse para pivotar hacia la DMZ.
+
+**EX078.** La reproducción de un inquilino afecta a la factura de un hogar y su valor está acotado, mientras que la toma de control de la pasarela afecta a todos los contadores de su calle y puede proporcionar un punto de apoyo hacia otras zonas; el mayor radio de impacto y el posible efecto operativo la sitúan más arriba.
+
+**EX079.** Se espera BLOCK, y `permit("HMI-1", 23, 105)` devuelve BLOCK porque el par (HMI-1, 23) no está en ALLOW: la política deniega por defecto las funciones no enumeradas.
+
+**EX080.** (HMI-1, 6, 120) → PASS, el nuevo último registro escribible; (HMI-1, 6, 121) → BLOCK, el primer registro fuera del rango.
+
+**EX081.** Si las expectativas salen de ejecutar el código, un fallo se convierte en el resultado esperado. Escribirlas primero a partir del requisito operativo (qué registros necesita realmente HMI-1) permite que la prueba detecte la discrepancia.
+
+**EX082.** 0,1 × 0,3 × 0,2 = 0,006 al año.
+
+**EX083.** Un solo intruso que escribe el punto de consigna también puede suprimir las alarmas del HMI o desactivar el detector, así que «los operadores no lo advierten» y «el detector falla» se vuelven probables dada la escritura; multiplicar entonces las probabilidades marginales subestima P(c).
+
+**EX084.** Componente: pasarela de contadores. Modo: caduca el certificado de cliente TLS. Efecto: la nube rechaza el enlace ascendente; las lecturas se encolan y después se descartan cuando se llena el búfer. Detección: supervisión de la caducidad de certificados con 30 días de antelación y alerta por latido ausente. Gravedad: media (retraso en la facturación, sin efecto sobre el proceso). Acción: renovación automatizada con alerta si falla.
+
+**EX085.** «El analista informa al jefe de turno. El jefe de turno confirma que los operadores pueden mantener la caldera en estado seguro con los paneles locales o el HMI de reserva, y después autoriza desconectar el enlace de red del servidor SCADA (sin apagarlo, para conservar la evidencia)».
+
+**EX086.** Voraz por riesgo: riesgo 9 (1,5 h) y riesgo 8 (1 h) ocupan 2,5 h; el de riesgo 6 necesita 2 h y excedería la ventana hasta 4,5 h, así que se aplaza; el de riesgo 3 (1 h) cabe, total 3,5 h. Aplicar 9, 8 y 3; aplazar el parche de riesgo 6 con una incidencia fechada y controles compensatorios (o dividir el plan de la ventana si la tarea de riesgo 6 puede acortarse).
+
+**EX087.** Añadir a la primera página del manual una lista de guardias con los teléfonos nocturnos del administrador del cortafuegos y del ingeniero de control, e incluir una llamada de prueba real a cada número al inicio del siguiente ejercicio de mesa.
+
+**EX088.** El bucle usa `4-len(miss)`, así que imprimiría `MTR-C: 0/4 met` salvo que se cambie el 4; tras cambiarlo por `len(f)-len(miss)`, MTR-C imprime 1/5 met con 5.2, 5.3, 5.4 y 5.5 incumplidas. Detectar el 4 fijo en el código forma parte de la respuesta.
+
+**EX089.** Todas las disposiciones aparecen como carencias de la flota, pero MTR-A las supera todas y MTR-B solo incumple una; el directivo podría financiar la sustitución de toda la flota cuando el problema real se concentra en MTR-C, más un restablecimiento de contraseñas barato para MTR-B.
+
+**EX090.** Una descripción de cómo se firman criptográficamente las actualizaciones y cómo se verifican en el dispositivo, el historial de actualizaciones publicado por el fabricante y su periodo de soporte declarado, y una demostración en banco de la aplicación de una actualización y del rechazo de una manipulada.
 
 <a id="references"></a>
 
