@@ -3189,6 +3189,8 @@ For PS-09, the plan's evidence list should include the RTU's firmware read from 
 
 Unplugging PS-07's modem on the spot would have been the third error, however obviously unused it looked; Water confirmed first that nothing depended on it, and the engineer raised the change.
 
+The unlocked gateway enclosure at PS-07 marks a limit of the visit itself: you can record that the HMAC key file sits on a removable card, but locking the enclosure or moving the key is Water's change, not yours to make on the day.
+
 ### Exercises — chapter 28
 
 **EX082 — Record the modem.** *Objective:* write field findings correctly. *Inputs:* Chapter 28 ("Worked example: the PS-07 visit"). *Constraints:* observed / inferred / done / open labels; no recommendation to act without change control. *Steps:* write the finding record and say which registers must be updated. *Expected evidence:* record. *Rubric:* 3 = observed (modem present, model/label, connected to PLC port 2, engineer's account), inferred (undeclared remote path, possibly active), done (photographed with permission, change raised by Water), open (whether it is powered and has a working SIM, who holds the account, removal date); inventory, conduit list, data-flow register and risk register updated; 2 = labels mixed; 1 = narrative; 0 = none.
