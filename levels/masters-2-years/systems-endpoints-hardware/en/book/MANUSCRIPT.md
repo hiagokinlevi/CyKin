@@ -1,7 +1,7 @@
 # Systems, Endpoint and Hardware Security: Master's Course
 
 - Language: English (`en`); course 173, Master's course (2 years).
-- Editorial state: **draft**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; Three offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **draft**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: master's students who must compare competing explanations of endpoint security problems with careful observational research.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: review and test only servers, endpoints and devices you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Weaknesses are taught from the defender's side using synthetic configurations, inventories, logs and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -45,21 +45,31 @@ You will (1) turn an operational problem into a researchable question; (2) searc
 
 Chloé Dubois is a master's student at the fictional Redbourne University, supervised by Dr Arjun Mehta. Her study partner is the fictional Halvorsen Engineering, a manufacturer with 600 Windows laptops managed centrally. Halvorsen applies a security baseline derived from the CIS Benchmarks and Microsoft's security baselines, yet its quarterly reports show that about a quarter of laptops drift away from it. The IT manager, Sven Halvorsen, wants to know why, because each explanation suggests a different fix.
 
+Sven's three candidate fixes cost very different amounts: removing admin rights, changing how remote laptops refresh policy, or reworking engineering software.
+
 ### 1.2 The question
 
 Chloé asks: which device and user characteristics are associated with baseline drift on Halvorsen's laptops? She defines drift as any baseline setting differing from its required value at the monthly check.
+
+"Any setting" is deliberately strict: a screen lock of 15 minutes counts as drift against a ten-minute requirement, just as a disabled firewall does. Chloé keeps the strict definition for the main outcome and records which settings drifted, so that a laptop with only a slightly long screen lock can be told apart from one with encryption off. "At the monthly check" fixes when drift is measured, which matters later: a change made and reverted within a month is never seen.
 
 ### 1.3 Literature method
 
 She searches digital libraries with fixed terms, records the date and counts, screens titles and abstracts against inclusion criteria, and keeps a log so another person could repeat the search.
 
+Her log records each database, the exact search string, the date run, hits, titles screened, abstracts screened and works included, with a reason for every exclusion. That matters for a topic like configuration drift, where vendor white papers vastly outnumber studies; the log shows the examiner which strand each included source came from, and lets Dr Mehta check that no inconvenient study was quietly dropped.
+
 ### 1.4 Key sources
 
 NIST SP 800-128 describes security-focused configuration management, including baselines and monitoring for unauthorised change. CIS Controls v8 lists secure configuration of enterprise assets as a core safeguard. Dietrich et al. (2018) show that operators often explain misconfigurations by time pressure and unclear responsibility.
 
+The three sources point at different explanations. SP 800-128's emphasis on monitoring for unauthorised change fits Explanation A, users changing settings. CIS Controls' focus on secure configuration and administrative privileges also fits A. Dietrich et al.'s finding about time pressure and unclear responsibility suggests why admin rights get granted widely in the first place, which Chloé returns to in her discussion.
+
 ### 1.5 Defining terms
 
 She distinguishes drift (a change after compliance) from never-compliant devices, which point to deployment problems rather than drift.
+
+The distinction changes the fix. A laptop that never met the baseline points to the imaging or enrolment process at Halvorsen, and adding monitoring would not help it. A laptop that met the baseline and then moved away points to something in daily use: a user with admin rights, a missed policy refresh or software that needs a different setting. Chloé's study is about the second group, so she flags never-compliant laptops at the first monthly check and reports them separately rather than counting them as drift.
 
 ### Scope
 
@@ -105,11 +115,15 @@ You will (1) examine endpoint baselines in depth; (2) measure drift on a small s
 
 A baseline is a documented set of settings. CIS Benchmarks give consensus recommendations, DISA STIGs give stricter requirements for defence systems, and Microsoft publishes Windows security baselines. Halvorsen's baseline selects six settings: disk encryption, firewall, SMB version 1 disabled, autorun disabled, a screen lock within ten minutes and no extra local administrator users.
 
+Six settings is a small selection from the hundreds in a full CIS Benchmark. Halvorsen chose settings that are checked automatically every month, that a user with the right privileges could change, and whose failure has a clear consequence. That makes the baseline measurable for Chloé's study, but it also means her results describe drift in these six settings, not in the whole configuration.
+
 ### 2.2 Why these settings
 
 Disk encryption protects lost laptops; the firewall limits network exposure; SMB1 is an old file-sharing protocol with known weaknesses; autorun can launch software from removable media; screen locks protect unattended devices; local administrators can change any setting.
 
-### Lab — Lab — baseline sample
+The last item is different from the other five: an extra local administrator is not only a setting that drifts, it is the means by which the others can drift. A user who is a local administrator can turn off the firewall, re-enable SMB1 or lengthen the screen lock. That is why the seminar treats admin rights as both an outcome and a possible explanation.
+
+### Lab — baseline sample
 
 ```python
 """Check synthetic laptop settings against a small baseline and count drift per setting (stdlib only)."""
@@ -145,9 +159,13 @@ laptops 6, fully compliant 3, drifted 3
 
 In six sample laptops, three comply fully and three drift. Extra local administrator users appear on all three drifted laptops; other failures appear once or twice.
 
+The lab counts each setting across the six laptops: local admin users fail on three, screen lock on two, and encryption, firewall, SMB1 and autorun on one each. The laptop with 30 minutes for the screen lock also has its firewall off; the one with SMB1 on has two extra admins. A per-setting count like this is what lets Chloé later test Explanation A's prediction that admin devices drift on many settings at once.
+
 ### 2.4 Seminar discussion
 
 The class discusses whether local administrator rights cause drift or whether people who need admin rights also change settings for work reasons. Both are plausible, which motivates chapter 4.
+
+The sample is far too small to decide the question; it only shows that admin rights and other drift occur together. Chloé uses the discussion to sharpen her design: if admin rights cause drift, admin devices should drift on many settings; if engineers need both admin rights and changed settings for their software, the drift should concentrate in the engineering department and in specific settings such as firewall rules.
 
 ### Impact varies
 
@@ -193,21 +211,31 @@ You will (1) design an observational study; (2) address privacy and ethics; (3) 
 
 Chloé uses six months of monthly compliance records for all 600 laptops, linked to device attributes: local administrator flag, location (remote or office), department and last policy refresh.
 
+Six months of monthly checks gives six observations per laptop, enough to see drift appear after compliance rather than at deployment. Linking to existing attributes, instead of asking users questions, avoids recall bias and keeps the study observational. The last policy refresh date is the variable Explanation B depends on: a remote laptop that has not checked in recently cannot have received the baseline again.
+
 ### 3.2 Ethics
 
 Records link devices to users. Chloé works with pseudonymised device IDs; department is the finest grouping reported; results are never used to assess individuals. Redbourne's ethics committee and Halvorsen's data protection lead approve the plan.
+
+Halvorsen's works council asked whether results could be used to discipline staff. Chloé could answer by showing the approval terms: device-level data, pseudonymised identifiers and department-level reporting only. Because no result names a person, the study cannot be turned into a tool for monitoring individual employees, which also makes staff less likely to object to the extract being shared.
 
 ### 3.3 Reproducibility
 
 The analysis plan is written before data access; code runs on the extract and produces every table.
 
+Writing the plan first prevents choosing the analysis after seeing which comparison gives the most striking result. Chloé's plan names the three comparisons, the risk ratio and chi-square tests, and the stratification by admin status, all before the extract arrives. Because one script produces every table from the extract, an examiner can rerun it and get the same figures, which the second examiner later does.
+
 ### 3.4 Variables
 
 The outcome is drift during the six months; candidate explanations are local admin, remote working and department.
 
+The outcome is binary for each laptop: drifted at least once in the six months, or not. Each candidate explanation becomes a group comparison: admin versus none, remote versus office, engineering versus other departments. Coding them this way makes the three comparisons directly comparable in the same units, a risk ratio, which is what lets Chloé say which association is strongest. Each comparison uses the same 600 laptops.
+
 ### 3.5 Bias
 
 Devices replaced during the study are excluded and counted, so exclusion is visible.
+
+Replaced laptops are excluded because they do not have six months of records. Counting them matters because replacement may not be random: if laptops with many problems are replaced first, excluding them could make the remaining fleet look better behaved. Reporting the count lets a reader judge whether the exclusion could change the result. The same rule applies to laptops whose user changed role mid-study: they stay in, but the role change is recorded.
 
 ### Analysis plan contents
 
@@ -262,21 +290,31 @@ You will (1) state competing explanations with mechanisms; (2) predict observabl
 
 Users with local administrator rights can change any setting. Saltzer and Schroeder (1975) set out least privilege: each program and user should operate with the fewest privileges needed. Prediction: higher drift among admin devices.
 
+If Explanation A is right, the admin devices should drift more often and on several settings at once, because an administrator can change anything. The seminar sample already showed extra admin users on every drifted laptop. The main data later show 55.0% drift among admin devices against 15.0% among the rest, a risk ratio equal to 3.67.
+
 ### 4.2 Explanation B: remote working
 
 Remote laptops may miss policy refreshes when off the corporate network. Prediction: higher drift among remote devices, especially those with old refresh dates.
+
+The refresh date gives Explanation B a specific test: among remote laptops, drift should be higher for those whose last policy refresh is old, and especially for those with no refresh in the month. A remote laptop that refreshes regularly should behave like an office laptop. If remote laptops drift more regardless of refresh age, something other than missed refreshes is at work, such as users working without IT support close by.
 
 ### 4.3 Explanation C: department needs
 
 Engineering software may require settings changes. Prediction: higher drift in the engineering department.
 
+The prediction is narrower than "engineers drift more". If engineering software needs different settings, drift should concentrate in the settings that software touches, such as firewall rules for licence servers, and should affect engineering laptops whether or not their users are administrators. If engineering laptops drift only when their users are admins, the department is not the explanation; admin rights are. The main results later show engineering at 27.3% against 21.6%, with a chi-square below the significance threshold.
+
 ### 4.4 Overlap
 
 Engineers are more often admins and more often remote, so explanations overlap. Chloé plans stratified comparisons.
 
+This overlap is why a single comparison can mislead. If most remote laptops belong to engineers with admin rights, remote laptops will drift more even if location itself has no effect. Chloé's stratified comparisons compare remote and office laptops within the admin group and within the non-admin group separately. If the gap between remote and office disappears inside each group, the remote effect was mostly admin rights in disguise, which is what the main data later show.
+
 ### 4.5 Settings pattern
 
 Each explanation predicts different settings: admins change many settings; missed refreshes leave settings that recently changed; engineering changes firewall rules for licence servers.
+
+These patterns give a second, independent test of each explanation. If admin devices drift on many settings at once, while remote non-admin devices drift only on settings changed in recent baseline updates, the settings pattern supports A over B. If engineering devices drift mainly on firewall settings, that supports C. Chloé records which settings drifted for every device, not only whether it drifted, so the pattern can be read after the main comparison.
 
 ### Testing the predictions
 
@@ -331,11 +369,15 @@ You will (1) write a proposal with analysis plan; (2) pilot the data extract; (3
 
 The proposal sets out the question, three explanations with predictions, data, ethics terms and analysis: compare drift proportions across groups with risk ratios and chi-square tests, then stratify by department.
 
+The proposal also commits to how results will be read: a risk ratio above one with a chi-square above 3.84 is treated as a clear association at the 5% level with one degree of freedom, and anything below as unclear. Fixing this threshold in advance prevents a marginal result, such as engineering's later chi-square equal to 2.1, being described as a finding.
+
 ### 5.2 Pilot extract
 
 Halvorsen's IT team provides a pilot extract of 120 laptops for one month to test the pipeline.
 
-### Lab — Lab — pilot completeness
+One month for 120 laptops is small enough to inspect by hand and large enough to show the problems a full extract would have: missing fields, inconsistent department names and dates in different formats. Testing the pipeline here means the six-month, 600-laptop extract can be analysed as planned rather than repaired under deadline. The pilot extract also contains the drift outcome for the month, so Chloé can confirm the script computes drift exactly as the seminar lab does on the six-laptop sample before trusting it on 600.
+
+### Lab — pilot completeness
 
 ```python
 """Check completeness of a synthetic pilot extract before analysis (stdlib only)."""
@@ -361,13 +403,19 @@ rows complete on all fields: 107/120 (89.2%)
 
 Local admin flag is complete (120/120). Last policy refresh is present for 111 (92.5%), location for 116 (96.7%) and department for 118 (98.3%). Some rows miss more than one field; 107 of 120 rows (89.2%) are complete on every field.
 
+The missing fields add up to 15 gaps, but only 13 rows are incomplete, because some rows miss more than one field. The local admin flag, which Explanation A depends on, is complete. The refresh date, which Explanation B depends on, is the field most often missing, which is the first warning that dropping incomplete rows would bias the test of B.
+
 ### 5.4 Fixing gaps
 
 Missing refresh dates come from laptops that had not checked in during the month. Rather than drop them, Chloé records them as "no refresh in month", which is itself relevant to Explanation B.
 
+Sven's question, whether missing data bias the results, is answered by this choice. Dropping the nine laptops without a refresh date would remove exactly the devices that Explanation B predicts will drift most, and so make remote working look less important than it might be. Coding them as "no refresh in month" keeps them in the analysis as an extreme value of the very variable B is about.
+
 ### 5.5 Revising the plan
 
 The plan now states how each missing field is handled.
+
+For the refresh date, missing becomes "no refresh in month"; for location and department, missing rows are reported as a separate category and excluded only from the comparison that needs that field. Writing these rules into the plan before the main extract arrives means the handling cannot be adjusted after seeing which rule gives the clearest result. Dr Mehta signs the revised plan with its date, before the six-month extract is requested from Halvorsen's IT team.
 
 ### Pipeline checks
 
@@ -428,7 +476,9 @@ You will (1) analyse drift across explanations; (2) interpret risk ratios and te
 
 Six months for 600 laptops: 138 drifted (23%), consistent with Halvorsen's reports.
 
-### Lab — Lab — competing explanations
+The match with Halvorsen's own quarterly reports, about a quarter of laptops, is a useful check: if Chloé's definition had produced a very different rate, either her coding or Halvorsen's reports would need investigating before any comparison. The 138 drifted laptops are split 66 among the 120 admin devices and 72 among the 480 others. Before any comparison, Chloé also checks the excluded replaced devices and the never-compliant laptops flagged at the first check, and reports both counts beside the 600, so the denominator for every later percentage is visible.
+
+### Lab — competing explanations
 
 ```python
 """Compare drift rates across competing explanations with risk ratios and chi-square (stdlib only)."""
@@ -456,17 +506,25 @@ engineering dept vs other: 41/150 (27.3%) vs 97/450 (21.6%), RR 1.27, chi2 2.1
 
 Local admin devices drifted 55.0% versus 15.0% (risk ratio 3.67, chi-square 86.7). Remote devices drifted 29.0% versus 20.0% (RR 1.45, chi-square 6.1). Engineering drifted 27.3% versus 21.6% (RR 1.27, chi-square 2.1, below the 3.84 threshold for p < 0.05 with one degree of freedom).
 
+The three results line up with the predictions differently. The admin comparison is large and clear: 66 of 120 admin laptops drifted against 72 of 480 others. The remote comparison is smaller but passes the threshold. The engineering comparison does not, so Chloé reports it as no clear association rather than a weak effect, as the proposal committed her to do.
+
 ### 6.3 Stratification
 
 Within non-admin devices, remote and office drift rates are close; within admin devices, both are high. This suggests the remote effect partly reflects admin rights.
+
+This is the overlap Chloé planned for. The remote result in the main comparison, a risk ratio equal to 1.45, is not wrong, but most of it is explained by where the admin devices are: many admin users work remotely. Stratifying is what lets her say that remote working adds little once admin rights are considered, instead of recommending changes to remote policy refreshes that would not address the main cause.
 
 ### 6.4 Settings pattern
 
 Admin devices drifted on many settings, matching Explanation A's prediction.
 
+Non-admin remote devices, by contrast, drifted mainly on settings that a missed refresh would leave behind, which is the small residual effect of Explanation B. Engineering devices showed no concentration of firewall drift, consistent with the weak department result. The settings pattern therefore points the same way as the risk ratios, through a different route, which makes the conclusion more convincing than either alone. Chloé reports the settings counts per group in a table beside the risk ratios.
+
 ### 6.5 Conclusion
 
 Local admin rights are the strongest association; remote working adds little once admin rights are considered; department shows no clear association.
+
+Each part of the conclusion carries its own evidence: a risk ratio equal to 3.67 and chi-square equal to 86.7 for admin rights; a remote effect equal to 1.45 that largely disappears within admin strata; and an engineering chi-square equal to 2.1, below the threshold. The wording stays associational, as in Chloé's research question, because the design observed existing records and changed nothing. Removing admin rights is therefore the first thing to test.
 
 ### Effect size and significance
 
@@ -529,21 +587,31 @@ You will (1) write findings clearly; (2) state limitations honestly; (3) connect
 
 The dissertation follows question, literature, design, results and discussion, with each figure traceable to code.
 
+Traceability means each table and figure is produced by a named script from the extract, and the dissertation cites the script beside the figure. The second examiner relies on this when re-running the analysis. Chapter order follows the logic of the study: the reader meets the three explanations and their predictions before seeing any results, so the results can be read as tests. Appendices hold the plan and its revisions.
+
 ### 7.2 Linking literature
 
 The admin finding supports least privilege (Saltzer and Schroeder, 1975) and CIS Controls v8 safeguards on administrative privileges; the operator perspective in Dietrich et al. (2018) helps explain why admin rights were granted widely.
+
+Dietrich et al. matter here because they explain a pattern Chloé's data cannot: why Halvorsen granted standing admin rights to 120 users in the first place. Operators under time pressure grant broad rights to reduce support calls. Linking the two lets the discussion recommend a process, temporary elevation on request, rather than simply blaming users.
 
 ### 7.3 Limitations
 
 One organisation; six months; observational design; monthly checks miss changes reverted within a month.
 
+Each limit has a direction. One organisation means results may not hold for fleets with different management. Six months may be too short to see seasonal patterns. The observational design shows association, not cause. And a setting changed and restored between monthly checks is never counted, so drift is probably underestimated, most likely among admin devices, which can change and restore settings quickly. None of these limits reverses the main finding, but each tells the reader what the follow-up study should do differently.
+
 ### 7.4 Practice implications
 
 Halvorsen can reduce standing admin rights and should re-measure drift after six months.
 
+Removing standing admin rights is the change with the strongest support, and the follow-up gives Halvorsen a way to check it. If drift among the former admin devices falls towards the 15.0% seen among non-admin devices, the association looks causal; if it barely moves, other explanations need another look. Halvorsen's same-day elevation process is part of the change, because removing rights without a quick alternative pushes users to work around the baseline.
+
 ### 7.5 Writing style
 
 Chloé reports counts with percentages and avoids causal language.
+
+Every percentage in the dissertation comes with its count, such as 66 of 120 rather than 55% alone, so a reader can see how many devices each figure rests on. When Dr Mehta found a sentence saying admin rights "cause" drift, Chloé changed it to "are strongly associated with", consistent with the rest of the dissertation and with her observational design. The chi-square values appear with the 3.84 threshold, so readers can see at once why engineering is described as unclear rather than weak.
 
 ### Presenting results
 
@@ -610,21 +678,31 @@ You will (1) undergo independent review; (2) defend findings; (3) plan follow-up
 
 A second examiner re-runs the analysis from the code and extract and obtains the same tables.
 
+Re-running from the extract tests more than arithmetic: it checks that the pseudonymised extract, the coding rules for missing fields and the scripts together produce the dissertation's tables. A difference would point to an undocumented manual step. The second examiner's identical tables also confirm that the risk ratio equal to 3.67 and the other headline figures were not mistyped. His report is filed with the dissertation.
+
 ### 8.2 Defense questions
 
 Examiners ask about the remote result, missing data and generalisation.
+
+Each question targets a choice that could change the conclusion. The remote result tests whether Chloé understood the overlap with admin rights. Missing data tests whether the no-refresh coding biased Explanation B's test. Generalisation tests whether she claims more than one manufacturer's fleet can show. Chloé prepared each answer from the dissertation's own tables, not from memory. None of the three questions asked about the admin result itself, which suggests the examiners found its evidence clear.
 
 ### 8.3 Answers
 
 Chloé explains the stratified comparison, the no-refresh coding and that results apply to centrally managed fleets similar to Halvorsen.
 
+Each answer points to a decision made before the data: the stratification was in the proposal, the no-refresh rule came from the pilot, and the generalisation statement matches the limitations chapter. Answers anchored in earlier decisions show the examiners that the conclusions were not shaped after seeing the results. She did not claim that the findings apply to unmanaged or personally owned devices, where the baseline is not enforced in the same way.
+
 ### 8.4 Follow-up
 
 Halvorsen removes standing admin rights from 120 devices; a follow-up six months later will test whether drift falls.
 
+The 120 devices are exactly the admin group in Chloé's data. The follow-up will compare their drift rate after six months with the 55.0% before, using the same monthly checks and coding rules. Halvorsen's same-day elevation process, which reduced complaints, is recorded too, so that a change in drift can be read alongside how often temporary elevation was used. Chloé's code will run unchanged on the new extract.
+
 ### 8.5 Reflection
 
 Pre-stated predictions kept the analysis focused.
+
+Writing them before seeing the data meant the engineering result could not be reinterpreted afterwards as a weak effect worth pursuing, and the remote result could not be presented without the stratification that explains it. Chloé notes that the same approach, stated predictions with dated entries in the plan, is what she would use in the follow-up study. Without them, three comparisons with different strengths would have invited a story chosen after the fact; with them, each result had a place to go before it was known, and the examiners could check that it went there.
 
 ### What the examiners valued
 
