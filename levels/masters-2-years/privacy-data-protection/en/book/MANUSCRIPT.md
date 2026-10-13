@@ -348,7 +348,7 @@ You will (1) estimate a difference in proportions with a bootstrap interval; (2)
 
 ### 6.1 Headline result
 
-After six months, Hana runs the analysis on 240 requests per period, here reproduced on synthetic data. On-time completion rises from 0.708 to 0.929, a difference of 0.221. A bootstrap with 4,000 resamples, following Efron and Tibshirani (1994), gives a 95% interval from 0.154 to 0.287. The interval excludes zero by a wide margin. But the request mix also changed: complex requests fell from 33% of the total to 17%, which is exactly the rival she predicted in Chapter 4, so the headline difference cannot be read as the portal's effect on its own. Hana records this point in her course notebook so that later chapters can build on it.
+After six months, Hana runs the analysis on 240 requests per period, here reproduced on synthetic data. On-time completion rises from 0.708 to 0.929, a difference of 0.221. A bootstrap with 4,000 resamples, following Efron and Tibshirani (1994), gives a 95% interval from 0.154 to 0.287. The interval excludes zero by a wide margin. But the request mix also changed: complex requests fell from 33% of the total to 17%, which is exactly the rival she predicted in Chapter 4, so the headline difference cannot be read as the portal's effect on its own.
 
 ### 6.2 Within strata
 

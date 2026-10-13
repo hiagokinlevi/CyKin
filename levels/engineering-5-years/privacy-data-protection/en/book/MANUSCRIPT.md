@@ -151,7 +151,7 @@ Physics also teaches that storage consumes energy and space. Keeping years of vi
 
 ### 3.4 Signals and side channels
 
-Finally, Zara studies how physical signals leak information. Video calls send packets whose sizes and timing can reveal activity even when content is encrypted, and screens emit faint signals. For Pellmore the practical lesson is modest: encrypting video protects content, but metadata such as call duration and time still reveal that a patient consulted a doctor. She notes this as a theme to revisit when she studies networks and threat models, because protecting metadata often requires design choices rather than encryption alone. Zara records this point in her course notebook so that later chapters can build on it.
+Finally, Zara studies how physical signals leak information. Video calls send packets whose sizes and timing can reveal activity even when content is encrypted, and screens emit faint signals. For Pellmore the practical lesson is modest: encrypting video protects content, but metadata such as call duration and time still reveal that a patient consulted a doctor. She notes this as a theme to revisit when she studies networks and threat models, because protecting metadata often requires design choices rather than encryption alone.
 
 ### Worked example
 
@@ -287,7 +287,7 @@ Zara models Pellmore's exposure as the number of patient records stored multipli
 
 ### 6.2 Decay and staleness
 
-Some risks decay. An old address is less useful to an attacker than a current one, and the usefulness of contact data might be modelled as decaying exponentially with time. Zara warns against over-using the model: health information does not lose sensitivity with age, and a diagnosis from ten years ago can still harm someone. She concludes that decay models can guide retention for low-sensitivity data, but special categories need explicit rules rather than an assumption that risk fades away naturally over time. Prof. Holm asks her to explain the idea aloud to a classmate before moving on.
+Some risks decay. An old address is less useful to an attacker than a current one, and the usefulness of contact data might be modelled as decaying exponentially with time. Zara warns against over-using the model: health information does not lose sensitivity with age, and a diagnosis from ten years ago can still harm someone. She concludes that decay models can guide retention for low-sensitivity data, but special categories need explicit rules rather than an assumption that risk fades away naturally over time.
 
 ### 6.3 Series and accumulation
 
@@ -335,11 +335,11 @@ Pellmore wants to know how many patients skip prescribed medication, but patient
 
 ### 7.2 Estimating the share
 
-The lab simulates 2,000 patients, of whom 17.9% truly skip medication. With the coin design, a quarter of all answers are random yeses, so the observed share of yes answers is 0.344. The estimate subtracts the random part and doubles the remainder, giving 0.189 with a 95% interval from 0.147 to 0.231. The interval contains the true value. Zara explains each step to Pellmore's clinical lead, emphasising that the estimate describes the group and that individual answers remain deniable even to the survey team. She notes the assumption behind it so that a reviewer can challenge it later.
+The lab simulates 2,000 patients, of whom 17.9% truly skip medication. With the coin design, a quarter of all answers are random yeses, so the observed share of yes answers is 0.344. The estimate subtracts the random part and doubles the remainder, giving 0.189 with a 95% interval from 0.147 to 0.231. The interval contains the true value. Zara explains each step to Pellmore's clinical lead, emphasising that the estimate describes the group and that individual answers remain deniable even to the survey team. The clinical lead accepts the method for the pilot survey.
 
 ### 7.3 The cost of deniability
 
-Privacy has a price in accuracy. A direct survey of 2,000 honest respondents would have a standard error of 0.009, but randomised response has 0.021, more than twice as large. Zara explains that the noise that protects individuals also blurs the estimate, so a larger sample is needed for the same precision. This is the same trade-off she will meet in differential privacy, where randomised response is often presented as an early example of a mechanism that gives each respondent plausible deniability. The same reasoning will return when Pellmore's data protection officer reviews the work.
+Privacy has a price in accuracy. A direct survey of 2,000 honest respondents would have a standard error of 0.009, but randomised response has 0.021, more than twice as large. Zara explains that the noise that protects individuals also blurs the estimate, so a larger sample is needed for the same precision. This is the same trade-off she will meet in differential privacy, where randomised response is often presented as an early example of a mechanism that gives each respondent plausible deniability. Noise widens the estimate's error.
 
 ### 7.4 Honest answers as the real gain
 
@@ -407,15 +407,15 @@ In computer architecture Zara follows a patient record through a server. It sits
 
 ### 8.2 Isolation
 
-Architecture provides isolation: processes cannot normally read each other's memory, and virtual machines are separated by a hypervisor. Zara learns that hardware flaws have sometimes broken these boundaries, so cloud tenants share risk with neighbours. For Pellmore's records system she reads the cloud provider's documentation on dedicated hosts and confidential computing, which encrypts memory in use. She notes that such features reduce risk but add cost and complexity, and that the choice should follow a risk assessment rather than a vendor brochure. She adds a short note to the shared course wiki for other students.
+Architecture provides isolation: processes cannot normally read each other's memory, and virtual machines are separated by a hypervisor. Zara learns that hardware flaws have sometimes broken these boundaries, so cloud tenants share risk with neighbours. For Pellmore's records system she reads the cloud provider's documentation on dedicated hosts and confidential computing, which encrypts memory in use. She notes that such features reduce risk but add cost and complexity, and that the choice should follow a risk assessment rather than a vendor brochure.
 
 ### 8.3 Trusted hardware for keys
 
-Hardware security modules and secure enclaves keep cryptographic keys away from ordinary memory. Zara links this to Chapter 3: if Pellmore uses cryptographic erasure for videos, the keys are the most valuable asset, and storing them in a hardware module makes accidental copying much harder. She sketches a design where each month of recordings has its own key, kept in the module, and deleting a month's key erases that month. The design turns retention enforcement into a simple, auditable key operation. This makes the privacy consequence visible to people outside the specialist team.
+Hardware security modules and secure enclaves keep cryptographic keys away from ordinary memory. Zara links this to Chapter 3: if Pellmore uses cryptographic erasure for videos, the keys are the most valuable asset, and storing them in a hardware module makes accidental copying much harder. She sketches a design where each month of recordings has its own key, kept in the module, and deleting a month's key erases that month. The design turns retention enforcement into a simple, auditable key operation. Auditors can check key deletion logs.
 
 ### 8.4 Performance trade-offs
 
-Encryption and isolation cost processor time. Zara measures that encrypting video at rest adds little load on modern processors with hardware acceleration. She records the measurement in her decision log, because the claim that privacy measures are too slow often blocks good designs without evidence. Prof. Holm reminds her that measurements should be repeated on Pellmore's actual workload, but her first figures are enough to move the conversation from opinion to data, which is a recurring goal in her engineering training. Zara keeps a dated copy of her working so that the result can be traced.
+Encryption and isolation cost processor time. Zara measures that encrypting video at rest adds little load on modern processors with hardware acceleration. She records the measurement in her decision log, because the claim that privacy measures are too slow often blocks good designs without evidence. Prof. Holm reminds her that measurements should be repeated on Pellmore's actual workload, but her first figures are enough to move the conversation from opinion to data, which is a recurring goal in her engineering training. Encryption adds measurable latency.
 
 ### Worked example
 
@@ -499,7 +499,7 @@ You will (1) apply engineering ethics to privacy decisions; (2) recognise harms 
 
 ### 10.1 Duties of an engineer
 
-Engineering ethics asks professionals to hold public safety and welfare paramount. Zara applies this to Pellmore. Health data exposure can cause discrimination, embarrassment, loss of employment and distress. Warren and Brandeis (1890) wrote of injury to feelings; Solove (2006) lists harms such as disclosure, exposure and increased accessibility. Zara writes that her duty is not only to satisfy the law but to prevent foreseeable harm to patients, even when no regulator would notice, because patients cannot see or control how the system is built. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Engineering ethics asks professionals to hold public safety and welfare paramount. Zara applies this to Pellmore. Health data exposure can cause discrimination, embarrassment, loss of employment and distress. Warren and Brandeis (1890) wrote of injury to feelings; Solove (2006) lists harms such as disclosure, exposure and increased accessibility. Zara writes that her duty is not only to satisfy the law but to prevent foreseeable harm to patients, even when no regulator would notice, because patients cannot see or control how the system is built.
 
 ### 10.2 Beyond compliance
 
@@ -507,7 +507,7 @@ Zara finds a case where law and ethics diverge. Pellmore's analytics team wants 
 
 ### 10.3 Safety of patients
 
-Telemedicine adds safety concerns. If a video consultation fails silently, a patient may miss urgent care. Zara learns that privacy measures must not create safety risks: an over-strict session timeout could cut off a consultation. She works with clinicians to set timeouts that protect unattended devices without ending active calls. The exercise teaches her that safety and privacy are both duties toward the same patients, and that engineers must balance them openly rather than maximising one quietly at the expense of the other. She checks the idea against a second example before relying on it.
+Telemedicine adds safety concerns. If a video consultation fails silently, a patient may miss urgent care. Zara learns that privacy measures must not create safety risks: an over-strict session timeout could cut off a consultation. She works with clinicians to set timeouts that protect unattended devices without ending active calls. The exercise teaches her that safety and privacy are both duties toward the same patients, and that engineers must balance them openly rather than maximising one quietly at the expense of the other.
 
 ### 10.4 Escalation
 
@@ -551,7 +551,7 @@ In networks Zara captures traffic from a test copy of Pellmore's app on a lab ne
 
 ### 11.2 Transport encryption
 
-Zara checks that all of Pellmore's endpoints use current transport layer security and reject old protocol versions. She explains to the class that Article 32 of the GDPR requires security appropriate to the risk, including encryption where appropriate, and that health data in transit is a clear case. She also verifies that internal traffic between services is encrypted, because attackers who reach the internal network often find unencrypted traffic there. The finding leads Pellmore to enable mutual authentication between its booking and records services. Zara records this point in her course notebook so that later chapters can build on it.
+Zara checks that all of Pellmore's endpoints use current transport layer security and reject old protocol versions. She explains to the class that Article 32 of the GDPR requires security appropriate to the risk, including encryption where appropriate, and that health data in transit is a clear case. She also verifies that internal traffic between services is encrypted, because attackers who reach the internal network often find unencrypted traffic there. The finding leads Pellmore to enable mutual authentication between its booking and records services.
 
 ### 11.3 Metadata minimisation
 
@@ -559,7 +559,7 @@ Network devices log IP addresses, which the Court of Justice of the European Uni
 
 ### 11.4 Third-party calls
 
-The capture also shows calls to six third-party domains: fonts, analytics, crash reporting and advertising measurement. Zara lists each, what it receives and whether Pellmore has a contract with it. Two have no data processing agreement. Article 28 of the GDPR requires a binding contract with processors. She recommends removing the advertising script entirely, hosting fonts locally and signing agreements for the remaining processors. The exercise shows her that a network capture is also a compliance audit tool, revealing flows that documentation missed. Prof. Holm asks her to explain the idea aloud to a classmate before moving on.
+The capture also shows calls to six third-party domains: fonts, analytics, crash reporting and advertising measurement. Zara lists each, what it receives and whether Pellmore has a contract with it. Two have no data processing agreement. Article 28 of the GDPR requires a binding contract with processors. She recommends removing the advertising script entirely, hosting fonts locally and signing agreements for the remaining processors. The exercise shows her that a network capture is also a compliance audit tool, revealing flows that documentation missed.
 
 ### Worked example
 
@@ -603,11 +603,11 @@ Operating systems log events, and applications sometimes write sensitive data in
 
 ### 12.3 Temporary files
 
-Report generation creates temporary files on disk, which are not always cleaned up after crashes. Zara finds hundreds of leftover temporary reports containing patient names. She changes the process to use the operating system's secure temporary file functions with restrictive permissions and to clean up on start, and she adds a scheduled job that deletes any temporary report older than one day. The finding shows her that data protection requires attention to the unglamorous parts of systems as well as their main databases. She notes the assumption behind it so that a reviewer can challenge it later.
+Report generation creates temporary files on disk, which are not always cleaned up after crashes. Zara finds hundreds of leftover temporary reports containing patient names. She changes the process to use the operating system's secure temporary file functions with restrictive permissions and to clean up on start, and she adds a scheduled job that deletes any temporary report older than one day. The finding shows her that data protection requires attention to the unglamorous parts of systems as well as their main databases.
 
 ### 12.4 Updates and patching
 
-Finally, Zara checks patch levels. Unpatched operating systems are a frequent cause of breaches. She learns that Pellmore patches monthly but has no record of when critical patches were applied. She proposes tracking patch delay as a metric and agreeing a maximum delay for critical security updates. Prof. Holm reminds her that Article 32 asks for a process for regularly testing and evaluating the effectiveness of security measures, and patch metrics are one way to show that such a process actually exists. The same reasoning will return when Pellmore's data protection officer reviews the work.
+Finally, Zara checks patch levels. Unpatched operating systems are a frequent cause of breaches. She learns that Pellmore patches monthly but has no record of when critical patches were applied. She proposes tracking patch delay as a metric and agreeing a maximum delay for critical security updates. Prof. Holm reminds her that Article 32 asks for a process for regularly testing and evaluating the effectiveness of security measures, and patch metrics are one way to show that such a process actually exists. Her metric: days to patch.
 
 ### Worked example
 
@@ -647,7 +647,7 @@ Article 5(1)(e) of the GDPR requires storage limitation: personal data must be k
 
 ### 13.2 The query
 
-The lab builds 400 synthetic records in SQLite across four categories with retention periods of thirty days for video recordings, 180 days for marketing leads, 365 days for chat logs and 730 days for appointments. On 1 October 2026, 96 of 101 video recordings, 82 of 100 marketing leads, 72 of 101 chat logs and 12 of 98 appointments are past retention: 262 of 400 records in total. Zara presents the result as evidence that the paper policy has never been applied, with the video category the clearest gap. She adds a short note to the shared course wiki for other students.
+The lab builds 400 synthetic records in SQLite across four categories with retention periods of thirty days for video recordings, 180 days for marketing leads, 365 days for chat logs and 730 days for appointments. On 1 October 2026, 96 of 101 video recordings, 82 of 100 marketing leads, 72 of 101 chat logs and 12 of 98 appointments are past retention: 262 of 400 records in total. Zara presents the result as evidence that the paper policy has never been applied, with the video category the clearest gap. The query uses only stdlib sqlite3, so every classmate can rerun it.
 
 ### 13.3 Safe deletion
 
@@ -772,19 +772,19 @@ You will (1) relate confidentiality, integrity and availability to data protecti
 
 ### 15.1 Security serves privacy
 
-Zara learns the classic security goals: confidentiality, integrity and availability. She relates them to data protection. Confidentiality prevents unauthorised disclosure of health records; integrity prevents wrong results reaching a patient; availability ensures clinicians can see records during a consultation. The GDPR lists integrity and confidentiality as a principle in Article 5(1)(f). But Zara notes that privacy is broader than security: a perfectly secure system can still collect too much or use data for unexpected purposes, so security is necessary but not sufficient. This makes the privacy consequence visible to people outside the specialist team.
+Zara learns the classic security goals: confidentiality, integrity and availability. She relates them to data protection. Confidentiality prevents unauthorised disclosure of health records; integrity prevents wrong results reaching a patient; availability ensures clinicians can see records during a consultation. The GDPR lists integrity and confidentiality as a principle in Article 5(1)(f). But Zara notes that privacy is broader than security: a perfectly secure system can still collect too much or use data for unexpected purposes, so security is necessary but not sufficient.
 
 ### 15.2 Authentication
 
-Pellmore patients log in with passwords. Zara reviews options and recommends adding a second factor for viewing records and for changing contact details, the actions most attractive to attackers. She avoids text-message codes as the only option, offering an authenticator app as well, and she ensures that recovery does not depend on knowledge questions whose answers are often public. Clinicians get stronger authentication because they can see many patients' records. She explains that authentication strength should follow the harm an account could do. Zara keeps a dated copy of her working so that the result can be traced.
+Pellmore patients log in with passwords. Zara reviews options and recommends adding a second factor for viewing records and for changing contact details, the actions most attractive to attackers. She avoids text-message codes as the only option, offering an authenticator app as well, and she ensures that recovery does not depend on knowledge questions whose answers are often public. Clinicians get stronger authentication because they can see many patients' records. She explains that authentication strength should follow the harm an account could do.
 
 ### 15.3 Article 32 measures
 
-Article 32 lists examples of security measures: pseudonymisation and encryption, the ability to ensure ongoing confidentiality, integrity, availability and resilience, the ability to restore access after an incident, and regular testing. Zara maps Pellmore's controls to each example and finds gaps in restoring access and in testing. She explains that the article requires measures appropriate to the risk, taking into account the state of the art and costs, which makes risk assessment the starting point rather than a fixed list of controls. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Article 32 lists examples of security measures: pseudonymisation and encryption, the ability to ensure ongoing confidentiality, integrity, availability and resilience, the ability to restore access after an incident, and regular testing. Zara maps Pellmore's controls to each example and finds gaps in restoring access and in testing. She explains that the article requires measures appropriate to the risk, taking into account the state of the art and costs, which makes risk assessment the starting point rather than a fixed list of controls. Encryption is named explicitly.
 
 ### 15.4 Integrity for patients
 
-Zara studies an integrity failure: a test result attached to the wrong patient. This is both a safety and a data protection problem, because it discloses one patient's data to another and may harm both. She proposes checks: matching on two identifiers before attaching results, and alerts when names differ. She notes that errors like this are personal data breaches under the GDPR definition in Article 4(12), which includes accidental disclosure, not only attacks, and that they must be handled through the breach process. She checks the idea against a second example before relying on it.
+Zara studies an integrity failure: a test result attached to the wrong patient. This is both a safety and a data protection problem, because it discloses one patient's data to another and may harm both. She proposes checks: matching on two identifiers before attaching results, and alerts when names differ. She notes that errors like this are personal data breaches under the GDPR definition in Article 4(12), which includes accidental disclosure, not only attacks, and that they must be handled through the breach process.
 
 ### Worked example
 
@@ -820,19 +820,19 @@ You will (1) describe Pellmore's platform as a system of systems; (2) trace priv
 
 ### 16.1 System of systems
 
-Systems engineering treats a product as interacting parts. Zara draws Pellmore's platform: mobile app, booking service, video service run by a vendor, records system, laboratory interface, analytics and support desk. Each has its own owner, data and failure modes. Privacy properties such as retention or access control must hold across all of them. A property enforced in one part and ignored in another is effectively absent. She calls this the weakest-interface problem and uses it to justify end-to-end requirements rather than component-by-component promises. The point seems small, but it changes how owners act on the result.
+Systems engineering treats a product as interacting parts. Zara draws Pellmore's platform: mobile app, booking service, video service run by a vendor, records system, laboratory interface, analytics and support desk. Each has its own owner, data and failure modes. Privacy properties such as retention or access control must hold across all of them. A property enforced in one part and ignored in another is effectively absent. She calls this the weakest-interface problem and uses it to justify end-to-end requirements rather than component-by-component promises.
 
 ### 16.2 Requirement traceability
 
-Zara creates a traceability matrix linking each privacy requirement to the components that implement it and the tests that verify it. For example, the thirty-day video retention requirement traces to the vendor contract, the archive key schedule and a monthly deletion test. Gaps appear immediately: the analytics system has no requirement for retention at all. ISO/IEC 27701:2025, the privacy information management system standard, emphasises documented controls and evidence, and Zara's matrix provides exactly that kind of documentation at the engineering level. Pellmore's data protection officer later asks for a copy of this analysis.
+Zara creates a traceability matrix linking each privacy requirement to the components that implement it and the tests that verify it. For example, the thirty-day video retention requirement traces to the vendor contract, the archive key schedule and a monthly deletion test. Gaps appear immediately: the analytics system has no requirement for retention at all. ISO/IEC 27701:2025, the privacy information management system standard, emphasises documented controls and evidence, and Zara's matrix provides exactly that kind of documentation at the engineering level. Each row cites its source.
 
 ### 16.3 Life cycle
 
-Systems pass through concept, development, operation and retirement. Privacy concerns differ at each stage: at concept, whether to collect data at all; in development, how to protect it; in operation, how to monitor; at retirement, how to delete or migrate. Zara notices that Pellmore has no plan for retiring its old booking system, which still holds data. She adds a decommissioning checklist with data inventory, migration or deletion, and certificate of destruction. Retirement, she writes, is when forgotten data most often escape. She marks the open questions in red so that they are not forgotten.
+Systems pass through concept, development, operation and retirement. Privacy concerns differ at each stage: at concept, whether to collect data at all; in development, how to protect it; in operation, how to monitor; at retirement, how to delete or migrate. Zara notices that Pellmore has no plan for retiring its old booking system, which still holds data. She adds a decommissioning checklist with data inventory, migration or deletion, and certificate of destruction. Retirement, she writes, is when forgotten data most often escape.
 
 ### 16.4 Interfaces with vendors
 
-Many of Pellmore's components are run by vendors. Zara learns that systems engineering must include contracts as interfaces. The video vendor's contract specifies retention, sub-processors and breach notification times. She checks that these match Pellmore's own requirements and finds that the vendor may keep recordings for ninety days, longer than Pellmore's thirty-day rule. She flags the mismatch for contract renegotiation. The example shows that legal documents are part of the technical system and must be engineered with the same care. Writing the reasoning down also helps her spot a weak step in her argument.
+Many of Pellmore's components are run by vendors. Zara learns that systems engineering must include contracts as interfaces. The video vendor's contract specifies retention, sub-processors and breach notification times. She checks that these match Pellmore's own requirements and finds that the vendor may keep recordings for ninety days, longer than Pellmore's thirty-day rule. She flags the mismatch for contract renegotiation. The example shows that legal documents are part of the technical system and must be engineered with the same care. Contracts carry technical promises.
 
 ### Worked example
 
@@ -876,7 +876,7 @@ A feedback loop needs a signal that reflects the goal. For access control Zara c
 
 ### 17.3 Stability
 
-Badly tuned loops oscillate. If the deletion job deletes aggressively whenever the count rises, it might remove records under legal hold or overload the database. Zara adds limits: deletion caps per run, an exclusion list and an alert if the count rises suddenly, which usually signals a fault rather than ordinary growth. She explains that in privacy, as in physical control, stability matters more than speed: a slow, predictable process is better than a fast one that occasionally destroys records it should keep. Zara discusses the trade-off with a classmate who works in finance.
+Badly tuned loops oscillate. If the deletion job deletes aggressively whenever the count rises, it might remove records under legal hold or overload the database. Zara adds limits: deletion caps per run, an exclusion list and an alert if the count rises suddenly, which usually signals a fault rather than ordinary growth. She explains that in privacy, as in physical control, stability matters more than speed: a slow, predictable process is better than a fast one that occasionally destroys records it should keep.
 
 ### 17.4 Gaming
 
@@ -916,15 +916,15 @@ You will (1) apply zones and segmentation to health data; (2) design for least p
 
 ### 18.1 Zones
 
-Zara divides Pellmore's architecture into zones: a public zone for the app front end, an application zone for booking and video, a restricted zone for clinical records and a management zone for administrators. Traffic between zones passes through controlled interfaces. Clinical records are reachable only from services that need them. Segmentation limits how far an attacker can move after compromising one service, and it also limits accidental access, since a misconfigured analytics job in the application zone cannot read the records zone directly. The class compares answers and finds that most differences come from unstated assumptions.
+Zara divides Pellmore's architecture into zones: a public zone for the app front end, an application zone for booking and video, a restricted zone for clinical records and a management zone for administrators. Traffic between zones passes through controlled interfaces. Clinical records are reachable only from services that need them. Segmentation limits how far an attacker can move after compromising one service, and it also limits accidental access, since a misconfigured analytics job in the application zone cannot read the records zone directly.
 
 ### 18.2 Least privilege at scale
 
-With dozens of services, manual permissions become unmanageable. Zara designs role templates for services and people, with permissions tied to purposes. A service account for appointment reminders can read names and appointment times but not clinical notes. Permissions are declared in configuration and reviewed automatically for changes. She explains that least privilege is not only about attackers: it also implements the purpose limitation principle in Article 5(1)(b), since each component can use data only for the purposes its role allows. Zara records this point in her course notebook so that later chapters can build on it.
+With dozens of services, manual permissions become unmanageable. Zara designs role templates for services and people, with permissions tied to purposes. A service account for appointment reminders can read names and appointment times but not clinical notes. Permissions are declared in configuration and reviewed automatically for changes. She explains that least privilege is not only about attackers: it also implements the purpose limitation principle in Article 5(1)(b), since each component can use data only for the purposes its role allows. Roles encode purposes.
 
 ### 18.3 Privacy patterns
 
-Zara studies architectural patterns that support privacy: aggregation before data leave a zone, pseudonymisation at zone boundaries, and separate stores for identity and clinical data. She applies them to analytics: events leaving the application zone carry a pseudonymous identifier and coarse timestamps, and aggregation runs before data reach the analytics vendor. The EDPB guidelines on data protection by design describe such measures as ways to implement principles effectively, and Zara cites them when presenting her design to Pellmore's architecture board. Prof. Holm asks her to explain the idea aloud to a classmate before moving on.
+Zara studies architectural patterns that support privacy: aggregation before data leave a zone, pseudonymisation at zone boundaries, and separate stores for identity and clinical data. She applies them to analytics: events leaving the application zone carry a pseudonymous identifier and coarse timestamps, and aggregation runs before data reach the analytics vendor. The EDPB guidelines on data protection by design describe such measures as ways to implement principles effectively, and Zara cites them when presenting her design to Pellmore's architecture board. The board approves the pattern list.
 
 ### 18.4 Evaluating the design
 
@@ -964,7 +964,7 @@ You will (1) choose identifiers that limit linkage; (2) apply encryption and key
 
 ### 19.1 Identifiers and linkage
 
-Zara notices that Pellmore uses the same patient number in every system, including analytics and the laboratory partner. A single identifier lets anyone with access to two datasets join them. She proposes domain-specific pseudonyms: each external recipient receives a different identifier derived from the internal one with a separate key. Linking datasets then requires the keys, which stay with Pellmore. This approach reduces linkage between recipients and fits the GDPR concept of pseudonymisation, in which additional information is kept separately. She notes the assumption behind it so that a reviewer can challenge it later.
+Zara notices that Pellmore uses the same patient number in every system, including analytics and the laboratory partner. A single identifier lets anyone with access to two datasets join them. She proposes domain-specific pseudonyms: each external recipient receives a different identifier derived from the internal one with a separate key. Linking datasets then requires the keys, which stay with Pellmore. This approach reduces linkage between recipients and fits the GDPR concept of pseudonymisation, in which additional information is kept separately. Each recipient gets a different pseudonym.
 
 ### 19.2 Keyed hashing
 
@@ -972,11 +972,11 @@ A plain hash of a patient number is not a pseudonym, because anyone can hash all
 
 ### 19.3 Encryption choices
 
-Zara reviews encryption at rest. Database encryption protects against stolen disks but not against an attacker using the application. Field-level encryption for especially sensitive fields, such as mental health notes, adds protection because only services holding the field key can decrypt. She weighs the extra complexity and decides to apply field-level encryption only to a small set of fields defined by clinicians. The decision illustrates the proportionality in Article 32, where measures follow risk rather than being applied everywhere. The same reasoning will return when Pellmore's data protection officer reviews the work.
+Zara reviews encryption at rest. Database encryption protects against stolen disks but not against an attacker using the application. Field-level encryption for especially sensitive fields, such as mental health notes, adds protection because only services holding the field key can decrypt. She weighs the extra complexity and decides to apply field-level encryption only to a small set of fields defined by clinicians. The decision illustrates the proportionality in Article 32, where measures follow risk rather than being applied everywhere. Low-risk fields stay unencrypted for searchability.
 
 ### 19.4 Limits of pseudonymisation
 
-Zara reminds herself that pseudonymised data are still personal data under the GDPR. A pseudonymous record with a birth date and postcode can be re-identified through the attributes, as Sweeney (2002) showed, regardless of how well the identifier is protected. Garfinkel (NISTIR 8053, 2015) makes the same point: removing direct identifiers is only a first step. Pseudonymisation reduces risk and is encouraged by the GDPR, but it does not make data anonymous, and Pellmore's contracts must reflect that. She adds a short note to the shared course wiki for other students.
+Zara reminds herself that pseudonymised data are still personal data under the GDPR. A pseudonymous record with a birth date and postcode can be re-identified through the attributes, as Sweeney (2002) showed, regardless of how well the identifier is protected. Garfinkel (NISTIR 8053, 2015) makes the same point: removing direct identifiers is only a first step. Pseudonymisation reduces risk and is encouraged by the GDPR, but it does not make data anonymous, and Pellmore's contracts must reflect that. Anyone holding the key table can reverse the pseudonyms, so the table is stored apart from the data.
 
 ### Worked example
 
@@ -1012,15 +1012,15 @@ You will (1) map the legal framework that shapes Pellmore's engineering; (2) ide
 
 ### 20.1 Laws that apply
 
-Pellmore serves patients in the EU and Brazil, so both the GDPR and the LGPD, Lei 13.709/2018, apply. Both define principles such as purpose limitation and necessity, rights for individuals and duties for organisations. Both treat health data as especially sensitive: GDPR Article 9 and LGPD Article 11 restrict processing to specific grounds. Zara builds a table comparing the two laws on legal bases, rights, breach notification and the role of a data protection officer, so that engineering requirements can be stated once and satisfy both. This makes the privacy consequence visible to people outside the specialist team.
+Pellmore serves patients in the EU and Brazil, so both the GDPR and the LGPD, Lei 13.709/2018, apply. Both define principles such as purpose limitation and necessity, rights for individuals and duties for organisations. Both treat health data as especially sensitive: GDPR Article 9 and LGPD Article 11 restrict processing to specific grounds. Zara builds a table comparing the two laws on legal bases, rights, breach notification and the role of a data protection officer, so that engineering requirements can be stated once and satisfy both.
 
 ### 20.2 Controllers and processors
 
-Zara learns the difference between a controller, who decides why and how data are processed, and a processor, who acts on the controller's behalf. Pellmore is the controller for patient records; the video vendor is a processor. Laboratory partners may be separate controllers for their own testing. The roles determine who is responsible for what, including rights requests and breach notification. EDPB Guidelines 07/2020 explain the concepts in detail, and Zara uses them to label each node in her data-flow graph from Chapter 2. Zara keeps a dated copy of her working so that the result can be traced.
+Zara learns the difference between a controller, who decides why and how data are processed, and a processor, who acts on the controller's behalf. Pellmore is the controller for patient records; the video vendor is a processor. Laboratory partners may be separate controllers for their own testing. The roles determine who is responsible for what, including rights requests and breach notification. EDPB Guidelines 07/2020 explain the concepts in detail, and Zara uses them to label each node in her data-flow graph from Chapter 2.
 
 ### 20.3 Frameworks and standards
 
-Beyond law, Zara studies frameworks. The NIST Privacy Framework 1.0 organises privacy risk management into functions such as Identify-P, Govern-P, Control-P, Communicate-P and Protect-P. ISO/IEC 29100 defines privacy principles and terms, and ISO/IEC 27701:2025 specifies a privacy information management system. She uses the NIST functions to group her engineering work: inventories under Identify-P, access controls under Protect-P and notices under Communicate-P. Frameworks, she notes, help organise work but do not replace legal analysis. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Beyond law, Zara studies frameworks. The NIST Privacy Framework 1.0 organises privacy risk management into functions such as Identify-P, Govern-P, Control-P, Communicate-P and Protect-P. ISO/IEC 29100 defines privacy principles and terms, and ISO/IEC 27701:2025 specifies a privacy information management system. She uses the NIST functions to group her engineering work: inventories under Identify-P, access controls under Protect-P and notices under Communicate-P. Frameworks, she notes, help organise work but do not replace legal analysis. Legal questions, such as which lawful basis applies to a new research use, still need counsel.
 
 ### 20.4 The engineer's role
 
@@ -1068,7 +1068,7 @@ A requirement that cannot be tested cannot be verified. Zara rewrites vague stat
 
 ### 21.3 Rights as requirements
 
-Zara writes requirements for each data subject right that applies to Pellmore: access, rectification, erasure, restriction, portability and objection. For erasure she specifies which stores must be covered and which exceptions apply, such as medical records that must be retained under health law. The LGPD Article 18 lists similar rights for Brazilian patients, including information about sharing with third parties. Writing the rights as system requirements reveals that portability needs a structured export format that Pellmore does not yet have. Zara records this point in her course notebook so that later chapters can build on it.
+Zara writes requirements for each data subject right that applies to Pellmore: access, rectification, erasure, restriction, portability and objection. For erasure she specifies which stores must be covered and which exceptions apply, such as medical records that must be retained under health law. The LGPD Article 18 lists similar rights for Brazilian patients, including information about sharing with third parties. Writing the rights as system requirements reveals that portability needs a structured export format that Pellmore does not yet have. She adds a JSON export ticket.
 
 ### 21.4 Prioritising by risk
 
@@ -1108,7 +1108,7 @@ You will (1) build a data-flow inventory; (2) check each flow for purpose, lawfu
 
 ### 22.1 The inventory
 
-Zara converts her data-flow graph into an inventory with one row per flow: source, destination, purpose, lawful basis, region and transfer mechanism. Article 30 of the GDPR requires controllers to keep a record of processing activities, including purposes, categories of recipients and transfers to third countries. An inventory at flow level is more detailed than the legal minimum, but it is what engineers need to find problems. She checks seven flows from Pellmore's platform, chosen to cover internal systems, vendors and partners. Prof. Holm asks her to explain the idea aloud to a classmate before moving on.
+Zara converts her data-flow graph into an inventory with one row per flow: source, destination, purpose, lawful basis, region and transfer mechanism. Article 30 of the GDPR requires controllers to keep a record of processing activities, including purposes, categories of recipients and transfers to third countries. An inventory at flow level is more detailed than the legal minimum, but it is what engineers need to find problems. She checks seven flows from Pellmore's platform, chosen to cover internal systems, vendors and partners. Each flow has an owner.
 
 ### 22.2 Automated checks
 
@@ -1193,7 +1193,7 @@ You will (1) apply a privacy threat model to the platform; (2) analyse failure m
 
 ### 23.1 Privacy threats
 
-Security threat models focus on attackers. Zara adds privacy threats that can occur without any attacker: linkability, identifiability, non-repudiation, detectability, disclosure, unawareness and non-compliance. She applies them to the video consultation flow. Linkability arises because the same identifier appears in video logs and analytics; unawareness because patients are not told that the vendor records sessions. Solove's taxonomy supports the same analysis from a legal angle, naming harms such as aggregation and secondary use that a purely security-focused model would miss. She notes the assumption behind it so that a reviewer can challenge it later.
+Security threat models focus on attackers. Zara adds privacy threats that can occur without any attacker: linkability, identifiability, non-repudiation, detectability, disclosure, unawareness and non-compliance. She applies them to the video consultation flow. Linkability arises because the same identifier appears in video logs and analytics; unawareness because patients are not told that the vendor records sessions. Solove's taxonomy supports the same analysis from a legal angle, naming harms such as aggregation and secondary use that a purely security-focused model would miss. Both views are recorded.
 
 ### 23.2 Failure modes
 
@@ -1245,11 +1245,11 @@ Article 35 of the GDPR requires a data protection impact assessment where proces
 
 ### 24.2 Scoring risks
 
-Zara takes the five threats from Chapter 23 and scores each for likelihood and severity on a one-to-four scale, then multiplies them. Before measures, indefinite video retention scores 9, the analytics SDK sending health events scores 12, misdirected results 8, staff snooping 9 and a vendor breach of chat logs 6. Four risks are high or medium-high. She is careful to explain that the scores are an ordering aid, not measurements, and that the descriptions of harm matter more than the numbers when people decide what to do. The same reasoning will return when Pellmore's data protection officer reviews the work.
+Zara takes the five threats from Chapter 23 and scores each for likelihood and severity on a one-to-four scale, then multiplies them. Before measures, indefinite video retention scores 9, the analytics SDK sending health events scores 12, misdirected results 8, staff snooping 9 and a vendor breach of chat logs 6. Four risks are high or medium-high. She is careful to explain that the scores are an ordering aid, not measurements, and that the descriptions of harm matter more than the numbers when people decide what to do.
 
 ### 24.3 Measures and residual risk
 
-For each risk Zara lists measures: thirty-day retention with monthly keys, removal of the analytics SDK, two-identifier matching for results, access logging with anomaly review and contractual limits on the vendor. After measures, scores fall to 3, 4, 4 and 4 for the first four risks, but the vendor breach stays at 6, because Pellmore cannot control the vendor's security directly. No risk remains high. The residual medium risk is accepted by Pellmore's management with a plan to review the vendor at contract renewal. She adds a short note to the shared course wiki for other students.
+For each risk Zara lists measures: thirty-day retention with monthly keys, removal of the analytics SDK, two-identifier matching for results, access logging with anomaly review and contractual limits on the vendor. After measures, scores fall to 3, 4, 4 and 4 for the first four risks, but the vendor breach stays at 6, because Pellmore cannot control the vendor's security directly. No risk remains high. The residual medium risk is accepted by Pellmore's management with a plan to review the vendor at contract renewal. Renewal is in eighteen months.
 
 ### 24.4 Prior consultation
 
@@ -1318,7 +1318,7 @@ In the first design studio Zara's team receives a brief: design symptom triage f
 
 ### 25.2 Alternatives
 
-The team sketches three alternatives. In the first, symptoms are sent to a server that runs the triage model and stores answers for improvement. In the second, the model runs on the phone and nothing leaves the device unless the patient books. In the third, answers are sent but deleted after the result is shown. Zara evaluates each for data collected, transparency, accuracy and cost. On-device triage collects least, but updating the model is harder and some older phones may not run it. This makes the privacy consequence visible to people outside the specialist team.
+The team sketches three alternatives. In the first, symptoms are sent to a server that runs the triage model and stores answers for improvement. In the second, the model runs on the phone and nothing leaves the device unless the patient books. In the third, answers are sent but deleted after the result is shown. Zara evaluates each for data collected, transparency, accuracy and cost. On-device triage collects least, but updating the model is harder and some older phones may not run it.
 
 ### 25.3 Automated decisions
 
@@ -1326,7 +1326,7 @@ The triage suggests a course of action, which raises the question of automated d
 
 ### 25.4 Critique
 
-Studio critics, including a clinician, challenge the on-device design: if answers are never stored, how will the team learn that triage is unsafe? Zara proposes an opt-in feedback route and a periodic clinical review using synthetic test cases. The critics accept the approach but ask for a safety monitoring plan. Zara learns that privacy and clinical safety must be designed together, and that critique in a studio is most useful when designers explain trade-offs openly rather than defending one option as perfect. Zara keeps a dated copy of her working so that the result can be traced.
+Studio critics, including a clinician, challenge the on-device design: if answers are never stored, how will the team learn that triage is unsafe? Zara proposes an opt-in feedback route and a periodic clinical review using synthetic test cases. The critics accept the approach but ask for a safety monitoring plan. Zara learns that privacy and clinical safety must be designed together, and that critique in a studio is most useful when designers explain trade-offs openly rather than defending one option as perfect.
 
 ### Worked example
 
@@ -1362,19 +1362,19 @@ You will (1) compare centralised, federated and on-device architectures; (2) eva
 
 ### 26.1 Three architectures
 
-Pellmore wants to analyse consultation outcomes across clinics to improve care. Zara compares three architectures. Centralised: copy all records to one analytics store. Federated: run analyses within each clinic's system and share only results. On-device or edge: compute statistics at the point of care. Centralisation is simplest but concentrates risk. Federation keeps raw data local but complicates analysis. She writes criteria before comparing: data exposure, analysis capability, cost, operational complexity and ability to honour erasure requests across the system. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Pellmore wants to analyse consultation outcomes across clinics to improve care. Zara compares three architectures. Centralised: copy all records to one analytics store. Federated: run analyses within each clinic's system and share only results. On-device or edge: compute statistics at the point of care. Centralisation is simplest but concentrates risk. Federation keeps raw data local but complicates analysis. She writes criteria before comparing: data exposure, analysis capability, cost, operational complexity and ability to honour erasure requests across the system. Each criterion is scored from one to three before any design discussion.
 
 ### 26.2 Privacy-enhancing technologies
 
-Zara surveys privacy-enhancing technologies. Differential privacy adds calibrated noise to outputs, following Dwork and colleagues (2006). Secure multi-party computation lets parties compute joint results without revealing inputs. Synthetic data can replace real records for development. Each has limits: differential privacy reduces accuracy, especially for small groups; multi-party computation is complex and slow; synthetic data may leak if generated carelessly from real records. NIST SP 800-188 discusses several of these approaches for government data releases, which she finds transferable to health statistics. She checks the idea against a second example before relying on it.
+Zara surveys privacy-enhancing technologies. Differential privacy adds calibrated noise to outputs, following Dwork and colleagues (2006). Secure multi-party computation lets parties compute joint results without revealing inputs. Synthetic data can replace real records for development. Each has limits: differential privacy reduces accuracy, especially for small groups; multi-party computation is complex and slow; synthetic data may leak if generated carelessly from real records. NIST SP 800-188 discusses several of these approaches for government data releases, which she finds transferable to health statistics. Synthetic data suit testing well.
 
 ### 26.3 Scoring
 
-Zara scores each architecture on her criteria with the team. Federation with differentially private aggregated outputs scores best on exposure and erasure, adequate on analysis and worse on complexity. Centralisation scores best on analysis and worst on exposure. She presents the scores with their reasoning, stressing that the weights reflect Pellmore's priorities, which management must confirm. The EDPB guidelines on data protection by design list the state of the art and cost of implementation as factors, which supports making these trade-offs explicit. The point seems small, but it changes how owners act on the result.
+Zara scores each architecture on her criteria with the team. Federation with differentially private aggregated outputs scores best on exposure and erasure, adequate on analysis and worse on complexity. Centralisation scores best on analysis and worst on exposure. She presents the scores with their reasoning, stressing that the weights reflect Pellmore's priorities, which management must confirm. The EDPB guidelines on data protection by design list the state of the art and cost of implementation as factors, which supports making these trade-offs explicit.
 
 ### 26.4 Decision
 
-Pellmore's architecture board chooses federation with aggregated outputs for clinic comparisons, and a small centralised, pseudonymised dataset for clinical safety audits that need record-level data under strict access. Zara records the decision, the alternatives rejected and the conditions for revisiting it. She notes that the hybrid answer is common in practice: no single architecture fits all purposes, and documenting which purpose uses which architecture helps auditors and future engineers understand the system and resist pressure to centralise everything for convenience. Pellmore's data protection officer later asks for a copy of this analysis.
+Pellmore's architecture board chooses federation with aggregated outputs for clinic comparisons, and a small centralised, pseudonymised dataset for clinical safety audits that need record-level data under strict access. Zara records the decision, the alternatives rejected and the conditions for revisiting it. She notes that the hybrid answer is common in practice: no single architecture fits all purposes, and documenting which purpose uses which architecture helps auditors and future engineers understand the system and resist pressure to centralise everything for convenience. The decision record names owners.
 
 ### Worked example
 
@@ -1410,19 +1410,19 @@ You will (1) design preventive, detective and corrective privacy controls; (2) d
 
 ### 27.1 Types of control
 
-Zara classifies controls as preventive, detective or corrective. Preventive controls stop problems: purpose-based access checks, field minimisation in forms. Detective controls notice problems: anomaly signals on record access, retention monitoring. Corrective controls fix problems: deletion jobs, breach response. She ensures each high-ranked risk has at least one of each type. For staff snooping, access checks prevent, anomaly signals detect, and disciplinary and notification procedures correct. A risk with only preventive controls is fragile because failures go unnoticed until harm appears. She marks the open questions in red so that they are not forgotten.
+Zara classifies controls as preventive, detective or corrective. Preventive controls stop problems: purpose-based access checks, field minimisation in forms. Detective controls notice problems: anomaly signals on record access, retention monitoring. Corrective controls fix problems: deletion jobs, breach response. She ensures each high-ranked risk has at least one of each type. For staff snooping, access checks prevent, anomaly signals detect, and disciplinary and notification procedures correct. A risk with only preventive controls is fragile because failures go unnoticed until harm appears. Good designs mix all three.
 
 ### 27.2 Consent management
 
-Some Pellmore processing relies on consent, such as the newsletter and optional research participation. EDPB Guidelines 05/2020 require consent to be freely given, specific, informed and unambiguous, and as easy to withdraw as to give. Zara designs a consent service that stores what each patient agreed to, when and through which wording version. Withdrawal is one tap and propagates to all systems within a day. She ensures that care is never conditional on consent to marketing, which would make consent not freely given. Writing the reasoning down also helps her spot a weak step in her argument.
+Some Pellmore processing relies on consent, such as the newsletter and optional research participation. EDPB Guidelines 05/2020 require consent to be freely given, specific, informed and unambiguous, and as easy to withdraw as to give. Zara designs a consent service that stores what each patient agreed to, when and through which wording version. Withdrawal is one tap and propagates to all systems within a day. She ensures that care is never conditional on consent to marketing, which would make consent not freely given.
 
 ### 27.3 Controls linked to requirements
 
-Zara extends her traceability matrix: each control now links to the requirements it satisfies and the risks it reduces. Gaps show up as risks without controls or controls without purpose. She finds a legacy control, a nightly copy of the records database to an old reporting server, that no requirement justifies. Removing it reduces exposure at no cost. The exercise shows that control design includes pruning, because old controls and processes can themselves become privacy risks when nobody remembers why they exist. Zara discusses the trade-off with a classmate who works in finance.
+Zara extends her traceability matrix: each control now links to the requirements it satisfies and the risks it reduces. Gaps show up as risks without controls or controls without purpose. She finds a legacy control, a nightly copy of the records database to an old reporting server, that no requirement justifies. Removing it reduces exposure at no cost. The exercise shows that control design includes pruning, because old controls and processes can themselves become privacy risks when nobody remembers why they exist.
 
 ### 27.4 Control owners
 
-Every control needs an owner who maintains it and reports on it. Zara assigns owners: the engineering lead for access checks, the data protection officer for consent wording, the operations manager for retention jobs. She writes a one-page control description for each, covering purpose, operation, evidence and failure response. Prof. Holm reminds her that ISO/IEC 27701:2025 expects documented controls with evidence of operation, and that owners are what keep controls alive after the engineers who designed them move on to other projects. The class compares answers and finds that most differences come from unstated assumptions.
+Every control needs an owner who maintains it and reports on it. Zara assigns owners: the engineering lead for access checks, the data protection officer for consent wording, the operations manager for retention jobs. She writes a one-page control description for each, covering purpose, operation, evidence and failure response. Prof. Holm reminds her that ISO/IEC 27701:2025 expects documented controls with evidence of operation, and that owners are what keep controls alive after the engineers who designed them move on to other projects.
 
 ### Worked example
 
@@ -1506,7 +1506,7 @@ You will (1) measure data minimisation; (2) define privacy metrics; (3) report m
 
 ### 29.1 Measuring minimisation
 
-Zara wants to measure whether Pellmore collects only what it needs. She lists, for each purpose, the fields collected and the fields actually needed, agreed with the owners of each process. The booking form collects eight fields but needs five; address, gender and occupation are not needed. Video consultations collect six fields but need four; contacts and location are not needed. The newsletter collects four fields but needs only email. Overall, 8 of 18 collected fields, 44%, are not needed for their purpose. Zara records this point in her course notebook so that later chapters can build on it.
+Zara wants to measure whether Pellmore collects only what it needs. She lists, for each purpose, the fields collected and the fields actually needed, agreed with the owners of each process. The booking form collects eight fields but needs five; address, gender and occupation are not needed. Video consultations collect six fields but need four; contacts and location are not needed. The newsletter collects four fields but needs only email. Overall, 8 of 18 collected fields, 44%, are not needed for their purpose. Removing them cuts exposure directly.
 
 ### 29.2 Acting on the measure
 
@@ -1514,11 +1514,11 @@ The minimisation figure leads to changes. Zara removes the unnecessary booking f
 
 ### 29.3 A metric set
 
-Beyond minimisation, Zara defines a small set of privacy metrics: records past retention, flows without complete inventory fields, rights requests answered on time, consent reconciliation mismatches, and access anomalies reviewed within a week. Each has a definition, a data source, an owner and a target. The NIST Privacy Framework encourages organisations to monitor and review privacy risk, and the metric set gives Pellmore a way to do that regularly. She keeps the set small so that people actually read the monthly report. Prof. Holm asks her to explain the idea aloud to a classmate before moving on.
+Beyond minimisation, Zara defines a small set of privacy metrics: records past retention, flows without complete inventory fields, rights requests answered on time, consent reconciliation mismatches, and access anomalies reviewed within a week. Each has a definition, a data source, an owner and a target. The NIST Privacy Framework encourages organisations to monitor and review privacy risk, and the metric set gives Pellmore a way to do that regularly. She keeps the set small so that people actually read the monthly report.
 
 ### 29.4 Metrics without new risk
 
-Measurement can create new privacy risks. A report listing staff with access anomalies could stigmatise innocent people if shared widely. Zara aggregates the report for management and gives named details only to the investigator. Similarly, rights request metrics show counts and timings, not who made requests. She writes a short rule: privacy metrics must themselves follow data minimisation. Prof. Holm calls this the recursive principle of privacy engineering, applying the same care to monitoring data as to the data being monitored. She notes the assumption behind it so that a reviewer can challenge it later.
+Measurement can create new privacy risks. A report listing staff with access anomalies could stigmatise innocent people if shared widely. Zara aggregates the report for management and gives named details only to the investigator. Similarly, rights request metrics show counts and timings, not who made requests. She writes a short rule: privacy metrics must themselves follow data minimisation. Prof. Holm calls this the recursive principle of privacy engineering, applying the same care to monitoring data as to the data being monitored. Monitoring logs expire quickly.
 
 ### Lab — Fields collected versus needed by purpose
 
@@ -1592,7 +1592,7 @@ Each test produces evidence: inputs, outputs, date and tester. Zara stores evide
 
 ### 30.4 Retesting
 
-After the defects are fixed, Zara repeats the tests. The access export now includes chat logs, and erasure reaches the analytics store. She records both runs, showing the failure and the fix. She also adds the tests to the continuous integration pipeline so that they run on every release. Verification, she concludes, is not a one-off certificate but a habit: privacy properties can break whenever the system changes, and only tests that run regularly catch regressions before they reach patients. The same reasoning will return when Pellmore's data protection officer reviews the work.
+After the defects are fixed, Zara repeats the tests. The access export now includes chat logs, and erasure reaches the analytics store. She records both runs, showing the failure and the fix. She also adds the tests to the continuous integration pipeline so that they run on every release. Verification, she concludes, is not a one-off certificate but a habit: privacy properties can break whenever the system changes, and only tests that run regularly catch regressions before they reach patients. Tests run on every release.
 
 ### Worked example
 
@@ -1632,11 +1632,11 @@ Article 20 of the GDPR gives patients a right to receive data they provided, in 
 
 ### 31.2 Vendor integration
 
-The chat log gap found in the verification laboratory requires integration with the vendor. Zara designs an interface through which Pellmore can request a patient's chat logs and their deletion, with signed confirmations returned. The vendor agrees to the interface as part of its processor obligations under Article 28, which require assisting the controller with data subject rights. She tests the interface with synthetic patients and confirms that deletions are confirmed within the agreed two days, and that the confirmation is stored as evidence. Zara records this point in her course notebook so that later chapters can build on it.
+The chat log gap found in the verification laboratory requires integration with the vendor. Zara designs an interface through which Pellmore can request a patient's chat logs and their deletion, with signed confirmations returned. The vendor agrees to the interface as part of its processor obligations under Article 28, which require assisting the controller with data subject rights. She tests the interface with synthetic patients and confirms that deletions are confirmed within the agreed two days, and that the confirmation is stored as evidence.
 
 ### 31.3 Analytics redesign
 
-With the analytics SDK removed, Pellmore still needs to know how the app is used. Zara implements a server-side analytics pipeline that receives coarse events with recipient-specific pseudonyms, aggregates them daily and discards raw events after seven days. Dashboards show counts per feature and day, with counts below ten suppressed. She chooses not to collect device identifiers at all. The design gives product managers the information they need while removing the tracking that made the original SDK a high risk in the DPIA. Prof. Holm asks her to explain the idea aloud to a classmate before moving on.
+With the analytics SDK removed, Pellmore still needs to know how the app is used. Zara implements a server-side analytics pipeline that receives coarse events with recipient-specific pseudonyms, aggregates them daily and discards raw events after seven days. Dashboards show counts per feature and day, with counts below ten suppressed. She chooses not to collect device identifiers at all. The design gives product managers the information they need while removing the tracking that made the original SDK a high risk in the DPIA.
 
 ### 31.4 Code quality
 
@@ -1676,11 +1676,11 @@ You will (1) compute the reliability of a multi-store erasure; (2) improve relia
 
 ### 32.1 Erasure as a series system
 
-Erasure succeeds only if every store deletes the data. In reliability terms, the stores form a series system: the probability of complete erasure is the product of each store's success probability. Zara estimates first-attempt success rates from logs: booking database 0.995, records 0.99, video archive 0.95, analytics 0.90 and the backup deletion flag 0.98. Multiplying gives 0.825, so roughly one request in six would leave data somewhere on the first attempt. She presents this as a reliability problem, not a legal technicality. She notes the assumption behind it so that a reviewer can challenge it later.
+Erasure succeeds only if every store deletes the data. In reliability terms, the stores form a series system: the probability of complete erasure is the product of each store's success probability. Zara estimates first-attempt success rates from logs: booking database 0.995, records 0.99, video archive 0.95, analytics 0.90 and the backup deletion flag 0.98. Multiplying gives 0.825, so roughly one request in six would leave data somewhere on the first attempt. She presents this as a reliability problem, not a legal technicality. Each extra system multiplies the chance of a miss, so reducing copies improves reliability as much as fixing any one deletion.
 
 ### 32.2 Retries
 
-Many failures are transient: timeouts, locks, temporary network errors. Zara adds one automatic retry per store. If failures are independent, the probability that a store fails twice is the square of its failure probability. With one retry the overall probability of complete erasure rises to 0.987. Expected incomplete erasures per thousand requests fall from 175 to 13. The lab confirms the calculation. She notes that the remaining failures are more likely to be persistent problems, which retries cannot fix and which require alerts. The same reasoning will return when Pellmore's data protection officer reviews the work.
+Many failures are transient: timeouts, locks, temporary network errors. Zara adds one automatic retry per store. If failures are independent, the probability that a store fails twice is the square of its failure probability. With one retry the overall probability of complete erasure rises to 0.987. Expected incomplete erasures per thousand requests fall from 175 to 13. The lab confirms the calculation. She notes that the remaining failures are more likely to be persistent problems, which retries cannot fix and which require alerts. Persistent failures need human follow-up.
 
 ### 32.3 Persistent failures
 
@@ -1688,7 +1688,7 @@ For the remaining failures Zara adds a dead-letter queue: requests that fail aft
 
 ### 32.4 Independence assumption
 
-The retry calculation assumes independent failures, but failures can be correlated: if the analytics store is down, every request fails there at once. Zara adds monitoring for store availability and pauses erasure for a store during an outage, resuming afterwards. She also tests the system under simulated outages. Prof. Holm explains that reliability engineering for privacy uses the same tools as for safety: series and parallel models, independence checks and fault injection, and that legal rights depend on these technical details. She adds a short note to the shared course wiki for other students.
+The retry calculation assumes independent failures, but failures can be correlated: if the analytics store is down, every request fails there at once. Zara adds monitoring for store availability and pauses erasure for a store during an outage, resuming afterwards. She also tests the system under simulated outages. Prof. Holm explains that reliability engineering for privacy uses the same tools as for safety: series and parallel models, independence checks and fault injection, and that legal rights depend on these technical details. She tests shared dependencies.
 
 ### Lab — Reliability of erasure across five stores
 
@@ -1749,15 +1749,15 @@ Article 32 requires the ability to restore availability and access to personal d
 
 ### 33.2 Breaches as incidents
 
-The GDPR defines a personal data breach broadly, including loss of availability. If ransomware encrypts records and they cannot be restored quickly, that is a breach even if no data leave Pellmore. Zara works with the security team to align incident response with breach procedures: every security incident is assessed for personal data impact, and the data protection officer is involved early. EDPB Guidelines 9/2022 describe availability breaches and the assessment of risk, which she uses to train the incident team. This makes the privacy consequence visible to people outside the specialist team.
+The GDPR defines a personal data breach broadly, including loss of availability. If ransomware encrypts records and they cannot be restored quickly, that is a breach even if no data leave Pellmore. Zara works with the security team to align incident response with breach procedures: every security incident is assessed for personal data impact, and the data protection officer is involved early. EDPB Guidelines 9/2022 describe availability breaches and the assessment of risk, which she uses to train the incident team. Availability loss counts too.
 
 ### 33.3 Privacy during recovery
 
-Recovery can create privacy risks. Restoring an old backup could reintroduce data that patients had erased or that were past retention. Zara's recovery runbook therefore reapplies the erasure log and retention table after any restore, before the system returns to service. She also limits who can access backups during recovery, since emergencies tempt teams to share access widely. She tests the runbook in a drill and finds that reapplying erasures takes forty minutes, which she includes in the recovery time objective. Zara keeps a dated copy of her working so that the result can be traced.
+Recovery can create privacy risks. Restoring an old backup could reintroduce data that patients had erased or that were past retention. Zara's recovery runbook therefore reapplies the erasure log and retention table after any restore, before the system returns to service. She also limits who can access backups during recovery, since emergencies tempt teams to share access widely. She tests the runbook in a drill and finds that reapplying erasures takes forty minutes, which she includes in the recovery time objective. Restored backups need erasures replayed.
 
 ### 33.4 Graceful degradation
 
-When parts of the platform fail, Zara wants the system to degrade safely. If the consent service is down, systems should treat consent as absent rather than assume it is present. If the access-check service is down, clinicians in a consultation get emergency access with enhanced logging and review afterwards, rather than no access. She documents these fail-safe and break-glass rules and agrees them with clinicians and the data protection officer. Designing failure behaviour in advance prevents improvised decisions during an outage. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+When parts of the platform fail, Zara wants the system to degrade safely. If the consent service is down, systems should treat consent as absent rather than assume it is present. If the access-check service is down, clinicians in a consultation get emergency access with enhanced logging and review afterwards, rather than no access. She documents these fail-safe and break-glass rules and agrees them with clinicians and the data protection officer. Designing failure behaviour in advance prevents improvised decisions during an outage.
 
 ### Worked example
 
@@ -1793,19 +1793,19 @@ You will (1) integrate privacy controls across services; (2) handle partner inte
 
 ### 34.1 Shared services
 
-By the fourth year Pellmore's privacy capabilities are spread across services: access checks, consent, retention, erasure and analytics. Zara integrates them through a shared privacy platform with clear interfaces. Each product service calls the platform rather than implementing its own logic. Integration reduces duplication and inconsistency, but it creates dependency: if the platform fails, many services are affected. She uses the fail-safe rules from Chapter 33 and runs the platform with high availability, treating it as critical infrastructure rather than a side project. She checks the idea against a second example before relying on it.
+By the fourth year Pellmore's privacy capabilities are spread across services: access checks, consent, retention, erasure and analytics. Zara integrates them through a shared privacy platform with clear interfaces. Each product service calls the platform rather than implementing its own logic. Integration reduces duplication and inconsistency, but it creates dependency: if the platform fails, many services are affected. She uses the fail-safe rules from Chapter 33 and runs the platform with high availability, treating it as critical infrastructure rather than a side project.
 
 ### 34.2 Laboratory partner
 
-Pellmore's laboratory partner receives test orders and returns results. The partner is a separate controller for its own testing, as Zara determined using EDPB Guidelines 07/2020. Integration must respect both organisations' obligations. Zara designs the interface to send only the data needed for the test: a recipient-specific pseudonym, test type, sample identifier and clinically necessary details. Results return under the same pseudonym and are matched internally. She documents responsibilities in a data sharing agreement, including who answers which rights requests. The point seems small, but it changes how owners act on the result.
+Pellmore's laboratory partner receives test orders and returns results. The partner is a separate controller for its own testing, as Zara determined using EDPB Guidelines 07/2020. Integration must respect both organisations' obligations. Zara designs the interface to send only the data needed for the test: a recipient-specific pseudonym, test type, sample identifier and clinically necessary details. Results return under the same pseudonym and are matched internally. She documents responsibilities in a data sharing agreement, including who answers which rights requests. The agreement is reviewed annually.
 
 ### 34.3 End-to-end tests
 
-Zara builds end-to-end tests that cross services and partners using synthetic patients. A test patient books, consults, receives a test order, gets results, requests access and then erasure. The test checks that each step produces the expected data and that erasure reaches every Pellmore store and triggers notifications to the partner for its own handling. The first run reveals that the partner's results message includes the patient's full name in a free-text comment. Pellmore and the partner agree to remove names from comments. Pellmore's data protection officer later asks for a copy of this analysis.
+Zara builds end-to-end tests that cross services and partners using synthetic patients. A test patient books, consults, receives a test order, gets results, requests access and then erasure. The test checks that each step produces the expected data and that erasure reaches every Pellmore store and triggers notifications to the partner for its own handling. The first run reveals that the partner's results message includes the patient's full name in a free-text comment. Pellmore and the partner agree to remove names from comments.
 
 ### 34.4 Change control
 
-Integrated systems change constantly. Zara sets a rule that any change to an interface carrying personal data needs a short privacy review and an update to the inventory. She automates detection: a schema comparison flags new fields in interface messages, and the review is triggered automatically. Prof. Holm points out that integration is where many privacy failures appear, because each team assumes another team handles a property, and that automated detection of interface changes reduces the reliance on people remembering to ask. She marks the open questions in red so that they are not forgotten.
+Integrated systems change constantly. Zara sets a rule that any change to an interface carrying personal data needs a short privacy review and an update to the inventory. She automates detection: a schema comparison flags new fields in interface messages, and the review is triggered automatically. Prof. Holm points out that integration is where many privacy failures appear, because each team assumes another team handles a property, and that automated detection of interface changes reduces the reliance on people remembering to ask.
 
 ### Worked example
 
@@ -1841,7 +1841,7 @@ You will (1) design a new data use with contextual integrity; (2) consider vulne
 
 ### 35.1 The brief
 
-The second studio brief asks Zara's team to design a feature that lets family carers help elderly patients manage appointments. Carers need some information but not all, and patients may have reasons to keep some consultations private from relatives. The team must design sharing that respects the patient's wishes. Nissenbaum's contextual integrity guides them: information shared with a clinician carries norms of confidentiality, and moving it to a family member requires the patient's informed choice about what moves and when. Writing the reasoning down also helps her spot a weak step in her argument.
+The second studio brief asks Zara's team to design a feature that lets family carers help elderly patients manage appointments. Carers need some information but not all, and patients may have reasons to keep some consultations private from relatives. The team must design sharing that respects the patient's wishes. Nissenbaum's contextual integrity guides them: information shared with a clinician carries norms of confidentiality, and moving it to a family member requires the patient's informed choice about what moves and when. Patients choose per category.
 
 ### 35.2 Granular sharing
 
@@ -1889,11 +1889,11 @@ You will (1) plan a differential privacy budget for repeated releases; (2) under
 
 ### 36.1 Publishing clinic statistics
 
-Pellmore wants to publish clinic waiting-time and diagnosis statistics for public health partners. Zara proposes differential privacy for the published counts. Dwork and Roth (2014) explain that privacy loss accumulates across releases under composition, so a yearly budget must be shared among all releases. She sets an illustrative yearly epsilon of three for a family of counts and asks how frequently Pellmore can publish while keeping useful accuracy. The question links scale and performance to privacy: more releases mean more noise per release. Zara discusses the trade-off with a classmate who works in finance.
+Pellmore wants to publish clinic waiting-time and diagnosis statistics for public health partners. Zara proposes differential privacy for the published counts. Dwork and Roth (2014) explain that privacy loss accumulates across releases under composition, so a yearly budget must be shared among all releases. She sets an illustrative yearly epsilon of three for a family of counts and asks how frequently Pellmore can publish while keeping useful accuracy. The question links scale and performance to privacy: more releases mean more noise per release.
 
 ### 36.2 The budget lab
 
-The lab divides the yearly budget equally among releases and computes the Laplace error for a count with sensitivity one. Monthly releases get epsilon 0.25 each and a mean absolute error of 4.0 per count. Weekly releases get epsilon 0.0577 and error 17.3. Daily releases get epsilon 0.0082 and error 121.7, which would swamp most clinic counts. Zara recommends monthly publication. She explains to partners that daily figures would look precise but mostly show noise, which would mislead rather than inform public health decisions. The class compares answers and finds that most differences come from unstated assumptions.
+The lab divides the yearly budget equally among releases and computes the Laplace error for a count with sensitivity one. Monthly releases get epsilon 0.25 each and a mean absolute error of 4.0 per count. Weekly releases get epsilon 0.0577 and error 17.3. Daily releases get epsilon 0.0082 and error 121.7, which would swamp most clinic counts. Zara recommends monthly publication. She explains to partners that daily figures would look precise but mostly show noise, which would mislead rather than inform public health decisions. Weekly releases spend the budget more wisely.
 
 ### 36.3 Scale effects
 
@@ -1901,7 +1901,7 @@ Larger counts tolerate noise better. A national total of thousands is barely aff
 
 ### 36.4 Engineering the pipeline
 
-Zara implements a release pipeline that tracks budget spent, refuses releases that would exceed the yearly budget and logs each release with its epsilon. Post-processing rounds noisy counts and replaces negative values with zero, which does not weaken the guarantee. She writes a short public note explaining the method. Prof. Holm reminds the class that implementations of differential privacy can fail through subtle bugs, such as poor random number generation, so the pipeline uses a vetted library and independent review. Zara records this point in her course notebook so that later chapters can build on it.
+Zara implements a release pipeline that tracks budget spent, refuses releases that would exceed the yearly budget and logs each release with its epsilon. Post-processing rounds noisy counts and replaces negative values with zero, which does not weaken the guarantee. She writes a short public note explaining the method. Prof. Holm reminds the class that implementations of differential privacy can fail through subtle bugs, such as poor random number generation, so the pipeline uses a vetted library and independent review. Seeds are never fixed in production.
 
 ### Lab — Splitting a yearly privacy budget across releases
 
@@ -1955,19 +1955,19 @@ You will (1) run privacy operations day to day; (2) handle rights requests at vo
 
 ### 37.1 A privacy operations function
 
-By now Pellmore's privacy controls need daily operation. Zara helps set up a small privacy operations function in the data protection officer's team. It handles rights requests, reviews access anomalies, monitors retention and consent reconciliation, and coordinates with security on incidents. She writes runbooks for each task with steps, tools and escalation routes. The function reports monthly using the metric set from Chapter 29. Operations, she notes, are where designs either work as intended or quietly decay over time. Prof. Holm asks her to explain the idea aloud to a classmate before moving on.
+By now Pellmore's privacy controls need daily operation. Zara helps set up a small privacy operations function in the data protection officer's team. It handles rights requests, reviews access anomalies, monitors retention and consent reconciliation, and coordinates with security on incidents. She writes runbooks for each task with steps, tools and escalation routes. The function reports monthly using the metric set from Chapter 29. Operations, she notes, are where designs either work as intended or quietly decay over time. Its staff own every runbook.
 
 ### 37.2 Rights at volume
 
-Pellmore now receives about two hundred rights requests a month. Zara automates identity checks through account login, data collection through the privacy platform and deadline tracking with alerts at twenty and twenty-five days. Complex requests, such as those involving several family members, go to a specialist. She measures on-time completion and finds that 97% of requests are answered within thirty days. EDPB Guidelines 01/2022 on access inform the process, including how to handle requests from third parties acting for a patient. She notes the assumption behind it so that a reviewer can challenge it later.
+Pellmore now receives about two hundred rights requests a month. Zara automates identity checks through account login, data collection through the privacy platform and deadline tracking with alerts at twenty and twenty-five days. Complex requests, such as those involving several family members, go to a specialist. She measures on-time completion and finds that 97% of requests are answered within thirty days. EDPB Guidelines 01/2022 on access inform the process, including how to handle requests from third parties acting for a patient. Requests are logged with deadlines.
 
 ### 37.3 Monitoring
 
-Anomaly signals for access are reviewed daily. In the first month the team reviews thirty alerts; twenty-six are legitimate, such as covering colleagues, and four lead to conversations about access need. One case is a clinician viewing a relative's record, which is handled under Pellmore's disciplinary policy and recorded as a potential breach for assessment. Zara adjusts thresholds to reduce false alarms without missing such cases. She learns that monitoring works only when reviews are prompt and fair to staff. The same reasoning will return when Pellmore's data protection officer reviews the work.
+Anomaly signals for access are reviewed daily. In the first month the team reviews thirty alerts; twenty-six are legitimate, such as covering colleagues, and four lead to conversations about access need. One case is a clinician viewing a relative's record, which is handled under Pellmore's disciplinary policy and recorded as a potential breach for assessment. Zara adjusts thresholds to reduce false alarms without missing such cases. She learns that monitoring works only when reviews are prompt and fair to staff. Reviews happen within days.
 
 ### 37.4 Continuous improvement
 
-Each quarter the privacy operations team reviews incidents, metrics and complaints and proposes improvements. Zara facilitates the first review. The team finds that postal rights requests are still slow and that a confusing notice causes many questions. They propose a scanning workflow and a rewritten notice section. ISO/IEC 27701:2025, structured as a management system standard, expects such cycles of monitoring, review and improvement. She notes that the cycle keeps privacy alive as an operating discipline rather than a project that ends. She adds a short note to the shared course wiki for other students.
+Each quarter the privacy operations team reviews incidents, metrics and complaints and proposes improvements. Zara facilitates the first review. The team finds that postal rights requests are still slow and that a confusing notice causes many questions. They propose a scanning workflow and a rewritten notice section. ISO/IEC 27701:2025, structured as a management system standard, expects such cycles of monitoring, review and improvement. She notes that the cycle keeps privacy alive as an operating discipline rather than a project that ends. ISO/IEC 27701 builds on this cycle.
 
 ### Worked example
 
@@ -2003,7 +2003,7 @@ You will (1) distinguish verification from validation; (2) validate privacy feat
 
 ### 38.1 Verification and validation
 
-Verification asks whether the system meets its requirements; validation asks whether the requirements meet real needs. Zara's tests verified that erasure reaches every store. Validation asks whether patients understand erasure and get what they expect. She interviews twelve synthetic-scenario participants, volunteers who use test accounts. Several expect erasure to remove their medical record entirely, which health law does not allow. The validation reveals a gap in explanation, not in engineering, and leads to clearer wording in the erasure screen. This makes the privacy consequence visible to people outside the specialist team.
+Verification asks whether the system meets its requirements; validation asks whether the requirements meet real needs. Zara's tests verified that erasure reaches every store. Validation asks whether patients understand erasure and get what they expect. She interviews twelve synthetic-scenario participants, volunteers who use test accounts. Several expect erasure to remove their medical record entirely, which health law does not allow. The validation reveals a gap in explanation, not in engineering, and leads to clearer wording in the erasure screen. Patients tested the new screen.
 
 ### 38.2 Usability of privacy
 
@@ -2011,7 +2011,7 @@ Zara runs usability tests of the privacy dashboard. Participants try to find who
 
 ### 38.3 Legal validation
 
-Zara's designs rest on legal assumptions: that portability excludes clinicians' notes, that the laboratory partner is a separate controller, that retention of medical records overrides erasure. She asks Pellmore's counsel to validate each assumption and record the reasoning. Counsel confirms most but refines one: some patient-entered symptom notes are part of the medical record and must be retained, so erasure must exclude them. Zara updates the erasure requirements. She learns that legal assumptions should be validated explicitly, not inherited from earlier projects. Zara keeps a dated copy of her working so that the result can be traced.
+Zara's designs rest on legal assumptions: that portability excludes clinicians' notes, that the laboratory partner is a separate controller, that retention of medical records overrides erasure. She asks Pellmore's counsel to validate each assumption and record the reasoning. Counsel confirms most but refines one: some patient-entered symptom notes are part of the medical record and must be retained, so erasure must exclude them. Zara updates the erasure requirements. She learns that legal assumptions should be validated explicitly, not inherited from earlier projects.
 
 ### 38.4 Validating with the supervisory context
 
@@ -2051,19 +2051,19 @@ You will (1) keep privacy controls maintainable; (2) manage technical debt with 
 
 ### 39.1 Privacy debt
 
-Technical debt accumulates when shortcuts are taken. Zara defines privacy debt as shortcuts that weaken privacy: temporary data copies, disabled checks, undocumented flows. She creates a register of privacy debt items with owners and repayment dates. The register reveals a temporary export created for a regulator's question two years earlier that was never removed. She deletes it. She explains that privacy debt is especially dangerous because, unlike performance debt, its costs appear only when harm occurs or an audit asks questions. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Technical debt accumulates when shortcuts are taken. Zara defines privacy debt as shortcuts that weaken privacy: temporary data copies, disabled checks, undocumented flows. She creates a register of privacy debt items with owners and repayment dates. The register reveals a temporary export created for a regulator's question two years earlier that was never removed. She deletes it. She explains that privacy debt is especially dangerous because, unlike performance debt, its costs appear only when harm occurs or an audit asks questions. She tracks it in the backlog.
 
 ### 39.2 Readable controls
 
-Controls must be understandable to future engineers. Zara rewrites the access policy configuration with comments explaining each rule and its legal or clinical reason. She adds diagrams to the privacy platform documentation. She also writes architecture decision records for the major choices of the past two years, so that new engineers do not undo protections through misunderstanding. Prof. Holm notes that maintainability is a precondition for accountability, because an organisation that cannot explain its own controls cannot demonstrate compliance. She checks the idea against a second example before relying on it.
+Controls must be understandable to future engineers. Zara rewrites the access policy configuration with comments explaining each rule and its legal or clinical reason. She adds diagrams to the privacy platform documentation. She also writes architecture decision records for the major choices of the past two years, so that new engineers do not undo protections through misunderstanding. Prof. Holm notes that maintainability is a precondition for accountability, because an organisation that cannot explain its own controls cannot demonstrate compliance. Code comments cite the requirement each control satisfies.
 
 ### 39.3 Dependency updates
 
-The privacy platform depends on libraries for cryptography, differential privacy and messaging. Zara sets up automated dependency checks and a policy for updating them. She tests updates against the privacy test suite before deployment. An update to the messaging library once changed retry behaviour, which would have affected erasure reliability. The test suite caught it. She records the event as evidence that the tests protect against regressions introduced by third-party code, not only by Pellmore's own engineers. The point seems small, but it changes how owners act on the result.
+The privacy platform depends on libraries for cryptography, differential privacy and messaging. Zara sets up automated dependency checks and a policy for updating them. She tests updates against the privacy test suite before deployment. An update to the messaging library once changed retry behaviour, which would have affected erasure reliability. The test suite caught it. She records the event as evidence that the tests protect against regressions introduced by third-party code, not only by Pellmore's own engineers. A library upgrade had silently changed the default log level, and the privacy unit test failed on the first build.
 
 ### 39.4 Handover
 
-As Zara's placement nears its end, she prepares a handover. Each control has an owner, documentation, tests and metrics. She runs walkthroughs with the engineers who will maintain the platform. She also lists open risks and the privacy debt register. Pellmore's engineering lead signs off the handover. Zara reflects that good maintainability is invisible when it works: nobody notices that a control still functions after two years, but they would notice quickly, and painfully, if it had silently decayed. Pellmore's data protection officer later asks for a copy of this analysis.
+As Zara's placement nears its end, she prepares a handover. Each control has an owner, documentation, tests and metrics. She runs walkthroughs with the engineers who will maintain the platform. She also lists open risks and the privacy debt register. Pellmore's engineering lead signs off the handover. Zara reflects that good maintainability is invisible when it works: nobody notices that a control still functions after two years, but they would notice quickly, and painfully, if it had silently decayed. Ownership must therefore be explicit.
 
 ### Worked example
 
@@ -2099,19 +2099,19 @@ You will (1) verify privacy properties under adversarial testing; (2) commission
 
 ### 40.1 Adversarial testing
 
-In the second verification laboratory Zara's class acts as adversaries against a test copy of Pellmore's platform with synthetic data. They try to link analytics data back to patients, to obtain another patient's records through the carer feature and to infer diagnoses from published statistics. Linkage fails because recipient pseudonyms differ. The carer attack fails because settings require patient authentication. The statistics attack succeeds partly for one rural clinic, where small counts were published before the differential privacy pipeline was introduced. She marks the open questions in red so that they are not forgotten.
+In the second verification laboratory Zara's class acts as adversaries against a test copy of Pellmore's platform with synthetic data. They try to link analytics data back to patients, to obtain another patient's records through the carer feature and to infer diagnoses from published statistics. Linkage fails because recipient pseudonyms differ. The carer attack fails because settings require patient authentication. The statistics attack succeeds partly for one rural clinic, where small counts were published before the differential privacy pipeline was introduced. Older outputs were never reviewed.
 
 ### 40.2 Fixing the statistics leak
 
-The rural clinic leak comes from old reports still on a public page. Zara removes them and checks that the new pipeline covers all published statistics. She also searches for other legacy publications and finds two more. The finding shows that new protections do not automatically fix old outputs. She adds a rule: when a new protection is introduced, the team must search for outputs produced under the old approach and decide whether to remove, replace or keep them with justification. Writing the reasoning down also helps her spot a weak step in her argument.
+The rural clinic leak comes from old reports still on a public page. Zara removes them and checks that the new pipeline covers all published statistics. She also searches for other legacy publications and finds two more. The finding shows that new protections do not automatically fix old outputs. She adds a rule: when a new protection is introduced, the team must search for outputs produced under the old approach and decide whether to remove, replace or keep them with justification. Here, the old table is withdrawn.
 
 ### 40.3 Independent testing
 
-Pellmore commissions an independent firm to test the platform. The firm receives the same synthetic environment and scope. It finds one issue the class missed: a support tool leaks patient email addresses in an autocomplete field. Pellmore fixes it. Zara notes that independent testers bring different habits and assumptions, which is why independent assessment is valuable even after strong internal testing. She records the finding and the fix in the evidence folder alongside the class's results. Zara discusses the trade-off with a classmate who works in finance.
+Pellmore commissions an independent firm to test the platform. The firm receives the same synthetic environment and scope. It finds one issue the class missed: a support tool leaks patient email addresses in an autocomplete field. Pellmore fixes it. Zara notes that independent testers bring different habits and assumptions, which is why independent assessment is valuable even after strong internal testing. She records the finding and the fix in the evidence folder alongside the class's results. The support tool is restricted to masked addresses, and a regression test is added so the leak cannot quietly return.
 
 ### 40.4 Reporting to management
 
-Zara writes a verification report for Pellmore's management: what was tested, what passed, what failed and what was fixed, with remaining risks. She avoids technical detail in the summary and attaches evidence for specialists. Management asks whether the platform is secure; she answers that it passed the tests described, that two issues were fixed and that testing will continue each year. She explains that verification reduces uncertainty but cannot prove the absence of all problems, and management accepts the framing. The class compares answers and finds that most differences come from unstated assumptions.
+Zara writes a verification report for Pellmore's management: what was tested, what passed, what failed and what was fixed, with remaining risks. She avoids technical detail in the summary and attaches evidence for specialists. Management asks whether the platform is secure; she answers that it passed the tests described, that two issues were fixed and that testing will continue each year. She explains that verification reduces uncertainty but cannot prove the absence of all problems, and management accepts the framing. Testing is scheduled yearly.
 
 ### Worked example
 
@@ -2159,7 +2159,7 @@ Some optimisations involve trade-offs. Shortening chat log retention from a year
 
 ### 41.4 Measuring the effect
 
-After three months Zara measures again. Identifiable records have fallen by about a third, services with clinical access have fallen from eleven to six and rights requests are answered faster because data are in fewer places. She reports the results with their uncertainty and notes which changes contributed most. Prof. Holm points out that improvements in privacy often improve other qualities too, such as cost and performance, which helps privacy engineers win support for further work across the organisation. Zara records this point in her course notebook so that later chapters can build on it.
+After three months Zara measures again. Identifiable records have fallen by about a third, services with clinical access have fallen from eleven to six and rights requests are answered faster because data are in fewer places. She reports the results with their uncertainty and notes which changes contributed most. Prof. Holm points out that improvements in privacy often improve other qualities too, such as cost and performance, which helps privacy engineers win support for further work across the organisation. Storage costs fell noticeably too.
 
 ### Worked example
 
@@ -2195,19 +2195,19 @@ You will (1) frame an applied research question from engineering practice; (2) r
 
 ### 42.1 The question
 
-Zara's applied research module asks her to investigate a question from practice. She chooses: do patients understand the carer sharing feature well enough to make informed choices? The question matters because consent and control depend on understanding. She frames it as a study of comprehension: after setting up sharing, can participants correctly state what their carer can see? She defines success as at least eighty per cent correct answers, set before collecting data, and explains her threshold choice in the study plan. Prof. Holm asks her to explain the idea aloud to a classmate before moving on.
+Zara's applied research module asks her to investigate a question from practice. She chooses: do patients understand the carer sharing feature well enough to make informed choices? The question matters because consent and control depend on understanding. She frames it as a study of comprehension: after setting up sharing, can participants correctly state what their carer can see? She defines success as at least eighty per cent correct answers, set before collecting data, and explains her threshold choice in the study plan.
 
 ### 42.2 Evidence
 
-Zara reviews research on privacy decision-making. Acquisti, Brandimarte and Loewenstein (2015) describe uncertainty, context dependence and malleability of privacy preferences. Research on privacy notices has found that people rarely read long policies. She notes that the evidence supports short, contextual explanations and testing comprehension directly rather than assuming it. She also looks for guidance on informed consent, using EDPB Guidelines 05/2020 to understand what informed means in law, and compares it with the practical comprehension measure she plans to use. She notes the assumption behind it so that a reviewer can challenge it later.
+Zara reviews research on privacy decision-making. Acquisti, Brandimarte and Loewenstein (2015) describe uncertainty, context dependence and malleability of privacy preferences. Research on privacy notices has found that people rarely read long policies. She notes that the evidence supports short, contextual explanations and testing comprehension directly rather than assuming it. She also looks for guidance on informed consent, using EDPB Guidelines 05/2020 to understand what informed means in law, and compares it with the practical comprehension measure she plans to use. Law and comprehension are compared side by side.
 
 ### 42.3 Study design
 
-The study uses thirty volunteers with synthetic test accounts. Each sets up sharing for a scenario and then answers five questions about what the carer can see. Zara compares two versions of the setup screen: the current one and one with a preview showing exactly what the carer will see. Participants are assigned randomly. She keeps the study small and low-risk, with ethics approval from Corwen, no real health data and the right to withdraw. She pre-registers the analysis comparing comprehension between versions. The same reasoning will return when Pellmore's data protection officer reviews the work.
+The study uses thirty volunteers with synthetic test accounts. Each sets up sharing for a scenario and then answers five questions about what the carer can see. Zara compares two versions of the setup screen: the current one and one with a preview showing exactly what the carer will see. Participants are assigned randomly. She keeps the study small and low-risk, with ethics approval from Corwen, no real health data and the right to withdraw. She pre-registers the analysis comparing comprehension between versions.
 
 ### 42.4 Results and use
 
-Comprehension with the current screen is 71% correct; with the preview, 90%. The difference supports adopting the preview. Zara reports the result with caveats: a small sample, volunteers who may be more confident with apps than average patients, and scenarios rather than real relationships. Pellmore adopts the preview and plans to monitor sharing changes after setup as a real-world signal. She reflects that applied research can be small and still useful when it answers a specific design question with a pre-stated criterion. She adds a short note to the shared course wiki for other students.
+Comprehension with the current screen is 71% correct; with the preview, 90%. The difference supports adopting the preview. Zara reports the result with caveats: a small sample, volunteers who may be more confident with apps than average patients, and scenarios rather than real relationships. Pellmore adopts the preview and plans to monitor sharing changes after setup as a real-world signal. She reflects that applied research can be small and still useful when it answers a specific design question with a pre-stated criterion. The criterion was set beforehand.
 
 ### Worked example
 
@@ -2247,15 +2247,15 @@ Zara spends a term inside Pellmore's privacy team as a junior engineer. She atte
 
 ### 43.2 Conflicting demands
 
-The commercial team proposes sharing aggregated usage data with an insurer partner. The data protection officer worries about re-identification and purpose compatibility. Zara analyses the request: the insurer wants clinic-level usage by condition. She shows that small conditions in small clinics could identify patients, and proposes publishing only differentially private aggregates at regional level under the existing release budget. The insurer accepts the regional data. The steering group records the decision. She learns that technical alternatives can often resolve apparent conflicts. This makes the privacy consequence visible to people outside the specialist team.
+The commercial team proposes sharing aggregated usage data with an insurer partner. The data protection officer worries about re-identification and purpose compatibility. Zara analyses the request: the insurer wants clinic-level usage by condition. She shows that small conditions in small clinics could identify patients, and proposes publishing only differentially private aggregates at regional level under the existing release budget. The insurer accepts the regional data. The steering group records the decision. She learns that technical alternatives can often resolve apparent conflicts. The insurer had wanted record-level data.
 
 ### 43.3 Professional conduct
 
-During the term Zara is asked by a manager to quickly pull a patient's full history to answer a complaint. She checks the purpose and confirms that the complaints process allows access to the relevant records only. She retrieves only what is needed and records the access. The manager is initially impatient but accepts the process. She reflects that professional conduct in privacy often consists of small acts of discipline under time pressure, which together build an organisation's culture more than policies do. Zara keeps a dated copy of her working so that the result can be traced.
+During the term Zara is asked by a manager to quickly pull a patient's full history to answer a complaint. She checks the purpose and confirms that the complaints process allows access to the relevant records only. She retrieves only what is needed and records the access. The manager is initially impatient but accepts the process. She reflects that professional conduct in privacy often consists of small acts of discipline under time pressure, which together build an organisation's culture more than policies do.
 
 ### 43.4 Reflection
 
-At the end of the term Zara writes a reflective report. She notes that she underestimated how much of privacy work is communication and negotiation, and overestimated how often purely technical problems arise. She also notes that the data protection officer's independence, protected by Article 38 of the GDPR, gave the steering group a voice that commercial pressure could not easily override. Prof. Holm encourages her to keep reflecting in her career, because practice changes faster than any course can predict. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+At the end of the term Zara writes a reflective report. She notes that she underestimated how much of privacy work is communication and negotiation, and overestimated how often purely technical problems arise. She also notes that the data protection officer's independence, protected by Article 38 of the GDPR, gave the steering group a voice that commercial pressure could not easily override. Prof. Holm encourages her to keep reflecting in her career, because practice changes faster than any course can predict. She keeps a reflective log.
 
 ### Worked example
 
@@ -2291,7 +2291,7 @@ You will (1) scope an engineering capstone in privacy; (2) set requirements and 
 
 ### 44.1 Capstone scope
 
-Zara's capstone project is to design and build a privacy-preserving research data service for Pellmore. Researchers should be able to analyse consultation outcomes without receiving identifiable records. The service must support approved studies, enforce purpose and time limits, and publish only safe outputs. She limits the scope to one type of analysis, outcome counts and rates by condition and region, so that the project can be completed and verified properly within the year rather than spread thinly across many features. She checks the idea against a second example before relying on it.
+Zara's capstone project is to design and build a privacy-preserving research data service for Pellmore. Researchers should be able to analyse consultation outcomes without receiving identifiable records. The service must support approved studies, enforce purpose and time limits, and publish only safe outputs. She limits the scope to one type of analysis, outcome counts and rates by condition and region, so that the project can be completed and verified properly within the year rather than spread thinly across many features. Narrow scope allows deep verification.
 
 ### 44.2 Requirements
 
@@ -2299,11 +2299,11 @@ Zara writes requirements: analyses run inside the service, never on exported rec
 
 ### 44.3 Risks
 
-Zara lists capstone risks: researchers combining outputs to reconstruct individuals, implementation bugs in noise generation, opt-out lists not synchronised, and scope creep from researchers wanting record-level access. For each she defines controls and tests. For reconstruction she uses the release budget from Chapter 36 per study. For opt-outs she reuses the consent service. She also lists project risks, such as delays in approval, and schedules buffer time, because a capstone that runs late tends to cut verification first. The point seems small, but it changes how owners act on the result.
+Zara lists capstone risks: researchers combining outputs to reconstruct individuals, implementation bugs in noise generation, opt-out lists not synchronised, and scope creep from researchers wanting record-level access. For each she defines controls and tests. For reconstruction she uses the release budget from Chapter 36 per study. For opt-outs she reuses the consent service. She also lists project risks, such as delays in approval, and schedules buffer time, because a capstone that runs late tends to cut verification first. The approval risk is mitigated by booking the ethics committee early.
 
 ### 44.4 Verification plan
 
-Zara plans verification before building. Tests will check that no query returns records, that small counts are blocked, that budget limits stop excess queries, that opt-outs are excluded and that expired studies cannot run. An independent classmate will attempt reconstruction attacks. She sets acceptance criteria: all tests pass and the attack recovers no individual's data. Prof. Holm approves the plan, noting that defining verification first is the best protection against a capstone that works in demonstrations but fails under real use. Pellmore's data protection officer later asks for a copy of this analysis.
+Zara plans verification before building. Tests will check that no query returns records, that small counts are blocked, that budget limits stop excess queries, that opt-outs are excluded and that expired studies cannot run. An independent classmate will attempt reconstruction attacks. She sets acceptance criteria: all tests pass and the attack recovers no individual's data. Prof. Holm approves the plan, noting that defining verification first is the best protection against a capstone that works in demonstrations but fails under real use. Test cases precede code.
 
 ### Worked example
 
@@ -2339,7 +2339,7 @@ You will (1) prepare a design for independent review; (2) respond to findings; (
 
 ### 45.1 Preparing the review
 
-Before building, Zara submits her capstone design to an independent review panel: a privacy engineer from another company, a researcher and the data protection officer. She provides architecture diagrams, requirements, risk analysis and the verification plan. She also lists her own doubts, such as whether regional aggregation is enough for rare conditions. Prof. Holm explains that admitting doubts helps reviewers focus on real weaknesses rather than hunting for basic errors, and makes the review more useful to everyone involved. She marks the open questions in red so that they are not forgotten.
+Before building, Zara submits her capstone design to an independent review panel: a privacy engineer from another company, a researcher and the data protection officer. She provides architecture diagrams, requirements, risk analysis and the verification plan. She also lists her own doubts, such as whether regional aggregation is enough for rare conditions. Prof. Holm explains that admitting doubts helps reviewers focus on real weaknesses rather than hunting for basic errors, and makes the review more useful to everyone involved. Her reviewers receive the code in advance.
 
 ### 45.2 Findings
 
@@ -2351,7 +2351,7 @@ Zara responds to each finding. For rare conditions she allows national aggregati
 
 ### 45.4 After review
 
-The panel accepts the revised design. Zara notes that the opt-out finding was the most important, because it concerned a patient's right to object that her design would have quietly undermined. She also learns that reviewers with different backgrounds find different problems: the researcher focused on usefulness, the engineer on technical leaks and the data protection officer on transparency. She adds independent review as a standard step for any new data service at Pellmore and offers to serve on future panels. Writing the reasoning down also helps her spot a weak step in her argument.
+The panel accepts the revised design. Zara notes that the opt-out finding was the most important, because it concerned a patient's right to object that her design would have quietly undermined. She also learns that reviewers with different backgrounds find different problems: the researcher focused on usefulness, the engineer on technical leaks and the data protection officer on transparency. She adds independent review as a standard step for any new data service at Pellmore and offers to serve on future panels. Panels meet quarterly.
 
 ### Worked example
 
@@ -2387,7 +2387,7 @@ You will (1) build the research data service; (2) verify it against acceptance c
 
 ### 46.1 Building
 
-Zara builds the service in three months. Analyses run as approved query templates inside an isolated environment. The output checker blocks counts below ten and applies differential privacy to published outputs using the study's budget. The consent service supplies opt-outs at each run. Study approvals carry expiry dates checked at query time. She implements the system with small, tested components and reuses the privacy platform where possible, which shortens development and means that improvements to shared components also benefit the research service. Zara discusses the trade-off with a classmate who works in finance.
+Zara builds the service in three months. Analyses run as approved query templates inside an isolated environment. The output checker blocks counts below ten and applies differential privacy to published outputs using the study's budget. The consent service supplies opt-outs at each run. Study approvals carry expiry dates checked at query time. She implements the system with small, tested components and reuses the privacy platform where possible, which shortens development and means that improvements to shared components also benefit the research service.
 
 ### 46.2 Verification
 
@@ -2395,11 +2395,11 @@ Zara runs the planned tests. All pass except one: an expired study can still run
 
 ### 46.3 Evaluation with researchers
 
-Three researchers use the service for a pilot study on follow-up consultations. They find the template approach restrictive but workable. They ask for one more template type, which Zara adds after review. The national figures for rare conditions are useful, though less timely than they wanted. She records their feedback. The evaluation confirms that the service supports real analysis without record-level access, which is the capstone's central claim, while also showing the limits that remain for exploratory research. The class compares answers and finds that most differences come from unstated assumptions.
+Three researchers use the service for a pilot study on follow-up consultations. They find the template approach restrictive but workable. They ask for one more template type, which Zara adds after review. The national figures for rare conditions are useful, though less timely than they wanted. She records their feedback. The evaluation confirms that the service supports real analysis without record-level access, which is the capstone's central claim, while also showing the limits that remain for exploratory research. Their feedback is recorded verbatim.
 
 ### 46.4 Reflection
 
-Zara reflects on the capstone. The hardest problems were not algorithms but edge cases: time zones, caching and opt-out timing. Independent review and testing found them before they harmed anyone. She notes that the service will need monitoring for budget use, opt-out synchronisation and template changes. Prof. Holm comments that her capstone shows mature engineering because she chose a narrow scope, verified it thoroughly and was honest about the limits that remain for researchers who want more flexibility. Zara records this point in her course notebook so that later chapters can build on it.
+Zara reflects on the capstone. The hardest problems were not algorithms but edge cases: time zones, caching and opt-out timing. Independent review and testing found them before they harmed anyone. She notes that the service will need monitoring for budget use, opt-out synchronisation and template changes. Prof. Holm comments that her capstone shows mature engineering because she chose a narrow scope, verified it thoroughly and was honest about the limits that remain for researchers who want more flexibility. She documents what the scope deliberately excluded.
 
 ### Worked example
 
@@ -2435,19 +2435,19 @@ You will (1) run a breach exercise against a legal clock; (2) assess vendor noti
 
 ### 47.1 The scenario
 
-Pellmore runs a breach exercise with Zara as an observer. In the synthetic scenario, the chat vendor detects an unusual export at 22:00 on 2 March. The vendor tells Pellmore at 09:30 on 4 March. Pellmore confirms that personal data are involved at 15:00 the same day. Article 33 of the GDPR requires notification to the supervisory authority without undue delay and, where feasible, within 72 hours of becoming aware, and Article 33(2) requires the processor to notify the controller without undue delay after becoming aware. Prof. Holm asks her to explain the idea aloud to a classmate before moving on.
+Pellmore runs a breach exercise with Zara as an observer. In the synthetic scenario, the chat vendor detects an unusual export at 22:00 on 2 March. The vendor tells Pellmore at 09:30 on 4 March. Pellmore confirms that personal data are involved at 15:00 the same day. Article 33 of the GDPR requires notification to the supervisory authority without undue delay and, where feasible, within 72 hours of becoming aware, and Article 33(2) requires the processor to notify the controller without undue delay after becoming aware. The exercise uses synthetic records only.
 
 ### 47.2 The clock
 
-The lab computes the timeline. Pellmore became aware at 15:00 on 4 March, so the 72-hour deadline is 15:00 on 7 March. Pellmore notified the authority at 11:00 on 6 March, 44 hours after awareness, on time. Patients were informed on 8 March. But the vendor took 35.5 hours to tell Pellmore after detecting the export. EDPB Guidelines 9/2022 explain when a controller becomes aware and emphasise prompt action. Zara notes that the vendor delay, not Pellmore's own process, is the weakest link in the timeline. She notes the assumption behind it so that a reviewer can challenge it later.
+The lab computes the timeline. Pellmore became aware at 15:00 on 4 March, so the 72-hour deadline is 15:00 on 7 March. Pellmore notified the authority at 11:00 on 6 March, 44 hours after awareness, on time. Patients were informed on 8 March. But the vendor took 35.5 hours to tell Pellmore after detecting the export. EDPB Guidelines 9/2022 explain when a controller becomes aware and emphasise prompt action. Zara notes that the vendor delay, not Pellmore's own process, is the weakest link in the timeline. The scenario's vendor reported after several days of delay.
 
 ### 47.3 Communicating with patients
 
-Article 34 requires informing patients without undue delay where the breach is likely to result in a high risk to their rights and freedoms. The exercise team debates whether chat logs about symptoms meet that threshold and decides they do. The communication must describe the nature of the breach in clear language, the likely consequences, the measures taken and a contact point. Zara helps draft the message, avoiding jargon and giving practical steps, such as watching for phishing messages that refer to their consultations. The same reasoning will return when Pellmore's data protection officer reviews the work.
+Article 34 requires informing patients without undue delay where the breach is likely to result in a high risk to their rights and freedoms. The exercise team debates whether chat logs about symptoms meet that threshold and decides they do. The communication must describe the nature of the breach in clear language, the likely consequences, the measures taken and a contact point. Zara helps draft the message, avoiding jargon and giving practical steps, such as watching for phishing messages that refer to their consultations.
 
 ### 47.4 Improvements
 
-After the exercise the team lists improvements: a contractual requirement for the vendor to notify within twelve hours of detection, a pre-approved patient message template, and a decision tree for assessing high risk. They also record that the internal process met the deadline comfortably. Zara adds the exercise results to the evidence dossier. She reflects that exercises reveal dependencies on others, such as vendors, that internal tests miss, and that recovery depends as much on contracts and communication as on technology. She adds a short note to the shared course wiki for other students.
+After the exercise the team lists improvements: a contractual requirement for the vendor to notify within twelve hours of detection, a pre-approved patient message template, and a decision tree for assessing high risk. They also record that the internal process met the deadline comfortably. Zara adds the exercise results to the evidence dossier. She reflects that exercises reveal dependencies on others, such as vendors, that internal tests miss, and that recovery depends as much on contracts and communication as on technology. Contracts now set a twelve-hour clause.
 
 ### Lab — Breach timeline against the 72-hour clock
 
@@ -2512,7 +2512,7 @@ You will (1) assemble evidence for accountability; (2) protect evidence integrit
 
 ### 48.1 What goes in the dossier
 
-Zara assembles an evidence dossier for her final assessment and for Pellmore's accountability. It contains the DPIA, the record of processing generated from configuration, erasure test logs, the breach exercise report and the retention monitoring report. Each item shows that a control exists and works. She organises the dossier by GDPR principle and requirement, so that an auditor can trace from a legal duty to the evidence that Pellmore meets it. Accountability under Article 5(2) depends on such evidence being complete and trustworthy. This makes the privacy consequence visible to people outside the specialist team.
+Zara assembles an evidence dossier for her final assessment and for Pellmore's accountability. It contains the DPIA, the record of processing generated from configuration, erasure test logs, the breach exercise report and the retention monitoring report. Each item shows that a control exists and works. She organises the dossier by GDPR principle and requirement, so that an auditor can trace from a legal duty to the evidence that Pellmore meets it. Accountability under Article 5(2) depends on such evidence being complete and trustworthy.
 
 ### 48.2 Integrity
 
@@ -2524,7 +2524,7 @@ Zara investigates. The engineer responsible explains that a rerun after a vendor
 
 ### 48.4 Lessons
 
-Zara writes lessons. Evidence must be versioned, not overwritten; changes must create new entries with dates and reasons; and integrity checks should run regularly, not only at audits. She also notes that honesty about failing evidence is essential: a dossier that hid the failing store would mislead Pellmore and its patients. Prof. Holm adds that a dossier is not a showcase but a record, and that its value comes from being trustworthy, including when it shows problems. Zara keeps a dated copy of her working so that the result can be traced.
+Zara writes lessons. Evidence must be versioned, not overwritten; changes must create new entries with dates and reasons; and integrity checks should run regularly, not only at audits. She also notes that honesty about failing evidence is essential: a dossier that hid the failing store would mislead Pellmore and its patients. Prof. Holm adds that a dossier is not a showcase but a record, and that its value comes from being trustworthy, including when it shows problems. Problems found make the dossier credible.
 
 ### Lab — Verifying dossier evidence against its manifest
 
@@ -2584,19 +2584,19 @@ You will (1) write an engineering thesis around a design claim; (2) present evid
 
 ### 49.1 The claim
 
-Zara's thesis claims that a privacy-preserving research data service, built from templates, output checks and differential privacy budgets, can support useful outcome analysis for a telemedicine provider without record-level access, with verified protection against the reconstruction attacks tested. The claim is bounded: one organisation, one analysis type, synthetic verification data and a small researcher evaluation. She states the bounds in the abstract and the introduction so that no reader mistakes the claim for a general solution. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Zara's thesis claims that a privacy-preserving research data service, built from templates, output checks and differential privacy budgets, can support useful outcome analysis for a telemedicine provider without record-level access, with verified protection against the reconstruction attacks tested. The claim is bounded: one organisation, one analysis type, synthetic verification data and a small researcher evaluation. She states the bounds in the abstract and the introduction so that no reader mistakes the claim for a general solution. Bounded claims are easier to defend under examination.
 
 ### 49.2 Evidence chapters
 
-The thesis presents requirements traced to law, the design and its review, the implementation, verification results including failures and fixes, the reconstruction attack, the researcher evaluation and the evidence dossier. Each chapter answers part of the claim. Zara includes the expiry bug and the failing erasure store from the dossier, explaining how each was found and fixed. Examiners, she argues, should see that the verification process works because it found real problems, not because everything passed the first time. She checks the idea against a second example before relying on it.
+The thesis presents requirements traced to law, the design and its review, the implementation, verification results including failures and fixes, the reconstruction attack, the researcher evaluation and the evidence dossier. Each chapter answers part of the claim. Zara includes the expiry bug and the failing erasure store from the dossier, explaining how each was found and fixed. Examiners, she argues, should see that the verification process works because it found real problems, not because everything passed the first time. Each failure cites its fix and retest.
 
 ### 49.3 Limits
 
-Zara writes limits clearly. Template systems restrict exploratory research. National aggregation reduces timeliness for rare conditions. Differential privacy budgets require careful management and expert implementation. Legal analysis relies on GDPR and LGPD texts and EDPB guidance, not case law. The service depends on the consent service and privacy platform, which must remain reliable. She also notes that real patient data might behave differently from synthetic test data, and that a real deployment would need its own DPIA. The point seems small, but it changes how owners act on the result.
+Zara writes limits clearly. Template systems restrict exploratory research. National aggregation reduces timeliness for rare conditions. Differential privacy budgets require careful management and expert implementation. Legal analysis relies on GDPR and LGPD texts and EDPB guidance, not case law. The service depends on the consent service and privacy platform, which must remain reliable. She also notes that real patient data might behave differently from synthetic test data, and that a real deployment would need its own DPIA. She also lists untested threats openly.
 
 ### 49.4 Generalisation
 
-Zara discusses what other organisations could learn. The pattern of approved templates, output checks and per-study budgets could transfer to other health providers, but the parameters depend on population size, query types and risk appetite. She cites NIST SP 800-188 and Dwork and Roth (2014) for the general methods and Pellmore's results for one configuration. She avoids recommending specific epsilon values for others. Prof. Holm praises the restraint, noting that over-generalisation is a common weakness in engineering theses. Pellmore's data protection officer later asks for a copy of this analysis.
+Zara discusses what other organisations could learn. The pattern of approved templates, output checks and per-study budgets could transfer to other health providers, but the parameters depend on population size, query types and risk appetite. She cites NIST SP 800-188 and Dwork and Roth (2014) for the general methods and Pellmore's results for one configuration. She avoids recommending specific epsilon values for others. Prof. Holm praises the restraint, noting that over-generalisation is a common weakness in engineering theses. She describes a method for choosing epsilon instead of recommending values.
 
 ### Worked example
 
@@ -2632,19 +2632,19 @@ You will (1) defend an engineering thesis; (2) answer questions on law, design a
 
 ### 50.1 Preparing
 
-Zara prepares for the final defense by listing likely questions in three groups: legal (why is the lawful basis for research appropriate?), design (why templates instead of a query language?) and verification (how do you know the noise generator is correct?). She rehearses concise answers with evidence references. Prof. Holm conducts a mock defense and pushes her on the limits of synthetic testing. She practises saying what she would do next to address each limit, rather than defending the limit itself. She marks the open questions in red so that they are not forgotten.
+Zara prepares for the final defense by listing likely questions in three groups: legal (why is the lawful basis for research appropriate?), design (why templates instead of a query language?) and verification (how do you know the noise generator is correct?). She rehearses concise answers with evidence references. Prof. Holm conducts a mock defense and pushes her on the limits of synthetic testing. She practises saying what she would do next to address each limit, rather than defending the limit itself. Rehearsals are recorded.
 
 ### 50.2 The defense
 
-At the defense the examiners ask about the opt-out timing finding from the design review. Zara explains the cache problem and the decision to rerun studies without caching. They ask whether differential privacy guarantees hold if templates change. She explains that each new template needs sensitivity analysis and review, which the governance process requires. They ask about vendor dependence, and she cites the breach exercise and the new twelve-hour notification clause. The examiners pass the thesis and commend the evidence dossier. Writing the reasoning down also helps her spot a weak step in her argument.
+At the defense the examiners ask about the opt-out timing finding from the design review. Zara explains the cache problem and the decision to rerun studies without caching. They ask whether differential privacy guarantees hold if templates change. She explains that each new template needs sensitivity analysis and review, which the governance process requires. They ask about vendor dependence, and she cites the breach exercise and the new twelve-hour notification clause. The examiners pass the thesis and commend the evidence dossier. The examiners ask for no changes.
 
 ### 50.3 Professional development
 
-After the defense Zara writes a development plan. She wants to deepen her knowledge of formal privacy accounting, gain experience with supervisory authority interactions and learn more about health law beyond the GDPR and LGPD. She notes that ISO/IEC 27701:2025 certification audits would give her practical experience with management systems. She also plans to mentor first-year students in privacy unit testing, completing the circle that began with her own first programming assignment five years earlier. Zara discusses the trade-off with a classmate who works in finance.
+After the defense Zara writes a development plan. She wants to deepen her knowledge of formal privacy accounting, gain experience with supervisory authority interactions and learn more about health law beyond the GDPR and LGPD. She notes that ISO/IEC 27701:2025 certification audits would give her practical experience with management systems. She also plans to mentor first-year students in privacy unit testing, completing the circle that began with her own first programming assignment five years earlier. Pellmore offers her a privacy engineering role, which she accepts after the defense.
 
 ### 50.4 Looking back
 
-Zara looks back on five years. The foundations, from calculus to cryptography, each gave her tools for privacy problems. The middle years taught her to turn law into requirements and requirements into tested systems. The final years taught her to work with people, evidence and limits. She concludes that privacy engineering is not a specialism added at the end but a way of building systems responsibly from the start. Pellmore offers her a role in its privacy engineering team, which she accepts. The class compares answers and finds that most differences come from unstated assumptions.
+Zara looks back on five years. The foundations, from calculus to cryptography, each gave her tools for privacy problems. The middle years taught her to turn law into requirements and requirements into tested systems. The final years taught her to work with people, evidence and limits. She concludes that privacy engineering is not a specialism added at the end but a way of building systems responsibly from the start. Pellmore offers her a role in its privacy engineering team, which she accepts.
 
 ### Worked example
 

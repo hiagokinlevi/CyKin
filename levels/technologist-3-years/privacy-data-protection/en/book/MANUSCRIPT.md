@@ -43,19 +43,19 @@ You will (1) describe the systems that handle member data in a fitness business;
 
 ### 1.1 The course and the case
 
-Aisha Bello begins a three-year technologist course at the fictional Lindon Technical Institute, supervised by Mr. Tom Reilly. Her work placement is with the fictional Quayside Fitness, a chain of forty gyms with about 60,000 members, a mobile app and wearable heart-rate straps used in classes. Quayside holds names, contact details, payment data, workout histories, heart-rate readings and CCTV footage. Mr. Reilly explains that privacy and data protection will be her specialism, and that each technical course will be applied to Quayside's systems. Aisha records this point in her course notebook so that later chapters can build on it.
+Aisha Bello begins a three-year technologist course at the fictional Lindon Technical Institute, supervised by Mr. Tom Reilly. Her work placement is with the fictional Quayside Fitness, a chain of forty gyms with about 60,000 members, a mobile app and wearable heart-rate straps used in classes. Quayside holds names, contact details, payment data, workout histories, heart-rate readings and CCTV footage. Mr. Reilly explains that privacy and data protection will be her specialism, and that each technical course will be applied to Quayside's systems.
 
 ### 1.2 Kinds of systems
 
-Aisha lists Quayside's systems. A membership system in the cloud stores contracts and payments. The app stores profiles and workout history. Club computers run door access and class booking. Wearable straps send heart-rate data to class screens and to the app. CCTV recorders sit in each club. She notes that some systems are run by Quayside and some by vendors, and that member data move between them. Understanding the kinds of systems helps her see where data are stored and who controls them. Mr. Reilly asks her to explain the idea aloud to a classmate before moving on.
+Aisha lists Quayside's systems. A membership system in the cloud stores contracts and payments. The app stores profiles and workout history. Club computers run door access and class booking. Wearable straps send heart-rate data to class screens and to the app. CCTV recorders sit in each club. She notes that some systems are run by Quayside and some by vendors, and that member data move between them. Understanding the kinds of systems helps her see where data are stored and who controls them.
 
 ### 1.3 Starting an inventory
 
-Mr. Reilly asks Aisha to start an inventory. For each system she records its purpose, the data it holds, where it runs, who owns it and which vendor supports it. The inventory reveals that nobody owns the CCTV recorders centrally; each club manager manages their own. She notes this as a governance gap. She learns that Article 30 of the GDPR requires a record of processing activities, and that her technical inventory will feed that record. She notes the assumption behind it so that a reviewer can challenge it later.
+Mr. Reilly asks Aisha to start an inventory. For each system she records its purpose, the data it holds, where it runs, who owns it and which vendor supports it. The inventory reveals that nobody owns the CCTV recorders centrally; each club manager manages their own. She notes this as a governance gap. She learns that Article 30 of the GDPR requires a record of processing activities, and that her technical inventory will feed that record. The record must list purposes, categories of data and recipients, so her columns use the same headings.
 
 ### 1.4 Why systems matter for privacy
 
-Aisha reflects that privacy depends on systems behaving correctly. A policy may say heart-rate data are deleted after a year, but if the app keeps them forever, the policy is false. She concludes that technologists have a key role: they know how systems actually behave and can check that practice matches policy. Mr. Reilly agrees and adds that technologists often discover privacy problems first, because they see the data every day. The same reasoning will return when Quayside's data protection officer reviews the work.
+Aisha reflects that privacy depends on systems behaving correctly. A policy may say heart-rate data are deleted after a year, but if the app keeps them forever, the policy is false. She concludes that technologists have a key role: they know how systems actually behave and can check that practice matches policy. Mr. Reilly agrees and adds that technologists often discover privacy problems first, because they see the data every day. Her first example is the app's export button, which the written policy never mentions but which lets any manager download every member in seconds.
 
 ### Worked example
 
@@ -83,19 +83,19 @@ You will (1) trace member data across networks; (2) identify third-party service
 
 ### 2.1 Club networks
 
-Each club has a network for staff computers, door access, CCTV and guest Wi-Fi. Aisha finds that CCTV recorders and guest Wi-Fi share one network in two clubs, so a guest could reach the recorders. She recommends separating them. She explains that network separation protects personal data such as footage from people who should not access it, and that it also reduces the chance that a compromised device spreads to other systems. She adds a short note to the shared course wiki for other students.
+Each club has a network for staff computers, door access, CCTV and guest Wi-Fi. Aisha finds that CCTV recorders and guest Wi-Fi share one network in two clubs, so a guest could reach the recorders. She recommends separating them. She explains that network separation protects personal data such as footage from people who should not access it, and that it also reduces the chance that a compromised device spreads to other systems. At Quayside the fix is a separate virtual network for cameras, with a rule that only the recorder management server may connect to them.
 
 ### 2.2 Internet services
 
-Quayside's website and app use many internet services: hosting, payments, analytics, maps and social login. Aisha uses browser developer tools on the website with a test account to see which domains receive requests. She lists eleven third-party domains. Some receive only technical data; others receive member identifiers. She learns that each third party may be a processor needing a contract under GDPR Article 28, or a separate controller, and that many services are added without privacy review. This makes the privacy consequence visible to people outside the specialist team.
+Quayside's website and app use many internet services: hosting, payments, analytics, maps and social login. Aisha uses browser developer tools on the website with a test account to see which domains receive requests. She lists eleven third-party domains. Some receive only technical data; others receive member identifiers. She learns that each third party may be a processor needing a contract under GDPR Article 28, or a separate controller, and that many services are added without privacy review. Her list shows a map service receiving club searches with member IDs attached.
 
 ### 2.3 Encryption in transit
 
-Aisha checks that the website and app use encrypted connections. All public endpoints do, but the club booking screens send member names to a local server without encryption. She raises it with the IT team, who enable encryption. She explains that encryption in transit is a basic security measure under Article 32 and that internal networks are not automatically safe. Aisha keeps a dated copy of her working so that the result can be traced. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Aisha checks that the website and app use encrypted connections. All public endpoints do, but the club booking screens send member names to a local server without encryption. She raises it with the IT team, who enable encryption. She explains that encryption in transit is a basic security measure under Article 32 and that internal networks are not automatically safe. On the booking screens, anyone plugged into the club switch could have read names and class times in plain text. After the change she repeats the capture with a test booking and sees only encrypted traffic, which she records as evidence for the IT ticket.
 
 ### 2.4 Guest Wi-Fi
 
-Guest Wi-Fi asks members to log in with their membership number. Aisha finds that login records with device identifiers are kept indefinitely. She recommends keeping them only as long as needed for security and abuse handling, such as thirty days, and telling members in the privacy notice. She notes that networks create personal data as a side effect, which needs the same care as data collected deliberately. She checks the idea against a second example before relying on it. The point seems small, but it changes how owners act on the result.
+Guest Wi-Fi asks members to log in with their membership number. Aisha finds that login records with device identifiers are kept indefinitely. She recommends keeping them only as long as needed for security and abuse handling, such as thirty days, and telling members in the privacy notice. She notes that networks create personal data as a side effect, which needs the same care as data collected deliberately. Device identifiers can follow a member across visits, so thirty days limits how much movement history builds up.
 
 ### Worked example
 
@@ -123,19 +123,19 @@ You will (1) write scripts that handle member data safely; (2) avoid printing or
 
 ### 3.1 Safe scripts
 
-Aisha writes Python scripts to count class attendance. Mr. Reilly requires synthetic member data for all exercises. Her script reads a file of bookings, counts attendance per class and prints totals. She avoids printing member names, which are not needed for totals. She learns that scripts are often copied and reused, so habits formed in simple scripts spread into production systems. Quayside's data protection officer later asks for a copy of this analysis. She marks the open questions in red so that they are not forgotten.
+Aisha writes Python scripts to count class attendance. Mr. Reilly requires synthetic member data for all exercises. Her script reads a file of bookings, counts attendance per class and prints totals. She avoids printing member names, which are not needed for totals. She learns that scripts are often copied and reused, so habits formed in simple scripts spread into production systems. Her script therefore groups bookings by class code and date, and the only output is a table such as Spin Tuesday 18:00 with twenty-two attendees.
 
 ### 3.2 Logging
 
-Aisha adds logging to her script to help debugging. Her first version logs each booking with the member name. She changes it to log only booking references and counts. She explains that logs are often kept longer and accessed by more people than the data they describe, so personal data in logs create unnecessary exposure. Writing the reasoning down also helps her spot a weak step in her argument. Aisha discusses the trade-off with a classmate who works in finance. The class compares answers and finds that most differences come from unstated assumptions.
+Aisha adds logging to her script to help debugging. Her first version logs each booking with the member name. She changes it to log only booking references and counts. She explains that logs are often kept longer and accessed by more people than the data they describe, so personal data in logs create unnecessary exposure. In her script, a log line now reads booking B-10422 counted for class SPN-18, which still lets her trace an error back to the source file without revealing who attended the class.
 
 ### 3.3 Input validation
 
-Aisha's script reads files exported from the booking system. She adds checks that the file has only expected columns and stops if it includes unexpected ones such as health notes. She explains that validation supports data minimisation, since a script should not process data it does not need, and that stopping loudly is better than silently processing sensitive information. Aisha records this point in her course notebook so that later chapters can build on it. Mr. Reilly asks her to explain the idea aloud to a classmate before moving on.
+Aisha's script reads files exported from the booking system. She adds checks that the file has only expected columns and stops if it includes unexpected ones such as health notes. She explains that validation supports data minimisation, since a script should not process data it does not need, and that stopping loudly is better than silently processing sensitive information. Her check compares the header row with an allowed list of five columns and exits with a message naming any extra column, such as medical_notes.
 
 ### 3.4 Test data generation
 
-Aisha writes a generator for synthetic members with names, ages, membership types and bookings. She includes edge cases, such as members with long names or no bookings. She shares the generator with classmates. Mr. Reilly notes that good test data make development safer and faster, and that using real member data for testing is a common cause of breaches. She notes the assumption behind it so that a reviewer can challenge it later. The same reasoning will return when Quayside's data protection officer reviews the work.
+Aisha writes a generator for synthetic members with names, ages, membership types and bookings. She includes edge cases, such as members with long names or no bookings. She shares the generator with classmates. Mr. Reilly notes that good test data make development safer and faster, and that using real member data for testing is a common cause of breaches. Her generator uses a fixed random seed, so classmates who run it get identical members and can compare their results line by line.
 
 ### Worked example
 
@@ -163,19 +163,19 @@ You will (1) design data models that separate sensitive data; (2) define retenti
 
 ### 4.1 Separating sensitive data
 
-Aisha designs a data model for Quayside's app. Member identity (name, email, phone) sits in one table; workout and heart-rate data sit in another linked by an internal identifier; marketing preferences sit in a third. She explains that separation lets each service access only what it needs. Heart-rate data may be data concerning health under GDPR Article 4(15) when used to assess fitness or health, which requires extra care under Article 9. She adds a short note to the shared course wiki for other students. This makes the privacy consequence visible to people outside the specialist team.
+Aisha designs a data model for Quayside's app. Member identity (name, email, phone) sits in one table; workout and heart-rate data sit in another linked by an internal identifier; marketing preferences sit in a third. She explains that separation lets each service access only what it needs. Heart-rate data may be data concerning health under GDPR Article 4(15) when used to assess fitness or health, which requires extra care under Article 9. In practice, the class screen service can read heart-rate zones and first names but cannot query emails or payment status.
 
 ### 4.2 Retention fields
 
-Aisha adds a created date and a category to each record, so that retention rules can be applied. Heart-rate readings are kept for twelve months unless the member chooses to keep longer; workout summaries are kept while the account is active. She notes that designing retention into the model from the start is much easier than adding it later, when data have accumulated without dates or categories. Aisha keeps a dated copy of her working so that the result can be traced. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Aisha adds a created date and a category to each record, so that retention rules can be applied. Heart-rate readings are kept for twelve months unless the member chooses to keep longer; workout summaries are kept while the account is active. She notes that designing retention into the model from the start is much easier than adding it later, when data have accumulated without dates or categories. Her retention job reads the category, compares the created date with the rule and deletes the expired rows.
 
 ### 4.3 Modelling consent
 
-Quayside uses consent for marketing emails and for sharing heart-rate data with class screens. Aisha models consent as a table with member, purpose, wording version, date and status. Withdrawals change the status and the date. She explains that EDPB Guidelines 05/2020 require consent to be specific and demonstrable, which the model supports by recording what was agreed and when. She checks the idea against a second example before relying on it. The point seems small, but it changes how owners act on the result. Quayside's data protection officer later asks for a copy of this analysis.
+Quayside uses consent for marketing emails and for sharing heart-rate data with class screens. Aisha models consent as a table with member, purpose, wording version, date and status. Withdrawals change the status and the date. She explains that EDPB Guidelines 05/2020 require consent to be specific and demonstrable, which the model supports by recording what was agreed and when. A wording version matters because Quayside will change its consent text; without it, nobody can prove which text a member saw in 2025 compared with 2027.
 
 ### 4.4 Reviewing the model
 
-Mr. Reilly reviews Aisha's model and asks why date of birth is stored when age bands would do. Aisha replaces it with an age band for classes and keeps the full date only in the membership system, where it is needed for contracts. He notes that each field in a data model should have a reason, and that reviewing models for unnecessary fields is an effective privacy practice. She marks the open questions in red so that they are not forgotten. Writing the reasoning down also helps her spot a weak step in her argument.
+Mr. Reilly reviews Aisha's model and asks why date of birth is stored when age bands would do. Aisha replaces it with an age band for classes and keeps the full date only in the membership system, where it is needed for contracts. He notes that each field in a data model should have a reason, and that reviewing models for unnecessary fields is an effective privacy practice. After the review she also removes gender from the app, since no feature uses it.
 
 ### Worked example
 
@@ -331,7 +331,7 @@ Access to the heart-rate store passes through an API that checks role and purpos
 
 ### 8.3 Vendors in the diagram
 
-Aisha includes vendors: payment processor, chat support, analytics and wearable strap provider. She marks which receive personal data and whether contracts exist. The mapping shows that the wearable strap provider receives raw heart-rate readings, not just zones, and that its contract does not mention retention. Aisha flags the gap for the procurement team. She also discovers that chat support transcripts are stored by the vendor for five years by default, which is far longer than Quayside needs for customer service. Aisha discusses the trade-off with a classmate who works in finance.
+Aisha includes vendors: payment processor, chat support, analytics and wearable strap provider. She marks which receive personal data and whether contracts exist. The mapping shows that the wearable strap provider receives raw heart-rate readings, not just zones, and that its contract does not mention retention. Aisha flags the gap for the procurement team. She also discovers that chat support transcripts are stored by the vendor for five years by default, which is far longer than Quayside needs for customer service. Aisha asks for ninety days.
 
 ### 8.4 Documentation
 
@@ -367,7 +367,7 @@ Aisha proposes metrics: accounts of former staff, local copies found, rights req
 
 ### 9.2 Evidence
 
-She collects evidence through system reports rather than surveys where possible, because reports are more reliable. She stores evidence with dates. Surveys ask managers whether they removed leavers, but managers may remember incorrectly or answer optimistically. A system report lists the accounts directly. Where only a survey is possible, such as staff awareness, she combines it with a small test, like asking staff to show where the reporting form is, and she records how each piece of evidence was produced. The class compares answers and finds that most differences come from unstated assumptions.
+She collects evidence through system reports rather than surveys where possible, because reports are more reliable. She stores evidence with dates. Surveys ask managers whether they removed leavers, but managers may remember incorrectly or answer optimistically. A system report lists the accounts directly. Where only a survey is possible, such as staff awareness, she combines it with a small test, like asking staff to show where the reporting form is, and she records how each piece of evidence was produced. Method notes prevent overclaiming.
 
 ### 9.3 Baseline
 
@@ -375,7 +375,7 @@ Aisha records a baseline: forty stale accounts, three clubs with local spreadshe
 
 ### 9.4 Reporting
 
-She reports monthly to Quayside's data protection officer. Mr. Reilly notes that measuring from the start allows progress to be shown later. Each monthly report fits on one page: a table of metrics with the current value, the previous value and the baseline, a short comment on each change and a list of actions with owners. The data protection officer forwards it to the operations director. Aisha keeps the reports in a dated folder so trends can be reviewed later. Aisha records this point in her course notebook so that later chapters can build on it.
+She reports monthly to Quayside's data protection officer. Mr. Reilly notes that measuring from the start allows progress to be shown later. Each monthly report fits on one page: a table of metrics with the current value, the previous value and the baseline, a short comment on each change and a list of actions with owners. The data protection officer forwards it to the operations director. Aisha keeps the reports in a dated folder so trends can be reviewed later. Each report names its data sources.
 
 ### Worked example
 
@@ -443,19 +443,19 @@ You will (1) classify personal data assets; (2) understand member expectations; 
 
 ### 11.1 Asset classes
 
-Aisha classifies assets: identity, payment, workout, heart-rate, CCTV and marketing. She rates sensitivity and volume for each. Identity data include names, emails, phones and photos on membership cards. Payment data include bank details and card tokens. Workout data include classes and exercises. Heart-rate data come from straps. CCTV covers entrances and gym floors. Marketing data include preferences and campaign responses. She rates heart-rate and CCTV as most sensitive, and identity and workout data as the largest by volume. Mr. Reilly asks her to explain the idea aloud to a classmate before moving on.
+Aisha classifies assets: identity, payment, workout, heart-rate, CCTV and marketing. She rates sensitivity and volume for each. Identity data include names, emails, phones and photos on membership cards. Payment data include bank details and card tokens. Workout data include classes and exercises. Heart-rate data come from straps. CCTV covers entrances and gym floors. Marketing data include preferences and campaign responses. She rates heart-rate and CCTV as most sensitive, and identity and workout data as the largest by volume. Payment data rank third because card tokens are held by the processor.
 
 ### 11.2 Expectations
 
-She surveys twenty volunteers about expectations. Most expect workout data to stay within the app and be deleted when they leave. The volunteers are members who responded to a notice in two clubs. She asks short questions about where data go, who can see them and how long they are kept. Several volunteers are surprised that class screens show heart-rate zones with first names, and two say they stopped wearing straps for that reason. She records their views anonymously. She notes the assumption behind it so that a reviewer can challenge it later.
+She surveys twenty volunteers about expectations. Most expect workout data to stay within the app and be deleted when they leave. The volunteers are members who responded to a notice in two clubs. She asks short questions about where data go, who can see them and how long they are kept. Several volunteers are surprised that class screens show heart-rate zones with first names, and two say they stopped wearing straps for that reason. She records their views anonymously. She feeds these views into the risk work.
 
 ### 11.3 Context
 
-Using contextual integrity, Aisha notes that heart-rate data shared for training should not flow to advertisers. Members' expectations match this. Contextual integrity asks whether an information flow matches the norms of the context where data were shared. Members share heart-rate data with trainers to train better. A flow to advertisers serves a different purpose and breaks those norms, even if a notice mentions it. Aisha uses this framework to explain to the app team why some legal flows still feel wrong to members. The same reasoning will return when Quayside's data protection officer reviews the work.
+Using contextual integrity, Aisha notes that heart-rate data shared for training should not flow to advertisers. Members' expectations match this. Contextual integrity asks whether an information flow matches the norms of the context where data were shared. Members share heart-rate data with trainers to train better. A flow to advertisers serves a different purpose and breaks those norms, even if a notice mentions it. Aisha uses this framework to explain to the app team why some legal flows still feel wrong to members.
 
 ### 11.4 Priorities
 
-She ranks assets by sensitivity and exposure; heart-rate and CCTV come first. Mr. Reilly notes that context helps decide where protection matters most. She combines sensitivity with how widely data are exposed. Heart-rate data are sensitive and reach vendors and screens. CCTV footage is sensitive and accessed by local managers without logging. Payment data are sensitive but already protected by the payment processor. This ranking guides which data flows she examines first in the next chapter and which controls she proposes later. She adds a short note to the shared course wiki for other students.
+She ranks assets by sensitivity and exposure; heart-rate and CCTV come first. Mr. Reilly notes that context helps decide where protection matters most. She combines sensitivity with how widely data are exposed. Heart-rate data are sensitive and reach vendors and screens. CCTV footage is sensitive and accessed by local managers without logging. Payment data are sensitive but already protected by the payment processor. This ranking guides which data flows she examines first in the next chapter and which controls she proposes later.
 
 ### Worked example
 
@@ -552,15 +552,15 @@ Aisha writes scenarios: heart-rate data leaked to advertisers; CCTV footage of c
 
 ### 13.2 Ratings
 
-She rates each on likelihood and impact from one to three. Heart-rate leakage and account takeover rate highest. Likelihood considers how often similar events happen and how easy they are. Impact considers harm to members, such as distress, discrimination or financial loss, rather than only harm to Quayside. Heart-rate leakage scores high on impact because health data can affect insurance or employment. Account takeover scores high on likelihood because member passwords are often reused from other services. This makes the privacy consequence visible to people outside the specialist team.
+She rates each on likelihood and impact from one to three. Heart-rate leakage and account takeover rate highest. Likelihood considers how often similar events happen and how easy they are. Impact considers harm to members, such as distress, discrimination or financial loss, rather than only harm to Quayside. Heart-rate leakage scores high on impact because health data can affect insurance or employment. Account takeover scores high on likelihood because member passwords are often reused from other services. Both therefore rate three by three.
 
 ### 13.3 Treatments
 
-Treatments include SDK review, CCTV access logging, staff guidance and multi-factor login for the app. She chooses treatments that reduce likelihood or impact. SDK review reduces the chance of new leaks. CCTV access logging deters misuse and makes it detectable. Staff guidance reduces photographed lists. Optional multi-factor login protects app accounts. She records the residual risk after each treatment, and accepts that some risk remains, such as members choosing weak passwords despite advice. Aisha keeps a dated copy of her working so that the result can be traced.
+Treatments include SDK review, CCTV access logging, staff guidance and multi-factor login for the app. She chooses treatments that reduce likelihood or impact. SDK review reduces the chance of new leaks. CCTV access logging deters misuse and makes it detectable. Staff guidance reduces photographed lists. Optional multi-factor login protects app accounts. She records the residual risk after each treatment, and accepts that some risk remains, such as members choosing weak passwords despite advice. Residual risk for heart-rate leakage falls from high to medium after SDK review.
 
 ### 13.4 Owners
 
-Each treatment gets an owner and date. Mr. Reilly notes that scenarios help non-specialists understand risks. Owners are people with authority to act, not committees. The app lead owns SDK review and login changes; the operations director owns CCTV logging; the training manager owns staff guidance. Dates are realistic and agreed with owners. Aisha reviews the list each month and reports overdue items to the data protection officer, who can escalate them to the leadership team. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Each treatment gets an owner and date. Mr. Reilly notes that scenarios help non-specialists understand risks. Owners are people with authority to act, not committees. The app lead owns SDK review and login changes; the operations director owns CCTV logging; the training manager owns staff guidance. Dates are realistic and agreed with owners. Aisha reviews the list each month and reports overdue items to the data protection officer, who can escalate them to the leadership team. Each item shows its target date beside it.
 
 ### Worked example
 
@@ -596,7 +596,7 @@ The lab shows that the export covered 47 of 287 records, 16%, in three of seven 
 
 ### 14.3 Improvement
 
-Aisha creates a checklist of systems from the inventory and assigns an owner for each search. EDPB Guidelines 01/2022 help define what must be included. The checklist lists each system, the search method, the owner, the expected time and any redaction needs. CCTV footage needs other people blurred, and chat transcripts may mention staff. The response team now records which systems were searched for each request. This record also shows the supervisory authority, if asked, how Quayside meets its obligation under Article 15. She checks the idea against a second example before relying on it.
+Aisha creates a checklist of systems from the inventory and assigns an owner for each search. EDPB Guidelines 01/2022 help define what must be included. The checklist lists each system, the search method, the owner, the expected time and any redaction needs. CCTV footage needs other people blurred, and chat transcripts may mention staff. The response team now records which systems were searched for each request. This record also shows the supervisory authority, if asked, how Quayside meets its obligation under Article 15. It is kept for two years.
 
 ### 14.4 Retest
 
@@ -656,15 +656,15 @@ Aisha plans a guided lab on CCTV retention at one club using a synthetic index o
 
 ### 15.2 Results
 
-The lab checks 500 clips. 304 are older than thirty days; twelve are held for incidents; 292 should be deleted. The oldest unflagged clip is 75 days old. Automatic deletion is not working. The result surprises the club manager, who believed deletion was automatic. The incident-flagged clips are expected, since footage linked to incidents is kept until the incident is resolved. Unflagged clips should never exceed thirty days. The age of the oldest clip, seventy-five days, suggests deletion stopped about six weeks before the check. The point seems small, but it changes how owners act on the result.
+The lab checks 500 clips. 304 are older than thirty days; twelve are held for incidents; 292 should be deleted. The oldest unflagged clip is 75 days old. Automatic deletion is not working. The result surprises the club manager, who believed deletion was automatic. The incident-flagged clips are expected, since footage linked to incidents is kept until the incident is resolved. Unflagged clips should never exceed thirty days. The age of the oldest clip, seventy-five days, suggests deletion stopped about six weeks before the check. The firmware log confirms the date.
 
 ### 15.3 Fix
 
-The club's recorder had automatic deletion switched off after a firmware update. Aisha switches it on and adds a monthly check. The firmware update reset several settings to factory defaults, including automatic deletion. Aisha asks the vendor whether updates at other clubs did the same, and the vendor confirms the problem across one model. She checks the other clubs with that model and finds two more with deletion switched off, which are fixed the same week. Quayside's data protection officer later asks for a copy of this analysis.
+The club's recorder had automatic deletion switched off after a firmware update. Aisha switches it on and adds a monthly check. The firmware update reset several settings to factory defaults, including automatic deletion. Aisha asks the vendor whether updates at other clubs did the same, and the vendor confirms the problem across one model. She checks the other clubs with that model and finds two more with deletion switched off, which are fixed the same week. She then asks for vendor update notes in advance.
 
 ### 15.4 Record
 
-She records the findings and fix. Mr. Reilly notes that guided labs show how a simple check can reveal a silent failure. The record includes the date, method, result, root cause, fix and follow-up checks. She also suggests that the vendor change its update process so that privacy settings survive updates. The monthly check is added to the club manager's routine, and the results feed the monitoring she will build later in the course for all forty clubs. She marks the open questions in red so that they are not forgotten.
+She records the findings and fix. Mr. Reilly notes that guided labs show how a simple check can reveal a silent failure. The record includes the date, method, result, root cause, fix and follow-up checks. She also suggests that the vendor change its update process so that privacy settings survive updates. The monthly check is added to the club manager's routine, and the results feed the monitoring she will build later in the course for all forty clubs. This one club becomes the template for the rest.
 
 ### Lab — CCTV footage past retention
 
@@ -719,11 +719,11 @@ She describes the processing, assesses necessity and proportionality, and lists 
 
 ### 16.3 Consultation
 
-Aisha consults trainers, five member volunteers and the data protection officer. Members want an easy off switch, which is added. Trainers worry that members might skip sessions on the app's advice without understanding why. The data protection officer asks how members will learn what the feature does and how to switch it off. Volunteers want clear wording, no surprise notifications and assurance that their insurer will never see the data. Aisha records each concern and the design response in the assessment document. Aisha records this point in her course notebook so that later chapters can build on it.
+Aisha consults trainers, five member volunteers and the data protection officer. Members want an easy off switch, which is added. Trainers worry that members might skip sessions on the app's advice without understanding why. The data protection officer asks how members will learn what the feature does and how to switch it off. Volunteers want clear wording, no surprise notifications and assurance that their insurer will never see the data. Aisha records each concern and the design response in the assessment document.
 
 ### 16.4 Decision
 
-The data protection officer signs off with conditions. Mr. Reilly notes that the assessment shaped the design rather than just documenting it. The conditions are that the feature is off by default, explained in plain words, processed on the device, and reviewed after three months of use. The assessment is stored with the product documentation, so future changes trigger a review. Mr. Reilly points out that a good assessment records alternatives considered and rejected, not only the final design choice. Mr. Reilly asks her to explain the idea aloud to a classmate before moving on.
+The data protection officer signs off with conditions. Mr. Reilly notes that the assessment shaped the design rather than just documenting it. The conditions are that the feature is off by default, explained in plain words, processed on the device, and reviewed after three months of use. The assessment is stored with the product documentation, so future changes trigger a review. Mr. Reilly points out that a good assessment records alternatives considered and rejected, not only the final design choice. Here, cloud processing was the rejected alternative.
 
 ### Worked example
 
@@ -820,11 +820,11 @@ You will (1) select controls for Quayside's risks; (2) map controls to principle
 
 ### 18.1 Selecting controls
 
-Aisha lists controls: SDK review, access request checklist, CCTV deletion check, file scanning, multi-factor authentication and inactive account deletion. She chooses controls that respond to findings in earlier chapters rather than copying a generic list. Each control addresses a real failure: the ad SDK, the incomplete access response, the CCTV firmware reset, the forgotten files, weak manager logins and accounts kept forever. This makes the control set easy to explain, because every item has a story that staff remember. She notes the assumption behind it so that a reviewer can challenge it later.
+Aisha lists controls: SDK review, access request checklist, CCTV deletion check, file scanning, multi-factor authentication and inactive account deletion. She chooses controls that respond to findings in earlier chapters rather than copying a generic list. Each control addresses a real failure: the ad SDK, the incomplete access response, the CCTV firmware reset, the forgotten files, weak manager logins and accounts kept forever. This makes the control set easy to explain, because every item has a story that staff remember. Generic controls with no story are deferred.
 
 ### 18.2 Mapping
 
-She maps each to principles: SDK review to lawfulness and transparency, CCTV deletion to storage limitation, MFA to integrity and confidentiality. SDK review also supports purpose limitation, because it stops data flowing to new purposes. The access request checklist supports transparency and the right of access. File scanning supports storage limitation and confidentiality. Inactive account deletion supports storage limitation and minimisation. The map shows that accuracy has no dedicated control, so she adds a yearly reminder asking members to check their details. The same reasoning will return when Quayside's data protection officer reviews the work.
+She maps each to principles: SDK review to lawfulness and transparency, CCTV deletion to storage limitation, MFA to integrity and confidentiality. SDK review also supports purpose limitation, because it stops data flowing to new purposes. The access request checklist supports transparency and the right of access. File scanning supports storage limitation and confidentiality. Inactive account deletion supports storage limitation and minimisation. The map shows that accuracy has no dedicated control, so she adds a yearly reminder asking members to check their details.
 
 ### 18.3 Standards
 
@@ -832,7 +832,7 @@ She notes that ISO/IEC 27701 provides privacy controls extending an information 
 
 ### 18.4 Tracking
 
-Each control has an owner, status and evidence. Mr. Reilly notes that mapping shows coverage gaps. The tracker is a simple table shared with owners. Status values are planned, in progress, operating and tested. A control counts as tested only when evidence shows it worked, such as a log of deleted clips or a completed access request test. Aisha reviews the tracker monthly and asks owners to update evidence links, not just status words. She adds a short note to the shared course wiki for other students.
+Each control has an owner, status and evidence. Mr. Reilly notes that mapping shows coverage gaps. The tracker is a simple table shared with owners. Status values are planned, in progress, operating and tested. A control counts as tested only when evidence shows it worked, such as a log of deleted clips or a completed access request test. Aisha reviews the tracker monthly and asks owners to update evidence links, not just status words. Owners without evidence stay at in progress. Status alone proves nothing.
 
 ### Worked example
 
@@ -860,7 +860,7 @@ You will (1) monitor privacy controls; (2) set alerts; (3) review trends.
 
 ### 19.1 What to monitor
 
-Aisha monitors CCTV retention at all clubs, SDK changes in each app release, access request deadlines and former-staff accounts. She chooses these because each has already failed once or is likely to drift. CCTV deletion failed after a firmware update, SDKs arrive with releases, request deadlines are legal obligations and staff turnover is high. She avoids monitoring everything, because a small set of meaningful signals is easier to act on than a large dashboard nobody reads. This makes the privacy consequence visible to people outside the specialist team.
+Aisha monitors CCTV retention at all clubs, SDK changes in each app release, access request deadlines and former-staff accounts. She chooses these because each has already failed once or is likely to drift. CCTV deletion failed after a firmware update, SDKs arrive with releases, request deadlines are legal obligations and staff turnover is high. She avoids monitoring everything, because a small set of meaningful signals is easier to act on than a large dashboard nobody reads. Four signals fit on one page.
 
 ### 19.2 Alerts
 
@@ -868,11 +868,11 @@ She sets alerts: footage older than thirty-five days, any new SDK, requests with
 
 ### 19.3 Trends
 
-After three months, former-staff accounts fall from forty to two, and all clubs meet CCTV retention. Access requests are all answered on time, though vendor searches remain the slowest step. One club's CCTV alert fires once after another firmware update, and the fix takes a day instead of six weeks. Aisha notes that the trend data now show the controls working, which is stronger evidence than a statement that a policy exists. Aisha keeps a dated copy of her working so that the result can be traced.
+After three months, former-staff accounts fall from forty to two, and all clubs meet CCTV retention. Access requests are all answered on time, though vendor searches remain the slowest step. One club's CCTV alert fires once after another firmware update, and the fix takes a day instead of six weeks. Aisha notes that the trend data now show the controls working, which is stronger evidence than a statement that a policy exists. Members' complaints about marketing emails also fall to zero over the same period.
 
 ### 19.4 Review
 
-She reviews alerts monthly to remove noise. Mr. Reilly notes that monitoring keeps fixes from silently failing, as the CCTV firmware issue showed. In the first month, the SDK alert fires for every minor library update, so she changes it to fire only when a library sends data to a new domain. She records every change to alert rules with a reason, so that reviewers can see whether monitoring was weakened for convenience or improved for accuracy. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+She reviews alerts monthly to remove noise. Mr. Reilly notes that monitoring keeps fixes from silently failing, as the CCTV firmware issue showed. In the first month, the SDK alert fires for every minor library update, so she changes it to fire only when a library sends data to a new domain. She records every change to alert rules with a reason, so that reviewers can see whether monitoring was weakened for convenience or improved for accuracy. The SDK alert drops from forty a month to two.
 
 ### Worked example
 
@@ -900,15 +900,15 @@ You will (1) diagnose privacy failures; (2) find root causes; (3) prevent recurr
 
 ### 20.1 A failure
 
-A member receives a marketing email after withdrawing consent. Aisha investigates. The member complains to reception, and the complaint reaches the data protection officer, who asks Aisha to find out what went wrong. The member had withdrawn consent through the app nine days earlier. A complaint like this can damage trust and, if repeated, could lead to a complaint to the supervisory authority, so it deserves careful investigation. She checks the idea against a second example before relying on it. The point seems small, but it changes how owners act on the result.
+A member receives a marketing email after withdrawing consent. Aisha investigates. The member complains to reception, and the complaint reaches the data protection officer, who asks Aisha to find out what went wrong. The member had withdrawn consent through the app nine days earlier. A complaint like this can damage trust and, if repeated, could lead to a complaint to the supervisory authority, so it deserves careful investigation. Aisha starts by collecting the app record, the email platform log and the job history for the nine days.
 
 ### 20.2 Diagnosis
 
-She finds the withdrawal recorded in the app but not synchronised to the email platform because a nightly job failed for a week. She follows the withdrawal from the app database to the marketing platform. The app recorded the change correctly with a timestamp. The nightly job that copies preference changes to the email platform had logged errors for seven nights. During that week, 214 synthetic-equivalent withdrawals in the test copy were not transferred, so the problem affected many members, not just one. Quayside's data protection officer later asks for a copy of this analysis.
+She finds the withdrawal recorded in the app but not synchronised to the email platform because a nightly job failed for a week. She follows the withdrawal from the app database to the marketing platform. The app recorded the change correctly with a timestamp. The nightly job that copies preference changes to the email platform had logged errors for seven nights. During that week, 214 synthetic-equivalent withdrawals in the test copy were not transferred, so the problem affected many members, not just one.
 
 ### 20.3 Root cause
 
-The job failed after a password change and had no failure alert. She adds an alert and a weekly reconciliation. IT had rotated a service password as part of good security practice but did not update the job's stored credential. The job failed quietly because its error messages went to a mailbox nobody checked. The real cause was therefore a missing alert and missing ownership, not the password change itself, which was the right thing to do. She marks the open questions in red so that they are not forgotten.
+The job failed after a password change and had no failure alert. She adds an alert and a weekly reconciliation. IT had rotated a service password as part of good security practice but did not update the job's stored credential. The job failed quietly because its error messages went to a mailbox nobody checked. The real cause was therefore a missing alert and missing ownership, not the password change itself, which was the right thing to do. Blaming IT would have fixed nothing.
 
 ### 20.4 Prevention
 
@@ -940,19 +940,19 @@ You will (1) integrate a new vendor safely; (2) check contracts and transfers; (
 
 ### 21.1 The vendor
 
-Quayside wants a new class booking vendor. Aisha reviews its security, contract and data location. The new vendor offers a better booking screen and a waiting-list feature. Aisha sends a short questionnaire covering security certification, data location, subprocessors, retention, breach notification and support for deletion and access requests. She also reads the vendor's public privacy notice and compares it with the answers, because marketing material and contract terms sometimes say different things. Writing the reasoning down also helps her spot a weak step in her argument.
+Quayside wants a new class booking vendor. Aisha reviews its security, contract and data location. The new vendor offers a better booking screen and a waiting-list feature. Aisha sends a short questionnaire covering security certification, data location, subprocessors, retention, breach notification and support for deletion and access requests. She also reads the vendor's public privacy notice and compares it with the answers, because marketing material and contract terms sometimes say different things. Here the notice listed an analytics partner that the questionnaire omitted.
 
 ### 21.2 Contract
 
-The contract must meet GDPR Article 28. The vendor stores data outside the EU, so transfer safeguards are needed. The contract must describe processing only on Quayside's instructions, confidentiality, security, use of subprocessors, help with rights requests, deletion at the end of the service and audit rights. For transfers outside the EU, the GDPR requires safeguards such as standard contractual clauses. Aisha flags these points for the legal team, which negotiates the final contract with the vendor. Aisha discusses the trade-off with a classmate who works in finance.
+The contract must meet GDPR Article 28. The vendor stores data outside the EU, so transfer safeguards are needed. The contract must describe processing only on Quayside's instructions, confidentiality, security, use of subprocessors, help with rights requests, deletion at the end of the service and audit rights. For transfers outside the EU, the GDPR requires safeguards such as standard contractual clauses. Aisha flags these points for the legal team, which negotiates the final contract with the vendor. Signing waits for those clauses. Audit rights are kept.
 
 ### 21.3 Minimisation
 
-Aisha limits shared data to name, membership number and bookings; no health data. The vendor's default integration requests date of birth, gender, address and heart-rate zones to personalise class suggestions. Aisha removes these fields because bookings work without them. The vendor agrees, and the integration specification lists the exact fields allowed. Any request to add a field later must go through the data protection officer and update the record of processing. The class compares answers and finds that most differences come from unstated assumptions.
+Aisha limits shared data to name, membership number and bookings; no health data. The vendor's default integration requests date of birth, gender, address and heart-rate zones to personalise class suggestions. Aisha removes these fields because bookings work without them. The vendor agrees, and the integration specification lists the exact fields allowed. Any request to add a field later must go through the data protection officer and update the record of processing. The vendor's waiting list works with membership numbers alone. Fewer fields mean fewer risks to manage.
 
 ### 21.4 Testing
 
-She tests the integration with synthetic members. Mr. Reilly notes that integration is where unplanned data flows appear. The tests check that only the listed fields leave Quayside, that cancellations and deletions reach the vendor and that an access request can retrieve the vendor's records. One test finds that the vendor keeps cancelled bookings indefinitely, so the contract adds a retention limit of twelve months. Testing with synthetic members means no real data are exposed while problems are found. Aisha records this point in her course notebook so that later chapters can build on it.
+She tests the integration with synthetic members. Mr. Reilly notes that integration is where unplanned data flows appear. The tests check that only the listed fields leave Quayside, that cancellations and deletions reach the vendor and that an access request can retrieve the vendor's records. One test finds that the vendor keeps cancelled bookings indefinitely, so the contract adds a retention limit of twelve months. Testing with synthetic members means no real data are exposed while problems are found. Each failed test becomes a contract term.
 
 ### Worked example
 
@@ -980,19 +980,19 @@ You will (1) automate deletion of inactive accounts; (2) handle exceptions; (3) 
 
 ### 22.1 The rule
 
-Quayside deletes accounts inactive for over two years, after a warning email thirty days before. Two years matches Quayside's documented retention schedule, which balances members returning after long breaks against storage limitation. The warning email gives members a chance to keep their account by logging in. Accounts with unresolved debt are held, because Quayside needs records to pursue or settle the debt, which is a documented exception with its own retention period. Mr. Reilly asks her to explain the idea aloud to a classmate before moving on.
+Quayside deletes accounts inactive for over two years, after a warning email thirty days before. Two years matches Quayside's documented retention schedule, which balances members returning after long breaks against storage limitation. The warning email gives members a chance to keep their account by logging in. Accounts with unresolved debt are held, because Quayside needs records to pursue or settle the debt, which is a documented exception with its own retention period. The thirty-day warning lets members keep accounts by logging in.
 
 ### 22.2 Results
 
-The lab processes 3,000 accounts: 73 warning emails this month, 1,116 to delete, and 37 held for outstanding debt. The lab script reads a synthetic list of 3,000 accounts with last activity dates and debt flags. It calculates which accounts reach the warning point this month, which have passed the deletion point and which are held. The script prints only counts, not identities, and writes the list of affected account numbers to a protected file for the operations team. She notes the assumption behind it so that a reviewer can challenge it later.
+The lab processes 3,000 accounts: 73 warning emails this month, 1,116 to delete, and 37 held for outstanding debt. The lab script reads a synthetic list of 3,000 accounts with last activity dates and debt flags. It calculates which accounts reach the warning point this month, which have passed the deletion point and which are held. The script prints only counts, not identities, and writes the list of affected account numbers to a protected file for the operations team. No names appear in console output or logs.
 
 ### 22.3 Exceptions
 
-Accounts with debt are held under a documented basis until resolved. Aisha logs every decision. Each held account is reviewed monthly, and once the debt is settled or written off the account enters deletion in the next run. Aisha considers other possible exceptions, such as legal claims, and adds a manual hold flag that only the data protection officer can set. Every hold records who set it, when and why. The same reasoning will return when Quayside's data protection officer reviews the work. She adds a short note to the shared course wiki for other students.
+Accounts with debt are held under a documented basis until resolved. Aisha logs every decision. Each held account is reviewed monthly, and once the debt is settled or written off the account enters deletion in the next run. Aisha considers other possible exceptions, such as legal claims, and adds a manual hold flag that only the data protection officer can set. Every hold records who set it, when and why. Unexplained holds are cleared at the monthly review. In the first run, all thirty-seven holds have a recorded debt reference.
 
 ### 22.4 Verification
 
-She samples deleted accounts to confirm removal across systems. Mr. Reilly notes that automation enforces storage limitation reliably. For a sample of twenty deleted accounts, she checks the membership system, app database, email platform and booking vendor. In the first run, the booking vendor still holds three accounts because its deletion interface had failed. The fix adds a confirmation step from the vendor. Deletion is now verified, not assumed, which supports the accountability principle in Article 5(2). This makes the privacy consequence visible to people outside the specialist team.
+She samples deleted accounts to confirm removal across systems. Mr. Reilly notes that automation enforces storage limitation reliably. For a sample of twenty deleted accounts, she checks the membership system, app database, email platform and booking vendor. In the first run, the booking vendor still holds three accounts because its deletion interface had failed. The fix adds a confirmation step from the vendor. Deletion is now verified, not assumed, which supports the accountability principle in Article 5(2). Twenty samples each month are enough to detect a broken vendor link.
 
 ### Lab — Automated inactive account deletion
 
@@ -1037,19 +1037,19 @@ You will (1) evaluate the privacy programme; (2) compare against baseline; (3) r
 
 ### 23.1 Comparison
 
-Aisha compares current metrics with the baseline: stale accounts down from forty to two, CCTV retention met, access request coverage complete. She presents each metric with its baseline date and method, so the comparison is fair. Some improvements are large and clear. Others, like breach reports rising from almost none to six a month, need explanation: more reports show better awareness, not more breaches. She avoids claiming that the programme caused every change without supporting evidence. Aisha keeps a dated copy of her working so that the result can be traced.
+Aisha compares current metrics with the baseline: stale accounts down from forty to two, CCTV retention met, access request coverage complete. She presents each metric with its baseline date and method, so the comparison is fair. Some improvements are large and clear. Others, like breach reports rising from almost none to six a month, need explanation: more reports show better awareness, not more breaches. She avoids claiming that the programme caused every change without supporting evidence. Each comparison cites its source. Context prevents misreading.
 
 ### 23.2 Remaining gaps
 
-Free-text health notes remain hard to detect, and vendor monitoring is manual. Health information in free text remains a weakness because the scanner cannot reliably find it. Vendor monitoring depends on someone reading emails about subprocessor changes, which is easy to miss. CCTV access is logged at only thirty clubs because ten older recorders lack the feature. Aisha lists these gaps openly so that leaders understand what the programme does not yet cover. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Free-text health notes remain hard to detect, and vendor monitoring is manual. Health information in free text remains a weakness because the scanner cannot reliably find it. Vendor monitoring depends on someone reading emails about subprocessor changes, which is easy to miss. CCTV access is logged at only thirty clubs because ten older recorders lack the feature. Aisha lists these gaps openly so that leaders understand what the programme does not yet cover. Each gap gets a named owner. None are hidden in footnotes or appendices.
 
 ### 23.3 Priorities
 
-She recommends training trainers on notes and automating vendor checks. Training trainers to keep health notes inside the protected app field addresses the first gap at low cost. Automated vendor checks could compare vendor subprocessor lists monthly. Replacing the ten old recorders needs budget, so she estimates the cost and the risk reduction. She ranks priorities by risk reduction per unit of effort, which helps leaders choose. She checks the idea against a second example before relying on it. The point seems small, but it changes how owners act on the result.
+She recommends training trainers on notes and automating vendor checks. Training trainers to keep health notes inside the protected app field addresses the first gap at low cost. Automated vendor checks could compare vendor subprocessor lists monthly. Replacing the ten old recorders needs budget, so she estimates the cost and the risk reduction. She ranks priorities by risk reduction per unit of effort, which helps leaders choose. Trainer training costs a single afternoon per region and reduces the largest remaining exposure quickly.
 
 ### 23.4 Report
 
-She presents to the data protection officer. Mr. Reilly notes that evaluation turns activity into evidence. The report is short: what was found, what changed, what remains and what she recommends. It includes the evidence for each claim. The data protection officer accepts the first two priorities and asks the finance director about recorder replacement. Mr. Reilly tells Aisha that a balanced evaluation is more credible than one that claims full success. Quayside's data protection officer later asks for a copy of this analysis.
+She presents to the data protection officer. Mr. Reilly notes that evaluation turns activity into evidence. The report is short: what was found, what changed, what remains and what she recommends. It includes the evidence for each claim. The data protection officer accepts the first two priorities and asks the finance director about recorder replacement. Mr. Reilly tells Aisha that a balanced evaluation is more credible than one that claims full success. The report runs to two pages in total. Leaders read all of it.
 
 ### Worked example
 
@@ -1077,19 +1077,19 @@ You will (1) frame a small study; (2) collect data ethically; (3) report limits.
 
 ### 24.1 Question
 
-Aisha asks whether members understand the heart-rate sharing settings. Earlier, volunteers mentioned surprise at class screens showing heart-rate zones. Aisha wants to know whether the settings page lets members control this. A clear research question keeps the study small and focused. She writes the question, the method, the participants and the planned analysis before collecting data, so the results cannot shape the question after the fact. She marks the open questions in red so that they are not forgotten. Writing the reasoning down also helps her spot a weak step in her argument.
+Aisha asks whether members understand the heart-rate sharing settings. Earlier, volunteers mentioned surprise at class screens showing heart-rate zones. Aisha wants to know whether the settings page lets members control this. A clear research question keeps the study small and focused. She writes the question, the method, the participants and the planned analysis before collecting data, so the results cannot shape the question after the fact. She also limits the study to adult members. The question is narrow enough to answer in four weeks with a small group of volunteers.
 
 ### 24.2 Method
 
-She runs a short survey with consent and no identifiers, plus five usability sessions. The survey asks members to find and explain each setting and records whether their explanation is correct. The usability sessions ask five members to complete tasks while thinking aloud. Participants receive an information sheet, give consent and can stop at any time. No names are recorded, and session notes use participant numbers that are not linked to accounts. Aisha discusses the trade-off with a classmate who works in finance. The class compares answers and finds that most differences come from unstated assumptions.
+She runs a short survey with consent and no identifiers, plus five usability sessions. The survey asks members to find and explain each setting and records whether their explanation is correct. The usability sessions ask five members to complete tasks while thinking aloud. Participants receive an information sheet, give consent and can stop at any time. No names are recorded, and session notes use participant numbers that are not linked to accounts. Raw survey files are deleted after analysis. Consent forms are kept separately.
 
 ### 24.3 Results
 
-Most participants found the setting but misunderstood class screen sharing. Of the survey participants, most located the heart-rate setting, but fewer than half correctly explained that it controlled sharing to class screens, and several thought it switched off the strap completely. In sessions, two participants searched the class booking page for the setting. These results suggest a wording and placement problem rather than members being uninterested in privacy. Aisha records this point in her course notebook so that later chapters can build on it.
+Most participants found the setting but misunderstood class screen sharing. Of the survey participants, most located the heart-rate setting, but fewer than half correctly explained that it controlled sharing to class screens, and several thought it switched off the strap completely. In sessions, two participants searched the class booking page for the setting. These results suggest a wording and placement problem rather than members being uninterested in privacy. Fewer than half explaining the setting correctly is a strong signal that the label, not the members, needs to change.
 
 ### 24.4 Limits
 
-The sample is small and self-selected. Mr. Reilly notes that honest limits make results useful. Participants volunteered, so they may care more about privacy than other members. The study took place in two clubs only. The usability sample is small, though small samples can still reveal major problems. Aisha reports these limits beside the results and recommends a follow-up after the redesign to see whether understanding improves, using the same questions. Mr. Reilly asks her to explain the idea aloud to a classmate before moving on.
+The sample is small and self-selected. Mr. Reilly notes that honest limits make results useful. Participants volunteered, so they may care more about privacy than other members. The study took place in two clubs only. The usability sample is small, though small samples can still reveal major problems. Aisha reports these limits beside the results and recommends a follow-up after the redesign to see whether understanding improves, using the same questions. She also notes that participants knew it was a study. Honest limits guide the follow-up.
 
 ### Worked example
 
@@ -1117,19 +1117,19 @@ You will (1) work in a team on a privacy project; (2) divide roles; (3) review p
 
 ### 25.1 Project
 
-Aisha's team redesigns the app's privacy settings page. The research from the previous chapter showed that members misunderstood the heart-rate sharing setting. The team project turns this finding into a redesign. Aisha works with three classmates from other specialisms: interface design, software development and testing. The team agrees a brief, a timeline of six weeks and a definition of success based on member understanding. She notes the assumption behind it so that a reviewer can challenge it later. The same reasoning will return when Quayside's data protection officer reviews the work.
+Aisha's team redesigns the app's privacy settings page. The research from the previous chapter showed that members misunderstood the heart-rate sharing setting. The team project turns this finding into a redesign. Aisha works with three classmates from other specialisms: interface design, software development and testing. The team agrees a brief, a timeline of six weeks and a definition of success based on member understanding. Success means most testers explain the setting correctly without help, measured with the same questions as in the earlier study.
 
 ### 25.2 Roles
 
-Roles include research, design, development and testing. Aisha leads research and privacy review, a classmate leads interface design, another builds the prototype and a third plans tests. Roles are clear but not rigid; everyone joins two member sessions. The team meets twice a week and keeps a shared log of decisions, which later helps explain why particular wording and layouts were chosen over alternatives. She adds a short note to the shared course wiki for other students. This makes the privacy consequence visible to people outside the specialist team.
+Roles include research, design, development and testing. Aisha leads research and privacy review, a classmate leads interface design, another builds the prototype and a third plans tests. Roles are clear but not rigid; everyone joins two member sessions. The team meets twice a week and keeps a shared log of decisions, which later helps explain why particular wording and layouts were chosen over alternatives. When the designer and developer disagree about placing the setting, the log records the member evidence that settled it.
 
 ### 25.3 Review
 
-Peers review each other's work for clarity and accuracy. Reviews follow a simple checklist: is the setting easy to find, is the wording accurate, does the default protect members and does the design work for screen readers. Aisha's wording is criticised for being too long, and she shortens it. Peer review catches an error in the prototype where switching off sharing also stopped workout logging. Aisha keeps a dated copy of her working so that the result can be traced. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Peers review each other's work for clarity and accuracy. Reviews follow a simple checklist: is the setting easy to find, is the wording accurate, does the default protect members and does the design work for screen readers. Aisha's wording is criticised for being too long, and she shortens it. Peer review catches an error in the prototype where switching off sharing also stopped workout logging. That bug would have silently removed members' workout history, so the team adds a test checking that sharing and logging are independent settings.
 
 ### 25.4 Outcome
 
-The new page explains class screen sharing clearly. Mr. Reilly notes that teamwork brings varied views. In a retest with new volunteers, most participants now explain the setting correctly. The page separates sharing to class screens from the strap connection and uses plain words: show my heart-rate zone on class screens. Sharing is now off by default for new members. The team hands the design to Quayside's app team with the research evidence. She checks the idea against a second example before relying on it.
+The new page explains class screen sharing clearly. Mr. Reilly notes that teamwork brings varied views. In a retest with new volunteers, most participants now explain the setting correctly. The page separates sharing to class screens from the strap connection and uses plain words: show my heart-rate zone on class screens. Sharing is now off by default for new members. The team hands the design to Quayside's app team with the research evidence. Screen sharing now needs a deliberate choice. Existing members are asked once.
 
 ### Worked example
 
@@ -1157,19 +1157,19 @@ You will (1) hand over controls to operations; (2) write runbooks; (3) confirm o
 
 ### 26.1 Runbooks
 
-Aisha writes runbooks for CCTV checks, SDK reviews, access requests and deletions. Each runbook describes the purpose of the task, when to run it, the steps, the expected results, what to do if results are unexpected and who to contact. Aisha writes them for operations staff, not specialists, so she avoids jargon and includes screenshots from the synthetic test environment rather than real systems. The point seems small, but it changes how owners act on the result. Quayside's data protection officer later asks for a copy of this analysis.
+Aisha writes runbooks for CCTV checks, SDK reviews, access requests and deletions. Each runbook describes the purpose of the task, when to run it, the steps, the expected results, what to do if results are unexpected and who to contact. Aisha writes them for operations staff, not specialists, so she avoids jargon and includes screenshots from the synthetic test environment rather than real systems. The CCTV runbook, for example, lists the recorder menu path, the expected oldest clip age and the number to call when it exceeds thirty-five days.
 
 ### 26.2 Ownership
 
-Each runbook names an owner in operations. The CCTV runbook belongs to the operations manager, SDK review to the app lead, access requests to the customer service lead and account deletion to the IT service manager. Each owner has a named deputy for holidays. Ownership is written into job descriptions where possible, so responsibilities survive when people move roles. She marks the open questions in red so that they are not forgotten. Writing the reasoning down also helps her spot a weak step in her argument.
+Each runbook names an owner in operations. The CCTV runbook belongs to the operations manager, SDK review to the app lead, access requests to the customer service lead and account deletion to the IT service manager. Each owner has a named deputy for holidays. Ownership is written into job descriptions where possible, so responsibilities survive when people move roles. Without named owners, the CCTV deletion check would depend on whoever happened to remember it, which is exactly how the firmware reset went unnoticed for six weeks.
 
 ### 26.3 Training
 
-She trains the owners and watches them run each task. For each runbook, the owner performs the task while Aisha observes and notes where they hesitate or misread steps. The customer service lead struggles with the vendor search for chat transcripts, so Aisha adds clearer steps and a contact name at the vendor. Observation reveals gaps that a document review alone would miss. Aisha discusses the trade-off with a classmate who works in finance. The class compares answers and finds that most differences come from unstated assumptions.
+She trains the owners and watches them run each task. For each runbook, the owner performs the task while Aisha observes and notes where they hesitate or misread steps. The customer service lead struggles with the vendor search for chat transcripts, so Aisha adds clearer steps and a contact name at the vendor. Observation reveals gaps that a document review alone would miss. For the deletion runbook, the IT service manager misreads which vendor confirmation to wait for, so the step now shows an example confirmation message.
 
 ### 26.4 Confirmation
 
-Owners sign acceptance. Mr. Reilly notes that handoff keeps controls alive after a project ends. Acceptance means owners agree the runbook is accurate and they can perform it. The data protection officer keeps the signed acceptances. Aisha schedules a follow-up three months later to check that tasks are running, and she leaves her contact details for questions. Handoff is complete when the tasks run without her help. Aisha records this point in her course notebook so that later chapters can build on it. Mr. Reilly asks her to explain the idea aloud to a classmate before moving on.
+Owners sign acceptance. Mr. Reilly notes that handoff keeps controls alive after a project ends. Acceptance means owners agree the runbook is accurate and they can perform it. The data protection officer keeps the signed acceptances. Aisha schedules a follow-up three months later to check that tasks are running, and she leaves her contact details for questions. Handoff is complete when the tasks run without her help. Three months later, all four tasks have run on schedule without her involvement. Her role then ends.
 
 ### Worked example
 
@@ -1197,19 +1197,19 @@ You will (1) deploy privacy changes; (2) validate them; (3) roll back safely.
 
 ### 27.1 Deployment
 
-The new settings page and SDK removal deploy in stages. The new settings page and the app release without the ad SDK go first to five percent of members, then half, then everyone over two weeks. Staged deployment limits the impact of mistakes. The app team monitors crash reports and support contacts at each stage, and Aisha monitors network traffic from test devices for unexpected data flows. She notes the assumption behind it so that a reviewer can challenge it later. The same reasoning will return when Quayside's data protection officer reviews the work.
+The new settings page and SDK removal deploy in stages. The new settings page and the app release without the ad SDK go first to five percent of members, then half, then everyone over two weeks. Staged deployment limits the impact of mistakes. The app team monitors crash reports and support contacts at each stage, and Aisha monitors network traffic from test devices for unexpected data flows. At the five percent stage she sees no ad network traffic from any test device.
 
 ### 27.2 Validation
 
-Aisha validates with synthetic accounts and network inspection. Validation repeats the earlier flow tests on the new release using the same synthetic accounts and steps, so results can be compared with the earlier findings. She checks every domain contacted by the app and the fields sent. She also checks that the new default for heart-rate sharing is off for newly created accounts. She adds a short note to the shared course wiki for other students. This makes the privacy consequence visible to people outside the specialist team.
+Aisha validates with synthetic accounts and network inspection. Validation repeats the earlier flow tests on the new release using the same synthetic accounts and steps, so results can be compared with the earlier findings. She checks every domain contacted by the app and the fields sent. She also checks that the new default for heart-rate sharing is off for newly created accounts. A new test account created on release day confirms that the heart-rate sharing switch starts in the off position. All results match the plan.
 
 ### 27.3 Rollback
 
-A rollback plan is ready if errors occur. The rollback plan describes how to return to the previous version if serious problems appear. Aisha points out a privacy issue with rollback: the previous version contained the ad SDK, so rolling back would restart the harmful flow. The team prepares a patched previous version without the SDK to use for any rollback instead. Aisha keeps a dated copy of her working so that the result can be traced. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+A rollback plan is ready if errors occur. The rollback plan describes how to return to the previous version if serious problems appear. Aisha points out a privacy issue with rollback: the previous version contained the ad SDK, so rolling back would restart the harmful flow. The team prepares a patched previous version without the SDK to use for any rollback instead. The patched version is tested in advance so that a rollback does not reintroduce the ad network flow under pressure.
 
 ### 27.4 Result
 
-Validation confirms no heart-rate data to advertisers. Mr. Reilly notes that validation proves change, not intent. The release reaches all members without serious errors. Network tests show no traffic to the ad network and no heart-rate fields leaving to third parties other than the contracted strap provider. Aisha records the validation results with dates and versions, so the data protection officer can show evidence if a member or regulator asks. She checks the idea against a second example before relying on it. The point seems small, but it changes how owners act on the result.
+Validation confirms no heart-rate data to advertisers. Mr. Reilly notes that validation proves change, not intent. The release reaches all members without serious errors. Network tests show no traffic to the ad network and no heart-rate fields leaving to third parties other than the contracted strap provider. Aisha records the validation results with dates and versions, so the data protection officer can show evidence if a member or regulator asks. The record lists app version, date and test devices. Nothing is left undocumented.
 
 ### Worked example
 
@@ -1237,19 +1237,19 @@ You will (1) apply skills in clubs; (2) talk with staff; (3) record observations
 
 ### 28.1 Visits
 
-Aisha visits five clubs to check screens, CCTV signs and records. Each visit follows a checklist: reception screens locked when unattended, no member lists visible, CCTV signs present and readable, recorders in locked rooms, guest Wi-Fi separate, and the reporting form known to staff. Aisha chooses clubs of different sizes and ages, including two with older recorders, so that the visits cover a range of conditions. Quayside's data protection officer later asks for a copy of this analysis. She marks the open questions in red so that they are not forgotten.
+Aisha visits five clubs to check screens, CCTV signs and records. Each visit follows a checklist: reception screens locked when unattended, no member lists visible, CCTV signs present and readable, recorders in locked rooms, guest Wi-Fi separate, and the reporting form known to staff. Aisha chooses clubs of different sizes and ages, including two with older recorders, so that the visits cover a range of conditions. Each visit takes about ninety minutes, and she photographs only signs and room doors, never screens or people.
 
 ### 28.2 Staff
 
-She talks with staff about the guide and reporting. Staff are friendly and open about difficulties. Several say the reporting form is easy, but one club had not heard of it because its manager was new. Trainers like the new notes field. Reception staff ask for a quick way to answer members who ask what data Quayside holds, so Aisha drafts a short script. Writing the reasoning down also helps her spot a weak step in her argument. Aisha discusses the trade-off with a classmate who works in finance.
+She talks with staff about the guide and reporting. Staff are friendly and open about difficulties. Several say the reporting form is easy, but one club had not heard of it because its manager was new. Trainers like the new notes field. Reception staff ask for a quick way to answer members who ask what data Quayside holds, so Aisha drafts a short script. The script tells staff to point members to the access request form in the app rather than reading out data at the desk.
 
 ### 28.3 Observations
 
-Two clubs lacked CCTV signs, which EDPB Guidelines 3/2019 expect as a first layer of information. Other observations include a reception screen left unlocked during a busy period and a recorder room used as a store cupboard with the door open. The EDPB guidelines describe a warning sign as the first layer of transparency, telling people about monitoring before they enter the area, with fuller information available elsewhere. The class compares answers and finds that most differences come from unstated assumptions. Aisha records this point in her course notebook so that later chapters can build on it.
+Two clubs lacked CCTV signs, which EDPB Guidelines 3/2019 expect as a first layer of information. Other observations include a reception screen left unlocked during a busy period and a recorder room used as a store cupboard with the door open. The EDPB guidelines describe a warning sign as the first layer of transparency, telling people about monitoring before they enter the area, with fuller information available elsewhere. Missing signs mean members enter monitored areas without notice. Both clubs had removed old signs during painting and never replaced them.
 
 ### 28.4 Follow-up
 
-Signs are installed. Mr. Reilly notes that field visits find what remote checks miss. Signs are installed within two weeks, the store cupboard is cleared and locked, and the new manager receives an introduction to the reporting form. Aisha adds the checklist to the regional managers' routine visits, so field checks continue after her placement. She shares common findings with all clubs without naming individual staff. Mr. Reilly asks her to explain the idea aloud to a classmate before moving on. She notes the assumption behind it so that a reviewer can challenge it later.
+Signs are installed. Mr. Reilly notes that field visits find what remote checks miss. Signs are installed within two weeks, the store cupboard is cleared and locked, and the new manager receives an introduction to the reporting form. Aisha adds the checklist to the regional managers' routine visits, so field checks continue after her placement. She shares common findings with all clubs without naming individual staff. Regional managers report results quarterly, and repeated findings at the same club trigger a conversation with its manager.
 
 ### Worked example
 
@@ -1277,19 +1277,19 @@ You will (1) build a privacy toolkit; (2) combine labs; (3) document it.
 
 ### 29.1 Toolkit
 
-Aisha combines flows, access request, scan, CCTV and inactive account scripts into a toolkit. The scripts come from earlier labs: the SDK flow review, the access request coverage check, the file scanner, the CCTV retention check and the inactive account job. She gives them a common structure, consistent output formats and a shared configuration file for thresholds, so the privacy team can run them the same way each time. The same reasoning will return when Quayside's data protection officer reviews the work. She adds a short note to the shared course wiki for other students.
+Aisha combines flows, access request, scan, CCTV and inactive account scripts into a toolkit. The scripts come from earlier labs: the SDK flow review, the access request coverage check, the file scanner, the CCTV retention check and the inactive account job. She gives them a common structure, consistent output formats and a shared configuration file for thresholds, so the privacy team can run them the same way each time. Thresholds such as thirty days for footage and two years for inactive accounts live in the configuration file, not in the code.
 
 ### 29.2 Documentation
 
-Each script has a purpose, inputs, outputs and limits. For the scanner, the limits section says clearly that free-text health information is not detected. For the CCTV check, it says that the script reads an index, not footage. Documentation also explains how to change thresholds and where outputs are stored. Aisha writes it for people who did not attend her course. This makes the privacy consequence visible to people outside the specialist team. Aisha keeps a dated copy of her working so that the result can be traced.
+Each script has a purpose, inputs, outputs and limits. For the scanner, the limits section says clearly that free-text health information is not detected. For the CCTV check, it says that the script reads an index, not footage. Documentation also explains how to change thresholds and where outputs are stored. Aisha writes it for people who did not attend her course. Each limits section is written as a direct warning, for example: a clean scan result does not mean a file contains no health information. A worked example with synthetic files shows the expected output for each script.
 
 ### 29.3 Testing
 
-She tests all with synthetic data. Each script has a set of synthetic input files with known correct results, so anyone can confirm that the script still works after changes. The tests include edge cases such as empty files, missing dates and accounts with both debt and inactivity. All tests pass before handover, and the results are saved with the toolkit. Her lecturer reminds the class that clear reasoning matters more than a polished answer. She checks the idea against a second example before relying on it.
+She tests all with synthetic data. Each script has a set of synthetic input files with known correct results, so anyone can confirm that the script still works after changes. The tests include edge cases such as empty files, missing dates and accounts with both debt and inactivity. All tests pass before handover, and the results are saved with the toolkit. One test feeds the deletion job an account that is both inactive and in debt and confirms that the hold wins over deletion.
 
 ### 29.4 Handover
 
-The toolkit is handed to Quayside's privacy team. Mr. Reilly notes that tools must be maintained. The privacy team names an owner for the toolkit and agrees to review it each year. Aisha explains that scripts written for one version of a system may break when systems change. She also reminds the team that the toolkit uses only standard Python libraries, which keeps maintenance simple and avoids extra dependencies. The point seems small, but it changes how owners act on the result. Quayside's data protection officer later asks for a copy of this analysis.
+The toolkit is handed to Quayside's privacy team. Mr. Reilly notes that tools must be maintained. The privacy team names an owner for the toolkit and agrees to review it each year. Aisha explains that scripts written for one version of a system may break when systems change. She also reminds the team that the toolkit uses only standard Python libraries, which keeps maintenance simple and avoids extra dependencies. The privacy team runs every script once with Aisha watching. The first annual review date is set.
 
 ### Worked example
 
@@ -1317,19 +1317,19 @@ You will (1) present your capstone; (2) answer questions; (3) reflect.
 
 ### 30.1 Presentation
 
-Aisha presents her work at Quayside to Mr. Reilly and the data protection officer. Her presentation follows the course: inventory, flows, rights, retention, monitoring and handoff. For each area she shows a finding, the fix and the evidence. She keeps the slides simple and uses numbers from her labs, such as 47 of 287 records in the first access response and 292 clips past retention at one club. She marks the open questions in red so that they are not forgotten. Writing the reasoning down also helps her spot a weak step in her argument.
+Aisha presents her work at Quayside to Mr. Reilly and the data protection officer. Her presentation follows the course: inventory, flows, rights, retention, monitoring and handoff. For each area she shows a finding, the fix and the evidence. She keeps the slides simple and uses numbers from her labs, such as 47 of 287 records in the first access response and 292 clips past retention at one club. She ends with the remaining gaps: free-text health notes, ten old recorders and manual vendor monitoring. Assessors note the honesty.
 
 ### 30.2 Questions
 
-Assessors ask about limits, such as free-text health notes. The data protection officer asks how Quayside would detect a new free-text health risk, and Aisha explains the training and sampling approach. Mr. Reilly asks what she would do differently. She answers that she would have started monitoring earlier, because several problems had been present for months before anyone looked at them. Aisha discusses the trade-off with a classmate who works in finance. The class compares answers and finds that most differences come from unstated assumptions.
+Assessors ask about limits, such as free-text health notes. The data protection officer asks how Quayside would detect a new free-text health risk, and Aisha explains the training and sampling approach. Mr. Reilly asks what she would do differently. She answers that she would have started monitoring earlier, because several problems had been present for months before anyone looked at them. She adds that she would have tested the access request process in her first month, since the 16% coverage result changed how the team viewed every other control.
 
 ### 30.3 Reflection
 
-Aisha reflects that technical checks reveal real gaps. She reflects that many problems came from ordinary work: slow systems, firmware updates, forgotten files and bundled SDKs. Technical checks found them because they compared what systems actually did with what policies said. She also learned that fixes need owners and monitoring, or they quietly fail again, as the CCTV deletion showed twice. Aisha records this point in her course notebook so that later chapters can build on it. Mr. Reilly asks her to explain the idea aloud to a classmate before moving on.
+Aisha reflects that technical checks reveal real gaps. She reflects that many problems came from ordinary work: slow systems, firmware updates, forgotten files and bundled SDKs. Technical checks found them because they compared what systems actually did with what policies said. She also learned that fixes need owners and monitoring, or they quietly fail again, as the CCTV deletion showed twice. Her strongest lesson is that a synthetic member who walks through a whole process, from sign-up to deletion, reveals more than any checklist.
 
 ### 30.4 Next steps
 
-She plans to study governance next. Mr. Reilly notes that privacy work continues after the course. After the course, Quayside offers Aisha a junior privacy technologist role. She plans to study governance, risk and compliance to understand how her technical checks fit into wider management systems. Mr. Reilly closes by noting that the questions she learned to ask will remain useful whatever technologies Quayside adopts in future years. She notes the assumption behind it so that a reviewer can challenge it later. The same reasoning will return when Quayside's data protection officer reviews the work.
+She plans to study governance next. Mr. Reilly notes that privacy work continues after the course. After the course, Quayside offers Aisha a junior privacy technologist role. She plans to study governance, risk and compliance to understand how her technical checks fit into wider management systems. Mr. Reilly closes by noting that the questions she learned to ask will remain useful whatever technologies Quayside adopts in future years. Her first task in the new role is running the access request test again.
 
 ### Worked example
 
