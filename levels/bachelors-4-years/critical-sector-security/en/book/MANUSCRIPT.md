@@ -2866,7 +2866,7 @@ Interviews follow the approved protocol and consent (Chapter 33). Host documents
 
 ### 38.4 Surprising and negative results
 
-Results that contradict your expectation are evidence too. If restore drills in your lab model show that the option you expected to win cannot meet the objective, report it and investigate why — perhaps a dependency you had not modelled. Do not adjust parameters until the result "looks right"; if you change a parameter, record why and show both results. Honest negative findings are among the most useful outputs a capstone can produce for a host.
+Results that contradict your expectation are evidence too. If restore drills in your lab model show that the option you expected to win cannot meet the objective, report it and investigate why — perhaps a dependency you had not modelled, such as the image-archive connections that the vendor gateway in 38.5 does not mediate. Do not adjust parameters until the result "looks right"; if you change a parameter, record why and show both results. Honest negative findings are among the most useful outputs a capstone can produce for a host.
 
 ### 38.5 Worked example: an implementation checkpoint (synthetic)
 
