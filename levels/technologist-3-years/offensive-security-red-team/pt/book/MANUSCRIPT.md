@@ -1,7 +1,7 @@
 # Segurança Ofensiva Autorizada e Red Team: Um Livro para o Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso de tecnólogo, três anos; aproximadamente 2.400 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–23 de 30 já estão escritos em português, com os exercícios EX001–EX069 e suas resoluções com rubricas de 0 a 3 e 8 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 24–30 (EX070–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–30 de 30 têm texto didático escrito à mão; os exercícios EX001–EX090 têm resoluções correspondentes com rubricas de 0 a 3; nove laboratórios offline usam apenas a biblioteca padrão do Python 3, e suas saídas foram incorporadas a partir de execuções reais sobre dados sintéticos. A revisão técnica independente e a verificação de 300 páginas A4 continuam em aberto.
 - Público: implementadores e administradores de tecnologia que vão construir, operar e medir a capacidade de avaliação autorizada de uma organização, trabalhando ao lado de seus defensores.
 - Relação com os livros vizinhos: o [livro técnico](../../../../technical-18-months/offensive-security-red-team/en/book/MANUSCRIPT.md) enfatiza a disciplina no uso de ferramentas e a verificação; o [livro de bacharelado](../../../../bachelors-4-years/offensive-security-red-team/pt/book/MANUSCRIPT.md) acrescenta teoria mais ampla. **Este livro trata da integração de serviços, controles, operações e medição em torno de testes autorizados.**
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -31,9 +31,9 @@ NIST [SP 800-115](https://doi.org/10.6028/NIST.SP.800-115); [PTES](https://pente
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) |
-
-Capítulos 24–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-24), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
+| [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
+| [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1421,11 +1421,404 @@ Declare os critérios cedo, pontue a disciplina, converta as lições em chamado
 
 [← Capítulo 22 (rascunho)](#ch-22) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 24 (rascunho) →](#ch-24)
 
+<a id="ch-24"></a>
+
+## Capítulo 24 — Métodos de pesquisa aplicada
+
+### Objetivos de aprendizagem
+
+Você vai (1) formular uma pergunta de pesquisa sobre a prática de avaliação que possa ser respondida com dados sintéticos ou autorizados; (2) escolher um método (estudo de medição, comparação de casos, entrevista estruturada); (3) declarar de início a ética e os limites; (4) escrever uma lista de verificação de resumo que pegue as peças que faltam.
+
+### 24.1 Perguntas que valem a pena
+
+Exemplos: um pipeline de três controles reduz as tentativas fora de escopo nos exercícios de estudantes? Em quais técnicas do ATT&CK o SOC da TRT alerta depois de um ciclo purple? Quanto tempo os chamados de correção de cada severidade ficam abertos? Cada pergunta nomeia uma população, uma medida e um limite. Uma pergunta como "o red team funciona?" não passa nesse teste, porque não nomeia população nem medida. A pergunta de estúdio de Priya sobre tentativas fora de escopo passa: a população são os exercícios de estúdio, a medida são as linhas OUT-OF-SCOPE no log do verificador, e o limite é que o comportamento de estudantes pode diferir do de uma equipe contratada. Perguntas que só poderiam ser respondidas testando usuários reais sem o conhecimento deles são rejeitadas de imediato.
+
+### 24.2 Métodos adequados a tecnólogos
+
+Estudos de medição sobre dados de chamados e de cobertura; comparações de antes e depois quando um controle muda; entrevistas estruturadas com analistas do SOC sobre a qualidade dos alertas. A pesquisa de exploits em laboratório está fora do escopo deste curso. O fio comum são dados com que um tecnólogo já lida: carimbos de tempo de chamados, células da matriz de cobertura e as palavras dos analistas que fazem a triagem dos alertas. Uma comparação de antes e depois em torno do DET-19, por exemplo, pode contar quantas vezes a nova detecção disparou sobre atividade sintética repetida. Propostas que derivam para o desenvolvimento de exploits inéditos são redirecionadas, porque exigem um laboratório e uma autorização que este curso não pode oferecer.
+
+### 24.3 Ética em primeiro lugar
+
+Nada de testes encobertos com usuários reais, nada de coleta de dados pessoais além do acordo, nada de publicação de identificadores de clientes. Rotule os dados sintéticos. Obtenha aprovação antes de entrevistar funcionários. Cada uma dessas regras tem uma verificação concreta que um revisor pode executar antes da submissão. Os logs sintéticos levam um rótulo nos nomes de arquivo e nos cabeçalhos, o consentimento para entrevistas é escrito e arquivado antes de qualquer resumo ser redigido, e todo rascunho público é pesquisado em busca de nomes e identificadores de clientes antes de ser enviado ao seminário. Um rascunho que falha na pesquisa volta ao autor, em vez de ser editado discretamente por um revisor.
+
+### 24.4 Lista de verificação do resumo
+
+Um resumo aceitável declara a pergunta, o método, o tamanho da amostra n, os limites e a postura ética. A falta do n é um modo de falha comum em trabalhos de estudantes. O exemplo resolvido de Priya mostra o mínimo: n = 3 exercícios e 12 ações, declarados no resumo ao lado do limite de que os dados são sintéticos. A avaliação do seminário trata a falta de uma linha de limites com a mesma seriedade que a falta do n, porque as duas permitem que o leitor superestime o que o estudo mostra. A linha de ética nomeia a postura — aqui, nenhum sistema real —, em vez de dizer que a ética foi considerada.
+
+### 24.5 Reprodutibilidade para tecnólogos
+
+Um colega deve conseguir refazer as contagens a partir dos logs sintéticos e obter as mesmas frações. Priya guarda os arquivos de entrada ao lado do resumo e anota a versão do Python. Reprodutibilidade aqui não tem a ver com ambientes exóticos; tem a ver com não acenar para números que ninguém mais consegue reconstruir. No miniestudo da fração de HOLDs, isso significa que os três logs sintéticos de exercícios, o script de contagem e uma nota com a versão do Python ficam numa só pasta, ao lado do resumo. Um colega que execute de novo o script deve chegar à mesma contagem de HOLDs em 12 ações. A captura de tela do total de uma planilha não é aceita, porque ninguém consegue verificar como ele foi produzido.
+
+### Exemplo resolvido
+
+O miniestudo de Priya pergunta: depois da introdução do registro do operador, que fração das ações planejadas foi HOLD em três exercícios sintéticos? Método: contar as saídas do pipeline. n = 3 exercícios, 12 ações. Limite: apenas dados sintéticos. Ética: nenhum sistema real. Ela se recusa a afirmar que o resultado se generaliza para todos os fornecedores.
+
+> **Caso sintético.** O desenho do miniestudo foi inventado para o trabalho do curso.
+
+### Erros e limites
+
+Colher logs de produção para um artigo sem aprovação continua sendo uma violação no tratamento de dados. Um n minúsculo exige afirmações humildes.
+
+### Exercícios
+
+- **EX070 — Forma da pergunta.** Reescreva "Red teams são bons?" como uma pergunta de pesquisa mensurável para a TRT. *Rubrica:* 3 = nomeia medida, população e período; 2 = parcialmente mensurável; 1 = continua vaga; 0 = nada.
+- **EX071 — Falta o n.** Um resumo descreve o método e os limites, mas não o tamanho da amostra. O que diz a lista de verificação? *Rubrica:* 3 = n MISSING → revisar; 2 = incompleto; 1 = está bom assim; 0 = nada.
+- **EX072 — Linha de ética.** Escreva uma frase de ética que Priya possa pôr em seu resumo. *Rubrica:* 3 = nenhum sistema real / dados sintéticos ou autorizados / nenhum dado pessoal além do acordo; 2 = ética vaga; 1 = não é necessária; 0 = nada.
+
+### Síntese
+
+Faça uma pergunta mensurável, escolha um método humilde, ponha a ética no resumo e nunca pule o n.
+
+### Continue estudando — capítulo 24 de 30
+
+[← Capítulo 23 (rascunho)](#ch-23) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 25 (rascunho) →](#ch-25)
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Estúdio de projeto em equipe
+
+### Objetivos de aprendizagem
+
+Você vai (1) formar uma pequena equipe com papéis nomeados (líder, evidências, elo de ligação); (2) executar uma lista de verificação de planejamento antes de qualquer trabalho de laboratório; (3) apresentar uma revisão no meio do estúdio com base nos critérios de avaliação do Capítulo 23; (4) praticar a resolução de conflitos quando as opiniões sobre o escopo divergem.
+
+### 25.1 Papéis valem mais que heroísmo
+
+O líder cuida das ROE e do cronograma. O responsável pelas evidências cuida dos manifestos e da custódia. O elo de ligação fala com a equipe branca (sintética) e com o SOC. Alternar os papéis entre estúdios cria amplitude; deixar tudo com quem escreve melhor cria um ponto único de falha. Cada papel tem um cartão na parede do estúdio, fotografado para a pasta de evidências no início, para que haja registro de quem teve cada função. No exemplo resolvido, Sam é o elo de ligação e, por isso, tem o único número de contato da equipe branca. Alternar os cartões entre estúdios faz com que todos acabem executando um manifesto, cuidando de umas ROE e fazendo uma ligação difícil para a equipe branca.
+
+### 25.2 Lista de verificação de planejamento
+
+Campos do acordo completos; listas de escopo carregáveis pelo verificador; inventário do kit com versões fixadas; critérios de avaliação escritos; canal de comunicação testado. Sem lista de verificação, sem tempo de laboratório. O instrutor pode reprovar na porta um estúdio que não apresente a lista. Cada item é respondido com sim ou não na porta. Um acordo com o campo de exclusão vazio ou uma lista de escopo que o verificador não consegue carregar significa que o relógio do laboratório não começa, por mais perto que a equipe diga estar. Testar o canal de comunicação antes do início do trabalho está na lista porque um elo de ligação que não consegue alcançar a equipe branca durante um HOLD não tem como continuar com segurança.
+
+### 25.3 Revisão no meio do estúdio
+
+Na metade, a equipe apresenta: controles aprovados até ali, HOLDs encontrados, contagem de evidências, riscos para a entrega. Os instrutores pontuam o processo, não o drama. A revisão intermediária da Platform B é um bom exemplo: quatro controles aprovados, um HOLD num nome DNS à deriva e seis itens de evidência com hash. Relatar o HOLD abertamente rende pontos, porque mostra o controle funcionando. Um HOLD escondido e descoberto depois custa mais do que um declarado cedo, já que sugere que a equipe teria seguido em frente sem a decisão da equipe branca.
+
+### 25.4 Conflito sobre o escopo
+
+Quando os membros discordam sobre se um nome de host está no escopo, a regra é: parar, reler o acordo, pedir ao elo de ligação que confirme com a equipe branca. A voz mais alta não vence. A Platform B enfrentou exatamente esse caso com seu nome DNS à deriva: a equipe pausou esse alvo, e Sam pediu à equipe branca uma decisão por escrito. A decisão é arquivada sob o identificador de evidência do nome de host, para que um leitor posterior veja por que o nome foi testado ou deixado de lado. Uma lembrança confiante do que o escopo queria dizer nunca substitui a lista assinada.
+
+### 25.5 Canais discretos
+
+As conversas do estúdio que contêm hashes de evidências, nomes de contas ou detalhes das ROE ficam no canal aprovado, e não em aplicativos de mensagens pessoais. Sam, como elo de ligação, é a única pessoa que aciona a equipe branca. Conversas paralelas criam instruções conflitantes e perda de custódia. Durante o estúdio, os instrutores verificam semanalmente uma amostra de mensagens para conferir que nenhum hash ou detalhe das ROE vazou para SMS ou e-mail pessoais. O log do canal aprovado também serve como parte do registro de custódia, mostrando quando cada hash foi compartilhado e com quem. Quando dois colegas acionam cada um a equipe branca, a equipe acaba com duas respostas e nenhum registro claro de qual delas valeu.
+
+### Exemplo resolvido
+
+A equipe de estúdio "Platform B" designa Priya como líder (para o exercício), Jordan para as evidências e Sam como elo de ligação. A revisão intermediária mostra quatro controles aprovados, um HOLD num nome DNS à deriva e seis itens de evidência com hash. Eles pedem uma decisão por escrito sobre o nome à deriva e pausam esse alvo.
+
+> **Caso sintético.** A Platform B e seus membros, exceto Priya, são colegas inventados.
+
+### Erros e limites
+
+Estúdios que pulam o elo de ligação e "só dão um toque informal no CISO" treinam maus hábitos. Mantenha as comunicações no canal aprovado.
+
+### Exercícios
+
+- **EX073 — Mapa de papéis.** Atribua as responsabilidades de líder, evidências e elo de ligação, numa frase cada. *Rubrica:* 3 = três frases de responsabilidade distintas; 2 = duas; 1 = uma; 0 = nada.
+- **EX074 — Conflito da deriva.** Jordan acha que o nome de host à deriva está "perto o bastante". O que a equipe faz? *Rubrica:* 3 = parar; reconferir o acordo; o elo de ligação confirma com a equipe branca; nenhum teste até o aval por escrito; 2 = só parar; 1 = testar mesmo assim; 0 = nada.
+- **EX075 — Conteúdo da revisão intermediária.** Liste quatro itens que uma revisão no meio do estúdio deve mostrar. *Rubrica:* 3 = quatro entre controles/HOLDs/contagem de evidências/riscos/progresso nos critérios; 2 = dois; 1 = só achados; 0 = nada.
+
+### Síntese
+
+Nomeie os papéis, cumpra a lista de verificação, revise o processo na metade e resolva disputas de escopo com o acordo — não com o volume da voz.
+
+### Continue estudando — capítulo 25 de 30
+
+[← Capítulo 24 (rascunho)](#ch-24) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 26 (rascunho) →](#ch-26)
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Segurança ofensiva autorizada e red team: passagem para operação
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever um pacote de passagem com o qual as operações possam agir sem a presença da equipe de testes; (2) incluir o risco residual e as incógnitas conhecidas; (3) transferir de forma limpa o acesso às evidências; (4) agendar a janela de reteste antes da desmobilização.
+
+### 26.1 Do que as operações precisam
+
+Os responsáveis precisam de: cada achado com severidade, cenário, ponteiro de evidência, controle recomendado e um prazo sugerido. Não precisam de um diário de viagem de cada ferramenta que os testadores executaram. Corte a narrativa que não muda uma decisão. Priya monta a tabela executiva com o gerador de relatório e deixa de fora qualquer prazo sem responsável, já que uma data que ninguém assume não será cumprida. Cada responsável recebe então uma folha de achado que começa pelo cenário e pelo prazo. As notas sobre quais ferramentas foram executadas vão para um apêndice opcional, para os leitores que precisem reproduzir o trabalho.
+
+### 26.2 Risco residual e incógnitas
+
+Todo engajamento termina com coisas não testadas — segmentos excluídos, técnicas não exercitadas, janelas que foram encurtadas. Liste-as. Os conselhos detestam surpresas mais do que detestam um trabalho incompleto, mas honestamente delimitado. No ENG-712, a página de risco residual nomeia duas lacunas em palavras simples: o segmento de pagamento de tarifas não foi testado, e a técnica T1021 ainda não gerou alerta. A lista de verificação da passagem trata como incompleta uma página residual sem a linha do pagamento de tarifas. Escrever as lacunas agora custa um parágrafo curto, enquanto um conselho que as descubra depois perde a confiança no engajamento inteiro.
+
+### 26.3 Transferência de acesso
+
+Contas de testadores, perfis de VPN e permissões no cofre terminam na data da passagem. As operações recebem acesso de leitura ao pacote de evidências sob seus próprios papéis. Caixas de correio compartilhadas usadas "só para o teste" são fechadas. Na reunião de passagem do ENG-712, Priya lê em voz alta a lista de verificação de revogação com a Northpoint presente, e os perfis de VPN são revogados na mesma tarde. O cofre de evidências passa para controle de acesso exclusivo da TRT, mas só depois que as operações confirmam que conseguem abrir os arquivos. Qualquer acesso da Northpoint que ainda funcione depois da data da passagem é registrado como achado contra o próprio engajamento.
+
+### 26.4 O reteste na agenda
+
+Um prazo de correção sem horário de reteste é um desejo. Reserve a janela de validação (Capítulo 27) antes que a equipe de testes se disperse. Uma passagem sem reteste reservado é marcada como incompleta na folha de avaliação. No ENG-712, o reteste é reservado para 2026-12-08 enquanto os testadores da Northpoint ainda estão contratados, e o convite de calendário é anexado ao pacote de passagem. Reservar cedo significa que as pessoas que conhecem os achados estarão disponíveis para executar as verificações. Um pacote de passagem que chega sem o convite é marcado como incompleto até que o horário seja combinado.
+
+### 26.5 Apresentações calorosas
+
+Uma reunião de passagem em que Priya apresenta pelo nome cada responsável por achado é melhor do que despejar um e-mail. Dez minutos de esclarecimento presencial (ou por vídeo) evitam uma semana de chamados mal encaminhados. Ela registra a presença para que a folha de avaliação mostre que as operações de fato receberam o trabalho. Priya acompanha uma medida simples de como isso funcionou: o número de chamados que chegam à equipe errada na primeira semana depois da passagem. Um responsável que ouviu o cenário explicado pessoalmente tem menos chance de devolver um chamado dizendo que não é dele. A lista de presença da reunião entra na folha de avaliação como prova de entrega.
+
+### Exemplo resolvido
+
+O pacote de passagem de Priya para o ENG-712: tabela executiva do gerador de relatório; quatro folhas de achados; página de risco residual (pagamento de tarifas não testado; T1021 ainda sem detecção); ACL do cofre de evidências trocada para acesso exclusivo da TRT; horário de reteste reservado para 2026-12-08. Os perfis de VPN da Northpoint são revogados na mesma tarde.
+
+> **Caso sintético.** O conteúdo do pacote de passagem é inventado.
+
+### Erros e limites
+
+Passagens que despejam exportações brutas de scanner sem triagem criam enxurradas de chamados. Não revogue o acesso às evidências antes que as operações confirmem que conseguem abrir os arquivos.
+
+### Exercícios
+
+- **EX076 — Conteúdo do pacote.** Nomeie cinco artefatos de um pacote de passagem mínimo. *Rubrica:* 3 = cinco entre tabela executiva/achados/risco residual/ponteiros de evidência/nota de ACL/data de reteste; 2 = três; 1 = só o PDF; 0 = nada.
+- **EX077 — Incógnita.** Escreva uma frase de risco residual para a exclusão do pagamento de tarifas da TRT. *Rubrica:* 3 = declara a exclusão + que nenhuma garantia é afirmada ali; 2 = menciona a exclusão; 1 = afirma que as tarifas estão bem; 0 = nada.
+- **EX078 — Ordem da revogação.** Em que ordem devem acontecer a troca da ACL do cofre e a revogação da VPN da Northpoint, e por quê? *Rubrica:* 3 = confirmar que a TRT consegue ler as evidências e depois revogar o acesso dos testadores; 2 = qualquer ordem com justificativa fraca; 1 = revogar primeiro, às cegas; 0 = nada.
+
+### Síntese
+
+Entregue decisões e evidências, diga o que você não testou, mova os acessos com cuidado e reserve o reteste antes da despedida.
+
+### Continue estudando — capítulo 26 de 30
+
+[← Capítulo 25 (rascunho)](#ch-25) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 27 (rascunho) →](#ch-27)
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Implantação e validação
+
+### Objetivos de aprendizagem
+
+Você vai (1) decidir entre VALIDATED, REOPENED ou NOT RETESTED a partir das observações do reteste; (2) recusar-se a marcar um achado como encerrado com base num "já corrigimos" verbal; (3) registrar a evidência da validação sob as mesmas regras de custódia; (4) devolver as falhas ao controle de riscos.
+
+### 27.1 A validação é um teste da correção
+
+A validação da correção pergunta se a correção combinada eliminou o problema, sob as mesmas restrições de escopo e de método. Não é um engajamento novo nem um carimbo automático. No ENG-712, o reteste usa a mesma lista de escopo e os mesmos cartões de método do engajamento original. Aproveitar a visita para sondar os hosts excluídos de pagamento de tarifas seria uma falha de segurança, por mais conveniente que parecesse. Os três rótulos de status do laboratório mantêm a linguagem honesta, obrigando os testadores a dizer exatamente o que foi verificado e o que não foi.
+
+### Laboratório I — status do reteste
+
+```python
+"""Lab H (ch 27): decide remediation-validation status from synthetic retest observations."""
+retests = [
+    ("F-01", "shared admin account", True, True),
+    ("F-07", "ex-contractor VPN accounts", True, False),
+    ("F-09", "plaintext password on wiki", False, None),
+]
+for fid, title, fix_claimed, check_passed in retests:
+    if not fix_claimed:
+        status = "NOT RETESTED - no fix declared"
+    elif check_passed:
+        status = "VALIDATED"
+    else:
+        status = "REOPENED"
+    print(f"{fid} {status:30} {title}")
+```
+
+Execute com `python3 lab_retest.py`. Saída verificada:
+
+```text
+F-01 VALIDATED                      shared admin account
+F-07 REOPENED                       ex-contractor VPN accounts
+F-09 NOT RETESTED - no fix declared plaintext password on wiki
+```
+
+### 27.2 Três status
+
+VALIDATED: correção declarada e verificação aprovada. REOPENED: correção declarada, mas a verificação falhou. NOT RETESTED: nenhuma correção declarada, portanto ainda não há verificação. Fechar um chamado sem um dos dois primeiros (ou sem uma aceitação de risco explícita) é um defeito de processo. A saída do laboratório dá um exemplo de cada: F-01 VALIDATED, F-07 REOPENED e F-09 NOT RETESTED. Palavras como "resolvido" ou "quase corrigido" são reescritas como um dos três rótulos antes de o relatório ir para o CISO. Uma aceitação de risco explícita é a única outra forma de um chamado ser fechado, e ela é registrada separadamente.
+
+### 27.3 A mesma custódia
+
+A evidência do reteste — uma nova exportação de configuração, um novo trecho de log — recebe hash e é arquivada como a original. "Na minha tela parece certo" não é evidência. Para o F-01, a nova evidência é arquivada como E-101, com seu próprio digest, ao lado da evidência original da descoberta, na mesma estrutura do cofre. Um par que abra o achado pode então comparar diretamente os arquivos de antes e depois. Uma concordância num compartilhamento de tela de que a configuração parece certa não deixa nada que possa ser verificado depois.
+
+### 27.4 Aceitação de risco
+
+Às vezes um responsável aceita um risco residual, com um aprovador nomeado e uma data de revisão. Esse é um caminho legítimo de encerramento; o silêncio, não. Uma aceitação no controle precisa de dois campos para valer: o nome da pessoa que aceita o risco e uma data de revisão. A equipe de Priya transforma cada data de revisão num lembrete de calendário duas semanas antes do vencimento. Uma aceitação com qualquer desses campos vazio é reaberta, porque ninguém pode ser cobrado por uma decisão que não tem dono.
+
+### 27.5 Correções parciais
+
+Às vezes um responsável corrige duas de três contas e pede para fechar o chamado. A regra de Priya é validar o que foi declarado, reabrir ou dividir o achado para o que resta e nunca deixar uma correção parcial apagar o problema inteiro. O controle deve mostrar o trabalho residual, e não uma caixa verde que o esconde. O exemplo resolvido mostra por quê: o F-07 foi reaberto porque contas de ex-terceirizados ainda conseguiam se autenticar depois de uma correção declarada, então fechá-lo pela palavra do responsável teria escondido um acesso ativo. Um chamado filho separado para qualquer conta restante mantém o identificador do achado pai, para que um examinador possa seguir o histórico.
+
+### Exemplo resolvido
+
+Três achados entram no reteste. O F-01 é validado. O F-07 é reaberto porque as contas de ex-terceirizados ainda se autenticam. O F-09 nunca foi declarado corrigido. Priya atualiza o controle: F-01 fechado com a evidência E-101; o F-07 continua com severidade alta e o prazo é reiniciado; o F-09 continua aberto, aguardando uma declaração de correção.
+
+> **Caso sintético.** Os três resultados de reteste são inventados.
+
+### Erros e limites
+
+Retestar apenas o caminho feliz e ignorar pontos de entrada alternativos pode validar falsamente. Fique dentro do escopo original, a menos que um novo acordo diga o contrário.
+
+### Exercícios
+
+- **EX079 — Status do laboratório.** Cite os três status que o laboratório imprime. *Rubrica:* 3 = VALIDATED, REOPENED, NOT RETESTED - no fix declared; 2 = dois; 1 = um; 0 = nada.
+- **EX080 — Encerramento verbal.** Um responsável diz que o F-07 está corrigido, mas recusa uma janela de reteste. Qual é o status e o próximo passo? *Rubrica:* 3 = continua aberto / não validado; escalar; nada de encerrar sem verificação ou aceitação formal; 2 = manter aberto; 1 = encerrar pela palavra; 0 = nada.
+- **EX081 — Campos da aceitação.** Nomeie três campos de que um registro de aceitação de risco precisa. *Rubrica:* 3 = três entre aprovador/motivo/data de revisão/declaração de risco residual/escopo; 2 = dois; 1 = um; 0 = nada.
+
+### Síntese
+
+Sem declaração de correção, sem reteste; sem evidência, sem encerramento; a aceitação é explícita ou não aconteceu.
+
+### Continue estudando — capítulo 27 de 30
+
+[← Capítulo 26 (rascunho)](#ch-26) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 28 (rascunho) →](#ch-28)
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Prática de campo
+
+### Objetivos de aprendizagem
+
+Você vai (1) preparar uma lista de verificação do kit de campo para uma sessão supervisionada presencial ou remota; (2) praticar a conduta profissional com a equipe de operações; (3) lidar com um evento inesperado de produção durante uma janela; (4) fazer o encerramento com fatos, não com folclore.
+
+### 28.1 Kit de campo
+
+ROE escritas e contatos de emergência (cópia offline); versões de ferramentas fixadas; verificador de escopo e verificador de ROE; credenciais do cofre de evidências que funcionem; um caminho telefônico fora de banda testado até a equipe branca; um bloco de notas para as linhas de custódia quando os sistemas estiverem fora do ar. Painéis sofisticados são opcionais; a lista de verificação, não. A cópia offline importa mais do que parece durante uma longa noite no local. Um celular pode ser o único dispositivo com as ROE e o número da equipe branca, e uma bateria descarregada numa plataforma de estação deixa então o testador sem como conferir um limite nem ligar para alguém. Priya leva as ROE e a folha de contatos impressas, e a lista de verificação de conduta reprova um kit que não as tenha.
+
+### 28.2 Conduta
+
+A equipe de avaliação é convidada na casa das operações. Explique em linguagem simples o que você está prestes a fazer, respeite a janela e nunca surpreenda um gestor de mudanças com tráfego durante um congelamento. O sucesso do trabalho purple depende da confiança construída nesses pequenos momentos. Na prática, isso significa avisar o controlador de plantão sobre o que a próxima verificação vai tocar antes de começá-la. Se houver uma troca de escala marcada para sexta-feira, uma verificação quase concluída para e passa para a janela seguinte, mesmo com o alvo em escopo. Essa troca pertence ao gestor de mudanças, e os testadores que a ignoram perdem o acesso de que precisam para o resto do engajamento.
+
+### 28.3 Eventos inesperados
+
+O desarme de um disjuntor, uma indisponibilidade da informação aos passageiros, uma emergência médica no local — nada disso aparece nas ROE, e tudo isso significa parar o trabalho ruidoso e dar lugar às operações. Retome apenas por instrução da equipe branca. As ROE não conseguem listar todas as emergências, então o padrão quando algo inesperado acontece é parar. Recomeçar exige um "pode seguir" explícito da equipe branca, e o registro anota o nome de quem o deu e o horário. Esse registro mostra depois que a pausa e a retomada foram decisões, e não deriva.
+
+### 28.4 Encerramento com fatos
+
+"O SOC estava dormindo" é folclore. "O T1021 não gerou alerta por 40 minutos; chamado DET-19 aberto" é um fato. As notas de campo devem sustentar o segundo estilo. Registrar os quarenta minutos de silêncio sobre o T1021 e o chamado DET-19 dá ao SOC algo a corrigir e uma forma de conferir que foi corrigido. Redações ofensivas sobre o SOC são cortadas das notas de campo, e o autor que as usa recebe um achado de conduta levantado pelo elo de ligação. A culpa encerra justamente as conversas de que uma equipe purple precisa.
+
+### 28.5 Prática de campo remota
+
+Quando a sessão é remota, e não presencial, o kit continua valendo: telefone fora de banda, ROE offline, compartilhamento de tela testado que não exponha arquivos não relacionados na área de trabalho. Priya fecha todas as outras janelas antes de entrar na chamada com a equipe branca. A exposição acidental da tela de outro cliente é uma falha de campo, mesmo que nenhum pacote tenha sido enviado. O trabalho remoto acrescenta riscos próprios, como uma notificação de chat que aparece durante o compartilhamento de tela ou um arquivo de outro cliente visível na área de trabalho. Antes de uma chamada com a equipe branca, Priya testa o compartilhamento de tela com um colega e confirma que apenas a janela combinada está visível. As ROE offline e o telefone fora de banda ficam na mesa dela exatamente como ficariam no local.
+
+### Exemplo resolvido
+
+Durante uma janela noturna supervisionada, os painéis de informação aos passageiros falham em toda a cidade por um motivo não relacionado. Priya interrompe o tráfego de inventário, avisa a equipe branca e passa para a rotulagem offline das evidências. Quando o NOC resolve o evento, a equipe branca autoriza uma retomada encurtada. O encerramento cita o horário da interrupção e os chamados DET, e não personalidades.
+
+> **Caso sintético.** A indisponibilidade dos painéis e a interrupção são uma prática de campo inventada.
+
+### Erros e limites
+
+O heroísmo de campo de "terminar a varredura mesmo assim" durante uma indisponibilidade é como as equipes de avaliação acabam banidas. Aceite o no-go.
+
+### Exercícios
+
+- **EX082 — Item do kit.** Por que levar uma cópia offline das ROE? *Rubrica:* 3 = o cofre/a VPN podem estar fora do ar; ainda é preciso ter o escopo/os contatos de emergência; 2 = backup, de forma vaga; 1 = desnecessário; 0 = nada.
+- **EX083 — Congelamento.** Um congelamento de mudanças começa duas horas antes do previsto. O que a equipe faz com as verificações ativas planejadas? *Rubrica:* 3 = parar as verificações ativas; confirmar com a equipe branca/o gestor de mudanças; reagendar; 2 = pausar; 1 = espremê-las no tempo que resta; 0 = nada.
+- **EX084 — Linha de fato.** Reescreva "O SOC nos ignorou" como uma frase factual de encerramento. *Rubrica:* 3 = nomeia a técnica, o tempo até o alerta ou a falha, o ID do chamado; 2 = fato parcial; 1 = mantém a culpa; 0 = nada.
+
+### Síntese
+
+Leve a lista de verificação, comporte-se como convidado, dê lugar aos eventos reais e faça o encerramento com fatos registrados em chamados.
+
+### Continue estudando — capítulo 28 de 30
+
+[← Capítulo 27 (rascunho)](#ch-27) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 29 (rascunho) →](#ch-29)
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Construção do projeto final
+
+### Objetivos de aprendizagem
+
+Você vai (1) montar um pacote completo de avaliação autorizada para um pedido sintético da TRT; (2) incluir objetos de escopo, ROE, declaração de método, plano de evidências, escala de classificação e modelo de relatório; (3) executar todos os verificadores dos laboratórios sobre o pacote; (4) entregar uma construção que um colega consiga operar sem precisar lhe fazer perguntas.
+
+### 29.1 Os artefatos da construção
+
+1. Pedido e declaração de decisão. 2. Listas de escopo (prefixos, nomes, exclusões). 3. ROE (janela, atividades permitidas, lista de parada, contato da equipe branca). 4. Declaração de método mapeada para SP 800-115/PTES/WSTG, conforme o uso. 5. Inventário do kit com versões. 6. Plano de evidências (o quê, onde, retenção). 7. Escala de classificação e faixas. 8. Modelo de relatório com gancho para a tabela executiva. 9. Plano de reteste. 10. Critérios de avaliação.
+
+A falta de qualquer um dos dez reprova a pontuação de completude do projeto final. A ordem segue a vida de um engajamento, então a pontuação de completude percorre os artefatos na mesma sequência na folha de pontuação dos colegas. Um pacote com achados brilhantes, mas sem plano de evidências ou plano de reteste, está incompleto. No exemplo resolvido de Priya, os dez artefatos estão presentes, incluindo a exclusão do pagamento de tarifas tanto por prefixo quanto por nome de host.
+
+### 29.2 Opere o que você construiu
+
+Um colega carrega seu escopo nos padrões do `lab_scope.py`, suas ROE nos padrões do `lab_roe.py` e seus achados no `lab_score.py` e no `lab_report.py`. Se não conseguir, a construção está incompleta. No exemplo resolvido, um colega executa os verificadores sobre o pacote de Priya e obtém os mesmos resultados STOP e IN-SCOPE que ela documentou. Essa reprodução por alguém que não é o autor é o que operabilidade significa aqui. Se o verificador de escopo não conseguir carregar as listas entregues, a operabilidade falha antes que se olhe qualquer slide, porque uma apresentação polida de um pacote inutilizável não ajuda uma equipe de operações.
+
+### 29.3 Nenhum conteúdo de exploração
+
+O pacote contém zero procedimentos de ataque. Quem pedir esse tipo de coisa durante o projeto final é redirecionado ao limite educacional do Capítulo 10. O projeto final testa se os estudantes conseguem desenhar e operar um serviço de avaliação, e não se conseguem atacar algo, então passos de ataque não acrescentam nada à nota. Um estudante que peça detalhes de exploração durante a construção é redirecionado ao Capítulo 10 e recebe um desconto de segurança. A rubrica não tem exceção para pedidos apresentados como sendo para fins didáticos, já que um procedimento escrito funciona do mesmo jeito para quem quer que o leia depois.
+
+### 29.4 Rubrica da revisão por pares
+
+Os colegas pontuam: completude dos dez artefatos, verificabilidade, clareza da linguagem de risco residual e segurança (nenhum detalhe de uso dual). O volume de achados é irrelevante. Detalhes de uso dual reprovam o critério de segurança mesmo num pacote completo em todo o resto. Um colega que dê pontos extras por uma lista longa de achados inventou um critério, e essa folha de pontuação é anulada e refeita. O sentido da rubrica é que um revisor possa entregar o pacote a uma equipe de operações e esperar que ele funcione, com uma redação de risco residual que um gestor consiga repetir com exatidão.
+
+### 29.5 Tempo limitado
+
+A construção do projeto final é pontuada pela completude e pela operabilidade dentro de uma janela fixa de estúdio, e não por um polimento sem fim. Priya congela as listas de escopo quarenta e oito horas antes da revisão por pares, para que os verificadores parem de se mexer. Edições estéticas de última hora que quebram uma coluna do CSV reprovam no teste dos colegas. O líder anuncia o congelamento no canal do estúdio quando faltam 48 horas, e a partir daí as listas de escopo não são editadas. Uma coluna renomeada por capricho depois do congelamento pode impedir o verificador de escopo de carregar o CSV, o que reprovaria no teste dos colegas. Polir os slides continua permitido, desde que os arquivos que os verificadores leem não mudem.
+
+### Exemplo resolvido
+
+O pacote de projeto final de Priya para um pedido sintético de "garantia de identidade do portal dos funcionários" preenche os dez artefatos, exclui o pagamento de tarifas por prefixo e por nome de host, fixa as versões de três ferramentas e inclui o gancho da tabela do Capítulo 22. Um colega executa os verificadores e produz os mesmos resultados STOP/IN-SCOPE que ela documentou.
+
+> **Caso sintético.** O pedido do projeto final e o colega são inventados.
+
+### Erros e limites
+
+Uma prosa bonita que um verificador não consegue carregar não cumpre o objetivo do tecnólogo. Copiar o pacote de outra equipe sem entendê-lo também reprova.
+
+### Exercícios
+
+- **EX085 — Dez artefatos.** Liste quaisquer oito dos dez artefatos da construção. *Rubrica:* 3 = oito corretos da lista do capítulo; 2 = cinco; 1 = três; 0 = nada.
+- **EX086 — Teste dos colegas.** Que dois resultados provam que um colega consegue operar o seu pacote? *Rubrica:* 3 = os verificadores rodam + os veredictos batem com os documentados; 2 = um; 1 = o colega gosta da prosa; 0 = nada.
+- **EX087 — Falha de segurança.** Um colega de equipe acrescenta uma página com os passos de password spraying "para dar realismo". O que você faz? *Rubrica:* 3 = remover; citar o limite educacional; recusar conteúdo de uso dual; 2 = mover para um apêndice; 1 = manter; 0 = nada.
+
+### Síntese
+
+Construa o serviço inteiro no papel e nos verificadores; deixe um colega operá-lo; mantenha de fora os detalhes de exploração.
+
+### Continue estudando — capítulo 29 de 30
+
+[← Capítulo 28 (rascunho)](#ch-28) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 30 (rascunho) →](#ch-30)
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Avaliação do projeto final
+
+### Objetivos de aprendizagem
+
+Você vai (1) apresentar o pacote do projeto final a uma banca; (2) defender as escolhas de escopo, método e risco residual citando frameworks; (3) responder corretamente a "o que você recusaria?"; (4) identificar seu próximo passo no curso sem afirmar que o livro está pronto.
+
+### 30.1 Pauta da banca
+
+Dez minutos: decisão e escopo. Dez minutos: método e controles. Dez minutos: evidência, classificação e relatório. Dez minutos: aprendizado purple e reteste. Dez minutos: perguntas. A banca tem em mãos as ROE e as saídas dos verificadores enquanto você fala. Priya mantém um cronômetro visível na mesa, e a lista de verificação do kit da banca reprova a prontidão se ele faltar. Os blocos de tempo protegem os blocos finais: um candidato que gasta vinte minutos com detalhes técnicos não deixa tempo para mostrar o aprendizado purple nem o plano de reteste. Como a banca tem as ROE e as saídas dos verificadores, cada afirmação pode ser conferida com um artefato no momento em que é feita.
+
+### 30.2 Defesa com citações
+
+Quando perguntarem por que as exclusões vêm primeiro, cite o Capítulo 2 e a prática das ROE. Quando perguntarem por que você tomou emprestada uma equipe branca, cite as ideias do TIBER-EU/CBEST. Quando perguntarem como você classificou o F-09, mostre a matriz. Opiniões sem artefatos pontuam mal. Priya ensaia essas respostas em voz alta e as mantém numa folha-resumo de uma página, que a banca permite sobre a mesa. Para o F-09, ela abre a matriz de classificação e percorre as células de probabilidade e impacto, em vez de defender a classificação de memória. Uma resposta que aponta para um artefato permite que a banca a confira, enquanto uma opinião confiante não deixa nada a verificar.
+
+### 30.3 A pergunta da recusa
+
+As bancas perguntam o que você recusaria. Respostas fortes: testar sem uma equipe branca alcançável; contato com o pagamento de tarifas; ampliação do escopo pelo chat no meio da janela; fornecer passos de exploração; guardar evidências num notebook pessoal. Respostas fracas: "nada, somos flexíveis". Cada resposta forte nomeia uma condição e o motivo pelo qual ela encerra o trabalho, como a falta de uma equipe branca alcançável significar que ninguém pode autorizar uma parada ou uma retomada. A segurança na prova oral reprova se faltar qualquer uma das quatro classes de recusa: ausência da equipe branca, contato com o pagamento de tarifas, ampliação de escopo pelo chat e passos de exploração. Uma resposta flexível sugere que o candidato ainda não pensou em onde ficam os limites.
+
+### 30.4 Depois da banca
+
+Aprovação significa que o pacote cumpre a rubrica do Capítulo 29 e que a defesa oral mostrou julgamento. Não significa que o manuscrito passou pela verificação A4 ou pela revisão independente. O próximo curso no percurso de estudo é o curso 089, segurança de IA e aprendizado de máquina para tecnólogos. Antes do fim das perguntas, Priya diz em voz alta que o pacote usa dados sintéticos e que uma aprovação não confere nenhuma autoridade real. Essa frase está na lista de verificação do roteiro de aprovação, porque os candidatos às vezes descrevem a aprovação num curso como se ela os certificasse para testar sistemas reais. Dizer os limites com clareza faz parte do julgamento que a banca está avaliando.
+
+### 30.5 Registro no portfólio
+
+Depois da banca, Priya arquiva uma nota curta de portfólio: quais artefatos liderou, qual recusa praticou, quais chamados de detecção abriu. A nota cita o ENG-712 e rotula tudo como sintético. Futuros empregadores que leiam um portfólio devem ver julgamento, e não a alegação de que ela "hackeou uma empresa de transporte". A nota de Priya lista a folha de avaliação e o pacote de passagem como artefatos que ela liderou, a recusa do pagamento de tarifas como a que praticou e o DET-19 como um chamado que abriu. Redações como "hackeou uma empresa de transporte" são proibidas na nota, porque são falsas para um exercício sintético e sugerem a atitude errada a um empregador.
+
+### Exemplo resolvido
+
+Priya apresenta o pacote do ENG-712. Pedem a ela que amplie o escopo para o pagamento de tarifas "só desta vez". Ela recusa, cita a redação da exclusão e oferece uma proposta de engajamento separado, caso o responsável pelas tarifas o autorize. Pedem a ela os passos de exploração do T1552.001; ela aponta para a página do ATT&CK e para o limite do livro. A banca registra a segurança e a honestidade sobre o risco residual como pontos fortes.
+
+> **Caso sintético.** A troca com a banca foi inventada para a prática de avaliação.
+
+### Erros e limites
+
+Decorar nomes de frameworks sem ligá-los a uma decisão reprova. Alegar acreditação com base neste rascunho reprova.
+
+### Exercícios
+
+- **EX088 — Lista de recusas.** Dê três recusas distintas que um tecnólogo precisa estar pronto para fazer. *Rubrica:* 3 = três entre sem equipe branca / sistemas excluídos / mudança de escopo pelo chat / passos de exploração / depósitos pessoais de evidências; 2 = duas; 1 = uma; 0 = nada.
+- **EX089 — Defesa com citação.** Numa frase, defenda por que logged ≠ alerted usando a linguagem do Capítulo 19. *Rubrica:* 3 = o objetivo de detectar e responder exige notificação/resposta, e não apenas telemetria; 2 = parcial; 1 = logged basta; 0 = nada.
+- **EX090 — Próximo passo.** Qual é o próximo curso depois do capítulo 30 deste livro e o que você não pode afirmar sobre este rascunho? *Rubrica:* 3 = curso 089, segurança de IA + nenhuma afirmação de livro pronto/aprovado na A4/acreditado; 2 = uma parte; 1 = curso errado; 0 = nada.
+
+### Síntese
+
+Apresente artefatos, cite frameworks, pratique a recusa e saia com humildade sobre o que é um manuscrito em rascunho.
+
+### Continue estudando — capítulo 30 de 30
+
+[← Capítulo 29 (rascunho)](#ch-29) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções ↓](#worked-results) · [Próximo curso pelo índice de capítulos →](../SUBJECTS.md)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX069 (as de EX070–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). A Tidewater Regional Transit, Priya Natarajan, a Northpoint Assurance e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX090. A Tidewater Regional Transit, Priya Natarajan, a Northpoint Assurance e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** O BMC é acessível por uma porta de rede própria, recebe correções pelo firmware do fabricante e não pelo sistema operacional, e pode ficar numa VLAN de gerenciamento fora do escopo escrito. Um registro separado obriga a reunião de escopo a incluí-lo ou excluí-lo explicitamente.
 
@@ -1564,6 +1957,48 @@ Respostas-modelo para EX001–EX069 (as de EX070–EX090 estão na edição em i
 **EX068.** Exemplo: "Para cada técnica não detectada na matriz de cobertura, um chamado de backlog de detecção, com responsável e ID do ATT&CK, é aberto em até cinco dias úteis."
 
 **EX069.** Exemplo: Parar — atualizações de ferramentas no meio da janela sem o aval da equipe branca. Começar — verificação de sincronização de relógio antes da abertura. Continuar — pipeline de três controles com registro do operador. Outros trios coerentes recebem 3.
+
+**EX070.** Exemplo: "Ao longo de dois ciclos purple trimestrais na TRT, que percentual das técnicas do ATT&CK exercitadas passou de missed para alerted?"
+
+**EX071.** Marcar o n como MISSING e revisar o resumo antes da submissão; sem o tamanho da amostra, os leitores não conseguem julgar a afirmação.
+
+**EX072.** Exemplo: "Este estudo usa apenas logs sintéticos de exercícios e não envolve sistemas reais da TRT nem dados pessoais."
+
+**EX073.** Líder: responde pela aderência às ROE e pelo cronograma. Evidências: custódia, hash e higiene do repositório. Elo de ligação: comunicação com a equipe branca/o SOC e confirmações por escrito.
+
+**EX074.** Parar de testar esse nome, reler a lista aprovada e fazer o elo de ligação obter uma decisão por escrito da equipe branca antes de qualquer outra ação.
+
+**EX075.** Quaisquer quatro entre: controles aprovados, HOLDs e seus motivos, itens de evidência contados/com hash, riscos para a entrega, progresso nos critérios de avaliação declarados de antemão, perguntas em aberto para a equipe branca.
+
+**EX076.** Quaisquer cinco entre: tabela executiva de achados, folhas por achado, página de risco residual/incógnitas, índice de evidências com hashes, nota de ACL/transferência, janela de reteste reservada, cópia do método/das ROE.
+
+**EX077.** Exemplo: "Os sistemas de pagamento de tarifas (192.0.2.64/27 e fare.trt.example) foram excluídos; este engajamento não oferece nenhuma garantia sobre esses sistemas."
+
+**EX078.** Confirmar que os operadores da TRT conseguem abrir o pacote de evidências sob a nova ACL e depois revogar a VPN e as permissões no cofre da Northpoint, para que a correção nunca perca o acesso às provas.
+
+**EX079.** F-01 VALIDATED; F-07 REOPENED; F-09 NOT RETESTED - no fix declared.
+
+**EX080.** Deixar o F-07 aberto (não validado). Escalar para o responsável pela correção e para o CISO; encerrar apenas depois de um reteste bem-sucedido ou de uma aceitação de risco por escrito.
+
+**EX081.** Quaisquer três entre: aprovador nomeado, motivo, declaração de risco residual, data de revisão/vencimento, escopo da aceitação, ID do achado vinculado.
+
+**EX082.** Se o cofre ou a VPN estiverem indisponíveis, ainda é preciso ter o escopo, as exclusões e os números de contato de emergência; o papel ou uma cópia offline criptografada mantém os controles aplicáveis.
+
+**EX083.** Parar imediatamente as verificações ativas, confirmar o congelamento com a equipe branca e com o gestor de mudanças e reagendar dentro de uma janela escrita.
+
+**EX084.** Exemplo: "A atividade de T1021 das 22:10 às 22:50 não gerou alerta no SOC; o chamado de backlog de detecção DET-19 foi aberto."
+
+**EX085.** Quaisquer oito entre: pedido/decisão, listas de escopo, ROE, declaração de método, inventário do kit, plano de evidências, escala de classificação, modelo de relatório, plano de reteste, critérios de avaliação.
+
+**EX086.** O colega consegue executar os verificadores pertinentes sobre as suas listas, e os veredictos impressos batem com o que a sua documentação previa.
+
+**EX087.** Apagar a página, lembrar à equipe o limite educacional do Capítulo 10 e recusar qualquer conteúdo procedimental de uso dual na entrega.
+
+**EX088.** Exemplo: recusar começar sem uma equipe branca alcançável; recusar qualquer atividade no pagamento de tarifas; recusar fornecer procedimentos de exploração. A ampliação de escopo pelo chat e os depósitos de evidências em notebook pessoal também contam.
+
+**EX089.** Um resultado logged significa que a telemetria existia, mas o objetivo de detectar e responder falha se nenhum analista ou playbook foi notificado a tempo de agir.
+
+**EX090.** O próximo é o curso 089, segurança de IA e aprendizado de máquina (tecnólogo). Não afirmar que este rascunho é uma qualificação acreditada nem que passou pelos controles de 300 páginas A4 e de revisão independente.
 
 <a id="references"></a>
 ## Referências
