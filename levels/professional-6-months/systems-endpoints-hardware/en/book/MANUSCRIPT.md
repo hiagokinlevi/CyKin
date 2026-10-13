@@ -1,7 +1,7 @@
 # Systems, Endpoint and Hardware Security: Professional Course
 
 - Language: English (`en`); course 035, Professional course (6 months).
-- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; Two offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; two offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: working IT managers and practitioners who must turn an endpoint hardening audit finding into a governed, measured programme.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: review and test only servers, endpoints and devices you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Weaknesses are taught from the defender's side using synthetic configurations, inventories, logs and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -48,19 +48,19 @@ Seun Bakare is IT manager at the fictional Marlowe Freight, a logistics company 
 
 ### 1.2 Reading the finding
 
-An audit finding is not a list of tasks; it is a statement that evidence is missing. Marlowe almost certainly has many good settings in place, but cannot prove it. The programme must therefore produce both improvements and evidence: a written standard, measurement against it, and a record of exceptions. NIST SP 800-53 Rev. 5 control CM-2 (baseline configuration) and CM-6 (configuration settings) describe exactly this expectation.
+An audit finding is not a list of tasks; it is a statement that evidence is missing. Marlowe almost certainly has many good settings in place, but cannot prove it. The programme must therefore produce both improvements and evidence: a written standard, measurement against it, and a record of exceptions. NIST SP 800-53 Rev. 5 control CM-2 (baseline configuration) and CM-6 (configuration settings) describe exactly this expectation. For Seun, this reframing changes the first month's work: instead of rushing to change settings, he first writes down what Marlowe expects and finds out how far devices meet it.
 
 ### 1.3 Scope and time
 
-Six months is enough to write a standard, measure every device group, close the highest-risk gaps and set up routines, but not to rebuild everything. Seun excludes phones, which are handled by a separate project, and the warehouse handheld scanners, which are vendor-managed, recording both as out of scope with owners.
+Six months is enough to write a standard, measure every device group, close the highest-risk gaps and set up routines, but not to rebuild everything. Seun excludes phones, which are handled by a separate project, and the warehouse handheld scanners, which are vendor-managed, recording both as out of scope with owners. Recording the exclusions with owners stops them looking forgotten. The insurer and auditors can see that phones and scanners are someone's responsibility, even though this programme does not cover them. Claire Dunmore advises Seun to keep the scope fixed unless the operations director agrees a change in writing, because six months leaves no room for drift.
 
 ### 1.4 Outcomes
 
-Seun writes four outcomes: a hardening standard approved by the operations director; monthly coverage figures for each device group; the top risk gaps closed or formally accepted; and an exceptions register reviewed quarterly. Each outcome has a measure and a date.
+Seun writes four outcomes: a hardening standard approved by the operations director; monthly coverage figures for each device group; the top risk gaps closed or formally accepted; and an exceptions register reviewed quarterly. Each outcome has a measure and a date. Writing outcomes rather than tasks keeps the programme focused on what the auditors and insurer will check at the end. Each outcome also tells Seun what evidence to keep from the start: the approval record, the monthly figures, the gap list with decisions, and the register with review dates. The three checkpoints in the charter are when progress against each outcome is reported to the operations director.
 
 ### 1.5 Stakeholders
 
-The operations director owns business risk, the warehouse managers own shared PCs, the infrastructure team owns servers, and the finance director cares about the insurance premium. Seun meets each in the first two weeks to explain the programme and what will change for them.
+The operations director owns business risk, the warehouse managers own shared PCs, the infrastructure team owns servers, and the finance director cares about the insurance premium. Seun meets each in the first two weeks to explain the programme and what will change for them. Each stakeholder needs something different from the programme: the operations director wants assurance, warehouse managers worry about delays at shift change, the infrastructure team about maintenance windows, and the finance director about the premium. Seun records each concern and returns to it when a decision affects that group, so nobody first hears of a change on the day it happens.
 
 ### Worked example
 
@@ -98,19 +98,19 @@ You will (1) choose reference baselines; (2) tailor them; (3) get approval.
 
 ### 2.1 Choosing references
 
-Seun bases the standard on the CIS Benchmarks for each operating system, the Microsoft security baselines for Windows and the DISA STIGs as a reference for servers where stricter settings are justified. Using recognised references saves time and gives auditors confidence, because the settings have been reviewed widely.
+Seun bases the standard on the CIS Benchmarks for each operating system, the Microsoft security baselines for Windows and the DISA STIGs as a reference for servers where stricter settings are justified. Using recognised references saves time and gives auditors confidence, because the settings have been reviewed widely. References also speed tailoring discussions: when a team objects to a setting, Seun can show the benchmark's reason before deciding. The standard names the benchmark version used for each operating system, so later reviews know which edition the settings came from and can compare it with newer releases.
 
 ### 2.2 Tailoring
 
-Not every benchmark item suits Marlowe. Warehouse PCs are shared by shift workers and must stay signed in to the warehouse system during a shift; a short screen lock would stop work. The standard sets a longer timeout for those PCs, with compensating controls: a kiosk-style restricted desktop and physical placement in supervised areas. Every tailored item records its reason.
+Not every benchmark item suits Marlowe. Warehouse PCs are shared by shift workers and must stay signed in to the warehouse system during a shift; a short screen lock would stop work. The standard sets a longer timeout for those PCs, with compensating controls: a kiosk-style restricted desktop and physical placement in supervised areas. Every tailored item records its reason. Tailoring stops staff working around the standard, which is a common way baselines fail in practice. Seun agrees each tailored item with the warehouse managers, and the reason is reviewed when the standard is.
 
 ### 2.3 Structure
 
-The standard has a short policy section, then one appendix per device group listing required settings, the reference item and any tailoring. CIS Controls v8 Safeguard 4.1 asks for a documented secure configuration process; the standard includes how settings are changed and reviewed.
+The standard has a short policy section, then one appendix per device group listing required settings, the reference item and any tailoring. CIS Controls v8 Safeguard 4.1 asks for a documented secure configuration process; the standard includes how settings are changed and reviewed. One appendix per device group lets each team find its own settings without reading the whole standard. The change process says who may propose a change, who reviews it against the references, and who approves it, so the standard can evolve without becoming a list of undocumented exceptions. Every approved change is recorded with its date and reason.
 
 ### 2.4 Approval
 
-The operations director approves the standard after a thirty-minute walkthrough. Approval matters because it makes the standard the company's decision, not IT's preference.
+The operations director approves the standard after a thirty-minute walkthrough. Approval matters because it makes the standard the company's decision, not IT's preference. Seun uses the walkthrough to explain what the standard requires of each device group, which settings were tailored and why, and how compliance will be measured each month. The director's questions focus on the warehouse: whether the longer screen lock is safe and whether shift changes will slow down. The signed approval becomes the first document in the evidence pack, and the standard's next review date is set at the same meeting, a year after approval.
 
 ### Versioning the standard
 
@@ -152,11 +152,11 @@ You will (1) measure controls by device group; (2) interpret coverage; (3) find 
 
 ### 3.1 What to measure
 
-Seun measures four controls per device group: endpoint detection and response agent reporting, disk encryption, updates within fourteen days and full compliance with the standard. These cover detection, data protection, patching and configuration.
+Seun measures four controls per device group: endpoint detection and response agent reporting, disk encryption, updates within fourteen days and full compliance with the standard. These cover detection, data protection, patching and configuration. Four controls are few enough to measure monthly and explain to non-specialists, yet each corresponds to something an insurer or auditor asks about. Measuring them per device group shows where each control is weakest, rather than giving one company-wide figure. Seun writes down exactly how each control is counted, such as what qualifies as an update installed within fourteen days, so later months use the same definition and figures can be compared over time.
 
 ### 3.2 Data sources
 
-Figures come from the endpoint management and detection consoles. Seun first reconciles their device lists with the asset register, so that each percentage has a trustworthy denominator.
+Figures come from the endpoint management and detection consoles. Seun first reconciles their device lists with the asset register, so that each percentage has a trustworthy denominator. Reconciling the lists finds devices that exist in the register but not in the consoles, and devices in a console that were retired long ago. Without this step, a missing device simply disappears from the percentage instead of counting as a gap. Seun keeps the reconciled list as the denominator for every monthly figure and repeats the reconciliation each month, so newly bought devices are counted from the start and retired ones are removed with a date.
 
 ### Lab — Coverage by device group
 
@@ -184,11 +184,11 @@ weakest cell: warehouse PCs / encrypt at 30%
 
 ### 3.3 Reading the table
 
-Office laptops and Windows servers are in reasonable shape. Warehouse PCs are weakest: only 30 percent encrypted and 38 percent compliant. Linux servers have only half meeting the standard and 78 percent with the detection agent. The overall average would hide this; group figures show where effort is needed.
+Office laptops and Windows servers are in reasonable shape. Warehouse PCs are weakest: only 30 percent encrypted and 38 percent compliant. Linux servers have only half meeting the standard and 78 percent with the detection agent. The overall average would hide this; group figures show where effort is needed. The table confirms what the audit suspected but could not show: the problem is concentrated in particular groups rather than spread evenly. That makes the next step clearer, since effort can be targeted. Seun keeps the table as the month-zero baseline in the evidence pack.
 
 ### 3.4 Presenting
 
-Seun shows the table to the operations director with a sentence per group. The director immediately asks why warehouse PCs are behind, which leads to the next chapter.
+Seun shows the table to the operations director with a sentence per group. The director immediately asks why warehouse PCs are behind, which leads to the next chapter. Keeping the presentation to one table and a sentence per group makes it readable in a short meeting, and it focuses discussion on decisions rather than detail. Seun also shows how each figure was counted, so the director can trust the comparison between groups. The question about warehouse PCs is exactly the kind of discussion the table is meant to start: why one group lags, what it would take to improve it, and in what order Marlowe should act.
 
 ### Validating the consoles and setting the rhythm
 
@@ -230,11 +230,11 @@ You will (1) score gaps by risk; (2) consider effort; (3) agree priorities.
 
 ### 4.1 Listing gaps
 
-From the coverage table and interviews, Seun lists six gaps: server admin access without MFA, warehouse PCs without the detection agent, Linux servers off the standard, a patching tail on laptops, shared warehouse logons and unencrypted warehouse PCs.
+From the coverage table and interviews, Seun lists six gaps: server admin access without MFA, warehouse PCs without the detection agent, Linux servers off the standard, a patching tail on laptops, shared warehouse logons and unencrypted warehouse PCs. The interviews add gaps that a coverage table cannot show, such as shared logons, which only appear when people describe how they work. Seun writes each gap as a short statement with the affected devices and the evidence behind it, so the operations director can see where each one came from before agreeing priorities. The list deliberately stops at six, so that each gap can be discussed properly.
 
 ### 4.2 Scoring
 
-He scores each for likelihood and impact from 1 to 5 and multiplies them, breaking ties by effort. This is a simple method, not a precise calculation; its value is in making reasoning visible and discussable.
+He scores each for likelihood and impact from 1 to 5 and multiplies them, breaking ties by effort. This is a simple method, not a precise calculation; its value is in making reasoning visible and discussable. Seun scores each gap with the infrastructure team and a warehouse manager, so the numbers reflect more than his own view. Disagreements are noted beside the score, and where the team cannot agree, the higher score is used until evidence changes it. Effort is estimated in rough days, which helps the director choose between gaps that score similarly. The scored list is filed with the evidence pack, and rescored at each checkpoint.
 
 ### Lab — Ranking the gaps
 
@@ -259,11 +259,11 @@ Run with `python3 lab_rank.py`. Verified output:
 
 ### 4.3 Discussion
 
-Server admin without MFA ranks highest at 20, since compromised admin credentials would reach every system. The missing detection agent on warehouse PCs is next and is cheap to fix. Unencrypted warehouse PCs rank lowest, because they stay in a secured building and hold little data, so encryption there waits for hardware replacement.
+Server admin without MFA ranks highest at 20, since compromised admin credentials would reach every system. The missing detection agent on warehouse PCs is next and is cheap to fix. Unencrypted warehouse PCs rank lowest, because they stay in a secured building and hold little data, so encryption there waits for hardware replacement. The ranking turns the gap list into a work order the director can understand. Keeping encryption last is a deliberate decision with reasons, not a gap left unnoticed, and it is recorded so auditors can see why.
 
 ### 4.4 Agreement
 
-The operations director agrees the order, adding that the shared warehouse logons matter for accountability after a stock discrepancy last year.
+The operations director agrees the order, adding that the shared warehouse logons matter for accountability after a stock discrepancy last year. The director's addition shows why business owners should review risk rankings: the scores reflected technical risk, but the stock discrepancy made accountability more urgent than its score suggested. Seun records the director's reasoning beside the ranking and moves shared logons into the month-two work alongside the detection agents. The agreed order becomes the plan, and any later change to it is recorded with the reason and the director's approval.
 
 ### Using and revisiting the ranking
 
@@ -305,19 +305,19 @@ You will (1) require MFA for admin access; (2) separate admin accounts; (3) limi
 
 ### 5.1 Admin accounts
 
-Server administrators use separate named admin accounts, never their everyday accounts. Seun removes three generic admin accounts used by several people, replacing them with named ones.
+Server administrators use separate named admin accounts, never their everyday accounts. Seun removes three generic admin accounts used by several people, replacing them with named ones. Generic accounts make it impossible to know who made a change, and their passwords are often shared and rarely changed. Named admin accounts give each administrator their own credentials and their own record in the logs. Seun works with the infrastructure team to find what each generic account was used for before disabling it, so no scheduled job or service breaks. The three accounts are disabled first, then deleted after a month without problems.
 
 ### 5.2 MFA
 
-Admin sign-in to servers goes through a jump host that requires MFA. Direct remote access to servers from laptops is blocked by firewall rules, so all admin paths pass through the controlled point.
+Admin sign-in to servers goes through a jump host that requires MFA. Direct remote access to servers from laptops is blocked by firewall rules, so all admin paths pass through the controlled point. A single jump host gives Marlowe one place to apply MFA, record sessions and review access, instead of trying to protect each server's remote access separately. Blocking direct paths matters as much as adding MFA, because an unblocked route would let an attacker bypass the jump host. Seun tests the firewall rules from an ordinary laptop to confirm that direct connections fail. The jump host itself follows the standard's server appendix.
 
 ### 5.3 Linux sudo
 
-On Linux, admins sign in with SSH keys to their own accounts and use sudo, with logging. Root sign-in over SSH is disabled, following the CIS Benchmark.
+On Linux, admins sign in with SSH keys to their own accounts and use sudo, with logging. Root sign-in over SSH is disabled, following the CIS Benchmark. Individual accounts and sudo logging mean every privileged command can be traced to a named administrator, which shared root access cannot provide. SSH keys replace passwords for sign-in, and keys belonging to staff who leave are removed as part of leaving. The infrastructure team applies these settings through the Linux appendix of the standard, so they are measured with the rest of the baseline each month.
 
 ### 5.4 Standing privilege
 
-Some admin rights are only needed occasionally. Seun introduces time-limited elevation for domain admin rights, granted for a few hours with approval.
+Some admin rights are only needed occasionally. Seun introduces time-limited elevation for domain admin rights, granted for a few hours with approval. Domain admin rights are powerful enough to change any account or device, so holding them permanently increases risk if an admin account is compromised. With time-limited elevation, an administrator asks for the rights, a second person approves, and the rights expire after a few hours. Each grant is logged with the reason. Seun reviews the grants monthly to check that they match real tasks, and the record goes into the evidence pack.
 
 ### Break-glass access
 
@@ -367,19 +367,19 @@ You will (1) harden shared PCs; (2) replace shared logons; (3) deploy agents.
 
 ### 6.1 The environment
 
-Warehouse PCs run the warehouse system, label printing and a browser. They are used by shift workers who share logons, which makes it impossible to tell who did what.
+Warehouse PCs run the warehouse system, label printing and a browser. They are used by shift workers who share logons, which makes it impossible to tell who did what. Shared logons also mean that any action, from a label printed in error to a stock adjustment, cannot be traced to a person. The PCs sit on warehouse floors and are used around the clock across shifts, so any change must not slow workers or interrupt the warehouse system. Seun spends a shift observing how they are used before proposing anything, and the warehouse managers agree the plan with him.
 
 ### 6.2 Individual sign-in
 
-Seun introduces badge-based quick sign-in so each worker uses their own account without slowing shift changes. The restricted desktop shows only the needed apps.
+Seun introduces badge-based quick sign-in so each worker uses their own account without slowing shift changes. The restricted desktop shows only the needed apps. Quick sign-in means each action in the warehouse system is linked to a named worker, which answers the director's concern about accountability. Badges are already issued for building access, so workers do not carry anything new. The restricted desktop reduces what can go wrong on a shared PC. Seun pilots the change on one shift first and adjusts the sign-in time after workers report delays at shift change.
 
 ### 6.3 Agents
 
-The detection agent is deployed to the nine warehouse PCs missing it. Two are too old to run it and are scheduled for replacement.
+The detection agent is deployed to the nine warehouse PCs missing it. Two are too old to run it and are scheduled for replacement. Before deployment, nine of the forty warehouse PCs did not report the agent. After deployment, only the two old models remain without it, and they are listed in the exceptions register until replacement, with their isolation recorded. Seun checks that newly deployed agents actually report to the console, rather than relying on the installation result. The warehouse managers are told which PCs are being replaced and when.
 
 ### 6.4 Encryption timing
 
-Encryption is applied as PCs are replaced, matching the risk ranking.
+Encryption is applied as PCs are replaced, matching the risk ranking. Since unencrypted warehouse PCs ranked lowest, Seun does not encrypt the existing older machines, many of which lack the hardware support needed. Instead, replacement PCs are bought with encryption-capable hardware and encrypted before they reach the warehouse floor. The warehouse encryption figure therefore rises gradually as PCs are replaced. Seun reports it monthly with the replacement schedule, so the director can see when the group will be fully encrypted. The decision is recorded in the evidence pack with the risk ranking that supports it.
 
 ### Physical security
 
@@ -429,19 +429,19 @@ You will (1) apply the CIS Benchmark to Linux servers; (2) automate checks; (3) 
 
 ### 7.1 Applying
 
-The infrastructure team applies the Linux appendix of the standard using its configuration management tool, so settings are defined in code and applied consistently.
+The infrastructure team applies the Linux appendix of the standard using its configuration management tool, so settings are defined in code and applied consistently. Defining settings in code means every Linux server receives the same configuration, and changes can be reviewed before they are applied. It also makes the standard easier to show to auditors, since the code can be compared directly with the appendix. When the standard changes, the infrastructure team updates the code and records the change. Settings that cannot be applied on a server because of the warehouse system become documented exceptions rather than quiet omissions.
 
 ### 7.2 Testing
 
-Changes go first to a test copy of the route planning server, then to production in a maintenance window.
+Changes go first to a test copy of the route planning server, then to production in a maintenance window. The route planning server is chosen because it is business-critical: if a setting breaks it, deliveries cannot be planned. Testing on a copy shows whether the application still works with the new settings before production is touched. The infrastructure team runs the planners' usual tasks on the test copy and records any problems. Production changes happen in an agreed maintenance window with a rollback plan. Each change is logged with the date and result, so problems can be traced to a specific change.
 
 ### 7.3 Checking
 
-The tool reports drift daily. Seun's monthly figure comes from these reports.
+The tool reports drift daily. Seun's monthly figure comes from these reports. Daily drift reports show when a server no longer matches the standard, whether because someone changed a setting by hand or an update reset it. The infrastructure team investigates each drift: a legitimate need becomes a change request, while an unexplained change is corrected and noted. Seun's monthly figure uses the share of servers fully compliant on the last day of the month, defined the same way each time. The reports also go into the evidence pack, so auditors can see compliance held between monthly figures.
 
 ### 7.4 Exceptions
 
-The warehouse system's vendor requires an older library on two servers; these are exceptions with isolation and review dates.
+The warehouse system's vendor requires an older library on two servers; these are exceptions with isolation and review dates. The vendor confirms in writing that its software needs the older library, and gives a target date for a version that does not. The two servers sit on a restricted network segment that allows only the connections the warehouse system needs. Each exception has a named owner, a review date and a link to the vendor's letter in the register. They account for the remaining gap in the Linux compliance figure, which is reported with that explanation.
 
 ### Benchmark items in practice
 
@@ -491,19 +491,19 @@ You will (1) set patch targets; (2) reduce the tail; (3) report.
 
 ### 8.1 Targets
 
-Fourteen days for laptops and servers, seven for actively exploited flaws, following SP 800-40 Rev. 4 risk-based guidance and the CISA Known Exploited Vulnerabilities catalogue.
+Fourteen days for laptops and servers, seven for actively exploited flaws, following SP 800-40 Rev. 4 risk-based guidance and the CISA Known Exploited Vulnerabilities catalogue. Separate targets reflect that not all flaws carry the same urgency: a flaw already exploited in the wild needs action sooner than one that is only theoretical. The Known Exploited Vulnerabilities catalogue gives Marlowe a public, regularly updated list to check against. Seun agrees the targets with the infrastructure team and the operations director, and writes them into the standard so that they are measured monthly with the other controls and reported per device group.
 
 ### 8.2 Tail
 
-Laptops in the tail are mostly field staff rarely online; cloud-based update management fixes this.
+Laptops in the tail are mostly field staff rarely online; cloud-based update management fixes this. Field staff laptops spend weeks away from the office network, so updates that depend on it reach them late. Cloud-based update management lets laptops receive updates over any internet connection. Seun checks the tail each month to confirm that the change works and to find machines that remain behind for other reasons, such as low disk space or a failed restart. Persistent cases are followed up with the user's manager.
 
 ### 8.3 Servers
 
-Server patching moves to a monthly window agreed with operations.
+Server patching moves to a monthly window agreed with operations. A fixed monthly window lets operations plan around server restarts, rather than being surprised by them. The window falls at the quietest time of the week for deliveries, as agreed with the operations director. Urgent fixes for actively exploited flaws can still be applied outside the window, following the seven-day target, with operations told in advance. The infrastructure team tests updates on the route planning server's copy before the window and records the results. Each month's window, including any failed updates, is logged for the evidence pack.
 
 ### 8.4 Reporting
 
-Monthly percentages per group and the oldest outstanding patch.
+Monthly percentages per group and the oldest outstanding patch. Percentages per group show typical performance, while the oldest outstanding patch shows the worst case, which an average can hide. Seun reports both to the operations director each month with a one-line explanation of any change. The figures use the reconciled device list as the denominator, so a device that stops reporting counts as a gap rather than disappearing. A short note lists which machines hold the oldest patches and what is being done about them. The same report goes into the evidence pack.
 
 ### Measuring the tail
 
@@ -563,19 +563,19 @@ You will (1) run an exceptions register; (2) review quarterly; (3) report residu
 
 ### 9.1 Register
 
-Each exception records device, setting, reason, compensating control, owner and expiry.
+Each exception records device, setting, reason, compensating control, owner and expiry. Recording all six fields turns an exception into a decision that can be checked later. The reason explains why the standard cannot be met, the compensating control shows how risk is reduced meanwhile, and the expiry date forces a fresh decision. At Marlowe, the first entries are the two Linux servers with the older library and the two old warehouse PCs without the detection agent. By month six the register holds twelve exceptions, all in date.
 
 ### 9.2 Approval
 
-Business owners approve; IT advises.
+Business owners approve; IT advises. IT can explain the risk and the options, but the decision to accept a risk belongs to the people who own the business process, such as a warehouse manager for warehouse PCs or the operations director for servers. Seun's approval form asks the owner to confirm they understand the reason, the controls and the expiry date. Each approval is signed and dated, and it is filed in the register beside the exception. IT records its advice on the form, so a later reader sees both views.
 
 ### 9.3 Review
 
-Quarterly reviews renew, close or escalate.
+Quarterly reviews renew, close or escalate. At each review, every exception is checked against its expiry date and its reason. An exception is renewed if the reason still holds and the controls are still in place, closed if the device now meets the standard or has been replaced, and escalated to the operations director if the risk has grown or the controls have lapsed. Seun records each decision with the date and the approver, so the register shows its own history.
 
 ### 9.4 Reporting
 
-The register summary goes to the operations director.
+The register summary goes to the operations director. The summary shows the number of exceptions, how many are in date, which expire before the next review and which have been escalated. This lets the director see whether exceptions are being cleared or are accumulating. Seun includes a sentence on any exception that needs a decision, such as funding a replacement for an old warehouse PC. The summary is part of the evidence pack and is presented with the monthly coverage figures.
 
 ### Writing a good exception
 
@@ -633,19 +633,19 @@ You will (1) assemble evidence; (2) answer questionnaires; (3) maintain an evide
 
 ### 10.1 Evidence pack
 
-Standard, approvals, monthly coverage reports, exceptions register and change records.
+Standard, approvals, monthly coverage reports, exceptions register and change records. Together these documents show what Marlowe expects of its devices, who approved it, how far devices meet it each month, and which gaps are knowingly accepted. Seun organises the pack by outcome from the charter, so auditors can find evidence for each one. Each document carries its date and version. The pack is stored where the operations director and the infrastructure team can both reach it, and access is limited to people who need it.
 
 ### 10.2 Questionnaires
 
-Insurance answers cite the pack.
+Insurance answers cite the pack. When the insurer's questionnaire asks whether disk encryption or MFA is in place, Seun answers with the current figure and points to the document in the pack that supports it, rather than a simple yes. Where the answer is partial, such as warehouse encryption, he states the figure and the replacement plan. The finance director reviews the answers before they are sent, and a copy of the submitted questionnaire is kept in the pack. Answers are reused only after the figures are refreshed.
 
 ### 10.3 Maintenance
 
-Monthly updates keep it current.
+Monthly updates keep it current. Each month Seun adds the new coverage report, any new or closed exceptions and any changes to the standard, with dates. A short checklist names the documents to update and who provides each one: the infrastructure team for servers, the warehouse managers for shared PCs and the endpoint team for laptops. Keeping the pack current means it is ready for an auditor or insurer at any time, not only when a request arrives. Seun checks the pack against this list at month end.
 
 ### 10.4 Honesty
 
-Gaps are disclosed with plans.
+Gaps are disclosed with plans. Disclosing gaps, such as the unencrypted warehouse PCs and the two Linux exceptions, builds more trust with auditors and insurers than claiming full compliance that later proves untrue. Each disclosed gap is paired with its reason, compensating controls and a date for resolution. Seun's mentor Claire points out that an insurer who discovers an undisclosed gap after a claim may dispute the claim, so honest disclosure also protects Marlowe financially. Each disclosure is reviewed when the figures change, so dates stay accurate.
 
 ### Organising the pack
 
@@ -703,19 +703,19 @@ You will (1) compare start and end; (2) set routines; (3) assign ownership.
 
 ### 11.1 Results
 
-Laptop compliance 70 to 91 percent, Linux 50 to 89, warehouse agents 78 to 95, admin MFA 0 to 100.
+Laptop compliance 70 to 91 percent, Linux 50 to 89, warehouse agents 78 to 95, admin MFA 0 to 100. Seun reports each result against the month-zero baseline from the coverage table, using the same counting rules as the first month. The Linux figure falls short of full compliance because of the two documented exceptions, and the warehouse agent figure falls short because of the two old PCs awaiting replacement. He presents the monthly figures beside the actions taken, so the operations director can see when each change began to show.
 
 ### 11.2 Routines
 
-Monthly coverage, quarterly exceptions, yearly standard review.
+Monthly coverage, quarterly exceptions, yearly standard review. These routines are what keep the programme going after the six months end. Each month, the coverage figures are produced from the consoles and reviewed with the operations director. Each quarter, the exceptions register is reviewed with business owners. Each year, the standard itself is reviewed against new benchmark releases and Marlowe's changing needs. Seun writes each routine down with its owner, inputs and outputs, so it does not depend on his memory. The routines are recorded in the evidence pack.
 
 ### 11.3 Ownership
 
-Each group has a named owner.
+Each group has a named owner. The infrastructure team owns servers, warehouse managers own the shared PCs, and the endpoint team owns laptops. Each owner receives their group's monthly figures and is responsible for explaining changes and acting on gaps. The operations director remains the owner of the overall risk and approves the standard. Naming owners means the programme does not stop if Seun is away or changes role, and the owners attend the quarterly exceptions review. Their names are recorded in the standard.
 
 ### 11.4 Limits
 
-One company, six months.
+One company, six months. Results from one logistics company over six months may not hold for organisations with different devices, staff or suppliers. Six months is also too short to show whether compliance holds once the programme's attention moves elsewhere. The figures come from Marlowe's own consoles, reconciled against the asset register but not independently verified. Seun states these limits in his final report, so readers judge which parts of the approach suit their own organisations rather than copying the figures as targets.
 
 ### Comparing fairly
 
@@ -781,19 +781,19 @@ You will (1) reflect; (2) share lessons; (3) plan next steps.
 
 ### 12.1 Lessons
 
-Evidence matters as much as settings; tailoring keeps standards workable.
+Evidence matters as much as settings; tailoring keeps standards workable. Seun's first lesson comes from the audit finding itself: Marlowe probably had many good settings, but it could not prove it, so producing evidence was half the work. His second comes from the warehouse: without a longer screen lock and badge sign-in, shift workers would have worked around the standard. He writes both lessons into his final report with examples, so other managers can apply them in their own programmes.
 
 ### 12.2 Next steps
 
-Phones and handheld scanners.
+Phones and handheld scanners. Phones and handheld scanners were left out of scope at the start, with owners recorded. Seun recommends bringing them into the standard next, beginning with an inventory and coverage measurement as for the other device groups. The scanners are vendor-managed, so the first step is agreeing with the vendor which settings it controls and what evidence it can provide. The recommendation goes to the operations director with a proposed timeline, and the next yearly review of the standard checks progress.
 
 ### 12.3 Sharing
 
-Seun presents at the programme.
+Seun presents at the programme. At the final session of the Kingsmere Institute programme, Seun presents the charter, the coverage table, the risk ranking and the evidence pack, describing what worked and what took longer than expected. Other participants ask most about tailoring for the warehouse and about how he persuaded business owners to approve exceptions. Claire suggests he share the charter and register templates with the cohort, removing anything specific to Marlowe. He also offers to answer questions from participants planning similar programmes in their own organisations.
 
 ### 12.4 Career
 
-Seun adds governance skills.
+Seun adds governance skills. Before the programme, Seun's work at Marlowe was mostly technical: deploying tools and fixing problems. Running the programme taught him to write a standard, measure against it, rank risks with business owners and build an evidence pack an insurer would accept. He records these skills in his professional development plan, with examples from the programme, and Claire agrees to review his progress after six months. He also plans to take on the yearly standard review himself, which keeps these skills in use after the programme ends.
 
 ### What surprised Seun
 
