@@ -445,7 +445,7 @@ Keep the codebook with an example log excerpt for each label, especially for the
 
 ### 6.3 Difference-in-differences
 
-With a concurrent control cohort, the effect is the change in the treated cohort minus the change in the control cohort, estimated separately by path. Synthetic results: proxy path +20.4 per 10,000 (95% CI 15.1–25.8); direct path +0.6 (−1.0 to 2.2). H1 is supported. The control cohort's own small rise (+0.9) captures seasonality, rival 4, which the before/after design alone would have attributed to the hybrid group.
+With a concurrent control cohort, the effect is the change in the treated cohort minus the change in the control cohort, estimated separately by path. Synthetic results: proxy path +20.4 per 10,000 (95% CI 15.1–25.8); direct path +0.6 (−1.0 to 2.2). H1 is supported. The control cohort's own small rise on the proxy path (+0.6, Exercise EX034) captures seasonality, rival 4, which the before/after design alone would have attributed to the hybrid group.
 
 Report the estimate with its interval and the number of series behind each cell, so the calculation can be checked. The direct-path interval includes zero, which supports the second part of H1. The control cohort's rise shows why the concurrent control matters: without it, seasonal change would have been counted as an effect of the hybrid group.
 
@@ -660,7 +660,7 @@ Model answers for self-assessment; any answer meeting the rubric scores equally.
 
 **EX022.** Guest path 3.0→3.5 per 10,000 (+0.5): no meaningful change, consistent with the size mechanism being proxy-specific.
 
-**EX023.** Stratum A (proxy) 10/1,000 → 30/1,000 with most hybrid-period traffic moving to stratum B (direct) 1/10,000 → 2/10,000; aggregate can fall because the mix shifts toward the low-failure stratum while both rates rise.
+**EX023.** Before: stratum A (proxy) 10/1,000 and stratum B (direct) 1/1,000 series, aggregate 11/2,000 = 5.5 per 1,000. After: A 3/100 (30 per 1,000) and B 4/1,900 (about 2.1 per 1,000), aggregate 7/2,000 = 3.5 per 1,000. Both strata rise, yet the aggregate falls because the hybrid-period traffic shifted toward the low-failure stratum.
 
 **EX024.** 2×2 in the isolated testbed: {one, two segments} × {codepoint present, absent}, using padding to control size.
 
