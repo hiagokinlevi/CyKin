@@ -2558,25 +2558,37 @@ You will (1) integrate application security and supply-chain controls into one w
 
 Developers see one pipeline: tests, static analysis, dependency gate, build with provenance, signing, staging deploy with verification, production deploy with verification. Results appear in one place in the pull request.
 
+Before integration, developers checked several dashboards and often missed a failing scanner because it reported somewhere they rarely looked. A single sequence, shown in the pull request, means every result is seen at the moment a decision is made about merging. The order also matters: cheap checks run first, so a simple test failure is reported before slower steps start, and signing happens only for builds that passed everything earlier in the line.
+
 ### 34.2 Aligning teams
 
 The security team writes policies; the platform team runs the pipeline; product teams own fixes. A weekly meeting resolves conflicts.
+
+Clear roles stop each team assuming another handles a problem. The security team decides what the rules are, but does not run the CI servers; the platform team keeps the pipeline healthy, but does not decide which advisories matter; product teams fix their own code, since they know it best. Conflicts, such as a policy that slows a team's releases, are raised in the weekly meeting, where the people who can change each part are present. Decisions are written down so the same argument does not repeat.
 
 ### 34.3 Avoiding duplication
 
 Two tools both scanned dependencies with different advisory data, producing contradictory results. The team keeps one as the gate and uses the other only for comparison reports.
 
+Contradictory results waste time and erode trust: developers asked which tool to believe, and some ignored both. Choosing one gate gives a single answer for merging. Comparison reports from the second tool still catch advisories the first missed, and any difference is investigated by the security team rather than left for each developer to puzzle over.
+
 ### 34.4 Developer experience
 
 Messages explain what failed, why it matters and how to fix it, with links. Median CI time is kept under 12 minutes.
+
+A message such as 'blocked: ADV-101 affects tmpl 2.0.9, upgrade to 2.0.10, see guide' lets a developer fix the problem in minutes. A bare 'policy violation' sends them to ask in chat. Keeping CI time down matters for the same reason: when builds take too long, people batch changes, which makes review harder and each failure more confusing to diagnose. Links point to the developer guide.
 
 ### 34.5 Integration testing
 
 Changes to any control are tested in a staging copy of the pipeline before rollout.
 
+The pipeline is software, and changes to it can break every later build or, worse, silently stop a check from running. A staging copy with the same configuration lets the platform team try a change against sample repositories, including ones designed to fail each check. Only when the expected failures still occur is the change rolled out. The end-to-end deployment test with flawed artifacts is part of this suite.
+
 ### 34.6 SAMM view
 
 OWASP SAMM v2 (2020) maturity assessment shows Coastline rising in Implementation (secure build, secure deployment) and Verification after integration.
+
+SAMM groups practices into business functions, each assessed for maturity. Using it shows progress in a form leadership recognises and highlights functions that lag, such as governance or operations. Coastline repeats the assessment yearly, using the same assessors where possible, so changes reflect real improvement rather than differences in how the questions were interpreted. The score is a guide for where to invest next, not a goal in itself.
 
 ### Documentation
 
@@ -2622,25 +2634,37 @@ You will (1) design a supply-chain improvement for a third-party integration; (2
 
 Coastline plans to add a vendor's journey-planning widget to ticket-web. Kwame's team must design how to integrate it safely.
 
+Third-party scripts run with the same rights as Coastline's own code when included directly in a page, so a compromised vendor could read rider data or change ticket prices shown to users. The brief therefore asks for more than a feature integration. It asks the team to decide how much the widget should be able to reach, how Coastline would notice a malicious change, and how it could be removed quickly.
+
 ### 35.2 Vendor risk
 
 Questions to the vendor: Do you follow the SSDF? Do you provide SBOMs and signed releases? How fast do you fix vulnerabilities? Do you have a disclosure process?
+
+The answers show whether the vendor's practices resemble the controls Coastline applies to itself. A vendor that follows the SSDF and signs releases makes verification possible; one that cannot say how fast it fixes flaws leaves Coastline guessing. The team scores answers against a short rubric and asks for evidence, such as a published disclosure policy, rather than accepting yes or no.
 
 ### 35.3 Technical isolation
 
 Options: include the vendor's script directly in ticket-web pages; host a pinned copy with an integrity hash; or load the widget in a sandboxed frame on a separate domain. The sandboxed frame limits the widget's access to rider data.
 
+Direct inclusion is easiest but gives the vendor the most power, and the vendor can change the script at any time. A pinned copy with an integrity hash stops silent changes but still runs with full page access. The sandboxed frame keeps the widget in a separate origin, so browser rules stop it reading ticket-web's pages or cookies.
+
 ### 35.4 Contractual controls
 
 The contract requires notification of security incidents within 48 hours, SBOM delivery with each release and fixing critical flaws within 14 days.
+
+Each term gives Coastline something to act on. Notification within 48 hours lets the team check exposure before attackers spread. SBOMs feed the same advisory check used for Coastline's own components. The 14-day fix commitment sets an expectation the team can measure and raise with the vendor if missed. Terms are kept specific so both sides can tell whether they are met.
 
 ### 35.5 Monitoring
 
 Coastline monitors the widget's domain and versions and alerts on unexpected changes.
 
+Because the widget sits on the vendor's domain, Coastline cannot control its content. It can, however, watch for changes in the script's version, size or the hosts it contacts, and compare them with the vendor's announced releases. An unannounced change triggers a check with the vendor and, if unexplained, use of the exit plan to switch the widget off. Monitoring results are reviewed monthly during the pilot, with any surprises raised at the vendor meeting.
+
 ### 35.6 Presentation
 
 The team presents to Ingrid, procurement and legal.
+
+Each audience has different questions. Ingrid cares about isolation and verification; procurement asks about cost and the vendor's terms; legal asks about liability, audit rights and data handling. The team prepares one slide for each concern and keeps the technical detail in an appendix. Presenting to all three together lets disagreements surface early, such as legal wanting stronger audit rights than procurement expected to negotiate. Questions that cannot be answered on the spot are recorded with an owner and a date for a written reply.
 
 ### Exit planning
 
@@ -2690,25 +2714,37 @@ You will (1) keep security controls fast as the codebase and team grow; (2) scal
 
 Over two years ticket-web grows to 220 components and 30 developers, with 60 builds a day. Checks that took seconds now risk slowing everyone.
 
+Growth multiplies the cost of every check, because each one now runs more often and covers more components. A check that adds a minute to each build costs an hour of waiting every day across the team. Slow checks also encourage developers to batch changes or seek exceptions, which weakens the controls they were meant to enforce. Kwame therefore treats speed as a design requirement.
+
 ### 36.2 Incremental checks
 
 The dependency gate checks only components that changed in a pull request, and a nightly job checks everything. This cut median gate time from 90 to 15 seconds.
+
+Most pull requests touch few or no dependencies, so checking only what changed avoids repeating work. The nightly full check ensures advisories published for unchanged components are still found, as the worked example on zipx will show. Together they cover everything with far less waiting during the day. If the nightly run finds something, the owner is alerted the next morning.
 
 ### 36.3 Safe caching
 
 Advisory data is cached for one hour; the cache key includes the feed's version so stale data is detected. Caches must never be shared between untrusted pull-request builds and release builds, or a poisoned cache could affect releases.
 
+Including the feed version in the cache key means a newer feed invalidates old entries automatically, so the cache cannot hide a fresh advisory for longer than an hour. Separating caches by build type matters because a pull request from a fork runs code nobody has reviewed; if that code could write into the cache used for releases, it could plant a fake 'no advisories' answer. Release builds therefore use their own cache.
+
 ### 36.4 Parallelism
 
 Tests and checks run in parallel jobs; provenance generation happens once at the end.
+
+Running independent jobs at the same time shortens the wall-clock time developers wait, without reducing what is checked. Provenance must come last because it describes the final outputs and the steps that produced them; generating it earlier would leave later steps unrecorded. Parallel jobs need separate workspaces, so one job cannot alter files another job is about to check. The pipeline runs each in its own container, which also keeps a failure in one job from leaving debris for the others.
 
 ### 36.5 Measuring cost
 
 Kwame measures each control's time: tests 6 minutes, static analysis 2, gate 15 seconds, signing 20 seconds, verification 12 seconds. Security controls are under 10% of CI time.
 
+These figures answer the common complaint that security slows builds: most CI time goes to tests, which the team would run anyway. Measuring each control separately also shows where effort would pay off. Speeding up the gate further would save little, while splitting the test suite would save minutes. Numbers end arguments that impressions start. Kwame repeats the measurement each quarter.
+
 ### 36.6 Scale of data
 
 SBOMs for all releases are stored in a searchable index so a question like "which releases contain zipx 1.2.x?" answers in seconds.
+
+Without an index, the same question would mean opening every stored SBOM in turn, which takes long enough to delay a response. The index stores component names and versions for each release, linked to the release digest, so a query returns both which releases contain a component and where those releases run. Wildcard searches over a minor series help when an advisory covers a range of versions.
 
 ### Planning for growth
 
@@ -2750,25 +2786,37 @@ You will (1) operate the application securely in production; (2) monitor for sec
 
 ticket-web logs authentication events, authorisation failures, input validation rejections and admin actions; the pipeline logs builds, signing and deployments. OWASP Top 10:2021 A09 highlights logging and monitoring failures.
 
+The application logs show misuse of ticket-web itself, while pipeline logs show attempts to change what runs. Together they cover both ways an attacker might reach riders. Each log entry has a time, an account and an action, which lets investigators reconstruct events. Logs are sent to a central store that the application and pipeline accounts can write to but not edit or delete, so an intruder cannot erase evidence of their own actions.
+
 ### 37.2 Alerts
 
 Alerts fire on unusual patterns: many authorisation failures from one account, a deployment not from the approved pipeline, or a signature verification failure.
+
+Each alert matches a pattern that is rare in normal operation but common in attacks. Many authorisation failures suggest someone probing for other riders' tickets; a deployment not from the pipeline suggests someone bypassing controls; a verification failure may mean tampering. Alerts are tuned so that each one is worth a person's attention, because an on-call engineer woken often by noise starts to ignore real problems.
 
 ### 37.3 Patching
 
 Servers rebuild weekly from updated base images; the application follows the remediation targets.
 
+Weekly rebuilds mean server patches arrive steadily without anyone needing to remember them. Application fixes follow the same remediation targets as other findings: seven days for critical, thirty for high. Because servers are rebuilt rather than patched in place, every server matches its image exactly, and no server keeps an old library that a manual patch missed. The image used by each server is recorded, so the team can list every server still running an image with a known flaw.
+
 ### 37.4 Configuration
 
 Configuration is stored as code and compared nightly with running systems; drift is reported.
+
+Drift happens when someone changes a running system by hand, often to fix an urgent problem, and the change never reaches the code. The nightly comparison finds such changes within a day. Each one is either added to the code through review or reverted, so the stored configuration remains a true description of production. Repeated drift in one area suggests the pipeline is missing a needed feature.
 
 ### 37.5 On-call
 
 A rota covers security alerts outside office hours, with playbooks.
 
+Attacks do not keep office hours, and a deployment from outside the pipeline at night needs attention before the morning. The rota spreads the load so no one person is always on call, and each shift starts with a short handover. Playbooks give the first steps for each alert type, such as how to check a deployment's origin or freeze releases, so the engineer acts consistently even when tired. The rota is paid and limited in length to avoid burnout.
+
 ### 37.6 Working with operations
 
 Security events are shared with Coastline's operations centre.
+
+The operations centre watches network and server health for all Coastline services, and it may see the same event from another angle, such as unusual traffic during an alert on authorisation failures. Sharing events lets both teams join up the picture quickly. Coastline agrees which events go to which team, so nothing falls between them and nobody receives everything. A joint review each quarter checks whether the split still works and whether any events were missed or duplicated.
 
 ### Incident handover
 
@@ -2818,6 +2866,8 @@ You will (1) validate that deployed artifacts meet provenance policy; (2) check 
 
 Validation checks the real system against requirements: are only artifacts built by the approved builder, from the approved repository, from reviewed commits, running?
 
+Validation differs from verification at deployment. Deployment checks each artifact once, as it goes out; validation looks at what is actually running at a given moment, which can differ if someone copied files by hand or if a server was missed. The question is answered from evidence, not from what the pipeline intended. That makes it a check on the pipeline itself as well.
+
 ### Lab — Lab — provenance policy
 
 ```python
@@ -2843,17 +2893,25 @@ ticket-web-3.2.2 DENY: unreviewed commit
 
 ticket-web-3.2.0 is allowed. ticket-web-3.2.1 is denied because it was built on "laptop-kd", not the approved hosted runner. ticket-web-3.2.2 is denied because its commit was not reviewed.
 
+The policy compares exact strings, so a builder name that differs by one character, such as a similar-looking hostname, is denied. Each denial lists every failing rule, so 3.2.2 would show both problems if it also had the wrong builder. The repository check passes for all three records, since each came from the approved repository.
+
 ### 38.3 Investigating denials
 
 3.2.1 was built during the earlier period before all builds moved to CI; it is retired. 3.2.2 came from an emergency change whose after-the-fact review had not been recorded; the review is completed and the release rebuilt.
+
+Both denials had innocent causes, but the investigation was still needed: the same output would appear if an attacker had built a release elsewhere or slipped in an unreviewed commit. Retiring 3.2.1 removes an artifact the team cannot vouch for. Rebuilding 3.2.2 after review produces a new artifact with provenance showing a reviewed commit.
 
 ### 38.4 Evidence for auditors
 
 A monthly report lists every running artifact and its policy result, with links to provenance. This supports SSDF PS.2 and PS.3 (archive and protect each release).
 
+Auditors want to see controls working over time, not on one day chosen by the team. A monthly report generated automatically gives that history without extra effort. Links to provenance let an auditor pick any artifact and follow it back to source, builder and review. Keeping the reports for several years supports later questions about past releases. PS.3 asks that releases be archived and protected, which the write-once storage from the implementation work covers.
+
 ### 38.5 Continuous validation
 
 The check runs hourly against running servers, not only at deployment.
+
+Checking only at deployment would miss changes made afterwards, such as the manual file copy found by the operations alert. Hourly checks narrow the window in which an unapproved artifact can run unnoticed. A failure raises an alert to the on-call engineer and is added to the monthly report. The check reads digests from running servers and looks them up in the artifact store, so it needs no access to the servers' data. Hourly was chosen as a balance between load on the servers and speed of detection.
 
 ### Validation coverage
 
@@ -2899,25 +2957,37 @@ You will (1) keep dependencies and controls maintainable over years; (2) plan re
 
 A component with no releases for two years and unanswered issues is a risk: flaws may never be fixed. Kwame finds four in ticket-web.
 
+Signs of abandonment include no recent releases, open security reports without response and maintainers who no longer reply. Not every quiet project is abandoned: a small, finished library may need no changes. Kwame distinguishes them by checking whether reported bugs are answered. The four found were all used in ticket-web's request path, so a flaw in any of them would reach riders with no fix coming.
+
 ### 39.2 Replacement planning
 
 For each, options are: replace with a maintained alternative, take over maintenance internally, or remove the feature. qr-make is replaced by a maintained library; one small helper is copied in and owned internally.
+
+The choice depends on size and importance. Replacing qr-make is practical because maintained alternatives exist and the interface is small. Copying the small helper in makes sense because its few lines are easy to understand and test. Taking over maintenance of a large component would cost too much for a team Coastline's size, and removing a feature is chosen only when riders do not need it.
 
 ### 39.3 Reducing dependencies
 
 Some packages are used for one tiny function. Removing them reduces attack surface and update work. Kwame removes 11 such packages.
 
+A package used for one tiny function still brings its own dependencies, advisories and update work. Writing the function directly, in a few reviewed lines, removes all of that. Kwame chooses packages to remove by comparing how much of each is actually used. Each removal is a small pull request with tests, so mistakes are easy to spot and revert.
+
 ### 39.4 Ownership
 
 Each dependency has an owning team listed in a file in the repository.
+
+An owner receives advisories for the dependency, decides on upgrades and reviews proposals to remove it. Listing owners in the repository means the information changes through review and is visible to everyone. A check fails if a new dependency is added without an owner, so no package arrives unclaimed. When teams reorganise, the file is updated in the same change as the team structure. The owner is a team, not a person, so ownership survives holidays and staff turnover.
 
 ### 39.5 Supporting upstream
 
 Coastline sponsors two critical upstream projects and contributes fixes, recognising findings from Wermke et al. (2022) that open-source maintainers often lack resources.
 
+Sponsoring maintainers helps fund the time that fixes, reviews and releases require. Contributing fixes means Coastline's own patches are reviewed by people who know the code and reach every other user. Both reduce the chance that a critical project falls silent. Coastline chooses projects by how much of ticket-web depends on them, using the dependency graph to find the ones with the widest reach. It also reports flaws privately to these projects, following coordinated disclosure, so fixes arrive before details are public.
+
 ### 39.6 Control maintenance
 
 Policies and checks are reviewed yearly; obsolete rules are removed.
+
+A rule that no longer matches the system adds noise or, worse, gives false confidence. For example, a check for a package that has been removed still runs and passes, suggesting coverage that does not exist. The yearly review asks of each rule what risk it addresses, whether that risk still exists and whether the rule has fired. Rules with no remaining purpose are removed, and new ones are added for risks found during the year. The review results are recorded so auditors can see why rules changed.
 
 ### Choosing new dependencies
 
