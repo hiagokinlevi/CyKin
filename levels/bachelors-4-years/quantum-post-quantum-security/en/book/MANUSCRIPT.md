@@ -423,6 +423,8 @@ You will (1) describe the TCP/IP layers and where TLS, IPsec and SSH operate; (2
 
 Data crosses networks in layers: link, internet (IP), transport (TCP, UDP, QUIC) and application. Secure channels insert cryptography at different points. TLS protects application streams such as HTTPS; IPsec with IKEv2 protects IP packets between sites, as in HCU's branch VPNs; SSH protects administrator sessions. Each has two cryptographic jobs: *key establishment*, which agrees a fresh session secret, and *authentication*, which proves who the peer is, usually with certificates and signatures.
 
+The two jobs face different quantum threats. Key establishment matters for harvest now, decrypt later, because recorded traffic can be opened once the session secret is recovered. Authentication matters only at the moment of connection, since a forged signature later cannot change a past handshake.
+
 ### 7.2 The TLS 1.3 handshake
 
 In TLS 1.3 ([RFC 8446](https://www.rfc-editor.org/rfc/rfc8446.html)) the client sends a ClientHello listing supported groups and a key share; the server answers with a ServerHello holding its key share, then encrypted messages carrying its certificate chain and a CertificateVerify signature. Key establishment and authentication are separate: a hybrid group such as X25519MLKEM768, specified for TLS in [RFC 10024](https://www.rfc-editor.org/rfc/rfc10024.html), replaces only the key-exchange part. Its client key share is 1,216 bytes and its server share 1,120 bytes, against 32 bytes for X25519 alone. The certificate chain is unchanged until post-quantum certificates are deployed.
@@ -430,6 +432,8 @@ In TLS 1.3 ([RFC 8446](https://www.rfc-editor.org/rfc/rfc8446.html)) the client 
 ### 7.3 Size and middleboxes
 
 Bigger messages matter. A ClientHello above about 1,500 bytes may span two TCP segments; some old firewalls and inspection devices mishandle such messages or unknown group identifiers. Post-quantum signatures are larger still: an ML-DSA-44 signature is 2,420 bytes ([FIPS 204](https://doi.org/10.6028/NIST.FIPS.204)), versus about 72 for ECDSA P-256. Chapter 30 measures what this does to certificate chains.
+
+Before blaming the new algorithm for a failure, check where the bytes went. A packet capture in a lab shows whether a message was split, dropped or rejected, and by which device.
 
 ### 7.4 Worked example
 
@@ -439,11 +443,15 @@ HCU's network team sees a rise in failed connections after enabling a hybrid gro
 
 Using a lab browser and your own test server, or published handshake traces, identify the supported-groups list in a ClientHello and the selected group in the ServerHello. Record which messages are encrypted in TLS 1.3. Do not capture other people's traffic.
 
+Most of the handshake after the ServerHello is encrypted in TLS 1.3, including the certificate, so a passive observer sees less than in older versions. Compare a connection that offers a hybrid group with one that offers only classical groups, and note the difference in ClientHello size. Published traces are a safe alternative if you have no test server of your own. Write down which tool you used and its version, so another student can repeat the observation.
+
 ### 7.6 Common errors and limits
 
 - Believing hybrid key exchange also makes authentication post-quantum.
 - Blaming the algorithm for failures caused by middleboxes.
 - Capturing traffic on networks you are not authorized to monitor.
+
+Hybrid key exchange protects session secrets against later decryption, but the certificate and its signature remain classical until certificates change, which is a separate and slower migration. Middlebox failures are common in early deployments, and diagnosing them needs evidence from the network, not assumptions about the algorithm. Capturing traffic without authority is unlawful in many places and breaks the trust that security work depends on, however good the intention.
 
 ### Exercises
 
@@ -474,23 +482,33 @@ As programs grow, structure keeps them correct. Group related functions in modul
 
 A positive test checks that valid input works; a *negative test* checks that invalid input is rejected. Cryptographic code needs both. A decoder for ML-KEM encapsulation keys must accept exactly 800, 1,184 or 1,568 bytes for the three parameter sets in FIPS 203 and reject anything else, and FIPS 203 also specifies input checks on the key's coefficients. Libraries that skipped such checks have historically accepted malformed inputs that leaked information or crashed services. Write the negative tests before you write the decoder.
 
+HCU's tests include keys one byte too short and one byte too long.
+
 ### 8.3 Handling secrets in code
 
 Keep secrets out of logs, exception messages and version control. Prefer passing key *handles* (references held by an HSM or OS keystore) instead of raw key bytes. Compare secrets with constant-time functions. Never write your own production implementation of a post-quantum algorithm; use a vetted library, and treat even small wrapper code with suspicion, because side channels and parsing bugs live in the glue as often as in the core.
+
+For HCU, this means calling the approved library through a small interface and reviewing that interface as carefully as anything else.
 
 ### 8.4 Worked example
 
 An HCU analyst receives `inventory.csv` with columns `host, protocol, group`. A careless script counts rows where `group == "x25519"` and reports "most hosts classical". A careful version normalises case, rejects rows with empty groups as *unknown* rather than *classical*, and prints three numbers: classical, hybrid and unknown. The careful script reveals that 18 % of synthetic rows are unknown — a fact the first script hid.
 
+Treating unknown as classical would have made the migration look further behind than it was, or further ahead, depending on what the unknown hosts really ran. Unknowns become a work list of their own: someone must check those hosts directly before the inventory can be trusted. The careful script also records the input file's date, so later readers know how fresh the counts are.
+
 ### 8.5 Practical activity
 
 Write a function that reads lines `host,group`, validates that `group` belongs to an allowed set, and returns counts of hybrid, classical and unknown. Include one negative test with an unknown group string.
+
+Normalise case and spaces before comparing, and decide in advance what counts as hybrid. A group name you have never seen should fall into unknown, never into classical by default. Your negative test should show that a misspelt or invented group name is counted as unknown and that the function does not crash on an empty line. Print the three counts in a fixed order so outputs from different runs can be compared.
 
 ### 8.6 Common errors and limits
 
 - Treating missing data as a negative finding.
 - Catching all exceptions and continuing silently.
 - Writing custom cryptography instead of calling a vetted implementation.
+
+Missing data is a finding about the inventory, not about the systems. Swallowing exceptions hides the rows that failed, so the totals look complete when they are not; log each failure with its line number instead. Custom cryptography fails in ways that tests rarely catch, such as timing differences, and vetted libraries have had years of review that a new implementation cannot match.
 
 ### Exercises
 
@@ -517,6 +535,8 @@ You will (1) model data with entities, attributes and relationships; (2) write s
 
 A relational database stores tables of rows. An *entity* (member, account, document) becomes a table; *attributes* become columns; *relationships* become keys linking tables. SQL queries select, filter and join: `SELECT host FROM services WHERE kex_group = 'ECDHE-P256'` returns hosts using a particular group. Sound models make analysis possible: if a migration team stores each cryptographic observation with its source and date, it can later ask which observations are stale.
 
+HCU's inventory table records host, protocol, group, source and observation date for each row. The source column distinguishes a configuration export from a passive capture, which have different reliability.
+
 ### 9.2 Data lifetimes
 
 Every data class has a *retention period* (how long it is kept) and a *confidentiality lifetime* (how long disclosure would cause harm). These differ: card authorisation messages are kept seven years for disputes but are mostly harmless after the card expires; mortgage documents are kept and remain sensitive for 30 years. Michele Mosca (2018) framed the quantum consequence: if *x* is the time data must stay secure, *y* the time to migrate and *z* the time until a capable quantum computer, then *x* + *y* > *z* means data is already at risk. Databases are where *x* is recorded, so a data model with lifetime attributes is the first quantitative tool of migration planning.
@@ -525,19 +545,27 @@ Every data class has a *retention period* (how long it is kept) and a *confident
 
 Databases encrypt data at rest with symmetric algorithms such as AES-256, whose keys are wrapped by key-encryption keys. The symmetric layer is not the quantum problem. The problem is how keys travel: if database keys are backed up to another site over a channel using RSA key transport or ECDH, recorded backups may expose them later. Inventory therefore follows keys, not just data.
 
+HCU's backup jobs, for example, copy wrapped keys between data centres over the same VPN that carries the mortgage archive.
+
 ### 9.4 Worked example
 
 HCU models `data_class(name, retention_years, confidentiality_years, transfer_channel)`. A query finds classes with `confidentiality_years >= 15 AND transfer_channel = 'vpn-ecdh'`: mortgage documents and member identity records. Those two classes become the first candidates for hybrid key exchange, before the high-volume but short-lived card traffic.
 
+Card traffic is high in volume but loses its value within days, so harvest now, decrypt later matters little for it. Mortgage and identity records keep their value for decades. Ordering migration by confidentiality lifetime, rather than by traffic volume or ease, puts effort where future exposure is greatest. The query result is a starting list for discussion with data owners, who may know of other long-lived classes the table does not yet hold.
+
 ### 9.5 Practical activity
 
 Create a five-row table of synthetic HCU data classes with retention, confidentiality lifetime and channel. Write the query above and justify the order of migration it suggests.
+
+Include at least one class whose retention is long but whose confidentiality lifetime is short, such as published annual reports, so the difference is visible. Your justification should explain why each class falls where it does and which assumption would change its place. Compare your ordering with a classmate's and note any class you placed differently, with the reason. Keep the table; later chapters extend it.
 
 ### 9.6 Common errors and limits
 
 - Confusing retention with confidentiality lifetime.
 - Assuming encryption at rest solves in-transit exposure.
 - Recording lifetimes once and never revisiting them after contract or law changes.
+
+Retention is how long a record is kept; confidentiality lifetime is how long its disclosure would cause harm. They often differ. Encryption at rest protects stored copies but says nothing about copies sent over a network. Lifetimes change when laws, contracts or business practices change, so each one needs an owner and a review date, otherwise migration priorities slowly drift away from reality.
 
 ### Exercises
 
@@ -568,23 +596,33 @@ The same action — scanning a server for its supported TLS groups, capturing a 
 
 Cryptographic assessments can look harmless, but they touch sensitive things: certificates reveal internal hostnames, handshake captures may contain metadata, and downgrade tests can break production sessions. A good scope says, for example: "Passive observation of TLS handshakes on the HCU test gateway mirror port, 1–14 May; no payload retention; no active downgrade testing outside the isolated lab; results shared with the HCU security office only." Active experiments that modify negotiation or inject faults belong in isolated testbeds.
 
+A written scope also protects the student: if something breaks, the record shows what was permitted.
+
 ### 10.3 Dual use and disclosure
 
 Knowing how to find quantum-vulnerable systems also tells an adversary where to look. Publish aggregate findings rather than lists of named vulnerable hosts. If you find a weakness in a vendor product — for example, a library that accepts malformed ML-KEM keys — report it privately to the vendor, agree a timeline, and publish only after a fix or the agreed deadline. Label all synthetic data clearly so that teaching examples are never mistaken for real findings about real organizations.
+
+HCU's reports on its own migration follow the same rule and describe progress as counts.
 
 ### 10.4 Worked example
 
 An HCU student intern notices that a partner bank's public website still offers only classical key exchange and proposes to "scan all partner banks" for a class project. The ethical response: the observation of one public handshake made by a normal browser visit is ordinary, but systematic scanning of partners is outside HCU's authority. The intern instead studies published aggregate measurements and asks HCU's vendor-management team to include post-quantum readiness questions in partner questionnaires.
 
+The response keeps the useful goal, learning how ready partners are, while moving it into a channel where HCU has standing to ask.
+
 ### 10.5 Practical activity
 
 Draft a one-page authorization request for a passive TLS inventory of a synthetic HCU test network. Include systems, dates, techniques, data handling, stop conditions and contacts.
+
+Stop conditions say when to halt: for example, if the test network shows unexpected production traffic or a service degrades. Contacts should include someone who can authorise a stop at any hour. Data handling states what is captured, where it is stored and when it is deleted. Ask a classmate to read your request as if they were the system owner and list anything they would refuse to sign.
 
 ### 10.6 Common errors and limits
 
 - Treating internet reachability as permission.
 - Retaining packet payloads "just in case".
 - Publishing named lists of vulnerable systems.
+
+Being able to reach a system is not the same as being allowed to test it; permission comes from its owner in writing. Payloads may contain personal data that the assessment never needed, and keeping them creates risk for no benefit. Named lists help attackers choose targets, so share them only with the people who will fix the systems. Each mistake damages the trust that lets security teams do their work.
 
 ### Exercises
 
@@ -611,6 +649,8 @@ You will (1) describe processes, memory isolation, file permissions and system s
 
 An operating system isolates processes in separate address spaces, enforces file permissions and grants privileges to users and services. Keys stored in a world-readable file defeat all of this; keys held by a privileged service, or by hardware such as a TPM, are reachable only through defined interfaces. Least privilege — giving each component only the access it needs — applies to cryptographic material as much as to files.
 
+HCU's inventory therefore records where each key lives as well as which algorithm it uses.
+
 ### 11.2 Cryptographic providers
 
 Applications rarely implement cryptography themselves. They call a *provider*: OpenSSL providers on Linux, the CNG framework on Windows, platform keystores on mobile systems. The provider and its version decide which algorithms an application can use, so a post-quantum migration often begins as an OS or library upgrade. System-wide crypto policies on some Linux distributions set allowed algorithms in one place; this is valuable for agility, because one policy change can enable a hybrid group across many services, and dangerous if changed without testing.
@@ -619,19 +659,27 @@ Applications rarely implement cryptography themselves. They call a *provider*: O
 
 Operating systems trust signed updates and, through secure boot, signed boot components. These signatures typically use RSA or ECDSA today. Because forge-later attacks target long-lived trust anchors, vendors are planning post-quantum or hash-based signatures for firmware and boot chains; [SP 800-208](https://doi.org/10.6028/NIST.SP.800-208) approves the stateful hash-based schemes LMS and XMSS, which suit firmware signing where the signer can manage state carefully. Devices whose boot ROM can verify only RSA cannot be upgraded by software alone.
 
+Such devices need a replacement plan.
+
 ### 11.4 Worked example
 
 HCU's branch servers run a Linux distribution whose current OpenSSL version supports the hybrid X25519MLKEM768 group in TLS. The team discovers that the core banking middleware ships its own older, statically linked TLS library and ignores the OS provider. Upgrading the OS changes nothing for that middleware; the vendor must ship a new build. The OS-level view revealed a hidden dependency that a server-by-server checklist would have missed.
 
+The team adds a column to its inventory recording whether each application uses the system library or its own, and asks every vendor for a roadmap.
+
 ### 11.5 Practical activity
 
 On a lab virtual machine you control, list the installed cryptographic libraries and their versions, and find where the system crypto policy (if any) is configured. Record which applications link their own copies.
+
+Look for applications that bundle their own TLS library, such as some databases, language runtimes and vendor agents. Their versions may lag the system library by years. Do this only on a machine you control, and do not change the crypto policy during the exercise. Your record becomes a small version of the dependency inventory that HCU builds for its servers, and the same questions apply at scale.
 
 ### 11.6 Common errors and limits
 
 - Assuming an OS upgrade migrates every application.
 - Editing a system-wide crypto policy directly on production.
 - Overlooking boot-chain and update signatures.
+
+Applications that bundle their own libraries do not change when the operating system does. System-wide policy changes can break services in ways that are hard to trace, so test them in a lab and roll them out gradually. Boot and update signatures are easy to overlook because they work silently, yet they protect the most trusted code on the machine and often have the longest migration lead times.
 
 ### Exercises
 
@@ -683,23 +731,33 @@ p = 2^ -139, 1e+15 operations -> expected failures 1.435e-27
 
 Notice how each 20-bit change in the exponent shifts the expected count by a factor of about a million.
 
+The middle rows show why failure probabilities in standards are so small. A rate that looks negligible for a billion operations may produce hundreds of failures at a million billion, which large services reach over their lifetime. The last rows show a probability so small that failures are not expected at any realistic scale. When a design quotes a failure rate, multiply it by the number of operations you expect before deciding whether it matters.
+
 ### 12.3 Measured rates and intervals
 
 Operational data gives counts, not probabilities. If 3 of 5,000 test connections fail, the point estimate is 0.06 %, but the true rate could be higher. A 95 % confidence interval — for example the Wilson interval used in Chapter 29 — expresses that uncertainty. With small samples, the upper bound is what matters for a go/no-go decision: "we are fairly confident the failure rate is below *u*" is the defensible statement.
+
+Report the interval with the count and the sample size, so the reader can judge it.
 
 ### 12.4 Base rates
 
 Probability also protects against misleading alarms. If a detector flags handshakes that "look like downgrade attempts" with 99 % sensitivity and 1 % false positives, but real downgrade attempts occur in one handshake per million, then almost every alert is false. Always ask for the base rate before interpreting an alert count.
 
+In this example, a million handshakes would give about ten thousand false alerts and roughly one true one. A team receiving that stream would learn to ignore the alert, which defeats its purpose. Better detectors, or applying the rule only where downgrades are more likely, raise the share of true alerts. HCU asks for these figures before adopting any new detection rule.
+
 ### 12.5 Worked example
 
 HCU's mobile app performs 2 × 10^8 key establishments per year. If a hypothetical scheme failed with probability 2^−40, expected failures would be 2 × 10^8 × 9.1 × 10^−13 ≈ 1.8 × 10^−4 per year — negligible. If an implementation bug raised the rate to 1 in 10^5, the expected count would be 2,000 per year, visible in support tickets. Measured failure rates therefore test the implementation, not the mathematics.
+
+HCU's support team was asked to watch for this pattern during the hybrid pilot. A sudden rise in connection errors after a library update would point to the code, since the scheme's own failure rate cannot produce such numbers.
 
 ### 12.6 Common errors and limits
 
 - Reading a point estimate from a small sample as the true rate.
 - Ignoring base rates when interpreting alerts.
 - Assuming independence where failures are correlated (one bad middlebox affects every connection through it).
+
+Small samples can produce a point estimate far from the true rate, especially for rare events; report the interval. Base rates decide whether an alert is likely to be real. Correlated failures, such as many connections passing through one faulty device, break the independence that simple models assume, so failures cluster and averages mislead. Check where failures occur before treating them as independent.
 
 ### Exercises
 
