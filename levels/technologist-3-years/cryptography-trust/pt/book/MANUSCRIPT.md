@@ -1,7 +1,7 @@
 # Criptografia e Serviços de Confiança: Curso de Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso 077, curso de tecnólogo (3 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–8 de 30 já estão escritos em português, com os exercícios EX001–EX024 e suas resoluções com rubricas de 0 a 3 e 1 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 9–30 (EX025–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–15 de 30 já estão escritos em português, com os exercícios EX001–EX045 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 16–30 (EX046–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: implementadores e administradores de tecnologia.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios analisam logs, planejam renovações, verificam HMACs e chamam o scrypt do hashlib contra um vetor publicado; não implementam nenhuma cifra. Sistemas de produção usam bibliotecas avaliadas, clientes ACME, HSMs e produtos de fornecedores; nunca crie sua própria criptografia. Pessoas, organizações e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,9 @@ Leia na ordem. Os capítulos acompanham uma estudante de tecnólogo pelos fundam
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) |
 
-Capítulos 9–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-09), até a chegada dos próximos lotes.
+Capítulos 16–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-16), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -399,11 +399,371 @@ As redes internas não são automaticamente confiáveis. Mais certificados signi
 
 Traçar as fronteiras de confiança posiciona os controles criptográficos onde eles importam e expõe uma infraestrutura de confiança frágil.
 
+<a id="ch-09"></a>
+
+## Capítulo 9 — Evidências e medição
+
+### Objetivos de aprendizagem
+
+Você vai (1) ler logs de falhas de TLS para encontrar as causas; (2) contar e classificar eventos de forma confiável; (3) relatar as evidências com clareza a engenheiros e gestores.
+
+### 9.1 Logs como evidência
+
+Quando os cidadãos relatam que "o site está quebrado", os logs contam o que realmente aconteceu. O gateway web da prefeitura registra os handshakes TLS que falham, com o endereço do cliente, um código de motivo e o host de destino. Rosa aprende a ler esses logs antes de fazer suposições. Códigos de motivo como certificate_expired, protocol_version, unknown_ca e handshake_timeout apontam para correções diferentes. Ela escreve um pequeno analisador usando apenas a biblioteca padrão para resumir as falhas de uma manhã, trabalhando sobre uma amostra sintética com endereços de uma faixa privada.
+
+### Laboratório — Resumo das falhas de handshake
+
+```python
+"""Count reasons in a synthetic TLS handshake-failure log from a city web gateway."""
+from collections import Counter
+LOG = """\
+2026-03-02T08:01Z fail client=10.2.0.14 reason=certificate_expired host=permits
+2026-03-02T08:03Z fail client=10.2.0.31 reason=protocol_version host=legacy-gis
+2026-03-02T08:07Z fail client=10.2.0.14 reason=certificate_expired host=permits
+2026-03-02T08:11Z fail client=10.2.7.90 reason=unknown_ca host=staff-vpn
+2026-03-02T08:12Z fail client=10.2.0.55 reason=certificate_expired host=permits
+2026-03-02T08:20Z fail client=10.2.0.31 reason=protocol_version host=legacy-gis
+2026-03-02T08:24Z fail client=10.2.3.12 reason=handshake_timeout host=permits"""
+
+def main():
+    rows = [dict(kv.split("=") for kv in ln.split()[2:]) for ln in LOG.splitlines()]
+    for (r, h), n in Counter((x["reason"], x["host"]) for x in rows).most_common():
+        print(f"{n}  {r:<20} {h}")
+    print("distinct clients hitting expired cert:", len({x["client"] for x in rows if x["reason"] == "certificate_expired"}))
+
+if __name__ == "__main__":
+    main()
+```
+
+Execute com `python3 lab_tlslog.py`. Saída verificada:
+
+```text
+3  certificate_expired  permits
+2  protocol_version     legacy-gis
+1  unknown_ca           staff-vpn
+1  handshake_timeout    permits
+distinct clients hitting expired cert: 2
+```
+
+### 9.2 Ler o resumo
+
+Das sete falhas, três são certificate_expired no host de licenças, vindas de dois clientes distintos; duas são protocol_version no legacy-gis, vindas de um cliente antigo; uma é unknown_ca na staff-vpn; e uma é um timeout em permits. Rosa conclui que o certificado de licenças é o problema urgente, pois afeta os cidadãos; as falhas do GIS legado vêm de um cliente desatualizado que não consegue negociar uma versão moderna do TLS; e o erro de autoridade desconhecida sugere um dispositivo da equipe sem a raiz interna. Ela separa cada um num chamado próprio, com as evidências anexadas, em vez de um único chamado vago de "problema de TLS".
+
+### 9.3 Relatar com clareza
+
+Para os engenheiros, Rosa relata contagens, hosts, códigos de motivo e intervalos de tempo. Para os gestores, ela escreve duas frases: os cidadãos não conseguiram renovar licenças por cerca de vinte minutos porque um certificado expirou, e ele foi renovado às 08:30; dois problemas menores afetam um cliente do GIS e um dispositivo da equipe. Ela evita exageros e indica quando as evidências estão incompletas, como as falhas não registradas quando o gateway estava sobrecarregado. Um relato claro e adequado a cada público ajuda a prefeitura a agir depressa e constrói confiança nas informações da TI. Ela encerra cada relatório com um próximo passo recomendado, para que quem lê na diagonal ainda saiba exatamente o que fazer.
+
+### Exemplo resolvido
+
+Rosa analisa um log sintético de falhas, identifica como urgente o certificado expirado de licenças, separa três problemas em chamados e escreve resumos distintos para engenheiros e gestores.
+
+> **Caso sintético.** O log é inventado.
+
+### Erros e limites
+
+Os logs podem perder eventos durante sobrecargas. Os códigos de motivo dependem do software do servidor e podem ser ambíguos.
+
+### Exercícios
+
+- **EX025 — Códigos de motivo.** Cite três códigos de motivo de falha TLS e o que sugerem. *Rubrica:* 3 = p. ex., certificate_expired (renovar), protocol_version (cliente antigo), unknown_ca (raiz ausente);; 2 = dois;; 1 = um;; 0 = nenhuma.
+
+- **EX026 — Problema urgente.** Que problema Rosa considerou o mais urgente, e por quê? *Rubrica:* 3 = o certificado de licenças expirado, que afeta os cidadãos (3 falhas, 2 clientes);; 2 = problema;; 1 = outro;; 0 = nenhuma.
+
+- **EX027 — Resumo para os gestores.** O que dizia o resumo para os gestores? *Rubrica:* 3 = cidadãos bloqueados por cerca de vinte minutos por um certificado expirado, renovado às 08:30; dois problemas menores;; 2 = parcial;; 1 = detalhes técnicos;; 0 = nenhuma.
+
+### Síntese
+
+Ler os logs com cuidado, classificar os eventos e relatar a cada público transforma as falhas criptográficas em evidências acionáveis.
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Criptografia e serviços de confiança: orientação
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir os serviços de confiança de que uma prefeitura depende; (2) explicar quem confia em quem em cada um; (3) identificar os papéis da prefeitura como consumidora e como provedora de confiança.
+
+### 10.1 Serviços de confiança em torno da prefeitura
+
+Rosa lista os serviços de confiança que Harbourview usa: uma autoridade certificadora pública para seus sites; uma autoridade certificadora interna para os dispositivos da equipe e os serviços internos; um serviço de assinatura de documentos para as decisões municipais; um serviço de carimbo de tempo que prova quando os documentos foram assinados; e as assinaturas dos webhooks do provedor de pagamentos. Cada um é um serviço cujas asserções outros usam como base. Ela observa que a prefeitura é ao mesmo tempo consumidora de confiança, ao depender da autoridade pública, e provedora, já que cidadãos e parceiros dependem das suas decisões assinadas.
+
+### 10.2 Quem confia em quem
+
+Para cada serviço, Rosa escreve quem confia em quem. Os navegadores confiam na autoridade pública, que responde pelos sites da prefeitura. Os servidores da prefeitura confiam na autoridade interna, que responde pelos dispositivos. Os cidadãos e os tribunais confiam no certificado de assinatura da prefeitura, que responde pelas decisões. A prefeitura confia na chave de webhook do provedor de pagamentos, que responde pelos avisos de pagamento. A RFC 5280 explica como as cadeias de certificados expressam essas delegações. Escrever essas relações deixa claro que uma falha num elo, como uma chave de assinatura roubada, prejudica todos os que dependem dele.
+
+### 10.3 A prefeitura como provedora
+
+Como a prefeitura assina decisões em que cidadãos e tribunais podem se apoiar anos depois, ela carrega as responsabilidades de uma provedora: proteger a chave de assinatura, documentar como as assinaturas são feitas, guardar evidências para a validação de longo prazo e revogar prontamente se uma chave for comprometida. Rosa compara isso com seu papel de consumidora, em que ela principalmente configura e monitora. A distinção a ajuda a explicar aos gestores por que o serviço de assinatura de documentos merece controles mais fortes do que um certificado web comum. Rosa percebe que os parceiros julgam a prefeitura por esses detalhes, e um único certificado expirado num formulário público corrói uma confiança que levou anos para ser construída.
+
+### Exemplo resolvido
+
+Rosa lista cinco serviços de confiança, mapeia quem confia em quem e explica por que o papel de signatária da prefeitura traz responsabilidades de provedora.
+
+> **Caso sintético.** Os serviços da prefeitura são inventados; a RFC 5280 é real.
+
+### Erros e limites
+
+As relações de confiança mudam quando os fornecedores mudam; revise-as. Os provedores de confiança precisam de evidências que durem tanto quanto a confiança depositada.
+
+### Exercícios
+
+- **EX028 — Cinco serviços.** Cite os cinco serviços de confiança que a prefeitura usa. *Rubrica:* 3 = AC pública, AC interna, assinatura de documentos, carimbo de tempo, assinaturas de webhooks de pagamento;; 2 = quatro;; 1 = dois;; 0 = nenhuma.
+
+- **EX029 — Confiança no webhook.** Quem confia em quem nos avisos de pagamento? *Rubrica:* 3 = a prefeitura confia na chave de webhook do provedor de pagamentos;; 2 = correto;; 1 = invertido;; 0 = nenhuma.
+
+- **EX030 — Deveres de provedora.** Liste três responsabilidades de provedora nas decisões assinadas. *Rubrica:* 3 = três entre proteger a chave, documentar o processo, guardar evidências para a validação de longo prazo, revogar prontamente;; 2 = duas;; 1 = uma;; 0 = nenhuma.
+
+### Síntese
+
+Os serviços de confiança definem quem depende de quem; o papel da prefeitura como signatária traz deveres que vão além dos de uma consumidora.
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Criptografia e serviços de confiança: ativos e contexto
+
+### Objetivos de aprendizagem
+
+Você vai (1) inventariar os ativos criptográficos dos serviços da prefeitura; (2) classificar a importância de cada ativo; (3) registrar o contexto, como a retenção legal e os fornecedores.
+
+### 11.1 Montar a lista de ativos
+
+Usando o modelo do Capítulo 4, Rosa preenche o inventário: 58 certificados, 14 chaves no serviço de chaves, a chave de assinatura da AC interna, a chave de assinatura de documentos e dois segredos de webhook. Ela reúne os dados varrendo os hosts autorizados, exportando do serviço de chaves e entrevistando os donos dos serviços. Cada ativo recebe um dono e um vínculo com um serviço. Ela descobre um certificado de um antigo site de eventos, desativado havia anos, mas ainda renovado automaticamente, o que desperdiçava esforço e ampliava a superfície de ataque. Ele é removido depois que o dono confirma.
+
+### 11.2 Classificar a importância
+
+Rosa classifica os ativos pelo dano que seu comprometimento ou sua perda causaria. A chave de assinatura de documentos é classificada como crítica, porque decisões forjadas poderiam ter efeito jurídico. A chave da AC interna é crítica porque poderia criar qualquer identidade interna. Os certificados dos sites públicos são altos: o comprometimento permitiria a personificação, mas eles têm vida curta e são substituíveis. Os segredos de webhook são altos porque avisos de pagamento forjados poderiam emitir licenças sem pagamento. As classificações determinam quais controles, como a proteção em hardware e o controle duplo, cada ativo recebe.
+
+### 11.3 Registrar o contexto
+
+Parte do contexto muda os requisitos. As decisões assinadas precisam continuar verificáveis por pelo menos dez anos, segundo a política de registros da prefeitura, então o processo de assinatura precisa de carimbos de tempo e de dados de validação arquivados. O segredo do webhook de pagamento é compartilhado com um fornecedor sob um contrato que exige a rotação quando solicitada. Certos certificados da equipe são emitidos para terceirizados cujo acesso termina com o contrato. Rosa registra esse contexto no inventário, porque o tratamento de uma chave depende não só do seu algoritmo, mas de fatos jurídicos, contratuais e organizacionais.
+
+### Exemplo resolvido
+
+Rosa inventaria 58 certificados e outras chaves, remove um certificado de eventos obsoleto, classifica como críticas as chaves de assinatura e da AC e registra um requisito de verificação de dez anos.
+
+> **Caso sintético.** As contagens e as políticas são inventadas.
+
+### Erros e limites
+
+As classificações são julgamentos e devem ser revistas. Inventários montados uma vez e nunca atualizados logo passam a enganar.
+
+### Exercícios
+
+- **EX031 — Certificado obsoleto.** Que ativo desnecessário Rosa descobriu? *Rubrica:* 3 = certificado de um site de eventos desativado ainda renovado automaticamente;; 2 = certificado obsoleto;; 1 = nada;; 0 = nenhuma.
+
+- **EX032 — Ativos críticos.** Quais dois ativos foram classificados como críticos, e por quê? *Rubrica:* 3 = chave de assinatura de documentos (decisões forjadas) e chave da AC interna (criar qualquer identidade);; 2 = um;; 1 = nada;; 0 = nenhuma.
+
+- **EX033 — Contexto de dez anos.** O que o requisito de dez anos implica para a assinatura? *Rubrica:* 3 = precisa de carimbos de tempo e de dados de validação arquivados para a verificação de longo prazo;; 2 = carimbos de tempo;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Um inventário classificado pelo dano e enriquecido com o contexto jurídico e contratual diz a cada ativo que proteção ele merece.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Criptografia e serviços de confiança: fluxos de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) rastrear os fluxos de dados entre os serviços da prefeitura e os parceiros; (2) identificar lacunas de proteção em cada fluxo; (3) priorizar as correções pela sensibilidade e pela exposição.
+
+### 12.1 Rastrear os fluxos
+
+Rosa rastreia os fluxos de dados dos serviços de licenças e de documentos: do cidadão ao gateway, do gateway à aplicação, da aplicação ao banco de dados, da aplicação ao provedor de pagamentos, do provedor de volta à aplicação por webhook, da aplicação ao serviço de assinatura de documentos, dos documentos assinados ao arquivo e dos backups ao armazenamento externo. Para cada fluxo, ela registra o tipo de dado, o protocolo, a proteção e quem controla as chaves. Ela usa uma tabela simples, em vez de um diagrama elaborado, porque a tabela pode ser ordenada e filtrada ao planejar as correções. Ela também registra a frequência de cada fluxo, já que um lote noturno e um fluxo contínuo pedem monitoramentos diferentes.
+
+### 12.2 Encontrar as lacunas
+
+A tabela mostra as lacunas: HTTP simples entre o gateway e as aplicações, já observado; backups cifrados com uma chave guardada no próprio servidor de backup, de modo que quem roubasse o servidor levaria as duas coisas; e documentos assinados arquivados sem o carimbo de tempo e os dados de situação dos certificados necessários para a validação de longo prazo. Um fluxo, a exportação dos dados das licenças para uma empresa terceirizada de fiscalização de estacionamento, viaja como planilha enviada por e-mail. Rosa o sinaliza como o mais exposto, porque ele sai inteiramente do controle da prefeitura e não tem cifração. Ela também percebe que ninguém sabia dizer quem era o dono da exportação, o que explica por que ela nunca foi revisada.
+
+### 12.3 Priorizar as correções
+
+Rosa ordena as correções pela sensibilidade dos dados e pela exposição do fluxo. A exportação por e-mail fica em primeiro lugar: dados pessoais saem da prefeitura sem proteção. Em seguida vem a chave dos backups guardada junto com os backups, depois o trecho interno em HTTP e, por fim, os dados de validação do arquivo. Para a exportação, ela propõe uma transferência segura de arquivos com TLS e cifração de cada arquivo com a chave pública da terceirizada, usando uma ferramenta avaliada. Owen aprova a ordenação e pede que ela escreva as solicitações de mudança, o que ela faz com planos de reversão.
+
+### Exemplo resolvido
+
+A tabela de fluxos de Rosa encontra quatro lacunas e põe em primeiro lugar uma exportação de licenças por e-mail, propondo uma transferência segura com cifração para a chave da terceirizada.
+
+> **Caso sintético.** Os fluxos e a terceirizada são inventados.
+
+### Erros e limites
+
+Tabelas de fluxos omitem fluxos "paralelos" não documentados; pergunte aos donos. Cifrar os backups com uma chave guardada ao lado deles dá pouca proteção.
+
+### Exercícios
+
+- **EX034 — Escolha da tabela.** Por que Rosa usa uma tabela para os fluxos? *Rubrica:* 3 = ela pode ser ordenada e filtrada ao planejar as correções;; 2 = ordenável;; 1 = mais bonita;; 0 = nenhuma.
+
+- **EX035 — Lacuna do backup.** O que havia de errado com a cifração dos backups? *Rubrica:* 3 = a chave ficava guardada no próprio servidor de backup;; 2 = chave ao lado dos dados;; 1 = nada;; 0 = nenhuma.
+
+- **EX036 — Principal correção.** Que fluxo ficou em primeiro lugar, e que correção foi proposta? *Rubrica:* 3 = exportação de licenças por e-mail; transferência segura com TLS e cifração de cada arquivo para a chave da terceirizada;; 2 = fluxo;; 1 = correção;; 0 = nenhuma.
+
+### Síntese
+
+Rastrear os fluxos de dados com a propriedade das chaves expõe lacunas que os diagramas deixam passar, e ordenar pela sensibilidade e pela exposição concentra o esforço.
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Criptografia e serviços de confiança: cenários de risco
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever cenários de risco para os serviços de confiança; (2) estimar a probabilidade e o impacto; (3) escolher tratamentos e donos.
+
+### 13.1 Escrever os cenários
+
+Rosa escreve os cenários numa forma consistente: causa, evento, consequência. O notebook de um terceirizado, com um certificado de dispositivo da equipe, é roubado, o certificado é usado para alcançar a VPN e os sistemas internos ficam expostos. O segredo do webhook vaza das anotações de um desenvolvedor, avisos de pagamento forjados são aceitos e licenças são emitidas sem pagamento. O certificado do site público expira durante um feriado prolongado, os cidadãos não conseguem renovar as licenças e a central de atendimento fica sobrecarregada. Escrever os cenários dessa forma os mantém concretos o bastante para serem discutidos e estimados.
+
+### 13.2 Estimar o risco
+
+Para cada cenário, Rosa estima a probabilidade e o impacto numa escala de três níveis, com as razões por escrito. O cenário de expiração do certificado é provável, dados os incidentes passados, com impacto moderado. O vazamento do webhook é possível, com impacto financeiro moderado. O cenário do notebook roubado é possível, com impacto alto, porque o acesso pela VPN alcança muitos sistemas. Ela resiste a números precisos que não consegue justificar, mas registra as evidências de cada estimativa, como os dois incidentes de expiração do ano anterior, para que outros possam contestá-las. Quando colegas discordam de uma estimativa, ela registra as duas visões, em vez de forçar um consenso, e retoma a questão quando chegam mais dados.
+
+### 13.3 Tratamentos e donos
+
+Rosa propõe os tratamentos. Expiração de certificado: automatizar a renovação e acrescentar alertas. Vazamento do webhook: guardar os segredos no repositório de segredos, rotacioná-los duas vezes por ano e verificar os carimbos de tempo para limitar a repetição. Notebook roubado: exigir a senha da pessoa e um código de uso único além do certificado do dispositivo e revogar os certificados prontamente. Cada tratamento recebe um dono e uma data. Owen apresenta os cenários ao comitê de riscos da prefeitura, que aceita os tratamentos e pede relatórios trimestrais de andamento. Rosa agenda o primeiro relatório de andamento antes do fim da reunião, para que a aceitação do comitê se transforme em compromissos com data, e não em boa vontade.
+
+### Exemplo resolvido
+
+Rosa escreve três cenários de causa, evento e consequência, estima-os com evidências e atribui tratamentos, que o comitê de riscos aceita.
+
+> **Caso sintético.** Os cenários e as estimativas são inventados.
+
+### Erros e limites
+
+Listas de cenários nunca são completas; revisite-as depois dos incidentes. Escalas de três níveis escondem nuances, então registre as razões.
+
+### Exercícios
+
+- **EX037 — Forma do cenário.** Que três partes cada cenário tem? *Rubrica:* 3 = causa, evento, consequência;; 2 = duas;; 1 = uma;; 0 = nenhuma.
+
+- **EX038 — Estimativa da expiração.** Como o cenário de expiração foi classificado, e com base em que evidência? *Rubrica:* 3 = provável, impacto moderado; dois incidentes de expiração no ano anterior;; 2 = classificação;; 1 = evidência;; 0 = nenhuma.
+
+- **EX039 — Tratamento do webhook.** Que tratamentos respondem ao cenário de vazamento do webhook? *Rubrica:* 3 = repositório de segredos, rotação semestral, verificação do carimbo de tempo contra a repetição;; 2 = dois;; 1 = um;; 0 = nenhuma.
+
+### Síntese
+
+Cenários concretos, com estimativas justificadas e tratamentos com donos, tornam gerenciáveis os riscos dos serviços de confiança.
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Criptografia e serviços de confiança: métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar webhooks assinados com HMAC; (2) limitar a repetição com carimbos de tempo; (3) combinar as verificações corretamente no código.
+
+### 14.1 Webhooks assinados
+
+O provedor de pagamentos avisa a prefeitura quando uma licença é paga enviando uma requisição HTTP com um corpo JSON, um cabeçalho de carimbo de tempo e um cabeçalho de assinatura. A assinatura é um HMAC-SHA256, como na RFC 2104, calculado sobre o carimbo de tempo e o corpo com um segredo compartilhado entre o provedor e a prefeitura. A prefeitura recalcula o HMAC e compara. Rosa aprende que a comparação precisa usar uma função de tempo constante, hmac.compare_digest no Python, para que os atacantes não consigam descobrir a assinatura correta byte a byte a partir do tempo de resposta.
+
+### Laboratório — Verificação de webhooks
+
+```python
+"""Verify a signed webhook with HMAC-SHA256 plus a 300-second timestamp window (synthetic payment notice)."""
+import hmac, hashlib
+SECRET = b"demo-webhook-secret-not-for-production"
+WINDOW = 300
+
+def sign(ts, body): return hmac.new(SECRET, f"{ts}.".encode() + body, hashlib.sha256).hexdigest()
+
+def verify(ts, body, sig, now):
+    return abs(now - ts) <= WINDOW and hmac.compare_digest(sig, sign(ts, body))
+
+def main():
+    body, ts = b'{"permit":"PK-2291","paid":45.00}', 1767225600
+    sig = sign(ts, body)
+    print("fresh, intact:", verify(ts, body, sig, now=ts + 20))
+    print("amount edited:", verify(ts, body.replace(b"45.00", b"4.50"), sig, now=ts + 20))
+    print("replayed after 1 hour:", verify(ts, body, sig, now=ts + 3600))
+
+if __name__ == "__main__":
+    main()
+```
+
+Execute com `python3 lab_webhook.py`. Saída verificada:
+
+```text
+fresh, intact: True
+amount edited: False
+replayed after 1 hour: False
+```
+
+### 14.2 Ler a execução do webhook
+
+Uma notificação nova e intacta é verificada como True. Quando o valor pago é editado de 45.00 para 4.50, a verificação falha, porque o HMAC deixa de coincidir. Quando a mesma notificação válida é repetida uma hora depois, a verificação falha, porque o carimbo de tempo fica fora da janela de 300 segundos. Rosa observa que a janela limita a repetição a cinco minutos, mas não a impede por completo; a prefeitura também registra os identificadores das notificações processadas e rejeita as duplicadas. O segredo de demonstração é fixo apenas para que a saída seja reproduzível; o segredo real fica no repositório de segredos.
+
+### 14.3 Combinar as verificações
+
+Rosa escreve a ordem das verificações: ler o corpo bruto exatamente como recebido, antes de qualquer análise do JSON que possa mudar os espaços; conferir a janela do carimbo de tempo; recalcular e comparar o HMAC; conferir que o identificador da notificação ainda não foi processado; e só então agir sobre o conteúdo. Ela também registra as falhas com os motivos para as operações, mas devolve um erro genérico a quem chamou. Owen revisa o código e pede que ela acrescente testes para cada caminho de falha, espelhando os casos do laboratório. Cada teste envia uma requisição montada e verifica tanto o código de resposta quanto a linha de log, para que nenhuma aceitação silenciosa passe despercebida.
+
+### Exemplo resolvido
+
+Rosa verifica webhooks com HMAC e uma janela de 300 segundos, acrescenta verificações de identificadores duplicados e ordena as verificações para que os bytes brutos sejam verificados antes da análise.
+
+> **Caso sintético.** O segredo e a notificação são inventados; a RFC 2104 é real.
+
+### Erros e limites
+
+Verificar depois de analisar o JSON pode falhar com mudanças inofensivas de formatação. Uma janela de carimbo de tempo sozinha não impede todas as repetições.
+
+### Exercícios
+
+- **EX040 — Entrada da assinatura.** O que o HMAC do provedor cobre? *Rubrica:* 3 = o carimbo de tempo e o corpo;; 2 = ambos;; 1 = só o corpo;; 0 = nenhuma.
+
+- **EX041 — Resultados do laboratório.** O que o laboratório imprimiu para as notificações editada e repetida? *Rubrica:* 3 = False para o valor editado e False para a repetição depois de uma hora;; 2 = ambos;; 1 = um;; 0 = nenhuma.
+
+- **EX042 — Corpo bruto.** Por que verificar o corpo bruto antes de analisar o JSON? *Rubrica:* 3 = a análise pode mudar bytes, como os espaços, quebrando a verificação;; 2 = bytes;; 1 = velocidade;; 0 = nenhuma.
+
+### Síntese
+
+A segurança dos webhooks combina o HMAC sobre os bytes brutos, a comparação em tempo constante, uma janela de carimbo de tempo e a detecção de duplicatas.
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Criptografia e serviços de confiança: laboratório guiado
+
+### Objetivos de aprendizagem
+
+Você vai (1) montar uma autoridade certificadora de teste num laboratório; (2) emitir e validar certificados de servidor; (3) observar com segurança as falhas comuns de validação.
+
+### 15.1 Montagem do laboratório
+
+Num laboratório guiado, Rosa monta uma rede de teste isolada com uma autoridade certificadora privada criada com ferramentas padrão de código aberto, um servidor web de teste e um cliente. O laboratório usa apenas domínios de teste e chaves descartáveis. Ela cria um certificado raiz mantido offline no laboratório, um intermediário para a emissão e um certificado de servidor para test.harbourview.example. Ela registra cada comando e sua finalidade no caderno de laboratório, para que o procedimento possa ser repetido e revisado. A rede do laboratório não tem rota para os sistemas da prefeitura, então nada do que é feito ali pode afetar serviços reais ou cidadãos reais.
+
+### 15.2 Emitir e validar
+
+Rosa configura o servidor de teste com seu certificado e o intermediário e instala no cliente apenas a raiz do laboratório. As conexões funcionam com TLS 1.3. Ela então examina os campos do certificado em relação à RFC 5280: nome alternativo do titular, uso da chave, uso estendido da chave para autenticação de servidor e datas de validade. Ela aprende que os navegadores se apoiam nos nomes alternativos do titular, e não no campo mais antigo de nome comum, e corrige um certificado que tinha gerado inicialmente apenas com um nome comum. Ela também confere que o uso da chave permite apenas assinaturas digitais, para que o certificado do servidor não possa ser usado indevidamente para assinar outros certificados.
+
+### 15.3 Observar as falhas
+
+Rosa quebra a montagem de propósito, uma mudança de cada vez: remove o intermediário do servidor, deixa expirar um certificado de vida curta, solicita um nome de host diferente e remove a raiz do cliente. Cada mudança produz um erro distinto, que ela registra ao lado do guia de erros e causas do Capítulo 2. Ver as falhas num laboratório seguro as torna reconhecíveis em produção. Owen enfatiza que esse laboratório ensina a operar ferramentas padrão; ele não ensina a construir uma autoridade de produção, que exige políticas, hardware e auditoria cuidadosos.
+
+### Exemplo resolvido
+
+Rosa monta uma AC de laboratório com raiz offline e intermediário, corrige um certificado sem nomes alternativos do titular e registra quatro falhas provocadas.
+
+> **Caso sintético.** O laboratório é inventado; a RFC 5280 é real.
+
+### Erros e limites
+
+As autoridades de laboratório não têm os controles das de produção. Nunca instale raízes de laboratório em máquinas de produção.
+
+### Exercícios
+
+- **EX043 — Hierarquia do laboratório.** Que hierarquia a autoridade do laboratório usa? *Rubrica:* 3 = raiz offline, intermediário emissor, certificado de servidor;; 2 = três níveis;; 1 = um;; 0 = nenhuma.
+
+- **EX044 — Campo do nome.** Em que campo do certificado os navegadores se apoiam para os nomes de host? *Rubrica:* 3 = nome alternativo do titular, e não nome comum;; 2 = SAN;; 1 = CN;; 0 = nenhuma.
+
+- **EX045 — Falhas provocadas.** Liste três falhas que Rosa provocou. *Rubrica:* 3 = três entre intermediário ausente, certificado expirado, nome de host errado, raiz ausente;; 2 = duas;; 1 = uma;; 0 = nenhuma.
+
+### Síntese
+
+Uma autoridade de laboratório segura torna familiares a estrutura dos certificados e suas falhas antes que elas apareçam em produção.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX024 (as de EX025–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Rosa Delgado, Owen Pryce, a Dr Imogen Hale, a Pinecrest Polytechnic, o Harbourview City Council e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX045 (as de EX046–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Rosa Delgado, Owen Pryce, a Dr Imogen Hale, a Pinecrest Polytechnic, o Harbourview City Council e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** No departamento de TI da prefeitura, concentrando-se em construir e operar serviços integrados de forma confiável e segura.
 
@@ -452,6 +812,48 @@ Respostas-modelo para EX001–EX024 (as de EX025–EX090 estão na edição em i
 **EX023.** Assinaturas HMAC nas notificações do provedor de pagamentos.
 
 **EX024.** Ela roda numa única máquina sem backup da chave, e a mesma conta controla a autoridade e o gateway.
+
+**EX025.** certificate_expired aponta para a renovação, protocol_version para um cliente desatualizado e unknown_ca para uma raiz confiável ausente.
+
+**EX026.** O certificado de licenças expirado, já que bloqueou cidadãos: três falhas vindas de dois clientes.
+
+**EX027.** Que os cidadãos não conseguiram renovar licenças por cerca de vinte minutos por causa de um certificado expirado, corrigido às 08:30, com dois problemas menores à parte.
+
+**EX028.** Uma AC pública, uma AC interna, a assinatura de documentos, o carimbo de tempo e as assinaturas dos webhooks de pagamento.
+
+**EX029.** A prefeitura confia na chave de webhook do provedor de pagamentos para responder pelos avisos de pagamento.
+
+**EX030.** Proteger a chave de assinatura, guardar evidências para a validação de longo prazo e revogar prontamente após um comprometimento.
+
+**EX031.** Um certificado de um site de eventos desativado havia muito tempo que ainda era renovado.
+
+**EX032.** A chave de assinatura de documentos, já que decisões forjadas poderiam ter efeito jurídico, e a chave da AC interna, que poderia criar qualquer identidade interna.
+
+**EX033.** As assinaturas precisam de carimbos de tempo confiáveis e de dados de validação arquivados, para que possam ser verificadas por dez anos.
+
+**EX034.** Porque uma tabela pode ser ordenada e filtrada ao priorizar as correções.
+
+**EX035.** A chave de cifração ficava no mesmo servidor de backup que os dados.
+
+**EX036.** A exportação da planilha por e-mail para a terceirizada, substituída por uma transferência segura com cifração de cada arquivo para a chave pública da terceirizada.
+
+**EX037.** Uma causa, um evento e uma consequência.
+
+**EX038.** Provável, com impacto moderado, com base em dois incidentes de expiração no ano anterior.
+
+**EX039.** Guardar o segredo no repositório de segredos, rotacioná-lo duas vezes por ano e conferir os carimbos de tempo para limitar a repetição.
+
+**EX040.** O carimbo de tempo junto com o corpo da requisição.
+
+**EX041.** Os dois retornaram False: o valor editado falhou no HMAC e a repetição ficou fora da janela.
+
+**EX042.** Porque analisar e serializar de novo pode alterar bytes, como os espaços, e então o HMAC deixaria de coincidir.
+
+**EX043.** Uma raiz offline, um intermediário que emite e o certificado do servidor.
+
+**EX044.** A extensão de nome alternativo do titular, e não o nome comum.
+
+**EX045.** Remover o intermediário, deixar um certificado expirar e solicitar o nome de host errado.
 
 <a id="references"></a>
 ## Referências
