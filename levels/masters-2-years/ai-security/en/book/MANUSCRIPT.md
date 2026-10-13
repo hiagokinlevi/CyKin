@@ -104,7 +104,13 @@ k=25 attack_auc=0.520 best_advantage=0.060
 
 ### 1.7 Errors and limits
 
-Five errors recur: questions too broad to answer in a dissertation; searches that stop at the first page of a search engine; treating a vendor blog as evidence; citing papers you have not read, or fabricating identifiers; and reporting only averages for privacy attacks. Each error weakens the dissertation from the start. A broad question cannot be answered in the time. A search that stops early misses work such as the three deduplication studies Leo found. A vendor blog is a claim to verify. Uncited or invented identifiers damage trust in every other citation. Averages hide the few individuals an attack identifies confidently, which is the harm Leo studies.
+Five errors recur, and each weakens the dissertation from the start:
+
+- Questions too broad to answer in a dissertation; a broad question cannot be answered in the time.
+- Searches that stop at the first page of a search engine; a search that stops early misses work such as the three deduplication studies Leo found.
+- Treating a vendor blog as evidence; a vendor blog is a claim to verify.
+- Citing papers you have not read, or fabricating identifiers; uncited or invented identifiers damage trust in every other citation.
+- Reporting only averages for privacy attacks; averages hide the few individuals an attack identifies confidently, which is the harm Leo studies.
 
 ### Exercises
 
@@ -238,7 +244,12 @@ Leo presented Shokri et al. His three critical questions: (1) the shadow-model a
 
 ### 2.9 Errors and limits
 
-Four errors recur: describing attacks without their threat model; assuming image-domain results transfer directly to text; treating rounding or label-only output as a complete defence against extraction; and ignoring that membership itself can be sensitive. Each error leads to a misleading summary. An attack without its threat model cannot be compared with a defence. Image results may not transfer, since small text edits can change meaning. Rounding made extraction harder in the lab but did not stop it. For Harbourline, the mere fact that a person made a claim can be sensitive, so membership inference is a real harm. Check your seminar notes for all four.
+Four errors recur, and each leads to a misleading summary; check your seminar notes for all four:
+
+- Describing attacks without their threat model; an attack without its threat model cannot be compared with a defence.
+- Assuming image-domain results transfer directly to text; they may not, since small text edits can change meaning.
+- Treating rounding or label-only output as a complete defence against extraction; rounding made extraction harder in the lab but did not stop it.
+- Ignoring that membership itself can be sensitive; for Harbourline, the mere fact that a person made a claim can be sensitive, so membership inference is a real harm.
 
 ### Exercises
 
@@ -925,6 +936,8 @@ Model answers; any answer meeting the rubric scores equally. Harbourline Mutual 
 **EX049.** Differential privacy bounds each record's influence formally, at a measurable utility cost. Deduplication is a cheap heuristic that targets repeated records; they are complementary.
 
 **EX050.** "Removing duplicated claim notes before fine-tuning roughly halved one measure of membership leakage in our synthetic study, at almost no accuracy cost. This held for one model type and synthetic data. We suggest a pilot on a governed copy of real data before adopting it."
+
+<a id="references"></a>
 
 ## References
 
