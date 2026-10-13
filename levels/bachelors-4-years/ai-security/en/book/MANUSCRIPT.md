@@ -43,17 +43,25 @@ You will (1) read and write precise mathematical statements; (2) use proof techn
 
 Security claims are mathematical statements in disguise. "Ask Lumen never reveals another patient's appointment" means: *for all* inputs and *for all* users, the output contains no other patient's data. A universal statement ("for all") is refuted by one counterexample; an existential statement ("there exists an attack") is proved by exhibiting one. This asymmetry explains why attackers have an advantage: they need one working input, while defenders must cover all.
 
+Writing the claim out exposes what must be checked: every user, every input, every route by which data reach the output, including retrieved documents and tool results.
+
 ### 1.2 Proof techniques
 
 *Direct proof* derives the conclusion from assumptions. *Proof by contradiction* assumes the opposite and derives an impossibility. *Proof by counterexample* refutes a universal claim. In AI security, proofs are rare for whole systems but common for components: "if the policy service denies every tool call without a valid token, then no unauthenticated booking occurs" is a direct proof from a design property.
+
+The design-property proof is only as good as its assumption: if any path reaches the booking system without passing the policy service, the conclusion fails. Checking that assumption is an architecture task, which later chapters automate with graph search.
 
 ### 1.3 Functions and vectors
 
 A model is a function from inputs to outputs. Inputs such as images or feature records are vectors; distance between vectors (for example Euclidean distance or the maximum absolute difference) formalises "small change". Many attacks search for a nearby vector that produces a different output (Szegedy et al., arXiv:1312.6199).
 
+The choice of distance matters. Under the maximum absolute difference, every feature may change by up to a fixed amount at once; under Euclidean distance, a large change in one feature uses up the whole budget. The evasion lab later uses the first kind, so its perturbation size eps bounds the change in each coordinate separately. A claim of robustness means nothing until the distance and its size are stated.
+
 ### 1.4 Optimisation
 
 Training minimises a loss function; attacks maximise it (or minimise distance subject to a changed output). Both are optimisation problems, which is why the same mathematical tools — gradients, constraints, search — appear on both sides.
+
+The evasion lab shows both sides in a few lines. Training adjusts the weights against the gradient of the loss to reduce error; the attack moves each test point along the sign of the same gradient with respect to the input to increase error. At eps of 0.5 the toy model's accuracy falls from 0.985 to 0.840, which shows how little effort a gradient-guided search needs when the model is simple.
 
 ### 1.5 Worked example (synthetic LCH case)
 
@@ -64,6 +72,8 @@ LCH's vendor claimed: "NoShow cannot be manipulated by patients." Rina rewrote i
 - Accepting universal claims tested on a few examples.
 - Confusing "no attack found" with "no attack exists".
 - Vague notions of "small change" with no distance measure.
+
+The NoShow example shows all three. The vendor's claim was tested on ordinary records only; nobody had looked for a field change that patients control; and "manipulated" had no stated measure. Rina's counterexample, a change from 0.42 to 0.18 caused by one field, settled the question at once. A revised claim would name the fields, the size of change considered acceptable and how it was tested.
 
 ### Exercises
 
@@ -91,27 +101,39 @@ You will (1) describe how computers, operating systems, networks and cloud servi
 
 Hardware runs an operating system, which runs applications; applications talk over networks to other services, often in the cloud. An AI application adds model files, inference servers, vector databases and connections to external model APIs. Each layer has its own owners and failure modes.
 
+For Ask Lumen, the extra parts are the hosted model, the vector database of clinic documents and the booking tool. Each adds owners: the model provider, LCH's data team and the scheduling system's administrators. A security problem in any one, such as a misconfigured database, affects the chatbot even though the model itself works correctly. Knowing the layers tells Rina whom to ask about each risk.
+
 ### 2.2 Where AI runs
 
 A model can run on a user's device, on the organisation's servers, or at a provider via an API. Each choice changes who can see data, who can change the model and who can test it. Hosted AI APIs process prompts on the provider's infrastructure; the organisation controls only its own code, configuration and data sent.
+
+Ask Lumen uses a hosted API, so LCH cannot inspect the model's weights or patch it; it can only choose what to send and how to treat what comes back. That makes LCH's own code, the part that builds prompts and checks outputs, the main place where controls can be added.
 
 ### 2.3 Shared responsibility
 
 In cloud computing, the provider secures the infrastructure and the customer secures what they put on it. For hosted AI, the provider is typically responsible for model hosting and platform security; the customer is responsible for what data they send, how outputs are used, what tools the model can trigger and who can access the application. Misunderstanding this split is a common cause of incidents.
 
+In Rina's map, the booking service account is the clearest example: the model provider has no control over what that account can do in LCH's scheduling system.
+
 ### 2.4 Mapping an AI service
 
 List: user interface; application server; model (where and which version); retrieval store; tools and the systems they touch; logs; identities used at each step. This map is the starting point for every later chapter.
 
+Each item answers a question an attacker or investigator would ask: where does input enter, where does data rest, what can the system change, and under whose identity. A map that lists only the model misses most of the attack surface, because in Ask Lumen the risky actions happen through the booking tool and the retrieval store. Rina keeps her map in a shared document and updates it whenever LCH changes a component.
+
 ### 2.5 Worked example (synthetic LCH case)
 
 Rina mapped Ask Lumen: web chat widget → LCH application server (cloud VM) → hosted language-model API (provider) → retrieval from a vector database of clinic documents (LCH-managed) → booking tool calling the scheduling system (on-premises) using a service account. Logs went to the cloud provider's log service. Rina noted that the booking service account could book for any patient — a responsibility LCH, not the model provider, must fix.
+
+The map also shows who must act on each finding: the service account belongs to LCH's scheduling team, and the fix is to restrict it to the patient whose session made the request.
 
 ### 2.6 Errors and limits
 
 - Assuming the model provider secures the whole application.
 - Forgetting tools and logs in the map.
 - Not knowing which model version is in use.
+
+Each error hides part of the risk. Assuming the provider secures everything leaves LCH's service account unexamined. Leaving out tools and logs hides the routes by which the chatbot can act on or record patient data. Not knowing the model version makes it impossible to tell whether a change in behaviour came from the provider updating the model or from LCH's own code.
 
 ### Exercises
 
@@ -138,6 +160,8 @@ You will (1) write simple Python programs with variables, conditions, loops, fun
 ### 3.1 Why programming matters for AI security
 
 Security work needs evidence, and evidence comes from running things: evaluating a model on a test set, parsing logs, checking files. Even short programs make you faster and more precise. The labs in this book use only the Python standard library so they run on any computer.
+
+Rina's first useful script measured how often Ask Lumen's test answers cited a clinic document, a check that would have taken hours by hand. Writing it also forced her to define what counted as a citation, which was a more precise question than the one she started with. Standard-library labs avoid dependency problems, so a classmate can rerun her work and get the same numbers.
 
 ### 3.2 Core constructs
 
@@ -187,23 +211,33 @@ eps=0.75 accuracy=0.660
 eps=1.00 accuracy=0.505
 ```
 
+The output shows the pattern clearly: accuracy is 0.985 with no perturbation and drops to 0.505 when eps reaches one, close to guessing. The fixed random seed makes every run print the same numbers.
+
 ### 3.3 Handling input safely
 
 Programs that read files, network data or AI output must treat them as untrusted. Convert text to numbers carefully, check ranges, and never execute text as code. A common LLM-application bug is passing model output into a command or web page without checks; OWASP LLM 2025 calls this *improper output handling* (LLM05).
+
+For Ask Lumen, the model's suggested booking is input like any other: it must be parsed as data, checked against rules, and only then passed to the scheduling system. The worked example in this chapter does exactly that with three checks on clinic code, date and patient ID.
 
 ### 3.4 Testing
 
 Write small tests with `assert`: `assert classify(0.9) == "high"`. Test edge cases — empty input, extreme values, wrong types. Tests make it safe to change code later.
 
+For Rina's booking check, edge cases include a date exactly 90 days ahead, a date in the past, an unknown clinic code, a missing patient ID and a request for another patient's ID. Each case gets one test with the expected result written beside it. When she later changes the date rule, the existing tests show at once whether anything else broke.
+
 ### 3.5 Worked example (synthetic LCH case)
 
 Rina wrote a function that checks a booking request produced by Ask Lumen before it reaches the scheduling system: the clinic code must be one of five known codes, the date must be within 90 days, and the patient ID must match the logged-in user. Her tests included a request for another patient's ID, which the function rejected.
+
+Checking in code, outside the model, means the rule holds even if a prompt persuades the model to ask for another patient's booking.
 
 ### 3.6 Errors and limits
 
 - Copying code without understanding what it does.
 - Trusting AI output as if it were your own code.
 - Testing only the normal case.
+
+Copied code may include behaviour the copier never noticed, such as an unsafe call that runs text as a command. Trusting AI output as one's own code repeats that error with a less careful author. Testing only the normal case leaves exactly the paths an attacker uses untested; Rina's test with another patient's ID is the kind that catches real problems.
 
 ### Exercises
 
@@ -231,27 +265,39 @@ You will (1) write clear academic prose with claims supported by evidence; (2) c
 
 Every substantive claim needs support: data you produced, a cited source or a clear argument. In AI security, claims about attacks and defences must state conditions: which model, which attack, which metric. "Adversarial training makes models robust" is too broad; "adversarial training with projected gradient descent improved robustness to bounded perturbations on the evaluated image benchmarks (Madry et al., arXiv:1706.06083)" is supportable.
 
+The supportable version names the method, the threat model and the scope of evaluation, so a reader can tell whether it applies to their system. A claim about image benchmarks says little about a text chatbot like Ask Lumen.
+
 ### 4.2 Citation and verification
 
 Cite what you actually read, and check each reference exists: open the DOI, arXiv page or official URL. Do not invent identifiers. AI writing assistants can produce plausible but non-existent references; every citation you submit is your responsibility. Use a consistent style and include enough information for a reader to find the source.
+
+Rina's worked example shows the risk is real: one of six references produced with an assistant did not exist. Checking takes minutes per reference and protects the essay's credibility. She records where she verified each one, such as the DOI page, so a marker can follow the same route.
 
 ### 4.3 Types of sources
 
 Peer-reviewed papers have been checked by experts; preprints (for example on arXiv) are often important in AI security but unreviewed; standards and frameworks (NIST AI 100-1, ISO/IEC 42001) define terms and practices; vendor blogs and news are useful pointers but weak evidence.
 
+The type of source sets how a claim is worded. A peer-reviewed result can be cited as a finding under its stated conditions; a preprint as a reported result not yet reviewed; a vendor blog as a claim. In Rina's essays, a claim supported only by a vendor blog is written as "the vendor states", which tells the reader how much weight to give it.
+
 ### 4.4 Integrity and AI tools
 
 Follow your institution's policy on AI tools. Typically you must disclose their use, check their output and never present generated text or analysis as your own work without permission. Paraphrasing without citation is plagiarism.
 
+Disclosure lets markers judge the work fairly and lets readers know which parts to check more closely. Rina's disclosure states the tool, the task it helped with, and how she checked the output. The invented reference in her draft shows why checking matters: the tool produced it confidently, and only verification exposed it.
+
 ### 4.5 Worked example (synthetic LCH case)
 
 Rina's first essay draft, partly produced with an AI assistant, contained six references. She checked them: four existed, one had the wrong year, and one did not exist at all. She removed the invented reference, corrected the year, disclosed her use of the tool and rewrote the paragraph that had depended on the fake source using a real one she had read.
+
+A rate of one fabricated reference in six is high enough that she now checks every reference before drafting around it.
 
 ### 4.6 Errors and limits
 
 - Unverified references.
 - Claims without conditions.
 - Treating a vendor blog as established fact.
+
+Unverified references can be wrong or invented, as Rina's draft showed, and a single fake one makes readers doubt the rest. Claims without conditions, such as "adversarial training makes models robust", are easy to refute with one counterexample from a different setting. Treating vendor blogs as established fact passes on marketing as evidence. Each error is cheap to avoid and expensive once a marker or reviewer finds it.
 
 ### Exercises
 
@@ -279,27 +325,39 @@ You will (1) explain confidentiality, integrity and availability; (2) define thr
 
 *Confidentiality* keeps information from unauthorised people; *integrity* keeps it accurate and unaltered; *availability* keeps systems usable when needed. For an AI chatbot: confidentiality of patient data in conversations; integrity of answers and bookings; availability of the service.
 
+For Ask Lumen, a confidentiality failure would be showing one patient another's appointment; an integrity failure would be a wrong answer about clinic hours or a booking made for the wrong person; an availability failure would be the chatbot being unusable during a busy morning. Each needs different controls, so naming the property at risk helps choose the right one.
+
 ### 5.2 Risk vocabulary
 
 A *threat* is something that could cause harm (an attacker, an accident). A *vulnerability* is a weakness. *Risk* combines likelihood and impact. A *control* reduces risk. Precise vocabulary helps teams agree on priorities.
+
+Applied to Ask Lumen: a threat is a patient trying to see another's appointments; the vulnerability is the booking service account that can act for any patient; the risk is that combination's likelihood times the harm of exposed health data; the control is a policy check tying each booking to the logged-in patient. Using the words consistently stops discussions from mixing problems with solutions.
 
 ### 5.3 Classic attacks and AI variants
 
 Phishing tricks people into revealing credentials; AI can generate more convincing, personalised phishing and voice clones. Malware compromises devices; AI-generated code can contain vulnerabilities if accepted uncritically. Credential theft gives attackers access; credentials pasted into chatbots can leak. And AI systems introduce new attack types: prompt injection, data poisoning, model extraction and evasion.
 
+The new attack types affect the same three properties: prompt injection threatens integrity of actions, extraction threatens confidentiality of the model, poisoning threatens integrity of training data.
+
 ### 5.4 Basic practices
 
 Use multi-factor authentication, keep software updated, apply least privilege, back up important data, and report suspicious events. For AI tools: do not paste secrets or personal data into unapproved services, check outputs before acting, and follow organisational policy on approved tools.
 
+These practices apply to AI work as much as to any other: an API key for the model provider is a credential that needs the same care as a password. At LCH, staff are told which AI tools are approved for patient-related work and that patient details must never be pasted into others. Checking AI output before acting on it is the habit that would have caught Rina's invented reference.
+
 ### 5.5 Worked example (synthetic LCH case)
 
 A receptionist at LCH received a voicemail apparently from a clinic director asking to change a supplier's bank details urgently. Rina's security-literacy training session used this synthetic case to discuss voice cloning and the control that stops it: verifying payment changes through a known phone number and a second approver, regardless of how convincing the request sounds.
+
+The control works whether the voice is real or cloned, which is why process beats detection here. LCH also told staff that urgency in a payment request is itself a reason to slow down and verify.
 
 ### 5.6 Errors and limits
 
 - Treating AI-specific risks as unrelated to classic security.
 - Relying on detection of fakes instead of process controls.
 - Pasting sensitive data into public AI tools.
+
+AI-specific risks often reuse classic paths: a cloned voice is phishing by another medium, and a leaked API key is credential theft. Relying on spotting fakes fails as generation improves, while callback verification keeps working. Pasting sensitive data into public tools can expose it to the provider's retention and to anyone who later obtains that data, so LCH's policy names approved tools explicitly.
 
 ### Exercises
 
@@ -327,27 +385,39 @@ You will (1) use sets, relations and graphs to model systems; (2) express access
 
 An access-control rule is a relation between subjects, actions and objects: (patient P, book, own appointment) is allowed; (patient P, view, other patient's record) is not. Writing rules as sets of allowed triples makes them checkable by program and exposes missing cases.
 
+Once the rules are a set, a program can check every request against it and list any action that has no rule at all. Rina's first attempt found that "cancel" had no rule for patients cancelling another person's appointment, which the prose policy had simply not mentioned. Adding an explicit denial closed the gap, and the set became the reference for her booking checks.
+
 ### 6.2 Graphs
 
 A graph has nodes and edges. Draw an AI system as a directed graph: user → chatbot → model → booking tool → scheduling system, plus document store → model. A path from an untrusted node (a public web page, an uploaded document) to a sensitive node (booking tool) is a potential attack route. Indirect prompt injection follows exactly such paths (Greshake et al., arXiv:2302.12173).
+
+Drawing the graph made one edge visible that the architecture document had missed: partner organisations upload documents into the store that the model reads.
 
 ### 6.3 Search on graphs
 
 Breadth-first search finds all nodes reachable from a start node. Running it from every untrusted node and checking whether sensitive nodes are reachable is a simple, automatable architecture check.
 
+The cost grows with the number of nodes and edges, so even large systems can be checked in seconds. The value is in keeping the graph accurate: a new upload source or tool must be added as soon as it exists, or the search reports a clean result for a system that no longer matches it. Rina reruns the check whenever the architecture map changes and keeps the output with the map.
+
 ### 6.4 Counting
 
 If a booking code has 6 digits, there are 10⁶ possibilities; at 10 guesses per second an attacker needs about 28 hours to try them all, so rate limits and lockouts matter. Counting turns intuition into numbers.
 
+With a lockout after five wrong guesses, an attacker gets five tries per account instead of a million, a success chance of five in a million. The same arithmetic applies to guessing patient identifiers through the chatbot: if identifiers are short and sequential, enumeration is cheap. Rina includes such calculations in her reviews so rate-limit settings rest on numbers rather than feel.
+
 ### 6.5 Worked example (synthetic LCH case)
 
 Rina listed Ask Lumen's nodes and edges and ran a reachability check by hand. Two untrusted sources reached the booking tool: patient chat (expected, controlled by authentication) and clinic-document uploads by partner organisations (unexpected). Partner uploads could contain instruction-like text that the model might follow. LCH added review for partner documents and kept the booking tool behind a policy check tied to the logged-in patient.
+
+The second path explains why both controls were kept rather than one: review lowers the chance of hostile text, the policy check limits its effect.
 
 ### 6.6 Errors and limits
 
 - Access rules written only in prose.
 - Graphs that omit data stores and uploads.
 - Ignoring how quickly computers enumerate possibilities.
+
+Prose rules leave cases undefined, as the missing cancel rule showed. Graphs that omit uploads and data stores miss the very route by which indirect prompt injection reaches a tool. Underestimating enumeration speed leads to weak limits on codes and identifiers; a six-digit code without rate limits falls in about a day at only ten guesses per second, and far faster with more.
 
 ### Exercises
 
