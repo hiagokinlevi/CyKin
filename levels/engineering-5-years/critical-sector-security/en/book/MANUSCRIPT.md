@@ -2193,17 +2193,25 @@ After this chapter you can (1) design controls that address specific scenarios w
 
 Each scenario from Chapter 23 gets controls at three points: **prevent** the threat event, **detect** it if prevention fails, and **limit and recover** from consequences. Example — forged stop commands to PS3 and PS4: prevent with authenticated commands (R1); detect with alarms on command anomalies and unexpected state changes; limit with local automatic restart logic and the hospital tank; recover with local manual procedures (R4).
 
+Each of these controls must then be specified and verified, as the rest of the chapter shows, before the forged-stop scenario can be called covered in the dossier.
+
 ### 27.2 Engineered limits first
 
 For the worst consequences, the most robust controls do not depend on software at all: pressure relief valves, mechanical stops, hard-wired interlocks, chemical dosing pumps physically sized so they cannot overdose at maximum stroke. Cyber-informed engineering (see [INL CCE](https://inl.gov/national-security/cce/)) emphasises such controls because they hold even if every digital system is compromised. They cannot cover everything — a mechanical relief valve cannot stop a pump from being switched off — but they bound the worst cases.
+
+For LRWA's dosing pump, the stroke limit sized by process engineers is such a control.
 
 ### 27.3 Independent layers
 
 Defence in depth works only if layers fail independently. List each layer's dependencies: if authentication, monitoring and logging all depend on the SCADA servers, one compromise defeats all three. Place at least one detection layer outside the systems it watches (passive network monitoring, an independent analyser), and keep recovery materials (offline backups, procedures, spare keys) outside the reach of the threat being recovered from.
 
+TMRP applies this by putting the chlorine analyser alarm on a separate logger and keeping offline backups away from the SCADA servers they would restore.
+
 ### 27.4 Specifying controls
 
 A control specification states: the scenario(s) it addresses; its function; performance (detection within X, rejection rate, restoration time); dependencies; failure mode (fail-safe or fail-operational, and what that means here); owner; and verification method. Without performance and verification, a control is an intention.
+
+The setpoint bounds specification in the worked example below shows every element: the scenario, the bounds and step limit, the alarm rule, the dependencies, retaining the last valid setpoint as its failure mode, and test T3 as verification. Its owner is the control engineering team that configures the dosing controller.
 
 ### 27.5 Worked example: setpoint bounds (synthetic)
 
@@ -2213,6 +2221,8 @@ Scenario: forged or erroneous setpoint drives the chlorine dosing pump to overdo
 
 Write full specifications for two controls of the forged-stop scenario in §27.1, including performance, dependencies, failure mode and verification.
 
+Choose one preventive control, such as authenticated commands, and one recovery control, such as local manual operation at PS3 and PS4. For each, state the performance it must achieve, what it depends on and what happens when it fails. Authentication should fail closed for commands; local manual operation must work without SCADA or the network. Name an owner by role and a verification method, then check whether the two controls share any dependency that would let one event defeat both.
+
 ### 27.7 Common errors and limits
 
 - Controls without performance criteria.
@@ -2220,6 +2230,8 @@ Write full specifications for two controls of the forged-stop scenario in §27.1
 - "Layers" that share dependencies.
 - No engineered limit for the worst consequence when one is feasible.
 - Recovery materials reachable by the same attacker.
+
+The dosing example avoids each: bounds live in the controller, the analyser alarm uses a separate logger, the stroke limit is engineered, and every element has a performance target. The bounds also retain the last valid setpoint when a command is rejected, so the failure mode is stated, and each rejection is logged for the alarm rule.
 
 ### Exercises — chapter 27
 
@@ -2251,6 +2263,8 @@ After this chapter you can (1) implement a security control as working code with
 
 Start from the control specification (Chapter 27): every "shall" becomes at least one test before or alongside the code. Keep the implementation small and dependency-free where possible — the gateway in this book uses only the Python standard library. Structure it as Chapter 9 recommends: a parser (Chapter 4), a verifier (Chapter 19), a state store (replay counters), and an output interface, each tested separately.
 
+TMRP's gateway follows this structure, which is why its NaN bug could be found and fixed in the validator alone.
+
 ### 28.2 Secure coding for control paths
 
 - Validate input before use: length, MAC, counter, shape, physical range (Labs 3 and 8).
@@ -2260,13 +2274,19 @@ Start from the control specification (Chapter 27): every "shall" becomes at leas
 - Bound resource use: maximum message size, maximum queue length, rate limits per source.
 - Log rejections with enough context to investigate, without logging secrets.
 
+These rules come straight from Labs 3, 8 and 11. Each one has a test in the gateway suite.
+
 ### 28.3 The test bench
 
 A test bench reproduces the control's environment offline: simulated RTUs that send valid, malformed, forged, replayed and delayed messages; a simulated SCADA that receives the gateway's output; and a clock you can control. Lab 15 (Chapter 40) is a compact version. Benches let you test failure modes that would be unsafe or impossible to provoke on a live system.
 
+TMRP's bench includes simulated RTUs at PS2 and PS4, a simulated SCADA receiver and a controllable clock, so restarts, delays and replays can be produced on demand. The same harness later carries the seeded fault-injection campaign, which is why investing in it early saves time when the capstone verification begins.
+
 ### 28.4 Evidence
 
 Record for each implementation: the requirement and specification versions implemented; the source revision; test results with tool versions; known limitations; and reviewer sign-off. This becomes part of the evidence dossier (Chapter 48).
+
+For TMRP's setpoint validator, the record shows the specification version, the commits for v1 and v2, the T3 results for each, the known limitation that v1 accepted NaN, and the reviewer who asked the NaN question. Without that record, the later dossier finding about T3's status would have been impossible to resolve, because nobody could show which version had passed. Recording evidence while the work is done costs minutes; reconstructing it later costs days.
 
 ### 28.5 Worked example: setpoint validator v1 (synthetic)
 
@@ -2276,6 +2296,8 @@ The TMRP team implements R3 from the §27.5 specification. Version 1 checks `new
 
 Implement a minimal gateway that combines Lab 3's parser output with Lab 8's sealing, so that a validated Modbus reading becomes an authenticated frame. Write tests for each rejection path.
 
+Keep the two parts separate behind clear interfaces: the parser returns a validated reading or a reason for rejection, and only a validated reading is sealed. Test each rejection path from Lab 3 and confirm that nothing reaches the sealing function. Then check that the sealed frame passes Lab 8's receiver and that a tampered copy is refused. Store the key outside the source file, even for this exercise, so the habit is in place before real keys appear.
+
 ### 28.7 Common errors and limits
 
 - Code written before the specification is clear.
@@ -2283,6 +2305,8 @@ Implement a minimal gateway that combines Lab 3's parser output with Lab 8's sea
 - Negative checks (`if x > hi: reject`) that miss NaN; prefer positive checks of the safe region.
 - Keys in source code.
 - Evidence reconstructed after the fact.
+
+The setpoint validator's first version shows the third error, and TMRP's dossier exists to prevent the last. Its NaN acceptance came from negative checks, and the fix was to state the safe region positively. Keys in TMRP's bench code are loaded from a protected file, never written in the source, and every exception in the verification path ends in a rejection that is logged.
 
 ### Exercises — chapter 28
 
@@ -2314,6 +2338,8 @@ After this chapter you can (1) define security and resilience metrics that suppo
 
 A metric is useful if it changes a decision. Three families: **control performance** (does the control do what was specified: rejection rates, detection times); **exposure** (how much attack surface or vulnerability exists: unauthenticated conduits, unpatched reachable vulnerabilities, shared accounts); and **service resilience** (how service degrades and recovers). Use the goal–question–metric approach: state the goal, the question that would show progress, and only then the metric.
 
+For TMRP, the alarm latency for R7 measures control performance, the count of unauthenticated conduits measures exposure, and the share of demand met during the recovery trial measures resilience.
+
 ### 29.2 Detection metrics
 
 From a labelled test set: true positives (TP), false positives (FP), false negatives (FN), true negatives (TN). **Precision** = TP/(TP+FP): of alarms, how many were real. **Recall** = TP/(TP+FN): of real events, how many were found. **F1** is their harmonic mean. Report both precision and recall with the base rate of the test set; precision in a test set with 50% attacks says little about operations with 0.1% (Chapter 7). **Time to detect** is a distribution; report median and worst cases, not only the mean. [Arp et al. (2022)](https://www.usenix.org/conference/usenixsecurity22/presentation/arp) list common pitfalls in evaluating machine-learning security systems, including unrealistic base rates and data snooping; [Kim et al. (2022)](https://ojs.aaai.org/index.php/AAAI/article/view/20680) show how point-adjusted evaluation can inflate time-series anomaly detection scores.
@@ -2322,9 +2348,13 @@ From a labelled test set: true positives (TP), false positives (FP), false negat
 
 Plot service performance $Q(t)$ — for LRWA, the fraction of demand met — through a disruption. [Bruneau et al. (2003)](https://doi.org/10.1193/1.1623497) proposed measuring resilience loss as the area between full performance and $Q(t)$ from disruption to recovery. The curve shows robustness (how far performance falls), rapidity (how fast it recovers) and the total loss. Engineering requirements map onto it: R4 keeps the drop shallow; R6 shortens the recovery.
 
+TMRP's recovery trial gives a real curve, since supply stayed in local mode while remote operation was restored.
+
 ### 29.4 Metrics that mislead
 
 Counting blocked attacks rewards noisy firewalls; counting patches applied ignores which ones mattered; mean time to detect hides the one event detected after three weeks. When a metric becomes a target, people optimise the metric. Prefer metrics tied to consequences and verified by test.
+
+TMRP's detector acceptance test avoids these by reporting misses and the slowest detection, not just an average. The two missed reconnaissance events stay in the report, because they are the result that changes how much LRWA can rely on the detector.
 
 ### 29.5 Worked example: anomaly detector acceptance test (synthetic)
 
@@ -2352,6 +2382,8 @@ TP=5 FP=3 FN=2 TN=4 precision=0.625 recall=0.714 F1=0.667
 time to detect (min): [2, 4, 7, 11, 30] mean 10.8 median 7
 ```
 
+The counts match the worked example: five attacks detected, three benign events alarmed, two attacks missed and four benign events left quiet. The two missed attacks were slow, low-volume reconnaissance, which the detector does not see. The detection times show why a median matters: one event took thirty minutes while most were found in under ten. Because half the test events were malicious, the precision here is far higher than LRWA would see in operation, as EX057 shows.
+
 ### 29.7 Common errors and limits
 
 - Metrics nobody uses for a decision.
@@ -2359,6 +2391,8 @@ time to detect (min): [2, 4, 7, 11, 30] mean 10.8 median 7
 - Mean time to detect without distribution or misses.
 - Resilience reported as uptime only.
 - Metrics that become targets.
+
+TMRP's acceptance test reports misses and the slowest detection, and its precision is stated with the test set's fifty per cent base rate, so nobody mistakes it for operational precision. Resilience is shown as the share of demand met over time, not as uptime. Every metric in it informs the deployment decision.
 
 ### Exercises — chapter 29
 
@@ -2390,6 +2424,8 @@ After this chapter you can (1) plan and run a verification campaign for security
 
 Verification answers: does the implementation meet its specification? A campaign plan lists, for each requirement, the test cases, environment, inputs, procedure, expected result, pass criterion and who runs it. Tests are written before execution and are not changed to make results pass. Results include environment details (software versions, seeds, configuration) so the test can be repeated.
 
+TMRP's campaign plan lists T1 to T7 against R1 to R8, with pass criteria fixed before any test runs. Each test names its environment and who runs it.
+
 ### 30.2 Kinds of test
 
 - **Example tests** check typical behaviour.
@@ -2404,13 +2440,19 @@ Example tests show the presence of correct behaviour in chosen cases; property-b
 
 Seed every random generator and print the seed; record tool and library versions; keep the test inputs; store results with the source revision. A failed test that cannot be reproduced cannot be fixed or re-verified.
 
+TMRP's T3 record follows this rule: it gives the seed, the number of generated cases and the Python version, so anyone can rerun the property-based test and see the same thirty-one NaN acceptances on v1 and none on v2. Without the seed, a reviewer could only take the result on trust. The same record stores the source revision of each validator version.
+
 ### 30.4 Failed tests
 
 A failed test is information. Record it as failed with evidence; analyse root cause; fix; re-run the failed test and the regression suite; record the re-test. Never re-label a failure as "not applicable" because the deadline is close (Chapter 10). If a failure is accepted temporarily, it needs a compensating control, an owner and a date.
 
+T3 is the model: failed on v1, fixed in v2, re-tested and recorded. The v1 failure was never relabelled, and the PS4 compensating control had an owner and a date.
+
 ### 30.5 Worked example: T3 setpoint bounds (synthetic)
 
 Test T3 verifies R3. Example tests on v1 (in range, above, below, large step) pass. The property-based test generates 2,000 cases with seed 30, one in ten drawn from special values (NaN, ±∞, exact boundaries). v1 accepts 31 unsafe values — all NaN. v2 accepts none. T3 is recorded as **failed on v1**, root cause "negative comparisons are false for NaN", fixed in v2, re-tested and **passed on v2**, with the seed and Python version recorded.
+
+Both results stay in the record. The re-test result is later entered in the traceability matrix.
 
 ### 30.6 Practical activity: Lab 11
 
@@ -2451,6 +2493,8 @@ v1 unsafe acceptances: 31 first: [nan]
 v2 unsafe acceptances: 0
 ```
 
+The example tests give the same answers for both validators, so they cannot tell v1 from v2. The property-based run is what separates them: v1 accepts thirty-one unsafe values, all NaN, while v2 accepts none. The seed of thirty makes the run repeatable. Notice that the generator draws special values only one time in ten; without that, NaN would almost never appear and the bug would stay hidden however many random cases were tried. Record the seed with the result.
+
 ### 30.7 Common errors and limits
 
 - Tests written after seeing results.
@@ -2458,6 +2502,8 @@ v2 unsafe acceptances: 0
 - Unseeded random tests; results without versions.
 - Failures re-labelled instead of fixed.
 - Claiming property-based tests prove correctness.
+
+TMRP's T3 record avoids each of these. Its property was written before the run, its generator is seeded, the failure on v1 stayed recorded as failed, and the report claims only that no unsafe value was found among the generated cases, not that v2 is correct for every input. The seed and version are stored with the result.
 
 ### Exercises — chapter 30
 
@@ -2489,17 +2535,25 @@ After this chapter you can (1) deploy controls into operational environments thr
 
 Field deployment follows stages, each with entry and exit criteria: bench (all tests pass); pilot site with low consequence; one high-consequence site with extra monitoring and a rollback plan; fleet. Each stage has a **rollback** — the ability to return to the previous known-good state quickly — tested before it is needed. Schedule changes outside peak demand and with operators informed; in water, avoid changes during high-demand periods or when storage is low.
 
+TMRP's stages are bench, PS2 as the low-consequence pilot, PS4 as the first high-consequence site, then the fleet.
+
 ### 31.2 Production key and secret management
 
 On the bench, keys are files; in production they are lifecycles. Generate keys in hardware security modules or device secure elements; enrol devices with an auditable ceremony (two people, logged); store the inventory of which key belongs to which device and its rotation date; rotate; and revoke promptly when a device is lost or decommissioned. Secrets for service accounts go into a vault with access logging, not into scripts. A key inventory is itself sensitive.
+
+For TMRP, keys are generated in the gateway's secure element at enrolment.
 
 ### 31.3 Legacy integration
 
 Legacy devices that cannot authenticate are wrapped: a gateway placed physically adjacent (same cabinet) adds authentication on the network side and speaks the legacy protocol on a short, physically protected link. The gateway becomes part of the device's security boundary, so it needs its own hardening, monitoring and update path. Compensating controls cover what the gateway cannot: cabinet tamper alarms, local logging, and restrictions on which function codes pass through.
 
+At PS2, the gateway sits in the RTU cabinet on a 30 cm serial link and passes only two function codes.
+
 ### 31.4 Commissioning and handover
 
 Commissioning verifies the installed system in its real environment: site acceptance tests repeat key bench tests on site (authentication rejects forged frames; replay rejected; failover to local automatic works; alarms reach the control room within 60 s). Handover gives operators procedures, training, contacts and the known limitations. Until operators can run and recover the system, the control is not in service.
+
+At PS2, site acceptance also found the gateway's clock drift, which was fixed and re-tested before handover. Operators were trained first.
 
 ### 31.5 Worked example: PS2 pilot (synthetic)
 
@@ -2509,6 +2563,8 @@ TMRP's pilot site is PS2 — legacy RTU-A, low consequence. Entry criteria: T1, 
 
 Write the stage plan for TMRP fleet rollout with entry/exit criteria and rollback for each stage, and a two-page operator handover note for the gateway.
 
+Use the PS2 pilot as your model for entry and exit criteria, then extend the plan to PS4 and the remaining stations. For each stage, say how rollback is done and who decides to use it. In the handover note, give operators the alarms the gateway raises, what each means, how to switch to local manual operation and whom to call. List the known limitations plainly, such as the dependence on an internal time source learned at PS2.
+
 ### 31.7 Common errors and limits
 
 - "Big bang" deployment without pilot or rollback.
@@ -2516,6 +2572,8 @@ Write the stage plan for TMRP fleet rollout with entry/exit criteria and rollbac
 - Key enrolment by one person without records.
 - Gateways treated as transparent rather than as security-critical devices.
 - Commissioning without operators; handover without known limitations.
+
+TMRP's PS2 pilot avoided these: it had a rollback image, operators were briefed before installation, and the clock-drift finding was handled as an interface fix and re-tested before PS4 began. Key enrolment follows the two-person, logged ceremony described above, and the gateway was treated as a security-critical device with its own hardening and update path.
 
 ### Exercises — chapter 31
 
@@ -2547,9 +2605,13 @@ After this chapter you can (1) use reliability measures — failure rate, MTBF, 
 
 For a component with constant failure rate $\lambda$ (failures per hour), mean time between failures is $1/\lambda$. With mean time to repair $1/\mu$, steady-state availability is $A = \mu/(\lambda+\mu) = \text{MTBF}/(\text{MTBF}+\text{MTTR})$. Constant failure rates suit the useful-life period of electronics; early-life and wear-out failures need other distributions (Weibull). Components in **series** (all needed) have rates that add: $\lambda_s = \sum\lambda_i$. Components in **parallel** (any one suffices) fail only together.
 
+At PS4, each pump's failure rate of one per two thousand hours and its 24-hour repair time give the single-pump availability used in Lab 12.
+
 ### 32.2 Repairable redundancy
 
 Simple formulas for parallel systems assume independent units each repaired independently. Real sites often have one repair crew, so when both units are down one waits. A continuous-time Markov chain models this: states 0, 1, 2 units failed; transitions at rate $2\lambda$ from 0 to 1, $\lambda$ from 1 to 2, and $\mu$ back down from 1 and from 2 with one crew. Solving the balance equations gives steady-state probabilities; unavailability is the probability of state 2.
+
+PS4 has exactly this constraint: two pumps, one repair crew. The Markov model in Lab 12 captures the wait.
 
 ### 32.3 Induced failures
 
@@ -2585,6 +2647,8 @@ naive independent 1-(1-A1)^2 = 0.99985939
 series MTBF pump+starter+RTU: 1250 h
 ```
 
+The single pump is down about 104 hours a year. The pair with one crew is down together for about 148 minutes a year, roughly twice what the naive formula suggests, because the second failure can arrive while the crew is still repairing the first. The series figure shows the control chain's weakness: pump, starter and RTU together have a mean time between failures of 1,250 hours, shorter than any one of them alone. Repair capacity, not pump quality, drives the difference.
+
 ### 32.6 Common errors and limits
 
 - Independent-repair formulas with one crew.
@@ -2592,6 +2656,8 @@ series MTBF pump+starter+RTU: 1250 h
 - Ignoring common causes (shared starter panel, shared power).
 - Reliability numbers presented as protection against deliberate attack.
 - Vendor MTBF figures used without knowing their test conditions.
+
+For PS4 the first error halves the predicted downtime, and the third ignores that both pumps share one starter panel and one feeder. Vendor MTBF figures for the RTU should be checked against LRWA's own maintenance records before they enter the dossier, and none of these numbers says anything about an attacker who stops both pumps deliberately.
 
 ### Exercises — chapter 32
 
@@ -2631,6 +2697,8 @@ A safety instrumented system (SIS) takes a process to a safe state when a hazard
 
 [NIST SP 800-160 Vol. 2 Rev. 1](https://doi.org/10.6028/NIST.SP.800-160v2r1) frames cyber resiliency around the goals to anticipate, withstand, recover and adapt, with techniques such as diversity, segmentation, redundancy, non-persistence and adaptive response. [Haimes (2009)](https://doi.org/10.1111/j.1539-6924.2009.01216.x) argues that resilience must be defined relative to specific threats and system states. Engineering resilience means: design degraded modes (Chapter 22), keep capacity and buffers (storage, batteries, spares), make recovery fast and practised (Chapter 47), and learn after events.
 
+For LRWA, the hospital tank, cabinet batteries and 72 hours of local automatic operation are buffers; the recovery trial is practice.
+
 ### 33.4 Worked example: STPA on Hollin Hill level control (synthetic)
 
 Loss L1: hospital without water; L2: reservoir overflow and flooding. Hazards: H1 level below floor while demand continues; H2 level above overflow. Control structure: SCADA operator → PI controller (PS3 pump speed) → pump → reservoir; feedback via level transmitter. UCAs: UCA1 "controller reduces inflow when level is low" (provided when unsafe → H1); UCA2 "operator does not intervene when level falls" (not provided → H1); UCA3 "controller increases inflow when level is high" (→ H2). Scenario for UCA1: the controller's process model believes the level is high because the level feedback is falsified (Lab 7). Scenario for UCA2: operator's display shows the same falsified level. Constraints: independent level measurement with alarm (EX034); hard-wired high-level pump trip for H2; low-level alarm to operator from the independent measurement. STPA arrived at the same control as the residual detector, but from the hazard rather than from the attack.
@@ -2639,12 +2707,16 @@ Loss L1: hospital without water; L2: reservoir overflow and flooding. Hazards: H
 
 Extend §33.4 with the dosing loop: losses, hazards, control structure, at least four UCAs (one of each type) and one loss scenario each, one of them adversarial.
 
+Start with losses such as harm to consumers from overdosing or underdosing, and hazards such as residual chlorine outside its limits. Draw the control structure: the operator, the dosing controller, the dosing pump and the analyser that feeds back the residual. Use the controller-side bounds and the independent analyser alarm from TMRP's dosing controls when you derive constraints, and make your adversarial scenario one in which the controller's feedback is falsified.
+
 ### 33.6 Common errors and limits
 
 - Hazard analysis that ignores adversaries, or security analysis that ignores hazards.
 - SIS "independence" with shared engineering workstation or network.
 - Resilience defined as "uptime".
 - STPA reduced to a checklist without a control structure.
+
+EX066 shows the second error at Fenwick, where the chlorine gas shutdown system shares the engineering workstation and network switch with the process controllers. TMRP's analysis of Hollin Hill avoids the first error by including the falsified level feedback as a loss scenario alongside random faults, and treats resilience as service delivered over time rather than server uptime.
 
 ### Exercises — chapter 33
 
@@ -2676,17 +2748,25 @@ After this chapter you can (1) plan system integration incrementally with interf
 
 Integrate in small increments with interface tests at each step: gateway with RTU; gateway with SCADA; SCADA with historian replica; monitoring sensors with the log collector. Each step uses the interface control document (Chapter 16) as its test specification. When an integration test fails, the interface specification tells you which side is wrong — or reveals that the specification was ambiguous.
 
+TMRP's order follows the interface control documents: gateway with RTU at PS2 first, then gateway with SCADA, then the DMZ replica.
+
 ### 34.2 Emergent behaviour
 
 Combining correct components can produce incorrect systems. Examples: an authentication gateway that buffers messages during link loss and then releases a burst on reconnection, flooding the SCADA poller; failover of the SCADA pair that resets replay counters; an anomaly detector that flags every gateway retransmission as an attack. Integration testing must include whole-system scenarios — link loss and recovery, failover, maintenance mode — not only interface conformance.
+
+TMRP met the first example in integration testing, as the worked example below describes. Each needs a scenario test.
 
 ### 34.3 Operations integration
 
 A control is not integrated until operations can use it: alarms with clear meaning, priority and response procedures; dashboards that show security state alongside process state; playbooks linking security alarms to operational decisions (switch to local manual? call the duty manager?); and training. Alarm management practice — rationalising alarms so each requires an operator action — matters because floods of meaningless alarms hide real ones.
 
+At LRWA, the playbook for an unexpected setpoint change is how gateway alarms reach operational decisions. Each new alarm is rationalised before release.
+
 ### 34.4 Organisational interfaces
 
 Infrastructure security depends on organisations you do not control: the LTE carrier, RTU vendor, integrator, electricity distributor, neighbouring utilities for mutual aid. Make interfaces explicit in contracts and agreements: notification duties for incidents and vulnerabilities, access conditions, support response times, and joint exercises. An incident at the carrier is your incident too.
+
+For LRWA, the LTE carrier is the clearest example, since TMRP's whole field conduit runs over its network. The contract should set notification times and joint exercises with measurable terms.
 
 ### 34.5 Worked example: the reconnection burst (synthetic)
 
@@ -2696,6 +2776,8 @@ During integration testing, the team disconnects the LTE head-end for 30 minutes
 
 Design an integration test that combines SCADA failover with replay protection, stating the expected behaviour, the observations and the pass criterion.
 
+Describe the sequence: one SCADA server fails over to its partner while gateways keep sending authenticated messages. The expected behaviour is that the receiving side continues to reject replays after failover, which means the last accepted counter for each station must be shared or persisted. Observe whether any old message is accepted and whether alarms still arrive within 60 seconds. The pass criterion is zero accepted replays and no gap in alarm delivery.
+
 ### 34.7 Common errors and limits
 
 - Integration "big bang" at the end.
@@ -2703,6 +2785,8 @@ Design an integration test that combines SCADA failover with replay protection, 
 - Security alarms without operational procedures.
 - Contracts silent on incident notification and vulnerability disclosure.
 - Treating emergent problems as one component's bug rather than an interface issue.
+
+The reconnection burst shows the second and last errors: each component passed its interface tests, yet together they delayed alarms, and the fix was an interface change, not a single bug. Integration at LRWA proceeds one interface at a time. Each step has its own interface test.
 
 ### Exercises — chapter 34
 
