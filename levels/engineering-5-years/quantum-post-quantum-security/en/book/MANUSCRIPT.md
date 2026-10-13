@@ -1560,7 +1560,7 @@ toy LWE: 2000/2000 bits decrypted correctly (noise stays below q/4)
 
 These parameters are far too small for security and leak through many routes; the lab exists only to make the algebra concrete.
 
-The result of 2000 out of 2000 follows from the bound: noise at most 128 can never cross the 832 threshold. Change `small()` to draw from −20 to 20 and rerun; the worst-case noise rises to 1,280 and failures appear. Then change it to always return 0 and solve for s from sixteen rows of A and b by Gaussian elimination, which shows that the errors carry the security.
+The result of 2000 out of 2000 follows from the bound: noise at most 128 can never cross the 832 threshold. Change `small()` to draw from −20 to 20 and rerun; the worst-case noise rises to 1,280, above the threshold, yet all 2000 bits still decrypt, because a sum of about 32 random errors rarely approaches its worst case; failures appear only with much larger errors, as Exercise EX047 shows. Then change it to always return 0 and solve for s from sixteen rows of A and b by Gaussian elimination, which shows that the errors carry the security.
 
 ### 24.4 From toy to ML-KEM
 
@@ -1926,9 +1926,9 @@ A common inflation is to drop hard-to-inventory devices from the asset list, whi
 
 ### 29.5 Worked example
 
-BPA's first CBOM report: 412 assets, coverage 82%, unknown 18%, 311 vulnerable uses, hybrid negotiation 0% (before rollout). After six months: coverage 94%, unknown 6%, hybrid negotiation 64% of edge connections, vulnerable uses on long-lived data reduced from 37 flows to 12.
+BPA's first CBOM report: 412 assets, coverage 82%, unknown 18%, 311 vulnerable uses, hybrid negotiation 0% (before rollout). After six months: coverage 94%, unknown 6%, hybrid negotiation 64% of edge connections, vulnerable uses on long-lived data reduced from 37 flows to 8.
 
-The figures tell a consistent story: coverage rose as unknowns fell, and the reduction from 37 exposed flows to 12 reflects the four-gateway change found by the model. Hybrid negotiation at 64% of edge connections rather than 100% is expected, because old scanners and some partner clients do not offer the hybrid group; the report lists them as known exceptions with replacement dates.
+The figures tell a consistent story: coverage rose as unknowns fell, and the reduction from 37 exposed flows to 8 reflects the four-gateway change, which removed 29 of them found by the model. Hybrid negotiation at 64% of edge connections rather than 100% is expected, because old scanners and some partner clients do not offer the hybrid group; the report lists them as known exceptions with replacement dates.
 
 ### 29.6 Common errors and limits
 
