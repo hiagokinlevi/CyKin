@@ -1894,7 +1894,7 @@ Each variant gets a clear name and severity. 'Portal stuffing attempts' is low a
 
 ### Worked example
 
-Amara presents the results to Paolo as a table of variants, with a recommendation: page on "threshold 5 with success", queue "threshold 5 without success" for daytime review. The missed 10:10 attack window had no success, so the paging rule correctly stayed quiet — the attacker had not yet got in.
+Amara presents the results to Paolo as a table of variants, with a recommendation: page on "threshold 5 with success", queue "threshold 5 without success" for daytime review. The missed 10:10 attack window had no success, so the paging rule correctly stayed quiet — the attacker had not yet got in. This moves the paging threshold back from the 6 that the earlier tuning loop settled on to 5. That loop tuned the failures-only rule, where raising the threshold was the only way to cut false alerts. Once the success clause is added, it removes the false alerts by itself: on the lab windows, threshold 5 with a success has no false alerts and catches two attack windows, while 6 catches only one. Keeping 6 would lose detection and gain nothing.
 
 > **Synthetic case.** Windows and labels come from the lab script.
 
