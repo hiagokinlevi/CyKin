@@ -1382,21 +1382,31 @@ You will be able to (1) apply purpose limitation, data minimization and storage 
 
 Data-protection law in many jurisdictions shares core principles. The EU General Data Protection Regulation (GDPR), Article 5, lists lawfulness, fairness and transparency; **purpose limitation**; **data minimization** ("adequate, relevant and limited to what is necessary"); accuracy; **storage limitation**; integrity and confidentiality; and accountability. Brazil's LGPD (Law 13.709/2018) and other laws use similar ideas. Security and incident handling is usually a legitimate purpose, but it does not license unlimited collection.
 
+In the phishing case these principles become concrete questions: does answering which staff entered credentials require home addresses? It does not, so they are not copied.
+
 ### 14.2 Incident records contain personal data
 
 Sign-in logs contain user names and addresses; mail logs contain correspondents; screenshots contain whatever was on screen. Incident records are themselves a privacy risk: they gather sensitive data from many systems into one place, often with weaker access controls.
+
+The phishing case bundle shows how quickly this happens: a directory export with home addresses, a month of sign-ins for 400 staff and inbox screenshots, gathered in one folder for a question about 12 recipients. Treat the case folder as a sensitive system in its own right, with named access, an owner and a deletion date, rather than as a scratch area that anyone on the team can browse.
 
 ### 14.3 Minimization in practice
 
 Collect what the question needs. Prefer metadata over content, samples over full exports, pseudonyms over names in working analyses, and aggregate counts in reports. Keep a mapping table (pseudonym → identity) separately with tighter access. Minimization must not destroy evidence: preserve originals under restricted access when there is a legitimate need, and work on minimized copies.
 
+In the phishing case, the filter to 12 recipients and 48 hours answers the question while excluding almost all of the 400 staff.  Screenshots are redacted before analysis, and recipients appear only as pseudonyms in the workbook. The full export, if kept at all, sits under restricted access with a reason recorded.
+
 ### 14.4 Retention
 
 Decide how long case data is kept and why: legal holds may require longer retention for specific records; otherwise delete or anonymize on schedule. Record the decision.
 
+For the phishing case, the decision might read: analysis workbook kept until the case closes plus a stated review period, mapping table deleted at the same time, original sign-in export retained only if the privacy office places a hold. Each item has its own reason and date. Record who made the decision, because a later reviewer will ask why data still exists or why it is gone. A retention rule that nobody owns tends to become keep forever, which quietly turns an old incident into a new privacy risk.
+
 ### 14.5 Access and rights interfaces
 
 Limit case access to roles that need it. People have rights (access, correction, erasure in some cases) that may apply to incident records; requests should be routed to the privacy office, which knows the exemptions and deadlines. The responder's job is to make the data findable and to flag sensitive content, not to answer legal questions.
+
+Keep the case folder's access list short and review it at closure. In the phishing case, only the case lead holds the mapping from P01 to P12 back to names, so analysts work on pseudonyms by default.
 
 ### 14.6 Worked example (synthetic): a minimized case record
 
@@ -1413,6 +1423,10 @@ Minimized record: sign-in logs filtered to the 12 recipients and the 48 hours af
 - Pseudonymizing but storing the key beside the data.
 - Treating privacy as a final review step instead of a design input.
 - This chapter is not legal advice; laws differ and change.
+
+- Keeping the pseudonym mapping after the case closes, which preserves re-identification long after the need has passed.
+- Forgetting that a filtered extract can still identify people, for example when one of the 12 recipients is the only member of a small department.
+- Answering a person's access request yourself instead of routing it to the privacy office.
 
 ### Exercises — chapter 14
 
@@ -1448,21 +1462,31 @@ You will be able to (1) trace a measure's provenance through its chain of transf
 
 A **measure** is a defined procedure that turns records into a number: "median minutes from case creation to first analyst action, over cases created in the period". The definition includes the population, the start and end events, the aggregation, and rules for missing values. Changing any of these changes the number. A dashboard label ("time to respond") is not a definition.
 
+The Harbourline claim in the lab shows why: "median time to contain" changes from an improvement to a possible deterioration depending on one rule, how cases without a recorded containment time are treated.
+
 ### 15.2 Chain of transformations
 
 Between raw records and the reported number there are steps: export, filter, join, normalize, compute, round. Each can introduce error or bias. Writing the chain down — ideally as a script — is what makes a measure auditable. This is the same provenance idea as Chapter 8, applied to metrics.
+
+For the Lab 15 claim the chain would read: export cases from the ticketing system, keep those with a containment time, subtract detection time, take the median per period, round to half an hour. Writing it out shows at once that the second step quietly removes six of the twelve cases after the change. A chain kept as a script can be rerun when the source data is corrected, so the number and its method stay together.
 
 ### 15.3 Denominators
 
 Rates and averages depend on which cases are counted. Common hidden denominators: only closed cases (excludes long-running ones), only cases with all timestamps (excludes messy ones, which may be the hard ones), only cases in one queue. Always ask: *of how many, out of how many eligible?*
 
+Lab 15 shows the effect: the median over recorded cases after the playbook uses six cases, not twelve. A reader told "median fell" deserves to know that half the eligible cases are absent from the calculation and that their absence may not be random.
+
 ### 15.4 Clocks
 
 Different systems have different clocks. Even with time synchronization (the Network Time Protocol is specified in RFC 5905), offsets, time-zone handling and manual entry create discrepancies. A case-management system may record when a ticket was *entered*, not when the event was *detected*. Measures that subtract timestamps from different systems inherit both systems' errors.
 
+Exercise EX045 shows how these errors stack: a synchronized SIEM detection time minus a hand-typed containment time in local time can be off by three hours if the zone is mishandled, plus rounding and entry delay. Prefer end events recorded automatically by the system that acted.
+
 ### 15.5 Missingness
 
 Missing values are rarely random. If "time contained" is blank mainly for cases that were never really contained, a mean over non-blank values flatters the team. Report the number missing and test how the conclusion changes under plausible assumptions about them (a simple bound: what if all missing cases took as long as the slowest observed?).
+
+In Lab 15 the missing share rises from two of ten cases to six of twelve after the playbook change, a shift too large to ignore. A plausible cause is a form change that moved the field, but that is a hypothesis to check with the people who fill it in. Recovering missing values from another source beats any bound.
 
 ### 15.6 Worked example and lab (synthetic): "response time improved"
 
@@ -1503,6 +1527,10 @@ Interpretation: the claim uses only recorded cases. After the playbook, half the
 - Subtracting timestamps from systems with unknown clock offsets.
 - Bounds are not estimates: the 24-hour fill shows how far the answer *could* move, not what happened.
 
+- Reading the missing-value rate as a data-entry nuisance rather than a possible signal about the process being measured.
+- Choosing a bound after seeing which value supports the preferred conclusion.
+- Reporting a single figure such as five and a half hours without the period, population and definition that produced it.
+
 ### Exercises — chapter 15
 
 Attempt each exercise before opening the [worked results](#worked-results). Every case, organization, person, address and number in an exercise is synthetic unless a cited public source is named.
@@ -1537,21 +1565,31 @@ You will be able to (1) identify trust boundaries and control points in an archi
 
 A **trust boundary** is where data or control passes between components with different levels of trust: internet to proxy, user device to application, application to database, one tenant to another. Boundaries are natural **control points**: places to authenticate, authorize, filter, log and — during an incident — block. An architecture with few, well-defined boundaries is easier to defend and to investigate than one where everything talks to everything.
 
+In Design B for the appointment service, the proxy sits on the boundary between staff devices and the API, so it can block a session, rate-limit bulk exports and stamp each request with an identifier. Design A has no comparable point between the clinic network and the application.
+
 ### 16.2 Separation and least privilege
 
 **Separation** limits what a compromise can reach: separate administrative accounts from daily accounts, production from test, one service's credentials from another's. **Least privilege** grants each principal only what it needs. Both reduce **blast radius** — the set of assets affected if one component is compromised — which you can compute with the reachability method of Chapter 6.
+
+In Design B, the API's search function uses a read-only database role, so a stolen staff credential used through search cannot alter appointments; in Design A, the single full-rights account means any route into the application can change everything. Separate administrator accounts in B add a second barrier: phishing a daily account does not hand over administration.
 
 ### 16.3 Logging as an architectural property
 
 Visibility is designed, not added. Ask at each boundary: what is logged, with which identifiers, where are logs stored, who can delete them, and how long are they kept? Logs stored on the same host as the application share its fate; logs forwarded to a separate, append-only store survive host compromise. Consistent identifiers (request IDs passed from proxy to API to database) make cross-component timelines possible.
 
+Design A keeps logs on the application's own disk, so an attacker who gains control of the host can edit them; Design B forwards them to a separate write-once store.
+
 ### 16.4 Resilience
 
 **Resilience** is the ability to continue essential functions during disruption and recover afterwards. Architectural features include redundancy across failure domains, graceful degradation (read-only mode, paper fallback), isolated and tested backups, and the ability to cut a component off without stopping everything. NIST SP 800-184 discusses recovery planning; NIST SP 800-160 Vol. 2 addresses cyber-resiliency engineering at greater depth.
 
+Design B's read-only mode is an example of graceful degradation: during an investigation of altered appointments, staff can still look up bookings while writes are paused. Design A offers only running or stopped. Resilience features need rehearsal, because a read-only switch that nobody has used may fail when needed.
+
 ### 16.5 Threat models
 
 A **threat model** states who might attack, with what capabilities, against which assets. Comparing architectures is meaningless without one: a design that resists a remote attacker may be weak against a malicious administrator.
+
+Write the threat model in one or two sentences before comparing designs. The appointment-service comparison assumes a remote attacker holding one stolen staff credential; under that model Design B's per-function roles and proxy limits matter most. Under a different model, such as a malicious database administrator, the comparison shifts, which is the point of the exercise on changing the threat model. A design is only better against someone in particular, so name who.
 
 ### 16.6 Worked example (synthetic): two appointment-service architectures
 
@@ -1573,6 +1611,10 @@ Comparison:
 - Storing logs where the attacker can reach them.
 - Assuming segmentation exists because a diagram shows it; verify with configuration evidence.
 - Overlooking operational cost: an unmaintained control gives false assurance.
+
+- Copying a design from another organization without checking that its threat model matches yours.
+- Treating a read-only mode or proxy block as available during an incident when nobody has ever tested it.
+- Measuring blast radius from documented permissions only, missing the indirect paths that reachability analysis reveals.
 
 ### Exercises — chapter 16
 
@@ -1614,13 +1656,19 @@ What a hash proves: that a file now is bit-for-bit identical to the file that wa
 
 A **digital signature** uses a private key to sign data (usually its hash); anyone with the public key can verify it. A valid signature proves that someone holding the private key signed exactly that data. It does not prove who held the key, unless key custody is documented, nor when signing happened, unless a trusted timestamp is attached (RFC 3161 defines a time-stamp protocol).
 
+For the contractor's evidence, a signature on the manifest would show that a key holder signed those digests, but not which person, unless the contractor documents who controls the key.
+
 ### 17.3 Confidentiality and authenticity
 
 Encryption provides **confidentiality** (only key holders can read). Authenticity and integrity come from signatures or message authentication codes. Encryption without authentication can allow undetected tampering; modern protocols (TLS 1.3, authenticated encryption modes) provide both.
 
+A ZIP sent over an encrypted channel is protected from reading in transit, but the encryption alone does not tell the recipient that nobody altered it; only an authentication step does. For the contractor's delivery, encryption would keep the logs private while travelling, and a separately transmitted digest or a signature would be needed to show they arrived unchanged.
+
 ### 17.4 Evidence integrity in practice
 
 An **evidence manifest** lists items with identifiers, digests, sizes, collection time, collector, method and storage location. The cryptographic part (digests) is strong; the procedural part (who, when, how) is what gives the digests meaning. A manifest's own integrity can be protected by signing it or storing it in a write-once system.
+
+The contractor example shows the gap: the digests matched, but collection method, collector and time were missing, and the manifest travelled in the same ZIP as the files. Record the digest in the case system at collection time, so an independent copy exists from the start.
 
 ### 17.5 Worked example (synthetic): a manifest without provenance
 
@@ -1636,6 +1684,10 @@ Additional records needed: the collection method and query used for each file; c
 - Storing digests alongside the data they protect, with no independent copy.
 - Using MD5/SHA-1 where adversarial collision matters.
 - Confusing encryption with integrity.
+
+- Hashing a file after it has been opened, converted or moved between operating systems, so the digest describes a changed copy.
+- Accepting a manifest that arrived in the same package as the files it describes as independent proof.
+- Assuming a signature shows when something was signed without a trusted timestamp.
 
 ### Exercises — chapter 17
 
@@ -1671,25 +1723,37 @@ You will be able to (1) turn a practical question into a research question with 
 
 "Is playbook B better?" is not yet answerable. A research question names the **population** (which cases), the **intervention** and **comparison** (playbook B vs playbook A), the **outcome** (for example correct containment decision within 30 minutes) and the **setting** (simulated cases, trained student analysts). Each element limits what the result will mean.
 
+Writing the elements out also exposes disagreement early. A manager asking whether playbook B is better may mean faster triage; an instructor may mean more correct escalations. The study in the worked example chooses correct escalation decisions as its main outcome and time per case as secondary, and says so before any data is collected.
+
 ### 18.2 Variables
 
 The **independent variable** is what you vary (playbook). The **dependent variable** is what you measure (decision correctness, time). **Confounders** affect both assignment and outcome (analyst experience, case difficulty). **Control variables** are held constant or measured and adjusted for.
+
+In the playbook study, the independent variable is the playbook, the dependent variable is the proportion of correct escalations, and analyst ability and case difficulty are confounders. Ability is handled by having every analyst use both playbooks; difficulty is handled by matching two sets of cases in a pilot. Naming each variable this way makes clear which threat each design choice is meant to address.
 
 ### 18.3 Baselines and comparisons
 
 Without a baseline you cannot say "better". The comparison can be between groups (some analysts use A, others B), within subjects (each analyst uses both, on different but matched cases, in balanced order) or before/after (weakest, because other things change over time). **Randomization** of assignment is the strongest protection against confounding that you cannot measure.
 
+The playbook study chooses a within-subjects comparison with counterbalanced order, so each of the 24 analysts acts as their own baseline.  Comparing each analyst's results with both playbooks removes differences in ability from the comparison, while the balanced order spreads any learning effect evenly across A and B.
+
 ### 18.4 Validity
 
 **Internal validity**: does the design support the causal claim within the study? Threats: confounding, learning effects, unequal case difficulty, measurement differences. **Construct validity**: does "correct decision" measure what matters? **External validity**: would results hold for real incidents, experienced staff, other organizations? Simulated cases help internal validity and hurt external validity; say so.
+
+The playbook study states its own threats openly: student analysts limit external validity, the instructors' reference answers may be imperfect, and being observed may change behaviour. Listing them does not weaken the study; it tells a reader exactly how far the conclusion can travel and which follow-up study would extend it.
 
 ### 18.5 Reproducibility
 
 Pre-register or at least write down the question, design, outcome and analysis before collecting data; keep data and code together; record versions; publish the synthetic materials so others can repeat the study.
 
+For the playbook study, that means saving the two case sets, the reference answers set by the panel, the order assignment for each analyst and the analysis script, with dates and versions. Another instructor should be able to rerun the comparison from those files alone. Note any deviation from the written plan, such as an analyst who withdrew, and how it was handled in the analysis.
+
 ### 18.6 Ethics
 
 Studies of response work involve people (analysts) whose performance is measured, and possibly incident data about others. Use synthetic cases where possible; get informed consent; ensure results cannot be used to evaluate individuals; obtain review from an ethics committee where your institution requires it. The Menlo Report (Chapter 10) adapts research-ethics principles to ICT.
+
+In the playbook study, results for individual analysts must not reach anyone grading them, and any analyst may withdraw without consequence.  Consent forms should explain what is recorded, who sees it and how long it is kept. Where the analysts are students on a course, keep the study separate from assessment so that taking part, or declining, cannot affect a mark.
 
 ### 18.7 Worked example (synthetic): comparing two triage playbooks
 
@@ -1707,6 +1771,10 @@ Defensible conclusion if B scores higher: "In this simulation with student analy
 - Defining "correct" after seeing results.
 - Using the same people to design cases, train analysts and score answers.
 - Overgeneralizing from simulations or small samples.
+
+- Building matched case sets but never checking in a pilot that they really are equally difficult.
+- Measuring only the outcome that the preferred option is expected to win.
+- Dropping participants who withdrew without reporting how many and why, which can bias the comparison in either direction.  A further limit: a significant difference in a simulation answers only the narrow question asked.
 
 ### Exercises — chapter 18
 
