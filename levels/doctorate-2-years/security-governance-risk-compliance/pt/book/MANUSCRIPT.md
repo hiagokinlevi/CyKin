@@ -100,6 +100,10 @@ O pré-registro não elimina todo viés. O kappa depende da frequência com que 
 - **EX006 — Kappa de base.** Que kappa os dois avaliadores alcançaram? *Rubrica:* 3 = 0,19, concordância leve;; 2 = 0,19;; 1 = 0,62;; 0 = nenhuma.
 - **EX007 — Sentido da linha de base.** Por que a baixa concordância importa para o registro? *Rubrica:* 3 = as prioridades podem depender de quem classificou o risco;; 2 = efeito do avaliador;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A pesquisa de doutorado em GRC começa com uma pergunta falseável, regras de integridade rigorosas e uma linha de base medida.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Governança, riscos e compliance de segurança: a fronteira da pesquisa
@@ -143,6 +147,10 @@ Mapas da literatura envelhecem depressa. Relatos da prática podem ser seletivos
 - **EX012 — Lacuna definida.** Que lacuna Amara estuda? *Rubrica:* 3 = evidência de campo comparando matrizes e quantificação calibrada;; 2 = evidência de campo;; 1 = nada;; 0 = nenhuma.
 - **EX013 — Pedido da orientadora.** O que a Profa. Delgado pediu que Amara declarasse? *Rubrica:* 3 = que efeitos o desenho não consegue detectar;; 2 = limites;; 1 = nada;; 0 = nenhuma.
 - **EX014 — Tipos de evidência.** Por que Amara classifica a literatura pelo tipo de sustentação? *Rubrica:* 3 = modelos, experimentos e relatos da prática sustentam afirmações de modo diferente;; 2 = força da evidência;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A fronteira mostra argumentação forte, mas poucas evidências de campo, o que define uma lacuna precisa.
 
 <a id="ch-03"></a>
 
@@ -216,6 +224,10 @@ Modelos pequenos ilustram, não provam. Painéis de referência podem compartilh
 - **EX019 — Mitigação do painel.** Como se mitiga o viés do painel de referência? *Rubrica:* 3 = três membros independentes no painel;; 2 = três;; 1 = nada;; 0 = nenhuma.
 - **EX020 — Acordo de participação.** O que Amara combinou por escrito com a Corvane? *Rubrica:* 3 = um nível mínimo de participação;; 2 = participação;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Uma proposta forte define resultados mensuráveis e mostra, com um modelo, por que a pergunta importa.
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Replicação da linha de base e piloto
@@ -284,6 +296,10 @@ As simulações dependem dos intervalos de entrada. Os ganhos do piloto podem n�
 - **EX025 — Calibração no piloto.** Como as taxas de acerto dos intervalos mudaram com o treinamento? *Rubrica:* 3 = de cerca de metade para cerca de oito em dez;; 2 = melhoraram;; 1 = nada;; 0 = nenhuma.
 - **EX026 — Desfechos inalterados.** O que Amara manteve inalterado ao emendar o protocolo? *Rubrica:* 3 = os desfechos primários pré-registrados;; 2 = desfechos primários;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Replicação, pilotagem e emendas registradas preparam um estudo principal sólido.
+
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Estudo principal e validação independente
@@ -347,6 +363,10 @@ Trinta eventos geram incerteza ampla. Os avaliadores podem trocar informações 
 - **EX031 — Efeito dos empates.** Por que os empates importam no grupo da matriz? *Rubrica:* 3 = obrigam ao julgamento informal, onde a inconsistência entra;; 2 = empates;; 1 = nada;; 0 = nenhuma.
 - **EX032 — Resultado da replicação.** O que mostrou o estudo da segunda autoridade? *Rubrica:* 3 = mesma direção, diferenças menores;; 2 = replicação parcial;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Um estudo randomizado com validação independente sustenta uma vantagem modesta, apresentada com honestidade.
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Crítica por pares e revisão
@@ -389,6 +409,10 @@ Estudos com conselhos são pequenos. O reenquadramento pode enfraquecer demais a
 - **EX036 — Resultado do bootstrap.** O que mostrou o intervalo bootstrap para a diferença de Brier? *Rubrica:* 3 = que ele inclui o zero;; 2 = incerto;; 1 = significativo;; 0 = nenhuma.
 - **EX037 — Preferência do conselho.** Que apresentação a maioria dos conselheiros preferiu? *Rubrica:* 3 = gráficos de excedência de perda depois de explicados;; 2 = excedência;; 1 = matriz;; 0 = nenhuma.
 - **EX038 — Contribuição reenquadrada.** Como Amara reenquadrou sua contribuição? *Rubrica:* 3 = evidência sobre trade-offs, não um veredito;; 2 = trade-offs;; 1 = superioridade;; 0 = nenhuma.
+
+### Síntese
+
+A crítica ordenada por tipo leva a afirmações mais precisas e a uma contribuição mais útil.
 
 <a id="ch-07"></a>
 
@@ -453,6 +477,10 @@ Os digests provam integridade, não correção. O contexto ainda pode identifica
 - **EX043 — Fonte da terminologia.** Os termos de que norma Amara usa para critérios de risco e tratamento? *Rubrica:* 3 = ISO 31000:2018;; 2 = ISO 31000;; 1 = COBIT;; 0 = nenhuma.
 - **EX044 — Rastreio de afirmações.** Como Amara testou a coerência? *Rubrica:* 3 = um colega doutorando rastreou três afirmações ao acaso;; 2 = rastreio;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Uma tese coerente é rastreável, reproduzível e cuidadosa com a confidencialidade dos parceiros.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Defesa e plano de publicação
@@ -495,6 +523,10 @@ Os examinadores têm suas próprias visões. Publicar leva tempo.
 - **EX048 — Salvaguarda contra o mau uso.** O que protege contra uma avaliação de riscos movida por interesses? *Rubrica:* 3 = governança com intervalos, premissas registradas e revisão independente;; 2 = governança;; 1 = escolha do método;; 0 = nenhuma.
 - **EX049 — Resultado da defesa.** Qual foi o resultado da defesa? *Rubrica:* 3 = aprovação com correções menores;; 2 = aprovação;; 1 = nada;; 0 = nenhuma.
 - **EX050 — Recurso compartilhado.** O que Amara vai compartilhar com outras organizações? *Rubrica:* 3 = o conjunto de cenários sintéticos;; 2 = cenários;; 1 = dados reais;; 0 = nenhuma.
+
+### Síntese
+
+Uma defesa testa raciocínio, ética e valor prático, e a publicação amplia a contribuição.
 
 <a id="worked-results"></a>
 

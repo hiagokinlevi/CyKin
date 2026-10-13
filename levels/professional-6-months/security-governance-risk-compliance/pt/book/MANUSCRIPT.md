@@ -71,6 +71,10 @@ O enquadramento de negócio pode simplificar demais a tecnologia. As listas de a
 - **EX004 — Lacunas de governança.** Cite duas lacunas de governança que Lena identificou. *Rubrica:* 3 = controles não testados e decisões de risco informais;; 2 = lacunas;; 1 = nada;; 0 = nenhuma.
 - **EX005 — Força do compliance.** Por que a experiência de Lena em compliance é útil? *Rubrica:* 3 = sua disciplina é uma base sólida;; 2 = disciplina;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Fundamentos de segurança enquadrados em termos de negócio mostram onde a governança agrega valor.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Governança, riscos e compliance de segurança: contexto de serviços e partes interessadas
@@ -108,6 +112,10 @@ As visões das partes interessadas mudam. As declarações de finalidade podem s
 - **EX008 — Benefício do mapeamento.** O que o mapeamento das expectativas para as evidências revela? *Rubrica:* 3 = expectativas que a Marston ainda não consegue mostrar que atende;; 2 = lacunas;; 1 = nada;; 0 = nenhuma.
 - **EX009 — Finalidade do programa.** Qual é a finalidade do programa de GRC da Marston? *Rubrica:* 3 = manter o risco dentro do apetite, cumprir as obrigações, dar evidências confiáveis;; 2 = finalidade;; 1 = nada;; 0 = nenhuma.
 - **EX010 — Resultado de sucesso.** Cite um resultado mensurável que Lena acrescentou. *Rubrica:* 3 = nenhum achado alto em atraso;; 2 = resultado;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+O contexto das partes interessadas define o que o programa de GRC precisa alcançar e evidenciar.
 
 <a id="ch-03"></a>
 
@@ -147,6 +155,10 @@ A independência é relativa em equipes pequenas. O manuseio de evidências toma
 - **EX014 — Conflito encontrado.** Que conflito Lena tinha? *Rubrica:* 3 = avaliar procedimentos que ela mesma escreveu;; 2 = autorrevisão;; 1 = nada;; 0 = nenhuma.
 - **EX015 — Resposta ao conflito.** Como Lena geriu o conflito? *Rubrica:* 3 = declarou-o e pediu a uma colega que revisasse;; 2 = declarar;; 1 = ignorar;; 0 = nenhuma.
 
+### Síntese
+
+Uma prática autorizada, segura e independente torna as evidências de GRC confiáveis.
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Governança, riscos e compliance de segurança: métodos centrais
@@ -184,6 +196,10 @@ As oficinas dependem de quem participa. As declarações de apetite podem ser va
 - **EX018 — Tolerância a indisponibilidades.** Quando as indisponibilidades do aplicativo ficam dentro do apetite? *Rubrica:* 3 = se recuperadas em até quatro horas;; 2 = 4 horas;; 1 = nada;; 0 = nenhuma.
 - **EX019 — Tratamento da tomada de conta.** Que tratamentos foram escolhidos para a tomada de conta? *Rubrica:* 3 = autenticação mais forte para novos favorecidos e monitoramento de transações;; 2 = dois;; 1 = nada;; 0 = nenhuma.
 - **EX020 — Registro das decisões.** Por que registrar as decisões de tratamento? *Rubrica:* 3 = para mostrar que os riscos foram geridos de forma deliberada;; 2 = evidência;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Um processo estabelecido e ligado ao apetite transforma a análise de risco em decisões registradas.
 
 <a id="ch-05"></a>
 
@@ -243,6 +259,10 @@ Amostras pequenas de controles. Os revisores podem ser rigorosos demais.
 - **EX024 — Causa nos fornecedores.** Por que os donos da gestão de fornecedores superestimaram seus controles? *Rubrica:* 3 = os contratos tinham cláusulas, mas ninguém verificava o cumprimento;; 2 = suposição;; 1 = nada;; 0 = nenhuma.
 - **EX025 — Recomendação.** O que Lena recomendou? *Rubrica:* 3 = definições de notas baseadas em evidências e revisão focada nas maiores diferenças;; 2 = duas;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A autoavaliação engaja os donos, mas a revisão independente mostra onde o otimismo esconde fraquezas.
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Governança, riscos e compliance de segurança: fluxo operacional
@@ -280,6 +300,10 @@ As metas podem estimular encerramentos falsos. Os comitês podem não agir.
 - **EX028 — Correções longas.** Como tratar um achado alto que exige a substituição de um sistema? *Rubrica:* 3 = medida provisória e plano mais longo acordado;; 2 = provisória;; 1 = nada;; 0 = nenhuma.
 - **EX029 — Abertura do relatório.** Por onde começa o relatório de Lena? *Rubrica:* 3 = pelos achados altos em atraso;; 2 = atrasados;; 1 = nada;; 0 = nenhuma.
 - **EX030 — Caminho de escalonamento.** Para onde os achados em atraso são escalados? *Rubrica:* 3 = para o executivo a quem o dono responde;; 2 = executivo;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Um fluxo de achados com metas realistas e relatórios focados em ações mantém a correção em andamento.
 
 <a id="ch-07"></a>
 
@@ -336,6 +360,10 @@ A amostragem aleatória deixa passar abusos direcionados. Os logs podem estar in
 - **EX034 — Verificação feita.** O que Lena verificou em cada pagamento? *Rubrica:* 3 = um segundo fator bem-sucedido antes do pagamento, no log;; 2 = verificação do log;; 1 = nada;; 0 = nenhuma.
 - **EX035 — Limites do teste.** Cite um limite da conclusão. *Rubrica:* 3 = cobre só o canal do aplicativo;; 2 = escopo;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Amostras dimensionadas sustentam conclusões delimitadas e claramente limitadas sobre a operação dos controles.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Governança, riscos e compliance de segurança: análise de caso supervisionada
@@ -374,6 +402,10 @@ Casos isolados podem não se generalizar. A visão retrospectiva faz as falhas p
 - **EX039 — Acompanhamento das exceções.** Como as exceções dos fornecedores devem ser tratadas? *Rubrica:* 3 = acompanhadas como achados;; 2 = achados;; 1 = ignoradas;; 0 = nenhuma.
 - **EX040 — Medida de sucesso.** Dê uma medida de sucesso que Lena propôs. *Rubrica:* 3 = proporção de fornecedores críticos com relatórios revisados;; 2 = medida;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A análise de casos revela falhas em vários níveis e padrões relevantes para a própria organização.
+
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Comunicação, ética e relatórios
@@ -411,6 +443,10 @@ Relatórios honestos podem desgastar relações. O engajamento dos conselhos var
 - **EX043 — Enquadramento honesto.** Como Lena apresentou a fraqueza? *Rubrica:* 3 = com o plano de remediação e o progresso;; 2 = plano;; 1 = nada;; 0 = nenhuma.
 - **EX044 — Pedido de adiamento.** O que um gerente pediu a Lena? *Rubrica:* 3 = adiar o registro de um achado para depois da visita do regulador;; 2 = adiar;; 1 = nada;; 0 = nenhuma.
 - **EX045 — Ajuda na recusa.** O que Lena ofereceu em troca? *Rubrica:* 3 = ajuda para preparar um plano de remediação;; 2 = ajuda;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Um reporte honesto e focado em decisões, junto com a resistência à pressão, sustenta a confiança em GRC.
 
 <a id="ch-10"></a>
 
@@ -471,6 +507,10 @@ Números pequenos. As entrevistas podem ser defensivas.
 - **EX049 — Correção dos órfãos.** Como os achados órfãos serão evitados? *Rubrica:* 3 = reatribuição automática quando os donos saem;; 2 = reatribuir;; 1 = nada;; 0 = nenhuma.
 - **EX050 — Correção dos baixos.** Como os achados baixos devem ser tratados? *Rubrica:* 3 = revisados por trimestre, para corrigir ou aceitar formalmente;; 2 = trimestral;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Dados de envelhecimento apontam achados parados, e as conversas revelam causas distintas a corrigir.
+
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Laboratório supervisionado
@@ -509,6 +549,10 @@ Os relatórios têm escopo limitado. As bridge letters dão garantia limitada.
 - **EX054 — Controle complementar.** Que controle complementar a Marston nunca tinha executado? *Rubrica:* 3 = revisar o acesso dos próprios usuários ao portal do fornecedor;; 2 = revisão do portal;; 1 = nada;; 0 = nenhuma.
 - **EX055 — Erro comum.** Por que os controles complementares costumam ser esquecidos? *Rubrica:* 3 = as organizações supõem que o fornecedor cuida de tudo;; 2 = suposição;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A leitura crítica de relatórios de garantia encontra lacunas de escopo, exceções e deveres deixados a cargo do cliente.
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Portfólio de prática e revisão final
@@ -546,6 +590,10 @@ Os portfólios mostram trabalhos selecionados. Os planos mudam com as funções.
 - **EX058 — Questionamento da amostra.** Como Lena responderia a um regulador que questionasse o tamanho da amostra? *Rubrica:* 3 = explicaria a taxa tolerável e a confiança e se ofereceria para ampliar;; 2 = explicar;; 1 = nada;; 0 = nenhuma.
 - **EX059 — Parte mais difícil.** O que Lena achou mais difícil? *Rubrica:* 3 = resistir às pressões para suavizar relatórios mantendo as relações;; 2 = pressão;; 1 = nada;; 0 = nenhuma.
 - **EX060 — Próxima função.** Que responsabilidade Lena vai assumir em seguida? *Rubrica:* 3 = o risco de fornecedores;; 2 = risco de fornecedores;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Um portfólio de prática demonstra competência e dá direção à prática contínua de GRC.
 
 <a id="worked-results"></a>
 

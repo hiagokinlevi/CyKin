@@ -207,6 +207,10 @@ Escopos podem ser estreitos demais para mostrar as dependências reais. Uma perm
 - **EX019 — Finalidades do registro.** Declare as três finalidades do registro de atividades. *Rubrica:* 3 = repetibilidade, prova de permanência no escopo, base para decisões;; 2 = as três;; 1 = nada;; 0 = nenhuma.
 - **EX020 — Revisão do registro.** Quem revisa o log de atividades e com que frequência? *Rubrica:* 3 = o diretor de operações, mensalmente;; 2 = mensalmente;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Escopo por escrito, permissão explícita, manuseio cuidadoso dos dados, desenho seguro dos exercícios e um registro datado tornam o trabalho de governança confiável antes que qualquer achado seja feito.
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Governança, riscos e compliance de segurança: sistemas, dados e dependências
@@ -293,6 +297,10 @@ Mapas omitem ferramentas informais usadas pela equipe. As garantias dos forneced
 - **EX034 — Evidência da escala.** Que evidência é pedida para o cenário da escala? *Rubrica:* 3 = sua lista de compartilhamento;; 2 = lista de compartilhamento;; 1 = nada;; 0 = nenhuma.
 - **EX035 — Estratégia honesta.** Como os pedidos de evidência mantêm a estratégia honesta? *Rubrica:* 3 = mostram quais crenças foram verificadas e quais são premissas;; 2 = evidência;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Um mapa de dependências transforma serviços nomeados em componentes compartilhados, donos, obrigações sobre dados, verificações de fornecedores e cenários apoiados em evidências.
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Governança, riscos e compliance de segurança: laboratório guiado e síntese aplicada
@@ -375,6 +383,10 @@ Um único exercício tranquilo e anunciado superestima a prontidão real. Os tem
 - **EX048 — Novo cenário.** Que cenário entrou na estratégia a partir do mapa de dependências? *Rubrica:* 3 = falha do provedor de identidade;; 2 = identidade;; 1 = nada;; 0 = nenhuma.
 - **EX049 — Sinais mensais.** Liste os sinais revisados mensalmente. *Rubrica:* 3 = tempo de restauração, falhas de backup, mudanças privilegiadas, ações atrasadas dos donos;; 2 = os quatro;; 1 = nada;; 0 = nenhuma.
 - **EX050 — Ajustar metas.** Que tentação a equipe deve evitar depois de perder a meta por minutos? *Rubrica:* 3 = mudar a meta em vez do processo;; 2 = resistir;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Um exercício seguro e cronometrado transforma um limite de serviço presumido em evidência, em uma decisão registrada e em uma estratégia de uma página mais precisa para o próximo trimestre.
 
 ## Fontes dos capítulos 2–4
 
