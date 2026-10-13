@@ -127,6 +127,10 @@ O kappa resume a concordância, mas esconde onde está a discordância; sempre t
 
 - **EX007 — Ameaça à validade interna.** Cite a ameaça à validade interna e o remédio planejado. *Rubrica:* 3 = a habilidade das equipes confunde o efeito; randomizar as equipes;; 2 = só a ameaça;; 1 = viés genérico;; 0 = nenhuma.
 
+### Síntese
+
+Um estudo defensável sobre uso indevido de criptografia começa com um livro de códigos preciso, concordância medida entre os codificadores, regras explícitas de sobreposição e um tratamento rigoroso, aprovado pela ética, das fraquezas em sistemas em produção.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Criptografia e serviços de confiança: fronteira da pesquisa
@@ -211,6 +215,10 @@ A fórmula do aniversário é uma aproximação válida apenas para nonces aleat
 
 - **EX014 — Afirmação de escopo.** Dê uma afirmação que Nadia explicitamente se recusa a fazer. *Rubrica:* 3 = que o checklist impede todo uso indevido, ou que os resultados se transferem para empresas sem bibliotecas avaliadas;; 2 = limite vago;; 1 = sem relação;; 0 = nenhuma.
 
+### Síntese
+
+A fronteira não está em novas primitivas, mas no comportamento medido em torno delas; os limites de uso das normas transformam esse comportamento em números que um estudo de campo pode testar.
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Proposta de contribuição original
@@ -262,6 +270,10 @@ O registro não conserta uma medida de desfecho fraca, e um número pequeno de c
 - **EX019 — Conteúdo registrado.** Liste quatro itens do plano registrado. *Rubrica:* 3 = quatro entre hipóteses, desfechos, regra de inclusão, política de semente, teste de permutação, regra de atrito, definição de desvio;; 2 = três;; 1 = um ou dois;; 0 = nenhuma.
 
 - **EX020 — Item de senhas do checklist.** O que o checklist pergunta sobre o armazenamento de senhas, e que fonte o apoia? *Rubrica:* 3 = função memory-hard como o Argon2, RFC 9106;; 2 = Argon2 sem fonte;; 1 = "fazer hash das senhas";; 0 = nenhuma.
+
+### Síntese
+
+Um plano registrado com hipóteses falseáveis, um desfecho cego e definido mecanicamente e um desenho ajustado aos conglomerados disponíveis transformam uma boa pergunta num teste.
 
 <a id="ch-04"></a>
 
@@ -344,6 +356,10 @@ Uma amostra histórica de um ano pode subcontar o uso indevido que os auditores 
 - **EX025 — Achados do piloto.** Cite os três problemas que o piloto expôs. *Rubrica:* 3 = falsos positivos de nonce nos fixtures de teste, vazamento do cegamento pelos comentários de merge, pergunta ambígua sobre rotação;; 2 = dois;; 1 = um;; 0 = nenhuma.
 
 - **EX026 — Nenhum efeito de piloto.** Por que Nadia se recusa a estimar um efeito a partir do piloto? *Rubrica:* 3 = duas equipes não aleatórias em quatro semanas não conseguem estimá-lo, e um número poderia enviesar as escolhas;; 2 = pequeno demais;; 1 = esqueceu;; 0 = nenhuma.
+
+### Síntese
+
+Uma linha de base replicada estabelece expectativas realistas, e um piloto que caça falhas de procedimento, e não efeitos, torna o estudo principal confiável.
 
 <a id="ch-05"></a>
 
@@ -429,6 +445,10 @@ Um valor-p pequeno não mede quão grande ou importante é um efeito, e um estud
 
 - **EX032 — Ameaças restantes.** Cite três ameaças restantes. *Rubrica:* 3 = três entre Hawthorne, imprecisão, segredos de implantação não vistos, transferência limitada;; 2 = duas;; 1 = uma;; 0 = nenhuma.
 
+### Síntese
+
+Um teste pré-registrado, cego e randomizado por conglomerados sustenta o efeito do checklist; a reconfirmação independente e as ameaças declaradas com honestidade mantêm a afirmação proporcional.
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Crítica por pares e revisão
@@ -480,6 +500,10 @@ Análises de sensibilidade rodadas depois de abrir o cegamento são exploratóri
 - **EX037 — Estratificação futura.** Que mudança na estratificação Nadia recomendou? *Rubrica:* 3 = estratificar também pela idade do código, além da linha de produto;; 2 = estratificar mais;; 1 = randomizar indivíduos;; 0 = nenhuma.
 
 - **EX038 — Desfecho primário mantido.** Por que ela se recusou a abandonar a medida não ponderada? *Rubrica:* 3 = mudar o desfecho primário depois de abrir o cegamento viola o registro;; 2 = veio primeiro;; 1 = preferência;; 0 = nenhuma.
+
+### Síntese
+
+A leitura hostil estruturada, as verificações de sensibilidade rotuladas como exploratórias e uma carta de resposta rastreável tornam um resultado mais forte ao expor onde ele cede.
 
 <a id="ch-07"></a>
 
@@ -565,6 +589,10 @@ Um digest detecta mudanças, mas não consegue dizer se o conteúdo original era
 
 - **EX044 — Teste de divulgação.** Enuncie o teste de divulgação de Nadia e um item que não passa nele. *Rubrica:* 3 = poderia ajudar a encontrar ou explorar uma fraqueza que talvez ainda exista; as anotações dos auditores não passam;; 2 = só o teste;; 1 = só o item;; 0 = nenhuma.
 
+### Síntese
+
+Uma tese é uma única afirmação defendida capítulo por capítulo; um arquivo com hashes, documentado e cuidadosamente expurgado permite que outros a verifiquem sem expor o parceiro.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Defesa e plano de publicação
@@ -616,6 +644,10 @@ Uma defesa não se vence com certeza; afirmações além das evidências convida
 - **EX049 — Cronograma de divulgação.** Descreva a ordem de divulgação acordada. *Rubrica:* 3 = arquivo na aceitação; artigo para profissionais após a implantação completa; novos problemas primeiro pela divulgação da Meridian;; 2 = duas partes;; 1 = uma;; 0 = nenhuma.
 
 - **EX050 — Continuidade pós-quântica.** Que normas motivam o segundo estudo de continuidade, e por quê? *Rubrica:* 3 = FIPS 203, 204, 205 (ML-KEM, ML-DSA, SLH-DSA); a migração acrescenta parâmetros, chaves maiores e híbridos sujeitos a uso indevido;; 2 = só as normas;; 1 = "quântico";; 0 = nenhuma.
+
+### Síntese
+
+Uma defesa forte nomeia os limites da afirmação antes que a banca o faça, e um plano de publicação coordenado com o parceiro transforma as evidências em prática mais segura sem expor sistemas em produção.
 
 <a id="worked-results"></a>
 
