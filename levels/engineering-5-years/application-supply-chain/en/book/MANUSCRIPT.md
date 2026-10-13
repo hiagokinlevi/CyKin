@@ -2156,6 +2156,8 @@ You will (1) define security metrics for application and supply chain; (2) compu
 
 Coastline measures time to remediate findings by severity, share of builds with valid provenance, number of active exceptions, and dependency freshness (how many versions behind the latest).
 
+Each metric answers a different question. Remediation time shows how quickly known problems are fixed. Provenance coverage shows how much of what runs can be traced to reviewed source. The exception count shows how often controls are being bypassed. Freshness predicts future pain: a dependency far behind will need a large, risky upgrade when a flaw finally forces one. Metrics are chosen because someone will act on them; a number nobody can influence is dropped from the dashboard.
+
 ### Lab — Lab — remediation times
 
 ```python
@@ -2180,17 +2182,25 @@ medium   n=4 median=67.5 target=90 late=1
 
 Critical: three findings, median 5 days, one late (9 days against a 7-day target). High: five findings, median 20 days, two late (41 and 33 against 30). Medium: four findings, median 67.5 days, one late (120 against 90).
 
+The medians all sit inside their targets, yet four of twelve findings were late. A report showing only medians would suggest everything is fine. Counting late items separately reveals the cases that need attention. With only three critical findings, one extra late item would move the median sharply, which is the instability the errors note warns about. For an even count, as with the four medium findings, the median is the average of the middle two values, 60 and 75, which gives 67.5.
+
 ### 29.3 Late items
 
 The late critical item waited for a vendor patch; the late highs needed a framework upgrade that took two sprints. Measuring lateness leads to the cause, not blame.
+
+The two causes call for different actions. A vendor delay may be handled by a temporary control, such as isolating the component or disabling the affected feature, while waiting. A slow framework upgrade points to too much deferred maintenance; regular small upgrades would make the next one easier. Asking 'what made this slow?' instead of 'who was slow?' gets honest answers, because people are not afraid to describe the delay.
 
 ### 29.4 Perverse incentives
 
 If teams are rewarded only for closing fast, they may downgrade severities. Coastline reviews severity changes monthly.
 
+A finding downgraded from high to medium gains sixty days under the targets, which makes the numbers look better without making riders any safer. The monthly review checks each change against its evidence; changes need a written reason and a second person's agreement. Coastline also avoids rewarding individuals on remediation numbers, since that invites gaming. Teams are praised for honest reporting, including when the numbers look bad, because hidden problems cannot be fixed.
+
 ### 29.5 Freshness
 
 The median dependency is one minor version behind; two are more than two major versions behind and planned for replacement.
+
+Being one minor version behind usually means the team is current enough to take a security fix quickly, often with no code changes. Being two major versions behind means a fix may only be released for newer versions, forcing a large upgrade under pressure. Replacement is planned for those two while there is time, rather than waiting for an advisory to force the work. The freshness figure is reviewed monthly alongside remediation time, since the two tend to move together.
 
 ### Reading the dashboard
 
@@ -2236,6 +2246,8 @@ You will (1) write unit tests for security rules; (2) test boundaries and negati
 
 Security rules, such as who may issue a refund, are business logic that can break silently. Tests make the intended behaviour explicit and catch regressions.
 
+Refund rules mix role and amount, and a small edit can change who gets money back. Without tests, nobody notices until a fraud report or an audit. With tests, the change fails in CI within minutes and the author sees exactly which rule they altered. Tests also document the rule in a form developers read: the test names say what is allowed far more precisely than a policy document.
+
 ### Lab — Lab — refund authorisation tests
 
 ```python
@@ -2262,17 +2274,25 @@ tests run: 4 failures: 0 errors: 0
 
 Four tests run and all pass: a rider cannot refund, an agent can refund 50 but not 51, a supervisor can refund 500. The 50/51 pair tests the boundary exactly.
 
+The test runner's output is captured in a string buffer, so the lab prints only the summary line. A real CI run shows each test name, which helps when one fails. The function relies on Python's operator precedence, where 'and' binds more tightly than 'or'; the tests confirm that the expression means what the author intended. Adding parentheses would make that intent clearer to a reader.
+
 ### 30.3 Negative cases
 
 Tests that check something is refused are as important as tests that check something is allowed. Two of the four lab tests are negative.
+
+Many authorisation bugs are about allowing too much, and positive tests never catch them: a function that returns True for everyone passes every 'is allowed' test. The rider test and the agent-large test would both fail in that case. Kwame aims for at least one refused case for every allowed one, covering wrong role, wrong amount and missing values.
 
 ### 30.4 In CI
 
 The tests run on every change; a failure blocks merging. Coverage reports show which authorisation branches are exercised.
 
+Running on every change means a regression is caught by the person who caused it, while the change is fresh in their mind. Blocking merges keeps broken rules out of the main branch. Coverage reports show branches no test reaches; for refunds, an uncovered branch is a rule nobody has checked. Coverage alone does not prove tests are good, which is why mutation thinking follows.
+
 ### 30.5 Mutation thinking
 
 Kwame changes "<= 50" to "< 50" in a scratch copy: the agent-small test fails, proving the test detects that mistake.
+
+A test suite that still passes after a deliberate mistake would not have protected anyone. Changing the comparison is a small mutation, the kind of slip a developer might make while editing nearby code. If no test failed, Kwame would know the boundary was untested. Tools can automate this by making many small changes and reporting which ones survive the test suite; each survivor shows a gap. Kwame runs such a tool monthly on the authorisation module, because that is where a missed mistake would cost most.
 
 ### Test naming
 
@@ -2318,25 +2338,37 @@ You will (1) implement build provenance and signing in CI; (2) implement deploym
 
 The hosted CI platform generates provenance for each build: builder identity, source repository, commit digest, build steps and output digests. The record is signed by the platform, so a compromised build script cannot forge it, which is the key property of SLSA v1.0's higher build levels.
 
+Because the platform, not the build steps, writes the record, an attacker who changes the build script still cannot make the provenance claim a different source or builder. Deployment then checks those claims against policy before anything is installed.
+
 ### 31.2 Signing
 
 The artifact is signed with keyless signing tied to the CI workflow's identity, and the signature is recorded in a transparency log, following the Sigstore model (Newman et al., 2022). Anyone can later check when and by which identity the artifact was signed.
+
+The transparency log is public and append-only, so a signature made with Coastline's identity at an unexpected time, or for an unknown artifact, would be visible. Coastline monitors the log for its own identity and alerts on entries that do not match a CI run. No long-lived key exists to steal.
 
 ### 31.3 Storage
 
 The artifact, its SBOM, provenance and signature are stored together and linked by the artifact digest. Retention is at least as long as the release is in use, plus one year.
 
+Keeping the records together means one lookup by digest returns everything needed to verify or investigate a release. If records were stored separately, one might be deleted or overwritten while the others remain, leaving a release that cannot be checked. The extra year after a release leaves use covers investigations that start late, such as when a compromised component is discovered months after it shipped. Storage is write-once, so records cannot be altered after they are saved.
+
 ### 31.4 Deployment verification
 
 The deployment tool fetches the artifact and its records, verifies the signature, checks the provenance against policy (chapter 38's lab) and compares digests before installing. Any failure stops the deployment with a clear message.
+
+The order of checks matters little for security, since all must pass, but checking the signature first gives the clearest error for the commonest failure. The clear message names which check failed and for which artifact, so the person deploying can tell a configuration mistake from a possible tampering case and escalate the second at once.
 
 ### 31.5 End-to-end test
 
 A staging pipeline deploys a known-good synthetic artifact and three deliberately flawed ones (wrong digest, wrong builder, missing signature). The test passes only if the first deploys and the others are refused.
 
+Each flawed artifact tests one check in isolation, so a failure points to the broken part. Testing only the good case would prove nothing about the checks, since a tool that verifies nothing also deploys a good artifact. The test runs after every change to the deployment tool, its configuration or the policy, and weekly otherwise, because the worked example shows how a single flag can quietly disable a check.
+
 ### 31.6 Performance
 
 Verification adds 12 seconds to deployment, acceptable for the team.
+
+Twelve seconds is small next to the minutes a deployment already takes, and far less than the cost of investigating a tampered release. Measuring it matters anyway, because slow controls invite shortcuts: if verification took ten minutes, people would look for ways around it during urgent fixes. The team records the time for each deployment and investigates if it grows, since a sudden rise might signal a problem with the log service or cached verification material. Most of the time is spent fetching records, not checking signatures.
 
 ### Worked example
 
@@ -2374,25 +2406,37 @@ You will (1) make security controls reliable; (2) avoid single points of failure
 
 A control that often fails gets switched off. The dependency gate and deployment verification must be dependable, with clear errors and quick recovery.
 
+When a control fails often for reasons unrelated to security, developers learn to treat its failures as noise and press for an override. Each false or flaky failure therefore weakens the control. Coastline tracks failures by cause and fixes the commonest ones first, so the control mostly fails only when it has found something real. Recovery time matters as well: a failure that clears in a minute barely interrupts work, while one needing a support ticket costs hours and goodwill.
+
 ### 32.2 External dependencies
 
 The pipeline depends on the public registry, the advisory feed, the transparency log and the CI provider. Each can fail. The internal mirror covers registry outages; cached advisory data covers short feed outages; verification material is cached for transparency-log outages.
+
+Listing the dependencies makes their failures predictable. For each one, the team decides how long it can be unavailable before releases stop and what cache or fallback covers that period. A dependency with no fallback is a single point of failure and is listed as a risk until one is added.
 
 ### 32.3 Fail closed, recover fast
 
 Failing closed protects integrity, but long outages block releases. Coastline sets a recovery process: if a check is unavailable for more than four hours and a critical fix must ship, Ingrid can approve a documented manual verification with two engineers.
 
+The manual path is narrow on purpose: it needs a critical fix, a long outage and a named approver, and two engineers perform the checks by hand and record what they did. Every use is reviewed afterwards. Without this path, teams under pressure would invent their own bypasses, which would be less careful and leave no record.
+
 ### 32.4 Measuring availability
 
 The team logs every control failure: cause, duration and effect. Over a quarter the gate was unavailable for 3 hours in total, all due to the advisory feed.
+
+Three hours across a quarter is a small fraction of the time, but if it falls during an urgent release it matters a great deal. Logging the cause shows that all downtime came from one source, which makes the fix obvious. Without the log, the team would remember the outages vaguely and might blame the gate itself. The same log later shows whether the fix worked, by comparing the next quarter's downtime with this one.
 
 ### 32.5 Redundancy
 
 A second advisory source is added, reducing dependence on one feed.
 
+With two feeds, the gate keeps working if one is down, and advisories published by only one source are still seen. The sources sometimes disagree on version ranges; when they do, the gate uses the wider range and flags the difference for a person to check. Duplicates from the two feeds are merged by advisory identifier, so the earlier noise reduction is not undone. The added cost is small compared with releases blocked for hours during an outage of a single feed, and the team reviews both sources yearly to see whether each still adds value.
+
 ### 32.6 Testing failure
 
 Every quarter the team simulates an outage of each external service in staging to check the fallback works.
+
+A fallback that is never exercised may have broken without anyone knowing, as the expired cache in the worked example shows. Simulating outages in staging, by blocking access to each service in turn, proves the cache, mirror and second feed take over. Each test records how long builds and deployments continued normally and what errors appeared. Results feed into the control failure log, so planned tests and real outages can be compared over time.
 
 ### Error messages
 
@@ -2438,25 +2482,37 @@ You will (1) plan for compromise of a dependency or the pipeline; (2) design res
 
 Even with good controls, a dependency or build component may be compromised. Resilience means detecting quickly, limiting damage and recovering to a known-good state.
 
+Planning only for prevention leaves the team improvising when prevention fails. Assuming compromise changes the questions: how quickly would we notice, how many riders would be affected, and how fast could we return to a trusted release? The links between artifacts, SBOMs and provenance built in earlier chapters exist largely to answer those questions under pressure.
+
 ### 33.2 Response plan
 
 The supply-chain playbook: identify affected artifacts using SBOMs and provenance; stop deployments; roll back to the last known-good signed release; rotate any credentials the compromised component could have reached; notify stakeholders.
+
+The steps are ordered so that damage stops spreading before anything else. Finding affected artifacts first tells the team what to stop and what to roll back. Credentials are rotated because a malicious component may have read secrets available to its process, and rollback alone does not revoke stolen tokens. Each step has a named owner.
 
 ### 33.3 Known-good state
 
 Because every artifact is linked to its SBOM and provenance, the team can find the last release that did not include a compromised version and redeploy it.
 
+Rolling back to a release built before the compromise works only if that release is still stored, still signed and still compatible with the current database. Coastline's retention rules and migration practice make all three true. Without SBOMs, the team would have to guess which release is clean, and a wrong guess would leave the malicious code running while everyone believed it gone.
+
 ### 33.4 Rider safety
 
 Ticket sales must continue. A fallback paper-ticket process and the previous app version keep service running.
+
+During a supply-chain incident the safest technical step, stopping all releases, must not stop riders travelling. Riders who cannot buy a ticket may be stranded at a station or pier, which is a real harm. The paper process is tested twice a year so staff know how to use it. Keeping the previous app version available means riders whose phones have already updated can be moved back if needed, while people at stations follow the paper route. Customer messages explain the fallback in plain words.
 
 ### 33.5 Exercise
 
 Coastline runs a tabletop: "a widely used package in ticket-web is reported compromised; versions 1.4.2–1.4.3 contained malicious code". Using SBOM search, the team finds that only one release included 1.4.2 and that it was deployed for two days.
 
+A tabletop uses discussion rather than live systems, so no service is put at risk. The scenario is concrete enough that the team must run real queries against stored SBOMs. Finding that only one release was affected, and for only two days, narrows the response dramatically.
+
 ### 33.6 Lessons
 
 The exercise shows that credential rotation would take a full day because tokens were scattered; the team consolidates them in the secrets manager.
+
+Scattered tokens were invisible until the exercise asked the team to rotate them all at once. Consolidating them in the secrets manager gives one list of what exists, who uses it and how to rotate it, and makes rotation scriptable. The next exercise is planned to measure the new rotation time, so the improvement is shown with evidence rather than assumed. Exercises are worth running precisely because they find this kind of gap before a real incident does.
 
 ### Communication
 
