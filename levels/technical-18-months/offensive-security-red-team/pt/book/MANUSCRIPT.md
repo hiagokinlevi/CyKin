@@ -1,7 +1,7 @@
 # Segurança Ofensiva Autorizada e Red Team: Um Caderno de Trabalho para o Operador Técnico
 
 - Idioma: português do Brasil (`pt`); curso técnico, dezoito meses; aproximadamente 1.200 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–12 de 18 já estão escritos em português, com os exercícios EX001–EX048 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 13–18 (EX049–EX072) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–18 de 18 têm texto didático escrito à mão; os exercícios EX001–EX072 têm resoluções correspondentes; os laboratórios offline usam a biblioteca padrão do Python 3, e suas saídas foram incorporadas a partir de execuções reais. A revisão independente e a verificação de 300 páginas A4 continuam em aberto.
 - Público: operadores técnicos que configuram verificações, confirmam correções e mantêm seguros os testes autorizados.
 - Relação com os livros vizinhos: o [livro do curso profissional](../../../../professional-6-months/offensive-security-red-team/en/book/MANUSCRIPT.md) é mais curto; o [livro de tecnólogo](../../../../technologist-3-years/offensive-security-red-team/pt/book/MANUSCRIPT.md) acrescenta projeto e integração. **Este livro é procedimental e voltado a laboratórios.**
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -28,9 +28,7 @@ NIST [SP 800-115](https://doi.org/10.6028/NIST.SP.800-115); [PTES](https://pente
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
-
-Capítulos 13–18: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-13), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -938,11 +936,465 @@ O Laboratório I comprova disciplina com portas, integridade das evidências e h
 
 [← Capítulo 11 (rascunho)](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 (rascunho) →](#ch-13)
 
+<a id="ch-13"></a>
+
+## Capítulo 13 — Solução de problemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) seguir uma árvore de solução de problemas para verificações que falharam; (2) separar falhas de ferramenta de achados reais; (3) escalar com evidências; (4) documentar contornos com segurança.
+
+### 13.1 Árvore
+
+Sintoma → reproduzir → verificar escopo/conta/ferramenta → verificar a saúde da homologação → escalar. Na prática, a árvore começa pelo escopo, depois a saúde da ferramenta e então o ambiente. A situação de aprovação do serviço em escuta é a primeira pergunta do cartão de solução de problemas, então Sam verifica se a porta 8080 foi alguma vez aprovada antes de depurar por que o lab_ports a relatou. Pôr o escopo em primeiro lugar evita caçadas falsas à ferramenta: uma hora gasta consertando uma ferramenta de varredura que sinalizou corretamente uma porta não aprovada é uma hora tirada da janela para nada. Só depois de o escopo estar resolvido o cartão passa às verificações da ferramenta e do ambiente.
+
+### 13.2 Falha de ferramenta
+
+Erros de certificado no notebook do testador não são achados da API. Uma falha de ferramenta, como uma queda ou uma saída vazia, é registrada junto com a versão fixada da ferramenta. Sam então passa para o script de baseline sabidamente bom, a versão da semana anterior, cujo caminho está escrito no caderno, e não guardado na memória. Improvisar novas flags no meio de um incidente é proibido, porque uma flag não testada pode mudar o padrão de tráfego e romper os limites de taxa combinados no cartão de método.
+
+### 13.3 Pacote de escalonamento
+
+Sintoma, passos, capturas de tela, horário, o que você já descartou. O pacote de escalonamento do ENG-512 de Sam tem quatro campos: o identificador do chamado, o último hash bom, a mensagem de parada exata que foi publicada e os contatos do responsável. O último hash bom diz ao plantão qual arquivo de evidência estava íntegro antes do problema, para que ninguém o colete de novo às cegas. Montar o pacote leva cerca de cinco minutos e poupa ao engenheiro de plantão uma longa história verbal. Listar o que já foi descartado impede que o engenheiro repita verificações que Sam fez uma hora antes.
+
+### 13.4 Contornos
+
+Flags temporárias de ferramenta são registradas e removidas depois; elas não viram configuração permanente silenciosa. Contornos que mudam o escopo são proibidos de saída. Se um contorno sondaria um host que não está na lista do ENG-512, ele espera por um texto de ROE atualizado, e um pedido de atualização das ROE é a única forma legítima de um contorno acrescentar um host. Mudanças de escopo engenhosas feitas no meio de uma sessão travada não são solução de problemas; são testes não aprovados, e são registradas como tal na revisão pós-ação, em vez de desculpadas porque a ferramenta original estava falhando.
+
+### 13.5 Depuração em dupla
+
+Problemas difíceis ganham um segundo técnico depois de quinze minutos. A depuração em dupla põe esse segundo técnico na visão do jump host, onde ele vê a mesma saída e pode cortar um buraco de coelho que já estourou o tempo limitado. As sessões em dupla são marcadas no calendário antes de a janela abrir, para que o horário exista antes de alguém travar. Torcer para que um colega passe por acaso não é trabalhar em dupla, e geralmente significa que o engenheiro travado continua cavando sozinho até que a maior parte da janela tenha passado.
+
+### 13.6 Impacto nos clientes
+
+Se os passageiros podem ser afetados, pare e ligue para o contato de emergência antes de uma depuração profunda. Impacto nos clientes significa passageiros vendo erros no planejador de viagens. Qualquer indício de dano visível aos passageiros interrompe imediatamente todo trabalho de ENG, antes de a análise de causa raiz continuar, e a parada usa o mesmo modelo de mensagem do exercício do laço de autenticação. O impacto vem antes da curiosidade sobre uma causa raiz inacabada: a causa pode ser investigada depois que o contato de emergência confirmar que os passageiros não são mais afetados e que a homologação voltou a ficar estável.
+
+### 13.7 Baseline sabidamente boa
+
+Sam mantém um curl sabidamente bom para o endpoint de saúde da homologação. Se ele falha, o ambiente está quebrado e os achados esperam. Ao lado do curl, a baseline sabidamente boa é o script fixado da semana anterior e as linhas ok que ele imprimiu. Quando surge de repente uma tempestade de NOT APPROVED, Sam abre essa saída fixada e compara a nova execução com ela antes que alguém abra uma conversa culpando a rede. Se o script antigo ainda imprime as linhas esperadas, a mudança está no alvo ou no escopo; se não imprime, o ambiente é o primeiro suspeito.
+
+### 13.8 Tempo limitado para o ego
+
+Depois de quinze minutos sozinho, ele precisa pedir ajuda. O silêncio heroico desperdiça a janela do engajamento. O tempo limitado existe para proteger a janela do ENG-512 do orgulho. Quinze minutos travado numa ferramenta significam escalar para a dupla ou para o líder, e não tentar mais uma flag em silêncio. Quando o ego atrasa a chamada, a revisão pós-ação diz isso claramente e registra quantos minutos foram perdidos, para que o padrão fique visível para toda a equipe. Escalar cedo é recompensado nessa revisão, e não tratado como sinal de fraqueza.
+
+### 13.9 Disciplina de campo
+
+As notas de solução de problemas de Sam usam os mesmos rótulos Fato/Palpite dos casos. "Palpite: o WAF está bloqueando meu IP" só vira Fato depois que o log do WAF mostra o bloqueio. Essa disciplina o impede de "consertar" o WAF com volume para ver o que acontece — um comportamento que parece uma negação de serviço e viola as ROE. A disciplina de campo para a solução de problemas é árvore, baseline, dupla, tempo limitado e parada diante de impacto nos passageiros. A revisão pós-ação de Sam recompensa o escalonamento cedo. Esses hábitos importam mais do que resolver todas as falhas, porque cada um impede que uma sessão travada vire um teste não aprovado ou inseguro.
+
+### 13.10 Nota de encerramento
+
+Quando o escalonamento é necessário, Sam avisa juntos o líder do engajamento e o responsável pelo produto, para que ninguém saiba de segunda mão que a homologação não está saudável. A regra final é que a solução de problemas existe para proteger a janela e os sistemas por trás dela. Encontrar a falha plantada importa menos do que parar quando alertas de tarifa aparecem em qualquer lugar, então um alerta de tarifa encerra a solução de problemas mesmo com a falha plantada ainda sem solução. Uma falha não resolvida pode ser retomada na próxima sessão, mas um teste que continuou durante um alerta de tarifa é uma falha de segurança que nenhuma correção posterior desfaz.
+
+### Exemplo resolvido (NMT sintética)
+
+As verificações de API de Sam falham com erros de TLS; a homologação funciona normalmente no navegador do jump host. Ele atualiza o repositório de certificados raiz do notebook, executa de novo e documenta o problema do notebook separadamente dos achados.
+
+> **Caso sintético — Northline Municipal Transit (NMT).** A operadora de transporte, Sam Park e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Sistemas de transporte reais e equipamentos de tarifa nunca são testados sem uma autorização separada e especializada. Este livro usa apenas dados sintéticos e não concede autorização para testar sistemas reais.
+
+### Exercícios
+
+- **EX049 — Primeiros passos.** Ordene: escalar, reproduzir, verificar a ferramenta. *Rubrica:* 3 = reproduzir, verificar a ferramenta, escalar; 2 = quase; 1 = escalar sempre primeiro; 0 = nada.
+- **EX050 — Não é achado.** Por que um erro de TLS no notebook não é um achado da API? *Rubrica:* 3 = repositório de confiança do lado do cliente; a homologação funciona em outro lugar; 2 = parcial; 1 = é achado; 0 = nada.
+- **EX051 — Pacote de escalonamento.** Liste quatro itens de um pacote de escalonamento. *Rubrica:* 3 = quatro do capítulo; 2 = três; 1 = um; 0 = nada.
+- **EX052 — Impacto nos passageiros.** E se a solução de problemas puder afetar os passageiros? *Rubrica:* 3 = parar; contato de emergência; 2 = parar; 1 = continuar; 0 = nada.
+
+### Síntese
+
+Resolva problemas com uma árvore, prove onde a falha está e escale com um pacote limpo.
+
+### Continue estudando — capítulo 13 de 18
+
+[← Capítulo 12 (rascunho)](#ch-12) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 14 (rascunho) →](#ch-14)
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Automação
+
+### Objetivos de aprendizagem
+
+Você vai (1) decidir o que automatizar; (2) manter pessoas na validação; (3) agendar a automação dentro das janelas; (4) monitorar a automação para detectar laços.
+
+### 14.1 Automatizar
+
+Hashes, comparações de listas de portas, verificações de campos de chamados, esqueletos de relatório. A regra é automatizar apenas as verificações que Sam já faz do mesmo jeito toda semana, como classificar inventários e calcular hashes de evidências. As tarefas podem repetir esses caminhos comprovados, mas não podem inventar novos métodos, e uma automação que introduziria uma nova técnica de ataque é recusada para o ENG-512. A invenção de métodos fica, portanto, inteiramente fora da fila de automação; uma técnica nova precisa ser escrita como cartão de método, revisada e executada à mão primeiro.
+
+### 14.2 Não automatizar
+
+Exploração, decisões de escopo, severidade sem revisão. As decisões de parada e a ampliação do escopo também continuam humanas. Os operadores param diante de alertas de tarifa, e as tarefas nunca decidem sozinhas continuar. No código das tarefas, uma flag de alerta de tarifa é uma parada rígida que congela a execução, e não um aviso brando que um operador possa descartar. Manter essas escolhas fora da automação significa que um script não pode ampliar o ENG-512 nem continuar testando durante um alerta só porque ninguém estava olhando o console naquele momento. As classificações de severidade também esperam por um revisor humano antes de qualquer chamado ser aberto.
+
+### 14.3 Janelas
+
+A automação roda apenas dentro da janela do engajamento, com os mesmos limites de taxa. Os agendamentos das tarefas correspondem exatamente à janela de sábado das ROE. Tarefas livres de madrugada contra a homologação são violações do controle de mudanças, por mais convenientes que fossem, e os controles de acesso do agendador negam os usuários de ENG fora da janela assinada, para que a regra não dependa da memória. Isso mantém o tráfego automatizado dentro do período em que responsáveis e plantonistas o esperam e conseguem distinguir um teste de um problema real. Quando uma tarefa ainda está rodando no fechamento da janela, ela para e o restante espera pelo próximo horário combinado.
+
+### 14.4 Detecção de laços
+
+Limites de novas tentativas e de tempo máximo de execução são obrigatórios. A detecção de laços em cada tarefa encerra a execução quando respostas 401 se repetem além do orçamento de ruído. A parada das 10:12 do exercício sintético é o padrão que a automação deve copiar: a tarefa para, libera suas conexões e emite a mesma frase de interrupção que o exercício ensinou, para que o canal do engajamento receba uma mensagem que a equipe de resposta já reconhece. Uma tarefa sem limite de novas tentativas e sem limite de tempo de execução não está pronta para a janela de sábado, por melhor que tenha se saído num teste rápido.
+
+### 14.5 Revisão da saída
+
+Todo candidato a achado automatizado recebe validação humana. A revisão da saída é obrigatória antes que qualquer achado seja entregue. Linhas NOT APPROVED automatizadas ainda precisam de uma pessoa que verifique divergências de nome DNS, que a tarefa não consegue julgar, então o registro automático às cegas é recusado. As tarefas de abertura automática de chamados ficam desativadas até que essa etapa humana de divergência dê aprovação. A revisão custa alguns minutos por execução e evita que os responsáveis recebam chamados sobre hosts que apenas estavam listados com outro nome. Os revisores também confirmam que cada candidato corresponde a um host aprovado antes de virar chamado.
+
+### 14.6 Controle de mudanças
+
+Os scripts de automação são versionados como código de produção. O controle de mudanças da automação é igual ao controle de mudanças das ROE. Uma tarefa nova não pode entrar na janela de sábado até passar pela revisão por pares e até que o SOC seja avisado, com o mesmo modelo de um anúncio de mudança nas ROE. Acrescentar uma tarefa em silêncio é tratado como defeito, porque o SOC veria tráfego inesperado sem nenhum aviso que o explicasse e poderia responder como se fosse um ataque real. A versão da tarefa e o revisor que a aprovou são registrados com o aviso de mudança.
+
+### 14.7 Tarefas idempotentes
+
+Comparações automatizadas podem rodar duas vezes sem duplicar chamados. Sam usa host+porta+data como chave dos chamados para evitar duplicatas. O projeto idempotente é o que torna seguras essas novas execuções. Os geradores de relatório do ENG-512 de Sam fazem upsert pela chave do serviço em escuta, então executar uma tarefa uma segunda vez atualiza o chamado existente daquela porta, em vez de abrir uma duplicata. O upsert pela chave do serviço é coberto por um teste unitário no repositório de automação, para que uma mudança posterior no gerador de relatórios não reintroduza em silêncio chamados duplicados que os responsáveis teriam de fechar.
+
+### 14.8 Chave de desativação
+
+A automação tem uma flag global de desativação que o SOC pode solicitar. Sam testa essa flag no primeiro dia do engajamento. Com essa única flag, Sam pode desligar toda a automação de ENG se o planejador de viagens se comportar mal. O teste de desativação é um item do Laboratório II, e a chave precisa ser exercitada de ponta a ponta no ensaio; uma chave que existe só no papel mantém a tarefa fora da lista de sábado. Testá-la cedo significa que, se ela um dia for necessária durante uma janela real, ninguém estará descobrindo pela primeira vez se ela funciona de fato.
+
+### 14.9 Disciplina de campo
+
+Pull requests de automação precisam de um bloco de segurança: limites de taxa, interruptor de emergência, dry-run e a cláusula das ROE que permite a tarefa. Sem esse bloco, os revisores rejeitam o PR. Sam acrescentou o modelo depois que um script bem-intencionado rodou fora da janela porque o cron usava UTC e o autor pensava no horário local. A disciplina de campo para a automação é janela respeitada, atenção a laços, revisão e possibilidade de desativação. Esperteza sem supervisão não é um objetivo na NMT. Uma tarefa que falha em qualquer uma dessas quatro propriedades fica fora da lista de sábado até que a lacuna seja corrigida e revisada de novo por um colega.
+
+### 14.10 Nota de encerramento
+
+Sam acompanha num gráfico o tempo de execução da automação a cada noite. Uma tarefa que de repente leva dez vezes mais pode estar presa num laço ou lendo um inventário maior — os dois casos merecem um olhar humano antes da próxima janela. A automação multiplica bons cartões de método e também multiplica erros. Por isso, Sam só automatiza uma tarefa depois que uma execução manual do ENG-512 teve sucesso no mesmo caminho, com o cartão de método, a taxa e as evidências já revisados. Automatizar um caminho não comprovado apenas repete um erro não testado a cada execução agendada.
+
+### 14.11 Extra
+
+Os limites incluem tanto o número de novas tentativas quanto os minutos de relógio. A tarefa de comparação de portas de Sam morre depois de 20 minutos e o aciona; um travamento silencioso é tratado como um interruptor de parada que falhou. Como prática extra, Sam escreve um exercício de desativação no README de cada automação e o executa de fato no jump host antes de a tarefa ser agendada. Se a chave de desativação não foi testada, a tarefa fica fora da lista de sábado, porque uma chave que nunca foi acionada não dá garantia nenhuma. O README registra quando o exercício foi executado pela última vez, para que um revisor veja que a chave foi exercitada recentemente.
+
+### Exemplo resolvido (NMT sintética)
+
+Sam automatiza a comparação de portas toda noite sobre as exportações de inventário da homologação durante a semana do engajamento; ele continua triando à mão as linhas NOT APPROVED.
+
+> **Caso sintético — Northline Municipal Transit (NMT).** A operadora de transporte, Sam Park e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Sistemas de transporte reais e equipamentos de tarifa nunca são testados sem uma autorização separada e especializada. Este livro usa apenas dados sintéticos e não concede autorização para testar sistemas reais.
+
+### Exercícios
+
+- **EX053 — Lista do que automatizar.** Nomeie três bons candidatos à automação. *Rubrica:* 3 = três do capítulo; 2 = dois; 1 = um; 0 = nada.
+- **EX054 — Nunca automatizar.** Nomeie duas coisas que Sam não deve automatizar. *Rubrica:* 3 = exploração e decisões de escopo; 2 = uma; 1 = hashes; 0 = nada.
+- **EX055 — Limite de novas tentativas.** Por que as novas tentativas da automação precisam de limites? *Rubrica:* 3 = evitar bloqueios/tempestades de logs/laços; 2 = parcial; 1 = ilimitado é melhor; 0 = nada.
+- **EX056 — Etapa humana.** O que sempre precisa de uma pessoa antes de um achado ser registrado? *Rubrica:* 3 = validação dos candidatos automatizados; 2 = parcial; 1 = nenhuma etapa; 0 = nada.
+
+### Síntese
+
+Automatize o repetitivo; nunca automatize permissão, exploração nem severidade sem revisão.
+
+### Continue estudando — capítulo 14 de 18
+
+[← Capítulo 13 (rascunho)](#ch-13) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 15 (rascunho) →](#ch-15)
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Integração e dependências
+
+### Objetivos de aprendizagem
+
+Você vai (1) mapear dependências de terceiros; (2) saber quando o teste delas exige autorização separada; (3) testar o lado da NMT nas integrações; (4) registrar a responsabilidade compartilhada.
+
+### 15.1 Dependências
+
+Blocos de mapa, notificador por SMS, links diretos de pagamento, e-mail na nuvem. As dependências também incluem as CDNs de blocos de mapa e os provedores de identidade, e Sam as lista para que o ENG-512 não relate o tempo esgotado de uma CDN como achado contra a API da NMT. Ele compara cada tempo esgotado com os horários de atividade do ENG-512 antes de decidir a quem ele pertence, e guarda essa comparação ao lado do chamado da CDN. O notificador por SMS e os links diretos de pagamento recebem o mesmo tratamento, porque suas falhas aparecem dentro das telas dos passageiros da NMT. Sam registra um contato externo para cada dependência, quando há um conhecido, para que um chamado possa ir direto a quem consegue corrigi-lo.
+
+### 15.2 Autorização separada
+
+Testar o núcleo do fornecedor de SMS exige a autorização do fornecedor. Do mesmo modo, a assinatura da NMT nunca autoriza os sistemas de um processador de tarifas; esses processadores precisam de autorização escrita própria. Sam registra esses terceiros como exclusões explícitas na tabela de escopo, e cada linha de exclusão cita o ID da cláusula contratual ao lado do nome do processador. Uma linha explícita evita discussões posteriores sobre se um endpoint do fornecedor estava coberto implicitamente só porque o tráfego da NMT chega até ele. Quando um fornecedor quer que os próprios sistemas sejam testados, ele combina essa autorização diretamente com a própria equipe de segurança.
+
+### 15.3 O lado da NMT
+
+Sam pode testar como a NMT trata os callbacks dos fornecedores e o armazenamento de segredos quando esses caminhos estão no escopo. O lado da NMT num achado de dependência é a configuração que a NMT controla: redirecionamentos, chaves de API guardadas na NMT e regras do WAF. Os chamados de Sam miram esses itens, porque os responsáveis da NMT podem mudá-los. Os calendários de correção dos fornecedores são registrados como notas no achado, mas não são chamados de Sam e não pertencem a ele. Isso mantém cada item de correção atribuído a alguém que tem de fato a autoridade e o acesso para fazer a correção.
+
+### 15.4 Matriz de responsabilidades
+
+Quem corrige o quê fica escrito, para que os achados cheguem ao responsável certo. A matriz de responsabilidades nomeia um responsável da NMT e um responsável do fornecedor para cada dependência. Cada chamado de dependência precisa preencher as duas colunas antes que a revisão o aceite. Quando uma das células de responsável está vazia, o robô de triagem comenta que a matriz é necessária, e o chamado volta a quem o relatou antes que alguém atribua trabalho. A divisão evita que os achados fiquem pulando entre a NMT e um fornecedor enquanto cada lado supõe que o outro é responsável pela correção.
+
+### 15.5 Quebras
+
+Indisponibilidades de fornecedores durante os testes são paradas, e não oportunidades para insistir. Quando um caminho de CDN quebra durante o ENG-512, Sam não alega causalidade até que a quebra tenha sido correlacionada com os horários do engajamento. Os intervalos de relógio do ENG são colados nas notas do incidente da CDN, e a alegação espera por um aviso do SOC com relógios alinhados que corresponda à janela. Relógios sincronizados e aviso prévio ao SOC protegem os dois lados de culpas falsas, seja porque o teste causou a indisponibilidade, seja porque apenas estava rodando quando ela começou.
+
+### 15.6 Contratos
+
+Cláusulas de contato de segurança nos contratos com fornecedores agilizam a divulgação responsável. Os contratos também podem proibir testes nos sistemas do fornecedor, então Sam lê a cláusula pertinente antes de propor qualquer verificação voltada ao fornecedor. As cláusulas de proibição de teste são coladas na lista de exclusões das ROE, e as iniciais da revisão jurídica aparecem ao lado de cada cláusula colada no apêndice. Sem essas iniciais, a colagem é tratada como texto de ROE incompleto, porque uma cláusula mal lida poderia comprometer a NMT com testes que o contrato do fornecedor não permite. Qualquer dúvida sobre uma cláusula volta ao jurídico antes mesmo de a proposta ser redigida.
+
+### 15.7 Autenticidade dos callbacks
+
+Ao testar como a NMT trata os callbacks dos fornecedores, Sam usa ambientes de teste documentados, e não tráfego forjado contra endpoints de pagamento da produção. A autenticidade dos callbacks dos webhooks dos fornecedores é verificada apenas com segredos da homologação, nunca com segredos da produção. Os testes de Sam nunca reproduzem callbacks reais de passageiros, nem mesmo para uma demonstração. Os IDs dos segredos de homologação usados em cada teste de webhook são listados no índice de evidências, para que um revisor possa confirmar quais credenciais foram exercitadas e que nenhum segredo da produção nem dado de passageiro entrou no teste em momento algum.
+
+### 15.8 Escopo da varredura de segredos
+
+As varreduras de segredos rodam nos repositórios da NMT listados nas ROE, e não em todos os forks públicos da internet. O escopo da varredura de segredos fica dentro dos repositórios da NMT autorizados para o ENG-512, e o texto do escopo nomeia caminhos de repositório, e não a internet inteira. Varrer o GitHub público de um fornecedor sem permissão escrita está fora do escopo, por mais tentadora que seja uma busca rápida. A lista de caminhos permitidos das ferramentas de varredura é revista sempre que surgem novos repositórios da NMT, para que a cobertura só cresça por meio de uma decisão de escopo registrada.
+
+### 15.9 Disciplina de campo
+
+O mapa de dependências de Sam inclui uma coluna de "dados compartilhados": o que a NMT envia a cada fornecedor. Se a NMT não deveria enviar telefones de passageiros ao provedor de blocos de mapa, isso vira ao mesmo tempo um controle de privacidade e uma verificação de teste: inspecionar as requisições de saída em busca de campos inesperados durante os testes autorizados na homologação. A disciplina de campo para dependências é a matriz, a autorização separada e as correções do lado da NMT primeiro. Os fornecedores de tarifa ficam fora das sondagens comuns. A coluna de dados compartilhados amarra tudo isso, porque mostra quais fluxos de fornecedores a NMT pode testar do próprio lado e quais pertencem ao fornecedor.
+
+### 15.10 Nota de encerramento
+
+Se um fornecedor pede a Sam que "teste rapidinho" o portal dele usando credenciais da NMT, ele recusa e o encaminha ao próprio processo de autorização. Credenciais da NMT não viajam. O capítulo de dependências termina onde termina a tabela de escopo: dizendo com clareza quais sistemas de fornecedores a NMT não autorizou para testes. Sam repete essa lista no relatório, para que os leitores não suponham uma cobertura de processadores de tarifa que a Northline Municipal Transit nunca contratou. A mesma lista vai para a nota de passagem, para que o próximo técnico herde as exclusões junto com os achados.
+
+### Exemplo resolvido (NMT sintética)
+
+Sam encontra uma chave de API de SMS num repositório de homologação. Isso é um achado da NMT (armazenamento de segredos). Ele não faz teste de carga no fornecedor de SMS.
+
+> **Caso sintético — Northline Municipal Transit (NMT).** A operadora de transporte, Sam Park e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Sistemas de transporte reais e equipamentos de tarifa nunca são testados sem uma autorização separada e especializada. Este livro usa apenas dados sintéticos e não concede autorização para testar sistemas reais.
+
+### Exercícios
+
+- **EX057 — Exemplo de autorização separada.** Dê uma dependência que Sam não pode testar sem a autorização do fornecedor. *Rubrica:* 3 = fornecedor de SMS / blocos de mapa / pagamento; 2 = parcial; 1 = o site da NMT; 0 = nada.
+- **EX058 — Achado do lado da NMT.** Por que uma chave de API de SMS vazada na homologação da NMT é um achado da NMT? *Rubrica:* 3 = a NMT armazena/manuseia o segredo; 2 = parcial; 1 = só do fornecedor; 0 = nada.
+- **EX059 — Indisponibilidade do fornecedor.** O fornecedor esgota o tempo durante a janela. O que Sam faz? *Rubrica:* 3 = parar as verificações relacionadas; anotar a dependência; não martelar; 2 = parcial; 1 = tempestade de novas tentativas; 0 = nada.
+- **EX060 — Matriz.** O que uma matriz de responsabilidades resolve? *Rubrica:* 3 = o responsável certo para cada achado; 2 = parcial; 1 = não resolve nada; 0 = nada.
+
+### Síntese
+
+Conheça o mapa de dependências; teste o lado da NMT; não ataque fornecedores sem a autorização deles.
+
+### Continue estudando — capítulo 15 de 18
+
+[← Capítulo 14 (rascunho)](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 (rascunho) →](#ch-16)
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Documentação técnica e segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever runbooks para verificações autorizadas; (2) manter visíveis os avisos de segurança; (3) versionar documentos; (4) aposentar métodos obsoletos.
+
+### 16.1 Runbooks
+
+Passo a passo para cada verificação recorrente, com referências às ROE e as condições de parada no topo, em negrito. O runbook do ENG-512 cobre a abertura, os cartões de método, as mensagens de parada e a limpeza. Cada chamado cita o hash git do runbook, e cada colega cola o mesmo hash no próprio caderno na abertura, como recibo. Assim, todos trabalham a partir de uma única versão dos capítulos de abertura e de parada, e uma edição posterior do runbook não pode deixar dois técnicos seguindo regras de parada diferentes na mesma janela de sábado.
+
+### 16.2 Avisos de segurança
+
+"Não execute contra a produção" é a primeira linha do runbook de comparação de portas da homologação. A primeira página de todo runbook traz os avisos de segurança: a rede de tarifas é preta e a varredura livre é proibida. As amostras de auditoria sempre abrem primeiro a página um, e um runbook cujo aviso de tarifa aparece só numa página tardia reprova na amostra e tem o chamado reaberto. Avisos enterrados na página nove não protegem ninguém, porque um técnico sob pressão de tempo lê os passos iniciais e raramente o apêndice.
+
+### 16.3 Versionamento
+
+Os documentos mostram versão, data e responsável; as versões antigas são arquivadas. As versões dos runbooks são acompanhadas por tags do git, e Sam não segue uma cópia impressa mais antiga que a tag nomeada nas ROE. A lista de abertura inclui um git describe contra essa tag; se a saída não confere, a abertura é cancelada até que a cópia seja alinhada. Uma página impressa pode ser conveniente na mesa, mas só a versão com tag vale quando uma regra de parada ou um contato mudou.
+
+### 16.4 Aposentadoria
+
+Métodos que usavam ferramentas aposentadas são marcados como obsoletos, para que os iniciantes não os sigam. A aposentadoria também remove cartões que mencionam hosts desativados. Esses cartões vão para o arquivo na mesma semana em que o host é desativado, para que uma verificação vencida não volte à pilha no sábado seguinte. Deixar páginas aposentadas na biblioteca ativa confundiria a próxima janela, porque um iniciante poderia seguir um método dirigido a um host que não existe mais ou que agora pertence a outra pessoa.
+
+### 16.5 Público
+
+Escreva para um técnico que estava doente durante o último engajamento. Os leitores são técnicos e o SOC, e não o marketing, então cada passo é escrito para que um técnico que perdeu o ENG-512 consiga segui-lo à noite sem ligar para Sam. As condições de parada aparecem em palavras simples, com um exemplo da mensagem de interrupção a publicar. Slogans e elogios a ferramentas são cortados antes de a edição para técnicos ser publicada, porque aumentam o tamanho sem ajudar ninguém a decidir o que fazer.
+
+### 16.6 Ritmo de revisão
+
+Os runbooks são revistos a cada seis meses ou depois de qualquer incidente de parada. Uma mudança de arquitetura também dispara uma revisão, mesmo quando a data de seis meses ainda está longe. Uma revisão perdida abre um chamado de dívida do programa, que tem responsável e prazo como qualquer achado, e o pacote do CISO lista a dívida de documentação em aberto ao lado dos achados técnicos. Tornar a dívida visível impede que runbooks desatualizados derivem em silêncio até que o próximo incidente de parada os exponha. Cada revisão é registrada com a tag de runbook que produziu, para que os leitores vejam quando uma página foi confirmada pela última vez.
+
+### 16.7 Capturas de tela nos runbooks
+
+Os runbooks preferem passos em texto a capturas de tela que envelhecem quando a interface muda. Onde as capturas ajudam, elas são datadas. Todas as capturas de tela dos runbooks são sintéticas e mascaradas; telas reais de passageiros nunca ilustram um procedimento. A mesma integração contínua que monta os materiais do curso rejeita pull requests que acrescentam capturas não sintéticas de passageiros, para que a política não dependa de os revisores perceberem. Figuras sintéticas ainda mostram os passos com clareza e eliminam o risco de que um documento de treinamento vire um depósito acidental de dados pessoais de passageiros.
+
+### 16.8 Tradução
+
+Se um turno de terceirizados fala outra língua, os avisos críticos de parada aparecem nas duas línguas usadas no local. A redação das frases de parada é combinada uma vez com o SOC e depois reaproveitada, em vez de improvisada durante um incidente. Empatia improvisada ou redação atenuada numa mensagem de parada não é um controle. As frases de interrupção combinadas são versionadas ao lado do trecho da carta de ética, então qualquer edição nelas precisa dos mesmos responsáveis que uma edição no texto de ética e não pode entrar despercebida entre as janelas.
+
+### 16.9 Disciplina de campo
+
+Quando acontece um incidente de parada, Sam atualiza o runbook na mesma semana ou registra um chamado explicando por que não. Documentação adiada para "depois do período corrido" é documentação que nunca acontece. Seus gestores aceitam runbooks mais curtos e atualizados em vez de longos que descrevem ferramentas aposentadas. A disciplina de campo para a documentação é versionada, com avisos, aposentadoria limpa e capturas sintéticas. O ENG-512 de Sam depende do runbook com tag, e não da memória. Um runbook que não pode ser seguido sem perguntar a Sam é tratado como inacabado, seja qual for seu tamanho ou acabamento.
+
+### 16.10 Nota de encerramento
+
+Runbooks obsoletos vão para uma pasta /archive, e a integração contínua verifica que nenhum link ativo aponta para ela. Links quebrados para métodos aposentados reprovam o build da documentação. A documentação é o modo pelo qual a NMT sobrevive às férias de Sam. Um substituto precisa encontrar no runbook as frases de parada e a exclusão da tarifa sem perguntar a Sam, então uma frase de parada ausente é tratada como defeito, e não como escolha de estilo. Quando os documentos estão completos e atualizados, o programa pode continuar testando com segurança enquanto o líder habitual está de licença.
+
+### 16.11 Extra
+
+Sam imprime a página de condições de parada do runbook ativo e a mantém na mesa durante as janelas — telas bloqueiam, e o papel continua legível quando os segundos importam. Como extra, Sam mantém uma folha de consulta de uma página do ENG-512 colada ao lado do jump host. Ela traz a data das ROE, os contatos de emergência e a exclusão da tarifa, e é substituída sempre que a data das ROE avança. Uma folha que corresponde às ROE vigentes dá ao técnico os limites essenciais num relance, sem abrir um documento enquanto uma parada está em andamento.
+
+### Exemplo resolvido (NMT sintética)
+
+O runbook v1.3 de Sam abre com `STOP CONDITIONS` e `OUT OF SCOPE: fare network`, e só depois vêm os passos da comparação de portas.
+
+> **Caso sintético — Northline Municipal Transit (NMT).** A operadora de transporte, Sam Park e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Sistemas de transporte reais e equipamentos de tarifa nunca são testados sem uma autorização separada e especializada. Este livro usa apenas dados sintéticos e não concede autorização para testar sistemas reais.
+
+### Exercícios
+
+- **EX061 — Topo do runbook.** Quais dois blocos ficam no topo? *Rubrica:* 3 = condições de parada e ROE/fora do escopo; 2 = um; 1 = histórico; 0 = nada.
+- **EX062 — Primeira linha.** Qual é a primeira linha do runbook de comparação de portas da homologação? *Rubrica:* 3 = não executar contra a produção; 2 = parcial; 1 = instalar a ferramenta; 0 = nada.
+- **EX063 — Obsoleto.** O que deve acontecer com um runbook de uma ferramenta aposentada? *Rubrica:* 3 = marcar como obsoleto/arquivar; 2 = parcial; 1 = deixar como está; 0 = nada.
+- **EX064 — Gatilho de revisão.** Quando os runbooks precisam ser revistos fora do ritmo de seis meses? *Rubrica:* 3 = depois de um incidente de parada (ou de uma grande mudança); 2 = parcial; 1 = nunca; 0 = nada.
+
+### Síntese
+
+A documentação põe a segurança em primeiro lugar, continua versionada e se aposenta junto com suas ferramentas.
+
+### Continue estudando — capítulo 16 de 18
+
+[← Capítulo 15 (rascunho)](#ch-15) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 17 (rascunho) →](#ch-17)
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Laboratório controlado II
+
+### Objetivos de aprendizagem
+
+Você vai (1) combinar cartões de método com laboratórios; (2) produzir um minirrelatório de reteste; (3) lidar com um exercício de parada no meio do laboratório; (4) entregar evidências indexadas por hash.
+
+### 17.1 Construção
+
+Crie um cartão de método; execute o lab_retest; escreva um relatório de reteste de uma página. O Laboratório II monta um miniENG-512 em torno desse cartão: inventário, lab_ports, evidências com hash, um exercício de parada e status de reteste. Os alunos reaproveitam o inventário do Laboratório I com uma nova falha plantada, para que uma resposta lembrada do primeiro laboratório não seja aprovada. Para passar, o aluno precisa encontrar o serviço NOT APPROVED plantado e entregar uma mensagem de parada ensaiada, junto com os hashes e a tabela de reteste que compõem o conjunto de entregas.
+
+### 17.2 Exercício de parada
+
+Num momento aleatório, o supervisor anuncia a parada; o aluno precisa publicar uma mensagem de parada conforme o padrão em até dois minutos. O exercício repete o laço de 401: interromper, publicar a mensagem de parada do ENG-512 com o horário e esperar orientação. Um aluno que continua depois do laço para terminar mais um objetivo reprova no Laboratório II, por mais perto que esse objetivo parecesse. Interromper e publicar vêm primeiro, porque o hábito avaliado é parar quando chamado, e um engajamento real não oferecerá um momento conveniente para concluir a tarefa em andamento.
+
+### 17.3 Índice de evidências
+
+Tabela de arquivo, hash e ID do achado. O índice de evidências do Laboratório II lista todos os arquivos PNG e TXT com seu prefixo de hash. Qualquer linha com MISMATCH precisa mostrar a aprovação de duas pessoas antes que o hash esperado seja atualizado. Os avaliadores abrem primeiro o índice e avaliam sua completude antes de ler qualquer narrativa, e os capítulos narrativos valem zero ponto se o índice estiver incompleto. A ordem reflete o trabalho real com casos, em que uma história bem escrita não salva evidências cuja integridade não pode ser demonstrada. Os prefixos de hash do índice também precisam conferir com os arquivos da cópia do cofre que o avaliador abre.
+
+### 17.4 Desafio do colega
+
+Um colega tenta convencer você a anexar um arquivo divergente; você recusa. O desafio do colega também procura uma exclusão de tarifa ausente ou um contato de emergência vazio. Corrigir uma lacuna com calma rende boa pontuação, enquanto discutir na defensiva perde pontos, mesmo que o artefato seja corrigido depois. A folha de pontuação mantém o tom e a qualidade do artefato em colunas separadas, então um aluno que corrige o caderno com elegância recebe crédito pelas duas coisas, e um artefato correto defendido de mau jeito ainda mostra os pontos perdidos no tom.
+
+### 17.5 Tempo limitado
+
+Duas horas. O tempo limitado do Laboratório II é fixado no calendário do curso. Quando o sinal do calendário toca, a digitação para, e qualquer estouro é registrado numa nota escrita com o título "estouro", que lista o que ficou inacabado. Minutos extras em silêncio não são permitidos, porque o laboratório pratica a disciplina de uma janela de engajamento real, em que o trabalho fora do horário combinado não é autorizado, por mais perto que o aluno estivesse de terminar. A nota de estouro é avaliada com honestidade, e um item inacabado listado ali custa menos que trabalho extra escondido.
+
+### 17.6 Critério de aprovação
+
+Exercício de parada + recusa + relatório coerente. Em detalhe, o critério de aprovação tem quatro partes: a falha plantada relatada, o exercício de parada limpo, todo hash mostrando MATCH ou um MISMATCH explicado e a conferência por pares aprovada. Faltar qualquer uma das quatro reprova no Laboratório II, mesmo com postura perfeita. Simpatia e apresentação confiante não substituem esses artefatos, porque um examinador que revise o portfólio depois vê apenas os arquivos, e não como o aluno soou. Os avaliadores registram qual das quatro falhou, para que o aluno saiba exatamente o que repetir.
+
+### 17.7 Estresse sem dano
+
+O exercício de parada é estressante de propósito; causar dano aos sistemas, não. Os supervisores nunca plantam falhas que afetem a produção. Estresse sem dano significa apenas carga sintética. Nenhum cenário do Laboratório II toca equipamentos de tarifa reais nem sistemas de produção dos passageiros, e a lista de materiais do laboratório proíbe explicitamente hardware de tarifa e dados de produção. A pressão vem do relógio e do anúncio aleatório de parada, e não de qualquer risco para sistemas reais, então um erro do aluno sob estresse custa pontos, e não o serviço aos passageiros.
+
+### 17.8 Revisão pós-ação
+
+Cada Laboratório II termina com três minutos de revisão pós-ação: o que quase deu errado e o que mudar no runbook. A revisão pós-ação produz três melhorias para o próximo ENG-512. Cada melhoria vira chamado e é ligada ao relatório do Laboratório II antes do aceite, e o supervisor não assina o aceite até que os três chamados existam. Sem eles, o Laboratório II continua incompleto na lista da turma. Exigir chamados, e não ideias faladas, significa que as lições de um quase acidente chegam de fato ao runbook, em vez de se apagarem depois da sessão.
+
+### 17.9 Disciplina de campo
+
+O desafio do colega no Laboratório II é uma encenação de pressão: "anexa logo, o hash está quase igual". A resposta correta é sempre recusar. Sam já ouviu pressões parecidas em engajamentos reais sobre saídas de ferramentas de varredura não verificadas. Praticar a recusa com um colega torna mais fácil a recusa real. A disciplina de campo para o Laboratório II é exercício, evidências, desafio do colega e critério de aprovação. O laboratório existe para tornar o ENG-512 tediosamente seguro. Duas partes do critério de aprovação da seção 17.6 nunca são negociáveis: o serviço NOT APPROVED plantado precisa ser encontrado e a mensagem de parada precisa ser ensaiada de forma limpa.
+
+### 17.10 Nota de encerramento
+
+A mensagem de parada de Sam no exercício usa o mesmo modelo dos engajamentos de produção, para que a memória muscular da redação se transfira. Prosa rebuscada é desencorajada; os fatos vencem. O Laboratório II é a última etapa antes do projeto de Sam, e um exercício de parada reprovado bloqueia o crédito de portfólio até ser ensaiado de forma limpa. O bloqueio é aplicado na prática: os repositórios do projeto continuam trancados até que o exercício de parada do aluno mostre uma aprovação limpa dos pares, então a etapa não pode ser pulada começando o projeto mais cedo. O aluno que reprova no exercício simplesmente ensaia de novo até que fique limpo.
+
+### 17.11 Extra
+
+Se a mensagem do exercício de parada atrasa, o laboratório reprova mesmo que o relatório seja perfeito. A velocidade de parar é a habilidade medida. Como extra, Sam guarda o texto da mensagem de parada do Laboratório II como modelo no runbook, e as paradas reais do ENG-512 copiam sua estrutura em vez de prosa livre. Como o modelo agora é o oficial, qualquer pull request que o altere precisa do aceite da turma do Laboratório II. Isso mantém idênticas a redação ensaiada e a redação real, para que o hábito aprendido no exercício seja o hábito usado no sábado.
+
+### Exemplo resolvido (NMT sintética)
+
+Sam publica uma mensagem de parada em 50 segundos durante o exercício, recusa uma captura de tela ruim e registra um relatório de reteste com o F2 ainda aberto.
+
+> **Caso sintético — Northline Municipal Transit (NMT).** A operadora de transporte, Sam Park e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Sistemas de transporte reais e equipamentos de tarifa nunca são testados sem uma autorização separada e especializada. Este livro usa apenas dados sintéticos e não concede autorização para testar sistemas reais.
+
+### Exercícios
+
+- **EX065 — Critério de aprovação.** Nomeie três requisitos de aprovação. *Rubrica:* 3 = exercício de parada, recusa, relatório coerente; 2 = dois; 1 = um; 0 = nada.
+- **EX066 — Prazo da parada.** Qual é o limite de tempo para a mensagem de parada? *Rubrica:* 3 = dois minutos; 2 = rápido; 1 = fim do dia; 0 = nada.
+- **EX067 — Honestidade do relatório.** O relatório pode marcar o F2 como encerrado sem evidências? *Rubrica:* 3 = não; 2 = não, sem explicação; 1 = sim; 0 = nada.
+- **EX068 — Campos do índice.** Quais três campos estão no índice de evidências? *Rubrica:* 3 = arquivo, hash, ID do achado; 2 = dois; 1 = um; 0 = nada.
+
+### Síntese
+
+O Laboratório II acrescenta disciplina de parada e relato honesto do reteste sob pressão.
+
+### Continue estudando — capítulo 17 de 18
+
+[← Capítulo 16 (rascunho)](#ch-16) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 18 (rascunho) →](#ch-18)
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Projeto técnico supervisionado
+
+### Objetivos de aprendizagem
+
+Você vai (1) entregar um pequeno projeto de teste autorizado sobre dados sintéticos da NMT; (2) apresentá-lo a um supervisor; (3) passar adiante os runbooks; (4) declarar os limites que permanecem.
+
+### 18.1 Briefing do projeto
+
+Usando apenas exportações sintéticas, produza: a comparação atualizada de portas aprovadas, dois achados validados com hashes de evidência, um relato de reteste e uma melhoria de runbook. O briefing do projeto pede um pacote com escopo no estilo ENG para a NMT sintética — diagrama, lista de verificação das ROE, resultado do lab_ports, hashes, reteste com FIXED/STILL OPEN e registro do exercício de parada. Nada de sondagens de tarifa, nada de dados de produção. As duas listas descrevem o mesmo pacote por dois ângulos: as entregas acima são o que o supervisor avalia, e o briefing nomeia os artefatos que precisam sustentá-las. Cada item é construído a partir das exportações sintéticas, com a rede de tarifas intocada.
+
+### 18.2 Apresentação
+
+Quinze minutos para o supervisor e um observador do SOC. A apresentação de Sam abre com as exclusões e os itens ainda abertos, como o F2, e só então passa às evidências. Slides que elogiam ferramentas sem hashes por trás reprovam na etapa da apresentação; qualquer elogio a ferramentas vai para um apêndice. O observador do SOC confere se o caminho de parada mostrado nos slides corresponde ao que o SOC de fato recebeu durante a janela. As perguntas do supervisor sobre qualquer item aberto são respondidas a partir das evidências, e não da memória.
+
+### 18.3 Passagem
+
+Runbooks e scripts no repositório da equipe, com versões. A passagem também inclui o caminho do cofre, os itens abertos e os contatos de emergência. O e-mail sozinho é uma transferência incompleta, então uma demonstração no jump host é agendada, e a lista de transferência exige o convite de calendário como anexo para provar que a demonstração foi marcada, e não apenas prometida. A demonstração permite ao técnico que recebe ver as ferramentas funcionando e fazer perguntas antes de assumir o trabalho. Ela também confirma que quem recebe consegue abrir o caminho do cofre antes que Sam se afaste.
+
+### 18.4 Limites
+
+Sam ainda não faz desenvolvimento de exploits nem projeto de cenários guiados por ameaças — temas de cursos mais longos. A página de limites declara que a rede de tarifas está fora do escopo, que todo o trabalho usou dados sintéticos e que Sam não tem autorização para testar sistemas reais. Cada limite aponta para a linha das ROE que o define, para que os examinadores possam verificar que a página não exagera a autoridade. Um colega revisa a redação dos limites antes da entrega, e os examinadores são orientados a ler esse apêndice primeiro, porque limites escondidos inventam uma cobertura que nunca existiu.
+
+### 18.5 Próximo curso
+
+Segurança de IA (066) é o próximo no caminho curricular. Dentro da própria trilha de red team, o próximo livro é o do nível de tecnólogo, que acrescenta profundidade em projeto e integração. Este livro técnico termina na competência procedimental sob ROE, então o trabalho pesado de projeto espera por esse curso. Antes que os concluintes sigam adiante, Sam diz a eles quais hábitos se transferem diretamente, como a disciplina de parada e o cálculo de hashes das evidências, e qual autoridade não se transfere para nenhum engajamento novo. O livro de segurança de IA citado acima continua sendo o próximo título no caminho curricular mais amplo, fora desta trilha.
+
+### 18.6 Folha de rosto de segurança
+
+A capa do projeto declara que ele é apenas sintético e sem varredura real. A folha de rosto de segurança repete as regras centrais: homologação primeiro, rede de tarifas em preto, as condições de parada e o prazo de exclusão da retenção. Ela é a página um do repositório do projeto, antes de qualquer código. Um robô de revisão verifica que ela é o primeiro arquivo que os revisores veem na árvore, e os merges falham se a capa estiver aninhada em outro lugar, para que ninguém leia os scripts sem antes ler os limites que os regem. Os avaliadores conferem a capa antes de qualquer outro arquivo da entrega.
+
+### 18.7 Higiene do repositório
+
+Os scripts do projeto entram no repositório da equipe sem credenciais, com README e cabeçalhos de licença conforme a política da NMT. A higiene do repositório proíbe segredos e inventários reais; só inventários sintéticos podem ser enviados. Um segredo no git reprova o projeto, seja qual for a qualidade dos achados, e o mesmo vale para um clone que contenha dados reais de inventário. O README precisa mostrar logo de início as instruções de desativação e de parada, para que qualquer pessoa que execute os scripts depois saiba como pará-los antes de saber como iniciá-los.
+
+### 18.8 Ciclo de retorno
+
+O retorno do supervisor vira duas edições de runbook em até uma semana — projeto concluído significa processo melhorado. Os comentários do supervisor viram correções de runbook na mesma semana, e Sam nunca arquiva retorno sem ler. Os links dessas correções da mesma semana são colados na nota de passagem do projeto. Uma nota de passagem sem eles é devolvida como incompleta até que os links estejam presentes, o que garante que o retorno mudou visivelmente o processo, em vez de ser reconhecido e esquecido. O supervisor pode então ver cada comentário ligado à mudança que produziu.
+
+### 18.9 Disciplina de campo
+
+A folha de rosto do projeto supervisionado tem uma página: declaração de uso apenas sintético, ID do engajamento do pacote de dados da sala de aula, lista de entregas com hashes, assinatura do supervisor e a declaração de limites de Sam. Sem a folha de rosto, o projeto está incompleto, mesmo que o trabalho técnico seja excelente. A disciplina de campo para o projeto é briefing, limites, folha de rosto de segurança, repositório limpo e STILL OPEN honesto. Esses cinco são o critério de aprovação. Um projeto que cumpre os cinco é aprovado mesmo quando relata itens abertos, enquanto um projeto a que falte um deles reprova, por mais polidos que pareçam seus achados.
+
+### 18.10 Nota de encerramento
+
+Depois da aceitação, Sam marca uma sessão de orientação de trinta minutos sobre os temas de controle de acesso do OWASP WSTG que ele quer aprofundar — o aprendizado contínuo faz parte da nota do projeto na NMT. O projeto prova que Sam consegue manter os hábitos do ENG-512 sem um professor na sala, e o crédito de portfólio exige artefatos que comprovem esses hábitos solo; a intenção não basta. Os artefatos são a evidência de que esses hábitos são reais: um pacote que mostra o exercício de parada, os hashes e os status de reteste honestos ganha a nota, enquanto a promessa de trabalhar assim não ganha.
+
+### 18.11 Extra
+
+A pergunta do observador do SOC costuma ser sobre detecção: Sam prepara uma técnica do ATT&CK e uma fonte de logs que recomendaria para cada achado. Como extra, Sam anexa as saídas do lab_ports e do lab_hash literalmente num apêndice. Assim, os examinadores podem reproduzir por conta própria as linhas NOT APPROVED, MATCH e MISMATCH e compará-las com os achados, sem precisar de uma reunião para perguntar como um resultado foi produzido. A saída literal também impede que um resumo suavize em silêncio um resultado que as ferramentas relataram de forma mais dura.
+
+### Exemplo resolvido (NMT sintética)
+
+O projeto de Sam é aceito com elogios por deixar o F2 aberto e pelo desempenho no exercício de parada do Laboratório II. Ele arquiva a folha de rosto e o plano para o próximo curso.
+
+> **Caso sintético — Northline Municipal Transit (NMT).** A operadora de transporte, Sam Park e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Sistemas de transporte reais e equipamentos de tarifa nunca são testados sem uma autorização separada e especializada. Este livro usa apenas dados sintéticos e não concede autorização para testar sistemas reais.
+
+### Exercícios
+
+- **EX069 — Entregas.** Liste quatro entregas do projeto. *Rubrica:* 3 = quatro do briefing; 2 = três; 1 = uma; 0 = nada.
+- **EX070 — Por que deixar o F2 aberto.** Por que deixar o F2 aberto é um ponto forte? *Rubrica:* 3 = honestidade; integridade da verificação; 2 = parcial; 1 = fraqueza; 0 = nada.
+- **EX071 — Limite.** Nomeie uma habilidade que Sam ainda não pode reivindicar. *Rubrica:* 3 = desenvolvimento de exploits ou liderar testes guiados por ameaças; 2 = parcial; 1 = comparação de portas; 0 = nada.
+- **EX072 — Próximo curso.** Qual é o curso 066? *Rubrica:* 3 = segurança de IA; 2 = IA; 1 = errado; 0 = nada.
+
+### Síntese
+
+O projeto técnico comprova um ofício de teste disciplinado sobre dados sintéticos e limites honestos.
+
+### Continue estudando — capítulo 18 de 18
+
+[← Capítulo 17 (rascunho)](#ch-17) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções ↓](#worked-results) · [Próximo curso pelo índice de capítulos →](../SUBJECTS.md)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX048 (as de EX049–EX072 estão na edição em inglês até a tradução dos capítulos correspondentes). A Northline Municipal Transit, Sam Park e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX072. A Northline Municipal Transit, Sam Park e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Site público, API do planejador de viagens, intranet dos funcionários, Active Directory, VPN (a cobrança de tarifas é o sexto, fora do escopo).
 
@@ -1039,6 +1491,54 @@ Respostas-modelo para EX001–EX048 (as de EX049–EX072 estão na edição em i
 **EX047.** Qualquer tentativa de varrer ou tocar os sistemas de produção da NMT.
 
 **EX048.** Se as classificações correspondem à lista de serviços aprovados.
+
+**EX049.** Reproduzir, verificar a ferramenta/conta/escopo e então escalar, se necessário.
+
+**EX050.** A API de homologação funciona no navegador do jump host; a falha está no repositório de confiança do notebook de Sam.
+
+**EX051.** Sintoma, passos tentados, capturas de tela, horário e o que foi descartado.
+
+**EX052.** Parar e acionar o contato de emergência antes de continuar.
+
+**EX053.** Hashes, comparações de portas, verificações de campos de chamados (também esqueletos de relatório).
+
+**EX054.** Exploração e decisões de escopo (e severidade sem revisão humana).
+
+**EX055.** Novas tentativas ilimitadas podem bloquear contas, inundar os logs ou entrar em laço para sempre.
+
+**EX056.** A validação de que o candidato automatizado é um problema real, dentro do escopo e com impacto.
+
+**EX057.** O serviço de produção do fornecedor de SMS (ou os blocos de mapa / o processador de pagamentos).
+
+**EX058.** A NMT responde pelo modo como armazena e expõe a chave em seus sistemas.
+
+**EX059.** Parar as verificações relacionadas, anotar a indisponibilidade e evitar tempestades de novas tentativas.
+
+**EX060.** Ela envia cada achado a quem de fato consegue corrigi-lo.
+
+**EX061.** Condições de parada e avisos de ROE/fora do escopo.
+
+**EX062.** Um aviso claro para não executar o procedimento contra a produção.
+
+**EX063.** Marcá-lo como obsoleto e arquivá-lo, para que não seja seguido.
+
+**EX064.** Depois de qualquer incidente de parada ou de uma grande mudança no sistema.
+
+**EX065.** Exercício de parada bem-sucedido, recusa da evidência ruim e um relatório de reteste coerente.
+
+**EX066.** Dois minutos a partir do anúncio do supervisor.
+
+**EX067.** Não. O F2 continua aberto sem evidência de correção.
+
+**EX068.** Nome do arquivo, hash e ID do achado.
+
+**EX069.** Comparação de portas, dois achados validados com hashes, um relato de reteste e uma melhoria de runbook.
+
+**EX070.** Isso mostra uma verificação honesta, em vez de chamados encerrados sem evidências.
+
+**EX071.** Desenvolvimento de exploits ou liderar um engajamento guiado por ameaças no estilo CBEST/TIBER.
+
+**EX072.** Segurança de IA.
 
 <a id="references"></a>
 ## Referências
