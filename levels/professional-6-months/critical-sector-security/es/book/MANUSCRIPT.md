@@ -54,9 +54,9 @@ Toda afirmación factual sobre un marco, una ley, una norma, un incidente públi
 4. [Métodos fundamentales](#ch-04): un registro de riesgos guiado por la consecuencia, titularidad y aceptación. Lab 4.
 5. [Herramientas e interpretación](#ch-05): marcos, evaluaciones, puntuaciones de madurez y métricas leídos con espíritu crítico.
 6. [Flujo de trabajo operativo](#ch-06): funciones, una matriz RACI, gobernanza de cambios de TI/TO y escalado. Lab 6.
-7. [Controles y verificación](../../en/book/MANUSCRIPT.md#ch-07): titularidad de los controles, niveles de aseguramiento y excepciones limitadas en el tiempo.
-8. [Análisis supervisado de un caso](../../en/book/MANUSCRIPT.md#ch-08): un caso de acceso remoto de proveedores y la gobernanza de terceros. Lab 8.
-9. [Comunicación, ética e informes](../../en/book/MANUSCRIPT.md#ch-09): relojes de notificación, clientes críticos, declaraciones provisionales y honestidad. Lab 9.
+7. [Controles y verificación](#ch-07): titularidad de los controles, niveles de aseguramiento y excepciones limitadas en el tiempo.
+8. [Análisis supervisado de un caso](#ch-08): un caso de acceso remoto de proveedores y la gobernanza de terceros. Lab 8.
+9. [Comunicación, ética e informes](#ch-09): relojes de notificación, clientes críticos, declaraciones provisionales y honestidad. Lab 9.
 10. [Calidad y diagnóstico de averías](../../en/book/MANUSCRIPT.md#ch-10): diagnosticar un programa de coordinación que no funciona. Lab 10.
 11. [Laboratorio supervisado](../../en/book/MANUSCRIPT.md#ch-11): diseñar, conducir y evaluar un ejercicio de mesa.
 12. [Portafolio de práctica y revisión final](../../en/book/MANUSCRIPT.md#ch-12): portafolio, sesión informativa para el consejo y un plan de 90 días.
@@ -826,7 +826,383 @@ Un programa funciona con funciones asignadas, una RACI con una sola persona que 
 <!-- cyberabc:chapter-navigation:start ch-06 -->
 ### Siga estudiando — capítulo 06 de 12
 
-[← Capítulo 05](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 →](../../en/book/MANUSCRIPT.md#ch-07)
+[← Capítulo 05](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Infraestructura crítica y seguridad sectorial: controles y verificación
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo debería ser capaz de:
+
+- describir un control en términos que un responsable pueda asumir: objetivo, dueño, funcionamiento y evidencia;
+- distinguir los niveles de aseguramiento (declarado, documentado, observado, probado) y decidir qué nivel necesita cada control;
+- planificar un programa de verificación proporcionado para los controles que protegen frente a consecuencias de nivel 5;
+- gestionar las excepciones a los controles como decisiones de riesgo limitadas en el tiempo y con dueño.
+
+El capítulo 6 puso en marcha el programa. Este capítulo pregunta si sus protecciones funcionan de verdad.
+
+### 7.1 Qué es un control, para un responsable
+
+Un **control** es una medida que modifica el riesgo ([NIST SP 800-53 Rev. 5](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final) cataloga miles de ellos). A efectos de coordinación, describa cada control importante en una ficha:
+
+- **Objetivo**: qué riesgo aborda y cómo («impide usar una contraseña robada de un proveedor para iniciar sesión en las estaciones»);
+- **Dueño**: quién responde de que funcione;
+- **Funcionamiento**: qué ocurre, con qué frecuencia y quién lo hace («la pasarela de acceso remoto exige un segundo factor para todas las cuentas de proveedores»);
+- **Evidencia**: qué mostraría que funciona y dónde se guarda;
+- **Señal de fallo**: qué vería si dejara de funcionar.
+
+Los controles sin dueño se deterioran igual que los riesgos sin dueño.
+
+### 7.2 Niveles de aseguramiento
+
+¿Hasta qué punto está seguro de que un control funciona? Cuatro niveles útiles:
+
+| Nivel | Significado | Evidencia de ejemplo |
+|---|---|---|
+| Declarado | Alguien dice que existe | «Sí, los proveedores usan MFA», en una reunión |
+| Documentado | Una política o un diseño lo describe | Norma de acceso remoto v2 |
+| Observado | Los registros muestran que funciona | Exportación de la configuración de la pasarela; registros de inicio de sesión que muestran eventos de segundo factor |
+| Probado | Una prueba deliberada mostró que detiene lo que debe | Un intento supervisado de iniciar sesión solo con contraseña es rechazado, y queda registrado en un informe de prueba |
+
+Los niveles más altos cuestan más. Un programa proporcionado aspira al nivel **probado** en los controles que protegen frente a consecuencias de nivel 5, al **observado** para los niveles 3–4, y acepta el **documentado** para el resto. Las orientaciones del NIST sobre supervisión continua describen cómo mantener un conocimiento permanente de si los controles siguen siendo eficaces ([NIST SP 800-137](https://csrc.nist.gov/pubs/sp/800/137/final)).
+
+### 7.3 Quién verifica
+
+- **Primera línea**: los dueños de los controles comprueban sus propios controles (autoevaluación, comprobaciones rutinarias).
+- **Segunda línea**: la coordinadora o la función de seguridad revisan la evidencia y toman muestras.
+- **Tercera línea**: la auditoría interna o un evaluador independiente dan garantías al consejo.
+
+El coordinador suele diseñar el plan de verificación y realizar las comprobaciones de segunda línea. Las pruebas en sistemas operativos de la planta deben autorizarse como cualquier otro trabajo (capítulo 3), y en los entornos de control una «prueba» suele ser una revisión de la configuración y de los registros más que un intento activo.
+
+Las comprobaciones de segunda línea deben tomar muestras de la evidencia directamente en lugar de aceptar el resumen del dueño.
+
+### 7.4 Excepciones
+
+A veces no se puede aplicar un control: un controlador antiguo de una estación no admite un segundo factor; un dispositivo médico no puede parchearse sin perder su certificación. Una **excepción** es una decisión registrada y con dueño de operar sin el control, que es una forma de aceptación del riesgo (capítulo 4). Necesita: el control y el sistema afectados; el motivo; las medidas compensatorias; la autoridad que la acepta; una fecha de caducidad; y un plan para eliminar la excepción. El registro de excepciones se revisa junto con el registro de riesgos.
+
+En Kestrel Water, la excepción del controlador de KW-10 llegó al consejo con caducidad en marzo.
+
+### 7.5 Ejemplo resuelto: verificar tres controles (sintético)
+
+La coordinadora elige tres controles que protegen frente a riesgos de nivel 5 y comprueba cada uno:
+
+| Control | Declarado / documentado | Observado | Probado | Hallazgo |
+|---|---|---|---|---|
+| C1: MFA para todo acceso remoto de proveedores | Sí: norma de acceso remoto v2 | La exportación de la pasarela muestra MFA en 5 de 6 cuentas de proveedores | Aún no | La cuenta de ScadaCo no tiene MFA (confirmado después en el Lab 8). **Laguna.** |
+| C2: copias de seguridad del historiador restaurables en 24 h | Sí: procedimiento de copias de seguridad | Los trabajos de copia terminan bien cada noche | Última prueba de restauración: nunca | **Sin verificar**: una copia correcta ≠ una restauración correcta (vinculado al riesgo R04). |
+| C3: límites de dosificación aplicados en la lógica del controlador | Sí: documento de diseño | Límites visibles en la revisión de la configuración hecha por J. Tan | Prueba en banco supervisada por el proveedor en un controlador de repuesto, registrada el 3 de febrero | **Verificado** al nivel de prueba para el repuesto; la configuración de producción coincide por suma de comprobación. |
+
+El plan de verificación que se deriva: corregir C1 en 30 días (dueño, A. Mensah); programar una prueba de restauración de C2 en 60 días con un resultado cronometrado (dueño, J. Tan); repetir la comprobación de C3 tras cualquier cambio de lógica. La coordinadora comunica el nivel de aseguramiento de cada control, no una única afirmación de «controles eficaces».
+
+### 7.6 Actividad práctica
+
+Escriba fichas de control (objetivo, dueño, funcionamiento, evidencia, señal de fallo) para dos controles de una organización que conozca y asigne a cada uno un nivel de aseguramiento actual, con su justificación. En cada ficha, diga cómo sería en la práctica la señal de fallo, por ejemplo un inicio de sesión de un proveedor sin evento de segundo factor en el registro de la pasarela. Explique por qué eligió el nivel de aseguramiento, citando la evidencia que vio realmente. Después decida qué nivel debería alcanzar el control, dada la consecuencia frente a la que protege, y qué paso concreto lo elevaría, por ejemplo una prueba de restauración para una copia de seguridad que solo se ha observado terminar bien. Mantenga las fichas lo bastante breves para que un dueño las actualice.
+
+### 7.7 Errores comunes y límites
+
+- Equiparar «el trabajo terminó bien» con «el control funciona» (copias de seguridad, parches).
+- Verificar los controles críticos solo al nivel declarado o documentado.
+- Hacer pruebas activas en sistemas operativos de la planta sin autorización ni acuerdo de operaciones.
+- Excepciones sin caducidad, que se convierten silenciosamente en el diseño.
+- Informar de controles como «eficaces» sin decir cómo se estableció.
+
+- Tratar la propia afirmación de un proveedor de que la MFA está activada como evidencia observada, cuando solo la exportación de la pasarela lo muestra.
+- Verificar un control una vez y nunca más, de modo que un cambio de configuración posterior lo elimina silenciosamente.
+- Probar un sistema de repuesto o de banco y olvidar confirmar que producción coincide, como hizo C3 mediante la suma de comprobación.
+
+### Ejercicios — capítulo 7
+
+**EX031 — Escriba una ficha de control.** *Objetivo:* hacer que un control pueda asumirse. *Insumos:* «Las cuentas de proveedores se eliminan cuando terminan los contratos». *Pasos:* escribir la ficha de cinco partes. *Evidencia esperada:* la ficha. *Rúbrica:* 3 = objetivo ligado a un riesgo, dueño con autoridad (jefe de operaciones o dueño del contrato), funcionamiento con desencadenante y plazo, evidencia (conciliación mensual de las cuentas con los contratos), señal de fallo (existen cuentas de contratos terminados); 2 = falta la señal de fallo; 1 = repite la frase; 0 = nada.
+
+**EX032 — Asigne objetivos de aseguramiento.** *Objetivo:* aplicar la proporcionalidad. *Insumos:* controles: MFA para el acceso de proveedores; política de contraseñas para los portátiles de oficina; procedimiento de operación manual de las estaciones; tarjetas de visitante en la sede central. *Pasos:* asignar niveles de aseguramiento objetivo y justificarlos por la consecuencia. *Evidencia esperada:* cuatro objetivos. *Rúbrica:* 3 = probado para la MFA de proveedores y la operación manual (mediante ejercicio o simulacro), documentado u observado para los demás, con razonamiento; 2 = objetivos sin razones; 1 = todo probado; 0 = nada.
+
+**EX033 — Diseñe una prueba de restauración.** *Objetivo:* verificar C2. *Insumos:* el ejemplo resuelto. *Pasos:* esbozar la prueba, los criterios de éxito y la autorización. *Evidencia esperada:* esbozo. *Rúbrica:* 3 = restauración en un entorno aislado, no en producción; cronometrada frente al objetivo de 24 h; comprueba la integridad de los datos de un periodo elegido; autorizada por el dueño del servicio; resultado registrado con fecha y evidencia; 2 = sin criterios de éxito; 1 = «comprobar los registros de las copias»; 0 = nada.
+
+**EX034 — Redacte una excepción.** *Objetivo:* gestionar una laguna de control. *Insumos:* el controlador de KW-10 no admite MFA para el acceso local de ingeniería. *Pasos:* redactar la excepción. *Evidencia esperada:* registro de la excepción. *Rúbrica:* 3 = control y sistema, motivo, medidas compensatorias (ninguna ruta remota, control de acceso físico, supervisión de cambios), autoridad que acepta acorde con la consecuencia, caducidad, plan de eliminación; 2 = sin caducidad; 1 = «no es posible»; 0 = nada.
+
+**EX035 — Informe del aseguramiento.** *Objetivo:* comunicar la verificación con honestidad. *Insumos:* la tabla del ejemplo resuelto. *Pasos:* escribir tres líneas para la dirección, una por control. *Evidencia esperada:* tres líneas. *Rúbrica:* 3 = cada una indica el nivel de aseguramiento alcanzado, la laguna o el resultado, el dueño y la fecha; evita «eficaz» sin evidencia; 2 = faltan fechas; 1 = «controles eficaces»; 0 = nada.
+
+### Síntesis del capítulo
+
+Un control es algo que un responsable puede asumir: objetivo, dueño, funcionamiento, evidencia y señal de fallo. El aseguramiento sube de declarado a documentado, observado y probado; aspire al nivel probado en los controles que protegen frente a las peores consecuencias. Verifique de forma proporcionada a través de tres líneas, autorice las pruebas como cualquier otro trabajo y mantenga las excepciones con dueño, compensadas y limitadas en el tiempo.
+
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Siga estudiando — capítulo 07 de 12
+
+[← Capítulo 06](#ch-06) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Infraestructura crítica y seguridad sectorial: análisis supervisado de un caso
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo debería ser capaz de:
+
+- analizar un problema de acceso de proveedores como un caso de gobernanza: contratos, cuentas, personas y evidencia;
+- realizar una revisión periódica del acceso remoto de terceros y actuar de forma proporcionada sobre sus hallazgos;
+- incorporar requisitos de seguridad para los proveedores en los contratos y en la incorporación;
+- presentar el análisis de un caso a un supervisor con las decisiones solicitadas, la evidencia adjunta y la incertidumbre etiquetada.
+
+Este es el primer caso supervisado del libro. Reúne el riesgo (capítulo 4), las funciones (capítulo 6) y la verificación de controles (capítulo 7).
+
+### 8.1 Por qué los proveedores importan tanto aquí
+
+Los servicios esenciales dependen de los proveedores para los equipos, el software, el mantenimiento y la supervisión. El acceso remoto de los proveedores es cómodo (un experto en bombas puede resolver un problema de noche a 200 kilómetros de distancia) y es también una vía de compromiso recurrente. Las orientaciones de la CISA sobre mitigaciones principales para la TO incluyen entre sus prioridades reducir la exposición y proteger el acceso remoto ([CISA, Primary Mitigations to Reduce Cyber Threats to Operational Technology](https://www.cisa.gov/resources-tools/resources/primary-mitigations-reduce-cyber-threats-operational-technology)). Las orientaciones del NIST sobre la cadena de suministro tratan a los proveedores como parte del riesgo de la organización y recomiendan integrar la gestión del riesgo de la cadena de suministro en la gobernanza y en las adquisiciones ([NIST SP 800-161 Rev. 1](https://csrc.nist.gov/pubs/sp/800/161/r1/upd1/final)). La NIS2 incluye la seguridad de la cadena de suministro entre las medidas de gestión de riesgos que deben adoptar las entidades ([Directive (EU) 2022/2555, Article 21](https://eur-lex.europa.eu/eli/dir/2022/2555/oj)).
+
+### 8.2 El ciclo de vida del proveedor
+
+La gobernanza de un proveedor con acceso sigue un ciclo de vida:
+
+1. **Seleccionar**: preguntas de seguridad en la compra, proporcionadas al acceso solicitado.
+2. **Contratar**: obligaciones de seguridad: personas con nombre, MFA, notificación de incidentes y de salidas de personal, derecho de revisión, tratamiento de los datos, apoyo a su respuesta a incidentes.
+3. **Incorporar**: cuentas creadas por persona nombrada, acceso mínimo, proceso de aprobación de las sesiones (capítulo 6).
+4. **Operar**: sesiones aprobadas, registradas y revisadas; revisiones periódicas del acceso.
+5. **Cambiar**: personal nuevo, sistemas nuevos, fusiones: nueva revisión.
+6. **Salir**: cuentas eliminadas, datos devueltos o destruidos, confirmación registrada.
+
+La mayoría de los problemas reales están en las juntas: un contrato que terminó pero cuya cuenta sobrevivió; un ingeniero que dejó al proveedor pero cuya contraseña no lo hizo.
+
+### 8.3 La revisión del acceso
+
+Una **revisión del acceso** periódica concilia tres fuentes: la lista de cuentas (lo que existe), el registro de contratos (lo que debería existir) y los registros de sesiones (lo que se usa). Hallazgos típicos y respuestas proporcionadas:
+
+| Hallazgo | Por qué importa | Respuesta proporcionada |
+|---|---|---|
+| Cuenta de un contrato terminado | Nadie rinde cuentas de su uso | Desactivarla ya; confirmarlo con el proveedor |
+| Sin uso durante más de 90 días | Exposición innecesaria | Desactivarla; reactivarla a petición mediante el proceso |
+| Cuenta compartida o sin nombre | Las acciones no pueden atribuirse | Sustituirla por cuentas nominativas; mientras tanto, restringirla |
+| Sin MFA | Basta la contraseña para acceder | Corregirlo o registrar una excepción limitada en el tiempo |
+| Uso muy por encima de lo esperado | Puede ser un proyecto legítimo, un mal uso o un compromiso | Preguntar al proveedor y al dueño interno; revisar los registros de sesiones antes de concluir |
+
+La última fila exige cuidado. Un volumen inusual es una **pregunta**, no una acusación.
+
+### 8.4 Caso resuelto: la revisión de mayo (sintético)
+
+Tras las lagunas de control del capítulo 7, la coordinadora realiza la primera revisión del acceso de proveedores el 4 de mayo de 2026, con una autorización de A. Mensah que permite exportar en modo de solo lectura la lista de cuentas y el registro de sesiones de la pasarela. El **Lab 8** reproduce la conciliación. **Lab 8** (guárdelo como `lab08.py` y ejecútelo con `python3 lab08.py`):
+
+```python
+# Lab 8 - third-party remote-access review (offline, standard library only; all data synthetic)
+import datetime as dt
+TODAY = dt.date(2026, 5, 4)
+# account, supplier, named person, MFA, contract end, last session, sessions in 90 days
+ACCOUNTS = [
+    ("v-hydro1",  "HydroLogic Ltd",  "P. Novak",  True,  "2027-03-31", "2026-04-28", 6),
+    ("v-hydro2",  "HydroLogic Ltd",  "",          True,  "2027-03-31", "2026-04-30", 11),
+    ("v-scadaco", "ScadaCo",         "M. Ilic",   False, "2026-12-31", "2026-03-15", 2),
+    ("v-pumps",   "Vale Pumps",      "D. Ruiz",   True,  "2025-11-30", "2026-02-10", 1),
+    ("v-meter",   "MeterWorks",      "K. Sato",   True,  "2026-09-30", "2025-10-02", 0),
+    ("v-integr",  "Northgate Integration", "S. Brandt", True, "2026-08-31", "2026-05-01", 19),
+]
+SESSIONS_EXPECTED = {"HydroLogic Ltd": 8, "ScadaCo": 4, "Vale Pumps": 2, "MeterWorks": 2, "Northgate Integration": 4}
+for acct, sup, person, mfa, end, last, n90 in ACCOUNTS:
+    f = []
+    if not person: f.append("shared/unnamed account")
+    if not mfa: f.append("no MFA")
+    if dt.date.fromisoformat(end) < TODAY: f.append("contract ended - disable")
+    if (TODAY - dt.date.fromisoformat(last)).days > 90: f.append("unused >90 days - disable")
+    if n90 > 2 * SESSIONS_EXPECTED[sup]: f.append(f"{n90} sessions vs ~{SESSIONS_EXPECTED[sup]} expected - ask why")
+    print(f"{acct:10s} {sup:22s} {'OK' if not f else '; '.join(f)}")
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+v-hydro1   HydroLogic Ltd         OK
+v-hydro2   HydroLogic Ltd         shared/unnamed account
+v-scadaco  ScadaCo                no MFA
+v-pumps    Vale Pumps             contract ended - disable
+v-meter    MeterWorks             unused >90 days - disable
+v-integr   Northgate Integration  19 sessions vs ~4 expected - ask why
+```
+
+El análisis de la coordinadora, etiquetado:
+
+- **Decidido (por A. Mensah, 4 de mayo):** desactivar hoy `v-pumps` (el contrato de Vale Pumps terminó en noviembre) y `v-meter` (sin uso desde octubre); sustituir `v-hydro2` por una cuenta nominativa en 14 días y, mientras tanto, restringirla a sesiones supervisadas.
+- **Debido:** ScadaCo debe activar la MFA en `v-scadaco` en 30 días, o se propondrá una excepción con medidas compensatorias (capítulo 7); dueño, A. Mensah.
+- **Abierto:** `v-integr`: Northgate Integration tuvo 19 sesiones en 90 días frente a unas 4 esperadas. La coordinadora **no** concluye que haya un mal uso. Pregunta a J. Tan si un proyecto lo explica y pide el registro de trabajo al gestor de cuenta de Northgate. J. Tan responde que Northgate está poniendo en servicio el nuevo enlace de telemetría de KW-11, aprobado en marzo; el registro de trabajo coincide con 17 de las 19 sesiones. Dos sesiones, el 12 y el 19 de abril a las 02:00, no figuran en el registro de trabajo. Esas dos se pasan a la responsable de seguridad y al KVROC para que revisen los registros de sesiones, por la vía de escalado de incidentes, y al proveedor solo se le informa después de que la responsable de seguridad lo acepte.
+- **Supuesto:** la exportación de la pasarela está completa. (Próxima revisión: comparar también con los orígenes permitidos del cortafuegos).
+
+El caso muestra la disciplina de la coordinadora: actuar con rapidez ante los fallos claros de gobernanza, preguntar antes de acusar, escalar por la vía adecuada la actividad que sigue sin explicación y registrar lo que se supone.
+
+### 8.5 Requisitos para contratos e incorporación
+
+A partir del caso, la coordinadora redacta cláusulas estándar para los nuevos contratos de proveedores con acceso remoto: solo personas con nombre; MFA; sesiones solo a través de la pasarela de la empresa, aprobadas por sesión o por ventana programada; el proveedor notificará a la empresa en las 24 horas siguientes la salida de un empleado y, con prontitud, cualquier incidente de seguridad que pueda afectar a la empresa; registros de trabajo disponibles a petición; cooperación en la respuesta a incidentes; borrado de los datos de la empresa al terminar el contrato, confirmado por escrito. La ISA/IEC 62443 incluye requisitos para proveedores de servicios e integradores que pueden orientar esas cláusulas ([ISA/IEC 62443 overview](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards)). La redacción jurídica corresponde a su equipo jurídico; su trabajo es especificar el resultado de seguridad.
+
+### 8.6 Presentación supervisada
+
+Presente el caso a su supervisor (aquí, E. Varga) en cinco partes: qué se revisó y con qué autoridad; los hallazgos, con evidencia; las decisiones ya tomadas y quién las tomó; las decisiones que se solicitan al supervisor (presupuesto para la MFA del lado de ScadaCo, aprobación de las cláusulas contractuales); y las preguntas abiertas, con responsables y fechas. Mantenga cada parte breve y etiquetada, para que el supervisor pueda interrumpirle en cualquier momento y aun así saber qué está decidido y qué se pide. En la revisión de mayo, las dos sesiones de Northgate sin explicar van en las preguntas abiertas con su responsable, no en los hallazgos. Lleve como adjuntos la salida del Lab 8 y la autorización, y diga con claridad lo que se supuso, como que la exportación de la pasarela estaba completa. Termine repitiendo las decisiones solicitadas y la fecha para la que se necesitan.
+
+### 8.7 Errores comunes y límites
+
+- Tratar una actividad inusual como prueba de compromiso, o ignorarla como «probablemente el proyecto».
+- Retirar un acceso necesario para el soporte crítico para la seguridad sin una alternativa.
+- Revisiones que usan una sola fuente (cuentas sin contratos ni sesiones).
+- Cláusulas contractuales que no pueden comprobarse.
+- El laboratorio modela una sola pasarela; los entornos reales tienen varias rutas de acceso (marcación telefónica, módems celulares, herramientas remotas instaladas por el proveedor) que la revisión debe encontrar.
+
+- Desactivar la cuenta de un proveedor cuyo soporte se necesita para un problema de dosificación en curso, sin organizar una alternativa.
+- Cerrar una revisión una vez corregidos los hallazgos evidentes, mientras dos sesiones sin explicar siguen abiertas sin responsable.
+
+### Ejercicios — capítulo 8
+
+**EX036 — Lea el Lab 8.** *Objetivo:* interpretar los resultados de la revisión. *Insumos:* la salida del Lab 8. *Pasos:* para cada cuenta, indicar el hallazgo, el riesgo y la respuesta proporcionada con su responsable. *Evidencia esperada:* seis filas. *Rúbrica:* 3 = coincide con 8.4, incluida la contención con `v-integr` y una alternativa para `v-scadaco`; 2 = acciones correctas, pero acusatorio con `v-integr`; 1 = lo desactiva todo; 0 = nada.
+
+**EX037 — Amplíe la revisión.** *Objetivo:* añadir una fuente. *Insumos:* el Lab 8. *Pasos:* añadir por cuenta una fecha de «última confirmación del personal» y señalar las cuentas cuyo proveedor no haya confirmado su lista de personal en 180 días; mostrar la salida. *Evidencia esperada:* código y salida. *Rúbrica:* 3 = campo añadido en todas las filas con valores de prueba que activan y que no activan la regla, salida mostrada, explica por qué importa la confirmación del personal (salidas); 2 = sin explicación; 1 = solo la regla; 0 = nada.
+
+**EX038 — Redacte cláusulas contractuales.** *Objetivo:* especificar las obligaciones del proveedor. *Insumos:* 8.5. *Pasos:* escribir cinco cláusulas comprobables en lenguaje llano. *Evidencia esperada:* las cláusulas. *Rúbrica:* 3 = cada cláusula tiene una obligación medible y una forma de verificarla (por ejemplo, aviso de salida de personal en 24 horas, verificado en la revisión trimestral); 2 = no comprobables; 1 = «el proveedor será seguro»; 0 = nada.
+
+**EX039 — Gestione las dos sesiones nocturnas.** *Objetivo:* escalar adecuadamente la actividad sin explicar. *Insumos:* 8.4. *Pasos:* escribir el mensaje a la responsable de seguridad y la decisión que necesita. *Evidencia esperada:* el mensaje. *Rúbrica:* 3 = hechos con horas en UTC y fuente, lo que se sabe (17 de 19 explicadas), lo que no, solicitud de revisión de los registros de sesiones por la vía de escalado, indicación de no alertar todavía al proveedor, tratamiento sensible (TLP:RED o AMBER+STRICT), hora de la próxima comprobación; 2 = sin indicaciones de tratamiento; 1 = «por favor, investigue a Northgate»; 0 = nada.
+
+**EX040 — Presente el caso.** *Objetivo:* presentación supervisada. *Insumos:* 8.6. *Pasos:* escribir la sesión informativa de cinco partes en menos de 300 palabras. *Evidencia esperada:* la sesión informativa. *Rúbrica:* 3 = las cinco partes, decisiones solicitadas de forma explícita, incertidumbre etiquetada, ninguna acusación sin fundamento; 2 = faltan las decisiones solicitadas; 1 = solo una narración; 0 = nada.
+
+### Síntesis del capítulo
+
+El acceso de proveedores se gobierna a lo largo de un ciclo de vida (seleccionar, contratar, incorporar, operar, cambiar, salir) y la mayoría de los fallos están en las juntas. Una revisión del acceso concilia cuentas, contratos y sesiones; responda de forma proporcionada, trate las anomalías como preguntas y escale por la vía adecuada lo que siga sin explicación. Convierta las lecciones en requisitos contractuales comprobables y presente los casos con las decisiones solicitadas y la incertidumbre etiquetada.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Siga estudiando — capítulo 08 de 12
+
+[← Capítulo 07](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Comunicación, ética e informes
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo debería ser capaz de:
+
+- identificar todas las obligaciones de notificación que puede desencadenar un incidente (legales, regulatorias, contractuales, de seguros) y gestionar sus relojes;
+- redactar una declaración provisional y una sesión informativa para un cliente crítico que sean exactas, útiles y honestas sobre la incertidumbre;
+- aplicar principios éticos a la comunicación: veracidad, proporcionalidad, equidad con las personas y corrección de los errores;
+- informar de los incidentes y del estado del programa a la dirección y al consejo de una forma que respalde las decisiones.
+
+Los capítulos 1–8 construyeron y ejercitaron el programa hacia dentro. Este capítulo mira hacia fuera.
+
+### 9.1 A quién hay que informar y cuándo
+
+Un incidente en un servicio esencial puede poner en marcha varios relojes a la vez. Con la NIS2, por ejemplo, las entidades deben enviar al CSIRT nacional o a la autoridad competente una **alerta temprana en 24 horas** desde que tienen conocimiento de un incidente significativo, una **notificación del incidente en 72 horas** y un **informe final en el plazo de un mes** desde la notificación ([Directive (EU) 2022/2555, Article 23](https://eur-lex.europa.eu/eli/dir/2022/2555/oj)). Otras jurisdicciones, sectores y contratos fijan desencadenantes y plazos distintos; las brechas de datos personales pueden acarrear obligaciones separadas; las aseguradoras suelen exigir un aviso rápido. Un coordinador prepara de antemano un **registro de notificaciones**: cada obligación, su desencadenante, destinatario, plazo, contenido, responsable y canal.
+
+Dos detalles deciden si cumple un reloj: **qué lo pone en marcha** (la detección, el conocimiento, la determinación de que el incidente es «significativo») y **quién registra ese momento**. Acuerde ambos antes de los incidentes y registre la hora de inicio en UTC en el registro de decisiones.
+
+### 9.2 Clientes críticos
+
+Los hospitales, las residencias, los pacientes de diálisis, otras empresas de servicios y los servicios de emergencia pueden necesitar actuar antes que el público. Sus necesidades son prácticas: qué está afectado, qué deben hacer, durante cuánto tiempo, cuándo llega la próxima actualización y a quién llamar. Los acuerdos con ellos (capítulo 2) suelen prometer una llamada en un plazo corto. Mantenga probados sus contactos y mantenga el mensaje libre de detalles técnicos. El acuerdo del Kestrel General Hospital promete una llamada en las dos horas siguientes a cualquier evento que pueda afectar al suministro o a la calidad; los contactos son la guardia de instalaciones y, fuera de horario, el responsable de turno del centro.
+
+### 9.3 Comunicación pública
+
+Una **declaración provisional** es un mensaje breve y factual que se emite pronto, antes de conocer el panorama completo. Dice lo que se sabe, lo que está haciendo la organización, lo que debe hacer el público (si debe hacer algo) y cuándo habrá más información. No especula sobre la causa ni la atribución, no minimiza («sin impacto») sin evidencia y no revela detalles útiles para un atacante. La redacta el responsable de comunicación; la aprueba el directivo que rinde cuentas (capítulo 6); operaciones confirma que cualquier afirmación sobre la seguridad («el agua es apta para beber») es cierta.
+
+### 9.4 Ética
+
+La comunicación sobre los servicios esenciales tiene peso para la seguridad pública. Cuatro principios:
+
+- **Veracidad**: no afirme nunca como hecho lo que es un supuesto; no niegue nunca lo que sabe.
+- **Proporcionalidad**: detalle suficiente para que las personas se protejan, no más; evite causar alarma innecesaria y evite ayudar a los atacantes.
+- **Equidad con las personas**: no nombre ni culpe públicamente a un empleado o a un proveedor con información incompleta; el error humano suele ser un problema del sistema.
+- **Corrección**: cuando una declaración resulte errónea, corríjala con prontitud y de forma visible.
+
+Internamente, una cultura de notificación **sin culpa** (las personas comunican errores y casi accidentes sin miedo) da al coordinador las señales tempranas de las que depende la comunicación externa.
+
+### 9.5 Ejemplo resuelto: los relojes del sábado (sintético)
+
+El sábado 13 de junio de 2026, a las 21:40 UTC, el responsable del incidente determina que un acceso no autorizado a la red de supervisión es un incidente significativo. Las normas ficticias de Kestrel Vale reproducen el patrón de 24 h / 72 h / un mes de la NIS2; el acuerdo del hospital exige una llamada en 2 horas; la póliza de seguro exige un aviso en 48 horas. El martes por la tarde, la coordinadora comprueba el registro con el **Lab 9**. **Lab 9** (guárdelo como `lab09.py` y ejecútelo con `python3 lab09.py`):
+
+```python
+# Lab 9 - notification clocks after an incident (offline, standard library only; synthetic obligations)
+# The deadlines are ILLUSTRATIVE for the fictional Kestrel Vale jurisdiction; real duties come from your own
+# law, regulator and contracts. The 24 h / 72 h / one-month pattern mirrors EU NIS2 Article 23.
+from datetime import datetime, timedelta, timezone
+UTC = timezone.utc
+aware = datetime(2026, 6, 13, 21, 40, tzinfo=UTC)        # incident judged significant (Saturday evening)
+OBLIGATIONS = [  # name, hours after awareness, recipient
+    ("Critical-customer call (contract)", 2,      "Kestrel General Hospital"),
+    ("Regulator early warning",          24,     "Kestrel Vale CSIRT"),
+    ("Insurer notice (policy)",          48,     "insurer"),
+    ("Regulator incident notification",  72,     "Kestrel Vale CSIRT"),
+    ("Regulator final report",           24*30,  "Kestrel Vale CSIRT"),   # 'one month' modelled as 30 days
+]
+SENT = {"Critical-customer call (contract)": datetime(2026, 6, 13, 23, 55, tzinfo=UTC),
+        "Regulator early warning": datetime(2026, 6, 14, 18, 5, tzinfo=UTC),
+        "Regulator incident notification": datetime(2026, 6, 16, 22, 30, tzinfo=UTC)}
+NOW = datetime(2026, 6, 16, 23, 0, tzinfo=UTC)
+for name, h, who in OBLIGATIONS:
+    due = aware + timedelta(hours=h)
+    sent = SENT.get(name)
+    if sent:
+        delta = (sent - due).total_seconds() / 3600
+        state = f"sent {sent:%a %d %H:%M}Z, {'LATE by' if delta > 0 else 'early by'} {abs(delta):.2f} h"
+    else:
+        state = "OVERDUE - not sent" if NOW > due else f"open, {(due - NOW).total_seconds()/3600:.1f} h left"
+    print(f"{name:35s} due {due:%a %d %b %H:%M}Z  {state}")
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+Critical-customer call (contract)   due Sat 13 Jun 23:40Z  sent Sat 13 23:55Z, LATE by 0.25 h
+Regulator early warning             due Sun 14 Jun 21:40Z  sent Sun 14 18:05Z, early by 3.58 h
+Insurer notice (policy)             due Mon 15 Jun 21:40Z  OVERDUE - not sent
+Regulator incident notification     due Tue 16 Jun 21:40Z  sent Tue 16 22:30Z, LATE by 0.83 h
+Regulator final report              due Mon 13 Jul 21:40Z  open, 646.7 h left
+```
+
+Surgen tres problemas. La llamada al hospital llegó 15 minutos tarde: la coordinadora estaba al teléfono con el oficial de guardia del regulador y el responsable de comunicación creía que ella llamaría al hospital; es el defecto de los dos R del capítulo 6 en la vida real. Nunca se avisó a la aseguradora: nadie tenía la póliza en el registro de notificaciones. La notificación de 72 horas al regulador llegó 50 minutos tarde porque la aprobación del consejero delegado se pidió a las 21:00 para un plazo de las 21:40. La alerta temprana, preparada a partir de una plantilla, salió con antelación.
+
+La coordinadora registra estos hechos en el registro de decisiones sin culpar a nadie, avisa de inmediato a la aseguradora con una explicación y añade dos acciones para la revisión: incluir la obligación del seguro en el registro con un responsable y fijar plazos internos para las aprobaciones (por ejemplo, «aprobación solicitada a más tardar 6 horas antes del plazo externo»). El laboratorio calcula los relojes; no decide qué cuenta como «tener conocimiento», que sigue siendo un juicio documentado.
+
+### 9.6 Informar a la dirección y al consejo
+
+Un informe breve de incidente para la dirección abarca: qué ocurrió (hechos, con el grado de confianza etiquetado); el impacto sobre el servicio y las personas; lo que se ha hecho y decidido; las obligaciones cumplidas e incumplidas; los riesgos actuales; las decisiones necesarias. Los informes del programa (mensuales o trimestrales) usan las métricas que impulsan decisiones del capítulo 5 y los principales riesgos clasificados por consecuencia del capítulo 4. Para el incidente del sábado, el informe a la dirección mostraría que la llamada al hospital llegó quince minutos tarde, que no se avisó a la aseguradora y que la notificación de 72 horas fue tardía, con las causas encontradas en lugar de nombres. Terminaría con las dos acciones para el registro y los plazos de aprobación, y pediría a la dirección que confirme ambas. Manténgalo en una página y adjunte los cálculos de los relojes, para que un lector pueda comprobar cada hora sin fiarse del resumen.
+
+### 9.7 Actividad práctica
+
+Redacte un registro de notificaciones para una organización que conozca, con al menos cinco obligaciones. Para cada una, escriba qué pone en marcha el reloj y quién lo registra. Marque toda obligación cuya fuente no haya verificado. Incluya los contratos y los seguros además de la ley, ya que el incidente del sábado mostró que el plazo de aviso de una aseguradora puede incumplirse simplemente porque nadie lo había anotado. Para cada obligación, nombre un responsable, fije un plazo interno de aprobación anterior al externo y registre el documento de origen con su cláusula. Compruebe si dos obligaciones se ponen en marcha en el mismo momento; si es así, acuerde quién registra ese momento y en qué zona horaria. Revise el registro cada vez que se renueve un contrato o una póliza.
+
+### 9.8 Errores comunes y límites
+
+- Obligaciones de notificación descubiertas durante el incidente.
+- Ningún plazo interno para las aprobaciones, de modo que se incumple el plazo externo.
+- Declaraciones provisionales que prometen «sin impacto» antes de que exista evidencia.
+- Nombrar prematuramente a personas o proveedores.
+- Las obligaciones legales reales varían; confirme las suyas con su asesoría jurídica y con su regulador. Los relojes de este libro son ilustrativos.
+
+- Dejar una llamada, como la sesión informativa al hospital, en manos de dos personas que dan por hecho que la hará la otra.
+- Poner en marcha cada reloj desde un momento distinto porque nadie acordó qué cuenta como tener conocimiento.
+- Olvidar las obligaciones contractuales y de seguros porque el registro solo enumera reguladores.
+
+### Ejercicios — capítulo 9
+
+**EX041 — Lea el Lab 9.** *Objetivo:* interpretar los relojes de notificación. *Insumos:* la salida del Lab 9. *Pasos:* para cada obligación, indicar el estado y la causa raíz de cualquier incumplimiento usando 9.5. *Evidencia esperada:* cinco filas. *Rúbrica:* 3 = hospital tarde por 0,25 h (responsabilidad poco clara), alerta temprana cumplida, aseguradora vencida (no figuraba en el registro), notificación tarde por 0,83 h (aprobación tardía), informe final abierto con 646,7 h; las causas raíz son de proceso, no de personas; 2 = solo los estados; 1 = parcial; 0 = nada.
+
+**EX042 — Redacte una declaración provisional.** *Objetivo:* comunicar pronto y con honestidad. *Insumos:* la empresa investiga un acceso no autorizado a sistemas que supervisan el tratamiento del agua; el personal de operaciones gestiona dos estaciones en manual; los análisis de calidad del agua son normales. *Pasos:* redactar una declaración de menos de 120 palabras. *Evidencia esperada:* la declaración. *Rúbrica:* 3 = solo hechos, lo que se está haciendo, lo que deben hacer los clientes (nada salvo que se les indique; cómo llegarán las actualizaciones), hora de la próxima actualización, sin especulación ni detalles útiles para un atacante, afirmación de seguridad solo tal como la confirme operaciones; 2 = especulación menor; 1 = «sin impacto, todo bien»; 0 = nada.
+
+**EX043 — Informe al hospital.** *Objetivo:* comunicación con un cliente crítico. *Insumos:* el mismo incidente; la presión de la zona este puede bajar hasta 4 horas mañana durante una conmutación controlada. *Pasos:* escribir el guion de la llamada. *Evidencia esperada:* el guion. *Rúbrica:* 3 = efecto en los términos del hospital, horario, seguridad del agua, lo que el hospital puede necesitar hacer (agua almacenada, prioridades), próxima actualización, contacto 24 h; pregunta qué necesita el hospital; 2 = ninguna pregunta al hospital; 1 = detalles técnicos; 0 = nada.
+
+**EX044 — Dilema ético.** *Objetivo:* aplicar los principios. *Insumos:* un periodista pregunta si el ingeniero de un proveedor causó el incidente; la evidencia interna sugiere que estuvo implicado el portátil robado del proveedor, sin confirmar. *Pasos:* redactar la respuesta y justificarla. *Evidencia esperada:* respuesta y razonamiento. *Rúbrica:* 3 = se niega a atribuir o nombrar con información sin confirmar, explica que la investigación sigue abierta, se compromete a actualizar, el razonamiento cita la veracidad y la equidad; 2 = respuesta correcta sin razonamiento; 1 = nombra al proveedor; 0 = nada.
+
+**EX045 — Arregle el proceso de aprobación.** *Objetivo:* evitar las notificaciones tardías. *Insumos:* 9.5. *Pasos:* diseñar plazos internos y delegaciones para los tres relojes externos. *Evidencia esperada:* el diseño. *Rúbrica:* 3 = plazos internos antes de cada plazo externo, aprobadores suplentes con nombre cuando el consejero delegado no está disponible, plantillas preparadas, inicio del reloj registrado en UTC por el responsable del incidente, aseguradora añadida al registro; 2 = solo plazos; 1 = «ser más rápidos»; 0 = nada.
+
+### Síntesis del capítulo
+
+Los incidentes ponen en marcha varios relojes a la vez; conózcalos de antemano, acuerde qué pone en marcha cada uno y quién lo registra, y fije plazos internos de aprobación anteriores a los externos. Los clientes críticos necesitan mensajes prácticos y tempranos; el público necesita declaraciones provisionales veraces y proporcionadas. Comunique sin culpar ni especular, corrija los errores de forma visible e informe a la dirección con hechos, impacto, decisiones y obligaciones.
+
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Siga estudiando — capítulo 09 de 12
+
+[← Capítulo 08](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 →](../../en/book/MANUSCRIPT.md#ch-10)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -908,6 +1284,42 @@ Estas son respuestas modelo. Una respuesta distinta que cumpla el nivel de exige
 **EX029.** Mantener en el jefe de operaciones las decisiones de seguridad de las personas (operación manual, aislamientos que afecten al proceso). Durante los incidentes, delegar la aprobación de las sesiones de proveedores en un suplente de operaciones con nombre o en el responsable del incidente, con operaciones consultado; traspasar el enlace con el hospital a la coordinadora; asegurar que haya un jefe de operaciones suplente de guardia para que la planta tenga siempre a alguien centrado en ella.
 
 **EX030.** Enumerar los cambios de emergencia a partir del registro del incidente; para cada uno, decidir mantener, modificar o revertir, con un responsable: la regla de «bloquear todo acceso de proveedores» pasa a ser un cambio normal, y el acceso se restablece proveedor a proveedor mediante el proceso normal de aprobación una vez terminada la revisión; eliminar la cuenta temporal de administrador local y verificar su eliminación; actualizar los diagramas y los registros; registrar la revisión como un registro de decisión.
+
+### Capítulo 7
+
+**EX031.** Objetivo: impide el uso de cuentas de proveedores por personas que ya no están bajo contrato (riesgo R01 y riesgos por salida de personal del proveedor). Dueño: el jefe de operaciones (como dueño del contrato y de las estaciones). Funcionamiento: cuando termina un contrato o el proveedor notifica la salida de un empleado, la cuenta se desactiva en 5 días laborables; cada mes, la coordinadora concilia las cuentas de la pasarela con el registro de contratos. Evidencia: registro de conciliación y exportación de la pasarela, guardados en la biblioteca de registros. Señal de fallo: cualquier cuenta cuyo contrato haya terminado o cuya persona nombrada se haya marchado.
+
+**EX032.** MFA de proveedores: probado (protege frente a consecuencias de nivel 5; un inicio de sesión supervisado solo con contraseña es rechazado). Procedimiento de operación manual: probado mediante simulacros o ejercicios (es la alternativa de seguridad). Política de contraseñas de los portátiles de oficina: observado (exportación de la configuración); consecuencia de nivel 3. Tarjetas de visitante de la sede central: documentado u observado; menor consecuencia para el servicio.
+
+**EX033.** Restaurar la última copia de seguridad del historiador en un entorno aislado (no en producción), con autorización de A. Mensah y ejecutada por J. Tan. Poner en marcha un cronómetro en el momento de la decisión de restaurar; éxito si el historiador es utilizable en 24 horas y los datos de un periodo elegido de 7 días están completos frente a una referencia conocida. Registrar horas, pasos, problemas y resultado en un informe de prueba; archivarlo y actualizar el nivel de aseguramiento del control C2 a «probado», con la fecha.
+
+**EX034.** «Excepción E-07: el control "MFA para el acceso de ingeniería" no se aplica a la interfaz local de ingeniería de KW-10. Motivo: el firmware del controlador no lo admite; sustitución prevista. Compensación: ninguna ruta remota a KW-10; armario cerrado con llaves registradas; sumas de comprobación de la configuración comparadas cada semana; alertas del KVROC ante cualquier sesión de ingeniería. Aceptada por: el director de operaciones, E. Varga (consecuencia 4), el 1 de octubre de 2026. Caducidad: 31 de marzo de 2027. Plan de eliminación: sustitución del controlador en el programa de inversiones de 2027; dueño, A. Mensah».
+
+**EX035.** C1 MFA de proveedores: observado en 5 de 6 cuentas; la laguna de ScadaCo se corregirá antes del 3 de junio (A. Mensah). C2 restauración del historiador: copias observadas cada noche, pero la restauración nunca se ha probado; prueba programada en 60 días (J. Tan). C3 límites de dosificación: probado en un controlador de repuesto el 3 de febrero y producción coincidente por suma de comprobación; nueva comprobación tras cualquier cambio de lógica (J. Tan).
+
+### Capítulo 8
+
+**EX036.** `v-hydro1`: sin hallazgo; se mantiene. `v-hydro2`: cuenta sin nombre, acciones no atribuibles; sustituirla por una cuenta nominativa en 14 días, con sesiones supervisadas mientras tanto (A. Mensah). `v-scadaco`: sin MFA, basta la contraseña para acceder; ScadaCo debe activarla en 30 días o se registra una excepción con medidas compensatorias; mantener una alternativa supervisada para el soporte urgente (A. Mensah). `v-pumps`: contrato terminado; desactivarla ya y confirmarlo con Vale Pumps. `v-meter`: sin uso > 90 días; desactivarla; reactivarla a petición. `v-integr`: 19 frente a ~4 sesiones; preguntar a J. Tan y a Northgate; un proyecto explica 17; escalar las dos sesiones nocturnas sin explicar a la responsable de seguridad. Ninguna acusación.
+
+**EX037.** Añadir un campo `staff_confirmed` (fecha en que el proveedor confirmó por última vez su lista de personas con acceso), por ejemplo "2026-04-01" para HydroLogic y "2025-09-15" para Northgate. Regla: `if (TODAY - dt.date.fromisoformat(conf)).days > 180: f.append("staff list unconfirmed >180 days")`. La salida muestra entonces el indicador en `v-integr` y no en `v-hydro1`. Importa porque las salidas de personal de los proveedores son una vía habitual por la que credenciales válidas sobreviven a sus dueños.
+
+**EX038.** (1) Solo pueden acceder las personas con nombre que figuran en el anexo A; los cambios se notifican por escrito antes del acceso (verificado en cada revisión trimestral). (2) Toda sesión remota usa la pasarela de la empresa con autenticación multifactor (verificado a partir de la configuración y los registros de la pasarela). (3) El proveedor notifica a la empresa en 24 horas cuando una persona de la lista se marcha o pierde un dispositivo usado para el acceso (verificado mediante la confirmación trimestral de la lista de personal). (4) El proveedor entrega los registros de trabajo de cualquier sesión en los 2 días laborables siguientes a la solicitud (verificado por muestreo). (5) Al terminar el contrato, el proveedor confirma por escrito en 14 días que se han borrado los datos de la empresa (verificado mediante el registro en la biblioteca).
+
+**EX039.** «TLP:AMBER+STRICT. L.: la revisión del acceso de proveedores encontró 19 sesiones de Northgate en 90 días. J. Tan y el registro de trabajo de Northgate explican 17 (puesta en servicio de la telemetría de KW-11, aprobada en marzo). Dos siguen sin explicar: el 12 y el 19 de abril, ambas iniciadas a las 02:00 hora local (01:00 UTC); origen y destino en la exportación de la pasarela adjunta. Desconocido: quién se conectó y qué se hizo. Te pido que revises los registros de sesiones por la vía de escalado de incidentes y me indiques si conviene restringir la cuenta. Por favor, no contactes con Northgate hasta que lo hayas decidido. Vuelvo a consultarte a las 16:00».
+
+**EX040.** (1) Revisado: las seis cuentas de proveedores de la pasarela de acceso remoto, 4 de mayo, exportación de solo lectura autorizada por A. Mensah. (2) Hallazgos: una cuenta sin nombre, una sin MFA, una de un contrato terminado, una sin uso, una con un volumen inusual (evidencia adjunta). (3) Decidido por A. Mensah: dos cuentas desactivadas; sustitución nominativa en 14 días. (4) Se le solicita: aprobar cláusulas contractuales estándar para las renovaciones; aprobar presupuesto para la MFA de ScadaCo si no pueden financiarla; confirmar revisiones mensuales. (5) Abierto: dos sesiones nocturnas de Northgate sin explicar, en manos de la responsable de seguridad, actualización el viernes; supuesto de que la pasarela es la única ruta de acceso, comparación con el cortafuegos antes de junio (J. Tan).
+
+### Capítulo 9
+
+**EX041.** Llamada al hospital: vencía el sábado a las 23:40Z, se hizo a las 23:55Z, 0,25 h tarde; causa: dos personas creían que llamaría la otra (responsabilidad duplicada). Alerta temprana: vencía el domingo a las 21:40Z, se envió a las 18:05Z, 3,58 h de antelación; la plantilla funcionó. Aseguradora: vencía el lunes a las 21:40Z; vencida, no enviada; causa: la obligación no figuraba en el registro. Notificación del incidente: vencía el martes a las 21:40Z, se envió a las 22:30Z, 0,83 h tarde; causa: la aprobación se pidió 40 minutos antes del plazo. Informe final: abierto, quedan 646,7 h. Todas las causas son lagunas de proceso.
+
+**EX042.** «Kestrel Water está investigando un acceso no autorizado a sistemas informáticos que nos ayudan a supervisar el tratamiento del agua. Como precaución, nuestros operadores gestionan en manual dos estaciones de bombeo. Los análisis de calidad del agua son normales y el agua del grifo sigue siendo apta para beber. No necesita hacer nada. Trabajamos con las autoridades competentes y actualizaremos esta página y nuestras redes sociales antes de las 18:00 de hoy, o antes si algo cambia».
+
+**EX043.** «Le habla [nombre], coordinadora de guardia de Kestrel Water. Mañana, entre las 09:00 y las 13:00, conmutaremos de forma controlada las estaciones que abastecen a su centro. El agua sigue siendo apta para beber. La presión puede bajar en la zona este hasta cuatro horas; el suministro no debería interrumpirse. Por favor, revisen sus disposiciones de agua almacenada para los servicios de esterilización y la diálisis. ¿Hay algo en su centro que necesite presión plena en esa franja, o un horario que les vendría peor? Volveré a llamar mañana a las 08:00 para confirmarlo; nuestro número 24 horas es [número]».
+
+**EX044.** «Estamos investigando con las autoridades competentes y no sería correcto especular sobre la causa ni sobre ninguna persona o empresa mientras continúa ese trabajo. Compartiremos lo que podamos cuando podamos confirmarlo». Razonamiento: la información no está confirmada (veracidad); nombrar a un proveedor o a una persona podría perjudicarles injustamente y puede ser erróneo (equidad); nos comprometemos a actualizar (corrección y transparencia).
+
+**EX045.** Plazos internos: llamada al hospital, la responsable (la coordinadora) llama en los 60 minutos siguientes al inicio del reloj; alerta temprana, borrador a las 12 h y aprobación solicitada antes de las 18 h; notificación del incidente, borrador a las 48 h y aprobación solicitada antes de las 60 h; aseguradora, añadida al registro y avisada junto con la alerta temprana. Delegación: si el consejero delegado no está disponible, aprueba el director de operaciones (COO) y, después, el director del área de operaciones. Plantillas preparadas para cada caso. El responsable del incidente registra el inicio del reloj en UTC en el registro de decisiones.
 
 <a id="glossary"></a>
 
