@@ -931,9 +931,13 @@ You will (1) scope database assessment without extracting personal data; (2) tes
 
 Authorized database work uses synthetic rows or masked copies. Exporting production personal data into a student laptop is a privacy incident, not a finding. The ROE must state: no SELECT of columns tagged personal, no full-table dumps, row limits and a destroy-by date for any temporary extract.
 
+Row limits and destroy-by dates turn temporary extracts into controlled objects rather than souvenirs. Tagging personal columns gives the query tool something to refuse automatically. A student laptop with a production dump is a breach waiting for a lost bag. Sam's ROE checklist fails the kickoff if any of those clauses is missing.
+
 ### 13.2 Authorization, not injection recipes
 
 The engineering question is usually "can role R read table T?" Test that with the granted role. Teaching SQL injection payloads is out of this book's safety boundary; if injection is in scope for a professional engagement, it is under a separate method line and disclosure plan, not a homework exercise.
+
+Role tests answer the client's real question: who among their staff can see which tables. Payloads belong outside this course because they teach harm without teaching the engineering of access control. When a professional ROE includes injection, it is a named method with its own disclosure path, never a lab exercise. Sam files authorization gaps as findings about roles and grants.
 
 ### 13.3 Synthetic data
 
@@ -941,17 +945,25 @@ Generate deterministic synthetic customers with faker-like rules or fixed seeds 
 
 > **Synthetic case — Riverstone Transit.** Sam needed fare-product rows for a report test. Ops provided a synthetic snapshot with product ids and prices only — no passenger names — and a 48-hour destroy tag.
 
+Fixed seeds mean two students and a CI job see the same customers and the same failing checks. Production backups bring privacy duty and irreversible exposure if the repo leaks. Sam generates data in the lab setup script and commits only the generator, never a dump.
+
 ### 13.4 Errors and limits
 
 Masking that leaves unique rare values can still identify people. Prefer synthetic generation over imperfect masking when teaching.
+
+A rare disease code or an unusual job title can re-identify someone even after names are stripped. Synthetic rows avoid that argument entirely for teaching. When a client still demands masked extracts, Sam waits for privacy sign-off and keeps the files on client-controlled hosts and records the destroy-by date in the engagement log. Teaching labs never receive even masked production rows from any client.
 
 ### 13.3b Row-level and column-level controls
 
 Modern warehouses offer row and column policies. Assessment questions become: does role R see column C? Does row filter F apply? Test with the role itself. Document the policy engine version; "we ran SELECT *" against an admin role proves little about analyst exposure.
 
+Admin SELECT * shows what an admin sees, which is the wrong question for analyst exposure. Running as role R with the policy engine's version recorded makes the result match production behaviour. Column denies and row filters fail differently, so both need their own checks. Sam stores the role name on every such finding.
+
 ### 13.1b Masking pitfalls
 
 Replacing names with initials or shuffling rare zip codes still leaves quasi-identifiers. For teaching and most assessments, synthetic generation with a fixed seed is simpler and safer than arguing about imperfect masks. If the host insists on masked production extracts, require a privacy review and keep the extract off student laptops.
+
+Quasi-identifiers combine: a birth year, a depot and a rare job title can point to one staff member. Fixed-seed synthesis sidesteps the debate and still stresses authorization logic. Masked extracts that must be used stay off personal devices and under the privacy review's retention rules. Sam prefers to demonstrate the same finding on synthetic rows whenever the client allows it.
 
 ### Exercises
 
@@ -979,9 +991,13 @@ You will (1) put assessment tools under version control with review; (2) gate sc
 
 TrackScope and FindingsDesk are software. They need repositories, code review, tagged releases and changelogs. A ROE that cites "TrackScope" without a version is incomplete; cite `TrackScope v0.9.2` or the git SHA used.
 
+Without a version, two engineers can run different builds and disagree about what the tool denied. Tags and changelogs make that disagreement checkable. Code review catches a scope check that fails open before it reaches an engagement. Sam pastes the SHA into the kickoff notes and refuses to start if the running binary differs.
+
 ### 14.2 Gate widening
 
 Merges that add a CIDR, open a port or remove a deny-list entry require a second reviewer and a linked authorization ticket. Merges that only tighten scope can be lighter. Encode this in CODEOWNERS or a required check that diffs the scope files.
+
+Widening scope is an authorization event, so it needs the same dual attention as a ROE change. Tightening can move faster because it cannot create new targets. A required check on scope diffs stops a quiet CIDR addition in a large pull request. Sam links every widening merge to the client's written approval ticket.
 
 ### 14.3 CI fixtures
 
@@ -989,17 +1005,25 @@ Continuous integration runs the labs and unit tests on synthetic data. Never poi
 
 > **Synthetic case — Riverstone Transit.** A PR added 10.30.0.0/16 to scope "for next month". CI's scope-diff check blocked merge until ticket AUTH-442 was linked and a second owner approved.
 
+CI that can reach a client network would turn every broken test into a possible probe. Synthetic fixtures keep failures local and repeatable. Secrets in logs become incidents; vaults keep them out of build output. Sam's pipelines have no routes to engagement networks and fail if someone adds one.
+
 ### 14.4 Errors and limits
 
 Version tags can drift from what operators actually run; record the running version in the engagement log at start.
+
+Operators install hotfixes by hand and forget to update the tag on the checklist. Logging the running version at start makes the mismatch visible before traffic flows. Sam compares that log line to the ROE pin and stops the window on disagreement until operators install the pinned build or the ROE is revised. A sticky note on a laptop is not a version pin.
 
 ### 14.3b Release trains vs hotfixes
 
 Normal improvements ride a release train with Lab I/II. Safety hotfixes may skip features but not verification: a minimal fail-closed regression pack is mandatory. Tag hotfixes clearly so an engagement can pin either the train build or the hotfix SHA with eyes open.
 
+Safety fixes must still prove fail-closed behaviour, even when features wait. Clear tags stop an engagement from silently mixing a train build with a laptop hotfix. Pinning with eyes open means the client knows which binary produced the evidence. Sam keeps the regression pack small so hotfixes stay fast without skipping it.
+
 ### 14.1b Branching model
 
 Use short-lived branches with mandatory CI on synthetic fixtures. Long-lived feature branches diverge from safety fixes on main and recreate fail-open merges. Protect main with required reviewers and status checks named after Lab I safety rows.
+
+Short branches pick up safety fixes from main instead of reinventing them weeks later. Long-lived branches are how fail-open merges return after they were fixed. Required checks named after Lab I rows make the safety suite impossible to skip with a casual approve. Sam deletes stale branches weekly so divergence cannot hide.
 
 ### Practice note
 
@@ -1031,9 +1055,13 @@ You will (1) map CIA and authentication/authorization to assessment questions; (
 
 Confidentiality: who can read this? Integrity: who can change this? Availability: what stops this working? Each finding should say which property is affected and for which asset. "Security issue" without that map is not actionable.
 
+Mapping each finding to confidentiality, integrity or availability tells the fixer what kind of harm to prevent. An asset without a property leaves the client guessing whether to encrypt, validate or add capacity. Sam rejects draft tickets that still say only 'security issue' and sends them back with the three questions listed.
+
 ### 15.2 Vulnerability, exposure, risk
 
 A default password is a vulnerability. On a staging host reachable from the corporate network it is an exposure. Risk adds likelihood and impact for the organization — which needs their context, not a universal CVSS-only story. FindingsDesk stores impact and exposure fields separately; risk acceptance stays with the client.
+
+Separating the three stops a default password on an isolated lab host being scored like one on the public portal. Exposure fields capture reachability; impact fields capture harm; acceptance of residual risk stays a client decision. CVSS alone cannot know Riverstone Transit's ridership or depot layout. Sam fills exposure and impact and leaves the acceptance box for the client owner.
 
 ### 15.3 Empty scores
 
@@ -1041,17 +1069,25 @@ Albrecht and Jensen (arXiv:2010.06377) criticize methodology scores that do not 
 
 > **Synthetic case — Riverstone Transit.** Sam stopped putting a single "risk = 42" on slides. The deck now shows two critical findings, three SLA breaches and 71% technique coverage of the planned set.
 
+A methodology score that does not predict outcomes flatters the assessor and misleads the buyer. Counts of out-of-scope probes and time-to-stop are ugly and useful. When a score must appear, the model and inputs sit beside it so another engineer can recompute. Sam's dashboards lead with those concrete measures.
+
 ### 15.4 Errors and limits
 
 Fundamentals are shared vocabulary; they are not a complete threat model. Continue into Chapter 23 for structured failure analysis.
+
+Shared vocabulary gets teams talking; it does not list every failure mode. Structured analysis later in the course builds on these terms rather than replacing them. Sam treats a CIA label as the start of a finding, not the end of the threat model. He expects the structured analysis chapters to add failure modes these terms alone cannot name. Until then, the vocabulary still prevents vague tickets.
 
 ### 15.3b Mapping to tickets
 
 Every finding should cite which property (C, I, or A) is primarily affected and whether the issue is vulnerability, exposure, or a risk judgment left to the client. FindingsDesk can require the fields so reports stay consistent across authors and semesters.
 
+Required fields stop authors inventing private shorthand for the same ideas. Consistency across semesters means a re-test engineer can read last year's ticket without a translation guide. Clients comparing two firms see the same shape of claim. Sam's template blocks submit until property and issue-kind are set.
+
 ### 15.1b From property to test
 
 If a finding claims confidentiality impact, the validation plan must include a confidentiality check (who can still read). If it claims availability impact, validation includes a canary or synthetic probe — not a new attack. Align property, finding and re-test method in one paragraph of the ticket.
+
+A confidentiality claim without a who-can-read check cannot be closed honestly. Availability claims need a gentle canary, not a fresh flood. One paragraph that ties property, finding and re-test keeps the ticket coherent after handoff. Sam pastes that paragraph into the validation plan field before the finding leaves draft.
 
 ### Exercises
 
@@ -1079,9 +1115,13 @@ You will (1) write requirements that are testable; (2) trace a requirement to an
 
 "The system should be secure" is not a requirement. "TrackScope rejects any target outside the signed CIDR/port set and records the reason code" is. Each requirement needs an id, a shall-statement, a verification method (test, inspection, analysis) and an owner.
 
+Shall-statements with ids turn arguments into checks. Verification method and owner stop requirements that nobody can prove and nobody maintains. Sam writes the reject-and-record behaviour of TrackScope as requirement TS-SCOPE-1 with a unit test as its method. Anything weaker is rewritten before design starts.
+
 ### 16.2 Traceability
 
 A simple matrix: requirement → design element → test case → engagement evidence. When a finding shows a scope bypass, you know which requirement and test failed. Without the matrix, post-mortems become blame.
+
+When a scope bypass appears, the matrix names the broken test and the requirement it was meant to enforce. Blame cultures grow in the gap where that link is missing. Sam updates the matrix in the same change as the code so the link cannot rot for a week. Post-mortems open on that row first.
 
 ### 16.3 Interfaces
 
@@ -1089,17 +1129,25 @@ TrackScope emits allow/deny events; FindingsDesk consumes finding drafts; PulseM
 
 > **Synthetic case — Riverstone Transit.** Requirement R-17 "deny reasons are immutable after insert" traced to the FindingsDesk append-only event table and test T-17 that tries an UPDATE and expects failure.
 
+Silent schema edits break stop-condition pages at the worst moment. Versioned JSON contracts make breakage a deliberate release with a migration note. Each consumer declares the versions it accepts. Sam's integration tests publish a sample event at each supported version.
+
 ### 16.4 Errors and limits
 
 Traceability matrices rot if not updated in the same PR as the code. Keep them next to the code.
+
+A matrix in a slide deck dies first. Keeping it beside the code means the same review that merges a feature sees the traceability update. Sam fails CI if a new requirement id lacks a test row. Slide-only matrices are rejected in review. Owners get a weekly mail if their rows lag the merged code, and the engagement cannot cite a requirement that has no current test.
 
 ### 16.3b Interface SLAs
 
 Internal SLAs between services matter: TrackScope may need FindingsDesk to accept an event within N seconds during a stop condition. Write that as a requirement with a synthetic load test. Without it, stop-condition pages arrive after the human already called the client.
 
+A stop-condition event that arrives late is an event that failed its purpose. Synthetic load tests prove FindingsDesk can accept bursts when TrackScope denies many targets at once. Writing the latency budget as a requirement makes it visible in planning, not only in an outage. Sam pages on SLA breaches during exercises so the path is rehearsed.
+
 ### 16.1b Glossary for stakeholders
 
 Maintain a one-page glossary: ROE, ScopeVersion, deny-list, planned technique, sealed evidence. Stakeholders misuse "coverage" and "risk" constantly; the glossary is a requirements artefact, not decoration, and appears in the engagement kickoff deck.
+
+Coverage and risk are everyday words with special meanings here, and misuse drives bad decisions. A one-page glossary in the kickoff deck gives everyone the same definitions before the window opens. ROE, ScopeVersion and sealed evidence each get one plain sentence. Sam reads the three most-abused terms aloud at kickoff and leaves the page in the shared folder.
 
 ### Practice note
 
