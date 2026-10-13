@@ -25,11 +25,11 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 | 3 | [13](book/PLAN.md#ch-13) | Sistemas de datos | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-13) | [14 · Borrador](book/MANUSCRIPT.md#ch-14) |
 | 3 | [14](book/PLAN.md#ch-14) | Ingeniería de software | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-14) | [15 · Borrador](book/MANUSCRIPT.md#ch-15) |
 | 3 | [15](book/PLAN.md#ch-15) | Fundamentos de seguridad | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-15) | [16 · Borrador](book/MANUSCRIPT.md#ch-16) |
-| 4 | [16](book/PLAN.md#ch-16) | Ingeniería de sistemas | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-16) | [17 · Plan](book/PLAN.md#ch-17) |
-| 4 | [17](book/PLAN.md#ch-17) | Fundamentos de control y realimentación | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-17)) | [18 · Plan](book/PLAN.md#ch-18) |
-| 4 | [18](book/PLAN.md#ch-18) | Arquitectura de seguridad | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-18)) | [19 · Plan](book/PLAN.md#ch-19) |
-| 4 | [19](book/PLAN.md#ch-19) | Identidad y criptografía | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-19)) | [20 · Plan](book/PLAN.md#ch-20) |
-| 4 | [20](book/PLAN.md#ch-20) | Infraestructura crítica y seguridad sectorial: contexto de ingeniería | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-20)) | [21 · Plan](book/PLAN.md#ch-21) |
+| 4 | [16](book/PLAN.md#ch-16) | Ingeniería de sistemas | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-16) | [17 · Borrador](book/MANUSCRIPT.md#ch-17) |
+| 4 | [17](book/PLAN.md#ch-17) | Fundamentos de control y realimentación | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-17) | [18 · Borrador](book/MANUSCRIPT.md#ch-18) |
+| 4 | [18](book/PLAN.md#ch-18) | Arquitectura de seguridad | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-18) | [19 · Borrador](book/MANUSCRIPT.md#ch-19) |
+| 4 | [19](book/PLAN.md#ch-19) | Identidad y criptografía | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-19) | [20 · Borrador](book/MANUSCRIPT.md#ch-20) |
+| 4 | [20](book/PLAN.md#ch-20) | Infraestructura crítica y seguridad sectorial: contexto de ingeniería | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-20) | [21 · Plan](book/PLAN.md#ch-21) |
 | 5 | [21](book/PLAN.md#ch-21) | Infraestructura crítica y seguridad sectorial: requisitos | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-21)) | [22 · Plan](book/PLAN.md#ch-22) |
 | 5 | [22](book/PLAN.md#ch-22) | Infraestructura crítica y seguridad sectorial: modelos de sistema y de datos | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-22)) | [23 · Plan](book/PLAN.md#ch-23) |
 | 5 | [23](book/PLAN.md#ch-23) | Infraestructura crítica y seguridad sectorial: análisis de amenazas y fallas | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-23)) | [24 · Plan](book/PLAN.md#ch-24) |
