@@ -52,21 +52,57 @@ Diego Ramos is a technologist student at the fictional Southport Polytechnic. Hi
 
 Each client site has a browser front end, an application server, a database and file storage, running on a cloud hosting account managed by Brightwave. Code lives in repositories; a build service turns code into deployable packages.
 
+Section one point two develops computing systems with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section one point two, Aiko Mori expects computing claims to carry owners and dates.
+
+Section one point two treats the case parts of as testable only when evidence and ticket IDs are recorded.
+
 ### 1.3 Shared components
 
 Brightwave reuses libraries across clients: the same upload library, forms library and date utilities appear in many projects. Reuse saves time but means one flaw affects many clients at once.
+
+Section one point three develops computing systems with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section one point three, Aiko Mori expects computing claims to carry owners and dates.
+
+Section one point three treats the case parts of as testable only when evidence and ticket IDs are recorded.
+
+For section one point three, Brightwave Digital will not accept computing work without a written trail.
 
 ### 1.4 Third-party code
 
 Most code in each project comes from open-source packages. Zimmermann et al. (2019) showed that a small number of packages and maintainers can reach a large share of an ecosystem; agencies concentrate this risk further by reusing the same packages across clients.
 
+Section one point four develops computing systems with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section one point four, Aiko Mori expects computing claims to carry owners and dates.
+
+Section one point four treats the case parts of as testable only when evidence and ticket IDs are recorded.
+
 ### 1.5 Responsibility
 
 Brightwave is responsible to each client for keeping their site secure, including the libraries it chose. Contracts say so.
 
+Section one point five develops computing systems with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section one point five, Aiko Mori expects computing claims to carry owners and dates.
+
+Section one point five treats the case parts of as testable only when evidence and ticket IDs are recorded.
+
+For section one point five, Brightwave Digital will not accept computing work without a written trail.
+
 ### 1.6 What was missing
 
 Brightwave had no central list of which client used which library version. Each project's manifest held the answer, but nobody had combined them.
+
+Section one point six develops computing systems with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section one point six, Aiko Mori expects computing claims to carry owners and dates.
+
+Section one point six treats the case parts of as testable only when evidence and ticket IDs are recorded.
+
+For section one point six, Brightwave Digital will not accept computing work without a written trail.
 
 ### Worked example
 
@@ -104,25 +140,69 @@ You will (1) explain how browsers reach hosted apps; (2) describe DNS, HTTPS and
 
 A visitor types the Greenleaf booking address. DNS translates the name to an address; the browser connects over HTTPS, checking the certificate; a content delivery network may serve images; the request reaches the app server.
 
+Section two point one develops networks and internet services with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section two point one, Aiko Mori expects networks claims to carry owners and dates.
+
+Section two point one treats reaching site https dns as testable only when evidence and ticket IDs are recorded.
+
 ### 2.2 HTTPS
 
 HTTPS encrypts traffic and lets the browser confirm it reaches the real site. Brightwave renews certificates automatically and monitors expiry.
+
+Section two point two develops networks and internet services with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section two point two, Aiko Mori expects networks claims to carry owners and dates.
+
+Section two point two treats reaching site https dns as testable only when evidence and ticket IDs are recorded.
+
+For section two point two, Brightwave Digital will not accept networks work without a written trail.
 
 ### 2.3 DNS control
 
 Client domains are managed in Brightwave's DNS account with two-person approval and multi-factor sign-in, since a changed DNS record could send visitors to a fake site.
 
+Section two point three develops networks and internet services with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section two point three, Aiko Mori expects networks claims to carry owners and dates.
+
+Section two point three treats reaching site https dns as testable only when evidence and ticket IDs are recorded.
+
+For section two point three, Brightwave Digital will not accept networks work without a written trail.
+
 ### 2.4 Package downloads
 
 Build services download packages from public registries over HTTPS. Lockfile hashes let the build check that what arrives is what was recorded.
+
+Section two point four develops networks and internet services with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section two point four, Aiko Mori expects networks claims to carry owners and dates.
+
+Section two point four treats reaching site https dns as testable only when evidence and ticket IDs are recorded.
+
+For section two point four, Brightwave Digital will not accept networks work without a written trail.
 
 ### 2.5 Network controls
 
 App servers accept web traffic only through the hosting platform's load balancer; databases are not reachable from the internet; build machines can reach only package registries and code hosts.
 
+Section two point five develops networks and internet services with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section two point five, Aiko Mori expects networks claims to carry owners and dates.
+
+Section two point five treats reaching site https dns as testable only when evidence and ticket IDs are recorded.
+
 ### 2.6 Outbound calls
 
 Some apps call external services (payments, email). Each allowed destination is listed, which limits server-side request forgery (OWASP Top 10:2021 A10).
+
+Section two point six develops networks and internet services with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section two point six, Aiko Mori expects networks claims to carry owners and dates.
+
+Section two point six treats reaching site https dns as testable only when evidence and ticket IDs are recorded.
+
+For section two point six, Brightwave Digital will not accept networks work without a written trail.
 
 ### Email security
 
@@ -164,25 +244,71 @@ You will (1) write small, clear functions; (2) validate input; (3) keep secrets 
 
 Diego writes small functions with one job each and names that say what they do. Clear code is easier to review, and reviewers catch more problems in short changes.
 
+Section three point one develops programming foundations with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section three point one, Aiko Mori expects programming claims to carry owners and dates.
+
+Section three point one treats clear code input validation as testable only when evidence and ticket IDs are recorded.
+
+For section three point one, Brightwave Digital will not accept programming work without a written trail.
+
 ### 3.2 Input validation
 
 The booking form accepts a pet name, a date and a time slot. Each field is checked on the server against what is allowed: a name of 1–40 letters, spaces or hyphens; a date within the next 60 days; a slot from the clinic's list. OWASP ASVS input-validation requirements describe this allowlist approach.
+
+Section three point two develops programming foundations with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section three point two, Aiko Mori expects programming claims to carry owners and dates.
 
 ### 3.3 Secrets
 
 API keys for email and payments are read from environment variables set in the hosting platform, never written in code. A pre-commit check warns if anything key-like is added.
 
+Section three point three develops programming foundations with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section three point three, Aiko Mori expects programming claims to carry owners and dates.
+
+Section three point three treats clear code input validation as testable only when evidence and ticket IDs are recorded.
+
+For section three point three, Brightwave Digital will not accept programming work without a written trail.
+
 ### 3.4 Version control
 
 Every change is a commit with a message explaining why. Pull requests are reviewed by another developer before merging.
+
+Section three point four develops programming foundations with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section three point four, Aiko Mori expects programming claims to carry owners and dates.
+
+Section three point four treats clear code input validation as testable only when evidence and ticket IDs are recorded.
+
+For section three point four, Brightwave Digital will not accept programming work without a written trail.
 
 ### 3.5 Tests
 
 Each validation rule has tests for valid values, edge values and invalid values.
 
+Section three point five develops programming foundations with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section three point five, Aiko Mori expects programming claims to carry owners and dates.
+
+Section three point five treats clear code input validation as testable only when evidence and ticket IDs are recorded.
+
+For section three point five, Brightwave Digital will not accept programming work without a written trail.
+
+Section three point five fails closed if programming evidence is missing rather than guessing.
+
 ### 3.6 Error messages
 
 Errors tell the user which field is wrong without repeating unsafe input back into the page.
+
+Section three point six develops programming foundations with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section three point six, Aiko Mori expects programming claims to carry owners and dates.
+
+Section three point six treats clear code input validation as testable only when evidence and ticket IDs are recorded.
+
+For section three point six, Brightwave Digital will not accept programming work without a written trail.
 
 ### Dependencies in code
 
@@ -228,9 +354,25 @@ You will (1) model project dependencies as structured data; (2) query manifests 
 
 Each project has a manifest listing its libraries and versions. Treated as data, manifests from all projects can be combined into one inventory.
 
+Section four point one develops data models with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section four point one, Aiko Mori expects data claims to carry owners and dates.
+
+Section four point one treats manifests as data version as testable only when evidence and ticket IDs are recorded.
+
+For section four point one, Brightwave Digital will not accept data work without a written trail.
+
 ### 4.2 Version ranges
 
 Advisories state affected ranges, such as "at least 2.0.0 and below 3.2.0". Versions must be compared as numbers, part by part, not as text.
+
+Section four point two develops data models with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section four point two, Aiko Mori expects data claims to carry owners and dates.
+
+Section four point two treats manifests as data version as testable only when evidence and ticket IDs are recorded.
+
+For section four point two, Brightwave Digital will not accept data work without a written trail.
 
 ### Lab — Lab — who is affected?
 
@@ -261,13 +403,35 @@ museum-tickets     upload-kit 2.9.8  AFFECTED
 
 Three projects use upload-kit. greenleaf-booking (3.1.0) and museum-tickets (2.9.8) fall in the affected range; kiteschool-site (3.4.2) is above it and safe. harbour-cafe does not use upload-kit. In January this took three days by hand; the script answers in under a second.
 
+Section four point three develops data models with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section four point three, Aiko Mori expects data claims to carry owners and dates.
+
+Section four point three treats manifests as data version as testable only when evidence and ticket IDs are recorded.
+
 ### 4.4 Keeping current
 
 The inventory is rebuilt nightly from every repository's lockfile, so it reflects exactly what each project installs.
 
+Section four point four develops data models with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section four point four, Aiko Mori expects data claims to carry owners and dates.
+
+Section four point four treats manifests as data version as testable only when evidence and ticket IDs are recorded.
+
+For section four point four, Brightwave Digital will not accept data work without a written trail.
+
 ### 4.5 Data quality
 
 Projects without lockfiles show as "unknown" and are fixed first, since their real versions cannot be known.
+
+Section four point five develops data models with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section four point five, Aiko Mori expects data claims to carry owners and dates.
+
+Section four point five treats manifests as data version as testable only when evidence and ticket IDs are recorded.
+
+For section four point five, Brightwave Digital will not accept data work without a written trail.
 
 ### The inventory schema
 
@@ -313,25 +477,71 @@ You will (1) explain core application security concepts; (2) use the OWASP Top 1
 
 Confidentiality (pet owners' details), integrity (bookings, prices and the code itself) and availability (clinics need bookings to work).
 
+Section five point one develops security literacy with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section five point one, Aiko Mori expects security claims to carry owners and dates.
+
+Section five point one treats core ideas owasp top as testable only when evidence and ticket IDs are recorded.
+
+For section five point one, Brightwave Digital will not accept security work without a written trail.
+
 ### 5.2 OWASP Top 10:2021
 
 Categories include Broken Access Control (A01), Injection (A03), Insecure Design (A04), Security Misconfiguration (A05), Vulnerable and Outdated Components (A06) and Software and Data Integrity Failures (A08). The January upload-kit case is an A06 problem.
+
+Section five point two develops security literacy with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section five point two, Aiko Mori expects security claims to carry owners and dates.
+
+Section five point two treats core ideas owasp top as testable only when evidence and ticket IDs are recorded.
 
 ### 5.3 Advisories
 
 An advisory lists the package, affected and fixed versions, severity and a description. Diego learns to read the fixed version first: it tells you what to upgrade to.
 
+Section five point three develops security literacy with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section five point three, Aiko Mori expects security claims to carry owners and dates.
+
+Section five point three treats core ideas owasp top as testable only when evidence and ticket IDs are recorded.
+
+For section five point three, Brightwave Digital will not accept security work without a written trail.
+
 ### 5.4 CWE
 
 The CWE Top 25 names weaknesses such as unrestricted upload of dangerous file types (CWE-434), relevant to Greenleaf's upload feature.
+
+Section five point four develops security literacy with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section five point four, Aiko Mori expects security claims to carry owners and dates.
+
+Section five point four treats core ideas owasp top as testable only when evidence and ticket IDs are recorded.
+
+For section five point four, Brightwave Digital will not accept security work without a written trail.
 
 ### 5.5 Supply chain risk
 
 Ohm et al. (2020) and Ladisa et al. (2023) describe how attackers target packages, build systems and distribution, not just applications. Defenders respond with inventories, updates, integrity checks and provenance.
 
+Section five point five develops security literacy with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section five point five, Aiko Mori expects security claims to carry owners and dates.
+
+Section five point five treats core ideas owasp top as testable only when evidence and ticket IDs are recorded.
+
+For section five point five, Brightwave Digital will not accept security work without a written trail.
+
 ### 5.6 Talking to clients
 
 Clients want to know: are we affected, what did you do, do we need to do anything? Diego practises answering these in three sentences.
+
+Section five point six develops security literacy with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section five point six, Aiko Mori expects security claims to carry owners and dates.
+
+Section five point six treats core ideas owasp top as testable only when evidence and ticket IDs are recorded.
+
+For section five point six, Brightwave Digital will not accept security work without a written trail.
 
 ### Severity in context
 
@@ -377,25 +587,67 @@ You will (1) explain processes, permissions and containers for hosted apps; (2) 
 
 Each client app runs as a process under its own user with limited permissions. It can read its code and write only to its upload and log folders. If a flaw is misused, the damage stays within these rights.
 
+Section six point one develops operating systems and virtualization with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section six point one, Aiko Mori expects operating claims to carry owners and dates.
+
+Section six point one treats processes and permissions containers as testable only when evidence and ticket IDs are recorded.
+
 ### 6.2 Containers
 
 Brightwave packages each app as a container image built from a small base image. Containers isolate client apps from each other on shared hosts, so a problem in one client's app does not reach another's files.
+
+Section six point two develops operating systems and virtualization with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section six point two, Aiko Mori expects operating claims to carry owners and dates.
+
+Section six point two treats processes and permissions containers as testable only when evidence and ticket IDs are recorded.
 
 ### 6.3 Virtual machines
 
 The hosting platform runs containers on virtual machines; the cloud provider is responsible for isolating machines between customers, Brightwave for everything inside its account.
 
+Section six point three develops operating systems and virtualization with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section six point three, Aiko Mori expects operating claims to carry owners and dates.
+
+Section six point three treats processes and permissions containers as testable only when evidence and ticket IDs are recorded.
+
+For section six point three, Brightwave Digital will not accept operating work without a written trail.
+
 ### 6.4 Build isolation
 
 Builds run in fresh containers that are deleted afterwards, so nothing left by one build affects the next. SLSA v1.0 build requirements describe isolated, hosted builds as a foundation for trustworthy artifacts.
+
+Section six point four develops operating systems and virtualization with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section six point four, Aiko Mori expects operating claims to carry owners and dates.
+
+Section six point four treats processes and permissions containers as testable only when evidence and ticket IDs are recorded.
 
 ### 6.5 Patching
 
 Base images are rebuilt weekly with operating system updates, and each image is recorded by digest so Brightwave knows which image every release used.
 
+Section six point five develops operating systems and virtualization with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section six point five, Aiko Mori expects operating claims to carry owners and dates.
+
+Section six point five treats processes and permissions containers as testable only when evidence and ticket IDs are recorded.
+
+For section six point five, Brightwave Digital will not accept operating work without a written trail.
+
 ### 6.6 Upload handling
 
 Uploaded files are stored outside the app's code folder and are never executed. The storage bucket for uploads is separated from site images after Diego's chapter 1 finding.
+
+Section six point six develops operating systems and virtualization with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section six point six, Aiko Mori expects operating claims to carry owners and dates.
+
+Section six point six treats processes and permissions containers as testable only when evidence and ticket IDs are recorded.
+
+For section six point six, Brightwave Digital will not accept operating work without a written trail.
 
 ### Image checks
 
@@ -437,25 +689,71 @@ You will (1) manage developer and client access to systems; (2) apply multi-fact
 
 Developers sign in to code hosting, the build service and the hosting platform with multi-factor authentication. Each has only the roles needed: most can deploy to test environments; only two can deploy to production.
 
+Section seven point one develops identity and access foundations with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section seven point one, Aiko Mori expects identity claims to carry owners and dates.
+
+Section seven point one treats developer access client access as testable only when evidence and ticket IDs are recorded.
+
 ### 7.2 Client access
 
 Clinic staff log into their booking admin pages with their own accounts; shared logins are not allowed. OWASP Top 10:2021 A07 covers identification and authentication failures.
+
+Section seven point two develops identity and access foundations with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section seven point two, Aiko Mori expects identity claims to carry owners and dates.
+
+Section seven point two treats developer access client access as testable only when evidence and ticket IDs are recorded.
+
+For section seven point two, Brightwave Digital will not accept identity work without a written trail.
 
 ### 7.3 Service accounts
 
 The build service uses a dedicated identity with permission to push images, not a developer's personal token.
 
+Section seven point three develops identity and access foundations with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section seven point three, Aiko Mori expects identity claims to carry owners and dates.
+
+Section seven point three treats developer access client access as testable only when evidence and ticket IDs are recorded.
+
+For section seven point three, Brightwave Digital will not accept identity work without a written trail.
+
 ### 7.4 Tokens
 
 Long-lived tokens are replaced with short-lived ones where the platform allows, reducing harm if a token leaks.
+
+Section seven point four develops identity and access foundations with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section seven point four, Aiko Mori expects identity claims to carry owners and dates.
+
+Section seven point four treats developer access client access as testable only when evidence and ticket IDs are recorded.
+
+For section seven point four, Brightwave Digital will not accept identity work without a written trail.
 
 ### 7.5 Access reviews
 
 Every quarter Diego lists who has which access and asks owners to confirm. Leavers' access is removed on their last day.
 
+Section seven point five develops identity and access foundations with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section seven point five, Aiko Mori expects identity claims to carry owners and dates.
+
+Section seven point five treats developer access client access as testable only when evidence and ticket IDs are recorded.
+
+For section seven point five, Brightwave Digital will not accept identity work without a written trail.
+
 ### 7.6 Role design
 
 Roles for clinic staff: receptionist (manage bookings), vet (view records), manager (settings and staff). Checks happen on the server.
+
+Section seven point six develops identity and access foundations with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section seven point six, Aiko Mori expects identity claims to carry owners and dates.
+
+Section seven point six treats developer access client access as testable only when evidence and ticket IDs are recorded.
+
+For section seven point six, Brightwave Digital will not accept identity work without a written trail.
 
 ### Leaver checklist
 
@@ -497,25 +795,75 @@ You will (1) apply layered defences to client apps; (2) place trust boundaries; 
 
 Edge protections (HTTPS, rate limiting), application controls (validation, authorisation, encoding), data protection (encryption, least-privilege database accounts) and pipeline controls (reviews, dependency checks, isolated builds).
 
+Section eight point one develops security architecture basics with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section eight point one, Aiko Mori expects security claims to carry owners and dates.
+
+Section eight point one treats layers trust boundaries separating as testable only when evidence and ticket IDs are recorded.
+
+For section eight point one, Brightwave Digital will not accept security work without a written trail.
+
 ### 8.2 Trust boundaries
 
 Boundaries exist between visitor and app, app and database, app and external services, build and production, and between clients. Each boundary gets a check.
+
+Section eight point two develops security architecture basics with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section eight point two, Aiko Mori expects security claims to carry owners and dates.
+
+Section eight point two treats layers trust boundaries separating as testable only when evidence and ticket IDs are recorded.
+
+For section eight point two, Brightwave Digital will not accept security work without a written trail.
 
 ### 8.3 Separating clients
 
 Each client has its own database, storage bucket and secrets. A flaw in one client's app cannot read another client's data.
 
+Section eight point three develops security architecture basics with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section eight point three, Aiko Mori expects security claims to carry owners and dates.
+
+Section eight point three treats layers trust boundaries separating as testable only when evidence and ticket IDs are recorded.
+
+For section eight point three, Brightwave Digital will not accept security work without a written trail.
+
 ### 8.4 Environments
 
 Test and production are separate, with separate secrets and data; test uses synthetic data only.
+
+Section eight point four develops security architecture basics with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section eight point four, Aiko Mori expects security claims to carry owners and dates.
+
+Section eight point four treats layers trust boundaries separating as testable only when evidence and ticket IDs are recorded.
+
+For section eight point four, Brightwave Digital will not accept security work without a written trail.
 
 ### 8.5 Standard architecture
 
 Brightwave writes a one-page standard for new projects, so security decisions are made once and reused.
 
+Section eight point five develops security architecture basics with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section eight point five, Aiko Mori expects security claims to carry owners and dates.
+
+Section eight point five treats layers trust boundaries separating as testable only when evidence and ticket IDs are recorded.
+
+For section eight point five, Brightwave Digital will not accept security work without a written trail.
+
 ### 8.6 Exceptions
 
 Projects that differ from the standard record why.
+
+Section eight point six develops security architecture basics with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section eight point six, Aiko Mori expects security claims to carry owners and dates.
+
+Section eight point six treats layers trust boundaries separating as testable only when evidence and ticket IDs are recorded.
+
+For section eight point six, Brightwave Digital will not accept security work without a written trail.
+
+Section eight point six fails closed if security evidence is missing rather than guessing.
 
 ### Applying the standard
 
@@ -561,6 +909,14 @@ You will (1) measure dependency freshness and remediation; (2) choose measures t
 
 How old is each installed library version? Old versions miss fixes and are more likely to be affected by advisories. Kula et al. (2018) found developers often leave dependencies outdated.
 
+Section nine point one develops evidence and measurement with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section nine point one, Aiko Mori expects evidence claims to carry owners and dates.
+
+Section nine point one treats freshness lab result remediation as testable only when evidence and ticket IDs are recorded.
+
+For section nine point one, Brightwave Digital will not accept evidence work without a written trail.
+
 ### Lab — Lab — version age
 
 ```python
@@ -586,21 +942,65 @@ mailer        26 days
 
 For Greenleaf, date-utils is 1,141 days old and upload-kit 637 days; both are flagged stale (over 365 days). forms is 101 days old and mailer 26 days. upload-kit's age explains why the January advisory found it vulnerable.
 
+Section nine point two develops evidence and measurement with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section nine point two, Aiko Mori expects evidence claims to carry owners and dates.
+
+Section nine point two treats freshness lab result remediation as testable only when evidence and ticket IDs are recorded.
+
 ### 9.3 Remediation time
 
 Days from an advisory's publication to the fix being deployed, per severity.
+
+Section nine point three develops evidence and measurement with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section nine point three, Aiko Mori expects evidence claims to carry owners and dates.
+
+Section nine point three treats freshness lab result remediation as testable only when evidence and ticket IDs are recorded.
+
+For section nine point three, Brightwave Digital will not accept evidence work without a written trail.
+
+Section nine point three fails closed if evidence evidence is missing rather than guessing.
 
 ### 9.4 Behaviour
 
 Measures can drive the wrong behaviour: counting "libraries updated" could encourage risky bulk updates without tests. Brightwave measures outcomes: stale count and remediation time.
 
+Section nine point four develops evidence and measurement with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section nine point four, Aiko Mori expects evidence claims to carry owners and dates.
+
+Section nine point four treats freshness lab result remediation as testable only when evidence and ticket IDs are recorded.
+
+For section nine point four, Brightwave Digital will not accept evidence work without a written trail.
+
 ### 9.5 Automatic evidence
 
 Measures come from the nightly inventory and deployment records, not manual reports.
 
+Section nine point five develops evidence and measurement with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section nine point five, Aiko Mori expects evidence claims to carry owners and dates.
+
+Section nine point five treats freshness lab result remediation as testable only when evidence and ticket IDs are recorded.
+
+For section nine point five, Brightwave Digital will not accept evidence work without a written trail.
+
+Section nine point five fails closed if evidence evidence is missing rather than guessing.
+
 ### 9.6 Presenting
 
 A monthly chart shows stale libraries and remediation times across clients.
+
+Section nine point six develops evidence and measurement with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section nine point six, Aiko Mori expects evidence claims to carry owners and dates.
+
+Section nine point six treats freshness lab result remediation as testable only when evidence and ticket IDs are recorded.
+
+For section nine point six, Brightwave Digital will not accept evidence work without a written trail.
+
+Section nine point six fails closed if evidence evidence is missing rather than guessing.
 
 ### Choosing thresholds
 
@@ -646,25 +1046,71 @@ You will (1) define application and software supply chain security; (2) map the 
 
 Application security protects the software's design and code. Supply chain security protects everything that goes into it and how it reaches users: source, dependencies, build, artifacts, deployment and updates.
 
+Section ten point one develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section ten point one, Aiko Mori expects application claims to carry owners and dates.
+
+Section ten point one treats definitions the stages frameworks as testable only when evidence and ticket IDs are recorded.
+
 ### 10.2 The stages
 
 For Brightwave: developers write code; libraries are fetched; the build service builds images; images go to a registry; deployment puts them on hosting; updates repeat the cycle.
+
+Section ten point two develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section ten point two, Aiko Mori expects application claims to carry owners and dates.
+
+Section ten point two treats definitions the stages frameworks as testable only when evidence and ticket IDs are recorded.
+
+For section ten point two, Brightwave Digital will not accept application work without a written trail.
 
 ### 10.3 Frameworks
 
 NIST SP 800-218 (SSDF) groups practices into Prepare the Organization, Protect the Software, Produce Well-Secured Software and Respond to Vulnerabilities. SLSA v1.0 focuses on build integrity and provenance. OWASP SAMM v2 assesses maturity. OWASP ASVS defines application requirements.
 
+Section ten point three develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section ten point three, Aiko Mori expects application claims to carry owners and dates.
+
+Section ten point three treats definitions the stages frameworks as testable only when evidence and ticket IDs are recorded.
+
 ### 10.4 Brightwave's gaps
 
 Mapping to the SSDF shows strengths in producing software (reviews, tests) but gaps in responding: no inventory before January, no target times for fixes.
+
+Section ten point four develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section ten point four, Aiko Mori expects application claims to carry owners and dates.
+
+Section ten point four treats definitions the stages frameworks as testable only when evidence and ticket IDs are recorded.
+
+For section ten point four, Brightwave Digital will not accept application work without a written trail.
 
 ### 10.5 Trust
 
 Thompson (1984) reminded developers that you cannot fully trust code you did not create; evidence such as hashes and provenance is how trust is earned.
 
+Section ten point five develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section ten point five, Aiko Mori expects application claims to carry owners and dates.
+
+Section ten point five treats definitions the stages frameworks as testable only when evidence and ticket IDs are recorded.
+
+For section ten point five, Brightwave Digital will not accept application work without a written trail.
+
 ### 10.6 The course plan
 
 The next chapters build Brightwave's inventory, checks, controls and monitoring.
+
+Section ten point six develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section ten point six, Aiko Mori expects application claims to carry owners and dates.
+
+Section ten point six treats definitions the stages frameworks as testable only when evidence and ticket IDs are recorded.
+
+For section ten point six, Brightwave Digital will not accept application work without a written trail.
+
+Section ten point six fails closed if application evidence is missing rather than guessing.
 
 ### Where the case fits
 
@@ -706,25 +1152,65 @@ You will (1) list the assets in client apps and the supply chain; (2) rate their
 
 Greenleaf's booking site holds owners' names, phone numbers and emails, pet medical notes, uploaded X-rays and reports, and appointment histories. Medical notes and uploads are the most sensitive because they are private and hard to replace. The harbour-cafe site, by contrast, holds only table bookings with a name and phone number.
 
+Section eleven point one develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section eleven point one, Aiko Mori expects application claims to carry owners and dates.
+
 ### 11.2 Supply chain assets
 
 Code repositories, the library registry configuration, the build service, signing and deployment credentials, the image registry and the hosting accounts are all assets. A weakness in any of them could change every client's site at once, which makes them more important than any single client app.
+
+Section eleven point two develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section eleven point two, Aiko Mori expects application claims to carry owners and dates.
+
+Section eleven point two treats data assets supply chain as testable only when evidence and ticket IDs are recorded.
 
 ### 11.3 Rating importance
 
 Diego rates each asset high, medium or low using two questions: how much harm if it were exposed or changed, and how many clients depend on it. Deployment credentials score high on both; a single client's public image folder scores low.
 
+Section eleven point three develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section eleven point three, Aiko Mori expects application claims to carry owners and dates.
+
+Section eleven point three treats data assets supply chain as testable only when evidence and ticket IDs are recorded.
+
 ### 11.4 Owners
 
 Every asset has a named owner who decides about access and changes. The build service is owned by Aiko; each client app by its lead developer.
+
+Section eleven point four develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section eleven point four, Aiko Mori expects application claims to carry owners and dates.
+
+Section eleven point four treats data assets supply chain as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point four, Brightwave Digital will not accept application work without a written trail.
 
 ### 11.5 Context records
 
 The inventory gains a short context note per project: data held, internet exposure, the client's contact for incidents, and any contract requirements such as response times.
 
+Section eleven point five develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section eleven point five, Aiko Mori expects application claims to carry owners and dates.
+
+Section eleven point five treats data assets supply chain as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point five, Brightwave Digital will not accept application work without a written trail.
+
 ### 11.6 Using context
 
 When an advisory arrives, context decides the order of work: projects with sensitive data and public exposure come first.
+
+Section eleven point six develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section eleven point six, Aiko Mori expects application claims to carry owners and dates.
+
+Section eleven point six treats data assets supply chain as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point six, Brightwave Digital will not accept application work without a written trail.
 
 ### Worked example
 
@@ -762,25 +1248,63 @@ You will (1) draw data flows for a client app and the build pipeline; (2) mark t
 
 For Greenleaf: the visitor's browser sends a booking form and an upload to the web app; the app checks it, stores the booking in the database and the file in the upload bucket; staff view bookings through the admin pages; the app sends a confirmation through the email service.
 
+Section twelve point one develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twelve point one, Aiko Mori expects application claims to carry owners and dates.
+
 ### 12.2 Pipeline flow
 
 A developer pushes code; the build service fetches code and libraries, runs tests and checks, builds an image, pushes it to the registry, and the deployment step pulls the image onto hosting. Secrets are injected only at deployment.
+
+Section twelve point two develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twelve point two, Aiko Mori expects application claims to carry owners and dates.
+
+Section twelve point two treats application flow pipeline flow as testable only when evidence and ticket IDs are recorded.
 
 ### 12.3 Trust boundaries
 
 Marked boundaries: browser to app, app to database and bucket, app to email service, public library registry to build, build to registry, registry to hosting. Shostack (2014) recommends drawing such diagrams as the starting point for asking what can go wrong.
 
+Section twelve point three develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twelve point three, Aiko Mori expects application claims to carry owners and dates.
+
+Section twelve point three treats application flow pipeline flow as testable only when evidence and ticket IDs are recorded.
+
 ### 12.4 Checks at boundaries
 
 Each boundary needs a check: validation and size limits for uploads; least-privilege database accounts; pinned and verified libraries entering the build; recorded digests for images entering hosting.
+
+Section twelve point four develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twelve point four, Aiko Mori expects application claims to carry owners and dates.
+
+Section twelve point four treats application flow pipeline flow as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point four, Brightwave Digital will not accept application work without a written trail.
 
 ### 12.5 Keeping current
 
 Diagrams live in each repository and are updated in the same pull request that changes a flow. Reviewers ask "does the diagram still match?" when a change adds a service.
 
+Section twelve point five develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twelve point five, Aiko Mori expects application claims to carry owners and dates.
+
+Section twelve point five treats application flow pipeline flow as testable only when evidence and ticket IDs are recorded.
+
 ### 12.6 Common surprises
 
 Drawing flows often reveals forgotten paths, such as an old export feature or a test webhook still enabled.
+
+Section twelve point six develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twelve point six, Aiko Mori expects application claims to carry owners and dates.
+
+Section twelve point six treats application flow pipeline flow as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point six, Brightwave Digital will not accept application work without a written trail.
 
 ### Worked example
 
@@ -818,25 +1342,69 @@ You will (1) write risk scenarios for client apps and the supply chain; (2) esti
 
 A scenario says what could happen, through which weakness, and what harm follows: "An outdated upload library with a known flaw lets a visitor's upload affect the server, exposing medical records." Scenarios describe outcomes, not procedures.
 
+Section thirteen point one develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section thirteen point one, Aiko Mori expects application claims to carry owners and dates.
+
+Section thirteen point one treats writing scenarios supply chain as testable only when evidence and ticket IDs are recorded.
+
 ### 13.2 Supply chain scenarios
 
 Ladisa et al. (2023) catalogue attacks on open-source supply chains, such as a library maintainer's account being taken over and a harmful version published. Ohm et al. (2020) studied real malicious packages. Brightwave writes scenarios for these kinds of events at the level of "a harmful library version enters a build".
+
+Section thirteen point two develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section thirteen point two, Aiko Mori expects application claims to carry owners and dates.
 
 ### 13.3 Likelihood and impact
 
 Each scenario gets low, medium or high for likelihood and impact, using evidence: advisories seen, exposure, data held, number of clients.
 
+Section thirteen point three develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section thirteen point three, Aiko Mori expects application claims to carry owners and dates.
+
+Section thirteen point three treats writing scenarios supply chain as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point three, Brightwave Digital will not accept application work without a written trail.
+
 ### 13.4 Linking controls
 
 Each scenario lists its controls: for a harmful library version, pinned versions with hashes, a short delay before adopting brand-new versions, and review of dependency changes.
+
+Section thirteen point four develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section thirteen point four, Aiko Mori expects application claims to carry owners and dates.
+
+Section thirteen point four treats writing scenarios supply chain as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point four, Brightwave Digital will not accept application work without a written trail.
 
 ### 13.5 Review
 
 Scenarios are reviewed every six months and after any incident.
 
+Section thirteen point five develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section thirteen point five, Aiko Mori expects application claims to carry owners and dates.
+
+Section thirteen point five treats writing scenarios supply chain as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point five, Brightwave Digital will not accept application work without a written trail.
+
+Section thirteen point five fails closed if application evidence is missing rather than guessing.
+
 ### 13.6 Ranking
 
 The top five scenarios get named owners and target dates for missing controls.
+
+Section thirteen point six develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section thirteen point six, Aiko Mori expects application claims to carry owners and dates.
+
+Section thirteen point six treats writing scenarios supply chain as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point six, Brightwave Digital will not accept application work without a written trail.
 
 ### Scenario register
 
@@ -878,9 +1446,21 @@ You will (1) validate file uploads safely; (2) check type, content and size; (3)
 
 The Greenleaf flaw was in upload handling. Even with a patched library, Brightwave wants its own checks so that a future library flaw is less likely to be reachable. OWASP ASVS 4.0.3 section V12 covers files and resources.
 
+Section fourteen point one develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section fourteen point one, Aiko Mori expects application claims to carry owners and dates.
+
+Section fourteen point one treats why uploads matter the as testable only when evidence and ticket IDs are recorded.
+
 ### 14.2 The checks
 
 Allow only listed types (PNG, JPEG, PDF); check that the file content matches the claimed type by its leading bytes; limit size to 5 MB; give stored files new random names; store them outside the web root and serve them with a safe download header.
+
+Section fourteen point two develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section fourteen point two, Aiko Mori expects application claims to carry owners and dates.
+
+Section fourteen point two treats why uploads matter the as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — Lab — upload checks
 
@@ -912,13 +1492,33 @@ run.exe     reject: type not allowed
 
 xray.png and report.pdf are accepted. notes.pdf is rejected because its content does not match a PDF. scan.png is rejected as too large. run.exe is rejected because the type is not allowed. Every rejection names its reason, which helps support staff explain it to clinic users.
 
+Section fourteen point three develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section fourteen point three, Aiko Mori expects application claims to carry owners and dates.
+
 ### 14.4 Testing
 
 Synthetic test files cover each rule. Tests run in the build on every change.
 
+Section fourteen point four develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section fourteen point four, Aiko Mori expects application claims to carry owners and dates.
+
+Section fourteen point four treats why uploads matter the as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point four, Brightwave Digital will not accept application work without a written trail.
+
 ### 14.5 Limits
 
 Content checks reduce risk but cannot prove a file is harmless; storage and serving rules provide the second layer.
+
+Section fourteen point five develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section fourteen point five, Aiko Mori expects application claims to carry owners and dates.
+
+Section fourteen point five treats why uploads matter the as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point five, Brightwave Digital will not accept application work without a written trail.
 
 ### Reviewing the rules
 
@@ -964,6 +1564,14 @@ You will (1) run a dependency audit across clients; (2) read advisory matches; (
 
 The audit compares each client's installed library versions with a synthetic advisory list, each advisory naming a library, affected versions and severity.
 
+Section fifteen point one develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section fifteen point one, Aiko Mori expects application claims to carry owners and dates.
+
+Section fifteen point one treats the audit lab result as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point one, Brightwave Digital will not accept application work without a written trail.
+
 ### Lab — Lab — dependency audit
 
 ```python
@@ -993,17 +1601,47 @@ totals: {'high': 2, 'medium': 1}
 
 Greenleaf matches ADV-7 (high) and ADV-8 (medium); museum-tickets matches ADV-7. Totals: high 2, medium 1. The output lists project, library, version and advisory, which is exactly what a developer needs to start.
 
+Section fifteen point two develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section fifteen point two, Aiko Mori expects application claims to carry owners and dates.
+
+Section fifteen point two treats the audit lab result as testable only when evidence and ticket IDs are recorded.
+
 ### 15.3 Turning results into tasks
 
 Each match becomes a task with the owner from the inventory and a due date from the severity: high within 7 days, medium within 30.
+
+Section fifteen point three develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section fifteen point three, Aiko Mori expects application claims to carry owners and dates.
+
+Section fifteen point three treats the audit lab result as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point three, Brightwave Digital will not accept application work without a written trail.
 
 ### 15.4 Checking matches
 
 Diego confirms each match by reading the advisory, since version ranges can be written ambiguously.
 
+Section fifteen point four develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section fifteen point four, Aiko Mori expects application claims to carry owners and dates.
+
+Section fifteen point four treats the audit lab result as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point four, Brightwave Digital will not accept application work without a written trail.
+
 ### 15.5 Prioritisation
 
 Where many matches arrive at once, Brightwave may consider exploit likelihood scores such as EPSS (Jacobs et al., 2021) alongside severity and client context.
+
+Section fifteen point five develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section fifteen point five, Aiko Mori expects application claims to carry owners and dates.
+
+Section fifteen point five treats the audit lab result as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point five, Brightwave Digital will not accept application work without a written trail.
 
 ### Recording the audit
 
@@ -1045,25 +1683,65 @@ You will (1) pin dependency versions with hashes; (2) use lock files; (3) review
 
 A lock file records the exact version and hash of every direct and transitive library. Builds install exactly what the lock file says, so two builds of the same commit get the same libraries, and a changed file in the registry is detected because its hash no longer matches.
 
+Section sixteen point one develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section sixteen point one, Aiko Mori expects application claims to carry owners and dates.
+
 ### 16.2 Reviewing changes
 
 Changes to the lock file appear in pull requests. Reviewers look at which libraries changed, whether a new library was added, and whether a new maintainer or install script appeared. Large unexplained changes are questioned.
+
+Section sixteen point two develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section sixteen point two, Aiko Mori expects application claims to carry owners and dates.
+
+Section sixteen point two treats lock files reviewing changes as testable only when evidence and ticket IDs are recorded.
 
 ### 16.3 Adoption delay
 
 Brightwave waits a few days before adopting brand-new library versions unless they fix a security advisory, since harmful versions are often discovered and removed quickly. Ohm et al. (2020) describe how malicious packages are spread.
 
+Section sixteen point three develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section sixteen point three, Aiko Mori expects application claims to carry owners and dates.
+
+Section sixteen point three treats lock files reviewing changes as testable only when evidence and ticket IDs are recorded.
+
 ### 16.4 Choosing libraries
 
 Before adding a library, developers check maintenance activity, number of maintainers and how widely it is used. Zimmermann et al. (2019) showed how a few maintainer accounts can reach very large parts of an ecosystem, and Decan et al. (2018) compared dependency networks across ecosystems.
+
+Section sixteen point four develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section sixteen point four, Aiko Mori expects application claims to carry owners and dates.
+
+Section sixteen point four treats lock files reviewing changes as testable only when evidence and ticket IDs are recorded.
 
 ### 16.5 Removing libraries
 
 Unused libraries are removed; each removal shrinks what must be tracked.
 
+Section sixteen point five develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section sixteen point five, Aiko Mori expects application claims to carry owners and dates.
+
+Section sixteen point five treats lock files reviewing changes as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point five, Brightwave Digital will not accept application work without a written trail.
+
+Section sixteen point five fails closed if application evidence is missing rather than guessing.
+
 ### 16.6 Automated update requests
 
 A bot opens weekly update pull requests with tests run, so updates are small and regular rather than large and rare.
+
+Section sixteen point six develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section sixteen point six, Aiko Mori expects application claims to carry owners and dates.
+
+Section sixteen point six treats lock files reviewing changes as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point six, Brightwave Digital will not accept application work without a written trail.
 
 ### Lock file in builds
 
@@ -1105,6 +1783,12 @@ You will (1) review build pipeline configuration; (2) pin pipeline actions; (3) 
 
 Each project's pipeline is a configuration file in the repository. It decides which external actions run, which permissions the build token has and which secrets are available. Mistakes here affect every build.
 
+Section seventeen point one develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section seventeen point one, Aiko Mori expects application claims to carry owners and dates.
+
+Section seventeen point one treats the pipeline as code as testable only when evidence and ticket IDs are recorded.
+
 ### Lab — Lab — pipeline review
 
 ```python
@@ -1136,17 +1820,45 @@ Run with `python3 lab_ci.py`. Verified output:
 
 The lab reports four issues in the synthetic pipeline: checkout@v4 and deploy-helper@main are not pinned to a commit, secrets are available to pull requests from forks, and the token has write-all permissions. Pinning to a full commit identifier means a changed action cannot silently enter the build.
 
+Section seventeen point two develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section seventeen point two, Aiko Mori expects application claims to carry owners and dates.
+
 ### 17.3 Fixing permissions
 
 The token gets read-only permission by default, with write only for the step that needs it.
+
+Section seventeen point three develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section seventeen point three, Aiko Mori expects application claims to carry owners and dates.
+
+Section seventeen point three treats the pipeline as code as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point three, Brightwave Digital will not accept application work without a written trail.
 
 ### 17.4 Secrets and untrusted changes
 
 Pull requests from outside contributors run without secrets. Deployment runs only from the main branch after review.
 
+Section seventeen point four develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section seventeen point four, Aiko Mori expects application claims to carry owners and dates.
+
+Section seventeen point four treats the pipeline as code as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point four, Brightwave Digital will not accept application work without a written trail.
+
 ### 17.5 Applying across projects
 
 Diego runs the review across all 23 pipelines and opens fix pull requests in batches.
+
+Section seventeen point five develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section seventeen point five, Aiko Mori expects application claims to carry owners and dates.
+
+Section seventeen point five treats the pipeline as code as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point five, Brightwave Digital will not accept application work without a written trail.
 
 ### Keeping pins current
 
@@ -1188,25 +1900,69 @@ You will (1) record image digests for every deployment; (2) record build provena
 
 Each built image has a digest, a fingerprint of its contents. The deployment record stores the digest, the commit and the build run, so Brightwave can always say exactly what is running.
 
+Section eighteen point one develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section eighteen point one, Aiko Mori expects application claims to carry owners and dates.
+
+Section eighteen point one treats recording digests provenance approved as testable only when evidence and ticket IDs are recorded.
+
 ### 18.2 Provenance
 
 Provenance is a signed statement of how an artifact was built: source, builder and steps. SLSA v1.0 defines build levels: L1 provenance exists, L2 a hosted build service signs it, L3 builds are hardened against tampering between runs. in-toto (Torres-Arias et al., 2019) and Sigstore (Newman et al., 2022) provide ways to create and verify such statements.
+
+Section eighteen point two develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section eighteen point two, Aiko Mori expects application claims to carry owners and dates.
 
 ### 18.3 Approved images
 
 Hosting accepts only images whose digests appear in the approved list produced by the main-branch build.
 
+Section eighteen point three develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section eighteen point three, Aiko Mori expects application claims to carry owners and dates.
+
+Section eighteen point three treats recording digests provenance approved as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point three, Brightwave Digital will not accept application work without a written trail.
+
 ### 18.4 Brightwave's target
 
 The agency targets SLSA build L2 for all client projects this year.
+
+Section eighteen point four develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section eighteen point four, Aiko Mori expects application claims to carry owners and dates.
+
+Section eighteen point four treats recording digests provenance approved as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point four, Brightwave Digital will not accept application work without a written trail.
 
 ### 18.5 Exceptions
 
 Emergency changes still go through the build; there are no manual uploads to hosting.
 
+Section eighteen point five develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section eighteen point five, Aiko Mori expects application claims to carry owners and dates.
+
+Section eighteen point five treats recording digests provenance approved as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point five, Brightwave Digital will not accept application work without a written trail.
+
 ### 18.6 Evidence
 
 Digest records give clients evidence of what changed and when.
+
+Section eighteen point six develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section eighteen point six, Aiko Mori expects application claims to carry owners and dates.
+
+Section eighteen point six treats recording digests provenance approved as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point six, Brightwave Digital will not accept application work without a written trail.
+
+Section eighteen point six fails closed if application evidence is missing rather than guessing.
 
 ### Checking the records
 
@@ -1248,6 +2004,14 @@ You will (1) compare running versions with approved releases; (2) detect drift a
 
 Drift is when what runs differs from what was approved: a client left behind on an old release, or something running that the pipeline never approved.
 
+Section nineteen point one develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section nineteen point one, Aiko Mori expects application claims to carry owners and dates.
+
+Section nineteen point one treats drift lab result investigating as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point one, Brightwave Digital will not accept application work without a written trail.
+
 ### Lab — Lab — release drift
 
 ```python
@@ -1273,17 +2037,49 @@ museum-tickets     deployed 4.0.3-hotfix  approved 4.0.2  UNAPPROVED BUILD
 
 harbour-cafe runs 2.0.9 while 2.1.4 is approved, so it is BEHIND. museum-tickets runs 4.0.3-hotfix, which is not in the approved list, so it is an UNAPPROVED BUILD. Other clients match.
 
+Section nineteen point two develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section nineteen point two, Aiko Mori expects application claims to carry owners and dates.
+
+Section nineteen point two treats drift lab result investigating as testable only when evidence and ticket IDs are recorded.
+
 ### 19.3 Investigating
 
 BEHIND usually means a deployment failed or was skipped; UNAPPROVED BUILD needs urgent questions about where the build came from.
+
+Section nineteen point three develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section nineteen point three, Aiko Mori expects application claims to carry owners and dates.
+
+Section nineteen point three treats drift lab result investigating as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point three, Brightwave Digital will not accept application work without a written trail.
 
 ### 19.4 Alerts
 
 A daily check sends drift to the project owner and, for unapproved builds, to Aiko too.
 
+Section nineteen point four develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section nineteen point four, Aiko Mori expects application claims to carry owners and dates.
+
+Section nineteen point four treats drift lab result investigating as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point four, Brightwave Digital will not accept application work without a written trail.
+
 ### 19.5 Closing the loop
 
 Each finding is recorded with its cause and fix.
+
+Section nineteen point five develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section nineteen point five, Aiko Mori expects application claims to carry owners and dates.
+
+Section nineteen point five treats drift lab result investigating as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point five, Brightwave Digital will not accept application work without a written trail.
+
+Section nineteen point five fails closed if application evidence is missing rather than guessing.
 
 ### Tuning alerts
 
@@ -1329,25 +2125,71 @@ You will (1) diagnose failing dependency updates and pipeline checks; (2) avoid 
 
 Update pull requests fail tests because of breaking changes; pinned actions break when their own dependencies change; content checks reject unusual but valid files; audit matches turn out false.
 
+Section twenty point one develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty point one, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty point one treats common failures diagnosing not as testable only when evidence and ticket IDs are recorded.
+
 ### 20.2 Diagnosing
 
 Diego reads the failure, reproduces it locally with synthetic data, and changes one thing at a time.
+
+Section twenty point two develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty point two, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty point two treats common failures diagnosing not as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point two, Brightwave Digital will not accept application work without a written trail.
 
 ### 20.3 Not disabling checks
 
 A failing check is never switched off to make a deadline. If it must be bypassed, Aiko approves a time-limited exception with a ticket.
 
+Section twenty point three develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty point three, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty point three treats common failures diagnosing not as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point three, Brightwave Digital will not accept application work without a written trail.
+
 ### 20.4 Breaking changes
 
 For a major library update, the developer reads the change notes and updates code in a separate pull request.
+
+Section twenty point four develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty point four, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty point four treats common failures diagnosing not as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point four, Brightwave Digital will not accept application work without a written trail.
 
 ### 20.5 Recording lessons
 
 Each solved problem gets a short note in the team's troubleshooting page.
 
+Section twenty point five develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty point five, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty point five treats common failures diagnosing not as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point five, Brightwave Digital will not accept application work without a written trail.
+
 ### 20.6 Knowing when to ask
 
 If a problem takes more than an hour, Diego asks for help.
+
+Section twenty point six develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty point six, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty point six treats common failures diagnosing not as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point six, Brightwave Digital will not accept application work without a written trail.
 
 ### The troubleshooting page
 
@@ -1393,25 +2235,69 @@ You will (1) secure connections to external services; (2) manage service secrets
 
 Client apps use an email service, a payment provider for museum-tickets and a mapping service for the kiteschool site. Each is a trust boundary: Brightwave depends on it and sends data to it.
 
+Section twenty-one point one develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-one point one, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty-one point one treats external services secrets for as testable only when evidence and ticket IDs are recorded.
+
 ### 21.2 Secrets for services
 
 Service keys are kept in the hosting platform's secret store, scoped to one client and one environment, and rotated yearly or immediately if exposed. Keys never appear in code; a pre-commit scan catches mistakes.
+
+Section twenty-one point two develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-one point two, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty-one point two treats external services secrets for as testable only when evidence and ticket IDs are recorded.
 
 ### 21.3 Validating responses
 
 Data returned by services is checked like user input. Payment confirmations are verified with the provider's signature before marking a ticket as paid.
 
+Section twenty-one point three develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-one point three, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty-one point three treats external services secrets for as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point three, Brightwave Digital will not accept application work without a written trail.
+
 ### 21.4 Least data
 
 Only needed data is sent: the email service receives the owner's email and appointment time, not medical notes.
+
+Section twenty-one point four develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-one point four, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty-one point four treats external services secrets for as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point four, Brightwave Digital will not accept application work without a written trail.
 
 ### 21.5 Failure planning
 
 If the email service fails, bookings still save and emails retry later; if payment confirmation is missing, the ticket stays pending.
 
+Section twenty-one point five develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-one point five, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty-one point five treats external services secrets for as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point five, Brightwave Digital will not accept application work without a written trail.
+
 ### 21.6 Reviewing services
 
 Before adding a service, Brightwave reviews its security information and data location.
+
+Section twenty-one point six develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-one point six, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty-one point six treats external services secrets for as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point six, Brightwave Digital will not accept application work without a written trail.
 
 ### Service inventory
 
@@ -1457,25 +2343,73 @@ You will (1) automate inventory, audit and drift checks; (2) schedule them; (3) 
 
 The nightly job builds the inventory from lock files, runs the audit against the advisory list, checks drift and writes one report.
 
+Section twenty-two point one develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-two point one, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty-two point one treats what to automate routing as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point one, Brightwave Digital will not accept application work without a written trail.
+
 ### 22.2 Routing
 
 Each finding goes to the project owner in the team chat with a link to the task; highs also go to Aiko.
+
+Section twenty-two point two develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-two point two, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty-two point two treats what to automate routing as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point two, Brightwave Digital will not accept application work without a written trail.
 
 ### 22.3 Safe automation
 
 The job has read-only access to repositories and hosting status. It opens tasks and update pull requests but cannot merge or deploy.
 
+Section twenty-two point three develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-two point three, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty-two point three treats what to automate routing as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point three, Brightwave Digital will not accept application work without a written trail.
+
 ### 22.4 Reviewing automation
 
 The job's code is reviewed like any project, pinned and tested with synthetic data.
+
+Section twenty-two point four develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-two point four, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty-two point four treats what to automate routing as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point four, Brightwave Digital will not accept application work without a written trail.
 
 ### 22.5 Watching the watcher
 
 If the nightly report does not arrive, an alert fires, because silent failure would look like "no problems".
 
+Section twenty-two point five develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-two point five, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty-two point five treats what to automate routing as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point five, Brightwave Digital will not accept application work without a written trail.
+
 ### 22.6 Effort saved
 
 The manual weekly checks that took Diego half a day now take ten minutes of reading.
+
+Section twenty-two point six develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-two point six, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty-two point six treats what to automate routing as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point six, Brightwave Digital will not accept application work without a written trail.
 
 ### Starting small
 
@@ -1521,9 +2455,23 @@ You will (1) measure check quality with precision and recall; (2) label a sample
 
 Precision is the share of a check's alerts that are real; recall is the share of real problems the check finds. A noisy check wastes time; a check with low recall gives false comfort.
 
+Section twenty-three point one develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-three point one, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty-three point one treats precision and recall labelling as testable only when evidence and ticket IDs are recorded.
+
 ### 23.2 Labelling
 
 Diego and another developer independently label a sample of findings as real or not, then discuss disagreements.
+
+Section twenty-three point two develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-three point two, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty-three point two treats precision and recall labelling as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point two, Brightwave Digital will not accept application work without a written trail.
 
 ### Lab — Lab — check quality
 
@@ -1545,13 +2493,35 @@ hardcoded-credential  flags= 12 real= 3 precision=0.25 recall=1.00
 
 The outdated-component check has precision 0.62 and recall 0.94: it finds nearly everything but over a third of alerts are not real. The hardcoded-credential check has precision 0.25 and recall 1.00: it finds every real credential but three quarters of its alerts are test strings or examples.
 
+Section twenty-three point three develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-three point three, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty-three point three treats precision and recall labelling as testable only when evidence and ticket IDs are recorded.
+
 ### 23.4 Improving
 
 The credential check gets an allow list for clearly synthetic test values, reviewed by Aiko; the outdated check ignores libraries used only in development.
 
+Section twenty-three point four develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-three point four, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty-three point four treats precision and recall labelling as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point four, Brightwave Digital will not accept application work without a written trail.
+
 ### 23.5 Re-measuring
 
 After changes, the same labelled sample is rerun to confirm recall did not fall.
+
+Section twenty-three point five develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-three point five, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty-three point five treats precision and recall labelling as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point five, Brightwave Digital will not accept application work without a written trail.
 
 ### Labelling carefully
 
@@ -1593,25 +2563,77 @@ You will (1) ask a focused question; (2) collect evidence from Brightwave record
 
 Diego asks: "Do projects receiving weekly update pull requests fix high advisories faster than projects updated manually?"
 
+Section twenty-four point one develops applied research methods with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-four point one, Aiko Mori expects applied claims to carry owners and dates.
+
+Section twenty-four point one treats the question evidence analysis as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point one, Brightwave Digital will not accept applied work without a written trail.
+
 ### 24.2 Evidence
 
 Task records give advisory dates and fix dates for each project and update method over one year.
+
+Section twenty-four point two develops applied research methods with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-four point two, Aiko Mori expects applied claims to carry owners and dates.
+
+Section twenty-four point two treats the question evidence analysis as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point two, Brightwave Digital will not accept applied work without a written trail.
 
 ### 24.3 Analysis
 
 He compares median fix times: weekly-update projects 3 days, manual projects 12 days.
 
+Section twenty-four point three develops applied research methods with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-four point three, Aiko Mori expects applied claims to carry owners and dates.
+
+Section twenty-four point three treats the question evidence analysis as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point three, Brightwave Digital will not accept applied work without a written trail.
+
+Section twenty-four point three fails closed if applied evidence is missing rather than guessing.
+
 ### 24.4 Limits
 
 Projects were not randomly assigned; manual projects are older and less active, which could explain part of the difference. Wermke et al. (2022) interviewed open-source projects about supply chain practices and show how context shapes adoption.
+
+Section twenty-four point four develops applied research methods with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-four point four, Aiko Mori expects applied claims to carry owners and dates.
+
+Section twenty-four point four treats the question evidence analysis as testable only when evidence and ticket IDs are recorded.
 
 ### 24.5 Reporting
 
 The report states the question, data, result, limits and a recommendation.
 
+Section twenty-four point five develops applied research methods with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-four point five, Aiko Mori expects applied claims to carry owners and dates.
+
+Section twenty-four point five treats the question evidence analysis as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point five, Brightwave Digital will not accept applied work without a written trail.
+
+Section twenty-four point five fails closed if applied evidence is missing rather than guessing.
+
 ### 24.6 Ethics
 
 Records about developers' work are summarised by project, not used to judge individuals.
+
+Section twenty-four point six develops applied research methods with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-four point six, Aiko Mori expects applied claims to carry owners and dates.
+
+Section twenty-four point six treats the question evidence analysis as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point six, Brightwave Digital will not accept applied work without a written trail.
+
+Section twenty-four point six fails closed if applied evidence is missing rather than guessing.
 
 ### Collecting the data
 
@@ -1657,25 +2679,79 @@ You will (1) plan a team project; (2) divide work; (3) review each other's chang
 
 Diego's team of three builds a shared "client security status" page showing inventory, open advisories and drift for each client.
 
+Section twenty-five point one develops team project studio with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-five point one, Aiko Mori expects team claims to carry owners and dates.
+
+Section twenty-five point one treats the project planning dividing as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point one, Brightwave Digital will not accept team work without a written trail.
+
 ### 25.2 Planning
 
 They write a short plan: users, data, risks and a first version in two weeks.
+
+Section twenty-five point two develops team project studio with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-five point two, Aiko Mori expects team claims to carry owners and dates.
+
+Section twenty-five point two treats the project planning dividing as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point two, Brightwave Digital will not accept team work without a written trail.
 
 ### 25.3 Dividing work
 
 One builds the data import, one the page, Diego the access checks and tests.
 
+Section twenty-five point three develops team project studio with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-five point three, Aiko Mori expects team claims to carry owners and dates.
+
+Section twenty-five point three treats the project planning dividing as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point three, Brightwave Digital will not accept team work without a written trail.
+
 ### 25.4 Reviewing
 
 Every change gets a review; reviewers check authorisation and data shown.
+
+Section twenty-five point four develops team project studio with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-five point four, Aiko Mori expects team claims to carry owners and dates.
+
+Section twenty-five point four treats the project planning dividing as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point four, Brightwave Digital will not accept team work without a written trail.
+
+Section twenty-five point four fails closed if team evidence is missing rather than guessing.
 
 ### 25.5 Increments
 
 The first version shows inventory only; advisories and drift come in later increments.
 
+Section twenty-five point five develops team project studio with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-five point five, Aiko Mori expects team claims to carry owners and dates.
+
+Section twenty-five point five treats the project planning dividing as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point five, Brightwave Digital will not accept team work without a written trail.
+
+Section twenty-five point five fails closed if team evidence is missing rather than guessing.
+
 ### 25.6 Retrospective
 
 After each increment, the team notes what went well and what to change.
+
+Section twenty-five point six develops team project studio with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-five point six, Aiko Mori expects team claims to carry owners and dates.
+
+Section twenty-five point six treats the project planning dividing as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point six, Brightwave Digital will not accept team work without a written trail.
+
+Section twenty-five point six fails closed if team evidence is missing rather than guessing.
 
 ### Working agreements
 
@@ -1721,25 +2797,63 @@ You will (1) hand over security processes to the team that will run them; (2) wr
 
 As the placement nears its end, Diego hands over the nightly job, the inventory, the upload checks module, the pipeline template and the drift check. Each needs an owner who will keep it running after he leaves; otherwise the controls will slowly decay as libraries and platforms change around them.
 
+Section twenty-six point one develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-six point one, Aiko Mori expects application claims to carry owners and dates.
+
 ### 26.2 Runbooks
 
 Each process gets a runbook: what it does, how to tell it is healthy, what common failures look like and how to fix them, and who to contact. Runbooks are written for a developer who has never seen the process, and tested by having one follow them.
+
+Section twenty-six point two develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-six point two, Aiko Mori expects application claims to carry owners and dates.
 
 ### 26.3 Responsibilities
 
 A simple table names who owns each process, who is the backup, and who approves changes. Advisory response is shared: the nightly job finds matches, project owners fix them, and Aiko watches the due dates each week.
 
+Section twenty-six point three develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-six point three, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty-six point three treats what is handed over as testable only when evidence and ticket IDs are recorded.
+
 ### 26.4 Checking the handoff
 
 For two weeks the new owners run everything while Diego only watches. Any question they have to ask him becomes a runbook update.
+
+Section twenty-six point four develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-six point four, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty-six point four treats what is handed over as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point four, Brightwave Digital will not accept application work without a written trail.
 
 ### 26.5 Client communication
 
 Clients are told who their security contact is and how advisories affecting them will be reported.
 
+Section twenty-six point five develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-six point five, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty-six point five treats what is handed over as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point five, Brightwave Digital will not accept application work without a written trail.
+
 ### 26.6 Keeping knowledge
 
 Decisions and reasons are kept in the repositories next to the code, not in personal notes.
+
+Section twenty-six point six develops application and software supply chain with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-six point six, Aiko Mori expects application claims to carry owners and dates.
+
+Section twenty-six point six treats what is handed over as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point six, Brightwave Digital will not accept application work without a written trail.
 
 ### Worked example
 
@@ -1777,25 +2891,69 @@ You will (1) deploy the security controls to all client projects; (2) validate e
 
 Controls are rolled out project by project, starting with the most sensitive clients identified in chapter 11. Each project gets the shared upload module, the pipeline template, lock-file enforcement and digest recording.
 
+Section twenty-seven point one develops deployment and validation with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-seven point one, Aiko Mori expects deployment claims to carry owners and dates.
+
+Section twenty-seven point one treats rollout plan validation tests as testable only when evidence and ticket IDs are recorded.
+
 ### 27.2 Validation tests
 
 For each project, Diego runs a validation checklist with synthetic data: a disallowed upload is rejected with its reason; the pipeline uses pinned actions and a read-only token; a lock-file mismatch fails the build; the deployment record holds a digest; the drift check reports the project as matching.
+
+Section twenty-seven point two develops deployment and validation with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-seven point two, Aiko Mori expects deployment claims to carry owners and dates.
+
+Section twenty-seven point two treats rollout plan validation tests as testable only when evidence and ticket IDs are recorded.
 
 ### 27.3 Recording results
 
 Results are recorded per project with date and tester, forming evidence for clients and for Brightwave's own review.
 
+Section twenty-seven point three develops deployment and validation with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-seven point three, Aiko Mori expects deployment claims to carry owners and dates.
+
+Section twenty-seven point three treats rollout plan validation tests as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point three, Brightwave Digital will not accept deployment work without a written trail.
+
 ### 27.4 Projects that cannot comply
 
 Two legacy projects cannot use the new upload module without a rewrite. They get compensating steps (tighter size limits and storage rules) and a rebuild date.
+
+Section twenty-seven point four develops deployment and validation with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-seven point four, Aiko Mori expects deployment claims to carry owners and dates.
+
+Section twenty-seven point four treats rollout plan validation tests as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point four, Brightwave Digital will not accept deployment work without a written trail.
 
 ### 27.5 Rollback
 
 Each rollout can be reversed by redeploying the previous approved digest if a client site breaks.
 
+Section twenty-seven point five develops deployment and validation with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-seven point five, Aiko Mori expects deployment claims to carry owners and dates.
+
+Section twenty-seven point five treats rollout plan validation tests as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point five, Brightwave Digital will not accept deployment work without a written trail.
+
 ### 27.6 Communicating
 
 Clients receive a short note on what changed and any visible effects, such as new upload messages.
+
+Section twenty-seven point six develops deployment and validation with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-seven point six, Aiko Mori expects deployment claims to carry owners and dates.
+
+Section twenty-seven point six treats rollout plan validation tests as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point six, Brightwave Digital will not accept deployment work without a written trail.
 
 ### Validation as a habit
 
@@ -1837,25 +2995,71 @@ You will (1) apply the course in a real-style advisory response; (2) coordinate 
 
 In the final month, a synthetic high-severity advisory is published for a widely used form library. This time, the nightly job matches it to nine client projects within hours of publication.
 
+Section twenty-eight point one develops field practice with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-eight point one, Aiko Mori expects field claims to carry owners and dates.
+
+Section twenty-eight point one treats the event coordination communication as testable only when evidence and ticket IDs are recorded.
+
 ### 28.2 Coordination
 
 Owners receive tasks automatically. Diego coordinates: sensitive clients first, updates through the weekly bot pipeline, validation tests rerun before deployment.
+
+Section twenty-eight point two develops field practice with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-eight point two, Aiko Mori expects field claims to carry owners and dates.
+
+Section twenty-eight point two treats the event coordination communication as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point two, Brightwave Digital will not accept field work without a written trail.
 
 ### 28.3 Communication
 
 Affected clients get a short message: what the issue is in plain terms, whether their site was affected, what was done and when. Unaffected clients who ask get a clear "not affected" answer from the inventory record.
 
+Section twenty-eight point three develops field practice with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-eight point three, Aiko Mori expects field claims to carry owners and dates.
+
+Section twenty-eight point three treats the event coordination communication as testable only when evidence and ticket IDs are recorded.
+
 ### 28.4 Timeline
 
 All nine projects are fixed within four days, well inside the 7-day target. Compared with January's three days just to find affected clients, the difference is clear.
+
+Section twenty-eight point four develops field practice with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-eight point four, Aiko Mori expects field claims to carry owners and dates.
+
+Section twenty-eight point four treats the event coordination communication as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point four, Brightwave Digital will not accept field work without a written trail.
 
 ### 28.5 Reflection
 
 The team notes that the slowest fix was in a legacy project, again pointing to the rebuild.
 
+Section twenty-eight point five develops field practice with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-eight point five, Aiko Mori expects field claims to carry owners and dates.
+
+Section twenty-eight point five treats the event coordination communication as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point five, Brightwave Digital will not accept field work without a written trail.
+
 ### 28.6 Lessons
 
 Two runbook steps are improved and the client message template is shortened after feedback.
+
+Section twenty-eight point six develops field practice with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-eight point six, Aiko Mori expects field claims to carry owners and dates.
+
+Section twenty-eight point six treats the event coordination communication as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point six, Brightwave Digital will not accept field work without a written trail.
+
+Section twenty-eight point six fails closed if field evidence is missing rather than guessing.
 
 ### Compared with January
 
@@ -1897,25 +3101,69 @@ You will (1) design and build a capstone improvement; (2) apply the course metho
 
 Diego's capstone is a software bill of materials (SBOM) for each client release, listing every component and version. NTIA (2021) describes the minimum elements: supplier, component name, version, unique identifier, dependency relationship, author of the data and timestamp.
 
+Section twenty-nine point one develops capstone build with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-nine point one, Aiko Mori expects capstone claims to carry owners and dates.
+
+Section twenty-nine point one treats choosing the capstone design as testable only when evidence and ticket IDs are recorded.
+
 ### 29.2 Design
 
 The build creates the SBOM from the lock file, attaches it to the release record next to the image digest, and stores it with the deployment record. Clients can request their SBOM.
+
+Section twenty-nine point two develops capstone build with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-nine point two, Aiko Mori expects capstone claims to carry owners and dates.
+
+Section twenty-nine point two treats choosing the capstone design as testable only when evidence and ticket IDs are recorded.
 
 ### 29.3 Using SBOMs
 
 With SBOMs per release, the inventory can answer not only "who uses this library now" but "which past release contained it", which helps when clients ask about past exposure.
 
+Section twenty-nine point three develops capstone build with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-nine point three, Aiko Mori expects capstone claims to carry owners and dates.
+
+Section twenty-nine point three treats choosing the capstone design as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point three, Brightwave Digital will not accept capstone work without a written trail.
+
 ### 29.4 Testing
 
 Tests check that every library in the lock file appears in the SBOM and that the SBOM matches the deployed digest.
+
+Section twenty-nine point four develops capstone build with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-nine point four, Aiko Mori expects capstone claims to carry owners and dates.
+
+Section twenty-nine point four treats choosing the capstone design as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point four, Brightwave Digital will not accept capstone work without a written trail.
 
 ### 29.5 Documentation
 
 A runbook explains how SBOMs are created, where they are stored and how to answer a client request.
 
+Section twenty-nine point five develops capstone build with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-nine point five, Aiko Mori expects capstone claims to carry owners and dates.
+
+Section twenty-nine point five treats choosing the capstone design as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point five, Brightwave Digital will not accept capstone work without a written trail.
+
 ### 29.6 Scope limits
 
 The capstone does not attempt signing SBOMs; that is noted as future work linked to the SLSA L3 goal.
+
+Section twenty-nine point six develops capstone build with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section twenty-nine point six, Aiko Mori expects capstone claims to carry owners and dates.
+
+Section twenty-nine point six treats choosing the capstone design as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point six, Brightwave Digital will not accept capstone work without a written trail.
 
 ### SBOM format
 
@@ -1957,25 +3205,71 @@ You will (1) present the capstone; (2) show evidence; (3) answer questions; (4) 
 
 Diego presents to Aiko and a Southport Polytechnic tutor: the January problem, the controls built, the evidence that they work, and the SBOM capstone.
 
+Section thirty point one develops capstone assessment with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section thirty point one, Aiko Mori expects capstone claims to carry owners and dates.
+
+Section thirty point one treats presentation evidence questions limits as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point one, Brightwave Digital will not accept capstone work without a written trail.
+
 ### 30.2 Evidence
 
 He shows the nightly reports, the validation records for 23 projects, the field-practice timeline and the SBOM tests, all from synthetic records.
+
+Section thirty point two develops capstone assessment with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section thirty point two, Aiko Mori expects capstone claims to carry owners and dates.
+
+Section thirty point two treats presentation evidence questions limits as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point two, Brightwave Digital will not accept capstone work without a written trail.
 
 ### 30.3 Questions
 
 The tutor asks how the work fits the SSDF. Diego maps it: inventory and audits to Respond to Vulnerabilities; pipeline template and pinning to Protect the Software; upload checks and reviews to Produce Well-Secured Software; runbooks and roles to Prepare the Organization.
 
+Section thirty point three develops capstone assessment with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section thirty point three, Aiko Mori expects capstone claims to carry owners and dates.
+
+Section thirty point three treats presentation evidence questions limits as testable only when evidence and ticket IDs are recorded.
+
 ### 30.4 Limits
 
 He names the limits honestly: two legacy projects remain, SBOMs are unsigned and unknown flaws are not found by audits.
+
+Section thirty point four develops capstone assessment with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section thirty point four, Aiko Mori expects capstone claims to carry owners and dates.
+
+Section thirty point four treats presentation evidence questions limits as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point four, Brightwave Digital will not accept capstone work without a written trail.
 
 ### 30.5 Reflection
 
 Diego writes that the biggest lesson was that most security work is careful routine: keeping lists current, watching checks and fixing small problems before they grow.
 
+Section thirty point five develops capstone assessment with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section thirty point five, Aiko Mori expects capstone claims to carry owners and dates.
+
+Section thirty point five treats presentation evidence questions limits as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point five, Brightwave Digital will not accept capstone work without a written trail.
+
 ### 30.6 Next steps
 
 Brightwave will rebuild the legacy projects, aim for SLSA build L3 and add signed SBOMs.
+
+Section thirty point six develops capstone assessment with a Brightwave Digital note Diego Ramos can demo offline.
+
+Under section thirty point six, Aiko Mori expects capstone claims to carry owners and dates.
+
+Section thirty point six treats presentation evidence questions limits as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point six, Brightwave Digital will not accept capstone work without a written trail.
 
 ### Feedback received
 
