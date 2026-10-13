@@ -1,7 +1,7 @@
 # Segurança Quântica e Pós-Quântica: Engenharia de Sistemas Resistentes à Computação Quântica
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos; aproximadamente 4.000 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 50 já estão escritos em português, com os exercícios EX001–EX040 e suas resoluções; os capítulos 21–50 (EX041–EX100) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 50 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções; os capítulos 31–50 (EX061–EX100) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: futuros projetistas de sistemas de segurança que vão projetar, construir e validar sistemas que continuem seguros quando existirem grandes computadores quânticos. Conhecimento de entrada: cálculo, computação, redes e engenharia de sistemas no nível de conclusão do ensino médio ou do primeiro ano.
 - Relação com os livros vizinhos: os livros de [mestrado](../../../../masters-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) e de [doutorado](../../../../doctorate-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) desta área estudam empiricamente a implantação da PQC. **Este livro trata da engenharia da migração**: a matemática por trás dos esquemas de reticulados, de hash e de códigos, o inventário, os requisitos, a arquitetura híbrida PQ/T, a agilidade criptográfica, a implementação, a verificação, as operações e um projeto final.
 - Autoria: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -43,8 +43,18 @@ As fontes primárias foram verificadas em 12 de outubro de 2026: NIST FIPS 203/2
 18. [Arquitetura de segurança](#ch-18)
 19. [Identidade e criptografia](#ch-19)
 20. [Segurança quântica e pós-quântica: contexto de engenharia](#ch-20)
+21. [Segurança quântica e pós-quântica: requisitos](#ch-21)
+22. [Segurança quântica e pós-quântica: modelos de sistema e de dados](#ch-22)
+23. [Segurança quântica e pós-quântica: análise de ameaças e de falhas](#ch-23)
+24. [Segurança quântica e pós-quântica: métodos I](#ch-24)
+25. [Ateliê de projeto I](#ch-25)
+26. [Segurança quântica e pós-quântica: alternativas de arquitetura](#ch-26)
+27. [Segurança quântica e pós-quântica: projeto de controles](#ch-27)
+28. [Segurança quântica e pós-quântica: implementação I](#ch-28)
+29. [Segurança quântica e pós-quântica: medição](#ch-29)
+30. [Laboratório de verificação I](#ch-30)
 
-Capítulos 21–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
+Capítulos 31–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1416,7 +1426,772 @@ Os computadores quânticos ameaçam a criptografia de chave pública; a desigual
 <!-- cyberabc:chapter-navigation:start ch-20 -->
 ### Continue estudando — capítulo 20 de 50
 
-[← Capítulo 19](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 (inglês) →](../../en/book/MANUSCRIPT.md#ch-21)
+[← Capítulo 19](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-21"></a>
+
+## Capítulo 21 — Segurança quântica e pós-quântica: requisitos
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever requisitos de PQC verificáveis; (2) derivar requisitos dos tempos de vida dos dados, das políticas e das restrições dos parceiros; (3) incluir requisitos de disponibilidade e de agilidade; e (4) rastrear os requisitos até os métodos de verificação. O capítulo parte do Capítulo 20 e prepara os modelos e a análise de ameaças.
+
+### 21.1 Bons requisitos
+
+Um requisito é necessário, inequívoco, verificável e rastreável. "O sistema deverá ser seguro contra a computação quântica" falha nos quatro. Melhor: "REQ-KE-01: Todas as conexões TLS na borda externa deverão negociar o X25519MLKEM768 ou um grupo híbrido PQ/T mais forte quando o cliente oferecer um. Verificação: a telemetria passiva mostra que ≥ 99% dos clientes que o oferecem o negociam."
+
+O requisito reescrito nomeia uma propriedade, um lugar e um limiar, e a linha de verificação diz que evidência conta. A condição "quando o cliente oferecer um" importa: a BPA não pode obrigar scanners portáteis antigos a suportar o grupo híbrido, então um requisito que os ignorasse nunca poderia ser cumprido.
+
+### 21.2 Fontes
+
+Derive os requisitos de: tempos de vida da confidencialidade dos dados (Capítulo 13), períodos de validade das assinaturas (conhecimentos de embarque: 12 anos), políticas (planos de transição do NIST, reguladores setoriais, CNSA 2.0 para parceiros de segurança nacional), capacidades dos parceiros e restrições operacionais (orçamentos de tamanho de handshake, memória dos dispositivos).
+
+Cada fonte produz números que acabam no texto dos requisitos. O tempo de vida aduaneiro de 25 anos torna urgente o REQ-EXP-03; a validade de 12 anos dos conhecimentos de embarque fixa o prazo da assinatura com ML-DSA; o orçamento de handshake de 1.300 bytes limita o conjunto de parâmetros; os 32 KB de flash dos controladores dos guindastes restringem a escolha da assinatura de firmware. Registrar de qual fonte veio cada requisito permite aos revisores conferi-lo quando essa fonte mudar.
+
+### 21.3 Categorias de requisitos
+
+- **Estabelecimento de chaves**: quais protocolos usam KEMs híbridos ou PQC, com quais conjuntos de parâmetros.
+- **Assinaturas**: quais artefatos precisam de assinaturas pós-quânticas, e até quando.
+- **Agilidade**: "REQ-AG-02: Substituir o algoritmo KEM no TLS de borda deverá exigir apenas uma mudança de política e poderá ser concluído em até 30 dias, incluindo os testes."
+- **Inventário**: "REQ-INV-01: O CBOM deverá cobrir ≥ 95% dos ativos, com a parcela desconhecida relatada mensalmente."
+- **Disponibilidade**: "REQ-AV-01: Ativar grupos híbridos não deverá elevar as falhas de handshake acima da linha de base + 0,04 ponto percentual (limite superior de 95%)."
+
+Todo requisito aqui carrega um número, para que os testes possam dizer aprovado ou reprovado.
+
+### 21.4 Rastreabilidade
+
+Cada requisito se liga a uma fonte e a um método de verificação (teste, análise, inspeção, demonstração). Uma matriz de rastreabilidade mostra a cobertura e ajuda os revisores a encontrar requisitos órfãos.
+
+Na matriz da BPA, o REQ-KE-01 remonta ao tempo de vida dos dados aduaneiros e aponta adiante para a consulta da telemetria passiva; o REQ-AG-02 remonta à política de agilidade e aponta adiante para um exercício cronometrado em que a equipe troca o KEM num ambiente de testes. Um requisito sem ligação adiante não tem evidência de que foi cumprido, e um sem ligação para trás pode não ter razão de existir. Os dois tipos são sinalizados na revisão mensal.
+
+### 21.5 Exemplo resolvido
+
+O requisito de exportação aduaneira da BPA: "REQ-EXP-03: Os arquivos exportados para a agência aduaneira deverão ser cifrados para a chave ML-KEM-1024 da agência usando o KEMRecipientInfo do CMS ([RFC 9629](https://www.rfc-editor.org/rfc/rfc9629.html)), com um destinatário RSA-OAEP mantido em paralelo até que a agência confirme o suporte (data-alvo registrada). Verificação: inspeção da estrutura do arquivo exportado; teste de interoperabilidade com o sistema de testes da agência."
+
+Manter o destinatário RSA-OAEP em paralelo significa que a agência consegue ler os arquivos durante a transição, mas também que os arquivos continuam expostos à coleta até que esse destinatário seja removido, por isso a data-alvo importa.
+
+### 21.6 Erros comuns e limites
+
+- Requisitos que nomeiam produtos em vez de propriedades.
+- Ausência de requisitos de disponibilidade ou de agilidade.
+- Requisitos sem métodos de verificação.
+
+Nomear um produto prende a BPA a um fornecedor e nada diz sobre a propriedade necessária, de modo que um produto substituto não pode ser conferido contra ele. Sem requisitos de disponibilidade e de agilidade, uma implantação que quebra os parceiros ou que não pode ser mudada depois ainda passa na revisão. Um requisito sem método de verificação não pode ser encerrado, como mostra, por contraste, a linha de telemetria do REQ-KE-01. Cada requisito é revisado quanto às três falhas antes de entrar na linha de base.
+
+### Exercícios
+
+- **EX041 — Reescrever.** Reescreva "Usar PQC na VPN" como um requisito verificável. Rubrica: 3 = protocolo, parâmetro, condição e verificação declarados.
+- **EX042 — Rastrear.** Monte uma matriz de rastreabilidade de cinco linhas para a BPA. Rubrica: 3 = fontes e métodos de verificação para cada linha.
+
+### Síntese
+
+Os requisitos de PQC são específicos, verificáveis e rastreados até os tempos de vida dos dados, as políticas e as restrições, e incluem agilidade, inventário e disponibilidade, não apenas algoritmos.
+
+<!-- cyberabc:chapter-navigation:start ch-21 -->
+### Continue estudando — capítulo 21 de 50
+
+[← Capítulo 20](#ch-20) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Segurança quântica e pós-quântica: modelos de sistema e de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) modelar sistemas como ativos, fluxos e funções criptográficas; (2) construir um modelo de dados para um CBOM; (3) ligar os fluxos de dados aos tempos de vida da confidencialidade; e (4) usar os modelos para calcular a exposição. O capítulo parte dos Capítulos 13, 14 e 21.
+
+### 22.1 Modelos de ativos e de fluxos
+
+Modele cada ativo (serviço, dispositivo, repositório de dados) e cada fluxo entre ativos. Anote nos fluxos o protocolo, o algoritmo de estabelecimento de chaves, o algoritmo de autenticação e as classes de dados transportadas. Anote nos repositórios a cifragem, o método de encapsulamento de chaves e a retenção. O modelo se torna a espinha dorsal do inventário, da análise de ameaças e do planejamento.
+
+A anotação dos fluxos é onde está a maior parte do valor, porque o risco de coleta se prende aos fluxos, não aos ativos. Um servidor pode hospedar tanto um fluxo de telemetria de vida curta quanto um fluxo de replicação aduaneira, e só o segundo é urgente. Registrar as classes de dados por fluxo permite ao modelo separá-los, o que uma lista de ativos sozinha não consegue.
+
+### 22.2 Modelo de dados do CBOM
+
+Um conjunto mínimo de entidades do CBOM: *Asset* (id, responsável, tipo, localização); *CryptoUse* (ativo, função: troca de chaves/assinatura/cifragem/hash, algoritmo, conjunto de parâmetros, protocolo, biblioteca, fonte da evidência, última observação); *Key/Certificate* (algoritmo, tamanho, emissor, validade, armazenamento); *DataClass* (tempo de vida). O campo *fonte da evidência* — código, configuração, observação passiva, declaração do fornecedor — importa porque as fontes diferem em confiabilidade.
+
+O código e a configuração mostram a intenção, a observação passiva mostra o que foi negociado, e uma declaração do fornecedor é uma alegação até ser testada. Os relatórios de planejamento da BPA mostram a parcela de cada fonte, de modo que um retrato construído sobretudo com declarações fica visivelmente mais fraco.
+
+### 22.3 Cálculo da exposição
+
+Exposição de um fluxo = (tempo de vida dos dados > tempo até o CRQC assumido) × (troca de chaves vulnerável) × (gravável pelo adversário). Uma consulta sobre o modelo lista os fluxos expostos; juntá-la ao volume de tráfego os ordena. Campos incertos são *desconhecidos*, nunca presumidos seguros.
+
+O primeiro fator usa a data assumida do CRQC como uma faixa, de modo que um fluxo pode estar exposto apenas no caso pessimista; a consulta informa os dois casos. O terceiro fator capta se um adversário consegue gravar o fluxo, o que é alto para enlaces de internet e mais baixo para tráfego dentro de uma sala de equipamentos trancada. Tratar campos desconhecidos como desconhecidos mantém as lacunas visíveis, e a contagem de desconhecidos se torna um indicador antecedente para a equipe de inventário.
+
+### 22.4 Exemplo resolvido
+
+O modelo da BPA tem 412 ativos e 1.930 fluxos. Consultar os fluxos que transportam dados com tempo de vida ≥ 10 anos sobre troca de chaves só ECDHE devolve 37 fluxos, 29 dos quais passam por quatro gateways — o que faz dos gateways os alvos de migração de maior alavancagem.
+
+Quatro gateways tratando 29 de 37 fluxos expostos significam que uma mudança de configuração em quatro dispositivos remove a maior parte da exposição, com muito mais eficiência do que visitar cada aplicação. Os oito fluxos restantes são tratados um a um. Essa é a alavancagem que um modelo dá: sem ele, a equipe provavelmente começaria pelo dono de aplicação que se oferecesse primeiro.
+
+### 22.5 Atividade prática
+
+Esboce as entidades do CBOM numa tabela ou como dataclasses Python, depois preencha dez registros a partir da descrição da BPA e escreva uma consulta pelos fluxos expostos. O Laboratório I do Capítulo 29 amplia isso.
+
+Escolha registros que incluam pelo menos um campo desconhecido e um fluxo com dados de vida longa sobre ECDHE, para que a consulta devolva algo a discutir. Confira se a sua consulta lista os desconhecidos separadamente, em vez de descartá-los em silêncio. Depois acrescente uma coluna de volume de tráfego e ordene os fluxos expostos por volume para ver quais seriam os primeiros itens de trabalho. Guarde as dataclasses para o laboratório posterior.
+
+### 22.6 Erros comuns e limites
+
+- Modelos que registram algoritmos, mas não a fonte da evidência.
+- Tratar o desconhecido como seguro.
+- Modelos construídos uma vez e nunca atualizados.
+
+Sem a fonte da evidência, a alegação de um fornecedor de suportar PQC parece igual a um handshake medido, e o planejamento se apoia em dados não verificados. Tratar o desconhecido como seguro faz a consulta de exposição parecer melhor à medida que o inventário piora. Um modelo construído uma vez fica errado na próxima versão; a BPA o atualiza a partir do CBOM em cada build e da observação passiva toda semana.
+
+### Nota de engenharia
+
+Os modelos também precisam registrar o tempo. Um fluxo observado uma vez há dezoito meses pode não existir mais, e uma biblioteca atualizada na semana passada pode ter mudado os padrões. Guarde os registros de primeira e última observação com cada observação e passe os registros envelhecidos para um estado "não verificado", em vez de apagá-los em silêncio. Isso mantém a consulta de exposição honesta: ela distingue os fluxos sabidamente vulneráveis agora daqueles que eram vulneráveis na última observação e precisam ser observados de novo antes que alguém gaste orçamento de migração com eles.
+
+### Exercícios
+
+- **EX043 — Projeto da entidade.** Defina a entidade CryptoUse com tipos de campo e valores permitidos. Rubrica: 3 = inclui a fonte da evidência e o registro de última observação.
+- **EX044 — Consulta de exposição.** Escreva pseudocódigo para a consulta de fluxos expostos. Rubrica: 3 = trata explicitamente os valores desconhecidos.
+
+### Síntese
+
+Modelos de ativos e fluxos anotados com funções criptográficas e tempos de vida dos dados transformam as perguntas da migração em consultas; o modelo do CBOM precisa registrar as fontes de evidência e os desconhecidos.
+
+<!-- cyberabc:chapter-navigation:start ch-22 -->
+### Continue estudando — capítulo 22 de 50
+
+[← Capítulo 21](#ch-21) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Segurança quântica e pós-quântica: análise de ameaças e de falhas
+
+### Objetivos de aprendizagem
+
+Você vai (1) modelar as ameaças da era quântica com uma análise no estilo STRIDE; (2) analisar os modos de falha introduzidos pela própria migração; (3) incluir ataques de rebaixamento e de implementação; e (4) priorizar com uma pontuação de risco. O capítulo parte dos Capítulos 15 e 22.
+
+### 23.1 Ameaças da era quântica
+
+- **Colete agora, decifre depois**: gravar tráfego protegido por uma troca de chaves vulnerável.
+- **Falsificação futura**: falsificar assinaturas em artefatos de vida longa quando existir um CRQC.
+- **Rebaixamento**: um atacante ativo remove as opções pós-quânticas para que os pares voltem a uma troca só clássica. O TLS 1.3 protege a transcrição da negociação, então o rebaixamento exige quebrar a autenticação — mas uma lógica de fallback mal configurada nas aplicações pode reintroduzi-lo.
+- **Ataques de implementação**: canais laterais e injeção de falhas contra código novo (Capítulo 31).
+- **Surpresa criptoanalítica**: uma fraqueza encontrada num esquema novo, como aconteceu com o Rainbow e o SIKE ([Beullens 2022](https://eprint.iacr.org/2022/214); [Castryck e Decru 2022](https://eprint.iacr.org/2022/975)).
+
+### 23.2 Modos de falha da migração
+
+A análise de modos de falha e efeitos (FMEA) se aplica: handshakes grandes demais descartados por middleboxes; clientes que não conseguem interpretar os novos certificados; HSMs que não conseguem guardar as novas chaves; chaves de assinatura com estado reutilizadas após a restauração de um backup; falhas de interoperabilidade entre implementações de rascunho e finais; certificados de transição expirados. Cada um tem causa, efeito, método de detecção e mitigação.
+
+Vários deles já apareceram no caso da BPA: o proxy que reiniciava ClientHellos divididos, a falha de importação de chaves entre HSMs e o risco de reutilização do estado do LMS após uma restauração. Listá-los numa única tabela obriga a definir um método de detecção para cada um, que costuma ser a parte que falta.
+
+### 23.3 Pontuação de risco
+
+Pontue probabilidade e impacto; para as ameaças de coleta, o impacto cresce com o tempo de vida e o volume dos dados. Evite a falsa precisão: três ou cinco níveis com definições claras bastam.
+
+A BPA usa três níveis com definições escritas: impacto alto significa dados com tempo de vida acima de dez anos ou uma função de segurança operacional; médio significa dados comerciais abaixo de dez anos; baixo significa dados operacionais de vida curta. Dois avaliadores que pontuam o mesmo item devem chegar ao mesmo nível e, quando não chegam, as definições são apertadas, em vez de se tirar a média. Uma nota como três vírgula sete numa escala de cinco pontos sugere uma precisão que os insumos não sustentam.
+
+### 23.4 Exemplo resolvido
+
+FMEA da assinatura do firmware dos guindastes da BPA com LMS: falha "contador de estado reiniciado após a restauração do HSM" → efeito "reutilização de chave de uso único permitindo falsificação" → detecção "auditoria do contador monotônico contra o log" → mitigação "HSM com reserva de estado, procedimentos de restauração que proíbem o retrocesso, chave separada por local de assinatura". Severidade alta, probabilidade média → ação prioritária.
+
+A etapa de detecção funciona porque cada assinatura carrega o seu índice: comparar o maior índice visto no firmware publicado com o contador do HSM mostra de imediato um retrocesso. Chaves separadas por local limitam o dano de um erro às assinaturas de um único local.
+
+### 23.5 Erros comuns e limites
+
+- Analisar só ameaças criptoanalíticas, e não as falhas da migração.
+- Supor que os híbridos dispensam a análise do rebaixamento.
+- Pontuações numéricas de risco apresentadas como medições.
+
+A maioria dos incidentes nas primeiras migrações vem de modos de falha como o reinício do proxy, não da criptoanálise, então uma análise limitada a ataques deixa escapar os problemas prováveis. Os híbridos protegem contra a quebra de um componente, mas um fallback mal configurado ainda pode remover inteiramente a parte pós-quântica, por isso os caminhos de rebaixamento são analisados por aplicação. As pontuações de risco ordenam itens; não são medições e não devem ser somadas.
+
+### Nota de engenharia
+
+Por fim, ordene as ameaças pelo momento em que podem se concretizar. O "colete agora, decifre depois" está acontecendo hoje para qualquer tráfego gravado, embora a decifração precise de uma máquina futura; a falsificação ativa exige que a máquina exista no momento do ataque. Essa divisão temporal explica por que a mesma organização pode, racionalmente, migrar a troca de chaves neste ano e agendar a migração das assinaturas para depois, e dá aos tomadores de decisão uma razão clara para a ordem do trabalho, em vez de uma lista indiferenciada de riscos quânticos.
+
+### Exercícios
+
+- **EX045 — Tabela de ameaças.** Produza uma tabela de ameaças para a VPN dos parceiros da BPA cobrindo as cinco classes de ameaça. Rubrica: 3 = cada uma com mitigação.
+- **EX046 — Linha de FMEA.** Escreva uma linha de FMEA para "middlebox descarta ClientHello de dois segmentos". Rubrica: 3 = causa, efeito, detecção, mitigação, prioridade.
+
+### Síntese
+
+A análise de ameaças na era quântica inclui gravação, falsificação futura, rebaixamento, ataques de implementação e surpresa criptoanalítica; a própria migração tem modos de falha que a FMEA torna visíveis.
+
+<!-- cyberabc:chapter-navigation:start ch-23 -->
+### Continue estudando — capítulo 23 de 50
+
+[← Capítulo 22](#ch-22) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Segurança quântica e pós-quântica: métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar o aprendizado com erros (LWE) e por que o ruído torna difícil a álgebra linear; (2) acompanhar uma cifragem LWE de brinquedo; (3) relacioná-la à estrutura do ML-KEM; e (4) entender o papel da transformação de Fujisaki–Okamoto. O capítulo parte do Capítulo 2 e fundamenta as escolhas de projeto dos Capítulos 25–28.
+
+### 24.1 Aprendizado com erros
+
+Dada uma matriz aleatória *A* e *b* = *A*·*s* + *e* mod *q*, em que *s* é secreto e *e* é um vetor de pequenos erros aleatórios, encontre *s*. Sem *e*, isso é eliminação gaussiana. Com *e*, não se conhece algoritmo eficiente, clássico ou quântico, para parâmetros adequados; [Regev (2009)](https://doi.org/10.1145/1568318.1568324) relacionou o LWE a problemas de reticulados no pior caso. Os melhores ataques usam redução de reticulados, cujo custo cresce exponencialmente com a dimensão.
+
+O papel do ruído aparece na dimensão: no Laboratório W, dezesseis incógnitas com erros pequenos são fáceis de resolver por força bruta sobre os erros, enquanto o ML-KEM-768 trabalha com dimensão 768, em que os melhores ataques de redução de reticulados precisam de muito mais trabalho do que qualquer computador consegue fazer.
+
+### 24.2 Cifrar um bit
+
+Para cifrar um bit, some um subconjunto aleatório de linhas de (*A*, *b*): *u* = Σ*r*ᵢ*A*ᵢ, *v* = Σ*r*ᵢ*b*ᵢ + bit·⌊*q*/2⌋. O detentor da chave calcula *v* − ⟨*u*, *s*⟩ = bit·⌊*q*/2⌋ + ruído pequeno e arredonda. A decifração funciona enquanto o ruído acumulado ficar abaixo de *q*/4.
+
+No Laboratório W, os erros são no máximo 2 em valor absoluto e o subconjunto tem no máximo 64 linhas, então o ruído acumulado é no máximo 128. Isso está muito abaixo de q/4, que é cerca de 832, então todo bit é decifrado corretamente. Erros maiores ou mais linhas empurrariam o ruído rumo a q/4 e causariam falhas, que é o compromisso que os parâmetros do ML-KEM equilibram com a segurança.
+
+### 24.3 Atividade prática — Laboratório W (brinquedo, inseguro)
+
+```python
+# Lab W (ch 24): a TOY Regev-style LWE encryption of one bit. Deliberately insecure parameters.
+import random
+rng = random.Random(5)
+n, q, m = 16, 3329, 64
+def small(): return rng.choice([-2, -1, 0, 1, 2])
+s = [rng.randrange(q) for _ in range(n)]
+A = [[rng.randrange(q) for _ in range(n)] for _ in range(m)]
+b = [(sum(A[i][j] * s[j] for j in range(n)) + small()) % q for i in range(m)]   # b = A s + e
+def enc(bit):
+    r = [rng.randrange(2) for _ in range(m)]                                        # random subset
+    u = [sum(r[i] * A[i][j] for i in range(m)) % q for j in range(n)]
+    v = (sum(r[i] * b[i] for i in range(m)) + bit * (q // 2)) % q
+    return u, v
+def dec(u, v):
+    d = (v - sum(u[j] * s[j] for j in range(n))) % q                                 # = bit*q/2 + small noise
+    return 1 if q // 4 < d < 3 * q // 4 else 0
+ok = sum(dec(*enc(bit)) == bit for bit in [rng.randrange(2) for _ in range(2000)])
+print(f"toy LWE: {ok}/2000 bits decrypted correctly (noise stays below q/4)")
+```
+
+Saída esperada:
+
+```text
+toy LWE: 2000/2000 bits decrypted correctly (noise stays below q/4)
+```
+
+Esses parâmetros são pequenos demais para dar segurança e vazam por muitos caminhos; o laboratório existe só para tornar a álgebra concreta.
+
+O resultado de 2000 em 2000 decorre do limite: um ruído de no máximo 128 nunca pode cruzar o limiar de 832. Mude `small()` para sortear de −20 a 20 e execute de novo; o ruído no pior caso sobe para 1.280, acima do limiar, mas os 2000 bits continuam sendo decifrados, porque uma soma de cerca de 32 erros aleatórios raramente se aproxima do pior caso; as falhas só aparecem com erros muito maiores, como mostra o exercício EX047. Depois faça-a devolver sempre 0 e resolva *s* a partir de dezesseis linhas de A e b por eliminação gaussiana, o que mostra que são os erros que carregam a segurança.
+
+### 24.4 Do brinquedo ao ML-KEM
+
+O ML-KEM substitui os inteiros por polinômios em Z₃₃₂₉[*x*]/(*x*²⁵⁶+1) e usa a estrutura de módulo (*k* = 2, 3 ou 4 vetores de polinômios) para ter chaves compactas, comprime os textos cifrados, sorteia o ruído de uma distribuição binomial centrada e deriva a aleatoriedade com SHAKE. A cifragem de chave pública subjacente só é segura contra atacantes passivos; o ML-KEM aplica uma transformação no estilo Fujisaki–Okamoto — recifrar durante o desencapsulamento e devolver uma chave pseudoaleatória de "rejeição implícita" em caso de divergência — para resistir a ataques de texto cifrado escolhido ([FIPS 203](https://doi.org/10.6028/NIST.FIPS.203)).
+
+Cada mudança tem um propósito: polinômios e módulos encolhem as chaves, a compressão economiza bytes e a transformação resiste a ataques ativos.
+
+### 24.5 Exemplo resolvido
+
+Um engenheiro da BPA pergunta por que o desencapsulamento do ML-KEM recifra. Resposta: para detectar textos cifrados manipulados. Sem essa verificação, um atacante poderia enviar textos cifrados forjados e aprender sobre a chave secreta a partir do sucesso ou não da decifração. As implementações precisam fazer a comparação em tempo constante, ou o tempo da verificação vaza a mesma informação.
+
+A chave de rejeição implícita também importa: devolver um erro em caso de divergência diria, por si só, ao atacante que o texto cifrado era inválido. Ao devolver uma chave pseudoaleatória derivada de um valor secreto, o ML-KEM faz o caso inválido parecer um sucesso normal para o atacante, e o protocolo falha mais adiante de uma forma que nada revela sobre a chave.
+
+### 24.6 Erros comuns e limites
+
+- Achar que a segurança do LWE vem da matriz, e não do ruído.
+- Usar a cifragem segura só contra atacantes passivos sem a transformação FO.
+- Tratar o brinquedo como um esquema utilizável.
+
+O Laboratório W mostra o primeiro ponto diretamente: retire os erros e o segredo cai diante da eliminação gaussiana. O esquema seguro só contra passivos, sem a transformação, fica aberto aos ataques de texto cifrado escolhido descritos no exemplo resolvido. O brinquedo usa dimensão dezesseis e nenhuma compressão, então não oferece segurança alguma, e o seu único uso é didático.
+
+### Exercícios
+
+- **EX047 — Orçamento de ruído.** No Laboratório W, mude a escolha dos erros para `rng.randint(-150, 150)` e depois para `rng.randint(-300, 300)` e observe a decifração. Explique. Rubrica: 3 = aparecem falhas; explica o ruído acumulado contra *q*/4.
+- **EX048 — Propósito da FO.** Explique a rejeição implícita a um desenvolvedor em 120 palavras. Rubrica: 3 = raciocínio de texto cifrado escolhido e exigência de tempo constante.
+
+### Síntese
+
+O LWE esconde segredos sob ruído; um brinquedo mostra a decifração como arredondamento; o ML-KEM acrescenta estrutura de anel/módulo, compressão e a transformação FO para a segurança contra texto cifrado escolhido.
+
+<!-- cyberabc:chapter-navigation:start ch-24 -->
+### Continue estudando — capítulo 24 de 50
+
+[← Capítulo 23](#ch-23) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Ateliê de projeto I
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir um ateliê de projeto estruturado sobre um problema com forma real; (2) produzir um projeto de troca de chaves híbrida para a borda da BPA; (3) apresentá-lo e defendê-lo com evidências; e (4) incorporar as críticas. O capítulo integra os Capítulos 20–24.
+
+### 25.1 Enunciado
+
+Projete o estabelecimento de chaves resistente à computação quântica para o portal público da BPA e a borda das APIs de parceiros: 2 milhões de conexões por dia, uma população mista de clientes (navegadores, software dos parceiros, scanners portáteis antigos), um proxy de inspeção num dos caminhos e uma CDN à frente do portal. Restrições: nenhuma regressão de disponibilidade além do requisito do Capítulo 21, orçamento para a atualização de um único equipamento, prazo de seis meses.
+
+As restrições puxam em direções diferentes. Dois milhões de conexões diárias significam que até taxas de falha pequenas produzem muitos incidentes; os scanners antigos talvez nunca suportem grupos híbridos; o orçamento de um único equipamento não substitui todos os dispositivos. Bons projetos dizem explicitamente qual restrição relaxam e por quê.
+
+### 25.2 Método do ateliê
+
+As equipes produzem: diagrama de contexto; subconjunto de requisitos; duas alternativas; estudo de compromisso; projeto escolhido com esboço de configuração; plano de testes; riscos. Cada equipe apresenta por dez minutos e recebe as críticas de uma banca que representa operações, segurança, parceiros e finanças.
+
+Apresentar duas alternativas obriga as equipes a justificar a escolha, em vez de defender a primeira ideia. Os papéis da banca refletem os revisores reais que a BPA enfrentaria: operações pergunta sobre monitoramento, finanças sobre custo, parceiros sobre compatibilidade. As equipes que preparam evidências para cada papel, como um plano de testes mostrando que o firmware do proxy foi verificado, costumam lidar melhor com as críticas do que as que se apoiam em argumentos gerais. As críticas são registradas para que as equipes possam revisar o projeto depois.
+
+### 25.3 Esboço da solução de referência
+
+Terminar o TLS na CDN e no proxy de borda com o X25519MLKEM768 oferecido primeiro e o X25519 como alternativa para clientes que não suportam o grupo híbrido ([RFC 10024](https://www.rfc-editor.org/rfc/rfc10024.html)); atualizar o firmware do proxy de inspeção ou desviar a inspeção do TLS 1.3 para as APIs de parceiros; deixar os scanners portáteis em grupos clássicos, sob uma exceção de curto prazo com data de substituição; medir os grupos negociados pelos logs; implantação escalonada com portões de canário. Nota: a troca de chaves híbrida protege contra a gravação; os certificados continuam clássicos por enquanto — documentado como lacuna conhecida, com um pacote de trabalho posterior.
+
+### 25.4 Exemplos de crítica
+
+Operações pergunta como o fallback é monitorado; segurança pergunta se o fallback poderia ser forçado (no TLS 1.3, só quebrando a autenticação ou explorando a lógica de novas tentativas no nível da aplicação, que precisa ser verificada); parceiros perguntam sobre as versões das bibliotecas dos seus clientes; finanças pergunta sobre os custos dos equipamentos. Boas equipes respondem com evidências ou acrescentam itens de trabalho.
+
+A pergunta de segurança é a mais sutil: se uma aplicação repete todo handshake malsucedido sem o grupo híbrido, um atacante pode forçar falhas e obter conexões clássicas. Uma boa resposta verifica a lógica de novas tentativas do portal e registra qualquer fallback.
+
+### 25.5 Erros comuns e limites
+
+- Projetos que ignoram a população de clientes antigos.
+- Nenhum plano de medição dos grupos negociados.
+- Afirmar que o portal é "seguro contra a computação quântica" enquanto os certificados são clássicos.
+
+Os scanners portáteis não podem ser ignorados: precisam de uma exceção com data de substituição, como mostra o esboço de referência. Sem medir os grupos negociados, ninguém sabe se a implantação funcionou. Chamar o portal de "seguro contra a computação quântica" enquanto os certificados continuam clássicos engana as partes interessadas, já que ataques ativos com um futuro CRQC ainda seriam possíveis; em vez disso, o esboço documenta essa lacuna, com um pacote de trabalho posterior.
+
+### Nota de engenharia
+
+Os ateliês também treinam o hábito de anotar o que o projeto não faz. A solução de referência protege as trocas de chaves gravadas, mas não a autenticação, não cobre os scanners portáteis até a substituição e depende do firmware do fornecedor para o proxy de inspeção. Listar isso explicitamente no registro do projeto transforma esses pontos em pacotes de trabalho acompanhados, com responsáveis, em vez de descobertas feitas por um auditor. Um projeto que declara as suas lacunas é mais fácil de aprovar do que um que parece completo, mas não é.
+
+### Exercícios
+
+- **EX049 — Entregável do ateliê.** Produza o diagrama de contexto (com alternativa em texto) e o estudo de compromisso para o enunciado. Rubrica: 3 = duas alternativas reais, pesos antes das notas.
+- **EX050 — Resposta à crítica.** Responda em 150 palavras à pergunta da banca de segurança sobre o fallback. Rubrica: 3 = proteção da transcrição no TLS 1.3 e risco das novas tentativas da aplicação, ambos tratados.
+
+### Síntese
+
+Um ateliê de projeto transforma normas num projeto configurado, medido e escalonado, cujas lacunas estão declaradas e cujos críticos foram respondidos.
+
+<!-- cyberabc:chapter-navigation:start ch-25 -->
+### Continue estudando — capítulo 25 de 50
+
+[← Capítulo 24](#ch-24) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Segurança quântica e pós-quântica: alternativas de arquitetura
+
+### Objetivos de aprendizagem
+
+Você vai (1) comparar PQC pura, híbrido PQ/T e mitigações provisórias; (2) avaliar certificados compostos versus paralelos; (3) considerar alternativas de chave simétrica, como chaves pré-compartilhadas; e (4) escolher a arquitetura por contexto. O capítulo parte dos Capítulos 18 e 25.
+
+### 26.1 Pura versus híbrida
+
+A **PQC pura** usa apenas algoritmos pós-quânticos: mais simples e menor que o híbrido, mas aposta tudo em pressupostos mais novos. O **híbrido PQ/T** combina os dois ([RFC 9794](https://www.rfc-editor.org/rfc/rfc9794.html)): é seguro se qualquer um deles resistir, ao custo extra de bytes e complexidade. Durante a transição, muitos protocolos e documentos de orientação preferem híbridos para a troca de chaves; algumas orientações governamentais, como o CNSA 2.0, aceitam PQC pura com os conjuntos de parâmetros da categoria 5. A escolha depende do apetite de risco frente a uma surpresa criptoanalítica versus a complexidade.
+
+A BPA escolhe híbridos para a troca de chaves externa.
+
+### 26.2 Certificados
+
+Opções para a autenticação pós-quântica: (a) **certificados de PQC pura** (chaves e assinaturas ML-DSA); (b) **certificados compostos**, em que um certificado carrega uma chave tradicional e uma pós-quântica e as duas assinaturas precisam ser verificadas; (c) **cadeias paralelas** — dois certificados, um por algoritmo, com a negociação escolhendo; (d) **migração adiada**, com certificados clássicos de vida curta, aceitável onde ataques quânticos ativos ainda não são viáveis. Cada uma troca compatibilidade, tamanho e complexidade.
+
+Para a BPA, a opção (d) é aceitável por enquanto para os certificados web públicos, porque eles duram cerca de um ano e um ataque quântico ativo precisa de um CRQC no momento da conexão.
+
+### 26.3 Mitigações provisórias
+
+Onde a PQC ainda não está disponível — em equipamentos de VPN antigos, por exemplo —, misturar uma chave simétrica pré-compartilhada na derivação de chaves pode proteger o tráfego gravado, já que as PSKs não são vulneráveis a Shor. O [RFC 8784](https://www.rfc-editor.org/rfc/rfc8784.html) define um mecanismo desse tipo para o IKEv2. As PSKs trazem os ônus da distribuição e da rotação de chaves, então são uma ponte, não um destino.
+
+Para os dois parceiros de maior valor da BPA, a PSK é trocada por um canal fora de banda e rotacionada a cada três meses, com responsável e expiração registrados por parceiro. O tráfego gravado do túnel fica então protegido mesmo enquanto o equipamento oferece apenas troca de chaves clássica.
+
+### 26.4 Tabela de decisão
+
+| Contexto | Troca de chaves | Autenticação |
+|---|---|---|
+| Portal web público | Híbrido X25519MLKEM768 | Clássica agora, ML-DSA quando os clientes suportarem |
+| VPN de parceiro, equipamento antigo | IKEv2 + mistura de PSK (provisório) | Clássica, de vida curta |
+| VPN de parceiro, moderna | IKEv2 com troca adicional ML-KEM (RFC 9370) | Conforme a capacidade do parceiro |
+| Firmware dos guindastes | — | LMS/XMSS ou ML-DSA |
+| Parceiro de segurança nacional | ML-KEM-1024 conforme o CNSA 2.0 | ML-DSA-87 |
+
+A tabela torna explícita a variação: a mesma organização usa cinco combinações diferentes conforme o contexto. Cada linha remonta a uma decisão anterior, por exemplo a linha do firmware dos guindastes à restrição de 32 KB e a linha do equipamento antigo ao estudo de compromisso que escolheu a mistura de PSK como solução provisória. Quando um parceiro se atualiza, a sua linha muda e a tabela mostra o novo alvo. As linhas têm datas de revisão, para que as escolhas provisórias não se tornem permanentes.
+
+### 26.5 Exemplo resolvido
+
+A BPA debate certificados compostos para a sua PKI interna. Prós: uma só cadeia, os dois algoritmos verificados. Contras: suporte limitado nas bibliotecas, certificados maiores, política complexa. Decisão: cadeias paralelas internamente, onde os clientes podem ser atualizados, e adiar a migração dos certificados públicos até que exista suporte no ecossistema dos navegadores; revisão anual.
+
+As cadeias paralelas internas permitem à BPA testar certificados ML-DSA com clientes que ela controla, sem esperar por um suporte mais amplo. A revisão anual verifica as versões dos navegadores e das bibliotecas; quando o ecossistema suportar certificados ML-DSA, o portal público migra, aproveitando a experiência da implantação interna.
+
+### 26.6 Erros comuns e limites
+
+- Uma só arquitetura para todos os contextos.
+- PSKs sem planos de rotação.
+- Supor que os certificados compostos têm suporte universal.
+
+Uma arquitetura única falha porque os contextos diferem: um controlador de guindaste com 32 KB de flash e um portal público com milhões de navegadores não podem usar o mesmo projeto. PSKs sem rotação acabam vazando ou expirando sem que ninguém perceba, deixando os túneis desprotegidos; cada uma precisa de um responsável e de uma data de rotação trimestral. Os certificados compostos ainda têm suporte limitado nas bibliotecas, então as cadeias paralelas costumam ser a escolha prática por enquanto, como mostrou a decisão da PKI interna da BPA.
+
+### Exercícios
+
+- **EX051 — Argumento pelo híbrido.** Defenda em 150 palavras a troca de chaves híbrida no portal da BPA, citando as quebras de esquemas. Rubrica: 3 = raciocínio de "basta um resistir" e custo reconhecido.
+- **EX052 — Ponte com PSK.** Projete uma abordagem provisória com PSK para uma VPN antiga, incluindo a rotação. Rubrica: 3 = distribuição, rotação, data de desativação.
+
+### Síntese
+
+As alternativas de arquitetura diferem conforme o contexto: os híbridos protegem contra surpresas, a PQC pura simplifica, as PSKs fazem a ponte e as estratégias de certificados trocam compatibilidade por garantia.
+
+<!-- cyberabc:chapter-navigation:start ch-26 -->
+### Continue estudando — capítulo 26 de 50
+
+[← Capítulo 25](#ch-25) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Segurança quântica e pós-quântica: projeto de controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar os controles que tornam segura a troca de chaves híbrida — combinadores, vínculo com a transcrição e negociação; (2) projetar controles de gestão de chaves para os novos tipos de chave; (3) especificar controles de política para os algoritmos permitidos; e (4) testar um combinador. O capítulo parte dos Capítulos 24–26.
+
+### 27.1 Controles do combinador
+
+Uma troca de chaves híbrida precisa derivar a chave de sessão dos dois segredos compartilhados, para que o comprometimento de um não revele a chave. No X25519MLKEM768, os segredos são concatenados (primeiro o ML-KEM) e entram no escalonamento de chaves do TLS 1.3, que os vincula à transcrição do handshake ([RFC 10024](https://www.rfc-editor.org/rfc/rfc10024.html)). Combinadores próprios fora de protocolos padronizados devem seguir os métodos de derivação de chaves da [SP 800-56C](https://doi.org/10.6028/NIST.SP.800-56Cr2), que a FIPS 203 permite para os segredos compartilhados do ML-KEM, e vincular o contexto (identidades, textos cifrados, transcrição).
+
+### 27.2 Atividade prática — Laboratório C
+
+```python
+# Lab C (ch 27): a hybrid key combiner. The session key depends on BOTH shared secrets.
+import hashlib, hmac
+def hkdf_extract(salt, ikm): return hmac.new(salt, ikm, hashlib.sha256).digest()
+def combine(ss_pq, ss_trad, context):
+    # Concatenate secrets (PQ first, as in X25519MLKEM768), bind the transcript/context, then extract.
+    return hkdf_extract(b"\x00" * 32, ss_pq + ss_trad + context).hex()[:16]
+pq, trad, ctx = b"P" * 32, b"T" * 32, b"handshake-transcript-hash"
+print("baseline              ", combine(pq, trad, ctx))
+print("PQ secret changed     ", combine(b"Q" * 32, trad, ctx))
+print("traditional changed   ", combine(pq, b"U" * 32, ctx))
+print("context changed       ", combine(pq, trad, b"other-transcript"))
+```
+
+Saída esperada:
+
+```text
+baseline               d48e982e8c06ca60
+PQ secret changed      d4c36ea2d90b2e9c
+traditional changed    8dcefa12ded3d99c
+context changed        af06eca8abcd45a9
+```
+
+Mudar qualquer um dos segredos ou o contexto muda a saída: a chave derivada depende dos dois componentes e do que foi negociado.
+
+Note que só os primeiros caracteres da saída hexadecimal são mostrados, para facilitar a leitura; uma derivação real usaria a saída completa e uma etapa adequada de expansão HKDF. Experimente passar um contexto vazio e compare: o resultado ainda depende dos dois segredos, mas não mais da transcrição, que é exatamente a fraqueza que o vínculo com o contexto evita.
+
+### 27.3 Controles de negociação
+
+A negociação dos algoritmos precisa ser autenticada. O TLS 1.3 assina a transcrição, então um atacante que remove os grupos híbridos é detectado, a menos que consiga falsificar a assinatura do servidor. Uma lógica de aplicação que repete a tentativa sem grupos híbridos após qualquer falha reabre o rebaixamento; controles: registrar e alertar sobre fallback e desativar o fallback onde todos os pares suportam híbridos.
+
+O portal da BPA registra todo handshake que termina sem um grupo híbrido quando o cliente ofereceu um. Um aumento desses eventos dispara um alerta, já que pode significar um ataque ou um middlebox com mau comportamento, e os dois precisam de investigação.
+
+### 27.4 Controles de gestão de chaves
+
+Os novos tipos de chave precisam de controles de ciclo de vida: geração em módulos aprovados, armazenamento, rotação, backup e destruição. As chaves de desencapsulamento do ML-KEM podem ser guardadas como uma semente de 64 bytes, conforme a FIPS 203; as chaves de assinatura baseadas em hash com estado exigem proteção do estado contra retrocesso; as chaves ML-DSA precisam de suporte no HSM.
+
+A forma de semente de 64 bytes é compacta e evita incompatibilidades de formato, como mostra o problema de importação no HSM do exemplo do próximo capítulo. A destruição também exige cuidado: uma chave precisa ser removida de todos os backups e partições de HSM, e a entrada do CBOM fechada com a data.
+
+### 27.5 Controles de política
+
+Uma lista de permissões de algoritmos e conjuntos de parâmetros por contexto — por exemplo, "TLS de borda: X25519MLKEM768, SecP256r1MLKEM768; fallback X25519 até 2027-12-31" —, implementada na configuração e verificada pela telemetria.
+
+A entrada de fallback tem uma data de término para que não fique para sempre; depois dessa data, o X25519 sozinho é removido do TLS de borda. A telemetria confirma o que a configuração afirma, contando os grupos negociados por dia. Quando a contagem de conexões só clássicas se aproxima de zero, a equipe tem evidência de que a remoção não vai quebrar os parceiros, e a mudança pode passar sem um longo debate.
+
+### 27.6 Exemplo resolvido
+
+Uma equipe da BPA propõe fazer XOR dos dois segredos compartilhados para economizar uma chamada de KDF. A revisão rejeita: o XOR não oferece vínculo com o contexto e é frágil em algumas provas de segurança; use o combinador padrão do protocolo ou a derivação da SP 800-56C com os dois segredos e o contexto.
+
+Economizar uma chamada de KDF não ganha nada mensurável: calcular o hash de algumas dezenas de bytes custa microssegundos, enquanto um combinador fraco poderia minar a própria razão de usar um híbrido. A revisão registra a decisão nas notas de projeto da equipe, para que a ideia não seja proposta de novo.
+
+### 27.7 Erros comuns e limites
+
+- Combinadores improvisados (XOR, truncamento).
+- Fallback silencioso, sem registro.
+- Tratar chaves com estado como chaves comuns no backup.
+
+XOR e truncamento parecem inofensivos, mas descartam o vínculo com o contexto e podem enfraquecer as provas de segurança, como explicou o exemplo resolvido. O fallback silencioso esconde o rebaixamento, e é por isso que a BPA registra todo handshake sem o grupo híbrido. Fazer backup de uma chave de assinatura com estado como se fosse uma chave comum convida ao retrocesso do estado e à reutilização de chaves de uso único após uma restauração; a BPA exclui essas chaves dos backups rotineiros e mantém o estado delas no HSM.
+
+### Exercícios
+
+- **EX053 — Revisão de combinador.** Revise uma proposta que calcula o hash apenas do segredo de PQC "porque é mais forte". Rubrica: 3 = explica a perda da proteção dupla e recomenda o combinador padrão.
+- **EX054 — Arquivo de política.** Escreva uma lista de permissões de política para a borda e os serviços internos da BPA, com datas de expiração para os fallbacks. Rubrica: 3 = conjuntos de parâmetros explícitos, expiração datada.
+
+### Síntese
+
+A segurança dos híbridos depende de controles: combinadores padronizados com vínculo ao contexto, negociação autenticada sem fallback silencioso, gestão do ciclo de vida dos novos tipos de chave e listas de permissões datadas.
+
+<!-- cyberabc:chapter-navigation:start ch-27 -->
+### Continue estudando — capítulo 27 de 50
+
+[← Capítulo 26](#ch-26) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Segurança quântica e pós-quântica: implementação I
+
+### Objetivos de aprendizagem
+
+Você vai (1) selecionar bibliotecas verificadas e módulos validados; (2) integrar o ML-KEM e o ML-DSA por meio de interfaces de provedores; (3) tratar codificações, identificadores e interoperabilidade; e (4) implementar com segurança a gestão de assinaturas com estado. O capítulo parte dos Capítulos 9, 14 e 27.
+
+### 28.1 Seleção de bibliotecas
+
+Use implementações mantidas e revisadas, com código em tempo constante, vetores de teste e, quando exigido, validação no Cryptographic Module Validation Program (CMVP) do NIST. Prefira bibliotecas que implementem as versões finais das FIPS, e não o Kyber/Dilithium de rascunho. Registre no CBOM a biblioteca, a versão e os identificadores de algoritmo.
+
+A validação no CMVP leva tempo, então uma biblioteca pode suportar bem o ML-KEM muito antes de a sua versão validada estar disponível. A política da BPA aceita bibliotecas não validadas em pilotos e exige módulos validados em produção nos sistemas regulados, com as datas acompanhadas no plano.
+
+### 28.2 Integração por provedores
+
+A maioria das plataformas expõe a criptografia por meio de provedores (provedores do OpenSSL, provedores de segurança do Java, PKCS#11 para HSMs). Integre a PQC acrescentando ou atualizando provedores e configurando os nomes dos algoritmos pela política. As aplicações que chamam interfaces genéricas (Capítulo 9) não precisam de mudanças de código; as que chamam funções específicas de algoritmo precisam.
+
+É aqui que a refatoração com `Signer` compensa: o serviço de documentos eletrônicos da BPA precisa apenas de um novo provedor e de uma entrada na política, enquanto os serviços que ainda chamam funções específicas de algoritmo precisam, cada um, de mudanças de código. O CBOM registra o padrão que cada aplicação usa, o que transforma uma estimativa vaga de esforço numa contagem de itens de trabalho.
+
+### 28.3 Identificadores e codificações
+
+A interoperabilidade depende de identificadores exatos: codepoints do TLS (0x11EC para o X25519MLKEM768 no [registro da IANA](https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml)), identificadores de objeto X.509 para as chaves ML-DSA e ML-KEM e codificações de chave (semente versus chave expandida). As incompatibilidades causam falhas que parecem defeitos de rede.
+
+Um codepoint errado faz o servidor ignorar o compartilhamento do cliente, de modo que a conexão cai para o fallback ou falha, o que um engenheiro pode diagnosticar erradamente como problema de firewall. Os testes de interoperabilidade, portanto, comparam identificadores e codificações com o registro e as normas antes de verificar qualquer outra coisa.
+
+### 28.4 Assinaturas com estado
+
+A assinatura com LMS/XMSS nunca pode reutilizar um índice de chave de uso único. Controles: assinar num HSM que imponha estado monotônico; reservar faixas de índices por assinante; proibir a restauração do estado a partir de backups; monitorar a capacidade de assinatura restante (a [SP 800-208](https://doi.org/10.6028/NIST.SP.800-208) exige geração de chaves e assinatura em módulo de hardware para esses esquemas). Se esses controles forem inviáveis, prefira o SLH-DSA, sem estado, ou o ML-DSA.
+
+Para o firmware dos guindastes da BPA, uma chave de 2^15 assinaturas com algumas versões por ano nunca se esgota, então o monitoramento da capacidade é uma formalidade; o controle real é a recusa do HSM em retroceder o estado.
+
+### 28.5 Exemplo resolvido
+
+A BPA integra o ML-DSA-65 para os conhecimentos de embarque. O serviço de assinatura usa um HSM via PKCS#11; os verificadores nos sistemas dos parceiros usam outra biblioteca. Os testes de interoperabilidade revelam que uma biblioteca esperava um formato de chave privada expandida — irrelevante para os verificadores, mas impedindo a importação da chave num HSM de backup. Solução: padronizar o armazenamento das chaves em forma de semente e testar a importação/exportação nos dois HSMs antes da produção.
+
+O problema só teria aparecido durante uma recuperação de desastre, quando o HSM de backup fosse necessário, que é o pior momento para descobri-lo. Testar a importação e a exportação antes da produção transformou uma interrupção futura numa decisão de configuração.
+
+### 28.6 Erros comuns e limites
+
+- Misturar implementações de rascunho e finais dos algoritmos.
+- Assinatura em software para esquemas com estado.
+- Supor que os identificadores coincidem entre fornecedores.
+
+O código Kyber ou Dilithium de rascunho não interopera com o ML-KEM ou o ML-DSA finais, então misturá-los causa falhas que parecem aleatórias. A assinatura só em software para LMS ou XMSS não consegue garantir que o estado nunca seja reutilizado, e a SP 800-208 exige um módulo de hardware. Os identificadores e as codificações dos fornecedores precisam ser verificados em testes, como mostrou o problema da chave expandida; um teste que importa cada chave nos dois HSMs detecta isso cedo.
+
+### Nota de engenharia
+
+Planeje os formatos de chaves e certificados pensando na migração. Guarde as chaves privadas ML-KEM e ML-DSA como sementes onde a norma e o módulo permitirem, porque as sementes são compactas e se expandem de forma determinística, o que simplifica o backup e a migração entre HSMs. Registre no CBOM a codificação que cada sistema usa, teste a exportação e a importação entre cada par de módulos antes da produção e mantenha um procedimento escrito para as cerimônias de chaves que nomeie o conjunto de parâmetros, a codificação, a versão do firmware do módulo e as testemunhas.
+
+### Exercícios
+
+- **EX055 — Lista para escolher biblioteca.** Escreva uma lista de verificação para selecionar uma biblioteca de PQC. Rubrica: 3 = versões finais das FIPS, tempo constante, KATs, manutenção, validação.
+- **EX056 — Plano de estado.** Projete a gestão de estado do LMS para dois locais de assinatura. Rubrica: 3 = particionamento de índices, sem retrocesso, monitoramento da capacidade.
+
+### Síntese
+
+Implemente a PQC por meio de provedores verificados e validados, identificadores e codificações exatos e uma gestão rigorosa do estado nas assinaturas com estado.
+
+<!-- cyberabc:chapter-navigation:start ch-28 -->
+### Continue estudando — capítulo 28 de 50
+
+[← Capítulo 27](#ch-27) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Segurança quântica e pós-quântica: medição
+
+### Objetivos de aprendizagem
+
+Você vai (1) construir e consultar um CBOM; (2) medir os algoritmos negociados versus os configurados; (3) relatar a cobertura e a parcela desconhecida; e (4) projetar métricas resistentes à manipulação. O capítulo parte dos Capítulos 17 e 22.
+
+### 29.1 Fontes de evidência
+
+As evidências de inventário vêm da varredura de código, da análise de configuração, da observação passiva de handshakes na rede, dos logs dos endpoints e das declarações dos fornecedores. Cada fonte vê coisas diferentes: o código mostra a intenção, a configuração mostra o que é oferecido, a observação passiva mostra o que é negociado e os fornecedores declaram o que fazem os produtos fechados. Combine-as e registre a fonte de cada constatação.
+
+Onde as fontes discordam, a discordância é ela própria uma constatação: se a configuração oferece o grupo híbrido, mas a observação passiva nunca o vê negociado, algo no caminho o está removendo ou os clientes não o oferecem.
+
+### 29.2 Atividade prática — Laboratório I
+
+```python
+# Lab I (ch 29): aggregate a synthetic cryptographic bill of materials (CBOM) and measure coverage.
+records = [  # (asset, function, algorithm, source)
+    ("gateway-1", "key-exchange", "X25519MLKEM768", "passive"), ("gateway-1", "signature", "RSA-2048", "config"),
+    ("scada-hmi", "key-exchange", "ECDHE-P256", "passive"), ("scada-hmi", "signature", "ECDSA-P256", "code"),
+    ("billing", "key-exchange", "RSA-kex", "config"), ("billing", "data-at-rest", "AES-256-GCM", "code"),
+    ("crane-plc", "unknown", "unknown", "none"), ("vpn", "key-exchange", "ECDHE-P384", "config")]
+VULN = {"RSA-2048", "ECDHE-P256", "ECDSA-P256", "RSA-kex", "ECDHE-P384"}
+assets = {r[0] for r in records}
+unknown = {r[0] for r in records if r[2] == "unknown"}
+vuln = [r for r in records if r[2] in VULN]
+print(f"assets {len(assets)}, unknown {len(unknown)} ({100*len(unknown)/len(assets):.0f}%)")
+print(f"quantum-vulnerable uses {len(vuln)}:", ", ".join(f"{a}/{f}" for a, f, _, _ in vuln))
+print("hybrid key exchange present on:", [r[0] for r in records if "MLKEM" in r[2]])
+```
+
+Saída esperada:
+
+```text
+assets 5, unknown 1 (20%)
+quantum-vulnerable uses 5: gateway-1/signature, scada-hmi/key-exchange, scada-hmi/signature, billing/key-exchange, vpn/key-exchange
+hybrid key exchange present on: ['gateway-1']
+```
+
+O estado desconhecido do CLP do guindaste é uma constatação, não uma lacuna a esconder: ele representa 20% deste inventário minúsculo e precisa ser resolvido por declaração do fornecedor ou por análise em bancada.
+
+Note como o script conta usos, e não ativos: o gateway-1 tem troca de chaves híbrida, mas ainda aparece como vulnerável, porque a sua assinatura é RSA-2048, o que coincide com o ponto anterior de que a troca de chaves híbrida deixa a autenticação intocada. O AES-256-GCM do sistema de faturamento fica corretamente fora da lista de vulneráveis. Amplie os registros com um filtro pela coluna de fonte e imprima quantas constatações se apoiam apenas na configuração; depois acrescente um sexto ativo cuja fonte seja uma declaração do fornecedor e decida como relatá-lo.
+
+### 29.3 Métricas
+
+- **Cobertura**: ativos com pelo menos uma determinação criptográfica ÷ todos os ativos.
+- **Parcela desconhecida**: relatada separadamente.
+- **Parcela híbrida negociada**: conexões que negociam grupos PQ/T ÷ conexões, ponderada pela classe de dados.
+- **Contagem de usos vulneráveis**, por função e tempo de vida dos dados.
+- **Tempo de substituição**: dias decorridos entre a mudança de política e a negociação completa de um novo algoritmo num serviço (uma métrica de agilidade).
+
+Ponderar a parcela híbrida pela classe de dados impede que um grande volume de telemetria de vida curta faça o progresso parecer melhor do que é para os dados aduaneiros. O tempo de substituição é a única métrica que mede diretamente a agilidade, e o exercício de mesa de quebra de algoritmo, mais adiante no livro, a utiliza. Cada métrica tem uma definição e uma fonte de dados escritas.
+
+### 29.4 Manipulação
+
+A "porcentagem migrada" pode ser inflada redefinindo os ativos ou contando a configuração em vez da negociação. Use denominadores auditáveis e publique as definições.
+
+Uma inflação comum é retirar da lista de ativos os dispositivos difíceis de inventariar, o que eleva a cobertura sem nenhum conhecimento novo. A BPA fixa o denominador no registro de ativos mantido pelas operações, que a equipe de segurança não pode editar, e conta apenas os grupos negociados vistos nos logs de sessão. As definições são publicadas junto com cada número mensal, para que qualquer mudança de definição apareça como uma nota visível, e não como um salto inexplicado na linha de tendência.
+
+### 29.5 Exemplo resolvido
+
+O primeiro relatório do CBOM da BPA: 412 ativos, cobertura de 82%, desconhecidos 18%, 311 usos vulneráveis, negociação híbrida de 0% (antes da implantação). Seis meses depois: cobertura de 94%, desconhecidos 6%, negociação híbrida em 64% das conexões de borda, usos vulneráveis sobre dados de vida longa reduzidos de 37 fluxos para 8.
+
+Os números contam uma história coerente: a cobertura subiu à medida que os desconhecidos caíram, e a redução de 37 fluxos expostos para 8 reflete a mudança nos quatro gateways encontrada pelo modelo, que removeu 29 deles. A negociação híbrida em 64% das conexões de borda, e não em 100%, é esperada, porque os scanners antigos e alguns clientes dos parceiros não oferecem o grupo híbrido; o relatório os lista como exceções conhecidas, com datas de substituição.
+
+### 29.6 Erros comuns e limites
+
+- Esconder os desconhecidos.
+- Contar os algoritmos configurados como proteção.
+- Inventários de uma só fonte.
+
+Esconder os desconhecidos faz o inventário parecer completo enquanto sistemas como o CLP do guindaste continuam sem avaliação; o Laboratório I os relata como 20% para que não possam ser ignorados. Contar os algoritmos configurados superestima a proteção sempre que clientes ou middleboxes impedem a negociação. Um inventário construído com uma única fonte deixa escapar o que essa fonte não consegue ver, como bibliotecas ligadas estaticamente, invisíveis às varreduras de pacotes, ou equipamentos de fornecedores, invisíveis à varredura de código. A BPA exige pelo menos duas fontes para qualquer ativo que guarde dados de vida longa.
+
+### Nota de engenharia
+
+Apresente as medições com os seus pontos cegos. Os sensores passivos no TLS 1.3 veem o grupo de troca de chaves negociado no ServerHello, mas não o certificado, que é cifrado; os logs dos endpoints preenchem essa lacuna, mas só onde o registro está ativado. Um bom painel mostra, portanto, ao lado de cada métrica, qual fonte a produziu e que parcela dos ativos essa fonte consegue observar. Os tomadores de decisão entendem então por que os números da migração de certificados vêm de evidências de configuração, enquanto os números da troca de chaves vêm da rede.
+
+### Exercícios
+
+- **EX057 — Ampliar o Laboratório I.** Acrescente um registro de uma VPN com "IKEv2 ML-KEM-768 + ECDH" e atualize a lógica da lista de híbridos. Rubrica: 3 = o código funciona, a VPN é reconhecida como híbrida.
+- **EX058 — Definições de métricas.** Escreva definições precisas para a cobertura e a parcela híbrida negociada. Rubrica: 3 = numerador, denominador, janela de tempo, fonte de dados.
+
+### Síntese
+
+Medir significa um CBOM de várias fontes, métricas do negociado e não do configurado, desconhecidos explícitos e definições que resistem à manipulação.
+
+<!-- cyberabc:chapter-navigation:start ch-29 -->
+### Continue estudando — capítulo 29 de 50
+
+[← Capítulo 28](#ch-28) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Laboratório de verificação I
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar implementações com testes de resposta conhecida; (2) escrever testes negativos para entradas malformadas; (3) testar a interoperabilidade entre bibliotecas; e (4) registrar as evidências de verificação. O capítulo parte dos Capítulos 9, 28 e 29.
+
+### 30.1 Testes de resposta conhecida
+
+Os testes de resposta conhecida (KATs) alimentam entradas fixas e comparam as saídas com valores publicados. Os organismos de normalização e o Cryptographic Algorithm Validation Program do NIST publicam vetores; para o ML-KEM, modos de teste determinísticos permitem fixar a aleatoriedade para que as saídas possam ser comparadas byte a byte.
+
+Os modos determinísticos existem apenas para testes; o código de produção precisa usar aleatoriedade nova, e uma verificação de build garante que os ganchos de teste não sejam alcançáveis nas versões de produção. A BPA executa a suíte de vetores a cada atualização de biblioteca e bloqueia a atualização se algum vetor falhar, o que detecta regressões como as mudanças da codificação do ML-KEM entre o rascunho e a versão final.
+
+### 30.2 Atividade prática — Laboratório V
+
+```python
+# Lab V (ch 30): known-answer and negative tests - the habit behind validating PQC libraries.
+import hashlib
+KATS = [  # (function, input, expected hex prefix) - published test values for SHA-3 / SHAKE on empty input
+    ("sha3_256", b"", "a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a"),
+    ("shake_128/32", b"", "7f9c2ba4e88f827d616045507605853ed73b8093f6efbc88eb1a6eacfa66ef26"),
+]
+def run(name, data):
+    if name == "sha3_256": return hashlib.sha3_256(data).hexdigest()
+    return hashlib.shake_128(data).hexdigest(32)
+for name, data, want in KATS:
+    print(f"KAT {name:13s}", "PASS" if run(name, data) == want else "FAIL")
+SIZES = {"ML-KEM-512": 800, "ML-KEM-768": 1184, "ML-KEM-1024": 1568}   # encapsulation-key bytes, FIPS 203
+def validate_ek(param, ek):
+    if len(ek) != SIZES[param]: raise ValueError(f"{param}: expected {SIZES[param]} bytes, got {len(ek)}")
+    return True
+for param, n in [("ML-KEM-768", 1184), ("ML-KEM-768", 1183), ("ML-KEM-512", 1184)]:
+    try: validate_ek(param, bytes(n)); print(f"negative/positive test {param} len {n}: accepted")
+    except ValueError as e: print(f"negative/positive test {param} len {n}: rejected ({e})")
+```
+
+Saída esperada:
+
+```text
+KAT sha3_256      PASS
+KAT shake_128/32  PASS
+negative/positive test ML-KEM-768 len 1184: accepted
+negative/positive test ML-KEM-768 len 1183: rejected (ML-KEM-768: expected 1184 bytes, got 1183)
+negative/positive test ML-KEM-512 len 1184: rejected (ML-KEM-512: expected 800 bytes, got 1184)
+```
+
+O validador de comprimento é só a primeira verificação: a FIPS 203 também exige verificar que os coeficientes codificados de uma chave de encapsulamento estão abaixo de *q* (a verificação de módulo) e uma verificação de hash nas chaves de desencapsulamento. As bibliotecas reais implementam isso; os seus testes devem confirmar que elas rejeitam chaves ruins.
+
+O terceiro caso de teste é o importante: uma chave ML-KEM-768 de tamanho correto apresentada como ML-KEM-512 precisa ser rejeitada, porque um interpretador que confia no comprimento da chave para escolher o conjunto de parâmetros pode ser conduzido por um atacante.
+
+### 30.3 Interoperabilidade
+
+Execute handshakes entre cada par de implementações de cliente e servidor no escopo; encapsule com uma biblioteca e desencapsule com outra; assine com o HSM e verifique no software dos parceiros. Registre a matriz. As falhas de interoperabilidade no início do programa são baratas; em produção, são interrupções.
+
+Testar uma biblioteca apenas contra ela mesma prova pouco, já que um bug de codificação de um lado é espelhado do outro e se anula. Pares de implementações diferentes expõem essas incompatibilidades. A matriz também registra as versões, então, quando uma biblioteca é atualizada, apenas as linhas afetadas são refeitas.
+
+### 30.4 Evidências
+
+Cada execução de teste registra: implementação e versão, vetores de teste usados, resultado, data, operador. As evidências alimentam a coluna de verificação da matriz de rastreabilidade (Capítulo 21).
+
+As evidências precisam ser reprodutíveis: outro engenheiro deve conseguir refazer o mesmo teste com as mesmas versões e vetores e obter o mesmo resultado. A BPA guarda a configuração do teste junto com o resultado, então um auditor que pergunta como o REQ-KE-01 foi verificado recebe a consulta, a sua saída e a data, e não uma afirmação de que os testes foram feitos. Resultados mais antigos que a versão atual da biblioteca são marcados como vencidos e refeitos antes da versão.
+
+### 30.5 Exemplo resolvido
+
+A matriz de interoperabilidade da BPA para o TLS de borda: três pilhas de servidor × cinco famílias de clientes. Duas falhas: uma biblioteca antiga de um parceiro oferecia o codepoint obsoleto de antes da norma e não conseguia concluir handshakes híbridos; um balanceador de carga removia grupos desconhecidos. As duas recebem itens de trabalho; nenhuma bloqueia a implantação, porque o fallback para o X25519 funciona e é registrado.
+
+O codepoint obsoleto pertence a uma implementação de rascunho do Kyber, e é por isso que os pares com o ML-KEM final não conseguem concluir o handshake; o parceiro precisa atualizar a biblioteca. O problema do balanceador de carga é mais sério, porque afeta todo o tráfego que passa por ele, então a sua correção é agendada antes que a implantação avance por esse caminho.
+
+### 30.6 Erros comuns e limites
+
+- Apenas testes positivos.
+- Testar uma biblioteca contra ela mesma.
+- Resultados não registrados.
+
+Testes positivos sozinhos aprovariam um validador que aceita qualquer chave, enquanto os casos de rejeição do Laboratório V mostram que o validador realmente discrimina. Testar uma biblioteca contra ela mesma esconde incompatibilidades de codificação, que só aparecem quando há uma implementação diferente do outro lado, como mostrou a falha do codepoint obsoleto. Resultados não registrados não podem sustentar a matriz de rastreabilidade, então um teste aprovado que ninguém anotou não vale nada na revisão. O pipeline da BPA guarda cada execução com versões e vetores.
+
+### Nota de engenharia
+
+As evidências de verificação devem poder ser reproduzidas por outra pessoa. Guarde os vetores de teste exatos, as versões das ferramentas e as linhas de comando junto com os resultados e refaça a suíte automaticamente sempre que mudar uma biblioteca, um provedor ou o firmware de um HSM. Quando um fornecedor publicar um alerta de segurança, a equipe poderá então responder em horas se a versão afetada está implantada e se os seus testes ainda passam, em vez de reconstruir a verificação original de memória e por capturas de tela.
+
+### Exercícios
+
+- **EX059 — Testes negativos.** Liste cinco testes negativos para uma função de desencapsulamento ML-KEM. Rubrica: 3 = comprimento errado, texto cifrado modificado, chave errada, chave malformada, coerência de chamadas repetidas.
+- **EX060 — Matriz de interoperabilidade.** Projete a matriz de interoperabilidade para as assinaturas dos conhecimentos de embarque da BPA. Rubrica: 3 = assinantes, verificadores, formatos, resultados esperados.
+
+### Síntese
+
+A verificação combina testes de resposta conhecida, testes negativos e interoperabilidade entre implementações, tudo registrado como evidência rastreada até os requisitos.
+
+<!-- cyberabc:chapter-navigation:start ch-30 -->
+### Continue estudando — capítulo 30 de 50
+
+[← Capítulo 29](#ch-29) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 31 (inglês) →](../../en/book/MANUSCRIPT.md#ch-31)
 
 Os próximos capítulos ainda estão apenas na edição em inglês.
 <!-- cyberabc:chapter-navigation:end -->
@@ -1425,7 +2200,7 @@ Os próximos capítulos ainda estão apenas na edição em inglês.
 
 ## Resoluções
 
-Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontuação. Os números sobre a BPA são sintéticos. Esta edição parcial traz as resoluções de EX001–EX040; as de EX041–EX100 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontuação. Os números sobre a BPA são sintéticos. Esta edição parcial traz as resoluções de EX001–EX060; as de EX061–EX100 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
 
 **EX001.** log₂(10^30) = 30 × 3,32 ≈ 99,7 → cerca de 100 bits. log₂(2^100 × 10^6) = 100 + 19,9 ≈ 120 bits.
 
@@ -1506,6 +2281,46 @@ Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontua�
 **EX039.** Aduana (x=25, y=5 como em 20.2 → atrasada para todo z < 30); VPN dos parceiros (x=10, y=1,5 → atrasada se z ≤ 11,5); firmware (x=15, y=3 → atrasado se z ≤ 18); portal (x=1, y=0,5 → não atrasado); telemetria (x≈0,1 → não atrasada).
 
 **EX040.** Precisa informar FIPS 203/204/205 finais (agosto de 2024), SP 800-208, SP 800-227 final (setembro de 2025), HQC selecionado (IR 8545, março de 2025) com a norma pendente, FN-DSA pendente, IR 8547 em rascunho.
+
+**EX041.** "REQ-VPN-01: Todos os túneis IKEv2 com parceiros deverão executar uma troca de chaves adicional ML-KEM-768 (ou mais forte), conforme o RFC 9370, quando o par a suportar; caso contrário, mistura de PSK conforme o RFC 8784 até uma data de desativação definida. Verificação: os logs dos gateways mostram trocas negociadas em 100% dos túneis."
+
+**EX042.** Cinco requisitos, cada um com fonte (tempo de vida dos dados, política, contrato com parceiro) e método (teste, inspeção, demonstração, análise).
+
+**EX043.** CryptoUse{asset_id: str, function: enum[key-exchange, signature, encryption, hash, unknown], algorithm: str, parameter_set: str|None, protocol: str|None, library: str|None, evidence_source: enum[code, config, passive, vendor, endpoint-log], last_observed: datetime}.
+
+**EX044.** `for flow in flows: if flow.lifetime is None or flow.kex is None: report(flow, "unknown"); elif flow.lifetime >= T and flow.kex in VULNERABLE and flow.recordable: report(flow, "exposed")`.
+
+**EX045.** Coleta (mitigar: troca de chaves PQ/PSK), falsificação futura (autenticação de vida curta, migrar depois), rebaixamento (negociação autenticada, sem fallback silencioso), ataques de implementação (bibliotecas verificadas em tempo constante, correções), surpresa criptoanalítica (híbrido, agilidade).
+
+**EX046.** Causa: o middlebox lê só o primeiro segmento; efeito: conexões reiniciadas, interrupções num caminho; detecção: telemetria de falhas por caminho e traces de pacotes; mitigação: atualização de firmware, exceção de caminho com expiração; prioridade: alta.
+
+**EX047.** Com ±150, cerca de 1.880/2.000 bits são decifrados corretamente; com ±300, apenas cerca de 1.272/2.000: a soma de ~32 erros cresce com o tamanho dos erros até muitas vezes passar de *q*/4 ≈ 832, e o arredondamento falha. Os esquemas reais escolhem o ruído de modo que a probabilidade de falha seja desprezível.
+
+**EX048.** "Quando chega um texto cifrado, o ML-KEM o decifra, recifra o resultado e compara. Se forem diferentes, ele devolve uma chave pseudoaleatória derivada de um segredo, em vez de um erro. Um atacante que envia textos cifrados forjados não aprende nada com o sucesso ou a falha — desde que a comparação e a seleção levem o mesmo tempo em qualquer caso."
+
+**EX049.** Diagrama de clientes, CDN, proxy de borda, proxy de inspeção e APIs, com alternativa em texto; alternativas (híbrido agora vs. esperar suporte nativo do fornecedor); pesos fixados antes da pontuação.
+
+**EX050.** O TLS 1.3 assina a transcrição do handshake, então a remoção dos grupos híbridos é detectada, a menos que a autenticação seja quebrada; o risco residual é uma lógica de novas tentativas na aplicação que recorre ao fallback após qualquer erro — registrada, restrita a erros de incompatibilidade conhecidos e com data de remoção.
+
+**EX051.** O híbrido exige quebrar tanto o X25519 quanto o ML-KEM-768; o Rainbow e o SIKE mostram que esquemas novos podem cair inesperadamente; o custo é de ~2,3 kB por handshake e algum risco de middlebox, aceitável para o portal.
+
+**EX052.** Gerar PSKs de 256 bits por par, distribuir fora de banda, misturar conforme o RFC 8784, rotacionar a cada 90 dias com sobreposição, desativar quando o equipamento for substituído (com data).
+
+**EX053.** Calcular o hash só do segredo PQ descarta a proteção clássica: se o ML-KEM fosse quebrado, a sessão cairia junto. Use o combinador padrão por concatenação, com vínculo à transcrição.
+
+**EX054.** Borda: X25519MLKEM768, SecP256r1MLKEM768; fallback X25519 até uma data declarada. Interno: híbrido onde as bibliotecas suportarem; clássico permitido para telemetria até uma data declarada. Enlace de segurança nacional: apenas ML-KEM-1024.
+
+**EX055.** Implementa as FIPS 203/204/205 finais (não os rascunhos); tempo constante, com evidência; passa nos KATs; manutenção ativa e alertas de segurança; validação no CMVP onde exigida; licença clara; histórico de interoperabilidade.
+
+**EX056.** Chaves LMS separadas por local (ou subárvores HSS particionadas), contadores monotônicos impostos pelo HSM, nenhuma restauração de estado a partir de backup, alertas em 50%/80%, troca de chave documentada.
+
+**EX057.** Acrescente `("vpn-2", "key-exchange", "IKEv2 ML-KEM-768 + ECDH", "config")`; mude o teste de híbrido para `"ML-KEM" in alg or "MLKEM" in alg`.
+
+**EX058.** Cobertura = ativos com ≥ 1 determinação ÷ ativos no registro, mensal, todas as fontes. Parcela híbrida negociada = conexões que negociam grupos PQ/T ÷ conexões, janela de 30 dias, telemetria passiva, por serviço e classe de dados.
+
+**EX059.** Texto cifrado de comprimento errado; texto cifrado com um bit invertido (esperar a chave de rejeição implícita, sem vazamento de erro); chave de desencapsulamento que falha na verificação de hash; chave de encapsulamento que falha na verificação de módulo; o desencapsulamento repetido da mesma entrada devolve a mesma chave.
+
+**EX060.** Assinantes (HSM A, HSM B) × verificadores (BPA, três sistemas de parceiros, aduana) × formatos (documento com assinatura dupla), com os resultados de verificação esperados, incluindo casos negativos.
 
 <a id="references"></a>
 
