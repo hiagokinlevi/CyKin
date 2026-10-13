@@ -29,7 +29,7 @@ Los capítulos 1–19 construyen fundamentos aplicados a la TO desde la primera 
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](../../en/book/MANUSCRIPT.md#ch-31) · [32](../../en/book/MANUSCRIPT.md#ch-32) · [33](../../en/book/MANUSCRIPT.md#ch-33) · [34](../../en/book/MANUSCRIPT.md#ch-34) · [35](../../en/book/MANUSCRIPT.md#ch-35) · [36](../../en/book/MANUSCRIPT.md#ch-36) · [37](../../en/book/MANUSCRIPT.md#ch-37) · [38](../../en/book/MANUSCRIPT.md#ch-38) · [39](../../en/book/MANUSCRIPT.md#ch-39) · [40](../../en/book/MANUSCRIPT.md#ch-40) · [41](../../en/book/MANUSCRIPT.md#ch-41) · [42](../../en/book/MANUSCRIPT.md#ch-42) · [43](../../en/book/MANUSCRIPT.md#ch-43) · [44](../../en/book/MANUSCRIPT.md#ch-44) · [45](../../en/book/MANUSCRIPT.md#ch-45) · [46](../../en/book/MANUSCRIPT.md#ch-46) · [47](../../en/book/MANUSCRIPT.md#ch-47) · [48](../../en/book/MANUSCRIPT.md#ch-48) · [49](../../en/book/MANUSCRIPT.md#ch-49) · [50](../../en/book/MANUSCRIPT.md#ch-50) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](../../en/book/MANUSCRIPT.md#ch-37) · [38](../../en/book/MANUSCRIPT.md#ch-38) · [39](../../en/book/MANUSCRIPT.md#ch-39) · [40](../../en/book/MANUSCRIPT.md#ch-40) · [41](../../en/book/MANUSCRIPT.md#ch-41) · [42](../../en/book/MANUSCRIPT.md#ch-42) · [43](../../en/book/MANUSCRIPT.md#ch-43) · [44](../../en/book/MANUSCRIPT.md#ch-44) · [45](../../en/book/MANUSCRIPT.md#ch-45) · [46](../../en/book/MANUSCRIPT.md#ch-46) · [47](../../en/book/MANUSCRIPT.md#ch-47) · [48](../../en/book/MANUSCRIPT.md#ch-48) · [49](../../en/book/MANUSCRIPT.md#ch-49) · [50](../../en/book/MANUSCRIPT.md#ch-50) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
 
@@ -1983,7 +1983,407 @@ Verifique primero la seguridad funcional; deténgase ante un fallo abierto o una
 
 ### Siga estudiando — capítulo 30 de 50
 
-[← Capítulo 29 (borrador)](#ch-29) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 31 (borrador) →](../../en/book/MANUSCRIPT.md#ch-31)
+[← Capítulo 29 (borrador)](#ch-29) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 31 (borrador) →](#ch-31)
+
+<a id="ch-31"></a>
+
+## Capítulo 31 — Seguridad de TO, IoT y sistemas ciberfísicos: implementación II
+
+### Resultados de aprendizaje
+
+Usted podrá (1) añadir inserciones o actualizaciones idempotentes de hallazgos; (2) aplicar la validación del esquema en la escritura; (3) versionar las respuestas de la API de las herramientas del CNHP.
+
+### 31.1 Inserción o actualización
+
+PUT /findings/{id} con el cuerpo completo; el mismo id dos veces produce una sola fila. Las huellas de deduplicación proponen identificadores; las personas confirman las fusiones entre causas raíz distintas. En ABP, los identificadores de los hallazgos los genera el cliente al crearlos y se reutilizan en cada reintento, de modo que un fallo de red a mitad de la solicitud no puede crear un duplicado. Las huellas sugieren cuándo dos hallazgos pueden ser el mismo problema, pero una persona confirma cualquier fusión, porque dos hallazgos sobre el PLC-A pueden compartir un registro y tener aun así causas distintas. Las fusiones se registran con sus motivos.
+
+### 31.2 Validar en la escritura
+
+Rechace los campos desconocidos y los nombres prohibidos; fuerce la severidad a través de una enumeración. Los errores de validación devuelven códigos legibles por máquina. El almacén de hallazgos de Lena en ABP rechaza cualquier registro con un campo desconocido o un nombre prohibido, como payload o password, y devuelve un código que indica qué campo falló. La severidad solo acepta los valores acordados. El mismo validador se ejecuta en las creaciones interactivas y en las importaciones masivas, de modo que ninguna vía de entrada goza de más confianza que otra, y una importación de un escáner que envía risk_score se rechaza con el mismo código que el cliente móvil. Los errores se documentan con ejemplos.
+
+### 31.3 Versionado de la API
+
+Prefijo /v1/; dentro de v1, solo cambios aditivos. Los cambios incompatibles requieren /v2/ y una nota de migración.
+
+> **Caso sintético — Ashford Batch Plant.** Un cliente móvil envió risk_score; el validador lo rechazó: las puntuaciones vacías se quedan fuera (capítulo 15).
+
+La API de Lena para ABP se ha mantenido en v1 hasta ahora. Lena publica la regla de cambios aditivos en la documentación de la API, y la integración continua compara cada esquema nuevo con la última versión para detectar campos eliminados o renombrados. Si alguna vez fuera necesario un cambio incompatible, v1 seguiría funcionando junto a v2 durante un periodo anunciado, para que los clientes móviles y las importaciones de escáneres puedan migrar sin fallar en mitad de una ventana.
+
+### 31.4 Errores y límites
+
+Las claves de idempotencia no deben derivarse solo de la hora del reloj. Una clave de idempotencia construida a partir de la hora actual cambia entre reintentos, así que cada reintento parece una solicitud nueva y crea un duplicado. Los clientes de Lena generan la clave una vez por operación lógica, la guardan con la solicitud pendiente y la reutilizan hasta que el servidor confirma el éxito. La regla se documenta con la API y las bibliotecas cliente la aplican, de modo que ningún desarrollador puede reintroducir el atajo basado en la hora. Las revisiones comprueban esta regla de forma explícita.
+
+### Nota práctica
+
+La importación masiva desde escáneres debe pasar la misma validación de esquema que la creación interactiva, incluidas las comprobaciones de campos prohibidos.
+
+### 31.1b Actualizaciones parciales y concurrencia
+
+Un PATCH que permite cambiar la severidad sin referencias a la evidencia invita a rebajas silenciosas. Prefiera un PUT completo del cuerpo validado, o un PATCH restringido que no pueda borrar los hashes de la evidencia ni cambiar el estado a cerrado sin un puntero a una nueva prueba. Use ETags para que dos personas que corrigen no se pisen. Un cambio de estado a cerrado solo se acepta cuando la misma solicitud lleva un puntero a una nueva prueba. Los borrados masivos están prohibidos sin doble control. Documente la semántica de inserción o actualización en OpenAPI para que los clientes móviles no inventen identificadores de reintento.
+
+Las ETags son obligatorias en cada actualización de un hallazgo.
+
+### Nota de campo: incidente de importación masiva
+
+Una vía de importación de escáneres se saltaba las comprobaciones de campos prohibidos porque se consideraba de confianza. El campo de notas de alguien contenía una contraseña. Tras limpiarla y rotarla, la importación masiva se reconectó a través del mismo validador que la creación interactiva. La importación de confianza es la forma en que las cargas útiles entran en los almacenes sellados.
+
+
+
+Los clientes que omiten el identificador del hallazgo al crearlo reciben un 400 con un enlace a la documentación de inserción o actualización, para que los reintentos no puedan inventar duplicados por accidente.
+
+
+### 31.5 Ejemplo resuelto: inserción o actualización idempotente de registros de activos (ABP sintética)
+
+Dos fuentes de inventario informan sobre el PLC-A: la exportación del proyecto de ingeniería y el descubrimiento pasivo en la red. La inserción o actualización de Lena se indexa por (sitio, etiqueta del activo), no por dirección IP, porque la IP cambia cuando se sustituye un controlador. Cada escritura lleva la fuente y una hora de observación; una observación posterior actualiza la versión del firmware solo si su fuente es autoritativa para ese campo (la exportación del proyecto gana para el firmware; el descubrimiento gana para «visto por última vez»). Reproducir dos veces la misma importación no produce ningún cambio: es la prueba que demuestra la idempotencia. Sin estas reglas, una importación masiva sobrescribió una vez el campo de firmware del PLC-A con «unknown» y lo ocultó a una comprobación de avisos de seguridad.
+
+### Ejercicios — capítulo 31
+
+- **EX091 — Inserción o actualización.** ¿Por qué un POST sin id es arriesgado ante los reintentos? Rúbrica: 3 = duplicados al reintentar; 2 = vago; 1 = incorrecto; 0 = nada.
+- **EX092 — Rechazo.** Cuerpo JSON que debe recibir un 400. Rúbrica: 3 = contiene payload/password/risk_score; 2 = débil; 1 = cuerpo válido; 0 = nada.
+- **EX093 — Versión.** ¿Es seguro en v1 renombrar reason_code a reason? Rúbrica: 3 = no, es incompatible, va a v2; 2 = dubitativo; 1 = sí; 0 = nada.
+
+### Síntesis del capítulo
+
+Escrituras idempotentes, esquema estricto, versiones explícitas.
+
+### Siga estudiando — capítulo 31 de 50
+
+[← Capítulo 30 (borrador)](#ch-30) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 32 (borrador) →](#ch-32)
+
+<a id="ch-32"></a>
+
+## Capítulo 32 — Seguridad de TO, IoT y sistemas ciberfísicos: fiabilidad
+
+### Resultados de aprendizaje
+
+Usted podrá (1) fijar objetivos de disponibilidad para las herramientas de seguridad de TO; (2) usar reintentos con presupuestos que respeten el tiempo de ciclo; (3) degradarse de forma segura cuando falla una dependencia.
+
+### 32.1 Objetivos
+
+Camino de permitir/denegar durante las ventanas: alta disponibilidad. Tableros de cobertura: mejor esfuerzo. Enuncie el objetivo; no insinúe cinco nueves sin un presupuesto. En ABP, el camino de denegación del monitor serie debe funcionar durante toda la ventana, mientras que el tablero de cobertura puede estar caído una hora sin daño. Lena pone por escrito ambos objetivos con el presupuesto que respalda cada uno, para que nadie suponga que el tablero necesita el mismo cuidado que la aplicación de las decisiones, ni que la aplicación puede tolerar las caídas del tablero. Los objetivos se revisan cada año.
+
+### 32.2 Reintentos
+
+Los reintentos ayudan con las subidas inestables de evidencia, pero necesitan un plazo para que se mantenga el presupuesto de la línea troncal. Limite el total de intentos. El cargador de evidencia de Lena en ABP reintenta con retardos crecientes y se rinde tras un número fijo de intentos o un plazo, lo que ocurra primero. Las subidas fallidas quedan en cola en el disco y se notifican, de modo que no se pierde nada. Los reintentos nunca se ejecutan en la línea troncal hacia el PLC-A, donde podrían desplazar el tráfico de control y romper el presupuesto de ciclo. Los límites están escritos en el permiso.
+
+### 32.3 Degradación segura
+
+Si el almacén de hallazgos está caído, siga denegando/permitiendo localmente y encole los borradores en el disco; nunca falle de forma abierta en las comprobaciones de política.
+
+> **Caso sintético — Ashford Batch Plant.** Durante una caída del almacén de hallazgos, la cola del portátil de Lena retuvo los borradores; el monitor serie siguió denegando las escrituras fuera de rango.
+
+Lena prueba este modo degradado en el laboratorio II, en el banco. Durante una caída real del almacén de hallazgos, los borradores se encolaron en el portátil de Lena y el monitor serie siguió denegando las escrituras fuera de rango. Tras cada caída, Lena confirma que todos los borradores encolados llegaron al almacén comparando los conteos con el registro de la cola.
+
+### 32.4 Errores y límites
+
+Los reintentos contra una línea troncal con límite de tasa pueden parecer inundaciones; coordine los presupuestos con el permiso de trabajo. El permiso de trabajo de Lena en ABP indica la tasa máxima de solicitudes de cualquier tráfico de evaluación en cada línea troncal, incluidos los reintentos. Si los reintentos la superaran, la herramienta espera. Antes de una ventana se coordina con el equipo de monitorización del sitio, para que una ráfaga de reintentos no se confunda con un ataque ni desencadene una respuesta a incidentes innecesaria. Las tasas se fijan con los ingenieros de control. Se revisan cada año.
+
+### Nota práctica
+
+Cuando la cola de borradores supere un umbral, deje de iniciar nuevos métodos de descubrimiento y avise al responsable. Los escaneos sin seguimiento mientras no se pueden registrar hallazgos crean riesgo.
+
+### 32.1b Presupuestos de error y comprobaciones de salud
+
+Defina presupuestos de error para el camino de denegación separados de los presupuestos de mejor esfuerzo de la interfaz. Compruebe la salud del almacenamiento de políticas y del receptor de eventos al inicio de la ventana. Empezar una ventana a ciegas y descubrir un receptor roto a mitad de un escaneo es un fallo de operaciones que este capítulo pretende evitar. Una comprobación de salud fallida retrasa el inicio de la ventana; las comprobaciones nunca se acortan para ganar tiempo. Los experimentos de caos se ejecutan solo en entornos sintéticos, nunca durante la ventana firmada de un cliente. Registre los identificadores de los experimentos por separado de los de las ventanas para que las métricas no se mezclen. Publique ambos presupuestos de error, el del camino de denegación y el de la interfaz.
+
+### Nota de campo: contrapresión de la cola
+
+Cuando la cola de borradores llegó a 50 durante una caída del almacén, el descubrimiento de estilo Track se detuvo automáticamente y avisó a Lena. Permitir/denegar siguió funcionando. El umbral de 50 se eligió para que la cola retenga una noche completa de borradores con margen de sobra.
+
+
+### 32.5 Ejemplo resuelto: degradarse de forma segura cuando falla el recolector (ABP sintética)
+
+El recolector de monitorización del CNHP está en un puerto espejo. Si falla, nada en el proceso debería cambiar: el diseño mantiene el recolector fuera de todo camino de control. Los objetivos de fiabilidad de Lena se refieren a la evidencia, no a la producción: 99,5 % de disponibilidad de captura al mes y alertas ante pérdidas superiores al 0,1 %. Los reintentos hacia el almacén central usan un retroceso exponencial con tope, para que una caída del almacén no inunde el enlace de la DMZ compartido con la réplica del historiador. Cuando la cola se llena, el recolector descarta los paquetes en bruto más antiguos pero conserva los registros resumidos, y genera una alerta de «visibilidad degradada» para que los analistas sepan que la ausencia de alertas significa menos.
+
+### Ejercicios — capítulo 32
+
+- **EX094 — Objetivo.** Frase de disponibilidad para el camino de denegación. Rúbrica: 3 = objetivo por ventana + medida; 2 = «alta» vaga; 1 = broma de los cinco nueves; 0 = nada.
+- **EX095 — Degradación.** ¿Qué nunca debe degradarse a ALLOW? Rúbrica: 3 = las decisiones de política/lista de permitidos; 2 = parcial; 1 = la interfaz; 0 = incorrecto.
+- **EX096 — Cola.** Regla de contrapresión cuando la cola de borradores es larga. Rúbrica: 3 = detener el nuevo descubrimiento + avisar; 2 = parcial; 1 = ignorar; 0 = nada.
+
+### Síntesis del capítulo
+
+Denegaciones fiables, reintentos con presupuesto, degradación hacia el cierre.
+
+### Siga estudiando — capítulo 32 de 50
+
+[← Capítulo 31 (borrador)](#ch-31) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 33 (borrador) →](#ch-33)
+
+<a id="ch-33"></a>
+
+## Capítulo 33 — Seguridad de TO, IoT y sistemas ciberfísicos: seguridad funcional y resiliencia
+
+### Resultados de aprendizaje
+
+Usted podrá (1) escribir las condiciones de parada como comprobaciones ejecutables; (2) planificar la reversión de cambios de herramientas a mitad de ventana; (3) dirigir un ejercicio de mesa sobre un fallo de la lista de denegados o del tiempo de ciclo.
+
+### 33.1 Paradas ejecutables
+
+Las condiciones de parada son código: canario del tiempo de ciclo, flujo de alarmas de proceso, archivo de interruptor de corte del cliente, entrada de falla del SIS. Las personas también ordenan parar; el software no debe contradecir una parada humana. En ABP, la lógica de parada del monitor serie lee el canario del tiempo de ciclo, el flujo de alarmas de proceso, un archivo de interruptor de corte y la entrada de falla del SIS-B. Cualquiera de ellos detiene de inmediato la actividad de evaluación. Una orden humana de parar siempre gana, y el software no tiene ninguna opción que pueda anularla o retrasarla hasta que termine un trabajo en curso.
+
+### 33.2 Reversión
+
+Fije las versiones; conserve firmado el binario anterior del monitor. Si una compilación nueva evalúa mal las listas de permitidos, revierta en minutos. Lena conserva la compilación firmada anterior del monitor en el banco y en el kit de la ventana, de modo que la reversión es una orden probada, no una recompilación. La reversión se ensayó antes de la primera ventana en planta y se repite tras cada versión importante. Una reversión restaura tanto el binario como la versión de la lista de permitidos que se ejecutaba con él. La reversión restaura el estado anterior en minutos. Ambos están fijados.
+
+### 33.3 Ejercicio de mesa
+
+Recorra un escenario: el tiempo de ciclo supera 50 ms a las 02:40; a quién se llama; qué se dice; cuándo se permite reanudar. Actualice el procedimiento operativo donde el ejercicio se atascó.
+
+> **Caso sintético — Ashford Batch Plant.** El ejercicio de mesa reveló que la ruta del archivo de interruptor de corte no estaba documentada; la versión 1.4 del procedimiento lo corrigió antes de la siguiente ventana.
+
+Los ejercicios de mesa de ABP se realizan cada periodo lectivo con el jefe de turno presente, y cada laguna que revelan se cierra con una nueva versión del procedimiento antes de la siguiente ventana. Cada escenario nombra a quién se llama, qué se le dice y quién puede autorizar la reanudación del trabajo.
+
+### 33.4 Errores y límites
+
+El teatro de la resiliencia es una carpeta que nadie abre. Haga un simulacro por periodo lectivo. Los simulacros de resiliencia de Lena en ABP se hacen una vez por periodo lectivo, usan el procedimiento real e incluyen al menos una parada y una reversión. Cada simulacro produce al menos una modificación del procedimiento o un motivo registrado de por qué no hizo falta ninguna. Una carpeta que no se ha abierto desde la última auditoría se trata como no probada, por completa que parezca en la estantería. Los resultados de los simulacros se archivan con la versión del procedimiento. Las lagunas reciben responsables.
+
+### Nota práctica
+
+Redacte de antemano plantillas de SMS/correo electrónico para la parada, la reanudación y la reversión. Bajo estrés, la gente omite la versión del permiso de trabajo o la hora del siguiente punto de control.
+
+### 33.1b Contactos secundarios y autoridad de reanudación
+
+Las condiciones de parada que avisan a una sola persona fallan cuando esa persona está desconectada. Mantenga contactos primarios y secundarios con un traspaso confirmado. ¿Quién puede reanudar tras una parada? Nombre el rol en el permiso de trabajo. El monitor debería exigir un testigo de reanudación vinculado a ese rol y a AllowListVersion. Tras cada parada real, haga una revisión en caliente de cinco minutos y registre al menos una modificación del procedimiento. Las notas de la revisión en caliente registran el desencadenante, el tiempo hasta la parada y el tiempo hasta la reanudación, para poder comparar los simulacros con las paradas reales.
+
+### Nota de campo: testigo de reanudación
+
+Tras una parada, la reanudación exigió un testigo emitido para el rol del contacto de seguridad de procesos y vinculado a AllowListVersion v1.4.2. Se eliminó de la interfaz un interruptor booleano en el servidor de salto. Reanudar sin autoridad es la forma en que las condiciones de parada se vuelven opcionales.
+
+
+### 33.5 Ejemplo resuelto: una parada ejecutable durante la puesta en marcha (ABP sintética)
+
+Durante la migración del cortafuegos en el conducto L3–L2, la condición de parada dice: «Si el HMI pierde los valores del PLC-A durante más de 10 segundos, o se produce cualquier disparo del SIS-B, revertir al conjunto de reglas anterior». La reversión es una única orden preparada de antemano y probada dos veces el día anterior, y el jefe de turno tiene la autoridad para ordenarla; el ingeniero no discute. Reanudar exige un testigo escrito del jefe de turno una vez comprendida la causa. Por separado, Lena confirma que el disparo por nivel alto del SIS-B en R-101 está cableado y no se ve afectado por el cambio, en coherencia con la expectativa de IEC 61511 de que la función de seguridad siga siendo independiente.
+
+### Ejercicios — capítulo 33
+
+- **EX097 — Interruptor de corte.** Diseñe un interruptor de corte humano que se respete en ≤30 s. Rúbrica: 3 = mecanismo + sondeo + fallo cerrado; 2 = idea; 1 = vago; 0 = nada.
+- **EX098 — Reversión.** Tres condiciones previas para revertir a mitad de ventana. Rúbrica: 3 = binario anterior, política fijada, aviso a seguridad de procesos; 2 = dos; 1 = una; 0 = nada.
+- **EX099 — Inyección.** Una inyección para el ejercicio de mesa. Rúbrica: 3 = específica; 2 = vaga; 1 = ninguna; 0 = insegura.
+
+### Síntesis del capítulo
+
+Paradas que se pueden ejecutar, reversiones que se pueden hacer, ejercicios de mesa que actualizan los procedimientos.
+
+### Siga estudiando — capítulo 33 de 50
+
+[← Capítulo 32 (borrador)](#ch-32) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 34 (borrador) →](#ch-34)
+
+<a id="ch-34"></a>
+
+## Capítulo 34 — Seguridad de TO, IoT y sistemas ciberfísicos: integración
+
+### Resultados de aprendizaje
+
+Usted podrá (1) integrar los eventos del monitor en el almacén de hallazgos; (2) definir consumidores idempotentes; (3) probar los contratos con datos de prueba.
+
+### 34.1 Contrato de eventos
+
+Eventos de denegar/permitir: versión del esquema, identificadores, marcas de tiempo UTC, origen, fc, registro, motivo, versión de la política. Los consumidores ignoran los campos desconocidos; los productores solo hacen cambios aditivos. El contrato de eventos de Lena en ABP tiene versión y se publica con datos de prueba para cada código de motivo. Cada evento lleva tanto la hora en que ocurrió como la hora en que se recibió, además de la fuente del reloj. Los productores pueden añadir campos, pero nunca eliminarlos ni renombrarlos dentro de una versión, de modo que los consumidores antiguos siguen funcionando. Los datos de prueba se guardan en el repositorio. Los cambios se revisan.
+
+### 34.2 Consumidores idempotentes
+
+El almacén de hallazgos indexa los eventos procesados por event_id. Reproducir el registro no debe crear hallazgos duplicados. Lena prueba la reproducción en el banco pasando dos veces por el consumidor el registro de eventos de un día completo y comprobando que el número de hallazgos no cambia. La prueba detectó un error en el que los eventos se indexaban por marca de tiempo en lugar de por event_id, lo que duplicó tres tickets durante una tormenta de reproducción antes de que llegara la corrección. Las pruebas de reproducción se ejecutan en la integración continua. Los fallos bloquean la fusión. La prueba se ejecuta cada noche.
+
+### 34.3 Pruebas de contrato
+
+JSON de datos de prueba para cada código de motivo; las pruebas del consumidor comprueban los campos del ticket resultante. Se ejecutan en la integración continua con datos de prueba sintéticos.
+
+> **Caso sintético — Ashford Batch Plant.** Una tormenta de reproducción duplicó tres tickets hasta que llegó la idempotencia por event_id.
+
+Las pruebas de contrato de Lena se ejecutan con cada solicitud de incorporación de cambios y de forma programada. Usan un dato de prueba para cada código de motivo y comprueban los campos del ticket que debería crear el consumidor, como el activo, la técnica y la severidad. Una ejecución programada contra el entorno de preproducción detecta los cambios de los productores aunque no haya ninguna solicitud abierta, de modo que la deriva se encuentra antes de una ventana y no durante ella.
+
+### 34.4 Errores y límites
+
+El desfase de los relojes enturbia las cronologías; prefiera la hora del evento más la hora de recepción. La vista de cronología de Lena en ABP muestra la hora del evento y la hora de recepción una al lado de la otra, para que el lector pueda ver cuándo el reloj de un dispositivo está mal. El laboratorio II inyectó más adelante un desfase de 90 segundos en el PLC-A y descubrió que dos eventos quedaban mal ordenados en el expediente hasta que se aplicó una corrección del desplazamiento. Las fuentes de reloj se registran en cada evento precisamente por esta razón. Lena mantiene los relojes sincronizados cuando es posible. La deriva genera alarma.
+
+### Nota práctica
+
+Los eventos envenenados (marcas de tiempo futuras, versiones de política desconocidas) van a una cola de mensajes fallidos con una alerta: no a los hallazgos ni a /dev/null.
+
+### 34.1b Mensajes fallidos y simulacros de esquema
+
+Cada evento enviado a la cola de mensajes fallidos conserva el error de validación que lo rechazó. Los operadores lo reproducen tras corregir el productor. Practique de extremo a extremo, en un ensayo, la adición de un campo opcional: productor, consumidor, datos de prueba, documentación. Los equipos que solo hacen evolucionar los esquemas en emergencias inventan atajos incompatibles. Una ejecución programada fallida abre un ticket para el equipo productor, no para el consumidor. La antigüedad de los mensajes fallidos es un gráfico de SLO junto a la latencia del camino de denegación.
+
+ABP realiza un simulacro de esquema cada periodo lectivo. Los resultados de los simulacros se registran con las versiones del productor y del consumidor implicadas, como el simulacro que añadió la hora de recepción junto a la hora del evento en los eventos de denegación del PLC-A.
+
+### Nota de campo: cuarentena de eventos envenenados
+
+Un error de un productor emitió eventos con marcas de tiempo de 2099. La cuarentena de mensajes fallidos los atrapó; no se creó ningún hallazgo contra equipos aleatorios. Los descartes invisibles habrían sido peores: al menos la cuarentena avisa a alguien.
+
+
+
+Incluya un canario del consumidor que haga fallar el despliegue si los eventos envenenados no se ponen en cuarentena en menos de un minuto en preproducción.
+
+
+
+Cada simulacro termina con el nuevo campo visible en un ticket de preproducción para una denegación sintética del PLC-A, y con la duración del simulacro registrada.
+
+
+### 34.5 Ejemplo resuelto: integrar las alertas con el sistema de mantenimiento (ABP sintética)
+
+Las alertas del CNHP fluyen hacia el sistema de gestión del mantenimiento de ABP para que una alerta de «descarga de programa al PLC-A» pueda asociarse a una orden de trabajo abierta. El contrato de eventos lleva un identificador de evento, la etiqueta del activo, la técnica de ATT&CK for ICS (T0843 Program Download), la hora con la fuente del reloj y el hash de la evidencia. El consumidor es idempotente respecto al identificador de evento, de modo que una alerta reproducida no crea dos órdenes de trabajo. Las pruebas de contrato se ejecutan en la integración continua con datos de prueba de ambas partes; un evento sin el campo de técnica se envía a una cola de mensajes fallidos y se revisa a diario, en lugar de descartarse. Una descarga sin orden de trabajo asociada se escala al jefe de turno en menos de cinco minutos.
+
+### Ejercicios — capítulo 34
+
+- **EX100 — Campo.** ¿Por qué incluir policy_version en cada evento? Rúbrica: 3 = auditar qué reglas se aplicaron; 2 = vago; 1 = incorrecto; 0 = nada.
+- **EX101 — Reproducción.** ¿Cómo evita event_id los hallazgos duplicados? Rúbrica: 3 = inserción o actualización / ignorar duplicados; 2 = vago; 1 = incorrecto; 0 = nada.
+- **EX102 — Datos de prueba.** Dos datos de prueba necesarios antes de un nuevo código de motivo. Rúbrica: 3 = ejemplo del productor + ticket esperado del consumidor; 2 = uno; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+Contratos, consumidores idempotentes, pruebas con datos de prueba.
+
+### Siga estudiando — capítulo 34 de 50
+
+[← Capítulo 33 (borrador)](#ch-33) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 35 (borrador) →](#ch-35)
+
+<a id="ch-35"></a>
+
+## Capítulo 35 — Taller de diseño II
+
+### Resultados de aprendizaje
+
+Usted podrá (1) rediseñar la interfaz de cobertura del CNHP según los principios de infravalorar el éxito; (2) defender el diseño en una revisión; (3) redactar textos de interfaz que rechacen las puntuaciones vacías.
+
+### 35.1 Problema
+
+Las partes interesadas quieren un gran porcentaje verde. Diseñe una interfaz que muestre lo planificado, lo observado y lo no visto, y que rechace una puntuación de seguridad única. En ABP, el jefe de planta pidió al principio un único porcentaje que mostrara si el CNHP funcionaba. El equipo de Lena explicó que cualquier cifra única mezclaría las técnicas observadas, la deriva de los conductos y la alcanzabilidad del SIS-B, que necesitan responsables y presupuestos distintos. La pantalla resultante da a cada medida su propia línea con el denominador visible, y las técnicas planificadas pero no vistas se enumeran por identificador para que el jefe pueda preguntar cuáles importan antes de aprobar la siguiente fase.
+
+### 35.2 Textos
+
+«71 % de las técnicas de ICS planificadas observadas: no es una puntuación de riesgo residual». Botón: exportar denominador. Muestre «¿SIS alcanzable?» como un sí/no aparte. El equipo de Lena probó esta redacción con el jefe de planta y dos jefes de turno antes de publicarla. Un jefe de turno leyó un borrador inicial que decía solo «setenta y uno por ciento» y supuso que la planta era segura en un setenta y uno por ciento, que es exactamente la mala lectura que evita la advertencia. El botón de exportar produce la lista de las 44 técnicas planificadas, cada una marcada como observada o no vista, y la línea del SIS-B nunca muestra un porcentaje, porque la alcanzabilidad es verdadera o falsa el día de la comprobación.
+
+### 35.3 Revisión
+
+Los revisores intentan imponer una insignia de riesgo rojo/amarillo/verde; el taller debe mantenerse firme con las reglas del capítulo de medición.
+
+> **Caso sintético — Ashford Batch Plant.** El taller II eliminó la insignia; el tablero enumera por identificador las técnicas planificadas no vistas y, por separado, la alcanzabilidad del SIS.
+
+Los críticos del taller argumentaron que los directivos no leerían una lista. El equipo de Lena respondió con la decisión real del jefe: qué conductos financiar y cerrar a continuación, algo que un color no puede expresar. La insignia eliminada tampoco tenía una regla definida para pasar a amarillo, así que dos revisores ya habían discrepado sobre su color con los mismos datos. Sustituirla por elementos nombrados zanjó esa discusión y dio a cada elemento un responsable.
+
+### 35.4 Errores y límites
+
+Los patrones oscuros («solo para directivos») reintroducen las puntuaciones vacías: rechácelos mediante CODEOWNERS de la interfaz. En ABP, una solicitud posterior pidió una vista resumida solo para directivos con un único indicador de color. El equipo de Lena la rechazó durante la revisión de código, citando la decisión del taller y las reglas de medición, y ofreció en su lugar una exportación de una página con los mismos tres números y sus denominadores. Exigir que un responsable de código apruebe cada cambio en la interfaz del tablero hace que esta discusión la resuelva un revisor nombrado que conoce la historia, en lugar de que la reabra en silencio quien edite la pantalla a continuación.
+
+### Nota práctica
+
+Tarea de investigación con usuarios: explique este número a un jefe de planta sin decir «estamos seguros». Si los usuarios no pueden, el texto ha fallado.
+
+### 35.1b Accesibilidad y veracidad de la exportación
+
+Las métricas que infravaloran el éxito deben seguir siendo legibles: letra grande para la fracción, lenguaje llano para la advertencia, acceso por teclado a la exportación del denominador. Si la interfaz y la exportación CSV no coinciden, la exportación gana para el informe. Construya primero las exportaciones; trate la interfaz como una vista. Las exportaciones narrativas generadas con la misma consulta que la interfaz se pegan en los informes sin la ambigüedad de una captura de pantalla. Ocultar la advertencia en una información emergente reintroduce el problema de la puntuación vacía para quien no pase el cursor por encima.
+
+Lena contrasta cada versión con la exportación.
+
+### Nota de campo: tarea de explicación para el director financiero
+
+En la investigación con usuarios, tres directivos explicaron la fracción de cobertura como «cuán seguros estamos». Tras cambios en los textos que prohibían esa lectura y mostraban por separado la alcanzabilidad del SIS, la misma tarea produjo en cambio explicaciones sobre comprobaciones planificadas y hallazgos abiertos.
+
+
+
+Cada exportación lleva en su primera línea la versión de la consulta y la hora en que se ejecutó.
+
+
+### 35.5 Ejemplo resuelto: la crítica del taller (ABP sintética)
+
+El encargo del taller II: un jefe de planta debe decidir, a partir de una sola pantalla, si aprueba la siguiente fase del CNHP. El equipo de Lena muestra tres números con denominadores —31 de 44 técnicas de ATT&CK for ICS planificadas observadas en las pruebas, 6 de 9 conductos coincidentes con el diseño de zonas, SIS-B alcanzable desde alguna zona enrutada: no— más una lista breve de hallazgos altos abiertos. Los críticos defendían una insignia de riesgo única; el equipo respondió que la decisión del jefe depende de qué conductos siguen abiertos, no de un promedio. El diseño aceptado pone primero la lista de conductos abiertos, porque es el elemento que el jefe puede realmente financiar.
+
+### Ejercicios — capítulo 35
+
+- **EX103 — Texto.** Subtítulo bajo el número de cobertura. Rúbrica: 3 = niega la lectura como riesgo residual; 2 = advertencia débil; 1 = ninguna; 0 = sugiere seguridad.
+- **EX104 — Insignia.** Una frase que rechace una insignia RAG. Rúbrica: 3 = clara + alternativa; 2 = solo rechaza; 1 = la acepta; 0 = nada.
+- **EX105 — Exportación.** Columnas de la exportación del denominador. Rúbrica: 3 = identificador de la técnica, planificada, observada, notas; 2 = parcial; 1 = solo el %; 0 = nada.
+
+### Síntesis del capítulo
+
+Una interfaz que enseña la métrica, no un semáforo de impresiones.
+
+### Siga estudiando — capítulo 35 de 50
+
+[← Capítulo 34 (borrador)](#ch-34) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 36 (borrador) →](#ch-36)
+
+<a id="ch-36"></a>
+
+## Capítulo 36 — Seguridad de TO, IoT y sistemas ciberfísicos: rendimiento y escala
+
+### Resultados de aprendizaje
+
+Usted podrá (1) dimensionar los monitores dentro de los presupuestos de tiempo de ciclo; (2) aplicar la lógica del cubo de testigos al tráfico de evaluación; (3) medir el impacto en la planta con un canario.
+
+### 36.1 El tiempo de ciclo es de primera categoría
+
+Los objetivos de rendimiento que ignoran el presupuesto de ciclo del PLC son errores. Dimensione las canalizaciones de decodificación para que el tiempo en el cable más el de decodificación se mantenga dentro del presupuesto medido en el capítulo 3.
+
+```python
+"""Lab: does a polling schedule fit the PLC scan/communication budget? (synthetic)"""
+link_bps = 115200; bits_per_byte = 10           # RS-485 serial, 8N1 + start bit
+polls = [("T-1 level", 8), ("T-2 level", 8), ("R-101 block", 40), ("pump status", 8), ("historian sweep", 120)]
+overhead = 12                                    # bytes of request+framing per poll (assumed)
+total = sum(n + overhead for _, n in polls)
+t = total * bits_per_byte / link_bps
+print(f"bytes per cycle={total} time per cycle={t*1000:.1f} ms")
+for target in (100, 50):
+    print(f"cycle budget {target} ms -> {'fits' if t*1000 <= target else 'OVERRUN'}")
+```
+
+Salida esperada:
+
+```text
+bytes per cycle=244 time per cycle=21.2 ms
+cycle budget 100 ms -> fits
+cycle budget 50 ms -> fits
+```
+
+En ABP, la línea troncal RS-485 hacia el PLC-A funciona con un ciclo de sondeo de 21 ms dentro de un ciclo de control de 100 ms, y la condición de parada salta si el tiempo de ciclo llega a 50 ms. Lena dimensiona el monitor de modo que la derivación, la decodificación y el registro no añadan nada al tiempo en el cable, porque la derivación es pasiva y el decodificador se ejecuta en su propio equipo. Las pruebas de carga en el banco reproducen a doble velocidad un día completo de tráfico capturado para confirmar que el decodificador nunca se queda atrás respecto a la línea troncal.
+
+### 36.2 Tráfico de evaluación
+
+Cuando se autorizan métodos activos, limite su tasa para que no puedan dejar sin recursos al tráfico de control. Prefiera los métodos de solo escucha; cuando deba sondear, comparta un presupuesto global entre los escáneres. Durante las ventanas de evaluación del CNHP en ABP, solo una herramienta activa puede sondear la línea troncal a la vez, y su tasa de solicitudes se escribe en el permiso antes de empezar. El descubrimiento pasivo desde la derivación cubre la mayor parte del inventario, de modo que el sondeo activo se limita a los pocos dispositivos que no hablan por sí mismos. Cada herramienta informa de su tasa al presupuesto compartido, y el responsable de la ventana puede pausar todos los métodos activos con un solo interruptor si sube el tiempo de ciclo.
+
+### 36.3 Canarios
+
+Una solicitud canario sintética o una sonda del tiempo de ciclo cada minuto sigue la salud del sistema; las condiciones de parada saltan al alcanzar el umbral (capítulo 33).
+
+> **Caso sintético — Ashford Batch Plant.** Con ciclos de 21 ms en la línea troncal RS-485, Lena dejó margen por debajo de 50 ms para que un pico de decodificación no activara la parada.
+
+El canario de ABP lee cada minuto un registro de estado inofensivo del PLC-A y anota el tiempo de respuesta junto al tiempo de ciclo de la línea troncal. Si cualquiera de los dos se acerca a su umbral, se avisa al responsable de la ventana antes de llegar a la condición de parada, lo que da tiempo para pausar el trabajo activo con calma en lugar de reaccionar a una parada automática.
+
+### 36.4 Errores y límites
+
+Los escáneres distribuidos necesitan un presupuesto global coordinado o multiplican el límite por N. En ABP, dos escáneres funcionaron una vez desde equipos distintos, cada uno dentro de su propia tasa, y juntos superaron el presupuesto de la línea troncal. Lena trasladó el presupuesto a un único coordinador que concede testigos a cada escáner, de modo que el total se mantiene dentro del permiso sin importar cuántas herramientas estén funcionando. Un escáner que no puede contactar con el coordinador no puede enviar nada, lo que mantiene seguro el fallo en lugar de dejar que cada herramienta vuelva a su propio límite.
+
+### Nota práctica
+
+Publique una nota sobre la economía de los límites de tasa: coste de esperar frente a coste de interrumpir un lote. La mayoría de los argumentos para subir los límites se disuelven cuando se pone por escrito el coste de la interrupción.
+
+### 36.1b Equidad y calentamiento
+
+Cuando varios métodos comparten un presupuesto, un enumerador ruidoso puede dejar sin recursos a una revisión de configuración silenciosa. Pondere o separe los presupuestos por clase de método. Aumente el tráfico de forma gradual al inicio de la ventana y vacíelo antes de la parada definitiva. Vaciar significa ninguna solicitud nueva en los últimos diez minutos, para que las respuestas en curso lleguen antes de la parada. Documente quién puede subir un límite de tasa y qué tipo de ticket AUTH se requiere. Un límite elevado caduca al final de la ventana salvo que se renueve con un ticket nuevo.
+
+Lena aplica ambos presupuestos en el coordinador.
+
+### Nota de campo: calendario de calentamiento
+
+El planificador aumenta ahora los sondeos de evaluación de forma gradual durante cinco minutos al inicio de la ventana. Los arranques instantáneos a plena tasa habían disparado alarmas de vibración no relacionadas en un patín vecino. El calentamiento es una cortesía hacia el proceso y hacia las personas responsables de él.
+
+
+### 36.5 Ejemplo resuelto: medir la carga de la monitorización en el PLC-A (ABP sintética)
+
+Un sondeador propuesto de la salud de los activos leería 120 registros de retención del PLC-A cada segundo. En el controlador de banco, Lena mide el tiempo de escaneo con y sin el sondeador: 18 ms de base, 23 ms con el sondeo, frente a un temporizador de vigilancia de 50 ms. El aumento es aceptable en el banco, pero aun así limita el sondeador a 120 registros cada 5 segundos en producción, añade un canario en una línea antes del despliegue en toda la planta y genera una alarma si el tiempo de escaneo supera 30 ms. El tráfico de evaluación recibe el mismo trato: toda herramienta de prueba debe declarar su tasa de solicitudes, y el permiso fija un máximo.
+
+### Ejercicios — capítulo 36
+
+- **EX106 — Laboratorio.** Bytes y tiempo por ciclo a 115200: informe de ambos. Rúbrica: 3 = 244 bytes, 21,2 ms; 2 = uno; 1 = incorrecto; 0 = nada.
+- **EX107 — Margen.** Si el presupuesto es de 50 ms y el ciclo de 21 ms, ¿qué margen queda y por qué conservarlo? Rúbrica: 3 = ~29 ms para picos/reintentos; 2 = solo el número; 1 = usarlo todo; 0 = nada.
+- **EX108 — Global.** ¿Por qué tres sondeadores sin coordinar rompen un permiso de 2 sol./s? Rúbrica: 3 = 3× la tasa; 2 = vago; 1 = lo niega; 0 = nada.
+
+### Síntesis del capítulo
+
+Primero el presupuesto, después la escala, siempre el canario.
+
+### Siga estudiando — capítulo 36 de 50
+
+[← Capítulo 35 (borrador)](#ch-35) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 37 (borrador) →](../../en/book/MANUSCRIPT.md#ch-37)
 
 <a id="worked-results"></a>
 
@@ -2170,6 +2570,42 @@ Respuestas modelo para EX001–EX150. Ashford Batch Plant, Lena Okafor, el CNHP 
 **EX089.** Detener el laboratorio, abrir un bloqueante, revocar la aprobación de la ventana en planta hasta que se corrija y se supere de nuevo el laboratorio.
 
 **EX090.** Hash del archivo de la lista de permitidos/política, hash de la compilación/versión del monitor, hash del registro de resultados del laboratorio.
+
+**EX091.** Un reintento de red puede crear dos hallazgos con identificadores de servidor distintos; los clientes deberían hacer PUT con identificadores conocidos.
+
+**EX092.** {"title":"x","payload":"..."} o {"password":"..."} o {"risk_score":42}: cualquier campo prohibido o desconocido según la política.
+
+**EX093.** No: renombrar rompe los clientes; mantenga reason_code en v1 o publique /v2/.
+
+**EX094.** Durante las ventanas firmadas, éxito del camino de denegación ≥ 99,5 %, medido con sondas sintéticas cada minuto; las caídas avisan al responsable.
+
+**EX095.** La evaluación del alcance y de la lista de permitidos: debe fallar de forma cerrada y nunca dar ALLOW ante la incertidumbre.
+
+**EX096.** Dejar de iniciar nuevos métodos de descubrimiento; avisar al responsable; mantener en marcha denegar/permitir; vaciar la cola antes de reanudar el descubrimiento.
+
+**EX097.** Depositar el archivo /var/lib/otmon/STOP vía SSH/SSO; el monitor lo sondea cada 10 s; si existe o no puede leerse, deniega las escrituras y genera una alerta.
+
+**EX098.** Binario firmado anterior disponible; AllowListVersion sin cambios o verificada de nuevo; el contacto de seguridad de procesos, avisado de la reversión.
+
+**EX099.** A las 02:40, el tiempo de ciclo en la línea troncal A marca 62 ms durante tres minutos; el responsable está en una zona ruidosa con cobertura de radio irregular.
+
+**EX100.** Para que los revisores sepan qué AllowListVersion autorizó la decisión cuando se disparó el evento.
+
+**EX101.** El consumidor guarda los event_id procesados; los duplicados se ignoran o se insertan/actualizan sin tickets nuevos.
+
+**EX102.** Un JSON de evento de ejemplo para el nuevo motivo y los campos esperados del ticket en el almacén de hallazgos tras consumirlo.
+
+**EX103.** Proporción de las técnicas de ATT&CK for ICS planificadas que se observaron en esta ventana: no es una puntuación de riesgo residual ni de cumplimiento.
+
+**EX104.** No publicamos insignias de riesgo rojo/ámbar/verde; en su lugar, use la alcanzabilidad del SIS, los críticos abiertos y los conteos de SLA/parches aplazados.
+
+**EX105.** technique_id, name, planned (S/N), observed (S/N), first_seen_utc, notes.
+
+**EX106.** bytes per cycle=244; tiempo por ciclo ≈ 21,2 ms a 115200 con 10 bits/byte.
+
+**EX107.** Unos 29 ms de margen absorben los picos de decodificación y los reintentos; gastarlo todo no deja margen para que la condición de parada tenga sentido.
+
+**EX108.** Cada uno puede enviar 2/s → ~6/s en total, el triple del permiso: hace falta un limitador compartido.
 
 <a id="references"></a>
 
