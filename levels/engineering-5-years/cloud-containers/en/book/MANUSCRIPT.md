@@ -1204,25 +1204,37 @@ You will (1) treat meterhub as a system of interacting parts; (2) define require
 
 meterhub is not just a cluster: it includes meters, the network operator, the ingest service, storage, billing, analysts, the cloud provider and the people who operate it. Security properties emerge from how these parts interact, not from any single control.
 
+The key leak is a good example of an emergent problem. No single part was broken: the build tool did what it was told, the registry stored what it received, and the key worked as designed. The failure came from how a developer's habit, a build step and a public registry combined. A systems view looks for such combinations by tracing data and authority across every part, including people and outside organisations like the network operator.
+
 ### 16.2 Life cycle
 
 Systems engineering follows concept, requirements, design, implementation, verification, operation and retirement. Security must appear at each stage; retirement matters too, since old clusters and buckets left running were a source of exposure in many organisations.
+
+Security added only at implementation tends to be patched onto a design that fights it, while security considered at concept stage shapes the design itself. Retirement is easy to forget because nobody is paid to tidy up: a test cluster left running with old credentials, or a storage bucket that once held exports, keeps its exposure long after anyone remembers it. Elena adds a retirement checklist to Solent's design template, with an owner who signs off when every resource is gone.
 
 ### 16.3 Interfaces
 
 Each interface is specified: what data crosses it, in what format, authenticated how and with what limits. The interface between ingest and storage, for example, carries readings over TLS with a workload identity and a maximum batch size.
 
+Specifying limits matters as much as specifying formats. A maximum batch size stops one faulty or malicious caller from overwhelming storage with a single huge request. Naming the authentication method means both sides know what to expect and reviewers can check it. Elena writes each interface specification as a short table, so it can be compared directly with network policies and service configuration during reviews and audits.
+
 ### 16.4 Traceability
 
 Every security requirement has an identifier, a source (standard, regulation or risk), a design element that meets it and a verification method. A traceability matrix shows gaps: requirements with no test, tests with no requirement.
+
+A requirement without a test may be met or may not; nobody can tell. A test without a requirement may check something nobody needs, consuming time in every pipeline run. The matrix also helps when a standard changes: the team can find every requirement drawn from it and see which designs and tests might need updating. Elena keeps the matrix as a CSV file in the repository, reviewed alongside code changes.
 
 ### 16.5 Trade-offs
 
 Stronger isolation (separate clusters per service) costs more and adds operational work; Solent chooses separate namespaces with strict policies and a separate cluster only for the payment-related service.
 
+A separate cluster for every service would give the strongest isolation, but four engineers would have to patch, upgrade and monitor many clusters, increasing the chance that one falls behind. Namespaces with strict policies give good separation for most services at little extra cost. The payment-related service carries more risk and stricter compliance needs, which justifies the extra effort of its own cluster.
+
 ### 16.6 Configuration management
 
 The system's configuration baseline is the set of reviewed templates and manifests in version control; changes go through change control.
+
+A baseline answers the question 'what should the system look like right now?' Anything running that differs from it is drift, either an unrecorded change or a sign of compromise. Change control ensures every difference between one baseline and the next is reviewed and recorded. Comparing the live cluster with the baseline regularly shows whether reality still matches the plan.
 
 ### Worked example
 
@@ -1260,9 +1272,13 @@ You will (1) describe feedback loops in cloud systems; (2) analyse an autoscalin
 
 A controller measures an output, compares it with a target and adjusts an input. Kubernetes is built from such loops: controllers continually reconcile the actual state toward the declared desired state, as Burns et al. (2016) describe.
 
+Each Kubernetes controller watches one kind of object. The deployment controller sees that three replicas are declared but two are running and starts another. The same idea makes the system self-healing: a crashed pod, a lost node or a deleted object is noticed and corrected without a person intervening. Understanding this helps engineers predict how the cluster will respond to failures and to manual changes.
+
 ### 17.2 Autoscaling rule
 
 The horizontal pod autoscaler sets desired replicas = ceil(current replicas × current metric ÷ target metric), within minimum and maximum bounds.
+
+The formula scales replicas in proportion to how far the metric is from its target. If CPU runs at twice the target, the autoscaler roughly doubles the replicas. Rounding up with the ceiling function means it errs towards more capacity. The bounds stop the formula from shrinking a service to nothing at night or growing it without limit during a surge.
 
 ### Lab — Lab — autoscaling loop
 
@@ -1292,17 +1308,25 @@ util  40% at 10 replicas -> desired 7
 
 With a 60% CPU target and bounds of 2 to 10: at 50% on 2 replicas it stays at 2; at 90% it scales to 3; at 150% on 3 to 8; at 200% on 8 it would want 27 but is capped at 10; at 120% on 10 it stays at the cap of 10; at 40% on 10 it scales down to 7. The cap protects cost and downstream systems but means sustained overload is possible.
 
+Working each case by hand shows how the formula behaves. At 150% on three replicas, 3 × 150 ÷ 60 is 7.5, rounded up to 8. At 200% on eight, the formula asks for 27 but the bound holds it at 10. At 40% on ten, 10 × 40 ÷ 60 is about 6.7, rounded up to 7. Elena records the cap as a deliberate risk: if real demand exceeds ten replicas' capacity, readings will queue.
+
 ### 17.4 Stability
 
 Loops that react too fast oscillate; real autoscalers add stabilisation windows so scale-down waits. Measurement delay makes oscillation more likely.
+
+Without a stabilisation window, a brief dip in load could remove pods that are needed again a minute later, causing repeated scale-up and scale-down. Each new pod takes time to start, so oscillation wastes resources and can briefly reduce capacity. Waiting several minutes before scaling down smooths the response. Metrics collected every thirty seconds add their own delay, which the window must allow for.
 
 ### 17.5 Security and feedback
 
 Reconciliation also restores security settings: if someone edits a live object by hand, a GitOps controller changes it back to the declared state. Security alerts and responses form a loop too; slow detection is like measurement delay.
 
+Reconciliation turns the declared configuration into an enforcement mechanism: a hand edit that weakens a setting is reverted within minutes. It also means emergency fixes must go through version control, or the controller will undo them. On the detection side, long delays between an event and an alert act like slow measurement in a control loop, making the response arrive after the damage.
+
 ### 17.6 Limits as safety
 
 Maximum replicas also limit the cost of a flood of fake traffic, a simple availability safeguard.
+
+Without a maximum, a flood of fake requests could drive the autoscaler to create hundreds of pods, running up a large bill and possibly overwhelming the database. The cap turns an unbounded cost into a bounded one. The trade-off is that genuine extreme demand is also capped, so the maximum is set from measured peaks with a margin and reviewed as meter numbers grow.
 
 ### Tuning
 
@@ -1344,25 +1368,37 @@ You will (1) design a layered security architecture for meterhub; (2) place trus
 
 Account level: separate accounts for production, test and backups; organisation policies that block public storage and restrict regions. Cluster level: private control plane endpoint, workload identity, Pod Security admission at Restricted, default-deny network policies. Workload level: signed images, non-root, minimal capabilities. Data level: customer-managed keys, separation of readings and customer details.
 
+Each layer stops a different class of mistake. Account policies block public storage everywhere, even if a developer creates a bucket carelessly. Cluster settings ensure pods cannot run privileged or talk freely. Workload settings limit what a single container can do. Data controls protect readings even if other layers fail. Together they mean no single error exposes households' data.
+
 ### 18.2 Trust boundaries
 
 Internet to load balancer; load balancer to ingest; ingest to storage; cluster to cloud APIs; pipeline to cluster; production to backup account. Each boundary has authentication and a policy check.
+
+Listing boundaries makes it clear where checks must happen. The pipeline-to-cluster boundary is easy to overlook, yet whoever controls the pipeline can deploy anything. The production-to-backup boundary protects recovery from a compromised production account. Elena marks each boundary on the architecture diagram with its authentication method and policy. Rosa reviews the marked diagram.
 
 ### 18.3 Isolation choices
 
 Namespaces with strict policies for most services; a separate cluster for the payment service; separate accounts for backups. NIST SP 800-190 discusses grouping containers by sensitivity on hosts.
 
+Grouping by sensitivity keeps high-risk workloads away from low-risk ones, so a compromise of a less important service is less likely to reach sensitive data. The payment service's separate cluster means a flaw in a metrics pod cannot touch it. Backups in a separate account survive a compromise of the main account. Elena records the reasons in the design note.
+
 ### 18.4 Zero trust alignment
 
 Every service call is authenticated with workload identity, following NIST SP 800-207, and authorised by policy.
+
+Workload identity gives each service a credential tied to what it is, not where it runs, issued automatically and rotated often. Authorising each call by policy means a service can only perform the actions it needs. Being inside the cluster no longer grants access by default. Denied calls are logged with the caller's identity and the action attempted, which gives investigators a clear trail. Elena tests the policies by sending synthetic calls from an unapproved service and checking that each one is refused.
 
 ### 18.5 Architecture decision records
 
 Each choice is recorded with context, options and consequences, so future engineers know why the payment service is separate.
 
+Without a record, a future engineer might merge the payment service back into the main cluster to save effort, unaware of the reasons it was separated. The record explains the risk and compliance drivers and lists the alternatives considered. If circumstances change, the record shows what to reconsider. Records are short, numbered and stored with the infrastructure code, so they are reviewed in the same pull requests as the changes they explain.
+
 ### 18.6 Guardrails versus gates
 
 Guardrails (organisation policies) prevent classes of mistakes everywhere; gates (pipeline checks) stop specific changes. Both are used.
+
+Guardrails apply broadly and cannot be bypassed by an individual team, such as a policy that forbids public storage in any account. Gates check particular changes and can be more specific, like rejecting an image without a signature. Guardrails give a safety floor; gates give detailed control on the path to production. Elena lists which risks each covers, so no important risk depends on a single gate that a team could skip.
 
 ### Reviewing the architecture
 
@@ -1404,9 +1440,13 @@ You will (1) manage cloud and workload identities; (2) apply cryptography for da
 
 Humans sign in through the organisation's identity provider with multi-factor authentication; workloads use workload identity; pipelines use federated identity from the build system. Long-lived access keys are avoided.
 
+Each kind of identity uses the strongest method available for it. Humans have MFA because passwords are easily stolen. Workloads use identities issued by the platform, so no key is stored in code. Pipelines use federated identity, obtaining short-lived credentials from the build system's own identity rather than holding a permanent key.
+
 ### 19.2 Secrets in images
 
 Image layers are archives; anything copied in remains even if deleted in a later layer. The opening case's key sat in layer 3 of the image. Shu, Gu and Enck (2017) found widespread vulnerabilities in public container images, a reminder that what is pushed publicly is visible to anyone.
+
+Deleting a file in a later layer only hides it in the final view; the earlier layer still contains it and can be extracted by anyone who pulls the image. That is how the key in layer 3 remained exposed. Public registries are scanned constantly by people looking for exactly this, so a pushed secret should be treated as compromised immediately.
 
 ### Lab — Lab — secrets in image layers
 
@@ -1438,17 +1478,25 @@ layer4/app/settings.py   EXAMPLE_TOKEN     entropy 0.00 placeholder
 
 The scan finds CLOUD_ACCESS_KEY in layer3/app/config.env with character entropy 4.50, above the 3.5 threshold: LIKELY SECRET. EXAMPLE_TOKEN in layer4/app/settings.py is twenty repeated characters with entropy 0.00: a placeholder. Entropy helps separate real-looking keys from obvious placeholders, but a reviewer confirms each finding.
 
+Entropy measures how varied the characters are. Random keys have high entropy; repeated characters have none. The threshold separates likely secrets from placeholders, but some real secrets have lower entropy and some harmless strings have higher, so a reviewer checks each finding. The key found here was revoked and its uses investigated.
+
 ### 19.4 Cryptography for integrity
 
 Images are signed after build and verified at admission, so only images built by Solent's pipeline can run. Keys for signing are held in a managed key service.
+
+A signature proves the image came from Solent's pipeline and has not changed since. Admission control refuses unsigned or wrongly signed images, so an image pushed by someone else, or tampered with in the registry, cannot run. Holding signing keys in a managed key service keeps them out of the pipeline's file system.
 
 ### 19.5 Secrets management
 
 Runtime secrets come from a secret manager or Kubernetes Secrets with encryption at rest, never from images; the Kubernetes good-practice guidance for Secrets recommends least-privilege access to them.
 
+Secrets delivered at runtime are never part of the image, so pushing an image cannot leak them. A secret manager also logs access and supports rotation. Limiting which service accounts can read which Secrets means a compromised pod cannot read every credential in the namespace. Elena's checker flags any pod spec that mounts all Secrets in a namespace.
+
 ### 19.6 Rotation
 
 Remaining long-lived secrets are rotated on a schedule and immediately after exposure.
+
+Rotation limits how long a stolen secret stays useful. Scheduled rotation handles slow leaks that nobody noticed; immediate rotation after exposure handles known incidents. Automating rotation removes the temptation to postpone it because it is tedious or risky. Each secret has a recorded owner, a rotation interval and the date of its last rotation. Elena's report lists any secret past its interval. Rotation is tested on the test cluster first, so services that cache old credentials are found before production rotation breaks them.
 
 ### Human access
 
@@ -1490,25 +1538,37 @@ You will (1) frame cloud and container security as an engineering discipline; (2
 
 Cloud and container security engineering designs, builds and verifies controls for systems built on shared infrastructure, declarative configuration and fast change. Mell and Grance (2011) define the cloud's essential characteristics; each creates security work, such as self-service creating many configuration changes.
 
+On-demand self-service means teams create resources quickly, often without central review. Broad network access means services are reachable from many places. Resource pooling means sharing hardware with others. Rapid elasticity means configurations change constantly. Measured service means costs are visible. Each characteristic brings benefits and a corresponding set of security tasks.
+
 ### 20.2 Stakeholders
 
 Solent's platform team, service developers, the data protection officer, the energy regulator, customers and the cloud provider. Each has constraints: uptime for billing, privacy law, audit requirements.
+
+The platform team wants reliable, maintainable systems; developers want to ship features; the data protection officer wants household data protected; the regulator wants evidence; customers want accurate bills and privacy; the provider sets its own terms. Elena's designs must satisfy all these constraints at once. She keeps a one-page list of each stakeholder's main concern and checks every design decision against it.
 
 ### 20.3 Standards
 
 NIST SP 800-190 for containers; SP 800-210 for cloud access control; SP 800-207 for zero trust; CSA CCM v4 for a control catalogue mapped to many frameworks; CIS Benchmarks for Kubernetes and cloud account settings; Kubernetes Pod Security Standards for workloads.
 
+Each standard serves a purpose. SP 800-190 covers container-specific risks; SP 800-210 covers access control in cloud systems; SP 800-207 sets the zero-trust approach; CCM provides a catalogue mapped to many frameworks; CIS Benchmarks give detailed settings; Pod Security Standards define profiles for workloads. Elena maps meterhub's requirements to these sources.
+
 ### 20.4 Constraints
 
 The platform team has four engineers; changes must not disrupt ingestion; budgets limit new tools; the regulator expects evidence.
+
+Four engineers cannot run a large tool estate, so automation and simple designs are preferred. Ingestion cannot stop, which makes staged rollouts essential. Limited budget favours open tools and built-in cloud features. The regulator's expectation of evidence means every control needs a record showing it works. Elena writes the constraints at the top of her design note, so reviewers can test every proposal against them and reject designs that the small team could not operate.
 
 ### 20.5 Project goals
 
 No long-lived credentials in workloads; default-deny networking in all production namespaces; Restricted pod security everywhere except documented exceptions; signed images only; measurable detection within objectives.
 
+Each goal tackles a cause of past problems: long-lived credentials enabled the key leak; flat networking let any pod reach the database; unrestricted pods could gain broad host access; unsigned images could be swapped. Documented exceptions keep the goals realistic for workloads like node agents. Each goal has an owner on Rosa's team and a target date agreed at the start of Elena's project.
+
 ### 20.6 Success measures
 
 Each goal has a measure, such as percentage of namespaces with default-deny, tracked monthly.
+
+Measures turn goals into progress that managers can track. A rising percentage of namespaces with default-deny shows the rollout is moving. Monthly tracking reveals stalls early. Each measure is defined precisely, such as which namespaces count as production, so different people compute the same number. Elena draws a simple monthly chart for each measure and shares it with Rosa's team and Solent's managers. Where a measure stalls, the chart prompts a question about the cause, such as an exception waiting for approval, rather than blame.
 
 ### Mapping to CCM
 
