@@ -322,7 +322,7 @@ You will (1) explain core security concepts for applications; (2) describe the O
 
 Confidentiality protects student details and order history; integrity protects prices, orders and the code itself; availability keeps ordering working at lunchtime.
 
-Lena applies the three properties to each part of her diagram. The leaked token threatened confidentiality of payment access and could have led to fraudulent charges. The hash mismatch protected the integrity of the code. A lunchtime outage would harm availability most, since that is when nearly all orders are placed. Ranking the properties for each part helps the society choose where to spend effort first.
+Lena applies the three properties to each part of her diagram. The leaked token was a confidentiality failure; it was a test key, but a live key leaked the same way could have allowed fraudulent charges. The hash mismatch protected the integrity of the code. A lunchtime outage would harm availability most, since that is when nearly all orders are placed. Ranking the properties for each part helps the society choose where to spend effort first.
 
 ### 5.2 OWASP Top 10:2021
 
@@ -968,9 +968,13 @@ You will (1) implement authentication and sessions securely; (2) generate unpred
 
 Students sign in through the university's single sign-on service, so CampusEats never handles their passwords. Staff accounts require multi-factor authentication. OWASP Top 10:2021 A07 covers identification and authentication failures.
 
+Using single sign-on means password resets, lockouts and account removal for students who leave are handled centrally by the university. CampusEats receives only a signed statement of who the student is, which it verifies before creating a session. Staff accounts carry more power, such as changing prices and issuing refunds, so the extra factor is worth the small inconvenience at each sign-in.
+
 ### 13.2 Sessions
 
 After sign-in, CampusEats creates a session token stored in a cookie. Tokens must be long and random so they cannot be guessed; Python's secrets module provides suitable randomness.
+
+A token built from predictable values, such as a student number and a timestamp, could be guessed by anyone who knew the pattern. The server stores the token with its creation time and last use, and the cookie settings from the earlier chapter on networks keep it out of page scripts and unencrypted connections. A new token is issued at each sign-in.
 
 ### Lab — Lab — tokens and expiry
 
@@ -998,17 +1002,25 @@ distinct: True
 
 Each token is 43 characters (32 random bytes encoded), and the two tokens are distinct. With a 30-minute limit and the clock at minute 40, the token created at minute 0 (age 40) is expired and the token created at minute 25 (age 15) is valid.
 
+Lena adds both cases to the tests, along with a token exactly at the limit, since boundary values are where off-by-one mistakes usually hide. The lab uses a fixed clock so that the result is the same on every run. Both checks run in the build.
+
 ### 13.4 Expiry and logout
 
 Sessions expire after 30 minutes of inactivity and are deleted on logout on the server, not just in the browser.
+
+Deleting the session on the server matters because a copied cookie would otherwise keep working after the student pressed logout. Lena tests this by signing out in one browser and replaying the old cookie from another; the server refuses it. Staff sessions use a shorter limit, since a staff account left open on a café till could be misused by anyone passing by.
 
 ### 13.5 Roles
 
 Roles are student, volunteer, staff and admin, each with a defined set of actions from Lena's table in chapter 1. Checks happen on the server for every request.
 
+Lena's tests sign in with each role and try every action, comparing the result with the table. Hiding a button in the page is not a check, because a request can be sent without the button. A volunteer who calls the price-change address directly must be refused by the server, and the refusal is logged so repeated attempts are visible.
+
 ### 13.6 Least privilege
 
 Admin is limited to two people; actions are logged.
+
+Every admin action, such as changing a role or a café's details, is recorded with who did it and when, and the log is reviewed monthly by someone other than the two admins. Most society members work as staff or volunteers and never need admin rights. When an admin leaves the society, the role passes to a named successor the same week, and the departing account is downgraded. The handover is noted in the log.
 
 ### Access reviews
 
@@ -1054,25 +1066,37 @@ You will (1) identify personal data in an application; (2) apply data protection
 
 CampusEats holds names, university emails, order histories and optional dietary preferences. Dietary information can reveal health or religious beliefs, making it sensitive.
 
+Lena lists each data item with its purpose and who can see it. University email is needed to link orders to a student; dietary preferences help cafés prepare suitable meals but are not needed to place an order, which is why they are optional. Order history is kept so students can reorder and cafés can plan stock, and Lena sets a retention period for it rather than keeping it indefinitely.
+
 ### 14.2 Principles
 
 Collect only what is needed, use it only for stated purposes, keep it accurate, delete it when no longer needed and protect it. These principles appear in data protection laws in many countries.
+
+Lena turns each principle into a question for every new feature: what data does it need, for what purpose, for how long, and who can see it? A proposed feature to show students their friends' orders is dropped because it would use order history for a purpose students never agreed to.
 
 ### 14.3 Privacy by design
 
 Dietary preferences are optional and stored separately with tighter access. Analytics use counts, not individual histories.
 
+Café staff see dietary notes only for orders they are preparing, not a student's full profile. Weekly reports show how many vegetarian or gluten-free meals were ordered, which helps planning without revealing anyone's choices. Lena checks that the analytics tables contain no identifiers that could link counts back to individual students, and that access to the separate dietary table is logged. Tighter access is checked each term.
+
 ### 14.4 Requests
 
 Students can download or delete their data from their profile page. Deletion removes personal details but keeps anonymised order counts for café planning.
+
+Lena tests both features with a synthetic account and confirms that deleted details are gone from the live database. Backups still hold old copies for their retention period, so the privacy notice explains this and the restore procedure removes deleted accounts before restored data goes live. Requests are logged so the society can show it acted on them.
 
 ### 14.5 Supply chain and privacy
 
 Third-party scripts in the browser can see page content. CampusEats removed an analytics script that collected more than needed, replacing it with server-side counts.
 
+The removed script also loaded further code from its provider's servers, which CampusEats could not review, so removing it reduced both privacy and supply-chain risk. The server-side counts give the society the figures it needed, such as busy times, without sending student data to another company. Lena now asks of every new third-party script what page data it can see and where it sends it.
+
 ### 14.6 Breach response
 
 If personal data might be exposed, the university's data protection officer must be informed quickly.
+
+Lena's incident notes for the token leak include a short check of whether any personal data was involved; it was not, but the check is recorded. The society keeps the officer's contact details in its runbook, with a list of what to report: what data, how many students, when it happened and what has been done. Notifying early, even with incomplete facts, is better than waiting for certainty.
 
 ### Retention schedule
 
@@ -1122,25 +1146,37 @@ You will (1) choose measures that show whether security is improving; (2) collec
 
 "We ran the scanner 400 times" is activity. "Secrets reaching the public repository fell from 2 to 0 per term" is an outcome. Outcomes show whether risk changed.
 
+Activity measures are still useful for checking that a control is running, but they cannot show that it works. Lena keeps both kinds and labels them, so nobody mistakes a busy scanner for a safer project. Lena keeps both kinds of measure but labels them clearly, so nobody mistakes a busy scanner for a safer project.
+
 ### 15.2 Measures for CampusEats
 
 Time to fix high-severity advisories, number of secrets found after push (should be zero), share of dependencies with an owner, and failed integrity checks investigated.
+
+Each measure has a definition, a source and an owner. For example, time to fix runs from the advisory's publication to the deployed update, and the dependency owners come from the list started in the first chapter. Lena keeps the list short so the society can review it in a few minutes each month. Each has a target.
 
 ### 15.3 Collecting evidence
 
 Measures come from tools automatically where possible: CI logs, scanner results, advisory tracker. Manual counts are checked by a second person.
 
+Automatic collection avoids both effort and the temptation to round numbers in a favourable direction. Where a measure must be counted by hand, such as whether an integrity failure was investigated, the counter records how each case was judged, so the second person can check the decision rather than just the arithmetic. Lena keeps the raw logs for a year so any figure can be rechecked later.
+
 ### 15.4 Baselines
 
 Before changes, Lena records a baseline: last term, 2 secrets reached the public repository and median advisory fix time was 21 days.
+
+Without a baseline, an improvement cannot be shown and a decline cannot be noticed. Lena also records how each baseline figure was obtained, since a different method next term would make the comparison meaningless. Small numbers like two secrets per term vary by chance, so she plans to compare over several terms before drawing firm conclusions. She stores the baseline with the method used.
 
 ### 15.5 Presenting
 
 A one-page summary per term with trends and short explanations.
 
+The summary opens with the outcome measures, then the activity measures, and then any changes in how figures were collected. Each trend has a sentence explaining it: for example, a rise in advisories fixed may reflect more advisories published rather than better work. The society's committee reads it at the start of each term, and Grace receives a copy so that the security office can see progress across student projects.
+
 ### 15.6 Honesty
 
 If a measure gets worse, it is reported with a reason and plan.
+
+A summary that only ever improves is not believable. When the median fix time rose one term because a major upgrade was delayed, Lena reported it with the cause and the plan to finish the upgrade. Readers trusted the good figures more because the bad one was shown, and the committee agreed extra time for the upgrade work. Grace later used the same summary as an example for other student projects at the university.
 
 ### Using measures to decide
 
@@ -1190,29 +1226,43 @@ You will (1) design layered defences for a web application; (2) place trust boun
 
 CampusEats' defences are layered: the hosting platform's firewall and rate limits at the edge; validation, encoding and authorisation in the application; least-privilege database accounts and encryption for data; and a pipeline that checks code and dependencies before anything is deployed. If one layer fails, others still protect students.
 
+Lena maps each layer to the failures it covers, so the society can see where a single mistake would be caught and where it would not. For example, an encoding mistake in a review page would still meet the content policy in the browser.
+
 ### 16.2 Trust boundaries
 
 Boundaries separate the browser from the server, the server from the database, CampusEats from the payment provider, and the build from the internet. At each boundary, data is checked: requests are validated, payment callbacks are verified (chapter 17), downloaded packages are hash-checked (chapter 22).
+
+Lena marks each boundary on her diagram with the check that happens there. A boundary with no check is a gap to fix or to record as an accepted risk. Lena reviews the boundaries with the society whenever a new external service is added.
 
 ### 16.3 Environments
 
 Development, test and production are separate, with separate secrets. The leaked token was a test key; because test and production were separate, the leak could not touch real payments. Lena records this as evidence that separation limited harm.
 
+Test data contains no real student details, and production secrets are available only to the deployed service and the two administrators. Separation costs some convenience, since bugs sometimes appear only in production, but the leak showed its value clearly. The decision is now written up as a record.
+
 ### 16.4 Secrets architecture
 
 Secrets live in the platform's secret store, scoped per environment, rotated each term and when people leave.
+
+Rotation each term limits how long a leaked secret stays useful, and rotation when people leave removes access they no longer need. Lena checks that rotating a key needs no code change, only an update in the store and a restart. Each secret has a named owner and a record of when it was last rotated, which the society reviews at the start of term.
 
 ### 16.5 Third-party scripts
 
 Only two third-party browser scripts remain, both loaded from CampusEats' own domain at pinned versions with integrity hashes.
 
+Hosting them on CampusEats' own domain means a compromise of the original provider cannot change what students receive, and the integrity hash makes the browser refuse a modified file. Updating either script is a deliberate change: the new version is reviewed, its hash recorded and the change tested before deployment. Lena removed a third script during the privacy review. Each pinned version is recorded.
+
 ### 16.6 Decision records
 
 Each architecture choice is recorded briefly: context, options, decision, consequences. When new members ask "why is it like this?", the record answers.
 
+Records are a page or less and stored with the code. Lena writes one for keeping test and production separate, citing the token leak, so the reason is not lost when the members who lived through it graduate. Records are not rewritten later; a changed decision gets a new record that refers to the old one. New members read them first.
+
 ### 16.7 Reviews
 
 Grace reviews architecture changes that cross a trust boundary, such as adding a new external service.
+
+She asks for a short description of the change, an updated diagram and the decision record. Changes inside a boundary, such as a new page using existing data, are reviewed by other society members using the code review checklist. This keeps Grace's time for the changes most likely to introduce new risks and makes reviews predictable for the developers. Grace's reviews take about a week.
 
 ### Monitoring
 
@@ -1254,9 +1304,13 @@ You will (1) distinguish hashing, message authentication and encryption; (2) ver
 
 A hash such as SHA-256 creates a fingerprint of data; anyone can compute it. A message authentication code (MAC) such as HMAC-SHA256 uses a shared secret, so only holders of the secret can create a valid tag. Encryption hides content. Integrity and secrecy are different goals.
 
+Lena uses each for its purpose: hashes for package integrity, MACs for messages from the payment provider and encryption for data at rest and in transit. Confusing them causes real mistakes: a hash alone cannot prove who sent a message, because anyone can compute it.
+
 ### 17.2 The payment callback
 
 Chapter 2 found that CampusEats did not verify the payment provider's "paid" messages. Without verification, anyone who could send a request to the callback address could mark an order as paid. The provider signs each message with HMAC-SHA256 using a shared secret; CampusEats must check it.
+
+Lena's diagram trace in chapter 2 flagged this as an unchecked message crossing a trust boundary. The fix is small in code but closes a direct path to free food. Lena writes the check before any other payment change, since every order depends on it.
 
 ### Lab — Lab — verifying a webhook
 
@@ -1283,17 +1337,25 @@ altered amount  reject: signature mismatch
 
 The original message is accepted because its signature matches. When the amount is changed from 8.50 to 0.50, the signature no longer matches and the message is rejected. The lab uses hmac.compare_digest, which compares in constant time and avoids leaking information through timing.
 
+Lena adds tests for an unsigned message and a message with a signature from the wrong secret; both are rejected, and each rejection is logged with the time and source address. The lab also explains why constant time matters.
+
 ### 17.4 Key management
 
 The shared secret is stored in the secret store, separate for test and production, and rotated when people with access leave.
+
+Only the payment module reads it at runtime. If the secret were exposed, rotating it in the provider's dashboard and the store together would be the first step, and Lena writes that procedure into the runbook so nobody has to work it out under pressure. A rotation is tested each term, so the procedure is known to work. The procedure is short.
 
 ### 17.5 Do not invent crypto
 
 Use standard algorithms and well-maintained libraries; home-made schemes fail in subtle ways. OWASP Top 10:2021 A02 covers cryptographic failures.
 
+The payment callback check uses the standard library's HMAC functions rather than a custom comparison. When the society considered encrypting dietary preferences, Lena recommended the database's built-in encryption over a home-made scheme a member had written. The safe choice is usually the boring one, and its weaknesses, if any, are found and fixed by others. Lena adds this to the review checklist so that any new cryptographic code is flagged early.
+
 ### 17.6 Replay
 
 A valid message could be sent twice. The provider includes a unique event ID; CampusEats stores processed IDs and ignores repeats.
+
+Replay matters because a valid signature proves only that the provider sent the message at some point, not that it is new. Lena tests by sending the same signed message twice; the second is ignored and logged. Stored IDs are kept long enough to cover the provider's retry period, after which they can be removed safely. Lena records the retention period.
 
 ### Worked example
 
@@ -1331,29 +1393,43 @@ You will (1) form a research question from practice; (2) choose between survey, 
 
 After the token leak, Lena asks: "Do pre-commit secret hooks reduce secrets pushed by student developers?"
 
+The question comes from a real problem, can be answered within a year, and uses data the society already collects. Lena writes it down with what she expects to find and why, so that her results can later be compared with her expectations honestly rather than reshaped to fit them. Grace agrees that the question is narrow enough for a single student project and that the answer would change the society's practice either way.
+
 ### 18.2 Choosing a method
 
 A survey could ask developers about their habits; an experiment could compare groups with and without the hook; a case study could examine CampusEats in depth. Lena chooses a small comparison across two terms plus a short survey.
+
+The comparison gives numbers; the survey explains them. A full experiment with randomly assigned groups would be stronger but is not practical in a small society where everyone works in the same repository. Lena records why the other designs were not chosen.
 
 ### 18.3 Ethics
 
 Participants consent; no individual results are reported; data are anonymised. The university ethics process approves the plan.
 
+Developers can withdraw at any time without consequence, and survey answers are collected by someone outside the society so that nobody feels pressured. Lena stores the data on university systems and deletes it at the end of the study. Because the topic touches on mistakes people have made, she takes care that no report could identify who pushed a secret. The plan was approved in four weeks.
+
 ### 18.4 Data
 
 Counts of secrets caught by the server-side scanner per term, before and after the hook, and survey answers about whether the hook was ever bypassed.
+
+Counts come from the scanner logs, which existed before the study, so they are not influenced by it. Survey questions are tested on two volunteers first to check they are clear. Lena also records events that could affect the counts, such as the number of active developers each term, since more people writing code could raise detections regardless of the hook.
 
 ### 18.5 Analysis
 
 Counts are small, so Lena reports them directly and avoids percentages that look precise.
 
+With such small counts, a change from five to one could arise partly by chance. Lena states this plainly and compares the counts with the number of commits each term, which gives a rate that accounts for changes in activity. She avoids statistical tests that the data cannot support. Grace checks the analysis plan before Lena sees any data, so choices are not influenced by the results.
+
 ### 18.6 Results
 
 Server-side detections fell from 5 to 1 per term; 3 of 14 developers said they had bypassed the hook at least once, usually when it flagged a harmless string.
 
+The bypassed cases were not linked to the secrets that still reached the server, as far as the anonymised data could show. Lena reports the figures with the number of developers in each term and notes that the survey relied on memory. Lena also lists what the survey could not tell her, such as whether bypassing happened more often under deadline pressure.
+
 ### 18.7 Interpretation
 
 The hook helps, but false positives cause bypasses, so the precision work from chapter 12 matters.
+
+The study has limits: one society, two terms and small numbers. Lena recommends keeping the hook, improving its precision with an approved allow list and repeating the measurement next year. Her report suggests other student projects at Hollowbrook could try the same approach and compare results, which would give a stronger answer than a single small study can provide on its own. She shares the report with the society.
 
 ### Literature first
 
