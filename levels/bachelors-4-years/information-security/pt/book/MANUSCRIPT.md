@@ -1,7 +1,7 @@
 # Segurança da Informação: Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); curso 094, curso de bacharelado (4 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–10 de 40 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3; os capítulos 11–40 (EX031–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 40 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3 e 1 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 21–40 (EX061–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de bacharelado que aprendem como uma pequena organização financeira protege as informações dos seus associados por meio da governança, dos controles técnicos, das operações e da medição.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios revisam acessos sintéticos a aplicações em relação à situação no RH e ao cargo, medem achados sintéticos de vulnerabilidades em relação às metas de correção e geram hashes de senhas sintéticas com PBKDF2 com sal, conferindo-as contra uma pequena lista de senhas vazadas. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Anderson (2020), [doi:10.1002/9781119644682](https://doi.org/10.1002/97811196446
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
 
-Capítulos 11–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-11), até a chegada dos próximos lotes.
+Capítulos 21–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -455,11 +455,460 @@ Usar um acesso autorizado por curiosidade pessoal é uma quebra de confiança.
 
 - **EX030 — Grupo bloqueado.** Quem é afetado injustamente pelos bloqueios de logins do exterior? *Rubrica:* 3 = os associados no exterior;; 2 = correto;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-11"></a>
+
+## Capítulo 11 — Fundamentos da governança de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar o que é a governança de segurança; (2) descrever como os conselhos supervisionam a segurança; (3) relacionar a governança aos frameworks.
+
+### 11.1 O que significa governança
+
+No segundo ano, Aisha estuda a governança de segurança: como uma organização dirige e supervisiona sua segurança. A governança responde quem decide quanto risco é aceitável, quem presta contas e como os líderes sabem se a segurança está funcionando. O Dr. Carrow distingue a governança da gestão. O conselho define a direção e faz perguntas; os gerentes projetam e operam os controles. Aisha observa que, na Ashfield, o conselho aprova o apetite a risco e recebe relatórios trimestrais de segurança, enquanto o gerente de TI opera os controles do dia a dia e relata o progresso para cima. Ela desenha as duas coisas.
+
+### 11.2 O papel do conselho
+
+O conselho da Ashfield inclui voluntários eleitos pelos associados, poucos dos quais têm formação técnica. Aisha pondera do que eles precisam: um quadro claro dos principais riscos, se os controles estão funcionando e que decisões exigem a aprovação deles. Ela revisa um relatório sintético ao conselho cheio de contagens técnicas e sugere substituí-lo por cinco declarações de risco, cada uma com uma tendência e um responsável. O Dr. Carrow observa que uma boa governança depende de informações que os líderes consigam entender e usar para agir, e não do volume. O presidente do conselho recebe bem a mudança.
+
+### 11.3 Frameworks
+
+Aisha estuda o NIST Cybersecurity Framework 2.0, que acrescentou uma função Governar às funções Identificar, Proteger, Detectar, Responder e Recuperar. A função Governar abrange o contexto organizacional, a estratégia de gestão de riscos, os papéis, a política e a supervisão. Ela mapeia os arranjos atuais da Ashfield para esses resultados e descobre que os papéis e a política existem, mas que a gestão de riscos da cadeia de suprimentos é fraca. O Dr. Carrow explica que os frameworks ajudam as organizações a ver as lacunas de forma sistemática, mas que descrevem resultados, em vez de prescrever métodos exatos. Ela apresenta o mapeamento como uma tabela com uma linha por resultado e uma situação simples para cada um.
+
+### 11.4 Apetite a risco
+
+Uma declaração de apetite a risco diz quanto risco uma organização vai aceitar na busca dos seus objetivos. O conselho da Ashfield declara que aceitará um risco baixo para a confidencialidade dos dados dos associados, mas um risco moderado de breves interrupções do serviço fora do horário comercial. Aisha observa que isso orienta as decisões: gastar para evitar a exposição de dados se justifica mais facilmente do que gastar para eliminar breves interrupções noturnas. Ela aprende que as declarações de apetite transformam valores vagos em orientações práticas que os gerentes podem aplicar. Aisha usa a declaração para explicar duas decisões de gasto passadas ao seu grupo de seminário.
+
+### Exemplo resolvido
+
+Aisha separa a governança da gestão, simplifica o relatório ao conselho em cinco declarações de risco, mapeia a Ashfield para os resultados da função Governar do CSF 2.0 e aplica o apetite a risco aos gastos.
+
+> **Caso sintético.** Os arranjos do conselho são sintéticos.
+
+### Erros e limites
+
+Os relatórios ao conselho cheios de contagens técnicas raramente apoiam as decisões.
+
+### Exercícios
+
+- **EX031 — O que o conselho aprova.** O que o conselho da Ashfield aprova? *Rubrica:* 3 = o apetite a risco;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX032 — Lacuna em Governar.** Que resultado da função Governar é fraco na Ashfield? *Rubrica:* 3 = a gestão de riscos da cadeia de suprimentos;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX033 — Efeito do apetite.** Que gasto se justifica mais facilmente? *Rubrica:* 3 = evitar a exposição de dados;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Papéis e responsabilização
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir os principais papéis de segurança; (2) atribuir a responsabilização pelas informações e pelos controles; (3) segregar funções para reduzir fraudes e erros.
+
+### 12.1 Papéis principais
+
+Aisha lista os papéis de segurança na Ashfield. O conselho tem a responsabilização final. O diretor executivo garante os recursos. O gerente de TI lidera as operações de segurança, já que a Ashfield é pequena demais para ter um responsável dedicado à segurança. Os donos da informação, como o chefe de crédito, decidem como suas informações são protegidas. Todos os funcionários seguem as políticas e comunicam incidentes. O Dr. Carrow observa que as organizações pequenas muitas vezes acumulam papéis, o que é aceitável se as responsabilidades estiverem escritas e os conflitos forem administrados abertamente. Aisha escreve as principais atribuições de cada papel numa única frase para o manual dos funcionários.
+
+### 12.2 Responsabilização
+
+Responsabilização significa que uma pessoa nomeada responde por um resultado. Aisha descobre que vários controles da Ashfield não têm um dono nomeado: a revisão do firewall, as verificações de segurança dos fornecedores e os testes de backup. Cada um era tido como trabalho de outra pessoa. Ela redige uma tabela de responsabilidades listando cada controle, seu dono e a frequência com que é executado. O diretor executivo a aprova. Ela aprende que os controles sem dono tendem a parar sem que ninguém perceba, e é por isso que nomear os donos importa. Em um mês, os três controles foram executados pelo menos uma vez sob seus novos donos.
+
+### 12.3 Segregação de funções
+
+A segregação de funções divide as tarefas sensíveis para que nenhuma pessoa sozinha possa concluí-las. Na Ashfield, uma pessoa lança um pagamento e outra o aprova. Aisha descobre que o gerente de TI pode tanto criar contas de usuário quanto aprovar seus acessos, de modo que uma conta não autorizada poderia ser criada sem que ninguém mais soubesse. Ela recomenda que as aprovações de acesso venham dos donos da informação. O Dr. Carrow liga isso ao princípio da separação de privilégios de Saltzer e Schroeder. O chefe de crédito e o chefe de finanças concordam em aprovar os acessos das suas próprias equipes.
+
+### 12.4 Limites das organizações pequenas
+
+A segregação estrita é difícil em equipes pequenas. A Ashfield tem apenas dois funcionários de TI, então, quando um está de férias, o outro precisa fazer tudo. Aisha sugere controles compensatórios: registrar em log todas as ações de administrador e fazer o chefe de operações revisar o log semanalmente. Ela aprende que, quando a segregação é impossível, a detecção e a revisão podem substituí-la em parte, e que documentar esse meio-termo mostra que ela foi uma decisão deliberada, e não um descuido. O chefe de operações faz a primeira revisão semanal com Aisha observando e encontra todas as ações registradas explicadas por um chamado.
+
+### Exemplo resolvido
+
+Aisha lista os papéis, nomeia donos para os controles sem dono, descobre que uma mesma pessoa cria e aprova contas e propõe o registro em log e a revisão onde a segregação é impossível.
+
+> **Caso sintético.** Os papéis são sintéticos.
+
+### Erros e limites
+
+Os controles que ninguém possui tendem a parar sem que ninguém perceba.
+
+### Exercícios
+
+- **EX034 — Controles sem dono.** Cite um controle que não tinha dono. *Rubrica:* 3 = a revisão do firewall;; 2 = um;; 1 = nada;; 0 = nenhuma.
+
+- **EX035 — Conflito de acesso.** Que conflito o gerente de TI tem? *Rubrica:* 3 = cria e aprova contas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX036 — Controle compensatório.** O que compensa a segregação limitada? *Rubrica:* 3 = registro das ações de administrador com revisão semanal;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Políticas e normas
+
+### Objetivos de aprendizagem
+
+Você vai (1) distinguir políticas, normas e procedimentos; (2) escrever uma breve política de segurança; (3) relacionar a política da organização às normas internacionais.
+
+### 13.1 Tipos de documento
+
+Aisha aprende a distinguir os tipos de documento. Uma política declara, em alto nível, o que a organização pretende e exige, como em todo acesso aos dados dos associados precisa ser autorizado. Uma norma interna estabelece requisitos obrigatórios específicos, como em as senhas devem ter pelo menos catorze caracteres. Um procedimento descreve passo a passo como fazer algo. O Dr. Carrow explica que misturar esses tipos produz documentos detalhados demais para serem aprovados e vagos demais para serem seguidos, um problema comum nas organizações pequenas. Ela classifica os documentos da Ashfield nos três tipos.
+
+### 13.2 Escrevendo uma política
+
+Aisha redige uma política de controle de acesso para a Ashfield. Ela declara o propósito, o escopo, os princípios do menor privilégio e da necessidade de conhecer, os papéis responsáveis e como a conformidade é verificada. Ela a mantém em uma página para que os funcionários a leiam. O Dr. Carrow a revisa e pede que ela remova o detalhe técnico sobre o comprimento das senhas, que pertence a uma norma interna que pode ser atualizada sem a aprovação do conselho. A política final é curta e clara. O conselho aprova a política na sua reunião seguinte, sem alterações.
+
+### 13.3 Normas internacionais
+
+Aisha estuda como as organizações usam as normas ISO/IEC. A ISO/IEC 27001:2022 (no Brasil, ABNT NBR ISO/IEC 27001:2022) estabelece os requisitos de um sistema de gestão da segurança da informação, inclusive que a alta direção estabeleça uma política de segurança da informação. A ISO/IEC 27002:2022 dá orientações sobre os controles, inclusive as políticas específicas por tema, como o controle de acesso. A ISO/IEC 27000:2026 oferece a visão geral da família. Ela aprende que a Ashfield não precisa buscar a certificação para se beneficiar do uso dessas normas como orientação. Aisha prepara uma breve tabela mostrando que documentos da Ashfield correspondem a cada um dos principais temas de controle da ISO/IEC 27002 e anota onde a Ashfield ainda não tem nada, como a segurança de fornecedores.
+
+### 13.4 Mantendo as políticas vivas
+
+As políticas ficam desatualizadas. Aisha descobre que a política de uso aceitável da Ashfield se refere a aparelhos de fax e não menciona o armazenamento em nuvem. Ela recomenda uma revisão anual com donos nomeados e um registro de alterações. Ela também sugere um breve questionário no treinamento anual para conferir se os funcionários entendem os requisitos principais. Ela aprende que uma política que ninguém lê nem atualiza oferece pouca proteção, por mais bem escrita que tenha sido originalmente. O responsável pela conformidade assume o calendário de revisões e acrescenta a data de revisão de cada política à agenda do conselho.
+
+### Exemplo resolvido
+
+Aisha distingue política, norma interna e procedimento, escreve uma política de acesso de uma página, a relaciona com a ISO/IEC 27001 e a 27002 e recomenda uma revisão anual.
+
+> **Caso sintético.** As políticas são sintéticas; as normas são parafraseadas.
+
+### Erros e limites
+
+Colocar detalhes técnicos nas políticas obriga o conselho a aprovar mudanças rotineiras.
+
+### Exercícios
+
+- **EX037 — Exemplo de norma interna.** Qual é um exemplo de norma interna? *Rubrica:* 3 = senhas com pelo menos catorze caracteres;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX038 — Detalhe removido.** Que detalhe é removido da política? *Rubrica:* 3 = o comprimento das senhas;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX039 — Política desatualizada.** O que a política de uso aceitável omitia? *Rubrica:* 3 = o armazenamento em nuvem;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Avaliação de riscos
+
+### Objetivos de aprendizagem
+
+Você vai (1) identificar ameaças e vulnerabilidades; (2) estimar a probabilidade e o impacto; (3) produzir um registro de riscos priorizado.
+
+### 14.1 Componentes do risco
+
+Aisha aprende que o risco combina a probabilidade de um evento danoso com o seu impacto. A NIST SP 800-30 Revisão 1 descreve a avaliação de riscos como a identificação das fontes e dos eventos de ameaça, das vulnerabilidades, da probabilidade e do impacto. Ela identifica ameaças à Ashfield, como criminosos que enviam pedidos de pagamento falsos, e vulnerabilidades, como funcionários que não conseguem verificar os pedidos com facilidade. O Dr. Carrow explica que o risco só existe quando uma ameaça consegue explorar uma vulnerabilidade para causar dano a algo de valor. Ela escreve um exemplo de ameaça e de vulnerabilidade para cada um dos principais sistemas da Ashfield.
+
+### 14.2 Estimando
+
+Aisha usa uma escala simples de baixo, médio e alto para a probabilidade e o impacto. Os pedidos de pagamento falsos são prováveis, porque os fraudadores miram as pequenas organizações financeiras, e o impacto é alto, porque se poderia perder dinheiro. Um incêndio na sede é improvável, mas de alto impacto. Ela registra o raciocínio de cada classificação para que outras pessoas possam contestá-lo. Ela aprende que as classificações são julgamentos, e que escrever o raciocínio as torna revisáveis. Seu grupo de seminário contesta duas classificações, e ela muda uma delas depois de ouvir o raciocínio dos colegas.
+
+### 14.3 O registro
+
+Aisha monta para a Ashfield um registro de riscos com dez entradas, cada uma com descrição, dono, probabilidade, impacto, controles atuais e ações planejadas. Ela o ordena pela classificação combinada. Os pedidos de pagamento falsos, o ransomware e o uso indevido dos dados dos associados pela equipe ficam no topo. O gerente de TI e o diretor executivo revisam o registro e definem os donos. O Dr. Carrow observa que um registro só é útil se os donos agirem e se ele for atualizado quando as circunstâncias mudarem. O registro é guardado numa pasta compartilhada, e o gerente de TI acrescenta uma revisão dele a cada relatório trimestral ao conselho.
+
+### 14.4 Tratando os riscos
+
+Para cada risco, a Ashfield escolhe um tratamento: reduzi-lo com controles, transferi-lo por meio de seguros ou contratos, evitá-lo interrompendo uma atividade ou aceitá-lo dentro do apetite. Aisha recomenda reduzir o risco de pagamentos falsos exigindo a verificação por retorno de ligação para números conhecidos. Ela observa que o seguro cibernético transfere parte da perda financeira, mas não o dano à reputação. Ela aprende que as escolhas de tratamento devem ser registradas com seus motivos e aprovadas pelo dono do risco. O diretor executivo aprova a regra do retorno de ligação, e a equipe de finanças recebe uma lista impressa dos números de telefone verificados dos fornecedores.
+
+### Exemplo resolvido
+
+Aisha identifica ameaças e vulnerabilidades, classifica a probabilidade e o impacto com seus motivos, monta um registro de dez entradas e escolhe tratamentos, entre eles a verificação por retorno de ligação.
+
+> **Caso sintético.** O registro é sintético.
+
+### Erros e limites
+
+O seguro transfere parte da perda financeira, mas não o dano à reputação.
+
+### Exercícios
+
+- **EX040 — Fonte da avaliação.** Que publicação orienta a avaliação de riscos? *Rubrica:* 3 = NIST SP 800-30 Revisão 1;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+
+- **EX041 — Principais riscos.** Cite um dos três principais riscos. *Rubrica:* 3 = pedidos de pagamento falsos;; 2 = um;; 1 = nada;; 0 = nenhuma.
+
+- **EX042 — Tratamento dos pagamentos.** Como o risco de pagamentos falsos é reduzido? *Rubrica:* 3 = verificação por retorno de ligação para números conhecidos;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Gestão de ativos
+
+### Objetivos de aprendizagem
+
+Você vai (1) montar um inventário de ativos de informação; (2) classificar os ativos pela sensibilidade; (3) manter o inventário atualizado.
+
+### 15.1 Montando um inventário
+
+Aisha ajuda a Ashfield a montar um inventário de ativos de informação: hardware, software, repositórios de dados e serviços. Ela parte dos registros de compras e da planilha do gerente de TI e depois percorre cada agência. Ela encontra, num armário de uma agência, um dispositivo de armazenamento em rede esquecido, com documentos digitalizados antigos. O Dr. Carrow observa que os inventários muitas vezes deixam passar dispositivos assim, e que percorrer fisicamente os locais ainda encontra coisas que os registros não mostram, sobretudo nas organizações pequenas. Seu inventário final lista o hardware, o software, os repositórios de dados e os serviços externos, com uma linha por ativo e sua localização.
+
+### 15.2 Classificação
+
+Aisha propõe um esquema de classificação simples: público, interno, confidencial e restrito. Os documentos de identidade dos associados e os dados de cartões de pagamento são restritos; os registros de empréstimos são confidenciais; os boletins para os funcionários são internos; o horário de funcionamento das agências é público. Cada classe tem regras de tratamento, como a cifração dos dados restritos nos notebooks. Ela mantém o esquema em quatro níveis para que os funcionários consigam lembrá-lo. O Dr. Carrow observa que os esquemas complexos muitas vezes são ignorados na prática. Ela imprime um guia de uma página com exemplos de cada classe e as regras de tratamento que se aplicam.
+
+### 15.3 Donos e tratamento
+
+Cada ativo do inventário recebe um dono e uma classificação. O dispositivo de armazenamento esquecido é atribuído ao chefe de operações, que decide que os documentos devem ser transferidos para o sistema central e o dispositivo, apagado com segurança. Aisha registra a decisão. Ela aprende que o inventário, a responsabilidade e a classificação, juntos, permitem aplicar os controles certos, porque ninguém consegue proteger um ativo adequadamente sem saber o que ele contém. O apagamento é feito por um fornecedor certificado, que entrega um certificado para o registro.
+
+### 15.4 Mantendo-o atualizado
+
+Aisha recomenda que as novas compras sejam acrescentadas ao inventário antes do uso e que os descartes sejam registrados com evidências da destruição dos dados. Ela sugere uma conferência semestral comparando o inventário com os dispositivos vistos na rede. Ela aprende que um inventário se deteriora rapidamente sem atualizações de rotina, e que ligá-lo aos processos de compra e de descarte o mantém preciso com pouco esforço extra. O gerente de TI concorda em acrescentar uma etapa de inventário ao formulário de compras, para que nada novo chegue à rede sem antes ser registrado.
+
+### Exemplo resolvido
+
+Aisha monta um inventário que encontra um dispositivo de armazenamento esquecido, propõe quatro níveis de classificação, atribui donos e liga o inventário às compras e aos descartes.
+
+> **Caso sintético.** Os ativos são sintéticos.
+
+### Erros e limites
+
+Os esquemas de classificação complexos muitas vezes são ignorados.
+
+### Exercícios
+
+- **EX043 — Dispositivo esquecido.** Que ativo esquecido Aisha encontra? *Rubrica:* 3 = um dispositivo de armazenamento em rede num armário;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX044 — Classe restrita.** Que dados são restritos? *Rubrica:* 3 = documentos de identidade e dados de cartões de pagamento;; 2 = correto;; 1 = outros;; 0 = nenhuma.
+
+- **EX045 — Manutenção do inventário.** Como o inventário é mantido atualizado? *Rubrica:* 3 = ligação às compras e aos descartes, conferência semestral;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Controle de acesso
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar o menor privilégio e a necessidade de conhecer; (2) projetar o acesso baseado em papéis; (3) gerenciar admissões, mudanças de função e desligamentos.
+
+### 16.1 Princípios
+
+Aisha aprende dois princípios do controle de acesso. O menor privilégio significa que cada pessoa ou programa tem apenas o acesso necessário para sua tarefa. A necessidade de conhecer significa que o acesso à informação fica limitado a quem precisa dela para o seu trabalho. Saltzer e Schroeder incluíram o menor privilégio entre seus princípios de projeto de 1975. Na Ashfield, os caixas precisam ver os saldos dos associados, mas não aprovar empréstimos; os agentes de crédito precisam dos registros de empréstimos, mas não dos lançamentos contábeis. Ela escreve um breve exemplo para cada papel, mostrando o que ele pode e o que não pode ver no sistema central.
+
+### 16.2 Acesso baseado em papéis
+
+Aisha projeta papéis para a Ashfield: caixa, agente de crédito, finanças e TI. Cada papel tem um conjunto definido de permissões nas aplicações. Os novos funcionários recebem as permissões do seu papel, em vez de copiar as de um colega, o que muitas vezes traz direitos extras. Ela documenta as permissões de cada papel numa tabela aprovada pelos donos da informação. O Dr. Carrow observa que os papéis tornam o acesso mais fácil de revisar, porque os revisores podem comparar as pessoas com seu papel, em vez de julgar cada permissão individualmente. Os donos da informação assinam a tabela, e a TI a usa para cada nova conta.
+
+### 16.3 Admissões, mudanças de função e desligamentos
+
+O acesso muda quando as pessoas entram, mudam de função ou saem. Aisha mapeia o processo da Ashfield. As admissões são configuradas pela TI depois de um pedido dos recursos humanos. Quem muda de função muitas vezes mantém o acesso antigo, porque ninguém o remove. As contas de quem sai são desativadas quando a TI é avisada, o que às vezes acontece dias depois. Ela recomenda que os recursos humanos disparem os três eventos automaticamente e que o acesso antigo de quem muda de função seja removido por padrão. Os recursos humanos concordam em enviar um aviso à TI no mesmo dia para cada evento. Aisha redige o modelo do aviso.
+
+### 16.4 Acesso privilegiado
+
+As contas de administrador podem alterar os sistemas e acessar todos os dados. Aisha recomenda contas de administrador separadas, usadas apenas para a administração, protegidas por autenticação multifator e registradas em log. O trabalho diário usa contas normais. Ela descobre que uma única conta de administrador compartilhada é usada tanto pelos funcionários de TI quanto por um fornecedor. Ela recomenda contas individuais, para que as ações possam ser rastreadas. O Dr. Carrow observa que as contas privilegiadas são o principal alvo dos atacantes depois da entrada inicial. O fornecedor recebe sua própria conta nomeada, que só é habilitada quando ele tem um pedido de suporte aprovado em aberto.
+
+### Exemplo resolvido
+
+Aisha aplica o menor privilégio e a necessidade de conhecer, projeta quatro papéis, mapeia as lacunas de admissão, mudança de função e desligamento e separa as contas privilegiadas.
+
+> **Caso sintético.** Os papéis são sintéticos.
+
+### Erros e limites
+
+Copiar o acesso de um colega muitas vezes concede direitos desnecessários.
+
+### Exercícios
+
+- **EX046 — Acesso dos caixas.** De que os caixas precisam? *Rubrica:* 3 = ver os saldos, não aprovar empréstimos;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX047 — Problema da mudança de função.** O que acontece com o acesso antigo de quem muda de função? *Rubrica:* 3 = muitas vezes é mantido;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX048 — Administrador compartilhado.** Quem compartilha a conta de administrador? *Rubrica:* 3 = os funcionários de TI e um fornecedor;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Autenticação
+
+### Objetivos de aprendizagem
+
+Você vai (1) comparar os fatores de autenticação; (2) explicar a autenticação multifator; (3) reconhecer os ataques à autenticação.
+
+### 17.1 Fatores
+
+A autenticação confirma que alguém é quem diz ser. Aisha aprende três tipos de fator: algo que você sabe, como uma senha; algo que você tem, como um celular ou uma chave física; e algo que você é, como uma impressão digital. Cada um tem fraquezas. As senhas podem ser adivinhadas ou roubadas; os celulares podem ser perdidos; as impressões digitais não podem ser trocadas se forem copiadas. O Dr. Carrow explica que combinar fatores de tipos diferentes torna os ataques muito mais difíceis. Ela lista que fatores a Ashfield já usa para os associados e para os funcionários.
+
+### 17.2 Autenticação multifator
+
+O internet banking da Ashfield usa senhas mais um código enviado por mensagem de texto. Aisha aprende que os códigos por mensagem de texto são melhores do que as senhas sozinhas, mas podem ser interceptados por meio da tomada do número de celular. Os códigos de aplicativo e as chaves físicas são mais fortes. Para o acesso remoto da equipe, ela recomenda códigos de aplicativo e, para os administradores de TI, chaves físicas. Ela observa que a conveniência dos associados importa, então as mudanças para eles exigem comunicação e apoio cuidadosos. Ela redige um folheto para os associados explicando por que os códigos de aplicativo são mais seguros, e a equipe de marketing concorda em incluí-lo nos extratos anuais.
+
+### 17.3 Ataques
+
+Aisha estuda os ataques à autenticação. O phishing engana as pessoas para que digitem suas credenciais em sites falsos. O credential stuffing testa nomes de usuário e senhas vazados de outros serviços. A adivinhação de senhas testa senhas comuns contra muitas contas. O bombardeio de notificações envia repetidos pedidos de aprovação, na esperança de que um usuário cansado aceite um deles. Ela aprende que a autenticação multifator impede muitos desses ataques, mas que métodos resistentes a phishing, como as chaves físicas, são necessários contra os atacantes mais capazes. Ela escreve um breve resumo de cada ataque para o programa de conscientização, em linguagem simples e com um exemplo de mensagem que os funcionários poderiam ver.
+
+### 17.4 Recuperação de contas
+
+Os atacantes muitas vezes miram a recuperação da conta, em vez do login. Se um associado consegue redefinir uma senha respondendo a perguntas fáceis de descobrir, os controles fortes de login são contornados. Aisha revisa o processo sintético de recuperação da Ashfield e descobre que a equipe das agências redefine senhas depois que os associados informam a data de nascimento e o endereço, informações muitas vezes disponíveis publicamente. Ela recomenda documentos de identidade na agência ou a verificação pelo telefone cadastrado. O Dr. Carrow observa que a recuperação costuma ser o ponto mais fraco. Os gerentes das agências concordam com a mudança depois de um breve teste.
+
+### Exemplo resolvido
+
+Aisha compara os tipos de fator, recomenda códigos de aplicativo e chaves físicas, estuda o phishing, o credential stuffing e o bombardeio de notificações e fortalece a fraca recuperação de senhas dos associados.
+
+> **Caso sintético.** Os processos são sintéticos.
+
+### Erros e limites
+
+Os controles fortes de login são contornados se a recuperação da conta for fraca.
+
+### Exercícios
+
+- **EX049 — Fraqueza da impressão digital.** Qual é a fraqueza das impressões digitais? *Rubrica:* 3 = não podem ser trocadas se forem copiadas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX050 — Risco do código por mensagem.** Como os códigos por mensagem de texto podem ser roubados? *Rubrica:* 3 = tomada do número de celular;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX051 — Fraqueza da recuperação.** Que verificação fraca de recuperação as agências usavam? *Rubrica:* 3 = data de nascimento e endereço;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Revisão de acessos
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir uma revisão de acessos contra registros oficiais; (2) encontrar desligados e direitos em excesso; (3) relatar e corrigir os achados da revisão.
+
+### 18.1 O propósito das revisões
+
+O acesso se desvia com o tempo, à medida que as pessoas mudam de função, saem e recebem direitos temporários que nunca são removidos. As revisões periódicas de acessos comparam quem tem acesso com quem deveria ter. Aisha planeja uma revisão dos acessos ao sistema bancário central da Ashfield usando duas fontes oficiais: a lista dos recursos humanos, que mostra quem trabalha lá e em que cargo, e a tabela de papéis aprovada pelos donos da informação. O Dr. Carrow enfatiza que as revisões precisam usar dados oficiais, e não a memória de um gerente. Ela agenda a revisão para a primeira semana do trimestre.
+
+### 18.2 O laboratório de acessos
+
+O laboratório monta uma lista sintética de 140 contas da Ashfield, com cargos, situação funcional e acessos às aplicações. Ele encontra dez contas de pessoas que já saíram, mas que continuam ativas. Entre os funcionários atuais, treze têm acessos além do seu cargo, e seis deles têm acesso de administrador que não deveriam ter. Aisha observa que os desligados são o mais urgente, porque ninguém monitora sua atividade e seus antigos colegas não perceberiam um uso indevido. Ela compartilha as três listas com o gerente de TI e com os donos da informação em até uma hora, para que cada dono possa confirmar ou rejeitar os achados da sua área.
+
+### Laboratório — Revisando acessos sintéticos a aplicações em relação à situação no RH e ao cargo
+
+```python
+"""Review synthetic application access against HR status and role (stdlib only)."""
+import random
+random.seed(3)
+roles = {"teller": {"core"}, "lending": {"core", "loans"}, "finance": {"core", "ledger"}, "it": {"core", "admin"}}
+staff = []
+for i in range(140):
+    role = random.choice(["teller"] * 5 + ["lending"] * 3 + ["finance"] * 2 + ["it"])
+    left = random.random() < 0.1
+    apps = set(roles[role])
+    if random.random() < 0.08:
+        apps.add(random.choice(["loans", "ledger", "admin"]))
+    staff.append((f"s{i:03d}", role, left, apps))
+leavers_active = [s for s in staff if s[2]]
+excess = [s for s in staff if not s[2] and s[3] - roles[s[1]]]
+admin_excess = [s for s in excess if "admin" in s[3] - roles[s[1]]]
+print(f"accounts {len(staff)}; leavers still active {len(leavers_active)}")
+print(f"current staff with access beyond role {len(excess)}; of which admin {len(admin_excess)}")
+```
+
+Execute com `python3 lab_access.py`. Saída verificada:
+
+```text
+accounts 140; leavers still active 10
+current staff with access beyond role 13; of which admin 6
+```
+
+### 18.3 Investigando os achados
+
+Aisha confere as dez contas de desligados com o gerente de TI. A maioria pertence a funcionários que saíram durante um período movimentado, em que os formulários de desligamento atrasaram. Duas pertencem a temporários cujos contratos terminaram sem aviso à TI. Nos treze casos de excesso, os donos da informação confirmam que a maioria é resto de cargos anteriores, enquanto dois foram concedidos temporariamente para um projeto. Ela aprende que entender as causas aponta para correções de processo, e não apenas para correções de contas. Ela escreve cada causa ao lado da conta nas suas notas da revisão.
+
+### 18.4 Corrigindo e repetindo
+
+As dez contas de desligados são desativadas no mesmo dia. Os direitos em excesso são removidos depois da confirmação dos donos, exceto uma concessão temporária justificada, registrada com uma data de término. Aisha recomenda revisões trimestrais e o processo automatizado de desligamento proposto antes. O Dr. Carrow observa que a segunda revisão costuma encontrar muito menos problemas, o que, por si só, é evidência de que as mudanças de processo funcionaram. Ela planeja comparar os resultados depois da revisão seguinte. Ela registra cada correção com a data e a pessoa que a confirmou, para que a próxima revisão possa conferir que nada voltou desde então.
+
+### Exemplo resolvido
+
+Aisha revisa 140 contas sintéticas, encontra 10 desligados ativos e 13 funcionários com acesso em excesso (6 com administrador), rastreia as causas e define revisões trimestrais.
+
+> **Caso sintético.** As contas são sintéticas; as saídas vêm de lab_access.py.
+
+### Erros e limites
+
+As revisões baseadas na memória dos gerentes deixam passar desligados e direitos remanescentes.
+
+### Exercícios
+
+- **EX052 — Desligados ativos.** Quantos desligados ainda tinham contas ativas? *Rubrica:* 3 = dez;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX053 — Acesso em excesso.** Quantos funcionários atuais tinham acessos além do seu cargo? *Rubrica:* 3 = treze;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX054 — Administrador em excesso.** Quantos deles tinham acesso de administrador? *Rubrica:* 3 = seis;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Fundamentos de criptografia
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar a cifração simétrica e a de chave pública; (2) descrever os hashes e as assinaturas digitais; (3) reconhecer os erros criptográficos comuns.
+
+### 19.1 Cifração
+
+A cifração transforma dados legíveis numa forma ilegível usando uma chave. Aisha aprende que a cifração simétrica usa uma única chave compartilhada tanto para cifrar quanto para decifrar e é rápida, por isso protege os dados armazenados e o tráfego de rede. A cifração de chave pública usa um par: uma chave pública que qualquer pessoa pode usar para cifrar e uma chave privada, que só o dono tem, para decifrar. O Dr. Carrow explica que os sites usam as duas juntas: as chaves públicas para combinar uma chave compartilhada e depois a cifração simétrica, pela velocidade. Ela experimenta as duas no laboratório.
+
+### 19.2 Hashes
+
+Uma função de hash produz uma impressão digital de tamanho fixo dos dados. Mudar um único bit da entrada muda a impressão digital por completo, e é impraticável encontrar outra entrada com a mesma impressão digital. Aisha usa o módulo hashlib do Python para calcular as impressões digitais SHA-256 de arquivos sintéticos e confirma que uma pequena mudança produz um resultado diferente. Ela aprende que os hashes verificam a integridade, por exemplo, conferindo que um arquivo baixado é genuíno. Ela registra as duas impressões digitais no diário para mostrar a diferença e explica a ideia ao seu grupo de seminário com um exemplo impresso.
+
+### 19.3 Assinaturas digitais
+
+Uma assinatura digital usa uma chave privada para assinar os dados e a chave pública correspondente para verificá-los. Qualquer pessoa pode conferir a assinatura, mas só quem tem a chave poderia tê-la produzido. Aisha aprende que as atualizações de software são assinadas para que os computadores possam rejeitar versões adulteradas. Na Ashfield, os e-mails assinados poderiam ajudar os associados a reconhecer as mensagens genuínas. O Dr. Carrow observa que as assinaturas oferecem autenticidade e integridade, mas dependem de manter as chaves privadas em segurança. Ela confere que os computadores da Ashfield verificam as atualizações assinadas antes de instalá-las.
+
+### 19.4 Erros comuns
+
+Aisha estuda os erros comuns: inventar algoritmos novos, usar algoritmos ultrapassados, guardar as chaves ao lado dos dados cifrados e deixar de renovar os certificados. Ela descobre que os arquivos de backup da Ashfield são cifrados, mas que a chave está guardada na mesma pasta. Ela recomenda um armazenamento separado para as chaves. Ela aprende que a maioria das falhas criptográficas vem da forma como as chaves são tratadas e os sistemas configurados, e não da quebra da matemática. O gerente de TI transfere a chave para um repositório protegido separado na mesma semana. Aisha então confirma que uma restauração de teste ainda funciona com a chave recuperada do novo local.
+
+### Exemplo resolvido
+
+Aisha compara a cifração simétrica e a de chave pública, calcula impressões digitais SHA-256, explica as atualizações assinadas e encontra as chaves dos backups guardadas ao lado dos backups.
+
+> **Caso sintético.** Os exemplos são sintéticos.
+
+### Erros e limites
+
+Guardar as chaves ao lado dos dados cifrados anula a cifração.
+
+### Exercícios
+
+- **EX055 — Uso da cifração simétrica.** Por que a cifração simétrica é usada para grandes volumes de dados? *Rubrica:* 3 = ela é rápida;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX056 — Propriedade do hash.** O que acontece quando um bit da entrada muda? *Rubrica:* 3 = a impressão digital muda por completo;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX057 — Chave do backup.** Onde a chave do backup estava guardada? *Rubrica:* 3 = na mesma pasta que os backups;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Conscientização em segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar atividades de conscientização para a equipe; (2) estimular as comunicações; (3) medir os resultados da conscientização.
+
+### 20.1 Por que conscientização
+
+Muitos incidentes começam com uma pessoa: clicar num link de phishing, enviar dados ao destinatário errado ou compartilhar uma senha. Aisha aprende que os programas de conscientização ajudam os funcionários a reconhecer as ameaças e a reagir a elas. A ISO/IEC 27002:2022 inclui a conscientização, a educação e o treinamento entre os seus controles de pessoas. O Dr. Carrow adverte que a conscientização não serve para culpar os funcionários, e que os sistemas devem ser projetados de modo que um único erro não cause um dano grave. Ela lê exemplos de programas de conscientização que melhoraram as comunicações sem culpar quem clicou.
+
+### 20.2 Projetando as atividades
+
+Aisha projeta um programa para a Ashfield: um breve curso anual, dicas mensais de dois minutos por e-mail, exercícios simulados de phishing e conversas nas agências sobre tentativas reais de fraude, com os dados pessoais removidos. Ela adapta o conteúdo aos papéis. Os caixas aprendem a identificar a engenharia social por telefone; a equipe de finanças aprende sobre os pedidos de pagamento falsos. Ela mantém as sessões curtas, porque as longas sessões anuais são logo esquecidas. Ela testa a primeira dica mensal com cinco funcionários, que dizem que ela é clara e leva menos de dois minutos para ser lida. O gerente de TI aprova o programa para o ano seguinte.
+
+### 20.3 Estimulando as comunicações
+
+Comunicar importa mais do que nunca clicar. Aisha recomenda um botão de comunicação no e-mail e um número de telefone simples para a equipe das agências. Toda comunicação recebe um agradecimento, mesmo que a mensagem fosse inofensiva. Quando uma caixa comunica uma ligação suspeita, o gerente de TI descobre que várias agências receberam a mesma ligação. O Dr. Carrow explica que os funcionários que temem ser culpados param de comunicar, o que elimina uma das melhores fontes de detecção da organização. O gerente de TI bloqueia o número de quem ligou e avisa todas as agências em menos de uma hora.
+
+### 20.4 Medindo os resultados
+
+Aisha propõe medidas: a conclusão do treinamento, a parcela de e-mails simulados de phishing comunicados e o tempo até a primeira comunicação de e-mails suspeitos reais. Ela evita usar apenas as taxas de cliques, porque elas dependem da dificuldade de cada simulação. Ela planeja acompanhar as tendências ao longo de um ano. Ela aprende que os resultados da conscientização são mais bem medidos pelo comportamento, sobretudo pelas comunicações, do que apenas pela presença. Ela monta uma planilha simples para acompanhar as três medidas mensalmente, e o gerente de TI concorda em incluir os resultados no relatório trimestral ao conselho.
+
+### Exemplo resolvido
+
+Aisha projeta uma conscientização por papel, com sessões curtas, torna a comunicação fácil e agradecida, usa uma ligação comunicada para detectar uma campanha mais ampla e mede o comportamento.
+
+> **Caso sintético.** O programa é sintético.
+
+### Erros e limites
+
+Culpar os funcionários pelos cliques desestimula as comunicações que detectam os ataques.
+
+### Exercícios
+
+- **EX058 — Tema dos caixas.** O que os caixas aprendem a identificar? *Rubrica:* 3 = a engenharia social por telefone;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX059 — Valor da comunicação.** O que a comunicação de uma caixa revelou? *Rubrica:* 3 = várias agências receberam a mesma ligação;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX060 — Cautela com os cliques.** Por que evitar usar apenas as taxas de cliques? *Rubrica:* 3 = dependem da dificuldade da simulação;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX030 (as de EX031–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Aisha Rahimi, o Dr. Neil Carrow, a Pennick University, a Ashfield Credit Union e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060 (as de EX061–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Aisha Rahimi, o Dr. Neil Carrow, a Pennick University, a Ashfield Credit Union e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Aproximadamente 35.000 associados.
 
@@ -520,6 +969,66 @@ Respostas-modelo para EX001–EX030 (as de EX031–EX120 estão na edição em i
 **EX029.** Comunicá-la em particular pelo contato de segurança da organização.
 
 **EX030.** Os associados que estão viajando ou morando fora do país.
+
+**EX031.** O apetite a risco.
+
+**EX032.** A gestão de riscos da cadeia de suprimentos.
+
+**EX033.** Gastar para evitar a exposição dos dados dos associados.
+
+**EX034.** A revisão do firewall.
+
+**EX035.** Ele pode tanto criar contas quanto aprovar seus acessos.
+
+**EX036.** O registro em log das ações de administrador com uma revisão semanal.
+
+**EX037.** As senhas devem ter pelo menos catorze caracteres.
+
+**EX038.** O requisito de comprimento das senhas.
+
+**EX039.** Qualquer menção ao armazenamento em nuvem.
+
+**EX040.** NIST SP 800-30 Revisão 1.
+
+**EX041.** Os pedidos de pagamento falsos.
+
+**EX042.** A verificação por retorno de ligação para números conhecidos.
+
+**EX043.** Um dispositivo de armazenamento em rede num armário de uma agência.
+
+**EX044.** Os documentos de identidade dos associados e os dados de cartões de pagamento.
+
+**EX045.** Ligando-o às compras e aos descartes, com uma conferência semestral.
+
+**EX046.** Ver os saldos dos associados, mas não aprovar empréstimos.
+
+**EX047.** Muitas vezes ele permanece, porque ninguém o remove.
+
+**EX048.** Os funcionários de TI e um fornecedor.
+
+**EX049.** Elas não podem ser trocadas se forem copiadas.
+
+**EX050.** Por meio da tomada do número de celular.
+
+**EX051.** Os associados informarem a data de nascimento e o endereço.
+
+**EX052.** Dez contas de desligados.
+
+**EX053.** Treze funcionários atuais.
+
+**EX054.** Seis tinham acesso de administrador.
+
+**EX055.** Porque ela é rápida.
+
+**EX056.** A impressão digital muda por completo.
+
+**EX057.** Na mesma pasta que os backups cifrados.
+
+**EX058.** A engenharia social por telefone.
+
+**EX059.** Várias agências receberam a mesma ligação suspeita.
+
+**EX060.** Elas dependem da dificuldade de cada simulação.
 
 <a id="references"></a>
 ## Referências
