@@ -752,7 +752,7 @@ Elena's brief states the checker defaults, the two measures to watch on the next
 
 A practitioner argues that NHUSTL's topology is too clean versus enterprise networks. Elena adds a limitations subsection and a planned external replication, without changing the primary claim. A statistician asks for operator-level plots; she adds them as exploratory. The entropy lab is used in a teaching appendix on why "complexity scores" without context mislead — analogous to empty security scores.
 
-The limitation and planned external replication answer the practitioner without moving the goalposts. Operator-level plots answer the statistician as exploratory displays. The entropy lab's lesson — that bit counts without context grade the common pattern `P@ssw0rd` as ok at 52.6 bits — parallels empty security scores, and sits in a teaching appendix rather than in the primary claim.
+The limitation and planned external replication answer the practitioner without moving the goalposts. The entropy lab's lesson — that bit counts without context grade the common pattern `P@ssw0rd` as ok at 52.6 bits — parallels empty security scores, and sits in a teaching appendix rather than in the primary claim.
 
 ### 6.6 Errors and limits
 
@@ -852,7 +852,7 @@ Elena's abstract states the question, measure and primary result in under 250 wo
 
 Include a two-page reading guide at the front of the archive: how to install, how to replay the primary table, and which files are deliberately absent (and why). Busy assessors will not reverse-engineer your repository layout.
 
-Elena's guide names the missing files — signed authorizations, any real vulnerability details — and the dual-use reason they are absent. Install and replay steps are numbered, with expected output matching the primary table. A colleague outside the project tests the guide on a clean machine before submission and reports any step that fails. Number the install and replay steps, and show the expected primary table.
+Elena's guide names the missing files — signed authorizations, any real vulnerability details — and the dual-use reason they are absent. Install and replay steps are numbered, with expected output matching the primary table. A colleague outside the project tests the guide on a clean machine before submission and reports any step that fails.
 
 ### 7.6 Worked example (synthetic NHUSTL case)
 

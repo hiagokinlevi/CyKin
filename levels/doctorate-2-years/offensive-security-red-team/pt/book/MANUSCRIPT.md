@@ -678,7 +678,7 @@ Depois da revisão acadêmica, escreva um resumo de uma página para profissiona
 
 ### 6.5 Exemplo resolvido (caso sintético do NHUSTL)
 
-Um profissional argumenta que a topologia do NHUSTL é limpa demais em comparação com redes corporativas. Elena acrescenta uma subseção de limitações e uma replicação externa planejada, sem mudar a alegação primária. Um estatístico pede gráficos por operador; ela os acrescenta como exploratórios. O laboratório de entropia é usado num apêndice didático sobre por que "pontuações de complexidade" sem contexto enganam — de modo análogo às pontuações de segurança vazias. A limitação e a replicação externa planejada respondem ao profissional sem mudar as regras do jogo. Os gráficos por operador respondem ao estatístico como exibições exploratórias. A lição do laboratório de entropia — que contagens de bits sem contexto classificam o padrão comum `P@ssw0rd` como ok, com 52,6 bits — é paralela às pontuações de segurança vazias e fica num apêndice didático, não na alegação primária.
+Um profissional argumenta que a topologia do NHUSTL é limpa demais em comparação com redes corporativas. Elena acrescenta uma subseção de limitações e uma replicação externa planejada, sem mudar a alegação primária. Um estatístico pede gráficos por operador; ela os acrescenta como exploratórios. O laboratório de entropia é usado num apêndice didático sobre por que "pontuações de complexidade" sem contexto enganam — de modo análogo às pontuações de segurança vazias. A limitação e a replicação externa planejada respondem ao profissional sem mudar as regras do jogo. A lição do laboratório de entropia — que contagens de bits sem contexto classificam o padrão comum `P@ssw0rd` como ok, com 52,6 bits — é paralela às pontuações de segurança vazias e fica num apêndice didático, não na alegação primária.
 
 ### 6.6 Erros e limites
 
@@ -764,7 +764,7 @@ Introdução; fundamentação (NIST 800-115, PTES, ATT&CK, TIBER-EU/CBEST, crít
 
 ### 7.5b Guia de leitura para profissionais
 
-Inclua um guia de leitura de duas páginas no início do arquivo: como instalar, como reproduzir a tabela primária e quais arquivos estão deliberadamente ausentes (e por quê). Avaliadores ocupados não vão fazer engenharia reversa da organização do seu repositório. O guia de Elena nomeia os arquivos ausentes — autorizações assinadas, quaisquer detalhes de vulnerabilidades reais — e o motivo de uso dual de sua ausência. Os passos de instalação e reprodução são numerados, com saída esperada igual à tabela primária. Um colega de fora do projeto testa o guia numa máquina limpa antes da submissão e relata qualquer passo que falhe. Numere os passos de instalação e reprodução e mostre a tabela primária esperada.
+Inclua um guia de leitura de duas páginas no início do arquivo: como instalar, como reproduzir a tabela primária e quais arquivos estão deliberadamente ausentes (e por quê). Avaliadores ocupados não vão fazer engenharia reversa da organização do seu repositório. O guia de Elena nomeia os arquivos ausentes — autorizações assinadas, quaisquer detalhes de vulnerabilidades reais — e o motivo de uso dual de sua ausência. Os passos de instalação e reprodução são numerados, com saída esperada igual à tabela primária. Um colega de fora do projeto testa o guia numa máquina limpa antes da submissão e relata qualquer passo que falhe.
 
 ### 7.6 Exemplo resolvido (caso sintético do NHUSTL)
 
