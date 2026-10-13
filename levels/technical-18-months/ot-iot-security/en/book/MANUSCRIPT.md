@@ -48,9 +48,13 @@ A packaging line turns film, trays and product into sealed, labelled packs. Prog
 
 In an office, losing confidentiality of a spreadsheet is the classic harm. On a line, the first questions are: can someone get hurt, will food be unsafe, will the line stop? A sealing heater that runs too hot can burn a worker or leave packs unsealed and contaminated. That is why availability and safe behaviour come before confidentiality here, and why you never "just reboot" a controller to see what happens.
 
+At HPFL this order shapes small decisions. Tomás does not unplug HMI-1 because it looks odd; he first asks the supervisor whether the line is safe to stop. A fix that protects data but leaves the sealing heater uncontrolled would be the wrong fix, however sensible it looks in an office.
+
 ### 1.3 What an attacker or a mistake can change
 
 The same changes come from malice or error: a setpoint altered, a program replaced, an HMI locked, a network flooded. MITRE ATT&CK for ICS lists, for example, T0836 Modify Parameter. Your job as a technician is to notice such changes, report them and help restore safely — not to investigate devices by yourself.
+
+Because the same change can come from either source, Tomás records what changed, when and on which device, without deciding why. On HPFL a changed wrapper speed could be an operator clearing a backlog or someone misusing a password; Chapter 9 shows a case where it was the first. The report is equally useful in both cases.
 
 ### Worked example (synthetic HPFL)
 
@@ -89,17 +93,25 @@ You will (1) explain how permits to work and lockout protect people; (2) state w
 
 Light curtains, emergency stops and guard interlocks keep hands away from moving parts. They are designed and verified by safety engineers and they must keep working whatever happens to the network. A security technician never disables, bridges or reconfigures them, even "temporarily for testing".
 
+On HPFL that covers the light curtains at the wrapper infeed, the emergency stops along the line and the interlocks on guard doors. If a security task seems to need one of them changed, the task is wrong, not the safety device. Stop and ask the supervisor, and record the question.
+
 ### 2.2 Permits and lockout
 
 Work on a running plant needs a permit: a written record of who does what, where, when, which hazards exist and how they are controlled. Lockout/tagout isolates energy before hands go into a machine. Plugging a laptop into the wrapper's switch is also work on the plant: it can change traffic the PLC sees, so it goes through the same permit process.
+
+The permit names the person in charge, the time window and what will be touched. At HPFL Tomás's permit for photographing the wrapper cabinet said that no tools would go inside and no connections would be made. Writing that down protects him as well as the line, because everyone knows what the task did and did not include.
 
 ### 2.3 Who decides
 
 The shift supervisor decides whether the line runs. The controls engineer owns PLC programs. The quality manager decides whether product is safe to ship. Security staff advise and report; they do not make those decisions alone. Knowing this chain saves time in an incident because you call the right person first.
 
+At HPFL that means a quality concern goes to the quality manager, a question about PLC logic to the controls engineer, and anything about stopping the line to the shift supervisor. Keep their names and numbers on the site sheet. When unsure who decides, ask the supervisor first; they will know who else to involve.
+
 ### 2.4 Stop conditions
 
 Every task has written stop conditions: for example, stop if any alarm appears that is not explained, if an operator asks you to stop, or if a device behaves differently from the plan. Stopping is never a failure.
+
+Write the stop conditions on the permit before starting, and agree them with the supervisor. When one occurs, stop work, make the area safe, tell the supervisor and record what happened. A task can resume later under a new or amended permit. Pressing on because the job is nearly finished is how small surprises become incidents.
 
 ### Worked example (synthetic HPFL)
 
@@ -138,21 +150,31 @@ You will (1) read an IP address and subnet mask; (2) explain what switches, VLAN
 
 Every networked device has an IP address such as 10.20.1.11. A /24 mask means the first three numbers name the network and the last names the device, so 10.20.1.11 and 10.20.1.12 are neighbours on 10.20.1.0/24. Devices on the same subnet can talk directly; traffic to another subnet goes through a router or firewall.
 
+At HPFL the line devices share 10.20.1.0/24, so PLC-FILL, PLC-WRAP, HMI-1 and VIS-CAM can reach each other directly. Offices sit on 10.10.0.0/16, and traffic between the two must pass FW-1. Knowing this tells Tomás that a firewall rule is what decides whether an office PC can reach a PLC.
+
 ### 3.2 Switches and VLANs
 
 A switch connects devices with cables. A VLAN splits one physical switch into separate logical networks, so the line devices and office PCs can share hardware without sharing traffic. A mistake in a VLAN setting can quietly connect two networks that were meant to be apart, which is why switch changes need the same care as PLC changes.
+
+At HPFL the line is on VLAN 20 and offices on VLAN 10. If a port on a shared switch were set to the wrong VLAN, an office PC plugged into it would land on the line network without passing FW-1. Report any doubt about a port's VLAN to the network owner rather than testing it.
 
 ### 3.3 Firewalls
 
 A firewall forwards or blocks traffic between networks according to rules: source, destination, port and action. On a plant, the important firewall sits between the office network and the line. Good rules name specific hosts and ports; "any to any" rules defeat the purpose.
 
+At HPFL, FW-1 should allow ENG-LT to reach the PLCs and little else. Each rule should have a comment saying why it exists and who owns it. Chapter 12 shows how to read FW-1's table and what to do with a rule that has no owner.
+
 ### 3.4 Unmanaged switches and wireless
 
 Small unmanaged switches inside cabinets and wireless bridges are common and are often missing from drawings. They matter because they create connections nobody reviews.
 
+Look for them during walk-downs: a small switch inside a cabinet with more cables than expected, or a wireless bridge on a mast. Photograph what you find and report it with its location. A device that joins the line network to another network without passing FW-1 makes the firewall rules irrelevant for that path.  Ask the network owner whether each one is known and approved.
+
 ### 3.5 Addresses you should not assume
 
 Devices can have a second network card, a serial port or a cellular modem that does not show on the drawing. Ask the owner for every interface, not just the main address.
+
+Record each interface in the register, not only the main IP address. A cellular modem added by a machine builder for remote support is a common example, and it can bypass FW-1 entirely. If the owner does not know whether a device has other interfaces, check the manual or ask the supplier before assuming it does not.
 
 ### Worked example (synthetic HPFL)
 
@@ -191,17 +213,25 @@ You will (1) describe what Modbus/TCP and similar industrial protocols carry; (2
 
 HMIs and PLCs exchange values: temperatures, speeds, counts, start and stop bits. Modbus, published by the Modbus Organization, is one widely used example; over Ethernet it is called Modbus/TCP and normally uses port 502. A request says "read registers 100–110" or "write value 180 to register 205". Other common families include EtherNet/IP and PROFINET; the idea is similar.
 
+At HPFL HMI-1 reads values from PLC-FILL and PLC-WRAP such as speeds and temperatures, and sends writes when operators press buttons. ENG-LT uses a separate programming connection to change PLC logic. Knowing which connections are expected is what lets anyone notice an unexpected one.
+
 ### 4.2 Why authentication is missing
 
 Classic Modbus has no built-in way to check who sends a request. If a device can reach the PLC on port 502, it can usually read and often write. This was acceptable when the network was a closed cable inside a cabinet. It is not acceptable once that network connects to offices or the internet, which is why segmentation (Chapter 12) carries so much weight.
+
+At HPFL this means that the firewall and VLANs are the main protection for PLC-FILL and PLC-WRAP. If an office PC could reach port 502 on either PLC, it could send writes that look exactly like those from HMI-1. Report any sign of such a path immediately, without trying it.
 
 ### 4.3 Normal patterns
 
 On a healthy line the pattern is boring: HMI-1 reads the same registers every second, and writes happen when operators press buttons. A new device sending writes, or reads of unusual register ranges, is worth reporting. You do not need to decode packets yourself; you need to know what normal looks like and who to call.
 
+Writing the normal pattern down also helps after changes. If a new device is added to the line, the expected pattern is updated in the same change ticket. A monitoring tool run by the network owner can then compare actual traffic with the written pattern, as in Tomás's notebook entry.
+
 ### 4.4 Do not experiment
 
 Sending test requests to a live PLC can change outputs. Protocol learning happens on a simulator or a lab PLC, never on the line.
+
+The controls engineer can arrange time on a lab PLC or simulator if you want to practise. Even read requests to a live controller add load and can disturb older devices. If you are curious about what a register holds, ask the engineer rather than querying the PLC on the line.  Learning on a lab PLC lets you make mistakes safely and see their effects without risk.
 
 ### Worked example (synthetic HPFL)
 
@@ -240,6 +270,8 @@ You will (1) list the fields a useful OT asset register needs; (2) find gaps in 
 
 For every device: identifier, location, zone or VLAN, owner, make and model, firmware version, network address and what it controls. NIST SP 800-82r3 treats inventory as a foundation because every later activity — patching, monitoring, incident response — depends on knowing what exists.
 
+At HPFL the register covers PLC-FILL, PLC-WRAP, HMI-1, VIS-CAM and ENG-LT, and later the IoT sensors. Each field answers a question someone will ask in a hurry: whom to call, which firmware, which address. A missing field is a finding to fix, not a blank to tolerate.
+
 ### 5.2 Where the data comes from
 
 Purchase records, contractor drawings, cabinet labels, the engineering software project and, carried out by the network owner, passive network monitoring. Each source misses something, so they are compared.
@@ -270,17 +302,25 @@ ENG-LT    zone=office  OK
 complete: 3 of 5
 ```
 
+At HPFL Tomás used photographs of cabinet labels to fill the missing firmware version for PLC-WRAP. Where two sources disagree, record both and ask the owner which is right. Never fill gaps by probing devices on the line; monitoring is done only by the network owner, passively.
+
 ### 5.3 Reading the result
 
 The script prints which records are incomplete. PLC-WRAP has no firmware recorded, so nobody can tell whether a new advisory applies. HMI-1 has no owner, so nobody would be called if it misbehaved. Three of five records are complete; that ratio is a simple measure to track each month.
+
+The fix for each gap is a question to the right person. Firmware can come from a cabinet label or from the controls engineer's software; ownership comes from the supervisor. Rerunning the script after each answer shows progress, as Tomás's rerun did when all five records became complete.
 
 ### 5.4 Keeping it alive
 
 A register is only useful if it is updated when things change. Tie updates to change tickets: no device is installed, moved or replaced without the record changing in the same ticket.
 
+Add a register check to the change ticket template so it cannot be skipped. Once a month, compare the register with what the network owner's monitoring sees and with a walk-down of cabinets. Any device seen but not registered is reported and added, or removed if nobody can explain it.
+
 ### 5.5 Spares and retired devices
 
 Spare PLCs on a shelf and devices removed from service belong in the register too, marked as spare or retired. A spare loaded with an old program may be installed in a hurry during a breakdown, and a retired HMI thrown in a skip may still hold passwords and network settings.
+
+Before a spare is installed, check that its program matches the verified backup of the device it replaces. Before a retired device leaves the site, wipe it according to the vendor's instructions and record that it was done. Both steps belong in the register entry for that device.
 
 ### Worked example (synthetic HPFL)
 
@@ -319,21 +359,31 @@ You will (1) explain the risks of shared and default accounts; (2) apply simple 
 
 Many HMIs ship with one "operator" account used by every shift. Then logs say "operator did it" and nobody knows who. Where the system supports it, give each person their own account; where it does not, record who was on shift and keep the shared password known only to the crew.
 
+At HPFL the admin account on HMI-1 was used by operators to change wrapper speed, as Chapter 9 shows, which made the change hard to trace. Named accounts, or at least a shift log of who held the shared password, would have shown the person at once.
+
 ### 6.2 Default passwords
 
 Default credentials are published in manuals, so anyone can look them up. ETSI EN 303 645 makes "no universal default passwords" its first provision for consumer IoT, and the same idea applies to plant devices: change defaults before a device goes into service.
+
+At HPFL, check defaults on every new device before it joins the line network, including the vision camera and IoT sensors. Record in the register that the default was changed and when. If a device cannot change its default, report it so the owner can decide on other controls.
 
 ### 6.3 Privileged accounts
 
 Admin accounts on HMI-1 and the engineering software can change screens, users and logic. They are used only for planned work, by named people, and their use is reviewed. They are not the everyday login.
 
+At HPFL the admin password on HMI-1 was found on a sticky note on the panel, which shows how quickly privileged access spreads when it is used for everyday tasks. Review admin logins regularly against planned work, and remove admin rights from people whose roles no longer need them.
+
 ### 6.4 Practical rules
 
 Use passphrases that are long but typeable with gloves; do not write passwords on the panel; lock the screen or log out when leaving; never share a password over the radio or by text.
 
+These rules suit a shift floor where people wear gloves, share panels and work under time pressure. If a rule cannot be followed in practice, report that rather than quietly ignoring it; the owner may find a better way, such as a badge-based login.  Review the rules with each new shift team.
+
 ### 6.5 When a password leaks
 
 Report it, then the owner changes it at a time that will not disturb the line. Look at recent logins for that account (Chapter 9).
+
+At HPFL, when Tomás found the admin password on a sticky note, the controls engineer changed it at the next planned stop and checked the login log for unexpected admin sessions. Record the leak, the change and the review in one report.  Look for logins at odd hours or from unexpected places, and for setpoint changes that nobody can explain. Tell the shift team when the new password is in use.
 
 ### Worked example (synthetic HPFL)
 
@@ -372,17 +422,25 @@ You will (1) explain how USB drives and laptops carry malware into plants; (2) a
 
 Lines without internet links still receive files: firmware updates, recipe files, vendor tools and photos. Each comes on a USB drive or laptop that has been elsewhere. NIST SP 800-82r3 lists removable media as a common path into OT, and well-known incidents spread exactly this way.
 
+At HPFL a vendor arriving with a recipe file on a personal drive is a routine event. The file may be harmless, but the drive has been in other plants and offices. Treat every file entering the line as needing the same routine, however trusted its source.
+
 ### 7.2 A media routine
 
 Use only drives issued by the site. Before any drive reaches a line device, scan it on a dedicated, up-to-date scanning station outside the line, record the drive number, file names, scan result and person in a log, and keep the drive under control until it is used. Unknown drives found on the floor are handed to security, never plugged in "to see whose it is".
+
+At HPFL the scanning station sits outside the line, and site drives are numbered, such as HP-07. The log lets anyone trace a file back to its source if a problem appears later. Check the log during walk-throughs; a drive missing from it is a finding.
 
 ### 7.3 Laptops
 
 Only ENG-LT and approved vendor laptops connect to line equipment. An approved laptop is patched, runs anti-malware, has no personal software and is checked before each visit. A vendor laptop that cannot meet that standard uses a site-owned laptop with the vendor's tools installed instead.
 
+Keep a list of approved laptops in the register with their owner and the date each was last checked. At HPFL ENG-LT is the only site laptop allowed to program the PLCs. A vendor laptop that cannot be checked does not connect; the vendor uses a site laptop with their tools instead.
+
 ### 7.4 Transferring files without USB
 
 Some sites move files through a controlled transfer server in the DMZ instead of drives. That keeps a record of every file and removes the need to plug media into line devices at all.
+
+At HPFL the DMZ already holds a file transfer server. Files arriving there can be scanned automatically and logged with sender and time, and line devices fetch them through a documented conduit. Removing drives from the routine also removes the risk of a drive being lost on the floor.
 
 ### Worked example (synthetic HPFL)
 
@@ -421,17 +479,25 @@ You will (1) describe how vendors reach plant systems remotely; (2) explain less
 
 Machine builders support their equipment remotely to diagnose faults without travelling. That is useful, but a permanent, always-on link into the line is also a permanent way in for anyone who steals the credentials.
 
+At HPFL the wrapper builder occasionally needs to read fault logs. That need is real, and refusing all remote access would mean waiting days for a visit. The answer is to allow access only through a controlled route, for a specific job, under the site's watch.
+
 ### 8.2 What the advisory found
 
 CISA advisory AA21-042A describes the compromise of a U.S. water treatment facility in 2021 in which remote access software was used to reach a control system. Its recommendations include using multi-factor authentication, strong passwords for remote desktop, closing unused remote desktop ports and auditing remote connections. Those points apply directly to a packaging line.
+
+At HPFL that means checking that no remote desktop software runs directly on HMI-1 or ENG-LT, that vendor accounts use multi-factor authentication, and that remote sessions are logged and reviewed. The lessons meeting in Chapter 16 later found a remote desktop port on HMI-1 opened by a contractor, exactly the kind of route the advisory warns about.
 
 ### 8.3 A safer pattern
 
 Remote access goes through one site-controlled gateway in the DMZ, never software installed directly on HMIs. Each vendor has a named account with multi-factor authentication. The connection is disabled by default and enabled for a ticketed session window. Someone at the site watches the session and can end it. Sessions are logged and reviewed.
 
+Write the pattern into a short procedure that vendors receive before their first session. The supervisor opens a ticket with a time window; the technician enables the account and watches. If a vendor asks for permanent access, the request goes to the supervisor and is normally refused.
+
 ### 8.4 Ending the session
 
 When work finishes, the account is disabled again, the change is recorded, and the operator confirms the line behaves normally. A session left enabled "for next time" is the commonest failure.
+
+At HPFL Tomás disabled the vendor's account at 14:38, before the window closed, and recorded the start and end times in the ticket. Check vendor accounts weekly to confirm none are left enabled. An account found enabled outside a ticket is reported as a finding.  Confirm also that the vendor's change appears in the register.
 
 ### Worked example (synthetic HPFL)
 
@@ -470,6 +536,8 @@ You will (1) tell process alarms from security-relevant events; (2) filter a log
 
 HMIs and PLCs report process alarms such as low film or a jam. They also record logins, setting changes and program downloads. Process alarms are handled by operators; the second kind tells you who did what to the system, and that is where security clues usually appear.
 
+At HPFL low film and jam alarms belong to operators. Logins, setpoint changes and program downloads are the records to export and keep. Separating the two keeps the security review short enough to happen every day.
+
 ### 9.2 Patterns that matter
 
 Several failed logins followed by a success can mean someone guessed a password. A setpoint changed outside a planned job, a program download nobody expected, or an admin login at an odd hour all deserve a look. One event alone is often innocent; the sequence is what matters.
@@ -502,17 +570,25 @@ REVIEW 07:45 PLC-WRAP setpoint speed 120->180 by admin
 failed logins: 3
 ```
 
+At HPFL the lab shows exactly this kind of sequence: three failed admin logins, a success, then a speed change two minutes later. Each event alone could be ignored. Together they raise a question that needs an answer from the supervisor.
+
 ### 9.3 Reading the output
 
 The script counts three failed admin logins, then shows a successful admin login at 07:43 and a wrapper speed change from 120 to 180 two minutes later. Together that is a story worth checking: was a planned change happening at 07:45, and who was logged in?
+
+The script does not explain what happened; it only picks out lines worth asking about. The next step is to check whether a change was planned and who was on shift. At HPFL the answer turned out to be innocent, but the sequence was still worth checking.
 
 ### 9.4 Escalate, do not investigate alone
 
 Tomás's job is to notice and report with evidence: the log lines, the time, what the line did. The controls engineer and security lead decide what happens next.
 
+Report with the log lines attached, the time you noticed them and what the line was doing then. Do not log into devices to look further or change passwords yourself. If the controls engineer asks for more evidence, they will tell you what to collect and how.  Keep a copy of what you reported and when you sent it.
+
 ### 9.5 Time matters
 
 Logs are only comparable if device clocks agree. Note any clock difference you know of in your report.
+
+If HMI-1 and PLC-WRAP disagree by several minutes, a setpoint change might appear to happen before the login that caused it. Ask the controls engineer how clocks are set on the line and record any known offset in the register.  When you export logs, note the time on your watch and the time shown on each device, so the difference can be corrected later. A clock that drifts by minutes can make an innocent sequence look suspicious, or hide a suspicious one.
 
 ### Worked example (synthetic HPFL)
 
@@ -551,21 +627,31 @@ You will (1) read an ICS advisory and find the facts that matter; (2) match an a
 
 Vendors and CISA publish advisories for industrial products; CISA's index lists them with product names, affected versions, impact and mitigations. An advisory is the starting point, not the decision.
 
+At HPFL the controls engineer and Tomás check advisories for the makers of PLC-FILL, PLC-WRAP, HMI-1 and VIS-CAM. Matching each one against the register tells them quickly whether any action is needed, and the register's firmware fields make that possible.  Note in the record where each advisory came from and when it was read, and whether it has since been revised.
+
 ### 10.2 Reading one
 
 Find five facts: product and model, affected versions, what an attacker could do, whether it needs network or physical access, and the vendor's fix or workaround. Then look up the register: do we have that model, at that version, reachable in that way?
+
+At HPFL the advisory affecting PLC-WRAP needed network access to its programming port, and FW-1 already allowed that only from ENG-LT. Answering the five questions made that clear within minutes. Record the answers in the advisory record, even when the result is that no action is needed.
 
 ### 10.3 Why not patch immediately
 
 A firmware update on a PLC stops it, may change behaviour and needs testing with the program. Food plants also need quality checks after changes. So the usual order is: confirm exposure, apply a mitigation quickly (for example, block the vulnerable service at the firewall), then schedule the patch for a planned stop with a rollback plan.
 
+At HPFL the mitigation for PLC-WRAP was already in place on FW-1, and the patch was scheduled for a planned stop three weeks later. The rollback plan should name the saved program and firmware version to return to if the update causes problems.
+
 ### 10.4 Recording the decision
 
 Each advisory gets a record: applies or not, why, mitigation, planned patch date, owner. A decision not to patch, with reasons and a review date, is still a decision.
 
+Keep the records in one place, linked to the register, so that a later reader can see which advisories were considered and why. Review open items monthly. A record without a review date tends to be forgotten.  At HPFL the record for the PLC-WRAP advisory named FW-1's existing rule as the mitigation and gave the date of the planned stop for the patch. When the patch is applied, the record is closed with the new firmware version.
+
 ### 10.5 HMI and laptop updates
 
 Windows-based HMIs and ENG-LT also need operating system updates, but only those the HMI vendor has approved, installed during planned stops.
+
+Ask the HMI vendor which updates are approved, and record each update in the register and change ticket. Test after updating that screens show correct values and that HMI-1 still communicates with both PLCs. Updates for ENG-LT follow the same planned approach.  Keep the previous image or restore point so the update can be undone if screens or communication fail. Never let an HMI update itself automatically from the internet; that would need a connection the line should not have.
 
 ### Worked example (synthetic HPFL)
 
@@ -604,9 +690,13 @@ You will (1) list what must be backed up on a line; (2) verify backup integrity 
 
 PLC programs, HMI projects and screens, recipe files, device configurations (switches, firewall, camera settings) and the engineering software licence details. Without them, recovering from failure or attack means rebuilding from memory.
 
+At HPFL that means programs for PLC-FILL and PLC-WRAP, HMI-1's project, recipe files, VIS-CAM's settings and the configurations of FW-1 and the line switches. List each item in the register with the date of its latest backup. An item missing from the list is likely to be missing from the backups too.
+
 ### 11.2 Where to keep backups
 
 At least one copy off the line network, ideally offline, so malware that encrypts the line cannot reach it. Label each with device, date and version.
+
+At HPFL the controls engineer keeps an offline store, which is where an older matching copy of the wrapper program was found. Keep at least two copies of each important backup, and record where each is. Check that the offline copy can be reached during a night shift.  Note who may take a copy off site.
 
 ### 11.3 Checking integrity
 
@@ -631,17 +721,25 @@ PLC-FILL_2026-09.bak   0278a5f83d56 MATCH
 PLC-WRAP_2026-09.bak   9974ecb17bab MISMATCH - do not restore
 ```
 
+Store the hashes separately from the backups, for example in the change ticket or a register, so that someone who alters a backup cannot also alter its hash. Lab 11 checks two backup files against recorded hashes and shows what a mismatch looks like.
+
 ### 11.4 Reading the result
 
 The filler backup matches its recorded hash. The wrapper backup does not: its content was edited after the hash was recorded. Restoring it could load a program nobody approved, so it is set aside and reported.
+
+A mismatch does not prove an attack; it proves the file changed after its hash was recorded. At HPFL the edit was traced to an approved but unrecorded adjustment. The procedure was updated so that every change produces a new backup and hash in the same ticket.
 
 ### 11.5 Test restores
 
 A backup never restored is a hope, not a plan. Once or twice a year, restore a program to a spare or lab PLC and compare it with the running one.
 
+Record the test restore in the register with the date, the device, the backup used and the result. If a restore fails, find out why before a real failure forces the question. At HPFL a spare PLC from the shelf could be used for this, after checking it is marked as spare in the register.
+
 ### 11.6 How often
 
 Back up after every approved change and on a fixed monthly date, whichever comes first, so the newest good copy is never far behind the running program.
+
+At HPFL the September backups were the newest before the wrapper edit, which is why a later approved change without a new backup caused confusion. Tie backups to change tickets so that each approved change produces a fresh copy and hash.  Check monthly that the newest backup of each device is newer than its last approved change. If not, take a fresh backup and hash it before the next shift.
 
 ### Worked example (synthetic HPFL)
 
@@ -680,21 +778,31 @@ You will (1) explain zones and conduits from IEC 62443 in plain words; (2) read 
 
 IEC 62443 groups assets with similar security needs into zones and calls the controlled connections between them conduits. At HPFL: the line zone (PLCs, HMI, camera), a DMZ (historian copy, remote access gateway, file transfer server) and the office zone. Traffic only crosses through conduits that are firewalled and documented.
 
+Write each conduit with its purpose, the traffic it allows and its owner. At HPFL the conduits are the line pushing to the DMZ historian, ENG-LT reaching the PLCs, and vendor access through the gateway in the DMZ. Anything else crossing a zone boundary is a finding.
+
 ### 12.2 The DMZ
 
 Office users want production data; the line must not accept office connections. So the line pushes data to a server in the DMZ and the office reads it there. No connection then needs to go straight from office to line.
+
+At HPFL the line pushes data to the historian copy in the DMZ, and office users read it there. Vendor access and file transfer also land in the DMZ. That way FW-1 needs no rule allowing office machines straight into the line, which is exactly the kind of rule Chapter 12's worked example removes.
 
 ### 12.3 Reading rules
 
 Each rule has source, destination, port and action, read top to bottom; the first match wins. A last "deny everything" rule makes anything not listed blocked.
 
+Reading top to bottom matters because a broad allow rule placed above a narrow deny makes the deny useless. When reviewing a table, ask for each rule: who owns it, why it exists, and whether a rule above it already decides the same traffic. FW-1's table at HPFL has four rules, which makes this easy to practise.
+
 ### 12.4 Weak rules
 
 Look for "any" sources, broad port ranges, rules with no comment or owner, and temporary rules that were never removed. Each one should be questioned and either justified or removed through change control.
 
+At HPFL rule 3, office any to line any marked temp 2025, showed all of these warning signs at once. It was removed through change control and tested at the next stop. Record each question raised and its answer, so that a removed rule is not later re-added without review.
+
 ### 12.5 Do not edit on your own
 
 Firewall changes are made by the network owner with a change ticket and a rollback plan; a wrong rule can stop the line.
+
+If you find a weak rule, report it with the rule number and your reason. The network owner decides how to change it, prepares a rollback and tests at a planned stop. Your role is to notice and explain the risk.  At HPFL the network owner removed rule 3 only after raising a change and agreeing a test at the next stop. A rule changed by someone else, however well meant, leaves no record and no rollback, and could stop the line.
 
 ### Worked example (synthetic HPFL)
 
@@ -733,17 +841,25 @@ You will (1) identify IoT devices on a line; (2) check them against a baseline o
 
 Smart energy meters, wireless vibration sensors, the vision camera, a cloud-connected label printer and tablets used by quality staff. They often arrive through purchasing rather than engineering, so nobody checks them first.
 
+At HPFL the quality team asked for wireless vibration sensors on the wrapper motors, and the vision camera is already in place. Each of these devices should appear in the register, with an owner and the network it uses. Purchasing should involve the network owner before ordering.  Ask purchasing to tell you about every networked device ordered.
+
 ### 13.2 A baseline to check against
 
 ETSI EN 303 645 sets baseline security provisions for consumer IoT, and NIST IR 8259 describes what manufacturers should do. Both are useful checklists for plant devices too. Questions to ask a supplier: are there universal default passwords? Is there a way to report vulnerabilities? Will software updates be provided and for how long? Is communication encrypted? Can the device be reset and its data deleted?
+
+Send the questions to the supplier before purchase and keep the answers with the purchase record. Where possible, check claims on delivery: does the device force a password change at setup, and does it really use TLS? An answer that cannot be checked is still useful, but it should be marked as a claim.
 
 ### 13.3 Connecting safely
 
 IoT devices that talk to a vendor cloud belong in their own segment, not the line VLAN. Allow only the cloud addresses they need, block them from reaching PLCs, and record them in the register with an owner and an update plan.
 
+At HPFL the vibration sensor gateway was placed on a new IoT VLAN allowed only to the vendor's cloud addresses. Check after installation that the gateway cannot reach the PLCs, with the network owner, through a rule review rather than probing.
+
 ### 13.4 End of support
 
 When a supplier stops publishing updates, plan replacement. A cheap sensor left unpatched for years on the line network is an easy foothold.
+
+Record the supplier's stated support period in the register, so that the end of support can be planned well before it arrives. At HPFL the vibration sensor supplier promised updates for five years; the replacement date belongs in the register next to the device entry.  If a device must stay after support ends, tighten its isolation and record the decision with a review date. Tell the owner well in advance so that budget can be planned.
 
 ### Worked example (synthetic HPFL)
 
@@ -782,21 +898,31 @@ You will (1) describe what normal looks like for the HPFL line; (2) recognise si
 
 Operators know the line's sound, rhythm and screens. Technicians add network and system normal: which devices talk, which accounts log in, how often programs change. Write it down; "normal" kept only in people's heads disappears with shift changes.
 
+At HPFL Tomás already wrote down that writes come only from HMI-1 and ENG-LT. Similar notes can cover typical login times, how often PLC programs change and which devices appear on the network. Keep them in the register or a shared document, dated and updated after changes.
+
 ### 14.2 Signs to report
 
 A setpoint changes without anyone pressing a button. HMI screens freeze or show values that disagree with gauges. A program download appears in the log with no job. A new device appears on the network. Remote sessions occur outside a ticket. The line stops with no mechanical cause.
+
+Report any of these with the time, the device and what you saw, and attach photographs or log lines where you can. At HPFL a mismatch between HMI-1 and a handheld thermometer turned out to be a failed sensor, but the report still led to a quick diagnosis.
 
 ### 14.3 Naming what you saw
 
 MITRE ATT&CK for ICS gives shared names: T0836 Modify Parameter for altered setpoints, T0886 Remote Services for misuse of remote access, T0843 Program Download for unexpected logic changes. Using these names in a report helps the security team, but report what you observed, not a guess at the attacker.
 
+The names help when reports are compared across shifts or sites. Write the observation first, then the technique name if it fits: for example, wrapper speed changed from 120 to 180 by admin at 07:45, which fits Modify Parameter. Leave intent and attribution to the security team.
+
 ### 14.4 Fault or attack?
 
 Most abnormal events are faults or mistakes. That does not matter at first: the response is the same — keep people safe, preserve evidence, report. Deciding the cause comes later.
 
+At HPFL the temperature mismatch was a failed sensor, and the speed change was an operator's well-meant adjustment. Both were handled with the same steps: make safe, record, report. The cause was found afterwards, with the evidence that had been kept.  Treating every event the same way also avoids embarrassment: nobody is accused, and nothing is dismissed too early.
+
 ### 14.5 What not to do
 
 Do not reboot devices, delete logs, unplug cables or "fix" values before the supervisor and engineer agree; you could destroy the evidence of what happened or create a new hazard.
+
+The supervisor decides whether the line keeps running; the engineer decides how to examine devices. Your part is to photograph, note the time and call. If a hazard requires immediate action, follow normal safety procedures and record what you did.  At HPFL Tomás photographed both temperature readings and called the supervisor; he did not reset the sensor. That restraint kept the evidence that later showed the cause.
 
 ### Worked example (synthetic HPFL)
 
@@ -835,21 +961,31 @@ You will (1) follow the HPFL first-response steps; (2) write a clear first repor
 
 Make people safe: the supervisor decides whether to stop or isolate the affected part of the line using normal procedures. Then call the incident contact on the site sheet. Record what you see as you go. Do not try to remove malware or restore systems yourself.
 
+At HPFL the night supervisor switched the line to local panel control and stopped the wrapper before anything else happened. Tomás then photographed the screen and called the incident contact. Following the steps in order keeps people safe and leaves evidence intact.
+
 ### 15.2 A good first report
 
 It answers: what did you notice, where, when, which devices, what the line is doing now, what has been done so far and who you have told. Short facts beat long theories. NIST SP 800-82r3 stresses that OT incident response must be planned with operations, because actions taken in panic can hurt the process.
+
+At HPFL Tomás's report fitted in one sentence per point and was sent within minutes. Later corrections were added in writing, not by changing the first report. Keep a copy of every report you send, with the time.
 
 ### 15.3 Preserving evidence
 
 Photograph screens, keep a written timeline, and leave devices as they are unless safety requires otherwise. If a device must be isolated, the engineer does it by a planned method — for example, disabling a switch port — and records exactly when.
 
+Keep the written timeline in the order events happened, with times from a single reference such as your watch, and note any known clock differences between devices. Photographs should show the device name and the screen together.  Store photographs with the timeline in one place.
+
 ### 15.4 Communication
 
 Use the site's contact list. Do not post about the incident on social media or chat groups. Do not contact vendors or authorities yourself unless the incident lead asks.
 
+At HPFL the incident lead decides who speaks to vendors, customers and authorities. Avoid speculating to colleagues about the cause, because rumours spread quickly on a shift floor. If someone outside asks you about the incident, refer them to the incident lead.  Use the phone numbers on the site sheet, not numbers saved privately, because they are kept current.
+
 ### 15.5 Notification duties
 
 Some sectors and countries require reports to regulators or to CISA within set times; the incident lead handles this, but your timeline is what makes it possible.
+
+At HPFL Tomás's timeline, with its times and photographs, gave the incident lead what was needed for any required notification. Keep it accurate and complete, and pass corrections to the lead in writing as soon as you find them.  Times matter most: when the event was noticed, when it was reported and when the line was stopped. Note them as they happen rather than reconstructing them afterwards.
 
 ### Worked example (synthetic HPFL)
 
@@ -888,25 +1024,37 @@ You will (1) describe the steps to restore a line after an incident; (2) verify 
 
 Recovery is planned by the incident lead, controls engineer and operations. Usually: confirm the cause is contained, rebuild affected computers from known-good images, restore PLC programs from verified backups (Chapter 11), change passwords that may be exposed, then test.
 
+At HPFL HMI-1 was rebuilt from the vendor's image, both PLC programs were compared with matching backups, and the admin password was changed. Following the order prevents restarting with a problem still present. Each step is recorded with its time and the person who did it.
+
 ### 16.2 Verification before restart
 
 Compare restored PLC programs with verified copies, check HMI screens show correct values against local gauges, confirm firewall rules match the approved table, and run the line empty through a test cycle. Quality signs off before product runs.
+
+At HPFL the test cycle ran empty for 30 minutes and quality signed off at 11:20 before production restarted. Record each check and its result in the incident file. If any check fails, the line does not restart until the cause is understood.  Keep the comparison results with the incident file.
 
 ### 16.3 Watching afterwards
 
 Attackers sometimes return. For days after restart, watch logins, remote sessions and new devices more closely, and report anything unusual immediately.
 
+Agree with the supervisor how long the watch period lasts and who reviews logs each day. At HPFL the lessons meeting found an internet-reachable remote desktop port opened by a contractor, which makes close watching of remote sessions especially important. Report anything unusual to the incident lead, not only to your shift.  Note the end date of the watch period in the incident file so it does not quietly lapse.
+
 ### 16.4 Lessons learned
 
 A short meeting within two weeks answers: what happened, what worked, what did not, what changes. Each change has an owner and date. A lessons session that changes nothing has failed.
+
+At HPFL the lessons meeting assigned closing the remote desktop port on HMI-1 and a monthly check to the network owner. Each action is tracked until it is done and shown to be effective, and the meeting notes are kept with the incident file.  Invite the operators who were on shift; they often know what worked.
 
 ### 16.5 Record keeping
 
 Keep the timeline, photographs, decisions and test results together. They support insurance, regulators and the next improvement.
 
+Store the records together in one folder or ticket, with access limited to people who need them. Include the first report, its corrections, photographs and the test cycle results. The next walk-through can then check whether lessons were applied.  Keep the records for as long as the site's policy requires, and note who may read them. When an insurer or regulator asks a question months later, the answer should come from these records rather than from memory, which fades quickly.
+
 ### 16.6 Communicating the restart
 
 Tell every shift what changed: new passwords, any screens that look different, and which unusual signs to report during the watch period.
+
+At HPFL that meant telling every shift that the admin password had changed and that unexpected remote sessions or new devices should be reported. A short written note left at HMI-1, without passwords, helps people who missed the briefing.  Brief the next two shifts in person if possible, and ask them to confirm they understood. Questions raised at these briefings often show where the procedure needs to be clearer, so record them as well.
 
 ### Worked example (synthetic HPFL)
 
@@ -945,21 +1093,31 @@ You will (1) explain why every change on the line needs a ticket; (2) write a ch
 
 Most problems on plants come from changes nobody recorded: a firewall rule added in a hurry, a program edited during a breakdown, a camera bolted on by a contractor. Change control means every change is requested, reviewed, approved, carried out and recorded. It also makes it easy to notice an unrecorded change, which may be the first sign of an attack.
 
+At HPFL several problems in this book started as unrecorded changes: the edited wrapper program in Chapter 11, the temporary firewall rule in Chapter 12 and the remote desktop port in Chapter 16. Each would have been visible sooner with a ticket.
+
 ### 17.2 A change request
 
 It states what will change, why, which devices, who does it, when, the risk to the process, how success is checked, and how to undo it. Emergency changes during a breakdown are allowed but get recorded afterwards within one shift.
+
+At HPFL Tomás's request for the VIS-CAM update covered all of these in a few lines. Keep the form short so that people actually use it. The approver checks that the success test and the rollback are realistic before agreeing.
 
 ### 17.3 Rollback
 
 Before the change, save the current program or configuration and its hash. If the check fails, restore it. A change with no rollback is a gamble.
 
+At HPFL the rollback for VIS-CAM was to reinstall firmware 1.0.7 from a saved file with its hash recorded. Test that the saved file is complete before starting the change. If rollback itself fails, stop and call the controls engineer.  At HPFL the hashes of saved files were recorded in the change ticket, so a restored file could be checked before loading. Without that, a rollback could load a corrupted or edited copy without anyone noticing.
+
 ### 17.4 Keeping documents current
 
 Update the asset register, network drawing and rule table in the same ticket. Mark drawings with a revision number and date.
 
+At HPFL the network drawing was still at revision 3 while the IoT VLAN appeared only in revision 4 drafts, which the capstone walk-through found. Updating documents in the same ticket prevents that gap from opening.  When a drawing changes, mark the old revision as superseded and keep it, so past decisions can still be understood. Check revision numbers during each walk-through; a drawing whose revision is behind reality is itself a finding, as HPFL learned.
+
 ### 17.5 Reviewers
 
 The person who makes a change should not be the only person who approves it. At HPFL the controls engineer reviews program changes, the network owner reviews firewall and switch changes, and the supervisor confirms the production window. A second pair of eyes catches typing errors in addresses and values before they reach the line.
+
+Record the reviewer's name in the ticket. If the only person who can review is unavailable, wait for the next window unless the change is an emergency.
 
 ### Worked example (synthetic HPFL)
 
@@ -998,25 +1156,37 @@ You will (1) combine the book's skills into one planned walk-through; (2) produc
 
 Agree scope, date and permit with the supervisor: which cabinets, which records, no connections to devices, stop conditions. Bring the asset register, network drawing, rule table and media and remote-access logs.
 
+Write the plan on the permit: the time window, the cabinets to be opened by an electrician, the records to be checked and the stop conditions. At HPFL the walk-through had a two-hour permit. Agree beforehand who will receive the findings and when.  Book the date well before so that operations can plan around it.
+
 ### 18.2 What to check
 
 Physical: cabinets locked, no unexplained modems or switches, no passwords on panels, no loose USB drives. Records: register complete, backups recent and hashes matching, advisories recorded, changes closed. Access: vendor accounts disabled outside sessions, admin use limited.
+
+Use a checklist so that nothing is missed and so the next walk-through can be compared with this one. At HPFL the checklist led Tomás to the modem in the filler cabinet, ENG-LT's old anti-malware signatures, the outdated drawing and a recipe drive missing from the media log.
 
 ### 18.3 Writing findings
 
 Each finding: what you saw, where, why it matters (consequence), suggested fix, owner. Keep evidence (photographs, log extracts) with it.
 
+Write findings during or right after the walk-through, while details are fresh. At HPFL the cellular modem finding included its location in the filler cabinet, a photograph and the consequence that someone could reach the filler from outside. Each finding needs one owner who agrees to act.  Keep each finding to a few lines so it can be read quickly in the meeting. Separate what you saw from what you think it means.
+
 ### 18.4 Prioritising
 
 Order by consequence and ease: anything that gives an unreviewed path to PLCs comes first; tidy-ups last. Present the top three clearly; long lists hide the important items.
+
+At HPFL the modem came first because it was an unreviewed path to a PLC. ENG-LT's old anti-malware signatures came second, because that laptop programs the PLCs. The missing drive and the outdated drawing followed. Write a one-line reason for each ranking.  Agree the order with the supervisor, who may know production reasons for changing it.
 
 ### 18.5 Following up
 
 Agree owners and dates in the meeting, then check progress monthly.
 
+Record the owners and dates in a short list shared with the supervisor. At each monthly check, note what was completed and what slipped, with a reason. At HPFL the next walk-through should start by confirming that the filler cabinet modem has been disconnected or controlled. Findings that keep slipping are raised with the supervisor rather than quietly carried forward.  Close each item only with evidence that it was done.
+
 ### 18.6 Presenting to the supervisor
 
 Use plain language and consequences the supervisor cares about: "this modem could let someone change the filler from outside" works better than protocol names. Bring photographs, keep to ten minutes, and end with the decisions you need: owner, date and any production window. Thank the operators who helped; their cooperation decides whether the next walk-through is welcome.
+
+Send a short written summary afterwards with the findings, owners and dates.  Keep a copy of the summary with the walk-through evidence, so the next walk-through can start by checking what changed since. If the supervisor does not agree with a ranking, record the disagreement and the reason.
 
 ### Worked example (synthetic HPFL)
 
