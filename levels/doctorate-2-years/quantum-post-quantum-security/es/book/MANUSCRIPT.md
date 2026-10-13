@@ -39,10 +39,10 @@ Las fuentes primarias se citan por un identificador estable y se comprobaron el 
 2. [Seguridad cuántica y poscuántica: frontera de la investigación](#ch-02)
 3. [Propuesta de contribución original](#ch-03)
 4. [Replicación de las líneas base y piloto](#ch-04)
-5. [Estudio principal y validación independiente](../../en/book/MANUSCRIPT.md#ch-05)
-6. [Crítica de pares y revisión](../../en/book/MANUSCRIPT.md#ch-06)
-7. [Síntesis de la tesis y archivo de reproducibilidad](../../en/book/MANUSCRIPT.md#ch-07)
-8. [Defensa y plan de publicación](../../en/book/MANUSCRIPT.md#ch-08)
+5. [Estudio principal y validación independiente](#ch-05)
+6. [Crítica de pares y revisión](#ch-06)
+7. [Síntesis de la tesis y archivo de reproducibilidad](#ch-07)
+8. [Defensa y plan de publicación](#ch-08)
 - [Resultados resueltos](#worked-results) · [Referencias](#references)
 
 <a id="ch-01"></a>
@@ -480,7 +480,326 @@ Las líneas base se reproducen antes de superarlas; los instrumentos se verifica
 
 ### Siga estudiando — capítulo 04 de 08
 
-[← Capítulo 03 (borrador)](#ch-03) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 05 (borrador) →](../../en/book/MANUSCRIPT.md#ch-05)
+[← Capítulo 03 (borrador)](#ch-03) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 05 (borrador) →](#ch-05)
+
+<a id="ch-05"></a>
+
+## Capítulo 5 — Estudio principal y validación independiente
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo usted podrá (1) realizar una comparación pareada de dos métodos de inventario sobre los mismos elementos; (2) separar la incertidumbre de muestreo, la de medición y la de modelo; (3) validar sobre un corpus independiente con reglas congeladas; (4) llevar a cabo una adjudicación ciega e informar de la concordancia; y (5) redactar un párrafo de resultados honesto. Ejecuta el diseño que el capítulo 4 pilotó y aporta los resultados que atacará el capítulo 6.
+
+### 5.1 Diseño pareado
+
+Ambos métodos se aplican a los *mismos* elementos adjudicados, de modo que la magnitud de interés es una diferencia pareada: para cada uso vulnerable a la computación cuántica, ¿lo encontró el análisis estático y lo encontró el análisis de doble fuente? El emparejamiento elimina la variabilidad entre elementos —algunos usos son sencillamente difíciles de encontrar— y da un intervalo mucho más estrecho que comparar dos estimaciones independientes de la exhaustividad. Como la doble fuente es una unión que incluye los hallazgos estáticos, la diferencia por elemento solo puede ser 0 o +1 para la exhaustividad; la precisión, en cambio, puede bajar, y por eso existe H2.
+
+### 5.2 Tres incertidumbres
+
+La **incertidumbre de muestreo** es lo que capta un intervalo bootstrap: si se hubiera adjudicado otro conjunto de usos, la estimación sería distinta. La **incertidumbre de medición** procede de la adjudicación: dos ingenieros pueden discrepar sobre si existe un uso, así que informe de la concordancia (κ) y realice un análisis de sensibilidad en el que los elementos disputados se cuenten de las dos maneras. La **incertidumbre de modelo** procede de las decisiones analíticas: la regla de canonización, la ventana de observación, la definición de «uso» del libro de códigos. Informe de una pequeña curva de especificaciones: la estimación principal bajo cada alternativa defendible. Una conclusión que se sostiene ante las tres es robusta; una que solo se sostiene con una especificación es un hallazgo sobre esa especificación.
+
+### 5.3 Validación independiente con reglas congeladas
+
+El corpus de Marrow Logistics nunca se examinó durante el desarrollo. Las reglas de fusión, los umbrales y el libro de códigos se congelan y se les calcula el hash (el SHA-256 del archivo de configuración queda anotado en el registro de la tesis) antes de abrir los datos de Marrow. Marrow es distinto a propósito: menos equipos de fabricantes, más escáneres de mano integrados en los almacenes y un equipo de operaciones que usa mucho SSH. Por eso el mecanismo del capítulo 3 predice una ganancia agregada menor: una predicción acertada de un beneficio *reducido* es evidencia a favor del mecanismo, no en contra del método.
+
+Anote la fecha en que se abrieron por primera vez los datos de Marrow junto al hash de la configuración congelada.
+
+### 5.4 Adjudicación ciega
+
+Los ingenieros E01–E10 (sintéticos) reciben cada uso candidato sin la procedencia de la herramienta y en orden aleatorio, junto con la documentación de los dueños. Dos ingenieros adjudican cada elemento; un tercero resuelve los desacuerdos. En el estudio principal, la concordancia sintética es κ = 0,78 tras la enmienda del libro de códigos derivada del piloto. Los elementos que ningún ingeniero puede determinar se codifican como *desconocidos*: el 9 % de los activos de HRHN y el 14 % de los de Marrow, que se declaran junto a la exhaustividad en lugar de descartarse.
+
+Informe de la concordancia por clase de activo además de la global, porque a los adjudicadores puede costarles más juzgar los equipos de fabricantes que el código propio. Guarde las resoluciones del tercer ingeniero en un archivo aparte, para que un lector pueda ver cuántos elementos la necesitaron y si alguna clase se disputó más que las demás.
+
+### 5.5 Actividad práctica — Lab 5: bootstrap pareado
+
+```python
+# Lab 5 (synthetic): paired bootstrap CI for the recall gain (dual - static) on two corpora.
+import random
+def corpus(seed, mix):
+    rng = random.Random(seed); items = []
+    probs = {"code": (0.90, 0.55), "appliance": (0.20, 0.80), "embedded": (0.30, 0.10), "rest": (0.70, 0.0)}
+    for cls, n in mix.items():
+        ps, pp = probs[cls]
+        for _ in range(n):
+            s = rng.random() < ps; p = rng.random() < pp
+            items.append((s, s or p))
+    return items
+def gain_ci(items, reps=2000, seed=1):
+    rng = random.Random(seed); n = len(items)
+    point = sum(d - s for s, d in items) / n
+    boots = sorted(sum(d - s for s, d in (items[rng.randrange(n)] for _ in range(n))) / n for _ in range(reps))
+    return point, boots[int(0.025 * reps)], boots[int(0.975 * reps)]
+for name, seed, mix in [("HRHN hospitals 2-3", 11, {"code": 300, "appliance": 180, "embedded": 120, "rest": 100}),
+                        ("Marrow (frozen rules)", 22, {"code": 500, "appliance": 60, "embedded": 200, "rest": 140})]:
+    g, lo, hi = gain_ci(corpus(seed, mix))
+    print(f"{name:24s} recall gain = {g:.3f}  95% CI [{lo:.3f}, {hi:.3f}]")
+```
+
+Salida esperada:
+
+```text
+HRHN hospitals 2-3       recall gain = 0.207  95% CI [0.176, 0.236]
+Marrow (frozen rules)    recall gain = 0.097  95% CI [0.079, 0.116]
+```
+
+Con estos supuestos sintéticos, H1 (ganancia ≥ 0,10 en HRHN) queda respaldada, y H4 (ganancia ≥ 0,05 en Marrow) también, con la ganancia menor de Marrow prevista por su mezcla de clases. El intervalo bootstrap refleja solo el muestreo; no dice nada sobre el error de adjudicación ni sobre si Marrow se parece a alguna empresa real.
+
+El laboratorio extrae las detecciones por clase de las mismas probabilidades arbitrarias usadas en el Lab 3 y las aplica a dos mezclas de clases. La mezcla de HRHN, de 700 usos, coincide con el tamaño del corpus reservado; la de Marrow tiene menos equipos de fabricantes y más dispositivos integrados. El bootstrap pareado remuestrea elementos y mantiene juntos los resultados estático y doble de cada uno, y por eso los intervalos son estrechos.
+
+### 5.6 Ejemplo resuelto: el párrafo de resultados honesto
+
+«En el corpus HRHN reservado (sintético; 700 usos adjudicados vulnerables a la computación cuántica), el inventario de doble fuente aumentó la exhaustividad en 0,21 (IC bootstrap del 95 %: 0,18–0,24) respecto a una línea base estática configurada con competencia; la precisión fue de 0,93. La ganancia se concentró en los equipos de fabricantes (0,63) y fue nula en los datos en reposo (0,00), como se había previsto (H3). Con las reglas congeladas, la ganancia en un corpus independiente fue de 0,10 (0,08–0,12). El nueve y el catorce por ciento de los activos, respectivamente, no pudieron adjudicarse y se excluyen de los denominadores de la exhaustividad; con el supuesto de peor caso de que todos los activos desconocidos contienen usos vulnerables no descubiertos, la exhaustividad baja hasta 0,12. Estos resultados describen dos organizaciones sintéticas y un modelo de detección; no son estimaciones para empresas reales». Fíjese en lo que el párrafo se niega a decir: no afirma que ninguna de las dos organizaciones sea «segura frente a la computación cuántica» ni que el inventario de doble fuente sea suficiente.
+
+### 5.7 Errores comunes y límites
+
+- Comparar estimaciones de exhaustividad no pareadas y presentar intervalos solapados como «sin diferencia».
+- Informar solo de la incertidumbre de muestreo.
+- Tocar el corpus de validación antes de congelar las reglas, aunque sea para «comprobar el formato».
+- Excluir del denominador los activos desconocidos sin decirlo.
+- El Lab 5 simula probabilidades de detección; las clases de activos reales son más desordenadas.
+
+Cada error tiene una salvaguarda concreta en este estudio: el diseño pareado, el informe de las tres incertidumbres, la configuración congelada y con hash antes de abrir Marrow, y las proporciones desconocidas del nueve y el catorce por ciento impresas junto a la exhaustividad. Un revisor debería poder confirmar las cuatro en el archivo sin preguntar al doctorando.
+
+### Ejercicios — capítulo 5
+
+- **EX027 — ¿Por qué emparejar?** Explique con el Lab 5 por qué el intervalo pareado es más estrecho que dos intervalos independientes. Rúbrica: 3 = argumento de varianza correcto.
+- **EX028 — Elementos disputados.** Con 40 elementos disputados en HRHN, describa el análisis de sensibilidad y cómo informaría de él. Rúbrica: 3 = cotas contando de las dos maneras y frase de informe.
+- **EX029 — Curva de especificaciones.** Enumere cuatro especificaciones alternativas defendibles para la estimación principal. Rúbrica: 3 = cada una altera una decisión analítica y está justificada.
+- **EX030 — Protocolo de congelación.** Redacte el procedimiento de congelación para Marrow, incluido qué se somete a hash y quién lo atestigua. Rúbrica: 3 = verificable por alguien externo.
+- **EX031 — Predecir Marrow.** Con las probabilidades por clase del Lab 3, prediga la ganancia agregada de Marrow a partir de su mezcla antes de ejecutar el Lab 5. Rúbrica: 3 = predicción a menos de 0,03 y método mostrado.
+- **EX032 — Párrafo de resultados.** Reescriba un párrafo que exagera («Nuestro método hace que las organizaciones sean seguras frente a la computación cuántica») al estilo de 5.6. Rúbrica: 3 = alcance, incertidumbre e incógnitas presentes.
+
+### Síntesis del capítulo
+
+El estudio principal es una comparación pareada que informa de tres tipos de incertidumbre, se valida en un corpus intacto con reglas congeladas, se adjudica a ciegas y se redacta con sus incógnitas presentes en la discusión sobre el denominador. Una reducción prevista del beneficio en un corpus distinto respalda el mecanismo.
+
+### Siga estudiando — capítulo 05 de 08
+
+[← Capítulo 04 (borrador)](#ch-04) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 06 (borrador) →](#ch-06)
+
+<a id="ch-06"></a>
+
+## Capítulo 6 — Crítica de pares y revisión
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo usted podrá (1) convertir las objeciones de los revisores en pruebas; (2) realizar una revisión interna de equipo rojo de sus propias afirmaciones; (3) encontrar la frontera arquitectónica más allá de la cual un método no puede ver; (4) acotar una afirmación sin abandonarla; y (5) llevar a cabo una revisión de doble uso de un método de inventario. Toma los resultados del capítulo 5 y prepara el argumento de la tesis del capítulo 7.
+
+### 6.1 Las objeciones como pruebas
+
+La objeción de un revisor es una hipótesis sobre su error. Trate cada una como una prueba con un resultado posible, no como un ataque que refutar. Tres objeciones de la revisión sintética del artículo de Ciphertrail ilustran el método. **O1:** «La telemetría pasiva quizá encuentra los equipos de fabricantes solo porque los de HRHN resultan estar en el segmento supervisado». Prueba: repetir el análisis limitado a los equipos de fabricantes situados en segmentos con y sin sensores; la ganancia desaparece fuera de los sensores, lo que confirma que el beneficio del método depende de la ubicación de los sensores: una condición de alcance, ahora declarada. **O2:** «Los adjudicadores podrían deducir la procedencia por el formato». Prueba: dar 50 elementos a dos ingenieros nuevos con el formato normalizado; la κ con las etiquetas originales es 0,81, de modo que la objeción queda debilitada, pero se registra. **O3:** «La exhaustividad de *usos* no es riesgo; un archivo envuelto con RSA importa más que cien servidores web internos». Esto no puede comprobarse con los datos; es una objeción de constructo, a la que se responde añadiendo una exhaustividad ponderada por sensibilidad y admitiendo que la ponderación es una decisión, no una medición.
+
+### 6.2 Someta sus afirmaciones a un equipo rojo
+
+Antes de la revisión externa, encargue a un colega que argumente que cada afirmación es falsa. Una tabla útil de equipo rojo tiene cuatro columnas: afirmación, objeción más fuerte, prueba o concesión, estado tras la revisión. En la investigación sobre PQC, el ejercicio de equipo rojo debería incluir siempre una objeción desde el lado del *modelo de amenazas*: la negociación híbrida protege el establecimiento de claves solo si las partes clásica y poscuántica se combinan como está especificado y no existe ninguna vía de degradación. Un inventario que registra X25519MLKEM768 como negociado no dice nada sobre si un cliente aceptaría en silencio un grupo solo clásico ofrecido por un atacante activo, una propiedad distinta que el inventario no mide.
+
+### 6.3 La frontera arquitectónica
+
+Todo método tiene un lugar que no puede ver. Para el inventario de doble fuente, la frontera incluye: las firmas de los certificados de TLS 1.3, salvo que los extremos cooperen; las firmas de actualización de firmware verificadas sin conexión dentro de los dispositivos; los datos en reposo cifrados por servicios de terceros; y los protocolos transportados dentro de túneles VPN que el sensor no puede abrir. Declare la frontera en la tesis con un diagrama y una lista. Los examinadores respetan más a quien muestra dónde se detiene el método que a quien insinúa que lo cubre todo.
+
+Dibuje el diagrama con cada zona ciega etiquetada con el observador que no la ve.
+
+### 6.4 Acotar una afirmación
+
+Afirmación original: «El inventario de doble fuente mejora sustancialmente el descubrimiento de la criptografía vulnerable a la computación cuántica». Afirmación acotada tras la crítica: «Donde los sensores pasivos observan los segmentos pertinentes, el inventario de doble fuente aumentó entre 0,10 y 0,21 la exhaustividad de los usos de establecimiento de claves vulnerables a la computación cuántica y de los usos de firma visibles en TLS 1.2 en dos organizaciones sintéticas, con la ganancia concentrada en los equipos de fabricantes; no mejoró el descubrimiento de los usos de datos en reposo ni de firmas de firmware verificadas sin conexión». La afirmación acotada es más pequeña y mucho más difícil de refutar: justo el intercambio que debe hacer una tesis.
+
+Contraste el título, el resumen y las conclusiones con la afirmación acotada antes de la entrega.
+
+### 6.5 Revisión de doble uso
+
+Un método de inventario es un mapa de dónde es más débil una organización. Los inventarios publicados, o las herramientas que identifican criptografía heredada en todo internet, podrían guiar a un recolector de tipo *harvest-now-decrypt-later* hacia los objetivos de mayor valor. La revisión de doble uso pregunta: ¿la publicación incluye datos que identifican a la organización (no debe hacerlo)?; ¿la configuración por defecto de la herramienta escanea solo objetivos autorizados por su dueño?; ¿se comunican las debilidades de productos concretos a los fabricantes mediante divulgación coordinada ([ISO/IEC 29147](https://www.iso.org/standard/72311.html) describe la divulgación de vulnerabilidades) antes de publicar?; y ¿el artículo describe clases de debilidad en lugar de listas de hosts vulnerables?
+
+### 6.6 Ejemplo resuelto: la carta de respuesta
+
+La carta de respuesta sintética empieza con una tabla que vincula cada objeción con un cambio: O1 → nueva condición de alcance y un análisis fuera de los sensores (sección 5.4 del artículo); O2 → nueva comprobación de robustez, con la κ declarada; O3 → exhaustividad ponderada por sensibilidad añadida, y el resumen dice ahora «usos» en lugar de «riesgo». Agradece a los revisores sin adularlos, concede lo que era correcto y explica los desacuerdos con evidencia. Donde los autores discrepan —un revisor pidió escanear de forma activa los dispositivos médicos para «completar» la verdad de referencia—, la carta expone el argumento del daño del capítulo 1 y ofrece a cambio un experimento en banco de pruebas.
+
+### 6.7 Errores comunes y límites
+
+- Refutar las objeciones con retórica en lugar de ponerlas a prueba.
+- Acotar una afirmación en la discusión, pero no en el título ni en el resumen.
+- Confundir el inventario de algoritmos negociados con la resistencia a la degradación.
+- Publicar hallazgos por organización que se convierten en una lista de objetivos.
+- Encargar el equipo rojo solo a amigos que comparten sus supuestos.
+
+Cada error tiene un remedio ya usado en la revisión de Ciphertrail: las objeciones O1 y O2 se convirtieron en pruebas, la afirmación acotada pasó al resumen, la resistencia a la degradación se nombró como ajena al método y la revisión de doble uso eliminó los datos que identificaban a la organización. Para el equipo rojo, pida ayuda a alguien del lado del modelo de amenazas que no comparta sus supuestos.
+
+### Ejercicios — capítulo 6
+
+- **EX033 — De la objeción a la prueba.** Convierta tres objeciones propias en pruebas con resultados posibles. Rúbrica: 3 = cada prueba podría cambiar la conclusión.
+- **EX034 — Tabla de equipo rojo.** Construya una tabla de equipo rojo de cuatro columnas para las tres afirmaciones principales de Ciphertrail. Rúbrica: 3 = incluye una objeción desde el modelo de amenazas.
+- **EX035 — Diagrama de la frontera.** Dibuje (o describa por escrito) la frontera arquitectónica del inventario de doble fuente con al menos cinco zonas no vistas. Rúbrica: 3 = zonas exactas y cada una vinculada a una declaración de alcance.
+- **EX036 — Acótela.** Acote «El TLS híbrido hace que nuestro hospital sea seguro frente a la computación cuántica» hasta convertirla en una afirmación defendible. Rúbrica: 3 = nombra la propiedad, el alcance y lo que sigue siendo vulnerable.
+- **EX037 — Revisión de doble uso.** Complete una revisión de doble uso para la publicación del corpus HRHN. Rúbrica: 3 = decide qué se publica y por qué.
+- **EX038 — Carta de respuesta.** Redacte la sección de la carta que responde a O3. Rúbrica: 3 = concede el argumento de constructo y muestra el cambio.
+
+### Síntesis del capítulo
+
+La crítica mejora una tesis cuando las objeciones se convierten en pruebas, la zona ciega del método se dibuja de forma explícita, las afirmaciones se reducen a lo que sobrevive y la publicación se revisa en busca de daños. La evidencia de inventario no es evidencia de resistencia a la degradación ni de reducción del riesgo sin un argumento adicional.
+
+### Siga estudiando — capítulo 06 de 08
+
+[← Capítulo 05 (borrador)](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 (borrador) →](#ch-07)
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Síntesis de la tesis y archivo de reproducibilidad
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo usted podrá (1) trazar el argumento de una tesis desde los datos hasta la afirmación con garantías explícitas; (2) construir un archivo de reproducibilidad por niveles y que falle de forma cerrada; (3) redactar fichas de conjuntos de datos para corpus sintéticos y restringidos; (4) enunciar los límites con dirección, es decir, diciendo hacia dónde sesgaría el resultado cada límite; y (5) conectar la tesis con la práctica de la migración sin extralimitarse. Reúne los capítulos 1–6 y prepara la defensa del capítulo 8.
+
+### 7.1 El mapa del argumento
+
+Use la estructura de Toulmin para cada afirmación principal: **datos** (las diferencias pareadas del Lab 5), **garantía** (el bootstrap pareado estima la incertidumbre de muestreo cuando los elementos son intercambiables), **respaldo** (el uso habitual del método y las estadísticas de concordancia del piloto), **matizador** («donde los sensores observan el segmento»), **refutación** (equipos de fabricantes fuera de los sensores, activos desconocidos) y **afirmación**. Dibujar el mapa deja al descubierto las garantías que faltan. Una laguna habitual en las tesis de PQC es la garantía que vincula la exhaustividad del inventario con la reducción del riesgo: exige un argumento sobre la vida útil de los datos (el marco de Mosca del capítulo 1) y sobre lo que hace la organización con los hallazgos, y el inventario no mide ninguna de las dos cosas.
+
+### 7.2 Estructura de la tesis
+
+Funciona un orden convencional: introducción y laguna; antecedentes sobre la amenaza cuántica, las normas y el despliegue híbrido; método y modelo del observador; replicación; estudio principal; validación; crítica y límites; conclusiones. Ponga la afirmación acotada en el primer párrafo del resumen. Ponga la frontera arquitectónica en el capítulo de método, no escondida entre las limitaciones. Mantenga una única fuente de verdad para cada número —un archivo de resultados generado por código—, de modo que el resumen, las tablas y el texto no puedan discrepar.
+
+Redacte el capítulo de método antes que el de resultados.
+
+### 7.3 Un archivo por niveles
+
+Publique abiertamente los artefactos de nivel 0 y nivel 1; mantenga el nivel 2 en manos del dueño de los datos con un acuerdo de acceso; no conserve nunca el nivel 3. El manifiesto del archivo registra el nivel y el hash SHA-256 de cada fichero, y el proceso de publicación **falla de forma cerrada**: cualquier fichero de nivel 2 o cualquier discrepancia de hash bloquea la publicación. Incluya el hash de la configuración congelada del capítulo 5 para que los examinadores puedan confirmar que la validación usó las reglas congeladas.
+
+Ejecute la comprobación de publicación sobre el archivo exacto que se va a publicar, no sobre una copia de trabajo. Mantenga el manifiesto bajo control de versiones.
+
+### 7.4 Actividad práctica — Lab 7: un manifiesto que falla de forma cerrada
+
+```python
+# Lab 7 (synthetic): a fail-closed reproducibility manifest. Any tier >= 2 file in the
+# public archive, or any hash mismatch, stops the release.
+import hashlib, json
+files = {  # name: (tier, content) - contents are synthetic stand-ins
+    "fusion_rules.json": (0, b'{"window_days": 14, "match": "canonical-host"}'),
+    "corpus_synthetic.csv": (0, b"use_id,class,static,passive\nU1,code,1,0\n"),
+    "handshakes_pseudonymized.csv": (1, b"host,group\nh-7f3a,0x001D\n"),
+    "raw_capture.pcap": (2, b"\x00\x01binary"),
+}
+manifest = {n: {"tier": t, "sha256": hashlib.sha256(c).hexdigest()} for n, (t, c) in files.items()}
+def release(manifest, files, public_max_tier=1):
+    problems = []
+    for n, m in manifest.items():
+        if m["tier"] > public_max_tier:
+            problems.append(f"{n}: tier {m['tier']} not releasable")
+        elif hashlib.sha256(files[n][1]).hexdigest() != m["sha256"]:
+            problems.append(f"{n}: hash mismatch")
+    return ("BLOCKED", problems) if problems else ("RELEASED", [])
+print(release(manifest, files))
+del manifest["raw_capture.pcap"]
+print(release(manifest, files))
+print(json.dumps(manifest["fusion_rules.json"])[:60] + "...")
+```
+
+Salida esperada (el prefijo del hash es determinista):
+
+```text
+('BLOCKED', ['raw_capture.pcap: tier 2 not releasable'])
+('RELEASED', [])
+{"tier": 0, "sha256": "db6dd8db390974cdd06e19b00d7fe35d26836...
+```
+
+La primera llamada bloquea la publicación porque hay una captura de nivel 2 en el manifiesto; al eliminarla, la publicación se permite. En un archivo real, eliminar el fichero no basta: compruebe que ningún fichero de nivel 0 o nivel 1 contiene extractos de él y anote la eliminación en el registro de cambios del archivo. El prefijo del hash impreso permite a un examinador confirmar que las reglas de fusión del archivo coinciden con las congeladas antes de la validación. Vuelva a ejecutarlo después de cada cambio en el archivo.
+
+### 7.5 Fichas de conjuntos de datos
+
+Para cada corpus, redacte una ficha que cubra: procedencia (generador sintético y semilla, o dueño y autorización), periodo de recogida, instrumentos y versiones, método de seudonimización, lagunas conocidas (segmentos sin sensores), definiciones de las etiquetas (el libro de códigos enmendado), estadísticas de concordancia, usos previstos y usos prohibidos (por ejemplo, nada de reidentificación ni de uso como lista de objetivos). Los corpus sintéticos también necesitan ficha, porque, si no, los lectores confunden distribuciones generadas con datos de campo. Guarde cada ficha junto a su corpus y actualícela cuando se encuentren erratas. Feche cada revisión de la ficha.
+
+### 7.6 Límites con dirección
+
+Un límite sin dirección es un ritual. Indique hacia dónde empuja la estimación. *Activos desconocidos excluidos de los denominadores* → exhaustividad sobrestimada (acotada por el análisis de peor caso). *Sensores colocados donde se concentran los equipos de fabricantes* → ganancia agregada sobrestimada para organizaciones con sensores más dispersos. *Adjudicadores con documentación de los dueños* → la verdad de referencia puede pasar por alto usos no documentados → exhaustividad de ambos métodos sobrestimada, dirección de la ganancia incierta. *Organizaciones sintéticas* → validez externa desconocida en ambas direcciones. Una tabla de límites con una columna de «dirección» es una de las páginas más valiosas de la tesis.
+
+### 7.7 Implicaciones sin extralimitarse
+
+La implicación práctica defendible es estrecha: los programas de migración que dependen solo del análisis estático probablemente encuentran menos usos vulnerables a la computación cuántica de los que hay en los equipos cerrados de los fabricantes, y deberían combinar fuentes donde puedan observar el tráfico e informar de las proporciones desconocidas. No se sigue que ninguna organización esté preparada, que la negociación híbrida resista la degradación ni que el inventario sustituya a la planificación de la agilidad criptográfica descrita en [NIST CSWP 39](https://doi.org/10.6028/NIST.CSWP.39-upd1).
+
+Redacte la implicación como una recomendación con su condición adjunta, de modo que un profesional que lea solo ese párrafo vea aún el alcance: donde los sensores puedan observar el tráfico y con las proporciones desconocidas declaradas.
+
+### 7.8 Errores comunes y límites
+
+- Números tecleados a mano en el texto que se desvían del archivo de resultados.
+- Archivos que incluyen en silencio capturas restringidas.
+- Límites enumerados sin dirección ni magnitud.
+- Implicaciones que saltan de «encontró más» a «más seguro».
+
+Cada error tiene una salvaguarda sencilla. Genere cada número del texto a partir del archivo de resultados. Ejecute la comprobación del manifiesto que falla de forma cerrada sobre el archivo de publicación. Añada a cada límite una dirección y, cuando sea posible, una magnitud. Lea en voz alta el párrafo de implicaciones y deténgase en cualquier verbo que implique seguridad en lugar de descubrimiento.
+
+### Ejercicios — capítulo 7
+
+- **EX039 — Mapa de Toulmin.** Trace el mapa de la afirmación H4 con sus seis elementos. Rúbrica: 3 = garantía y refutación específicas.
+- **EX040 — Garantía ausente.** Redacte el argumento que vincula la exhaustividad con la reducción del riesgo y enumere la evidencia que necesitaría. Rúbrica: 3 = incluye la vida útil de los datos y la remediación.
+- **EX041 — Manifiesto.** Amplíe el Lab 7 para que falle cuando falte un fichero incluido en el manifiesto. Rúbrica: 3 = el código funciona y falla de forma cerrada.
+- **EX042 — Ficha del conjunto de datos.** Redacte la ficha del corpus de Marrow. Rúbrica: 3 = incluye usos prohibidos y lagunas conocidas.
+- **EX043 — Límites con dirección.** Añada a la tabla de 7.6 tres límites con dirección y magnitud. Rúbrica: 3 = direcciones argumentadas, magnitudes acotadas cuando sea posible.
+- **EX044 — Párrafo de implicaciones.** Redacte en 150 palabras la implicación práctica para una persona responsable de la migración. Rúbrica: 3 = útil y dentro de lo que permite la evidencia.
+
+### Síntesis del capítulo
+
+Una tesis es un argumento cuyas garantías son explícitas, cuyos números tienen una sola fuente, cuyo archivo no puede filtrar datos restringidos y cuyos límites apuntan en direcciones declaradas. Sus implicaciones son tan estrechas como sus afirmaciones.
+
+### Siga estudiando — capítulo 07 de 08
+
+[← Capítulo 06 (borrador)](#ch-06) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 08 (borrador) →](#ch-08)
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Defensa y plan de publicación
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo usted podrá (1) auditar cada afirmación de una tesis frente a su evidencia; (2) anticipar y ensayar las preguntas del tribunal; (3) planificar el orden y los foros de las publicaciones; (4) llevar a cabo la divulgación coordinada de las debilidades de productos encontradas durante la investigación; y (5) informar con exactitud a una persona con poder de decisión que no es especialista. Cierra el arco iniciado en el capítulo 1 y conduce al apéndice de respuestas resueltas.
+
+### 8.1 La auditoría de afirmaciones
+
+Enumere cada frase del resumen, la introducción y la conclusión que afirma algo. Para cada una, anote el peldaño (capítulo 1), la tabla o figura que la sustenta, la incertidumbre y el matizador de alcance. Toda afirmación sin un artefacto que la sustente se elimina o se reescribe. En la auditoría sintética de Ciphertrail fallan dos frases: una dice «organizaciones» cuando la evidencia abarca dos organizaciones sintéticas, y otra dice «firmas» cuando la evidencia pasiva abarca solo las cadenas de certificados visibles en TLS 1.2. Ambas se corrigen antes de la entrega.
+
+Repita la auditoría después de cada ronda de revisión.
+
+### 8.2 Preguntas del tribunal
+
+Prepare respuestas, con referencias a diapositivas o páginas, para las preguntas que los examinadores de este campo hacen con seguridad. *¿Por qué debería creer su verdad de referencia?* (adjudicación ciega, κ, incógnitas). *¿Qué ocurre con una organización que no tiene equipos de fabricantes?* (el mecanismo predice poca ganancia; evidencia de Marrow). *¿Depende su resultado de la fecha del CRQC?* (no: la exhaustividad del inventario es independiente de z; las implicaciones para la priorización sí dependen, y se presentan como un recorrido). *¿Y si se rompe ML-KEM?* (el inventario sigue siendo útil; el despliegue híbrido y la agilidad son la respuesta arquitectónica; cite las roturas de Rainbow y SIKE como precedente de sorpresa). *¿En qué se equivocó?* (la κ del piloto, el constructo original de «uso»). Ensaye con un examinador simulado hostil y anote qué respuestas necesitaron una referencia de página que no tenía.
+
+### 8.3 Plan de publicación
+
+Ordene los artículos de modo que cada uno se sostenga por sí solo y la evidencia más sólida aparezca primero. Un plan plausible: (1) el artículo de replicación y de unidad de medida (el diagnóstico al estilo de InvBench, la unidad de recuento y la deriva de los codepoints) en un foro de medición o de seguridad de sistemas; (2) el estudio principal de doble fuente con su validación; (3) el corpus adjudicado como artículo de conjunto de datos con su ficha; (4) un resumen orientado a profesionales. Evite trocear en rodajas resultados que solo tienen sentido juntos. Registre públicamente el plan de análisis del estudio principal antes de abrir los datos de Marrow si hay un registro disponible, o deposite un hash con sello de tiempo.
+
+### 8.4 Divulgación coordinada
+
+Durante el estudio sintético, el equipo observó que un modelo de equipo aceptaba un retroceso solo clásico cuando un equipo intermedio del banco de pruebas eliminaba su grupo híbrido: una debilidad de degradación. El plan de divulgación: confirmar el comportamiento solo en el banco de pruebas aislado; notificar al fabricante con detalles reproducibles y una ventana propuesta de 90 días; informar al dueño en HRHN de las unidades afectadas sin publicar su identidad; publicar solo después de una corrección o del plazo acordado, describiendo la clase de debilidad en lugar de una receta de explotación. La tesis registra la cronología de la divulgación como evidencia de conducta ética.
+
+### 8.5 Informar a quien decide
+
+Un informe de una página para el consejo de dirección de HRHN (sintético) declara: qué se midió (dónde se usa criptografía vulnerable a la computación cuántica, no si la red es «segura»); el hallazgo principal (el escaneo estático por sí solo pasó por alto la mayoría de los usos en equipos de fabricantes; combinar fuentes elevó la proporción encontrada de aproximadamente uno de cada cinco a más de cuatro de cada cinco donde había sensores); lo que sigue sin conocerse (el 9 % de los activos; los datos en reposo; el firmware de los dispositivos sin conexión); la decisión solicitada (financiar sensores en dos segmentos no supervisados y exigir en las compras que los fabricantes declaren sus algoritmos criptográficos); y lo que el informe *no* afirma (ninguna fecha para un ordenador cuántico). No usa siglas sin explicar y adjunta la tabla de límites.
+
+### 8.6 Después de la defensa
+
+Archive las versiones finales, actualice la ficha del conjunto de datos con las erratas y programe una nueva verificación del estado de las normas citadas: para entonces FN-DSA y HQC probablemente tendrán normas definitivas, y NIST IR 8547 puede haberse revisado. Una tesis sobre una transición debería terminar con una declaración de qué cambiaría sus conclusiones. Indique en el archivo qué conclusiones dependen del estado de las normas, para que un lector posterior a la siguiente revisión sepa qué volver a comprobar. Enumere esas conclusiones de forma explícita junto con sus dependencias.
+
+### 8.7 Errores comunes y límites
+
+- Afirmaciones en el resumen más amplias de lo que sustenta cualquier tabla.
+- Preparar respuestas solo para preguntas amables.
+- Publicar una debilidad antes de informar al fabricante y al dueño.
+- Informes ejecutivos que convierten la incertidumbre en una sola fecha o puntuación.
+
+Cada error tiene una salvaguarda ya usada en este estudio: la auditoría de afirmaciones, un examinador simulado hostil, la cronología de divulgación acordada con el fabricante y con el dueño, y un informe que presenta incógnitas e intervalos en lugar de una fecha. Revise el informe con alguien ajeno al proyecto antes de que llegue al consejo.
+
+### Ejercicios — capítulo 8
+
+- **EX045 — Auditoría de afirmaciones.** Audite cinco frases asertivas de su párrafo de resultados del capítulo 5. Rúbrica: 3 = cada afirmación trazada hasta un artefacto, fallos reescritos.
+- **EX046 — Preguntas hostiles.** Escriba cinco preguntas hostiles del tribunal que no figuren en 8.2 y esboce las respuestas. Rúbrica: 3 = preguntas realmente difíciles, respuestas acotadas.
+- **EX047 — Orden de publicación.** Proponga y justifique un plan de tres artículos para una tesis propia. Rúbrica: 3 = cada artículo se sostiene solo; sin troceo en rodajas.
+- **EX048 — Cronología de divulgación.** Redacte una cronología de divulgación para la debilidad de degradación, incluido qué ocurre si el fabricante no responde. Rúbrica: 3 = cubre al dueño y al fabricante; la publicación describe la clase, no la receta.
+- **EX049 — Informe ejecutivo.** Redacte el informe de una página descrito en 8.5. Rúbrica: 3 = exacto, accionable, sin fechas ni afirmaciones de «seguro».
+- **EX050 — Qué lo cambiaría.** Enumere cuatro acontecimientos futuros y cómo cambiaría cada uno las conclusiones de la tesis. Rúbrica: 3 = incluye un acontecimiento criptoanalítico, uno de normas y uno de evidencia de campo.
+
+### Síntesis del capítulo
+
+La defensa es la auditoría final de afirmaciones: cada aserción tiene un artefacto, cada pregunta hostil tiene una respuesta acotada, las publicaciones se sostienen solas, las debilidades se divulgan antes de publicarse y quienes deciden reciben lo que se midió, no lo que esperaban oír.
+
+### Siga estudiando — capítulo 08 de 08
+
+[← Capítulo 07 (borrador)](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Resultados resueltos ↓](#worked-results) · [Siguiente curso desde el índice de capítulos →](../SUBJECTS.md)
 
 <a id="worked-results"></a>
 
@@ -539,6 +858,54 @@ Las respuestas son respuestas modelo para la autoevaluación; una respuesta dist
 **EX025.** Los hospitales que comparten una CA emisora filtran patrones de certificados entre particiones; particione por dominio de PKI, o mantenga los certificados de PKI compartida íntegramente en la partición de prueba y ajuste solo con rasgos ajenos a la PKI.
 
 **EX026.** «Seguir con enmienda: κ 0,62 se atribuye a la definición de "uso". Libro de códigos enmendado (alcanzable en la negociación; marca configurado-no-observado). Nueva prueba con 60 elementos de calibración nuevos; continuar si κ ≥ 0,70».
+
+**EX027.** La varianza de una diferencia pareada es Var(D) + Var(S) menos dos veces su covarianza; la detección por los dos métodos está muy correlacionada por elemento (ambos encuentran los elementos fáciles), así que el término de covarianza reduce sustancialmente la varianza.
+
+**EX028.** Calcule la exhaustividad dos veces —primero contando los 40 elementos disputados como usos vulnerables reales y después como no usos— e informe del intervalo junto a la estimación adjudicada: «ganancia de exhaustividad de 0,21 (0,19–0,22 según cómo se resuelvan las disputas)».
+
+**EX029.** Ventana de observación de 7, 14 o 30 días; canonización por DNS o por registro de activos; incluir o excluir lo configurado-no-observado; adjudicación por mayoría o por resolución de un tercer revisor.
+
+**EX030.** Exporte las reglas de fusión, los umbrales y el libro de códigos a un único archivo; calcule el SHA-256; publique el hash en un lugar con sello de tiempo (correo a la dirección de tesis y commit en el repositorio) atestiguado por la dirección; solo entonces descifre los datos de Marrow; vuelva a verificar el hash en el script de análisis.
+
+**EX031.** Ganancia esperada = Σ nᶜ(1−p_sᶜ)p_pᶜ / N = 0,089 para la mezcla de Marrow; el Lab 5 da 0,097, a menos de 0,03.
+
+**EX032.** «En dos organizaciones sintéticas, combinar la telemetría pasiva con el análisis estático encontró más usos vulnerables a la computación cuántica que el análisis estático solo (exhaustividad de +0,10 a +0,21) donde los sensores observaban el tráfico; no encontró usos de datos en reposo, y hasta el 14 % de los activos quedó sin determinar. Esto no es una evaluación de la seguridad frente a la computación cuántica».
+
+**EX033.** P. ej., «el tráfico estacional oculta servicios poco usados» → repetir con una ventana de 60 días; «los adjudicadores favorecen los activos documentados» → comparar la exhaustividad en los subconjuntos documentado y no documentado; «deriva de los codepoints» → reclasificar con el registro actual. Cada una puede mover la estimación.
+
+**EX034.** Afirmaciones H1, H3, H4; objeción desde el modelo de amenazas: híbrido negociado ≠ resistencia a la degradación → concesión y declaración de alcance; las demás como en 6.1.
+
+**EX035.** Zonas no vistas: certificados de TLS 1.3 sin registros de los extremos; firmas de firmware verificadas sin conexión; almacenamiento cifrado por terceros; tráfico tunelizado; segmentos no supervisados; soportes extraíbles.
+
+**EX036.** «Donde clientes y servidores negocian X25519MLKEM768, los intercambios de claves TLS registrados están diseñados para resistir un futuro descifrado cuántico si cualquiera de los dos componentes sigue siendo seguro; no quedan cubiertos las firmas de los certificados, el comportamiento ante la degradación, los datos almacenados ni los protocolos distintos de TLS».
+
+**EX037.** Publicar el corpus sintético, el código y los resultados agregados; retener los datos de saludos seudonimizados salvo que HRHN lo apruebe y se evalúe el riesgo de reidentificación; no publicar nunca capturas; las debilidades de productos van primero a los fabricantes.
+
+**EX038.** «Estamos de acuerdo en que la exhaustividad de usos no es riesgo. Hemos añadido una exhaustividad ponderada por sensibilidad (sección 5.6) con pesos según la vida útil de los datos, informamos de ambas y hemos cambiado en el resumen "riesgo" por "usos". Los pesos son una decisión de gobernanza, así que los publicamos para que puedan reponderarse».
+
+**EX039.** Datos: diferencias pareadas de Marrow; garantía: las reglas congeladas hacen de Marrow una auténtica prueba fuera de muestra; respaldo: hash de la configuración; matizador: con una ubicación de sensores similar; refutación: Marrow es sintético y difiere en la mezcla; afirmación: la ganancia ≥ 0,05 se transfiere.
+
+**EX040.** La reducción del riesgo exige que los usos encontrados se sustituyan antes de que x + y > z para sus datos, así que hace falta evidencia sobre el ritmo de remediación, la vida útil de los datos y las incógnitas residuales, y el inventario no mide ninguna de ellas.
+
+**EX041.** En `release`, compruebe `if n not in files: problems.append(f"{n}: missing")` antes de calcular el hash; la función debe seguir devolviendo BLOCKED ante cualquier problema.
+
+**EX042.** Ficha: generador sintético y semilla; mezcla (código 500, equipos 60, integrados 200, en reposo 140); instrumentos simulados; ningún host real; lagunas conocidas: no hay modelo de sensor SSH; etiquetas según el libro de códigos enmendado; prohibido: usarlo como evidencia sobre empresas logísticas reales.
+
+**EX043.** Ventana estacional → exhaustividad de los servicios poco usados infraestimada (dirección conocida, magnitud acotada repitiendo con 60 días); fatiga de los adjudicadores → ruido, dirección incierta; fecha de recuperación del registro → proporción híbrida infraestimada si faltan codepoints más recientes.
+
+**EX044.** «Si su inventario depende solo del escaneo de código y configuración, cuente con pasar por alto la criptografía de dentro de los equipos de los fabricantes. Donde pueda observar el tráfico, añada telemetría de los saludos; exija a los fabricantes que declaren los algoritmos; informe de cuántos activos no pudo evaluar. Nada de esto le dice cuándo llegarán los ordenadores cuánticos ni si se impide la degradación».
+
+**EX045.** Cada frase recibe peldaño, artefacto, incertidumbre y alcance; los fallos típicos son «organizaciones» (generalización) y «firmas» (punto ciego de TLS 1.3), y ambas se reescriben.
+
+**EX046.** P. ej., «¿Por qué fiarse en absoluto de organizaciones sintéticas?» → ponen a prueba la validez interna y el mecanismo del método; la validez externa queda explícitamente abierta. Las respuestas se mantienen acotadas.
+
+**EX047.** Artículo de replicación; estudio principal con validación; artículo de conjunto de datos, cada uno con su propia pregunta y su propia evidencia.
+
+**EX048.** Día 0, confirmar en el banco de pruebas; día 1, notificar al fabricante y a HRHN; día 30, comprobar el estado; día 90, publicar un aviso a nivel de clase, escalando a un coordinador (p. ej., un CERT nacional) si el fabricante guarda silencio.
+
+**EX049.** El informe de 8.5, con el alcance medido, el hallazgo, las incógnitas, la decisión solicitada y las no afirmaciones explícitas.
+
+**EX050.** Un ataque práctico contra ML-KEM (criptoanalítico) → aumenta la importancia del híbrido, el inventario no cambia; normas definitivas de FN-DSA/HQC (normas) → cambian las listas de algoritmos; revisión de IR 8547 (política) → cambia la priorización; una replicación en una organización real (evidencia de campo) → se pone a prueba la validez externa.
 
 <a id="references"></a>
 
