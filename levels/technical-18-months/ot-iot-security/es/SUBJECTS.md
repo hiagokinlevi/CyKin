@@ -21,12 +21,12 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 | 2 | [09](book/PLAN.md#ch-09) | Leer registros y alarmas | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-09) | [10 · Borrador](book/MANUSCRIPT.md#ch-10) |
 | 2 | [10](book/PLAN.md#ch-10) | Parches y avisos de seguridad | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-10) | [11 · Borrador](book/MANUSCRIPT.md#ch-11) |
 | 2 | [11](book/PLAN.md#ch-11) | Copias de seguridad y restauración | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-11) | [12 · Borrador](book/MANUSCRIPT.md#ch-12) |
-| 2 | [12](book/PLAN.md#ch-12) | Segmentación y reglas del cortafuegos | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-12) | [13 · Plan](book/PLAN.md#ch-13) |
-| 3 | [13](book/PLAN.md#ch-13) | Dispositivos IoT en la planta de fabricación | 66 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-13)) | [14 · Plan](book/PLAN.md#ch-14) |
-| 3 | [14](book/PLAN.md#ch-14) | Reconocer el comportamiento anómalo | 66 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-14)) | [15 · Plan](book/PLAN.md#ch-15) |
-| 3 | [15](book/PLAN.md#ch-15) | Notificar un incidente y primeras acciones | 66 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-15)) | [16 · Plan](book/PLAN.md#ch-16) |
-| 3 | [16](book/PLAN.md#ch-16) | Recuperación y vuelta a la producción | 66 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-16)) | [17 · Plan](book/PLAN.md#ch-17) |
-| 3 | [17](book/PLAN.md#ch-17) | Gestión de cambios y documentación | 66 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-17)) | [18 · Plan](book/PLAN.md#ch-18) |
-| 3 | [18](book/PLAN.md#ch-18) | Proyecto final: un recorrido de seguridad por la línea | 66 | 30 | 4 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-18)) | [Curso 069 →](../../critical-sector-security/es/SUBJECTS.md) |
+| 2 | [12](book/PLAN.md#ch-12) | Segmentación y reglas del cortafuegos | 67 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-12) | [13 · Borrador](book/MANUSCRIPT.md#ch-13) |
+| 3 | [13](book/PLAN.md#ch-13) | Dispositivos IoT en la planta de fabricación | 66 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-13) | [14 · Borrador](book/MANUSCRIPT.md#ch-14) |
+| 3 | [14](book/PLAN.md#ch-14) | Reconocer el comportamiento anómalo | 66 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-14) | [15 · Borrador](book/MANUSCRIPT.md#ch-15) |
+| 3 | [15](book/PLAN.md#ch-15) | Notificar un incidente y primeras acciones | 66 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-15) | [16 · Borrador](book/MANUSCRIPT.md#ch-16) |
+| 3 | [16](book/PLAN.md#ch-16) | Recuperación y vuelta a la producción | 66 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-16) | [17 · Borrador](book/MANUSCRIPT.md#ch-17) |
+| 3 | [17](book/PLAN.md#ch-17) | Gestión de cambios y documentación | 66 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-17) | [18 · Borrador](book/MANUSCRIPT.md#ch-18) |
+| 3 | [18](book/PLAN.md#ch-18) | Proyecto final: un recorrido de seguridad por la línea | 66 | 30 | 4 | [Borrador](book/MANUSCRIPT.md#ch-18) | [Curso 069 →](../../critical-sector-security/es/SUBJECTS.md) |
 
 Un siguiente paso planificado es un destino de navegación, no una lección escrita. Las columnas de páginas y ejercicios son metas editoriales. El libro solo estará completo cuando su contenido y su maquetación A4 cumplan el criterio de publicación.

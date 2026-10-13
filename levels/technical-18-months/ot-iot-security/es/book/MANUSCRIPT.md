@@ -28,7 +28,7 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [serie I
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](../../en/book/MANUSCRIPT.md#ch-13) · [14](../../en/book/MANUSCRIPT.md#ch-14) · [15](../../en/book/MANUSCRIPT.md#ch-15) · [16](../../en/book/MANUSCRIPT.md#ch-16) · [17](../../en/book/MANUSCRIPT.md#ch-17) · [18](../../en/book/MANUSCRIPT.md#ch-18) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
 
@@ -727,7 +727,329 @@ Las zonas se separan mediante conductos documentados y con responsable; las regl
 
 ### Siga estudiando — capítulo 12 de 18
 
-[← Capítulo 11 (borrador)](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 13 (borrador) →](../../en/book/MANUSCRIPT.md#ch-13)
+[← Capítulo 11 (borrador)](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 13 (borrador) →](#ch-13)
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Dispositivos IoT en la planta de fabricación
+
+### Resultados de aprendizaje
+
+Usted podrá (1) identificar los dispositivos IoT de una línea; (2) contrastarlos con una base de disposiciones de ETSI EN 303 645; y (3) decidir cómo conectarlos de forma segura.
+
+### 13.1 Qué cuenta aquí como IoT
+
+Contadores de energía inteligentes, sensores de vibración inalámbricos, la cámara de visión, una impresora de etiquetas conectada a la nube y las tabletas que usa el personal de calidad. A menudo llegan a través de compras y no de ingeniería, así que nadie los revisa antes. En HPFL el equipo de calidad pidió sensores de vibración inalámbricos para los motores de la envolvedora, y la cámara de visión ya está instalada. Cada uno de estos dispositivos debería figurar en el registro, con un responsable y la red que usa. Compras debería implicar al responsable de la red antes de hacer el pedido. Pida a compras que le informe de cada dispositivo en red que se encargue.
+
+### 13.2 Una base con la que comparar
+
+ETSI EN 303 645 establece disposiciones básicas de seguridad para la IoT de consumo, y NIST IR 8259 describe lo que deberían hacer los fabricantes. Ambas son también listas de comprobación útiles para los dispositivos de planta. Preguntas que hacer a un proveedor: ¿hay contraseñas predeterminadas universales? ¿Hay alguna forma de notificar vulnerabilidades? ¿Se proporcionarán actualizaciones de software y durante cuánto tiempo? ¿Está cifrada la comunicación? ¿Puede restablecerse el dispositivo y borrarse sus datos? Envíe las preguntas al proveedor antes de la compra y guarde las respuestas con el expediente de compra. Cuando sea posible, compruebe las afirmaciones en la entrega: ¿obliga el dispositivo a cambiar la contraseña durante la configuración y usa realmente TLS? Una respuesta que no puede comprobarse sigue siendo útil, pero debe marcarse como afirmación del proveedor.
+
+### 13.3 Conectar de forma segura
+
+Los dispositivos IoT que se comunican con la nube de un proveedor van en su propio segmento, no en la VLAN de la línea. Permita solo las direcciones de la nube que necesitan, impida que alcancen los PLC y regístrelos con un responsable y un plan de actualizaciones. En HPFL el responsable de la red eligió una VLAN IoT nueva para la pasarela de VIB-1 a VIB-4, en lugar de la VLAN 20 de la línea, porque los sensores informan a la nube de un proveedor. Tras la instalación, compruebe con el responsable de la red que la pasarela no puede alcanzar los PLC, mediante una revisión de las reglas y no sondeando.
+
+### 13.4 Fin del soporte
+
+Cuando un proveedor deja de publicar actualizaciones, planifique la sustitución. Un sensor barato sin parches durante años en la red de la línea es un punto de apoyo fácil. Anote en el registro el periodo de soporte declarado por el proveedor, para poder planificar el fin del soporte con mucha antelación. En HPFL el proveedor de los sensores de vibración prometió actualizaciones durante cinco años; la fecha de sustitución debe figurar en el registro junto a la entrada del dispositivo. Si un dispositivo debe seguir en uso tras el fin del soporte, refuerce su aislamiento y anote la decisión con una fecha de revisión. Avise al responsable con suficiente antelación para que pueda planificarse el presupuesto.
+
+### Ejemplo resuelto (HPFL sintética)
+
+Calidad quiere sensores de vibración inalámbricos VIB-1 a VIB-4 en los motores de la envolvedora, que informen a la nube de un proveedor. Tomás envía al proveedor las cinco preguntas. Respuestas: contraseñas únicas por dispositivo, una dirección de divulgación publicada, actualizaciones durante cinco años, TLS hacia la nube y restablecimiento de fábrica documentado. El responsable de la red coloca la pasarela de los sensores en una VLAN IoT nueva a la que solo se permite llegar a las direcciones de la nube del proveedor.
+
+> **Caso sintético — HPFL.** Los sensores y las respuestas del proveedor son inventados.
+
+### Errores y límites
+
+Las respuestas del proveedor son afirmaciones; compruebe lo que pueda (por ejemplo, que el dispositivo obligó a cambiar la contraseña durante la configuración). ETSI EN 303 645 se dirige a productos de consumo, así que los dispositivos industriales pueden necesitar requisitos adicionales de IEC 62443-4-2.
+
+### Ejercicios — capítulo 13
+
+- **EX049 — Detectar la IoT.** Enumere tres dispositivos IoT que podrían aparecer en HPFL fuera de los planos de ingeniería. *Rúbrica:* 3 = tres dispositivos plausibles; 2 = dos; 1 = uno; 0 = nada.
+- **EX050 — Preguntas al proveedor.** Escriba las cinco preguntas básicas para un proveedor. *Rúbrica:* 3 = contraseñas predeterminadas, divulgación, periodo de actualizaciones, cifrado, restablecimiento y borrado; 2 = cuatro; 1 = dos; 0 = nada.
+- **EX051 — Ubicación.** ¿Dónde debería conectarse la pasarela de los sensores VIB y qué debería poder alcanzar? *Rúbrica:* 3 = VLAN IoT separada; solo la nube del proveedor; sin acceso a los PLC; 2 = solo separada; 1 = VLAN de la línea; 0 = nada.
+- **EX052 — Fin de las actualizaciones.** El proveedor de la impresora de etiquetas anuncia el fin del soporte. ¿Qué anota y planifica Tomás? *Rúbrica:* 3 = estado en el registro, nota de riesgo, aislamiento compensatorio, plan y fecha de sustitución; 2 = parte; 1 = ignorarlo; 0 = nada.
+
+### Síntesis del capítulo
+
+La IoT de la planta se contrasta con una base, se aísla para que solo tenga lo que necesita y se sustituye cuando termina el soporte.
+
+### Siga estudiando — capítulo 13 de 18
+
+[← Capítulo 12 (borrador)](#ch-12) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 14 (borrador) →](#ch-14)
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Reconocer el comportamiento anómalo
+
+### Resultados de aprendizaje
+
+Usted podrá (1) describir cómo es lo normal en la línea HPFL; (2) reconocer señales que pueden indicar un ataque o una avería; y (3) usar los nombres de ATT&CK for ICS para describir lo que vio.
+
+### 14.1 Conocer lo normal
+
+Los operadores conocen el sonido, el ritmo y las pantallas de la línea. Los técnicos añaden lo normal de la red y de los sistemas: qué dispositivos se comunican, qué cuentas inician sesión, con qué frecuencia cambian los programas. Déjelo por escrito; lo «normal» que solo está en la cabeza de las personas desaparece con los cambios de turno. En HPFL, Tomás ya anotó que las escrituras solo llegan desde HMI-1 y ENG-LT. Notas similares pueden cubrir las horas habituales de inicio de sesión, la frecuencia con que cambian los programas de los PLC y qué dispositivos aparecen en la red. Guárdelas en el registro o en un documento compartido, fechadas y actualizadas tras los cambios.
+
+### 14.2 Señales que hay que notificar
+
+Un punto de consigna cambia sin que nadie pulse un botón. Las pantallas de la HMI se congelan o muestran valores que no coinciden con los indicadores locales. Aparece en el registro una descarga de programa sin trabajo asociado. Aparece un dispositivo nuevo en la red. Se producen sesiones remotas fuera de un ticket. La línea se detiene sin causa mecánica. Notifique cualquiera de estas señales con la hora, el dispositivo y lo que vio, y adjunte fotografías o líneas del registro cuando pueda. En HPFL, una discrepancia entre HMI-1 y un termómetro portátil resultó ser un sensor averiado, pero aun así la notificación permitió un diagnóstico rápido.
+
+### 14.3 Poner nombre a lo que vio
+
+MITRE ATT&CK for ICS ofrece nombres compartidos: T0836 Modify Parameter para puntos de consigna alterados, T0886 Remote Services para el uso indebido del acceso remoto, T0843 Program Download para cambios de lógica inesperados. Usar estos nombres en un informe ayuda al equipo de seguridad, pero notifique lo que observó, no una suposición sobre el atacante. Los nombres ayudan cuando se comparan informes de distintos turnos o emplazamientos. Escriba primero la observación y después el nombre de la técnica si encaja: por ejemplo, la cuenta de administrador cambió la velocidad de la envolvedora de 120 a 180 a las 07:45, lo que encaja con Modify Parameter. Deje la intención y la atribución al equipo de seguridad.
+
+### 14.4 ¿Avería o ataque?
+
+La mayoría de los eventos anómalos son averías o errores. Al principio eso no importa: la respuesta es la misma (mantener a las personas a salvo, preservar la evidencia, notificar). La causa se decide después. En HPFL la discrepancia de temperatura era un sensor averiado, y el cambio de velocidad era un ajuste bienintencionado de un operador. Ambos se gestionaron con los mismos pasos: poner en condiciones seguras, registrar, notificar. La causa se encontró después, gracias a la evidencia que se había conservado. Tratar todos los eventos de la misma manera también evita situaciones incómodas: no se acusa a nadie y no se descarta nada demasiado pronto.
+
+### 14.5 Qué no hacer
+
+No reinicie dispositivos, borre registros, desconecte cables ni «arregle» valores antes de que el supervisor y el ingeniero estén de acuerdo; podría destruir la evidencia de lo ocurrido o crear un peligro nuevo. El supervisor decide si la línea sigue funcionando; el ingeniero decide cómo examinar los dispositivos. Su parte es fotografiar, anotar la hora y llamar. Si un peligro exige una acción inmediata, siga los procedimientos de seguridad habituales y anote lo que hizo. En HPFL, Tomás fotografió las dos lecturas de temperatura y llamó al supervisor; no restableció el sensor. Esa contención conservó la evidencia que después mostró la causa.
+
+### Ejemplo resuelto (HPFL sintética)
+
+HMI-1 muestra la llenadora a temperatura normal, pero el termómetro portátil del operador marca 12 °C más. Tomás fotografía ambas lecturas, anota la hora y llama al supervisor, que detiene la llenadora de forma segura. Más tarde el ingeniero encuentra un sensor averiado (una avería, no un ataque), pero la evidencia agilizó el diagnóstico.
+
+> **Caso sintético — HPFL.** Las lecturas son inventadas.
+
+### Errores y límites
+
+Una lista de señales nunca es completa; confíe en los operadores con experiencia que dicen «esto no está bien». ATT&CK describe técnicas, no certezas sobre la intención.
+
+### Ejercicios — capítulo 14
+
+- **EX053 — La HMI no coincide con el indicador.** ¿Qué sugiere una diferencia entre la HMI y un indicador local, y cuál es la primera acción? *Rúbrica:* 3 = avería del sensor o pantalla manipulada; mantener seguro o detener a través del supervisor, registrar la evidencia; 2 = una parte; 1 = confiar en la HMI; 0 = nada.
+- **EX054 — Asociar técnicas.** Asocie con ATT&CK for ICS: (a) descarga de programa no planificada; (b) sesión de proveedor fuera de ticket; (c) valor de velocidad cambiado. *Rúbrica:* 3 = T0843, T0886, T0836; 2 = dos; 1 = una; 0 = nada.
+- **EX055 — La misma respuesta.** ¿Por qué la respuesta inicial es la misma ante una avería y ante un ataque? *Rúbrica:* 3 = primero la seguridad y la evidencia; al principio se desconoce la causa; 2 = parcial; 1 = «no lo es»; 0 = nada.
+- **EX056 — Dejar por escrito lo normal.** Dé tres elementos para una hoja de «lo normal» de HPFL. *Rúbrica:* 3 = tres elementos concretos (quién se comunica, patrón de inicios de sesión, frecuencia de cambios, etc.); 2 = dos; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+Conocer lo normal permite advertir lo anómalo; responda por la seguridad y la evidencia antes de decidir la causa.
+
+### Siga estudiando — capítulo 14 de 18
+
+[← Capítulo 13 (borrador)](#ch-13) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 15 (borrador) →](#ch-15)
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Notificar un incidente y primeras acciones
+
+### Resultados de aprendizaje
+
+Usted podrá (1) seguir los pasos de primera respuesta de HPFL; (2) redactar una primera notificación clara; y (3) explicar por qué la evidencia se preserva antes de empezar la recuperación.
+
+### 15.1 Primeros pasos
+
+Ponga a salvo a las personas: el supervisor decide si detener o aislar la parte afectada de la línea siguiendo los procedimientos habituales. Después llame al contacto para incidentes que figura en la hoja del emplazamiento. Anote lo que ve a medida que avanza. No intente eliminar el malware ni restaurar sistemas usted mismo. En HPFL el supervisor de noche pasó la línea a control local desde el panel y detuvo la envolvedora antes de que ocurriera nada más. Después Tomás fotografió la pantalla y llamó al contacto para incidentes. Seguir los pasos en orden mantiene a salvo a las personas y deja intacta la evidencia.
+
+### 15.2 Una buena primera notificación
+
+Responde a: qué advirtió, dónde, cuándo, qué dispositivos, qué está haciendo ahora la línea, qué se ha hecho hasta el momento y a quién ha avisado. Los hechos breves valen más que las teorías largas. NIST SP 800-82r3 subraya que la respuesta a incidentes de TO debe planificarse con operaciones, porque las acciones tomadas con pánico pueden dañar el proceso. En HPFL la notificación de Tomás cabía en una frase por punto y se envió en pocos minutos. Las correcciones posteriores se añadieron por escrito, sin modificar la primera notificación. Guarde una copia de cada notificación que envíe, con la hora.
+
+### 15.3 Preservar la evidencia
+
+Fotografíe las pantallas, lleve una cronología escrita y deje los dispositivos como están salvo que la seguridad exija lo contrario. Si hay que aislar un dispositivo, lo hace el ingeniero con un método planificado (por ejemplo, desactivando un puerto del conmutador) y anota exactamente cuándo. Mantenga la cronología escrita en el orden en que ocurrieron los hechos, con horas tomadas de una sola referencia, como su reloj, y anote cualquier diferencia de reloj conocida entre dispositivos. Las fotografías deben mostrar juntos el nombre del dispositivo y la pantalla. Guarde las fotografías junto con la cronología en un solo lugar.
+
+### 15.4 Comunicación
+
+Use la lista de contactos del emplazamiento. No publique nada sobre el incidente en redes sociales ni en grupos de chat. No contacte con proveedores ni autoridades por su cuenta salvo que se lo pida el responsable del incidente. En HPFL el responsable del incidente decide quién habla con proveedores, clientes y autoridades. Evite especular con los compañeros sobre la causa, porque los rumores se extienden rápido en la planta. Si alguien de fuera le pregunta por el incidente, remítalo al responsable del incidente. Use los teléfonos de la hoja del emplazamiento, no números guardados a título personal, porque esos se mantienen al día.
+
+### 15.5 Obligaciones de notificación
+
+Algunos sectores y países exigen notificar a los reguladores o a CISA en plazos fijados; de eso se encarga el responsable del incidente, pero es su cronología la que lo hace posible. En HPFL la cronología de Tomás, con sus horas y fotografías, dio al responsable del incidente lo necesario para cualquier notificación obligatoria. Manténgala exacta y completa, y transmita las correcciones al responsable por escrito en cuanto las detecte. Las horas son lo que más importa: cuándo se advirtió el evento, cuándo se notificó y cuándo se detuvo la línea. Anótelas en el momento en lugar de reconstruirlas después.
+
+### Ejemplo resuelto (HPFL sintética)
+
+A las 03:10, HMI-1 muestra un mensaje de rescate. Tomás avisa al supervisor de noche, que pasa la línea a control local desde el panel y detiene la envolvedora. Tomás fotografía la pantalla y llama al contacto para incidentes a las 03:14. Su notificación dice: «03:10 pantalla de rescate en HMI-1; línea en control local, envolvedora detenida a las 03:12; no se han visto otras pantallas afectadas; no se ha desconectado nada; supervisor informado».
+
+> **Caso sintético — HPFL.** El incidente es inventado.
+
+### Errores y límites
+
+Las listas de contactos se quedan desactualizadas; revíselas cada trimestre. Una primera notificación puede ser errónea; corríjala por escrito en lugar de borrarla.
+
+### Ejercicios — capítulo 15
+
+- **EX057 — Ordenar los pasos.** Ordene: llamar al contacto para incidentes; el supervisor pone la línea en condiciones seguras; fotografiar la pantalla; restaurar la HMI. *Rúbrica:* 3 = seguridad, fotografía, llamada; la restauración, después y a cargo de los responsables; 2 = casi todo bien; 1 = restaurar primero; 0 = nada.
+- **EX058 — Mejorar una notificación.** Reescriba «la HMI está hackeada, seguramente son rusos» como una primera notificación basada en hechos. *Rúbrica:* 3 = hora, dispositivo, observación, estado de la línea, acciones, a quién se avisó; sin especulación; 2 = parcial; 1 = sigue especulando; 0 = nada.
+- **EX059 — Desconectar.** Un compañero quiere desconectar de inmediato el cable de red de HMI-1. ¿Qué le dice? *Rúbrica:* 3 = aislar solo a través del supervisor o el ingeniero, de forma planificada y registrada; seguridad y evidencia; 2 = esperar; 1 = hacerlo; 0 = nada.
+- **EX060 — Quién notifica.** ¿Quién decide si se notifica a los reguladores o a CISA? *Rúbrica:* 3 = el responsable del incidente o la dirección; el técnico aporta la cronología; 2 = solo el responsable; 1 = el técnico solo; 0 = nada.
+
+### Síntesis del capítulo
+
+Primero la seguridad; después, hechos registrados, evidencia preservada y llamada a las personas adecuadas; la recuperación viene luego.
+
+### Siga estudiando — capítulo 15 de 18
+
+[← Capítulo 14 (borrador)](#ch-14) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 16 (borrador) →](#ch-16)
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Recuperación y vuelta a la producción
+
+### Resultados de aprendizaje
+
+Usted podrá (1) describir los pasos para restablecer una línea tras un incidente; (2) verificar los sistemas restaurados antes de volver a arrancar; y (3) explicar por qué las lecciones aprendidas deben cambiar algo.
+
+### 16.1 Orden de la recuperación
+
+La recuperación la planifican el responsable del incidente, el ingeniero de control y operaciones. Normalmente: confirmar que la causa está contenida, reconstruir los ordenadores afectados a partir de imágenes en buen estado conocido, restaurar los programas de los PLC desde copias verificadas (capítulo 11), cambiar las contraseñas que puedan estar expuestas y, después, probar. En HPFL, HMI-1 se reconstruyó a partir de la imagen del fabricante, los programas de ambos PLC se compararon con copias coincidentes y se cambió la contraseña de administrador. Seguir este orden evita volver a arrancar con un problema aún presente. Cada paso se anota con su hora y la persona que lo hizo.
+
+### 16.2 Verificación antes de volver a arrancar
+
+Compare los programas restaurados de los PLC con las copias verificadas, compruebe que las pantallas de la HMI muestran valores correctos frente a los indicadores locales, confirme que las reglas del cortafuegos coinciden con la tabla aprobada y haga pasar la línea en vacío por un ciclo de prueba. Calidad da su conformidad antes de que se procese producto. En HPFL el ciclo de prueba funcionó en vacío durante 30 minutos y calidad dio su conformidad a las 11:20, antes de reanudar la producción. Anote cada comprobación y su resultado en el expediente del incidente. Si alguna comprobación falla, la línea no vuelve a arrancar hasta que se entienda la causa. Guarde los resultados de las comparaciones con el expediente del incidente.
+
+### 16.3 Vigilar después
+
+A veces los atacantes vuelven. Durante los días posteriores al rearranque, vigile más de cerca los inicios de sesión, las sesiones remotas y los dispositivos nuevos, y notifique de inmediato cualquier cosa inusual. Acuerde con el supervisor cuánto dura el periodo de vigilancia y quién revisa los registros cada día. En HPFL la reunión de lecciones aprendidas encontró un puerto de escritorio remoto accesible desde internet abierto por un contratista, lo que hace especialmente importante vigilar de cerca las sesiones remotas. Notifique cualquier cosa inusual al responsable del incidente, no solo a su turno. Anote en el expediente del incidente la fecha de fin del periodo de vigilancia para que no caduque sin que nadie lo note.
+
+### 16.4 Lecciones aprendidas
+
+Una reunión breve en las dos semanas siguientes responde a: qué ocurrió, qué funcionó, qué no y qué cambia. Cada cambio tiene un responsable y una fecha. Una sesión de lecciones aprendidas que no cambia nada ha fracasado. En HPFL la reunión de lecciones aprendidas encargó al responsable de la red cerrar el puerto de escritorio remoto de HMI-1 y hacer una comprobación mensual. Cada acción se sigue hasta que está hecha y se demuestra eficaz, y las actas de la reunión se guardan con el expediente del incidente. Invite a los operadores que estaban de turno; a menudo saben qué funcionó.
+
+### 16.5 Conservación de registros
+
+Guarde juntos la cronología, las fotografías, las decisiones y los resultados de las pruebas. Sirven para el seguro, los reguladores y la próxima mejora. Guarde los registros juntos en una sola carpeta o ticket, con el acceso limitado a quienes los necesitan. Incluya la primera notificación, sus correcciones, las fotografías y los resultados del ciclo de prueba. Así el siguiente recorrido podrá comprobar si se aplicaron las lecciones. Conserve los registros durante el tiempo que exija la política del emplazamiento y anote quién puede leerlos. Cuando una aseguradora o un regulador haga una pregunta meses después, la respuesta debe salir de estos registros y no de la memoria, que se desvanece rápido.
+
+### 16.6 Comunicar el rearranque
+
+Explique a cada turno qué ha cambiado: contraseñas nuevas, pantallas que se ven distintas y qué señales inusuales deben notificarse durante el periodo de vigilancia. En HPFL eso supuso decir a cada turno que la contraseña de administrador había cambiado y que debían notificarse las sesiones remotas inesperadas o los dispositivos nuevos. Una nota breve por escrito junto a HMI-1, sin contraseñas, ayuda a quienes se perdieron la sesión informativa. Informe en persona a los dos turnos siguientes si es posible y pídales que confirmen que lo han entendido. Las preguntas que surgen en estas sesiones suelen mostrar dónde debe aclararse el procedimiento, así que anótelas también.
+
+### Ejemplo resuelto (HPFL sintética)
+
+Tras el incidente del rescate, HMI-1 se reconstruye a partir de la imagen del fabricante; los programas de ambos PLC se comparan con copias coincidentes y no presentan cambios. Se cambia la contraseña de administrador. Un ciclo de prueba funciona en vacío durante 30 minutos, calidad da su conformidad a las 11:20 y se reanuda la producción. La reunión de lecciones aprendidas descubre que HMI-1 tenía un puerto de escritorio remoto accesible desde internet abierto por un contratista; la acción (cerrarlo y añadir una comprobación mensual) se asigna al responsable de la red.
+
+> **Caso sintético — HPFL.** La recuperación es inventada.
+
+### Errores y límites
+
+Restaurar una copia hecha después del compromiso vuelve a cargar el problema; importan las fechas y los hashes verificados. La presión para volver a arrancar rápido es real; el ciclo de prueba no es negociable.
+
+### Ejercicios — capítulo 16
+
+- **EX061 — Orden de la recuperación.** Ordene: ciclo de prueba; reconstruir la HMI; conformidad de calidad; cambiar contraseñas; confirmar la contención. *Rúbrica:* 3 = contención, reconstrucción, contraseñas, prueba, conformidad; 2 = casi todo; 1 = al azar; 0 = nada.
+- **EX062 — Comprobaciones de verificación.** Nombre tres comprobaciones antes de volver a arrancar la línea. *Rúbrica:* 3 = programas frente a copia verificada, HMI frente a indicadores, reglas del cortafuegos, ciclo de prueba en vacío; 2 = dos; 1 = una; 0 = nada.
+- **EX063 — Copia inadecuada.** ¿Por qué podría ser un error restaurar una copia del día del incidente? *Rúbrica:* 3 = puede contener el cambio del atacante; usar una copia verificada anterior al incidente; 2 = parcial; 1 = no hay problema; 0 = nada.
+- **EX064 — Convertir una lección en acción.** Escriba la acción de la reunión de lecciones aprendidas de HPFL con forma de responsable y fecha. *Rúbrica:* 3 = cerrar el puerto RDP más comprobación mensual, responsable de la red, fecha; 2 = sin responsable o fecha; 1 = «tener cuidado»; 0 = nada.
+
+### Síntesis del capítulo
+
+Recupere en orden, verifique antes de volver a arrancar, vigile después y convierta las lecciones en acciones con responsable.
+
+### Siga estudiando — capítulo 16 de 18
+
+[← Capítulo 15 (borrador)](#ch-15) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 17 (borrador) →](#ch-17)
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Gestión de cambios y documentación
+
+### Resultados de aprendizaje
+
+Usted podrá (1) explicar por qué cada cambio en la línea necesita un ticket; (2) redactar una solicitud de cambio con un plan de vuelta atrás; y (3) mantener los planos y los registros al día con la realidad.
+
+### 17.1 Por qué el control de cambios es seguridad
+
+La mayoría de los problemas en las plantas vienen de cambios que nadie registró: una regla de cortafuegos añadida con prisas, un programa editado durante una avería, una cámara atornillada por un contratista. El control de cambios significa que cada cambio se solicita, se revisa, se aprueba, se ejecuta y se registra. También facilita advertir un cambio no registrado, que puede ser la primera señal de un ataque. En HPFL varios problemas de este libro empezaron como cambios no registrados: el programa de la envolvedora editado del capítulo 11, la regla de cortafuegos temporal del capítulo 12 y el puerto de escritorio remoto del capítulo 16. Con un ticket, cada uno habría sido visible antes.
+
+### 17.2 Una solicitud de cambio
+
+Indica qué cambiará, por qué, en qué dispositivos, quién lo hace, cuándo, el riesgo para el proceso, cómo se comprueba el éxito y cómo deshacerlo. Los cambios de emergencia durante una avería están permitidos, pero se registran después, dentro del mismo turno. En HPFL la solicitud de Tomás para la actualización de VIS-CAM cubría todo esto en pocas líneas. Mantenga el formulario breve para que la gente lo use de verdad. Quien aprueba comprueba que la prueba de éxito y la vuelta atrás son realistas antes de dar su acuerdo.
+
+### 17.3 Vuelta atrás
+
+Antes del cambio, guarde el programa o la configuración actual y su hash. Si la comprobación falla, restáurelo. Un cambio sin vuelta atrás es una apuesta. En HPFL la vuelta atrás para VIS-CAM consistía en reinstalar el firmware 1.0.7 desde un archivo guardado con su hash anotado. Compruebe que el archivo guardado está completo antes de empezar el cambio. Si la propia vuelta atrás falla, deténgase y llame al ingeniero de control. En HPFL los hashes de los archivos guardados se anotaban en el ticket de cambio, de modo que un archivo restaurado podía comprobarse antes de cargarlo. Sin eso, una vuelta atrás podría cargar una copia corrupta o editada sin que nadie lo advirtiera.
+
+### 17.4 Mantener los documentos al día
+
+Actualice el registro de activos, el plano de red y la tabla de reglas en el mismo ticket. Marque los planos con un número de revisión y una fecha. En HPFL el plano de red seguía en la revisión 3 mientras que la VLAN IoT solo aparecía en los borradores de la revisión 4, algo que encontró el recorrido del proyecto final. Actualizar los documentos en el mismo ticket evita que se abra ese hueco. Cuando cambia un plano, marque la revisión antigua como superada y consérvela, para que las decisiones pasadas sigan pudiendo entenderse. Compruebe los números de revisión en cada recorrido; un plano cuya revisión va por detrás de la realidad es en sí mismo un hallazgo, como comprobó HPFL.
+
+### 17.5 Revisores
+
+La persona que hace un cambio no debería ser la única que lo aprueba. En HPFL el ingeniero de control revisa los cambios de programa, el responsable de la red revisa los cambios del cortafuegos y de los conmutadores, y el supervisor confirma la ventana de producción. Un segundo par de ojos detecta errores de tecleo en direcciones y valores antes de que lleguen a la línea. Anote el nombre del revisor en el ticket. Si la única persona que puede revisar no está disponible, espere a la siguiente ventana salvo que el cambio sea de emergencia.
+
+### Ejemplo resuelto (HPFL sintética)
+
+El proveedor de la cámara de visión necesita instalar el firmware 1.1.0 en VIS-CAM. Tomás escribe: «Cambio 512: actualizar VIS-CAM de 1.0.7 a 1.1.0 para corregir la precisión de los rechazos; lo hace el técnico de calidad; martes a las 06:00, parada planificada; riesgo: los rechazos dejan de funcionar; comprobación: 20 paquetes de prueba, incluidos 5 con sellado defectuoso, rechazados; vuelta atrás: reinstalar 1.0.7 desde el archivo guardado, con el hash anotado». La actualización supera la comprobación y el registro muestra 1.1.0.
+
+> **Caso sintético — HPFL.** El cambio y la corrección del proveedor son inventados.
+
+### Errores y límites
+
+El control de cambios puede convertirse en puro papeleo; mantenga los formularios breves y exija los campos clave. Los cambios de emergencia no deben convertirse en la vía normal.
+
+### Ejercicios — capítulo 17
+
+- **EX065 — Campos de una solicitud.** Enumere seis campos de una solicitud de cambio. *Rúbrica:* 3 = qué, por qué, dispositivos, quién, cuándo, riesgo, comprobación, vuelta atrás (seis cualesquiera); 2 = cuatro; 1 = dos; 0 = nada.
+- **EX066 — Edición durante una avería.** El ingeniero edita PLC-FILL durante una avería a las 2 de la madrugada. ¿Qué debe ocurrir después? *Rúbrica:* 3 = se registra como cambio de emergencia dentro del turno, nueva copia y hash, registro actualizado; 2 = solo registrarlo; 1 = nada; 0 = nada.
+- **EX067 — Comprobación fallida.** La prueba de VIS-CAM deja pasar 2 de 5 sellados defectuosos. ¿Qué ocurre a continuación? *Rúbrica:* 3 = vuelta atrás a 1.0.7, verificar, registrar el fallo, contactar con el proveedor; 2 = vuelta atrás; 1 = funcionar igualmente; 0 = nada.
+- **EX068 — Cambio no registrado.** ¿Por qué merece notificarse un cambio no registrado aunque parezca inofensivo? *Rúbrica:* 3 = puede ser no autorizado o señal de ataque; rompe la línea base y las copias; 2 = uno; 1 = ignorarlo; 0 = nada.
+
+### Síntesis del capítulo
+
+Los cambios solicitados, revisados, reversibles y registrados mantienen la línea conocida; los no registrados son señales de alerta.
+
+### Siga estudiando — capítulo 17 de 18
+
+[← Capítulo 16 (borrador)](#ch-16) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 18 (borrador) →](#ch-18)
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Proyecto final: un recorrido de seguridad por la línea
+
+### Resultados de aprendizaje
+
+Usted podrá (1) combinar las habilidades del libro en un recorrido planificado; (2) elaborar una lista breve de hallazgos con prioridades; y (3) presentarla al supervisor y al ingeniero.
+
+### 18.1 Planificación
+
+Acuerde con el supervisor el alcance, la fecha y el permiso: qué armarios, qué registros, ninguna conexión a dispositivos, condiciones de parada. Lleve el registro de activos, el plano de red, la tabla de reglas y los registros de soportes y de acceso remoto. Escriba el plan en el permiso: la franja horaria, los armarios que abrirá un electricista, los registros que se revisarán y las condiciones de parada. En HPFL el recorrido tenía un permiso de dos horas. Acuerde de antemano quién recibirá los hallazgos y cuándo. Reserve la fecha con antelación para que operaciones pueda organizarse.
+
+### 18.2 Qué comprobar
+
+Físico: armarios cerrados con llave, ningún módem ni conmutador sin explicación, ninguna contraseña en los paneles, ninguna memoria USB suelta. Registros: registro de activos completo, copias recientes y con hashes coincidentes, avisos registrados, cambios cerrados. Acceso: cuentas de proveedores desactivadas fuera de las sesiones, uso de la cuenta de administrador limitado. Use una lista de comprobación para que no se pase nada por alto y para poder comparar el siguiente recorrido con este. En HPFL la lista de comprobación llevó a Tomás hasta el módem del armario de la llenadora, las firmas antimalware antiguas de ENG-LT, el plano desactualizado y una memoria de recetas que faltaba en el registro de soportes.
+
+### 18.3 Redactar los hallazgos
+
+Cada hallazgo: qué vio, dónde, por qué importa (consecuencia), corrección propuesta y responsable. Guarde con él la evidencia (fotografías, extractos de registros). Redacte los hallazgos durante el recorrido o justo después, mientras los detalles están frescos. En HPFL el hallazgo del módem celular incluía su ubicación en el armario de la llenadora, una fotografía y la consecuencia de que alguien podría alcanzar la llenadora desde fuera. Cada hallazgo necesita un único responsable que acepte actuar. Limite cada hallazgo a unas pocas líneas para que pueda leerse rápido en la reunión. Separe lo que vio de lo que cree que significa.
+
+### 18.4 Priorizar
+
+Ordene por consecuencia y facilidad: lo que dé un camino no revisado hacia los PLC va primero; los arreglos menores, al final. Presente con claridad los tres primeros; las listas largas esconden lo importante. En HPFL el módem fue lo primero porque era un camino no revisado hacia un PLC. Las firmas antimalware antiguas de ENG-LT fueron lo segundo, porque ese portátil programa los PLC. Después venían la memoria que faltaba y el plano desactualizado. Escriba un motivo de una línea para cada posición. Acuerde el orden con el supervisor, que puede conocer motivos de producción para cambiarlo.
+
+### 18.5 Seguimiento
+
+Acuerde responsables y fechas en la reunión y después compruebe el avance cada mes. Anote los responsables y las fechas en una lista breve compartida con el supervisor. En cada comprobación mensual, anote lo que se completó y lo que se retrasó, con el motivo. En HPFL el siguiente recorrido debería empezar confirmando que el módem del armario de la llenadora se ha desconectado o puesto bajo control. Los hallazgos que se retrasan una y otra vez se plantean al supervisor en lugar de arrastrarlos en silencio. Cierre cada elemento solo con evidencia de que se hizo.
+
+### 18.6 Presentar al supervisor
+
+Use un lenguaje sencillo y consecuencias que importen al supervisor: «este módem podría permitir que alguien cambiara la llenadora desde fuera» funciona mejor que los nombres de protocolos. Lleve fotografías, no pase de diez minutos y termine con las decisiones que necesita: responsable, fecha y cualquier ventana de producción. Dé las gracias a los operadores que ayudaron; su cooperación decide si el próximo recorrido será bien recibido. Envíe después un breve resumen escrito con los hallazgos, los responsables y las fechas. Guarde una copia del resumen con la evidencia del recorrido, para que el siguiente pueda empezar comprobando qué ha cambiado desde entonces. Si el supervisor no está de acuerdo con una posición, anote el desacuerdo y el motivo.
+
+### Ejemplo resuelto (HPFL sintética)
+
+El recorrido de Tomás, con un permiso de dos horas, encuentra: (1) un módem celular conectado dentro del armario de la llenadora y que no figura en el registro; (2) firmas antimalware de ENG-LT con 40 días de antigüedad; (3) el plano de red en la revisión 3 mientras la VLAN IoT solo existe en los borradores de la revisión 4; (4) una memoria de recetas que falta en el registro de soportes. Sitúa el módem en primer lugar, el portátil en segundo, la memoria en tercero y el plano en cuarto, y el supervisor asigna responsables.
+
+> **Caso sintético — HPFL.** Los hallazgos son inventados.
+
+### Errores y límites
+
+Un recorrido es una instantánea; los problemas reaparecen si no se repite con regularidad. No sustituye a una evaluación profesional frente a IEC 62443.
+
+### Ejercicios — capítulo 18
+
+- **EX069 — Alcance del permiso.** Escriba el alcance y tres condiciones de parada para el recorrido. *Rúbrica:* 3 = zonas, registros, ninguna conexión a dispositivos, tres paradas concretas; 2 = parcial; 1 = vago; 0 = nada.
+- **EX070 — Formato de hallazgo.** Reescriba «módem malo» como un hallazgo completo. *Rúbrica:* 3 = qué, dónde, por qué, corrección, responsable, evidencia; 2 = cuatro partes; 1 = dos; 0 = nada.
+- **EX071 — Priorización.** Justifique situar el módem por encima de las firmas antimalware antiguas. *Rúbrica:* 3 = el módem es un camino activo y no revisado hacia los PLC; el portátil solo supone riesgo cuando se conecta y está controlado; 2 = parcial; 1 = al revés; 0 = nada.
+- **EX072 — Plan de seguimiento.** ¿Cómo debería asegurarse Tomás de que los cuatro hallazgos se corrigen de verdad? *Rúbrica:* 3 = responsables y fechas acordados, seguimiento, comprobación mensual, evidencia de cierre; 2 = parte; 1 = «recordárselo a la gente»; 0 = nada.
+
+### Síntesis del capítulo
+
+Un recorrido planificado une inventario, acceso, copias de seguridad, cambios y evidencia en correcciones priorizadas y con responsable.
+
+### Siga estudiando — capítulo 18 de 18
+
+[← Capítulo 17 (borrador)](#ch-17) · [Índice de capítulos del curso](../SUBJECTS.md) · [Resultados resueltos ↓](#worked-results) · [Siguiente curso a través del índice de capítulos →](../SUBJECTS.md)
 
 <a id="worked-results"></a>
 
@@ -830,6 +1152,54 @@ Respuestas modelo para EX001–EX072. Harbor Point Food Packaging Line, Tomás R
 **EX047.** Los sistemas de la línea envían datos hacia un servidor de la DMZ; los usuarios de oficina solo se conectan a ese servidor, así que no hay ninguna regla que permita a los equipos de oficina iniciar conexiones hacia la zona de la línea.
 
 **EX048.** Abrir un ticket de cambio, confirmar con el responsable de la red que nada depende de la regla 3, programar una parada planificada, conservar la configuración anterior como vuelta atrás, eliminar la regla, comprobar que funcionan la línea y los flujos hacia la DMZ, y anotar el resultado.
+
+**EX049.** Un contador de energía inteligente conectado a la nube, una tableta del equipo de calidad y una impresora de etiquetas con wifi.
+
+**EX050.** ¿Tiene cada dispositivo una contraseña única en lugar de una predeterminada universal? ¿Cómo les notificamos una vulnerabilidad? ¿Durante cuánto tiempo se proporcionarán actualizaciones de seguridad? ¿Está cifrada la comunicación? ¿Puede restablecerse el dispositivo y borrarse nuestros datos?
+
+**EX051.** En una VLAN IoT dedicada cuyas reglas de cortafuegos solo permitan las direcciones de la nube del proveedor y bloqueen cualquier ruta hacia la zona de la línea, los PLC y HMI-1.
+
+**EX052.** Marcar la impresora como «fin del soporte» en el registro con la fecha, anotar el riesgo, mantenerla aislada con el mínimo tráfico necesario y tramitar la compra de una sustituta con una fecha objetivo.
+
+**EX053.** O el sensor o la pantalla están mal, lo que podría ser un sensor averiado o un valor manipulado; Tomás anota ambas lecturas con la hora y el supervisor lleva la llenadora a una parada segura antes de que nadie la diagnostique.
+
+**EX054.** (a) T0843 Program Download; (b) T0886 Remote Services; (c) T0836 Modify Parameter.
+
+**EX055.** Al principio nadie conoce la causa, y en ambos casos hay que mantener a salvo a las personas y el producto y preservar la evidencia para quien haga el diagnóstico; tratar una avería como un ataque cuesta poco, y lo contrario puede costar mucho.
+
+**EX056.** Solo HMI-1 y ENG-LT escriben en los PLC; los inicios de sesión de administrador solo se producen durante trabajos con ticket; los programas de los PLC cambian aproximadamente una vez al mes en paradas planificadas.
+
+**EX057.** El supervisor pone la línea en condiciones seguras; Tomás fotografía la pantalla; llama al contacto para incidentes; la restauración de HMI-1 se hace después, cuando lo decidan el responsable del incidente y el ingeniero.
+
+**EX058.** «03:10, HMI-1 muestra un mensaje de rescate. Línea en control local, envolvedora detenida a las 03:12. No se han visto otras pantallas afectadas. No se ha desconectado nada. Supervisor de noche informado; contacto para incidentes llamado a las 03:14.»
+
+**EX059.** Pedirle que espere al supervisor y al ingeniero: tirar del cable puede dejar sin servicio el panel del que dependen los operadores y hace perder información; el aislamiento se hace con un método planificado, como desactivar el puerto del conmutador, anotando la hora.
+
+**EX060.** Decide el responsable del incidente junto con la dirección del emplazamiento; la cronología y las fotografías de Tomás les dan los hechos que necesitan para cumplir cualquier plazo.
+
+**EX061.** Confirmar la contención; reconstruir HMI-1; cambiar las contraseñas; ejecutar el ciclo de prueba; calidad da su conformidad.
+
+**EX062.** Comparar los programas de los PLC con las copias verificadas; comprobar los valores de la HMI frente a los indicadores locales; confirmar que las reglas de FW-1 coinciden con la tabla aprobada (y ejecutar un ciclo de prueba en vacío).
+
+**EX063.** Una copia hecha el día del incidente podría contener ya los cambios o el malware del atacante, así que restaurarla reinstala el problema; use la copia más reciente verificada como anterior al compromiso.
+
+**EX064.** «Cerrar el puerto de escritorio remoto de HMI-1 y añadir una comprobación mensual de exposición externa; responsable: responsable de la red; plazo: dos semanas.»
+
+**EX065.** Qué cambia, por qué, en qué dispositivos, quién lo hace, cuándo, riesgo para el proceso, comprobación de éxito, método de vuelta atrás.
+
+**EX066.** El cambio se documenta como cambio de emergencia antes de que termine el turno, se guarda una nueva copia con su hash y se actualizan el registro o los planos si algo cambió.
+
+**EX067.** Detener la prueba, reinstalar 1.0.7 desde el archivo guardado, confirmar con paquetes de prueba que los rechazos vuelven a funcionar, anotar el intento fallido en el cambio 512 y enviar el resultado al proveedor.
+
+**EX068.** Nadie puede saber si estaba autorizado; puede ser un cambio de un atacante, y significa que las copias y la línea base de lo normal ya no coinciden con la línea.
+
+**EX069.** Alcance: armarios de la llenadora y de la envolvedora, zona de HMI-1, el registro de activos, las copias de seguridad y los registros de soportes y de acceso remoto; ninguna conexión a ningún dispositivo. Detenerse si aparece una alarma sin explicación, si lo piden el supervisor o los operadores, o si un armario presenta un peligro activo más allá de lo que cubre el permiso.
+
+**EX070.** «Módem celular conectado dentro del armario de PLC-FILL (foto 3); ofrece una ruta no gestionada hacia la línea que elude FW-1 y la pasarela remota; corrección: el ingeniero de control confirma su finalidad y lo desconecta o lo sitúa detrás de la pasarela; responsable: ingeniero de control.»
+
+**EX071.** El módem es una conexión activa y no revisada que podría alcanzar los PLC en cualquier momento, mientras que ENG-LT solo toca la línea con permiso y sus firmas pueden actualizarse antes del siguiente uso.
+
+**EX072.** Acordar en la reunión un responsable y una fecha para cada elemento, anotarlos en la hoja de seguimiento, comprobar cada mes y cerrar cada uno solo con evidencia, como una fotografía o un registro actualizado.
 
 <a id="references"></a>
 
