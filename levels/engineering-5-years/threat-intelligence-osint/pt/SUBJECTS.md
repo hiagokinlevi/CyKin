@@ -42,10 +42,10 @@ Edição em português do Brasil, escrita a partir da edição de referência em
 | 6 | [30](book/PLAN.md#ch-30) | Laboratório de verificação I | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-30) | [31 · Rascunho](book/MANUSCRIPT.md#ch-31) |
 | 7 | [31](book/PLAN.md#ch-31) | Inteligência de ameaças e OSINT: implementação II | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-31) | [32 · Rascunho](book/MANUSCRIPT.md#ch-32) |
 | 7 | [32](book/PLAN.md#ch-32) | Inteligência de ameaças e OSINT: confiabilidade | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-32) | [33 · Rascunho](book/MANUSCRIPT.md#ch-33) |
-| 7 | [33](book/PLAN.md#ch-33) | Inteligência de ameaças e OSINT: safety e resiliência | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-33) | [34 · Plano](book/PLAN.md#ch-34) |
-| 7 | [34](book/PLAN.md#ch-34) | Inteligência de ameaças e OSINT: integração | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-34)) | [35 · Plano](book/PLAN.md#ch-35) |
-| 7 | [35](book/PLAN.md#ch-35) | Ateliê de projeto II | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-35)) | [36 · Plano](book/PLAN.md#ch-36) |
-| 8 | [36](book/PLAN.md#ch-36) | Inteligência de ameaças e OSINT: desempenho e escala | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-36)) | [37 · Plano](book/PLAN.md#ch-37) |
+| 7 | [33](book/PLAN.md#ch-33) | Inteligência de ameaças e OSINT: safety e resiliência | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-33) | [34 · Rascunho](book/MANUSCRIPT.md#ch-34) |
+| 7 | [34](book/PLAN.md#ch-34) | Inteligência de ameaças e OSINT: integração | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-34) | [35 · Rascunho](book/MANUSCRIPT.md#ch-35) |
+| 7 | [35](book/PLAN.md#ch-35) | Ateliê de projeto II | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-35) | [36 · Rascunho](book/MANUSCRIPT.md#ch-36) |
+| 8 | [36](book/PLAN.md#ch-36) | Inteligência de ameaças e OSINT: desempenho e escala | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-36) | [37 · Plano](book/PLAN.md#ch-37) |
 | 8 | [37](book/PLAN.md#ch-37) | Inteligência de ameaças e OSINT: operações | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-37)) | [38 · Plano](book/PLAN.md#ch-38) |
 | 8 | [38](book/PLAN.md#ch-38) | Inteligência de ameaças e OSINT: validação | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-38)) | [39 · Plano](book/PLAN.md#ch-39) |
 | 8 | [39](book/PLAN.md#ch-39) | Inteligência de ameaças e OSINT: manutenibilidade | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-39)) | [40 · Plano](book/PLAN.md#ch-40) |
