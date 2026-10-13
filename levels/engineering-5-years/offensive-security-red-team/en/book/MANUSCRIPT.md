@@ -395,7 +395,7 @@ ROE debates often need an order of magnitude, not a closed form. "Will a 5 req/s
 
 > **Synthetic case — Riverstone Transit.** FindingsDesk showed a backlog of 28 medium findings with two remediations per day. Sam's B′ model predicted 14 days to clear if no new arrivals; the manager funded a third engineer for that fortnight.
 
-Order-of-magnitude arithmetic settles most ROE debates in minutes. Exact schedules with peaks need the fuller treatment from the first calculus chapter, and those are the ones Sam brings to a client who will audit the numbers. For a flat scan, multiplying rate by duration is enough, and writing the product next to the volume limit shows compliance at a glance. If the product sits near the limit, he switches to the exact schedule check rather than hoping bursts stay small.
+Exact schedules with peaks need the fuller treatment from the first calculus chapter, and those are the ones Sam brings to a client who will audit the numbers. For a flat scan, multiplying rate by duration is enough, and writing the product next to the volume limit shows compliance at a glance. If the product sits near the limit, he switches to the exact schedule check rather than hoping bursts stay small.
 
 ### 6.4 Errors and limits
 
@@ -903,7 +903,7 @@ Images are a last resort because of downtime and privacy. Live reads under least
 
 Any setting a tester changes on a host, even a temporary log level, is written to the engagement log with time, reason and the command used to revert it. At close-out Sam walks that list with the system owner, so no Riverstone Transit host is left in a state nobody remembers creating.
 
-Temporary log-level changes are still changes. A revert command written at the time survives staff turnover and weekend shifts. Walking the list with the owner turns close-out into a shared checklist rather than a memory test. Sam refuses to mark an engagement complete while any unreverted change remains on the list.
+A revert command written at the time survives staff turnover and weekend shifts. Walking the list with the owner turns close-out into a shared checklist rather than a memory test. Sam refuses to mark an engagement complete while any unreverted change remains on the list.
 
 ### Exercises
 
@@ -1017,13 +1017,13 @@ Operators install hotfixes by hand and forget to update the tag on the checklist
 
 Normal improvements ride a release train with Lab I/II. Safety hotfixes may skip features but not verification: a minimal fail-closed regression pack is mandatory. Tag hotfixes clearly so an engagement can pin either the train build or the hotfix SHA with eyes open.
 
-Safety fixes must still prove fail-closed behaviour, even when features wait. Clear tags stop an engagement from silently mixing a train build with a laptop hotfix. Pinning with eyes open means the client knows which binary produced the evidence. Sam keeps the regression pack small so hotfixes stay fast without skipping it.
+Safety fixes must still prove fail-closed behaviour, even when features wait. Pinning with eyes open means the client knows which binary produced the evidence. Sam keeps the regression pack small so hotfixes stay fast without skipping it.
 
 ### 14.1b Branching model
 
 Use short-lived branches with mandatory CI on synthetic fixtures. Long-lived feature branches diverge from safety fixes on main and recreate fail-open merges. Protect main with required reviewers and status checks named after Lab I safety rows.
 
-Short branches pick up safety fixes from main instead of reinventing them weeks later. Long-lived branches are how fail-open merges return after they were fixed. Required checks named after Lab I rows make the safety suite impossible to skip with a casual approve. Sam deletes stale branches weekly so divergence cannot hide.
+Short branches pick up safety fixes from main instead of reinventing them weeks later. Required checks named after Lab I rows make the safety suite impossible to skip with a casual approve. Sam deletes stale branches weekly so divergence cannot hide. A branch that falls more than a week behind main must be rebased and pass the Lab I checks again before review.
 
 ### Practice note
 
@@ -1087,7 +1087,7 @@ Required fields stop authors inventing private shorthand for the same ideas. Con
 
 If a finding claims confidentiality impact, the validation plan must include a confidentiality check (who can still read). If it claims availability impact, validation includes a canary or synthetic probe — not a new attack. Align property, finding and re-test method in one paragraph of the ticket.
 
-A confidentiality claim without a who-can-read check cannot be closed honestly. Availability claims need a gentle canary, not a fresh flood. One paragraph that ties property, finding and re-test keeps the ticket coherent after handoff. Sam pastes that paragraph into the validation plan field before the finding leaves draft.
+Availability claims need a gentle canary, not a fresh flood. One paragraph that ties property, finding and re-test keeps the ticket coherent after handoff. Sam pastes that paragraph into the validation plan field before the finding leaves draft.
 
 ### Exercises
 
@@ -1205,7 +1205,7 @@ A silent logger can hide a flood of denies or pretend none occurred. Heartbeats 
 
 A sensor that samples once an hour can miss a five-minute out-of-scope burst. Sample at least twice as often as the shortest stop-condition window you promised the client. If the kill-switch must act in 30 seconds, poll every 10–15 seconds. The cost is cheap compared with explaining a missed stop in the report.
 
-Nyquist-style thinking applies: sample faster than the event you must catch. A thirty-second kill-switch with hourly polls is theatre. Ten to fifteen seconds leaves margin for slow disks and busy leaders. Sam records the chosen interval next to the stop-condition text so auditors see they match.
+Nyquist-style thinking applies: sample faster than the event you must catch. Ten to fifteen seconds leaves margin for slow disks and busy leaders. Sam records the chosen interval next to the stop-condition text so auditors see they match.
 
 ### 17.3b Human-in-the-loop placement
 
@@ -1245,13 +1245,13 @@ You will (1) place assessment tools in a zone model; (2) define trust boundaries
 
 Assessment laptops, TrackScope, FindingsDesk and the client's assets sit in different trust zones. Traffic from the assessment zone to client assets is only what the ROE allows; traffic back carries evidence into a store the client can audit. Do not put the evidence store on the same VLAN as the targets "for convenience".
 
-Separating the evidence store from targets means a compromised test host cannot quietly rewrite history. ROE-shaped traffic is the only path toward client assets; everything else is dropped and logged. Convenience VLANs are how evidence and targets share fate. Sam's kickoff includes a traceroute from TrackScope to the store and to a sample target to prove the zones.
+Separating the evidence store from targets means a compromised test host cannot quietly rewrite history. ROE-shaped traffic is the only path toward client assets; everything else is dropped and logged. Sam's kickoff includes a traceroute from TrackScope to the store and to a sample target to prove the zones.
 
 ### 18.2 Trust boundaries
 
 Crossing a boundary needs authentication, authorization and logging. A student exporting findings to a personal drive crosses a boundary without a control — forbid it in the ROE and in tool policy.
 
-Personal drives sit outside every client control. Tool policy that blocks export is stronger than a paragraph nobody reads under deadline. Authentication, authorization and logging are the minimum trio at each crossing. Sam treats a blocked export as a successful control, not as friction to remove. He demos the block during kickoff so nobody asks for a bypass later.
+Personal drives sit outside every client control. Tool policy that blocks export is stronger than a paragraph nobody reads under deadline. Sam treats a blocked export as a successful control, not as friction to remove. He demos the block during kickoff so nobody asks for a bypass later. Exports to the client go through FindingsDesk, which logs who exported which findings and when.
 
 ### 18.3 Isolated ranges
 
@@ -1378,7 +1378,7 @@ MD5 and SHA-1 collisions are teaching history, not a base for new manifests. Nam
 
 For TLS-facing assets, record presented certificates (subject, issuer, notAfter) under authorization. Expired or mismatched certs are findings about operations integrity; do not turn the exercise into a research-grade TLS attack.
 
-Subject, issuer and notAfter under authorization are enough to flag expiry and name mismatch. Those are integrity and operations findings, not an invitation to research-grade protocol attacks. Sam stores the PEM fingerprint in the ticket so a re-test can see whether the cert changed. Inventory runs are scheduled, not improvised during a noisy scan.
+Subject, issuer and notAfter under authorization are enough to flag expiry and name mismatch. Sam stores the PEM fingerprint in the ticket so a re-test can see whether the cert changed. Inventory runs are scheduled, not improvised during a noisy scan. Certificates that expire inside the engagement window are reported to the client contact the same day rather than held for the final report.
 
 ### Exercises
 
@@ -1406,7 +1406,7 @@ You will (1) place red-team engineering among PTES, NIST SP 800-115 and ATT&CK; 
 
 NIST SP 800-115 frames testing and assessment. PTES sequences pre-engagement through reporting. ATT&CK names techniques for planning and coverage — not as a score of residual risk. TIBER-EU and CBEST add threat-led oversight for certain financial contexts. Engineers build the platforms that make those frameworks operable: scope checkers, finding systems, coverage reporters, evidence stores.
 
-Frameworks describe the engagement lifecycle; ATT&CK labels techniques for planning. None of them is a residual-risk score on its own. The engineering job is making scope checks, findings and coverage reports real systems operators can run. Sam cites the framework version in each ADR that implements a control they require.
+Frameworks describe the engagement lifecycle; ATT&CK labels techniques for planning. The engineering job is making scope checks, findings and coverage reports real systems operators can run. Sam cites the framework version in each ADR that implements a control they require.
 
 ### 20.2 What we build
 
@@ -1470,7 +1470,7 @@ You will (1) elicit requirements from ROE and operators; (2) separate functional
 
 Operators want fewer false blocks; counsel wants an audit trail; the client wants clear findings. Elicitation interviews produce shall-statements tagged by source. Conflicts (speed vs approval gates) are recorded, not papered over.
 
-Tagged sources make conflicts discussable: speed versus gates is a recorded trade-off with an owner. Papering over it produces a tool nobody trusts. Interviews end in shall-statements, not vibes. Sam keeps the conflict log next to the requirements file so a new lead can see old arguments without replaying them.
+Tagged sources make conflicts discussable: speed versus gates is a recorded trade-off with an owner. Papering over it produces a tool nobody trusts. Sam keeps the conflict log next to the requirements file so a new lead can see old arguments without replaying them. Each conflict entry names who raised it and which shall-statement settled it.
 
 ### 21.2 Three families
 
@@ -1737,7 +1737,7 @@ Borrowed method lists ignore local authorization and local fragility. Matching t
 
 Quiet methods (authenticated reads, config export) fit daytime windows on shared systems. Noisy methods (broad service enumeration) need tighter rate limits and often off-peak hours. The method card's "noisy?" field drives the schedule; leaving it blank is how morning dispatch windows get congested.
 
-Daytime shared systems need quiet cards; broad enumeration needs off-peak and tighter rates. The noisy flag drives the calendar automatically when filled. Blank flags are how dispatch windows clog. Sam blocks schedule publish while any card still has a blank noise field.
+The noisy flag drives the calendar automatically when filled. Blank flags are how dispatch windows clog. Sam blocks schedule publish while any card still has a blank noise field. Cards are reviewed with the client contact before the window is published, because the client knows which shared systems are busy in the morning.
 
 ### 24.3b Method freeze
 
@@ -1749,7 +1749,7 @@ Mid-flight additions are scope drift with better branding. The widen path exists
 
 Some methods require outputs of others (inventory before authenticated review). Encode dependencies in the plan so the timeline does not schedule the review on day one against an empty asset list. PulseMap can show blocked-by links for planned techniques.
 
-Review on day one against an empty inventory wastes the window and tempts shortcuts. Encoded dependencies make the planner refuse impossible orders. PulseMap's blocked-by links show why a technique waits. Sam renders the dependency graph in kickoff so the client sees the critical path.
+Review on day one against an empty inventory wastes the window and tempts shortcuts. Encoded dependencies make the planner refuse impossible orders. Sam renders the dependency graph in kickoff so the client sees the critical path. If a dependency slips, the planner moves the dependent method rather than letting it run early against partial data.
 
 ### 24.4b Reviewing a method card
 
@@ -1797,7 +1797,7 @@ One page: context, options, decision, consequences, date, owners. Store next to 
 
 > **Synthetic case — Riverstone Transit.** Studio chose policy-as-signed-JSON, sync path for denies, async bulk for allows. ADR-004 captures it.
 
-One page beats a slide deck nobody diffs. Consequences and owners make the decision revisitable. Storing it next to code means reviewers see it in the same pull request. Sam links the ADR from the README of the service it affects. README links use the ADR filename, so a rename without an update breaks the doc build and gets noticed.
+One page beats a slide deck nobody diffs. Storing it next to code means reviewers see it in the same pull request. Sam links the ADR from the README of the service it affects. README links use the ADR filename, so a rename without an update breaks the doc build and gets noticed.
 
 ### 25.4 Errors and limits
 
@@ -1891,7 +1891,7 @@ Revisit triggers stop endless re-litigation of SaaS. Rejected reasons must be sp
 
 Include rough annual cost (compute, seats, staff time for dual approval). An alternative that needs six FTEs to operate fail-closed is not free because the license was cheap. Cost belongs in the decision record beside safety.
 
-Staff time for dual approval is a real annual cost. Cheap licences that need six FTEs fail the operability criterion. Sam's spreadsheet sits beside the ADR, not in a private folder. When costs spike, the next lead opens the same sheet and sees which assumption broke, without a scavenger hunt.
+Cheap licences that need six FTEs fail the operability criterion. Sam's spreadsheet sits beside the ADR, not in a private folder. When costs spike, the next lead opens the same sheet and sees which assumption broke, without a scavenger hunt. Each cost line carries the date and source of its estimate so stale numbers are easy to spot.
 
 ### Practice note
 
@@ -1989,7 +1989,7 @@ Unowned alert piles train people to ignore pages. Every compensating control nee
 
 Every control has an owner who receives its alerts and a review date. Orphan detective controls become noise; orphan preventive controls become folklore nobody dares to change. Put owner and review date in the same repo as the control code.
 
-Owner plus review date in-repo beats a wiki nobody updates. Alerts without owners are noise; preventive folklore blocks needed change. Sam's CODEOWNERS maps control paths to people who get the pages. Remapping owners is a reviewed config change, with a week of shadowed pages before the old owner drops off.
+Owner plus review date in-repo beats a wiki nobody updates. Sam's CODEOWNERS maps control paths to people who get the pages. Remapping owners is a reviewed config change, with a week of shadowed pages before the old owner drops off.
 
 ### 27.3b Testing controls
 
@@ -2001,7 +2001,7 @@ Negative tests prove the higher layer catches a broken preventive control. Untes
 
 Log when an operator uses break-glass to skip dual approval. Break-glass without detection is just a hidden single control. Weekly review of break-glass events is part of the control design.
 
-Break-glass without logs is a hidden single control. Weekly review keeps emergency paths exceptional. Sam graphs break-glass counts next to engagement volume. Design reviews of dual-control paths invite a client liaison when counts rise for two weeks running. Two weeks is long enough to see a pattern and short enough to act before the next window.
+Weekly review keeps emergency paths exceptional. Sam graphs break-glass counts next to engagement volume. Design reviews of dual-control paths invite a client liaison when counts rise for two weeks running. Two weeks is long enough to see a pattern and short enough to act before the next window. Each break-glass entry records who used it, which approval was skipped and why.
 
 ### Practice note
 
@@ -2041,39 +2041,39 @@ One test file per clause: cidr, deny-list, port, hours, concurrency, approval fl
 
 ```python
 """Check proposed engagement targets against a written scope (synthetic)."""
-SCOPE_CIDRS = [("10.20.0.0", 16), ("192.168.50.0", 24)]  # inclusive synthetic ranges
+SCOPE_CIDRS = [("10.20.0.0", 16), ("192.168.50.0", 24)] # inclusive synthetic ranges
 SCOPE_PORTS = {22, 80, 443, 8080}
-DENY_HOSTS = {"10.20.0.1", "192.168.50.1"}  # out-of-scope infra
+DENY_HOSTS = {"10.20.0.1", "192.168.50.1"} # out-of-scope infra
 
 def ip_int(s):
-    a,b,c,d = map(int, s.split("."))
-    return (a<<24)|(b<<16)|(c<<8)|d
+a,b,c,d = map(int, s.split("."))
+return (a<<24)|(b<<16)|(c<<8)|d
 
 def in_cidr(ip, net, bits):
-    mask = (0xFFFFFFFF << (32-bits)) & 0xFFFFFFFF
-    return (ip_int(ip) & mask) == (ip_int(net) & mask)
+mask = (0xFFFFFFFF << (32-bits)) & 0xFFFFFFFF
+return (ip_int(ip) & mask) == (ip_int(net) & mask)
 
 def check(host, port):
-    reasons = []
-    if host in DENY_HOSTS:
-        reasons.append("deny-list")
-    if not any(in_cidr(host, n, b) for n,b in SCOPE_CIDRS):
-        reasons.append("outside-cidr")
-    if port not in SCOPE_PORTS:
-        reasons.append("port-not-in-scope")
-    return ("ALLOW" if not reasons else "DENY"), reasons
+reasons = []
+if host in DENY_HOSTS:
+reasons.append("deny-list")
+if not any(in_cidr(host, n, b) for n,b in SCOPE_CIDRS):
+reasons.append("outside-cidr")
+if port not in SCOPE_PORTS:
+reasons.append("port-not-in-scope")
+return ("ALLOW" if not reasons else "DENY"), reasons
 
 tests = [
-    ("10.20.1.10", 443),
-    ("10.20.0.1", 443),
-    ("192.168.50.20", 22),
-    ("192.168.50.20", 3389),
-    ("8.8.8.8", 80),
-    ("192.168.1.10", 80),
+("10.20.1.10", 443),
+("10.20.0.1", 443),
+("192.168.50.20", 22),
+("192.168.50.20", 3389),
+("8.8.8.8", 80),
+("192.168.1.10", 80),
 ]
 for h,p in tests:
-    v, r = check(h,p)
-    print(f"target={h}:{p} decision={v} reasons={','.join(r) or '-'}")
+v, r = check(h,p)
+print(f"target={h}:{p} decision={v} reasons={','.join(r) or '-'}")
 ```
 
 Expected output:
@@ -2087,7 +2087,7 @@ target=8.8.8.8:80 decision=DENY reasons=outside-cidr
 target=192.168.1.10:80 decision=DENY reasons=outside-cidr
 ```
 
-Per-clause files show which rule regressed. Mutation breaking a clause must fail CI or the suite is theatre. Synthetic fixtures keep client networks out. Sam's review checks that each ROE clause has a file. Unimplemented clauses block release trains even when a manual demo passed on a laptop build. Laptop demos can be attached as extras but they never green-light a train by themselves.
+Per-clause files show which rule regressed. Synthetic fixtures keep client networks out. Sam's review checks that each ROE clause has a file. Unimplemented clauses block release trains even when a manual demo passed on a laptop build. Laptop demos can be attached as extras but they never green-light a train by themselves. Each clause file names the ROE clause id it tests, so a failing test points straight back to the signed text.
 
 ### 28.3 Logging
 
@@ -2192,7 +2192,7 @@ Planned sets make the denominator a promise, not a scavenger hunt through all of
 
 Activity: tools launched, packets sent. Outcome: verified remediations, SLA breaches closed, out-of-scope probes. Steer on outcomes; use activity only for capacity planning.
 
-Packets and tool launches fill capacity charts; they do not prove riders are safer. Outcomes such as closed SLA breaches and verified remediations are what leadership should fund. Sam keeps activity metrics on a separate dashboard labelled capacity only, so nobody confuses busyness with progress. When Riverstone's leadership asks how hard the team worked last month, Sam shows tool-hours on the capacity board and verified remediations on the outcome board, never a single chart that mixes the two.
+Packets and tool launches fill capacity charts; they do not prove riders are safer. Sam keeps activity metrics on a separate dashboard labelled capacity only, so nobody confuses busyness with progress. When Riverstone's leadership asks how hard the team worked last month, Sam shows tool-hours on the capacity board and verified remediations on the outcome board, never a single chart that mixes the two.
 
 ### 29.3 One-sided error
 
@@ -2310,7 +2310,7 @@ A one-page lab report: environment version, table of results, open blockers, sig
 
 > **Synthetic case — Riverstone Transit.** Lab I failed the missing-policy row once; release halted until S-3 was fixed (Chapter 21).
 
-One page with versions, results, blockers and sign-off is enough for a release gate. Hashes beat screenshots that cannot be re-checked. The missing-policy failure that halted a release shows why the report's blocker list matters. Sam attaches the report under the same tag as the binary. When Lab I failed the missing-policy row, the returned report went back through the same review queue as a new pack, with the blocker ticket id printed at the top so release managers could not miss why the train halted.
+Hashes beat screenshots that cannot be re-checked. The missing-policy failure that halted a release shows why the report's blocker list matters. Sam attaches the report under the same tag as the binary. When Lab I failed the missing-policy row, the returned report went back through the same review queue as a new pack, with the blocker ticket id printed at the top so release managers could not miss why the train halted.
 
 ### 30.4 Errors and limits
 
@@ -2322,13 +2322,13 @@ Shared synthetic ranges need booking the same way production windows do. Collisi
 
 Keep a sealed directory of synthetic fixtures with known expected decisions. Lab runs must hash-match the fixture set before they count as release evidence. Fixtures drift when someone "fixes" them to match a buggy build — protect them with CODEOWNERS.
 
-CODEOWNERS on fixtures stops quiet edits that hide bugs. Hash-matching before counting a run as release evidence keeps the sealed set honest. Sam's fixture change process requires a paired update to expected decisions and a second reviewer who did not author the build under test, so a buggy binary cannot be hidden by quietly editing the golden answers.
+CODEOWNERS on fixtures stops quiet edits that hide bugs. Sam's fixture change process requires a paired update to expected decisions and a second reviewer who did not author the build under test, so a buggy binary cannot be hidden by quietly editing the golden answers.
 
 ### 30.3b Independent runner
 
 Lab I is run by someone who did not implement the change under test. Pairing is fine for debugging afterward; the recorded pass needs an independent green checklist.
 
-Authors debugging afterward is fine; the recorded green must come from someone else. Independence is about incentives, not distrust of skill. Sam assigns runners from a rotating roster published each Friday for the following week, and the lab lead resolves conflicts so the author of a change is never the recorded runner for that change.
+Independence is about incentives, not distrust of skill. Sam assigns runners from a rotating roster published each Friday for the following week, and the lab lead resolves conflicts so the author of a change is never the recorded runner for that change. The runner's name is recorded in the lab report next to the binary hash.
 
 ### 30.1b Lab data retention
 
@@ -2435,7 +2435,7 @@ Silent severity downgrades without evidence are how risk acceptance hides. Restr
 
 Bulk finding import from scanners must pass the same schema validation as interactive create, including forbidden-field checks and fingerprint idempotency. A separate "trusted import" path is how payloads sneak into the store.
 
-Trusted import paths are how scanners bypass the schema. Same validation as interactive create keeps fingerprints and forbidden fields consistent. Sam's import job logs the scanner id as evidence, never as a reason to skip checks. Skipping checks for a scanner brand is filed as a wontfix with a link to this rule.
+Sam's import job logs the scanner id as evidence, never as a reason to skip checks. Skipping checks for a scanner brand is filed as a wontfix with a link to this rule. Imports that fail validation are quarantined with the scanner's file kept as received, so the vendor can be shown exactly which field was rejected. The same fingerprint arriving twice updates the existing finding instead of creating a duplicate.
 
 ### 31.1b Optimistic concurrency
 
@@ -2541,7 +2541,7 @@ Untracked findings while scanning continues is silent scope risk. Stopping new d
 
 Reliability experiments (kill pods, partition networks) run in the synthetic range. Never chaos-test during a client's signed window. Record experiment ids separately from engagement ids so metrics do not mix.
 
-Signed windows are for authorized assessment, not experiments. Separate experiment ids keep chaos metrics out of engagement reports. Sam's chaos scripts refuse to run if an engagement id is set in the environment. CI sets a fake engagement id on purpose and expects a non-zero exit, proving the guard cannot be skipped by a forgotten export in a shell profile.
+Signed windows are for authorized assessment, not experiments. Sam's chaos scripts refuse to run if an engagement id is set in the environment. CI sets a fake engagement id on purpose and expects a non-zero exit, proving the guard cannot be skipped by a forgotten export in a shell profile.
 
 ### 32.1b Dependency health checks
 
@@ -2586,7 +2586,7 @@ You will (1) write stop conditions as executable checks; (2) plan rollback of to
 
 Stop conditions are code: deny-list, latency canary, client kill-switch file. Humans also call stop; software must not disagree with a human stop.
 
-Code that can disagree with a human stop is a hazard. Kill-switch files, deny-lists and canaries must honour the same halt. Sam's stop API flips a single flag that every method polls within the ROE time bound. Poll intervals are asserted in a unit test tied to the ROE time bound. Lengthening the poll past that bound without a matching ROE edit fails CI, which is what stopped a pull request that tried to "save CPU" by polling every two minutes during a thirty-second kill-switch promise.
+Kill-switch files, deny-lists and canaries must honour the same halt. Sam's stop API flips a single flag that every method polls within the ROE time bound. Poll intervals are asserted in a unit test tied to the ROE time bound. Lengthening the poll past that bound without a matching ROE edit fails CI, which is what stopped a pull request that tried to "save CPU" by polling every two minutes during a thirty-second kill-switch promise.
 
 ### 33.2 Rollback
 
@@ -2606,19 +2606,19 @@ Walking who-calls-whom finds missing paths cheaply. Undocumented kill-switch loc
 
 Resilience theatre is a binder nobody opens. Drill once per term.
 
-Binders nobody opens are worse than no binder because they create false assurance. A drilled stop once per term is the minimum. Sam marks the term incomplete in the training record until the drill measure is filed, and he refuses to staff a lead who has not joined a drill in the current term. Schedulers read those training records directly, so a substitute can prove readiness without asking around the room on the morning of a window.
+Binders nobody opens are worse than no binder because they create false assurance. Sam marks the term incomplete in the training record until the drill measure is filed, and he refuses to staff a lead who has not joined a drill in the current term. Schedulers read those training records directly, so a substitute can prove readiness without asking around the room on the morning of a window. A drill that was planned but not run counts as missed.
 
 ### 33.2b Communication templates
 
 Pre-write the SMS/email for stop, for resume, and for rollback. Under stress people improvise and omit the ROE version or the next checkpoint time. Templates live in the runbook and are tested in the tabletop.
 
-Templates carry ROE version and next checkpoint so stress cannot omit them. Testing them in the tabletop finds missing fields. Sam stores templates beside the runbook with the same review path as code. Template review uses the same CODEOWNERS path as TrackScope safety code.
+Testing them in the tabletop finds missing fields. Sam stores templates beside the runbook with the same review path as code. Template review uses the same CODEOWNERS path as TrackScope safety code. Each template leaves blanks only for the time, the reason and the sender, so everything else is already correct when the stop is called. Resume messages also name the role that granted the resume.
 
 ### 33.3b Resume authority
 
 Who may resume after a stop? Name the role in the ROE. TrackScope should require a resume token tied to that role and ScopeVersion, not a Boolean flip anyone on the jumphost can toggle.
 
-A Boolean on the jumphost is not authorization. Resume tokens tied to role and ScopeVersion match how stop was granted. Sam's token expires quickly so a leftover resume cannot outlive the decision. Expired resume tokens log a deny with reason `resume-expired`. PulseMap charts those beside ordinary deny-list hits each week; a spike after a tabletop usually means someone tried to reuse a leftover token instead of requesting a fresh resume.
+A Boolean on the jumphost is not authorization. Sam's token expires quickly so a leftover resume cannot outlive the decision. Expired resume tokens log a deny with reason `resume-expired`. PulseMap charts those beside ordinary deny-list hits each week; a spike after a tabletop usually means someone tried to reuse a leftover token instead of requesting a fresh resume.
 
 ### 33.1b Secondary contacts
 
@@ -2689,19 +2689,19 @@ Event time plus receive time explains skew without blaming one host's clock. Sam
 
 Consumers must validate schema and reject events with future timestamps, unknown policy versions, or targets that fail format checks. A poisoned event stream should quarantine, not create findings against random hosts.
 
-Quarantine beats creating findings against garbage hosts. Future timestamps and unknown policy versions are reject reasons. Sam pages on quarantine growth the same way he pages on deny spikes. Quarantine pages include the producing service name. The rollback runbook opens on that name from the page payload, so an operator facing a poisoned stream of future-timestamped events can stop the producer without guessing which service to kill.
+Quarantine beats creating findings against garbage hosts. Sam pages on quarantine growth the same way he pages on deny spikes. Quarantine pages include the producing service name. The rollback runbook opens on that name from the page payload, so an operator facing a poisoned stream of future-timestamped events can stop the producer without guessing which service to kill.
 
 ### 34.3b Schema evolution drill
 
 Practice adding an optional field end-to-end in a dry run: producer, consumer, fixture, docs. Teams that only evolve schemas in emergencies invent incompatible shortcuts.
 
-Dry runs invent shortcuts if the only practice is emergencies. End-to-end optional fields keep muscles memory honest. Sam schedules a drill each term with a throwaway field name. Throwaway fields are deleted at term end with a migration note that names the owning team. That team must acknowledge the note in the contract repo before the field vanishes, so a dry-run field cannot disappear while a consumer still reads it.
+End-to-end optional fields keep muscles memory honest. Sam schedules a drill each term with a throwaway field name. Throwaway fields are deleted at term end with a migration note that names the owning team. That team must acknowledge the note in the contract repo before the field vanishes, so a dry-run field cannot disappear while a consumer still reads it.
 
 ### 34.1b Dead-letter queues
 
 Events that fail validation go to a dead-letter queue with an alert — not to `/dev/null` and not into findings. Operators replay after fixing the producer. Invisible drops recreate repudiation.
 
-Invisible drops recreate repudiation. Alerts on dead letters force operators to replay after fixes. Sam's runbook forbids filtering alerts on that queue without an AUTH note. AUTH notes for alert filters expire after seven days unless renewed with the same dual approval as the original note. Expired filters re-arm automatically; that rule caught a forgotten filter that had silenced dead-letter pages for nine days during a quiet exam period.
+Sam's runbook forbids filtering alerts on that queue without an AUTH note. AUTH notes for alert filters expire after seven days unless renewed with the same dual approval as the original note. Expired filters re-arm automatically; that rule caught a forgotten filter that had silenced dead-letter pages for nine days during a quiet exam period.
 
 ### Practice note
 
@@ -2720,7 +2720,7 @@ Dead-letter age is an SLO chart beside deny-path latency.
 
 Each event type on the bus has one owning team that approves changes. PulseMap consumes FindingsDesk events but cannot alter their schema; it files a request instead, which keeps the contract stable for every other consumer.
 
-One owning team per event type stops drive-by incompatible changes. Approvals are recorded in the contract repo. Sam blocks merges that touch a type without the owner team's review. Owner team aliases are group addresses such as `trackscope-contract@riverstone.example`, so ownership survives when individuals rotate off the platform squad and every schema change still reaches someone on call.
+Approvals are recorded in the contract repo. Sam blocks merges that touch a type without the owner team's review. Owner team aliases are group addresses such as `trackscope-contract@riverstone.example`, so ownership survives when individuals rotate off the platform squad and every schema change still reaches someone on call.
 
 ### Exercises
 
@@ -2780,7 +2780,7 @@ Screen readers must hear the formula, not only see a colour. Colour-only danger 
 
 If the UI and the CSV export disagree, the export wins for the report. Build exports first; treat UI as a view. That removes arguments about what "71%" meant in a screenshot.
 
-If the UI disagrees with the export, the export wins and the UI is buggy. Reviewers verify numbers from the file. Sam's release checklist diffs UI captions against export headers. Caption and header diffs failing CI block the release candidate. Tags cannot be cut while those diffs are red, which keeps the CSV export — the source of truth for the 71% figure — aligned with what the UI claims.
+Reviewers verify numbers from the file. Sam's release checklist diffs UI captions against export headers. Tags cannot be cut while those diffs are red, which keeps the CSV export — the source of truth for the 71% figure — aligned with what the UI claims. A screenshot in a report must carry the export file name and hash it was taken from.
 
 ### 35.1b Narrative exports
 
@@ -2905,7 +2905,7 @@ Separate buckets for quiet versus noisy methods so a hungry enumerator cannot st
 
 Performance tests of TrackScope and the method runners use synthetic targets only. Rates measured there become the ceiling allowed in engagements, always below the client's agreed limit, so speed improvements never translate into more traffic on client systems than was signed for.
 
-Speed measured on synthetic targets becomes the engagement ceiling only after it is checked against the signed client limit. A TrackScope build that got faster must not quietly push more packets at the fare API than Monday's ROE allowed. Sam's load-test report lists both numbers side by side before any pool size increases.
+A TrackScope build that got faster must not quietly push more packets at the fare API than Monday's ROE allowed. Sam's load-test report lists both numbers side by side before any pool size increases. If the two numbers would ever cross, the ceiling stays at the client limit and the extra speed is left unused.
 
 ### Exercises
 
@@ -3001,9 +3001,9 @@ Two noisy methods on one CIDR without a calendar entry look clever until the dep
 
 ### 37.1b Spare consumables
 
-Ops kits include spare jump-host images, printed contact cards, and offline ROE copies. When SSO is down, the engagement still needs a documented stop path.
+Ops kits include spare jump-host images, printed contact cards, and offline ROE copies.
 
-When SSO dies, the engagement still needs a stop path that does not depend on the identity provider. Spare jump-host images, printed contacts and an offline ROE are what make that real. Sam checks the kit the morning of the window, not after the first failed login. The kit checklist is a close-out item too, so borrowed images are restored before the next client.
+When SSO dies, the engagement still needs a stop path that does not depend on the identity provider. Sam checks the kit the morning of the window, not after the first failed login. The kit checklist is a close-out item too, so borrowed images are restored before the next client. Printed contact cards list the client's stop contact and the engagement lead, with phone numbers that do not depend on the corporate directory. Offline ROE copies carry the same version number as the signed PDF, so nobody works from an older scope. Spare images are rebuilt from the golden image at the start of each term.
 
 ### Practice note
 
@@ -3022,7 +3022,7 @@ Handover includes reading the last ten TrackScope denies aloud to the incoming l
 
 After each engagement the lead notes which runbook steps were skipped, unclear or out of date. Sam tallies these over a quarter; steps skipped most often are rewritten or removed, and the runbook's revision history shows each change with its reason.
 
-Steps skipped most often are either wrong or too hard under stress. Quarterly tallies turn complaints into edits with reasons in the revision history. Sam's last rewrite removed a step that asked for a screenshot of a page the jump host could not open, which had been skipped in four engagements running.
+Steps skipped most often are either wrong or too hard under stress. Sam's last rewrite removed a step that asked for a screenshot of a page the jump host could not open, which had been skipped in four engagements running.
 
 ### Exercises
 
@@ -3397,7 +3397,7 @@ A laptop gigabit link hides serialisation costs that a 10 Mb/s depot uplink make
 
 Under overload, shed discovery work before shedding deny evaluation. Users can wait for a scan; they cannot wait for a deny that never comes. Implement priority queues accordingly.
 
-Priority queues that drop deny evaluation under load invert the safety model. Discovery can wait; a deny that never comes is an allow. Sam's shed tests push synthetic load until discovery queues grow, then assert every predicate still runs and returns within the latency budget. Shedding discovery shows up as a planned-not-seen rise in PulseMap, which is preferable to a silent allow.
+Priority queues that drop deny evaluation under load invert the safety model. Sam's shed tests push synthetic load until discovery queues grow, then assert every predicate still runs and returns within the latency budget. Shedding discovery shows up as a planned-not-seen rise in PulseMap, which is preferable to a silent allow. The shed order is written in the ADR, so a later tuning change cannot quietly reverse it.
 
 ### 41.3b Capacity headroom
 
@@ -3482,13 +3482,13 @@ Collecting rider or staff identifiers for a "richer" thesis is out of bounds eve
 
 Write the hypothesis, primary measure and exclusion rules before looking at outcome data. File them in the repo. Changing the measure after seeing results is how empty scores return through the research door.
 
-Changing the primary measure after seeing results is how empty scores sneak in through research. Filing hypothesis, measure and exclusions first makes that move visible as a deviation. Sam's dual-approval study kept reopen rate as primary even when a secondary metric looked more flattering. Deviations require a dated note in the appendix, not a quiet edit to the notebook.
+Filing hypothesis, measure and exclusions first makes that move visible as a deviation. Sam's dual-approval study kept reopen rate as primary even when a secondary metric looked more flattering. Deviations require a dated note in the appendix, not a quiet edit to the notebook. The filing commit is dated before any outcome data is pulled, which reviewers can check in the history.
 
 ### 42.3b Negative results publishability
 
 Publishable applied research includes negative results ("dual approval did not change reopen rates in this sample"). Hiding negatives biases the next cohort's designs toward empty confidence.
 
-A negative result on dual approval still teaches the next cohort not to assume the control works without evidence. Hiding it would push empty confidence into design studio. Sam's write-up leads with the negative and discusses sample size before suggesting a follow-up. Cohorts that only see positive write-ups keep shipping unmeasured controls. Studio prompts now include a negative-result example from Sam's write-up.
+A negative result on dual approval still teaches the next cohort not to assume the control works without evidence. Sam's write-up leads with the negative and discusses sample size before suggesting a follow-up. Cohorts that only see positive write-ups keep shipping unmeasured controls. Studio prompts now include a negative-result example from Sam's write-up. Negative results are reported with the same intervals as positive ones.
 
 ### 42.1b Data sharing agreements
 
@@ -3573,13 +3573,13 @@ A capstone that needs a new SaaS the host cannot buy in time is a planning failu
 
 If your placement host sells scanners, your practice report must disclose that and still refuse empty scores. Marketing decks are not measurement.
 
-If the host sells scanners, disclose it and still refuse empty scores in the practice report. Marketing decks are citations of claims, not measurements. Sam's disclosure paragraph sat above the metrics so readers saw the relationship before the numbers. Empty scores in a host deck are cited as claims to test, not as results to copy. Graders read the disclosure before scoring the measurement part.
+Sam's disclosure paragraph sat above the metrics so readers saw the relationship before the numbers. Empty scores in a host deck are cited as claims to test, not as results to copy. Graders read the disclosure before scoring the measurement part. The disclosure also names who paid for any licence used in the work, so readers know which tools came from the host. Comparisons between the host's product and other scanners are run on the same synthetic targets and reported with the same denominators.
 
 ### 43.1b Clearance and need-to-know
 
 Public-service placements may involve clearances. Course artefacts stay at the lowest sensitivity: synthetic reconstructions. Never paste classified or restricted text into GitHub.
 
-Restricted text in a student GitHub is an incident. Synthetic reconstructions at the lowest sensitivity are the only course artefacts. Sam's repo pre-commit hook greps for the host's internal project codenames and blocks the commit. Hooks that only warn are not enough; the commit must fail closed. Failed commits are logged to the placement supervisor the same day.
+Sam's repo pre-commit hook greps for the host's internal project codenames and blocks the commit. Hooks that only warn are not enough; the commit must fail closed. Failed commits are logged to the placement supervisor the same day. Before the placement starts, Sam and the host mentor agree in writing which details may appear in course artefacts at all. Anything not on that list stays out of the repo, even in synthetic form. The codename list for the hook comes from that agreement and is updated when the host starts new projects.
 
 ### Practice note
 
@@ -3626,7 +3626,7 @@ You will (1) propose a capstone that ships a measurable platform improvement; (2
 
 Problem, users, requirements (safety first), architecture sketch, milestones, verification lab plan, ethics paragraph. Capstones that need exploit work are rejected.
 
-Safety-first requirements and an ethics paragraph are gates, not decorations. Exploit-centred proposals return unread. Sam's template opens with users and fail-closed requirements before any architecture sketch, which is why "auto-pwn" drafts never passed the first checkpoint. Architecture sketches without users and fail-closed requirements are returned at the same checkpoint. Safety requirements are numbered and traced to Lab II rows in the same document.
+Safety-first requirements and an ethics paragraph are gates, not decorations. Exploit-centred proposals return unread. Sam's template opens with users and fail-closed requirements before any architecture sketch, which is why "auto-pwn" drafts never passed the first checkpoint. Safety requirements are numbered and traced to Lab II rows in the same document. Proposals that fail this check go back with the missing section named.
 
 ### 44.2 Non-goals
 
@@ -3640,7 +3640,7 @@ Something demoable on synthetic data in week 3: e.g. kill-switch honored in ≤3
 
 > **Synthetic case — Riverstone Transit.** Capstone I proposals that mentioned "auto-pwn" were returned; "signed policy distribution with fail-closed" advanced.
 
-A kill-switch honored in ≤30s on synthetic data is demoable and safety-relevant. Vague "research spikes" are not. Sam's milestone-1 video shows the stop control, the measured halt time and the ROE clause it satisfies, which is the pattern that advanced past "auto-pwn" returns. Videos without a measured halt time fail the checkpoint even if the UI looks polished.
+Vague "research spikes" are not. Sam's milestone-1 video shows the stop control, the measured halt time and the ROE clause it satisfies, which is the pattern that advanced past "auto-pwn" returns. Videos without a measured halt time fail the checkpoint even if the UI looks polished.
 
 ### 44.4 Errors and limits
 
@@ -3652,19 +3652,19 @@ Scope creep kills more capstones than hard bugs. Freezing non-goals and parking 
 
 List project risks: scope creep, dependency delay, reviewer unavailability, ethics boundary confusion. Each risk has an early warning and a mitigation. Review the register weekly in studio.
 
-Early warnings beat heroics in week eleven. Reviewer unavailability and ethics confusion need mitigations before they land. Sam's register flagged advisor travel in week six and booked the checkpoint early; the mitigation was a recorded demo, not a silent slip. Weekly studio opens on the register before feature demos. Risks without early warnings are rewritten before the meeting ends.
+Early warnings beat heroics in week eleven. Sam's register flagged advisor travel in week six and booked the checkpoint early; the mitigation was a recorded demo, not a silent slip. Risks without early warnings are rewritten before the meeting ends. Each mitigation names who acts and by which week. Closed risks stay in the register with the date they closed, so the final report can show which warnings fired and what was done.
 
 ### 44.3b Advisor checkpoints
 
 Capstone I has mandatory checkpoints: proposal accepted, milestone 1 demo, mid ethics check. Missing a checkpoint freezes coding until recovered — silent drift produces unreviewable piles.
 
-Silent drift produces piles nobody can review. Missing a checkpoint freezes coding until the gate is passed. Sam's ethics check mid-capstone caught a plan to use anonymized but still host-internal hostnames; coding stayed frozen until the synthetic set was substituted. Frozen coding is visible on the board so teammates do not merge dependent work. Dependent PRs from teammates are held in draft while the freeze is on.
+Sam's ethics check mid-capstone caught a plan to use anonymized but still host-internal hostnames; coding stayed frozen until the synthetic set was substituted. Frozen coding is visible on the board so teammates do not merge dependent work. Dependent PRs from teammates are held in draft while the freeze is on. Recovering a missed checkpoint means meeting the advisor and getting the gate signed, not just sending an apology.
 
 ### 44.1b Success metrics for the capstone
 
 Define two metrics you will show at defense (e.g. deny-all time, percent of merges with AUTH tickets). If you cannot name them in Capstone I, the proposal is not ready.
 
-Deny-all time and percent of merges with AUTH tickets are examples of metrics a defense can show as artefacts. If Capstone I cannot name two, the proposal is not ready. Sam wrote "deny-all ≤30s after policy loss" and "100% of scope widens have AUTH tickets" on page one of his proposal.
+Sam wrote "deny-all ≤30s after policy loss" and "100% of scope widens have AUTH tickets" on page one of his proposal. Each metric needs a measurement method and a target that can be checked on synthetic data before the defense. Vague goals such as "better safety" are returned at the proposal checkpoint. Sam also named how he would measure each one: a timed Lab II run for deny-all, and a query over merge history for AUTH tickets. Both were measured once on synthetic data before the proposal was submitted, so the targets were known to be reachable.
 
 ### Practice note
 
@@ -3687,7 +3687,7 @@ Proposals without lab-row mapping are returned before studio time is booked.
 
 The capstone proposal states what will be built in the time available — a scope-diff tool for TrackScope with tests and a short evaluation — and what will not, such as integration with every client's ticket system. Advisors judge the project against the stated scope, not against an imagined larger one.
 
-Advisors grade the stated scope, not an imagined larger system. A scope-diff tool with tests and a short evaluation is enough if it is real. Sam's non-goals included "every client's ticket system," which stopped a late scramble to add Jira during freeze.
+Sam's non-goals included "every client's ticket system," which stopped a late scramble to add Jira during freeze. Non-goals are listed in the proposal next to the goals, so freeze reviews can check new requests against them. A feature that appears on neither list goes back to the advisor before any code is written. The advisor signs the list at the proposal checkpoint.
 
 ### Exercises
 
@@ -3715,7 +3715,7 @@ You will (1) run a review that can reject; (2) use a checklist tied to safety re
 
 Reviewers may block merge for fail-open paths, missing tests, or empty scores in UI. "LGTM" without running the checklist is invalid.
 
-Checklist-free LGTM is how fail-open returns under deadline. Reviewers who block on empty scores or missing tests are doing the job. Sam's coverage-badge PR collected two blocks under this rule before the honest UI shipped. A third block would have been fine; speed is not a reason to skip the checklist. Authors may not mark their own checklist boxes; reviewers must.
+Checklist-free LGTM is how fail-open returns under deadline. Sam's coverage-badge PR collected two blocks under this rule before the honest UI shipped. A third block would have been fine; speed is not a reason to skip the checklist. Authors may not mark their own checklist boxes; reviewers must. A block must name the checklist item that failed, so the author knows what to fix.
 
 ### 45.2 Checklist
 
@@ -3780,7 +3780,7 @@ Repeated checklist skips by the same reviewer trigger a coaching conversation, n
 
 Every review comment ends in one of three states: fixed, with a link to the change; declined, with a reason the reviewer accepts; or carried as a known risk with an owner. Sam's design is approved only when no comment remains open without one of these states.
 
-Open comments without fixed/declined/risk states mean the design is not approved. Carried risks need owners. Sam's approval on the honest coverage UI waited until every badge-related comment was either fixed or declined with a reason the reviewer accepted.
+Carried risks need owners. Sam's approval on the honest coverage UI waited until every badge-related comment was either fixed or declined with a reason the reviewer accepted. Comments carried as known risks are copied into the risk register with their owner and a review date.
 
 ### Exercises
 
@@ -3873,19 +3873,19 @@ For Capstone II, the silent operator run and Lab II checklist are the proof. Sam
 
 Before claiming done, a second engineer follows the runbook cold on synthetic data while the author is silent. Places they stall become doc fixes. Capstone II is not done until the silent run succeeds.
 
-Author silence during the cold run is what surfaces missing steps. Stall points become doc fixes before anyone claims done. Sam's shadowing session stalled on the kill-switch path until the binder page named the file location the tabletop had found earlier. Stall notes are filed as doc tickets before the acceptance script is attempted.
+Author silence during the cold run is what surfaces missing steps. Sam's shadowing session stalled on the kill-switch path until the binder page named the file location the tabletop had found earlier. Stall notes are filed as doc tickets before the acceptance script is attempted. The shadowing engineer signs the run log when the silent run finally passes.
 
 ### 46.3b Demo script
 
 Capstone II demo follows a script on synthetic data: show fail-closed, show coverage denominator, show a stopped action. Improvised demos skip safety. Record the script next to the lab report.
 
-Improvised demos skip fail-closed and denominators under time pressure. A script that shows deny on missing policy, a 5/7 coverage export and a stopped action keeps the defense honest. Sam filed the script next to the Lab II report so examiners could ask for the same path. Examiners may ask to pause the script and inspect the deny reason code live.
+A script that shows deny on missing policy, a 5/7 coverage export and a stopped action keeps the defense honest. Sam filed the script next to the Lab II report so examiners could ask for the same path. Examiners may ask to pause the script and inspect the deny reason code live.
 
 ### 46.1b Handover to ops
 
 Capstone code without an ops owner at merge is unfinished. Name the owning squad in the README and CODEOWNERS before Lab II sign-off.
 
-CODEOWNERS and README ownership before Lab II sign-off stop orphan capstones. An ops squad that never agreed cannot be surprised on call. Sam's README named the platform squad and the on-call rotation before the acceptance script ran. Ops acknowledgment is a checkbox on the Lab II sign-off form. Without ops acknowledgment, Lab II sign-off stays red. Red sign-off is visible on the Capstone II board beside Lab II.
+CODEOWNERS and README ownership before Lab II sign-off stop orphan capstones. An ops squad that never agreed cannot be surprised on call. Sam's README named the platform squad and the on-call rotation before the acceptance script ran. Ops acknowledgment is a checkbox on the Lab II sign-off form. Red sign-off is visible on the Capstone II board beside Lab II.
 
 ### Practice note
 
@@ -3912,7 +3912,7 @@ Advisor review watches the silent-run recording at 1.5x and files doc issues bef
 
 Before the capstone is handed over, an operator who did not build it runs the acceptance script alone, using only the documentation. Two steps failed in Sam's first attempt because the documentation assumed knowledge he had; both were rewritten and the operator's second run passed.
 
-Assumed knowledge in docs is a defect the cold operator will find. Two failed steps on Sam's first attempt were rewritten; the second run passed. That rewrite is part of the capstone evidence, not an embarrassment to hide. The rewritten steps and the second green run are both sealed in the dossier.
+Assumed knowledge in docs is a defect the cold operator will find. That rewrite is part of the capstone evidence, not an embarrassment to hide. The rewritten steps and the second green run are both sealed in the dossier.
 
 ### Exercises
 
@@ -4121,19 +4121,19 @@ Personal cloud accounts break residency and retention schedules the host agreed.
 
 Hand the dossier to someone outside the project for a re-hash drill. If they cannot find the manifest or the ROE version, the dossier fails regardless of how neat it looks to its authors.
 
-Authors know where they hid the manifest; outsiders do not. A re-hash drill by someone outside the project is the readability test. Sam's last drill failed when the ROE PDF was nested three folders deep without a pointer on the checklist page; the layout changed before seal. Layout reviews use the ten-minute budget as a hard gate.
+Authors know where they hid the manifest; outsiders do not. Sam's last drill failed when the ROE PDF was nested three folders deep without a pointer on the checklist page; the layout changed before seal. Layout reviews use the ten-minute budget as a hard gate. The outsider records how long the search took and where they got stuck.
 
 ### 48.3b Redaction log
 
 When redacting, keep a redaction log (what, why, actor) inside the sealed store. Future readers need to know that a blank was intentional, not truncated evidence.
 
-A blank without a log looks like truncation or tampering. What, why and actor inside the sealed store explain the gap. Sam's redaction log for a screenshot that showed a staff display name records the pixel bounds, the privacy reason and his user id. Truncation without a log line fails the seal script. Seal scripts treat a blank without a log as a hash mismatch equivalent.
+A blank without a log looks like truncation or tampering. Sam's redaction log for a screenshot that showed a staff display name records the pixel bounds, the privacy reason and his user id. Seal scripts treat a blank without a log as a hash mismatch equivalent. The log entry is written at the time of redaction, not reconstructed afterwards.
 
 ### 48.1b Reader checklist
 
 Include a one-page "how to verify this dossier" at the top: install tool versions, run `sha256sum -c manifest`, open ROE, spot-check one finding. If readers need a tour guide, the dossier is incomplete.
 
-Tour-guide dossiers fail busy assessors. One page that names tool versions, `sha256sum -c manifest`, ROE open and one finding spot-check is the bar. Sam's assessor completed that path in under ten minutes on dossier v3, which became the time budget for layout reviews. Layouts that miss the budget are redesigned before the lead signs the manifest.
+Sam's assessor completed that path in under ten minutes on dossier v3, which became the time budget for layout reviews. Layouts that miss the budget are redesigned before the lead signs the manifest. The page names exact tool versions, so a reader months later can install the same ones. If a step needs a tool that is no longer available, the page says which version was used and where an archived copy is kept.
 
 ### Practice note
 
@@ -4190,7 +4190,7 @@ One sentence that names what was built or measured and for whom keeps the thesis
 
 Related work (SP 800-115, PTES, ATT&CK, Albrecht & Jensen), design, verification, results with intervals, limitations, ethics.
 
-Related work, design, verification, timed results, limits and ethics are the spine. Intervals belong with results so empty single scores cannot dominate. Sam's results chapter leads with deny-all times and confidence notes before any qualitative praise. Qualitative praise without numbers is moved to an appendix or deleted. Appendices that only praise tools without data are removed before submission. Data-free praise is a common draft habit and is caught in advisor review.
+Intervals belong with results so empty single scores cannot dominate. Sam's results chapter leads with deny-all times and confidence notes before any qualitative praise. Qualitative praise without numbers is moved to an appendix or deleted. Appendices that only praise tools without data are removed before submission. Data-free praise is a common draft habit and is caught in advisor review. Each results table states the number of trials and the dates they ran.
 
 ### 49.3 Citations
 
@@ -4210,7 +4210,7 @@ Exploitation skill as a thesis outcome is outside the programme and the safety b
 
 Discuss construct validity (does coverage measure what you claim?), internal validity (confounds in the trial), external validity (other orgs). A thesis that skips this section overclaims by omission.
 
-Skipping construct, internal and external validity is overclaim by omission. Coverage must be defended as planned-technique coverage, not residual risk. Sam's threats-to-validity part states that one transit host and synthetic injects limit generalization to other sectors. Sector limits are stated in the abstract, not only buried in chapter nine. Abstract and chapter nine are linted to contain the same limit sentence.
+Coverage must be defended as planned-technique coverage, not residual risk. Sam's threats-to-validity part states that one transit host and synthetic injects limit generalization to other sectors. Sector limits are stated in the abstract, not only buried in chapter nine. Abstract and chapter nine are linted to contain the same limit sentence. Each threat is paired with what was done to reduce it or why it could not be reduced.
 
 ### 49.3b Reproducibility appendix
 
@@ -4222,7 +4222,7 @@ Fixture hashes, tool SHAs and scripts in the appendix beat "available on request
 
 Cite frameworks you actually used. Padding related work with unread papers is discovered quickly in defense questions. Thin and accurate beats thick and fake.
 
-Unread citations collapse under defense questions. Thin lists of frameworks actually used beat padded bibliographies. Sam cites SP 800-115, PTES, ATT&CK and Albrecht and Jensen because each appears in a design or measurement choice he can point to. A framework named in related work but unused in design is removed. Removal is preferred to a vague "inspired by" claim.
+Unread citations collapse under defense questions. Sam cites SP 800-115, PTES, ATT&CK and Albrecht and Jensen because each appears in a design or measurement choice he can point to. A framework named in related work but unused in design is removed. Removal is preferred to a vague "inspired by" claim. Each citation names the edition or version that was used.
 
 ### Practice note
 
@@ -4253,7 +4253,7 @@ Examiners read that page first.
 
 Sam's thesis states its claim in the first paragraph, presents evidence in the order a sceptical reader would demand it, and ends each chapter by stating what that chapter established and what remains uncertain. His advisor's test is whether the abstract alone tells a reader exactly what was shown.
 
-Ending each chapter with what was established and what remains uncertain trains the abstract to be precise. The advisor test — abstract alone states what was shown — is the bar. Sam rewrote his abstract three times until it named the deny-all measure and the single-host limit without adjectives. Adjectives such as robust and seamless are banned from the abstract by the same lint as UI copy. The abstract lint runs in CI on the thesis Markdown.
+Ending each chapter with what was established and what remains uncertain trains the abstract to be precise. Sam rewrote his abstract three times until it named the deny-all measure and the single-host limit without adjectives. Adjectives such as robust and seamless are banned from the abstract by the same lint as UI copy. The abstract lint runs in CI on the thesis Markdown.
 
 ### Exercises
 
@@ -4352,13 +4352,13 @@ Archiving the deck with matching hashes next to the dossier keeps examiner reque
 
 Provide examiners the claim sentence, Lab II summary, failure-trial measure, and ethics paragraph one day ahead. Surprise decks waste defense time that should test your judgment.
 
-Claim, Lab II summary, failure-trial measure and ethics paragraph one day ahead keep the hour for judgment. Surprise decks burn time. Sam's packet was five pages and matched the talk order so examiners could annotate before he spoke. Packet pages are numbered to match slide numbers for annotation speed. Annotation speed matters when the panel has only five minutes to prepare.
+Surprise decks burn time. Sam's packet was five pages and matched the talk order so examiners could annotate before he spoke. Packet pages are numbered to match slide numbers for annotation speed. Annotation speed matters when the panel has only five minutes to prepare. The packet carries the same version tag as the dossier, so examiners know they are reading the final text.
 
 ### 50.1b Time discipline
 
 Twenty minutes means rehearsal with a timer. Cutting the limits slide to save time is the wrong cut — examiners need your honesty more than a fourth demo click.
 
-Rehearsal with a timer is what protects the limits slide. Cutting honesty to fit a fourth demo click is the wrong trade. Sam's rehearsal cut two architecture slides and kept the limits and the 45s-to-30s trial story. The trial story is timed to ninety seconds so questions still fit. Ninety seconds is rehearsed with a visible timer on the presenter's laptop.
+Sam's rehearsal cut two architecture slides and kept the limits and the 45s-to-30s trial story. The trial story is timed to ninety seconds so questions still fit. Ninety seconds is rehearsed with a visible timer on the presenter's laptop. Each rehearsal records the actual time per section, and any section that runs over is cut at the next rehearsal, never the limits slide.
 
 ### Practice note
 
