@@ -290,10 +290,9 @@ Guarde o cartão de limites num lugar onde você o veja e compare-o com o de um 
 - Adiar um relato por vergonha de ter clicado.
 - Verificar a identidade de quem ligou usando os contatos que a própria pessoa deu.
 - Compartilhar demais: postar uma captura de tela de uma fraqueza "para alertar as pessoas".
-- Limites: este capítulo é uma orientação geral, não aconselhamento jurídico. As leis sobre acesso não autorizado e sobre obrigações de relato diferem por país e por setor; siga a política da sua organização.
-
 - Aceitar a menção a um nome, como "o K. Ito disse que tudo bem", como permissão, quando só o dono pode autorizar o trabalho.
 - Compartilhar um relato rotulado mais amplamente do que o rótulo permite, como Sam evitou ao manter o relato do prestador dentro da clínica.
+- Limites: este capítulo é uma orientação geral, não aconselhamento jurídico. As leis sobre acesso não autorizado e sobre obrigações de relato diferem por país e por setor; siga a política da sua organização.
 
 ### Exercícios — capítulo 2
 
