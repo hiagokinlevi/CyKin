@@ -1,7 +1,7 @@
 # Criptografia e Serviços de Confiança: Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); curso 100, curso de bacharelado (4 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 40 já estão escritos em português, com os exercícios EX001–EX090 e suas resoluções com rubricas de 0 a 3 e 6 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 31–40 (EX091–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–40 de 40 têm texto didático escrito à mão; os exercícios EX001–EX120 têm resoluções correspondentes com rubricas de 0 a 3; os seis laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de bacharelado que aprendem criptografia desde os fundamentos matemáticos até a operação de serviços de confiança numa organização real.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios ilustram conceitos (XOR, cifras clássicas, hash com salt, cadeias de hashes) sobre dados sintéticos; as cifras de brinquedo aparecem apenas para explicar por que falham. Sistemas de produção usam bibliotecas avaliadas; nunca crie sua própria criptografia. Pessoas, organizações e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,7 @@ Katz e Lindell (3ª ed.); Menezes et al., [*Handbook of Applied Cryptography*](h
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
-
-Capítulos 31–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1354,11 +1352,391 @@ As chaves públicas precisam ser autenticadas, por exemplo comparando as impress
 
 - **EX090 — Troca de impressões digitais.** Como a equipe passou a confiar na chave pública da parceira? *Rubrica:* 3 = trocando as impressões digitais das chaves numa reunião;; 2 = impressões digitais;; 1 = confiou no e-mail;; 0 = nenhuma.
 
+<a id="ch-31"></a>
+
+## Capítulo 31 — Criptografia e serviços de confiança: casos avançados
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar a migração pós-quântica para uma organização pequena; (2) avaliar mensagens com cifração de ponta a ponta para os serviços aos leitores; (3) pesar as opções avançadas contra a capacidade disponível.
+
+### 31.1 Migração pós-quântica
+
+Priya estuda as normas pós-quânticas do NIST: o ML-KEM do FIPS 203 para o estabelecimento de chaves e o ML-DSA do FIPS 204 e o SLH-DSA do FIPS 205 para as assinaturas. O principal risco a curto prazo é o "colher agora, decifrar depois" (harvest now, decrypt later): o tráfego gravado poderia ser decifrado quando existirem computadores quânticos grandes. Para a Tidewell, os dados de vida longa mais sensíveis são os históricos de leitura dos leitores. Priya recomenda contar com fornecedores e bibliotecas que adotem a troca de chaves híbrida no TLS, manter os inventários prontos para a migração e não tentar nenhuma implementação própria. Ela registra a recomendação no plano do inventário.
+
+### 31.2 Mensagens de ponta a ponta
+
+A Tidewell considera permitir que os leitores enviem mensagens aos bibliotecários sobre temas sensíveis, como pedidos de informações de saúde. Priya avalia mensagens com cifração de ponta a ponta, em que apenas os dispositivos do leitor e do bibliotecário guardam as chaves, de modo que nem mesmo os servidores do consórcio conseguem ler as mensagens. Os benefícios incluem uma privacidade forte; os custos incluem perder as mensagens se um dispositivo for perdido, dificuldades com caixas de entrada compartilhadas pelos bibliotecários e a impossibilidade de verificar abusos. Ela recomenda um serviço existente e de boa reputação, com projeto de segurança publicado, em vez de construir um. Grace leva a recomendação à equipe de extensão.
+
+### 31.3 Capacidade e prioridades
+
+Priya pesa essas opções avançadas contra a capacidade da Tidewell: uma equipe de TI pequena, orçamento limitado e muitas lacunas básicas ainda abertas. Ela recomenda terminar primeiro os controles básicos, como o inventário, a renovação automatizada e a cifração dos backups, e depois adotar as proteções pós-quânticas por meio das atualizações dos fornecedores, à medida que chegarem. A criptografia avançada só agrega valor quando os fundamentos estão no lugar, e a complexidade além da capacidade de operação da equipe torna-se, ela própria, um risco. Grace concorda e acrescenta as opções avançadas a um roteiro de três anos, a ser revisto quando os controles básicos estiverem concluídos e medidos.
+
+### Exemplo resolvido
+
+Priya recomenda a prontidão pós-quântica por meio dos fornecedores e dos inventários, um serviço existente de mensagens de ponta a ponta para os pedidos sensíveis dos leitores e terminar primeiro os controles básicos.
+
+> **Caso sintético.** As opções da Tidewell são inventadas; o FIPS 203, o 204 e o 205 são reais.
+
+### Erros e limites
+
+Os prazos da migração pós-quântica são incertos; evite tanto o pânico quanto a acomodação. A cifração de ponta a ponta desloca o risco para a perda de dispositivos e de chaves.
+
+### Exercícios
+
+- **EX091 — Colher agora.** O que significa "colher agora, decifrar depois"? *Rubrica:* 3 = o tráfego gravado é decifrado mais tarde, quando existirem computadores quânticos grandes;; 2 = decifração futura;; 1 = nada;; 0 = nenhuma.
+
+- **EX092 — Custo da E2E.** Cite dois custos das mensagens com cifração de ponta a ponta para os leitores. *Rubrica:* 3 = dois entre perda de mensagens com os dispositivos, dificuldade com caixas compartilhadas, nenhuma verificação de abuso;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
+
+- **EX093 — Conselho de prioridade.** O que Priya aconselhou antes de adotar as opções avançadas? *Rubrica:* 3 = terminar primeiro os controles básicos (inventário, renovação, cifração dos backups);; 2 = o básico;; 1 = apressar;; 0 = nenhuma.
+
+<a id="ch-32"></a>
+
+## Capítulo 32 — Criptografia e serviços de confiança: interfaces interdisciplinares
+
+### Objetivos de aprendizagem
+
+Você vai (1) ligar as decisões criptográficas ao direito, às políticas e à experiência do usuário; (2) explicar as assinaturas eletrônicas em contextos jurídicos; (3) projetar interações de segurança compreensíveis.
+
+### 32.1 Direito e políticas
+
+As decisões criptográficas tocam o direito. A legislação de proteção de dados pode exigir segurança adequada para os dados pessoais, e a cifração pode reduzir os deveres de notificação de incidentes em algumas jurisdições, quando as chaves continuam seguras. As leis de assinatura eletrônica reconhecem diferentes níveis de assinatura, e alguns contextos exigem prestadores qualificados de serviços de confiança. Priya estuda as obrigações da Tidewell com o assessor jurídico do consórcio e aprende a formular os fatos técnicos com precisão, para que os advogados possam associá-los aos termos jurídicos sem mal-entendidos. Priya mantém um pequeno glossário para o assessor, definindo em linguagem simples termos como chave, certificado e assinatura.
+
+### 32.2 Assinaturas eletrônicas
+
+Priya explica ao assessor jurídico que uma assinatura digital é um mecanismo criptográfico, enquanto uma assinatura eletrônica é um conceito jurídico que pode incluir nomes digitados ou imagens digitalizadas. Os contratos com as editoras usam assinaturas digitais baseadas em certificados, que dão evidências mais fortes de integridade e de origem. Ela documenta por quanto tempo os contratos assinados precisam continuar verificáveis e recomenda acrescentar carimbos de tempo de um serviço de carimbo de tempo confiável, para que as assinaturas possam ser validadas mesmo depois que o certificado de assinatura expirar. O assessor acrescenta a exigência do carimbo de tempo ao modelo de contrato.
+
+### 32.3 Experiência do usuário
+
+As interações de segurança precisam ser compreensíveis. Priya reprojeta as telas de login e de recuperação do portal com uma designer: textos claros sobre frases-senha, uma explicação de por que os códigos de uso único ajudam e um processo de recuperação que não dependa de perguntas fáceis de adivinhar. Ela testa com dez voluntários, incluindo leitores mais velhos, e revisa os textos pouco claros. Ela aprende que uma segurança confusa leva os usuários a soluções de contorno inseguras, de modo que a usabilidade faz parte da segurança, e não é sua adversária. Dois voluntários comentam que o novo texto finalmente explica por que os códigos de uso único valem o passo extra.
+
+### Exemplo resolvido
+
+Priya esclarece ao assessor jurídico a diferença entre assinatura digital e eletrônica, recomenda carimbos de tempo confiáveis para a validação de longo prazo dos contratos e testa com usuários telas de login e de recuperação mais claras.
+
+> **Caso sintético.** O contexto jurídico da Tidewell é inventado; as leis específicas variam conforme a jurisdição.
+
+### Erros e limites
+
+Os requisitos jurídicos diferem conforme a jurisdição; consulte assessores qualificados. Testes de usabilidade com poucos usuários encontram os problemas principais, mas não todos.
+
+### Exercícios
+
+- **EX094 — Digital versus eletrônica.** Distinga uma assinatura digital de uma assinatura eletrônica. *Rubrica:* 3 = a digital é um mecanismo criptográfico; a eletrônica é um conceito jurídico que pode incluir nomes digitados;; 2 = parcial;; 1 = iguais;; 0 = nenhuma.
+
+- **EX095 — Propósito do carimbo de tempo.** Por que acrescentar carimbos de tempo confiáveis aos contratos assinados? *Rubrica:* 3 = para que as assinaturas possam ser validadas depois que o certificado de assinatura expirar;; 2 = longo prazo;; 1 = nenhum;; 0 = nenhuma.
+
+- **EX096 — Ligação com a usabilidade.** Por que a usabilidade faz parte da segurança? *Rubrica:* 3 = uma segurança confusa leva a soluções de contorno inseguras;; 2 = soluções de contorno;; 1 = não tem relação;; 0 = nenhuma.
+
+<a id="ch-33"></a>
+
+## Capítulo 33 — Métodos de pesquisa II
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar os dados de um pequeno estudo de segurança; (2) relatar os resultados com sua incerteza; (3) discutir as ameaças à validade.
+
+### 33.1 Conduzir o estudo
+
+Priya conduz o estudo sobre avisos de certificado planejado no Capítulo 18. Sessenta pessoas da equipe são distribuídas aleatoriamente em dois grupos; um deles lê primeiro uma explicação de uma página sobre os avisos de certificado. Todos veem depois um aviso simulado no site de treinamento. No grupo de controle, 18 de 30 prosseguem apesar do aviso; no grupo da explicação, 9 de 30 prosseguem. Os dados são anônimos e armazenados conforme a aprovação ética. Todos recebem o esclarecimento posterior. Priya confere que os tamanhos dos grupos e os papéis de base são semelhantes nos dois grupos antes de comparar os resultados e registra qualquer desequilíbrio que encontrar.
+
+### 33.2 Relatar com incerteza
+
+As proporções são 60 por cento e 30 por cento. Priya calcula a diferença, 30 pontos percentuais, e usa um teste de permutação, embaralhando os rótulos dos grupos muitas vezes, para estimar com que frequência uma diferença desse tamanho apareceria por acaso; isso é raro, menos de cinco por cento dos embaralhamentos. Ela relata a diferença com sua incerteza, anotando o tamanho pequeno da amostra. Ela evita dizer que a explicação "funciona" e escreve, em vez disso, que ela esteve associada a menos pessoas da equipe prosseguindo nesta simulação. Ela compartilha o script da permutação com a turma, para que outros possam executá-lo de novo.
+
+### 33.3 Ameaças à validade
+
+Priya discute as ameaças. As pessoas do grupo da explicação podem ter adivinhado o propósito do estudo e se comportado de outra forma. Um site de treinamento difere da pressão real do trabalho. Trinta pessoas por grupo não conseguem revelar efeitos pequenos nem efeitos em subgrupos. Os resultados vêm de um único consórcio. Ela recomenda repetir o estudo em outros lugares e medir o comportamento semanas depois, para testar se o efeito dura. A discussão honesta das ameaças faz parte do resultado, e não é um pedido de desculpas por ele. O Dr. Echeverría pede que ela inclua as ameaças no resumo.
+
+### Exemplo resolvido
+
+Priya relata 60 contra 30 por cento prosseguindo apesar de um aviso simulado, um resultado de permutação abaixo de cinco por cento e quatro ameaças à validade.
+
+> **Caso sintético.** Os dados do estudo são inventados.
+
+### Erros e limites
+
+Amostras pequenas dão estimativas instáveis. Contextos simulados podem não refletir o comportamento real.
+
+### Exercícios
+
+- **EX097 — Resultados do estudo.** Informe a proporção que prosseguiu em cada grupo. *Rubrica:* 3 = 60 por cento no controle (18/30) e 30 por cento com a explicação (9/30);; 2 = um;; 1 = errado;; 0 = nenhuma.
+
+- **EX098 — Redação cuidadosa.** Como Priya descreve o efeito? *Rubrica:* 3 = associado a menos pessoas prosseguindo nesta simulação, e não "funciona";; 2 = cuidadosa;; 1 = "funciona";; 0 = nenhuma.
+
+- **EX099 — Ameaça à validade.** Cite duas ameaças à validade. *Rubrica:* 3 = duas entre adivinhar o propósito, simulação versus pressão real, amostra pequena, único consórcio;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-34"></a>
+
+## Capítulo 34 — Projeto comparativo
+
+### Objetivos de aprendizagem
+
+Você vai (1) comparar duas abordagens para um problema de confiança; (2) definir critérios justos; (3) recomendar com justificativa.
+
+### 34.1 A comparação
+
+O projeto comparativo de Priya pergunta como a Tidewell deveria dar à equipe das unidades acesso à wiki da equipe: senhas com códigos de uso único, ou certificados de dispositivo emitidos pela autoridade interna mais chaves de segurança para os administradores. Ela define o problema, os usuários e as ameaças e declara que as duas abordagens precisam funcionar para voluntários de meio período que usam computadores compartilhados nas unidades. As comparações só são justas quando as duas opções são testadas contra os mesmos requisitos. Ela também define um orçamento de tempo, para que a comparação termine dentro do semestre, e o combina com Grace e o Dr. Echeverría.
+
+### 34.2 Critérios e evidências
+
+Priya define os critérios: resistência ao phishing, esforço da equipe, esforço administrativo, custo, comportamento em computadores compartilhados e recuperação quando as credenciais são perdidas. Ela reúne evidências de um teste de duas semanas em duas unidades, registra os pedidos de suporte e entrevista a equipe. Os certificados de dispositivo eliminam as senhas, mas falham em computadores compartilhados usados por várias pessoas; os códigos de uso único funcionam em qualquer lugar, mas continuam vulneráveis ao phishing. As chaves de segurança resistem ao phishing, mas custam dinheiro e se perdem. Ela tabula os pedidos de suporte por tipo e descobre que os dispositivos de códigos de uso único perdidos causam a maioria das chamadas durante o teste.
+
+### 34.3 Recomendação
+
+Priya recomenda uma abordagem mista: certificados de dispositivo para identificar os computadores das unidades, combinados com login individual usando frases-senha e códigos de uso único para os voluntários, e chaves de segurança para a equipe com acesso aos dados dos leitores e para os administradores. Ela justifica cada escolha pelos critérios e pelas evidências e declara o que mudaria sua opinião, como preços menores das chaves de segurança. O método comparativo torna sua recomendação rastreável, e não uma questão de preferência. Grace aceita a recomendação e pede um plano de implantação que cubra as doze unidades em dois semestres.
+
+### Exemplo resolvido
+
+Priya compara as abordagens de acesso contra seis critérios num teste em duas unidades e recomenda certificados de dispositivo mais login individual, com chaves de segurança para a equipe privilegiada.
+
+> **Caso sintético.** O teste é inventado.
+
+### Erros e limites
+
+Testes curtos deixam passar problemas de longo prazo. Abordagens mistas acrescentam complexidade, que precisa ser documentada.
+
+### Exercícios
+
+- **EX100 — Computadores compartilhados.** Por que os certificados de dispositivo sozinhos falham para os voluntários das unidades? *Rubrica:* 3 = computadores compartilhados são usados por várias pessoas, então o dispositivo não identifica indivíduos;; 2 = compartilhados;; 1 = funcionam;; 0 = nenhuma.
+
+- **EX101 — Critérios.** Liste quatro dos critérios de Priya. *Rubrica:* 3 = quatro entre resistência ao phishing, esforço da equipe, esforço administrativo, custo, computadores compartilhados, recuperação;; 2 = três;; 1 = um;; 0 = nenhuma.
+
+- **EX102 — Mudar de opinião.** O que mudaria a recomendação de Priya? *Rubrica:* 3 = preços menores das chaves de segurança (ou mudança semelhante nas evidências);; 2 = condição;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-35"></a>
+
+## Capítulo 35 — Proposta de trabalho de conclusão
+
+### Objetivos de aprendizagem
+
+Você vai (1) propor um trabalho de conclusão que melhore um serviço de confiança; (2) definir o escopo, as entregas e a avaliação; (3) obter o acordo do parceiro.
+
+### 35.1 Escolher o trabalho de conclusão
+
+Priya propõe um trabalho de conclusão: um inventário de certificados e chaves para a Tidewell, com descoberta automatizada, monitoramento da expiração e alertas aos donos, partindo das lições da indisponibilidade do catálogo e do exercício da chave vazada. O problema é claro, o parceiro precisa dele e o escopo cabe num ano letivo. Ela declara o objetivo: todo certificado e toda chave no escopo são listados com um dono, e nenhum certificado expira sem pelo menos dois alertas, trinta e sete dias antes. Ela confere com Grace se o objetivo corresponde às prioridades do consórcio.
+
+### 35.2 Escopo e entregas
+
+Estão no escopo os certificados TLS públicos e internos e as chaves do serviço de chaves; ficam fora do escopo as chaves de segurança da equipe e as chaves mantidas pelos fornecedores. As entregas são um script de descoberta que varre os hosts autorizados em busca de certificados, um banco de dados de inventário, um serviço de alertas, a documentação e a passagem para a equipe de Grace. As ferramentas usam a biblioteca padrão e scanners existentes; nenhuma primitiva criptográfica é implementada. Ela lista os riscos, como o acesso às redes internas, com as mitigações. Ela também escreve um breve plano de manuseio de dados para os resultados das varreduras.
+
+### 35.3 Avaliação e acordo
+
+Priya define a avaliação: a descoberta encontra todos os certificados num ambiente de teste semeado com certificados conhecidos; os alertas disparam corretamente para datas de expiração sintéticas; e a equipe consegue usar o inventário sem ajuda depois de um treinamento curto. Grace assina a proposta, incluindo a autorização para varrer os hosts listados. O Dr. Echeverría a aprova com uma mudança: acrescentar uma medida de alertas falsos, já que alertas ruidosos minariam a adoção. Priya acrescenta a meta de alertas falsos ao plano de avaliação, buscando menos de um alerta falso por mês, e combina com Grace como os alertas serão revisados.
+
+### Exemplo resolvido
+
+Priya propõe um inventário de certificados e chaves com descoberta e alertas, define seu escopo e a avaliação e obtém a autorização assinada do parceiro, acrescentando uma medida de alertas falsos.
+
+> **Caso sintético.** O trabalho de conclusão é inventado.
+
+### Erros e limites
+
+Varrer além dos hosts autorizados não é permitido, nem mesmo com bons propósitos. Um escopo amplo demais ameaça a entrega.
+
+### Exercícios
+
+- **EX103 — Objetivo do trabalho de conclusão.** Enuncie o objetivo do trabalho de conclusão. *Rubrica:* 3 = todo certificado e toda chave no escopo listados com dono; nenhuma expiração sem alertas aos 30 e aos 7 dias;; 2 = objetivo;; 1 = vago;; 0 = nenhuma.
+
+- **EX104 — Fora do escopo.** O que está fora do escopo? *Rubrica:* 3 = as chaves de segurança da equipe e as chaves mantidas por fornecedores;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+
+- **EX105 — Medida acrescentada.** Que mudança o Dr. Echeverría exigiu? *Rubrica:* 3 = acrescentar uma medida de alertas falsos;; 2 = alertas falsos;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-36"></a>
+
+## Capítulo 36 — Prática de campo ou comunitária
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar os conhecimentos criptográficos num serviço à comunidade; (2) ensinar o básico de segurança a não especialistas; (3) respeitar os limites do aconselhamento.
+
+### 36.1 Oficinas comunitárias
+
+Como parte da prática de campo, Priya conduz oficinas sobre segurança digital para os leitores nas unidades da Tidewell. Os temas incluem reconhecer os avisos de certificado do navegador, usar frases-senha e gerenciadores de senhas, ativar o login em duas etapas e entender o que as mensagens cifradas protegem. Ela adapta a linguagem a cada público: adolescentes, pessoas em busca de emprego e idosos. Ela leva folhetos impressos e evita coletar qualquer informação pessoal dos participantes. Cada oficina dura uma hora e termina com um exercício prático curto, como ativar o login em duas etapas numa conta de demonstração fornecida pela biblioteca.
+
+### 36.2 Ensinar com eficácia
+
+Priya usa demonstrações concretas: comparar o aviso do cadeado num site de teste deliberadamente mal configurado com um site normal e gerar uma frase-senha aleatória com dados, para mostrar por que as escolhas aleatórias importam. Ela confere a compreensão com perguntas curtas, em vez de dar palestras. O retorno mostra que o que os participantes mais valorizaram foi aprender a usar um gerenciador de senhas. Ela revisa a oficina para dedicar mais tempo a isso, aprendendo que o ensino deve seguir as necessidades de quem aprende, e não os interesses de quem ensina. Ela também mantém um registro de quais demonstrações funcionam melhor.
+
+### 36.3 Limites do aconselhamento
+
+Alguns participantes pedem a Priya que conserte seus dispositivos pessoais ou recupere contas invadidas. Ela explica os limites do seu papel, indica as páginas oficiais de recuperação e a lista de encaminhamentos da biblioteca e nunca pede senhas nem acessa as contas deles. Ela registra os temas das perguntas de forma anônima, para melhorar as oficinas futuras. O Dr. Echeverría a elogia por manter os limites, o que protege tanto os participantes quanto a estudante. Ela compartilha o registro anônimo das perguntas com a equipe de extensão, que o usa para planejar as sessões futuras e atualizar os guias impressos da biblioteca sobre segurança online.
+
+### Exemplo resolvido
+
+Priya conduz oficinas para os leitores com demonstrações, adapta o conteúdo depois do retorno para dar mais espaço aos gerenciadores de senhas e mantém limites claros quanto à ajuda com dispositivos pessoais.
+
+> **Caso sintético.** As oficinas são inventadas.
+
+### Erros e limites
+
+Uma ajuda pessoal bem-intencionada pode expor os dados dos participantes. As demonstrações nunca devem usar contas reais.
+
+### Exercícios
+
+- **EX106 — Demonstração com dados.** Por que usar dados para gerar uma frase-senha nas oficinas? *Rubrica:* 3 = mostra que as escolhas aleatórias são mais fortes do que as escolhidas;; 2 = aleatoriedade;; 1 = diversão;; 0 = nenhuma.
+
+- **EX107 — Revisão da oficina.** Como Priya revisou a oficina? *Rubrica:* 3 = mais tempo para os gerenciadores de senhas, com base no retorno;; 2 = retorno;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX108 — Limite.** Como ela respondeu aos pedidos para consertar contas pessoais? *Rubrica:* 3 = explicou os limites, indicou a recuperação oficial e os encaminhamentos, nunca pediu senhas;; 2 = limite;; 1 = consertou;; 0 = nenhuma.
+
+<a id="ch-37"></a>
+
+## Capítulo 37 — Seminário de revisão de evidências
+
+### Objetivos de aprendizagem
+
+Você vai (1) revisar criticamente as evidências sobre a prática criptográfica; (2) avaliar a qualidade das fontes; (3) apresentar uma síntese equilibrada.
+
+### 37.1 A tarefa do seminário
+
+No seminário de revisão de evidências, cada estudante revisa as evidências sobre uma questão. A de Priya é: "O gerenciamento automatizado de certificados reduz as indisponibilidades por expiração?" Ela reúne as fontes: a especificação do ACME, a RFC 8555, que descreve o protocolo, mas não os resultados; estudos de medição revisados por pares sobre o ecossistema de certificados; relatórios de operadores; e seus próprios dados da Tidewell. Ela classifica cada uma por tipo e força, anotando que uma especificação explica como algo funciona, mas não se melhora os resultados. Ela registra cada fonte numa tabela com o tipo, a data e o autor, para que os colegas possam acompanhar seu raciocínio.
+
+### 37.2 Avaliar a qualidade
+
+Priya avalia cada fonte: quem a produziu, o método, a amostra, possíveis conflitos de interesse e se os resultados podem ser conferidos. Os relatórios de fornecedores afirmam grandes reduções, mas não dão o método. Os estudos de medição oferecem amostras grandes, mas medem as validades dos certificados, e não as indisponibilidades. Seus dados da Tidewell são precisos, mas minúsculos. Ela aprende a pesar as evidências pela qualidade, e não pela frequência com que uma afirmação é repetida, e a dizer quando as evidências são indiretas. Ela pede a um colega que classifique as fontes de forma independente e compara as classificações dos dois.
+
+### 37.3 Síntese equilibrada
+
+A síntese de Priya diz que as evidências sugerem de forma consistente que a automação encurta as validades dos certificados e reduz o trabalho manual, que as evidências diretas sobre a redução de indisponibilidades são limitadas e vêm principalmente de relatórios de operadores e que a automação introduz modos de falha silenciosos que exigem monitoramento, como mostrou o próprio caso do portal da Tidewell. Ela apresenta a síntese com uma tabela das fontes e de suas forças. Os colegas questionam seu tratamento dos relatórios de fornecedores, e ela acrescenta uma nota explicando por que lhes deu pouco peso. O coordenador do seminário elogia a síntese como um modelo.
+
+### Exemplo resolvido
+
+Priya revisa as fontes sobre o gerenciamento automatizado de certificados, pesa pela qualidade os dados de fornecedores, de medição e locais e apresenta uma síntese equilibrada que aponta os riscos de falhas silenciosas.
+
+> **Caso sintético.** Seus dados locais são inventados; a RFC 8555 é real.
+
+### Erros e limites
+
+Evidências amplamente repetidas não são necessariamente fortes. Dados locais raramente se generalizam.
+
+### Exercícios
+
+- **EX109 — Limite da especificação.** O que a RFC 8555 pode dizer a Priya, e o que não pode? *Rubrica:* 3 = como o ACME funciona, não se ele reduz as indisponibilidades;; 2 = parcial;; 1 = resultados;; 0 = nenhuma.
+
+- **EX110 — Peso dos fornecedores.** Por que os relatórios de fornecedores receberam pouco peso? *Rubrica:* 3 = não dão o método e podem ter conflitos de interesse;; 2 = sem método;; 1 = peso alto;; 0 = nenhuma.
+
+- **EX111 — Ressalva da síntese.** Que ressalva a síntese inclui sobre a automação? *Rubrica:* 3 = a automação introduz modos de falha silenciosos que exigem monitoramento;; 2 = falhas silenciosas;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-38"></a>
+
+## Capítulo 38 — Implementação do trabalho de conclusão
+
+### Objetivos de aprendizagem
+
+Você vai (1) implementar o inventário e os alertas do trabalho de conclusão; (2) testar num ambiente semeado; (3) gerenciar as mudanças durante a implementação.
+
+### 38.1 Construir o inventário
+
+Priya implementa o trabalho de conclusão. Um script de descoberta se conecta aos hosts autorizados, obtém os certificados usando o módulo ssl da biblioteca padrão e registra os nomes dos titulares, os emissores, as datas de validade e as impressões digitais. As chaves são listadas pela interface de metadados do serviço de chaves, nunca lendo o material de chave. Cada registro se liga a um dono do diretório da equipe. Um serviço de alertas confere diariamente os certificados a trinta e a sete dias da expiração e envia mensagens aos donos e a uma caixa de correio compartilhada. O código é revisado por um colega antes da implantação.
+
+### 38.2 Testar num ambiente semeado
+
+Priya semeia um ambiente de teste com quinze certificados: alguns válidos, alguns perto de expirar, alguns expirados e dois escondidos em portas incomuns. A descoberta encontra treze de início, deixando passar os dois das portas incomuns. Ela acrescenta essas portas ao perfil de varredura depois de confirmar que estão dentro da autorização, e a descoberta encontra os quinze. Os alertas disparam corretamente para as datas sintéticas, com um alerta falso causado por um erro de fuso horário, que ela corrige armazenando todas as datas em UTC. Ela mantém o ambiente semeado para os testes de regressão.
+
+### 38.3 Gerenciar as mudanças
+
+No meio do caminho, Grace pergunta se a ferramenta também poderia acompanhar as chaves de assinatura de código. Priya avalia o pedido em relação à proposta: ele acrescentaria escopo e risco ao cronograma. Ela o registra como uma melhoria futura, combina com Grace e o Dr. Echeverría manter o escopo original e projeta o inventário para que o acréscimo seja fácil mais tarde. Gerenciar o escopo protege a entrega e mantém a avaliação significativa. Ela também escreve uma breve nota de projeto descrevendo como as chaves de assinatura de código poderiam ser acrescentadas depois, para que o próximo mantenedor tenha um ponto de partida claro e um esforço estimado.
+
+### Exemplo resolvido
+
+A descoberta de Priya encontra os quinze certificados semeados depois de acrescentar as portas autorizadas, corrige com UTC um alerta falso de fuso horário e adia as chaves de assinatura de código como uma melhoria planejada.
+
+> **Caso sintético.** O ambiente é inventado.
+
+### Erros e limites
+
+O tratamento do tempo causa erros sutis; armazene em UTC. As varreduras precisam ficar dentro da autorização, mesmo ao ampliar a cobertura.
+
+### Exercícios
+
+- **EX112 — Lacuna da descoberta.** O que a descoberta deixou passar de início, e como isso foi corrigido? *Rubrica:* 3 = dois certificados em portas incomuns; portas autorizadas acrescentadas ao perfil de varredura;; 2 = deixou passar;; 1 = nada;; 0 = nenhuma.
+
+- **EX113 — Causa do alerta falso.** O que causou o alerta falso? *Rubrica:* 3 = um erro de fuso horário, corrigido armazenando as datas em UTC;; 2 = fuso horário;; 1 = bug;; 0 = nenhuma.
+
+- **EX114 — Pedido de escopo.** Como Priya tratou o pedido sobre a assinatura de código? *Rubrica:* 3 = registrou como melhoria futura, manteve o escopo, projetou para facilitar o acréscimo;; 2 = adiou;; 1 = acrescentou;; 0 = nenhuma.
+
+<a id="ch-39"></a>
+
+## Capítulo 39 — Avaliação do trabalho de conclusão
+
+### Objetivos de aprendizagem
+
+Você vai (1) avaliar o trabalho de conclusão em relação aos seus critérios; (2) medir a adoção e os alertas falsos; (3) recomendar os próximos passos.
+
+### 39.1 Resultados da avaliação
+
+Priya avalia o trabalho de conclusão em relação à proposta. No ambiente de teste semeado, a descoberta encontra quinze de quinze certificados. Em produção, ela encontra quarenta e dois certificados, incluindo três que ninguém tinha registrado. Ao longo de dois meses, os alertas disparam para seis expirações reais, todas renovadas a tempo, com um alerta falso no total. A equipe conclui as tarefas comuns do inventário depois de um treinamento de vinte minutos. O objetivo é atingido para os sistemas do escopo. Ela apresenta esses resultados numa tabela que compara cada valor medido com a meta definida na proposta, mostrando exatamente onde o objetivo foi atingido.
+
+### 39.2 Adoção e limites
+
+A adoção é desigual: dois voluntários de TI das unidades ignoram as mensagens de alerta enviadas aos seus endereços pessoais, então Priya encaminha os alertas para a caixa de correio compartilhada monitorada pela equipe de Grace. Ela lista os limites: o inventário cobre apenas os hosts varridos, não consegue ver certificados em dispositivos fora da rede e depende de o diretório da equipe estar atualizado. Ela relata que um alerta só foi atendido depois do lembrete de sete dias, o que mostra o valor do segundo alerta. Ela acrescenta uma verificação mensal de que o diretório da equipe corresponde aos donos atuais.
+
+### 39.3 Próximos passos
+
+Priya recomenda os próximos passos: acrescentar as chaves de assinatura de código, como Grace pediu; integrar com os logs de renovação do ACME para perceber mais cedo as renovações que falham; e revisar os donos trimestralmente. Ela também recomenda que o consórcio mantenha a ferramenta simples e mantida, em vez de acrescentar recursos que exigiriam competências que a equipe não tem. Seu relatório de avaliação inclui tabelas de dados, capturas de tela e um guia curto para os mantenedores. Grace concorda em designar um membro da equipe como mantenedor da ferramenta, com tempo reservado todo mês. Priya se oferece para ajudar durante o primeiro ciclo de manutenção, para que o conhecimento seja transferido sem tropeços.
+
+### Exemplo resolvido
+
+A avaliação de Priya encontra quarenta e dois certificados em produção, incluindo três não registrados, e seis expirações tratadas com um alerta falso, e recomenda encaminhar os alertas a uma caixa compartilhada e próximos passos modestos.
+
+> **Caso sintético.** Os resultados são inventados.
+
+### Erros e limites
+
+Dois meses é pouco para avaliar a confiabilidade. Ferramentas sem mantenedores se degradam.
+
+### Exercícios
+
+- **EX115 — Achados em produção.** Quantos certificados foram encontrados em produção, e quantos não estavam registrados? *Rubrica:* 3 = 42, incluindo 3 não registrados;; 2 = um número;; 1 = errado;; 0 = nenhuma.
+
+- **EX116 — Encaminhamento dos alertas.** Por que os alertas foram transferidos para uma caixa compartilhada? *Rubrica:* 3 = os voluntários ignoravam os alertas enviados aos endereços pessoais;; 2 = ignorados;; 1 = preferência;; 0 = nenhuma.
+
+- **EX117 — Valor do segundo alerta.** O que mostrou o valor do lembrete de sete dias? *Rubrica:* 3 = um alerta só foi atendido depois do lembrete de sete dias;; 2 = lembrete;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-40"></a>
+
+## Capítulo 40 — Tese e apresentação
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever uma tese de bacharelado sobre o trabalho de conclusão; (2) apresentar os achados a públicos acadêmicos e ao parceiro; (3) refletir sobre a aprendizagem.
+
+### 40.1 Escrever a tese
+
+A tese de Priya apresenta o problema dos certificados e das chaves não gerenciados na Tidewell, as normas e as evidências relacionadas, o projeto e a implementação do inventário, a avaliação e as conclusões. Cada afirmação cita evidências: a indisponibilidade do catálogo, o exercício da chave vazada, os testes semeados e os resultados em produção. Ela descreve a dependência da ferramenta em relação às funções da biblioteca padrão e aos scanners existentes e declara que nenhuma primitiva criptográfica foi implementada. O Dr. Echeverría lembra a ela de manter a tese focada no que ela consegue mostrar. Ela revisa dois capítulos de acordo.
+
+### 40.2 Apresentar
+
+Priya faz duas apresentações. Para a banca acadêmica, ela enfatiza o método, a avaliação e os limites; para o conselho da Tidewell, enfatiza os resultados em palavras simples: nenhuma expiração de certificado desde que a ferramenta entrou em operação, três certificados esquecidos encontrados e um dono definido para cada chave. Ela se prepara para perguntas sobre custo, manutenção e privacidade e responde à pergunta de um conselheiro sobre se a ferramenta lê dados dos leitores: não lê, já que lida apenas com certificados e metadados de chaves. O conselho pede para receber relatórios trimestrais do inventário.
+
+### 40.3 Reflexão
+
+Na sua reflexão, Priya olha para trás, para os quatro anos: das provas de identidades do XOR à operação de uma ferramenta real. Ela anota que os problemas mais difíceis raramente foram matemáticos; foram inventários, propriedade, comunicação e falhas silenciosas. Ela também anota o valor dos fundamentos: entender por que os nonces precisam ser únicos ou por que os salts importam permitiu que ela julgasse ferramentas e fornecedores. Ela planeja continuar num curso de pós-graduação e seguir como voluntária nas oficinas da Tidewell. O Dr. Echeverría a incentiva a submeter a avaliação como um artigo curto para profissionais.
+
+### Exemplo resolvido
+
+A tese de Priya argumenta a partir das evidências, sua apresentação ao conselho relata nenhuma expiração desde a entrada em operação e sua reflexão identifica os problemas operacionais como mais difíceis do que os matemáticos.
+
+> **Caso sintético.** Os resultados são inventados.
+
+### Erros e limites
+
+Teses que vão além das evidências perdem credibilidade. As apresentações precisam se adequar ao público sem mudar os fatos.
+
+### Exercícios
+
+- **EX118 — Ênfase para o conselho.** O que Priya enfatizou para o conselho? *Rubrica:* 3 = resultados em palavras simples: nenhuma expiração, três certificados esquecidos encontrados, um dono para cada chave;; 2 = resultados;; 1 = método;; 0 = nenhuma.
+
+- **EX119 — Pergunta sobre dados dos leitores.** Como ela respondeu se a ferramenta lê dados dos leitores? *Rubrica:* 3 = não lê; lida apenas com certificados e metadados de chaves;; 2 = não;; 1 = sim;; 0 = nenhuma.
+
+- **EX120 — Problemas mais difíceis.** O que Priya achou mais difícil ao longo dos quatro anos? *Rubrica:* 3 = inventários, propriedade, comunicação e falhas silenciosas, mais do que a matemática;; 2 = operacionais;; 1 = matemática;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX090 (as de EX091–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Priya Raman, o Dr. Tomás Echeverría, Grace Okafor, a Ashford University, o Tidewell Public Library Consortium e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX120. Priya Raman, o Dr. Tomás Echeverría, Grace Okafor, a Ashford University, o Tidewell Public Library Consortium e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Sem uma definição precisa da segurança e do atacante, a afirmação não pode ser provada nem testada.
 
@@ -1539,6 +1917,66 @@ Respostas-modelo para EX001–EX090 (as de EX091–EX120 estão na edição em i
 **EX089.** As duas ferramentas definiam o conteúdo assinado de formas diferentes.
 
 **EX090.** Comparando as impressões digitais das chaves numa reunião presencial.
+
+**EX091.** Adversários gravam hoje o tráfego cifrado, na esperança de decifrá-lo quando existirem computadores quânticos grandes.
+
+**EX092.** As mensagens se perdem se os dispositivos forem perdidos, e as caixas de entrada compartilhadas pelos bibliotecários ficam difíceis.
+
+**EX093.** Concluir primeiro os controles básicos, como o inventário, a renovação automatizada e a cifração dos backups.
+
+**EX094.** Uma assinatura digital é um mecanismo criptográfico; uma assinatura eletrônica é uma noção jurídica que pode incluir marcas simples, como nomes digitados.
+
+**EX095.** Para que a assinatura ainda possa ser validada depois que o certificado do signatário tiver expirado.
+
+**EX096.** Porque controles confusos empurram os usuários para soluções de contorno inseguras.
+
+**EX097.** Dezoito de trinta (60 por cento) no grupo de controle e nove de trinta (30 por cento) com a explicação.
+
+**EX098.** Como uma associação com menos pessoas da equipe prosseguindo nesta simulação, em vez de afirmar que funciona.
+
+**EX099.** Os participantes adivinharem o propósito e a diferença entre um site de treinamento e a pressão real do trabalho.
+
+**EX100.** Várias pessoas usam o mesmo computador da unidade, então um certificado de dispositivo não consegue distinguir os indivíduos.
+
+**EX101.** Resistência ao phishing, esforço da equipe, custo e recuperação após perda.
+
+**EX102.** Uma queda nos preços das chaves de segurança tornaria vantajoso um uso mais amplo das chaves.
+
+**EX103.** Todo certificado e toda chave no escopo têm um dono no inventário, e nenhum expira sem alertas trinta e sete dias antes.
+
+**EX104.** As chaves de segurança da equipe e as chaves mantidas pelos fornecedores.
+
+**EX105.** Acrescentar uma medida de alertas falsos.
+
+**EX106.** Para mostrar que escolhas de palavras verdadeiramente aleatórias são mais fortes do que as frases que as pessoas escolhem.
+
+**EX107.** Ela dedicou mais tempo aos gerenciadores de senhas, porque foi o que os participantes mais valorizaram.
+
+**EX108.** Ela explicou os limites do seu papel, encaminhou-os aos recursos oficiais de recuperação e nunca pediu suas senhas.
+
+**EX109.** Explica como o protocolo funciona, mas não fornece nenhuma evidência sobre a redução de indisponibilidades.
+
+**EX110.** Relatam resultados sem métodos e podem ter conflitos de interesse.
+
+**EX111.** Que a automação traz modos de falha silenciosos que precisam de monitoramento.
+
+**EX112.** Dois certificados em portas incomuns passaram despercebidos até que essas portas autorizadas fossem acrescentadas.
+
+**EX113.** Um erro de fuso horário, corrigido mantendo todas as datas em UTC.
+
+**EX114.** Ela o registrou como uma melhoria futura, manteve o escopo combinado e tornou o projeto fácil de estender.
+
+**EX115.** Quarenta e dois certificados, três deles antes não registrados.
+
+**EX116.** Porque os voluntários ignoravam os alertas enviados aos seus endereços pessoais.
+
+**EX117.** Uma expiração só foi tratada depois do lembrete de sete dias.
+
+**EX118.** Resultados em linguagem simples: nenhuma expiração de certificado desde o lançamento, três certificados esquecidos descobertos e um dono para cada chave.
+
+**EX119.** Não lê; ela lida apenas com certificados e metadados de chaves.
+
+**EX120.** Questões operacionais, como inventários, propriedade, comunicação e falhas silenciosas, mais do que a matemática.
 
 <a id="references"></a>
 ## Referências
