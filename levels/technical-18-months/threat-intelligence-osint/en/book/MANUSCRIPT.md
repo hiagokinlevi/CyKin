@@ -45,29 +45,75 @@ You will (1) describe the services a college runs and how they connect; (2) mark
 
 Ashgrove College runs a learning platform used by 6,000 students, staff and student email, a library catalogue, a finance system, a student-records database, Wi-Fi for campus visitors and a website. Some are hosted on campus servers, others by cloud suppliers.
 
+Section one point one develops computing and service architecture with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section one point one, ESX expects computing claims to carry owners and dates.
+
+Section one point one treats college services exposure logs as testable only when evidence and ticket IDs are recorded.
+
 ### 1.2 Exposure
 
 The learning platform, email, website and remote-access gateway are reachable from the internet. Exploit Public-Facing Application (T1190) and Phishing (T1566) are therefore the first ATT&CK techniques Tomás reads about. The finance system is internal only, but reachable from staff desktops.
+
+Section one point two develops computing and service architecture with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section one point two, ESX expects computing claims to carry owners and dates.
+
+Section one point two treats college services exposure logs as testable only when evidence and ticket IDs are recorded.
 
 ### 1.3 Logs and owners
 
 Each service has an owner and logs: the email gateway logs messages; the remote-access gateway logs connections; the learning platform logs logins. Tomás builds a table with service, owner, log location, retention and who can search it.
 
+Section one point three develops computing and service architecture with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section one point three, ESX expects computing claims to carry owners and dates.
+
+Section one point three treats college services exposure logs as testable only when evidence and ticket IDs are recorded.
+
 ### 1.4 Dependencies
 
 The learning platform depends on the directory for logins. If attackers steal directory credentials, they reach every service that trusts it.
+
+Section one point four develops computing and service architecture with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section one point four, ESX expects computing claims to carry owners and dates.
+
+Section one point four treats college services exposure logs as testable only when evidence and ticket IDs are recorded.
+
+For section one point four, Ashgrove College will not accept computing work without a written trail.
 
 ### 1.5 Supplier-hosted services
 
 Cloud email logs sit with the supplier. Ashgrove's contract allows downloading sign-in logs for 30 days; older ones are gone. Tomás notes that limit, because intelligence about last quarter's attacks cannot be checked there.
 
+Section one point five develops computing and service architecture with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section one point five, ESX expects computing claims to carry owners and dates.
+
+Section one point five treats college services exposure logs as testable only when evidence and ticket IDs are recorded.
+
 ### 1.6 Students as users
 
 Students use personal devices on campus Wi-Fi. The college cannot install agents on them, so intelligence about malware on student laptops leads to network controls and advice, not endpoint rules.
 
+Section one point six develops computing and service architecture with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section one point six, ESX expects computing claims to carry owners and dates.
+
+Section one point six treats college services exposure logs as testable only when evidence and ticket IDs are recorded.
+
 ### 1.7 A service diagram
 
 A one-page diagram showing services, users, internet exposure and log locations helps everyone place an advisory quickly.
+
+Section one point seven develops computing and service architecture with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section one point seven, ESX expects computing claims to carry owners and dates.
+
+Section one point seven treats college services exposure logs as testable only when evidence and ticket IDs are recorded.
+
+For section one point seven, Ashgrove College will not accept computing work without a written trail.
 
 ### Worked example
 
@@ -106,29 +152,77 @@ You will (1) explain DNS, HTTPS and SMTP as sources of intelligence matches; (2)
 
 Every connection by name begins with a DNS lookup. Ashgrove's resolvers log client address, name and time. Because students' devices also use them, DNS logs cover devices the college cannot otherwise see.
 
+Section two point one develops networks and protocols with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section two point one, ESX expects networks claims to carry owners and dates.
+
+Section two point one treats dns https and the as testable only when evidence and ticket IDs are recorded.
+
 ### 2.2 HTTPS and the proxy
 
 Staff web traffic goes through a proxy that records destination name, bytes and category. With encryption, the proxy sees the server name but not page content, unless inspection is enabled — which Ashgrove has not done for privacy and legal reasons.
+
+Section two point two develops networks and protocols with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section two point two, ESX expects networks claims to carry owners and dates.
+
+Section two point two treats dns https and the as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 SMTP
 
 Mail servers exchange messages over SMTP. The gateway records sender, recipient, subject, attachment names and authentication results.
 
+Section two point three develops networks and protocols with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section two point three, ESX expects networks claims to carry owners and dates.
+
+Section two point three treats dns https and the as testable only when evidence and ticket IDs are recorded.
+
+For section two point three, Ashgrove College will not accept networks work without a written trail.
+
 ### 2.4 Firewall logs
 
 Firewall entries show source, destination, port, action and time. They are useful for checking addresses from intelligence feeds.
+
+Section two point four develops networks and protocols with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section two point four, ESX expects networks claims to carry owners and dates.
+
+Section two point four treats dns https and the as testable only when evidence and ticket IDs are recorded.
+
+For section two point four, Ashgrove College will not accept networks work without a written trail.
 
 ### 2.5 Address translation
 
 Campus Wi-Fi translates many student devices to a few public addresses. Externally, one address represents thousands of people; internally, the translation log maps back to a device for a given time.
 
+Section two point five develops networks and protocols with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section two point five, ESX expects networks claims to carry owners and dates.
+
+Section two point five treats dns https and the as testable only when evidence and ticket IDs are recorded.
+
 ### 2.6 Protocol abuse
 
 Application Layer Protocol (T1071) describes attackers hiding command traffic in web, DNS or mail protocols so it blends in. Unusual regular connections to a rare domain are a clue worth checking.
 
+Section two point six develops networks and protocols with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section two point six, ESX expects networks claims to carry owners and dates.
+
+Section two point six treats dns https and the as testable only when evidence and ticket IDs are recorded.
+
 ### 2.7 Time zones
 
 Logs from cloud suppliers use UTC; campus devices use local time. Convert before correlating.
+
+Section two point seven develops networks and protocols with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section two point seven, ESX expects networks claims to carry owners and dates.
+
+Section two point seven treats dns https and the as testable only when evidence and ticket IDs are recorded.
+
+For section two point seven, Ashgrove College will not accept networks work without a written trail.
 
 ### Worked example
 
@@ -167,29 +261,83 @@ You will (1) relate account and process activity to ATT&CK; (2) search sign-in r
 
 Students, staff, contractors and service accounts all authenticate through the directory. Valid Accounts (T1078) — attackers using real credentials — is common in education because student passwords are often reused.
 
+Section three point one develops operating systems and identities with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section three point one, ESX expects operating claims to carry owners and dates.
+
+Section three point one treats accounts sign-in records privileged as testable only when evidence and ticket IDs are recorded.
+
+For section three point one, Ashgrove College will not accept operating work without a written trail.
+
 ### 3.2 Sign-in records
 
 The directory logs user, time, source address, application and result. Tomás searches for successful sign-ins from addresses shared by ESX as attack sources.
+
+Section three point two develops operating systems and identities with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section three point two, ESX expects operating claims to carry owners and dates.
+
+Section three point two treats accounts sign-in records privileged as testable only when evidence and ticket IDs are recorded.
+
+For section three point two, Ashgrove College will not accept operating work without a written trail.
 
 ### 3.3 Privileged accounts
 
 IT administrators hold accounts that can change any system. Intelligence about attackers targeting administrators justifies separate admin accounts, stronger authentication and no email on admin accounts.
 
+Section three point three develops operating systems and identities with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section three point three, ESX expects operating claims to carry owners and dates.
+
+Section three point three treats accounts sign-in records privileged as testable only when evidence and ticket IDs are recorded.
+
+For section three point three, Ashgrove College will not accept operating work without a written trail.
+
 ### 3.4 Processes
 
 On staff machines, endpoint agents log process starts. Reports about attackers running scripts (T1059) are checked against these logs by the endpoint team.
+
+Section three point four develops operating systems and identities with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section three point four, ESX expects operating claims to carry owners and dates.
+
+Section three point four treats accounts sign-in records privileged as testable only when evidence and ticket IDs are recorded.
+
+For section three point four, Ashgrove College will not accept operating work without a written trail.
 
 ### 3.5 Credential notices
 
 When ESX reports Ashgrove addresses in a password dump, Tomás never tries the passwords. He sends the list to the identity team in a restricted ticket; they reset and notify users.
 
+Section three point five develops operating systems and identities with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section three point five, ESX expects operating claims to carry owners and dates.
+
+Section three point five treats accounts sign-in records privileged as testable only when evidence and ticket IDs are recorded.
+
 ### 3.6 Student privacy
 
 Sign-in data about students is personal data. Searches are tied to a specific intelligence item and recorded; no browsing of individual students' activity.
 
+Section three point six develops operating systems and identities with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section three point six, ESX expects operating claims to carry owners and dates.
+
+Section three point six treats accounts sign-in records privileged as testable only when evidence and ticket IDs are recorded.
+
+For section three point six, Ashgrove College will not accept operating work without a written trail.
+
 ### 3.7 Lockout and spraying
 
 Password spraying tries a few common passwords across many accounts. Lockout settings and multi-factor authentication blunt it; intelligence about spraying against colleges supports tighter settings.
+
+Section three point seven develops operating systems and identities with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section three point seven, ESX expects operating claims to carry owners and dates.
+
+Section three point seven treats accounts sign-in records privileged as testable only when evidence and ticket IDs are recorded.
+
+For section three point seven, Ashgrove College will not accept operating work without a written trail.
 
 ### Contractor accounts
 
@@ -232,9 +380,21 @@ You will (1) parse simple key-value data with Python; (2) read email authenticat
 
 Intelligence arrives as CSV lists, JSON (including STIX 2.1 bundles), plain email and log lines with key=value pairs. Python's standard library reads all of them: `csv`, `json` and simple string splitting.
 
+Section four point one develops scripting and data formats with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section four point one, ESX expects scripting claims to carry owners and dates.
+
+Section four point one treats formats authentication results reading as testable only when evidence and ticket IDs are recorded.
+
 ### 4.2 Authentication results
 
 Mail gateways add an Authentication-Results header with SPF, DKIM and DMARC outcomes. DMARC passes only when the visible From domain aligns with an SPF or DKIM pass. A message failing DMARC that claims to come from the college deserves attention.
+
+Section four point two develops scripting and data formats with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section four point two, ESX expects scripting claims to carry owners and dates.
+
+Section four point two treats formats authentication results reading as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — reading authentication results
 
@@ -263,21 +423,59 @@ M4 partner-uni.example {'spf': 'pass', 'dkim': 'pass', 'dmarc': 'pass'} ok
 
 M1 and M4 pass all checks. M2 comes from ashgrove-payments.example, a lookalike; SPF passes for that domain but DMARC fails — flagged suspect. M3 claims the real ashgrove.example domain but fails everything — likely spoofed, flagged suspect.
 
+Section four point three develops scripting and data formats with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section four point three, ESX expects scripting claims to carry owners and dates.
+
+Section four point three treats formats authentication results reading as testable only when evidence and ticket IDs are recorded.
+
 ### 4.4 Passing is not trust
 
 M4 passes because partner-uni.example's records are correct; it shows the sender controls that domain, not that the message is safe. A compromised partner mailbox would also pass.
+
+Section four point four develops scripting and data formats with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section four point four, ESX expects scripting claims to carry owners and dates.
+
+Section four point four treats formats authentication results reading as testable only when evidence and ticket IDs are recorded.
+
+For section four point four, Ashgrove College will not accept scripting work without a written trail.
 
 ### 4.5 Clear output
 
 Each line shows message, domain, parsed results and verdict. Anyone can check it without reading code.
 
+Section four point five develops scripting and data formats with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section four point five, ESX expects scripting claims to carry owners and dates.
+
+Section four point five treats formats authentication results reading as testable only when evidence and ticket IDs are recorded.
+
+For section four point five, Ashgrove College will not accept scripting work without a written trail.
+
 ### 4.6 Bad input
 
 Malformed headers should produce "unparsed" with the raw text, not a crash.
 
+Section four point six develops scripting and data formats with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section four point six, ESX expects scripting claims to carry owners and dates.
+
+Section four point six treats formats authentication results reading as testable only when evidence and ticket IDs are recorded.
+
+For section four point six, Ashgrove College will not accept scripting work without a written trail.
+
+Section four point six fails closed if scripting evidence is missing rather than guessing.
+
 ### 4.7 STIX basics
 
 A STIX indicator object holds a pattern, a valid_from time and an id. Tomás reads bundles with `json.load` and prints each object's type and id before using any value.
+
+Section four point seven develops scripting and data formats with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section four point seven, ESX expects scripting claims to carry owners and dates.
+
+Section four point seven treats formats authentication results reading as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -316,29 +514,81 @@ You will (1) define the scope of CTI support work; (2) apply TLP 2.0 to everyday
 
 Tomás may: read intelligence from ESX and approved public sources, match indicators against college logs, draft notes and requests, and maintain the indicator list. He may not: block on production systems himself, contact attackers, visit suspicious sites from college devices, or share restricted material.
 
+Section five point one develops security scope and evidence with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section five point one, ESX expects security claims to carry owners and dates.
+
+Section five point one treats scope tlp evidence and as testable only when evidence and ticket IDs are recorded.
+
 ### 5.2 TLP 2.0
 
 CLEAR — public. GREEN — community, not public. AMBER — Ashgrove and its clients on a need-to-know basis. AMBER+STRICT — Ashgrove only. RED — named people only. Unlabelled material is treated as AMBER until the sender confirms.
+
+Section five point two develops security scope and evidence with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section five point two, ESX expects security claims to carry owners and dates.
+
+Section five point two treats scope tlp evidence and as testable only when evidence and ticket IDs are recorded.
 
 ### 5.3 Evidence and provenance
 
 Every item records source, date received, TLP, what the source based it on, and Tomás's checks. Exported log extracts used as evidence are saved with the ticket.
 
+Section five point three develops security scope and evidence with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section five point three, ESX expects security claims to carry owners and dates.
+
+Section five point three treats scope tlp evidence and as testable only when evidence and ticket IDs are recorded.
+
+For section five point three, Ashgrove College will not accept security work without a written trail.
+
 ### 5.4 Personal data
 
 Logs include student and staff identities. Extracts contain only what the question needs; names are removed before sharing with ESX.
+
+Section five point four develops security scope and evidence with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section five point four, ESX expects security claims to carry owners and dates.
+
+Section five point four treats scope tlp evidence and as testable only when evidence and ticket IDs are recorded.
+
+For section five point four, Ashgrove College will not accept security work without a written trail.
 
 ### 5.5 Authorisation
 
 The placement agreement and IT security policy define what Tomás may do. When unsure, he asks his supervisor and records the answer.
 
+Section five point five develops security scope and evidence with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section five point five, ESX expects security claims to carry owners and dates.
+
+Section five point five treats scope tlp evidence and as testable only when evidence and ticket IDs are recorded.
+
+For section five point five, Ashgrove College will not accept security work without a written trail.
+
 ### 5.6 Public sources
 
 Government advisories and vendor blogs are useful, but their terms vary. Quoting short parts with attribution is usually fine; republishing whole reports is not.
 
+Section five point six develops security scope and evidence with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section five point six, ESX expects security claims to carry owners and dates.
+
+Section five point six treats scope tlp evidence and as testable only when evidence and ticket IDs are recorded.
+
+For section five point six, Ashgrove College will not accept security work without a written trail.
+
 ### 5.7 Mistakes
 
 If he shares something wrongly, he reports it at once so the recipient can delete it. Hiding mistakes breaks trust far more.
+
+Section five point seven develops security scope and evidence with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section five point seven, ESX expects security claims to carry owners and dates.
+
+Section five point seven treats scope tlp evidence and as testable only when evidence and ticket IDs are recorded.
+
+For section five point seven, Ashgrove College will not accept security work without a written trail.
 
 ### Checklists
 
@@ -381,33 +631,97 @@ You will (1) draw the college's CTI system as sources, processing, storage and o
 
 ESX's TAXII 2.1 collection, ESX email alerts, a national education advisory page, the help desk's reports of suspicious messages, and college logs.
 
+Section six point one develops threat intelligence and osint system with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section six point one, ESX expects threat claims to carry owners and dates.
+
+Section six point one treats sources processing storage outputs as testable only when evidence and ticket IDs are recorded.
+
+For section six point one, Ashgrove College will not accept threat work without a written trail.
+
 ### 6.2 Processing
 
 Tomás's scripts validate and normalise indicators; his supervisor reviews relevance and grades sources; requests go to system owners.
+
+Section six point two develops threat intelligence and osint system with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section six point two, ESX expects threat claims to carry owners and dates.
+
+Section six point two treats sources processing storage outputs as testable only when evidence and ticket IDs are recorded.
+
+For section six point two, Ashgrove College will not accept threat work without a written trail.
 
 ### 6.3 Storage
 
 A small threat intelligence platform stores STIX 2.1 objects: indicators, attack patterns, reports and relationships, each with a TLP marking definition.
 
+Section six point three develops threat intelligence and osint system with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section six point three, ESX expects threat claims to carry owners and dates.
+
+Section six point three treats sources processing storage outputs as testable only when evidence and ticket IDs are recorded.
+
+For section six point three, Ashgrove College will not accept threat work without a written trail.
+
 ### 6.4 Outputs
 
 DNS filter and email gateway block lists, notes to owners, monthly summaries for management and feedback to ESX.
+
+Section six point four develops threat intelligence and osint system with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section six point four, ESX expects threat claims to carry owners and dates.
+
+Section six point four treats sources processing storage outputs as testable only when evidence and ticket IDs are recorded.
+
+For section six point four, Ashgrove College will not accept threat work without a written trail.
 
 ### 6.5 Owners
 
 The network team owns the DNS filter; the email team the gateway; the supervisor the platform; Tomás the scripts.
 
+Section six point five develops threat intelligence and osint system with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section six point five, ESX expects threat claims to carry owners and dates.
+
+Section six point five treats sources processing storage outputs as testable only when evidence and ticket IDs are recorded.
+
+For section six point five, Ashgrove College will not accept threat work without a written trail.
+
 ### 6.6 Weak points
 
 Single-person knowledge of scripts; email alerts arriving in a personal inbox; no check that block lists actually loaded.
+
+Section six point six develops threat intelligence and osint system with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section six point six, ESX expects threat claims to carry owners and dates.
+
+Section six point six treats sources processing storage outputs as testable only when evidence and ticket IDs are recorded.
+
+For section six point six, Ashgrove College will not accept threat work without a written trail.
 
 ### 6.7 Kill chain view
 
 Mapping outputs to the Hutchins et al. phases shows coverage: email blocks act at delivery; DNS blocks at command and control; account resets after exploitation. No output addresses reconnaissance — a gap to discuss.
 
+Section six point seven develops threat intelligence and osint system with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section six point seven, ESX expects threat claims to carry owners and dates.
+
+Section six point seven treats sources processing storage outputs as testable only when evidence and ticket IDs are recorded.
+
 ### 6.8 Diagram
 
 One page, boxes and arrows, names of owners on each box.
+
+Section six point eight develops threat intelligence and osint system with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section six point eight, ESX expects threat claims to carry owners and dates.
+
+Section six point eight treats sources processing storage outputs as testable only when evidence and ticket IDs are recorded.
+
+For section six point eight, Ashgrove College will not accept threat work without a written trail.
+
+Section six point eight fails closed if threat evidence is missing rather than guessing.
 
 ### Using the model in training
 
@@ -450,33 +764,93 @@ You will (1) list telemetry sources that confirm or refute intelligence; (2) jud
 
 DNS resolver logs, proxy logs, email gateway logs, firewall logs, directory sign-ins, endpoint process events on staff machines, learning-platform login logs. Each answers different questions.
 
+Section seven point one develops threat intelligence and osint data with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section seven point one, ESX expects threat claims to carry owners and dates.
+
+Section seven point one treats telemetry list coverage retention as testable only when evidence and ticket IDs are recorded.
+
+For section seven point one, Ashgrove College will not accept threat work without a written trail.
+
 ### 7.2 Coverage
 
 DNS covers all campus devices; endpoint events cover only college-managed machines; the proxy covers staff only. Tomás writes coverage beside each source so negative results are honest.
+
+Section seven point two develops threat intelligence and osint data with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section seven point two, ESX expects threat claims to carry owners and dates.
+
+Section seven point two treats telemetry list coverage retention as testable only when evidence and ticket IDs are recorded.
 
 ### 7.3 Retention
 
 DNS 90 days, proxy 30 days, cloud sign-ins 30 days, endpoint 60 days. An indicator from 45 days ago can still be checked in DNS but not in the proxy.
 
+Section seven point three develops threat intelligence and osint data with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section seven point three, ESX expects threat claims to carry owners and dates.
+
+Section seven point three treats telemetry list coverage retention as testable only when evidence and ticket IDs are recorded.
+
+For section seven point three, Ashgrove College will not accept threat work without a written trail.
+
 ### 7.4 Access
 
 Tomás has read-only access to DNS and email logs. Others are searched on request by owning teams. Access requests are justified in writing.
+
+Section seven point four develops threat intelligence and osint data with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section seven point four, ESX expects threat claims to carry owners and dates.
+
+Section seven point four treats telemetry list coverage retention as testable only when evidence and ticket IDs are recorded.
+
+For section seven point four, Ashgrove College will not accept threat work without a written trail.
 
 ### 7.5 Minimal extracts
 
 When evidence is needed, export only matching lines with needed fields — time, host, indicator — not full logs with every user's browsing.
 
+Section seven point five develops threat intelligence and osint data with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section seven point five, ESX expects threat claims to carry owners and dates.
+
+Section seven point five treats telemetry list coverage retention as testable only when evidence and ticket IDs are recorded.
+
+For section seven point five, Ashgrove College will not accept threat work without a written trail.
+
 ### 7.6 Clock accuracy
 
 All servers synchronise time. A server with drifting time makes correlation unreliable; Tomás reports such drift.
+
+Section seven point six develops threat intelligence and osint data with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section seven point six, ESX expects threat claims to carry owners and dates.
+
+Section seven point six treats telemetry list coverage retention as testable only when evidence and ticket IDs are recorded.
+
+For section seven point six, Ashgrove College will not accept threat work without a written trail.
 
 ### 7.7 Quality checks
 
 Daily volume per source shows gaps: a resolver that logged nothing overnight probably failed.
 
+Section seven point seven develops threat intelligence and osint data with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section seven point seven, ESX expects threat claims to carry owners and dates.
+
+Section seven point seven treats telemetry list coverage retention as testable only when evidence and ticket IDs are recorded.
+
+For section seven point seven, Ashgrove College will not accept threat work without a written trail.
+
 ### 7.8 Telemetry for techniques
 
 Technique intelligence needs behavioural data. Phishing needs email logs; valid-account abuse needs sign-ins; command channels need DNS and proxy. A matrix of techniques against sources shows blind spots.
+
+Section seven point eight develops threat intelligence and osint data with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section seven point eight, ESX expects threat claims to carry owners and dates.
+
+Section seven point eight treats telemetry list coverage retention as testable only when evidence and ticket IDs are recorded.
 
 ### Learning-platform logs
 
@@ -519,33 +893,97 @@ You will (1) recognise how CTI support fails; (2) classify failures by stage; (3
 
 Failures happen in collection (missed alert), processing (parsing error), analysis (wrong relevance call), dissemination (wrong recipient) and action (owner never acted).
 
+Section eight point one develops threat intelligence and osint failure with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section eight point one, ESX expects threat claims to carry owners and dates.
+
+Section eight point one treats stages false positives false as testable only when evidence and ticket IDs are recorded.
+
+For section eight point one, Ashgrove College will not accept threat work without a written trail.
+
 ### 8.2 False positives
 
 Blocking a legitimate site because an indicator was stale or shared. Typical causes: old cloud addresses, popular file-sharing domains in feeds, typing errors.
+
+Section eight point two develops threat intelligence and osint failure with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section eight point two, ESX expects threat claims to carry owners and dates.
+
+Section eight point two treats stages false positives false as testable only when evidence and ticket IDs are recorded.
+
+For section eight point two, Ashgrove College will not accept threat work without a written trail.
 
 ### 8.3 False negatives
 
 Missing a real match because of normalisation differences (trailing dot, capital letters), missing logs or retention expiry.
 
+Section eight point three develops threat intelligence and osint failure with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section eight point three, ESX expects threat claims to carry owners and dates.
+
+Section eight point three treats stages false positives false as testable only when evidence and ticket IDs are recorded.
+
+For section eight point three, Ashgrove College will not accept threat work without a written trail.
+
 ### 8.4 Label failures
 
 Sharing AMBER material with ESX at large. Causes: missing label in source, copy-paste stripping labels, unclear rules.
+
+Section eight point four develops threat intelligence and osint failure with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section eight point four, ESX expects threat claims to carry owners and dates.
+
+Section eight point four treats stages false positives false as testable only when evidence and ticket IDs are recorded.
+
+For section eight point four, Ashgrove College will not accept threat work without a written trail.
 
 ### 8.5 Overload
 
 Too many low-value alerts mean owners stop reading. Cause: no triage before dissemination.
 
+Section eight point five develops threat intelligence and osint failure with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section eight point five, ESX expects threat claims to carry owners and dates.
+
+Section eight point five treats stages false positives false as testable only when evidence and ticket IDs are recorded.
+
+For section eight point five, Ashgrove College will not accept threat work without a written trail.
+
 ### 8.6 Learning
 
 Each failure gets a short blameless review: what happened, why, what changed. Patterns guide improvement.
+
+Section eight point six develops threat intelligence and osint failure with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section eight point six, ESX expects threat claims to carry owners and dates.
+
+Section eight point six treats stages false positives false as testable only when evidence and ticket IDs are recorded.
+
+For section eight point six, Ashgrove College will not accept threat work without a written trail.
 
 ### 8.7 Recording failures
 
 A shared failure log with date, stage, cause and fix shows recurring issues. Three label failures in a term indicate a process problem, not three careless people.
 
+Section eight point seven develops threat intelligence and osint failure with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section eight point seven, ESX expects threat claims to carry owners and dates.
+
+Section eight point seven treats stages false positives false as testable only when evidence and ticket IDs are recorded.
+
+For section eight point seven, Ashgrove College will not accept threat work without a written trail.
+
 ### 8.8 Bias
 
 Assuming every issue is an attack leads to over-blocking; assuming none is leads to missing real ones. Check evidence each time.
+
+Section eight point eight develops threat intelligence and osint failure with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section eight point eight, ESX expects threat claims to carry owners and dates.
+
+Section eight point eight treats stages false positives false as testable only when evidence and ticket IDs are recorded.
+
+For section eight point eight, Ashgrove College will not accept threat work without a written trail.
 
 ### Dissemination failures
 
@@ -588,33 +1026,95 @@ You will (1) use a CTI platform's basic functions; (2) apply triage and grading 
 
 The college platform imports STIX bundles, shows objects and relationships, applies TLP markings and exports lists for the DNS filter and email gateway. Tomás uses it for storage and search, his scripts for checks.
 
+Section nine point one develops threat intelligence and osint tools with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section nine point one, ESX expects threat claims to carry owners and dates.
+
+Section nine point one treats platform basics triage grading as testable only when evidence and ticket IDs are recorded.
+
 ### 9.2 Triage
 
 Four questions: relevant to Ashgrove? timely? actionable? source known? Items failing the first are logged and closed.
+
+Section nine point two develops threat intelligence and osint tools with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section nine point two, ESX expects threat claims to carry owners and dates.
+
+Section nine point two treats platform basics triage grading as testable only when evidence and ticket IDs are recorded.
+
+For section nine point two, Ashgrove College will not accept threat work without a written trail.
 
 ### 9.3 Grading
 
 The Admiralty scale: source reliability A–F, information credibility 1–6. ESX is usually B; an unverified social-media claim F6.
 
+Section nine point three develops threat intelligence and osint tools with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section nine point three, ESX expects threat claims to carry owners and dates.
+
+Section nine point three treats platform basics triage grading as testable only when evidence and ticket IDs are recorded.
+
+For section nine point three, Ashgrove College will not accept threat work without a written trail.
+
 ### 9.4 Tagging
 
 Tag only what the text supports: "students received fake grade notices with links" supports T1566.
+
+Section nine point four develops threat intelligence and osint tools with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section nine point four, ESX expects threat claims to carry owners and dates.
+
+Section nine point four treats platform basics triage grading as testable only when evidence and ticket IDs are recorded.
+
+For section nine point four, Ashgrove College will not accept threat work without a written trail.
 
 ### 9.5 OSINT tools
 
 Certificate-transparency search for lookalike college domains; approved passive DNS; public vulnerability databases. All used within their terms; nothing that contacts suspicious sites.
 
+Section nine point five develops threat intelligence and osint tools with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section nine point five, ESX expects threat claims to carry owners and dates.
+
+Section nine point five treats platform basics triage grading as testable only when evidence and ticket IDs are recorded.
+
+For section nine point five, Ashgrove College will not accept threat work without a written trail.
+
 ### 9.6 Notes
 
 Three lines: what, why it matters here with confidence, action and owner.
+
+Section nine point six develops threat intelligence and osint tools with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section nine point six, ESX expects threat claims to carry owners and dates.
+
+Section nine point six treats platform basics triage grading as testable only when evidence and ticket IDs are recorded.
+
+For section nine point six, Ashgrove College will not accept threat work without a written trail.
 
 ### 9.7 Tool limits
 
 A platform shows what it was given. If ESX did not share an object, it is absent; absence in the platform is not absence in the world.
 
+Section nine point seven develops threat intelligence and osint tools with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section nine point seven, ESX expects threat claims to carry owners and dates.
+
+Section nine point seven treats platform basics triage grading as testable only when evidence and ticket IDs are recorded.
+
+For section nine point seven, Ashgrove College will not accept threat work without a written trail.
+
 ### 9.8 Practice
 
 Tomás triages twenty items each week with his supervisor and compares decisions to build consistency.
+
+Section nine point eight develops threat intelligence and osint tools with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section nine point eight, ESX expects threat claims to carry owners and dates.
+
+Section nine point eight treats platform basics triage grading as testable only when evidence and ticket IDs are recorded.
+
+For section nine point eight, Ashgrove College will not accept threat work without a written trail.
 
 ### Recording methods
 
@@ -657,37 +1157,105 @@ You will (1) prepare indicator lists in formats controls accept; (2) choose enfo
 
 The DNS filter accepts one domain per line; the email gateway accepts sender domains and attachment hashes through its management interface; the firewall accepts address objects. Tomás prepares each list from the platform export and validates it before handing it over.
 
+Section ten point one develops threat intelligence and osint control with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section ten point one, ESX expects threat claims to carry owners and dates.
+
+Section ten point one treats formats choosing points expiry as testable only when evidence and ticket IDs are recorded.
+
 ### 10.2 Choosing points
 
 Domains to DNS; sender domains to email; hashes to email attachment scanning and endpoint; addresses only when not shared hosting. Techniques inform configuration too: intelligence on macro-laden attachments (User Execution, T1204) supports quarantining macro documents from outside.
+
+Section ten point two develops threat intelligence and osint control with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section ten point two, ESX expects threat claims to carry owners and dates.
+
+Section ten point two treats formats choosing points expiry as testable only when evidence and ticket IDs are recorded.
 
 ### 10.3 Expiry
 
 Every entry carries an expiry date: 30 days for addresses, 90 for domains, longer for hashes. Lists without expiry grow until they break things.
 
+Section ten point three develops threat intelligence and osint control with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section ten point three, ESX expects threat claims to carry owners and dates.
+
+Section ten point three treats formats choosing points expiry as testable only when evidence and ticket IDs are recorded.
+
+For section ten point three, Ashgrove College will not accept threat work without a written trail.
+
 ### 10.4 Requests
 
 Tomás drafts; the owning team configures. The request includes list, source, TLP, reason, expiry and verification plan.
+
+Section ten point four develops threat intelligence and osint control with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section ten point four, ESX expects threat claims to carry owners and dates.
+
+Section ten point four treats formats choosing points expiry as testable only when evidence and ticket IDs are recorded.
+
+For section ten point four, Ashgrove College will not accept threat work without a written trail.
 
 ### 10.5 Allow lists
 
 Some domains must never be blocked: the learning platform, examination boards, the student loan service. An allow list checked before every export prevents accidents.
 
+Section ten point five develops threat intelligence and osint control with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section ten point five, ESX expects threat claims to carry owners and dates.
+
+Section ten point five treats formats choosing points expiry as testable only when evidence and ticket IDs are recorded.
+
+For section ten point five, Ashgrove College will not accept threat work without a written trail.
+
 ### 10.6 Testing
 
 After loading, a test lookup of one blocked domain from a test machine must fail; a test of an allowed domain must succeed.
+
+Section ten point six develops threat intelligence and osint control with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section ten point six, ESX expects threat claims to carry owners and dates.
+
+Section ten point six treats formats choosing points expiry as testable only when evidence and ticket IDs are recorded.
+
+For section ten point six, Ashgrove College will not accept threat work without a written trail.
 
 ### 10.7 Change windows
 
 Large list changes happen outside exam periods, when disruption would hurt most.
 
+Section ten point seven develops threat intelligence and osint control with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section ten point seven, ESX expects threat claims to carry owners and dates.
+
+Section ten point seven treats formats choosing points expiry as testable only when evidence and ticket IDs are recorded.
+
+For section ten point seven, Ashgrove College will not accept threat work without a written trail.
+
 ### 10.8 Documentation
 
 The configuration register lists every list, owner, last change and expiry policy.
 
+Section ten point eight develops threat intelligence and osint control with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section ten point eight, ESX expects threat claims to carry owners and dates.
+
+Section ten point eight treats formats choosing points expiry as testable only when evidence and ticket IDs are recorded.
+
+For section ten point eight, Ashgrove College will not accept threat work without a written trail.
+
 ### 10.9 Size limits
 
 Some tools cap list size. When near the cap, remove expired entries first rather than raising the cap blindly.
+
+Section ten point nine develops threat intelligence and osint control with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section ten point nine, ESX expects threat claims to carry owners and dates.
+
+Section ten point nine treats formats choosing points expiry as testable only when evidence and ticket IDs are recorded.
+
+For section ten point nine, Ashgrove College will not accept threat work without a written trail.
 
 ### Worked example
 
@@ -726,37 +1294,111 @@ You will (1) verify intelligence before acting; (2) corroborate with independent
 
 Check the indicator's form, its age, whether other independent sources report it, and whether it belongs to shared infrastructure. Use passive sources only.
 
+Section eleven point one develops threat intelligence and osint verification with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section eleven point one, ESX expects threat claims to carry owners and dates.
+
+Section eleven point one treats verify the intelligence internal as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point one, Ashgrove College will not accept threat work without a written trail.
+
 ### 11.2 Internal corroboration
 
 Did college logs see it? Internal sightings both confirm relevance and show urgency.
+
+Section eleven point two develops threat intelligence and osint verification with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section eleven point two, ESX expects threat claims to carry owners and dates.
+
+Section eleven point two treats verify the intelligence internal as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point two, Ashgrove College will not accept threat work without a written trail.
 
 ### 11.3 Independence
 
 Two reports citing the same original are one source. Ask what each is based on.
 
+Section eleven point three develops threat intelligence and osint verification with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section eleven point three, ESX expects threat claims to carry owners and dates.
+
+Section eleven point three treats verify the intelligence internal as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point three, Ashgrove College will not accept threat work without a written trail.
+
 ### 11.4 Verify the control
 
 After blocking, test from an approved machine. After an email rule, send a harmless test message. Record results.
+
+Section eleven point four develops threat intelligence and osint verification with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section eleven point four, ESX expects threat claims to carry owners and dates.
+
+Section eleven point four treats verify the intelligence internal as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point four, Ashgrove College will not accept threat work without a written trail.
 
 ### 11.5 Verify the outcome
 
 A week later, check whether matches dropped. If blocked lookups continue from one machine, that machine may be infected and needs attention.
 
+Section eleven point five develops threat intelligence and osint verification with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section eleven point five, ESX expects threat claims to carry owners and dates.
+
+Section eleven point five treats verify the intelligence internal as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point five, Ashgrove College will not accept threat work without a written trail.
+
 ### 11.6 Record
 
 Checks, results, time and person. Others can repeat them.
+
+Section eleven point six develops threat intelligence and osint verification with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section eleven point six, ESX expects threat claims to carry owners and dates.
+
+Section eleven point six treats verify the intelligence internal as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point six, Ashgrove College will not accept threat work without a written trail.
+
+Section eleven point six fails closed if threat evidence is missing rather than guessing.
 
 ### 11.7 Time limits
 
 Urgent items get quick checks; strategic claims can wait for fuller verification. Report what was and was not verified.
 
+Section eleven point seven develops threat intelligence and osint verification with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section eleven point seven, ESX expects threat claims to carry owners and dates.
+
+Section eleven point seven treats verify the intelligence internal as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point seven, Ashgrove College will not accept threat work without a written trail.
+
 ### 11.8 Disagreement
 
 If verification contradicts the source, tell the source politely with evidence. Communities improve through such feedback.
 
+Section eleven point eight develops threat intelligence and osint verification with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section eleven point eight, ESX expects threat claims to carry owners and dates.
+
+Section eleven point eight treats verify the intelligence internal as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point eight, Ashgrove College will not accept threat work without a written trail.
+
 ### 11.9 Never active
 
 Verification never includes visiting suspicious pages, downloading files from them or scanning their servers from college systems.
+
+Section eleven point nine develops threat intelligence and osint verification with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section eleven point nine, ESX expects threat claims to carry owners and dates.
+
+Section eleven point nine treats verify the intelligence internal as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point nine, Ashgrove College will not accept threat work without a written trail.
 
 ### Verifying with owners
 
@@ -799,6 +1441,14 @@ You will (1) enrich indicator matches with asset ownership; (2) route each match
 
 The lab runs offline in the course virtual machine on synthetic data, using only the standard library. No real college logs.
 
+Section twelve point one develops contained laboratory with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section twelve point one, ESX expects contained claims to carry owners and dates.
+
+Section twelve point one treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point one, Ashgrove College will not accept contained work without a written trail.
+
 ### Lab — enrich and route
 
 ```python
@@ -826,29 +1476,87 @@ ws-lab-99 update-svc.example T1071 -> UNKNOWN ASSET: ask network team
 
 ws-fin-11 matched invoice-portal.example (Phishing, T1566); it is a Finance staff machine, so the route is service desk plus the Finance department. srv-lms-01, the learning-platform server, matched an address associated with Application Layer Protocol (T1071) command traffic; servers go to incident response. ws-lab-99 is not in the owner list — the script asks the network team rather than guessing.
 
+Section twelve point two develops contained laboratory with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section twelve point two, ESX expects contained claims to carry owners and dates.
+
 ### 12.3 Why route by asset
 
 A staff machine contacting a phishing domain may need a password reset and a conversation; a server talking to a command address may be compromised and needs incident response immediately.
+
+Section twelve point three develops contained laboratory with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section twelve point three, ESX expects contained claims to carry owners and dates.
+
+Section twelve point three treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point three, Ashgrove College will not accept contained work without a written trail.
 
 ### 12.4 Unknown assets
 
 Unknown hosts are common: new machines, lab equipment, devices named differently. Each is a gap in the inventory to close.
 
+Section twelve point four develops contained laboratory with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section twelve point four, ESX expects contained claims to carry owners and dates.
+
+Section twelve point four treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point four, Ashgrove College will not accept contained work without a written trail.
+
 ### 12.5 Lab report
 
 Aim, method, results with exact outputs, interpretation, problems and one improvement.
+
+Section twelve point five develops contained laboratory with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section twelve point five, ESX expects contained claims to carry owners and dates.
+
+Section twelve point five treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point five, Ashgrove College will not accept contained work without a written trail.
+
+Section twelve point five fails closed if contained evidence is missing rather than guessing.
 
 ### 12.6 Improvement ideas
 
 Add last-seen times; add severity by technique; read the owner list from a file maintained by the network team.
 
+Section twelve point six develops contained laboratory with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section twelve point six, ESX expects contained claims to carry owners and dates.
+
+Section twelve point six treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point six, Ashgrove College will not accept contained work without a written trail.
+
 ### 12.7 Pair work
 
 One student runs, the other checks outputs against expectations, then swap.
 
+Section twelve point seven develops contained laboratory with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section twelve point seven, ESX expects contained claims to carry owners and dates.
+
+Section twelve point seven treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point seven, Ashgrove College will not accept contained work without a written trail.
+
+Section twelve point seven fails closed if contained evidence is missing rather than guessing.
+
 ### 12.8 Safety
 
 No real hostnames or addresses in submitted reports; use the lab's synthetic values.
+
+Section twelve point eight develops contained laboratory with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section twelve point eight, ESX expects contained claims to carry owners and dates.
+
+Section twelve point eight treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point eight, Ashgrove College will not accept contained work without a written trail.
+
+Section twelve point eight fails closed if contained evidence is missing rather than guessing.
 
 ### Extending the lab
 
@@ -891,37 +1599,109 @@ You will (1) diagnose problems in imports, matching and exports; (2) use logs of
 
 TAXII import fails; a CSV column renamed; matches drop to zero; a block list fails to load; a label value appears that scripts do not recognise.
 
+Section thirteen point one develops threat intelligence and osint troubleshooting with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section thirteen point one, ESX expects threat claims to carry owners and dates.
+
+Section thirteen point one treats common problems step by as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point one, Ashgrove College will not accept threat work without a written trail.
+
 ### 13.2 Step by step
 
 Check input arrived, parsing succeeded, storage updated, export produced, control loaded. At each step compare counts with yesterday.
+
+Section thirteen point two develops threat intelligence and osint troubleshooting with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section thirteen point two, ESX expects threat claims to carry owners and dates.
+
+Section thirteen point two treats common problems step by as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point two, Ashgrove College will not accept threat work without a written trail.
 
 ### 13.3 Tool logs
 
 Scripts write their own logs: start time, inputs, counts, errors. Without them, troubleshooting is guesswork.
 
+Section thirteen point three develops threat intelligence and osint troubleshooting with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section thirteen point three, ESX expects threat claims to carry owners and dates.
+
+Section thirteen point three treats common problems step by as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point three, Ashgrove College will not accept threat work without a written trail.
+
 ### 13.4 Communicating
 
 If protection lapsed, tell owners plainly: what stopped, since when, what still works, when a fix is expected.
+
+Section thirteen point four develops threat intelligence and osint troubleshooting with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section thirteen point four, ESX expects threat claims to carry owners and dates.
+
+Section thirteen point four treats common problems step by as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point four, Ashgrove College will not accept threat work without a written trail.
 
 ### 13.5 Prevention
 
 After each fix, add a check: alert if imports are zero; alert on unknown labels; compare exported and loaded counts.
 
+Section thirteen point five develops threat intelligence and osint troubleshooting with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section thirteen point five, ESX expects threat claims to carry owners and dates.
+
+Section thirteen point five treats common problems step by as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point five, Ashgrove College will not accept threat work without a written trail.
+
 ### 13.6 Keep changes small
 
 Change one thing at a time while troubleshooting; otherwise you cannot tell which change helped.
+
+Section thirteen point six develops threat intelligence and osint troubleshooting with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section thirteen point six, ESX expects threat claims to carry owners and dates.
+
+Section thirteen point six treats common problems step by as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point six, Ashgrove College will not accept threat work without a written trail.
 
 ### 13.7 Escalation
 
 When the problem lies in another team's system, give them evidence: the step where counts stop, timestamps and error messages.
 
+Section thirteen point seven develops threat intelligence and osint troubleshooting with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section thirteen point seven, ESX expects threat claims to carry owners and dates.
+
+Section thirteen point seven treats common problems step by as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point seven, Ashgrove College will not accept threat work without a written trail.
+
 ### 13.8 Recording
 
 A fault log with symptom, cause, fix and prevention builds team memory.
 
+Section thirteen point eight develops threat intelligence and osint troubleshooting with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section thirteen point eight, ESX expects threat claims to carry owners and dates.
+
+Section thirteen point eight treats common problems step by as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point eight, Ashgrove College will not accept threat work without a written trail.
+
 ### 13.9 Calm under pressure
 
 Pipeline faults during an incident feel urgent. Follow the same steps; skipping them usually costs more time.
+
+Section thirteen point nine develops threat intelligence and osint troubleshooting with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section thirteen point nine, ESX expects threat claims to carry owners and dates.
+
+Section thirteen point nine treats common problems step by as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point nine, Ashgrove College will not accept threat work without a written trail.
 
 ### Test data for the parser
 
@@ -964,37 +1744,111 @@ You will (1) select CTI tasks suitable for automation; (2) keep human approval f
 
 Daily import, validation, deduplication, matching, expiry flags, weekly counts. These follow rules and repeat.
 
+Section fourteen point one develops threat intelligence and osint automation with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section fourteen point one, ESX expects threat claims to carry owners and dates.
+
+Section fourteen point one treats suitable tasks unsuitable tasks as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point one, Ashgrove College will not accept threat work without a written trail.
+
 ### 14.2 Unsuitable tasks
 
 Deciding relevance of new reports, grading new sources, blocking services that students depend on, sharing restricted data outward.
+
+Section fourteen point two develops threat intelligence and osint automation with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section fourteen point two, ESX expects threat claims to carry owners and dates.
+
+Section fourteen point two treats suitable tasks unsuitable tasks as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point two, Ashgrove College will not accept threat work without a written trail.
 
 ### 14.3 Approval gates
 
 Automation prepares a block list; a person approves additions for the DNS filter. Low-risk categories — ESX GREEN domains graded B or better — may be auto-approved after a trial period agreed with the network team.
 
+Section fourteen point three develops threat intelligence and osint automation with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section fourteen point three, ESX expects threat claims to carry owners and dates.
+
+Section fourteen point three treats suitable tasks unsuitable tasks as testable only when evidence and ticket IDs are recorded.
+
 ### 14.4 Scheduling and alerts
 
 Jobs run at fixed times; failure sends an alert to a shared mailbox, not one person.
+
+Section fourteen point four develops threat intelligence and osint automation with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section fourteen point four, ESX expects threat claims to carry owners and dates.
+
+Section fourteen point four treats suitable tasks unsuitable tasks as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point four, Ashgrove College will not accept threat work without a written trail.
 
 ### 14.5 Documentation
 
 Each job: purpose, schedule, inputs, outputs, owner, alert recipient, how to disable it.
 
+Section fourteen point five develops threat intelligence and osint automation with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section fourteen point five, ESX expects threat claims to carry owners and dates.
+
+Section fourteen point five treats suitable tasks unsuitable tasks as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point five, Ashgrove College will not accept threat work without a written trail.
+
 ### 14.6 Never automated
 
 Contact with suspicious sites, scanning, downloading samples, posting to public channels.
+
+Section fourteen point six develops threat intelligence and osint automation with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section fourteen point six, ESX expects threat claims to carry owners and dates.
+
+Section fourteen point six treats suitable tasks unsuitable tasks as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point six, Ashgrove College will not accept threat work without a written trail.
+
+Section fourteen point six fails closed if threat evidence is missing rather than guessing.
 
 ### 14.7 Trial periods
 
 New automation runs alongside manual work for two weeks; results are compared before switching.
 
+Section fourteen point seven develops threat intelligence and osint automation with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section fourteen point seven, ESX expects threat claims to carry owners and dates.
+
+Section fourteen point seven treats suitable tasks unsuitable tasks as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point seven, Ashgrove College will not accept threat work without a written trail.
+
 ### 14.8 Kill switch
 
 Every job can be disabled quickly by the on-call person without editing code.
 
+Section fourteen point eight develops threat intelligence and osint automation with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section fourteen point eight, ESX expects threat claims to carry owners and dates.
+
+Section fourteen point eight treats suitable tasks unsuitable tasks as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point eight, Ashgrove College will not accept threat work without a written trail.
+
 ### 14.9 Review
 
 Twice a year, jobs no longer serving a requirement are retired.
+
+Section fourteen point nine develops threat intelligence and osint automation with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section fourteen point nine, ESX expects threat claims to carry owners and dates.
+
+Section fourteen point nine treats suitable tasks unsuitable tasks as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point nine, Ashgrove College will not accept threat work without a written trail.
+
+Section fourteen point nine fails closed if threat evidence is missing rather than guessing.
 
 ### Logging automated decisions
 
@@ -1037,33 +1891,95 @@ You will (1) connect CTI to help desk, network, email and incident teams; (2) ag
 
 Help desk: current scams and what to tell callers. Network and email teams: block lists. Incident response: context during incidents. Management: monthly summary.
 
+Section fifteen point one develops threat intelligence and osint integration with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section fifteen point one, ESX expects threat claims to carry owners and dates.
+
+Section fifteen point one treats consumers service levels dependencies as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point one, Ashgrove College will not accept threat work without a written trail.
+
 ### 15.2 Service levels
 
 Urgent items reviewed within four working hours; routine within two days; scam list each Monday in term time.
+
+Section fifteen point two develops threat intelligence and osint integration with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section fifteen point two, ESX expects threat claims to carry owners and dates.
+
+Section fifteen point two treats consumers service levels dependencies as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point two, Ashgrove College will not accept threat work without a written trail.
 
 ### 15.3 Dependencies
 
 ESX membership and its TAXII server; the platform's hosting; the cloud email supplier's logs; the network team's DNS filter. Each can fail.
 
+Section fifteen point three develops threat intelligence and osint integration with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section fifteen point three, ESX expects threat claims to carry owners and dates.
+
+Section fifteen point three treats consumers service levels dependencies as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point three, Ashgrove College will not accept threat work without a written trail.
+
 ### 15.4 Failure plans
 
 If ESX is unavailable, use national education advisories; if the platform fails, scripts can read ESX email alerts directly; if the DNS filter fails, the proxy carries urgent domain blocks.
+
+Section fifteen point four develops threat intelligence and osint integration with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section fifteen point four, ESX expects threat claims to carry owners and dates.
+
+Section fifteen point four treats consumers service levels dependencies as testable only when evidence and ticket IDs are recorded.
 
 ### 15.5 Feedback loop
 
 Help desk forwards suspicious messages reported by students and staff to the CTI queue; this is often the earliest warning.
 
+Section fifteen point five develops threat intelligence and osint integration with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section fifteen point five, ESX expects threat claims to carry owners and dates.
+
+Section fifteen point five treats consumers service levels dependencies as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point five, Ashgrove College will not accept threat work without a written trail.
+
 ### 15.6 Incident support
 
 During incidents, Tomás follows the incident lead's priorities, as NIST SP 800-61r3 places intelligence within response.
+
+Section fifteen point six develops threat intelligence and osint integration with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section fifteen point six, ESX expects threat claims to carry owners and dates.
+
+Section fifteen point six treats consumers service levels dependencies as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point six, Ashgrove College will not accept threat work without a written trail.
 
 ### 15.7 Supplier intelligence
 
 Advisories about the learning-platform supplier or the email supplier go to contract managers too, who can ask the supplier for assurance.
 
+Section fifteen point seven develops threat intelligence and osint integration with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section fifteen point seven, ESX expects threat claims to carry owners and dates.
+
+Section fifteen point seven treats consumers service levels dependencies as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point seven, Ashgrove College will not accept threat work without a written trail.
+
 ### 15.8 Calendar
 
 Term starts, exam periods and enrolment bring scam peaks; the team plans extra monitoring then.
+
+Section fifteen point eight develops threat intelligence and osint integration with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section fifteen point eight, ESX expects threat claims to carry owners and dates.
+
+Section fifteen point eight treats consumers service levels dependencies as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point eight, Ashgrove College will not accept threat work without a written trail.
 
 ### Measuring integration
 
@@ -1106,37 +2022,109 @@ You will (1) write runbooks for CTI tasks; (2) document safety and handling rule
 
 A runbook describes a routine task step by step: "Importing the ESX daily collection", "Requesting a DNS block", "Handling a credential-exposure notice". Each has purpose, prerequisites, steps, checks and what to do if something fails.
 
+Section sixteen point one develops technical documentation and safety with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section sixteen point one, ESX expects technical claims to carry owners and dates.
+
+Section sixteen point one treats runbooks safety rules handling as testable only when evidence and ticket IDs are recorded.
+
 ### 16.2 Safety rules
 
 A one-page rule sheet: no contact with suspicious infrastructure; no testing of exposed passwords; TLP respected; personal data minimised; suspicious files handed to qualified staff; RFC 5737 addresses and .example domains in training material.
+
+Section sixteen point two develops technical documentation and safety with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section sixteen point two, ESX expects technical claims to carry owners and dates.
+
+Section sixteen point two treats runbooks safety rules handling as testable only when evidence and ticket IDs are recorded.
 
 ### 16.3 Handling labels in documents
 
 Runbooks themselves are usually internal (TLP:AMBER) because they reveal how defences work. Examples inside them use synthetic values.
 
+Section sixteen point three develops technical documentation and safety with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section sixteen point three, ESX expects technical claims to carry owners and dates.
+
+Section sixteen point three treats runbooks safety rules handling as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point three, Ashgrove College will not accept technical work without a written trail.
+
 ### 16.4 Currency
 
 Each document shows owner, last review date and next review. Changes in tools trigger reviews.
+
+Section sixteen point four develops technical documentation and safety with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section sixteen point four, ESX expects technical claims to carry owners and dates.
+
+Section sixteen point four treats runbooks safety rules handling as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point four, Ashgrove College will not accept technical work without a written trail.
 
 ### 16.5 Writing style
 
 Short numbered steps, one action each; screenshots only where needed; commands in code blocks; expected results stated after each step.
 
+Section sixteen point five develops technical documentation and safety with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section sixteen point five, ESX expects technical claims to carry owners and dates.
+
+Section sixteen point five treats runbooks safety rules handling as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point five, Ashgrove College will not accept technical work without a written trail.
+
 ### 16.6 Testing documentation
 
 A colleague follows the runbook without help. Wherever they hesitate, the text is unclear.
+
+Section sixteen point six develops technical documentation and safety with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section sixteen point six, ESX expects technical claims to carry owners and dates.
+
+Section sixteen point six treats runbooks safety rules handling as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point six, Ashgrove College will not accept technical work without a written trail.
 
 ### 16.7 Version history
 
 Keep documents in the team's repository so changes are tracked and reversible.
 
+Section sixteen point seven develops technical documentation and safety with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section sixteen point seven, ESX expects technical claims to carry owners and dates.
+
+Section sixteen point seven treats runbooks safety rules handling as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point seven, Ashgrove College will not accept technical work without a written trail.
+
+Section sixteen point seven fails closed if technical evidence is missing rather than guessing.
+
 ### 16.8 Incident notes
 
 During incidents, write timestamped notes in a shared document; they later become the basis for review.
 
+Section sixteen point eight develops technical documentation and safety with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section sixteen point eight, ESX expects technical claims to carry owners and dates.
+
+Section sixteen point eight treats runbooks safety rules handling as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point eight, Ashgrove College will not accept technical work without a written trail.
+
 ### 16.9 Accessibility
 
 Plain language helps colleagues whose first language differs and newcomers alike.
+
+Section sixteen point nine develops technical documentation and safety with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section sixteen point nine, ESX expects technical claims to carry owners and dates.
+
+Section sixteen point nine treats runbooks safety rules handling as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point nine, Ashgrove College will not accept technical work without a written trail.
+
+Section sixteen point nine fails closed if technical evidence is missing rather than guessing.
 
 ### Glossary
 
@@ -1179,6 +2167,14 @@ You will (1) produce an internal and a community weekly summary from the same da
 
 Offline, synthetic, standard library. Students work in pairs and submit both summaries and a short check record.
 
+Section seventeen point one develops contained laboratory ii with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section seventeen point one, ESX expects contained claims to carry owners and dates.
+
+Section seventeen point one treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point one, Ashgrove College will not accept contained work without a written trail.
+
 ### Lab — two summaries
 
 ```python
@@ -1205,29 +2201,85 @@ withheld from community: 3
 
 The internal summary counts all seven items: Phishing (T1566) 3, Valid Accounts (T1078) 2, Exploit Public-Facing Application (T1190) 1, Data Encrypted for Impact (T1486) 1. The community version counts only CLEAR and GREEN items: T1566 2, T1078 1, T1190 1. Three items are withheld — two AMBER and one RED.
 
+Section seventeen point two develops contained laboratory ii with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section seventeen point two, ESX expects contained claims to carry owners and dates.
+
+Section seventeen point two treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
+
 ### 17.3 Mentioning withheld items
 
 The community summary may say "some items were withheld under their handling labels" but must not describe them. Even "a ransomware item was received under RED" could reveal too much.
+
+Section seventeen point three develops contained laboratory ii with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section seventeen point three, ESX expects contained claims to carry owners and dates.
+
+Section seventeen point three treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
 
 ### 17.4 Checking before release
 
 The partner student checks: every included item is CLEAR or GREEN; no personal data; counts match the script; wording reveals nothing about withheld items.
 
+Section seventeen point four develops contained laboratory ii with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section seventeen point four, ESX expects contained claims to carry owners and dates.
+
+Section seventeen point four treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point four, Ashgrove College will not accept contained work without a written trail.
+
 ### 17.5 Internal value
 
 The internal summary helps management see that phishing dominates and that one ransomware-related item arrived, prompting a backup check.
+
+Section seventeen point five develops contained laboratory ii with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section seventeen point five, ESX expects contained claims to carry owners and dates.
+
+Section seventeen point five treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point five, Ashgrove College will not accept contained work without a written trail.
 
 ### 17.6 Format
 
 Each summary: period, counts by technique, top actions taken, requests to readers.
 
+Section seventeen point six develops contained laboratory ii with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section seventeen point six, ESX expects contained claims to carry owners and dates.
+
+Section seventeen point six treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point six, Ashgrove College will not accept contained work without a written trail.
+
+Section seventeen point six fails closed if contained evidence is missing rather than guessing.
+
 ### 17.7 Common mistakes
 
 Forgetting AMBER+STRICT; including technique counts that could only come from a RED item; copying internal notes into the community version.
 
+Section seventeen point seven develops contained laboratory ii with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section seventeen point seven, ESX expects contained claims to carry owners and dates.
+
+Section seventeen point seven treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point seven, Ashgrove College will not accept contained work without a written trail.
+
 ### 17.8 Reflection
 
 Students note how the two audiences changed what they wrote.
+
+Section seventeen point eight develops contained laboratory ii with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section seventeen point eight, ESX expects contained claims to carry owners and dates.
+
+Section seventeen point eight treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point eight, Ashgrove College will not accept contained work without a written trail.
+
+Section seventeen point eight fails closed if contained evidence is missing rather than guessing.
 
 ### Time for checking
 
@@ -1270,37 +2322,115 @@ You will (1) deliver a small CTI improvement under supervision; (2) plan, build,
 
 Tomás proposes automating the Monday scam list for the help desk: collect the week's confirmed scam reports from the CTI queue, group by theme, add sample subject lines with personal data removed and advice for callers.
 
+Section eighteen point one develops supervised technical project with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section eighteen point one, ESX expects supervised claims to carry owners and dates.
+
+Section eighteen point one treats choosing the project plan as testable only when evidence and ticket IDs are recorded.
+
 ### 18.2 Plan
 
 Week 1: requirements with the help-desk lead. Week 2: build on synthetic data. Week 3: test with past weeks' data on the college server. Week 4: report-only run. Week 5: handover.
+
+Section eighteen point two develops supervised technical project with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section eighteen point two, ESX expects supervised claims to carry owners and dates.
+
+Section eighteen point two treats choosing the project plan as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point two, Ashgrove College will not accept supervised work without a written trail.
 
 ### 18.3 Safety and privacy
 
 Reports contain names and email addresses of students and staff. The script strips them; a person checks each list before release. Only the help desk receives it.
 
+Section eighteen point three develops supervised technical project with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section eighteen point three, ESX expects supervised claims to carry owners and dates.
+
+Section eighteen point three treats choosing the project plan as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point three, Ashgrove College will not accept supervised work without a written trail.
+
 ### 18.4 Measures
 
 Time to produce the list (before: two hours; target: thirty minutes); help-desk satisfaction; accuracy of grouping checked by the supervisor.
+
+Section eighteen point four develops supervised technical project with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section eighteen point four, ESX expects supervised claims to carry owners and dates.
+
+Section eighteen point four treats choosing the project plan as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point four, Ashgrove College will not accept supervised work without a written trail.
 
 ### 18.5 Handover
 
 Runbook, job documentation, owner (the CTI team), kill switch and a short training session for the help-desk lead.
 
+Section eighteen point five develops supervised technical project with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section eighteen point five, ESX expects supervised claims to carry owners and dates.
+
+Section eighteen point five treats choosing the project plan as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point five, Ashgrove College will not accept supervised work without a written trail.
+
 ### 18.6 Presentation
 
 Ten minutes: problem, solution, results, limits, next steps.
+
+Section eighteen point six develops supervised technical project with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section eighteen point six, ESX expects supervised claims to carry owners and dates.
+
+Section eighteen point six treats choosing the project plan as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point six, Ashgrove College will not accept supervised work without a written trail.
+
+Section eighteen point six fails closed if supervised evidence is missing rather than guessing.
 
 ### 18.7 Supervision
 
 Weekly meetings with the supervisor review progress and risks. Decisions are recorded.
 
+Section eighteen point seven develops supervised technical project with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section eighteen point seven, ESX expects supervised claims to carry owners and dates.
+
+Section eighteen point seven treats choosing the project plan as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point seven, Ashgrove College will not accept supervised work without a written trail.
+
+Section eighteen point seven fails closed if supervised evidence is missing rather than guessing.
+
 ### 18.8 Limits
 
 The tool groups by keywords; new scam themes may need manual grouping.
 
+Section eighteen point eight develops supervised technical project with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section eighteen point eight, ESX expects supervised claims to carry owners and dates.
+
+Section eighteen point eight treats choosing the project plan as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point eight, Ashgrove College will not accept supervised work without a written trail.
+
+Section eighteen point eight fails closed if supervised evidence is missing rather than guessing.
+
 ### 18.9 Reflection
 
 What worked, what he would change, what he learned about users.
+
+Section eighteen point nine develops supervised technical project with a Ashgrove College note Tomás Reyes can demo offline.
+
+Under section eighteen point nine, ESX expects supervised claims to carry owners and dates.
+
+Section eighteen point nine treats choosing the project plan as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point nine, Ashgrove College will not accept supervised work without a written trail.
+
+Section eighteen point nine fails closed if supervised evidence is missing rather than guessing.
 
 ### Stakeholder sign-off
 
