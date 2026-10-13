@@ -1,7 +1,7 @@
 # Inteligência de ameaças e OSINT: um livro de engenharia
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–6 de 50 já estão escritos em português, com os exercícios EX001–EX018 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 7–50 (EX019–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–12 de 50 já estão escritos em português, com os exercícios EX001–EX036 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 13–50 (EX037–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, construir, verificar e operar plataformas de inteligência de ameaças e fluxos de OSINT como sistemas confiáveis.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limite ético: nenhuma coleta sobre pessoas privadas reais, nenhuma evasão de termos de uso, nenhuma desanonimização e nenhuma interação com infraestrutura de adversários. Toda organização, pessoa, indicador e número é **sintético**, salvo quando uma frase cita uma fonte pública; os endereços usam as faixas da RFC 5737 e os domínios usam `.example`.
@@ -28,9 +28,9 @@ MITRE [ATT&CK](https://attack.mitre.org/); OASIS [STIX 2.1](https://docs.oasis-o
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
 
-Capítulos 7–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-07), até a chegada dos próximos lotes.
+Capítulos 13–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-13), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -417,11 +417,361 @@ O decaimento exponencial codifica a obsolescência, as meias-vidas vêm das evid
 
 [← Capítulo 05 (rascunho)](#ch-05) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 07 (rascunho) →](#ch-07)
 
+<a id="ch-07"></a>
+
+## Capítulo 7 — Probabilidade e estatística
+
+### Objetivos de aprendizagem
+
+Você vai (1) calcular a precisão a partir da sensibilidade, da taxa de falsos positivos e da prevalência; (2) explicar o efeito da taxa-base sobre os alertas; (3) expressar julgamentos com palavras de probabilidade calibradas; (4) escolher resumos adequados a dados assimétricos.
+
+### 7.1 O efeito da taxa-base
+
+Uma regra que detecta 95% das conexões maliciosas e detecta por engano 2% das benignas parece excelente. Mas, se apenas 1 em cada 100 conexões é maliciosa, a maioria dos alertas é falsa. Se apenas 1 em cada 1.000 é maliciosa, quase todos são. O laboratório demonstra isso com números. Na prevalência mais baixa, quase duas mil conexões benignas são sinalizadas para menos de cem maliciosas. Os analistas aprendem depressa a ignorar esses alertas, e então perdem os verdadeiros. A regra em si não mudou entre as duas linhas; só mudou o tráfego sobre o qual ela roda. É por isso que Kofi sempre pergunta onde uma regra vai rodar antes de julgar o quanto ela é boa.
+
+### Laboratório 3 — taxa-base
+
+```python
+"""Lab 3 (ch 07): base-rate effect on alert precision for a synthetic indicator match rule."""
+for prevalence in (0.01, 0.001):
+    sens, fpr, n = 0.95, 0.02, 100000
+    bad = n * prevalence; good = n - bad
+    tp, fp = bad * sens, good * fpr
+    print(f"prevalence {prevalence:.3f}: TP={tp:.0f} FP={fp:.0f} precision={tp/(tp+fp):.3f}")
+```
+
+Execute com `python3 lab_bayes.py`. Saída verificada:
+
+```text
+prevalence 0.010: TP=950 FP=1980 precision=0.324
+prevalence 0.001: TP=95 FP=1998 precision=0.045
+```
+
+### 7.2 Lendo o laboratório
+
+Na prevalência 0.010, 950 verdadeiros e 1.980 falsos positivos dão precisão 0.324. Em 0.001, a precisão cai para 0.045: cerca de 21 alertas falsos para cada verdadeiro. A resposta de engenharia: reduzir a taxa de falsos positivos, elevar a prevalência aplicando a regra apenas onde o tráfego malicioso é mais provável, ou encaminhar as detecções ao enriquecimento antes dos analistas. A terceira opção é a que o exemplo resolvido recomenda. Uma detecção passa então a somar peso a outras evidências, em vez de acionar um analista sozinha. Kofi também confere a aritmética à mão uma vez, porque um laboratório que discorda de um cálculo simples geralmente tem um bug.
+
+### 7.3 Palavras calibradas
+
+Os analistas traduzem probabilidades em palavras. O ensaio de Kent sobre palavras de probabilidade estimativa mostrou que os leitores interpretam "provável" de modo inconsistente; as equipes devem publicar um mapeamento. A ICD 203 também pede que a incerteza seja expressa de forma adequada. O guia de relatórios do Lantern dá a cada palavra uma faixa: por exemplo, provável significa uma probabilidade entre cerca de 0,55 e 0,80. Os analistas escolhem uma palavra da tabela, e não por instinto, e o leitor pode consultar o que ela significa. Kofi procura nos rascunhos palavras fora da tabela, como possivelmente, que os leitores interpretam como qualquer coisa entre rara e meio a meio. A tabela é revista todo ano com as pessoas que leem os relatórios, para que as palavras mantenham o sentido que os leitores esperam.
+
+### 7.4 Dados assimétricos
+
+O tempo até o bloqueio e a latência do enriquecimento são assimétricos à direita. Medianas e percentis (p90, p99) os descrevem melhor do que médias. A maioria dos indicadores é bloqueada em minutos, mas alguns esperam horas porque um parceiro os reteve ou uma aprovação demorou. Esses poucos puxam a média muito acima do que um indicador típico vive. A mediana mostra o caso habitual e o nonagésimo percentil mostra o quanto os casos lentos pioram. Kofi relata os dois, com a contagem de itens, para que os leitores vejam a cauda longa sem que ela distorça o número típico. Uma única média não descreveria nenhum indicador real.
+
+### Nota de prática — Revocação e cobertura
+
+A precisão responde quantos alertas são verdadeiros; a revocação (*recall*) responde quantos eventos maliciosos foram detectados. Um feed muito preciso, mas que cobre uma pequena parte do cenário de ameaças, ainda pode deixar a BEN exposta. Por isso o Lantern relata as duas, e estima a revocação a partir de revisões de incidentes em que o conjunto completo de eventos maliciosos foi estabelecido depois. Kofi também mantém uma pequena tabela da prevalência suposta para cada segmento de tráfego, porque a mesma regra se comporta de modo muito diferente no Wi-Fi de visitantes e na rede de gerência das subestações.
+
+### Exemplo resolvido
+
+Kofi avalia uma regra proposta que detecta qualquer conexão aos IPs de um feed. Ele estima a prevalência perto de 0.001 no tráfego da BEN, calcula a precisão de 0.045 e recomenda usar a regra como entrada do enriquecimento, e não como acionamento direto dos analistas.
+
+> **Caso sintético.** As taxas são ilustrativas.
+
+### Erros e limites
+
+A prevalência é difícil de conhecer; declare as suposições. Precisão sem revocação esconde ameaças não detectadas.
+
+### Exercícios
+
+- **EX019 — Precisão citada.** Que precisão o laboratório dá na prevalência 0.001? *Rubrica:* 3 = 0.045; 2 = aproximada; 1 = 0.95; 0 = nenhuma.
+- **EX020 — Correção de engenharia.** Cite duas formas de melhorar a precisão desta regra. *Rubrica:* 3 = duas entre reduzir a FPR / restringir a segmentos de maior prevalência / portão de enriquecimento; 2 = uma; 1 = só aumentar a sensibilidade; 0 = nenhuma.
+- **EX021 — Escolha do percentil.** Por que relatar a latência p90 do enriquecimento em vez da média? *Rubrica:* 3 = a cauda assimétrica importa para a experiência do usuário/SLA; a média a esconde; 2 = vago; 1 = a média é melhor; 0 = nenhuma.
+
+### Síntese
+
+As taxas-base dominam a qualidade dos alertas, as palavras precisam de números por trás, e métricas assimétricas precisam de percentis.
+
+### Continue estudando — capítulo 07 de 50
+
+[← Capítulo 06 (rascunho)](#ch-06) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 08 (rascunho) →](#ch-08)
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Arquitetura de computadores
+
+### Objetivos de aprendizagem
+
+Você vai (1) relacionar a hierarquia de CPU, memória e armazenamento ao processamento de inteligência; (2) estimar se uma carga de trabalho é limitada por CPU, por memória ou por E/S; (3) explicar o cache para consultas de enriquecimento; (4) reconhecer âncoras de confiança em hardware nos sistemas de coleta.
+
+### 8.1 A hierarquia
+
+Registradores e caches são rápidos e pequenos; a memória principal é maior e mais lenta; o armazenamento em estado sólido é mais lento ainda; o armazenamento em rede é o mais lento. O conjunto quente do Lantern — os indicadores comparados com o tráfego ao vivo — precisa caber na memória, ou cada comparação espera pelo disco. Kofi verificou isso com um teste simples. Comparar um lote com um conjunto em memória levou alguns milissegundos; as mesmas consultas a um índice em disco levaram dezenas de milissegundos, a maior parte esperando leituras. O arquivo frio pode ficar em armazenamento mais lento, porque os analistas o consultam de vez em quando e podem esperar um segundo por uma resposta.
+
+### 8.2 Limitado por quê
+
+Interpretar objetos STIX em JSON consome muita CPU. Juntar indicadores com avistamentos consome muita memória. Carregar arquivos consome muita E/S. O profiling identifica o recurso limitante; comprar o hardware errado é comum e caro. Kofi aprendeu isso quando chegou um pedido de discos mais rápidos para resolver um parsing lento. O profiling mostrou que o parser usava um núcleo de processador inteiro enquanto os discos ficavam ociosos. Discos mais rápidos não teriam mudado nada. Um segundo processo worker, que não custou nada além de configuração, praticamente dobrou a vazão. Cada perfil é salvo junto com o hardware em que rodou, para que as comparações posteriores sejam justas.
+
+### 8.3 Cache de enriquecimento
+
+O enriquecimento — acrescentar dados de registro no estilo WHOIS, DNS passivo ou contexto interno de ativos — muitas vezes repete consultas. Um cache indexado pelo indicador, com tempo de vida (TTL), evita consultas repetidas e respeita os limites de taxa e os termos de terceiros. Dados em cache precisam expirar, tanto pela exatidão quanto porque os termos de alguns provedores limitam a retenção. Kofi define o tempo de vida por provedor, usando o menor entre o que a exatidão exige e o que os termos do provedor permitem. O cache registra quando cada entrada foi obtida, para que um analista saiba se os dados estão frescos.
+
+### 8.4 Raízes de confiança em hardware
+
+Servidores de coleta que assinam os dados exportados dependem de chaves. Um módulo de segurança de hardware (HSM) ou um TPM mantém as chaves de assinatura fora da memória comum, melhorando a integridade do que o Lantern compartilha. Sem esse módulo, a chave fica em um arquivo que qualquer pessoa com acesso de administrador ao servidor poderia copiar, e uma chave copiada permite a um atacante assinar indicadores falsos em que os parceiros confiariam. Com ele, a assinatura continua funcionando, mas a chave não pode ser exportada. O desenho de Kofi lista quais servidores guardam chaves de assinatura e quem pode usá-las, e os logs do módulo mostram cada operação de assinatura para revisão posterior.
+
+### 8.5 Dimensionamento de memória
+
+Um milhão de indicadores com média de 200 bytes em um conjunto em memória precisam de cerca de 200 MB mais a sobrecarga; objetos Python podem triplicar isso. Meça. Kofi montou um conjunto de um milhão de strings de teste e o mediu, em vez de confiar na aritmética. O resultado foi várias vezes o tamanho dos dados brutos, porque cada objeto string carrega sua própria sobrecarga. Ele então dimensionou a memória do comparador com espaço para um ano de crescimento e uma margem, e registrou o método de medição para que possa ser repetido quando os volumes mudarem. Uma representação compacta, como armazenar hashes dos valores, poderia reduzir o consumo se a memória ficasse apertada.
+
+### Nota de prática — Disciplina de profiling
+
+Kofi faz profiling antes e depois de toda mudança de desempenho e guarda os relatórios. Mudanças que não movem o gargalo medido são revertidas, mesmo que "devessem" ajudar. Esse hábito impede a equipe de acumular otimizações engenhosas que acrescentam complexidade, mas não velocidade.
+
+### Exemplo resolvido
+
+O profiling mostra que o comparador do Lantern passa 70% do tempo esperando pelo disco. Kofi move o conjunto ativo de indicadores (cerca de 400.000 entradas) para a memória, reduzindo a latência de comparação de 40 ms para 3 ms por lote, e acrescenta um cache com TTL de 24 horas para as consultas de enriquecimento, a fim de ficar dentro da cota diária de consultas de um provedor.
+
+> **Caso sintético.** Os perfis e os tempos são inventados.
+
+### Erros e limites
+
+Caches podem servir dados obsoletos; o TTL é uma escolha de correção, e não apenas de desempenho. Respeite os termos dos provedores sobre retenção.
+
+### Exercícios
+
+- **EX022 — Recurso limitante.** A CPU de um job fica em 15% enquanto a espera por disco é alta. O que o limita? *Rubrica:* 3 = E/S; mover os dados quentes para a memória ou para armazenamento mais rápido; 2 = só E/S; 1 = CPU; 0 = nenhuma.
+- **EX023 — Motivos do TTL.** Dê dois motivos pelos quais um cache de enriquecimento precisa de TTL. *Rubrica:* 3 = frescor + termos de retenção/limites de taxa do provedor; 2 = um; 1 = não precisa; 0 = nenhuma.
+- **EX024 — Estimativa de memória.** Estime a memória bruta para 400.000 indicadores × 200 bytes. *Rubrica:* 3 = 80 MB (com a sobrecarga mencionada); 2 = só o número; 1 = erro de fator 1000; 0 = nenhuma.
+
+### Síntese
+
+Saiba qual recurso limita, mantenha o conjunto quente na memória, use cache com expiração e ancore as chaves de assinatura em hardware.
+
+### Continue estudando — capítulo 08 de 50
+
+[← Capítulo 07 (rascunho)](#ch-07) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 09 (rascunho) →](#ch-09)
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Programação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) estruturar um parser como um pipeline de etapas; (2) tratar erros sem perder registros em silêncio; (3) interpretar JSON com segurança usando a biblioteca padrão; (4) escrever testes de propriedades para a normalização.
+
+### 9.1 Pipelines
+
+A ingestão do Lantern é uma cadeia: obter → decodificar → validar → normalizar → deduplicar → armazenar. Cada etapa recebe registros e produz registros mais rejeições. Os geradores do Python permitem que feeds grandes fluam sem carregar tudo na memória. Cada etapa pode ser testada isoladamente com uma lista curta de registros, e uma falha em uma etapa não esconde o que as outras fizeram. Os logs de Kofi mostram quantos registros entraram e saíram de cada etapa, então uma queda repentina aponta a etapa que a causou. Quando um parceiro envia um arquivo muito grande, o fluxo contínuo faz o uso de memória ficar estável, em vez de crescer com o arquivo.
+
+### 9.2 Erros como dados
+
+Um objeto malformado não é uma exceção a engolir; é um registro de rejeição com um motivo, a fonte e o hash dos bytes originais. As contagens de rejeições por fonte viram uma métrica de qualidade de dados sobre a qual os parceiros podem agir. Os registros de rejeição de Kofi guardam o hash, e não o conteúdo, para que dados restritos de um parceiro não sejam copiados para logs que uma equipe mais ampla pode ler. Se o mesmo motivo aparece em muitos registros de uma fonte, o parceiro provavelmente mudou algo do lado dele. O relatório enviado a ele traz contagens e exemplos, o que geralmente basta para que encontre e corrija o problema.
+
+### 9.3 JSON seguro
+
+`json.loads` interpreta dados sem executar código, ao contrário de avaliar texto. Limite o tamanho das entradas para evitar o esgotamento da memória e valide os tipos depois do parsing; números, strings e nulos JSON chegam em lugares inesperados. Kofi define um tamanho máximo para cada objeto antes do parsing, para que uma entrada enorme seja rejeitada em vez de encher a memória. Depois do parsing, ele verifica se cada campo tem o tipo esperado: um campo de carimbo de tempo contendo um número, ou uma lista onde se esperava uma string, é uma rejeição com motivo claro. Um código antigo que avaliava texto como programa para poupar esforço foi removido em seu primeiro mês.
+
+### 9.4 Propriedades
+
+Em vez de apenas testes de exemplo, declare propriedades: normalizar duas vezes é igual a normalizar uma vez (idempotência); a saída está sempre em minúsculas; nenhuma saída tem espaço em branco em nenhuma das pontas. Gere muitas entradas aleatórias e verifique se as propriedades se mantêm. As entradas aleatórias de Kofi incluem maiúsculas e minúsculas misturadas, espaços no início e no fim, strings vazias e caracteres de outros alfabetos. Um teste de propriedade descobriu que seu normalizador de domínios mantinha um ponto final, o que fazia duas formas do mesmo nome contarem como indicadores diferentes. A correção removeu algumas centenas de duplicatas do repositório.
+
+### 9.5 Versionamento de parsers
+
+Quando um parceiro muda seu formato de exportação, uma nova versão do parser é implantada ao lado da antiga até que a troca seja verificada. Cada objeto armazenado registra a versão do parser que o produziu. Rodar as duas versões sobre a mesma entrada por alguns dias mostra se a nova produz os mesmos registros, mais rejeições ou valores diferentes. Só quando as diferenças são compreendidas o parser antigo é desligado. Registrar a versão em cada objeto significa que, se um bug for encontrado depois, os registros afetados podem ser identificados e reprocessados, em vez de adivinhados.
+
+### Nota de prática — Contrapressão
+
+Quando uma etapa a jusante fica lenta, as etapas a montante não podem continuar empurrando até a memória acabar. Filas limitadas entre as etapas dão contrapressão (*backpressure*): os produtores esperam quando uma fila está cheia. O coletor do Lantern pausa as consultas quando a fila de validação está na capacidade máxima e registra a pausa, para que os operadores a vejam, em vez de descobrirem dados ausentes depois.
+
+### Exemplo resolvido
+
+Um parceiro envia 5.000 objetos com 37 carimbos de tempo malformados. O pipeline de Kofi armazena 4.963, grava 37 rejeições com o motivo "created not RFC 3339" e envia ao contato de qualidade de dados do parceiro um e-mail com a contagem e dois hashes de exemplo — não os objetos brutos, que são TLP:AMBER.
+
+> **Caso sintético.** As contagens e o parceiro são inventados.
+
+### Erros e limites
+
+Descartar registros ruins em silêncio esconde problemas dos parceiros; corrigi-los em silêncio inventa dados. Não avalie texto não confiável como código.
+
+### Exercícios
+
+- **EX025 — Registro de rejeição.** Liste quatro campos que um registro de rejeição deve trazer. *Rubrica:* 3 = quatro entre motivo, fonte, hash, carimbo de tempo, versão do parser; 2 = dois; 1 = um; 0 = nenhuma.
+- **EX026 — Idempotência.** Enuncie a propriedade de idempotência de um normalizador e por que ela importa. *Rubrica:* 3 = norm(norm(x)) == norm(x); reprocessar é estável; 2 = só o enunciado; 1 = errado; 0 = nenhuma.
+- **EX027 — Relatório ao parceiro.** Por que enviar hashes e contagens, e não os próprios objetos malformados? *Rubrica:* 3 = TLP/minimização; o parceiro localiza pelo hash; 2 = parcial; 1 = enviar tudo; 0 = nenhuma.
+
+### Síntese
+
+Faça os dados fluírem por etapas, trate erros como dados, interprete com segurança, teste propriedades e registre as versões dos parsers.
+
+### Continue estudando — capítulo 09 de 50
+
+[← Capítulo 08 (rascunho)](#ch-08) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 10 (rascunho) →](#ch-10)
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Ética e segurança na engenharia
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar os deveres da ética de engenharia a sistemas de inteligência; (2) identificar os limites de privacidade e legais da OSINT; (3) projetar para falhar com segurança em um contexto de infraestrutura crítica; (4) saber quando escalar uma preocupação.
+
+### 10.1 Deveres
+
+Os engenheiros têm deveres para com o público, o empregador e a profissão. Em CTI, isso significa proteger as pessoas cujos dados passam pela plataforma, honrar os acordos de compartilhamento e recusar trabalho que facilite danos. Para Kofi, esses deveres são concretos. Dados pessoais que chegam em um feed ficam limitados ao que a análise precisa e são apagados no prazo. O material de parceiros marcado AMBER permanece dentro do público combinado. Se a BEN pedisse uma capacidade que pudesse ferir pessoas, como monitorar funcionários fora do trabalho, o dever para com o público prevaleceria sobre a instrução.
+
+### 10.2 Limites da OSINT
+
+Público não significa irrestrito. Os termos de uso das plataformas podem proibir a coleta automatizada; leis de proteção de dados como o GDPR da União Europeia se aplicam a pessoas identificáveis mesmo em publicações públicas; agregar fatos inofensivos pode criar um perfil que coloca alguém em perigo. No Brasil, a Lei Geral de Proteção de Dados Pessoais (LGPD, Lei nº 13.709/2018) cumpre esse papel e também alcança dados pessoais de acesso público (art. 7º, §§ 3º e 4º), sob fiscalização da Autoridade Nacional de Proteção de Dados (ANPD). Por isso o módulo de OSINT do Lantern coleta dados organizacionais — domínios, certificados, alertas publicados —, e não perfis sociais pessoais. Kofi confere cada nova fonte de OSINT com seus termos antes de escrever qualquer código e registra o resultado no cadastro de fontes. Uma fonte que proíbe o acesso automatizado é lida à mão, se tanto, e nada dela é armazenado em massa.
+
+### 10.3 Falhar com segurança em uma empresa de energia
+
+Se o Lantern enviar uma lista de bloqueio ruim aos firewalls que protegem a telemetria das subestações, poderá cortar a visibilidade operacional. O desenho de segurança: os segmentos de tecnologia operacional recebem bloqueios apenas após aprovação humana, e uma lista malformada faz o envio parar, e não limpar o firewall. O serviço de envio de Kofi verifica a lista antes de enviá-la: ela precisa ser interpretável, não pode estar vazia e não pode ter encolhido mais do que um valor definido desde o último envio. Uma verificação que falha interrompe o envio e alerta o engenheiro de plantão, enquanto o firewall mantém suas regras atuais. Para os segmentos das subestações, um operador aprova cada mudança, porque um bloqueio errado ali pode cegar a sala de controle.
+
+### 10.4 Escalonamento
+
+Se um gestor pede a Kofi que raspe as contas sociais dos funcionários "para encontrar pessoas de dentro", ele recusa, documenta o pedido e o escala ao encarregado de privacidade. A recusa ética faz parte da competência de engenharia. Registrar por escrito o pedido, quem o fez e o que ele fez protege tanto Kofi quanto a BEN. O encarregado de privacidade pode então decidir se há alguma preocupação legítima por trás do pedido e como tratá-la legalmente, por exemplo pelo processo de risco interno que a BEN já tem. Kofi não precisa vencer a discussão sozinho. Precisa garantir que a pessoa certa a ouça.
+
+### 10.5 Duplo uso
+
+Ferramentas que mapeiam a infraestrutura de um adversário também poderiam mapear a de um jornalista. Controles de acesso, limites de finalidade e logs de auditoria reduzem o mau uso. O desenho de Kofi entrega as ferramentas de mapeamento de infraestrutura a um grupo pequeno, exige uma finalidade registrada para cada consulta e registra quem buscou o quê. Uma revisão mensal amostra os logs em busca de pesquisas que não combinam com a finalidade, como nomes de pessoas em vez de domínios. Os controles não tornam o mau uso impossível, mas o tornam visível, o que dissuade a maior parte dele e permite encontrar o resto.
+
+### Nota de prática — Códigos profissionais
+
+As instituições de engenharia publicam códigos de conduta que põem o bem-estar público em primeiro lugar. Em um contexto de segurança, esses códigos amparam a recusa: um pedido que prejudica pessoas ou viola a lei está fora da prática profissional, mesmo que um empregador insista. Kofi mantém uma cópia do código de sua instituição ao lado da política de privacidade que ele cita nas revisões de projeto.
+
+### Exemplo resolvido
+
+Chega um pedido para enriquecer todo alerta interno com o endereço residencial do funcionário, "para dar contexto". Kofi pergunta que decisão precisa disso; nenhuma precisa. O campo é retirado do desenho, e a decisão é registrada com a concordância do encarregado de privacidade.
+
+> **Caso sintético.** O pedido e a decisão são inventados.
+
+### Erros e limites
+
+A ética não é uma caixa a marcar no fim do projeto. Este capítulo não é aconselhamento jurídico.
+
+### Exercícios
+
+- **EX028 — Risco de perfil.** Por que agregar fatos públicos sobre um funcionário pode ser prejudicial, mesmo que cada um seja público? *Rubrica:* 3 = cria um perfil que possibilita perseguição/dano; deveres de proteção de dados; 2 = privacidade, de forma vaga; 1 = inofensivo; 0 = nenhuma.
+- **EX029 — Envio à prova de falhas.** O que o Lantern deve fazer se a lista de bloqueio gerada para segmentos de TO falhar na validação? *Rubrica:* 3 = interromper o envio, manter a última lista boa, alertar uma pessoa; 2 = interromper o envio; 1 = enviar lista vazia; 0 = nenhuma.
+- **EX030 — Raspagem interna.** Descreva a resposta correta de Kofi ao pedido de raspagem. *Rubrica:* 3 = recusar, documentar, escalar à privacidade/jurídico; 2 = só recusar; 1 = cumprir; 0 = nenhuma.
+
+### Síntese
+
+Proteja as pessoas, honre os termos e a lei, falhe com segurança em ambientes críticos e escale pedidos que cruzam limites.
+
+### Continue estudando — capítulo 10 de 50
+
+[← Capítulo 09 (rascunho)](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 (rascunho) →](#ch-11)
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Redes e protocolos
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar o HTTPS como transporte do TAXII 2.1; (2) ler os registros DNS relevantes para indicadores; (3) entender como a tradução de endereços de rede (NAT) e a hospedagem compartilhada afetam a atribuição; (4) configurar a coleta para respeitar limites de taxa.
+
+### 11.1 TAXII sobre HTTPS
+
+O TAXII 2.1 é uma API RESTful sobre HTTPS. Os clientes descobrem as raízes de API, listam as coleções e obtêm ou acrescentam objetos com paginação. A autenticação mútua e o TLS protegem o canal; a especificação TAXII define os endpoints e os tipos de mídia, não as relações de confiança, que vêm dos acordos. Para o Lantern, isso significa que o servidor de um parceiro apresenta um certificado que o coletor de Kofi verifica, e o coletor apresenta o próprio certificado para que o parceiro saiba quem está pedindo. Quais coleções a BEN pode ler é definido pelo acordo de compartilhamento e imposto pelo parceiro. Uma conexão válida não torna o conteúdo confiável; apenas mostra de onde ele veio.
+
+### 11.2 DNS na inteligência
+
+Um indicador de domínio é resolvido pelo DNS em endereços que podem mudar a cada hora. Registros A, CNAMEs e servidores de nomes contam, cada um, uma história diferente. O DNS passivo — dados históricos de resolução de provedores licenciados — mostra como a infraestrutura se moveu. Kofi registra o horário de cada resolução que o Lantern faz, porque uma resposta sem horário não pode ser comparada com nada. Um domínio que apontava para um endereço hostil no mês passado pode apontar hoje para uma página estacionada. O DNS passivo permite ao analista perguntar para onde o domínio resolvia no dia de um avistamento, que é a pergunta que uma investigação geralmente precisa responder. A licença do provedor limita por quanto tempo esse histórico pode ser guardado, e o Lantern a segue.
+
+### 11.3 NAT e hospedagem compartilhada
+
+Muitos dispositivos podem estar atrás de um único endereço público; muitos sites podem compartilhar um único endereço de hospedagem. Bloquear um endereço assim pode causar danos colaterais, e associar tudo o que está por trás dele a um adversário é um erro analítico clássico. A BEN enfrentou isso quando um parceiro listou um endereço usado pelo gateway compartilhado de um provedor de nuvem. Bloqueá-lo teria cortado vários serviços de que a BEN depende. O exemplo resolvido mostra o caminho mais seguro: bloquear o domínio específico na camada de DNS, onde isso não afeta outros clientes, e registrar por que o endereço não foi bloqueado. Os analistas devem dizer que um endereço hospedou conteúdo hostil, e não que ele pertence ao adversário.
+
+### 11.4 Limites de taxa e cortesia
+
+A coleta em servidores TAXII de parceiros segue os limites que eles publicam. Recue diante de respostas HTTP 429; nunca troque de identidade para burlar limites. Uma resposta com esse status pede ao cliente que desacelere, e muitos servidores dizem quanto tempo esperar. O coletor do Lantern respeita esse valor, dobra a espera a cada nova recusa e para depois de um número definido de tentativas, emitindo um alerta para um engenheiro. Usar muitas contas ou endereços para contornar um limite violaria o acordo e prejudicaria a reputação da BEN com o parceiro. Um coletor que respeita os limites mantém seu acesso; um que não respeita o perde.
+
+### 11.5 Portas e protocolos no ATT&CK
+
+A técnica T1071 Application Layer Protocol do ATT&CK descreve adversários que se comunicam por protocolos comuns para se misturar ao tráfego. Por isso, indicadores de rede sozinhos deixam escapar boa parte do comando e controle; analíticas comportamentais os complementam. Um atacante que envia comandos por tráfego web comum a um domínio recém-criado não deixa nenhum indicador que o Lantern já conheça. O que ainda pode chamar atenção é o padrão: contatos regulares em intervalos fixos, volumes incomuns de dados ou conexões de um host que nunca navega. Kofi repassa essas analíticas à equipe de detecção como complemento dos feeds de indicadores, e não como substituto.
+
+### Nota de prática — Paginação e completude
+
+As respostas do TAXII 2.1 podem ser paginadas. Um coletor que lê apenas a primeira página relata sucesso enquanto perde a maioria dos objetos. O Lantern segue os indicadores `more` e `next` até que o servidor informe a conclusão, e registra a contagem recebida em cada consulta, para que quedas repentinas fiquem visíveis.
+
+### Exemplo resolvido
+
+Kofi vê que o indicador de um parceiro resolve para um endereço compartilhado por 3.000 sites em um provedor de hospedagem. Ele o marca como "não bloquear no perímetro", encaminha-o para bloqueio do domínio específico na camada de DNS e documenta o motivo.
+
+> **Caso sintético.** O indicador e a contagem de sites hospedados são inventados.
+
+### Erros e limites
+
+As respostas do DNS variam conforme o resolvedor e o momento. Nunca teste os endpoints de parceiros além do uso combinado.
+
+### Exercícios
+
+- **EX031 — Transporte do TAXII.** O que o TAXII 2.1 especifica, e o que precisa vir dos acordos? *Rubrica:* 3 = API/endpoints/tipos de mídia sobre HTTPS; confiança/permissões/termos de compartilhamento vêm dos acordos; 2 = uma metade; 1 = o TAXII define a confiança; 0 = nenhuma.
+- **EX032 — Endereço compartilhado.** Por que bloquear o domínio, e não o endereço, no exemplo de Kofi? *Rubrica:* 3 = endereço compartilhado por muitos sites; dano colateral; o domínio é específico; 2 = parcial; 1 = bloquear o endereço; 0 = nenhuma.
+- **EX033 — HTTP 429.** Qual é o comportamento correto do cliente diante de um HTTP 429 do servidor de um parceiro? *Rubrica:* 3 = recuar/respeitar o Retry-After; nunca burlar; 2 = desacelerar; 1 = trocar de IPs; 0 = nenhuma.
+
+### Síntese
+
+O TAXII trafega sobre HTTPS, o DNS conta histórias que dependem do tempo, endereços compartilhados enganam, e clientes corteses recuam.
+
+### Continue estudando — capítulo 11 de 50
+
+[← Capítulo 10 (rascunho)](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 (rascunho) →](#ch-12)
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Sistemas operacionais
+
+### Objetivos de aprendizagem
+
+Você vai (1) executar serviços de inteligência sob contas de privilégio mínimo; (2) usar os logs do sistema operacional como evidência do comportamento da plataforma; (3) isolar parsers que lidam com entradas não confiáveis; (4) aplicar patches e configurar hosts para uma plataforma sempre ligada.
+
+### 12.1 Contas de serviço
+
+O coletor do Lantern roda com uma conta dedicada, com permissão apenas para seu diretório de trabalho e para HTTPS de saída aos servidores dos parceiros. Ele não consegue ler a configuração do firewall que acaba influenciando; um serviço separado e auditado faz isso. Se o coletor fosse comprometido por um arquivo malicioso de um parceiro, o atacante teria uma conta que só lê a própria pasta e só conversa com servidores de parceiros. Ele não poderia alterar regras do firewall nem alcançar os relatórios dos analistas. Kofi lista cada conta de serviço com suas permissões e revisa a lista depois de cada versão, removendo qualquer direito que tenha entrado para um teste e nunca tenha sido retirado.
+
+### 12.2 Logs como evidência da plataforma
+
+Logs de autenticação, inícios de processos e modificações de arquivos mostram o que a própria plataforma fez. Quando um parceiro pergunta se um relatório TLP:RED foi acessado, os logs do sistema operacional e da aplicação respondem. Essa pergunta exige logs que tenham sido guardados, protegidos contra alteração e sincronizados no tempo. O Lantern envia os logs dos hosts a um repositório separado, em que os administradores da plataforma podem ler, mas não apagar. Kofi testou a resposta uma vez abrindo um relatório de teste e verificando se o acesso aparecia em até um minuto, com o usuário, o horário e o objeto. Um parceiro que confia material restrito à BEN pode pedir uma verificação assim, e a BEN deve ser capaz de respondê-la com segurança.
+
+### 12.3 Isolando parsers
+
+Os arquivos dos parceiros são entradas não confiáveis. Os parsers rodam em um contêiner ou sandbox sem acesso à rede além do necessário, com sistemas de arquivos somente leitura sempre que possível e com limites de memória. Assim, um bug em um parser não pode virar um ponto de apoio dentro do SOC. Kofi testa o sandbox entregando ao parser um arquivo que tenta abrir uma conexão de rede e outro que tenta gravar fora de sua pasta. As duas tentativas falham e são registradas. Um teste que falhasse bloquearia a versão até que o sandbox fosse corrigido.
+
+### 12.4 Patches
+
+Plataformas expostas à internet precisam de patches rápidos. Uma janela de manutenção, uma imagem testada e um snapshot de reversão permitem à BEN aplicar patches toda semana sem longas interrupções. A rotina de Kofi aplica os patches primeiro em um host de teste que reproduz um dia de tráfego sintético de feeds. Se a saída do pipeline corresponde ao snapshot esperado, a mesma imagem vai para produção na janela semanal. Um snapshot tirado logo antes permite à equipe voltar ao estado anterior em minutos se algo quebrar. Correções urgentes para falhas exploradas ativamente podem pular a espera semanal, com as mesmas etapas de teste e reversão comprimidas em horas.
+
+### 12.5 Tempo e agendamento
+
+Timers do cron ou do systemd agendam as consultas e os recálculos de decaimento. Registre os timers no gerenciamento de configuração, para que as mudanças sejam revisadas. Um timer não revisado passa despercebido com facilidade. Kofi encontrou certa vez um job de decaimento configurado para rodar a cada minuto depois de um teste, o que carregava o banco de dados sem motivo. Como os timers agora ficam no gerenciamento de configuração, uma mudança assim aparece na revisão e na linha de base do host. Cada timer registra sua finalidade e seu responsável, para que ninguém precise adivinhar se pode ser removido. Os horários são definidos em UTC, para evitar surpresas quando os relógios mudam.
+
+### Nota de prática — Linhas de base dos hosts
+
+Uma linha de base lista os processos, as portas abertas e as tarefas agendadas esperados para cada host do Lantern. Uma comparação noturna sinaliza desvios: um serviço escutando inesperadamente ou um novo timer. As linhas de base ficam no gerenciamento de configuração e são revistas depois de cada mudança aprovada, para que os alertas signifiquem algo.
+
+### Exemplo resolvido
+
+Um pacote de arquivos de um parceiro contém um arquivo deliberadamente malformado (teste sintético). O parser trava dentro de seu sandbox; o contêiner reinicia; um registro de rejeição é gravado. Nada mais no host é afetado, e a falha aparece nos logs com o hash do arquivo, para o parceiro.
+
+> **Caso sintético.** O arquivo malformado e o comportamento do sandbox são inventados.
+
+### Erros e limites
+
+Rodar tudo como root é rápido de implantar e lento de recuperar. Sandboxes reduzem o risco, mas não o eliminam.
+
+### Exercícios
+
+- **EX034 — Direitos do coletor.** A conta do coletor deve poder gravar regras de firewall? Explique. *Rubrica:* 3 = não; privilégio mínimo/separação; serviço separado e auditado; 2 = não; 1 = sim; 0 = nenhuma.
+- **EX035 — Pergunta de acesso.** Que evidência responde "quem abriu o relatório TLP:RED?" *Rubrica:* 3 = logs de acesso da aplicação + logs de autenticação do sistema operacional; 2 = um; 1 = perguntar à equipe; 0 = nenhuma.
+- **EX036 — Configurações do sandbox.** Cite três configurações de sandbox para um parser de arquivos não confiáveis. *Rubrica:* 3 = três entre rede inexistente/limitada, sistema de arquivos somente leitura, limites de memória/CPU, usuário sem privilégios; 2 = duas; 1 = uma; 0 = nenhuma.
+
+### Síntese
+
+Privilégio mínimo, logs como evidência, parsers em sandbox e patches disciplinados mantêm a plataforma confiável.
+
+### Continue estudando — capítulo 12 de 50
+
+[← Capítulo 11 (rascunho)](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 (rascunho) →](#ch-13)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX018 (as de EX019–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Brightwater Energy Networks, o Lantern, Kofi Mensah e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX036 (as de EX037–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Brightwater Energy Networks, o Lantern, Kofi Mensah e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** (13.300 − 12.700) / 1 h = 600 indicadores por hora.
 
@@ -459,12 +809,49 @@ Respostas-modelo para EX001–EX018 (as de EX019–EX150 estão na edição em i
 
 **EX018.** Os adversários às vezes reutilizam infraestrutura antiga, e os analistas precisam correlacionar eventos passados; indicadores arquivados continuam pesquisáveis sem acionar bloqueios automatizados.
 
+**EX019.** 0.045 — cerca de um alerta verdadeiro em cada vinte e dois.
+
+**EX020.** Reduzir a taxa de falsos positivos (por exemplo, combinando com um segundo sinal) e aplicar a regra apenas aos segmentos de tráfego em que a atividade maliciosa é mais prevalente; um portão de enriquecimento antes do acionamento também funciona.
+
+**EX021.** A latência é assimétrica à direita; a cauda lenta é o que os usuários percebem e o que os SLAs regem, e a média a esconde.
+
+**EX022.** Entrada/saída — o processo está esperando pelo disco; mantenha o conjunto quente na memória ou em armazenamento mais rápido.
+
+**EX023.** Os dados de enriquecimento ficam obsoletos, e os termos dos provedores podem limitar por quanto tempo os resultados são retidos ou com que frequência são consultados.
+
+**EX024.** 400.000 × 200 B = 80 MB brutos; o uso real será maior por causa da sobrecarga dos objetos.
+
+**EX025.** Quatro quaisquer entre: motivo da rejeição, fonte, hash dos bytes originais, carimbo de tempo, versão do parser.
+
+**EX026.** norm(norm(x)) == norm(x): reexecutar a ingestão ou renormalizar os dados armazenados nunca muda os valores, então não surgem duplicatas nem deriva.
+
+**EX027.** Os objetos são TLP:AMBER e o parceiro já os tem; hashes e contagens permitem que ele encontre os registros ruins sem que o Lantern recompartilhe conteúdo restrito.
+
+**EX028.** Fatos combinados podem revelar onde alguém mora ou como encontrá-lo, possibilitando assédio; tratar dados identificáveis também gera obrigações de proteção de dados.
+
+**EX029.** Abortar o envio, manter ativa nos firewalls a última lista sabidamente boa e alertar uma pessoa para revisão.
+
+**EX030.** Recusar, registrar o pedido por escrito e escalá-lo ao encarregado de privacidade ou à equipe jurídica.
+
+**EX031.** O TAXII 2.1 especifica a API HTTPS — descoberta, raízes de API, coleções, endpoints de objetos, tipos de mídia; quem pode ler ou gravar e o que pode ser compartilhado vêm dos acordos.
+
+**EX032.** O endereço hospeda milhares de sites sem relação entre si, então bloqueá-lo causaria danos colaterais; o domínio identifica especificamente o recurso malicioso.
+
+**EX033.** Recuar e tentar de novo depois do intervalo indicado pelo servidor (por exemplo, Retry-After); nunca trocar de identidade ou de endereço para burlar o limite.
+
+**EX034.** Não. O privilégio mínimo e a segregação de funções mantêm as mudanças no firewall em um serviço separado e auditado; um coletor comprometido não deve poder alterar controles.
+
+**EX035.** Os logs de acesso da aplicação do Lantern, corroborados pelos logs de autenticação do sistema operacional das contas envolvidas.
+
+**EX036.** Três quaisquer entre: nenhum acesso à rede ou acesso muito limitado, sistema de arquivos somente leitura, limites de memória e CPU, usuário sem privilégios.
+
 <a id="references"></a>
 ## Referências
 
-Todos os DOIs foram resolvidos em doi.org em 12 de outubro de 2026, e as normas foram conferidas nas páginas de seus editores. A lista é idêntica à da edição em inglês e cobre o livro inteiro; nenhuma das normas técnicas citadas foi verificada aqui como adotada pela ABNT, por isso são citadas em sua edição internacional. Organizações, pessoas, sistemas e números dos casos são sintéticos; somente as obras abaixo são reais.
+Todos os DOIs foram resolvidos em doi.org em 12 de outubro de 2026, e as normas foram conferidas nas páginas de seus editores. A lista é idêntica à da edição em inglês e cobre o livro inteiro, acrescida apenas da LGPD, citada nesta edição como referência brasileira e conferida em sua fonte oficial; nenhuma das normas técnicas citadas foi verificada aqui como adotada pela ABNT, por isso são citadas em sua edição internacional. Organizações, pessoas, sistemas e números dos casos são sintéticos; somente as obras abaixo são reais.
 
 - Bianco, D. (2013). The Pyramid of Pain. <https://detect-respond.blogspot.com/2013/03/the-pyramid-of-pain.html>
+- Brasil. (2018). *Lei nº 13.709, de 14 de agosto de 2018 — Lei Geral de Proteção de Dados Pessoais (LGPD)*. Diário Oficial da União. <https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm>
 - Caltagirone, S., Pendergast, A. and Betz, C. (2013). The Diamond Model of Intrusion Analysis. Technical Report ADA586960, Center for Cyber Intelligence Analysis and Threat Research. <https://www.activeresponse.org/wp-content/uploads/2013/07/diamond.pdf>
 - European Union. Regulation (EU) 2016/679 (General Data Protection Regulation). <https://eur-lex.europa.eu/eli/reg/2016/679/oj>
 - FIRST. Traffic Light Protocol (TLP) version 2.0. <https://www.first.org/tlp/>
