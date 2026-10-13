@@ -3344,9 +3344,13 @@ You will (1) profile assessment pipelines ethically; (2) optimize under ROE cons
 
 Measure where time goes: DNS, TLS handshake, predicate eval, ticket write. Optimize the dominant term. Synthetic load only.
 
+Optimizing ticket writes when TLS handshake dominates wastes the week and can tempt unsafe shortcuts. A profile on synthetic load that names the dominant term keeps the team honest. Sam posts the flame graph next to the change proposal so reviewers see why a cache was chosen over a faster JSON library. Without that graph, debates about caches become taste contests. Sam rejects optimisation PRs that lack a dominant-term citation from a fresh profile.
+
 ### 41.2 Constraint-preserving
 
 Caching ScopeVersion is fine if invalidation on publish is correct. Caching allow decisions across hosts is not — hosts differ.
+
+A cached ScopeVersion that survives a publish is a fail-open bug with a performance excuse. Invalidation must be part of the publish path and tested. Caching allow decisions across hosts is worse, because deny-lists and hours differ. Sam's cache tests include a publish mid-load that must flip a previously allowed target to deny within the stop bound. A cache that cannot pass that mid-load publish test never ships.
 
 ### 41.3 Safety veto
 
@@ -3381,21 +3385,31 @@ lab-jump-host            4        1    1     2
 
 > **Synthetic case — Riverstone Transit.** Caching signed policy in memory cut latency 40%; invalidation on publish kept safety. A proposal to skip deny-list for "known good" hosts was vetoed.
 
+The forty percent latency cut from caching signed policy was accepted only because publish invalidation was proven. A proposal to skip deny-list checks for "known-good" scanners was rejected with this veto, regardless of the speedup slide. Sam's ADR for the cache quotes both the gain and the invalidation test id.
+
 ### 41.4 Errors and limits
 
 Benchmarks on laptops do not predict depot links (Chapter 3).
+
+A laptop gigabit link hides serialisation costs that a 10 Mb/s depot uplink makes obvious. Benchmarks used for ROE headroom must use the physics chapter's link assumptions or measured client rates. Sam refuses a pool-size increase justified only by laptop numbers. The same rule blocked a burst increase that would have saturated a depot uplink in the physics worked example. Headroom math that ignores the 1.2 ms serialisation example from the depot uplink is sent back.
 
 ### 41.2b Load shedding
 
 Under overload, shed discovery work before shedding deny evaluation. Users can wait for a scan; they cannot wait for a deny that never comes. Implement priority queues accordingly.
 
+Priority queues that drop deny evaluation under load invert the safety model. Discovery can wait; a deny that never comes is an allow. Sam's shed tests push synthetic load until discovery queues grow, then assert every predicate still runs and returns within the latency budget. Shedding discovery shows up as a planned-not-seen rise in PulseMap, which is preferable to a silent allow.
+
 ### 41.3b Capacity headroom
 
 Keep headroom under the ROE limit so a retry storm (Chapter 32) does not breach it. If the ROE allows 5 req/s, engineer for 3–4 sustained. Document the headroom assumption.
 
+Engineering for 3–4 req/s under a 5 req/s ROE leaves room for the retry storms measured in the reliability work. Documenting that assumption stops a later engineer from "using the unused 20 percent" in a speed project. Sam's capacity sheet shows ROE limit, engineered sustained rate and retry budget on one line. Using the unused twenty percent requires a ROE edit, not a performance ticket.
+
 ### 41.1b N+1 queries
 
 Chatty ticket updates during bulk import crush FindingsDesk. Batch writes and measure. Performance work often starts as an integration bug, not as a need for exotic caches.
+
+Bulk import that updates tickets one HTTP call at a time will look like a need for exotic caches when the real fix is batching. Measure FindingsDesk write patterns before adding Redis. Sam's import path sends chunks of fifty and failed a review that reintroduced per-row upserts for "simpler code." The simpler code argument lost to a profile that showed ninety percent of time in per-row HTTP.
 
 ### Practice note
 
@@ -3413,6 +3427,8 @@ Benchmarks cite the ROE limit next to the achieved rate so unconstrained benches
 ### 41.4b Recording optimisation decisions
 
 Each optimisation is recorded with the profile that justified it, the measured gain and any safety check it touched. When a later change slows a path, the record shows whether the earlier speed-up depended on an assumption that no longer holds.
+
+Without the profile and the safety checks beside the gain, a regression looks like bad luck instead of a broken assumption. Sam's optimisation log for the policy cache notes the 40% cut, the invalidation test and the vetoed deny-list skip, so a future slowdown is diagnosed against facts.
 
 ### Exercises
 
@@ -3440,9 +3456,13 @@ You will (1) frame a research question about assessment platforms; (2) choose me
 
 "Does dual-approval reduce scope-widen incidents?" "Does showing denominators change stakeholder interpretation of coverage?" Not "new bypass against product X".
 
+Questions about dual approval and denominator presentation improve the platform; questions about bypasses against a vendor product do not belong in this degree. Sam returns proposals that need live exploitation and asks for a measurement question instead. The two example questions in the stem are the template for what advances. Measurement questions can still be ambitious; they just stay inside authorization.
+
 ### 42.2 Design
 
 Pre-register measures; use synthetic or consented operational data; report intervals. Replication beats novelty theatre.
+
+Pre-registration and intervals are how applied work stays distinguishable from dashboard storytelling. Synthetic or consented data keeps ethics intact. Sam files the measures in the repo before any outcome CSV is opened, and the commit timestamp is part of the thesis appendix. Opening the CSV first is treated as a process defect in studio grading. The pre-registration commit is linked from the thesis methods chapter so examiners can see the date.
 
 ### 42.3 Disclosure
 
@@ -3450,21 +3470,31 @@ If research accidentally finds a live issue, follow responsible disclosure — n
 
 > **Synthetic case — Riverstone Transit.** Sam's applied study compared ticket reopen rates before/after requiring re-test evidence; pre-registered, synthetic+anonymized.
 
+A class blog is not a disclosure channel. Live issues found while studying reopen rates follow the host's responsible path and stay out of coursework until cleared. Sam's reopen-rate study used synthetic and anonymized tickets only; anything that looked like a live credential path was escalated to Ingrid, not written up for class.
+
 ### 42.4 Errors and limits
 
 Course projects are not IRB-proofed human-subjects work; avoid collecting personal data.
+
+Collecting rider or staff identifiers for a "richer" thesis is out of bounds even with good intentions. Stick to synthetic and agreed aggregates. Sam's ethics paragraph states that limit explicitly so examiners do not have to guess. Aggregates that can re-identify a single staff member are refused the same way raw dumps are. Coursework that needs IRB-style consent is redesigned until it no longer needs it. Sam's ethics paragraph names that redesign duty explicitly.
 
 ### 42.2b Pre-registration
 
 Write the hypothesis, primary measure and exclusion rules before looking at outcome data. File them in the repo. Changing the measure after seeing results is how empty scores return through the research door.
 
+Changing the primary measure after seeing results is how empty scores sneak in through research. Filing hypothesis, measure and exclusions first makes that move visible as a deviation. Sam's dual-approval study kept reopen rate as primary even when a secondary metric looked more flattering. Deviations require a dated note in the appendix, not a quiet edit to the notebook.
+
 ### 42.3b Negative results publishability
 
 Publishable applied research includes negative results ("dual approval did not change reopen rates in this sample"). Hiding negatives biases the next cohort's designs toward empty confidence.
 
+A negative result on dual approval still teaches the next cohort not to assume the control works without evidence. Hiding it would push empty confidence into design studio. Sam's write-up leads with the negative and discusses sample size before suggesting a follow-up. Cohorts that only see positive write-ups keep shipping unmeasured controls. Studio prompts now include a negative-result example from Sam's write-up.
+
 ### 42.1b Data sharing agreements
 
 Even synthetic-plus-anonymized operational metrics need a written agreement with the host for student theses. "My mentor said it was fine" is not a sharing agreement.
+
+Verbal blessing from a mentor does not satisfy residency or thesis rules. A written agreement names what may leave the host and in what form. Sam's placement host signed a one-page metrics agreement before any anonymized counts went into a draft thesis. Without that page, the thesis chapter on results stays empty rather than informal.
 
 ### Practice note
 
@@ -3482,6 +3512,8 @@ Negative results get the same figure quality as positive ones in the thesis temp
 ### 42.4b Ethics review for platform research
 
 A study comparing detection coverage across engagements uses client data, even if summarised. Sam's proposal goes through the organisation's ethics and legal review, uses only aggregated, anonymised counts, and has each client's written consent before any result is shared outside the team.
+
+Aggregated coverage counts are still client data until consent and review say otherwise. Sam's proposal listed each client, the aggregation rule and the ban on per-host rows outside the team. Sharing outside the team waited on written consent from every client in the sample.
 
 ### Exercises
 
@@ -3509,9 +3541,13 @@ You will (1) adapt platform engineering to a host organization's constraints; (2
 
 In industry or public service, ROE templates, residency and procurement differ. Your job is still fail-closed tooling and honest measurement — not clever unauthorized tests.
 
+Procurement and residency change the architecture options, not the duty to fail closed and measure honestly. Unauthorized cleverness is still out. Sam's placement goals named a fail-closed delivery and a denominator-bearing report, not a surprise test of a partner network. Partner networks stay off the student laptop even when a mentor offers a "quick look." The placement agreement restates that boundary in the host's own words.
+
 ### 43.2 Sanitized reporting
 
 Course deliverables use synthetic names and aggregates. Real client identifiers stay inside the host's systems.
+
+Course markers must not receive real partner names or ticket ids. Synthetic reconstruction agreed with the host is the practice-report format. Sam's memo replaced every real hostname with the Riverstone lab pattern before it left the host laptop. Host review of the sanitized draft is a checkpoint before upload to the course portal. Diffs against the unsanitized internal note are reviewed only on host systems.
 
 ### 43.3 Translation
 
@@ -3519,21 +3555,31 @@ Counsel hears authorization and retention; ops hears change windows and canaries
 
 > **Synthetic case — Riverstone Transit.** Sam's placement memo used only Riverstone synthetic figures; real partner names were omitted.
 
+One fact stated three ways prevents counsel, ops and engineering from talking past each other. Authorization and retention for counsel, change windows and canaries for ops, schemas and tests for engineering. Sam's placement memo opened with a three-column table of the same close-out facts in each dialect.
+
 ### 43.4 Errors and limits
 
 "I can't tell you what I did" is not a practice report — use synthetic reconstruction agreed with the host.
+
+A report that only says work was confidential teaches nothing and fails the course. Agree a synthetic reconstruction with the host that preserves mechanisms without identifiers. Sam's supervisor signed the reconstruction outline before writing began. Mechanisms such as deny-all times and checklist hashes survive sanitization; names do not. A reconstruction without a supervisor signature fails the practice course gate. Unsigned outlines are deleted from the course portal automatically.
 
 ### 43.2b Procurement friction
 
 Public-service hosts may take months to approve a new SaaS. Design the capstone to run on infrastructure the host already authorizes. A perfect architecture that cannot be purchased fails the practice course.
 
+A capstone that needs a new SaaS the host cannot buy in time is a planning failure. Prefer infrastructure already authorized. Sam scoped signed policy distribution on the existing jump hosts after procurement said a cloud scanner would take nine months. Nine months is longer than a capstone; design for the kit already in the binder.
+
 ### 43.3b Conflict of interest
 
 If your placement host sells scanners, your practice report must disclose that and still refuse empty scores. Marketing decks are not measurement.
 
+If the host sells scanners, disclose it and still refuse empty scores in the practice report. Marketing decks are citations of claims, not measurements. Sam's disclosure paragraph sat above the metrics so readers saw the relationship before the numbers. Empty scores in a host deck are cited as claims to test, not as results to copy. Graders read the disclosure before scoring the measurement part.
+
 ### 43.1b Clearance and need-to-know
 
 Public-service placements may involve clearances. Course artefacts stay at the lowest sensitivity: synthetic reconstructions. Never paste classified or restricted text into GitHub.
+
+Restricted text in a student GitHub is an incident. Synthetic reconstructions at the lowest sensitivity are the only course artefacts. Sam's repo pre-commit hook greps for the host's internal project codenames and blocks the commit. Hooks that only warn are not enough; the commit must fail closed. Failed commits are logged to the placement supervisor the same day.
 
 ### Practice note
 
@@ -3551,6 +3597,8 @@ If the host forbids even sanitized metrics, the practice report uses a fully syn
 ### 43.4b Learning from the placement
 
 Sam keeps a weekly placement journal: one thing learned about how a public transit operator actually runs security, one assumption from the course that did not hold, and one question for his supervisor. The journal becomes the reflective section of his placement report.
+
+The weekly journal forces one broken assumption into the open while memory is fresh. Those entries become the reflective part of the placement report without dumping confidential detail. Sam's note that "calendar overlap beats chat promises" came from a week when two noisy methods collided despite verbal agreement.
 
 ### Exercises
 
@@ -3578,9 +3626,13 @@ You will (1) propose a capstone that ships a measurable platform improvement; (2
 
 Problem, users, requirements (safety first), architecture sketch, milestones, verification lab plan, ethics paragraph. Capstones that need exploit work are rejected.
 
+Safety-first requirements and an ethics paragraph are gates, not decorations. Exploit-centred proposals return unread. Sam's template opens with users and fail-closed requirements before any architecture sketch, which is why "auto-pwn" drafts never passed the first checkpoint. Architecture sketches without users and fail-closed requirements are returned at the same checkpoint. Safety requirements are numbered and traced to Lab II rows in the same document.
+
 ### 44.2 Non-goals
 
 Explicitly list what you will not build (exploit modules, live client scanning, ML risk oracles).
+
+Writing non-goals early is what makes freeze possible later. Exploit modules, live client scanning and ML risk oracles are named so a mid-term demo cannot smuggle them in. Sam's proposal listed those three explicitly and advisors graded scope against that list. Mid-term demos are graded against that list before anyone watches the video. Adding a non-goal mid-term requires advisor approval recorded in the risk register.
 
 ### 44.3 Milestone 1
 
@@ -3588,21 +3640,31 @@ Something demoable on synthetic data in week 3: e.g. kill-switch honored in ≤3
 
 > **Synthetic case — Riverstone Transit.** Capstone I proposals that mentioned "auto-pwn" were returned; "signed policy distribution with fail-closed" advanced.
 
+A kill-switch honored in ≤30s on synthetic data is demoable and safety-relevant. Vague "research spikes" are not. Sam's milestone-1 video shows the stop control, the measured halt time and the ROE clause it satisfies, which is the pattern that advanced past "auto-pwn" returns. Videos without a measured halt time fail the checkpoint even if the UI looks polished.
+
 ### 44.4 Errors and limits
 
 Capstone scope creep is the main killer — freeze non-goals.
+
+Scope creep kills more capstones than hard bugs. Freezing non-goals and parking sequel ideas is the control. Sam's mid-term review rejected a ticket-system integration that was not in the proposal, even though a mentor liked the demo. Sequel ideas get a one-page parking doc dated on freeze day. Freeze day is on the shared calendar with the same seriousness as an engagement window. Calendar invites for freeze include the advisor and the ops owner.
 
 ### 44.2b Risk register for the capstone
 
 List project risks: scope creep, dependency delay, reviewer unavailability, ethics boundary confusion. Each risk has an early warning and a mitigation. Review the register weekly in studio.
 
+Early warnings beat heroics in week eleven. Reviewer unavailability and ethics confusion need mitigations before they land. Sam's register flagged advisor travel in week six and booked the checkpoint early; the mitigation was a recorded demo, not a silent slip. Weekly studio opens on the register before feature demos. Risks without early warnings are rewritten before the meeting ends.
+
 ### 44.3b Advisor checkpoints
 
 Capstone I has mandatory checkpoints: proposal accepted, milestone 1 demo, mid ethics check. Missing a checkpoint freezes coding until recovered — silent drift produces unreviewable piles.
 
+Silent drift produces piles nobody can review. Missing a checkpoint freezes coding until the gate is passed. Sam's ethics check mid-capstone caught a plan to use anonymized but still host-internal hostnames; coding stayed frozen until the synthetic set was substituted. Frozen coding is visible on the board so teammates do not merge dependent work. Dependent PRs from teammates are held in draft while the freeze is on.
+
 ### 44.1b Success metrics for the capstone
 
 Define two metrics you will show at defense (e.g. deny-all time, percent of merges with AUTH tickets). If you cannot name them in Capstone I, the proposal is not ready.
+
+Deny-all time and percent of merges with AUTH tickets are examples of metrics a defense can show as artefacts. If Capstone I cannot name two, the proposal is not ready. Sam wrote "deny-all ≤30s after policy loss" and "100% of scope widens have AUTH tickets" on page one of his proposal.
 
 ### Practice note
 
@@ -3624,6 +3686,8 @@ Proposals without lab-row mapping are returned before studio time is booked.
 ### 44.4b Scoping the capstone honestly
 
 The capstone proposal states what will be built in the time available — a scope-diff tool for TrackScope with tests and a short evaluation — and what will not, such as integration with every client's ticket system. Advisors judge the project against the stated scope, not against an imagined larger one.
+
+Advisors grade the stated scope, not an imagined larger system. A scope-diff tool with tests and a short evaluation is enough if it is real. Sam's non-goals included "every client's ticket system," which stopped a late scramble to add Jira during freeze.
 
 ### Exercises
 
@@ -3651,9 +3715,13 @@ You will (1) run a review that can reject; (2) use a checklist tied to safety re
 
 Reviewers may block merge for fail-open paths, missing tests, or empty scores in UI. "LGTM" without running the checklist is invalid.
 
+Checklist-free LGTM is how fail-open returns under deadline. Reviewers who block on empty scores or missing tests are doing the job. Sam's coverage-badge PR collected two blocks under this rule before the honest UI shipped. A third block would have been fine; speed is not a reason to skip the checklist. Authors may not mark their own checklist boxes; reviewers must.
+
 ### 45.2 Checklist
 
 Fail-closed; policy authn; schema forbids payloads; coverage has denominator; secrets redaction; rollback path documented.
+
+The six lines are merge gates, not suggestions. Fail-closed and denominator rules map to earlier chapters; secrets redaction and rollback close the operations loop. Sam's review bot posts the checklist and refuses approve until each box has a link to evidence in the PR. Links to tests beat checkmarks typed by hand with no URL. A box without a link is treated as unchecked by the bot.
 
 ### 45.3 Dissent
 
@@ -3661,21 +3729,31 @@ If one reviewer disagrees, record the dissent in the ADR even if overruled — f
 
 > **Synthetic case — Riverstone Transit.** A coverage badge PR was blocked twice under this checklist; the third revision shipped the honest UI (Chapter 35).
 
+Overruled dissent still belongs in the ADR for the incident that may come later. The coverage-badge blocks are recorded with the minority view that a badge could return through a flag. Sam's third revision removed the flag path entirely so the dissent was resolved by deletion, not by override.
+
 ### 45.4 Errors and limits
 
 Reviews after merge are archaeology, not control.
+
+Commenting after merge cannot stop a bad binary that already left the shed. Review is a control only while the button is still red. Sam's team treats post-merge comments as new tickets, never as pretend review of the shipped tag. Shipped tags are immutable; fixes land as new versions with new reviews. Hotfixes get the same checklist on a compressed SLO, not a waiver. Compressed SLO still requires every checklist link to be present.
 
 ### 45.2b Reviewer preparation
 
 Reviewers run the critical tests locally on synthetic fixtures before the meeting — not only read the diff. A review that never executed fail-closed is incomplete regardless of comment volume.
 
+Unread fail-closed tests are theatre with comments. Running them on synthetic fixtures before the meeting is the preparation bar. Sam's review SLO clock does not start until the reviewer pastes the local test output into the PR. Pasted output includes the fail-closed row names so skimming is obvious. Meeting time is for judgment calls, not for first-time test runs.
+
 ### 45.3b Review SLOs
 
 Reviews complete within an agreed number of business days or the change auto-expires from the merge queue (not auto-merges). Pressure to rubber-stamp is a safety smell.
 
+Auto-expire without auto-merge removes rubber-stamp pressure. A change that ages out must be refreshed and re-reviewed. Sam's queue expired a scope-touching PR on day five; the author fixed the checklist gaps before it returned. Refreshing an expired PR restarts the SLO clock from zero. Expired PRs cannot be force-pushed green without a new reviewer assignment.
+
 ### 45.1b External reviewers
 
 Once per term, invite an engineer from outside the squad to review a safety-critical PR. Fresh eyes catch normalized deviance ("we always skip that test").
+
+Normalized deviance such as "we always skip that test" needs a stranger to hear it. One external review per term on a safety-critical PR is the minimum. Sam's external reviewer caught a missing invalidation test on the policy cache that internal review had waved through. The invalidation gap became a Lab II case the following week.
 
 ### Practice note
 
@@ -3701,6 +3779,8 @@ Repeated checklist skips by the same reviewer trigger a coaching conversation, n
 ### 45.4b Closing review comments
 
 Every review comment ends in one of three states: fixed, with a link to the change; declined, with a reason the reviewer accepts; or carried as a known risk with an owner. Sam's design is approved only when no comment remains open without one of these states.
+
+Open comments without fixed/declined/risk states mean the design is not approved. Carried risks need owners. Sam's approval on the honest coverage UI waited until every badge-related comment was either fixed or declined with a reason the reviewer accepted.
 
 ### Exercises
 
@@ -3728,9 +3808,13 @@ You will (1) finish implementation against the frozen proposal; (2) run Verifica
 
 Feature freeze date is real: after it, only safety fixes. New ideas go to a sequel proposal.
 
+After freeze, feature ideas go to a sequel proposal, not into "small" commits that bypass Lab II. Safety fixes still flow. Sam filed a sequel doc for a nice-to-have export format on freeze day rather than sneaking it into the signed-policy branch. Safety fixes still need Lab II rows that touch the changed path. Sequel proposals cannot reopen the frozen branch without a new Capstone I.
+
 ### 46.2 Verify
 
 Capstone must pass Lab II (Chapter 40) on synthetic fixtures with signed checklist.
+
+Lab II on synthetic fixtures with a signed checklist is the Capstone II gate named earlier. Unit greens are not a substitute. Sam's Capstone II tag points at the checklist hash from the Lab II run the same day the runbook updated. The checklist hash is printed in the Capstone II README next to the tag. README and tag must agree or the release script aborts. A mismatch prints both hashes so the author knows which file drifted.
 
 ### 46.3 Docs
 
@@ -3777,21 +3861,31 @@ events=8 phases=7
 
 > **Synthetic case — Riverstone Transit.** Capstone II delivered signed policy distribution; Lab II green; runbook updated the same day.
 
+Runbook, ADR and operator tutorial with synthetic screenshots are part of done. Client data in docs is a fail. Sam's tutorial uses only the Riverstone lab UI and was updated the same day Lab II went green for signed policy distribution. Screenshots are cropped to remove any host wallpaper that could identify a real site.
+
 ### 46.4 Errors and limits
 
 Demo magic on a laptop with hand-waved fail-closed does not pass.
+
+A laptop demo that hand-waves fail-closed does not pass Capstone II. The silent operator run and Lab II checklist are the proof. Sam's first acceptance attempt failed two documentation steps; magic was not offered as a substitute. Capstone II grading rubrics give zero for laptop magic without the checklist. Zero for magic is written in the published rubric students see in week one. Students see that zero in week one so laptop demos are not a surprise strategy.
 
 ### 46.2b Operator shadowing
 
 Before claiming done, a second engineer follows the runbook cold on synthetic data while the author is silent. Places they stall become doc fixes. Capstone II is not done until the silent run succeeds.
 
+Author silence during the cold run is what surfaces missing steps. Stall points become doc fixes before anyone claims done. Sam's shadowing session stalled on the kill-switch path until the binder page named the file location the tabletop had found earlier. Stall notes are filed as doc tickets before the acceptance script is attempted.
+
 ### 46.3b Demo script
 
 Capstone II demo follows a script on synthetic data: show fail-closed, show coverage denominator, show a stopped action. Improvised demos skip safety. Record the script next to the lab report.
 
+Improvised demos skip fail-closed and denominators under time pressure. A script that shows deny on missing policy, a 5/7 coverage export and a stopped action keeps the defense honest. Sam filed the script next to the Lab II report so examiners could ask for the same path. Examiners may ask to pause the script and inspect the deny reason code live.
+
 ### 46.1b Handover to ops
 
 Capstone code without an ops owner at merge is unfinished. Name the owning squad in the README and CODEOWNERS before Lab II sign-off.
+
+CODEOWNERS and README ownership before Lab II sign-off stop orphan capstones. An ops squad that never agreed cannot be surprised on call. Sam's README named the platform squad and the on-call rotation before the acceptance script ran. Ops acknowledgment is a checkbox on the Lab II sign-off form. Without ops acknowledgment, Lab II sign-off stays red. Red sign-off is visible on the Capstone II board beside Lab II.
 
 ### Practice note
 
@@ -3817,6 +3911,8 @@ Advisor review watches the silent-run recording at 1.5x and files doc issues bef
 ### 46.4b Final acceptance test
 
 Before the capstone is handed over, an operator who did not build it runs the acceptance script alone, using only the documentation. Two steps failed in Sam's first attempt because the documentation assumed knowledge he had; both were rewritten and the operator's second run passed.
+
+Assumed knowledge in docs is a defect the cold operator will find. Two failed steps on Sam's first attempt were rewritten; the second run passed. That rewrite is part of the capstone evidence, not an embarrassment to hide. The rewritten steps and the second green run are both sealed in the dossier.
 
 ### Exercises
 
@@ -3844,9 +3940,13 @@ You will (1) run a scripted failure trial; (2) measure recovery time; (3) file c
 
 Inject: policy file deleted; FindingsDesk killed; clock skew; duplicate event replay. Observe denies, queues, alerts.
 
+The four injects cover policy loss, dependency loss, time and replay — the failure classes that bite engagements. Observing denies, queues and alerts is the scored behaviour. Sam's trial script runs them in a fixed order so measures stay comparable term to term. Skipping an inject to save time fails the trial the same way a missed stop does. Warm-up injects are labelled separately so they never replace scored ones.
+
 ### 47.2 Measures
 
 Time to deny-all after policy loss; time to alert; time to restore; findings lost (should be 0 with queue).
+
+Deny-all time, alert time, restore time and zero lost findings are the SLO inputs. The trial that showed 45s against a 30s target made the poll-interval fix mandatory. Sam records each measure in the same spreadsheet the reliability chapter uses for availability. Spreadsheet rows carry the trial id so terms do not overwrite each other. Overwrites are blocked by making trial id part of the primary key.
 
 ### 47.3 Corrective actions
 
@@ -3885,21 +3985,31 @@ scope.csv        OK
 
 > **Synthetic case — Riverstone Transit.** Trial showed 45s to deny-all; target 30s — poll interval tightened.
 
+Lesson-learned slides without tickets do not change poll intervals. Each miss needs an owner and a due date. Sam's 45s result opened a ticket that closed only after two successful recurrence runs at ≤30s. Slide decks may summarise tickets but cannot replace them in the close criteria. Close criteria list ticket ids, not slide titles.
+
 ### 47.4 Errors and limits
 
 Trials on production engagements are forbidden; use synthetic ranges.
+
+Production windows are for authorized assessment, not chaos. Synthetic ranges keep riders out of the blast radius. Sam's trial calendar blocks the synthetic range and refuses a script start if an engagement id is set. A forgotten engagement id in the environment is tested the same way chaos guards are. Script start checks the environment before any inject runs. The check message names the variable so operators know what to unset.
 
 ### 47.2b Blameless correction
 
 Failure trials exist to find system gaps. Write corrective tickets against components and runbooks, not against individuals who followed a bad procedure. Blame-seeking stops people from reporting the next miss.
 
+Ticketing the runbook or the component keeps people willing to report the next miss. Blaming the person who followed a bad step ends learning. Sam's write-up of the 45s miss named the poll interval, not the engineer who started the trial. Names appear only in attendance, never in the root-cause line.
+
 ### 47.3b Recurrence tests
 
 After a corrective fix, re-run the inject that found the gap. Close the ticket only when the measure meets the SLO twice. Otherwise the same failure returns next term.
 
+One lucky green is not an SLO. Two successive meets after the fix are the close rule. Sam's poll-interval ticket stayed open through a flaky first recurrence and closed after the second clean ≤30s run. The flaky first run stayed in the ticket history so patterns remain visible. Patterns across terms feed the next year's trial script review.
+
 ### 47.1b Observer roles
 
 Failure trials include an observer who only notes timings and deviations — not a participant who fixes things live. Fixes come after through tickets.
+
+A participant who fixes live destroys the timing data and hides gaps. Observers only note; fixes go through tickets afterward. Sam's observer sheet for the policy-loss inject shows deny-all at 45s and the alert at 50s without any mid-trial patches. Mid-trial patches void the measures and force a full re-run. Voided runs stay in the archive with a void reason for learning.
 
 ### Practice note
 
@@ -3925,6 +4035,8 @@ If an inject cannot be run safely even on synthetic ranges, rewrite it — do no
 ### 47.4b Choosing the failure to rehearse
 
 The trial rehearses the failure with the worst consequence for clients, not the easiest to stage: TrackScope losing its scope file mid-engagement. The script checks that methods stop, the lead is paged and testing resumes only after the file is restored and verified.
+
+Losing the scope file mid-engagement is the worst client consequence on the platform threat list, so it is the rehearsal. The script demands stop, page and verified resume. Sam rejects trial plans that only kill a dashboard pod because they are easier to stage. Easy injects may be used for warm-up but never as the scored rehearsal.
 
 ### Exercises
 
@@ -3983,9 +4095,13 @@ roe.pdf          OK
 scope.csv        OK
 ```
 
+A reader with the manifest and tool versions should re-hash without calling you. ROE, ScopeVersion, findings, evidence, labs and versions are the minimum set. Sam's dossier template fails a pack checklist if any of those folders is empty. Empty folders fail even when the README claims the data lives elsewhere. Elsewhere is not a folder name the checklist accepts.
+
 ### 48.2 Retention
 
 Classes: engagement working (90 days), sealed evidence (agreed years), aggregate metrics (longer). Deletion jobs are tested.
+
+Working, sealed and aggregate classes need different clocks and tested deletion. Untested deletion jobs are how personal cloud copies become the real archive. Sam's quarterly deletion drill restores from sealed storage after a purge of working files and checks the manifest still verifies. Deletion drills that skip sealed restore are incomplete. Incomplete drills reopen the retention ticket automatically. Automatic reopen keeps retention from becoming a once-a-year surprise.
 
 ### 48.3 Exclusions
 
@@ -3993,21 +4109,31 @@ No payloads, no live credentials, no personal data. If it cannot be shared with 
 
 > **Synthetic case — Riverstone Transit.** Dossier v3 re-hashed clean after the findings.json incident; process note included.
 
+If counsel cannot receive it, it does not belong in the dossier. Payloads, live credentials and personal data stay out. After the findings.json incident, dossier v3 re-hashed clean and the process note explained the exclusion check that now runs before seal. The exclusion check is a script, not a memory item on seal day.
+
 ### 48.4 Errors and limits
 
 Dossiers in personal cloud accounts fail residency and retention.
+
+Personal cloud accounts break residency and retention schedules the host agreed. Sealed storage under host policy is mandatory. Sam's close-out greps for sync-agent paths on the jump host and fails if any dossier path sits in a personal folder. Personal folders discovered at close-out open an incident, not a quiet move. Quiet moves still page because the grep runs on a timer, not on honour. Timer interval is hourly during close-out week and daily otherwise.
 
 ### 48.2b Third-party readability
 
 Hand the dossier to someone outside the project for a re-hash drill. If they cannot find the manifest or the ROE version, the dossier fails regardless of how neat it looks to its authors.
 
+Authors know where they hid the manifest; outsiders do not. A re-hash drill by someone outside the project is the readability test. Sam's last drill failed when the ROE PDF was nested three folders deep without a pointer on the checklist page; the layout changed before seal. Layout reviews use the ten-minute budget as a hard gate.
+
 ### 48.3b Redaction log
 
 When redacting, keep a redaction log (what, why, actor) inside the sealed store. Future readers need to know that a blank was intentional, not truncated evidence.
 
+A blank without a log looks like truncation or tampering. What, why and actor inside the sealed store explain the gap. Sam's redaction log for a screenshot that showed a staff display name records the pixel bounds, the privacy reason and his user id. Truncation without a log line fails the seal script. Seal scripts treat a blank without a log as a hash mismatch equivalent.
+
 ### 48.1b Reader checklist
 
 Include a one-page "how to verify this dossier" at the top: install tool versions, run `sha256sum -c manifest`, open ROE, spot-check one finding. If readers need a tour guide, the dossier is incomplete.
+
+Tour-guide dossiers fail busy assessors. One page that names tool versions, `sha256sum -c manifest`, ROE open and one finding spot-check is the bar. Sam's assessor completed that path in under ten minutes on dossier v3, which became the time budget for layout reviews. Layouts that miss the budget are redesigned before the lead signs the manifest.
 
 ### Practice note
 
@@ -4029,6 +4155,8 @@ Forbidden-name failures print the offending path so authors can fix quickly.
 ### 48.4b Integrity of the dossier
 
 Each file in the evidence dossier is listed with its SHA-256 hash in a manifest, and the manifest itself is signed by the lead. A reader can confirm that nothing was added or changed after sign-off without trusting the storage location.
+
+A signed manifest is what makes storage location irrelevant to integrity. Readers confirm bytes, not trust in a vendor folder. Sam's lead signature on the manifest is verified in the same checklist step as the file hashes. Signature verification failure blocks assessor sign-off the same way a bad file hash does.
 
 ### Exercises
 
@@ -4056,9 +4184,13 @@ You will (1) structure a thesis around a platform claim; (2) defend measures and
 
 One sentence: what you built/measured and for whom. Example: "Signed policy distribution with fail-closed semantics reduces unauthorized allows in synthetic trials."
 
+One sentence that names what was built or measured and for whom keeps the thesis from wandering into tool marketing. The signed-policy example is the shape Sam used. Examiners read that sentence first and judge every chapter against it. Chapters that do not serve that sentence are cut in advisor review. Cut chapters are listed in the advisor notes so the student sees why.
+
 ### 49.2 Body
 
 Related work (SP 800-115, PTES, ATT&CK, Albrecht & Jensen), design, verification, results with intervals, limitations, ethics.
+
+Related work, design, verification, timed results, limits and ethics are the spine. Intervals belong with results so empty single scores cannot dominate. Sam's results chapter leads with deny-all times and confidence notes before any qualitative praise. Qualitative praise without numbers is moved to an appendix or deleted. Appendices that only praise tools without data are removed before submission. Data-free praise is a common draft habit and is caught in advisor review.
 
 ### 49.3 Citations
 
@@ -4066,21 +4198,31 @@ Use the verified URLs/DOIs from the source policy; do not invent papers. Framewo
 
 > **Synthetic case — Riverstone Transit.** Thesis draft used only synthetic trial data and cited CBEST 2024 Implementation Guide correctly.
 
+Invented papers fail a viva quickly. Verified URLs/DOIs with access dates keep framework claims checkable when editions move. Sam's CBEST 2024 cite includes the access date and the exact guide title from the source policy list. Access dates older than a year trigger a re-check before submission. Re-checks update the access date in the same commit as the bibliography.
+
 ### 49.4 Errors and limits
 
 A thesis that evaluates exploitation skill is out of programme scope.
+
+Exploitation skill as a thesis outcome is outside the programme and the safety boundary. Platform measurement and fail-closed design are in. Sam's advisor returns proposals that grade red-team cleverness instead of authorized engineering evidence. Cleverness metrics are listed as non-goals in the proposal and enforced at defense. Defense slides that show exploit skill demos are stopped by the chair. The chair's stop is practised in rehearsal with a planted exploit slide.
 
 ### 49.2b Threats to validity
 
 Discuss construct validity (does coverage measure what you claim?), internal validity (confounds in the trial), external validity (other orgs). A thesis that skips this section overclaims by omission.
 
+Skipping construct, internal and external validity is overclaim by omission. Coverage must be defended as planned-technique coverage, not residual risk. Sam's threats-to-validity part states that one transit host and synthetic injects limit generalization to other sectors. Sector limits are stated in the abstract, not only buried in chapter nine. Abstract and chapter nine are linted to contain the same limit sentence.
+
 ### 49.3b Reproducibility appendix
 
 Ship enough to replay synthetic trials: fixture hashes, tool SHAs, scripts. "Available on request" is not a reproducibility appendix for an engineering thesis in this programme.
 
+Fixture hashes, tool SHAs and scripts in the appendix beat "available on request." A sceptical reader should replay the synthetic trial. Sam's appendix lists TrackScope SHA, fixture pack hash and the one-line commands that reproduced the ≤30s deny-all measure. Commands are copied from CI, not retyped from memory, so they stay accurate. CI copy-paste includes the image digest the commands expect.
+
 ### 49.1b Related work honesty
 
 Cite frameworks you actually used. Padding related work with unread papers is discovered quickly in defense questions. Thin and accurate beats thick and fake.
+
+Unread citations collapse under defense questions. Thin lists of frameworks actually used beat padded bibliographies. Sam cites SP 800-115, PTES, ATT&CK and Albrecht and Jensen because each appears in a design or measurement choice he can point to. A framework named in related work but unused in design is removed. Removal is preferred to a vague "inspired by" claim.
 
 ### Practice note
 
@@ -4111,6 +4253,8 @@ Examiners read that page first.
 
 Sam's thesis states its claim in the first paragraph, presents evidence in the order a sceptical reader would demand it, and ends each chapter by stating what that chapter established and what remains uncertain. His advisor's test is whether the abstract alone tells a reader exactly what was shown.
 
+Ending each chapter with what was established and what remains uncertain trains the abstract to be precise. The advisor test — abstract alone states what was shown — is the bar. Sam rewrote his abstract three times until it named the deny-all measure and the single-host limit without adjectives. Adjectives such as robust and seamless are banned from the abstract by the same lint as UI copy. The abstract lint runs in CI on the thesis Markdown.
+
 ### Exercises
 
 - **EX145 — Claim.** Write a one-sentence thesis claim for dual-approval. Rubric: 3 = measurable+scoped; 2 = vague; 1 = exploit claim; 0 = none.
@@ -4137,9 +4281,13 @@ You will (1) present the claim and evidence in 20 minutes; (2) answer safety and
 
 Claim; demo on synthetic data; verification results; one failure trial lesson; limits; questions. No live hacking demo.
 
+Synthetic demo and verification results carry the claim; logos do not. Limits before questions set honesty as the frame. Sam's talk order matches the stem so examiners hear the failure-trial lesson before the Q&A. Logo slides are deleted in rehearsal if anyone added them from a template. Template decks from vendors are banned in the rehearsal checklist. Rehearsal checklist item one is "no vendor logos."
+
 ### 50.2 Likely questions
 
 Fail-closed proof? Denominator choice? Dual-use boundary? What broken in Lab II? Practice answering with pointers to artefacts.
+
+Artefact pointers beat improvised confidence. Fail-closed proof, denominator choice, dual-use boundary and Lab II breaks are predictable. Sam's answer cards cite checklist hashes and PulseMap export lines rather than restating slogans. Slogans without hashes are practised as failed answers in rehearsal. Failed-answer practice is recorded so the same slogan is not reused. Reused slogans from a prior failed answer cost a mark in rehearsal scoring.
 
 ### 50.3 Reflection
 
@@ -4186,21 +4334,31 @@ baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 
 > **Synthetic case — Riverstone Transit.** Sam's defense led with the fail-closed lab, not a slide of logos. When asked for a risk score, Sam refused and showed SLA and coverage denominators.
 
+One real design mistake and its fix builds more trust than a perfect narrative. Refusing a risk score in favour of SLA and coverage denominators is the Riverstone defense moment to emulate. Sam's mistake slide names the late poll interval and the trial that caught it. The mistake slide is required; a perfect narrative without it loses marks. Marks for the mistake slide are published in the rubric beside Lab II.
+
 ### 50.4 Errors and limits
 
 Defense is not a sales pitch for a scanner vendor.
+
+Vendor sales pitches waste examiner time and violate the measurement chapter. Defense argues from artefacts. Sam's slides contain no scanner logos; the only product names are TrackScope, FindingsDesk and PulseMap as course systems. Vendor comparisons, if any, use measured denominators from PulseMap, not brochure claims. Brochure quotes require a footnote to a PulseMap export hash. Footnotes without hashes are treated as brochure claims and removed. Sam's slide list is checked against that rule the morning of defense.
 
 ### 50.2b After the defense
 
 Archive the talk deck next to the dossier with matching hashes. Note examiner requests as issues. The defense is a gate, not the end of maintenance — ownership continues (Chapter 39).
 
+Archiving the deck with matching hashes next to the dossier keeps examiner requests actionable. Ownership continues after the gate. Sam opened three issues from examiner questions the same afternoon, still assigned to the platform squad. Issues without owners on the afternoon of defense are raised in the next standup. Standup notes link the three issues for anyone who missed the defense.
+
 ### 50.3b Examiner packet
 
 Provide examiners the claim sentence, Lab II summary, failure-trial measure, and ethics paragraph one day ahead. Surprise decks waste defense time that should test your judgment.
 
+Claim, Lab II summary, failure-trial measure and ethics paragraph one day ahead keep the hour for judgment. Surprise decks burn time. Sam's packet was five pages and matched the talk order so examiners could annotate before he spoke. Packet pages are numbered to match slide numbers for annotation speed. Annotation speed matters when the panel has only five minutes to prepare.
+
 ### 50.1b Time discipline
 
 Twenty minutes means rehearsal with a timer. Cutting the limits slide to save time is the wrong cut — examiners need your honesty more than a fourth demo click.
+
+Rehearsal with a timer is what protects the limits slide. Cutting honesty to fit a fourth demo click is the wrong trade. Sam's rehearsal cut two architecture slides and kept the limits and the 45s-to-30s trial story. The trial story is timed to ninety seconds so questions still fit. Ninety seconds is rehearsed with a visible timer on the presenter's laptop.
 
 ### Practice note
 
@@ -4218,6 +4376,8 @@ Keep a parking lot for examiner ideas and process it within a week while context
 ### 50.4b Rehearsing the defense
 
 Two weeks before the defense, Sam gives the talk to peers who play examiners and ask the hardest questions on the likely-questions list. He times each section, cuts slides that run over, and writes short answers for the three questions he struggled with.
+
+Peers playing examiners surface weak answers while there is still time to write short ones. Timing each part prevents a rush that drops limits. Sam's three hardest questions were dual-use, denominator and what Lab II broke; he filed one-paragraph answers before the real defense. Written answers are limited to eight lines so they can be spoken, not read as an essay. Essays are cut until they fit the eight-line card format.
 
 ### Exercises
 
