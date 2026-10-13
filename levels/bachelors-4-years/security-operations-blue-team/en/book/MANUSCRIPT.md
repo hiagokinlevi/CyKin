@@ -3188,7 +3188,7 @@ Each false alert was reviewed: most were staff with approved forwarding exceptio
 
 Detection ≥80%: met (90%, though the interval's lower bound is 70%). False alerts ≤3/week: met. Within 30 minutes: met.
 
-The detection line states both the result and the caveat, as the worked example below explains. False alerts and timing are met clearly. Presenting the caveat beside the claim, rather than in a footnote, lets readers see in one place what was met and how confidently. Lucas also lists the requirement on detection time with the median and the slowest value. A summary table with one row per requirement, the result and a brief caveat lets a reader see the outcome in seconds.
+The detection line states both the result and the caveat, as the worked example below explains. Presenting the caveat beside the claim, rather than in a footnote, lets readers see in one place what was met and how confidently. Lucas also lists the requirement on detection time with the median and the slowest value. A summary table with one row per requirement, the result and a brief caveat lets a reader see the outcome in seconds.
 
 ### Analyst feedback
 
