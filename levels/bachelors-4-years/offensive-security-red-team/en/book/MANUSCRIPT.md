@@ -2079,57 +2079,89 @@ You will (1) model online banking; (2) list entry points; (3) record assumptions
 
 Actors, entry points, stores, trust zones, external processors.
 
+A system model for authorized testing is a map of what can be reached and what must be protected, not a full enterprise architecture. Actors are people or services that initiate actions: customers, staff, batch jobs, testers. Entry points are where those actors meet the system: the web app, the mobile API, the staff VPN. Stores hold data that matters: the customer database, the evidence vault. Trust zones group components that share a level of exposure. External processors sit outside TRB's control. Naming each element before testing stops the team from discovering mid-engagement that a forgotten batch peer can reach the ledger.
+
 ### 21.2 Entry points
 
 Web, mobile API, staff VPN, batch peers.
+
+Each entry point has different users, different authentication and different ways to go wrong. The public web app faces anyone on the internet. The mobile API may share backends with the web app but use different tokens. The staff VPN brings administrators close to internal systems. Batch peers are other institutions' systems that exchange files on a schedule. A model that lists only the web app will miss findings that appear only on the mobile API or only after VPN login. Sam checks the change ticket log for new entry points before each engagement.
 
 ### 21.3 Assumptions
 
 "Staging mirrors prod AuthZ" must be validated.
 
+Models are full of assumptions, and unvalidated ones are where findings hide. Teams often assume that staging uses the same authorization rules as production, that a mobile deep link reuses the web session checks, or that a callback from a payment processor is authenticated. Each assumption is written on a sticky and marked Open until someone checks it. An Open assumption at kickoff becomes a residual-risk sentence in the plan: the test may miss weaknesses that exist only where the assumption fails. Closing assumptions is part of preparation, not a side task.
+
 ### 21.4 Data flows
 
 Customer PII paths drive minimisation.
+
+The model marks every path that carries customer personal data: from the browser to the web tier, from the web tier to the customer store, from the store to a reporting extract. Those paths decide where minimisation rules apply during testing. A path that never carries personal data can be exercised more freely with synthetic traffic. A path that does carry it requires the proof-not-bulk rule and careful evidence handling. Drawing the paths also reveals surprises, such as a marketing site that posts into the core API and therefore into a personal-data store.
 
 ### 21.5 Exclusions
 
 SWIFT gateway omitted when out of scope.
 
+Exclusions must appear on the model as clearly as inclusions. Leaving the SWIFT gateway off the diagram entirely makes it look forgotten. Drawing it and marking it out of scope makes the boundary visible to everyone who uses the model. Testers who see an interesting path toward the gateway know immediately that it is not theirs to follow. The same discipline applies to third-party processors and to production customer databases when the engagement is limited to staging.
+
 ### 21.6 Living models
 
 Update on new payment callback routes.
 
-### 21.7 21.7 Applied note
+A model that is not updated becomes a hazard, because people trust it. TRB's rule is that any change ticket adding or changing an entry point, store or external callback must update the model within a week. Sam's weekly review diffs open change tickets against model edges and lists stragglers. The review is short and slightly annoying, which is why it works. Teams update the model to avoid appearing on the list, and the model stays close enough to reality to plan tests against.
+
+### 21.7 Physical tokens for open assumptions
 
 Owner workshops use physical tokens for assumptions. A token left in Open at the end blocks kickoff. The tactile rule sounds childish and works better than a spreadsheet column nobody updates.
 
-### 21.8 21.8 Callback inventory
+Each Open assumption gets a token on the table. Closing it moves the token to a Closed bowl with a note of who checked and how. Tokens still in Open at the end of the workshop are photographed into the plan as residual risks, and the kickoff cannot be marked ready until the engagement lead accepts them. Spreadsheet columns invite polite neglect. A token on the table invites a decision.
+
+### 21.8 Keeping payment callbacks on the model
 
 New payment callbacks must appear on the model within one week of change tickets. Sam's weekly diff of change tickets versus model edges catches stragglers.
 
-### 21.9 21.9 External processor box
+Payment callbacks are easy to miss because they are inbound from outside and often added by product teams under delivery pressure. A callback that is not on the model is also not in the flow register, which means it may have no owner and no agreed authentication check. The weekly diff is a simple join: change tickets mentioning callback, webhook or notify, versus edges on the model. Anything unmatched becomes a chore for the ticket owner before the next engagement.
+
+### 21.9 Drawing processors as black boxes
 
 Processors appear as black boxes with data types crossing the boundary, not as pretend internal hosts.
 
-### 21.10 21.11 Scene
+Drawing a vendor's internal servers invites testers to think about attacking them. Drawing a black box labelled SMS vendor with one-time codes outbound and delivery receipts inbound keeps attention on TRB's side of the boundary: are receipts validated, are failures handled, is the vendor authenticated. The data types on the arrows matter more than anything inside the box. They tell testers what personal data leaves TRB and what comes back that might be trusted too much.
+
+### 21.10 A deep link becomes an open assumption
 
 A new mobile deep link appears in a change ticket. Within three days Sam's model gains an entry point and an assumption sticky: "AuthZ same as web?". The sticky is still Open at kickoff and becomes a residual risk sentence.
 
-### 21.11 21.12 Extension
+The deep link could reuse the web authorization checks or it could have been wired up in a hurry with a weaker check. Nobody had validated which. Leaving the assumption Open was correct. The residual-risk sentence told everyone that mobile deep-link authorization was not covered by the planned web tests, which prevented a clean web report from being misread as clean mobile coverage.
+
+### 21.11 A silent route from the marketing site
 
 Callback inventory diff found a silent route from marketing site to core-api. It became a conduit review, not a marketing surprise in production.
 
-### 21.12 21.14 Note 11
+The marketing site had been given a convenience endpoint to pre-fill application forms. The endpoint reached core-api and therefore the customer store, and it had never appeared on the architecture diagram. Finding it in a weekly diff meant the conduit could be reviewed, authenticated and rate-limited before an engagement or an attacker found it. Surprises are cheaper in inventory reviews than in production incidents.
+
+### 21.12 Photographing open assumptions into the plan
 
 Open assumption stickies are photographed into the ROE packet before kickoff.
 
-### 21.13 21.16 Pad
+A photograph freezes the workshop's state without depending on someone typing it up later. The image goes into the rules-of-engagement packet next to the residual-risk sentences, so anyone reading the authorization can see what was still unknown. After kickoff the stickies may be thrown away. The photograph remains. If a finding later turns on an assumption that was Open, the packet shows that the team knew the gap.
+
+The photograph also settles disputes about what was said in the workshop. Memory differs; a picture of the stickies does not.
+
+### 21.13 Open assumptions in the executive summary
 
 Residual risk sentences from Open stickies are pasted into the executive summary draft automatically.
 
-### 21.14 21.18 Final
+Executives rarely read assumption logs. They do read the executive summary. Pasting Open assumptions there, in one plain sentence each, means the people who accept residual risk see it before they accept the report. Automation matters because manual pasting is the step that gets skipped under deadline. The sentences are short on purpose: Mobile deep-link authorization was not validated against production rules.
+
+If the automation fails, the engagement lead pastes the sentences by hand and files a ticket against the pipeline. The summary must still carry the risks.
+
+### 21.14 Whiteboard to assumption log
 
 Model office hours end with a photograph of the whiteboard and an OCR pass into the assumption log. Sticky notes that OCR cannot read are rewritten. Illegible assumptions are denied assumptions.
+
+OCR errors are treated as Open assumptions until corrected, which motivates tidy handwriting. The photograph-plus-OCR path also means the workshop can stay analogue and collaborative while the lasting record stays searchable. Illegible notes cannot silently become Closed. A denied assumption cannot be treated as Closed in the plan, which keeps pressure on whoever owns the illegible note to rewrite it.
 
 ### Worked example (synthetic TRB)
 
