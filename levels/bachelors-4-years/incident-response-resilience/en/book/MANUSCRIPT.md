@@ -96,9 +96,13 @@ A dashboard can show that cases triaged quickly have lower average impact. That 
 
 Every quantity in a report should carry a unit. "Mean time to contain: 4.2" is not information. Units also catch errors: adding minutes to hours, or dividing incidents by analysts and calling the result a rate per day. A useful discipline is to write the unit next to every intermediate value. Ratios need explicit denominators: "incidents per 1,000 endpoints per month" is comparable across sites; "incidents" alone is not.
 
+Units also expose hidden conversions. If one clinic logs triage time in minutes and the managed detection service reports it in hours, a merged column averages incompatible numbers without any error message. Before combining sources, list each field with its unit and its source, convert explicitly in one place, and keep the original column so a reviewer can repeat the conversion. A percentage is a ratio too: write what was divided by what, because 30 per cent of alerts and 30 per cent of cases describe different populations.
+
 ### 1.7 Uncertainty as part of the statement
 
 A value without uncertainty claims more than it knows. At this stage you need three simple tools: ranges ("between 120 and 340 accounts, depending on whether disabled accounts are included"), explicit assumptions ("assuming the log clock is accurate to ±2 seconds"), and the distinction between *unknown* and *zero*. A field that is empty because a sensor was offline is not evidence that nothing happened. Writing "unknown (sensor gap 02:00–03:10)" is mathematically more honest than writing 0.
+
+Uncertainty also has to survive arithmetic. If an account count is a range, a cost estimate built on it is a range as well, and reporting only the midpoint quietly discards what you knew. When a number feeds a decision, state the end of the range that would change the decision, so the reader sees whether the uncertainty actually matters for the choice in front of them.
 
 ### 1.8 Worked example (synthetic): the dashboard claim
 
@@ -116,6 +120,8 @@ Step 4 — name the data needed to test a causal version. One would need cases c
 
 Take any three sentences from a public incident report or vendor dashboard. For each, write the set it ranges over, the predicate(s), the quantifier, and one observation that would falsify it. Then mark each value with its unit and say whether "unknown" could have been recorded as zero.
 
+A worked line might read: set, all phishing reports received by a clinic network in March; predicate, reported by staff rather than caught by a filter; quantifier, all; falsifier, one report raised automatically by the mail gateway. Compare your three analyses with a classmate. Where you disagree about the set, the original sentence was ambiguous, and that ambiguity is the finding worth writing down rather than a mistake to hide.
+
 ### 1.10 Common errors and limits
 
 - Treating many confirming examples as proof of a universal claim.
@@ -123,6 +129,8 @@ Take any three sentences from a public incident report or vendor dashboard. For 
 - Reporting a rate without its denominator or on a different set from the one named.
 - Recording missing data as zero.
 - Over-formalizing: the aim is clarity about claims, not symbols for their own sake. Formal reasoning cannot tell you whether a premise (a log line, a witness statement) is true; that is the job of evidence evaluation later in the book.
+
+A further limit concerns small sets. The Harbourline quarter has only 40 cases, so a single unusual case such as H-07 can move a mean noticeably; report counts beside averages so the reader can judge stability. Finally, a repaired claim is only as good as its scope: an association true for closed Q3 cases says nothing about next quarter's open ones.
 
 ### Exercises — chapter 1
 
@@ -170,6 +178,8 @@ Systems record what they observe, and they observe through their dependencies. W
 
 Many services keep copies of data: caches for speed, replicas for availability, backups for recovery. Copies diverge in time. A replica may lag the primary by seconds or hours; a cache may serve a value that the database already changed. For response this has two consequences. Evidence collected from a replica may not show the latest malicious change. And restoration from a copy (Chapter 26) must account for what that copy did or did not contain.
 
+In the Harbourline Booking map the API reads from the replica, so a patient record changed on the primary a few seconds earlier may still appear in its old form to staff. An analyst who exports from the replica during an incident should record its replication lag at that moment. Otherwise a later comparison with the primary will show differences that look like tampering but are only delay between two copies of the same data.
+
 ### 2.5 Worked example (synthetic): Harbourline Booking
 
 *Fictional system.* Harbourline Booking has four components: an **identity provider** (IdP) that issues session tokens; a **booking API** that validates tokens and reads/writes appointments; a **PostgreSQL-style database** with one primary and one read replica; and a **reverse proxy** that terminates TLS. The API and database share one hypervisor host, HV-2.
@@ -186,6 +196,8 @@ A second scenario shows a failure domain. If HV-2 runs out of disk, the API, pri
 
 Choose a service you use (a university portal, for instance) and draw, from public information only, its likely layers and dependencies. Mark one failure domain and write two sentences: what fails if it fails, and which logs would go quiet or become misleading. Do not probe or scan the real service; this is a reasoning exercise.
 
+Keep the map to one page and mark each arrow as synchronous or asynchronous, because an asynchronous dependency fails late and quietly while a synchronous one fails at once and loudly. Then swap maps with a classmate and ask them to find a failure domain you missed, such as a shared single sign-on provider or one administrator who manages everything. Note which of your assumptions came from public documentation and which were guesses.
+
 ### 2.7 Common errors and limits
 
 - Treating logs from components in the same failure domain as independent corroboration.
@@ -193,6 +205,8 @@ Choose a service you use (a university portal, for instance) and draw, from publ
 - Forgetting that proxies and NAT change the apparent source address.
 - Assuming a replica or cache shows current state.
 - Over-detailed maps: the useful map shows the dependencies that change decisions; a full inventory belongs to asset management (see the technologist course).
+
+One limit is inherent. Public information rarely reveals real dependencies, so a map drawn from outside is a hypothesis to be confirmed with the system owner before it guides an investigation. Maps also age: a component moved to a new host breaks the failure domains you marked. Date every map and record who confirmed it, so that a responder knows how far to trust the picture during an incident.
 
 ### Exercises — chapter 2
 
@@ -236,17 +250,25 @@ A **variable** names a value. Python values have **types**: strings (`"H-07"`), 
 
 A **function** packages a step with a name, inputs and an output. `validate(row)` that returns a list of problems is easier to test than the same logic buried inside a loop. Functions should not change their inputs unexpectedly; a validator that "fixes" a date while checking it has destroyed evidence that the date was malformed.
 
+In Lab 03 the function `validate(row)` returns a list rather than printing messages. That choice lets the same function serve the loop that sorts rows into accepted and rejected and the `assert` tests at the bottom, without either caller parsing text. A function that returns data and leaves presentation to its caller is easier to reuse, and its behaviour can be checked by a reviewer without running the whole program.
+
 ### 3.4 Input validation
 
 **Validation** compares a record to explicit rules: required fields present, values in an allowed set, dates in an agreed format. Write rules before writing code, in plain language: "`case_id` is required and matches `HC-` followed by four digits; `severity` is one of 1, 2, 3, 4; `reported_at` is an ISO 8601 date-time." A validator should *reject and explain*, not *guess and continue*. The rejected records are themselves information: if all rejected rows came from one intake channel, the problem is upstream.
+
+Order the checks so that one failure does not hide another. Lab 03 checks every required field before testing formats, so a row missing two fields reports both instead of stopping at the first. Each message names the field and the rule it broke.
 
 ### 3.5 Preserve originals
 
 The original file is evidence of what was received. Never overwrite it. Read it, write results to a new file or to the screen, and record a hash of the input (Chapter 17 explains hashes) so a reviewer can confirm which file you processed. In code, keep the raw row next to any normalized values.
 
+In Lab 03 the input is a string inside the program, so preservation is easy; with a real export you would open the file read-only, compute its hash before and after the run, and write the accepted and rejected lists to new files whose names include the date. If the two hashes differ, stop and find out why before trusting any result produced from that file.
+
 ### 3.6 Tests
 
 A **test** runs your function on an input whose correct answer you already know. Include at least: a valid record, a record missing each required field, a value just outside an allowed set, and a malformed date. Python's `assert` statement is enough for small tests.
+
+Write the expected answer before running the test, not after; a test whose expected value was copied from the program's own output only proves that the program agrees with itself. Lab 03 asserts that HC-0101 has no problems and that HC-0102 lacks a reporter. Those two cases cover one valid and one invalid path; the exercises ask you to add the edges, such as a severity of zero or a case number with a stray space.
 
 ### 3.7 Worked example and lab (synthetic): case-intake validator
 
@@ -312,12 +334,18 @@ tests passed; original text unchanged: 7 lines
 
 Interpretation: only one of six records passes. That is not a failure of the program; it is a finding about the intake process. Note that HC-0103's date "02/03/2026" is ambiguous (2 March or 3 February); the validator rightly refuses to guess.
 
+Run the lab twice and compare outputs; they must match exactly, which is the repeatability promised earlier. Then deliberately break one rule, for example by allowing severity 5, and check that HC-0105 moves to the accepted list and that the first assertion still passes. Seeing a result change for a known reason is how you learn to trust the cases where it does not change.
+
 ### 3.8 Common errors and limits
 
 - Silently "repairing" values during validation.
 - Converting identifiers to numbers and losing leading zeros.
 - Testing only the happy path.
 - Treating a validator as proof that values are *true*: a well-formed date can still be wrong.
+
+- Collecting only the first problem in a row, so that fixing it reveals another and the intake team is asked twice.
+- Overwriting the input file with cleaned values, losing the record of what was actually received.
+- Assuming the six Lab 03 rows represent all intake channels; a validator tuned to one sample may reject legitimate formats from a channel it has never seen.
 
 ### Exercises — chapter 3
 
@@ -357,21 +385,31 @@ A **claim** is a statement you want the reader to accept. **Evidence** is what y
 
 Throughout this book we label sentences in working notes as **observation** (what a named source recorded), **inference** (what you conclude and under which assumptions), **decision** (what someone chose to do) and **unknown** (what is not yet established). The labels do not need to appear in a polished report, but every sentence in the report should be traceable to one of them.
 
+In the rcp-07 summary, "the API logged 4,100 requests" is an observation, "the session belonged to rcp-07" is an observation from a second source, "whether the account was misused" is an unknown, and "revoked at 09:40" is a decision. Labelling in this way exposes sentences that fit no label, which are usually opinions that need either evidence or deletion before the note goes further.
+
 ### 4.3 Calibrated uncertainty
 
 Uniform hedging ("it may possibly suggest") is as unhelpful as overconfidence. Use a small vocabulary consistently and define it: *confirmed* (directly recorded by a reliable source, independently checked), *likely* (several independent indications, no strong contrary evidence), *possible* (consistent with evidence but alternatives remain), *unknown*. State what would change the assessment. Intelligence analysis has long used such scales; the point for you is consistency, not a particular wording.
+
+Calibration also needs a note of what moved the estimate. If "possible" becomes "likely" between two updates, the reader should see which new indication caused the change. Avoid numbers that look more precise than the evidence allows; "likely" is honest where "78 per cent" would be invented.
 
 ### 4.4 Citation and verifiability
 
 Cite so that a reader can find the exact source: author or organization, title, version or date, and a stable identifier (DOI or official URL). Cite primary sources for factual claims: the NIST publication, not a blog summarizing it. Distinguish a source's *finding* from your *interpretation* of it. When a document is superseded — NIST SP 800-61 Revision 3 (April 2025) superseded Revision 2 — say which version you used.
 
+In a working incident note, internal sources need the same care as publications: name the log, its system, the query used and the time range, so that "API log" in the rcp-07 summary can be traced to one export rather than to someone's memory of a screen. When a source cannot be shared with the reader, say so and state who can verify it on request.
+
 ### 4.5 Audience and structure
 
 Write for a named reader. An executive needs the decision required, impact, confidence and next update time in the first paragraph. A technical reviewer needs method, sources and limits. A common structure for incident summaries is: bottom line; what is known (with sources); what is not known; what is being done; when the next update comes.
 
+The executive version of the rcp-07 summary follows this order: what may have happened, what was done, what is not known, and when the next update arrives. A technical reviewer reading the same incident would instead want the log names, the query window and the sample of 20 responses. Writing both from one set of labelled notes keeps them consistent with each other.
+
 ### 4.6 Revision
 
 Revise in passes: first for claims and evidence (does every claim have support?), then for structure (does the reader get what they need first?), then for language (shorter sentences, active voice, defined terms). Ask a peer to mark every sentence they could not verify.
+
+A useful final pass reads the text aloud as the named reader would. For the rcp-07 summary that means asking whether a clinic manager would know what to do before 12:00. Keep earlier versions; comparing drafts shows which claims were weakened or strengthened and why, which matters if the summary is later reviewed after the incident closes.
 
 ### 4.7 Worked example (synthetic): two summaries
 
@@ -383,12 +421,19 @@ A makes two unsupported claims ("attackers", "stole") and one vague one ("under 
 
 Take a published incident report from a public source and highlight each sentence as observation, inference, decision or unknown. Count how many claims cite a source.
 
+Choose a report long enough to contain at least twenty sentences, so the counts mean something. Record the proportion of each label and note which sentences you could not classify, because those are usually the vague ones. Then rewrite the opening paragraph so that its first sentence states the decision or finding a reader needs most. Compare your rewrite with the original and note what you had to remove or move to make it work. Finally, list any claim whose source you could not locate within ten minutes; such claims are unverifiable for an ordinary reader, whatever their truth.
+
 ### 4.9 Common errors and limits
 
 - Stating inferences as observations ("the attacker used…").
 - Citing secondary summaries for primary facts; citing without version.
 - Burying the decision the reader must make.
 - Writing about a person's guilt; incident reports describe actions and accounts, not culpability, which belongs to authorized processes.
+
+- Hedging every sentence, so the reader cannot tell the solid findings from the guesses.
+- Using "confirmed" for a single source that nobody has checked independently.
+- Mixing audiences in one paragraph, with log identifiers interrupting the executive summary.
+- Omitting the next update time, which leaves readers to chase the team for news during the incident.
 
 ### Exercises — chapter 4
 
