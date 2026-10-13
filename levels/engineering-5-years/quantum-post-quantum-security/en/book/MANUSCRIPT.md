@@ -402,13 +402,13 @@ The byte budget comes from real limits: some networks fragment or drop handshake
 
 BPA's customs exchange sends 2 TB/year today, growing 20% per year (*r* ≈ 0.182). Exposed volume if migration completes after 3 years: (2/0.182)(*e*^0.547 − 1) ≈ 8.0 TB; after 5 years: ≈ 16.3 TB. Two extra years roughly double the exposed archive.
 
-With r equal to 0.182, the exponential terms are about 1.73 after three years and 2.48 after five. Multiplying the excess over one by about eleven, the factor two divided by r, gives the two figures. The doubling shows why the programme plan front-loads the customs exchange: it has the fastest-growing volume and the longest confidentiality requirement.
+With r equal to 0.182, the exponential terms are about 1.73 after three years and 2.49 after five. Multiplying the excess over one by about eleven, the factor two divided by r, gives the two figures. The doubling shows why the programme plan front-loads the customs exchange: it has the fastest-growing volume and the longest confidentiality requirement.
 
 ### 6.5 Practical activity
 
 Compute the exposed volume for migration after 1–8 years and plot (or tabulate) it. Identify the year where exposure exceeds 10 TB.
 
-Using the formula from the worked example, the exposed volume is about 8.0 TB after three years and about 11.8 TB after four, so exposure first exceeds 10 TB in year four. Tabulating each year shows the gaps between consecutive years growing, which is the non-linear effect that makes late delays expensive. Students should state their growth assumption beside the table and rerun it at 10% and 30%.
+Use the formula from the worked example rather than adding up yearly volumes: summing 2, 2.4, 2.88 and so on treats each year's traffic as arriving on the first day and gives slightly lower totals, about 7.3 TB after three years instead of 8.0. Both methods agree on which year first crosses 10 TB, but only the integral matches the figures in the worked example and in the exercise set. Tabulating each year shows the gaps between consecutive years growing, which is the non-linear effect that makes late delays expensive. Students should state their growth assumption beside the table and rerun it at 10% and 30%.
 
 ### 6.6 Common errors and limits
 
