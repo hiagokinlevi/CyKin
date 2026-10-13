@@ -1,7 +1,7 @@
 # Arquitetura e Engenharia de Segurança: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 122, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–28 de 50 já estão escritos em português, com os exercícios EX001–EX084 e suas resoluções com rubricas de 0 a 3 e 7 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 29–50 (EX085–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–34 de 50 já estão escritos em português, com os exercícios EX001–EX102 e suas resoluções com rubricas de 0 a 3 e 10 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 35–50 (EX103–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, verificar e operar sistemas seguros.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios calculam crescimento, fecho transitivo, probabilidades, disponibilidade, árvores de falhas, limites de taxa, diferenças entre regras, métricas e digests sobre dados sintéticos, e usam sqlite3 em memória para mostrar a injeção e sua correção; nada toca um sistema real. Projetos de produção usam produtos e padrões consagrados; nunca crie sua própria criptografia. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Saltzer e Schroeder (1975), [doi:10.1109/PROC.1975.9939](https://doi.org/10.1109
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) |
 
-Capítulos 29–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-29), até a chegada dos próximos lotes.
+Capítulos 35–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-35), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1271,11 +1271,318 @@ Os repositórios de segredos se tornam dependências críticas que precisam de a
 
 - **EX084 — Encaminhamento da mudança de replay.** Por que pular a detecção de replay foi tratado como uma mudança de arquitetura? *Rubrica:* 3 = enfraquece um requisito, então precisa de revisão de arquitetura;; 2 = requisito;; 1 = escolha de codificação;; 0 = nenhuma.
 
+<a id="ch-29"></a>
+
+## Capítulo 29 — Arquitetura e engenharia de segurança: medição
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir métricas de segurança ligadas aos objetivos da arquitetura; (2) calcular métricas de cobertura e de tempestividade a partir de dados sintéticos; (3) evitar métricas que recompensem o comportamento errado.
+
+### 29.1 Métricas ligadas a objetivos
+
+Daniel pede que Sofia proponha métricas para a arquitetura do back-office. Ela parte dos objetivos: tabelas de tarifas autênticas, revogação tempestiva dos dispositivos desativados, dados pessoais protegidos e recuperação rápida. Para cada um, define uma ou duas métricas: porcentagem de cargas de tarifas com assinatura verificada; mediana de dias entre a desativação do dispositivo e a revogação do certificado; porcentagem de repositórios de dados pessoais com criptografia e registro de acesso ativados; e tempo para restaurar a ingestão nos testes de recuperação. Cada métrica tem definição, fonte de dados, meta e responsável. Métricas sem objetivos tendem a medir o que é fácil, e não o que importa.
+
+### 29.2 Calcular as métricas
+
+Sofia escreve um script que lê registros sintéticos de desativações e revogações de dispositivos e de configurações dos repositórios de dados, e calcula as métricas. O laboratório abaixo mostra que a tempestividade da revogação é ruim, com uma cauda longa de dispositivos revogados semanas depois da desativação e alguns nunca revogados, enquanto a cobertura de criptografia é alta. Ela apresenta as contagens e os denominadores junto com as porcentagens. Os números priorizam o trabalho imediatamente: é o processo de revogação, e não a criptografia, que precisa de atenção. A medição transforma a ameaça encontrada no capítulo 23 numa melhoria acompanhada, com uma linha de base.
+
+### Laboratório — Tempestividade da revogação e cobertura
+
+```python
+# Synthetic device retirement/revocation records and data-store configs.
+import statistics
+delays = [1, 2, 2, 3, 4, 5, 6, 7, 8, 9, 9, 12, 15, 21, 28, 35, 44, None, None, None]   # None = never revoked
+done = [d for d in delays if d is not None]
+print(f"retired devices: {len(delays)}, revoked: {len(done)}, never revoked: {delays.count(None)}")
+print(f"median days to revoke (revoked only): {statistics.median(done)}")
+print(f"revoked within 7 days: {sum(d <= 7 for d in done)}/{len(delays)}")
+stores = {"journeys": (True, True), "refunds": (True, True), "staff": (True, False), "reports": (True, True), "archive": (True, True)}
+cov = sum(e and l for e, l in stores.values())
+print(f"personal-data stores encrypted+logged: {cov}/{len(stores)}")
+```
+
+Execute com `python3 lab_metrics.py`. Saída verificada:
+
+```text
+retired devices: 20, revoked: 17, never revoked: 3
+median days to revoke (revoked only): 8
+revoked within 7 days: 8/20
+personal-data stores encrypted+logged: 4/5
+```
+
+### 29.3 Métricas que enganam
+
+As métricas moldam o comportamento. Se a equipe é recompensada por fechar rapidamente os tickets de vulnerabilidade, pode fechá-los sem verificação. Se a métrica é o número de controles implementados, pode implementar controles fáceis em vez de importantes. Sofia propõe métricas em pares: velocidade de fechamento com taxa de reabertura; contagem de controles com cobertura dos riscos de alta prioridade. Ela também alerta contra relatar uma métrica sem seu denominador ou sua tendência. Anderson (2020) discute como as métricas de segurança podem ser manipuladas. Boas métricas são poucas, ligadas aos objetivos e revistas para ver se ainda induzem o comportamento pretendido.
+
+### Exemplo resolvido
+
+Sofia define cinco métricas ligadas a objetivos, calcula a tempestividade da revogação e a cobertura de criptografia a partir de dados sintéticos e combina métricas em pares para resistir à manipulação.
+
+> **Caso sintético.** Os dados das métricas são sintéticos; Anderson (2020) é real.
+
+### Erros e limites
+
+As métricas medem indicadores indiretos, não a segurança em si. Denominadores pequenos tornam as porcentagens instáveis.
+
+### Exercícios
+
+- **EX085 — Métrica ligada a objetivo.** Dê uma métrica para o objetivo de revogação tempestiva dos dispositivos desativados. *Rubrica:* 3 = mediana de dias entre a desativação e a revogação;; 2 = métrica;; 1 = contagem de dispositivos;; 0 = nenhuma.
+
+- **EX086 — Resultado da revogação no laboratório.** O que o laboratório mostrou sobre a tempestividade da revogação? *Rubrica:* 3 = mediana de 8 dias entre os revogados, 3 de 20 nunca revogados, só 8 de 20 em até uma semana;; 2 = os dois;; 1 = boa;; 0 = nenhuma.
+
+- **EX087 — Métrica em par.** Que métrica deve acompanhar a velocidade de fechamento de tickets? *Rubrica:* 3 = a taxa de reabertura;; 2 = reabertura;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Laboratório de verificação I
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar se os controles implementados atendem às suas especificações; (2) rodar casos de teste positivos e negativos de autenticidade dos registros e de replay; (3) registrar as evidências de verificação.
+
+### 30.1 Propósito da verificação
+
+A verificação pergunta se o sistema foi construído conforme especificado. No Laboratório de Verificação I, Sofia testa os controles de autenticidade e de replay do componente de ingestão num laboratório isolado, com validadores sintéticos. Seu plano de testes vem diretamente das especificações dos controles: cada requisito tem testes positivos, que mostram o comportamento correto, e testes negativos, que mostram que entradas ruins são rejeitadas. O ambiente do laboratório usa apenas chaves e dados sintéticos. As evidências de verificação sustentarão o assurance case mais adiante, então cada teste registra as entradas, os resultados esperados, os resultados obtidos, a versão do ambiente e a data, num formato consistente.
+
+### 30.2 Testes de autenticidade e de replay
+
+No laboratório, os validadores autenticam os registros de validação com um código de autenticação de mensagem (MAC), usando uma chave compartilhada com a ingestão, um substituto simplificado das assinaturas de produção, implementado com o módulo hmac do Python. O script de Sofia envia quatro registros sintéticos: um registro novo e autêntico, uma duplicata dele, um registro com o valor alterado e um registro de um validador desativado cuja chave foi removida. O laboratório abaixo mostra a ingestão aceitando apenas o primeiro. Ela compara os resultados com os desfechos esperados e constata que os quatro coincidem. Uma divergência seria um defeito a ser relatado, e não um teste a ser ajustado.
+
+### Laboratório — Verificação de autenticidade e de replay
+
+```python
+# Lab ingestion check: HMAC stand-in for validator signatures + replay store. Synthetic keys only.
+import hmac, hashlib
+keys = {"V-101": b"lab-key-101", "V-102": b"lab-key-102"}       # V-099 retired: key removed
+seen = set()
+def tag(k, rec): return hmac.new(k, rec, hashlib.sha256).hexdigest()
+def ingest(vid, rec, t):
+    k = keys.get(vid)
+    if k is None: return "reject: unknown or retired validator"
+    if not hmac.compare_digest(tag(k, rec), t): return "reject: bad tag"
+    rid = rec.split(b",")[0]
+    if (vid, rid) in seen: return "reject: replay"
+    seen.add((vid, rid)); return "accept"
+r = b"R-5521,C100,2.40"
+t = tag(keys["V-101"], r)
+print("authentic:", ingest("V-101", r, t))
+print("duplicate:", ingest("V-101", r, t))
+print("altered amount:", ingest("V-101", b"R-5522,C100,0.10", tag(keys["V-101"], b"R-5522,C100,2.40")))
+print("retired validator:", ingest("V-099", b"R-7,C200,2.40", tag(b"old-099", b"R-7,C200,2.40")))
+```
+
+Execute com `python3 lab_ingest.py`. Saída verificada:
+
+```text
+authentic: accept
+duplicate: reject: replay
+altered amount: reject: bad tag
+retired validator: reject: unknown or retired validator
+```
+
+### 30.3 Registrar as evidências
+
+Sofia escreve um relatório de verificação com uma tabela de testes, resultados e links para as evidências, e anota o que não foi verificado: o desempenho sob a carga de pico, o comportamento durante o failover do banco de dados e o caminho das assinaturas de produção, que usa outro mecanismo. Ela assina e data o relatório e o guarda com um hash no repositório de evidências do projeto. Daniel lembra que a verificação mostra a conformidade com a especificação; se a própria especificação é adequada é uma questão separada, tratada pela validação, que vem mais adiante no curso.
+
+### Exemplo resolvido
+
+Sofia roda quatro testes de autenticidade e de replay num laboratório isolado, constata que todos coincidem com o esperado e registra um relatório que lista três áreas ainda não verificadas.
+
+> **Caso sintético.** O laboratório, as chaves e os registros são sintéticos; o HMAC substitui as assinaturas de produção.
+
+### Erros e limites
+
+Os ambientes de laboratório diferem da produção em escala e em tempo. Testes aprovados dependem da qualidade dos casos de teste.
+
+### Exercícios
+
+- **EX088 — Pergunta da verificação.** Que pergunta a verificação responde? *Rubrica:* 3 = o sistema foi construído conforme especificado;; 2 = conforme especificado;; 1 = é útil;; 0 = nenhuma.
+
+- **EX089 — Resultados do laboratório.** Quais dos quatro registros do laboratório foram aceitos? *Rubrica:* 3 = só o registro novo e autêntico; duplicado, alterado e desativado rejeitados;; 2 = só o primeiro;; 1 = vários;; 0 = nenhuma.
+
+- **EX090 — Não verificado.** Cite uma área que o relatório de Sofia lista como não verificada. *Rubrica:* 3 = carga de pico, failover do banco de dados ou caminho das assinaturas de produção;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-31"></a>
+
+## Capítulo 31 — Arquitetura e engenharia de segurança: implementação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) implementar a automação do ciclo de vida dos certificados de dispositivos; (2) integrar a revogação à gestão de ativos; (3) lidar com componentes legados que não conseguem atender ao projeto-alvo.
+
+### 31.1 Automatizar os certificados de dispositivos
+
+As métricas do capítulo 29 mostraram uma revogação lenta dos validadores desativados. Em Implementação II, a equipe de Sofia automatiza o ciclo de vida dos certificados de dispositivos. Os novos validadores recebem certificados por meio de um processo de enrolment que exige um registro de ativo e um ticket de instalação aprovado. Os certificados têm validade curta e são renovados automaticamente enquanto o dispositivo está em serviço. O projeto segue as fases de gestão de chaves do SP 800-57 Part 1 Rev. 5. A automação reduz tanto o trabalho manual que causava atrasos quanto a chance de erro humano, mas também concentra a confiança no serviço de enrolment, que precisa ele próprio ser protegido e monitorado.
+
+### 31.2 Ligação com a gestão de ativos
+
+Agora a revogação é disparada pelo sistema de gestão de ativos: quando um validador é marcado como desativado, perdido ou roubado, um evento chama a autoridade interna para revogar seu certificado e o acrescenta à lista de bloqueio da ingestão. Sofia escreve testes de integração para cada mudança de status. Ela também acrescenta uma conciliação diária que compara os certificados ativos com os ativos em serviço e gera alertas sobre divergências. A integração entre sistemas é onde muitos processos de segurança falham, porque cada equipe supõe que outra cuida da etapa, então a conciliação funciona como uma rede de segurança para eventos perdidos.
+
+### 31.3 Exceções legadas
+
+Cerca de cem validadores mais antigos não suportam a renovação automática. Sofia não finge que eles atendem ao projeto. Ela os documenta como exceções com controles compensatórios: certificados de vida mais longa guardados nos seus secure elements, regras de ingestão que limitam suas taxas de registros aceitos, verificações manuais trimestrais e uma data de substituição no quinto ano. Cada exceção tem um responsável e uma data de expiração. Daniel explica que uma gestão honesta de exceções é sinal de uma arquitetura madura; projetos que alegam conformidade total enquanto escondem lacunas legadas deixam a organização exposta a riscos que ninguém está acompanhando.
+
+### Exemplo resolvido
+
+A equipe de Sofia automatiza o enrolment e a renovação dos validadores, dispara a revogação a partir das mudanças de status dos ativos com conciliação diária e documenta cem validadores legados como exceções com responsável e expiração.
+
+> **Caso sintético.** Os dispositivos, os sistemas e as contagens são sintéticos; o SP 800-57 Part 1 Rev. 5 é real.
+
+### Erros e limites
+
+O enrolment automatizado se torna um alvo de alto valor. A conciliação depende de os registros de ativos estarem corretos.
+
+### Exercícios
+
+- **EX091 — Condição de enrolment.** O que precisa existir antes que um validador receba um certificado? *Rubrica:* 3 = um registro de ativo e um ticket de instalação aprovado;; 2 = os dois;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX092 — Propósito da conciliação.** O que a conciliação diária capta? *Rubrica:* 3 = divergências entre certificados ativos e ativos em serviço causadas por eventos perdidos;; 2 = divergências;; 1 = nada;; 0 = nenhuma.
+
+- **EX093 — Conteúdo da exceção.** O que cada exceção legada inclui? *Rubrica:* 3 = controles compensatórios, responsável e data de expiração ou substituição;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-32"></a>
+
+## Capítulo 32 — Arquitetura e engenharia de segurança: confiabilidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) calcular a disponibilidade de componentes em série e em paralelo; (2) projetar redundância para serviços de segurança; (3) reconhecer quando controles de segurança reduzem a confiabilidade.
+
+### 32.1 Série e paralelo
+
+A engenharia de confiabilidade oferece regras simples. Componentes em série, todos necessários para o serviço, multiplicam suas disponibilidades, de modo que o todo é menos disponível do que qualquer parte. Componentes em paralelo, em que qualquer um basta, se combinam de modo que o todo é mais disponível do que cada um. Sofia aplica isso à ingestão, que precisa em série do balanceador de carga, do serviço de ingestão, do repositório de segredos e do banco de dados. O laboratório abaixo calcula a disponibilidade geral com números sintéticos e mostra como acrescentar uma segunda instância do repositório de segredos em paralelo muda o resultado. Serviços de segurança como os repositórios de segredos costumam ser esquecidos quando a disponibilidade é planejada.
+
+### Laboratório — Disponibilidade em série e em paralelo
+
+```python
+# Series/parallel availability with synthetic component figures.
+comp = {"load balancer": 0.9995, "ingestion": 0.999, "secret store": 0.998, "database": 0.9995}
+def series(xs):
+    p = 1.0
+    for x in xs: p *= x
+    return p
+def parallel(a, n): return 1 - (1 - a) ** n
+base = series(comp.values())
+red = series([comp["load balancer"], comp["ingestion"], parallel(comp["secret store"], 2), comp["database"]])
+print(f"single secret store: {base:.4f}  (~{(1-base)*8760:.0f} h/yr down)")
+print(f"two secret stores:   {red:.4f}  (~{(1-red)*8760:.0f} h/yr down)")
+```
+
+Execute com `python3 lab_avail.py`. Saída verificada:
+
+```text
+single secret store: 0.9960  (~35 h/yr down)
+two secret stores:   0.9980  (~18 h/yr down)
+```
+
+### 32.2 Redundância para serviços de segurança
+
+Autenticação, gestão de chaves e logging são dependências de quase tudo. Se o provedor de identidade falha, a equipe não consegue fazer login; se o repositório de segredos falha, os serviços não conseguem iniciar; se o logging falha, os ataques passam despercebidos. Sofia propõe redundância para cada um: provedores de identidade em cluster em dois sites, repositórios de segredos replicados e buffer local de logs quando o coletor central estiver inacessível. Ela também documenta o que acontece no modo degradado, como os validadores seguirem com listas de bloqueio em cache. Projetar deliberadamente o comportamento degradado é mais seguro do que descobri-lo durante uma indisponibilidade.
+
+### 32.3 Quando a segurança prejudica a confiabilidade
+
+Alguns controles reduzem a disponibilidade. Uma validação estrita de certificados falha fechada se o serviço de revogação estiver inacessível; um rate limiting agressivo pode bloquear picos legítimos; a autenticação multifator obrigatória falha se o serviço do segundo fator estiver fora do ar. Sofia lista esses casos e decide cada um deliberadamente: a ingestão das validações faz soft-fail nas verificações de revogação por um curto período, usando listas em cache, enquanto o acesso administrativo faz hard-fail. A decisão decorre do ativo e da ameaça: a arrecadação precisa continuar, enquanto o acesso administrativo pode esperar. Confiabilidade e segurança são propriedades do mesmo sistema e precisam ser negociadas explicitamente.
+
+### Exemplo resolvido
+
+Sofia calcula a disponibilidade da ingestão com e sem um repositório de segredos redundante, projeta redundância para três serviços de segurança e registra as decisões de falhar aberto e falhar fechado.
+
+> **Caso sintético.** Os números de disponibilidade são sintéticos.
+
+### Erros e limites
+
+As premissas de independência superestimam os benefícios do paralelo quando as réplicas compartilham uma causa de falha. As janelas de soft-fail podem ser abusadas.
+
+### Exercícios
+
+- **EX094 — Regra da série.** Como as disponibilidades se combinam em série? *Rubrica:* 3 = multiplicam-se; o todo é menos disponível do que qualquer parte;; 2 = multiplicar;; 1 = somar;; 0 = nenhuma.
+
+- **EX095 — Efeito da redundância no laboratório.** O que o laboratório mostrou quando o repositório de segredos foi duplicado? *Rubrica:* 3 = a disponibilidade subiu de 0.9960 para 0.9980, reduzindo à metade a indisponibilidade, de cerca de 35 para 18 horas por ano;; 2 = subiu;; 1 = caiu;; 0 = nenhuma.
+
+- **EX096 — Decisão de falha.** Que caminho faz soft-fail nas verificações de revogação, e qual faz hard-fail? *Rubrica:* 3 = a ingestão das validações faz soft-fail por pouco tempo; o acesso administrativo faz hard-fail;; 2 = os dois;; 1 = invertido;; 0 = nenhuma.
+
+<a id="ch-33"></a>
+
+## Capítulo 33 — Arquitetura e engenharia de segurança: segurança e resiliência
+
+### Objetivos de aprendizagem
+
+Você vai (1) distinguir os objetivos de segurança da informação, segurança física e resiliência; (2) aplicar técnicas de resiliência das orientações de engenharia de sistemas; (3) projetar a degradação controlada sob ataque.
+
+### 33.1 Três objetivos relacionados
+
+A segurança da informação protege contra danos intencionais, a segurança física (safety) protege as pessoas de danos físicos, qualquer que seja a causa, e a resiliência é a capacidade de antecipar, resistir, recuperar-se e adaptar-se a condições adversas. Nos sistemas de transporte, elas se sobrepõem. Um ataque de ransomware ao centro de operações é um evento de segurança da informação que pode virar uma questão de segurança física se a informação aos passageiros falhar durante interrupções. Sofia aprende que as três comunidades usam métodos e vocabulários diferentes, e que os arquitetos precisam aproximá-las, por exemplo convidando engenheiros de segurança física para as sessões de modelagem de ameaças de sistemas que afetam passageiros ou veículos.
+
+### 33.2 Técnicas de resiliência
+
+O NIST SP 800-160 Vol. 1 Rev. 1 liga a resiliência à engenharia de sistemas confiáveis, e o SP 800-160 Vol. 2 Rev. 1 descreve técnicas de ciber-resiliência como redundância, diversidade, segmentação, resposta adaptativa e não persistência, cada uma com orientações sobre quando ajuda. Sofia aplica várias delas ao centro de operações da Corvia: segmentação para conter a propagação, backups offline para a recuperação, um canal de comunicação de reserva diverso para os motoristas e procedimentos operacionais manuais planejados de antemão. Ela escreve cada técnica ao lado da condição adversa que ela trata. O planejamento de resiliência supõe que a prevenção às vezes vai falhar e pergunta como a missão continua mesmo assim, e quais pessoas precisam agir quando isso acontecer.
+
+### 33.3 Degradação controlada
+
+Sofia projeta níveis de degradação para o sistema de bilhetagem. Nível um: back-office central indisponível, os validadores continuam offline com tarifas e listas de bloqueio em cache. Nível dois: validadores indisponíveis, os fiscais aceitam comprovação visual e a cobrança é suspensa. Nível três: centro de operações comprometido, os serviços rodam com horários manuais e comunicação por rádio. Cada nível tem um gatilho, um tomador de decisão e um procedimento de retorno. Ensaiar esses níveis mostra à equipe que um incidente cibernético não precisa parar os bondes, o que reduz a pressão para pagar resgates ou apressar restaurações inseguras.
+
+### Exemplo resolvido
+
+Sofia separa os objetivos de segurança da informação, segurança física e resiliência, relaciona quatro técnicas de resiliência a condições adversas e define três níveis de degradação com gatilhos e responsáveis.
+
+> **Caso sintético.** Os níveis de degradação e os procedimentos são sintéticos; o SP 800-160 Vol. 1 Rev. 1 e o Vol. 2 Rev. 1 são reais.
+
+### Erros e limites
+
+Procedimentos manuais se deterioram sem prática. A própria degradação pode criar oportunidades de fraude que precisam ser monitoradas.
+
+### Exercícios
+
+- **EX097 — Definição de resiliência.** Defina resiliência nos termos deste capítulo. *Rubrica:* 3 = capacidade de antecipar, resistir, recuperar-se e adaptar-se a condições adversas;; 2 = três partes;; 1 = só segurança;; 0 = nenhuma.
+
+- **EX098 — Canal diverso.** Que técnica de resiliência um canal de comunicação de reserva para os motoristas representa? *Rubrica:* 3 = diversidade ou redundância da comunicação;; 2 = diversidade;; 1 = segmentação;; 0 = nenhuma.
+
+- **EX099 — Pressão do resgate.** Como níveis de degradação ensaiados reduzem a pressão para pagar resgates? *Rubrica:* 3 = a equipe sabe que os serviços podem continuar manualmente, então há menos urgência para pagar;; 2 = continuidade;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-34"></a>
+
+## Capítulo 34 — Arquitetura e engenharia de segurança: integração
+
+### Objetivos de aprendizagem
+
+Você vai (1) proteger integrações com parceiros externos; (2) projetar a autenticação e a autorização de APIs para o acesso de parceiros; (3) gerenciar a responsabilidade compartilhada nas fronteiras de integração.
+
+### 34.1 Integrações com parceiros
+
+A Corvia se integra a um provedor de pagamentos, a um aplicativo regional de mobilidade que vende passagens da Corvia, ao fornecedor de energia e a uma consultoria de análise de dados. Cada integração atravessa uma fronteira de confiança e traz obrigações contratuais e técnicas. Sofia lista para cada uma os dados trocados, a direção, o método de autenticação e a parte responsável por cada controle. Ela descobre que o aplicativo de mobilidade usa uma única API key de longa duração compartilhada por todos os seus servidores, enquanto a consultoria recebe exportações mensais de dados por e-mail. As duas são fraquezas de integração que a arquitetura deve tratar.
+
+### 34.2 Projeto de APIs para parceiros
+
+Sofia propõe um API gateway para parceiros. Os parceiros se autenticam com tokens de curta duração obtidos com client credentials vinculadas a certificados, em vez de chaves estáticas. Cada token carrega escopos que limitam o que o parceiro pode fazer: o aplicativo de mobilidade pode vender passagens e consultar tarifas, mas não ler históricos de viagem. O gateway aplica rate limits, valida os esquemas e registra cada requisição com a identidade do parceiro. As exportações de dados para a consultoria passam para um serviço de transferência segura, com dados pseudonimizados e expiração do acesso. Essas escolhas aplicam o menor privilégio e a mediação completa na fronteira.
+
+### 34.3 Responsabilidade compartilhada
+
+Em toda integração, alguns controles pertencem à Corvia e outros ao parceiro. Sofia escreve uma matriz de responsabilidades: a Corvia protege o gateway e valida as requisições; o parceiro protege suas credenciais e seus próprios usuários; ambos devem comunicar incidentes dentro de prazos acordados. A matriz é anexada aos contratos. Quando o aplicativo de mobilidade mais tarde sofre um vazamento das contas dos seus próprios clientes, a matriz deixa claro qual parte notifica quais passageiros e quais tokens a Corvia revoga. A clareza sobre as responsabilidades evita lacunas em que cada parte supõe que a outra cuida de um controle.
+
+### Exemplo resolvido
+
+Sofia inventaria quatro integrações com parceiros, substitui uma API key estática compartilhada por tokens de curta duração, com escopo e vinculados a certificados, e escreve uma matriz de responsabilidades usada durante um vazamento de um parceiro.
+
+> **Caso sintético.** Os parceiros, as integrações e o vazamento são sintéticos.
+
+### Erros e limites
+
+Os gateways se tornam pontos únicos de falha e precisam ser resilientes. Os contratos não conseguem obrigar os parceiros a proteger os próprios sistemas.
+
+### Exercícios
+
+- **EX100 — Duas fraquezas.** Que duas fraquezas de integração Sofia encontrou? *Rubrica:* 3 = API key compartilhada e de longa duração do aplicativo de mobilidade; exportações da consultoria por e-mail;; 2 = as duas;; 1 = uma;; 0 = nenhuma.
+
+- **EX101 — Exemplo de escopo.** O que os tokens do aplicativo de mobilidade podem permitir, e o que não? *Rubrica:* 3 = vender passagens e consultar tarifas, não ler históricos de viagem;; 2 = as duas partes;; 1 = acesso total;; 0 = nenhuma.
+
+- **EX102 — Matriz no vazamento.** Como a matriz de responsabilidades ajudou durante o vazamento do parceiro? *Rubrica:* 3 = esclareceu quem notifica os passageiros e quais tokens a Corvia revoga;; 2 = clareza;; 1 = nenhuma;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX084 (as de EX085–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Sofia Mbeki, Daniel Ferreira, a Kestrel Polytechnic University, a Corvia Regional Transit e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX102 (as de EX103–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Sofia Mbeki, Daniel Ferreira, a Kestrel Polytechnic University, a Corvia Regional Transit e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Que o aumento de cada mês é proporcional ao volume atual, de modo que o crescimento absoluto continua se acelerando.
 
@@ -1444,6 +1751,42 @@ Respostas-modelo para EX001–EX084 (as de EX085–EX150 estão na edição em i
 **EX083.** Ela foi removida do histórico do repositório, rotacionada e registrada como incidente.
 
 **EX084.** Porque enfraqueceria um requisito de segurança, que só uma decisão de arquitetura pode mudar.
+
+**EX085.** A mediana do número de dias entre a desativação do dispositivo e a revogação do certificado.
+
+**EX086.** Uma mediana de 8 dias entre os dispositivos revogados, só 8 de 20 revogados em até uma semana e 3 nunca revogados; criptografia e registro cobriam 4 de 5 repositórios.
+
+**EX087.** A taxa de reabertura, para mostrar se tickets foram fechados sem correções reais.
+
+**EX088.** Se o sistema foi construído de acordo com suas especificações.
+
+**EX089.** Só o primeiro registro autêntico; os registros duplicado, alterado e do validador desativado foram rejeitados.
+
+**EX090.** O comportamento durante o failover do banco de dados.
+
+**EX091.** Um registro de ativo e um ticket de instalação aprovado.
+
+**EX092.** Certificados ainda ativos para dispositivos fora de serviço, causados por eventos de integração perdidos.
+
+**EX093.** Controles compensatórios, um responsável e uma expiração atrelada à data de substituição.
+
+**EX094.** Multiplicam-se, de modo que o serviço é menos disponível do que seu componente mais fraco.
+
+**EX095.** A disponibilidade geral subiu de 0.9960 para 0.9980, de cerca de 35 para 18 horas de indisponibilidade por ano, porque o repositório de segredos era o elo mais fraco.
+
+**EX096.** A ingestão das validações faz soft-fail usando listas em cache por pouco tempo; o acesso administrativo faz hard-fail.
+
+**EX097.** A capacidade de antecipar, resistir, recuperar-se e adaptar-se a condições adversas.
+
+**EX098.** Diversidade, ao oferecer um canal alternativo que não compartilha os modos de falha do sistema principal.
+
+**EX099.** Porque a equipe sabe que os serviços podem continuar funcionando em níveis reduzidos, então há menos pressão para pagar ou restaurar de forma insegura.
+
+**EX100.** A única API key compartilhada e de longa duração do aplicativo de mobilidade e as exportações mensais de dados para a consultoria por e-mail.
+
+**EX101.** Vender passagens e consultar tarifas, mas não ler históricos de viagem.
+
+**EX102.** Deixou claro qual parte notificava os passageiros afetados e quais tokens a Corvia deveria revogar.
 
 <a id="references"></a>
 ## Referências
