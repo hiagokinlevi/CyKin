@@ -436,73 +436,39 @@ You will (1) generate programme alternatives; (2) score them on learning, risk, 
 
 ### 5.1 Alternatives
 
-A: quarterly web only. B: annual threat-led only. C: quarterly web + biennial threat-led. D: continuous automated scan theatre.
-
-The four alternatives are written so executives see real choices: A quarterly web only, B annual threat-led only, C quarterly web plus biennial threat-led, and D continuous automated scan theatre. Amira will not discuss a vague more testing request until it maps to one of these; DEC-14 records choosing C.
-
-DEC-14 is the record of choosing C — quarterly web plus biennial threat-led — after A, B and D were scored. A vague more testing request that does not map to one of the four alternatives is sent back until it does.
+Amira writes four alternatives so executives see real choices: A, quarterly web only; B, annual threat-led only; C, quarterly web plus biennial threat-led; and D, continuous automated scan theatre. She will not discuss a vague "more testing" request until it maps to one of these four, and a request that does not map is sent back until it does. DEC-14 is the record of choosing C after A, B and D were scored. Writing the alternatives side by side makes the rejected options as visible as the chosen one, which is what a later examiner needs.
 
 ### 5.2 Scoring
 
-Amira scores detection learning, operational risk, cost, staff capacity and examiner fit. D scores high on noise and low on learning.
-
-Each criterion is scored from one to three, and the raw numbers stay visible so a director can recompute the ranking by hand. D scores high on noise and low on learning; C scores best for MCH-like organisations when capacity is honest. The score sheet attaches to the alternatives memo so the recommendation is not a matter of taste.
-
-Option B rates well on learning but badly on staff capacity, because annual threat-led work needs two full white-team cycles. C wins for Meridian Clearing House when capacity is honest; the attached score sheet keeps the recommendation from becoming a matter of taste.
+Amira scores each alternative on detection learning, operational risk, cost, staff capacity and examiner fit, each criterion from one to three. The raw numbers stay visible so a director can recompute the ranking by hand. D scores high on noise and low on learning. B rates well on learning but badly on staff capacity, because annual threat-led work needs two full white-team cycles. C wins for Meridian Clearing House when capacity is honest, and the score sheet attached to the alternatives memo keeps the recommendation from becoming a matter of taste.
 
 ### 5.3 Portfolio
 
-C usually wins for MCH-like organisations. A alone under-trains detection; B alone misses regressions.
-
-C usually wins because A alone under-trains detection and B alone misses ordinary regressions between threat-led years. Amira still shows scores for A, B and D so directors see why C won; portfolio language means the mix, not a single silver engagement.
-
-Portfolio language means the mix of activities, not a single purchased logo. Directors still see scores for A, B and D so they understand why A alone under-trains detection and B alone misses regressions.
+C usually wins for MCH-like organisations because A alone under-trains detection and B alone misses ordinary regressions between threat-led years. Portfolio language means the mix of activities, not a single purchased logo or a single silver engagement. Amira still shows the scores for A, B and D, so directors understand why C won rather than taking the recommendation on trust. When a director later proposes dropping the quarterly web tests to fund a bigger threat-led year, the same scores show what detection learning and regression coverage that trade would cost.
 
 ### 5.4 Non-goals
 
-No claim of SWIFT coverage from ordinary web tests; no public exploit demos; no unpaid overtime as a capacity plan.
-
-Each non-goal maps to a catalogue cannot-claim line or to the ethics charter, so none of them is a new promise invented for the memo. She reads them aloud at the end of the alternatives memo; a recommendation that only works if people work nights is not executable.
-
-Before filing, she checks every recommendation against the staffing rota the owners actually run. Non-goals are read aloud so unpaid overtime cannot quietly become the capacity plan.
+The memo lists three non-goals: no claim of SWIFT coverage from ordinary web tests; no public exploit demos; no unpaid overtime as a capacity plan. Each non-goal maps to a catalogue cannot-claim line or to the ethics charter, so none of them is a new promise invented for the memo. Amira reads them aloud at the end of the alternatives memo so unpaid overtime cannot quietly become the capacity plan. Before filing, she checks every recommendation against the staffing rota the owners actually run; a recommendation that only works if people work nights is not executable.
 
 ### 5.5 Sensitivity
 
-She re-scores if capacity halves; the recommendation should still be executable.
-
-Sensitivity analysis halves capacity and also doubles vendor cost. Current C survives halved capacity by slipping threat-led to every third year with a named white-team lead and a written date. Amira refuses a plan that only works in the best case.
-
-If recommendation C collapses under both shocks — halved capacity and doubled vendor cost — it was never robust. Doubling vendor cost hits option B hardest, since it buys a threat-led provider every year instead of every second year.
+Amira re-scores the alternatives under shocks, because the recommendation should still be executable when conditions worsen. Her sensitivity analysis halves capacity and also doubles vendor cost. Doubling vendor cost hits option B hardest, since it buys a threat-led provider every year instead of every second year. Current C survives halved capacity by slipping threat-led to every third year with a named white-team lead and a written date. If C collapsed under both shocks, it was never robust; Amira refuses a plan that only works in the best case.
 
 ### 5.6 Output
 
-A two-page alternatives memo with a calendar graphic.
-
-The two-page memo carries the score table, the non-goals, the sensitivity result and a calendar graphic with shaded preparation months. Executives who only see the execution week miss the intel lead time that Finance once failed to fund.
-
-The memo's last line names the CISO as owner of the recommendation and the next catalogue review as its expiry. Preparation months cover intelligence gathering, white-team briefing and scenario sign-off, each shaded in a different tone.
-
-Finance once funded only the execution week and was surprised by intel lead time; the shaded cells stopped that surprise. Amira will not send an alternatives memo that lacks the calendar graphic, because executives then approve a programme they have not staffed.
+The output is a two-page alternatives memo carrying the score table, the non-goals, the sensitivity result and a calendar graphic. The graphic shades the preparation months — intelligence gathering, white-team briefing and scenario sign-off, each in a different tone — and not only the execution week. Finance once funded only the execution week and was surprised by intelligence lead time; the shaded cells stopped that surprise. The memo's last line names the CISO as owner of the recommendation and the next catalogue review as its expiry. Amira will not send a memo that lacks the calendar graphic, because executives would then approve a programme they have not staffed.
 
 ### 5.7 Narrative
 
-Sensitivity analysis in the alternatives memo halves capacity and also doubles vendor cost. If recommendation C collapses under both shocks, it was never robust. Current C survives halved capacity by slipping threat-led to every third year — still written and owned. Non-goals are read at the start of every workshop so brainstorming cannot quietly reintroduce theatre option D.
+Amira reads the non-goals at the start of every alternatives workshop, so brainstorming cannot quietly reintroduce theatre option D, and again at the end, so nobody leaves thinking overtime will save the plan. A memo without sensitivity analysis is incomplete. When capacity halves, slipping threat-led to every third year keeps a named white-team lead and a written date rather than a wish. The slip itself is filed as a DEC amendment, so the cadence change is owned in the same way as the original choice of C.
 
-When capacity halves, slipping threat-led to every third year keeps a named white-team lead and a written date rather than a wish. Non-goals are read at workshop end so nobody leaves thinking overtime will save the plan; a memo without sensitivity is incomplete.
+### 5.8 Pencilled leads
 
-### 5.8 Bit2
+Every-third-year threat-led still has a named white-team lead pencilled two years out; pencils beat wishes. Naming the lead that early gives the white team time to arrange cover before the exercise is due, and cover arranged late becomes the heroics the ethics charter forbids. Amira puts the name in the calendar graphic, not only in an email. The pencilled name is checked at each catalogue review, and any change of person is recorded as a DEC amendment. This is how Meridian Clearing House keeps every-third-year threat-led executable.
 
-Every-third-year threat-led still has a named white-team lead pencilled two years out; pencils beat wishes. Naming the lead two years out gives the white team time to arrange cover before the threat-led exercise is due.
+### 5.9 Shaded calendar
 
-The pencilled name is checked at each catalogue review, and any change of person is recorded as a DEC amendment. Naming the lead that early gives the white team time to arrange cover before the exercise is due; Amira puts the name in the calendar graphic, not only in an email.
-
-Cover that is arranged late becomes the heroics the ethics charter forbids. Pencilling the white-team lead two years out is how Meridian Clearing House keeps every-third-year threat-led executable.
-
-### 5.9 Story
-
-Amira's calendar graphic uses shaded cells for threat-led preparation months, not only execution week, so executives see the true staff load. Finance once funded only the execution week and was surprised by intel lead time; the shaded cells stopped that surprise. She reprints the calendar after every DEC that changes cadence and stores the PDF hash beside DEC-14.
-
-Each shaded month carries the initials of the white-team member pencilled for it, so gaps in cover show up as blank cells. When a cell stays blank, Amira raises the gap with the white-team lead before the month begins.
+Each shaded preparation month in Amira's calendar graphic carries the initials of the white-team member pencilled for it, so executives see the true staff load and gaps in cover show up as blank cells. When a cell stays blank, Amira raises the gap with the white-team lead before the month begins rather than discovering it in the execution week. She reprints the calendar after every DEC that changes cadence and stores the PDF hash beside DEC-14, so the version a director approved can be told apart from later redrafts.
 
 ### Worked example (synthetic MCH)
 
@@ -540,11 +506,7 @@ You will (1) design evaluations of scenarios and controls; (2) use scoring that 
 
 ### 6.1 Evaluation targets
 
-Scenario choice, control coverage, detection rules and programme outcomes each need different designs.
-
-Amira refuses a single score that pretends to measure scenarios, detection rules and programme outcomes together. The lab scenario ranking is for scenario choice; detection rules need purple-team measures; programme outcomes need decision records such as DEC-14. Combining the three would give the board a number that measures none of them, so each keeps its own measure in Amira's pack.
-
-Mixing scenario ranks, purple-team measures and DEC-14 outcomes into one empty metric is how board packs lose meaning. Each evaluation target keeps its own design so directors are not sold a single score that pretends to measure all four.
+Scenario choice, control coverage, detection rules and programme outcomes each need different evaluation designs. Amira refuses a single score that pretends to measure them together. The lab scenario ranking is for scenario choice; detection rules need purple-team measures; programme outcomes need decision records such as DEC-14. Mixing scenario ranks, purple-team measures and DEC-14 outcomes into one metric would give the board a number that measures none of them, which is how board packs lose meaning. Each evaluation target therefore keeps its own design and its own measure in her pack.
 
 ### 6.2 Scoring lab
 
@@ -567,79 +529,39 @@ D score=+2 learn=2 risk=2 Branch Wi-Fi rogue AP
 B score=+1 learn=1 risk=1 Public web defacement only
 ```
 
-lab_scenario ranks C supply-chain library in batch app at +4, A stolen VPN with SWIFT-adjacent pivot at +3, D branch Wi-Fi rogue AP at +2 and B public web defacement at +1 using score equals 2 times learning minus risk. She demotes a high lab score when white-team feasibility is missing.
-
-Supply-chain library in batch app scores highest at +4; stolen VPN with SWIFT-adjacent pivot scores +3 but carries risk 3; public web defacement scores only +1. White-team feasibility still decides funding after the lab rank.
+The supply-chain library in the batch app (C) scores highest at +4; the stolen VPN with SWIFT-adjacent pivot (A) scores +3 but carries risk 3; the branch Wi-Fi rogue AP (D) scores +2; and public web defacement (B) scores only +1. The rank is an input, not a funding decision. Amira demotes a high lab score when white-team feasibility is missing, and feasibility still decides funding after the lab rank.
 
 ### 6.3 Pre-registration
 
-Metrics and thresholds are tagged in git before results.
-
-Metrics and thresholds are tagged in git before results so she cannot move the goalposts after seeing scores. Pre-registration states primary measure, threshold and exclusions; changing a threshold later requires an amended tag and a note in the decision log.
-
-A peer should be able to find the pre-registration tag without asking her. Primary measure, threshold and exclusions are short on purpose; amended tags after the fact require a decision-log note.
-
-Changing a threshold after seeing scores requires an amended tag and a decision-log note that names why. Pre-registration is how Meridian Clearing House keeps evaluation honest when favourite scenarios underperform.
+Metrics and thresholds are tagged in git before results, so Amira cannot move the goalposts after seeing scores. The pre-registration states the primary measure, the threshold and the exclusions, and it is short on purpose: a peer should be able to find the tag and read it without asking her. Changing a threshold after seeing scores requires an amended tag and a decision-log note that names why. Pre-registration is how Meridian Clearing House keeps evaluation honest when favourite scenarios underperform and the temptation to redefine success is strongest.
 
 ### 6.4 GAP language
 
-"T1190 0/2 GAP" schedules engineering; it does not claim permanent blindness.
-
-T1190 0/2 means neither of the two exploit-public-facing-application attempts was detected, a sample far too small to estimate a rate. A dated engineering ticket is the honest companion to a T-GAP label, and doom language that says forever blind trains directors to ignore gaps.
-
-Amira's language in findings and board packs stays in the GAP-schedules-engineering lane. Saying we are blind forever is neither true nor useful when a dated ticket can close the gap.
-
-A dated engineering ticket is the honest companion to a T1190 0/2 GAP label. Doom language that claims permanent blindness trains directors to ignore gaps that engineering could close.
+"T1190 0/2 GAP" schedules engineering; it does not claim permanent blindness. T1190 0/2 means neither of the two exploit-public-facing-application attempts was detected, a sample far too small to estimate a rate. A dated engineering ticket is the honest companion to a GAP label. Saying "we are blind forever" is neither true nor useful when a dated ticket can close the gap, and doom language trains directors to ignore gaps that engineering could close. Amira's language in findings and board packs therefore stays in the lane where a GAP schedules engineering work.
 
 ### 6.5 Independence
 
-White team or a peer runs the scoring on the same inputs.
-
-In the scenario workshop the peer receives the four options with their learning and risk ratings, but not Amira's ranking. Independence catches optimistic grading of favourite scenarios; disagreements become design notes tagged FEASIBILITY so they appear in the next scenario workshop.
-
-She would rather lose a preferred scenario than keep a score only she can defend. Peer scoring on the same inputs catches optimistic grading before funding decisions lock in.
-
-Disagreements are not averaged away; each keeps both ratings and a one-line reason from each scorer. Independence is not optional politeness; it is how optimistic grading of favourite scenarios is caught.
+The white team or a peer runs the scoring on the same inputs. In the scenario workshop the peer receives the four options with their learning and risk ratings, but not Amira's ranking. Independence is not optional politeness: it is how optimistic grading of favourite scenarios is caught before funding decisions lock in. Disagreements are not averaged away; each keeps both ratings and a one-line reason from each scorer, and becomes a design note tagged FEASIBILITY for the next workshop. Amira would rather lose a preferred scenario than keep a score only she can defend.
 
 ### 6.6 Ethics
 
-Scenarios that need live participant impact are rejected at design time.
-
-Scenario A's SWIFT-adjacent pivot is played only against an isolated range, never against systems carrying live clearing traffic. Synthetic clearing templates and isolated ranges are enough for learning; the ethics cover sheet says synthetic-only on page one of every project.
-
-Live harm to participants is not an acceptable price for a more realistic exercise at Meridian Clearing House. Synthetic-only on page one of every project is the ethics cover that makes that refusal mechanical.
-
-Synthetic clearing templates and isolated ranges are enough for learning at Meridian Clearing House. The ethics cover sheet that says synthetic-only on page one makes live participant impact a design-time rejection, not a negotiation mid-exercise.
+Scenarios that need live participant impact are rejected at design time. Live harm to participants is not an acceptable price for a more realistic exercise at Meridian Clearing House, and synthetic clearing templates and isolated ranges are enough for learning. Scenario A's SWIFT-adjacent pivot is therefore played only against an isolated range, never against systems carrying live clearing traffic. The ethics cover sheet says synthetic-only on page one of every project, which makes live participant impact a design-time rejection rather than a negotiation in the middle of an exercise.
 
 ### 6.7 Narrative
 
-White-team feasibility for scenario C includes a library inventory owner who can freeze deploys. Without that owner, Amira demotes C despite its lab score. Independent scoring means she leaves the room while a peer applies lab_scenario to the same inputs; disagreements become design notes filed beside the lab output.
+Feasibility is part of the score, not an afterthought. White-team feasibility for scenario C includes a library inventory owner who can halt deploys of the batch application inside the exercise window, not merely approve a ticket later. Without that owner, Amira demotes C despite its +4 lab score. Independent scoring means she leaves the room while a peer applies lab_scenario to the same inputs. When a white-team view overrides a lab score, as with scenario C, she records the reason as a design note filed beside the lab output rather than changing the score silently.
 
-The owner must be able to halt deploys of the batch application inside the exercise window, not merely approve a ticket later. When a white-team view overrides a lab score, as with scenario C, Amira records the reason as a design note rather than changing the score silently.
+### 6.8 Feasibility notes
 
-Feasibility is part of the score, not an afterthought. Without a library inventory owner who can freeze deploys, scenario C is demoted despite its +4 lab score, and the demotion is written as a design note.
+Design notes from scoring disagreements are tagged FEASIBILITY so they appear in the next scenario workshop automatically, turning a scoring dispute into an input for designing the next scenario. Each note records the scenario letter, both scores, the missing feasibility element and who must supply it before the workshop. Scenario C's missing library owner was filed this way and became the opening item of the following workshop. Amira reads the tagged notes aloud, so the peer who disagreed sees their point land and juniors learn that losing a favourite option is normal when stop owners are missing.
 
-### 6.8 Bit2
+### 6.9 Board slide
 
-Design notes from scoring disagreements are tagged FEASIBILITY so they appear in the next scenario workshop automatically. Tagging disagreements this way turns a scoring dispute into an input for designing the next scenario.
+Amira communicated the feasibility demotion of scenario C to the board as strength, not indecision. Her slide title was "We refused a high-scoring scenario we could not stop", and it paired C's +4 lab score with the missing deploy-freeze owner, so the reason fitted on one line. The board applauded. The refusal was recorded in the decision log beside the lab score, so the reason survives the meeting. Lab scores without stop owners are now labelled provisional in every packet that leaves her desk.
 
-Each note records the scenario letter, both scores, the missing feasibility element and who must supply it before the next workshop. Juniors learn that losing a favourite option is normal when feasibility fails; she reads the tagged notes aloud so the peer who disagreed sees their point land.
+### 6.10 Provisional labels
 
-Scenario C's missing library owner was filed this way and became the opening item of the following workshop. Reading the notes aloud at the workshop shows juniors that losing a favourite option is normal when stop owners are missing.
-
-### 6.9 Story
-
-Feasibility demotion of scenario C is communicated to the board as strength, not indecision. Amira's slide title was "We refused a high-scoring scenario we could not stop". The board applauded. Lab scores without stop owners are now labelled provisional in every packet that leaves her desk.
-
-The slide paired scenario C's +4 lab score with the missing deploy-freeze owner, so the reason for demotion fitted on one line. The refusal was recorded in the decision log beside the lab score, so the reason survives the meeting.
-
-### 6.10 6.q11
-
-Provisional labels on scores are bright orange in the PDF export. The orange label keeps a provisional score from being quoted as final once the PDF leaves the team.
-
-Provisional labels on scores are bright orange in the PDF export so a provisional rank cannot be quoted as final once the PDF leaves the team. Only scores with white-team feasibility confirmed may lose the orange mark.
-
-Directors have thanked her for the orange colour when a vendor tried to cite a provisional rank as a commitment. Confirmation means the white-team lead has signed the feasibility line, including a named stop owner for that scenario.
+Provisional labels on scores are bright orange in the PDF export, so a provisional rank cannot be quoted as final once the PDF leaves the team. Only scores with white-team feasibility confirmed may lose the orange mark, and confirmation means the white-team lead has signed the feasibility line, including a named stop owner for that scenario. Directors have thanked Amira for the orange colour when a vendor tried to cite a provisional rank as a commitment. The label costs nothing to apply and prevents a ranking from being treated as an approval.
 
 ### Worked example (synthetic MCH)
 
@@ -677,87 +599,43 @@ You will (1) integrate testing with SOC, risk, legal and participants; (2) desig
 
 ### 7.1 Integration map
 
-Amira draws who receives what: SOC gets ATT&CK tags and timelines; risk gets ranked residuals; legal gets disclosure-relevant facts; participants get only what contracts allow.
-
-Participant notices draw only on contract-allowed facts, so a SOC timeline never reaches a clearing member by forwarding. Oversharing into the wrong channel is how trust with clearing participants breaks.
-
-The diagram sits in the integration playbook and is reviewed when a new stakeholder appears. A finding tagged with ATT&CK techniques for the SOC is restated for risk as a ranked residual before it moves.
+Amira draws who receives what: the SOC gets ATT&CK tags and timelines; risk gets ranked residuals; legal gets disclosure-relevant facts; participants get only what contracts allow. A finding tagged with ATT&CK techniques for the SOC is restated for risk as a ranked residual before it moves. Participant notices draw only on contract-allowed facts, so a SOC timeline never reaches a clearing member by forwarding; oversharing into the wrong channel is how trust with clearing participants breaks. The diagram sits in the integration playbook and is reviewed whenever a new stakeholder appears.
 
 ### 7.2 Shadow programmes
 
-Business units hiring boutique scanners without ROE create shadow risk. Integration means one catalogue and one authorization path.
-
-A boutique scan without ROE has no stop authority and no exclusion list, so it could touch SWIFT-adjacent hosts unnoticed. Amnesty week invites declarations so shadow scans enter the catalogue or stop; undeclared scans found later become audit findings against the unit, not quiet exceptions.
-
-Declared scans that continue go through the same authorization path as Amira's own quarterly WSTG-style web tests. The audit team receives the declaration list so it can tell declared tools from concealed ones.
-
-After amnesty week, every external scan must therefore enter through the same request form that internal tests use.
+Business units hiring boutique scanners without ROE create shadow risk; integration means one catalogue and one authorization path. A boutique scan without ROE has no stop authority and no exclusion list, so it could touch SWIFT-adjacent hosts unnoticed. Amnesty week invites declarations so shadow scans enter the catalogue or stop. Declared scans that continue go through the same authorization path as Amira's own quarterly WSTG-style web tests, and after amnesty week every external scan enters through the same request form that internal tests use. Undeclared scans found later become audit findings against the unit, not quiet exceptions.
 
 ### 7.3 Cadence
 
-Quarterly sync with SOC on noise budgets; monthly with risk on acceptance expiries; ad hoc with legal on disclosure.
-
-The SOC sync agrees how many alerts each planned test may generate, so analysts can separate test noise from real attacks. Missed syncs are logged as programme debt so integration does not depend on memory.
-
-Amira keeps the calendar invites recurring so integration does not depend on memory. Quarterly SOC noise-budget syncs and monthly risk acceptance-expiry reviews are programme debt when missed, not personal failure.
+Amira runs a quarterly sync with the SOC on noise budgets, a monthly review with risk on acceptance expiries, and ad hoc meetings with legal on disclosure. The SOC sync agrees how many alerts each planned test may generate, so analysts can separate test noise from real attacks. She keeps the calendar invites recurring so integration does not depend on memory. A missed sync is logged as programme debt, not as personal failure, and the debt list is reviewed at the next catalogue review so repeated misses lead to a cadence change rather than to blame.
 
 ### 7.4 Health metrics
 
-Percent of findings with owners, percent of tests in catalogue, median time from finding to detection ticket.
-
-Median time to detection ticket is the slow figure on the worked scorecard, which is why the PulseMap-to-backlog bridge was funded. She refuses vanity counts of raw findings without validation; the metrics appear beside amnesty counts on the same slide family.
-
-Vanity counts of raw findings without validation stay off management slides. Percent of findings with owners, catalogue coverage and median time to detection ticket appear beside amnesty counts so the board sees hygiene.
+Integration health is measured by the percent of findings with owners, the percent of tests in the catalogue and the median time from finding to detection ticket. Median time to detection ticket is the slow figure on the worked scorecard, which is why the PulseMap-to-backlog bridge was funded. Amira refuses vanity counts of raw findings without validation; they stay off management slides. The three health metrics appear beside the amnesty counts on the same slide family, so the board sees programme hygiene rather than volume.
 
 ### 7.5 Participant care
 
-Clearing participants are customers of trust. Comms templates are pre-approved.
-
-Clearing participants are customers of trust; communications templates are pre-approved by legal and participant management. A wrong phrase in a participant notice can cause market noise that no finding severity can justify, so Amira does not invent wording under pressure.
-
-Amira does not invent wording under pressure when a participant notice is needed. Pre-approved templates from legal and participant management are the only words that leave the building.
-
-Templates are versioned, and the version number is logged with each notice so legal can reconstruct exactly what a participant received. Pre-approved templates are the only channel; Amira does not invent wording when pressure rises.
+Clearing participants are customers of trust, and a wrong phrase in a participant notice can cause market noise that no finding severity can justify. Communications templates are therefore pre-approved by legal and participant management, and they are the only words that leave the building. Amira does not invent wording under pressure when a notice is needed. Templates are versioned, and the version number is logged with each notice, so legal can reconstruct exactly what a participant received and when. During test-related incidents involving participants, she rejects ad-lib emails even from senior staff.
 
 ### 7.6 Failure mode
 
-Integration fails when testing is a heroic annual event with no backlog into BAU engineering.
-
-The PulseMap-to-backlog bridge exists so each detection gap found in testing lands as an ordinary engineering ticket, not a slide. Every finding that needs a fix must have a ticket in the ordinary engineering queue; heroics without backlog produce the same issues next year.
-
-Examiners notice when the same issues return next year because heroics never entered the ordinary engineering queue. Every finding that needs a fix must have a BAU ticket before Amira calls integration healthy.
+Integration fails when testing is a heroic annual event with no backlog into BAU engineering; heroics without backlog produce the same issues next year, and examiners notice when they return. The PulseMap-to-backlog bridge exists so each detection gap found in testing lands as an ordinary engineering ticket, not a slide. Every finding that needs a fix must have a ticket in the ordinary engineering queue before Amira calls integration healthy. A finding that only ever appears in a board pack is counted as unintegrated, however well it was presented.
 
 ### 7.7 Narrative
 
-Shadow-programme amnesty week invites business units to declare boutique scans. Declared scans enter the catalogue or stop. Undeclared scans found later become audit findings against the unit lead. Participant comms templates are versioned; Amira rejects ad-lib emails during test-related incidents involving participants.
+Shadow-programme amnesty week invites business units to declare boutique scans. Each declaration names the vendor, the targets scanned and the unit lead who commissioned the work. Declared scans enter the catalogue or stop, and undeclared scans found later become audit findings against the unit lead. The rules are published before the week starts, because amnesty without consequences for later concealment is theatre. At the close of the week the declaration list goes to internal audit, so later discoveries can be checked against it without argument about what was declared.
 
-Each declaration names the vendor, the targets scanned and the unit lead who commissioned the work. Rules are published before the week starts; amnesty without consequences for later concealment is theatre.
+### 7.8 Amnesty slide
 
-At the close of the week the declaration list goes to internal audit, so later discoveries can be checked against it without argument about what was declared.
+Amnesty week metrics — declared, catalogued, stopped — go to the board risk committee in one slide. Keeping the three counts together lets the committee see whether declarations led to tools actually being stopped. The stopped count is printed as large as the declared count and sits in the main slide, never in a footnote, so nobody can read the slide as a list of approvals and a stalled shutdown cannot be hidden. Transparency about the stopped count is what shows the amnesty had teeth.
 
-### 7.8 Bit2
+### 7.9 Amnesty results
 
-Amnesty week metrics — declared, catalogued, stopped — go to the board risk committee in one slide. Keeping the three counts on one slide lets the committee see whether declarations led to tools actually being stopped.
+Amnesty week produced twelve declarations: eight catalogued, four stopped. The four stopped scans could not be brought under an ROE with stop authority, so they ended rather than entering the catalogue. The slide to the risk committee used those three numbers only; unit names stayed in the catalogue, keeping the committee focused on whether the amnesty worked. Amira refuses amnesty narratives without counts. Units that stayed silent and were later found scanning received findings with owners named in the minutes, and those findings carry the amnesty dates so a unit cannot claim it never heard about the window.
 
-The stopped count is printed as large as the declared count, so nobody can read the slide as a list of approvals. Those counts appear in the main slide, never in a footnote, so a stalled shutdown cannot be hidden.
+### 7.10 Archived counts
 
-Amira does not bury stopped scans in a footnote. Transparency about the stopped count on the same slide as declared and catalogued shows the amnesty had teeth.
-
-### 7.9 Story
-
-Amnesty week produced twelve declarations; eight catalogued, four stopped. The slide to risk committee used those three numbers only. Amira refuses amnesty narratives without counts. Units that stayed silent and were later found scanning received findings with owners named in the minutes.
-
-The four stopped scans could not be brought under an ROE with stop authority, so they ended rather than entering the catalogue. Unit names stayed in the catalogue rather than on the slide, keeping the committee focused on whether the amnesty worked. Those later findings carry the amnesty dates, so a unit cannot claim it never heard about the declaration window.
-
-Anyone wanting unit-by-unit detail is pointed to the catalogue entries created during amnesty week. Twelve declared, eight catalogued and four stopped are the only numbers on the risk-committee slide; uncounted stories cannot be checked against the minute hash later.
-
-### 7.10 7.q11
-
-Amnesty counts are archived with the committee minute hash. Tying the counts to the minute hash means a later reader can check that the reported figures were the ones the committee saw.
-
-The archive entry stores the twelve, eight and four counts, the slide file and the hash of the signed minutes together. Amira has used that check when a unit disputed whether it had declared; the hash settled the dispute.
-
-Amira also records the hash in the catalogue changelog, so the record survives a change of committee secretary. Disputes about whether a unit declared end when the hash is produced.
+Amnesty counts are archived with the hash of the signed committee minutes, so a later reader can check that the reported figures were the ones the committee saw. The archive entry stores the twelve, eight and four counts, the slide file and the minute hash together. Amira also records the hash in the catalogue changelog, so the record survives a change of committee secretary. She has used that check when a unit disputed whether it had declared; producing the hash settled the dispute.
 
 ### Worked example (synthetic MCH)
 
@@ -795,75 +673,39 @@ You will (1) handle ambiguous scope; (2) handle insider-sensitive findings; (3) 
 
 ### 8.1 Ambiguous scope
 
-When a hostname might be participant-owned, Amira pauses and seeks written clarification. Guessing is not a specialist skill.
-
-In the worked case, related methods stopped within four minutes and the white team received the question by email. The pause is logged with the time and the question asked; written clarification from the white team or the participant contact is filed before any further probe.
-
-When ownership is unclear, the probe waits until someone with authority answers in writing. Participant-owned hostnames are the usual cause of these pauses, because they can look identical to Meridian Clearing House systems.
+When a hostname might be participant-owned, Amira pauses and seeks written clarification; guessing is not a specialist skill. Participant-owned hostnames are the usual cause of these pauses, because they can look identical to Meridian Clearing House systems. In the worked case, related methods stopped within four minutes and the white team received the question by email. The pause is logged with the time and the question asked, and written clarification from the white team or the participant contact is filed before any further probe; until someone with authority answers in writing, the probe waits.
 
 ### 8.2 Insider-sensitive
 
-Findings that imply staff misconduct go through HR paths with minimal necessary detail. Testing is not a witch hunt.
-
-The finding names the control that failed, such as a shared admin account, and leaves out who used it. Testing is not a witch hunt; her one-page HR liaison script is rehearsed so staff do not overshare in tickets that examiners might later read.
-
-Staff names appear only in the HR case file, which examiners can request through legal rather than read in FindingsDesk. Minimal necessary detail through HR paths protects people; the rehearsed one-page liaison script stops oversharing in tickets that examiners might later read.
+Findings that imply staff misconduct go through HR paths with the minimum necessary detail; testing is not a witch hunt. The finding names the control that failed, such as a shared admin account, and leaves out who used it. Staff names appear only in the HR case file, which examiners can request through legal rather than read in FindingsDesk. Amira's one-page HR liaison script is rehearsed, so staff do not overshare in tickets that examiners might later read. Minimal detail protects the people involved and keeps the finding about controls.
 
 ### 8.3 Vendor refusal
 
-Vendors who refuse reasonable authorized testing of their components trigger risk acceptance or replacement decisions — not silent hope.
-
-The decision object lists three options: accept the residual risk with an expiry, demand contractual testing rights, or replace the component. Amira brings the refusal to the CISO as a decision object with options written; hoping for next year without a date is drift.
-
-Hoping a vendor will cooperate next year without a date is drift under another name. Risk acceptance or replacement decisions are written as decision objects when authorized testing of a component is refused.
+Vendors who refuse reasonable authorized testing of their components trigger risk acceptance or replacement decisions — not silent hope. Amira brings the refusal to the CISO as a decision object with three options written: accept the residual risk with an expiry, demand contractual testing rights, or replace the component. Hoping the vendor will cooperate next year without a date is drift under another name. The chosen option, its owner and its expiry are filed in the decision log, so the refused component does not drop out of view until the next contract renewal.
 
 ### 8.4 Record under stress
 
-Difficult cases generate more pressure emails. All go to the CISO alias with factual headers.
-
-Difficult cases generate more pressure emails; all go to the CISO alias with factual headers. She does not debate findings in side threads that examiners will never see; the alias creates a record that survives staff changes and mood.
-
-The CISO alias creates a record that survives staff changes and mood. Factual headers on every pressure email keep difficult-case debates out of side threads examiners will never see.
-
-Any disagreement about a finding is answered on the alias, with the evidence attached. Factual headers keep that record useful when staff change, because a successor can follow each thread without the original authors.
+Difficult cases generate more pressure emails, and all of them go to the CISO alias with factual headers. Amira does not debate findings in side threads that examiners will never see. Any disagreement about a finding is answered on the alias, with the evidence attached. The alias creates a record that survives staff changes and mood, and the factual headers keep that record useful: a successor can follow each thread without the original authors. When an examiner later asks why a finding was not softened, the answer is already on the alias.
 
 ### 8.5 Time
 
-Difficult cases get explicit time boxes so they cannot starve ordinary catalogue work forever.
-
-A typical box is two weeks, set when the case opens and written beside the case owner's name. Time boxes appear on the same board as product findings; she renews a box only with a written reason and a new end date.
-
-Infinite investigations are visible debt when time boxes sit on the same board as product findings. Renewal needs a written reason and a new end date; silent starvation of catalogue work is refused.
+Difficult cases get explicit time boxes so they cannot starve ordinary catalogue work forever. A typical box is two weeks, set when the case opens and written beside the case owner's name. Time boxes appear on the same board as product findings, so infinite investigations are visible debt. Amira renews a box only with a written reason and a new end date; silent starvation of catalogue work is refused. When a box expires without renewal, the case closes with its findings so far instead of drifting on.
 
 ### 8.6 Support
 
-Amira pairs juniors with a senior on any case that involves HR or participants.
-
-The senior signs off each ticket entry the junior writes, so oversharing is caught before an examiner could read it. Solo juniors under that stress invent process; pairing is scheduled with the senior's name on the case file, not left to who happens to be free.
-
-The senior attends every HR or participant call, and the junior speaks from the rehearsed liaison script. Solo juniors under HR or participant stress invent process that later fails challenge.
+Amira pairs juniors with a senior on any case that involves HR or participants, because solo juniors under that stress invent process that later fails challenge. Pairing is scheduled with the senior's name on the case file, not left to whoever happens to be free. The senior attends every HR or participant call, the junior speaks from the rehearsed liaison script, and the senior signs off each ticket entry the junior writes, so oversharing is caught before an examiner could read it. Juniors leave each case having practised the script under supervision.
 
 ### 8.7 Narrative
 
-Insider-sensitive playbooks include a one-page HR liaison script that Amira rehearses so staff do not overshare in tickets. Time boxes for difficult cases appear on the same board as product findings so infinite investigations are visible debt. Juniors always pair with a senior when HR or participants are involved.
+The maybe-participant host case shows the difficult-case pattern in one morning: four minutes to stop related methods, an email to the white team, and resumption only on a written scope update. Insider-sensitive playbooks include the one-page HR liaison script that Amira rehearses with her team. Time boxes for difficult cases sit on the same board as product findings, and juniors always pair with a senior when HR or participants are involved. Each step leaves a record that an examiner can follow later without asking anyone what happened.
 
-The maybe-participant host case shows the pattern: four minutes to stop, an email to the white team, and resumption only on written scope. When a box expires without renewal, the case closes with its findings so far instead of drifting on.
+### 8.8 HR script control
 
-### 8.8 Bit2
+HR script versioning follows the same change control as ROE templates; freelanced empathy is not a control. Every version of the script carries a number, an effective date and two signatures, exactly as each ROE template does, so a well-meant wording change cannot reach an employee unreviewed. Retired versions stay in the archive, so legal can show which wording an employee actually heard on a given date. Amira has rejected a same-morning edit that lacked HR's countersignature; the afternoon interview waited rather than bending the process.
 
-HR script versioning follows the same change control as ROE templates; freelanced empathy is not a control. Putting the HR script under ROE-style change control means a well-meant wording change cannot reach an employee unreviewed.
+### 8.9 Same-day countersignature
 
-Every version of the script carries a number, an effective date and two signatures, exactly as each ROE template does. She has rejected a same-morning edit that lacked HR's countersignature; the afternoon interview waited rather than bending the process.
-
-Retired versions stay in the archive so legal can show which wording an employee actually heard on a given date. Same-morning edits without HR countersignature are rejected even when the interview is that afternoon.
-
-### 8.9 8.q10
-
-HR script changes require HR and Amira countersignatures the same day. Same-day countersignature prevents a script edited in the morning from being used in an afternoon interview without both owners' approval.
-
-HR script changes require HR and Amira countersignatures the same day so a morning edit cannot reach an afternoon interview without both owners. A missing signature is a stop, not a delay to negotiate; employees deserve reviewed words.
-
-The countersignature is recorded on the script's version line, next to the effective date and HR's initials. The draft simply waits until legal and HR have both signed it.
+HR script changes require HR and Amira countersignatures on the same day, so a script edited in the morning cannot reach an afternoon interview without both owners' approval. A missing signature is a stop, not a delay to negotiate; employees deserve reviewed words. The countersignature is recorded on the script's version line, next to the effective date and HR's initials. An edit that is still waiting for a signature stays a draft, and the interview uses the last signed version until both owners have approved the new one.
 
 ### Worked example (synthetic MCH)
 
