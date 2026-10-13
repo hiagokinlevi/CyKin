@@ -2948,6 +2948,8 @@ Kofi chooses six measures: reachable zone pairs, unexpected denies per week, VPN
 
 Measures need targets that define success. Kofi sets four criteria: guest isolation verified by both lab and production tests; every requirement supported by passing evidence; VPN availability above 99.9 percent over the measurement period; and added latency within the one-millisecond budget. Each criterion is clear enough that two people would agree whether it was met. The criteria are agreed with Dr Vasquez and the council before results are collected, which prevents the temptation to adjust targets after seeing the numbers.
 
+If VPN availability came in at 99.8 percent, for example, that criterion would be reported as not met rather than reframed.
+
 ### 44.4 Risks
 
 Kofi lists the risks to completing the capstone. Procurement delays could postpone second links and shorten the availability measurement. Staff availability matters because migrations need council engineers present. A serious incident elsewhere in the council could pull the team away for weeks. Each risk has a likelihood, an impact and a response: links are ordered early, migrations are scheduled around known leave, and the plan identifies which measures could still be reported if time runs short. Managing project risk is part of engineering, not separate from it.

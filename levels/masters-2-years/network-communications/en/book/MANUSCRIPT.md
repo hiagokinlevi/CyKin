@@ -99,6 +99,8 @@ You will (1) explain how network intrusion detection works; (2) analyse the base
 
 Network intrusion detection systems inspect traffic or flow records and raise alerts when patterns match signatures or deviate from expected behaviour. NIST SP 800-94 distinguishes signature-based, anomaly-based and stateful protocol analysis methods. Signatures are precise for known patterns but miss novel ones; anomaly methods can find new patterns but produce more false alarms. Paxson's Bro, now Zeek, emphasised policy scripts that describe what the operator cares about, a philosophy that fits Amara's tuning focus.
 
+For Amara, the practical consequence is that each rule's false alarms on Corvane's traffic must be measured rather than assumed from its description.
+
 Understanding this explains why tuning matters.
 
 ### Lab — The base-rate problem
@@ -123,6 +125,8 @@ base rate 0.0001  true alerts        95 false alerts     9999 precision 0.009
 ### 2.2 Reading the base rates
 
 With a rule that detects 95 percent of malicious events and falsely alerts on only 1 percent of benign events, precision is 0.913 when one event in ten is malicious, but only 0.009 when one in ten thousand is. Axelsson (2000) made exactly this point: in real networks malicious events are rare, so even a good detector produces mostly false alarms. Tuning that lowers the false positive rate on benign traffic therefore matters more than small gains in detection rate.
+
+At one malicious event in ten thousand, the rule raises roughly a hundred false alerts for every true one.
 
 ### 2.3 Triage in practice
 
@@ -273,6 +277,8 @@ mean per100GB pre 512.1 post 190.9; traffic fell 25.5%
 
 Raw alerts fall from about 4,200 to 1,200 per week, a 72 percent drop. But traffic also fell by 25.5 percent in the post period, because a seasonal customer moved to another provider. Normalised alerts fall from 512 to 191 per hundred gigabytes, still a large reduction, so traffic explains only part of the raw change. The weekly series also shows a sharp step at week five, matching the tuning date, rather than a gradual decline.
 
+Raw counts alone would credit tuning with the whole 72 percent drop; normalising separates out the volume lost with the departed customer.
+
 Normalising per unit of traffic removes volume effects.
 
 ### 4.3 Testing other explanations
@@ -323,6 +329,8 @@ You will (1) write the dissertation proposal; (2) pilot tuning on one sensor; (3
 ### 5.1 Proposal
 
 The proposal states the question, measures, design, governance, ethics and analysis plan. It sets success criteria in advance: at least a 50 percent reduction in normalised alert volume with recall no lower than 0.90 on the labelled set.
+
+Fixing recall at no lower than 0.90 stops a large volume cut from being bought by silencing rules that catch real attacks.
 
 The proposal sets out the question, design, measures, timeline, risks and data handling, and is approved by her supervisor and Corvane before work begins. It becomes the reference against which later changes are judged, and any departure is recorded with a reason.
 
