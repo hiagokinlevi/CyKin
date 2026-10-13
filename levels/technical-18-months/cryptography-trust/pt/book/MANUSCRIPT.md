@@ -1,7 +1,7 @@
 # Criptografia e Serviços de Confiança: Curso Técnico
 
 - Idioma: português do Brasil (`pt`); curso 054, curso técnico (18 meses). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–9 de 18 já estão escritos em português, com os exercícios EX001–EX036 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 10–18 (EX037–EX072) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–18 de 18 têm texto didático escrito à mão; os exercícios EX001–EX072 têm resoluções correspondentes com rubricas de 0 a 3; os sete laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: operadores técnicos.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios calculam hashes de arquivos, calculam expirações, inspecionam os padrões de TLS do Python, conferem o HMAC e o scrypt contra vetores publicados, contam motivos em logs e planejam rotações; não implementam nenhuma cifra. Sistemas de produção usam bibliotecas avaliadas, clientes ACME, cofres e HSMs; nunca crie sua própria criptografia. Pessoas, organizações e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ Leia na ordem. Os capítulos acompanham um estudante do curso técnico pelos fun
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) |
-
-Capítulos 10–18: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-10), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -484,11 +482,538 @@ A saída das ferramentas varia entre versões; registre as versões junto com as
 
 As ferramentas de inspeção são seguras quando leem apenas dados públicos, mantêm a verificação ligada e ficam locais para o material interno.
 
+<a id="ch-10"></a>
+
+## Capítulo 10 — Criptografia e serviços de confiança: configuração de controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) configurar a versão do TLS e as opções de verificação de acordo com a NIST SP 800-52 Rev. 2; (2) inspecionar o contexto de cliente padrão do Python; (3) aplicar as mudanças por meio do controle de mudanças.
+
+### 10.1 Metas de configuração
+
+Priya entrega a Tomás as metas para todo endpoint TLS da Lumen, tiradas da NIST SP 800-52 Rev. 2: oferecer TLS 1.3, permitir o TLS 1.2 apenas onde clientes mais antigos precisam dele, desativar as versões anteriores, servir uma cadeia de certificados completa e usar certificados cujos nomes correspondam ao serviço. Nos clientes, as metas são verificar os certificados e os nomes de host e confiar apenas nas raízes pretendidas. Tomás aprende que muitas violações vêm de um cliente que aceita em silêncio qualquer certificado, então as configurações dos clientes merecem tanta revisão quanto as dos servidores, especialmente em scripts e integrações escritos às pressas.
+
+### 10.2 Um padrão seguro para o cliente
+
+Tomás inspeciona o ssl.create_default_context do Python na máquina do laboratório. O laboratório abaixo imprime seu modo de verificação, a verificação do nome do host e a versão mínima. Esses padrões são o que um script bem-comportado deve manter. Um antipadrão comum é definir check_hostname como False e verify_mode como CERT_NONE para fazer um erro desaparecer; isso transforma o TLS em cifração com uma parte desconhecida. Quando um script precisa confiar numa raiz interna, a correção certa é carregar essa raiz com load_verify_locations, mantendo todas as verificações ligadas, em vez de desligá-las.
+
+### Laboratório — Contexto de cliente padrão
+
+```python
+# Inspect Python's default TLS client context; no network access.
+import ssl, sys
+ctx = ssl.create_default_context()
+print("python", sys.version.split()[0], "|", ssl.OPENSSL_VERSION)
+print("verify_mode:", ctx.verify_mode.name)
+print("check_hostname:", ctx.check_hostname)
+print("minimum_version:", ctx.minimum_version.name)
+ctx.minimum_version = ssl.TLSVersion.TLSv1_2   # make the policy floor explicit
+print("after policy, minimum_version:", ctx.minimum_version.name)
+```
+
+Execute com `python3 lab_tlsctx.py`. Saída verificada:
+
+```text
+python 3.13.5 | OpenSSL 3.5.7 9 Jun 2026
+verify_mode: CERT_REQUIRED
+check_hostname: True
+minimum_version: MINIMUM_SUPPORTED
+after policy, minimum_version: TLSv1_2
+```
+
+### 10.3 Controle de mudanças
+
+Mudar uma configuração de TLS num balanceador de carga compartilhado pode desconectar coletores antigos ou sistemas de parceiros. Tomás escreve uma solicitação de mudança que lista a configuração, o efeito esperado, os clientes que podem quebrar, um plano de teste e um passo de reversão. Ele confere primeiro os logs de handshake para ver se algum cliente ainda negocia TLS 1.0 ou 1.1. A mudança é feita numa janela de manutenção, e ele testa de novo depois com o s_client e com o laboratório em Python. Registrar as evidências de antes e de depois permite que a equipe prove que o controle funciona e o reverta rapidamente se um parceiro relatar problemas.
+
+### Exemplo resolvido
+
+Tomás escreve uma solicitação de mudança para desativar o TLS 1.0 e o 1.1 no balanceador de carga do portal, confere os logs em busca de clientes antigos, aplica a mudança e registra os testes de antes e de depois.
+
+> **Caso sintético.** Os endpoints e os clientes são sintéticos; a SP 800-52 Rev. 2 é real.
+
+### Erros e limites
+
+Os padrões mudam entre versões do Python e do OpenSSL; registre as versões. Desativar as versões antigas pode quebrar dispositivos legados que precisam de um plano separado.
+
+### Exercícios
+
+- **EX037 — Política de versões.** Quais versões do TLS a política da Lumen permite? *Rubrica:* 3 = TLS 1.3, mais TLS 1.2 apenas onde clientes mais antigos precisam; anteriores desativadas;; 2 = 1.3 e 1.2;; 1 = inclui 1.0;; 0 = nenhuma.
+
+- **EX038 — Saída do contexto padrão.** O que o laboratório informou para verify_mode e check_hostname? *Rubrica:* 3 = CERT_REQUIRED e True;; 2 = um valor;; 1 = CERT_NONE;; 0 = nenhuma.
+
+- **EX039 — Correção para a raiz interna.** Como um script deve confiar na raiz interna da Lumen? *Rubrica:* 3 = carregá-la com load_verify_locations e manter todas as verificações ligadas;; 2 = carregar a raiz;; 1 = desativar as verificações;; 0 = nenhuma.
+
+- **EX040 — Antes da mudança.** O que Tomás deve conferir antes de desativar o TLS 1.1? *Rubrica:* 3 = os logs de handshake, em busca de clientes que ainda negociam versões antigas;; 2 = logs;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Uma boa configuração de controles mantém a verificação ligada, segue as orientações publicadas de TLS e muda as configurações apenas por solicitações testadas e reversíveis.
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Criptografia e serviços de confiança: verificação
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar uma implementação contra um vetor de teste publicado; (2) verificar a autenticação de mensagens com comparação em tempo constante; (3) declarar o que um teste aprovado prova e o que não prova.
+
+### 11.1 Vetores de teste
+
+Antes de confiar em qualquer componente criptográfico, a Lumen o confere contra vetores de teste publicados: entradas fixas com saídas corretas conhecidas, impressas nas normas. A RFC 4231 lista vetores para o HMAC-SHA-256. Se o módulo hmac do Python, um equipamento de um fornecedor ou a biblioteca de um parceiro produzem a saída documentada para essas entradas, Tomás ganha confiança de que o algoritmo está corretamente ligado. Uma divergência significa que algo está errado, talvez a função de hash errada ou um erro na codificação da chave. Os vetores de teste conferem a correção da primitiva; eles não provam que as chaves estão protegidas nem que o protocolo ao redor é seguro.
+
+### 11.2 Verificar os callbacks
+
+O processador de pagamentos assina cada callback com HMAC-SHA-256 usando um segredo compartilhado com a Lumen. O portal recalcula o HMAC sobre o corpo recebido e o compara com o cabeçalho. Tomás aprende duas regras. Primeiro, comparar com hmac.compare_digest, que leva o mesmo tempo seja o primeiro ou o último byte que difere, e não com ==, que pode vazar informação pelo tempo. Segundo, incluir um carimbo de tempo nos dados assinados e rejeitar as mensagens antigas, para que um atacante não consiga repetir um callback capturado. O laboratório confere o vetor da RFC 4231 e depois verifica um callback sintético autêntico, um modificado e um antigo.
+
+### Laboratório — Vetor de teste HMAC e verificação de callbacks
+
+```python
+# HMAC-SHA-256: RFC 4231 test case 1, then synthetic callback checks. Teaching only.
+import hmac, hashlib
+key = bytes.fromhex("0b" * 20); data = b"Hi There"
+expected = "b0344c61d8db38535ca8afceaf0bf12b881dc200c9833da726e9376c2e32cff7"
+print("RFC 4231 TC1 match:", hmac.new(key, data, hashlib.sha256).hexdigest() == expected)
+SECRET = b"synthetic-callback-secret"; NOW = 1_800_000_000; WINDOW = 300
+def sign(ts, body): return hmac.new(SECRET, f"{ts}.".encode() + body, hashlib.sha256).hexdigest()
+def verify(ts, body, tag):
+    return abs(NOW - ts) <= WINDOW and hmac.compare_digest(sign(ts, body), tag)
+body = b'{"order":"LF-1042","status":"paid"}'
+tag = sign(NOW - 20, body)
+print("authentic:", verify(NOW - 20, body, tag))
+print("edited body:", verify(NOW - 20, body.replace(b"paid", b"refunded"), tag))
+old = NOW - 3600
+print("stale replay:", verify(old, body, sign(old, body)))
+```
+
+Execute com `python3 lab_hmac.py`. Saída verificada:
+
+```text
+RFC 4231 TC1 match: True
+authentic: True
+edited body: False
+stale replay: False
+```
+
+### 11.3 O que a aprovação prova
+
+Um teste verde é fácil de interpretar em excesso. Passar no vetor da RFC 4231 prova que o cálculo do HMAC está correto para aquela entrada. Passar no teste de callback prova que o portal rejeita um corpo adulterado e um carimbo de tempo antigo. Isso não prova que o segredo compartilhado está guardado com segurança, que todos os caminhos do código chamam a verificação nem que os próprios sistemas do processador são seguros. Tomás escreve cada resultado de verificação com seus limites declarados, para que os gestores não leiam uma única verificação aprovada como uma afirmação de que os pagamentos estão seguros de ponta a ponta.
+
+### Exemplo resolvido
+
+Tomás executa o laboratório de HMAC, vê o vetor coincidir, o callback editado falhar e o callback antigo falhar e registra o resultado com seus limites declarados.
+
+> **Caso sintético.** O segredo do callback e os corpos são sintéticos; o caso de teste 1 da RFC 4231 é real.
+
+### Erros e limites
+
+Os vetores de teste não cobrem canais laterais nem o manuseio das chaves. Uma janela de repetição longa demais enfraquece a verificação do carimbo de tempo.
+
+### Exercícios
+
+- **EX041 — Propósito do vetor.** O que coincidir com um vetor da RFC 4231 prova? *Rubrica:* 3 = o cálculo do HMAC está correto para aquelas entradas, não a segurança das chaves nem do protocolo;; 2 = correção;; 1 = segurança geral;; 0 = nenhuma.
+
+- **EX042 — Razão do compare_digest.** Por que usar hmac.compare_digest em vez de ==? *Rubrica:* 3 = a comparação em tempo constante evita vazar pelo tempo quantos bytes coincidem;; 2 = tempo;; 1 = nenhuma diferença;; 0 = nenhuma.
+
+- **EX043 — Callback antigo.** No laboratório, por que o terceiro callback foi rejeitado, embora sua etiqueta fosse válida? *Rubrica:* 3 = seu carimbo de tempo era mais antigo que a janela de 300 s, então foi tratado como repetição;; 2 = carimbo de tempo;; 1 = etiqueta errada;; 0 = nenhuma.
+
+- **EX044 — Relatar os limites.** Cite uma coisa que o teste de callback aprovado não prova. *Rubrica:* 3 = armazenamento do segredo, todos os caminhos do código chamando a verificação, ou segurança do provedor;; 2 = um item;; 1 = prova tudo;; 0 = nenhuma.
+
+### Síntese
+
+A verificação combina vetores publicados, comparação correta e verificações de repetição e é relatada junto com o que deixa sem provar.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Laboratório isolado I
+
+### Objetivos de aprendizagem
+
+Você vai (1) montar um laboratório isolado para o trabalho com TLS e certificados; (2) emitir certificados de teste a partir de uma raiz descartável de laboratório; (3) desmontar o laboratório para que nenhuma confiança de teste vaze para a produção.
+
+### 12.1 Isolamento primeiro
+
+Priya dá a Tomás uma máquina virtual num segmento de rede isolado, sem rota para a produção e sem acesso a segredos reais. Todos os nomes de host terminam em .lab.lumen.example e só resolvem dentro do segmento. O isolamento permite que ele quebre coisas de propósito, como servir um certificado expirado ou uma cadeia errada, sem afetar os clientes. Ele escreve os limites do laboratório no alto do caderno: nenhum dado real de clientes, nenhuma chave de produção, nenhuma conexão de saída para parceiros. Se um teste precisar de dados parecidos com os de produção, ele usa dados sintéticos gerados para essa finalidade.
+
+### 12.2 Uma raiz descartável de laboratório
+
+Usando o openssl na máquina virtual, Tomás cria uma chave e um certificado raiz de laboratório, um intermediário e dois certificados de servidor, um válido e um deliberadamente expirado. Ele instala a raiz do laboratório apenas no repositório de confiança do cliente do laboratório, nunca no seu notebook nem numa imagem compartilhada. Depois executa o s_client contra cada servidor e registra os resultados: o servidor válido é verificado com o resultado 0, o expirado falha com um erro claro e um servidor configurado sem o intermediário não consegue montar uma cadeia. Ver cada erro num lugar seguro o torna reconhecível depois.
+
+### 12.3 Desmontar
+
+Quando o exercício termina, Tomás apaga a chave privada da raiz do laboratório, remove a raiz do repositório de confiança do cliente do laboratório e destrói o snapshot da máquina virtual. Ele escreve um registro de desmontagem que lista cada item removido. Priya explica que raízes de laboratório esquecidas são um risco real: uma raiz instalada para um teste e deixada num notebook permite que qualquer um que tenha sua chave intercepte o tráfego desse notebook. Um bom laboratório termina com menos confiança instalada do que tinha no começo, e o registro prova isso ao próximo técnico que usar o ambiente.
+
+### Exemplo resolvido
+
+Tomás monta uma raiz de laboratório, um intermediário e dois servidores, reproduz três resultados de handshake e conclui um registro de desmontagem que remove a raiz e sua chave.
+
+> **Caso sintético.** Os nomes e as chaves do laboratório são sintéticos e destruídos depois do uso.
+
+### Erros e limites
+
+O isolamento virtual pode falhar por meio de áreas de transferência compartilhadas ou de redes em ponte. Os resultados do laboratório podem diferir dos clientes de produção com outros repositórios de confiança.
+
+### Exercícios
+
+- **EX045 — Limites do laboratório.** Enuncie dois limites do laboratório que Tomás anota. *Rubrica:* 3 = dois entre nenhum dado real de clientes, nenhuma chave de produção, nenhuma conexão de saída para parceiros;; 2 = um;; 1 = nada;; 0 = nenhuma.
+
+- **EX046 — Três resultados.** Quais três resultados de handshake Tomás reproduziu? *Rubrica:* 3 = o válido é verificado, o expirado falha, o sem intermediário não monta a cadeia;; 2 = dois;; 1 = um;; 0 = nenhuma.
+
+- **EX047 — Local da raiz.** Onde a raiz do laboratório pode ser instalada? *Rubrica:* 3 = apenas no repositório de confiança do cliente do laboratório, nunca num notebook ou numa imagem compartilhada;; 2 = só no laboratório;; 1 = em qualquer lugar;; 0 = nenhuma.
+
+- **EX048 — Risco da raiz esquecida.** Por que uma raiz de laboratório esquecida é perigosa? *Rubrica:* 3 = quem tem sua chave pode interceptar o tráfego das máquinas que confiam nela;; 2 = interceptação;; 1 = inofensiva;; 0 = nenhuma.
+
+### Síntese
+
+Um laboratório isolado permite que os técnicos reproduzam falhas com segurança e termina com toda a confiança de teste removida e registrada.
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Criptografia e serviços de confiança: solução de problemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) seguir um ciclo de solução de problemas guiado por hipóteses; (2) fazer a triagem automática de logs de erros de TLS; (3) escalar com uma nota de passagem clara.
+
+### 13.1 O ciclo de solução de problemas
+
+Priya ensina um ciclo: observar o sintoma, formular uma hipótese, executar um teste que poderia prová-la errada, registrar o resultado e repetir. Quando os coletores dos depósitos de repente deixam de entrar no Wi-Fi, a primeira hipótese de Tomás é um certificado de cliente expirado. Ele confere um dispositivo e encontra um certificado válido, então a hipótese está errada. Sua segunda hipótese é o certificado do servidor RADIUS, que os coletores verificam contra a raiz interna da Lumen, e descobre-se que ele foi renovado sob um novo intermediário que os dispositivos não conhecem. Mudar uma coisa de cada vez tornou a causa visível rapidamente.
+
+### 13.2 Triagem a partir dos logs
+
+Quando muitas falhas chegam ao mesmo tempo, contá-las por motivo ajuda. Tomás escreve um pequeno script que lê linhas sintéticas do log do balanceador de carga, extrai o alerta ou o motivo do erro TLS e o grupo de clientes e imprime as contagens. Os padrões aparecem imediatamente: a maioria das falhas compartilha um motivo vindo de um grupo de clientes, o que sugere uma causa única, e não muitas. O laboratório abaixo mostra a saída para vinte linhas sintéticas. Contar não é diagnosticar, mas diz a ele que hipótese testar primeiro e dá aos gestores uma noção rápida da escala.
+
+### Laboratório — Triagem de erros de TLS
+
+```python
+# Count synthetic TLS failure reasons by client group.
+import collections
+groups = ["handheld"] * 12 + ["browser"] * 5 + ["partner"] * 3
+reasons = ["unknown_ca"] * 12 + ["certificate_expired"] * 2 + ["handshake_failure"] * 3 + ["protocol_version"] * 3
+lines = [f"2026-03-02T06:{i:02d}:00Z lb1 tls_fail client={g} reason={r}" for i, (g, r) in enumerate(zip(groups, reasons))]
+c = collections.Counter()
+for ln in lines:
+    kv = dict(p.split("=") for p in ln.split()[3:])
+    c[(kv["reason"], kv["client"])] += 1
+print("lines:", len(lines))
+for (r, g), n in c.most_common():
+    print(f"{n:3d}  {r:20} {g}")
+```
+
+Execute com `python3 lab_triage.py`. Saída verificada:
+
+```text
+lines: 20
+ 12  unknown_ca           handheld
+  3  handshake_failure    browser
+  3  protocol_version     partner
+  2  certificate_expired  browser
+```
+
+### 13.3 Notas de escalonamento
+
+Se Tomás não consegue corrigir uma falha dentro da sua autoridade, ele escala com uma nota de passagem. Ela informa o sintoma e quando começou, os usuários e sistemas afetados, as hipóteses testadas e seus resultados com evidências, o que ele mudou, se mudou alguma coisa, e o que recomenda em seguida. Uma boa nota faz com que o engenheiro sênior não repita os testes dele. Priya lembra que ele deve incluir os fusos horários e as mensagens de erro exatas e escrever de forma simples, em vez de supor, porque um palpite confiante, mas errado, pode mandar a próxima pessoa na direção errada.
+
+### Exemplo resolvido
+
+Tomás executa o laboratório de triagem, vê que a maioria dos erros é unknown_ca vindo dos coletores, testa a hipótese da cadeia do RADIUS e escreve uma nota de escalonamento recomendando distribuir o novo intermediário.
+
+> **Caso sintético.** As linhas de log, os dispositivos e o incidente do RADIUS são sintéticos.
+
+### Erros e limites
+
+Os logs podem truncar ou omitir os motivos; as contagens podem enganar se um cliente repetir as tentativas rapidamente. Mudar várias coisas ao mesmo tempo destrói a trilha de evidências.
+
+### Exercícios
+
+- **EX049 — Regra de um teste.** Por que mudar apenas uma coisa por teste? *Rubrica:* 3 = para que o resultado possa ser atribuído àquela mudança e a causa fique visível;; 2 = atribuição;; 1 = velocidade;; 0 = nenhuma.
+
+- **EX050 — Principal motivo da triagem.** No laboratório, que motivo e que grupo de clientes predominaram? *Rubrica:* 3 = unknown_ca vindo dos clientes handheld, 12 de 20 linhas;; 2 = só o motivo;; 1 = nada;; 0 = nenhuma.
+
+- **EX051 — Causa no RADIUS.** O que causou as falhas de Wi-Fi dos coletores? *Rubrica:* 3 = o certificado do RADIUS renovado sob um novo intermediário desconhecido dos dispositivos;; 2 = menciona RADIUS;; 1 = certificado de cliente expirado;; 0 = nenhuma.
+
+- **EX052 — Conteúdo da passagem.** Cite quatro itens de uma nota de escalonamento. *Rubrica:* 3 = quatro entre sintoma e início, sistemas afetados, hipóteses com resultados, mudanças feitas, recomendação;; 2 = três;; 1 = um;; 0 = nenhuma.
+
+### Síntese
+
+A solução de problemas funciona testando uma hipótese de cada vez, usando contagens para escolher onde olhar e escalando com notas completas.
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Criptografia e serviços de confiança: automação
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar como o ACME automatiza a emissão e a renovação de certificados; (2) planejar a rotação de chaves a partir de um inventário; (3) incorporar à automação um tratamento seguro de falhas.
+
+### 14.1 Renovação com ACME
+
+As renovações manuais causaram as duas últimas indisponibilidades da Lumen, então Priya passa os certificados públicos para o ACME, o protocolo da RFC 8555 usado por muitas autoridades certificadoras. Um cliente ACME em cada servidor prova o controle do domínio, solicita um certificado e o renova automaticamente, normalmente quando resta cerca de um terço da validade. Tomás aprende que a automação muda o risco, em vez de eliminá-lo: as renovações ainda falham quando o DNS muda, quando firewalls bloqueiam a validação ou quando a chave da conta do cliente se perde. Cada renovação automatizada precisa de monitoramento, e o relatório de expiração do capítulo 7 continua sendo a rede de segurança que captura as falhas silenciosas.
+
+### 14.2 Planejar a rotação
+
+Nem toda chave tem um protocolo como o ACME. As chaves SSH, os segredos HMAC e a raiz interna seguem criptoperíodos definidos pela política, orientados pela NIST SP 800-57 Part 1. Tomás escreve um script que lê um inventário sintético de chaves com datas de criação e idades máximas e lista quais chaves estão com a rotação vencendo. O script planeja; ele não rotaciona, porque cada rotação precisa ser coordenada com os parceiros ou com o processador de pagamentos. A saída do laboratório abaixo mostra três chaves vencendo em até trinta dias, uma delas já atrasada, ordenadas para que a chave atrasada seja tratada primeiro.
+
+### Laboratório — Planejador de rotação
+
+```python
+# Plan (not perform) key rotation from a synthetic inventory.
+import datetime
+TODAY = datetime.date(2026, 3, 1)
+keys = [("sftp-partner-a ssh", "2025-06-01", 365), ("sftp-partner-b ssh", "2024-12-25", 390),
+        ("payment-callback hmac", "2025-09-10", 180), ("portal tls key", "2025-12-01", 398),
+        ("depot-wifi root", "2021-01-15", 3650), ("backup encryption key", "2025-03-20", 365)]
+due = []
+for name, made, max_age in keys:
+    left = max_age - (TODAY - datetime.date.fromisoformat(made)).days
+    if left <= 30: due.append((left, name))
+for left, name in sorted(due):
+    print(f"{name:24} {'OVERDUE by ' + str(-left) if left < 0 else str(left) + ' days left'}")
+```
+
+Execute com `python3 lab_rotation.py`. Saída verificada:
+
+```text
+sftp-partner-b ssh       OVERDUE by 41
+payment-callback hmac    8 days left
+backup encryption key    19 days left
+```
+
+### 14.3 Falha segura
+
+Uma automação que falha em silêncio é pior que nenhuma, porque as pessoas param de conferir. Tomás projeta o job de renovação para alertar o técnico de plantão quando uma renovação falhar duas vezes, para manter o certificado antigo no lugar até que o novo seja verificado e para registrar cada passo sem imprimir chaves privadas. Ele também acrescenta um modo de simulação para os testes. Priya acrescenta uma regra: qualquer automação capaz de mudar chaves precisa rodar sob sua própria conta de serviço, com apenas as permissões de que precisa, para que um bug não consiga sobrescrever chaves não relacionadas nem ler segredos que não deveria ver.
+
+### Exemplo resolvido
+
+Tomás executa o laboratório de rotação, programa primeiro a chave SSH atrasada do parceiro e acrescenta alertas de falha e um modo de simulação ao job de renovação ACME.
+
+> **Caso sintético.** As chaves, as idades e os parceiros são sintéticos; a RFC 8555 e a SP 800-57 Part 1 são reais.
+
+### Erros e limites
+
+A renovação automatizada ainda depende do DNS, dos firewalls e das chaves de conta. Os criptoperíodos são decisões de política, e não constantes universais.
+
+### Exercícios
+
+- **EX053 — Papel do ACME.** O que um cliente ACME automatiza? *Rubrica:* 3 = provar o controle do domínio, solicitar e renovar certificados;; 2 = renovação;; 1 = manual;; 0 = nenhuma.
+
+- **EX054 — Chave atrasada.** No laboratório, que chave estava atrasada, e por quantos dias? *Rubrica:* 3 = a chave ssh de sftp-partner-b, atrasada 41 dias;; 2 = só a chave;; 1 = nada;; 0 = nenhuma.
+
+- **EX055 — Planejar, não rotacionar.** Por que o script apenas planeja as rotações? *Rubrica:* 3 = as rotações precisam ser coordenadas com parceiros e provedores;; 2 = coordenação;; 1 = preguiça;; 0 = nenhuma.
+
+- **EX056 — Manter o certificado antigo.** Por que manter o certificado antigo até que o novo seja verificado? *Rubrica:* 3 = para que uma renovação que falhe não cause uma indisponibilidade;; 2 = evitar indisponibilidade;; 1 = nenhuma razão;; 0 = nenhuma.
+
+### Síntese
+
+A automação deve renovar e planejar a rotação de forma confiável, falhar de forma ruidosa e rodar com o mínimo de privilégio necessário.
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Criptografia e serviços de confiança: integração e dependências
+
+### Objetivos de aprendizagem
+
+Você vai (1) mapear as dependências criptográficas entre a Lumen e os parceiros; (2) planejar uma rotação coordenada de segredos; (3) reconhecer a confiança na cadeia de suprimentos de bibliotecas e dispositivos.
+
+### 15.1 Mapa de dependências
+
+Toda integração compartilha algo criptográfico. O processador de pagamentos e a Lumen compartilham um segredo HMAC; os armazéns parceiros confiam na chave de host SSH da Lumen e guardam suas próprias chaves de cliente; a plataforma de e-mail assina as mensagens de saída com chaves DKIM publicadas no DNS da Lumen. Tomás desenha essas ligações como um mapa de dependências, com o dono de cada lado e a pessoa de contato para as mudanças. Quando uma chave de um lado muda, o outro lado também precisa ser atualizado, ou a integração quebra. O mapa transforma indisponibilidades surpreendentes em trabalho planejado, porque cada rotação agora tem uma lista conhecida de pessoas a avisar.
+
+### 15.2 Rotação coordenada
+
+O segredo dos callbacks de pagamento está com a rotação vencendo. Tomás aprende o padrão de sobreposição: a Lumen configura o portal para aceitar tanto o segredo antigo quanto o novo, o processador passa a assinar com o novo segredo, a Lumen confirma que os callbacks são verificados com o novo e só então remove o antigo. Cada passo é registrado com o horário e as evidências. Sem sobreposição, há uma janela em que callbacks válidos falham e pedidos são marcados erroneamente como não pagos. Ele escreve o plano como uma lista de verificação curta, que as duas equipes assinam antes de a janela de manutenção começar.
+
+### 15.3 Confiança na cadeia de suprimentos
+
+A Lumen não escreve código de TLS nem de SSH; ela depende dos pacotes do sistema operacional, do Python, do OpenSSL e do firmware do fornecedor dos coletores. Uma vulnerabilidade em qualquer um deles é uma vulnerabilidade na Lumen. Tomás assina os avisos de segurança desses componentes e registra as versões no inventário, para que, quando aparecer um aviso, ele consiga dizer em minutos quais hosts estão afetados. Ele também aprende que instalar uma biblioteca a partir de um espelho não oficial ou copiar um binário de um fórum acrescenta confiança numa parte desconhecida, exatamente o tipo de risco que o modelo de confiança do capítulo 6 tenta tornar visível.
+
+### Exemplo resolvido
+
+Tomás mapeia cinco integrações criptográficas, escreve uma lista de verificação de rotação com sobreposição para o segredo de pagamento e liga as versões dos componentes aos feeds de avisos.
+
+> **Caso sintético.** Os parceiros, os contatos e as versões são sintéticos.
+
+### Erros e limites
+
+Os parceiros podem não suportar a sobreposição e exigir uma troca abrupta. Os feeds de avisos podem ficar atrás da divulgação pública.
+
+### Exercícios
+
+- **EX057 — Dependência do DKIM.** Que sistema da Lumen publica as chaves públicas usadas para verificar as assinaturas de e-mail? *Rubrica:* 3 = o DNS da Lumen, que guarda as chaves públicas DKIM;; 2 = DNS;; 1 = só o servidor de e-mail;; 0 = nenhuma.
+
+- **EX058 — Ordem da sobreposição.** Dê a ordem dos passos da rotação com sobreposição. *Rubrica:* 3 = aceitar ambos, o provedor troca, confirmar que o novo é verificado, remover o antigo;; 2 = três em ordem;; 1 = fora de ordem;; 0 = nenhuma.
+
+- **EX059 — Efeito sem sobreposição.** O que dá errado sem um período de sobreposição? *Rubrica:* 3 = callbacks válidos falham e pedidos são marcados como não pagos durante a lacuna;; 2 = falhas;; 1 = nada;; 0 = nenhuma.
+
+- **EX060 — Registro de versões.** Por que registrar as versões do OpenSSL e do firmware no inventário? *Rubrica:* 3 = para dizer rapidamente quais hosts um aviso afeta;; 2 = avisos;; 1 = desnecessário;; 0 = nenhuma.
+
+### Síntese
+
+As integrações tornam as chaves dependências compartilhadas, então as rotações precisam de sobreposição e todo componente fornecido precisa ter suas versões acompanhadas.
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Documentação técnica e segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever runbooks que outro técnico consiga seguir; (2) documentar as configurações criptográficas sem expor segredos; (3) aplicar regras de segurança ao trabalho em produção.
+
+### 16.1 Runbooks que funcionam
+
+O primeiro runbook de Tomás, para renovar o certificado do host de transferência de arquivos, pressupunha conhecimentos que só ele tinha. Priya pede que um colega o siga, e o colega para no passo três. Tomás o reescreve com pré-requisitos, comandos exatos, saídas esperadas, uma verificação depois de cada passo e uma seção de reversão. Ele acrescenta quem chamar se um passo falhar. Um runbook é testado por outra pessoa que o usa, e não pelo autor relendo-o. Bons runbooks transformam a experiência de uma pessoa numa capacidade da equipe e encurtam as indisponibilidades às três da manhã.
+
+### 16.2 Documentar sem segredos
+
+A documentação precisa descrever onde os segredos ficam sem contê-los. Tomás escreve que o segredo dos callbacks de pagamento está guardado no cofre sob um caminho nomeado, acessível à svc-portal, rotacionado a cada 180 dias, em vez de escrever o segredo. Ele documenta abertamente as configurações de TLS, os perfis de certificado e os tamanhos de chave, porque eles não são secretos, e o princípio de Kerckhoffs diz que um sistema deve continuar seguro mesmo quando seu projeto é público. Ele revisa cada documento com uma busca por padrões que pareçam chaves ou senhas antes de publicá-lo na wiki da equipe.
+
+### 16.3 Segurança em produção
+
+As regras de segurança de Priya para o trabalho criptográfico em produção são curtas: ter uma mudança aprovada, uma reversão testada e uma segunda pessoa disponível; nunca desativar a verificação para restaurar o serviço; nunca mover chaves privadas por e-mail, chat ou mídia removível; e parar e escalar se aparecer algo inesperado. Tomás acrescenta sua própria regra: anunciar o trabalho no canal de operações antes de começar e ao terminar. Essas regras existem porque erros criptográficos podem bloquear todos os usuários de uma só vez, e um processo calmo e conferido evita que um pequeno erro se torne uma indisponibilidade em toda a empresa.
+
+### Exemplo resolvido
+
+Tomás reescreve o runbook de renovação depois do teste de um colega, documenta o segredo dos callbacks apenas pelo caminho no cofre e lista as regras de segurança em produção no topo.
+
+> **Caso sintético.** Os passos do runbook e os caminhos no cofre são sintéticos.
+
+### Erros e limites
+
+Os runbooks envelhecem à medida que os sistemas mudam; revise-os depois de cada uso. Os scanners de segredos deixam passar formatos incomuns.
+
+### Exercícios
+
+- **EX061 — Teste do runbook.** Como um runbook é testado corretamente? *Rubrica:* 3 = alguém que não o autor o segue e relata as lacunas;; 2 = um colega segue;; 1 = o autor relê;; 0 = nenhuma.
+
+- **EX062 — Kerckhoffs.** Por que as configurações de TLS e os tamanhos de chave podem ser documentados abertamente? *Rubrica:* 3 = a segurança deve repousar nas chaves, e não no sigilo do projeto (Kerckhoffs);; 2 = nomeia o princípio;; 1 = configurações secretas;; 0 = nenhuma.
+
+- **EX063 — Referência ao segredo.** Como o runbook deve se referir ao segredo dos callbacks? *Rubrica:* 3 = pelo caminho no cofre, pela conta que o acessa e pelo período de rotação, nunca pelo valor;; 2 = caminho;; 1 = inclui o valor;; 0 = nenhuma.
+
+- **EX064 — Nunca restaurar com.** Cite um atalho que as regras de segurança proíbem ao restaurar o serviço. *Rubrica:* 3 = desativar a verificação, ou mover chaves por e-mail ou chat;; 2 = um atalho;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A documentação torna as operações criptográficas repetíveis e seguras quando é testada por outros e descreve os segredos sem revelá-los.
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Laboratório isolado II
+
+### Objetivos de aprendizagem
+
+Você vai (1) armazenar senhas corretamente com uma função resistente em memória num laboratório; (2) contrastar os hashes rápidos com o hash de senhas; (3) executar um ciclo completo de detectar, corrigir e verificar num serviço de laboratório.
+
+### 17.1 Por que o hash de senhas é diferente
+
+O portal de clientes da Lumen armazena senhas, e Priya pede que Tomás confira como. Armazená-las em claro ou cifrá-las de forma reversível permite que qualquer um com acesso ao banco de dados as recupere. Um SHA-256 simples é melhor, mas ainda fraco, porque os atacantes podem testar bilhões de palpites por segundo em placas de vídeo. O armazenamento de senhas precisa de uma função deliberadamente lenta e com salt, como o scrypt, definido na RFC 7914, ou o Argon2id, definido na RFC 9106. Um salt aleatório e único por usuário impede as tabelas pré-calculadas e faz com que senhas idênticas produzam valores armazenados diferentes. Tomás vai configurar essas funções por meio de bibliotecas, e nunca inventar seu próprio esquema.
+
+### 17.2 Laboratório com scrypt
+
+No laboratório isolado, Tomás usa o hashlib.scrypt da biblioteca padrão do Python. Ele primeiro o confere contra o vetor de teste da RFC 7914, com a senha password e o salt NaCl, para saber que a chamada está correta. Em seguida, armazena dois usuários sintéticos com a mesma senha e salts diferentes e mostra que os valores armazenados diferem, enquanto a verificação funciona com a senha certa e falha com uma errada. A saída do laboratório abaixo registra esses resultados. Parâmetros como o fator de custo e a memória são escolhidos pela política; os valores pequenos do vetor existem apenas para tornar o teste rápido.
+
+### Laboratório — Vetor do scrypt e armazenamento com salt
+
+```python
+# hashlib.scrypt: RFC 7914 test vector, then salted storage for synthetic users. Teaching only.
+import hashlib, hmac, secrets
+v = hashlib.scrypt(b"password", salt=b"NaCl", n=1024, r=8, p=16, dklen=64).hex()
+print("RFC 7914 vector match:", v.startswith("fdbabe1c9d3472007856e7190d01e9fe7c6ad7cbc8237830e77376634b373162"))
+P = dict(n=2**14, r=8, p=1, dklen=32)   # lab parameters; production values come from policy
+def store(pw):
+    salt = secrets.token_bytes(16); return salt, hashlib.scrypt(pw, salt=salt, **P)
+def check(pw, rec): return hmac.compare_digest(hashlib.scrypt(pw, salt=rec[0], **P), rec[1])
+ana, ben = store(b"Depot-Spring-26"), store(b"Depot-Spring-26")
+print("same password, stored values differ:", ana[1] != ben[1])
+print("ana correct password:", check(b"Depot-Spring-26", ana))
+print("ana wrong password:", check(b"Depot-Spring-27", ana))
+```
+
+Execute com `python3 lab_scrypt.py`. Saída verificada:
+
+```text
+RFC 7914 vector match: True
+same password, stored values differ: True
+ana correct password: True
+ana wrong password: False
+```
+
+### 17.3 Detectar, corrigir, verificar
+
+Tomás executa o ciclo completo numa cópia de laboratório do portal. Detectar: o banco de dados do laboratório armazena hashes SHA-256 sem salt. Corrigir: a aplicação é alterada para calcular o scrypt com os parâmetros da política no próximo login bem-sucedido e substituir o hash antigo, para que os usuários não precisem redefinir a senha. Verificar: ele faz login com uma conta sintética, confere que o valor armazenado agora tem o formato do scrypt e que uma senha errada falha. Ele registra cada passo como evidência. O mesmo plano vai depois para a equipe de desenvolvimento, para o portal real, pelo processo normal de versões dela.
+
+### Exemplo resolvido
+
+Tomás confirma o vetor da RFC 7914, mostra hashes com salt distintos para senhas idênticas e documenta no laboratório uma correção de atualização no login.
+
+> **Caso sintético.** Os usuários, as senhas e a cópia do portal são sintéticos; a RFC 7914 e a RFC 9106 são reais.
+
+### Erros e limites
+
+Os parâmetros do laboratório são deliberadamente pequenos; a produção precisa do custo definido pela política. A atualização no login deixa as contas inativas com os hashes antigos até serem tratadas separadamente.
+
+### Exercícios
+
+- **EX065 — Fraqueza do hash rápido.** Por que o SHA-256 sem salt é ruim para senhas? *Rubrica:* 3 = é rápido, então os atacantes testam bilhões de palpites; a falta de salt permite o pré-cálculo;; 2 = rápido;; 1 = tudo bem;; 0 = nenhuma.
+
+- **EX066 — Efeito do salt.** O que o laboratório mostrou para dois usuários com a mesma senha? *Rubrica:* 3 = valores armazenados diferentes porque os salts diferem, e os dois são verificados;; 2 = valores diferentes;; 1 = valores iguais;; 0 = nenhuma.
+
+- **EX067 — Conferir o vetor primeiro.** Por que conferir primeiro o hashlib.scrypt contra o vetor da RFC 7914? *Rubrica:* 3 = para confirmar que a chamada e os parâmetros estão corretamente ligados;; 2 = correção;; 1 = desnecessário;; 0 = nenhuma.
+
+- **EX068 — Contas inativas.** Que limitação a atualização no login deixa? *Rubrica:* 3 = as contas que nunca fazem login mantêm os hashes antigos e precisam de um plano separado;; 2 = inativas;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+O armazenamento de senhas precisa de funções padronizadas, lentas e com salt, verificadas contra vetores e implantadas por um ciclo de detectar, corrigir e verificar.
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Projeto técnico supervisionado
+
+### Objetivos de aprendizagem
+
+Você vai (1) entregar um projeto delimitado que melhore um serviço criptográfico; (2) apresentar evidências dos estados de antes e de depois; (3) passar a operação adiante com documentação.
+
+### 18.1 Escolher o projeto
+
+Para seu projeto final, Tomás escolhe a cadeia de confiança do Wi-Fi dos depósitos, porque o incidente do RADIUS no capítulo 13 mostrou que ela era frágil. Seu escopo cobre o certificado do servidor RADIUS, o intermediário interno e o repositório de confiança dos coletores, com Priya como supervisora e o gerente de redes como aprovador. Suas metas são mensuráveis: nenhuma indisponibilidade não planejada do Wi-Fi por mudanças de certificados, renovação do certificado do RADIUS pelo menos trinta dias antes da expiração e um runbook testado. Ele deixa fora do escopo o redesenho da raiz interna, porque ele exige a autoridade de um engenheiro, e o registra como trabalho futuro.
+
+### 18.2 Entregar e evidenciar
+
+Tomás acrescenta o certificado do RADIUS e o intermediário ao relatório de expiração, distribui o intermediário atual para todos os coletores por meio do gerenciamento de dispositivos antes da próxima renovação e escreve um runbook de renovação que um colega testa. As evidências de antes incluem a linha do tempo do incidente e o intermediário ausente; as de depois incluem o repositório de confiança atualizado numa amostra de coletores, um ensaio de renovação no laboratório e o novo alerta de monitoramento disparando num teste. Cada afirmação do seu relatório se liga a evidências com comandos, carimbos de tempo e resumos, seguindo os hábitos do capítulo 5.
+
+### 18.3 Passagem
+
+Um projeto não termina até que outra pessoa consiga operá-lo. Tomás o passa para o líder do turno da noite com uma explicação do runbook, do alerta e do mapa de dependências. Ele lista os riscos em aberto: a chave da raiz interna ainda está num servidor de uso geral, e dois coletores antigos não conseguem receber atualizações. Ele apresenta o projeto à equipe de operações em dez minutos, concentrando-se no que mudou, em como foi verificado e no que resta. A avaliação de Priya observa que a parte mais forte não foi a engenhosidade técnica, mas a delimitação cuidadosa do escopo, as evidências e o relato honesto dos limites.
+
+### Exemplo resolvido
+
+Tomás entrega o projeto da cadeia de confiança do Wi-Fi com evidências de antes e de depois, um runbook testado e uma passagem que lista dois riscos em aberto.
+
+> **Caso sintético.** O projeto, os dispositivos e a avaliação são sintéticos.
+
+### Erros e limites
+
+As verificações por amostragem podem deixar passar dispositivos; a cobertura completa exige relatórios do gerenciamento. Os riscos fora do escopo continuam reais até que alguém seja dono deles.
+
+### Exercícios
+
+- **EX069 — Fora do escopo.** O que Tomás deixou fora do escopo, e por quê? *Rubrica:* 3 = o redesenho da raiz interna, porque exige a autoridade de um engenheiro;; 2 = nomeia o item;; 1 = nada;; 0 = nenhuma.
+
+- **EX070 — Metas mensuráveis.** Dê duas das metas mensuráveis de Tomás. *Rubrica:* 3 = nenhuma indisponibilidade não planejada por mudanças de certificados, renovação 30 dias antes, runbook testado (duas);; 2 = uma;; 1 = meta vaga;; 0 = nenhuma.
+
+- **EX071 — Evidências de depois.** Cite duas evidências de depois. *Rubrica:* 3 = amostra do repositório de confiança atualizado, ensaio de renovação no laboratório, alerta disparando num teste (duas);; 2 = uma;; 1 = nada;; 0 = nenhuma.
+
+- **EX072 — Riscos em aberto.** Que riscos em aberto a passagem listou? *Rubrica:* 3 = a chave da raiz num servidor de uso geral, dois coletores que não conseguem atualizar;; 2 = um;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Um projeto supervisionado prova a competência técnica pelo escopo, pelas evidências, pela passagem e pelos limites honestos, e não por um código engenhoso.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX036 (as de EX037–EX072 estão na edição em inglês até a tradução dos capítulos correspondentes). Tomás Reyes, Priya Nandakumar, o Eastbrook Technical Institute, a Lumen Freight Logistics e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX072. Tomás Reyes, Priya Nandakumar, o Eastbrook Technical Institute, a Lumen Freight Logistics e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Ele diagnostica falhas criptográficas, configura controles e verifica que eles funcionam, sem inventar algoritmos.
 
@@ -561,6 +1086,78 @@ Respostas-modelo para EX001–EX036 (as de EX037–EX072 estão na edição em i
 **EX035.** Porque o erro de verificação é o achado; pular as verificações o esconde e permitiria que um impostor passasse.
 
 **EX036.** Apenas um certificado público de um endpoint público, com aprovação; uma chave privada nunca deve sair das ferramentas locais.
+
+**EX037.** TLS 1.3 em todo lugar, TLS 1.2 apenas onde necessário para clientes mais antigos e nada anterior.
+
+**EX038.** verify_mode era CERT_REQUIRED e check_hostname era True, então tanto os certificados quanto os nomes são verificados.
+
+**EX039.** Carregar a raiz interna com load_verify_locations no contexto padrão, deixando ativadas a verificação e a conferência do nome do host.
+
+**EX040.** Os logs de handshake do balanceador de carga, para ver se algum coletor ou parceiro ainda negocia TLS 1.0 ou 1.1.
+
+**EX041.** Que a primitiva HMAC é calculada corretamente para as entradas documentadas; não diz nada sobre o armazenamento das chaves nem sobre o uso no protocolo.
+
+**EX042.** Ela compara em tempo constante, então o tempo de resposta não revela quantos bytes iniciais de uma etiqueta forjada estavam corretos.
+
+**EX043.** Seu carimbo de tempo estava fora da janela de 300 segundos, então o portal o tratou como uma possível repetição.
+
+**EX044.** Não prova que o segredo compartilhado está guardado com segurança, nem que todo caminho do código realmente faz a verificação.
+
+**EX045.** Nenhum dado real de clientes e nenhuma chave de produção, além de nenhuma conexão de saída para parceiros.
+
+**EX046.** Um servidor válido verificado com 0, um certificado expirado falhando e um servidor sem seu intermediário sem conseguir montar a cadeia.
+
+**EX047.** Apenas no repositório de confiança do cliente do laboratório isolado; nunca num notebook pessoal nem numa imagem compartilhada.
+
+**EX048.** Qualquer um que tenha sua chave privada pode emitir certificados em que a máquina confia, permitindo a interceptação.
+
+**EX049.** Porque só assim um resultado pode ser ligado a uma única causa; várias mudanças escondem qual delas importou.
+
+**EX050.** unknown_ca vindo do grupo handheld, responsável por 12 das 20 linhas.
+
+**EX051.** O certificado do servidor RADIUS foi renovado sob um novo intermediário que os coletores não tinham, então a validação falhou.
+
+**EX052.** O sintoma e o horário de início, os sistemas afetados, as hipóteses testadas com evidências e o próximo passo recomendado.
+
+**EX053.** Ele prova à AC o controle do domínio, solicita o certificado e o renova automaticamente antes da expiração.
+
+**EX054.** A chave SSH de sftp-partner-b, 41 dias além da sua idade máxima.
+
+**EX055.** Porque cada rotação precisa ser coordenada com o parceiro ou o provedor que compartilha a chave, o que um script não consegue fazer sozinho com segurança.
+
+**EX056.** Para que um certificado novo defeituoso nunca substitua um que funciona, evitando uma indisponibilidade.
+
+**EX057.** A zona DNS da Lumen publica as chaves públicas DKIM que os destinatários usam para conferir as assinaturas da plataforma de e-mail.
+
+**EX058.** Aceitar os segredos antigo e novo, fazer o processador trocar, confirmar que os callbacks são verificados com o novo segredo e então remover o antigo.
+
+**EX059.** Os callbacks genuínos assinados com o outro segredo falham na verificação, então os pedidos pagos aparecem como não pagos até que os dois lados coincidam.
+
+**EX060.** Para que, quando um aviso for publicado, Tomás consiga identificar imediatamente os hosts e os dispositivos afetados.
+
+**EX061.** Fazendo outro técnico segui-lo exatamente e relatar onde ele falha ou não está claro.
+
+**EX062.** Porque um sistema bem feito continua seguro quando seu projeto é público; apenas as chaves precisam continuar secretas.
+
+**EX063.** Pelo caminho no cofre, pela conta autorizada a lê-lo e pelo período de rotação, sem o próprio valor.
+
+**EX064.** Desativar a verificação de certificados para trazer o serviço de volta é proibido, assim como enviar chaves por e-mail ou chat.
+
+**EX065.** O SHA-256 foi projetado para ser rápido, permitindo que os atacantes tentem números enormes de palpites, e sem salt senhas idênticas compartilham hashes.
+
+**EX066.** Suas saídas scrypt armazenadas eram diferentes porque cada uma tinha seu próprio salt, mas ambas foram verificadas com a senha correta.
+
+**EX067.** Para confirmar que a chamada da função e a ordem dos parâmetros produzem a saída documentada antes de confiar nela.
+
+**EX068.** As contas que nunca mais fazem login mantêm seus hashes fracos e precisam de uma migração separada ou de uma redefinição forçada.
+
+**EX069.** Ele deixou de fora o redesenho da raiz interna, já que ele exige a autoridade de um engenheiro, e o registrou como trabalho futuro.
+
+**EX070.** Nenhuma indisponibilidade não planejada do Wi-Fi por mudanças de certificados e a renovação do RADIUS pelo menos trinta dias antes da expiração.
+
+**EX071.** O repositório de confiança atualizado nos coletores amostrados e o novo alerta de monitoramento disparando num teste.
+
+**EX072.** A chave da raiz interna ainda num servidor de uso geral e dois coletores antigos que não conseguem receber atualizações.
 
 <a id="references"></a>
 ## Referências
