@@ -1,7 +1,7 @@
 # Segurança Ofensiva Autorizada e Red Team: Um Livro para a Graduação em Engenharia
 
 - Idioma: português do Brasil (`pt`); cinco anos; aproximadamente 4.000 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 50 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3; os capítulos 21–50 (EX061–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–28 de 50 já estão escritos em português, com os exercícios EX001–EX084 e suas resoluções com rubricas de 0 a 3; os capítulos 29–50 (EX085–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: futuros engenheiros de sistemas de segurança que vão projetar ferramentas de avaliação autorizada e plataformas de medição e relato.
 - Relação com os livros vizinhos: o [livro de bacharelado](../../../../bachelors-4-years/offensive-security-red-team/en/book/MANUSCRIPT.md) é mais amplo; o [livro de tecnólogo](../../../../technologist-3-years/offensive-security-red-team/en/book/MANUSCRIPT.md) é mais voltado à implementação. **Este livro é centrado no projeto**: requisitos, arquitetura, controles, verificação e evidências de projeto final para plataformas autorizadas de red team.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -25,9 +25,9 @@ As fontes foram conferidas em 12 de outubro de 2026: [NIST SP 800-115](https://d
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) |
 
-Capítulos 21–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
+Capítulos 29–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-29), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -861,11 +861,9 @@ A pergunta de engenharia costuma ser "o papel R consegue ler a tabela T?". Teste
 
 ### 13.3 Dados sintéticos
 
-Gere clientes sintéticos determinísticos com regras no estilo do faker ou com sementes fixas, para que os laboratórios sejam reproduzíveis. Nunca copie um backup de produção para o repositório do curso.
+Gere clientes sintéticos determinísticos com regras no estilo do faker ou com sementes fixas, para que os laboratórios sejam reproduzíveis. Nunca copie um backup de produção para o repositório do curso. Sementes fixas fazem com que dois estudantes e um job de CI vejam os mesmos clientes e as mesmas verificações falhando. Backups de produção trazem o dever de privacidade e uma exposição irreversível se o repositório vazar. Sam gera os dados no script de preparação do laboratório e versiona só o gerador, nunca um dump.
 
 > **Caso sintético — Riverstone Transit.** Sam precisava de linhas de produtos tarifários para um teste de relatório. A equipe de operações forneceu um snapshot sintético apenas com ids de produtos e preços — sem nomes de passageiros — e uma etiqueta de destruição de 48 horas.
-
-Sementes fixas fazem com que dois estudantes e um job de CI vejam os mesmos clientes e as mesmas verificações falhando. Backups de produção trazem o dever de privacidade e uma exposição irreversível se o repositório vazar. Sam gera os dados no script de preparação do laboratório e versiona só o gerador, nunca um dump.
 
 ### 13.4 Erros e limites
 
@@ -911,11 +909,9 @@ Merges que acrescentam um CIDR, abrem uma porta ou removem uma entrada da lista 
 
 ### 14.3 Fixtures de CI
 
-A integração contínua roda os laboratórios e os testes unitários sobre dados sintéticos. Nunca aponte a CI para uma rede de cliente. Os dados de semente ficam no repositório; os segredos de engajamentos reais ficam num cofre e nunca nos logs da CI.
+A integração contínua roda os laboratórios e os testes unitários sobre dados sintéticos. Nunca aponte a CI para uma rede de cliente. Os dados de semente ficam no repositório; os segredos de engajamentos reais ficam num cofre e nunca nos logs da CI. Uma CI capaz de alcançar uma rede de cliente transformaria cada teste quebrado numa possível sondagem. Fixtures sintéticos mantêm as falhas locais e reproduzíveis. Segredos em logs viram incidentes; cofres os mantêm fora da saída do build. Os pipelines de Sam não têm rotas para as redes dos engajamentos e falham se alguém acrescentar uma.
 
 > **Caso sintético — Riverstone Transit.** Um PR acrescentou 10.30.0.0/16 ao escopo "para o mês que vem". A verificação de diferenças de escopo da CI bloqueou o merge até que o ticket AUTH-442 fosse vinculado e um segundo dono aprovasse.
-
-Uma CI capaz de alcançar uma rede de cliente transformaria cada teste quebrado numa possível sondagem. Fixtures sintéticos mantêm as falhas locais e reproduzíveis. Segredos em logs viram incidentes; cofres os mantêm fora da saída do build. Os pipelines de Sam não têm rotas para as redes dos engajamentos e falham se alguém acrescentar uma.
 
 ### 14.4 Erros e limites
 
@@ -965,11 +961,9 @@ Uma senha padrão é uma vulnerabilidade. Num host de staging alcançável a par
 
 ### 15.3 Pontuações vazias
 
-Albrecht e Jensen (arXiv:2010.06377) criticam pontuações de metodologia que não preveem resultados. Prefira medidas concretas: contagem de sondagens fora do escopo, tempo até a correção, precisão na taxa de base do cliente. Se você mostrar uma pontuação, mostre o modelo e as entradas.
+Albrecht e Jensen (arXiv:2010.06377) criticam pontuações de metodologia que não preveem resultados. Prefira medidas concretas: contagem de sondagens fora do escopo, tempo até a correção, precisão na taxa de base do cliente. Se você mostrar uma pontuação, mostre o modelo e as entradas. Uma pontuação de metodologia que não prevê resultados lisonjeia quem avalia e engana quem compra. Contagens de sondagens fora do escopo e o tempo até a parada são feios e úteis. Quando uma pontuação precisa aparecer, o modelo e as entradas ficam ao lado dela, para que outro engenheiro possa recalculá-la. Os painéis de Sam começam por essas medidas concretas.
 
 > **Caso sintético — Riverstone Transit.** Sam parou de colocar um único "risco = 42" nos slides. A apresentação agora mostra dois achados críticos, três violações de SLA e 71% de cobertura de técnicas do conjunto planejado.
-
-Uma pontuação de metodologia que não prevê resultados lisonjeia quem avalia e engana quem compra. Contagens de sondagens fora do escopo e o tempo até a parada são feios e úteis. Quando uma pontuação precisa aparecer, o modelo e as entradas ficam ao lado dela, para que outro engenheiro possa recalculá-la. Os painéis de Sam começam por essas medidas concretas.
 
 ### 15.4 Erros e limites
 
@@ -1015,11 +1009,9 @@ Uma matriz simples: requisito → elemento de design → caso de teste → evid�
 
 ### 16.3 Interfaces
 
-O TrackScope emite eventos de permissão/negação; o FindingsDesk consome rascunhos de achados; o PulseMap consome etiquetas de técnicas. Combine esquemas JSON e versione-os. Uma mudança de interface é um release, não uma edição silenciosa.
+O TrackScope emite eventos de permissão/negação; o FindingsDesk consome rascunhos de achados; o PulseMap consome etiquetas de técnicas. Combine esquemas JSON e versione-os. Uma mudança de interface é um release, não uma edição silenciosa. Edições silenciosas de esquema quebram as páginas de condição de parada no pior momento. Contratos JSON versionados fazem da quebra um release deliberado, com uma nota de migração. Cada consumidor declara as versões que aceita. Os testes de integração de Sam publicam um evento de exemplo em cada versão suportada.
 
 > **Caso sintético — Riverstone Transit.** O requisito R-17, "os motivos de negação são imutáveis após a inserção", foi rastreado até a tabela de eventos somente-acréscimo do FindingsDesk e até o teste T-17, que tenta um UPDATE e espera uma falha.
-
-Edições silenciosas de esquema quebram as páginas de condição de parada no pior momento. Contratos JSON versionados fazem da quebra um release deliberado, com uma nota de migração. Cada consumidor declara as versões que aceita. Os testes de integração de Sam publicam um evento de exemplo em cada versão suportada.
 
 ### 16.4 Erros e limites
 
@@ -1292,11 +1284,586 @@ Os engenheiros viabilizam a avaliação autorizada; não substituem a autorizaç
 
 [← Capítulo 19 (rascunho)](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 (rascunho) →](#ch-21)
 
+<a id="ch-21"></a>
+
+## Capítulo 21 — Segurança ofensiva autorizada e red team: requisitos
+
+### Objetivos de aprendizagem
+
+Você vai (1) levantar requisitos a partir da ROE e dos operadores; (2) separar requisitos funcionais, de segurança e de medição; (3) escrever critérios de aceitação que um testador consiga executar.
+
+### 21.1 Fontes de requisitos
+
+Os operadores querem menos bloqueios falsos; a assessoria jurídica quer uma trilha de auditoria; o cliente quer achados claros. As entrevistas de levantamento produzem declarações com "deve" marcadas pela fonte. Os conflitos (velocidade vs. etapas de aprovação) são registrados, não escondidos. Fontes marcadas tornam os conflitos discutíveis: velocidade contra etapas de aprovação vira um trade-off registrado, com um dono. Escondê-lo produz uma ferramenta em que ninguém confia. As entrevistas terminam em declarações com "deve", não em impressões. Sam mantém o log de conflitos ao lado do arquivo de requisitos, para que um novo líder veja as discussões antigas sem precisar repeti-las.
+
+### 21.2 Três famílias
+
+Funcional: "O TrackScope avalia allowed(host,port) antes de cada ação." Segurança: "O TrackScope falha fechado se o arquivo de política não carregar." Medição: "O PulseMap relata contagens de técnicas planejadas vs. observadas, com denominadores." Os requisitos de segurança vencem os empates. A segurança vencer os empates significa que um caminho rápido que pule a carga da política é rejeitado, mesmo que os testadores aplaudam. Os requisitos de medição obrigam a ter denominadores, para que a cobertura não seja uma contagem solta. Os requisitos funcionais nomeiam o momento da verificação, como antes de cada ação. Sam colore as linhas de segurança nas revisões, para que não possam ser negociadas para baixo em silêncio.
+
+### 21.3 Critérios de aceitação
+
+Cada requisito tem um Dado/Quando/Então sobre dados sintéticos. Exemplo: Dada a lista de exclusão {10.20.0.1}, Quando sondar 10.20.0.1:443, Então DENY deny-list e um evento é armazenado. Critérios que precisam de uma rede real de cliente são rejeitados na revisão. Dado/Quando/Então sintético mantém a CI honesta e mantém as redes dos clientes fora da bancada de testes. Critérios que precisam da produção são reprojetos, não metas ambiciosas. O exemplo da lista de exclusão é copiado para a suíte do TrackScope como um teste nomeado. Sam reprova a revisão quando um requisito Must não tem um critério assim.
+
+> **Caso sintético — Riverstone Transit.** O requisito de segurança S-3, "falhar fechado se a política estiver ausente", falhou no teste de aceitação quando um caminho com erro de digitação retornou ALLOW. A correção foi lançada antes de qualquer uso num engajamento.
+
+### 21.4 Erros e limites
+
+As partes interessadas inventam requisitos no meio do engajamento; estacione-os num backlog com um ticket de autorização, não aplique patches a quente no TrackScope de produção durante uma janela de teste ativa. Aplicar patches a quente no TrackScope no meio da janela arrisca um erro de falha aberta enquanto o tráfego está fluindo. Backlog mais ticket de autorização é o único caminho para ideias novas durante um teste. O script de plantão de Sam diz: nenhuma mudança de configuração em produção, exceto parar e revogar. Ideias de funcionalidade levantadas na sala de crise vão para a fila de tickets na mesma hora e continuam intocadas em produção até que uma mudança assinada entre depois da janela.
+
+### 21.3b Ids de requisitos no código
+
+Coloque os ids de requisitos nos nomes dos testes e nos campos de log (`req=S-3`). Quando acontece um incidente, poder buscar vale mais que um slide que um dia mapeou requisitos para módulos. Requisitos mortos sem testes devem fazer a CI falhar. Ids buscáveis transformam um canal de incidente num índice. Testes nomeados por requisitos mortos fazem a CI falhar até que alguém os apague ou substitua. Os campos de log carregam os mesmos ids, para que um evento de negação aponte para o S-3 sem uma apresentação de slides. Sam procura por req= nas revisões de incidente antes de atribuir culpa.
+
+### 21.1b MoSCoW sob a segurança
+
+A priorização Must/Should/Could continua colocando todos os requisitos de segurança em Must. Um Could que enfraquece um Must (lista de exclusão opcional) é reclassificado ou rejeitado. Gerentes de produto não vencem a falha fechada no voto. Listas de exclusão opcionais não são itens Could; elas quebram um Must. Gerentes de produto que querem um modo de demonstração que carregue sem política recebem uma recusa registrada. O quadro de priorização de Sam tem uma raia fixa para os Musts de segurança, que não pode ser arrastada para Should. Modos de demonstração que pulam a carga da política são fechados como wontfix, com um link para esta regra.
+
+### Nota de prática
+
+Os testes de aceitação são nomeados pelos ids dos requisitos e fazem a CI falhar quando são pulados. Um painel de requisitos sem testes é revisado toda semana no ateliê. Requisitos Must órfãos são testados ou formalmente adiados com um dono executivo — silêncio não é adiamento. Esse hábito é o que transforma uma planilha de requisitos em algo que ainda importa na sexta-feira antes de um engajamento.
+
+### Exercícios
+
+- **EX061 — Levantamento.** Escreva um "deve" funcional e um de segurança a partir de "nunca podemos atingir o gateway". Rubrica: 3 = ambos testáveis; 2 = um; 1 = vago; 0 = nada.
+- **EX062 — Aceitação.** Dê um Dado/Quando/Então para falhar fechado com a política ausente. Rubrica: 3 = completo, com DENY/erro esperado; 2 = parcial; 1 = ideia; 0 = nada.
+- **EX063 — Conflito.** Velocidade vs. aprovação dupla para ampliar o escopo — registre o conflito e a regra escolhida. Rubrica: 3 = conflito nomeado + regra de segurança em primeiro lugar; 2 = só a regra; 1 = escolhe a velocidade; 0 = nada.
+
+### Síntese
+
+Os requisitos vêm das pessoas, se dividem em famílias e são entregues com testes de aceitação sobre fixtures sintéticos.
+
+### Continue estudando — capítulo 21 de 50
+
+[← Capítulo 20 (rascunho)](#ch-20) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 22 (rascunho) →](#ch-22)
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Segurança ofensiva autorizada e red team: modelos de sistema e de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) desenhar um modelo de entidades para engajamentos, escopos e achados; (2) escolher chaves e cardinalidade; (3) manter o conteúdo de exploração fora do modelo.
+
+### 22.1 Entidades
+
+Engagement 1—* ScopeVersion; Engagement 1—* Finding; Finding *—* EvidenceObject (por hash); TechniqueTag *—* Finding. Erros de cardinalidade (vários escopos ativos sem um ponteiro de versão) levam os auditores a perguntar "qual ROE estava em vigor?". Um ponteiro de versão em cada achado responde qual ROE estava em vigor sem uma caça ao tesouro pelos e-mails. Ligações muitos-para-muitos com as evidências permitem que um hash sustente vários tickets quando os scanners se sobrepõem. Sam rejeita esquemas que permitam duas ScopeVersions ativas sem dizer qual delas o TrackScope carrega. Numa revisão de dossiê de ensaio, um auditor perguntou qual ROE regia um achado registrado na terça-feira, depois de uma ampliação na segunda; o ponteiro de versão respondeu numa única consulta, em vez de numa troca de e-mails.
+
+### 22.2 Chaves
+
+Os ids de achados são ULID/UUID. As evidências são endereçadas pelo conteúdo, por SHA-256. A ScopeVersion tem (engagement_id, version_int). Nunca use o título como chave de um achado — títulos mudam. ULIDs se ordenam pelo tempo e continuam únicos entre serviços. Evidências endereçadas pelo conteúdo significam que renomear um arquivo não consegue bifurcar a história. Títulos são rótulos para pessoas, nunca junções. O guia de migração de Sam proíbe chaves estrangeiras baseadas em títulos mesmo em scripts temporários, porque renomear um título durante a edição não pode deixar órfãs as ligações com as evidências. Uma importação do ateliê que juntava pelo título já duplicou o achado de credencial padrão no web-02 depois que alguém editou o título para deixá-lo mais claro; a junção por ULID teria mantido um único ticket.
+
+### 22.3 Atributos proibidos
+
+Nenhum atributo para payload, senha ou comando de shell. O EvidenceObject guarda os bytes num bucket lacrado; o modelo guarda só o hash, o tipo de mídia e a classe de retenção. A validação do esquema é a última linha de defesa quando um engenheiro cansado inventa um campo personalizado. Bytes lacrados mais hash mantêm as receitas fora do corpo do ticket que circula por e-mail. A classe de retenção comanda o expurgo sem exclusões improvisadas. A CI de Sam falha se uma migração acrescentar um nome de coluna proibido.
+
+> **Caso sintético — Riverstone Transit.** Um esquema inicial tinha `notes` como texto livre; as pessoas colavam senhas ali. Sam o substituiu por campos estruturados mais um hash de evidência, e um linter rejeita strings parecidas com senhas nos títulos.
+
+### 22.4 Erros e limites
+
+Modelos que tentam codificar todo o ATT&CK como campos obrigatórios forçam etiquetas inúteis. Mantenha as etiquetas de técnicas opcionais e revisadas. Campos obrigatórios do ATT&CK produzem etiquetas inúteis que poluem os gráficos de cobertura. Etiquetas opcionais e revisadas mantêm o PulseMap honesto. A revisão semanal de etiquetas de Sam funde sinônimos e descarta etiquetas que ninguém consegue definir, e uma etiqueta sem uma definição de uma linha não pode ser aplicada a um novo achado. As definições das etiquetas ficam no mesmo repositório que as consultas do PulseMap, para que um significado apagado não continue nos gráficos.
+
+### 22.2b Tempo e autores
+
+Toda entidade mutável precisa de `created_at`, `created_by` e, para mudanças de estado, `updated_at`/`updated_by` ou um evento somente-acréscimo. O horário do relógio sozinho não é uma trilha de auditoria. Prefira UTC com o deslocamento explícito nas exportações, para que passagens de turno entre fusos horários não reordenem a história. Eventos somente-acréscimo sobrevivem a disputas sobre quem mudou a severidade. UTC com deslocamentos explícitos impede que uma passagem de turno entre Londres e Nova York pareça invertida. Capturas de tela do relógio sem ids de autores não bastam para uma auditoria. O job de exportação de Sam recusa linhas sem created_by.
+
+### 22.3b Exclusão lógica vs. expurgo
+
+Os achados raramente são apagados fisicamente durante a retenção; eles recebem exclusão lógica, com autor e motivo. Os jobs de expurgo respeitam a classe de retenção e emitem um evento de auditoria. Um DELETE FROM findings silencioso é um presente de repúdio para quem quiser contestar o dossiê mais tarde. A exclusão lógica preserva a história durante a janela de retenção; o expurgo é um ato deliberado e registrado. Exclusões silenciosas em SQL são o modo como dossiês perdem achados de que a assessoria jurídica vai precisar depois. Autor e motivo na exclusão lógica respondem quem escondeu um ticket e por quê. Sam dispara um alerta quando um job de expurgo roda fora do horário programado.
+
+### 22.1b Limites de tamanho de anexos
+
+Os objetos de evidência precisam de limites de tamanho e de listas de tipos de mídia permitidos. Envios sem limite viram ataques de disponibilidade contra o repositório e convidam ao despejo em massa de dados pessoais. Artefatos grandes ficam no bucket lacrado, com cálculo do hash em streaming. Os limites impedem um despejo em massa de dados pessoais disfarçado de evidência. As listas de tipos de mídia permitidos barram executáveis surpresa no bucket. Hashes em streaming lidam com artefatos grandes sem carregá-los na memória do FindingsDesk. Sam publica o limite de tamanho no guia do testador para que as pessoas não o descubram na hora do envio.
+
+### Exercícios
+
+- **EX064 — Cardinalidade.** Por que a ScopeVersion é exigida, em vez de editar o Scope no lugar? Rubrica: 3 = auditoria/histórico do que estava autorizado e quando; 2 = versionamento vago; 1 = "boa prática"; 0 = nada.
+- **EX065 — Escolha de chave.** Por que endereçar as evidências pelo conteúdo? Rubrica: 3 = integridade + deduplicação + evidência de adulteração; 2 = um motivo; 1 = vago; 0 = nada.
+- **EX066 — Proibido.** Proponha uma validação que impeça senhas no `title`. Rubrica: 3 = heurística/linter + processo; 2 = um; 1 = vago; 0 = nada.
+
+### Síntese
+
+Modele engajamentos, versões, achados e hashes — não ataques.
+
+### Continue estudando — capítulo 22 de 50
+
+[← Capítulo 21 (rascunho)](#ch-21) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 23 (rascunho) →](#ch-23)
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Segurança ofensiva autorizada e red team: análise de ameaças e falhas
+
+### Objetivos de aprendizagem
+
+Você vai (1) enumerar as falhas da própria plataforma de avaliação; (2) usar uma passada leve de STRIDE sobre as ferramentas; (3) levar os resultados para os requisitos.
+
+### 23.1 A ferramenta pode falhar de forma perigosa
+
+O TrackScope falhando aberto, o FindingsDesk perdendo eventos de negação, o PulseMap contando cobertura sem denominador — essas são ameaças à *segurança e à honestidade*, não só à confidencialidade da ferramenta. Uma verificação de escopo que falha aberta prejudica mais o cliente do que uma interface lenta. Eventos de negação perdidos escondem quebras da ROE até o relatório. Cobertura sem denominador é um gráfico de marketing. Sam classifica essas falhas ao lado das ameaças à confidencialidade em toda revisão de design, com um dono separado para as falhas de honestidade e para as de vazamento de dados. Um bug de escopo que falha aberto é tratado como P1 mesmo quando nenhum dado saiu do ambiente, porque a próxima sondagem poderia ter sido o host de sinalização excluído do exemplo de classificação.
+
+### 23.2 STRIDE na plataforma
+
+Falsificação (spoofing): conta de avaliação falsa. Adulteração (tampering): editar a severidade de um achado depois da lacração. Repúdio: nenhum autor nos eventos de negação. Divulgação de informação: bucket de evidências legível por qualquer um. Negação de serviço: scanner inundando o cliente. Elevação: o papel de operador consegue ampliar o escopo sozinho. Cada linha recebe um requisito de mitigação. Cada linha vira uma mitigação com um dono, não um slide. Contas falsificadas exigem um vínculo forte com o IdP; edições de severidade depois da lacração exigem imutabilidade ou controle duplo; autores ausentes exigem campos obrigatórios. Inundações de scanner são problemas de ROE e de limite de taxa tanto quanto de disponibilidade. Sam acompanha as seis linhas no backlog até que cada uma tenha um teste.
+
+### 23.3 As ameaças do engajamento ficam nos documentos de escopo
+
+As ameaças *ao cliente* pertencem ao cenário guiado por ameaças do engajamento (se houver), não a funcionalidades do TrackScope. Não construa uma "exploração automatizada" para satisfazer uma linha do STRIDE. Manter as ameaças do cenário do cliente fora do backlog do produto impede que o TrackScope desenvolva um motor de exploração. Exercícios guiados por ameaças pertencem ao pacote do engajamento, com sua própria autorização. Sam fecha pedidos de funcionalidade que tentam infiltrar táticas de engajamento em épicos da plataforma.
+
+> **Caso sintético — Riverstone Transit.** A linha STRIDE "falha aberta" virou o requisito de segurança S-3 (Capítulo 21). A linha "ampliação de escopo por uma só pessoa" virou a etapa de aprovação dupla (Capítulo 14).
+
+### 23.4 Erros e limites
+
+O STRIDE é um estímulo, não uma prova. Revisite-o depois de mudanças na arquitetura. Uma passada de STRIDE do ano passado não enxerga a fronteira de confiança de um novo adaptador SaaS. A revisita é disparada por mudanças na arquitetura, não só pelo calendário. Sam agenda uma passada de ameaças quando qualquer nova saída ou provedor de identidade é acrescentado, e o log de mudanças da lista de ameaças cita o pull request que acrescentou cada adaptador, para que as linhas desatualizadas fiquem óbvias. A linha do adaptador de logs SaaS foi acrescentada na mesma semana de seu pull request; sem essa citação, a revisão do semestre seguinte teria presumido que o antigo modelo, só com o jumphost, ainda valia.
+
+### 23.2b Casos de abuso vs. casos de mau uso
+
+Casos de abuso são ações intencionais de um adversário contra a plataforma (forjar uma assinatura de política). Casos de mau uso são operadores honestos cometendo erros perigosos (colar um CIDR que inclui um parceiro). Desenhe controles para os dois; treinamento sozinho não impede o mau uso quando a interface faz da ampliação de escopo um único clique. Um botão de ampliação de escopo com um único clique atrai o mau uso mesmo entre funcionários honestos. Forjar uma assinatura de política é abuso e exige verificações criptográficas. Treinamento sem atrito na interface falha na primeira sexta-feira corrida. Sam exige uma segunda pessoa ou um atraso em toda ação de ampliação.
+
+### 23.3b Alimentando o backlog
+
+As linhas do STRIDE viram issues com links para os requisitos. Linhas sem dono são teatro. Revise a lista de ameaças ao acrescentar uma nova fronteira de confiança (por exemplo, um novo adaptador SaaS) — não só no início do programa. Linhas do STRIDE sem dono são decoração. Links para ids de requisitos tornam as mitigações entregáveis. Novas fronteiras de confiança reabrem a lista mesmo no meio do programa. A definição de pronto de Sam para uma linha de ameaça inclui um teste com merge ou um risco aceito com o nome de um executivo, e o quadro do sprint mostra essas linhas ao lado das funcionalidades, para que o trabalho de segurança não se esconda numa planilha paralela.
+
+### 23.1b Presumindo o comprometimento do jumphost
+
+Inclua "jumphost comprometido" no modelo de ameaças da plataforma: credenciais de vida curta, listas de saída permitida e revogação rápida. Se a sua resposta for só "confie no jumphost", a análise está incompleta. Credenciais de vida curta e listas de saída permitida pressupõem que o host será roubado algum dia. A revogação rápida é praticada, não esperada. Confiança sem esses controles é esperança. O exercício de mesa de Sam sempre inclui uma hora de jumphost roubado. Os exercícios de revogação usam uma imagem reserva de jumphost, reconstruída depois a partir da branch dourada, para que os engajamentos de produção não sejam interrompidos e não se acumulem resquícios.
+
+### 23.4b Classificando as ameaças à plataforma
+
+Sam classifica os achados do STRIDE pela consequência para o cliente: um arquivo de escopo adulterado que deixa o teste alcançar um host de sinalização ferroviária excluído vem primeiro; um login de painel falsificado que vaza gráficos de cobertura fica mais abaixo. A classificação decide quais mitigações entram antes do próximo engajamento. A consequência para o cliente vale mais que a esperteza do ataque. Hosts de sinalização vêm antes de métricas de vaidade do painel. A classificação define a ordem das mitigações antes da próxima janela. Sam publica as cinco primeiras no quadro da equipe durante o planejamento.
+
+### Exercícios
+
+- **EX067 — Falha aberta.** Descreva um teste que prove a falha fechada. Rubrica: 3 = remover a política, esperar negação+alerta; 2 = ideia; 1 = vago; 0 = nada.
+- **EX068 — Linha do STRIDE.** Escreva a mitigação para o repúdio nos eventos de negação. Rubrica: 3 = autor autenticado + log imutável; 2 = só registro; 1 = vago; 0 = nada.
+- **EX069 — Fronteira.** Por que o STRIDE da plataforma não justifica um módulo de exploração? Rubrica: 3 = objetivo/limite de segurança diferente; 2 = parcial; 1 = justifica; 0 = nada.
+
+### Síntese
+
+Analise como sua plataforma pode prejudicar o cliente ou mentir; mitigue isso primeiro.
+
+### Continue estudando — capítulo 23 de 50
+
+[← Capítulo 22 (rascunho)](#ch-22) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 24 (rascunho) →](#ch-24)
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Segurança ofensiva autorizada e red team: métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) encadear pré-engajamento → descoberta → validação → relatório segundo o PTES/SP 800-115; (2) escolher métodos que correspondam à autorização; (3) definir o que é "pronto" para um método sem shell.
+
+### 24.1 Sequência
+
+O pré-engajamento produz a ROE assinada. A descoberta enumera os ativos em escopo pelos métodos combinados. A validação confirma problemas de configuração com privilégio mínimo. O relatório entrega os achados e os hashes das evidências. Pular o pré-engajamento é o modo como os testes não autorizados acontecem. ROE assinada antes da descoberta é toda a história da segurança numa frase. A validação com privilégio mínimo mantém o engajamento dentro dos papéis concedidos. O relatório com hashes torna os achados verificáveis. A etapa de controle de Sam no TrackScope recusa ações de descoberta até que um hash de ROE seja registrado, e um teste de CI tenta uma descoberta com o hash ausente e espera a negação.
+
+### 24.2 Cartões de método
+
+Cada cartão de método traz: nome, propósito, privilégio exigido, ruidoso?, condições de parada, artefatos esperados. "Revisão de configuração autenticada" é um cartão; "exploit transformado em arma" não está no baralho deste programa. Privilégio, ruído e condições de parada num só cartão impedem a improvisação sob pressão. Os artefatos dizem aos revisores como é o pronto. Exploits transformados em armas ficam fora do catálogo por política. Sam rejeita um cartão que não consiga nomear sua condição de parada em termos observáveis. Os cartões que sobrevivem à revisão são numerados e congelados durante a janela; os rascunhos ficam numa branch separada do catálogo.
+
+### 24.3 Pronto significa artefatos
+
+Um método está pronto quando seus artefatos existem: CSV de inventário, trechos de configuração, rascunhos de achados, atualização de cobertura — não quando alguém "sente que terminou".
+
+```python
+"""Rebuild a synthetic engagement timeline from event records."""
+events = [
+    ("09:00", "ROE brief signed", "auth"),
+    ("09:15", "scoped host inventory loaded (12 hosts)", "prep"),
+    ("10:02", "service enumeration on 10.20.1.0/28", "enum"),
+    ("10:45", "finding SYN-001 noted on staging UI", "find"),
+    ("11:10", "stop: host 10.20.0.1 probed — out of scope", "stop"),
+    ("11:12", "escalated to client contact; confirmed deny-list", "comm"),
+    ("13:00", "resume on in-scope hosts only", "auth"),
+    ("15:30", "debrief draft shared with client", "report"),
+]
+# print chronological with phase tags; compute stop latency
+print("phase timeline:")
+for t, msg, phase in events:
+    print(f"  {t} [{phase:6}] {msg}")
+t0 = 10*60+45; t1 = 11*60+10
+print(f"minutes from SYN-001 note to stop: {t1-t0}")
+print(f"stop reason present: yes")
+print(f"events={len(events)} phases={len(set(p for _,_,p in events))}")
+```
+
+Saída esperada:
+
+```text
+phase timeline:
+  09:00 [auth  ] ROE brief signed
+  09:15 [prep  ] scoped host inventory loaded (12 hosts)
+  10:02 [enum  ] service enumeration on 10.20.1.0/28
+  10:45 [find  ] finding SYN-001 noted on staging UI
+  11:10 [stop  ] stop: host 10.20.0.1 probed — out of scope
+  11:12 [comm  ] escalated to client contact; confirmed deny-list
+  13:00 [auth  ] resume on in-scope hosts only
+  15:30 [report] debrief draft shared with client
+minutes from SYN-001 note to stop: 25
+stop reason present: yes
+events=8 phases=7
+```
+
+> **Caso sintético — Riverstone Transit.** O laboratório de linha do tempo mostra uma parada às 11:10 e a retomada depois da confirmação — o cartão de método exigia esse caminho.
+
+Sentimentos não sobrevivem a uma passagem de bastão; arquivos, sim. Inventário, trechos, rascunhos e atualizações de cobertura são a lista de verificação. O executor de métodos de Sam marca pronto só quando cada caminho existe e os hashes estão guardados. Conjuntos parciais de artefatos deixam o método em andamento e bloqueiam o próximo método dependente no planejador.
+
+### 24.4 Erros e limites
+
+Copiar a lista de métodos de outra pessoa sem a autorização correspondente é PTES de culto à carga. Listas de métodos emprestadas ignoram a autorização local e a fragilidade local. Fazer o cartão corresponder à ROE assinada é o verdadeiro trabalho de planejamento. Sam começa pelos verbos da ROE e só então abre o catálogo. Um cartão cuja linha de privilégio excede a ROE é removido antes de a agenda ser publicada, e um cartão ruidoso que consumiria mais de 16% do uplink de uma garagem — o orçamento do exemplo resolvido de física — é vetado na interface da agenda, com essa porcentagem mostrada ao lado do nome do método.
+
+### 24.2b Métodos silenciosos vs. ruidosos
+
+Métodos silenciosos (leituras autenticadas, exportação de configuração) cabem em janelas diurnas em sistemas compartilhados. Métodos ruidosos (enumeração ampla de serviços) precisam de limites de taxa mais apertados e, muitas vezes, de horários fora de pico. O campo "ruidoso?" do cartão de método comanda a agenda; deixá-lo em branco é o modo como as janelas de despacho da manhã ficam congestionadas. Sistemas compartilhados durante o dia precisam de cartões silenciosos; a enumeração ampla precisa de horário fora de pico e taxas mais apertadas. O indicador de ruído comanda o calendário automaticamente quando preenchido. Indicadores em branco são o modo como as janelas de despacho entopem. Sam bloqueia a publicação da agenda enquanto qualquer cartão ainda tiver o campo de ruído em branco.
+
+### 24.3b Congelamento de métodos
+
+Durante uma janela de engajamento, acrescentar um novo método em pleno voo exige o mesmo caminho de autorização que uma ampliação de escopo. "Já que estávamos aqui, também tentamos…" é o modo como a ROE deriva. Estacione as ideias no backlog de planejamento do próximo engajamento. Acréscimos em pleno voo são deriva de escopo com uma marca melhor. O caminho de ampliação existe por um motivo e vale também para os métodos. Estacionar as ideias mantém a janela atual auditável. Sam registra as quebras de congelamento como incidentes, mesmo quando o cliente aprova o método depois. Os tickets de incidente de quebras de congelamento incluem o horário, o nome do método e se o tráfego já tinha saído da zona de avaliação.
+
+### 24.1b Dependências entre métodos
+
+Alguns métodos exigem as saídas de outros (inventário antes da revisão autenticada). Codifique as dependências no plano para que a linha do tempo não agende a revisão no primeiro dia contra uma lista de ativos vazia. O PulseMap pode mostrar ligações de bloqueado-por para as técnicas planejadas. Uma revisão no primeiro dia contra um inventário vazio desperdiça a janela e convida a atalhos. Dependências codificadas fazem o planejador recusar ordens impossíveis. As ligações de bloqueado-por do PulseMap mostram por que uma técnica espera. Sam exibe o grafo de dependências no kickoff para que o cliente veja o caminho crítico.
+
+### 24.4b Revisando um cartão de método
+
+Antes de um cartão de método entrar no catálogo, um segundo engenheiro o lê como se nunca tivesse visto o método: o propósito está claro, as condições de parada são observáveis, o cartão nomeia a evidência que produz? O primeiro cartão de Sam para o inventário passivo de serviços voltou com uma mudança: a condição de parada "se a rede parecer lenta" virou "se o monitoramento do cliente relatar latência acima do limiar combinado". Um leitor sem contexto encontra condições de parada nebulosas antes que a produção as encontre. Limiares observáveis substituem impressões sobre lentidão. Sam guarda o comentário da revisão ao lado da versão do cartão que o corrigiu.
+
+### Exercícios
+
+- **EX070 — Cartão.** Escreva um cartão de método para a revisão autenticada de configuração web. Rubrica: 3 = todos os campos preenchidos com segurança; 2 = falta um; 1 = inclui exploit; 0 = nada.
+- **EX071 — Erro de sequência.** O que há de errado em fazer a descoberta antes da ROE assinada? Rubrica: 3 = teste não autorizado; 2 = processo vago; 1 = "ordem ruim"; 0 = nada.
+- **EX072 — Linha do tempo.** Pelo laboratório, o que deve aparecer no relatório sobre 11:10–11:12? Rubrica: 3 = sondagem fora do escopo, parada, escalonamento, confirmação; 2 = só a parada; 1 = omite; 0 = errado.
+
+### Síntese
+
+Os métodos são autorizados, descritos em cartões e ficam prontos quando os artefatos existem.
+
+### Continue estudando — capítulo 24 de 50
+
+[← Capítulo 23 (rascunho)](#ch-23) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 25 (rascunho) →](#ch-25)
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Ateliê de design I
+
+### Objetivos de aprendizagem
+
+Você vai (1) esboçar o pipeline de permissão/negação do TrackScope; (2) justificar trade-offs numa breve revisão de design; (3) produzir um registro de decisão de uma página.
+
+### 25.1 Problema do ateliê
+
+Desenhe o pipeline: ação de entrada → carregar a ScopeVersion → avaliar o predicado → emitir o evento → retornar a decisão. Concorrentes: política embutida no código vs. arquivo de dados; eventos síncronos vs. assíncronos. O esboço do pipeline obriga os estudantes a nomear onde a política é carregada e para onde os eventos vão. Embutir ou usar arquivo, síncrono ou assíncrono, são debates reais na Riverstone. Sam fornece um modelo de ADR em branco, para que o ateliê termine com escrita, não só com a foto de um quadro branco. As equipes entregam o ADR antes da caminhada pela galeria; fotos sozinhas são arquivadas como notas informais e nunca substituem a decisão escrita, nem na avaliação nem na operação.
+
+### 25.2 Trade-offs
+
+A política como dados permite que as atualizações da ROE sejam entregues sem reimplantar binários, mas exige verificação de assinatura. Eventos assíncronos escalam, mas podem chegar fora de ordem; para acertos na lista de exclusão, prefira o alerta síncrono. Política como dados sem assinatura é um presente para a adulteração; as assinaturas custam gestão de chaves. Alertas de negação assíncronos que chegam fora de ordem podem acionar tarde; o síncrono custa latência. A rubrica de Sam pontua se a equipe nomeou os dois lados antes de escolher, incluindo uma frase que declare, com as palavras de quem escreve, o argumento mais forte da opção rejeitada — um passo que muitas vezes expõe uma escolha feita só por familiaridade.
+
+### 25.3 Registro de decisão
+
+Uma página: contexto, opções, decisão, consequências, data, donos. Guarde-a ao lado do código. Uma página vence uma apresentação de slides que ninguém compara entre versões. Consequências e donos tornam a decisão revisitável. Guardá-la ao lado do código significa que os revisores a veem no mesmo pull request. Sam vincula o ADR a partir do README do serviço que ele afeta. Os links do README usam o nome do arquivo do ADR, então uma renomeação sem atualização quebra o build da documentação e é notada.
+
+> **Caso sintético — Riverstone Transit.** O ateliê escolheu a política como JSON assinado, caminho síncrono para as negações e lote assíncrono para as permissões. O ADR-004 registra isso.
+
+### 25.4 Erros e limites
+
+Ateliês que pulam os requisitos de segurança produzem diagramas bonitos que falham abertos. Caixas bonitas que omitem os caminhos de falha fechada reprovam no ateliê, mesmo que as setas estejam caprichadas. Os requisitos de segurança são verificados antes da estética. Os facilitadores de Sam são orientados a fazer cedo a pergunta da política ausente, e um esboço que não consiga respondê-la volta para revisão em vez de ser polido. Mais de duas devoluções num mesmo ateliê disparam uma breve aula sobre caminhos de falha fechada antes da tentativa do próximo esboço. A aula percorre no quadro branco o caminho DENY da política ausente até que cada equipe consiga apontar onde o TrackScope retorna a negação quando o arquivo da ScopeVersion não carrega.
+
+### 25.2b Padrão de qualidade do esboço
+
+Um esboço de ateliê precisa nomear por escrito as fronteiras de confiança, os repositórios de dados e o caminho de falha fechada — não só caixas e setas. Se um revisor não conseguir apontar onde acontece o DENY quando a política está ausente, o esboço está incompleto. Dez minutos de rótulos valem mais que uma hora de layout estético. Caminhos de falha fechada escritos sobrevivem quando as setas são redesenhadas. Fronteiras de confiança e repositórios precisam estar rotulados para que um revisor consiga atacar o design. Dez minutos de rótulos evitam discussões de uma hora sobre detalhes de layout. Sam rejeita esboços sem rótulos na porta da galeria.
+
+### 25.3b Papel do facilitador
+
+Os ateliês precisam de um facilitador que vigie omissões de segurança e pontuações vazias enquanto as equipes debatem latência. O facilitador pode pausar a sala com uma única pergunta: "Onde fazemos o DENY se a política estiver ausente?" Se ninguém souber responder, a arquitetura não está pronta. Alguém precisa defender a segurança enquanto a sala otimiza a latência. A pergunta de pausa redireciona o debate para os caminhos de DENY. Sam faz um rodízio de facilitadores para que todo estudante pratique o papel. Depois de cada ateliê, o facilitador escreve três frases sobre o que a sala quase deixou passar, arquivadas com os ADRs.
+
+### 25.1b Cartões de restrição
+
+Entregue a cada equipe do ateliê cartões de restrição físicos ou digitais: residência de dados, operação por dois engenheiros, falha fechada, nada de pontuações vazias. Designs que violam um cartão são rejeitados antes de começar o debate estético. Os cartões circulam entre os ateliês para que as equipes pratiquem restrições diferentes. Cartões físicos tornam a residência de dados e a falha fechada difíceis de esquecer sob pressão de tempo. Rejeitar os violadores antes da estética salva a tarde. O rodízio de cartões constrói fluência em diferentes conjuntos de restrições. Sam imprime os cartões em cores diferentes para uma leitura rápida da sala. Os baralhos digitais são embaralhados automaticamente, para que equipes vizinhas raramente compartilhem a mesma ordem de restrições.
+
+### Nota de prática
+
+Cada ateliê termina com uma galeria: as equipes expõem os rascunhos de ADR e as outras equipes tentam encontrar um caminho de falha aberta em cinco minutos. Encontrar um é sucesso para os revisores, não fracasso para os autores — desde que o caminho seja corrigido antes do próximo marco. A energia competitiva vai para a caça a falhas de segurança em vez do polimento de slides, que é o objetivo dos Ateliês de Design I e II neste programa.
+
+### Exercícios
+
+- **EX073 — Opções.** Nomeie duas opções para a entrega da política e um risco de cada. Rubrica: 3 = duas opções + riscos; 2 = só as opções; 1 = uma; 0 = nada.
+- **EX074 — ADR.** Escreva a linha de Decisão para os alertas síncronos de negação. Rubrica: 3 = decisão clara + porquê; 2 = só a decisão; 1 = vago; 0 = nada.
+- **EX075 — Perguntas da revisão.** Liste três perguntas que um revisor precisa fazer. Rubrica: 3 = falha fechada, autenticação da política, desempenho sob inundação; 2 = duas; 1 = uma; 0 = nada.
+
+### Síntese
+
+O trabalho de ateliê termina numa decisão registrada, não numa impressão.
+
+### Continue estudando — capítulo 25 de 50
+
+[← Capítulo 24 (rascunho)](#ch-24) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 26 (rascunho) →](#ch-26)
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Segurança ofensiva autorizada e red team: alternativas de arquitetura
+
+### Objetivos de aprendizagem
+
+Você vai (1) comparar monólito vs. divisão em serviços para as ferramentas de avaliação; (2) avaliar uma opção de "scanner na nuvem" frente às regras de residência de dados; (3) escolher uma alternativa com a rejeição explícita das demais.
+
+### 26.1 Alternativas
+
+A: monólito num jump host endurecido. B: TrackScope / FindingsDesk / PulseMap como serviços separados. C: scanner SaaS, com os dados do cliente saindo das instalações. Cada uma atende a restrições diferentes. Três opções mantêm a análise honesta: monólito local, serviços separados e SaaS saindo das instalações. As restrições variam conforme a residência de dados e a competência de operação. Sam proíbe uma quarta opção misteriosa introduzida nos últimos cinco minutos do debate. Uma lista de estacionamento guarda as ideias tardias para a próxima rodada de alternativas, em vez de distorcer as pontuações atuais.
+
+### 26.2 Critérios
+
+Clareza da autorização, residência de dados, comportamento de falha fechada, operabilidade por dois engenheiros, custo. Dê à segurança e à residência um peso maior que à novidade. Dar à segurança e à residência um peso maior que à novidade impede que uma demonstração SaaS reluzente vença por impressão. A operabilidade por dois engenheiros corresponde ao quadro real da Riverstone. Sam publica os pesos antes da pontuação, para que ninguém mude as regras depois de ver os totais, e cada avaliador escreve uma frase sobre o critério decisivo. As notas de falha de processo são lidas em voz alta no ateliê seguinte, para que manipular os pesos não vire hábito. Ler essas notas em voz alta é constrangedor de propósito; o custo social faz parte do controle.
+
+### 26.3 Decisão
+
+A Riverstone rejeitou C porque os logs de tarifas e de identidade dos funcionários não podem sair da região. Escolheu B, pela escalabilidade independente dos relatórios, com A como alternativa de desastre (exportar os arquivos de política e rodar localmente). Rejeitar C protege os logs de tarifas e de funcionários sob as regras de residência. B escala os relatórios sem obrigar todas as ferramentas a compartilhar o mesmo destino; A continua sendo a saída de emergência offline. O ADR de Sam cita a cláusula de residência que derrubou C.
+
+> **Caso sintético — Riverstone Transit.** Uma demonstração de C, feita por um fornecedor, parecia elegante; a assessoria jurídica a bloqueou por causa da residência. O ADR-011 registra a rejeição para que a pergunta não seja reaberta todo mês.
+
+### 26.4 Erros e limites
+
+Uma análise de alternativas que ignora as cláusulas de dados da ROE é teatro. Ignorar as cláusulas de dados da ROE produz uma arquitetura que o cliente não pode rodar legalmente. Sam verifica essas cláusulas antes de pontuar novidade, custo ou o prazer dos desenvolvedores, e qualquer alternativa que precise de uma dispensa de residência é marcada como bloqueada até que a assessoria jurídica responda por escrito. Os pedidos de dispensa abrem um ticket para a assessoria jurídica com prazo; a engenharia não especula sobre a resposta no ADR. Prazos que escorregam são escalados da mesma forma que achados críticos em aberto.
+
+### 26.2b Custos de mudança
+
+As alternativas de arquitetura incluem o custo de mudar de ideia mais tarde. Um monólito que já exporta arquivos de política assinados pode crescer para serviços; um contrato SaaS com exceções de residência é mais difícil de desfazer no meio de um incidente. Prefira opções que mantenham uma saída de emergência offline para negação/permissão.
+
+Saídas de emergência offline mantêm a negação/permissão viva quando o SaaS ou as redes caem. Contratos com exceções de residência grudam num incidente. Prefira caminhos de crescimento que preservem a exportação de políticas assinadas. Sam pergunta, para cada opção, como uma indisponibilidade numa sexta-feira ainda imporia o DENY.
+
+### 26.3b Critérios de saída das alternativas
+
+Uma análise de alternativas termina com uma decisão, as opções rejeitadas com seus motivos e um gatilho de revisita ("reabrir se a lei de residência mudar"). Sem um gatilho de revisita, as pessoas rediscutem C a cada sprint. Gatilhos de revisita impedem a rediscussão sem fim do SaaS. Os motivos da rejeição precisam ser específicos o bastante para serem refutados depois. Sam coloca a frase do gatilho no cabeçalho do ADR. Gatilhos mensuráveis incluem uma mudança de lei nomeada, um achado de auditoria de residência ou uma queda sustentada da equipe de operação para menos de duas pessoas. Os gatilhos de equipe usam uma média de quatro semanas, para que uma única semana de licença médica não reabra os debates sobre SaaS.
+
+### 26.1b Modelos de custo
+
+Inclua o custo anual aproximado (computação, licenças por usuário, tempo da equipe para a aprovação dupla). Uma alternativa que precisa de seis pessoas em tempo integral para operar com falha fechada não é gratuita só porque a licença era barata. O custo pertence ao registro de decisão, ao lado da segurança. O tempo da equipe para a aprovação dupla é um custo anual real. Licenças baratas que exigem seis pessoas em tempo integral reprovam no critério de operabilidade. A planilha de Sam fica ao lado do ADR, não numa pasta particular. Quando os custos disparam, o próximo líder abre a mesma planilha e vê qual premissa quebrou, sem uma caça ao tesouro.
+
+### Nota de prática
+
+Documente as competências que a alternativa escolhida exige. A divisão em serviços da opção B precisa de engenheiros de plantão que entendam a ordenação de eventos; se a equipe não tiver essa competência, reserve orçamento para treinamento ou prefira uma opção mais simples até que as contratações alcancem. Uma arquitetura que pressupõe competências indisponíveis falha fechada na teoria e falha aberta na prática, quando ninguém consegue operar o caminho de negação sob estresse.
+
+### Exercícios
+
+- **EX076 — Critério.** Acrescente um critério para avaliações de rádio e pontue A/B/C. Rubrica: 3 = critério sensato + pontuações; 2 = só o critério; 1 = vago; 0 = nada.
+- **EX077 — Rejeitar C.** Escreva a frase de rejeição com o motivo de residência. Rubrica: 3 = clara; 2 = parcial; 1 = só o custo; 0 = aceita C.
+- **EX078 — Alternativa de reserva.** Quando o monólito A é o runtime certo? Rubrica: 3 = indisponibilidade/exercício de isolamento com política exportada; 2 = vago; 1 = sempre; 0 = nunca.
+
+### Síntese
+
+Escolha a arquitetura frente a restrições ponderadas; registre as opções rejeitadas.
+
+### Continue estudando — capítulo 26 de 50
+
+[← Capítulo 25 (rascunho)](#ch-25) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 27 (rascunho) →](#ch-27)
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Segurança ofensiva autorizada e red team: desenho de controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) desenhar controles preventivos, detectivos e corretivos para a plataforma; (2) amarrar os controles aos requisitos; (3) evitar controles que exijam habilidades de exploração para serem operados.
+
+### 27.1 Três tipos
+
+Preventivo: o predicado de escopo antes da ação. Detectivo: alerta num acerto da lista de exclusão. Corretivo: desativação automática da conta de avaliação no fim da janela. Cada um corresponde a um id de requisito. Associar cada tipo a um id de requisito torna as lacunas visíveis. Preventivo sem detectivo deixa falhas silenciosas; detectivo sem corretivo deixa contas abertas depois da janela. A tabela de controles de Sam tem três colunas e recusa células vazias nas linhas Must. A desativação de contas no fim da janela é testada deixando uma conta canário ativa em staging e observando o controle corretivo disparar. Os canários de staging têm nomes claros, para que ninguém os confunda com contas de avaliação de produção.
+
+### 27.2 Competência do operador
+
+Os controles precisam ser operáveis por engenheiros que seguem runbooks — não só por especialistas em exploração. Um controle que precisa de um shellcode personalizado para ser verificado é o controle errado para este programa. Controles operáveis por runbook sobrevivem aos plantões noturnos e às novas contratações. Uma verificação que só funciona com exploração exclui os engenheiros que este programa forma. Sam reescreve qualquer controle cujo passo de verificação precise de ferramentas ofensivas personalizadas. Os passos de verificação são reescritos até que um recém-contratado consiga executá-los pelo runbook em menos de quinze minutos. Cronometrar a execução do recém-contratado faz parte da aceitação do controle e é registrado ao lado do campo de dono.
+
+### 27.3 Compensação
+
+Se o controle preventivo é fraco (um sistema legado não consegue impor o escopo de portas), acrescente monitoramento detectivo e uma aprovação humana mais rígida. Documente a compensação na ROE.
+
+```python
+"""Evaluate proposed actions against synthetic rules of engagement."""
+ROE = {
+    "hours": ("09:00", "17:00"),
+    "deny_actions": {"denial-of-service", "phishing-staff", "exfiltrate-real-data"},
+    "require_approval": {"password-spray-lab", "privilege-escalation-lab"},
+    "max_concurrency": 5,
+}
+proposals = [
+    ("service-enum", "10:30", 3, False),
+    ("denial-of-service", "10:30", 1, False),
+    ("password-spray-lab", "10:30", 2, False),
+    ("password-spray-lab", "10:30", 2, True),
+    ("service-enum", "18:00", 2, False),
+    ("service-enum", "11:00", 20, False),
+]
+
+def ok_time(t):
+    return ROE["hours"][0] <= t <= ROE["hours"][1]
+
+for action, when, conc, approved in proposals:
+    reasons=[]
+    if action in ROE["deny_actions"]: reasons.append("deny-action")
+    if action in ROE["require_approval"] and not approved: reasons.append("needs-approval")
+    if not ok_time(when): reasons.append("outside-hours")
+    if conc > ROE["max_concurrency"]: reasons.append("concurrency")
+    print(f"action={action:20} when={when} conc={conc:2} approved={approved} -> {'ALLOW' if not reasons else 'DENY'} {','.join(reasons) or '-'}")
+```
+
+Saída esperada:
+
+```text
+action=service-enum         when=10:30 conc= 3 approved=False -> ALLOW -
+action=denial-of-service    when=10:30 conc= 1 approved=False -> DENY deny-action
+action=password-spray-lab   when=10:30 conc= 2 approved=False -> DENY needs-approval
+action=password-spray-lab   when=10:30 conc= 2 approved=True -> ALLOW -
+action=service-enum         when=18:00 conc= 2 approved=False -> DENY outside-hours
+action=service-enum         when=11:00 conc=20 approved=False -> DENY concurrency
+```
+
+> **Caso sintético — Riverstone Transit.** O password-spray-lab é negado a menos que aprovado — uma etapa preventiva, com um evento detectivo quando alguém tenta sem aprovação.
+
+Lacunas legadas são honestas quando nomeadas na ROE, com monitoramento e aprovação anexados. Lacunas escondidas viram incidentes. Sam lista as compensações na apresentação do kickoff para que o cliente as aceite explicitamente. Slides de kickoff que omitam uma compensação listada são corrigidos antes das assinaturas, não depois da primeira tempestade de negações.
+
+### 27.4 Erros e limites
+
+Pilhas de controles compensatórios sem dono viram alertas ignorados. Pilhas de alertas sem dono ensinam as pessoas a ignorar os acionamentos. Todo controle compensatório precisa de um nome e de uma data de revisão. Sam apaga ou realoca os órfãos todo mês, e um alerta que disparou sem dono por uma semana é levado ao pacote da liderança como defeito de controle. Os pacotes da liderança incluem uma linha com a contagem de alertas órfãos, para que o silêncio não seja confundido com saúde. Uma contagem de órfãos em alta é discutida antes da velocidade de funcionalidades, na mesma reunião da liderança.
+
+### 27.2b Dono do controle
+
+Todo controle tem um dono, que recebe seus alertas, e uma data de revisão. Controles detectivos órfãos viram ruído; controles preventivos órfãos viram folclore que ninguém ousa mudar. Coloque o dono e a data de revisão no mesmo repositório que o código do controle. Dono mais data de revisão no repositório vencem um wiki que ninguém atualiza. Alertas sem dono são ruído; o folclore preventivo bloqueia mudanças necessárias. O CODEOWNERS de Sam mapeia os caminhos dos controles para as pessoas que recebem os acionamentos. Remapear donos é uma mudança de configuração revisada, com uma semana de acionamentos acompanhados antes de o dono antigo sair.
+
+### 27.3b Testando controles
+
+Cada controle precisa de um teste negativo: remova-o ou quebre-o num laboratório e mostre que o mau resultado é pego por um controle superior ou pelos padrões de falha fechada. Controles não testados são desejos. Testes negativos provam que a camada superior pega um controle preventivo quebrado. Controles não testados são desejos com painéis. Sam agenda o laboratório de quebra a cada trimestre e registra as lacunas como P1. Os P1 abertos do laboratório aparecem no painel de prontidão do engajamento, ao lado da ROE e das versões fixadas. Os painéis de prontidão ficam vermelhos com P1 abertos e continuam vermelhos até que a correção entre e o laboratório seja executado de novo.
+
+### 27.1b Detectando o contorno de controles
+
+Registre quando um operador usa o acesso de emergência (break-glass) para pular a aprovação dupla. Break-glass sem detecção é só um controle individual escondido. A revisão semanal dos eventos de break-glass faz parte do desenho do controle. Break-glass sem logs é um controle individual escondido. A revisão semanal mantém os caminhos de emergência excepcionais. Sam plota a contagem de break-glass ao lado do volume de engajamentos. As revisões de design dos caminhos de controle duplo convidam um representante do cliente quando as contagens sobem por duas semanas seguidas. Duas semanas é tempo suficiente para ver um padrão e curto o bastante para agir antes da próxima janela.
+
+### Nota de prática
+
+Os controles se degradam. Agende um dia trimestral de saúde dos controles: quebre cada controle preventivo num laboratório sintético e confirme que os controles detectivos disparam. Registre a data ao lado do dono do controle. Um controle que nunca foi quebrado de propósito é um controle que você só espera que funcione, e esperança não é um controle de engenharia numa plataforma de avaliação autorizada.
+
+### Exercícios
+
+- **EX079 — Mapa.** Dê um controle preventivo e um detectivo contra a adulteração de evidências. Rubrica: 3 = os dois (por exemplo, repositório lacrado + alerta de divergência de hash); 2 = um; 1 = vago; 0 = nada.
+- **EX080 — Operável.** Por que "verificar explorando de novo" é um controle ruim? Rubrica: 3 = uso dual + instável + competência errada; 2 = um motivo; 1 = vago; 0 = defende.
+- **EX081 — Laboratório.** Qual regra da ROE bloqueia a concorrência 20? Rubrica: 3 = limite de concorrência; 2 = negação vaga; 1 = errado; 0 = nada.
+
+### Síntese
+
+Os controles são preventivos/detectivos/corretivos, têm dono e são operáveis sem exploits.
+
+### Continue estudando — capítulo 27 de 50
+
+[← Capítulo 26 (rascunho)](#ch-26) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 28 (rascunho) →](#ch-28)
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Segurança ofensiva autorizada e red team: implementação I
+
+### Objetivos de aprendizagem
+
+Você vai (1) implementar allowed() com códigos de motivo explícitos; (2) acrescentar testes para cada cláusula; (3) registrar logs sem guardar segredos.
+
+### 28.1 Forma da implementação
+
+Função pura: entradas host, porta, ScopeVersion → (allow: bool, reason: str). Nenhuma E/S de rede dentro do predicado; a E/S pertence a quem chama. Isso mantém os testes rápidos e livres de contato com o cliente. Manter a E/S fora do predicado torna os testes sintéticos completos. Quem chama cuida da rede e dos arquivos; a função continua sendo uma decisão pura. Sam mede o desempenho do predicado para mantê-lo abaixo de um milissegundo em rajadas de negações. Os testes de rajada enviam dez mil negações sintéticas e falham se a latência p95 ultrapassar o orçamento de um milissegundo.
+
+### 28.2 Testes por cláusula
+
+Um arquivo de teste por cláusula: cidr, lista de exclusão, porta, horário, concorrência, indicador de aprovação. Só fixtures sintéticos. Mutação: quebre uma cláusula e veja o teste falhar.
+
+```python
+"""Check proposed engagement targets against a written scope (synthetic)."""
+SCOPE_CIDRS = [("10.20.0.0", 16), ("192.168.50.0", 24)]  # inclusive synthetic ranges
+SCOPE_PORTS = {22, 80, 443, 8080}
+DENY_HOSTS = {"10.20.0.1", "192.168.50.1"}  # out-of-scope infra
+
+def ip_int(s):
+    a,b,c,d = map(int, s.split("."))
+    return (a<<24)|(b<<16)|(c<<8)|d
+
+def in_cidr(ip, net, bits):
+    mask = (0xFFFFFFFF << (32-bits)) & 0xFFFFFFFF
+    return (ip_int(ip) & mask) == (ip_int(net) & mask)
+
+def check(host, port):
+    reasons = []
+    if host in DENY_HOSTS:
+        reasons.append("deny-list")
+    if not any(in_cidr(host, n, b) for n,b in SCOPE_CIDRS):
+        reasons.append("outside-cidr")
+    if port not in SCOPE_PORTS:
+        reasons.append("port-not-in-scope")
+    return ("ALLOW" if not reasons else "DENY"), reasons
+
+tests = [
+    ("10.20.1.10", 443),
+    ("10.20.0.1", 443),
+    ("192.168.50.20", 22),
+    ("192.168.50.20", 3389),
+    ("8.8.8.8", 80),
+    ("192.168.1.10", 80),
+]
+for h,p in tests:
+    v, r = check(h,p)
+    print(f"target={h}:{p} decision={v} reasons={','.join(r) or '-'}")
+```
+
+Saída esperada:
+
+```text
+target=10.20.1.10:443 decision=ALLOW reasons=-
+target=10.20.0.1:443 decision=DENY reasons=deny-list
+target=192.168.50.20:22 decision=ALLOW reasons=-
+target=192.168.50.20:3389 decision=DENY reasons=port-not-in-scope
+target=8.8.8.8:80 decision=DENY reasons=outside-cidr
+target=192.168.1.10:80 decision=DENY reasons=outside-cidr
+```
+
+Arquivos por cláusula mostram qual regra regrediu. Uma mutação que quebra uma cláusula precisa fazer a CI falhar, ou a suíte é teatro. Fixtures sintéticos mantêm as redes dos clientes de fora. A revisão de Sam verifica se cada cláusula da ROE tem um arquivo. Cláusulas não implementadas bloqueiam os trens de release mesmo quando uma demonstração manual passou num build de notebook. Demonstrações em notebook podem ser anexadas como extras, mas nunca liberam um trem sozinhas.
+
+### 28.3 Registro em log
+
+Registre a decisão, o motivo, a versão da política e quem agiu. Não registre tokens nem senhas. Oculte os parâmetros de consulta que possam conter segredos. A versão da política e quem agiu tornam um DENY explicável meses depois. Tokens em logs são incidentes. A ocultação dos parâmetros de consulta é testada com um fixture que tenta passar uma senha às escondidas. Sam faz os builds falharem quando imprimem cabeçalhos Authorization. Os fixtures de segredo às escondidas rodam a cada commit, não só nos candidatos a release, para que regressões de ocultação falhem rápido.
+
+> **Caso sintético — Riverstone Transit.** A Implementação I entregou códigos de motivo que a interface de linha do tempo mostra — os operadores finalmente viram *por que* uma sondagem parou.
+
+### 28.4 Erros e limites
+
+Motivos tipados como strings derivam; use um enum compartilhado com o PulseMap. Códigos de motivo que inventam strings novas toda semana quebram painéis e treinamentos. Um catálogo com ids estáveis mantém os operadores fluentes. Sam rejeita pull requests que acrescentem um motivo sem uma linha no catálogo e um teste unitário, e arquiva os códigos aposentados em vez de reciclar seus ids, para que os logs antigos continuem legíveis. Os códigos arquivados permanecem numa tabela somente-leitura consultada pela interface de logs quando os analistas abrem engajamentos antigos. O acesso somente-leitura ao arquivo é concedido aos analistas apenas pelo período de retenção do engajamento.
+
+### 28.2b Catálogo de códigos de motivo
+
+Publique o enum de códigos de motivo como um documento versionado, compartilhado pelo PulseMap e pelos operadores: `outside-cidr`, `deny-list`, `port-not-in-scope`, `outside-hours`, `concurrency`, `needs-approval`, `policy-unavailable`. Códigos desconhecidos precisam falhar fechados nos consumidores, não aparecer como "OK". Códigos estáveis permitem que o PulseMap e os documentos de treinamento falem uma só língua. O texto para pessoas pode mudar; os ids, não. Sam versiona o catálogo e exige uma nota de migração quando os significados mudam. Os notebooks anuais de métricas fixam a versão do catálogo, para que uma mudança de significado não remodele as tendências em silêncio. Notebooks que omitem a fixação reprovam na revisão de métricas, da mesma forma que versões de ferramentas não fixadas reprovam no kickoff.
+
+### 28.3b Fuzzing das entradas
+
+Alimente o predicado com hosts, portas e UTF-8 quebrado aleatórios. Ele precisa negar (DENY) ou dar erro fechado, nunca lançar uma exceção não tratada e nunca permitir (ALLOW) numa falha de interpretação. Um harness de fuzzing de cinco minutos na CI pega falhas constrangedoras antes que um engajamento as pegue. Hosts e portas sem sentido precisam ser negados de forma fechada, não derrubar o sistema aberto. Fazer fuzzing do predicado pega pânicos que falhariam abertos num wrapper. Sam roda um job noturno de fuzzing em allowed(), com uma etapa que trata falhas como reprovação. As notas de release listam as horas de fuzzing e a contagem de falhas ao lado dos destaques de funcionalidades, para dar visibilidade.
+
+### 28.1b Horários baseados em propriedades
+
+Para a etapa de horário, gere carimbos de tempo aleatórios ao longo de uma semana e afirme DENY fora da janela da ROE e ALLOW dentro dela (com as outras cláusulas satisfeitas). Testes por exemplo deixam passar bordas de fuso horário que os testes de propriedade pegam. As cláusulas de horário falham nas fronteiras: 08:59 contra 09:00. Testes de propriedade em vários fusos horários pegam lacunas que os testes por exemplo deixam passar. Sam inclui um caso logo dentro e um logo fora da janela em todo arquivo de horário. Os tickets de mudança de horário colam a tabela de fronteiras da suíte, para que os revisores vejam o que será afirmado.
+
+### Nota de prática
+
+As listas de verificação de revisão de código para mudanças no predicado incluem: cláusula nova? testes novos? documentação dos códigos de motivo? caso de fuzzing? falha fechada em erro de interpretação? Revisores que pulam a lista estão fazendo revisão social, não revisão de segurança. O caminho de negação do TrackScope é o lugar errado para uma cultura informal de LGTM; a lista é curta de propósito, para que de fato seja usada sob pressão de tempo.
+
+### Exercícios
+
+- **EX082 — Assinatura.** Escreva a assinatura de tipos de allowed e explique por que a ScopeVersion é um argumento. Rubrica: 3 = assinatura + motivo da fixação da versão; 2 = assinatura; 1 = vago; 0 = nada.
+- **EX083 — Mutação.** Qual teste falha se a participação na lista de exclusão for ignorada? Rubrica: 3 = o fixture da lista de exclusão espera DENY; 2 = vago; 1 = errado; 0 = nada.
+- **EX084 — Ocultar.** Dê dois campos de log a ocultar. Rubrica: 3 = por exemplo, cabeçalho Authorization, parâmetro de consulta de senha; 2 = um; 1 = vago; 0 = nada.
+
+### Síntese
+
+Predicado puro, testes por cláusula, logs seguros.
+
+### Continue estudando — capítulo 28 de 50
+
+[← Capítulo 27 (rascunho)](#ch-27) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 29 (rascunho) →](#ch-29)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX060 (as de EX061–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Riverstone Transit, Sam Ito e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX084 (as de EX085–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Riverstone Transit, Sam Ito e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** r′(t) = 8 − 2t = 0 em t = 4, então o pico é r(4) = 32 − 16 = 16 req/s. Resolver 8t − t² = 7 dá t² − 8t + 7 = 0, t = 1 ou t = 7. O teto é violado do minuto 1 ao minuto 7, seis minutos. A nota 3 exige o pico e a janela.
 
@@ -1417,6 +1984,54 @@ Respostas-modelo para EX001–EX060 (as de EX061–EX150 estão na edição em i
 **EX059.** "Projetar e operar uma plataforma de avaliação autorizada que imponha a ROE escrita, registre evidências e meça a remediação — sem jamais testar fora do escopo assinado."
 
 **EX060.** Código de exploit funcional; varredura de sistemas sem ROE escrita; exportação de dados pessoais de produção para os laboratórios; testes de rádio sem autorização de espectro.
+
+**EX061.** Funcional: "O TrackScope deve negar qualquer alvo igual ao endereço de gateway configurado." Segurança: "Se o arquivo da lista de exclusão estiver ausente ou ilegível, o TrackScope deve negar todas as ações e emitir um alerta."
+
+**EX062.** Dado que o caminho da política está configurado, mas o arquivo está ausente; Quando houver qualquer chamada a allowed(); Então o resultado é DENY com o motivo policy-unavailable, nenhuma ação prossegue e um alerta é disparado.
+
+**EX063.** Conflito: os operadores querem acréscimos de CIDR no mesmo dia; a segurança quer aprovação dupla. Regra escolhida: a ampliação sempre exige aprovação dupla e um ticket AUTH; acréscimos de emergência usam um papel de break-glass que ainda registra tudo e expira em 4 horas.
+
+**EX064.** Edições no lugar apagam o que estava autorizado no momento t; a ScopeVersion permite que um achado aponte para a ROE que estava em vigor quando a ação rodou.
+
+**EX065.** Recalcular o hash detecta mudanças; arquivos idênticos se fundem; os tickets referenciam bytes imutáveis.
+
+**EX066.** Rejeite títulos que casem com padrões de atribuição de senha ou com heurísticas de entropia; os revisores continuam conferindo; referências ao cofre só nos metadados das evidências.
+
+**EX067.** Implante com o caminho da política apontando para uma montagem vazia; chame allowed(); espere DENY policy-unavailable e um acionamento de alerta; nenhum pacote sai.
+
+**EX068.** Todo evento de negação guarda o id autenticado de quem agiu e a versão da política; o armazenamento é somente-acréscimo; exclusões exigem break-glass com controle duplo.
+
+**EX069.** O STRIDE da plataforma protege a integridade da avaliação e a segurança do cliente; módulos de exploração aumentam o dano de uso dual e violam o limite do programa — não são mitigações.
+
+**EX070.** Nome: revisão autenticada de configuração web. Propósito: ler as configurações relevantes para a segurança. Privilégio: papel de aplicação `assess-read`. Ruído: baixo. Parada: qualquer tentativa de escrita ou host da lista de exclusão. Artefatos: hash da exportação das configurações, rascunhos de achados.
+
+**EX071.** Ações sem ROE assinada não são autorizadas; é uma falha legal/ética, independentemente da intenção.
+
+**EX072.** Relatório: o host 10.20.0.1 foi sondado (lista de exclusão), as ações foram paradas, o contato do cliente confirmou, a retomada só ocorreu em hosts em escopo — com os carimbos de tempo.
+
+**EX073.** Arquivo JSON assinado: risco = os operadores esquecerem de assinar. Política fixa no código: risco = reimplantações a cada mudança de ROE e deriva entre os nós.
+
+**EX074.** "As decisões de negação disparam o alerta de forma síncrona antes de retornar a quem chamou, para que as condições de parada cumpram a meta de um minuto do sensor; as permissões podem entrar numa fila assíncrona."
+
+**EX075.** Ele falha fechado? Quem pode publicar a política? O que acontece com 10× a taxa de ações?
+
+**EX076.** Critério: "mantém as capturas de RF dentro das instalações autorizadas." A alto, B alto se os coletores forem locais, C baixo se enviar os dados a um SaaS estrangeiro.
+
+**EX077.** "Opção C rejeitada: os logs e as evidências da avaliação sairiam da região de residência exigida pela política da Riverstone e pela cláusula de dados da ROE."
+
+**EX078.** Quando os serviços estão fora do ar ou a rede até eles está fora da ROE — rode a política assinada localmente no jump host, só para negação/permissão, com registro manual dos achados.
+
+**EX079.** Preventivo: bucket lacrado somente-acréscimo, com IAM de escrita única. Detectivo: um job agendado de recálculo de hash alerta em caso de divergência.
+
+**EX080.** Ele exige competência de uso dual, não é determinístico e pode prejudicar o ativo; prefira uma nova leitura da configuração ou um teste de autorização.
+
+**EX081.** A cláusula de concorrência — service-enum com conc=20 é DENY concurrency.
+
+**EX082.** `allowed(host: str, port: int, scope: ScopeVersion, ctx: ActionContext) -> tuple[bool, Reason]`. A ScopeVersion fixa qual ROE foi avaliada, para fins de auditoria.
+
+**EX083.** O teste que afirma DENY deny-list para 10.20.0.1:443 (ou um fixture equivalente).
+
+**EX084.** Cabeçalhos Authorization/cookie; parâmetros de consulta de senha, token ou segredo; bytes brutos das evidências.
 
 <a id="references"></a>
 ## Referências
