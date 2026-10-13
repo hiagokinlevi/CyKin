@@ -52,6 +52,12 @@ Specialists are rarely short of opinions about when a cryptographically relevant
 
 A prioritisation score is not neutral. Multiplying records by harm weight favours volume; treating each person's lifetime privacy as paramount favours long-lived data regardless of volume. Lab D makes the point concrete.
 
+Section one point three develops advanced security decision-making with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section one point three, NRHT security expects advanced claims to carry owners and dates.
+
+Section one point three treats deep uncertainty three decision as testable only when evidence and ticket IDs are recorded.
+
 ### 1.4 Practical activity — Lab D
 
 ```python
@@ -70,6 +76,8 @@ print("ranking by weighted exposure:", [n for n, _ in sorted(score.items(), key=
 
 Expected output:
 
+Section one point four develops advanced security decision-making with a Northgate Regional Health Trust note the specialist can demo offline.
+
 ```text
 genomics transfers       late in: ['early z=8', 'mid z=15', 'late z=25']
 EHR site replication     late in: ['early z=8', 'mid z=15', 'late z=25']
@@ -84,11 +92,23 @@ The volume-weighted score ranks imaging above genomics even though genomic data 
 
 Some uncertainty can be reduced cheaply: whether a vendor will ship hybrid IKEv2 next year, how many devices are unknown, what the real retention period of a dataset is. *Value of information* reasoning asks whether resolving an uncertainty could change the decision; if not, do not wait for it. CRQC timing usually cannot be bought; inventory facts usually can.
 
+Section one point five develops advanced security decision-making with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section one point five, NRHT security expects advanced claims to carry owners and dates.
+
 ### 1.6 Worked case
 
 NRHT's board must decide whether to fund an 18-month programme for hybrid key exchange on inter-site links now or wait two years for a planned network refresh. Scenario analysis: if *z* = 8, waiting exposes genomics and EHR replication traffic for two extra years of collection with no remedy; if *z* = 25, acting now costs perhaps 15 % more than folding work into the refresh. The worst regret of waiting (irreversible disclosure of 50-year data) dominates the worst regret of acting (moderate extra cost). Decision: act now on the two long-lived flows; defer the rest to the refresh; buy information on device inventory immediately.
 
 ### 1.7 Common errors and limits
+Section one point seven develops advanced security decision-making with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section one point seven, NRHT security expects advanced claims to carry owners and dates.
+
+Section one point seven treats deep uncertainty three decision as testable only when evidence and ticket IDs are recorded.
+
+For section one point seven, Northgate Regional Health Trust will not accept advanced work without a written trail.
+
 
 - Treating a single CRQC date as the planning basis.
 - Hiding value judgments inside scoring weights.
@@ -134,11 +154,29 @@ Hybrid key exchange in TLS moved from experiment to default in a few years. Chro
 
 NRHT's state-of-practice brief, one page, dated: final standards (FIPS 203/204/205, SP 800-208); drafts (IR 8547 dates); in development (FN-DSA, HQC); deployment (hybrid TLS widely available in browsers and CDNs; NRHT's PACS cloud reader already negotiates X25519MLKEM768; VPN appliances: vendor A supports RFC 9370 in current firmware, vendor B "roadmap 2027"); gaps (no public CA issuing ML-DSA certificates for the web PKI at scale; medical-device vendors mostly silent). The brief is reviewed quarterly and every claim has a link.
 
+Section two point four develops quantum and post-quantum security current with a Northgate Regional Health Trust note the specialist can demo offline.
+
 ### 2.5 Practice task
 
 Write your organization's (or NRHT's) state-of-practice brief. Mark each item final, draft, in development or vendor claim.
 
+Section two point five develops quantum and post-quantum security current with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section two point five, NRHT security expects quantum claims to carry owners and dates.
+
+Section two point five treats standards transition guidance deployment as testable only when evidence and ticket IDs are recorded.
+
+For section two point five, Northgate Regional Health Trust will not accept quantum work without a written trail.
+
 ### 2.6 Common errors and limits
+Section two point six develops quantum and post-quantum security current with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section two point six, NRHT security expects quantum claims to carry owners and dates.
+
+Section two point six treats standards transition guidance deployment as testable only when evidence and ticket IDs are recorded.
+
+For section two point six, Northgate Regional Health Trust will not accept quantum work without a written trail.
+
 
 - Citing draft dates as mandates.
 - Assuming web deployment status applies to VPNs, devices or PKI.
@@ -172,9 +210,13 @@ You will (1) design an organization-scale cryptographic inventory programme; (2)
 
 At organization scale, a cryptographic bill of materials (CBOM) is not a one-off spreadsheet but a programme with owners, sources, schedules and quality metrics. Sources include passive network sensors, configuration management databases, certificate management systems, code and binary scanners, cloud provider APIs, HSM audit logs and supplier attestations. Each feeds observations — asset, function, algorithm, parameter, implementation, method, date — into a store that can be queried and diffed over time.
 
+Section three point one develops quantum and post-quantum security specialist with a Northgate Regional Health Trust note the specialist can demo offline.
+
 ### 3.2 Evidence grading
 
 Not all observations are equal. A practical grading: **A** — observed in operation (handshake, HSM log); **B** — read from authoritative configuration; **C** — inferred from code or binary analysis; **D** — supplier statement; **U** — unknown. Decisions about urgent work should rest on A or B evidence where possible; D evidence triggers verification for high-priority assets. Grading also guides investment: if most high-priority assets have only D evidence, the next spend is verification, not migration.
+
+Section three point two develops quantum and post-quantum security specialist with a Northgate Regional Health Trust note the specialist can demo offline.
 
 ### 3.3 Practical activity — Lab I
 
@@ -196,6 +238,12 @@ print("hybrid key exchange present on:", [r[0] for r in records if "MLKEM" in r[
 
 Expected output:
 
+Section three point three develops quantum and post-quantum security specialist with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section three point three, NRHT security expects quantum claims to carry owners and dates.
+
+Section three point three treats inventory as programme evidence as testable only when evidence and ticket IDs are recorded.
+
 ```text
 assets 6, unknown 1 (17%)
 quantum-vulnerable uses 5: pacs-gateway/signature, infusion-hub/key-exchange, infusion-hub/signature, ehr-core/key-exchange, site-vpn/key-exchange
@@ -208,15 +256,35 @@ Even in this small synthetic set, one asset of six is unknown, and the hybrid th
 
 Suppliers control much of the cryptography in a hospital: EHR platforms, PACS, devices, cloud services. Ask for structured inventories (algorithms, libraries, versions), roadmaps with dates and versions, and test access. Contract clauses should require disclosure and notification of cryptographic changes. Treat silence as *unknown*, never as *compliant*.
 
+Section three point four develops quantum and post-quantum security specialist with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section three point four, NRHT security expects quantum claims to carry owners and dates.
+
 ### 3.5 Presenting evidence
 
 Executives need answers to three questions: what share of priority flows is protected, how confident are we, and what is unknown? Present coverage by evidence grade and priority tier, not raw counts. Show trends over quarters; a falling unknown share is progress even before any algorithm changes.
+
+Section three point five develops quantum and post-quantum security specialist with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section three point five, NRHT security expects quantum claims to carry owners and dates.
 
 ### 3.6 Worked case
 
 NRHT's first-quarter inventory (synthetic): 41,200 assets; priority tier 1 (long-lived confidentiality or long-lived trust) 1,850 assets. Of tier 1: 22 % grade A/B, 31 % grade C, 29 % grade D, 18 % unknown. The board report leads with "we can confirm the cryptography of only 22 % of our most important assets"; the funded response is sensor coverage on inter-site links and a supplier questionnaire to the 40 suppliers behind 80 % of tier 1.
 
+Section three point six develops quantum and post-quantum security specialist with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section three point six, NRHT security expects quantum claims to carry owners and dates.
+
 ### 3.7 Common errors and limits
+Section three point seven develops quantum and post-quantum security specialist with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section three point seven, NRHT security expects quantum claims to carry owners and dates.
+
+Section three point seven treats inventory as programme evidence as testable only when evidence and ticket IDs are recorded.
+
+For section three point seven, Northgate Regional Health Trust will not accept quantum work without a written trail.
+
 
 - Treating supplier statements as observations.
 - Reporting asset counts without tier and grade.
@@ -250,27 +318,51 @@ You will (1) quantify quantum risk with scenario-based exposure measures; (2) ha
 
 Harvest-now-decrypt-later (HNDL) risk is latent: the loss event (collection) may already have happened, and the harm (decryption) happens later and cannot be undone. Standard risk registers, built for events with immediate detection and recovery, misrepresent it. Represent HNDL as *exposure accumulated per year*: the volume of long-lived data crossing interceptable links under classical key exchange each year, weighted by harm, under each timeline scenario. Each year of delay adds a year's exposure that no later migration removes.
 
+Section four point one develops advanced risk and ethics with a Northgate Regional Health Trust note the specialist can demo offline.
+
 ### 4.2 Forge-later and systemic risk
 
 Forge-later risk depends on trust anchors and update channels. A forged code-signing key for a widely deployed medical device could affect patient safety across many hospitals simultaneously; the risk is systemic, not local. Specialists should identify trust anchors whose compromise has correlated effects and prioritise their migration or compensating controls, such as multiple signatures or hardware-bound verification keys that can be rotated.
+
+Section four point two develops advanced risk and ethics with a Northgate Regional Health Trust note the specialist can demo offline.
 
 ### 4.3 Obligations to data subjects
 
 A patient's genomic data reveals information about relatives and remains sensitive for generations. The organization's planning horizon (budget cycles, contracts) is shorter than the harm horizon. Ethically, the people bearing the risk — patients — are not party to the decision, which strengthens the duty of care. Specialists should insist that harm horizons, not organizational retention schedules, set *x* for such data, and that minimization (Chapter 5) is considered before cryptographic controls.
 
+Section four point three develops advanced risk and ethics with a Northgate Regional Health Trust note the specialist can demo offline.
+
 ### 4.4 Dual use and disclosure
 
 Organization-scale inventories are maps of weakness. Restrict access, publish only aggregates, and treat vulnerability reports from suppliers under coordinated disclosure. Active testing of negotiation, downgrade or fault behaviour belongs in isolated, authorized testbeds; a specialist who directs others is responsible for ensuring those boundaries are written down.
 
+Section four point four develops advanced risk and ethics with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section four point four, NRHT security expects advanced claims to carry owners and dates.
+
 ### 4.5 Residual-risk acceptance
 
 When a risk cannot be reduced in time — a legacy imaging modality that cannot be upgraded — the accountable executive accepts it formally: scope, rationale, compensating controls, expiry date and review trigger. Acceptance without expiry becomes permanent by default.
+
+Section four point five develops advanced risk and ethics with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section four point five, NRHT security expects advanced claims to carry owners and dates.
+
+Section four point five treats latent irreversible risk forge-later as testable only when evidence and ticket IDs are recorded.
 
 ### 4.6 Worked case
 
 NRHT's genomics service sends 20,000 records a year to an external research partner over a TLS link with classical key exchange. Exposure framing: every year adds 20,000 lifetime-sensitive records to what an interceptor could hold. Ethical framing: the harm horizon is ~50 years and includes relatives. Decision: migrate this link to hybrid key exchange within three months, reduce data sent by moving analysis to a trusted research environment, and record that prior years' transfers remain exposed — a residual risk the board formally accepts with a note in the privacy impact assessment.
 
 ### 4.7 Common errors and limits
+Section four point seven develops advanced risk and ethics with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section four point seven, NRHT security expects advanced claims to carry owners and dates.
+
+Section four point seven treats latent irreversible risk forge-later as testable only when evidence and ticket IDs are recorded.
+
+For section four point seven, Northgate Regional Health Trust will not accept advanced work without a written trail.
+
 
 - Scoring HNDL like an ordinary incident with immediate impact.
 - Letting retention schedules define harm horizons.
@@ -308,6 +400,8 @@ You will (1) enumerate design alternatives for key establishment, authentication
 
 Options for certificates: keep classical certificates while monitoring ecosystem readiness (acceptable where forge-later risk is low and certificates are short-lived); issue ML-DSA certificates in closed ecosystems such as internal PKI and device fleets first; use dual or composite certificate approaches during transition where standards and products support them; and use hash-based signatures (SLH-DSA, LMS, XMSS) where conservatism or verification simplicity matters, notably for firmware.
 
+Section five point two develops quantum and post-quantum security design with a Northgate Regional Health Trust note the specialist can demo offline.
+
 ### 5.3 Practical activity — Lab B
 
 ```python
@@ -325,6 +419,10 @@ for a in algs:
 
 Expected output:
 
+Section five point three develops quantum and post-quantum security design with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section five point three, NRHT security expects quantum claims to carry owners and dates.
+
 ```text
 ECDSA P-256          ~  1290 bytes of certificates and signatures
 RSA-2048             ~  2620 bytes of certificates and signatures
@@ -339,11 +437,27 @@ For an internal service mesh on a data-centre network, 15 kB per handshake is ac
 
 Parameter sets map to NIST categories: ML-KEM-512/768/1024 to categories 1/3/5; ML-DSA-44/65/87 to 2/3/5. A specialist sets policy explicitly (for example, category 3 by default, category 5 for national-security-adjacent partners) and records why. Uniform maximum parameters waste bytes and cycles; ad hoc choices make audits painful.
 
+Section five point four develops quantum and post-quantum security design with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section five point four, NRHT security expects quantum claims to carry owners and dates.
+
+Section five point four treats key-establishment alternatives authentication alternatives as testable only when evidence and ticket IDs are recorded.
+
 ### 5.5 Worked case
 
 NRHT's inter-site EHR replication runs over IPsec. Alternatives: (a) hybrid IKEv2 with ML-KEM-768 on vendor A's appliances (supported now); (b) RFC 8784 PSKs for the two vendor-B sites until 2027; (c) re-architect replication to send only deltas, cutting volume by 70 %; (d) pure ML-KEM — rejected because vendor A's implementation is new and the hedge is valuable. Chosen: (a) + (b) + (c), with (b) expiring when vendor B ships hybrid support. Authentication stays classical for now; the internal PKI plan (Chapter 8) addresses it.
 
+Section five point five develops quantum and post-quantum security design with a Northgate Regional Health Trust note the specialist can demo offline.
+
 ### 5.6 Common errors and limits
+Section five point six develops quantum and post-quantum security design with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section five point six, NRHT security expects quantum claims to carry owners and dates.
+
+Section five point six treats key-establishment alternatives authentication alternatives as testable only when evidence and ticket IDs are recorded.
+
+For section five point six, Northgate Regional Health Trust will not accept quantum work without a written trail.
+
 
 - Choosing pure PQ to "be modern" without considering the hedge.
 - PSK schemes without rotation and secure distribution.
@@ -377,9 +491,19 @@ You will (1) design controlled evaluations of migration changes; (2) set decisio
 
 Specialist evaluation answers decision questions: does enabling a hybrid group on the PACS gateway keep failure rates within budget? Does ML-DSA in the internal PKI break any clinical application? Which VPN firmware versions negotiate the intended methods? Each question needs a population, a measure, a threshold set in advance and a decision rule.
 
+Section six point one develops quantum and post-quantum security controlled with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section six point one, NRHT security expects quantum claims to carry owners and dates.
+
 ### 6.2 Thresholds before data
 
 Set failure budgets and latency thresholds before the experiment, agreed with service owners. Thresholds set afterwards drift toward whatever the data show. A typical budget: handshake failure rate may rise by at most 0.04 percentage points over baseline, judged by the 95 % upper confidence bound.
+
+Section six point two develops quantum and post-quantum security controlled with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section six point two, NRHT security expects quantum claims to carry owners and dates.
+
+Section six point two treats evaluation questions thresholds before as testable only when evidence and ticket IDs are recorded.
 
 ### 6.3 Practical activity — Lab K
 
@@ -397,6 +521,12 @@ for stage, k, n in [("1% canary", 3, 5000), ("10% canary", 28, 50000), ("10% can
 
 Expected output:
 
+Section six point three develops quantum and post-quantum security controlled with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section six point three, NRHT security expects quantum claims to carry owners and dates.
+
+Section six point three treats evaluation questions thresholds before as testable only when evidence and ticket IDs are recorded.
+
 ```text
 1% canary                3/5000  upper95=0.00176  HOLD
 10% canary               28/50000  upper95=0.00081  PROMOTE
@@ -409,15 +539,35 @@ The first stage holds on uncertainty, not on evidence of harm; the proxy site ho
 
 Hospitals have long tails of clients: old browsers on clinical workstations, embedded browsers in devices, partner systems. An interoperability matrix lists client types × server configurations with observed outcomes. Build it in a lab with representative clients first, then confirm with production telemetry. Gaps in the matrix are unknowns to resolve before broad rollout.
 
+Section six point four develops quantum and post-quantum security controlled with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section six point four, NRHT security expects quantum claims to carry owners and dates.
+
 ### 6.5 Validity
 
 Lab evaluations have external-validity limits: real inspection proxies, Wi-Fi conditions and device firmware differ. Production canaries have internal-validity limits: concurrent changes and weekly cycles. Report both and prefer conclusions supported by lab and canary evidence together.
+
+Section six point five develops quantum and post-quantum security controlled with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section six point five, NRHT security expects quantum claims to carry owners and dates.
+
+Section six point five treats evaluation questions thresholds before as testable only when evidence and ticket IDs are recorded.
 
 ### 6.6 Worked case
 
 NRHT evaluates hybrid key exchange on the PACS gateway. Pre-set threshold: upper bound ≤ 0.09 % failures. Lab matrix: 14 client types; two embedded viewers fail with the larger ClientHello. Canary 1 % for two weeks: promote. Canary 10 %: one hospital exceeds the threshold — its legacy inspection proxy. Decision: exclude that hospital, upgrade the proxy, continue elsewhere; the two embedded viewers are routed through a classical-only listener with documented residual risk and a vendor ticket.
 
+Section six point six develops quantum and post-quantum security controlled with a Northgate Regional Health Trust note the specialist can demo offline.
+
 ### 6.7 Common errors and limits
+Section six point seven develops quantum and post-quantum security controlled with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section six point seven, NRHT security expects quantum claims to carry owners and dates.
+
+Section six point seven treats evaluation questions thresholds before as testable only when evidence and ticket IDs are recorded.
+
+For section six point seven, Northgate Regional Health Trust will not accept quantum work without a written trail.
+
 
 - Setting thresholds after seeing data.
 - Pooling sites, which hides a failing one.
@@ -451,9 +601,17 @@ You will (1) integrate PQC migration into architecture, change, procurement and 
 
 A migration run as a separate project ends with a report and leaves the organization as rigid as before. Integrated into normal processes, it leaves a capability: architecture reviews ask about algorithms and agility; change management records cryptographic changes; procurement requires inventories and algorithm support; risk management tracks quantum exposure. [CSWP 39](https://doi.org/10.6028/NIST.CSWP.39-upd1) frames this as crypto-agility at the organizational as well as technical level.
 
+Section seven point one develops quantum and post-quantum security organizational with a Northgate Regional Health Trust note the specialist can demo offline.
+
 ### 7.2 Policy-driven platforms
 
 Platforms that read cryptographic choices from policy let the organization change algorithms by configuration. The algorithm identifier must travel with data and be authenticated, so that a verifier can refuse a retired algorithm.
+
+Section seven point two develops quantum and post-quantum security organizational with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section seven point two, NRHT security expects quantum claims to carry owners and dates.
+
+Section seven point two treats not project capability policy-driven as testable only when evidence and ticket IDs are recorded.
 
 ### 7.3 Practical activity — Lab A
 
@@ -480,6 +638,14 @@ print("old tag after retirement:", check(k, m, a1, t1))
 
 Expected output:
 
+Section seven point three develops quantum and post-quantum security organizational with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section seven point three, NRHT security expects quantum claims to carry owners and dates.
+
+Section seven point three treats not project capability policy-driven as testable only when evidence and ticket IDs are recorded.
+
+For section seven point three, Northgate Regional Health Trust will not accept quantum work without a written trail.
+
 ```text
 old tag still verifies during transition: True
 new tag verifies: True | algorithms: hmac-sha256 -> hmac-sha3-256
@@ -492,19 +658,49 @@ The same pattern — registry, policy, accepted list, retirement — applies to 
 
 Define who decides cryptographic policy (a cryptography authority or board), who owns each platform's implementation, who approves exceptions, and who accepts residual risk. Publish a cryptographic standard listing approved algorithms and parameters, transition dates and the exception process.
 
+Section seven point four develops quantum and post-quantum security organizational with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section seven point four, NRHT security expects quantum claims to carry owners and dates.
+
+Section seven point four treats not project capability policy-driven as testable only when evidence and ticket IDs are recorded.
+
 ### 7.5 Refresh cycles and budget
 
 Most hardware is replaced on cycles of five to ten years. Aligning PQC requirements with those cycles avoids premature replacement; it requires procurement clauses now so that equipment bought in 2027 does not need replacing in 2031. Software subscriptions are faster; require roadmaps with dates.
+
+Section seven point five develops quantum and post-quantum security organizational with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section seven point five, NRHT security expects quantum claims to carry owners and dates.
+
+Section seven point five treats not project capability policy-driven as testable only when evidence and ticket IDs are recorded.
 
 ### 7.6 Measuring progress
 
 Count outcomes, not activities: share of tier-1 flows with hybrid key exchange (grade A/B evidence); share of new contracts with PQC clauses; median time to change an algorithm on policy-driven platforms; tier-1 unknown share. Avoid vanity metrics such as "number of meetings held".
 
+Section seven point six develops quantum and post-quantum security organizational with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section seven point six, NRHT security expects quantum claims to carry owners and dates.
+
+Section seven point six treats not project capability policy-driven as testable only when evidence and ticket IDs are recorded.
+
 ### 7.7 Worked case
 
 NRHT establishes a Cryptography Authority chaired by the CISO with architecture, PKI, clinical engineering and procurement members. Its standard (synthetic) sets ML-KEM-768 hybrid as the default for new key establishment, requires algorithm identifiers in new data formats, and adds PQC clauses to all contracts above a threshold. Progress metrics are reviewed quarterly by the audit committee.
 
+Section seven point seven develops quantum and post-quantum security organizational with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section seven point seven, NRHT security expects quantum claims to carry owners and dates.
+
 ### 7.8 Common errors and limits
+Section seven point eight develops quantum and post-quantum security organizational with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section seven point eight, NRHT security expects quantum claims to carry owners and dates.
+
+Section seven point eight treats not project capability policy-driven as testable only when evidence and ticket IDs are recorded.
+
+For section seven point eight, Northgate Regional Health Trust will not accept quantum work without a written trail.
+
 
 - Treating migration as a one-off project.
 - No exception process, leading to silent non-compliance.
@@ -538,27 +734,57 @@ You will (1) analyse migrations involving medical and embedded devices, internal
 
 Devices have regulatory approvals, long lives and vendor-controlled firmware. Changing cryptography may require recertification. Options: vendor firmware with hybrid key exchange where offered; network segmentation and gateways that terminate post-quantum protocols in front of devices; minimised data flows; and procurement requirements for replacements. Patient safety governs change windows.
 
+Section eight point one develops quantum and post-quantum security difficult with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section eight point one, NRHT security expects quantum claims to carry owners and dates.
+
 ### 8.2 Internal PKI
 
 The internal PKI anchors VPNs, device identities and service-to-service TLS. A post-quantum PKI plan: stand up an ML-DSA root and intermediates in HSMs that support FIPS 204; distribute the new root to relying parties; issue post-quantum certificates in closed ecosystems first; keep classical hierarchy in parallel; and set end dates for classical issuance aligned with the internal standard.
+
+Section eight point two develops quantum and post-quantum security difficult with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section eight point two, NRHT security expects quantum claims to carry owners and dates.
 
 ### 8.3 Stateful hash-based signatures
 
 [SP 800-208](https://doi.org/10.6028/NIST.SP.800-208) approves LMS and XMSS with the requirement that keys and state are managed in hardware modules and not exported. They suit firmware signing. Plan signature capacity, protect state against rollback during HSM failover, and test disaster recovery so that recovery never reuses an index.
 
+Section eight point three develops quantum and post-quantum security difficult with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section eight point three, NRHT security expects quantum claims to carry owners and dates.
+
 ### 8.4 Long-term signatures and archives
 
 Signed clinical documents and consent forms must remain verifiable for decades. Archive timestamping and evidence-record renewal can preserve validity across algorithm transitions, provided renewal happens while the older algorithm is still trustworthy. Encrypted archives already exposed in transit cannot be repaired by re-encryption.
+
+Section eight point four develops quantum and post-quantum security difficult with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section eight point four, NRHT security expects quantum claims to carry owners and dates.
+
+Section eight point four treats medical and embedded devices as testable only when evidence and ticket IDs are recorded.
 
 ### 8.5 Algorithm-break response
 
 Rainbow (Beullens, 2022) and SIKE (Castryck and Decru, 2022) show that candidate schemes can fall quickly; KyberSlash (Bernstein et al., 2024) shows that implementations can leak. A response plan names the decision forum, the configuration paths to disable an algorithm, the systems needing releases or hardware, the fallback (hybrids help), and communications to suppliers and regulators. HQC's selection as a backup KEM gives a future alternative with a different mathematical basis.
 
+Section eight point five develops quantum and post-quantum security difficult with a Northgate Regional Health Trust note the specialist can demo offline.
+
 ### 8.6 Worked case
 
 NRHT's infusion pump fleet (synthetic, 4,000 units) uses RSA-signed firmware verified by a boot ROM and ECDH to a management hub. Vendor offers hybrid key exchange in a 2027 firmware release; boot verification cannot change. Plan: segment pumps into a dedicated VLAN; adopt the 2027 firmware after clinical safety testing; accept forge-later residual risk for firmware until fleet replacement in 2031, with compensating controls (signed-update allow-listing at the hub, anomaly monitoring); require ML-DSA or LMS boot verification in the replacement tender.
 
+Section eight point six develops quantum and post-quantum security difficult with a Northgate Regional Health Trust note the specialist can demo offline.
+
 ### 8.7 Common errors and limits
+Section eight point seven develops quantum and post-quantum security difficult with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section eight point seven, NRHT security expects quantum claims to carry owners and dates.
+
+Section eight point seven treats medical and embedded devices as testable only when evidence and ticket IDs are recorded.
+
+For section eight point seven, Northgate Regional Health Trust will not accept quantum work without a written trail.
+
 
 - Applying IT change windows to clinical devices.
 - Building a PQ root without a relying-party distribution plan.
@@ -592,27 +818,59 @@ You will (1) lead a multi-year migration programme with clear objectives; (2) de
 
 A multi-year programme needs a mission ("protect long-lived confidentiality and trust against quantum attack without harming clinical services"), objectives with dates, a roadmap by tier, a budget envelope with ranges, and governance. The leader's job is to keep priorities aligned with evidence as both guidance and technology change, and to protect the programme from being reduced to a compliance checklist.
 
+Section nine point one develops quantum and post-quantum security leadership with a Northgate Regional Health Trust note the specialist can demo offline.
+
 ### 9.2 Three lines of assurance
 
 The first line (platform owners) implements and self-tests; the second line (security and risk) sets standards and monitors; the third line (internal audit) independently tests. For PQC, independent verification means re-observing negotiated algorithms, sampling certificates, reviewing exception registers and testing agility claims, not reading status reports.
+
+Section nine point two develops quantum and post-quantum security leadership with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section nine point two, NRHT security expects quantum claims to carry owners and dates.
 
 ### 9.3 Evidence for auditors and regulators
 
 Prepare an evidence pack: cryptographic standard and its approval; inventory with coverage and grades; prioritisation method and decisions; progress metrics with sources; exception and residual-risk register with expiries; test reports; supplier assurance. Each item should be generated by normal operation, so the pack is cheap to refresh.
 
+Section nine point three develops quantum and post-quantum security leadership with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section nine point three, NRHT security expects quantum claims to carry owners and dates.
+
 ### 9.4 Communication
 
 Boards need decisions and risk posture; clinicians need assurance that changes will not disrupt care and clear change windows; suppliers need clear requirements and timelines; staff need to know what changes for them. Messages should be calm and specific; avoid both alarm and complacency.
+
+Section nine point four develops quantum and post-quantum security leadership with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section nine point four, NRHT security expects quantum claims to carry owners and dates.
+
+Section nine point four treats programme leadership three lines as testable only when evidence and ticket IDs are recorded.
 
 ### 9.5 Sustaining
 
 Guidance will change: IR 8547 may be finalised with different dates; FN-DSA and HQC standards will appear. Build review cycles into governance, keep decision records, train successors, and keep the inventory alive. A programme that depends on one expert is fragile.
 
+Section nine point five develops quantum and post-quantum security leadership with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section nine point five, NRHT security expects quantum claims to carry owners and dates.
+
+Section nine point five treats programme leadership three lines as testable only when evidence and ticket IDs are recorded.
+
 ### 9.6 Worked case
 
 NRHT's year-two assurance review (synthetic): internal audit samples 60 tier-1 flows and re-observes 57 (95 %) with the reported algorithm; three show classical fallback due to a reverted configuration — a finding that leads to configuration-drift monitoring. The exception register has 41 entries; six have passed expiry without review — a finding that leads to automatic escalation. The board receives a one-page posture: tier-1 hybrid coverage 64 % (A/B evidence), unknown 7 %, PKI plan on track, two high residual risks accepted with expiry.
 
+Section nine point six develops quantum and post-quantum security leadership with a Northgate Regional Health Trust note the specialist can demo offline.
+
 ### 9.7 Common errors and limits
+Section nine point seven develops quantum and post-quantum security leadership with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section nine point seven, NRHT security expects quantum claims to carry owners and dates.
+
+Section nine point seven treats programme leadership three lines as testable only when evidence and ticket IDs are recorded.
+
+For section nine point seven, Northgate Regional Health Trust will not accept quantum work without a written trail.
+
 
 - Assurance by status report.
 - Evidence packs built specially before audits.
@@ -646,27 +904,61 @@ You will (1) read cryptanalysis, resource-estimate and deployment papers critica
 
 Cryptanalysis papers state attack models, complexity and experiments. Ask: does the attack apply to the standardised parameter set or to a variant? Is it classical or quantum? Is complexity asymptotic or concrete? Has it been reproduced? Beullens's Rainbow break (2022) applied to submitted parameters with concrete laptop-scale experiments — decisive. Many claimed lattice attacks improve constants slightly without changing security categories — important but not urgent.
 
+Section ten point one develops research reading and critique with a Northgate Regional Health Trust note the specialist can demo offline.
+
 ### 10.2 Reading resource estimates
 
 Resource-estimate papers such as Gidney and Ekerå (2021) and Gidney (2025) assume physical error rates, connectivity, code distance, cycle time and algorithmic choices. Extract them into a table. Ask which assumptions current hardware meets and which it does not. A falling estimate under optimistic assumptions is a signal about the direction of travel, not a date.
+
+Section ten point two develops research reading and critique with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section ten point two, NRHT security expects research claims to carry owners and dates.
 
 ### 10.3 Reading deployment studies
 
 Deployment papers report negotiated groups, failure rates and performance from measurements. Ask: what population, which vantage point, which period, what biases (for example, scanning only popular websites)? Do results transfer to enterprise or clinical environments?
 
+Section ten point three develops research reading and critique with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section ten point three, NRHT security expects research claims to carry owners and dates.
+
+Section ten point three treats reading cryptanalysis reading resource as testable only when evidence and ticket IDs are recorded.
+
 ### 10.4 Preprints and vendor research
 
 Preprints (arXiv, IACR ePrint) are often the first credible source and are routinely cited in this field; weigh them by author track record, reproducibility and subsequent review. Vendor research may be careful but has interests; check whether data and methods are published.
+
+Section ten point four develops research reading and critique with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section ten point four, NRHT security expects research claims to carry owners and dates.
+
+Section ten point four treats reading cryptanalysis reading resource as testable only when evidence and ticket IDs are recorded.
 
 ### 10.5 Structured critique
 
 A critique summarises the claim, evaluates evidence and assumptions, identifies what would change the conclusion, and states implications for practice. Keep it to one page for practitioners.
 
+Section ten point five develops research reading and critique with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section ten point five, NRHT security expects research claims to carry owners and dates.
+
+Section ten point five treats reading cryptanalysis reading resource as testable only when evidence and ticket IDs are recorded.
+
 ### 10.6 Worked case
 
 Critique of Gidney (2025) for NRHT's board, one page: claim — RSA-2048 could be factored with under one million noisy qubits in under a week; key assumptions — physical error rate around 10^−3, surface-code style error correction, specific connectivity and cycle times; status — preprint by an established author building on peer-reviewed predecessors; implication — the resource gap is narrowing, supporting the board's robust "act now on long-lived flows" decision; it does not give a date and should not be quoted as one.
 
+Section ten point six develops research reading and critique with a Northgate Regional Health Trust note the specialist can demo offline.
+
 ### 10.7 Common errors and limits
+Section ten point seven develops research reading and critique with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section ten point seven, NRHT security expects research claims to carry owners and dates.
+
+Section ten point seven treats reading cryptanalysis reading resource as testable only when evidence and ticket IDs are recorded.
+
+For section ten point seven, Northgate Regional Health Trust will not accept research work without a written trail.
+
 
 - Treating every new attack paper as urgent.
 - Quoting resource estimates as forecasts.
@@ -700,27 +992,67 @@ You will (1) scope an applied specialist project with an organizational sponsor;
 
 Suitable projects: designing and piloting an inventory programme for one division; producing an internal cryptographic standard with a transition plan; leading an evaluated pilot of hybrid key exchange on one platform; designing a post-quantum PKI roadmap; or building a supplier assurance process. Each produces artefacts the organization will use.
 
+Section eleven point one develops applied project with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section eleven point one, NRHT security expects applied claims to carry owners and dates.
+
 ### 11.2 Scoping with a sponsor
 
 Agree with a sponsor: the decision the project supports, scope, deliverables, access, authorization, success criteria, and how results will be used. Written authorization must cover any observation or testing; prefer isolated labs for active tests.
+
+Section eleven point two develops applied project with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section eleven point two, NRHT security expects applied claims to carry owners and dates.
+
+Section eleven point two treats project types scoping with as testable only when evidence and ticket IDs are recorded.
 
 ### 11.3 Deliverables
 
 Decision-ready deliverables include a short decision paper, the evidence behind it (inventory extracts, evaluation results, assumption tables), implementation artefacts (policy text, configuration baselines, procurement clauses) and a handover plan.
 
+Section eleven point three develops applied project with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section eleven point three, NRHT security expects applied claims to carry owners and dates.
+
+Section eleven point three treats project types scoping with as testable only when evidence and ticket IDs are recorded.
+
 ### 11.4 Data protection
 
 Projects in healthcare touch sensitive systems. Collect metadata, not content; minimise identifiers; store project data securely; and delete it per the agreement.
+
+Section eleven point four develops applied project with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section eleven point four, NRHT security expects applied claims to carry owners and dates.
+
+Section eleven point four treats project types scoping with as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point four, Northgate Regional Health Trust will not accept applied work without a written trail.
 
 ### 11.5 Impact evaluation
 
 Define impact before starting: for example, "tier-1 unknown share in the radiology division reduced from 25 % to below 10 %" or "supplier questionnaire adopted for all new radiology contracts". Measure after a defined period.
 
+Section eleven point five develops applied project with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section eleven point five, NRHT security expects applied claims to carry owners and dates.
+
+Section eleven point five treats project types scoping with as testable only when evidence and ticket IDs are recorded.
+
 ### 11.6 Worked case
 
 Project (synthetic): "Supplier assurance for post-quantum readiness in NRHT radiology." Sponsor: Director of Radiology IT. Deliverables: questionnaire, scoring rubric, contract clauses, results for 18 suppliers, decision paper. Results: 5 suppliers with dated roadmaps and test access; 7 with undated claims; 6 silent. Decision: PQC clauses mandatory in all renewals; silent suppliers escalated to procurement; two suppliers invited to joint lab pilots. Impact after six months: unknown share in radiology fell from 31 % to 12 %.
 
+Section eleven point six develops applied project with a Northgate Regional Health Trust note the specialist can demo offline.
+
 ### 11.7 Common errors and limits
+Section eleven point seven develops applied project with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section eleven point seven, NRHT security expects applied claims to carry owners and dates.
+
+Section eleven point seven treats project types scoping with as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point seven, Northgate Regional Health Trust will not accept applied work without a written trail.
+
 
 - Projects without a decision to support.
 - Deliverables that are reports only, without usable artefacts.
@@ -757,27 +1089,69 @@ You will (1) review your portfolio against course outcomes; (2) present and defe
 
 Assemble: the decision records from Chapter 1; state-of-practice brief (2); inventory design and metrics (3); risk and ethics analysis (4); design alternatives (5); evaluation (6); governance model (7); difficult-case plans (8); assurance design (9); research critiques (10); project deliverables (11). For each, note what evidence shows the outcome was met.
 
+Section twelve point one develops final review and transfer with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section twelve point one, NRHT security expects final claims to carry owners and dates.
+
+Section twelve point one treats portfolio review defence transfer as testable only when evidence and ticket IDs are recorded.
+
 ### 12.2 Defence
 
 Expect challenges on assumptions (timelines, harm horizons), values (scoring weights), evidence grades, residual-risk acceptance, and status of guidance. Defend with evidence and acknowledge uncertainty.
+
+Section twelve point two develops final review and transfer with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section twelve point two, NRHT security expects final claims to carry owners and dates.
+
+Section twelve point two treats portfolio review defence transfer as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point two, Northgate Regional Health Trust will not accept final work without a written trail.
 
 ### 12.3 Transfer
 
 The methods transfer: robust decisions under uncertainty, evidence grading, controlled evaluation, policy-driven agility and assurance by re-observation apply to any future cryptographic transition — a break in a deployed algorithm, a new standard such as FN-DSA, or the eventual retirement of today's hybrids. They also transfer to other long-latency risks.
 
+Section twelve point three develops final review and transfer with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section twelve point three, NRHT security expects final claims to carry owners and dates.
+
 ### 12.4 Continuing development
 
 Track standards (NIST, IETF), sector guidance, cryptanalysis and deployment research. Maintain your state-of-practice brief quarterly. Participate in professional communities and share anonymised lessons.
+
+Section twelve point four develops final review and transfer with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section twelve point four, NRHT security expects final claims to carry owners and dates.
+
+Section twelve point four treats portfolio review defence transfer as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point four, Northgate Regional Health Trust will not accept final work without a written trail.
 
 ### 12.5 Legacy
 
 Leave the organization with a living inventory, a cryptographic standard with a review cycle, decision records, an exception register with expiries and trained successors. Success is a programme that continues without you.
 
+Section twelve point five develops final review and transfer with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section twelve point five, NRHT security expects final claims to carry owners and dates.
+
+Section twelve point five treats portfolio review defence transfer as testable only when evidence and ticket IDs are recorded.
+
 ### 12.6 Worked case
 
 At NRHT's final review the programme lead presents: tier-1 hybrid coverage 78 % with A/B evidence; unknown 5 %; ML-DSA internal root in place with 40 % of internal service certificates migrated; 12 accepted residual risks, all with expiry; agility test passed on four platforms. An examiner asks what happens if IR 8547 is finalised with earlier dates; the lead shows the decision record for setting internal dates and the governance trigger for review.
 
+Section twelve point six develops final review and transfer with a Northgate Regional Health Trust note the specialist can demo offline.
+
 ### 12.7 Common errors and limits
+Section twelve point seven develops final review and transfer with a Northgate Regional Health Trust note the specialist can demo offline.
+
+Under section twelve point seven, NRHT security expects final claims to carry owners and dates.
+
+Section twelve point seven treats portfolio review defence transfer as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point seven, Northgate Regional Health Trust will not accept final work without a written trail.
+
 
 - Portfolios without evidence of outcomes.
 - Defences that overclaim certainty.
@@ -785,6 +1159,8 @@ At NRHT's final review the programme lead presents: tier-1 hybrid coverage 78 % 
 ### 12.8 Reflecting on judgment
 
 Close the portfolio with a reflective note on your own judgment: one decision you would make again, one you would change with what you now know, and one assumption you are least sure of. Specialists are trusted not because they are always right but because they show how they reason and update. The note also helps successors understand which parts of the programme rest on firm evidence and which on considered bets.
+
+Section twelve point eight develops final review and transfer with a Northgate Regional Health Trust note the specialist can demo offline.
 
 ### Exercises
 
