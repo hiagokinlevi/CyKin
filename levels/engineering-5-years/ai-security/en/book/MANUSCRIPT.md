@@ -883,27 +883,39 @@ You will (1) model datasets with schemas, lineage and versions; (2) protect trai
 
 Every dataset should have a schema, a record of where each item came from (lineage or provenance), and a version identifier. Data-version tools or simple content hashes let you say exactly which data trained which model — essential when investigating poisoning.
 
+When a model starts behaving oddly, the first question in an investigation is what it learned from. Without versions, the team can only guess whether a suspicious batch of labels was included. With them, it can list every item added since the last good model, find who supplied each, and retrain on a clean version to confirm the cause.
+
 ### 13.2 Integrity of training data
 
 Poisoning requires write access to some training data. Carlini et al. (arXiv:2302.10149) showed that web-scale datasets distributed as URL lists can be poisoned by buying expired domains; integrity hashes of the content at collection time defeat that particular attack. Restrict who can add or relabel data, log changes and review samples from new sources.
+
+Hashes protect what was collected, not whether it was honest in the first place. A labelling contractor with legitimate access can still introduce bad labels, so review samples by source and watch for shifts in label statistics after each delivery.
 
 ### 13.3 Retrieval stores
 
 RAG systems store document chunks and embeddings in a vector database. OWASP LLM 2025 lists *vector and embedding weaknesses* (LLM08): missing access control lets a user retrieve documents they should not see; poisoned documents can inject instructions. Enforce document-level permissions at retrieval time, using the *end user's* identity, and label each chunk's provenance and trust level.
 
+Checking with the user's identity matters because the retrieval service itself usually has access to everything. If it searches on its own authority, the model receives documents the user could never open, and a well-chosen question will bring them out in an answer. Provenance labels let the prompt and the policy layer treat text from contractors or outside sources with suitable caution.
+
 ### 13.4 Data protection
 
 Minimise personal data in training and retrieval; set retention limits; consider differential privacy for sensitive training (Abadi et al., arXiv:1607.00133). Membership inference (Shokri et al., arXiv:1610.05820) shows that models can reveal whether a record was used.
 
+Minimisation is the cheapest protection: data never collected cannot leak through a model. Retention limits remove data once its purpose ends, which also shrinks what a breach could expose. Differential privacy adds calibrated noise during training so that no single record changes the model much, at some cost in accuracy. Membership inference makes the risk concrete, since even aggregate outputs can reveal that a particular person's record was used.
+
 ### 13.5 Worked example (synthetic NRS case)
 
 Wrench's vector store held manuals, technician notes and HR safety-incident reports in one index. Any technician could retrieve HR reports through clever questions. Sam split indexes by sensitivity, added per-document access-control lists checked against the requesting user at query time, and added a provenance field (internal/contractor/external) that the prompt template uses to mark untrusted text.
+
+Splitting indexes alone would not have been enough, since a technician querying the right index still needs a per-document check. The provenance field also supports investigations: an answer that quoted contractor text can be traced to its source document.
 
 ### 13.6 Errors and limits
 
 - One retrieval index for all sensitivity levels.
 - Checking permissions with the service's identity instead of the user's.
 - No record of which data trained which model.
+
+A single index forces one permission model on documents with very different sensitivity, so either access is too broad or the system becomes unusable. Checking with the service identity hands every user the service's rights. Missing training records make poisoning investigations guesswork. Sam's design review asks three matching questions: how many indexes and why, whose identity is checked at retrieval, and where the training-data version is recorded for each model.
 
 ### Exercises
 
@@ -931,27 +943,39 @@ You will (1) apply a secure development lifecycle to AI-enabled software; (2) ma
 
 A secure development lifecycle adds security activities to each phase: requirements (abuse cases), design (threat modelling), implementation (secure coding, dependency control), verification (tests, evaluations, red-teaming) and release (sign-off, monitoring). For AI, the artefacts multiply: code, model weights, training data, prompts, retrieval indexes and evaluation sets. Each must be versioned and reviewed; a changed system prompt can alter security behaviour as much as a code change.
 
+Abuse cases are written alongside normal requirements, for example 'a supplier bulletin tries to make Wrench create a work order'.
+
 ### 14.2 Configuration management for models and prompts
 
 Store prompts in version control, not in a web console. Give each model a registry entry with its hash, training-data version, evaluation results and approval status. Deploy by reference to a registry version, so that production can always be traced and rolled back.
+
+A prompt edited in a web console has no review, no history and no link to the evaluation that approved it. In version control, every change has an author and a diff, and the CI gate runs on it like any code change. The registry entry ties a deployed model to the data and tests behind it, so an auditor can ask what is running and get an exact answer.
 
 ### 14.3 Review and continuous integration
 
 Code review catches design and logic errors; for AI components also review prompt changes and data changes. Continuous integration should run unit tests, dependency checks, and a *security evaluation gate*: a fixed suite of injection, jailbreak and misuse tests with thresholds that block release if exceeded. The gate must use held-out tests, not the examples developers tuned against.
 
+Held-out tests are kept by a separate owner and refreshed with new attack patterns, so the gate measures generalisation rather than memory.
+
 ### 14.4 Release and rollback
 
 Release gradually (canary deployment to a small share of traffic), watch metrics, and keep the previous version ready. For models, rollback means switching the registry reference — easy only if you planned for it.
 
+A canary exposes a new version to a small share of real traffic while the old version serves the rest. Watched metrics include security signals, such as rejected tool proposals and detector alerts, not only latency and errors. Rollback must be practised: Sam's team switches back to the previous registry version in staging each month to confirm it still works, since an untried rollback may fail the day it is needed.
+
 ### 14.5 Worked example (synthetic NRS case)
 
 A developer changed Wrench's system prompt to make answers friendlier. The CI security gate ran 300 held-out injection cases and found unauthorised-tool-call proposals rising from 1.0% to 4.3% (the policy layer still blocked them, but the gate's threshold for proposals was 2%). The release was blocked; the team found that a new sentence "always try to complete the user's goal" encouraged following instructions in retrieved text. They reworded it and the rate returned to 1.1%.
+
+The policy layer meant no harm reached production, but the gate caught a weakening in an earlier layer before it shipped.
 
 ### 14.6 Errors and limits
 
 - Prompts edited directly in production.
 - Security tests that developers have seen and tuned to.
 - No rollback path for models.
+
+Production prompt edits bypass review and leave no record of why behaviour changed. Tests that developers have tuned against show the system can pass those tests, not that it resists new attacks. Models without a rollback path force teams to fix problems forward under pressure. Each gap has a direct remedy: prompts in version control, a held-out gate owned separately, and a practised switch back to the last approved registry version.
 
 ### Exercises
 
@@ -979,27 +1003,39 @@ You will (1) apply confidentiality, integrity and availability (CIA) to AI asset
 
 Confidentiality: training data, prompts, model weights and outputs. Integrity: data, weights, retrieval content, model decisions and tool actions. Availability: inference capacity and dependent business processes. NIST AI 100-2 E2025 organises adversarial attacks on predictive AI by the attacker's objective — availability breakdown, integrity violation, privacy compromise — and adds misuse enablement for generative AI.
 
+Listing assets this way exposes items that ordinary security reviews miss. Prompts may contain business logic or secrets. Weights may be worth stealing. Tool actions, such as a work order created in Wrench's name, carry integrity requirements because they change the physical world. Availability extends beyond the model to the work that depends on it, such as track inspection.
+
 ### 15.2 Threat, vulnerability, risk, control
 
 A *threat* is a potential cause of harm (an actor or event). A *vulnerability* is a weakness it can exploit. *Risk* combines likelihood and impact. A *control* reduces likelihood or impact. For Wrench: threat — a malicious supplier; vulnerability — the model follows instructions in bulletins; impact — false work orders; control — human confirmation of work orders.
+
+Writing risk as a chain shows where a control acts. Human confirmation does not stop the model following instructions; it limits the impact, because a false work order needs a person's approval before it takes effect. A second control, such as provenance labels, could reduce the likelihood.
 
 ### 15.3 Defence in depth
 
 No single control is perfect, especially for models whose behaviour is statistical. Layer controls: input provenance labelling, model-level instructions, output validation, policy enforcement outside the model, least-privilege tools, monitoring and human oversight. Each layer catches some failures of the others.
 
+The layers must be independent to add value. If output validation and policy enforcement both rely on the model's own judgement, one successful manipulation defeats both. Wrench's design keeps policy in code outside the model and requires a human confirmation that the model cannot supply, so each layer fails for different reasons. Sam checks this by asking, for each layer, what an attacker would need in order to bypass it.
+
 ### 15.4 The attacker's knowledge and capabilities
 
 The taxonomy also classifies attackers by knowledge (white-box, grey-box, black-box) and capabilities (control of training data, of the model, of queries, of the source code). Stating these turns vague fears into testable threat models.
 
+For TrackEye, a realistic attacker is black-box with physical access: anyone walking the line can place markings, but cannot read the model. A labelling contractor has training-data capability. Each profile becomes a test campaign with its own methods, and results are reported per profile, since a model robust to one may be weak against another.
+
 ### 15.5 Worked example (synthetic NRS case)
 
 Sam built a CIA table for TrackEye. Confidentiality: low (images of rails are not secret) but model weights are commercially valuable. Integrity: critical — a missed defect is a safety risk; poisoning through the labelling contractor and physical markings were the main threats. Availability: moderate — if TrackEye is down, manual inspection continues at higher cost. The table steered effort toward integrity controls.
+
+Integrity is rated critical because its impact is safety, not money. Availability is only moderate because a manual fallback exists, though attacks forcing frequent fallback would raise costs.
 
 ### 15.6 Errors and limits
 
 - Treating "AI security" as only prompt injection.
 - Single-control designs.
 - Risk statements without impact.
+
+Prompt injection matters, but treating it as the whole field ignores poisoning, model theft, privacy leaks and resource abuse. Designs with a single control fail completely when that control is bypassed. Risk statements that name a threat without its impact cannot be prioritised, because a weakness that leaks rail images and one that hides a cracked rail look equally urgent. Sam's risk register therefore requires both likelihood and impact for every entry.
 
 ### Exercises
 
