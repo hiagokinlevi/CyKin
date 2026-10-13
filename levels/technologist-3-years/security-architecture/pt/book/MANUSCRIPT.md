@@ -72,6 +72,10 @@ Inventários feitos percorrendo o local deixam de fora sistemas guardados em arm
 
 - **EX003 — Camada só do fornecedor.** Que camada do coletor só o fornecedor consegue atualizar? *Rubrica:* 3 = o firmware, pela ferramenta do fornecedor;; 2 = firmware;; 1 = aplicativo;; 0 = nenhuma.
 
+### Síntese
+
+Conhecer cada camada de cada sistema, e quem pode alterá-la, é onde a segurança começa.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Redes e serviços de internet
@@ -109,6 +113,10 @@ As regras de firewall podem não refletir as configurações do lado da nuvem. O
 - **EX005 — Risco da área de trabalho remota.** Por que a regra de entrada na porta 3389 era urgente? *Rubrica:* 3 = a área de trabalho remota pela internet é uma rota frequente de ransomware;; 2 = ransomware;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX006 — Lista de exposição.** Cite dois pontos de exposição que Tomás listou. *Rubrica:* 3 = conexão com a internet, regra de área de trabalho remota, link do fornecedor da esteira, rede sem fio de visitantes;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+Rastrear o tráfego real e listar os pontos de exposição transforma o conhecimento de redes em ação de segurança.
 
 <a id="ch-03"></a>
 
@@ -167,6 +175,10 @@ Scripts pequenos podem crescer sem testes. As allow-lists precisam ser atualizad
 
 - **EX009 — Consulta mais segura.** Qual é o padrão mais seguro para consultas ao banco com entrada do usuário? *Rubrica:* 3 = consultas parametrizadas;; 2 = parâmetros;; 1 = juntar strings;; 0 = nenhuma.
 
+### Síntese
+
+Scripts pequenos e testados e uma leitura cuidadosa do código permitem aos tecnólogos verificar sistemas de forma confiável e identificar erros comuns.
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Modelos de dados
@@ -204,6 +216,10 @@ Campos ocultados ainda podem existir nas exportações. A exclusão por retenç�
 - **EX011 — Necessidades dos separadores.** De que campos os separadores precisam? *Rubrica:* 3 = código postal, nível de serviço e peso;; 2 = código postal;; 1 = endereço completo;; 0 = nenhuma.
 
 - **EX012 — Retenção das fotos.** Por quanto tempo as fotos de entrega são guardadas segundo a proposta? *Rubrica:* 3 = noventa dias, a menos que haja reclamação aberta;; 2 = noventa dias;; 1 = para sempre;; 0 = nenhuma.
+
+### Síntese
+
+Mapear os dados pessoais no modelo de dados por função mostra como minimizar a exposição a baixo custo.
 
 <a id="ch-05"></a>
 
@@ -243,6 +259,10 @@ Uma única orientação se apaga rapidamente. As histórias precisam corresponde
 
 - **EX015 — Ações da orientação.** Quais foram as três ações da orientação? *Rubrica:* 3 = relatar, relatar, ligar para confirmar;; 2 = duas;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+Termos compartilhados, ataques específicos do setor e briefings práticos curtos constroem o letramento em segurança.
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Sistemas operacionais e virtualização
@@ -280,6 +300,10 @@ O hardening pode quebrar software legado. Hosts compartilhados concentram o risc
 - **EX017 — Contêineres versus VMs.** Em que os contêineres diferem das máquinas virtuais? *Rubrica:* 3 = os contêineres compartilham um kernel; cada VM tem seu próprio SO sobre um hypervisor;; 2 = kernel;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX018 — Atualizações dos coletores.** Por que os coletores estavam onze meses desatualizados? *Rubrica:* 3 = a ferramenta do fornecedor exige uma etapa manual;; 2 = manual;; 1 = não existem atualizações;; 0 = nenhuma.
+
+### Síntese
+
+O hardening, a compreensão do isolamento e cronogramas de atualização com donos mantêm os sistemas operacionais confiáveis.
 
 <a id="ch-07"></a>
 
@@ -319,6 +343,10 @@ A perda de crachás gera carga de suporte. As revisões viram carimbo sem orient
 
 - **EX021 — Mudanças de função esquecidas.** Por que as mudanças de função são um risco? *Rubrica:* 3 = a pessoa mantém os direitos antigos ao ganhar os novos;; 2 = deriva;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+Identidades individuais, papéis claros e um processo de admissão, movimentação e desligamento são a base do controle de acesso.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Fundamentos de arquitetura de segurança
@@ -356,6 +384,10 @@ Diagramas de uma página omitem detalhes. Os princípios podem entrar em conflit
 - **EX023 — Exemplo de fail-safe.** Como a Brightwater aplica os padrões seguros contra falhas? *Rubrica:* 3 = novos dispositivos entram numa rede de quarentena até serem aprovados;; 2 = quarentena;; 1 = rede aberta;; 0 = nenhuma.
 
 - **EX024 — Fluxo da esteira.** O que pode se conectar ao sistema de controle da esteira? *Rubrica:* 3 = apenas o gateway de suporte do fornecedor;; 2 = gateway;; 1 = qualquer coisa;; 0 = nenhuma.
+
+### Síntese
+
+Mesmo empresas pequenas precisam de uma arquitetura escrita, fundamentada em princípios, e de um diagrama de zonas simples.
 
 <a id="ch-09"></a>
 
@@ -420,6 +452,10 @@ As medidas podem ser manipuladas depois que se fixam metas. As exportações pod
 
 - **EX027 — Conferência à mão.** Por que conferir uma amostra de registros à mão? *Rubrica:* 3 = para confirmar que as datas são lidas corretamente;; 2 = interpretação;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+Algumas medidas bem definidas, calculadas a partir de exportações e mostradas como tendências, dizem aos gestores se a segurança está melhorando.
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Arquitetura e engenharia de segurança: orientação
@@ -457,6 +493,10 @@ Os modelos de ciclo de vida parecem lineares; o trabalho real volta atrás. Os p
 - **EX029 — Etapas do tecnólogo.** Em que etapas os tecnólogos trabalham sobretudo? *Rubrica:* 3 = construir, verificar, implantar e operar;; 2 = três;; 1 = só projeto;; 0 = nenhuma.
 
 - **EX030 — Ciclo de retorno.** Por que o retorno do tecnólogo é essencial? *Rubrica:* 3 = projetos que ignoram a operação viram ficção;; 2 = realidade;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+Os tecnólogos tornam a arquitetura real ao longo do ciclo de vida e devolvem a realidade operacional ao desenho.
 
 <a id="ch-11"></a>
 
@@ -496,6 +536,10 @@ Os gerentes podem superestimar seus próprios sistemas. Os atributos mudam com a
 
 - **EX033 — Atributos da esteira.** Que atributos importam mais para a esteira? *Rubrica:* 3 = disponibilidade e segurança física;; 2 = disponibilidade;; 1 = confidencialidade;; 0 = nenhuma.
 
+### Síntese
+
+Classificar os ativos pela consequência para o negócio, dentro das restrições reais, mostra onde concentrar a proteção.
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Arquitetura e engenharia de segurança: fluxos de dados
@@ -533,6 +577,10 @@ Os diagramas envelhecem rápido. Os portais acrescentam trabalho para os pequeno
 - **EX035 — Verificações na fronteira.** Que verificações cada cruzamento de fronteira deveria ter? *Rubrica:* 3 = autenticação do remetente, criptografia e validação do conteúdo;; 2 = duas;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX036 — Manifesto falso.** O que um criminoso poderia fazer com o fluxo por e-mail? *Rubrica:* 3 = enviar um manifesto falso para desviar encomendas;; 2 = desviar;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Diagramas de fluxo de dados com fronteiras de confiança marcadas expõem travessias específicas sem proteção.
 
 <a id="ch-13"></a>
 
@@ -572,6 +620,10 @@ Escalas de três níveis são grosseiras. As listas de cenários deixam surpresa
 
 - **EX039 — Risco aceito.** Que cenário foi aceito, e por quê? *Rubrica:* 3 = falha de impressora; há impressoras de reserva em cada centro;; 2 = impressora;; 1 = ransomware;; 0 = nenhuma.
 
+### Síntese
+
+Cenários concretos, avaliações independentes e tratamentos com donos tornam a gestão de riscos prática.
+
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Arquitetura e engenharia de segurança: métodos I
@@ -609,6 +661,10 @@ O STRIDE encontra categorias, não todos os ataques. As revisões dependem do te
 - **EX041 — Item que exige o negócio.** Que item precisava de informação do negócio? *Rubrica:* 3 = definir picos incomuns de alteração de endereços;; 2 = picos;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX042 — Ameaça esquecida.** Que ameaça o desenvolvedor acrescentou? *Rubrica:* 3 = interceptação dos e-mails de redefinição de senha;; 2 = redefinição;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+O STRIDE dá estrutura, e a revisão conjunta com os desenvolvedores detecta ameaças que cada lado, sozinho, deixaria passar.
 
 <a id="ch-15"></a>
 
@@ -672,6 +728,10 @@ Os limiares deixam passar ataques abaixo deles. Ligar para os varejistas acresce
 
 - **EX045 — Número conhecido.** Por que ligar para o varejista num número conhecido? *Rubrica:* 3 = o número do manifesto pode pertencer ao criminoso;; 2 = fraude;; 1 = é mais rápido;; 0 = nenhuma.
 
+### Síntese
+
+Regras simples construídas a partir do comportamento normal, com instruções claras, detectam fraudes que os controles técnicos deixam passar.
+
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Arquitetura e engenharia de segurança: métodos II
@@ -709,6 +769,10 @@ As estimativas de esforço são julgamentos. As árvores deixam de fora ramos qu
 - **EX047 — Caminho bloqueado.** Por que a inundação a partir de um PC de escritório é improvável? *Rubrica:* 3 = o projeto de zonas bloqueia caminhos do escritório para o controle;; 2 = zonas;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX048 — Benefício extra.** Que benefício para o negócio o backup offline da configuração trouxe? *Rubrica:* 3 = recuperação mais rápida de falhas comuns de hardware;; 2 = recuperação;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+Árvores de ataque revelam o caminho mais barato para o atacante, para que as defesas o fechem primeiro.
 
 <a id="ch-17"></a>
 
@@ -748,6 +812,10 @@ Os testes são curtos e podem deixar problemas passarem. Os planos gratuitos pod
 
 - **EX051 — Shelfware.** O que acontece com as ferramentas sem responsável? *Rubrica:* 3 = viram shelfware que dá falso conforto;; 2 = shelfware;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+Escolha ferramentas a partir das necessidades, teste-as segundo critérios e dê a cada uma um dono e um propósito.
+
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Arquitetura e engenharia de segurança: controles
@@ -785,6 +853,10 @@ As evidências podem mostrar a configuração sem provar a eficácia. Os catálo
 - **EX053 — Acréscimos do catálogo.** Cite dois controles acrescentados a partir da ISO/IEC 27002. *Rubrica:* 3 = cláusula do fornecedor, call-back de mudança bancária, apagamento dos coletores;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX054 — Benefício nos questionários.** Como a lista de evidências vai ajudar com os clientes? *Rubrica:* 3 = respondendo rapidamente aos questionários de segurança de fornecedores;; 2 = questionários;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+Controles mapeados para cenários, conferidos com um catálogo e sustentados por evidências regulares formam uma defesa coerente.
 
 <a id="ch-19"></a>
 
@@ -857,6 +929,10 @@ Os limiares deixam passar ataques lentos. Relógios dessincronizados confundem a
 
 - **EX057 — Regras silenciosas.** O que eles fazem com as regras que nunca disparam? *Rubrica:* 3 = testam-nas com um evento simulado;; 2 = testar;; 1 = apagar;; 0 = nenhuma.
 
+### Síntese
+
+O monitoramento é uma rotina semanal construída sobre alguns logs bem escolhidos e regras ajustadas e testadas.
+
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Arquitetura e engenharia de segurança: solução de problemas
@@ -895,6 +971,10 @@ Os provedores nem sempre anunciam as mudanças. Correções rápidas viram perma
 
 - **EX060 — Correção rejeitada.** Por que rejeitar a liberação de todo o tráfego de saída? *Rubrica:* 3 = remove um controle para restaurar o serviço;; 2 = enfraquece;; 1 = lenta;; 0 = nenhuma.
 
+### Síntese
+
+A resolução metódica de problemas restaura o serviço mantendo intactos os controles de segurança.
+
 <a id="ch-21"></a>
 
 ## Capítulo 21 — Arquitetura e engenharia de segurança: integração de serviços
@@ -932,6 +1012,10 @@ Os parceiros podem mudar seus sistemas sem aviso. Os gerenciadores de segredos c
 - **EX062 — Impacto do vazamento da chave.** O que um atacante poderia fazer com uma chave vazada dos armários? *Rubrica:* 3 = marcar encomendas como retiradas;; 2 = falsa retirada;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX063 — Teste dos limites.** Como Tomás testou os limites do parceiro? *Rubrica:* 3 = tentou buscar uma encomenda não relacionada com a chave de teste; foi recusado;; 2 = teste;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+Integrações seguras compartilham o mínimo de dados, protegem as chaves e impõem limites testados ao que os parceiros podem fazer.
 
 <a id="ch-22"></a>
 
@@ -989,6 +1073,10 @@ Nomes discrepantes entre sistemas causam resultados falsos. Scripts que apenas r
 
 - **EX066 — Resultado do laboratório.** Que contas de desligados ainda estavam ativas no laboratório? *Rubrica:* 3 = j.mensah e p.kowal;; 2 = duas;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+A automação segura reporta com clareza, falha de forma ruidosa e deixa o julgamento para as pessoas, melhorando mais a confiabilidade do que a velocidade.
+
 <a id="ch-23"></a>
 
 ## Capítulo 23 — Arquitetura e engenharia de segurança: avaliação
@@ -1026,6 +1114,10 @@ A ausência de incidentes é uma evidência fraca. A atribuição da melhoria é
 - **EX068 — Melhoria das atualizações.** Como mudou a parcela de atualizações em trinta dias? *Rubrica:* 3 = de 48 para 85 por cento;; 2 = subiu;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX069 — Nenhum incidente.** Por que a ausência de incidentes graves é uma evidência fraca? *Rubrica:* 3 = pode refletir tanto a sorte quanto os controles;; 2 = sorte;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+Uma avaliação honesta compara os resultados medidos e declara claramente o que as evidências não conseguem provar.
 
 <a id="ch-24"></a>
 
@@ -1084,6 +1176,10 @@ Desenhos antes e depois não conseguem isolar as causas. Contagens pequenas osci
 
 - **EX072 — Causa alternativa.** Que causa alternativa Tomás mencionou? *Rubrica:* 3 = o novo processo de apagamento remoto fez o relato valer a pena;; 2 = apagamento remoto;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+Pequenos estudos aplicados respondem a perguntas úteis quando os dados são coletados de forma ética e os resultados são apresentados com cautela.
+
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Ateliê de projeto em equipe
@@ -1121,6 +1217,10 @@ As equipes podem se curvar ao membro mais barulhento. Três semanas limitam a pr
 - **EX074 — Acréscimo de privacidade.** Que cenário a estudante de privacidade acrescentou? *Rubrica:* 3 = dados das receitas visíveis nas telas dos entregadores;; 2 = receitas;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX075 — Valor do log de revisão.** Por que Ruth elogiou o log de revisão? *Rubrica:* 3 = mostrava como o projeto melhorou;; 2 = melhoria;; 1 = extensão;; 0 = nenhuma.
+
+### Síntese
+
+Ateliês em equipe, com líderes claros e revisão mútua, produzem desenhos de segurança mais fortes do que indivíduos trabalhando sozinhos.
 
 <a id="ch-26"></a>
 
@@ -1160,6 +1260,10 @@ Os runbooks envelhecem conforme os sistemas mudam. Equipes de duas pessoas são 
 
 - **EX078 — Medida da passagem.** Como se mede uma boa passagem? *Rubrica:* 3 = por quão pouco a pessoa que sai é necessária depois;; 2 = independência;; 1 = extensão;; 0 = nenhuma.
 
+### Síntese
+
+O repasse operacional dá certo com donos nomeados, runbooks testados e uma verificação de prontidão antes da saída.
+
 <a id="ch-27"></a>
 
 ## Capítulo 27 — Implantação e validação
@@ -1197,6 +1301,10 @@ Implantações escalonadas prolongam estados mistos. O rollback pode reintroduzi
 - **EX080 — Lacuna de firmware.** O que a validação pegou no segundo centro? *Rubrica:* 3 = um modelo com firmware antigo ainda aceitava o PIN compartilhado;; 2 = firmware;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX081 — Gatilho do rollback.** O que dispararia o rollback? *Rubrica:* 3 = mais de dez por cento dos motoristas sem conseguir fazer login no início do turno;; 2 = dez por cento;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+Implantação escalonada, validação dos requisitos e um plano de reversão pronto tornam as mudanças seguras.
 
 <a id="ch-28"></a>
 
@@ -1236,6 +1344,10 @@ Estágios curtos deixam as mudanças sem suporte. Locais pequenos podem regredir
 
 - **EX084 — Evidência de aprendizagem.** Que resultado a gerente relatou um mês depois? *Rubrica:* 3 = onze cartões desativados;; 2 = onze;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+A prática de campo mostra que os princípios se transferem, enquanto a implementação precisa se ajustar às pessoas disponíveis.
+
 <a id="ch-29"></a>
 
 ## Capítulo 29 — Construção do projeto final
@@ -1274,6 +1386,10 @@ Os testes em laboratório deixam passar peculiaridades de cada local. Os pacotes
 
 - **EX087 — Motivos ligados.** Por que ligar cada item do checklist a um motivo? *Rubrica:* 3 = para que a equipe futura possa julgar se ele ainda se aplica;; 2 = julgamento;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+Um projeto final que constrói, testa e explica uma linha de base reutilizável deixa valor duradouro para a organização.
+
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Avaliação do projeto final
@@ -1311,6 +1427,10 @@ Avaliadores que conhecem o estudante podem dar notas generosas. Planos provisór
 - **EX089 — Seção provisória.** O que o profissional sugeriu acrescentar? *Rubrica:* 3 = o que fazer se o centro abrir antes que todos os controles estejam prontos;; 2 = risco provisório;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX090 — Valor do tecnólogo.** Onde Tomás vê o valor de um tecnólogo? *Rubrica:* 3 = fazer os projetos funcionarem com confiabilidade e relatar com honestidade quando não funcionam;; 2 = mundo real;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+A avaliação do projeto final segundo critérios acordados, somada ao retorno de profissionais, completa a preparação do tecnólogo para a prática.
 
 <a id="worked-results"></a>
 

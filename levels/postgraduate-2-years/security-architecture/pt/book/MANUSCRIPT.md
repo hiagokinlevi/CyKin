@@ -76,6 +76,10 @@ Os registros de decisão podem virar burocracia se ninguém os lê. As premissas
 
 - **EX005 — Condições de revisão.** Por que incluir condições de revisão num registro de decisão? *Rubrica:* 3 = para que um arquiteto posterior possa julgar se a decisão ainda vale;; 2 = revisão futura;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+Decisões avançadas melhoram quando fatos, premissas e valores são separados e o raciocínio é registrado para contestação posterior.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Arquitetura e engenharia de segurança: prática atual
@@ -117,6 +121,10 @@ Três entrevistas não representam um setor. O alinhamento às orientações nã
 - **EX009 — Primeira prioridade.** Por que ordenar a segmentação dos dispositivos em primeiro lugar na Corvane? *Rubrica:* 3 = uma infecção num notebook poderia alcançar as estações de gerenciamento das bombas de infusão;; 2 = segurança do paciente;; 1 = custo;; 0 = nenhuma.
 
 - **EX010 — Por que citar fontes.** Por que Priya apresentou as lacunas com fontes? *Rubrica:* 3 = para que sejam vistas como medidas contra orientações, e não como opinião;; 2 = credibilidade;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+Comparar a prática real com as orientações revela lacunas específicas e ordenáveis, sobretudo na verificação.
 
 <a id="ch-03"></a>
 
@@ -184,6 +192,10 @@ Os inventários deixam dispositivos de fora. Os modelos de alcançabilidade igno
 
 - **EX015 — Proporção.** O que significa evidência proporcional aqui? *Rubrica:* 3 = o bastante para justificar a decisão e mostrar os limites, com os detalhes em apêndices;; 2 = o bastante;; 1 = tudo;; 0 = nenhuma.
 
+### Síntese
+
+Evidências especializadas e modelos simples transformam configurações complexas em evidências proporcionais para a decisão.
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Risco avançado e ética
@@ -225,6 +237,10 @@ As faixas podem ser largas demais para orientar a ação. Escalar sem evidência
 - **EX019 — Autoridade certa.** Quem detém a autoridade sobre o risco clínico na Corvane? *Rubrica:* 3 = o comitê de governança clínica;; 2 = comitê;; 1 = equipe de arquitetura;; 0 = nenhuma.
 
 - **EX020 — Lidar com o desconto.** Como Priya lidou com a oferta de adiamento do fornecedor? *Rubrica:* 3 = documentou e escalou ao comitê de governança clínica;; 2 = escalou;; 1 = aceitou;; 0 = nenhuma.
+
+### Síntese
+
+O trabalho avançado de risco declara a incerteza com honestidade, mantém a segurança física visível e situa as decisões no órgão responsável.
 
 <a id="ch-05"></a>
 
@@ -291,6 +307,10 @@ As notas por atributo são julgamentos. Dois caminhos de acesso aumentam a carga
 
 - **EX025 — Custo da híbrida.** Que custo oculto a opção híbrida carrega? *Rubrica:* 3 = dois caminhos de acesso, com risco de a contingência ser negligenciada;; 2 = contingência;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+Alternativas honestas, critérios por atributo e verificações de sensibilidade tornam os trade-offs explícitos, em vez de ocultos.
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Arquitetura e engenharia de segurança: avaliação controlada
@@ -332,6 +352,10 @@ Amostras pequenas são frágeis. A equipe pode se comportar de outro modo quando
 - **EX029 — Padrão dos chamados.** Como mudaram os chamados ao help desk? *Rubrica:* 3 = subiram no primeiro mês e depois caíram abaixo da comparação;; 2 = subida e queda;; 1 = estáveis;; 0 = nenhuma.
 
 - **EX030 — Recomendação.** O que Priya recomendou depois do piloto? *Rubrica:* 3 = uma implantação escalonada com medição contínua;; 2 = escalonada;; 1 = big-bang;; 0 = nenhuma.
+
+### Síntese
+
+Um piloto controlado com resultados definidos de antemão fornece evidências modestas, mas críveis, para uma decisão em etapas.
 
 <a id="ch-07"></a>
 
@@ -375,6 +399,10 @@ A triagem pode deixar passar projetos arriscados que respondem não. Comitês r�
 
 - **EX035 — Princípio de integração.** Quando a integração com outras funções funciona? *Rubrica:* 3 = quando cada função vê a arquitetura ajudando seus próprios objetivos;; 2 = objetivos comuns;; 1 = imposições;; 0 = nenhuma.
 
+### Síntese
+
+A arquitetura perdura quando está incorporada ao sistema de gestão e a um processo de revisão rápido e previsível.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Arquitetura e engenharia de segurança: casos difíceis
@@ -416,6 +444,10 @@ As exceções tendem a se tornar permanentes sem datas. Fusões escalonadas empe
 - **EX039 — Primeira etapa da fusão.** Qual foi a primeira etapa da fusão? *Rubrica:* 3 = uma conexão intermediada apenas para aplicações específicas;; 2 = intermediada;; 1 = junção total;; 0 = nenhuma.
 
 - **EX040 — Objetivo nos casos difíceis.** Qual é o objetivo nos casos difíceis? *Rubrica:* 3 = tornar o risco visível, com responsável e temporário sempre que possível;; 2 = visível;; 1 = eliminar todo risco;; 0 = nenhuma.
+
+### Síntese
+
+Casos difíceis são tratados com exceções documentadas, planos em etapas e risco visível, com dono e com data.
 
 <a id="ch-09"></a>
 
@@ -478,6 +510,10 @@ As amostras de verificação podem deixar passar falhas. As métricas podem ser 
 
 - **EX045 — Métrica confiável.** Segundo Priya, quando uma métrica conquista confiança? *Rubrica:* 3 = quando de vez em quando traz más notícias;; 2 = más notícias;; 1 = sempre verde;; 0 = nenhuma.
 
+### Síntese
+
+A liderança de arquitetura delega por meio de princípios e oferece garantia com base em controles verificados, e não apenas projetados.
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Leitura e crítica de pesquisas
@@ -519,6 +555,10 @@ As críticas podem ser mais duras com achados indesejados. O raciocínio sobre t
 - **EX049 — Conclusão sobre a transferência.** O que Priya concluiu sobre a transferência? *Rubrica:* 3 = a direção provavelmente se aplica, o tamanho do efeito é incerto;; 2 = direção;; 1 = transferência total;; 0 = nenhuma.
 
 - **EX050 — Desenho fraco.** Por que um artigo foi marcado como fraco? *Rubrica:* 3 = comparação antes e depois sem controle durante outras mudanças;; 2 = sem controle;; 1 = amostra pequena;; 0 = nenhuma.
+
+### Síntese
+
+A leitura crítica pergunta o que foi medido, como, e se os mecanismos se transferem, e pesa as falhas pelo seu efeito sobre as afirmações.
 
 <a id="ch-11"></a>
 
@@ -583,6 +623,10 @@ As rubricas comprimem o julgamento em números. As semanas de descoberta acresce
 
 - **EX055 — Regra de conclusão.** Por que o projeto só estava concluído depois da passagem? *Rubrica:* 3 = um projeto que só seu autor consegue operar não foi entregue;; 2 = passagem;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+Um projeto aplicado está completo quando as surpresas são absorvidas, uma rubrica é comparada com honestidade e outras pessoas conseguem operar o resultado.
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Revisão final e transferência
@@ -624,6 +668,10 @@ A atribuição dos resultados é incerta. As afirmações de transferência prec
 - **EX059 — O que muda na transferência.** O que muda ao passar para a empresa de saneamento? *Rubrica:* 3 = os pesos dos atributos e janelas de mudança mais raras;; 2 = pesos;; 1 = nada;; 0 = nenhuma.
 
 - **EX060 — Fazer crescer o julgamento.** Segundo a Dra. Voss, como o julgamento cresce? *Rubrica:* 3 = revendo com honestidade as decisões passadas;; 2 = revisão;; 1 = frameworks;; 0 = nenhuma.
+
+### Síntese
+
+O curso termina revisando os resultados com honestidade, transferindo os métodos com cautela quanto ao domínio e planejando o desenvolvimento do julgamento.
 
 <a id="worked-results"></a>
 

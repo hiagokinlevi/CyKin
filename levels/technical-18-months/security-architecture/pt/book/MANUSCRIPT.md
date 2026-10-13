@@ -74,6 +74,10 @@ As listas de serviços deixam de fora ferramentas informais. Os gerentes podem e
 
 - **EX004 — Serviços críticos.** Que serviços são críticos? *Rubrica:* 3 = prontuários e imagens;; 2 = os dois;; 1 = e-mail;; 0 = nenhuma.
 
+### Síntese
+
+Mapear serviços para sistemas e classificá-los por impacto mostra onde a proteção importa mais.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Redes e protocolos
@@ -114,6 +118,10 @@ Software antigo pode precisar de protocolos antigos. Mudanças no roteador podem
 
 - **EX008 — Problema maior.** Que problema precisa de um reprojeto planejado? *Rubrica:* 3 = a rede plana;; 2 = rede plana;; 1 = impressoras;; 0 = nenhuma.
 
+### Síntese
+
+Entender uma rede e os seus protocolos revela configurações fracas que podem ser corrigidas e questões de desenho que exigem planejamento.
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Sistemas operacionais e identidades
@@ -153,6 +161,10 @@ Métodos de login rápido precisam de tratamento para crachás perdidos. As corr
 - **EX011 — Tempo de bloqueio.** Depois de quanto tempo os PCs dos consultórios bloqueiam? *Rubrica:* 3 = cinco minutos de inatividade;; 2 = cinco;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX012 — Conveniência.** Por que a conveniência é um requisito de segurança nas clínicas? *Rubrica:* 3 = controles lentos são contornados;; 2 = contornar;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+Eliminar as contas administrativas compartilhadas e oferecer um login individual rápido melhora tanto a segurança quanto a responsabilização.
 
 <a id="ch-04"></a>
 
@@ -233,6 +245,10 @@ Os scripts quebram quando os formatos de exportação mudam. Os e-mails de suces
 
 - **EX016 — Causa raiz.** O que causou as falhas de Elmfield? *Rubrica:* 3 = um disco cheio no servidor de imagens;; 2 = disco;; 1 = rede;; 0 = nenhuma.
 
+### Síntese
+
+Ler exportações com pequenos scripts torna visíveis as falhas silenciosas, desde que os dados ruins sejam tratados com cautela.
+
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Escopo e evidências de segurança
@@ -272,6 +288,10 @@ Os escopos podem excluir justamente onde estão os problemas. As declarações p
 - **EX019 — Post-it.** Como Nadia tratou a afirmação sobre o post-it? *Rubrica:* 3 = registrou-a como declaração e conferiu ela mesma;; 2 = verificar;; 1 = ignorou;; 0 = nenhuma.
 
 - **EX020 — Exemplo de achado.** Dê um achado do relatório de Nadia. *Rubrica:* 3 = o servidor de imagens compartilha uma pasta legível por todos;; 2 = compartilhamento;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+Um escopo assinado, evidências verificáveis e uma separação clara entre achados e opiniões tornam uma revisão crível.
 
 <a id="ch-06"></a>
 
@@ -313,6 +333,10 @@ Os modelos deixam de fora fluxos não documentados. Os recursos dos roteadores v
 
 - **EX024 — Suporte do roteador.** Como o roteador suporta os segmentos? *Rubrica:* 3 = LANs virtuais;; 2 = VLANs;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+Um modelo com fronteiras marcadas leva diretamente a um desenho segmentado com fluxos permitidos explícitos.
+
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Arquitetura e engenharia de segurança: dados e telemetria
@@ -352,6 +376,10 @@ Os logs de auditoria dos fornecedores podem ser limitados. O logging centralizad
 - **EX027 — Destino dos logs.** Para onde devem ir os logs dos PCs e do firewall? *Rubrica:* 3 = um serviço de logs em nuvem que a equipe não consegue modificar;; 2 = central;; 1 = PC local;; 0 = nenhuma.
 
 - **EX028 — Sincronização dos relógios.** Por que sincronizar os relógios dos dispositivos? *Rubrica:* 3 = para que os eventos possam ser ordenados corretamente;; 2 = ordenação;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+Saber onde ficam os dados sensíveis e coletar telemetria com propósito e protegida prepara uma prática para detectar e investigar.
 
 <a id="ch-08"></a>
 
@@ -393,6 +421,10 @@ Os cartões de resposta envelhecem conforme os sistemas mudam. Os tempos de rest
 
 - **EX032 — Estimativa de restauração.** Quanto tempo se estima que leve a restauração das imagens? *Rubrica:* 3 = quatro horas;; 2 = quatro;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+Listar modos de falha e redigir respostas de uma página testadas prepara uma prática tanto para acidentes quanto para ataques.
+
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Arquitetura e engenharia de segurança: ferramentas e métodos
@@ -432,6 +464,10 @@ Os checklists ficam desatualizados. Os modelos de ameaças dependem de projetos 
 - **EX035 — Correção do fornecedor.** Como o fornecedor corrigiu o calendário? *Rubrica:* 3 = mostrando apenas os horários livres;; 2 = horários;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX036 — Método para sistemas novos.** Que método serve para sistemas novos? *Rubrica:* 3 = a modelagem de ameaças com STRIDE;; 2 = STRIDE;; 1 = checklist;; 0 = nenhuma.
+
+### Síntese
+
+Listas de verificação servem para contextos rotineiros, enquanto modelos de ameaças servem para desenhos novos; escolher bem economiza tempo e encontra problemas reais.
 
 <a id="ch-10"></a>
 
@@ -500,6 +536,10 @@ Os testes cobrem apenas os fluxos listados. A sintaxe do roteador difere do mode
 
 - **EX040 — Correção.** Como Nadia corrigiu a regra ampla? *Rubrica:* 3 = dividindo a equipe em segmentos de recepção e de consultórios;; 2 = dividir;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+Regras ordenadas, documentadas e testadas transformam um desenho de segmentação em uma configuração funcional.
+
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Arquitetura e engenharia de segurança: verificação
@@ -539,6 +579,10 @@ Testes num momento não provam o comportamento futuro. Mover um notebook entre s
 - **EX043 — Teste que falhou.** Que teste falhou, e por quê? *Rubrica:* 3 = impressora dos consultórios inalcançável; estava no segmento da recepção;; 2 = impressora;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX044 — Reutilização.** Como os testes serão reutilizados? *Rubrica:* 3 = acrescentados ao procedimento de mudanças para as mudanças futuras;; 2 = procedimento de mudanças;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+A verificação a partir de cada segmento, com resultados registrados, confirma que os controles se comportam como projetados.
 
 <a id="ch-12"></a>
 
@@ -607,6 +651,10 @@ As simulações simplificam o comportamento do atacante. Os PCs dos consultório
 
 - **EX048 — Resultado mais valioso.** Por que a restrição do servidor de backup é o resultado mais valioso? *Rubrica:* 3 = mantém a recuperação possível;; 2 = recuperação;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+Simulações contidas mostram como a segmentação e os backups protegidos limitam a propagação de uma infecção.
+
 <a id="ch-13"></a>
 
 ## Capítulo 13 — Arquitetura e engenharia de segurança: solução de problemas
@@ -646,6 +694,10 @@ A documentação dos fornecedores pode estar incompleta. O comportamento de nova
 - **EX051 — Correção certa.** Como o problema foi corrigido? *Rubrica:* 3 = uma regra documentada só para aquela porta, seguida de novos testes;; 2 = regra estreita;; 1 = liberar tudo;; 0 = nenhuma.
 
 - **EX052 — Prevenção.** O que evita uma repetição? *Rubrica:* 3 = documentar as necessidades de rede dos novos dispositivos antes da instalação;; 2 = procedimento de mudanças;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+Sintomas e logs precisos encontram a causa real, e correções estreitas mantêm os controles intactos.
 
 <a id="ch-14"></a>
 
@@ -709,6 +761,10 @@ As exportações podem omitir algumas configurações. As baselines precisam de 
 
 - **EX056 — Exportação vazia.** Por que testar exportações vazias? *Rubrica:* 3 = uma exportação vazia poderia parecer conformidade perfeita;; 2 = falsa aprovação;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+Relatórios de desvio somente leitura dão a equipes pequenas visibilidade consistente entre as unidades, mantendo as mudanças sob controle humano.
+
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Arquitetura e engenharia de segurança: integração e dependências
@@ -749,6 +805,10 @@ Os compromissos dos fornecedores podem não ser cumpridos. As contingências pre
 
 - **EX060 — Contingência dos prontuários.** Qual é a contingência se o sistema clínico falhar? *Rubrica:* 3 = imprimir toda noite as listas do dia seguinte;; 2 = imprimir;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+As dependências pertencem à arquitetura, com acesso limitado dos fornecedores, o mínimo de dados compartilhados e alternativas ensaiadas.
+
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Documentação técnica e segurança
@@ -788,6 +848,10 @@ Os documentos derivam quando as mudanças pulam o procedimento. Avisos demais di
 - **EX063 — Onde pôr os avisos.** Onde os avisos devem ser colocados? *Rubrica:* 3 = imediatamente antes do passo a que se aplicam;; 2 = junto ao passo;; 1 = apêndice;; 0 = nenhuma.
 
 - **EX064 — Achado da verificação trimestral.** O que a primeira verificação trimestral encontrou? *Rubrica:* 3 = uma captura de tela desatualizada do roteador;; 2 = captura de tela;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+Uma boa documentação técnica é escrita para quem a usa, coloca os avisos onde eles atuam e se mantém atualizada por meio do controle de mudanças.
 
 <a id="ch-17"></a>
 
@@ -855,6 +919,10 @@ Os ataques plantados podem ser mais fáceis que os reais. Os dados de localizaç
 
 - **EX068 — Ponto cego.** O que a regra B deixaria passar? *Rubrica:* 3 = uma senha roubada usada no horário de trabalho a partir de uma cidade habitual;; 2 = horário de trabalho;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Medir a detecção e os alarmes falsos em dados rotulados mostra qual regra implantar, enquanto a prevenção continua essencial.
+
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Projeto técnico supervisionado
@@ -894,6 +962,10 @@ A supervisão pode esconder lacunas na habilidade independente. As lacunas resta
 - **EX071 — Trabalho restante.** O que Nadia listou como restante? *Rubrica:* 3 = login multifator no sistema clínico e treinamento da equipe;; 2 = os dois;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX072 — Hábito mais forte.** Qual Daniel disse ser o hábito mais forte dela? *Rubrica:* 3 = testar antes e depois de cada mudança;; 2 = testar;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+Um projeto supervisionado que combina todas as habilidades, apresenta resultados honestos e lista o trabalho restante completa a preparação técnica.
 
 <a id="worked-results"></a>
 

@@ -76,6 +76,10 @@ Definições em linguagem simples simplificam. As listas de encaminhamento preci
 
 - **EX005 — Temas para especialistas.** Cite um tema que Owen vai encaminhar a especialistas. *Rubrica:* 3 = criptografia, configuração de nuvem ou questões jurídicas;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+Os profissionais começam ligando os objetivos de segurança a serviços reais e conhecendo os limites da sua competência.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Arquitetura e engenharia de segurança: contexto de serviços e partes interessadas
@@ -118,6 +122,10 @@ Entrevistas curtas deixam detalhes de fora. Os responsáveis podem não prever t
 
 - **EX010 — Método das entrevistas.** Como Owen manteve as entrevistas comparáveis? *Rubrica:* 3 = vinte minutos com as mesmas perguntas para todos os responsáveis;; 2 = mesmas perguntas;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+Mapear serviços, donos e necessidades permite que os desenhos protejam o que mais importa, mantendo os serviços utilizáveis.
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Prática autorizada e manuseio de evidências
@@ -159,6 +167,10 @@ As autorizações podem ser vagas. Os checksums provam a integridade, e não a c
 - **EX014 — Exclusão.** Quando as cópias de trabalho são apagadas? *Rubrica:* 3 = quando o trabalho termina, conforme acordado;; 2 = fim do trabalho;; 1 = nunca;; 0 = nenhuma.
 
 - **EX015 — Exportar, não navegar.** Por que exportar as listas de papéis em vez de navegar pelos registros? *Rubrica:* 3 = para evitar ver dados de inquilinos desnecessários à revisão;; 2 = minimizar;; 1 = rapidez;; 0 = nenhuma.
+
+### Síntese
+
+Trabalho autorizado, tratamento cuidadoso das evidências e o mínimo de dados pessoais protegem tanto a organização quanto o profissional.
 
 <a id="ch-04"></a>
 
@@ -224,6 +236,10 @@ Notas multiplicadas sugerem uma falsa precisão. Os modelos deixam de fora canai
 
 - **EX020 — Segundo lugar.** Que ameaça ficou em segundo no laboratório? *Rubrica:* 3 = contas de ex-funcionários dos contratados ainda ativas, 6;; 2 = contas antigas;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+A modelagem, o STRIDE e uma classificação simples transformam um serviço em uma lista priorizada de ameaças.
+
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Arquitetura e engenharia de segurança: ferramentas e interpretação
@@ -266,6 +282,10 @@ Os rótulos de severidade são genéricos. As lacunas de cobertura das ferrament
 
 - **EX025 — Anotações das ferramentas.** Que três coisas Owen registra para cada ferramenta? *Rubrica:* 3 = o que mede, o que não consegue ver, como confirmar surpresas;; 2 = duas;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+A saída das ferramentas precisa ser interpretada no contexto, com notas claras sobre o que cada ferramenta mede e o que deixa passar.
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Arquitetura e engenharia de segurança: fluxo operacional
@@ -307,6 +327,10 @@ As cláusulas contratuais dependem de cobrança. A expiração automática pode 
 - **EX029 — Redução de contas.** Como mudaram as contas ativas de contratados? *Rubrica:* 3 = de 210 para 135;; 2 = caíram;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX030 — Comunicação de desligamentos.** Em que prazo os contratados precisam comunicar desligamentos? *Rubrica:* 3 = em até dois dias úteis, por contrato;; 2 = dois dias;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+A segurança funciona melhor entrelaçada aos fluxos de trabalho existentes, com a automação mantendo o esforço sustentável.
 
 <a id="ch-07"></a>
 
@@ -375,6 +399,10 @@ As contas de teste podem não refletir o volume real de dados. As configuraçõe
 
 - **EX035 — Resultado do novo teste.** O que a segunda rodada mostrou no laboratório? *Rubrica:* 3 = os 4 requisitos passaram depois da correção do fornecedor;; 2 = 4 de 4;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+Os controles se tornam confiáveis quando são escritos como requisitos testáveis e verificados com resultados registrados.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Arquitetura e engenharia de segurança: análise de caso supervisionada
@@ -416,6 +444,10 @@ Casos históricos têm evidências faltantes. As retenções podem atrasar reemb
 - **EX039 — Mudança nas métricas.** Por que ajustar as métricas da central de atendimento? *Rubrica:* 3 = as metas de tempo de atendimento desestimulavam verificações extras;; 2 = incentivos;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX040 — Retenção do reembolso.** Por quanto tempo o reembolso fica retido após uma mudança bancária? *Rubrica:* 3 = sete dias;; 2 = sete;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+A análise de casos supervisionada encontra as causas de desenho por trás dos incidentes e as transforma em mudanças aceitas.
 
 <a id="ch-09"></a>
 
@@ -459,6 +491,10 @@ Os resumos podem omitir ressalvas importantes. Relatar preocupações pode tensi
 
 - **EX045 — Sigilo.** Por que manter em sigilo a preocupação com o acesso? *Rubrica:* 3 = para proteger as pessoas até que os fatos sejam estabelecidos;; 2 = proteger;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+O reporte profissional é claro para quem decide, ético no tratamento das preocupações e honesto quanto à incerteza.
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Arquitetura e engenharia de segurança: qualidade e solução de problemas
@@ -500,6 +536,10 @@ As exceções podem ser abusadas se as verificações enfraquecerem. Três meses
 - **EX049 — Princípio mantido.** Que princípio a exceção preserva? *Rubrica:* 3 = a separação de privilégio, ao exigir duas pessoas;; 2 = duas pessoas;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX050 — Primeiros resultados.** O que aconteceu nos três primeiros meses da exceção? *Rubrica:* 3 = as reclamações caíram e nenhuma fraude usou a exceção;; 2 = os dois;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+A revisão de qualidade e a resolução ágil de problemas aprimoram os controles sem abandonar o seu propósito protetor.
 
 <a id="ch-11"></a>
 
@@ -569,6 +609,10 @@ As definições de papéis podem estar erradas. O acesso fora do sistema continu
 
 - **EX055 — Ponto cego do laboratório.** O que o laboratório não conseguia ver? *Rubrica:* 3 = permissões dentro de documentos ou pastas compartilhadas fora do sistema;; 2 = acesso externo;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+Uma revisão de acessos cuidadosa define primeiro as necessidades, classifica o excesso por sensibilidade e relata respeitando os dados pessoais.
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Portfólio de prática e revisão final
@@ -610,6 +654,10 @@ Os portfólios podem exagerar a contribuição individual. Os resultados de curt
 - **EX059 — Força da formação.** Por que a formação de Owen se tornou uma força? *Rubrica:* 3 = a arquitetura consiste em grande parte em coordenar pessoas, decisões e evidências;; 2 = coordenação;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX060 — Dados no portfólio.** Como os dados pessoais são tratados no portfólio? *Rubrica:* 3 = removidos ou substituídos por exemplos sintéticos;; 2 = removidos;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+Um portfólio de trabalhos comentados, uma revisão honesta dos resultados e um plano de crescimento completam a preparação profissional.
 
 <a id="worked-results"></a>
 

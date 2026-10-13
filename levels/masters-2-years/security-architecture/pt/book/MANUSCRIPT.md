@@ -108,6 +108,10 @@ A escolha das bases limita a cobertura; o conhecimento dos praticantes pode esta
 
 - **EX007 — Lacuna de comparação.** Que lacuna Kenji identificou? *Rubrica:* 3 = poucos estudos comparam estratégias de segmentação nas mesmas redes sob as mesmas premissas;; 2 = lacuna;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Uma boa pergunta de mestrado é estreita, respondível e honesta sobre a sua medida indireta, e uma busca bibliográfica registrada mostra onde ela acrescenta algo novo.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Arquitetura e engenharia de segurança: seminário avançado
@@ -161,6 +165,10 @@ O número de regras é uma aproximação grosseira da complexidade operacional. 
 - **EX013 — Medida de complexidade.** Como Kenji mede a complexidade das regras, e qual é a fraqueza disso? *Rubrica:* 3 = número de regras de permissão distintas; aproximação grosseira;; 2 = medida;; 1 = nada;; 0 = nenhuma.
 
 - **EX014 — Motivo do duplo desfecho.** Por que comparar as estratégias pelo alcance e pelo número de regras juntos? *Rubrica:* 3 = uma estratégia pode reduzir o alcance mas ser impossível de gerenciar na operação;; 2 = ambos;; 1 = só alcance;; 0 = nenhuma.
+
+### Síntese
+
+Um seminário avançado treina o estudante a transitar entre visões de arquitetura, ligar desenhos a princípios e marcar cada afirmação pelo tipo de evidência que a sustenta.
 
 <a id="ch-03"></a>
 
@@ -252,6 +260,10 @@ Supor que todo salto é explorável superestima o alcance; atacantes reais enfre
 
 - **EX020 — Preocupação com o uso dual.** Como Kenji lida com o risco de uso dual dos achados? *Rubrica:* 3 = relata só padrões agregados, sem pontos fracos específicos da Vantor;; 2 = agregado;; 1 = publica o mapa;; 0 = nenhuma.
 
+### Síntese
+
+Um estudo de simulação sólido controla as comparações, declara premissas pessimistas, protege as informações dos parceiros e fixa de antemão a sua análise e as suas sementes.
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Arquitetura e engenharia de segurança: explicações concorrentes
@@ -304,6 +316,10 @@ Nenhuma lista de rivais é completa. Os parâmetros acrescentados para modelar a
 
 - **EX026 — Sinal de maturidade.** O que a Dra. Aydın chama de sinal claro de maturidade de pesquisa? *Rubrica:* 3 = declarar de antemão o que mudaria a conclusão;; 2 = condições prévias;; 1 = tese longa;; 0 = nenhuma.
 
+### Síntese
+
+Listar as explicações rivais, testar cada uma com uma verificação planejada e fixar de antemão as condições de reversão transforma um resultado esperado em um resultado testado.
+
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Proposta e piloto
@@ -355,6 +371,10 @@ As estimativas de tamanho de amostra feitas com um piloto pequeno também são i
 - **EX031 — Faixa de configuração incorreta.** Que faixa foi definida para a configuração incorreta, e por quê? *Rubrica:* 3 = de zero a cinco por cento, considerada realista pelos engenheiros;; 2 = faixa;; 1 = dez por cento;; 0 = nenhuma.
 
 - **EX032 — Tag do código do piloto.** Por que marcar com tag a versão do código do piloto? *Rubrica:* 3 = para que os experimentos principais partam de um estado conhecido e testado;; 2 = estado conhecido;; 1 = sem motivo;; 0 = nenhuma.
+
+### Síntese
+
+Uma proposta curta e um piloto honesto transformam um plano de pesquisa em um pipeline testado, com um tamanho de amostra justificado.
 
 <a id="ch-06"></a>
 
@@ -436,6 +456,10 @@ Os intervalos por bootstrap descrevem a variação entre as redes geradas, e nã
 
 - **EX038 — Frase apoiada.** Por que Kenji evita chamar de segura a segmentação por identidade? *Rubrica:* 3 = os resultados só sustentam um alcance modelado menor sob premissas, com condições;; 2 = condicional;; 1 = é segura;; 0 = nenhuma.
 
+### Síntese
+
+Uma análise cuidadosa relata comparações pré-especificadas com intervalos, testa cada explicação rival e mantém lado a lado os ganhos de segurança e os custos operacionais.
+
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Redação da dissertação e limitações
@@ -488,6 +512,10 @@ As afirmações sobre a direção do efeito também são julgamentos. Os resumos
 
 - **EX044 — Leitor frio.** O que a verificação por um leitor frio captou? *Rubrica:* 3 = frases que não podiam ser verificadas por uma tabela ou figura;; 2 = sem apoio;; 1 = erros de digitação;; 0 = nenhuma.
 
+### Síntese
+
+Uma dissertação convence quando cada afirmação remonta a um resultado, as limitações são específicas e os conselhos aos profissionais ficam dentro das evidências.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Revisão independente e defesa
@@ -539,6 +567,10 @@ A nova execução independente confirma a reprodutibilidade, não a validade das
 - **EX049 — Conteúdo do arquivo.** O que o arquivo de Kenji contém? *Rubrica:* 3 = código final, configurações, resultados e um manifesto SHA-256;; 2 = três itens;; 1 = dados da Vantor;; 0 = nenhuma.
 
 - **EX050 — Momentos valorizados.** Que momentos Kenji considera os mais úteis na reflexão? *Rubrica:* 3 = quando as expectativas foram contestadas pelo controle, pela rival e pelo examinador;; 2 = contestadas;; 1 = elogios;; 0 = nenhuma.
+
+### Síntese
+
+A revisão independente e uma defesa franca tornam um resultado de mestrado menor, mais forte e pronto para que outras pessoas construam sobre ele.
 
 <a id="worked-results"></a>
 
