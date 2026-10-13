@@ -43,10 +43,10 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 | 7 | [31](book/PLAN.md#ch-31) | Infraestructura crítica y seguridad sectorial: implementación II | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-31) | [32 · Borrador](book/MANUSCRIPT.md#ch-32) |
 | 7 | [32](book/PLAN.md#ch-32) | Infraestructura crítica y seguridad sectorial: confiabilidad | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-32) | [33 · Borrador](book/MANUSCRIPT.md#ch-33) |
 | 7 | [33](book/PLAN.md#ch-33) | Infraestructura crítica y seguridad sectorial: seguridad funcional y resiliencia | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-33) | [34 · Borrador](book/MANUSCRIPT.md#ch-34) |
-| 7 | [34](book/PLAN.md#ch-34) | Infraestructura crítica y seguridad sectorial: integración | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-34) | [35 · Plan](book/PLAN.md#ch-35) |
-| 7 | [35](book/PLAN.md#ch-35) | Taller de diseño II | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-35)) | [36 · Plan](book/PLAN.md#ch-36) |
-| 8 | [36](book/PLAN.md#ch-36) | Infraestructura crítica y seguridad sectorial: desempeño y escala | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-36)) | [37 · Plan](book/PLAN.md#ch-37) |
-| 8 | [37](book/PLAN.md#ch-37) | Infraestructura crítica y seguridad sectorial: operaciones | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-37)) | [38 · Plan](book/PLAN.md#ch-38) |
+| 7 | [34](book/PLAN.md#ch-34) | Infraestructura crítica y seguridad sectorial: integración | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-34) | [35 · Borrador](book/MANUSCRIPT.md#ch-35) |
+| 7 | [35](book/PLAN.md#ch-35) | Taller de diseño II | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-35) | [36 · Borrador](book/MANUSCRIPT.md#ch-36) |
+| 8 | [36](book/PLAN.md#ch-36) | Infraestructura crítica y seguridad sectorial: desempeño y escala | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-36) | [37 · Borrador](book/MANUSCRIPT.md#ch-37) |
+| 8 | [37](book/PLAN.md#ch-37) | Infraestructura crítica y seguridad sectorial: operaciones | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-37) | [38 · Plan](book/PLAN.md#ch-38) |
 | 8 | [38](book/PLAN.md#ch-38) | Infraestructura crítica y seguridad sectorial: validación | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-38)) | [39 · Plan](book/PLAN.md#ch-39) |
 | 8 | [39](book/PLAN.md#ch-39) | Infraestructura crítica y seguridad sectorial: mantenibilidad | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-39)) | [40 · Plan](book/PLAN.md#ch-40) |
 | 8 | [40](book/PLAN.md#ch-40) | Laboratorio de verificación II | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-40)) | [41 · Plan](book/PLAN.md#ch-41) |
