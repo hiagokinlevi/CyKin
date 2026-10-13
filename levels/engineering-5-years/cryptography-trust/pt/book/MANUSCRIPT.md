@@ -1,7 +1,7 @@
 # Criptografia e Serviços de Confiança: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 123, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 50 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 21–50 (EX061–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 50 já estão escritos em português, com os exercícios EX001–EX090 e suas resoluções com rubricas de 0 a 3 e 7 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 31–50 (EX091–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, construir e operar serviços criptográficos de confiança para infraestruturas críticas.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios existem para entender e verificar comportamentos em relação a normas e vetores de teste. Sistemas de produção usam bibliotecas avaliadas e módulos de segurança de hardware (HSMs); nunca crie sua própria criptografia. Pessoas, organizações, chaves e dispositivos são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Katz e Lindell (3ª ed.); Boneh e Shoup, [*A Graduate Course in Applied Cryptogr
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
 
-Capítulos 21–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
+Capítulos 31–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -908,11 +908,487 @@ Medidas de sucesso podem ser manipuladas se ignorarem a qualidade; associe cada 
 
 - **EX060 — Medida do firmware.** Enuncie a medida de sucesso do firmware. *Rubrica:* 3 = 99 por cento dos medidores atualizados em até trinta dias;; 2 = 99 por cento;; 1 = sempre;; 0 = nenhuma.
 
+<a id="ch-21"></a>
+
+## Capítulo 21 — Criptografia e serviços de confiança: requisitos
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever requisitos criptográficos verificáveis; (2) derivar das normas os requisitos de algoritmo e de tamanho de chave; (3) separar requisitos funcionais de requisitos de garantia.
+
+### 21.1 Enunciados verificáveis
+
+Aiyana reescreve metas vagas como requisitos verificáveis. "As leituras devem ser seguras" vira "Toda leitura carrega uma tag HMAC-SHA256 calculada com uma chave por medidor de 256 bits; o serviço de faturamento rejeita qualquer leitura cuja tag falhe na verificação." Cada requisito nomeia a propriedade, o mecanismo, o parâmetro e o comportamento observável. Um testador consegue conferi-lo sem adivinhar o que "seguro" queria dizer. Ela evita requisitos que ditam desnecessariamente detalhes de implementação, para que os fornecedores possam atendê-los de formas diferentes, mas é precisa onde a precisão evita usos indevidos, como no tamanho da chave e no comportamento da verificação.
+
+### 21.2 Apoiar-se nas normas
+
+Para as escolhas de algoritmo, Aiyana cita normas, e não preferências: AES-256-GCM segundo o FIPS 197 e o SP 800-38D para cifrar dados de configuração; SHA-256 segundo o FIPS 180-4; ECDSA P-256 segundo o FIPS 186-5 ou Ed25519 segundo a RFC 8032 para as assinaturas de firmware; TLS 1.3 segundo a RFC 8446 para os concentradores. Os tamanhos de chave e os criptoperíodos seguem o SP 800-57 Part 1. Ela acrescenta um requisito voltado ao futuro: o projeto de assinatura do firmware deve permitir a migração para assinaturas pós-quânticas, como o ML-DSA do FIPS 204, sem substituir os medidores. Citar normas também permite aos auditores conferir as escolhas contra critérios públicos, e não contra as preferências da equipe, e simplifica revisões futuras quando as orientações mudarem.
+
+### 21.3 Requisitos de garantia
+
+Os requisitos funcionais dizem o que o sistema faz; os requisitos de garantia dizem como a Ridgeway saberá que isso foi feito corretamente. Aiyana acrescenta itens de garantia: as bibliotecas devem vir de projetos mantidos, com avisos de segurança; os módulos de segurança de hardware devem ter um certificado de validação reconhecido; testadores independentes devem tentar forjar leituras antes da entrada em produção; as cerimônias de chaves devem ter duas testemunhas e ata registrada. Esses requisitos custam dinheiro e tempo, então ela os classifica por risco e registra quais são obrigatórios para o piloto e quais para a implantação completa.
+
+### Exemplo resolvido
+
+O conjunto de requisitos de Aiyana especifica HMAC-SHA256 com chaves de 256 bits, algoritmos apoiados em normas, um caminho de migração pós-quântica e itens de garantia classificados.
+
+> **Caso sintético.** O conjunto de requisitos da Ridgeway é inventado; as normas citadas são reais.
+
+### Erros e limites
+
+Especificar demais a implementação pode bloquear projetos melhores; especificar de menos os parâmetros convida a escolhas fracas. Os requisitos precisam de revisão periódica à medida que as normas mudam.
+
+### Exercícios
+
+- **EX061 — Reescrever uma meta.** Reescreva "as leituras devem ser seguras" como um requisito verificável. *Rubrica:* 3 = nomeia HMAC-SHA256, chave por medidor de 256 bits, rejeição quando a verificação falha;; 2 = mecanismo parcial;; 1 = vago;; 0 = nenhuma.
+
+- **EX062 — Normas de assinatura.** Que normas sustentam as opções de assinatura do firmware? *Rubrica:* 3 = FIPS 186-5 (ECDSA P-256) ou RFC 8032 (Ed25519);; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX063 — Exemplo de garantia.** Dê dois requisitos de garantia. *Rubrica:* 3 = dois entre bibliotecas mantidas, HSMs validados, testes independentes de falsificação, cerimônias com testemunhas;; 2 = um;; 1 = item funcional;; 0 = nenhuma.
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Criptografia e serviços de confiança: modelos de sistema e de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) modelar chaves, certificados e identidades como dados; (2) projetar o esquema de um inventário de chaves; (3) modelar os estados e as transições das chaves.
+
+### 22.1 Modelar os objetos de chave
+
+Aiyana modela os dados do serviço de confiança. Um registro de chave tem identificador, finalidade, algoritmo, tamanho, dono, data de criação, data de ativação, data de expiração ou de fim do criptoperíodo, estado e local de armazenamento; ele nunca contém o próprio material de chave. Um registro de certificado liga uma identidade de titular, a impressão digital (fingerprint) da chave pública, o emissor, o número de série e as datas de validade. Os registros de medidor ligam um medidor físico, o identificador da sua chave atual e o endereço de instalação. Separar a identidade da chave permite trocar a chave dos medidores ou movê-los entre endereços sem perder o histórico.
+
+### 22.2 O inventário de chaves
+
+Usando o modelo, Aiyana projeta um inventário de chaves, o lugar único que lista todas as chaves da Ridgeway. O SP 800-57 Part 1 enfatiza que as organizações precisam saber que chaves têm e onde elas são usadas. O inventário responde a perguntas operacionais: quais chaves expiram este mês, quais sistemas usam a chave intermediária do firmware, quais chaves ainda usam um algoritmo com aposentadoria programada. Ela encontra três chaves em scripts antigos que ninguém tinha registrado, o que demonstra por que o inventário importa antes que qualquer mudança criptográfica possa ser planejada com segurança.
+
+### 22.3 Estados das chaves
+
+Aiyana modela os estados de uma chave: pré-ativação, ativa, suspensa, desativada, comprometida e destruída, seguindo o ciclo de vida descrito no SP 800-57 Part 1. Cada transição tem um gatilho e um ator autorizado: ativação depois do provisionamento, desativação no fim do criptoperíodo, comprometida diante de evidência de exposição. Chaves desativadas ainda podem verificar dados antigos, mas não criar novas tags nem assinaturas. O modelo de estados evita erros como assinar um novo firmware com uma chave já marcada para aposentadoria, porque o serviço verifica o estado antes de cada operação. As mudanças de estado são registradas com o ator e o motivo, para auditoria.
+
+### Exemplo resolvido
+
+O modelo de dados de Aiyana separa medidores, identidades e chaves; o inventário encontra três chaves não registradas; e um ciclo de vida com seis estados bloqueia assinaturas com chaves aposentadas.
+
+> **Caso sintético.** O esquema e os achados são inventados; o SP 800-57 Part 1 é real.
+
+### Erros e limites
+
+Inventários se degradam sem descoberta automatizada. Um modelo de estados só é aplicado se toda operação o verificar.
+
+### Exercícios
+
+- **EX064 — Nenhum material de chave.** O que um registro de chave nunca pode conter? *Rubrica:* 3 = o próprio material de chave;; 2 = segredos;; 1 = metadados;; 0 = nenhuma.
+
+- **EX065 — Achado do inventário.** O que a construção do inventário revelou? *Rubrica:* 3 = três chaves em scripts antigos que ninguém tinha registrado;; 2 = chaves não registradas;; 1 = nada;; 0 = nenhuma.
+
+- **EX066 — Chave desativada.** O que uma chave desativada ainda pode fazer, e o que não pode? *Rubrica:* 3 = verificar dados antigos, mas não criar novas tags ou assinaturas;; 2 = só verificar;; 1 = tudo;; 0 = nenhuma.
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Criptografia e serviços de confiança: análise de ameaças e falhas
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar sistematicamente as ameaças ao serviço de confiança; (2) analisar modos de falha não maliciosos; (3) classificar os riscos para tratamento.
+
+### 23.1 Ameaças sistemáticas
+
+Aiyana usa um método estruturado, percorrendo cada componente e cada fluxo de dados e perguntando como um atacante poderia falsificar uma identidade, adulterar dados, negar ações, divulgar informação, negar o serviço ou obter privilégios. No caminho do firmware, ela descobre que um atacante que comprometesse o servidor de build poderia conseguir que código malicioso fosse assinado legitimamente. Nas leituras, uma chave de medidor roubada permite forjar as leituras daquele medidor. No serviço de chaves, um insider poderia exportar chaves. Cada ameaça é escrita com suas pré-condições, para que a equipe possa julgar a probabilidade, em vez de reagir à história mais dramática.
+
+### 23.2 Modos de falha
+
+Nem todos os problemas são ataques. Aiyana acrescenta a análise de falhas: um certificado de concentrador expirado interrompe as leituras de um distrito; a deriva de relógio nos medidores faz as verificações de timestamp rejeitarem leituras válidas; a perda do módulo de segurança de hardware sem backup torna impossível assinar o firmware; um gerador de números aleatórios defeituoso depois de uma atualização de firmware produz nonces repetidos. Para cada uma, ela registra a detecção e o efeito. Várias falhas têm consequências tão graves quanto as dos ataques, e algumas são mais prováveis, o que remodela as prioridades. Registrar os métodos de detecção também mostra quais falhas passariam despercebidas hoje.
+
+### 23.3 Classificação e tratamento
+
+Aiyana pontua cada ameaça e falha por probabilidade e impacto numa escala simples e escolhe um tratamento: mitigar, transferir, aceitar ou evitar. O comprometimento do servidor de build é mitigado com builds reproduzíveis e aprovação da assinatura por duas pessoas. A perda do HSM é mitigada com um backup cifrado sob custódia dividida. A deriva de relógio dos medidores é mitigada com uma janela de tolerância. Um risco residual, a adulteração física de medidores individuais, é aceito com monitoramento, porque as chaves por medidor limitam seu impacto. As decisões e os donos são registrados. O registro é revisitado depois de cada incidente ou mudança importante.
+
+### Exemplo resolvido
+
+A análise de Aiyana lista o comprometimento do servidor de build, chaves de medidor roubadas, exportação por insider, expiração de certificados, deriva de relógio e perda do HSM, classifica-os e atribui tratamentos com donos.
+
+> **Caso sintético.** As ameaças e as pontuações são inventadas.
+
+### Erros e limites
+
+Pontuações são julgamentos, não medições; registre o raciocínio. Ignorar as falhas não maliciosas deixa de fora muitas indisponibilidades reais.
+
+### Exercícios
+
+- **EX067 — Ameaça ao servidor de build.** Por que o comprometimento do servidor de build é grave para o firmware? *Rubrica:* 3 = código malicioso poderia ser assinado legitimamente e aceito pelos medidores;; 2 = abuso da assinatura;; 1 = menor;; 0 = nenhuma.
+
+- **EX068 — Exemplo de falha.** Dê dois modos de falha não maliciosos. *Rubrica:* 3 = dois entre expiração de certificado, deriva de relógio, perda do HSM, RNG defeituoso;; 2 = um;; 1 = um ataque;; 0 = nenhuma.
+
+- **EX069 — Tratamento da perda do HSM.** Como a perda do HSM é tratada? *Rubrica:* 3 = backup cifrado sob custódia dividida;; 2 = backup;; 1 = aceitar;; 0 = nenhuma.
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Criptografia e serviços de confiança: métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) derivar muitas chaves de uma chave mestra com o HKDF; (2) verificar uma implementação contra vetores de teste publicados; (3) separar as chaves por finalidade com informações de contexto.
+
+### 24.1 Por que derivar chaves
+
+A Ridgeway precisa de chaves separadas para cada medidor e para cada finalidade. Armazenar 50.000 chaves aleatórias é possível, mas derivá-las de uma chave mestra no serviço de chaves simplifica o backup e o provisionamento. O HKDF, especificado na RFC 5869, faz isso em duas etapas: a extração (extract) concentra a entropia do material de chave de entrada numa chave pseudoaleatória usando HMAC com um salt, e a expansão (expand) produz quantos bytes de saída forem necessários, vinculados a uma string info que descreve a finalidade. Strings info diferentes geram chaves independentes, de modo que uma chave de telemetria não pode ser confundida com uma chave de firmware.
+
+### Laboratório — HKDF contra a RFC 5869
+
+```python
+"""Check HKDF-SHA256 against RFC 5869 test case 1 (teaching only: use a vetted library in production)."""
+import hmac, hashlib
+
+def hkdf(ikm, salt, info, length):
+    prk = hmac.new(salt, ikm, hashlib.sha256).digest()          # extract
+    okm, t, i = b"", b"", 1
+    while len(okm) < length:                                     # expand
+        t = hmac.new(prk, t + info + bytes([i]), hashlib.sha256).digest(); okm += t; i += 1
+    return prk, okm[:length]
+
+def main():
+    prk, okm = hkdf(bytes([0x0b]) * 22, bytes(range(13)), bytes(range(0xf0, 0xfa)), 42)
+    want = "3cb25f25faacd57a90434f64d0362f2a2d2d0a90cf1a5a4c5db02d56ecc4c5bf34007208d5b887185865"
+    print("PRK", prk.hex()[:32], "...")
+    print("OKM matches RFC 5869 A.1:", okm.hex() == want)
+    a = hkdf(b"utility-master-demo", b"salt", b"telemetry-tls", 16)[1].hex()
+    b = hkdf(b"utility-master-demo", b"salt", b"firmware-sign", 16)[1].hex()
+    print("different info, different keys:", a != b)
+
+if __name__ == "__main__":
+    main()
+```
+
+Execute com `python3 lab_hkdf.py`. Saída verificada:
+
+```text
+PRK 077709362c2e32df0ddc3f0dc47bba63 ...
+OKM matches RFC 5869 A.1: True
+different info, different keys: True
+```
+
+### 24.2 Ler a execução do HKDF
+
+O laboratório implementa o HKDF com hmac apenas para tornar visíveis as duas etapas e o confere contra o caso de teste A.1 da RFC 5869: a saída de 42 bytes coincide exatamente. Em seguida, ele deriva duas chaves da mesma chave mestra de demonstração com strings info diferentes, telemetry-tls e firmware-sign, e confirma que elas diferem. Aiyana escreve ao lado do código que o serviço de chaves de produção da Ridgeway usa o HKDF de uma biblioteca avaliada; o objetivo do exercício é entender e verificar o comportamento, e não implantar uma versão escrita à mão. Um vetor de teste que coincide prova o uso correto, não a segurança contra canais laterais.
+
+### 24.3 Contexto e separação
+
+Aiyana projeta as strings info com cuidado: elas incluem a finalidade, o identificador do medidor e a versão da chave, como "ridgeway/reading-hmac/M-0417/v3". Incluir a versão permite a rotação derivando uma nova chave sem mudar a chave mestra. Incluir o identificador do medidor torna única a chave de cada medidor. Ela alerta contra reutilizar uma chave derivada para duas finalidades, como gerar tags de leituras e cifrar a configuração, porque uma fraqueza ou um uso indevido num uso poderia comprometer o outro. A separação de chaves é um hábito de projeto barato e poderoso. Ela documenta o formato dos rótulos para que todas as equipes derivem as chaves de forma idêntica.
+
+### Exemplo resolvido
+
+Aiyana verifica o comportamento do HKDF contra o caso A.1 da RFC 5869 e depois especifica strings info que codificam a finalidade, o identificador do medidor e a versão, para chaves por medidor e rotacionáveis.
+
+> **Caso sintético.** A chave mestra e os rótulos são inventados; a RFC 5869 e seu vetor de teste são reais.
+
+### Erros e limites
+
+O HKDF não acrescenta entropia; uma chave mestra fraca gera chaves derivadas fracas. Versões escritas à mão servem apenas para aprender.
+
+### Exercícios
+
+- **EX070 — Extração e expansão.** O que fazem as duas etapas do HKDF? *Rubrica:* 3 = a extração gera uma chave pseudoaleatória a partir do material de entrada com um salt; a expansão produz bytes vinculados à info;; 2 = uma etapa;; 1 = cifração;; 0 = nenhuma.
+
+- **EX071 — Resultado do vetor de teste.** O que o laboratório imprimiu na verificação da RFC 5869? *Rubrica:* 3 = OKM matches RFC 5869 A.1: True;; 2 = True;; 1 = False;; 0 = nenhuma.
+
+- **EX072 — Projeto da string info.** O que Aiyana coloca nas strings info, e por que incluir a versão? *Rubrica:* 3 = finalidade, identificador do medidor, versão; a versão permite a rotação sem mudar a chave mestra;; 2 = parcial;; 1 = aleatório;; 0 = nenhuma.
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Ateliê de projeto I
+
+### Objetivos de aprendizagem
+
+Você vai (1) produzir um primeiro projeto integrado para a autenticação das leituras dos medidores; (2) apresentá-lo para crítica; (3) revisá-lo com base no retorno recebido.
+
+### 25.1 O enunciado do ateliê
+
+No primeiro ateliê de projeto, a equipe de Aiyana precisa projetar a autenticação fim a fim das leituras, do medidor ao faturamento, usando o que os capítulos anteriores ensinaram: chaves por medidor derivadas com HKDF, formatos canônicos de leitura, tags HMAC, TLS entre os concentradores e o gateway e verificações do estado das chaves. O enunciado inclui restrições: cada mensagem de leitura pode acrescentar no máximo 32 bytes, os medidores despertam por dois segundos a cada hora, e o sistema precisa tolerar concentradores offline por um dia. A equipe trabalha em quadros brancos antes de escrever qualquer documento.
+
+### 25.2 O primeiro projeto
+
+O projeto da equipe trunca as tags HMAC para 16 bytes, para caber no limite de tamanho, inclui em cada leitura um contador monotonicamente crescente para impedir a repetição (replay) e faz os concentradores guardarem as leituras em buffer durante as indisponibilidades. O faturamento verifica a tag, confere que o contador é maior que o último aceito e confere o estado da chave. Aiyana justifica as tags de 16 bytes: forjar exige adivinhar 128 bits, muito além do viável, e a RFC 2104 permite o truncamento com cuidado. Ela documenta cada decisão de projeto e o requisito que ela atende. O contador também permite ao faturamento perceber lacunas que indicam leituras perdidas.
+
+### 25.3 Crítica e revisão
+
+Os revisores levantam três problemas. Primeiro, se um medidor for substituído, o contador do novo medidor recomeça, e o faturamento rejeitaria suas leituras; a equipe acrescenta uma versão da chave à mensagem, para que os contadores recomecem com as novas chaves. Segundo, as leituras em buffer chegam fora de ordem depois das indisponibilidades; o faturamento passa a aceitar contadores dentro de uma janela e a acompanhar as lacunas. Terceiro, nada registra as verificações que falham; a equipe acrescenta o registro em log e o alerta do Capítulo 17. Aiyana aprende que a crítica encontra problemas operacionais que os documentos de projeto raramente revelam.
+
+### Exemplo resolvido
+
+O projeto da equipe usa tags HMAC truncadas para 16 bytes, com contadores, e depois é revisado para lidar com a substituição de medidores, as leituras em buffer fora de ordem e a falta de logs de falhas.
+
+> **Caso sintético.** O ateliê e os revisores são inventados.
+
+### Erros e limites
+
+O truncamento reduz a resistência à falsificação; nunca trunque abaixo do que o modelo de ameaça permite. Os contadores contra replay exigem tratamento cuidadoso das reinicializações.
+
+### Exercícios
+
+- **EX073 — Truncamento da tag.** Por que uma tag truncada para 16 bytes é aceitável aqui? *Rubrica:* 3 = forjar exige adivinhar 128 bits; a RFC 2104 permite o truncamento cuidadoso;; 2 = 128 bits;; 1 = inseguro;; 0 = nenhuma.
+
+- **EX074 — Defesa contra replay.** Como o projeto impede leituras repetidas? *Rubrica:* 3 = contador monotonicamente crescente verificado pelo faturamento;; 2 = contador;; 1 = só timestamps;; 0 = nenhuma.
+
+- **EX075 — Correção da substituição.** Como a equipe corrigiu a reinicialização dos contadores nos medidores substitutos? *Rubrica:* 3 = acrescentou a versão da chave, para que os contadores recomecem com as novas chaves;; 2 = versão;; 1 = ignorar;; 0 = nenhuma.
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Criptografia e serviços de confiança: alternativas de arquitetura
+
+### Objetivos de aprendizagem
+
+Você vai (1) comparar arquiteturas simétricas e de chave pública para os medidores; (2) avaliar um serviço gerenciado de chaves em nuvem contra HSMs locais; (3) documentar os trade-offs.
+
+### 26.1 Simétrica versus chave pública
+
+Aiyana compara duas arquiteturas para a autenticação das leituras. O projeto simétrico usa HMAC com chaves derivadas no serviço de chaves: tags pequenas, pouca energia do medidor, mas o serviço guarda todas as chaves. O projeto de chave pública dá a cada medidor um par de chaves de assinatura com o Ed25519 da RFC 8032: o faturamento verifica com chaves públicas e o serviço central não guarda segredos, mas as assinaturas têm 64 bytes e assinar custa mais energia. Ela mede as duas opções contra as restrições e o modelo de ameaça e conclui que o projeto simétrico cabe no limite de 32 bytes, enquanto o de chave pública reduz o risco central.
+
+### 26.2 Gerenciado ou local
+
+Para o próprio serviço de chaves, Aiyana compara um serviço gerenciado de chaves em nuvem com módulos de segurança de hardware locais (on-premises). A opção em nuvem oferece alta disponibilidade e menos manutenção, mas coloca a custódia das chaves com um provedor e depende da conectividade de rede. Os HSMs locais mantêm a custódia dentro da casa, mas exigem pessoal qualificado, cerimônias e ciclos de substituição. Ela lista as restrições regulatórias: o regulador exige que as chaves do faturamento permaneçam sob o controle da companhia. As duas opções podem atender a isso com os contratos e os projetos de empacotamento de chaves (key wrapping) certos, então o custo e a equipe decidem.
+
+### 26.3 Documentar os trade-offs
+
+Aiyana escreve uma análise de alternativas com uma tabela de critérios: segurança, energia, tamanho da mensagem, disponibilidade, custo, competências da equipe e caminho de migração. Ela pontua cada opção e explica as notas em texto corrido. A recomendação é HMAC simétrico para as leituras, Ed25519 ou ECDSA para o firmware e HSMs locais para a raiz do firmware, com um serviço gerenciado para as chaves derivadas das leituras. Ela registra que mudança futura reverteria cada decisão, por exemplo quadros de rádio maiores que tornassem as assinaturas viáveis para as leituras. Os revisores podem então contestar uma nota sem rejeitar a análise inteira.
+
+### Exemplo resolvido
+
+A tabela de alternativas de Aiyana recomenda HMAC para as leituras, assinaturas para o firmware, um HSM local para a raiz do firmware e um serviço gerenciado para as chaves derivadas, com as condições de reversão.
+
+> **Caso sintético.** As opções e as notas são inventadas; a RFC 8032 é real.
+
+### Erros e limites
+
+Notas escondem premissas; explique-as. A custódia em nuvem precisa de controles contratuais e técnicos, e não apenas de confiança.
+
+### Exercícios
+
+- **EX076 — Tamanho da assinatura.** Por que o projeto de chave pública não coube nas leituras? *Rubrica:* 3 = as assinaturas Ed25519 têm 64 bytes, excedendo o limite de 32 bytes;; 2 = tamanho;; 1 = velocidade;; 0 = nenhuma.
+
+- **EX077 — Restrição regulatória.** Que restrição regulatória afeta a escolha do serviço de chaves? *Rubrica:* 3 = as chaves do faturamento precisam permanecer sob o controle da companhia;; 2 = custódia;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX078 — Condição de reversão.** Dê uma condição que reverteria a decisão sobre as leituras. *Rubrica:* 3 = quadros de rádio maiores, tornando as assinaturas viáveis;; 2 = quadros maiores;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Criptografia e serviços de confiança: projeto de controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar controles preventivos, detectivos e corretivos para as chaves; (2) especificar uma cerimônia de chaves; (3) associar controles a riscos.
+
+### 27.1 Três tipos de controle
+
+Aiyana projeta controles de três tipos. Os controles preventivos impedem problemas: os HSMs impedem a exportação de chaves, as verificações de estado impedem o uso de chaves aposentadas e a revisão de código impede segredos embutidos. Os controles detectivos percebem problemas: alertas de falhas de verificação, varreduras do inventário em busca de chaves desconhecidas e o monitoramento do Certificate Transparency segundo a RFC 6962. Os controles corretivos recuperam: revogação, procedimentos de troca de chaves e restauração a partir de backups cifrados. Um conjunto equilibrado importa, porque os controles preventivos acabam falhando e a detecção sem correção apenas documenta o dano. Ela confere que todo risco alto tem pelo menos um controle de cada tipo e sinaliza qualquer risco que dependa apenas da prevenção.
+
+### 27.2 A cerimônia de chaves
+
+Para gerar a chave raiz do firmware, Aiyana especifica uma cerimônia: um HSM offline numa sala protegida, três custodiantes, cada um com um smart card, uma testemunha da auditoria, um roteiro escrito, gravação em vídeo da sala, mas não das telas que mostram segredos, e uma ata assinada. A chave é gerada dentro do HSM e guardada em backup em forma cifrada, dividida entre os custodiantes, de modo que dois dos três são necessários para a recuperação. O propósito da cerimônia é produzir evidências, para os reguladores e para os futuros engenheiros, de que nenhuma pessoa sozinha jamais teve a chave raiz.
+
+### 27.3 Associar controles a riscos
+
+Aiyana associa cada risco do Capítulo 23 aos seus controles. O comprometimento do servidor de build é associado a builds reproduzíveis, aprovação das versões por duas pessoas e registro das assinaturas. As chaves de medidor roubadas são associadas à derivação por medidor, aos alertas de verificação e à revogação. A exportação por insider é associada à não exportabilidade do HSM, ao controle duplo e aos logs de auditoria. O mapa revela um risco, a deriva de relógio dos medidores, com apenas um controle corretivo; ela acrescenta um controle detectivo que acompanha o desvio dos timestamps. Lacunas encontradas no papel são mais baratas de corrigir do que lacunas encontradas em incidentes. O mapa é mantido ao lado do registro de riscos e atualizado junto com ele.
+
+### Exemplo resolvido
+
+Aiyana lista controles preventivos, detectivos e corretivos, especifica uma cerimônia da chave raiz com três custodiantes e associa controles a riscos, fechando uma lacuna de detecção da deriva de relógio.
+
+> **Caso sintético.** Os detalhes da cerimônia são inventados; a RFC 6962 é real.
+
+### Erros e limites
+
+Cerimônias falham se os roteiros forem ignorados sob pressão de tempo. Controles mapeados no papel ainda precisam ser testados.
+
+### Exercícios
+
+- **EX079 — Tipos de controle.** Dê um controle preventivo, um detectivo e um corretivo. *Rubrica:* 3 = por exemplo, não exportação pelo HSM, alertas de verificação, revogação;; 2 = dois;; 1 = um;; 0 = nenhuma.
+
+- **EX080 — Propósito da cerimônia.** Qual é o propósito da cerimônia de chaves? *Rubrica:* 3 = produzir evidências de que nenhuma pessoa sozinha jamais teve a chave raiz;; 2 = evidências;; 1 = velocidade;; 0 = nenhuma.
+
+- **EX081 — Lacuna encontrada.** Que lacuna o mapa de riscos revelou, e como ela foi fechada? *Rubrica:* 3 = a deriva de relógio só tinha controle corretivo; acrescentou-se um controle detectivo que acompanha o desvio;; 2 = lacuna nomeada;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Criptografia e serviços de confiança: implementação I
+
+### Objetivos de aprendizagem
+
+Você vai (1) implementar a verificação do firmware com um manifesto de hashes e uma assinatura; (2) explicar por que o manifesto precisa ser assinado; (3) integrar a verificação ao processo de atualização.
+
+### 28.1 O caminho de atualização do firmware
+
+Aiyana implementa a primeira parte do caminho de atualização do firmware. O sistema de build produz uma imagem e um manifesto que contém a versão e o digest SHA-256 da imagem. O manifesto é assinado com a chave de assinatura intermediária. Os medidores baixam os dois, verificam a assinatura do manifesto contra a cadeia embutida de raiz e intermediária, conferem que a versão é mais nova e depois calculam o hash da imagem e o comparam com o digest do manifesto. Só se todas as verificações passarem o medidor grava a imagem no seu slot inativo e reinicia a partir dele.
+
+### Laboratório — Verificação do manifesto
+
+```python
+"""Verify a synthetic firmware image against a SHA-256 manifest before install (FIPS 180-4)."""
+import hashlib
+IMAGE = b"RIDGEWAY-METER-FW v3.2.1\n" + bytes(range(256)) * 4
+MANIFEST = {"version": "3.2.1", "sha256": hashlib.sha256(IMAGE).hexdigest()}
+
+def check(img):
+    return hashlib.sha256(img).hexdigest() == MANIFEST["sha256"]
+
+def main():
+    print("manifest digest", MANIFEST["sha256"][:20], "...")
+    print("intact image accepted:", check(IMAGE))
+    bad = bytearray(IMAGE); bad[100] ^= 1
+    print("one flipped bit accepted:", check(bytes(bad)))
+    print("note: the manifest itself must be signed, or an attacker swaps both")
+
+if __name__ == "__main__":
+    main()
+```
+
+Execute com `python3 lab_manifest.py`. Saída verificada:
+
+```text
+manifest digest 29de505e903e58072161 ...
+intact image accepted: True
+one flipped bit accepted: False
+note: the manifest itself must be signed, or an attacker swaps both
+```
+
+### 28.2 Ler a verificação do manifesto
+
+O laboratório calcula o digest SHA-256 de uma imagem sintética e o guarda num manifesto. A imagem intacta é aceita; inverter um único bit faz a verificação falhar, ilustrando a propriedade de avalanche dos hashes do FIPS 180-4. A última linha do laboratório enuncia a lição principal: um hash sozinho prova apenas que a imagem coincide com o manifesto. Um atacante que consiga substituir tanto a imagem quanto um manifesto não assinado vence com facilidade. É a assinatura sobre o manifesto, feita com ECDSA ou Ed25519 numa biblioteca avaliada, que vincula o digest à Ridgeway.
+
+### 28.3 Detalhes de integração
+
+Aiyana trata dos detalhes práticos. Os medidores mantêm dois slots de firmware, para que uma atualização que falhe possa voltar à versão anterior sem inutilizar o aparelho. A verificação acontece antes da gravação e de novo na inicialização. Imagens grandes têm o hash calculado em blocos, para caber na memória do medidor, usando o método de atualização incremental do hashlib. Os medidores reportam a versão instalada e o resultado da verificação, alimentando a medida de sucesso do firmware do Capítulo 20. Ela documenta que a verificação de assinaturas usa no medidor a biblioteca certificada do fornecedor, e não o código dela. Os relatos de verificações que falharam vão para o sistema de alertas descrito anteriormente.
+
+### Exemplo resolvido
+
+Aiyana implementa a verificação baseada em manifesto, com assinatura, verificação de versão, dois slots e nova verificação na inicialização, e mostra que um único bit invertido faz o hash falhar.
+
+> **Caso sintético.** A imagem e o manifesto são inventados; o FIPS 180-4 é real.
+
+### Erros e limites
+
+Um hash sem assinatura não autentica nada diante de um atacante ativo. Os dois slots precisam de proteção contra rollback, para que os atacantes não consigam forçar versões antigas.
+
+### Exercícios
+
+- **EX082 — Ordem das verificações.** Liste as verificações que um medidor faz antes de instalar o firmware. *Rubrica:* 3 = cadeia de assinatura do manifesto, versão mais nova, hash da imagem igual ao do manifesto;; 2 = duas;; 1 = uma;; 0 = nenhuma.
+
+- **EX083 — Bit invertido.** O que aconteceu quando um bit foi invertido? *Rubrica:* 3 = a imagem foi rejeitada (accepted: False);; 2 = rejeitada;; 1 = aceita;; 0 = nenhuma.
+
+- **EX084 — Manifesto não assinado.** Por que o manifesto precisa ser assinado? *Rubrica:* 3 = do contrário, um atacante troca a imagem e o manifesto juntos;; 2 = troca;; 1 = não é preciso;; 0 = nenhuma.
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Criptografia e serviços de confiança: medição
+
+### Objetivos de aprendizagem
+
+Você vai (1) medir a saúde do gerenciamento de chaves com dados do inventário; (2) relatar as chaves vencidas em relação aos criptoperíodos; (3) construir um painel de medição que leve à ação.
+
+### 29.1 O que medir
+
+Aiyana projeta métricas para o serviço de confiança: a proporção de chaves dentro do criptoperíodo, os dias até a expiração dos certificados, as taxas de falhas de verificação, a dispersão das versões de firmware entre os medidores e o tempo para revogar uma chave comprometida em exercícios. O SP 800-57 Part 1 recomenda criptoperíodos para os tipos de chave; medir a aderência transforma essa orientação em informação gerencial. Cada métrica tem definição, fonte de dados e meta, para que dois analistas obtenham o mesmo número a partir dos mesmos dados. Ela mantém a lista curta, porque um painel com cinquenta métricas esconde as poucas que importam, e combina cada definição com a equipe dona dos dados.
+
+### Laboratório — Auditoria de criptoperíodos
+
+```python
+"""Key inventory ages against a 365-day cryptoperiod (synthetic utility keys, fixed audit date)."""
+from datetime import date
+AUDIT = date(2026, 6, 30); PERIOD = 365
+KEYS = [("telemetry-tls", date(2026, 1, 10)), ("fw-signing", date(2024, 2, 1)),
+        ("db-at-rest", date(2025, 9, 1)), ("webhook-hmac", date(2025, 5, 20)), ("backup-wrap", date(2023, 11, 5))]
+
+def main():
+    over = 0
+    for name, made in KEYS:
+        age = (AUDIT - made).days; late = age > PERIOD; over += late
+        print(f"{name:<14} age {age:>4} d {'OVERDUE' if late else ''}")
+    print(f"overdue {over}/{len(KEYS)}")
+
+if __name__ == "__main__":
+    main()
+```
+
+Execute com `python3 lab_rotation.py`. Saída verificada:
+
+```text
+telemetry-tls  age  171 d 
+fw-signing     age  880 d OVERDUE
+db-at-rest     age  302 d 
+webhook-hmac   age  406 d OVERDUE
+backup-wrap    age  968 d OVERDUE
+overdue 3/5
+```
+
+### 29.2 Ler a auditoria
+
+Na data sintética de auditoria, 30 de junho de 2026, três das cinco chaves amostradas excedem um criptoperíodo de 365 dias: a intermediária de assinatura do firmware, com 880 dias, a chave HMAC dos webhooks, com 406, e a chave de empacotamento dos backups, com 968. Apenas a chave TLS da telemetria e a chave do banco de dados estão dentro do período. Aiyana não entra em pânico: uma chave vencida não está necessariamente comprometida, mas quanto mais tempo uma chave é usada, mais dados ela protege e maior é o impacto de uma exposição não descoberta. Ela agenda as rotações por risco, começando pela intermediária do firmware.
+
+### 29.3 Painéis que levam à ação
+
+O painel de Aiyana mostra cada métrica com sua meta, tendência e dono. As chaves vencidas aparecem como uma lista com donos e datas de rotação planejadas, e não apenas como uma porcentagem. As revisões mensais perguntam por que as métricas mudaram. Ela evita métricas de vaidade, como contar as chaves geradas, que não dizem nada sobre a segurança. Quando a intermediária do firmware é rotacionada, o painel registra a mudança, e a proporção de vencidas cai de três em cinco para duas em cinco, dando à equipe um progresso visível. Os donos precisam explicar qualquer item vermelho na revisão seguinte.
+
+### Exemplo resolvido
+
+A auditoria de Aiyana encontra três de cinco chaves vencidas, agenda a rotação começando pela intermediária do firmware e constrói um painel de métricas com donos e metas.
+
+> **Caso sintético.** As chaves e as datas são inventadas; o SP 800-57 Part 1 é real.
+
+### Erros e limites
+
+Métricas podem estimular manipulação, como renomear chaves para zerar sua idade. Os criptoperíodos são orientações a adaptar ao risco, e não constantes universais.
+
+### Exercícios
+
+- **EX085 — Chaves vencidas.** Quais chaves amostradas estavam vencidas, e com que idade? *Rubrica:* 3 = fw-signing 880, webhook-hmac 406, backup-wrap 968 dias;; 2 = nomes;; 1 = só a contagem;; 0 = nenhuma.
+
+- **EX086 — Significado de vencida.** Vencida significa comprometida? Explique. *Rubrica:* 3 = não; o uso mais longo aumenta os dados protegidos e o impacto de uma exposição não detectada;; 2 = não;; 1 = sim;; 0 = nenhuma.
+
+- **EX087 — Métrica de vaidade.** Dê um exemplo de métrica de vaidade que Aiyana evita. *Rubrica:* 3 = contar as chaves geradas;; 2 = semelhante;; 1 = métrica real;; 0 = nenhuma.
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Laboratório de verificação I
+
+### Objetivos de aprendizagem
+
+Você vai (1) planejar a verificação de controles criptográficos; (2) executar testes negativos contra a autenticação das leituras; (3) registrar evidências para a garantia.
+
+### 30.1 Planejar a verificação
+
+No primeiro laboratório de verificação, a equipe de Aiyana testa o projeto de autenticação das leituras numa bancada com dez medidores de teste, um concentrador e uma cópia do verificador do faturamento. O plano de testes lista cada requisito, o teste, o resultado esperado e a evidência a guardar. Os testes rodam numa rede isolada, com chaves sintéticas, nunca com chaves de produção. O plano também declara o que está fora do escopo, como a adulteração física, que um laboratório posterior cobre, para que os resultados não sejam interpretados além do que mostram. Cada teste é revisado por uma segunda engenheira ou engenheiro antes de rodar.
+
+### 30.2 Testes negativos
+
+A equipe executa testes negativos: leituras alteradas, leituras repetidas com contadores antigos, leituras com tag gerada por uma chave revogada, leituras com tags truncadas e leituras de um identificador de medidor vinculado a outra chave. Cada uma precisa ser rejeitada e registrada. Um teste falha: as leituras com tag de uma chave revogada são aceitas por até uma hora, porque o verificador guarda em cache os estados das chaves. A equipe reduz o tempo do cache para um minuto e acrescenta um envio explícito (push) das revogações. Encontrar isso numa bancada custa muito menos do que encontrá-lo em produção.
+
+### 30.3 Registrar as evidências
+
+Para cada teste, a equipe registra as entradas, as saídas, os logs, as versões de software e o nome do testador e os guarda num arquivo com evidência de adulteração (tamper-evident), com digests SHA-256. Aiyana escreve um resumo: vinte e quatro testes, vinte e três aprovados de início, um reprovado, corrigido e testado de novo. As evidências apoiam a revisão do regulador e os futuros testes de regressão. Ela enfatiza que passar nos testes mostra a ausência de defeitos conhecidos nas condições testadas, e não a ausência de todos os defeitos. O arquivo é somente leitura para os testadores, para que os resultados não possam ser editados discretamente depois, e cada novo teste é acrescentado como uma nova entrada.
+
+### Exemplo resolvido
+
+O laboratório executa vinte e quatro testes; uma falha de revogação em cache é encontrada e corrigida encurtando o cache e enviando as revogações, e as evidências são arquivadas com digests.
+
+> **Caso sintético.** O laboratório e os resultados são inventados.
+
+### Erros e limites
+
+Testes de bancada usam condições idealizadas; o comportamento em campo pode ser diferente. Testes com chaves de produção arriscam uma exposição real.
+
+### Exercícios
+
+- **EX088 — Regra de isolamento.** Que chaves e que rede o laboratório usa? *Rubrica:* 3 = chaves sintéticas numa rede isolada, nunca chaves de produção;; 2 = sintéticas;; 1 = produção;; 0 = nenhuma.
+
+- **EX089 — Falha de revogação.** O que falhou, e como foi corrigido? *Rubrica:* 3 = leituras com chave revogada aceitas por uma hora por causa do cache; cache reduzido a um minuto mais envio das revogações;; 2 = só a falha;; 1 = só a correção;; 0 = nenhuma.
+
+- **EX090 — Limites da aprovação.** O que passar em todos os testes mostra? *Rubrica:* 3 = ausência de defeitos conhecidos nas condições testadas, não de todos os defeitos;; 2 = limitado;; 1 = prova a segurança;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX060 (as de EX061–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Aiyana Torres, Marcus Webb, o Halden Institute of Engineering, a Ridgeway Water Utility e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX090 (as de EX091–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Aiyana Torres, Marcus Webb, o Halden Institute of Engineering, a Ridgeway Water Utility e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Cada bit acrescentado dobra o espaço de chaves, então o trabalho se multiplica, em vez de aumentar num passo fixo.
 
@@ -1033,6 +1509,66 @@ Respostas-modelo para EX001–EX060 (as de EX061–EX150 estão na edição em i
 **EX059.** Os medidores são movidos entre endereços durante consertos, então os vínculos das chaves com as identidades precisam lidar com as trocas.
 
 **EX060.** As atualizações de firmware devem chegar a 99 por cento dos medidores em até trinta dias após o lançamento.
+
+**EX061.** Toda leitura carrega uma tag HMAC-SHA256 com uma chave por medidor de 256 bits, e o faturamento rejeita as leituras cuja tag falhe.
+
+**EX062.** ECDSA P-256 segundo o FIPS 186-5, ou Ed25519 segundo a RFC 8032.
+
+**EX063.** Testes independentes de falsificação antes da entrada em produção e cerimônias de chaves com testemunhas e ata.
+
+**EX064.** Os bytes reais da chave; apenas metadados sobre a chave.
+
+**EX065.** Três chaves escondidas em scripts antigos que não constavam de nenhum registro.
+
+**EX066.** Ela ainda pode verificar dados produzidos anteriormente, mas não pode criar novas tags nem assinaturas.
+
+**EX067.** Atacantes poderiam conseguir que um firmware malicioso fosse assinado com a chave genuína, de modo que os medidores o aceitariam.
+
+**EX068.** Um certificado de concentrador expirado e a deriva de relógio dos medidores rejeitando leituras válidas.
+
+**EX069.** Com um backup cifrado da chave de assinatura mantido sob custódia dividida.
+
+**EX070.** A extração condensa o material de chave de entrada numa chave pseudoaleatória usando um salt; a expansão a estende em chaves de saída vinculadas a uma string info.
+
+**EX071.** Imprimiu que a saída coincidia com o caso de teste A.1 da RFC 5869: True.
+
+**EX072.** Finalidade, identificador do medidor e versão da chave; a versão permite derivar novas chaves para a rotação sem uma nova chave mestra.
+
+**EX073.** Forjar uma leitura exigiria adivinhar um valor de 128 bits, e a RFC 2104 permite o truncamento dentro desses limites.
+
+**EX074.** Cada leitura carrega um contador crescente, e o faturamento rejeita contadores que não sejam maiores que o último aceito.
+
+**EX075.** Acrescentaram uma versão da chave às mensagens, para que o contador de um novo medidor comece do zero com sua nova chave.
+
+**EX076.** As assinaturas Ed25519 ocupam 64 bytes, grandes demais para o orçamento de 32 bytes por mensagem.
+
+**EX077.** O regulador exige que as chaves do faturamento fiquem sob o controle da Ridgeway.
+
+**EX078.** Se os quadros de rádio crescessem o suficiente para transportar assinaturas, as leituras com chave pública se tornariam viáveis.
+
+**EX079.** Não exportabilidade pelo HSM (preventivo), alertas de falhas de verificação (detectivo) e revogação (corretivo).
+
+**EX080.** Provar que a chave raiz foi gerada e guardada em backup sem que nenhuma pessoa sozinha a controlasse.
+
+**EX081.** A deriva de relógio dos medidores não tinha detecção, então foi acrescentado um monitor do desvio dos timestamps.
+
+**EX082.** Ele verifica a cadeia de assinatura do manifesto, confirma que a versão é mais nova e confere o digest da imagem contra o manifesto.
+
+**EX083.** A verificação falhou, e a imagem foi rejeitada.
+
+**EX084.** Sem assinatura, um atacante poderia substituir a imagem e o manifesto juntos e passar na verificação do hash.
+
+**EX085.** A chave de assinatura do firmware (880 dias), a chave HMAC dos webhooks (406) e a chave de empacotamento dos backups (968).
+
+**EX086.** Não, mas o uso mais longo aumenta a quantidade de dados protegidos e o dano caso uma exposição tenha passado despercebida.
+
+**EX087.** O número de chaves geradas, que não diz nada sobre a segurança.
+
+**EX088.** Chaves sintéticas numa rede isolada, nunca chaves de produção.
+
+**EX089.** Leituras com uma chave revogada foram aceitas por até uma hora; o cache foi reduzido a um minuto, e as revogações passaram a ser enviadas.
+
+**EX090.** Apenas que os defeitos conhecidos estão ausentes nas condições testadas, e não que o sistema está livre de defeitos.
 
 <a id="references"></a>
 ## Referências
