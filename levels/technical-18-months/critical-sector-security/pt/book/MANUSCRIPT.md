@@ -310,7 +310,7 @@ Lendo a saída linha a linha: as leituras do SCADA são normais; a estação de 
 
 Decodifique à mão os três quadros abaixo, depois acrescente-os ao Laboratório 2 e confirme: `000900000006010100000010`, `000a0000000601050003 0000` (remova o espaço), `000b00000006020300640001`. Anote a função, o endereço e a quantidade ou o valor de cada um, e se o identificador de unidade é o que você espera para a KW-04.
 
-O segundo quadro traz a função 05, uma escrita de bobina única, então registre se o servidor SCADA deveria algum dia enviá-la à KW-04. Depois acrescente os quadros ao Laboratório 2 e confirme que a sua decodificação à mão coincide com a do script. Se um quadro tiver um espaço no hexadecimal, remova-o antes de colar; os espaços não fazem parte da captura.
+O segundo quadro traz a função 05, uma escrita de bobina única, então registre se o servidor SCADA deveria algum dia enviá-la à KW-04. Se um quadro tiver um espaço no hexadecimal, remova-o antes de colar; os espaços não fazem parte da captura.
 
 ### 2.6 Erros comuns e limites
 
@@ -714,15 +714,13 @@ Declare um tamanho máximo de arquivo e um período de retenção, porque um dia
 
 ### 5.7 Erros comuns e limites
 
-- Começar o trabalho com um "pode ir" verbal.
-- Varrer uma sub-rede para "ver o que tem lá" numa rede de controle.
 - Coletar evidências sem horários em UTC nem hashes.
-- Consertar primeiro e coletar depois.
 - Tratar o escopo como burocracia: é ele que impede que um teste vire um incidente.
 
 - Começar a partir de um "pode ir" verbal e escrever o escopo depois.
 - Varrer uma sub-rede numa rede de controle para descobrir dispositivos.
 - Consertar uma constatação antes de coletar as evidências que a mostraram. Um escopo escrito depois do trabalho não pode proteger o processo durante ele.
+- Continuar depois do horário de término previsto no escopo porque a última verificação "só leva um minuto", em vez de parar e pedir uma prorrogação.
 
 ### Exercícios — capítulo 5
 
@@ -1199,7 +1197,7 @@ Três quadros são válidos e esperados. Um tem o CRC `ffff` onde se esperava `1
 
 Estenda o Laboratório 9 para verificar o CRC de cada bloco de dados do usuário de 16 bytes que segue o cabeçalho. Construa um quadro com 17 bytes de dados do usuário (um bloco completo e um bloco de 1 byte), calcule os CRCs dos dois blocos e corrompa um byte no segundo bloco para mostrar que a verificação o pega.
 
-Construa o quadro com um bloco completo de dezesseis bytes e um bloco de um byte, cada um com o seu próprio CRC. Corrompa um byte no segundo bloco e confirme que só a verificação desse bloco falha. Guarde as etapas de construção nas notas do laboratório, para que um revisor possa reconstruir o mesmo quadro.
+Corrompa um byte no segundo bloco e confirme que só a verificação desse bloco falha. Guarde as etapas de construção nas notas do laboratório, para que um revisor possa reconstruir o mesmo quadro, e anote qual byte você corrompeu e o CRC esperado e o calculado desse bloco.
 
 ### 9.7 Erros comuns e limites
 
@@ -1473,7 +1471,7 @@ Três requisitos verificados, dois falhos, um não testado. O REQ-3 falhou porqu
 - Nunca verifique um bloqueio de escrita tentando escrever num controlador em produção; verifique-o com um teste de conexão e o log do firewall, ou frente a um dispositivo reserva num laboratório (Capítulo 12).
 - Pare ao primeiro comportamento inesperado.
 
-Prefira as contagens do historiador e os logs do firewall a gerar tráfego. As operações devem saber, antes da primeira conexão, que 10.30.99.9 é a origem de teste, para que o seu tráfego não seja confundido com um intruso. Nunca verifique um bloqueio de escrita escrevendo num controlador em produção.
+As operações devem saber, antes da primeira conexão, que 10.30.99.9 é a origem de teste, para que o seu tráfego não seja confundido com um intruso.
 
 ### 11.6 Atividade prática
 
@@ -1546,7 +1544,7 @@ Uma resposta normal à função 6 ecoa a requisição. Uma resposta normal à fu
 
 O respondedor registra toda leitura, toda escrita aceita, com o valor antigo e o novo, e toda exceção. Em equipamentos reais, esses são exatamente os registros que você gostaria de ter tido no Capítulo 7. Uma rajada de respostas de exceção 02 vindas de uma única origem é um forte sinal de alguém mapeando o espaço de registradores; uma sequência de exceções 03 é alguém testando limites.
 
-Em equipamentos reais, esses logs muitas vezes não existem, e é por isso que o laboratório os torna visíveis. Uma rajada de exceções de endereço ilegal vindas de uma única origem é sinal de mapeamento; uma sequência de exceções de valor ilegal é alguém testando limites. Guarde o log do laboratório junto com as respostas em hexadecimal, para que um revisor possa associar cada exceção a uma requisição.
+Em equipamentos reais, esses logs muitas vezes não existem, e é por isso que o laboratório os torna visíveis. Guarde o log do laboratório junto com as respostas em hexadecimal, para que um revisor possa associar cada exceção a uma requisição.
 
 ### 12.4 Exemplo resolvido: o respondedor de bancada (sintético)
 
@@ -1637,7 +1635,7 @@ Se o respondedor devolve a exceção 2 para uma leitura dos registradores 8 a 12
 
 Acrescente ao respondedor a função 16 (escrever vários registradores), com a mesma política: todo registrador da faixa precisa ser gravável e todo valor estar dentro dos limites, ou a escrita inteira é recusada. Teste quatro casos: tudo permitido; um endereço não gravável; um valor fora da faixa; contagem de bytes inconsistente com a quantidade.
 
-Recuse a escrita inteira se algum registrador não for gravável ou algum valor estiver fora dos limites. Teste tudo permitido, um endereço não gravável, um valor fora da faixa e uma contagem de bytes que não corresponda à quantidade. Registre as quatro respostas em hexadecimal e as linhas de log ao lado delas.
+Registre as quatro respostas em hexadecimal e as linhas de log ao lado delas. Por fim, envie uma escrita com a função 16 que inclua um registrador que o seu tratamento da função 6 já recusa (como o registrador 0), e confirme que o log dá o mesmo motivo para as duas recusas.
 
 ### 12.8 Erros comuns e limites
 
@@ -1760,7 +1758,7 @@ O Capítulo 10 deixou um item em aberto: o fw-01 nega o tráfego das mesas corpo
 
 Escreva à medida que avança, em UTC, com os quatro rótulos: *observado*, *inferido*, *feito*, *em aberto*. Um bom registro permite que um colega que assume na troca de turno continue sem lhe perguntar nada, e permite que um investigador reconstrua depois o que foi mudado e quando. O Capítulo 16 dá um modelo; o Capítulo 18 o sela como evidência do projeto.
 
-Escreva à medida que avança, em UTC, com os quatro rótulos, para que um colega na troca de turno possa continuar sem lhe perguntar nada. Inclua referências de evidência para cada observação, como o hash da exportação da configuração da RTU e o intervalo do log do host de salto. No Laboratório 18 o registro vira 05-troubleshooting-log.md, e o seu hash no manifesto é verificado como OK quando o pacote é conferido.
+Inclua referências de evidência para cada observação, como o hash da exportação da configuração da RTU e o intervalo do log do host de salto. No Laboratório 18 o registro vira 05-troubleshooting-log.md, e o seu hash no manifesto é verificado como OK quando o pacote é conferido.
 
 ### 13.6 Atividade prática
 
@@ -1770,10 +1768,7 @@ Se as observações existentes não refutarem a H6, nomeie uma verificação adi
 
 ### 13.7 Erros comuns e limites
 
-- Reiniciar primeiro, o que destrói evidências voláteis e muitas vezes esconde a causa.
-- Testar as hipóteses uma de cada vez e parar na primeira que "se encaixa".
 - Tratar uma hipótese coerente como provada; ela está apenas *ainda não refutada*.
-- Mudar várias coisas ao mesmo tempo.
 - O Laboratório 13 compara valores previstos exatos; as observações reais têm incerteza, e uma única observação pouco confiável não deve refutar uma hipótese sozinha.
 
 - Reiniciar primeiro e destruir evidências voláteis.
@@ -1890,7 +1885,7 @@ O `fw-01.rules` está inalterado. O `ntp.conf` mudou, e a CHG-2210 o cobre (um s
 
 A conta da automação consegue ler ou mudar todos os hosts que gerencia; portanto: guarde as suas credenciais num cofre e troque-as; restrinja de onde ela pode se conectar; exija revisão das mudanças no seu estado desejado; alerte sobre execuções fora do agendamento. O alerta da CISA sobre acesso de longo prazo à infraestrutura crítica descreve atores usando ferramentas legítimas de administração e contas válidas ([CISA AA24-038A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-038a)); uma conta de automação com privilégios excessivos é exatamente uma dessas ferramentas.
 
-Guarde as credenciais da automação num cofre, restrinja de onde a conta pode se conectar e alerte sobre execuções fora do agendamento. Uma ferramenta que consegue mudar todos os hosts é tão atraente para um adversário quanto uma estação de engenharia. Revise as mudanças no seu estado desejado do mesmo modo que revisa as mudanças de firewall.
+Uma ferramenta que consegue mudar todos os hosts é tão atraente para um adversário quanto uma estação de engenharia. Revise as mudanças no seu estado desejado do mesmo modo que revisa as mudanças de firewall.
 
 ### 14.6 Atividade prática
 
@@ -1900,16 +1895,14 @@ Grave o registro de preservação antes de imprimir a constatação e inclua na 
 
 ### 14.7 Erros comuns e limites
 
-- Reversão automática de toda deriva.
-- Manifestos guardados no host que protegem.
 - Apenas hashes; nenhuma cópia aprovada com a qual comparar o conteúdo.
-- Automação varrendo os dispositivos de campo de forma agressiva e degradando o processo.
 - O Laboratório 14 ignora permissões, propriedade e timestamps, que importam tanto quanto o conteúdo (um arquivo de serviço gravável por todos é deriva).
 
 - Reverter automaticamente toda deriva e destruir a evidência de uma mudança não aprovada.
 - Guardar o manifesto no host que ele protege.
 - Calcular hash apenas do conteúdo e ignorar permissões que tornam um arquivo de serviço gravável por todos.
 - Varrer os dispositivos de campo com tanta agressividade que o ciclo de varredura deixa de ser atendido.
+- Reportar desvios sem registrar com qual versão aprovada da linha de base foram comparados.
 
 ### Exercícios — capítulo 14
 
@@ -2030,9 +2023,7 @@ Depois da mudança, registre quais componentes são compartilhados pelos três s
 
 ### 15.6 Erros comuns e limites
 
-- Listar apenas as dependências diretas.
 - Tratar o diretório e o serviço de tempo como "infraestrutura" sem dono de serviço.
-- Presumir, sem verificar, que as operadoras isolam as redes privadas dos clientes umas das outras e das VPNs corporativas.
 - Contar dependentes em vez de olhar quais *serviços* são afetados e por quais *caminhos*.
 - O grafo do Laboratório 15 é binário (precisa / não precisa); as dependências reais têm modos degradados e temporizadores (uma credencial em cache funciona por horas; um relógio deriva devagar).
 

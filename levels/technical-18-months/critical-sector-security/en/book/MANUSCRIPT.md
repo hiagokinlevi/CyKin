@@ -310,7 +310,7 @@ Reading the output line by line: the SCADA reads are normal; the engineering wor
 
 Decode the three frames below by hand, then add them to Lab 2 and confirm: `000900000006010100000010`, `000a0000000601050003 0000` (remove the space), `000b00000006020300640001`. Write down the function, address and quantity or value of each, and whether the unit identifier is what you expect for KW-04.
 
-The second frame carries function 05, a single-coil write, so record whether the SCADA server is ever expected to send one to KW-04. Then add the frames to Lab 2 and confirm that your hand decode matches the script. If a frame has a space in the hex, remove it before pasting; spaces are not part of the capture.
+The second frame carries function 05, a single-coil write, so record whether the SCADA server is ever expected to send one to KW-04. If a frame has a space in the hex, remove it before pasting; spaces are not part of the capture.
 
 ### 2.6 Common errors and limits
 
@@ -714,15 +714,13 @@ State a maximum file size and a retention period, because a day of process value
 
 ### 5.7 Common errors and limits
 
-- Starting work on a verbal "go ahead".
-- Scanning a subnet to "see what's there" in a control network.
 - Collecting evidence without UTC times or hashes.
-- Fixing first and collecting later.
 - Treating scope as paperwork: it is what stops a test becoming an incident.
 
 - Starting from a verbal go-ahead and writing the scope afterwards.
 - Scanning a subnet in a control network to discover devices.
 - Fixing a finding before collecting the evidence that showed it. A scope written after the work cannot protect the process during it.
+- Carrying on past the end time in the scope because the last check "only takes a minute", instead of stopping and asking for an extension.
 
 ### Exercises — chapter 5
 
@@ -1199,7 +1197,7 @@ Three frames are valid and expected. One has CRC `ffff` where `1506` was expecte
 
 Extend Lab 9 to verify the CRC of each 16-byte user-data block that follows the header. Construct a frame with 17 bytes of user data (one full block and one 1-byte block), compute both block CRCs, and corrupt one byte in the second block to show the check catches it.
 
-Construct the frame with one full sixteen-byte block and a one-byte block, each with its own CRC. Corrupt one byte in the second block and confirm that only that block's check fails. Keep the construction steps in the lab notes so a reviewer can rebuild the same frame.
+Corrupt one byte in the second block and confirm that only that block's check fails. Keep the construction steps in the lab notes so a reviewer can rebuild the same frame, and note which byte you corrupted and the expected and computed CRC of that block.
 
 ### 9.7 Common errors and limits
 
@@ -1473,7 +1471,7 @@ Three requirements verified, two failed, one untested. REQ-3 failed because R4 w
 - Never verify a write-block by attempting a write to a live controller; verify it with a connect test and the firewall log, or against a spare device in a lab (Chapter 12).
 - Stop at the first unexpected behaviour.
 
-Prefer historian counts and firewall logs over generating traffic. Operations should know before the first connect that 10.30.99.9 is the test source, so its traffic is not mistaken for an intruder. Never verify a write-block by writing to a live controller.
+Operations should know before the first connect that 10.30.99.9 is the test source, so its traffic is not mistaken for an intruder.
 
 ### 11.6 Practical activity
 
@@ -1546,7 +1544,7 @@ A normal response to function 6 echoes the request. A normal response to functio
 
 The responder logs every read, every accepted write with its old and new value, and every exception. On real equipment these are exactly the records you wished you had in Chapter 7. A burst of exception 02 responses from one source is a strong sign of someone mapping the register space; a run of exception 03 is someone testing limits.
 
-On real equipment those logs are often missing, which is why the lab makes them visible. A burst of illegal-address exceptions from one source is a mapping sign; a run of illegal-value exceptions is someone testing limits. Keep the lab log with the hex responses so a reviewer can match each exception to a request.
+On real equipment those logs are often missing, which is why the lab makes them visible. Keep the lab log with the hex responses so a reviewer can match each exception to a request.
 
 ### 12.4 Worked example: the bench responder (synthetic)
 
@@ -1637,7 +1635,7 @@ If the responder returns exception 2 for a read of registers 8 to 12, that says 
 
 Add function 16 (write multiple registers) to the responder with the same policy: every register in the range must be writable and every value in limits, or the whole write is refused. Test four cases: all allowed; one address not writable; one value out of range; byte count inconsistent with quantity.
 
-Refuse the whole write if any register is not writable or any value is out of limits. Test all allowed, one address not writable, one value out of range, and a byte count that does not match the quantity. Record the four hex responses and the log lines next to them.
+Record the four hex responses and the log lines next to them. Finally, send a function 16 write that includes a register your function 6 handler already refuses (such as register 0), and confirm the log gives the same reason for both refusals.
 
 ### 12.8 Common errors and limits
 
@@ -1760,7 +1758,7 @@ Chapter 10 left an open item: fw-01 denies corporate-desk traffic to stations, y
 
 Write as you go, in UTC, with the four labels: *observed*, *inferred*, *done*, *open*. A good log lets a colleague taking over at shift change continue without asking you anything, and lets an investigator later reconstruct what was changed and when. Chapter 16 gives a template; Chapter 18 seals it as project evidence.
 
-Write as you go in UTC with the four labels, so a colleague at shift change can continue without asking you anything. Include evidence references for each observation, such as the RTU config export hash and the jump-host log interval. In Lab 18 the log becomes 05-troubleshooting-log.md, and its manifest hash verifies OK when the package is checked.
+Include evidence references for each observation, such as the RTU config export hash and the jump-host log interval. In Lab 18 the log becomes 05-troubleshooting-log.md, and its manifest hash verifies OK when the package is checked.
 
 ### 13.6 Practical activity
 
@@ -1770,10 +1768,7 @@ If the existing observations do not refute H6, name one additional read-only che
 
 ### 13.7 Common errors and limits
 
-- Rebooting first, which destroys volatile evidence and often hides the cause.
-- Testing hypotheses one at a time and stopping at the first that "fits".
 - Treating a consistent hypothesis as proven; it is only *not yet refuted*.
-- Changing several things at once.
 - Lab 13 compares exact predicted values; real observations have uncertainty, and a single unreliable observation should not refute a hypothesis on its own.
 
 - Rebooting first and destroying volatile evidence.
@@ -1890,7 +1885,7 @@ manifest digest fdea74f1d09e359c
 
 The automation account can read or change every host it manages, so: keep its credentials in a vault and rotate them; restrict where it may connect from; require review of changes to its desired state; alert on runs outside the schedule. The CISA advisory on long-term access to critical infrastructure describes actors using legitimate administration tools and valid accounts ([CISA AA24-038A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-038a)); an over-privileged automation account is exactly such a tool.
 
-Keep automation credentials in a vault, restrict where the account may connect from, and alert on runs outside the schedule. A tool that can change every host is as attractive to an adversary as an engineering workstation. Review changes to its desired state the same way you review firewall changes.
+A tool that can change every host is as attractive to an adversary as an engineering workstation. Review changes to its desired state the same way you review firewall changes.
 
 ### 14.6 Practical activity
 
@@ -1900,16 +1895,14 @@ Write the preservation record before printing the finding, and include the recor
 
 ### 14.7 Common errors and limits
 
-- Automatic revert of all drift.
-- Manifests stored on the host they protect.
 - Hashing only; no approved copy to compare content with.
-- Automation polling field devices aggressively and degrading the process.
 - Lab 14 ignores permissions, ownership and timestamps, which matter as much as content (a world-writable service file is drift).
 
 - Automatically reverting all drift and destroying evidence of an unapproved change.
 - Storing the manifest on the host it protects.
 - Hashing content only and ignoring permissions that make a service file world-writable.
 - Polling field devices so aggressively that the poll cycle fails.
+- Reporting drift without recording which approved baseline version it was compared against.
 
 ### Exercises — chapter 14
 
@@ -2030,9 +2023,7 @@ After the change, record which components are shared by all three services and p
 
 ### 15.6 Common errors and limits
 
-- Listing direct dependencies only.
 - Treating the directory and time service as "infrastructure" with no service owner.
-- Assuming carriers isolate customers' private networks from each other and from corporate VPNs without checking.
 - Counting dependants instead of looking at which *services* and through which *paths*.
 - Lab 15's graph is binary (needs / does not need); real dependencies have degraded modes and timers (a cached credential works for hours; a clock drifts slowly).
 
