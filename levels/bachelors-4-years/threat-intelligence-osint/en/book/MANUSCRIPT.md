@@ -439,25 +439,37 @@ You will (1) explain DNS, HTTP(S) and SMTP at the level CTI needs; (2) read emai
 
 The Domain Name System maps names to addresses. Resolver logs record which device asked for which name and when. Because almost every connection starts with a lookup, DNS is the most widely useful source for checking domain indicators.
 
+Amara checks how long HCHT keeps resolver logs and whether they record the internal address of the device or only the address of a forwarding server, which would hide which workstation asked. Both facts decide whether a retrospective search for an HSSC domain can find the device that contacted it, and both are written into her notes on each source.
+
 ### 7.2 HTTP and HTTPS
 
 Web traffic carries most user activity and much malicious command traffic. ATT&CK's Application Layer Protocol technique (T1071) describes adversaries blending into normal web, mail or DNS traffic. With HTTPS, a proxy may see only the server name, not the full path, unless traffic is inspected — a decision that has privacy and legal implications in a hospital.
+
+HCHT's legal and privacy staff decided which categories of traffic may be inspected, and health-related sites used by staff for personal care are excluded. Amara works with what the proxy records under that decision, usually the server name and the time, and notes when an indicator cannot be checked because only the full path would reveal it.
 
 ### 7.3 SMTP and headers
 
 Email headers record the path a message took: Received lines, the envelope sender and authentication results (SPF, DKIM, DMARC). A display name saying "HCHT Payroll" means nothing if authentication fails and the sending domain is a lookalike.
 
+Amara learns to read the authentication results first, then the sending domain, and only then the display name, which is the easiest part for an attacker to fake. She compares lookalike domains in HSSC reports with HCHT's own domains to see which tricks are aimed at the trust.
+
 ### 7.4 Ports and services
 
 Unusual ports or protocols can hint at tunnelling, but many legitimate medical systems use unusual ports too. Context from asset owners beats rules of thumb.
+
+Amara asks the clinical engineering team which ports their devices use before treating any unusual port as suspicious. A list of known clinical ports, kept with the asset inventory, stops alerts from firing on normal imaging traffic and lets real anomalies stand out. Each entry records the device model and the owner who confirmed it.
 
 ### 7.5 Time and addresses
 
 Network logs record times in different zones and addresses that may be translated by firewalls. Normalise times to UTC and note address translation before correlating with shared indicators.
 
+Amara found that HCHT's proxy recorded local time while HSSC reports use UTC, which made a contact appear an hour before the domain was first seen. After normalising, the order made sense. She now records the time zone and any address translation for every log source in a short table, so other analysts can correlate events without rediscovering the same problems.
+
 ### 7.6 Authentication results in practice
 
 SPF checks whether the sending server may send for the envelope domain; DKIM checks a signature over the message; DMARC ties them to the visible From domain and states the owner's policy. A message can pass SPF for a lookalike domain the attacker controls, so passing checks alone proves only who sent it, not that the sender is benign.
+
+Amara adds this to her checklist for phishing reports. For every reported phishing message she records the three results and whether the visible domain is HCHT's own, a known partner's or a lookalike. That makes the pattern of spoofing visible over time.
 
 ### Worked example
 
@@ -495,6 +507,8 @@ You will (1) parse a CSV indicator feed with the standard library; (2) validate 
 
 HSSC distributes a daily CSV with columns for type, value, first-seen date and TLP. Spreadsheets mangle such files — turning long numbers into scientific notation or stripping leading zeros — so Amara processes them with Python's `csv` module instead.
 
+She keeps the original file unchanged and writes processed output to a new file, so any question about the feed can be checked against what HSSC actually sent. Opening the original in a spreadsheet is avoided even for a quick look, because saving it by accident could change values without anyone noticing.
+
 ### Lab — validating a feed
 
 ```python
@@ -531,21 +545,31 @@ accepted 3 rejected 2
 
 Three rows pass; two fail. One has an empty domain value; another claims to be a SHA-256 hash but has the wrong length. Each rejection is printed with its date and reason, so Amara can send precise feedback to HSSC rather than "your feed is broken".
 
+The feedback goes to HSSC's contact with the row numbers, so the mistakes can be fixed at the source for every member. She also checks whether the same faults appeared in earlier files. None had.
+
 ### 8.3 Validation rules
 
 Rules check presence (no empty value), shape (hash length, valid address), allowed vocabulary (TLP labels from FIRST TLP 2.0: CLEAR, GREEN, AMBER, AMBER+STRICT, RED) and date format. Rules should be few, explicit and tested.
+
+Amara writes one test for each rule using a small file of good and bad rows, so changing a rule shows immediately which cases it affects. She keeps the list of rules in the script's documentation and shares it with HSSC, so the community knows what HCHT checks and can catch problems before the feed is sent. New rules are added only after a real problem shows they are needed.
 
 ### 8.4 Never silently drop
 
 A script that skips bad rows without saying so makes counts untrustworthy. Always report accepted and rejected totals.
 
+Amara's import prints both totals and writes rejected rows to a file with the reason for each. If the totals do not add up to the number of rows in the feed, the script stops with an error. A silent drop once hid a column change in a feed for a week, until a missing domain was noticed by chance, which is why the rule is now strict.
+
 ### 8.5 Idempotence
 
 Running the import twice should not create duplicates. Use the value plus type as a key and update metadata rather than adding new rows.
 
+Amara tests this by importing the same feed twice and checking that the row count does not change, while the last-seen date updates. Idempotence matters because imports are rerun after failures, and duplicates would inflate counts in reports and make one indicator appear to come from two sources, raising confidence that the evidence does not support.
+
 ### 8.6 Encoding and delimiters
 
 Feeds arrive with different encodings and separators. Open files with an explicit encoding, sniff or declare the delimiter, and strip invisible characters such as byte-order marks from the first header. Many baffling "missing column" errors are just a hidden character in the first field name.
+
+Amara adds both steps to her import function. The import prints the detected encoding and delimiter, so a change in how HSSC produces the file is noticed at once instead of appearing later as a puzzling error. Amara keeps a small set of sample files with different encodings as tests.
 
 ### Worked example
 
@@ -583,9 +607,13 @@ You will (1) design a small indicator table; (2) query it with SQL through Pytho
 
 A spreadsheet works until two analysts edit it at once. A small SQLite database gives one source of truth, queries instead of manual filtering, and a record of what was known when.
 
+Amara moves her indicator list from a shared spreadsheet into SQLite after two analysts overwrote each other's notes. The database file is backed up with the team's other records, and every change is made through her import script or a reviewed query, so it is clear who changed what and when.
+
 ### 9.2 Table design
 
 Columns: value, type, source, TLP label, first_seen, last_seen and status. Storing TLP with each row means queries can filter what may be shared before anything leaves HCHT.
+
+Status records whether an indicator is active, under review or expired. Amara adds a constraint so the TLP column accepts only the five valid labels, which stops a typo from creating a label that queries would miss. First and last seen dates let the team show how long an indicator has been relevant, which matters for ageing decisions.
 
 ### Lab — querying the store
 
@@ -618,17 +646,25 @@ stale: 2
 
 The query returns two domains with their TLP labels: files.example at TLP:CLEAR and portal-login.example at TLP:GREEN. A second query counts two indicators whose last_seen date is older than the review threshold — candidates for expiry.
 
+The query filters by TLP before returning rows, so a list prepared for sharing cannot include restricted entries by mistake. Amara reviews the two expiry candidates with the supervisor before changing their status, since one may still be active according to a recent HSSC update.
+
 ### 9.4 Indicator ageing
 
 Addresses change hands; domains are re-registered. An indicator from last year may now belong to an innocent party. Ageing rules — review after 90 days for addresses, longer for hashes — keep blocklists accurate. Bianco's Pyramid of Pain explains why: low-level indicators are cheap for adversaries to change.
+
+Amara applies the rules through a scheduled query that lists indicators due for review. Each review asks whether the indicator still appears in recent reports or logs. If not, it is moved to monitoring or expired, and the reason is recorded. Hashes age more slowly because a file's hash never changes, although the file may stop being used.
 
 ### 9.5 Parameterised queries
 
 Always pass values as parameters, never by string concatenation. This prevents malformed values from corrupting queries.
 
+Amara's scripts use parameters for every query that includes a value from a feed, even when the value has already been validated. Feeds sometimes contain quotes or semicolons inside domain names that were defanged by hand, and a concatenated query could fail or change in unexpected ways. Parameters remove the risk entirely and make the code easier to read and review. It is a simple, permanent habit.
+
 ### 9.6 Keeping history
 
 When an indicator is retired, set its status to "expired" rather than deleting the row. A later investigation may ask whether HCHT was blocking that address on a particular day, and only a history of status changes with dates can answer the question honestly.
+
+Amara adds a small history table that records each status change with the date and the analyst. That makes it possible to answer such questions with dates rather than memory, and it lets the team measure how long indicators usually stay active before they are retired.
 
 ### Worked example
 
@@ -666,25 +702,37 @@ You will (1) state the legal and ethical limits of OSINT collection; (2) respect
 
 Information visible online is not automatically free to collect, combine and keep. Data-protection law such as the EU GDPR applies to personal data however it was obtained: collection needs a lawful basis, a specific purpose and minimisation. Combining scattered public facts about a person can create a profile that harms them.
 
+Amara's tasks concern infrastructure, such as domains and hosting, not people. When a source includes personal details, such as a registrant's name in a domain record, she records only what the requirement needs and notes why it was kept. HCHT's data protection officer reviews the team's retention of any personal data each year.
+
 ### 10.2 Terms of service
 
 Platforms set rules about automated access, account use and data reuse. Fake personas, scraping against terms and logging in to closed groups expose the analyst and employer to legal and reputational risk. HCHT's policy forbids them without legal sign-off.
+
+Amara checks the terms of each public source before using it, and keeps a short note of what is allowed. When a source forbids automated access, she uses it manually or not at all. Sign-off from legal staff is recorded with the source, so later analysts know the decision and its limits.
 
 ### 10.3 Authorisation
 
 Analysts act within a written mandate: which questions, which sources, which methods. Interacting with adversary infrastructure — visiting live phishing pages from a work laptop, registering for criminal forums — is outside an intern's authority and can alert adversaries or break the law.
 
+Amara's mandate lists the HSSC feeds, HCHT's own logs and a short list of approved public sources, with the methods allowed for each. When a task seems to need something outside the list, such as checking a live phishing page, she asks her supervisor, who may arrange it in an isolated environment or decide it is not needed.
+
 ### 10.4 Proportionality
 
 Ask whether the intelligence need justifies the intrusion. Identifying a phishing domain's hosting provider for a takedown is proportionate; researching the private life of a suspected individual is not CTI's job and belongs, if anywhere, with law enforcement.
+
+Amara writes the purpose of each collection step in her notes and checks it against this test before starting. If the purpose cannot be stated in terms of protecting HCHT's systems or patients, the step is dropped. Her supervisor reviews a sample of her notes each month to confirm the practice is followed.
 
 ### 10.5 Stop and ask
 
 When a task feels uncomfortable, pause and ask the supervisor. Record the question and answer.
 
+Amara's notebook has a page for such questions, with the date, the answer and who gave it. Early in her internship she asked whether she could search a social media site for a phishing sender's profile; the answer was no, since the requirement was about the domain, not the person. Recording the answer means the same question does not need to be asked again, and it shows reviewers how decisions were made.
+
 ### 10.6 Ethics codes and peers
 
 Professional codes — for example those of security certification bodies — ask members to act honourably and protect society. Peers help too: describing a planned collection to a colleague often exposes problems the analyst had not noticed. HCHT runs a short weekly "method check" where interns present any new source before use.
+
+Amara presents her first new source in week three. The check takes ten minutes. Interns describe the source, what it would answer, its terms and any personal data involved, and a colleague asks questions. Several sources have been dropped or limited after a check, and the notes are kept with the team's source list.
 
 ### Worked example
 
@@ -722,25 +770,37 @@ You will (1) relate operating-system concepts to ATT&CK techniques; (2) identify
 
 An operating system runs processes, each started by a parent. Attackers often use built-in interpreters — PowerShell, command shells, scripting hosts — which ATT&CK groups under Command and Scripting Interpreter (T1059). Because administrators use the same tools, detection depends on context: which parent, which user, which time.
 
+Amara notes that a hospital's administrators run scripts at night for backups and updates, so a script at night is not suspicious on its own. The useful question is whether the parent process and account match what the administrators normally use.
+
 ### 11.2 Privilege
 
 Accounts carry privileges. Attackers prefer valid accounts (T1078) because using real credentials looks like normal work. Least privilege limits what a stolen account can do.
+
+For HCHT, valid accounts include supplier accounts used for remote maintenance of clinical systems. Amara learns that intelligence about stolen supplier credentials is especially urgent, since such accounts often have broad access. She checks that each supplier account in the directory has an owner and an expiry date, and reports those without either to the identity team.
 
 ### 11.3 Endpoint telemetry
 
 Process creation events with command lines, logon events and service installations are the endpoint logs most relevant to CTI. If a report says a group ran a specific scheduled task name, Amara can search for that name in HCHT's endpoint data.
 
+Before searching, Amara confirms with the endpoint team which systems send process data, since medical devices and some laboratory systems do not run the agent. Where telemetry is missing, the search result says so, rather than implying that nothing was found.
+
 ### 11.4 Reading a technique page
 
 Each ATT&CK technique page has a description, procedure examples drawn from public reporting, mitigations and detection notes. Procedure examples show that someone observed this; they do not show how common it is.
+
+Amara uses technique pages to understand what a report describes, not to estimate how likely HCHT is to see it. When a report maps an incident to a technique, she reads the procedure examples to see whether the mapping fits. Detection notes give ideas for searches, which she checks with the endpoint team before running.
 
 ### 11.5 Remote services
 
 Remote Services (T1021) covers attackers moving between systems using legitimate remote access. In a hospital, remote desktop is used by suppliers, so baselines of who connects where are essential.
 
+Amara helps the team build a baseline of supplier connections: which supplier connects to which systems, from which addresses and at what times. A connection outside the baseline is not proof of an attack, but it is worth a quick check with the supplier. The baseline is reviewed each quarter with clinical engineering, since maintenance schedules change and new suppliers are added.
+
 ### 11.6 Patching and support status
 
 Unsupported operating systems no longer receive fixes, so intelligence about vulnerabilities affecting them has no patch remedy. The inventory should record support status, and advisories touching unsupported systems trigger compensating controls — segmentation, restricted access, extra monitoring — agreed with the system owner.
+
+Amara adds support status to her advisory notes, so readers see at once whether patching is possible. Compensating controls are reviewed when the owner's replacement plan changes. Amara keeps a short list of unsupported systems with their controls and owners, so an advisory can be checked against it quickly, and she notes when a replacement date has slipped.
 
 ### Worked example
 
@@ -778,6 +838,8 @@ You will (1) express analytic confidence with calibrated words; (2) check wordin
 
 Sherman Kent showed that readers interpret "probable" anywhere from roughly 20% to 90%. ICD 203 requires analytic products to express likelihood consistently. Teams adopt a scale — for example "very likely" for 80–95% — and stick to it.
 
+Amara uses the team's scale in every product and adds it as a footnote, so readers outside the team can interpret the words. Kent's finding shows that the problem is not careless writing but genuinely different readings of the same words. A shared scale gives the words a fixed meaning, and the footnote lets readers at HSSC or HCHT's board apply it the same way.
+
 ### Lab — checking estimative words
 
 ```python
@@ -807,21 +869,31 @@ C4 'probable' not on team scale -> rewrite
 
 Claim C1 says "likely" at 70% — consistent. C2 says "very likely" but assigns 60%, outside the team's 80–95% band, so the wording overstates confidence. C3 "unlikely" at 30% is consistent. C4 uses "probable", which is not on the team scale and must be rewritten.
 
+Amara returns the draft with the two inconsistent claims marked and the scale attached. The author can either change the word or change the number, but must explain which judgment is correct. Consistency is checked before anything leaves the team, because readers outside it will act on the word they see, not on a number they never read.
+
 ### 12.3 Base rates
 
 If one email in ten thousand is malicious, a filter flagging 1% of email produces mostly false alarms even if it catches every phish. Always ask about the base rate before judging a detection.
+
+Amara applies this to an alert rule proposed after an HSSC report and finds that most of its expected alerts would be harmless. The team narrows the rule before deploying it. After narrowing, the rule fires a few times a week, and each alert is checked within the day, which the team can sustain.
 
 ### 12.4 False precision
 
 "There is a 73.4% chance this group is responsible" implies measurement that does not exist. Use bands.
 
+Amara replaces such figures in drafts with a word from the team's scale and a short reason. A precise number suggests that the probability was calculated from data, when in practice it reflects an analyst's judgment based on incomplete evidence. Bands are honest about that and easier for readers to act on. If a number is needed for a model, it is given as a range and labelled as an estimate.
+
 ### 12.5 Likelihood versus confidence
 
 Likelihood describes how probable an event is; confidence describes the quality of the evidence and reasoning behind the judgment. ICD 203 asks analysts to express and explain both.
 
+Amara learns to write both in one sentence, such as "likely, with moderate confidence because only one source reports it". The two can differ: an event can be likely while confidence is low, if the evidence is thin. Readers need both to decide how much weight to give a judgment. Amara checks every judgment in her drafts for both parts.
+
 ### 12.6 Small samples
 
 With five reports, one more or one fewer mention swings a percentage by twenty points. When samples are small, report counts, avoid ranking close values and say that the pattern could change with more data. Statistics cannot rescue a sample that simply contains too little information.
+
+Amara applies this to HSSC's quarterly summary. Several quarters contain only a handful of reports per category, so she asks HSSC to show counts beside each percentage and to mark rankings that depend on one or two reports. HSSC adopts the change for the next summary.
 
 ### Worked example
 
