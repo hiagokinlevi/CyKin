@@ -2948,6 +2948,8 @@ You will (1) run an integrated verification campaign across several AI component
 
 Lab I tested components; Lab II tests the system. Combine attacks with failures: injection during a connector outage; poisoning detected during a model update; extraction attempts while monitoring is degraded. Systems often fail at these intersections.
 
+Component tests assume every neighbour behaves normally. In the real system, outages, updates and attacks overlap, and the handling of one can open a gap for another. A connector failing may push alerts into a queue nobody watches; a model update may briefly disable monitoring. Integrated scenarios are chosen from the threat model and the failure analysis together, pairing each high-ranked threat with a plausible concurrent failure.
+
 ### 40.2 Acceptance criteria
 
 Use statistical criteria tied to requirements: for a rate requirement ≤ p with confidence 95%, the upper Wilson bound (or exact bound) must be below p. With zero failures, about 3/p trials are needed (rule of three). Decide criteria before running.
@@ -2991,6 +2993,8 @@ per-seed rates: 0.110 0.130 0.135 0.105 0.145 mean=0.125 sd=0.017
 baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 ```
 
+The rule of three makes the cost visible: showing a failure rate below 1% with no failures needs about 300 trials, and below 0.1% about 3,000. Writing the criterion first stops the team from relaxing a threshold once results are in, or from stopping a test early because the numbers happen to look good. Each criterion names its requirement, so a failed bound points directly at what must change.
+
 ### 40.3 Base rates in acceptance
 
 Detector requirements must be checked at realistic base rates; a detector that passes TPR/FPR thresholds may still produce unusable precision in operation.
@@ -3021,13 +3025,19 @@ tpr=0.80 fpr=0.001 prevalence=0.010 precision=0.890 alerts_per_10k=90
 tpr=0.80 fpr=0.001 prevalence=0.001 precision=0.445 alerts_per_10k=18
 ```
 
+The acceptance plan therefore states an expected prevalence for each detector, taken from operating data or a justified estimate, and computes precision and alert volume at that rate. A detector that would send operators a hundred false alerts for every real one fails acceptance even if its TPR and FPR meet their thresholds, because in operation its alerts would soon be ignored.
+
 ### 40.4 Evidence package
 
 Organise evidence by requirement: test plan, raw results, analysis, pass/fail, deviations, re-tests. Include environment descriptions, model and data versions with hashes, and tool versions. An independent assessor should be able to follow each requirement to its evidence without asking the team.
 
+Hashes of models and data tie each result to exact artefacts, so nobody can later argue that a different version was tested. Deviations, such as a scenario run with fewer trials than planned, are listed rather than hidden. An assessor reading the package should be able to rerun any test from the recorded versions and seeds and reach the same numbers.
+
 ### 40.5 Worked example (synthetic NRS case)
 
 Sam's integrated campaign ran 18 scenarios across TrackEye, Pulse and Wrench. Scenario 11 (Pulse sensor spoofing during a ticketing-connector outage) revealed that when ticketing failed, Pulse alerts were queued silently for 40 minutes. The fix added an alert-path health check with fallback to SMS for critical alerts. All rate requirements were evaluated with predefined Wilson upper bounds; two that had passed point estimates failed their bounds and needed larger test sets, after which one passed and one led to a model improvement.
+
+The silent queue is the sort of failure no component test could find.
 
 ### 40.6 Errors and limits
 
@@ -3035,6 +3045,7 @@ Sam's integrated campaign ran 18 scenarios across TrackEye, Pulse and Wrench. Sc
 - Acceptance criteria decided after seeing results.
 - Evidence scattered across personal folders.
 
+Isolated component tests miss the interactions where integrated systems fail, as scenario 11 showed. Criteria chosen after seeing results can be bent to fit whatever happened. Evidence kept in personal folders disappears when people leave and cannot be reviewed by an assessor. Sam's campaign template fixes criteria, scenarios and evidence locations before the first run, and a reviewer signs it. Changes to it are dated.
 
 ### 40.6b Repeating the campaign after fixes
 
@@ -3066,27 +3077,39 @@ You will (1) optimise an AI system across security, safety, utility and cost; (2
 
 Security improvements usually cost utility, latency or money. Plot alternatives on two or more axes (for example attack success versus task success) and identify the *Pareto front*: options where no other option is better on every axis. Decision makers then choose a point on the front using explicit priorities.
 
+An option is dominated when another is at least as good on every axis and better on one; dominated options can be dropped without debate. The front itself usually contains several options, each giving up something different. Engineering can show the front clearly, but choosing between its points is a judgement about priorities, so it belongs with the accountable owners.
+
 ### 41.2 Threshold tuning
 
 Detectors and anomaly models have thresholds. Choose them with a cost model: cost of a missed attack × its probability versus cost of a false alarm × its probability, at realistic base rates. Tune on validation data, never on the final test set, and revisit as base rates change.
+
+Validation data must reflect the base rate expected in operation, or the chosen threshold will be wrong in service. A threshold set when attacks were rare may produce floods of alerts during a campaign, or miss too much if attackers adapt. Sam records the cost assumptions with each threshold, so a later change in base rate or in the cost of a miss prompts a deliberate retune.
 
 ### 41.3 Placing controls
 
 Where a control sits changes its cost and effect. Running an injection classifier only on untrusted retrieved content (instead of every message) cuts cost while keeping coverage of the risky path. Placing confirmation only on high-impact actions reduces friction. Optimisation means putting strong controls on high-risk paths and light ones elsewhere.
 
+The principle follows from the data-flow analysis: risk concentrates where untrusted input meets privileged action. Spending heavy controls everywhere wastes budget and annoys users without adding much protection, while light controls on the risky path leave it open. Moving the classifier to retrieved content in the performance chapter is an example: cost fell sharply while coverage of the untrusted path stayed the same.
+
 ### 41.4 Goodhart's law
 
 When a measure becomes a target, it ceases to be a good measure. Teams that optimise a fixed jailbreak benchmark can overfit to it while real robustness does not improve. Keep held-out and refreshed suites, red-team periodically, and track several metrics.
 
+A team rewarded for a falling attack-success number on one benchmark may add filters for its exact phrases, improving the score without making the system harder to attack. Held-out and refreshed suites break that link, since the team cannot tune to tests it has not seen. Tracking several metrics also helps, because gaming one usually worsens another, such as false refusals or task success.
+
 ### 41.5 Worked example (synthetic NRS case)
 
 Sam evaluated five Wrench configurations on attack success (injection suite) and task success (planner suite): A (no controls) 31%/95%; B (classifier blocking) 9%/86%; C (policy + confirmation) 0.0% executions/93%; D (C + classifier flagging) 0.0%/93% with better reviewer focus; E (dual model + C) 0.0%/90%. B is dominated by C. D was chosen: same task success as C, plus flags that improved reviewer catch rates.
+
+B blocks some attacks but costs the most task success, which explains why C dominates it: no executions and higher task success. E's dual model adds protection already provided by C at a further cost of three points. D adds flags on top of C at no task-success cost, which is why it wins.
 
 ### 41.6 Errors and limits
 
 - Optimising one number.
 - Tuning thresholds on test data.
 - Benchmarks that never change.
+
+Optimising one number improves it at the expense of everything not measured. Thresholds tuned on test data look perfect in the report and disappoint in service. Benchmarks that never change are learned by the system and its developers, until a high score shows familiarity rather than robustness. Sam requires every optimisation report to show at least one security metric and one cost metric on a held-out set. Both appear on one chart.
 
 ### Exercises
 
@@ -3114,27 +3137,39 @@ You will (1) frame an applied research question from an engineering problem; (2)
 
 Engineering problems become research questions when the answer is not known and would generalise: "Does marking untrusted content with provenance labels reduce injection proposals in our agent, and by how much compared with a dual-model pattern?" Keep scope to what one semester can answer.
 
+A good question names the comparison, the measure and the setting, so it can be answered with a planned experiment. 'Are labels useful?' cannot be answered; 'how many injection proposals do labels prevent in Wrench compared with a dual-model design, on held-out bulletins' can. Keeping scope small leaves time to do the experiment properly, including the adaptive attack that many projects skip.
+
 ### 42.2 Efficient literature review
 
 Start from authoritative overviews — NIST AI 100-2 E2025 for adversarial ML, OWASP LLM 2025 for application risks, MITRE ATLAS for techniques — then read key papers: Greshake et al. (arXiv:2302.12173) and Liu et al. (arXiv:2306.05499) on prompt injection; Chen et al. (arXiv:2402.06363) on structured-query defences; Carlini et al. (arXiv:1902.06705) on evaluation. Record threat model, method, metric and limits for each.
+
+Overviews map the field quickly and point to the papers worth reading closely. For each paper, a short note records the threat model, the method, the metric and the limits, so papers can be compared on the same terms. Sam stops reading when new papers no longer change the plan.
 
 ### 42.3 Valid small experiments
 
 Pre-specify hypotheses and metrics; use held-out test sets; compare against strong baselines; run several seeds; report paired differences with intervals; include an adaptive attack that targets your method. Check common pitfalls in Arp et al. (arXiv:2010.09470).
 
+A small experiment can still be valid if it is honest about its limits. Pre-specifying prevents choosing the metric that flatters the method. Strong baselines stop a method from looking good against a weak comparison. Several seeds show whether a difference is stable. An adaptive attack, written by someone who knows how the method works, is the most important test, because attackers will know too.
+
 ### 42.4 Reporting for practitioners
 
 State the setting precisely, the effect with its interval, the cost, the conditions under which it failed, and what a practitioner should do with the result.
 
+Practitioners want to know whether to adopt a method, under what conditions and at what cost. A report that ends with a p-value leaves them to work this out. Stating where the method failed is particularly useful, since it tells readers when not to rely on it. Sam ends each applied report with a short recommendation and its conditions, written for an engineer who will not read the methods.
+
 ### 42.5 Worked example (synthetic NRS case)
 
 Sam's applied question compared provenance labelling alone, dual-model, and both, on 400 synthetic injected bulletins and 400 benign tasks, five seeds each. Labelling reduced injection proposals from 14% to 9% (paired CI 3–7 points); dual-model to 2%; both to 1.5%. An adaptive payload that imitated the label format raised labelling-only proposals back to 13%, while dual-model held at 2.5%. Conclusion for practitioners: labels help a little and are easily imitated; constrained interfaces help more; neither replaces enforcement.
+
+The adaptive attack changed the conclusion: without it, labelling would have looked like a solid defence.
 
 ### 42.6 Errors and limits
 
 - Questions too broad for the time available.
 - No adaptive attack against the proposed method.
 - Reports without practitioner guidance.
+
+Questions that are too broad end with vague results or unfinished experiments. A method tested only against attacks written before it existed will look stronger than it is, as the label-imitating payload showed. Reports that stop at statistics leave practitioners unsure what to do. Sam checks proposals for a single answerable question, an adaptive attack in the plan and a practitioner summary in the outline before any experiment runs.
 
 ### Exercises
 
