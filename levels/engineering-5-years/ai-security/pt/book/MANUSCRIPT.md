@@ -2786,7 +2786,7 @@ Três erros são comuns: revisões feitas pelos próprios projetistas; achados v
 
 ### Síntese
 
-A revisão independente encontra o que os projetistas deixam passar. Checklists estruturados mais perguntas guiadas por ameaças produzem achados específicos e com evidência, acompanhados até o encerramento.
+A revisão independente, com checklists estruturados mais perguntas guiadas por ameaças, produz achados específicos e com evidência, acompanhados até o encerramento.
 
 ### Continue estudando — capítulo 45 de 50
 

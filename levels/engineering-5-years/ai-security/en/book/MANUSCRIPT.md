@@ -3424,7 +3424,7 @@ Self-review rarely finds the assumptions that caused a problem, because the same
 
 ### Synthesis
 
-Independent review finds what designers miss. Structured checklists plus threat-driven questions produce specific, evidenced findings that are tracked to closure.
+Independent review, using structured checklists plus threat-driven questions, produces specific, evidenced findings that are tracked to closure.
 
 ### Continue studying — chapter 45 of 50
 

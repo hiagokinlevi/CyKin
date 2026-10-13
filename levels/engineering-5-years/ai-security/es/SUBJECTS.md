@@ -52,13 +52,13 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 | 8 | [40](book/PLAN.md#ch-40) | Laboratorio de verificación II | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-40) | [41 · Borrador](book/MANUSCRIPT.md#ch-41) |
 | 9 | [41](book/PLAN.md#ch-41) | Seguridad de la IA y del aprendizaje automático: optimización del sistema | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-41) | [42 · Borrador](book/MANUSCRIPT.md#ch-42) |
 | 9 | [42](book/PLAN.md#ch-42) | Seguridad de la IA y del aprendizaje automático: investigación aplicada | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-42) | [43 · Borrador](book/MANUSCRIPT.md#ch-43) |
-| 9 | [43](book/PLAN.md#ch-43) | Prácticas en la industria o el sector público | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-43) | [44 · Plan](book/PLAN.md#ch-44) |
-| 9 | [44](book/PLAN.md#ch-44) | Proyecto final de ingeniería I | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-44)) | [45 · Plan](book/PLAN.md#ch-45) |
-| 9 | [45](book/PLAN.md#ch-45) | Revisión de diseño independiente | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-45)) | [46 · Plan](book/PLAN.md#ch-46) |
-| 10 | [46](book/PLAN.md#ch-46) | Proyecto final de ingeniería II | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-46)) | [47 · Plan](book/PLAN.md#ch-47) |
-| 10 | [47](book/PLAN.md#ch-47) | Ensayo de fallo y recuperación | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-47)) | [48 · Plan](book/PLAN.md#ch-48) |
-| 10 | [48](book/PLAN.md#ch-48) | Expediente de evidencia | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-48)) | [49 · Plan](book/PLAN.md#ch-49) |
-| 10 | [49](book/PLAN.md#ch-49) | Trabajo de fin de grado de ingeniería | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-49)) | [50 · Plan](book/PLAN.md#ch-50) |
-| 10 | [50](book/PLAN.md#ch-50) | Defensa final | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-50)) | [Curso 136 →](../../quantum-post-quantum-security/es/SUBJECTS.md) |
+| 9 | [43](book/PLAN.md#ch-43) | Prácticas en la industria o el sector público | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-43) | [44 · Borrador](book/MANUSCRIPT.md#ch-44) |
+| 9 | [44](book/PLAN.md#ch-44) | Proyecto final de ingeniería I | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-44) | [45 · Borrador](book/MANUSCRIPT.md#ch-45) |
+| 9 | [45](book/PLAN.md#ch-45) | Revisión de diseño independiente | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-45) | [46 · Borrador](book/MANUSCRIPT.md#ch-46) |
+| 10 | [46](book/PLAN.md#ch-46) | Proyecto final de ingeniería II | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-46) | [47 · Borrador](book/MANUSCRIPT.md#ch-47) |
+| 10 | [47](book/PLAN.md#ch-47) | Ensayo de fallo y recuperación | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-47) | [48 · Borrador](book/MANUSCRIPT.md#ch-48) |
+| 10 | [48](book/PLAN.md#ch-48) | Expediente de evidencia | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-48) | [49 · Borrador](book/MANUSCRIPT.md#ch-49) |
+| 10 | [49](book/PLAN.md#ch-49) | Trabajo de fin de grado de ingeniería | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-49) | [50 · Borrador](book/MANUSCRIPT.md#ch-50) |
+| 10 | [50](book/PLAN.md#ch-50) | Defensa final | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-50) | [Curso 136 →](../../quantum-post-quantum-security/es/SUBJECTS.md) |
 
 Un siguiente paso planificado es un destino de navegación, no una lección escrita. Las columnas de páginas y ejercicios son metas editoriales. El libro solo estará completo cuando su contenido y su maquetación A4 cumplan el criterio de publicación.
