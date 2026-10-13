@@ -48,17 +48,37 @@ You will (1) read rates of change in intelligence workloads; (2) interpret a der
 
 Indicators arrive in Lantern at a rate that changes during the day: low overnight, rising when partner communities in other time zones publish. If N(t) is the cumulative count of indicators received by hour t, its derivative N′(t) is the arrival rate. Engineers size parsers and enrichment workers for the peak of N′, not for the daily average, because queues form when instantaneous arrival exceeds service.
 
+Section one point one develops calculus with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
 ### 1.2 Slopes from data
 
 Real data are discrete. A difference quotient — (N(t+1) − N(t)) / 1 hour — estimates the rate. Smoothing over several hours reduces noise but hides short bursts; the choice depends on whether you are planning capacity (use peaks) or reporting trends (smooth).
+
+Section one point two develops calculus with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section one point two, the SOC lead expects calculus claims to carry owners and dates.
+
+Section one point two treats rates in soc slopes as testable only when evidence and ticket IDs are recorded.
 
 ### 1.3 Areas as totals
 
 If r(t) is the rate of analyst-hours needed to triage alerts, the integral of r over a shift is the total effort. A trapezoid sum over hourly samples is accurate enough for staffing.
 
+Section one point three develops calculus with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section one point three, the SOC lead expects calculus claims to carry owners and dates.
+
+Section one point three treats rates in soc slopes as testable only when evidence and ticket IDs are recorded.
+
 ### 1.4 Limits of local slopes
 
 A burst during a major campaign may show a steep slope. Projecting that slope a month ahead predicts absurd volumes. Derivatives describe now; models of cause are needed for forecasts.
+
+Section one point four develops calculus with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section one point four, the SOC lead expects calculus claims to carry owners and dates.
+
+Section one point four treats rates in soc slopes as testable only when evidence and ticket IDs are recorded.
 
 ### Practice note — Units and dashboards
 
@@ -100,9 +120,19 @@ You will (1) represent intelligence relationships as a graph; (2) compute reacha
 
 An indicator set is a set; "event uses infrastructure" is a relation. Union, intersection and difference let engineers compare feeds; relations let them link events. STIX 2.1 expresses relations explicitly through relationship objects such as "indicates" or "uses".
 
+Section two point one develops discrete mathematics with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section two point one, the SOC lead expects discrete claims to carry owners and dates.
+
+Section two point one treats sets and relations graphs as testable only when evidence and ticket IDs are recorded.
+
 ### 2.2 Graphs and pivots
 
 Treat events, infrastructure, capabilities and victims as nodes and their links as edges. The Diamond Model of Caltagirone, Pendergast and Betz describes analytic pivoting along exactly these edges: from an event to its infrastructure, from infrastructure to other events. Breadth-first search counts hops, which is a natural limit on how far an analyst should trust a chain of inferences.
+
+Section two point two develops discrete mathematics with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section two point two, the SOC lead expects discrete claims to carry owners and dates.
 
 ### Lab 2 — pivot graph
 
@@ -144,9 +174,23 @@ event-7 reachable: False
 
 event-7 and its loader are not reachable from event-1. Two components mean no evidence in this graph links the activities. Claims that both belong to one campaign need new evidence, not wishful edges.
 
+Section two point three develops discrete mathematics with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section two point three, the SOC lead expects discrete claims to carry owners and dates.
+
+Section two point three treats sets and relations graphs as testable only when evidence and ticket IDs are recorded.
+
 ### 2.4 Hop limits
 
 Each hop adds uncertainty. Lantern caps automatic pivots at three hops and labels anything further as an analyst hypothesis.
+
+Section two point four develops discrete mathematics with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section two point four, the SOC lead expects discrete claims to carry owners and dates.
+
+Section two point four treats sets and relations graphs as testable only when evidence and ticket IDs are recorded.
+
+For section two point four, Brightwater Energy Networks will not accept discrete work without a written trail.
 
 ### Practice note — Edge weights
 
@@ -188,21 +232,51 @@ You will (1) relate signal propagation and bandwidth to collection latency; (2) 
 
 Light in fibre travels about 200,000 km per second, so a round trip between continents costs tens of milliseconds before any processing. A TAXII 2.1 poll across an ocean will never be instant; engineers set polling intervals and timeouts with that floor in mind.
 
+Section three point one develops physics for computing with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section three point one, the SOC lead expects physics claims to carry owners and dates.
+
+Section three point one treats latency has floor bandwidth as testable only when evidence and ticket IDs are recorded.
+
 ### 3.2 Bandwidth and bulk feeds
 
 A bulk feed of 2 GB each night over a 100 Mbit/s link takes roughly 160 seconds at full rate, ignoring overheads. If the link is shared with operational traffic for substations, scheduling transfers away from peak use is a physical, not merely administrative, decision.
+
+Section three point two develops physics for computing with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section three point two, the SOC lead expects physics claims to carry owners and dates.
+
+Section three point two treats latency has floor bandwidth as testable only when evidence and ticket IDs are recorded.
 
 ### 3.3 Storage growth
 
 Storing 50,000 STIX objects per day at about 2 KB each is roughly 100 MB per day, around 36 GB per year before indexes. Indexes and enrichment can triple that. Retention policies are therefore engineering inputs.
 
+Section three point three develops physics for computing with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section three point three, the SOC lead expects physics claims to carry owners and dates.
+
+Section three point three treats latency has floor bandwidth as testable only when evidence and ticket IDs are recorded.
+
 ### 3.4 Clocks
 
 Server clocks drift. If Lantern's collector and BEN's firewall disagree by two minutes, time-to-block measurements are wrong by two minutes. Network time synchronisation and recorded clock sources matter for evidence.
 
+Section three point four develops physics for computing with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section three point four, the SOC lead expects physics claims to carry owners and dates.
+
+Section three point four treats latency has floor bandwidth as testable only when evidence and ticket IDs are recorded.
+
 ### 3.5 Power and heat
 
 An on-premises Lantern cluster draws power and needs cooling. In an energy company that sounds trivial, but SOC rooms are not data centres; capacity planning includes the room.
+
+Section three point five develops physics for computing with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section three point five, the SOC lead expects physics claims to carry owners and dates.
+
+Section three point five treats latency has floor bandwidth as testable only when evidence and ticket IDs are recorded.
 
 ### Practice note — Latency budgets
 
@@ -244,21 +318,51 @@ You will (1) write small, pure functions that transform intelligence records; (2
 
 A parsed indicator is naturally a dictionary: `{"type": "domain", "value": "c2.example", "source": "partner-A", "tlp": "TLP:GREEN"}`. Functions that take one record and return a new one are easy to test and compose.
 
+Section four point one develops programming with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section four point one, the SOC lead expects programming claims to carry owners and dates.
+
+Section four point one treats records as dictionaries pure as testable only when evidence and ticket IDs are recorded.
+
 ### 4.2 Pure functions first
 
 A pure function has no side effects: given the same input it returns the same output and writes nothing. Normalising a domain to lower case is pure. Writing to the database is not. Keep the pure parts separate so most of the code can be tested without infrastructure.
+
+Section four point two develops programming with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section four point two, the SOC lead expects programming claims to carry owners and dates.
+
+Section four point two treats records as dictionaries pure as testable only when evidence and ticket IDs are recorded.
 
 ### 4.3 Defanged text
 
 Reports often "defang" indicators — `hxxp`, `[.]` — so that nobody clicks them. A parser must refang them only inside the platform, never in outputs that humans will paste into browsers. Lantern stores the normal form and renders the defanged form in reports.
 
+Section four point three develops programming with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section four point three, the SOC lead expects programming claims to carry owners and dates.
+
+Section four point three treats records as dictionaries pure as testable only when evidence and ticket IDs are recorded.
+
 ### 4.4 Tests
 
 For each function, write three known-answer cases: a normal value, an edge case, and malformed input. Malformed input should produce an explicit error or a rejected flag, never a guessed value.
 
+Section four point four develops programming with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section four point four, the SOC lead expects programming claims to carry owners and dates.
+
+Section four point four treats records as dictionaries pure as testable only when evidence and ticket IDs are recorded.
+
 ### 4.5 What not to program
 
 Students sometimes ask how to scrape a social platform for threat actors' personal details. Lantern's code collects only from sources whose terms permit it and only the fields needed. Automated collection that evades rate limits, logins or terms is out of scope.
+
+Section four point five develops programming with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section four point five, the SOC lead expects programming claims to carry owners and dates.
+
+Section four point five treats records as dictionaries pure as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -296,21 +400,51 @@ You will (1) write requirements, design notes and incident summaries in plain En
 
 Every document answers a reader's question. A requirement answers "what must the system do?" A design note answers "why this way?" An intelligence summary answers "what should I do now?" Start with the answer, then support it.
 
+Section five point one develops engineering communication with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section five point one, the SOC lead expects engineering claims to carry owners and dates.
+
+Section five point one treats writing for the reader's as testable only when evidence and ticket IDs are recorded.
+
 ### 5.2 Fact, assumption, judgment
 
 "Partner A's feed delivered 12,000 indicators yesterday" is a fact. "Partner A's feed is mostly current" is an assumption unless measured. "We should prioritise Partner A for automated blocking" is a judgment. ICD 203's tradecraft standards ask writers to distinguish information from assumptions and judgments; engineers benefit from the same discipline.
+
+Section five point two develops engineering communication with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section five point two, the SOC lead expects engineering claims to carry owners and dates.
 
 ### 5.3 TLP on documents
 
 A design note that contains partner names under an AMBER sharing agreement inherits that restriction. Put the TLP 2.0 label in the header and footer. Untagged documents tend to spread.
 
+Section five point three develops engineering communication with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section five point three, the SOC lead expects engineering claims to carry owners and dates.
+
+Section five point three treats writing for the reader's as testable only when evidence and ticket IDs are recorded.
+
 ### 5.4 Figures
 
 A single chart of time-to-block by source is clearer than a dashboard of twenty gauges. Label axes with units; state the period and the data source in the caption.
 
+Section five point four develops engineering communication with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section five point four, the SOC lead expects engineering claims to carry owners and dates.
+
+Section five point four treats writing for the reader's as testable only when evidence and ticket IDs are recorded.
+
 ### 5.5 Review
 
 Ask a reviewer to state your main point back in one sentence. If they cannot, rewrite.
+
+Section five point five develops engineering communication with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section five point five, the SOC lead expects engineering claims to carry owners and dates.
+
+Section five point five treats writing for the reader's as testable only when evidence and ticket IDs are recorded.
+
+For section five point five, Brightwater Energy Networks will not accept engineering work without a written trail.
 
 ### Practice note — Short forms
 
@@ -352,9 +486,21 @@ You will (1) model indicator confidence decay with an exponential function; (2) 
 
 Indicators lose value: adversaries rotate IP addresses quickly and domains more slowly, while behaviours described by ATT&CK techniques persist for months or years. Bianco's Pyramid of Pain captures this ordering. Lantern encodes it as a confidence score that decays over time unless re-observed.
 
+Section six point one develops calculus ii with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section six point one, the SOC lead expects calculus claims to carry owners and dates.
+
+Section six point one treats why decay the model as testable only when evidence and ticket IDs are recorded.
+
 ### 6.2 The model
 
 c(t) = c₀ · e^(−t·ln2/h), where h is the half-life in days. After one half-life confidence halves; after two it quarters. Solving c(t) = floor gives t = h · ln(c₀/floor) / ln 2.
+
+Section six point two develops calculus ii with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section six point two, the SOC lead expects calculus claims to carry owners and dates.
+
+Section six point two treats why decay the model as testable only when evidence and ticket IDs are recorded.
 
 ### Lab 1 — decay
 
@@ -383,13 +529,35 @@ falls below 30 after 22.2 days -> retire or re-validate
 
 Half-lives are engineering parameters fitted from re-observation data: how often does an IP indicator still appear malicious after a week? Lantern starts with 14 days for IPs, 45 for domains and none for file hashes (which do not change but may become irrelevant), then adjusts from evidence.
 
+Section six point three develops calculus ii with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section six point three, the SOC lead expects calculus claims to carry owners and dates.
+
+Section six point three treats why decay the model as testable only when evidence and ticket IDs are recorded.
+
 ### 6.4 Re-observation
 
 A sighting resets c to a new value. The model therefore describes staleness, not truth.
 
+Section six point four develops calculus ii with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section six point four, the SOC lead expects calculus claims to carry owners and dates.
+
+Section six point four treats why decay the model as testable only when evidence and ticket IDs are recorded.
+
+For section six point four, Brightwater Energy Networks will not accept calculus work without a written trail.
+
 ### 6.5 When the model misleads
 
 A dormant infrastructure reused after months will have decayed to near zero. Retired indicators should be archived, not deleted, so analysts can still match historical events.
+
+Section six point five develops calculus ii with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section six point five, the SOC lead expects calculus claims to carry owners and dates.
+
+Section six point five treats why decay the model as testable only when evidence and ticket IDs are recorded.
+
+For section six point five, Brightwater Energy Networks will not accept calculus work without a written trail.
 
 ### Practice note — Re-fitting half-lives
 
@@ -431,6 +599,12 @@ You will (1) compute precision from sensitivity, false-positive rate and prevale
 
 A rule that matches 95% of malicious connections and wrongly matches 2% of benign ones sounds excellent. But if only 1 in 100 connections is malicious, most alerts are false. If only 1 in 1,000 is malicious, almost all are.
 
+Section seven point one develops probability and statistics with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section seven point one, the SOC lead expects probability claims to carry owners and dates.
+
+Section seven point one treats the base-rate effect reading as testable only when evidence and ticket IDs are recorded.
+
 ### Lab 3 — base rate
 
 ```python
@@ -453,13 +627,33 @@ prevalence 0.001: TP=95 FP=1998 precision=0.045
 
 At prevalence 0.010, 950 true and 1,980 false positives give precision 0.324. At 0.001, precision falls to 0.045: about 21 false alerts for each true one. Engineering response: lower the false-positive rate, raise prevalence by applying the rule only where malicious traffic is likelier, or route matches to enrichment before analysts.
 
+Section seven point two develops probability and statistics with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section seven point two, the SOC lead expects probability claims to carry owners and dates.
+
+Section seven point two treats the base-rate effect reading as testable only when evidence and ticket IDs are recorded.
+
 ### 7.3 Calibrated words
 
 Analysts translate probabilities into words. Kent's essay on words of estimative probability showed readers interpret "probable" inconsistently; teams should publish a mapping. ICD 203 also asks that uncertainty be expressed properly.
 
+Section seven point three develops probability and statistics with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section seven point three, the SOC lead expects probability claims to carry owners and dates.
+
+Section seven point three treats the base-rate effect reading as testable only when evidence and ticket IDs are recorded.
+
 ### 7.4 Skewed data
 
 Time-to-block and enrichment latency are right-skewed. Medians and percentiles (p90, p99) describe them better than means.
+
+Section seven point four develops probability and statistics with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section seven point four, the SOC lead expects probability claims to carry owners and dates.
+
+Section seven point four treats the base-rate effect reading as testable only when evidence and ticket IDs are recorded.
+
+For section seven point four, Brightwater Energy Networks will not accept probability work without a written trail.
 
 ### Practice note — Recall and coverage
 
@@ -501,21 +695,53 @@ You will (1) relate CPU, memory and storage hierarchy to intelligence processing
 
 Registers and caches are fast and small; main memory larger and slower; solid-state storage slower again; network storage slowest. Lantern's hot set — indicators matched against live traffic — must fit in memory, or every match waits on disk.
 
+Section eight point one develops computer architecture with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section eight point one, the SOC lead expects computer claims to carry owners and dates.
+
+Section eight point one treats the hierarchy bound by as testable only when evidence and ticket IDs are recorded.
+
 ### 8.2 Bound by what
 
 Parsing JSON-formatted STIX objects is CPU-heavy. Joining indicators with sightings is memory-heavy. Loading archives is I/O-heavy. Profiling identifies the binding resource; buying the wrong hardware is common and expensive.
+
+Section eight point two develops computer architecture with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section eight point two, the SOC lead expects computer claims to carry owners and dates.
+
+Section eight point two treats the hierarchy bound by as testable only when evidence and ticket IDs are recorded.
 
 ### 8.3 Caching enrichment
 
 Enrichment — adding WHOIS-style registration data, passive DNS or internal asset context — often repeats lookups. A cache keyed by indicator with a time-to-live avoids repeated queries and respects third-party rate limits and terms. Cached data must expire, both for accuracy and because some providers' terms limit retention.
 
+Section eight point three develops computer architecture with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section eight point three, the SOC lead expects computer claims to carry owners and dates.
+
+Section eight point three treats the hierarchy bound by as testable only when evidence and ticket IDs are recorded.
+
 ### 8.4 Hardware roots of trust
 
 Collection servers that sign exported data rely on keys. A hardware security module or TPM keeps signing keys out of ordinary memory, improving the integrity of what Lantern shares.
 
+Section eight point four develops computer architecture with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section eight point four, the SOC lead expects computer claims to carry owners and dates.
+
+Section eight point four treats the hierarchy bound by as testable only when evidence and ticket IDs are recorded.
+
 ### 8.5 Memory sizing
 
 One million indicators averaging 200 bytes in an in-memory set need about 200 MB plus overhead; Python objects can triple that. Measure.
+
+Section eight point five develops computer architecture with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section eight point five, the SOC lead expects computer claims to carry owners and dates.
+
+Section eight point five treats the hierarchy bound by as testable only when evidence and ticket IDs are recorded.
+
+For section eight point five, Brightwater Energy Networks will not accept computer work without a written trail.
 
 ### Practice note — Profiling discipline
 
@@ -557,21 +783,51 @@ You will (1) structure a parser as a pipeline of stages; (2) handle errors witho
 
 Lantern's ingestion is a chain: fetch → decode → validate → normalise → deduplicate → store. Each stage takes records and yields records plus rejects. Generators in Python let large feeds stream without loading everything into memory.
 
+Section nine point one develops programming ii with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section nine point one, the SOC lead expects programming claims to carry owners and dates.
+
+Section nine point one treats pipelines errors as data as testable only when evidence and ticket IDs are recorded.
+
 ### 9.2 Errors as data
 
 A malformed object is not an exception to swallow; it is a reject record with a reason, the source and the original bytes' hash. Reject counts per source become a data-quality metric that partners can act on.
+
+Section nine point two develops programming ii with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section nine point two, the SOC lead expects programming claims to carry owners and dates.
+
+Section nine point two treats pipelines errors as data as testable only when evidence and ticket IDs are recorded.
 
 ### 9.3 Safe JSON
 
 `json.loads` parses data without executing code, unlike evaluating text. Limit input sizes to avoid memory exhaustion and validate types after parsing; JSON numbers, strings and nulls arrive in unexpected places.
 
+Section nine point three develops programming ii with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section nine point three, the SOC lead expects programming claims to carry owners and dates.
+
+Section nine point three treats pipelines errors as data as testable only when evidence and ticket IDs are recorded.
+
 ### 9.4 Properties
 
 Instead of only example tests, state properties: normalising twice equals normalising once (idempotence); output is always lower case; no output contains whitespace at either end. Generate many random inputs and check the properties hold.
 
+Section nine point four develops programming ii with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section nine point four, the SOC lead expects programming claims to carry owners and dates.
+
+Section nine point four treats pipelines errors as data as testable only when evidence and ticket IDs are recorded.
+
 ### 9.5 Versioning parsers
 
 When a partner changes its export format, a new parser version is deployed alongside the old one until the switch is verified. Each stored object records the parser version that produced it.
+
+Section nine point five develops programming ii with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section nine point five, the SOC lead expects programming claims to carry owners and dates.
+
+Section nine point five treats pipelines errors as data as testable only when evidence and ticket IDs are recorded.
 
 ### Practice note — Backpressure
 
@@ -613,21 +869,51 @@ You will (1) apply engineering-ethics duties to intelligence systems; (2) identi
 
 Engineers owe duties to the public, the employer and the profession. In CTI that means protecting people whose data passes through the platform, honouring sharing agreements and refusing work that would facilitate harm.
 
+Section ten point one develops engineering ethics and safety with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section ten point one, the SOC lead expects engineering claims to carry owners and dates.
+
+Section ten point one treats duties osint limits safe as testable only when evidence and ticket IDs are recorded.
+
 ### 10.2 OSINT limits
 
 Public does not mean unrestricted. Platform terms of service may forbid automated collection; data-protection law such as the EU GDPR applies to identifiable people even in public posts; aggregating harmless facts can create a profile that endangers someone. Lantern's OSINT module therefore collects organisational data — domains, certificates, published advisories — not personal social profiles.
+
+Section ten point two develops engineering ethics and safety with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section ten point two, the SOC lead expects engineering claims to carry owners and dates.
 
 ### 10.3 Safe failure in an energy company
 
 If Lantern pushes a bad block list to firewalls protecting substation telemetry, it could cut operational visibility. Safety design: operational-technology segments receive blocks only after human approval, and a malformed list causes the push to stop, not to clear the firewall.
 
+Section ten point three develops engineering ethics and safety with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section ten point three, the SOC lead expects engineering claims to carry owners and dates.
+
+Section ten point three treats duties osint limits safe as testable only when evidence and ticket IDs are recorded.
+
 ### 10.4 Escalation
 
 If a manager asks Kofi to scrape employee social accounts "to find insiders", he declines, documents the request and escalates to the privacy officer. Ethical refusal is part of engineering competence.
 
+Section ten point four develops engineering ethics and safety with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section ten point four, the SOC lead expects engineering claims to carry owners and dates.
+
+Section ten point four treats duties osint limits safe as testable only when evidence and ticket IDs are recorded.
+
 ### 10.5 Dual use
 
 Tooling that maps an adversary's infrastructure could also map a journalist's. Access controls, purpose limits and audit logs reduce misuse.
+
+Section ten point five develops engineering ethics and safety with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section ten point five, the SOC lead expects engineering claims to carry owners and dates.
+
+Section ten point five treats duties osint limits safe as testable only when evidence and ticket IDs are recorded.
+
+For section ten point five, Brightwater Energy Networks will not accept engineering work without a written trail.
 
 ### Practice note — Professional codes
 
@@ -669,21 +955,55 @@ You will (1) explain HTTPS as the transport for TAXII 2.1; (2) read DNS records 
 
 TAXII 2.1 is a RESTful API over HTTPS. Clients discover API roots, list collections and get or add objects with pagination. Mutual authentication and TLS protect the channel; the TAXII specification defines the endpoints and media types, not the trust relationships, which come from agreements.
 
+Section eleven point one develops networks and protocols with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section eleven point one, the SOC lead expects networks claims to carry owners and dates.
+
+Section eleven point one treats taxii over https dns as testable only when evidence and ticket IDs are recorded.
+
 ### 11.2 DNS in intelligence
 
 A domain indicator resolves through DNS to addresses that may change hourly. A records, CNAMEs and name servers each tell a different story. Passive DNS — historical resolution data from licensed providers — shows how infrastructure moved.
+
+Section eleven point two develops networks and protocols with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section eleven point two, the SOC lead expects networks claims to carry owners and dates.
+
+Section eleven point two treats taxii over https dns as testable only when evidence and ticket IDs are recorded.
 
 ### 11.3 NAT and shared hosting
 
 Many devices can sit behind one public address; many websites can share one hosting address. Blocking such an address can cause collateral damage, and associating everything behind it with an adversary is a classic analytic mistake.
 
+Section eleven point three develops networks and protocols with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section eleven point three, the SOC lead expects networks claims to carry owners and dates.
+
+Section eleven point three treats taxii over https dns as testable only when evidence and ticket IDs are recorded.
+
 ### 11.4 Rate limits and politeness
 
 Collection from partner TAXII servers follows their published limits. Back off on HTTP 429 responses; never rotate identities to evade limits.
 
+Section eleven point four develops networks and protocols with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section eleven point four, the SOC lead expects networks claims to carry owners and dates.
+
+Section eleven point four treats taxii over https dns as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point four, Brightwater Energy Networks will not accept networks work without a written trail.
+
 ### 11.5 Ports and protocols in ATT&CK
 
 ATT&CK technique T1071 Application Layer Protocol describes adversaries communicating over common protocols to blend in. Network indicators alone therefore miss much command-and-control; behavioural analytics complement them.
+
+Section eleven point five develops networks and protocols with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section eleven point five, the SOC lead expects networks claims to carry owners and dates.
+
+Section eleven point five treats taxii over https dns as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point five, Brightwater Energy Networks will not accept networks work without a written trail.
 
 ### Practice note — Pagination and completeness
 
@@ -725,21 +1045,55 @@ You will (1) run intelligence services under least-privilege accounts; (2) use O
 
 Lantern's collector runs as a dedicated account with permission only to its working directory and outbound HTTPS to partner servers. It cannot read the firewall configuration it eventually influences; a separate, audited service does that.
 
+Section twelve point one develops operating systems with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twelve point one, the SOC lead expects operating claims to carry owners and dates.
+
+Section twelve point one treats service accounts logs as as testable only when evidence and ticket IDs are recorded.
+
 ### 12.2 Logs as platform evidence
 
 Authentication logs, process starts and file modifications show what the platform itself did. When a partner asks whether a TLP:RED report was accessed, the OS and application logs answer.
+
+Section twelve point two develops operating systems with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twelve point two, the SOC lead expects operating claims to carry owners and dates.
+
+Section twelve point two treats service accounts logs as as testable only when evidence and ticket IDs are recorded.
 
 ### 12.3 Isolating parsers
 
 Partner files are untrusted input. Parsers run in a container or sandbox with no network access beyond what they need, read-only file systems where possible, and memory limits. A bug in a parser then cannot become a foothold in the SOC.
 
+Section twelve point three develops operating systems with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twelve point three, the SOC lead expects operating claims to carry owners and dates.
+
+Section twelve point three treats service accounts logs as as testable only when evidence and ticket IDs are recorded.
+
 ### 12.4 Patching
 
 Platforms facing the internet need prompt patching. A maintenance window, a tested image and a rollback snapshot let BEN patch weekly without long outages.
 
+Section twelve point four develops operating systems with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twelve point four, the SOC lead expects operating claims to carry owners and dates.
+
+Section twelve point four treats service accounts logs as as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point four, Brightwater Energy Networks will not accept operating work without a written trail.
+
 ### 12.5 Time and scheduling
 
 Cron or systemd timers schedule polls and decay recalculations. Record timers in configuration management so changes are reviewed.
+
+Section twelve point five develops operating systems with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twelve point five, the SOC lead expects operating claims to carry owners and dates.
+
+Section twelve point five treats service accounts logs as as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point five, Brightwater Energy Networks will not accept operating work without a written trail.
 
 ### Practice note — Host baselines
 
@@ -781,6 +1135,14 @@ You will (1) normalise and de-duplicate indicators before storage; (2) choose ke
 
 The same domain can arrive as `C2.Example.`, `c2.example` or defanged text. Without normalisation the store fills with duplicates and match counts lie.
 
+Section thirteen point one develops data systems with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirteen point one, the SOC lead expects data claims to carry owners and dates.
+
+Section thirteen point one treats normalisation reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point one, Brightwater Energy Networks will not accept data work without a written trail.
+
 ### Lab 4 — normalise and de-duplicate
 
 ```python
@@ -814,17 +1176,47 @@ raw=7 unique=4
 
 Seven raw strings collapse to four unique values. The trailing dot, capitals, defanging and surrounding spaces were all noise. Normalisation rules must be documented, versioned and idempotent.
 
+Section thirteen point two develops data systems with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirteen point two, the SOC lead expects data claims to carry owners and dates.
+
+Section thirteen point two treats normalisation reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point two, Brightwater Energy Networks will not accept data work without a written trail.
+
 ### 13.3 Keys and indexes
 
 STIX 2.1 objects carry an `id` of the form `type--UUID`. Lantern keys objects by that id and indexes normalised indicator values for fast matching. Sightings are keyed by indicator id and time.
+
+Section thirteen point three develops data systems with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirteen point three, the SOC lead expects data claims to carry owners and dates.
+
+Section thirteen point three treats normalisation reading the result as testable only when evidence and ticket IDs are recorded.
 
 ### 13.4 Provenance
 
 Each object records its source, TLP label, collection time and parser version. Duplicate indicators from two sources are stored once with both provenance entries, so analysts see corroboration.
 
+Section thirteen point four develops data systems with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirteen point four, the SOC lead expects data claims to carry owners and dates.
+
+Section thirteen point four treats normalisation reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point four, Brightwater Energy Networks will not accept data work without a written trail.
+
 ### 13.5 Retention
 
 Retention follows agreements and law. Deletion must reach backups within a stated period; "deleted from the UI" is not deletion.
+
+Section thirteen point five develops data systems with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirteen point five, the SOC lead expects data claims to carry owners and dates.
+
+Section thirteen point five treats normalisation reading the result as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point five, Brightwater Energy Networks will not accept data work without a written trail.
 
 ### Practice note — Query patterns
 
@@ -866,21 +1258,55 @@ You will (1) apply version control, code review and continuous integration to a 
 
 Every change to Lantern goes through a branch, an automated test run and a second engineer's review. Parser changes need a reviewer who understands the partner format.
 
+Section fourteen point one develops software engineering with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section fourteen point one, the SOC lead expects software claims to carry owners and dates.
+
+Section fourteen point one treats version control and review as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point one, Brightwater Energy Networks will not accept software work without a written trail.
+
 ### 14.2 Continuous integration
 
 CI runs unit tests, property tests and a replay of a synthetic feed through the whole pipeline, comparing outputs with a known-good snapshot. A difference fails the build until explained.
+
+Section fourteen point two develops software engineering with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section fourteen point two, the SOC lead expects software claims to carry owners and dates.
+
+Section fourteen point two treats version control and review as testable only when evidence and ticket IDs are recorded.
 
 ### 14.3 Dependencies
 
 Third-party libraries can carry vulnerabilities or be compromised. Pin versions, review updates, and prefer the standard library for small tasks. ATT&CK T1195 Supply Chain Compromise reminds defenders that their own tooling is a target.
 
+Section fourteen point three develops software engineering with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section fourteen point three, the SOC lead expects software claims to carry owners and dates.
+
+Section fourteen point three treats version control and review as testable only when evidence and ticket IDs are recorded.
+
 ### 14.4 Traceability
 
 Each change cites the requirement or defect it addresses. When an auditor asks why the TLP gate allows AMBER to "org", the history links to the requirement and the TLP 2.0 definition.
 
+Section fourteen point four develops software engineering with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section fourteen point four, the SOC lead expects software claims to carry owners and dates.
+
+Section fourteen point four treats version control and review as testable only when evidence and ticket IDs are recorded.
+
 ### 14.5 Configuration
 
 Partner endpoints, credentials references and thresholds live in configuration, not code. Secrets live in a vault; configuration stores only references.
+
+Section fourteen point five develops software engineering with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section fourteen point five, the SOC lead expects software claims to carry owners and dates.
+
+Section fourteen point five treats version control and review as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point five, Brightwater Energy Networks will not accept software work without a written trail.
 
 ### Practice note — Release notes
 
@@ -922,21 +1348,51 @@ You will (1) apply confidentiality, integrity and availability to intelligence d
 
 Confidentiality: TLP:RED reports must reach only named recipients. Integrity: a tampered indicator could block a legitimate supplier or, worse, a safety system's update server. Availability: when a campaign starts, analysts need the platform most.
 
+Section fifteen point one develops security fundamentals with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section fifteen point one, the SOC lead expects security claims to carry owners and dates.
+
+Section fifteen point one treats cia for intelligence threat as testable only when evidence and ticket IDs are recorded.
+
 ### 15.2 Threat, vulnerability, risk
 
 A threat is a potential cause of harm (an adversary or an accident). A vulnerability is a weakness that could be used. Risk combines likelihood and impact. CTI informs the threat side: which adversaries, which techniques, which targets.
+
+Section fifteen point two develops security fundamentals with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section fifteen point two, the SOC lead expects security claims to carry owners and dates.
+
+Section fifteen point two treats cia for intelligence threat as testable only when evidence and ticket IDs are recorded.
 
 ### 15.3 CTI in CSF 2.0
 
 NIST CSF 2.0 organises outcomes as Govern, Identify, Protect, Detect, Respond and Recover. Threat intelligence feeds Identify (risk assessment), Detect (rules) and Respond (context), and sharing agreements are a Govern matter.
 
+Section fifteen point three develops security fundamentals with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section fifteen point three, the SOC lead expects security claims to carry owners and dates.
+
+Section fifteen point three treats cia for intelligence threat as testable only when evidence and ticket IDs are recorded.
+
 ### 15.4 The platform as target
 
 An adversary who poisons Lantern could make BEN block its own suppliers or ignore real threats. Integrity controls — signed feeds where available, source reputation, anomaly checks on volume — protect against poisoning.
 
+Section fifteen point four develops security fundamentals with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section fifteen point four, the SOC lead expects security claims to carry owners and dates.
+
+Section fifteen point four treats cia for intelligence threat as testable only when evidence and ticket IDs are recorded.
+
 ### 15.5 Kill chain as defensive map
 
 Hutchins et al. argued that defenders can act at every phase. Lantern's outputs map to phases: domain blocks to delivery and command and control, behavioural analytics to installation and actions on objectives.
+
+Section fifteen point five develops security fundamentals with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section fifteen point five, the SOC lead expects security claims to carry owners and dates.
+
+Section fifteen point five treats cia for intelligence threat as testable only when evidence and ticket IDs are recorded.
 
 ### Practice note — Accountability
 
@@ -978,21 +1434,57 @@ You will (1) define a system boundary and its stakeholders; (2) write a concept 
 
 Lantern's boundary includes collectors, store, enrichment, analyst interface and dissemination. Outside it: partner servers, BEN's firewalls and SIEM, the sector ISAC. Stakeholders include SOC analysts, OT engineers, the privacy officer, partners and executives.
 
+Section sixteen point one develops systems engineering with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section sixteen point one, the SOC lead expects systems claims to carry owners and dates.
+
+Section sixteen point one treats boundary and stakeholders concept as testable only when evidence and ticket IDs are recorded.
+
 ### 16.2 Concept of operations
 
 A ConOps describes, in operators' words, how the system is used: "At 07:00 the duty analyst reviews overnight high-confidence indicators; automatic blocks apply to IT segments only; OT blocks await approval." It is the reference for requirements.
+
+Section sixteen point two develops systems engineering with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section sixteen point two, the SOC lead expects systems claims to carry owners and dates.
+
+Section sixteen point two treats boundary and stakeholders concept as testable only when evidence and ticket IDs are recorded.
 
 ### 16.3 Interface control
 
 Each interface — TAXII 2.1 with partners, the SIEM API, the firewall push — has an interface control document: data formats, rates, authentication, error handling and owners on both sides.
 
+Section sixteen point three develops systems engineering with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section sixteen point three, the SOC lead expects systems claims to carry owners and dates.
+
+Section sixteen point three treats boundary and stakeholders concept as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point three, Brightwater Energy Networks will not accept systems work without a written trail.
+
 ### 16.4 Life cycle
 
 Concept, requirements, design, build, verification, validation, operation and retirement. Retirement matters in CTI: decommissioning a feed means telling the partner, deleting retained restricted data and removing credentials.
 
+Section sixteen point four develops systems engineering with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section sixteen point four, the SOC lead expects systems claims to carry owners and dates.
+
+Section sixteen point four treats boundary and stakeholders concept as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point four, Brightwater Energy Networks will not accept systems work without a written trail.
+
 ### 16.5 Trade studies
 
 Build versus buy, on-premises versus cloud, open-source versus commercial threat-intelligence platforms: trade studies weigh cost, control, integration and risk with explicit criteria.
+
+Section sixteen point five develops systems engineering with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section sixteen point five, the SOC lead expects systems claims to carry owners and dates.
+
+Section sixteen point five treats boundary and stakeholders concept as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point five, Brightwater Energy Networks will not accept systems work without a written trail.
 
 ### Practice note — Stakeholder map
 
@@ -1034,21 +1526,53 @@ You will (1) model the intelligence cycle as a feedback loop; (2) identify senso
 
 A thermostat measures temperature, compares it with a set point, and acts. Lantern measures false-positive rates of blocks, compares them with a target, and adjusts confidence thresholds. Without measurement the loop is open and drifts.
 
+Section seventeen point one develops control and feedback basics with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section seventeen point one, the SOC lead expects control claims to carry owners and dates.
+
+Section seventeen point one treats loops parts of the as testable only when evidence and ticket IDs are recorded.
+
 ### 17.2 Parts of the loop
 
 Sensor: SOC tickets marking blocks as false positives. Controller: the rule that raises or lowers the threshold. Actuator: the block list pushed to firewalls. Disturbance: a partner suddenly publishing low-quality indicators.
+
+Section seventeen point two develops control and feedback basics with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section seventeen point two, the SOC lead expects control claims to carry owners and dates.
+
+Section seventeen point two treats loops parts of the as testable only when evidence and ticket IDs are recorded.
 
 ### 17.3 Lag and oscillation
 
 If the threshold changes daily based on yesterday's complaints, it can overshoot: too strict one day, too loose the next. Damping — small steps, averaging over a week — stabilises the loop.
 
+Section seventeen point three develops control and feedback basics with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section seventeen point three, the SOC lead expects control claims to carry owners and dates.
+
+Section seventeen point three treats loops parts of the as testable only when evidence and ticket IDs are recorded.
+
 ### 17.4 Feedback to producers
 
 NIST SP 800-150 encourages two-way sharing relationships. Telling partners which of their indicators caused false positives improves the whole community's loop, provided it respects TLP and agreements.
 
+Section seventeen point four develops control and feedback basics with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section seventeen point four, the SOC lead expects control claims to carry owners and dates.
+
+Section seventeen point four treats loops parts of the as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point four, Brightwater Energy Networks will not accept control work without a written trail.
+
 ### 17.5 Human in the loop
 
 Automated control is fine for IT perimeter blocks with low impact; for OT segments, a human approves each change, which deliberately slows the loop where mistakes are costly.
+
+Section seventeen point five develops control and feedback basics with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section seventeen point five, the SOC lead expects control claims to carry owners and dates.
+
+Section seventeen point five treats loops parts of the as testable only when evidence and ticket IDs are recorded.
 
 ### Practice note — Set points from policy
 
@@ -1090,21 +1614,55 @@ You will (1) place Lantern in BEN's zones and conduits; (2) design trust boundar
 
 BEN separates corporate IT, the SOC zone, a DMZ for external exchanges and OT zones for substations. Lantern's collectors live in the DMZ; its store and analyst interface in the SOC zone; nothing of Lantern runs in OT.
 
+Section eighteen point one develops security architecture with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section eighteen point one, the SOC lead expects security claims to carry owners and dates.
+
+Section eighteen point one treats zones conduits depth enforcement as testable only when evidence and ticket IDs are recorded.
+
 ### 18.2 Conduits
 
 Data flows from DMZ collectors to the SOC store through one inspected conduit. Block lists flow from the SOC to IT firewalls automatically and to OT firewalls through an approval service. Each conduit has an owner and a rule set.
+
+Section eighteen point two develops security architecture with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section eighteen point two, the SOC lead expects security claims to carry owners and dates.
+
+Section eighteen point two treats zones conduits depth enforcement as testable only when evidence and ticket IDs are recorded.
 
 ### 18.3 Depth
 
 Network segmentation, mutual TLS between components, signed internal messages, role-based access for analysts and audit logging provide independent layers. Compromise of a collector should not yield the store.
 
+Section eighteen point three develops security architecture with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section eighteen point three, the SOC lead expects security claims to carry owners and dates.
+
+Section eighteen point three treats zones conduits depth enforcement as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point three, Brightwater Energy Networks will not accept security work without a written trail.
+
 ### 18.4 Enforcement points
 
 Indicators can be enforced at DNS resolvers, web proxies, firewalls and endpoint agents. Each has different collateral risk: DNS blocks a name precisely; a firewall block on a shared address affects many sites.
 
+Section eighteen point four develops security architecture with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section eighteen point four, the SOC lead expects security claims to carry owners and dates.
+
+Section eighteen point four treats zones conduits depth enforcement as testable only when evidence and ticket IDs are recorded.
+
 ### 18.5 Analyst workstations
 
 Analysts open suspicious reports and samples. Their workstations need isolation from production systems and a separate browsing environment for OSINT research to avoid exposing BEN's identity.
+
+Section eighteen point five develops security architecture with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section eighteen point five, the SOC lead expects security claims to carry owners and dates.
+
+Section eighteen point five treats zones conduits depth enforcement as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point five, Brightwater Energy Networks will not accept security work without a written trail.
 
 ### Practice note — Architecture verification
 
@@ -1146,21 +1704,55 @@ You will (1) authenticate partners and analysts with appropriate strength; (2) u
 
 TAXII 2.1 servers authenticate clients, typically with HTTP authentication over TLS or client certificates. Mutual TLS lets both sides prove identity. Credentials are per-partner so that one can be revoked without affecting others.
 
+Section nineteen point one develops identity and cryptography with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section nineteen point one, the SOC lead expects identity claims to carry owners and dates.
+
+Section nineteen point one treats partner identity signatures key as testable only when evidence and ticket IDs are recorded.
+
 ### 19.2 Signatures
 
 A signature over an exported bundle lets the recipient verify that it came from Lantern and was not altered. Hash first (SHA-256), sign the hash with a private key kept in hardware, publish the public key through a trusted channel.
+
+Section nineteen point two develops identity and cryptography with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section nineteen point two, the SOC lead expects identity claims to carry owners and dates.
+
+Section nineteen point two treats partner identity signatures key as testable only when evidence and ticket IDs are recorded.
 
 ### 19.3 Key life cycle
 
 Generate, distribute, use, rotate, revoke, destroy. Certificates expire; expired certificates on a TAXII client stop collection at the worst moment. Calendar and monitor them.
 
+Section nineteen point three develops identity and cryptography with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section nineteen point three, the SOC lead expects identity claims to carry owners and dates.
+
+Section nineteen point three treats partner identity signatures key as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point three, Brightwater Energy Networks will not accept identity work without a written trail.
+
 ### 19.4 Analyst access
 
 Roles map to TLP: all analysts read CLEAR and GREEN; the SOC team reads AMBER; AMBER+STRICT content is limited to BEN only; RED reports go to named individuals listed on each report. Access decisions are logged.
 
+Section nineteen point four develops identity and cryptography with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section nineteen point four, the SOC lead expects identity claims to carry owners and dates.
+
+Section nineteen point four treats partner identity signatures key as testable only when evidence and ticket IDs are recorded.
+
 ### 19.5 Multi-factor
 
 Analyst access to Lantern requires MFA. ATT&CK T1078 Valid Accounts describes adversaries using legitimate credentials; MFA raises the cost.
+
+Section nineteen point five develops identity and cryptography with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section nineteen point five, the SOC lead expects identity claims to carry owners and dates.
+
+Section nineteen point five treats partner identity signatures key as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point five, Brightwater Energy Networks will not accept identity work without a written trail.
 
 ### Practice note — Break-glass access
 
@@ -1202,21 +1794,49 @@ You will (1) describe the CTI life cycle as an engineered service; (2) distingui
 
 Data are raw observations: a domain in a feed. Information is organised data: the domain was seen in phishing against utilities. Intelligence is analysed information relevant to a decision: BEN should block the domain at DNS and hunt for past contacts because the campaign targets distribution operators.
 
+Section twenty point one develops threat intelligence and osint engineering with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty point one, the SOC lead expects threat claims to carry owners and dates.
+
 ### 20.2 Consumers and decisions
 
 Consumers include SOC analysts (block, hunt, escalate), OT engineers (approve changes), risk managers (prioritise investment), executives (accept risk) and partners (their own decisions). Each needs different formats and timeliness.
+
+Section twenty point two develops threat intelligence and osint engineering with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty point two, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty point two treats data information intelligence consumers as testable only when evidence and ticket IDs are recorded.
 
 ### 20.3 The service view
 
 Lantern is a service with inputs (feeds, OSINT, internal telemetry), processing (validation, enrichment, analysis) and outputs (blocks, reports, shared objects). Service levels apply: for example, high-confidence indicators reach IT enforcement within 30 minutes.
 
+Section twenty point three develops threat intelligence and osint engineering with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty point three, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty point three treats data information intelligence consumers as testable only when evidence and ticket IDs are recorded.
+
 ### 20.4 Mission statement
 
 "Lantern turns shared and open-source threat information into timely, trustworthy, legally collected intelligence that helps BEN prevent and detect attacks on its IT and OT environments." Every later requirement should trace to it.
 
+Section twenty point four develops threat intelligence and osint engineering with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty point four, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty point four treats data information intelligence consumers as testable only when evidence and ticket IDs are recorded.
+
 ### 20.5 Frameworks as context
 
 The Diamond Model, the kill chain, ATT&CK, STIX/TAXII and TLP give a common language with partners. Engineering adopts them where they help interoperability and analysis, not as decoration.
+
+Section twenty point five develops threat intelligence and osint engineering with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty point five, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty point five treats data information intelligence consumers as testable only when evidence and ticket IDs are recorded.
 
 ### Practice note — Feedback from consumers
 
@@ -1258,21 +1878,55 @@ You will (1) collect priority intelligence requirements (PIRs) from stakeholders
 
 Priority intelligence requirements are questions decision-makers need answered: "Which adversaries target electricity distributors in our region?" "Are our OT vendors being targeted?" They direct collection and analysis and should be reviewed each quarter.
 
+Section twenty-one point one develops threat intelligence and osint requirements with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-one point one, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-one point one treats pirs from pir to as testable only when evidence and ticket IDs are recorded.
+
 ### 21.2 From PIR to system requirement
 
 A PIR about OT vendors implies requirements: ingest vendor advisories; tag objects with vendor names; alert when a campaign mentions a tagged vendor. Each is a "shall" statement with a verification method.
+
+Section twenty-one point two develops threat intelligence and osint requirements with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-one point two, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-one point two treats pirs from pir to as testable only when evidence and ticket IDs are recorded.
 
 ### 21.3 Verifiable wording
 
 "The system shall be fast" cannot be verified. "Lantern shall deliver indicators with confidence ≥ 70 to IT DNS enforcement within 30 minutes of ingestion for 95% of indicators per month" can.
 
+Section twenty-one point three develops threat intelligence and osint requirements with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-one point three, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-one point three treats pirs from pir to as testable only when evidence and ticket IDs are recorded.
+
 ### 21.4 Non-functional requirements
 
 Confidentiality (TLP enforcement), integrity (signature verification where offered), availability (99.5% monthly), privacy (no personal social-media collection), retention and auditability are requirements too, not afterthoughts.
 
+Section twenty-one point four develops threat intelligence and osint requirements with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-one point four, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-one point four treats pirs from pir to as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point four, Brightwater Energy Networks will not accept threat work without a written trail.
+
 ### 21.5 Traceability matrix
 
 A table links PIRs → requirements → design elements → tests. When a PIR is retired, its requirements can be reviewed for removal.
+
+Section twenty-one point five develops threat intelligence and osint requirements with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-one point five, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-one point five treats pirs from pir to as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point five, Brightwater Energy Networks will not accept threat work without a written trail.
 
 ### Practice note — Requirement reviews
 
@@ -1314,21 +1968,51 @@ You will (1) model Lantern's data with STIX 2.1 objects and relationships; (2) c
 
 STIX 2.1 defines domain objects (indicator, malware, threat-actor, campaign, attack-pattern, report and others), cyber-observable objects (domain-name, ipv4-addr, file), and relationship and sighting objects. Every domain object needs `type`, `spec_version`, `id`, `created` and `modified`; indicators also need `pattern`, `pattern_type` and `valid_from`.
 
+Section twenty-two point one develops threat intelligence and osint system with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-two point one, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-two point one treats stix core choosing subset as testable only when evidence and ticket IDs are recorded.
+
 ### 22.2 Choosing a subset
 
 Lantern supports indicator, attack-pattern (linked to ATT&CK IDs via external references), campaign, threat-actor, malware, report, relationship and sighting. Unsupported types are stored opaquely and flagged for review rather than dropped.
+
+Section twenty-two point two develops threat intelligence and osint system with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-two point two, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-two point two treats stix core choosing subset as testable only when evidence and ticket IDs are recorded.
 
 ### 22.3 Confidence and markings
 
 STIX offers a `confidence` property (0–100) and marking definitions, including TLP markings. Lantern maps its internal decayed confidence to that property on export and attaches TLP 2.0 markings to every shared object.
 
+Section twenty-two point three develops threat intelligence and osint system with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-two point three, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-two point three treats stix core choosing subset as testable only when evidence and ticket IDs are recorded.
+
 ### 22.4 Validation
 
 Before storing, the validator checks required properties and identifier format. The masters-level lab in this course family checks the same rules; Lantern enforces them in the pipeline and counts failures per source.
 
+Section twenty-two point four develops threat intelligence and osint system with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-two point four, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-two point four treats stix core choosing subset as testable only when evidence and ticket IDs are recorded.
+
 ### 22.5 System model
 
 Beyond data: components (collector, validator, store, enricher, analyst UI, publisher), their interfaces and states. A state machine for an indicator — new, active, decayed, retired — makes behaviour explicit.
+
+Section twenty-two point five develops threat intelligence and osint system with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-two point five, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-two point five treats stix core choosing subset as testable only when evidence and ticket IDs are recorded.
 
 ### Practice note — Mapping external references
 
@@ -1370,21 +2054,53 @@ You will (1) threat-model the CTI platform itself; (2) perform a failure modes a
 
 Feed poisoning, credential theft (T1078 Valid Accounts), supply-chain compromise of a dependency (T1195), exfiltration of restricted reports, and denial of service by oversized feeds. Each threat maps to a control.
 
+Section twenty-three point one develops threat intelligence and osint threat with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-three point one, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-three point one treats threats to lantern fmea as testable only when evidence and ticket IDs are recorded.
+
 ### 23.2 FMEA
 
 For each component, list failure modes, effects and causes. Score severity (S), occurrence (O) and detection difficulty (D) on 1–10; the risk priority number RPN = S × O × D ranks attention.
+
+Section twenty-three point two develops threat intelligence and osint threat with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-three point two, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-three point two treats threats to lantern fmea as testable only when evidence and ticket IDs are recorded.
 
 ### 23.3 Example rows
 
 Collector stops silently: S6, O4, D7 → RPN 168. Bad block pushed to IT: S8, O3, D4 → 96. TLP:RED report mis-shared: S9, O2, D6 → 108. The silent collector stop ranks highest because nobody would notice for days.
 
+Section twenty-three point three develops threat intelligence and osint threat with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-three point three, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-three point three treats threats to lantern fmea as testable only when evidence and ticket IDs are recorded.
+
 ### 23.4 Acting on rankings
 
 High detection scores call for monitoring: a heartbeat alert if no objects arrive from a partner for six hours. High severity calls for prevention and approval gates.
 
+Section twenty-three point four develops threat intelligence and osint threat with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-three point four, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-three point four treats threats to lantern fmea as testable only when evidence and ticket IDs are recorded.
+
 ### 23.5 Accidents
 
 Not every failure is malicious. A partner's mistaken mass upload or a clock error can cause harm. Failure analysis covers both.
+
+Section twenty-three point five develops threat intelligence and osint threat with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-three point five, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-three point five treats threats to lantern fmea as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point five, Brightwater Energy Networks will not accept threat work without a written trail.
 
 ### Practice note — Abuse cases
 
@@ -1426,21 +2142,53 @@ You will (1) apply the Diamond Model to structure an incident's intelligence; (2
 
 For each event, record adversary (if known), capability (malware, technique), infrastructure (domains, addresses) and victim (asset, organisation). Unknown vertices stay "unknown"; filling them by guess is the classic error.
 
+Section twenty-four point one develops threat intelligence and osint methods with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-four point one, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-four point one treats diamond structuring att ck as testable only when evidence and ticket IDs are recorded.
+
 ### 24.2 ATT&CK mapping
 
 Behaviours map to technique IDs: phishing email → T1566; scripting on the host → T1059 Command and Scripting Interpreter; web-protocol C2 → T1071. Mapping supports detection engineering and comparison with group profiles.
+
+Section twenty-four point two develops threat intelligence and osint methods with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-four point two, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-four point two treats diamond structuring att ck as testable only when evidence and ticket IDs are recorded.
 
 ### 24.3 Kill-chain controls
 
 Hutchins et al. proposed a courses-of-action matrix: detect, deny, disrupt, degrade, deceive and destroy across phases. Lantern produces inputs for several cells — deny at delivery via mail filtering, detect at C2 via DNS analytics.
 
+Section twenty-four point three develops threat intelligence and osint methods with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-four point three, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-four point three treats diamond structuring att ck as testable only when evidence and ticket IDs are recorded.
+
 ### 24.4 Sources and confidence
 
 Each analytic statement cites its sources and confidence. Admiralty-style source grading or a simple scale (confirmed, probable, possible) helps readers.
 
+Section twenty-four point four develops threat intelligence and osint methods with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-four point four, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-four point four treats diamond structuring att ck as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point four, Brightwater Energy Networks will not accept threat work without a written trail.
+
 ### 24.5 OSINT within limits
 
 Methods include certificate-transparency lookups for related domains and reading public advisories. Researchers do not interact with adversary infrastructure or register accounts on criminal forums for this course.
+
+Section twenty-four point five develops threat intelligence and osint methods with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-four point five, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-four point five treats diamond structuring att ck as testable only when evidence and ticket IDs are recorded.
 
 ### Practice note — Analytic notes
 
@@ -1482,21 +2230,59 @@ You will (1) produce a first end-to-end design for Lantern's ingestion path; (2)
 
 Design the path from partner TAXII 2.1 collections to an analyst-ready store: polling, validation, normalisation, de-duplication, provenance, TLP enforcement and monitoring. Constraints: standard-library prototypes, synthetic data, BEN's zone model.
 
+Section twenty-five point one develops design studio with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-five point one, the SOC lead expects design claims to carry owners and dates.
+
+Section twenty-five point one treats studio brief adrs panel as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point one, Brightwater Energy Networks will not accept design work without a written trail.
+
 ### 25.2 ADRs
 
 An architecture decision record states context, decision, alternatives and consequences in one page. "Poll every 15 minutes rather than subscribe to push" — context: TAXII 2.1 is pull-based for collections; consequences: up to 15 minutes latency.
+
+Section twenty-five point two develops design studio with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-five point two, the SOC lead expects design claims to carry owners and dates.
+
+Section twenty-five point two treats studio brief adrs panel as testable only when evidence and ticket IDs are recorded.
 
 ### 25.3 Panel review
 
 The panel includes an analyst, an OT engineer and a privacy officer. Each asks from their role: Is it timely? Is OT protected? Is personal data minimised?
 
+Section twenty-five point three develops design studio with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-five point three, the SOC lead expects design claims to carry owners and dates.
+
+Section twenty-five point three treats studio brief adrs panel as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point three, Brightwater Energy Networks will not accept design work without a written trail.
+
 ### 25.4 Iterating
 
 Critique becomes backlog items. Designs improve when students change them in response, not when they defend every choice.
 
+Section twenty-five point four develops design studio with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-five point four, the SOC lead expects design claims to carry owners and dates.
+
+Section twenty-five point four treats studio brief adrs panel as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point four, Brightwater Energy Networks will not accept design work without a written trail.
+
 ### 25.5 Deliverables
 
 A diagram, five ADRs, an interface list, a monitoring plan and a demonstration of the pipeline on synthetic data.
+
+Section twenty-five point five develops design studio with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-five point five, the SOC lead expects design claims to carry owners and dates.
+
+Section twenty-five point five treats studio brief adrs panel as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point five, Brightwater Energy Networks will not accept design work without a written trail.
 
 ### Practice note — Demonstration discipline
 
@@ -1538,21 +2324,53 @@ You will (1) compare build, buy and community-platform options for CTI; (2) run 
 
 Option A: extend Lantern in-house. Option B: buy a commercial threat-intelligence platform. Option C: adopt an open-source community platform such as MISP and integrate it with BEN's controls. Each can ingest feeds and share with partners; they differ in cost, control, staffing and support.
 
+Section twenty-six point one develops threat intelligence and osint architecture with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-six point one, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-six point one treats three options criteria and as testable only when evidence and ticket IDs are recorded.
+
 ### 26.2 Criteria and weights
 
 Kofi agrees criteria with stakeholders before scoring: interoperability (STIX/TAXII 2.1), TLP enforcement, OT approval workflow, total cost over five years, staffing burden, data residency, and exit cost. Weights sum to 100. Agreeing weights first prevents the favourite option from shaping the criteria.
+
+Section twenty-six point two develops threat intelligence and osint architecture with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-six point two, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-six point two treats three options criteria and as testable only when evidence and ticket IDs are recorded.
 
 ### 26.3 Portability
 
 If a platform cannot export everything as standard STIX 2.1 bundles, leaving it later means losing history. Exit cost is a real criterion, not a footnote.
 
+Section twenty-six point three develops threat intelligence and osint architecture with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-six point three, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-six point three treats three options criteria and as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point three, Brightwater Energy Networks will not accept threat work without a written trail.
+
 ### 26.4 Hybrid answers
 
 Trade studies often end in hybrids: a community platform for partner sharing plus a thin in-house service for OT approvals and firewall pushes. Hybrids add integration work, which must be scored too.
 
+Section twenty-six point four develops threat intelligence and osint architecture with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-six point four, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-six point four treats three options criteria and as testable only when evidence and ticket IDs are recorded.
+
 ### 26.5 Review dates
 
 Markets and staffing change. The decision record sets a review date — for example in two years — and the triggers that would force an earlier review, such as loss of the only engineer who knows the in-house code.
+
+Section twenty-six point five develops threat intelligence and osint architecture with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-six point five, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-six point five treats three options criteria and as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -1590,6 +2408,10 @@ You will (1) implement TLP 2.0 as an enforceable dissemination control; (2) fail
 
 FIRST TLP 2.0 defines who may receive information: CLEAR without restriction; GREEN within the community; AMBER within the recipient organisation and its clients on a need-to-know basis; AMBER+STRICT within the organisation only; RED to named recipients only. Lantern turns those definitions into a gate on every export and every analyst view.
 
+Section twenty-seven point one develops threat intelligence and osint control with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-seven point one, the SOC lead expects threat claims to carry owners and dates.
+
 ### Lab 5 — dissemination gate
 
 ```python
@@ -1625,17 +2447,43 @@ R-5 TLP:PURPLE -> team BLOCK unknown label
 
 GREEN to the public is blocked; AMBER to the organisation is allowed; RED to a team is blocked because only named recipients qualify; CLEAR to the public is allowed; an unknown label, TLP:PURPLE, is blocked. The lab simplifies audiences into categories; production rules also check recipient identity.
 
+Section twenty-seven point two develops threat intelligence and osint control with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-seven point two, the SOC lead expects threat claims to carry owners and dates.
+
 ### 27.3 Fail closed
 
 Unknown or missing labels must block, not allow. A typo in a label should never publish restricted content.
+
+Section twenty-seven point three develops threat intelligence and osint control with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-seven point three, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-seven point three treats tlp as control reading as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point three, Brightwater Energy Networks will not accept threat work without a written trail.
 
 ### 27.4 Approval gates
 
 Pushes to OT firewalls, sharing beyond the community and deleting indicators are high-impact. Each requires a named approver, and the approval is recorded with the object version.
 
+Section twenty-seven point four develops threat intelligence and osint control with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-seven point four, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-seven point four treats tlp as control reading as testable only when evidence and ticket IDs are recorded.
+
 ### 27.5 Audit
 
 Every allow and block decision is logged with requester, label, audience and time. Auditors and partners can then verify that agreements were honoured.
+
+Section twenty-seven point five develops threat intelligence and osint control with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-seven point five, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-seven point five treats tlp as control reading as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point five, Brightwater Energy Networks will not accept threat work without a written trail.
 
 ### Training the humans
 
@@ -1677,21 +2525,57 @@ You will (1) implement a TAXII 2.1 client stage against a synthetic server stub;
 
 The client discovers the API root, lists permitted collections, and requests objects added after the last saved checkpoint. It follows pagination until complete and stores the new checkpoint only after the batch is safely written, so a crash causes a re-fetch rather than a gap.
 
+Section twenty-eight point one develops threat intelligence and osint implementation with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-eight point one, the SOC lead expects threat claims to carry owners and dates.
+
 ### 28.2 Validation and normalisation
 
 Validation enforces STIX required properties and identifier format. Normalisation applies the documented rules from Chapter 13. Both stages emit rejects with reasons.
+
+Section twenty-eight point two develops threat intelligence and osint implementation with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-eight point two, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-eight point two treats client stage validation and as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point two, Brightwater Energy Networks will not accept threat work without a written trail.
 
 ### 28.3 Queues
 
 Bounded queues connect stages. If enrichment slows, validation fills its output queue and waits; the client pauses. This protects memory and makes slowness visible.
 
+Section twenty-eight point three develops threat intelligence and osint implementation with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-eight point three, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-eight point three treats client stage validation and as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point three, Brightwater Energy Networks will not accept threat work without a written trail.
+
 ### 28.4 Metrics from day one
 
 Objects received, accepted, rejected per source; queue depths; checkpoint age; poll duration. Metrics are cheap to add early and expensive to retrofit.
 
+Section twenty-eight point four develops threat intelligence and osint implementation with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-eight point four, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-eight point four treats client stage validation and as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point four, Brightwater Energy Networks will not accept threat work without a written trail.
+
 ### 28.5 Synthetic server stub
 
 Development uses a local stub that serves synthetic STIX bundles in TAXII 2.1 form. No development traffic touches partner servers, protecting partners and keeping tests reproducible.
+
+Section twenty-eight point five develops threat intelligence and osint implementation with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-eight point five, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-eight point five treats client stage validation and as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point five, Brightwater Energy Networks will not accept threat work without a written trail.
 
 ### Configuration of partners
 
@@ -1733,6 +2617,12 @@ You will (1) measure feed quality with precision, recall and F1 against a labell
 
 To measure a feed, compare it with ground truth: indicators confirmed malicious in BEN's incidents or in trusted partner investigations, plus confirmed benign values. Labels come from completed investigations, not from the feed itself, to avoid circularity.
 
+Section twenty-nine point one develops threat intelligence and osint measurement with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-nine point one, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-nine point one treats labelled sets reading the as testable only when evidence and ticket IDs are recorded.
+
 ### Lab 6 — feed evaluation
 
 ```python
@@ -1756,17 +2646,41 @@ precision=0.50 recall=0.60 F1=0.55
 
 Three of the feed's six entries are confirmed malicious (precision 0.50); it found three of five known malicious values (recall 0.60); F1 is 0.55. Half the feed would be noise if blocked directly.
 
+Section twenty-nine point two develops threat intelligence and osint measurement with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-nine point two, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-nine point two treats labelled sets reading the as testable only when evidence and ticket IDs are recorded.
+
 ### 29.3 Timeliness and uniqueness
 
 A feed that lists indicators a week after BEN saw them is of little operational value. Measure median lead time relative to first internal sighting. Uniqueness — indicators no other source provides — shows marginal value.
+
+Section twenty-nine point three develops threat intelligence and osint measurement with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-nine point three, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-nine point three treats labelled sets reading the as testable only when evidence and ticket IDs are recorded.
 
 ### 29.4 Limits
 
 Ground truth is incomplete: unknown malicious values count as false positives when they are merely unconfirmed. Report the evaluation period, set size and labelling method with every number.
 
+Section twenty-nine point four develops threat intelligence and osint measurement with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-nine point four, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-nine point four treats labelled sets reading the as testable only when evidence and ticket IDs are recorded.
+
 ### 29.5 Using results
 
 Metrics feed source weights in Lantern's confidence model and inform renewal decisions for paid feeds. They are shared with partners in aggregate when agreements allow, supporting the reciprocity NIST SP 800-150 describes.
+
+Section twenty-nine point five develops threat intelligence and osint measurement with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section twenty-nine point five, the SOC lead expects threat claims to carry owners and dates.
+
+Section twenty-nine point five treats labelled sets reading the as testable only when evidence and ticket IDs are recorded.
 
 ### Sampling for labels
 
@@ -1808,21 +2722,57 @@ You will (1) write verification procedures that trace to requirements; (2) execu
 
 Verification checks that Lantern meets its written requirements. Validation, in Chapter 38, checks that it meets stakeholders' real needs. A platform can pass verification and still fail validation if the requirements were wrong.
 
+Section thirty point one develops verification laboratory with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty point one, the SOC lead expects verification claims to carry owners and dates.
+
+Section thirty point one treats verification versus validation procedures as testable only when evidence and ticket IDs are recorded.
+
 ### 30.2 Procedures
 
 Each procedure names the requirement, preconditions, steps, expected result and pass criteria. "Load bundle S-07 containing 1,000 indicators of which 12 lack valid_from; expect 988 stored, 12 rejected with reason; pass if counts match exactly."
+
+Section thirty point two develops verification laboratory with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty point two, the SOC lead expects verification claims to carry owners and dates.
+
+Section thirty point two treats verification versus validation procedures as testable only when evidence and ticket IDs are recorded.
 
 ### 30.3 Coverage
 
 The traceability matrix shows which requirements have procedures. Uncovered requirements are listed explicitly; an untested requirement is an open risk, not a silent pass.
 
+Section thirty point three develops verification laboratory with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty point three, the SOC lead expects verification claims to carry owners and dates.
+
+Section thirty point three treats verification versus validation procedures as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point three, Brightwater Energy Networks will not accept verification work without a written trail.
+
 ### 30.4 Deviations
 
 When a result differs, record a deviation with severity and owner. Do not edit the expected result to match the output without a requirement change.
 
+Section thirty point four develops verification laboratory with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty point four, the SOC lead expects verification claims to carry owners and dates.
+
+Section thirty point four treats verification versus validation procedures as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point four, Brightwater Energy Networks will not accept verification work without a written trail.
+
 ### 30.5 Evidence
 
 Logs, metric snapshots and output hashes are stored with the procedure run. A reviewer can rerun the same procedure with the same synthetic data and compare hashes.
+
+Section thirty point five develops verification laboratory with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty point five, the SOC lead expects verification claims to carry owners and dates.
+
+Section thirty point five treats verification versus validation procedures as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point five, Brightwater Energy Networks will not accept verification work without a written trail.
 
 ### Regression suite
 
@@ -1864,21 +2814,49 @@ You will (1) implement enrichment with caching and provider-terms compliance; (2
 
 Enrichment adds context: internal asset ownership for an address, passive DNS history for a domain, ATT&CK technique links for a malware family. External enrichment providers have terms on query volume, retention and redistribution. Lantern's enricher records which provider supplied each field so that redistribution rules can be enforced at export.
 
+Section thirty-one point one develops threat intelligence and osint implementation with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-one point one, the SOC lead expects threat claims to carry owners and dates.
+
 ### 31.2 Sightings
 
 When BEN's DNS resolver or proxy sees an indicator, Lantern records a STIX 2.1 sighting object referencing the indicator, with first and last seen times and a count. Sightings raise confidence and give partners valuable feedback when shared under agreement.
+
+Section thirty-one point two develops threat intelligence and osint implementation with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-one point two, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-one point two treats enrichment sightings confidence on as testable only when evidence and ticket IDs are recorded.
 
 ### 31.3 Confidence on read
 
 Rather than rewriting every record nightly, Lantern stores c₀ and the last-sighting time and computes decayed confidence when queried. This avoids mass updates and keeps the model change in one function.
 
+Section thirty-one point three develops threat intelligence and osint implementation with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-one point three, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-one point three treats enrichment sightings confidence on as testable only when evidence and ticket IDs are recorded.
+
 ### 31.4 Publishing
 
 Analysts approve objects for sharing with a TLP marking. The publisher strips enrichment fields whose provider forbids redistribution, signs the bundle and adds it to the community TAXII collection.
 
+Section thirty-one point four develops threat intelligence and osint implementation with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-one point four, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-one point four treats enrichment sightings confidence on as testable only when evidence and ticket IDs are recorded.
+
 ### 31.5 Personal data in telemetry
 
 Sightings come from systems that know which employee's machine made a request. Lantern stores the asset identifier, not the person, and shares only aggregate counts outward.
+
+Section thirty-one point five develops threat intelligence and osint implementation with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-one point five, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-one point five treats enrichment sightings confidence on as testable only when evidence and ticket IDs are recorded.
 
 ### Practice note — rollout
 
@@ -1920,6 +2898,12 @@ You will (1) compute availability of serial pipelines; (2) quantify the effect o
 
 A request that must pass through every stage succeeds only if all stages are up, so availabilities multiply. Four stages that each look good can combine into something mediocre.
 
+Section thirty-two point one develops threat intelligence and osint reliability with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-two point one, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-two point one treats serial availability reading the as testable only when evidence and ticket IDs are recorded.
+
 ### Lab 7 — availability
 
 ```python
@@ -1945,17 +2929,43 @@ with redundant enrich: 0.9926 (~65 h/yr down)
 
 The serial pipeline reaches 0.9732, roughly 235 hours of downtime a year — dominated by enrichment at 0.98. Duplicating enrichment (two independent instances, either can serve) lifts the pipeline to 0.9926, about 65 hours a year. Investing in the weakest stage gives the largest gain.
 
+Section thirty-two point two develops threat intelligence and osint reliability with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-two point two, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-two point two treats serial availability reading the as testable only when evidence and ticket IDs are recorded.
+
 ### 32.3 Independence assumption
 
 The redundancy formula assumes failures are independent. Two enrichment workers on the same host, or calling the same external provider, fail together. Real redundancy needs diverse hosts and, where possible, alternate providers.
+
+Section thirty-two point three develops threat intelligence and osint reliability with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-two point three, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-two point three treats serial availability reading the as testable only when evidence and ticket IDs are recorded.
 
 ### 32.4 SLOs and error budgets
 
 An SLO such as "99.5% of polls succeed each month" defines an error budget of 0.5%. When the budget is spent, feature work pauses and reliability work takes priority.
 
+Section thirty-two point four develops threat intelligence and osint reliability with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-two point four, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-two point four treats serial availability reading the as testable only when evidence and ticket IDs are recorded.
+
 ### 32.5 Graceful degradation
 
 If enrichment fails, Lantern should still store and match indicators, marking them "unenriched", rather than stopping ingestion. Degraded service beats no service in a SOC.
+
+Section thirty-two point five develops threat intelligence and osint reliability with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-two point five, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-two point five treats serial availability reading the as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point five, Brightwater Energy Networks will not accept threat work without a written trail.
 
 ### Measuring what users feel
 
@@ -1997,21 +3007,53 @@ You will (1) analyse how CTI outputs could harm operational technology; (2) desi
 
 An over-broad block on an OT firewall could cut a SCADA master from remote terminal units, removing visibility of the grid. A mistaken "malicious" tag on a vendor update server could block a safety-relevant patch. In critical infrastructure, false positives have physical consequences.
 
+Section thirty-three point one develops threat intelligence and osint safety with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-three point one, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-three point one treats how intelligence can hurt as testable only when evidence and ticket IDs are recorded.
+
 ### 33.2 Interlocks
 
 Lantern applies interlocks: no automatic action on OT segments; an allow-list of protected operational addresses that no block may include; a maximum change size per push; and two-person approval for any OT rule. These mirror safety engineering's idea that one failure should not cause harm.
+
+Section thirty-three point two develops threat intelligence and osint safety with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-three point two, the SOC lead expects threat claims to carry owners and dates.
 
 ### 33.3 Resilience to source loss
 
 If a key partner stops sharing, detection should degrade gracefully. Diverse sources, internal telemetry analytics and behaviour-based detections mapped to ATT&CK reduce dependence on any single feed.
 
+Section thirty-three point three develops threat intelligence and osint safety with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-three point three, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-three point three treats how intelligence can hurt as testable only when evidence and ticket IDs are recorded.
+
 ### 33.4 Rollback
 
 Every push records the previous rule set. A tested one-command rollback restores it within minutes. Rollback drills run quarterly in the test environment.
 
+Section thirty-three point four develops threat intelligence and osint safety with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-three point four, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-three point four treats how intelligence can hurt as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point four, Brightwater Energy Networks will not accept threat work without a written trail.
+
 ### 33.5 Coordinating with operations
 
 OT engineers own operational decisions. Lantern provides advice and evidence; it does not override operations.
+
+Section thirty-three point five develops threat intelligence and osint safety with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-three point five, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-three point five treats how intelligence can hurt as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point five, Brightwater Energy Networks will not accept threat work without a written trail.
 
 ### Practice note — safety cases
 
@@ -2057,21 +3099,53 @@ You will (1) integrate Lantern with SIEM, DNS, proxy and ticketing systems; (2) 
 
 SIEM: indicators become correlation lookups; sightings flow back. DNS resolver: domain blocks and response-policy zones. Web proxy: URL categories. Ticketing: high-confidence matches open tickets with Diamond and ATT&CK context.
 
+Section thirty-four point one develops threat intelligence and osint integration with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-four point one, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-four point one treats integration targets idempotence mapping as testable only when evidence and ticket IDs are recorded.
+
 ### 34.2 Idempotence
 
 Re-sending the same block list must not duplicate rules. Integrations compare desired state with current state and apply differences only. That also makes rollback a matter of re-applying the previous desired state.
+
+Section thirty-four point two develops threat intelligence and osint integration with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-four point two, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-four point two treats integration targets idempotence mapping as testable only when evidence and ticket IDs are recorded.
 
 ### 34.3 Mapping formats
 
 STIX patterns such as `[domain-name:value = 'c2.example']` translate into each product's rule syntax. Unsupported pattern features are rejected with a reason rather than approximated.
 
+Section thirty-four point three develops threat intelligence and osint integration with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-four point three, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-four point three treats integration targets idempotence mapping as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point three, Brightwater Energy Networks will not accept threat work without a written trail.
+
 ### 34.4 Context in tickets
 
 A ticket that says "match on drop.example" is weak. A ticket that adds source, confidence, TLP, related ATT&CK techniques and recommended actions lets analysts act quickly.
 
+Section thirty-four point four develops threat intelligence and osint integration with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-four point four, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-four point four treats integration targets idempotence mapping as testable only when evidence and ticket IDs are recorded.
+
 ### 34.5 End-to-end tests
 
 A synthetic indicator is injected at the collector; the test checks that it appears in the DNS policy, triggers a SIEM lookup on a synthetic query, and opens a ticket — then removes it and checks cleanup.
+
+Section thirty-four point five develops threat intelligence and osint integration with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-four point five, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-four point five treats integration targets idempotence mapping as testable only when evidence and ticket IDs are recorded.
 
 ### Practice note — owners
 
@@ -2117,21 +3191,57 @@ You will (1) design Lantern's analysis and dissemination layer; (2) produce prod
 
 Design how analysts turn stored objects into products: a daily tactical digest, a weekly operational summary and a quarterly strategic brief for executives, each with TLP controls, ICD 203-style judgment language and feedback capture.
 
+Section thirty-five point one develops design studio ii with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-five point one, the SOC lead expects design claims to carry owners and dates.
+
+Section thirty-five point one treats brief templates adversarial review as testable only when evidence and ticket IDs are recorded.
+
 ### 35.2 Templates
 
 Tactical digest: top indicators by confidence, actions taken, sightings. Operational summary: active campaigns with Diamond structure and ATT&CK techniques. Strategic brief: adversary trends relevant to electricity distribution, key judgments with estimative words and a published probability scale.
+
+Section thirty-five point two develops design studio ii with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-five point two, the SOC lead expects design claims to carry owners and dates.
+
+Section thirty-five point two treats brief templates adversarial review as testable only when evidence and ticket IDs are recorded.
 
 ### 35.3 Adversarial review
 
 A reviewer plays a sceptical executive: "Why should I trust this?" The design answers with source descriptions, confidence, and a track record of past judgments.
 
+Section thirty-five point three develops design studio ii with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-five point three, the SOC lead expects design claims to carry owners and dates.
+
+Section thirty-five point three treats brief templates adversarial review as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point three, Brightwater Energy Networks will not accept design work without a written trail.
+
 ### 35.4 Effort and risk
 
 The team estimates effort per component and lists risks: analyst time to write strategic briefs, partner consent to quote, executive attention.
 
+Section thirty-five point four develops design studio ii with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-five point four, the SOC lead expects design claims to carry owners and dates.
+
+Section thirty-five point four treats brief templates adversarial review as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point four, Brightwater Energy Networks will not accept design work without a written trail.
+
 ### 35.5 Accessibility
 
 Products are readable on mobile, avoid colour-only coding (TLP labels are written in text, as TLP 2.0 recommends) and include alt text for figures.
+
+Section thirty-five point five develops design studio ii with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-five point five, the SOC lead expects design claims to carry owners and dates.
+
+Section thirty-five point five treats brief templates adversarial review as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point five, Brightwater Energy Networks will not accept design work without a written trail.
 
 ### Practice note — fewer, better products
 
@@ -2177,6 +3287,12 @@ You will (1) detect unstable queues where arrival exceeds service; (2) apply Lit
 
 If 120 objects per minute arrive at enrichment and only 100 per minute are served, the backlog grows by 20 each minute without limit. No amount of waiting fixes this; capacity or demand must change.
 
+Section thirty-six point one develops threat intelligence and osint performance with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-six point one, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-six point one treats unstable queues little's law as testable only when evidence and ticket IDs are recorded.
+
 ### Lab 8 — queue growth
 
 ```python
@@ -2205,17 +3321,41 @@ Little's law wait W=L/lambda=240 s at L=400, lambda=1.67/s
 
 For a stable system, the average number in the system L equals throughput λ times average time in system W. With 400 items queued and 1.67 items per second served, average wait is about 240 seconds. The law needs no assumptions about arrival patterns, which makes it a robust check on dashboards.
 
+Section thirty-six point two develops threat intelligence and osint performance with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-six point two, the SOC lead expects threat claims to carry owners and dates.
+
 ### 36.3 Options
 
 Scale up (faster hardware), scale out (more workers), or shed load (skip low-value enrichment, sample low-confidence indicators). Shedding by value is often cheapest: enrich high-confidence indicators first.
+
+Section thirty-six point three develops threat intelligence and osint performance with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-six point three, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-six point three treats unstable queues little's law as testable only when evidence and ticket IDs are recorded.
 
 ### 36.4 Protecting partners
 
 Scaling out collectors must not multiply load on partner TAXII servers. Lantern keeps one polling identity per partner and shares results internally, respecting partner rate limits.
 
+Section thirty-six point four develops threat intelligence and osint performance with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-six point four, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-six point four treats unstable queues little's law as testable only when evidence and ticket IDs are recorded.
+
 ### 36.5 Testing at scale
 
 Load tests use synthetic bundles generated to realistic sizes, run against the TAXII stub and internal components only.
+
+Section thirty-six point five develops threat intelligence and osint performance with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-six point five, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-six point five treats unstable queues little's law as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point five, Brightwater Energy Networks will not accept threat work without a written trail.
 
 ### Practice note — priority queues
 
@@ -2261,21 +3401,53 @@ You will (1) write runbooks for routine and abnormal Lantern operations; (2) def
 
 Routine: daily review of collector health, reject spikes and certificate expiry. Abnormal: partner feed stops; poisoned indicators detected; enrichment provider outage; TLP breach suspected. Each runbook lists symptoms, checks, actions, escalation and closure steps.
 
+Section thirty-seven point one develops threat intelligence and osint operations with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-seven point one, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-seven point one treats runbooks on-call retractions suspected as testable only when evidence and ticket IDs are recorded.
+
 ### 37.2 On-call
 
 One engineer is on call per week with a documented handover. Pages fire only for conditions needing action within an hour; everything else goes to a daily queue. Alert fatigue is a reliability risk.
+
+Section thirty-seven point two develops threat intelligence and osint operations with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-seven point two, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-seven point two treats runbooks on-call retractions suspected as testable only when evidence and ticket IDs are recorded.
 
 ### 37.3 Retractions
 
 Partners sometimes retract indicators published in error. Lantern must remove them from enforcement promptly, record the retraction and inform downstream recipients who received them. STIX 2.1 supports revocation through the `revoked` property on a new object version.
 
+Section thirty-seven point three develops threat intelligence and osint operations with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-seven point three, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-seven point three treats runbooks on-call retractions suspected as testable only when evidence and ticket IDs are recorded.
+
 ### 37.4 Suspected TLP breach
 
 If restricted content appears where it should not, the runbook says: contain (remove access), assess what was exposed, notify the originator as the agreement requires, and review the gate. Honesty with partners protects the relationship that NIST SP 800-150 describes as the basis of sharing.
 
+Section thirty-seven point four develops threat intelligence and osint operations with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-seven point four, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-seven point four treats runbooks on-call retractions suspected as testable only when evidence and ticket IDs are recorded.
+
 ### 37.5 Reporting
 
 Monthly: availability against SLO, objects processed, reject rates, time-to-enforcement percentiles, false-positive tickets, partner feedback sent and received.
+
+Section thirty-seven point five develops threat intelligence and osint operations with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-seven point five, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-seven point five treats runbooks on-call retractions suspected as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point five, Brightwater Energy Networks will not accept threat work without a written trail.
 
 ### Practice note — blameless reviews
 
@@ -2321,21 +3493,51 @@ You will (1) validate Lantern against stakeholders' real needs; (2) design accep
 
 Does the SOC block threats sooner? Do OT engineers get vendor warnings they act on? Do executives understand strategic briefs? These questions concern outcomes; system metrics alone cannot answer them.
 
+Section thirty-eight point one develops threat intelligence and osint validation with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-eight point one, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-eight point one treats validation questions acceptance scenarios as testable only when evidence and ticket IDs are recorded.
+
 ### 38.2 Acceptance scenarios
 
 With operators, Kofi writes scenarios: "A partner shares a phishing campaign against utilities at 09:00; by 09:30 domain blocks are active, a ticket with ATT&CK context exists and the duty analyst has hunted for prior contacts." Scenarios run on synthetic data in a staging environment that mirrors production.
+
+Section thirty-eight point two develops threat intelligence and osint validation with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-eight point two, the SOC lead expects threat claims to carry owners and dates.
 
 ### 38.3 Decision impact
 
 Measure before and after Lantern: median time from external publication to enforcement; percentage of incidents where intelligence context was available at triage; executive decisions that referenced a strategic brief. Some measures are rough; report them with their limits.
 
+Section thirty-eight point three develops threat intelligence and osint validation with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-eight point three, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-eight point three treats validation questions acceptance scenarios as testable only when evidence and ticket IDs are recorded.
+
 ### 38.4 When requirements were wrong
 
 Validation may show that a verified requirement serves no one — for example, a daily digest nobody reads. That is a valuable finding: change the requirement, not the measurement.
 
+Section thirty-eight point four develops threat intelligence and osint validation with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-eight point four, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-eight point four treats validation questions acceptance scenarios as testable only when evidence and ticket IDs are recorded.
+
 ### 38.5 Independent observers
 
 Someone outside the build team observes scenario runs and interviews users, reducing the temptation to declare success.
+
+Section thirty-eight point five develops threat intelligence and osint validation with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-eight point five, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-eight point five treats validation questions acceptance scenarios as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point five, Brightwater Energy Networks will not accept threat work without a written trail.
 
 ### Practice note — negative results
 
@@ -2381,21 +3583,51 @@ You will (1) measure and reduce maintenance burden; (2) document Lantern for suc
 
 Track hours spent on partner format changes, dependency updates, incident fixes and analyst requests. If maintenance consumes most of the team's time, new features should wait.
 
+Section thirty-nine point one develops threat intelligence and osint maintainability with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-nine point one, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-nine point one treats maintenance burden documentation for as testable only when evidence and ticket IDs are recorded.
+
 ### 39.2 Documentation for successors
 
 Architecture overview, ADRs, runbooks, partner configuration guide, data dictionary and a "first week" guide. Kofi tests documentation by asking a new engineer to add a synthetic partner using only the docs.
+
+Section thirty-nine point two develops threat intelligence and osint maintainability with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-nine point two, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-nine point two treats maintenance burden documentation for as testable only when evidence and ticket IDs are recorded.
 
 ### 39.3 Technical debt register
 
 Each shortcut is recorded with its cost, risk and a target date: "Proxy integration uses polling instead of the vendor's push API; risk low; revisit Q3". Debt hidden in code comments is forgotten.
 
+Section thirty-nine point three develops threat intelligence and osint maintainability with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-nine point three, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-nine point three treats maintenance burden documentation for as testable only when evidence and ticket IDs are recorded.
+
 ### 39.4 Standards evolution
 
 ATT&CK publishes new versions periodically, renaming or deprecating techniques. Lantern stores the ATT&CK version alongside each mapping and runs a migration report when a new version appears. STIX and TAXII versions are tracked similarly; supporting 2.1 does not guarantee compatibility with a future version.
 
+Section thirty-nine point four develops threat intelligence and osint maintainability with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-nine point four, the SOC lead expects threat claims to carry owners and dates.
+
 ### 39.5 Simplicity
 
 The simplest design that meets requirements is easiest to maintain. Remove unused features found during validation.
+
+Section thirty-nine point five develops threat intelligence and osint maintainability with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section thirty-nine point five, the SOC lead expects threat claims to carry owners and dates.
+
+Section thirty-nine point five treats maintenance burden documentation for as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point five, Brightwater Energy Networks will not accept threat work without a written trail.
 
 ### Practice note — bus factor
 
@@ -2441,21 +3673,55 @@ You will (1) verify non-functional requirements — performance, availability, s
 
 Performance: inject synthetic bundles at 150% of peak rate and verify time-to-enforcement percentiles. Availability: kill one enrichment instance and verify continued service. Security: attempt restricted exports with test accounts lacking permission.
 
+Section forty point one develops verification laboratory ii with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty point one, the SOC lead expects verification claims to carry owners and dates.
+
+Section forty point one treats non-functional verification fault injection as testable only when evidence and ticket IDs are recorded.
+
 ### 40.2 Fault injection
 
 Faults are injected in staging: partner stub returns errors, clock skew is introduced, storage fills up. Each test states the expected degraded behaviour and verifies it. Fault injection never targets production or partner systems.
+
+Section forty point two develops verification laboratory ii with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty point two, the SOC lead expects verification claims to carry owners and dates.
+
+Section forty point two treats non-functional verification fault injection as testable only when evidence and ticket IDs are recorded.
 
 ### 40.3 Negative tests for controls
 
 Try to export a RED report to a non-named recipient; try to push an OT rule without approval; try to store a personal social-media profile via the OSINT module. Every attempt must fail and be logged.
 
+Section forty point three develops verification laboratory ii with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty point three, the SOC lead expects verification claims to carry owners and dates.
+
+Section forty point three treats non-functional verification fault injection as testable only when evidence and ticket IDs are recorded.
+
 ### 40.4 Verification report
 
 Summary of procedures executed, passes, failures, deviations, blocked items, open defects with severity and owners, and residual risks. The report goes to the design review in Chapter 45.
 
+Section forty point four develops verification laboratory ii with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty point four, the SOC lead expects verification claims to carry owners and dates.
+
+Section forty point four treats non-functional verification fault injection as testable only when evidence and ticket IDs are recorded.
+
+For section forty point four, Brightwater Energy Networks will not accept verification work without a written trail.
+
 ### 40.5 Re-verification
 
 After fixes, failed procedures rerun, and the regression suite runs in full.
+
+Section forty point five develops verification laboratory ii with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty point five, the SOC lead expects verification claims to carry owners and dates.
+
+Section forty point five treats non-functional verification fault injection as testable only when evidence and ticket IDs are recorded.
+
+For section forty point five, Brightwater Energy Networks will not accept verification work without a written trail.
 
 ### Practice note — evidence packaging
 
@@ -2501,21 +3767,51 @@ You will (1) optimise Lantern for the outcome that matters — timely, accurate 
 
 The target outcome is fewer successful attacks reaching BEN, approximated by time-to-enforcement for high-confidence indicators and the share of incidents with intelligence context at triage. Optimising "objects ingested per day" can make outcomes worse by flooding analysts.
 
+Section forty-one point one develops threat intelligence and osint system with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-one point one, the SOC lead expects threat claims to carry owners and dates.
+
+Section forty-one point one treats outcome first binding constraint as testable only when evidence and ticket IDs are recorded.
+
 ### 41.2 Binding constraint
 
 Often the slowest step is human: analyst approval for sharing, OT engineer review. Faster machines do not help if approvals wait overnight. Optimisation may mean better prioritisation of approval queues rather than new hardware.
+
+Section forty-one point two develops threat intelligence and osint system with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-one point two, the SOC lead expects threat claims to carry owners and dates.
+
+Section forty-one point two treats outcome first binding constraint as testable only when evidence and ticket IDs are recorded.
 
 ### 41.3 Candidate optimisations
 
 Pre-filter low-value indicators before enrichment; prioritise approval queues by confidence and asset criticality; batch firewall pushes on a fixed cadence; reduce duplicate sources whose uniqueness measured near zero.
 
+Section forty-one point three develops threat intelligence and osint system with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-one point three, the SOC lead expects threat claims to carry owners and dates.
+
+Section forty-one point three treats outcome first binding constraint as testable only when evidence and ticket IDs are recorded.
+
 ### 41.4 Measuring the effect
 
 Each change has a hypothesis, a metric and a comparison window. If the metric does not move, the change is reverted to avoid complexity without benefit.
 
+Section forty-one point four develops threat intelligence and osint system with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-one point four, the SOC lead expects threat claims to carry owners and dates.
+
+Section forty-one point four treats outcome first binding constraint as testable only when evidence and ticket IDs are recorded.
+
 ### 41.5 Goodhart's warning
 
 When a measure becomes a target, people game it. If analysts are judged on approvals per hour, they may approve poorly. Keep quality checks beside speed metrics.
+
+Section forty-one point five develops threat intelligence and osint system with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-one point five, the SOC lead expects threat claims to carry owners and dates.
+
+Section forty-one point five treats outcome first binding constraint as testable only when evidence and ticket IDs are recorded.
 
 ### Practice note — removing work
 
@@ -2561,21 +3857,53 @@ You will (1) frame an engineering research question from Lantern's operational d
 
 Lantern's logs suggest questions: Does indicator half-life differ by sector partner? Does behaviour-based detection catch incidents that indicator matching misses? How much do sightings shared with partners improve their retirement decisions?
 
+Section forty-two point one develops threat intelligence and osint applied with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-two point one, the SOC lead expects threat claims to carry owners and dates.
+
+Section forty-two point one treats questions from operations data as testable only when evidence and ticket IDs are recorded.
+
 ### 42.2 Data and consent
 
 Internal operational data may be used for improvement under BEN's policies; partner data needs partner consent for research use and publication. Personal data is excluded. Where consent is lacking, synthetic data that reproduce statistical properties can test methods but not prove facts about the real world.
+
+Section forty-two point two develops threat intelligence and osint applied with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-two point two, the SOC lead expects threat claims to carry owners and dates.
 
 ### 42.3 Method
 
 Kofi studies half-lives: for each retired indicator, did it reappear in sightings within 60 days? He fits re-observation rates by indicator type and compares with the decay model's assumptions.
 
+Section forty-two point three develops threat intelligence and osint applied with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-two point three, the SOC lead expects threat claims to carry owners and dates.
+
+Section forty-two point three treats questions from operations data as testable only when evidence and ticket IDs are recorded.
+
 ### 42.4 Humility in statistics
 
 Report sample sizes and intervals. A difference between partners of two days in half-life may be noise with small samples.
 
+Section forty-two point four develops threat intelligence and osint applied with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-two point four, the SOC lead expects threat claims to carry owners and dates.
+
+Section forty-two point four treats questions from operations data as testable only when evidence and ticket IDs are recorded.
+
+For section forty-two point four, Brightwater Energy Networks will not accept threat work without a written trail.
+
 ### 42.5 Publication
 
 Results are shared with partners first, in aggregate, then perhaps at a practitioner conference with BEN's approval. Raw indicators are never published.
+
+Section forty-two point five develops threat intelligence and osint applied with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-two point five, the SOC lead expects threat claims to carry owners and dates.
+
+Section forty-two point five treats questions from operations data as testable only when evidence and ticket IDs are recorded.
+
+For section forty-two point five, Brightwater Energy Networks will not accept threat work without a written trail.
 
 ### Practice note — reproducibility
 
@@ -2621,21 +3949,53 @@ You will (1) work within an operating organisation's governance; (2) contribute 
 
 Kofi's placement at BEN is governed by an agreement covering confidentiality, supervision and what he may write about. University assignments draw on synthetic reconstructions, not BEN's real data.
 
+Section forty-three point one develops industry or public-service practice with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-three point one, the SOC lead expects industry claims to carry owners and dates.
+
+Section forty-three point one treats placement governance community contribution as testable only when evidence and ticket IDs are recorded.
+
 ### 43.2 Community contribution
 
 As a placement engineer he attends sector ISAC calls as an observer. He learns the community's TLP habits, how members describe incidents, and how trust is built over time by sharing useful, accurate information and acknowledging others' contributions.
+
+Section forty-three point two develops industry or public-service practice with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-three point two, the SOC lead expects industry claims to carry owners and dates.
+
+Section forty-three point two treats placement governance community contribution as testable only when evidence and ticket IDs are recorded.
 
 ### 43.3 Practice log
 
 He logs tasks, hours, skills used and reflections: what went well, what he would change, what he learned about ethics. Supervisors sign the log.
 
+Section forty-three point three develops industry or public-service practice with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-three point three, the SOC lead expects industry claims to carry owners and dates.
+
+Section forty-three point three treats placement governance community contribution as testable only when evidence and ticket IDs are recorded.
+
+For section forty-three point three, Brightwater Energy Networks will not accept industry work without a written trail.
+
 ### 43.4 Confidential material
 
 Some information he sees is TLP:RED or commercially sensitive. It never appears in coursework, social media or conversation outside need-to-know. If in doubt, he asks his supervisor.
 
+Section forty-three point four develops industry or public-service practice with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-three point four, the SOC lead expects industry claims to carry owners and dates.
+
+Section forty-three point four treats placement governance community contribution as testable only when evidence and ticket IDs are recorded.
+
 ### 43.5 Public-service settings
 
 In a national CERT or regulator, additional rules apply: official secrecy, freedom-of-information obligations and political neutrality. ICD 203's emphasis on independence from political considerations is a useful reference for analysts in public roles.
+
+Section forty-three point five develops industry or public-service practice with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-three point five, the SOC lead expects industry claims to carry owners and dates.
+
+Section forty-three point five treats placement governance community contribution as testable only when evidence and ticket IDs are recorded.
 
 ### Practice note — asking questions
 
@@ -2681,21 +4041,55 @@ You will (1) scope a capstone extending Lantern; (2) write a project charter wit
 
 Capstones should be ambitious but finishable in two semesters. Kofi's team chooses: "An OT vendor-watch service that turns vendor advisories and partner reports into approved, interlocked recommendations for BEN's OT engineers." It touches requirements, data models, controls, integration, validation and safety.
 
+Section forty-four point one develops engineering capstone with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-four point one, the SOC lead expects engineering claims to carry owners and dates.
+
+Section forty-four point one treats choosing scope charter team as testable only when evidence and ticket IDs are recorded.
+
 ### 44.2 Charter
 
 Problem statement, stakeholders, measurable objectives (for example, vendor-relevant alerts reach the OT queue within 15 minutes with fewer than 10% irrelevant), constraints (standard library prototypes, synthetic data, no OT automation), milestones, risks and a communication plan.
+
+Section forty-four point two develops engineering capstone with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-four point two, the SOC lead expects engineering claims to carry owners and dates.
+
+Section forty-four point two treats choosing scope charter team as testable only when evidence and ticket IDs are recorded.
 
 ### 44.3 Team roles
 
 Lead engineer, data modeller, controls and safety owner, validation owner. Roles rotate for some tasks so everyone touches the whole system.
 
+Section forty-four point three develops engineering capstone with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-four point three, the SOC lead expects engineering claims to carry owners and dates.
+
+Section forty-four point three treats choosing scope charter team as testable only when evidence and ticket IDs are recorded.
+
+For section forty-four point three, Brightwater Energy Networks will not accept engineering work without a written trail.
+
 ### 44.4 Ethics approval
 
 The project uses synthetic advisories and synthetic OT asset lists. If any real vendor advisories are used, only public CLEAR documents qualify, and their terms are checked. The approval is filed with the charter.
 
+Section forty-four point four develops engineering capstone with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-four point four, the SOC lead expects engineering claims to carry owners and dates.
+
+Section forty-four point four treats choosing scope charter team as testable only when evidence and ticket IDs are recorded.
+
 ### 44.5 Risk register
 
 Risks: scope creep, unavailable OT reviewer, ambiguous vendor naming, overconfidence in automated relevance scoring. Each has an owner and mitigation.
+
+Section forty-four point five develops engineering capstone with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-four point five, the SOC lead expects engineering claims to carry owners and dates.
+
+Section forty-four point five treats choosing scope charter team as testable only when evidence and ticket IDs are recorded.
+
+For section forty-four point five, Brightwater Energy Networks will not accept engineering work without a written trail.
 
 ### Practice note — first milestone
 
@@ -2741,21 +4135,57 @@ You will (1) prepare a design package for independent review; (2) respond to rev
 
 Requirements and traceability, architecture and ADRs, safety argument, threat model and FMEA, verification reports from Chapters 30 and 40, privacy assessment, and open risks. Reviewers receive it a week in advance.
 
+Section forty-five point one develops independent design review with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-five point one, the SOC lead expects independent claims to carry owners and dates.
+
+Section forty-five point one treats package reviewers findings responses as testable only when evidence and ticket IDs are recorded.
+
 ### 45.2 Reviewers
 
 An external engineer from another utility, a privacy specialist, and an OT safety engineer. None worked on the design. Their independence is the point: none of them reports to the BEN manager who owns Lantern's delivery date.
+
+Section forty-five point two develops independent design review with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-five point two, the SOC lead expects independent claims to carry owners and dates.
+
+Section forty-five point two treats package reviewers findings responses as testable only when evidence and ticket IDs are recorded.
 
 ### 45.3 Findings
 
 Findings are graded: must-fix before go-live, should-fix within a set time, and observations. Each gets an owner and due date.
 
+Section forty-five point three develops independent design review with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-five point three, the SOC lead expects independent claims to carry owners and dates.
+
+Section forty-five point three treats package reviewers findings responses as testable only when evidence and ticket IDs are recorded.
+
+For section forty-five point three, Brightwater Energy Networks will not accept independent work without a written trail.
+
 ### 45.4 Responses
 
 The team responds in writing: accepted with action, accepted with alternative, or disputed with evidence. Disputes are resolved by the review chair.
 
+Section forty-five point four develops independent design review with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-five point four, the SOC lead expects independent claims to carry owners and dates.
+
+Section forty-five point four treats package reviewers findings responses as testable only when evidence and ticket IDs are recorded.
+
+For section forty-five point four, Brightwater Energy Networks will not accept independent work without a written trail.
+
 ### 45.5 Outcome
 
 The chair records the decision: proceed, proceed with conditions, or do not proceed. Conditions link to must-fix findings.
+
+Section forty-five point five develops independent design review with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-five point five, the SOC lead expects independent claims to carry owners and dates.
+
+Section forty-five point five treats package reviewers findings responses as testable only when evidence and ticket IDs are recorded.
+
+For section forty-five point five, Brightwater Energy Networks will not accept independent work without a written trail.
 
 ### Practice note — preparing reviewers
 
@@ -2801,21 +4231,57 @@ You will (1) complete the capstone build to the charter; (2) close review condit
 
 The vendor-watch service ingests synthetic vendor advisories and partner reports, tags vendors and products, scores relevance against BEN's synthetic OT asset list, and opens OT tickets with recommendations, TLP marking and the two-person rule.
 
+Section forty-six point one develops engineering capstone ii with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-six point one, the SOC lead expects engineering claims to carry owners and dates.
+
+Section forty-six point one treats completing the build closing as testable only when evidence and ticket IDs are recorded.
+
 ### 46.2 Closing conditions
 
 Each must-fix finding is closed with evidence: a test, a screenshot of the ticket template, a code reference. The review chair confirms closure.
+
+Section forty-six point two develops engineering capstone ii with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-six point two, the SOC lead expects engineering claims to carry owners and dates.
+
+Section forty-six point two treats completing the build closing as testable only when evidence and ticket IDs are recorded.
+
+For section forty-six point two, Brightwater Energy Networks will not accept engineering work without a written trail.
 
 ### 46.3 Stakeholder validation
 
 OT engineers run five scenarios. In four, recommendations are relevant and timely; in one, a vendor name variant was missed. The team adds the variant to the vendor dictionary and a rule to flag unknown names for analyst review.
 
+Section forty-six point three develops engineering capstone ii with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-six point three, the SOC lead expects engineering claims to carry owners and dates.
+
+Section forty-six point three treats completing the build closing as testable only when evidence and ticket IDs are recorded.
+
 ### 46.4 Handover
 
 Runbooks, on-call notes, configuration guide, known issues and a training session for the OT team. Operations signs acceptance.
 
+Section forty-six point four develops engineering capstone ii with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-six point four, the SOC lead expects engineering claims to carry owners and dates.
+
+Section forty-six point four treats completing the build closing as testable only when evidence and ticket IDs are recorded.
+
+For section forty-six point four, Brightwater Energy Networks will not accept engineering work without a written trail.
+
 ### 46.5 Measured results
 
 On the 200-item synthetic test set: 96% of relevant items alerted within 15 minutes; 7% of alerts irrelevant. Both meet the charter's objectives.
+
+Section forty-six point five develops engineering capstone ii with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-six point five, the SOC lead expects engineering claims to carry owners and dates.
+
+Section forty-six point five treats completing the build closing as testable only when evidence and ticket IDs are recorded.
+
+For section forty-six point five, Brightwater Energy Networks will not accept engineering work without a written trail.
 
 ### Practice note — known issues
 
@@ -2861,6 +4327,12 @@ You will (1) plan recovery-time and recovery-point objectives for Lantern; (2) r
 
 Recovery time objective (RTO): how long Lantern may be down. Recovery point objective (RPO): how much data may be lost. For BEN, RTO 60 minutes and RPO 15 minutes for the store and ingestion.
 
+Section forty-seven point one develops failure and recovery trial with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-seven point one, the SOC lead expects failure claims to carry owners and dates.
+
+Section forty-seven point one treats rto and rpo reading as testable only when evidence and ticket IDs are recorded.
+
 ### Lab 9 — drill scoring
 
 ```python
@@ -2884,17 +4356,43 @@ D3 corrupt enrich cache    RTO met (30m)  RPO MISSED (25m)
 
 D1, store failover, met both objectives. D2, a TAXII outage simulation, missed RTO at 75 minutes because the runbook assumed a credential that had rotated. D3, corrupt enrichment cache, recovered quickly but lost 25 minutes of enrichment state, missing RPO.
 
+Section forty-seven point two develops failure and recovery trial with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-seven point two, the SOC lead expects failure claims to carry owners and dates.
+
+Section forty-seven point two treats rto and rpo reading as testable only when evidence and ticket IDs are recorded.
+
 ### 47.3 Improving
 
 D2: update the runbook and add a credential-validity check to the daily health report. D3: snapshot the cache every ten minutes or treat the cache as rebuildable and exclude it from RPO, documenting that choice.
+
+Section forty-seven point three develops failure and recovery trial with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-seven point three, the SOC lead expects failure claims to carry owners and dates.
+
+Section forty-seven point three treats rto and rpo reading as testable only when evidence and ticket IDs are recorded.
 
 ### 47.4 Drill safety
 
 Drills run in staging with synthetic data. Partners are not involved unless a joint exercise is agreed, and production enforcement is never altered by a drill.
 
+Section forty-seven point four develops failure and recovery trial with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-seven point four, the SOC lead expects failure claims to carry owners and dates.
+
+Section forty-seven point four treats rto and rpo reading as testable only when evidence and ticket IDs are recorded.
+
+For section forty-seven point four, Brightwater Energy Networks will not accept failure work without a written trail.
+
 ### 47.5 Incident linkage
 
 NIST SP 800-61 Rev. 3 frames incident response within cybersecurity risk management. Lantern's recovery plans connect to BEN's incident response plan so that an outage during a real incident is handled consistently.
+
+Section forty-seven point five develops failure and recovery trial with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-seven point five, the SOC lead expects failure claims to carry owners and dates.
+
+Section forty-seven point five treats rto and rpo reading as testable only when evidence and ticket IDs are recorded.
 
 ### Practice note — surprise element
 
@@ -2940,21 +4438,57 @@ You will (1) assemble an evidence dossier supporting the claim that Lantern and 
 
 Top claim: "Lantern delivers timely, trustworthy, lawfully collected intelligence to BEN's IT and OT defenders with acceptable risk." Sub-claims: timeliness, accuracy, TLP and privacy compliance, safety of OT recommendations, reliability, maintainability. Each sub-claim cites evidence.
 
+Section forty-eight point one develops evidence dossier with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-eight point one, the SOC lead expects evidence claims to carry owners and dates.
+
+Section forty-eight point one treats assurance argument evidence types as testable only when evidence and ticket IDs are recorded.
+
 ### 48.2 Evidence types
 
 Verification reports, validation results, drill records, review outcomes, metrics over a quarter, privacy assessment and partner feedback. Each item has a date, author, version and SHA-256 hash recorded in an index.
+
+Section forty-eight point two develops evidence dossier with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-eight point two, the SOC lead expects evidence claims to carry owners and dates.
+
+Section forty-eight point two treats assurance argument evidence types as testable only when evidence and ticket IDs are recorded.
 
 ### 48.3 Assumptions
 
 The argument depends on assumptions: partners label TLP correctly; NTP is reliable; OT engineers follow the two-person rule. Assumptions are stated, and where possible monitored.
 
+Section forty-eight point three develops evidence dossier with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-eight point three, the SOC lead expects evidence claims to carry owners and dates.
+
+Section forty-eight point three treats assurance argument evidence types as testable only when evidence and ticket IDs are recorded.
+
+For section forty-eight point three, Brightwater Energy Networks will not accept evidence work without a written trail.
+
 ### 48.4 Residual risks
 
 Unseen partner formats, adversary poisoning that mimics legitimate patterns, staff turnover. Each risk has an owner and acceptance by an accountable manager.
 
+Section forty-eight point four develops evidence dossier with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-eight point four, the SOC lead expects evidence claims to carry owners and dates.
+
+Section forty-eight point four treats assurance argument evidence types as testable only when evidence and ticket IDs are recorded.
+
+For section forty-eight point four, Brightwater Energy Networks will not accept evidence work without a written trail.
+
 ### 48.5 Audience
 
 The dossier serves BEN's risk committee, auditors and future engineers. A two-page summary leads; the full evidence sits behind it.
+
+Section forty-eight point five develops evidence dossier with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-eight point five, the SOC lead expects evidence claims to carry owners and dates.
+
+Section forty-eight point five treats assurance argument evidence types as testable only when evidence and ticket IDs are recorded.
+
+For section forty-eight point five, Brightwater Energy Networks will not accept evidence work without a written trail.
 
 ### Practice note — counter-evidence
 
@@ -3000,21 +4534,59 @@ You will (1) write an engineering thesis that reports design, implementation and
 
 Introduction (problem, objectives, contributions); background (CTI concepts, STIX/TAXII 2.1, ATT&CK, Diamond Model, kill chain, TLP 2.0, SP 800-150); requirements; design; implementation; verification and validation; operations evidence; discussion; conclusion.
 
+Section forty-nine point one develops engineering thesis with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-nine point one, the SOC lead expects engineering claims to carry owners and dates.
+
+Section forty-nine point one treats structure contributions using sources as testable only when evidence and ticket IDs are recorded.
+
+For section forty-nine point one, Brightwater Energy Networks will not accept engineering work without a written trail.
+
 ### 49.2 Contributions
 
 Kofi's contributions: an interlocked OT vendor-watch design; a decay-model refit procedure from re-observation data; an evaluation of feed quality with labelled sets. Background material — how STIX works — is not a contribution, however long the chapter.
+
+Section forty-nine point two develops engineering thesis with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-nine point two, the SOC lead expects engineering claims to carry owners and dates.
+
+Section forty-nine point two treats structure contributions using sources as testable only when evidence and ticket IDs are recorded.
 
 ### 49.3 Using sources
 
 Cite specifications for definitions, papers for models, and BEN-approved synthetic or aggregate data for results. Every claim of fact has a citation or evidence reference.
 
+Section forty-nine point three develops engineering thesis with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-nine point three, the SOC lead expects engineering claims to carry owners and dates.
+
+Section forty-nine point three treats structure contributions using sources as testable only when evidence and ticket IDs are recorded.
+
+For section forty-nine point three, Brightwater Energy Networks will not accept engineering work without a written trail.
+
 ### 49.4 Limitations
 
 Synthetic test sets, one organisation's environment, short operational period, self-reported user feedback. For each, the likely effect on conclusions.
 
+Section forty-nine point four develops engineering thesis with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-nine point four, the SOC lead expects engineering claims to carry owners and dates.
+
+Section forty-nine point four treats structure contributions using sources as testable only when evidence and ticket IDs are recorded.
+
+For section forty-nine point four, Brightwater Energy Networks will not accept engineering work without a written trail.
+
 ### 49.5 Future work
 
 Prospective measurement of incidents prevented; cross-utility comparison with consent; automated detection of feed poisoning.
+
+Section forty-nine point five develops engineering thesis with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section forty-nine point five, the SOC lead expects engineering claims to carry owners and dates.
+
+Section forty-nine point five treats structure contributions using sources as testable only when evidence and ticket IDs are recorded.
+
+For section forty-nine point five, Brightwater Energy Networks will not accept engineering work without a written trail.
 
 ### Practice note — figures
 
@@ -3060,21 +4632,55 @@ You will (1) present the thesis and dossier to an examination panel; (2) answer 
 
 Twenty minutes: problem and mission; key design decisions; safety interlocks; evaluation results with uncertainty; limitations; future work. Slides show evidence, not decoration.
 
+Section fifty point one develops final defense with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section fifty point one, the SOC lead expects final claims to carry owners and dates.
+
+Section fifty point one treats presentation expected questions ethical as testable only when evidence and ticket IDs are recorded.
+
+For section fifty point one, Brightwater Energy Networks will not accept final work without a written trail.
+
 ### 50.2 Expected questions
 
 Why is there no automatic OT blocking? How do you prevent feed poisoning? What happens if a partner mislabels TLP? Why should we trust your feed-quality labels? What would you do differently? Answers cite pages and evidence items.
+
+Section fifty point two develops final defense with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section fifty point two, the SOC lead expects final claims to carry owners and dates.
+
+Section fifty point two treats presentation expected questions ethical as testable only when evidence and ticket IDs are recorded.
 
 ### 50.3 Ethical questions
 
 Panels ask what Kofi refused to build. He answers: personal social-media collection, scraping against terms, home-address enrichment and OT automation without approval — each with the reason and the alternative chosen.
 
+Section fifty point three develops final defense with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section fifty point three, the SOC lead expects final claims to carry owners and dates.
+
+Section fifty point three treats presentation expected questions ethical as testable only when evidence and ticket IDs are recorded.
+
 ### 50.4 Acknowledging limits
 
 "I don't know" followed by how one would find out is a strong answer. Defending an unsupported claim is weak.
 
+Section fifty point four develops final defense with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section fifty point four, the SOC lead expects final claims to carry owners and dates.
+
+Section fifty point four treats presentation expected questions ethical as testable only when evidence and ticket IDs are recorded.
+
+For section fifty point four, Brightwater Energy Networks will not accept final work without a written trail.
+
 ### 50.5 Next steps
 
 The book does not claim accreditation or a completed 300-page edition. The next stop in the study path is the engineering course in authorized offensive security and red team.
+
+Section fifty point five develops final defense with a Brightwater Energy Networks note Kofi Mensah can demo offline.
+
+Under section fifty point five, the SOC lead expects final claims to carry owners and dates.
+
+Section fifty point five treats presentation expected questions ethical as testable only when evidence and ticket IDs are recorded.
 
 ### Practice note — after the defence
 
