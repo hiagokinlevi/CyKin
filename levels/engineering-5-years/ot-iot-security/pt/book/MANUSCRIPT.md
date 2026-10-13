@@ -1,7 +1,7 @@
 # Segurança de TO, IoT e Sistemas Ciberfísicos: Engenharia de Sistemas de Controle Seguros
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos; aproximadamente 4.000 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 50 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções; os capítulos 21–50 (EX061–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 50 já estão escritos em português, com os exercícios EX001–EX090 e suas resoluções; os capítulos 31–50 (EX091–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: futuros engenheiros que vão projetar, implementar e verificar a segurança de sistemas de controle industrial, de TO e de sistemas ciberfísicos.
 - Relação com os livros vizinhos: o livro de engenharia de infraestrutura crítica enfatiza os setores; o livro de mestrado de TO enfatiza o desenho de estudos empíricos. **Este livro trata de construir a segurança de sistemas de controle**.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -47,10 +47,20 @@ Os capítulos 1–19 constroem os fundamentos, aplicados à TO desde a primeira 
 18. [Arquitetura de segurança](#ch-18)
 19. [Identidade e criptografia](#ch-19)
 20. [Segurança de TO, IoT e sistemas ciberfísicos: contexto de engenharia](#ch-20)
+21. [Segurança de TO, IoT e sistemas ciberfísicos: requisitos](#ch-21)
+22. [Segurança de TO, IoT e sistemas ciberfísicos: modelos de sistema e de dados](#ch-22)
+23. [Segurança de TO, IoT e sistemas ciberfísicos: análise de ameaças e de falhas](#ch-23)
+24. [Segurança de TO, IoT e sistemas ciberfísicos: métodos I](#ch-24)
+25. [Ateliê de projeto I](#ch-25)
+26. [Segurança de TO, IoT e sistemas ciberfísicos: alternativas de arquitetura](#ch-26)
+27. [Segurança de TO, IoT e sistemas ciberfísicos: projeto de controles](#ch-27)
+28. [Segurança de TO, IoT e sistemas ciberfísicos: implementação I](#ch-28)
+29. [Segurança de TO, IoT e sistemas ciberfísicos: medição](#ch-29)
+30. [Laboratório de verificação I](#ch-30)
 
-Capítulos 21–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
+Capítulos 31–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
 
-As [resoluções](#worked-results) contêm EX001–EX060. As [referências](#references) encerram o livro.
+As [resoluções](#worked-results) contêm EX001–EX090. As [referências](#references) encerram o livro.
 
 <a id="ch-01"></a>
 
@@ -1474,7 +1484,827 @@ Os engenheiros viabilizam o endurecimento autorizado de TO; não substituem a se
 <!-- cyberabc:chapter-navigation:start ch-20 -->
 ### Continue estudando — capítulo 20 de 50
 
-[← Capítulo 19](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 (inglês) →](../../en/book/MANUSCRIPT.md#ch-21)
+[← Capítulo 19](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 →](#ch-21)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-21"></a>
+
+## Capítulo 21 — Segurança de TO, IoT e sistemas ciberfísicos: requisitos
+
+### Objetivos de aprendizagem
+
+Você vai (1) levantar requisitos com a segurança de processo, a operação e a segurança da informação; (2) separar requisitos funcionais, de segurança física e de medição; (3) escrever critérios de aceitação que um testador possa executar sobre dados de teste sintéticos.
+
+### 21.1 Fontes
+
+A segurança de processo quer camadas de proteção independentes. A operação quer visualização sem parada. A segurança da informação quer condutos com negação por padrão. As entrevistas de levantamento produzem declarações com "deverá" marcadas pela fonte. Os conflitos (visualização por conveniência versus isolamento do SIS) são registrados, não disfarçados.
+
+Na ABP, Lena entrevistou separadamente o engenheiro de segurança de processo, os líderes de turno, os engenheiros de controle e a equipe de rede de TI, e depois levou os conflitos a uma reunião conjunta. O conflito mais claro foi a regra de visualização remota FW-12, que a operação valorizava e a segurança de processo não podia aceitar. Ele foi registrado com as duas posições, e a solução, a visualização pela réplica na DMZ, virou um requisito com dono.
+
+### 21.2 Três famílias
+
+Funcional: "O monitor serial deverá decodificar Modbus RTU no tronco A e emitir decisões de permitir/negar." Segurança física: "Se o arquivo da lista de permissões não carregar, o monitor deverá falhar de forma fechada (descartar todo o tráfego não essencial, ou alarmar e exigir ação humana, conforme o projeto)." Medição: "O CNHP deverá relatar a cobertura planejada versus observada das técnicas do ATT&CK for ICS, com denominadores." Os requisitos de segurança física vencem os empates.
+
+Lena marca cada requisito do CNHP com a sua família, para que as revisões possam conferir se os de segurança física são testados primeiro. Os empates são resolvidos por escrito.
+
+### 21.3 Critérios de aceitação
+
+Cada requisito tem um Dado/Quando/Então sobre dados sintéticos. Exemplo: Dada a negação do L2 para o L1-SIS, Quando a alcançabilidade roda a partir do L4, Então o L1-SIS não está no conjunto alcançável. Critérios que exijam uma escrita na planta em operação são rejeitados na revisão.
+
+> **Caso sintético — Ashford Batch Plant.** O requisito de segurança física S-1, "falhar de forma fechada se faltar a lista de permissões", reprovou no seu teste de aceitação quando um caminho com erro de digitação retornou PASS. A correção foi publicada antes de qualquer janela na planta.
+
+Os critérios são revistos com o dono do requisito. Cada critério é um teste.
+
+### 21.4 Erros e limites
+
+As partes interessadas inventam requisitos no meio da janela; estacione-os num backlog com um ticket AUTH, não altere às pressas monitores de produção durante um lote.
+
+Quando alguém pede uma nova regra no monitor durante um lote, Lena a registra no backlog com um ticket de autorização e a avalia depois da janela. Mudar um monitor de produção no meio de um lote arrisca uma parada ou um defeito de falha aberta que ninguém testou. O item do backlog nomeia quem pediu, por que e quando será revisto, para que o pedido não se perca e quem o levantou veja que foi tratado.
+
+### Nota prática
+
+Os testes de aceitação levam o nome dos ids dos requisitos e reprovam a integração contínua quando pulados. Requisitos Must órfãos são testados ou formalmente adiados, com um dono executivo.
+
+### 21.1b MoSCoW sob segurança física
+
+A priorização Must/Should/Could ainda põe todos os requisitos de segurança física em Must. Um Could que enfraquece um Must (negação opcional de códigos de escrita) é reclassificado ou rejeitado. Gerentes de produto não derrotam no voto a falha fechada. Os campos de log também levam o id do requisito (req=S-1), para que um evento de negação possa ser rastreado até o requisito que ele impõe.
+
+Na ABP, o S-1 e o R-12 são ambos itens Must, e nenhuma decisão de produto pode rebaixá-los. Um pedido para tornar opcionais, por conveniência, as negações de códigos de escrita foi rejeitado com base nisso, e a rejeição é registrada com o requisito que teria enfraquecido.
+
+### Exercícios
+
+- **EX061 — Levantamento.** Escreva um requisito funcional e um de segurança física com "deverá" a partir de "o escritório não pode alcançar o SIS". Rubrica: 3 = ambos testáveis; 2 = um; 1 = vago; 0 = nada.
+- **EX062 — Aceitação.** Dado/Quando/Então para a falha fechada com a lista de permissões ausente. Rubrica: 3 = completo, com negação/alarme esperados; 2 = parcial; 1 = ideia; 0 = nada.
+- **EX063 — Conflito.** Visualização do L4 para o L2 por conveniência versus zoneamento — registre o conflito e a regra escolhida. Rubrica: 3 = conflito nomeado + regra com a segurança primeiro, via DMZ; 2 = só a regra; 1 = escolhe a conveniência; 0 = nada.
+
+### Síntese
+
+Os requisitos vêm das pessoas, se dividem em famílias e são entregues com testes de aceitação sobre dados de teste sintéticos.
+
+<!-- cyberabc:chapter-navigation:start ch-21 -->
+### Continue estudando — capítulo 21 de 50
+
+[← Capítulo 20](#ch-20) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 22 →](#ch-22)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Segurança de TO, IoT e sistemas ciberfísicos: modelos de sistema e de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) desenhar um modelo de entidades para ativos, zonas, condutos e constatações; (2) escolher chaves e cardinalidades; (3) manter o conteúdo de exploits fora do modelo.
+
+### 22.1 Entidades
+
+Plant 1—* Unit; Unit 1—* Asset; Zone 1—* Asset; Conduit *—* Zone (de/para); Finding *—* EvidenceObject (por hash); TechniqueTag *—* Finding. Erros de cardinalidade (vários conjuntos de condutos ativos sem um ponteiro de versão) fazem os auditores perguntarem quais regras estavam em vigor.
+
+O modelo de Lena dá a cada ConduitSet uma versão e registra qual versão estava em vigor em cada momento, para que um auditor veja as regras que valiam num dado dia. Cada Finding se liga à sua evidência por hash, e as tags de técnica se ligam às constatações apenas depois de revisadas.
+
+### 22.2 Chaves
+
+Os ids das constatações são UUID. A evidência é endereçada pelo conteúdo, via SHA-256. O ConduitSet tem (plant_id, version_int). Nunca use o título como chave das constatações — os títulos mudam.
+
+O esquema de Lena usa essas chaves em todo o CNHP. Uma constatação sobre a FW-12 manteve o seu identificador quando o título foi reescrito depois da revisão, e o seu histórico ficou intacto. Uma evidência com o hash como chave não pode ser trocada em silêncio, já que um arquivo diferente teria uma chave diferente. O número de versão do ConduitSet aumenta a cada mudança publicada e nunca reutiliza um valor antigo.
+
+### 22.3 Atributos proibidos
+
+Nenhum atributo para payload, shellcode ou ataque passo a passo. O EvidenceObject guarda os bytes num bucket lacrado; o modelo guarda apenas o hash, o tipo de mídia e a classe de retenção.
+
+> **Caso sintético — Ashford Batch Plant.** Um esquema inicial tinha notas em texto livre; as pessoas colavam senhas de engenharia. Lena o substituiu por campos estruturados mais um hash de evidência, e um linter rejeita textos com cara de senha nos títulos.
+
+O linter de Lena impõe a lista. Ele roda em todo registro criado ou importado, inclusive nas importações em massa de scanners, e rejeita textos com cara de senha nos títulos. Os registros rejeitados retornam um erro que explica qual campo foi recusado.
+
+### 22.4 Erros e limites
+
+Modelos que tornam toda técnica do ATT&CK for ICS um campo obrigatório geram tags lixo. Mantenha as tags de técnica opcionais e revisadas.
+
+Na ABP, as tags de técnica são acrescentadas por um analista depois que a constatação é escrita, e uma segunda pessoa as revisa. Uma constatação sem técnica adequada fica sem tag, em vez de ser forçada para a mais próxima. Isso mantém os números de cobertura honestos, porque uma tag lixo contaria como cobertura observada de uma técnica que ninguém testou de fato. As tags são revistas quando a versão do ATT&CK for ICS muda.
+
+### Nota prática
+
+Faça exclusão lógica das constatações, com ator e motivo; expurgo definitivo apenas por rotinas de retenção que emitam eventos de auditoria. Um DELETE FROM findings silencioso é um presente para o repúdio.
+
+### 22.1b Limites de anexos e tempo
+
+Os objetos de evidência precisam de limites de tamanho e de listas de permissões de tipos de mídia. Uploads sem limite viram ataques de disponibilidade e tentam a despejar dados proprietários em massa. Toda entidade mutável precisa de created_at, created_by e, para mudanças de estado, updated_at/updated_by ou um evento somente de acréscimo. Prefira UTC com deslocamentos explícitos nas exportações.
+
+As exportações declaram o seu fuso horário uma vez no cabeçalho do arquivo, além de em cada timestamp. Clientes de API que emitem DELETE em laço durante uma nova tentativa defeituosa têm as credenciais revogadas depois de um limite.
+
+### 22.5 Exemplo resolvido — modelando uma constatação sem vazar a planta (ABP sintética)
+
+O modelo de dados de Lena para as constatações do CNHP tem as entidades Asset, Zone, Conduit, Finding e Evidence. Uma Finding referencia um Asset por chave, nunca embute o seu endereço IP nem credenciais, e guarda a evidência como um hash mais um ponteiro para o repositório controlado de evidências. A lista de atributos proibidos (senhas, payloads completos de pacotes, valores de receitas) é imposta por uma verificação de esquema que rejeita qualquer registro que contenha esses campos. Quando uma constatação sobre a porta Modbus aberta do PLC-A é exportada para a gerência, ela diz "Asset PLC-A, Conduit L2→L1, ATT&CK for ICS T0869 Standard Application Layer Protocol, severidade alta" — o suficiente para agir, não o suficiente para atacar.
+
+### Exercícios
+
+- **EX064 — Cardinalidade.** Por que o ConduitSet é versionado em vez de editado no lugar? Rubrica: 3 = auditoria do que estava autorizado e quando; 2 = versionamento vago; 1 = boa prática; 0 = nada.
+- **EX065 — Chave.** Por que endereçar a evidência pelo conteúdo? Rubrica: 3 = integridade + deduplicação + evidência de adulteração; 2 = uma razão; 1 = vago; 0 = nada.
+- **EX066 — Proibido.** Validação que impede senhas no título. Rubrica: 3 = heurística/linter + processo; 2 = um; 1 = vago; 0 = nada.
+
+### Síntese
+
+Modele ativos, zonas, versões, constatações e hashes — não ataques.
+
+<!-- cyberabc:chapter-navigation:start ch-22 -->
+### Continue estudando — capítulo 22 de 50
+
+[← Capítulo 21](#ch-21) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Segurança de TO, IoT e sistemas ciberfísicos: análise de ameaças e de falhas
+
+### Objetivos de aprendizagem
+
+Você vai (1) enumerar as falhas do próprio programa de segurança de TO; (2) usar uma passada leve de STRIDE sobre as ferramentas; (3) alimentar os requisitos com os resultados sem construir módulos de exploit.
+
+### 23.1 O programa pode falhar de forma perigosa
+
+Listas de permissões que falham abertas, verificação de alcançabilidade pulada na integração contínua, detectores com tempestades silenciosas de alarmes falsos, adiamentos de correções sem data — isso ameaça a segurança de processo e a honestidade, não só a confidencialidade de uma ferramenta.
+
+Lena lista essas falhas primeiro na análise de ameaças do CNHP, porque elas poderiam ferir a planta pelas mesmas ferramentas feitas para protegê-la. Um monitor que falha aberto deixaria escritas não autorizadas chegarem ao PLC-A enquanto todos acreditavam que estavam bloqueadas. Uma verificação de alcançabilidade pulada na integração contínua deixaria um novo conduto para o SIS-B ser integrado sem ser visto. Cada falha recebe um requisito e um teste.
+
+### 23.2 STRIDE sobre as ferramentas do CNHP
+
+Falsificação (spoofing): conta de engenharia falsa. Adulteração: editar a exportação do firewall depois do lacre. Repúdio: nenhum ator nos eventos de negação. Divulgação de informação: réplica do historiador legível por todos. Negação de serviço: um scanner inunda um tronco. Elevação: uma única pessoa consegue publicar um conduto para o SIS. Cada linha recebe um requisito de mitigação.
+
+Lena roda a análise em cada ferramenta do CNHP e registra as linhas no backlog com donos. Para a ABP, as linhas mais graves foram o monitor falhando aberto e uma única pessoa publicando um conduto para o SIS-B; elas viraram o requisito S-1 e a condição de dupla aprovação nas mudanças de condutos. Cada linha é revista de novo quando a sua mitigação é entregue.
+
+### 23.3 As ameaças à planta ficam na análise de perigos
+
+As ameaças ao processo pertencem à análise de perigos do processo da planta e ao HAZOP informado por cibersegurança, não a funcionalidades de uma ferramenta de estudante. Não construa exploração automatizada para satisfazer uma linha do STRIDE.
+
+```python
+# Lab 27 - residual CUSUM vs band on batch reactor level (synthetic)
+import random
+def run(seed, atk, det, k=0.8, h=6.0):
+    rng=random.Random(seed); true=est=50.0; s=0.0; alarm=None
+    for t in range(500):
+        inflow=1.0+rng.gauss(0,0.05)+(0.08 if atk and t>=250 else 0)
+        true+=inflow-0.02*true
+        lvl=true+rng.gauss(0,0.3); fm=inflow+rng.gauss(0,0.02)
+        if atk and t>=250: lvl=50+rng.gauss(0,0.3)
+        if atk=="B" and t>=250: fm=1.0+rng.gauss(0,0.02)
+        est+=fm-0.02*est
+        hit=abs(lvl-50)>2.0 if det=="band" else False
+        if det=="cusum":
+            s=max(0.0,s+abs(lvl-est)-k); hit=s>h
+        if hit and alarm is None: alarm=t
+    return alarm
+for det in ("band","cusum"):
+    fa=sum(run(i,None,det) is not None for i in range(60))
+    for atk in ("A","B"):
+        hits=[a-250 for a in (run(i,atk,det) for i in range(60)) if a is not None and a>=250]
+        print(f"{det} class{atk} FA={fa}/60 det={len(hits)}/60 mean_delay={sum(hits)/len(hits) if hits else float('nan'):.1f}")
+```
+
+Saída esperada:
+
+```text
+band classA FA=0/60 det=0/60 mean_delay=nan
+band classB FA=0/60 det=0/60 mean_delay=nan
+cusum classA FA=0/60 det=60/60 mean_delay=24.8
+cusum classB FA=0/60 det=0/60 mean_delay=nan
+```
+
+> **Caso sintético — Ashford Batch Plant.** A linha do STRIDE "falha aberta" virou o requisito de segurança física S-1. A linha "publicação solitária de conduto" virou a condição de dupla aprovação.
+
+Lena repassa as ameaças à planta ao engenheiro de segurança de processo para a análise de perigos. Ela fornece fatos sobre as ferramentas e a rede, como quais zonas alcançam o PLC-A, e o engenheiro julga as consequências para o processo. Nada nas ferramentas do CNHP simula um ataque ao processo.
+
+### 23.4 Erros e limites
+
+O STRIDE é um estímulo, não uma prova. Revise-o ao acrescentar uma nova fronteira de confiança (por exemplo, um historiador SaaS de um fornecedor).
+
+Lena repete a análise sempre que o CNHP acrescenta uma fronteira de confiança, como um novo caminho de acesso remoto para um fornecedor ou uma mudança no destino dos alertas. As linhas das revisões anteriores são mantidas, para que a equipe veja quais ameaças foram acrescentadas, quais mitigações foram construídas e quais continuam abertas. Uma tabela STRIDE nunca prova que uma ferramenta é segura; os testes e as revisões é que fazem isso.
+
+### Nota prática
+
+Inclua no modelo o comprometimento do host de salto: credenciais de curta duração, listas de permissões de saída, revogação rápida. Se a resposta for apenas confiar no host de salto, a análise está incompleta.
+
+### 23.1b Abuso versus mau uso e backlog
+
+Casos de abuso são ações intencionais de um adversário contra as ferramentas do CNHP. Casos de mau uso são operadores honestos cometendo erros perigosos (colar um CIDR que inclui um parceiro). Projete controles para os dois. As linhas do STRIDE viram issues com ligações para os requisitos. As linhas de mau uso costumam virar regras de validação; as de abuso costumam virar controles de acesso.
+
+Alimentar o backlog significa que cada linha do STRIDE tem um dono e um prazo. Na ABP, o caso de mau uso de um engenheiro colando o CIDR de um parceiro no arquivo de condutos virou uma regra de validação que rejeita faixas fora do plano de endereçamento da planta.
+
+Os dois tipos alimentam o backlog.
+
+### Exercícios
+
+- **EX067 — Falha aberta.** Um teste que prove a falha fechada. Rubrica: 3 = remover a política, esperar negação+alerta; 2 = ideia; 1 = vago; 0 = nada.
+- **EX068 — STRIDE.** Mitigação do repúdio nos eventos de negação. Rubrica: 3 = ator autenticado + log imutável; 2 = só logging; 1 = vago; 0 = nada.
+- **EX069 — Fronteira.** Por que o STRIDE do programa não justifica um módulo de exploit? Rubrica: 3 = objetivo diferente/fronteira de segurança; 2 = parcial; 1 = justifica; 0 = nada.
+
+### Síntese
+
+Analise como o seu programa pode ferir a planta ou mentir; mitigue isso primeiro.
+
+<!-- cyberabc:chapter-navigation:start ch-23 -->
+### Continue estudando — capítulo 23 de 50
+
+[← Capítulo 22](#ch-22) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Segurança de TO, IoT e sistemas ciberfísicos: métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) encadear permissão de trabalho, descoberta, validação e relato; (2) escolher métodos que correspondam à autorização e ao risco de processo; (3) definir quando um método está concluído sem escrever num CLP.
+
+### 24.1 Sequência
+
+Primeiro a permissão de trabalho. A descoberta enumera ativos e condutos pelos métodos acordados. A validação confirma problemas de configuração com o menor privilégio. O relato entrega as constatações e os hashes das evidências. Pular a permissão é como acontecem os testes não autorizados.
+
+Na ABP, toda atividade do CNHP começa com uma permissão de trabalho assinada que nomeia unidades, métodos, janelas e condições de parada. A descoberta usa captura passiva e exportações de projetos de engenharia; a validação usa revisão de configuração e testes de bancada. As constatações são relatadas com os hashes das evidências, e nada passa para a etapa seguinte até que a anterior tenha produzido os seus artefatos.
+
+### 24.2 Fichas de método
+
+Cada ficha: nome, propósito, privilégio, ruidoso?, impacto no processo, condições de parada, artefatos. A revisão de configuração autenticada é uma ficha; um exploit de CLP armado não está no baralho deste programa.
+
+Lena mantém as fichas de método da ABP no repositório, ao lado do modelo de permissão de trabalho. Uma permissão só pode listar métodos que tenham ficha, e cada ficha declara se o método é ruidoso e que impacto no processo ele poderia ter. Os revisores conferem as condições de parada da ficha contra a permissão, para que um método não possa ser usado sob condições mais fracas do que as que a sua ficha exige.
+
+### 24.3 Concluído significa artefatos
+
+Um método está concluído quando existem o CSV de inventário, os hashes de configuração, os rascunhos de constatações e as atualizações de cobertura — não quando alguém se sente terminado.
+
+> **Caso sintético — Ashford Batch Plant.** A ficha do método de verificação da lista de permissões serial exige modo somente de escuta, parada por tempo de ciclo em 50 ms e uma tabela de decisões no estilo do laboratório como artefato.
+
+O checklist de Lena para cada método lista os artefatos exigidos. Para a verificação da lista de permissões serial na ABP, isso significa a tabela de decisões, o hash da captura, eventuais rascunhos de constatações e o painel de cobertura atualizado. Um método com artefatos faltando é reaberto, não encerrado com uma nota prometendo-os para depois. Lena confere a lista no fim de cada janela.
+
+### 24.4 Erros e limites
+
+Copiar a lista de métodos de outra pessoa sem a autorização correspondente é 62443 de culto à carga.
+
+Uma lista de métodos copiada de outra planta ou de um guia publicado pode pressupor autorizações, equipamentos ou tolerâncias de processo que a ABP não tem. Lena adapta cada método à permissão da própria ABP, escreve uma ficha para ele e faz a ficha ser revisada pela engenharia de controle antes do uso. Um método emprestado sem essa revisão é tratado como não autorizado, por mais respeitável que seja a fonte, e fica fora da permissão até ser revisado.
+
+### Nota prática
+
+Congele os métodos durante uma janela do mesmo modo que congela os condutos: métodos novos precisam do caminho AUTH, e não de um "já que estávamos aqui, também tentamos".
+
+### 24.1b Silenciosos versus ruidosos e dependências
+
+Os métodos silenciosos (decodificação somente de escuta, exportação de configuração) cabem em mais janelas. Os métodos ruidosos precisam de limites de taxa mais apertados e, muitas vezes, de horários fora do pico. Codifique as dependências entre métodos no plano, para que as revisões não sejam agendadas contra uma lista de ativos vazia. O plano de Lena lista, para cada método, os métodos anteriores de cujos artefatos ele precisa.
+
+Fichas de método sem o campo "ruidoso" são o motivo de as janelas de lote da manhã ficarem congestionadas. Os métodos ruidosos são reservados contra o cronograma de lotes com uma semana de antecedência, para que o líder de turno saiba quando esperar tráfego extra.
+
+Lena agenda os métodos silenciosos primeiro.
+
+### Nota de campo — o congelamento de métodos na prática
+
+Durante a janela W-17 da ABP, um fornecedor pediu para testar uma função de diagnóstico extra no meio do turno. Lena estacionou o pedido no backlog de planejamento do trabalho seguinte e manteve a ficha de método congelada. O lote terminou sem tráfego inexplicado, e o diagnóstico foi avaliado no mês seguinte, sob uma nova permissão de trabalho com as suas próprias condições de parada.
+
+### Exercícios
+
+- **EX070 — Ficha.** Escreva uma ficha de método para a decodificação Modbus somente de escuta. Rubrica: 3 = todos os campos preenchidos com segurança; 2 = falta um; 1 = inclui escritas/exploits; 0 = nada.
+- **EX071 — Sequência.** O que há de errado na descoberta antes de uma permissão de trabalho assinada? Rubrica: 3 = teste não autorizado; 2 = processo vago; 1 = ordem ruim; 0 = nada.
+- **EX072 — Concluído.** Liste quatro artefatos que encerram um método de revisão de zoneamento. Rubrica: 3 = quatro concretos; 2 = dois; 1 = um; 0 = nada.
+
+### Síntese
+
+Os métodos são autorizados, têm ficha e estão concluídos quando os artefatos existem.
+
+<!-- cyberabc:chapter-navigation:start ch-24 -->
+### Continue estudando — capítulo 24 de 50
+
+[← Capítulo 23](#ch-23) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Ateliê de projeto I
+
+### Objetivos de aprendizagem
+
+Você vai (1) esboçar o pipeline de permitir/negar do monitor serial da ABP; (2) justificar os trade-offs numa breve revisão de projeto; (3) produzir um registro de decisão de uma página.
+
+### 25.1 Problema do ateliê
+
+Projeto: quadro de entrada para decodificação para carga do ConduitSet/lista de permissões para avaliação de permit() para emissão de evento para encaminhar ou descartar. Opções: política embutida no código versus arquivo de dados assinado; alertas síncronos versus assíncronos nas negações.
+
+A equipe de ateliê de Lena na ABP esboça o caminho inteiro numa página e marca onde um quadro é negado se a política estiver ausente. As duas escolhas debatidas foram se a lista de permissões fica no código ou num arquivo de dados assinado, e se os alertas de negação são enviados de forma síncrona ou enfileirados. Cada opção é escrita com as suas consequências antes que alguém defenda uma delas.
+
+### 25.2 Trade-offs
+
+A política como dados assinados permite publicar atualizações sem reimplantar o firmware, mas exige verificação de assinatura e falha fechada em assinaturas ruins. Os alertas assíncronos escalam, mas podem chegar fora de ordem; para as negações no caminho do SIS, prefira o alerta síncrono.
+
+A equipe de Lena concorda que uma assinatura ruim precisa parar todo o tráfego não essencial, exatamente como o requisito S-1 exige para uma política ausente. Os alertas síncronos ficam para as negações de códigos de escrita e para os caminhos ligados ao SIS, onde o atraso importa; as negações rotineiras de leitura são enfileiradas. A equipe também registra o que acontece se a chave de assinatura for perdida: o monitor mantém a última lista válida e alarma, e nenhuma atualização sem assinatura é aceita.
+
+### 25.3 Registro de decisão
+
+Uma página: contexto, opções, decisão, consequências, data, donos. Guarde ao lado do código.
+
+> **Caso sintético — Ashford Batch Plant.** O ateliê escolheu listas de permissões em JSON assinado, caminho síncrono para as negações que tocam códigos de escrita e lote assíncrono para as leituras rotineiras. O ADR-004 registra isso.
+
+O ADR-004 registra nesse formato a decisão do ateliê sobre as listas de permissões em JSON assinado, com Lena e o líder da engenharia de controle como donos. Ele fica no repositório ao lado do código da política, para que qualquer pessoa que mude o carregador possa ler por que ele funciona do jeito que funciona.
+
+### 25.4 Erros e limites
+
+Ateliês que pulam os requisitos de segurança física produzem diagramas bonitos que falham abertos.
+
+O ateliê de Lena se recusa a revisar um projeto até que ele mostre onde o monitor nega o tráfego quando a lista de permissões está ausente ou a sua assinatura falha. Os projetos que não conseguem responder voltam antes de qualquer discussão de layout ou ferramentas. Os cartões de restrição deixam os requisitos de segurança física visíveis na mesa desde o primeiro minuto, para que não sejam esquecidos no entusiasmo por uma arquitetura engenhosa. Os projetos rejeitados também são registrados.
+
+### Nota prática
+
+Os facilitadores pausam a sala com: Onde negamos se a política estiver ausente? Se ninguém souber responder, a arquitetura não está pronta.
+
+### 25.1b Cartões de restrição e galeria
+
+Entregue a cada equipe do ateliê cartões de restrição: residência dos dados, operação por dois engenheiros, falha fechada, nada de pontuações vazias, independência do SIS. Projetos que violam um cartão são rejeitados antes do debate estético. Os ateliês terminam com uma galeria: as equipes expõem os rascunhos de ADR, e as outras tentam achar um caminho de falha aberta em cinco minutos.
+
+Um esboço de ateliê precisa nomear por escrito as fronteiras de confiança, os repositórios de dados e o caminho de falha fechada. Dez minutos rotulando valem mais do que uma hora de layout estético. Os caminhos de falha aberta encontrados na galeria são escritos no ADR antes de ele ser aceito.
+
+### Nota de campo — rotular antes do layout
+
+As equipes de ateliê que passaram os primeiros vinte minutos nomeando os pontos de negação e as fronteiras de confiança produziram ADRs que sobreviveram à revisão. As equipes que começaram pelas paletas de cores redescobriram caminhos de falha aberta durante a galeria. O CNHP agora exige um caminho de falha fechada rotulado na fotografia do quadro branco anexada a todo ADR.
+
+### Exercícios
+
+- **EX073 — Opções.** Duas opções de entrega da política e um risco de cada. Rubrica: 3 = duas + riscos; 2 = opções; 1 = uma; 0 = nada.
+- **EX074 — ADR.** Linha de decisão para os alertas síncronos de negação em códigos de escrita. Rubrica: 3 = decisão clara + porquê; 2 = só a decisão; 1 = vago; 0 = nada.
+- **EX075 — Revisão.** Três perguntas que um revisor precisa fazer. Rubrica: 3 = falha fechada, autenticação da política, orçamento de latência; 2 = duas; 1 = uma; 0 = nada.
+
+### Síntese
+
+O trabalho de ateliê termina numa decisão registrada, não numa impressão.
+
+<!-- cyberabc:chapter-navigation:start ch-25 -->
+### Continue estudando — capítulo 25 de 50
+
+[← Capítulo 24](#ch-24) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Segurança de TO, IoT e sistemas ciberfísicos: alternativas de arquitetura
+
+### Objetivos de aprendizagem
+
+Você vai (1) comparar monitores locais com analytics em nuvem para dados de TO; (2) avaliá-los frente às restrições de residência dos dados e de segurança de processo; (3) escolher uma alternativa rejeitando as outras de forma explícita.
+
+### 26.1 Alternativas
+
+A: monitores seriais/IP locais com detectores locais. B: coleta local com analytics no historiador do site. C: SaaS de analytics em nuvem recebendo valores de processo. Cada uma atende a restrições diferentes.
+
+Lena descreve cada opção para a ABP com a mesma estrutura: para onde vão os dados de processo, quem a opera, como ela falha e quanto custa. A opção C enviaria valores de processo para fora do site, o que levanta de imediato questões de residência dos dados e de confidencialidade das receitas. As opções A e B mantêm os dados no site, mas diferem na rapidez com que conseguem impor decisões no caminho de escrita.
+
+### 26.2 Critérios
+
+Independência da segurança de processo, residência dos dados, comportamento de falha fechada, operabilidade pela equipe do site, custo. Dê mais peso à segurança física e à residência do que à novidade.
+
+Lena acorda os pesos com o engenheiro de segurança de processo e com o gerente da planta antes de pontuar. A independência da segurança física e a residência dos dados têm o maior peso, porque uma falha ali não pode ser desfeita por correções posteriores. Cada opção é pontuada com evidências, e as opções que reprovam num critério de segurança física são rejeitadas, quaisquer que sejam as suas outras notas. Os pesos são publicados na análise, para que os revisores possam contestá-los.
+
+### 26.3 Decisão
+
+A ABP rejeitou a C porque as tendências próximas às receitas não podem sair do site sem uma exceção no nível do conselho. Escolheu a A para a imposição no caminho de escrita, com a B para a pesquisa de detecção de prazo mais longo sobre réplicas.
+
+> **Caso sintético — Ashford Batch Plant.** Uma demonstração da C por um fornecedor parecia caprichada; o jurídico e a segurança de processo bloquearam o upload irrestrito. O ADR-011 registra a rejeição.
+
+O ADR-011 registra essa decisão. As razões são curtas: a opção A impõe as decisões localmente no caminho de escrita e pode ser operada pelos engenheiros do site; a opção B acrescenta pesquisa de detecção, mas exige competências que o turno da noite não tem, então fica para o trabalho diurno sobre réplicas. A opção C continua rejeitada até que as regras de residência mudem, que é o seu gatilho de revisão registrado.
+
+### 26.4 Erros e limites
+
+Uma análise de alternativas que ignora as cláusulas de dados da permissão de trabalho é teatro.
+
+Na ABP, as cláusulas de dados da permissão proíbem que valores de processo saiam do site sem uma exceção no nível do conselho, então a opção C reprovou antes de qualquer comparação técnica. Lena registra essa restrição no topo da análise, para que os leitores vejam por que a C foi rejeitada sem ler a pontuação. Uma análise que tivesse dado nota alta à C ignorando a permissão teria desperdiçado o tempo do conselho e poderia ter pressionado alguém a conceder uma exceção.
+
+### Nota prática
+
+Documente as competências que cada alternativa exige. Um pipeline em nuvem que ninguém no site consegue operar falha aberto socialmente, mesmo que falhe fechado tecnicamente.
+
+### 26.1b Custo, competências e gatilhos de revisão
+
+Inclua o custo anual aproximado e as competências que cada alternativa exige. Uma opção que precisa de seis pessoas em tempo integral para operar com falha fechada não é gratuita. Termine a análise de alternativas com uma decisão, as opções rejeitadas com as razões e um gatilho de revisão (reabrir se a lei de residência mudar).
+
+Os custos de troca importam: um monólito que já exporta listas de permissões assinadas pode crescer para serviços; um contrato de SaaS com exceções de residência é mais difícil de desfazer no meio de um incidente. Prefira opções que mantenham uma saída de emergência offline para negar/permitir.
+
+O ADR-011 declara o seu gatilho de revisão.
+
+### Nota de campo — pressupostos de competência
+
+O caminho de analytics da opção B pressupunha um engenheiro do site que entendesse a ordenação de eventos. A ABP não tinha essa pessoa à noite. Até que as contratações chegassem, Lena manteve a imposição no caminho de escrita na opção A e limitou a B à pesquisa diurna sobre réplicas. Uma arquitetura que pressupõe competências indisponíveis falha aberta socialmente.
+
+### Exercícios
+
+- **EX076 — Critério.** Acrescente um critério para os dados do SIS e pontue A/B/C. Rubrica: 3 = critério sensato + notas; 2 = critério; 1 = vago; 0 = nada.
+- **EX077 — Rejeitar a C.** Frase de rejeição com razão de residência/segurança física. Rubrica: 3 = clara; 2 = parcial; 1 = só custo; 0 = aceita a C.
+- **EX078 — Contingência.** Quando a A puramente local é o ambiente de execução certo? Rubrica: 3 = queda da WAN / exercício de isolamento; 2 = vago; 1 = sempre; 0 = nunca.
+
+### Síntese
+
+Escolha a arquitetura frente a restrições ponderadas; registre as opções rejeitadas.
+
+<!-- cyberabc:chapter-navigation:start ch-26 -->
+### Continue estudando — capítulo 26 de 50
+
+[← Capítulo 25](#ch-25) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Segurança de TO, IoT e sistemas ciberfísicos: projeto de controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar controles preventivos, detectivos e corretivos para o CNHP; (2) ligar os controles aos requisitos; (3) evitar controles que exijam competências de exploit para serem operados.
+
+### 27.1 Três tipos
+
+Preventivo: lista de permissões antes do encaminhamento. Detectivo: alerta sobre códigos de escrita negados. Corretivo: desativar automaticamente uma conta de engenharia comprometida no fim da janela. Cada um corresponde a um id de requisito.
+
+Na ABP, a lista de permissões no monitor serial é preventiva, o alerta quando a HMI-1 tenta escrever fora de 40001 a 40010 é detectivo, e a desativação das contas temporárias de engenharia no fim de cada janela é corretiva. Lena registra o id do requisito ao lado de cada controle, para que um revisor veja qual requisito falha se o controle for removido ou enfraquecido.
+
+### 27.2 Competência do operador
+
+Os controles precisam ser operáveis por engenheiros que seguem runbooks — não só por especialistas em exploits. Um controle que exige shellcode sob medida para ser verificado é o controle errado para este programa.
+
+Lena escreve uma entrada de runbook para cada controle do CNHP, descrevendo como verificá-lo com ferramentas comuns, como reproduzir um quadro sintético na bancada e ler o log de decisões. Se um controle só pode ser verificado por alguém escrevendo código de exploit, ela o substitui por um que possa ser conferido com segurança pelos próprios engenheiros do site no trabalho de rotina.
+
+### 27.3 Compensação
+
+Se um CLP legado não consegue impor listas de permissões, acrescente monitoramento detectivo e uma aprovação humana mais rígida para o acesso de engenharia. Documente a compensação na permissão de trabalho.
+
+```python
+"""Lab: Modbus function-code allow-list on synthetic, already-decoded requests (no network)."""
+ALLOW = {("HMI-1", 3), ("HMI-1", 6), ("HIST-1", 3), ("HIST-1", 4)}  # (source, function code)
+WRITE_REGS = {("HMI-1", 6): range(40001, 40011)}                     # HMI may write setpoints only
+reqs = [("HMI-1", 3, 40001), ("HMI-1", 6, 40003), ("HMI-1", 6, 40050),
+        ("HIST-1", 3, 30001), ("HIST-1", 16, 40001), ("ENG-WS", 8, 0), ("HIST-1", 4, 30010)]
+for src, fc, reg in reqs:
+    if (src, fc) not in ALLOW:
+        d = "BLOCK fc-not-allowed"
+    elif (src, fc) in WRITE_REGS and reg not in WRITE_REGS[(src, fc)]:
+        d = "BLOCK register-out-of-range"
+    else:
+        d = "PASS"
+    print(f"{src:7} fc={fc:2} reg={reg:5} -> {d}")
+```
+
+Saída esperada:
+
+```text
+HMI-1   fc= 3 reg=40001 -> PASS
+HMI-1   fc= 6 reg=40003 -> PASS
+HMI-1   fc= 6 reg=40050 -> BLOCK register-out-of-range
+HIST-1  fc= 3 reg=30001 -> PASS
+HIST-1  fc=16 reg=40001 -> BLOCK fc-not-allowed
+ENG-WS  fc= 8 reg=    0 -> BLOCK fc-not-allowed
+HIST-1  fc= 4 reg=30010 -> PASS
+```
+
+> **Caso sintético — Ashford Batch Plant.** Escritas fora de 40001-40010 são negadas — uma barreira preventiva com um evento detectivo quando alguém tenta.
+
+Na ABP, a compensação é escrita na permissão de trabalho com um dono e uma data de revisão, para que seja conferida, e não presumida. Para um CLP legado que não consegue impor uma lista de permissões, Lena combina monitoramento detectivo no seu tronco com aprovação por duas pessoas para o acesso de engenharia.
+
+### 27.4 Erros e limites
+
+Pilhas de controles compensatórios sem dono viram alertas ignorados.
+
+O registro de controles de Lena lista cada controle compensatório da ABP com o seu dono, os seus alertas e a data do último teste. Um controle encontrado sem dono recebe um antes da janela seguinte, ou é retirado do registro e o seu requisito é marcado como não atendido. Controles que ninguém observa são contados como ausentes, porque os seus alertas serão ignorados quando finalmente dispararem. A titularidade é revista em cada dia de saúde.
+
+### Nota prática
+
+Programe um dia trimestral de saúde dos controles: quebre cada controle preventivo num laboratório sintético e confirme que os controles detectivos disparam. Controles não testados são desejos.
+
+### 27.1b Titularidade e detecção da quebra de vidro
+
+Todo controle tem um dono que recebe os seus alertas e uma data de revisão. Registre quando um operador usa a quebra de vidro para pular a dupla aprovação. Uma quebra de vidro sem detecção é só um controle único escondido. A revisão semanal dos eventos de quebra de vidro faz parte do projeto do controle, e cada revisão nomeia quem usou a quebra de vidro e o motivo informado.
+
+A entrada de cada controle no registro também declara como ele falha: se uma lista de permissões quebrada bloqueia ou deixa passar o tráfego decide qual alerta detectivo precisa disparar primeiro e quem é acionado quando ele dispara.
+
+### Nota de campo — dia de saúde dos controles
+
+No dia de saúde de março, a equipe apagou a lista de permissões de um monitor de bancada e confirmou que o alerta detectivo disparou em 12 segundos. O caminho preventivo negou as escritas imediatamente. Um controle compensatório de um CLP legado não tinha dono; recebeu um antes da janela seguinte.
+
+### Exercícios
+
+- **EX079 — Mapa.** Um controle preventivo e um detectivo contra a adulteração de evidências. Rubrica: 3 = os dois; 2 = um; 1 = vago; 0 = nada.
+- **EX080 — Operável.** Por que "verificar explorando de novo" é um controle ruim? Rubrica: 3 = uso dual + instável + competência errada; 2 = uma razão; 1 = vago; 0 = defende.
+- **EX081 — Laboratório.** Qual regra bloqueia HIST-1 fc=16? Rubrica: 3 = fc-not-allowed; 2 = negação vaga; 1 = errada; 0 = nada.
+
+### Síntese
+
+Os controles são preventivos/detectivos/corretivos, têm dono e são operáveis sem exploits.
+
+<!-- cyberabc:chapter-navigation:start ch-27 -->
+### Continue estudando — capítulo 27 de 50
+
+[← Capítulo 26](#ch-26) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Segurança de TO, IoT e sistemas ciberfísicos: implementação I
+
+### Objetivos de aprendizagem
+
+Você vai (1) implementar permit() com códigos de motivo explícitos; (2) acrescentar testes para cada cláusula; (3) registrar logs sem armazenar segredos.
+
+### 28.1 Forma da implementação
+
+Função pura: entradas origem, código de função, registrador e AllowListVersion, saída (allow: bool, reason: str). Nenhuma E/S de rede dentro do predicado. Isso mantém os testes rápidos e livres de contato com a planta.
+
+A função permit de Lena na ABP segue exatamente essa forma: recebe os campos do quadro decodificado e a versão da lista de permissões e devolve uma decisão com um motivo. A carga da lista de permissões e a escrita dos logs acontecem fora da função, então os seus testes rodam em milissegundos sobre dados sintéticos e nunca arriscam contato com a planta.
+
+### 28.2 Testes por cláusula
+
+Um arquivo de teste por cláusula: permissão da estação, código de função, faixa de registradores, política indisponível. Apenas dados de teste sintéticos. Mutação: quebre uma cláusula e veja o teste falhar.
+
+```python
+"""Lab: Modbus function-code allow-list on synthetic, already-decoded requests (no network)."""
+ALLOW = {("HMI-1", 3), ("HMI-1", 6), ("HIST-1", 3), ("HIST-1", 4)}  # (source, function code)
+WRITE_REGS = {("HMI-1", 6): range(40001, 40011)}                     # HMI may write setpoints only
+reqs = [("HMI-1", 3, 40001), ("HMI-1", 6, 40003), ("HMI-1", 6, 40050),
+        ("HIST-1", 3, 30001), ("HIST-1", 16, 40001), ("ENG-WS", 8, 0), ("HIST-1", 4, 30010)]
+for src, fc, reg in reqs:
+    if (src, fc) not in ALLOW:
+        d = "BLOCK fc-not-allowed"
+    elif (src, fc) in WRITE_REGS and reg not in WRITE_REGS[(src, fc)]:
+        d = "BLOCK register-out-of-range"
+    else:
+        d = "PASS"
+    print(f"{src:7} fc={fc:2} reg={reg:5} -> {d}")
+```
+
+Saída esperada:
+
+```text
+HMI-1   fc= 3 reg=40001 -> PASS
+HMI-1   fc= 6 reg=40003 -> PASS
+HMI-1   fc= 6 reg=40050 -> BLOCK register-out-of-range
+HIST-1  fc= 3 reg=30001 -> PASS
+HIST-1  fc=16 reg=40001 -> BLOCK fc-not-allowed
+ENG-WS  fc= 8 reg=    0 -> BLOCK fc-not-allowed
+HIST-1  fc= 4 reg=30010 -> PASS
+```
+
+Lena mantém um arquivo de teste por cláusula para a função permit da ABP, com os dados de teste nomeados pelo requisito que conferem. Os testes de mutação confirmaram que cada arquivo falha quando a sua cláusula é quebrada: apagar a verificação da faixa de registradores, por exemplo, fez os testes de fora da faixa falharem na hora. Uma cláusula cujos testes sobrevivem a uma mutação é tratada como não testada.
+
+### 28.3 Logging
+
+Registre a decisão, o motivo, a versão da política e o ator. Não registre senhas nem payloads completos de quadros que possam conter dados proprietários de receitas. Redija o que for necessário.
+
+> **Caso sintético — Ashford Batch Plant.** A implementação I entregou códigos de motivo que a interface de linha do tempo mostra — os operadores finalmente viram por que uma escrita foi bloqueada às 03:12.
+
+Os logs de Lena mostram qual versão da política tomou cada decisão. Os payloads dos quadros ficam de fora porque podem conter valores de receitas. Lena confere uma amostra dos logs depois de cada versão, para confirmar que nada sensível escapou.
+
+### 28.4 Erros e limites
+
+Motivos em texto livre derivam; use um enum compartilhado com o painel de cobertura.
+
+A implementação de Lena usa uma lista compartilhada de códigos de motivo, como register-out-of-range e policy-unavailable, publicada como documento versionado. O painel de cobertura e a visão de linha do tempo leem a mesma lista, então um código novo não pode aparecer nos logs sem ser entendido nos outros lugares. Os consumidores que veem um código desconhecido o tratam como negação e geram um alerta para o dono da ferramenta. O documento é revisto a cada mudança do predicado.
+
+### Nota prática
+
+Faça fuzzing do predicado com estações, códigos e UTF-8 quebrado aleatórios. Ele precisa negar (DENY) ou dar erro de forma fechada, nunca permitir (ALLOW) numa falha de parsing.
+
+### 28.1b Catálogo de motivos e fuzzing
+
+O catálogo lista, para cada código de motivo, a cláusula que o emite e o teste que o fixa: fc-not-allowed, register-out-of-range, policy-unavailable, station-unknown. As entradas de fuzzing que um dia encontraram um defeito entram numa lista de regressão reproduzida em cada versão, com a semente que as produziu.
+
+As listas de verificação da revisão de código para mudanças no predicado incluem: nova cláusula, novos testes, documentação dos códigos de motivo, caso de fuzzing, falha fechada em erro de parsing. Revisores que pulam a lista estão fazendo revisão social, não revisão de segurança.
+
+A lista de verificação de Lena é anexada a toda revisão do predicado.
+
+### Nota de campo — achados do fuzzing
+
+Um harness de fuzzing de cinco minutos lançou um nome de estação em UTF-8 que antes fazia o decodificador cair numa exceção não tratada — que o chamador tratava como ALLOW. A correção passou a retornar DENY parse-error, e o harness agora roda na integração contínua a cada mudança do predicado.
+
+### 28.5 Exemplo resolvido — um teste de cláusula que pegou um defeito real (ABP sintética)
+
+Cada cláusula da função permit tem o seu próprio teste: origem permitida, código de função permitido, registrador na faixa, negação por padrão. O harness de fuzzing de Lena então alimenta 10.000 triplas aleatórias (origem, função, registrador), tiradas de um gerador com semente, e afirma que todo PASS satisfaz todas as cláusulas. Na primeira execução, ele descobriu que o código de função 23 (leitura/escrita de múltiplos registradores) passava para a HMI-1, porque a implementação verificava apenas a metade de leitura do pedido. A correção rejeita o 23 a menos que ele esteja listado explicitamente, um teste de cláusula agora o fixa, e a nota do incidente registra qual semente reproduziu a falha, para que qualquer pessoa possa rodá-la de novo.
+
+### Exercícios
+
+- **EX082 — Assinatura.** Assinatura de tipos de permit e por que AllowListVersion é um argumento. Rubrica: 3 = assinatura + razão da fixação da versão; 2 = assinatura; 1 = vago; 0 = nada.
+- **EX083 — Mutação.** Qual teste falha se a faixa de registradores for ignorada? Rubrica: 3 = 40050 espera BLOCK; 2 = vago; 1 = errado; 0 = nada.
+- **EX084 — Redação.** Dois campos de log a redigir. Rubrica: 3 = por exemplo, senhas, payloads completos com receitas; 2 = um; 1 = vago; 0 = nada.
+
+### Síntese
+
+Predicado puro, testes por cláusula, logs seguros.
+
+<!-- cyberabc:chapter-navigation:start ch-28 -->
+### Continue estudando — capítulo 28 de 50
+
+[← Capítulo 27](#ch-27) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Segurança de TO, IoT e sistemas ciberfísicos: medição
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir a cobertura com um denominador; (2) separar as métricas de atividade das métricas de resultado; (3) avaliar detectores por classe de ataque e com intervalos (lições de Urbina/Giraldo).
+
+### 29.1 A cobertura precisa de um plano
+
+A cobertura do ATT&CK for ICS é o observado intersectado com o planejado sobre o planejado, não o observado sobre todas as técnicas. Sem um plano, a cobertura é vaidade.
+
+Na ABP, Lena escreve o plano das técnicas a testar antes de cada avaliação, e o painel de cobertura conta apenas essas. As técnicas observadas fora do plano são relatadas à parte. O número de 31 das 44 técnicas planejadas observadas significa algo porque as 44 foram escolhidas antecipadamente e o guia de planejamento é publicado com o painel. O plano é fixado antes dos testes.
+
+### 29.2 Atividade versus resultado
+
+Atividade: quadros decodificados, ferramentas executadas. Resultado: remediações verificadas, alcançabilidade do SIS ainda falsa, taxa de alarmes falsos na taxa de base da planta. Conduza pelos resultados.
+
+O relatório mensal do CNHP feito por Lena começa pelos resultados: remediações verificadas por novo teste, se o SIS-B continua inalcançável a partir do L4 e a taxa de alarmes falsos do detector na taxa de base da ABP. As contagens de atividade, como quadros decodificados, aparecem apenas num apêndice de capacidade. Conduzir pela atividade premiaria rodar mais ferramentas, e não corrigir mais problemas. Os resultados são o que o gerente da planta financia.
+
+### 29.3 Honestidade dos detectores
+
+Relate os intervalos de alarmes falsos, o atraso de detecção e a classe de ataque. Um detector de banda que perde ataques furtivos sobre o resíduo não equivale a um CUSUM que os pega — o laboratório torna isso visível.
+
+```python
+# Lab 27 - residual CUSUM vs band on batch reactor level (synthetic)
+import random
+def run(seed, atk, det, k=0.8, h=6.0):
+    rng=random.Random(seed); true=est=50.0; s=0.0; alarm=None
+    for t in range(500):
+        inflow=1.0+rng.gauss(0,0.05)+(0.08 if atk and t>=250 else 0)
+        true+=inflow-0.02*true
+        lvl=true+rng.gauss(0,0.3); fm=inflow+rng.gauss(0,0.02)
+        if atk and t>=250: lvl=50+rng.gauss(0,0.3)
+        if atk=="B" and t>=250: fm=1.0+rng.gauss(0,0.02)
+        est+=fm-0.02*est
+        hit=abs(lvl-50)>2.0 if det=="band" else False
+        if det=="cusum":
+            s=max(0.0,s+abs(lvl-est)-k); hit=s>h
+        if hit and alarm is None: alarm=t
+    return alarm
+for det in ("band","cusum"):
+    fa=sum(run(i,None,det) is not None for i in range(60))
+    for atk in ("A","B"):
+        hits=[a-250 for a in (run(i,atk,det) for i in range(60)) if a is not None and a>=250]
+        print(f"{det} class{atk} FA={fa}/60 det={len(hits)}/60 mean_delay={sum(hits)/len(hits) if hits else float('nan'):.1f}")
+```
+
+Saída esperada:
+
+```text
+band classA FA=0/60 det=0/60 mean_delay=nan
+band classB FA=0/60 det=0/60 mean_delay=nan
+cusum classA FA=0/60 det=60/60 mean_delay=24.8
+cusum classB FA=0/60 det=0/60 mean_delay=nan
+```
+
+> **Caso sintético — Ashford Batch Plant.** O CNHP relata a cobertura das técnicas planejadas e os alarmes falsos/atraso dos detectores por classe — não um único "percentual seguro".
+
+O relatório piloto de Lena para a ABP lista os resultados por classe de ataque. Cada classe tem o seu próprio intervalo de alarmes falsos e o seu atraso médio, para que um leitor veja que o CUSUM pegou os ataques furtivos sobre o resíduo que o detector de banda perdeu.
+
+### 29.4 Erros e limites
+
+Denominadores tirados de outra planta invalidam a métrica. Ataques sintéticos não são o adversário.
+
+Lena nunca toma emprestado um denominador do plano de outro site, porque as técnicas, os ativos e os processos da ABP são diferentes. Se for necessária uma comparação com outra planta, os dois sites precisam usar as mesmas regras de planejamento, e o relatório diz isso. Ela também declara em cada relatório que os ataques sintéticos representam classes escolhidas, não o comportamento de um adversário real, para que os leitores não superestimem os números de detecção. As duas ressalvas aparecem em todo relatório.
+
+### Nota prática
+
+Ponha a fórmula e o id da planta na legenda de todo widget do painel. Um widget sem fórmula é decoração e deve ser removido na revisão.
+
+### 29.1b Amostragem e comparações entre coortes
+
+Se você amostrar 50 de 500 ativos, diga isso e não escale as constatações como se tivesse visitado os 500. Comparar a cobertura entre janelas exige as mesmas regras de planejamento. Publique o guia de planejamento ao lado do painel de cobertura, para que 71% em março signifique o mesmo tipo de denominador que 71% em setembro.
+
+A seleção da amostra é registrada com a sua semente ou regra, para que os mesmos ativos possam ser revisitados no novo teste. Prefira métricas que subestimam o sucesso, como contar uma correção apenas depois do novo teste.
+
+O guia de planejamento da ABP é publicado ao lado do painel.
+
+### Nota de campo — linhas de metodologia nos gráficos
+
+Quando o CNHP mudou as regras de planejamento em junho, os gráficos no estilo Pulse ganharam uma linha vertical rotulada methodology_id=2026-06. A liderança parou de comparar os 80% de maio com os 70% de julho como se tivessem o mesmo denominador. A honestidade na legenda do gráfico evitou uma falsa narrativa de declínio.
+
+### Exercícios
+
+- **EX085 — Fórmula.** Escreva a fórmula da cobertura e explique um denominador ruim. Rubrica: 3 = denominador planejado + exemplo do mau uso de todo o ICS; 2 = fórmula; 1 = vaidade; 0 = nada.
+- **EX086 — Laboratório.** Compare banda e CUSUM na classe A numa frase. Rubrica: 3 = o CUSUM detecta, a banda não, alarmes falsos 0 nos dois na amostra; 2 = parcial; 1 = errado; 0 = nada.
+- **EX087 — Subestimar.** Um desenho que subestima o sucesso. Rubrica: 3 = exigir novo teste antes de encerrar; 2 = parcial; 1 = vago; 0 = nada.
+
+### Síntese
+
+Planeje o denominador; meça os resultados; avalie os detectores por classe, com intervalos.
+
+<!-- cyberabc:chapter-navigation:start ch-29 -->
+### Continue estudando — capítulo 29 de 50
+
+[← Capítulo 28](#ch-28) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Laboratório de verificação I
+
+### Objetivos de aprendizagem
+
+Você vai (1) executar um plano de verificação contra o monitor e o zoneamento da ABP; (2) registrar aprovação/reprovação com os hashes das evidências; (3) parar o laboratório se um teste de segurança física falhar.
+
+### 30.1 Plano
+
+Testes: permitir as leituras no escopo; negar códigos de função ruins; negar escritas fora da faixa; falha fechada com política ausente; alcançabilidade do SIS a partir do L4 é falsa; tempo de ciclo dentro do orçamento com o tap. Cada linha: id, preparação, ação, esperado, caminho da evidência.
+
+Na ABP, cada linha do plano nomeia o requisito que confere, como o S-1 para a linha da política ausente e o R-12 para a linha da alcançabilidade. A linha do tempo de ciclo usa a cópia de bancada do tronco até o PLC-A com o tap instalado, conferindo se o tempo fica bem abaixo da parada em 50 ms. As linhas são escritas antes de o laboratório rodar.
+
+### 30.2 Execução
+
+Use apenas hosts sintéticos e bancadas. Capture o stdout e os hashes de configuração. Qualquer falha de segurança física (falha aberta ou SIS alcançável) para o laboratório e abre um bloqueio — nada de continuar para juntar dados.
+
+```python
+# Lab 23 - reachability count on a synthetic Purdue-layered OT network
+# Nodes: L5-ERP, L4-Office, L3.5-DMZ, L3-Hist, L2-SCADA, L1-PLC, L1-SIS, L0-IO
+edges_flat=[("L5","L4"),("L4","L3"),("L3","L2"),("L2","L1-PLC"),("L2","L1-SIS"),("L1-PLC","L0"),("L1-SIS","L0"),("L4","L2")]
+edges_zoned=[("L5","L4"),("L4","L3.5"),("L3.5","L3"),("L3","L2"),("L2","L1-PLC"),("L1-SIS","L0"),("L1-PLC","L0")]  # SIS not reachable from SCADA
+def reach(edges, start):
+    g={}; 
+    for a,b in edges: g.setdefault(a,[]).append(b)
+    seen=set(); stack=[start]
+    while stack:
+        n=stack.pop()
+        if n in seen: continue
+        seen.add(n); stack.extend(g.get(n,[]))
+    return seen
+for name,e in (("flat",edges_flat),("zoned",edges_zoned)):
+    r=reach(e,"L4")
+    print(f"{name}: L4 reaches {sorted(r)} count={len(r)} writes_to_SIS={'L1-SIS' in r}")
+```
+
+Saída esperada:
+
+```text
+flat: L4 reaches ['L0', 'L1-PLC', 'L1-SIS', 'L2', 'L3', 'L4'] count=6 writes_to_SIS=True
+zoned: L4 reaches ['L0', 'L1-PLC', 'L2', 'L3', 'L3.5', 'L4'] count=6 writes_to_SIS=False
+```
+
+O laboratório de Lena na ABP roda no ambiente de bancada, com hosts e dados de teste sintéticos. Quando a linha da política ausente reprovou uma vez, o laboratório parou e um bloqueio foi aberto contra o S-1; nenhuma outra linha rodou até a correção, porque continuar teria produzido resultados sobre um monitor já sabidamente inseguro.
+
+### 30.3 Relatório
+
+Relatório de laboratório de uma página: versões do ambiente, tabela de resultados, bloqueios abertos, assinatura. Anexe os hashes.
+
+> **Caso sintético — Ashford Batch Plant.** O Laboratório I reprovou uma vez na linha da política ausente; a versão foi suspensa até que o S-1 fosse corrigido.
+
+O relatório de Lena de cada execução do Laboratório I lista as versões das ferramentas, o hash do conjunto de dados de teste, o resultado de cada linha e eventuais bloqueios abertos, e é assinado pelo executor independente. Os hashes dos logs e das exportações são anexados, para que um revisor possa confirmar que a evidência confere com o que foi executado. Um relatório sem hashes não é evidência.
+
+### 30.4 Erros e limites
+
+Laboratórios em bancadas compartilhadas colidem; reserve o ambiente sintético.
+
+Lena reserva o ambiente de bancada da ABP para cada execução de laboratório no calendário compartilhado, com a versão sob teste na reserva. Duas equipes uma vez rodaram builds diferentes na mesma bancada em horários sobrepostos, e os seus logs ficaram impossíveis de separar. Desde então, uma execução sem reserva não conta como evidência de versão, e a bancada é restaurada para um estado conhecido antes de cada execução reservada. Reservar leva minutos.
+
+### Nota prática
+
+O Laboratório I é executado por alguém que não implementou a mudança sob teste. A aprovação registrada precisa de um checklist verde independente.
+
+### 30.1b Dados de teste de referência e inventário
+
+Mantenha um diretório lacrado de dados de teste sintéticos com decisões esperadas conhecidas. As execuções do laboratório precisam conferir o hash do conjunto de dados de teste antes de contarem como evidência de versão. Fotografe ou exporte o inventário do ambiente de laboratório para o relatório. "Passou na minha máquina" sem inventário não é evidência transferível.
+
+As mudanças nos dados de teste são revisadas como código: uma nova decisão esperada precisa nomear o requisito de onde vem. Os logs dos resultados do laboratório são evidência; guarde-os com a tag da versão.
+
+O conjunto de dados de teste de Lena é lacrado e tem hash.
+
+### Nota de campo — verde independente
+
+O implementador de uma correção urgente se ofereceu para rodar o Laboratório I para ganhar tempo. O revisor recusou, rodou pessoalmente as linhas de segurança física e encontrou um caminho que ainda permitia (ALLOW) quando o arquivo de política era um diretório, e não um arquivo. Executores independentes pegam os pressupostos que os autores deixam de ver.
+
+### 30.5 Exemplo resolvido — lendo um resultado de laboratório com honestidade (ABP sintética)
+
+O Laboratório I reproduz um dia gravado de tráfego da ABP mais 40 tentativas de escrita injetadas, passando pela função permit e pela lógica de alarmes. Resultados: 40 de 40 escritas injetadas bloqueadas; 2 escritas legítimas de engenharia bloqueadas porque a estação de engenharia faltava na lista de permissões durante o comissionamento; 0 alarmes suprimidos. Lena relata os dois bloqueios falsos como um defeito de projeto, não como ruído — numa planta em operação, eles teriam impedido uma mudança de receita programada — e acrescenta um conjunto de vetores para o modo de comissionamento. O relatório do laboratório declara o que não foi testado: desempenho sob carga, enlaces seriais e o SIS-B, que está fora do escopo por projeto.
+
+### Exercícios
+
+- **EX088 — Linha.** Escreva a linha de laboratório da falha fechada. Rubrica: 3 = linha completa; 2 = parcial; 1 = vago; 0 = nada.
+- **EX089 — Parada.** O que acontece se o SIS for alcançável a partir do L4? Rubrica: 3 = parar, bloqueio, nenhum uso na planta; 2 = só uma nota; 1 = continuar; 0 = nada.
+- **EX090 — Evidência.** Três hashes a anexar. Rubrica: 3 = política, binário/versão, log de resultados; 2 = dois; 1 = um; 0 = nada.
+
+### Síntese
+
+Verifique a segurança física primeiro; pare na falha aberta ou na exposição do SIS; calcule o hash de tudo.
+
+<!-- cyberabc:chapter-navigation:start ch-30 -->
+### Continue estudando — capítulo 30 de 50
+
+[← Capítulo 29](#ch-29) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 31 (inglês) →](../../en/book/MANUSCRIPT.md#ch-31)
 
 Os próximos capítulos ainda estão apenas na edição em inglês.
 <!-- cyberabc:chapter-navigation:end -->
@@ -1483,7 +2313,7 @@ Os próximos capítulos ainda estão apenas na edição em inglês.
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX150. A Ashford Batch Plant, Lena Okafor, o CNHP e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação. Esta edição parcial traz as resoluções de EX001–EX060; as de EX061–EX150 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Respostas-modelo para EX001–EX150. A Ashford Batch Plant, Lena Okafor, o CNHP e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação. Esta edição parcial traz as resoluções de EX001–EX090; as de EX091–EX150 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
 
 **EX001.** (9 − 1,5) / 1,25 = 7,5 / 1,25 = 6,0 horas.
 
@@ -1604,6 +2434,66 @@ Respostas-modelo para EX001–EX150. A Ashford Batch Plant, Lena Okafor, o CNHP 
 **EX059.** Projetar e operar um programa autorizado de endurecimento da rede de controle que imponha zonas e listas de permissões, meça a detecção com honestidade e nunca ponha em risco a segurança de processo nem exceda a permissão de trabalho assinada.
 
 **EX060.** Exploits funcionais para CLPs; varredura de plantas em operação sem permissão de trabalho; exportação da genealogia proprietária de lotes para os laboratórios; desativação do SIS para facilitar um teste.
+
+**EX061.** Funcional: "Nenhuma exportação do firewall deverá conter um caminho do L4 para o L1-SIS; verificar pela alcançabilidade na integração contínua." Segurança física: "Se a política não puder ser carregada, o ponto de imposição deverá negar novas sessões e alarmar em até 30 s."
+
+**EX062.** Dado o caminho da lista de permissões configurado, mas o arquivo ausente; Quando houver qualquer chamada a permit(); Então o resultado é DENY com o motivo policy-unavailable e um alerta dispara; nenhum quadro de escrita é encaminhado.
+
+**EX063.** Conflito: os operadores querem visualização direta do L4 para o L2; a segurança física e a da informação não querem nenhuma aresta do L4 para o L2. Regra escolhida: visualização apenas pela réplica do historiador no L3.5; regra direta proibida; quebra de vidro documentada à parte.
+
+**EX064.** Edições no lugar apagam quais condutos estavam em vigor no momento t; o versionamento permite que uma constatação aponte para o conjunto de regras autorizado quando a observação foi feita.
+
+**EX065.** Recalcular o hash detecta mudanças; arquivos idênticos se fundem; os tickets referenciam bytes imutáveis.
+
+**EX066.** Rejeitar títulos que casem com padrões de atribuição de senha ou com segredos de alta entropia; os revisores ainda conferem; apenas referências ao cofre nos metadados da evidência.
+
+**EX067.** Implantar com o caminho da lista de permissões apontando para uma montagem vazia; chamar permit(); esperar DENY policy-unavailable e um alerta; nenhum quadro encaminhado.
+
+**EX068.** Todo evento de negação guarda o id do ator autenticado e a versão da política; o armazenamento é somente de acréscimo; exclusões exigem quebra de vidro com controle duplo.
+
+**EX069.** O STRIDE do programa protege a integridade da avaliação e a segurança de processo; módulos de exploit aumentam o dano de uso dual e violam a fronteira do curso — não são mitigações.
+
+**EX070.** Nome: decodificação Modbus somente de escuta. Propósito: verificar as decisões da lista de permissões. Privilégio: acesso ao tap, sem injeção. Ruidoso: baixo. Impacto: apenas latência. Parada: tempo de ciclo >50 ms ou alarme de processo. Artefatos: tabela de decisões, hash de configuração, log de tempo de ciclo.
+
+**EX071.** Ações sem uma permissão de trabalho assinada não são autorizadas; é uma falha legal, ética e de segurança de processo, qualquer que seja a intenção.
+
+**EX072.** Hash do diagrama de zonas atualizado; relatório de alcançabilidade; hash da exportação do firewall; rascunhos de constatações ou um explícito "nenhuma encontrada", com nota de cobertura.
+
+**EX073.** Arquivo JSON assinado: risco = os operadores esquecerem de assinar ou de verificar. Política embutida no código: risco = reimplantações a cada mudança da lista de permissões, deriva entre dispositivos.
+
+**EX074.** As decisões de negação em códigos de função de escrita alertam de forma síncrona antes do encaminhamento, para que as condições de parada cumpram a meta do sensor; as leituras permitidas podem ser enfileiradas de forma assíncrona.
+
+**EX075.** Ele falha de forma fechada? Quem pode publicar a política? Qual é a latência acrescentada no tronco mais lento?
+
+**EX076.** Critério: o estado do SIS nunca sai do L1 sem a chave seletora. A alta, se os monitores ficarem locais; B média, se a réplica excluir o SIS; C baixa, se os uploads incluírem tags de segurança física.
+
+**EX077.** Opção C rejeitada: dados de processo e próximos às receitas sairiam da fronteira de residência do site exigida pela política da ABP e pela cláusula de dados da permissão de trabalho.
+
+**EX078.** Quando a WAN do site cai ou o caminho para a nuvem está fora da permissão — rodar apenas as listas de permissões e os detectores locais, com registro manual das constatações.
+
+**EX079.** Preventivo: bucket lacrado somente de acréscimo, com IAM de escrita única. Detectivo: rotina agendada que recalcula os hashes e alerta em caso de divergência.
+
+**EX080.** Exige competência de uso dual, não é determinístico e pode ferir o processo; prefira reler a configuração ou testar a lista de permissões.
+
+**EX081.** (HIST-1, 16) não está em ALLOW, então BLOCK fc-not-allowed — os historiadores não podem escrever múltiplos registradores.
+
+**EX082.** permit(source, fc, register, allow_list: AllowListVersion) -> (bool, Reason). A AllowListVersion fixa quais regras foram avaliadas, para a auditoria.
+
+**EX083.** O teste que afirma BLOCK register-out-of-range para HMI-1 fc=6 reg=40050.
+
+**EX084.** Segredos de autenticação; quadros brutos que embutem parâmetros proprietários de receitas; identificadores pessoais de operadores, se não forem necessários para a decisão.
+
+**EX085.** cobertura = |observadas ∩ planejadas| / |planejadas|. Usar todas as técnicas do ATT&CK for ICS como denominador faz a cobertura parecer minúscula ou estimula um planejamento lixo — planeje as técnicas pertinentes ao trabalho.
+
+**EX086.** Na classe A, o CUSUM detecta 60/60 com atraso de ~25 amostras; a banda detecta 0/60; os dois mostram 0/60 alarmes falsos neste conjunto de sementes.
+
+**EX087.** O status fica aberto até que um ticket de novo teste passe; o encerramento automático com base na promessa do fornecedor é proibido.
+
+**EX088.** ID V-04; preparação: montagem vazia da lista de permissões; ação: permit(qualquer escrita); esperado: DENY policy-unavailable + alerta; evidência: hash do log.
+
+**EX089.** Interromper o laboratório, abrir um bloqueio, revogar a aprovação da janela na planta até a correção e um novo laboratório aprovado.
+
+**EX090.** Hash do arquivo da lista de permissões/política, hash do build/versão do monitor, hash do log de resultados.
 
 <a id="references"></a>
 

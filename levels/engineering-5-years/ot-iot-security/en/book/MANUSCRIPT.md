@@ -1427,7 +1427,7 @@ Acceptance tests are named after requirement ids and fail CI when skipped. Orpha
 
 ### 21.1b MoSCoW under safety
 
-Must/Should/Could prioritization still places all safety requirements in Must. A Could that weakens Must (optional deny of write codes) is reclassified or rejected. Product managers do not outvote fail-closed. Put requirement ids in test names and in log fields (req=S-1). Dead requirements without tests should fail CI.
+Must/Should/Could prioritization still places all safety requirements in Must. A Could that weakens Must (optional deny of write codes) is reclassified or rejected. Product managers do not outvote fail-closed. Log fields carry the requirement id as well (req=S-1), so a deny event can be traced to the requirement it enforces.
 
 At ABP, S-1 and R-12 are both Must items, and no product decision can move them down. A request to make write-code denies optional for convenience was rejected on this basis, and the rejection is recorded with the requirement it would have weakened.
 
@@ -1489,7 +1489,7 @@ Evidence objects need size caps and media-type allow-lists. Unbounded uploads be
 
 
 
-Technique tags remain optional and reviewed. Soft-delete with reason is the default; hard purge follows retention only. API clients that issue DELETE in a loop during a buggy retry get credentials revoked after a threshold.
+Exports state their time zone once in the file header as well as in each timestamp. API clients that issue DELETE in a loop during a buggy retry get credentials revoked after a threshold.
 
 
 ### 22.5 Worked example — modelling a finding without leaking the plant (synthetic ABP)
@@ -1583,11 +1583,11 @@ Include jumphost compromised in the model: short-lived credentials, egress allow
 
 ### 23.1b Abuse vs misuse and backlog
 
-Abuse cases are intentional adversary actions against CNHP tools. Misuse cases are honest operators making dangerous mistakes (paste a CIDR that includes a partner). Design controls for both. STRIDE rows become issues with links to requirements; unowned rows are theatre. Review the threat list when adding a new trust boundary.
+Abuse cases are intentional adversary actions against CNHP tools. Misuse cases are honest operators making dangerous mistakes (paste a CIDR that includes a partner). Design controls for both. STRIDE rows become issues with links to requirements. Misuse rows usually become validation rules; abuse rows usually become access controls.
 
 
 
-Feeding the backlog means each STRIDE row has an owner and a due date. Unowned rows are theatre. Include jumphost compromise explicitly: short-lived credentials, egress allow-lists, rapid revocation.
+Feeding the backlog means each STRIDE row has an owner and a due date. At ABP, the misuse case of an engineer pasting a partner's CIDR into the conduit file became a validation rule that rejects ranges outside the plant's address plan.
 
 Both kinds feed the backlog.
 
@@ -1645,11 +1645,11 @@ Freeze methods during a window the same way you freeze conduits: new methods nee
 
 ### 24.1b Quiet vs noisy and dependencies
 
-Quiet methods (listen-only decode, config export) fit more windows. Noisy methods need tighter rate limits and often off-peak hours. Encode method dependencies in the plan so reviews are not scheduled against an empty asset list. Freeze methods during a window the same way you freeze conduits.
+Quiet methods (listen-only decode, config export) fit more windows. Noisy methods need tighter rate limits and often off-peak hours. Encode method dependencies in the plan so reviews are not scheduled against an empty asset list. Lena's plan lists, for each method, the earlier methods whose artefacts it needs.
 
 
 
-Done means artefacts: inventory CSV, config hashes, finding drafts, coverage updates. Method cards without a noisy field are how morning batch windows get congested. Park mid-window ideas in the next planning backlog.
+Method cards without a noisy field are how morning batch windows get congested. Noisy methods are booked against the batch schedule a week ahead, so the shift lead knows when to expect extra traffic.
 
 Lena schedules quiet methods first.
 
@@ -1715,7 +1715,7 @@ Hand each studio team constraint cards: residency, two-engineer ops, fail-closed
 
 
 
-A studio sketch must name trust boundaries, data stores and the fail-closed path in writing. Ten minutes of labelling beats an hour of aesthetic layout. Facilitators can pause the room with a single safety question.
+A studio sketch must name trust boundaries, data stores and the fail-closed path in writing. Ten minutes of labelling beats an hour of aesthetic layout. Fail-open paths found in the gallery are written into the ADR before it is accepted.
 
 ### Field note — labelling before layout
 
@@ -1861,7 +1861,7 @@ At ABP, compensation is written into the work permit with an owner and a review 
 
 Stacks of compensating controls without an owner become ignored alerts.
 
-Lena's control register lists every compensating control at ABP with its owner, its alerts and the date it was last tested. During the March health day, one compensating control for a legacy PLC was found with no owner, and it received one before the next window. Controls that nobody watches are counted as missing, because their alerts will be ignored when they finally fire. Ownership is reviewed at each health day.
+Lena's control register lists every compensating control at ABP with its owner, its alerts and the date it was last tested. A control found without an owner gets one before the next window, or it is removed from the register and its requirement is marked unmet. Controls that nobody watches are counted as missing, because their alerts will be ignored when they finally fire. Ownership is reviewed at each health day.
 
 ### Practice note
 
@@ -1869,11 +1869,11 @@ Schedule a quarterly control-health day: break each preventive control in a synt
 
 ### 27.1b Ownership and break-glass detection
 
-Every control has an owner who receives its alerts and a review date. Log when an operator uses break-glass to skip dual approval. Break-glass without detection is just a hidden single control. Weekly review of break-glass events is part of the control design. Untested controls are wishes — break them on purpose in synthetic labs.
+Every control has an owner who receives its alerts and a review date. Log when an operator uses break-glass to skip dual approval. Break-glass without detection is just a hidden single control. Weekly review of break-glass events is part of the control design, and each review names who used break-glass and the reason given.
 
 
 
-If preventive control is weak on a legacy PLC, document compensating detective monitoring and tighter human approval. Stacks of compensating controls without an owner become ignored alerts. Controls degrade — schedule health days.
+Each control's register entry also states how it fails: whether a broken allow-list blocks traffic or passes it decides which detective alert must fire first and who is paged when it does.
 
 ### Field note — control health day
 
@@ -1961,7 +1961,7 @@ Fuzz the predicate with random stations, codes and broken UTF-8. It must DENY or
 
 ### 28.1b Reason catalogue and fuzzing
 
-Publish the enum of reason codes as a versioned document: fc-not-allowed, register-out-of-range, policy-unavailable, station-unknown. Unknown codes must fail closed in consumers. Feed the predicate random stations, codes and broken UTF-8; it must DENY or error closed, never ALLOW on parse failure.
+The catalogue lists, for each reason code, the clause that emits it and the test that pins it: fc-not-allowed, register-out-of-range, policy-unavailable, station-unknown. Fuzz inputs that once found a bug join a regression list that is replayed on every release, with the seed that produced them.
 
 
 
@@ -2069,7 +2069,7 @@ If you sample 50 of 500 assets, say so and do not scale findings as if you visit
 
 
 
-Activity metrics (frames decoded) inform capacity only. Outcome metrics (verified remediations, SIS reachability still false) steer the programme. Prefer metrics that under-claim success, such as counting a fix only after re-test.
+Sample selection is recorded with its seed or rule, so the same assets can be revisited at re-test. Prefer metrics that under-claim success, such as counting a fix only after re-test.
 
 ABP's planning guide is published beside the board.
 
@@ -2161,7 +2161,7 @@ Keep a sealed directory of synthetic fixtures with known expected decisions. Lab
 
 
 
-Independent runners record the pass. Safety failure stops the lab and opens a blocker — no continue to gather data. Lab result logs are evidence; retain them with the release tag.
+Fixture changes are reviewed like code: a new expected decision must name the requirement it comes from. Lab result logs are evidence; retain them with the release tag.
 
 Lena's fixture set is sealed and hashed.
 
