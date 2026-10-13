@@ -256,11 +256,11 @@ The newsletter flow depends on the donor's choice: only donors who tick the box 
 
 Update donate-form now (it handles donor data and has an advisory). Replace event-calendar with a maintained alternative within the month. Remove photo-gallery after confirming nobody needs it. Keep newsletter and turn on automatic security updates where the host supports them.
 
-Owen's later discovery changed one priority: event-calendar also stored volunteers' phone numbers for shift sign-ups, which nobody remembered. That moved its replacement up to week 3, with the phone numbers moved to the volunteer system and deleted from the website. A decision list is a plan, not a promise; it changes when new facts appear.
+Owen's later discovery changed one priority: event-calendar also stored volunteers' phone numbers for shift sign-ups, which nobody remembered. That moved its replacement up to week 3, with the phone numbers moved to the charity's existing volunteer system and deleted from the website. A decision list is a plan, not a promise; it changes when new facts appear.
 
 ### Worked example
 
-Owen discovers that event-calendar also stores volunteers' phone numbers for shift sign-ups, which nobody remembered. That raises its priority: it is replaced in week 3, with the phone numbers moved to the charity's existing volunteer system and deleted from the website.
+Owen reruns the three priority questions for event-calendar after the discovery. Likelihood is unchanged: with no release for 1,606 days, any future flaw stays unfixed. Harm is higher, because the plugin also holds volunteers' phone numbers. The fix cost is unchanged: a maintained alternative. Higher harm alone is enough to move the replacement up to week 3.
 
 > **Synthetic case.** Components, dates and data are synthetic.
 
@@ -358,11 +358,11 @@ Each routine has an owner and a note. The weekly update check is Owen's, with th
 
 By the end of the month: multi-factor sign-in for all administrators, a component inventory, donate-form updated, event-calendar replaced, photo-gallery removed, automatic security updates on, and written routines.
 
-Each item has evidence in the change log or the inventory, which is what Owen showed the director and Nadia. The limits are written down too: he cannot check the payment provider's security, he relies on vendors publishing advisories, and he is one person. The second volunteer learning the routines answers the last of these.
+Each item has evidence in the change log or the inventory, which is what Owen showed the director and Nadia. The limits are written down too: he cannot check the payment provider's security, he relies on vendors publishing advisories, and he is one person. A second volunteer learning the routines is the answer to the last of these.
 
 ### Worked example
 
-Owen presents the month's work to the director and Nadia with the change log and inventory as evidence. He names the limits: he cannot check the payment provider's security himself, relies on vendors publishing advisories, and is one person. The director agrees to ask a second volunteer to learn the routines so they continue if Owen is away.
+Owen presents the month's work to the director and Nadia, opening the change-log entry or inventory row behind each result and reading out the three limits. The director agrees to ask a second volunteer to learn the routines so they continue if Owen is away.
 
 > **Synthetic case.** Components, checklists and outcomes are synthetic.
 
