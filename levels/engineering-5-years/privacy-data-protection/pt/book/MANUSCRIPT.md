@@ -1,7 +1,7 @@
 # Privacidade e Proteção de Dados: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 119, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 50 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 21–50 (EX061–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–25 de 50 já estão escritos em português, com os exercícios EX001–EX075 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 26–50 (EX076–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que projetam, verificam e operam a privacidade e a proteção de dados como propriedades de um sistema real.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios executam resposta aleatorizada, consultas de retenção, verificações de fluxos de dados, pontuação de DPIA, contagens de minimização, confiabilidade da eliminação, orçamentos de privacidade, um relógio de incidente e resumos criptográficos de evidências, sempre sobre dados sintéticos. A análise jurídica é didática e não constitui aconselhamento jurídico; a LGPD e os atos da ANPD são citados pelo texto oficial e parafraseados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Regulamento (UE) 2016/679 (GDPR); Lei nº 13.709/2018 (LGPD); Diretrizes 4/2019,
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) |
 
-Capítulos 21–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
+Capítulos 26–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-26), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -892,11 +892,273 @@ A tabela comparativa simplifica; as leis nacionais e os reguladores acrescentam 
 - **EX059 — Controlador ou operador.** O fornecedor de vídeo é controlador ou operador, e por quê? *Rubrica:* 3 = operador; age em nome da Pellmore;; 2 = diz operador;; 1 = diz controlador;; 0 = nenhuma.
 - **EX060 — Centralidade da engenharia.** Por que os engenheiros são centrais para a proteção de dados? *Rubrica:* 3 = o comportamento dos sistemas decide se os direitos e a retenção são reais;; 2 = menciona implementação;; 1 = diz que os advogados decidem;; 0 = nenhuma.
 
+<a id="ch-21"></a>
+
+## Capítulo 21 — Privacidade e proteção de dados: requisitos
+
+### Objetivos de aprendizagem
+
+Você vai (1) derivar requisitos a partir dos princípios jurídicos; (2) tornar os requisitos testáveis; (3) priorizar os requisitos pelo risco.
+
+### 21.1 Dos princípios aos requisitos
+
+Zara começa o terceiro ano derivando requisitos dos princípios do artigo 5 do GDPR: licitude, lealdade e transparência; limitação da finalidade; minimização dos dados; exatidão; limitação da conservação; integridade e confidencialidade; e responsabilização. Para cada um ela escreve pelo menos um requisito de engenharia para a Pellmore. A limitação da finalidade vira: todo campo de dados deve ser marcado com as finalidades para as quais pode ser usado, e os serviços devem ler apenas os campos marcados para a sua finalidade. A LGPD traz princípios equivalentes no art. 6º. Transformar princípios em requisitos força uma precisão que o texto legal, escrito para valer em qualquer lugar, não consegue oferecer.
+
+### 21.2 Redação testável
+
+Um requisito que não pode ser testado não pode ser verificado. Zara reescreve as frases vagas. "Os dados devem ser mantidos seguros" vira "as anotações clínicas devem ser cifradas em repouso com chaves guardadas no módulo de hardware, com verificação trimestral". "Os pacientes devem poder acessar seus dados" vira "o paciente deve poder baixar todos os dados pessoais mantidos sobre ele em até um minuto após o pedido, em formato legível por máquina". Cada requisito passa a ter um método de verificação. A ISO/IEC 29100 fornece termos consistentes, como titular de PII e controlador de PII, que Zara usa na seção de definições do documento.
+
+### 21.3 Direitos como requisitos
+
+Zara escreve requisitos para cada direito do titular aplicável à Pellmore: acesso, retificação, eliminação, restrição, portabilidade e oposição. Para a eliminação, ela especifica quais armazenamentos precisam ser cobertos e quais exceções se aplicam, como os prontuários que devem ser mantidos por força da legislação de saúde. O art. 18 da LGPD lista direitos semelhantes para os pacientes brasileiros, incluindo a informação sobre o compartilhamento com terceiros (inciso VII). Escrever os direitos como requisitos de sistema revela que a portabilidade precisa de um formato estruturado de exportação que a Pellmore ainda não tem. Ela abre um chamado para uma exportação em JSON.
+
+### 21.4 Priorização pelo risco
+
+Nem todos os requisitos podem ser construídos de uma vez. Zara os ordena pelo dano que a ausência de cada um causaria e pela probabilidade de que ocorresse. A eliminação das gravações de vídeo e o controle de acesso às anotações clínicas vêm primeiro; a portabilidade do histórico de consultas vem depois. Ela registra a ordenação e seu raciocínio no registro de decisões. O Prof. Holm lembra que a priorização baseada em risco tem apoio no GDPR, que pede repetidamente medidas adequadas ao risco, mas que os deveres legais continuam valendo mesmo quando ficam mais abaixo na lista de prioridades.
+
+### Exemplo resolvido
+
+Zara deriva requisitos de cada princípio do artigo 5, reescreve-os como enunciados testáveis, especifica requisitos de direitos para o GDPR e a LGPD e os ordena pelo risco.
+
+> **Caso sintético.** Os requisitos são sintéticos; o artigo 5 do GDPR, os arts. 6º e 18 da LGPD e a ISO/IEC 29100 são reais.
+
+### Erros e limites
+
+A ordenação não pode adiar indefinidamente um dever legal; os itens mais abaixo também precisam de datas.
+
+### Exercícios
+
+- **EX061 — Marcação de finalidades.** Como Zara transforma a limitação da finalidade em requisito? *Rubrica:* 3 = marca os campos com as finalidades permitidas; os serviços leem só os campos marcados para sua finalidade;; 2 = menciona marcações;; 1 = repete o princípio;; 0 = nenhuma.
+- **EX062 — Acesso testável.** Reescreva de forma testável "os pacientes devem poder acessar seus dados". *Rubrica:* 3 = baixar todos os dados em até um minuto, em formato legível por máquina;; 2 = parcialmente mensurável;; 1 = vago;; 0 = nenhuma.
+- **EX063 — Lacuna de portabilidade.** Que lacuna os requisitos de direitos revelaram? *Rubrica:* 3 = não há formato estruturado de exportação para a portabilidade;; 2 = menciona exportação;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Privacidade e proteção de dados: modelos de sistema e de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) montar um inventário de fluxos de dados; (2) verificar em cada fluxo a finalidade, a base legal e as transferências; (3) ligar o inventário ao registro das operações de tratamento.
+
+### 22.1 O inventário
+
+Zara converte seu grafo de fluxos de dados em um inventário com uma linha por fluxo: origem, destino, finalidade, base legal, região e mecanismo de transferência. O artigo 30 do GDPR exige que os controladores mantenham um registro das atividades de tratamento, incluindo finalidades, categorias de destinatários e transferências para países terceiros; a LGPD prevê o registro das operações no art. 37. Um inventário no nível do fluxo é mais detalhado que o mínimo legal, mas é o que os engenheiros precisam para encontrar problemas. Ela verifica sete fluxos da plataforma da Pellmore, escolhidos para cobrir sistemas internos, fornecedores e parceiros. Cada fluxo tem um responsável.
+
+### 22.2 Verificações automatizadas
+
+O laboratório aplica três regras a cada fluxo: ele precisa ter uma finalidade, precisa ter uma base legal e, se os dados saírem do Espaço Econômico Europeu, precisa indicar um mecanismo de transferência. Quatro fluxos passam. O SDK de análise não tem finalidade, nem base legal, nem mecanismo de transferência para seu destino nos Estados Unidos. A equipe de suporte no exterior não tem mecanismo de transferência. A extração para pesquisa não tem base legal. Três dos sete fluxos exigem ação. Zara observa que o fluxo de análise, acrescentado pela equipe do aplicativo sem revisão, falha em todas as regras.
+
+### 22.3 Transferências
+
+O capítulo V do GDPR restringe as transferências de dados pessoais para países fora do EEE. As transferências precisam de uma decisão de adequação ou de garantias apropriadas, como as cláusulas contratuais padrão; a LGPD trata do tema nos arts. 33 a 36. A plataforma de e-mail de marketing tem cláusulas registradas e passa. A equipe de suporte no exterior não tem nenhuma. Zara não decide qual mecanismo usar, o que é uma questão jurídica, mas aponta a lacuna com os fatos de que os advogados precisam: quais dados, quanto, com que frequência e por quê. Ela aprende que os engenheiros tornam as transferências visíveis, enquanto a assessoria jurídica decide como torná-las lícitas.
+
+### 22.4 Base para pesquisa
+
+A extração para pesquisa envia registros a uma equipe interna de pesquisa sem base registrada. A pesquisa em saúde pode se apoiar em fundamentos específicos, como o artigo 9(2)(j) do GDPR, com as garantias do artigo 89, ou no consentimento; na LGPD, a realização de estudos por órgão de pesquisa aparece no art. 11, II, c. Zara pede ao encarregado que determine a base e recomenda pseudonimizar a extração enquanto isso. Ela acrescenta uma regra ao processo de inventário: novos fluxos não podem ser implantados até que os três campos estejam preenchidos e revisados, o que transforma o inventário, de documento, em portão de implantação.
+
+### Laboratório — Verificação de finalidade, base legal e transferências nos fluxos de dados
+
+```python
+# Check a synthetic data-flow inventory: every flow needs a purpose, a lawful basis and, if leaving the EEA, a transfer mechanism.
+flows = [
+ ("app -> booking DB", "appointments", "contract", "EEA", ""),
+ ("booking DB -> video vendor", "consultation", "contract", "EEA", ""),
+ ("app -> analytics SDK", "", "", "US", ""),
+ ("records -> lab partner", "test orders", "health care (Art 9(2)(h))", "EEA", ""),
+ ("support desk -> offshore team", "support", "contract", "non-EEA", ""),
+ ("records -> research extract", "research", "", "EEA", ""),
+ ("marketing list -> email platform", "newsletter", "consent", "US", "SCCs"),
+]
+bad = 0
+for name, purpose, basis, region, mech in flows:
+    issues = []
+    if not purpose: issues.append("no purpose")
+    if not basis: issues.append("no lawful basis")
+    if region != "EEA" and not mech: issues.append("no transfer mechanism")
+    bad += bool(issues)
+    print(f"{name:34s} {'OK' if not issues else '; '.join(issues)}")
+print(f"{bad} of {len(flows)} flows need action")
+```
+
+Execute com `python3 lab_flow.py`. Saída verificada:
+
+```text
+app -> booking DB                  OK
+booking DB -> video vendor         OK
+app -> analytics SDK               no purpose; no lawful basis; no transfer mechanism
+records -> lab partner             OK
+support desk -> offshore team      no transfer mechanism
+records -> research extract        no lawful basis
+marketing list -> email platform   OK
+3 of 7 flows need action
+```
+
+### Exemplo resolvido
+
+Zara monta um inventário de sete fluxos e encontra três que exigem ação: o SDK de análise (sem finalidade, base ou mecanismo de transferência), o suporte no exterior (sem mecanismo de transferência) e a extração para pesquisa (sem base).
+
+> **Caso sintético.** Os fluxos são sintéticos; os artigos 9(2)(j), 30 e 89 e o capítulo V do GDPR, assim como os arts. 11, 33 a 36 e 37 da LGPD, são reais.
+
+### Erros e limites
+
+Um inventário reflete o que as pessoas informam; capturas de rede e varreduras de código encontram os fluxos não informados.
+
+### Exercícios
+
+- **EX064 — Fluxos reprovados.** Quantos fluxos exigem ação, e qual falha em todas as regras? *Rubrica:* 3 = três de sete; o SDK de análise;; 2 = só a contagem;; 1 = errado;; 0 = nenhuma.
+- **EX065 — Papéis na transferência.** Quem decide o mecanismo de transferência, e o que a engenheira fornece? *Rubrica:* 3 = a assessoria jurídica decide; os engenheiros fornecem os fatos sobre dados, volume, frequência e finalidade;; 2 = parcial;; 1 = a engenheira decide;; 0 = nenhuma.
+- **EX066 — Portão de implantação.** Como o inventário se torna um portão de implantação? *Rubrica:* 3 = novos fluxos não são implantados até que finalidade, base e transferência sejam revisadas;; 2 = menciona revisão;; 1 = continua sendo um documento;; 0 = nenhuma.
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Privacidade e proteção de dados: análise de ameaças e falhas
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar um modelo de ameaças à privacidade à plataforma; (2) analisar os modos de falha que prejudicam a privacidade; (3) incluir ameaças não maliciosas.
+
+### 23.1 Ameaças à privacidade
+
+Os modelos de ameaças de segurança se concentram nos atacantes. Zara acrescenta ameaças à privacidade que podem ocorrer sem nenhum atacante: vinculabilidade, identificabilidade, não repúdio, detectabilidade, divulgação, desconhecimento e não conformidade. Ela as aplica ao fluxo de teleconsulta. A vinculabilidade surge porque o mesmo identificador aparece nos logs de vídeo e na análise; o desconhecimento, porque os pacientes não são informados de que o fornecedor grava as sessões. A taxonomia de Solove apoia a mesma análise do ponto de vista jurídico, nomeando danos como a agregação e o uso secundário, que um modelo centrado só em segurança deixaria escapar. As duas visões ficam registradas.
+
+### 23.2 Modos de falha
+
+Zara faz uma análise de modos de falha do processo de eliminação. As falhas possíveis incluem uma tarefa de exclusão que estoura o tempo limite, um armazenamento que não foi incluído na tarefa, um backup restaurado sem reaplicar as eliminações e um fornecedor que ignora o pedido. Para cada uma ela estima o efeito sobre os pacientes e como a falha seria detectada. A falha do fornecedor é a mais difícil de detectar, porque a Pellmore não enxerga os sistemas dele. Ela propõe a confirmação contratual da exclusão e direitos periódicos de auditoria, que o artigo 28 do GDPR permite aos controladores exigir dos operadores.
+
+### 23.3 Pessoas internas e erros
+
+Muitos incidentes de privacidade envolvem erro ou curiosidade de funcionários, e não atacantes externos. Zara modela uma recepcionista que envia resultados para o endereço de e-mail errado e um médico que consulta o prontuário de um vizinho. Os controles incluem a confirmação do endereço, o registro de acessos com os sinais de anomalia do Capítulo 17 e o treinamento. Ela observa que monitorar funcionários também é tratamento de dados pessoais e precisa ser proporcional e transparente para os empregados. A análise mostra que os modelos de ameaças à privacidade devem incluir as próprias pessoas da organização, tanto como fontes potenciais de dano quanto como pessoas cuja privacidade merece respeito.
+
+### 23.4 Ordenação das ameaças
+
+Zara ordena as ameaças por uma combinação simples de probabilidade e dano e seleciona as cinco principais para tratamento detalhado no relatório de impacto à proteção de dados. Lideram a lista a vinculabilidade por identificadores compartilhados, a retenção pelo fornecedor, os resultados enviados ao destinatário errado, a bisbilhotice de funcionários e a coleta excessiva pela análise. Ela escreve cada ameaça como um cenário curto que pessoas sem formação técnica conseguem acompanhar. O Prof. Holm observa que os cenários tornam as ameaças concretas para quem decide, como ela aprendeu em comunicação, e que também viram casos de teste para o laboratório de verificação mais adiante no ano.
+
+### Exemplo resolvido
+
+Zara aplica as categorias de ameaças à privacidade às teleconsultas, analisa os modos de falha da eliminação, modela erros de pessoas internas e ordena cinco ameaças para o relatório de impacto.
+
+> **Caso sintético.** Os cenários são sintéticos; Solove (2006) e o artigo 28 do GDPR são reais.
+
+### Erros e limites
+
+Listas de ameaças nunca estão completas; revise-as depois de incidentes e de mudanças de projeto.
+
+### Exercícios
+
+- **EX067 — Ameaças sem atacante.** Cite duas ameaças à privacidade que dispensam atacante. *Rubrica:* 3 = por exemplo, desconhecimento e não conformidade (e também vinculabilidade);; 2 = cita uma;; 1 = cita invasão;; 0 = nenhuma.
+- **EX068 — Falha do fornecedor.** Por que a não exclusão pelo fornecedor é difícil de detectar, e o que ajuda? *Rubrica:* 3 = a Pellmore não enxerga os sistemas do fornecedor; confirmação contratual e direitos de auditoria;; 2 = uma parte;; 1 = ignora;; 0 = nenhuma.
+- **EX069 — Monitoramento de funcionários.** Que restrição se aplica ao monitoramento dos acessos dos funcionários? *Rubrica:* 3 = precisa ser proporcional e transparente, porque trata dados dos empregados;; 2 = menciona privacidade;; 1 = ilimitado;; 0 = nenhuma.
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Privacidade e proteção de dados: métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir uma avaliação de impacto sobre a proteção de dados; (2) pontuar os riscos antes e depois das medidas; (3) decidir se a consulta prévia é necessária.
+
+### 24.1 Quando a DPIA é necessária
+
+O artigo 35 do GDPR exige uma avaliação de impacto sobre a proteção de dados (DPIA) quando o tratamento for suscetível de resultar em alto risco para os direitos e liberdades das pessoas, em especial no tratamento em grande escala de categorias especiais; a LGPD prevê o relatório de impacto no art. 5º, XVII, e no art. 38. As diretrizes do Grupo de Trabalho do Artigo 29 (WP248 rev.01), endossadas pelo EDPB, listam critérios como dados sensíveis, grande escala e titulares vulneráveis; atender a dois critérios costuma indicar que a DPIA é necessária. O tratamento de telemedicina da Pellmore atende a vários. Zara prepara a DPIA com o encarregado, cujo parecer o artigo 35(2) obriga o controlador a buscar.
+
+### 24.2 Pontuação dos riscos
+
+Zara pega as cinco ameaças do Capítulo 23 e pontua cada uma quanto à probabilidade e à gravidade em uma escala de um a quatro, multiplicando depois os valores. Antes das medidas, a retenção indefinida dos vídeos marca 9, o SDK de análise enviando eventos de saúde marca 12, os resultados enviados ao paciente errado marcam 8, a bisbilhotice de funcionários marca 9 e um vazamento de logs de chat no fornecedor marca 6. Quatro riscos são altos ou médio-altos. Ela tem o cuidado de explicar que as pontuações servem para ordenar, não são medições, e que as descrições do dano importam mais que os números quando as pessoas decidem o que fazer.
+
+### 24.3 Medidas e risco residual
+
+Para cada risco Zara lista medidas: retenção de trinta dias com chaves mensais, remoção do SDK de análise, conferência por dois identificadores para os resultados, registro de acessos com revisão de anomalias e limites contratuais para o fornecedor. Depois das medidas, as pontuações caem para 3, 4, 4 e 4 nos quatro primeiros riscos, mas o vazamento no fornecedor continua em 6, porque a Pellmore não controla diretamente a segurança do fornecedor. Nenhum risco continua alto. O risco médio residual é aceito pela direção da Pellmore com um plano de reavaliar o fornecedor na renovação do contrato. A renovação acontece em dezoito meses.
+
+### 24.4 Consulta prévia
+
+O artigo 36 exige que o controlador consulte a autoridade de controle antes do tratamento quando a DPIA indicar um alto risco que o controlador não mitigou. O registro de Zara não mostra alto risco residual, então esta avaliação não aciona a consulta prévia. Ela redige essa conclusão com cuidado, observando que depende de as medidas serem de fato implementadas. Se o SDK de análise não fosse removido, o risco continuaria alto. Por isso, a DPIA lista a implementação das medidas como condições, com responsáveis e datas, e fica agendada para revisão depois do primeiro trimestre. A revisão confirma se cada condição foi cumprida.
+
+### Laboratório — Pontuações de risco da DPIA antes e depois das medidas
+
+```python
+# DPIA risk scoring: likelihood x severity (1-4 each), before and after planned measures.
+risks = [("video recordings kept indefinitely", 3, 3, 1, 3), ("analytics SDK sends health events", 3, 4, 1, 4),
+         ("wrong patient receives results", 2, 4, 1, 4), ("staff browse records without need", 3, 3, 2, 2),
+         ("vendor breach exposes chat logs", 2, 3, 2, 3)]
+def band(s): return "high" if s >= 9 else "medium" if s >= 5 else "low"
+for name, l, s, l2, s2 in risks:
+    print(f"{name:38s} before {l*s:2d} ({band(l*s):6s}) after {l2*s2:2d} ({band(l2*s2)})")
+hi = [n for n, l, s, l2, s2 in risks if l2 * s2 >= 9]
+print("residual high risks:", hi if hi else "none; prior consultation under Art 36 not triggered by this register")
+```
+
+Execute com `python3 lab_dpia.py`. Saída verificada:
+
+```text
+video recordings kept indefinitely     before  9 (high  ) after  3 (low)
+analytics SDK sends health events      before 12 (high  ) after  4 (low)
+wrong patient receives results         before  8 (medium) after  4 (low)
+staff browse records without need      before  9 (high  ) after  4 (low)
+vendor breach exposes chat logs        before  6 (medium) after  6 (medium)
+residual high risks: none; prior consultation under Art 36 not triggered by this register
+```
+
+### Exemplo resolvido
+
+Zara pontua cinco riscos, reduz quatro deles de alto ou médio para baixo com medidas, mantém o vazamento no fornecedor em médio (6) e conclui que a consulta prévia não é acionada se as medidas forem implementadas.
+
+> **Caso sintético.** Os riscos e as pontuações são sintéticos; os artigos 35 e 36 do GDPR, o WP248 rev.01 e os arts. 5º, XVII, e 38 da LGPD são reais.
+
+### Erros e limites
+
+Multiplicar pontuações ordinais é uma convenção, não aritmética sobre grandezas reais.
+
+### Exercícios
+
+- **EX070 — Gatilho da DPIA.** Por que a Pellmore precisa de uma DPIA? *Rubrica:* 3 = o tratamento em grande escala de categorias especiais atende a vários critérios do WP248, indicando alto risco;; 2 = menciona dados de saúde;; 1 = não é necessária;; 0 = nenhuma.
+- **EX071 — Risco inalterado.** Que risco continua médio depois das medidas, e por quê? *Rubrica:* 3 = o vazamento de logs de chat no fornecedor, porque a Pellmore não controla diretamente a segurança dele;; 2 = cita o risco;; 1 = nenhum;; 0 = nenhuma.
+- **EX072 — Conclusão condicional.** Por que a conclusão de "sem consulta prévia" é condicional? *Rubrica:* 3 = depende de as medidas serem implementadas, por exemplo a remoção do SDK;; 2 = menciona medidas;; 1 = incondicional;; 0 = nenhuma.
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Ateliê de projeto I
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar de ponta a ponta uma funcionalidade que preserve a privacidade; (2) apresentar alternativas de projeto; (3) responder às críticas em um ateliê.
+
+### 25.1 O enunciado
+
+No primeiro ateliê de projeto a equipe de Zara recebe um enunciado: projetar uma triagem de sintomas para o aplicativo da Pellmore que sugira se o paciente precisa de uma teleconsulta, de um farmacêutico ou de atendimento de emergência. A funcionalidade precisa dos sintomas, que são dados de saúde. A equipe tem de minimizar os dados, explicar a lógica aos pacientes e não guardar mais do que o necessário. O Prof. Holm acrescenta uma restrição: o projeto precisa funcionar se o paciente recusar a análise de uso. O enunciado obriga a equipe a tratar a privacidade como insumo de projeto desde o primeiro esboço, e não como revisão no fim.
+
+### 25.2 Alternativas
+
+A equipe esboça três alternativas. Na primeira, os sintomas são enviados a um servidor que executa o modelo de triagem e guarda as respostas para aprimoramento. Na segunda, o modelo roda no celular e nada sai do aparelho, a menos que o paciente agende. Na terceira, as respostas são enviadas, mas excluídas depois que o resultado é exibido. Zara avalia cada uma quanto aos dados coletados, à transparência, à acurácia e ao custo. A triagem no aparelho é a que menos coleta, mas atualizar o modelo é mais difícil e alguns celulares mais antigos podem não conseguir executá-lo de forma confiável.
+
+### 25.3 Decisões automatizadas
+
+A triagem sugere uma conduta, o que levanta a questão da decisão automatizada. O artigo 22 do GDPR dá às pessoas o direito de não ficar sujeitas a uma decisão tomada exclusivamente com base em tratamento automatizado que as afete significativamente, com exceções; a LGPD garante, no art. 20, o direito de solicitar a revisão dessas decisões. A equipe de Zara projeta a triagem como orientação, com uma opção clara de falar com um profissional de saúde, para que nenhum paciente tenha o atendimento negado apenas pelo algoritmo. A equipe também explica os principais fatores em linguagem simples, o que favorece a transparência mesmo onde o artigo 22 talvez não se aplique estritamente.
+
+### 25.4 Crítica
+
+Os críticos do ateliê, entre eles uma médica, contestam o projeto no aparelho: se as respostas nunca são guardadas, como a equipe vai descobrir que a triagem é insegura? Zara propõe um canal de retorno opcional, mediante adesão, e uma revisão clínica periódica com casos de teste sintéticos. Os críticos aceitam a abordagem, mas pedem um plano de monitoramento de segurança do paciente. Zara aprende que a privacidade e a segurança clínica precisam ser projetadas juntas, e que a crítica em ateliê é mais útil quando os projetistas explicam abertamente os trade-offs, em vez de defender uma opção como perfeita.
+
+### Exemplo resolvido
+
+A equipe de Zara projeta a triagem de sintomas com três alternativas, prefere o processamento no aparelho, apresenta o resultado como orientação com a opção de falar com um profissional e acrescenta retorno opcional e testes de segurança sintéticos.
+
+> **Caso sintético.** O ateliê e a funcionalidade são sintéticos; o artigo 22 do GDPR e o art. 20 da LGPD são reais.
+
+### Erros e limites
+
+O processamento no aparelho ainda precisa de um canal de atualização seguro e pode vazar dados por relatórios de falha.
+
+### Exercícios
+
+- **EX073 — Opção que menos coleta.** Que alternativa coleta menos dados, e qual é sua desvantagem? *Rubrica:* 3 = a triagem no aparelho; atualizar o modelo é mais difícil e celulares antigos podem não dar conta;; 2 = uma parte;; 1 = a opção do servidor;; 0 = nenhuma.
+- **EX074 — Projeto à luz do artigo 22.** Como a equipe evita uma decisão exclusivamente automatizada? *Rubrica:* 3 = a triagem é orientação, com opção clara de falar com um profissional;; 2 = menciona pessoa;; 1 = ignora;; 0 = nenhuma.
+- **EX075 — Aprender sem guardar.** Como a equipe pode descobrir uma triagem insegura sem guardar as respostas? *Rubrica:* 3 = retorno opcional e revisão clínica com casos sintéticos;; 2 = uma parte;; 1 = guardar tudo;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX060 (as de EX061–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Zara Mbeki, o Prof. Anders Holm, a Corwen Polytechnic, a Pellmore Telehealth e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX075 (as de EX076–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Zara Mbeki, o Prof. Anders Holm, a Corwen Polytechnic, a Pellmore Telehealth e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Com a eliminação após um prazo fixo, a entrada iguala a saída, e os dados armazenados se estabilizam.
 
@@ -1017,6 +1279,36 @@ Respostas-modelo para EX001–EX060 (as de EX061–EX150 estão na edição em i
 **EX059.** Um operador, porque trata as gravações seguindo as instruções da Pellmore.
 
 **EX060.** As obrigações só se tornam reais quando os sistemas as implementam, e são os engenheiros que constroem esses sistemas.
+
+**EX061.** Cada campo é marcado com as finalidades permitidas, e os serviços só podem ler os campos marcados para a sua própria finalidade.
+
+**EX062.** O paciente consegue baixar todos os dados pessoais mantidos em até um minuto, em formato legível por máquina.
+
+**EX063.** Faltava à Pellmore uma exportação estruturada e legível por máquina, necessária para a portabilidade.
+
+**EX064.** Três de sete; o SDK de análise falha nas três regras.
+
+**EX065.** Os advogados escolhem o mecanismo; os engenheiros informam que dados circulam, quanto, com que frequência e por quê.
+
+**EX066.** A implantação fica bloqueada até que o novo fluxo tenha finalidade, base e mecanismo de transferência revisados.
+
+**EX067.** O desconhecimento e a não conformidade podem surgir só do projeto, assim como a vinculabilidade.
+
+**EX068.** Os sistemas do fornecedor são invisíveis para a Pellmore, então são necessárias confirmações e direitos de auditoria.
+
+**EX069.** O monitoramento é ele próprio tratamento de dados dos empregados e precisa ser proporcional e transparente.
+
+**EX070.** A telemedicina trata dados de saúde em grande escala de pacientes potencialmente vulneráveis, atendendo a vários critérios.
+
+**EX071.** O vazamento no fornecedor (6), pois a Pellmore só pode influenciar, e não controlar, a segurança do fornecedor.
+
+**EX072.** Sem as medidas planejadas, como a remoção do SDK de análise, o risco alto continuaria.
+
+**EX073.** A triagem no aparelho é a que menos coleta, mas as atualizações e o suporte aos aparelhos são mais difíceis.
+
+**EX074.** O resultado é uma orientação, e os pacientes sempre podem falar com um profissional de saúde.
+
+**EX075.** Por meio de retorno opcional e de testes clínicos periódicos com casos sintéticos.
 
 <a id="references"></a>
 ## Referências
