@@ -1,7 +1,7 @@
 # Arquitetura e Engenharia de Segurança: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 122, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–10 de 50 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 11–50 (EX031–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–16 de 50 já estão escritos em português, com os exercícios EX001–EX048 e suas resoluções com rubricas de 0 a 3 e 5 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 17–50 (EX049–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, verificar e operar sistemas seguros.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios calculam crescimento, fecho transitivo, probabilidades, disponibilidade, árvores de falhas, limites de taxa, diferenças entre regras, métricas e digests sobre dados sintéticos, e usam sqlite3 em memória para mostrar a injeção e sua correção; nada toca um sistema real. Projetos de produção usam produtos e padrões consagrados; nunca crie sua própria criptografia. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Saltzer e Schroeder (1975), [doi:10.1109/PROC.1975.9939](https://doi.org/10.1109
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) |
 
-Capítulos 11–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-11), até a chegada dos próximos lotes.
+Capítulos 17–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-17), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -511,11 +511,263 @@ Os códigos de ética variam por país e por órgão. Levantar uma preocupação
 
 - **EX030 — Ação da estudante.** O que Sofia podia fazer quanto ao lançamento prematuro? *Rubrica:* 3 = registrar o risco específico por escrito a Daniel para escalonamento;; 2 = preocupação por escrito;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-11"></a>
+
+## Capítulo 11 — Redes e protocolos
+
+### Objetivos de aprendizagem
+
+Você vai (1) mapear as zonas de rede e os protocolos da Corvia; (2) explicar o que TLS, VPNs e segmentação protegem; (3) identificar fraquezas de arquitetura numa rede plana.
+
+### 11.1 Mapear zonas
+
+Sofia desenha a rede da Corvia: ônibus e bondes se conectam por enlaces celulares a um gateway na garagem; as garagens se conectam ao data center central; o aplicativo de passageiros e o site ficam num ambiente de nuvem; os escritórios corporativos têm rede própria. Cada zona tem usuários, dispositivos e ameaças diferentes. Ela lista os protocolos que atravessam cada fronteira, como HTTPS para o aplicativo, uma VPN dos veículos até as garagens e um protocolo proprietário do fornecedor para os validadores de passagens. Um mapa assim é o ponto de partida de toda revisão de arquitetura, porque as proteções precisam ser colocadas onde o tráfego atravessa fronteiras de confiança.
+
+### 11.2 O que os protocolos protegem
+
+O TLS, especificado na RFC 8446, protege os dados em trânsito entre dois endpoints com criptografia, integridade e autenticação do servidor. Uma VPN cria um túnel criptografado entre redes, de modo que o tráfego dos veículos que atravessa redes celulares públicas fica protegido. Nenhum dos dois controla o que acontece dentro de um endpoint nem quais sistemas internos um dispositivo conectado pode alcançar. A segmentação faz isso, limitando quais zonas podem falar com quais. Sofia observa que uma VPN que joga cada ônibus direto na rede central sem filtragem protegeria a confidencialidade no enlace celular, mas daria a um ônibus comprometido um caminho para tudo.
+
+### 11.3 Fraquezas das redes planas
+
+Na garagem mais antiga da Corvia, notebooks da equipe, servidores de bilhetagem e impressoras compartilham um único segmento de rede. Sofia explica o risco a Daniel: um notebook infectado consegue alcançar diretamente os servidores de bilhetagem, e o monitoramento não consegue distinguir com facilidade o tráfego normal do anormal quando tudo fala com tudo. Anderson (2020) descreve incidentes em que redes internas planas deixaram atacantes se moverem livremente. Ela propõe separar as zonas com firewalls e permitir apenas os fluxos necessários, a abordagem depois formalizada em orientações de zero trust como o SP 800-207, e lista os fluxos de que cada zona legitimamente precisa como base para as regras.
+
+### Exemplo resolvido
+
+Sofia mapeia seis zonas da Corvia e seus protocolos de fronteira, explica os limites dos túneis VPN e propõe segmentar a rede plana da garagem pelos fluxos necessários.
+
+> **Caso sintético.** As zonas e os fluxos são sintéticos; a RFC 8446, o SP 800-207 e Anderson (2020) são reais.
+
+### Erros e limites
+
+Mapas de rede ficam desatualizados rapidamente. As regras de segmentação precisam ser mantidas, ou derivam de volta para uma rede plana.
+
+### Exercícios
+
+- **EX031 — Limite da VPN.** O que uma VPN de veículo não controla? *Rubrica:* 3 = quais sistemas internos o dispositivo conectado pode alcançar;; 2 = alcance;; 1 = confidencialidade;; 0 = nenhuma.
+
+- **EX032 — Risco da garagem plana.** Cite dois problemas da rede plana da garagem. *Rubrica:* 3 = notebook infectado alcança os servidores de bilhetagem; o monitoramento não separa o normal do anormal;; 2 = dois;; 1 = um;; 0 = nenhuma.
+
+- **EX033 — Base das regras.** Em que as regras de segmentação devem se basear? *Rubrica:* 3 = nos fluxos de que cada zona legitimamente precisa;; 2 = fluxos necessários;; 1 = todos os fluxos;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Sistemas operacionais
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar o isolamento de processos, usuários e permissões; (2) fazer o hardening de uma baseline de servidor; (3) relacionar o logging do sistema operacional à detecção no nível da arquitetura.
+
+### 12.1 Isolamento e permissões
+
+Os sistemas operacionais isolam processos e controlam o acesso a arquivos por meio de usuários, grupos e permissões. Sofia estuda um servidor Linux de bilhetagem: o serviço de bilhetagem roda com sua própria conta, que pode ler sua configuração e gravar seus logs, mas não pode modificar arquivos do sistema. Os administradores usam contas separadas com direitos elevados só quando necessário. Isso é o menor privilégio aplicado ao sistema operacional. Ela encontra um script legado rodando como root por conveniência, e Daniel explica que um único processo root comprometido mina todas as outras permissões, então o script é reescrito para rodar sob uma conta restrita.
+
+### 12.2 Hardening da baseline
+
+A Corvia usa uma baseline de hardening para servidores: desativar serviços não usados, remover contas padrão, aplicar atualizações num calendário, exigir autenticação forte dos administradores e ativar firewalls de host. Famílias de controles do SP 800-53 Rev. 5, como gestão de configuração e integridade de sistemas e informações, descrevem essas expectativas. Sofia aplica a baseline a um servidor de laboratório e registra cada mudança. Ela aprende que o hardening reduz a superfície de ataque, mas que uma baseline só é útil se os desvios forem detectados, então também agenda uma verificação de configuração que relata a cada semana a deriva em relação à baseline.
+
+### 12.3 Logging para detecção
+
+Os sistemas operacionais registram logins, mudanças de privilégio, inícios de processos e falhas de serviços. Um arquiteto decide quais desses logs são coletados centralmente, por quanto tempo são guardados e quem pode alterá-los. Sofia configura seu servidor de laboratório para enviar os logs de autenticação e de privilégio a um coletor central que os administradores do servidor não podem modificar, de modo que um intruso com acesso ao servidor não consiga apagar as evidências. Ela documenta quais eventos são coletados e por quê. O desenho do logging é uma decisão de arquitetura, porque determina se os ataques podem sequer ser percebidos e investigados.
+
+### Exemplo resolvido
+
+Sofia remove um script que rodava como root, aplica e registra uma baseline de hardening com verificações semanais de deriva e envia logs resistentes a adulteração a um coletor central.
+
+> **Caso sintético.** Os servidores, os scripts e as configurações da baseline são sintéticos; o SP 800-53 Rev. 5 é real.
+
+### Erros e limites
+
+Baselines podem quebrar software legado; teste antes de implantar. Logs centrais podem ficar sobrecarregados sem filtragem.
+
+### Exercícios
+
+- **EX034 — Perigo do script root.** Por que o script que rodava como root foi reescrito? *Rubrica:* 3 = um processo root comprometido mina todas as outras permissões;; 2 = risco do root;; 1 = estilo;; 0 = nenhuma.
+
+- **EX035 — Verificações de deriva.** Por que agendar verificações semanais de configuração depois do hardening? *Rubrica:* 3 = para detectar desvios da baseline ao longo do tempo;; 2 = deriva;; 1 = não são necessárias;; 0 = nenhuma.
+
+- **EX036 — Imutabilidade dos logs.** Por que enviar os logs a um coletor que os administradores do servidor não podem modificar? *Rubrica:* 3 = um intruso no servidor não consegue apagar as evidências;; 2 = evidências;; 1 = velocidade;; 0 = nenhuma.
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Sistemas de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) classificar os dados de uma organização de transporte; (2) prevenir injeção com consultas parametrizadas; (3) projetar a retenção e a minimização de dados.
+
+### 13.1 Classificar dados
+
+A Corvia guarda vários tipos de dados: identificadores de cartões e históricos de viagem, tokens de pagamento, registros de funcionários, dados de horários e telemetria dos veículos. Sofia ajuda a classificá-los. Os históricos de viagem são dados pessoais que revelam onde as pessoas moram e trabalham; os tokens de pagamento são dados financeiros sensíveis; os horários são públicos. A classificação orienta a arquitetura: dados pessoais e de pagamento precisam de criptografia, controles de acesso e logging, enquanto dados públicos precisam de integridade, mas não de confidencialidade. Daniel ressalta que a classificação precisa ser feita antes do projeto, porque adaptar a proteção a um banco cheio de dados misturados é caro e muitas vezes incompleto.
+
+### 13.2 Consultas parametrizadas
+
+Sofia escreve uma consulta para buscar viagens pelo identificador do cartão. Sua primeira versão monta a string SQL concatenando a entrada do usuário. Daniel lhe mostra que uma entrada como uma aspa seguida de OR 1=1 muda o sentido da consulta e devolve todas as viagens, um ataque de injeção. A correção é uma consulta parametrizada, em que o driver do banco passa a entrada como dado, nunca como código. O laboratório abaixo demonstra as duas com o módulo sqlite3 embutido no Python, sobre uma tabela sintética. A consulta concatenada vaza todas as linhas; a parametrizada não devolve nenhuma para a entrada maliciosa.
+
+### Laboratório — Consulta concatenada versus parametrizada
+
+```python
+# Injection vs parameterised query with stdlib sqlite3 on a synthetic table.
+import sqlite3
+db = sqlite3.connect(":memory:")
+db.execute("CREATE TABLE journeys (card TEXT, stop TEXT)")
+db.executemany("INSERT INTO journeys VALUES (?, ?)", [("C100", "Harbour"), ("C100", "Market"), ("C200", "Depot"), ("C300", "Airport")])
+evil = "X' OR '1'='1"
+rows_bad = db.execute(f"SELECT * FROM journeys WHERE card = '{evil}'").fetchall()   # never do this
+rows_ok = db.execute("SELECT * FROM journeys WHERE card = ?", (evil,)).fetchall()
+print("concatenated query rows:", len(rows_bad))
+print("parameterised query rows:", len(rows_ok))
+print("legit lookup C100:", len(db.execute("SELECT * FROM journeys WHERE card = ?", ("C100",)).fetchall()))
+```
+
+Execute com `python3 lab_sqli.py`. Saída verificada:
+
+```text
+concatenated query rows: 4
+parameterised query rows: 0
+legit lookup C100: 2
+```
+
+### 13.3 Retenção e minimização
+
+Guardar dados para sempre aumenta o dano de qualquer vazamento. Sofia propõe um desenho de retenção: históricos de viagem detalhados mantidos por noventa dias para atendimento ao cliente e investigação de fraudes, e depois agregados em contagens anônimas para o planejamento. Os tokens de pagamento são mantidos só pelo tempo que o provedor de pagamentos exige. A ISO/IEC 27002:2022 inclui controles sobre exclusão de informações e mascaramento de dados. Ela documenta cada prazo de retenção com sua finalidade. A minimização é um controle de arquitetura: dados que não são armazenados não podem ser roubados, e um conjunto de dados menor é mais fácil de proteger bem.
+
+### Exemplo resolvido
+
+Sofia classifica cinco tipos de dados da Corvia, demonstra a injeção e sua correção no sqlite3 e propõe um desenho de retenção de noventa dias para os históricos de viagem.
+
+> **Caso sintético.** Os dados, as tabelas e os prazos de retenção são sintéticos; a ISO/IEC 27002:2022 é real.
+
+### Erros e limites
+
+A agregação ainda pode permitir a reidentificação em grupos pequenos. As regras de retenção dependem da lei e precisam ser conferidas com o jurídico.
+
+### Exercícios
+
+- **EX037 — Sensibilidade das viagens.** Por que os históricos de viagem são dados pessoais que precisam de proteção? *Rubrica:* 3 = revelam onde as pessoas moram, trabalham e circulam;; 2 = localização;; 1 = públicos;; 0 = nenhuma.
+
+- **EX038 — Resultado da injeção no laboratório.** O que o laboratório devolveu para a entrada maliciosa em cada estilo de consulta? *Rubrica:* 3 = a concatenada devolveu as 4 linhas; a parametrizada devolveu 0;; 2 = as duas;; 1 = iguais;; 0 = nenhuma.
+
+- **EX039 — Lógica da minimização.** Por que a minimização de dados é um controle de segurança? *Rubrica:* 3 = dados não armazenados não podem ser roubados, e conjuntos menores são mais fáceis de proteger;; 2 = não roubados;; 1 = não é um controle;; 0 = nenhuma.
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Engenharia de software
+
+### Objetivos de aprendizagem
+
+Você vai (1) integrar atividades de segurança a um ciclo de vida de desenvolvimento; (2) conduzir uma revisão de projeto leve; (3) usar com eficácia a revisão de código e as verificações automatizadas.
+
+### 14.1 Segurança no ciclo de vida
+
+Sofia entra por um semestre numa equipe da Corvia que constrói um novo serviço de reembolso de passagens. O ciclo de vida da equipe tem requisitos, projeto, implementação, testes, release e manutenção. Daniel lhe mostra onde a segurança se encaixa: casos de abuso junto com os requisitos, modelagem de ameaças no projeto, codificação segura e revisão durante a implementação, testes de segurança antes do release e resposta a vulnerabilidades depois dele. O NIST SP 800-218 organiza essas práticas em grupos: preparar a organização, proteger o software, produzir software bem protegido e responder a vulnerabilidades. Integrar a segurança a cada fase custa menos do que tentar acrescentá-la no fim.
+
+### 14.2 Revisão de projeto leve
+
+Antes de começar a codificação, a equipe faz uma revisão de projeto de uma hora. Eles desenham um diagrama de fluxo de dados do serviço de reembolso, marcam as fronteiras de confiança e passam cada elemento pelas categorias STRIDE, como Shostack (2014) descreve. Descobrem que as solicitações de reembolso poderiam ser repetidas (replay) para obter reembolsos em dobro, e que a equipe de suporte poderia aprovar as próprias solicitações de reembolso. As mitigações são registradas: identificadores únicos de solicitação verificados no servidor e uma regra de que o aprovador deve ser diferente do solicitante. Sofia observa que uma hora encontrou dois problemas sérios que teriam sido caros de corrigir depois do release.
+
+### 14.3 Revisões e automação
+
+Durante a implementação, toda mudança é revisada por outro engenheiro usando um checklist curto: validação de entrada, verificações de autorização, tratamento de erros e logging. Verificações automatizadas rodam análise estática e varredura de dependências a cada commit. Sofia aprende que as ferramentas captam padrões comuns, mas deixam passar falhas de projeto como o problema da autoaprovação, enquanto as pessoas se cansam de verificações repetitivas que as ferramentas fazem bem. Combinar as duas coisas é eficiente. A equipe acompanha os achados até o fechamento e examina todo achado que as ferramentas deixaram passar para melhorar o checklist, um ciclo de feedback que melhora o próprio processo.
+
+### Exemplo resolvido
+
+Sofia relaciona os grupos de práticas do SP 800-218 ao projeto de reembolso, participa de uma revisão STRIDE que encontra problemas de replay e de autoaprovação e ajuda a refinar o checklist de revisão.
+
+> **Caso sintético.** O serviço de reembolso e os achados são sintéticos; o SP 800-218 e Shostack (2014) são reais.
+
+### Erros e limites
+
+Revisões leves deixam passar problemas fora do diagrama. As ferramentas produzem falsos positivos que as equipes aprendem a ignorar se não forem ajustadas.
+
+### Exercícios
+
+- **EX040 — Grupos do SP 800-218.** Cite os quatro grupos de práticas do SP 800-218. *Rubrica:* 3 = preparar a organização, proteger o software, produzir software bem protegido, responder a vulnerabilidades;; 2 = três;; 1 = um;; 0 = nenhuma.
+
+- **EX041 — Achados do reembolso.** Que dois problemas a revisão de projeto encontrou? *Rubrica:* 3 = replay de solicitações de reembolso e autoaprovação pela equipe de suporte;; 2 = os dois;; 1 = um;; 0 = nenhuma.
+
+- **EX042 — Ferramentas versus pessoas.** Que tipo de falha as ferramentas costumam deixar passar? *Rubrica:* 3 = falhas de projeto, como a lógica de autoaprovação;; 2 = falhas de projeto;; 1 = sintaxe;; 0 = nenhuma.
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Fundamentos de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir ativos, ameaças, vulnerabilidades e risco; (2) aplicar os princípios de Saltzer e Schroeder a um projeto; (3) distinguir controles preventivos, detectivos e corretivos.
+
+### 15.1 Vocabulário essencial
+
+O curso de fundamentos de segurança de Sofia oferece palavras precisas. Um ativo é algo de valor, como o banco de dados de bilhetagem. Uma ameaça é uma causa potencial de dano, como um grupo de fraudadores. Uma vulnerabilidade é uma fraqueza que uma ameaça poderia explorar, como uma interface sem autenticação. O risco combina a probabilidade de que uma ameaça explore uma vulnerabilidade com o impacto sobre o ativo; o NIST SP 800-30 Rev. 1 descreve como avaliá-lo. Usar essas palavras com cuidado evita debates confusos em que uma pessoa fala de atacantes e outra de bugs, cada uma achando que as duas querem dizer a mesma coisa.
+
+### 15.2 Princípios de projeto na prática
+
+Sofia aplica os princípios de Saltzer e Schroeder ao serviço de reembolso do capítulo 14. Menor privilégio: a equipe de suporte pode ver os reembolsos, mas só supervisores podem aprovar os grandes. Padrões fail-safe: se o serviço de autorização estiver inacessível, os reembolsos são recusados, não aprovados. Mediação completa: toda solicitação de reembolso é verificada, não só a primeira de uma sessão. Projeto aberto: a segurança não depende de esconder como o serviço funciona. Aceitabilidade psicológica: as telas de aprovação são simples o bastante para que os supervisores não busquem atalhos. Escrever cada princípio ao lado de uma escolha de projeto concreta torna ideias abstratas úteis na revisão.
+
+### 15.3 Tipos de controles
+
+Os controles podem prevenir, detectar ou corrigir. A autenticação e a autorização previnem reembolsos não autorizados. O logging e o monitoramento detectam padrões suspeitos, como um cartão recebendo muitos reembolsos. Os controles corretivos restauram a operação normal, como estornar reembolsos fraudulentos e revogar contas comprometidas. Sofia aprende que nenhum controle preventivo é perfeito, então todo ativo importante também precisa de detecção e correção. A ISO/IEC 27002:2022 agrupa os controles nos temas organizacional, de pessoas, físico e tecnológico, uma visão diferente que ajuda a verificar se controles não técnicos, como treinamento e procedimentos, foram considerados.
+
+### Exemplo resolvido
+
+Sofia define ativo, ameaça, vulnerabilidade e risco para o serviço de reembolso, relaciona cinco princípios de projeto a escolhas concretas e lista controles preventivos, detectivos e corretivos.
+
+> **Caso sintético.** O serviço de reembolso e os controles são sintéticos; o SP 800-30 Rev. 1, Saltzer e Schroeder (1975) e a ISO/IEC 27002:2022 são reais.
+
+### Erros e limites
+
+O vocabulário varia entre as normas; defina os termos em cada documento. Os princípios podem entrar em conflito e exigem julgamento.
+
+### Exercícios
+
+- **EX043 — Vulnerabilidade versus ameaça.** Dê um exemplo da Corvia de uma ameaça e de uma vulnerabilidade. *Rubrica:* 3 = ameaça: grupo de fraudadores; vulnerabilidade: interface sem autenticação;; 2 = as duas;; 1 = trocadas;; 0 = nenhuma.
+
+- **EX044 — Reembolso fail-safe.** Como o padrão fail-safe se aplica quando o serviço de autorização está fora do ar? *Rubrica:* 3 = os reembolsos são recusados, não aprovados;; 2 = recusar;; 1 = aprovar;; 0 = nenhuma.
+
+- **EX045 — Temas da ISO.** Que quatro temas a ISO/IEC 27002:2022 usa para agrupar os controles? *Rubrica:* 3 = organizacional, de pessoas, físico, tecnológico;; 2 = três;; 1 = um;; 0 = nenhuma.
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Engenharia de sistemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever o ciclo de vida da engenharia de sistemas; (2) aplicar conceitos do NIST SP 800-160 Vol. 1 Rev. 1 a um sistema de transporte; (3) construir a rastreabilidade das necessidades até a verificação.
+
+### 16.1 O ciclo de vida
+
+A engenharia de sistemas gerencia sistemas complexos do conceito à desativação. Daniel explica que um sistema de bilhetagem envolve hardware nos veículos, software nos data centers, serviços de nuvem, pessoas e contratos, então precisa ser projetado como um todo. As etapas do ciclo de vida incluem conceito, desenvolvimento, produção, utilização, suporte e desativação. Preocupações de segurança surgem em cada uma: requisitos no conceito, revisões de projeto no desenvolvimento, fabricação segura na produção, monitoramento na utilização, aplicação de patches no suporte e destruição de dados na desativação. Sofia percebe que muitas das falhas de segurança sobre as quais leu aconteceram no suporte ou na desativação, etapas que os projetos costumam negligenciar.
+
+### 16.2 Engenharia de confiabilidade
+
+O NIST SP 800-160 Vol. 1 Rev. 1 trata a segurança como parte da confiabilidade (trustworthiness) do sistema e a integra aos processos de engenharia de sistemas. Ele enfatiza as necessidades de proteção das partes interessadas, os requisitos de segurança derivados delas, a arquitetura e o projeto que satisfazem esses requisitos e a garantia (assurance) de que o sistema de fato o faz. Também lista princípios de projeto, ampliando Saltzer e Schroeder com ideias como persistência mínima e proteção contínua. Sofia usa a publicação para estruturar um artigo curto sobre o validador de passagens, ligando as necessidades de proteção dos passageiros a requisitos como evidência de adulteração e chaves protegidas.
+
+### 16.3 Rastreabilidade
+
+A rastreabilidade liga cada necessidade das partes interessadas a requisitos, elementos de projeto e evidências de verificação. Sofia monta uma pequena tabela de rastreabilidade: a necessidade de que os dados de viagem dos passageiros permaneçam privados se liga a requisitos de criptografia em trânsito e em repouso, que se ligam a elementos de projeto como TLS e criptografia de disco, que se ligam a testes e verificações de configuração. Quando um teste falha ou um requisito muda, a rastreabilidade mostra o que mais é afetado. Sem ela, as equipes não conseguem dizer se toda necessidade foi atendida nem qual elemento de projeto existe por qual motivo.
+
+### Exemplo resolvido
+
+Sofia relaciona preocupações de segurança a seis etapas do ciclo de vida, estrutura um artigo sobre o validador com conceitos do SP 800-160 Vol. 1 Rev. 1 e monta uma tabela de rastreabilidade das necessidades aos testes.
+
+> **Caso sintético.** O artigo sobre o validador e a tabela são sintéticos; o SP 800-160 Vol. 1 Rev. 1 é real.
+
+### Erros e limites
+
+Tabelas de rastreabilidade ficam onerosas se forem detalhadas demais. Os modelos de ciclo de vida simplificam projetos reais, que são iterativos.
+
+### Exercícios
+
+- **EX046 — Etapas negligenciadas.** Que etapas do ciclo de vida costumam ser negligenciadas na segurança? *Rubrica:* 3 = suporte e desativação;; 2 = as duas;; 1 = desenvolvimento;; 0 = nenhuma.
+
+- **EX047 — Fluxo do SP 800-160.** Que cadeia o SP 800-160 Vol. 1 Rev. 1 enfatiza? *Rubrica:* 3 = necessidades de proteção para requisitos, para projeto, para garantia;; 2 = cadeia;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX048 — Valor da rastreabilidade.** O que a rastreabilidade mostra quando um requisito muda? *Rubrica:* 3 = quais elementos de projeto e testes são afetados;; 2 = itens afetados;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX030 (as de EX031–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Sofia Mbeki, Daniel Ferreira, a Kestrel Polytechnic University, a Corvia Regional Transit e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX048 (as de EX049–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Sofia Mbeki, Daniel Ferreira, a Kestrel Polytechnic University, a Corvia Regional Transit e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Que o aumento de cada mês é proporcional ao volume atual, de modo que o crescimento absoluto continua se acelerando.
 
@@ -576,6 +828,42 @@ Respostas-modelo para EX001–EX030 (as de EX031–EX150 estão na edição em i
 **EX029.** Abertas, porque a evacuação dos passageiros tem prioridade sobre a cobrança da tarifa.
 
 **EX030.** Escrever uma nota clara do risco específico ao seu mentor para que ele possa ser escalado.
+
+**EX031.** Não limita quais sistemas internos um veículo comprometido pode alcançar depois de conectado.
+
+**EX032.** Um notebook infectado consegue alcançar diretamente os servidores de bilhetagem, e o monitoramento não consegue distinguir os fluxos normais.
+
+**EX033.** Numa lista dos fluxos de que cada zona realmente precisa, permitindo apenas esses.
+
+**EX034.** Porque, se fosse comprometido, os privilégios de root minariam todas as outras permissões do servidor.
+
+**EX035.** Porque os sistemas derivam da baseline, e a baseline só é útil se os desvios forem percebidos.
+
+**EX036.** Para que um atacante que obtenha acesso ao servidor não consiga apagar o registro de suas ações.
+
+**EX037.** Porque revelam os padrões de moradia, trabalho e deslocamento das pessoas.
+
+**EX038.** A consulta concatenada devolveu as 4 linhas, enquanto a consulta parametrizada devolveu 0.
+
+**EX039.** Porque dados que nunca são guardados não podem vazar, e menos dados são mais fáceis de proteger adequadamente.
+
+**EX040.** Preparar a organização, proteger o software, produzir software bem protegido e responder a vulnerabilidades.
+
+**EX041.** O replay de solicitações de reembolso para obter reembolsos em dobro e funcionários aprovando os próprios reembolsos.
+
+**EX042.** Falhas no nível do projeto, como o problema da autoaprovação, que exigem revisão humana.
+
+**EX043.** Um grupo de fraudadores é uma ameaça; uma interface sem autenticação é uma vulnerabilidade que ele poderia explorar.
+
+**EX044.** As solicitações de reembolso são recusadas até que a autorização possa ser verificada.
+
+**EX045.** Organizacional, de pessoas, físico e tecnológico.
+
+**EX046.** O suporte, incluindo a aplicação de patches, e a desativação, incluindo a destruição de dados.
+
+**EX047.** Das necessidades de proteção das partes interessadas aos requisitos de segurança, à arquitetura e ao projeto, e à garantia de que são atendidos.
+
+**EX048.** Mostra quais elementos de projeto e evidências de verificação dependem daquele requisito.
 
 <a id="references"></a>
 ## Referências
