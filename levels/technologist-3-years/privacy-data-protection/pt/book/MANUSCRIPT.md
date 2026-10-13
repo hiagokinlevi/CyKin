@@ -1,7 +1,7 @@
 # Privacidade e Proteção de Dados: Curso de Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso 073, curso de tecnólogo (3 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–15 de 30 já estão escritos em português, com os exercícios EX001–EX045 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 16–30 (EX046–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 30 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 21–30 (EX061–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de tecnólogo que aprendem a verificar como sistemas reais tratam dados pessoais.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios inspecionam os fluxos de SDKs de um aplicativo sintético, testam a completude da exportação de um pedido de acesso, varrem arquivos sintéticos em busca de padrões de dados pessoais, conferem a retenção de imagens de CFTV e automatizam a exclusão de contas inativas, sempre sobre dados sintéticos. A análise jurídica é didática e não constitui aconselhamento jurídico; a LGPD e os atos da ANPD são citados pelo texto oficial e parafraseados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Regulamento (UE) 2016/679 (GDPR), artigos 5, 9, 15, 28, 30, 32, 33 e 35; Lei nº
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
 
-Capítulos 16–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-16), até a chegada dos próximos lotes.
+Capítulos 21–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -703,11 +703,240 @@ O resultado de uma unidade pode não representar as quarenta.
 - **EX044 — Causa raiz.** Por que as imagens não eram excluídas? *Rubrica:* 3 = uma atualização de firmware desligou a exclusão automática;; 2 = menciona firmware;; 1 = nada;; 0 = nenhuma.
 - **EX045 — Verificação contínua.** Que controle contínuo Aisha acrescentou? *Rubrica:* 3 = uma verificação mensal da retenção;; 2 = menciona mensal;; 1 = nenhum;; 0 = nenhuma.
 
+<a id="ch-16"></a>
+
+## Capítulo 16 — Privacidade e proteção de dados: métodos II
+
+### Objetivos de aprendizagem
+
+Você vai (1) realizar uma avaliação de impacto sobre a proteção de dados para uma nova funcionalidade; (2) consultar as partes interessadas; (3) registrar as decisões.
+
+### 16.1 A funcionalidade
+
+A Quayside planeja uma funcionalidade que usa as tendências da frequência cardíaca para sugerir dias de descanso. Aisha reconhece que o tratamento sistemático de dados de saúde pode exigir uma DPIA pelo artigo 35 do GDPR; na LGPD, o equivalente é o relatório de impacto à proteção de dados pessoais do art. 38. O guia WP248 lista critérios como dados sensíveis e tratamento em grande escala. A equipe de produto vê a funcionalidade como mera conveniência, mas Aisha mostra que ela analisa dados de saúde de milhares de alunos por longos períodos e faz sugestões que podem influenciar comportamentos. Dois critérios se aplicam claramente, o que em geral exige a avaliação antes do desenvolvimento.
+
+### 16.2 Avaliação
+
+Aisha descreve o tratamento, avalia a necessidade e a proporcionalidade e lista os riscos: sugestões inexatas, inferência de doenças e compartilhamento com seguradoras. A necessidade pergunta se a funcionalidade precisa de históricos completos ou só de tendências recentes; Aisha descobre que catorze dias de dados bastam. A proporcionalidade pergunta se o benefício justifica a intrusão. O risco de inferir doenças é real, porque leituras irregulares podem sugerir uma condição cardíaca. As mitigações incluem tratamento no aparelho, nenhum compartilhamento e explicações claras; tratar no celular do aluno evita que os históricos saiam do aparelho e elimina vários riscos de uma vez.
+
+### 16.3 Consulta
+
+Aisha consulta os trainers, cinco alunos voluntários e o encarregado. Os alunos querem um jeito fácil de desligar a funcionalidade, que é acrescentado. Os trainers temem que os alunos faltem às sessões por conselho do aplicativo sem entender por quê. O encarregado pergunta como os alunos vão saber o que a funcionalidade faz e como desligá-la. Os voluntários querem uma redação clara, nenhuma notificação surpresa e a garantia de que a seguradora nunca verá os dados. Aisha registra cada preocupação e a resposta de design correspondente no documento da avaliação, para que a ligação entre consulta e desenho fique visível.
+
+### 16.4 Decisão
+
+O encarregado aprova com condições: a funcionalidade vem desligada por padrão, é explicada em palavras simples, roda no aparelho e será revista depois de três meses de uso. A avaliação fica guardada com a documentação do produto, para que mudanças futuras acionem uma revisão. O Sr. Reilly observa que a avaliação moldou o desenho, em vez de só documentá-lo, e que uma boa avaliação registra as alternativas consideradas e rejeitadas, e não só a escolha final. Aqui, a alternativa rejeitada foi o tratamento na nuvem, que exigiria enviar os históricos completos aos servidores da Quayside.
+
+### Exemplo resolvido
+
+Aisha conduz uma avaliação de impacto das sugestões de dias de descanso, escolhe o tratamento no aparelho, acrescenta um botão para desligar depois da consulta e registra a aprovação.
+
+> **Caso sintético.** A funcionalidade é sintética; o artigo 35 do GDPR, o art. 38 da LGPD e o WP248 são reais.
+
+### Erros e limites
+
+As avaliações precisam ser atualizadas se a funcionalidade mudar.
+
+### Exercícios
+
+- **EX046 — Gatilho da DPIA.** Por que a funcionalidade precisa de uma avaliação? *Rubrica:* 3 = tratamento sistemático de dados de saúde em escala;; 2 = menciona saúde;; 1 = nada;; 0 = nenhuma.
+- **EX047 — Mitigação principal.** Cite uma mitigação. *Rubrica:* 3 = tratamento no aparelho, nenhum compartilhamento, explicações claras;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX048 — Resultado da consulta.** O que os alunos pediram? *Rubrica:* 3 = um jeito fácil de desligar;; 2 = correta;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Privacidade e proteção de dados: ferramentas
+
+### Objetivos de aprendizagem
+
+Você vai (1) usar um varredor simples para encontrar dados pessoais em arquivos; (2) interpretar seus limites; (3) agir sobre os resultados.
+
+### 17.1 O varredor
+
+Aisha escreve um varredor em Python, só com a biblioteca padrão, que usa expressões regulares para e-mails, telefones e números de cartão. Ela o roda em cinco arquivos sintéticos de um drive compartilhado, cópias modeladas nos tipos reais encontrados ali. O varredor lê cada arquivo linha a linha, aplica três padrões e conta as ocorrências sem imprimir os valores encontrados, para que o próprio relatório não espalhe dados pessoais. Os números de cartão são conferidos com um padrão simples de dígitos; ela observa que uma ferramenta de produção acrescentaria um teste de dígito verificador para reduzir os falsos positivos.
+
+### 17.2 Resultados
+
+O laboratório encontra padrões em três de cinco arquivos: uma exportação antiga de alunos com dois e-mails e dois telefones, anotações de um trainer com um telefone e um arquivo de reembolsos com um número de cartão. As anotações também mencionam uma lesão no joelho, que a expressão regular não detecta. A exportação foi criada para uma promoção três anos antes e esquecida; o arquivo de reembolsos foi salvo por um assistente financeiro para trabalhar offline; as anotações foram compartilhadas para cobrir aulas. Cada arquivo tem uma história plausível, o que mostra que os dados pessoais se espalham pelo trabalho comum, e não por descuido.
+
+### 17.3 Limites
+
+Aisha explica que os varredores de padrões deixam passar informações de saúde em texto livre e podem gerar falsos positivos. As expressões regulares encontram padrões estruturados, como e-mails, mas a saúde aparece em palavras comuns: lesão no joelho, asma, grávida. Uma lista de palavras-chave poderia ajudar, mas geraria muitos alarmes falsos numa academia, onde palavras como coração e lesão aparecem nas descrições das aulas. Por isso, é preciso revisão humana dos arquivos sinalizados e das anotações em geral. Aisha recomenda usar o varredor para priorizar essa revisão, e não para declarar que um arquivo está limpo.
+
+### 17.4 Ações
+
+A exportação antiga é excluída, o arquivo de reembolsos vai para o sistema de pagamentos e as anotações dos trainers passam para o aplicativo, com controles de acesso. Antes de excluir a exportação, Aisha confirma com o encarregado que não há retenção judicial. Ela pergunta ao financeiro por que precisava de uma cópia offline e descobre que o sistema de pagamentos não tinha um relatório de reembolsos, que a TI acrescenta. Os trainers ganham no aplicativo um campo de anotações que só os trainers do próprio aluno leem. O Sr. Reilly observa que as ferramentas ajudam, mas não substituem o julgamento.
+
+### Laboratório — Varredura de padrões em arquivos compartilhados
+
+```python
+# Scan synthetic shared-drive files for personal data patterns (email, phone, card-like numbers).
+import re
+files = {"class_timetable.csv": "Mon,Spin,Studio 2\nTue,Yoga,Studio 1",
+         "member_export_old.csv": "name,email,phone\nAna Lima,ana@example.org,+44 7700 900123\nRui Sousa,rui@example.org,+44 7700 900456",
+         "trainer_notes.txt": "Client J. knee injury, avoid squats. Call 07700 900789.",
+         "refunds_march.txt": "Refund to card 4111 1111 1111 1111 approved",
+         "poster.txt": "Summer challenge! Join at the front desk."}
+pat = {"email": r"[\w.]+@[\w.]+", "phone": r"(?:\+44 ?|0)7700 ?\d{6}", "card": r"\b(?:\d{4} ?){3}\d{4}\b"}
+hits = 0
+for f, t in files.items():
+    found = {k: len(re.findall(p, t)) for k, p in pat.items() if re.findall(p, t)}
+    hits += bool(found); print(f"{f:22s} {found if found else '-'}")
+print(f"files with personal data patterns: {hits} of {len(files)}")
+```
+
+Execute com `python3 lab_scan.py`. Saída verificada:
+
+```text
+class_timetable.csv    -
+member_export_old.csv  {'email': 2, 'phone': 2}
+trainer_notes.txt      {'phone': 1}
+refunds_march.txt      {'card': 1}
+poster.txt             -
+files with personal data patterns: 3 of 5
+```
+
+### Exemplo resolvido
+
+O varredor de Aisha sinaliza três de cinco arquivos e deixa passar a anotação sobre a lesão no joelho, e ela exclui, move e protege os arquivos.
+
+> **Caso sintético.** Os arquivos são sintéticos.
+
+### Erros e limites
+
+Varredores por expressões regulares não captam o contexto nem formatos incomuns.
+
+### Exercícios
+
+- **EX049 — Arquivos sinalizados.** Quantos arquivos continham padrões? *Rubrica:* 3 = 3 de 5;; 2 = correta;; 1 = errada;; 0 = nenhuma.
+- **EX050 — Dado não detectado.** O que o varredor deixou passar? *Rubrica:* 3 = a anotação de saúde sobre a lesão no joelho;; 2 = menciona saúde;; 1 = nada;; 0 = nenhuma.
+- **EX051 — Destino do arquivo de cartão.** O que aconteceu com o arquivo de reembolsos? *Rubrica:* 3 = foi movido para o sistema de pagamentos;; 2 = menciona a mudança;; 1 = foi mantido;; 0 = nenhuma.
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Privacidade e proteção de dados: controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) selecionar controles para os riscos da Quayside; (2) mapear os controles para os princípios; (3) acompanhar a implementação.
+
+### 18.1 Selecionar controles
+
+Aisha lista seis controles: revisão de SDKs, lista de verificação dos pedidos de acesso, verificação da exclusão do CFTV, varredura de arquivos, autenticação multifator e exclusão de contas inativas. Ela escolhe controles que respondem aos achados dos capítulos anteriores, em vez de copiar uma lista genérica. Cada controle enfrenta uma falha real: o SDK de anúncios, a resposta de acesso incompleta, o firmware do CFTV, os arquivos esquecidos, os logins fracos dos gerentes e as contas guardadas para sempre. Isso torna o conjunto fácil de explicar, porque cada item tem uma história de que a equipe se lembra; controles genéricos sem história ficam para depois.
+
+### 18.2 Mapeamento
+
+Aisha mapeia cada controle para os princípios. A revisão de SDKs apoia a licitude, a transparência e a limitação da finalidade, porque impede fluxos para novas finalidades. A verificação da exclusão do CFTV apoia a limitação da conservação. A autenticação multifator apoia a integridade e a confidencialidade. A lista dos pedidos de acesso apoia a transparência e o direito de acesso. A varredura de arquivos apoia a limitação da conservação e a confidencialidade. A exclusão de contas inativas apoia a limitação da conservação e a minimização. O mapa mostra que a exatidão não tem controle próprio, então ela acrescenta um lembrete anual para os alunos conferirem seus dados.
+
+### 18.3 Normas
+
+Aisha observa que a ISO/IEC 27701 oferece controles de privacidade que estendem um sistema de gestão da segurança da informação, e que o NIST Privacy Framework organiza resultados de privacidade. A Quayside os usa como referência. Ela não tenta a certificação; usa os documentos como listas de verificação para encontrar áreas faltantes. As funções do NIST Privacy Framework, como Identify-P e Control-P, ajudam a agrupar as atividades, e as listas de controles da ISO/IEC 27701 lembram o treinamento e a gestão de fornecedores. Ela registra quais itens a Quayside já atende e quais estão planejados, para mostrar o progresso à liderança.
+
+### 18.4 Acompanhamento
+
+Cada controle tem responsável, situação e evidência, numa tabela simples compartilhada com os responsáveis. As situações possíveis são planejado, em andamento, operando e testado. Um controle só conta como testado quando uma evidência mostra que funcionou, como um log de vídeos excluídos ou um teste de pedido de acesso concluído. Aisha revisa a tabela todo mês e pede aos responsáveis que atualizem os links das evidências, e não só as palavras de situação; quem não tem evidência continua em andamento, porque a situação sozinha não prova nada. O Sr. Reilly observa que o mapeamento revela as lacunas de cobertura.
+
+### Exemplo resolvido
+
+Aisha lista seis controles, mapeia-os para os princípios do GDPR, usa como referência a ISO/IEC 27701 e o NIST Privacy Framework e acompanha responsáveis e evidências.
+
+> **Caso sintético.** Os controles são sintéticos; a ISO/IEC 27701 e o NIST Privacy Framework são reais.
+
+### Erros e limites
+
+Um controle mapeado não é necessariamente eficaz.
+
+### Exercícios
+
+- **EX052 — Princípio do CFTV.** Que princípio a exclusão do CFTV apoia? *Rubrica:* 3 = limitação da conservação;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX053 — Norma de referência.** Cite uma norma usada como referência. *Rubrica:* 3 = ISO/IEC 27701 ou NIST Privacy Framework;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX054 — Benefício do mapeamento.** Por que mapear os controles para os princípios? *Rubrica:* 3 = revela lacunas de cobertura;; 2 = menciona lacunas;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Privacidade e proteção de dados: monitoramento
+
+### Objetivos de aprendizagem
+
+Você vai (1) monitorar os controles de privacidade; (2) definir alertas; (3) analisar tendências.
+
+### 19.1 O que monitorar
+
+Aisha monitora a retenção do CFTV em todas as unidades, as mudanças de SDKs em cada versão do aplicativo, os prazos dos pedidos de acesso e as contas de ex-funcionários. Escolhe esses quatro sinais porque cada um já falhou uma vez ou tende a se desviar: a exclusão do CFTV falhou depois de uma atualização de firmware, os SDKs chegam com as versões, os prazos dos pedidos são obrigações legais e a rotatividade da equipe é alta. Ela evita monitorar tudo, porque um pequeno conjunto de sinais significativos, que cabe numa página, é mais fácil de usar do que um grande painel que ninguém lê.
+
+### 19.2 Alertas
+
+Aisha define os alertas: imagens com mais de trinta e cinco dias, qualquer SDK novo, pedidos a cinco dias do prazo e contas não removidas dois dias depois da saída. Os limites têm uma pequena margem, para que variações normais não disparem alertas. Os alertas do CFTV vão para o gerente da unidade e para a TI; os de SDK, para o líder do aplicativo e o encarregado; os de prazo, para a equipe de atendimento aos titulares; os de contas, para o RH e a TI. Cada mensagem de alerta diz o que fazer, e não só o que aconteceu, para que quem a recebe aja sem precisar perguntar.
+
+### 19.3 Tendências
+
+Depois de três meses, as contas de ex-funcionários caem de quarenta para duas, e todas as unidades cumprem a retenção do CFTV. Todos os pedidos de acesso são respondidos no prazo, embora as buscas nos fornecedores continuem sendo a etapa mais lenta. O alerta do CFTV de uma unidade dispara uma vez depois de outra atualização de firmware, e a correção leva um dia, em vez de seis semanas. As reclamações dos alunos sobre e-mails de marketing também caem a zero no período. Aisha observa que os dados de tendência mostram os controles funcionando, uma evidência mais forte do que a simples existência de uma política.
+
+### 19.4 Revisão
+
+Aisha revisa os alertas todo mês para eliminar o ruído. No primeiro mês, o alerta de SDK dispara a cada pequena atualização de biblioteca, então ela o muda para disparar só quando uma biblioteca envia dados a um domínio novo, e ele cai de quarenta por mês para dois. Ela registra cada mudança nas regras de alerta com uma justificativa, para que os revisores vejam se o monitoramento foi enfraquecido por conveniência ou melhorado em precisão. O Sr. Reilly observa que o monitoramento impede que as correções falhem em silêncio, como mostrou o problema do firmware do CFTV.
+
+### Exemplo resolvido
+
+Aisha monitora quatro controles com alertas, vê as contas esquecidas caírem de quarenta para duas e todas as unidades cumprirem a retenção do CFTV.
+
+> **Caso sintético.** Os resultados são sintéticos.
+
+### Erros e limites
+
+Alertas demais fazem as pessoas ignorá-los.
+
+### Exercícios
+
+- **EX055 — Alerta do CFTV.** O que dispara o alerta do CFTV? *Rubrica:* 3 = imagens com mais de trinta e cinco dias;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+- **EX056 — Tendência das contas.** Como mudaram as contas de ex-funcionários? *Rubrica:* 3 = de quarenta para duas;; 2 = correta;; 1 = nada;; 0 = nenhuma.
+- **EX057 — Finalidade do monitoramento.** Por que monitorar controles já corrigidos? *Rubrica:* 3 = as correções podem falhar em silêncio;; 2 = menciona falha;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Privacidade e proteção de dados: solução de problemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) diagnosticar falhas de privacidade; (2) encontrar as causas raiz; (3) evitar a recorrência.
+
+### 20.1 Uma falha
+
+Um aluno recebe um e-mail de marketing depois de revogar o consentimento. Ele reclama na recepção, a reclamação chega ao encarregado, e este pede a Aisha que descubra o que deu errado. O aluno tinha revogado o consentimento pelo aplicativo nove dias antes. Uma reclamação assim pode abalar a confiança e, se se repetir, levar a uma reclamação à autoridade de proteção de dados, então merece uma investigação cuidadosa. Aisha começa reunindo o registro do aplicativo, o log da plataforma de e-mail e o histórico das rotinas automáticas desses nove dias, para reconstruir a sequência dos fatos.
+
+### 20.2 Diagnóstico
+
+Aisha segue a revogação do banco do aplicativo até a plataforma de marketing. O aplicativo registrou a mudança corretamente, com data e hora. Mas a rotina noturna que copia as mudanças de preferência para a plataforma de e-mail tinha registrado erros por sete noites seguidas, e a revogação nunca foi sincronizada. Ao reproduzir o problema numa cópia de teste, ela conta 214 revogações equivalentes que não foram transferidas naquela semana, então o problema afetou muitos alunos, e não apenas um. Isso transforma uma reclamação isolada num incidente a tratar de forma ampla, com todos os afetados identificados.
+
+### 20.3 Causa raiz
+
+A rotina falhou depois de uma troca de senha e não tinha alerta de falha. A TI tinha trocado uma senha de serviço, como manda a boa prática de segurança, mas não atualizou a credencial guardada pela rotina. A rotina falhou em silêncio, porque suas mensagens de erro iam para uma caixa de correio que ninguém lia. A causa real, portanto, foi a falta de alerta e de responsável, e não a troca de senha, que era a coisa certa a fazer. Culpar a TI não teria corrigido nada. Aisha acrescenta um alerta de falha e uma reconciliação semanal, que atacam a causa, e não o sintoma.
+
+### 20.4 Prevenção
+
+Aisha lista todas as rotinas que transportam escolhas de privacidade: preferências de marketing, configurações de compartilhamento da frequência cardíaca, exclusões de contas e exclusões de dados nos fornecedores. Cada uma agora tem um responsável e um alerta de falha. A reconciliação semanal compara as revogações no aplicativo com as supressões na plataforma de e-mail e informa qualquer diferença. Os alunos afetados recebem um pedido de desculpas e a confirmação da sua escolha. O Sr. Reilly lembra que revogar deve ser tão fácil quanto consentir, pelo artigo 7(3) do GDPR e pelo art. 8º, §5º, da LGPD, e precisa de fato funcionar.
+
+### Exemplo resolvido
+
+Aisha liga um e-mail indesejado a uma rotina de sincronização que falhou, acrescenta alertas e reconciliação e confere rotinas semelhantes.
+
+> **Caso sintético.** A falha é sintética; o artigo 7(3) do GDPR e o art. 8º, §5º, da LGPD são reais.
+
+### Erros e limites
+
+Corrigir só o sintoma convida a recorrência.
+
+### Exercícios
+
+- **EX058 — Causa.** Por que o aluno recebeu o e-mail? *Rubrica:* 3 = a rotina de sincronização falhou depois de uma troca de senha;; 2 = menciona a rotina;; 1 = nada;; 0 = nenhuma.
+- **EX059 — Correção.** Que correções Aisha acrescentou? *Rubrica:* 3 = um alerta e uma reconciliação semanal;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX060 — Princípio.** O que exige o artigo 7(3)? *Rubrica:* 3 = revogar tão facilmente quanto consentir;; 2 = correta;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX045 (as de EX046–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Aisha Bello, o Sr. Tom Reilly, o Lindon Technical Institute, a Quayside Fitness e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060 (as de EX061–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Aisha Bello, o Sr. Tom Reilly, o Lindon Technical Institute, a Quayside Fitness e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Sistema de matrículas, aplicativo, vestíveis e CFTV (também a catraca e as reservas das unidades).
 
@@ -798,6 +1027,36 @@ Respostas-modelo para EX001–EX045 (as de EX046–EX090 estão na edição em i
 **EX044.** A exclusão automática foi desligada por uma atualização de firmware.
 
 **EX045.** Uma verificação mensal da retenção do CFTV.
+
+**EX046.** Trata dados de saúde de forma sistemática e em escala.
+
+**EX047.** O tratamento no aparelho.
+
+**EX048.** Um jeito fácil de desligar a funcionalidade.
+
+**EX049.** Três de cinco.
+
+**EX050.** Informação de saúde em texto livre sobre uma lesão no joelho.
+
+**EX051.** Foi movido para o sistema de pagamentos.
+
+**EX052.** Limitação da conservação.
+
+**EX053.** ISO/IEC 27701.
+
+**EX054.** Revela princípios sem controles.
+
+**EX055.** Imagens com mais de trinta e cinco dias.
+
+**EX056.** De quarenta para duas.
+
+**EX057.** As correções podem falhar em silêncio, como a exclusão do CFTV.
+
+**EX058.** A rotina noturna de sincronização falhou depois de uma troca de senha.
+
+**EX059.** Um alerta de falha e uma reconciliação semanal.
+
+**EX060.** Revogar o consentimento deve ser tão fácil quanto dá-lo.
 
 <a id="references"></a>
 ## Referências
