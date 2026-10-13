@@ -1,7 +1,7 @@
 # Inteligência de ameaças e OSINT: um livro de engenharia
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–39 de 50 já estão escritos em português, com os exercícios EX001–EX117 e suas resoluções com rubricas de 0 a 3 e 8 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 40–50 (EX118–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–42 de 50 já estão escritos em português, com os exercícios EX001–EX126 e suas resoluções com rubricas de 0 a 3 e 8 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 43–50 (EX127–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, construir, verificar e operar plataformas de inteligência de ameaças e fluxos de OSINT como sistemas confiáveis.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limite ético: nenhuma coleta sobre pessoas privadas reais, nenhuma evasão de termos de uso, nenhuma desanonimização e nenhuma interação com infraestrutura de adversários. Toda organização, pessoa, indicador e número é **sintético**, salvo quando uma frase cita uma fonte pública; os endereços usam as faixas da RFC 5737 e os domínios usam `.example`.
@@ -28,9 +28,9 @@ MITRE [ATT&CK](https://attack.mitre.org/); OASIS [STIX 2.1](https://docs.oasis-o
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) · [41](#ch-41) · [42](#ch-42) |
 
-Capítulos 40–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-40), até a chegada dos próximos lotes.
+Capítulos 43–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-43), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -2427,11 +2427,191 @@ Meça a manutenção, documente para estranhos, registre a dívida, acompanhe as
 
 [← Capítulo 38 (rascunho)](#ch-38) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 40 (rascunho) →](#ch-40)
 
+<a id="ch-40"></a>
+
+## Capítulo 40 — Laboratório de verificação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar requisitos não funcionais — desempenho, disponibilidade, segurança; (2) executar testes de injeção de falhas com segurança; (3) verificar os controles de TLP e de privacidade com testes negativos; (4) compilar um relatório de verificação.
+
+### 40.1 Verificação não funcional
+
+Desempenho: injetar pacotes sintéticos a 150% da taxa de pico e verificar os percentis do tempo até a aplicação. Disponibilidade: derrubar uma instância de enriquecimento e verificar se o serviço continua. Segurança: tentar exportações restritas com contas de teste sem permissão. Kofi escolheu o número de carga para cobrir um dia movimentado de campanha com margem. O teste de disponibilidade para uma instância enquanto o tráfego sintético continua e confere se os percentis do tempo até a aplicação permanecem dentro da meta. Os testes de segurança usam contas criadas para teste, de modo que suas permissões são conhecidas com exatidão, e cada tentativa é registrada.
+
+### 40.2 Injeção de falhas
+
+As falhas são injetadas em homologação: o substituto do parceiro retorna erros, introduz-se uma defasagem de relógio, o armazenamento se enche. Cada teste declara o comportamento degradado esperado e o verifica. A injeção de falhas nunca mira a produção nem sistemas de parceiros. A lista de falhas de Kofi veio da análise de falhas: cada modo de falha bem classificado tem pelo menos um teste de injeção. O teste de defasagem de relógio do exemplo resolvido encontrou um problema real que, de outra forma, só apareceria em produção. Os testes restauram o estado normal ao final e conferem se a recuperação está completa.
+
+### 40.3 Testes negativos dos controles
+
+Tente exportar um relatório RED para um destinatário não nomeado; tente enviar uma regra de OT sem aprovação; tente armazenar um perfil pessoal de rede social pelo módulo de OSINT. Toda tentativa precisa falhar e ser registrada. Kofi escreve a entrada de registro esperada para cada teste antes de executá-lo, de modo que um teste que falha, mas não deixa registro, também conta como falha. O teste de OSINT usa um perfil inventado no substituto local, então nenhuma plataforma real é contatada. Os registros são conferidos depois.
+
+### 40.4 Relatório de verificação
+
+Resumo dos procedimentos executados, aprovações, falhas, desvios, itens bloqueados, defeitos abertos com severidade e responsáveis, e riscos residuais. O relatório vai para a revisão de projeto do Capítulo 45. Kofi escreve o resumo para leitores que não vão abrir os procedimentos. Ele começa pelo resultado geral e pelos riscos residuais e depois lista as falhas com sua severidade. Os itens bloqueados são relatados à parte das aprovações, porque um procedimento que não pôde ser executado não diz nada aos revisores sobre o requisito. Os procedimentos completos e as evidências ficam ligados para quem quiser conferir uma afirmação.
+
+### 40.5 Nova verificação
+
+Depois das correções, os procedimentos que falharam são executados de novo, e a suíte de regressão roda por completo. Executar a suíte inteira, e não apenas os procedimentos que falharam, pega correções que quebram outra coisa. Depois da correção do relógio no exemplo resolvido, Kofi executou de novo o teste de defasagem e depois toda a suíte de regressão. Os dois passaram, e o relatório registra a nova execução com a data, a versão do código e os hashes das evidências. Uma correção que não foi verificada de novo continua aberta na lista de defeitos, por mais confiante que esteja o engenheiro que a fez.
+
+### Nota de prática — empacotamento das evidências
+
+Os registros e as saídas de cada procedimento recebem hash e são armazenados com o relatório, para que os revisores possam conferir se as evidências correspondem ao que o relatório afirma.
+
+### Risco residual
+
+O relatório termina com os riscos que a verificação não conseguiu tratar, como o comportamento diante de formatos de parceiros nunca vistos nos testes, para que os revisores os pesem explicitamente em vez de supor cobertura. Cada risco residual indica um responsável e uma forma de monitoramento.
+
+### Exemplo resolvido
+
+A 150% da carga, o p95 do tempo até a aplicação é de 22 minutos, para um requisito de 30 minutos: aprovado. O teste de defasagem de relógio mostra carimbos de tempo dos avistamentos adiantados ou atrasados em cinco minutos: falha; acrescenta-se monitoramento de NTP. Os seis testes negativos de controle bloqueiam e registram corretamente.
+
+> **Caso sintético.** Os resultados são inventados.
+
+### Erros e limites
+
+A homologação difere da produção; registre as diferenças. Passar nos testes negativos mostra que esses ataques falham, não que nenhum ataque tenha sucesso.
+
+### Exercícios
+
+- **EX118 — Teste negativo.** Escreva um teste negativo para o requisito de privacidade da OSINT. *Rubrica:* 3 = tentar armazenar um perfil pessoal → esperar rejeição + registro; 2 = teste sem resultado esperado; 1 = teste positivo; 0 = nenhuma.
+- **EX119 — Veredicto de carga.** O p95 é de 22 min para um requisito de 30 min. Veredicto e motivo? *Rubrica:* 3 = aprovado; 22 ≤ 30 no percentil declarado; 2 = aprovado; 1 = reprovado; 0 = nenhuma.
+- **EX120 — Alvo da injeção.** Onde a injeção de falhas pode rodar, e onde nunca pode? *Rubrica:* 3 = homologação/substitutos sintéticos; nunca produção ou sistemas de parceiros; 2 = uma das metades; 1 = produção; 0 = nenhuma.
+
+### Síntese
+
+Verifique desempenho, disponibilidade e controles com carga, falhas e testes negativos em homologação, e empacote as evidências.
+
+### Continue estudando — capítulo 40 de 50
+
+[← Capítulo 39 (rascunho)](#ch-39) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 41 (rascunho) →](#ch-41)
+
+<a id="ch-41"></a>
+
+## Capítulo 41 — Inteligência de ameaças e OSINT: otimização do sistema
+
+### Objetivos de aprendizagem
+
+Você vai (1) otimizar o Lantern para o resultado que importa — aplicação oportuna e precisa; (2) identificar a restrição que limita o todo, entre pessoas e máquinas; (3) avaliar otimizações com medições de antes e depois; (4) evitar otimizar indicadores substitutos que prejudicam os resultados.
+
+### 41.1 Resultado primeiro
+
+O resultado-alvo são menos ataques bem-sucedidos chegando à BEN, aproximado pelo tempo até a aplicação dos indicadores de alta confiança e pela fração de incidentes com contexto de inteligência na triagem. Otimizar "objetos ingeridos por dia" pode piorar os resultados ao inundar os analistas. Kofi declara o resultado antes de propor qualquer mudança e pergunta como a mudança o moveria. Um analisador mais rápido que deixa passar mais indicadores de baixa confiança pode aumentar o volume e ao mesmo tempo atrasar os analistas. As duas medidas substitutas têm fraquezas conhecidas, e ele as relata juntas para que fique visível a melhora de uma à custa da outra.
+
+### 41.2 Restrição limitante
+
+Muitas vezes o passo mais lento é humano: a aprovação do analista para compartilhar, a revisão do engenheiro de OT. Máquinas mais rápidas não ajudam se as aprovações esperam a noite inteira. Otimizar pode significar priorizar melhor as filas de aprovação, e não comprar hardware novo. Kofi rastreou uma amostra de indicadores da chegada à aplicação e cronometrou cada passo. As etapas de máquina levaram minutos no total; a espera por uma pessoa que aprovasse o compartilhamento levou horas. Essa única medição desviou o esforço de otimização dos servidores para a forma como a fila de aprovação estava organizada, que é o assunto do exemplo resolvido.
+
+### 41.3 Otimizações candidatas
+
+Pré-filtrar os indicadores de pouco valor antes do enriquecimento; priorizar as filas de aprovação por confiança e criticidade do ativo; agrupar os envios aos firewalls em uma cadência fixa; reduzir as fontes duplicadas cuja exclusividade medida ficou perto de zero. Kofi listou cada candidata com seu efeito esperado, seu custo e seu risco antes de iniciar qualquer uma. A pré-filtragem poupa capacidade de enriquecimento, mas arrisca descartar algo útil, então a regra do filtro foi acordada com os analistas. Agrupar os envios reduz a carga nos firewalls, mas acrescenta um pequeno atraso. Abandonar fontes duplicadas exigiu os números de exclusividade do trabalho de medição, que mostraram dois feeds acrescentando quase nada que os outros já não fornecessem.
+
+### 41.4 Medindo o efeito
+
+Cada mudança tem uma hipótese, uma métrica e uma janela de comparação. Se a métrica não se move, a mudança é revertida, para evitar complexidade sem benefício. Kofi escreve a hipótese antes da mudança, por exemplo: ordenar a fila de aprovação por confiança vai cortar a espera mediana pela metade em um mês. A janela de comparação cobre os mesmos dias da semana antes e depois, já que os volumes variam ao longo da semana. Uma mudança que ele testou, pôr em cache uma consulta raramente usada, não fez diferença mensurável e foi removida. Reverter é tratado como um desfecho normal, e não como fracasso.
+
+### 41.5 O aviso de Goodhart
+
+Quando uma medida vira meta, as pessoas a manipulam. Se os analistas forem avaliados por aprovações por hora, podem aprovar mal. Mantenha verificações de qualidade ao lado das métricas de velocidade. O exemplo resolvido se protege disso com uma verificação por amostragem das retratações depois que o processo de aprovação ficou mais rápido. Se as aprovações mais rápidas tivessem produzido mais erros, o ganho teria sido falso. Kofi associa cada métrica de velocidade a uma métrica de qualidade no mesmo painel, para que ninguém veja uma sem a outra. Os analistas não são ranqueados por nenhuma das duas; os números descrevem o processo, não as pessoas.
+
+### Nota de prática — removendo trabalho
+
+A melhor otimização muitas vezes é a exclusão: abandonar um feed que não acrescenta nada exclusivo elimina de uma vez ingestão, armazenamento e ruído para os analistas.
+
+### Custo da complexidade
+
+Toda otimização acrescenta código ou processo a manter. Kofi estima as horas anuais de manutenção de cada mudança e as compara com as horas que ela poupa aos analistas.
+
+### Exemplo resolvido
+
+A aprovação de indicadores para compartilhamento pelos analistas tem espera mediana de 6 horas. Kofi ordena a fila por confiança e demanda dos parceiros e acrescenta um horário diário de 30 minutos para aprovações. A espera mediana cai para 1,5 hora; uma verificação por amostragem não mostra aumento nas retratações posteriores.
+
+> **Caso sintético.** Os números são inventados.
+
+### Erros e limites
+
+Otimizações locais podem deslocar os gargalos para outro lugar; meça de novo o caminho inteiro. Alguns atrasos são controles de segurança deliberados e não devem ser eliminados pela otimização.
+
+### Exercícios
+
+- **EX121 — Armadilha do substituto.** Por que maximizar os objetos ingeridos por dia pode prejudicar os resultados? *Rubrica:* 3 = mais ruído/sobrecarga dos analistas/precisão menor; 2 = parcial; 1 = sempre bom; 0 = nenhuma.
+- **EX122 — Verificação de qualidade.** Que verificação de qualidade acompanhou a melhora na velocidade de aprovação? *Rubrica:* 3 = verificação por amostragem sem aumento nas retratações; 2 = alguma verificação; 1 = vago; 0 = nenhuma.
+- **EX123 — Atraso deliberado.** Cite um atraso no Lantern que não deve ser eliminado pela otimização. *Rubrica:* 3 = aprovação de OT por duas pessoas (ou etapa de segurança semelhante) com motivo; 2 = só o nome; 1 = vago; 0 = nenhuma.
+
+### Síntese
+
+Otimize os resultados, encontre a restrição real, meça cada mudança, proteja-se de Goodhart e mantenha os atrasos de segurança.
+
+### Continue estudando — capítulo 41 de 50
+
+[← Capítulo 40 (rascunho)](#ch-40) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 42 (rascunho) →](#ch-42)
+
+<a id="ch-42"></a>
+
+## Capítulo 42 — Inteligência de ameaças e OSINT: pesquisa aplicada
+
+### Objetivos de aprendizagem
+
+Você vai (1) formular uma pergunta de pesquisa de engenharia a partir dos dados operacionais do Lantern; (2) projetar um estudo que use dados sintéticos ou consentidos; (3) avaliar os resultados estatisticamente com a devida humildade; (4) relatar os achados para profissionais e pesquisadores.
+
+### 42.1 Perguntas vindas da operação
+
+Os registros do Lantern sugerem perguntas: a meia-vida dos indicadores difere conforme o parceiro setorial? A detecção comportamental pega incidentes que a correspondência de indicadores deixa passar? Quanto os avistamentos compartilhados com os parceiros melhoram suas decisões de aposentadoria? Kofi escolhe perguntas cuja resposta mudaria algo que a BEN faz. A pergunta da meia-vida afeta quanto tempo os indicadores ficam em bloqueio. A pergunta da detecção afeta onde a equipe investe esforço. Perguntas apenas interessantes, sem nenhuma decisão associada, esperam até que as úteis sejam respondidas. Cada pergunta tem um responsável.
+
+### 42.2 Dados e consentimento
+
+Os dados operacionais internos podem ser usados para melhorias segundo as políticas da BEN; os dados dos parceiros precisam do consentimento deles para uso em pesquisa e publicação. Dados pessoais são excluídos. Onde falta consentimento, dados sintéticos que reproduzem as propriedades estatísticas podem testar métodos, mas não provar fatos sobre o mundo real. Kofi perguntou por escrito a cada parceiro se seus dados podiam ser incluídos de forma agregada, e dois recusaram. Seus indicadores foram excluídos do estudo, o que o estreitou, mas manteve a confiança deles. O estudo registra essa exclusão.
+
+### 42.3 Método
+
+Kofi estuda as meias-vidas: para cada indicador aposentado, ele reapareceu em avistamentos dentro de 60 dias? Ele ajusta taxas de nova observação por tipo de indicador e as compara com as hipóteses do modelo de decaimento. A escolha de sessenta dias decorre das meias-vidas existentes: uma janela mais curta que a meia-vida suposta para domínios perderia reaparições que o modelo considera prováveis. Kofi conta cada indicador uma única vez, seja qual for o número de avistamentos posteriores, para evitar que alguns indicadores muito ativos dominem o resultado. Ele também registra os indicadores que nunca foram avistados, já que eles também trazem informação sobre o decaimento.
+
+### 42.4 Humildade na estatística
+
+Relate os tamanhos de amostra e os intervalos. Uma diferença de dois dias na meia-vida entre parceiros pode ser ruído com amostras pequenas. Kofi calculou intervalos para a taxa de nova observação de cada tipo de indicador e descobriu que os intervalos de dois parceiros se sobrepunham quase por completo, então não afirmou diferença entre eles. O achado sobre domínios era mais claro porque aquela amostra era bem maior. Seu relatório declara o número de indicadores por trás de cada taxa e diz com clareza onde os dados não conseguiram separar um efeito do acaso.
+
+### 42.5 Publicação
+
+Os resultados são compartilhados primeiro com os parceiros, de forma agregada, e depois, talvez, em uma conferência de profissionais, com a aprovação da BEN. Indicadores brutos nunca são publicados. Os parceiros veem os achados antes de qualquer outro porque seus dados contribuíram e suas próprias configurações de decaimento podem precisar mudar. Uma palestra em conferência descreveria os métodos e os resultados agregados, depois da revisão pela equipe de comunicação da BEN e pelos parceiros nomeados no acordo de compartilhamento. Os indicadores brutos ficam de fora porque poderiam revelar quais organizações foram visadas, mesmo depois do fim da campanha.
+
+### Nota de prática — reprodutibilidade
+
+Código, geradores de dados sintéticos e arquivos de parâmetros são arquivados para que outro engenheiro possa repetir a análise no ano seguinte.
+
+### Revisão por pares dentro da BEN
+
+Antes de compartilhar para fora, um analista sênior e um revisor de proteção de dados leem o estudo. O analista confere se as conclusões decorrem dos dados; o revisor confere se nenhum parceiro ou pessoa pode ser identificado a partir de tabelas ou exemplos.
+
+### Exemplo resolvido
+
+Os dados de nova observação mostram que indicadores de domínio são avistados de novo em taxas significativas até cerca de 60 dias, mais que a meia-vida suposta de 45 dias. Kofi propõe aumentar a meia-vida dos domínios e documenta o tamanho da amostra, o intervalo e os limites.
+
+> **Caso sintético.** Os achados são inventados.
+
+### Erros e limites
+
+Os dados operacionais refletem o ambiente da BEN; generalize com cautela. Não publique estatísticas específicas de um parceiro sem consentimento.
+
+### Exercícios
+
+- **EX124 — Pergunta de pesquisa.** Escreva uma pergunta de pesquisa que os dados do Lantern poderiam responder. *Rubrica:* 3 = específica, mensurável, usa dados disponíveis; 2 = vaga; 1 = impossível de responder; 0 = nenhuma.
+- **EX125 — Limite dos dados sintéticos.** O que os dados sintéticos podem mostrar nesta pesquisa, e o que não podem? *Rubrica:* 3 = testar métodos/pipelines; não provar fatos do mundo real; 2 = uma das metades; 1 = provam tudo; 0 = nenhuma.
+- **EX126 — Ordem de publicação.** Em que ordem os resultados são compartilhados, e por quê? *Rubrica:* 3 = primeiro os parceiros, de forma agregada, depois mais amplamente com aprovação; reciprocidade/consentimento; 2 = só a ordem; 1 = primeiro o público; 0 = nenhuma.
+
+### Síntese
+
+Faça perguntas operacionais, respeite o consentimento, teste os métodos com dados sintéticos, relate com humildade e compartilhe primeiro com os parceiros.
+
+### Continue estudando — capítulo 42 de 50
+
+[← Capítulo 41 (rascunho)](#ch-41) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 43 (rascunho) →](#ch-43)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX117 (as de EX118–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Brightwater Energy Networks, o Lantern, Kofi Mensah e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX126 (as de EX127–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Brightwater Energy Networks, o Lantern, Kofi Mensah e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** (13.300 − 12.700) / 1 h = 600 indicadores por hora.
 
@@ -2666,6 +2846,24 @@ Respostas-modelo para EX001–EX117 (as de EX118–EX150 estão na edição em i
 **EX116.** Exemplo: "Intervalo de consulta fixo em 15 minutos no código do coletor; impede o ajuste por parceiro; risco médio; mover para a configuração até o 2º trimestre."
 
 **EX117.** As versões do ATT&CK renomeiam e descontinuam técnicas; armazenar a versão permite ao Lantern listar os mapeamentos que precisam de migração quando sai uma nova versão.
+
+**EX118.** Enviar ao módulo de OSINT a URL de um perfil pessoal sintético de rede social; esperar rejeição com o motivo `personal profile source not permitted` e uma entrada de registro.
+
+**EX119.** Aprovado: o percentil 95 de 22 minutos está dentro do requisito de 30 minutos.
+
+**EX120.** Em homologação, apenas com substitutos sintéticos; nunca contra sistemas de produção ou servidores de parceiros.
+
+**EX121.** Mais objetos significam mais ruído, mais falsos positivos e mais trabalho para os analistas, o que pode atrasar a resposta aos indicadores que importam.
+
+**EX122.** Uma verificação por amostragem das retratações posteriores não mostrou aumento, sugerindo que a qualidade das aprovações não caiu quando a velocidade subiu.
+
+**EX123.** A aprovação por duas pessoas das mudanças nos firewalls de OT, que desacelera deliberadamente as ações de alto impacto para evitar dano operacional.
+
+**EX124.** Exemplo: "Entre os indicadores aposentados por decaimento, que proporção de domínios e de endereços IP é avistada de novo em até 60 dias?"
+
+**EX125.** Os dados sintéticos podem testar se o método e o código funcionam; não podem estabelecer fatos sobre o comportamento real dos adversários nem sobre o ambiente da BEN.
+
+**EX126.** Primeiro os parceiros, de forma agregada, depois fóruns mais amplos com a aprovação da BEN — porque os parceiros contribuíram com dados e precisam consentir com seu uso.
 
 <a id="references"></a>
 ## Referências
