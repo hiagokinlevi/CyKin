@@ -45,9 +45,9 @@ Toda afirmación factual sobre una ley, una norma, un incidente público o un es
 7. [Infraestructura crítica y seguridad sectorial: integración organizativa](#ch-07): modelos operativos, propiedad, concentración de proveedores e integración con la gestión de emergencias.
 8. [Infraestructura crítica y seguridad sectorial: casos difíciles](#ch-08): cascadas, prioridades de restablecimiento, actualizaciones de confianza defectuosas, internos ambiguos y obligaciones en conflicto.
 9. [Infraestructura crítica y seguridad sectorial: liderazgo y aseguramiento](#ch-09): liderar una función, informes al consejo, casos de aseguramiento, frescura de la evidencia y distinguir la señal del ruido.
-10. [Lectura y crítica de la investigación](../../en/book/MANUSCRIPT.md#ch-10): leer estudios, avisos y afirmaciones de proveedores para decidir; denominadores, confusión y transferencia.
-11. [Proyecto aplicado](../../en/book/MANUSCRIPT.md#ch-11): delimitar, ejecutar y evaluar con honestidad una mejora a escala de la organización.
-12. [Revisión final y transferencia](../../en/book/MANUSCRIPT.md#ch-12): integrar el curso, transferir decisiones entre sectores y planificar la práctica continuada.
+10. [Lectura y crítica de la investigación](#ch-10): leer estudios, avisos y afirmaciones de proveedores para decidir; denominadores, confusión y transferencia.
+11. [Proyecto aplicado](#ch-11): delimitar, ejecutar y evaluar con honestidad una mejora a escala de la organización.
+12. [Revisión final y transferencia](#ch-12): integrar el curso, transferir decisiones entre sectores y planificar la práctica continuada.
 
 Apéndices: [Resultados resueltos y notas de evaluación](#worked-results) · [Glosario](#glossary) · [Referencias](#references).
 
@@ -1508,9 +1508,415 @@ Dirigir la seguridad de un servicio esencial significa fijar una dirección vinc
 <!-- cyberabc:chapter-navigation:start ch-09 -->
 ### Siga estudiando — capítulo 09 de 12
 
-[← Capítulo 08](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 →](../../en/book/MANUSCRIPT.md#ch-10)
+[← Capítulo 08](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
 
 Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Lectura y crítica de la investigación
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+1. Leer un estudio publicado, un aviso oficial y una afirmación de un proveedor por lo que cada uno puede aportar a una decisión práctica.
+2. Identificar el diseño de un estudio y la afirmación más fuerte que ese diseño respalda.
+3. Comprobar los denominadores, las comparaciones y las definiciones de los resultados, y detectar factores de confusión como la paradoja de Simpson.
+4. Juzgar si un hallazgo es transferible a su organización y a su sector.
+5. Redactar una ficha de evidencia breve que indique qué muestra una fuente, qué no muestra y qué hará usted con ella.
+
+Un especialista no necesita producir investigación, pero sí debe usarla: para elegir controles, para fijar probabilidades (capítulos 1 y 4), para discutir con los proveedores y para informar a los consejos. Este capítulo enseña a leer para decidir. Después, el capítulo 11 aplica la misma mirada crítica a la evaluación de su propio proyecto.
+
+### 10.1 Tres tipos de fuente
+
+| Tipo de fuente | Fortaleza | Debilidad típica | Cómo usarla |
+|---|---|---|---|
+| Estudio revisado por pares | Método explícito, revisado, citable | Contexto estrecho; retraso; puede no medir lo que a usted le importa | Conocer tamaños del efecto y mecanismos; comprobar la transferencia |
+| Aviso o informe oficial | Oportuno, detalle operativo, autoridad | Escrito para actuar, no para inferir; selección de casos | Conocer técnicas y mitigaciones; no inferir frecuencias |
+| Informe de proveedor o encuesta | Muestras grandes, actual | Interés comercial; denominadores no definidos; selección de los encuestados | Usarlo para generar hipótesis; verificar antes de actuar |
+
+Ninguno es automáticamente fiable ni carece de valor. Cada uno responde bien a algunas preguntas y mal a otras. Su trabajo es emparejar la fuente con la pregunta.
+
+### 10.2 Leer un estudio: primero el diseño
+
+Antes de leer los resultados, identifique el diseño, porque limita la afirmación. Una comparación antes y después en un solo emplazamiento puede mostrar que algo cambió, pero difícilmente por qué. Una comparación con un grupo de control no afectado, o una serie temporal interrumpida, respalda un lenguaje causal más fuerte. Una encuesta a víctimas no puede estimar con qué frecuencia se producen ataques en el conjunto de la población. Después compruebe: la **unidad** (hospital, paciente, día), el **resultado** y cómo se midió, la **comparación** (qué habría ocurrido en otro caso), la **ventana temporal** y el **contexto**.
+
+Considere dos estudios reales del sector sanitario. Ghafur y sus colegas analizaron los datos nacionales de actividad hospitalaria en torno al ataque WannaCry de 2017 y no encontraron un cambio significativo en la actividad total del conjunto de los *trusts* ingleses, pero sí alrededor de un 6 % menos de ingresos al día en los hospitales infectados, una actividad perdida estimada en 5,9 millones de libras y ninguna diferencia detectada en la mortalidad, aunque señalaron que la mortalidad es una medida tosca del daño a los pacientes ([Ghafur et al., 2019](https://doi.org/10.1038/s41746-019-0161-6)). Dameff y sus colegas compararon los volúmenes de los servicios de urgencias de dos hospitales vecinos de un sistema sanitario sometido a un ataque de *ransomware* de un mes de duración en 2021, antes, durante y después del ataque, e informaron de aumentos significativos de la ocupación, las llegadas en ambulancia y otras medidas durante el ataque ([Dameff et al., 2023](https://doi.org/10.1001/jamanetworkopen.2023.12270)). Ambos son valiosos; ambos están acotados por su diseño. El primero usa datos nacionales con comparación entre *trusts*; el segundo es un estudio antes y después en una sola institución, por lo que no pueden excluirse por completo los cambios estacionales o locales. Ninguno dice a Merrow Health qué probabilidad hay de un ataque; ambos informan sobre lo graves y lo regionales que pueden ser las consecuencias.
+
+Los conjuntos de datos de ámbito poblacional responden a preguntas distintas. Neprash y sus colegas usaron una base de datos de ataques de *ransomware* comunicados públicamente contra organizaciones prestadoras de atención sanitaria de EE. UU. y encontraron que los ataques anuales se habían más que duplicado entre 2016 y 2021 y que casi la mitad interrumpieron la prestación de la atención ([Neprash et al., 2022](https://doi.org/10.1001/jamahealthforum.2022.4873)). Como los datos son ataques *comunicados públicamente*, las tendencias combinan los cambios en los ataques con los cambios en la comunicación, una limitación que el diseño de los autores hace explícita y que el lector debe tener presente.
+
+### 10.3 Leer un aviso
+
+Los avisos como el aviso conjunto de CISA sobre el preposicionamiento patrocinado por Estados en las infraestructuras críticas de EE. UU. ([AA24-038A, 2024](https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-038a)) ofrecen técnicas, indicadores y mitigaciones de casos investigados. Léalos buscando: **qué se observó** (técnicas, sectores atacados, vectores de entrada); **qué se recomienda** (mitigaciones, a menudo priorizadas); y **qué se infiere** (intención, escala). Traduzca las técnicas observadas en preguntas sobre su propio entorno («¿lo veríamos?») en lugar de en una probabilidad. Un aviso es evidencia de que una amenaza existe y de cómo opera, no una estimación de con qué frecuencia tiene éxito.
+
+### 10.4 Leer la afirmación de un proveedor
+
+Las afirmaciones de los proveedores merecen la misma disciplina de lectura. Pregunte: ¿cuál es el **resultado** (¿incidentes comunicados?, ¿incidentes detectados?, ¿pérdidas?); cuál es el **denominador** (¿clientes, emplazamientos, años-operador?); **quién está en cada grupo** y por qué (autoselección, tamaño, sector); y **qué efecto tendría un producto de detección sobre el resultado** (más monitorización encuentra más incidentes). La investigación sobre el aprendizaje automático en seguridad enumera trampas (sesgo de muestreo, fisgoneo de datos, referencias de comparación inadecuadas, falacia de la tasa base, modelos de amenaza poco realistas) que se aplican a muchas evaluaciones de productos ([Arp et al., 2022](https://www.usenix.org/conference/usenixsecurity22/presentation/arp)).
+
+### 10.5 Confusión y paradoja de Simpson
+
+Cuando los grupos difieren en un factor que también afecta al resultado, una comparación agregada puede apuntar en sentido contrario al de todas las comparaciones dentro de cada grupo. Es la **paradoja de Simpson** ([Simpson, 1951](https://doi.org/10.1111/j.2517-6161.1951.tb00088.x)). En los datos de seguridad, el tamaño es un factor de confusión frecuente: los operadores grandes tienen más sistemas, más obligaciones de notificación y más incidentes, y compran productos en proporciones distintas de las de los pequeños. El remedio es **estratificar** (comparar dentro de franjas de tamaño) o **estandarizar** (reponderar los grupos para que tengan la misma composición) y preguntarse si el resultado mide el daño o la detección.
+
+### 10.6 Transferencia
+
+Un hallazgo es transferible a su contexto solo si el mecanismo que lo produjo opera allí. La literatura formal sobre la transportabilidad pregunta qué diferencias entre poblaciones cambian el efecto ([Pearl and Bareinboim, 2014](https://doi.org/10.1214/14-STS486)); en la práctica, enumere las condiciones de las que dependía el hallazgo (tamaño, sector, notificación regulatoria, tecnología, dotación de personal) y compruebe cada una para su organización. Un hallazgo sobre la mortalidad procedente de un sistema sanitario nacional con mecanismos de desvío en toda la red puede no ser transferible a una región rural con un solo hospital.
+
+Para el folleto del proveedor de este capítulo, la transferencia es una cuestión adicional tras la confusión: incluso una comparación bien diseñada entre otros operadores solo se aplicaría a Merrow Bay si su tamaño, su práctica de notificación y su planta se parecieran a los de los miembros del foro. Anote las condiciones y marque cada una como comprobada, desconocida o distinta.
+
+### 10.7 La ficha de evidencia
+
+Resuma cada fuente importante para quienes deciden en una breve **ficha de evidencia**: la pregunta a la que ayuda a responder; el diseño y el contexto; el hallazgo principal con su tamaño y su incertidumbre; la afirmación más fuerte que respalda; las limitaciones clave y su sentido probable; la transferencia a nuestro contexto; y qué haremos con ella. Guarde las fichas en una biblioteca para que las decisiones posteriores puedan citarlas (los registros de decisiones del capítulo 1). Una ficha es breve por diseño, normalmente de una página, para que un directivo pueda leerla antes de una reunión. La afirmación más fuerte respaldada debe redactarse con las palabras que usted estaría dispuesto a defender ante los autores; si la conclusión de la propia fuente es más fuerte, dígalo y explique la diferencia. Feche cada ficha e indique cuándo debe revisarse, porque los avisos y los datos de los proveedores envejecen rápido.
+
+### 10.8 Ejemplo resuelto: el folleto de un proveedor de monitorización (sintético)
+
+Un proveedor de monitorización de TO dice al foro de resiliencia: «Los clientes que usan nuestra monitorización tuvieron un 40 % menos de incidentes comunicados». Cuando se le piden datos, el proveedor facilita recuentos por tamaño del operador. El Lab 10 los vuelve a leer. El primer paso del especialista es preguntar qué hay detrás de la cifra antes de discutirla: qué cuenta como incidente, a lo largo de cuántos años-operador y en qué se diferencian los clientes de los no clientes. La disposición del proveedor a facilitar recuentos por tamaño es útil en sí misma; un proveedor que se niega a compartir cualquier denominador ha dado al foro un motivo para tratar la afirmación como publicidad. El foro acuerda revisar los datos conjuntamente en lugar de responder al folleto.
+
+### 10.9 Actividad práctica: agregación, denominadores y detección
+
+```python
+# Lab 10 - re-reading a vendor claim: aggregation, denominators and survivorship (offline, stdlib only)
+# Synthetic: a vendor brochure says "customers using our OT monitoring had 40% fewer reported incidents".
+# Below are the (invented) counts behind such a claim, split by operator size.
+DATA = {  # stratum: {group: (operators, operator-years observed, incidents reported)}
+    "small (<50 staff)": {"monitoring": (240, 720, 54), "none": (100, 300, 15)},
+    "large (>=50 staff)": {"monitoring": (20, 60, 18),   "none": (100, 300, 75)},
+}
+def rate(g):
+    oy = sum(DATA[s][g][1] for s in DATA); inc = sum(DATA[s][g][2] for s in DATA)
+    return inc / oy, inc, oy
+for g in ("monitoring", "none"):
+    r, inc, oy = rate(g); print(f"pooled {g:10s} {inc:3d} incidents / {oy:4d} operator-years = {r:.3f}")
+rm, rn = rate("monitoring")[0], rate("none")[0]
+print(f"pooled relative difference: {(rm - rn) / rn:+.0%}")
+for s, grp in DATA.items():
+    a = grp["monitoring"][2] / grp["monitoring"][1]; b = grp["none"][2] / grp["none"][1]
+    print(f"{s:20s} monitoring {a:.3f}  none {b:.3f}  ratio {a/b:.2f}")
+# Standardize both groups to the same size mix (the 'none' group's operator-years) - direct standardization
+w = {s: DATA[s]["none"][1] for s in DATA}; W = sum(w.values())
+std = {g: sum(w[s] / W * DATA[s][g][2] / DATA[s][g][1] for s in DATA) for g in ("monitoring", "none")}
+print(f"size-standardized: monitoring {std['monitoring']:.3f}  none {std['none']:.3f}  ratio {std['monitoring']/std['none']:.2f}")
+```
+
+Salida esperada:
+
+```text
+pooled monitoring  72 incidents /  780 operator-years = 0.092
+pooled none        90 incidents /  600 operator-years = 0.150
+pooled relative difference: -38%
+small (<50 staff)    monitoring 0.075  none 0.050  ratio 1.50
+large (>=50 staff)   monitoring 0.300  none 0.250  ratio 1.20
+size-standardized: monitoring 0.188  none 0.150  ratio 1.25
+```
+
+**Interpretación.** En el agregado, los operadores monitorizados comunican 0,092 incidentes por año-operador frente a 0,150 de los no monitorizados, una diferencia del 38 %: la afirmación del folleto. Pero dentro de cada franja de tamaño, los operadores monitorizados comunican **más** incidentes: 1,5 veces más entre los operadores pequeños y 1,2 veces más entre los grandes. La comparación agregada se invierte porque la mayoría de los operadores monitorizados son pequeños, y los operadores pequeños comunican menos incidentes usen lo que usen. Estandarizados a la misma composición por tamaños, los operadores monitorizados comunican 1,25 veces más incidentes. Además, «incidentes comunicados» es un resultado de detección: un producto de monitorización que funcione debería *aumentar* los incidentes comunicados al encontrar lo que pasaba desapercibido. Ni las cifras agregadas ni las estratificadas dicen nada sobre el daño evitado. La respuesta correcta al proveedor no es «su producto es malo», sino «su afirmación no se desprende de estos datos; muéstrennos resultados en unidades de servicio, emparejados por tamaño y sector, a lo largo del tiempo».
+
+### 10.10 Errores comunes y límites
+
+- Leer los resultados antes de identificar el diseño.
+- Tratar la lista de casos de un aviso como una estimación de frecuencia.
+- Comparar grupos que difieren en tamaño o sector sin estratificar.
+- Tratar los incidentes comunicados como una medida del daño o de la seguridad.
+- Aceptar un hallazgo sin comprobar si su mecanismo opera en su contexto.
+- Descartar por completo una fuente porque tiene una debilidad.
+- Citar una fuente para más de lo que mostró.
+
+El límite de la lectura crítica es el tiempo. Priorice las fuentes que podrían cambiar una decisión (el valor de la información del capítulo 1), léalas con cuidado y acepte una lectura más ligera para el resto.
+
+### Ejercicios — capítulo 10
+
+**EX046 — Vuelva a leer el folleto.** *Objetivo:* reproducir y explicar una inversión. *Entradas:* el Lab 10. *Restricciones:* 250 palabras para la explicación. *Pasos:* (1) ejecute el laboratorio; (2) explique la inversión al foro en lenguaje claro; (3) proponga dos medidas de resultado que mostrarían mejor el valor del producto. *Evidencia esperada:* salida y explicación. *Rúbrica:* 3 = inversión explicada mediante la composición por tamaños y el efecto de la detección, se cita la razón estandarizada, medidas de resultado vinculadas al daño (por ejemplo, horas de interrupción del servicio, tiempo hasta detectar pruebas inyectadas); 2 = inversión explicada, medidas débiles; 1 = repite el folleto; 0 = nada.
+
+**EX047 — Ficha de evidencia: hospitales vecinos.** *Objetivo:* resumir un estudio para Merrow Health. *Entradas:* el resumen de Dameff et al. (2023). *Restricciones:* use la estructura del §10.7; cite cifras solo de la fuente. *Pasos:* redacte la ficha. *Evidencia esperada:* ficha de una página. *Rúbrica:* 3 = diseño identificado como antes y después en una sola institución, hallazgos expresados con sus medidas, limitaciones (un solo emplazamiento, estacionalidad, ninguna región de control) con su sentido, se discute la transferencia al sistema de tres hospitales de Merrow Bay, se indica una acción (por ejemplo, la planificación regional de desvíos); 2 = limitaciones sin sentido; 1 = exagera la causalidad; 0 = nada.
+
+**EX048 — Ficha de evidencia: WannaCry.** *Objetivo:* resumir un estudio nacional. *Entradas:* Ghafur et al. (2019) y la investigación de la NAO. *Restricciones:* distinga los propósitos de las dos fuentes. *Pasos:* redacte una ficha que responda a «¿qué dice WannaCry a Merrow Health sobre las consecuencias de un evento de *ransomware* a gran escala?». *Evidencia esperada:* ficha. *Rúbrica:* 3 = se distinguen los hallazgos del estudio (alrededor de un 6 % menos de ingresos al día en los hospitales infectados; ninguna diferencia detectada en la mortalidad, con la cautela de los autores) y el propósito de auditoría de la NAO, se indican las cuestiones de transferencia, se indica una acción; 2 = fuentes mezcladas; 1 = «no hubo muertes, así que el riesgo es bajo»; 0 = nada.
+
+**EX049 — Del aviso a las preguntas.** *Objetivo:* usar bien un aviso. *Entradas:* el AA24-038A de CISA. *Restricciones:* no estime probabilidades a partir de él. *Pasos:* (1) extraiga cinco técnicas o comportamientos observados; (2) para cada uno, redacte la pregunta «¿lo veríamos en Merrow Water?» y la fuente de evidencia que la respondería; (3) elija dos mitigaciones recomendadas y relaciónelas con las prácticas del capítulo 2. *Evidencia esperada:* tabla. *Rúbrica:* 3 = comportamientos observados resumidos con exactitud (por ejemplo, el uso de cuentas válidas y las técnicas que aprovechan herramientas legítimas del propio sistema), preguntas de detección vinculadas a registros concretos, mitigaciones relacionadas; 2 = mezcla observación e inferencia; 1 = solo un resumen; 0 = nada.
+
+**EX050 — Comprobación de trampas.** *Objetivo:* aplicar una lista de comprobación de investigación a la evaluación de un producto. *Entradas:* un proveedor afirma que su detector de anomalías basado en aprendizaje automático «alcanzó una exactitud del 99 % con un conjunto de datos público de un banco de pruebas de tratamiento de agua». *Restricciones:* use las trampas de Arp et al. (2022). *Pasos:* enumere cinco preguntas que haría y por qué importa cada una. *Evidencia esperada:* lista. *Rúbrica:* 3 = la tasa base y la cuestión de la exactitud frente a la precisión, la fuga entre entrenamiento y prueba (fisgoneo de datos), la transferencia del banco de pruebas a la planta, la comparación con una referencia, el realismo del modelo de amenaza; 2 = tres; 1 = escepticismo genérico; 0 = nada.
+
+### Síntesis del capítulo
+
+Lea para decidir. Empareje la fuente con la pregunta: los estudios para los tamaños del efecto y los mecanismos, los avisos para las técnicas y las mitigaciones, los informes de proveedores para hipótesis que hay que verificar. Identifique el diseño antes que los resultados y limite las afirmaciones a lo que el diseño respalda. Compruebe el resultado, el denominador, la comparación y los factores de confusión; estratifique o estandarice cuando los grupos difieran, y recuerde que los incidentes comunicados miden tanto la detección como el daño. Pregúntese si el mecanismo es transferible a su contexto. Registre lo que aprenda en fichas de evidencia que los registros de decisiones puedan citar.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Siga estudiando — capítulo 10 de 12
+
+[← Capítulo 09](#ch-09) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Proyecto aplicado
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+1. Delimitar una mejora de seguridad a escala de la organización como un proyecto con una persona que decide, un objetivo basado en la consecuencia y unos beneficios medibles.
+2. Planificar la ejecución con las partes interesadas, los riesgos, las condiciones de seguridad y los puntos de control.
+3. Evaluar el resultado con honestidad mediante un grupo de comparación, una estimación de diferencias en diferencias y una comprobación por permutación.
+4. Poner a prueba la robustez del resultado de un proyecto e informar de sus límites.
+5. Presentar el proyecto para su evaluación según una rúbrica explícita.
+
+El proyecto aplicado es donde el curso se convierte en práctica. Usa todos los capítulos anteriores: el planteamiento y los registros de decisiones (1), la práctica actual y la verificación (2), la evidencia (3), el riesgo y la ética (4), el diseño (5), la evaluación controlada (6), la integración (7), el razonamiento sobre casos difíciles (8), el aseguramiento (9) y la lectura crítica (10). A diferencia de un trabajo de fin de máster, su propósito no es responder a una pregunta de investigación para otros; es **mejorar un servicio real y mostrar de forma creíble si se consiguió**. Después, el capítulo 12 repasa el curso y lo transfiere.
+
+### 11.1 Elegir el proyecto
+
+Un buen proyecto aplicado de posgrado es: **trascendente** (cambia la exposición de un servicio esencial, no solo un documento); **acotado** (realizable en unos dos semestres de trabajo a tiempo parcial); **con titular** (un patrocinador designado con autoridad y unos titulares operativos que lo quieren); **medible** (un beneficio que pueda observarse, preferiblemente en unidades de servicio); **seguro y autorizado** (no crea ningún riesgo no aprobado para las operaciones, las personas o los datos); y **evaluable** (existe una forma de compararlo con lo que habría ocurrido sin él). Proyectos típicos: la preparación para la operación manual de un grupo de emplazamientos; el acceso intermediado de proveedores para un sistema de control; una capacidad de restauración para los sistemas clínicos; un plan regional de concentración de proveedores. Si usted no trabaja en el sector, el proyecto puede llevarse a cabo sobre un caso sintético realista como Merrow Bay, con los mismos entregables.
+
+### 11.2 El acta de constitución del proyecto
+
+Un **acta de constitución** de una página fija: el problema y su consecuencia; el patrocinador y los derechos de decisión; los objetivos y los beneficios, con medidas y líneas base; el alcance y las exclusiones; los entregables; las partes interesadas; las restricciones (seguridad, presupuesto, regulación); los riesgos; el diseño de la evaluación; los hitos y los puntos de control; y la rúbrica de evaluación. Escribir el diseño de la evaluación en el acta antes de la ejecución es el equivalente en un proyecto del prerregistro ([Nosek et al., 2018](https://doi.org/10.1073/pnas.1708274114)): protege al especialista de la tentación de elegir después la medida que mejor queda ([Kerr, 1998](https://doi.org/10.1207/s15327957pspr0203_4)).
+
+### 11.3 Ejecutar a través de las personas
+
+La mayoría de los proyectos de seguridad en los servicios esenciales fracasan por la adopción, no por la tecnología. Mapee a las partes interesadas según su influencia y su interés; acuerde con operaciones cómo y cuándo los cambios afectan a la planta; planifique la formación y la práctica supervisada; y anticipe quién pierde algo (comodidad, autonomía, presupuesto). Un **pre mortem** al inicio ([Klein, 2007](https://hbr.org/2007/09/performing-a-project-premortem)) saca a la luz pronto los riesgos de adopción. Lleve un registro de decisiones del proyecto con el formato del capítulo 1 para que los revisores posteriores puedan ver por qué cambió el plan.
+
+En Merrow Water, las personas más afectadas por el proyecto del manual de operación son los operadores de turno, que deben practicar la operación manual en simulacros trimestrales además de su trabajo habitual. Acordar los horarios de los simulacros con los jefes de turno y usar sus comentarios para revisar el manual hace mucho más probable la adopción que emitirlo desde la sede central.
+
+### 11.4 Evaluar el resultado
+
+Las comparaciones antes y después son seductoras y débiles: puede que el resultado hubiera mejorado de todos modos por la estación, la práctica, el personal nuevo u otros proyectos. Un diseño más fuerte y práctico es el de **diferencias en diferencias (DiD)**: comparar el cambio en los emplazamientos que recibieron el proyecto (piloto) con el cambio en emplazamientos similares que no lo recibieron (comparación) durante el mismo periodo. La estimación es (piloto después − piloto antes) − (comparación después − comparación antes). Su supuesto clave es el de las **tendencias paralelas**: sin el proyecto, los emplazamientos piloto y los de comparación habrían cambiado en la misma medida. El diseño se popularizó en economía gracias a un conocido estudio que comparaba el empleo en estados vecinos ([Card and Krueger, 1994](https://www.jstor.org/stable/2118030)); se aplica igual a los tiempos de los simulacros o a los tiempos de recuperación entre emplazamientos.
+
+Con pocos emplazamientos, los errores estándar ordinarios no son fiables. Una **comprobación por permutación** es sencilla y honesta: calcule la DiD para cada forma posible de elegir qué emplazamientos fueron «piloto» y pregúntese lo inusual que es la estimación de la asignación real. Si muchas asignaciones aleatorias producen estimaciones igual de grandes, el resultado podría deberse al azar. Por último, ponga a prueba la **robustez**: elimine el emplazamiento más influyente, use otra definición del resultado o compruebe si los emplazamientos piloto y los de comparación ya divergían antes del proyecto.
+
+### 11.5 Informar del proyecto
+
+El informe final indica el problema, lo que se hizo, lo que cambió, con cuánta seguridad lo sabemos y lo que queda pendiente. Informa primero de la medida especificada de antemano; los análisis adicionales se etiquetan como exploratorios. Las limitaciones se redactan con su **sentido** (¿haría esta debilidad que el efecto pareciera mayor o menor?) para que los lectores puedan juzgar el resultado. Los beneficios que no pudieron medirse se describen, no se inventan. El informe termina con el traspaso: los titulares, el mantenimiento, la evidencia de aseguramiento que mantendrá vigente la afirmación (capítulo 9) y el desencadenante de revisión.
+
+### 11.6 Rúbrica de evaluación
+
+Los proyectos se evalúan según cinco criterios, cada uno puntuado de 0 a 3:
+
+| Criterio | 3 (excelente) | 1 (débil) |
+|---|---|---|
+| Planteamiento | Problema basado en la consecuencia, patrocinador, beneficio medible, evaluación especificada de antemano | Problema vago; medida elegida después de los resultados |
+| Ejecución | Segura, autorizada, adoptada por operaciones; decisiones registradas | Ejecutado solo sobre el papel; operaciones esquivada |
+| Evaluación | Grupo de comparación, DiD o equivalente, incertidumbre y robustez comunicadas | Solo antes y después, sin incertidumbre |
+| Ética y seguridad | Riesgos para las personas y el servicio evaluados; distribución considerada | No considerados |
+| Comunicación y traspaso | Informe claro, limitaciones con su sentido, titulares y evidencia de aseguramiento | Defensa de parte; sin traspaso |
+
+### 11.7 Ejemplo resuelto: el proyecto del manual de operación manual (sintético)
+
+El especialista de Merrow Water dirigió un proyecto para introducir un manual de operación manual y simulacros trimestrales en seis plantas (piloto), elegidas porque tenían los sistemas de control más antiguos; otras seis plantas siguieron como antes (comparación). El resultado especificado de antemano era la media de minutos hasta lograr una operación manual estable en los simulacros trimestrales, promediada en dos trimestres anteriores y dos posteriores. El acta especificó de antemano una DiD con una comprobación por permutación y una comprobación de robustez que eliminaba el emplazamiento más influyente.
+
+Elegir los emplazamientos piloto por sus sistemas de control antiguos era sensato para el servicio, porque esas plantas eran las que más necesitaban el manual, pero significa que los grupos piloto y de comparación no eran iguales al principio. Por eso el acta exigía diferencias en diferencias en lugar de una comparación solo posterior, y por eso las tendencias paralelas deben argumentarse en lugar de suponerse. Está previsto que las seis plantas de comparación reciban el manual en la siguiente fase, lo que ofrece una oportunidad posterior de poner a prueba el resultado.
+
+### 11.8 Actividad práctica: ¿funcionó?
+
+```python
+# Lab 11 - did the project work? Difference-in-differences with a permutation check (offline, stdlib only)
+# Synthetic: Merrow Water piloted a manual-operation runbook and drills at six works (pilot) and not at six others.
+# Outcome: mean minutes to stable manual operation in quarterly drills, two quarters before and two after.
+from itertools import combinations
+SITES = {  # site: (pilot?, mean minutes before, mean minutes after)
+    "Hollin": (1, 41, 27), "Fenley": (1, 38, 29), "Upper Merrow": (1, 55, 36), "Kettle Ford": (1, 33, 28),
+    "Ashby": (1, 47, 35), "Saltings": (1, 36, 30),
+    "Brack": (0, 39, 35), "Dunmere": (0, 44, 40), "Orrin": (0, 35, 34), "Pelling": (0, 50, 43),
+    "Quarry Lane": (0, 31, 30), "Rook": (0, 42, 36),
+}
+def did(treated):
+    t = [SITES[s][2] - SITES[s][1] for s in SITES if s in treated]
+    c = [SITES[s][2] - SITES[s][1] for s in SITES if s not in treated]
+    return sum(t) / len(t) - sum(c) / len(c), sum(t) / len(t), sum(c) / len(c)
+pilot = {s for s, v in SITES.items() if v[0]}
+est, dt, dc = did(pilot)
+print(f"pilot change {dt:+.2f} min, comparison change {dc:+.2f} min, difference-in-differences {est:+.2f} min")
+naive = sum(SITES[s][2] for s in pilot) / 6 - sum(SITES[s][2] for s in SITES if s not in pilot) / 6
+print(f"naive after-only difference {naive:+.2f} min")
+allc = [did(set(c))[0] for c in combinations(SITES, 6)]
+p = sum(1 for d in allc if d <= est) / len(allc)
+print(f"permutation: {len(allc)} assignments; share with DiD <= observed = {p:.4f}")
+# Sensitivity: drop the site with the largest pilot improvement
+big = min(pilot, key=lambda s: SITES[s][2] - SITES[s][1])
+rest = {s: SITES[s] for s in SITES if s != big}
+t = [v[2]-v[1] for s, v in rest.items() if v[0]]; c = [v[2]-v[1] for s, v in rest.items() if not v[0]]
+print(f"without {big}: DiD {sum(t)/len(t) - sum(c)/len(c):+.2f} min")
+```
+
+Salida esperada:
+
+```text
+pilot change -10.83 min, comparison change -3.83 min, difference-in-differences -7.00 min
+naive after-only difference -5.50 min
+permutation: 924 assignments; share with DiD <= observed = 0.0087
+without Upper Merrow: DiD -5.37 min
+```
+
+**Interpretación.** Los emplazamientos piloto mejoraron 10,8 minutos en promedio; los de comparación, 3,8 minutos, probablemente por la práctica y la concienciación generales. La estimación DiD es una mejora de 7,0 minutos atribuible al proyecto bajo el supuesto de tendencias paralelas. Una comparación ingenua solo posterior (5,5 minutos) la subestimaría, porque los emplazamientos piloto partían de tiempos más lentos: se eligieron por sus sistemas antiguos. De las 924 asignaciones posibles de seis emplazamientos «piloto», menos del 1 % produce una mejora tan grande como la real, así que el azar es una explicación improbable. Eliminar Upper Merrow, el emplazamiento con la mayor mejora, reduce la estimación a 5,4 minutos: el resultado es robusto en su sentido, pero sensible en su tamaño a un solo emplazamiento. El informe debería decir «entre 5 y 7 minutos más rápido, principalmente, aunque no solo, por Upper Merrow», señalar que los emplazamientos piloto se seleccionaron por sus sistemas antiguos (de modo que las tendencias paralelas son un supuesto que hay que defender) y recomendar extender el manual a los emplazamientos de comparación con la misma evaluación.
+
+### 11.9 Errores comunes y límites
+
+- Elegir un proyecto por su interés y no por su consecuencia.
+- Empezar sin un patrocinador que pueda tomar decisiones.
+- Definir la medida del éxito después de ver los resultados.
+- Evaluar solo con una comparación antes y después.
+- Informar de una única estimación sin comprobar el azar ni la robustez.
+- Enumerar las limitaciones sin su sentido.
+- Terminar sin traspaso, de modo que el beneficio se degrada.
+
+Con una docena de emplazamientos, ninguna evaluación es definitiva. La evaluación del proyecto debe ser honesta al respecto y estar diseñada para que la siguiente fase (por ejemplo, el despliegue escalonado en los emplazamientos de comparación) aporte más evidencia.
+
+### Ejercicios — capítulo 11
+
+**EX051 — Acta de constitución del proyecto.** *Objetivo:* delimitar su propio proyecto aplicado. *Entradas:* su organización, o Merrow Bay. *Restricciones:* una página; todos los elementos del acta del §11.2; evaluación especificada de antemano. *Pasos:* redacte el acta. *Evidencia esperada:* acta. *Rúbrica:* use los criterios «Planteamiento» y «Ética y seguridad» del §11.6; 3 = trascendente, acotado, con titular, medible, seguro y evaluable, con una comparación designada; 2 = evaluación vaga; 1 = actividad en lugar de resultado; 0 = nada.
+
+**EX052 — Robustez del resultado de la permutación.** *Objetivo:* comprobar la sensibilidad a un solo emplazamiento. *Entradas:* el Lab 11. *Restricciones:* elimine por completo Upper Merrow de los datos (11 emplazamientos, 5 piloto). *Pasos:* (1) vuelva a calcular la DiD; (2) vuelva a calcular la proporción de la permutación sobre todas las asignaciones de 5 pilotos entre 11 emplazamientos; (3) interprételo. *Evidencia esperada:* cifras y un párrafo. *Rúbrica:* 3 = DiD de −5,37 minutos, 462 asignaciones, proporción de aproximadamente 0,017; interpretación de que el resultado sigue siendo improbable por azar pero es más débil, con el sentido de la limitación de selección; 2 = cifras correctas, interpretación pobre; 1 = no ejecutado; 0 = nada.
+
+**EX053 — Plan de partes interesadas y de adopción.** *Objetivo:* planificar la ejecución a través de las personas. *Entradas:* el proyecto del manual. *Restricciones:* incluya los turnos de noche y a los contratistas. *Pasos:* mapee a las partes interesadas; identifique quién pierde qué; planifique la formación, la práctica supervisada y la retroalimentación; haga un breve pre mortem y enumere tres historias de fracaso con sus mitigaciones. *Evidencia esperada:* plan. *Rúbrica:* 3 = partes interesadas concretas, pérdidas reconocidas, formación basada en la práctica, historias de pre mortem creíbles; 2 = sin pre mortem; 1 = solo un plan de comunicación; 0 = nada.
+
+**EX054 — Limitaciones con su sentido.** *Objetivo:* redactar limitaciones que ayuden a los lectores a juzgar. *Entradas:* el resultado del Lab 11. *Restricciones:* al menos cinco limitaciones, cada una con su sentido y con cómo podría abordarla una fase posterior. *Pasos:* redáctelas. *Evidencia esperada:* lista. *Rúbrica:* 3 = selección de los emplazamientos piloto, regresión a la media (los emplazamientos lentos mejoran más de todos modos; inflaría), efectos de la práctica, muestra pequeña, realismo de los simulacros frente a los sucesos reales, contaminación de los emplazamientos de comparación; sentidos correctos; 2 = faltan los sentidos; 1 = genérico; 0 = nada.
+
+**EX055 — Traspaso y beneficios.** *Objetivo:* hacer que los beneficios perduren. *Entradas:* el proyecto del manual a su término. *Restricciones:* use las ideas de caso de aseguramiento y de vigencia del capítulo 9. *Pasos:* (1) designe a los titulares; (2) defina la afirmación de aseguramiento y la evidencia, con sus antigüedades máximas; (3) defina un indicador para el consejo con una referencia XmR; (4) defina el desencadenante de revisión. *Evidencia esperada:* nota de traspaso. *Rúbrica:* 3 = titulares operativos, evidencia de grado verificado con su antigüedad, indicador con el periodo de referencia indicado, desencadenante concreto; 2 = falta un elemento; 1 = «proyecto cerrado»; 0 = nada.
+
+### Síntesis del capítulo
+
+Un proyecto aplicado mejora un servicio real y muestra de forma creíble si lo consiguió. Elija algo trascendente, acotado, con titular, medible, seguro y evaluable; fije la evaluación en un acta antes de la ejecución; ejecútelo a través de las personas, con el consentimiento de operaciones y un pre mortem; evalúelo con un grupo de comparación, diferencias en diferencias, una comprobación por permutación y pruebas de robustez; informe de las limitaciones con su sentido; y haga el traspaso con titulares, evidencia de aseguramiento y un desencadenante de revisión.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Siga estudiando — capítulo 11 de 12
+
+[← Capítulo 10](#ch-10) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Revisión final y transferencia
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+1. Integrar los métodos del curso en un enfoque coherente de las decisiones de seguridad a escala de la organización.
+2. Transferir una decisión de un sector a otro reexaminando los supuestos y volviendo a obtener los pesos.
+3. Hallar el peso con el que se invierte una recomendación multicriterio y usarlo para centrar la discusión.
+4. Evaluar su propia competencia frente al resultado del curso con evidencia y planificar su desarrollo continuo.
+5. Completar un análisis de caso avanzado que se apoye en todos los capítulos.
+
+Este capítulo final repasa el curso como un único método, practica su transferencia a un sector nuevo y prepara la evaluación final. Su último ejercicio es el caso integrador del curso.
+
+### 12.1 El curso como un único método
+
+Leído de principio a fin, el curso describe un ciclo que un especialista ejecuta de forma continua:
+
+1. **Plantear** la decisión: titular, opciones (incluida la de aplazar), objetivos en unidades de servicio (capítulo 1).
+2. **Conocer la línea base**: obligaciones, orientaciones y práctica verificada (capítulo 2).
+3. **Establecer los hechos**: evidencia que separe la observación de la inferencia (capítulo 3).
+4. **Cuantificar y distribuir el riesgo**: frecuencia, gravedad, cola y quién lo soporta (capítulo 4).
+5. **Diseñar alternativas**: primero la consecuencia, comparadas como grafos y como sistemas operables (capítulo 5).
+6. **Evaluar antes de confiar**: pruebas controladas con intervalos (capítulo 6).
+7. **Integrar**: titularidad, proveedores, mando de emergencias e intercambio de información (capítulo 7).
+8. **Prepararse para los casos difíciles**: pesos, relojes y obligaciones acordados de antemano (capítulo 8).
+9. **Dirigir y asegurar**: indicadores, casos de aseguramiento, evidencia vigente (capítulo 9).
+10. **Leer con sentido crítico**: estudios, avisos y afirmaciones, con vistas a su transferencia (capítulo 10).
+11. **Ejecutar y evaluar proyectos** con honestidad (capítulo 11).
+
+Cada paso produce un artefacto que otros pueden inspeccionar: un registro de decisión, un plan de verificación, un hallazgo, una curva de excedencia de pérdidas con una tabla de distribución, un ADR, un informe de evaluación, un RACI, un acuerdo sobre los pesos del restablecimiento, un caso de aseguramiento, una ficha de evidencia, un informe de proyecto. La credibilidad de un especialista descansa en esos artefactos más que en cualquier juicio aislado.
+
+### 12.2 Transferencia entre sectores
+
+Los especialistas cambian de sector, y el trabajo regional exige razonar sobre varios a la vez. La transferencia fracasa de dos maneras características: copiando **conclusiones** que dependían de las condiciones del primer sector; y copiando **pesos** que reflejaban los valores del primer sector. La transferencia tiene éxito cuando se copia el **método** y se reexamina cada supuesto. Una lista de comprobación práctica para la transferencia:
+
+- **Consecuencia y tiempo:** ¿cuál es la función esencial y con qué rapidez llega el daño cuando falla? (Los minutos de un hospital, las horas de un sistema de agua, los días de un puerto).
+- **Física y seguridad funcional:** ¿qué modos de fallo puede causar la propia acción de seguridad?
+- **Regulación:** ¿qué regímenes y plazos de notificación se aplican, y qué evidencia esperan?
+- **Personas y proveedores:** ¿quién implantará y operará la medida? ¿Qué proveedores concentran el riesgo?
+- **Datos y privacidad:** ¿qué datos personales o sensibles están implicados y qué deberes se derivan de ello? La seguridad sanitaria, por ejemplo, está sujeta a deberes de protección de datos y de privacidad sanitaria a los que una empresa de agua rara vez se enfrenta ([GDPR](https://eur-lex.europa.eu/eli/reg/2016/679/oj); [HHS, HPH CPGs](https://hphcyber.hhs.gov/performance-goals.html)). *Nota para el lector hispanohablante:* en España, el RGPD se complementa con la Ley Orgánica 3/2018, de Protección de Datos Personales y garantía de los derechos digitales; en América Latina rige la ley de cada país, por ejemplo la Ley 25.326 en Argentina o la Ley 1581 de 2012 en Colombia.
+- **Valores:** ¿a qué dan más peso los líderes de este sector y las personas a las que sirve, y quién debería fijar los pesos?
+
+### 12.3 Decisiones multicriterio y puntos de inversión
+
+Cuando las opciones se comparan según varios criterios con pesos (un modelo sencillo de suma ponderada), la recomendación depende de los pesos. En lugar de defender un único conjunto de pesos, halle el **punto de inversión**: el peso con el que cambia la recomendación. Si el punto de inversión está lejos de cualquier peso plausible, la recomendación es robusta; si está cerca, la discusión debe centrarse en ese peso. El análisis de sensibilidad sistemático de los modelos es un campo en sí mismo ([Saltelli et al., 2008](https://doi.org/10.1002/9780470725184)); para una decisión con tres opciones, suele bastar un barrido unidimensional. Es el equivalente multicriterio de los umbrales de probabilidad del capítulo 1.
+
+### 12.4 Autoevaluación y práctica continuada
+
+El resultado del curso es **dirigir la aplicación avanzada y justificar las elecciones a escala de la organización** en infraestructura crítica y seguridad sectorial. Evalúese frente a él con evidencia, no con sensaciones: para cada capítulo, ¿qué artefacto ha producido, con qué nivel (las rúbricas de los ejercicios) y qué retroalimentación ha recibido? Las carencias se convierten en un plan de desarrollo continuo con práctica concreta, no solo con cursos: dirija un simulacro; redacte un registro de decisión para una decisión real; revise el contrato de un proveedor; informe a un consejo; presente una ficha de evidencia a sus colegas. Los códigos profesionales esperan que los profesionales mantengan su competencia y trabajen dentro de ella ([ACM Code of Ethics](https://www.acm.org/code-of-ethics); [NSPE Code of Ethics](https://www.nspe.org/resources/ethics/code-ethics)). Las leyes, los estándares y las amenazas cambiarán a lo largo de su carrera; los hábitos de plantear bien, aportar evidencia, ser honesto con la incertidumbre y registrar el juicio, no.
+
+### 12.5 Ejemplo resuelto: transferir la elección de un programa a Merrow Health (sintético)
+
+El panel de Merrow Water puntuó tres programas de seguridad según cuatro criterios (0–10): continuidad del servicio esencial, seguridad de las personas, asequibilidad y privacidad. La dirección de Merrow Water ponderó mucho la continuidad y poco la privacidad. Merrow Health quiere reutilizar el análisis. El especialista copia las puntuaciones solo después de comprobar cada una con colegas clínicos y de gobernanza de la información (en este ejemplo se confirman) y pide a la dirección de Merrow Health que fije sus propios pesos. El Lab 12 compara los resultados y halla el punto de inversión.
+
+Copiar las puntuaciones es en sí un juicio. Las puntuaciones de continuidad y de seguridad podrían ser distintas en un hospital, donde los sistemas clínicos que fallan causan daño en minutos y la privacidad conlleva deberes legales a los que una empresa de agua rara vez se enfrenta. Registrar que cada puntuación se comprobó, y quién lo hizo, permite al lector ver que la transferencia descansa en datos de entrada verificados y no solo en el panel de Merrow Water.
+
+### 12.6 Actividad práctica: mismas opciones, pesos distintos
+
+```python
+# Lab 12 - transferring a decision to another sector: same options, different weights (offline, stdlib only)
+# Synthetic: three security programmes scored 0-10 on four criteria by Merrow Water's panel, then reused
+# by Merrow Health. Scores are invented; the weights are what each sector's leadership agreed.
+OPTIONS = {  # option: scores on (continuity of essential service, safety of people, cost-affordability, privacy)
+    "P1 manual-operation readiness":     (9, 7, 6, 4),
+    "P2 identity and remote-access":     (6, 6, 7, 8),
+    "P3 network monitoring and response": (7, 5, 4, 6),
+}
+CRIT = ["continuity", "safety", "affordability", "privacy"]
+WEIGHTS = {
+    "water":  (0.45, 0.30, 0.20, 0.05),
+    "health": (0.25, 0.30, 0.15, 0.30),
+}
+for sector, w in WEIGHTS.items():
+    assert abs(sum(w) - 1) < 1e-9
+    scores = {o: sum(a * b for a, b in zip(s, w)) for o, s in OPTIONS.items()}
+    print(sector, " ".join(f"{o.split()[0]}={v:.2f}" for o, v in scores.items()), " best:", max(scores, key=scores.get).split()[0])
+# Sweep the privacy weight, taking it proportionally from the other water weights, to find the reversal point
+w0 = WEIGHTS["water"]; prev = None
+for k in range(0, 61):
+    p = k / 100; rest = sum(w0[:3])
+    w = tuple(x / rest * (1 - p) for x in w0[:3]) + (p,)
+    best = max(OPTIONS, key=lambda o: sum(a * b for a, b in zip(OPTIONS[o], w))).split()[0]
+    if best != prev: print(f"privacy weight {p:.2f}: best {best}"); prev = best
+```
+
+Salida esperada:
+
+```text
+water P1=7.55 P2=6.30 P3=5.75  best: P1
+health P1=6.45 P2=6.75 P3=5.65  best: P2
+privacy weight 0.00: best P1
+privacy weight 0.28: best P2
+```
+
+**Interpretación.** Con los pesos del agua, la preparación para la operación manual (P1) obtiene 7,55 y es claramente la preferida. Con los pesos de la salud (la privacidad pesa ahora 0,30 porque están en juego datos de pacientes), gana la identidad y el acceso remoto (P2), con 6,75 frente a 6,45. El barrido sobre los pesos del agua muestra que P2 supera a P1 en cuanto el peso de la privacidad pasa de aproximadamente 0,28; para la salud, el barrido inverso (EX056) muestra que P1 recupera el primer lugar en cuanto el peso de la continuidad supera aproximadamente 0,32. La lección sobre la transferencia es que **las puntuaciones viajaron, la conclusión no**: la misma evidencia, ponderada según los valores legítimos de otro sector, recomienda un programa distinto. El trabajo del especialista es hacerlo visible, no convencer a un sector de que adopte los pesos del otro. Los puntos de inversión indican además a cada dirección exactamente qué juicio debe debatir.
+
+### 12.7 Errores comunes y límites
+
+- Copiar una conclusión de un sector sin reexaminar sus condiciones.
+- Reutilizar los pesos de otra organización como si fueran hechos.
+- Defender un único conjunto de pesos en lugar de informar de los puntos de inversión.
+- Tratar la finalización del curso como competencia sin evidencia.
+- Planificar el desarrollo solo como cursos, no como práctica con retroalimentación.
+- Suponer que las leyes, los estándares y el panorama de amenazas de hoy se mantendrán.
+
+Los modelos de suma ponderada suponen que los criterios pueden compensarse linealmente y que las puntuaciones están en escalas comparables; ninguna de las dos cosas es del todo cierta. Son herramientas para una conversación estructurada, que se usan mejor junto con los puntos de inversión y el registro de decisión.
+
+### Ejercicios — capítulo 12
+
+**EX056 — El punto de inversión de la salud.** *Objetivo:* hallar dónde cambia la recomendación. *Entradas:* el Lab 12. *Restricciones:* haga un barrido del peso de la continuidad para la salud, tomando el resto proporcionalmente de los otros tres criterios. *Pasos:* (1) modifique el barrido; (2) informe del peso con el que P1 supera a P2; (3) obtenga el mismo punto algebraicamente; (4) explique qué debería debatir la dirección de Merrow Health. *Evidencia esperada:* código, salida, derivación y un párrafo. *Rúbrica:* 3 = inversión entre 0,31 y 0,32 con el barrido y 0,318 algebraicamente (4,4c − 1,4 = 0), discusión centrada en la continuidad frente a la privacidad para los servicios clínicos; 2 = solo el barrido; 1 = no ejecutado; 0 = nada.
+
+**EX057 — Lista de comprobación de la transferencia.** *Objetivo:* transferir una conclusión del sector del agua a un puerto. *Entradas:* la recomendación robusta C del capítulo 1 (la mitad para el bastionado del acceso remoto, la mitad para la capacidad de operación manual) para Merrow Water. *Restricciones:* use la lista de comprobación del §12.2 para Port of Merrow. *Pasos:* para cada elemento, indique qué difiere y si cambia la conclusión; después, indique qué volvería a obtener. *Evidencia esperada:* tabla y conclusión. *Rúbrica:* 3 = diferencias concretas (tiempo hasta el daño en días; TO de la terminal gestionada por un contratista; regímenes distintos; concentración de proveedores en Halden Cloud y Lumen Watch; consecuencias comerciales en lugar de sanitarias), conclusión derivada de nuevo en lugar de copiada, nueva obtención enumerada; 2 = algunos elementos genéricos; 1 = copia la conclusión; 0 = nada.
+
+**EX058 — Autoevaluación con evidencia.** *Objetivo:* evaluar la competencia frente al resultado del curso. *Entradas:* sus respuestas a los ejercicios y la retroalimentación recibida. *Restricciones:* evidencia para cada afirmación. *Pasos:* (1) para cada capítulo, enumere su artefacto y su puntuación en la rúbrica; (2) identifique sus tres áreas más débiles; (3) redacte un plan de desarrollo a 12 meses con actividades prácticas y evidencia del progreso. *Evidencia esperada:* tabla y plan. *Rúbrica:* 3 = puntuaciones honestas con evidencia, debilidades concretas, plan basado en la práctica con evidencia medible; 2 = plan solo de cursos; 1 = sin evidencia; 0 = nada.
+
+**EX059 — Caso integrador: compromiso de un proveedor en Merrow Bay.** *Objetivo:* aplicar el curso completo a un caso avanzado. *Entradas:* escenario sintético: Corvane Systems informa de que un atacante accedió a su plataforma de soporte remoto durante once días; Corvane da soporte al SCADA de Merrow Water y de Merrow Energy y a los sistemas de anatomía patológica de Merrow Health. Los registros de Merrow Water muestran tres sesiones de Corvane en ese periodo, una de ellas de noche y sin ningún tique asociado. *Restricciones:* 3.000 palabras como máximo; solo datos sintéticos; cite los capítulos de los métodos. *Pasos:* (1) plantee las decisiones inmediatas y las estratégicas (cap. 1); (2) indique el plan probatorio y los hallazgos iniciales (cap. 3); (3) fije las prioridades de restablecimiento y de protección entre los tres operadores con pesos explícitos (cap. 4, 8); (4) evalúe los cambios de diseño en el acceso de los proveedores (cap. 5, 6); (5) aborde la titularidad, la concentración de proveedores y la coordinación del foro (cap. 7); (6) redacte las comunicaciones al consejo y al regulador (cap. 3, 9); (7) evalúe con sentido crítico las declaraciones de Corvane (cap. 10); (8) proponga un proyecto de continuación con un diseño de evaluación (cap. 11). *Evidencia esperada:* informe del caso. *Rúbrica:* de 0 a 3 en cada una de las ocho partes (máximo 24); 20 o más = excelente, 14–19 = competente, menos de 14 = todavía no competente. La máxima puntuación exige incertidumbre explícita, juicios de valor registrados y ningún engaño en las comunicaciones.
+
+**EX060 — Práctica continuada y desencadenantes de revisión.** *Objetivo:* mantener actualizado el curso. *Entradas:* las referencias de este libro. *Restricciones:* identifique las fuentes que probablemente cambiarán. *Pasos:* (1) enumere cinco fuentes (leyes, estándares, orientaciones) que deba volver a verificar, con el modo en que las vigilará; (2) fije desencadenantes de revisión para su propia práctica (por ejemplo, un nuevo aviso que afecte a sus productos de acceso remoto); (3) indique cómo registrará los cambios en sus registros de decisiones. *Evidencia esperada:* plan de una página. *Rúbrica:* 3 = fuentes realmente volátiles (por ejemplo, la transposición de NIS2, las revisiones de NERC CIP, la revisión de la SP 800-82, las actualizaciones de los CPG, las orientaciones sectoriales), vigilancia concreta, desencadenantes concretos, método de registro de los cambios; 2 = vigilancia genérica; 1 = solo una lista; 0 = nada.
+
+### Síntesis del capítulo
+
+El curso es un único método: plantear, conocer la línea base, aportar evidencia, cuantificar el riesgo y su distribución, diseñar, evaluar, integrar, prepararse para los casos difíciles, dirigir y asegurar, leer con sentido crítico y ejecutar proyectos con honestidad, y cada paso produce un artefacto inspeccionable. Transfiera el método, no la conclusión: reexamine la consecuencia, la física, la regulación, las personas, los datos y los valores, y deje que cada sector fije sus propios pesos. Informe de los puntos de inversión para que los líderes debatan el juicio que importa. Evalúese con evidencia, planifique la práctica con retroalimentación y mantenga en revisión las fuentes y las decisiones a medida que cambia el campo.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Siga estudiando — capítulo 12 de 12
+
+[← Capítulo 11](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Siguiente curso desde el índice de capítulos →](../SUBJECTS.md)
+
+Este es el último capítulo de este curso; el índice enlaza con el siguiente curso del itinerario completo de estudio.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
@@ -1626,6 +2032,42 @@ Cada resultado resuelto muestra una respuesta defendible y explica lo que premia
 **EX044 — Las tres líneas.** Ejemplo: copias de seguridad fuera de línea. Primera línea: operaciones de TO es titular de las restauraciones; segunda línea: seguridad cuestiona la vigencia de la evidencia; tercera línea: la auditoría interna observa una restauración. Confusión de roles: el equipo de seguridad ejecuta actualmente restauraciones que debería ejecutar operaciones.
 
 **EX045 — Capacidad y sucesión.** Capturar la lógica anotada, los procedimientos de prueba y los recorridos grabados. Formar a dos sucesores mediante trabajo en pareja y cambios supervisados durante 18 meses. Evidencia: un cambio dirigido por un sucesor y un simulacro sin el ingeniero que se jubila.
+
+### Capítulo 10: EX046–EX050
+
+**EX046 — Vuelva a leer el folleto.** Véase el §10.9. Mejores resultados: horas de interrupción del servicio; tiempo hasta detectar pruebas inyectadas en una instalación de prueba; verificados frente a operadores de comparación emparejados.
+
+**EX047 — Ficha de evidencia: hospitales vecinos.** Diseño: antes y después en una sola institución durante un ataque cercano. Hallazgos: aumentos significativos de la ocupación de urgencias, de las llegadas de los servicios de emergencias médicas y de medidas relacionadas (cítense del artículo). Limitaciones: un solo emplazamiento, estacionalidad, ninguna región de control no afectada; probablemente inflan el efecto si la estación o sucesos locales contribuyeron. Transferencia: los tres hospitales de Merrow Bay y los servicios de emergencias médicas compartidos; planificar el desvío regional. Acción: hacer un ejercicio de mesa del escenario de desvío con Merrow Health y los servicios de emergencias médicas.
+
+**EX048 — Ficha de evidencia: WannaCry.** Estudio: alrededor de un 6 % menos de ingresos al día en los hospitales infectados; 5,9 millones de libras de actividad perdida estimada; ninguna diferencia detectada en la mortalidad, con la cautela de los autores de que la mortalidad es una medida tosca. NAO: investigación de auditoría del ataque y de la respuesta del NHS. Transferencia: Merrow Health es más pequeña; los efectos de red difieren. Acción: no tomar la «ausencia de diferencia en la mortalidad» como un riesgo clínico bajo; centrarse en medidas de continuidad asistencial.
+
+**EX049 — Del aviso a las preguntas.** Extraiga técnicas del AA24-038A (por ejemplo, el uso de cuentas válidas, los binarios legítimos del propio sistema aprovechados por el atacante, el ataque a entornos operativos; contrástelo con el texto del aviso). Preguntas: ¿mostrarían nuestros registros de identidad un uso anómalo de las cuentas de servicio? ¿Conservaríamos los registros de los equipos pertinentes? Las mitigaciones se relacionan con la MFA, las cuentas nominativas, la conservación de registros y la segmentación.
+
+**EX050 — Comprobación de trampas.** Preguntas: ¿cuál era la tasa base y cómo se definió la exactitud (precisión/exhaustividad)? ¿Estaba el conjunto de prueba separado del de entrenamiento en el tiempo y por entidades? ¿En qué se diferencia el banco de pruebas de nuestra planta? ¿Con qué detector de referencia se comparó? ¿Qué modelo de adversario se supuso? Cada una corresponde a una trampa conocida de Arp et al. (2022).
+
+### Capítulo 11: EX051–EX055
+
+**EX051 — Acta de constitución del proyecto.** Evalúela según los criterios de Planteamiento y Ética del §11.6. Un acta de máxima puntuación para un proyecto en Merrow Bay (o real) tiene un patrocinador designado, un objetivo basado en la consecuencia, una medida y una comparación especificadas de antemano, condiciones de seguridad y exclusiones.
+
+**EX052 — Robustez del resultado de la permutación.** DiD de −5,37 minutos; 462 asignaciones de 5 pilotos entre 11; proporción con DiD ≤ la observada ≈ 0,017. Sigue siendo improbable por azar, pero más débil; la selección del emplazamiento que más mejoró inflaba la estimación original.
+
+**EX053 — Plan de partes interesadas y de adopción.** Partes interesadas: los operadores (incluidos los de noche), los ingenieros de TO, Corvane, el CISO, el patrocinador del consejo. Pérdidas: tiempo, autonomía. Formación: práctica supervisada, no diapositivas. Historias de pre mortem: el turno de noche ignora el manual; el contratista nunca recibe formación; el simulacro se cancela por «presión operativa»; cada una con sus mitigaciones.
+
+**EX054 — Limitaciones con su sentido.** Selección de pilotos con sistemas antiguos (puede inflar si tenían más margen de mejora); regresión a la media (infla); efectos de la práctica (inflan); muestra pequeña (incertidumbre amplia); simulacros ≠ sucesos reales (sentido incierto); contaminación si los emplazamientos de comparación oyeron hablar del manual (reduce). Fase posterior: despliegue escalonado comprobando las tendencias previas.
+
+**EX055 — Traspaso y beneficios.** Titulares: operaciones de TO para los simulacros, el especialista para el caso de aseguramiento. Afirmación: «las plantas piloto pueden lograr una operación manual estable en X minutos». Evidencia: informes trimestrales de simulacros, antigüedad máxima de 365 días. Indicador: mediana del tiempo de los simulacros, referencia XmR de los ocho primeros trimestres. Desencadenante: un simulacro que supere el límite superior, o un cambio de personal en un emplazamiento piloto.
+
+### Capítulo 12: EX056–EX060
+
+**EX056 — El punto de inversión de la salud.** Barrido: P1 supera a P2 cuando el peso de la continuidad llega a aproximadamente 0,32. Álgebra: sean las puntuaciones P1 = (9,7,6,4) y P2 = (6,6,7,8); con los pesos (c, 0,30/0,75·(1−c), 0,15/0,75·(1−c), 0,30/0,75·(1−c)), la diferencia P1−P2 = 0 en c ≈ 0,318. La dirección debería debatir cuánto pesa más la continuidad que la privacidad en los servicios clínicos.
+
+**EX057 — Lista de comprobación de la transferencia.** Diferencias del puerto: tiempo hasta el daño más lento; TO gestionada por un contratista; regímenes distintos; concentración en Halden Cloud y Lumen Watch; consecuencias comerciales. La mitad dedicada a la operación manual puede importar menos que la resiliencia de la identidad y de la nube; vuelva a obtener los escenarios, las probabilidades y los pesos con el capitán de puerto y el contratista.
+
+**EX058 — Autoevaluación con evidencia.** La máxima puntuación exige artefactos capítulo a capítulo con sus puntuaciones en las rúbricas, tres debilidades concretas y un plan a 12 meses basado en la práctica con evidencia del progreso (por ejemplo, «dirigir dos simulacros; redactar tres registros de decisión revisados por un colega»).
+
+**EX059 — Caso integrador.** Evalúe de 0 a 3 cada una de las ocho partes del ejercicio (máximo 24). Una respuesta sólida plantea las decisiones inmediatas (¿suspender el acceso de Corvane?, ¿notificar?) y las estratégicas (rediseñar el acceso de los proveedores); planifica la evidencia en los tres operadores; fija los pesos del restablecimiento con el foro; propone un acceso similar a D3 con evaluación; repara la titularidad y aborda la concentración en Corvane; comunica sin engaños; lee con sentido crítico las declaraciones de Corvane; y propone un proyecto de continuación con DiD o un diseño equivalente. La incertidumbre y los juicios de valor son explícitos en todo momento.
+
+**EX060 — Práctica continuada y desencadenantes de revisión.** Fuentes volátiles: la transposición nacional de NIS2 y sus orientaciones; las revisiones de NERC CIP; las actualizaciones de la NIST SP 800-82 y del CSF; los CPG y el KEV de CISA; las orientaciones sectoriales (HPH CPGs, sector del agua). Vigilancia: listas de correo de los estándares, páginas de los reguladores, suscripciones a avisos. Desencadenantes: un aviso nuevo que afecte a los productos de acceso remoto; un incidente en una organización similar; un cambio en la concentración de proveedores. Registre los cambios como actualizaciones fechadas de los registros de decisiones.
 
 <a id="glossary"></a>
 
