@@ -2566,17 +2566,25 @@ You will be able to (1) enumerate persistence paths across hosts and identity; (
 
 Attackers keep access through **persistence**: on hosts (services, scheduled tasks, startup items, web shells, modified binaries), in identity (added credentials, MFA methods, OAuth application consents, mailbox rules, new accounts, federation trust changes), and in the network (VPN accounts, firewall rules). Eradication that cleans the host but not identity persistence leaves the door open. MITRE ATT&CK catalogues persistence techniques and is a useful checklist source.
 
+The nurse-07 case shows the gap: WS-031 was reimaged, but the phone authenticator added on 13 March survived.
+
 ### 27.2 Verification tests
 
 A verification test should have a defined procedure, an expected result if eradication succeeded, and — critically — the possibility of failing. "Antivirus scan is clean" is weak if the antivirus missed the original intrusion. Stronger tests target the specific persistence mechanisms found and the mechanisms the attacker could plausibly have used, across independent sources.
+
+In the nurse-07 case, listing MFA methods with their registration dates is a test that can fail, and it did: it revealed the second phone authenticator. A test that only confirmed the reimaged workstation was clean could never have shown the identity persistence that let the attacker back in on 16 March.
 
 ### 27.3 Negative evidence
 
 Absence of evidence is evidence of absence only when the search could have found the thing. A search for a malicious scheduled task across all hosts, using a tool known to enumerate tasks reliably, that finds none, is meaningful. A search on hosts whose telemetry was offline is not.
 
+The fleet search in the nurse-07 case reached 412 of 418 endpoints. Finding no helper on those 412 is meaningful; the six offline machines are listed as unknown and searched when they reconnect, rather than counted as clean.
+
 ### 27.4 Residual uncertainty and reopening triggers
 
 Verification reduces uncertainty; it rarely eliminates it. State what was tested, what was not, and the triggers that would reopen the case — for example a sign-in by a rotated credential, or traffic to known attacker infrastructure.
+
+In the nurse-07 case, the plan named its triggers in advance: any sign-in from the unfamiliar address range, any detection of the helper's hash, and any new MFA method on clinical accounts without a help-desk ticket. Because the triggers were written before the result, finding the authenticator registered on 13 March led directly to reopening rather than to debate about whether it mattered. State residual uncertainty in plain words, such as "six endpoints not yet checked", so a reader knows exactly what closure does not cover.
 
 ### 27.5 Worked example (synthetic): cleaned host, fresh sign-in
 
@@ -2599,6 +2607,12 @@ Result (fictional): a second phone authenticator was registered on 13 March — 
 - Tests that cannot fail.
 - Claiming fleet-wide absence with incomplete telemetry coverage.
 - Closing without reopening triggers.
+
+- Cleaning the host while leaving the user's credential, MFA methods, mailbox rules and application consents untouched, as happened with nurse-07.
+- Searching only for the indicators already found, not for persistence the attacker could plausibly have added.
+- Treating offline endpoints as clean because the search returned no hits for them.
+- Writing reopening triggers that nobody is assigned to watch.
+- Reporting a case as closed without stating which checks were skipped or could not be completed.
 
 ### Exercises — chapter 27
 
@@ -2634,17 +2648,25 @@ You will be able to (1) recognize hindsight bias and reconstruct what was knowab
 
 After an outcome is known, people judge it as more predictable than it was. Fischhoff's experiments (1975) showed that knowing an outcome raises its perceived likelihood and leads observers to overestimate what decision-makers should have foreseen. In post-incident reviews this produces the familiar verdict "the alert was obvious; the analyst should have acted". The corrective is to reconstruct, for each decision point, what the person knew, what competed for their attention and what rules they were following.
 
+In the FS-2 review, the reconstruction keeps the 2 April ransomware out of the 23:40 picture.
+
 ### 28.2 Local rationality
 
 Safety science (for example Dekker's work on "just culture" and the "new view" of human error) holds that people's actions made sense to them at the time given their goals, knowledge and focus. The question becomes: *what made this action reasonable then?* The answer usually points to system conditions — alert volume, unclear ownership, missing context — that can be changed.
+
+Applied to the FS-2 alert, the question is why closing it as probable IT activity made sense at 23:52 on 28 March. The answer lies in the rule then in force, an empty owner field, no list of approved tools and 64 alerts for one analyst. Each of these can be changed; the analyst's character cannot usefully be.
 
 ### 28.3 Coverage and thresholds
 
 A signal can be missed because no detection existed (coverage gap), because a detection existed but its threshold was not met, because it fired but was lost in volume, or because it reached someone without authority or context. Each has a different fix.
 
+The FS-2 miss was not a coverage gap: a detection existed and fired. It reached an analyst who lacked the ownership information and was bound by a closure rule that did not require confirmation, while the queue held 64 alerts. Classifying it this way points to fixes in context and rules rather than to writing new detections.
+
 ### 28.4 Corrective actions
 
 Good corrective actions are specific, owned, dated and measurable: "add owner field to asset inventory for all servers; owner populated for 100% of production servers by 30 June; verified by quarterly report". Avoid actions such as "be more vigilant" or "retrain staff" without a defined change.
+
+The FS-2 review shows the form: owners populated for all production servers by 30 June with a quarterly check, an approved list of remote-access tools, a closure rule requiring confirmation for server software installation, and a review of night-shift volume. Each names something that will be different and how anyone can tell.
 
 ### 28.5 Worked example (synthetic): an ignored alert
 
@@ -2666,6 +2688,10 @@ Corrective actions: (1) owner populated for all production servers (target 100% 
 - Counterfactual reasoning that assumes knowledge available only after the outcome.
 - Corrective actions without owners or measures.
 - The opposite error: refusing to discuss individual performance at all; just culture distinguishes honest error from reckless or deliberate violations.
+
+- Recording the outcome, such as the 2 April ransomware, in the reconstruction of what the analyst could know on 28 March.
+- Accepting a corrective action because it sounds serious, without checking that it changes the conditions found.
+- Closing the review when actions are written, rather than when they are verified.
 
 ### Exercises — chapter 28
 
@@ -2701,17 +2727,25 @@ You will be able to (1) define response roles and their responsibilities; (2) ma
 
 Typical roles: **triage analyst** (assess and route), **incident handler** (investigate and coordinate technical work), **incident lead/commander** (decide and coordinate across teams), **service owner** (accept changes to their service), **communications lead**, and **scribe** (record decisions). In small organizations one person holds several roles, but the roles — especially "who decides" — should still be named per incident. The FIRST CSIRT Services Framework describes the services a team offers, which helps decide which roles are needed.
 
+At Harbourline, with a two-person IT team, one person may be both handler and scribe.
+
 ### 29.2 Queues and service objectives
 
 A **service-level objective** (SLO) states a target such as "90% of severity-2 cases receive first analyst action within 30 minutes". Queue health depends on arrival rate, handling time and staffing; when arrival exceeds capacity, waiting times grow quickly. Track backlog age, not only counts.
+
+Lab 29 shows the pattern: as monthly volume rose from 100 to 122 cases, the mean wait for severity-3 cases grew from six to nine hours, a sign that capacity is being approached before any objective is formally breached. Watching backlog age catches that earlier than counting open tickets.
 
 ### 29.3 Metric validity
 
 A metric is valid if it measures what it claims and cannot be easily improved without improving the underlying reality. "Cases closed per analyst" rewards early closure; "time to first action" can be gamed by a quick placeholder note. Pair metrics (speed with quality review), and watch for definition drift — for example, severity labels changing over time, so that "severity-1 cases" in Q1 and Q3 are not the same population.
 
+Lab 29 is a case of definition drift in practice: initial labels changed meaning while final labels stayed stable.
+
 ### 29.4 Review cycle
 
 A **cadence** of reviews: daily queue review, weekly case-quality sampling, monthly metric review with trends and data-quality checks, quarterly review of corrective actions and capability gaps. Each review needs inputs, an owner and outputs (decisions, actions).
+
+For Harbourline, the weekly sample might include every case upgraded to severity 1, since Lab 29 shows upgrades rising from none in January to eight in March. The monthly review would check that both initial and final severity are reported, and the quarterly review would ask whether staffing matches the arrival rate. Write each review's output as decisions and actions with owners, so the next review can check what happened to them.
 
 ### 29.5 Worked example and lab (synthetic): changing severity labels
 
@@ -2754,6 +2788,10 @@ Interpretation: the "fall" in severity-1 is an artefact of counting *initial* la
 - Reviews without owners or outputs.
 - Synthetic data here is constructed to show the effect; real data will be noisier and need intervals (Chapter 12).
 
+- Reporting the count of initial severity labels as if it described the severity of incidents, as the January to March claim did.
+- Watching averages while backlog age grows in one severity band.
+- Changing a metric's definition without restating earlier periods or noting the break.
+
 ### Exercises — chapter 29
 
 Attempt each exercise before opening the [worked results](#worked-results). Every case, organization, person, address and number in an exercise is synthetic unless a cited public source is named.
@@ -2788,17 +2826,25 @@ You will be able to (1) design a supervised tabletop exercise with objectives an
 
 Start with **objectives** that can be observed: "the incident lead makes a containment decision within 20 minutes of the inject", "the first external statement contains no unverified claims". Set the **scope** (teams, systems, time), the **rules** (no real systems touched; facilitator controls information), and **stop conditions** (a real incident, participant distress, overrun). Pre-announce the evaluation criteria so that the exercise tests the process, not participants' ability to guess what the facilitator wants.
 
+In Harbourline Night Shift, each objective names a time limit and an observable act.
+
 ### 30.2 Injects
 
 An **inject** is a piece of scenario information delivered at a time: an alert, a phone call, a journalist's email. Design injects to force decisions at known friction points: an owner who refuses containment, a missing deputy, an ambiguous privacy question, a shift change.
+
+In Harbourline Night Shift, the injects at T+15 and T+25 deliberately combine a refusal by the pharmacy owner with an unavailable incident lead, recreating the friction of the earlier pharmacy-server case. The reporter's email at T+40 tests whether communication waits for the privacy officer. Each inject is tied to an objective so the observers know what to watch for.
 
 ### 30.3 Observation
 
 Observers record times, decisions, who decided, information used and communication paths, against the rubric. They do not intervene. Each observer covers one team or role.
 
+In Harbourline Night Shift, two observers cover the teams: for O2 they record when escalation reached the decider and when the decision was made, giving the 31 minutes in the observations. They also capture what information was used, which is how the unsupported claim about patient data in the O3 update came to light. Observers should timestamp from one shared clock and record quotations exactly, because the after-action note depends on their notes rather than on participants' memory.
+
 ### 30.4 After-action note
 
 The note compares criteria with observations, identifies strengths and gaps, and proposes corrective actions in the measurable form of Chapter 28. It is a process review, not a personal evaluation; reported individual errors should be framed as system findings unless policy requires otherwise.
+
+For Harbourline Night Shift, the note would record O1 met at seven minutes, O2 partly met because no deputy was named, and O3 and O4 in conflict because the update claimed no patient data was affected before the privacy officer was consulted. The corrective actions name owners and a re-test in three months.
 
 ### 30.5 Worked example (synthetic): exercise plan
 
@@ -2824,6 +2870,11 @@ After-action corrective actions: name deputies per shift in the roster (owner: s
 - Facilitators steering participants to the "right" answer.
 - Exercises that only test technical steps, not decisions.
 - Results of one tabletop are anecdotes; repeated exercises with stable criteria show trends.
+
+- Debriefing only on what went wrong, so participants learn to fear exercises rather than use them.
+- Running the same scenario repeatedly until participants memorise the injects instead of exercising judgement.
+- Changing the objectives between exercises, which makes it impossible to see whether corrective actions worked.
+- Letting observers score participants they manage or work with daily.
 
 ### Exercises — chapter 30
 
