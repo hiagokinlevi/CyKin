@@ -1,7 +1,7 @@
 # Governança, Riscos e Compliance de Segurança: Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); curso 097, curso de bacharelado (4 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–18 de 40 já estão escritos em português, com os exercícios EX001–EX054 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 19–40 (EX055–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–28 de 40 já estão escritos em português, com os exercícios EX001–EX084 e suas resoluções com rubricas de 0 a 3 e 6 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 29–40 (EX085–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de bacharelado que aprendem a construir, operar e avaliar um programa de GRC proporcional numa organização pequena.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios consultam um registro de riscos em SQLite e calculam intervalos de Wilson, medianas de patch, níveis de fornecedores, ordenações de matriz contra perda esperada e um resumo de lacunas do CSF, sempre sobre dados sintéticos. Os números de risco são ilustrações, as normas são citadas pela edição e parafraseadas, e nada aqui é auditoria, atestação ou aconselhamento jurídico reais. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,9 @@ ISO 31000:2018 (no Brasil, ABNT NBR ISO 31000:2018); ISO/IEC 27001:2022 (no Bras
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) |
 
-Capítulos 19–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-19), até a chegada dos próximos lotes.
+Capítulos 29–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-29), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -748,11 +748,437 @@ As entrevistas refletem o que as pessoas dizem, nem sempre o que fazem. Grupos p
 - **EX053 — Escolha do método.** Por que entrevistas em vez de questionário? *Rubrica:* 3 = só doze gestores e uma pergunta do tipo por quê;; 2 = grupo pequeno;; 1 = nada;; 0 = nenhuma.
 - **EX054 — Acesso da diretora.** O que a diretora da Elmfield verá? *Rubrica:* 3 = só os temas, não quem disse o quê;; 2 = temas;; 1 = transcrições;; 0 = nenhuma.
 
+<a id="ch-19"></a>
+
+## Capítulo 19 — Governança, riscos e compliance de segurança: escopo e teoria
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir governança, gestão de riscos e compliance; (2) fixar o escopo de um programa de GRC; (3) explicar a teoria central por trás da gestão de riscos.
+
+### 19.1 Definições
+
+Sofia começa agora as disciplinas de GRC. Governança significa direção e supervisão: quem decide que nível de risco é aceitável e como o desempenho é conferido. Gestão de riscos significa identificar, analisar, avaliar e tratar riscos, processo que a ISO 31000:2018, adotada no Brasil como ABNT NBR ISO 31000:2018, descreve em termos gerais para qualquer organização. Compliance significa cumprir as obrigações vindas de leis, contratos e normas adotadas. Ela aprende que as três se apoiam: a governança dá a direção, a gestão de riscos informa as decisões e o compliance confirma que as obrigações são cumpridas. Na Elmfield, o apetite do conselho dá a direção, o registro informa a diretora e, mais tarde, a declaração de aplicabilidade mostra o compliance.
+
+### 19.2 Escopo
+
+A Elmfield precisa decidir o que seu programa cobre. Sofia propõe um escopo que inclui todos os funcionários, dispositivos, serviços em nuvem e fornecedores que tratam dados dos inquilinos, além do portal do conselho. Os itens excluídos, como os dispositivos dos próprios inquilinos, são listados com os motivos. A ISO/IEC 27001:2022 exige um escopo definido para o sistema de gestão, e ela aprende que um escopo claro evita tanto lacunas quanto esforço desperdiçado: estreito demais, deixa riscos de fora; amplo demais, não pode ser gerido com os recursos da Elmfield. Ao Dr. Haddad ela explica que a Elmfield não controla os dispositivos dos inquilinos, mas pode limitar o que o portal dos inquilinos expõe.
+
+### 19.3 Teoria
+
+Sofia lê sobre a teoria do risco. O risco combina a incerteza sobre eventos com suas consequências para os objetivos. As opções de tratamento incluem evitar, reduzir, compartilhar e aceitar o risco. Cox (2008) mostra que matrizes simples podem ordenar mal os riscos, enquanto Hubbard e Seiersen (2016) defendem estimativas quantitativas mesmo com poucos dados. Ela aprende que a teoria adverte tanto contra a falsa precisão quanto contra a falsa simplicidade, e que organizações pequenas devem escolher métodos que consigam aplicar com consistência e explicar ao conselho. Seu laboratório posterior, que compara notas de matriz com perda esperada, testa exatamente essa advertência nos riscos da Elmfield.
+
+### Exemplo resolvido
+
+Sofia define as três disciplinas, propõe o escopo da Elmfield com as exclusões e revisa a teoria central do risco e as opções de tratamento.
+
+> **Caso sintético.** O escopo da Elmfield é sintético; a ISO 31000:2018 (ABNT NBR ISO 31000:2018), a ISO/IEC 27001:2022, Cox (2008) e Hubbard e Seiersen (2016) são reais.
+
+### Erros e limites
+
+As definições variam conforme a fonte. As decisões de escopo precisam de revisão.
+
+### Exercícios
+
+- **EX055 — Papéis das disciplinas.** Como as três disciplinas se apoiam? *Rubrica:* 3 = governança dá direção, risco informa decisões, compliance confirma obrigações;; 2 = papéis;; 1 = nada;; 0 = nenhuma.
+- **EX056 — Item excluído.** Que item ficou fora do escopo? *Rubrica:* 3 = os dispositivos dos próprios inquilinos;; 2 = dispositivos dos inquilinos;; 1 = nada;; 0 = nenhuma.
+- **EX057 — Opções de tratamento.** Liste as quatro opções de tratamento. *Rubrica:* 3 = evitar, reduzir, compartilhar, aceitar;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Governança, riscos e compliance de segurança: casos fundamentais
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar casos de governança publicados; (2) extrair lições para uma organização pequena; (3) distinguir causas raiz de sintomas.
+
+### 20.1 Ler casos
+
+Sofia estuda lições de governança em relatórios públicos. O GAO-21-105263, um depoimento de 2021 do Government Accountability Office dos Estados Unidos, descreve fraquezas na supervisão federal da segurança de oleodutos depois do ataque de ransomware aos sistemas de negócio da Colonial Pipeline, incluindo avaliações de risco sem informações de cibersegurança e um protocolo de incidentes não atualizado desde 2010. Ela lê esses relatórios em busca de padrões, e não de culpados: informações de risco incompletas, planos de resposta desatualizados e acompanhamento lento das recomendações se repetem. Os relatórios públicos de auditoria são um bom material didático porque se apoiam em evidências, embora seus contextos possam diferir do da Elmfield.
+
+### 20.2 Lições para a Elmfield
+
+Dos casos, Sofia extrai lições na escala da Elmfield: nomear uma pessoa responsável pelo programa de segurança, escrever uma declaração curta de apetite a riscos aprovada pelo conselho, manter um registro revisado trimestralmente e relatar o progresso ao conselho duas vezes por ano, ritmo adequado a um conselho que se reúne poucas vezes no ano. Ela evita copiar estruturas de grandes organizações que a Elmfield não conseguiria sustentar. Aprende que as boas lições tratam de princípios, como a responsabilização clara, e não de comitês ou ferramentas específicos, que dependem do porte e dos recursos de cada organização.
+
+### 20.3 Causas raiz
+
+Sofia pratica separar sintomas de causas. Num incidente sintético na Elmfield, a conta de um prestador foi usada depois do fim do contrato. O sintoma era uma conta ativa. A causa raiz era que ninguém respondia pelo desligamento dos prestadores, já que os contratos eram geridos pela equipe de manutenção e as contas pela TI. Ela recomenda atribuir esse papel e ligar a data de fim dos contratos ao vencimento das contas, o que também fecha a lacuna para qualquer prestador futuro. Corrigir as causas evita repetições; corrigir só os sintomas, não. Desativar a conta resolveria o caso, mas não impediria o próximo.
+
+### Exemplo resolvido
+
+Sofia lê casos de auditoria pública em busca de padrões, extrai lições proporcionais para a Elmfield e rastreia um incidente com a conta de um prestador até a falta de responsável.
+
+> **Caso sintético.** O incidente da Elmfield é sintético; o GAO-21-105263 é real.
+
+### Erros e limites
+
+Os casos de grandes organizações podem não se transferir. A análise de causa raiz pode parar cedo demais.
+
+### Exercícios
+
+- **EX058 — Fraquezas do GAO.** Que duas fraquezas o GAO-21-105263 descreveu? *Rubrica:* 3 = avaliações de risco sem informações de cibersegurança e protocolo de incidentes desatualizado;; 2 = duas;; 1 = nada;; 0 = nenhuma.
+- **EX059 — Relatos ao conselho.** Com que frequência o progresso deve ser relatado ao conselho da Elmfield? *Rubrica:* 3 = duas vezes por ano;; 2 = duas vezes;; 1 = nada;; 0 = nenhuma.
+- **EX060 — Causa raiz do prestador.** Qual foi a causa raiz do incidente com a conta do prestador? *Rubrica:* 3 = ninguém respondia pelo desligamento dos prestadores;; 2 = responsável;; 1 = conta ativa;; 0 = nenhuma.
+
+<a id="ch-21"></a>
+
+## Capítulo 21 — Governança, riscos e compliance de segurança: modelos de sistema
+
+### Objetivos de aprendizagem
+
+Você vai (1) modelar o sistema de governança da Elmfield como papéis, processos e fluxos de informação; (2) identificar lacunas de responsabilização; (3) usar uma matriz RACI.
+
+### 21.1 Papéis e processos
+
+Sofia modela a governança da Elmfield como um sistema de papéis e processos. O conselho aprova o apetite a riscos e recebe relatórios. A diretora responde pelo programa. O líder de TI opera os controles técnicos. Os gestores das equipes são responsáveis pelos riscos de suas áreas. Uma encarregada de proteção de dados em tempo parcial cuida da privacidade. Os processos os ligam: revisão de riscos, aprovação de políticas, tratamento de incidentes e revisão de acessos. O desenho mostra quem passa informações a quem e onde as decisões são tomadas; mostra, por exemplo, que os gestores são responsáveis por riscos, mas não têm um caminho definido para levá-los ao conselho.
+
+### 21.2 RACI
+
+Sofia monta uma matriz de responsabilidades que lista, para cada processo, quem é responsável pela execução, quem presta contas, quem é consultado e quem é informado (RACI). Na revisão de acessos, os gestores executam, a diretora presta contas, a TI é consultada e o conselho é informado. Ela encontra dois problemas. Ninguém presta contas pela segurança dos fornecedores, e o tratamento de incidentes tem três pessoas marcadas como prestando contas, o que na prática significa ninguém. O COBIT 2019 usa um mapeamento semelhante para esclarecer os papéis de governança e de gestão. O Dr. Haddad aponta que a lacuna dos fornecedores é a mais grave, porque o prestador de manutenção se conecta remotamente ao sistema habitacional.
+
+### 21.3 Corrigir as lacunas
+
+Sofia propõe que a diretora preste contas pela segurança dos fornecedores, com a gerente financeira executando os contratos e o líder de TI consultado. Nos incidentes, o líder de TI passa a prestar contas, com a encarregada de proteção de dados executando as comunicações de violação. O conselho aprova a matriz. Ela aprende que a prestação de contas deve recair sobre um único papel por processo, e que as matrizes só são úteis se as pessoas as conhecerem e se forem revisadas quando os papéis mudam; uma revisão a cada mudança de papel teria apanhado antes os três nomes no tratamento de incidentes.
+
+### Exemplo resolvido
+
+Sofia modela os papéis e processos de governança da Elmfield, encontra duas lacunas de responsabilização com uma matriz RACI e as corrige.
+
+> **Caso sintético.** Os papéis e a matriz são sintéticos; o COBIT 2019 é real.
+
+### Erros e limites
+
+As matrizes descrevem os papéis pretendidos, não o comportamento. Equipes pequenas confundem papéis.
+
+### Exercícios
+
+- **EX061 — Letras do RACI.** O que significam as quatro letras do RACI? *Rubrica:* 3 = responsável pela execução, quem presta contas, consultado, informado;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
+- **EX062 — Problema dos incidentes.** O que estava errado no tratamento de incidentes? *Rubrica:* 3 = três pessoas prestando contas significava ninguém;; 2 = gente demais;; 1 = nada;; 0 = nenhuma.
+- **EX063 — Regra de prestação de contas.** Quantos papéis devem prestar contas por processo? *Rubrica:* 3 = um;; 2 = único;; 1 = vários;; 0 = nenhuma.
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Governança, riscos e compliance de segurança: dados e dependências
+
+### Objetivos de aprendizagem
+
+Você vai (1) mapear as dependências de fornecedores; (2) classificar os fornecedores em níveis de risco; (3) fixar controles proporcionais para os fornecedores.
+
+### 22.1 Dependências de fornecedores
+
+A Elmfield depende de fornecedores para o sistema habitacional, o e-mail, a folha de pagamento, a manutenção e a impressão. Sofia mapeia o que cada fornecedor acessa: dados, sistemas ou instalações. Aprende que o NIST CSF 2.0 inclui a gestão de riscos de cibersegurança da cadeia de suprimentos na função Govern, e que a ISO/IEC 27002:2022 cobre a segurança da informação nas relações com fornecedores. Organizações pequenas dependem muito de fornecedores, então sua segurança costuma depender tanto dos controles deles quanto dos próprios. O acesso remoto do prestador de manutenção ao sistema habitacional mostra como os controles de um fornecedor passam a fazer parte da exposição da própria Elmfield.
+
+### 22.2 Níveis
+
+Sofia pontua cinco fornecedores de zero a dois em três fatores: acesso a dados pessoais, criticidade para os serviços e acesso remoto a sistemas. O laboratório soma as notas e atribui os níveis. O prestador de manutenção e o e-mail em nuvem somam cinco, nível alto. O escritório de folha de pagamento soma quatro, também alto, por meio dos dados pessoais e da criticidade, mesmo sem acesso remoto. A gráfica soma um e a empresa de limpeza, zero, ambas de nível baixo. A classificação permite à Elmfield concentrar o escrutínio nos três fornecedores de nível alto, em vez de tratar todos os fornecedores da mesma forma, e as notas explicam a razão de cada nível.
+
+### Laboratório — Níveis de fornecedores por dados, criticidade e acesso remoto
+
+```python
+"""Supplier tiering: data access, criticality and remote access scored 0-2 (synthetic)."""
+sup = {"repairs contractor": (1, 2, 2), "payroll bureau": (2, 2, 0), "cloud email": (2, 2, 1),
+       "printing firm": (1, 0, 0), "cleaning company": (0, 0, 0)}
+for s, (d, c, r) in sup.items():
+    t = d + c + r; tier = "high" if t >= 4 else "medium" if t >= 2 else "low"
+    print(f"{s}: score {t} tier {tier}")
+```
+
+Execute com `python3 lab_tier.py`. Saída verificada:
+
+```text
+repairs contractor: score 5 tier high
+payroll bureau: score 4 tier high
+cloud email: score 5 tier high
+printing firm: score 1 tier low
+cleaning company: score 0 tier low
+```
+
+### 22.3 Controles proporcionais
+
+Para os fornecedores de nível alto, Sofia recomenda perguntas de segurança antes dos contratos, cláusulas contratuais de notificação de violações e devolução de dados e uma revisão anual de seus relatórios de garantia ou certificações. Para os de nível baixo, basta uma cláusula curta de confidencialidade. Ela observa que o acesso remoto do prestador de manutenção precisa de atenção especial, porque sua equipe se conecta ao sistema habitacional a partir dos próprios escritórios; exigir contas nominais apoiaria também os controles contra mau uso escolhidos depois. Ela aprende que uma governança de fornecedores proporcional economiza esforço e concentra a atenção no risco real.
+
+### Exemplo resolvido
+
+Sofia mapeia os acessos dos fornecedores, classifica cinco fornecedores, três deles de nível alto, e fixa controles proporcionais.
+
+> **Caso sintético.** Os fornecedores e as notas são sintéticos; o CSF 2.0 e a ISO/IEC 27002:2022 são reais.
+
+### Erros e limites
+
+Notas simples perdem nuances. Os relatórios de garantia dos fornecedores variam de escopo.
+
+### Exercícios
+
+- **EX064 — Fatores dos níveis.** Que três fatores são pontuados? *Rubrica:* 3 = acesso a dados pessoais, criticidade, acesso remoto;; 2 = três;; 1 = nada;; 0 = nenhuma.
+- **EX065 — Nível alto.** Que fornecedores ficam no nível alto? *Rubrica:* 3 = prestador de manutenção, e-mail em nuvem, folha de pagamento;; 2 = três;; 1 = gráfica;; 0 = nenhuma.
+- **EX066 — Controles de nível alto.** Cite dois controles para fornecedores de nível alto. *Rubrica:* 3 = perguntas antes do contrato e cláusulas de notificação de violações;; 2 = controles;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Governança, riscos e compliance de segurança: métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) pontuar riscos numa matriz 5x5; (2) comparar as notas da matriz com a perda esperada; (3) entender quando as duas discordam.
+
+### 23.1 Pontuação na matriz
+
+A Elmfield pontua os riscos numa matriz cinco por cinco: probabilidade e impacto de um a cinco, multiplicados para dar a nota. Sofia pontua cinco riscos com os gestores. Dados de inquilinos mal endereçados ficam com doze, o notebook perdido com doze, o ransomware com dez, o mau uso pelo prestador com nove e a queda da página de pagamento com seis. A matriz é rápida e familiar, e por isso muitas organizações a usam. Sofia também pede aos gestores uma probabilidade anual e uma perda típica para cada risco, para comparar os métodos; é esse pedido que torna possível a comparação da seção seguinte.
+
+### 23.2 Perda esperada
+
+O laboratório calcula a perda esperada como probabilidade vezes perda. O ransomware, com uma chance em dez e uma perda de duzentos e cinquenta mil, tem a maior perda esperada, vinte e cinco mil. Os dados mal endereçados vêm em seguida, com doze mil, e o notebook perdido com dez mil. A matriz põe os dados mal endereçados em primeiro, empatados com o notebook, enquanto a perda esperada põe o ransomware em primeiro. A discordância surge porque a matriz comprime um impacto muito grande numa nota cinco: como o impacto tem teto em cinco, a perda de duzentos e cinquenta mil do ransomware não aparece como muitas vezes maior do que as perdas menores.
+
+### Laboratório — Notas da matriz contra perda esperada
+
+```python
+"""5x5 scores vs expected loss (thousands) for five Elmfield risks."""
+risks = [("tenant data misdirected", 4, 3, 0.8, 15), ("ransomware", 2, 5, 0.1, 250),
+         ("lost laptop", 3, 4, 0.5, 20), ("payment page outage", 3, 2, 0.6, 8), ("contractor misuse", 3, 3, 0.2, 40)]
+for n, l, i, p, loss in risks: print(f"{n}: score {l*i}, expected loss {p*loss:.1f}k")
+print("top by score:", max(risks, key=lambda r: r[1]*r[2])[0]); print("top by expected loss:", max(risks, key=lambda r: r[3]*r[4])[0])
+```
+
+Execute com `python3 lab_score.py`. Saída verificada:
+
+```text
+tenant data misdirected: score 12, expected loss 12.0k
+ransomware: score 10, expected loss 25.0k
+lost laptop: score 12, expected loss 10.0k
+payment page outage: score 6, expected loss 4.8k
+contractor misuse: score 9, expected loss 8.0k
+top by score: tenant data misdirected
+top by expected loss: ransomware
+```
+
+### 23.3 Quando discordam
+
+Sofia lê Cox (2008), que mostra que as matrizes de risco podem dar notas maiores a riscos quantitativamente menores e produzir empates entre riscos muito diferentes. Seu laboratório ilustra os dois problemas. Ela não conclui que as matrizes são inúteis: ajudam a iniciar conversas e são fáceis para não especialistas. Recomenda que a Elmfield mantenha a matriz para a triagem inicial, mas acrescente estimativas aproximadas de perda esperada para os principais riscos, para que riscos raros e graves como o ransomware não sejam subestimados. Fazer isso só para os cinco principais mantém pequeno o trabalho extra para uma equipe do porte da Elmfield.
+
+### Exemplo resolvido
+
+Sofia constata que a matriz põe os dados mal endereçados em primeiro, enquanto a perda esperada põe o ransomware em primeiro, e recomenda combinar os dois métodos.
+
+> **Caso sintético.** As notas e as estimativas são sintéticas; Cox (2008) é real.
+
+### Erros e limites
+
+A perda esperada exige entradas incertas. As matrizes comprimem a gravidade.
+
+### Exercícios
+
+- **EX067 — Topo da matriz.** Que risco lidera a ordenação da matriz? *Rubrica:* 3 = dados de inquilinos mal endereçados, empatados com o notebook em 12;; 2 = empate;; 1 = ransomware;; 0 = nenhuma.
+- **EX068 — Topo pela perda esperada.** Que risco lidera pela perda esperada? *Rubrica:* 3 = ransomware, com 25 mil;; 2 = ransomware;; 1 = notebook;; 0 = nenhuma.
+- **EX069 — Causa da discordância.** Por que os métodos discordam sobre o ransomware? *Rubrica:* 3 = a matriz comprime impactos muito grandes numa nota cinco;; 2 = compressão;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Governança, riscos e compliance de segurança: controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) selecionar controles para os principais riscos da Elmfield; (2) escrever uma declaração de aplicabilidade; (3) atribuir responsáveis aos controles.
+
+### 24.1 Selecionar controles
+
+Para cada risco principal, Sofia seleciona controles da ISO/IEC 27002:2022. Para os dados mal endereçados: links de compartilhamento seguros, conferência de destinatários e treinamento. Para os notebooks perdidos: criptografia e apagamento remoto. Para o ransomware: backups offline, autenticação multifator e direitos de administrador limitados. Para o mau uso pelo prestador: contas nominais e revisões de acesso. Ela aprende que selecionar de um catálogo reconhecido torna as escolhas mais fáceis de explicar e ajuda a garantir que nada óbvio fique de fora. Ligar cada controle a um risco nomeado também permite mostrar aos auditores por que cada um foi escolhido.
+
+### 24.2 Declaração de aplicabilidade
+
+A ISO/IEC 27001:2022, adotada no Brasil como ABNT NBR ISO/IEC 27001:2022, exige uma declaração de aplicabilidade que liste os controles de referência, se cada um está incluído e por quê. Sofia redige uma para a Elmfield. A maioria dos controles é incluída. Alguns são excluídos com motivos: os controles de desenvolvimento seguro ficam de fora porque a Elmfield não desenvolve software, embora os controles de fornecedores cubram seu sistema habitacional. Ela aprende que as exclusões precisam ser justificadas pelo escopo e pelo risco, e não pela conveniência, e que a declaração se torna um documento-chave para os auditores.
+
+### 24.3 Responsáveis
+
+Cada controle precisa de um responsável que garanta sua operação. Sofia atribui os responsáveis: o líder de TI para backups e criptografia, os gestores para as revisões de acesso, a encarregada de proteção de dados para as regras de compartilhamento e a gerente financeira para os contratos com fornecedores. Ela escreve uma descrição de uma linha da operação de cada controle. Aprende que os responsáveis precisam de autoridade e de tempo; atribuir tudo ao líder de TI sobrecarregaria uma pessoa e deixaria controles sem execução quando ela estivesse ausente. Dividir a responsabilidade distribui a carga entre papéis com o conhecimento certo.
+
+### Exemplo resolvido
+
+Sofia seleciona controles para quatro riscos, redige uma declaração de aplicabilidade com exclusões justificadas e distribui a responsabilidade.
+
+> **Caso sintético.** Os controles da Elmfield são sintéticos; a ISO/IEC 27001:2022 (ABNT NBR ISO/IEC 27001:2022) e a 27002:2022 são reais.
+
+### Erros e limites
+
+Os controles de catálogo precisam ser adaptados. Os responsáveis mudam de função.
+
+### Exercícios
+
+- **EX070 — Controles dos notebooks.** Que controles tratam os notebooks perdidos? *Rubrica:* 3 = criptografia e apagamento remoto;; 2 = dois;; 1 = nada;; 0 = nenhuma.
+- **EX071 — Exclusão justificada.** Por que os controles de desenvolvimento seguro foram excluídos? *Rubrica:* 3 = a Elmfield não desenvolve software;; 2 = sem desenvolvimento;; 1 = nada;; 0 = nenhuma.
+- **EX072 — Distribuição dos responsáveis.** Por que não atribuir todos os controles ao líder de TI? *Rubrica:* 3 = sobrecarregaria uma pessoa;; 2 = sobrecarga;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Laboratório I
+
+### Objetivos de aprendizagem
+
+Você vai (1) testar um controle num ambiente seguro; (2) registrar as evidências corretamente; (3) comparar os resultados com o esperado.
+
+### 25.1 Planejar o teste
+
+No primeiro laboratório, Sofia testa o controle de backup da Elmfield usando uma cópia de teste do compartilhamento de arquivos fornecida pelo líder de TI. O teste confere se existe um backup para cada dia da última semana, se ele fica guardado offline e se uma amostra de arquivos pode ser restaurada. Ela escreve os passos, os resultados esperados e as evidências a coletar antes de começar, para que o teste não possa ser redefinido em silêncio se algo falhar. Testar numa cópia garante que nada em uso real seja perturbado e que o trabalho dos funcionários continue normalmente durante o teste.
+
+### 25.2 Executar e registrar
+
+Sofia restaura vinte arquivos sorteados de pastas e datas diferentes, o que aumenta a chance de uma exclusão oculta aparecer. Dezenove são restaurados corretamente. Um, uma planilha grande, falha porque o backup excluía arquivos acima de um limite de tamanho. Ela registra a data, os passos, os resultados, as capturas de tela e a lista de arquivos. Guarda as evidências numa pasta que só ela e o líder de TI podem alterar. Aprende que a evidência precisa permitir que outra pessoa entenda o que foi testado e veja o resultado por si mesma, sem depender da palavra de quem fez o teste.
+
+### 25.3 Comparar com o esperado
+
+A descrição do controle dizia que todos os arquivos são copiados toda noite; o teste mostra que os arquivos grandes ficam de fora. Sofia relata a lacuna com seu impacto provável: as planilhas grandes incluem os registros de aluguéis atrasados. O líder de TI muda a configuração e pede um novo teste, que passa. Ela aprende que os testes revelam a diferença entre o que se acredita que um controle faz e o que ele faz, muitas vezes por uma escolha de configuração esquecida. O Dr. Haddad pergunta por que ninguém notou antes, e Sofia aponta que o relatório noturno mostrava sucesso porque os arquivos excluídos nunca contavam como falhas.
+
+### Exemplo resolvido
+
+Sofia testa os backups numa cópia, restaura dezenove de vinte arquivos, encontra uma exclusão por tamanho e confirma a correção com um novo teste.
+
+> **Caso sintético.** O teste é sintético.
+
+### Erros e limites
+
+Amostras pequenas deixam escapar falhas raras. As cópias de teste podem diferir dos sistemas reais.
+
+### Exercícios
+
+- **EX073 — Resultado da restauração.** Quantos arquivos amostrados foram restaurados corretamente? *Rubrica:* 3 = dezenove de vinte;; 2 = 19;; 1 = 20;; 0 = nenhuma.
+- **EX074 — Causa da falha.** Por que um arquivo não foi restaurado? *Rubrica:* 3 = o backup excluía arquivos acima de um limite de tamanho;; 2 = limite de tamanho;; 1 = nada;; 0 = nenhuma.
+- **EX075 — Crença e realidade.** O que o teste revelou sobre o controle? *Rubrica:* 3 = fazia menos do que se acreditava por uma configuração esquecida;; 2 = lacuna;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Governança, riscos e compliance de segurança: métodos II
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir uma avaliação de lacunas contra o NIST CSF 2.0; (2) resumir os resultados por função; (3) priorizar as melhorias.
+
+### 26.1 Avaliação de lacunas
+
+Sofia conduz uma avaliação de lacunas com uma amostra de resultados de cada função do NIST CSF 2.0: Govern, Identify, Protect, Detect, Respond e Recover. Com o líder de TI e a diretora, ela classifica cada resultado amostrado como alcançado ou não alcançado, com base em evidências, e não em opiniões. Um resultado sobre backups, por exemplo, só conta como alcançado por causa do teste de laboratório. Ela registra a evidência de cada classificação para que as reavaliações futuras comparem coisas comparáveis; ligar o resultado de backup ao teste permite repetir a classificação depois com a mesma evidência.
+
+### 26.2 Resultados
+
+O laboratório resume vinte e oito resultados classificados. Protect é a mais forte, com cinco de seis, oitenta e três por cento. Identify chega a sessenta por cento. Govern e Respond chegam a cinquenta por cento. Recover chega a trinta e três por cento, e Detect é a mais fraca, com um de quatro, vinte e cinco por cento. No total, quinze de vinte e oito resultados são alcançados, cinquenta e quatro por cento. Sofia observa que a Elmfield investiu em proteção, mas tem pouca capacidade de perceber incidentes ou se recuperar deles, padrão comum em organizações pequenas. Com só quatro resultados de Detect, um a mais moveria esse número em vinte e cinco pontos.
+
+### Laboratório — Resultados alcançados do CSF 2.0 por função
+
+```python
+"""Gap assessment: share of sampled CSF 2.0 outcomes achieved per function (synthetic ratings)."""
+ratings = {"Govern": [1,0,0,1,0,1], "Identify": [1,1,0,1,0], "Protect": [1,1,1,0,1,1],
+           "Detect": [0,1,0,0], "Respond": [1,0,0,1], "Recover": [0,0,1]}
+for f, r in ratings.items(): print(f"{f}: {sum(r)}/{len(r)} = {sum(r)/len(r):.0%}")
+t = sum(sum(r) for r in ratings.values()); n = sum(len(r) for r in ratings.values())
+print(f"overall {t}/{n} = {t/n:.0%}; weakest {min(ratings, key=lambda f: sum(ratings[f])/len(ratings[f]))}")
+```
+
+Execute com `python3 lab_gap.py`. Saída verificada:
+
+```text
+Govern: 3/6 = 50%
+Identify: 3/5 = 60%
+Protect: 5/6 = 83%
+Detect: 1/4 = 25%
+Respond: 2/4 = 50%
+Recover: 1/3 = 33%
+overall 15/28 = 54%; weakest Detect
+```
+
+### 26.3 Prioridades
+
+Sofia propõe prioridades com base nas lacunas e no risco. A detecção vem primeiro, respondendo à função mais fraca: ativar alertas nos serviços de e-mail e de identidade em nuvem e designar alguém para revisá-los. A recuperação vem em segundo: documentar e testar um plano de restauração do sistema habitacional. As melhorias de governança, como aprovar um apetite a riscos, vêm depois. Ela adverte que as porcentagens de amostras pequenas são aproximadas, então devem orientar as prioridades, e não virar metas. O conselho aprova o plano para o ano seguinte, com a detecção à frente.
+
+### Exemplo resolvido
+
+Sofia classifica vinte e oito resultados do CSF, constata que Detect é a função mais fraca, com vinte e cinco por cento, e prioriza a detecção e a recuperação.
+
+> **Caso sintético.** As classificações são sintéticas; o CSF 2.0 é real.
+
+### Erros e limites
+
+Os resultados amostrados não são o framework inteiro. Classificações binárias perdem nuances.
+
+### Exercícios
+
+- **EX076 — Base da classificação.** Com que base os resultados são classificados como alcançados? *Rubrica:* 3 = evidências, e não opiniões;; 2 = evidências;; 1 = opinião;; 0 = nenhuma.
+- **EX077 — Função mais fraca.** Que função é a mais fraca, e em que nível? *Rubrica:* 3 = Detect, 1/4 = 25%;; 2 = Detect;; 1 = Protect;; 0 = nenhuma.
+- **EX078 — Resultado geral.** Que proporção dos resultados é alcançada no total? *Rubrica:* 3 = 15/28 = 54%;; 2 = 54%;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Governança, riscos e compliance de segurança: verificação
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar controles por inspeção, observação e reexecução; (2) escolher testes adequados; (3) documentar os resultados da verificação.
+
+### 27.1 Tipos de teste
+
+Sofia aprende três formas de verificar um controle. A inspeção examina documentos ou registros, como as aprovações das revisões de acesso. A observação acompanha a execução de um controle, como um gestor revisando acessos. A reexecução repete o controle de forma independente, como Sofia comparar ela mesma a lista de desligamentos com as contas ativas. A reexecução dá a evidência mais forte porque não depende dos registros do responsável, mas exige mais tempo e acesso. Sua comparação da lista de desligamentos com as contas ativas é reexecução, e é por isso que depois encontra o que a revisão deixou passar.
+
+### 27.2 Escolher os testes
+
+Para cada controle-chave, Sofia escolhe um teste. Nas revisões de acesso, inspeciona as aprovações e reexecuta uma amostra, porque elas protegem os dados dos inquilinos em todos os sistemas. Na criptografia, inspeciona o relatório do console de dispositivos. No tratamento de incidentes, observa um exercício de mesa. Ela aprende que a escolha depende da importância do controle e das evidências disponíveis, e que os controles importantes merecem testes mais fortes. Também observa que depender só da inspeção traz o risco de aceitar registros que parecem completos, mas descrevem controles que ninguém executou de fato.
+
+### 27.3 Documentar os resultados
+
+Sofia documenta cada teste com objetivo, método, amostra, resultados e conclusão. A reexecução da verificação de desligamentos revela uma conta que a revisão de acessos deixou passar, então ela conclui que o controle de revisão opera com exceção e recomenda acrescentar a lista de desligamentos ao material dos revisores. Ela aprende que os resultados da verificação devem dizer com clareza se um controle operou com eficácia, operou com exceções ou falhou, para que a gestão saiba quanto pode confiar nele; aqui, a gestão pode confiar na revisão, mas só depois de acrescentada a lista de desligamentos.
+
+### Exemplo resolvido
+
+Sofia usa inspeção, observação e reexecução, encontra uma exceção na revisão de acessos e declara as conclusões com clareza.
+
+> **Caso sintético.** Os testes e os resultados são sintéticos.
+
+### Erros e limites
+
+A observação pode mudar o comportamento. A reexecução exige acesso.
+
+### Exercícios
+
+- **EX079 — Teste mais forte.** Que tipo de teste dá a evidência mais forte? *Rubrica:* 3 = reexecução;; 2 = reexecutar;; 1 = inspeção;; 0 = nenhuma.
+- **EX080 — Risco da inspeção.** Qual é o risco de depender só da inspeção? *Rubrica:* 3 = os registros podem descrever controles que ninguém executou;; 2 = registros falsos;; 1 = nada;; 0 = nenhuma.
+- **EX081 — Categorias de conclusão.** Que três conclusões uma verificação pode alcançar? *Rubrica:* 3 = eficaz, eficaz com exceções, falhou;; 2 = três;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Governança, riscos e compliance de segurança: análise de falhas
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar um incidente em busca de falhas de controle; (2) conduzir uma revisão sem culpados; (3) transformar as lições em mudanças de controles.
+
+### 28.1 O incidente
+
+Ocorre um incidente sintético: um agente de habitação envia por e-mail uma planilha com detalhes de aluguéis atrasados de inquilinos para um endereço externo com nome parecido com o de um contato da prefeitura. O destinatário avisa, e o arquivo é apagado. Sofia ajuda a encarregada de proteção de dados a avaliar se a violação precisa ser comunicada ao regulador e se os inquilinos devem ser avisados, seguindo o procedimento da Elmfield. A avaliação considera a sensibilidade dos dados e a confirmação de exclusão pelo destinatário, que reduz o risco aos inquilinos, mas não dispensa por si só a avaliação.
+
+### 28.2 Revisão sem culpados
+
+Sofia conduz uma revisão sem culpados. O objetivo é entender como o sistema permitiu o erro, e não punir o agente. Eles descobrem que o e-mail completou automaticamente o endereço errado, que planilhas com dados de atraso eram enviadas rotineiramente por e-mail em vez de compartilhadas pelo sistema habitacional e que não aparecia nenhum aviso para destinatários externos. São condições do sistema que pegariam qualquer agente, não só este. Sofia aprende que as revisões sem culpados incentivam relatos honestos, que revelam problemas de projeto, enquanto culpar indivíduos tende a esconder informações e deixa as mesmas condições no lugar.
+
+### 28.3 Mudanças nos controles
+
+A revisão leva a mudanças: um aviso de destinatário externo no e-mail, uma regra de que os dados de atraso são compartilhados por links seguros com prazo de validade e um lembrete curto nas reuniões de equipe. Sofia atualiza o registro de riscos, elevando a estimativa de probabilidade dos dados mal endereçados, já que o incidente mostrou que o risco era mais provável do que a nota anterior, e registrando os novos controles. Ela aprende que os incidentes são evidências sobre a eficácia dos controles e devem realimentar a avaliação de riscos, fechando o ciclo entre operações e governança.
+
+### Exemplo resolvido
+
+Sofia apoia a avaliação da violação, conduz uma revisão sem culpados que encontra três causas sistêmicas e leva as mudanças ao registro.
+
+> **Caso sintético.** O incidente é sintético.
+
+### Erros e limites
+
+As revisões sem culpados ainda precisam responsabilizar a negligência repetida. Os avisos causam fadiga.
+
+### Exercícios
+
+- **EX082 — Objetivo da revisão.** Qual é o objetivo de uma revisão sem culpados? *Rubrica:* 3 = entender como o sistema permitiu o erro;; 2 = sistema;; 1 = punição;; 0 = nenhuma.
+- **EX083 — Causas sistêmicas.** Cite duas causas sistêmicas encontradas. *Rubrica:* 3 = preenchimento automático e envio rotineiro das planilhas de atraso por e-mail;; 2 = causas;; 1 = nada;; 0 = nenhuma.
+- **EX084 — Atualização do registro.** Como Sofia atualizou o registro? *Rubrica:* 3 = elevou a probabilidade dos dados mal endereçados e registrou os novos controles;; 2 = atualização;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX054 (as de EX055–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Sofia Reyes, o Dr. Malik Haddad, o Brightwater College, a Elmfield Housing Association, o Corbridge Community Trust e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX084 (as de EX085–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Sofia Reyes, o Dr. Malik Haddad, o Brightwater College, a Elmfield Housing Association, o Corbridge Community Trust e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Cinco pontos percentuais (uma redução à metade em termos relativos).
 
@@ -861,6 +1287,66 @@ Respostas-modelo para EX001–EX054 (as de EX055–EX120 estão na edição em i
 **EX053.** Porque são só doze gestores e a pergunta é do tipo por quê.
 
 **EX054.** Só os temas, não quem disse o quê.
+
+**EX055.** A governança dá a direção, a gestão de riscos informa as decisões e o compliance confirma que as obrigações são cumpridas.
+
+**EX056.** Os dispositivos dos próprios inquilinos, com os motivos registrados.
+
+**EX057.** Evitar, reduzir, compartilhar e aceitar.
+
+**EX058.** Avaliações de risco sem informações de cibersegurança e um protocolo de resposta a incidentes não atualizado desde 2010.
+
+**EX059.** Duas vezes por ano.
+
+**EX060.** Ninguém respondia pelo desligamento dos prestadores entre a equipe de manutenção e a TI.
+
+**EX061.** Responsável pela execução, quem presta contas, consultado e informado.
+
+**EX062.** Três pessoas estavam marcadas como prestando contas, o que na prática significa ninguém.
+
+**EX063.** Um.
+
+**EX064.** Acesso a dados pessoais, criticidade para os serviços e acesso remoto a sistemas.
+
+**EX065.** O prestador de manutenção (5), o e-mail em nuvem (5) e o escritório de folha de pagamento (4).
+
+**EX066.** Por exemplo, perguntas de segurança antes dos contratos e cláusulas de notificação de violações (também revisão anual de garantia).
+
+**EX067.** Dados de inquilinos mal endereçados, empatados com o notebook perdido em 12.
+
+**EX068.** O ransomware, com 25 mil.
+
+**EX069.** Porque a matriz comprime um impacto muito grande numa nota máxima de cinco.
+
+**EX070.** Criptografia e apagamento remoto.
+
+**EX071.** Porque a Elmfield não desenvolve software; os controles de fornecedores cobrem seu sistema habitacional.
+
+**EX072.** Porque sobrecarregaria uma pessoa e deixaria controles sem execução na ausência dela.
+
+**EX073.** Dezenove de vinte.
+
+**EX074.** O backup excluía arquivos acima de um limite de tamanho.
+
+**EX075.** Que ele fazia menos do que a descrição afirmava, por causa de uma escolha de configuração esquecida.
+
+**EX076.** Em evidências, como o resultado de um teste, e não em opiniões.
+
+**EX077.** Detect, com um de quatro resultados (25%).
+
+**EX078.** Quinze de vinte e oito, 54%.
+
+**EX079.** A reexecução, porque não depende dos registros do responsável.
+
+**EX080.** Aceitar registros que parecem completos, mas descrevem controles que ninguém executou.
+
+**EX081.** Operou com eficácia, operou com exceções ou falhou.
+
+**EX082.** Entender como o sistema permitiu o erro, e não punir a pessoa.
+
+**EX083.** Por exemplo, o e-mail completou automaticamente o endereço errado e as planilhas de atraso eram enviadas rotineiramente por e-mail (também a falta de aviso externo).
+
+**EX084.** Elevou a estimativa de probabilidade dos dados mal endereçados e registrou os novos controles.
 
 <a id="references"></a>
 ## Referências
