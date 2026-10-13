@@ -1,7 +1,7 @@
 # Arquitetura e Engenharia de Segurança: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 122, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–4 de 50 já estão escritos em português, com os exercícios EX001–EX012 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 5–50 (EX013–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–10 de 50 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 11–50 (EX031–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, verificar e operar sistemas seguros.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios calculam crescimento, fecho transitivo, probabilidades, disponibilidade, árvores de falhas, limites de taxa, diferenças entre regras, métricas e digests sobre dados sintéticos, e usam sqlite3 em memória para mostrar a injeção e sua correção; nada toca um sistema real. Projetos de produção usam produtos e padrões consagrados; nunca crie sua própria criptografia. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Saltzer e Schroeder (1975), [doi:10.1109/PROC.1975.9939](https://doi.org/10.1109
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
 
-Capítulos 5–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-05), até a chegada dos próximos lotes.
+Capítulos 11–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-11), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -239,11 +239,283 @@ As allow-lists precisam de manutenção quando os formatos mudam. Os logs intern
 
 - **EX012 — Módulo secrets.** Por que os identificadores de cartões de teste devem usar secrets em vez de random? *Rubrica:* 3 = secrets usa a fonte segura do sistema operacional; random é previsível;; 2 = fonte segura;; 1 = nenhuma diferença;; 0 = nenhuma.
 
+<a id="ch-05"></a>
+
+## Capítulo 5 — Comunicação em engenharia
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever registros de decisão de arquitetura; (2) desenhar diagramas que outras pessoas possam revisar; (3) explicar tradeoffs de segurança a não especialistas.
+
+### 5.1 Registros de decisão
+
+Daniel apresenta o registro de decisão de arquitetura (ADR), um documento curto que declara o contexto, a decisão, as opções consideradas, as consequências e a data. Sofia escreve um para uma escolha simples: se os validadores de passagens devem armazenar uma lista de bloqueio completa dos cartões bloqueados ou consultar o servidor a cada vez. O registro explica as opções, escolhe listas de bloqueio locais com atualizações a cada hora, pela resiliência offline, e declara a consequência de que um cartão recém-bloqueado pode funcionar por até uma hora. Os registros de decisão permitem que futuros engenheiros entendam por que um projeto tem a forma que tem, em vez de adivinhar ou repetir debates antigos.
+
+### 5.2 Diagramas revisáveis
+
+Sofia aprende que um diagrama serve para revisão, não para decoração. Um bom diagrama de fluxo de dados mostra processos, repositórios de dados, entidades externas, fluxos de dados e fronteiras de confiança, a notação que Shostack (2014) usa para a modelagem de ameaças. Cada seta é rotulada com o que flui e por qual protocolo. Cada fronteira é desenhada onde a confiança muda, como entre um ônibus e a rede da garagem. Ela redesenha um diagrama poluído de um fornecedor numa versão limpa, com legenda e número de versão. Os revisores então conseguem apontar exatamente o elemento que questionam, o que torna as revisões mais rápidas e precisas.
+
+### 5.3 Explicar tradeoffs
+
+A diretora financeira da Corvia pergunta por que o sistema de bilhetagem não consegue bloquear instantaneamente cartões roubados. Sofia escreve uma explicação de meia página sem jargão: os validadores funcionam offline nos veículos, atualizam suas listas a cada hora, e o bloqueio instantâneo exigiria uma conectividade constante que os ônibus não têm. Ela declara o risco, um cartão roubado usado por no máximo uma hora, e o custo de reduzi-lo. Daniel elogia a explicação porque ela declara o tradeoff com clareza e deixa a diretora decidir se atualizações mais frequentes valem os custos extras de dados, em vez de esconder a decisão dentro de linguagem técnica.
+
+### Exemplo resolvido
+
+Sofia escreve um registro de decisão sobre as listas de bloqueio, redesenha um diagrama de fornecedor com fluxos e fronteiras rotulados e explica à diretora financeira a janela de bloqueio de uma hora.
+
+> **Caso sintético.** As decisões, os diagramas e a diretora são sintéticos; Shostack (2014) é real.
+
+### Erros e limites
+
+Os registros de decisão ficam desatualizados se não forem revistos quando as decisões mudam. Explicações simples podem omitir casos-limite que importam.
+
+### Exercícios
+
+- **EX013 — Campos do ADR.** Liste os campos de um registro de decisão de arquitetura. *Rubrica:* 3 = contexto, decisão, opções, consequências, data;; 2 = quatro;; 1 = dois;; 0 = nenhuma.
+
+- **EX014 — Posição da fronteira.** Onde uma fronteira de confiança deve ser desenhada num diagrama de fluxo de dados? *Rubrica:* 3 = onde a confiança muda, como entre um ônibus e a rede da garagem;; 2 = mudança de confiança;; 1 = em qualquer lugar;; 0 = nenhuma.
+
+- **EX015 — Janela de bloqueio.** Que risco Sofia declarou à diretora financeira? *Rubrica:* 3 = um cartão roubado pode ser usado por até uma hora;; 2 = uma hora;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-06"></a>
+
+## Capítulo 6 — Cálculo II
+
+### Objetivos de aprendizagem
+
+Você vai (1) usar integrais para acumular taxas ao longo do tempo; (2) estimar janelas de exposição a partir de taxas variáveis; (3) aplicar aproximações por séries para raciocinar sobre pequenos riscos repetidos.
+
+### 6.1 Acumular taxas
+
+O Cálculo II introduz a integração: somar uma taxa ao longo do tempo para obter um total. Daniel dá a Sofia uma curva sintética de tentativas de validação fraudulentas por hora ao longo de um dia, que sobe no horário de pico e cai à noite. O número total de tentativas é a área sob a curva. Ela aproxima a integral com a regra do trapézio usando amostras de hora em hora. A integração aparece sempre que uma grandeza de segurança é uma taxa: bytes por segundo de exfiltração, logins com falha por minuto ou exposição por dia. São os totais, e não só os picos, que muitas vezes determinam o impacto no negócio que os arquitetos precisam explicar.
+
+### 6.2 Janelas de exposição
+
+As listas de bloqueio da Corvia são atualizadas a cada hora, então um cartão roubado continua utilizável até a próxima atualização. Se os furtos acontecem a uma taxa que varia ao longo do dia, o uso indevido esperado depende da taxa integrada sobre cada janela de exposição. Sofia calcula o uso indevido esperado para atualizações a cada hora e a cada quinze minutos, integrando a taxa sintética de uso após furto multiplicada pela janela média restante. O laboratório abaixo compara os dois intervalos de atualização. As atualizações a cada quinze minutos reduzem bastante o uso indevido esperado, e o resultado dá à diretora financeira um número para pesar contra o custo de dados discutido no capítulo 5.
+
+### Laboratório — Exposição sob dois intervalos de atualização
+
+```python
+# Expected misuse of stolen cards before deny-list update; synthetic hourly theft-use rate.
+rate = [0.2]*6 + [1.5, 3.0, 2.5, 1.0, 0.8, 0.9, 1.2, 0.9, 0.8, 1.0, 2.0, 3.2, 2.6, 1.1, 0.6, 0.4] + [0.2]*2
+assert len(rate) == 24
+def misuse(update_h):          # each use happens on average update_h/2 hours before the list catches up
+    return sum(r * update_h / 2 for r in rate) * 1.0
+print(f"daily theft-use events: {sum(rate):.1f}")
+for h in (1.0, 0.25):
+    print(f"update every {h*60:.0f} min -> expected misuse {misuse(h):.1f} uses/day")
+import math
+p, n = 0.001, 800
+print(f"P(at least one error) exact {1 - (1 - p)**n:.2f}, n*p approx {n*p:.2f}")
+```
+
+Execute com `python3 lab_exposure.py`. Saída verificada:
+
+```text
+daily theft-use events: 25.1
+update every 60 min -> expected misuse 12.6 uses/day
+update every 15 min -> expected misuse 3.1 uses/day
+P(at least one error) exact 0.55, n*p approx 0.80
+```
+
+### 6.3 Séries e pequenos riscos repetidos
+
+Pequenos riscos repetidos muitas vezes se somam. Se cada um de muitos validadores de passagens independentes tem uma pequena probabilidade p de erro de configuração num mês, a probabilidade de que pelo menos um tenha erro é 1 menos (1 menos p) elevado a n. Para p pequeno, uma aproximação por série dá aproximadamente n vezes p, fácil de calcular de cabeça. Sofia usa isso para mostrar que uma taxa de erro de um em mil em oitocentos validadores significa uma alta chance de pelo menos um erro por mês, um argumento a favor da verificação automatizada de configuração, em vez de torcer para que cada dispositivo esteja certo.
+
+### Exemplo resolvido
+
+Sofia integra uma curva sintética de taxa de fraude, compara o uso indevido esperado com atualizações a cada hora e a cada quinze minutos e usa uma aproximação por série para defender verificações automatizadas dos validadores.
+
+> **Caso sintético.** As taxas, as contagens de validadores e os custos são sintéticos.
+
+### Erros e limites
+
+Integrais de taxas estimadas herdam os erros das estimativas. A aproximação n vezes p deixa de valer quando n vezes p não é pequeno.
+
+### Exercícios
+
+- **EX016 — Significado da área.** O que representa a área sob a curva de tentativas de fraude? *Rubrica:* 3 = o número total de tentativas ao longo do dia;; 2 = total;; 1 = pico;; 0 = nenhuma.
+
+- **EX017 — Comparação das atualizações.** Segundo o laboratório, como muda o uso indevido esperado ao passar de atualizações a cada hora para a cada quinze minutos? *Rubrica:* 3 = cai para cerca de um quarto, de 12,6 para 3,1 usos;; 2 = cai;; 1 = sobe;; 0 = nenhuma.
+
+- **EX018 — Pelo menos um erro.** Com p = 0,001 e n = 800, qual é a chance aproximada de pelo menos um erro? *Rubrica:* 3 = cerca de 0,55 (exata) ou 0,8 por n p, que aqui superestima;; 2 = aproximação;; 1 = 0,001;; 0 = nenhuma.
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Probabilidade e estatística
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar a probabilidade condicional a alertas de segurança; (2) explicar o problema da taxa-base na detecção; (3) resumir dados de segurança com estatísticas adequadas.
+
+### 7.1 Probabilidade condicional
+
+O detector de fraudes da Corvia sinaliza validações suspeitas. Seu fornecedor afirma que ele detecta noventa e cinco por cento das validações fraudulentas e sinaliza por engano apenas um por cento das legítimas. Sofia aprende a fazer uma pergunta diferente: dado que uma validação foi sinalizada, qual a probabilidade de ser fraude? Isso é uma probabilidade condicional, e o teorema de Bayes a liga às taxas do detector e à taxa-base, a fração de todas as validações que são fraudulentas. Os arquitetos precisam desse raciocínio porque decidem como os alertas chegam aos analistas e se o bloqueio automático é seguro.
+
+### 7.2 O problema da taxa-base
+
+A fraude é rara: nos dados sintéticos da Corvia, cerca de uma validação em duas mil. Sofia calcula a probabilidade de que uma validação sinalizada seja fraude. O laboratório abaixo mostra que ela fica abaixo de cinco por cento: a maioria dos sinais é alarme falso, apesar das taxas impressionantes do detector. Bloquear automaticamente todo cartão sinalizado, portanto, incomodaria muitos passageiros honestos. Esse é o problema da taxa-base, e ele afeta a detecção de intrusões em toda parte. Sofia recomenda que os sinais alimentem uma fila de revisão e que só combinações de sinais disparem o bloqueio, uma decisão de projeto que decorre diretamente da aritmética.
+
+### Laboratório — Taxas-base e precisão dos alertas
+
+```python
+# P(fraud | flag) via Bayes with synthetic rates.
+base, tpr, fpr = 1/2000, 0.95, 0.01
+taps = 1_000_000
+fraud = taps * base; legit = taps - fraud
+tp, fp = fraud * tpr, legit * fpr
+print(f"taps {taps:,}: fraud {fraud:.0f}, flagged true {tp:.0f}, flagged false {fp:.0f}")
+print(f"P(fraud | flag) = {tp / (tp + fp):.3f}")
+```
+
+Execute com `python3 lab_bayes.py`. Saída verificada:
+
+```text
+taps 1,000,000: fraud 500, flagged true 475, flagged false 9995
+P(fraud | flag) = 0.045
+```
+
+### 7.3 Resumir bem os dados
+
+Sofia também aprende a resumir. Os tempos de resposta das revisões de fraude são assimétricos: a maioria é rápida, algumas levam dias. A média é puxada para cima pelos casos lentos, então ela relata a mediana e o percentil noventa junto com ela. Ao comparar dois meses, relata as contagens com seus denominadores, e não só porcentagens, para que os leitores vejam quantos dados estão por trás de cada número. Daniel avisa que muitos dashboards de segurança mostram médias de dados assimétricos e variações percentuais sobre números minúsculos, e as duas coisas enganam os tomadores de decisão sobre o que de fato está acontecendo.
+
+### Exemplo resolvido
+
+Sofia aplica o teorema de Bayes às taxas do fornecedor, mostra que a maioria dos sinais é alarme falso com uma taxa-base de um em dois mil e redesenha o fluxo de alertas com uma fila de revisão.
+
+> **Caso sintético.** As taxas do detector e os dados de fraude são sintéticos.
+
+### Erros e limites
+
+Taxas do fornecedor medidas em outros dados podem não valer na Corvia. As premissas de independência entre sinais costumam ser falsas.
+
+### Exercícios
+
+- **EX019 — Inversão da pergunta.** Que probabilidade importa para um analista diante de uma validação sinalizada? *Rubrica:* 3 = a probabilidade de fraude dado um sinal;; 2 = condicional;; 1 = taxa de detecção;; 0 = nenhuma.
+
+- **EX020 — Precisão no laboratório.** Que fração das validações sinalizadas era fraude no laboratório? *Rubrica:* 3 = cerca de 4,5 por cento;; 2 = abaixo de cinco por cento;; 1 = 95 por cento;; 0 = nenhuma.
+
+- **EX021 — Resumo de dados assimétricos.** Por que relatar a mediana e o percentil 90 dos tempos de revisão? *Rubrica:* 3 = os dados são assimétricos e a média é puxada pelos casos lentos;; 2 = assimetria;; 1 = só a média;; 0 = nenhuma.
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Arquitetura de computadores
+
+### Objetivos de aprendizagem
+
+Você vai (1) descrever as camadas de CPU, memória e armazenamento relevantes para a segurança; (2) explicar anéis de privilégio e proteção de memória; (3) explicar raízes de confiança em hardware e o secure boot.
+
+### 8.1 Camadas de um computador
+
+Sofia estuda como processadores, caches, memória principal e armazenamento funcionam juntos. Daniel liga cada camada à segurança. Os caches aceleram o acesso à memória, mas diferenças de tempo entre dados em cache e fora dele já permitiram ataques de side channel como os que Anderson (2020) discute. A memória principal guarda chaves e segredos enquanto os programas rodam, então o acesso físico ou bugs podem expô-los. O armazenamento guarda os dados em repouso, e é por isso que os servidores do sistema de bilhetagem criptografam os discos. Entender as camadas ajuda um arquiteto a perguntar onde um segredo vive a cada momento e que componente precisa ser confiável para protegê-lo ali.
+
+### 8.2 Privilégio e proteção de memória
+
+Os processadores oferecem níveis de privilégio: o kernel do sistema operacional roda com privilégio alto, e as aplicações com privilégio mais baixo. A unidade de gerenciamento de memória dá a cada processo seu próprio espaço de endereçamento, de modo que um programa não consegue ler a memória de outro sem permissão. Esses mecanismos de hardware implementam a mediação completa e o menor privilégio no nível mais baixo. Quando um bug permite que um programa atravesse essas fronteiras, as garantias de todo o sistema falham. Sofia vê por que máquinas virtuais e contêineres dependem de recursos do hardware, e por que vulnerabilidades de kernel são tratadas como críticas: elas minam as fronteiras das quais todos os outros controles dependem.
+
+### 8.3 Raízes de confiança e secure boot
+
+Um dispositivo precisa partir de algo em que confia. Uma raiz de confiança em hardware, como uma ROM de boot e uma chave gravada no chip, verifica a assinatura do primeiro software carregado, que verifica o estágio seguinte, e assim por diante: isso é o secure boot. Os validadores de passagens da Corvia o usam para que firmware adulterado não rode. O NIST SP 800-160 Vol. 1 Rev. 1 trata esses mecanismos como parte da engenharia de confiabilidade ao longo de todo o ciclo de vida. Sofia observa o lado operacional: as chaves de assinatura do firmware precisam ser protegidas, porque quem as possui pode tornar confiável qualquer firmware.
+
+### Exemplo resolvido
+
+Sofia rastreia onde a chave de um validador de passagens vive no armazenamento, na memória e no cache, e explica o secure boot da ROM de boot até a aplicação.
+
+> **Caso sintético.** Os detalhes dos dispositivos são sintéticos; Anderson (2020) e o SP 800-160 Vol. 1 Rev. 1 são reais.
+
+### Erros e limites
+
+As proteções de hardware já tiveram falhas que exigiram correções de microcódigo e de projeto. O secure boot não protege contra bugs em software corretamente assinado.
+
+### Exercícios
+
+- **EX022 — Tempo de cache.** Por que os caches podem criar problemas de segurança? *Rubrica:* 3 = diferenças de tempo entre acessos em cache e fora dele podem vazar informação;; 2 = tempo;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX023 — Gravidade de bugs de kernel.** Por que vulnerabilidades de kernel são tratadas como críticas? *Rubrica:* 3 = quebram as fronteiras de privilégio e memória das quais os outros controles dependem;; 2 = fronteiras;; 1 = menores;; 0 = nenhuma.
+
+- **EX024 — Risco da chave de assinatura.** Por que as chaves de assinatura de firmware precisam ser protegidas? *Rubrica:* 3 = quem as possui pode tornar qualquer firmware confiável para o secure boot;; 2 = firmware confiável;; 1 = não é importante;; 0 = nenhuma.
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Programação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) estruturar programas em módulos com interfaces claras; (2) escrever testes, inclusive testes negativos do comportamento de segurança; (3) gerenciar dependências com segurança.
+
+### 9.1 Módulos e interfaces
+
+Em Programação II, Sofia constrói um pequeno motor de regras tarifárias como vários módulos: parsing, consulta de tarifas, regras de desconto e saída. Cada módulo expõe uma interface estreita e esconde seus detalhes internos. Daniel explica por que isso importa para a segurança: interfaces estreitas são mais fáceis de revisar, e um módulo que recebe do parser apenas dados validados não precisa repetir todas as verificações. Isso é economia de mecanismo no nível do código. Quando o módulo de descontos mais tarde precisa de uma mudança, Sofia pode revisar só sua interface e seus testes, e não o programa inteiro, o que reduz a chance de introduzir uma falha em outro lugar.
+
+### 9.2 Testes negativos
+
+Sofia escreve testes unitários para tarifas normais, e então Daniel pede testes negativos: entradas que precisam ser rejeitadas. Um desconto infantil não pode valer para um cartão de adulto; uma zona tarifária fora da rede deve gerar um erro; um valor com mais de duas casas decimais deve ser recusado. Bugs de segurança muitas vezes moram naquilo que um programa aceita por engano, então os testes devem mostrar que entradas ruins falham. Ela roda os testes automaticamente a cada mudança. Os testes negativos também documentam a intenção: um desenvolvedor posterior consegue ver que rejeitar essas entradas foi deliberado, e não um acidente a ser removido.
+
+### 9.3 Dependências
+
+O programa de Sofia usa um pacote de terceiros para ler arquivos de configuração. Daniel lhe mostra como fixar a versão, registrar de onde ele veio e verificar avisos de segurança publicados. O NIST SP 800-218, o Secure Software Development Framework, recomenda práticas como rastrear os componentes e responder às vulnerabilidades encontradas neles. Uma dependência é código que outra pessoa escreveu e que roda com os privilégios do seu programa. Sofia aprende a preferir a biblioteca padrão quando ela basta, escolher pacotes bem mantidos nos demais casos e avaliar quanto código cada nova dependência traz, já que cada linha faz parte da superfície de ataque do sistema.
+
+### Exemplo resolvido
+
+Sofia modulariza um motor de regras tarifárias, acrescenta três testes negativos que precisam falhar com segurança e fixa e registra uma dependência segundo as práticas do SP 800-218.
+
+> **Caso sintético.** O motor e o pacote são sintéticos; o SP 800-218 é real.
+
+### Erros e limites
+
+Os testes mostram a presença de verificações, não a ausência de todos os bugs. Dependências fixadas ainda precisam de atualização quando surgem avisos de segurança.
+
+### Exercícios
+
+- **EX025 — Benefício da interface estreita.** Como interfaces de módulo estreitas ajudam a revisão de segurança? *Rubrica:* 3 = menos para revisar, e dados validados não precisam ser verificados de novo em toda parte;; 2 = revisão;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX026 — Exemplo de teste negativo.** Dê um teste negativo do motor de Sofia. *Rubrica:* 3 = desconto infantil em cartão de adulto rejeitado, erro para zona fora da rede ou valor com três casas recusado;; 2 = um;; 1 = teste positivo;; 0 = nenhuma.
+
+- **EX027 — Prática com dependências.** O que o SP 800-218 recomenda sobre componentes de terceiros? *Rubrica:* 3 = rastreá-los e responder às vulnerabilidades encontradas neles;; 2 = rastrear;; 1 = ignorar;; 0 = nenhuma.
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Ética e segurança na engenharia
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar códigos de ética da engenharia a decisões de segurança; (2) reconhecer as dimensões de segurança pública dos sistemas de transporte; (3) lidar com conflitos entre prazos e segurança.
+
+### 10.1 Deveres de um engenheiro
+
+Os códigos profissionais de engenharia em geral colocam a segurança, a saúde e o bem-estar públicos acima dos interesses do empregador ou do cliente, e exigem honestidade sobre os limites da própria competência. Daniel pede que Sofia leia o código do órgão de engenharia do seu país e o aplique ao trabalho de segurança. Esconder uma fraqueza conhecida para cumprir uma data de lançamento conflita com o dever de honestidade. Alegar especialidade numa área que ela não estudou conflita com os limites de competência. Engenheiros de segurança enfrentam esses dilemas com frequência, e a ética oferece um referencial para decidir antes que a pressão chegue, em vez de improvisar quando um gestor pede silêncio.
+
+### 10.2 Segurança física em sistemas de transporte
+
+Sistemas de transporte carregam pessoas, então falhas de segurança da informação podem virar falhas de segurança física. Se um atacante interrompe as telas de informação aos passageiros durante uma emergência, as pessoas podem ir para a plataforma errada. Se as catracas falham fechadas durante uma evacuação, podem prender passageiros. Sofia aprende que os padrões fail-safe de Saltzer e Schroeder (1975) precisam ser interpretados com cuidado: para o acesso a dados, negar por padrão; para catracas físicas durante alarmes de incêndio, abrir por padrão. A arquitetura de segurança no transporte precisa ser coordenada com os engenheiros de segurança física, que muitas vezes têm deveres regulatórios e seus próprios métodos de análise.
+
+### 10.3 Prazo versus segurança
+
+Durante o estágio de Sofia, um terceirizado quer ativar uma nova funcionalidade do aplicativo de passageiros antes que sua revisão de segurança esteja concluída, por causa de um lançamento para a imprensa. Sofia, como estudante, não pode aprová-la nem bloqueá-la, mas pode registrar sua preocupação por escrito a Daniel com o risco específico: na build de teste, a funcionalidade expõe históricos de viagem por uma interface sem autenticação. Daniel escala o caso, e a funcionalidade é lançada uma semana depois, após uma correção. A lição é que a ética muitas vezes significa tornar um risco visível, por escrito, à pessoa certa, de forma clara e rápida.
+
+### Exemplo resolvido
+
+Sofia relaciona o código de engenharia a três dilemas de segurança, distingue os padrões fail-safe para dados e para o mundo físico e escreve uma nota de risco concisa que adia um lançamento inseguro.
+
+> **Caso sintético.** O lançamento, o terceirizado e a funcionalidade do aplicativo são sintéticos; Saltzer e Schroeder (1975) é real.
+
+### Erros e limites
+
+Os códigos de ética variam por país e por órgão. Levantar uma preocupação não garante ação; é preciso haver caminhos de escalonamento.
+
+### Exercícios
+
+- **EX028 — Dever primordial.** O que os códigos de engenharia colocam acima dos interesses do empregador? *Rubrica:* 3 = a segurança, a saúde e o bem-estar públicos;; 2 = segurança;; 1 = lucro;; 0 = nenhuma.
+
+- **EX029 — Padrão das catracas.** Durante um alarme de incêndio, as catracas devem falhar abertas ou fechadas, e por quê? *Rubrica:* 3 = abertas, para que os passageiros possam evacuar; a segurança física prevalece sobre a proteção da tarifa;; 2 = abertas;; 1 = fechadas;; 0 = nenhuma.
+
+- **EX030 — Ação da estudante.** O que Sofia podia fazer quanto ao lançamento prematuro? *Rubrica:* 3 = registrar o risco específico por escrito a Daniel para escalonamento;; 2 = preocupação por escrito;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX012 (as de EX013–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Sofia Mbeki, Daniel Ferreira, a Kestrel Polytechnic University, a Corvia Regional Transit e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX030 (as de EX031–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Sofia Mbeki, Daniel Ferreira, a Kestrel Polytechnic University, a Corvia Regional Transit e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Que o aumento de cada mês é proporcional ao volume atual, de modo que o crescimento absoluto continua se acelerando.
 
@@ -268,6 +540,42 @@ Respostas-modelo para EX001–EX012 (as de EX013–EX150 estão na edição em i
 **EX011.** Uma mensagem pública curta de registro inválido e uma entrada de log detalhada, com a linha e o motivo, num arquivo restrito.
 
 **EX012.** Porque secrets obtém os valores da fonte criptograficamente segura do sistema operacional, enquanto random pode ser previsto.
+
+**EX013.** Contexto, decisão, opções consideradas, consequências e data.
+
+**EX014.** Onde quer que o nível de confiança mude, por exemplo entre os dispositivos embarcados e a rede da garagem.
+
+**EX015.** Que um cartão roubado ainda poderia ser usado por até uma hora, até a próxima atualização da lista de bloqueio.
+
+**EX016.** O número total de tentativas fraudulentas ao longo do dia.
+
+**EX017.** O uso indevido esperado cai de 12,6 para 3,1 usos por dia, um quarto do valor com atualização a cada hora.
+
+**EX018.** Cerca de 0,55 exatamente; o atalho n vezes p dá 0,8, que superestima porque n p não é pequeno.
+
+**EX019.** A probabilidade de a validação ser fraude, dado que foi sinalizada.
+
+**EX020.** Cerca de 4,5 por cento; mais de 95 por cento dos sinais eram alarmes falsos.
+
+**EX021.** Porque os tempos de revisão são assimétricos, de modo que a média representa mal o caso típico e a cauda.
+
+**EX022.** Porque as diferenças no tempo de acesso revelam quais dados foram usados recentemente, permitindo side channels.
+
+**EX023.** Porque permitem que o código atravesse as fronteiras impostas pelo hardware das quais todos os outros controles dependem.
+
+**EX024.** Porque qualquer pessoa com a chave de assinatura pode produzir um firmware que o secure boot aceitará.
+
+**EX025.** Reduzem o que precisa ser revisado e permitem que os módulos confiem em entradas validadas em vez de repetir verificações.
+
+**EX026.** Aplicar um desconto infantil a um cartão de adulto deve ser rejeitado.
+
+**EX027.** Rastrear os componentes usados e responder às vulnerabilidades encontradas neles.
+
+**EX028.** A segurança, a saúde e o bem-estar públicos.
+
+**EX029.** Abertas, porque a evacuação dos passageiros tem prioridade sobre a cobrança da tarifa.
+
+**EX030.** Escrever uma nota clara do risco específico ao seu mentor para que ele possa ser escalado.
 
 <a id="references"></a>
 ## Referências
