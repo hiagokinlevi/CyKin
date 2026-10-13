@@ -1,7 +1,7 @@
 # Segurança da Informação: Curso de Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso 071, curso de tecnólogo (3 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–16 de 30 já estão escritos em português, com os exercícios EX001–EX048 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 17–30 (EX049–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–23 de 30 já estão escritos em português, com os exercícios EX001–EX069 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 24–30 (EX070–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de tecnólogo que aprendem a configurar, verificar e manter os controles de segurança da informação de uma instituição de lazer sem fins lucrativos com várias unidades.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios verificam estações de trabalho sintéticas contra uma linha de base de quatro itens, revisam uma lista sintética de regras de firewall em busca de regras amplas, sombreadas e sem uso e analisam um log sintético de autenticação para classificar as origens de logins com falha. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ ISO/IEC 27000:2026; ISO/IEC 27001:2022 (no Brasil, ABNT NBR ISO/IEC 27001:2022);
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) |
 
-Capítulos 17–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-17), até a chegada dos próximos lotes.
+Capítulos 24–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-24), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -769,11 +769,341 @@ A proteção de endpoints protege apenas as máquinas em que está instalada.
 
 - **EX048 — Lista de permissão.** Onde a lista de permissão é mais eficaz? *Rubrica:* 3 = máquinas de finalidade única, como os caixas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-17"></a>
+
+## Capítulo 17 — Segurança do e-mail
+
+### Objetivos de aprendizagem
+
+Você vai (1) configurar a filtragem e a autenticação do e-mail; (2) tratar o phishing comunicado; (3) proteger contra a fraude de pagamentos.
+
+### 17.1 Filtragem
+
+O provedor de e-mail do Riverbend filtra spam e malware. Jamal revisa as configurações e ativa proteções adicionais: avisos nos e-mails externos, bloqueio de tipos de anexo arriscados e verificação dos links no momento do clique. Ele testa as configurações com mensagens de teste inofensivas no laboratório. A Sra. Grant explica que a filtragem pega a maioria dos ataques, mas o restante chega à equipe, por isso outros controles também são necessários. Ele mede o efeito ao longo de um mês e descobre que o número de e-mails suspeitos que chegam à equipe cai visivelmente. Ele registra as configurações na documentação, para que possam ser conferidas depois de qualquer mudança feita pelo provedor de e-mail.
+
+### 17.2 Autenticação do domínio
+
+Jamal aprende como os registros de autenticação de e-mail permitem que os sistemas destinatários verifiquem se uma mensagem que alega vir do Riverbend realmente veio dele. Ele descobre que os registros do Riverbend estão incompletos, de modo que mensagens falsas usando seu domínio podem ser entregues aos associados. Ele trabalha com o gerente de TI para completar os registros, começando em modo de monitoramento e passando à rejeição quando todos os serviços legítimos de envio estiverem listados. Ele lista todos os serviços que enviam e-mail em nome do Riverbend, incluindo o sistema de reservas e um serviço de boletins, antes de passar à rejeição. Isso evita que mensagens genuínas sejam bloqueadas.
+
+### 17.3 Phishing comunicado
+
+Jamal configura um botão de comunicação para que a equipe possa encaminhar facilmente os e-mails suspeitos. Ele revisa as comunicações toda manhã, remove de todas as caixas postais o phishing confirmado e agradece a quem comunicou. Numa semana, uma recepcionista comunica uma mensagem que pede a compra de cartões-presente, aparentemente enviada por um gerente de centro. Jamal descobre a mesma mensagem enviada a cinco centros e a remove em todos eles. Ele aprende que uma única comunicação pode proteger muitos funcionários. Ele registra cada comunicação, seu desfecho e a rapidez com que foi tratada e compartilha um resumo mensal com o gerente de TI.
+
+### 17.4 Fraude de pagamentos
+
+Os fraudadores muitas vezes se passam por fornecedores para mudar dados bancários. Jamal ajuda o financeiro a escrever uma regra: qualquer mudança de dados bancários precisa ser confirmada por telefone usando um número já cadastrado, nunca um informado no e-mail. Ele também acrescenta um aviso no sistema financeiro quando os dados bancários mudam. A Sra. Grant observa que os controles de processo são essenciais contra a fraude, porque um e-mail fraudulento bem elaborado pode passar por todos os filtros técnicos. A gerente financeira acrescenta a regra aos procedimentos do financeiro e orienta sua equipe. Em um mês, um pedido falso de fornecedor é pego pela ligação de confirmação.
+
+### Exemplo resolvido
+
+Jamal reforça a filtragem, completa os registros de autenticação de e-mail, mantém um botão de comunicação que interrompe um golpe de cartões-presente em cinco centros e acrescenta uma regra de ligação de confirmação para os dados bancários.
+
+> **Caso sintético.** As mensagens são sintéticas.
+
+### Erros e limites
+
+Os filtros técnicos sozinhos não conseguem barrar uma fraude de pagamentos bem elaborada.
+
+### Exercícios
+
+- **EX049 — Registros incompletos.** Que risco os registros de autenticação incompletos criavam? *Rubrica:* 3 = entrega de mensagens falsas usando o domínio do Riverbend;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX050 — Golpe dos cartões-presente.** Quantos centros receberam a mensagem dos cartões-presente? *Rubrica:* 3 = cinco;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX051 — Regra de mudança bancária.** Como as mudanças de dados bancários devem ser confirmadas? *Rubrica:* 3 = por telefone, com um número cadastrado;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Backups na prática
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar a cobertura dos backups; (2) testar as restaurações; (3) proteger os backups contra o ransomware.
+
+### 18.1 Cobertura
+
+Jamal lista o que o Riverbend inclui no backup: o servidor de arquivos, toda noite, e o sistema de reservas, pelo fornecedor de nuvem. As imagens das câmeras e os arquivos locais do computador do financeiro não têm backup. Ele discute cada caso com o gerente de TI. As imagens das câmeras ficam guardadas por trinta dias nos gravadores e são aceitáveis sem backup. Os arquivos locais do financeiro devem passar para o servidor de arquivos. A Sra. Grant observa que saber o que não tem backup importa tanto quanto saber o que tem. Ele registra as decisões no plano de backup.
+
+### 18.2 Testes de restauração
+
+Jamal testa restaurações todo mês. Ele restaura uma amostra de arquivos numa pasta separada e compara suas impressões digitais com as dos originais usando o módulo hashlib do Python. Num teste, uma pasta não é restaurada porque a tarefa de backup a excluiu depois que a pasta foi renomeada. Ele corrige a tarefa e testa de novo. Ele aprende que as tarefas de backup podem relatar sucesso enquanto deixam de copiar dados em silêncio, por isso as restaurações são a única prova. Ele registra cada teste num log com os arquivos conferidos, o resultado e qualquer correção, para que o gerente de TI possa mostrar às seguradoras que as restaurações são testadas.
+
+### 18.3 Proteção contra ransomware
+
+Os backups do servidor de arquivos ficam num dispositivo alcançável pela rede com a mesma senha de administrador. Um ransomware poderia cifrar os dois. Jamal recomenda uma segunda cópia num serviço de backup em nuvem que guarde versões por trinta dias e não possa ser apagado pelas contas normais de administrador do Riverbend. O gerente de TI providencia isso. A Sra. Grant observa que os backups devem partir do pressuposto de que os atacantes vão procurá-los. Ele também separa a senha de administrador do dispositivo de backup da conta principal de administrador e a guarda no gerenciador de senhas com acesso restrito.
+
+### 18.4 Backups do fornecedor de nuvem
+
+Jamal consulta o contrato do sistema de reservas em busca das cláusulas de backup. O fornecedor faz backup diário e guarda as cópias por catorze dias, mas o Riverbend nunca pediu uma restauração. Jamal pede ao fornecedor que demonstre a restauração de um registro de teste. O fornecedor o faz em um dia. Ele registra o resultado e acrescenta ao calendário um pedido anual de demonstração. Ele também pergunta quanto tempo levaria uma restauração completa do sistema de reservas, e o fornecedor estima várias horas. O gerente de TI compartilha isso com os gerentes dos centros, que concordam em usar folhas de entrada em papel nesse meio-tempo.
+
+### Exemplo resolvido
+
+Jamal lista a cobertura e as lacunas dos backups, encontra por testes mensais de restauração uma pasta renomeada que ficou excluída, acrescenta uma cópia em nuvem que não pode ser apagada e pede ao fornecedor das reservas que demonstre uma restauração.
+
+> **Caso sintético.** Os backups são sintéticos.
+
+### Erros e limites
+
+Uma tarefa de backup que relata sucesso ainda pode estar deixando dados de fora.
+
+### Exercícios
+
+- **EX052 — Arquivos transferidos.** O que deve acontecer com os arquivos locais do financeiro? *Rubrica:* 3 = passar para o servidor de arquivos;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX053 — Falha na restauração.** Por que uma pasta não foi restaurada? *Rubrica:* 3 = foi excluída depois de renomeada;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX054 — Retenção do fornecedor.** Por quanto tempo o fornecedor das reservas guarda os backups? *Rubrica:* 3 = catorze dias;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Criptografia na prática
+
+### Objetivos de aprendizagem
+
+Você vai (1) ativar a criptografia de dispositivos e dados; (2) gerenciar os certificados dos sites; (3) lidar com as chaves e a recuperação.
+
+### 19.1 Criptografia dos dispositivos
+
+Jamal ativa a criptografia de disco completo nos notebooks do Riverbend e a verifica nos computadores de mesa. Ele guarda as chaves de recuperação no sistema de gestão de dispositivos, para que a TI possa recuperar um notebook se o dono esquecer a senha, mas ninguém mais consiga ler o disco. Quando um notebook é furtado de um carro, o gerente de TI confirma que ele estava criptografado e desativa as contas do usuário. Nenhum dado de associado é exposto. Ele registra o furto e a confirmação da criptografia no log de incidentes. A Sra. Grant usa o caso em aula como exemplo de como a criptografia limita o dano.
+
+### 19.2 Dados em trânsito
+
+Jamal verifica que o site de reservas e o webmail da equipe usam conexões criptografadas com versões atuais do protocolo. Ele encontra uma página interna de relatórios servida sem criptografia na rede da equipe. Embora seja interna, ela mostra nomes de associados. Ele pede ao gerente de TI que acrescente a criptografia. A Sra. Grant observa que as redes internas não são automaticamente seguras, sobretudo quando dispositivos de visitantes ou de fornecedores podem alcançá-las. O gerente de TI instala um certificado na página de relatórios em uma semana, e Jamal confirma que a página agora só carrega por uma conexão criptografada.
+
+### 19.3 Certificados
+
+Os sites usam certificados para provar sua identidade. O certificado do site público do Riverbend expirou no ano passado, causando avisos nos navegadores que assustaram os associados. Jamal lista todos os certificados com as datas de expiração e os responsáveis e configura a renovação automática onde é possível. Para os certificados que não se renovam automaticamente, ele cria lembretes trinta dias antes da expiração. Ele aprende que a gestão de certificados é uma tarefa de rotina que causa indisponibilidades quando é esquecida. A lista contém onze certificados. Dois vão expirar em menos de um mês, e o gerente de TI os renova imediatamente enquanto o processo automático é configurado.
+
+### 19.4 Chaves e recuperação
+
+A criptografia depende das chaves. Jamal aprende que perder as chaves pode tornar os dados irrecuperáveis, enquanto expô-las torna a criptografia inútil. Ele verifica que as chaves de criptografia dos backups estão guardadas separadamente dos backups e que duas pessoas sabem como recuperá-las. A Sra. Grant explica que a gestão de chaves é a parte difícil da criptografia e que a recuperação deve ser testada antes de ser necessária. Ele testa a recuperação das chaves com o gerente de TI, cronometrando quanto tempo leva para recuperar uma chave de criptografia de backup de seu repositório separado e restaurar com ela um arquivo de teste.
+
+### Exemplo resolvido
+
+Jamal ativa a criptografia dos notebooks com chaves de recuperação custodiadas, acrescenta criptografia a uma página interna que mostra nomes de associados, configura a renovação dos certificados e verifica a guarda das chaves.
+
+> **Caso sintético.** Os dispositivos são sintéticos.
+
+### Erros e limites
+
+Perder as chaves de criptografia pode tornar os dados irrecuperáveis.
+
+### Exercícios
+
+- **EX055 — Notebook furtado.** Por que nenhum dado foi exposto com o notebook furtado? *Rubrica:* 3 = ele estava criptografado;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX056 — Página interna.** O que a página interna sem criptografia mostrava? *Rubrica:* 3 = nomes de associados;; 2 = correto;; 1 = outra coisa;; 0 = nenhuma.
+
+- **EX057 — Lembrete de renovação.** Quando são criados os lembretes de renovação manual? *Rubrica:* 3 = trinta dias antes da expiração;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Segurança física e dos dispositivos
+
+### Objetivos de aprendizagem
+
+Você vai (1) proteger as salas de equipamentos e os dispositivos; (2) proteger fisicamente os caixas e as câmeras; (3) descartar equipamentos com segurança.
+
+### 20.1 Salas de equipamentos
+
+Jamal visita os armários de rede de três centros. Um está destrancado e é usado para guardar material de limpeza. Outro tem a chave pendurada num gancho ao lado. Ele recomenda fechaduras com chaves mantidas pelo gerente do centro e pela TI e a retirada dos demais objetos. A Sra. Grant explica que alguém com acesso físico ao equipamento de rede pode contornar muitos controles, por exemplo conectando o próprio dispositivo. Os gerentes dos centros concordam, e o material de limpeza é retirado. Jamal confere os armários de novo um mês depois e encontra os três trancados.
+
+### 20.2 Caixas e terminais
+
+Os terminais de cartão podem ser adulterados por criminosos que acrescentam dispositivos para capturar os dados dos cartões. Jamal ajuda a escrever uma verificação diária simples: a equipe da recepção compara cada terminal com uma foto, confere os lacres e comunica qualquer coisa fora do comum. Ele também verifica que os terminais estão presos aos balcões. A Sra. Grant observa que as verificações diárias feitas pelas pessoas que usam o equipamento muitas vezes são a melhor detecção de adulteração física. Ele prepara as fotos e uma lista de verificação de uma página para cada centro. A equipe da recepção faz a verificação na abertura e rubrica uma folha.
+
+### 20.3 Câmeras
+
+As câmeras protegem pessoas e bens, mas também gravam os associados, incluindo crianças nas piscinas. Jamal verifica que os gravadores das câmeras ficam em salas trancadas, que as imagens são guardadas por um período definido e que o acesso às imagens é limitado e registrado. Ele descobre que a tela do gravador de um centro é visível da recepção. Ele recomenda mudá-la de lugar. Ele aprende que a segurança física e a privacidade muitas vezes se encontram nos sistemas de câmeras. O gerente do centro leva a tela para o escritório, e Jamal acrescenta o registro dos acessos às imagens às verificações mensais de cada centro.
+
+### 20.4 Descarte
+
+Computadores e gravadores antigos contêm dados. Jamal encontra três computadores antigos da recepção num depósito aguardando descarte. Ele recomenda apagar os discos com um método reconhecido ou usar uma empresa de descarte certificada que forneça certificados. Ele registra no inventário cada dispositivo descartado. A Sra. Grant observa que as falhas no descarte já causaram muitas exposições de dados, porque os dispositivos jogados fora muitas vezes ainda guardam dados legíveis. O gerente de TI escolhe uma empresa certificada, que recolhe os computadores e fornece um certificado para cada disco. Jamal arquiva os certificados com os registros do inventário.
+
+### Exemplo resolvido
+
+Jamal protege os armários de rede, escreve uma verificação diária de adulteração dos terminais, limita o acesso às imagens das câmeras e providencia o descarte certificado dos computadores antigos.
+
+> **Caso sintético.** Os locais são sintéticos.
+
+### Erros e limites
+
+Os dispositivos descartados muitas vezes ainda guardam dados legíveis.
+
+### Exercícios
+
+- **EX058 — Uso indevido do armário.** Como um armário de rede era usado indevidamente? *Rubrica:* 3 = para guardar material de limpeza;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX059 — Verificação dos terminais.** Como a equipe verifica os terminais diariamente? *Rubrica:* 3 = compara com uma foto e confere os lacres;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX060 — Tela do gravador.** Que problema tinha a tela de um gravador? *Rubrica:* 3 = era visível da recepção;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-21"></a>
+
+## Capítulo 21 — Monitoramento de logs
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar logs de autenticação com scripts; (2) separar erros internos de ataques externos; (3) agir com base no que os logs mostram.
+
+### 21.1 A pergunta
+
+No terceiro ano, pedem a Jamal que examine os logs de autenticação do servidor de transferência de arquivos do Riverbend, que o fornecedor das reservas usa para enviar relatórios noturnos. O gerente de TI percebeu que o servidor está lento. Jamal decide contar os logins com falha por endereço de origem, porque um grande número de falhas vindas de poucos endereços costuma significar tentativa de adivinhar senhas. A Sra. Grant lembra que ele deve verificar se está autorizado a ler os logs e anotar sua pergunta antes de olhar, para não sair procurando sem rumo.
+
+### 21.2 O laboratório dos logs
+
+O laboratório analisa com uma expressão regular um log sintético de 3.271 linhas e encontra 838 logins com falha. As três principais origens são 203.0.113.45, com 412 falhas, 198.51.100.7, com 198, e 203.0.113.88, com 61. Os três são endereços externos e respondem juntos por 671 falhas, 80,1 por cento do total. As falhas restantes vêm de endereços internos da equipe e parecem erros comuns de digitação espalhados por muitas contas. As falhas externas miram nomes como root, admin e test. Jamal observa que os endereços pertencem a faixas reservadas para documentação, usadas aqui como substitutas de endereços externos reais, e que uma análise real verificaria a titularidade dos endereços antes de tirar conclusões.
+
+### Laboratório — Analisando um log sintético de autenticação e classificando as origens de logins com falha
+
+```python
+"""Parse a synthetic SSH-style authentication log and rank sources of failed logins (stdlib only)."""
+import random, re
+from collections import Counter
+random.seed(77)
+lines = []
+for _ in range(2600):
+    ip = f"10.4.{random.randint(1,3)}.{random.randint(2,60)}"
+    ok = random.random() < 0.93
+    lines.append(f"sshd: {'Accepted' if ok else 'Failed'} password for staff{random.randint(1,40)} from {ip}")
+for ip, n in [("203.0.113.45", 412), ("198.51.100.7", 198), ("203.0.113.88", 61)]:
+    for _ in range(n):
+        lines.append(f"sshd: Failed password for {random.choice(['root','admin','test','staff3'])} from {ip}")
+random.shuffle(lines)
+pat = re.compile(r"(Accepted|Failed) password for (\S+) from (\S+)")
+fails = Counter(); total_fail = 0
+for l in lines:
+    m = pat.search(l)
+    if m and m.group(1) == "Failed":
+        total_fail += 1; fails[m.group(3)] += 1
+ext = {ip: n for ip, n in fails.items() if not ip.startswith("10.")}
+print(f"lines {len(lines)}; failed logins {total_fail}")
+print(f"top sources: {fails.most_common(3)}")
+print(f"external sources {len(ext)} with {sum(ext.values())} failures ({sum(ext.values())/total_fail:.1%} of all failures)")
+```
+
+Execute com `python3 lab_authlog.py`. Saída verificada:
+
+```text
+lines 3271; failed logins 838
+top sources: [('203.0.113.45', 412), ('198.51.100.7', 198), ('203.0.113.88', 61)]
+external sources 3 with 671 failures (80.1% of all failures)
+```
+
+### 21.3 O que isso significa
+
+Os resultados mostram que o servidor de transferência de arquivos aceita logins por senha vindos da internet e que ferramentas automatizadas estão tentando adivinhar nomes comuns de contas. Jamal verifica se algum login externo teve sucesso e não encontra nenhum no log. Ele relata ao gerente de TI que o servidor está exposto mais amplamente do que o necessário: apenas o fornecedor das reservas deveria se conectar, a partir de endereços conhecidos. A Sra. Grant observa que a análise de logs muitas vezes revela problemas de configuração, e não ataques bem-sucedidos. Ele registra no caderno o achado e a verificação dos logins bem-sucedidos.
+
+### 21.4 Ação
+
+O gerente de TI restringe o servidor aos endereços do fornecedor no firewall e troca a autenticação da conta do fornecedor de senha para chave. Jamal executa de novo seu script nos logs da semana seguinte e descobre que as falhas externas pararam. O desempenho do servidor volta ao normal. Ele acrescenta o script a um agendamento semanal com um alerta caso as falhas externas apareçam de novo. Ele aprende que o monitoramento é mais útil quando leva a uma mudança e depois confirma que a mudança funcionou. O gerente de TI agradece a ele.
+
+### Exemplo resolvido
+
+Jamal analisa 3.271 linhas sintéticas de log, encontra 838 falhas, 80,1 por cento delas de três endereços externos, não encontra nenhum login externo bem-sucedido, restringe o servidor e confirma a correção.
+
+> **Caso sintético.** Os logs e os endereços são sintéticos, com endereços de documentação; as saídas vêm de lab_authlog.py.
+
+### Erros e limites
+
+Classificar as falhas sem separar as origens internas das externas mistura erros de digitação com ataques.
+
+### Exercícios
+
+- **EX061 — Número de falhas.** Quantos logins com falha o log contém? *Rubrica:* 3 = 838;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX062 — Principal origem.** Qual endereço tem mais falhas? *Rubrica:* 3 = 203.0.113.45, com 412;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX063 — Parcela externa.** Que parcela das falhas veio de origens externas? *Rubrica:* 3 = 80,1 por cento;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Tratamento de incidentes
+
+### Objetivos de aprendizagem
+
+Você vai (1) seguir um procedimento de incidentes; (2) preservar as evidências; (3) comunicar durante e depois de um incidente.
+
+### 22.1 O procedimento
+
+O Riverbend tem um procedimento de incidentes curto, escrito pelo gerente de TI com a ajuda de Jamal: comunicar, avaliar, conter, investigar, recuperar e revisar. Ele se baseia nas funções Responder e Recuperar do NIST Cybersecurity Framework 2.0. Cada passo indica quem age e como contatá-lo fora do expediente. A Sra. Grant explica que os tecnólogos muitas vezes são os primeiros a chegar à cena, por isso precisam conhecer o procedimento bem o bastante para segui-lo com calma sob pressão. Jamal leva uma cópia impressa na mochila durante as visitas aos centros.
+
+### 22.2 Um incidente real
+
+Uma gerente de centro comunica que sua conta de e-mail enviou mensagens que ela não escreveu. Jamal segue o procedimento. Ele redefine a senha dela, encerra todas as sessões, procura regras de encaminhamento e encontra uma que envia cópias dos e-mails dela a um endereço externo. Ele a remove e confirma que a autenticação multifator está ativada. A conta era uma das últimas que aguardavam a inscrição. Ele registra cada passo, com os horários, no log de incidentes. Ele também confere a pasta de enviados para ver quais destinatários receberam as mensagens, para que possam ser alertados.
+
+### 22.3 Evidências
+
+Antes de remover a regra de encaminhamento, Jamal tira uma captura de tela e exporta os logs de entrada que mostram um login de um país desconhecido. Ele os guarda numa pasta restrita com a data e seu nome. A Sra. Grant explica que as evidências coletadas com cuidado ajudam a entender o que aconteceu e podem ser exigidas por seguradoras ou reguladores. Alterar as coisas antes de registrá-las pode destruir as evidências necessárias para saber o que o atacante acessou. Ele registra o fuso horário de cada entrada de log, porque os logs de entrada usam o tempo universal, enquanto a gerente do centro informou horários locais.
+
+### 22.4 Comunicação
+
+O gerente de TI conta à gerente do centro o que aconteceu e o que foi feito, informa o responsável pela proteção de dados, porque e-mails de associados foram encaminhados, e alerta os demais funcionários sobre a mensagem de phishing usada. Uma breve revisão posterior identifica a causa: a inscrição atrasada na autenticação multifator. As inscrições restantes são concluídas em uma semana. Jamal aprende que a comunicação clara reduz a preocupação e que as revisões transformam incidentes em melhorias. O responsável pela proteção de dados revisa quais e-mails de associados foram encaminhados e decide, com o gerente de TI, como informar os associados afetados. Jamal acrescenta o incidente e suas lições ao relatório mensal.
+
+### Exemplo resolvido
+
+Jamal segue o procedimento para uma caixa postal comprometida, remove uma regra de encaminhamento externo depois de capturar as evidências, envolve o responsável pela proteção de dados e ajuda a fechar a lacuna nas inscrições.
+
+> **Caso sintético.** O incidente é sintético.
+
+### Erros e limites
+
+Alterar configurações antes de registrá-las pode destruir evidências.
+
+### Exercícios
+
+- **EX064 — Base do procedimento.** Quais funções do CSF 2.0 moldam o procedimento? *Rubrica:* 3 = Responder e Recuperar;; 2 = correto;; 1 = outras;; 0 = nenhuma.
+
+- **EX065 — Regra de encaminhamento.** O que Jamal encontrou na caixa postal? *Rubrica:* 3 = uma regra que encaminha e-mails para fora;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX066 — Causa raiz.** O que causou o incidente? *Rubrica:* 3 = a inscrição atrasada na MFA;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Fornecedores e serviços em nuvem
+
+### Objetivos de aprendizagem
+
+Você vai (1) listar os fornecedores e seus acessos; (2) verificar os compromissos de segurança dos fornecedores; (3) gerenciar as contas dos fornecedores.
+
+### 23.1 Lista de fornecedores
+
+Jamal lista os fornecedores do Riverbend com acesso a seus sistemas ou dados: o provedor do sistema de reservas, o processador de pagamentos, o provedor de e-mail, o fornecedor do café, a empresa de manutenção das câmeras e o fornecedor do controlador da piscina. Para cada um, ele registra que dados guarda, como se conecta e quem administra a relação. A Sra. Grant explica que os fornecedores ampliam a superfície de ataque de uma organização, por isso conhecê-los é tão importante quanto conhecer os sistemas internos. Ele guarda a lista com os contratos e pede a cada responsável pela relação que confirme que os dados estão corretos e completos.
+
+### 23.2 Compromissos de segurança
+
+Jamal revisa os contratos em busca de cláusulas de segurança: proteção de dados, notificação de incidentes, controle de acesso e devolução dos dados ao fim do contrato. O contrato do provedor das reservas é sólido e menciona um certificado ISO/IEC 27001 que cobre seu serviço de hospedagem. O contrato da empresa de manutenção das câmeras não tem cláusulas de segurança. Ele recomenda acrescentar cláusulas básicas na renovação. Ele observa que um certificado só é uma evidência útil quando seu escopo cobre o serviço que o Riverbend usa. O gerente de TI acrescenta a recomendação à lista de verificação de renovação e pede à empresa das câmeras suas práticas de segurança atuais por escrito.
+
+### 23.3 Contas de fornecedores
+
+Vários fornecedores têm contas nos sistemas do Riverbend. Jamal descobre que a empresa de manutenção das câmeras tem uma conta de acesso remoto sempre ativa com uma senha compartilhada. Ele recomenda desativá-la entre as visitas, ativá-la apenas para trabalhos agendados e usar contas individuais com autenticação multifator. O gerente de TI concorda. Ele também acrescenta as contas de fornecedores à revisão trimestral de contas, que antes cobria apenas os funcionários. A empresa das câmeras aceita o novo arranjo depois de uma breve conversa, e Jamal o testa na visita de manutenção agendada seguinte. A conta é ativada no início e desativada no fim, com os dois passos registrados no log de TI.
+
+### 23.4 Responsabilidades na nuvem
+
+Nos serviços em nuvem, Jamal aprende que as responsabilidades são compartilhadas. O provedor protege sua infraestrutura, mas o Riverbend administra os próprios usuários, configurações e dados. Ele confere as configurações do serviço de e-mail e descobre que o compartilhamento externo de arquivos é permitido por padrão. Ele o restringe a parceiros aprovados. A Sra. Grant observa que muitas exposições na nuvem vêm das configurações do cliente, e não de falhas do provedor. Ele documenta a mudança e confere as outras configurações de compartilhamento do serviço, encontrando mais duas que permitiam links anônimos. Ele as restringe também e registra as três configurações na documentação para as revisões futuras.
+
+### Exemplo resolvido
+
+Jamal lista seis fornecedores, confere as cláusulas dos contratos e o escopo dos certificados, desativa o acesso sempre ativo de um fornecedor e restringe o compartilhamento padrão de arquivos na nuvem.
+
+> **Caso sintético.** Os fornecedores são sintéticos.
+
+### Erros e limites
+
+O certificado de um fornecedor só é uma evidência útil se seu escopo cobrir o serviço usado.
+
+### Exercícios
+
+- **EX067 — Cláusulas ausentes.** Qual contrato não tem cláusulas de segurança? *Rubrica:* 3 = o da empresa de manutenção das câmeras;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX068 — Correção do acesso do fornecedor.** Como muda o acesso da empresa das câmeras? *Rubrica:* 3 = ativado apenas para trabalhos agendados;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX069 — Configuração da nuvem.** Que configuração padrão da nuvem é restringida? *Rubrica:* 3 = o compartilhamento externo de arquivos;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX048 (as de EX049–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Jamal Haddad, a Sra. Fiona Grant, o Northgate College of Technology, o Riverbend Leisure Trust e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX069 (as de EX070–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Jamal Haddad, a Sra. Fiona Grant, o Northgate College of Technology, o Riverbend Leisure Trust e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Configurar, verificar e manter os controles de segurança.
 
@@ -870,6 +1200,48 @@ Respostas-modelo para EX001–EX048 (as de EX049–EX090 estão na edição em i
 **EX047.** Um script tentando rodar a partir de um anexo de fatura baixado.
 
 **EX048.** Em máquinas de finalidade única, como os caixas.
+
+**EX049.** Mensagens falsas usando o domínio do Riverbend poderiam chegar aos associados.
+
+**EX050.** Cinco centros.
+
+**EX051.** Por telefone, usando um número já cadastrado.
+
+**EX052.** Devem passar para o servidor de arquivos.
+
+**EX053.** A tarefa de backup a excluiu depois que a pasta foi renomeada.
+
+**EX054.** Catorze dias.
+
+**EX055.** O notebook estava criptografado.
+
+**EX056.** Nomes de associados.
+
+**EX057.** Trinta dias antes da expiração.
+
+**EX058.** Era usado para guardar material de limpeza.
+
+**EX059.** Comparando cada terminal com uma foto e conferindo os lacres.
+
+**EX060.** Ela era visível da recepção.
+
+**EX061.** 838 logins com falha.
+
+**EX062.** 203.0.113.45, com 412 falhas.
+
+**EX063.** 671 falhas, 80,1 por cento.
+
+**EX064.** As funções Responder e Recuperar.
+
+**EX065.** Uma regra que encaminha cópias dos e-mails a um endereço externo.
+
+**EX066.** A inscrição atrasada na autenticação multifator.
+
+**EX067.** O contrato da empresa de manutenção das câmeras.
+
+**EX068.** É ativado apenas para trabalhos agendados, com contas individuais.
+
+**EX069.** O compartilhamento externo de arquivos.
 
 <a id="references"></a>
 ## Referências
