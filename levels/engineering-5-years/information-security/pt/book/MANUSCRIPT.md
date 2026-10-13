@@ -1,7 +1,7 @@
 # Segurança da Informação: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 117, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–40 de 50 já estão escritos em português, com os exercícios EX001–EX120 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 41–50 (EX121–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–50 de 50 têm texto didático escrito à mão; os exercícios EX001–EX150 têm resoluções correspondentes com rubricas de 0 a 3; os quatro laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que aprendem a construir, verificar e operar controles de segurança da informação para uma empresa de logística.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios conciliam um inventário sintético de ativos com uma varredura sintética de descoberta, conferem configurações sintéticas de servidores contra três regras de linha de base, detectam rajadas de adivinhação de senhas num log sintético de autenticação e verificam restaurações sintéticas de backup contra somas de verificação SHA-256. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ Anderson (2020), [doi:10.1002/9781119644682](https://doi.org/10.1002/97811196446
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) |
-
-Capítulos 41–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-41), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) · [41](#ch-41) · [42](#ch-42) · [43](#ch-43) · [44](#ch-44) · [45](#ch-45) · [46](#ch-46) · [47](#ch-47) · [48](#ch-48) · [49](#ch-49) · [50](#ch-50) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1830,11 +1828,431 @@ Mostrar apenas os testes finais aprovados esconde como os controles foram melhor
 
 - **EX120 — Antes e depois.** Por que registrar os resultados de antes e de depois da correção? *Rubrica:* 3 = mostra a melhoria e sua causa;; 2 = correto;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-41"></a>
+
+## Capítulo 41 — Segurança da informação: otimização do sistema
+
+### Objetivos de aprendizagem
+
+Você vai (1) reduzir o custo da segurança sem reduzir a proteção; (2) remover controles redundantes; (3) priorizar os investimentos pela redução de risco.
+
+### 41.1 Encontrando desperdício
+
+No último ano, Lindiwe revisa os gastos e o esforço de segurança da Saltmarsh. Ela encontra ferramentas sobrepostas: dois produtos que varrem os notebooks em busca de vulnerabilidades e três lugares distintos em que listas de contas são mantidas à mão. Cada sobreposição custa licenças e tempo da equipe, e listas incoerentes criam lacunas. O Prof. Hale pede que ela mostre quais controles cada ferramenta sustenta antes de recomendar a remoção, porque uma ferramenta que parece redundante pode cobrir um caso que a outra deixa escapar. Ela lista todas as ferramentas de segurança, com o custo da licença, o dono e os controles que sustentam, numa única tabela compartilhada.
+
+### 41.2 Consolidação
+
+Lindiwe mapeia os dois scanners de notebooks em relação aos ativos que cobrem. Um cobre todos os notebooks, inclusive os terminais do armazém; o outro deixa de fora os terminais, mas oferece relatórios de que os gerentes gostam. Ela recomenda manter o primeiro e recriar os relatórios úteis a partir dos seus dados. Para as listas de contas, ela propõe gerar as três a partir da fonte única de identidades configurada antes. As mudanças economizam custos de licença e eliminam atualizações manuais que tinham causado erros em revisões de acesso anteriores. O líder de segurança aprova as duas mudanças, e a licença do segundo scanner não é renovada.
+
+### 41.3 Risco por libra
+
+Lindiwe ordena os investimentos propostos pela redução de risco estimada por unidade de custo. Os backups imutáveis e a autenticação multifator para as contas de fornecedores restantes ficam no topo, porque tratam as ameaças mais danosas a baixo custo. Um produto de análise avançada proposto fica mal colocado, já que as lacunas de detecção atuais da Saltmarsh são básicas. Ela observa que suas estimativas são aproximadas, mas que ordená-las abertamente torna as premissas visíveis e ajuda os gerentes a questioná-las, em vez de aceitar as alegações dos fornecedores. Ela apresenta a ordenação ao diretor financeiro com as premissas listadas ao lado de cada estimativa, convidando a contestação.
+
+### 41.4 Medindo depois da mudança
+
+Depois da consolidação, Lindiwe confere que nada foi perdido: o scanner que ficou ainda cobre todos os ativos do modelo conciliado, e as revisões de acesso baseadas na fonte única de identidades não encontram nenhuma conta faltando. Ela registra essas verificações como evidência. O Prof. Hale observa que a otimização precisa provar que a proteção foi preservada; do contrário, a economia pode simplesmente transferir o custo para um incidente futuro. Ela repete a verificação de cobertura um mês depois e de novo encontra todos os ativos cobertos. O diretor financeiro recebe uma breve nota confirmando que a economia não reduziu a proteção, com as evidências anexadas para auditoria.
+
+### Exemplo resolvido
+
+Lindiwe remove um scanner de notebooks redundante depois de conferir a cobertura, gera as listas de contas a partir de uma única fonte, ordena os investimentos pela redução de risco por custo e verifica a cobertura depois das mudanças.
+
+> **Caso sintético.** Os custos e as ferramentas são sintéticos.
+
+### Erros e limites
+
+Remover uma ferramenta sem conferir a cobertura pode abrir lacunas despercebidas.
+
+### Exercícios
+
+- **EX121 — Scanner mantido.** Que scanner de notebooks é mantido? *Rubrica:* 3 = o que cobre os terminais do armazém;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX122 — Listas de contas.** Como as três listas de contas são produzidas depois da mudança? *Rubrica:* 3 = a partir da fonte única de identidades;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX123 — Compra mal colocada.** Que investimento fica mal colocado? *Rubrica:* 3 = um produto de análise avançada;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+<a id="ch-42"></a>
+
+## Capítulo 42 — Segurança da informação: pesquisa aplicada
+
+### Objetivos de aprendizagem
+
+Você vai (1) formular uma pergunta de pesquisa aplicada a partir de dados operacionais; (2) projetar uma comparação justa; (3) relatar os achados com seus limites.
+
+### 42.1 Pergunta
+
+A pesquisa aplicada de Lindiwe pergunta se os depósitos com login por aproximação do crachá nos terminais do armazém têm menos incidentes de uso indevido de contas do que os depósitos que ainda aguardam a implantação. A pergunta nasce da implantação da autenticação multifator, que chegou aos depósitos em etapas, por razões práticas. O Prof. Hale aponta que as implantações em etapas criam comparações naturais, mas que a ordem dos depósitos foi escolhida pelo tamanho, o que poderia enviesar qualquer diferença. Ela escreve a pergunta numa única frase e a confere com o líder de segurança, que confirma que o registro de incidentes guarda os detalhes necessários de todos os depósitos. O Prof. Hale aprova a pergunta.
+
+### 42.2 Desenho
+
+Lindiwe compara as taxas de incidentes por cem funcionários antes e depois da implantação nos depósitos que adotaram cedo com as dos depósitos que adotaram tarde, usando o período em que os depósitos tardios ainda não tinham começado. Ela confere que as taxas de incidentes dos dois grupos eram parecidas antes da implantação. Ela define os incidentes com precisão a partir do registro de incidentes: uso confirmado de uma conta por alguém que não é seu dono. Ela fixa essa definição e a comparação antes de examinar os resultados. O Prof. Hale revisa o plano e confirma que ele foi fixado antes de os resultados serem examinados.
+
+### 42.3 Achados
+
+Os dados sintéticos mostram menos incidentes depois da implantação nos depósitos que adotaram cedo e pouca mudança nos depósitos tardios ao longo dos mesmos meses. No entanto, os incidentes são raros, apenas um punhado em cada grupo, então a diferença é incerta. Lindiwe relata as contagens, as taxas e a comparação, afirmando que a direção apoia a implantação, mas que a evidência é fraca. O Prof. Hale a elogia por não transformar uma contagem pequena numa afirmação confiante. Ela apresenta as contagens numa tabela simples, com os dois períodos para os dois grupos, para que os leitores possam ver diretamente os números pequenos.
+
+### 42.4 O valor do estudo
+
+Lindiwe argumenta que o principal valor do estudo é um método reutilizável: definir os incidentes de forma coerente, usar as implantações em etapas como comparações e conferir a semelhança antes da implantação. A Saltmarsh pode repeti-lo à medida que mais dados se acumulam. Ela também observa que o fim dos logins compartilhados é, por si só, um ganho de responsabilização, independentemente das contagens de incidentes. Ela aprende que a pesquisa aplicada em segurança muitas vezes produz métodos e evidências modestas, e não respostas definitivas. O líder de segurança pede que ela escreva o método como um breve procedimento, para que a equipe possa refazer a comparação todos os anos, à medida que o registro de incidentes cresce.
+
+### Exemplo resolvido
+
+Lindiwe compara os depósitos que adotaram cedo e tarde a aproximação do crachá usando uma definição fixa de incidente, encontra uma direção favorável, mas incerta, a partir de contagens pequenas e enfatiza um método reutilizável.
+
+> **Caso sintético.** Os dados são sintéticos.
+
+### Erros e limites
+
+Contagens pequenas de incidentes não sustentam conclusões confiantes.
+
+### Exercícios
+
+- **EX124 — Comparação natural.** O que criou a comparação natural? *Rubrica:* 3 = a implantação em etapas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX125 — Definição de incidente.** Como um incidente é definido? *Rubrica:* 3 = uso de uma conta por alguém que não é seu dono;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX126 — Força da evidência.** Quão forte é a evidência? *Rubrica:* 3 = favorável, mas fraca;; 2 = correto;; 1 = forte;; 0 = nenhuma.
+
+<a id="ch-43"></a>
+
+## Capítulo 43 — Prática na indústria ou no serviço público
+
+### Objetivos de aprendizagem
+
+Você vai (1) trabalhar dentro de uma equipe profissional de segurança; (2) tratar informações confidenciais com responsabilidade; (3) refletir sobre a prática profissional.
+
+### 43.1 O estágio
+
+Lindiwe passa um semestre trabalhando em tempo integral na equipe de segurança da Saltmarsh. Ela participa da reunião diária em pé, assume uma parte das revisões de alertas e apoia a preparação de uma auditoria. Ela percebe quanto do trabalho envolve coordenação: convencer os donos a corrigir os achados, agendar as mudanças em torno dos picos dos depósitos e explicar os riscos à área financeira. O Prof. Hale a visita no meio do estágio e pergunta que habilidades ela mais usa; ela responde que escrita e negociação, mais do que programação. Ela mantém um diário semanal registrando o que fez, o que aprendeu e que conversas mudaram decisões.
+
+### 43.2 Confidencialidade
+
+O estágio dá a Lindiwe acesso a informações sensíveis: detalhes de incidentes, listas de vulnerabilidades e reclamações de clientes. Ela assina um acordo de confidencialidade e segue a regra de que os trabalhos do curso usam apenas dados sintéticos. Quando um colega de turma pergunta sobre um incidente real, ela se recusa a compartilhar detalhes. O Prof. Hale observa que a confiança profissional depende da discrição, e que a equipe de segurança precisa dar o exemplo do tratamento que pede aos outros. Suas reflexões para o curso descrevem os tipos de trabalho que ela fez sem revelar nenhum nome, sistema ou detalhe de incidente real.
+
+### 43.3 Preparação para a auditoria
+
+A Saltmarsh se prepara para uma auditoria externa do seu sistema de gestão. Lindiwe ajuda a reunir as evidências: os registros de avaliação de riscos, a declaração de aplicabilidade, as revisões de acesso e os resultados dos testes de restauração. Ela encontra dois controles listados como implementados cujas evidências estão incompletas. Em vez de apresentá-los como completos, a equipe os marca como em andamento, com datas. Mais tarde, o auditor registra a honestidade de forma favorável. Ela aprende que as auditorias recompensam registros precisos mais do que afirmações bem polidas. Lindiwe acrescenta as lacunas de evidência ao rastreador da equipe, com donos.
+
+### 43.4 Reflexão
+
+No fim do estágio, Lindiwe escreve uma reflexão sobre a prática profissional. Ela observa que a habilidade técnica conquista credibilidade, mas que a influência vem de entender o negócio e se comunicar com clareza. Ela também observa o lado emocional dos incidentes: os funcionários cujas contas sofreram phishing se sentiram constrangidos, e um tratamento calmo e sem culpa os ajudou a comunicar rapidamente na vez seguinte. O Prof. Hale pede que ela leve essas lições para o projeto final. Ela compartilha a reflexão com o líder de segurança, que acrescenta dois pontos, do ponto de vista da equipe, sobre como as perguntas dela melhoraram a própria documentação da equipe.
+
+### Exemplo resolvido
+
+Lindiwe trabalha na equipe de segurança da Saltmarsh, mantém os detalhes reais em sigilo, ajuda a preparar evidências de auditoria honestas e reflete sobre a comunicação e o tratamento sem culpa.
+
+> **Caso sintético.** O estágio é sintético.
+
+### Erros e limites
+
+Apresentar controles incompletos como implementados engana os auditores.
+
+### Exercícios
+
+- **EX127 — Habilidades mais usadas.** Que habilidades Lindiwe mais usa? *Rubrica:* 3 = escrita e negociação;; 2 = correto;; 1 = programação;; 0 = nenhuma.
+
+- **EX128 — Evidências incompletas.** Como os dois controles incompletos são apresentados? *Rubrica:* 3 = como em andamento, com datas;; 2 = correto;; 1 = completos;; 0 = nenhuma.
+
+- **EX129 — Efeito da ausência de culpa.** O que o tratamento sem culpa estimulou? *Rubrica:* 3 = comunicação mais rápida na vez seguinte;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-44"></a>
+
+## Capítulo 44 — Projeto final de engenharia I
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir um problema de projeto final com um cliente; (2) planejar um projeto substancial de engenharia de segurança; (3) gerenciar o escopo e o risco.
+
+### 44.1 Definição do problema
+
+O projeto final de Lindiwe trata de um problema identificado pela Saltmarsh: recuperar o despacho em até quatro horas depois de um ransomware, o objetivo acordado antes. Os backups atuais estão verificados, mas ninguém jamais reconstruiu do zero o serviço de despacho inteiro. O projeto final vai projetar, construir e testar um processo de recuperação num ambiente isolado. O Prof. Hale e o líder de segurança assinam a declaração do problema, que lista as entregas, as restrições e o critério de sucesso. O líder de segurança também confirma quais sistemas podem ser copiados para o ambiente isolado e que apenas dados sintéticos de clientes serão usados.
+
+### 44.2 Plano
+
+Lindiwe divide o projeto em etapas: documentar as dependências do despacho, construir um ambiente de recuperação isolado, automatizar por script a reconstrução de cada componente, restaurar os dados a partir dos backups imutáveis e executar ensaios cronometrados. Cada etapa tem uma entrega e uma revisão. Ela identifica riscos para o próprio projeto, como atrasos na obtenção do hardware de teste, e planeja alternativas, inclusive usar máquinas virtuais num servidor reserva se o hardware chegar atrasado. Ela marca reuniões de revisão quinzenais com o Prof. Hale e o líder de segurança, cada uma dedicada a uma etapa.
+
+### 44.3 Dependências
+
+Documentar as dependências revela surpresas. O despacho precisa do diretório para os logins, da fila de mensagens, do serviço de mapas, de certificados e de um servidor de licenças para um dos componentes. O servidor de licenças não aparecia em nenhum diagrama. Sem ele, o serviço reconstruído se recusaria a iniciar. Lindiwe o acrescenta ao modelo de ativos e ao plano de recuperação. O Prof. Hale observa que as dependências ocultas são um motivo comum para a recuperação levar muito mais tempo do que o planejado. Ela também registra a versão e o dono de cada dependência, para que o plano de recuperação possa ser mantido atualizado.
+
+### 44.4 Controle do escopo
+
+No meio do projeto, o gerente de operações pergunta se o projeto final poderia cobrir também a recuperação da folha de pagamento. Lindiwe avalia o esforço e explica que acrescentar a folha de pagamento arriscaria não terminar nenhuma das duas direito. Ela propõe documentar apenas as dependências da folha de pagamento, como insumo para um projeto posterior. O cliente concorda. Ela aprende que proteger o escopo faz parte de entregar valor, e que dizer não com uma razão clara preserva a confiança melhor do que prometer demais. Ela registra a decisão no diário do projeto, com a concordância do gerente de operações e uma nota sobre o esforço extra estimado.
+
+### Exemplo resolvido
+
+Lindiwe define um projeto final de recuperação do despacho com uma meta de quatro horas, planeja entregas em etapas, encontra uma dependência oculta de servidor de licenças e protege o escopo adiando a folha de pagamento.
+
+> **Caso sintético.** O projeto final é sintético.
+
+### Erros e limites
+
+As dependências não documentadas tornam a recuperação muito mais lenta do que o planejado.
+
+### Exercícios
+
+- **EX130 — Critério de sucesso.** Qual é o critério de sucesso do projeto final? *Rubrica:* 3 = recuperar o despacho em até quatro horas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX131 — Dependência oculta.** Que dependência faltava nos diagramas? *Rubrica:* 3 = um servidor de licenças;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+
+- **EX132 — Decisão de escopo.** O que é feito em relação à folha de pagamento? *Rubrica:* 3 = documentar apenas as dependências;; 2 = correto;; 1 = recuperação completa;; 0 = nenhuma.
+
+<a id="ch-45"></a>
+
+## Capítulo 45 — Revisão independente de projeto
+
+### Objetivos de aprendizagem
+
+Você vai (1) preparar um projeto para revisão independente; (2) responder aos achados do revisor; (3) registrar os resultados da revisão.
+
+### 45.1 Preparando a revisão
+
+Antes de construir, Lindiwe submete seu projeto de recuperação à revisão independente de um engenheiro de outra organização, organizada pelo Prof. Hale. Ela prepara um pacote: a declaração do problema, a arquitetura, a lista de dependências, os passos de recuperação, o plano de testes e os riscos conhecidos. Ela escreve um breve guia explicando de que retorno mais precisa. O Prof. Hale observa que os revisores dão um retorno melhor quando o autor declara honestamente as questões em aberto, em vez de apresentar o projeto como acabado. O revisor recebe o pacote completo duas semanas antes da reunião formal de revisão.
+
+### 45.2 Achados
+
+O revisor levanta quatro achados. O ambiente de recuperação usa as mesmas credenciais de administrador da produção, de modo que um atacante que as possuísse também poderia danificar a recuperação. Os scripts de recuperação estão guardados num servidor que o ransomware poderia cifrar. O plano de testes não inclui restaurar a partir de backups com mais de um dia, para o caso de os backups recentes estarem corrompidos. Por fim, o projeto não diz quem decide iniciar a recuperação. Ela agradece ao revisor e faz uma pergunta de acompanhamento sobre cada achado, para ter certeza de que o entendeu corretamente.
+
+### 45.3 Respostas
+
+Lindiwe responde a cada achado. Ela cria credenciais separadas para o ambiente de recuperação, guardadas offline. Ela guarda os scripts no controle de versão, com uma cópia offline. Ela acrescenta um teste de restauração a partir de backups de uma semana. Ela escreve uma regra de decisão: o líder de segurança e o diretor de operações autorizam a recuperação em conjunto, com substitutos nomeados. Ela registra cada resposta numa tabela, com a concordância do revisor anotada ao lado de cada uma. O revisor examina o projeto atualizado duas semanas depois e confirma por escrito que os quatro achados estão resolvidos.
+
+### 45.4 O valor da revisão
+
+Lindiwe reflete que três dos quatro achados diziam respeito à própria recuperação estar vulnerável ao mesmo ataque a que ela deveria sobreviver. Ela tinha se concentrado na velocidade da reconstrução e deixado isso passar. O Prof. Hale observa que os revisores independentes trazem premissas diferentes, e é exatamente por isso que as revisões encontram problemas que os autores não conseguem encontrar. O registro da revisão entra no dossiê de evidências. Ela acrescenta ao plano da tese uma seção descrevendo a revisão e seu efeito sobre o projeto, porque acredita que outros engenheiros se beneficiariam de ver como suas premissas mudaram depois de um escrutínio independente.
+
+### Exemplo resolvido
+
+Lindiwe prepara um pacote de revisão, recebe quatro achados, entre eles as credenciais compartilhadas e os scripts expostos, e responde com credenciais offline, scripts offline, testes de restauração mais antigos e uma regra de decisão.
+
+> **Caso sintético.** A revisão é sintética.
+
+### Erros e limites
+
+Um ambiente de recuperação que compartilha as credenciais da produção pode ser destruído pelo mesmo atacante.
+
+### Exercícios
+
+- **EX133 — Achado sobre credenciais.** Que problema de credenciais o revisor encontrou? *Rubrica:* 3 = a recuperação usa as credenciais de administrador da produção;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX134 — Backups mais antigos.** Que teste foi acrescentado para os backups mais antigos? *Rubrica:* 3 = restaurar a partir de backups de uma semana;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX135 — Decisão de recuperação.** Quem autoriza a recuperação? *Rubrica:* 3 = o líder de segurança e o diretor de operações;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+<a id="ch-46"></a>
+
+## Capítulo 46 — Projeto final de engenharia II
+
+### Objetivos de aprendizagem
+
+Você vai (1) construir e testar uma capacidade de recuperação; (2) medir em relação a um objetivo; (3) iterar até que o objetivo seja atingido.
+
+### 46.1 Construindo
+
+Lindiwe constrói o ambiente de recuperação em máquinas virtuais isoladas e escreve scripts para reconstruir cada componente do despacho: a conexão com o diretório, a fila de mensagens, o banco de dados, os servidores de aplicação, os certificados e o servidor de licenças. Cada script é idempotente, produzindo o mesmo resultado quando executado duas vezes, de modo que uma falha parcial pode ser repetida com segurança. Ela testa os scripts individualmente antes de combiná-los, mantendo um registro dos problemas encontrados e corrigidos. Ela guarda todos os scripts no controle de versão e registra cada execução de teste, com a data e o resultado, num diário do projeto.
+
+### 46.2 Primeiro ensaio
+
+O primeiro ensaio cronometrado leva seis horas e quarenta minutos, bem acima do objetivo de quatro horas. A maior parte do tempo vai para restaurar o banco de dados a partir do backup e para os passos manuais dos certificados. Lindiwe registra a linha do tempo minuto a minuto. O Prof. Hale lembra que um primeiro ensaio reprovado é normal e que a linha do tempo mostra exatamente onde trabalhar, o que é mais útil do que uma vaga impressão de que a recuperação é lenta. Ela compartilha a linha do tempo com o líder de segurança, destacando as duas maiores fontes de atraso.
+
+### 46.3 Melhorias
+
+Lindiwe faz três mudanças: restaurar o banco de dados a partir de um snapshot mais recente guardado no sistema de backup imutável, automatizar a instalação dos certificados e iniciar em paralelo os componentes independentes. O segundo ensaio leva quatro horas e dez minutos. Uma terceira mudança, preparar de antemão as imagens dos servidores de aplicação, leva o terceiro ensaio a três horas e vinte minutos, dentro do objetivo. Ela registra cada mudança e seu efeito sobre a linha do tempo. O Prof. Hale pede que ela coloque os três ensaios lado a lado num gráfico, mostrando como cada mudança encurtou uma parte específica da linha do tempo.
+
+### 46.4 Repetibilidade
+
+Um único ensaio bem-sucedido pode ser sorte. Lindiwe executa mais dois ensaios, em dias diferentes, com membros diferentes da equipe seguindo o runbook. Ambos terminam em até quatro horas. Ela observa que o passo mais lento que resta é a restauração do banco de dados, que cresce com o volume de dados, então o objetivo pode deixar de ser cumprido à medida que os dados do despacho crescerem. Ela recomenda repetir o ensaio a cada seis meses e depois de grandes mudanças. O líder de segurança inclui o ensaio semestral no calendário de segurança e designa um dono. Lindiwe escreve o procedimento para que funcionários novos possam conduzi-lo.
+
+### Exemplo resolvido
+
+Lindiwe constrói scripts de recuperação idempotentes, mede um primeiro ensaio de 6 horas e 40 minutos, melhora para 3 horas e 20 minutos e confirma a repetibilidade com outras pessoas da equipe.
+
+> **Caso sintético.** Os ensaios são sintéticos.
+
+### Erros e limites
+
+Um único ensaio de recuperação bem-sucedido não prova que a recuperação é confiável.
+
+### Exercícios
+
+- **EX136 — Tempo do primeiro ensaio.** Quanto tempo levou o primeiro ensaio? *Rubrica:* 3 = seis horas e quarenta minutos;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX137 — Significado de idempotente.** O que idempotente significa para os scripts dela? *Rubrica:* 3 = o mesmo resultado quando executados duas vezes;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX138 — Passo lento restante.** Qual continua sendo o passo mais lento? *Rubrica:* 3 = a restauração do banco de dados;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+<a id="ch-47"></a>
+
+## Capítulo 47 — Ensaio de falha e recuperação
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir um exercício de falha realista; (2) observar o desempenho humano e técnico; (3) produzir lições para melhoria.
+
+### 47.1 Cenário
+
+Com a aprovação dos diretores da Saltmarsh, Lindiwe conduz um ensaio completo de recuperação no ambiente isolado, tratando-o como um incidente real. O cenário: às seis horas de uma segunda-feira de manhã, um ransomware cifrou os servidores do despacho e o compartilhamento dos backups noturnos. Restam apenas os backups imutáveis. A equipe de incidentes não conhece o cenário com antecedência. O Prof. Hale e o líder de segurança observam, registrando as decisões e os horários sem intervir. Lindiwe prepara os materiais do cenário, uma linha do tempo dos eventos injetados e uma ficha de observação para registrar o que acontece.
+
+### 47.2 Desempenho
+
+A equipe segue o processo de incidentes: detecção, decisão de recuperar, autorização pelos diretores nomeados e execução do runbook. A reconstrução se completa em três horas e trinta e cinco minutos. Ocorrem dois problemas. O gerente de plantão não consegue encontrar de início as credenciais offline, perdendo vinte minutos. Os dados restaurados são verificados com somas de verificação, e um lote é reprovado na verificação, então a equipe o restaura a partir do snapshot anterior. A equipe registra todas as ações no registro do incidente, que Lindiwe usa depois para reconstruir a linha do tempo com precisão.
+
+### 47.3 Fatores humanos
+
+Lindiwe observa que o estresse afetou a comunicação: duas pessoas executaram o mesmo script ao mesmo tempo, e os supervisores dos depósitos não foram avisados de quando passar para as listas impressas. Ela observa que esses são problemas de processo, e não falhas individuais. Ela recomenda um único papel de coordenador durante a recuperação e um modelo de mensagem para os depósitos. O Prof. Hale observa que os ensaios de recuperação testam as pessoas e a comunicação tanto quanto a tecnologia. Ela discute suas observações com os participantes numa breve conversa de encerramento, e eles concordam com as mudanças propostas e acrescentam uma própria, sobre as passagens de turno.
+
+### 47.4 Lições
+
+O relatório de lições lista cinco melhorias: etiquetar e conferir mensalmente o armazenamento das credenciais offline, acrescentar um papel de coordenador, usar o modelo de mensagem para os depósitos, automatizar a verificação por somas de verificação dos lotes restaurados e repetir o ensaio anualmente com pessoas diferentes. Cada uma tem um dono e uma data. Lindiwe observa que o ensaio cumpriu o objetivo apesar dos problemas, o que dá confiança e, ao mesmo tempo, mostra exatamente onde a margem poderia ser perdida. Os diretores aprovam as melhorias e pedem uma breve atualização do progresso em três meses, que Lindiwe agenda antes do fim do seu curso.
+
+### Exemplo resolvido
+
+Lindiwe conduz um ensaio de recuperação não anunciado, concluído em 3 horas e 35 minutos, observa problemas de credenciais e de comunicação e registra cinco melhorias com donos.
+
+> **Caso sintético.** O ensaio é sintético.
+
+### Erros e limites
+
+Os ensaios de recuperação que testam apenas a tecnologia deixam passar as falhas de comunicação.
+
+### Exercícios
+
+- **EX139 — Duração do ensaio.** Quanto tempo levou a reconstrução? *Rubrica:* 3 = três horas e trinta e cinco minutos;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX140 — Atraso das credenciais.** Quanto tempo se perdeu procurando as credenciais? *Rubrica:* 3 = vinte minutos;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX141 — Papel de coordenador.** Por que acrescentar um papel de coordenador? *Rubrica:* 3 = duas pessoas executaram o mesmo script;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-48"></a>
+
+## Capítulo 48 — Dossiê de evidências
+
+### Objetivos de aprendizagem
+
+Você vai (1) reunir evidências que sustentem afirmações de segurança; (2) ligar cada afirmação a registros verificáveis; (3) declarar as limitações das evidências.
+
+### 48.1 Afirmações
+
+Lindiwe reúne um dossiê de evidências para os diretores e os auditores da Saltmarsh. Ela lista as afirmações: os ativos são conciliados semanalmente; os servidores atendem às regras de linha de base numa taxa medida; a adivinhação de senhas é detectada; os backups são verificados por testes de restauração; o despacho pode ser recuperado em até quatro horas. Cada afirmação precisa apontar para evidências. O Prof. Hale a adverte para não incluir afirmações que ela não consiga sustentar, por mais desejáveis que pareçam. Ela redige cada afirmação como uma única frase, a confere com o dono do controle e remove uma afirmação sobre a conscientização sobre phishing que não conseguia sustentar.
+
+### 48.2 Ligando as evidências
+
+Para cada afirmação, Lindiwe liga os registros: os relatórios de conciliação, com os números originais do laboratório, de 63 hosts não registrados e 90 hosts silenciosos, e as melhorias posteriores; os resultados da linha de base, começando em 72,0 por cento passando em todas as regras; as detecções da medida de adivinhação e seu teste de limite; os testes de restauração, começando em 98,4 por cento verificados; e as linhas do tempo dos ensaios de recuperação. Cada registro é indexado com uma soma de verificação. Um leitor consegue rastrear qualquer afirmação até sua fonte em minutos. O índice lista a data, o dono, o nome do arquivo e a soma de verificação de cada registro, agrupados pela afirmação que sustentam.
+
+### 48.3 Limitações
+
+O dossiê declara os limites com franqueza. A medida de adivinhação deixa passar os ataques lentos. O controle de mudança de endereço está verificado, mas não validado. Os ensaios de recuperação foram executados num ambiente isolado, que pode ser diferente de um incidente real. As regras de linha de base cobrem três configurações, e não o endurecimento completo. Lindiwe observa que declarar os limites torna o dossiê mais crível, porque os leitores podem ver o que foi e o que não foi demonstrado. O Prof. Hale revisa a seção e pede que ela coloque cada limitação logo depois da afirmação que ela afeta, para que os leitores não possam deixá-la passar.
+
+### 48.4 Uso
+
+O líder de segurança usa o dossiê na auditoria externa e na resposta a uma concorrência de um novo cliente. O auditor examina uma amostra de cinco afirmações e rastreia cada uma até as evidências sem dificuldade. Lindiwe aprende que um dossiê construído a partir de registros criados durante o trabalho normal custa pouco para manter, enquanto um montado sob a pressão de um prazo tende a conter lacunas e números incoerentes. O líder de segurança inclui o dossiê no trabalho de rotina da equipe, atribuindo ao dono de cada afirmação a tarefa de atualizar suas evidências depois de cada teste ou mudança relevante.
+
+### Exemplo resolvido
+
+Lindiwe reúne cinco afirmações, liga cada uma a registros com somas de verificação, inclusive os números dos laboratórios, declara quatro limitações e apoia uma auditoria que rastreia com facilidade as afirmações da amostra.
+
+> **Caso sintético.** O dossiê é sintético.
+
+### Erros e limites
+
+Incluir afirmações sem evidências mina o dossiê inteiro.
+
+### Exercícios
+
+- **EX142 — Afirmação do dossiê.** Cite uma afirmação do dossiê. *Rubrica:* 3 = o despacho pode ser recuperado em até quatro horas;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+
+- **EX143 — Taxa inicial da linha de base.** Com que taxa de linha de base o registro começa? *Rubrica:* 3 = 72,0 por cento passando em todas as regras;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX144 — Amostra do auditor.** Quantas afirmações o auditor examinou na amostra? *Rubrica:* 3 = cinco;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+<a id="ch-49"></a>
+
+## Capítulo 49 — Tese de engenharia
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever uma tese de engenharia em torno de um argumento central; (2) apresentar o projeto, as evidências e a avaliação; (3) refletir sobre a contribuição e os limites.
+
+### 49.1 Argumento
+
+A tese de Lindiwe argumenta que uma organização pequena pode alcançar uma recuperação verificável de ransomware dentro dos objetivos do negócio, combinando backups imutáveis, verificação por somas de verificação, reconstruções por script e ensaios regulares. O argumento se apoia no seu projeto final e no seu dossiê. O Prof. Hale pede que ela declare o argumento no primeiro parágrafo e faça cada capítulo contribuir para ele, para que os leitores possam acompanhar por que cada parte existe. Ela escreve um roteiro de uma página listando cada capítulo e a parte do argumento que ele sustenta, e o Prof. Hale o usa para guiar sua leitura dos rascunhos.
+
+### 49.2 Estrutura
+
+A tese tem capítulos sobre contexto e requisitos, trabalhos relacionados, análise de dependências, projeto e revisão, implementação, ensaios e resultados, avaliação e limitações. Os trabalhos relacionados se apoiam no Security Engineering de Anderson, na NIST SP 800-30 Revisão 1, para a avaliação de riscos, e na ISO/IEC 27001:2022 (no Brasil, ABNT NBR ISO/IEC 27001:2022), para o contexto do sistema de gestão. Ela cita cada fonte para pontos específicos, e não como decoração, e parafraseia as normas, em vez de citar passagens longas. Cada capítulo começa com um breve parágrafo que declara seu propósito e termina com um resumo do que mostrou. O Prof. Hale acha essa estrutura útil.
+
+### 49.3 Avaliação
+
+Lindiwe avalia o trabalho em relação ao objetivo: os ensaios cumpriram as quatro horas repetidas vezes, com o último ensaio, não anunciado, em três horas e trinta e cinco minutos. Ela também avalia em relação ao custo, mostrando que o ambiente de recuperação usa hardware existente. Ela compara com a situação anterior ao projeto, quando nenhuma reconstrução completa jamais tinha sido tentada. Ela toma o cuidado de descrever os resultados como válidos para o ambiente e os volumes de dados da Saltmarsh. Ela apresenta todos os tempos dos ensaios numa única tabela, com as mudanças feitas entre os ensaios, para que os examinadores possam ver como o resultado foi alcançado.
+
+### 49.4 Contribuição e limites
+
+Lindiwe identifica sua contribuição como um método de recuperação testado e documentado, com uma linha do tempo medida, mais o achado de que os ambientes de recuperação precisam estar isolados das credenciais da produção. Os limites incluem uma única organização, um ambiente de ensaio isolado e volumes de dados crescentes que ameaçam o objetivo. O Prof. Hale aprova a tese para submissão, observando que sua honestidade sobre os limites a fortalece, em vez de enfraquecê-la. Ela também sugere trabalhos futuros: testar a recuperação da folha de pagamento, medir como o crescimento do banco de dados afeta o tempo de restauração e repetir o ensaio com uma equipe de incidentes real de outra organização.
+
+### Exemplo resolvido
+
+Lindiwe argumenta a favor de uma recuperação verificável de ransomware numa organização pequena, estrutura os capítulos em torno do argumento, avalia em relação ao objetivo de quatro horas e declara a contribuição e os limites.
+
+> **Caso sintético.** A tese é sintética.
+
+### Erros e limites
+
+Citar as fontes como decoração, e não para pontos específicos, enfraquece uma tese.
+
+### Exercícios
+
+- **EX145 — Argumento da tese.** O que a tese argumenta? *Rubrica:* 3 = organizações pequenas podem alcançar uma recuperação verificável;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX146 — Fonte de risco.** Que fonte sustenta a avaliação de riscos? *Rubrica:* 3 = NIST SP 800-30 Revisão 1;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+
+- **EX147 — Achado principal.** Que achado principal diz respeito aos ambientes de recuperação? *Rubrica:* 3 = precisam estar isolados das credenciais da produção;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-50"></a>
+
+## Capítulo 50 — Defesa final
+
+### Objetivos de aprendizagem
+
+Você vai (1) defender o trabalho de engenharia diante de examinadores; (2) responder a questionamentos sobre as evidências e a generalização; (3) planejar a continuidade do aprendizado.
+
+### 50.1 Preparação
+
+Lindiwe prepara uma apresentação de trinta minutos: o problema, o projeto, os achados da revisão, os ensaios e as evidências. Ela ensaia com colegas de turma que fazem perguntas hostis. Ela prepara slides de reserva com as linhas do tempo e os registros das somas de verificação. O Prof. Hale a aconselha a responder apenas o que consegue sustentar e a dizer com clareza quando uma pergunta vai além das suas evidências, porque os examinadores respeitam limites precisos mais do que palpites confiantes. Ela também prepara uma breve demonstração do script de verificação da restauração rodando sobre arquivos sintéticos, para o caso de os examinadores pedirem para vê-lo funcionando.
+
+### 50.2 Questionamentos
+
+Um examinador pergunta se a recuperação funcionaria caso os atacantes estivessem dentro da rede havia meses. Lindiwe responde que os backups imutáveis cobrem um período fixo e que os testes de restauração com backups de uma semana passaram, mas que um comprometimento não detectado por mais tempo poderia contaminar os backups; detectar as intrusões mais cedo é o controle complementar. Outro pergunta por que ela confiou nas somas de verificação registradas no sistema de backup; ela explica que o manifesto é, ele próprio, guardado de forma imutável junto com os backups. Um terceiro examinador pergunta sobre o custo, e ela mostra o hardware reaproveitado para o ambiente.
+
+### 50.3 Resultado
+
+Os examinadores aprovam Lindiwe com louvor, elogiando os ensaios medidos, a revisão independente e o dossiê. Eles sugerem que ela publique o método de recuperação como um guia para profissionais. A Saltmarsh lhe oferece um cargo na sua equipe de segurança. Ela reflete que o curso ligou a matemática, os sistemas e a gestão numa única prática de engenharia voltada para proteger as informações de uma organização real. Ela aceita o cargo e concorda em conduzir o próximo ensaio anual de recuperação. O parecer dos examinadores recomenda seu dossiê como exemplo para os futuros estudantes, e o Prof. Hale pede que ela fale à turma do ano seguinte sobre o projeto final.
+
+### 50.4 Continuidade do aprendizado
+
+Lindiwe planeja a continuidade do aprendizado: uma certificação profissional, um estudo mais aprofundado da resposta a incidentes e a manutenção das suas habilidades de recuperação por meio dos ensaios anuais da Saltmarsh. O Prof. Hale lembra que as normas e as ameaças mudam; a própria ISO/IEC 27000 foi revisada em 2026. O próximo curso desta área, governança de dados, examina como são tomadas as decisões sobre a qualidade, a propriedade e o uso dos dados, o que complementa os controles de segurança que ela construiu. Ela também planeja orientar um estagiário na Saltmarsh, transmitindo os hábitos que aprendeu: medir com cuidado, testar nos limites e declarar os limites.
+
+### Exemplo resolvido
+
+Lindiwe defende seu trabalho de recuperação, responde a questionamentos sobre comprometimentos de longo prazo e a confiança nas somas de verificação, é aprovada com louvor e planeja a continuidade do aprendizado.
+
+> **Caso sintético.** A defesa é sintética.
+
+### Erros e limites
+
+Responder além das próprias evidências mina uma defesa.
+
+### Exercícios
+
+- **EX148 — Comprometimento longo.** O que complementa os backups imutáveis contra um comprometimento longo? *Rubrica:* 3 = detectar as intrusões mais cedo;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX149 — Armazenamento do manifesto.** Onde o manifesto das somas de verificação é guardado? *Rubrica:* 3 = de forma imutável, junto com os backups;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX150 — Resultado da defesa.** Qual é o resultado da defesa? *Rubrica:* 3 = aprovação com louvor;; 2 = correto;; 1 = reprovação;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX120 (as de EX121–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Lindiwe Dube, o Prof. Marcus Hale, a Brightwater Polytechnic, a Saltmarsh Logistics e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX150. Lindiwe Dube, o Prof. Marcus Hale, a Brightwater Polytechnic, a Saltmarsh Logistics e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Cerca de quarenta milhões de eventos por dia.
 
@@ -2075,6 +2493,66 @@ Respostas-modelo para EX001–EX120 (as de EX121–EX150 estão na edição em i
 **EX119.** O alerta de download em massa.
 
 **EX120.** Para mostrar a melhoria e sua causa.
+
+**EX121.** O que cobre todos os notebooks, inclusive os terminais do armazém.
+
+**EX122.** Geradas a partir da fonte única de identidades.
+
+**EX123.** Um produto de análise avançada.
+
+**EX124.** A implantação em etapas pelos depósitos.
+
+**EX125.** Uso confirmado de uma conta por alguém que não é seu dono.
+
+**EX126.** A direção é favorável, mas a evidência é fraca.
+
+**EX127.** Escrita e negociação.
+
+**EX128.** Como em andamento, com datas-alvo.
+
+**EX129.** Que os funcionários comunicassem rapidamente na vez seguinte.
+
+**EX130.** Recuperar o despacho em até quatro horas.
+
+**EX131.** Um servidor de licenças para um dos componentes.
+
+**EX132.** Apenas suas dependências são documentadas, para um projeto posterior.
+
+**EX133.** O ambiente de recuperação usa as credenciais de administrador da produção.
+
+**EX134.** Restaurar a partir de backups de uma semana.
+
+**EX135.** O líder de segurança e o diretor de operações, em conjunto.
+
+**EX136.** Seis horas e quarenta minutos.
+
+**EX137.** Executar um script duas vezes dá o mesmo resultado.
+
+**EX138.** A restauração do banco de dados.
+
+**EX139.** Três horas e trinta e cinco minutos.
+
+**EX140.** Vinte minutos.
+
+**EX141.** Duas pessoas executaram o mesmo script ao mesmo tempo, sob estresse.
+
+**EX142.** O despacho pode ser recuperado em até quatro horas.
+
+**EX143.** 72,0 por cento dos servidores passando em todas as regras.
+
+**EX144.** Cinco afirmações.
+
+**EX145.** Que uma organização pequena pode alcançar uma recuperação verificável de ransomware dentro dos objetivos.
+
+**EX146.** NIST SP 800-30 Revisão 1.
+
+**EX147.** Eles precisam estar isolados das credenciais da produção.
+
+**EX148.** Detectar as intrusões mais cedo.
+
+**EX149.** De forma imutável, junto com os backups.
+
+**EX150.** Aprovação com louvor.
 
 <a id="references"></a>
 ## Referências
