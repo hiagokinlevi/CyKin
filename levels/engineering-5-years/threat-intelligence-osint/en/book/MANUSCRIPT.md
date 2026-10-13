@@ -2895,21 +2895,31 @@ You will (1) optimise Lantern for the outcome that matters — timely, accurate 
 
 The target outcome is fewer successful attacks reaching BEN, approximated by time-to-enforcement for high-confidence indicators and the share of incidents with intelligence context at triage. Optimising "objects ingested per day" can make outcomes worse by flooding analysts.
 
+Kofi states the outcome before proposing any change, and asks how the change would move it. A faster parser that lets more low-confidence indicators through can raise volume while slowing analysts down. Both proxy measures have known weaknesses, and he reports them together so that improving one at the other's expense is visible.
+
 ### 41.2 Binding constraint
 
 Often the slowest step is human: analyst approval for sharing, OT engineer review. Faster machines do not help if approvals wait overnight. Optimisation may mean better prioritisation of approval queues rather than new hardware.
+
+Kofi traced a sample of indicators from arrival to enforcement and timed each step. Machine stages took minutes in total; the wait for a person to approve sharing took hours. That single measurement redirected the optimisation effort away from the servers and towards how the approval queue was organised, which is the subject of the worked example.
 
 ### 41.3 Candidate optimisations
 
 Pre-filter low-value indicators before enrichment; prioritise approval queues by confidence and asset criticality; batch firewall pushes on a fixed cadence; reduce duplicate sources whose uniqueness measured near zero.
 
+Kofi listed each candidate with its expected effect, cost and risk before starting any of them. Pre-filtering saves enrichment capacity but risks discarding something useful, so the filter rule was agreed with analysts. Batching pushes reduces load on firewalls but adds a little delay. Dropping duplicate sources needed the uniqueness figures from the measurement work, which showed two feeds adding almost nothing that others did not already supply.
+
 ### 41.4 Measuring the effect
 
 Each change has a hypothesis, a metric and a comparison window. If the metric does not move, the change is reverted to avoid complexity without benefit.
 
+Kofi writes the hypothesis down before the change, such as: sorting the approval queue by confidence will cut median wait by half within a month. The comparison window covers the same weekdays before and after, since volumes differ through the week. One change he tried, caching a rarely used lookup, made no measurable difference and was removed. Reverting is treated as a normal outcome, not a failure.
+
 ### 41.5 Goodhart's warning
 
 When a measure becomes a target, people game it. If analysts are judged on approvals per hour, they may approve poorly. Keep quality checks beside speed metrics.
+
+The worked example guards against this with a spot check of retractions after the approval process sped up. If faster approvals had produced more mistakes, the gain would have been false. Kofi pairs every speed metric with a quality metric on the same dashboard, so nobody sees one without the other. Analysts are not ranked on either; the figures describe the process, not individuals.
 
 ### Practice note — removing work
 
@@ -2955,21 +2965,31 @@ You will (1) frame an engineering research question from Lantern's operational d
 
 Lantern's logs suggest questions: Does indicator half-life differ by sector partner? Does behaviour-based detection catch incidents that indicator matching misses? How much do sightings shared with partners improve their retirement decisions?
 
+Kofi picks questions where the answer would change something BEN does. The half-life question affects how long indicators stay in blocking. The detection question affects where the team invests effort. Questions that are merely interesting, without any decision attached, wait until the useful ones are answered. Each question has an owner.
+
 ### 42.2 Data and consent
 
 Internal operational data may be used for improvement under BEN's policies; partner data needs partner consent for research use and publication. Personal data is excluded. Where consent is lacking, synthetic data that reproduce statistical properties can test methods but not prove facts about the real world.
+
+Kofi asked each partner in writing whether their data could be included in aggregate form, and two declined. Their indicators were excluded from the study, which narrowed it but kept faith with them. The study notes that exclusion.
 
 ### 42.3 Method
 
 Kofi studies half-lives: for each retired indicator, did it reappear in sightings within 60 days? He fits re-observation rates by indicator type and compares with the decay model's assumptions.
 
+The choice of sixty days follows from the existing half-lives: a window shorter than the assumed domain half-life would miss reappearances the model claims are likely. Kofi counts each indicator once, whatever the number of later sightings, to avoid a few busy indicators dominating the result. He also records indicators that were never sighted, since those carry information about decay too.
+
 ### 42.4 Humility in statistics
 
 Report sample sizes and intervals. A difference between partners of two days in half-life may be noise with small samples.
 
+Kofi computed intervals for each indicator type's re-observation rate and found that the intervals for two partners overlapped almost completely, so he did not claim a difference between them. The domain finding was clearer because that sample was much larger. His report states the number of indicators behind every rate and says plainly where the data could not separate an effect from chance.
+
 ### 42.5 Publication
 
 Results are shared with partners first, in aggregate, then perhaps at a practitioner conference with BEN's approval. Raw indicators are never published.
+
+Partners see the findings before anyone else because their data contributed and their own decay settings may need to change. A conference talk would describe methods and aggregate results, after review by BEN's communications team and the partners named in the sharing agreement. Raw indicators stay out because they could reveal which organisations were targeted, even after the campaign has ended.
 
 ### Practice note — reproducibility
 
@@ -3015,21 +3035,31 @@ You will (1) work within an operating organisation's governance; (2) contribute 
 
 Kofi's placement at BEN is governed by an agreement covering confidentiality, supervision and what he may write about. University assignments draw on synthetic reconstructions, not BEN's real data.
 
+The agreement lists what Kofi may describe in his university work, such as general methods and lessons, and what he may not, such as partner names or real incident details. Any doubtful case goes to his supervisor before submission. Reconstructing a problem with invented data lets him write freely without risk to BEN or its partners, and it is why every case in this book is synthetic.
+
 ### 43.2 Community contribution
 
 As a placement engineer he attends sector ISAC calls as an observer. He learns the community's TLP habits, how members describe incidents, and how trust is built over time by sharing useful, accurate information and acknowledging others' contributions.
+
+Observing first lets him see how the community works before he speaks. Members who share early and correct their own errors openly earn more trust than those who share a great deal of little value. When Kofi later presented a short summary of a synthetic method to the group, he credited the partners whose feedback had shaped it.
 
 ### 43.3 Practice log
 
 He logs tasks, hours, skills used and reflections: what went well, what he would change, what he learned about ethics. Supervisors sign the log.
 
+Kofi writes each entry on the day of the work, while he still remembers what was hard. Reflection entries are short but specific: one recorded that he had nearly shared an AMBER bulletin with a contractor and stopped to check. His supervisor discussed that entry with him, and it became a training example for the next placement student.
+
 ### 43.4 Confidential material
 
 Some information he sees is TLP:RED or commercially sensitive. It never appears in coursework, social media or conversation outside need-to-know. If in doubt, he asks his supervisor.
 
+Kofi keeps a simple rule: if he would not be comfortable seeing a sentence on a slide at a public conference, it does not leave BEN. His notes from ISAC calls stay on BEN's systems. When a lecturer asked the class to discuss a recent incident, he spoke only about the public advisory and said that he could not add more.
+
 ### 43.5 Public-service settings
 
 In a national CERT or regulator, additional rules apply: official secrecy, freedom-of-information obligations and political neutrality. ICD 203's emphasis on independence from political considerations is a useful reference for analysts in public roles.
+
+Kofi spoke with an analyst at the national CERT during a sector event. She described how their reports can be requested under transparency law, which shapes how they record sources. Political neutrality means an analyst presents the evidence the same way whatever a minister may hope to hear. Students considering public roles should expect these duties alongside the technical work.
 
 ### Practice note — asking questions
 
@@ -3075,21 +3105,31 @@ You will (1) scope a capstone extending Lantern; (2) write a project charter wit
 
 Capstones should be ambitious but finishable in two semesters. Kofi's team chooses: "An OT vendor-watch service that turns vendor advisories and partner reports into approved, interlocked recommendations for BEN's OT engineers." It touches requirements, data models, controls, integration, validation and safety.
 
+The team weighed two other scopes, a phishing triage tool and a partner quality dashboard, and rejected both as either too narrow or already done well by existing products. Vendor-watch drew on the OT engineers' request recorded during the engineering context work, so it had a real user waiting for it.
+
 ### 44.2 Charter
 
 Problem statement, stakeholders, measurable objectives (for example, vendor-relevant alerts reach the OT queue within 15 minutes with fewer than 10% irrelevant), constraints (standard library prototypes, synthetic data, no OT automation), milestones, risks and a communication plan.
+
+Writing the objective as a number on a defined test set made it possible to say at the end whether the team succeeded. The constraint against OT automation was set by the team itself after the safety discussion, so the service only recommends; it never changes OT systems directly. The charter is two pages and is signed by the supervisor.
 
 ### 44.3 Team roles
 
 Lead engineer, data modeller, controls and safety owner, validation owner. Roles rotate for some tasks so everyone touches the whole system.
 
+Kofi took the lead engineer role and a classmate took controls and safety, which meant she had authority to stop a change that weakened an interlock. Rotation came through paired tasks: the data modeller and the validation owner wrote the acceptance scenarios together, so each understood the other's constraints. Roles are written in the charter, with a named backup for each in case someone is ill near a deadline.
+
 ### 44.4 Ethics approval
 
 The project uses synthetic advisories and synthetic OT asset lists. If any real vendor advisories are used, only public CLEAR documents qualify, and their terms are checked. The approval is filed with the charter.
 
+The approval was quick because the plan contained no personal data and no live systems. The team still recorded a check of the terms of each public advisory site they planned to read. Approval covers the plan as written; any change that would bring in real data needs a new request before the work starts.
+
 ### 44.5 Risk register
 
 Risks: scope creep, unavailable OT reviewer, ambiguous vendor naming, overconfidence in automated relevance scoring. Each has an owner and mitigation.
+
+Kofi's team scored each risk at the start and reviewed the register every two weeks. The unavailable reviewer became real halfway through, when the OT engineer went on leave; the mitigation, a second engineer named in advance, kept the project moving. Ambiguous vendor names were handled with a synonym list built from synthetic advisories. Overconfidence in relevance scoring was checked by having a person rate a sample each week.
 
 ### Practice note — first milestone
 
@@ -3135,21 +3175,31 @@ You will (1) prepare a design package for independent review; (2) respond to rev
 
 Requirements and traceability, architecture and ADRs, safety argument, threat model and FMEA, verification reports from Chapters 30 and 40, privacy assessment, and open risks. Reviewers receive it a week in advance.
 
+Sending the package early lets reviewers read at their own pace and arrive with questions rather than first impressions. Kofi's team included a reading guide that pointed to the decisions they were least sure about. The open risks were listed honestly, including two the team had not yet solved, because reviewers find hidden problems anyway and trust falls when they do.
+
 ### 45.2 Reviewers
 
 An external engineer from another utility, a privacy specialist, and an OT safety engineer. None worked on the design. Their independence is the point: none of them reports to the BEN manager who owns Lantern's delivery date.
+
+Kofi's team asked each reviewer to declare any conflict before the review. The external engineer had once worked with a member of BEN's team, which was recorded and judged not to affect her independence. Reviewers are thanked in the record but are not paid by the project.
 
 ### 45.3 Findings
 
 Findings are graded: must-fix before go-live, should-fix within a set time, and observations. Each gets an owner and due date.
 
+Grading keeps attention on what matters. A must-fix finding blocks go-live until it is closed and checked. A should-fix item has a date and an owner but does not hold up the launch. Observations are recorded for the team to consider. Kofi's team received two must-fix findings, five should-fix items and several observations, all logged in the same tracker as the project's defects.
+
 ### 45.4 Responses
 
 The team responds in writing: accepted with action, accepted with alternative, or disputed with evidence. Disputes are resolved by the review chair.
 
+Each response cites the evidence for its position. When the team disputed one finding about retention periods, they attached the partner agreement that set the period. The chair accepted the evidence, and the finding was closed with a note. Another finding the team first wanted to dispute turned out to be correct once they reread their own design record, and they accepted it.
+
 ### 45.5 Outcome
 
 The chair records the decision: proceed, proceed with conditions, or do not proceed. Conditions link to must-fix findings.
+
+The decision is recorded with its date, the package version reviewed and the names of the reviewers. Proceed with conditions means go-live may happen only once each condition is closed and the chair has confirmed it. In the worked example, the chair checked the changed ticket template and the closure block herself before signing off, which took one short meeting. The record is filed with the package.
 
 ### Practice note — preparing reviewers
 
