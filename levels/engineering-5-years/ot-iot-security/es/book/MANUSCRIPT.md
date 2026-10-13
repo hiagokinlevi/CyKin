@@ -1866,7 +1866,7 @@ El informe piloto de Lena para ABP enumera los resultados por clase de ataque. C
 
 ### 29.4 Errores y límites
 
-Los denominadores tomados de otra planta invalidan la métrica. Los ataques sintéticos no son el adversario. Lena nunca toma prestado un denominador del plan de otro sitio, porque las técnicas, los activos y los procesos de ABP son distintos. Si hace falta una comparación con otra planta, ambos sitios deben usar las mismas reglas de planificación, y el informe lo dice. También indica en cada informe que los ataques sintéticos representan clases elegidas, no el comportamiento de un adversario real, para que los lectores no sobrevaloren las cifras de detección. Ambas advertencias aparecen en todos los informes.
+Los denominadores tomados de otra planta invalidan la métrica. Los ataques sintéticos no son el adversario. Lena nunca toma prestado un denominador del plan de otro sitio, porque las técnicas, los activos y los procesos de ABP son distintos. Si hace falta una comparación con otra planta, ambos sitios deben usar las mismas reglas de planificación, y el informe lo dice. También indica en cada informe que los ataques sintéticos representan clases elegidas, no el comportamiento de un adversario real, para que los lectores no sobrevaloren las cifras de detección.
 
 ### Nota práctica
 
@@ -1950,7 +1950,7 @@ El informe de Lena para cada ejecución del laboratorio I enumera las versiones 
 
 ### 30.4 Errores y límites
 
-Los laboratorios en bancos compartidos chocan entre sí; reserve el entorno sintético. Lena reserva en el calendario compartido el entorno de banco de ABP para cada ejecución del laboratorio, con la versión en prueba indicada en la reserva. Una vez, dos equipos ejecutaron compilaciones distintas en el mismo banco en horarios solapados, y sus registros se volvieron imposibles de separar. Desde entonces, una ejecución sin reserva no cuenta como evidencia de versión, y el banco se restablece a un estado conocido antes de cada ejecución reservada. Reservar lleva minutos.
+Los laboratorios en bancos compartidos chocan entre sí; reserve el entorno sintético. Lena reserva en el calendario compartido el entorno de banco de ABP para cada ejecución del laboratorio, con la versión en prueba indicada en la reserva. Una vez, dos equipos ejecutaron compilaciones distintas en el mismo banco en horarios solapados, y sus registros se volvieron imposibles de separar. Desde entonces, una ejecución sin reserva no cuenta como evidencia de versión, y el banco se restablece a un estado conocido antes de cada ejecución reservada.
 
 ### Nota práctica
 
