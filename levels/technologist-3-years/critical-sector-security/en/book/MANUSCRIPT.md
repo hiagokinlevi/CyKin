@@ -2253,7 +2253,7 @@ Expected output (Python 3.13.5):
 alerts: 4 | rule B fired per event, not per episode: 2
 ```
 
-Count the alerts by episode, not by line: the output's four alerts are three episodes, and tuning Rule B to alert once and update a count brings it to three.
+Count the alerts by episode, not by line: the output's four alerts are three episodes (Rule A for 192.0.2.44, Rule B for workstation 10.40.3.7, Rule C for PS-09), and tuning Rule B to alert once and update a count brings it to three. Check what stays silent too: the single failed login by `e.strand` from 10.40.9.9 is below Rule A's threshold, correctly, since one mistyped password is not an episode.
 
 ### 19.8 Common errors and limits
 

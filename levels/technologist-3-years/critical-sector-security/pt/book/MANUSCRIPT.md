@@ -2253,7 +2253,7 @@ Saída esperada (Python 3.13.5):
 alerts: 4 | rule B fired per event, not per episode: 2
 ```
 
-Conte os alertas por episódio, e não por linha: os quatro alertas da saída são três episódios, e ajustar a Regra B para alertar uma vez e atualizar uma contagem os reduz a três.
+Conte os alertas por episódio, e não por linha: os quatro alertas da saída são três episódios (Regra A para 192.0.2.44, Regra B para a estação de trabalho 10.40.3.7, Regra C para PS-09), e ajustar a Regra B para alertar uma vez e atualizar uma contagem os reduz a três. Confira também o que fica em silêncio: o único login falho de `e.strand` a partir de 10.40.9.9 fica abaixo do limiar da Regra A, corretamente, pois uma senha digitada errada uma vez não é um episódio.
 
 ### 19.8 Erros comuns e limites
 
