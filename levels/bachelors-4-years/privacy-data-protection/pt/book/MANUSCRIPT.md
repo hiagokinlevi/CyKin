@@ -1,7 +1,7 @@
 # Privacidade e Proteção de Dados: Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); curso 096, curso de bacharelado (4 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–15 de 40 já estão escritos em português, com os exercícios EX001–EX045 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 16–40 (EX046–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 40 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 21–40 (EX061–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de bacharelado que aprendem a proteger os dados de crianças e famílias em uma rede de escolas.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios consultam um registro de aplicativos em SQLite, calculam intervalos de Wilson para uma pesquisa com as famílias, resumem os tempos de resposta a pedidos de acesso, pontuam aplicativos de sala de aula, suprimem células pequenas e cruzam fotografias com registros de consentimento, sempre sobre dados sintéticos. A análise jurídica é didática e não constitui aconselhamento jurídico; a LGPD e os atos da ANPD são citados pelo texto oficial e parafraseados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,9 @@ Regulamento (UE) 2016/679 (GDPR), incluindo o considerando 38 e os artigos 7, 8,
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
 
-Capítulos 16–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-16), até a chegada dos próximos lotes.
+Capítulos 21–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -707,11 +707,211 @@ Vinte pedidos são poucos; um único atraso muda muito o percentual.
 - **EX044 — Prorrogação nas férias.** As férias escolares justificam prorrogar o prazo? *Rubrica:* 3 = não; a prorrogação é para complexidade ou volume, com aviso;; 2 = não;; 1 = sim;; 0 = nenhuma.
 - **EX045 — Contagens com percentuais.** Por que relatar contagens junto com os percentuais? *Rubrica:* 3 = números pequenos deixam os percentuais instáveis;; 2 = menciona tamanho;; 1 = desnecessário;; 0 = nenhuma.
 
+<a id="ch-16"></a>
+
+## Capítulo 16 — Arquitetura de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar uma arquitetura segura para uma rede de várias escolas; (2) separar os dados sensíveis; (3) planejar backup e recuperação.
+
+### 16.1 A arquitetura da rede
+
+Elena projeta uma arquitetura para a rede. Um sistema central de gestão escolar atende às doze escolas. Os funcionários de cada escola veem apenas os próprios alunos. Os registros de proteção das crianças ficam em um sistema separado e mais restrito. Os aplicativos de sala de aula se conectam por login único (single sign-on), o que permite à rede controlar o acesso de forma central e removê-lo rapidamente. Ela desenha o projeto com zonas e explica por que os registros sensíveis ficam separados dos sistemas do dia a dia usados por muitos funcionários. Os registros de proteção ficam em uma zona própria, com acesso separado. As zonas são documentadas.
+
+### 16.2 Separação
+
+A separação limita o dano. Se a conta de um professor for comprometida, o atacante alcança os registros de aprendizagem, mas não as anotações de proteção das crianças. Elena também separa os dados dos alunos dos dados dos funcionários, já que funções diferentes precisam de cada um. Ela explica que o GDPR exige, no artigo 32, segurança adequada ao risco, e que a LGPD traz dever semelhante no art. 46; a separação é uma medida de bom custo-benefício para uma rede com pouca equipe de segurança, porque reduz o quanto qualquer falha isolada consegue expor. Um notebook de sala comprometido não alcança diretamente os registros de proteção.
+
+### 16.3 Backup e recuperação
+
+Escolas já sofreram ataques de ransomware. Elena projeta backups cifrados, guardados separadamente e testados. Ela define objetivos de recuperação: o sistema de gestão restabelecido em até um dia e os registros de proteção das crianças em até quatro horas, já que os responsáveis pela proteção podem precisar deles com urgência. Planeja um teste de restauração a cada período letivo. Observa que os backups também guardam dados pessoais e precisam seguir as regras de retenção, então os backups antigos expiram. No primeiro teste, os registros de frequência de um período são recuperados em menos de uma hora, e a cópia restaurada é apagada em seguida, para que não sobre duplicata.
+
+### 16.4 Arquitetura dos fornecedores
+
+Muitas funções são fornecidas por terceiros. Elena inclui os fornecedores no diagrama de arquitetura, com seus fluxos de dados e contratos. Ela observa que o login único permite à rede desativar rapidamente o acesso a todos os aplicativos quando um aluno sai. Também estabelece a regra de que novos aplicativos precisam se conectar pelo login único e passar pela triagem. A arquitetura, explica, inclui regras sobre como novos componentes entram, e não só os componentes atuais. Cada aplicativo só entra depois da triagem e aparece no diagrama de arquitetura, com seu responsável e seu contrato.
+
+### Exemplo resolvido
+
+Elena projeta um sistema central com acesso por escola, um sistema separado para a proteção das crianças, login único para os aplicativos, backups cifrados e testados e uma regra de entrada para novos aplicativos.
+
+> **Caso sintético.** A arquitetura é sintética; o artigo 32 do GDPR e o art. 46 da LGPD são reais.
+
+### Erros e limites
+
+Sistemas centrais concentram o risco; proteja-os e monitore-os de perto.
+
+### Exercícios
+
+- **EX046 — Separação da proteção.** Por que manter os registros de proteção das crianças em um sistema separado? *Rubrica:* 3 = uma conta de professor comprometida não os alcança;; 2 = menciona sensibilidade;; 1 = mesmo sistema;; 0 = nenhuma.
+- **EX047 — Benefício do login único.** O que o login único dá à rede? *Rubrica:* 3 = controle central e remoção rápida do acesso a todos os aplicativos;; 2 = menciona controle;; 1 = nada;; 0 = nenhuma.
+- **EX048 — Retenção dos backups.** Por que os backups precisam seguir as regras de retenção? *Rubrica:* 3 = os backups também guardam dados pessoais;; 2 = menciona dados;; 1 = estão isentos;; 0 = nenhuma.
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Conceitos de criptografia
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar a criptografia em repouso e em trânsito; (2) entender o hash e a pseudonimização; (3) gerir as chaves de forma adequada.
+
+### 17.1 Criptografia
+
+Elena aprende a diferença entre a criptografia em trânsito, que protege os dados que circulam pelas redes, e a criptografia em repouso, que protege os dados armazenados. As duas protegem os registros das crianças contra ameaças diferentes. Ela verifica se os sistemas da rede usam as duas e descobre que os relatórios exportados e salvos em pen drives não são cifrados. Recomenda pen drives cifrados ou, melhor ainda, acabar com as exportações para mídias removíveis e usar um compartilhamento seguro. A auditoria mostra que esses pen drives servem sobretudo para levar relatórios para casa e corrigir.
+
+### 17.2 Hash e pseudônimos
+
+O hash transforma dados em um valor de tamanho fixo que não pode ser revertido com facilidade. Elena explica que aplicar o hash apenas ao identificador de um aluno é fraco, porque o conjunto de identificadores é pequeno e um atacante pode calcular o hash de todos. Um hash com chave secreta é mais forte. Ela usa hashes com chave na análise de leitura do Capítulo 8. Ela ressalta que a pseudonimização reduz o risco, mas os dados continuam pessoais pelo artigo 4(5) do GDPR. As chaves ficam com o responsável pela proteção de dados, que as troca uma vez por ano.
+
+### 17.3 Chaves
+
+A criptografia depende das chaves. Elena pergunta quem guarda as chaves dos backups da rede. A resposta é um único técnico de TI. Se ele sair ou perder a chave, os backups ficam inutilizáveis. Ela recomenda guardar as chaves em um serviço gerenciado de chaves, com dois custodiantes autorizados e recuperação documentada. Explica que a gestão de chaves costuma ser a parte mais difícil da criptografia na prática, e que as organizações pequenas precisam de arranjos simples e bem documentados. A rede mantém um registro de chaves de duas páginas, com os detentores e os locais de cada chave.
+
+### 17.4 Limites
+
+Elena observa que a criptografia não protege contra usuários autorizados que fazem mau uso dos dados nem contra a coleta desnecessária. Um professor com acesso legítimo ainda pode compartilhar um relatório de forma indevida. A criptografia é uma medida entre muitas. Ela escreve em suas anotações que a criptografia protege a confidencialidade contra pessoas de fora, enquanto o controle de acesso, o treinamento e a minimização tratam das pessoas de dentro e da coleta excessiva. Um professor com acesso legítimo ainda pode usar mal relatórios decifrados, então só a criptografia não teria evitado o e-mail enviado ao destinatário errado que ela estudou no início do curso.
+
+### Exemplo resolvido
+
+Elena acaba com as exportações sem criptografia em pen drives, usa hashes com chave para os pseudônimos, leva as chaves dos backups para um serviço gerenciado com dois custodiantes e enuncia os limites da criptografia.
+
+> **Caso sintético.** Os sistemas são sintéticos; o artigo 4(5) do GDPR é real.
+
+### Erros e limites
+
+Dados cifrados continuam sendo dados pessoais; a criptografia reduz o risco, não as obrigações.
+
+### Exercícios
+
+- **EX049 — Exportações em pen drive.** O que Elena recomendou para as exportações em pen drives? *Rubrica:* 3 = pen drives cifrados ou substituição por compartilhamento seguro;; 2 = uma opção;; 1 = nada;; 0 = nenhuma.
+- **EX050 — Um único detentor da chave.** Qual era o risco de um só técnico guardar as chaves dos backups? *Rubrica:* 3 = os backups ficariam inutilizáveis se ele saísse ou perdesse a chave;; 2 = menciona perda;; 1 = nenhum;; 0 = nenhuma.
+- **EX051 — Limites da criptografia.** Contra o que a criptografia não protege? *Rubrica:* 3 = mau uso por usuários autorizados e coleta excessiva;; 2 = um;; 1 = protege contra tudo;; 0 = nenhuma.
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Métodos de pesquisa I
+
+### Objetivos de aprendizagem
+
+Você vai (1) formular uma questão de pesquisa sobre a prática de privacidade; (2) escolher métodos adequados às escolas; (3) planejar uma pesquisa ética que envolva dados de crianças.
+
+### 18.1 A questão
+
+A disciplina de métodos de pesquisa pede que Elena planeje um estudo pequeno. Ela pergunta: por que os professores adotam aplicativos de sala de aula sem verificar suas práticas de dados? A questão importa porque os aplicativos não verificados criam a maior parte dos riscos de compartilhamento da rede encontrados no Capítulo 9. Ela a formula como questão exploratória, adequada a entrevistas, e não como hipótese a testar, porque pouco se sabe sobre o raciocínio dos professores nesse contexto. Ela espera motivos variados e quer ouvi-los nas palavras dos próprios professores.
+
+### 18.2 Métodos
+
+Elena planeja entrevistas semiestruturadas com dez professores de quatro escolas. Escreve um roteiro de entrevista com perguntas abertas sobre como eles encontram os aplicativos, o que verificam e do que precisariam para verificar mais. Planeja analisar as transcrições de forma temática, codificando os motivos recorrentes. Também planeja comparar os temas das entrevistas com o registro de aplicativos, para ver se as práticas declaradas correspondem ao compartilhamento real. As entrevistas duram cerca de trinta minutos e usam as mesmas perguntas centrais para todos. As respostas são comparadas com o registro.
+
+### 18.3 Ética
+
+O estudo de Elena envolve adultos, não crianças, mas as conversas podem mencionar alunos. Ela planeja pedir aos participantes que não citem crianças pelo nome, apagar qualquer nome que apareça nas transcrições e guardar as gravações com segurança, apagando-as depois da transcrição. Obtém a aprovação ética do Fairhaven e a autorização da rede. Os participantes dão consentimento informado e podem desistir. Ela observa que uma pesquisa sobre privacidade precisa ser um modelo de boa prática de privacidade. As gravações são apagadas depois da transcrição, e os nomes citados são retirados dos textos.
+
+### 18.4 Limites
+
+Elena registra os limites: dez professores não representam todos os professores; os participantes podem se apresentar de forma favorável; e seu papel no estágio pode influenciar o que eles dizem. Ela planeja declarar esses limites no relatório e pedir a uma colega que não participa do estágio que conduza duas entrevistas, como verificação. O Dr. Asante lembra que reconhecer os limites faz parte da boa pesquisa, e não é uma fraqueza. Seu papel no estágio poderia deixar os professores menos francos. A colega conduz duas entrevistas para verificar esse efeito.
+
+### Exemplo resolvido
+
+Elena formula uma questão exploratória sobre a adoção de aplicativos pelos professores, planeja dez entrevistas com análise temática, define salvaguardas éticas contra a identificação de crianças e lista os limites.
+
+> **Caso sintético.** O plano de estudo é sintético.
+
+### Erros e limites
+
+As entrevistas captam o comportamento relatado; compare-o com os registros sempre que possível.
+
+### Exercícios
+
+- **EX052 — Formulação exploratória.** Por que formular a questão como exploratória? *Rubrica:* 3 = pouco se sabe sobre o raciocínio dos professores, então as entrevistas são adequadas;; 2 = menciona novidade;; 1 = hipótese;; 0 = nenhuma.
+- **EX053 — Crianças nas transcrições.** Como Elena trata as menções a crianças nas entrevistas? *Rubrica:* 3 = pede que não as citem pelo nome e apaga os nomes das transcrições;; 2 = uma parte;; 1 = mantém;; 0 = nenhuma.
+- **EX054 — Influência do estágio.** Por que o papel de Elena no estágio pode afetar as respostas? *Rubrica:* 3 = os professores podem dizer o que acham que a rede quer ouvir;; 2 = menciona viés;; 1 = nenhum efeito;; 0 = nenhuma.
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Privacidade e proteção de dados: escopo e teoria
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir o alcance da legislação de proteção de dados; (2) relacionar a teoria aos conceitos jurídicos; (3) entender onde a lei termina e a ética continua.
+
+### 19.1 Alcance da lei
+
+Elena estuda o alcance do GDPR. Ele se aplica ao tratamento de dados pessoais por meios automatizados ou em sistemas de arquivo, com exceções como as atividades puramente domésticas. Dado pessoal significa qualquer informação relativa a uma pessoa natural identificada ou identificável. A LGPD tem uma definição semelhante, no art. 5º, I, e também exclui o tratamento para fins exclusivamente particulares (art. 4º, I). Elena observa que os dados dos alunos claramente entram no alcance da lei, assim como as fotografias e as gravações de voz em que as crianças podem ser reconhecidas. O artigo 4(1) define dados pessoais de forma ampla, incluindo os identificadores indiretos.
+
+### 19.2 Identificabilidade
+
+O considerando 26 explica que a identificabilidade depende dos meios razoavelmente suscetíveis de serem usados. Elena aplica isso a uma tabela publicada de resultados de exames de uma escola pequena. Se a tabela mostrar que um aluno com merenda gratuita obteve determinada nota, os leitores podem identificar a criança. Os dados são, portanto, pessoais, mesmo sem nenhum nome. Ela liga isso ao exercício de contagem do Capítulo 6 e à pesquisa de Sweeney. O considerando 26 define o teste: pergunta que meios são razoavelmente suscetíveis de serem usados para identificar alguém.
+
+### 19.3 Teoria e lei
+
+Elena compara os conceitos jurídicos com a teoria da privacidade. A limitação da finalidade da lei se parece com a preocupação da integridade contextual com fluxos que correspondam aos contextos. Os danos de Solove, como a exclusão e o uso secundário, correspondem aos direitos de acesso e à limitação da finalidade. Ela observa que a teoria muitas vezes explica por que uma regra jurídica existe, o que ajuda os funcionários a entendê-la e segui-la, em vez de vê-la como arbitrária. A integridade contextual, por exemplo, explica por que dados compartilhados com uma professora não devem chegar a anunciantes de aplicativos.
+
+### 19.4 Além da lei
+
+Algumas práticas podem ser lícitas e, ainda assim, prejudiciais. Uma escola pode compartilhar licitamente fotografias da turma com os pais, mas uma foto que mostre uma criança num momento de angústia pode causar dano. Elena escreve que a rede deve considerar a dignidade e os sentimentos das crianças, e não só as permissões legais. O Dr. Asante concorda e observa que a ética continua onde a lei silencia, especialmente para crianças que não conseguem falar por si com facilidade. Ela acrescenta uma pergunta ética à triagem: isto é justo com a criança? Ela a faz todas as vezes.
+
+### Exemplo resolvido
+
+Elena define o alcance do GDPR, mostra como a tabela de resultados de uma escola pequena pode identificar um aluno, relaciona a teoria às regras jurídicas e acrescenta a dignidade como consideração além da lei.
+
+> **Caso sintético.** Os exemplos são sintéticos; o considerando 26 do GDPR, a LGPD, Solove (2006), Nissenbaum (2004) e Sweeney (2002) são reais.
+
+### Erros e limites
+
+A identificabilidade depende do contexto; a mesma tabela pode ser segura para uma escola grande.
+
+### Exercícios
+
+- **EX055 — Definição de dado pessoal.** O que significa dado pessoal pelo GDPR? *Rubrica:* 3 = informação relativa a uma pessoa natural identificada ou identificável;; 2 = aproximada;; 1 = errada;; 0 = nenhuma.
+- **EX056 — Tabela sem nomes.** Como uma tabela de resultados sem nomes pode conter dados pessoais? *Rubrica:* 3 = células pequenas permitem identificar uma criança;; 2 = menciona números pequenos;; 1 = nunca;; 0 = nenhuma.
+- **EX057 — Lícito, mas prejudicial.** Dê um exemplo, tirado do capítulo, de tratamento lícito, mas prejudicial. *Rubrica:* 3 = compartilhar uma foto que mostra uma criança em angústia;; 2 = um exemplo;; 1 = nenhum;; 0 = nenhuma.
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Privacidade e proteção de dados: casos fundamentais
+
+### Objetivos de aprendizagem
+
+Você vai (1) aprender com casos de pesquisa em privacidade publicados; (2) identificar a lição de cada caso; (3) aplicar as lições às escolas.
+
+### 20.1 Reidentificação
+
+Elena estuda a demonstração de Sweeney (2002) de que alguns poucos atributos, como código postal, data de nascimento e sexo, podiam reidentificar pessoas em registros de saúde supostamente anônimos. A lição é que remover os nomes não torna os dados anônimos. Para a rede, isso significa que entregar a pesquisadores dados por aluno sem nomes, mas com data de nascimento e escola, ainda poderia identificar crianças, e esses dados precisam ser tratados como pessoais, com as salvaguardas adequadas. Em escolas pequenas, a data de nascimento e a escola podem bastar para identificar uma criança.
+
+### 20.2 Dados esparsos
+
+Narayanan e Shmatikov (2008) mostraram que um conjunto de avaliações de filmes podia ser ligado a resenhas públicas a partir de umas poucas avaliações conhecidas. A lição é que dados comportamentais detalhados identificam muito. Elena a aplica aos aplicativos de aprendizagem, que registram atividades detalhadas, como respostas e tempos. Esses dados poderiam revelar crianças individuais mesmo sem nomes, o que reforça sua preocupação com aplicativos que compartilham logs de atividade com terceiros. Os logs dos aplicativos registram cada clique e seu horário, e alguns poucos horários bastam para destacar uma criança.
+
+### 20.3 Comportamento e escolhas
+
+Acquisti, Brandimarte e Loewenstein (2015) revisam evidências de que as escolhas de privacidade das pessoas são incertas, dependentes do contexto e maleáveis. A lição para a rede é que o consentimento dos pais depende muito de como as escolhas são apresentadas. Elena recomenda formulários de consentimento neutros, sem opções pré-marcadas nem pressão, em linha com as diretrizes do EDPB sobre consentimento. Ela observa que a pesquisa sobre comportamento ajuda a desenhar escolhas mais justas. Como as escolhas são moldadas com facilidade pelo desenho e pelo contexto, os formulários da rede passam a apresentá-las de forma neutra.
+
+### 20.4 Aplicação das lições
+
+Elena escreve um guia curto para a rede: nunca tratar dados sem nomes como anônimos sem análise; tratar os dados de atividade de aprendizagem como identificadores; e desenhar as escolhas de consentimento de forma neutra. Cada lição está ligada a um caso publicado. O Dr. Asante observa que fundamentar as orientações em evidências as torna mais persuasivas para diretores ocupados do que alertas genéricos, porque as evidências mostram que os riscos são reais, e não teóricos. Cada slide combina um estudo com um exemplo escolar, para que os diretores vejam por que a pesquisa importa localmente.
+
+### Exemplo resolvido
+
+Elena tira três lições de Sweeney (2002), de Narayanan e Shmatikov (2008) e de Acquisti et al. (2015) e as transforma em um guia para a rede.
+
+> **Caso sintético.** O guia é sintético; as obras citadas e as Diretrizes 05/2020 do EDPB são reais.
+
+### Erros e limites
+
+Lições de outros domínios exigem cuidado quando transferidas para os dados de crianças.
+
+### Exercícios
+
+- **EX058 — Lição de Sweeney.** Que lição o trabalho de Sweeney ensina? *Rubrica:* 3 = remover os nomes não torna os dados anônimos;; 2 = aproximada;; 1 = os nomes bastam;; 0 = nenhuma.
+- **EX059 — Logs de atividade.** Por que os logs de atividade dos aplicativos de aprendizagem identificam? *Rubrica:* 3 = dados comportamentais detalhados podem ser ligados a pessoas, como as avaliações esparsas;; 2 = menciona detalhe;; 1 = não identificam;; 0 = nenhuma.
+- **EX060 — Consentimento neutro.** Que desenho de consentimento decorre da pesquisa comportamental? *Rubrica:* 3 = formulários neutros, sem caixas pré-marcadas nem pressão;; 2 = menciona desenho;; 1 = pré-marcar;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX045 (as de EX046–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Elena Rossi, o Dr. Kwame Asante, o Fairhaven College, a Brindle Valley Schools Trust e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060 (as de EX061–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Elena Rossi, o Dr. Kwame Asante, o Fairhaven College, a Brindle Valley Schools Trust e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** O compartilhamento só é permitido quando há necessidade e existe uma base legal, que não precisa ser o consentimento dos pais.
 
@@ -802,6 +1002,36 @@ Respostas-modelo para EX001–EX045 (as de EX046–EX120 estão na edição em i
 **EX044.** Não. As prorrogações são permitidas para pedidos complexos ou numerosos, com aviso, e não por causa das férias.
 
 **EX045.** Com poucos pedidos, os percentuais oscilam muito, então as contagens dão contexto.
+
+**EX046.** A separação faz com que o comprometimento de contas comuns não exponha as anotações de proteção das crianças.
+
+**EX047.** Controle central do acesso e a capacidade de remover de uma vez o acesso a todos os aplicativos.
+
+**EX048.** Os backups contêm dados pessoais, então precisam expirar como os originais.
+
+**EX049.** Usar pen drives cifrados ou, melhor, acabar com as exportações para mídias removíveis.
+
+**EX050.** Se ele sair ou perdê-la, os backups não poderão ser restaurados.
+
+**EX051.** O mau uso por usuários autorizados e a coleta de mais dados do que o necessário.
+
+**EX052.** Há pouco conhecimento prévio, então a exploração aberta se ajusta melhor do que testar uma hipótese.
+
+**EX053.** Pede-se aos participantes que não citem alunos pelo nome, e qualquer nome é apagado.
+
+**EX054.** Os professores podem se apresentar de forma favorável a alguém ligado à rede.
+
+**EX055.** Qualquer informação relativa a uma pessoa natural identificada ou identificável.
+
+**EX056.** Em escolas pequenas, uma célula que descreve um único aluno pode identificar essa criança.
+
+**EX057.** Compartilhar uma foto lícita da turma que mostra uma criança num momento de angústia.
+
+**EX058.** Remover os nomes deixa os dados identificáveis por meio de outros atributos.
+
+**EX059.** Padrões detalhados de atividade são distintivos, como as avaliações de filmes no estudo de Narayanan e Shmatikov.
+
+**EX060.** Formulários neutros, sem opções pré-marcadas nem pressão.
 
 <a id="references"></a>
 ## Referências
