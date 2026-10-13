@@ -1,7 +1,7 @@
 # Cloud and Container Security: Master's Course
 
 - Language: English (`en`); course 174, Master's course (2 years).
-- Editorial state: **draft**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; Three offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **draft**. Chapters 1–8 of 8 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; three offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: master's students who must compare competing explanations of cloud security failures with careful observational research.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: review and test only cloud accounts, clusters and workloads you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Misconfigurations are taught from the defender's side using synthetic configurations, logs and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -47,23 +47,23 @@ Lucas Moreau is a master's student at the fictional Ashcombe University, supervi
 
 ### 1.2 From problem to question
 
-Lucas turns the argument into a question he can answer with Larkspur's change records: "Are configuration changes made through the console more likely to expose storage publicly than changes made through reviewed IaC, and what explains any difference?" The question compares two explanations rather than assuming one.
+Lucas turns the argument into a question he can answer with Larkspur's change records: "Are configuration changes made through the console more likely to expose storage publicly than changes made through reviewed IaC, and what explains any difference?" The question compares two explanations rather than assuming one. The question came out of a real disagreement at Larkspur: the platform team blamed console changes, while the data team pointed to copied IaC templates. Phrasing it as a comparison commits Lucas to reporting whichever way the data fall, and the second clause leaves room for a third explanation neither team had named.
 
 ### 1.3 Search method
 
-He searches two digital libraries and the NIST and CSA publication lists with recorded search strings, dates and result counts. Titles and abstracts are screened against written inclusion criteria: empirical or standards sources on cloud configuration error, IaC security or access control.
+He searches two digital libraries and the NIST and CSA publication lists with recorded search strings, dates and result counts. Titles and abstracts are screened against written inclusion criteria: empirical or standards sources on cloud configuration error, IaC security or access control. The criteria were written before screening began and shared with Dr Tanaka, so the reasons for including or excluding a paper do not shift as Lucas reads. The search strings combine terms for misconfiguration, storage exposure, infrastructure as code and access control, and each is saved with the date it was run.
 
 ### 1.4 Key terms
 
-"Exposure" means a storage resource readable without authentication. "Change origin" is console, IaC pipeline or provider API script. "Reviewed" means a second person approved the change.
+"Exposure" means a storage resource readable without authentication. "Change origin" is console, IaC pipeline or provider API script. "Reviewed" means a second person approved the change. These definitions decide what the study counts. A bucket readable only by a partner's named account is not an exposure; a change made by a script that called the provider's API directly counts as its own origin. Writing the terms down before the data arrive stops them being stretched later to fit a result, as happened when the pilot showed that intended public access needed its own category.
 
 ### 1.5 Recording
 
-The search log, screening decisions and reasons for exclusion are kept so another student could repeat the search and reach the same set.
+The search log, screening decisions and reasons for exclusion are kept so another student could repeat the search and reach the same set. The log also caught Lucas's own bias: when he reviewed his exclusion reasons, two papers arguing that IaC spreads errors widely had been dropped without a valid reason. Dr Tanaka asked him to reinstate them. Without a written record, that pattern would have been invisible to anyone checking the review, including Lucas himself. Examiners can rerun the search from the appendix.
 
 ### 1.6 Early sources
 
-Mell and Grance (2011) define the service models; the shared responsibility pages of AWS, Microsoft and Google place storage access settings on the customer's side; Rahman et al. (2019) found security smells in IaC scripts, which supports the platform team's concern.
+Mell and Grance (2011) define the service models; the shared responsibility pages of AWS, Microsoft and Google place storage access settings on the customer's side; Rahman et al. (2019) found security smells in IaC scripts, which supports the platform team's concern. These sources frame the question from both sides. The shared responsibility pages show that the misconfiguration is Larkspur's to prevent, whichever route caused it; Rahman et al. give the IaC explanation empirical support. Lucas notes that none of the early sources compares console and IaC exposure rates directly, which is the gap his study addresses.
 
 ### Worked example
 
@@ -103,13 +103,13 @@ You will (1) discuss access control, least privilege and configuration in depth;
 
 ### 2.1 Access control models
 
-Sandhu et al. (1996) formalised role-based access control, where permissions attach to roles rather than individuals. Cloud platforms implement roles and policies at large scale. NIST SP 800-210 gives guidance specific to cloud systems, including managing access across service models.
+Sandhu et al. (1996) formalised role-based access control, where permissions attach to roles rather than individuals. Cloud platforms implement roles and policies at large scale. NIST SP 800-210 gives guidance specific to cloud systems, including managing access across service models. For Lucas, the relevance is that bucket access settings are themselves permissions held by roles. If many roles can change those settings, the number of paths to an exposure grows whatever tool is used. This is the basis of explanation C later in the study, and it is why he measures identities with storage administration rights per account.
 
 ### 2.2 Least privilege in practice
 
-A role that holds permissions it never uses widens what an error or stolen credential can do. Cloud providers offer access history that shows which permissions were used, which allows evidence-based trimming.
+A role that holds permissions it never uses widens what an error or stolen credential can do. Cloud providers offer access history that shows which permissions were used, which allows evidence-based trimming. The lab measures this for three synthetic roles at Larkspur. The seminar later adds a caution: a permission unused in 90 days may still be needed for a quarterly task, so unused permissions become candidates for review with the owner rather than automatic removal. Lucas adds that nuance to his framework before the main study.
 
-### Lab — Lab — permission use
+### Lab — permission use
 
 ```python
 """Compare granted and used permissions for synthetic cloud roles over 90 days (stdlib only)."""
@@ -137,15 +137,15 @@ unused share 4/11 = 36%
 
 ### 2.3 Lab result
 
-Over 90 synthetic days, ci-deployer used 3 of 5 granted permissions (unused: logs.read, storage.read), analytics-job used 2 of 4 (unused: db.admin, storage.write) and support-ro used both of its 2. In total 4 of 11 granted permissions, 36%, went unused. The analytics job's unused storage.write matters for Lucas's question: a job that can write storage settings could also change them.
+Over 90 synthetic days, ci-deployer used 3 of 5 granted permissions (unused: logs.read, storage.read), analytics-job used 2 of 4 (unused: db.admin, storage.write) and support-ro used both of its 2. In total 4 of 11 granted permissions, 36%, went unused. The analytics job's unused storage.write matters for Lucas's question: a job that can write storage settings could also change them. Lucas reports the result as a property of three synthetic roles, not as a rate for Larkspur. Its value for the study is the method: access history can show which identities hold storage-changing rights they do not use.
 
 ### 2.4 Zero trust
 
-NIST SP 800-207 argues that access should be decided per request using identity and context, not network location. For storage, that means private by default, with access granted to named identities.
+NIST SP 800-207 argues that access should be decided per request using identity and context, not network location. For storage, that means private by default, with access granted to named identities. At Larkspur this principle points to two controls that later appear in Lucas's recommendations: blocking public access by default at account level, and granting bucket access to named identities instead of to everyone. Both work regardless of whether a change comes through the console or a template, which is why they address all three explanations at once.
 
 ### 2.5 Seminar argument
 
-Lucas argues that exposure is partly an identity problem: if few identities can change bucket access settings, fewer paths to exposure exist, regardless of console or IaC.
+Lucas argues that exposure is partly an identity problem: if few identities can change bucket access settings, fewer paths to exposure exist, regardless of console or IaC. His seminar peers accepted the argument but challenged the 90-day usage window as a measure of need. Lucas therefore kept identity breadth as a separate explanation to test, counting identities with storage administration rights per account, instead of folding it into either of the platform team's or data team's explanations. Breadth stays testable whatever the usage window.
 
 ### Access history quality
 
@@ -189,27 +189,27 @@ You will (1) design an observational study of change records; (2) address confou
 
 ### 3.1 Design
 
-The study uses one year of Larkspur's change records for storage resources. Each change has an origin (console or IaC), a time, a resource and whether it produced public exposure. An observational design is appropriate because Larkspur cannot randomly assign how teams make changes.
+The study uses one year of Larkspur's change records for storage resources. Each change has an origin (console or IaC), a time, a resource and whether it produced public exposure. An observational design is appropriate because Larkspur cannot randomly assign how teams make changes. One year covers seasonal peaks such as sales periods, when urgent changes are more likely. Each record comes from Larkspur's change log, with exposure taken from the provider's configuration history, so neither the team nor Lucas decides after the fact which change caused an exposure. The unit of analysis is the change, not the bucket.
 
 ### 3.2 Confounding
 
-Console changes may happen more often under time pressure, in data-science teams or at night. Lucas records team, hour and resource type so he can check whether the difference holds within these groups.
+Console changes may happen more often under time pressure, in data-science teams or at night. Lucas records team, hour and resource type so he can check whether the difference holds within these groups. If the console rate is higher only at night or only in one team, explanation A would be weaker than it looks. Recording these variables before analysis lets him check within groups rather than explaining away differences after seeing them. Dr Tanaka later adds identity breadth to the list, because console users might also hold broad rights.
 
 ### 3.3 Ethics
 
-Change records name engineers. The ethics application commits to pseudonymising engineer identities before analysis, reporting only by team and origin, and never using the study to assess individuals. Larkspur's data protection officer signs the data agreement.
+Change records name engineers. The ethics application commits to pseudonymising engineer identities before analysis, reporting only by team and origin, and never using the study to assess individuals. Larkspur's data protection officer signs the data agreement. The ethics board added a condition: teams with fewer than five engineers are merged into an "other" group, so nobody can be identified by elimination. The pseudonymisation key stays at Larkspur, and Lucas never sees real names. The merging rule applies to every table and figure.
 
 ### 3.4 Reproducibility
 
-Analysis scripts are written before the full data arrive, tested on synthetic records with the same structure and kept under version control. The synthetic generator is released with the thesis.
+Analysis scripts are written before the full data arrive, tested on synthetic records with the same structure and kept under version control. The synthetic generator is released with the thesis. Writing the scripts first means the analysis cannot be quietly shaped to the data. Testing them on synthetic records with Larkspur's structure also caught format problems before the real export arrived. Releasing the generator lets examiners and other students run the full analysis without access to Larkspur's records, which stay inside the data agreement.
 
 ### 3.5 Pre-registration
 
-Lucas writes his hypotheses, primary comparison and planned subgroup checks in a dated document shared with Dr Tanaka before receiving the data.
+Lucas writes his hypotheses, primary comparison and planned subgroup checks in a dated document shared with Dr Tanaka before receiving the data. The document names the primary comparison, console against IaC exposure rates, the subgroup checks by team and hour, and the tests for clustering by template and identity breadth. When the pilot later forced a change to the definition of exposure, the change was logged against this document with its date and reason, before any main data were seen.
 
 ### 3.6 Measures of association
 
-The primary result is the proportion of changes causing exposure by origin, the risk ratio, and a chi-square test; subgroup results follow.
+The primary result is the proportion of changes causing exposure by origin, the risk ratio, and a chi-square test; subgroup results follow. The risk ratio is the figure Larkspur's managers can use directly: how many times more likely a console change is to cause exposure. The chi-square test shows whether the difference could plausibly be chance at this sample size. Lucas checks before analysis that expected counts are large enough for the test to be valid, and plans to report the counts behind every percentage.
 
 ### Data management plan
 
@@ -252,27 +252,27 @@ You will (1) state each explanation as a testable mechanism; (2) derive predicti
 
 ### 4.1 Explanation A: console error
 
-Manual console changes skip review and templates, so mistakes such as ticking "public" are more likely and stay unnoticed. Prediction: higher exposure rate for console changes, persisting within teams and hours.
+Manual console changes skip review and templates, so mistakes such as ticking "public" are more likely and stay unnoticed. Prediction: higher exposure rate for console changes, persisting within teams and hours. This is the platform team's view. If console changes are riskier only because they happen at night or in one team, the subgroup checks will show it, and A would be weakened. A also predicts that fixing templates would do little for console exposures, which is a pattern the data could contradict.
 
 ### 4.2 Explanation B: weak IaC defaults
 
-Templates copied between projects carry permissive settings, and review focuses on application logic, not storage policy. Prediction: IaC exposures cluster in resources created from a small number of templates; fixing templates would cut many exposures at once.
+Templates copied between projects carry permissive settings, and review focuses on application logic, not storage policy. Prediction: IaC exposures cluster in resources created from a small number of templates; fixing templates would cut many exposures at once. This is the data team's view, and it comes with its own falsifying pattern: if IaC exposures are spread evenly across many templates, weak defaults in a few templates cannot explain them. Template identifiers in Larkspur's change records make the test possible. Rahman et al. give the mechanism support from other organisations.
 
 ### 4.3 Explanation C: identity breadth
 
-Exposure depends on how many identities can change access settings, whatever the origin. Prediction: exposures concentrate where many identities hold storage administration rights.
+Exposure depends on how many identities can change access settings, whatever the origin. Prediction: exposures concentrate where many identities hold storage administration rights. This explanation came from Lucas's seminar argument, not from either Larkspur team. It would be contradicted if accounts with few storage administrators showed exposure rates as high as accounts with many. Because console users might also hold broad rights, identity breadth must be counted alongside origin, or C could make A look stronger than it is. Dr Tanaka asked him to state this in the proposal.
 
 ### 4.4 Distinguishing evidence
 
-A and B can both be true. The study measures rates by origin, clustering by template and the number of identities with storage admin rights per account.
+A and B can both be true. The study measures rates by origin, clustering by template and the number of identities with storage admin rights per account. Each measure tests one explanation's prediction without assuming the others are false. Lucas sets these out in a table with the pattern that would contradict each explanation, so that the results chapter can say which predictions held and which did not. If all three hold, the study shows that all three contribute, which is itself a useful answer for Larkspur.
 
 ### 4.5 Avoiding unfalsifiable claims
 
-"Human error" alone explains everything and predicts nothing; each explanation must say what pattern would contradict it.
+"Human error" alone explains everything and predicts nothing; each explanation must say what pattern would contradict it. At Larkspur, each team had been using "human error" for the other team's changes. Asking each explanation to name a contradicting pattern forced the argument into a form data could settle. The rule also binds Lucas: his own identity-breadth explanation must say what would count against it, which he wrote into the proposal table. Each contradicting pattern appears in the proposal table, next to the analysis that would reveal it.
 
 ### 4.6 Literature link
 
-Rahman et al. (2019) supports B's mechanism; provider guidance on blocking public access at account level addresses all three.
+Rahman et al. (2019) supports B's mechanism; provider guidance on blocking public access at account level addresses all three. Account-level blocking matters for the study's recommendations because it limits exposure whichever explanation turns out strongest. Lucas notes, though, that such guidance is a control, not evidence about causes, so it informs the recommendations rather than the analysis. The literature review keeps the two uses apart. Lucas also cites the providers' own documentation for account-level blocking, so Larkspur's engineers can follow the same guidance when they apply it, and notes the date each page was checked.
 
 ### Writing the table
 
@@ -315,13 +315,13 @@ You will (1) write the research proposal; (2) pilot the data extraction on a sma
 
 ### 5.1 The proposal
 
-Twelve pages: background, question, explanations and predictions, design, data, ethics, analysis, risks and timeline. Each prediction maps to an analysis.
+Twelve pages: background, question, explanations and predictions, design, data, ethics, analysis, risks and timeline. Each prediction maps to an analysis. Mapping each prediction to an analysis lets Dr Tanaka check that nothing in the proposal is untestable. The risks part names the main threats: missing origin labels, an incomplete register of intended public resources and the possibility that Larkspur cannot export a full year. The timeline leaves time to rerun the analysis after examination corrections. Her sign-off came before any pilot data existed.
 
 ### 5.2 Pilot extraction
 
-Lucas extracts one month of synthetic-format records from a test account and classifies current bucket settings to check that the classification works.
+Lucas extracts one month of synthetic-format records from a test account and classifies current bucket settings to check that the classification works. The pilot uses a test account so that no production records are involved before the data agreement is signed. It checks that Lucas's scripts read the export format, that origin labels are present, and that bucket settings can be classified consistently. Problems found here can still change the method without biasing results. No customer data sit in the test account.
 
-### Lab — Lab — bucket classification
+### Lab — bucket classification
 
 ```python
 """Classify synthetic storage bucket settings against a simple baseline (stdlib only)."""
@@ -350,15 +350,15 @@ public buckets: 3 of 6
 
 ### 5.3 Lab result
 
-Of six synthetic buckets, three are public: marketing-assets (console; also no access logs), tmp-export-0412 (console; also unencrypted and no access logs) and partner-drop (IaC; public by design for a partner). orders-archive and receipts are ok; ml-features lacks access logs. The pilot shows that "public" needs a field for intended public access: partner-drop's exposure was approved.
+Of six synthetic buckets, three are public: marketing-assets (console; also no access logs), tmp-export-0412 (console; also unencrypted and no access logs) and partner-drop (IaC; public by design for a partner). orders-archive and receipts are ok; ml-features lacks access logs. The pilot shows that "public" needs a field for intended public access: partner-drop's exposure was approved. The other findings, missing access logs and an unencrypted bucket, are outside the study's question, but Lucas reports them to Larkspur through the agreed channel. The pilot's main lesson is about the measure: without an intended-public field, the study would have counted approved exposures as errors.
 
 ### 5.4 Revising measures
 
-Exposure is now "unintended public access", with intended public resources recorded in an approved register. This change is made before the main data are seen and is noted in the pre-registration log.
+Exposure is now "unintended public access", with intended public resources recorded in an approved register. This change is made before the main data are seen and is noted in the pre-registration log. The register comes from Larkspur's existing approvals for public resources, such as partner-drop, so Lucas does not decide himself what was intended. The mobile-app labelling rule found in the pilot is logged the same way. Both changes are listed in the dissertation's method chapter with their dates, so an examiner can see that they preceded the main analysis.
 
 ### 5.5 CIS and CCM
 
-The baseline checks align with CIS Benchmark recommendations for storage and with CSA CCM v4 control domains for data security, which helps relate findings to frameworks Larkspur already uses.
+The baseline checks align with CIS Benchmark recommendations for storage and with CSA CCM v4 control domains for data security, which helps relate findings to frameworks Larkspur already uses. Mapping findings to these frameworks lets Larkspur file them where its auditors already look, and lets other organisations compare their own checks. Lucas uses the frameworks as vocabulary, not as evidence that a control works; whether account-level blocking reduces exposure is a question for the follow-up measurement, not for the benchmark.
 
 ### Proposal feedback
 
@@ -401,9 +401,9 @@ You will (1) collect the full dataset under the agreed rules; (2) run the pre-re
 
 ### 6.1 Collection
 
-Larkspur exports one year of storage change records, pseudonymised, with origin, team group, hour, resource and template identifier. Lucas checks counts against Larkspur's monthly totals before analysis.
+Larkspur exports one year of storage change records, pseudonymised, with origin, team group, hour, resource and template identifier. Lucas checks counts against Larkspur's monthly totals before analysis. The check against Larkspur's monthly totals guards against a month missing from the export. Team groups follow the ethics rule merging small teams, and origin labels include the mobile-app mapping found in the pilot. Lucas records the export date and the hash of each file in the archive before running the pre-registered scripts.
 
-### Lab — Lab — exposure by origin
+### Lab — exposure by origin
 
 ```python
 """Exposure events by change origin: rates and a chi-square test of independence (stdlib only)."""
@@ -429,19 +429,19 @@ chi-square 23.1 (df 1), p 1.5e-06; risk ratio console/iac 4.5
 
 ### 6.2 Primary result
 
-In the synthetic dataset, 12 of 1,200 IaC changes (1.0%) and 27 of 600 console changes (4.5%) caused unintended public exposure. The chi-square statistic is 23.1 with one degree of freedom, p about 1.5 × 10⁻⁶, and the risk ratio is 4.5: console changes were four and a half times as likely to expose storage.
+In the synthetic dataset, 12 of 1,200 IaC changes (1.0%) and 27 of 600 console changes (4.5%) caused unintended public exposure. The chi-square statistic is 23.1 with one degree of freedom, p about 1.5 × 10⁻⁶, and the risk ratio is 4.5: console changes were four and a half times as likely to expose storage. The result supports explanation A's main prediction, but on its own it cannot show why console changes are riskier. That requires the subgroup checks and the tests of B and C. Counts sit beside each rate, so readers can recheck them.
 
 ### 6.3 Subgroups for A
 
-The difference holds within daytime and night-time changes and within the three largest team groups, which supports explanation A beyond timing or team effects.
+The difference holds within daytime and night-time changes and within the three largest team groups, which supports explanation A beyond timing or team effects. Lucas reports the rate in each subgroup with its counts, so readers can see that the difference is not driven by one large team. Smaller teams merged under the ethics rule are reported as one group. Identity breadth, added as a control, is examined with explanation C. The subgroup tables are in an appendix with their counts.
 
 ### 6.4 Clustering for B
 
-Nine of the twelve IaC exposures come from two templates, supporting explanation B: weak defaults spread. Fixing those templates would address most IaC exposures.
+Nine of the twelve IaC exposures come from two templates, supporting explanation B: weak defaults spread. Fixing those templates would address most IaC exposures. The two templates were copied into several projects, carrying the same permissive storage setting each time. The remaining three IaC exposures came from other templates, which is consistent with B explaining most but not all IaC exposures. Template identifiers make the fix concrete: Larkspur knows exactly which files to change. Template identifiers let Larkspur trace each copy.
 
 ### 6.5 Identity for C
 
-Accounts where more than ten identities hold storage administration rights have higher exposure rates for both origins, supporting C as a contributing factor.
+Accounts where more than ten identities hold storage administration rights have higher exposure rates for both origins, supporting C as a contributing factor. The pattern holds for both origins, which means identity breadth is not simply a disguise for console use. Lucas reports C as a contributing factor rather than the main cause, because the study observes accounts at one organisation and cannot separate breadth from other account differences. The threshold of ten identities was chosen before analysis. Breadth counts per account are in the appendix.
 
 ### Checking the data
 
@@ -484,27 +484,27 @@ You will (1) write the dissertation clearly; (2) present limitations honestly; (
 
 ### 7.1 Structure
 
-Introduction and question; literature review with the search method; design and ethics; results by explanation; discussion; limitations; recommendations; appendices with search log, analysis scripts and the synthetic generator.
+Introduction and question; literature review with the search method; design and ethics; results by explanation; discussion; limitations; recommendations; appendices with search log, analysis scripts and the synthetic generator. The structure mirrors the study's logic: each explanation gets its own results heading, with its prediction stated first and the evidence after. Findings and recommendations are kept in separate chapters. Appendices let an examiner rerun every table from the archive without contacting Lucas. A short abstract states the question, the three explanations and the main results with their limits.
 
 ### 7.2 Limitations
 
-One organisation and one year; origin labels depend on logging accuracy; intended public resources depend on a register that may be incomplete; the study measures exposure, not whether data were accessed.
+One organisation and one year; origin labels depend on logging accuracy; intended public resources depend on a register that may be incomplete; the study measures exposure, not whether data were accessed. Each limitation is tied to a claim. One organisation limits how far the rates generalise, though the mechanisms may transfer; logging accuracy matters for the origin comparison; the register matters for the exposure measure; and the study cannot say whether any exposed data were read. Lucas states these where the related results appear, not only in a final list.
 
 ### 7.3 Findings versus recommendations
 
-Findings say what the data show; recommendations say what Larkspur might do, labelled as Lucas's judgement. Mixing them would overstate the evidence.
+Findings say what the data show; recommendations say what Larkspur might do, labelled as Lucas's judgement. Mixing them would overstate the evidence. The dissertation marks the boundary in its wording: results use "in this dataset", and recommendations begin with phrases such as "Lucas recommends". Dr Tanaka's comment on the draft sentence claiming the recommendations "will prevent exposures" is an example of this boundary being enforced. The revised sentence names a test Larkspur could run. Each recommendation names the finding behind it.
 
 ### 7.4 Recommendations
 
-Block public access at account level by default with approved exceptions, as provider guidance suggests; fix the two templates and add policy checks to IaC review; reduce storage administrators; route urgent data requests through a pre-approved, private export process.
+Block public access at account level by default with approved exceptions, as provider guidance suggests; fix the two templates and add policy checks to IaC review; reduce storage administrators; route urgent data requests through a pre-approved, private export process. Each recommendation answers one explanation: account-level blocking and the private export process for console changes, template fixes and policy checks for IaC, and fewer storage administrators for identity breadth. Lucas labels them as his judgement based on the findings, and suggests repeating the measurement to see whether they work.
 
 ### 7.5 Figures
 
-One figure per explanation shows its prediction against the data, using the same scale.
+One figure per explanation shows its prediction against the data, using the same scale. Using the same scale prevents a small difference from looking dramatic in one figure and a large one looking minor in another. Each figure also shows the counts behind the rates. A reader comparing the three explanations can then see at a glance which predictions fit the data best. Figures are produced by the archived scripts, so a rerun reproduces them exactly, and each caption states the dataset and period it covers.
 
 ### 7.6 Writing clearly
 
-Short paragraphs, defined terms and one claim per paragraph.
+Short paragraphs, defined terms and one claim per paragraph. Dr Tanaka asks Lucas to remove phrases like "clearly" and "proves", which overstate observational results. Each defined term, such as unintended public access, is used the same way throughout, so readers do not have to guess whether exposure means something different in one chapter. A glossary at the front lists the terms with their definitions. Dr Tanaka reads one chapter at a time and marks any paragraph that makes more than one claim, which Lucas then splits.
 
 ### Appendices
 
@@ -551,27 +551,27 @@ You will (1) prepare for independent examination; (2) respond to examiner questi
 
 ### 8.1 Examination
 
-An external examiner reads the dissertation and the archive. Lucas prepares by rerunning all scripts from the archive on a clean machine.
+An external examiner reads the dissertation and the archive. Lucas prepares by rerunning all scripts from the archive on a clean machine. Rerunning on a clean machine checks that the archive is complete and that the readme's instructions work for someone other than Lucas. Any difference between the rerun and the dissertation's tables would be found before the examiner finds it. He records the rerun date and the matching outputs in the archive. He also rereads the pre-registration, so he can say which choices were fixed before the data arrived.
 
 ### 8.2 Questions expected
 
-Could origin labels be wrong? He shows the logging checks and mobile-app rule. Is chi-square appropriate? Expected counts exceed five in all cells. Do findings generalise? Mechanisms may, rates may not.
+Could origin labels be wrong? He shows the logging checks and mobile-app rule. Is chi-square appropriate? Expected counts exceed five in all cells. Do findings generalise? Mechanisms may, rates may not. Each answer points to evidence in the dissertation: the pilot's labelling checks, the expected-count check before the chi-square test, and the limitations chapter on generalisation. Preparing them in advance helps him answer briefly and accurately under pressure. He also prepares an answer on the register: who approves intended public resources, and what happens if it is incomplete.
 
 ### 8.3 The defence
 
-In a 45-minute viva, the examiner asks why Lucas did not use multilevel models for team effects. Lucas explains the pre-registered approach and shows the subgroup checks, agreeing that multilevel models would be a good extension.
+In a 45-minute viva, the examiner asks why Lucas did not use multilevel models for team effects. Lucas explains the pre-registered approach and shows the subgroup checks, agreeing that multilevel models would be a good extension. Lucas does not defend the simpler method as better; he defends it as the one he committed to before seeing the data, and shows that the subgroup checks address the concern for now. Agreeing that a multilevel model would be a good extension is honest and costs him nothing.
 
 ### 8.4 Revisions
 
-Minor corrections: clarify the register definition, add the power estimate to the results chapter.
+Minor corrections: clarify the register definition, add the power estimate to the results chapter. The register definition is clarified to say who approves an intended public resource and where approvals are recorded. The power estimate shows how large a difference the study could detect with 1,200 IaC and 600 console changes, which answers the examiner's question about the sample size. Both corrections are made in the archive version too. The archive manifest is regenerated after the corrections, so the digests match the corrected files.
 
 ### 8.5 Sharing results
 
-Larkspur receives a summary with the recommendations; a short paper is submitted with synthetic data and scripts; no engineer or team names are published.
+Larkspur receives a summary with the recommendations; a short paper is submitted with synthetic data and scripts; no engineer or team names are published. The summary for Larkspur leads with the three explanations and their remedies, followed by the limits. The paper uses the synthetic dataset so that other researchers can run the analysis without Larkspur's records. Merged small teams and pseudonyms protect individuals in both, as the ethics application required. The data agreement required the summary to go to Larkspur's data protection officer before wider release.
 
 ### 8.6 Follow-through
 
-Larkspur enables account-level public access blocking and fixes the two templates within a quarter.
+Larkspur enables account-level public access blocking and fixes the two templates within a quarter. These are the two recommendations most directly supported by the data, and Larkspur chose to act on them first. Reducing the number of storage administrators takes longer because roles must be reviewed with their owners, as the seminar discussion about unused permissions anticipated. The later repeat measurement used Lucas's scripts unchanged. The repeat measurement is the test that Lucas's revised wording proposed, and its before-after design has the limits he noted.
 
 ### Lessons for practice
 
