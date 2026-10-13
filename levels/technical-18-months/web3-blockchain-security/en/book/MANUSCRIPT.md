@@ -189,10 +189,6 @@ Ledger tools return data in JSON, while the library's database exports CSV. Aiko
 
 Before using data, Aiko's scripts check it: amounts must be whole positive numbers, block numbers must increase, dates must be valid and borrower codes must exist in the database. Invalid records are listed separately rather than silently skipped. On a synthetic export she finds two loan records with return dates before borrow dates, caused by a data-entry error at the counter. Validation stops bad data from producing misleading results and often reveals process problems, like this one, that are worth fixing at the source rather than in every script.
 
-### Worked example
-
-Aiko's validation finds two loan records with return dates before borrow dates, traced to counter data entry.
-
 > **Synthetic case.** The scripts and data are synthetic.
 
 ### Errors and limits
@@ -503,10 +499,6 @@ All ledger tests run on the library's separate test ledger with synthetic borrow
 ### 11.3 Recording results
 
 Aiko records each test: date, environment, steps, expected and actual result. Four of five tests pass. The release test fails: a release for a loan not yet returned succeeds on the test ledger, because the deposit service checks the database but the database's test copy marked all loans returned by default. She reports it, the test data is corrected and the test passes. The finding shows that tests depend on realistic data. She stores the results with the configuration and contract versions tested.
-
-### Worked example
-
-Four of five planned tests pass; the release test fails because test data marked all loans returned by default, and passes after correction.
 
 > **Synthetic case.** The tests and results are synthetic.
 
