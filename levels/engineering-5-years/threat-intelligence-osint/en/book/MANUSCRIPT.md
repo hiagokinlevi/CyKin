@@ -1452,21 +1452,31 @@ You will (1) collect priority intelligence requirements (PIRs) from stakeholders
 
 Priority intelligence requirements are questions decision-makers need answered: "Which adversaries target electricity distributors in our region?" "Are our OT vendors being targeted?" They direct collection and analysis and should be reviewed each quarter.
 
+Kofi gathered BEN's questions by asking the CISO, the SOC lead and the head of network operations what they would want to know before their next major decision. Many answers overlapped, and five questions covered most of what was asked. A question nobody can act on is dropped, however interesting it seems to the analysts.
+
 ### 21.2 From PIR to system requirement
 
 A PIR about OT vendors implies requirements: ingest vendor advisories; tag objects with vendor names; alert when a campaign mentions a tagged vendor. Each is a "shall" statement with a verification method.
+
+Kofi writes the verification method next to each statement as he writes it: a test with synthetic data, an inspection of configuration or a measurement from production logs. If he cannot say how a statement would be checked, the wording is not yet precise enough. Each requirement also names the question it serves, so its purpose stays visible after the people who asked have moved on.
 
 ### 21.3 Verifiable wording
 
 "The system shall be fast" cannot be verified. "Lantern shall deliver indicators with confidence ≥ 70 to IT DNS enforcement within 30 minutes of ingestion for 95% of indicators per month" can.
 
+The second version names the population, the threshold, the destination, the time limit and the share that must meet it, and the period over which it is judged. Lantern's logs record ingestion and delivery times, so the figure can be computed each month without extra effort. Kofi rewrote a dozen vague statements in this form; three turned out to be impossible to measure with current logging, which became work items of their own.
+
 ### 21.4 Non-functional requirements
 
 Confidentiality (TLP enforcement), integrity (signature verification where offered), availability (99.5% monthly), privacy (no personal social-media collection), retention and auditability are requirements too, not afterthoughts.
 
+Each of these is written and tested like any functional statement. The privacy requirement, for example, is checked by inspecting the source register and the collector code for any social media connector. Availability is measured from health checks every minute. Leaving such needs unwritten tends to mean they are discovered during an incident or an audit, when changing the design is far more expensive.
+
 ### 21.5 Traceability matrix
 
 A table links PIRs → requirements → design elements → tests. When a PIR is retired, its requirements can be reviewed for removal.
+
+Kofi keeps the table in a spreadsheet generated from tags in the requirements document and test names, so it updates itself rather than relying on someone to edit it. Gaps stand out: a requirement with no test, or a design element that serves no requirement. When the quarterly review retired one question about a regional actor, the table showed two enrichment sources that existed only for it, and both were later dropped.
 
 ### Practice note — Requirement reviews
 
@@ -1508,21 +1518,31 @@ You will (1) model Lantern's data with STIX 2.1 objects and relationships; (2) c
 
 STIX 2.1 defines domain objects (indicator, malware, threat-actor, campaign, attack-pattern, report and others), cyber-observable objects (domain-name, ipv4-addr, file), and relationship and sighting objects. Every domain object needs `type`, `spec_version`, `id`, `created` and `modified`; indicators also need `pattern`, `pattern_type` and `valid_from`.
 
+Lantern's validator checks these required properties on every object before anything else. Indicators are the type most partners send, and their pattern field holds the condition to match, such as a domain value. Kofi keeps a short internal guide with examples of valid objects for each supported type, which partners have found useful when debugging their own exports.
+
 ### 22.2 Choosing a subset
 
 Lantern supports indicator, attack-pattern (linked to ATT&CK IDs via external references), campaign, threat-actor, malware, report, relationship and sighting. Unsupported types are stored opaquely and flagged for review rather than dropped.
+
+Kofi chose the subset by counting what partners actually sent over three months and what analysts actually queried. Types that appeared rarely and that nobody searched for were left out, which saved building views and validation rules for them. Storing unsupported objects as opaque records means nothing is lost if a later need arises, and the review flag shows how often each unsupported type arrives.
 
 ### 22.3 Confidence and markings
 
 STIX offers a `confidence` property (0–100) and marking definitions, including TLP markings. Lantern maps its internal decayed confidence to that property on export and attaches TLP 2.0 markings to every shared object.
 
+Because each producer sets confidence its own way, Lantern records the value a partner sent alongside its own score. Analysts can then see when BEN's view differs from the source's. On export, the TLP marking is chosen from the strictest source label, and an object with no label from its source is not shared at all until an analyst assigns one.
+
 ### 22.4 Validation
 
 Before storing, the validator checks required properties and identifier format. The masters-level lab in this course family checks the same rules; Lantern enforces them in the pipeline and counts failures per source.
 
+The per-source failure counts feed the partner data-quality reports. Kofi found that most failures came from two partners, both sending timestamps without time zones. A short note to each partner, with examples, fixed the problem within a month. The validator rejects rather than repairs, because a repaired timestamp would rest on a guess about the partner's intended zone.
+
 ### 22.5 System model
 
 Beyond data: components (collector, validator, store, enricher, analyst UI, publisher), their interfaces and states. A state machine for an indicator — new, active, decayed, retired — makes behaviour explicit.
+
+The state machine prevents odd combinations, such as a retired indicator still being pushed to firewalls. Kofi listed each allowed transition with its trigger: a new object becomes active after validation, decays as time passes without sightings and is retired when it crosses the floor. A sighting can move a decayed indicator back to active. Any transition outside the list is an error and is logged.
 
 ### Practice note — Mapping external references
 
@@ -1564,21 +1584,31 @@ You will (1) threat-model the CTI platform itself; (2) perform a failure modes a
 
 Feed poisoning, credential theft (T1078 Valid Accounts), supply-chain compromise of a dependency (T1195), exfiltration of restricted reports, and denial of service by oversized feeds. Each threat maps to a control.
 
+Kofi wrote each threat as a short scenario with the attacker's goal and the route they would take. Poisoning, for instance, could come through a compromised partner or a forged delivery. Writing the route shows which control interrupts it: signature checks stop forgery but not a compromised partner, which needs anomaly checks. The scenarios are kept with the risk register and reviewed when a component changes.
+
 ### 23.2 FMEA
 
 For each component, list failure modes, effects and causes. Score severity (S), occurrence (O) and detection difficulty (D) on 1–10; the risk priority number RPN = S × O × D ranks attention.
+
+The three scores come from the team's judgment, informed by incident history where it exists. Kofi runs the scoring with an operator, an engineer and an analyst in the room, because each sees different failures. The number that results is useful for ranking; the discussion that produces it often matters more, since it surfaces failure modes no single person had considered.
 
 ### 23.3 Example rows
 
 Collector stops silently: S6, O4, D7 → RPN 168. Bad block pushed to IT: S8, O3, D4 → 96. TLP:RED report mis-shared: S9, O2, D6 → 108. The silent collector stop ranks highest because nobody would notice for days.
 
+The ranking surprised the team, who had expected the mis-shared RED report to come first because its harm is greatest. Its likelihood is low and access logging would reveal it fairly quickly. The collector failure is less severe, but nothing alerts anyone, so harm accumulates quietly while indicators go stale. That is the case the worked example addresses.
+
 ### 23.4 Acting on rankings
 
 High detection scores call for monitoring: a heartbeat alert if no objects arrive from a partner for six hours. High severity calls for prevention and approval gates.
 
+Kofi's heartbeat alert compares each partner's arrival history with the current gap. A partner that normally sends every hour triggers the alert after six quiet hours; one that publishes once a day has a longer window. After the change, the team re-scored the row and recorded the lower number with the reason, so the effect of the control is visible in the register.
+
 ### 23.5 Accidents
 
 Not every failure is malicious. A partner's mistaken mass upload or a clock error can cause harm. Failure analysis covers both.
+
+Kofi's register gives accidents their own rows. A partner once uploaded an entire test dataset by mistake, filled with harmless domains. The volume check held the delivery, and the partner withdrew it the same day. A clock set to the wrong year on a test server produced indicators that appeared already expired. Neither event involved an adversary, yet both could have disrupted BEN.
 
 ### Practice note — Abuse cases
 
@@ -1620,21 +1650,31 @@ You will (1) apply the Diamond Model to structure an incident's intelligence; (2
 
 For each event, record adversary (if known), capability (malware, technique), infrastructure (domains, addresses) and victim (asset, organisation). Unknown vertices stay "unknown"; filling them by guess is the classic error.
 
+Kofi's analysts record each vertex with its evidence. A victim's workstation name comes from the endpoint logs, the infrastructure from the proxy, the capability from the sandbox report. The adversary vertex is often empty, and saying so is accurate. A guessed group name spreads quickly once written, and later readers may treat it as established fact.
+
 ### 24.2 ATT&CK mapping
 
 Behaviours map to technique IDs: phishing email → T1566; scripting on the host → T1059 Command and Scripting Interpreter; web-protocol C2 → T1071. Mapping supports detection engineering and comparison with group profiles.
+
+Kofi asks analysts to cite the evidence for each technique tag, such as the log line showing a script interpreter starting from a mail attachment. Tags without evidence are removed in review. Consistent tagging lets the detection team see which techniques recur across incidents and which have no detection at all, which guides their work for the next quarter.
 
 ### 24.3 Kill-chain controls
 
 Hutchins et al. proposed a courses-of-action matrix: detect, deny, disrupt, degrade, deceive and destroy across phases. Lantern produces inputs for several cells — deny at delivery via mail filtering, detect at C2 via DNS analytics.
 
+Kofi drew the matrix for BEN's phishing incidents and found most cells empty beyond deny and detect. Disrupting command traffic, for example by sinkholing a domain at the resolver, was possible but had never been planned. Filling a cell means naming the action, who owns it and how its effect would be measured. Empty cells are a planning gap, not necessarily a failure.
+
 ### 24.4 Sources and confidence
 
 Each analytic statement cites its sources and confidence. Admiralty-style source grading or a simple scale (confirmed, probable, possible) helps readers.
 
+Kofi's reports put a short source line under each judgment, naming the evidence and its reliability, and a confidence word from the team's table. A reader can then tell a claim resting on BEN's own logs from one resting on a single partner bulletin. When sources disagree, the report says so instead of picking one silently. Reviewers send back any judgment that lacks a source line.
+
 ### 24.5 OSINT within limits
 
 Methods include certificate-transparency lookups for related domains and reading public advisories. Researchers do not interact with adversary infrastructure or register accounts on criminal forums for this course.
+
+Certificate transparency logs are public and designed for this kind of search, so looking up certificates issued for names similar to a known phishing domain is within bounds. Visiting the suspect sites is not part of these methods. Kofi records every OSINT query with its purpose, which shows that the research stayed within the agreed limits if anyone later asks.
 
 ### Practice note — Analytic notes
 
@@ -1676,21 +1716,31 @@ You will (1) produce a first end-to-end design for Lantern's ingestion path; (2)
 
 Design the path from partner TAXII 2.1 collections to an analyst-ready store: polling, validation, normalisation, de-duplication, provenance, TLP enforcement and monitoring. Constraints: standard-library prototypes, synthetic data, BEN's zone model.
 
+Kofi's team began by drawing the zones and placing each component in one before writing any code. The constraint to use only the standard library forced simple designs that the panel could read in full. Synthetic data meant that every test could be shared with the panel and repeated exactly, which real partner data under sharing limits would not allow.
+
 ### 25.2 ADRs
 
 An architecture decision record states context, decision, alternatives and consequences in one page. "Poll every 15 minutes rather than subscribe to push" — context: TAXII 2.1 is pull-based for collections; consequences: up to 15 minutes latency.
+
+Kofi's team wrote one record for each choice that someone might later question. The polling interval was one; the choice to reject rather than repair malformed timestamps was another. Each record lists the options considered and why they lost. When the panel challenged a choice, the team could point to the record rather than reconstructing the reasoning from memory.
 
 ### 25.3 Panel review
 
 The panel includes an analyst, an OT engineer and a privacy officer. Each asks from their role: Is it timely? Is OT protected? Is personal data minimised?
 
+Each reviewer reads the design from their own concerns, and their questions rarely overlap. The analyst asked how long a high-confidence indicator would take to reach DNS. The OT engineer asked whether anything in the design could push to substation firewalls without approval. The privacy officer's question led to the change described in the worked example. Kofi recorded every question with the answer given.
+
 ### 25.4 Iterating
 
 Critique becomes backlog items. Designs improve when students change them in response, not when they defend every choice.
 
+Kofi's team logged each panel comment as a backlog item with an owner and a decision. Most comments led to small changes; two led to new design records; one was declined with a written reason the panel accepted. The team found that accepting a fair criticism quickly earned more trust than a clever defence. The panel's second review was shorter because the earlier comments had visibly been acted on.
+
 ### 25.5 Deliverables
 
 A diagram, five ADRs, an interface list, a monitoring plan and a demonstration of the pipeline on synthetic data.
+
+Each item has a purpose. The diagram shows structure, the records show reasoning, the interface list shows what must be agreed with others and the monitoring plan shows how failures will be noticed. The demonstration proves that the pipeline runs end to end on the synthetic feed. Kofi's team submitted all five together, so the panel could check that the demonstration matched the diagram and the records.
 
 ### Practice note — Demonstration discipline
 
