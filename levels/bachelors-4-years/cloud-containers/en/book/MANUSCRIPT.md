@@ -49,25 +49,37 @@ You will (1) use precise reasoning to state and check claims about cloud systems
 
 Samuel Osei is a bachelor's student at the fictional Westmere University. His final-year project is with the university's own cloud team, led by Tom Becker, and supervised by Dr Clara Jensen from the computing department. Westmere runs StudyHub, its student services platform, as containers on a managed Kubernetes service. Last term an internal review found that the container registry allowed anonymous pulls of two repositories. One image, records-api, contained a connection string for the student records test database. The test database held synthetic records only, and no unusual access was logged, but nobody could say how long the registry had been open, because audit logging was off in one account.
 
+The case returns throughout the course: each chapter adds a tool or idea that helps answer one of its open questions.
+
 ### 1.2 Precise claims
 
 "StudyHub is secure" cannot be checked. "No registry repository allows anonymous pull" can be checked by listing repositories and their settings. The course trains Samuel to turn vague worries into precise, checkable statements, because only checkable statements lead to fixes and evidence.
+
+The precise version also says what evidence would prove it wrong: a single repository with anonymous pull enabled. Samuel's first task is to write such statements for each worry raised in the review, including the missing logs, so that each becomes a check that someone can run and repeat next term.
 
 ### 1.3 Necessary and sufficient
 
 Turning off anonymous pull is necessary to stop outsiders downloading images, but not sufficient to protect secrets: anyone with internal access could still read a secret baked into an image. Removing secrets from images and using a secret manager is also needed. Mixing up necessary and sufficient conditions leads to fixes that feel complete but are not.
 
+Samuel lists both conditions in his findings and marks which fixes are done. Closing the registry was finished within a day; removing the connection string from records-api needed a rebuilt image, a new secret in the secret manager and a rotated database password, because the old one had been readable for an unknown period.
+
 ### 1.4 Counterexamples
 
 One counterexample disproves a universal claim. The claim "all our images are private" was disproved by a single anonymous pull test on records-api. Engineers look for counterexamples deliberately rather than waiting for them to appear in an incident.
+
+Samuel's test was simple: from a machine with no Westmere credentials, request the image list for each repository. Two requests succeeded where all should have failed. He now runs the same test after every registry change, because a single successful anonymous request is enough to show the claim is false again.
 
 ### 1.5 Quantities and units
 
 Exposure is measured in days and resources; costs in money and engineer-hours. Keeping units explicit avoids comparing unlike things.
 
+In the opening case, the exposure involved two repositories and an unknown number of days, while the fix cost about three engineer-days. Writing "two repositories, unknown days" rather than "a small exposure" makes clear what is known and what is missing. Samuel records units beside every figure in his notes, so a later reader never has to guess whether a number means hours, days or resources.
+
 ### 1.6 Logical structure
 
 Claims are combined with and, or and not; access policies, later in the course, follow the same logic.
+
+For example, a rule might allow a pull if the caller is in the build group and the request comes from the private network, and not if the repository is marked restricted. Writing such conditions carefully now makes later policies easier to read. Samuel practises by rewriting the registry's intended rule as a single logical statement and checking each repository against it.
 
 ### Worked example
 
@@ -105,25 +117,37 @@ You will (1) describe the layers of a cloud-hosted application; (2) explain virt
 
 StudyHub runs on physical servers in the provider's data centres, virtualised into machines that form the Kubernetes worker nodes. Containers run on those nodes, each packaged from an image stored in a registry. Managed services provide the database, storage and identity.
 
+Each layer has its own security settings. The opening case touched three of them: the registry's access rules, the content of an image and the logging of the account that held them. None involved the physical servers or the virtual machines, which is why Samuel's investigation focused on configuration rather than on the provider's infrastructure.
+
 ### 2.2 Service models
 
 NIST SP 800-145 (Mell & Grance, 2011) defines infrastructure, platform and software as a service. Managed Kubernetes sits between infrastructure and platform: the provider runs the control plane; Westmere runs the workloads and their configuration.
+
+The split determines who fixes what. If the control plane had a flaw, the provider would patch it. The workloads, their images and their access settings are Westmere's, so the open registry and the leaked connection string were Westmere's to find and fix. Samuel marks this boundary on every diagram he draws.
 
 ### 2.3 Images and registries
 
 An image is a stack of file-system layers plus metadata. The registry stores images and controls who may pull or push them. Whatever goes into a layer stays there, which is why a connection string in records-api remained readable even after the application stopped using it.
 
+Deleting the file in a later layer does not help, because earlier layers are still part of the image and can be extracted. Samuel demonstrates this to the team with a synthetic image: a secret added in one layer and removed in the next is still recoverable by unpacking the image's layers one at a time.
+
 ### 2.4 Shared responsibility
 
 The AWS, Microsoft and Google shared responsibility pages agree that customers configure access to registries, storage and identities. The open registry was on Westmere's side.
+
+The provider kept the registry service running and secure; it did not choose whether repositories allowed anonymous pull. That choice sat in a setting Westmere controlled. Samuel's summary for managers says this plainly, because some had assumed the provider would have prevented the exposure automatically. The same applied to audit logging: the provider offered it, but switching it on in each account was Westmere's job, and one account had been missed when it was created.
 
 ### 2.5 Managed services
 
 Using a managed database removes patching work but leaves access rules, backups and encryption choices to the customer.
 
+StudyHub's records database is managed, so the provider applies patches and runs the hardware. Westmere still decides who may connect, how long backups are kept, whether they are encrypted with its own key and which network can reach the database. The test database's network rule, a customer setting, is what stopped the leaked connection string from being useful outside. Samuel lists these choices for each managed service StudyHub uses.
+
 ### 2.6 Mapping the case
 
 Samuel draws StudyHub's layers and marks who manages each, then marks where the opening findings sat: registry settings, image content and account logging, all customer-managed.
+
+Seeing all three findings in the customer-managed part of the drawing changed the conversation with managers. The question became which Westmere team owned each setting and how it would be checked, rather than whether the provider had failed. Each finding now has a named owner on the drawing. The drawing is kept with the team's documentation and updated when a service is added.
 
 ### Containers versus virtual machines
 
@@ -165,29 +189,43 @@ You will (1) write small Python programs to read and check configuration data; (
 
 The cloud team manages hundreds of resources. Reading each one by hand is slow and error-prone; a short program can check every resource the same way every time.
 
+StudyHub alone has dozens of services, each with images, identities and network rules, spread across several accounts. A program that reads exports and applies the same checks to every resource finishes in seconds and gives the same answer each time it runs, which makes changes between runs meaningful. It also leaves a record of exactly what was checked and when.
+
 ### 3.2 Basics
 
 Variables hold values; lists hold many items; dictionaries map names to settings. A loop visits each repository; an if statement checks a setting; print shows the result.
+
+Samuel's first program uses all of these: a list of repository dictionaries, a loop over the list, an if statement checking the anonymous setting, and print for each problem. It is about fifteen lines long, short enough for Tom to review in a few minutes before trusting its output. He also adds comments naming the export each list comes from.
 
 ### 3.3 Functions
 
 A function such as check_repo(repo) returns a list of problems. Functions make programs easier to test and reuse.
 
+Returning a list rather than printing inside the function means the same check can feed a report, a test or a later tool. Samuel's check_repo returns an empty list when a repository has no problems, which makes tests easy to write: an expected-clean repository should return nothing at all. Functions also let him reuse check_repo when the account checks arrive later in the course, with only the input changed.
+
 ### 3.4 Synthetic data
 
 Samuel writes his first programs against a small, made-up list of repositories, so mistakes cannot affect real systems and anyone can rerun them.
+
+His made-up export has four repositories: one public, one private, one with the setting missing and one with an unusual name containing spaces. Each tests a different path through the program. Synthetic data also lets the lab be shared with classmates without revealing anything about Westmere's real accounts. The space in the name caught a formatting bug in his output on the first run.
 
 ### 3.5 Clear output
 
 Each line names the resource and the problem in plain words, so non-programmers can act.
 
+A line such as "records-api: anonymous pull enabled" tells a manager exactly what is wrong and where. Output like "repo[2] anon=True" would need translating. Samuel also prints a final count of repositories checked, so readers know the program looked at all of them and did not stop early. When a repository has several problems, each gets its own line, so nothing is hidden behind the first one. Tom forwarded the output directly to the registry owner without rewriting it.
+
 ### 3.6 Standard library
 
 Labs use only Python's standard library, so they run on any machine and are easy to read.
 
+Avoiding extra packages also removes a supply-chain risk from the labs themselves: nothing needs downloading from a package index to run them. The json, csv, collections and datetime modules cover everything the early labs need. Later chapters introduce outside tools only where the standard library is not enough. Readability matters too: a classmate or assessor can understand every line without first learning a third-party library's interface. Samuel notes in each lab's header which modules it uses.
+
 ### 3.7 Testing
 
 For each check, Samuel writes one example that should pass and one that should fail, and confirms the output.
+
+For the anonymous-pull check, the passing example is a private repository and the failing example is a public one. Samuel added a third case after Dr Jensen's question about missing fields, described in the worked example below. Each test is small enough to understand at a glance, which makes a failure easy to diagnose. Tests live beside the program and run with one command, so anyone changing the check can confirm it still behaves as intended.
 
 ### Reading exports
 
@@ -229,29 +267,43 @@ You will (1) write clear academic and technical prose about cloud security; (2) 
 
 Samuel's thesis and reports must persuade careful readers with evidence. Academic writing states claims, supports them with sources or data, and acknowledges limits.
 
+His project report on the registry exposure will be read by Tom, by university managers and by Dr Jensen as an assessor. Each needs to see what was found, how it was found and what remains uncertain. Academic writing's habits of stating claims and evidence serve all three readers at once. Writing for all three also forces him to explain terms such as "anonymous pull" in one plain sentence the first time they appear.
+
 ### 4.2 Structure
 
 Each paragraph makes one point: a topic sentence, evidence, and a link to the argument. Sections follow a logical order from problem to conclusion.
+
+A paragraph in Samuel's report begins: "Two of four repositories allowed anonymous pull." The evidence follows, his anonymous test and the registry settings export, and then the link: this exposed records-api and its connection string. Readers can stop after the first sentence and still know the point. His report's sections run from the finding, through causes and fixes, to what remains unknown, so each builds on the last.
 
 ### 4.3 Citing
 
 Standards and papers are cited in a consistent style with links or DOIs. Samuel cites NIST SP 800-190 when discussing container image risks and the Kubernetes documentation when describing Pod Security Standards.
 
+Citing the standard lets readers check that Samuel's description of image risks matches the source. Including a link or DOI makes that check quick. He also records the version of the Kubernetes documentation he used, since its pages are updated and an older description of a feature may no longer apply.
+
 ### 4.4 Precision
 
 "Anonymous pull was enabled on two of four repositories" is better than "the registry was insecure".
+
+The precise version gives the count, the denominator and the setting, so a reader can verify it and see its size. The vague version invites argument: insecure in what way, and how badly? Samuel goes through his draft looking for adjectives such as "insecure" or "weak" and replaces each with the finding behind it. Precision also helps when progress is reported: "zero of four" next month is clearly better than "two of four", while "less insecure" means little.
 
 ### 4.5 Overstatement
 
 "No evidence of misuse was found in available logs" is accurate; "no misuse occurred" is not, since logging was missing.
 
+The difference matters in the opening case because audit logging was off in one account. Claiming no misuse would assert something the evidence cannot show. The accurate statement tells readers exactly where the gap is, which is also why fixing logging became one of the first actions. Samuel's report puts the gap in its own sentence, near the start, so no reader can miss it or assume the logs covered the whole period.
+
 ### 4.6 Revising
 
 Samuel reads drafts aloud, removes unnecessary words and checks every number against its source.
 
+Checking numbers caught one error in his first report: he had written three repositories instead of two, copying from an early note. Reading aloud found sentences that were too long to follow. Removing unnecessary words shortened his executive summary from a page to half a page without losing any finding. He keeps the earlier draft so Dr Jensen can see what changed between versions and why each change was made.
+
 ### 4.7 Feedback
 
 Dr Jensen comments on drafts within a week; Samuel keeps a list of recurring feedback to avoid repeating mistakes.
+
+After three essays, his list included vague adjectives, missing denominators and claims stronger than the evidence. Before submitting each new draft, he checks it against the list. Dr Jensen's comments gradually moved from these basics to questions about argument and evidence, which showed the list was working. He also notes feedback he disagreed with and why, then discusses it at the next meeting, so the list records decisions rather than only instructions.
 
 ### Using sources well
 
@@ -293,25 +345,37 @@ You will (1) explain core security ideas in cloud terms; (2) recognise common cl
 
 Confidentiality, integrity and availability; authentication and authorisation; least privilege; defence in depth; logging and accountability. Each has a cloud form: identity policies, encryption settings, multi-zone deployment, audit logs.
 
+Mapped to the opening case, confidentiality failed when the registry allowed anonymous pulls; accountability failed when audit logging was off; defence in depth partly worked through the database's network rule. Seeing each idea in a concrete cloud setting makes the terms useful rather than abstract. Availability was not affected, which Samuel also records, since a full picture includes what went right.
+
 ### 5.2 Common cloud risks
 
 Misconfigured storage and registries, over-broad identities, leaked credentials, unpatched images, missing logs. Most are configuration choices on the customer's side.
+
+The opening case had three of the five: a misconfigured registry, a leaked credential in an image and missing logs. None required a sophisticated attacker to create; each came from a setting or a habit. That is why so much of the course focuses on checking configuration systematically. Unpatched images and over-broad identities were not involved in the opening case, but the role-path lab later in this part shows the second is present in StudyHub too.
 
 ### 5.3 Least privilege
 
 Each person and service gets only the access it needs. If records-api had used a short-lived identity instead of a connection string, there would have been no secret to leak.
 
+The connection string gave whoever held it the same access as records-api, with no expiry. A short-lived identity tied to the running workload would have been useless to anyone who copied the image. Least privilege applies not only to what access is granted but to how long and to whom.
+
 ### 5.4 Defence in depth
 
 Several layers: private registry, no secrets in images, scanning before push, limited database permissions, logging. Any one could have reduced the opening case's risk.
+
+In the opening case, the private registry and secret-free images were both missing, scanning did not look for secrets, and logging was off in one account. Only the network restriction on the test database held. Each missing layer is now a separate action with its own owner. Samuel ranks them by how quickly they can be done and how much risk each removes.
 
 ### 5.5 Guidance
 
 CIS Benchmarks give configuration checklists; CSA CCM v4 lists cloud controls; NIST SP 800-190 covers containers. Samuel learns to check the date and scope of guidance before using it.
 
+A CIS Benchmark for an older Kubernetes version might recommend settings that no longer exist or miss new ones. Samuel records the version of each guide he uses and checks that it matches StudyHub's services. Where guidance and StudyHub's setup differ, he notes the difference rather than forcing the guidance to fit.
+
 ### 5.6 Thinking like a defender
 
 Ask what could go wrong, how it would be noticed and how it would be fixed.
+
+For the registry, those questions become concrete: an image could be downloaded by anyone; that would be noticed only through audit logs, which were missing in one account; and it is fixed by disabling anonymous pull and removing secrets. Asking all three for each component exposes gaps in detection as well as prevention. Samuel writes the three answers in a small table for each StudyHub component, and the empty cells become the next term's work.
 
 ### Reading guidance critically
 
@@ -353,9 +417,13 @@ You will (1) model identities and roles as a graph; (2) find paths to privileged
 
 In the cloud, identities can often assume other roles. Treat each identity and role as a node and each "may assume" permission as a directed edge. A path from a person to an administrator role means that person can become an administrator, even if no single permission says so directly.
 
+In StudyHub's accounts, roles are often assumed by pipelines and automation as well as people, so chains can be long and hard to spot by reading policies one at a time. Modelling them as a graph turns the question "who can become administrator?" into a search that a program can answer for every identity.
+
 ### 6.2 Breadth-first search
 
 Breadth-first search explores neighbours level by level and finds the shortest path. It is simple to implement with a queue and a set of visited nodes, and it always terminates on a finite graph.
+
+The visited set is what guarantees termination: without it, two roles that can assume each other would send the search round in circles. Finding the shortest path also helps remediation, since a short chain is usually easier to explain and to break than a long one.
 
 ### Lab — Lab — role paths
 
@@ -391,13 +459,19 @@ support-cy  REACHES admin: support-cy -> ticket-bot -> deployer -> cluster-admin
 
 dev-alice reaches cluster-admin through dev-alice -> ci-runner -> deployer -> cluster-admin. support-cy also reaches it through support-cy -> ticket-bot -> deployer -> cluster-admin. analyst-bo cannot reach admin. The surprise is support-cy: a helpdesk account can become cluster administrator through a ticket automation bot.
 
+The analyst-bo result matters too: it confirms that the analysis does not flag everyone, and that read-only roles stay contained. A check that found admin paths for every identity would suggest a mistake in the graph rather than a real problem. Nobody had designed this path deliberately.
+
 ### 6.4 Why chains appear
 
 Roles are added one at a time for convenience. Each edge looks reasonable alone; the risky path only appears when they are combined. NIST SP 800-210 discusses the difficulty of reasoning about combined access rules in cloud systems.
 
+The ticket-bot was given the deployer role so it could restart failing pods, a reasonable fix for a support problem. Nobody connected that to deployer's ability to become cluster-admin, so a helpdesk account inherited a path to full control. The graph makes such combinations visible before someone finds them by accident.
+
 ### 6.5 Using results
 
 Breaking one edge breaks a path. The best edge to remove is one used by many risky paths and needed by few legitimate tasks.
+
+In the lab, the edge from ticket-bot to deployer was used only by the support path, and the bot needed far less than deployment rights. Removing it broke the risky path without harming legitimate work. Removing deployer's link to cluster-admin would also break the path but would stop the pipeline from working. Samuel's recommendation names the edge, the reason it is safe to remove and the narrower role to replace it.
 
 ### Repeating the analysis
 
@@ -439,29 +513,43 @@ You will (1) explain cloud networking for StudyHub; (2) describe security groups
 
 StudyHub's cluster runs in a private network with subnets for nodes and databases. Only the load balancer is public. The test database accepted connections only from the cluster's subnet, which is why the leaked connection string could not be used from outside.
 
+Keeping only the load balancer public means everything else must be reached through it or from inside the network. That design is why the leaked connection string, though readable by anyone who pulled the image, could not be used from outside. The network was the layer that held.
+
 ### 7.2 Security groups and firewalls
 
 Rules list allowed sources, destinations and ports. Default-deny with specific allows is safer than broad allows with exceptions.
+
+StudyHub's database security group allows connections on the database port only from the node subnet. A broader rule allowing the whole campus network, with exceptions for student Wi-Fi, would be harder to review and easier to get wrong. Each allow rule in Samuel's table names the reason it exists. Rules without a reason are flagged in review and either explained by their owner or removed after a short notice period, which keeps the rule set from growing without anyone understanding it.
 
 ### 7.3 Private endpoints
 
 Managed services such as the registry and storage can be reached through private endpoints inside the network, so traffic need not cross the internet and public access can be disabled.
 
+For the registry, a private endpoint would let the cluster pull images without the registry being reachable from the internet at all. That would have prevented the anonymous pulls in the opening case regardless of the repository setting, which is another layer of defence rather than a replacement for the setting.
+
 ### 7.4 Kubernetes networking
 
 Pods can talk to each other freely unless network policies restrict them. Services provide stable names; ingress controllers route external requests.
+
+By default, a compromised pod in StudyHub could connect to any other pod, including records-api. Network policies let the team allow only the connections each service needs, such as the web front end reaching the records service. The flow table described below provides the list of needed connections. Policies are introduced one namespace at a time, starting with records-api, so a missed connection breaks one service rather than all of StudyHub.
 
 ### 7.5 TLS
 
 Traffic is encrypted with TLS. Certificates are managed automatically and monitored for expiry.
 
+StudyHub's ingress uses certificates issued and renewed automatically, and an alert fires if any certificate is within a fortnight of expiry without renewal. Inside the cluster, traffic between some services is also encrypted, which matters because the cluster's network is shared by many workloads. Certificates for internal services are issued by a private authority that the cluster trusts, and their lifetimes are short, so a stolen certificate becomes useless quickly. Samuel's exposure table records which flows are encrypted and which are not yet.
+
 ### 7.6 Exposure analysis
 
 For each component, Samuel lists what can reach it: internet, campus network, cluster or specific services.
 
+The analysis turned up one surprise, described in the worked example below: the registry was internet-reachable for a reason nobody had questioned. For each component, Samuel also notes why its exposure is needed, so that unexplained exposure stands out. The categories, internet, campus, cluster or specific services, follow the layers of the network design, from widest to narrowest. Most StudyHub components should sit in the narrowest category, so anything wider needs a written reason and an owner who agrees to keep it under review.
+
 ### 7.7 Change risk
 
 Network changes can break services, so they are tested in the test environment and rolled out gradually.
+
+Disabling public registry access could break any build that still pushed from outside. The team tested the change with the new internal build runner first, then disabled access in the test account, and only then in production. A rollback step was ready in case an unknown job failed. No job failed. Each stage lasted a few days, long enough for scheduled jobs to run at least once, and the team recorded which jobs had been observed working before moving on.
 
 ### Documenting flows
 
