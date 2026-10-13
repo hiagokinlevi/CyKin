@@ -322,7 +322,6 @@ The second frame carries function 05, a single-coil write, so record whether the
 
 - Alerting on every write without checking whether the source is the engineering workstation named in policy.
 - Treating a malformed frame as an attack when it may be a truncated export or a non-Modbus probe; report it as malformed first.
-- Assuming a decoder at the control centre sees traffic between two devices on the same station switch.
 
 ### Exercises — chapter 2
 
@@ -1489,16 +1488,13 @@ Use the marked test desk, then query the collector for the matching deny within 
 
 ### 11.7 Common errors and limits
 
-- Only negative tests; the change breaks operations unnoticed.
+- Running only negative tests and missing that historian collection stopped.
 - Counting a test without evidence.
 - Reporting "5 of 6 tests passed" instead of the status of each requirement.
 - Verifying once and assuming forever; re-verify after related changes.
 - Lab 11 treats any failing test as a failed requirement; a requirement can also be *partly* verified if a test covers only some of its scope — say so in words.
 
-- Running only negative tests and missing that historian collection stopped.
 - Leaving REQ-6 untested because producing a deny line at the collector seemed harder than reading the firewall rule.
-- Reporting five of six tests passed instead of each requirement's status.
-- Verifying once and never again after a related change.
 
 ### Exercises — chapter 11
 
@@ -1651,13 +1647,12 @@ Refuse the whole write if any register is not writable or any value is out of li
 ### 12.8 Common errors and limits
 
 - Using a real network socket "just for testing" and leaving it bound to all interfaces.
-- Accepting partial multi-register writes.
-- Forgetting the response for function 6 is an echo, then mis-parsing it.
-- Treating lab behaviour as vendor behaviour.
-
-- Binding a real listening socket for testing and leaving it on all interfaces.
 - Accepting a partial multi-register write that changes some registers before refusing others.
+- Forgetting the response for function 6 is an echo, then mis-parsing it.
+- Adding function 16 in activity 12.7 without reusing the single-write policy, so register 7's 100–400 limit is enforced for one write path and not the other.
+- Testing only the allowed write and never the refused ones; the log of exception responses is the evidence that the policy works.
 - Treating the lab's exception behaviour as a vendor's behaviour. State containment as a technical property in every lab report.
+
 
 ### Exercises — chapter 12
 
@@ -2126,7 +2121,7 @@ The CISA performance goals list controls on removable media and on device config
 
 Documents must not contain passwords, private keys, API tokens or one-time codes. Write "credential from vault entry `kw-rtu-eng`" instead of the credential. Network diagrams, register maps and firewall exports of critical infrastructure are sensitive: store them with access control, share them on a need-to-know basis, and remove them from tickets that go to suppliers. This book prints a few fake values only because they are fake.
 
-Write credential from vault entry rather than the credential itself. Store network diagrams, register maps and firewall exports with access control, and strip them from tickets that go to suppliers. This book prints fake values only because they are fake; treat real ones as sensitive design information.
+The vault entry name can safely appear in a change ticket, because it tells an authorised engineer where to look without revealing anything an outsider could use. Real register maps and firewall exports deserve the same care as credentials, since together they describe how a station can be changed and from where.
 
 ### 16.5 Worked example: a work instruction (synthetic)
 
