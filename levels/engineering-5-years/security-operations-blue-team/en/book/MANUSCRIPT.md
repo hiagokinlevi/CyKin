@@ -216,7 +216,7 @@ The ratio between the two decides how easy detection is. A loud attack against a
 
 If a network sensor exports flow summaries every 5 minutes, a 20-second burst appears smeared into one record. Faster sampling resolves bursts but multiplies data volume. Engineering chooses a rate that resolves the signals of interest at acceptable cost.
 
-The smearing is an averaging effect: the burst's intensity spread across five minutes looks like a mild rise rather than a spike. A rule tuned on per-minute data would then miss it. Amara compares the portal's per-request web logs with the five-minute flow summaries for the same period and sees the burst clearly in one and barely in the other.
+The smearing is an averaging effect: the burst's intensity spread across five minutes looks like a mild rise rather than a spike. A rule tuned on per-minute data would then miss it. Amara compares the portal's per-request web logs with the five-minute flow summaries for the same period and sees the burst's pace clearly in one, while the other holds only a single large record.
 
 ### 3.3 Energy and heat
 
@@ -384,7 +384,7 @@ Without agreed meanings, one writer's 'likely' is another's 'possible', and a ma
 
 After the portal burst, Amara writes three items: the analyst ticket, a manager summary and a draft customer notice for account u5's owner, reviewed by Paolo and the communications team.
 
-The ticket lists the failure counts, the network, u5's successful login time and session actions, with times in UTC. The manager summary gives the impact in two sentences and asks for approval to force a password reset. The customer notice explains in plain words that unusual sign-in activity was seen and what the customer should do.
+The ticket lists the failure counts, the network, u5's successful login time and session actions, with times in UTC. The manager summary gives the impact in two sentences and states what has already been done and the change now proposed. The customer notice explains in plain words that unusual sign-in activity was seen and what the customer should do.
 
 ### Review before sending
 
@@ -916,7 +916,7 @@ Auditing turns these background functions into records: a process starting, a fi
 
 Windows records logons, process creation, service installation and policy changes in its event logs when audit policy enables them. Process creation with command line, for example, must be switched on deliberately; without it, many endpoint detections have nothing to match.
 
-A default installation may record that a process started but not the command line it was given, which is where much of the useful detail lives. Group Policy lets administrators enable auditing consistently across many machines. Amara checks a sample of portal servers and finds the command-line setting enabled on the web tier but not on two older application servers.
+A default installation may record that a process started but not the command line it was given, which is where much of the useful detail lives. Group Policy lets administrators enable auditing consistently across many machines. Amara checks a sample of portal servers and finds the command-line setting is not applied uniformly, a gap her coverage table later traces to an older build template.
 
 ### 12.3 Linux logs
 
@@ -940,7 +940,7 @@ Persistence lets an attacker's program survive a reboot or a user logging out. L
 
 Detection coverage is only as good as audit configuration. Amara builds a table listing each detection rule and the OS setting it depends on, then checks that the settings are deployed by policy on every server class.
 
-The table reveals gaps that rule testing alone would miss: a rule can pass its tests in the lab yet never fire in production because the event it needs is not generated there. Amara's check finds that one server class lacks process auditing entirely. Fixing the policy restores coverage for several rules at once, and the table is rechecked after every build change.
+The table reveals gaps that rule testing alone would miss: a rule can pass its tests in the lab yet never fire in production because the event it needs is not generated there. Amara's check finds that one server class records process creation without the command line. Fixing the policy restores coverage for several rules at once, and the table is rechecked after every build change.
 
 ### 12.7 Log size and rotation
 
@@ -1480,7 +1480,7 @@ Credential stuffing tries leaked username and password pairs across many account
 
 After the incident, Lindqvist offers customers optional MFA and alerts on address changes immediately after a login from a new network.
 
-Optional MFA protects customers who choose it; the address-change alert protects everyone, because a change of delivery address is often what an attacker wants after entering an account. The alert combines two signals, a new network and a sensitive change, which keeps false alarms low. The security team plans to review uptake of MFA after six months. Customers are told how to enable it.
+Optional MFA protects customers who choose it; the address-change alert protects everyone, because a change of delivery address is often what an attacker wants after entering an account. The alert combines two signals, a new network and a sensitive change, though its first week shows how often honest customers who move house also match both. The security team plans to review uptake of MFA after six months. Customers are told how to enable it.
 
 ### Worked example
 
@@ -1894,7 +1894,7 @@ Each variant gets a clear name and severity. 'Portal stuffing attempts' is low a
 
 ### Worked example
 
-Amara presents the results to Paolo as a table of variants, with a recommendation: page on "threshold 5 with success", queue "threshold 5 without success" for daytime review. The missed 10:10 attack window had no success, so the paging rule correctly stayed quiet — the attacker had not yet got in. This moves the paging threshold back from the 6 that the earlier tuning loop settled on to 5. That loop tuned the failures-only rule, where raising the threshold was the only way to cut false alerts. Once the success clause is added, it removes the false alerts by itself: on the lab windows, threshold 5 with a success has no false alerts and catches two attack windows, while 6 catches only one. Keeping 6 would lose detection and gain nothing.
+Amara presents the results to Paolo as a table of variants, with a recommendation: page on "threshold 5 with success", queue "threshold 5 without success" for daytime review. The missed 10:10 attack window had no success, so the paging rule correctly stayed quiet — the attacker had not yet got in. This moves the paging threshold back from the 6 that the earlier tuning loop settled on to 5. That loop tuned the failures-only rule, where raising the threshold was the only way to cut false alerts. Once the success clause is added, it removes the false alerts by itself: on the lab windows, threshold 5 with a success has no false alerts and catches two attack windows, while 6 catches only one. Keeping 6 would lose detection and gain nothing, so R-07's threshold is amended to 5 through change control.
 
 > **Synthetic case.** Windows and labels come from the lab script.
 
@@ -2611,7 +2611,7 @@ Logs buffered at sources or collectors during the outage may arrive in a burst w
 
 In the first exercise, analysts discover the read-only accounts for direct log access had expired.
 
-Nobody had noticed because the accounts were never used in normal operations; they expired silently under the password policy. Had the outage been real, analysts would have lost an hour or more getting access approved. The fix is a monthly check that logs into each fallback account, and an alert two weeks before any of them expires. Amara also adds the fallback accounts to the access review list, so their owners confirm each quarter that they are still needed.
+Nobody had noticed because the accounts were never used in normal operations; they expired silently under the password policy. Had the outage been real, analysts would have lost an hour or more getting access approved. The fix is a quarterly check that logs into each fallback account, and an alert two weeks before any of them expires. Amara also adds the fallback accounts to the access review list, so their owners confirm each quarter that they are still needed.
 
 ### Communication during failure
 
