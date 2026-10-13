@@ -26,7 +26,7 @@ Las fuentes se comprobaron el 12 de octubre de 2026: NIST [AI 100-1](https://doi
 | Parte | Capítulos |
 |---|---|
 | Decisiones y práctica actual | [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) |
-| Diseño, evaluación e integración | [5](#ch-05) · [6](#ch-06) · [7](../../en/book/MANUSCRIPT.md#ch-07) · [8](../../en/book/MANUSCRIPT.md#ch-08) · [9](../../en/book/MANUSCRIPT.md#ch-09) |
+| Diseño, evaluación e integración | [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) |
 | Investigación, proyecto y transferencia | [10](../../en/book/MANUSCRIPT.md#ch-10) · [11](../../en/book/MANUSCRIPT.md#ch-11) · [12](../../en/book/MANUSCRIPT.md#ch-12) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
@@ -494,7 +494,284 @@ La evaluación controlada cambia una sola cosa cada vez, usa conjuntos adaptativ
 
 ### Siga estudiando — capítulo 06 de 12
 
-[← Capítulo 05 (borrador)](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 (borrador) →](../../en/book/MANUSCRIPT.md#ch-07)
+[← Capítulo 05 (borrador)](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 (borrador) →](#ch-07)
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Seguridad de la IA y del aprendizaje automático: integración organizativa
+
+### Resultados de aprendizaje
+
+Usted podrá (1) elaborar un inventario de sistemas de IA con niveles de riesgo; (2) integrar los controles de IA en los procesos de seguridad existentes (cambios, accesos, proveedores, incidentes); (3) definir roles y la rendición de cuentas; (4) fijar métricas para toda la organización; y (5) planificar la hoja de ruta de un programa.
+
+### 7.1 Inventario y niveles
+
+No se puede proteger lo que no se conoce. Un inventario recoge cada sistema de IA, su responsable, su finalidad, el origen del modelo, los datos, las herramientas, los usuarios, las partes afectadas y el nivel de riesgo. Asigne el nivel según la consecuencia: ¿cuál es el peor daño plausible y a cuántas personas alcanza? Los agentes con herramientas de escritura y los sistemas que afectan a derechos se sitúan en lo más alto. La IA en la sombra —el personal que pega datos en chatbots públicos— pertenece al inventario como un uso, aunque no se haya construido ningún sistema.
+
+```python
+"""Lab V: an AI system inventory scored for review priority (synthetic).
+Each system lists exposure, autonomy, data sensitivity and whether it reads
+untrusted content; mapping to OWASP LLM Top 10 (2025) IDs is illustrative."""
+import json
+inv = json.loads("""[
+ {"name":"support-chatbot","exposure":"public","autonomy":"tools","data":"customer","untrusted_input":true},
+ {"name":"invoice-ocr-model","exposure":"internal","autonomy":"none","data":"financial","untrusted_input":true},
+ {"name":"code-assistant","exposure":"internal","autonomy":"suggest","data":"source","untrusted_input":true},
+ {"name":"churn-predictor","exposure":"internal","autonomy":"none","data":"customer","untrusted_input":false},
+ {"name":"hr-cv-screener","exposure":"internal","autonomy":"decide","data":"personal","untrusted_input":true}
+]""")
+E = {"public": 3, "internal": 1}; A = {"none": 0, "suggest": 1, "tools": 3, "decide": 3}
+D = {"customer": 2, "financial": 2, "source": 2, "personal": 3}
+for s in inv:
+    s["score"] = E[s["exposure"]] + A[s["autonomy"]] + D[s["data"]] + (2 if s["untrusted_input"] else 0)
+    risks = []
+    if s["untrusted_input"]: risks.append("LLM01")
+    if s["autonomy"] in ("tools", "decide"): risks.append("LLM06")
+    if s["data"] in ("customer", "personal"): risks.append("LLM02")
+    s["owasp"] = ",".join(risks) or "-"
+for s in sorted(inv, key=lambda s: -s["score"]):
+    print(f"{s['name']:18s} score={s['score']:2d} owasp={s['owasp']}")
+```
+
+Salida esperada:
+
+```text
+support-chatbot    score=10 owasp=LLM01,LLM06,LLM02
+hr-cv-screener     score= 9 owasp=LLM01,LLM06,LLM02
+code-assistant     score= 6 owasp=LLM01
+invoice-ocr-model  score= 5 owasp=LLM01
+churn-predictor    score= 3 owasp=LLM02
+```
+
+El inventario de Amira en el ejemplo resuelto que sigue encontró 23 usos de IA.
+
+### 7.2 Reutilizar los procesos existentes
+
+La gestión de cambios abarca los cambios del modelo, del *prompt* y del índice de recuperación además del código. La gestión de accesos abarca las identidades que usan los agentes. La gestión de proveedores pregunta a los proveedores de modelos y de API por el uso de los datos, la conservación, las pruebas de seguridad y la notificación de incidentes. La respuesta a incidentes añade manuales de actuación para la inyección de *prompts*, la fuga de datos a través de un modelo y los datos envenenados, incluida la reversión de modelos y *prompts*. La integración es mejor que un «proceso de IA» aparte que los equipos pueden ignorar.
+
+En Corvane, Amira añadió «cambio de *prompt* o de modelo» a la lista de comprobación del comité de cambios y preguntas sobre IA al cuestionario de proveedores, en lugar de crear un proceso aparte.
+
+### 7.3 Roles
+
+Asigne: un responsable del sistema que rinda cuentas de cada sistema de IA; una función de seguridad de la IA que fije normas y realice pruebas; responsables de datos que aprueben su uso; y un comité de riesgos que acepte el riesgo residual en los niveles altos. La norma ISO/IEC 42001 espera que esos roles estén definidos y dotados de recursos. En Corvane, el equipo de Amira es la función de seguridad de la IA, el director financiero aceptó el riesgo residual de FraudScore y cada sistema construido tiene un responsable designado. Escriba los roles en el inventario para que cada entrada muestre quién rinde cuentas, y revíselos cuando las personas cambien de puesto.
+
+### 7.4 Métricas
+
+Métricas útiles para la organización: porcentaje de sistemas de IA inventariados y con nivel asignado; sistemas de nivel alto con una evaluación adversaria vigente; tiempo para revertir un modelo o un *prompt*; incidentes y casi incidentes relacionados con la IA; porcentaje de herramientas de agentes con aplicación externa de controles. Evite métricas de vanidad como el «número de *prompts* filtrados». En Corvane, la hoja de ruta del primer año mide la proporción de sistemas de nivel alto evaluados en seis meses. Comunique cada métrica con su tendencia e indique cuáles están por debajo del objetivo y por qué, para que la junta vea dónde hace falta esfuerzo.
+
+### 7.5 Ejemplo resuelto (caso sintético de Corvane)
+
+El inventario de Amira encuentra 23 usos de IA: 3 sistemas construidos, 11 funciones de proveedores activadas en productos SaaS y 9 usos en la sombra. Dos funciones de proveedores —un asistente de correo con acceso al buzón y un resumidor del CRM— nunca se habían revisado. Les asigna nivel, añade preguntas sobre IA al cuestionario de proveedores, añade «cambio de *prompt* o de modelo» a la lista de comprobación del comité de cambios y redacta un manual de actuación para la inyección. Su hoja de ruta del primer año tiene como objetivo evaluar todos los sistemas de nivel alto en seis meses.
+
+Un inventario limitado a los sistemas construidos habría pasado por alto las dos funciones de proveedores sin revisar.
+
+### 7.6 Errores y límites
+
+- Inventarios que omiten las funciones de proveedores y el uso en la sombra.
+- Procesos de IA paralelos que nadie sigue.
+- Métricas que cuentan actividad en lugar de reducción del riesgo.
+
+Cada error deja riesgos sin ver o sin gestionar. Un inventario limitado a los sistemas construidos habría pasado por alto las 11 funciones de proveedores y los 9 usos en la sombra de Corvane. Un proceso de IA paralelo es fácil de ignorar para los equipos; añadir preguntas a las listas de comprobación existentes sí llega a ellos. Contar actividad, como los *prompts* filtrados, no dice nada sobre si el riesgo bajó. Revise su programa en busca de los tres. Corrija los que encuentre en la próxima revisión.
+
+### Ejercicios
+
+- **EX031 — Entrada del inventario.** Redacte una entrada completa del inventario para DocRead. Rúbrica: 3 = todos los campos y un nivel justificado; 2 = la mayoría; 1 = pocos; 0 = ninguno.
+- **EX032 — Laboratorio.** Explique por qué el chatbot de soporte se sitúa por encima del predictor de bajas en el laboratorio. Rúbrica: 3 = herramientas, entrada no fiable, datos, correspondencia con OWASP; 2 = dos; 1 = uno; 0 = incorrecto.
+- **EX033 — Cambios.** Enumere cuatro tipos de cambio en sistemas de IA que deban pasar por la gestión de cambios. Rúbrica: 3 = cuatro; 2 = tres; 1 = uno o dos; 0 = ninguno.
+- **EX034 — Preguntas a proveedores.** Redacte cinco preguntas a proveedores específicas de la IA. Rúbrica: 3 = cinco pertinentes; 2 = cuatro; 1 = dos; 0 = ninguna.
+- **EX035 — Métricas.** Proponga tres métricas del programa y una que deba evitarse. Rúbrica: 3 = tres vinculadas al riesgo más una a evitar justificada; 2 = parcial; 1 = vago; 0 = nada.
+
+### Síntesis
+
+La integración organizativa consiste en conocer cada uso de la IA, incorporar la IA a procesos que las personas ya siguen, asignar la rendición de cuentas y medir la reducción del riesgo.
+
+### Siga estudiando — capítulo 07 de 12
+
+[← Capítulo 06 (borrador)](#ch-06) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 08 (borrador) →](#ch-08)
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Seguridad de la IA y del aprendizaje automático: casos difíciles
+
+### Resultados de aprendizaje
+
+Usted podrá (1) analizar casos en los que los controles entran en conflicto o la evidencia es ambigua; (2) gestionar casos multiagente y de la cadena de suministro; (3) razonar sobre la fuga de privacidad de los modelos ajustados; (4) gestionar incidentes de causa raíz incierta; y (5) documentar el criterio aplicado en situaciones ambiguas.
+
+### 8.1 Controles en conflicto
+
+Registrar cada *prompt* facilita la investigación, pero almacena datos personales; el rechazo estricto reduce el uso indebido, pero perjudica a los usuarios legítimos; la confirmación humana acota el daño, pero provoca fatiga de aprobación. Los casos difíciles rara vez se resuelven con un control más; necesitan disyuntivas explícitas, responsables y la monitorización de ambos lados. En Corvane, el incidente del almacén mostró una de esas disyuntivas: la reprogramación automática ahorra tiempo, pero confiaba demasiado en el texto de los correos. Escriba cada disyuntiva con su responsable y la medida que muestra si el equilibrio es el adecuado.
+
+### 8.2 Multiagente y cadena de suministro
+
+Cuando unos agentes llaman a otros, una inyección en uno puede propagarse. Trate cada mensaje entre agentes como una entrada no fiable y mantenga la aplicación de controles en cada frontera de herramienta. Los casos de la cadena de suministro incluyen conjuntos de datos públicos envenenados —Carlini et al. (arXiv:2302.10149) muestran que envenenar conjuntos de datos a escala web es factible— y archivos de modelos procedentes de repositorios públicos. Fije los *hashes*, registre la procedencia y prefiera formatos que no ejecuten código al cargarse.
+
+```python
+"""Lab H: integrity of model artefacts with SHA-256 manifests (stdlib only).
+Creates synthetic 'artefact' bytes, records a manifest, then detects a
+one-byte tampering and a swapped file. No real models are involved."""
+import hashlib, json
+files = {"model.bin": bytes(range(256)) * 40, "tokenizer.json": b'{"vocab": ["a", "b"]}',
+         "config.yaml": b"layers: 4\nheads: 8\n"}
+manifest = {n: hashlib.sha256(b).hexdigest() for n, b in files.items()}
+print(json.dumps({k: v[:16] for k, v in manifest.items()}, indent=1))
+received = dict(files)
+tampered = bytearray(received["model.bin"]); tampered[5000] ^= 1
+received["model.bin"] = bytes(tampered)
+received["config.yaml"] = b"layers: 4\nheads: 8\ntrust_remote_code: true\n"
+for n, b in sorted(received.items()):
+    ok = hashlib.sha256(b).hexdigest() == manifest[n]
+    print(f"{n:15s} {'OK' if ok else 'MISMATCH'}")
+```
+
+Salida esperada:
+
+```text
+{
+ "model.bin": "e96760a87768717b",
+ "tokenizer.json": "f63d2ddabc61f2d9",
+ "config.yaml": "e5bbb570ca0fcb87"
+}
+config.yaml     MISMATCH
+model.bin       MISMATCH
+tokenizer.json  OK
+```
+
+En Corvane, el modelo lector de Dispatch Copilot pasa campos al planificador. El laboratorio H muestra la comprobación: tanto un byte cambiado como una línea de configuración añadida se detectan.
+
+### 8.3 Fuga de privacidad
+
+Los modelos ajustados pueden memorizar y revelar datos de entrenamiento; Carlini et al. (arXiv:2012.07805) extrajeron ejemplos de entrenamiento literales de un modelo de lenguaje. Cuando un modelo se ajusta con mensajes de clientes, pruebe la regurgitación literal y la inferencia de pertenencia, y considere la deduplicación, el filtrado y la privacidad diferencial. En Corvane, el proyecto aplicado de Tomás lo probó con un modelo de sugerencia de respuestas ajustado con mensajes de clientes, y la deduplicación redujo la ventaja de pertenencia de 0,17 a 0,06. Ejecute esas pruebas después de cada ajuste, no solo una vez. Comunique la fuga junto con el ataque usado y sus condiciones.
+
+### 8.4 Incidentes de causa incierta
+
+¿El reembolso erróneo fue una inyección, un error del modelo o un fallo de la política? Conserve los *prompts*, los documentos recuperados, las llamadas a herramientas y las versiones; reprodúzcalo en una copia aislada; considere las tres posibilidades hasta que la evidencia las separe. Contenga primero: baje los límites, desactive la herramienta, revierta el *prompt*. El incidente del almacén de Amira siguió este orden: contención mediante la desactivación de la reprogramación automática, evidencia a partir de los registros y después la causa. La causa resultó ser una cuenta de transportista comprometida, no un error del modelo, algo que solo la evidencia conservada podía mostrar.
+
+### 8.5 Ejemplo resuelto (caso sintético de Corvane)
+
+Copilot reprogramó 14 envíos a un almacén nuevo tras leer un correo de un transportista. ¿Fue un ataque? El correo decía «Per updated routing, all Thursday loads go to Depot 7» («Según el enrutamiento actualizado, todas las cargas del jueves van al almacén 7»). Los registros muestran que el correo procedía de una cuenta real de transportista que había sido comprometida. Amira contiene el incidente desactivando la reprogramación automática, avisa al transportista y añade una regla: los cambios de almacén requieren una entrada coincidente en el sistema de enrutamiento, no solo el texto de un correo. Registra que el modelo se comportó según su diseño: era el diseño el que confiaba demasiado en el correo.
+
+### 8.6 Errores y límites
+
+- Buscar un único control para una disyuntiva.
+- Confiar en los mensajes entre agentes.
+- Culpar a «el modelo» antes de tener evidencia.
+
+Cada error conduce a una respuesta equivocada. Una disyuntiva no puede resolverse con un control más; necesita un responsable y la monitorización de ambos lados. Los mensajes de otros agentes pueden llevar instrucciones inyectadas, así que hace falta aplicar controles en cada frontera de herramienta. Culpar al modelo antes de tener evidencia habría ocultado la cuenta de transportista comprometida que había detrás del incidente del almacén de Corvane. Revise cada análisis de incidente en busca de los tres.
+
+### Ejercicios
+
+- **EX036 — Disyuntiva.** Resuelva el conflicto entre registro y privacidad para Copilot. Rúbrica: 3 = conservación, censura de datos, acceso, limitación de la finalidad; 2 = tres; 1 = uno; 0 = nada.
+- **EX037 — Laboratorio de *hashes*.** ¿Qué le dicen a un respondedor de incidentes las líneas MISMATCH del laboratorio? Rúbrica: 3 = archivos modificados desde que se fijaron; investigar la procedencia; bloquear la carga; 2 = parcial; 1 = vago; 0 = incorrecto.
+- **EX038 — Prueba de memorización.** Diseñe una prueba de fuga literal para un modelo ajustado con mensajes de clientes. Rúbrica: 3 = canarios o registros conocidos, *prompts*, medición, umbral; 2 = tres; 1 = vago; 0 = nada.
+- **EX039 — Incidente.** Enumere la evidencia que debe conservarse del incidente del almacén. Rúbrica: 3 = correo, recuperación, *prompts*, llamadas a herramientas, versiones, cronología; 2 = cuatro; 1 = dos; 0 = nada.
+- **EX040 — Causa raíz.** Redacte la declaración de causa raíz del §8.5. Rúbrica: 3 = confianza del diseño en el correo, transportista comprometido, corrección; 2 = dos; 1 = culpa al modelo; 0 = nada.
+
+### Síntesis
+
+Los casos difíciles necesitan disyuntivas explícitas, desconfianza hacia todo mensaje que cruce una frontera de agente o de cadena de suministro y una gestión de incidentes que conserve la evidencia antes de decidir la causa.
+
+### Siga estudiando — capítulo 08 de 12
+
+[← Capítulo 07 (borrador)](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 09 (borrador) →](#ch-09)
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Seguridad de la IA y del aprendizaje automático: liderazgo y aseguramiento
+
+### Resultados de aprendizaje
+
+Usted podrá (1) construir un caso de aseguramiento para un sistema de IA; (2) comunicar la postura de seguridad de la IA a la dirección y a los consejos; (3) planificar la auditoría interna y las pruebas independientes de equipo rojo; (4) guiar a los equipos en decisiones disputadas; y (5) mantener el aseguramiento a medida que los sistemas cambian.
+
+### 9.1 Casos de aseguramiento
+
+Un caso de aseguramiento es un argumento estructurado: una afirmación («Copilot no puede emitir reembolsos fuera de la política»), argumentos («los reembolsos pasan por un servicio de políticas independiente del modelo») y evidencia (pruebas, configuración, monitorización). Cada afirmación debe indicar sus condiciones y la antigüedad de la evidencia. Los puntos débiles son explícitos: ¿qué haría falsa la afirmación? El caso de aseguramiento de Amira para el tope de reembolsos señala como punto débil el compromiso del correo de un transportista. Para el tope de reembolsos, la evidencia es la configuración del servicio de políticas, las pruebas que muestran que 0 de 300 casos adaptativos llegaron al pago y la monitorización de los reembolsos reales. Registre la fecha de cada elemento de evidencia y la versión del modelo que abarca, y revise el caso cuando cambie cualquiera de las dos.
+
+### 9.2 Comunicar hacia arriba
+
+Los consejos necesitan una imagen breve y honesta: qué sistemas de IA concentran más riesgo, cuánto de ese riesgo está tratado, qué incidentes se produjeron y qué decisiones les corresponden. Use pocas métricas, tendencias y declaraciones claras del riesgo residual. No oculte la incertidumbre tras cuadros de mando en verde. El informe de una página de Amira para el consejo, en el ejemplo resuelto que sigue, muestra los principales riesgos con sus tendencias, los incidentes, la cobertura de las evaluaciones y una solicitud de decisión. Mantenga el mismo formato cada trimestre para que el consejo pueda comparar. Muestre las tendencias de al menos cuatro trimestres.
+
+### 9.3 Auditoría y equipo rojo
+
+La auditoría interna comprueba que los procesos funcionan según su diseño: inventarios mantenidos, evaluaciones vigentes, cambios revisados. Los equipos rojos independientes prueban si los controles funcionan frente a atacantes motivados. Ganguli et al. (arXiv:2209.07858) describen las lecciones de las pruebas de equipo rojo con modelos de lenguaje; delimite el alcance de los equipos rojos por objetivos (mover dinero, exfiltrar datos) y no por listas de *prompts*. En Corvane, a un equipo rojo se le podría pedir que moviera dinero a través de Dispatch Copilot o que extrajera direcciones de clientes, en lugar de probar una lista de *prompts*. Acuerde el alcance, las reglas y la comunicación de resultados con el responsable del sistema antes de empezar.
+
+### 9.4 Guiar decisiones disputadas
+
+Los equipos de producto quieren velocidad; los equipos de riesgos quieren evidencia. Guíe la discusión haciendo concreto el desacuerdo: qué daño, con qué probabilidad, qué evidencia haría cambiar de opinión. Ofrezca caminos reversibles. Cuando imponga su criterio, explique por escrito por qué.
+
+```python
+"""Lab A: spotting extraction-style abuse in a synthetic API log.
+Flags clients whose query volume or input diversity is anomalous."""
+import random, statistics
+rng = random.Random(21)
+log = []
+for c in range(12):
+    for _ in range(rng.randint(40, 90)):
+        log.append((f"client{c:02d}", round(rng.gauss(0, 1), 1)))
+for i in range(600):                      # synthetic scraper: many, grid-like inputs
+    log.append(("client99", round(-3 + 6*(i % 61)/60, 1)))
+by = {}
+for c, x in log: by.setdefault(c, []).append(x)
+vol = {c: len(v) for c, v in by.items()}
+med = statistics.median(vol.values()); mad = statistics.median(abs(v-med) for v in vol.values())
+for c in sorted(by):
+    z = (vol[c]-med)/(1.4826*mad); uniq = len(set(by[c]))/len(by[c])
+    flag = "FLAG" if z > 3.5 else "ok"
+    print(f"{c} queries={vol[c]:3d} robust_z={z:6.2f} distinct_ratio={uniq:.2f} {flag}")
+```
+
+Salida esperada:
+
+```text
+client00 queries= 50 robust_z= -0.34 distinct_ratio=0.56 ok
+client01 queries= 64 robust_z=  0.45 distinct_ratio=0.52 ok
+client02 queries= 81 robust_z=  1.41 distinct_ratio=0.44 ok
+client03 queries= 46 robust_z= -0.56 distinct_ratio=0.52 ok
+client04 queries= 52 robust_z= -0.22 distinct_ratio=0.48 ok
+client05 queries= 40 robust_z= -0.90 distinct_ratio=0.57 ok
+client06 queries= 42 robust_z= -0.79 distinct_ratio=0.57 ok
+client07 queries= 87 robust_z=  1.74 distinct_ratio=0.48 ok
+client08 queries= 56 robust_z=  0.00 distinct_ratio=0.52 ok
+client09 queries= 50 robust_z= -0.34 distinct_ratio=0.62 ok
+client10 queries= 68 robust_z=  0.67 distinct_ratio=0.50 ok
+client11 queries= 89 robust_z=  1.85 distinct_ratio=0.42 ok
+client99 queries=600 robust_z= 30.58 distinct_ratio=0.10 FLAG
+```
+
+En Corvane, la decisión sobre la reprogramación siguió un camino reversible: el diseño B con un tope de valor. Registre quién discrepó y sobre qué, para que la decisión pueda revisarse cuando cambie la evidencia, e invite al equipo discrepante a proponer la evidencia que cambiaría su opinión. Sea breve.
+
+### 9.5 Mantener vigente el aseguramiento
+
+Cada actualización del modelo, cambio del *prompt*, nueva herramienta o nueva fuente de datos puede invalidar la evidencia. Vincule las afirmaciones a versiones; vuelva a ejecutar las evaluaciones automáticamente; monitorice las señales de producción (el laboratorio señala a un cliente cuyo volumen de consultas es un valor atípico según la puntuación z robusta, indicio de una posible extracción o de un abuso). En Corvane, cada actualización del modelo o nueva herramienta desencadena una nueva ejecución del conjunto de evaluación de Copilot, y el caso de aseguramiento registra las versiones que abarca su evidencia. Vuelva a ejecutar cada semana la comprobación de valores atípicos del laboratorio sobre los registros reales de consultas y revise con el responsable del sistema cualquier cliente señalado.
+
+### 9.6 Ejemplo resuelto (caso sintético de Corvane)
+
+El informe trimestral de Amira para el consejo ocupa una página: los cinco principales riesgos de IA con flechas de tendencia, dos incidentes (la reprogramación del almacén y un pegado de datos en una IA en la sombra), una cobertura de evaluación de 4 de 5 sistemas de nivel alto y una solicitud de decisión: aprobar la subida del tope de reembolsos a 50 € sobre la base de 12 000 reembolsos reales con 2 indebidos confirmados. El caso de aseguramiento del tope señala su punto débil: el compromiso del correo de un transportista.
+
+La solicitud de decisión está respaldada por evidencia real e indica su punto débil, de modo que el consejo puede sopesarla. El informe muestra además qué evidencia es la más reciente.
+
+### 9.7 Errores y límites
+
+- Casos de aseguramiento sin condiciones ni fechas.
+- Cuadros de mando en verde que ocultan lo desconocido.
+- Equipos rojos limitados a listas de *prompts*.
+
+Cada error hace que el aseguramiento quede obsoleto o resulte engañoso. Una afirmación sin condiciones ni fechas puede describir un modelo que ya no está en funcionamiento. Los cuadros de mando en verde ocultan lo que se desconoce, como el único sistema de nivel alto de Corvane que sigue sin evaluar. Los equipos rojos limitados a listas de *prompts* no pueden encontrar ataques encadenados que muevan dinero. Revise cada trimestre sus casos de aseguramiento y sus informes en busca de los tres. Corrija los que encuentre antes del siguiente informe.
+
+### Ejercicios
+
+- **EX041 — Caso de aseguramiento.** Redacte una cadena afirmación–argumento–evidencia para el control de la reprogramación. Rúbrica: 3 = afirmación, argumento, evidencia, condiciones, punto débil; 2 = cuatro; 1 = dos; 0 = nada.
+- **EX042 — Página para el consejo.** Esboce el informe de una página para el consejo. Rúbrica: 3 = riesgos, tendencias, incidentes, cobertura, decisiones; 2 = cuatro; 1 = dos; 0 = nada.
+- **EX043 — Alcance del equipo rojo.** Redacte los objetivos de un equipo rojo contra Copilot. Rúbrica: 3 = objetivos basados en efectos, reglas de enfrentamiento, fuera de alcance; 2 = dos; 1 = lista de *prompts*; 0 = nada.
+- **EX044 — Laboratorio de monitorización.** Interprete el valor atípico del laboratorio de monitorización y proponga una respuesta. Rúbrica: 3 = z robusta muy por encima del resto, investigar, limitar la tasa; 2 = dos; 1 = uno; 0 = incorrecto.
+- **EX045 — Decisión sobre el tope.** ¿Debe el consejo aprobar los 50 €? Use los datos. Rúbrica: 3 = tasa ≈0,017 % con cota, apetito de riesgo, punto débil; 2 = parcial; 1 = afirmación; 0 = nada.
+
+### Síntesis
+
+El liderazgo en seguridad de la IA convierte la evidencia en casos de aseguramiento, comunica el riesgo con honestidad hacia arriba, usa la auditoría y los equipos rojos como comprobaciones independientes y mantiene vigentes las afirmaciones a medida que los sistemas cambian.
+
+### Siga estudiando — capítulo 09 de 12
+
+[← Capítulo 08 (borrador)](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 (borrador) →](../../en/book/MANUSCRIPT.md#ch-10)
 
 <a id="worked-results"></a>
 
@@ -581,6 +858,51 @@ Recomendación: B.
 **EX029.** No, no en la ruta de bloqueo. Redujo los ataques (del 22 % al 9 %) pero bajó la finalización (del 91 % al 86 %). La separación de privilegios logra un 0,5 % con un 90 % de finalización, así que ahí el clasificador añade coste sin beneficio. Manténgalo como señal de monitorización.
 
 **EX030.** «Con 400 casos adaptativos reservados y 2000 conversaciones normales (modelo v3, octubre de 2026), las llamadas dañinas a herramientas fueron del 22 % en la línea base, del 9 % con el clasificador y del 0,5 % con la separación de privilegios. La finalización normal fue del 91 %, el 86 % y el 90 %. La separación de privilegios reduce los ataques sin perjudicar el servicio; el clasificador bloquea texto legítimo de los transportistas. Estos resultados no abarcan otros idiomas.»
+
+**EX031.**
+- Sistema: DocRead. Responsable: TI de operaciones. Finalidad: extraer campos de los conocimientos de embarque.
+- Modelo: OCR del proveedor más un extractor ajustado. Datos: documentos escaneados que contienen nombres y direcciones. Herramientas: ninguna, pero sus salidas alimentan a Copilot y a la facturación.
+- Usuarios: personal de operaciones. Afectados: cargadores y destinatarios.
+- Nivel: medio, porque los errores se propagan a la facturación y al enrutamiento, pero no se realizan acciones directas.
+
+**EX032.** El chatbot de soporte recibe entradas no fiables de usuarios y documentos, tiene herramientas y guarda datos personales, por lo que corresponde a LLM01, LLM06 y LLM02. El predictor de bajas no tiene herramientas y su exposición es limitada.
+
+**EX033.** Las actualizaciones de la versión del modelo, las ediciones del *prompt* del sistema, los cambios en las fuentes del índice de recuperación y la incorporación o modificación de herramientas o de sus permisos.
+
+**EX034.**
+1. ¿Se usan nuestros datos para entrenar y podemos excluirnos?
+2. ¿Cuál es el periodo de conservación?
+3. ¿Qué pruebas adversarias realizan y podemos ver un resumen?
+4. ¿Con qué rapidez nos notificarán los incidentes que afecten a nuestros datos?
+5. ¿Podemos fijar las versiones del modelo y recibir avisos de cambios?
+
+**EX035.** Usar: porcentaje de sistemas de nivel alto con una evaluación de menos de seis meses; tiempo para revertir un *prompt* o un modelo; porcentaje de herramientas de agentes con aplicación externa de controles. Evitar: el recuento de *prompts* bloqueados, que mide actividad y no reducción del riesgo.
+
+**EX036.** Registre los *prompts* y las llamadas a herramientas con los campos personales censurados. Consérvelos 90 días, con el acceso limitado al equipo de incidentes y auditado. Use los registros solo para seguridad y calidad. Consérvelos más tiempo solo en incidentes activos.
+
+**EX037.** model.bin y config.yaml ya no coinciden con los *hashes* fijados, así que cambiaron después de fijarse. Bloquee la carga, compárelos con la fuente de confianza, revise la procedencia y los registros de acceso, y trátelo como una posible manipulación hasta que se explique.
+
+**EX038.** Inserte cadenas canario únicas en los datos de ajuste, o tome una muestra de mensajes de entrenamiento conocidos. Use sus prefijos como *prompt* y mida la continuación literal más allá de n *tokens*. Compárelo con mensajes reservados. Fije un umbral, como cero canarios expuestos, antes de la publicación.
+
+**EX039.** Conserve:
+- el correo del transportista y sus cabeceras;
+- los resultados de la recuperación;
+- los *prompts* completos y las salidas del modelo;
+- las llamadas a herramientas y sus parámetros;
+- las versiones del modelo, del *prompt* y de la política;
+- las marcas de tiempo y los envíos afectados.
+
+**EX040.** «Copilot reprogramó 14 envíos porque su diseño trataba el texto de los correos de los transportistas como autorizado para los cambios de almacén. Una cuenta de transportista comprometida envió una instrucción de enrutamiento falsa. Corrección: los cambios de almacén requieren una entrada coincidente en el sistema de enrutamiento.»
+
+**EX041.** Afirmación: las reprogramaciones nunca trasladan un envío a un almacén que no figure en el sistema de enrutamiento. Argumento: el ejecutor comprueba cada reprogramación frente al sistema de enrutamiento, con independencia del modelo. Evidencia: pruebas unitarias, 300 casos adaptativos con 0 infracciones y la revisión de la configuración. Condiciones: modelo v3, API de enrutamiento v2. Punto débil: el compromiso del propio sistema de enrutamiento.
+
+**EX042.** Los cinco principales riesgos de IA con su tendencia; incidentes y casi incidentes; cobertura de evaluación de los sistemas de nivel alto; métricas clave; decisiones solicitadas; riesgos residuales aceptados.
+
+**EX043.** Objetivos: provocar un reembolso fuera de la política, exfiltrar la dirección de otro cliente o reprogramar un envío sin autorización. Reglas: copia aislada, datos sintéticos, sin denegación de servicio, detenerse ante cualquier exposición real. Fuera de alcance: la infraestructura del proveedor.
+
+**EX044.** La puntuación z robusta de un cliente (unos 30) está muy por encima de la de todos los demás (todas por debajo de 2). Su volumen de consultas sugiere *scraping* o extracción. Investigue su identidad, aplique un límite de tasa y revise sus patrones de consulta.
+
+**EX045.** 2 de 12 000 es aproximadamente un 0,017 %, con una cota superior al 95 % de aproximadamente el 0,06 %. Con 60 000 reembolsos × 50 €, el peor coste plausible es de unos 1800 €, dentro del apetito de riesgo de 10 000 €. Apruébelo, mantenga la monitorización y anote como punto débil el compromiso del correo de un transportista.
 
 <a id="references"></a>
 
