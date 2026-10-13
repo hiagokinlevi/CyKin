@@ -15,12 +15,12 @@ Edição em português do Brasil, escrita a partir da edição de referência em
 | 2 | [03](book/PLAN.md#ch-03) | O risco em termos simples | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-03) | [04 · Rascunho](book/MANUSCRIPT.md#ch-04) |
 | 2 | [04](book/PLAN.md#ch-04) | Contas e entrada com múltiplos fatores | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-04) | [05 · Rascunho](book/MANUSCRIPT.md#ch-05) |
 | 3 | [05](book/PLAN.md#ch-05) | Dispositivos e dados no escritório | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-05) | [06 · Rascunho](book/MANUSCRIPT.md#ch-06) |
-| 3 | [06](book/PLAN.md#ch-06) | E-mail e fraude de pagamentos | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-06) | [07 · Plano](book/PLAN.md#ch-07) |
-| 4 | [07](book/PLAN.md#ch-07) | Fornecedores e serviços em nuvem | 30 | 30 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-07)) | [08 · Plano](book/PLAN.md#ch-08) |
-| 4 | [08](book/PLAN.md#ch-08) | Pessoas e conscientização | 30 | 30 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-08)) | [09 · Plano](book/PLAN.md#ch-09) |
-| 5 | [09](book/PLAN.md#ch-09) | Tratamento de incidentes | 30 | 30 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-09)) | [10 · Plano](book/PLAN.md#ch-10) |
-| 5 | [10](book/PLAN.md#ch-10) | Continuidade e backups | 30 | 30 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-10)) | [11 · Plano](book/PLAN.md#ch-11) |
-| 6 | [11](book/PLAN.md#ch-11) | Política e obrigações | 30 | 30 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-11)) | [12 · Plano](book/PLAN.md#ch-12) |
-| 6 | [12](book/PLAN.md#ch-12) | Relatórios à liderança e próximos passos | 30 | 30 | 5 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-12)) | [Curso 026 →](../../data-governance/pt/SUBJECTS.md) |
+| 3 | [06](book/PLAN.md#ch-06) | E-mail e fraude de pagamentos | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-06) | [07 · Rascunho](book/MANUSCRIPT.md#ch-07) |
+| 4 | [07](book/PLAN.md#ch-07) | Fornecedores e serviços em nuvem | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-07) | [08 · Rascunho](book/MANUSCRIPT.md#ch-08) |
+| 4 | [08](book/PLAN.md#ch-08) | Pessoas e conscientização | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-08) | [09 · Rascunho](book/MANUSCRIPT.md#ch-09) |
+| 5 | [09](book/PLAN.md#ch-09) | Tratamento de incidentes | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-09) | [10 · Rascunho](book/MANUSCRIPT.md#ch-10) |
+| 5 | [10](book/PLAN.md#ch-10) | Continuidade e backups | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-10) | [11 · Rascunho](book/MANUSCRIPT.md#ch-11) |
+| 6 | [11](book/PLAN.md#ch-11) | Política e obrigações | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-11) | [12 · Rascunho](book/MANUSCRIPT.md#ch-12) |
+| 6 | [12](book/PLAN.md#ch-12) | Relatórios à liderança e próximos passos | 30 | 30 | 5 | [Rascunho](book/MANUSCRIPT.md#ch-12) | [Curso 026 →](../../data-governance/pt/SUBJECTS.md) |
 
 Um próximo passo planejado é um destino de navegação, não uma lição escrita. As colunas de páginas e exercícios são metas editoriais. O livro só estará completo quando seu conteúdo e a renderização em A4 atenderem ao critério de publicação.

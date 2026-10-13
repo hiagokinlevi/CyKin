@@ -1,7 +1,7 @@
 # Segurança da Informação: Curso Profissional
 
 - Idioma: português do Brasil (`pt`); curso 025, curso profissional (6 meses). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–6 de 12 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 7–12 (EX031–EX060) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–12 de 12 têm texto didático escrito à mão; os exercícios EX001–EX060 têm resoluções correspondentes com rubricas de 0 a 3; os dois laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: profissionais em atividade que assumem a segurança da informação junto com outra função numa firma pequena ou média.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios medem a cobertura da entrada com múltiplos fatores por tipo de conta num diretório sintético e classificam um registro sintético de riscos por probabilidade vezes impacto. As normas são citadas pela edição e parafraseadas; os pontos jurídicos são gerais e exigem orientação profissional. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ ISO/IEC 27000:2026; ISO/IEC 27001:2022 (no Brasil, ABNT NBR ISO/IEC 27001:2022);
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) |
-
-Capítulos 7–12: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-07), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -374,11 +372,287 @@ Ligar para um número informado no e-mail suspeito só leva ao criminoso.
 
 - **EX030 — Tentativa barrada.** Quem barrou a tentativa de fraude? *Rubrica:* 3 = uma assistente da folha de pagamento;; 2 = correto;; 1 = outra pessoa;; 0 = nenhuma.
 
+<a id="ch-07"></a>
+
+## Capítulo 7 — Fornecedores e serviços em nuvem
+
+### Objetivos de aprendizagem
+
+Você vai (1) listar os fornecedores que lidam com as informações da firma; (2) fazer perguntas de segurança proporcionais; (3) registrar o que cada fornecedor consegue alcançar.
+
+### 7.1 Lista de fornecedores
+
+Daniel lista todas as organizações externas que armazenam ou conseguem alcançar informações da Corbridge: o serviço de e-mail e arquivos, o fornecedor do software de contabilidade, o provedor do portal dos clientes, o serviço de folha de pagamento, a empresa de suporte e uma empresa de trituração de documentos. Ele anota o que cada uma guarda e como se conecta. A empresa de suporte se destaca porque tem acesso de administrador a todos os notebooks e ao sistema de e-mail. A Sra. Ashby explica que um fornecedor com acesso amplo faz parte da segurança da firma, quer alguém pense nele assim ou não, por isso ele pertence ao registro de riscos.
+
+### 7.2 Perguntas proporcionais
+
+A Sra. Ashby desaconselha o envio de questionários longos que os pequenos fornecedores não conseguem responder. Em vez disso, Daniel faz a cada um poucas perguntas adequadas ao que eles guardam: o acesso da equipe exige um segundo fator, com que rapidez vocês nos avisarão de uma violação, onde nossos dados ficam armazenados e o que acontece com eles quando o contrato termina. A ISO/IEC 27002:2022, a orientação sobre os controles de segurança da informação, inclui as relações com fornecedores entre seus temas de controle, e Daniel a usa como lista de verificação para suas perguntas, e não como um livro de regras, escolhendo apenas os itens que importam para cada fornecedor.
+
+### 7.3 A empresa de suporte
+
+As respostas da empresa de suporte mostram que seus técnicos compartilham uma única conta de administrador para os sistemas da Corbridge. Daniel explica que isso torna impossível saber quem mudou o quê. Ele pede contas nominais, cada uma com um segundo fator, e uma lista mensal das mudanças feitas. A empresa concorda, depois de alguma discussão sobre o custo. Daniel também confirma que o contrato de suporte inclui o dever de comunicar incidentes em até um dia útil. A Sra. Ashby observa que cláusulas contratuais claras dão a uma firma pequena um poder de negociação que de outro modo ela não teria diante de um provedor maior.
+
+### 7.4 O risco do fornecedor
+
+Daniel volta ao risco de violação no fornecedor, que recebeu nota baixa no capítulo três. O fornecedor do software de contabilidade publica um resumo de segurança e tem uma certificação reconhecida, o que Daniel registra. Ele também verifica como a firma ficaria sabendo de uma violação e o que precisaria fazer: avisar os clientes afetados e possivelmente o regulador. Ele redige um breve plano para esse caso e o arquiva com os procedimentos de incidentes. A Sra. Ashby observa que planejar para um risco fora de seu controle continua sendo útil, porque a resposta está sob seu controle.
+
+### Exemplo resolvido
+
+Daniel lista seis fornecedores, faz quatro perguntas proporcionais a cada um, consegue que a empresa de suporte substitua uma conta de administrador compartilhada por contas nominais e planeja a resposta a uma violação no fornecedor.
+
+> **Caso sintético.** Os fornecedores e as respostas são sintéticos.
+
+### Erros e limites
+
+Questionários genéricos e longos muitas vezes ficam sem resposta e deixam as lacunas reais desconhecidas.
+
+### Exercícios
+
+- **EX031 — Acesso mais amplo.** Qual fornecedor tem o acesso mais amplo? *Rubrica:* 3 = a empresa de suporte;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX032 — Quatro perguntas.** Cite duas das perguntas de Daniel aos fornecedores. *Rubrica:* 3 = MFA, aviso de violação, local dos dados, fim do contrato;; 2 = duas;; 1 = uma;; 0 = nenhuma.
+
+- **EX033 — Conta compartilhada.** Que problema a empresa de suporte tinha? *Rubrica:* 3 = uma única conta de administrador compartilhada;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+
+- **EX034 — Dever de comunicação.** Em quanto tempo a empresa de suporte precisa comunicar incidentes? *Rubrica:* 3 = em até um dia útil;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX035 — Plano para o fornecedor.** Por que planejar para uma violação no fornecedor, fora do controle da firma? *Rubrica:* 3 = a resposta está sob seu controle;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Pessoas e conscientização
+
+### Objetivos de aprendizagem
+
+Você vai (1) criar atividades de conscientização curtas e relevantes; (2) tratar de forma confiável as admissões e os desligamentos; (3) construir uma cultura em que as comunicações sejam bem-vindas.
+
+### 8.1 Conscientização relevante
+
+A Corbridge usava um vídeo anual genérico que a equipe assistia sem som. Daniel o substitui por sessões curtas ligadas aos riscos da própria firma: phishing, fraude de pagamentos, tratamento dos documentos dos clientes e o que fazer com um notebook perdido. Cada sessão dura quinze minutos durante uma reunião de equipe e usa exemplos sintéticos parecidos com o trabalho real da firma. A Sra. Ashby explica que as pessoas se lembram muito melhor de exemplos do próprio trabalho do que de conselhos gerais e que sessões curtas e regulares superam uma única sessão longa por ano para manter os hábitos vivos.
+
+### 8.2 Admissões e desligamentos
+
+Daniel verifica como as contas são criadas e removidas. Os novos funcionários recebem as contas prontamente, mas as contas de quem sai às vezes são desativadas dias depois da saída, porque os recursos humanos avisam a empresa de suporte por e-mail quando alguém se lembra. Ele cria um formulário simples que os recursos humanos preenchem no último dia de quem sai, que vai direto para a empresa de suporte com cópia para Daniel. Depois, ele compara todo mês a lista de contas com a lista da folha de pagamento. A primeira comparação encontra dois ex-funcionários temporários com contas ativas, que são removidas no mesmo dia.
+
+### 8.3 Uma cultura de comunicação
+
+A Sra. Ashby insiste que os funcionários que temem ser culpados escondem os erros, e os erros escondidos se tornam incidentes. Daniel trabalha com a Sra. Pike para enviar uma breve mensagem dela: comunicar um e-mail suspeito ou um erro é sempre a coisa certa, e ninguém será criticado por comunicar. Ele cria um único endereço de e-mail e um único número de telefone para as comunicações. No mês seguinte, a equipe comunica nove mensagens suspeitas e um e-mail enviado ao cliente errado. Daniel agradece pessoalmente a cada pessoa que comunicou, porque o agradecimento incentiva a próxima comunicação tanto quanto qualquer treinamento.
+
+### 8.4 Medição do comportamento
+
+Daniel quer saber se as sessões mudam alguma coisa. Ele acompanha três números simples todo mês: e-mails suspeitos comunicados, erros comunicados pelos próprios autores e dias levados para desativar as contas de quem sai. A Sra. Ashby desaconselha julgar o sucesso pelo número de pessoas que clicam num e-mail de phishing de teste, porque os resultados variam com a dificuldade do teste e podem deixar a equipe ressentida. Daniel concorda e decide que o aumento das comunicações e a queda dos atrasos nos desligamentos são sinais melhores de que os hábitos estão mudando, e planeja mostrá-los à liderança trimestralmente junto com outras medidas.
+
+### Exemplo resolvido
+
+Daniel substitui um vídeo genérico por sessões curtas específicas da firma, corrige os atrasos nos desligamentos com um formulário e uma verificação mensal e obtém nove comunicações em um mês depois de uma mensagem sem culpa.
+
+> **Caso sintético.** Os funcionários e os números são sintéticos.
+
+### Erros e limites
+
+Julgar a conscientização apenas pelas taxas de clique nos testes pode enganar e desestimular a equipe.
+
+### Exercícios
+
+- **EX036 — Duração da sessão.** Quanto dura cada sessão de conscientização? *Rubrica:* 3 = quinze minutos;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX037 — Lacuna nos desligamentos.** Por que as contas de quem saía eram desativadas com atraso? *Rubrica:* 3 = o RH mandava e-mail à empresa de suporte quando se lembrava;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+
+- **EX038 — Verificação mensal.** O que Daniel compara todo mês? *Rubrica:* 3 = a lista de contas com a da folha de pagamento;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+
+- **EX039 — Comunicações obtidas.** Quantas mensagens suspeitas foram comunicadas no mês seguinte? *Rubrica:* 3 = nove;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX040 — Medida melhor.** Por que evitar julgar pelas taxas de clique nos testes? *Rubrica:* 3 = variam com a dificuldade, causam ressentimento;; 2 = os dois;; 1 = um;; 0 = nenhuma.
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Tratamento de incidentes
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever um procedimento de incidentes curto; (2) segui-lo durante um incidente sintético; (3) decidir quando notificar clientes ou reguladores.
+
+### 9.1 Um procedimento curto
+
+Daniel escreve um procedimento de duas páginas que cobre as primeiras horas de um incidente: para quem ligar, como conter o problema, o que registrar e quem decide sobre as notificações. Ele indica Daniel como coordenador, a empresa de suporte como responsável pela resposta técnica e a Sra. Pike como quem decide sobre tudo o que envolver clientes ou reguladores. A Sra. Ashby lembra que um procedimento que ninguém encontra é inútil, por isso ele imprime cópias para cada escritório e guarda uma num lugar acessível mesmo se o e-mail estiver fora do ar, junto com todos os telefones importantes.
+
+### 9.2 A tomada de uma caixa postal
+
+Três semanas depois, a assistente de um sócio comunica que clientes receberam da conta dela uma mensagem estranha pedindo que abrissem um documento. Daniel segue o procedimento. A empresa de suporte redefine a senha, encerra todas as sessões ativas, ativa um segundo fator e remove uma regra de encaminhamento que o atacante tinha acrescentado, que enviava cópias de todos os e-mails recebidos a um endereço externo. Daniel registra cada passo com os horários. Depois, ele pede à empresa de suporte que verifique se o atacante leu ou baixou algum documento de cliente durante o período em que controlou a conta.
+
+### 9.3 Decisão sobre a notificação
+
+A revisão mostra que a regra de encaminhamento do atacante copiou cerca de duas semanas de e-mails recebidos, incluindo algumas mensagens com documentos de identidade de clientes anexados. A Sra. Pike, com a orientação do consultor de proteção de dados da firma, decide que os clientes afetados precisam ser avisados e que o regulador precisa ser notificado dentro do prazo legal. Daniel prepara uma lista factual dos clientes afetados e do tipo de documentos envolvidos. A Sra. Ashby observa que a regra de encaminhamento transformou um incômodo numa violação que precisa ser notificada, e é por isso que procurar essas regras é um passo padrão.
+
+### 9.4 Aprendizado posterior
+
+Uma semana depois, Daniel faz uma breve revisão com as pessoas envolvidas. A causa foi uma senha roubada numa conta sem segundo fator; a assistente estava na lista da etapa seguinte da implantação. A firma antecipa a implantação para todos os funcionários restantes e acrescenta uma verificação mensal das regras de encaminhamento para endereços externos. Daniel escreve um resumo de uma página para os sócios, sem culpar a assistente, que comunicou prontamente. A Sra. Ashby elogia a revisão por se concentrar em corrigir as condições que permitiram o incidente, e não na pessoa.
+
+### Exemplo resolvido
+
+O procedimento de Daniel orienta a resposta a uma tomada sintética de caixa postal: sessões encerradas, uma regra de encaminhamento removida, clientes e regulador notificados e a implantação do segundo fator antecipada.
+
+> **Caso sintético.** O incidente e os clientes são sintéticos.
+
+### Erros e limites
+
+Redefinir uma senha sem remover as regras de encaminhamento deixa o atacante recebendo os e-mails.
+
+### Exercícios
+
+- **EX041 — Coordenador.** Quem coordena os incidentes na Corbridge? *Rubrica:* 3 = Daniel;; 2 = correto;; 1 = outra pessoa;; 0 = nenhuma.
+
+- **EX042 — Regra escondida.** O que o atacante tinha acrescentado à caixa postal? *Rubrica:* 3 = uma regra de encaminhamento para um endereço externo;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+
+- **EX043 — Motivo da notificação.** Por que o incidente passou a exigir notificação? *Rubrica:* 3 = os e-mails encaminhados continham documentos de identidade de clientes;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+
+- **EX044 — Causa raiz.** Qual foi a causa raiz? *Rubrica:* 3 = senha roubada sem segundo fator;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
+
+- **EX045 — Nova verificação.** Que verificação mensal foi acrescentada? *Rubrica:* 3 = regras de encaminhamento para endereços externos;; 2 = correto;; 1 = vaga;; 0 = nenhuma.
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Continuidade e backups
+
+### Objetivos de aprendizagem
+
+Você vai (1) identificar o que precisa continuar funcionando; (2) verificar que os backups podem ser restaurados; (3) ensaiar um breve exercício de continuidade.
+
+### 10.1 O que precisa continuar funcionando
+
+Usando a lista de dependências do capítulo dois, Daniel identifica três serviços que precisam voltar depressa: o e-mail, o software de contabilidade e o portal dos clientes. Ele pergunta a cada provedor como faz backup dos dados e com que rapidez conseguiria restaurá-los. Ele descobre que o serviço de e-mail em nuvem guarda os itens apagados apenas por um período limitado, de modo que uma exclusão maliciosa percebida tarde poderia ser irrecuperável. A firma contrata um serviço de backup separado para o e-mail e os arquivos. A Sra. Ashby explica que um provedor de nuvem manter o serviço funcionando não é o mesmo que fazer backup dos seus dados.
+
+### 10.2 Teste das restaurações
+
+Daniel pede à empresa de suporte que restaure uma amostra de arquivos e uma caixa postal do novo serviço de backup numa área de teste. Os arquivos são restaurados corretamente, mas a restauração da caixa postal leva seis horas, mais do que o esperado. Daniel registra o tempo e pergunta se ele pode ser melhorado para os casos urgentes. Ele também verifica o backup do antigo servidor de arquivos e descobre que ele vinha copiando para um disco na mesma sala, que se perderia num incêndio ou numa inundação. A empresa de suporte acrescenta uma cópia externa. A Sra. Ashby lembra que um backup não testado é só uma esperança.
+
+### 10.3 Um exercício de mesa
+
+Daniel conduz um exercício de uma hora com a Sra. Pike, dois sócios e a empresa de suporte. O cenário: no início de janeiro, o fornecedor do software de contabilidade fica indisponível por três dias. O grupo discute que trabalho pode continuar, como os clientes seriam avisados e se os prazos de entrega poderiam ser cumpridos. Eles descobrem que ninguém sabe como pedir mais prazo à autoridade tributária num caso assim. Um sócio concorda em descobrir e documentar os passos. Daniel registra as decisões e as lacunas e agenda o exercício seguinte para seis meses depois.
+
+### 10.4 Por escrito
+
+Daniel transforma as decisões num plano de continuidade de três páginas: os três serviços principais, quem contatar para cada um, formas temporárias de trabalhar e os passos para pedir prorrogação de prazos. Ele guarda cópias impressas nos dois escritórios e uma com a Sra. Pike em casa. A Sra. Ashby observa que o principal valor do plano veio da conversa que o produziu, porque os sócios agora entendem os pontos fracos da firma. Ela sugere revisá-lo antes de cada temporada de muito trabalho, quando a equipe muda e os fornecedores podem ter mudado seus arranjos.
+
+### Exemplo resolvido
+
+Daniel acrescenta um serviço de backup separado, descobre uma restauração de caixa postal de seis horas e um disco de backup na mesma sala, conduz um exercício de mesa sobre a indisponibilidade de um fornecedor e escreve um plano de continuidade de três páginas.
+
+> **Caso sintético.** Os serviços, os tempos e as decisões são sintéticos.
+
+### Erros e limites
+
+Presumir que um provedor de nuvem faz backup dos seus dados pode deixar os itens apagados irrecuperáveis.
+
+### Exercícios
+
+- **EX046 — Serviços principais.** Quais três serviços precisam voltar depressa? *Rubrica:* 3 = e-mail, software de contabilidade, portal dos clientes;; 2 = os três;; 1 = dois;; 0 = nenhuma.
+
+- **EX047 — Tempo de restauração.** Quanto tempo levou a restauração da caixa postal? *Rubrica:* 3 = seis horas;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX048 — Disco na mesma sala.** O que havia de errado com o backup do servidor de arquivos? *Rubrica:* 3 = copiava para um disco na mesma sala;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+
+- **EX049 — Lacuna do exercício.** Que lacuna o exercício de mesa encontrou? *Rubrica:* 3 = ninguém sabia pedir prorrogação de prazo;; 2 = correto;; 1 = vaga;; 0 = nenhuma.
+
+- **EX050 — Revisão do plano.** Quando o plano deve ser revisado? *Rubrica:* 3 = antes de cada temporada de muito trabalho;; 2 = correto;; 1 = outra resposta;; 0 = nenhuma.
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Política e obrigações
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever uma política de segurança curta e utilizável; (2) mapear as obrigações legais e profissionais da firma; (3) decidir se a certificação formal vale a pena.
+
+### 11.1 Uma política utilizável
+
+A política de segurança atual da Corbridge é um documento de vinte páginas copiado de um modelo, que ninguém leu. Daniel a substitui por uma política de duas páginas que cobre as regras de que a equipe realmente precisa: contas e segundos fatores, dispositivos, tratamento dos documentos dos clientes, e-mail e pagamentos, comunicações e uso de fornecedores. Cada regra tem um motivo de uma frase. Os procedimentos detalhados, como a regra da ligação de volta e o procedimento de incidentes, ficam em documentos separados, vinculados à política. A Sra. Pike assina a política, e cada funcionário confirma tê-la lido durante uma reunião de equipe.
+
+### 11.2 Obrigações
+
+Daniel mapeia o que a firma precisa fazer por lei e pelas regras profissionais. A lei de proteção de dados exige segurança adequada para os dados pessoais e a notificação de certas violações dentro de prazos definidos. O órgão profissional espera que seus membros protejam a confidencialidade dos clientes. Alguns clientes maiores exigem compromissos de segurança em seus contratos. Daniel lista cada obrigação com sua fonte e os controles que a cumprem. A Sra. Ashby o aconselha a confirmar os pontos jurídicos com o consultor de proteção de dados da firma, em vez de depender da própria leitura, porque as obrigações diferem entre países e mudam com o tempo.
+
+### 11.3 Certificação
+
+Um cliente grande pergunta se a Corbridge é certificada na ISO/IEC 27001:2022 (no Brasil, ABNT NBR ISO/IEC 27001:2022), a norma internacional para um sistema de gestão da segurança da informação. Daniel explica aos sócios que a certificação exige um sistema de gestão documentado, auditorias internas e uma auditoria externa por ano, o que tomaria um tempo considerável de uma firma de sessenta pessoas. Ele sugere um caminho intermediário: alinhar o trabalho da firma com as ideias principais da norma, como a avaliação de riscos, o compromisso da liderança e a revisão regular, e reconsiderar a certificação se mais clientes pedirem. Os sócios concordam, e Daniel escreve uma breve resposta para o cliente.
+
+### 11.4 Manter atualizada
+
+Daniel define um calendário simples para revisar a política e os documentos relacionados: a política uma vez por ano, o registro de riscos a cada três meses, as respostas dos fornecedores anualmente e o plano de continuidade antes de cada temporada de muito trabalho. Cada revisão tem um responsável nomeado. A Sra. Ashby explica que uma política deixada intocada por anos se afasta do modo como as pessoas realmente trabalham, e a equipe deixa de confiar nela. Ela elogia a política curta por ser legível e sugere que Daniel pergunte todo ano a dois funcionários se as regras fazem sentido para eles na prática.
+
+### Exemplo resolvido
+
+Daniel substitui um modelo de vinte páginas por uma política assinada de duas páginas, mapeia as obrigações legais e profissionais e recomenda alinhar-se à ISO/IEC 27001:2022 (no Brasil, ABNT NBR ISO/IEC 27001:2022) em vez de buscar a certificação por enquanto.
+
+> **Caso sintético.** A política, o pedido do cliente e as obrigações são sintéticos e gerais; os deveres jurídicos reais exigem orientação profissional.
+
+### Erros e limites
+
+Uma política longa de modelo que ninguém lê dá uma falsa sensação de conformidade.
+
+### Exercícios
+
+- **EX051 — Tamanho da política.** Qual é o tamanho da nova política de Daniel? *Rubrica:* 3 = duas páginas;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX052 — Procedimentos.** Onde ficam os procedimentos detalhados? *Rubrica:* 3 = em documentos separados e vinculados;; 2 = correto;; 1 = outro lugar;; 0 = nenhuma.
+
+- **EX053 — Custo da certificação.** O que a certificação exige? *Rubrica:* 3 = sistema de gestão, auditorias internas e externa anual;; 2 = tudo;; 1 = parte;; 0 = nenhuma.
+
+- **EX054 — Caminho intermediário.** O que Daniel recomendou em vez de certificar agora? *Rubrica:* 3 = alinhar-se às ideias principais da norma;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+
+- **EX055 — Orientação jurídica.** Quem deve confirmar os pontos jurídicos? *Rubrica:* 3 = o consultor de proteção de dados;; 2 = correto;; 1 = outra pessoa;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Relatórios à liderança e próximos passos
+
+### Objetivos de aprendizagem
+
+Você vai (1) relatar a situação da segurança em linguagem simples; (2) revisar seis meses de progresso; (3) planejar o próximo ano e a continuação dos estudos.
+
+### 12.1 Um relatório de uma página
+
+Daniel prepara a cada trimestre um relatório de uma página para os sócios. Ele mostra os principais riscos e se cada um está subindo ou caindo, cinco medidas com sua tendência, os incidentes recentes em uma linha cada e até três decisões necessárias. As medidas são a cobertura do segundo fator, os notebooks que cumprem a linha de base, os dias para desativar as contas de quem sai, os e-mails suspeitos comunicados e o último teste de restauração bem-sucedido. A Sra. Ashby o aconselha a colocar as decisões primeiro, porque os sócios têm pouco tempo, e a evitar termos técnicos que precisariam ser explicados antes de eles poderem responder.
+
+### 12.2 Seis meses de progresso
+
+Daniel compara o início do curso com hoje. A cobertura do segundo fator subiu de 62,9 por cento para todas as contas de pessoas, com as contas de serviço restringidas em vez disso. Os notebooks que cumprem a linha de base passaram de um número desconhecido para 55 de 60 e depois para todos os 60. As contas de quem sai agora são desativadas no último dia. Uma tentativa de fraude foi barrada, e um incidente foi tratado e notificado dentro do prazo legal. A Sra. Pike diz aos sócios que agora tem uma resposta clara para sua pergunta original e que os próximos passos são conhecidos.
+
+### 12.3 O próximo ano
+
+Daniel redige um plano para os próximos doze meses: concluir a limpeza do servidor de arquivos e levar os registros restantes para a nuvem, repetir o exercício de mesa com um cenário de ransomware, revisar as respostas dos fornecedores e conduzir sessões de conscientização sobre novos padrões de fraude. Ele estima o tempo e o custo de cada item e pede aos sócios que escolham. A Sra. Ashby sugere que ele também reserve tempo para o próprio aprendizado, já que as ameaças e os serviços mudam mais depressa do que qualquer curso consegue cobrir, e que participe de um grupo local de profissionais de segurança para ter apoio e ideias novas.
+
+### 12.4 Continuação dos estudos
+
+A Sra. Ashby revisa as opções com Daniel. Ele poderia fazer uma certificação introdutória reconhecida para formalizar seus conhecimentos, frequentar cursos curtos sobre tratamento de incidentes ou segurança em nuvem, ou passar mais tarde para uma qualificação mais longa. Ela também recomenda o curso de governança de dados que vem depois deste, já que boa parte do trabalho de Daniel, como a retenção e o tratamento dos dados pelos fornecedores, se sobrepõe ao modo como as organizações administram a informação como um ativo. Daniel decide começar o curso de governança de dados no período seguinte e buscar uma certificação em até um ano.
+
+### Exemplo resolvido
+
+Daniel escreve um relatório trimestral de uma página com as decisões primeiro, mostra seis meses de progresso, de 62,9 por cento de cobertura do segundo fator à cobertura total das pessoas, e planeja o próximo ano e a continuação dos estudos.
+
+> **Caso sintético.** Os números de progresso são sintéticos.
+
+### Erros e limites
+
+Os relatórios cheios de detalhes técnicos sem decisões claras muitas vezes são ignorados pela liderança.
+
+### Exercícios
+
+- **EX056 — Ordem do relatório.** O que deve vir primeiro no relatório aos sócios? *Rubrica:* 3 = as decisões necessárias;; 2 = correto;; 1 = outra coisa;; 0 = nenhuma.
+
+- **EX057 — Cinco medidas.** Cite três das cinco medidas. *Rubrica:* 3 = MFA, linha de base, dias de desligamento, comunicações, teste de restauração;; 2 = três;; 1 = duas;; 0 = nenhuma.
+
+- **EX058 — Mudança da cobertura.** Como mudou a cobertura do segundo fator? *Rubrica:* 3 = de 62,9 por cento para todas as contas de pessoas;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
+
+- **EX059 — Próximo cenário.** Que cenário o próximo exercício de mesa vai usar? *Rubrica:* 3 = ransomware;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX060 — Próximo curso.** Que curso Daniel faz em seguida? *Rubrica:* 3 = governança de dados;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX030 (as de EX031–EX060 estão na edição em inglês até a tradução dos capítulos correspondentes). Daniel Reyes, a Sra. Helen Ashby, o Kingsmere Professional Institute, a Corbridge Accountancy Partners e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060. Daniel Reyes, a Sra. Helen Ashby, o Kingsmere Professional Institute, a Corbridge Accountancy Partners e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Seis meses, duas noites por semana.
 
@@ -439,6 +713,66 @@ Respostas-modelo para EX001–EX030 (as de EX031–EX060 estão na edição em i
 **EX029.** A regra da ligação de volta e da segunda aprovação.
 
 **EX030.** Uma assistente da folha de pagamento que ligou para o fornecedor.
+
+**EX031.** A empresa de suporte, com acesso de administrador aos notebooks e ao e-mail.
+
+**EX032.** Se a equipe usa um segundo fator e com que rapidez avisa de uma violação.
+
+**EX033.** Os técnicos compartilhavam uma única conta de administrador.
+
+**EX034.** Em até um dia útil.
+
+**EX035.** Porque a firma continua controlando a própria resposta.
+
+**EX036.** Quinze minutos, durante uma reunião de equipe.
+
+**EX037.** Os recursos humanos mandavam e-mail à empresa de suporte só quando alguém se lembrava.
+
+**EX038.** A lista de contas com a lista da folha de pagamento.
+
+**EX039.** Nove mensagens suspeitas, além de um e-mail enviado ao destinatário errado.
+
+**EX040.** Os resultados variam com a dificuldade do teste e podem deixar a equipe ressentida.
+
+**EX041.** Daniel coordena; a Sra. Pike decide sobre as notificações.
+
+**EX042.** Uma regra que encaminhava os e-mails recebidos a um endereço externo.
+
+**EX043.** Os e-mails encaminhados incluíam documentos de identidade de clientes.
+
+**EX044.** Uma senha roubada numa conta sem segundo fator.
+
+**EX045.** Uma verificação mensal das regras que encaminham e-mails para fora da firma.
+
+**EX046.** O e-mail, o software de contabilidade e o portal dos clientes.
+
+**EX047.** Seis horas, mais do que o esperado.
+
+**EX048.** Copiava para um disco na mesma sala do servidor.
+
+**EX049.** Ninguém sabia como pedir mais prazo à autoridade tributária.
+
+**EX050.** Antes de cada temporada de muito trabalho.
+
+**EX051.** Duas páginas, com os motivos de cada regra.
+
+**EX052.** Em documentos separados, vinculados à política.
+
+**EX053.** Um sistema de gestão documentado, auditorias internas e uma auditoria externa anual.
+
+**EX054.** Alinhar-se às ideias principais da norma e reconsiderar se mais clientes pedirem.
+
+**EX055.** O consultor de proteção de dados da firma.
+
+**EX056.** As decisões necessárias.
+
+**EX057.** A cobertura do segundo fator, os notebooks que cumprem a linha de base e os dias para desativar as contas de quem sai.
+
+**EX058.** De 62,9 por cento para todas as contas usadas por pessoas.
+
+**EX059.** Um cenário de ransomware.
+
+**EX060.** O curso de governança de dados, a partir do período seguinte.
 
 <a id="references"></a>
 ## Referências
