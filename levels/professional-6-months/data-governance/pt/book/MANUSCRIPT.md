@@ -1,7 +1,7 @@
 # Governança de Dados: Curso Profissional
 
 - Idioma: português do Brasil (`pt`); curso 026, curso profissional (6 meses). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–6 de 12 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3 e 1 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 7–12 (EX031–EX060) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–12 de 12 têm texto didático escrito à mão; os exercícios EX001–EX060 têm resoluções correspondentes com rubricas de 0 a 3; os dois laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: profissionais em atividade que receberam a responsabilidade pela governança de dados em uma organização pequena.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios normalizam e-mails sintéticos de doadores para revelar duplicatas e classificam registros sintéticos de consentimento para marketing conforme mostrem ou não quando o consentimento foi dado. Normas e leis são citadas pela edição e parafraseadas; nada aqui é aconselhamento jurídico. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ DAMA-DMBOK2 (2017); GDPR; LGPD. Lista completa em [Referências](#references).
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) |
-
-Capítulos 7–12: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-07), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -308,11 +306,286 @@ Verificações de duplicatas por correspondência exata deixam passar diferença
 - **EX029 — Mudança do fornecedor.** O que o fornecedor ativou? *Rubrica:* 3 = o armazenamento automático dos e-mails em minúsculas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
 - **EX030 — Duração das verificações.** Quanto tempo cada verificação deve levar? *Rubrica:* 3 = menos de uma hora;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
+<a id="ch-07"></a>
+
+## Capítulo 7 — Consentimento e base legal
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar se os registros de consentimento sustentam o marketing; (2) escolher bases legais para usos diferentes; (3) corrigir registros de consentimento fracos.
+
+### 7.1 Por que os registros de consentimento importam
+
+A Northbank envia e-mails aos doadores sobre campanhas e eventos. As regras de marketing eletrônico exigem consentimento para esses e-mails, e o GDPR exige que a organização consiga demonstrar que o consentimento foi dado; na LGPD, o ônus dessa prova cabe ao controlador (art. 8º, § 2º). Grace examina o campo de consentimento do banco de doadores. Alguns registros dizem sim com data e origem, alguns dizem sim sem data, alguns dizem não e alguns estão em branco. Ela explica que um sim sem data não mostra quando nem como o consentimento foi dado, o que o torna uma evidência fraca se um doador reclamar. Grace conta cada tipo.
+
+```python
+"""Check marketing consent records for 4,000 synthetic donors (stdlib only)."""
+import random
+random.seed(8)
+rows = []
+for _ in range(4000):
+    r = random.random()
+    rows.append("yes_dated" if r < 0.62 else "yes_undated" if r < 0.77 else "no" if r < 0.93 else "blank")
+for k in ["yes_dated", "yes_undated", "no", "blank"]:
+    n = rows.count(k); print(f"{k:<12} {n:5d} ({100*n/len(rows):.1f}%)")
+print(f"safe to email: {rows.count('yes_dated')} of {len(rows)}")
+```
+
+Execute com `python3 lab_consent.py`. Saída verificada:
+
+```text
+yes_dated     2507 (62.7%)
+yes_undated    595 (14.9%)
+no             615 (15.4%)
+blank          283 (7.1%)
+safe to email: 2507 of 4000
+```
+
+### 7.2 Resultados
+
+O laboratório confere quatro mil registros sintéticos de doadores. Os registros com sim datado somam 2.507, ou 62,7 por cento. Os de sim sem data somam 595, 14,9 por cento. Os marcados com não somam 615, 15,4 por cento, e 283 estão em branco, 7,1 por cento. Grace conclui que só os 2.507 doadores com consentimento datado devem receber e-mails de marketing até que os demais sejam conferidos. A gerente de captação se surpreende, pois supunha que todo sim servia. Grace explica que os registros sem data e em branco podem muito bem ser de apoiadores felizes em receber notícias, mas a organização não consegue demonstrá-lo, por isso o mais seguro é perguntar de novo.
+
+### 7.3 Bases legais
+
+Grace revisa as bases legais com o Sr. Nowak. Os e-mails de marketing se apoiam no consentimento. O processamento das doações e o envio de recibos se apoiam no contrato da organização com o doador ou em obrigações legais ligadas a benefícios fiscais. Os encaminhamentos de clientes se apoiam em interesses legítimos ou em considerações de interesse público, mais uma condição para os dados de categoria especial, que o encarregado externo ajuda a confirmar; na LGPD, os dados sensíveis têm bases próprias no art. 11. Ela registra cada base no inventário para que a equipe saiba que regras valem. O encarregado confirma cada base e anota a condição usada para as informações de saúde.
+
+### 7.4 Corrigindo registros fracos
+
+Para os 595 registros de sim sem data, Grace e a gerente de captação planejam um pequeno formulário de preferências enviado junto com os recibos impressos das doações, para que os doadores confirmem suas escolhas sem que a Northbank envie e-mails de marketing que ainda não consegue justificar. Os doadores que confirmam são registrados com a data e o meio. Os registros em branco são tratados como não. Os novos formulários de inscrição registram automaticamente o consentimento com a data, o texto exibido e a origem. O Sr. Nowak observa que bons registros protegem a organização e respeitam as escolhas dos doadores. A gerente de captação concorda prontamente.
+
+### Exemplo resolvido
+
+Grace encontra 2.507 de 4.000 doadores (62,7 por cento) com consentimento datado, 595 sem data, 615 com não e 283 em branco, limita os e-mails ao consentimento datado, registra as bases legais de cada uso e planeja a reconfirmação por meio dos recibos.
+
+> **Caso sintético.** Os doadores são sintéticos; as saídas vêm de lab_consent.py; o GDPR e a LGPD são reais. Isto não é aconselhamento jurídico.
+
+### Erros e limites
+
+Tratar qualquer sim como consentimento válido ignora a necessidade de mostrar quando e como ele foi dado.
+
+### Exercícios
+
+- **EX031 — Parcela com consentimento datado.** Que parcela dos doadores tinha consentimento datado? *Rubrica:* 3 = 62,7% (2.507);; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX032 — Tratamento dos brancos.** Como são tratados os registros de consentimento em branco? *Rubrica:* 3 = como não;; 2 = correto;; 1 = como sim;; 0 = nenhuma.
+- **EX033 — Fraqueza do sim sem data.** Por que os registros de sim sem data são fracos? *Rubrica:* 3 = não mostram quando nem como o consentimento foi dado;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX034 — Base dos recibos.** Que base sustenta o envio de recibos? *Rubrica:* 3 = contrato ou obrigação legal;; 2 = correto;; 1 = consentimento;; 0 = nenhuma.
+- **EX035 — Campos dos novos formulários.** O que os novos formulários registram automaticamente? *Rubrica:* 3 = data, texto exibido e origem;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — O essencial da segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar controles básicos de segurança em uma pequena organização beneficente; (2) proteger papéis e dispositivos; (3) controlar o acesso aos sistemas compartilhados.
+
+### 8.1 Registros em papel
+
+Os formulários de encaminhamento chegam em papel aos bancos de alimentos. Grace introduz arquivos com chave em cada local, com as chaves em poder dos líderes. Os formulários são digitalizados em um sistema de casos seguro em até uma semana, e o papel é triturado. Ela confere cada banco um mês depois e encontra dois que ainda guardam os formulários em uma caixa aberta. Conversa com os líderes sobre os motivos, e eles explicam que o arquivo fica em outra sala; ela então providencia um arquivo para a sala de distribuição. O novo arquivo chega em quinze dias, e os formulários passam a ser trancados ao fim de cada turno.
+
+### 8.2 Dispositivos
+
+Os voluntários usavam celulares pessoais para os contatos dos clientes. Grace os substitui por celulares da organização com bloqueio de tela, criptografia e apagamento remoto ativados. Os notebooks usados nos encaminhamentos são criptografados e exigem senha. Ela escreve uma regra curta, explicada no guia dos voluntários: dados de clientes não podem ser guardados em dispositivos pessoais. O Sr. Nowak observa que organizações pequenas conseguem uma proteção forte com configurações básicas de baixo custo. Grace configura ela mesma os celulares com uma lista de verificação curta, para que todos tenham as mesmas proteções e as configurações possam ser conferidas depois.
+
+### 8.3 Contas e acesso
+
+A caixa compartilhada aberta a todos é substituída por uma caixa de encaminhamentos acessível apenas aos líderes e a Grace. Cada pessoa tem seu próprio login com autenticação multifator. Grace revisa os acessos a cada trimestre e remove os voluntários que saíram. Ela encontra três ex-voluntários que ainda conseguiam ler o banco de doadores e os remove. Explica que remover os acessos sem demora é um dos controles de segurança mais simples e eficazes. Ela registra cada revisão com a data e as mudanças feitas, e a conselheira que supervisiona os dados confere o registro na reunião seguinte do conselho.
+
+### 8.4 Phishing e fornecedores
+
+Grace organiza uma sessão curta de conscientização sobre phishing depois que uma voluntária quase digitou a senha em uma página de login falsa. Também verifica se o fornecedor do banco de doadores oferece criptografia, backups e logs de acesso, e se o contrato inclui cláusulas de proteção de dados. O Sr. Nowak observa que as organizações beneficentes são alvos frequentes de golpes, e que combinar a conscientização da equipe com verificações dos fornecedores cobre as ameaças mais comuns. Grace escreve uma nota curta sobre como reconhecer páginas de login falsas e a quem avisar, afixada ao lado do computador de cada banco e repetida na integração.
+
+### Exemplo resolvido
+
+Grace introduz arquivos trancados, digitalização e trituração, celulares e notebooks da organização criptografados, uma caixa de encaminhamentos restrita com MFA, revisões trimestrais de acesso que removem três ex-voluntários e conscientização sobre phishing.
+
+> **Caso sintético.** Os controles são sintéticos.
+
+### Erros e limites
+
+Manter o acesso de ex-voluntários expõe os dados muito depois de eles saírem.
+
+### Exercícios
+
+- **EX036 — Prazo de digitalização.** Em quanto tempo os formulários de encaminhamento são digitalizados? *Rubrica:* 3 = em até uma semana;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX037 — Motivo da caixa aberta.** Por que dois bancos ainda usavam caixas abertas? *Rubrica:* 3 = o arquivo ficava em outra sala;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX038 — Configurações dos celulares.** Que configurações os celulares da organização têm? *Rubrica:* 3 = bloqueio de tela, criptografia e apagamento remoto;; 2 = todas;; 1 = algumas;; 0 = nenhuma.
+- **EX039 — Acessos antigos.** Quantos ex-voluntários ainda conseguiam ler o banco de doadores? *Rubrica:* 3 = três;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX040 — Verificações do fornecedor.** O que Grace conferiu com o fornecedor do banco de dados? *Rubrica:* 3 = criptografia, backups, logs e cláusulas contratuais;; 2 = a maioria;; 1 = poucas;; 0 = nenhuma.
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Trabalhando com fornecedores e voluntários
+
+### Objetivos de aprendizagem
+
+Você vai (1) gerenciar dados com fornecedores; (2) definir expectativas para os voluntários; (3) tratar os dados compartilhados com os parceiros que encaminham clientes.
+
+### 9.1 Fornecedores
+
+A Northbank usa um fornecedor do banco de doadores, um serviço de boletins por e-mail e uma empresa de folha de pagamento para seus poucos funcionários. Grace lista os dados pessoais que cada um recebe e verifica se os contratos incluem as cláusulas de operador exigidas pelo GDPR: agir só segundo as instruções da Northbank, segurança, confidencialidade e eliminação dos dados ao fim do contrato; na LGPD, o operador também deve seguir as instruções do controlador (art. 39). Os termos padrão do serviço de boletins as incluem; o contrato da folha é antigo e não as tem, então ela pede um acordo atualizado, que chega em um mês.
+
+### 9.2 Voluntários
+
+Os voluntários lidam com dados de clientes durante os turnos. Grace acrescenta um termo de confidencialidade à inscrição dos voluntários, explicando que os dados dos clientes devem permanecer em sigilo, e inclui as regras de dados na integração. Ela organiza as coisas para que só vejam os dados dos clientes os voluntários que precisam deles, como os que preparam cestas para retiradas nominais. Os voluntários que separam os alimentos doados não precisam. Ela observa que limitar quem vê os dados reduz o risco sem atrasar o trabalho. Os líderes decidem quem precisa dos dados em cada turno, e a escala mostra isso para que ninguém precise adivinhar.
+
+### 9.3 Parceiros que encaminham
+
+Assistentes sociais e médicos enviam os encaminhamentos. Grace descobre que alguns mandam anotações completas dos casos por e-mail comum. Ela acorda com os principais parceiros um formulário de encaminhamento curto, que pede só o que a Northbank precisa: nome, contato, tamanho da família, necessidades alimentares e os dados de quem encaminha. Informações de saúde só entram quando têm relação com a alimentação, como alergias. Os parceiros enviam os formulários por um portal seguro. Ela registra o acordo com cada parceiro. Os parceiros gostam do formulário mais curto, que toma menos tempo, e caem muito os encaminhamentos com anotações desnecessárias.
+
+### 9.4 Encerrando relações
+
+Quando o antigo serviço de boletins é substituído, Grace pede que ele confirme a eliminação dos e-mails dos doadores e registra a confirmação. Quando os voluntários saem, seus acessos aos sistemas e eventuais chaves são retirados em até uma semana. O Sr. Nowak observa que encerrar as relações de forma limpa costuma ser esquecido, e que uma lista de verificação de saída curta para voluntários e fornecedores evita que os dados fiquem onde não deveriam. Grace escreve a lista em uma única página e pede aos líderes que a preencham sempre que um voluntário sair, devolvendo-a para que ela confirme a remoção de cada conta e chave.
+
+### Exemplo resolvido
+
+Grace confere as cláusulas de operador e atualiza o contrato da folha de pagamento, acrescenta a confidencialidade dos voluntários e limita os dados dos clientes a quem precisa deles, acorda com os parceiros um formulário de encaminhamento mínimo e seguro e confirma a eliminação ao trocar de fornecedor.
+
+> **Caso sintético.** Os fornecedores e parceiros são sintéticos; o GDPR e a LGPD são reais.
+
+### Erros e limites
+
+Aceitar anotações completas dos casos quando um formulário curto bastaria coleta mais dados sensíveis do que o necessário.
+
+### Exercícios
+
+- **EX041 — Contrato da folha.** O que faltava no contrato da folha de pagamento? *Rubrica:* 3 = cláusulas de operador;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX042 — Voluntários da separação.** Os voluntários que separam alimentos precisam dos dados dos clientes? *Rubrica:* 3 = não;; 2 = correto;; 1 = sim;; 0 = nenhuma.
+- **EX043 — Regra das informações de saúde.** Quando as informações de saúde entram nos encaminhamentos? *Rubrica:* 3 = só quando relacionadas à alimentação, como alergias;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX044 — Canal dos encaminhamentos.** Como os parceiros enviam os formulários agora? *Rubrica:* 3 = por um portal seguro;; 2 = correto;; 1 = por e-mail;; 0 = nenhuma.
+- **EX045 — Prazo na saída.** Em quanto tempo o acesso de quem sai é retirado? *Rubrica:* 3 = em até uma semana;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Retenção e direitos dos titulares
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir uma tabela de temporalidade simples; (2) eliminar dados com segurança; (3) responder a pedidos de pessoas.
+
+### 10.1 Tabela de temporalidade
+
+Grace redige uma tabela de temporalidade com os donos. Os encaminhamentos são guardados por um ano após a última cesta, tempo suficiente para lidar com novos encaminhamentos e dúvidas. Os registros de doação são guardados pelo período exigido pelas regras fiscais para os benefícios das doações. Os registros de voluntários são guardados por um período curto após a saída, exceto os de salvaguarda, que seguem as orientações do setor. Cada entrada tem um motivo. A conselheira que supervisiona os dados aprova a tabela. Grace a compartilha com todos os donos e a acrescenta ao inventário, para que cada conjunto mostre por quanto tempo será guardado.
+
+### 10.2 Eliminação na prática
+
+Grace organiza uma rotina mensal: o sistema de casos lista os encaminhamentos com mais de um ano desde a última cesta, um líder os confere e os elimina, registrando a contagem. Os formulários em papel de cinco anos encontrados no inventário são triturados com segurança, e o registro é guardado. Ela pede ao fornecedor do banco de doadores que configure a eliminação automática dos registros inativos após o prazo fiscal. O Sr. Nowak observa que a eliminação rotineira é mais fácil que grandes limpezas ocasionais; na LGPD, o término do tratamento e a eliminação estão nos arts. 15 e 16. A primeira execução mensal elimina muitos encaminhamentos antigos.
+
+### 10.3 Pedidos de acesso
+
+Uma ex-cliente pergunta que informações a Northbank tem sobre ela. Grace consulta o inventário para encontrar todos os lugares: o sistema de casos, a caixa de encaminhamentos e o celular da organização no banco de alimentos dela. Ela reúne as informações, retira os dados de outras pessoas, como anotações internas de quem encaminhou sobre outros membros da família, e responde em até um mês, prazo do GDPR; pela LGPD, a declaração completa deve sair em até quinze dias (art. 19, II). Ela registra o pedido e a resposta em um log. A ex-cliente agradece a resposta clara, e Grace observa que o inventário fez a busca levar uma tarde em vez de dias.
+
+### 10.4 Outros direitos
+
+Um doador pede para deixar de receber campanhas. Grace marca o registro como sem marketing em vez de eliminá-lo, para que o doador não seja reincluído a partir de uma lista antiga. Outra pessoa pede a correção de um endereço errado, e Grace o corrige no banco de dados e no serviço de boletins. Ela observa que cada direito precisa de um processo claro, e que o inventário permite encontrar todas as cópias dos dados de uma pessoa; na LGPD, os direitos dos titulares estão reunidos no art. 18. Ela escreve um procedimento de uma página para cada tipo de pedido, com os sistemas a consultar e os prazos de resposta.
+
+### Exemplo resolvido
+
+Grace define a retenção, incluindo um ano após a última cesta para os encaminhamentos, executa a eliminação mensal e tritura os formulários antigos, responde ao pedido de acesso de uma ex-cliente em até um mês e trata objeções ao marketing e correções em todos os sistemas.
+
+> **Caso sintético.** A tabela e os pedidos são sintéticos; o GDPR e a LGPD são reais.
+
+### Erros e limites
+
+Eliminar um doador que se opõe ao marketing arrisca reincluí-lo a partir de listas antigas; marque-o como suprimido.
+
+### Exercícios
+
+- **EX046 — Retenção dos encaminhamentos.** Por quanto tempo os encaminhamentos são guardados após a última cesta? *Rubrica:* 3 = um ano;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX047 — Quem confere a eliminação.** Quem confere os encaminhamentos antes da eliminação? *Rubrica:* 3 = um líder de banco de alimentos;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX048 — Busca do pedido de acesso.** Onde Grace procurou os dados da ex-cliente? *Rubrica:* 3 = sistema de casos, caixa de encaminhamentos e celular da organização;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
+- **EX049 — Tratamento da objeção.** Como foi tratada a objeção do doador? *Rubrica:* 3 = marcado como sem marketing, sem eliminação;; 2 = correto;; 1 = eliminado;; 0 = nenhuma.
+- **EX050 — Alcance da correção.** Onde o endereço errado foi corrigido? *Rubrica:* 3 = no banco de dados e no serviço de boletins;; 2 = ambos;; 1 = um;; 0 = nenhuma.
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Incidentes e relatórios ao conselho
+
+### Objetivos de aprendizagem
+
+Você vai (1) tratar um incidente com dados; (2) decidir quando comunicar; (3) relatar ao conselho o andamento da governança.
+
+### 11.1 Um incidente
+
+Uma voluntária esquece em um ônibus uma pasta com cinco formulários de encaminhamento. Ela avisa o líder em menos de uma hora, como manda o guia. Grace inicia o procedimento de incidentes: registrar o que aconteceu, tentar recuperar a pasta, avaliar o risco e decidir sobre a comunicação. A empresa de ônibus não tem registro da pasta. Os formulários contêm nomes, endereços, dados das famílias e, em um deles, uma condição de saúde. Grace anota o conteúdo dos formulários a partir da memória do líder e do sistema de casos, para que o risco possa ser avaliado com precisão e nenhuma família afetada fique de fora.
+
+### 11.2 Avaliando e comunicando
+
+Grace e o encarregado externo avaliam o risco. Os dados são sensíveis, envolvem pessoas vulneráveis e não podem ser recuperados. Eles concluem que o incidente provavelmente gera risco às pessoas e o comunicam à autoridade de supervisão em até setenta e duas horas, como exige o GDPR; no Brasil, a comunicação à ANPD e aos titulares segue o art. 48 da LGPD e a Resolução CD/ANPD nº 15/2024, que fixa o prazo de três dias úteis, contado em dobro para agentes de pequeno porte. Como o risco para as famílias é alto, eles também as informam diretamente, explicando o que aconteceu e oferecendo apoio. Cada passo é registrado, e Grace responde às perguntas da autoridade com base nesses registros.
+
+### 11.3 Aprendendo
+
+A revisão conclui que a voluntária levou os formulários para casa para telefonar às famílias porque o celular da organização estava ocupado. Grace providencia um segundo celular naquele banco de alimentos e lembra aos voluntários que os formulários nunca saem do local. A revisão é feita sem culpados; a voluntária recebe agradecimentos por ter avisado depressa. O Sr. Nowak observa que o relato rápido depende de as pessoas se sentirem seguras para admitir erros, de modo que a forma como o primeiro incidente é tratado molda os relatos futuros. A voluntária aceita ajudar a explicar as novas regras aos colegas de seu banco de alimentos.
+
+### 11.4 Relatando ao conselho
+
+Grace prepara um relatório trimestral para o conselho: andamento das metas, situação do inventário, melhora do consentimento, verificações de qualidade, revisões de acesso, pedidos atendidos e incidentes com suas lições. Ela usa uma tabela simples com classificações verde, âmbar e vermelha e explicações curtas. Os conselheiros perguntam sobre o incidente do ônibus e aprovam recursos para mais celulares da organização. Grace observa que relatar os incidentes com honestidade aumenta a confiança do conselho de que a governança funciona. Ela limita o relatório a duas páginas, com um parágrafo curto sobre cada item vermelho ou âmbar explicando o que está sendo feito e por quem.
+
+### Exemplo resolvido
+
+Grace trata a perda dos formulários de encaminhamento registrando o caso, avaliando o risco com o encarregado externo, comunicando a autoridade em até setenta e duas horas e informando as famílias, acrescenta um segundo celular após uma revisão sem culpados e relata o andamento ao conselho com classificações.
+
+> **Caso sintético.** O incidente é sintético; o GDPR, a LGPD e a Resolução CD/ANPD nº 15/2024 são reais. Isto não é aconselhamento jurídico.
+
+### Erros e limites
+
+Culpar os voluntários pelos erros que eles relatam desestimula relatos futuros.
+
+### Exercícios
+
+- **EX051 — Item perdido.** O que a voluntária perdeu? *Rubrica:* 3 = uma pasta com cinco formulários de encaminhamento;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX052 — Prazo da comunicação.** Em que prazo a autoridade foi comunicada? *Rubrica:* 3 = setenta e duas horas;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX053 — Famílias informadas.** Por que as famílias foram informadas diretamente? *Rubrica:* 3 = o risco para elas era alto;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX054 — Causa-raiz.** Por que os formulários foram levados para casa? *Rubrica:* 3 = o celular da organização estava ocupado;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX055 — Decisão do conselho.** O que o conselho financiou? *Rubrica:* 3 = mais celulares da organização;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Plano de ação e próximos passos
+
+### Objetivos de aprendizagem
+
+Você vai (1) revisar o andamento em relação às metas; (2) escrever um plano de ação de um ano; (3) sustentar a governança depois do curso.
+
+### 12.1 Revisão do andamento
+
+Grace revisa suas metas. A Northbank agora sabe que dados tem e onde estão, os papéis estão atribuídos, os dados dos clientes estão mais protegidos, as duplicatas de doadores e os registros de consentimento melhoraram e o conselho recebe relatórios regulares. Uma meta continua incompleta: os seis bancos de alimentos usando uma única definição de família. Quatro a adotaram; dois ainda usam a sua própria. Ela registra as evidências de cada meta e os motivos da lacuna. Compartilha a revisão com a conselheira que supervisiona os dados antes da reunião do conselho, para que a lacuna restante não surpreenda ninguém.
+
+### 12.2 A definição de família
+
+Grace visita os dois bancos de alimentos. Os líderes explicam que seus parceiros contam as famílias de outro jeito e que mudar os formulários é lento. Grace acorda uma transição: os dois bancos registram a definição acordada ao lado da antiga por três meses e depois fazem a troca. Ela observa que algumas mudanças demoram mais porque dependem de parceiros, e que uma transição planejada é melhor do que impor uma mudança repentina que estrague a relação com eles. Os dois líderes concordam com a transição, e Grace agenda uma visita ao fim dos três meses para confirmar a troca.
+
+### 12.3 Plano de um ano
+
+Grace escreve um plano de um ano: concluir a mudança da definição de família, terminar a reconfirmação dos consentimentos, automatizar a eliminação dos encaminhamentos, fazer duas revisões do inventário, oferecer treinamento de reciclagem aos voluntários e testar o procedimento de incidentes com um exercício simulado. Cada ação tem um dono, uma data e uma medida. O conselho o aprova. O Sr. Nowak observa que planos com donos e medidas têm muito mais chance de ser cumpridos do que intenções gerais. Grace inclui as ações do plano no calendário de governança e revisa o andamento com a conselheira a cada trimestre.
+
+### 12.4 Sustentando a governança
+
+Grace reflete que a governança na Northbank depende de rotinas: verificações mensais, revisões de acesso e relatórios trimestrais, integrações e reuniões de líderes. Ela as documenta em um calendário para que continuem se ela sair. Planeja continuar aprendendo, começando pela privacidade, já que os dados dos clientes são centrais para a Northbank. O próximo curso desta área trata de privacidade e proteção de dados, onde os dados governados encontram os direitos das pessoas que eles descrevem. Ela agradece ao Sr. Nowak e aos colegas de turma, cujas perguntas a ajudaram a enxergar com mais clareza os dados da Northbank.
+
+### Exemplo resolvido
+
+Grace revisa as metas, com uma ainda incompleta, acorda uma transição de três meses com registro duplo para dois bancos de alimentos, escreve um plano de um ano com donos, aprovado pelo conselho, e documenta as rotinas em um calendário de governança.
+
+> **Caso sintético.** O plano é sintético.
+
+### Erros e limites
+
+A governança que depende da memória de uma única pessoa para quando ela sai.
+
+### Exercícios
+
+- **EX056 — Meta incompleta.** Que meta ficou incompleta? *Rubrica:* 3 = uma única definição de família nos seis bancos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX057 — Bancos que adotaram.** Quantos bancos de alimentos adotaram a definição? *Rubrica:* 3 = quatro;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX058 — Duração da transição.** Quanto dura a transição com registro duplo? *Rubrica:* 3 = três meses;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX059 — Teste do plano.** Que exercício o plano inclui? *Rubrica:* 3 = um exercício simulado de incidente;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX060 — Ferramenta de continuidade.** Onde as rotinas são documentadas? *Rubrica:* 3 = em um calendário de governança;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX030 (as de EX031–EX060 estão na edição em inglês até a tradução dos capítulos correspondentes). Grace Mwangi, o Sr. Tomasz Nowak, a Kingsford Professional Academy, a Northbank Food Bank Network e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060. Grace Mwangi, o Sr. Tomasz Nowak, a Kingsford Professional Academy, a Northbank Food Bank Network e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Seis meses.
 
@@ -373,6 +646,66 @@ Respostas-modelo para EX001–EX030 (as de EX031–EX060 estão na edição em i
 **EX029.** O armazenamento automático dos e-mails em minúsculas.
 
 **EX030.** Menos de uma hora.
+
+**EX031.** 62,7 por cento, 2.507 doadores.
+
+**EX032.** Como não.
+
+**EX033.** Não mostram quando nem como o consentimento foi dado.
+
+**EX034.** O contrato com o doador ou obrigações legais.
+
+**EX035.** A data, o texto exibido e a origem.
+
+**EX036.** Em até uma semana após a chegada, e depois são triturados.
+
+**EX037.** O arquivo ficava em outra sala.
+
+**EX038.** Bloqueio de tela, criptografia e apagamento remoto.
+
+**EX039.** Três.
+
+**EX040.** Criptografia, backups, logs de acesso e cláusulas contratuais.
+
+**EX041.** As cláusulas de operador exigidas pelo GDPR.
+
+**EX042.** Não.
+
+**EX043.** Só quando têm relação com a alimentação, como alergias.
+
+**EX044.** Por um portal seguro.
+
+**EX045.** Em até uma semana após a saída do voluntário.
+
+**EX046.** Um ano.
+
+**EX047.** Um líder de banco de alimentos.
+
+**EX048.** O sistema de casos, a caixa de encaminhamentos e o celular da organização.
+
+**EX049.** O registro foi marcado como sem marketing, em vez de eliminado.
+
+**EX050.** No banco de dados e no serviço de boletins.
+
+**EX051.** Uma pasta com cinco formulários de encaminhamento.
+
+**EX052.** Em até setenta e duas horas.
+
+**EX053.** Porque o risco para elas era alto.
+
+**EX054.** O celular da organização estava ocupado, então a voluntária telefonou de casa.
+
+**EX055.** Mais celulares da organização.
+
+**EX056.** A definição única de família nos seis bancos de alimentos, ainda não concluída.
+
+**EX057.** Quatro.
+
+**EX058.** Três meses.
+
+**EX059.** Um exercício simulado que testa o procedimento de incidentes.
+
+**EX060.** Em um calendário de governança.
 
 <a id="references"></a>
 ## Referências
