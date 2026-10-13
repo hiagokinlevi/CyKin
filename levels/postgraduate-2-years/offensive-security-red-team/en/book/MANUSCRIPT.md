@@ -332,7 +332,7 @@ You will (1) weigh systemic risk to clearing; (2) handle conflicts of interest; 
 
 ### 4.1 Systemic risk
 
-A careless test that disrupts settlement can harm many participants. Amira's risk lens is systemic, not only MCH-local.
+A test window is therefore agreed with operations before any scenario touches the settlement path. Amira's risk lens is systemic, not only MCH-local.
 
 A careless test that delays settlement can harm many participants beyond Meridian Clearing House. Before design sign-off she asks who else clears through the path and what a fifteen-minute pause would do; scenarios that need live participant impact are rejected at design time.
 
@@ -356,7 +356,7 @@ Optical pressure is predictable; the ethics charter answers it before the email 
 
 ### 4.4 Threat-led stops
 
-White-team stop authority is written before scenarios start. Amira refuses exercises where nobody can stop the red team in minutes.
+No scenario begins until those named contacts have confirmed they are reachable. Amira refuses exercises where nobody can stop the red team in minutes.
 
 White-team stop authority is written before scenarios start, with names and phone numbers that work in minutes. A simulated settlement delay of fifteen minutes is enough reason to stop mid-play; students who continue for one more objective fail the ethics tabletop.
 
@@ -368,7 +368,7 @@ Publishing clearing-specific exploit paths is out of scope for this curriculum a
 
 Her talks describe the decision method, the catalogue and the cannot-claim lines, never a path through a participant connection. Amira's final slide lists that refusal beside no live demos against participants; dual-use discipline is part of specialist identity, not an optional appendix for a conference slot.
 
-When a conference organiser asked for a clearing walkthrough, Amira offered a talk on the DEC-14 decision object instead. Dual-use discipline is part of specialist identity; a conference slot that wants live demos against participants is refused on the final slide.
+When a conference organiser asked for a clearing walkthrough, Amira offered a talk on the DEC-14 decision object instead. She treats that refusal as part of the work itself, and she explains it to the organisers in the same plain terms.
 
 ### 4.6 Care
 
@@ -464,7 +464,7 @@ No claim of SWIFT coverage from ordinary web tests; no public exploit demos; no 
 
 Each non-goal maps to a catalogue cannot-claim line or to the ethics charter, so none of them is a new promise invented for the memo. She reads them aloud at the end of the alternatives memo; a recommendation that only works if people work nights is not executable.
 
-A recommendation that only works if people work nights is not executable, and she will not file it. Non-goals are read aloud so unpaid overtime cannot quietly become the capacity plan.
+Before filing, she checks every recommendation against the staffing rota the owners actually run. Non-goals are read aloud so unpaid overtime cannot quietly become the capacity plan.
 
 ### 5.5 Sensitivity
 
@@ -502,7 +502,7 @@ Cover that is arranged late becomes the heroics the ethics charter forbids. Penc
 
 Amira's calendar graphic uses shaded cells for threat-led preparation months, not only execution week, so executives see the true staff load. Finance once funded only the execution week and was surprised by intel lead time; the shaded cells stopped that surprise. She reprints the calendar after every DEC that changes cadence and stores the PDF hash beside DEC-14.
 
-Each shaded month carries the initials of the white-team member pencilled for it, so gaps in cover show up as blank cells. Finance once funded only the execution week and was surprised by intel lead time; she reprints the calendar after every DEC that changes cadence and stores the PDF hash beside DEC-14.
+Each shaded month carries the initials of the white-team member pencilled for it, so gaps in cover show up as blank cells. When a cell stays blank, Amira raises the gap with the white-team lead before the month begins.
 
 ### Worked example (synthetic MCH)
 
@@ -631,7 +631,7 @@ Scenario C's missing library owner was filed this way and became the opening ite
 
 Feasibility demotion of scenario C is communicated to the board as strength, not indecision. Amira's slide title was "We refused a high-scoring scenario we could not stop". The board applauded. Lab scores without stop owners are now labelled provisional in every packet that leaves her desk.
 
-The slide paired scenario C's +4 lab score with the missing deploy-freeze owner, so the reason for demotion fitted on one line. Her slide title was We refused a high-scoring scenario we could not stop; lab scores without stop owners are labelled provisional in every packet that leaves her desk.
+The slide paired scenario C's +4 lab score with the missing deploy-freeze owner, so the reason for demotion fitted on one line. The refusal was recorded in the decision log beside the lab score, so the reason survives the meeting.
 
 ### 6.10 6.q11
 
@@ -689,9 +689,9 @@ Business units hiring boutique scanners without ROE create shadow risk. Integrat
 
 A boutique scan without ROE has no stop authority and no exclusion list, so it could touch SWIFT-adjacent hosts unnoticed. Amnesty week invites declarations so shadow scans enter the catalogue or stop; undeclared scans found later become audit findings against the unit, not quiet exceptions.
 
-Declared scans that continue go through the same authorization path as Amira's own quarterly WSTG-style web tests. Undeclared boutique scans found after amnesty week become audit findings against the unit, not quiet exceptions.
+Declared scans that continue go through the same authorization path as Amira's own quarterly WSTG-style web tests. The audit team receives the declaration list so it can tell declared tools from concealed ones.
 
-Amnesty week invites declarations so shadow scans enter the catalogue or stop. Business units that hire boutique scanners without ROE create shadow risk; one catalogue and one authorization path are the integration answer.
+After amnesty week, every external scan must therefore enter through the same request form that internal tests use.
 
 ### 7.3 Cadence
 
@@ -733,13 +733,13 @@ Shadow-programme amnesty week invites business units to declare boutique scans. 
 
 Each declaration names the vendor, the targets scanned and the unit lead who commissioned the work. Rules are published before the week starts; amnesty without consequences for later concealment is theatre.
 
-Amnesty without consequences for later concealment is theatre. Rules published before the week starts stop anyone from claiming surprise when undeclared scans become findings.
+At the close of the week the declaration list goes to internal audit, so later discoveries can be checked against it without argument about what was declared.
 
 ### 7.8 Bit2
 
 Amnesty week metrics — declared, catalogued, stopped — go to the board risk committee in one slide. Keeping the three counts on one slide lets the committee see whether declarations led to tools actually being stopped.
 
-The stopped count is printed as large as the declared count, so nobody can read the slide as a list of approvals. Keeping the three counts together lets the committee see whether declarations led to tools actually being stopped rather than buried in a footnote.
+The stopped count is printed as large as the declared count, so nobody can read the slide as a list of approvals. Those counts appear in the main slide, never in a footnote, so a stalled shutdown cannot be hidden.
 
 Amira does not bury stopped scans in a footnote. Transparency about the stopped count on the same slide as declared and catalogued shows the amnesty had teeth.
 
@@ -799,7 +799,7 @@ When a hostname might be participant-owned, Amira pauses and seeks written clari
 
 In the worked case, related methods stopped within four minutes and the white team received the question by email. The pause is logged with the time and the question asked; written clarification from the white team or the participant contact is filed before any further probe.
 
-Guessing is not a specialist skill at Meridian Clearing House. Written clarification is filed before any further probe when a hostname might be participant-owned, and the pause itself is logged with time and question.
+When ownership is unclear, the probe waits until someone with authority answers in writing. Participant-owned hostnames are the usual cause of these pauses, because they can look identical to Meridian Clearing House systems.
 
 ### 8.2 Insider-sensitive
 
@@ -825,7 +825,7 @@ Difficult cases generate more pressure emails; all go to the CISO alias with fac
 
 The CISO alias creates a record that survives staff changes and mood. Factual headers on every pressure email keep difficult-case debates out of side threads examiners will never see.
 
-Amira does not debate findings in side threads that examiners will never see. Difficult cases generate more pressure emails; factual headers to the CISO alias keep the record complete when staff change.
+Any disagreement about a finding is answered on the alias, with the evidence attached. Factual headers keep that record useful when staff change, because a successor can follow each thread without the original authors.
 
 ### 8.5 Time
 
@@ -863,7 +863,7 @@ HR script changes require HR and Amira countersignatures the same day. Same-day 
 
 HR script changes require HR and Amira countersignatures the same day so a morning edit cannot reach an afternoon interview without both owners. A missing signature is a stop, not a delay to negotiate; employees deserve reviewed words.
 
-The countersignature is recorded on the script's version line, next to the effective date and HR's initials. Amira treats a missing signature as a stop; employees deserve reviewed words.
+The countersignature is recorded on the script's version line, next to the effective date and HR's initials. The draft simply waits until legal and HR have both signed it.
 
 ### Worked example (synthetic MCH)
 
@@ -951,7 +951,7 @@ Monthly role-play puts pressure on a specialist to soften wording; scores separa
 
 Amira wants both calm tone and firm refusal. Monthly role-play scores them separately so soft panic and angry collapse are both visible failures before a real pressure email arrives.
 
-The sheet scores tone and refusal from zero to three each, with sample phrases for every level. Soft panic and angry collapse both fail; calm and firm are scored separately on purpose.
+The sheet scores tone and refusal from zero to three each, with sample phrases for every level. Calm and firm are scored separately on purpose, because a learner can be calm without holding the boundary.
 
 ### 9.5 Board education
 
@@ -969,7 +969,7 @@ Document decisions so a successor can continue without folklore.
 
 Documented decisions such as DEC-14 and the two-year calendar let a successor continue without folklore. Succession folders include three CLEAN statements and three FORBIDDEN counterexamples with explanations so deputies learn by contrast.
 
-Amira answers questions in transfer but does not keep secret side rules. DEC-14, the two-year calendar and CLEAN versus FORBIDDEN pairs in the succession folder let a successor continue without folklore.
+Amira answers questions in transfer but does not keep secret side rules. The CLEAN versus FORBIDDEN pairs sit in the same succession folder, so wording rules travel with the decisions.
 
 The CLEAN examples include the lab statement that printed CLEAN at 126 characters, with its time and scope bounds marked. Documented decisions such as DEC-14 beat hallway folklore when a successor must continue without Amira.
 
@@ -1072,7 +1072,7 @@ The abstract checklist asks whether question, method, n, limits and ethics are p
 
 lab_critique marks each checklist field ok or MISSING. Each field the lab marks MISSING becomes a question the presenter must answer before the paper can inform a DEC record.
 
-Amira fails any presenter who cannot state n from memory after reading. The checklist — question, method, n, limits, ethics — is the same one lab_critique scores on the synthetic abstract.
+Limits that a presenter omits are added to the feedback sheet in writing. Presenters are scored against that same checklist, so the lab and the seminar reward identical habits.
 
 ### 10.3 Citation theatre
 
@@ -1140,7 +1140,7 @@ If a presenter skips n, she points at MISSING and stays quiet. Pre-check rates e
 
 Pre-check rate posters use cohort letters, never names. Cohort letters let teams compare pre-check rates without singling out any individual operator.
 
-Pre-check rate posters use cohort letters, never names, so teams can compare rates without singling out any operator. She has rejected a draft poster that used initials; the rule matches amnesty slide discipline: counts and patterns, not a blame list.
+The posters never show names, so a low rate leads to coaching rather than blame. She has rejected a draft poster that used initials; the rule matches amnesty slide discipline: counts and patterns, not a blame list.
 
 Cohort A and cohort B appear side by side, each rate printed with the number of presentations behind it. The rule matches amnesty slide discipline: counts and patterns, never initials on a public poster.
 
@@ -1190,9 +1190,9 @@ Amira's project brief forbids live participant scanning, exploit modules and LLM
 
 No live participant scanning; no exploit modules; no LLM auto-bury of findings.
 
-Non-goals are checked at every biweekly checkpoint: no live participant scanning, no exploit modules, no LLM auto-bury of findings. Amira answers first with her own near-miss about an LLM summary feature so juniors see candour is expected.
+Those non-goals are checked again at every biweekly checkpoint. Amira answers first with her own near-miss about an LLM summary feature so juniors see candour is expected.
 
-Checkpoint quizzes ask which non-goal you nearly violated this sprint. Her own near-miss about an LLM summary feature is the first answer, so juniors see that candour is expected and non-goals are checked every biweekly meeting.
+Checkpoint quizzes ask which non-goal you nearly violated this sprint. Hearing a senior admit a near miss first makes it easier for juniors to raise their own. Answers are recorded without names, and a repeated near miss on the same non-goal becomes a topic for the next checkpoint.
 
 ### 11.3 Pre-registration
 
@@ -1200,7 +1200,7 @@ Precision of forbidden-phrase catch; ranking correlation with white-team expert 
 
 The frozen set is a fixed batch of synthetic past exercises that nobody may edit once the tag is pushed. She will not tune thresholds after seeing how her favourite scenarios score.
 
-Tags go in git before evaluation runs. Precision of forbidden-phrase catch and ranking correlation with white-team expert order on a frozen set are the pre-registered measures; tuning after seeing favourite scores is refused.
+Tags go in git before evaluation runs. Both measures are pre-registered, and tuning after seeing favourite scores is refused.
 
 Any amended tag would need a decision-log note, the same rule that governs scenario thresholds in controlled evaluation. Pre-registration of forbidden-phrase precision and ranking correlation on a frozen set keeps the applied project honest.
 
@@ -1218,7 +1218,7 @@ She is reachable only by phone that week, so every question the operator has rea
 
 Synthetic-only declaration on page one.
 
-Synthetic-only declaration sits on page one of every project repo. Ethics cover sheets are mechanically checked for the word synthetic before merges accept; her near-miss answers from others stay anonymous, her own near-miss stays named to model candour.
+Reviewers check that declaration before reading any code in the repository. Ethics cover sheets are mechanically checked for the word synthetic before merges accept; her near-miss answers from others stay anonymous, her own near-miss stays named to model candour.
 
 Ethics cover sheets are mechanically checked for the word synthetic before merges accept. Near-miss answers from others stay anonymous; her own near-miss stays named so candour is modelled from the top.
 
@@ -1240,7 +1240,7 @@ Checkpoint quizzes ask which non-goal you nearly violated this sprint; Amira ans
 
 The quiz takes five minutes at the start of each biweekly checkpoint, before any demo of new features. Solo-run week forbids her typing so operators must succeed from the docs alone; ethics covers are checked for synthetic before merges.
 
-Any merge that fails the synthetic check is bounced to the author with the cover sheet template attached. Ethics cover sheets are mechanically checked for synthetic before project repos accept merges; checkpoint quizzes keep non-goals visible each sprint.
+Any merge that fails the synthetic check is bounced to the author with the cover sheet template attached. Checkpoint quizzes keep the non-goals visible in each sprint as well.
 
 ### 11.8 Bit2
 
@@ -1328,7 +1328,7 @@ Amira's final slide lists refusals: no public clearing exploit detail, no live d
 
 The no-denominator refusal is why every count in her packs, from amnesty to pre-check rates, carries the number behind it. Dual-use discipline closes the course the same way integrity opened it; she will not trade those refusals for a conference invitation.
 
-She will not trade those refusals for a conference invitation. No public clearing exploit detail, no live demos against participants, and no assurance without denominators close the course the same way integrity opened it.
+She will not trade those refusals for a conference invitation. Those refusals close the course in the same way that integrity opened it.
 
 ### 12.5 Next course
 
@@ -1348,7 +1348,7 @@ Amira books the introductions herself, so the successor meets the SOC lead and t
 
 Amira will not sign the transfer form without the SOC shadow completed. Personal introductions to SOC and legal are part of care, not optional courtesy when calendars resist.
 
-Walking introductions include a five-minute shadow of the SOC stand-up so the successor hears noise-budget language in the wild. Care means she will not sign transfer without that shadow completed.
+Walking introductions include a five-minute shadow of the SOC stand-up so the successor hears noise-budget language in the wild. Care here means the successor has watched real SOC work before taking over the role.
 
 ### 12.7 Narrative
 
