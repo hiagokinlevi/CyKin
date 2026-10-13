@@ -2502,11 +2502,11 @@ Each step of the runbook maps to a lesson from the case: gates come from Lab K, 
 - Global rollback for local faults.
 - Manual certificate processes that make algorithm change slow.
 
-A small canary with zero failures still has a wide confidence bound, as Lab K showed for 5,000 connections, so promoting on its point estimate is guesswork. A global rollback for the proxy site's problem would remove protection from every healthy path. Manual certificate processes make each algorithm change a project, while automated renewal turns it into a routine step that happens every ninety days.
+A small canary still has a wide confidence bound, as Lab K showed for 5,000 connections, where 3 failures gave a point estimate of 0.0006, inside the budget, but an upper bound of 0.00176, so promoting on the point estimate is guesswork. A global rollback for the proxy site's problem would remove protection from every healthy path. Manual certificate processes make each algorithm change a project, while automated renewal turns it into a routine step that happens every ninety days.
 
 ### Engineering note
 
-Operations also own communication during rollout. Publish a short status note each promotion stage listing the stage, measured failure bound, known exceptions and next decision date, so that help-desk staff can recognize related tickets and partners can plan. A help desk that knows a hybrid rollout reached the hospital-wing proxy yesterday will route a cluster of connection complaints correctly in minutes instead of treating them as unrelated faults for days.
+Operations also own communication during rollout. Publish a short status note each promotion stage listing the stage, measured failure bound, known exceptions and next decision date, so that help-desk staff can recognize related tickets and partners can plan. A help desk that knows a hybrid rollout reached the shipping-line portal's inspection proxy yesterday will route a cluster of connection complaints correctly in minutes instead of treating them as unrelated faults for days.
 
 ### Exercises
 
@@ -2688,7 +2688,7 @@ You will (1) verify end-to-end protections from an attacker's vantage point in a
 
 In an isolated lab replicating BPA's edge, capture handshakes and confirm the negotiated group from the wire, not from server logs. Verify that recorded sessions with hybrid groups would require breaking both X25519 and ML-KEM — by checking that the session key derivation includes both shares (Lab C's principle).
 
-Server logs can be wrong, as the placement student found with a library that logged the first offered group rather than the negotiated one. Reading the ServerHello on the wire gives the actual group, and comparing it with the logs checks both at once.
+Server logs can be wrong: a TLS library may log the first offered group rather than the negotiated one, as the placement student in Chapter 43 discovers. Reading the ServerHello on the wire gives the actual group, and comparing it with the logs checks both at once.
 
 ### 40.2 Downgrade tests
 
@@ -3518,7 +3518,7 @@ Model answers; any answer meeting the rubric scores equally. Numbers about BPA a
 
 **EX064.** 15 × 60 × 24 × 365 ≈ 7.9 million signatures per year > 1,048,576 — insufficient; use multi-level HSS with more capacity, several keys, or ML-DSA for this volume.
 
-**EX065.** Lab → spare unit (2 weeks) → one low-impact crane (2 weeks) → one terminal → all; rollback image verified with the old key at each ring.
+**EX065.** Lab → spare unit (1 week) → one low-impact crane (1 week) → one terminal (1 week) → all; rollback image verified with the old key at each ring.
 
 **EX066.** CBOM identifies ML-DSA-65 in bills of lading; alternative: ECDSA remains valid short-term plus switch to SLH-DSA or another ML-DSA level; timestamp renewal; target 14 days; partner verifier updates as dependency.
 

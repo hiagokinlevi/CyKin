@@ -1,7 +1,7 @@
 # Segurança Quântica e Pós-Quântica: Engenharia de Sistemas Resistentes à Computação Quântica
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos; aproximadamente 4.000 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 50 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções; os capítulos 31–50 (EX061–EX100) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–40 de 50 já estão escritos em português, com os exercícios EX001–EX080 e suas resoluções; os capítulos 41–50 (EX081–EX100) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: futuros projetistas de sistemas de segurança que vão projetar, construir e validar sistemas que continuem seguros quando existirem grandes computadores quânticos. Conhecimento de entrada: cálculo, computação, redes e engenharia de sistemas no nível de conclusão do ensino médio ou do primeiro ano.
 - Relação com os livros vizinhos: os livros de [mestrado](../../../../masters-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) e de [doutorado](../../../../doctorate-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) desta área estudam empiricamente a implantação da PQC. **Este livro trata da engenharia da migração**: a matemática por trás dos esquemas de reticulados, de hash e de códigos, o inventário, os requisitos, a arquitetura híbrida PQ/T, a agilidade criptográfica, a implementação, a verificação, as operações e um projeto final.
 - Autoria: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -53,8 +53,18 @@ As fontes primárias foram verificadas em 12 de outubro de 2026: NIST FIPS 203/2
 28. [Segurança quântica e pós-quântica: implementação I](#ch-28)
 29. [Segurança quântica e pós-quântica: medição](#ch-29)
 30. [Laboratório de verificação I](#ch-30)
+31. [Segurança quântica e pós-quântica: implementação II](#ch-31)
+32. [Segurança quântica e pós-quântica: confiabilidade](#ch-32)
+33. [Segurança quântica e pós-quântica: segurança operacional e resiliência](#ch-33)
+34. [Segurança quântica e pós-quântica: integração](#ch-34)
+35. [Ateliê de projeto II](#ch-35)
+36. [Segurança quântica e pós-quântica: desempenho e escala](#ch-36)
+37. [Segurança quântica e pós-quântica: operações](#ch-37)
+38. [Segurança quântica e pós-quântica: validação](#ch-38)
+39. [Segurança quântica e pós-quântica: manutenibilidade](#ch-39)
+40. [Laboratório de verificação II](#ch-40)
 
-Capítulos 31–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
+Capítulos 41–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-41), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -2191,7 +2201,737 @@ A verificação combina testes de resposta conhecida, testes negativos e interop
 <!-- cyberabc:chapter-navigation:start ch-30 -->
 ### Continue estudando — capítulo 30 de 50
 
-[← Capítulo 29](#ch-29) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 31 (inglês) →](../../en/book/MANUSCRIPT.md#ch-31)
+[← Capítulo 29](#ch-29) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 31 →](#ch-31)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-31"></a>
+
+## Capítulo 31 — Segurança quântica e pós-quântica: implementação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar técnicas de tempo constante ao código baseado em reticulados; (2) entender os ataques por injeção de falhas e as suas contramedidas; (3) lidar com segurança com a aleatoriedade e as sementes; e (4) avaliar implementações embarcadas. O capítulo aprofunda o Capítulo 28 com a segurança da implementação.
+
+### 31.1 Tempo constante
+
+As implementações baseadas em reticulados precisam evitar desvios, acessos à memória e instruções de tempo variável que dependam de segredos. A divisão é uma armadilha conhecida: compiladores e processadores podem implementar a divisão por uma constante com tempo variável, e o KyberSlash mostrou vazamentos reais a partir de divisões dependentes de segredos ([Bernstein et al. 2024](https://eprint.iacr.org/2024/1049)). A correção é uma aritmética que evite a divisão (multiplicação por constantes pré-calculadas e deslocamentos) e a verificação com ferramentas de análise de tempo.
+
+Um código-fonte que parece de tempo constante pode deixar de sê-lo após a compilação, por isso as verificações são executadas sobre o binário de cada plataforma-alvo.
+
+### 31.2 Comparação no desencapsulamento
+
+A rejeição implícita do ML-KEM compara um texto cifrado recifrado com o recebido. A comparação e a seleção entre a chave real e a chave de rejeição precisam ser de tempo constante; caso contrário, o tempo revela se um texto cifrado manipulado foi decifrado "corretamente", reabrindo os ataques de texto cifrado escolhido.
+
+Uma comparação ingênua que para no primeiro byte diferente termina mais cedo para algumas entradas do que para outras, e um atacante que envia muitos textos cifrados forjados consegue medir a diferença. A correção compara todos os bytes e combina as diferenças com operações bit a bit, e depois seleciona a chave com uma máscara em vez de um desvio. As bibliotecas implementam isso; a revisão da BPA verifica que o código da aplicação nunca reimplemente a comparação nem acrescente uma saída antecipada em torno dela.
+
+### 31.3 Ataques por injeção de falhas
+
+Injetar falhas (picos de tensão, falhas de clock, lasers) pode pular verificações ou corromper cálculos. Nas assinaturas, uma falha durante a assinatura ML-DSA pode vazar informações sobre a chave secreta; nos esquemas determinísticos, as falhas podem ser especialmente perigosas. As contramedidas incluem o cálculo redundante, a verificação de uma assinatura antes de liberá-la e hardware reforçado. Elas importam para dispositivos aos quais um atacante tem acesso físico — scanners de portão, cartões inteligentes.
+
+Verificar uma assinatura antes de liberá-la custa uma verificação a mais, o que no ML-DSA é rápido, e detecta falhas que corromperam a assinatura. Para o serviço central de assinatura da BPA, numa sala protegida, o risco de falhas é baixo; para dispositivos em campo, um atacante com acesso físico tem tempo para experimentar, então é ali que as contramedidas importam mais.
+
+### 31.4 Aleatoriedade e sementes
+
+A geração de chaves e o encapsulamento do ML-KEM consomem aleatoriedade nova; o ML-DSA oferece um modo "hedged" que mistura aleatoriedade nova com derivação determinística, o que ajuda contra falhas injetadas e falhas de aleatoriedade ([FIPS 204](https://doi.org/10.6028/NIST.FIPS.204)). As sementes que geram chaves são tão sensíveis quanto as próprias chaves.
+
+Num esquema hedged, um gerador de números aleatórios com defeito degrada para a assinatura determinística em vez de vazar a chave, e é por isso que a BPA ativa o ML-DSA hedged no seu serviço de assinatura. As sementes de 64 bytes do ML-KEM precisam ser protegidas como chaves privadas: quem obtém uma semente pode regenerar a chave de desencapsulamento. As regras de armazenamento e de backup se aplicam às sementes da mesma forma, inclusive a destruição quando a chave é aposentada.
+
+### 31.5 Exemplo resolvido
+
+O fornecedor dos scanners de portão da BPA fornece um verificador ML-DSA para o firmware. Como o dispositivo apenas verifica, o vazamento da chave secreta não está em jogo no dispositivo; os principais riscos são falhas que pulem o resultado da verificação. Contramedida: verificar duas vezes, por caminhos de código diferentes, e conferir um hash da imagem após o boot.
+
+Usar dois caminhos de código diferentes significa que é improvável que uma única falha injetada pule as duas verificações da mesma forma. A conferência do hash após o boot acrescenta mais uma camada: se uma falha deixou uma imagem não assinada iniciar, a divergência é detectada e o dispositivo a relata. Essas etapas custam milissegundos no boot, o que o scanner pode pagar.
+
+### 31.6 Erros comuns e limites
+
+- Supor que os compiladores preservam a intenção de tempo constante.
+- Ignorar ataques físicos contra dispositivos em campo.
+- Tratar as sementes como não sensíveis.
+
+Os compiladores otimizam para velocidade e podem introduzir desvios ou consultas a tabelas que vazam tempo, então as alegações de tempo constante precisam ser verificadas no código compilado. Dispositivos em campo, como os scanners de portão, enfrentam atacantes que podem injetar falhas neles à vontade, ao contrário dos servidores numa sala vigiada. As sementes regeneram chaves, então tratá-las como configuração inofensiva expõe todas as chaves derivadas delas. As revisões da BPA verificam esses três pontos em cada nova classe de dispositivo antes da compra.
+
+### Exercícios
+
+- **EX061 — Auditoria de divisão.** Explique por que `coeff // 1665` sobre um valor secreto pode vazar informação e proponha uma alternativa. Rubrica: 3 = risco da divisão de tempo variável e alternativa com multiplicação/deslocamento.
+- **EX062 — Ameaça de falhas.** Para um bootloader que apenas verifica, identifique a ameaça de falhas e duas contramedidas. Rubrica: 3 = verificação pulada; verificação redundante e hash após o boot.
+
+### Síntese
+
+A segurança da implementação em PQC significa aritmética e comparações de tempo constante, resistência a falhas onde os atacantes têm acesso físico e cuidado no tratamento da aleatoriedade e das sementes.
+
+<!-- cyberabc:chapter-navigation:start ch-31 -->
+### Continue estudando — capítulo 31 de 50
+
+[← Capítulo 30](#ch-30) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 32 →](#ch-32)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-32"></a>
+
+## Capítulo 32 — Segurança quântica e pós-quântica: confiabilidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) identificar os riscos de confiabilidade trazidos por mensagens maiores e novos caminhos de código; (2) projetar um comportamento de fallback e de novas tentativas que preserve a segurança; (3) planejar a capacidade dos esquemas de assinatura com estado; e (4) monitorar falhas silenciosas. O capítulo parte dos Capítulos 23 e 30.
+
+### 32.1 Riscos de confiabilidade
+
+Riscos novos: fragmentação e descartes por middleboxes; timeouts em dispositivos restritos e lentos; falhas na interpretação de certificados; bugs de biblioteca em código novo; chaves de assinatura com estado esgotadas; limites de desempenho dos HSMs. Cada um precisa de detecção e de resposta.
+
+Cada risco tem um sinal correspondente: os descartes aparecem como falhas de handshake por caminho, os timeouts como caudas de latência em classes de dispositivos, as falhas de interpretação como erros de certificado nos logs dos clientes e as chaves com estado esgotadas como um contador se aproximando do limite. O plano de monitoramento da BPA lista o sinal, o limiar e o responsável por cada risco, para que um alerta chegue a alguém que sabe o que fazer, e não a uma fila genérica.
+
+### 32.2 Fallback seguro
+
+O fallback pode preservar a disponibilidade, mas não pode criar um rebaixamento silencioso. Regras de projeto: fallback apenas para algoritmos aprovados; registrar cada fallback com o motivo; alertar quando as taxas de fallback subirem; definir uma data de expiração para a permissão de fallback; nunca fazer fallback em falhas de autenticação, apenas em incompatibilidade demonstrável.
+
+A última regra é crítica: uma falha de autenticação pode sinalizar um ataque, então tentar de novo com configurações mais fracas daria ao atacante o que ele quer. O portal da BPA, por isso, só faz fallback após um reset de conexão num caminho listado como incompatível, nunca após um erro de certificado ou de assinatura.
+
+### 32.3 Capacidade dos esquemas com estado
+
+Uma chave LMS com árvore de altura 20 suporta cerca de um milhão de assinaturas; uma árvore de altura 10, cerca de mil. A capacidade precisa exceder, com margem, o volume de assinaturas esperado ao longo da vida da chave; alertas de monitoramento em limiares (por exemplo, 70% usados) disparam uma troca de chave planejada.
+
+A altura da árvore troca capacidade por tempo de geração da chave e tamanho da assinatura: cada nível a mais dobra a capacidade e acrescenta um pouco a cada assinatura. Como a troca de chave exige distribuir antecipadamente uma nova chave pública aos dispositivos, o limiar de alerta precisa deixar assinaturas restantes suficientes para cobrir esse período de distribuição.
+
+### 32.4 Falhas silenciosas
+
+A pior falha de confiabilidade é a segurança desativada em silêncio: uma configuração que, por causa de um erro de digitação, faz fallback para apenas o clássico em todo lugar. Monitorar os grupos negociados (Capítulo 29) detecta isso.
+
+A BPA se protege disso com uma verificação diária que compara a parcela híbrida negociada com a da semana anterior; uma queda repentina para perto de zero dispara um alerta mesmo que nenhuma conexão tenha falhado. As mudanças de configuração na política criptográfica também exigem um segundo revisor, o que detecta erros de digitação antes da implantação. Uma falha silenciosa não pode ser vista nos logs de erro, porque nada dá erro; ela só pode ser detectada medindo o que é negociado.
+
+### 32.5 Exemplo resolvido
+
+A BPA assina cerca de 2.000 imagens de firmware por ano, somando todas as famílias de dispositivos. Uma árvore LMS de altura 15 (32.768 assinaturas) por local de assinatura dura mais de uma década no volume atual; a equipe ainda assim define alertas em 50% e 80% e documenta a troca para uma nova chave, com distribuição antecipada da sua chave pública.
+
+A 2.000 assinaturas por ano, uma árvore de 32.768 assinaturas dura cerca de dezesseis anos por local, e é por isso que a capacidade não é a restrição. Os alertas ainda importam, porque o volume pode mudar, por exemplo se uma nova família de dispositivos for acrescentada. Distribuir cedo a próxima chave pública significa que a troca de chave não exige nenhuma atualização de firmware emergencial.
+
+### 32.6 Erros comuns e limites
+
+- Fallback sem registro nem expiração.
+- Chaves com estado subdimensionadas.
+- Monitorar a configuração em vez da negociação.
+
+Um fallback sem registro e sem expiração transforma uma ferramenta de transição num caminho permanente de rebaixamento. Uma chave LMS pequena demais se esgota antes que os dispositivos possam receber uma nova chave pública, deixando sem nenhuma forma de assinar atualizações. Monitorar a configuração em vez da negociação deixa escapar as falhas silenciosas descritas acima, em que tudo parece ativado, mas nada está protegido. Cada um desses erros foi visto nas primeiras implantações de outras organizações, e é por isso que o plano da BPA nomeia um controle para cada um.
+
+### Nota de engenharia
+
+As revisões de confiabilidade também devem cobrir relógios e expirações. Certificados de transição, PSKs com datas de rotação e permissões de fallback expiram por projeto; se a automação de renovação falhar, o resultado é uma interrupção que parece uma falha criptográfica. Registre as expirações no sistema de monitoramento, com alertas a 30, 14 e 3 dias, e teste os caminhos de renovação no ambiente réplica, porque a primeira renovação do certificado de um algoritmo novo é um lugar clássico para aparecerem incompatibilidades de interpretação ou de política.
+
+### Exercícios
+
+- **EX063 — Política de fallback.** Escreva uma política de fallback para o TLS de borda que satisfaça as regras de 32.2. Rubrica: 3 = as cinco regras incorporadas.
+- **EX064 — Capacidade.** Um local assina 15 documentos por minuto, continuamente, com LMS. Uma árvore de altura 20 basta para um ano? Rubrica: 3 = 7,9 milhões de assinaturas/ano > 1.048.576 — não basta; propõe HSS/várias árvores ou ML-DSA.
+
+### Síntese
+
+A engenharia de confiabilidade em PQC antecipa falhas de tamanho e de caminhos de código, projeta um fallback registrado, com expiração e seguro quanto à autenticação, dimensiona as chaves com estado com margem e monitora os resultados negociados.
+
+<!-- cyberabc:chapter-navigation:start ch-32 -->
+### Continue estudando — capítulo 32 de 50
+
+[← Capítulo 31](#ch-31) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 33 →](#ch-33)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-33"></a>
+
+## Capítulo 33 — Segurança quântica e pós-quântica: segurança operacional e resiliência
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar como a migração criptográfica interage com as operações relacionadas à segurança física (safety); (2) projetar implantações resilientes para a tecnologia operacional do porto; (3) planejar a resposta a incidentes criptográficos, incluindo o comprometimento de um algoritmo; e (4) preparar-se para um cenário de "quebra criptográfica". O capítulo parte dos Capítulos 10, 23 e 32.
+
+### 33.1 Interações com a segurança física
+
+Na BPA, guindastes, sistemas de portão e serviços de tráfego de embarcações precisam continuar operando. Uma verificação de assinatura de firmware que falha pode inutilizar o controlador de um guindaste; um certificado rejeitado por um scanner de portão pode parar caminhões. As etapas de migração nesses sistemas exigem testes em unidades reserva, janelas de manutenção, imagens de reversão verificadas e a aprovação dos operadores.
+
+A aprovação dos operadores importa porque eles conhecem as consequências de um guindaste ou de um portão parado num período de pico melhor do que a equipe de segurança. A BPA agenda as mudanças de assinatura de firmware fora dos picos de chegada de navios e mantém um técnico no local durante a atualização da primeira unidade. Se a verificação falhar na unidade reserva, a implantação para ali, antes que qualquer guindaste em operação seja tocado.
+
+### 33.2 Implantação resiliente
+
+Use anéis: laboratório → unidade reserva → uma unidade de baixo impacto → um local → todos. Cada anel tem um período de espera e critérios de sucesso explícitos. Mantenha a chave de verificação anterior como confiável até que a nova cadeia esteja comprovada, para que a reversão continue possível.
+
+Para os controladores de guindaste, o período de espera é de uma semana de operação normal por anel, e sucesso significa nenhuma falha de verificação e nenhuma reinicialização inexplicada. Manter a chave antiga como confiável custa pouco e preserva um caminho de volta caso a nova cadeia tenha um defeito. Ela só é removida depois que todos os dispositivos tiverem executado a nova cadeia com sucesso.
+
+### 33.3 Resposta a incidentes criptográficos
+
+Planeje para: uma vulnerabilidade numa biblioteca PQC (corrigir e trocar as chaves), um comprometimento de chave (revogar e substituir), uma reutilização de índice de uma chave com estado (tratar como comprometimento) e uma quebra criptoanalítica de um algoritmo (mudar para a alternativa). Os híbridos dão tempo no último caso: se o ML-KEM fosse enfraquecido, o X25519 ainda protegeria contra atacantes clássicos enquanto a agilidade substitui o componente pós-quântico — por exemplo, pelo HQC, quando for padronizado ([IR 8545](https://doi.org/10.6028/NIST.IR.8545)).
+
+Cada cenário tem um responsável, uma primeira ação e um tempo-alvo no plano da BPA.
+
+### 33.4 Exercício de mesa: quebra de algoritmo
+
+Cenário: um artigo confiável relata um ataque prático contra um conjunto de parâmetros de assinatura pós-quântica. Perguntas: onde ele é usado (CBOM)? O que depende dele (raízes, firmware)? Qual é a alternativa (SLH-DSA, outro nível do ML-DSA)? Quanto tempo leva a substituição (métrica de tempo de substituição)? Quem decide? O exercício de mesa mede a agilidade diretamente.
+
+Conduzir o exercício com o CBOM aberto transforma cada pergunta numa consulta, e o tempo gasto para responder mostra onde o inventário é fraco. Se ninguém consegue dizer em uma hora quais dispositivos dependem do conjunto de parâmetros afetado, essa lacuna é a principal constatação.
+
+### 33.5 Exemplo resolvido
+
+O exercício de mesa da BPA descobre que o firmware dos guindastes confia em um único algoritmo de assinatura, sem previsão de uma segunda chave no bootloader. Ação: a próxima versão do bootloader aceita duas chaves de verificação de algoritmos diferentes (por exemplo, LMS e ML-DSA), para que a quebra de um deles não deixe os dispositivos sem saída.
+
+Sem a segunda chave, uma quebra do LMS deixaria dispositivos impossíveis de atualizar, sem caminho confiável para receber uma correção, já que qualquer firmware novo precisaria de uma assinatura que o bootloader não consegue verificar com segurança. Acrescentar a segunda chave agora, enquanto o bootloader ainda pode ser atualizado, preserva opções para o restante da vida do dispositivo.
+
+### 33.6 Erros comuns e limites
+
+- Implantar mudanças criptográficas em sistemas de segurança física sem unidades reserva e sem reversão.
+- Nenhum plano para o comprometimento de um algoritmo.
+- Âncoras de confiança de um único algoritmo em dispositivos de vida longa.
+
+Implantar uma mudança de assinatura de firmware nos guindastes sem uma unidade reserva testada e sem imagem de reversão arrisca controladores inutilizados e operações paradas. Sem um plano para o comprometimento de um algoritmo, uma quebra força a improvisação sob pressão. Âncoras de confiança de um único algoritmo em dispositivos com vida útil de dez a vinte anos não deixam alternativa se esse algoritmo falhar, como o exercício de mesa da BPA descobriu no firmware dos guindastes antes da próxima versão do bootloader.
+
+### Exercícios
+
+- **EX065 — Anéis.** Defina os anéis de implantação e os critérios para o firmware de guindaste assinado com um algoritmo novo. Rubrica: 3 = unidades reserva, períodos de espera, reversão.
+- **EX066 — Exercício de mesa.** Conduza o exercício de mesa de quebra de algoritmo para os conhecimentos de embarque da BPA e registre as ações. Rubrica: 3 = usa o CBOM, esquema alternativo, tempo de substituição.
+
+### Síntese
+
+A segurança física e a resiliência exigem implantações em anéis com reversão, planos de incidente que incluam quebras de algoritmo e âncoras de confiança capazes de aceitar mais de um algoritmo.
+
+<!-- cyberabc:chapter-navigation:start ch-33 -->
+### Continue estudando — capítulo 33 de 50
+
+[← Capítulo 32](#ch-32) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 34 →](#ch-34)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-34"></a>
+
+## Capítulo 34 — Segurança quântica e pós-quântica: integração
+
+### Objetivos de aprendizagem
+
+Você vai (1) integrar a PQC no TLS, na VPN, na PKI, na assinatura de código e nos formatos de dados; (2) gerenciar a integração com parceiros e fornecedores; (3) sequenciar a integração para gerenciar as dependências; e (4) executar testes de integração de ponta a ponta. O capítulo parte dos Capítulos 16, 28 e 30.
+
+### 34.1 Mapa de integração
+
+| Domínio | Ponto de integração | Dependência |
+|---|---|---|
+| Web/TLS | CDN, proxy de borda, balanceadores de carga internos | Suporte dos clientes, middleboxes |
+| VPN | Gateways IKEv2 | Fornecedores dos pares, suporte ao RFC 9370 |
+| PKI | Software da AC, HSM, perfis de certificado | Suporte das partes confiantes |
+| Assinatura de código | Serviço de assinatura, bootloaders dos dispositivos | Atualizações de firmware dos dispositivos |
+| Documentos | Assinaturas de conhecimentos de embarque, exportações CMS | Software dos parceiros e da aduana |
+
+A coluna de dependência explica a maior parte do cronograma: a BPA controla a sua CDN e o seu proxy de borda, então o TLS web anda primeiro, enquanto os documentos dependem de software dos parceiros e da aduana que a BPA não pode mudar. Ler o mapa linha por linha também mostra quais pontos de integração compartilham uma dependência, como o HSM, que atende tanto a PKI quanto a assinatura de código, de modo que um atraso afeta dois domínios.
+
+### 34.2 Integração com parceiros
+
+Os parceiros andam no próprio ritmo. Publique um aviso de migração com prazos, algoritmos suportados e endpoints de teste; ofereça um ambiente de testes de interoperabilidade; mantenha caminhos clássicos disponíveis, com desativação datada. A aduana, por exemplo, pode aceitar exportações envelopadas com ML-KEM apenas depois da sua própria atualização; destinatários paralelos no CMS (clássico e PQC) cobrem a lacuna.
+
+O ambiente de testes é o item mais útil, porque os parceiros podem testar o seu software contra a nova configuração da BPA sem risco para a produção. As desativações datadas dão aos parceiros um prazo para planejar, e a BPA os lembra em intervalos fixos antes de cada data.
+
+### 34.3 Sequenciamento
+
+Sequencie por dependência e valor: primeiro o TLS de borda (independente, de alto valor); em seguida a raiz da PKI e o HSM (prazo de entrega longo, habilitadores das assinaturas); a assinatura de firmware à medida que os dispositivos são renovados; os documentos com os parceiros; os serviços internos conforme o tempo de vida dos dados.
+
+A raiz da PKI e o HSM vêm cedo, apesar do baixo risco imediato, porque os seus prazos de entrega são longos: a compra, a certificação e a distribuição de uma nova raiz podem levar anos. O TLS de borda vai primeiro porque a BPA controla tanto a configuração quanto a medição, e o seu valor contra a coleta é imediato. A assinatura de firmware acompanha os ciclos de renovação dos dispositivos, e não uma data no calendário. Essa ordem segue as dependências, e não a ordem em que as equipes pediram o trabalho.
+
+### 34.4 Testes de ponta a ponta
+
+Os testes de integração exercitam fluxos inteiros: um cliente de parceiro que se conecta pela borda a uma API que assina um documento com ML-DSA, armazenado e replicado sobre TLS híbrido e verificado por um sistema de testes da aduana. As falhas nesses testes revelam incompatibilidades de interface que nenhum teste unitário encontra.
+
+Por exemplo, um cliente de parceiro pode negociar corretamente o grupo híbrido enquanto a API rejeita o documento assinado, maior, por causa de um limite de tamanho num campo de banco de dados. Só um teste que segue o fluxo completo encontra esse tipo de incompatibilidade entre componentes que passaram, cada um, nos seus próprios testes.
+
+### 34.5 Exemplo resolvido
+
+O plano de integração da BPA tem 14 pacotes de trabalho. Um grafo de dependências mostra que a atualização do HSM condiciona cinco deles; a compra é, portanto, iniciada no mês um, embora as assinaturas só se tornem urgentes no mês nove.
+
+O HSM condiciona cinco pacotes de trabalho porque a PKI, a assinatura de código e a assinatura de documentos precisam dos seus novos tipos de chave. Iniciar a compra no mês um dá cerca de oito meses de prazo antes de as assinaturas se tornarem urgentes, o que corresponde aos atrasos típicos de compra e de certificação. Sem o grafo de dependências, o HSM provavelmente teria sido encomendado quando o trabalho de assinaturas começasse, atrasando cinco pacotes de uma só vez.
+
+### 34.6 Erros comuns e limites
+
+- Integrar os domínios isoladamente.
+- Esquecer as datas de desativação dos parceiros.
+- Nenhum teste de ponta a ponta.
+
+Integrar os domínios isoladamente deixa escapar os fluxos que os atravessam, como um documento assinado que vai da API, pela replicação, até a aduana. Datas de desativação esquecidas deixam caminhos clássicos abertos indefinidamente, desfazendo a proteção da migração. Sem testes de ponta a ponta, as incompatibilidades de interface surgem em produção como interrupções que cada equipe atribui a outra. O plano da BPA, por isso, nomeia um responsável para cada fluxo entre domínios, mantém um registro de desativações revisado mensalmente e executa o teste completo do parceiro à aduana antes de cada mudança importante.
+
+### 34.7 Lista de verificação de prontidão para integração
+
+Antes de a BPA mudar um enlace com um parceiro para troca de chaves híbrida, o responsável pela integração confirma quatro itens: a pilha do parceiro anuncia o mesmo grupo híbrido, os dois lados registram o grupo negociado, um fallback clássico continua permitido apenas onde a lista de exceções acordada o permite, e uma janela de testes conjunta está reservada, com um contato de reversão em cada lado. Um enlace que falha em qualquer item permanece na configuração atual e é reagendado, em vez de forçado.
+
+Reagendar custa alguns dias; forçar um enlace que falhou custa a confiança do parceiro.
+
+### Exercícios
+
+- **EX067 — Grafo de dependências.** Desenhe (ou liste) o grafo de dependências dos 5 domínios da BPA. Rubrica: 3 = dependências do HSM e dos parceiros visíveis.
+- **EX068 — Aviso aos parceiros.** Escreva um aviso de migração para os parceiros das companhias de navegação. Rubrica: 3 = algoritmos, endpoints de teste, cronograma, desativação, contato.
+
+### Síntese
+
+A integração abrange protocolos, PKI, assinaturas e documentos; os parceiros precisam de avisos e ambientes de testes; o sequenciamento segue as dependências; os testes de ponta a ponta detectam incompatibilidades de interface.
+
+<!-- cyberabc:chapter-navigation:start ch-34 -->
+### Continue estudando — capítulo 34 de 50
+
+[← Capítulo 33](#ch-33) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 35 →](#ch-35)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-35"></a>
+
+## Capítulo 35 — Ateliê de projeto II
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar a autenticação pós-quântica de um ecossistema de documentos e firmware; (2) escolher entre ML-DSA, SLH-DSA e assinaturas baseadas em hash com estado; (3) projetar a validação de longo prazo com carimbos de tempo; e (4) defender o projeto diante de uma banca. O capítulo integra os Capítulos 26–34.
+
+### 35.1 Enunciado
+
+Projete assinaturas pós-quânticas para (a) os conhecimentos de embarque eletrônicos da BPA, verificáveis por 12 anos por parceiros e tribunais, e (b) o firmware de 3.000 dispositivos de campo, com vida útil de 10–20 anos e bootloaders restritos. Restrições: o software de verificação dos parceiros varia; alguns dispositivos não podem ser atualizados além de mais uma versão do bootloader.
+
+As duas partes diferem na sua restrição principal. Os conhecimentos de embarque precisam ser verificáveis por tribunais e parceiros com software que a BPA não controla, então a compatibilidade e a evidência de longo prazo são o que mais importa. Os dispositivos de firmware podem receber apenas mais uma atualização de bootloader, então o que for escolhido agora precisa durar o restante da vida do dispositivo. As equipes que tratam as duas partes como um único problema costumam escolher um único algoritmo que não serve bem a nenhuma delas.
+
+### 35.2 Esboço da solução de referência
+
+(a) Conhecimentos de embarque: assinar com ML-DSA-65 ao lado da assinatura ECDSA existente durante a transição (assinaturas duplas no formato do documento), acrescentar carimbos de tempo confiáveis e planejar o recarimbo (renovação do carimbo de tempo de arquivo), para que a evidência continue válida se um algoritmo enfraquecer. (b) Firmware: a versão final do bootloader aceita duas chaves de verificação — LMS (SP 800-208, apenas verificação no dispositivo, assinatura no HSM com controle de estado) e ML-DSA-44 —, para que o comprometimento ou a quebra de uma deixe a outra; assinar cada imagem com as duas.
+
+As duas partes usam dois algoritmos pelo mesmo motivo: vida longa sem segunda chance.
+
+### 35.3 Crítica da banca
+
+O jurídico pergunta se as assinaturas duplas confundem os tribunais — resposta: a política do documento declara que qualquer uma das assinaturas válidas basta durante a transição, e que as duas são exigidas após uma data. As operações perguntam pela vazão de assinaturas — a capacidade do LMS é dimensionada conforme o Capítulo 32. A segurança pergunta por que não o SLH-DSA para o firmware — as suas assinaturas maiores (7,8 kB ou mais na variante pequena) podem exceder os orçamentos de tempo de boot e de armazenamento nos menores dispositivos, mas ele continua candidato para os outros.
+
+Cada resposta remete a uma decisão já tomada, que é o que a banca quer ver: evidências, não opiniões novas.
+
+### 35.4 Erros comuns e limites
+
+- Âncoras de confiança de um único algoritmo em dispositivos que não podem ser atualizados de novo.
+- Ignorar a validação de longo prazo e a renovação dos carimbos de tempo.
+- Escolher assinaturas com estado sem capacidade de gerenciamento de estado.
+
+Dispositivos que não podem receber outra atualização de bootloader precisam de duas âncoras de confiança agora, já que não haverá chance posterior de acrescentar uma. A evidência jurídica precisa continuar válida por doze anos, o que exige a renovação dos carimbos de tempo se um algoritmo enfraquecer. Assinaturas com estado sem estado imposto pelo HSM arriscam a reutilização de índices após uma restauração, então as equipes sem essa capacidade devem preferir o ML-DSA ou o SLH-DSA.
+
+### Nota de engenharia
+
+A validação de longo prazo merece um teste próprio. Simule a verificação de um conhecimento de embarque num ano futuro, configurando a política do verificador para rejeitar o ECDSA e aceitar apenas o ML-DSA e os carimbos de tempo renovados; os documentos assinados no início da transição ainda precisam ser validados pela sua cadeia de carimbos de tempo de arquivo. Executar esse teste agora revela se o formato do documento, a autoridade de carimbo de tempo e o software verificador realmente suportam as regras de transição que o jurídico aprovou no papel.
+
+### Exercícios
+
+- **EX069 — Projeto do documento.** Especifique os campos de assinatura e a política de validação dos conhecimentos de embarque com assinatura dupla. Rubrica: 3 = regras de transição e renovação dos carimbos de tempo.
+- **EX070 — Chaves do bootloader.** Justifique o projeto de bootloader com dois algoritmos e o seu custo. Rubrica: 3 = benefício da diversidade vs. tamanho do código e custo de assinatura.
+
+### Síntese
+
+A autenticação de vida longa precisa de diversidade de algoritmos, carimbos de tempo com renovação e escolhas de assinatura adequadas às restrições dos dispositivos e à capacidade de gerenciamento de estado.
+
+<!-- cyberabc:chapter-navigation:start ch-35 -->
+### Continue estudando — capítulo 35 de 50
+
+[← Capítulo 34](#ch-34) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 36 →](#ch-36)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-36"></a>
+
+## Capítulo 36 — Segurança quântica e pós-quântica: desempenho e escala
+
+### Objetivos de aprendizagem
+
+Você vai (1) orçar bytes e computação para os handshakes pós-quânticos; (2) medir latência e vazão; (3) avaliar os efeitos do tamanho das cadeias de certificados; e (4) escalar os serviços de assinatura e verificação. O capítulo parte dos Capítulos 8, 11 e 29.
+
+### 36.1 Orçamentos de bytes
+
+O ML-KEM acrescenta cerca de 2,3 kB a um handshake TLS híbrido (compartilhamento de 1.216 bytes do cliente mais compartilhamento de 1.120 bytes do servidor). Os certificados pós-quânticos acrescentam muito mais: cada certificado ML-DSA-44 carrega uma chave de 1.312 bytes e uma assinatura de 2.420 bytes; uma cadeia mais as assinaturas do CertificateVerify e da Certificate Transparency pode passar de 15 kB — além da janela de congestionamento inicial do TCP em muitas configurações, o que custa uma ida e volta a mais.
+
+A troca de chaves cabe em dois segmentos TCP, enquanto uma cadeia de certificados pós-quânticos pode precisar, sozinha, de uma ida e volta a mais. É por isso que a BPA migra primeiro a troca de chaves e trata os certificados como um projeto separado.
+
+### 36.2 Atividade prática — Laboratório B
+
+```python
+# Lab B (ch 36): bytes of authentication in a TLS handshake for different signature choices.
+# Sizes in bytes: (public key, signature). ML-DSA from FIPS 204; SLH-DSA-128s from FIPS 205.
+algs = {"ECDSA P-256": (65, 72), "RSA-2048": (270, 256), "ML-DSA-44": (1312, 2420),
+        "ML-DSA-65": (1952, 3309), "SLH-DSA-SHA2-128s": (32, 7856)}
+def chain_bytes(alg, depth=2, scts=2):
+    pk, sig = algs[alg]
+    certs = depth * (pk + sig + 400)          # leaf + intermediate: key + CA signature + ~400 B fields
+    return certs + sig + scts * sig           # + CertificateVerify + embedded SCT signatures
+for a in algs:
+    print(f"{a:20s} ~{chain_bytes(a):6d} bytes of certificates and signatures")
+```
+
+Saída esperada:
+
+```text
+ECDSA P-256          ~  1290 bytes of certificates and signatures
+RSA-2048             ~  2620 bytes of certificates and signatures
+ML-DSA-44            ~ 15524 bytes of certificates and signatures
+ML-DSA-65            ~ 21249 bytes of certificates and signatures
+SLH-DSA-SHA2-128s    ~ 40144 bytes of certificates and signatures
+```
+
+O acréscimo de ~400 bytes por certificado e as duas assinaturas SCT embutidas são hipóteses simplificadoras; os tamanhos reais variam. O resultado explica por que a migração da autenticação na web pública é mais difícil do que a da troca de chaves e por que as propostas para reduzir o tamanho das cadeias (como os certificados abreviados ou em árvore de Merkle) são temas ativos de pesquisa.
+
+Lendo a saída, uma cadeia ML-DSA-44 tem cerca de doze vezes o tamanho da cadeia ECDSA, e a variante pequena do SLH-DSA é cerca de trinta vezes maior. Execute de novo com `scts=0` para ver quanto as assinaturas de transparência contribuem.
+
+### 36.3 Computação
+
+As operações do ML-KEM são rápidas — muitas vezes mais rápidas que o X25519 em servidores com instruções vetoriais. A assinatura e a verificação do ML-DSA são rápidas; a assinatura do SLH-DSA é lenta (de milissegundos a segundos, conforme a variante). O planejamento da capacidade dos servidores, portanto, se concentra na largura de banda e nos serviços de assinatura, e não na CPU do KEM.
+
+Para a BPA, isso desloca o planejamento para a largura de banda nos enlaces de satélite com os navios e para a vazão do serviço central de assinatura. A assinatura lenta do SLH-DSA é aceitável para uma raiz offline que assina raramente, mas não para assinar milhares de documentos por hora.
+
+### 36.4 Medição
+
+Meça os percentis da latência de handshake (p50, p95, p99) por tipo de cliente e caminho de rede, antes e depois; a vazão dos serviços de assinatura; as operações por segundo dos HSMs com os novos algoritmos. Relate distribuições, não médias.
+
+As médias escondem a cauda, onde estão os usuários com enlaces ruins; um aumento de alguns milissegundos no p99 pode esconder algumas conexões que expiram por completo. A BPA registra a latência por tipo de cliente e caminho porque os navios em enlaces de satélite se comportam de forma muito diferente dos navegadores de escritório. As medições são feitas durante uma semana antes e outra depois de cada mudança, para que a variação diária normal não engane a comparação.
+
+### 36.5 Exemplo resolvido
+
+A BPA mede os handshakes de borda: latência p50 +0,4 ms e p99 +3 ms após ativar o X25519MLKEM768 (sintético); dentro do orçamento. Um teste de uma cadeia ML-DSA-65 num enlace de satélite com um navio mostra uma ida e volta a mais (+600 ms) — então as conexões dos navios mantêm certificados clássicos por mais tempo e recebem um ajuste da retomada de sessão.
+
+O resultado da borda mostra que o custo do ML-KEM é pequeno em enlaces terrestres. O resultado do navio mostra que é a cadeia grande, e não a troca de chaves, que causa a ida e volta a mais, como o Laboratório B previa: mais de 15 kB de dados de autenticação excedem a janela de congestionamento inicial. A retomada de sessão evita reenviar a cadeia nas conexões repetidas.
+
+### 36.6 Erros comuns e limites
+
+- Medir apenas a CPU.
+- Médias em vez da latência de cauda.
+- Ignorar os efeitos das cadeias grandes sobre a janela de congestionamento.
+
+Os benchmarks de CPU mostram o ML-KEM mais rápido que o X25519, mas não captam os custos de largura de banda que dominam nos enlaces lentos. As médias escondem as conexões lentas dos navios na cauda do p99. Cadeias grandes que excedem a janela de congestionamento acrescentam uma ida e volta inteira, o que num enlace de satélite de 600 milissegundos custa mais do que toda a computação somada. O plano da BPA mede cada classe de dispositivo e cada caminho de rede separadamente exatamente por esse motivo.
+
+### Nota de engenharia
+
+O planejamento de capacidade deve incluir as pessoas que vão ler os números. Expresse os resultados como mudanças na latência visível ao usuário no percentil 99 por caminho e como bytes por conexão para a equipe de rede, e não apenas como operações por segundo. Uma mudança de dois milissegundos na mediana costuma ser invisível, enquanto uma ida e volta inteira a mais num enlace de alta latência com um navio não é; apresentar as duas lado a lado permite que as partes interessadas aceitem a mudança barata e planejem em torno da cara.
+
+### Exercícios
+
+- **EX071 — Orçamento da cadeia.** Usando o Laboratório B, encontre o tamanho com profundidade 1 (apenas o certificado folha) para o ML-DSA-44 sem SCTs. Rubrica: 3 = valor correto e método.
+- **EX072 — Plano de medição.** Escreva um plano de medição de latência para o enlace com os navios. Rubrica: 3 = percentis, caminhos, antes/depois, tamanho da amostra.
+
+### Síntese
+
+O desempenho da PQC é sobretudo uma questão de bytes: a troca de chaves acrescenta kilobytes, os certificados acrescentam muitos mais; meça as caudas e os caminhos e planeje a capacidade de assinatura.
+
+<!-- cyberabc:chapter-navigation:start ch-36 -->
+### Continue estudando — capítulo 36 de 50
+
+[← Capítulo 35](#ch-35) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 37 →](#ch-37)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-37"></a>
+
+## Capítulo 37 — Segurança quântica e pós-quântica: operações
+
+### Objetivos de aprendizagem
+
+Você vai (1) operar implantações em estágios com portões estatísticos; (2) monitorar os algoritmos negociados e o fallback; (3) gerenciar certificados e chaves para os novos algoritmos; e (4) conduzir os processos de mudança e de incidentes. O capítulo parte dos Capítulos 17, 32 e 36.
+
+### 37.1 Portões de canário
+
+Promova um estágio da implantação apenas quando o limite superior de confiança da taxa de falhas estiver dentro do orçamento. Canários pequenos não conseguem demonstrar efeitos pequenos — o limite é largo —, então o portão segura até que tráfego suficiente tenha sido observado.
+
+O portão compara o limite superior com a linha de base mais o aumento permitido, e não com zero, porque alguns handshakes falham por motivos comuns, como clientes que caem das redes móveis. Medir a linha de base durante uma semana antes da mudança faz, portanto, parte do portão. Sem isso, a equipe não consegue saber se uma taxa de falhas de uma em duas mil é nova ou sempre existiu.
+
+### 37.2 Atividade prática — Laboratório K
+
+```python
+# Lab K (ch 37): canary gate for enabling a hybrid group - promote only if failures stay within budget.
+import math
+def upper95(k, n):                      # Wilson upper bound
+    z = 1.96; p = k / n; d = 1 + z*z/n
+    return ((p + z*z/(2*n)) + z*math.sqrt(p*(1-p)/n + z*z/(4*n*n))) / d
+baseline, budget = 5e-4, 4e-4            # baseline failure rate, allowed increase
+for stage, k, n in [("1% canary", 3, 5000), ("10% canary", 28, 50000), ("10% canary (proxy site)", 96, 50000)]:
+    ub = upper95(k, n); ok = ub <= baseline + budget
+    print(f"{stage:24s} {k}/{n}  upper95={ub:.5f}  {'PROMOTE' if ok else 'HOLD'}")
+```
+
+Saída esperada:
+
+```text
+1% canary                3/5000  upper95=0.00176  HOLD
+10% canary               28/50000  upper95=0.00081  PROMOTE
+10% canary (proxy site)  96/50000  upper95=0.00234  HOLD
+```
+
+O canário de 1% segura não porque as falhas sejam altas, mas porque 5.000 conexões não conseguem limitar a taxa com precisão. O local do proxy segura porque a sua taxa é de fato maior — um problema local a corrigir, não um motivo para uma reversão global.
+
+O portão passa quando o limite é no máximo 0,0009, a linha de base de 0,0005 mais o orçamento de 0,0004. Com 3 falhas em 5.000, a estimativa pontual é 0,0006, já dentro do orçamento, mas o limite de Wilson de 0,00176 não está. Experimente 0 e 1 falha em 5.000: zero dá um limite de cerca de 0,00077 e promove, enquanto uma única falha dá 0,00113 e segura. Só com a taxa da linha de base, 5.000 conexões teriam cerca de 2,5 falhas, então um canário tão pequeno quase sempre segura, e o portão simplesmente espera mais tráfego.
+
+### 37.3 Monitoramento
+
+Painéis: grupos negociados por serviço, taxa e motivos de fallback, falhas de handshake por caminho, algoritmos de certificado em uso, capacidade das chaves com estado, versões das bibliotecas. Alertas para picos de fallback e para qualquer negociação inesperada somente clássica onde os híbridos são exigidos.
+
+Cada item do painel responde a uma pergunta operacional: o grupo híbrido está sendo negociado, onde as falhas se concentram, quais bibliotecas precisam de atualização e quantas assinaturas restam nas chaves com estado. Os alertas se concentram nas mudanças, para que o engenheiro de plantão olhe o que mudou desde ontem em vez de ler todos os painéis. A BPA revisa se cada alerta levou a uma ação útil e remove os alertas que nunca levam.
+
+### 37.4 Operações de certificados e chaves
+
+A automação do ciclo de vida dos certificados (por exemplo, o ACME, [RFC 8555](https://www.rfc-editor.org/rfc/rfc8555.html)) torna rotineiras as mudanças de algoritmo: certificados de vida curta podem trocar de algoritmo na renovação. As cerimônias de chaves das novas raízes PQC são planejadas como qualquer cerimônia de raiz, com testemunhas e procedimentos registrados.
+
+Com certificados de noventa dias emitidos via ACME, a BPA pode mover um serviço para um novo algoritmo de assinatura em um único ciclo de renovação, uma vez que os clientes o suportem. Uma cerimônia de raiz leva muito mais tempo para organizar, então a cerimônia da raiz pós-quântica é agendada cedo, com o HSM e as testemunhas reservados com meses de antecedência.
+
+### 37.5 Exemplo resolvido
+
+O runbook de operações da BPA para o TLS híbrido: revisão diária dos painéis durante a implantação; promover pelos portões; quando o portão segura, investigar por caminho; num pico de fallback, verificar as mudanças recentes; em falhas no local do proxy, aplicar uma exceção específica do caminho, com expiração, e abrir um chamado com o fornecedor.
+
+Cada etapa do runbook corresponde a uma lição do caso: os portões vêm do Laboratório K, a investigação por caminho vem do resultado do local do proxy, e as exceções específicas de caminho vêm da falha do portal das companhias de navegação. Escrever essas etapas significa que o turno da noite trata um portão retido da mesma forma que a equipe de implantação trataria. O runbook é revisado após cada incidente e atualizado quando uma etapa se mostrou pouco clara.
+
+### 37.6 Erros comuns e limites
+
+- Promover com base em estimativas pontuais de canários pequenos.
+- Reversão global para falhas locais.
+- Processos manuais de certificados que tornam lenta a mudança de algoritmo.
+
+Um canário pequeno ainda tem um limite de confiança largo, como o Laboratório K mostrou para 5.000 conexões, em que 3 falhas deram uma estimativa pontual de 0,0006, dentro do orçamento, mas um limite superior de 0,00176, então promover com base na estimativa pontual é adivinhação. Uma reversão global por causa do problema do local do proxy removeria a proteção de todos os caminhos saudáveis. Os processos manuais de certificados fazem de cada mudança de algoritmo um projeto, enquanto a renovação automatizada a transforma numa etapa de rotina que acontece a cada noventa dias.
+
+### Nota de engenharia
+
+As operações também são responsáveis pela comunicação durante a implantação. Publique uma nota curta de status a cada estágio de promoção, listando o estágio, o limite de falhas medido, as exceções conhecidas e a data da próxima decisão, para que a equipe da central de atendimento reconheça os chamados relacionados e os parceiros possam planejar. Uma central de atendimento que sabe que uma implantação híbrida chegou ontem ao proxy de inspeção do portal das companhias de navegação encaminhará corretamente, em minutos, um conjunto de reclamações de conexão, em vez de tratá-las durante dias como falhas sem relação.
+
+### Exercícios
+
+- **EX073 — Aritmética do portão.** Com linha de base de 5e-4 e orçamento de 4e-4, 30 falhas em 50.000 conexões permitem promover? Use a função do Laboratório K. Rubrica: 3 = decisão correta, com o limite superior mostrado.
+- **EX074 — Runbook.** Escreva a seção do runbook para "a taxa de fallback dobrou durante a noite". Rubrica: 3 = etapas de triagem, responsáveis, escalonamento.
+
+### Síntese
+
+As operações transformam a implantação em etapas controladas, com portões estatísticos, monitoramento dos resultados negociados, ciclos de vida de certificados automatizados e respostas específicas por caminho.
+
+<!-- cyberabc:chapter-navigation:start ch-37 -->
+### Continue estudando — capítulo 37 de 50
+
+[← Capítulo 36](#ch-36) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 38 →](#ch-38)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-38"></a>
+
+## Capítulo 38 — Segurança quântica e pós-quântica: validação
+
+### Objetivos de aprendizagem
+
+Você vai (1) validar que o sistema migrado atende às necessidades das partes interessadas; (2) distinguir as evidências de verificação das evidências de validação; (3) conduzir testes de aceitação com usuários e parceiros; e (4) validar com cuidado as alegações de redução de risco. O capítulo parte dos Capítulos 16, 30 e 37.
+
+### 38.1 Verificação versus validação
+
+A verificação mostra que os requisitos são cumpridos ("o TLS de borda negocia o X25519MLKEM768 com 99,2% dos clientes que o oferecem"). A validação mostra que o sistema cumpre o seu propósito ("as companhias de navegação, a aduana e a equipe operam normalmente, e os fluxos de dados de vida longa estão protegidos contra a gravação"). As duas são necessárias; uma não implica a outra.
+
+Um sistema pode passar na verificação e ainda assim falhar na validação: a borda pode negociar o grupo híbrido com 99,2% dos clientes que o oferecem enquanto um job em lote de um parceiro falha em silêncio porque o seu cliente antigo expira por timeout. A validação detectaria isso pelos testes de aceitação do próprio parceiro. Inversamente, os parceiros podem estar satisfeitos enquanto um requisito não é cumprido, por exemplo se a replicação ainda usa troca de chaves clássica.
+
+### 38.2 Testes de aceitação
+
+Os parceiros executam testes de aceitação nos seus fluxos de trabalho; a equipe de operações confirma que não há incidentes novos; o jurídico confirma que os documentos com assinatura dupla são aceitáveis; as equipes de dispositivos confirmam que as atualizações de firmware funcionam em todos os modelos. Registre a aceitação com datas e signatários.
+
+A aceitação é registrada por parte interessada porque cada uma verifica uma propriedade diferente: os parceiros, os seus fluxos de trabalho; o jurídico, o valor probatório das assinaturas; as equipes de dispositivos, o caminho de atualização. Uma assinatura datada de cada uma torna simples resolver disputas posteriores. Quando uma parte interessada não pode aceitar, o motivo se torna um item de trabalho, em vez de ser anotado e esquecido.
+
+### 38.3 Validar a redução de risco
+
+Afirme com cuidado: "O tráfego de borda gravado e negociado com grupos híbridos está protegido contra a decifração quântica futura se o X25519 ou o ML-KEM-768 continuar seguro" é defensável. "A BPA é segura contra a computação quântica" não é — ainda restam certificados, algumas VPNs, dispositivos e ativos desconhecidos. A validação relata o que está protegido e o que não está.
+
+A afirmação defensável nomeia exatamente o que está protegido, sob qual hipótese e, implicitamente, o que não está. Listar os caminhos clássicos restantes, com datas, transforma a lacuna num plano em vez de uma fraqueza oculta. Os conselhos conseguem tomar decisões com afirmações assim; um slogan como "segura contra a computação quântica" não lhes dá nada sobre o que agir e se torna constrangedor quando uma exceção é descoberta.
+
+### 38.4 Validação independente
+
+Uma equipe independente (auditoria interna ou avaliador externo) amostra fluxos, verifica os algoritmos negociados a partir do seu próprio ponto de observação e revisa os desconhecidos do CBOM. A independência detecta a autoavaliação otimista.
+
+Uma equipe independente que captura tráfego do seu próprio ponto de observação pode descobrir, por exemplo, que um serviço relatado como híbrido na verdade negocia grupos clássicos com uma determinada família de clientes. Amostrar fluxos, em vez de confiar no painel da equipe, é o que torna a verificação independente. Revisar os desconhecidos importa porque uma autoavaliação tende a tratá-los como menores. As constatações do avaliador entram no dossiê com as respostas da equipe.
+
+### 38.5 Exemplo resolvido
+
+O relatório de validação da BPA: 64% das conexões de borda híbridas (verificação); aceitação dos parceiros concluída para 11 de 14 companhias (validação); exportações para a aduana com destinatário duplo (validação pendente do teste da agência); bootloader com chave dupla em 40% dos dispositivos; ativos desconhecidos 6%. A declaração de risco residual lista os caminhos clássicos restantes, com datas.
+
+O relatório separa verificação de validação em cada linha, para que os leitores vejam quais alegações se apoiam na telemetria e quais na confirmação das partes interessadas. O teste pendente da aduana é relatado como pendente, não como concluído, e o número de 40% do firmware declara a cobertura de dispositivos, não a assinatura de imagens. É essa precisão que permite ao conselho confiar no restante do relatório.
+
+### 38.6 Erros comuns e limites
+
+- Tratar as métricas de verificação como validação.
+- Alegar em excesso que se é "seguro contra a computação quântica".
+- Apenas autovalidação.
+
+Uma parcela híbrida alta é um resultado de verificação; ela não diz nada sobre se os parceiros ainda conseguem trabalhar, o que só a validação confirma. Alegar ser "seguro contra a computação quântica" ignora os certificados clássicos, as VPNs e os ativos desconhecidos que o relatório lista. A autovalidação sozinha tende a deixar escapar o que a equipe não pensou em verificar, e é por isso que uma amostra independente faz parte do processo da BPA. Cada um desses erros aparece nos primeiros relatórios de migração de muitas organizações, geralmente descoberto por um auditor, e não pela equipe.
+
+### Nota de engenharia
+
+A validação deve revisitar, uma a uma, as necessidades originais das partes interessadas do Capítulo 21. Para cada uma, declare se está atendida, parcialmente atendida ou não atendida, com evidências, e registre qualquer necessidade que tenha mudado durante o programa — por exemplo, um parceiro cuja exigência de retenção de dados passou de cinco para dez anos após a renovação de um contrato. As necessidades mudam; uma validação que compara apenas com a lista original pode declarar sucesso num alvo que já não reflete o que as partes interessadas realmente exigem.
+
+### Exercícios
+
+- **EX075 — Risco residual.** Escreva a declaração de risco residual da BPA após o primeiro ano. Rubrica: 3 = lista os caminhos não protegidos, com datas e responsáveis.
+- **EX076 — Independência.** Projete uma amostra de validação independente para o TLS de borda. Rubrica: 3 = ponto de observação, tamanho da amostra, comparação com as métricas internas.
+
+### Síntese
+
+A validação confirma que o sistema migrado atende às suas partes interessadas e declara o risco residual com honestidade, idealmente verificado por uma equipe independente.
+
+<!-- cyberabc:chapter-navigation:start ch-38 -->
+### Continue estudando — capítulo 38 de 50
+
+[← Capítulo 37](#ch-37) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 39 →](#ch-39)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-39"></a>
+
+## Capítulo 39 — Segurança quântica e pós-quântica: manutenibilidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar para a agilidade criptográfica, para que as mudanças futuras sejam baratas; (2) implementar a seleção de algoritmos orientada por política; (3) gerenciar a aposentadoria de algoritmos; e (4) manter o inventário e a documentação atualizados. O capítulo parte dos Capítulos 9, 18 e 27.
+
+### 39.1 Agilidade como manutenibilidade
+
+A transição pós-quântica não será a última: os conjuntos de parâmetros podem mudar, o HQC e o FN-DSA vão chegar e algum algoritmo pode enfraquecer. O [CSWP 39](https://doi.org/10.6028/NIST.CSWP.39-upd1) descreve a agilidade em protocolos, aplicações, hardware e infraestrutura. Sistemas manuteníveis fazem da mudança de algoritmo uma operação de rotina, medida em dias.
+
+A meta da BPA é que trocar um algoritmo em qualquer serviço no escopo leve dias, não meses. O Laboratório A mostra o padrão em poucas linhas: um registro de implementações, uma política que escolhe uma delas e uma lista de aceitação que controla o que ainda é confiável. A métrica de tempo de substituição testa se esse projeto se sustenta nos sistemas reais, onde suposições fixas no código costumam se esconder.
+
+### 39.2 Atividade prática — Laboratório A
+
+```python
+# Lab A (ch 39): crypto-agility through a policy-driven registry instead of hard-coded algorithms.
+import hashlib, hmac
+REGISTRY = {"hmac-sha256": lambda k, m: hmac.new(k, m, hashlib.sha256).digest(),
+            "hmac-sha3-256": lambda k, m: hmac.new(k, m, hashlib.sha3_256).digest()}
+POLICY = {"tag-algorithm": "hmac-sha256", "accept": ["hmac-sha256", "hmac-sha3-256"]}
+def protect(key, msg):
+    alg = POLICY["tag-algorithm"]; return alg, REGISTRY[alg](key, msg)
+def check(key, msg, alg, tag):
+    if alg not in POLICY["accept"]: return False            # algorithm identifier is authenticated by policy
+    return hmac.compare_digest(REGISTRY[alg](key, msg), tag)
+k, m = b"k" * 32, b"meter reading 42"
+a1, t1 = protect(k, m)
+POLICY["tag-algorithm"] = "hmac-sha3-256"                   # migration = one policy change
+a2, t2 = protect(k, m)
+print("old tag still verifies during transition:", check(k, m, a1, t1))
+print("new tag verifies:", check(k, m, a2, t2), "| algorithms:", a1, "->", a2)
+POLICY["accept"] = ["hmac-sha3-256"]                        # retire the old algorithm
+print("old tag after retirement:", check(k, m, a1, t1))
+```
+
+Saída esperada:
+
+```text
+old tag still verifies during transition: True
+new tag verifies: True | algorithms: hmac-sha256 -> hmac-sha3-256
+old tag after retirement: False
+```
+
+O laboratório usa MACs simétricos para manter o código curto; o padrão — registro, política, lista de aceitação, aposentadoria — é idêntico para KEMs e assinaturas.
+
+Observe a ordem das etapas: o novo algoritmo é introduzido enquanto o antigo continua na lista de aceitação, para que as tags existentes ainda sejam verificadas; só então o algoritmo antigo é removido. Inverter a ordem quebraria todas as tags armazenadas de uma só vez. O identificador do algoritmo viaja com a tag, mas é verificado contra a política, então um atacante não consegue escolher um algoritmo fraco trocando o rótulo. Acrescente ao registro um terceiro algoritmo, deliberadamente fraco, e confirme que ele é rejeitado porque a política não o aceita.
+
+### 39.3 Aposentadoria
+
+Aposentar um algoritmo tem fases: parar de gerar novos usos; aceitar os usos antigos durante uma janela de transição; rejeitar após uma data; remover o código. Cada fase é uma mudança de política mais o monitoramento do uso residual.
+
+Monitorar o uso residual diz à BPA quando é seguro passar à fase seguinte: se os handshakes somente clássicos caíram para um punhado de clientes conhecidos, a data de rejeição pode ser definida e esses clientes, contatados. Remover o código por último evita a reativação acidental por um erro de configuração. Cada fase tem uma data publicada com antecedência, para que os parceiros possam planejar.
+
+### 39.4 Documentação e inventário
+
+Mantenha o CBOM, os documentos de controle de interface, as políticas e os runbooks atualizados por meio de automação sempre que possível (geração do CBOM no build, painéis alimentados por telemetria). Uma documentação desatualizada torna a próxima migração tão difícil quanto a primeira.
+
+A BPA trata a documentação como parte do sistema: um build que muda dependências criptográficas regenera o CBOM, e uma mudança de política atualiza o documento de controle de interface pelo mesmo pipeline. Quando a documentação precisa ser escrita à mão, como os runbooks, ela tem um responsável e uma data de revisão. O objetivo é que a próxima migração comece de um retrato preciso, e não de mais um projeto de descoberta.
+
+### 39.5 Exemplo resolvido
+
+A BPA mede o tempo de substituição trocando, por política, o algoritmo de MAC interno num serviço de teste: 2 dias, incluindo os testes. O mesmo exercício num serviço legado com algoritmos fixos no código leva 6 semanas — um argumento quantificado para a refatoração.
+
+Dois dias contra seis semanas dão um fator de cerca de vinte, o que torna concreto o argumento da refatoração para quem detém o orçamento. As seis semanas vêm sobretudo de encontrar cada ponto de chamada fixo no código e testar cada um, o mesmo trabalho de que o serviço de documentos eletrônicos da BPA precisou para as suas 41 chamadas `rsa_sign()`. Refatorar uma vez remove esse custo de todas as mudanças futuras.
+
+### 39.6 Erros comuns e limites
+
+- Tratar a migração PQC como um projeto único.
+- Aceitar identificadores de algoritmo vindos de entradas não confiáveis sem verificação de política.
+- Aposentar algoritmos sem monitorar o uso residual.
+
+Tratar a migração PQC como um projeto único deixa os sistemas tão rígidos quanto antes, prontos para repetir o esforço quando o HQC ou o FN-DSA chegarem. Aceitar identificadores de algoritmo vindos de entradas não confiáveis permite que um atacante escolha a opção mais fraca, o que o Laboratório A impede com a sua lista de aceitação. Aposentar sem monitorar arrisca quebrar clientes que ainda dependem do algoritmo antigo, o que a BPA evita publicando as datas de rejeição apenas depois que o uso residual está perto de zero.
+
+### Nota de engenharia
+
+A agilidade também é contratual. A linguagem das compras deve exigir que os fornecedores suportem a substituição de algoritmos por configuração, publiquem os inventários criptográficos dos seus produtos, forneçam atualizações de segurança para novos algoritmos dentro de prazos declarados e divulguem as bibliotecas que embutem. A BPA acrescenta essas cláusulas a todo contrato novo de equipamentos e software; ao longo de um ciclo de renovação de hardware, a parcela dos ativos que pode trocar de algoritmo sem substituição cresce, e a próxima migração fica mais barata por projeto.
+
+### Exercícios
+
+- **EX077 — Ampliar o Laboratório A.** Acrescente um terceiro algoritmo e uma verificação de data de aposentadoria. Rubrica: 3 = funciona e falha de forma fechada após a data.
+- **EX078 — Tempo de substituição.** Projete uma medição do tempo de substituição para o KEM de borda da BPA. Rubrica: 3 = eventos de início e fim e evidências definidos.
+
+### Síntese
+
+Manutenibilidade significa agilidade: algoritmos orientados por política, aposentadoria em fases, inventário atualizado e um tempo de substituição medido.
+
+<!-- cyberabc:chapter-navigation:start ch-39 -->
+### Continue estudando — capítulo 39 de 50
+
+[← Capítulo 38](#ch-38) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 40 →](#ch-40)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-40"></a>
+
+## Capítulo 40 — Laboratório de verificação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar as proteções de ponta a ponta, num laboratório, a partir do ponto de observação de um atacante; (2) testar a resistência ao rebaixamento; (3) verificar o tratamento do estado das assinaturas com estado; e (4) produzir um relatório de verificação. O capítulo parte dos Capítulos 30–39.
+
+### 40.1 Verificação do ponto de observação do atacante
+
+Num laboratório isolado que replica a borda da BPA, capture handshakes e confirme o grupo negociado a partir da rede, e não dos logs do servidor. Verifique que as sessões gravadas com grupos híbridos exigiriam quebrar tanto o X25519 quanto o ML-KEM — conferindo que a derivação da chave de sessão inclui os dois compartilhamentos (o princípio do Laboratório C).
+
+Os logs do servidor podem estar errados: uma biblioteca TLS pode registrar o primeiro grupo oferecido em vez do negociado, como o estagiário do Capítulo 43 descobre. Ler o ServerHello na rede dá o grupo real, e compará-lo com os logs verifica os dois de uma só vez.
+
+### 40.2 Testes de rebaixamento
+
+Um man-in-the-middle de laboratório remove os grupos híbridos do ClientHello. Esperado: a assinatura da transcrição do TLS 1.3 provoca a falha, ou o cliente tenta de novo sem o híbrido somente se a lógica da aplicação o permitir — o que o teste deve detectar e a política deve proibir onde possível. Execute apenas no laboratório.
+
+O resultado esperado para um cliente correto é um handshake que falha, sem nova tentativa, já que a verificação da transcrição detecta o grupo removido. Se o cliente tenta de novo sem o grupo híbrido e tem sucesso, o teste encontrou um caminho de rebaixamento no nível da aplicação. Repita o teste para cada biblioteca cliente no escopo, porque o comportamento de nova tentativa difere entre elas.
+
+### 40.3 Testes de tratamento do estado
+
+Para LMS/XMSS: simule a restauração do HSM a partir de um backup e confirme que o HSM se recusa a reutilizar índices; simule pedidos de assinatura simultâneos e confirme que não há índice duplicado; esgote uma pequena árvore de teste e confirme que a assinatura para de forma limpa.
+
+O teste de assinatura simultânea importa porque um serviço de assinatura sob carga pode entregar o mesmo índice a dois pedidos se a atualização do contador não for atômica. Esgotar uma pequena árvore de teste, por exemplo uma de altura cinco com 32 assinaturas, permite à equipe verificar o comportamento de fim de chave em minutos, em vez de esperar anos. Cada resultado de teste entra no dossiê com a versão do firmware do HSM usada, já que uma atualização posterior do firmware pode mudar o comportamento.
+
+### 40.4 Relatório de verificação
+
+Relatório: escopo, ambiente, testes, resultados, desvios, problemas residuais, links para as evidências. Um bom relatório permite que um revisor execute os testes de novo.
+
+Os desvios são a parte mais importante: um teste executado com outra versão de biblioteca ou numa rede simplificada precisa dizê-lo, ou um revisor pode supor que os resultados valem para a produção. Os links para as evidências ligam cada resultado à sua captura ou log bruto. Os relatórios da BPA usam sempre os mesmos títulos, para que os revisores saibam onde procurar e as partes ausentes saltem aos olhos. Um relatório que não pode ser executado de novo é tratado como rascunho.
+
+### 40.5 Exemplo resolvido
+
+O laboratório da BPA descobre que uma biblioteca cliente interna tenta de novo com grupos somente clássicos após qualquer erro de handshake, inclusive os causados por um atacante. Correção: restringir a nova tentativa a erros de incompatibilidade específicos, registrar as novas tentativas e planejar a remoção do fallback para esse cliente até uma data definida.
+
+Restringir a nova tentativa aos erros de incompatibilidade listados mantém a disponibilidade para pares genuinamente antigos, enquanto nega ao atacante a capacidade de disparar o fallback com um erro forjado. Registrar cada nova tentativa fornece os dados necessários para ver quando o fallback pode ser removido. A remoção datada torna a exceção temporária por projeto, e o teste de rebaixamento é executado de novo após a correção para confirmá-la.
+
+### 40.6 Erros comuns e limites
+
+- Verificar apenas pelos logs do servidor.
+- Testar o rebaixamento em produção.
+- Não testar a restauração do estado das assinaturas com estado.
+
+Os logs do servidor refletem o que o software acredita, o que pode diferir da rede, então a verificação apenas pelos logs pode deixar escapar rebaixamentos reais. Os testes de rebaixamento em produção podem quebrar sessões dos parceiros, então eles ficam no laboratório isolado. Não testar a restauração do estado deixa a falha mais perigosa do LMS, a reutilização de índices após a restauração de um backup, sem exame até acontecer de verdade. Cada um desses testes leva horas no laboratório e evita falhas que levariam semanas para reparar em produção.
+
+### Nota de engenharia
+
+Inclua controles negativos em cada execução do laboratório. Antes de testar a resistência ao rebaixamento, confirme que o arcabouço de testes consegue detectar um rebaixamento bem-sucedido, configurando deliberadamente um cliente que o permita; se mesmo assim o arcabouço não relatar nenhum rebaixamento, ele está quebrado. Os controles negativos são baratos e evitam a falha de verificação mais constrangedora — um relatório verde produzido por um teste que nunca poderia ter falhado.
+
+### Exercícios
+
+- **EX079 — Plano do teste de rebaixamento.** Escreva o plano de laboratório para o teste de rebaixamento. Rubrica: 3 = isolamento, resultados esperados, critérios de aprovação/reprovação.
+- **EX080 — Teste de estado.** Escreva três casos de teste de tratamento do estado para um HSM LMS. Rubrica: 3 = restauração, concorrência, esgotamento.
+
+### Síntese
+
+A verificação de segundo estágio confere as proteções a partir do ponto de observação do atacante, testa o rebaixamento e o tratamento do estado em isolamento e produz relatórios que podem ser executados de novo.
+
+<!-- cyberabc:chapter-navigation:start ch-40 -->
+### Continue estudando — capítulo 40 de 50
+
+[← Capítulo 39](#ch-39) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 41 (inglês) →](../../en/book/MANUSCRIPT.md#ch-41)
 
 Os próximos capítulos ainda estão apenas na edição em inglês.
 <!-- cyberabc:chapter-navigation:end -->
@@ -2200,7 +2940,7 @@ Os próximos capítulos ainda estão apenas na edição em inglês.
 
 ## Resoluções
 
-Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontuação. Os números sobre a BPA são sintéticos. Esta edição parcial traz as resoluções de EX001–EX060; as de EX061–EX100 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontuação. Os números sobre a BPA são sintéticos. Esta edição parcial traz as resoluções de EX001–EX080; as de EX081–EX100 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
 
 **EX001.** log₂(10^30) = 30 × 3,32 ≈ 99,7 → cerca de 100 bits. log₂(2^100 × 10^6) = 100 + 19,9 ≈ 120 bits.
 
@@ -2321,6 +3061,46 @@ Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontua�
 **EX059.** Texto cifrado de comprimento errado; texto cifrado com um bit invertido (esperar a chave de rejeição implícita, sem vazamento de erro); chave de desencapsulamento que falha na verificação de hash; chave de encapsulamento que falha na verificação de módulo; o desencapsulamento repetido da mesma entrada devolve a mesma chave.
 
 **EX060.** Assinantes (HSM A, HSM B) × verificadores (BPA, três sistemas de parceiros, aduana) × formatos (documento com assinatura dupla), com os resultados de verificação esperados, incluindo casos negativos.
+
+**EX061.** A divisão de um segredo por uma constante pode ser compilada em instruções de tempo variável em algumas plataformas; use multiplicação no estilo de Barrett por um recíproco pré-calculado e deslocamentos.
+
+**EX062.** Uma falha injetada que pula a verificação; contramedidas: verificar duas vezes por caminhos de código diferentes e conferir um hash da imagem carregada após o boot.
+
+**EX063.** Fallback apenas para o X25519; registrar o motivo; alertar acima de um limiar; a permissão expira numa data; nunca fazer fallback em falha de autenticação.
+
+**EX064.** 15 × 60 × 24 × 365 ≈ 7,9 milhões de assinaturas por ano > 1.048.576 — insuficiente; use HSS de vários níveis com mais capacidade, várias chaves ou ML-DSA para esse volume.
+
+**EX065.** Laboratório → unidade reserva (1 semana) → um guindaste de baixo impacto (1 semana) → um terminal (1 semana) → todos; imagem de reversão verificada com a chave antiga em cada anel.
+
+**EX066.** O CBOM identifica o ML-DSA-65 nos conhecimentos de embarque; alternativa: o ECDSA continua válido no curto prazo, mais a mudança para o SLH-DSA ou outro nível do ML-DSA; renovação dos carimbos de tempo; meta de 14 dias; atualizações dos verificadores dos parceiros como dependência.
+
+**EX067.** HSM → PKI → assinatura de documentos e assinatura de firmware; prontidão dos parceiros → VPN e documentos; prontidão da aduana → exportações; TLS de borda em grande parte independente.
+
+**EX068.** O aviso lista os grupos suportados (X25519MLKEM768), o endpoint de teste, o cronograma, a desativação das propostas de VPN somente clássicas e o contato.
+
+**EX069.** Dois campos de assinatura (ECDSA, ML-DSA-65), tokens de carimbo de tempo, política: qualquer uma válida até uma data, as duas exigidas depois; calendário de renovação dos carimbos de tempo de arquivo.
+
+**EX070.** A diversidade significa que o comprometimento de um algoritmo não deixa os dispositivos sem saída; custos: tamanho do código do bootloader e assinatura dupla de cada imagem.
+
+**EX071.** 1 × (1.312 + 2.420 + 400) + 2.420 = 6.552 bytes.
+
+**EX072.** Medir a latência de handshake p50/p95/p99 para certificados clássicos vs. híbrido vs. certificados PQ no caminho por satélite, ≥ 1.000 handshakes por condição, nas mesmas janelas de tempo.
+
+**EX073.** Limite superior para 30/50.000 ≈ 0,00086 ≤ 0,0009 → PROMOVER (por pouco); uma equipe cautelosa poderia estender a observação.
+
+**EX074.** Verificar as mudanças recentes, decompor o fallback por cliente e caminho, comparar com os alertas dos fornecedores, aplicar uma exceção de caminho se for local, escalar para a segurança se o fallback não tiver motivo de incompatibilidade.
+
+**EX075.** Lista os certificados clássicos do portal (revisão anual), 5 VPNs com mistura de PSK (substituição no próximo orçamento), dispositivos com bootloaders de chave única (datas de renovação), ativos desconhecidos 6% (responsáveis nomeados).
+
+**EX076.** Ponto de observação externo capturando uma amostra aleatória de 2.000 handshakes por semana; comparar a parcela negociada com a telemetria interna; investigar diferenças > 2 pontos.
+
+**EX077.** Acrescente `"hmac-sha512"` ao registro e uma verificação `RETIRE = {"hmac-sha256": date(...)}` em `check` que rejeita após a data.
+
+**EX078.** Início: mudança de política incorporada; fim: ≥ 99% dos clientes que oferecem o novo grupo o negociam; evidência: série temporal da telemetria e chamado de mudança.
+
+**EX079.** Laboratório isolado com proxy MITM; remover os grupos híbridos; esperar falha do handshake ou nova tentativa registrada e permitida pela política; reprovar se ocorrer uma conexão silenciosa somente clássica onde a política a proíbe.
+
+**EX080.** Restaurar o backup do HSM → assinatura recusada até a reconciliação; 100 pedidos simultâneos → todos os índices únicos; esgotar a árvore de teste → recusa limpa e alerta.
 
 <a id="references"></a>
 
