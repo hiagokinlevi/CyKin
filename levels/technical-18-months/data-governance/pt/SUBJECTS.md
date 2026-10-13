@@ -15,13 +15,13 @@ Edição em português do Brasil, escrita a partir da edição de referência em
 | 1 | [03](book/PLAN.md#ch-03) | Registros e formulários | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-03) | [04 · Rascunho](book/MANUSCRIPT.md#ch-04) |
 | 1 | [04](book/PLAN.md#ch-04) | Planilhas feitas com segurança | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-04) | [05 · Rascunho](book/MANUSCRIPT.md#ch-05) |
 | 1 | [05](book/PLAN.md#ch-05) | Conferindo dados com Python | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-05) | [06 · Rascunho](book/MANUSCRIPT.md#ch-06) |
-| 1 | [06](book/PLAN.md#ch-06) | Fundamentos de qualidade de dados | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-06) | [07 · Plano](book/PLAN.md#ch-07) |
-| 2 | [07](book/PLAN.md#ch-07) | Viagens sem contagem | 67 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-07)) | [08 · Plano](book/PLAN.md#ch-08) |
-| 2 | [08](book/PLAN.md#ch-08) | Nomes, códigos e padrões | 67 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-08)) | [09 · Plano](book/PLAN.md#ch-09) |
-| 2 | [09](book/PLAN.md#ch-09) | Dados pessoais no trabalho | 67 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-09)) | [10 · Plano](book/PLAN.md#ch-10) |
-| 2 | [10](book/PLAN.md#ch-10) | Mantendo os dados seguros | 67 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-10)) | [11 · Plano](book/PLAN.md#ch-11) |
-| 2 | [11](book/PLAN.md#ch-11) | Compartilhamento e solicitações | 67 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-11)) | [12 · Plano](book/PLAN.md#ch-12) |
-| 2 | [12](book/PLAN.md#ch-12) | Guardando e eliminando registros | 67 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-12)) | [13 · Plano](book/PLAN.md#ch-13) |
+| 1 | [06](book/PLAN.md#ch-06) | Fundamentos de qualidade de dados | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-06) | [07 · Rascunho](book/MANUSCRIPT.md#ch-07) |
+| 2 | [07](book/PLAN.md#ch-07) | Viagens sem contagem | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-07) | [08 · Rascunho](book/MANUSCRIPT.md#ch-08) |
+| 2 | [08](book/PLAN.md#ch-08) | Nomes, códigos e padrões | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-08) | [09 · Rascunho](book/MANUSCRIPT.md#ch-09) |
+| 2 | [09](book/PLAN.md#ch-09) | Dados pessoais no trabalho | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-09) | [10 · Rascunho](book/MANUSCRIPT.md#ch-10) |
+| 2 | [10](book/PLAN.md#ch-10) | Mantendo os dados seguros | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-10) | [11 · Rascunho](book/MANUSCRIPT.md#ch-11) |
+| 2 | [11](book/PLAN.md#ch-11) | Compartilhamento e solicitações | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-11) | [12 · Rascunho](book/MANUSCRIPT.md#ch-12) |
+| 2 | [12](book/PLAN.md#ch-12) | Guardando e eliminando registros | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-12) | [13 · Plano](book/PLAN.md#ch-13) |
 | 3 | [13](book/PLAN.md#ch-13) | Relatando problemas | 66 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-13)) | [14 · Plano](book/PLAN.md#ch-14) |
 | 3 | [14](book/PLAN.md#ch-14) | Documentação simples | 66 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-14)) | [15 · Plano](book/PLAN.md#ch-15) |
 | 3 | [15](book/PLAN.md#ch-15) | Trabalhando com um curador | 66 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-15)) | [16 · Plano](book/PLAN.md#ch-16) |

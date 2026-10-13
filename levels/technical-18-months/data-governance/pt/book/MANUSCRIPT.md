@@ -1,7 +1,7 @@
 # Governança de Dados: Curso Técnico
 
 - Idioma: português do Brasil (`pt`); curso 049, curso técnico (18 meses). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–6 de 18 já estão escritos em português, com os exercícios EX001–EX024 e suas resoluções com rubricas de 0 a 3; os capítulos 7–18 (EX025–EX072) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–12 de 18 já estão escritos em português, com os exercícios EX001–EX048 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 13–18 (EX049–EX072) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de curso técnico que se preparam para trabalhar como técnicos de dados, registrando, conferindo, corrigindo e protegendo dados segundo regras acordadas.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios comparam uma tabela de horários sintética com os registros de contagem de passageiros para encontrar, por linha, as viagens sem contagem, e normalizam nomes sintéticos de pontos de ônibus para descobrir quantos pontos reais existem por trás das variações. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Wang e Strong (1996); GDPR; LGPD. Lista completa em [Referências](#references).
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
 
-Capítulos 7–18: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-07), até a chegada dos próximos lotes.
+Capítulos 13–18: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-13), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -281,11 +281,299 @@ Conferir só a validade deixa passar dados ausentes ou atrasados.
 - **EX023 — Prioridade da autoridade.** Que dimensões mais importam para a autoridade? *Rubrica:* 3 = completude e exatidão;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
 - **EX024 — Prioridade dos planejadores.** Que dimensão mais importa para os planejadores? *Rubrica:* 3 = a pontualidade;; 2 = correto;; 1 = outra;; 0 = nenhuma.
 
+<a id="ch-07"></a>
+
+## Capítulo 7 — Viagens sem contagem
+
+### Objetivos de aprendizagem
+
+Você vai (1) comparar as contagens com a tabela de horários; (2) encontrar as linhas com contagens ausentes; (3) relatar o problema à pessoa certa.
+
+### 7.1 A verificação
+
+Marta escreve uma verificação que compara a tabela de horários com os registros de contagem. Toda viagem programada deve ter um registro de contagem. As viagens sem registro são listadas por linha. Ela explica que essa verificação de completude é a que mais importa para o financiamento, porque a autoridade de transporte paga as linhas financiadas com base nos passageiros informados, e uma contagem ausente registra zero passageiro naquela viagem. Ela executa a verificação em um mês de dados sintéticos de três linhas. Salva a verificação na pasta compartilhada, junto com seus outros scripts, e descreve o propósito no leia-me.
+
+```python
+"""Find scheduled bus trips with no passenger count record, by route (stdlib only)."""
+import random
+random.seed(12)
+miss = {"Route 1": 0.01, "Route 4": 0.02, "Route 7": 0.09}
+tot = 0
+for r, p in miss.items():
+    m = sum(random.random() < p for _ in range(1200))
+    tot += m
+    print(f"{r}: 1200 trips scheduled, {m} without counts ({100*m/1200:.1f}%)")
+print(f"all routes: {tot} of 3600 missing ({100*tot/3600:.1f}%)")
+```
+
+Execute com `python3 lab_trips.py`. Saída verificada:
+
+```text
+Route 1: 1200 trips scheduled, 12 without counts (1.0%)
+Route 4: 1200 trips scheduled, 10 without counts (0.8%)
+Route 7: 1200 trips scheduled, 122 without counts (10.2%)
+all routes: 144 of 3600 missing (4.0%)
+```
+
+### 7.2 Resultados
+
+O laboratório confere mil e duzentas viagens programadas em cada uma de três linhas. A Linha 1 (Route 1 na saída) tem 12 viagens sem contagem, 1,0 por cento. A Linha 4 tem 10, ou 0,8 por cento. A Linha 7 tem 122, ou 10,2 por cento. Nas três linhas, faltam 144 de 3.600 viagens, 4,0 por cento. Marta observa que o número geral esconde o problema real: a maior parte das contagens ausentes está na Linha 7, muito pior do que as outras duas. Ela escreve os resultados em uma pequena tabela com uma linha por rota, para que a diferença fique evidente até para gestores pouco acostumados a dados.
+
+### 7.3 Encontrando a causa
+
+Marta compartilha o resultado com o Sr. Hughes. Ele verifica quais ônibus rodam na Linha 7 e descobre que dois ônibus mais antigos dessa linha têm sensores que muitas vezes não salvam os dados. A Linha 7 é a do hospital, que a autoridade financia em parte. Contagens ausentes ali podem reduzir o financiamento de uma linha da qual muitos pacientes e funcionários dependem. O Sr. Hughes pede à manutenção que conserte os sensores e que, enquanto isso, coloque ônibus mais novos na Linha 7. Marta registra a causa e as ações no caderno e planeja conferir a Linha 7 de novo depois dos consertos.
+
+### 7.4 Relatório
+
+Marta escreve um relatório curto: o que conferiu, os resultados por linha, a causa provável, a ação tomada e o plano de repetir a verificação no mês seguinte. Ela o envia ao Sr. Hughes, que o encaminha ao gerente de operações. O Sr. Osei observa que relatar por linha, e não com um único número geral, tornou o problema visível, e que os técnicos devem sempre procurar onde os problemas se concentram, em vez de olhar só os totais. O gerente de operações agradece a Marta e pede a mesma verificação todo mês, com os resultados enviados também aos planejadores.
+
+### Exemplo resolvido
+
+Marta compara a tabela de horários com as contagens, encontra 144 de 3.600 viagens sem contagem (4,0 por cento), com a Linha 7 em 10,2 por cento, identifica os sensores dos ônibus mais antigos como causa e relata por linha, com um plano de nova verificação.
+
+> **Caso sintético.** As viagens são sintéticas; as saídas vêm de lab_trips.py.
+
+### Erros e limites
+
+Porcentagens gerais escondem as linhas em que os problemas se concentram.
+
+### Exercícios
+
+- **EX025 — Parcela da Linha 7.** Que parcela das viagens da Linha 7 estava sem contagem? *Rubrica:* 3 = 10,2%;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX026 — Total ausente.** Quantas viagens estavam sem contagem em todas as linhas? *Rubrica:* 3 = 144 de 3.600;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX027 — Causa na Linha 7.** O que causava as contagens ausentes na Linha 7? *Rubrica:* 3 = sensores de dois ônibus mais antigos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX028 — Ação provisória.** O que foi feito enquanto os sensores eram consertados? *Rubrica:* 3 = ônibus mais novos foram colocados na Linha 7;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Nomes, códigos e padrões
+
+### Objetivos de aprendizagem
+
+Você vai (1) identificar nomes inconsistentes; (2) normalizar textos com regras simples; (3) acordar uma lista padrão com um dono.
+
+### 8.1 Nomes de pontos inconsistentes
+
+Os passageiros reclamam que o site mostra nomes diferentes para o mesmo ponto. Marta reúne os nomes dos pontos da tabela de horários, do site e do sistema de reclamações e encontra variações como High St, High Street e high street com um espaço no fim. Cada sistema foi configurado separadamente, e as pessoas digitaram os nomes do seu jeito. Ela explica que nomes inconsistentes confundem os passageiros e dividem os relatórios, porque um mesmo ponto aparece como vários nas contagens. Marta conta as variações de cada ponto em uma tabela curta, que usa depois para conferir os resultados.
+
+```python
+"""Normalise synthetic bus stop names and count distinct stops before and after (stdlib only)."""
+import re
+raw = ["High St", "High Street", "high street ", "Station Rd", "Station Road", "STATION ROAD",
+       "Market Sq", "Market Square", "Park Ave", "Park Avenue", "Church Lane", "Church Ln"]
+abbr = {"st": "street", "rd": "road", "sq": "square", "ave": "avenue", "ln": "lane"}
+def norm(s):
+    w = re.sub(r"\s+", " ", s.strip().lower()).split(" ")
+    return " ".join(abbr.get(x, x) for x in w)
+print(f"names {len(raw)}; distinct raw {len(set(raw))}; distinct after normalising {len({norm(s) for s in raw})}")
+print(sorted({norm(s) for s in raw}))
+```
+
+Execute com `python3 lab_stops.py`. Saída verificada:
+
+```text
+names 12; distinct raw 12; distinct after normalising 5
+['church lane', 'high street', 'market square', 'park avenue', 'station road']
+```
+
+### 8.2 Normalizando
+
+O laboratório normaliza doze nomes sintéticos de pontos. Ele remove espaços extras, converte para minúsculas e expande abreviações comuns em inglês, como st para street e rd para road. Os doze nomes originais são todos distintos como foram escritos, mas, depois da normalização, restam apenas cinco pontos distintos: church lane, high street, market square, park avenue e station road. Marta observa que regras simples podem revelar quantos pontos reais existem por trás de muitas grafias diferentes. Ela executa o script na lista completa de nomes dos três sistemas e compartilha os resultados com o Sr. Hughes.
+
+### 8.3 Limites das regras
+
+Marta avisa que regras automáticas podem errar. St pode significar street, rua, ou saint, santo, como em St Mary's Church. Ela confere a lista normalizada com o Sr. Hughes antes de usá-la. Ele confirma os cinco pontos e acrescenta que um ponto perto da igreja deve manter a palavra saint. Marta acrescenta ao script uma lista de exceções. Ela aprende que normalizar é um primeiro passo útil, mas que uma pessoa que conhece os dados precisa conferir o resultado. A lista de exceções fica guardada ao lado do script, com uma nota explicando o motivo de cada exceção.
+
+### 8.4 Uma lista padrão
+
+O Sr. Hughes se torna dono de uma lista oficial de pontos, com um código, um nome oficial e a localização de cada ponto. Todos os sistemas devem usar o código e o nome oficial. Marta ajuda a atualizar o site e o sistema de reclamações a partir da lista. O Sr. Osei explica que uma lista única, com dono, impede que os nomes voltem a se afastar, e que pontos novos precisam entrar na lista antes de aparecer em qualquer outro lugar. Marta confere o site um mês depois e vê que todos os pontos mostram o nome oficial, e as reclamações dos passageiros sobre os nomes param.
+
+### Exemplo resolvido
+
+Marta encontra variações nos nomes dos pontos entre os sistemas, normaliza doze nomes em cinco pontos, acrescenta uma exceção para saint depois de conferir com o Sr. Hughes e ajuda a adotar uma lista oficial de pontos com dono.
+
+> **Caso sintético.** Os nomes são sintéticos; as saídas vêm de lab_stops.py.
+
+### Erros e limites
+
+Normalizar automaticamente sem revisão pode juntar coisas diferentes.
+
+### Exercícios
+
+- **EX029 — Distintos depois.** Quantos pontos distintos restaram após a normalização? *Rubrica:* 3 = cinco;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX030 — Risco da abreviação.** O que St pode significar além de street? *Rubrica:* 3 = saint;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX031 — Dono da lista.** Quem é o dono da lista oficial de pontos? *Rubrica:* 3 = o Sr. Hughes;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX032 — Regra para pontos novos.** O que deve acontecer antes de um ponto novo aparecer? *Rubrica:* 3 = ele é acrescentado à lista oficial;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Dados pessoais no trabalho
+
+### Objetivos de aprendizagem
+
+Você vai (1) reconhecer dados pessoais; (2) aplicar princípios básicos de proteção de dados; (3) tratar dados pessoais com cuidado nas tarefas diárias.
+
+### 9.1 O que conta
+
+O Sr. Osei explica que dado pessoal é qualquer informação sobre uma pessoa identificável; a LGPD usa a mesma ideia ao definir dado pessoal como informação relacionada a pessoa natural identificada ou identificável (art. 5º, I). Na Linkway, isso inclui nomes, escalas e horas dos motoristas, contatos de passageiros que reclamam, donos de achados e perdidos e titulares de cartões de transporte. As contagens dos sensores não são dados pessoais, porque contam pessoas sem identificá-las. Marta marca quais conjuntos contêm dados pessoais e compartilha a lista com o Sr. Hughes, que acrescenta as recargas de cartão, guardadas no sistema de um fornecedor.
+
+### 9.2 Princípios
+
+Marta aprende os principais princípios do GDPR em palavras simples: usar os dados pessoais de forma justa e transparente, apenas para finalidades claras, coletar só o necessário, mantê-los exatos, guardá-los apenas pelo tempo necessário e mantê-los seguros. A LGPD tem princípios equivalentes no art. 6º, como finalidade, necessidade, qualidade dos dados e segurança. Ela escreve um exemplo da Linkway para cada princípio, como pedir só e-mail ou telefone no formulário de reclamação, como fez no capítulo 3, e eliminar os detalhes das reclamações depois de um prazo definido. O Sr. Osei confere os exemplos, e ela os guarda como um cartão de consulta rápida.
+
+### 9.3 Cuidados diários
+
+Marta lista hábitos diários: bloquear a tela ao sair da mesa, não deixar impressões na impressora, enviar dados pessoais apenas por sistemas aprovados, conferir o destinatário antes de mandar e-mails e não falar de passageiros ou funcionários em público. O Sr. Hughes conta que a maioria dos incidentes com dados em empresas de ônibus vem de erros simples, como mandar uma escala para a pessoa errada. Hábitos cuidadosos evitam muitos deles. Marta escreve os hábitos em um cartão para a mesa e os segue nos dias de estágio, quando encontra uma escala impressa esquecida em uma impressora compartilhada.
+
+### 9.4 Na dúvida
+
+Um motorista pede a Marta o telefone de outro motorista para trocar um turno. Ela não sabe se isso é permitido. Pergunta ao Sr. Hughes, que explica que a Linkway tem um sistema de troca de turnos que repassa as mensagens sem compartilhar os números. Marta orienta o motorista a usá-lo. O Sr. Osei observa que perguntar na dúvida é a resposta certa e que os técnicos devem saber a quem perguntar antes que a dúvida apareça. Marta anota no caderno o contato do Sr. Hughes como a pessoa a consultar sobre dados pessoais, e passa a indicá-lo aos colegas que têm a mesma dúvida.
+
+### Exemplo resolvido
+
+Marta marca quais conjuntos de dados da Linkway contêm dados pessoais, escreve exemplos para cada princípio do GDPR, lista hábitos de cuidado diário e pergunta antes de compartilhar o telefone de um motorista.
+
+> **Caso sintético.** Os exemplos são sintéticos; o GDPR e a LGPD são reais. Isto não é aconselhamento jurídico.
+
+### Erros e limites
+
+Supor que os dados dos funcionários são menos sensíveis que os dos clientes leva a compartilhamentos descuidados.
+
+### Exercícios
+
+- **EX033 — Situação das contagens.** As contagens dos sensores são dados pessoais? *Rubrica:* 3 = não;; 2 = correto;; 1 = sim;; 0 = nenhuma.
+- **EX034 — Incidente comum.** O que causa a maioria dos incidentes em empresas de ônibus? *Rubrica:* 3 = erros simples, como destinatários de e-mail errados;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX035 — Troca de turnos.** Como os motoristas devem trocar turnos? *Rubrica:* 3 = pelo sistema de troca de turnos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX036 — Eliminação das reclamações.** Que princípio a eliminação de reclamações antigas aplica? *Rubrica:* 3 = guardar os dados apenas pelo tempo necessário;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Mantendo os dados seguros
+
+### Objetivos de aprendizagem
+
+Você vai (1) usar senhas e controles de acesso corretamente; (2) reconhecer phishing; (3) proteger os dados nos dispositivos.
+
+### 10.1 Contas e senhas
+
+Marta aprende que cada pessoa deve ter sua própria conta, nunca compartilhada, para que as ações possam ser rastreadas. As senhas devem ser longas e únicas, de preferência guardadas em um gerenciador de senhas, e a autenticação multifator (MFA) deve ser usada sempre que disponível. Na Linkway, a equipe da garagem compartilhava um único login no sistema de escalas. O Sr. Hughes o substitui por contas individuais. Marta observa que contas compartilhadas tornam impossível saber quem alterou uma escala. A equipe da garagem recebe suas contas em uma semana, e o login compartilhado é desativado.
+
+### 10.2 Acesso por necessidade
+
+Cada pessoa deve ver apenas os dados de que precisa. Marta revisa quem pode abrir a planilha de escalas e descobre que todo o pessoal do escritório pode, inclusive o marketing. O Sr. Hughes restringe o acesso aos gerentes de garagem e à folha de pagamento. Marta aprende que os acessos devem ser revistos com regularidade, principalmente quando as pessoas mudam de função, e que quem decide quem precisa de acesso é o dono dos dados, não o técnico. O Sr. Hughes pede a Marta que confira a lista de acesso a cada trimestre e informe os nomes acrescentados desde a última conferência.
+
+### 10.3 Phishing
+
+O Sr. Osei mostra exemplos de e-mails de phishing que fingem vir da TI e pedem aos funcionários que confirmem suas senhas. Marta aprende a conferir o endereço do remetente, desconfiar de ameaças urgentes e nunca digitar senhas a partir de links recebidos por e-mail. Durante o curso, a Linkway faz um teste com um e-mail de phishing simulado; Marta o denuncia em vez de clicar. O Sr. Hughes observa que denunciar e-mails suspeitos ajuda a proteger todos, porque um único clique pode expor os dados da empresa inteira. Marta registra o exercício no caderno como exemplo de boa prática.
+
+### 10.4 Dispositivos
+
+Notebooks e celulares com dados da Linkway precisam ser criptografados e bloqueados com PIN. Os dados não devem ser copiados para pen drives pessoais. Marta encontra um pen drive com a etiqueta escalas esquecido em um escritório da garagem e o entrega ao Sr. Hughes, que o examina, encontra escalas antigas e o destrói. O Sr. Osei explica que dispositivos pequenos e portáteis se perdem com facilidade, e que o armazenamento criptografado e aprovado evita que uma perda se transforme em vazamento. A Linkway lembra a todos que só o armazenamento criptografado da empresa pode ser usado para dados.
+
+### Exemplo resolvido
+
+Marta aprende sobre contas individuais, senhas fortes e MFA, vê o acesso às escalas restrito aos gerentes de garagem e à folha de pagamento, denuncia um e-mail de phishing simulado e entrega um pen drive de escalas esquecido.
+
+> **Caso sintético.** Os eventos são sintéticos.
+
+### Erros e limites
+
+Logins compartilhados tornam impossível rastrear quem alterou os dados.
+
+### Exercícios
+
+- **EX037 — Correção do login compartilhado.** O que substituiu o login compartilhado das escalas? *Rubrica:* 3 = contas individuais;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX038 — Acesso às escalas.** Quem pode abrir a planilha de escalas agora? *Rubrica:* 3 = os gerentes de garagem e a folha de pagamento;; 2 = ambos;; 1 = um;; 0 = nenhuma.
+- **EX039 — Resposta ao phishing.** O que Marta fez com o e-mail de phishing simulado? *Rubrica:* 3 = denunciou;; 2 = correto;; 1 = clicou;; 0 = nenhuma.
+- **EX040 — Pen drive.** O que havia no pen drive encontrado? *Rubrica:* 3 = escalas antigas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Compartilhamento e solicitações
+
+### Objetivos de aprendizagem
+
+Você vai (1) compartilhar dados pelos canais aprovados; (2) apoiar solicitações de pessoas; (3) preparar dados para parceiros.
+
+### 11.1 Canais aprovados
+
+A Linkway compartilha dados com a autoridade de transporte, um fornecedor de bilhetagem e uma empresa de folha de pagamento. Marta aprende o canal aprovado para cada um: um portal seguro de envio para a autoridade, uma transferência criptografada para o fornecedor e a conexão própria do sistema de folha de pagamento. Anexos de e-mail não são aprovados para dados pessoais. Ela observa que os canais aprovados tiveram sua segurança verificada, enquanto canais improvisados, como o e-mail pessoal, não. Marta escreve o canal aprovado de cada parceiro em um guia de uma página, que o Sr. Hughes compartilha com o escritório.
+
+### 11.2 Solicitações de pessoas
+
+Um motorista pede uma cópia de seus dados de escala e de horas. O Sr. Hughes explica que as pessoas têm direito de acesso a seus dados pessoais e que a Linkway deve responder em até um mês, conforme o GDPR; pela LGPD, a declaração completa deve sair em até quinze dias (art. 19, II). Marta ajuda a encontrar os registros do motorista no sistema de escalas e nas exportações da folha, usando sua matrícula. O Sr. Hughes confere os resultados, retira os dados de outros motoristas e envia a resposta. Marta registra o pedido no controle. O motorista recebe seus dados em três semanas.
+
+### 11.3 Preparando dados para parceiros
+
+A autoridade pede as contagens mensais de passageiros por linha. Marta prepara o arquivo a partir do sistema de contagem, retirando as anotações internas e conferindo os totais com o relatório mensal. Ela segue exatamente o modelo da autoridade, com os códigos de linha da lista oficial. Explica que preparar com cuidado os arquivos dos parceiros evita envios rejeitados e perguntas que atrasam o financiamento. Antes de enviar, compara os totais do mês com os do mês anterior e investiga as linhas com mudanças grandes demais, porque um salto repentino pode indicar um problema nos dados. A alta de uma linha se explica pelo fim das férias escolares.
+
+### 11.4 Compartilhando agregados
+
+O jornal local pergunta quantas pessoas usam cada ponto. O Sr. Hughes concorda em compartilhar os totais anuais por ponto. Marta confere se algum total é tão pequeno que possa identificar um passageiro habitual, como um ponto rural usado por uma única pessoa todo dia. Ela retira da lista publicada os pontos de uso muito baixo. O Sr. Osei explica que até contagens podem revelar pessoas quando os números são minúsculos. O Sr. Hughes aprova a lista final, e o jornal a publica com uma nota dizendo que os pontos de uso muito baixo ficaram de fora, para proteger quem os usa.
+
+### Exemplo resolvido
+
+Marta aprende os canais aprovados de compartilhamento, ajuda a responder em até um mês ao pedido de acesso de um motorista, prepara o arquivo mensal da autoridade com os códigos oficiais e retira os pontos de uso muito baixo dos totais enviados ao jornal.
+
+> **Caso sintético.** As solicitações são sintéticas.
+
+### Erros e limites
+
+Contagens pequenas publicadas ainda podem identificar pessoas.
+
+### Exercícios
+
+- **EX041 — Anexos de e-mail.** Anexos de e-mail são aprovados para dados pessoais? *Rubrica:* 3 = não;; 2 = correto;; 1 = sim;; 0 = nenhuma.
+- **EX042 — Prazo de resposta.** Quanto tempo a Linkway tem para responder a um pedido de acesso? *Rubrica:* 3 = um mês;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX043 — Modelo da autoridade.** Que códigos o arquivo da autoridade usa? *Rubrica:* 3 = os códigos de linha da lista oficial;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX044 — Pontos de uso baixo.** O que aconteceu com os pontos de uso muito baixo na lista do jornal? *Rubrica:* 3 = foram retirados;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Guardando e eliminando registros
+
+### Objetivos de aprendizagem
+
+Você vai (1) ler uma tabela de temporalidade; (2) encontrar registros com o prazo de guarda vencido; (3) eliminar registros com segurança e com aprovação.
+
+### 12.1 A tabela
+
+A tabela de temporalidade da Linkway lista por quanto tempo guardar cada tipo de registro. As reclamações são guardadas por dois anos após o encerramento. As horas dos motoristas são guardadas pelo período exigido pelas leis trabalhistas e de transporte. Os registros de achados e perdidos são guardados por seis meses. As contagens sem dados pessoais são guardadas por dez anos para o planejamento. Marta aprende que guardar dados por tempo demais aumenta o risco, enquanto eliminar cedo demais pode descumprir deveres legais. Ela guarda uma cópia da tabela no caderno, com notas sobre os registros que mais manuseia.
+
+### 12.2 Encontrando registros antigos
+
+Marta escreve um script que lê a exportação das reclamações e lista as que foram encerradas há mais de dois anos. Ela encontra muitas reclamações antigas ainda guardadas, inclusive com os contatos de passageiros que reclamaram anos atrás. Também confere a planilha de achados e perdidos e encontra registros de três anos atrás. Ela informa os dois casos ao Sr. Hughes com as contagens, mantendo os detalhes dentro do sistema seguro em vez de copiá-los para o relatório. O Sr. Hughes agradece por ela ter deixado os detalhes fora do próprio relatório, que assim não cria novas cópias a eliminar.
+
+### 12.3 Eliminando com aprovação
+
+O Sr. Hughes, como dono, aprova a eliminação. Marta elimina os contatos das reclamações antigas, mas mantém a categoria, a linha e a data, que ajudam os planejadores a entender os problemas. No caso dos achados e perdidos, ela elimina os registros antigos por completo. Registra a data, o número de registros eliminados e a aprovação do Sr. Hughes em um log de eliminação. O Sr. Osei observa que registrar as eliminações mostra que a tabela é seguida, o que importa se alguém perguntar. O Sr. Hughes confere o registro e o assina, e os planejadores confirmam que os campos mantidos atendem a suas necessidades.
+
+### 12.4 Tornando rotina
+
+Marta sugere executar a verificação de eliminação todo mês. O Sr. Hughes concorda e a inclui na lista de tarefas mensais, com o script de Marta e um procedimento curto. Ele também pergunta à TI se o sistema de reclamações pode eliminar os contatos antigos automaticamente. Marta aprende que a retenção funciona melhor quando a eliminação é rotineira e automática, e não um grande mutirão de limpeza feito uma vez e depois esquecido. A TI confirma que a eliminação automática é possível, e ela fica prevista para a próxima atualização do sistema, com a verificação mensal de Marta mantida até lá como salvaguarda.
+
+### Exemplo resolvido
+
+Marta lê a tabela de temporalidade da Linkway, encontra reclamações e registros de achados e perdidos com o prazo vencido, elimina-os com aprovação mantendo as categorias úteis das reclamações e torna a verificação mensal.
+
+> **Caso sintético.** A tabela de temporalidade é sintética.
+
+### Erros e limites
+
+Copiar dados pessoais para relatórios sobre a eliminação cria novas cópias a eliminar.
+
+### Exercícios
+
+- **EX045 — Prazo das reclamações.** Por quanto tempo as reclamações são guardadas após o encerramento? *Rubrica:* 3 = dois anos;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX046 — Campos mantidos.** Que dados das reclamações são mantidos após a eliminação? *Rubrica:* 3 = categoria, linha e data;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
+- **EX047 — Achados e perdidos.** Por quanto tempo os registros de achados e perdidos são guardados? *Rubrica:* 3 = seis meses;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX048 — Registro da eliminação.** O que fica registrado no log de eliminação? *Rubrica:* 3 = data, número eliminado e aprovação;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX024 (as de EX025–EX072 estão na edição em inglês até a tradução dos capítulos correspondentes). Marta Kowalski, o Sr. Daniel Osei, a Southport Technical College, a Linkway Buses e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX048 (as de EX049–EX072 estão na edição em inglês até a tradução dos capítulos correspondentes). Marta Kowalski, o Sr. Daniel Osei, a Southport Technical College, a Linkway Buses e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Sessenta ônibus.
 
@@ -334,6 +622,54 @@ Respostas-modelo para EX001–EX024 (as de EX025–EX072 estão na edição em i
 **EX023.** Completude e exatidão.
 
 **EX024.** Pontualidade.
+
+**EX025.** 10,2 por cento.
+
+**EX026.** 144 de 3.600, 4,0 por cento.
+
+**EX027.** Sensores com falha em dois ônibus mais antigos.
+
+**EX028.** Ônibus mais novos foram colocados na Linha 7.
+
+**EX029.** Cinco.
+
+**EX030.** Saint (santo).
+
+**EX031.** O Sr. Hughes, responsável pelos dados.
+
+**EX032.** Ele precisa ser acrescentado primeiro à lista oficial.
+
+**EX033.** Não, elas não identificam pessoas.
+
+**EX034.** Erros simples, como enviar uma escala por e-mail à pessoa errada.
+
+**EX035.** Pelo sistema de troca de turnos, que não compartilha os números.
+
+**EX036.** Guardar os dados apenas pelo tempo necessário.
+
+**EX037.** Contas individuais.
+
+**EX038.** Os gerentes de garagem e a folha de pagamento.
+
+**EX039.** Ela o denunciou.
+
+**EX040.** Escalas antigas.
+
+**EX041.** Não.
+
+**EX042.** Em até um mês.
+
+**EX043.** Os códigos de linha da lista oficial.
+
+**EX044.** Foram retirados da lista publicada.
+
+**EX045.** Dois anos.
+
+**EX046.** A categoria, a linha e a data.
+
+**EX047.** Seis meses.
+
+**EX048.** A data, o número de registros eliminados e a aprovação do dono.
 
 <a id="references"></a>
 ## Referências
