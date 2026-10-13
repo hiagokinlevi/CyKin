@@ -967,6 +967,8 @@ HCU's first diagram took a week to annotate, mostly because nobody knew which al
 
 *Crypto-agility* is the ability to change cryptographic algorithms with bounded effort and risk. Architecturally it means centralised policy, algorithm identifiers that travel with data, libraries that support multiple algorithms, and interfaces that tolerate larger keys and signatures. NIST's [CSWP 39](https://doi.org/10.6028/NIST.CSWP.39-upd1) discusses crypto-agility considerations. An architecture without agility treats the PQC migration as a one-off rebuild; an agile one treats it as the first of several planned changes.
 
+For HCU, agility is tested by asking how long it would take to switch an algorithm on the branch VPN.
+
 ### 16.4 Boundaries in time
 
 Some boundaries are crossed not in space but in time. A mortgage signed today will be verified by a court or buyer years later; an archive encrypted today will be decrypted during a future audit. Architecture should show long-term services — timestamping, archive re-encryption, evidence renewal — as components whose own cryptography must be migrated.
@@ -1235,9 +1237,13 @@ You will (1) summarise public cases that shaped post-quantum practice; (2) expla
 
 Shor's 1994 algorithm (journal version 1997) showed that factoring and discrete logarithms are efficiently solvable on a quantum computer. For decades, the question was resources. Gidney and Ekerå (2021) estimated 20 million noisy qubits running for eight hours to factor RSA-2048; Gidney (2025) lowered this to under a million noisy qubits in under a week, under stated assumptions about error rates and connectivity. The lesson: resource estimates fall as algorithms and error correction improve, so plans must not depend on today's estimate staying fixed.
 
+HCU's plan therefore uses a range of arrival dates rather than one figure.
+
 ### 20.2 Broken candidates
 
 The NIST process eliminated candidates publicly. Rainbow, a multivariate signature, was broken by Beullens (2022) with a key-recovery attack running "over a weekend on a laptop". SIKE, an isogeny-based KEM, was broken by Castryck and Decru (2022) with a classical attack. Both had survived years of analysis. The lesson: new schemes carry the risk of classical breaks, which is a main argument for hybrid deployment — combining a post-quantum and a traditional algorithm so that an attacker must break both.
+
+Neither break needed a quantum computer.
 
 ### 20.3 Implementation flaws
 
@@ -1254,6 +1260,8 @@ Most failures came from software that had assumed handshake messages would stay 
 ### 20.5 Worked example
 
 HCU's vendor proposes enabling pure ML-KEM on branch VPNs immediately. Applying the cases: SIKE shows that a new scheme can fail suddenly, so a hybrid with ECDH is the prudent transition design; KyberSlash shows that the vendor's implementation version matters, so HCU asks which library and version the appliance uses; the Chrome experience shows that one branch with a legacy device might break, so HCU starts with three pilot branches.
+
+Each pilot branch is monitored for fallback and handshake failures before any wider rollout is approved.
 
 ### 20.6 Practical activity
 
@@ -1351,6 +1359,8 @@ You will (1) explain what a cryptographic bill of materials (CBOM) is; (2) combi
 
 No single method finds all cryptography. *Passive network observation* sees negotiated algorithms on the wire; *configuration review* reads what services are set to offer; *code and binary scanning* finds library calls and embedded constants; *vendor statements* describe closed products; *certificate stores* reveal signature algorithms and validity. A CBOM records, for each asset and function, the algorithm, parameters, implementation and evidence source, analogous to a software bill of materials for components.
 
+Each method has blind spots, so HCU combines them and records the source for every entry.
+
 ### 22.2 Practical activity — Lab I
 
 ```python
@@ -1385,9 +1395,13 @@ The lab combines evidence from more than one source for each asset and prints a 
 
 Cryptography is inherited. An application uses a framework that uses a TLS library that uses the OS provider; a SaaS vendor terminates TLS on a CDN that HCU does not control; a partner's API dictates which algorithms HCU's client must support. Draw dependency chains for high-priority flows and identify the *controlling party* for each link — the one that must act for the algorithm to change. A migration is complete for a flow only when every link has moved.
 
+Links HCU does not control need roadmaps from their owners.
+
 ### 22.4 Worked example
 
 HCU's mobile banking flow depends on: the phone OS TLS stack (platform vendor), the app's networking library (HCU developers), a CDN terminating TLS (CDN provider), the web gateway (HCU network team) and the core banking API (core vendor). Hybrid key exchange from phone to CDN depends on platform and CDN support; from CDN to gateway on CDN and HCU; from gateway to core on HCU and the core vendor. Three controlling parties, three different timelines.
+
+The flow is recorded as migrated only when all three have moved, and HCU follows up each party separately.
 
 ### 22.5 Common errors and limits
 
@@ -2002,6 +2016,8 @@ The counting is deliberately simple: each certificate carries its own public key
 
 TCP's initial congestion window commonly allows about ten segments (~14 kB) before waiting for acknowledgement. A server flight exceeding it costs an extra round trip — small on a data-centre link, noticeable on a 150-ms mobile or satellite path. Certificate compression ([RFC 8879](https://www.rfc-editor.org/rfc/rfc8879.html)) helps little with high-entropy keys and signatures. Engineering responses include shorter chains, fewer SCTs and careful choice of parameter sets.
 
+For HCU's mobile users, that extra round trip on cellular links is the main concern.
+
 ### 30.4 Reporting
 
 Report results with assumptions: chain depth, field sizes, number of SCTs, initial window. State that the model estimates bytes, not latency, and that latency needs measurement.
@@ -2376,31 +2392,45 @@ You will (1) apply course skills in a supervised placement or community project;
 
 Placements might involve supporting an organisation's cryptographic inventory, writing internal guidance on PQC, testing a library upgrade in a lab, or helping a community organisation (a library, charity or small business) understand which of its services rely on vendors that must migrate. The learning comes from doing real work under real constraints.
 
+Whatever the setting, agree at the start what you will produce and who will use it. A short inventory or a page of guidance that a team actually adopts teaches more than a large report nobody reads, and it gives you concrete evidence for your practice log.
+
 ### 36.2 Working within processes
 
 Organisations have change control, security policies and supervisors. Follow them. Obtain written scope from your supervisor. Never run tools on production systems without approval; never take data home. If you notice something serious — for example, an exposed private key — report it through the organisation's process immediately.
+
+Ask early how changes are approved, because a lab test that seemed simple may need a ticket and a review. Keep copies of approvals with your log. Working inside these processes is part of the learning: a migration in a real organisation moves at the speed of its change control.
 
 ### 36.3 Communication
 
 Non-specialists need plain language. Instead of "migrate KEX to ML-KEM-768 hybrid", say "update how our systems agree secret keys so that recorded traffic stays protected even if powerful quantum computers are built". Check understanding by asking what the listener will do next.
 
+A short written summary after a meeting helps too. It records what was agreed in words both sides understand, and it lets the listener correct a misunderstanding before it turns into wrong action. Keep technical detail in an appendix for those who want it.
+
 ### 36.4 Reflection
 
 Keep a practice log: what you did, what evidence you produced, what surprised you, what you would do differently. Link entries to course concepts. Reflection turns experience into transferable skill.
+
+Write entries soon after the work, while details are fresh, and keep them brief. Include mistakes and what you learned from them, since these are often the most useful entries. Over a placement, the log shows how your judgment developed, which is exactly what assessors look for. Note any evidence you can share and anything you must keep confidential.
 
 ### 36.5 Worked example
 
 A student volunteers with a small (synthetic) community credit cooperative that uses a hosted banking platform. With the manager's written approval, the student reviews the vendor's public security documents and contract, finds no PQC roadmap, and drafts three questions for the next vendor meeting: which algorithms protect data in transit, when hybrid key exchange will be supported, and whether the vendor maintains a cryptographic inventory. The student also writes a one-page plain-language explainer for the board.
 
+The questions were agreed with the manager first.
+
 ### 36.6 Practical activity
 
 Write a scope agreement and the first three entries of a practice log for your placement or a simulated one.
+
+The scope agreement should name your supervisor, the systems or documents you may access, what you will produce, and what you must not do. Each log entry should record the task, the evidence produced and one reflection. If you are simulating a placement, base it on the HCU case and state which parts are invented. Ask your supervisor to sign the agreement.
 
 ### 36.7 Common errors and limits
 
 - Acting outside agreed scope to be helpful.
 - Using jargon with non-specialists.
 - Logs that list tasks without evidence or reflection.
+
+- Keeping notes only in your head, so that nothing can be shown later. - Promising results the organisation did not ask for. - Taking copies of documents outside the agreed scope. - Assuming silence means approval. - Forgetting to close the placement with a handover of what you produced. Each makes it harder for the organisation to trust the work or use it. A weekly check against the scope helps.
 
 ### Exercises
 
@@ -2427,31 +2457,45 @@ You will (1) critically appraise sources on quantum computing and PQC; (2) disti
 
 *Standards* (FIPS, SP, RFC) are authoritative for what algorithms are and how to use them, with status noted. *Peer-reviewed papers* carry expert scrutiny but can still be wrong. *Preprints* such as arXiv or IACR ePrint papers are early and unreviewed, though many are later published; Gidney (2025) was a preprint when cited here. *Vendor material* has commercial interests. *Journalism* simplifies and often misreports. Weight evidence accordingly and say which type you rely on.
 
+A claim supported by two independent sources of different types is stronger than one repeated by many sources that copy each other.
+
 ### 37.2 Appraising timeline claims
 
 Ask: who made the estimate, on what assumptions (error rates, qubit counts, algorithms), when, and what range they give? Distinguish resource estimates ("how many qubits would it take") from forecasts ("when will they exist"). Expert surveys provide distributions, not dates.
+
+Check whether a newer estimate has replaced the one you are reading, since resource estimates have fallen sharply over time. When a news story gives a single year, trace it back to the original source and see what range and assumptions it actually stated. For HCU, timeline claims feed into Mosca's inequality, so a careless date can change which flows look urgent.
 
 ### 37.3 Appraising performance claims
 
 Ask: what hardware, which implementation, which parameter set, what was measured (operations per second, handshake latency, bytes), and with what variability? Benchmarks of optimised assembly do not predict constrained-device behaviour.
 
+Ask also whether the result has been reproduced by someone other than the authors. A performance figure measured on a server tells you little about a card terminal. For HCU, the useful benchmarks are those run on the same appliances and links used in the branches, so lab measurements often matter more than published tables.
+
 ### 37.4 Structured critique
 
 Critique follows a structure: summarise the claim fairly; assess evidence; identify assumptions; note what would change the conclusion; suggest improvements. Critique the work, not the person.
+
+A fair summary is the hardest step and the most important: if the author would not recognise your summary, the rest of the critique will miss. End with what the source does establish, not only its weaknesses. A critique that finds nothing useful in a source should say why it was considered at all.
 
 ### 37.5 Worked example
 
 A vendor whitepaper states "our QKD system makes your network quantum-proof". Appraisal: vendor source; "quantum-proof" is not a defined property; QKD still needs authentication, which the paper does not address; NSA guidance does not support QKD for national security systems; the claim lacks scope. Conclusion: not adequate evidence for HCU's decision.
 
+The appraisal still notes what the paper does show: the vendor has working hardware, which may matter for niche links. It simply does not answer HCU's question. A request for an independent evaluation would be the next step.
+
 ### 37.6 Practical activity
 
 In groups, appraise one preprint, one standard and one news article on PQC using the frameworks above; present a two-minute critique each.
+
+Use the same structure for each source: a fair summary, the evidence offered, the assumptions, and what would change the conclusion. Note the source type and how much weight it deserves. Then compare the three critiques as a group: did the standard, the preprint and the news article agree, and if not, which should a decision-maker trust and why?
 
 ### 37.7 Common errors and limits
 
 - Treating preprints as settled.
 - Rejecting vendor material outright rather than weighting it.
 - Critiquing tone instead of evidence.
+
+- Quoting a single year for quantum arrival without the range behind it. - Citing a secondary summary when the original is available. - Ignoring the date of a source in a field where estimates change quickly. - Accepting a benchmark without asking what hardware it ran on. Each lets weak evidence shape a decision it cannot support. Keep a short appraisal note for each source you rely on.
 
 ### Exercises
 
@@ -2478,34 +2522,51 @@ You will (1) execute your capstone plan with milestones; (2) maintain reproducib
 
 Work in milestones: environment ready; first data or model; first analysis; full analysis; draft report. At each milestone, compare progress with the plan and record deviations. Small, frequent progress beats large late pushes.
 
+Plan a buffer before the draft report milestone, since analysis almost always takes longer than expected. If a milestone slips, say so early and adjust what follows, rather than compressing the writing into the final weeks. A short note at each milestone, saying what was done and what is next, makes later reporting much easier.
+
 ### 38.2 Reproducibility
 
 Use version control for code, configuration and text. Record environment versions. Write scripts that regenerate every figure and table from raw inputs. Keep synthetic data generators with fixed seeds so results can be reproduced exactly, as the labs in this book do.
+
+Test reproducibility yourself before submission by cloning the repository into a clean environment and running everything from scratch. Anything that fails there would fail for an examiner too. Record the date and result of that check in your lab record, so you can show it was done.
 
 ### 38.3 Scope changes
 
 Discoveries change plans. If a vendor's documentation shows that a planned lab is impossible, record the change, its reason and its effect on aims, and agree it with your supervisor. Silent scope changes make evaluation unfair and conclusions unclear.
 
+Keep scope changes in the same place as decision records, so that the final report can list them together. A change that narrows the work is acceptable if it is explained; a change hidden in the results is not. Your evaluation will be judged against the agreed scope, so make sure it is current.
+
 ### 38.4 Decision records
 
 Keep short decision records: context, options, decision, consequences. "We chose ML-KEM-768 rather than -1024 for the lab because the synthetic HCU policy requires category 3 and the TLS group uses -768." Decision records make the final report easier to write and defend.
+
+Write each record at the time of the decision. A record written months later tends to justify the outcome rather than explain the reasoning, and reviewers can usually tell the difference. For the capstone, a folder of dated one-page records is enough.
 
 ### 38.5 Worked example
 
 The capstone from Chapter 35 builds a 60-asset synthetic HCU CBOM generator with a fixed seed, a ranking script sweeping *z* from 10 to 25 years and a report generator. At milestone 3 the student finds that the top-five ranking changes at *z* = 12 because member records enter. Decision record: report the change as a finding and add a sensitivity figure rather than adjusting assumptions to make the ranking stable.
 
+The sensitivity figure later became one of the main results of the capstone. It was kept in the final report.
+
 ### 38.6 Practical activity
 
 Set up your repository with code, data generator, lab record template and decision-record folder; complete your first milestone review.
+
+The milestone review should compare what you planned with what you have done and record any changes. Check that a fresh clone of the repository can run the data generator and reproduce the first results. If it cannot, fix that before going further, because the problem only grows as more code and data are added. Then plan the second milestone with dates.
 
 ### 38.7 Common errors and limits
 
 - Unversioned work.
 - Figures made by hand that cannot be regenerated.
 - Adjusting assumptions to obtain a preferred result.
-### 38.7 Working with supervisors
+
+- Leaving decision records until the end, when reasons are forgotten. - Changing scope without recording it. - Keeping raw data only on one laptop. - Skipping milestone reviews when work is going well, which is when small problems are easiest to fix. Each makes the final report harder to write and harder to defend. Most can be avoided with a fixed weekly routine of commits, notes and a brief check against the plan.
+
+### 38.8 Working with supervisors
 
 Share milestone reviews with your supervisor briefly and regularly: what was done, what was learned, what is blocked and what decision you need. Supervisors can only help with problems they know about, and a short written update creates a record that later shows how the work evolved.
+
+Keep the updates in the repository. A good update fits in a few lines and ends with a clear question when you need a decision. Record the answer in your decision records, so that agreed changes to method or scope are visible later and are not reopened at the evaluation stage.
 
 ### Exercises
 
@@ -2532,34 +2593,51 @@ You will (1) evaluate your capstone against its success criteria; (2) analyse li
 
 Return to the success criteria in your proposal and assess each: met, partly met or not met, with evidence. If criteria changed, explain why. Evaluation is honest when it reports partial success clearly.
 
+For each criterion, point to the evidence: a test run, a figure or a reviewer's comment. A criterion that cannot be assessed should be listed as such with the reason. Examiners respect a clear account of what was and was not achieved more than an evaluation that claims everything worked.
+
 ### 39.2 Limitations
 
 Name limitations by type: data (synthetic, small sample), method (emulated networks), scope (only key exchange), and time (standards status as of a date). For each, state the likely effect on conclusions. Limitations are not apologies; they are the boundary of what your evidence supports.
+
+Be specific about the direction of each effect where you can: for example, emulated networks may understate latency on the worst branch links. Where you cannot say which way a limitation pushes the result, say that too.
 
 ### 39.3 Independent review
 
 Ask a peer or supervisor to rerun part of your work and challenge your conclusions. Record their comments and your responses. Reviewers often find unstated assumptions — for example, that all branches use the same appliance.
 
+Give the reviewer a clear task, such as rerunning one figure from the repository and checking one conclusion. Their result is evidence about reproducibility; their challenge is evidence about the strength of your argument. Report disagreements you could not resolve rather than leaving them out.
+
 ### 39.4 Residual uncertainty
 
 Close with what remains uncertain: quantum timelines, future standards (FN-DSA, HQC), vendor delivery. Explain how a reader should update your conclusions if these change.
+
+For each uncertainty, say which conclusion it affects and in which direction. For example, an earlier quantum timeline would make more flows urgent but would not change which lead the ranking. This lets readers apply your work after the assumptions have moved, instead of discarding it. Date the statement, because what counts as uncertain in standards and products changes from year to year.
 
 ### 39.5 Worked example
 
 Evaluation of the CBOM capstone: criterion 1 (reproducible tool) met — a peer reran it and obtained identical output; criterion 2 (stable ranking for *z* 10–25) partly met — stable for *z* ≥ 13, changes below; interviews (3) support relevance but are too few to generalise. Limitation: synthetic data may understate unknown assets, which in real inventories are often 20–40 % (an assumption to verify). Reviewer comment: the model ignores partner-controlled segments; response: added as future work with a sketch.
 
+The evaluation reports each finding against the criteria agreed in the proposal.
+
 ### 39.6 Practical activity
 
 Write your evaluation section and ask a peer to rerun one result.
+
+Assess each success criterion with evidence, name the limitations by type and their likely effect, and record what remains uncertain. Give your peer clear instructions and a time limit, record whether they reproduced the result exactly, and note any step that confused them. Fix the instructions where needed, then add their comments and your responses to the evaluation. Keep the evaluation within two pages and put the detailed evidence in an appendix where readers can find it.
 
 ### 39.7 Common errors and limits
 
 - Declaring success without evidence per criterion.
 - Hiding limitations.
 - Ignoring reviewer findings.
+
+- Reporting only the results that support the conclusion. - Treating a limitation as a reason to dismiss the work rather than to bound it. - Calling a criterion met when the evidence is partial. - Asking reviewers who are unlikely to challenge you. - Leaving uncertainties undated. Each makes the evaluation less useful to the reader who needs to act on it. An independent reviewer helps to catch most of these. Ask for one early.
+
 ### 39.8 Learning from the evaluation
 
 End the evaluation with lessons for the next project: which method choices worked, which assumptions were weakest, and what you would measure first if you started again. These lessons are useful to the organization and to future students, and they show examiners that you understand the work's place in a continuing programme rather than treating it as finished.
+
+Keep the lessons brief and specific. In the CBOM capstone, for example, the weakest assumption was the share of unknown assets, so the first lesson was to measure it early in any real inventory before trusting the ranking.
 
 ### Exercises
 
@@ -2586,31 +2664,45 @@ You will (1) structure a bachelor's thesis; (2) present findings to technical an
 
 A thesis contains: abstract; introduction with problem and questions; background with sourced concepts and standards status; method; results; discussion including limitations; conclusion; references; appendices with code and lab records. Each chapter should be traceable to evidence. Label all synthetic data clearly in text and captions.
 
+Keep the background short and focused on what the reader needs for your question; a full history of quantum computing is rarely necessary. Make the discussion answer the research questions directly, in the same order they were asked.
+
 ### 40.2 Presentation
 
 Prepare two versions: a technical talk with method and results, and a short decision-oriented summary for non-specialists. Open with the question and the answer; then show evidence; end with what the audience should do. Use one idea per slide and readable figures.
+
+Rehearse both versions with someone outside the field and note where they get lost. A figure that needs a minute of explanation is usually too complex for a slide. Keep backup slides with the detailed evidence for questions, and end on the decision you want the audience to take rather than on a summary of methods.
 
 ### 40.3 Defence
 
 Expect questions on assumptions ("why *z* from 10 to 25?"), method ("why paired design?"), standards ("is IR 8547 final?") and ethics ("how did you obtain data?"). Answer directly, admit uncertainty, and point to evidence. If you do not know, say so and explain how you would find out.
 
+Prepare by listing the questions you would ask if you were the examiner, especially about your weakest assumptions. Bring the lab records and decision records, so that you can show evidence rather than recall it. A calm, honest answer to a hard question counts for more than a polished answer to an easy one.
+
 ### 40.4 Handover
 
 Leave a README explaining how to run the code, regenerate results and extend the work, plus a list of open questions. Quantum readiness depends on continuity; your work is most valuable when someone else can build on it.
+
+Test the README by asking someone who has not seen the project to follow it. Include the versions of every tool used and the date of the standards status you relied on. For HCU, the handover would go to the team running the migration, so the open questions should be written as decisions they will face.
 
 ### 40.5 Worked example
 
 The CBOM capstone presentation opens: "Which of HCU's cryptographic flows should migrate first? Under every quantum timeline from 13 to 25 years, the same five flows lead, headed by mortgage archive transfers." The non-specialist version ends: "Protect the branch connections carrying mortgage files within a year; plan certificate changes next." In the defence, an examiner asks why category 3 was assumed; the student cites the synthetic policy and FIPS 203's category mapping, and explains the effect of choosing category 5.
 
+Both versions used the same figures.
+
 ### 40.6 Practical activity
 
 Deliver a ten-minute presentation and a two-minute summary; answer three prepared questions from a peer acting as examiner.
+
+Time both versions and cut anything that runs over. The peer should ask at least one question about assumptions and one about method, and should note any answer that was unclear. Afterwards, revise the slide or explanation that caused the most difficulty and record the change in your practice log, together with what you would do differently next time. Keep the peer's notes with your log.
 
 ### 40.7 Common errors and limits
 
 - Results without the question.
 - Defensiveness under questioning.
 - No handover materials.
+
+- Overloading slides with tables that cannot be read from the back of the room. - Claiming more certainty than the evidence supports when under pressure. - Answering a different question from the one asked. - Leaving code and data without instructions, so the work ends with the student. Each reduces the value of a capstone that may otherwise be strong. A practice run with a peer exposes most of them in time. Schedule it a week ahead.
 
 ### Exercises
 
