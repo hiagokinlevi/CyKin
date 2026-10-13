@@ -26,7 +26,7 @@ Las fuentes se comprobaron el 12 de octubre de 2026: NIST [AI 100-1](https://doi
 | Parte | Capítulos |
 |---|---|
 | Fundamentos | [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) |
-| Seguridad de la IA y del aprendizaje automático | [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](../../en/book/MANUSCRIPT.md#ch-19) · [20](../../en/book/MANUSCRIPT.md#ch-20) · [21](../../en/book/MANUSCRIPT.md#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) |
+| Seguridad de la IA y del aprendizaje automático | [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) |
 | Proyecto, despliegue y proyecto final | [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
@@ -1403,7 +1403,210 @@ Los controles que importan son código fuera del modelo (servicios de políticas
 
 ### Siga estudiando — capítulo 18 de 30
 
-[← Capítulo 17 (borrador)](#ch-17) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 19 (borrador) →](../../en/book/MANUSCRIPT.md#ch-19)
+[← Capítulo 17 (borrador)](#ch-17) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 19 (borrador) →](#ch-19)
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Seguridad de la IA y del aprendizaje automático: supervisión
+
+### Resultados de aprendizaje
+
+Usted podrá (1) elegir señales para supervisar sistemas de IA; (2) construir una detección de anomalías sencilla; (3) gestionar el volumen de alertas teniendo en cuenta las tasas base; y (4) redactar guías de actuación para las alertas.
+
+### 19.1 Señales
+
+Señales útiles: volumen de solicitudes y de *tokens* por usuario o clave; denegaciones del servicio de políticas; llamadas a herramientas por conversación; cadenas canario en las salidas; salidas que contienen enlaces; picos de negativas o de quejas; distribuciones de puntuaciones de los clasificadores (deriva); y coste por hora. Elija señales relacionadas con sus escenarios de riesgo, para que cada alerta tenga una razón de ser. En Ask Brightwell, Jonas vincula cada señal con un escenario: las denegaciones de políticas con el fraude de reembolsos, las cadenas canario con la divulgación y el volumen de *tokens* con las avalanchas de coste. Las señales de ReturnGuard son las llamadas de puntuación por clave, que detectaron una integración comprometida de un socio, y la distribución de las puntuaciones a lo largo del tiempo.
+
+### 19.2 Detección de anomalías
+
+La estadística sencilla llega lejos. Una puntuación z robusta basada en la mediana y en la desviación absoluta mediana resiste los valores atípicos mejor que la media y la desviación típica. Marque a los usuarios cuyo volumen o cuya proporción de consultas distintas se aleja mucho del resto, un patrón propio de la extracción masiva de datos (*scraping*) o de la extracción del modelo.
+
+```python
+"""Lab A: spotting extraction-style abuse in a synthetic API log.
+Flags clients whose query volume or input diversity is anomalous."""
+import random, statistics
+rng = random.Random(21)
+log = []
+for c in range(12):
+    for _ in range(rng.randint(40, 90)):
+        log.append((f"client{c:02d}", round(rng.gauss(0, 1), 1)))
+for i in range(600):                      # synthetic scraper: many, grid-like inputs
+    log.append(("client99", round(-3 + 6*(i % 61)/60, 1)))
+by = {}
+for c, x in log: by.setdefault(c, []).append(x)
+vol = {c: len(v) for c, v in by.items()}
+med = statistics.median(vol.values()); mad = statistics.median(abs(v-med) for v in vol.values())
+for c in sorted(by):
+    z = (vol[c]-med)/(1.4826*mad); uniq = len(set(by[c]))/len(by[c])
+    flag = "FLAG" if z > 3.5 else "ok"
+    print(f"{c} queries={vol[c]:3d} robust_z={z:6.2f} distinct_ratio={uniq:.2f} {flag}")
+```
+
+Salida esperada:
+
+```text
+client00 queries= 50 robust_z= -0.34 distinct_ratio=0.56 ok
+client01 queries= 64 robust_z=  0.45 distinct_ratio=0.52 ok
+client02 queries= 81 robust_z=  1.41 distinct_ratio=0.44 ok
+client03 queries= 46 robust_z= -0.56 distinct_ratio=0.52 ok
+client04 queries= 52 robust_z= -0.22 distinct_ratio=0.48 ok
+client05 queries= 40 robust_z= -0.90 distinct_ratio=0.57 ok
+client06 queries= 42 robust_z= -0.79 distinct_ratio=0.57 ok
+client07 queries= 87 robust_z=  1.74 distinct_ratio=0.48 ok
+client08 queries= 56 robust_z=  0.00 distinct_ratio=0.52 ok
+client09 queries= 50 robust_z= -0.34 distinct_ratio=0.62 ok
+client10 queries= 68 robust_z=  0.67 distinct_ratio=0.50 ok
+client11 queries= 89 robust_z=  1.85 distinct_ratio=0.42 ok
+client99 queries=600 robust_z= 30.58 distinct_ratio=0.10 FLAG
+```
+
+Los paneles de Brightwell aplican este método a las llamadas de puntuación de ReturnGuard por cuenta. Una clave de un socio muy alejada de las demás, con consultas que variaban un atributo cada vez, coincidía con el patrón de extracción del laboratorio. El método no necesita ningún modelo y se ejecuta en la misma consulta programada que los paneles.
+
+### 19.3 Volumen de alertas
+
+Cada alerta cuesta tiempo de analista. Cuando los ataques son raros, incluso los detectores precisos producen sobre todo falsas alarmas (efecto de la tasa base), así que fije los umbrales midiendo el volumen de alertas con tráfico normal y envíe las señales de baja confianza a paneles y no a sistemas de aviso. La alerta de volumen de transferencias de Gift Card Help, el proyecto final de Jonas (capítulos 29–30), mostró este efecto: su precisión con tráfico reproducido fue de 0,5, así que Jonas la envió a un panel. En cambio, los valores atípicos de llamadas de puntuación de ReturnGuard se tratan con una limitación automática de frecuencia y un aviso a guardia, no con una alerta urgente. Medir primero el volumen con tráfico normal es lo que permite al equipo elegir entre estas vías.
+
+### 19.4 Guías de actuación
+
+Cada alerta necesita una guía de actuación: qué significa, cómo comprobarla, cómo contenerla (limitar la frecuencia, desactivar una herramienta, revertir un *prompt*), a quién notificar y cuándo cerrarla. Las guías de actuación permiten que un ingeniero de guardia actúe de noche sin adivinar. La alerta de la clave del socio siguió su guía: limitar la frecuencia de la clave, contactar con el socio y revisar los registros. Como cada paso estaba escrito, el ingeniero de guardia no tuvo que decidir qué hacer primero. La misma guía indica quién cierra la alerta y qué evidencia se conserva, para que el caso pueda revisarse más tarde.
+
+### 19.4b Revisión de la supervisión
+
+Cada mes, revise qué alertas saltaron, cuántas eran reales y qué incidentes se detectaron por otras vías. Ajuste o retire las alertas ruidosas; añada señales para los incidentes que la supervisión pasó por alto. En Brightwell, la revisión mensual cuenta los casos reales y falsos de cada alerta. El problema del plazo de devolución de 60 días lo detectaron los clientes, no la supervisión, y dio lugar a una prueba de regresión y a una nueva comprobación de la caducidad de los documentos recuperados. La revisión mensual comprueba también si se siguió la guía de actuación de cada alerta y la actualiza cuando un paso se omitió o no estaba claro.
+
+### 19.5 Ejemplo resuelto (caso sintético de Brightwell)
+
+Jonas añade paneles por cuenta. Una semana, la clave de API de un socio muestra una z robusta ≈ 30 en las llamadas de puntuación de ReturnGuard, parecida a la del cliente atípico client99 del laboratorio; las consultas de la clave varían un atributo cada vez, lo que es coherente con una extracción. La guía de actuación: limitar la frecuencia de la clave, contactar con el socio y revisar los registros. La integración del socio había sido comprometida; se rotó la clave. La guía de actuación convirtió una señal estadística en una breve secuencia de acciones. Rotar la clave puso fin a la extracción; contactar con el socio permitió encontrar la causa. El panel siguió vigilando la clave de sustitución, que desde entonces muestra volúmenes de llamadas normales.
+
+### 19.6 Errores y límites
+
+- Alertas sin guías de actuación.
+- Avisos urgentes por cada denegación.
+- Supervisar solo la infraestructura y no el comportamiento de la IA.
+
+La supervisión de Brightwell evita estos errores. Cada alerta tiene una guía de actuación, las denegaciones van a paneles salvo que se disparen y el comportamiento de la IA se vigila junto con los servidores. La alerta de la clave del socio no habría servido de nada si nadie hubiera sabido qué hacer con ella. Sin señales de comportamiento, la inyección que deniega un servicio de políticas nunca llegaría a verse. El panel de denegaciones cubre el segundo error, y la alerta de llamadas de puntuación cubre el tercero.
+
+### Ejercicios
+
+- **EX055 — Señales.** Elija cinco señales para Ask Brightwell y vincule cada una con un escenario de riesgo. Rúbrica: 3 = cinco vinculadas; 2 = cuatro; 1 = dos; 0 = ninguna.
+- **EX056 — z robusta.** ¿Por qué usar la mediana y la MAD en lugar de la media y la desviación típica? Rúbrica: 3 = los valores atípicos inflan la desviación típica y se enmascaran a sí mismos; 2 = parcial; 1 = vago; 0 = erróneo.
+- **EX057 — Guía de actuación.** Redacte la guía de actuación de la alerta de extracción. Rúbrica: 3 = significado, comprobaciones, contención, notificación, cierre; 2 = cuatro; 1 = dos; 0 = ninguno.
+
+### Síntesis
+
+La supervisión vigila señales específicas de la IA, usa estadística robusta, respeta las tasas base y vincula cada alerta con una guía de actuación.
+
+### Siga estudiando — capítulo 19 de 30
+
+[← Capítulo 18 (borrador)](#ch-18) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 20 (borrador) →](#ch-20)
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Seguridad de la IA y del aprendizaje automático: diagnóstico de averías
+
+### Resultados de aprendizaje
+
+Usted podrá (1) diagnosticar de forma sistemática los fallos de los sistemas de IA; (2) distinguir entre causas de modelo, de datos, de configuración y de ataque; (3) reproducir los problemas de forma segura; y (4) corregirlos y evitar que se repitan.
+
+### 20.1 Un método
+
+Defina el síntoma con precisión (qué, cuándo, a quién y con qué frecuencia). Reúna las trazas. Formule hipótesis de cuatro clases: comportamiento del modelo (una actualización del modelo cambió las salidas), datos (el índice contiene contenido erróneo o malicioso), configuración (se editó el *prompt*, se cambió un permiso de una herramienta, se eliminó un límite) y ataque (alguien lo está provocando deliberadamente). Pruebe las hipótesis de una en una en una copia de preproducción. El problema del plazo de devolución de 60 días siguió este método: el síntoma era concreto, se comprobaron las versiones y las trazas de recuperación apuntaron a la clase de los datos. Cada clase tiene su propia primera comprobación, empezando por las versiones.
+
+### 20.2 Distinguir las causas
+
+Compruebe primero las versiones: ¿cambió el modelo, el *prompt*, el índice o el código cerca del inicio del síntoma? Compruebe si el contenido recuperado incluye texto inyectado. Compruebe si los fallos se concentran en determinados usuarios o fuentes, como suele ocurrir con los ataques. Compruebe si el problema se reproduce con la versión anterior: si desaparece, el cambio está implicado. En el caso de los 60 días, las versiones no habían cambiado, lo que descartó rápidamente las causas de modelo y de configuración. Todas las respuestas erróneas habían recuperado la misma página caducada de una campaña, así que los fallos se concentraban en torno a una fuente, no a unos usuarios. Ese patrón de concentración apuntaba a los datos y no a un ataque.
+
+### 20.3 Reproducción segura
+
+Reproduzca en preproducción con datos sintéticos. Mantenga la evidencia de producción en modo de solo lectura. Si la reproducción requiere entradas peligrosas, guárdelas en un almacén de pruebas con control de acceso. En el caso de los 60 días, Jonas reprodujo la respuesta errónea en preproducción indexando la página caducada y preguntando por el plazo de devolución, sin necesidad de datos de clientes. Las reseñas con inyecciones colocadas que se usan en pruebas posteriores están en ese almacén con control de acceso, separadas de los datos de prueba ordinarios. Las copias de preproducción de Ask Brightwell solo contienen clientes y pedidos sintéticos, de modo que las pruebas allí no pueden exponer datos personales reales.
+
+### 20.4 Corregir y prevenir
+
+Corrija la causa, añada una prueba de regresión al banco de evaluación y actualice las guías de actuación. Si la causa raíz fue un supuesto de confianza del diseño, corrija el diseño y no solo el síntoma. El caso de los 60 días se corrigió en ambos niveles: se retiró la página caducada y el diseño incorporó un campo de caducidad y una tarea nocturna para que el contenido caducado no pueda volver a llegar a las respuestas. Una prueba de regresión pregunta por el plazo de devolución en cada cambio. La guía de actuación para respuestas erróneas sobre políticas comprueba ahora si hay contenido caducado en los documentos recuperados justo después de la comprobación de versiones.
+
+### 20.4b Comunicar durante el diagnóstico
+
+Lleve un registro continuo de lo que se comprobó y se encontró. Indique al personal de atención al cliente qué decir a los clientes mientras tanto, y avise a los responsables cuando se confirme la causa. Durante el caso de los 60 días, se indicó al personal de atención que confirmara el plazo de 30 días a cualquier cliente que preguntara, mientras Jonas comprobaba las versiones y la recuperación. El registro anotó cada comprobación, de modo que, cuando se identificó la página caducada, la persona responsable de marketing pudo ver exactamente por qué se había retirado y la persona responsable de atención al cliente supo cuándo dejar de usar el guion provisional.
+
+### 20.5 Ejemplo resuelto (caso sintético de Brightwell)
+
+Los clientes informan de que el asistente cita un plazo de devolución de 60 días; la política es de 30 días. Jonas comprueba las versiones: ningún cambio de modelo ni de *prompt*. Comprueba la recuperación de las preguntas que fallan: todas incluyen una página de una campaña de marketing subida la semana anterior ("60-day holiday returns", caducada). Es un problema de datos, no un ataque. Corrección: retirar la página, añadir un campo de caducidad a los documentos indexados y una tarea nocturna que elimine el contenido caducado, además de una prueba de regresión que pregunte por el plazo de devolución. El campo de caducidad corrige la clase de problema, no solo esta página.
+
+### 20.6 Errores y límites
+
+- Culpar a «la IA» sin comprobar las versiones y los datos.
+- Depurar en producción.
+- Correcciones sin pruebas de regresión.
+
+El caso de los 60 días evitó cada uno de ellos: Jonas comprobó las versiones y los datos antes de culpar al modelo, reprodujo el problema en preproducción y añadió una prueba de regresión. Si hubiera depurado en producción, una pregunta de prueba podría haber llegado a la conversación de un cliente real. Sin la prueba, la siguiente página caducada de una campaña traería de vuelta el mismo síntoma. La guía de actuación enumera ahora estas comprobaciones en ese orden: su primer paso es la comprobación de versiones, y el segundo, una comprobación de contenido caducado en los documentos recuperados. Comprobar primero las versiones y la recuperación lleva minutos y descarta las causas más comunes.
+
+### Ejercicios
+
+- **EX058 — Hipótesis.** Para «el asistente rechaza de repente la mayoría de las preguntas», enumere una hipótesis de cada clase. Rúbrica: 3 = cuatro clases con comprobaciones; 2 = tres; 1 = una o dos; 0 = ninguna.
+- **EX059 — ¿Ataque o no?** ¿Qué evidencia indicaría que el problema de los 60 días fue un ataque? Rúbrica: 3 = autor de la subida desconocido, texto inyectado, concentración, momento; 2 = dos; 1 = uno; 0 = ninguno.
+- **EX060 — Prevención.** Proponga dos medidas de prevención frente al contenido obsoleto. Rúbrica: 3 = metadatos de caducidad, revisión por el responsable, prueba de regresión; 2 = dos; 1 = una; 0 = ninguna.
+
+### Síntesis
+
+El diagnóstico de averías en sistemas de IA separa las causas de modelo, de datos, de configuración y de ataque mediante versiones y trazas, reproduce de forma segura y evita la repetición con pruebas.
+
+### Siga estudiando — capítulo 20 de 30
+
+[← Capítulo 19 (borrador)](#ch-19) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 21 (borrador) →](#ch-21)
+
+<a id="ch-21"></a>
+
+## Capítulo 21 — Seguridad de la IA y del aprendizaje automático: integración de servicios
+
+### Resultados de aprendizaje
+
+Usted podrá (1) integrar los servicios de IA con las plataformas de identidad, registro y secretos; (2) proteger las API de modelos de proveedores; (3) gestionar integraciones entre varios servicios y varios agentes; y (4) revisar los contratos de integración.
+
+### 21.1 Integración con las plataformas
+
+Los servicios de IA deben usar las mismas plataformas que todo lo demás: el proveedor de identidad de la empresa para los usuarios y las identidades de servicio; el gestor de secretos para las claves; el registro centralizado; y el *pipeline* de despliegue estándar. Los servicios de IA tratados como casos especiales quedan fuera de la cobertura de seguridad. En Brightwell, Ask Brightwell usa ahora el proveedor de identidad de la empresa para los tokens delegados, el gestor de secretos para la clave del proveedor, el almacén central de registros y el *pipeline* estándar. El redactor de correos de marketing, encontrado fuera del inventario, no tenía nada de esto hasta que la revisión de Jonas lo llevó a las mismas plataformas.
+
+### 21.2 API de proveedores
+
+Compruebe: ¿usa el proveedor sus datos para entrenar y puede usted excluirse? ¿Cuánto tiempo se conservan los *prompts*? ¿Qué región procesa los datos? ¿Puede fijar las versiones del modelo y recibir aviso de los cambios? ¿Hay límites de gasto? Guarde la clave en el servidor; restrínjala a los modelos necesarios; fije cuotas. Para la integración del redactor de correos, Jonas exigió conservación cero días en el proveedor. En Ask Brightwell, fija la versión del modelo para que una actualización del proveedor no pueda cambiar el comportamiento sin pasar antes por la puerta de publicación. Los límites de gasto de la cuenta del proveedor respaldan el presupuesto diario de *tokens*.
+
+### 21.3 Varios servicios y varios agentes
+
+Cuando un servicio de IA llama a otro, trate la respuesta como entrada no confiable. Una instrucción inyectada puede viajar de un documento al agente A y del agente A al agente B. Cada servicio aplica su propia política sobre lo que hace, sin importar quién lo pidió. La revisión del redactor de correos aplicó este principio: el texto de las conversaciones de Ask Brightwell, que puede contener instrucciones inyectadas, se convertiría en la entrada del redactor de correos. Por eso el redactor de correos aplica sus propios límites y solo envía a la dirección verificada del cliente que ha iniciado sesión, pida lo que pida Ask Brightwell.
+
+### 21.4 Contratos de integración
+
+Anote para cada integración: los datos intercambiados, el formato, las reglas de validación, la autenticación, los límites de frecuencia, el tratamiento de errores y a quién contactar. Revise los contratos cuando cambie cualquiera de las dos partes. En la integración del redactor de correos, el contrato registra que Ask Brightwell envía un identificador de plantilla y un único campo breve escapado, que el correo solo va a la dirección verificada, el límite de frecuencia de un correo y los contactos en marketing y en el equipo de Jonas. El contrato del redactor de correos es el primero redactado de esta forma, y ahora sirve de plantilla a Brightwell para las integraciones posteriores.
+
+### 21.4b Pruebas de las integraciones
+
+Añada casos de integración al banco de evaluación: coloque instrucciones en la entrada del servicio de origen y compruebe que el servicio de destino no hace nada fuera de su contrato. Pruebe también los caminos de fallo, como los tiempos de espera agotados o las respuestas mal formadas, y confirme que cada parte falla de forma cerrada. Para el redactor de correos, el banco de evaluación de Jonas coloca en una conversación una instrucción que pide enviar correo a una dirección externa y comprueba que no se envía nada. Un tiempo de espera agotado del servicio de correo da como resultado ningún correo y un error registrado, no un bucle de reintentos.
+
+### 21.5 Ejemplo resuelto (caso sintético de Brightwell)
+
+Marketing quiere que Ask Brightwell llame a su redactor de correos para enviar seguimientos. Jonas lo revisa: el redactor de correos recibiría texto de las conversaciones (no confiable) y podría enviar correo a cualquier dirección. Exige: que la herramienta de correo solo envíe a la dirección verificada del cliente que ha iniciado sesión; que el contenido proceda de una plantilla fija, con el texto del modelo limitado a un campo breve que se escapa; un límite de frecuencia de un correo por conversación; y una conservación de datos en el proveedor fijada en cero días. Cada requisito limita lo que podría conseguir una inyección aunque llegue al redactor de correos. Enviar solo a la dirección verificada impide el correo a desconocidos; la plantilla y el campo escapado impiden contenido arbitrario; y el límite de frecuencia evita que una sola conversación inunde de correos a un cliente.
+
+### 21.6 Errores y límites
+
+- Servicios de IA fuera de las plataformas estándar.
+- Confiar en la salida de otro agente.
+- Integraciones no documentadas.
+
+El redactor de correos mostraba los tres antes de la revisión de Jonas: funcionaba fuera de las plataformas estándar, habría confiado en el texto de Ask Brightwell y ningún contrato describía la integración. Incorporarlo al inventario y al banco de evaluación resolvió cada uno. Una integración que nadie ha documentado es también una que nadie prueba cuando cambia cualquiera de las partes. Cada integración tiene ahora un contrato, un responsable y un caso en el banco de evaluación, de modo que un cambio en cualquiera de las partes se prueba antes de la publicación.
+
+### Ejercicios
+
+- **EX061 — Lista de comprobación del proveedor.** Redacte seis comprobaciones de la API de un proveedor. Rúbrica: 3 = seis adecuadas; 2 = cuatro o cinco; 1 = dos o tres; 0 = menos.
+- **EX062 — Cadena de agentes.** Explique cómo podría pasar una inyección desde una reseña hasta el redactor de correos y cómo la detienen los controles del redactor de correos. Rúbrica: 3 = camino más el efecto de cada control; 2 = camino y un control; 1 = vago; 0 = nada.
+- **EX063 — Contrato.** Redacte un contrato de integración Ask Brightwell → redactor de correos. Rúbrica: 3 = los siete elementos; 2 = cinco; 1 = tres; 0 = ninguno.
+
+### Síntesis
+
+Integre los servicios de IA en las plataformas estándar, trate cada mensaje entre servicios como no confiable y documente el contrato de cada integración.
+
+### Siga estudiando — capítulo 21 de 30
+
+[← Capítulo 20 (borrador)](#ch-20) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 22 (borrador) →](../../en/book/MANUSCRIPT.md#ch-22)
 
 <a id="worked-results"></a>
 
@@ -1581,6 +1784,55 @@ pass to tool service (which rechecks ownership)
 **EX053.** Los enlaces y las imágenes cuyas URL contienen datos del usuario los filtran al servidor del atacante cuando se muestran o se pulsan. Una inyección puede construir esos enlaces.
 
 **EX054.** «Con 80 casos reservados de inyección indirecta (preproducción, modelo v2, políticas v1), las devoluciones dañinas bajaron de 31 a 0 (cota superior al 95 % ≈ 4 %), mientras que el 97 % de 500 conversaciones normales de devolución siguieron completándose».
+
+**EX055.**
+- Denegaciones de políticas por usuario: escenario de fraude de reembolsos.
+- Cadenas canario en la salida: fuga del índice.
+- *Tokens* por cuenta: avalancha de coste.
+- Llamadas a herramientas por turno que alcanzan el tope: bucle o inyección.
+- Volumen de la API de puntuación por clave: extracción.
+
+**EX056.** Los valores atípicos inflan la media y la desviación típica, lo que hace que parezcan menos extremos. La mediana y la MAD apenas se ven afectadas, así que los valores atípicos destacan.
+
+**EX057.**
+- Significado: el volumen de puntuación de una clave está muy por encima del de sus pares.
+- Comprobar: el patrón de consultas y el titular de la clave.
+- Contener: limitar la frecuencia de la clave o suspenderla.
+- Notificar: al socio y al responsable de seguridad.
+- Cerrar: cuando la causa esté explicada y la clave se haya rotado si estaba comprometida, con una nota en el registro de incidentes.
+
+**EX058.**
+- Modelo: una actualización del modelo del proveedor cambió el comportamiento de rechazo. Compruebe la versión y los avisos de cambios.
+- Datos: el índice está vacío o roto, así que el modelo se niega por falta de contexto. Compruebe los resultados de la recuperación.
+- Configuración: el *prompt* del sistema se editó para hacerlo más estricto. Compruebe el historial de versiones del *prompt*.
+- Ataque: una avalancha de entradas abusivas activó un bloqueo de seguridad del proveedor sobre la clave. Compruebe los errores del proveedor y el volumen.
+
+**EX059.** Serían indicios de un ataque: que la página la hubiera subido una cuenta desconocida o comprometida; que contuviera texto dirigido al asistente; que los fallos se concentraran en determinados usuarios o productos; o que el momento de la subida coincidiera con actividad sospechosa.
+
+**EX060.** Exigir fechas de caducidad y responsables en todos los documentos indexados, con una purga nocturna. Ejecutar una prueba de regresión de las respuestas clave sobre políticas después de cada actualización del índice. Hacer una revisión trimestral del contenido indexado por parte de sus responsables.
+
+**EX061.**
+1. Uso de nuestros datos para entrenamiento y posibilidad de exclusión.
+2. Plazo de conservación.
+3. Región de procesamiento.
+4. Fijación de versiones y avisos de cambios.
+5. Límites de gasto y cuotas.
+6. Plazo de notificación de incidentes y evidencia de pruebas de seguridad.
+
+**EX062.** Una reseña con instrucciones se recupera en el contexto de Ask Brightwell. El modelo pide al redactor de correos que envíe los datos del pedido del cliente a una dirección externa. Controles:
+- Destinatario fijado a la dirección verificada: no es posible ningún destinatario externo.
+- Plantilla fija con un campo breve escapado: poco margen para contenido elaborado.
+- Límite de frecuencia: ningún envío masivo.
+- Conservación cero: limita la exposición en el proveedor.
+
+**EX063.**
+- Datos: identificador del cliente y un campo de mensaje breve de 300 caracteres o menos.
+- Formato: JSON.
+- Validación: el identificador del cliente debe coincidir con la sesión, y el mensaje se escapa y se comprueba en busca de enlaces.
+- Autenticación: una identidad de servicio mediante TLS mutuo.
+- Límite de frecuencia: 1 por conversación.
+- Errores: fallar de forma cerrada y registrar.
+- Contactos: el equipo de plataforma y la persona responsable de marketing.
 
 <a id="references"></a>
 

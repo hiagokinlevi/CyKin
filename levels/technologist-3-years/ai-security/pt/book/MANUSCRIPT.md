@@ -1447,7 +1447,7 @@ Reproduza na homologação, com dados sintéticos. Mantenha as evidências de pr
 
 ### 20.4 Corrigir e prevenir
 
-Corrija a causa, acrescente um teste de regressão ao *harness* e atualize os *runbooks*. Se a causa raiz foi uma premissa de confiança do projeto, corrija o projeto, e não apenas o sintoma. O caso dos 60 dias foi corrigido nos dois níveis: a página vencida foi removida, e o projeto ganhou um campo de validade e uma tarefa noturna para que conteúdo vencido não possa voltar a chegar às respostas. Um teste de regressão pergunta sobre o prazo de devolução a cada mudança. O *runbook* para respostas erradas sobre políticas agora começa pela verificação de conteúdo vencido nos documentos recuperados.
+Corrija a causa, acrescente um teste de regressão ao *harness* e atualize os *runbooks*. Se a causa raiz foi uma premissa de confiança do projeto, corrija o projeto, e não apenas o sintoma. O caso dos 60 dias foi corrigido nos dois níveis: a página vencida foi removida, e o projeto ganhou um campo de validade e uma tarefa noturna para que conteúdo vencido não possa voltar a chegar às respostas. Um teste de regressão pergunta sobre o prazo de devolução a cada mudança. O *runbook* para respostas erradas sobre políticas agora verifica se há conteúdo vencido nos documentos recuperados logo após a verificação das versões.
 
 ### 20.4b Comunicando durante o diagnóstico
 
@@ -1459,7 +1459,7 @@ Clientes relatam que o assistente cita um prazo de devolução de 60 dias; a pol
 
 ### 20.6 Erros e limites
 
-Três erros são comuns: culpar "a IA" sem conferir versões e dados; depurar em produção; e correções sem testes de regressão. O caso dos 60 dias evitou cada um: Jonas conferiu versões e dados antes de culpar o modelo, reproduziu o problema na homologação e acrescentou um teste de regressão. Se ele tivesse depurado em produção, uma pergunta de teste poderia ter chegado à conversa de um cliente real. Sem o teste, a próxima página vencida de campanha traria o mesmo sintoma de volta. O *runbook* agora lista essas verificações nessa ordem. Conferir primeiro as versões e a recuperação leva minutos e descarta as causas mais comuns. Sua primeira etapa é a verificação das versões, e a segunda é a verificação de conteúdo vencido nos documentos recuperados.
+Três erros são comuns: culpar "a IA" sem conferir versões e dados; depurar em produção; e correções sem testes de regressão. O caso dos 60 dias evitou cada um: Jonas conferiu versões e dados antes de culpar o modelo, reproduziu o problema na homologação e acrescentou um teste de regressão. Se ele tivesse depurado em produção, uma pergunta de teste poderia ter chegado à conversa de um cliente real. Sem o teste, a próxima página vencida de campanha traria o mesmo sintoma de volta. O *runbook* agora lista essas verificações nessa ordem: sua primeira etapa é a verificação das versões, e a segunda é a verificação de conteúdo vencido nos documentos recuperados. Conferir primeiro as versões e a recuperação leva minutos e descarta as causas mais comuns.
 
 ### Exercícios
 
@@ -1497,7 +1497,7 @@ Quando um serviço de IA chama outro, trate a resposta como entrada não confiá
 
 ### 21.4 Contratos de integração
 
-Anote, para cada integração: os dados trocados, o formato, as regras de validação, a autenticação, os limites de taxa, o tratamento de erros e a quem contatar. Revise os contratos quando qualquer um dos lados mudar. Na integração do redator de e-mails, o contrato registra que o Ask Brightwell envia um ID de modelo de mensagem e um único campo curto escapado, que os e-mails vão apenas para o endereço verificado, o limite de taxa de um e-mail e os contatos no marketing e na equipe de Jonas. Uma mudança em qualquer um dos lados aciona uma revisão contra esse contrato. O contrato do redator de e-mails é o primeiro escrito dessa forma e agora serve de modelo da Brightwell para as integrações seguintes.
+Anote, para cada integração: os dados trocados, o formato, as regras de validação, a autenticação, os limites de taxa, o tratamento de erros e a quem contatar. Revise os contratos quando qualquer um dos lados mudar. Na integração do redator de e-mails, o contrato registra que o Ask Brightwell envia um ID de modelo de mensagem e um único campo curto escapado, que os e-mails vão apenas para o endereço verificado, o limite de taxa de um e-mail e os contatos no marketing e na equipe de Jonas. O contrato do redator de e-mails é o primeiro escrito dessa forma e agora serve de modelo da Brightwell para as integrações seguintes.
 
 ### 21.4b Testando integrações
 
