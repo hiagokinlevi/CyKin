@@ -174,7 +174,7 @@ Look for them during walk-downs: a small switch inside a cabinet with more cable
 
 Devices can have a second network card, a serial port or a cellular modem that does not show on the drawing. Ask the owner for every interface, not just the main address.
 
-Record each interface in the register, not only the main IP address. A cellular modem added by a machine builder for remote support is a common example, and it can bypass FW-1 entirely. If the owner does not know whether a device has other interfaces, check the manual or ask the supplier before assuming it does not.
+Record each one in the register. A cellular modem added by a machine builder for remote support is a common example, and it can bypass FW-1 entirely. If the owner does not know whether a device has other interfaces, check the manual or ask the supplier before assuming it does not.
 
 ### Worked example (synthetic HPFL)
 
@@ -387,7 +387,7 @@ At HPFL, when Tomás found the admin password on a sticky note, the controls eng
 
 ### Worked example (synthetic HPFL)
 
-Tomás notices a sticky note on HMI-1 reading "admin / Harbor2024". He photographs it as evidence, removes it, tells the supervisor and the controls engineer, and writes a short report. The engineer changes the admin password at the next planned stop and checks the login log for unexpected admin sessions.
+Tomás notices a sticky note on HMI-1 reading "admin / Harbor2024". He photographs it as evidence, removes it, tells the supervisor and the controls engineer, and writes a short report.
 
 > **Synthetic case — HPFL.** The note and password are invented.
 
@@ -434,7 +434,7 @@ At HPFL the scanning station sits outside the line, and site drives are numbered
 
 Only ENG-LT and approved vendor laptops connect to line equipment. An approved laptop is patched, runs anti-malware, has no personal software and is checked before each visit. A vendor laptop that cannot meet that standard uses a site-owned laptop with the vendor's tools installed instead.
 
-Keep a list of approved laptops in the register with their owner and the date each was last checked. At HPFL ENG-LT is the only site laptop allowed to program the PLCs. A vendor laptop that cannot be checked does not connect; the vendor uses a site laptop with their tools instead.
+Keep a list of approved laptops in the register with their owner and the date each was last checked. At HPFL ENG-LT is the only site laptop allowed to program the PLCs. A laptop whose last check is older than the visit is checked again before it connects.
 
 ### 7.4 Transferring files without USB
 
@@ -501,7 +501,7 @@ At HPFL Tomás disabled the vendor's account at 14:38, before the window closed,
 
 ### Worked example (synthetic HPFL)
 
-The wrapper builder needs to read a fault log. The supervisor opens ticket 4471 for 14:00–14:45. Tomás enables the vendor's gateway account, watches the screen share, sees the engineer only open the fault viewer, and disables the account at 14:38. He records the session in the ticket with start and end times.
+The wrapper builder needs to read a fault log. The supervisor opens ticket 4471 for 14:00–14:45. Tomás enables the vendor's gateway account, watches the screen share, sees the engineer only open the fault viewer, and disables the account at 14:38.
 
 > **Synthetic case — HPFL.** The ticket, vendor and times are invented.
 
@@ -536,7 +536,7 @@ You will (1) tell process alarms from security-relevant events; (2) filter a log
 
 HMIs and PLCs report process alarms such as low film or a jam. They also record logins, setting changes and program downloads. Process alarms are handled by operators; the second kind tells you who did what to the system, and that is where security clues usually appear.
 
-At HPFL low film and jam alarms belong to operators. Logins, setpoint changes and program downloads are the records to export and keep. Separating the two keeps the security review short enough to happen every day.
+Logins, setpoint changes and program downloads are the records to export and keep. Separating the two keeps the security review short enough to happen every day. Operators still tell the supervisor about an odd pattern of process alarms, because it can be the first visible sign of a security problem.
 
 ### 9.2 Patterns that matter
 
@@ -922,7 +922,7 @@ At HPFL the temperature mismatch was a failed sensor, and the speed change was a
 
 Do not reboot devices, delete logs, unplug cables or "fix" values before the supervisor and engineer agree; you could destroy the evidence of what happened or create a new hazard.
 
-The supervisor decides whether the line keeps running; the engineer decides how to examine devices. Your part is to photograph, note the time and call. If a hazard requires immediate action, follow normal safety procedures and record what you did. At HPFL Tomás photographed both temperature readings and called the supervisor; he did not reset the sensor. That restraint kept the evidence that later showed the cause.
+The supervisor decides whether the line keeps running; the engineer decides how to examine devices. Your part is to photograph, note the time and call. If a hazard requires immediate action, follow normal safety procedures and record what you did. At HPFL Tomás did not reset the sensor. That restraint kept the evidence that later showed the cause.
 
 ### Worked example (synthetic HPFL)
 
@@ -1030,7 +1030,7 @@ At HPFL HMI-1 was rebuilt from the vendor's image, both PLC programs were compar
 
 Compare restored PLC programs with verified copies, check HMI screens show correct values against local gauges, confirm firewall rules match the approved table, and run the line empty through a test cycle. Quality signs off before product runs.
 
-At HPFL the test cycle ran empty for 30 minutes and quality signed off at 11:20 before production restarted. Record each check and its result in the incident file. If any check fails, the line does not restart until the cause is understood. Keep the comparison results with the incident file.
+At HPFL the test cycle ran empty for 30 minutes and quality signed off at 11:20 before production restarted. Record each check and its result in the incident file. If any check fails, the line does not restart until the cause is understood. The file then shows who approved the restart and on what evidence.
 
 ### 16.3 Watching afterwards
 
