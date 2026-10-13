@@ -1245,7 +1245,7 @@ Active scanning of services requires authorization even inside your organization
 
 At KLS the written scope lists hostnames, ports, the scanner host, the time window and the contact who can stop the scan. Partner SFTP servers are never scanned; their support is learned from KLS's own server logs when partners connect, which needs no permission because it observes KLS's side only.
 
-Agreed windows avoid confusing on-call staff, who would otherwise chase unexplained handshakes.
+KLS runs its TLS group scans on Tuesday mornings and posts the scanner host's address in the SRE channel first; the one scan that ran without notice was paged as a possible intrusion and cost an hour of on-call time.
 
 ### 17.5 Worked example
 
@@ -1312,7 +1312,7 @@ For each service record what remains classical (usually authentication), what is
 
 KLS keeps residual notes in the inventory, one per tier-1 service. A typical entry: "API gateway: key exchange hybrid; certificate ECDSA P-256 (forge-later, awaiting public CA and browser ML-DSA support); payment-provider calls classical (vendor ticket open); owner Platform Team; review 1 March." The review date matters most, because residual notes without dates become permanent acceptance by default.
 
-Unknowns get their own line so they are not mistaken for accepted risk.
+The gateway entry, for instance, carries a separate line "unknown: whether the payment provider's endpoint supports hybrid groups", owned by the Platform Team until the vendor ticket is answered; folding it into the classical line would have recorded a guess as an accepted risk.
 
 ### 18.5 Worked example
 
@@ -1403,7 +1403,7 @@ Logs may arrive minutes or days late; partner-side changes are visible only when
 
 For KLS, ingress logs arrive within two minutes, VPN appliance exports hourly and partner SFTP evidence only when each partner's nightly job runs. The dashboard shows each panel's last data time, and canary decisions on SFTP wait at least a full week so every partner has connected.
 
-Partners that connect monthly appear only in monthly windows.
+Two KLS partners upload only at month end, so a one-week SFTP window would report them as untested rather than as failing; the dashboard lists them separately with their last connection date.
 
 ### 19.5 Worked example
 
@@ -1623,7 +1623,7 @@ Applications that sign or encrypt data should look up algorithms from configurat
 
 KLS's manifest-signing service stores an algorithm identifier with every signature, and the verifier reads which identifiers are acceptable from configuration. When ML-DSA becomes available in the signing library, switching is a policy edit followed by a canary, and old manifests still verify until the classical identifier is retired.
 
-Where an identifier is missing, the verifier rejects rather than guesses.
+A manifest signed before identifiers were added is checked against a dated list of legacy signatures, not by assuming ECDSA; anything outside that list fails verification and goes to the logistics team for re-signing.
 
 ### 22.3 Practical activity — Lab A
 
@@ -1737,7 +1737,7 @@ An evaluation report states objectives, methods, results, deviations, residual r
 
 KLS's report fits on two pages for operations and one for management. The management page leads with the coverage figures, the residual risks with owners and the next decision needed, the internal PKI pilot. Every number links to the query that produced it, so a reader can rerun it.
 
-Deviations, such as the scanners being out of scope, are stated, not omitted.
+The warehouse scanners appear on the first page as a deviation: they stay classical until the four-year vendor refresh, which by the Mosca estimate makes them late for any arrival date below fourteen years.
 
 ### 23.5 Worked example
 
@@ -1828,7 +1828,7 @@ For rare events, sample size decides whether a result is informative. To show a 
 
 KLS planned the warehouse study for 6,000 handshakes per condition for that reason.
 
-Planning the length up front also stops the temptation to end a run early when an interim number looks favourable.
+With 6,000 handshakes and no failures, the upper bound is about 0.05 %, below the 0.1 % target; at 600, the same clean result would only have bounded the rate near 0.5 %.
 
 ### 24.8 Common errors and limits
 
@@ -1871,7 +1871,7 @@ Split by layer (network, platform, application, PKI) and by dependency: tasks th
 
 In the SFTP team the lab and inventory owner finished first because the configuration work needed both; the client-matrix owner prepared test clients in parallel. The shared board lists each task with owner, dependency and definition of done, so a blocked task shows what it waits on.
 
-Work blocked for more than a day is raised at the next stand-up, not left to wait.
+When the client-matrix owner waited on a partner's test credentials, the board showed the dependency, and the SFTP team's one-working-day review rule moved the request to the partner manager at the next morning's stand-up.
 
 ### 25.3 Reviews
 
@@ -1940,7 +1940,7 @@ Operations need: architecture and trace for the flow; the applied crypto profile
 
 Every item is a link in the service repository, not an attachment, so operations always see the current version. KLS's package index lists 12 items with owner and last review date.
 
-Operations should be able to answer any alert using only the package, without calling the team that built the flow.
+KLS tested this at handoff: an SRE who had not seen the SFTP work answered a simulated "hybrid handshake failures above threshold" alert from the package alone, using the runbook's isolate-and-exception steps.
 
 ### 26.2 Runbooks
 
@@ -1954,7 +1954,7 @@ Name owners for the central profiles, the internal CA, exception approvals, the 
 
 At KLS, the Platform Team owns the central profiles and CBOM feeds, the PKI team owns the internal CA, the security office approves exceptions and SRE owns the dashboards and alerts. Each owner is a team with an on-call rotation, recorded in the service catalogue, never a single named person who might leave.
 
-Owners are reviewed every quarter, when teams reorganise or services move between platforms.
+The first quarterly review found the CBOM feed for the VPN appliances still listed under a team that had been merged into the Platform Team; the feed had kept running, but its alerts went to an empty channel.
 
 ### 26.4 Training
 
@@ -1962,7 +1962,7 @@ Run a short session for operators: what changed, how to read the dashboard, what
 
 KLS's session for SRE took 45 minutes: 10 on what changed, 10 on the dashboard, 10 on the runbooks and 15 on the tabletop. The question "can we just remove the hybrid group if handshakes fail?" came up and is now answered in the runbook: no, isolate the path and use an exception.
 
-Attendance and open questions go into the handoff record so later readers see what operators were told.
+The hybrid-group question and its answer are linked from the handoff record, together with the names of the SRE staff who attended and one question still open: how to read the dashboard when a partner connects only monthly.
 
 ### 26.5 Worked example
 
@@ -2104,7 +2104,7 @@ Agree goals with your mentor in week one; ask for review of every change; keep a
 
 A short weekly meeting with the mentor reviews the log and next week's tasks. Students who ask early, for example "which host list is approved for the scanner?", avoid the scope errors that end placements. Mentors also review written artefacts, because a runbook a student wrote will be used by the host's operators.
 
-Agree in week one how the mentor prefers to be asked: chat, tickets or the weekly meeting.
+A KLS student who asked about the scanner host list in a ticket got a written answer naming the approved hosts, which later settled a disagreement about whether a staging proxy had been in scope.
 
 ### 28.4 Reflection
 
@@ -2132,7 +2132,7 @@ Placements are also a test of conduct: respecting confidentiality agreements, no
 
 Conduct also covers what leaves the placement: no screenshots of the host's dashboards in a portfolio without written permission.
 
-Ask before publishing anything from the placement, including anonymised lessons.
+KLS approved one student's write-up on the 1,530-byte ClientHello problem only after proxy-b's model and firmware version were removed, because they would have pointed attackers to an unpatched device.
 
 ### 28.8 Common errors and limits
 
@@ -2142,7 +2142,7 @@ Ask before publishing anything from the placement, including anonymised lessons.
 
 A student who scans a host because it "looked like staging" has acted outside scope, whatever the result; the agreement exists to prevent exactly that. A change merged without the mentor's review, even a log field, bypasses the host's change control. And a log reading "Monday: dashboard; Tuesday: runbook" shows activity but not learning. Each of these costs trust, which is what placements are meant to build.
 
-The host's security office decides whether an out-of-scope action ends the placement.
+At KLS a student who scanned a partner-facing SFTP host instead of the lab copy kept the placement because she reported it within the hour, and the security office recorded the incident with the scan logs she supplied.
 
 ### Exercises
 
@@ -2201,7 +2201,7 @@ Create your capstone repository with the build order as milestones.
 
 Create one milestone per build-order step, with the artefact that closes it: lab build script, inventory and trace files, profile, CI gate, logging and dashboard, runbooks and evaluation data. Add a README stating the flow, the hops and how to build. Open an issue for each known unknown, such as a client type you cannot emulate, so it is tracked from the start rather than discovered at assessment.
 
-Link each milestone to its decision records.
+For the SFTP slice, the profile milestone links to the record choosing the hybrid group and the record listing which partner clients stay classical, so an examiner can see why the gate allows them.
 
 ### 29.7 Security of the build
 
@@ -2264,7 +2264,7 @@ Leave a README, decision records, runbooks and open issues so another team can e
 
 The README states what the slice does, how to build it and what is out of scope. Open issues are written for someone who was not on the team, with the evidence that prompted each and a suggested first step. Decision records and runbooks stay in the repository so the next team inherits the reasoning, not just the configuration.
 
-Leave the self-assessment beside the README so its gaps become the first issues.
+For the SFTP slice, the emulation-only client weakness becomes issue 1, with the matrix row and the reason no real device was available.
 
 ### 30.5 Worked example
 
@@ -2278,13 +2278,13 @@ Rehearse your demonstration with a peer acting as examiner; time each step.
 
 Run the full demonstration end to end with a peer who asks the five questions from the assessment list without warning. Time each step and note where you hesitated or needed a manual command. Fix any step that depended on something not in the repository, then rehearse again. A demonstration that runs within its time twice in a row is ready; one that worked once is not.
 
-Record the timings and compare them with the demonstration plan.
+In KLS rehearsals the slowest step was usually rebuilding the lab after the CI gate demo; one team cut it from nine minutes to two by caching the container images in the repository's build script.
 
 ### 30.7 Self-assessment
 
 Before the assessment, score yourself against each criterion with evidence links, and note one weakness you would fix with more time. Examiners value candidates who see their own gaps; it shows the judgment that operations teams rely on. Include the self-assessment in the handover so future teams know where to start.
 
-Score each criterion 0–3 and give the evidence link for each score.
+For the SFTP capstone, a score of 3 on verification links to the 6,000-handshake run per condition, not just to the dashboard.
 
 Name one weakness, the evidence that shows it and the fix you would make with another week. For the SFTP capstone a fair example is a client type tested only in emulation. Note the weakness openly; examiners treat it as judgment, not as a lost mark.
 
