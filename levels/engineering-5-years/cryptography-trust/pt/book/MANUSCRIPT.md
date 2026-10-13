@@ -1,7 +1,7 @@
 # Criptografia e Serviços de Confiança: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 123, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 50 já estão escritos em português, com os exercícios EX001–EX090 e suas resoluções com rubricas de 0 a 3 e 7 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 31–50 (EX091–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–40 de 50 já estão escritos em português, com os exercícios EX001–EX120 e suas resoluções com rubricas de 0 a 3 e 8 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 41–50 (EX121–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, construir e operar serviços criptográficos de confiança para infraestruturas críticas.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios existem para entender e verificar comportamentos em relação a normas e vetores de teste. Sistemas de produção usam bibliotecas avaliadas e módulos de segurança de hardware (HSMs); nunca crie sua própria criptografia. Pessoas, organizações, chaves e dispositivos são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Katz e Lindell (3ª ed.); Boneh e Shoup, [*A Graduate Course in Applied Cryptogr
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) |
 
-Capítulos 31–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
+Capítulos 41–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-41), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1384,11 +1384,417 @@ Testes de bancada usam condições idealizadas; o comportamento em campo pode se
 
 - **EX090 — Limites da aprovação.** O que passar em todos os testes mostra? *Rubrica:* 3 = ausência de defeitos conhecidos nas condições testadas, não de todos os defeitos;; 2 = limitado;; 1 = prova a segurança;; 0 = nenhuma.
 
+<a id="ch-31"></a>
+
+## Capítulo 31 — Criptografia e serviços de confiança: implementação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) implantar o TLS 1.3 com autenticação mútua para os concentradores; (2) automatizar a emissão e a renovação de certificados; (3) evitar erros comuns de configuração do TLS.
+
+### 31.1 TLS mútuo para os concentradores
+
+Os concentradores se conectam ao gateway da Ridgeway usando o TLS 1.3 da RFC 8446 com autenticação mútua: o gateway apresenta seu certificado, e cada concentrador apresenta um certificado de cliente emitido pela autoridade de dispositivos da Ridgeway. O gateway confere que o certificado se encadeia até a autoridade de dispositivos, não expirou e não foi revogado e associa seu titular a um registro de concentrador. Aiyana configura o gateway para aceitar apenas o TLS 1.3, removendo as versões mais antigas e suas suítes de cifras legadas, o que simplifica a configuração e elimina classes inteiras de problemas de rebaixamento (downgrade).
+
+### 31.2 Automatizar os certificados
+
+Os certificados dos concentradores duram noventa dias e são renovados automaticamente por um serviço ACME interno, usando o protocolo da RFC 8555. Cada concentrador gera seu par de chaves localmente, de modo que a chave privada nunca sai do dispositivo, e solicita um certificado provando o controle da sua identidade. A renovação começa quando resta um terço da validade. Renovações que falham geram alertas, seguindo a lição de que a automação pode falhar silenciosamente. Aiyana testa a renovação adiantando o relógio de um concentrador de teste e confirmando que ele renova e que o gateway aceita o novo certificado.
+
+### 31.3 Armadilhas de configuração
+
+Aiyana lista os erros de TLS que ela verifica: desativar a verificação de certificados nos clientes para contornar um erro; confiar nas raízes públicas do sistema operacional para os certificados de dispositivos, em vez de apenas na autoridade da Ridgeway; pular as verificações de nome de host ou de identidade; e usar uma mesma chave de certificado em muitos concentradores. Ela escreve testes automatizados de configuração que se conectam com um certificado expirado, um certificado de outra autoridade e um certificado revogado e confirma que cada um é rejeitado. Esses testes rodam sempre que a configuração do gateway muda. Um teste que falha bloqueia a implantação até que alguém corrija a causa.
+
+### Exemplo resolvido
+
+Aiyana implanta a autenticação mútua somente com TLS 1.3, com certificados ACME de noventa dias gerados no dispositivo, e acrescenta testes de configuração para certificados expirados, de outras autoridades e revogados.
+
+> **Caso sintético.** A autoridade de dispositivos é inventada; a RFC 8446 e a RFC 8555 são reais.
+
+### Erros e limites
+
+O TLS mútuo aumenta o trabalho de gerenciamento de certificados; a automação precisa ser monitorada. Confiar em raízes públicas para uma identidade privada de dispositivos permite que pessoas de fora se autentiquem.
+
+### Exercícios
+
+- **EX091 — Autenticação mútua.** O que o TLS mútuo acrescenta para os concentradores? *Rubrica:* 3 = os concentradores apresentam certificados de cliente da autoridade de dispositivos da Ridgeway, verificados pelo gateway;; 2 = certificado de cliente;; 1 = cifração;; 0 = nenhuma.
+
+- **EX092 — Local da geração das chaves.** Onde são geradas as chaves privadas dos concentradores, e por quê? *Rubrica:* 3 = no concentrador, para que as chaves nunca saiam do dispositivo;; 2 = localmente;; 1 = centralmente;; 0 = nenhuma.
+
+- **EX093 — Armadilha das raízes.** Por que não confiar em raízes públicas para os certificados de dispositivos? *Rubrica:* 3 = qualquer pessoa com um certificado público poderia se autenticar como dispositivo; confiar apenas na autoridade da Ridgeway;; 2 = pessoas de fora;; 1 = tudo bem;; 0 = nenhuma.
+
+<a id="ch-32"></a>
+
+## Capítulo 32 — Criptografia e serviços de confiança: confiabilidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) modelar a disponibilidade dos custodiantes de chaves e dos serviços; (2) escolher tamanhos de quórum para a recuperação; (3) projetar redundância sem enfraquecer a segurança.
+
+### 32.1 Confiabilidade das pessoas e dos serviços
+
+Uma chave que não pode ser usada quando necessário é uma falha de confiabilidade. Aiyana modela o processo de recuperação da raiz do firmware, que exige custodiantes com smart cards. Se apenas um custodiante guardar o backup da raiz, a raiz ficará indisponível sempre que essa pessoa estiver doente ou viajando, e perdida se ela sair. Se todos os cinco precisarem estar presentes, a disponibilidade cai bruscamente. Esquemas de quórum, em que quaisquer m de n custodiantes bastam, equilibram as duas coisas. Ela usa probabilidade para escolher m e n, dada a disponibilidade de cada custodiante.
+
+### Laboratório — Quórum de custodiantes
+
+```python
+"""Probability that at least m of n key custodians are reachable (each independently with prob a)."""
+from math import comb
+
+def at_least(m, n, a):
+    return sum(comb(n, k) * a ** k * (1 - a) ** (n - k) for k in range(m, n + 1))
+
+def main():
+    for m, n in [(1, 1), (2, 3), (3, 5), (5, 5)]:
+        print(f"{m}-of-{n}, each 0.90 reachable: P = {at_least(m, n, 0.90):.4f}")
+
+if __name__ == "__main__":
+    main()
+```
+
+Execute com `python3 lab_quorum.py`. Saída verificada:
+
+```text
+1-of-1, each 0.90 reachable: P = 0.9000
+2-of-3, each 0.90 reachable: P = 0.9720
+3-of-5, each 0.90 reachable: P = 0.9914
+5-of-5, each 0.90 reachable: P = 0.5905
+```
+
+### 32.2 Ler os resultados do quórum
+
+Com cada custodiante alcançável 90 por cento do tempo, um único custodiante dá disponibilidade de 0,90, dois de três dão 0,972, três de cinco dão 0,9914, e exigir todos os cinco dá apenas 0,5905. Exigir todo mundo é pior do que depender de uma só pessoa. Aiyana recomenda três de cinco para a raiz: alta disponibilidade, e nenhum par de custodiantes consegue conspirar para recuperar a chave sozinho. O recurso de divisão de chaves do fornecedor do HSM implementa a divisão; ela não implementa por conta própria o compartilhamento de segredos, coerente com a regra contra a criptografia caseira. Sua escolha é registrada na política de gerenciamento de chaves.
+
+### 32.3 Redundância para os serviços
+
+Para o serviço de chaves online, Aiyana projeta réplicas ativo-standby em dois data centers, com as chaves replicadas em forma cifrada entre HSMs do mesmo modelo. A replicação usa o mecanismo seguro de transferência de chaves do fornecedor, de modo que as chaves nunca aparecem em texto claro. O failover é testado a cada trimestre. Ela registra um trade-off: mais réplicas significam mais lugares a proteger e auditar. Ela limita as réplicas a dois sites e exige os mesmos controles físicos em ambos. Confiabilidade e segurança só se reforçam mutuamente quando a redundância é projetada com o mesmo rigor que o sistema primário.
+
+### Exemplo resolvido
+
+Aiyana escolhe um quórum de três de cinco custodiantes (disponibilidade de 0,9914) implementado pelo fornecedor do HSM e réplicas ativo-standby do serviço de chaves em dois sites, com testes trimestrais de failover.
+
+> **Caso sintético.** Os números de disponibilidade são premissas inventadas.
+
+### Erros e limites
+
+As premissas de independência falham se os custodiantes viajarem juntos ou trabalharem no mesmo prédio. Mais réplicas aumentam a superfície de ataque.
+
+### Exercícios
+
+- **EX094 — Quórum de todos os cinco.** Que disponibilidade se obtém exigindo todos os cinco custodiantes, e por que isso é ruim? *Rubrica:* 3 = 0,5905, pior do que um único custodiante;; 2 = número;; 1 = bom;; 0 = nenhuma.
+
+- **EX095 — Quórum recomendado.** Que quórum Aiyana recomenda, e por quê? *Rubrica:* 3 = três de cinco: disponibilidade de 0,9914, e nenhum par consegue conspirar;; 2 = 3 de 5;; 1 = 1 de 1;; 0 = nenhuma.
+
+- **EX096 — Implementação da divisão.** Quem implementa a divisão da chave, e por quê? *Rubrica:* 3 = o recurso do fornecedor do HSM, evitando a criptografia caseira;; 2 = fornecedor;; 1 = Aiyana;; 0 = nenhuma.
+
+<a id="ch-33"></a>
+
+## Capítulo 33 — Criptografia e serviços de confiança: segurança e resiliência
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar um comportamento seguro para quando as verificações criptográficas falham; (2) planejar o comprometimento de chaves de assinatura; (3) incorporar resiliência aos medidores e aos serviços.
+
+### 33.1 Falhar com segurança
+
+Partindo do Capítulo 10, Aiyana especifica o comportamento para cada falha criptográfica. Se a tag de uma leitura falha, o faturamento a guarda em quarentena e alerta, em vez de descartá-la, para que a evidência permaneça. Se a assinatura de um firmware falha, o medidor mantém o firmware atual e reporta. Se o certificado de um concentrador expira, o concentrador guarda as leituras em buffer por até sete dias enquanto alerta as operações, de modo que as leituras atrasam, mas não se perdem. Cada comportamento é testado. O objetivo é que as falhas criptográficas causem atrasos visíveis e recuperáveis, e não perda silenciosa de dados ou estados inseguros.
+
+### 33.2 Comprometimento da chave de assinatura
+
+Aiyana planeja para o pior caso: a chave de assinatura intermediária do firmware vaza. O runbook de resposta revoga a intermediária publicando uma revogação assinada pela raiz offline, emite uma nova intermediária numa cerimônia, assina de novo o firmware atual e envia uma atualização que instala a confiança na nova intermediária. Como os medidores verificam a cadeia contra a raiz, a intermediária revogada se torna inútil. Ela estima o tempo para concluir a resposta e a pratica num exercício de mesa (tabletop), identificando passos lentos, como reunir os custodiantes em cima da hora.
+
+### 33.3 Recursos de resiliência
+
+Aiyana acrescenta recursos que ajudam o sistema a sobreviver a surpresas: os medidores guardam duas âncoras de confiança, a raiz atual e uma raiz de reserva pré-provisionada, mantida offline e criada numa cerimônia separada, para que a perda da raiz primária seja contornável; o firmware oferece agilidade de algoritmos, permitindo um futuro esquema de assinatura pós-quântica do FIPS 204 ou do FIPS 205; e os concentradores podem recorrer a um segundo gateway. A resiliência custa dinheiro e complexidade, então cada recurso é ligado a um risco específico da análise. Cada recurso é revisado anualmente para confirmar que seu risco ainda existe.
+
+### Exemplo resolvido
+
+Aiyana especifica a quarentena para leituras que falham, a manutenção do firmware atual quando o novo falha, o buffer de sete dias para certificados de concentradores expirados e um runbook ensaiado para o comprometimento da chave intermediária, com uma raiz de reserva.
+
+> **Caso sintético.** O runbook e os recursos são inventados; o FIPS 204 e o FIPS 205 são reais.
+
+### Erros e limites
+
+As raízes de reserva precisam ser protegidas com tanto cuidado quanto as primárias. Runbooks não testados falham sob pressão.
+
+### Exercícios
+
+- **EX097 — Comportamento com tag inválida.** O que acontece com uma leitura cuja tag falha? *Rubrica:* 3 = fica em quarentena com alerta, não é descartada, preservando a evidência;; 2 = quarentena;; 1 = descartada;; 0 = nenhuma.
+
+- **EX098 — Comprometimento da intermediária.** Resuma a resposta a um vazamento da chave intermediária do firmware. *Rubrica:* 3 = revogação assinada pela raiz, nova intermediária em cerimônia, nova assinatura do firmware, envio da nova confiança;; 2 = parcial;; 1 = ignorar;; 0 = nenhuma.
+
+- **EX099 — Raiz de reserva.** Por que os medidores guardam uma raiz de reserva? *Rubrica:* 3 = a perda ou o comprometimento da raiz primária continua contornável;; 2 = resiliência;; 1 = nenhum motivo;; 0 = nenhuma.
+
+<a id="ch-34"></a>
+
+## Capítulo 34 — Criptografia e serviços de confiança: integração
+
+### Objetivos de aprendizagem
+
+Você vai (1) integrar o serviço de confiança ao faturamento, às operações de campo e ao monitoramento; (2) definir contratos de interface; (3) testar os fluxos de ponta a ponta.
+
+### 34.1 Pontos de integração
+
+O serviço de confiança toca muitos sistemas: o faturamento verifica as leituras, as operações de campo provisionam medidores substitutos, o monitoramento recebe alertas, o sistema de build solicita assinaturas de firmware e o gerenciamento de identidades controla o acesso da equipe. Aiyana lista cada integração com seus dados, protocolo e autenticação. Ela descobre que a ferramenta portátil das operações de campo precisa solicitar uma nova chave de medidor durante a substituição, o que não tinha sido projetado. A análise de integração revela fluxos ausentes como esse antes da implantação, quando mudar as interfaces ainda é barato. Ela registra cada fluxo numa tabela compartilhada que as equipes donas revisam juntas.
+
+### 34.2 Contratos de interface
+
+Para cada integração, Aiyana escreve um contrato: formatos de requisição e de resposta, códigos de erro, limites de taxa, método de autenticação e o que acontece quando o tempo se esgota (timeout). O contrato de assinatura diz que o sistema de build envia o digest do manifesto, e não a imagem inteira, e só recebe uma assinatura se dois aprovadores tiverem autorizado a versão. O contrato de provisionamento de chaves diz que as ferramentas portáteis nunca recebem chaves de medidor; elas recebem um blob cifrado que só o elemento seguro do medidor de destino consegue desembrulhar. Os contratos permitem que as equipes trabalhem de forma independente, preservando as propriedades de segurança.
+
+### 34.3 Testes de ponta a ponta
+
+Aiyana executa testes de ponta a ponta que atravessam todas as integrações: provisionar um medidor substituto, obter uma leitura, verificá-la no faturamento, enviar uma atualização de firmware, revogar o medidor antigo e confirmar que suas leituras são rejeitadas. Os testes rodam num ambiente de homologação (staging) com chaves sintéticas. Um teste revela que o faturamento ainda aceita as leituras do medidor antigo, porque o evento de revogação vai para o monitoramento, mas não para o faturamento. A correção encaminha as revogações por uma fila de mensagens que todos os verificadores assinam. Esses testes rodam antes de cada versão de qualquer sistema conectado.
+
+### Exemplo resolvido
+
+Aiyana mapeia cinco integrações, escreve contratos para a assinatura e o provisionamento e descobre, com testes de ponta a ponta, que os eventos de revogação nunca chegavam ao faturamento.
+
+> **Caso sintético.** Os sistemas são inventados.
+
+### Erros e limites
+
+Os contratos se desviam se não forem testados automaticamente. Os testes de ponta a ponta são lentos, então mantenha-os focados nos fluxos críticos para a segurança.
+
+### Exercícios
+
+- **EX100 — Fluxo ausente.** Que fluxo faltava antes da análise de integração? *Rubrica:* 3 = a ferramenta portátil solicitando uma nova chave de medidor durante a substituição;; 2 = provisionamento;; 1 = nenhum;; 0 = nenhuma.
+
+- **EX101 — Blob da ferramenta portátil.** Por que as ferramentas portáteis recebem um blob cifrado em vez de uma chave? *Rubrica:* 3 = só o elemento seguro do medidor consegue desembrulhá-lo, então as ferramentas nunca guardam chaves;; 2 = proteger a chave;; 1 = velocidade;; 0 = nenhuma.
+
+- **EX102 — Encaminhamento da revogação.** O que os testes de ponta a ponta revelaram sobre a revogação, e o que corrigiu isso? *Rubrica:* 3 = as revogações chegavam ao monitoramento, mas não ao faturamento; encaminhá-las por uma fila que todos os verificadores assinam;; 2 = só o achado;; 1 = só a correção;; 0 = nenhuma.
+
+<a id="ch-35"></a>
+
+## Capítulo 35 — Ateliê de projeto II
+
+### Objetivos de aprendizagem
+
+Você vai (1) reprojetar o sistema para um novo requisito; (2) avaliar a prontidão pós-quântica; (3) apresentar um plano de migração para crítica.
+
+### 35.1 O novo requisito
+
+No segundo ateliê de projeto, o regulador anuncia que as companhias precisam planejar a migração das assinaturas de longa duração para algoritmos pós-quânticos. Os medidores duram quinze anos, então o firmware assinado hoje precisa continuar verificável e seguro até por volta de 2041. A equipe de Aiyana precisa reprojetar a assinatura do firmware para que os medidores aceitem assinaturas pós-quânticas sem substituição de hardware. Eles leem o FIPS 204, do ML-DSA, e o FIPS 205, do SLH-DSA, e anotam que ambos produzem assinaturas e chaves muito maiores que as do Ed25519 ou do ECDSA. A equipe também lê as orientações de transição do NIST, para que o plano acompanhe os prazos esperados, e registra quais gerações de medidores podem ser atualizadas em campo.
+
+### 35.2 Avaliar as opções
+
+A equipe compara as opções. O ML-DSA oferece assinaturas de tamanho moderado, de alguns kilobytes, e verificação rápida; o SLH-DSA depende apenas de funções de hash, oferecendo premissas de segurança conservadoras, com assinaturas maiores. Um esquema híbrido exige que tanto uma assinatura clássica quanto uma pós-quântica sejam verificadas, protegendo contra a falha de qualquer uma delas. Para o firmware, o tamanho importa menos do que para as leituras, porque as atualizações são pouco frequentes. A equipe propõe assinaturas híbridas ECDSA mais ML-DSA nos manifestos, com os medidores aceitando o firmware apenas quando as duas forem verificadas, e uma fase posterior que abandona a assinatura clássica.
+
+### 35.3 Crítica e plano
+
+Os revisores questionam se os medidores têm memória e flash suficientes para verificar assinaturas pós-quânticas. A equipe mede com a biblioteca do fornecedor num medidor de teste e descobre que a verificação cabe, mas exige uma atualização de firmware do bootloader, que por sua vez precisa ser assinada de forma clássica. Eles escrevem um plano de migração: atualizar agora os bootloaders com assinaturas clássicas, introduzir em seguida os manifestos híbridos e aposentar a verificação somente clássica depois que a confiança aumentar. Cada passo tem um rollback. Os revisores aceitam o plano, com o pedido de acompanhar as orientações do NIST sobre os prazos de transição.
+
+### Exemplo resolvido
+
+A equipe propõe assinaturas híbridas ECDSA mais ML-DSA nos manifestos, verifica a viabilidade num medidor de teste e escalona a migração por meio de uma atualização do bootloader assinada de forma clássica.
+
+> **Caso sintético.** A regra do regulador e as medições são inventadas; o FIPS 204 e o FIPS 205 são reais.
+
+### Erros e limites
+
+Esquemas híbridos aumentam a complexidade e o tamanho; precisam ser projetados por especialistas e implementados com bibliotecas avaliadas. Os prazos mudam, então os planos precisam de revisão.
+
+### Exercícios
+
+- **EX103 — Por que planejar agora.** Por que a Ridgeway precisa planejar agora a assinatura pós-quântica do firmware? *Rubrica:* 3 = os medidores duram quinze anos, então as assinaturas precisam continuar seguras até por volta de 2041;; 2 = vida longa;; 1 = não é preciso;; 0 = nenhuma.
+
+- **EX104 — Regra híbrida.** Como o esquema híbrido proposto aceita o firmware? *Rubrica:* 3 = só quando as assinaturas ECDSA e ML-DSA forem ambas verificadas;; 2 = ambas;; 1 = qualquer uma;; 0 = nenhuma.
+
+- **EX105 — Passo do bootloader.** Por que o plano começa com uma atualização do bootloader? *Rubrica:* 3 = verificar assinaturas PQ exige um bootloader atualizado, ele próprio assinado de forma clássica;; 2 = bootloader;; 1 = pular;; 0 = nenhuma.
+
+<a id="ch-36"></a>
+
+## Capítulo 36 — Criptografia e serviços de confiança: desempenho e escala
+
+### Objetivos de aprendizagem
+
+Você vai (1) estimar a carga de trabalho criptográfica na escala da frota; (2) ajustar os custos do hash de senhas e da verificação; (3) planejar a capacidade para os picos.
+
+### 36.1 Carga da frota
+
+Aiyana estima a carga: 50.000 medidores reportando a cada hora produzem cerca de 1,2 milhão de leituras por dia, e cada uma precisa de uma verificação HMAC. O HMAC-SHA256 sobre mensagens curtas leva microssegundos em servidores modernos, então a verificação é barata; o gargalo está nas gravações no banco de dados e nas consultas de chaves. Ela projeta um cache de chaves derivadas na memória protegida do verificador, renovado quando as chaves são rotacionadas. Estimar primeiro evita desperdiçar otimização na criptografia quando o custo real está em outro lugar. Ela confirma a estimativa com um teste de carga em homologação, que mostra o HMAC usando menos de um por cento do processador, enquanto a fila do banco de dados cresce durante as rajadas.
+
+### 36.2 Custos do hash de senhas
+
+O portal dos clientes usa o Argon2id da RFC 9106, que é deliberadamente lento. Aiyana ajusta os parâmetros para que cada login leve cerca de meio segundo no servidor e use memória suficiente para atrasar atacantes com hardware especializado. No pico, quando as contas são emitidas, milhares de clientes entram em uma hora. Ela calcula a capacidade de servidor necessária e acrescenta limitação de taxa por conta e por endereço de rede, para que os atacantes não possam usar os logins para esgotar os recursos. O ajuste equilibra a experiência do usuário, a capacidade e a resistência a palpites offline.
+
+### 36.3 Planejar os picos
+
+As implantações de firmware criam picos: se todos os 50.000 medidores baixassem e verificassem ao mesmo tempo, os concentradores ficariam saturados. Aiyana escalona as atualizações em ondas de cinco por cento, monitora os resultados das verificações e pausa automaticamente se as falhas excederem um limiar. As renovações de certificados também são espalhadas, acrescentando um jitter aleatório aos horários de renovação, o que evita a situação em que todos os concentradores renovam no mesmo minuto. O planejamento de capacidade para a criptografia costuma ser uma questão de agendamento, e não de velocidade bruta. Ela também ensaia uma pausa da implantação, para que os operadores saibam interromper rapidamente uma onda se as falhas de verificação aumentarem durante uma atualização.
+
+### Exemplo resolvido
+
+Aiyana estima 1,2 milhão de verificações diárias, guarda em cache as chaves derivadas, ajusta o Argon2id para cerca de meio segundo com limites de taxa e escalona o firmware e as renovações.
+
+> **Caso sintético.** Os números de carga são inventados; a RFC 9106 é real.
+
+### Erros e limites
+
+Reduzir o custo do hash de senhas para economizar capacidade enfraquece a proteção. Os caches de chaves precisam ser protegidos como o serviço de chaves.
+
+### Exercícios
+
+- **EX106 — Leituras diárias.** Quantas leituras por dia a frota produz? *Rubrica:* 3 = cerca de 1,2 milhão;; 2 = ordem de grandeza certa;; 1 = errado;; 0 = nenhuma.
+
+- **EX107 — Gargalo real.** Onde está o gargalo da verificação das leituras? *Rubrica:* 3 = nas gravações no banco de dados e nas consultas de chaves, não no HMAC;; 2 = banco de dados;; 1 = HMAC;; 0 = nenhuma.
+
+- **EX108 — Jitter da renovação.** Por que acrescentar jitter às renovações de certificados? *Rubrica:* 3 = para evitar que todos os concentradores renovem ao mesmo tempo e sobrecarreguem os serviços;; 2 = espalhar a carga;; 1 = segurança;; 0 = nenhuma.
+
+<a id="ch-37"></a>
+
+## Capítulo 37 — Criptografia e serviços de confiança: operações
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever runbooks operacionais para tarefas rotineiras com chaves; (2) rotacionar chaves sem indisponibilidade; (3) tratar incidentes que envolvem chaves.
+
+### 37.1 Runbooks de rotina
+
+Aiyana escreve runbooks para as tarefas de rotina: rotacionar as chaves das leituras, renovar os certificados do gateway, acrescentar um custodiante, substituir um HSM e responder a alertas de falhas de verificação. Cada runbook lista pré-condições, passos, verificações e rollback. Ela testa cada um com um operador que não o escreveu e revisa os passos pouco claros. Os runbooks transformam o conhecimento especializado em operações repetíveis e reduzem os erros às 3 da manhã, quando os incidentes parecem acontecer. Eles também dão aos auditores evidências de que os procedimentos existem e são seguidos. Cada runbook nomeia seu dono e a data em que foi exercitado pela última vez.
+
+### 37.2 Rotação sem indisponibilidade
+
+Rotacionar as chaves das leituras de 50.000 medidores não pode acontecer de uma só vez. Aiyana projeta uma validade sobreposta: o serviço de chaves deriva as chaves da versão 4 e as envia aos medidores em ondas; o faturamento aceita tags das versões 3 e 4 durante a transição; depois que todos os medidores confirmam, a versão 3 é desativada e usada apenas para verificar leituras históricas. A versão da chave em cada mensagem, acrescentada no Ateliê de projeto I, torna isso possível. O monitoramento acompanha a proporção de leituras na nova versão, dando aos operadores uma visão clara do progresso.
+
+### 37.3 Incidentes com chaves
+
+Quando um técnico relata a perda de uma ferramenta portátil, a equipe de Aiyana segue o runbook de incidentes com chaves: confirmar o que a ferramenta podia acessar, que, segundo o Capítulo 34, são apenas blobs cifrados; revogar as credenciais da própria ferramenta; revisar os logs em busca de uso indevido; e registrar o incidente. Como as ferramentas portáteis nunca guardam chaves de medidor, nenhuma rotação nos medidores é necessária. Ela contrasta isso com um incidente hipotético em que vazam as credenciais de um administrador do serviço de chaves, o que exigiria uma rotação mais ampla. Projetos que limitam o que cada componente guarda tornam os incidentes pequenos.
+
+### Exemplo resolvido
+
+Os runbooks de Aiyana são testados por outros operadores, as chaves das leituras da versão 4 são implantadas com aceitação sobreposta e a perda de uma ferramenta portátil é contida sem rotação nos medidores.
+
+> **Caso sintético.** Os incidentes e as versões são inventados.
+
+### Erros e limites
+
+Períodos de sobreposição que nunca terminam deixam chaves antigas ativas. Os runbooks precisam ser atualizados depois de cada uso.
+
+### Exercícios
+
+- **EX109 — Teste dos runbooks.** Como Aiyana testou os runbooks? *Rubrica:* 3 = um operador que não os escreveu os seguiu, e os passos pouco claros foram revisados;; 2 = testados;; 1 = não testados;; 0 = nenhuma.
+
+- **EX110 — Validade sobreposta.** Como as chaves das leituras são rotacionadas sem indisponibilidade? *Rubrica:* 3 = enviar a v4 em ondas, o faturamento aceita v3 e v4, desativar a v3 depois que todos confirmam;; 2 = sobreposição;; 1 = tudo de uma vez;; 0 = nenhuma.
+
+- **EX111 — Ferramenta portátil perdida.** Por que a ferramenta perdida não exigiu rotação nos medidores? *Rubrica:* 3 = as ferramentas guardam apenas blobs cifrados, nunca chaves de medidor;; 2 = sem chaves;; 1 = sorte;; 0 = nenhuma.
+
+<a id="ch-38"></a>
+
+## Capítulo 38 — Criptografia e serviços de confiança: validação
+
+### Objetivos de aprendizagem
+
+Você vai (1) validar que o serviço de confiança atende às necessidades das partes interessadas; (2) contratar testes independentes; (3) interpretar com honestidade os resultados da validação.
+
+### 38.1 Verificação versus validação
+
+A verificação pergunta se o sistema foi construído conforme especificado; a validação pergunta se ele atende às necessidades reais. Os laboratórios de Aiyana verificaram os requisitos. A validação pergunta às partes interessadas: os técnicos provisionam medidores em menos de dez minutos? Os operadores entendem os alertas? O regulador aceita as evidências? Ela conduz um piloto de campo com 500 medidores num distrito durante três meses, coletando dados sobre cada medida de sucesso do Capítulo 20. Vários requisitos foram atendidos no laboratório, mas não em campo, como o tempo de provisionamento quando o sinal móvel é fraco.
+
+### 38.2 Testes independentes
+
+A Ridgeway contrata uma empresa de segurança independente para tentar forjar leituras, instalar firmware não assinado e extrair chaves de uma amostra de medidores, com autorização por escrito e num distrito de teste. A empresa não encontra como forjar leituras nem instalar firmware não assinado, mas extrai a chave de um protótipo de medidor sem elemento seguro, confirmando a decisão anterior de exigir elementos seguros. Os testes independentes trazem uma criatividade de atacante que falta à equipe de projeto e fornecem evidências críveis ao regulador.
+
+### 38.3 Interpretação honesta
+
+Aiyana escreve o relatório de validação. O provisionamento atingiu a meta de dez minutos em 91 por cento dos casos; as falhas vieram de sinal fraco, tratadas permitindo o provisionamento offline com sincronização posterior. Nenhuma leitura forjada foi aceita nos testes, mas ela anota que o teste cobriu três meses e um distrito. As atualizações de firmware chegaram a 97 por cento dos medidores do piloto em até trinta dias, abaixo da meta de 99 por cento, porque alguns medidores estavam inalcançáveis em caixas inundadas. Ela relata as metas não atingidas com a mesma clareza que os sucessos, com ações corretivas. As ações corretivas recebem donos e datas para a revisão seguinte.
+
+### Exemplo resolvido
+
+O piloto com 500 medidores e o teste independente não mostram falsificação nem firmware não assinado, confirmam a decisão pelo elemento seguro e relatam, com as correções, as metas não atingidas de provisionamento e de alcance do firmware.
+
+> **Caso sintético.** O piloto, a empresa e os números são inventados.
+
+### Erros e limites
+
+A validação num distrito pode não representar toda a área de atendimento. Os testes independentes são limitados pelo escopo e pelo tempo.
+
+### Exercícios
+
+- **EX112 — Pergunta da validação.** Em que a validação difere da verificação? *Rubrica:* 3 = a validação confere as necessidades reais das partes interessadas; a verificação confere o que foi construído contra a especificação;; 2 = diferença parcial;; 1 = iguais;; 0 = nenhuma.
+
+- **EX113 — Extração de chave.** O que o teste independente extraiu, e o que isso confirmou? *Rubrica:* 3 = uma chave de um protótipo sem elemento seguro, confirmando o requisito de elemento seguro;; 2 = achado;; 1 = nada;; 0 = nenhuma.
+
+- **EX114 — Meta do firmware não atingida.** Que resultado do firmware ficou abaixo da meta, e por quê? *Rubrica:* 3 = 97 por cento em trinta dias contra 99, por causa de medidores inalcançáveis em caixas inundadas;; 2 = número;; 1 = motivo;; 0 = nenhuma.
+
+<a id="ch-39"></a>
+
+## Capítulo 39 — Criptografia e serviços de confiança: manutenibilidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar para a agilidade criptográfica; (2) gerenciar a obsolescência de algoritmos ao longo do tempo; (3) manter a documentação e o conhecimento atualizados.
+
+### 39.1 Agilidade criptográfica
+
+Os algoritmos envelhecem. O SHA-1 passou de recomendado a obsoleto durante a vida útil de sistemas que ainda estão em uso. Aiyana projeta o serviço de confiança da Ridgeway para a agilidade: as mensagens e os manifestos carregam identificadores de algoritmo; os verificadores aceitam um conjunto configurado de algoritmos; e as chaves são marcadas com seu algoritmo no inventário. Mudar de algoritmo vira então uma tarefa de configuração e implantação, e não um novo projeto. Ela adverte que a agilidade não pode permitir que os atacantes escolham opções fracas, então os verificadores recusam algoritmos removidos da lista de permitidos.
+
+### 39.2 Gerenciar a obsolescência
+
+Aiyana estabelece um processo de obsolescência. A cada ano, a equipe de segurança revisa as orientações do NIST, como o SP 800-131A sobre a transição de algoritmos e tamanhos de chave, e atualiza uma lista de algoritmos aprovados com datas de aposentadoria planejadas. O inventário informa quantas chaves usam cada algoritmo, para que a aposentadoria possa ser planejada. Quando um algoritmo é programado para remoção, a equipe primeiro deixa de criar novas chaves com ele, depois migra os usos existentes e, por fim, remove o suporte à verificação depois de um período de carência. A obsolescência vira rotina, e não emergência.
+
+### 39.3 Documentação e conhecimento
+
+A manutenibilidade também diz respeito às pessoas. Aiyana mantém os documentos de arquitetura, os registros de decisão, os runbooks e o inventário num único repositório com histórico de mudanças. Cada documento tem um dono e uma data de revisão. Os novos engenheiros seguem uma trilha de integração que inclui uma rotação de chaves supervisionada em homologação. Ela anota que muitos incidentes criptográficos em sistemas antigos começaram quando ninguém lembrava por que um projeto tinha sido escolhido, de modo que a gestão do conhecimento é um controle de segurança tão real quanto um HSM. As datas de revisão aparecem no painel, para que documentos desatualizados fiquem visíveis.
+
+### Exemplo resolvido
+
+Aiyana acrescenta identificadores de algoritmo e listas de permitidos, uma revisão anual de obsolescência baseada no SP 800-131A e documentação com donos, com integração por meio de uma rotação supervisionada.
+
+> **Caso sintético.** O processo da Ridgeway é inventado; o SP 800-131A é uma publicação real do NIST.
+
+### Erros e limites
+
+A agilidade pode introduzir ataques de rebaixamento se opções fracas continuarem aceitas. Documentação sem dono se degrada.
+
+### Exercícios
+
+- **EX115 — Mecanismo de agilidade.** Cite dois mecanismos que dão agilidade. *Rubrica:* 3 = identificadores de algoritmo nas mensagens, listas de permitidos configuradas, marcação do algoritmo no inventário;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
+
+- **EX116 — Passos da obsolescência.** Quais são os três passos para aposentar um algoritmo? *Rubrica:* 3 = parar de criar novas chaves, migrar os usos existentes, remover a verificação depois da carência;; 2 = dois;; 1 = um;; 0 = nenhuma.
+
+- **EX117 — Risco de conhecimento.** Por que a gestão do conhecimento é um controle de segurança? *Rubrica:* 3 = incidentes começam quando ninguém lembra por que os projetos foram escolhidos;; 2 = memória;; 1 = não é;; 0 = nenhuma.
+
+<a id="ch-40"></a>
+
+## Capítulo 40 — Laboratório de verificação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) testar a resistência física e a canais laterais dos medidores; (2) executar um teste de injeção de falhas no serviço de confiança; (3) documentar o risco residual.
+
+### 40.1 Testes físicos
+
+O segundo laboratório testa os medidores fisicamente, com autorização e apenas em amostras de laboratório. A equipe confere que os elementos seguros resistem a sondagens simples e que as portas de depuração estão desativadas nos builds de produção. Um laboratório parceiro especializado faz medições de canal lateral na operação HMAC dentro do elemento seguro, confirmando que não há correlação mensurável com os bits da chave dentro do orçamento do teste. Aiyana registra que os resultados se aplicam à revisão de hardware testada e que uma nova revisão exige novos testes. A equipe anota o número de série de cada amostra, para que os resultados possam ser ligados a uma revisão exata.
+
+### 40.2 Injeção de falhas
+
+A equipe injeta falhas no serviço de confiança de homologação: o HSM primário é desligado, o relógio de um concentrador salta uma semana à frente, a fila de revogação é atrasada e uma imagem de firmware corrompida é oferecida. Cada injeção confere se ocorre o comportamento seguro projetado no Capítulo 33. O HSM de standby assume em quarenta segundos. O salto do relógio faz o concentrador apresentar um certificado como ainda não válido, que o gateway rejeita corretamente, mas a mensagem de alerta do concentrador não é clara; a equipe a reescreve.
+
+### 40.3 Risco residual
+
+Aiyana escreve uma declaração de risco residual: os riscos que permanecem depois dos controles, por que são aceitos e quem os aceitou. Os exemplos incluem um atacante determinado e bem financiado extraindo, com equipamento avançado, as chaves de um único medidor, aceito porque as chaves por medidor limitam o impacto; e a perda simultânea dos dois data centers, aceita com um plano de recuperação offline de vários dias. A direção assina a declaração. Tornar o risco residual explícito evita a falsa impressão de que os testes deixaram o sistema perfeitamente seguro. A declaração é revisada sempre que o modelo de ameaça muda e pelo menos uma vez por ano.
+
+### Exemplo resolvido
+
+O laboratório confirma as proteções do elemento seguro e das portas de depuração, passa nas injeções de falhas com um failover de HSM em quarenta segundos, esclarece um alerta de salto de relógio e registra os riscos residuais assinados.
+
+> **Caso sintético.** Os resultados são inventados.
+
+### Erros e limites
+
+Os testes de canal lateral são limitados pelo orçamento e pela técnica. As declarações de risco residual precisam ser revisitadas quando as ameaças mudam.
+
+### Exercícios
+
+- **EX118 — Escopo do hardware.** Que limite se aplica aos resultados dos testes físicos? *Rubrica:* 3 = valem para a revisão de hardware testada; novas revisões precisam de novos testes;; 2 = revisão;; 1 = universais;; 0 = nenhuma.
+
+- **EX119 — Salto do relógio.** O que a injeção do salto de relógio revelou? *Rubrica:* 3 = certificado rejeitado corretamente como ainda não válido, mas mensagem de alerta pouco clara e reescrita;; 2 = alerta;; 1 = falha;; 0 = nenhuma.
+
+- **EX120 — Exemplo de risco residual.** Dê um risco residual aceito e sua justificativa. *Rubrica:* 3 = extração da chave de um medidor por atacante avançado, limitada pelas chaves por medidor (ou perda dos dois data centers, recuperação offline);; 2 = exemplo;; 1 = nenhum;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX090 (as de EX091–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Aiyana Torres, Marcus Webb, o Halden Institute of Engineering, a Ridgeway Water Utility e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX120 (as de EX121–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Aiyana Torres, Marcus Webb, o Halden Institute of Engineering, a Ridgeway Water Utility e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Cada bit acrescentado dobra o espaço de chaves, então o trabalho se multiplica, em vez de aumentar num passo fixo.
 
@@ -1569,6 +1975,66 @@ Respostas-modelo para EX001–EX090 (as de EX091–EX150 estão na edição em i
 **EX089.** Leituras com uma chave revogada foram aceitas por até uma hora; o cache foi reduzido a um minuto, e as revogações passaram a ser enviadas.
 
 **EX090.** Apenas que os defeitos conhecidos estão ausentes nas condições testadas, e não que o sistema está livre de defeitos.
+
+**EX091.** Cada concentrador prova sua identidade com um certificado de cliente emitido pela autoridade de dispositivos da Ridgeway.
+
+**EX092.** No próprio concentrador, de modo que a chave privada nunca precise ser transmitida.
+
+**EX093.** Qualquer parte com um certificado emitido publicamente poderia então se autenticar, então só se deve confiar na autoridade de dispositivos da Ridgeway.
+
+**EX094.** Cerca de 0,59, menos até do que depender de um só custodiante.
+
+**EX095.** Três de cinco, o que dá cerca de 0,99 de disponibilidade e impede que duas pessoas quaisquer recuperem a chave.
+
+**EX096.** A divisão de chaves embutida do fornecedor do HSM, porque implementar ela mesma o compartilhamento de segredos seria criptografia caseira.
+
+**EX097.** Ela é posta em quarentena e um alerta é emitido, preservando a evidência.
+
+**EX098.** Revogá-la com uma declaração assinada pela raiz, criar uma nova intermediária numa cerimônia, assinar de novo o firmware e distribuir a nova confiança.
+
+**EX099.** Para que perder ou comprometer a raiz primária não deixe a frota sem saída.
+
+**EX100.** A solicitação de uma nova chave de medidor pela ferramenta portátil de campo ao substituir um medidor.
+
+**EX101.** Para que só o elemento seguro do medidor de destino consiga desembrulhá-lo e a ferramenta nunca veja a chave.
+
+**EX102.** O faturamento nunca recebia os eventos de revogação; agora uma fila de mensagens compartilhada os entrega a todos os verificadores.
+
+**EX103.** Os medidores ficam em serviço cerca de quinze anos, então o firmware assinado agora precisa continuar confiável até por volta de 2041.
+
+**EX104.** Somente se tanto a assinatura clássica ECDSA quanto a ML-DSA forem verificadas.
+
+**EX105.** A verificação pós-quântica exige um novo bootloader, que precisa primeiro ser implantado usando assinaturas clássicas.
+
+**EX106.** Cerca de 1,2 milhão de leituras por dia.
+
+**EX107.** Nas gravações no banco de dados e nas consultas de chaves; o HMAC em si é barato.
+
+**EX108.** Para que os concentradores não renovem todos no mesmo instante e sobrecarreguem o serviço emissor.
+
+**EX109.** Um operador que não os conhecia os executou, e os passos confusos foram reescritos.
+
+**EX110.** As chaves da nova versão são implantadas em ondas enquanto o faturamento aceita as duas versões, e a versão antiga é desativada quando todos os medidores tiverem migrado.
+
+**EX111.** Ela só guardava blobs cifrados para os elementos seguros dos medidores, nunca as próprias chaves de medidor.
+
+**EX112.** A verificação confirma que o sistema corresponde à especificação; a validação confirma que ele atende às necessidades reais das partes interessadas.
+
+**EX113.** Uma chave de um protótipo de medidor sem elemento seguro, confirmando o requisito de elementos seguros.
+
+**EX114.** Apenas 97 por cento foram atualizados em trinta dias, abaixo dos 99 por cento, porque alguns medidores em caixas inundadas estavam inalcançáveis.
+
+**EX115.** Identificadores de algoritmo nas mensagens e nos manifestos e uma lista configurada de algoritmos aceitos.
+
+**EX116.** Parar de emitir novas chaves com ele, migrar os usos existentes e depois retirar o suporte à verificação após um período de carência.
+
+**EX117.** Porque muitos incidentes começam quando os engenheiros já não sabem por que um projeto foi escolhido e o mudam de forma insegura.
+
+**EX118.** Valem apenas para a revisão de hardware testada, então novas revisões precisam ser testadas de novo.
+
+**EX119.** O gateway rejeitou corretamente o certificado ainda não válido, mas o alerta do concentrador não era claro e foi reescrito.
+
+**EX120.** A extração da chave de um medidor por um atacante bem financiado, aceita porque as chaves por medidor confinam o dano àquele medidor.
 
 <a id="references"></a>
 ## Referências

@@ -39,17 +39,17 @@ Edição em português do Brasil, escrita a partir da edição de referência em
 | 6 | [27](book/PLAN.md#ch-27) | Criptografia e serviços de confiança: projeto de controles | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-27) | [28 · Rascunho](book/MANUSCRIPT.md#ch-28) |
 | 6 | [28](book/PLAN.md#ch-28) | Criptografia e serviços de confiança: implementação I | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-28) | [29 · Rascunho](book/MANUSCRIPT.md#ch-29) |
 | 6 | [29](book/PLAN.md#ch-29) | Criptografia e serviços de confiança: medição | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-29) | [30 · Rascunho](book/MANUSCRIPT.md#ch-30) |
-| 6 | [30](book/PLAN.md#ch-30) | Laboratório de verificação I | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-30) | [31 · Plano](book/PLAN.md#ch-31) |
-| 7 | [31](book/PLAN.md#ch-31) | Criptografia e serviços de confiança: implementação II | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-31)) | [32 · Plano](book/PLAN.md#ch-32) |
-| 7 | [32](book/PLAN.md#ch-32) | Criptografia e serviços de confiança: confiabilidade | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-32)) | [33 · Plano](book/PLAN.md#ch-33) |
-| 7 | [33](book/PLAN.md#ch-33) | Criptografia e serviços de confiança: segurança e resiliência | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-33)) | [34 · Plano](book/PLAN.md#ch-34) |
-| 7 | [34](book/PLAN.md#ch-34) | Criptografia e serviços de confiança: integração | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-34)) | [35 · Plano](book/PLAN.md#ch-35) |
-| 7 | [35](book/PLAN.md#ch-35) | Ateliê de projeto II | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-35)) | [36 · Plano](book/PLAN.md#ch-36) |
-| 8 | [36](book/PLAN.md#ch-36) | Criptografia e serviços de confiança: desempenho e escala | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-36)) | [37 · Plano](book/PLAN.md#ch-37) |
-| 8 | [37](book/PLAN.md#ch-37) | Criptografia e serviços de confiança: operações | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-37)) | [38 · Plano](book/PLAN.md#ch-38) |
-| 8 | [38](book/PLAN.md#ch-38) | Criptografia e serviços de confiança: validação | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-38)) | [39 · Plano](book/PLAN.md#ch-39) |
-| 8 | [39](book/PLAN.md#ch-39) | Criptografia e serviços de confiança: manutenibilidade | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-39)) | [40 · Plano](book/PLAN.md#ch-40) |
-| 8 | [40](book/PLAN.md#ch-40) | Laboratório de verificação II | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-40)) | [41 · Plano](book/PLAN.md#ch-41) |
+| 6 | [30](book/PLAN.md#ch-30) | Laboratório de verificação I | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-30) | [31 · Rascunho](book/MANUSCRIPT.md#ch-31) |
+| 7 | [31](book/PLAN.md#ch-31) | Criptografia e serviços de confiança: implementação II | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-31) | [32 · Rascunho](book/MANUSCRIPT.md#ch-32) |
+| 7 | [32](book/PLAN.md#ch-32) | Criptografia e serviços de confiança: confiabilidade | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-32) | [33 · Rascunho](book/MANUSCRIPT.md#ch-33) |
+| 7 | [33](book/PLAN.md#ch-33) | Criptografia e serviços de confiança: segurança e resiliência | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-33) | [34 · Rascunho](book/MANUSCRIPT.md#ch-34) |
+| 7 | [34](book/PLAN.md#ch-34) | Criptografia e serviços de confiança: integração | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-34) | [35 · Rascunho](book/MANUSCRIPT.md#ch-35) |
+| 7 | [35](book/PLAN.md#ch-35) | Ateliê de projeto II | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-35) | [36 · Rascunho](book/MANUSCRIPT.md#ch-36) |
+| 8 | [36](book/PLAN.md#ch-36) | Criptografia e serviços de confiança: desempenho e escala | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-36) | [37 · Rascunho](book/MANUSCRIPT.md#ch-37) |
+| 8 | [37](book/PLAN.md#ch-37) | Criptografia e serviços de confiança: operações | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-37) | [38 · Rascunho](book/MANUSCRIPT.md#ch-38) |
+| 8 | [38](book/PLAN.md#ch-38) | Criptografia e serviços de confiança: validação | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-38) | [39 · Rascunho](book/MANUSCRIPT.md#ch-39) |
+| 8 | [39](book/PLAN.md#ch-39) | Criptografia e serviços de confiança: manutenibilidade | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-39) | [40 · Rascunho](book/MANUSCRIPT.md#ch-40) |
+| 8 | [40](book/PLAN.md#ch-40) | Laboratório de verificação II | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-40) | [41 · Plano](book/PLAN.md#ch-41) |
 | 9 | [41](book/PLAN.md#ch-41) | Criptografia e serviços de confiança: otimização do sistema | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-41)) | [42 · Plano](book/PLAN.md#ch-42) |
 | 9 | [42](book/PLAN.md#ch-42) | Criptografia e serviços de confiança: pesquisa aplicada | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-42)) | [43 · Plano](book/PLAN.md#ch-43) |
 | 9 | [43](book/PLAN.md#ch-43) | Prática na indústria ou no serviço público | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-43)) | [44 · Plano](book/PLAN.md#ch-44) |
