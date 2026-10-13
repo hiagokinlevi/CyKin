@@ -17,17 +17,17 @@ Edição em português do Brasil, escrita a partir da edição de referência em
 | 1 | [05](book/PLAN.md#ch-05) | Letramento em segurança | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-05) | [06 · Rascunho](book/MANUSCRIPT.md#ch-06) |
 | 2 | [06](book/PLAN.md#ch-06) | Estruturas discretas | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-06) | [07 · Rascunho](book/MANUSCRIPT.md#ch-07) |
 | 2 | [07](book/PLAN.md#ch-07) | Redes e protocolos | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-07) | [08 · Rascunho](book/MANUSCRIPT.md#ch-08) |
-| 2 | [08](book/PLAN.md#ch-08) | Programação II | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-08) | [09 · Plano](book/PLAN.md#ch-09) |
-| 2 | [09](book/PLAN.md#ch-09) | Dados e bancos de dados | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-09)) | [10 · Plano](book/PLAN.md#ch-10) |
-| 2 | [10](book/PLAN.md#ch-10) | Ética e prática autorizada | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-10)) | [11 · Plano](book/PLAN.md#ch-11) |
-| 3 | [11](book/PLAN.md#ch-11) | Sistemas operacionais | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-11)) | [12 · Plano](book/PLAN.md#ch-12) |
-| 3 | [12](book/PLAN.md#ch-12) | Probabilidade e estatística | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-12)) | [13 · Plano](book/PLAN.md#ch-13) |
-| 3 | [13](book/PLAN.md#ch-13) | Identidade e acesso | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-13)) | [14 · Plano](book/PLAN.md#ch-14) |
-| 3 | [14](book/PLAN.md#ch-14) | Fundamentos de privacidade | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-14)) | [15 · Plano](book/PLAN.md#ch-15) |
-| 3 | [15](book/PLAN.md#ch-15) | Evidências e medição | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-15)) | [16 · Plano](book/PLAN.md#ch-16) |
-| 4 | [16](book/PLAN.md#ch-16) | Arquitetura de segurança | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-16)) | [17 · Plano](book/PLAN.md#ch-17) |
-| 4 | [17](book/PLAN.md#ch-17) | Conceitos de criptografia | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-17)) | [18 · Plano](book/PLAN.md#ch-18) |
-| 4 | [18](book/PLAN.md#ch-18) | Métodos de pesquisa I | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-18)) | [19 · Plano](book/PLAN.md#ch-19) |
+| 2 | [08](book/PLAN.md#ch-08) | Programação II | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-08) | [09 · Rascunho](book/MANUSCRIPT.md#ch-09) |
+| 2 | [09](book/PLAN.md#ch-09) | Dados e bancos de dados | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-09) | [10 · Rascunho](book/MANUSCRIPT.md#ch-10) |
+| 2 | [10](book/PLAN.md#ch-10) | Ética e prática autorizada | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-10) | [11 · Rascunho](book/MANUSCRIPT.md#ch-11) |
+| 3 | [11](book/PLAN.md#ch-11) | Sistemas operacionais | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-11) | [12 · Rascunho](book/MANUSCRIPT.md#ch-12) |
+| 3 | [12](book/PLAN.md#ch-12) | Probabilidade e estatística | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-12) | [13 · Rascunho](book/MANUSCRIPT.md#ch-13) |
+| 3 | [13](book/PLAN.md#ch-13) | Identidade e acesso | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-13) | [14 · Rascunho](book/MANUSCRIPT.md#ch-14) |
+| 3 | [14](book/PLAN.md#ch-14) | Fundamentos de privacidade | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-14) | [15 · Rascunho](book/MANUSCRIPT.md#ch-15) |
+| 3 | [15](book/PLAN.md#ch-15) | Evidências e medição | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-15) | [16 · Rascunho](book/MANUSCRIPT.md#ch-16) |
+| 4 | [16](book/PLAN.md#ch-16) | Arquitetura de segurança | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-16) | [17 · Rascunho](book/MANUSCRIPT.md#ch-17) |
+| 4 | [17](book/PLAN.md#ch-17) | Conceitos de criptografia | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-17) | [18 · Rascunho](book/MANUSCRIPT.md#ch-18) |
+| 4 | [18](book/PLAN.md#ch-18) | Métodos de pesquisa I | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-18) | [19 · Plano](book/PLAN.md#ch-19) |
 | 4 | [19](book/PLAN.md#ch-19) | Governança, riscos e compliance de segurança: escopo e teoria | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-19)) | [20 · Plano](book/PLAN.md#ch-20) |
 | 4 | [20](book/PLAN.md#ch-20) | Governança, riscos e compliance de segurança: casos fundamentais | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-20)) | [21 · Plano](book/PLAN.md#ch-21) |
 | 5 | [21](book/PLAN.md#ch-21) | Governança, riscos e compliance de segurança: modelos de sistema | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-21)) | [22 · Plano](book/PLAN.md#ch-22) |
