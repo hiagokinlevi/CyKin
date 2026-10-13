@@ -56,7 +56,7 @@ In-house gives control and knowledge of the business but costs staff and 24-hour
 
 ### 1.4 Mission and scope
 
-Priya's draft mission: "Detect and respond to threats against Fenwick's design data, production systems and staff accounts, around the clock, with in-house ownership of decisions." Scope includes offices, the VPN, cloud email and the factory's supervisory PCs, but not the machine controllers themselves, which the vendor manages. The mission names the assets March threatened: design data and staff accounts, plus production systems that keep the factory running. Excluding the machine controllers is honest about what Fenwick can monitor, since the vendor manages them. Priya records the exclusion and the vendor's responsibility, so the board knows the gap exists. The scope is reviewed each year with the charter.
+Priya's draft mission: "Detect and respond to threats against Fenwick's design data, production systems and staff accounts, around the clock, with in-house ownership of decisions." Scope includes offices, the VPN, cloud email and the factory's supervisory PCs, but not the machine controllers themselves, which the vendor manages. The mission names the assets March threatened: design data and staff accounts, plus production systems that keep the factory running. Excluding the machine controllers is honest about what Fenwick can monitor, since the vendor manages them. Priya records the exclusion and the vendor's responsibility, so the board knows the gap exists. The scope is reviewed each year with the charter, so a change such as the vendor handing over controller management would bring them into monitoring.
 
 ### 1.5 Frameworks
 
@@ -249,7 +249,7 @@ The March event combined valid accounts used remotely, account manipulation (add
 
 ### 4.2 Shared rules
 
-SigmaHQ publishes open detection rules in a vendor-neutral format. The provider converts selected rules into its SIEM. Priya chooses rules for admin group changes, new-country VPN logins and mass file reads. Starting from shared rules saves time and benefits from others' testing, but converting them can change how they behave. Priya asks the provider to show each converted rule and test it on Fenwick's data before it is counted. The three rules correspond to the three behaviours in March, so replaying that event tests them directly. Rules are documented with their source, conversion and owner.
+SigmaHQ publishes open detection rules in a vendor-neutral format. The provider converts selected rules into its SIEM. Priya chooses rules for admin group changes, new-country VPN logins and mass file reads. Starting from shared rules saves time and benefits from others' testing, but converting them can change how they behave. Priya asks the provider to show each converted rule and test it on Fenwick's data before it is counted. The three rules correspond to the three behaviours in March, so replaying that event tests them directly. Each rule's page records the SigmaHQ source, how the provider converted it and who owns it, which is what the provider later peer-reviewed.
 
 ### 4.3 Adapting
 
@@ -331,7 +331,7 @@ Priya removes the old shared mailbox; alerts now go only to queues with named ow
 
 ### 5.6 New hire
 
-Fenwick hires Tom Reyes as its first analyst. He owns daytime triage and reviews night notes each morning. Hiring an analyst gives Fenwick in-house knowledge that the provider cannot supply, such as which finance staff use macros or when IT runs maintenance. Tom's morning review keeps the night and day halves of the queue connected. He also maintains rule documentation and runbooks. Priya remains SOC owner and decides on escalation and business matters, while Tom handles daily operations. Their roles are written into the charter.
+Fenwick hires Tom Reyes as its first analyst. He owns daytime triage and reviews night notes each morning. Hiring an analyst gives Fenwick in-house knowledge that the provider cannot supply, such as which finance staff use macros or when IT runs maintenance. Tom's morning review keeps the night and day halves of the queue connected. He also maintains rule documentation and runbooks. Priya remains SOC owner and decides on escalation and business matters, while Tom handles daily operations. Their roles are written into the charter, so the provider knows to call Priya for decisions and Tom for questions about a night note.
 
 ### Closing well
 
@@ -671,7 +671,7 @@ You will (1) choose metrics that show SOC value; (2) present trends and risks to
 
 ### 10.1 Choosing metrics
 
-Priya picks: log coverage of critical assets, time to acknowledge critical alerts, rule precision, open high risks and exercise findings closed. Each metric relates to a first-year goal: coverage measures what the SOC can see, acknowledgement time measures response at any hour, precision measures how much time rules waste, and open risks and exercise findings show whether problems are being closed. Priya defines each one in writing, including how it is counted, so the figures are comparable each month. She agrees the definitions with Tom and the provider.
+Priya picks: log coverage of critical assets, time to acknowledge critical alerts, rule precision, open high risks and exercise findings closed. Each metric relates to a first-year goal: coverage measures what the SOC can see, acknowledgement time measures response at any hour, precision measures how much time rules waste, and open risks and exercise findings show whether problems are being closed. Priya defines each one in writing, including how it is counted, so the figures are comparable each month. She agrees the definitions with Tom and the provider, so the acknowledgement times in the provider's reports and in Tom's records are counted the same way.
 
 ### 10.2 Medians and trends
 
@@ -737,7 +737,7 @@ You will (1) assess SOC capability with SOC-CMM; (2) apply continuous monitoring
 
 ### 11.1 SOC-CMM
 
-The SOC Capability Maturity Model (van Os, 2016) assesses business, people, process, technology and services. Priya's self-assessment: process improving, people thin (one analyst), technology reliant on the provider. The assessment shows where Fenwick's SOC is strong and where it depends on too few people. With one analyst, holidays and illness leave daytime triage uncovered, which is why the year-two plan adds a second analyst. Reliance on the provider is reasonable for a small company but needs the exit terms and ownership of logs and rules that the agreement provides. Priya repeats the self-assessment each year to track progress.
+The SOC Capability Maturity Model (van Os, 2016) assesses business, people, process, technology and services. Priya's self-assessment: process improving, people thin (one analyst), technology reliant on the provider. The assessment shows where Fenwick's SOC is strong and where it depends on too few people. With one analyst, holidays and illness leave daytime triage uncovered, which is why the year-two plan adds a second analyst. Reliance on the provider is reasonable for a small company but needs the exit terms and ownership of logs and rules that the agreement provides. Priya repeats the self-assessment each year, and the people score is the first she expects to change once the second analyst starts.
 
 ### 11.2 Continuous monitoring
 
@@ -749,11 +749,11 @@ Kokulu et al. (2019) interviewed SOC staff and found common issues between analy
 
 ### 11.4 Year-two plan
 
-A second analyst, ERP and factory network monitoring, a quarterly rule review and a purple-team style validation with the provider using authorised test actions only. Each item addresses a gap found during the first year: a second analyst for the thin people score, ERP and factory network monitoring for remaining coverage gaps, quarterly rule reviews to keep rules working as systems change, and validation with the provider to test detections against realistic actions. Priya costs each item for the board.
+A second analyst, ERP and factory network monitoring, a quarterly rule review and a purple-team style validation with the provider using authorised test actions only. Each item addresses a gap found during the first year: a second analyst for the thin people score, ERP and factory network monitoring for remaining coverage gaps, quarterly rule reviews to keep rules working as systems change, and validation with the provider to test detections against realistic actions. Priya costs each item for the board, so the second analyst and the monitoring work can be compared with the risks they reduce.
 
 ### 11.5 Lessons loop
 
-Each incident and test produces actions with owners and dates, tracked to closure. The loop makes sure that lessons become changes. After the March replay, legal's contract check became a playbook step; after the 26-minute test, the provider added a backup analyst. Each action is tracked in a register with its owner and date, and Priya reviews open actions at each monthly meeting. Actions not closed by their date are reported to the board with a reason, so lessons cannot be quietly dropped. The register is part of the board pack.
+Each incident and test produces actions with owners and dates, tracked to closure. The loop makes sure that lessons become changes. After the March replay, legal's contract check became a playbook step; after the 26-minute test, the provider added a backup analyst. Each action is tracked in a register with its owner and date, and Priya reviews open actions at each monthly meeting. Actions not closed by their date are reported to the board with a reason, so lessons cannot be quietly dropped. The register goes into the board pack each month, so directors can see overdue actions such as the remaining tabletop finding.
 
 ### Improvement backlog
 
@@ -799,7 +799,7 @@ You will (1) evaluate a year of security operations against goals; (2) present r
 
 ### 12.1 Goals revisited
 
-Log coverage: critical 5/5, high 4/4 by month ten. Tested response plan: two tabletops, one real incident handled. Thirty-minute handling: median critical acknowledge 9 minutes, worst 26. Each goal from the board paper is checked against evidence. Coverage comes from the coverage table, response testing from the tabletop records and the month-nine incident, and handling time from the provider's acknowledgement records. The worst case of 26 minutes was the second provider test, before the backup analyst was added. Priya presents both the median and the worst case.
+Log coverage: critical 5/5, high 4/4 by month ten. Tested response plan: two tabletops, one real incident handled. Thirty-minute handling: median critical acknowledge 9 minutes, worst 26. Each goal from the board paper is checked against evidence. Coverage comes from the coverage table, response testing from the tabletop records and the month-nine incident, and handling time from the provider's acknowledgement records. The worst case of 26 minutes was the second provider test, before the backup analyst was added. Priya presents both the 9-minute median and the 26-minute worst case, so the board sees typical performance and the night the target was missed.
 
 ### 12.2 Real incident
 

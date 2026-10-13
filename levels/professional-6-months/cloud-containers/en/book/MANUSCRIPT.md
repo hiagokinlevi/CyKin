@@ -166,7 +166,7 @@ Hannah does not access resident data, does not test the service for weaknesses, 
 
 ### 3.3 Evidence
 
-She exports role definitions, 90 days of permission usage from the provider's access logs, and image scan results. Each export is saved with time, source and her name. Ninety days covers most routine tasks the workloads perform, but may miss rare ones, so unused permissions are only candidates for removal until owners confirm them. Recording time, source and her name makes each export traceable. If a finding is challenged, Hannah can show where the evidence came from and when. Scan results are exported weekly in the same way.
+She exports role definitions, 90 days of permission usage from the provider's access logs, and image scan results. Each export is saved with time, source and her name. Ninety days covers most routine tasks the workloads perform, but may miss rare ones, so unused permissions are only candidates for removal until owners confirm them. Recording time, source and her name makes each export traceable. If a finding is challenged, Hannah can show where the evidence came from and when. Scan results are exported weekly in the same way, so the permits-web, permits-worker and reporting findings can be compared from one week to the next.
 
 ### 3.4 Integrity
 
@@ -423,7 +423,7 @@ The scanner runs weekly; new findings are tiered automatically and appear in the
 
 ### 6.5 Exceptions
 
-If a fix is impossible in time, an exception records the reason and compensating controls. An exception is not a way to ignore a finding. It names the finding, why it cannot be fixed by the deadline, the controls that reduce risk meanwhile, the owner and the new date. Dev approves each exception. The reporting rebuild became the first exception, because an old library did not work with the new base image. Audit receives exceptions with the closed findings, so it can see what remains open and why. Each exception is reviewed when its date arrives.
+If a fix is impossible in time, an exception records the reason and compensating controls. An exception is not a way to ignore a finding. It names the finding, why it cannot be fixed by the deadline, the controls that reduce risk meanwhile, the owner and the new date. Dev approves each exception. The reporting rebuild became the first exception, because an old library did not work with the new base image. Audit receives exceptions with the closed findings, so it can see what remains open and why. Each exception is reviewed when its date arrives, as the reporting rebuild was after the library update two weeks later.
 
 ### Why exposure matters
 
@@ -577,7 +577,7 @@ The scanner existed, but results went to an inbox nobody watched, and there was 
 
 ### 8.3 Process causes
 
-Missing ownership, missing review cadence and missing prioritisation method. Each cause is a gap in process rather than a technical failure. Nobody owned role hygiene or scan results, so nobody reviewed them. There was no review cadence, so permissions granted for short-term needs stayed indefinitely. There was no prioritisation method, so a long list of findings had no clear starting point. Hannah's recommendations answer each cause directly, so the same problems should not build up again after the project ends. She explains this link in her report to Dev.
+Missing ownership, missing review cadence and missing prioritisation method. Each cause is a gap in process rather than a technical failure. Nobody owned role hygiene or scan results, so nobody reviewed them. There was no review cadence, so permissions granted for short-term needs stayed indefinitely. There was no prioritisation method, so a long list of findings had no clear starting point. Hannah's recommendations answer each cause directly, so the same problems should not build up again after the project ends. She shows the link in her report to Dev as a short table pairing each cause with the routine and owner that answers it.
 
 ### 8.4 Recommendations
 
@@ -721,7 +721,7 @@ You will (1) check the quality of security work; (2) troubleshoot problems after
 
 ### 10.1 Quality checks
 
-Hannah asks a colleague to repeat her role analysis on one role from raw exports. Their results match. Repeating the analysis from raw exports tests both Hannah's method and her work. If a colleague following the method note reaches the same result, the method can be applied by others. The colleague chose the reporting role and checked which permissions appeared in the usage logs. Hannah records the check, the role chosen and the result in her portfolio. Dev signs the record as reviewer.
+Hannah asks a colleague to repeat her role analysis on one role from raw exports. Their results match. Repeating the analysis from raw exports tests both Hannah's method and her work. If a colleague following the method note reaches the same result, the method can be applied by others. The colleague chose the reporting role and checked which permissions appeared in the usage logs. Hannah records the check, the role chosen and the result in her portfolio. Dev signs the record as reviewer, which gives Kingsbridge assessors independent evidence that the method note is usable by someone else.
 
 ### 10.2 Breakage
 
@@ -729,7 +729,7 @@ After removing storage.admin, the worker fails to set an object's metadata. The 
 
 ### 10.3 Root cause
 
-The usage log had recorded the action under a different name; Hannah updates her method to map action names carefully. The worker had been using the metadata action all along, but the log recorded it under a name that did not match the permission, so it looked unused. Hannah adds a mapping step to her method note: for each permission, list the action names that may appear in logs. She also rechecks the other removals with the new mapping and finds no further mismatches. The lesson goes into her reflection for Kingsbridge.
+The usage log had recorded the action under a different name; Hannah updates her method to map action names carefully. The worker had been using the metadata action all along, but the log recorded it under a name that did not match the permission, so it looked unused. Hannah adds a mapping step to her method note: for each permission, list the action names that may appear in logs. She also rechecks the other removals with the new mapping and finds no further mismatches. She describes the missed mapping in her Kingsbridge reflection as the main technical lesson of the project.
 
 ### 10.4 Workflow improvements
 
@@ -737,7 +737,7 @@ Scan triage now takes 15 minutes weekly; role reviews take an hour quarterly. Fi
 
 ### 10.5 Measures
 
-Unused permissions fell from 6 of 13 to 0 in the core roles; tier 1 findings were fixed in three days. Hannah reports these figures with their sources: the new role exports for permissions and the deployment records for the tier 1 fix. She states that the figures cover the three core roles and the three images in scope, not the council's other cloud services. The open reporting rebuild is reported with its exception rather than left out of the figures. Dev checks the figures against the exports.
+Unused permissions fell from 6 of 13 to 0 in the core roles; tier 1 findings were fixed in three days. Hannah reports these figures with their sources: the new role exports for permissions and the deployment records for the tier 1 fix. She states that the figures cover the three core roles and the three images in scope, not the council's other cloud services. The open reporting rebuild is reported with its exception rather than left out of the figures. Dev checks the figures against the new role exports and scan results before they go to audit.
 
 ### Independent review value
 
@@ -809,7 +809,7 @@ Verification of workload controls took longest because staging lacked a test pod
 
 ### 11.4 Re-run
 
-A second rehearsal on another synthetic service takes two hours. The shorter time shows that the test pod template and familiarity with the method helped. The second service also had different roles and findings, so the speed did not come from repeating the same answers. Hannah records the timings for both rehearsals in her portfolio. Dev notes that a colleague could run the method too, which was later shown when a colleague completed it from her notes. Dev signs off both rehearsal records.
+A second rehearsal on another synthetic service takes two hours. The shorter time shows that the test pod template and familiarity with the method helped. The second service also had different roles and findings, so the speed did not come from repeating the same answers. Hannah records the timings for both rehearsals in her portfolio. Dev notes that a colleague could run the method too, which was later shown when a colleague completed it from her notes. Dev signs off both rehearsal records, which go into her portfolio as evidence that the workflow can be repeated on unfamiliar services.
 
 ### 11.5 Safety
 

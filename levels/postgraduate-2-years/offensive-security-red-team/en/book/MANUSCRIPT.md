@@ -542,7 +542,7 @@ You will (1) design evaluations of scenarios and controls; (2) use scoring that 
 
 Scenario choice, control coverage, detection rules and programme outcomes each need different designs.
 
-Amira refuses a single score that pretends to measure scenarios, detection rules and programme outcomes together. The lab scenario ranking is for scenario choice; detection rules need purple-team measures; programme outcomes need decision records such as DEC-14. Mixing designs is how empty metrics enter board packs.
+Amira refuses a single score that pretends to measure scenarios, detection rules and programme outcomes together. The lab scenario ranking is for scenario choice; detection rules need purple-team measures; programme outcomes need decision records such as DEC-14. Combining the three would give the board a number that measures none of them, so each keeps its own measure in Amira's pack.
 
 Mixing scenario ranks, purple-team measures and DEC-14 outcomes into one empty metric is how board packs lose meaning. Each evaluation target keeps its own design so directors are not sold a single score that pretends to measure all four.
 
@@ -615,7 +615,7 @@ Synthetic clearing templates and isolated ranges are enough for learning at Meri
 
 White-team feasibility for scenario C includes a library inventory owner who can freeze deploys. Without that owner, Amira demotes C despite its lab score. Independent scoring means she leaves the room while a peer applies lab_scenario to the same inputs; disagreements become design notes filed beside the lab output.
 
-White-team feasibility for scenario C includes a library inventory owner who can freeze deploys; without that owner Amira demotes C despite its +4 lab score. Disagreements become design notes, not quiet overrides.
+White-team feasibility for scenario C includes a library inventory owner who can freeze deploys; without that owner Amira demotes C despite its +4 lab score. When a white-team view overrides a lab score, as with scenario C, Amira records the reason as a design note rather than changing the score silently.
 
 Feasibility is part of the score, not an afterthought. Without a library inventory owner who can freeze deploys, scenario C is demoted despite its +4 lab score, and the demotion is written as a design note.
 

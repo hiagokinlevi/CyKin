@@ -107,7 +107,7 @@ TrackPort is a web and mobile application used by customers to track shipments a
 
 ### 2.2 Stakeholders
 
-The TrackPort developers own the code and fixes. The platform team runs the build service and the internal registry. Marcus's security team sets requirements. The product manager decides priorities. Depot managers need TrackPort available during shifts. Each stakeholder controls part of the fix: developers change TrackPort's code and lock files, the platform team changes registry settings, Marcus sets requirements and the product manager decides when work happens. Depot managers are affected by any outage caused by a change, so Priya keeps them informed about planned releases. She records each stakeholder's role in the stakeholder map.
+The TrackPort developers own the code and fixes. The platform team runs the build service and the internal registry. Marcus's security team sets requirements. The product manager decides priorities. Depot managers need TrackPort available during shifts. Each stakeholder controls part of the fix: developers change TrackPort's code and lock files, the platform team changes registry settings, Marcus sets requirements and the product manager decides when work happens. Depot managers are affected by any outage caused by a change, so Priya keeps them informed about planned releases. She records these roles in the stakeholder map, so she knows whom to ask before a change touches the build service or a depot release.
 
 ### 2.3 Their priorities
 
@@ -169,7 +169,7 @@ Priya's review of build dependencies is authorised in writing by Marcus and the 
 
 ### 3.2 Defensive scope
 
-The work reads configurations, lock files and logs; it does not publish packages to public registries or test whether a public name could be taken. Such tests could affect other organisations and are not needed to fix the configuration. The question of whether someone could take an internal name on the public registry is answered by evidence already in the logs: hl-auth was resolved publicly. Testing it again by publishing a package would add nothing and could mislead other organisations' builds. Priya's evidence shows the configuration gap, and fixing the configuration is the defensive response. The limit is written into her authorisation.
+The work reads configurations, lock files and logs; it does not publish packages to public registries or test whether a public name could be taken. Such tests could affect other organisations and are not needed to fix the configuration. The question of whether someone could take an internal name on the public registry is answered by evidence already in the logs: hl-auth was resolved publicly. Testing it again by publishing a package would add nothing and could mislead other organisations' builds. Priya's evidence shows the configuration gap, and fixing the configuration is the defensive response. The limit is written into her authorisation, so nobody at Harbourline can later ask her to prove the gap by publishing a test package.
 
 ### 3.3 Evidence
 
@@ -317,7 +317,7 @@ You will (1) interpret output from code, dependency and secret scanners; (2) ded
 
 ### 5.1 Scanner types
 
-Static analysis (SAST) reads code for risky patterns; software composition analysis (SCA) matches dependencies to advisories; secret scanners look for credentials. Each produces findings with different accuracy. At Harbourline, each scanner runs on every TrackPort build and produces its own list. SAST may flag code that is safe in context, SCA may report a vulnerability in a function TrackPort never calls, and secret scanners may flag test placeholders. Priya treats all scanner output as candidates to check, not as confirmed findings. She records which scanner and version produced each finding.
+Static analysis (SAST) reads code for risky patterns; software composition analysis (SCA) matches dependencies to advisories; secret scanners look for credentials. Each produces findings with different accuracy. At Harbourline, each scanner runs on every TrackPort build and produces its own list. SAST may flag code that is safe in context, SCA may report a vulnerability in a function TrackPort never calls, and secret scanners may flag test placeholders. Priya treats all scanner output as candidates to check, not as confirmed findings. She records which scanner and version produced each finding, because a changed advisory database can make the same TrackPort code produce different results.
 
 ### Lab — finding triage
 
@@ -357,7 +357,7 @@ by severity: {'high': 4, 'critical': 1, 'medium': 1}
 
 ### 5.2 Lab result
 
-Seven raw findings reduce to six unique ones (the sql-concat finding in orders.py appeared twice). Ranked by reachability then severity: sql-concat in orders.py, ADV-22 and missing-authz in shipments.py are reachable highs and come first. The critical ADV-21 ranks fourth because the affected function is not reachable from TrackPort's code. The api-key in tests/fixtures.py and weak-hash in legacy_export.py follow. The ranking reflects TrackPort's real risk rather than scanner labels alone. Reachable findings come first, because an attacker could use them through TrackPort's code. The test fixture and legacy export are checked separately.
+Seven raw findings reduce to six unique ones (the sql-concat finding in orders.py appeared twice). Ranked by reachability then severity: sql-concat in orders.py, ADV-22 and missing-authz in shipments.py are reachable highs and come first. The critical ADV-21 ranks fourth because the affected function is not reachable from TrackPort's code. The api-key in tests/fixtures.py and weak-hash in legacy_export.py follow. The ranking reflects TrackPort's real risk rather than scanner labels alone. Reachable findings come first, because an attacker could use them through TrackPort's code. The test-fixture key and the weak hash in legacy_export.py are checked separately, since neither is reachable through TrackPort's customer-facing code.
 
 ### 5.3 Reachability
 
@@ -605,7 +605,7 @@ A finding report: summary, what was found, evidence, impact in TrackPort's conte
 
 ### 9.3 Uncertainty
 
-Say what is known and unknown: "No harmful content was found in the public hl-auth package; we cannot rule out that it was downloaded by others." Stating what is unknown prevents readers from assuming a problem is fully resolved. For hl-auth, the comparison showed no harmful content, but Harbourline cannot know who else downloaded the public package. Priya writes such sentences carefully, separating evidence from inference, and asks Marcus to check them. Readers can then judge the risk for themselves.
+Say what is known and unknown: "No harmful content was found in the public hl-auth package; we cannot rule out that it was downloaded by others." Stating what is unknown prevents readers from assuming a problem is fully resolved. For hl-auth, the comparison showed no harmful content, but Harbourline cannot know who else downloaded the public package. Priya writes such sentences carefully, separating evidence from inference, and asks Marcus to check them. Readers can then judge the remaining hl-auth risk for themselves instead of assuming the finding is fully closed.
 
 ### 9.4 Ethics
 
@@ -613,7 +613,7 @@ Findings about other organisations' packages are reported through official chann
 
 ### 9.5 External reporting
 
-Vulnerabilities in open-source dependencies found by Harbourline are reported privately to maintainers following their security policy, with time to fix. Private reporting gives maintainers time to release a fix before details are public. When Priya found a minor flaw in a library TrackPort uses, she reported it following the project's security policy, with a description and a suggested fix. The maintainer released a fix in three weeks, and TrackPort updated within the high target. Marcus approved the report before it was sent.
+Vulnerabilities in open-source dependencies found by Harbourline are reported privately to maintainers following their security policy, with time to fix. Private reporting gives maintainers time to release a fix before details are public. When Priya found a minor flaw in a library TrackPort uses, she reported it following the project's security policy, with a description and a suggested fix. The maintainer released a fix in three weeks, and TrackPort updated within the high target. Marcus approved the report before it was sent, because a disclosure in Harbourline's name affects its relationship with the project's maintainers.
 
 ### 9.6 Tone
 
@@ -808,7 +808,7 @@ You will (1) assemble a portfolio of practice evidence; (2) map it to frameworks
 
 ### 12.1 Portfolio contents
 
-The hl-auth finding and its resolution; the dependency source review; the triage format adopted by TrackPort; the workflow and its metrics; the case analysis; the private disclosure; the supervised lab report. Each item shows a different competence: the hl-auth finding shows investigation and communication; the source review shows method; the triage format shows working with developers; the workflow and metrics show sustained improvement; the case analysis shows judgement; the private disclosure shows ethics; and the lab report shows independent work. Priya arranges them with dates and evidence for each.
+The hl-auth finding and its resolution; the dependency source review; the triage format adopted by TrackPort; the workflow and its metrics; the case analysis; the private disclosure; the supervised lab report. Each item shows a different competence: the hl-auth finding shows investigation and communication; the source review shows method; the triage format shows working with developers; the workflow and metrics show sustained improvement; the case analysis shows judgement; the private disclosure shows ethics; and the lab report shows independent work. Priya arranges the items in the order the work happened, each with its date and a pointer to the ticket, log or test result behind it.
 
 ### 12.2 Mapping
 

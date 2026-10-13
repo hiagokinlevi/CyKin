@@ -92,7 +92,7 @@ Costs of health-data disclosure include regulatory, contractual and human harm t
 
 ### 1.6 Recording decisions
 
-The on-call manager logs the decision, the probability estimate, the evidence and who decided. Reviewers can later judge the decision on what was known, not on hindsight. For the contractor incident, the record shows containment at 23:52, the 30% estimate, the unusual address as evidence and the on-call manager as decider. When the contractor later confirmed phished credentials, nobody claimed the analysts had known; the record showed they acted on cost, which protects good decisions that might have turned out differently. Reviews of benign cases use the same record format.
+The on-call manager logs the decision, the probability estimate, the evidence and who decided. Reviewers can later judge the decision on what was known, not on hindsight. For the contractor incident, the record shows containment at 23:52, the 30% estimate, the unusual address as evidence and the on-call manager as decider. When the contractor later confirmed phished credentials, nobody claimed the analysts had known; the record showed they acted on cost, which protects good decisions that might have turned out differently. Reviews of cases that turned out benign use the same record format, so a correct decision to escalate is judged on what was known at the time.
 
 ### Worked example
 
@@ -299,7 +299,7 @@ Heavy-handed monitoring can damage trust and reporting. Transparent policies, pr
 
 ### 4.5 Safeguards
 
-Meridian's safeguards: written purpose for each monitoring use, minimum access for reviewers, audit of SOC searches, and an ethics review for new monitoring of people. These safeguards were tested when the keystroke-timing monitor was proposed: the written purpose, account sharing, was examined by the ethics review and found to be achievable by less intrusive means. Audit of SOC searches also means that if an analyst browsed records out of curiosity, the SOC's own monitoring would show it. Each safeguard has an owner and is reviewed yearly.
+Meridian's safeguards: written purpose for each monitoring use, minimum access for reviewers, audit of SOC searches, and an ethics review for new monitoring of people. These safeguards were tested when the keystroke-timing monitor was proposed: the written purpose, account sharing, was examined by the ethics review and found to be achievable by less intrusive means. Audit of SOC searches also means that if an analyst browsed records out of curiosity, the SOC's own monitoring would show it. Each safeguard has a named owner at Meridian and is reviewed yearly with the ethics review that rejected the keystroke-timing monitor.
 
 ### 4.6 Third parties
 
@@ -369,7 +369,7 @@ Daniel checks whether the recommendation changes if weights shift. C stays best 
 
 ### 5.6 Risks of C
 
-Managed analysts may escalate too much or too little; automation could wrongly disable accounts. Mitigations: quality reviews, escalation targets, automation limits. Daniel's success measures for C turn these risks into numbers the board can check after six months: escalation precision above 50%, and no wrongful automated containments of critical accounts. The automation is limited to suspending export rights, not disabling accounts, so a wrong trigger disrupts less. Quality reviews sample the provider's closed alerts each month. The board paper names an owner for each mitigation.
+Managed analysts may escalate too much or too little; automation could wrongly disable accounts. Mitigations: quality reviews, escalation targets, automation limits. Daniel's success measures for C turn these risks into numbers the board can check after six months: escalation precision above 50%, and no wrongful automated containments of critical accounts. The automation is limited to suspending export rights, not disabling accounts, so a wrong trigger disrupts less. Quality reviews sample the provider's closed alerts each month. The board paper names an owner for each mitigation, such as the quality reviews of the provider's closed alerts.
 
 ### 5.7 Presenting
 
@@ -415,7 +415,7 @@ You will (1) design a controlled evaluation of a SOC process change; (2) analyse
 
 ### 6.1 The change
 
-Daniel's team writes a new triage playbook for claims-export alerts that starts with three automated enrichment lookups — assignment data, contractor status and export destination — before analyst review. The three lookups answer the questions analysts ask most often on claims-export alerts: whether the records were assigned, whether the contractor is still active, and whether the export went to an expected destination. Putting the answers in front of the analyst before review is meant to shorten triage without changing who decides. The evaluation then tests whether that happened.
+Daniel's team writes a new triage playbook for claims-export alerts that starts with three automated enrichment lookups — assignment data, contractor status and export destination — before analyst review. The three lookups answer the questions analysts ask most often on claims-export alerts: whether the records were assigned, whether the contractor is still active, and whether the export went to an expected destination. Putting the answers in front of the analyst before review is meant to shorten triage without changing who decides. The evaluation then tests whether triage actually shortened for claims-export alerts, without changing who made the decision.
 
 ### 6.2 Evaluation design
 
@@ -526,11 +526,11 @@ With the managed night service, integration includes data access agreements, an 
 
 ### 7.6 Change management
 
-New monitoring or response capabilities are introduced with communication to affected teams, training and feedback. When the automated suspension of contractor export rights was introduced, Daniel briefed procurement and contractor managers first, explaining that suspension covers only exports and is reviewed within four hours. Analysts were trained on the review step, and contractors' feedback after the first suspensions informed small changes. Introducing it silently would have made the first wrongful suspension look like an attack on contractors. Analysts practised the review step on test scenarios first.
+New monitoring or response capabilities are introduced with communication to affected teams, training and feedback. When the automated suspension of contractor export rights was introduced, Daniel briefed procurement and contractor managers first, explaining that suspension covers only exports and is reviewed within four hours. Analysts were trained on the review step, and contractors' feedback after the first suspensions informed small changes. Introducing it silently would have made the first wrongful suspension look like an attack on contractors. Before launch, analysts practised the four-hour review step on test scenarios built from past claims-export alerts.
 
 ### 7.7 Relationships
 
-Daniel meets each business unit lead quarterly; regular contact makes incident calls smoother. These meetings paid off in the partner case: the claims operations manager already knew Daniel and could confirm within hours which weekend work had been approved. Without that relationship, the SOC would have waited for formal requests to move through several teams. Each meeting also lets business leads raise concerns about monitoring before they turn into complaints, which keeps insider-risk work acceptable to staff. Notes from each meeting record open requests and owners.
+Daniel meets each business unit lead quarterly; regular contact makes incident calls smoother. These meetings paid off in the partner case: the claims operations manager already knew Daniel and could confirm within hours which weekend work had been approved. Without that relationship, the SOC would have waited for formal requests to move through several teams. Each meeting also lets business leads raise concerns about monitoring before they turn into complaints, which keeps insider-risk work acceptable to staff. Notes from each meeting record open requests and owners, so a business lead's concern about monitoring is followed up at the next one.
 
 ### Measuring integration
 
@@ -792,7 +792,7 @@ Daniel's applied project reduces time to contain compromised contractor accounts
 
 ### 11.2 Baseline
 
-Over the previous six months, four contractor compromises took a median of 3.5 hours from first alert to containment, mostly waiting for contractor managers to confirm activity. Four cases make the baseline imprecise, and Daniel reconstructed it from tickets after the fact, which he later named as the main thing he would do differently. Still, the pattern was clear: most of the time was spent waiting for a contractor manager to answer. The interventions target that wait directly. A better baseline needs timestamps recorded as cases happen.
+Over the previous six months, four contractor compromises took a median of 3.5 hours from first alert to containment, mostly waiting for contractor managers to confirm activity. Four cases make the baseline imprecise, and Daniel reconstructed it from tickets after the fact, which he later named as the main thing he would do differently. Still, the pattern was clear: most of the time was spent waiting for a contractor manager to answer. The interventions target that wait directly. Daniel names timestamps recorded as cases happen, not reconstructed from tickets afterwards, as the requirement for any better baseline.
 
 ### 11.3 Interventions
 
@@ -800,7 +800,7 @@ A contractor directory with 24/7 contacts; an automated step that sends the cont
 
 ### 11.4 Stakeholders
 
-Procurement (contracts must require 24/7 contacts), contractor managers, IT and legal. Procurement adds a clause to new contracts. Each stakeholder had a stake in the design. Contractor managers needed to know what a confirmation request would look like and how quickly to answer; IT needed a way to suspend export rights alone; legal checked that suspension without notice fitted the contracts. Daniel met each group before launch, which made the first suspension less of a surprise to everyone involved. Legal checked the clause against existing contracts.
+Procurement (contracts must require 24/7 contacts), contractor managers, IT and legal. Procurement adds a clause to new contracts. Each stakeholder had a stake in the design. Contractor managers needed to know what a confirmation request would look like and how quickly to answer; IT needed a way to suspend export rights alone; legal checked that suspension without notice fitted the contracts. Daniel met each group before launch, which made the first suspension less of a surprise to everyone involved. Legal checked the suspension clause against existing contractor agreements before the first suspension took place.
 
 ### 11.5 Risks
 

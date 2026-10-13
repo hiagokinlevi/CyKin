@@ -360,7 +360,7 @@ Clinics run long days and some Saturdays. Updates install overnight with restart
 
 ### 6.2 Rings
 
-A small first ring of office machines takes updates on release day, clinics follow after three days. If the first ring shows problems, the supplier pauses the second ring. Office machines go first because problems there are less disruptive than in a clinic: an office user can wait for a fix, while a surgery cannot. Three days gives the supplier time to spot problems reported by the first ring or published by the vendor. Pausing the second ring is the supplier's decision, but it must tell the operations manager and record why, and the pause has an end date. Emergency updates can follow a shorter, documented route.
+A small first ring of office machines takes updates on release day, clinics follow after three days. If the first ring shows problems, the supplier pauses the second ring. Office machines go first because problems there are less disruptive than in a clinic: an office user can wait for a fix, while a surgery cannot. Three days gives the supplier time to spot problems reported by the first ring or published by the vendor. Pausing the second ring is the supplier's decision, but it must tell the operations manager and record why, and the pause has an end date. Updates for actively exploited flaws can skip the three-day wait, but the supplier records the shortcut and tells the operations manager.
 
 ### 6.3 Measuring latency
 
@@ -480,11 +480,11 @@ NIST SP 800-92 advises deciding what to log before collecting. Priya chooses sig
 
 ### 8.2 Central collection
 
-Events forward to the supplier's log service, retained for 90 days. Clock synchronisation is checked, since times must line up across clinics. Ninety days covers a quarter, which matches Kestrel's review cycle and gives time to investigate a problem found late. Clock synchronisation matters because an investigation may need to compare a sign-in at one clinic with a change on an imaging PC at another. Priya checks that every device, including the excepted imaging PCs on their isolated segment, actually sends events, since a missing source looks the same as a quiet one. The supplier confirms the forwarding settings in writing.
+Events forward to the supplier's log service, retained for 90 days. Clock synchronisation is checked, since times must line up across clinics. Ninety days covers a quarter, which matches Kestrel's review cycle and gives time to investigate a problem found late. Clock synchronisation matters because an investigation may need to compare a sign-in at one clinic with a change on an imaging PC at another. Priya checks that every device, including the excepted imaging PCs on their isolated segment, actually sends events, since a missing source looks the same as a quiet one. The supplier confirms the forwarding settings in writing, including for the imaging PCs on the isolated segment, so a silent source is noticed.
 
 ### 8.3 Weekly review
 
-A short weekly review covers a few defined questions. Each finding is resolved or explained. Priya and the supplier agree the questions: were there repeated sign-in failures, new local accounts, disabled security software or changes to excepted machines? The supplier answers each one in a short note. A finding that needs action is passed to the operations manager, and an explained event, such as a planned software install, is recorded with its reason. Keeping the review short makes it likely to happen every week, and the notes show auditors that it did. Priya checks the notes monthly.
+A short weekly review covers a few defined questions. Each finding is resolved or explained. Priya and the supplier agree the questions: were there repeated sign-in failures, new local accounts, disabled security software or changes to excepted machines? The supplier answers each one in a short note. A finding that needs action is passed to the operations manager, and an explained event, such as a planned software install, is recorded with its reason. Keeping the review short makes it likely to happen every week, and the notes show auditors that it did. Priya checks the notes monthly during the project, looking for questions that were skipped or findings left without an outcome.
 
 ### 8.4 Privacy
 
@@ -540,7 +540,7 @@ The operations manager sets targets: a failed reception PC replaced within two h
 
 ### 9.2 Rebuilds
 
-Supported desktops are rebuilt from a standard image and management enrolment. Imaging PCs need vendor steps, so Priya documents them with the vendor. A standard image means a failed desktop can be replaced with a working one that already has the baseline settings and management. Imaging PCs are different: their software, licences and capture cards must be installed by the vendor or following its steps. Priya writes those steps down with the vendor's help, including what must be backed up beforehand, so the clinic is not dependent on one engineer's memory. The document is stored with the exception register.
+Supported desktops are rebuilt from a standard image and management enrolment. Imaging PCs need vendor steps, so Priya documents them with the vendor. A standard image means a failed desktop can be replaced with a working one that already has the baseline settings and management. Imaging PCs are different: their software, licences and capture cards must be installed by the vendor or following its steps. Priya writes those steps down with the vendor's help, including what must be backed up beforehand, so the clinic is not dependent on one engineer's memory. The rebuild document is stored with the exception register, since the same imaging PCs appear in both.
 
 ### 9.3 Testing
 

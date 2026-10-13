@@ -62,11 +62,11 @@ Sam Ito, engineering intern on TRB's authorized assessment platform team, transl
 
 ### 1.6 Why maths here
 
-Later chapters on probability, architecture and evaluation reuse the same careful language. Sloppy scope language produces sloppy tests. The coverage fraction from 1.3 returns as a proportion with an interval in Chapter 12, and the set expression from 1.1 becomes the TrackScope membership function in the labs. Learning the vocabulary once, carefully, means each later tool has a precise specification behind it rather than a habit. Sam's notebook from this chapter is the first artefact his mentor reviews. Precision here is cheap; imprecision later is not.
+Later chapters on probability, architecture and evaluation reuse the same careful language. Sloppy scope language produces sloppy tests. The coverage fraction from 1.3 returns as a proportion with an interval in Chapter 12, and the set expression from 1.1 becomes the TrackScope membership function in the labs. Learning the vocabulary once, carefully, means each later tool has a precise specification behind it rather than a habit. Sam's notebook from this chapter is the first artefact his mentor reviews. A vague definition costs little to fix in the notebook, but the same vagueness in TrackScope could put a SWIFT host in scope.
 
 ### 1.7 1.7 Applied note
 
-Sam practices translating ROE paragraphs into membership tests on paper before opening TrackScope. When a sentence says "web VLAN except payment gateways", he writes the set expression and lists every known gateway address from the asset register. Only then does he load the scope file. Contractors who skip the paper step regularly propose hosts that sit beside SWIFT "because the ping worked". The paper step is slower and prevents newspaper incidents. The asset register list doubles as evidence afterwards. Auditors can trace each load to it.
+Sam practices translating ROE paragraphs into membership tests on paper before opening TrackScope. When a sentence says "web VLAN except payment gateways", he writes the set expression and lists every known gateway address from the asset register. Only then does he load the scope file. Contractors who skip the paper step regularly propose hosts that sit beside SWIFT "because the ping worked". The paper step is slower and prevents newspaper incidents. The asset register list doubles as evidence afterwards. Auditors can match each scope-file load to the signed register list, so any host added later stands out.
 
 ### 1.8 1.8 Worked set arithmetic
 
@@ -190,7 +190,7 @@ No hard-coded secrets, no disabled TLS verification, no unsanitised shell-outs t
 
 ### 3.3 Synthetic first
 
-Every tool runs on documentation-range addresses and fake files before any engagement window. Documentation ranges such as 198.51.100.0/24 cannot route to real hosts, so a mistake during development reaches nothing. Sam runs every new tool against the synthetic TRB scope first, including the SWIFT exclusion at .20, and keeps the outputs as the expected results. Only when those outputs match the hand-worked answers does the tool become eligible for an engagement window, and the approval cites the synthetic run by date. Live use without that record is refused.
+Every tool runs on documentation-range addresses and fake files before any engagement window. Documentation ranges such as 198.51.100.0/24 cannot route to real hosts, so a mistake during development reaches nothing. Sam runs every new tool against the synthetic TRB scope first, including the SWIFT exclusion at .20, and keeps the outputs as the expected results. Only when those outputs match the hand-worked answers does the tool become eligible for an engagement window, and the approval cites the synthetic run by date. An approval request without a dated synthetic run attached is refused, however urgent the window.
 
 ### 3.4 Review
 
@@ -202,11 +202,11 @@ Seed randomness and pin interpreter versions so PulseMap demos are reproducible.
 
 ### 3.6 Course labs
 
-Labs in this book follow these rules and embed real outputs. Each lab in this book runs offline on the Python 3 standard library, uses documentation-range addresses and synthetic files, and prints output that was captured from a real run. If your output differs from the printed one, the difference is information: a changed input, a different interpreter or a bug. Treat it the way Sam treats a PulseMap regression, by finding the cause before trusting either result. Labs never need network access.
+Labs in this book follow these rules and embed real outputs. Each lab in this book runs offline on the Python 3 standard library, uses documentation-range addresses and synthetic files, and prints output that was captured from a real run. If your output differs from the printed one, the difference is information: a changed input, a different interpreter or a bug. Treat it the way Sam treats a PulseMap regression, by finding the cause before trusting either result. None of the labs needs network access, so they can be run on a laptop with networking switched off.
 
 ### 3.7 3.7 Applied note
 
-Dry-run output is pasted into the engagement channel before any write mode runs. Peers have two minutes to object. Sam once caught a path traversal into an evidence archive because a teammate read the dry-run carefully. Social review beats solitary cleverness for operational scripts. Two minutes is short enough not to delay a window and long enough for a careful reader. The pasted output lists every target address, the method card and the write paths the script will touch, so a reader can compare each line with the signed /26 and the SWIFT exclusion. Objections pause the run until resolved.
+Dry-run output is pasted into the engagement channel before any write mode runs. Peers have two minutes to object. Sam once caught a path traversal into an evidence archive because a teammate read the dry-run carefully. Social review beats solitary cleverness for operational scripts. Two minutes is short enough not to delay a window and long enough for a careful reader. The pasted output lists every target address, the method card and the write paths the script will touch, so a reader can compare each line with the signed /26 and the SWIFT exclusion. Any reader's objection pauses the run until it is resolved and noted in the window log.
 
 ### 3.8 3.8 Test data policy
 
@@ -222,7 +222,7 @@ Sam's script review board hangs three rejected snippets: a requests call with ve
 
 ### 3.11 3.20 Extra
 
-Rejected snippet board gets a fourth example whenever CI catches a new anti-pattern. Sam dates each snippet. The board is a living museum of almost-mistakes. Each new snippet carries a one-line note on what CI caught and why it was dangerous, such as an uncapped retry against a slow host. Interns are asked to explain one snippet in their own words during their first week. The note names the rule, not the person who wrote the code. The board is reviewed yearly.
+Rejected snippet board gets a fourth example whenever CI catches a new anti-pattern. Sam dates each snippet. The board is a living museum of almost-mistakes. Each new snippet carries a one-line note on what CI caught and why it was dangerous, such as an uncapped retry against a slow host. Interns are asked to explain one snippet in their own words during their first week. The note names the rule, not the person who wrote the code. Sam's team reviews the board yearly and retires snippets whose CI rule has become routine.
 
 ### Worked example (synthetic TRB)
 
@@ -278,7 +278,7 @@ Summary, scope/methods, findings, positives, limitations, appendices. The order 
 
 ### 4.6 Revision
 
-Peer review catches jargon and overclaim before the CISO sees the draft. Sam's reviewer reads for two things: words a non-specialist would not understand, and sentences that claim more than the evidence shows, such as 'attackers can move money' in place of the observed connection to ledger-db. Each comment is answered in the draft history, so the final report shows what changed and why before the CISO receives it. Unresolved comments block release; resolved ones stay visible. The CISO sees only the reviewed version.
+Peer review catches jargon and overclaim before the CISO sees the draft. Sam's reviewer reads for two things: words a non-specialist would not understand, and sentences that claim more than the evidence shows, such as 'attackers can move money' in place of the observed connection to ledger-db. Each comment is answered in the draft history, so the final report shows what changed and why before the CISO receives it. Unresolved comments block release; resolved ones stay visible. The CISO receives only the reviewed version, so overstated drafts such as 'attackers can move money' never reach the CISO.
 
 ### 4.7 4.7 Applied note
 
@@ -290,7 +290,7 @@ Before sending, Sam reads the executive summary aloud to someone outside securit
 
 ### 4.9 4.9 Passive voice audit
 
-Findings that hide actors in passive voice are rewritten. "Passwords were reused" becomes "The loan admin account used the same password as VPN" when known. Naming the system makes the finding actionable and testable. When the actor is not known, the sentence says so plainly, for example 'logs do not show which administrator changed the setting'. That keeps the finding honest without inventing a culprit, and it points straight at the logging gap as a second issue to fix. The rewrite took one sentence.
+Findings that hide actors in passive voice are rewritten. "Passwords were reused" becomes "The loan admin account used the same password as VPN" when known. Naming the system makes the finding actionable and testable. When the actor is not known, the sentence says so plainly, for example 'logs do not show which administrator changed the setting'. That keeps the finding honest without inventing a culprit, and it points straight at the logging gap as a second issue to fix. Fixing the 'developers ignored security' draft needed only one rewritten sentence naming the system and the missing log.
 
 ### 4.10 4.11 Scene
 
@@ -298,7 +298,7 @@ A draft finding once said "developers ignored security". Legal asked for rewrite
 
 ### 4.11 4.20 Extra
 
-Tone trophies are silly stickers on printed findings that developers praised as clear. Sam prefers stickers to metrics nobody reads. Each sticker records which finding was praised and why, so the next report can copy the clarity rather than just the sticker. Clarity that developers notice is clarity that gets fixes. Sam keeps the praised findings in a folder as examples for interns, alongside the rewritten 'developers ignored security' draft, so both good and bad models are visible. Metrics stay secondary.
+Tone trophies are silly stickers on printed findings that developers praised as clear. Sam prefers stickers to metrics nobody reads. Each sticker records which finding was praised and why, so the next report can copy the clarity rather than just the sticker. Clarity that developers notice is clarity that gets fixes. Sam keeps the praised findings in a folder as examples for interns, alongside the rewritten 'developers ignored security' draft, so both good and bad models are visible. Finding counts stay secondary in Sam's reports, because a clear finding that gets fixed matters more than a long list.
 
 ### Worked example (synthetic TRB)
 
@@ -418,7 +418,7 @@ Approved flows are a relation R ⊆ Src × Dst. Observed flows should be subsets
 
 ### 6.3 Decision trees
 
-Stop trees: if owner asks stop → halt; else if unexplained outage → halt; else continue under ROE. Writing the tree down before a window removes argument during it. If the loan system owner says stop, Sam halts at once without asking why. If an unexplained outage appears on any in-scope host, he halts and reports, even if the outage may be unrelated. Only when neither condition holds does testing continue, and continuing still requires the method to be allowed by the ROE. The tree's outcome is logged with the time.
+Stop trees: if owner asks stop → halt; else if unexplained outage → halt; else continue under ROE. Writing the tree down before a window removes argument during it. If the loan system owner says stop, Sam halts at once without asking why. If an unexplained outage appears on any in-scope host, he halts and reports, even if the outage may be unrelated. Only when neither condition holds does testing continue, and continuing still requires the method to be allowed by the ROE. Each pass through the stop tree is logged with the time and outcome, so the window log shows why testing continued or halted.
 
 ### 6.4 Equivalence
 
@@ -510,7 +510,7 @@ T1190 Exploit Public-Facing Application describes abuse of internet-facing servi
 
 ### 7.7 7.7 Applied note
 
-Capture ROE clauses specify retention hours and who may run wireshark. Sam's default ask is "configs and logs first; packets only if those fail". Most TRB web findings never need packets; when they do, the clause is already written. Writing the clause in advance means an urgent capture request during a window does not lead to an improvised decision about customer data. The clause also names who deletes the files when the retention hours expire. Deletion is confirmed in the ticket, not assumed.
+Capture ROE clauses specify retention hours and who may run wireshark. Sam's default ask is "configs and logs first; packets only if those fail". Most TRB web findings never need packets; when they do, the clause is already written. Writing the clause in advance means an urgent capture request during a window does not lead to an improvised decision about customer data. The clause also names who deletes the files when the retention hours expire. The named person confirms deletion in the capture ticket when the retention hours expire, so nobody assumes the files are gone.
 
 ### 7.8 7.8 Banner humility
 
@@ -526,7 +526,7 @@ A learner asks to try a TCP FIN scan on staging "for the coursework". Sam shows 
 
 ### 7.11 7.20 Extra
 
-PCAP quiz answers never include payload bytes from real customers. Synthetic PCAPs only. Synthetic captures are generated with documentation-range addresses and invented payloads, so no customer data can leak through teaching material. Answers describe headers, timing and flow patterns, which is what learners need for detection reasoning. Sam regenerates the quiz files when the course changes rather than editing captures by hand, so their provenance stays clear. Each regenerated file is hashed and the hash published with the quiz. Learners never handle real traffic.
+PCAP quiz answers never include payload bytes from real customers. Synthetic PCAPs only. Synthetic captures are generated with documentation-range addresses and invented payloads, so no customer data can leak through teaching material. Answers describe headers, timing and flow patterns, which is what learners need for detection reasoning. Sam regenerates the quiz files when the course changes rather than editing captures by hand, so their provenance stays clear. Each regenerated file is hashed and the hash published with the quiz. Because every quiz file is generated, learners never handle captures containing real TRB customer traffic.
 
 ### Worked example (synthetic TRB)
 
@@ -566,7 +566,7 @@ Scope loader, finder schema, report exporter — each with tests and a README. S
 
 ### 8.2 Validate on write
 
-FindingsDesk rejects tickets missing owner or evidence hash. Rejecting incomplete tickets at the moment of writing is cheaper than chasing them later. A finding without an owner has nobody to fix it, and a finding without an evidence hash cannot be checked against the file it claims to describe. Sam's validation returns a message naming the missing field, so an analyst can correct the ticket immediately instead of guessing why it failed. The rule applies to imports and API calls alike.
+FindingsDesk rejects tickets missing owner or evidence hash. Rejecting incomplete tickets at the moment of writing is cheaper than chasing them later. A finding without an owner has nobody to fix it, and a finding without an evidence hash cannot be checked against the file it claims to describe. Sam's validation returns a message naming the missing field, so an analyst can correct the ticket immediately instead of guessing why it failed. FindingsDesk applies the same required-field rule to bulk imports and API calls, so neither route can create a finding without an owner.
 
 ### 8.3 API versioning
 
@@ -578,7 +578,7 @@ PATCH must not clear required fields accidentally. A client that sends only a ch
 
 ### 8.5 Bulk import
 
-CSV import of findings dry-runs first and caps row counts. A dry run shows what the import would create, update or reject, including any host outside the TRB scope, before anything is written. The row cap limits the damage a wrong file can do, and the next applied note shows why both limits exist. Only after an analyst reviews the dry-run summary does the real import run, and the summary is attached to the import record. Rejected rows are listed with the reason for each.
+CSV import of findings dry-runs first and caps row counts. A dry run shows what the import would create, update or reject, including any host outside the TRB scope, before anything is written. The row cap limits the damage a wrong file can do, and the next applied note shows why both limits exist. Only after an analyst reviews the dry-run summary does the real import run, and the summary is attached to the import record. The dry-run summary lists each rejected row with its reason, such as a host outside the TRB scope, so the analyst can fix the file.
 
 ### 8.6 Concurrency
 

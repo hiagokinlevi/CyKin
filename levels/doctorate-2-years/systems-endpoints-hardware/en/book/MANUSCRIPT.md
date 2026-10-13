@@ -174,7 +174,7 @@ You will (1) specify hypotheses, design and outcomes; (2) justify a quasi-experi
 
 ### 3.1 Hypotheses
 
-H1: ring-based deployment reduces the 95th-percentile days to patch. H2: ring-based deployment reduces the update failure rate. Both are directional and pre-registered. The 95th percentile was chosen because the slowest endpoints, not the average, decide how long a vulnerability stays exposed across a site. Directional hypotheses commit Yusuf to reporting a result in the opposite direction as evidence against them, not as an unexpected finding to explain away. Both measures can be computed from data the trust already collects. Each hypothesis has one test fixed in advance.
+H1: ring-based deployment reduces the 95th-percentile days to patch. H2: ring-based deployment reduces the update failure rate. Both are directional and pre-registered. The 95th percentile was chosen because the slowest endpoints, not the average, decide how long a vulnerability stays exposed across a site. Directional hypotheses commit Yusuf to reporting a result in the opposite direction as evidence against them, not as an unexpected finding to explain away. Both measures can be computed from data the trust already collects. Each hypothesis has one test fixed in the registered plan, so Yusuf cannot choose a different test after seeing the trust's data.
 
 ### 3.2 Design
 
@@ -526,7 +526,7 @@ Four files totalling 101 bytes in this small synthetic example each have a SHA-2
 
 ### 7.4 Data handling
 
-Real ticket text never enters the archive; only the synthetic-structure dataset with the same distributions is published, approved by the trust. The synthetic-structure dataset reproduces the distributions of days to patch, failures and failure categories, so the analysis gives the same kind of results, but no row corresponds to a real device or ticket. The trust's information governance lead approved the release after comparing it with the original extract. That approval is cited in the readme. The redaction rules are archived for others to reuse.
+Real ticket text never enters the archive; only the synthetic-structure dataset with the same distributions is published, approved by the trust. The synthetic-structure dataset reproduces the distributions of days to patch, failures and failure categories, so the analysis gives the same kind of results, but no row corresponds to a real device or ticket. The trust's information governance lead approved the release after comparing it with the original extract. That approval is cited in the readme. The redaction rules are archived with the synthetic release, so other NHS trusts could prepare comparable data the same way.
 
 ### 7.5 Licensing
 
@@ -593,11 +593,11 @@ Examiners ask about generalisation, firmware updates and cost. He answers with e
 
 ### 8.3 Firmware result
 
-Firmware updates had a higher failure rate in both arms, supporting SP 800-193's emphasis on recovery mechanisms. Yusuf presents this as an observation within the study rather than a main finding, because firmware was a separate category with fewer updates. It supports the recovery principle in SP 800-193 but does not test any particular recovery mechanism, and he says so. The trust's response, adding recovery checks for firmware, follows from the observation rather than from a measured effect. Larger firmware samples would be needed to test it.
+Firmware updates had a higher failure rate in both arms, supporting SP 800-193's emphasis on recovery mechanisms. Yusuf presents this as an observation within the study rather than a main finding, because firmware was a separate category with fewer updates. It supports the recovery principle in SP 800-193 but does not test any particular recovery mechanism, and he says so. The trust's response, adding recovery checks for firmware, follows from the observation rather than from a measured effect. Testing it would need a larger firmware sample than the trust's, which Yusuf names as future work.
 
 ### 8.4 Publication plan
 
-One journal paper on the main effect, one practitioner report for health IT teams, and the open archive. Each output serves a different reader. The journal paper reports method, effects and intervals for researchers; the practitioner report explains rings, the codebook and the limits in plain terms for health IT teams; and the archive lets anyone rerun the analysis. All three use the same wording for the main claim, so no version says more than the others. Each output cites the archive's persistent identifier.
+One journal paper on the main effect, one practitioner report for health IT teams, and the open archive. Each output serves a different reader. The journal paper reports method, effects and intervals for researchers; the practitioner report explains rings, the codebook and the limits in plain terms for health IT teams; and the archive lets anyone rerun the analysis. All three use the same wording for the main claim, so no version says more than the others. Each output cites the archive's persistent identifier, so a reader of the practitioner report can reach the same data as a reader of the paper.
 
 ### 8.5 Practice impact
 
