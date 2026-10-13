@@ -49,6 +49,8 @@ Feed tank T-1 at Ashford Batch Plant (ABP) holds V(t) cubic metres. If the make-
 
 An attacker who can stop a pump or spoof a level reading changes this integral. The hold-up time is the window in which operators or a safety system must notice and act. If T-1 holds 12 m³, the minimum is 2 m³ and the reactor draws about 1.8 m³/h, operators have roughly 5.5 hours. That number goes straight into the detection requirement: an alarm that fires after six hours detects nothing useful. Calculus turns "detect quickly" into "detect within 5.5 hours, with margin".
 
+Lena writes the number into the requirement together with how it was calculated.
+
 ### 1.3 Varying draw
 
 ABP's draw oscillates with the batch recipe: q(t) = 1.8 + 0.4 sin(2πt/6). Its integral has a closed form, and the lab solves for t* by bisection. The answer, 5.53 h, is close to the average-rate estimate of 5.56 h because the oscillation averages out over a full six-hour cycle; with a shorter window or a skewed recipe the two would diverge, and the conservative choice is the smaller time.
@@ -82,6 +84,8 @@ average-rate estimate: 5.56 h
 
 Models assume the level sensor is honest; Chapter 29 treats sensor spoofing. Mixing m³/h with minutes is the most common slip. Always choose the conservative root when uncertainty is large.
 
+A spoofed level reading is the case this model cannot handle: if the transmitter reports a full tank while T-1 drains, the integral is correct but nobody is looking at it. That is why Lena pairs the hold-up calculation with an independent level switch. Check units at every step, write the time in hours with the assumed draw beside it, and repeat the calculation whenever the recipe changes the reactor's demand.
+
 ### Exercises
 
 - **EX001 — Constant draw.** T-2 holds 9 m³, minimum 1.5 m³, constant draw 1.25 m³/h. Time to minimum? Rubric: 3 = 6.0 h with working; 2 = right method, arithmetic slip; 1 = formula only; 0 = none.
@@ -108,9 +112,13 @@ You will (1) represent an OT network as a directed graph; (2) compute reachabili
 
 In ISA/IEC 62443 vocabulary, zones are groups of assets with common security requirements and conduits are the permitted communication paths between them. A directed graph models this exactly: nodes are zones (L4 office, L3.5 DMZ, L3 historian, L2 SCADA, L1 PLC, L1 SIS, L0 I/O) and an edge a→b means a can initiate traffic to b. Asking "can the office network write to the safety system?" becomes "is L1-SIS reachable from L4?".
 
+Lena builds ABP's graph from the firewall export, not from the network diagram, because the export is what is enforced.
+
 ### 2.2 Reachability
 
 Depth-first search computes the set of nodes reachable from a start node in time proportional to nodes plus edges. Reachability is transitive: if L4→L3 and L3→L2 and L2→L1-SIS, then L4 reaches SIS even with no direct rule. Firewall reviews that check rules one at a time miss exactly this composition, which is why engineers compute closure rather than reading rule lists.
+
+Lena runs the search from every zone, not only the office, and keeps the result as a table that the next review can compare against.
 
 ### 2.3 Monotonicity proof
 
@@ -147,6 +155,8 @@ zoned: L4 reaches ['L0', 'L1-PLC', 'L2', 'L3', 'L3.5', 'L4'] count=6 writes_to_S
 ### 2.4 Errors and limits
 
 Graphs model permitted initiation, not actual traffic or vulnerabilities. Bidirectional protocols and remote-access tools can create hidden reverse edges; inventory them explicitly.
+
+Lena adds a remote-access tool used by a vendor as an explicit edge from outside the plant into L2, since its sessions are initiated outward but carry commands inward. Without that edge, the graph would show the office cut off from SCADA while a support session could still reach it. Each such edge is listed with its owner and the record that justifies it, and the graph is rebuilt after any change to remote-access tooling or vendor contracts.
 
 ### Exercises
 
@@ -194,9 +204,13 @@ cycle budget 100 ms -> fits
 cycle budget 50 ms -> fits
 ```
 
+Lena does this sum for the trunk to PLC-A before approving any monitoring device on it, and the result is the 21 ms figure she later uses throughout the programme.
+
 ### 3.2 Process time constants
 
 A level loop on a 12 m³ tank changes over minutes; a pressure loop on a compressor changes in tens of milliseconds. The required control and detection speed follows the physics. Security monitoring that adds 200 ms of latency is harmless on the tank and dangerous on the compressor. Always ask what the process time constant is before inserting inspection devices inline.
+
+For ABP, the feed tanks and reactor level are slow loops, while a compressor skid nearby is fast. Lena lists the loops on each trunk with their time constants before choosing where a monitor may sit.
 
 ### 3.3 Physical-layer manipulation
 
@@ -208,10 +222,11 @@ Sensors measure physics: a 4–20 mA loop, a thermocouple voltage, a pulse from 
 
 Timing calculations ignore device turnaround and retries; measure on a bench before committing. Do not test signal injection on live loops.
 
+Lena's bench copy of the RS-485 trunk to PLC-A is where the polling budget and the serial monitor's added latency were measured, and it is the only place course work touches serial timing. Any signal-injection experiment, even a small bias on a 4–20 mA loop, belongs on a bench with a spare transmitter, never on T-1's live loop. Record bench results with the equipment used, because a different transmitter or cable can change the numbers.
 
 ### 3.5 Worked example — signal levels and the time budget (synthetic ABP)
 
-T-1's level transmitter sends a 4–20 mA signal over 180 m of twisted pair to PLC-A. A 0.2 mA bias injected at a marshalling cabinet shifts the reading by 0.2/16 = 1.25 % of span, which for a 9 m³ tank is about 0.11 m³ — small enough to hide inside normal noise. The tank's time constant (volume over typical inflow, 9/1.25 ≈ 7.2 h) tells Lena how long such a bias can act before the hold-up calculation from Chapter 1 is wrong by a whole safety margin. She therefore specifies a second, independent level switch on T-1 wired to SIS-B and a periodic comparison of transmitter and switch, because a physical-layer attack on one loop cannot then silently defeat both.
+T-1's level transmitter sends a 4–20 mA signal over 180 m of twisted pair to PLC-A. A 0.2 mA bias injected at a marshalling cabinet shifts the reading by 0.2/16 = 1.25 % of span, which for the transmitter's 9 m³ calibrated span is about 0.11 m³ — small enough to hide inside normal noise. The tank's time constant (span over typical inflow, 9/1.25 ≈ 7.2 h) tells Lena how long such a bias can act before the hold-up calculation from Chapter 1 is wrong by a whole safety margin. She therefore specifies a second, independent level switch on T-1 wired to SIS-B and a periodic comparison of transmitter and switch, because a physical-layer attack on one loop cannot then silently defeat both.
 
 ### Exercises
 
@@ -239,9 +254,13 @@ You will (1) write small, pure functions that decide whether an OT message is pe
 
 An allow-list for Modbus is a function `permit(source, function_code, register) -> (bool, reason)`. Making it pure — inputs in, decision out, no hidden configuration — lets you test it on a laptop with synthetic records. The reason string matters: "register-out-of-range" tells a reviewer that the HMI tried to write outside the setpoint block, which is a different story from an unknown station using a diagnostic function.
 
+Lena keeps the reason strings short and fixed so that logs can be counted by reason.
+
 ### 4.2 Exact types
 
 Store function codes as integers, register ranges as `range` objects, and station identities as fixed strings from an inventory. A frequent bug treats the 4xxxx "holding register" notation as a string and matches by prefix, so 400500 looks like 40050. Convert addresses once, at parse time, into integers with documented offsets.
+
+Lena writes one conversion function for register addresses and tests it at both ends of the HMI's writable range, 40001 and 40010, and one step outside each. Station names come from the inventory, so a typo in the allow-list fails a lookup instead of silently creating a new station that matches nothing.
 
 ### 4.3 Tests on synthetic decoded frames
 
@@ -275,6 +294,8 @@ ENG-WS  fc= 8 reg=    0 -> BLOCK fc-not-allowed
 HIST-1  fc= 4 reg=30010 -> PASS
 ```
 
+Tests are grouped by rule so that a failure points straight at the clause that broke. The historian's write test, which caught function 16, is kept as a permanent case. Lena's test table lists each tuple, the expected decision and the reason string, and a reviewer can read it without running anything. New stations or registers added to the allow-list arrive with their own rows in the same pull request.
+
 ### 4.3b Logging what the function decided
 
 Every decision should be logged with the source, function code, register, decision, reason and the version of the allow-list file. When an operator asks why an HMI write was blocked at 03:12, the log answers in one line. Without the version field, nobody can tell whether the block came from yesterday's list or today's.
@@ -284,6 +305,8 @@ Every decision should be logged with the source, function code, register, decisi
 ### 4.4 Errors and limits
 
 An allow-list on a monitor is only as good as the decoder. Malformed frames must be counted and alarmed, not silently dropped. Real enforcement devices need vendor validation before deployment.
+
+Lena's monitor counts malformed frames per minute and raises an alarm if the count rises, because a sudden burst can mean a failing device or a decoder bug. Treating such frames as permitted would turn every decoder gap into an open door. The monitor in this course only observes; any device that actually blocks traffic at ABP is a vendor product validated on the bench first.
 
 ### Exercises
 
@@ -311,13 +334,19 @@ You will (1) write OT security findings that operators and safety engineers can 
 
 A control-room operator needs to know what to watch for. A process-safety engineer needs to know whether a safety function is affected. A manager needs cost and downtime. One finding can serve all three if it states: asset and zone; what was observed and how; the plausible process consequence; the safety-layer status; the fix and the maintenance window needed.
 
+Lena writes each finding once, in that order, so each reader finds their part quickly. A finding missing any of these parts goes back to its author before review.
+
 ### 5.2 Bounded consequences
 
 "An attacker could blow up the plant" is neither true nor useful. A bounded statement reads: "A station on L2 can write setpoint registers on PLC-A without authentication. A setpoint change on T-1 level could overfill the tank in roughly 40 minutes; the independent high-high trip on SIS-B would stop the feed pump before overflow." This names the path, the time, and the protective layer that still holds.
 
+Lena checks every bounded statement with the process-safety engineer before it is sent, since the minutes to overflow and the trip that holds come from the safety analysis, not from the security team.
+
 ### 5.3 Structure of a short report
 
 Summary (three sentences); scope and method; findings ordered by consequence; residual risk with protective layers named; appendix with evidence references. Diagrams of zones are worth more than pages of rule tables.
+
+Lena's reports for CNHP fit on two pages plus the appendix. The summary names the most serious finding and whether any safety function is affected. Each finding cites its evidence by hash and states the maintenance window needed for the fix, so planners can schedule it. A zone diagram with the affected conduit highlighted usually explains the finding faster than the text.
 
 ### 5.3b Words to avoid and words to use
 
@@ -328,6 +357,8 @@ Avoid "trivial", "catastrophic" and "fully compromised": none can be checked. Us
 ### 5.4 Errors and limits
 
 Never include working attack procedures in reports; reference the evidence store. Do not claim a safety consequence without the safety engineer's review.
+
+Evidence such as configuration exports stays in the sealed store, and the report cites it by hash, so anyone with access can verify it without the report carrying sensitive detail. Lena sends every finding that mentions SIS-B or a trip to the process-safety engineer for review before release, and records the reviewer's name in the report. A consequence the engineer has not confirmed is written as a question, not a claim.
 
 ### Exercises
 
@@ -355,6 +386,8 @@ You will (1) use series to reason about repeated retries of plant communications
 
 If each Modbus request succeeds with probability p = 0.9 independently (synthetic, for a noisy trunk), the chance of succeeding within k tries is 1 − (1 − p)^k. With k = 3, that is 0.999. Retries raise reliability but multiply traffic: expected attempts until success equal 1/p ≈ 1.11, so a 1,000-poll cycle expects about 1,110 frames. The communications budget (Chapter 3) must count the retries, not only the logical polls.
 
+Lena includes retries when she checks the RS-485 trunk to PLC-A, since a noisy period can raise traffic by a tenth or more.
+
 ### 6.2 Alarm backlog as a rate equation
 
 Let B(t) be open alarms. Alarms arrive at rate a and are acknowledged at rate c when staffed. Then B′ ≈ a − c. If a = 3.3/h (the pre-rationalisation rate from the alarm lab) and two operators together clear 2.0/h, the backlog grows. After rationalisation to 1.05/h, the same staff clears it. The model is crude — it ignores priority — but it makes staffing and rationalisation quantitative.
@@ -379,6 +412,8 @@ per operator-hour before=3.31 after=1.05
 worst source before: comm loss PLC-A (38% of load)
 ```
 
+Lena uses the model to argue for rationalisation before asking for staff. The numbers made the case clearly.
+
 ### 6.3 When continuous is enough
 
 Maintenance debates often need an order of magnitude: "Will 200 chattering communication-loss alarms per week overwhelm one operator?" Yes: that alone is about 1.2/h. Reserve exact analysis for loops that affect safety timing.
@@ -388,6 +423,8 @@ Maintenance debates often need an order of magnitude: "Will 200 chattering commu
 ### 6.4 Errors and limits
 
 Independence of retries fails when the trunk is systematically down. Backlog models ignore safety-critical alarms that must interrupt; treat those separately.
+
+When the trunk to PLC-A is down, every retry fails together, so the geometric formula greatly overstates reliability; Lena treats a trunk outage as a separate case with its own alarm. Likewise, high-high level on T-1 or a trip from SIS-B must reach the operator at once, whatever the backlog of routine alarms. The rate model is for planning staffing and rationalisation, not for deciding which alarms may wait.
 
 ### Practice note
 
@@ -418,6 +455,8 @@ You will (1) report detection rates with intervals; (2) compare detectors withou
 ### 7.1 Rates and intervals
 
 Sixty synthetic trials with 0 false alarms and 60/60 detections sounds perfect — until you remember that a Wilson 95% interval for 0/60 still allows a few percent false-alarm rate in the long run. Report the interval, not only the point. For 60/60 detections the interval for the miss rate is also narrow, but it is not zero forever.
+
+Lena's reports for CNHP give the count, the interval and the seed list together, so a reader can see both the result and how much it could move with more trials.
 
 ### 7.2 Comparing detectors
 
@@ -456,6 +495,8 @@ cusum classA FA=0/60 det=60/60 mean_delay=24.8
 cusum classB FA=0/60 det=0/60 mean_delay=nan
 ```
 
+Lena's pilot plan keeps the same traces for both detectors and names the attack class tested, so the comparison can be repeated on new seeds later.
+
 ### 7.3 Base rates in the control room
 
 If genuine cyber-physical attacks are rare, a detector with even a 1% false-alarm rate will dominate the operator's attention. Bayes' rule applies exactly as in Chapter 7 of neighbouring security courses: precision collapses when the base rate is tiny. Design for the plant's base rate, not a lab's balanced set.
@@ -465,6 +506,8 @@ If genuine cyber-physical attacks are rare, a detector with even a 1% false-alar
 ### 7.4 Errors and limits
 
 Synthetic attacks are not the adversary. Intervals assume independent trials; correlated seeds invalidate them. Never invent a p-value for a table you did not test.
+
+Lena's pilot reports state that the attacks were synthetic, list the seeds and explain how they were generated. If two seeds produce nearly identical traces, she counts them as one trial, because treating them as independent would make the interval look narrower than the evidence supports. Any statistical test she reports is one she actually ran, with its inputs kept so a reviewer can rerun it.
 
 ### Practice note
 
@@ -496,9 +539,13 @@ You will (1) place PLC, SIS and SCADA on a privilege and dependency map; (2) exp
 
 A PLC executes the basic regulatory loop. An SIS implements the safety instrumented functions and must be able to act when the PLC is wrong or compromised. SCADA and HMIs are supervisory: they set setpoints and display state. Architecture that lets SCADA write into SIS logic collapses that independence — which is exactly what the reachability lab warned about.
 
+At ABP, PLC-A runs the regulatory loops on T-1, T-2 and R-101, and SIS-B holds the trips. Lena marks these roles on her privilege map.
+
 ### 8.2 Independence is physical
 
 Independence is not a VLAN tag. It means separate controllers, sensors where required by the safety requirement specification, and conduits that do not allow the regulatory network to alter safety logic. NIST SP 800-82 and ISA/IEC 62443 both treat safety systems as needing careful zoning; process-safety standards (IEC 61511) go further on independence. Security architecture must not undo what safety architecture paid for.
+
+Lena checks independence by tracing wires and conduits, not by reading labels in the network drawing. SIS-B's own level sensors on T-1 are the clearest example of that independence.
 
 ### 8.3 Evidence without writing to the PLC
 
@@ -509,6 +556,8 @@ Authorized assessment of OT prefers read-only methods: configuration exports, mi
 ### 8.4 Errors and limits
 
 "Air gap" claims often hide USB, vendor laptops and cellular modems. Inventory those out-of-band paths as carefully as IP routes.
+
+Lena's inventory for ABP lists every USB port on HMIs and engineering workstations, every vendor laptop that connects for support and every cellular modem fitted for remote diagnostics. Each gets an owner and a control, such as port blocking or a logged sign-out. A plant described as isolated is checked against this list before anyone repeats the claim in a report, because one forgotten modem can create a path the zone graph never shows.
 
 ### Practice note
 
@@ -540,9 +589,13 @@ You will (1) design a schema for OT findings that forbids exploit recipes; (2) i
 
 Store title, asset, zone, weakness class, evidence hash, consequence bound, protective layers intact, status. Reject fields named payload, shell or exploit. Evidence lives in a sealed store; the ticket holds the hash.
 
+Lena's schema rejects a record outright if a forbidden field appears, rather than stripping it quietly, so the person who submitted it learns not to. Consequence bounds and intact protective layers are separate fields, which lets the safety engineer filter findings that touch SIS-B. The evidence hash links each ticket to its sealed proof without copying any of it into the ticket system.
+
 ### 9.2 Idempotent upserts
 
 Two scanners reporting the same open Modbus write on PLC-A must become one finding. Fingerprint = (asset, weakness class, register-or-path). Retries and re-imports leave one row.
+
+Lena tests this by importing the same scanner output twice and by importing two scanners' reports of the same issue; both cases must leave exactly one finding. The fingerprint uses the register or path, not the scanner's own wording, because two tools describe the same weakness differently. When fingerprints collide for genuinely different problems, a person splits them and records why.
 
 ### 9.3 Property tests for zones
 
@@ -550,9 +603,13 @@ State: "for every host in the office zone and every SIS register, permit is fals
 
 > **Synthetic case — Ashford Batch Plant.** After the FW-12 finding, Lena added a property test: no L4 host may have a permit path to L1-SIS. CI runs it on every firewall-export change.
 
+The test runs on synthetic hosts drawn from the inventory.
+
 ### 9.4 Errors and limits
 
 Schemas drift; version them. Property generators that never emit the new subnet miss the bug they were written to catch — include inventory diffs as inputs.
+
+Lena feeds the property test with the latest inventory diff, so every new subnet is tested in the next run. The schema has a version field, and older records are migrated with a recorded script rather than edited by hand. When a test is changed, she checks that it still fails on the original bug, since a property that can no longer fail protects nothing.
 
 ### Practice note
 
@@ -588,9 +645,13 @@ You will (1) refuse unauthorized plant access and dual-use requests; (2) apply s
 
 A plant manager saying "go ahead" in a corridor is not written authorization. OT work needs a signed scope naming units, methods, windows, stop conditions and a process-safety contact who can halt the plant. Without that document, the engineer stops. NIST SP 800-82 and ISA/IEC 62443 assume authorized, planned activity — not clever improvisation.
 
+Lena keeps a copy of the signed scope with every work package and checks it before each session. If the scope does not cover a planned step, she stops and asks for an amendment rather than interpreting it generously. The process-safety contact's phone number is on the permit itself.
+
 ### 10.2 Dual use
 
 This programme teaches zoning, monitoring, measurement and reporting. It does not teach exploit development against PLCs, weaponised protocol stacks or bypasses of safety systems. When a peer asks for "just the PoC against brand X", the answer is the finding description and the vendor's disclosure channel, not a working attack.
+
+Lena's refusals are polite and specific, pointing to what she can offer instead: a finding with bounded consequences, a reference to the vendor's disclosure process and a design change that removes the exposure. The record of each request and refusal is kept with the project notes.
 
 ### 10.3 Stop conditions that protect the process
 
@@ -601,6 +662,8 @@ Stop if: an unexpected process alarm fires; latency or cycle time exceeds the bu
 ### 10.4 Errors and limits
 
 Ethics is a constraint on every later chapter. Legal text here is orientation, not advice. Live plants are never course lab targets.
+
+Every later chapter assumes this boundary. Lena's work at ABP happens under a signed scope with named stop conditions and a process-safety contact; nothing in the course is ever aimed at a running plant. Where a question touches law, such as data protection or contracts with vendors, she asks the site's legal adviser rather than relying on course notes, and records the advice she received.
 
 ### Practice note
 
@@ -637,9 +700,13 @@ You will (1) describe what an authorized observer can learn from OT protocols wi
 
 Serial monitors see Modbus RTU on the wire; SPAN ports see Ethernet/IP or Modbus TCP; application logs see HMI actions. An assessment that only has HMI screenshots should not claim fieldbus visibility. State the vantage in the method section of every finding.
 
+Lena writes the vantage point into each finding's method field, so readers know what could and could not be seen. At ABP, a serial monitor on the RS-485 trunk to PLC-A gives fieldbus visibility, while the HMI's own logs show operator actions. Findings based only on one of these say so, because each can miss what the other sees.
+
 ### 11.2 Ports are not semantics
 
 TCP 502 often means Modbus TCP, but the meaningful scope is which function codes and which register ranges each station may use. Port 502 open is incomplete without the allow-list status and the stations observed. Chapter 4's permit function is the right abstraction.
+
+Lena's findings about open ports always add which stations were seen using which function codes, so the reader knows whether the port matters. At ABP, the allow-list states that HMI-1 may write only registers 40001 to 40010 and that the historian may only read. A port scan alone would show none of that.
 
 ### 11.3 Denies are coverage
 
@@ -679,6 +746,8 @@ HIST-1  fc= 4 reg=30010 -> PASS
 
 Banner grabs lie; confirm with application-level or decoded-frame evidence. Course environments never scan live plants.
 
+Lena treats a device banner as a hint and confirms the product from the engineering project export or from decoded frames before recording it in the inventory. Banners can be outdated after a firmware update or deliberately generic. The confirmation step also prevents a common error where a gateway's banner is mistaken for the controller behind it. In the course, all such checks run on captured or synthetic data, never on a live plant network.
+
 ### Practice note
 
 Keep a one-page protocol inventory: trunk, baud rate, stations, function codes in use, allow-list owner. Update it when a vendor adds a station. Most mystery traffic is an undocumented engineering laptop.
@@ -717,6 +786,8 @@ HMIs and engineering workstations often run general-purpose OSes with decades of
 
 Named accounts, time-boxed admin rights, logged elevations. Shared engineer passwords are still common and still wrong: they destroy attribution and linger after contractors leave. Findings about shared passwords are configuration findings, not invitations to crack hashes.
 
+At ABP, the shared engineer password on eng-WS-1 is replaced with named accounts, and each elevation is logged with the person and the reason. Contractors receive accounts that expire at the end of their work order. Lena reports shared passwords from the configuration and the account list, never by testing them.
+
 ### 12.3 Patch windows
 
 OT patches land in maintenance windows, not on Patch Tuesday. Fit jobs by risk into the available hours; defer what does not fit rather than overrunning into production.
@@ -752,6 +823,8 @@ deferred: ['historian DB patch']
 
 Do not disable antivirus or allow-listing to make the vendor happy without a written exception and compensating monitoring. Offline plants still need media control.
 
+When the HMI vendor asks for an exception, Lena records which protection is relaxed, on which host, for how long, and what monitoring replaces it. The exception has an owner and an expiry date. Offline hosts still receive media through a scanning station and a logged transfer, since USB sticks are the usual route into an isolated network.
+
 ### Practice note
 
 Every deferred patch gets a ticket with residual risk and a date. Deferred-without-date is how decade-old HMI OS images survive. Review the deferred list in the same meeting that plans the next window.
@@ -786,9 +859,13 @@ You will (1) protect historian and recipe data without blocking operations; (2) 
 
 Historians hold process values that reveal production rates, recipes and sometimes quality data. Unauthorized writes can corrupt batch records; unauthorized reads can leak commercial data. Zone them (L3), allow read paths through controlled replicas, and never expose SQL to L4.
 
+At ABP, HIST-1 sits in L3 and office users read from the DMZ replica, never from the control-zone historian. Write access to HIST-1 is limited to the collection service, and every change to batch records is logged. Lena checks both paths during each conduit review.
+
 ### 13.2 Minimize extracts
 
 Authorized database work uses synthetic or masked copies. Exporting real batch genealogy into a student laptop is a confidentiality incident. The work permit must state: no full dumps, column allow-lists, row limits, destroy-by date.
+
+Lena's work permit for historian access lists the allowed columns and the row limit in plain words. Extracts go to an approved analysis host, not a personal laptop, and their deletion is recorded. A request for more data than the question needs is narrowed before any query runs.
 
 ### 13.3 Synthetic process data
 
@@ -799,6 +876,8 @@ Generate deterministic tank levels and setpoints with fixed seeds so labs reprod
 ### 13.4 Errors and limits
 
 Masking that leaves unique rare recipes can still identify production runs. Prefer synthetic generation for teaching.
+
+A recipe that ABP runs only twice a year can identify the batch even with names removed. Lena therefore uses synthetic data for teaching and keeps masked real data only for investigations that truly need it, with access limited to the investigators. Masking choices are recorded and reviewed with the quality team. Rare-batch cases are listed in the extract request. The quality team reviews those cases before release.
 
 ### Practice note
 
@@ -839,9 +918,13 @@ You will (1) put OT security tools under version control with review; (2) gate c
 
 Allow-list compilers, reachability checkers and detector configs are software. They need repositories, reviews, tags and changelogs. A work permit that cites the firewall export without a hash is incomplete.
 
+Lena keeps CNHP's tools in a single repository with tagged releases and a changelog, and every work permit cites the tag and the hash of the exports it relies on. When a reviewer asks which version of the reachability checker produced a result, the answer is a tag, not a memory.
+
 ### 14.2 Gate widening
 
 Merges that add a conduit, open a function code or remove a deny require a second reviewer and a linked authorization ticket. Tightening changes can be lighter. Encode this in CODEOWNERS on the policy paths.
+
+Lena assigns code owners from control engineering to the allow-list and conduit files, so widening changes cannot merge without them. Tightening changes still need one reviewer. The rule is enforced by code-owner settings on the policy paths, so it cannot be skipped by a busy reviewer. A widening change also needs a linked authorization ticket naming who approved the new path and why.
 
 ### 14.3 CI fixtures
 
@@ -852,6 +935,8 @@ CI runs labs and unit tests on synthetic data. Never point CI at a plant VPN. Se
 ### 14.4 Errors and limits
 
 Tags can drift from what operators run; record the running hash in the engagement log at window start.
+
+Lena's engagement log records the hash of the monitor binary and allow-list actually running at the start of each window. If it differs from the tagged release, the window waits until the difference is explained. That check found one bench monitor still running a release candidate after a hotfix. Running hashes go in the window's record. A mismatch is treated as a stop, not a warning.
 
 ### Practice note
 
@@ -892,9 +977,13 @@ You will (1) map CIA and safety to OT assessment questions; (2) distinguish vuln
 
 Confidentiality: who can read recipes or trends? Integrity: who can change setpoints or logic? Availability: what stops the batch? Safety: which protective layers remain independent? Every finding should say which properties are affected and whether a safety function is in scope.
 
+Lena adds a line to every CNHP finding naming the affected properties and whether SIS-B is in scope. At ABP, a finding about an unauthenticated write to PLC-A affects integrity and, through the tank level, possibly safety; a finding about the historian replica affects confidentiality. Naming the property tells readers which team must respond.
+
 ### 15.2 Vulnerability, exposure, risk
 
 An unauthenticated Modbus write is a vulnerability. On a PLC reachable from L2 it is an exposure. Process risk adds likelihood and consequence for the plant — which needs the safety engineer's model, not a universal CVSS-only story. Tickets store consequence bounds and protective layers separately; risk acceptance stays with the plant owner.
+
+Lena's ticket template has separate fields for each so that none is lost. Lena records the exposure, such as reachability from L2, separately from the vulnerability, so that fixing either one can be tracked. The plant manager signs any acceptance of residual risk.
 
 ### 15.3 Empty scores
 
@@ -905,6 +994,8 @@ A single OT risk = 42 hides whether SIS independence holds. Prefer concrete meas
 ### 15.4 Errors and limits
 
 Fundamentals are vocabulary; they are not a complete hazard analysis. Continue into threat and failure analysis for structured study.
+
+The vocabulary helps people describe findings consistently, but it does not replace the plant's process hazard analysis. Lena links CNHP findings to the hazard analysis where they touch a hazard, and leaves consequence judgments to the process-safety engineer. Threat and failure analysis later in the programme gives the structured method. Each finding links to the relevant hazard. The safety engineer reviews those links.
 
 ### Practice note
 
@@ -940,9 +1031,13 @@ You will (1) write testable OT security requirements; (2) trace a requirement to
 
 "The plant should be secure" is not a requirement. "No host outside L1/L2 shall initiate writes to PLC-A holding registers; verified by reachability analysis and allow-list tests on synthetic fixtures" is. Each requirement needs an id, a shall-statement, a verification method and an owner.
 
+Lena assigns each CNHP requirement an id such as R-12 and an owner before any design work starts. A requirement without a verification method is returned to its author. Lena also checks that each one can be tested on synthetic fixtures, because a requirement that can only be verified by writing to a live controller cannot be accepted.
+
 ### 16.2 Traceability
 
 Matrix: requirement to design element to test case to plant evidence. When a finding shows a conduit into SIS, you know which requirement and test failed. Without the matrix, post-mortems become blame.
+
+Lena keeps the matrix as a file in the CNHP repository, updated in the same pull request as the policy it describes. Each row links a requirement such as R-12 to the zoned edge list, the reachability test and the latest firewall-export hash. When a test fails, the matrix shows which requirement is at risk and who owns it.
 
 ### 16.3 Interfaces
 
@@ -953,6 +1048,8 @@ PLC-A publishes process values; SIS-B consumes dedicated sensors; the historian 
 ### 16.4 Errors and limits
 
 Traceability matrices rot if not updated in the same PR as the policy. Keep them next to the code.
+
+Lena's continuous integration fails a pull request that changes a policy file without touching the matrix, which keeps the two in step. Each row also carries the date it was last verified. Rows that have not been checked for a quarter are flagged in the review meeting, because an old link is often a broken one. Owners confirm each row yearly.
 
 ### Practice note
 
@@ -1016,9 +1113,13 @@ kp=0.05 ki=0.01 final=57.22 mae=8.34 peak_abs_err_after_5s=10.91
 kp=0.2 ki=0.01 final=58.15 mae=4.62 peak_abs_err_after_5s=6.17
 ```
 
+Lena uses the lab to explain to colleagues why a detector should watch the error, not the raw level. The lab output shows the offset disappearing once integral action is added, which helps colleagues see how a controller responds to a disturbance. A detector that alarms on the level itself would fire whenever a setpoint changes.
+
 ### 17.2 Sensors in the loop
 
 Inline inspection adds latency. If the process time constant is minutes (tank level), tens of milliseconds are fine. If it is tens of milliseconds (fast pressure), prefer passive taps. Measure before deploying (Chapter 3).
+
+At ABP, Lena approved a listen-only tap on the slow tank trunk and rejected inline inspection on the fast compressor skid, after measuring each on the bench. Measured latency on the bench decided both choices, not the vendor's stated figures. Lena records the measured values with the time constants of each loop, so the decision can be revisited if a process changes.
 
 ### 17.3 Alert storms
 
@@ -1030,6 +1131,8 @@ If every medium cyber alert pages the whole site, people silence the pager — a
 
 Textbook PI ignores valve stiction and sensor delay. Use plant historians for real tuning; the lab is for intuition.
 
+Lena tells reviewers that the lab's tidy curves are not what the plant historian shows. Real loops at ABP have valve stiction and transmitter delay, which make the response slower and noisier. Any detector threshold proposed from lab results is checked against a week of historian data before it is used, and tuning of real controllers stays with control engineers. Lena logs any differences found.
+
 ### Practice note
 
 Draw the loop: setpoint, error, controller, actuator, process, sensor, and mark where your security device sits. If you cannot mark it, you do not know whether you are measuring or actuating.
@@ -1037,6 +1140,8 @@ Draw the loop: setpoint, error, controller, actuator, process, sensor, and mark 
 ### 17.1b Set-points and human placement
 
 Write the set-point next to the sensor (cycle time ≤ 50 ms). Review set-points when the plant changes recipes or when false pages exceed an agreed rate. Put humans where judgment about authorization is required; put automation where delay is dangerous. Approving a conduit widen is human. Denying an out-of-range write is automation.
+
+At ABP, the cycle-time set-point for the serial monitor is 50 ms, and it is reviewed when recipes change. The rule of thumb is simple: automation for fast, well-defined decisions, people for judgments about authorization and risk.
 
 ### Exercises
 
@@ -1064,9 +1169,13 @@ You will (1) apply Purdue/62443 zoning at ABP; (2) define trust boundaries for e
 
 L0/L1 hold process and basic control; L2 supervision; L3 site operations; L3.5 DMZ; L4/L5 enterprise. SIS sits with carefully controlled conduits. Architecture diagrams must match the reachability graph, not a marketing Purdue poster.
 
+Lena checks the ABP diagram against the reachability results from the firewall export at each review. At ABP, SIS-B's engineering ports are reachable only through the keyswitch path during scheduled tests, and the office reaches SCADA data only through the DMZ historian replica. Where the diagram and the reachability results disagree, the results win and the diagram is corrected. Lena marks the diagram with the export hash it was checked against.
+
 ### 18.2 Engineering access
 
 Engineering workstations and vendor laptops cross trust boundaries. Prefer: DMZ jump host, time-limited accounts, monitored sessions, no standing VPN from the internet to L2. USB and cellular modems are architecture too — inventory them.
+
+At ABP, vendor sessions pass through a DMZ jump host with time-limited accounts and recorded sessions. Lena's inventory lists every engineering laptop allowed to connect, and any standing VPN found in a review is reported as a finding. USB use on engineering workstations is logged and reviewed monthly.
 
 ### 18.3 Synthetic ranges
 
@@ -1103,6 +1212,8 @@ zoned: L4 reaches ['L0', 'L1-PLC', 'L2', 'L3', 'L3.5', 'L4'] count=6 writes_to_S
 ### 18.4 Errors and limits
 
 Diagrams age. Re-validate zones against the live firewall export at each window.
+
+Lena compares the diagram with the live firewall export at the start of each window and records any difference as a finding. A diagram that has not been checked against the export is marked as unverified, so nobody relies on it by mistake during an incident. The six-month re-test later found exactly this kind of drift. The check takes minutes with the reachability script. Its result is filed with the window record.
 
 ### Practice note
 
