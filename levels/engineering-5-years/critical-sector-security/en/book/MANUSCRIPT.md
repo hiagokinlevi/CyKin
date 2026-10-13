@@ -3299,7 +3299,7 @@ Lab 16 shows the greedy failure on TMRP's seven candidates. Greedy left budget u
 
 Security investments trade off cost, risk reduction, operability and other goods. A solution is **Pareto-optimal** if no other solution is better in one objective without being worse in another; present the Pareto set rather than a single weighted answer. Benefits are uncertain estimates; test whether the optimal set changes when benefits vary within plausible ranges. Robust choices — those that are good across scenarios — are often preferable to choices optimal only under point estimates.
 
-For TMRP, the robustness check in EX082 varies each benefit by twenty per cent and finds the optimum unchanged.
+For TMRP, the robustness check in EX082 varies each benefit by twenty per cent and finds that three of the fourteen runs change the optimum, so the last part of the portfolio is a near-tie.
 
 ### 41.4 Interactions
 
@@ -3309,7 +3309,7 @@ In Lab 16 the benefits are simply added, which is a simplification: authenticate
 
 ### 41.5 Worked example: TMRP phase 1 portfolio (synthetic)
 
-Seven candidate controls with synthetic costs and benefits, budget 250 k (Lab 16). Greedy by ratio picks offline backups, local manual mode, authenticated telemetry and engineering-workstation hardening: cost 215 k, benefit 480 k. Exhaustive search finds a better set — authenticated telemetry, local manual mode, offline backups and spare RTUs — at cost 250 k and benefit 530 k. Greedy took the cheap workstation hardening early and could then not afford the spare RTUs. The team presents both, notes that benefit estimates have wide uncertainty, and shows that the exhaustive optimum remains optimal if each benefit varies by ±20% individually (EX082) — a robustness check, not a proof.
+Seven candidate controls with synthetic costs and benefits, budget 250 k (Lab 16). Greedy by ratio picks offline backups, local manual mode, authenticated telemetry and engineering-workstation hardening: cost 215 k, benefit 480 k. Exhaustive search finds a better set — authenticated telemetry, local manual mode, offline backups and spare RTUs — at cost 250 k and benefit 530 k. Greedy took the cheap workstation hardening early and could then not afford the spare RTUs. The team presents both, notes that benefit estimates have wide uncertainty, and shows that when each benefit varies by ±20% individually, authenticated telemetry and local manual mode stay in every optimum while three runs replace offline backups and spare RTUs with the backup generator (EX082) — a robustness check, not a proof.
 
 ### 41.6 Practical activity: Lab 16
 
