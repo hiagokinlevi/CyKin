@@ -480,7 +480,7 @@ You will (1) obtain and respond to independent review; (2) defend design choices
 
 ### 8.1 Independent review
 
-Before submission, Lucas asks a researcher from another university to rerun his scripts from the archive. She reproduces every table and the bootstrap interval exactly, thanks to fixed seeds. She also questions whether the four missing accounts could change the result. Lucas runs a worst-case check, assuming all four missing quarterly accounts had excess access; the difference falls slightly but the interval still excludes zero. He adds this sensitivity check to the results chapter and thanks the reviewer in his acknowledgements.
+Before submission, Lucas asks a researcher from another university to rerun his scripts from the archive. She reproduces every table and the bootstrap interval exactly, thanks to fixed seeds. She also questions whether the four missing accounts could change the result. Lucas runs a worst-case check, assuming all four missing accounts belonged to the quarterly group and had excess access; the difference falls slightly but the interval still excludes zero. He adds this sensitivity check to the results chapter and thanks the reviewer in his acknowledgements.
 
 ### 8.2 The defense
 
