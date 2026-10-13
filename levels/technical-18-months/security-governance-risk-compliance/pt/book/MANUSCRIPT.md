@@ -1,7 +1,7 @@
 # Governança, Riscos e Compliance de Segurança: Curso Técnico
 
 - Idioma: português do Brasil (`pt`); curso 051, curso técnico (18 meses). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–9 de 18 já estão escritos em português, com os exercícios EX001–EX036 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 10–18 (EX037–EX072) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–18 de 18 têm texto didático escrito à mão na edição em inglês; os exercícios EX001–EX072 têm resoluções correspondentes com rubricas de 0 a 3; os quatro laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de curso técnico que configuram, verificam e documentam os controles por trás do programa de GRC de uma pequena empresa.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios verificam exportações de configuração em JSON contra uma linha de base, contam logins com falha, conferem regras de firewall contra uma lista aprovada e verificam a validade de certificados, sempre sobre dados sintéticos. Qualquer teste acontece só em laboratórios virtuais isolados; as normas são citadas pela edição e parafraseadas, e nada aqui é auditoria, atestação ou aconselhamento jurídico reais. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ NIST [CSF 2.0](https://doi.org/10.6028/NIST.CSWP.29) e seus recursos para pequen
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) |
-
-Capítulos 10–18: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-10), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -428,11 +426,389 @@ As pontuações escondem a gravidade. Os checklists deixam o contexto de fora.
 - **EX035 — Escolha de ferramentas.** Que ferramentas Amina recomendou? *Rubrica:* 3 = chamados, planilhas com validação e scripts curtos;; 2 = ferramentas existentes;; 1 = nada;; 0 = nenhuma.
 - **EX036 — Marcação do checklist.** Como cada item do checklist é marcado? *Rubrica:* 3 = implantado, parcialmente implantado ou ausente, com evidência;; 2 = três estados;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-10"></a>
+
+## Capítulo 10 — Governança, riscos e compliance de segurança: configuração de controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) configurar os controles para atender à política; (2) documentar as decisões de configuração; (3) testar antes e depois das mudanças.
+
+### 10.1 Configurar conforme a política
+
+Amina ajuda a configurar os controles para que correspondam às políticas da Fenwick. Ela ativa a autenticação multifator em todas as contas de nuvem, ajusta as rotinas de backup para incluir o banco de dados de estoque e os dados da loja on-line e configura alertas para falhas repetidas de login. Para cada caso, confere o requisito da política e escolhe configurações que o atendam. Ela aprende que a configuração é onde a política vira realidade, e que pequenas escolhas de configuração podem fazer uma grande diferença. Incluir o banco de estoque nos backups, por exemplo, protege o único componente de que a loja e as filiais dependem.
+
+### 10.2 Documentar as decisões
+
+Algumas configurações envolvem compromissos. Amina define o limiar do alerta de login em cinco falhas em dez minutos. Mais baixo causaria muitos alarmes falsos por senhas digitadas errado; mais alto poderia deixar passar tentativas de adivinhação. Ela registra a decisão e o motivo nas notas de configuração. Aprende que documentar por que uma configuração foi escolhida ajuda os técnicos futuros a ajustá-la com bom senso, em vez de chutar ou revertê-la sem entender. Se os alarmes falsos se mostrarem frequentes, o motivo registrado mostra exatamente que compromisso rever. A nota fica ao lado da própria configuração, onde quem a abrir em seguida vai encontrá-la.
+
+### 10.3 Testar as mudanças
+
+Antes de mudar as configurações de backup, Amina testa a restauração do backup atual. Depois da mudança, roda um novo backup e restaura arquivos de amostra do banco de dados de estoque. Os dois testes passam. Ela registra os resultados. Aprende que testar antes e depois de uma mudança mostra tanto que o estado antigo funcionava quanto que a mudança não quebrou nada, o que oferece uma evidência útil de mudança controlada. Os resultados das restaurações de antes e de depois vão para o registro da mudança como evidência de que a alteração do backup foi controlada.
+
+### Exemplo resolvido
+
+Amina configura MFA, backups e alertas conforme a política, documenta o raciocínio do limiar do alerta e testa os backups antes e depois da mudança.
+
+> **Caso sintético.** As configurações são sintéticas.
+
+### Erros e limites
+
+Os limiares precisam de ajuste fino. Os testes amostram só alguns arquivos.
+
+### Exercícios
+
+- **EX037 — Escolha do limiar.** Que limiar de alerta Amina definiu? *Rubrica:* 3 = cinco falhas em dez minutos;; 2 = 5 em 10;; 1 = nada;; 0 = nenhuma.
+- **EX038 — Compromisso do limiar.** Por que não definir um limiar mais baixo? *Rubrica:* 3 = muitos alarmes falsos por senhas digitadas errado;; 2 = alarmes falsos;; 1 = nada;; 0 = nenhuma.
+- **EX039 — Testes antes e depois.** Por que testar antes e depois de uma mudança? *Rubrica:* 3 = mostra que o estado antigo funcionava e que a mudança não quebrou nada;; 2 = referência;; 1 = nada;; 0 = nenhuma.
+- **EX040 — Escopo do backup.** Que dados foram acrescentados às rotinas de backup? *Rubrica:* 3 = o banco de dados de estoque e os dados da loja on-line;; 2 = dois;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Governança, riscos e compliance de segurança: verificação
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar as regras de firewall contra uma lista aprovada; (2) investigar as regras não aprovadas; (3) registrar os resultados da verificação.
+
+### 11.1 Regras aprovadas
+
+A Fenwick mantém uma lista de regras de firewall aprovadas para a rede das filiais: quem pode se conectar a quê, em que porta. Amina aprende que a verificação compara a configuração real com a lista aprovada. Diferenças significam que a lista está desatualizada ou que o firewall tem regras não aprovadas. O PCI DSS v4.0 espera a revisão regular dos controles de segurança de rede, e a verificação é o modo de essa revisão virar evidência. Cada diferença é então resolvida de um jeito ou de outro: a lista é atualizada com aprovação, ou a regra é removida.
+
+### 11.2 Encontrar regras não aprovadas
+
+O laboratório compara cinco regras de firewall com três aprovadas. Três batem. Duas não são aprovadas: uma permite área de trabalho remota de qualquer origem para o segmento das maquininhas de pagamento, na porta 3389, e outra permite que os computadores do escritório alcancem o gateway de pagamento. Amina trata a primeira como urgente, porque expõe os sistemas de pagamento à internet. Ela relata as duas ao líder de TI, com a evidência. A porta 3389 aberta para a internet no segmento das maquininhas é exatamente o tipo de exposição que a segmentação exigida pelo PCI DSS deve impedir.
+
+### Laboratório — Verificar as regras de firewall contra uma lista aprovada
+
+```python
+"""Verify firewall rules against an approved list (synthetic branch firewall)."""
+approved = {("any", "web-shop", 443), ("branch-pos", "payment-gw", 443), ("it-admin", "branch-pos", 22)}
+rules = [("any", "web-shop", 443), ("branch-pos", "payment-gw", 443), ("it-admin", "branch-pos", 22),
+         ("any", "branch-pos", 3389), ("office", "payment-gw", 443)]
+for r in rules: print(r, "approved" if r in approved else "UNAPPROVED")
+print(f"rules {len(rules)}; unapproved {sum(r not in approved for r in rules)}")
+```
+
+Execute com `python3 lab_rules.py`. Saída verificada:
+
+```text
+('any', 'web-shop', 443) approved
+('branch-pos', 'payment-gw', 443) approved
+('it-admin', 'branch-pos', 22) approved
+('any', 'branch-pos', 3389) UNAPPROVED
+('office', 'payment-gw', 443) UNAPPROVED
+rules 5; unapproved 2
+```
+
+### 11.3 Investigar e registrar
+
+O líder de TI descobre que uma empresa de suporte acrescentou a regra de área de trabalho remota para um reparo pontual e nunca a removeu. A regra do escritório foi criada quando um gerente precisou conferir pagamentos, o que deveria ser feito pelo portal web do gateway. As duas regras são removidas. Amina registra a verificação, os achados, as causas e as correções. Ela aprende que a verificação encontra o que o controle de mudanças deixou passar, então os dois controles são necessários. A regra da empresa de suporte também mostra por que o contrato deveria exigir a remoção das regras temporárias depois do trabalho.
+
+### Exemplo resolvido
+
+Amina verifica cinco regras de firewall, encontra duas não aprovadas, entre elas uma exposição urgente de área de trabalho remota, e registra as causas e as correções.
+
+> **Caso sintético.** As regras são sintéticas; o PCI DSS v4.0 é real.
+
+### Erros e limites
+
+As listas aprovadas podem estar erradas. A verificação é periódica.
+
+### Exercícios
+
+- **EX041 — Contagem de não aprovadas.** Quantas regras não eram aprovadas? *Rubrica:* 3 = duas;; 2 = 2;; 1 = três;; 0 = nenhuma.
+- **EX042 — Regra urgente.** Que regra não aprovada era urgente? *Rubrica:* 3 = área de trabalho remota de qualquer origem para o segmento de pagamento;; 2 = RDP;; 1 = nada;; 0 = nenhuma.
+- **EX043 — Causa do RDP.** Por que a regra de área de trabalho remota existia? *Rubrica:* 3 = uma empresa de suporte a acrescentou para um reparo pontual;; 2 = suporte;; 1 = nada;; 0 = nenhuma.
+- **EX044 — Dois controles.** Por que são necessários tanto o controle de mudanças quanto a verificação? *Rubrica:* 3 = a verificação encontra o que o controle de mudanças deixou passar;; 2 = complementares;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Laboratório isolado I
+
+### Objetivos de aprendizagem
+
+Você vai (1) praticar um teste de controle num laboratório seguro; (2) seguir um procedimento de teste escrito; (3) comparar os resultados com as expectativas.
+
+### 12.1 Laboratório seguro
+
+No laboratório isolado, Amina pratica numa cópia virtual de uma filial da Fenwick: um computador de caixa, um computador de escritório, um firewall e um servidor de arquivos, todos rodando em máquinas virtuais isoladas, com dados sintéticos. Nada se conecta aos sistemas reais da Fenwick. A Sra. Bell explica que os laboratórios permitem aos estudantes tentar testes e errar sem arriscar as operações da empresa nem os dados reais dos clientes. Ela acrescenta que o laboratório reproduz uma filial real com fidelidade suficiente para que os procedimentos testados ali possam ser reaproveitados na Fenwick.
+
+### 12.2 Procedimento de teste
+
+Amina segue um procedimento escrito para testar o processo de desligamento: criar um usuário de teste, marcá-lo como desligado na lista de RH do laboratório, rodar o script de conciliação e verificar se a conta é sinalizada e desativada no prazo acordado. Ela registra cada etapa e cada resultado. A conta é sinalizada, mas não desativada, porque a etapa de desativação exige uma aprovação manual que ninguém deu no cenário do laboratório. A aprovação que faltou é uma característica do processo, e não do script, e por isso a seção seguinte compara os resultados esperados e os reais.
+
+### 12.3 Comparar
+
+O resultado esperado era a desativação em até um dia. O resultado real foi sinalizada, mas ainda ativa. Amina anota a lacuna: o processo depende de uma pessoa aprovar, e não existe lembrete se a aprovação for esquecida. Ela recomenda um escalonamento se a aprovação não vier em até um dia. Aprende que os laboratórios revelam lacunas de processo, e não só falhas técnicas, porque testam a sequência inteira do início ao fim. Um escalonamento em um dia também daria ao processo de desligamento uma meta mensurável para as verificações seguintes.
+
+### Exemplo resolvido
+
+Amina testa o processo de desligamento num laboratório isolado, descobre que a desativação empaca sem aprovação e recomenda um escalonamento.
+
+> **Caso sintético.** O ambiente do laboratório e os dados são sintéticos.
+
+### Erros e limites
+
+Os laboratórios diferem da produção. Os cenários simplificam.
+
+### Exercícios
+
+- **EX045 — Isolamento do laboratório.** Por que o laboratório é isolado? *Rubrica:* 3 = para não arriscar sistemas e dados reais;; 2 = segurança;; 1 = nada;; 0 = nenhuma.
+- **EX046 — Resultado do laboratório.** Qual foi o resultado real do teste de desligamento? *Rubrica:* 3 = sinalizada, mas não desativada;; 2 = empacou;; 1 = desativada;; 0 = nenhuma.
+- **EX047 — Causa da lacuna.** Por que a conta não foi desativada? *Rubrica:* 3 = a aprovação manual exigida não foi dada;; 2 = aprovação;; 1 = nada;; 0 = nenhuma.
+- **EX048 — Recomendação.** O que Amina recomendou? *Rubrica:* 3 = escalonamento se a aprovação não vier em até um dia;; 2 = escalonamento;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Governança, riscos e compliance de segurança: solução de problemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) solucionar problemas num controle que produz resultados errados; (2) usar evidências para testar hipóteses; (3) corrigir as causas, e não os sintomas.
+
+### 13.1 O problema
+
+O relatório semanal de backup da Fenwick mostra sucesso, mas um teste de restauração dos dados da loja on-line falha. Pedem a Amina que investigue. Ela lista hipóteses: a rotina de backup cobre a pasta errada, o backup está corrompido ou o procedimento de restauração está errado. Ela aprende que a solução de problemas começa com hipóteses claras e evidências para cada uma, em vez de mudar configurações ao acaso esperando que o problema suma. Cada hipótese aponta para uma verificação diferente: a lista de pastas, a integridade do arquivo de backup ou as etapas da restauração.
+
+### 13.2 Testar as hipóteses
+
+Amina verifica a lista de pastas da rotina de backup e descobre que ela aponta para um local antigo, usado antes da atualização da plataforma da loja. Os dados novos ficam em outro lugar. O backup relata sucesso porque copia com sucesso a pasta antiga, vazia. Ela confirma restaurando a pasta antiga, o que funciona, mas traz arquivos desatualizados. Aprende que uma mensagem de sucesso só mostra que uma rotina rodou, e não que protegeu os dados certos. As mensagens de sucesso, sempre confiáveis, tinham escondido a lacuna desde a atualização da plataforma da loja.
+
+### 13.3 Corrigir a causa
+
+Amina atualiza o caminho da pasta, roda um novo backup e restaura arquivos de amostra com sucesso. Também acrescenta uma verificação ao procedimento de mudanças: quando um sistema for atualizado, a cobertura do backup deve ser revista. Ela aprende que corrigir o problema imediato não basta; a causa foi um processo de mudanças que não considerava os backups, então o processo também precisa mudar. A nova verificação teria pegado o caminho antigo quando a plataforma da loja foi atualizada. Sem a mudança no procedimento, a próxima atualização da plataforma poderia quebrar os backups de novo, em silêncio.
+
+### Exemplo resolvido
+
+Amina testa três hipóteses, descobre que o backup aponta para uma pasta antiga e corrige tanto o caminho quanto o processo de mudanças.
+
+> **Caso sintético.** O caso de solução de problemas é sintético.
+
+### Erros e limites
+
+As listas de hipóteses podem deixar causas de fora. Os relatórios de sucesso podem enganar.
+
+### Exercícios
+
+- **EX049 — Hipóteses.** Cite as três hipóteses que Amina listou. *Rubrica:* 3 = pasta errada, backup corrompido, procedimento de restauração errado;; 2 = três;; 1 = nada;; 0 = nenhuma.
+- **EX050 — Sucesso enganoso.** Por que o backup relatava sucesso? *Rubrica:* 3 = copiava uma pasta antiga e vazia;; 2 = alvo errado;; 1 = nada;; 0 = nenhuma.
+- **EX051 — Correção de processo.** Que mudança de processo Amina acrescentou? *Rubrica:* 3 = rever a cobertura do backup após atualizações de sistemas;; 2 = processo de mudanças;; 1 = nada;; 0 = nenhuma.
+- **EX052 — Sentido do sucesso.** O que uma mensagem de sucesso do backup mostra? *Rubrica:* 3 = que uma rotina rodou, não que os dados certos foram protegidos;; 2 = rodou;; 1 = protegidos;; 0 = nenhuma.
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Governança, riscos e compliance de segurança: automação
+
+### Objetivos de aprendizagem
+
+Você vai (1) automatizar uma verificação recorrente; (2) definir níveis de aviso e de alerta; (3) garantir que os resultados automatizados cheguem aos donos.
+
+### 14.1 Escolher o que automatizar
+
+Amina procura verificações recorrentes que sejam fáceis de automatizar e caras de esquecer. A validade dos certificados é uma boa candidata: um certificado expirado pode parar a loja on-line ou o acesso remoto, e conferir datas manualmente é tedioso. Ela escreve um script que lê uma lista de certificados e suas datas de expiração e relata quantos dias faltam. Aprende que a automação serve melhor a verificações simples e repetitivas, com regras claras. Uma lista de certificados com datas de expiração é uma entrada simples com uma regra clara, o que a torna uma primeira automação mais segura do que uma análise complexa de logs.
+
+### 14.2 Níveis de aviso
+
+O script avisa quando faltam trinta dias ou menos e alerta quando um certificado já expirou. No dia primeiro de outubro, o laboratório encontra o certificado do acesso remoto expirado havia três dias, o certificado da loja vencendo em dezenove dias, com aviso, e outros dois em ordem, com quarenta e cinco e cento e cinquenta e um dias. O certificado expirado explica as reclamações de funcionários que não conseguiram se conectar de casa no fim de semana. Se o script estivesse rodando um mês antes, o certificado do acesso remoto teria gerado um aviso cerca de trinta dias antes de expirar.
+
+### Laboratório — Avisos e alertas de expiração de certificados
+
+```python
+"""Certificate expiry check: warn within 30 days, alert if expired (synthetic)."""
+from datetime import date
+today = date(2026, 10, 1)
+certs = {"shop.fenwick.example": date(2026, 10, 20), "mail.fenwick.example": date(2027, 3, 1),
+         "vpn.fenwick.example": date(2026, 9, 28), "pos-api.fenwick.example": date(2026, 11, 15)}
+for n, d in sorted(certs.items(), key=lambda x: x[1]):
+    left = (d - today).days
+    s = "EXPIRED" if left < 0 else "WARN" if left <= 30 else "ok"
+    print(f"{n}: {left} days {s}")
+```
+
+Execute com `python3 lab_certs.py`. Saída verificada:
+
+```text
+vpn.fenwick.example: -3 days EXPIRED
+shop.fenwick.example: 19 days WARN
+pos-api.fenwick.example: 45 days ok
+mail.fenwick.example: 151 days ok
+```
+
+### 14.3 Chegar aos donos
+
+Uma verificação automatizada é inútil se ninguém a lê. Amina configura o script para rodar diariamente e enviar os resultados ao líder de TI e ao sistema de chamados, abrindo um chamado para cada aviso ou alerta. O certificado expirado é renovado no mesmo dia, e o da loja em uma semana. Ela aprende que a automação precisa incluir a entrega aos donos e um caminho de acompanhamento, senão vira mais um relatório ignorado. Abrir um chamado para cada aviso dá a cada resultado um dono e um registro de encerramento.
+
+### Exemplo resolvido
+
+Amina automatiza a verificação de validade dos certificados, encontra um expirado e um em aviso e encaminha os resultados para chamados.
+
+> **Caso sintético.** Os certificados e as datas são sintéticos.
+
+### Erros e limites
+
+As listas podem omitir certificados. Os chamados podem ser ignorados.
+
+### Exercícios
+
+- **EX053 — Candidata à automação.** Por que a validade dos certificados é uma boa candidata à automação? *Rubrica:* 3 = simples, repetitiva e cara de esquecer;; 2 = adequação;; 1 = nada;; 0 = nenhuma.
+- **EX054 — Certificado expirado.** Que certificado tinha expirado? *Rubrica:* 3 = vpn.fenwick.example, três dias antes;; 2 = VPN;; 1 = loja;; 0 = nenhuma.
+- **EX055 — Certificado em aviso.** Que certificado estava em aviso? *Rubrica:* 3 = o da loja, com 19 dias restantes;; 2 = loja;; 1 = e-mail;; 0 = nenhuma.
+- **EX056 — Caminho de entrega.** Como os resultados chegam aos donos? *Rubrica:* 3 = e-mail diário ao líder de TI e chamados para avisos e alertas;; 2 = chamados;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Governança, riscos e compliance de segurança: integração e dependências
+
+### Objetivos de aprendizagem
+
+Você vai (1) identificar as dependências de provedores externos; (2) verificar a garantia oferecida pelos provedores; (3) planejar para a falha de um provedor.
+
+### 15.1 Dependências
+
+A Fenwick depende de provedores: a plataforma da loja on-line, o gateway de pagamento, o serviço de e-mail em nuvem e uma empresa de suporte para as redes das filiais. Amina lista o que cada um fornece, que dados trata e o que acontece se falhar. A plataforma da loja e o gateway de pagamento são críticos; se qualquer um falhar, as vendas on-line param. Ela aprende que as dependências de provedores fazem parte do risco da Fenwick, mesmo que a Fenwick não opere esses sistemas. A Sra. Bell pergunta o que acontece se o e-mail em nuvem falhar, e Amina anota que os pedidos e as mensagens a fornecedores parariam, embora as vendas continuassem.
+
+### 15.2 Garantia dos provedores
+
+Amina verifica que garantia cada provedor oferece. O gateway de pagamento publica seu status de conformidade com o PCI DSS. A plataforma da loja fornece um relatório SOC 2 sob acordo de confidencialidade. A empresa de suporte não tem garantia formal. Ela registra isso e recomenda que o contrato da empresa de suporte inclua requisitos de segurança, como remover as regras temporárias depois do trabalho. Aprende que a garantia varia muito e que os contratos podem cobrir as lacunas onde não existem relatórios formais. No caso da empresa de suporte, uma cláusula exigindo a remoção das regras temporárias teria evitado a exposição de área de trabalho remota encontrada antes.
+
+### 15.3 Planejar para a falha
+
+Para os provedores críticos, Amina ajuda a planejar respostas à falha. Se a plataforma da loja falhar, a Fenwick publicará um aviso e aceitará pedidos por telefone. Se o gateway de pagamento falhar, as filiais ainda podem aceitar cartões pelas maquininhas, que têm uma conexão separada. Ela aprende que o planejamento das dependências torna as interrupções menos danosas e que contingências manuais simples podem manter a empresa funcionando enquanto os provedores se recuperam. Cada contingência também deve ser testada, já que as maquininhas com conexão separada só ajudam se essa conexão de fato funcionar.
+
+### Exemplo resolvido
+
+Amina lista quatro dependências de provedores, registra a garantia de cada um e planeja contingências para a loja e o gateway de pagamento.
+
+> **Caso sintético.** Os provedores e os planos são sintéticos; o PCI DSS e o SOC 2 são reais.
+
+### Erros e limites
+
+Os relatórios de garantia têm escopo limitado. As contingências precisam de prática.
+
+### Exercícios
+
+- **EX057 — Provedores críticos.** Que provedores são críticos para as vendas on-line? *Rubrica:* 3 = a plataforma da loja e o gateway de pagamento;; 2 = dois;; 1 = e-mail;; 0 = nenhuma.
+- **EX058 — Garantia ausente.** Que provedor não tinha garantia formal? *Rubrica:* 3 = a empresa de suporte de rede;; 2 = empresa de suporte;; 1 = nada;; 0 = nenhuma.
+- **EX059 — Contrato como complemento.** Como os contratos podem ajudar onde faltam relatórios formais? *Rubrica:* 3 = incluindo requisitos de segurança, como remover regras temporárias;; 2 = contratos;; 1 = nada;; 0 = nenhuma.
+- **EX060 — Contingência da loja.** Qual é a contingência se a plataforma da loja falhar? *Rubrica:* 3 = publicar um aviso e aceitar pedidos por telefone;; 2 = manual;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Documentação técnica e segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever procedimentos técnicos claros; (2) incluir etapas de segurança e autorização; (3) manter os documentos atualizados.
+
+### 16.1 Procedimentos claros
+
+Amina escreve procedimentos para as tarefas que aprendeu: rodar a verificação da linha de base, verificar as regras de firewall, conferir os certificados e testar as restaurações. Cada procedimento lista a finalidade, os pré-requisitos, as etapas, os resultados esperados e o que fazer se os resultados forem diferentes. Ela escreve em etapas curtas e numeradas, com os comandos exatos quando necessário. Aprende que bons procedimentos permitem a outro técnico executar uma tarefa corretamente da primeira vez, sem perguntar à autora. Incluir o resultado esperado permite ao técnico perceber na hora se uma verificação de firewall ou uma restauração deu errado.
+
+### 16.2 Segurança e autorização
+
+Cada procedimento inclui etapas de segurança. Antes de mudar um firewall, confirmar que a mudança foi aprovada e agendá-la fora do horário comercial. Antes de restaurar dados, restaurar num local de teste, e não por cima dos dados em produção. Antes de rodar scripts, confirmar que eles rodam contra o sistema certo. Ela aprende que erros técnicos podem impedir as filiais de vender, então as verificações de segurança fazem parte da prática profissional e protegem tanto a empresa quanto o técnico. Restaurar primeiro num local de teste, por exemplo, evitaria que arquivos desatualizados sobrescrevessem os dados atuais da loja on-line.
+
+### 16.3 Manter atualizado
+
+Amina acrescenta um dono e uma data de revisão a cada procedimento, e um registro de mudanças no final. Quando a plataforma da loja foi atualizada, o procedimento de backup ficou errado, o que causou a falha anterior. Ela recomenda revisar os procedimentos sempre que os sistemas relacionados mudarem. Aprende que procedimentos desatualizados podem ser piores do que nenhum, porque dão confiança enquanto levam as pessoas a fazer a coisa errada. Sua regra de revisão teria sinalizado o procedimento de backup assim que a atualização da plataforma da loja fosse aprovada.
+
+### Exemplo resolvido
+
+Amina escreve quatro procedimentos com etapas de segurança e autorização, donos, datas de revisão e registros de mudanças.
+
+> **Caso sintético.** Os procedimentos são sintéticos.
+
+### Erros e limites
+
+Os procedimentos envelhecem. As etapas podem ser puladas.
+
+### Exercícios
+
+- **EX061 — Partes do procedimento.** O que cada procedimento lista? *Rubrica:* 3 = finalidade, pré-requisitos, etapas, resultados esperados, o que fazer se diferirem;; 2 = cinco;; 1 = nada;; 0 = nenhuma.
+- **EX062 — Restauração segura.** Onde os dados devem ser restaurados primeiro? *Rubrica:* 3 = num local de teste, não por cima dos dados em produção;; 2 = local de teste;; 1 = produção;; 0 = nenhuma.
+- **EX063 — Perigo do desatualizado.** Por que procedimentos desatualizados podem ser piores do que nenhum? *Rubrica:* 3 = dão falsa confiança e levam a ações erradas;; 2 = falsa confiança;; 1 = nada;; 0 = nenhuma.
+- **EX064 — Momento do firewall.** Quando as mudanças de firewall devem ser agendadas? *Rubrica:* 3 = fora do horário comercial, após a aprovação;; 2 = momento;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Laboratório isolado II
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir um exercício combinado de controles num laboratório seguro; (2) responder a um problema injetado; (3) escrever uma nota curta de incidente.
+
+### 17.1 O exercício
+
+No segundo laboratório, Amina conduz um exercício combinado na filial virtual. Ela faz a verificação da linha de base, verifica as regras de firewall, confere os certificados e concilia as contas. No meio do exercício, a Sra. Bell injeta um problema: aparece uma nova regra de firewall permitindo compartilhamento de arquivos do Wi-Fi de visitantes para o servidor de arquivos, e uma conta de teste volta a ficar ativa. Amina precisa perceber e responder usando seus procedimentos. Os problemas injetados correspondem a modos de falha do seu registro: uma regra acrescentada sem aprovação e uma conta ativa quando deveria estar desligada.
+
+### 17.2 Responder
+
+A verificação do firewall sinaliza a nova regra como não aprovada. A conciliação de contas sinaliza a conta de teste reativada. Amina segue os procedimentos: registra os achados, relata à instrutora, que faz o papel de líder de TI, recomenda remover a regra e desativar a conta e aguarda a aprovação antes de agir. Uma vez aprovada, faz as mudanças e roda de novo as duas verificações, que agora passam. Rodar de novo as verificações após as mudanças produz evidência de que as correções funcionaram, e não só de que foram tentadas. Aguardar a aprovação a mantém dentro dos limites de autoridade acordados no início.
+
+### 17.3 Nota de incidente
+
+Amina escreve uma nota curta de incidente: o que foi encontrado, quando, como foi detectado, que ações foram tomadas, por quem e com que aprovação, e o que deve evitar a repetição. Ela sugere que o Wi-Fi de visitantes seja bloqueado por padrão para os sistemas internos, para que uma única regra não consiga abri-lo. Aprende que as notas de incidente criam um registro para o aprendizado e a responsabilização, e que escrevê-las logo mantém os detalhes precisos. Bloquear o Wi-Fi de visitantes por padrão transformaria uma única regra arriscada numa exceção deliberada, que exige aprovação.
+
+### Exemplo resolvido
+
+Amina detecta uma regra de firewall injetada e uma conta reativada, responde com aprovação e escreve uma nota de incidente com uma sugestão preventiva.
+
+> **Caso sintético.** O exercício é sintético e isolado.
+
+### Erros e limites
+
+Sabe-se de antemão que haverá problemas injetados. Os laboratórios simplificam.
+
+### Exercícios
+
+- **EX065 — Problemas injetados.** Que dois problemas foram injetados? *Rubrica:* 3 = regra de compartilhamento a partir do Wi-Fi de visitantes e conta de teste reativada;; 2 = dois;; 1 = nada;; 0 = nenhuma.
+- **EX066 — Etapa de aprovação.** O que Amina fez antes de fazer as mudanças? *Rubrica:* 3 = aguardou a aprovação;; 2 = aprovação;; 1 = agiu na hora;; 0 = nenhuma.
+- **EX067 — Conteúdo da nota.** O que a nota de incidente inclui? *Rubrica:* 3 = achado, momento, detecção, ações, aprovação e prevenção;; 2 = conteúdo;; 1 = nada;; 0 = nenhuma.
+- **EX068 — Ideia preventiva.** Que medida preventiva Amina sugeriu? *Rubrica:* 3 = bloquear por padrão o Wi-Fi de visitantes para os sistemas internos;; 2 = negar por padrão;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Projeto técnico supervisionado
+
+### Objetivos de aprendizagem
+
+Você vai (1) entregar um projeto técnico supervisionado de GRC; (2) medir os resultados; (3) fazer a passagem para o cliente.
+
+### 18.1 O projeto
+
+Em seu projeto supervisionado, Amina monta um pacote semanal de verificações para a Fenwick: a verificação da linha de base, a verificação do firewall, a verificação da validade dos certificados e a conciliação de contas, rodadas por um único script que abre chamados para os achados. Ela acorda o escopo e os critérios de sucesso com o líder de TI: as quatro verificações rodando toda semana, os achados chegando aos chamados e a equipe de TI capaz de manter o pacote. Ela mantém um diário do projeto com as decisões e os problemas. A Sra. Bell observa que os critérios acordados permitirão a ambos julgar o projeto de forma objetiva no final.
+
+### 18.2 Resultados
+
+Depois de seis semanas, as quatro verificações rodam toda semana. Elas encontram onze problemas, entre eles dois notebooks sem criptografia, uma regra de firewall não aprovada e três contas de desligados. Todos os problemas viram chamados, e nove são encerrados em até duas semanas. O líder de TI relata que verificações antes puladas agora acontecem de forma confiável. Amina relata os resultados com honestidade, observando que dois chamados continuam abertos porque precisam da ajuda de um fornecedor. Encontrar toda semana contas de desligados ou uma regra não aprovada é evidência de que o pacote pega o que as verificações manuais deixavam passar.
+
+### 18.3 Passagem
+
+Amina entrega o script, os procedimentos, os dados de teste, uma lista de limitações conhecidas e uma sessão curta de treinamento para os técnicos. Um técnico acrescenta uma nova verificação durante o treinamento, mostrando que o pacote pode ser ampliado. A Sra. Bell avalia que o projeto atende a todos os critérios e elogia o relato honesto. Amina reflete que o trabalho técnico de GRC trata de rotinas confiáveis, evidências claras e uma passagem cuidadosa, e não de ferramentas complexas. A nova verificação criada pelo técnico durante o treinamento é o sinal mais forte de que o pacote vai sobreviver à saída dela.
+
+### Exemplo resolvido
+
+Amina entrega um pacote semanal de verificações que encontra onze problemas, encerra nove em até duas semanas e faz a passagem com treinamento.
+
+> **Caso sintético.** O projeto e os resultados são sintéticos.
+
+### Erros e limites
+
+Seis semanas é pouco tempo. Alguns problemas dependem de fornecedores.
+
+### Exercícios
+
+- **EX069 — Verificações do pacote.** Que quatro verificações o pacote roda? *Rubrica:* 3 = linha de base, verificação do firewall, validade dos certificados, conciliação de contas;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
+- **EX070 — Problemas encontrados.** Quantos problemas as verificações encontraram em seis semanas? *Rubrica:* 3 = onze;; 2 = 11;; 1 = nada;; 0 = nenhuma.
+- **EX071 — Chamados encerrados.** Quantos problemas foram encerrados em até duas semanas? *Rubrica:* 3 = nove;; 2 = 9;; 1 = onze;; 0 = nenhuma.
+- **EX072 — Prova de extensibilidade.** O que mostrou que o pacote podia ser ampliado? *Rubrica:* 3 = um técnico acrescentou uma nova verificação durante o treinamento;; 2 = ampliação;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX036 (as de EX037–EX072 estão na edição em inglês até a tradução dos capítulos correspondentes). Amina Yusuf, a Sra. Clara Bell, o Dunmore Technical College, a Fenwick Building Supplies e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX072. Amina Yusuf, a Sra. Clara Bell, o Dunmore Technical College, a Fenwick Building Supplies e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** O banco de dados de estoque.
 
@@ -505,6 +881,78 @@ Respostas-modelo para EX001–EX036 (as de EX037–EX072 estão na edição em i
 **EX035.** O sistema de chamados, planilhas com validação e scripts curtos.
 
 **EX036.** Como implantado, parcialmente implantado ou ausente, com evidência.
+
+**EX037.** Cinco falhas em dez minutos.
+
+**EX038.** Porque causaria muitos alarmes falsos por senhas digitadas errado.
+
+**EX039.** Para mostrar que o estado antigo funcionava e que a mudança não quebrou nada.
+
+**EX040.** O banco de dados de estoque e os dados da loja on-line.
+
+**EX041.** Duas.
+
+**EX042.** A regra que permitia área de trabalho remota de qualquer origem para o segmento das maquininhas de pagamento.
+
+**EX043.** Uma empresa de suporte a acrescentou para um reparo pontual e nunca a removeu.
+
+**EX044.** Porque a verificação encontra mudanças que o controle de mudanças deixou passar.
+
+**EX045.** Para que testes e erros não possam afetar as operações da empresa nem os dados reais dos clientes.
+
+**EX046.** A conta foi sinalizada, mas não desativada.
+
+**EX047.** Porque a etapa de desativação precisava de uma aprovação manual que ninguém deu.
+
+**EX048.** Um escalonamento se a aprovação não vier em até um dia.
+
+**EX049.** A rotina cobre a pasta errada, o backup está corrompido ou o procedimento de restauração está errado.
+
+**EX050.** Porque copiava com sucesso a pasta antiga e vazia.
+
+**EX051.** Uma verificação de que a cobertura do backup é revista sempre que um sistema é atualizado.
+
+**EX052.** Só que a rotina rodou, e não que protegeu os dados certos.
+
+**EX053.** Porque é uma verificação simples e repetitiva, com regras claras e consequências caras se for esquecida.
+
+**EX054.** O certificado do acesso remoto (VPN), três dias antes.
+
+**EX055.** O certificado da loja, com 19 dias restantes.
+
+**EX056.** O script roda diariamente e envia os resultados ao líder de TI, abrindo chamados para avisos e alertas.
+
+**EX057.** A plataforma da loja on-line e o gateway de pagamento.
+
+**EX058.** A empresa de suporte das redes das filiais.
+
+**EX059.** Incluindo requisitos de segurança, como remover as regras temporárias depois do trabalho.
+
+**EX060.** Publicar um aviso e aceitar pedidos por telefone.
+
+**EX061.** Finalidade, pré-requisitos, etapas, resultados esperados e o que fazer se os resultados diferirem.
+
+**EX062.** Num local de teste, e não por cima dos dados em produção.
+
+**EX063.** Porque dão confiança enquanto levam as pessoas a fazer a coisa errada.
+
+**EX064.** Fora do horário comercial, depois de confirmada a aprovação.
+
+**EX065.** Uma regra de firewall permitindo que o Wi-Fi de visitantes alcançasse o servidor de arquivos e uma conta de teste reativada.
+
+**EX066.** Relatou os achados e aguardou a aprovação.
+
+**EX067.** O que foi encontrado, quando, como foi detectado, as ações tomadas com aprovação e o que evita a repetição.
+
+**EX068.** Bloquear por padrão o Wi-Fi de visitantes para os sistemas internos.
+
+**EX069.** A verificação da linha de base, a verificação do firewall, a verificação da validade dos certificados e a conciliação de contas.
+
+**EX070.** Onze.
+
+**EX071.** Nove.
+
+**EX072.** Um técnico acrescentou uma nova verificação durante a sessão de treinamento.
 
 <a id="references"></a>
 ## Referências
