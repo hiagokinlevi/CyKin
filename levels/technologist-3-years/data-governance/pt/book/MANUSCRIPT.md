@@ -1,7 +1,7 @@
 # Governança de Dados: Curso de Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso 072, curso superior de tecnologia (3 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 30 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 21–30 (EX061–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–30 de 30 têm texto didático escrito à mão; os exercícios EX001–EX090 têm resoluções correspondentes com rubricas de 0 a 3; os três laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de tecnologia que vão construir e operar as verificações, os scripts, os dicionários e os relatórios que fazem a governança de dados funcionar no dia a dia.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios validam códigos de prioridade e a ordem das datas em ordens de reparo sintéticas, pseudonimizam identificadores de inquilinos com hashes com chave e medem os reparos emergenciais concluídos em até vinte e quatro horas por duas prestadoras sintéticas. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ DAMA-DMBOK2 (2017); ISO 8000-8:2015; Wang e Strong (1996); NIST SP 800-188; GDPR
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
-
-Capítulos 21–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -876,11 +874,427 @@ Exportar tabelas inteiras envia às prestadoras campos de que elas não precisam
 - **EX059 — Causa das fotos.** Por que a taxa de fotos de uma prestadora era baixa? *Rubrica:* 3 = seu aplicativo travava com imagens grandes;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
 - **EX060 — Campo removido.** Que campo Ravi removeu das exportações? *Rubrica:* 3 = a data de nascimento completa;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
+<a id="ch-21"></a>
+
+## Capítulo 21 — Medindo o desempenho das prestadoras
+
+### Objetivos de aprendizagem
+
+Você vai (1) calcular o desempenho em relação a um prazo-alvo; (2) comparar prestadoras com medianas e parcelas; (3) apresentar os resultados de forma justa.
+
+### 21.1 A meta
+
+A Calder Valley exige que os reparos emergenciais sejam concluídos em até vinte e quatro horas a partir do primeiro relato do inquilino. Duas prestadoras atendem às emergências: uma no norte da região e outra no sul. Ravi mede o desempenho de cada uma usando carimbos de data e hora completos, conforme as correções de linhagem do capítulo 13, e o campo do horário do primeiro relato acrescentado no capítulo 9. Ele calcula a parcela concluída em até vinte e quatro horas e o tempo mediano, que mostra uma ordem típica sem ser distorcido por algumas poucas ordens muito longas.
+
+```python
+"""Share of synthetic emergency repairs completed within 24 hours, by contractor (stdlib only)."""
+import random
+random.seed(4)
+for name, mean in [("North contractor", 10), ("South contractor", 17)]:
+    h = [random.expovariate(1/mean) for _ in range(800)]
+    print(f"{name}: within 24h {100*sum(x <= 24 for x in h)/len(h):.1f}%; median {sorted(h)[400]:.1f}h")
+```
+
+Execute com `python3 lab_emergency.py`. Saída verificada:
+
+```text
+North contractor: within 24h 89.1%; median 7.2h
+South contractor: within 24h 74.2%; median 12.5h
+```
+
+### 21.2 Resultados
+
+O laboratório simula oitocentas ordens emergenciais para cada prestadora. A prestadora do norte conclui 89,1 por cento em até vinte e quatro horas, com mediana de 7,2 horas. A do sul conclui 74,2 por cento, com mediana de 12,5 horas. Ravi observa que a diferença aparece claramente nas duas medidas, de modo que dificilmente vem de um punhado de ordens incomuns. Ele apresenta as duas medidas juntas, porque uma parcela sozinha esconde o quanto as ordens atrasadas ficam longe da meta. Mostra as duas prestadoras lado a lado em uma tabela curta para o gerente de reparos.
+
+### 21.3 Comparação justa
+
+Antes de apresentar, Ravi se pergunta se a comparação é justa. A região sul é mais rural, com deslocamentos mais longos, o que poderia explicar parte da diferença. Ele verifica se os tipos de serviço diferem entre as regiões nos dados sintéticos e encontra uma composição semelhante. Inclui no relatório a ressalva sobre os deslocamentos e sugere comparar, em uma análise posterior, ordens com distâncias parecidas. A Sra. Moreau observa que os tecnólogos devem antecipar as perguntas sobre justiça, em vez de deixar que os gestores as descubram depois. O gerente recebe bem a ressalva.
+
+### 21.4 Usando os resultados
+
+O gerente de reparos se reúne com a prestadora do sul levando os resultados de Ravi. A prestadora explica que tem apenas uma equipe de emergência durante a noite. A Calder Valley e a prestadora combinam acrescentar uma segunda equipe noturna por um período de teste, com medição mensal pelo mesmo script. Ravi documenta o método de medição no dicionário, para que as duas partes confiem nos números futuros. Ele observa que métodos de medição acordados transformam as discussões de desempenho, de brigas sobre números em conversas sobre melhoria. O teste começa no mês seguinte, com revisão conjunta dos resultados.
+
+### Exemplo resolvido
+
+Ravi mede os reparos emergenciais com carimbos de data e hora completos e encontra no norte 89,1 por cento e mediana de 7,2 horas, contra 74,2 por cento e 12,5 horas no sul; ele considera os deslocamentos rurais e apoia o teste de uma segunda equipe noturna.
+
+> **Caso sintético.** As ordens são sintéticas; as saídas vêm de lab_emergency.py.
+
+### Erros e limites
+
+Relatar apenas uma parcela esconde o quanto as ordens atrasadas atrasam.
+
+### Exercícios
+
+- **EX061 — Parcela do sul.** Que parcela a prestadora do sul concluiu em até vinte e quatro horas? *Rubrica:* 3 = 74,2%;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX062 — Mediana do norte.** Qual foi o tempo mediano da prestadora do norte? *Rubrica:* 3 = 7,2 horas;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX063 — Causa noturna.** O que a prestadora do sul revelou? *Rubrica:* 3 = apenas uma equipe de emergência à noite;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Painéis e relatórios
+
+### Objetivos de aprendizagem
+
+Você vai (1) desenhar painéis para usuários diferentes; (2) mostrar a qualidade dos dados ao lado dos números; (3) evitar exibições enganosas.
+
+### 22.1 Usuários e necessidades
+
+Ravi desenha painéis para três grupos. O gerente de reparos quer as ordens abertas do dia por prioridade e por prestadora. As prestadoras querem seu próprio desempenho em relação às metas. O conselho quer as tendências mensais em relação às metas regulatórias. Cada painel mostra só o que seus usuários precisam. Ele rascunha os leiautes no papel e pede a opinião de cada grupo antes de construir. Observa que painéis feitos sem ouvir os usuários costumam mostrar muitos números que ninguém usa. As opiniões eliminam vários números dos primeiros rascunhos e acrescentam um que faltava: a contagem de ordens aguardando peças.
+
+### 22.2 Qualidade ao lado dos números
+
+Cada painel mostra um pequeno indicador de qualidade: a parcela de ordens com dados completos e válidos e a data da última carga. Se a qualidade cai abaixo do limite, o indicador fica âmbar e explica o motivo. Quando o arquivo de uma prestadora fica retido por um dia, o painel do gerente mostra que os números dessa prestadora estão incompletos. Ravi explica que mostrar a qualidade ajuda os usuários a avaliar quanto podem confiar em um número antes de agir com base nele. O gerente de reparos conta que o indicador o impediu de cobrar uma prestadora injustamente.
+
+### 22.3 Exibições honestas
+
+Ravi segue regras de exibição: gráficos de barras começam no zero, séries temporais usam intervalos constantes, as cores são explicadas e as metas aparecem como linhas. Ele evita gráficos tridimensionais e enfeites desnecessários. Para o conselho, mostra doze meses de tendência em vez de só o último mês, para que um único mês incomum não domine a leitura. A Sra. Moreau observa que exibições honestas fazem parte da governança de dados, porque gráficos enganosos produzem decisões ruins a partir de dados corretos. Ravi transforma essas regras em um guia de estilo curto para a equipe.
+
+### 22.4 Mantendo os painéis
+
+Os painéis precisam de donos e de manutenção. Ravi registra cada painel no catálogo com seu dono, suas fontes de dados, a frequência de atualização e os usuários. Ele configura uma verificação que o alerta se um painel deixar de ser atualizado. A cada seis meses, pergunta aos donos se os painéis ainda são usados e desativa dois que ninguém usa. Ele observa que painéis abandonados desperdiçam esforço e podem enganar quem os encontra sem saber que estão desatualizados. Os donos confirmam os painéis restantes e combinam avisá-lo quando as necessidades mudarem.
+
+### Exemplo resolvido
+
+Ravi desenha painéis para gestores, prestadoras e conselho a partir da opinião dos usuários, acrescenta indicadores de qualidade e datas de carga, segue regras de exibição honesta, cataloga os painéis e desativa os que não são usados.
+
+> **Caso sintético.** Os painéis são sintéticos.
+
+### Erros e limites
+
+Painéis sem indicadores de qualidade convidam a confiar demais em números incompletos.
+
+### Exercícios
+
+- **EX064 — Visão do conselho.** O que mostra o painel do conselho? *Rubrica:* 3 = doze meses de tendência em relação às metas;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
+- **EX065 — Indicador âmbar.** Quando o indicador de qualidade fica âmbar? *Rubrica:* 3 = quando a qualidade cai abaixo do limite;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX066 — Painéis desativados.** Quantos painéis sem uso foram desativados? *Rubrica:* 3 = dois;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Relatórios regulatórios
+
+### Objetivos de aprendizagem
+
+Você vai (1) preparar dados para relatórios regulatórios; (2) documentar cálculos e verificações; (3) apoiar a aprovação pelos donos.
+
+### 23.1 O relatório
+
+A Calder Valley envia ao regulador um relatório anual que inclui o desempenho dos reparos, a conformidade de segurança e a satisfação dos inquilinos. Ravi ajuda a preparar os números de reparo. Ele lê com atenção as definições do regulador e as compara com as medidas internas da Calder Valley. Descobre que o regulador conta os reparos pela data de conclusão dentro do ano, enquanto os relatórios internos contam pela data de abertura. Ele ajusta o cálculo do relatório para seguir a definição do regulador e registra o motivo da diferença na nota de cálculo, com um exemplo.
+
+### 23.2 Documentando os cálculos
+
+Ravi escreve uma nota de cálculo para cada número do relatório: a definição, as tabelas de origem, os filtros, o script usado, o resultado e as verificações feitas. Ele salva no repositório a versão do script usada, com uma etiqueta para o ano do relatório. Explica que a documentação permite ao dono e aos auditores conferir os números e permite que quem preparar o relatório no ano seguinte repita o método de forma consistente, mesmo que Ravi já tenha saído. O dono lê todas as notas antes da preparação e faz duas perguntas que levam a uma redação mais clara.
+
+### 23.3 Verificações
+
+Antes da aprovação, Ravi executa verificações: os totais batem com os relatórios mensais ajustados pela diferença de definição, nenhuma ordem é contada duas vezes e os números estão dentro das faixas esperadas em comparação com o ano anterior. Um número difere bastante do ano anterior. A investigação mostra que as ordens de uma prestadora ficaram de fora do relatório do ano passado por causa de uma falha de carga. O dono decide registrar o erro no relatório deste ano, em vez de ignorá-lo. As orientações do regulador admitem correções desse tipo, e o dono explica a causa e a correção em uma nota de encaminhamento.
+
+### 23.4 Aprovação
+
+O chefe de reparos, como dono, aprova os números depois de revisar as notas de cálculo e os resultados das verificações. Ravi prepara um resumo curto dos julgamentos feitos, como o tratamento dado às ordens sem horário de conclusão. A Sra. Moreau observa que o dono assina porque é ele quem responde pelos números, e que os tecnólogos apoiam a aprovação tornando as evidências claras, em vez de pedir aos donos que simplesmente confiem nos números recebidos. O dono assina o relatório depois de uma reunião em que Ravi percorre cada nota, e a cópia assinada é arquivada com as evidências.
+
+### Exemplo resolvido
+
+Ravi alinha o relatório à definição do regulador baseada na data de conclusão, documenta os cálculos com scripts etiquetados, descobre nas verificações as ordens de uma prestadora que faltaram no ano anterior e apoia a aprovação do dono com evidências claras.
+
+> **Caso sintético.** O relatório é sintético.
+
+### Erros e limites
+
+Usar definições internas em números regulatórios informa mal o desempenho.
+
+### Exercícios
+
+- **EX067 — Diferença de definição.** Em que as definições diferiam? *Rubrica:* 3 = data de conclusão versus data de abertura;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX068 — Causa da diferença anual.** O que explicava a mudança em relação ao ano anterior? *Rubrica:* 3 = ordens de uma prestadora ausentes no ano anterior;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX069 — Dono que assina.** Quem aprova os números de reparo? *Rubrica:* 3 = o chefe de reparos;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Registros de problemas e causas-raiz
+
+### Objetivos de aprendizagem
+
+Você vai (1) manter um registro de problemas; (2) usar técnicas de causa-raiz; (3) acompanhar os problemas até o encerramento.
+
+### 24.1 O registro
+
+Ravi mantém o registro de problemas de dados dos reparos. Cada problema registra descrição, quem relatou, data, dados afetados, impacto, prioridade, dono, situação e solução. Qualquer pessoa pode relatar problemas por um formulário, e o curador faz a triagem toda semana. Ravi acrescenta um link para as evidências, como os resultados das verificações. Ele explica que o registro dá à organização uma memória dos problemas e de suas correções, o que evita repetir a mesma investigação quando um problema volta. O registro é revisado na reunião mensal de reparos, onde se discutem os problemas abertos mais graves.
+
+### 24.2 Causas-raiz
+
+Ravi aplica a técnica dos cinco porquês a um problema em que os telefones dos inquilinos costumam estar errados. Por quê? Porque são digitados incorretamente. Por quê? Porque os atendentes os digitam de memória depois das ligações. Por quê? Porque a tela de edição dos números não fica aberta durante as ligações. Por quê? Porque abri-la exige vários cliques. Por quê? Porque o leiaute do sistema nunca foi revisto. A correção é mostrar o campo de telefone na tela principal de atendimento. O fornecedor faz a mudança, e os atendentes recebem bem a tela mais simples.
+
+### 24.3 Acompanhando o encerramento
+
+Os problemas só são encerrados com evidências. No caso dos telefones, Ravi mede, em uma amostra, a parcela de números confirmados como corretos antes e depois da mudança de tela e registra a melhora. Também confirma com os atendentes que o novo leiaute funciona. Problemas encerrados sem evidência são reabertos. Ele observa que a própria taxa de reabertura é uma medida útil de se as correções funcionam de fato. No primeiro trimestre, dois problemas são reabertos porque suas correções não se sustentaram, e os dois são corrigidos direito depois de uma segunda investigação de causa-raiz feita pelo curador e por Ravi.
+
+### 24.4 Padrões
+
+Depois de seis meses, Ravi agrupa os problemas por causa: digitação manual, desenho dos sistemas, dados de parceiros, definições pouco claras e lacunas de processo. A digitação manual e os dados de parceiros causam a maioria dos problemas. Ele apresenta os padrões à Sra. Okonjo, que prioriza para o ano seguinte a validação na entrada e as especificações para as prestadoras. A Sra. Moreau explica que os registros de problemas se tornam ferramentas estratégicas quando seus padrões orientam os investimentos, e não apenas listas de tarefas isoladas. A análise se repete a cada seis meses, com um gráfico da evolução das causas.
+
+### Exemplo resolvido
+
+Ravi mantém um registro de problemas dos reparos com links para evidências, rastreia os telefones errados com os cinco porquês até o leiaute da tela, encerra problemas com evidências medidas e agrupa seis meses de causas para orientar as prioridades.
+
+> **Caso sintético.** Os problemas são sintéticos.
+
+### Erros e limites
+
+Corrigir sintomas sem chegar às causas-raiz deixa os problemas voltarem.
+
+### Exercícios
+
+- **EX070 — Causa-raiz dos telefones.** Qual era a causa-raiz dos telefones errados? *Rubrica:* 3 = o leiaute do sistema escondia o campo de telefone durante as ligações;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX071 — Medida de reabertura.** O que a taxa de reabertura mostra? *Rubrica:* 3 = se as correções funcionam de fato;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX072 — Principais causas.** Que causas geraram a maioria dos problemas? *Rubrica:* 3 = digitação manual e dados de parceiros;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Incidentes com dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) reconhecer incidentes com dados; (2) seguir um procedimento de incidentes; (3) aprender com os incidentes.
+
+### 25.1 O que conta como incidente
+
+Um incidente com dados é um evento que prejudica a confidencialidade, a integridade ou a disponibilidade dos dados, como um notebook perdido com dados de inquilinos, um arquivo errado enviado a uma prestadora ou uma carga que falha e deixa os relatórios incompletos. Ravi aprende o procedimento de incidentes da Calder Valley: avisar imediatamente o encarregado pelo tratamento de dados pessoais ou a gerente de dados, conter o problema, avaliar o impacto, comunicar quando exigido e revisar as lições. Ele observa que a rapidez importa, porque podem valer prazos legais de comunicação. Ravi mantém uma cópia impressa do procedimento ao lado da mesa.
+
+### 25.2 Um incidente
+
+Ravi percebe que uma exportação enviada de madrugada a uma prestadora continha inquilinos da área de outra prestadora. Ele relata o fato na hora. A prestadora é solicitada a eliminar o arquivo e confirmar. Ravi descobre que a causa é um filtro do script de exportação que usava uma lista de códigos postais não atualizada depois de uma mudança nos limites das áreas. O encarregado avalia o risco para os inquilinos e decide se a comunicação é exigida pelo GDPR; no Brasil, a LGPD exige comunicar à ANPD e aos titulares o incidente que possa acarretar risco ou dano relevante (art. 48). Ravi registra cada passo e seu horário no log do incidente.
+
+### 25.3 Contenção e correção
+
+Enquanto o encarregado avalia, Ravi suspende a exportação, corrige o filtro para usar o campo de designação da prestadora em vez dos códigos postais, testa a correção com dados sintéticos e retoma as exportações depois da aprovação do curador. Ele confere as exportações da semana anterior e descobre que o erro começou três dias antes. As prestadoras envolvidas também são solicitadas a eliminar os arquivos afetados. Cada ação é registrada com seu horário no log do incidente. O encarregado usa o log para concluir a avaliação, e a decisão sobre a comunicação é registrada com seus motivos e sua data.
+
+### 25.4 Lições
+
+A revisão do incidente conclui que as mudanças de limites das áreas não eram comunicadas à equipe de dados. A correção é incluir a equipe de dados no processo de mudança das áreas das prestadoras e acrescentar à exportação uma verificação que compara os inquilinos de cada prestadora com sua designação. A Sra. Moreau observa que as revisões sem culpados se concentram em como os sistemas permitiram o erro, e não em quem o cometeu, o que incentiva as pessoas a relatar incidentes depressa no futuro. As duas mudanças são feitas em um mês, e a nova verificação não encontrou mais erros desde então.
+
+### Exemplo resolvido
+
+Ravi relata uma exportação enviada à prestadora errada, rastreia a causa até um filtro de códigos postais desatualizado, suspende e corrige a exportação, encontra três dias anteriores afetados e apoia uma revisão que inclui a equipe de dados nas mudanças de limites.
+
+> **Caso sintético.** O incidente é sintético; o GDPR e a LGPD são reais.
+
+### Erros e limites
+
+Atrasar o relato de incidentes pode estourar prazos legais.
+
+### Exercícios
+
+- **EX073 — Causa da exportação.** O que causou a exportação errada? *Rubrica:* 3 = uma lista de códigos postais desatualizada após a mudança de limites;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX074 — Correção do filtro.** Por qual campo Ravi passou a filtrar? *Rubrica:* 3 = o campo de designação da prestadora;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX075 — Estilo da revisão.** Em que se concentram as revisões sem culpados? *Rubrica:* 3 = em como os sistemas permitiram o erro;; 2 = correto;; 1 = em quem errou;; 0 = nenhuma.
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Automação e agendamento
+
+### Objetivos de aprendizagem
+
+Você vai (1) agendar verificações e cargas de dados; (2) tratar dependências e falhas; (3) monitorar tarefas automatizadas.
+
+### 26.1 Agendamento
+
+As verificações, cargas e relatórios de Ravi agora rodam em horários agendados. Os arquivos das prestadoras são carregados às duas da manhã, as verificações rodam às três, as tabelas-resumo às quatro e os painéis são atualizados às cinco. Ele documenta a agenda em uma tabela com cada tarefa, seu horário, suas dependências e seu dono. Observa que os agendamentos tornam a governança rotineira, mas também criam dependências: se a carga falhar, todas as tarefas seguintes podem rodar com dados incompletos. A tabela é publicada com o dicionário, para que os usuários saibam quando cada relatório é atualizado pela manhã.
+
+### 26.2 Dependências
+
+Ravi acrescenta verificações de dependência: antes de começar, cada tarefa confirma que a anterior terminou com sucesso e produziu as contagens de linhas esperadas. Se não, ela para e envia um alerta. Certa noite, o arquivo de uma prestadora atrasa, e a carga espera. As verificações seguram a tarefa de resumo, e o painel mostra um indicador âmbar em vez de números incompletos. Ele explica que uma falha controlada é melhor do que um sucesso silencioso sobre dados ruins. O arquivo da prestadora chega mais tarde naquela manhã, e as tarefas rodam em sequência assim que a carga termina com sucesso.
+
+### 26.3 Monitoramento
+
+Ravi cria toda manhã um resumo do monitoramento das tarefas: quais rodaram, quanto tempo levaram, quantos registros processaram e se houve falhas. Os tempos de execução são acompanhados ao longo do tempo; quando a tarefa de verificação fica mais lenta à medida que os dados crescem, ele percebe antes que ela estoure sua janela. Ele acrescenta um índice à tabela de ordens, o que devolve a velocidade. A Sra. Moreau observa que monitorar a própria engrenagem da governança evita que falhas graduais passem despercebidas até causarem problemas. Ravi registra a mudança e os tempos de antes e depois no log de mudanças.
+
+### 26.4 Controle de mudanças
+
+As mudanças nas tarefas agendadas seguem um processo simples: testar com dados sintéticos, passar pela revisão de um colega, registrar no log de mudanças e implantar em um horário tranquilo. Quando Ravi altera o filtro da exportação depois do incidente, ele segue esse processo mesmo sob pressão. Observa que pular o controle de mudanças nas emergências é tentador, mas muitas vezes causa novos problemas, e que um processo rápido porém disciplinado funciona melhor do que atalhos. O log de mudanças mostra cada alteração com o resultado do teste, o revisor e o horário em que foi implantada em produção.
+
+### Exemplo resolvido
+
+Ravi agenda cargas, verificações, resumos e painéis com dependências documentadas, interrompe tarefas quando as anteriores falham, monitora os tempos de execução e acrescenta um índice, e aplica o controle de mudanças mesmo durante o incidente.
+
+> **Caso sintético.** As tarefas são sintéticas.
+
+### Erros e limites
+
+Tarefas que rodam apesar da falha das anteriores publicam números incompletos.
+
+### Exercícios
+
+- **EX076 — Horário das verificações.** A que horas rodam as verificações? *Rubrica:* 3 = às três da manhã;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX077 — Correção da lentidão.** Como Ravi corrigiu a lentidão da tarefa de verificação? *Rubrica:* 3 = acrescentando um índice;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX078 — Etapas da mudança.** Cite as etapas do controle de mudanças. *Rubrica:* 3 = testar, revisar, registrar e implantar em horário tranquilo;; 2 = a maioria;; 1 = poucas;; 0 = nenhuma.
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Documentação e passagem de trabalho
+
+### Objetivos de aprendizagem
+
+Você vai (1) documentar o trabalho técnico de governança; (2) preparar a passagem de trabalho para colegas; (3) reduzir a dependência de pessoas específicas.
+
+### 27.1 O que documentar
+
+Ravi lista o que outras pessoas precisariam se ele saísse: o repositório com scripts e testes, a biblioteca de verificações com seus propósitos, a agenda, os procedimentos, o dicionário, as notas de linhagem, os painéis e seus donos, e os problemas conhecidos. Ele escreve uma página de visão geral com links para cada item. A Sra. Moreau explica que a documentação é um controle de governança, porque as organizações dependem de trabalho técnico que ninguém consegue manter se só uma pessoa o entende. A Sra. Okonjo pede que ele apresente a visão geral a toda a equipe de dados.
+
+### 27.2 Praticando a passagem
+
+Para testar a documentação, Ravi tira uma semana de folga enquanto uma colega de turma, também estagiando na Calder Valley, cobre seu trabalho usando apenas a documentação. Ela dá conta da maioria das tarefas, mas tem dificuldade com um arquivo retido de prestadora, porque o procedimento não explica como liberar o arquivo depois que a prestadora o reenvia. Ravi acrescenta os passos que faltavam quando volta. Ele observa que testes reais de passagem revelam lacunas que a autorrevisão deixa escapar. A colega também sugere um índice das tarefas mais comuns, que ele acrescenta à página de visão geral.
+
+### 27.3 Reduzindo a dependência
+
+Ravi faz dupla com um colega nas tarefas mensais, como as execuções de descarte e as revisões de acesso, para que duas pessoas saibam fazer cada uma. Também grava vídeos curtos de tela mostrando os passos mais complexos. A Sra. Okonjo inclui as tarefas técnicas de governança na matriz de competências da equipe, para acompanhar quem sabe fazer o quê. Ele observa que depender de uma só pessoa é um risco que a governança deve gerenciar, como qualquer outro risco aos dados. Ao fim do estágio, toda tarefa mensal tem pelo menos duas pessoas capazes de executá-la sem ajuda.
+
+### 27.4 Mantendo a documentação viva
+
+A documentação se deteriora à medida que os sistemas mudam. Ravi liga cada documento aos scripts ou processos que ele descreve e acrescenta a cada mudança um lembrete para atualizar a documentação. Ele agenda uma revisão trimestral em que a equipe confere uma amostra de documentos com a realidade. A Sra. Moreau observa que atualizações pequenas e regulares mantêm a documentação útil, enquanto grandes reescritas acontecem raramente e deixam os documentos desatualizados por longos períodos. A primeira revisão trimestral encontra três documentos que precisam de pequenas mudanças, feitas na mesma semana.
+
+### Exemplo resolvido
+
+Ravi documenta seu trabalho com uma página de visão geral, testa-a com uma semana de passagem que expõe um passo de liberação ausente, faz dupla nas tarefas mensais e mantém a documentação atualizada com lembretes a cada mudança e revisões trimestrais.
+
+> **Caso sintético.** A documentação é sintética.
+
+### Erros e limites
+
+Documentação não testada esconde lacunas até alguém precisar dela com urgência.
+
+### Exercícios
+
+- **EX079 — Lacuna na passagem.** Que lacuna a passagem de trabalho revelou? *Rubrica:* 3 = como liberar um arquivo retido depois do reenvio;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX080 — Acompanhamento de competências.** Como a Sra. Okonjo acompanha quem sabe fazer cada tarefa? *Rubrica:* 3 = com uma matriz de competências;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX081 — Revisão da documentação.** Com que frequência uma amostra de documentos é conferida? *Rubrica:* 3 = a cada trimestre;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Estágio
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar competências em um estágio; (2) trabalhar dentro dos processos de uma organização; (3) refletir sobre a prática profissional.
+
+### 28.1 O estágio
+
+No terceiro ano, Ravi passa um período estagiando na equipe de dados da Calder Valley. Todos os exemplos deste livro continuam sintéticos. Ele apoia os curadores, mantém as verificações e participa dos processos de incidentes e de mudanças. Descobre que o trabalho real envolve mais comunicação do que esperava: explicar resultados de verificações aos gestores, negociar formatos de arquivo com as prestadoras e ajudar os atendentes a entender os códigos. As competências técnicas importam, mas explicar com clareza também. Ele mantém um registro semanal das tarefas de comunicação que mais tomaram seu tempo e do que aprendeu com elas.
+
+### 28.2 Processos da organização
+
+Ravi aprende os processos da Calder Valley: pedidos de mudança precisam de aprovação da TI, liberações de dados precisam da aprovação do dono e os incidentes seguem o procedimento. No começo, ele os acha lentos. Depois de ver uma mudança não testada de um colega quebrar um relatório, passa a entender seu propósito. Aprende a planejar o trabalho levando em conta os prazos de aprovação e a preparar os pedidos com evidências claras, para que as aprovações saiam depressa em vez de travarem em perguntas. Seus pedidos passam a ser aprovados mais rápido, e o supervisor registra a melhora na avaliação de meio de estágio.
+
+### 28.3 Conduta profissional
+
+Um gestor pede a Ravi que envie uma lista completa de inquilinos para seu e-mail pessoal, para trabalhar em casa. Ravi explica que isso violaria a política e sugere usar o sistema de acesso remoto aprovado. O gestor aceita. Ravi relata o pedido ao supervisor, não como queixa, mas para que a equipe de dados lembre a todos das opções de acesso remoto. Ele reflete que dizer não com educação, oferecendo uma alternativa, é uma competência profissional essencial. O lembrete sai naquela mesma semana, e o gestor passa a usar o acesso remoto aprovado sem nenhuma dificuldade.
+
+### 28.4 Reflexão
+
+O relatório de estágio de Ravi descreve seu trabalho, o que aprendeu e como o conteúdo do curso se aplicou. Ele observa que as contribuições mais valiosas muitas vezes foram pequenas: um procedimento mais claro, uma verificação que pegou um erro cedo ou um verbete do dicionário que encerrou uma discussão. Ele escolhe um tema para o projeto aplicado: reduzir o tempo entre a conclusão do reparo e a atualização no sistema, que afeta muitos relatórios. A Sra. Moreau aprova o tema. Ele inclui no relatório exemplos de cada pequena contribuição, com o efeito que cada uma teve no trabalho dos outros.
+
+### Exemplo resolvido
+
+Ravi descobre que o trabalho no estágio exige muita comunicação, passa a valorizar os processos de aprovação depois de ver uma mudança não testada falhar, recusa um pedido de envio para e-mail pessoal oferecendo uma alternativa e escolhe o atraso na atualização das conclusões como tema do projeto.
+
+> **Caso sintético.** O estágio é sintético.
+
+### Erros e limites
+
+Enviar dados para contas pessoais contorna os controles de segurança.
+
+### Exercícios
+
+- **EX082 — Lição sobre processos.** O que fez Ravi valorizar os processos de aprovação? *Rubrica:* 3 = a mudança não testada de um colega quebrou um relatório;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX083 — Resposta ao e-mail pessoal.** O que Ravi sugeriu em vez do e-mail pessoal? *Rubrica:* 3 = o sistema de acesso remoto aprovado;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX084 — Tema do projeto.** Qual é o tema do projeto aplicado de Ravi? *Rubrica:* 3 = reduzir o atraso entre a conclusão e a atualização no sistema;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Projeto aplicado
+
+### Objetivos de aprendizagem
+
+Você vai (1) planejar e entregar um projeto aplicado de melhoria; (2) medir os resultados em relação a uma linha de base; (3) documentar a solução para a passagem de trabalho.
+
+### 29.1 Problema e linha de base
+
+O projeto de Ravi trata do atraso entre a conclusão de um reparo e o momento em que a atualização aparece no sistema habitacional. Os atrasos fazem os relatórios mostrarem como abertas ordens já concluídas e levam os inquilinos a receber ligações desnecessárias. Usando dados sintéticos que espelham suas observações no estágio, ele mede uma linha de base: a parcela de conclusões atualizadas em até um dia e o atraso mediano. Ele acorda uma meta com o curador de reparos e um plano com marcos. Os números da linha de base são registrados no diário do projeto antes de qualquer mudança.
+
+### 29.2 Causas
+
+Ravi investiga as causas. Algumas prestadoras só atualizam o portal no fim de cada dia; outras juntam as atualizações e as enviam uma vez por semana. O portal envia as atualizações ao sistema habitacional uma vez por noite, o que acrescenta até mais um dia. Algumas atualizações falham na validação e ficam esperando correção. Ele ordena as causas por sua contribuição ao atraso e descobre que o envio semanal de uma prestadora e a transferência noturna são as maiores. Compartilha a ordenação com o curador, que decide atacar primeiro as duas maiores causas e deixar as menores para depois.
+
+### 29.3 Mudanças
+
+Com a aprovação do curador, Ravi trabalha com a equipe do portal para enviar as atualizações a cada hora, em vez de uma vez por noite. A prestadora que enviava semanalmente aceita fazer atualizações diárias depois de ver seu placar. Ravi melhora as mensagens de validação para que as prestadoras corrijam mais depressa as atualizações reprovadas. Ele testa cada mudança com dados sintéticos e segue o controle de mudanças. Mantém um diário do projeto com decisões, testes e resultados para sua avaliação. As mudanças entram em produção uma de cada vez, para que o efeito de cada uma apareça separadamente no monitoramento.
+
+### 29.4 Resultados e passagem
+
+Depois das mudanças, dados sintéticos desenhados para refletir o novo processo mostram a parcela atualizada em até um dia subindo e o atraso mediano caindo. Ravi observa que só o monitoramento real pode confirmar isso. Ele entrega ao curador o script de monitoramento, a documentação e as atualizações do placar, com uma conferência mensal agendada. A Sra. Moreau observa que os projetos dão certo quando deixam processos funcionando e donos definidos, e não só um relatório descrevendo o que foi feito. O curador confirma que o pacote de passagem está completo e que consegue conduzir o monitoramento sozinha.
+
+### Exemplo resolvido
+
+Ravi estabelece a linha de base do atraso nas atualizações de conclusão, rastreia-o até o envio semanal e as transferências noturnas, introduz transferências a cada hora, atualizações diárias da prestadora e mensagens de validação mais claras e passa o monitoramento ao curador.
+
+> **Caso sintético.** Os dados do projeto são sintéticos.
+
+### Erros e limites
+
+Projetos que terminam sem passagem de trabalho deixam as melhorias sem sustentação.
+
+### Exercícios
+
+- **EX085 — Maiores causas.** Que causas mais contribuíam para o atraso? *Rubrica:* 3 = o envio semanal de uma prestadora e a transferência noturna;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
+- **EX086 — Mudança na transferência.** Com que frequência o portal envia as atualizações agora? *Rubrica:* 3 = a cada hora;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX087 — Quem recebe a passagem.** Quem recebe o script de monitoramento? *Rubrica:* 3 = o curador de reparos;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Revisão do projeto e próximos passos
+
+### Objetivos de aprendizagem
+
+Você vai (1) apresentar um projeto aplicado para avaliação; (2) refletir sobre o aprendizado ao longo do curso; (3) planejar uma carreira de tecnólogo.
+
+### 30.1 Apresentação
+
+Ravi apresenta seu projeto à Sra. Moreau, a um avaliador externo e à Sra. Okonjo. Ele mostra o problema, a linha de base, as causas, as mudanças, os resultados e a passagem de trabalho. O avaliador pergunta como ele sabe que a melhora veio de suas mudanças, e não de variações sazonais. Ravi explica que seus dados sintéticos não respondem a isso e que o monitoramento mensal do curador ao longo de um ano responderá. O avaliador valoriza sua honestidade sobre o que o projeto pode afirmar. A Sra. Okonjo confirma que o monitoramento já está agendado e que os primeiros resultados serão compartilhados com o Eastgate.
+
+### 30.2 Devolutiva
+
+Os avaliadores elogiam a análise clara das causas e a passagem de trabalho prática. Sugerem que ele poderia ter envolvido as prestadoras mais cedo no desenho das mudanças, já que uma delas resistiu no início. Ravi concorda e anota a sugestão para projetos futuros. A Sra. Okonjo conta que, segundo os atendentes, a transferência a cada hora já reduziu as ligações desnecessárias aos inquilinos, embora concorde que as evidências medidas virão do monitoramento. Ravi agradece os comentários e os registra em seu diário, com uma nota sobre como envolveria as prestadoras no desenho de seu próximo projeto.
+
+### 30.3 Reflexão
+
+Ravi reflete sobre os três anos: de scripts e SQL a validação, linhagem, controle de acesso, pseudonimização, retenção, incidentes e projetos. Ele valoriza os hábitos de perguntar quem é dono de uma decisão, verificar os dados na origem e documentar o trabalho para que outros possam continuá-lo. Observa que a governança ficou concreta por meio das tarefas práticas, e que o trabalho técnico ganhou propósito quando ele entendeu a quem servia. Nota também que sua confiança para explicar questões técnicas aos gestores cresceu sobretudo no estágio, e que essa competência vai importar em seu trabalho futuro.
+
+### 30.4 Próximos passos
+
+Ravi aceita um emprego de tecnólogo de dados na Calder Valley. A Sra. Moreau o incentiva a continuar aprendendo, talvez cursando mais tarde um bacharelado em tempo parcial. Ela lembra que seu papel muitas vezes envolverá perceber os problemas primeiro e levantá-los com evidências. O próximo curso desta área trata de privacidade e proteção de dados, onde os dados governados encontram os direitos das pessoas que eles descrevem. Ravi agradece à Sra. Moreau e à Sra. Okonjo e começa no novo cargo no mês seguinte, com um plano para estender a biblioteca de verificações aos dados de aluguel.
+
+### Exemplo resolvido
+
+Ravi apresenta seu projeto com honestidade sobre a sazonalidade, aceita a sugestão de envolver as prestadoras mais cedo, reflete sobre três anos de governança prática e entra na Calder Valley como tecnólogo de dados.
+
+> **Caso sintético.** A revisão é sintética.
+
+### Erros e limites
+
+Afirmar efeitos que os dados sintéticos não conseguem mostrar compromete a credibilidade.
+
+### Exercícios
+
+- **EX088 — Resposta sobre sazonalidade.** Como a sazonalidade será tratada? *Rubrica:* 3 = pelo monitoramento mensal do curador ao longo de um ano;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX089 — Sugestão dos avaliadores.** O que os avaliadores sugeriram? *Rubrica:* 3 = envolver as prestadoras mais cedo;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX090 — Emprego de Ravi.** Que emprego Ravi aceita? *Rubrica:* 3 = tecnólogo de dados na Calder Valley;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX060 (as de EX061–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Ravi Desai, a Sra. Hannah Moreau, o Eastgate Institute of Technology, a Calder Valley Housing Association e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX090. Ravi Desai, a Sra. Hannah Moreau, o Eastgate Institute of Technology, a Calder Valley Housing Association e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Cerca de nove mil.
 
@@ -1001,6 +1415,66 @@ Respostas-modelo para EX001–EX060 (as de EX061–EX090 estão na edição em i
 **EX059.** Seu aplicativo travava ao enviar imagens grandes.
 
 **EX060.** A data de nascimento completa dos inquilinos.
+
+**EX061.** 74,2 por cento.
+
+**EX062.** 7,2 horas.
+
+**EX063.** Ela tinha apenas uma equipe de emergência durante a noite.
+
+**EX064.** Doze meses de tendência em relação às metas regulatórias.
+
+**EX065.** Quando a qualidade dos dados cai abaixo do limite.
+
+**EX066.** Dois.
+
+**EX067.** O regulador conta pela data de conclusão; os relatórios internos, pela data de abertura.
+
+**EX068.** As ordens de uma prestadora ficaram de fora do relatório do ano anterior.
+
+**EX069.** O chefe de reparos.
+
+**EX070.** A tela de edição não ficava na tela principal de atendimento.
+
+**EX071.** Se as correções funcionam de fato.
+
+**EX072.** Digitação manual e dados de parceiros.
+
+**EX073.** Um filtro de códigos postais não atualizado após uma mudança nos limites das áreas.
+
+**EX074.** O campo de designação da prestadora.
+
+**EX075.** Em como os sistemas permitiram o erro, e não em quem o cometeu.
+
+**EX076.** Às três da manhã.
+
+**EX077.** Acrescentando um índice à tabela de ordens.
+
+**EX078.** Testar, revisar, registrar e implantar em um horário tranquilo.
+
+**EX079.** Como liberar um arquivo retido de prestadora depois do reenvio.
+
+**EX080.** Com a matriz de competências da equipe.
+
+**EX081.** A cada trimestre.
+
+**EX082.** Ver a mudança não testada de um colega quebrar um relatório.
+
+**EX083.** Usar o sistema de acesso remoto aprovado.
+
+**EX084.** Reduzir o atraso entre a conclusão do reparo e a atualização no sistema.
+
+**EX085.** O envio semanal de uma prestadora e a transferência noturna.
+
+**EX086.** A cada hora.
+
+**EX087.** O curador de reparos, que recebe o pacote de passagem.
+
+**EX088.** Pelo monitoramento mensal do curador ao longo de um ano.
+
+**EX089.** Envolver as prestadoras mais cedo no desenho das mudanças.
+
+**EX090.** Tecnólogo de dados na Calder Valley.
 
 <a id="references"></a>
 ## Referências
