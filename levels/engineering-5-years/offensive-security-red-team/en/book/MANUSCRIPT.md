@@ -602,6 +602,8 @@ You will (1) design a finding schema that forbids exploit recipes; (2) implement
 
 FindingsDesk stores title, asset, weakness class, evidence reference, impact, status and timestamps. It must not store a working exploit, a live credential or a step-by-step attack. Schema validation rejects fields named `payload`, `password` or `shell`. Evidence lives in a sealed store referenced by hash (Chapter 48).
 
+Rejecting those field names at the door stops a well-meaning engineer pasting a password into a ticket during a busy close-out. Evidence by hash means the ticket stays shareable while the sealed store stays locked. Sam reviews every new column proposal against the same rule: if it could hold a recipe or a secret, it does not belong in FindingsDesk.
+
 ### 9.2 Idempotent updates
 
 Closing a finding twice must leave it closed; attaching the same evidence hash twice must leave one attachment. Idempotency lets retries (Chapter 6) be safe. Use a stable finding id and treat create-or-update as a single operation keyed by that id.
@@ -636,6 +638,8 @@ c4bfba3b72 web-01  missing-header      /login    occurrences=2
 296a3331f0 web-02  default-credential  admin-ui  occurrences=2
 ```
 
+Retries are normal when uploads fail, and without idempotency each retry would reopen work or create duplicate tickets. A stable id turns create and update into the same path, so the second call finds the existing row. The lab's fingerprint collapses six raw rows to four unique findings, which is what remediation owners want to see.
+
 ### 9.3 Property tests
 
 Beyond example tests, state a property: "for every host in the deny-list and every port, allowed is False". Generate dozens of synthetic hosts and assert the property. Property tests catch the bug where a deny-list entry is ignored for ports not in a hard-coded list.
@@ -646,13 +650,19 @@ Beyond example tests, state a property: "for every host in the deny-list and eve
 
 Schemas drift; version them. Property tests are only as good as the generator; include known edge cases by hand.
 
+A schema without a version field forces clients to guess which fields exist. Generators that never emit the last address in a range will never catch a bug there. Sam keeps a small hand-written table of nasty cases next to the property suite and runs both on every change. A generator bug is treated like a product bug: fix it before the next engagement.
+
 ### 9.2b Migration without downtime
 
 When the finding schema gains a required field, deploy a two-phase change: first accept and persist the field as optional while backfilling; then flip the validator to required. Engagements mid-window must not break because a mobile client is one version behind. Publish the schema version in API responses so clients can refuse to write when incompatible.
 
+Two-phase changes keep mid-engagement clients writing safely. Backfill fills old rows before the field becomes required, so validators do not reject historical tickets. Publishing the schema version lets a mobile client refuse an incompatible write instead of corrupting a finding. Sam rehearses the flip on a staging copy with a live engagement fixture before touching production.
+
 ### 9.1b Idempotency keys from fingerprints
 
 When two scanners report the same weakness, compute the fingerprint first and use it to mint or look up the finding id before insert. Humans still confirm merges when fingerprints collide across different root causes (same header missing on two unrelated apps). Log the scanner ids as evidence references, not as separate findings, so remediation tracks one ticket.
+
+Scanners disagree on wording but often agree on asset, class and location, which is enough for a fingerprint. Collisions across unrelated apps are rare and need a human merge, which is cheaper than dozens of duplicate tickets. Storing scanner ids as evidence keeps provenance without multiplying the backlog. Sam shows the fingerprint in the ticket so owners can see why two alerts became one.
 
 ### Exercises
 
@@ -680,9 +690,13 @@ You will (1) refuse dual-use and out-of-scope requests; (2) apply stop condition
 
 A manager saying "go ahead" in chat is not written authorization. NIST SP 800-115 and PTES expect a signed scope, methods, dates, limits, contacts and stop conditions. Without that document, the engineer stops. Enthusiasm from a single stakeholder who does not own the asset is a common path to unauthorized testing.
 
+Chat messages vanish, lack scope detail and rarely name stop conditions. A signed document can be shown months later when someone asks why a host was touched. Stopping without that document is not stubbornness; it is the only move that keeps the engineer and the client inside the law. Sam keeps the signed ROE hash in TrackScope next to every run.
+
 ### 10.2 Dual use and teaching
 
 This book teaches scoping, measurement and reporting. It does not teach exploit development, weaponised payloads or bypass recipes. When a peer asks for "just the PoC", the answer is the finding description and the evidence reference, not a working attack. Publishing student work that contains live techniques against real products is a disclosure decision with vendors and law, not a homework upload.
+
+The refusal protects classmates, future employers and vendors who never agreed to be homework targets. A finding description plus an evidence reference lets a peer learn what was wrong without receiving a ready-made attack. When coursework might touch a real product, Sam routes it through the same disclosure path a professional engagement would use. Course labs stay on synthetic systems for that reason.
 
 ### 10.3 Stop conditions
 
@@ -730,13 +744,19 @@ action=service-enum         when=11:00 conc=20 approved=False -> DENY concurrenc
 
 > **Synthetic case — Riverstone Transit.** At 11:10 the scan touched 10.20.0.1 (deny-listed). TrackScope denied further actions; Sam escalated; the client confirmed. Resume required an updated ROE line, not a verbal "it's fine".
 
+The lab shows denies for banned actions, missing approval, wrong hours and excess concurrency. Software enforcement means the stop happens even if the human is tired or distracted. Notify after stop, not before, so the harmful action does not continue while someone looks for a meeting slot. Sam tests the deny path in staging with a deliberate banned action before each engagement.
+
 ### 10.4 Errors and limits
 
 Ethics is not a chapter you finish; it is a constraint on every later chapter. Legal text here is orientation, not advice — consult counsel for real engagements.
 
+Later chapters on tools and methods inherit these limits; none of them override a missing ROE. Orientation text cannot replace counsel when a real contract is on the table. Sam escalates legal questions instead of inventing answers from a textbook paragraph, and he revisits consent when scope changes mid-engagement, before any new action runs.
+
 ### 10.3b Dual control for dangerous verbs
 
 Actions that change authorization — publishing a new ScopeVersion, disabling a stop condition, exporting a sealed dossier — require two authenticated people or a time-delayed single control with a cancel window. Engineering convenience is not an argument against dual control when the blast radius is the client's estate.
+
+One tired engineer should not be able to widen scope for an entire estate. A second person, or a delay that allows cancel, turns a mistake into a recoverable event. Publishing a new ScopeVersion and exporting a sealed dossier both change who can see what, which is why they sit on the dual-control list. Sam logs both approvers on every such action.
 
 ### Exercises
 
@@ -764,9 +784,13 @@ You will (1) describe what an authorized observer can learn from each OSI layer 
 
 Link-layer captures need access to a segment; network-layer routing data need a vantage; application-layer evidence often needs credentials. An assessment that only has application credentials should not claim link-layer visibility. State the vantage in the method section.
 
+Credentials for an app say nothing about frames on the wire. Claiming a broader vantage than you held invents coverage. Naming the layer in the method write-up lets a reviewer match each finding to what could actually be seen. Sam refuses to file link-layer claims when the engagement only held an application account.
+
 ### 11.2 Ports are not services
 
 Port 443 often means TLS and HTTPS, but it can carry other protocols. Scope that says "web ports" must list numbers and, if needed, expected application protocols. A finding that "HTTPS was open" is incomplete without the certificate subject, auth method and whether the service was the expected one.
+
+Listing port numbers removes the fuzzy phrase 'web ports' from the ROE. Confirming the certificate subject and auth method stops a finding that mistakes a different service on 443 for the expected portal. Sam's notes always include what protocol was observed, not only that the port answered.
 
 ### 11.3 Denies are data
 
@@ -801,18 +825,25 @@ lab-jump-host            4        1    1     2
 
 > **Synthetic case — Riverstone Transit.** The inventory ranked public-web-portal highest (score 9). Sam scheduled it first under the ROE and deferred printer-fleet, which scored 4 and was out of the week's window.
 
+Coverage metrics become honest when a block counts as a completed check. Chasing only open paths biases the report toward failure and hides controls that worked. PulseMap's planned-not-seen bucket exists so a quiet deny is still recorded. Sam lists blocked probes next to successful ones in the daily digest.
+
 ### 11.4 Errors and limits
 
 Scanners fingerprint banners; banners lie. Confirm with an application-level check before writing a finding. Do not scan the public Internet from the course environment.
+
+A banner that claims a product version can be copied from a template or left stale after an upgrade. An application-level check, such as reading a health page under authorization, confirms what is really there. Course environments stay off the public Internet so students never become an unwelcome scanner on someone else's network. Sam's lab machines have no route there.
 
 ### 11.3b Protocol families in scope
 
 Scope documents should name protocol families explicitly: "TCP 443 with HTTPS application data" is clearer than "443". If TLS interception is forbidden, say so. If only TLS 1.2+ is eligible for testing, say so. Ambiguity here becomes an argument during the engagement when someone wants to try a legacy cleartext port "just to see".
 
+Naming HTTPS on TCP 443 leaves no room for a cleartext experiment on the same number. Forbidding TLS interception up front avoids a mid-test argument with privacy and legal teams. Legacy cleartext ports stay closed unless the ROE lists them. Sam reads the protocol paragraph aloud with the client contact before kickoff.
 
 ### 11.4b Capturing only what the ROE allows
 
 Packet captures taken during an authorized test often contain data outside the engagement's purpose, such as staff credentials or passenger records in Riverstone Transit's case. Sam's capture plan names the interfaces, a filter limited to in-scope hosts, a retention period and who may open the files, and the capture is deleted on schedule.
+
+Filters and short retention shrink how much staff or passenger data can linger after the test. Naming who may open the files stops casual browsing of a capture that happened to include a login. Deletion on schedule is checked, not assumed. Sam's close-out includes a ticket showing the capture was wiped.
 
 ### Exercises
 
@@ -840,9 +871,13 @@ You will (1) separate configuration review from runtime abuse; (2) collect OS ev
 
 Password policy, patch level, listening services and local admin group membership answer most OS questions in an authorized assessment. Reading those under an admin account granted for the engagement is different from exploiting a service to obtain that account. Prefer the former; PTES-style discovery stays inside the agreed methods.
 
+Admin-granted reads answer patch level and local group membership without turning the engagement into a hunt for a foothold. That distinction matters for ethics and for clarity of remediation: a finding from a granted account is about exposure and policy, not about a break-in path. Sam records that the account was issued for the test so readers do not infer stealth access.
+
 ### 12.2 Least privilege for the tester
 
 Issue a named assessment account with a time-boxed role. Log every elevation. At the end of the engagement, disable the account and rotate any shared secrets it touched. FindingsDesk should store the account id used for each finding so revocation can be checked.
+
+A named, time-boxed account can be disabled without hunting shared passwords. Logging elevation makes unusual rights visible during the engagement, not only afterwards. Storing the account id on each finding makes the revocation checklist mechanical. Sam's close-out fails if any finding still points at an enabled test account.
 
 ### 12.3 Local vs domain
 
@@ -850,18 +885,25 @@ A local administrator on one host is not domain administrator. Findings must nam
 
 > **Synthetic case — Riverstone Transit.** SYN-005 was a lab service account with domain-admin rights — a directory finding, not a "Windows is broken" finding. Remediating meant removing the group membership and rotating the password, then verifying with a read of the group.
 
+Remediation for a local admin is host hardening; remediation for domain admin is identity-store work. Mixing the labels sends the wrong team and the wrong urgency. Cloud identity providers add a third store that must be named explicitly. Sam's finding template requires the identity-store field before a ticket can leave draft.
+
 ### 12.4 Errors and limits
 
 OS vendors change defaults; cite the version you observed. Do not disable security tools to "make the test work"; if a tool blocks you, that is a result under the ROE.
+
+Defaults from last year's hardening guide may not match the build you saw. Citing the observed version keeps the finding checkable. A security tool that blocks a probe has done its job under the ROE; turning it off would invent a different system than the client runs. Sam reports the block and moves on to the next planned check.
 
 ### 12.3b Image and offline analysis
 
 Full-disk images are high impact: they take systems offline, contain personal data, and tempt out-of-scope browsing. Prefer live, least-privilege reads. If an image is truly required, the ROE must name chain-of-custody, encryption at rest, who may mount it, and a destroy-by date — and the course labs still do not practice imaging real hosts.
 
+Images are a last resort because of downtime and privacy. Live reads under least privilege answer most questions without copying whole disks. When an image is unavoidable, chain-of-custody and a destroy-by date are ROE requirements, not niceties. Course labs never image real hosts, so students practice the decision to avoid imaging rather than the imaging itself.
 
 ### 12.4b Recording host changes
 
 Any setting a tester changes on a host, even a temporary log level, is written to the engagement log with time, reason and the command used to revert it. At close-out Sam walks that list with the system owner, so no Riverstone Transit host is left in a state nobody remembers creating.
+
+Temporary log-level changes are still changes. A revert command written at the time survives staff turnover and weekend shifts. Walking the list with the owner turns close-out into a shared checklist rather than a memory test. Sam refuses to mark an engagement complete while any unreverted change remains on the list.
 
 ### Exercises
 
