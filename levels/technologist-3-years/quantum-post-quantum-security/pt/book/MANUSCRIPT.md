@@ -1,7 +1,7 @@
 # Segurança Quântica e Pós-Quântica: Implementando Serviços Resistentes ao Quântico
 
 - Idioma: português do Brasil (`pt`); curso de tecnólogo, três anos; aproximadamente 2.400 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–10 de 30 já estão escritos em português, com os exercícios EX001–EX020 e suas resoluções; os capítulos 11–30 (EX021–EX060) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 30 já estão escritos em português, com os exercícios EX001–EX040 e suas resoluções; os capítulos 21–30 (EX041–EX060) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: implementadores e administradores de tecnologia — equipes de sistemas, redes, plataforma e DevOps — que vão configurar, integrar, automatizar, monitorar e passar para as operações serviços pós-quânticos. Conhecimento de entrada: fundamentos de computação e operações de segurança introdutórias.
 - Relação com os livros vizinhos: o [livro de bacharelado](../../../../bachelors-4-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) desenvolve a teoria e as habilidades de pesquisa, e o [livro de engenharia](../../../../engineering-5-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) projeta sistemas. **Este livro trata da implementação**: encontrar a criptografia em serviços reais, configurar a troca de chaves híbrida, integrar a PKI e as ferramentas, automatizar verificações, monitorar, diagnosticar problemas e passar o serviço para as operações.
 - Autoria: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -29,7 +29,7 @@ As fontes primárias foram verificadas em 12 de outubro de 2026: NIST FIPS 203/2
 | Núcleo de implementação | [10 Orientação](#ch-10) · [11 Ativos e contexto](#ch-11) · [12 Fluxos de dados](#ch-12) · [13 Cenários de risco](#ch-13) · [14 Métodos I](#ch-14) · [15 Laboratório guiado](#ch-15) · [16 Métodos II](#ch-16) · [17 Ferramentas](#ch-17) · [18 Controles](#ch-18) · [19 Monitoramento](#ch-19) · [20 Diagnóstico de problemas](#ch-20) · [21 Integração de serviços](#ch-21) · [22 Automação](#ch-22) · [23 Avaliação](#ch-23) |
 | Prática e projeto final | [24 Métodos de pesquisa aplicada](#ch-24) · [25 Ateliê de projeto em equipe](#ch-25) · [26 Passagem para as operações](#ch-26) · [27 Implantação e validação](#ch-27) · [28 Prática de campo](#ch-28) · [29 Construção do projeto final](#ch-29) · [30 Avaliação do projeto final](#ch-30) |
 
-Capítulos 11–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-11), até a chegada dos próximos lotes.
+Capítulos 21–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -746,7 +746,872 @@ As normas do NIST definem as substituições; o ML-KEM é um KEM sobre reticulad
 <!-- cyberabc:chapter-navigation:start ch-10 -->
 ### Continue estudando — capítulo 10 de 30
 
-[← Capítulo 09](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 (inglês) →](../../en/book/MANUSCRIPT.md#ch-11)
+[← Capítulo 09](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Segurança quântica e pós-quântica: ativos e contexto
+
+### Objetivos de aprendizagem
+
+Você vai (1) montar um registro de ativos com o escopo da migração criptográfica; (2) atribuir níveis usando o tempo de vida dos dados e o tempo de vida da confiança; (3) registrar donos, mecanismos de mudança e dependências; e (4) aplicar a desigualdade de Mosca para definir a urgência.
+
+### 11.1 Definindo o escopo do registro
+
+Comece pelos serviços que os clientes e os funcionários usam, não pelas faixas de IP. Para cada serviço, liste os seus endpoints, as classes de dados que ele trata, as funções criptográficas que executa e as equipes e fornecedores que os controlam. Inclua coisas fáceis de esquecer: assinatura no CI/CD, transferências de backup, agentes de monitoramento, integrações com parceiros, dispositivos dos armazéns e caminhos de acesso administrativo.
+
+O primeiro registro da KLS, montado a partir de varreduras de IP, deixou de fora o job noturno de backup para o armazenamento de objetos e o TLS de saída dos agentes de monitoramento, porque nenhum dos dois escuta numa porta. Começar pelos serviços encontrou os dois: o job de backup aparece sob o faturamento, e os agentes aparecem sob o serviço de observabilidade. O registro tem agora 41 entradas, das quais 14 são fluxos de nível 1.
+
+### 11.2 Níveis
+
+Nível 1: fluxos que transportam dados cuja confidencialidade precisa durar além dos prazos quânticos plausíveis, e âncoras de confiança cujas assinaturas precisam permanecer impossíveis de forjar por muitos anos. Nível 2: dados ou confiança de vida mais curta, mas ainda importantes. Nível 3: dados de vida curta e credenciais fáceis de rotacionar. Os níveis determinam a ordem do trabalho, a profundidade do monitoramento e as exigências de evidência.
+
+A KLS escreve os critérios como números, para que duas pessoas classifiquem o mesmo ativo de forma idêntica: nível 1 se a confidencialidade ou a confiança precisa durar oito anos ou mais, ou se o dispositivo não pode ser atualizado remotamente; nível 2 de três a oito anos; nível 3 abaixo de três anos, com credenciais rotacionáveis em um dia. Os ativos de nível 1 têm revisão de evidências semanal; os de nível 2, mensal; os de nível 3, trimestral.
+
+### 11.3 A desigualdade de Mosca para implementadores
+
+Mosca (2018): se os dados precisam permanecer seguros por *x* anos, a migração leva *y* anos e um computador quântico criptograficamente relevante chega em *z* anos, então *x* + *y* > *z* significa que você já está atrasado. Os implementadores controlam o *y*. Estime-o por serviço a partir do mecanismo de mudança: uma mudança de configuração pode levar semanas, incluindo os testes; uma mudança que depende do fornecedor pode levar dois anos; uma renovação de hardware, cinco. Com os dados de embarque de dez anos da KLS, a estimativa de meio ano do serviço SFTP dos parceiros o deixa atrasado para qualquer *z* abaixo de 10,5 anos; os leitores dos armazéns, que enviam os mesmos manifestos de embarque numa renovação de fornecedor de quatro anos, ficam atrasados para qualquer *z* abaixo de catorze.
+
+### 11.4 Dependências e donos
+
+Cada ativo precisa de um dono nomeado e de uma lista de dependências a montante: a CDN, o balanceador de carga na nuvem, o banco de dados gerenciado, o fornecedor dos leitores. Um serviço só está tão migrado quanto a sua parte controladora mais lenta.
+
+Na KLS, a parte mais lenta costuma estar fora da empresa. A API do cliente depende do recurso de origem da CDN; a replicação do faturamento, do provedor do banco de dados; os leitores, do seu fornecedor. Cada dependência é uma linha com um contato e um pedido em aberto, para que o registro mostre quem está esperando por quem.
+
+### 11.5 Caso resolvido
+
+Os níveis da KLS (sintéticos): Nível 1 — SFTP dos parceiros (dados aduaneiros de 10 anos, ECDH), caminho da CDN até a origem (dados de embarque de 10 anos), AC raiz interna (validade de 15 anos), assinatura de versões. Nível 2 — replicação do banco de dados de faturamento (dados de 7 anos), VPN do escritório. Nível 3 — telemetria, tokens de SSO. *y* estimado: SFTP 0,5 ano (atualização do OpenSSH e coordenação com os parceiros), CDN até a origem 0,25 ano (configuração do balanceador de carga), AC interna 2 anos, leitores 4 anos (renovação do fornecedor).
+
+Ler as estimativas pela desigualdade de Mosca mostra o que fazer primeiro. O SFTP e o caminho da CDN até a origem são de nível 1 com *y* curto, então concluí-los é barato e remove a maior parte da exposição a HNDL. A AC interna precisa de dois anos e deve começar agora. Os quatro anos dos leitores não podem ser encurtados pela KLS, então o seu fluxo de dados é minimizado e o contrato com o fornecedor, alterado.
+
+### 11.6 Atividade prática
+
+Crie um registro com níveis de dez ativos da KLS, com dono, tempo de vida dos dados, tempo de vida da confiança, mecanismo de mudança e *y* estimado.
+
+Use as colunas ativo, dono, tempo de vida dos dados em anos, tempo de vida da confiança em anos, nível com o critério que o colocou ali, mecanismo de mudança, parte controladora e *y* estimado com a sua base. Inclua pelo menos um ativo de cada grupo: serviços voltados ao cliente, integrações com parceiros, PKI interna, dispositivos e jobs em segundo plano, como os backups. Onde o *y* for um palpite, escreva a premissa, por exemplo "o fornecedor cotou 18 meses, mais 6 para a implantação". Termine marcando quais ativos estão atrasados para um *z* de 10 anos.
+
+### 11.7 Erros comuns e limites
+
+- Começar pelas varreduras de rede em vez dos serviços.
+- Níveis sem critérios escritos.
+- Ignorar a dependência mais lenta ao estimar o *y*.
+
+Cada erro distorceu o primeiro registro da KLS. As varreduras de rede encontraram os listeners, mas deixaram de fora o job de backup e os agentes de monitoramento, que só fazem conexões de saída. Níveis atribuídos "por intuição" colocaram a telemetria no nível 1 porque parecia importante. E a estimativa de três meses para a CDN até a origem ignorou que o recurso de origem do provedor ainda não estava disponível para todos, então o *y* real dependia do calendário do provedor.
+
+### Exercícios
+
+- **EX021 — Mosca para o SFTP.** Com *x* = 10 e *y* = 0,5, para qual *z* a KLS está atrasada no SFTP dos parceiros? Rubrica: 3 = *z* < 10,5 anos.
+- **EX022 — Critérios de nível.** Escreva critérios de nível que um novo membro da equipe possa aplicar de forma consistente. Rubrica: 3 = limites objetivos sobre o tempo de vida dos dados e da confiança.
+
+### Síntese
+
+Um registro de ativos com níveis e donos, com mecanismos de mudança e estimativas do tempo de migração, permite que os implementadores apliquem a desigualdade de Mosca onde ela importa: encolhendo o *y* dos serviços de nível 1.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — capítulo 11 de 30
+
+[← Capítulo 10](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Segurança quântica e pós-quântica: fluxos de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) rastrear os fluxos de dados de ponta a ponta através dos pontos de terminação; (2) montar uma lista de materiais criptográficos (CBOM) a partir de várias fontes; (3) calcular as frações de cobertura e de desconhecidos; e (4) identificar qual parte controla cada segmento.
+
+### 12.1 Rastreando os fluxos
+
+Um fluxo só está protegido com a força do seu segmento mais fraco. Rastreie os dados de embarque desde o sistema de um cliente através da CDN, do balanceador de carga da origem, do ingress, da malha de serviços, da fila de mensagens, da replicação do banco de dados e da cópia de backup. Em cada segmento, registre o protocolo, a troca de chaves, a autenticação, o tempo de vida dos dados e o controlador.
+
+Na KLS, o rastreamento de um registro de embarque tem sete segmentos, e só o primeiro era híbrido quando o rastreamento foi desenhado. A regra do segmento mais fraco fez com que o fluxo fosse reportado como clássico, e não como um sétimo migrado.
+
+### 12.2 A CBOM
+
+Uma CBOM lista, por ativo e função, o algoritmo, os parâmetros, a implementação e a fonte da evidência. Monte-a mesclando exportações de configuração, resumos de logs, varreduras de imagens e declarações de fornecedores.
+
+A CBOM da KLS mescla quatro alimentações: exportações de configuração do ingress e dos balanceadores de carga, logs de handshake do gateway, varreduras de imagens do registro e respostas de fornecedores. Cada linha mantém a sua fonte, para que um leitor possa ver que a entrada `RSA-kex` do banco de dados de faturamento veio da configuração, enquanto a troca de chaves do leitor veio de captura passiva. As linhas conflitantes são mantidas lado a lado e abrem uma tarefa, em vez de serem fundidas num único valor adivinhado.
+
+### 12.3 Atividade prática — Laboratório I
+
+```python
+# Lab I (ch 12): aggregate a synthetic cryptographic bill of materials (CBOM) and measure coverage.
+records = [  # (asset, function, algorithm, source)
+    ("api-gateway", "key-exchange", "X25519MLKEM768", "passive"), ("api-gateway", "signature", "RSA-2048", "config"),
+    ("warehouse-scanner", "key-exchange", "ECDHE-P256", "passive"), ("warehouse-scanner", "signature", "ECDSA-P256", "code"),
+    ("billing-db", "key-exchange", "RSA-kex", "config"), ("billing", "data-at-rest", "AES-256-GCM", "code"),
+    ("forklift-telemetry", "unknown", "unknown", "none"), ("office-vpn", "key-exchange", "ECDHE-P384", "config")]
+VULN = {"RSA-2048", "ECDHE-P256", "ECDSA-P256", "RSA-kex", "ECDHE-P384"}
+assets = {r[0] for r in records}
+unknown = {r[0] for r in records if r[2] == "unknown"}
+vuln = [r for r in records if r[2] in VULN]
+print(f"assets {len(assets)}, unknown {len(unknown)} ({100*len(unknown)/len(assets):.0f}%)")
+print(f"quantum-vulnerable uses {len(vuln)}:", ", ".join(f"{a}/{f}" for a, f, _, _ in vuln))
+print("hybrid key exchange present on:", [r[0] for r in records if "MLKEM" in r[2]])
+```
+
+Saída esperada:
+
+```text
+assets 6, unknown 1 (17%)
+quantum-vulnerable uses 5: api-gateway/signature, warehouse-scanner/key-exchange, warehouse-scanner/signature, billing-db/key-exchange, office-vpn/key-exchange
+hybrid key exchange present on: ['api-gateway']
+```
+
+A unidade de telemetria da empilhadeira não tem nenhuma evidência; até que o fornecedor responda, ela continua desconhecida e bloqueia uma decisão de nível para a rede do armazém.
+
+O Laboratório I conta ativos e usos separadamente, o que importa para os relatórios. Seis ativos e oito usos produzem dois denominadores diferentes: um ativo em seis é desconhecido (17 %), enquanto cinco usos em oito são vulneráveis ao quântico. A linha de dados em repouso de `billing`, AES-256-GCM, está corretamente ausente da lista de vulneráveis. O api-gateway aparece duas vezes, como híbrido na troca de chaves e vulnerável pela sua assinatura RSA-2048, que é o estado habitual de um serviço depois do seu primeiro passo de migração. Mude um registro para X25519MLKEM768 e execute de novo para ver as contagens mudarem.
+
+### 12.4 Controladores
+
+A KLS controla os seus balanceadores de carga, o ingress e o código; o provedor da CDN controla a borda; o provedor de nuvem controla a replicação do banco de dados gerenciado; os parceiros controlam os seus clientes SFTP. Anote o controlador ao lado de cada segmento e abra um chamado ou um pedido ao fornecedor para cada segmento que a KLS não pode mudar.
+
+A coluna de controlador transforma o rastreamento num plano de trabalho. Os segmentos que a KLS controla recebem chamados de configuração; os segmentos controlados por outros recebem pedidos com um contato nomeado e uma data de acompanhamento. Na KLS, isso significou chamados para o balanceador de carga da origem, o ingress e o Kafka, e pedidos à CDN, ao provedor do banco de dados e aos mantenedores do SDK do armazenamento de objetos.
+
+### 12.5 Caso resolvido
+
+Rastreando um registro de embarque: cliente da API do cliente → borda da CDN (híbrido, controlada pela CDN) → LB da origem (clássico, KLS) → ingress (clássico, KLS) → pod da API → Kafka (TLS clássico, KLS) → replicação do Postgres gerenciado (provedor, algoritmo não documentado) → backup noturno para o armazenamento de objetos por HTTPS (SDK do provedor num job da KLS, clássico). Sete segmentos, quatro que a KLS pode mudar, um desconhecido.
+
+Os quatro segmentos controlados pela KLS — balanceador de carga da origem, ingress, Kafka e a configuração do SDK do job de backup — entraram numa única sprint. A replicação do Postgres gerenciado se tornou uma pergunta ao provedor com prazo, e a sua situação de desconhecida manteve o fluxo inteiro fora da contagem de migrados até que o provedor respondesse por escrito.
+
+### 12.6 Erros comuns e limites
+
+- Parar o rastreamento na borda.
+- Tratar os serviços gerenciados como "seguros por padrão" sem evidências.
+- Ignorar os caminhos de backup e de replicação.
+
+Parar na borda produziu a primeira afirmação errada da KLS de que o caminho do cliente era híbrido. Tratar o banco de dados gerenciado como seguro por padrão deixou o seu algoritmo de replicação sem documentação por meses; "gerenciado" diz quem o opera, não o que ele negocia. E o envio noturno de backup, que transporta os mesmos registros de dez anos, ficou totalmente de fora do primeiro rastreamento porque roda a partir de um job em lote, e não de um caminho de requisição. Rastreamentos desenhados só a partir dos caminhos de requisição costumam deixar de fora o tráfego de lote e de replicação.
+
+### 12.7 Mantendo os rastreamentos atualizados
+
+As arquiteturas mudam mais rápido do que os diagramas. Refaça o rastreamento de cada fluxo de nível 1 sempre que um salto for acrescentado ou substituído — uma nova fila de mensagens, um novo recurso da CDN, uma migração de bancos de dados autogerenciados para gerenciados — e acrescente o rastreamento à checklist de mudança desses trabalhos. Guarde o rastreamento como dados estruturados (segmento, protocolo, controlador, algoritmo, evidência) ao lado da CBOM, para que uma consulta possa listar todo fluxo de nível 1 com pelo menos um segmento clássico ou desconhecido. Essa consulta é a resposta honesta a "este fluxo está migrado?", porque um único segmento clássico deixa o fluxo inteiro exposto à gravação naquele ponto.
+
+### Exercícios
+
+- **EX023 — Fração de desconhecidos.** No Laboratório I, que fração dos usos criptográficos (não dos ativos) é vulnerável ao quântico? Rubrica: 3 = 5 de 8 registros ≈ 63 %, observando o registro desconhecido.
+- **EX024 — Chamados por controlador.** Para o rastreamento do caso resolvido deste capítulo, liste os pedidos externos que a KLS precisa abrir. Rubrica: 3 = CDN (suporte no salto até a origem), provedor do banco de dados gerenciado (criptografia da replicação), armazenamento de objetos/SDK.
+
+### Síntese
+
+Os rastreamentos de ponta a ponta e uma CBOM de várias fontes mostram o algoritmo e o controlador de cada segmento; os desconhecidos e os segmentos externos se tornam pedidos explícitos.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — capítulo 12 de 30
+
+[← Capítulo 11](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Segurança quântica e pós-quântica: cenários de risco
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever cenários de risco implementáveis para os riscos quânticos e de migração; (2) incluir os riscos induzidos pela migração, como indisponibilidades e recuo silencioso; (3) classificar os cenários com escalas simples; e (4) ligar cada cenário a controles e testes.
+
+### 13.1 Dois tipos de risco
+
+O risco quântico é o que acontece se nada mudar: tráfego gravado decifrado, assinaturas forjadas. O risco de migração é o que pode dar errado durante a mudança: indisponibilidades por handshakes grandes, recuo silencioso para o clássico, falhas de validação de certificados, regressões de desempenho, erros de gerenciamento de chaves. Os implementadores são donos dos dois e não devem trocar um pelo outro às cegas.
+
+A KLS registra os dois tipos no mesmo registro, com os mesmos campos, para que um revisor possa ver quando um plano reduz o risco quântico acrescentando risco de migração. Habilitar o híbrido em todos os listeners numa única mudança, por exemplo, remove rapidamente a exposição a HNDL, mas eleva a probabilidade de indisponibilidade que uma implantação em etapas manteria baixa.
+
+### 13.2 Formato do cenário
+
+Cada cenário nomeia o ativo, o evento, a causa, o efeito, como ele seria detectado, a probabilidade e o impacto em escalas simples de 1 a 5, o controle e o teste que mostra que o controle funciona.
+
+Os campos forçam decisões. Um cenário sem detecção não pode ser monitorado; um sem teste não pode provar que o seu controle funciona. A KLS usa escalas de 1 a 5 com âncoras escritas: probabilidade 4 significa "visto pelo menos uma vez no nosso parque ou no de um par", impacto 4 significa "dados de nível 1 expostos ou indisponibilidade voltada ao cliente por mais de uma hora". As notas se multiplicam numa classificação que ordena o backlog, e as âncoras impedem que as notas variem entre revisores.
+
+### 13.3 Recuo silencioso
+
+O risco de migração mais perigoso é invisível: uma mudança de configuração, a reversão de uma imagem ou um novo balanceador de carga volta à negociação apenas clássica, e nada quebra. Sem monitoramento dos grupos negociados, isso pode persistir por meses. Toda implantação híbrida precisa de um alerta sobre a fração de recuo.
+
+Na KLS, aconteceu exatamente assim: uma versão restaurou uma anotação antiga do ingress e a fração híbrida do portal caiu de 93 % para 4 %. Nenhum cliente percebeu e nenhum erro foi registrado; só o alerta de fração, acrescentado semanas antes, mostrou o problema. A KLS alerta quando a fração cai mais de cinco pontos em uma hora.
+
+### 13.4 Caso resolvido
+
+Cenário: "A reversão do LB da origem restaura um perfil TLS apenas clássico." Causa: reversão de emergência para uma configuração antiga. Efeito: dados de embarque de nível 1 de novo expostos a HNDL. Detecção: alerta de fração híbrida a partir dos logs do LB. Probabilidade 3, impacto 4. Controle: perfil TLS versionado separadamente da configuração da aplicação; os runbooks de reversão restauram apenas a aplicação. Teste: exercício mensal que reverte a aplicação e confirma que a fração híbrida continua acima de 95 %.
+
+O controle é a decisão-chave. Versionar o perfil TLS à parte da configuração da aplicação significa que uma reversão de emergência do código não pode chegar às configurações criptográficas; o exercício testa essa separação todo mês. Uma nota de 12 colocou este cenário entre os três primeiros da KLS, acima do cenário quântico da telemetria.
+
+### 13.5 Atividade prática
+
+Escreva cinco cenários para a KLS — dois quânticos, três de migração — e classifique-os.
+
+Exemplos quânticos: sessões SFTP dos parceiros gravadas e decifradas depois (HNDL), e a raiz interna forjada depois que existir um computador quântico (forjar depois). Exemplos de migração: um proxy que descarta ClientHellos grandes, o recuo silencioso depois de uma reversão e um agente de monitoramento que rejeita uma cadeia ML-DSA. Para cada um, preencha todos os campos do formato: ativo, evento, causa, efeito, detecção, probabilidade, impacto, controle e teste. Classifique pela probabilidade vezes o impacto e explique numa frase por que o cenário do topo supera os outros. Espere que um cenário de migração fique em primeiro.
+
+### 13.6 Erros comuns e limites
+
+- Ignorar o risco induzido pela migração.
+- Cenários sem detecção.
+- Controles sem testes.
+
+No primeiro registro da KLS, todos os cenários eram quânticos; as indisponibilidades por proxy e o recuo silencioso que de fato aconteceram em homologação estavam ausentes. Vários cenários diziam "impacto: alto" sem nenhuma forma de detectar o evento, o que os tornava impossíveis de monitorar. E controles como "perfil versionado separadamente" eram afirmados sem exercício, então ninguém sabia se uma reversão realmente deixava o perfil intacto. Uma lista de cenários é uma hipótese sobre falhas; sem detecção e testes, ela não pode ser verificada.
+
+### 13.7 Dos cenários aos runbooks
+
+Os cenários de migração mais bem classificados merecem, cada um, um runbook: os sintomas que um operador vai ver, as três primeiras verificações, a reversão segura e a quem ligar. Um runbook para "a fração híbrida caiu num listener de nível 1" poderia dizer: verificar a última implantação e as anotações do ingress; comparar o hash do perfil TLS em produção com o aprovado; restaurar o perfil aprovado sem reverter o código da aplicação; confirmar a recuperação no painel; abrir um chamado de problema. Os runbooks escritos antes do evento encurtam as indisponibilidades e reduzem a tentação de desabilitar às pressas as configurações pós-quânticas.
+
+Revise a lista de cenários depois de cada incidente e de cada grande mudança de plataforma; novos saltos e novos fornecedores introduzem novas formas de recuo ou de falha.
+
+### Exercícios
+
+- **EX025 — Cenário.** Escreva um cenário completo para "o cliente SFTP de um parceiro não consegue negociar a KEX híbrida". Rubrica: 3 = todos os campos presentes e coerentes.
+- **EX026 — Detecção.** Proponha uma detecção para o recuo silencioso na VPN do escritório. Rubrica: 3 = fonte de dados, métrica, limite.
+
+### Síntese
+
+Os cenários implementáveis cobrem os riscos quânticos e de migração, com detecção, controles e testes; o recuo silencioso merece atenção especial porque nada quebra de forma visível.
+
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue estudando — capítulo 13 de 30
+
+[← Capítulo 12](#ch-12) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Segurança quântica e pós-quântica: métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar como a troca de chaves híbrida combina os segredos; (2) executar um combinador de brinquedo e interpretá-lo; (3) descrever como o TLS 1.3 integra o X25519MLKEM768; e (4) configurar grupos híbridos num servidor de laboratório.
+
+### 14.1 Combinando os segredos
+
+Num híbrido, os dois componentes produzem segredos compartilhados; uma etapa de derivação de chaves os combina com o contexto, de modo que o resultado é seguro se qualquer um dos componentes for. A [SP 800-227](https://doi.org/10.6028/NIST.SP.800-227) discute a combinação de KEMs; o TLS concatena os segredos e os alimenta na sua programação de chaves baseada no HKDF.
+
+O Laboratório C torna a propriedade visível: mude qualquer um dos segredos sozinho e a saída muda por completo, então um atacante que quebra só o X25519 ou só o ML-KEM continua sem a chave. Vincular o transcript impede que os mesmos segredos produzam a mesma chave em outro handshake.
+
+### 14.2 Atividade prática — Laboratório C
+
+```python
+# Lab C (ch 14): a hybrid key combiner. The session key depends on BOTH shared secrets.
+import hashlib, hmac
+def hkdf_extract(salt, ikm): return hmac.new(salt, ikm, hashlib.sha256).digest()
+def combine(ss_pq, ss_trad, context):
+    # Concatenate secrets (PQ first, as in X25519MLKEM768), bind the transcript/context, then extract.
+    return hkdf_extract(b"\x00" * 32, ss_pq + ss_trad + context).hex()[:16]
+pq, trad, ctx = b"P" * 32, b"T" * 32, b"handshake-transcript-hash"
+print("baseline              ", combine(pq, trad, ctx))
+print("PQ secret changed     ", combine(b"Q" * 32, trad, ctx))
+print("traditional changed   ", combine(pq, b"U" * 32, ctx))
+print("context changed       ", combine(pq, trad, b"other-transcript"))
+```
+
+Saída esperada:
+
+```text
+baseline               d48e982e8c06ca60
+PQ secret changed      d4c36ea2d90b2e9c
+traditional changed    8dcefa12ded3d99c
+context changed        af06eca8abcd45a9
+```
+
+Leia as quatro linhas como um teste das três entradas do combinador. A chave de referência `d48e982e8c06ca60` muda quando muda o segredo pós-quântico, quando muda o segredo tradicional e quando muda apenas o contexto, e nenhuma das saídas alteradas se parece com a de referência. É isso que "seguro se qualquer um dos componentes for" exige: um atacante que recupera o segredo do X25519 ainda enfrenta um segredo ML-KEM desconhecido, e a saída não dá nenhuma pista de qual entrada foi alterada. O truncamento em 16 dígitos hexadecimais do laboratório serve apenas para exibição; o TLS usa a saída completa do HKDF.
+
+### 14.3 O X25519MLKEM768 no TLS 1.3
+
+A [RFC 10024](https://www.rfc-editor.org/rfc/rfc10024.html) define o grupo: o cliente envia uma chave de encapsulamento ML-KEM-768 seguida de uma chave pública X25519 (1.216 bytes); o servidor devolve um texto cifrado ML-KEM seguido do seu key share X25519 (1.120 bytes); o segredo compartilhado é o segredo do ML-KEM concatenado com o segredo do X25519. Se um cliente envia apenas key shares clássicos, um servidor que prefere o híbrido pode responder com um HelloRetryRequest pedindo o key share híbrido, acrescentando uma ida e volta; ajuste as previsões de key share dos clientes de acordo.
+
+A ordem dentro do key share importa para os implementadores que leem capturas: a parte ML-KEM vem primeiro nos dois sentidos, ao contrário de alguns híbridos de rascunhos anteriores. O analisador de laboratório da KLS verifica o comprimento do key share, 1.216 ou 1.120 bytes, para classificar um handshake capturado como híbrido.
+
+### 14.4 Configurando um servidor de laboratório
+
+Nos servidores baseados no OpenSSL, a lista de grupos é configurável, por exemplo `Groups = X25519MLKEM768:X25519:secp256r1` num arquivo de configuração do OpenSSL ou uma diretiva no estilo de `ssl_ecdh_curve` num servidor web. A ordem importa: a preferência do servidor decide o resultado quando o cliente oferece vários. Os key shares padrão do OpenSSL 3.5 incluem o X25519MLKEM768 ([NEWS do OpenSSL 3.5](https://github.com/openssl/openssl/blob/openssl-3.5/NEWS.md)). Consulte a documentação do seu produto para a sintaxe exata.
+
+Para o ingress NGINX da KLS, a configuração é `ssl_ecdh_curve X25519MLKEM768:X25519;`, que só funciona se o OpenSSL da imagem conhecer o nome do grupo; numa biblioteca mais antiga, o NGINX se recusa a iniciar, o que é uma falha útil em homologação. A sintaxe varia por produto, então a KLS mantém um trecho testado por produto no repositório central de perfis.
+
+### 14.5 Caso resolvido
+
+Ingress de homologação da KLS: grupos definidos como `X25519MLKEM768:X25519`. O cliente de teste A (OpenSSL 3.5) negocia o híbrido; o cliente de teste B (biblioteca mais antiga) negocia o X25519. Uma lista mal ordenada, `X25519:X25519MLKEM768`, fez os dois escolherem o X25519 — oferecido, nunca selecionado.
+
+O caso mal ordenado é o instrutivo. Os dois clientes suportavam o grupo híbrido, o servidor o listava e nada falhou; a preferência do servidor simplesmente escolheu o X25519. Só uma verificação do grupo negociado, e não da lista configurada, o revelou. A regra "híbrido oferecido mas não preferido" do Laboratório T da KLS existe por causa dessa execução.
+
+### 14.6 Erros comuns e limites
+
+- Híbrido listado, mas não preferido.
+- Esquecer a latência do HelloRetryRequest.
+- Copiar a sintaxe de posts de blog sem conferir as versões.
+
+O primeiro erro é o caso do portal que o Laboratório T, no Capítulo 17, detecta: híbrido presente, nunca escolhido. O segundo aparece como latência: um cliente que prevê apenas o X25519 encontra um servidor que prefere o híbrido e paga uma ida e volta a mais, visível no percentil 99 dos caminhos móveis. O terceiro atingiu a KLS quando o nome de grupo de um híbrido de rascunho, tirado de um blog, foi copiado para um perfil de produção; a biblioteca o rejeitou e o ingress não iniciou em homologação. Cada um é apanhado verificando a negociação, o tempo e a versão, não lendo a configuração.
+
+### 14.7 Configuração do lado do cliente
+
+Os servidores são só metade da negociação. Os clientes escolhem quais key shares enviar primeiro, e uma previsão errada custa a ida e volta a mais descrita na Seção 14.3. Os navegadores modernos e as bibliotecas atuais enviam o key share híbrido por padrão. Para os SDKs próprios e os clientes internos da KLS, defina a lista de grupos explicitamente no código ou na configuração, teste contra o gateway de homologação e registre a versão da biblioteca nas notas de versão, para que os clientes saibam quais versões do SDK negociam a troca de chaves híbrida.
+
+### Exercícios
+
+- **EX027 — Raciocínio sobre o combinador.** Usando o Laboratório C, explique por que mudar apenas o contexto muda a chave e por que isso importa. Rubrica: 3 = vinculação ao transcript, impede a reutilização entre sessões.
+- **EX028 — Defeito de ordem.** Explique como um servidor pode listar um grupo híbrido e, ainda assim, nunca negociá-lo. Rubrica: 3 = ordem de preferência ou suporte do cliente.
+
+### Síntese
+
+A troca de chaves híbrida concatena e deriva os segredos para que qualquer um dos componentes proteja a sessão. No TLS 1.3, ela é um único grupo configurável; a ordem e o suporte do cliente decidem se ela é usada.
+
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue estudando — capítulo 14 de 30
+
+[← Capítulo 13](#ch-13) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Segurança quântica e pós-quântica: laboratório guiado
+
+### Objetivos de aprendizagem
+
+Você vai (1) executar testes de resposta conhecida e testes negativos; (2) construir um ambiente de laboratório reproduzível para a configuração de PQC; (3) registrar as evidências de forma adequada; e (4) usar controles negativos.
+
+### 15.1 Ambiente de laboratório
+
+Construa um laboratório isolado: duas VMs ou contêineres (servidor e cliente) com uma biblioteca TLS atual que suporte o ML-KEM, um ponto de captura na rede do laboratório e scripts para executar os handshakes e registrar os resultados. Nenhum dado de produção; nenhuma conexão com as redes de produção.
+
+O laboratório da KLS são dois contêineres numa rede bridge isolada, uma imagem de servidor com OpenSSL 3.5 e NGINX e uma imagem de cliente com quatro bibliotecas TLS, além de um terceiro contêiner rodando o tcpdump na bridge. Tudo é construído a partir de um script no repositório do laboratório, para que o ambiente possa ser destruído e recriado em minutos.
+
+### 15.2 Atividade prática — Laboratório V
+
+```python
+# Lab V (ch 15): known-answer and negative tests - the habit behind validating PQC libraries.
+import hashlib
+KATS = [  # (function, input, expected hex prefix) - published test values for SHA-3 / SHAKE on empty input
+    ("sha3_256", b"", "a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a"),
+    ("shake_128/32", b"", "7f9c2ba4e88f827d616045507605853ed73b8093f6efbc88eb1a6eacfa66ef26"),
+]
+def run(name, data):
+    if name == "sha3_256": return hashlib.sha3_256(data).hexdigest()
+    return hashlib.shake_128(data).hexdigest(32)
+for name, data, want in KATS:
+    print(f"KAT {name:13s}", "PASS" if run(name, data) == want else "FAIL")
+SIZES = {"ML-KEM-512": 800, "ML-KEM-768": 1184, "ML-KEM-1024": 1568}   # encapsulation-key bytes, FIPS 203
+def validate_ek(param, ek):
+    if len(ek) != SIZES[param]: raise ValueError(f"{param}: expected {SIZES[param]} bytes, got {len(ek)}")
+    return True
+for param, n in [("ML-KEM-768", 1184), ("ML-KEM-768", 1183), ("ML-KEM-512", 1184)]:
+    try: validate_ek(param, bytes(n)); print(f"negative/positive test {param} len {n}: accepted")
+    except ValueError as e: print(f"negative/positive test {param} len {n}: rejected ({e})")
+```
+
+Saída esperada:
+
+```text
+KAT sha3_256      PASS
+KAT shake_128/32  PASS
+negative/positive test ML-KEM-768 len 1184: accepted
+negative/positive test ML-KEM-768 len 1183: rejected (ML-KEM-768: expected 1184 bytes, got 1183)
+negative/positive test ML-KEM-512 len 1184: rejected (ML-KEM-512: expected 800 bytes, got 1184)
+```
+
+Os testes de resposta conhecida confirmam que as primitivas coincidem com as referências; os testes negativos confirmam que as entradas malformadas são rejeitadas. As bibliotecas que suportam a FIPS 203 também devem rejeitar chaves de encapsulamento cujos coeficientes estejam fora do intervalo.
+
+O laboratório tem duas metades. Os testes de resposta conhecida comparam o SHA3-256 e o SHAKE128 sobre a entrada vazia com os digests publicados; um PASS mostra que as funções de hash da plataforma coincidem com a norma. As verificações de comprimento então exercitam a validação: uma chave ML-KEM-768 correta, de 1.184 bytes, é aceita; uma chave de 1.183 bytes é rejeitada; e um valor de 1.184 bytes rotulado ML-KEM-512 é rejeitado, porque o rótulo exige 800 bytes. Esse terceiro caso é o que as equipes esquecem: um comprimento correto para o conjunto de parâmetros errado. Cada mensagem de rejeição nomeia o conjunto de parâmetros, o comprimento esperado e o comprimento real, que é o que um operador precisa num log.
+
+### 15.3 Registros de laboratório
+
+Registre as versões, os hashes da configuração, os comandos, as saídas e as interpretações. Guarde-os no controle de versão, ao lado dos scripts. Um resultado de laboratório que você não consegue reproduzir é uma anedota.
+
+Um registro de laboratório da KLS é um arquivo Markdown nomeado pela data e pela pergunta, com campos para as versões das bibliotecas, os digests das imagens, o SHA-256 de cada arquivo de configuração, os comandos exatos, a saída bruta e uma interpretação curta. O registro e o script que o produziu são commitados juntos, para que um revisor possa executar de novo os comandos e comparar as saídas linha a linha.
+
+### 15.4 Controles negativos
+
+Antes de confiar numa verificação, mostre que ela pode falhar: configure o servidor sem o grupo híbrido e confirme que o seu script reporta clássico; inverta um byte num KAT e confirme o FAIL.
+
+A KLS acrescenta um terceiro controle para o script de handshake: um cliente que não sabe falar o grupo híbrido ainda precisa ser reportado como clássico, e não como erro. Um script que passa nos três casos mostrou que consegue distinguir híbrido, clássico e quebrado; um que só imprimiu "híbrido" não mostrou nada.
+
+### 15.5 Caso resolvido
+
+Registro de laboratório da KLS "LAB-015": servidor OpenSSL 3.5.x, matriz de clientes com quatro bibliotecas, script `handshake.sh` imprimindo o grupo negociado; resultados: três híbridos, um clássico (cliente Java mais antigo, esperado). Controle negativo: servidor sem o híbrido → o script imprimiu clássico para os quatro. Interpretação: configuração correta; é necessária uma atualização do cliente Java para o híbrido.
+
+O registro também mostra para que o resultado serve. Três negociações híbridas confirmam o perfil do servidor; o resultado clássico do Java é previsto pela versão da sua biblioteca, então vira um chamado de atualização, e não um defeito. O controle negativo prova que o script teria percebido a falta de um grupo. O LAB-015 é citado na solicitação de mudança que depois levou o perfil para a produção.
+
+### 15.6 Erros comuns e limites
+
+- Laboratórios conectados à produção.
+- Resultados sem versões.
+- Verificações nunca mostradas falhando.
+
+A KLS viu cada um deles. Uma VM de laboratório que recebeu uma rota para a produção por conveniência conseguia alcançar serviços reais, então a rede do laboratório foi reconstruída sem nenhuma rota de saída. Um resultado redigido como "o híbrido funciona com Java" não tinha versões anexadas e não pôde ser reproduzido depois que a imagem Java mudou. E um verificador de handshakes que imprimia "híbrido" para todos os servidores revelou-se lendo o arquivo de configuração, e não a negociação; ele nunca tinha recebido um servidor clássico, então ninguém percebeu.
+
+### 15.7 Higiene do laboratório
+
+Desmonte e reconstrua o laboratório a partir dos scripts com regularidade, para que ele nunca derive para um estado não documentado. Fixe as versões dos pacotes, registre os digests das imagens e mantenha os segredos usados no laboratório separados de qualquer repositório de segredos de produção. Quando um laboratório produzir um resultado surpreendente, reconstrua do zero e repita antes de tirar conclusões; muitos aparentes defeitos de biblioteca acabam sendo restos de um experimento anterior.
+
+Por fim, compartilhe o laboratório. Um laboratório que outras equipes podem clonar permite que os donos das aplicações testem os seus próprios clientes contra o gateway de homologação com o híbrido habilitado antes da implantação, o que encontra as incompatibilidades mais cedo e distribui o trabalho para além da equipe de plataforma.
+
+### Exercícios
+
+- **EX029 — Controle negativo.** Projete um controle negativo para um script que verifica a negociação da KEX do SSH. Rubrica: 3 = servidor configurado sem a KEX híbrida, esperar clássico.
+- **EX030 — Campos do registro.** Liste seis campos de um registro de laboratório. Rubrica: 3 = seis campos relevantes.
+
+### Síntese
+
+Laboratórios isolados e reproduzíveis, com testes de resposta conhecida, testes negativos e controles negativos, produzem evidências de que as configurações funcionam como pretendido.
+
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue estudando — capítulo 15 de 30
+
+[← Capítulo 14](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Segurança quântica e pós-quântica: métodos II
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar o ML-DSA, o SLH-DSA, o LMS e o XMSS do ponto de vista de um implementador; (2) estimar os tamanhos das cadeias de certificados; (3) planejar as mudanças na PKI interna; e (4) escolher as assinaturas para a assinatura de código e de firmware.
+
+### 16.1 Opções de assinatura
+
+ML-DSA ([FIPS 204](https://doi.org/10.6028/NIST.FIPS.204)): rápido, tamanhos moderados (44/65/87: chaves públicas de 1.312/1.952/2.592 bytes; assinaturas de 2.420/3.309/4.627 bytes). SLH-DSA ([FIPS 205](https://doi.org/10.6028/NIST.FIPS.205)): premissas apenas de hash, chaves públicas de 32 a 64 bytes, assinaturas de 7.856 a 49.856 bytes, assinatura mais lenta. LMS/XMSS ([SP 800-208](https://doi.org/10.6028/NIST.SP.800-208)): compactos, com estado, para uso em módulos de hardware que gerenciam o estado.
+
+Na KLS, a escolha segue o uso: ML-DSA para a AC interna, o mTLS da malha e a assinatura de versões; SLH-DSA ou LMS apenas onde a assinatura é rara e os verificadores são simples, como o firmware dos leitores. O estado exclui o LMS para qualquer signatário que não seja um módulo de hardware com contadores gerenciados.
+
+### 16.2 Atividade prática — Laboratório B
+
+```python
+# Lab B (ch 16): bytes of authentication in a TLS handshake for different signature choices.
+# Sizes in bytes: (public key, signature). ML-DSA from FIPS 204; SLH-DSA-128s from FIPS 205.
+algs = {"ECDSA P-256": (65, 72), "RSA-2048": (270, 256), "ML-DSA-44": (1312, 2420),
+        "ML-DSA-65": (1952, 3309), "SLH-DSA-SHA2-128s": (32, 7856)}
+def chain_bytes(alg, depth=2, scts=2):
+    pk, sig = algs[alg]
+    certs = depth * (pk + sig + 400)          # leaf + intermediate: key + CA signature + ~400 B fields
+    return certs + sig + scts * sig           # + CertificateVerify + embedded SCT signatures
+for a in algs:
+    print(f"{a:20s} ~{chain_bytes(a):6d} bytes of certificates and signatures")
+```
+
+Saída esperada:
+
+```text
+ECDSA P-256          ~  1290 bytes of certificates and signatures
+RSA-2048             ~  2620 bytes of certificates and signatures
+ML-DSA-44            ~ 15524 bytes of certificates and signatures
+ML-DSA-65            ~ 21249 bytes of certificates and signatures
+SLH-DSA-SHA2-128s    ~ 40144 bytes of certificates and signatures
+```
+
+O modelo conta dois certificados (final e intermediário), cada um com uma chave pública, uma assinatura da AC e cerca de 400 bytes de outros campos, mais a assinatura do CertificateVerify e duas assinaturas de SCT embutidas. Ele é aproximado de propósito, mas a ordem é robusta: o ECDSA P-256 precisa de cerca de 1,3 kB, o RSA-2048 de cerca de 2,6 kB, o ML-DSA-44 de cerca de 15,5 kB, o ML-DSA-65 de cerca de 21,2 kB e o SLH-DSA-SHA2-128s de cerca de 40,1 kB. O aumento de 14.234 bytes do ML-DSA-44 em relação ao ECDSA é o que a KLS pondera para a malha. Observe que os SCTs pertencem aos certificados públicos; uma cadeia interna sem SCTs é menor, então execute de novo a função com `scts=0` para os certificados finais da malha.
+
+### 16.3 Mudanças na PKI interna
+
+Para a AC interna: confirme o suporte do HSM à geração de chaves e à assinatura com ML-DSA; crie uma raiz e uma intermediária ML-DSA em laboratório; emita certificados finais de teste; teste a validação da cadeia em todas as partes confiantes (ingress, sidecars da malha, serviços Java, agentes de monitoramento); depois distribua a raiz aos repositórios de confiança em produção antes de emitir certificados finais de produção. Mantenha a hierarquia clássica em paralelo.
+
+A lista de partes confiantes da KLS para o piloto tinha onze entradas; os agentes de monitoramento e dois serviços Java falharam na validação da cadeia na primeira execução do laboratório e precisaram de atualizações de biblioteca antes que a raiz pudesse ser distribuída. Essa constatação é o motivo pelo qual a hierarquia clássica paralela continua em uso até que todas as partes confiantes passem.
+
+### 16.4 Assinatura de código e de firmware
+
+Para os artefatos de versão verificados por anos, o ML-DSA é a escolha prática quando as ferramentas de empacotamento o suportarem; considere assinaturas duplas (clássica mais ML-DSA) durante a transição, para que os verificadores antigos continuem funcionando. Para um firmware assinado raramente, o LMS num HSM ou o SLH-DSA são atraentes, porque a verificação é simples e as premissas são conservadoras.
+
+Os artefatos de versão da KLS são verificados pelas ferramentas de implantação dos clientes por anos, então as assinaturas duplas são o caminho prático: a assinatura RSA-3072 existente para os verificadores atuais e uma assinatura ML-DSA para os atualizados. O fornecedor dos leitores é questionado se o seu bootloader consegue verificar LMS ou SLH-DSA na próxima geração de hardware.
+
+### 16.5 Caso resolvido
+
+A malha da KLS usa certificados finais ECDSA de 90 dias. O Laboratório B sugere que as cadeias ML-DSA-44 acrescentam ~14 kB por handshake. Dentro de um data center, esse custo é aceitável; nos enlaces celulares dos leitores, pode não ser. Plano: ML-DSA-44 para o mTLS da malha depois da validação em laboratório; os leitores continuam clássicos até a renovação do fornecedor, documentado como risco residual.
+
+O plano também registra por que os leitores são diferentes: uma cadeia de 14 kB a cada reconexão num enlace celular com perdas acrescenta segmentos e retransmissões, e a biblioteca TLS do fornecedor não consegue verificar o ML-DSA de qualquer forma. A decisão da malha é reversível, porque os certificados finais são de 90 dias e a hierarquia clássica permanece, então um canário com falha significa reemitir certificados finais ECDSA, e não reconstruir a PKI.
+
+### 16.6 Erros comuns e limites
+
+- Usar LMS/XMSS em software sem estado protegido.
+- Emitir certificados finais PQ antes que os repositórios de confiança aceitem a raiz.
+- Ignorar o suporte do firmware do HSM.
+
+Cada erro tem um custo específico. Um estado do LMS guardado num arquivo de software pode ser restaurado de um backup e um índice reutilizado, o que quebra o esquema; é por isso que a SP 800-208 espera um gerenciamento de estado em hardware. Emitir certificados finais PQ cedo falha na validação em todo lugar onde a raiz está ausente, como o laboratório da KLS mostrou com os serviços Java. E um HSM cujo firmware não tem o ML-DSA transforma uma cerimônia planejada num projeto de atualização com o fornecedor; a KLS verifica o suporte do firmware antes de marcar as datas das cerimônias.
+
+### 16.7 HSMs e formatos de chave
+
+Os fornecedores de HSM acrescentam algoritmos pós-quânticos em versões de firmware, e os formatos de chave diferem entre produtos. Antes de se comprometer com uma raiz ML-DSA, teste em laboratório: a geração de chaves dentro do HSM, a assinatura de um certificado, a exportação da chave pública na codificação que o software da sua AC espera, o backup e a restauração da chave segundo o procedimento do fornecedor e o failover entre os membros do cluster. Registre as versões de firmware e os procedimentos no documento da cerimônia de chaves. Descobrir uma incompatibilidade de formato durante uma cerimônia de produção custa muito mais do que um dia de testes em laboratório.
+
+### Exercícios
+
+- **EX031 — Tamanho da cadeia.** Pelo Laboratório B, quantos bytes o ML-DSA-44 usa a mais do que o ECDSA P-256? Rubrica: 3 = 14.234 bytes.
+- **EX032 — Escolha da assinatura.** Escolha uma assinatura para a assinatura de imagens de contêiner da KLS e justifique. Rubrica: 3 = ML-DSA (possivelmente dupla), com raciocínio sobre o suporte dos verificadores.
+
+### Síntese
+
+A migração das assinaturas troca tamanho, velocidade, estado e premissas. Os implementadores começam pela PKI interna e pela assinatura de longa duração, depois de confirmar o suporte dos HSMs e das partes confiantes.
+
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue estudando — capítulo 16 de 30
+
+[← Capítulo 15](#ch-15) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Segurança quântica e pós-quântica: ferramentas
+
+### Objetivos de aprendizagem
+
+Você vai (1) usar auditorias de configuração para detectar serviços apenas clássicos e mal ordenados; (2) combinar scanners, analisadores de logs e analisadores de imagens; (3) avaliar criticamente a saída das ferramentas; e (4) integrar as ferramentas às verificações de rotina.
+
+### 17.1 Classes de ferramentas
+
+Os *auditores de configuração* leem a configuração do servidor e reportam os grupos oferecidos e a preferência. Os *clientes TLS/SSH ativos*, em laboratório ou num escopo autorizado, reportam o que um servidor negocia. Os *analisadores de logs* resumem os algoritmos negociados a partir dos logs de produção. Os *analisadores de imagens e binários* encontram as versões das bibliotecas. Os *inventários de certificados* listam os algoritmos de assinatura e a validade. Cada um vê uma parte do quadro.
+
+A KLS usa as cinco classes e as mantém separadas na CBOM, cada uma com o seu próprio rótulo de método. Quando elas discordam, a discordância é investigada, e não tirada a média.
+
+### 17.2 Atividade prática — Laboratório T
+
+```python
+# Lab T (ch 17): audit synthetic TLS server configurations for post-quantum key exchange and preference order.
+configs = {  # service: ordered list of offered groups (server preference) - synthetic
+    "api-gateway": ["X25519MLKEM768", "X25519", "secp256r1"],
+    "customer-portal": ["X25519", "X25519MLKEM768", "secp256r1"],
+    "partner-sftp": ["ecdh-sha2-nistp256"],
+    "internal-grafana": ["X25519", "secp384r1"]}
+HYBRID = {"X25519MLKEM768", "SecP256r1MLKEM768", "SecP384r1MLKEM1024"}
+for svc, groups in configs.items():
+    offered = [g for g in groups if g in HYBRID]
+    if not offered: verdict = "CLASSICAL ONLY"
+    elif groups[0] in HYBRID: verdict = "OK (hybrid preferred)"
+    else: verdict = "WARN hybrid offered but not preferred"
+    print(f"{svc:17s} {verdict}")
+```
+
+Saída esperada:
+
+```text
+api-gateway       OK (hybrid preferred)
+customer-portal   WARN hybrid offered but not preferred
+partner-sftp      CLASSICAL ONLY
+internal-grafana  CLASSICAL ONLY
+```
+
+O portal do cliente oferece o híbrido, mas prefere o X25519 — uma configuração errada silenciosa que uma verificação simples de "o híbrido está presente?" deixaria passar.
+
+A auditoria lê apenas a lista de grupos configurada, então responde a duas perguntas sem tocar em nenhum servidor: há um grupo híbrido presente, e ele vem primeiro? O gateway passa; o portal lista `X25519MLKEM768` em segundo lugar e é sinalizado; o SFTP e o Grafana não têm nenhum grupo híbrido. Repare que `partner-sftp` é um serviço SSH com um nome de algoritmo SSH; o laboratório o trata com a mesma regra, mas uma auditoria de produção deve verificar separadamente os nomes SSH, como `mlkem768x25519-sha256`. Estender o conjunto HYBRID ou as regras é uma mudança de código revisada como qualquer outra.
+
+### 17.3 Avaliando as ferramentas
+
+Pergunte o que uma ferramenta de fato observa, de onde e com qual biblioteca cliente. Um scanner ativo que usa uma biblioteca antiga não consegue negociar o híbrido e vai reportar todos os servidores como clássicos. Valide as ferramentas contra um servidor de laboratório com configuração conhecida antes de confiar nelas.
+
+A KLS valida cada ferramenta contra três servidores de laboratório: híbrido preferido, híbrido oferecido mas não preferido, e apenas clássico. Uma ferramenta que reporta corretamente os três, com a sua versão registrada, é liberada para uso de rotina; uma que não consegue distinguir os dois primeiros fica limitada a verificações de presença e é rotulada assim na CBOM.
+
+### 17.4 Uso autorizado
+
+A varredura ativa de serviços exige autorização, mesmo dentro da sua organização; limite-a aos hosts listados e às janelas acordadas. Nunca varra parceiros ou terceiros sem permissão por escrito.
+
+Na KLS, o escopo escrito lista os nomes de host, as portas, o host do scanner, a janela de tempo e o contato que pode interromper a varredura. Os servidores SFTP dos parceiros nunca são varridos; o suporte deles é conhecido pelos logs do próprio servidor da KLS quando os parceiros se conectam, o que não exige permissão porque observa apenas o lado da KLS.
+
+A KLS executa as suas varreduras de grupos TLS nas manhãs de terça-feira e publica antes o endereço do host do scanner no canal de SRE; a única varredura que rodou sem aviso foi acionada como possível intrusão e custou uma hora do plantão.
+
+### 17.5 Caso resolvido
+
+A primeira varredura ativa da KLS reportou "0 % híbrido" em todo o parque. O OpenSSL embutido no scanner era anterior ao suporte ao ML-KEM. Depois de atualizar o scanner e validá-lo contra o servidor de laboratório, a varredura mostrou o gateway de API e os serviços atrás da CDN negociando o híbrido, em coerência com os logs.
+
+A lição que a KLS tirou foi de procedimento. A validação contra os três servidores conhecidos do laboratório é agora uma pré-condição para que qualquer resultado de scanner chegue ao painel, e a versão da biblioteca do scanner é impressa em cada relatório. O relatório de "0 %" foi retirado com uma nota explicando o porquê, para que ninguém o citasse depois.
+
+### 17.6 Erros comuns e limites
+
+- Confiar na saída das ferramentas sem validação.
+- Verificar a presença em vez da preferência.
+- Varrer fora do escopo autorizado.
+
+A varredura de 0 % é o exemplo da KLS para o primeiro erro: a ferramenta, e não o parque, era clássica. O segundo é o portal: uma verificação de presença o aprovou, uma verificação de preferência o sinalizou. O terceiro é um risco que a KLS evitou com o escopo: um scanner apontado para o servidor SFTP de um parceiro teria sido um teste não autorizado de um terceiro, qualquer que fosse a intenção. Os limites das ferramentas continuam: as auditorias de configuração deixam de fora os saltos que não são exportados, e as varreduras ativas só veem o que a sua biblioteca cliente consegue negociar.
+
+### 17.7 Tornando as ferramentas rotina
+
+Execute as auditorias de configuração toda noite contra a configuração exportada e publique o resultado no mesmo painel dos logs de negociação. Uma auditoria de configuração que discorda dos logs é um sinal: ou a exportação da configuração está desatualizada, ou um salto que não está na exportação está mudando as negociações. Mantenha no repositório a versão e o registro de validação de cada ferramenta, e valide de novo depois de cada atualização da ferramenta, já que um scanner cuja biblioteca embutida muda pode mudar silenciosamente as suas constatações.
+
+Sempre que possível, prefira ferramentas passivas e baseadas em configuração para o uso de rotina e reserve a varredura ativa para janelas agendadas e autorizadas. Isso mantém baixa a carga operacional e evita surpreender os donos dos serviços com sondagens que eles não esperavam.
+
+### Exercícios
+
+- **EX033 — Estender o Laboratório T.** Acrescente uma regra que sinalize como "review" os serviços que oferecem mais de quatro grupos. Rubrica: 3 = código funcional e saída sensata.
+- **EX034 — Validação de ferramentas.** Descreva como validar um scanner TLS antes do uso. Rubrica: 3 = servidor de laboratório com configurações conhecidas, casos positivos e negativos.
+
+### Síntese
+
+As ferramentas veem fatias diferentes; os implementadores as validam contra configurações conhecidas, verificam a preferência além da presença e as usam dentro do escopo autorizado.
+
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue estudando — capítulo 17 de 30
+
+[← Capítulo 16](#ch-16) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Segurança quântica e pós-quântica: controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) implementar controles de troca de chaves híbrida para TLS, SSH e IPsec; (2) implementar controles de minimização de dados e de gerenciamento de chaves; (3) aplicar perfis criptográficos centrais; e (4) documentar o risco residual por serviço.
+
+### 18.1 Controles de troca de chaves
+
+TLS: habilitar o X25519MLKEM768 e preferi-lo nos listeners voltados para a internet e de nível 1. SSH: colocar o `mlkem768x25519-sha256` em primeiro lugar no `KexAlgorithms` do servidor, onde as versões do OpenSSH o suportarem. IPsec: configurar uma troca de chaves ML-KEM adicional segundo a RFC 9370, onde os appliances a suportarem, ou PSKs da RFC 8784 como medida provisória em enlaces fixos entre sites.
+
+Na KLS, isso significa que o gateway, o portal, o balanceador de carga da origem e o ingress recebem o perfil TLS `kls-modern`; os hosts SFTP recebem a linha `KexAlgorithms` com o híbrido em primeiro lugar; e a VPN do escritório, cujos appliances não suportam a RFC 9370, usa PSKs da RFC 8784 com rotação trimestral até a renovação dos appliances.
+
+### 18.2 Controles de dados e de chaves
+
+Envie menos dados de vida longa por enlaces não confiáveis; cifre os campos sensíveis na camada de aplicação com chaves que nunca atravessam a rede sob troca de chaves clássica; encurte a retenção onde os contratos permitirem. Mantenha as chaves num HSM ou KMS; registre os seus algoritmos no inventário.
+
+Na KLS, o controle de dados mais forte é a cifragem na camada de aplicação dos campos dos documentos aduaneiros, com chaves do KMS, de modo que as sessões de transporte gravadas expõem texto cifrado mesmo onde a troca de chaves ainda é clássica. Encurtar a retenção da telemetria dos leitores, de um ano para 90 dias, exigiu apenas uma verificação de contrato.
+
+### 18.3 Perfis centrais
+
+Defina perfis criptográficos nomeados (por exemplo, `kls-modern`: somente TLS 1.3, grupos `X25519MLKEM768:X25519`, certificados ECDSA) e aplique-os por referência no ingress, nos balanceadores de carga e nos modelos de serviço. Mudar o perfil muda todos os usuários, depois dos testes.
+
+A KLS guarda os perfis num único repositório, com números de versão. Os manifestos do ingress referenciam `kls-modern@3` em vez de strings de grupos, e o gate de CI renderiza cada manifesto e compara o resultado com o perfil. Uma nova versão é implantada por canário, e a versão anterior continua disponível para reversão sem mexer no código da aplicação.
+
+### 18.4 Risco residual
+
+Para cada serviço, registre o que continua clássico (geralmente a autenticação), o que é desconhecido e o que depende de terceiros, com dono e data de revisão.
+
+A KLS mantém as notas residuais no inventário, uma por serviço de nível 1. Uma entrada típica: "Gateway de API: troca de chaves híbrida; certificado ECDSA P-256 (forjar depois, aguardando o suporte ao ML-DSA das ACs públicas e dos navegadores); chamadas ao provedor de pagamentos: suporte ao híbrido desconhecido (chamado com o fornecedor aberto); dono Platform Team; revisão em 1º de março." A data de revisão é o que mais importa, porque as notas residuais sem data se tornam, por padrão, uma aceitação permanente.
+
+A entrada do gateway, por exemplo, traz uma linha separada "desconhecido: se o endpoint do provedor de pagamentos suporta grupos híbridos", sob a responsabilidade da Platform Team até que o chamado com o fornecedor seja respondido; fundi-la com a linha clássica teria registrado um palpite como um risco aceito.
+
+### 18.5 Caso resolvido
+
+SFTP dos parceiros: OpenSSH atualizado; `KexAlgorithms mlkem768x25519-sha256,sntrup761x25519-sha512@openssh.com,curve25519-sha256`; os parceiros que usam clientes mais antigos ainda negociam curve25519 e são avisados; as sessões que usam o híbrido são monitoradas. Residual: chave de host Ed25519 (forjar depois), parceiros com clientes antigos (HNDL até atualizarem), dono Platform Team, revisão trimestral.
+
+A lista ordenada dá três níveis de suporte de clientes: o OpenSSH atual negocia o híbrido ML-KEM, versões um pouco mais antigas o híbrido sntrup761, e os clientes antigos recuam para o curve25519. O monitoramento por algoritmo mostra quais parceiros estão em cada nível e orienta os avisos.
+
+### 18.6 Atividade prática
+
+Escreva um perfil `kls-modern` para um produto que você usa e aplique-o em laboratório.
+
+Para o NGINX, o perfil é um arquivo de include curto, com `ssl_protocols TLSv1.3;`, `ssl_ecdh_curve X25519MLKEM768:X25519;` e as diretivas de certificado, referenciado em cada bloco de servidor; para o OpenSSH, é um arquivo drop-in em `sshd_config.d` com a linha `KexAlgorithms`. Aplique-o no laboratório, verifique a negociação com dois clientes, depois remova de propósito o grupo híbrido e confirme que a sua verificação reporta clássico. Registre a versão do perfil e o hash do arquivo no registro de laboratório.
+
+### 18.7 Erros comuns e limites
+
+- Configuração manual por serviço.
+- Controles sem notas de risco residual.
+- PSKs sem rotação.
+
+A auditoria da KLS encontrou os três antes de existir o repositório de perfis: onze configurações de ingress editadas à mão, com quatro listas de grupos diferentes; uma VPN que usava PSKs sem nenhuma nota residual; e PSKs instaladas na entrada em operação do appliance, nunca rotacionadas desde então. As correções foram um perfil central, uma nota residual por serviço de nível 1 e um calendário de rotação com um dono. Os controles só reduzem a exposição onde são aplicados de forma consistente e onde as suas lacunas estão escritas.
+
+### 18.8 Implantando os controles
+
+Aplique cada controle pelo processo normal de mudança: teste em homologação com a matriz de clientes, habilite para uma fração canário do tráfego, acompanhe os painéis e depois promova. Mantenha disponível a versão anterior do perfil para uma reversão rápida e direcionada. Anuncie as mudanças que afetam os parceiros — clientes SFTP e de API — com antecedência suficiente e um endpoint de teste, para que os parceiros possam verificar os seus clientes antes das mudanças em produção. Um controle que quebra o envio noturno de um parceiro será revertido sob pressão, muitas vezes sem que ninguém registre o porquê.
+
+A mudança do SFTP da KLS seguiu esse caminho: um aviso aos parceiros com um endpoint de teste três meses antes, um canário num dos dois hosts SFTP e a promoção depois de uma semana sem novos erros `no_shared_group` nos logs.
+
+### Exercícios
+
+- **EX035 — Controle de SSH.** Escreva a linha de KEX do servidor SSH para uma configuração com o híbrido em primeiro lugar e um recuo clássico. Rubrica: 3 = híbrido primeiro, nomes válidos, recuo presente.
+- **EX036 — Nota residual.** Escreva uma nota de risco residual para a VPN do escritório que usa PSKs da RFC 8784. Rubrica: 3 = riscos restantes, dono, revisão, condição de saída.
+
+### Síntese
+
+Os controles de troca de chaves, de dados e de chaves aplicados por meio de perfis centrais reduzem a exposição quântica; o risco residual é registrado por serviço.
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue estudando — capítulo 18 de 30
+
+[← Capítulo 17](#ch-17) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Segurança quântica e pós-quântica: monitoramento
+
+### Objetivos de aprendizagem
+
+Você vai (1) registrar em log os algoritmos negociados nos serviços TLS, SSH e VPN; (2) construir painéis e alertas para a fração híbrida e o recuo; (3) usar limites de confiança nas decisões de canário; e (4) lidar com o atraso da medição.
+
+### 19.1 O que registrar
+
+TLS: grupo negociado, versão do protocolo, suíte de cifras, algoritmo de assinatura do certificado (do lado do servidor), indícios da biblioteca do cliente, se disponíveis. SSH: algoritmo de KEX e algoritmo da chave de host. VPN: métodos de troca de chaves por túnel. Muitos servidores conseguem registrar isso com mudanças de configuração; acrescente campos aos logs de acesso, em vez de habilitar logs de depuração detalhados em produção.
+
+O log de acesso do ingress da KLS ganhou três campos: grupo negociado, versão do TLS e suíte de cifras. Os hosts sshd registram o algoritmo de KEX por sessão no nível padrão depois de uma pequena mudança de configuração, e o appliance de VPN exporta os parâmetros dos túneis para a plataforma de logs. Juntos, eles alimentam o painel de fração híbrida sem nenhum log de depuração em produção.
+
+### 19.2 Painéis e alertas
+
+Por serviço e local: fração híbrida, fração de recuo, taxa de falhas de handshake por causa. Alertas: a fração híbrida cai mais de cinco pontos em uma hora (reversão ou configuração errada); a taxa de falhas excede o orçamento durante a implantação.
+
+A KLS escolheu a regra dos cinco pontos depois de observar um mês de variação normal: a fração híbrida horária no gateway variou no máximo dois pontos sem nenhuma mudança. Uma queda de cinco, portanto, sinaliza um evento real, enquanto o piso absoluto de 90 % apanha a deriva lenta. Cada alerta tem um link para o runbook de queda da fração híbrida.
+
+### 19.3 Atividade prática — Laboratório K
+
+```python
+# Lab K (ch 19): canary gate for enabling a hybrid group - promote only if failures stay within budget.
+import math
+def upper95(k, n):                      # Wilson upper bound
+    z = 1.96; p = k / n; d = 1 + z*z/n
+    return ((p + z*z/(2*n)) + z*math.sqrt(p*(1-p)/n + z*z/(4*n*n))) / d
+baseline, budget = 5e-4, 4e-4            # baseline failure rate, allowed increase
+for stage, k, n in [("1% canary", 3, 5000), ("10% canary", 28, 50000), ("10% canary (proxy site)", 96, 50000)]:
+    ub = upper95(k, n); ok = ub <= baseline + budget
+    print(f"{stage:24s} {k}/{n}  upper95={ub:.5f}  {'PROMOTE' if ok else 'HOLD'}")
+```
+
+Saída esperada:
+
+```text
+1% canary                3/5000  upper95=0.00176  HOLD
+10% canary               28/50000  upper95=0.00081  PROMOTE
+10% canary (proxy site)  96/50000  upper95=0.00234  HOLD
+```
+
+O gate compara o limite superior de Wilson de 95 % da taxa de falhas observada com a linha de base de 0,05 % mais um orçamento de 0,04 %, um teto de 0,09 %. O canário de 1 % viu apenas 3 falhas em 5.000 handshakes, uma taxa de 0,06 %, mas, com tão poucos ensaios, o limite superior é 0,176 %, então o gate diz HOLD: não é evidência de dano, apenas não há evidência suficiente de segurança. Com 10 %, 28 em 50.000 dão um limite de 0,081 % e o gate promove. Os 96 em 50.000 do local com proxy são uma elevação real, 0,19 % observado, e ficam retidos para investigação.
+
+### 19.4 Atraso e cobertura
+
+Os logs podem chegar com minutos ou dias de atraso; as mudanças do lado dos parceiros só ficam visíveis quando os parceiros se conectam. Anote nos painéis a cobertura e o atraso, para que as decisões usem a janela de tempo certa.
+
+Na KLS, os logs do ingress chegam em até dois minutos, o appliance de VPN exporta de hora em hora, e as evidências do SFTP dos parceiros só aparecem quando o job noturno de cada parceiro roda. O painel mostra o horário do último dado de cada painel, e as decisões de canário no SFTP esperam pelo menos uma semana inteira, para que todos os parceiros tenham se conectado.
+
+Dois parceiros da KLS só enviam no fim do mês, então uma janela de SFTP de uma semana os reportaria como não testados, e não como falhando; o painel os lista separadamente, com a data da última conexão.
+
+### 19.5 Caso resolvido
+
+A KLS acrescenta `$ssl_curve` (ou o equivalente do produto) aos logs do ingress e constrói um painel. Uma semana depois, o alerta dispara: a fração híbrida no portal do cliente caiu de 93 % para 4 % depois de uma versão. Causa: a versão restaurou uma anotação antiga do ingress. A reversão da anotação restaurou a fração em uma hora.
+
+Dois detalhes tornaram a recuperação rápida. O alerta tinha um link para um runbook que começava com "comparar o hash do perfil em produção com o aprovado", o que apontou diretamente para a anotação. E, como o perfil era versionado separadamente, a correção restaurou a anotação sem reverter a versão. O gate de CI do Capítulo 22 foi acrescentado depois, para que a mesma anotação não pudesse ser entregue de novo.
+
+### 19.6 Erros comuns e limites
+
+- Log de depuração em produção.
+- Monitorar as falhas, mas não o recuo.
+- Ignorar o atraso nas decisões.
+
+A KLS considerou ativar o log de depuração TLS completo para ver as negociações e o rejeitou: o volume teria sobrecarregado a plataforma de logs e registrado mais detalhes dos clientes do que o necessário. O seu primeiro painel mostrava apenas as falhas, então a queda silenciosa do portal de 93 % para 4 % de híbrido teria sido invisível. E um canário quase foi promovido com base em uma hora de dados da VPN que, por causa da exportação horária, na verdade descreviam a hora anterior.
+
+### 19.7 Privacidade dos logs
+
+Os logs de negociação contêm endereços de clientes e datas e horas. Registre apenas o que o monitoramento precisa — campos de algoritmo, serviço, local e identificadores de cliente grosseiros — e aplique as mesmas regras de retenção e de acesso dos outros logs operacionais. As métricas agregadas podem ser mantidas por mais tempo do que os logs brutos. Isso mantém o monitoramento coerente com as obrigações de privacidade e reduz o valor dos logs para um atacante.
+
+Ao compartilhar painéis com fornecedores ou parceiros durante um diagnóstico conjunto, exporte visões agregadas em vez de extratos de logs brutos e remova os identificadores dos clientes.
+
+### Exercícios
+
+- **EX037 — Regra de alerta.** Escreva uma regra de alerta para a fração híbrida no gateway de API. Rubrica: 3 = métrica, limite, janela, ação.
+- **EX038 — Leitura do canário.** Usando o Laboratório K, decida o que fazer com o canário de 10 % no local com proxy e por quê. Rubrica: 3 = reter, investigar o proxy, excluir/corrigir.
+
+### Síntese
+
+Registrar os algoritmos negociados permite painéis e alertas que apanham o recuo e as falhas; os gates de canário usam limites de confiança, com o atraso e a cobertura visíveis.
+
+<!-- cyberabc:chapter-navigation:start ch-19 -->
+### Continue estudando — capítulo 19 de 30
+
+[← Capítulo 18](#ch-18) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Segurança quântica e pós-quântica: diagnóstico de problemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar um método sistemático de diagnóstico às falhas de handshake; (2) fazer a triagem dos logs de falha em causas prováveis; (3) diagnosticar problemas de middlebox, de tamanho, de incompatibilidade de grupos e de certificados; e (4) documentar as correções e os problemas residuais.
+
+### 20.1 Método
+
+Reproduzir, isolar, formular hipóteses, testar, corrigir, verificar, documentar. Reproduza em laboratório com o mesmo cliente e o mesmo caminho; isole removendo saltos; forme uma hipótese ligada às evidências; mude uma coisa só; verifique com os logs de negociação; documente a causa e a correção.
+
+Aplicadas na KLS, as etapas impedem a correção reflexa de desabilitar o híbrido. O caso do proxy-b foi reproduzido com uma réplica de laboratório, isolado enviando o mesmo cliente diretamente, e a hipótese, um segundo segmento descartado, foi confirmada antes de qualquer mudança. A verificação usou os logs de negociação, e não a ausência de reclamações.
+
+### 20.2 Atividade prática — Laboratório H
+
+```python
+# Lab H (ch 20): triage synthetic handshake failure logs into likely causes.
+import re, collections
+logs = """2026-10-01T10:00Z client=10.0.4.7 err=handshake_timeout size_clienthello=1530 path=proxy-b
+2026-10-01T10:01Z client=10.0.4.9 err=handshake_timeout size_clienthello=1530 path=proxy-b
+2026-10-01T10:02Z client=10.0.7.2 err=no_shared_group offered=x25519mlkem768
+2026-10-01T10:03Z client=10.0.4.8 err=handshake_timeout size_clienthello=1530 path=proxy-b
+2026-10-01T10:04Z client=10.0.9.1 err=bad_certificate alg=mldsa65
+2026-10-01T10:05Z client=10.0.4.3 err=handshake_timeout size_clienthello=300 path=direct""".splitlines()
+causes = collections.Counter()
+for line in logs:
+    f = dict(re.findall(r"(\w+)=(\S+)", line))
+    if f["err"] == "handshake_timeout" and int(f.get("size_clienthello", 0)) > 1400: c = "large ClientHello dropped (" + f["path"] + ")"
+    elif f["err"] == "no_shared_group": c = "client/server group mismatch"
+    elif f["err"] == "bad_certificate": c = "client cannot verify PQ certificate"
+    else: c = "other / investigate"
+    causes[c] += 1
+for c, n in causes.most_common(): print(f"{n}  {c}")
+```
+
+Saída esperada:
+
+```text
+3  large ClientHello dropped (proxy-b)
+1  client/server group mismatch
+1  client cannot verify PQ certificate
+1  other / investigate
+```
+
+Três falhas se concentram num único proxy, com ClientHellos grandes; esse padrão aponta para um middlebox que trata mal as mensagens de vários segmentos.
+
+As regras de triagem são ordenadas do específico para o geral. Um timeout com um ClientHello acima de 1.400 bytes é atribuído ao caminho, o que agrupa as três linhas do proxy-b; o timeout idêntico com 300 bytes no caminho direto cai em "other", porque um hello pequeno não pode ser explicado pelo tamanho. O `no_shared_group` aponta o cliente que oferece apenas o grupo híbrido contra um servidor que não o aceita, e o `bad_certificate` com `alg=mldsa65` aponta para um cliente que não consegue verificar a nova cadeia. O valor do script está no agrupamento: um único caminho explica metade das falhas.
+
+### 20.3 Causas comuns
+
+*ClientHello grande descartado* por firewalls ou proxies antigos: atualizar, contornar ou ajustar. *Nenhum grupo em comum*: as listas do cliente e do servidor não se sobrepõem (por exemplo, um servidor configurado apenas com o híbrido e um cliente apenas clássico). *Falha na verificação do certificado*: o cliente não consegue verificar o ML-DSA ou não tem a nova raiz. *Laços ou latência do HelloRetryRequest*: a previsão de key share do cliente não coincide. *Desempenho*: picos de CPU em dispositivos com recursos limitados.
+
+Para cada causa, a KLS registra a evidência que a distingue: os limites de tamanho de segmento e o caminho, para os descartes; as duas listas de grupos, para as incompatibilidades; o algoritmo do certificado e o repositório de confiança do cliente, para as falhas de verificação; o tempo com um HelloRetryRequest, para a latência; e os gráficos de CPU, para o desempenho.
+
+### 20.4 Documentando
+
+Cada registro de incidente declara os sintomas, as evidências, a causa, a correção, a verificação e os problemas residuais. Os padrões entre incidentes alimentam os pedidos aos fornecedores e os planos de implantação.
+
+A KLS mantém os registros de incidentes no mesmo repositório dos runbooks. Depois de três casos de proxy com o mesmo modelo de appliance, o registro do padrão se tornou um pedido ao fornecedor e uma verificação prévia à implantação: qualquer local atrás desse modelo recebe um teste de laboratório antes que o perfil chegue a ele.
+
+Cada registro tem um link para a sua reprodução em laboratório e para o runbook que ele alterou. Um chamado fechado sem evidência de verificação é reaberto pela revisão semanal, porque "nenhuma nova reclamação" não é evidência de que as negociações se recuperaram.
+
+### 20.5 Caso resolvido
+
+Chamado da KLS: "O escritório do armazém não consegue acessar o portal desde terça-feira." Evidências: timeouts apenas pelo proxy-b; ClientHello de 1.530 bytes; o caminho direto funciona. Hipótese: o proxy-b descarta o segundo segmento. Teste: uma réplica de laboratório do firmware do proxy-b reproduz o problema. Correção: atualização do firmware do proxy; provisoriamente, uma regra de contorno do portal para aquele escritório. Verificado: as negociações híbridas a partir do escritório voltam. Residual: outros dois escritórios com o mesmo modelo de proxy, com atualização agendada.
+
+O contorno provisório foi limitado à faixa de endereços de um escritório e recebeu uma data de expiração, para que não pudesse se tornar permanente sem ninguém perceber. A etapa de verificação conferiu as duas pontas: as negociações híbridas a partir do escritório apareceram nos logs do portal, e a contagem de falhas do proxy-b caiu a zero ao longo da semana seguinte.
+
+### 20.6 Erros comuns e limites
+
+- Desabilitar o híbrido globalmente para corrigir um único caminho.
+- Mudar várias coisas ao mesmo tempo.
+- Correções sem verificação.
+
+Durante o chamado do proxy-b, alguém propôs remover o `X25519MLKEM768` do perfil do portal; isso teria corrigido um escritório e voltado a expor todos os outros clientes a colher agora, decifrar depois. Um segundo engenheiro atualizou o proxy e mudou o perfil do portal na mesma janela, o que tornou impossível atribuir a causa. E um chamado anterior tinha sido fechado como corrigido depois que as reclamações pararam, embora os logs mostrassem que o escritório simplesmente estava num feriado.
+
+### 20.7 Escalando para os fornecedores
+
+Quando a causa está num produto que você não controla, escale com evidências: produto e versão de firmware, uma reprodução mínima em laboratório, capturas apenas do tráfego de laboratório e o comportamento esperado, com referência à norma relevante (por exemplo, a RFC 8446 sobre o tratamento do ClientHello, ou a RFC 10024 para o grupo híbrido). Relatórios precisos são corrigidos mais rápido e passam a fazer parte do registro de risco residual até que a correção seja entregue.
+
+O relatório da KLS sobre o modelo do proxy-b trouxe a versão do firmware, o ClientHello de laboratório de 1.530 bytes e a exigência da RFC 8446 de tratar mensagens de handshake em vários registros.
+
+### Exercícios
+
+- **EX039 — Diagnosticar.** Um parceiro reporta `no_shared_group` depois que a KLS mudou as configurações do SFTP. Dê a causa provável e a correção. Rubrica: 3 = apenas híbrido ou clássico removido, restaurar o recuo ou atualizar o parceiro.
+- **EX040 — Estender o Laboratório H.** Acrescente uma regra que classifique `err=hrr_timeout` como "HelloRetryRequest latency". Rubrica: 3 = código e saída corretos.
+
+### Síntese
+
+O diagnóstico sistemático, a triagem de logs e as correções documentadas resolvem as falhas de handshake pós-quânticas sem abandonar a proteção globalmente.
+
+<!-- cyberabc:chapter-navigation:start ch-20 -->
+### Continue estudando — capítulo 20 de 30
+
+[← Capítulo 19](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 (inglês) →](../../en/book/MANUSCRIPT.md#ch-21)
 
 Os próximos capítulos ainda estão apenas na edição em inglês.
 <!-- cyberabc:chapter-navigation:end -->
@@ -755,7 +1620,7 @@ Os próximos capítulos ainda estão apenas na edição em inglês.
 
 ## Resoluções
 
-Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontuação. Os números sobre a KLS são sintéticos. Esta edição parcial traz as resoluções de EX001–EX020; as de EX021–EX060 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontuação. Os números sobre a KLS são sintéticos. Esta edição parcial traz as resoluções de EX001–EX040; as de EX041–EX060 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
 
 **EX001.** Hardware: appliances de balanceamento de carga/hosts na nuvem (provedor). Firmware: inicialização assinada dos hosts (provedor/fornecedor; troca de hardware). Sistema operacional: distribuição dos nós com OpenSSL (equipe de plataforma; atualização de pacote). Biblioteca: TLS da imagem do ingress/NGINX (equipe de plataforma; reconstrução da imagem). Aplicação: cookies de sessão do portal assinados/cifrados (equipe da aplicação; versão). Gerenciado: TLS da borda da CDN (provedor da CDN; configuração).
 
@@ -796,6 +1661,46 @@ Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontua�
 **EX019.** Chave de encapsulamento de 1.184 bytes, texto cifrado de 1.088 bytes, segredo compartilhado de 32 bytes.
 
 **EX020.** Usar bibliotecas/provedores verificados; mantê-los atualizados; preferir híbridos durante a transição; validar os comprimentos e tratar os erros sem vazar detalhes.
+
+**EX021.** Atrasada quando 10 + 0,5 > *z*, isto é, *z* < 10,5 anos.
+
+**EX022.** Nível 1: confidencialidade ≥ 8 anos, ou âncoras de confiança/assinaturas das quais se depende por ≥ 8 anos, ou dispositivos não atualizáveis. Nível 2: 3–8 anos. Nível 3: < 3 anos e credenciais rotacionáveis em um dia.
+
+**EX023.** Registros: 8; vulneráveis ao quântico: 5 → 62,5 % ≈ 63 %; um registro é desconhecido, então a fração real pode ser maior.
+
+**EX024.** Provedor da CDN (híbrido até a origem); provedor do Postgres gerenciado (criptografia da replicação); provedor do armazenamento de objetos/SDK (suporte ao híbrido nos envios de backup).
+
+**EX025.** Ativo: sessões SFTP dos parceiros. Evento: o cliente do parceiro negocia apenas o clássico. Causa: biblioteca cliente antiga. Efeito: dados aduaneiros expostos a HNDL para esse parceiro. Detecção: fração de KEX por parceiro a partir dos logs do sshd. Probabilidade 4, impacto 3. Controle: aviso aos parceiros, endpoint de teste, prazo de transição. Teste: relatório mensal dos parceiros que não usam o híbrido.
+
+**EX026.** Fonte: logs do appliance de VPN por túnel. Métrica: túneis que negociam sem a troca adicional ML-KEM (ou PSK). Limite: qualquer túnel de nível 1 por > 1 hora → alerta.
+
+**EX027.** A chave derivada mistura o transcript; segredos reutilizados em outro handshake geram uma chave diferente, o que impede a repetição ou a combinação entre sessões.
+
+**EX028.** A preferência do servidor lista o clássico primeiro e a escolha do servidor prevalece; ou os clientes não suportam o grupo híbrido.
+
+**EX029.** Configurar o sshd do laboratório sem a KEX híbrida; a verificação precisa reportar o algoritmo clássico; depois restaurar e confirmar o híbrido.
+
+**EX030.** Pergunta; versões do ambiente; hash da configuração; comandos; saídas; interpretação (e data, autor).
+
+**EX031.** 15.524 − 1.290 = 14.234 bytes.
+
+**EX032.** ML-DSA-65 (ou -44, conforme a política), possivelmente como assinatura dupla ao lado do ECDSA durante a transição, porque os verificadores (registros, controladores de admissão) precisam suportá-lo; registrar os identificadores nas assinaturas.
+
+**EX033.** Acrescentar `if len(groups) > 4: verdict += " (review: long group list)"` antes de imprimir; a saída não marca nenhum serviço atual (todas as listas ≤ 3), e um serviço de teste com cinco grupos mostra a nota de revisão.
+
+**EX034.** Executar o scanner contra servidores de laboratório com configurações conhecidas: híbrido preferido, híbrido não preferido, apenas clássico; ele precisa reportar cada um corretamente; registrar a versão do scanner.
+
+**EX035.** `KexAlgorithms mlkem768x25519-sha256,sntrup761x25519-sha512@openssh.com,curve25519-sha256`
+
+**EX036.** Residual: comprometimento da PSK ou rotação deficiente; autenticação clássica; escalabilidade. Dono: Network Team. Revisão: trimestral. Saída: os appliances suportam o ML-KEM da RFC 9370 e são migrados; PSKs revogadas.
+
+**EX037.** Métrica: fração híbrida dos handshakes no gateway de API (janela de 5 minutos). Alertar se < 90 % por 15 minutos ou se cair > 5 pontos em uma hora; ação: verificar a última implantação e o hash do perfil, seguir o runbook.
+
+**EX038.** Reter: o limite superior de 0,234 % excede o limite de 0,09 % (linha de base mais orçamento), com uma taxa realmente elevada; investigar o proxy, excluir ou corrigir esse local e depois executar de novo.
+
+**EX039.** A KLS provavelmente removeu a KEX clássica (apenas híbrido) e o cliente do parceiro não tem suporte ao híbrido; restaurar o recuo clássico e avisar o parceiro para atualizar dentro da janela de transição.
+
+**EX040.** Acrescentar `elif f["err"] == "hrr_timeout": c = "HelloRetryRequest latency"`; uma linha de log com `err=hrr_timeout` passa então a ser contada nessa causa.
 
 <a id="references"></a>
 
