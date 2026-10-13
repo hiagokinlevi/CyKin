@@ -4014,6 +4014,214 @@ BAD_CLOCK: INVALID_CLOCK
 
 **Pass criteria:** Exact reproducibility; no release-boundary violation; no unsupported retention arithmetic; clear distinction between a declared watermark and authenticated completeness; no merger of VQ2 into R1–R16.
 
+
+<a id="ir-rapid-ch02-vq2g-lab"></a>
+
+#### VQ2-G — a quiet query needs complete paths, not just a plausible watermark
+
+**Learning outcomes.** After VQ2, a beginner should be able to: (1) distinguish a record's event time from when it became searchable; (2) describe why the slowest relevant producer path limits a negative observation; (3) recognize incomplete pagination, a wrong selection or a missing known witness; (4) explain why a watermark is a producer/pipeline **assertion**, not independently verified completeness; and (5) write a bounded preservation and reassessment request without asserting that no incident occurred.
+
+This supplement examines a weakness left open by the original VQ2 acceptance function. That function checks one declared `watermark` value and an expected result token. It does not establish how many producers or partitions contribute to the requested audit, whether their records traversed the collector and search index, whether the query response was truncated, or whether the expected token corresponds to an actual qualifying row. All of these can matter before a quiet result is used to reduce concern. The original eight-line VQ2 demonstration remains an introductory lesson in reading a query envelope; VQ2-G tests additional **preconditions** rather than changing R14 or silently replacing its transcript.
+
+The [OpenTelemetry Logs Data Model](https://opentelemetry.io/docs/specs/otel/logs/data-model/) distinguishes `Timestamp`, when the origin reports the event occurred, from `ObservedTimestamp`, when an observer recorded it. Neither field automatically states when a row became searchable. [NIST SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final) explains log generation, transmission, storage and use; its 2006 final edition is high-level guidance, not a specification for VQ2-G. NIST's [SP 800-92 Rev. 1](https://csrc.nist.gov/pubs/sp/800/92/r1/ipd) is explicitly an *initial public draft*, not a superseding final source. [Confluent's Apache Flink event-time documentation](https://docs.confluent.io/cloud/current/flink/concepts/timely-stream-processing.html) describes watermark signals as progress assertions, with late-arriving records and partition behavior that can complicate completeness. That is documentation for a particular streaming technology, **not** evidence that Harbor Library uses Flink or that a watermark makes any log source infallible. The checks and status names below are original CyKin educational rules.
+
+##### Why the slowest path matters
+
+Imagine, **only in this separate fixture**, that the application-audit selection has two identified producing partitions, `p0` and `p1`. The request concerns `desk-a` booking edits in the half-open interval `[09:00,09:12) UTC`. A query run at 09:20 would be relevant only if its producer inventory and selected event types were appropriate and both paths could contribute all events from that interval. If p0 has indexed through 09:12 but p1 has indexed only through 09:07 under a defensible event-time guarantee, then the combined source cannot support the 09:12 boundary. A large timestamp in one partition cannot repair missing coverage in the other.
+
+```text
+Producer p0 -- emission --> collector -- accepted --> search index
+Producer p1 -- emission --> collector -- accepted --> search index
+                                                    |
+                                               query at 09:20
+                                                    |
+                                       source + account + [09:00,09:12)
+                                                    |
+                                   results + selection/coverage manifest
+```
+
+**Text alternative:** Two independent producers feed collection and indexing before a time- and account-bounded query can return rows. The diagram shows **proposed data flow**, not observed logging infrastructure. A gap at either producer, collection, indexing or selection prevents a strong source-wide negative statement.
+
+For the toy contract, each partition advertises an event-time boundary through which it expects no further earlier events. The overall declared boundary is the **minimum** across the two partitions. This is a planning analogy: a real watermark's inclusivity, idle partitions, late-data side output, offset/replay behavior, clock guarantees and checkpoint state must be obtained from that system's actual documented implementation. It may be an estimate rather than a hard guarantee. A watermark at 09:12 is not a checksum for events that were never emitted. A source can be silently disabled while the last reported watermark still looks recent.
+
+The following table separates checks that are sometimes collapsed into “logs are complete”:
+
+| Layer | Narrow question | A failure means |
+|---|---|---|
+| Producer inventory | Are both relevant partitions, routes and event kinds included for this decision? | An omitted producer or route might contain unseen edits. |
+| Emission and transport | Were producer and collector operating for this interval, with errors/gaps known? | Missing rows may reflect non-emission or transport loss. |
+| Index visibility | Did the target store finish accepting the relevant bounded events by the query run? | A row can exist upstream yet remain unavailable in search. |
+| Query selection and pagination | Are source, account, event interval, timezone, selected fields and **all pages** recorded? | A filter or truncated response can hide qualifying rows. |
+| Progress evidence | Does each relevant partition's *documented* event-time coverage reach the exclusive end? | One lagging or unaccounted partition blocks even conditional negative coverage. |
+| Authority and provenance | Was the manifest obtained through a permitted custodian and checked against trustworthy records? | Internally consistent flags are not an authenticated evidence packet. |
+
+“Indexed through 09:12” must be interpreted according to the producer's actual boundary semantics. This model conservatively requires every declared partition watermark to be **at least** the exclusive 09:12 endpoint. A different platform may use a strict or inclusive convention; translate its contract before applying the comparison. The script checks a typed **claim** that both partitions reached the boundary. It does not discover their actual state.
+
+##### A counterexample that a green manifest cannot detect
+
+The independent training witness `VQ-01` has event time 09:03 and becomes searchable at 09:04 in `p0`. The **optional invented** `VQ-02` has event time 09:10 in `p1` but becomes searchable only at 09:18. These are not R9/R14, and `VQ-02` is not an event discovered in the canonical incident.
+
+```text
+UTC              09:00  09:03  09:07  09:10  09:12  09:18  09:20
+query interval   [--------------------------)
+VQ-01 event             ^     visible 09:04
+VQ-02 event                           ^             visible ^
+query A                                        at 09:12
+query B                                                            at 09:20
+```
+
+**Text alternative:** The event-time selection ends just before 09:12. Both invented events fall inside it, but VQ-02 is unseen when the first query runs and becomes searchable before the second. Its late appearance does not move its event from 09:10 to 09:18. The timeline uses minute precision and comparable fictional UTC clocks.
+
+Suppose a manifest for the first 09:12 query *claims* both partitions have advanced to 09:12. A mechanical validator would accept the fields if every other flag were also set. The real VQ-02 counterexample, which the validator has **not yet received**, would contradict the completeness promise. This is not a contradiction in Python: the underlying attestation was unreliable. In the lab, `EARLY_WATERMARK_TOO_GOOD` deliberately produces the same favorable conditional label as the later baseline to make that limitation visible. If a learner reports “we proved no later edit,” the learner has failed the exercise despite obtaining a green string.
+
+At 09:12 with the explicitly conservative p1 watermark still at 09:07, the correct output instead says the event-time interval is not covered. At 09:20, after the late row is supplied and the two declared boundaries reach 09:12, the query **finds a later matching event**. The negative claim fails even if the manifest otherwise appears sound.
+
+A missing witness is also diagnostic. The invented VQ-01 is the predeclared known row that the toy selection ought to return; if a query omits it, inspect source, account, filters, transport/indexing and pagination before calling the result quiet. Retrieving VQ-01 alone is **not** proof that everything after it was logged. It only challenges a particularly obvious broken selection.
+
+##### Interpret the conditional label correctly
+
+A bounded quiet-query claim has this form: “**According to the named query and custodian's verified source/pipeline conditions**, no matching row later than the specified witness was returned for the selected account, event kind and half-open event-time interval as of the named query execution.” It is *not*: “No edit occurred,” “the staff account is safe,” “the person was authorized,” or “the incident is over.” Even a credible negative result says nothing about other accounts, uninstrumented paths, longer windows, a late row that violates the producer's watermark contract, or the data necessary to prove the account's human operator.
+
+A useful falsifier is an authenticated new source row whose event time lies inside the already claimed complete interval, or a custodian finding that the selected producer/partition, pagination or collector coverage was incomplete. Upon such a finding, preserve the original query and manifest, version the revised assessment and ask the incident lead whether the new evidence changes the containment or preservation decision. Do not overwrite the earlier transcript or invent a deletion deadline from R15's 24-hour policy.
+
+For the canonical Round B decision, **R14 still has no complete manifest**. The VQ2-G fictional metadata is not a reconstructed R14 query and cannot make R14 a negative proof. R15 still lacks a confirmed policy anchor; P-A and P-B remain **proposed**, not source holds or collected copies.
+
+##### VQ2-G offline laboratory: compare claims against supplied rows
+
+**Safety and scope:** Python 3 standard library, all values in memory, no files, account use, network access, source configuration, retention change or real data. The separate identifier `VQ-01` is an invented witness at 09:03. `VQ-02` is a deliberate late-arrival counterexample, not a canonical incident record. Times are **integer minutes after midnight UTC on one fictional day**, not universal timestamp handling. The six Boolean fields are *unverified classroom declarations*, even when `True`. A typed and internally consistent package is not a source-attested one.
+
+The checker prioritizes packet shape and explicit contradictions, then the declared custodian/selection/health conditions, partition coverage and witness. It returns the **first** blocking reason, not a complete list of defects. A positive output is named `CONDITIONAL_BOUNDED_QUIET_IF_ATTESTED` precisely because neither this program nor its inputs authenticate the attestor.
+
+**Full Python 3 listing (run independently, not after the original VQ2 program):**
+
+```python
+BASE = {
+    "source": "application-audit",
+    "account": "desk-a",
+    "event_window": (540, 552),  # [09:00, 09:12) UTC
+    "run_at": 560,                # 09:20 UTC
+    "required_partitions": ("p0", "p1"),
+    "watermarks": (("p0", 552), ("p1", 552)),
+    "producer_ok": True,
+    "collector_ok": True,
+    "index_ok": True,
+    "query_complete": True,
+    "selection_reviewed": True,
+    "custodian_attested": True,
+    "rows": (("VQ-01", "desk-a", 543, 544, "p0"),),
+}
+LATE = ("VQ-02", "desk-a", 550, 558, "p1")
+
+def assess_vq2g(p):
+    if not isinstance(p, dict) or set(p) != set(BASE):
+        return "BLOCK_PACKET_SCHEMA"
+    times = p["event_window"]
+    if (not isinstance(times, tuple) or len(times) != 2
+            or any(type(t) is not int for t in times)
+            or not 0 <= times[0] < times[1] <= 1440
+            or type(p["run_at"]) is not int
+            or not 0 <= p["run_at"] < 1440):
+        return "BLOCK_TIME_SCHEMA"
+    for flag in ("producer_ok", "collector_ok", "index_ok",
+                 "query_complete", "selection_reviewed", "custodian_attested"):
+        if type(p[flag]) is not bool:
+            return "BLOCK_BOOLEAN_SCHEMA"
+    if (p["source"], p["account"], times) != (
+        "application-audit", "desk-a", (540, 552)
+    ):
+        return "BLOCK_QUERY_SCOPE"
+    parts, marks = p["required_partitions"], p["watermarks"]
+    if (not isinstance(parts, tuple) or not parts
+            or len(set(parts)) != len(parts)
+            or any(not isinstance(x, str) or not x for x in parts)
+            or not isinstance(marks, tuple)
+            or any(not isinstance(x, tuple) or len(x) != 2
+                   or not isinstance(x[0], str) or type(x[1]) is not int
+                   or not 0 <= x[1] < 1440 for x in marks)):
+        return "BLOCK_PARTITION_SCHEMA"
+    wm = dict(marks)
+    if len(wm) != len(marks) or set(wm) != set(parts):
+        return "BLOCK_PARTITION_COVERAGE"
+    if any(value > p["run_at"] for value in wm.values()):
+        return "BLOCK_WATERMARK_FUTURE"
+    if not isinstance(p["rows"], tuple):
+        return "BLOCK_ROW_SCHEMA"
+    seen = set()
+    for row in p["rows"]:
+        if (not isinstance(row, tuple) or len(row) != 5
+                or any(not isinstance(x, str) or not x
+                       for x in (row[0], row[1], row[4]))
+                or any(type(x) is not int or not 0 <= x < 1440
+                       for x in (row[2], row[3]))):
+            return "BLOCK_ROW_SCHEMA"
+        ident, account, event, visible, partition = row
+        if ident in seen:
+            return "BLOCK_DUPLICATE_ROW_ID"
+        seen.add(ident)
+        if visible < event or visible > p["run_at"]:
+            return "BLOCK_ROW_TIME_INCONSISTENT"
+        if (account != p["account"]
+                or partition not in parts
+                or not times[0] <= event < times[1]):
+            return "BLOCK_ROW_OUTSIDE_SELECTION"
+    if not p["custodian_attested"]:
+        return "BLOCK_UNATTESTED_MANIFEST"
+    if not p["selection_reviewed"] or not p["query_complete"]:
+        return "BLOCK_SELECTION_OR_PAGINATION"
+    if not all((p["producer_ok"], p["collector_ok"], p["index_ok"])):
+        return "BLOCK_SOURCE_PIPELINE_HEALTH"
+    if min(wm.values()) < times[1]:
+        return "BLOCK_EVENT_TIME_COVERAGE"
+    if "VQ-01" not in seen:
+        return "BLOCK_EXPECTED_WITNESS_ABSENT"
+    if any(row[2] > 543 for row in p["rows"]):
+        return "LATER_MATCH_VISIBLE_QUIET_DISPROVED"
+    return "CONDITIONAL_BOUNDED_QUIET_IF_ATTESTED"
+
+CASES = [
+    ("BASE", {}),
+    ("EARLY_QUERY",
+     {"run_at": 552, "watermarks": (("p0", 552), ("p1", 547))}),
+    ("EARLY_WATERMARK_TOO_GOOD", {"run_at": 552}),
+    ("LATE_ROW_NOW_VISIBLE", {"rows": BASE["rows"] + (LATE,)}),
+    ("MISSING_PARTITION", {"watermarks": (("p0", 552),)}),
+    ("PARTITION_BEHIND",
+     {"watermarks": (("p0", 552), ("p1", 551))}),
+    ("PARTITION_IN_FUTURE",
+     {"watermarks": (("p0", 552), ("p1", 561))}),
+    ("COLLECTOR_DOWN", {"collector_ok": False}),
+    ("QUERY_TRUNCATED", {"query_complete": False}),
+    ("SELECTOR_UNREVIEWED", {"selection_reviewed": False}),
+    ("ATTESTATION_MISSING", {"custodian_attested": False}),
+    ("ACCOUNT_SCOPE_WRONG", {"account": "helper-b"}),
+    ("OUTSIDE_ROW",
+     {"rows": BASE["rows"] +
+              (("VQ-02", "helper-b", 550, 558, "p1"),)}),
+    ("DUPLICATE_ID", {"rows": BASE["rows"] * 2}),
+    ("MISSING_WITNESS", {"rows": ()}),
+    ("FUTURE_VISIBLE_ROW",
+     {"rows": (("VQ-01", "desk-a", 543, 561, "p0"),)}),
+    ("NON_BOOLEAN", {"producer_ok": "False"}),
+]
+for name, change in CASES:
+    print(name + ": " + assess_vq2g({**BASE, **change}))
+
+assert assess_vq2g(BASE) == "CONDITIONAL_BOUNDED_QUIET_IF_ATTESTED"
+assert assess_vq2g({**BASE, "rows": BASE["rows"] + (LATE,)}) == (
+    "LATER_MATCH_VISIBLE_QUIET_DISPROVED"
+)
+```
+
+**Prediction and reproduction:** Predict all seventeen lines, then run this listing in an isolated Python session or trace it against the explicit fixture. The model output and a per-case explanation are in the [final VQ2-G worked result](#ir-rapid-ch02-vq2g-result). Do not change the original eight-line VQ2 transcript. If Python is not available, label the artifact *reasoned/not executed* rather than copying the expected output as a measured local run.
+
+**Required student artifact:** A seventeen-row table `scenario | first gate | defensible statement | smallest repair or new source`; a diagram or textual explanation of the two source paths; one contrast of `EARLY_QUERY` with `EARLY_WATERMARK_TOO_GOOD`; and a five-field request for a custodian-confirmed producer inventory, event-time coverage, query/pagination manifest, health/late-data information and authorized reviewer/next checkpoint. Explain why the two snapshots can disagree without changing event time.
+
+**Six-point rubric:** one point for the seventeen reproduced/accurately reasoned statuses; one for interval and minimum-partition reasoning; one for distinguishing reported watermark from authenticated collection completeness; one for pagination, witness and malformed-row controls; one for the late-arrival counterexample without actor attribution; and one for a minimal authorized next request and honest proposal-versus-collection state. No new numbered EX exercise is created; the existing Chapter 2 0–2 rubrics remain intact.
+
+**Limits and next lesson:** Only event time changes neither when the record becomes query-visible nor when a learner may cite it. R14 still lacks the claimed metadata and R15's expiry remains unknown. A passing VQ2-G string is *conditional on unverified fixture assertions*, not proof that the actual source was complete or a permission to contain an account. Continue to [the evidence-bounded 09:20 decision in section 2.11](#ch-02), preserving Round B's R1–R16 release boundary and the same Chapter 2 navigation.
+
+
+
 ### 2.11 Contrastive 09:20 decision example
 
 **Incorrect handoff:**
@@ -4687,6 +4895,10 @@ Score each numbered exercise **0** when its artifact is absent or asserts an uns
 
 **For full credit:** The learner says that even optional T1 ends before 09:12 and does not authenticate logging completeness, another account or activity at and after 09:12. R13's missing device field remains unknown rather than a negative device finding.
 
+
+**VQ2-G supplementary validation for EX017 (within the existing two claim/limit pairs):** After the original R13/R14 and optional T1 reasoning, add a compact three-field note: `required producer paths | actual query completeness/pagination evidence | what remains unknown`. Explain why a hypothetical watermark on one partition cannot establish coverage of another, and why the invented VQ2-G witness is **not** an R14 source row. Keep T1's exclusive 09:12 boundary and R13's unknown device details unchanged; do not promote VQ2-G into the canonical case.
+
+
 #### EX018 — Retention decision
 
 **Objective:** prepare a proportionate preservation decision. **Inputs:** R9, R13–R15, the collection-note fields in section 2.3 and the worked queue in section 2.4. **Output:** a three-row `P-A` request to the application custodian stating each source and proposed event range, deletion-policy anchor or actual deadline, and collector/authority/storage scope; add one sentence explaining why preservation may precede root-cause knowledge. Then add a two-row comparison of `P-A` with `P-B`: decision each could change, known or unknown loss path, owner, present state and why the second availability check may proceed in parallel. Do not calculate a precise expiry merely by adding 24 hours to R9's timestamp or claim either source was collected. A score of 2 identifies the time-sensitive risk, privacy boundary and proposal-versus-collection distinction for both sources.
@@ -4751,6 +4963,10 @@ Score each numbered exercise **0** when its artifact is absent or asserts an uns
 
 **For full credit:** The handoff gives a second analyst a clear request to the custodian about the R15 policy anchor and source-hold feasibility, without claiming a completed hold or an exact deletion instant.
 
+
+**VQ2-G supplementary handoff constraint:** Keep the original **five-sentence** 09:20 handoff and its R1–R16 boundary. Within the existing R14 sentence, require the receiver to distinguish the *supplied narrow quiet summary* from a source-complete, all-pages, all-paths negative result that has **not** been demonstrated. The proposed next authorized P-A query should ask the custodian for source/partition inventory and a full selection manifest; do not insert the fictitious VQ-01/VQ-02 rows as Harbor Library activity.
+
+
 #### EX023 — Impact check
 
 **Objective:** size possible service harm without exporting unrelated patron data. **Inputs:** R9, R11, R14–R16 and the service map. **Output:** a short query request naming approver, custodian, booking identifiers or short event range, necessary fields, expected result table and privacy/access limit. The table should distinguish an audit edit, an owner-approved state and an unresolved mismatch. A score of 2 does not claim a completed count or that R14 covers the whole period.
@@ -4776,6 +4992,10 @@ Score each numbered exercise **0** when its artifact is absent or asserts an uns
 **HOLD2/TRI2 refinement:** Keep exactly **two hypothetical observation/response pairs**. One concerns a future source-verified unexplained edit or owner-confirmed material booking mismatch, followed by human review of proportionate, separately authorized containment. The other concerns a future custodian-confirmed source-preservation failure, inability to retrieve the selected oldest item, or inability to clarify a material retention risk through the approved escalation route. Name the source, verifier, harm or loss rationale, decision owner and earlier review trigger for each. Neither trigger is observed in R1–R16.
 
 **For full credit:** A source-hold failure trigger is distinct from confirmed malicious activity or proven deletion. The incident lead coordinates an authorized preservation alternative, not an automatic disruptive action.
+
+
+**VQ2-G supplementary escalation test:** Keep the same **two hypothetical observation/response pairs**. For the preservation pair, describe how a future custodian-confirmed missing log partition, truncated query or violated ingestion-progress claim would increase uncertainty and demand a bounded source-health/preservation review. It is not itself proof of malicious editing, actual deletion or authorization to bypass logging permissions.
+
 
 #### EX025 — Correct a faulty note
 
@@ -8955,6 +9175,50 @@ In the separate three-line **release-guard** transcript above, the first two var
 
 **OWNER_VERIFIED_IMPACT** illustrates a separate hypothetical authorized business-state observation that can move harm from reported to **verified within a bounded scope**. It supplies no affected-person population count. **SOURCE_SAFEGUARDED_IN_VARIANT** demonstrates that a hypothetical preservation effect can be declared without resolving cause, attribution or patron impact.
 
+
+<a id="ir-rapid-ch02-vq2g-result"></a>
+
+### VQ2-G — Two-path quiet-query audit: worked result
+
+**Fixture-only expected transcript.** The seventeen classifications were independently checked against a JavaScript implementation of the same decision predicates. **A Python interpreter was not available to run the displayed Python program during this editorial pass.** Therefore the transcript below is an expected cross-checked output, *not* a claim of Python execution or authenticated source verification. A learner should run the actual Python listing and compare before recording an execution result.
+
+```text
+BASE: CONDITIONAL_BOUNDED_QUIET_IF_ATTESTED
+EARLY_QUERY: BLOCK_EVENT_TIME_COVERAGE
+EARLY_WATERMARK_TOO_GOOD: CONDITIONAL_BOUNDED_QUIET_IF_ATTESTED
+LATE_ROW_NOW_VISIBLE: LATER_MATCH_VISIBLE_QUIET_DISPROVED
+MISSING_PARTITION: BLOCK_PARTITION_COVERAGE
+PARTITION_BEHIND: BLOCK_EVENT_TIME_COVERAGE
+PARTITION_IN_FUTURE: BLOCK_WATERMARK_FUTURE
+COLLECTOR_DOWN: BLOCK_SOURCE_PIPELINE_HEALTH
+QUERY_TRUNCATED: BLOCK_SELECTION_OR_PAGINATION
+SELECTOR_UNREVIEWED: BLOCK_SELECTION_OR_PAGINATION
+ATTESTATION_MISSING: BLOCK_UNATTESTED_MANIFEST
+ACCOUNT_SCOPE_WRONG: BLOCK_QUERY_SCOPE
+OUTSIDE_ROW: BLOCK_ROW_OUTSIDE_SELECTION
+DUPLICATE_ID: BLOCK_DUPLICATE_ROW_ID
+MISSING_WITNESS: BLOCK_EXPECTED_WITNESS_ABSENT
+FUTURE_VISIBLE_ROW: BLOCK_ROW_TIME_INCONSISTENT
+NON_BOOLEAN: BLOCK_BOOLEAN_SCHEMA
+```
+
+**Bounded positive.** `BASE` has a declared p0/p1 inventory, minimum progress 552, one witness VQ-01 at 543 searchable by minute 544, query minute 560 and positive declarations for collection/index/selection. Its outcome is *conditional*: setting every Boolean to `True` does not authenticate any producer or prove that another event could not arrive late. A reader must not equate this with a clean R14 or a verified absence of further booking edits.
+
+**The decisive counterexample.** `EARLY_QUERY` runs at minute 552 with the p1 boundary still 547: the declared minimum is below the end of the event-time selection, so no bounded-negative assurance is supported. `EARLY_WATERMARK_TOO_GOOD` instead merely **claims** p1 already reached 552 and passes the mechanical gate. VQ-02's invented 550 event, which only becomes visible at minute 558, shows how that earlier unverified assertion could be false. `LATE_ROW_NOW_VISIBLE` supplies VQ-02 on the later run and refutes the apparent quiet result without moving its event time or identifying its operator. The program cannot discover a row not present in its given packet.
+
+**Partition and time controls.** Missing p1 means the declared producer inventory is not accounted for. A p1 watermark of 551 is short of the exclusive 552 end. The value 561 with query run 560 violates this exercise's same-clock progress assumption; a real analyst would check source-clock and watermark semantics, not automatically accuse an attacker. `FUTURE_VISIBLE_ROW` similarly contradicts the declared query cutoff: the row is said to become visible at 561 yet appears in the 560 result. It is a fixture consistency failure, not a historical observation.
+
+**Collection, selection and custody.** `COLLECTOR_DOWN` blocks relying on a source whose declared ingestion path is unhealthy. `QUERY_TRUNCATED` and `SELECTOR_UNREVIEWED` show that progress through the index alone does not validate a particular query. `ATTESTATION_MISSING` refuses a manifest lacking the separate custodian-attestation premise. Those flags are still classroom data, not digital signatures or real permissions. `ACCOUNT_SCOPE_WRONG` asks a different question; an out-of-scope `helper-b` returned row indicates a selection inconsistency. Both require a corrected, authorized query envelope.
+
+**Input and witness controls.** `DUPLICATE_ID` fails the declared unique-row-ID contract instead of hiding duplicated delivery. `MISSING_WITNESS` catches absence of the predeclared VQ-01 within the selected query. This does not mean an absent known row proves source deletion; it may reflect a filter, producer or pipeline gap. `NON_BOOLEAN` rejects string `"False"` as a false attestation instead of letting truthiness distort the result.
+
+**Model custodian request:** “Incident lead: please authorize the named application/logging custodian to provide the smallest relevant application-audit query and manifest for account `desk-a` in `[09:00,09:12) UTC`. Confirm all contributing producer/partition paths and whether each emitted expected booking-edit records, source-clock and watermark semantics, collector/index health, late-data handling and an exhaustive result/page count at the actual run time. Record a source pointer, query filters, ingestion/retrieval limits, permitted analyst fields, actual acquisition time *if performed*, and the next review condition. If any path, witness or receipt is missing, report an unresolved negative-evidence claim rather than ‘no edits occurred.’” This is a **proposed** request, not a completed retrieval, hold, source-health measurement or account action.
+
+**Critical interpretation rule:** A versioned negative observation can be narrowed by better source coverage but cannot be extended across a different account, route, source, time interval or actor. All VQ2-G labels, partitions and timestamps are invented classroom inputs and cannot be merged with the canonical Harbor Library evidence or used to set R15's exact loss deadline. The original VQ2 eight lines and the Chapter 2 exercise answers remain independent.
+
+[Return to the VQ2-G laboratory](#ir-rapid-ch02-vq2g-lab) · [Chapter 2](#ch-02) · [Chapter 2 exercises](#ch-02)
+
+
 ### EX014 — Worked result
 
 | Answerable question | Supplied starting point | Authorized next source | Result that changes triage |
@@ -8989,6 +9253,10 @@ The hypotheses need not be mutually exclusive. A good answer identifies what eac
 **R13 claim/limit:** the available summary reports one session in its time range, but contains no device or location field. Missing detail cannot identify a device or person; it is not a finding that the session came from the expected staff device. **R14 without T1:** the summary says no further edits after R9 *within its queried range*, but the exact range and filters are absent from R14 itself. **R14 with exercise-only T1:** the illustrative query concerns `desk-a` booking edits in `application-audit` at `09:00 ≤ event < 09:12 UTC`; it does not cover later times, another account, ingestion delay or a different source. A proposed next check asks the authorized application custodian for a new bounded query beginning at 09:12 and ending at a documented, sufficiently ingested cutoff, with source, account filters and completeness recorded. Even a zero-row result would be limited to that new scope.
 
 **Further reasoning:** Canonical R14 states only that its query showed no further edits after R9 within the queried range; its exact start, end, filters, run time and ingestion coverage are not supplied. Optional T1, when explicitly invoked, introduces `application-audit`, account `desk-a` and `09:00 ≤ event < 09:12 UTC`. It does not cover 09:12 itself, later events, another account or delayed ingestion. To investigate later activity, request a newly bounded query with a documented source, filter, interval, run time, collection status and ingestion-health check. R13's one-session summary lacks device and location details. It does not show that the session was on an expected device, and it cannot establish human attribution. A strong answer preserves both the narrower negative-query result and its untested assumptions.
+
+
+**VQ2-G worked refinement:** R14's query envelope is incomplete: no confirmed producer/partition inventory, whole-result pagination or indexed event-time coverage is supplied. Optional T1 supplies a bounded application-audit/desk-a query selection, **not** authenticated all-path coverage. The independent VQ2-G example demonstrates why a late row may appear after a seemingly quiet query and why a complete *declared* watermark can still be wrong; VQ-01 and VQ-02 are not R-series observations. A defensible request seeks the source/pagination/clock evidence from the application custodian under incident-lead approval, leaving R13's missing device detail and R15's policy anchor unresolved.
+
 
 ### EX018 — Worked result
 
@@ -9084,6 +9352,10 @@ The five sentences label the evidence, assessment, unanswered questions, propose
 
 The five sentences remain an **internal handoff**, not a claim of completed collection. The proposal does not assume a hold mechanism exists or borrow HOLD2's fictional positive status.
 
+
+**VQ2-G worked handoff refinement (preserve five-sentence limit):** The fourth or fifth sentence can say that the incident lead **proposes** asking the application custodian for the producer inventory, source/booking filter, all-page query manifest and delayed-ingestion or gap evidence for R14, because its quiet summary cannot establish no later edits globally. R15's retention anchor remains unknown, and neither the VQ2-G hypothetical watermark nor a simulated witness is a new R-series fact. The existing five-sentence EX022 example remains a valid bounded model; no completed production query or source hold is claimed.
+
+
 ### EX023 — Worked result
 
 **Proposed request:** ask the service owner to approve a named analyst to compare booking-edit audit rows for the short 08:30–09:20 UTC window with the authoritative booking state and relevant help-desk ticket identifiers, using only booking ID, changed field, old/new value, event UTC time and approved target where available. If approved, the application custodian would supply a restricted copy and record the query filter, source and collection time. The expected result schema is `booking ID | audit row | current value | owner-approved value or pending | confirmed mismatch / unresolved`. The learner can already point to B19's R9 edit but cannot supply a final count or approved target from R1–R16. Keep patron names and unrelated bookings out of the classroom output and limit the copy to the approved reviewers.
@@ -9156,6 +9428,10 @@ For a bounded booking-impact comparison, the learner should identify the selecte
 Neither observation is part of R1–R16. A confirmed sensitive-data disclosure would also raise harm, but no supplied record establishes one. The triggers are evidence requirements, not predictions.
 
 **HOLD2/TRI2 interpretation:** The first pair prompts a human containment review; the second prompts a distinct preservation decision. A missing item or unavailable custodian does not itself prove malicious deletion, and neither future observation belongs to R1–R16. Preserve both pairs as hypothetical, with the verifier and next review explicit.
+
+
+**VQ2-G worked refinement:** In the preservation trigger, a verified missing contributing producer path, incomplete pagination or contradictory late row should cause the incident lead and application custodian to revisit evidence coverage and authorized preservation before relying on the prior quiet query. That is different from the continued-harm trigger, which needs a separately verified unexplained edit or service-state discrepancy and a proportional containment decision. Both remain **hypothetical**, outside R1–R16, and neither turns R15's duration into an observed deletion time.
+
 
 ### EX025 — Worked result
 
