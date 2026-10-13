@@ -1,6 +1,6 @@
 ---
 name: cyberabc-web3-blockchain-security-masters-53f610bd
-description: "Guide a learner through the master's course in Web3, blockchain and cryptoasset security, its one book, subject chapters, exercises and reviewed sources."
+description: "WEB3 Master's Research Track (8 ch / 50 ex)"
 license: CC0-1.0
 ---
 
@@ -16,21 +16,35 @@ Use this **one skill for the whole 2 years course**. The course has one principa
 - [English book plan](../en/book/PLAN.md): summaries and planned exercises.
 - [Materials](../en/MATERIALS.md): practice and assessment links.
 - [Supplementary playbooks](../../../../playbooks/web3-blockchain-security/README.md): source-linked practice.
+- [Authored English book draft](../en/book/MANUSCRIPT.md): use only chapters, labs and exercises actually present; review is pending.
 
 ## Navigation rule
 
 At the end of an authored chapter or a book-plan chapter summary, use its **Continue studying** block for the previous chapter, course index and next chapter. Keep the learner's course and chapter position visible. If the next link is a plan, explain that the lesson is not yet authored and do not mark it complete. The course chapter index connects its final row to the next course in the same language.
 
+## Eight-chapter master's route
 
-## Tutor workflow
+This is the two-year **master's research track** in Web3, blockchain and cryptoasset security. The book follows synthetic student **Tariq Haddad** of the fictional **Northmoor University**, supervised by **Dr Ingrid Larsen**, with the fictional monitoring firm **Lumen Analytics**, studying whether single keys, multi-signature wallets and timelocks on privileged contract functions are associated with key-related incidents.
 
-1. Ask for the learner's level and language; use this course's chapter index to select the relevant subject. English is the editorial reference until other editions are reviewed.
-2. Check whether that chapter is authored. If only the plan exists, say so and label any added explanation or practice as new supplementary material.
-3. Teach from the available chapter with a clear example, then use its authored exercises and worked answers. Keep the response at the course's planned depth.
-4. Cite the exact Markdown source and any underlying external reference. Use only authorized, synthetic or sanitized practical environments. Never claim accreditation or a completed 300-page book from a folder alone.
+| Chapters | Read and teach | Labs / exercises |
+|---|---|---|
+| 1–3 | Question and systematic search, advanced seminar, observational design and ethics | EX001–EX020 |
+| 4–6 | Competing explanations, proposal and pilot, collection and stratified analysis | lab_controls.py (4), lab_window.py (5), lab_strata.py (6); EX021–EX038 |
+| 7–8 | Writing and limitations, independent review and defense | EX039–EX050 |
+
+Verified lab facts (synthetic): incidents 5/12 single key (41.7%), 3/16 multisig (18.8%), 1/12 multisig+timelock (8.3%), crude risk ratio 5.0; stratified small 4/9, 2/6, 1/3 and large 1/3, 1/10, 0/9; 12/14 queued changes confirmed within 48 h, median 16 h.
+
+## Teaching guardrails
+
+- Synthetic and aggregate data only; no protocol is named and no attack steps are given.
+- Live weaknesses noticed during research are disclosed privately to the team.
 
 ## Continue the curriculum
 
-After chapter 08, check the chapter index and the learner's exercise record. The next stop is [course 171: Identity and access management / Master's course](../../identity-access/en/SUBJECTS.md). For navigation in another language, open that course's matching language index; teach from it only when its manuscript is authored and reviewed. A planned chapter does not count as studied merely because navigation points to the next stop.
+After chapter 8, the next stop is [course 171: Identity and access management / Master's course](../../identity-access/en/SUBJECTS.md).
+
+## Editorial status and language
+
+Check the [book standard](../../../../BOOK_STANDARD.md) before claiming a chapter or edition is complete. English chapter drafts and exercise–answer pairs exist, but the book has not passed independent review or the 300-page A4 gate. Other language folders are working outlines until their own translation and review. Teach in the learner's language if helpful while identifying English as the only authored reference edition.
 
 Original maintainer-owned content is dedicated under [CC0 1.0](../../../../LICENSE); third-party sources retain their own rights.
