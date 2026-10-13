@@ -1,7 +1,7 @@
 # Segurança da Informação: Curso Rápido
 
 - Idioma: português do Brasil (`pt`); curso 002, curso rápido (1 mês). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **publicado**. Os capítulos 1–4 de 4 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; o laboratório offline usa apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e sua saída foi incorporada de uma execução real, idêntica à da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **publicado**. Os capítulos 1–4 de 4 têm texto didático escrito à mão; os exercícios EX001–EX058 têm resoluções correspondentes com rubricas de 0 a 3; o laboratório offline usa apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e sua saída foi incorporada de uma execução real, idêntica à da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: gestores e funcionários de organizações muito pequenas que precisam corrigir em um mês as fraquezas de segurança mais comuns.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: o laboratório conta, por pasta, os arquivos compartilhados sintéticos abertos a qualquer pessoa com o link. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -10,7 +10,7 @@
 
 ## Como usar este rascunho
 
-Leia na ordem. Os quatro capítulos acompanham uma gerente de clínica desde o que a clínica guarda, passando pelas contas, pelos dispositivos e pelo compartilhamento e pela fraude por e-mail e pelas pessoas, até os backups, os incidentes e uma rotina mensal. Execute cada laboratório onde ele aparece, tente os exercícios antes de consultar as resoluções e avalie-se com as rubricas.
+Leia na ordem. Os quatro capítulos acompanham uma gerente de clínica desde o que a clínica guarda, passando pelas contas, pelos dispositivos e pelo compartilhamento e pela fraude por e-mail e pelas pessoas, até os backups, os incidentes e uma rotina mensal. Execute cada laboratório onde ele aparece, tente os exercícios antes de consultar as resoluções e avalie-se com as rubricas. Cada capítulo traz também uma tabela de conceitos, uma tabela de dados, um fluxograma de decisão e um segundo exemplo resolvido; EX051–EX058 pedem para aplicar essas ferramentas a um fato novo da clínica antes de ler as resoluções.
 
 ### Caso sintético
 
@@ -40,7 +40,7 @@ ISO/IEC 27000:2026. Lista completa em [Referências](#references).
 <!-- cyberabc:lesson-figures:start ch-01 -->
 ### Mapa da aula
 
-Aula 01 publicada. Mapa, exemplo, EX001.
+Aula 01 publicada. Mapa, exemplo, EX051.
 
 ```mermaid
 flowchart TD
@@ -49,9 +49,12 @@ flowchart TD
   N2["1.3 O que a clínica guarda"]
   N3["1.4 O que não pode ser perdido"]
   N4["1.5 Regras básicas"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX001"]
+  N5["Dados — onde está a informação da Hollybank"]
+  N6["Fluxo de decisão — marcar um item"]
+  N7["Aplicar"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX051"]
 ```
 
 ### Desenho lógico
@@ -63,7 +66,10 @@ flowchart LR
   N2["1.3 O que a clínica guarda"]
   N3["1.4 O que não pode ser perdido"]
   N4["1.5 Regras básicas"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX001"]
+  N5["Dados — onde está a informação da Hollybank"]
+  N6["Fluxo de decisão — marcar um item"]
+  N7["Aplicar"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX051"]
 ```
 
 ```text
@@ -82,7 +88,16 @@ flowchart LR
 [1.5 Regras básicas]
     |
     v
-[Exemplo resolvido] --> [Exercício EX001]
+[Dados — onde está a informação da Hollybank]
+    |
+    v
+[Fluxo de decisão — marcar um item]
+    |
+    v
+[Aplicar]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX051]
 ```
 <!-- cyberabc:lesson-figures:end ch-01 -->
 
@@ -120,6 +135,60 @@ Sofia entra no curso rápido, lista o que guarda a clínica de dezoito pessoas d
 ### Erros e limites
 
 As mudanças não registradas tornam os problemas posteriores difíceis de rastrear.
+
+### Conceitos — três objetivos, uma marca de dano
+
+A ISO/IEC 27000:2026 nomeia confidencialidade, integridade e disponibilidade. A marca alta, média ou baixa de Sofia é o modo como a Hollybank usa esses objetivos antes de comprar qualquer produto. A marca não é uma impressão sobre o quanto um arquivo parece secreto. É o dano que a leitura por um estranho, uma alteração errada ou uma perda causaria numa segunda-feira real.
+
+| Objetivo | Pergunta | Já está alto na Hollybank | Continua na lista quando a marca é baixa |
+|---|---|---|---|
+| Confidencialidade | Quem sofre se um estranho ler isto? | Contatos e histórico de pagamento dos clientes | Uma foto de divulgação que já está na página pública |
+| Integridade | Que decisão erra se isto for alterado? | Dados bancários do fornecedor numa fatura | O rascunho de uma legenda para rede social |
+| Disponibilidade | O que para no horário de funcionamento se isto sumir? | Sistema da clínica: consultas e notas de tratamento | O cartaz do ano passado |
+
+### Dados — onde está a informação da Hollybank
+
+| Informação | Lugar | Como chega | Dano |
+|---|---|---|---|
+| Prontuários, consultas, pagamentos | Sistema de gestão em nuvem | Digitados na recepção | Alto. A fila da manhã e as notas de tratamento param juntas |
+| Nome, endereço, telefone e pagamentos do cliente | O mesmo sistema | Recepção | Confidencialidade alta. O cliente confiou na clínica, e a lei exige proteção |
+| Contratos e escalas da equipe | Pastas compartilhadas | Escritório | Contratos são sensíveis. Escalas parecem banais e viram problema de compartilhamento no capítulo seguinte |
+| Faturas e dados bancários de fornecedores | E-mail | O fornecedor | Integridade alta. Um número de conta errado move dinheiro |
+| Resultados de exames | E-mail | Laboratório externo | Alto. Um resultado ausente ou alterado muda o tratamento |
+| Fotos de divulgação | Pastas compartilhadas | Equipe | Baixo só depois que a mesma imagem já é pública |
+
+Conte os lugares, não as marcas dos produtos. Seis tipos de informação estão em três lugares: o sistema da clínica, as pastas compartilhadas e o e-mail. O log de mudanças registra uma mudança de lugar. Ele não substitui a marca.
+
+### Fluxo de decisão — marcar um item
+
+```mermaid
+flowchart TD
+  A["Um item que Sofia sabe nomear e localizar"] --> B{"Um estranho que lesse isto prejudicaria um cliente ou violaria um dever?"}
+  B -->|Sim| C["Confidencialidade alta"]
+  B -->|Não| D{"Uma alteração errada causaria um pagamento errado ou um tratamento errado?"}
+  D -->|Sim| E["Integridade alta"]
+  D -->|Não| F{"Perder isto no horário de funcionamento pararia consultas ou notas?"}
+  F -->|Sim| G["Disponibilidade alta"]
+  F -->|Não| H["Médio ou baixo. O item continua na lista"]
+  C --> I["Anote a marca, o lugar e a data no log de mudanças"]
+  E --> I
+  G --> I
+  H --> I
+  I --> J["A Dra. Moss concorda por escrito antes de qualquer ajuste"]
+```
+
+Um item pode ser alto em mais de um objetivo. O fluxo faz as três perguntas em ordem para a recepção não parar na primeira palavra técnica. A linha do log é a evidência de que a marca foi feita. Sem data e sem motivo, um problema posterior não pode ser rastreado, que é a regra da seção 1.5.
+
+### Exemplo resolvido — uma fotografia que não é divulgação
+
+Uma enfermeira copia a fotografia de uma ferida para a pasta de divulgação, para achá-la no plantão seguinte. O nome do arquivo começa com o primeiro nome do cliente. Sofia não usa a linha de divulgação da tabela. Um estranho que abrisse essa pasta veria uma imagem clínica ligada a um cliente, então a confidencialidade é alta. Um arquivo ausente no dia da revisão também esconderia a comparação de que o veterinário precisa, então a disponibilidade da cópia de trabalho é alta. Sofia move a fotografia para o sistema da clínica, apaga a cópia compartilhada e escreve a mudança no log antes do fim do turno. A Dra. Moss concorda por escrito porque, no dia seguinte, a equipe vai procurar em outro lugar.
+
+> **Caso sintético.** A fotografia, o nome do arquivo e o atalho da enfermeira são inventados. Nenhum animal ou cliente é mostrado.
+
+### Aplicar
+
+- **EX051 — Marcar um resultado de exame.** Um e-mail nomeia o cliente. Se o texto estiver errado, o tratamento da tarde muda. Se o e-mail faltar nessa manhã, o veterinário não compara o resultado com as notas. Dê a marca de confidencialidade, a marca de integridade e diga qual objetivo a ausência do e-mail ameaça primeiro. *Rubrica:* 3 = confidencialidade alta porque o cliente é nomeado; integridade alta porque o tratamento ficaria errado; a disponibilidade vem primeiro se o e-mail falta quando o veterinário precisa dele;; 2 = duas dessas três;; 1 = uma;; 0 = nenhuma.
+- **EX052 — Log atrasado.** Sofia move a fotografia na segunda-feira e escreve o log na sexta. Qual regra falhou, e o que ainda pode ser verdade na quarta-feira? *Rubrica:* 3 = cada mudança é escrita com a data e o motivo quando acontece; na quarta a cópia compartilhada pode continuar aberta e ninguém rastreia a mudança;; 2 = só a regra do registro no mesmo dia;; 1 = vago;; 0 = nenhuma.
 
 ### Exercícios
 
@@ -164,7 +233,7 @@ Continue para a próxima aula já escrita.
 <!-- cyberabc:lesson-figures:start ch-02 -->
 ### Mapa da aula
 
-Aula 02 publicada. Mapa, exemplo, EX014.
+Aula 02 publicada. Mapa, exemplo, EX053.
 
 ```mermaid
 flowchart TD
@@ -174,9 +243,11 @@ flowchart TD
   N3["Laboratório — Arquivos compartilhados abertos a qual"]
   N4["2.4 Arquivos compartilhados em excesso"]
   N5["2.5 Fechando as lacunas"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX014"]
+  N6["Conceitos — identidade, posse e exposição"]
+  N7["Dados — a contagem sintética, em ordem de dano"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX053"]
 ```
 
 ### Desenho lógico
@@ -189,7 +260,9 @@ flowchart LR
   N3["Laboratório — Arquivos compartilhados abertos a qual"]
   N4["2.4 Arquivos compartilhados em excesso"]
   N5["2.5 Fechando as lacunas"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX014"]
+  N6["Conceitos — identidade, posse e exposição"]
+  N7["Dados — a contagem sintética, em ordem de dano"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX053"]
 ```
 
 ```text
@@ -211,7 +284,13 @@ flowchart LR
 [2.5 Fechando as lacunas]
     |
     v
-[Exemplo resolvido] --> [Exercício EX014]
+[Conceitos — identidade, posse e exposição]
+    |
+    v
+[Dados — a contagem sintética, em ordem de dano]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX053]
 ```
 <!-- cyberabc:lesson-figures:end ch-02 -->
 
@@ -278,6 +357,62 @@ Sofia substitui um login compartilhado da recepção, ativa segundos fatores com
 
 Desligar as atualizações para consertar uma impressora deixa os dispositivos expostos muito depois de a impressora ser esquecida.
 
+### Conceitos — identidade, posse e exposição
+
+Três controles diferentes se misturam com facilidade porque os três são "ligados" na mesma semana.
+
+| Controle | O que ele prova | Falha da Hollybank que ele responde | O que ele não prova |
+|---|---|---|---|
+| Conta pessoal | Qual pessoa escreveu a nota | Um login da recepção num bilhete debaixo do teclado | Que a senha era secreta |
+| Segundo fator | A pessoa tem uma segunda coisa: aplicativo ou chave | Uma senha roubada ou adivinhada | Que o compartilhamento do arquivo foi fechado |
+| Compartilhamento só da clínica | Um link não serve fora da clínica | 8 arquivos de clientes e 4 do financeiro abertos a qualquer pessoa com o link | Que as pessoas certas ainda conseguem trabalhar |
+
+A escala mostra o terceiro limite. Fechar um link sem substituir o trabalho faz a equipe de meio período inventar outro atalho. Sofia levou a escala para o sistema da clínica, depois do login, porque a consulta de casa era uma tarefa real.
+
+### Dados — a contagem sintética, em ordem de dano
+
+O script verificado, semente 2, imprimiu estas contagens. A ordem segue o dano, não o tamanho do número.
+
+| Pasta | Abertos | De | Ordem | Por que esta ordem | Ação no capítulo |
+|---|---:|---:|---|---|---|
+| Clientes | 8 | 140 | 1 | Um link expõe informação de clientes | Restringir à clínica no mesmo dia |
+| Financeiro | 4 | 60 | 1 | Um link expõe informação bancária | Restringir à clínica no mesmo dia |
+| Escalas | 10 | 20 | 2 | Metade da pasta está aberta, e o motivo é o acesso de casa | Levar a escala para trás do login |
+| Divulgação | 25 | 80 | 3 | Maior contagem, imagens já públicas | Deixar público |
+| Todos os arquivos | 47 | 300 | — | O total é uma verificação, não a ordem do trabalho | Repetir todo mês |
+
+Doze é 8 mais 4. Esses doze ficam à frente dos 25 arquivos de divulgação. A repetição mensal pega um compartilhamento novo que usou o padrão antigo.
+
+### Fluxo de decisão — uma pessoa, um dispositivo ou um link
+
+```mermaid
+flowchart TD
+  A["Um pedido desta semana"] --> B{"Duas pessoas vão escrever notas sob o mesmo nome?"}
+  B -->|Sim| C["Crie uma conta pessoal. Retire o bilhete. Cronometre a troca"]
+  B -->|Não| D{"A única barreira é uma senha que alguém poderia reutilizar?"}
+  D -->|Sim| E{"Esta pessoa pode usar um aplicativo de trabalho no próprio celular?"}
+  E -->|Sim| F["Ligue o aplicativo como segundo fator"]
+  E -->|Não| G["Entregue uma chave de segurança e registre no log"]
+  D -->|Não| H{"Um arquivo de clientes ou do financeiro está aberto a qualquer pessoa com o link?"}
+  H -->|Sim| I["Restrinja à clínica antes de qualquer outra pasta"]
+  H -->|Não| J{"A equipe precisa desse arquivo de fora?"}
+  J -->|Sim| K["Coloque a tarefa atrás do login. Não deixe o link aberto"]
+  J -->|Não| L["Se já é divulgação pública, deixe e registre o motivo"]
+```
+
+As atualizações ficam ao lado deste fluxo. Três computadores estavam sem atualização porque uma impressora de etiquetas quebrou. O conserto é um driver mais novo e, depois, as atualizações ligadas. Deixar as atualizações desligadas conserva todas as outras falhas nessas máquinas depois que a impressora é esquecida.
+
+### Exemplo resolvido — um veterinário substituto que começa na segunda
+
+Um veterinário substituto cobre a segunda-feira e ouve que deve usar o login da recepção "só nesta semana". Sofia recusa. As notas desse dia seriam atribuídas ao balcão compartilhado, que é o defeito da seção 2.1. Ela cria uma conta pessoal antes do primeiro paciente, liga um segundo fator e pede à Dra. Moss que aprove a conta no log de mudanças. Ela não espera cronometrar a troca: a recepção já mostrou que leva alguns segundos, e uma semana de notas compartilhadas duraria mais que o substituto. Quando ele sai, o mesmo log diz qual conta desativar.
+
+> **Caso sintético.** O substituto e a instrução de uma semana são inventados.
+
+### Aplicar
+
+- **EX053 — Conta do substituto.** O que precisa existir antes do primeiro paciente, e qual registro diz quando desativar a conta? *Rubrica:* 3 = uma conta pessoal com segundo fator, aprovada no log; o mesmo log nomeia a conta a desativar quando o substituto sai;; 2 = só a conta pessoal;; 1 = vago;; 0 = nenhuma.
+- **EX054 — Ordem dos arquivos abertos.** Com as contagens verificadas, quais 12 arquivos fecham primeiro, qual pasta vai para trás do login e quais arquivos abertos podem ficar? *Rubrica:* 3 = 8 de clientes e 4 do financeiro primeiro; as escalas vão para trás do login; a divulgação pode ficar porque já é pública;; 2 = os doze e mais uma ação;; 1 = uma contagem sem a ação;; 0 = nenhuma.
+
 ### Exercícios
 
 - **EX014 — Login compartilhado.** O que a recepção usava para entrar? *Rubrica:* 3 = um login compartilhado num bilhete;; 2 = parcialmente correto;; 1 = parcial;; 0 = nenhuma.
@@ -321,7 +456,7 @@ Continue para a próxima aula já escrita.
 <!-- cyberabc:lesson-figures:start ch-03 -->
 ### Mapa da aula
 
-Aula 03 publicada. Mapa, exemplo, EX027.
+Aula 03 publicada. Mapa, exemplo, EX055.
 
 ```mermaid
 flowchart TD
@@ -330,9 +465,12 @@ flowchart TD
   N2["3.3 A regra em ação"]
   N3["3.4 Treinamento curto"]
   N4["3.5 Comunicação sem culpa"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX027"]
+  N5["Conceitos — sinal, canal e relato"]
+  N6["Dados — uma tentativa de pagamento e o ritmo do trei"]
+  N7["Fluxo de decisão — uma mensagem pede dinheiro ou um"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX055"]
 ```
 
 ### Desenho lógico
@@ -344,7 +482,10 @@ flowchart LR
   N2["3.3 A regra em ação"]
   N3["3.4 Treinamento curto"]
   N4["3.5 Comunicação sem culpa"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX027"]
+  N5["Conceitos — sinal, canal e relato"]
+  N6["Dados — uma tentativa de pagamento e o ritmo do trei"]
+  N7["Fluxo de decisão — uma mensagem pede dinheiro ou um"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX055"]
 ```
 
 ```text
@@ -363,7 +504,16 @@ flowchart LR
 [3.5 Comunicação sem culpa]
     |
     v
-[Exemplo resolvido] --> [Exercício EX027]
+[Conceitos — sinal, canal e relato]
+    |
+    v
+[Dados — uma tentativa de pagamento e o ritmo do trei]
+    |
+    v
+[Fluxo de decisão — uma mensagem pede dinheiro ou um]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX055]
 ```
 <!-- cyberabc:lesson-figures:end ch-03 -->
 
@@ -401,6 +551,57 @@ Sofia ensina os sinais de phishing, define uma regra de ligação de volta que b
 ### Erros e limites
 
 Ligar para o número de uma mensagem suspeita leva ao criminoso, e não ao fornecedor.
+
+### Conceitos — sinal, canal e relato
+
+Um e-mail suspeito não é um único truque. A Hollybank separa a aparência da mensagem, o canal autorizado a mudar dinheiro e o modo como uma pessoa relata um erro.
+
+| Camada | O que Sofia ensina | Regra concreta da clínica | Falha que a regra impede |
+|---|---|---|---|
+| Sinais | Remetente que não corresponde, urgência inesperada, link cujo destino difere do texto, pedido de senha ou de pagamento | Parar e conferir. Nenhuma lista é completa | A mensagem de encomenda que apontava para um endereço parecido |
+| Canal | Mudança de dados bancários | Telefonar para um número que já está no cadastro, nunca para o número da mensagem. Uma segunda pessoa aprova | A mensagem do fornecedor de equipamentos, com número de fatura verdadeiro e exigência de pagamento no mesmo dia |
+| Relato | Um caminho só, sem culpa por um relato rápido | Encaminhar a Sofia ou avisar no balcão | A recepcionista que digitou a senha numa página estranha |
+
+A regra do telefonema não depende de quão convincente é o texto. O criminoso consegue copiar um número de fatura. O criminoso não atende o telefone do fornecedor real. Ligar para o número impresso na mensagem derruba a regra, porque esse telefone é do remetente da fraude.
+
+### Dados — uma tentativa de pagamento e o ritmo do treinamento
+
+| Fato | Valor neste caso | Uso |
+|---|---|---|
+| Fornecedores que a clínica paga | Distribuidor de medicamentos, laboratório, fornecedores de equipamentos | Qualquer um pode ser imitado |
+| Mensagem que chegou | Fornecedor de equipamentos, número de fatura correto, conta nova, pague hoje | Parece legítima e continua sem verificação |
+| Dinheiro enviado à conta nova | Nada | A ligação para o número conhecido veio primeiro |
+| Sessão com a equipe | 10 minutos, na reunião semanal, depois um tema por mês | Os temas saem das perguntas da equipe |
+| Senha digitada numa página estranha | Redefinida na mesma manhã. Conta conferida. Nenhum uso indevido | A rapidez importa mais do que uma lista perfeita de sinais |
+| Segundo fator | Também bloquearia uma entrada posterior com essa senha | O relato não substitui o fator do capítulo 2 |
+
+### Fluxo de decisão — uma mensagem pede dinheiro ou um segredo
+
+```mermaid
+flowchart TD
+  A["Uma mensagem pede dinheiro, uma conta nova ou uma senha"] --> B{"O pedido é uma mudança de dados bancários?"}
+  B -->|Sim| C["Não use nenhum número escrito na mensagem"]
+  C --> D["Telefone ao fornecedor no número que já está guardado"]
+  D --> E{"O fornecedor confirma a mudança?"}
+  E -->|Não| F["Não pague. Registre a tentativa. Avise o fornecedor. Agradeça quem ligou"]
+  E -->|Sim| G["Uma segunda pessoa aprova. Depois escreva a mudança no log"]
+  B -->|Não| H{"Alguém já digitou uma senha ou abriu o link?"}
+  H -->|Sim| I["Redefina a senha na mesma manhã e confira a conta"]
+  H -->|Não| J["Encaminhe a mensagem a Sofia ou avise no balcão"]
+  I --> K["Sem crítica. O relato rápido é o sucesso"]
+  J --> K
+```
+
+### Exemplo resolvido — o laboratório muda de conta numa terça
+
+Na terça, um e-mail cita uma fatura real do laboratório e diz que a conta bancária muda hoje. A auxiliar do escritório quase liga para o celular da assinatura. Sofia interrompe essa ligação. O número guardado é o da mesa de contas do laboratório, tirado do extrato do mês passado. A mesa diz que não enviou mudança alguma. A clínica paga a conta original e nada à conta nova. Uma segunda pessoa estava pronta para aprovar, e não aprova. Sofia escreve a tentativa no log e agradece a auxiliar na sessão de dez minutos seguinte, usando o episódio como tema do mês.
+
+> **Caso sintético.** A mensagem de terça e a mesa do laboratório são inventadas. A regra é a mesma do episódio do fornecedor de equipamentos.
+
+### Aplicar
+
+- **EX055 — Ligação de terça.** Qual número pode ser usado, o que a segunda pessoa pode aprovar e quanto se paga antes da ligação ao número guardado? *Rubrica:* 3 = só o número já guardado; a segunda pessoa não aprova nada até essa ligação confirmar a mudança; nada é pago antes da ligação;; 2 = o número guardado e o pagamento zero;; 1 = um desses;; 0 = nenhuma.
+- **EX056 — Senha digitada, mesma manhã.** Liste as três ações que seguem um relato rápido de senha digitada e o que a Dra. Moss prometeu. *Rubrica:* 3 = redefinir naquela manhã, conferir a conta, lembrar que o segundo fator bloquearia uma entrada posterior; sem crítica porque o relato foi rápido;; 2 = redefinir e conferir, sem a promessa;; 1 = uma ação;; 0 = nenhuma.
 
 ### Exercícios
 
@@ -443,7 +644,7 @@ Continue para a próxima aula já escrita.
 <!-- cyberabc:lesson-figures:start ch-04 -->
 ### Mapa da aula
 
-Aula 04 publicada. Mapa, exemplo, EX039.
+Aula 04 publicada. Mapa, exemplo, EX057.
 
 ```mermaid
 flowchart TD
@@ -452,9 +653,12 @@ flowchart TD
   N2["4.3 Um cartão de incidentes"]
   N3["4.4 Um exercício prático"]
   N4["4.5 O plano adiante"]
-  N0 --> N1 --> N2 --> N3 --> N4
-  N4 --> EX["Exemplo resolvido"]
-  EX --> Q["Exercício EX039"]
+  N5["Conceitos — uma cópia, um teste, um cartão, um exerc"]
+  N6["Dados — evidência da restauração e o plano B de segu"]
+  N7["Fluxo de decisão — o sistema está fora, ou a tela pe"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Exemplo resolvido"]
+  EX --> Q["Exercício EX057"]
 ```
 
 ### Desenho lógico
@@ -466,7 +670,10 @@ flowchart LR
   N2["4.3 Um cartão de incidentes"]
   N3["4.4 Um exercício prático"]
   N4["4.5 O plano adiante"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> Q["EX039"]
+  N5["Conceitos — uma cópia, um teste, um cartão, um exerc"]
+  N6["Dados — evidência da restauração e o plano B de segu"]
+  N7["Fluxo de decisão — o sistema está fora, ou a tela pe"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX057"]
 ```
 
 ```text
@@ -485,7 +692,16 @@ flowchart LR
 [4.5 O plano adiante]
     |
     v
-[Exemplo resolvido] --> [Exercício EX039]
+[Conceitos — uma cópia, um teste, um cartão, um exerc]
+    |
+    v
+[Dados — evidência da restauração e o plano B de segu]
+    |
+    v
+[Fluxo de decisão — o sistema está fora, ou a tela pe]
+    |
+    v
+[Exemplo resolvido] --> [Exercício EX057]
 ```
 <!-- cyberabc:lesson-figures:end ch-04 -->
 
@@ -523,6 +739,63 @@ Sofia acrescenta um backup para o e-mail e os arquivos, testa uma restauração 
 ### Erros e limites
 
 Presumir que um provedor de nuvem recuperará seus arquivos apagados ou cifrados pode deixar a empresa sem cópia alguma.
+
+### Conceitos — uma cópia, um teste, um cartão, um exercício
+
+Um backup que nunca foi restaurado é uma afirmação. A Hollybank separa quatro artefatos. Cada um responde a uma pergunta diferente, e nenhum substitui os outros.
+
+| Artefato | Pergunta que responde | O que a Hollybank aprendeu | O que ainda faltaria |
+|---|---|---|---|
+| Retenção do provedor | Até onde o sistema da clínica pode voltar? | Cópias diárias, 30 dias, restauração prometida em um dia | O e-mail e os arquivos compartilhados não estavam nessa promessa |
+| Backup separado | Quem guarda uma cópia do e-mail e dos arquivos? | A Dra. Moss aprovou um depois que a lacuna foi nomeada | Um trabalho não testado ainda pode estar vazio |
+| Teste de restauração | Uma pasta nomeada e uma caixa de correio nomeada voltam? | A pasta voltou em minutos. A caixa falhou até a primeira cópia completa terminar e funcionou uma semana depois | Um teste não restaura a clínica inteira |
+| Cartão de incidente e exercício | O que as pessoas fazem na primeira hora, e o plano B funciona? | Ligar para Sofia, depois a Dra. Moss, depois o técnico. Desligar da rede o computador afetado. A lista em papel tinha três semanas | Um cartão que ninguém ensaiou |
+
+O provedor manter o próprio serviço no ar não é uma cópia de um arquivo que a clínica apagou ou que um atacante cifrou. Essa distinção é o motivo de existir o backup do e-mail.
+
+### Dados — evidência da restauração e o plano B de segunda
+
+| Verificação | Resultado | Onde fica escrito |
+|---|---|---|
+| Retenção do sistema da clínica | 30 dias, diária | Nota de Sofia a partir do provedor |
+| E-mail e arquivos compartilhados antes do serviço novo | Nenhum backup separado | A lacuna que a Dra. Moss aprovou fechar |
+| Restauração da pasta | Minutos, numa área de teste | Log de mudanças |
+| Primeira restauração da caixa | Falhou. A primeira cópia completa não tinha terminado | Log, inclusive a falha |
+| Segunda restauração da caixa | Funcionou uma semana depois | Log |
+| Exercício | 20 minutos. Sistema tratado como indisponível por quatro horas | Notas em papel lançadas depois |
+| Lista impressa de clientes | Três semanas, faltando clientes novos | Lembrete semanal: imprimir uma lista nova e trancá-la |
+| Rotina mensal | Verificação de compartilhamento, contas de quem saiu, uma sessão de dez minutos, um teste de restauração | Definida na última sessão |
+
+Os dois resultados da restauração permanecem no log. Registrar só o sucesso esconderia a semana em que a cópia da caixa não existia.
+
+### Fluxo de decisão — o sistema está fora, ou a tela pede dinheiro
+
+```mermaid
+flowchart TD
+  A["Problema na manhã de segunda"] --> B{"Um computador mostra um pedido de resgate ou age sozinho?"}
+  B -->|Sim| C["Desligue esse computador da rede"]
+  C --> D["Ligue para Sofia, depois a Dra. Moss, depois o técnico"]
+  B -->|Não| E{"O sistema da clínica está indisponível?"}
+  E -->|Sim| F["Use a folha de consultas de hoje"]
+  F --> G["Telefone aos clientes urgentes a partir de uma lista impressa nesta semana e trancada"]
+  G --> H["Anote os tratamentos em papel para lançar quando o sistema voltar"]
+  E -->|Não| I{"A mensagem exige uma conta bancária nova?"}
+  I -->|Sim| J["Use a regra do telefonema. O cartão de incidente não autoriza o pagamento"]
+  I -->|Não| D
+```
+
+O cartão e a regra de pagamento valem juntos. Uma tela assustadora não é motivo para pagar o número de conta impresso nela.
+
+### Exemplo resolvido — uma cópia completa que ainda não é um backup pronto
+
+O serviço novo de backup mostra um tique verde na quinta-feira. Sofia não registra o backup como testado. O tique apareceu antes de a primeira cópia completa da caixa terminar, que é a mesma condição da primeira restauração que falhou. Ela pede ao técnico que restaure uma caixa na área de teste e espera esse resultado. A restauração falha. Ela escreve a falha, deixa o tique fora da rotina mensal e marca a segunda tentativa para a semana seguinte. Só a segunda restauração, bem-sucedida, dessa caixa nomeada entra no log como teste aprovado.
+
+> **Caso sintético.** O tique de quinta e a caixa são inventados. A condição da falha é a mesma já registrada na seção 4.2.
+
+### Aplicar
+
+- **EX057 — De quem é a cópia?** O provedor do sistema guarda 30 dias de backups diários. Uma recepcionista apaga um arquivo da pasta compartilhada que nunca esteve no sistema da clínica. Qual cópia o traz de volta, e qual promessa não o traz? *Rubrica:* 3 = só o backup separado de e-mail e arquivos, depois que uma restauração dessa pasta tiver funcionado; os 30 dias do provedor nunca contiveram esse arquivo;; 2 = o backup separado sem o teste;; 1 = o provedor;; 0 = nenhuma.
+- **EX058 — Tela de resgate na recepção.** Diga o primeiro passo técnico, a ordem das ligações e se o número de conta da tela pode ser pago. *Rubrica:* 3 = desligar esse computador da rede; ligar para Sofia, depois a Dra. Moss, depois o técnico; não pagar nada a partir da tela, a regra do telefonema continua valendo;; 2 = desligar e a ordem das ligações;; 1 = um desses;; 0 = nenhuma.
 
 ### Exercícios
 
@@ -562,7 +835,7 @@ O índice aponta para o próximo curso do percurso de estudos.
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX050. Sofia Lindqvist, o Sr. Tomasz Nowak, o Eastgate Training Centre, a Hollybank Veterinary Practice e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX058. Sofia Lindqvist, o Sr. Tomasz Nowak, o Eastgate Training Centre, a Hollybank Veterinary Practice e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Um mês, com quatro sessões semanais.
 
@@ -663,6 +936,23 @@ Respostas-modelo para EX001–EX050. Sofia Lindqvist, o Sr. Tomasz Nowak, o East
 **EX049.** Repetir a verificação de compartilhamento e testar uma restauração.
 
 **EX050.** O curso rápido de governança de dados, para tratar da retenção dos registros antigos de clientes.
+
+
+**EX051.** A confidencialidade é alta porque o cliente é nomeado. A integridade é alta porque um resultado errado mudaria o tratamento. Se o e-mail falta quando o veterinário precisa dele, a disponibilidade é o objetivo ameaçado primeiro.
+
+**EX052.** A regra é escrever cada mudança, com a data e o motivo, quando ela acontece. Na quarta-feira a cópia compartilhada pode continuar aberta, e a mudança não pode ser rastreada.
+
+**EX053.** Uma conta pessoal com segundo fator precisa existir antes do primeiro paciente, e a Dra. Moss a aprova no log. Esse log nomeia a conta a desativar quando o substituto sai.
+
+**EX054.** Feche primeiro os 8 arquivos de clientes e os 4 do financeiro. Leve as escalas para trás do login. Os 25 arquivos de divulgação podem ficar porque essas imagens já são públicas.
+
+**EX055.** Use só o número já guardado. A segunda pessoa não aprova nada até essa ligação confirmar a mudança. Nada é pago antes da ligação.
+
+**EX056.** Redefina a senha naquela manhã, confira a conta em busca de uso indevido e lembre que o segundo fator bloquearia uma entrada posterior com essa senha. A Dra. Moss prometeu que não haveria crítica por um relato feito depressa.
+
+**EX057.** Só o backup separado de e-mail e arquivos traz o arquivo de volta, e só depois que uma restauração dessa pasta tiver funcionado. Os 30 dias diários do provedor nunca guardaram um arquivo que não estava no sistema da clínica.
+
+**EX058.** Desligue esse computador da rede. Ligue para Sofia, depois a Dra. Moss, depois o técnico. Não pague nada mostrado na tela. A regra do telefonema continua valendo.
 
 <a id="references"></a>
 ## Referências

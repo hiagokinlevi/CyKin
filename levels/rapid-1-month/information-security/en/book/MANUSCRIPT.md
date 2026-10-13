@@ -1,7 +1,7 @@
 # Information Security: Rapid Course
 
 - Language: English (`en`); course 002, Rapid course (1 month).
-- Editorial state: **published**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX050 have matching worked results with 0–3 rubrics; one offline lab uses only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **published**. Chapters 1–4 of 4 have hand-written teaching text; exercises EX001–EX058 have matching worked results with 0–3 rubrics; one offline lab uses only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: managers and staff of very small organisations who need to fix the most common security weaknesses in a month.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the lab counts synthetic shared files open to anyone with the link, by folder. Standards are cited by edition and paraphrased. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.
@@ -10,7 +10,7 @@
 
 ## How to use this draft
 
-Read in order. The four chapters follow one practice manager from what the clinic holds, through accounts, devices and sharing, and email fraud and people, to backups, incidents and a monthly routine. Run each lab where it appears, attempt the exercises before the worked results, and score yourself with the rubrics.
+Read in order. The four chapters follow one practice manager from what the clinic holds, through accounts, devices and sharing, and email fraud and people, to backups, incidents and a monthly routine. Run each lab where it appears, attempt the exercises before the worked results, and score yourself with the rubrics. Each chapter also has a concept table, a data table, a decision flowchart and a second worked example; EX051–EX058 ask you to apply those tools to a new clinic fact before you read the answers.
 
 ### Synthetic running case
 
@@ -40,7 +40,7 @@ ISO/IEC 27000:2026. Full list in [References](#references).
 <!-- cyberabc:lesson-figures:start ch-01 -->
 ### Lesson map
 
-Lesson 01 published. Map, example, EX001.
+Lesson 01 published. Map, example, EX051.
 
 ```mermaid
 flowchart TD
@@ -50,9 +50,11 @@ flowchart TD
   N3["1.3 What the clinic holds"]
   N4["1.4 What cannot be lost"]
   N5["1.5 Ground rules"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX001"]
+  N6["Concepts — three goals, one harm mark"]
+  N7["Data — where Hollybank's information sits"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX051"]
 ```
 
 ### Logical drawing
@@ -65,7 +67,9 @@ flowchart LR
   N3["1.3 What the clinic holds"]
   N4["1.4 What cannot be lost"]
   N5["1.5 Ground rules"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX001"]
+  N6["Concepts — three goals, one harm mark"]
+  N7["Data — where Hollybank's information sits"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX051"]
 ```
 
 ```text
@@ -87,7 +91,13 @@ flowchart LR
 [1.5 Ground rules]
     |
     v
-[Worked example] --> [Exercise EX001]
+[Concepts — three goals, one harm mark]
+    |
+    v
+[Data — where Hollybank's information sits]
+    |
+    v
+[Worked example] --> [Exercise EX051]
 ```
 <!-- cyberabc:lesson-figures:end ch-01 -->
 
@@ -126,6 +136,60 @@ Sofia joins the rapid course, lists what Hollybank's eighteen-person clinic hold
 
 Unrecorded changes make later problems hard to trace.
 
+### Concepts — three goals, one harm mark
+
+ISO/IEC 27000:2026 names confidentiality, integrity and availability. Sofia's high, medium or low mark is how Hollybank uses those goals before it buys any product. A mark is not a feeling about how secret a file sounds. It is the harm a stranger's reading, a wrong change, or a loss would cause on a real Monday.
+
+| Goal | Question | Already high at Hollybank | Still listed when the mark is low |
+|---|---|---|---|
+| Confidentiality | Who is harmed if a stranger reads this? | Client contacts and payment history | A marketing photo already on the public page |
+| Integrity | Which decision goes wrong if this is altered? | Supplier bank details on an invoice | A draft caption for a social post |
+| Availability | What stops during opening hours if this is gone? | Practice system: appointments and treatment notes | Last year's poster file |
+
+### Data — where Hollybank's information sits
+
+| Information | Place | How it arrives | Harm |
+|---|---|---|---|
+| Pet records, appointments, payments | Cloud practice system | Typed at reception | High. The morning queue and the treatment notes stop together |
+| Client name, address, phone, payment history | Same system | Reception | High confidentiality. Clients trusted the clinic, and the law requires protection |
+| Staff contracts and rotas | Shared folders | Office | Contracts are sensitive. Rotas look ordinary and become a sharing problem in the next chapter |
+| Supplier invoices and bank details | Email | The supplier | High integrity. A wrong account number moves money |
+| Laboratory results | Email | Outside laboratory | High. A missing or altered result changes treatment |
+| Marketing photos | Shared folders | Staff | Low only after the same image is already public |
+
+Count the places, not the brand names. Six kinds of information sit in three places: the practice system, shared folders and email. The change log records a move between those places. It does not replace the mark.
+
+### Decision flow — mark one item
+
+```mermaid
+flowchart TD
+  A["One item Sofia can name and locate"] --> B{"Would a stranger reading it harm a client or break a duty?"}
+  B -->|Yes| C["Confidentiality high"]
+  B -->|No| D{"Would a wrong change cause a wrong payment or a wrong treatment?"}
+  D -->|Yes| E["Integrity high"]
+  D -->|No| F{"Would losing it during opening hours stop appointments or notes?"}
+  F -->|Yes| G["Availability high"]
+  F -->|No| H["Medium or low. Keep it on the list"]
+  C --> I["Write the mark, the place and the date in the change log"]
+  E --> I
+  G --> I
+  H --> I
+  I --> J["Dr. Moss agrees in writing before any setting changes"]
+```
+
+An item can score high on more than one goal. The flow asks the three questions in order so a busy reception does not stop at the first word that sounds technical. The log line is the evidence that the mark was made. Without the date and the reason, a later problem cannot be traced, which is the ground rule in section 1.5.
+
+### Worked example — a photograph that is not marketing
+
+A nurse copies a wound photograph into the marketing folder so she can find it on the next shift. The filename begins with the client's first name. Sofia does not use the marketing row of the table. A stranger who opens that folder would see a clinical image tied to a client, so confidentiality is high. A missing file on the day of a recheck would also hide the comparison the vet needs, so availability is high for the working copy. Sofia moves the photograph into the practice system, deletes the shared copy, and writes the move in the change log before the end of the shift. Dr. Moss agrees in writing because staff will look in a new place tomorrow.
+
+> **Synthetic case.** The photograph, the filename and the nurse's shortcut are invented. No animal or client is depicted.
+
+### Apply
+
+- **EX051 — Mark a laboratory result.** An email names the client. If the text is wrong, the afternoon treatment changes. If the email is missing that morning, the vet cannot compare it with the notes. Give the confidentiality mark, the integrity mark, and say which goal is threatened first by the missing email. *Rubric:* 3 = confidentiality high because the client is named; integrity high because treatment would be wrong; availability is first if the email is missing when the vet needs it;; 2 = two of those three;; 1 = one;; 0 = none.
+- **EX052 — Late log.** Sofia moves the photograph on Monday and writes the change log on Friday. Which ground rule failed, and what can still be true on Wednesday? *Rubric:* 3 = each change is written with the date and the reason when it happens; on Wednesday the shared copy may still be open and nobody can trace the move;; 2 = the same-day log rule only;; 1 = vague;; 0 = none.
+
 ### Exercises
 
 - **EX001 — Course length.** How long is Sofia's course? *Rubric:* 3 = one month, four sessions;; 2 = partly correct;; 1 = partial;; 0 = none.
@@ -157,7 +221,7 @@ Continue to the next authored lesson.
 <!-- cyberabc:lesson-figures:start ch-02 -->
 ### Lesson map
 
-Lesson 02 published. Map, example, EX014.
+Lesson 02 published. Map, example, EX053.
 
 ```mermaid
 flowchart TD
@@ -168,9 +232,10 @@ flowchart TD
   N4["Lab — Shared files open to anyone with the link, by"]
   N5["2.4 Over-shared files"]
   N6["2.5 Closing the gaps"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6
-  N6 --> EX["Worked example"]
-  EX --> Q["Exercise EX014"]
+  N7["Concepts — identity, possession, and exposure"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX053"]
 ```
 
 ### Logical drawing
@@ -184,7 +249,8 @@ flowchart LR
   N4["Lab — Shared files open to anyone with the link, by"]
   N5["2.4 Over-shared files"]
   N6["2.5 Closing the gaps"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> Q["EX014"]
+  N7["Concepts — identity, possession, and exposure"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX053"]
 ```
 
 ```text
@@ -209,7 +275,10 @@ flowchart LR
 [2.5 Closing the gaps]
     |
     v
-[Worked example] --> [Exercise EX014]
+[Concepts — identity, possession, and exposure]
+    |
+    v
+[Worked example] --> [Exercise EX053]
 ```
 <!-- cyberabc:lesson-figures:end ch-02 -->
 
@@ -276,6 +345,62 @@ Sofia replaces a shared reception login, turns on second factors with security k
 
 Switching off updates to fix a printer leaves devices exposed long after the printer is forgotten.
 
+### Concepts — identity, possession, and exposure
+
+Three different controls are easy to mix up because all three are "turned on" in the same week.
+
+| Control | What it proves | Hollybank failure it answers | What it does not prove |
+|---|---|---|---|
+| Personal account | Which person wrote the note | One reception login on a note under the keyboard | That the password was secret |
+| Second factor | The person holds a second thing: app or security key | A stolen or guessed password | That the file share is closed |
+| Clinic-only share | A link is useless outside the clinic | 8 client files and 4 finance files open to anyone with the link | That the right people can still do the work |
+
+The rota shows the third limit. Closing a link without replacing the work makes part-time staff invent a new workaround. Sofia moved the rota into the practice system, behind sign-in, because the home check was a real task.
+
+### Data — the synthetic share count, ranked by harm
+
+The verified script, seed 2, printed these counts. Rank follows harm, not the size of the number.
+
+| Folder | Open | Of | Rank | Why this rank | Action in the chapter |
+|---|---:|---:|---|---|---|
+| Clients | 8 | 140 | 1 | A link exposes client information | Clinic-only the same day |
+| Finance | 4 | 60 | 1 | A link exposes bank information | Clinic-only the same day |
+| Rotas | 10 | 20 | 2 | Half the folder is open, and the reason is home access | Move the rota behind sign-in |
+| Marketing | 25 | 80 | 3 | Largest open count, images already public | Leave public |
+| All files | 47 | 300 | — | The total is a check, not an order of work | Rerun monthly |
+
+Twelve is 8 plus 4. Those twelve outrank the 25 marketing files. A monthly rerun catches a new share that used the old default.
+
+### Decision flow — a person, a device, or a link
+
+```mermaid
+flowchart TD
+  A["A request this week"] --> B{"Will two people write notes under one name?"}
+  B -->|Yes| C["Create a personal account. Remove the shared note. Time the switch"]
+  B -->|No| D{"Is the only barrier a password someone could reuse?"}
+  D -->|Yes| E{"Can this person use a work app on their own phone?"}
+  E -->|Yes| F["Turn on the app as the second factor"]
+  E -->|No| G["Issue a security key and record it in the change log"]
+  D -->|No| H{"Is a client or finance file open to anyone with the link?"}
+  H -->|Yes| I["Set clinic-only before any other folder"]
+  H -->|No| J{"Do staff need that file from outside?"}
+  J -->|Yes| K["Put the task behind sign-in. Do not leave the open link"]
+  J -->|No| L["If it is already public marketing, leave it and record why"]
+```
+
+Updates sit beside this flow. Three computers had updates off because a label printer broke. The repair is a newer driver, then updates on. Leaving updates off keeps every other flaw on those machines after the printer is forgotten.
+
+### Worked example — a locum who starts on Monday
+
+A locum vet covers Monday and is told to use the reception login "only for this week". Sofia refuses. Notes written that day would be attributed to the shared desk, which is the defect in section 2.1. She creates a personal account before the first patient, turns on a second factor, and asks Dr. Moss to approve the account in the change log. She does not wait to time the switch: the reception timing already showed a few seconds, and a week of shared notes would outlast the locum. When the locum leaves, the same log says which account to disable.
+
+> **Synthetic case.** The locum and the one-week instruction are invented.
+
+### Apply
+
+- **EX053 — Locum account.** What must exist before the locum's first patient, and which record says when to disable it? *Rubric:* 3 = a personal account with a second factor, approved in the change log; the same log names the account to disable when the locum leaves;; 2 = the personal account only;; 1 = vague;; 0 = none.
+- **EX054 — Order the open files.** Using the verified counts, which 12 files are closed first, which folder is moved behind sign-in, and which open files may stay? *Rubric:* 3 = 8 client and 4 finance first; rotas move behind sign-in; marketing may stay because it is already public;; 2 = the twelve and one other action;; 1 = a count without the action;; 0 = none.
+
 ### Exercises
 
 - **EX014 — Shared login.** What did reception use to sign in? *Rubric:* 3 = one shared login on a note;; 2 = partly correct;; 1 = partial;; 0 = none.
@@ -307,7 +432,7 @@ Continue to the next authored lesson.
 <!-- cyberabc:lesson-figures:start ch-03 -->
 ### Lesson map
 
-Lesson 03 published. Map, example, EX027.
+Lesson 03 published. Map, example, EX055.
 
 ```mermaid
 flowchart TD
@@ -317,9 +442,11 @@ flowchart TD
   N3["3.3 The rule in action"]
   N4["3.4 Short training"]
   N5["3.5 Reporting without blame"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX027"]
+  N6["Concepts — sign, channel, and report"]
+  N7["Data — one attempted payment and the training rhythm"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX055"]
 ```
 
 ### Logical drawing
@@ -332,7 +459,9 @@ flowchart LR
   N3["3.3 The rule in action"]
   N4["3.4 Short training"]
   N5["3.5 Reporting without blame"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX027"]
+  N6["Concepts — sign, channel, and report"]
+  N7["Data — one attempted payment and the training rhythm"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX055"]
 ```
 
 ```text
@@ -354,7 +483,13 @@ flowchart LR
 [3.5 Reporting without blame]
     |
     v
-[Worked example] --> [Exercise EX027]
+[Concepts — sign, channel, and report]
+    |
+    v
+[Data — one attempted payment and the training rhythm]
+    |
+    v
+[Worked example] --> [Exercise EX055]
 ```
 <!-- cyberabc:lesson-figures:end ch-03 -->
 
@@ -393,6 +528,57 @@ Sofia teaches phishing signs, sets a phone-back rule that stops a synthetic invo
 
 Calling the number in a suspicious message reaches the criminal, not the supplier.
 
+### Concepts — sign, channel, and report
+
+A suspicious email is not one trick. Hollybank separates what the message looks like, which channel is allowed to change money, and how a person reports a mistake.
+
+| Layer | What Sofia teaches | The clinic's concrete rule | The failure the rule blocks |
+|---|---|---|---|
+| Signs | Mismatched sender, unexpected urgency, a link whose destination differs from its text, a request for a password or a payment | Pause and check. No list is complete | The parcel message that linked to a lookalike address |
+| Channel | Bank-detail changes | Phone a number already on file, never the number in the message. A second person approves | The equipment-supplier message with a real invoice number and a same-day demand |
+| Report | One route, no blame for a fast report | Forward to Sofia or say so at the desk | The receptionist who typed a password into an odd page |
+
+The phone-back rule does not depend on how convincing the writing is. The criminal can copy an invoice number. The criminal cannot answer the telephone at the real supplier. Calling the number printed in the message defeats the rule, because that telephone belongs to the sender of the fraud.
+
+### Data — one attempted payment and the training rhythm
+
+| Fact | Value in this case | Use |
+|---|---|---|
+| Suppliers paid by the clinic | Drug wholesaler, laboratory, equipment suppliers | Any of them can be impersonated |
+| Message that arrived | Equipment supplier, correct invoice number, new account, pay today | Looks legitimate and is still unverified |
+| Money sent to the new account | Nothing | The known-number call came first |
+| Staff session | 10 minutes, weekly meeting, then one topic a month | Topics come from questions staff asked |
+| Password typed into an odd page | Reset the same morning. Account checked. No misuse found | Speed matters more than a perfect sign list |
+| Second factor | Would also block a later sign-in with that password | Reporting does not replace the factor from chapter 2 |
+
+### Decision flow — a message asks for money or a secret
+
+```mermaid
+flowchart TD
+  A["A message asks for money, a new account, or a password"] --> B{"Is the request a change of bank details?"}
+  B -->|Yes| C["Do not use any number written in the message"]
+  C --> D["Phone the supplier on the number already stored"]
+  D --> E{"The supplier confirms the change?"}
+  E -->|No| F["Pay nothing. Record the attempt. Tell the supplier. Thank the person who called"]
+  E -->|Yes| G["A second person approves. Then write the change in the log"]
+  B -->|No| H{"Did someone already type a password or open the link?"}
+  H -->|Yes| I["Reset the password the same morning and check the account"]
+  H -->|No| J["Forward the message to Sofia or say so at the desk"]
+  I --> K["No criticism. The fast report is the success"]
+  J --> K
+```
+
+### Worked example — the laboratory changes its account on a Tuesday
+
+On Tuesday an email quotes a real laboratory invoice and says the laboratory's bank account changes today. The office assistant almost calls the mobile number in the signature. Sofia stops that call. The stored number is the laboratory's accounts desk from last month's statement. The desk says it sent no change. The clinic pays the original account and nothing to the new one. A second person had been ready to approve, and does not approve. Sofia writes the attempt in the change log and thanks the assistant at the next ten-minute session, using the episode as the month's topic.
+
+> **Synthetic case.** The Tuesday message and the laboratory desk are invented. The rule is the same rule as the equipment-supplier episode.
+
+### Apply
+
+- **EX055 — Tuesday call.** Which number may be used, what the second person may approve, and how much is paid before the stored-number call? *Rubric:* 3 = only the number already stored; the second person approves nothing until that call confirms the change; nothing is paid before the call;; 2 = the stored number and the zero payment;; 1 = one of those;; 0 = none.
+- **EX056 — Typed password, same morning.** List the three actions that follow a quick report of a typed password, and what Dr. Moss has promised. *Rubric:* 3 = reset that morning, check the account, remember the second factor would block a later sign-in; no criticism because the report was quick;; 2 = reset and check, without the promise;; 1 = one action;; 0 = none.
+
 ### Exercises
 
 - **EX027 — Four signs.** Name two phishing signs. *Rubric:* 3 = mismatched sender, urgency, odd link, password or payment request;; 2 = two;; 1 = one;; 0 = none.
@@ -423,7 +609,7 @@ Continue to the next authored lesson.
 <!-- cyberabc:lesson-figures:start ch-04 -->
 ### Lesson map
 
-Lesson 04 published. Map, example, EX039.
+Lesson 04 published. Map, example, EX057.
 
 ```mermaid
 flowchart TD
@@ -433,9 +619,11 @@ flowchart TD
   N3["4.3 An incident card"]
   N4["4.4 A practice drill"]
   N5["4.5 The plan ahead"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5
-  N5 --> EX["Worked example"]
-  EX --> Q["Exercise EX039"]
+  N6["Concepts — a copy, a test, a card, a drill"]
+  N7["Data — restore evidence and the Monday fallback"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  N7 --> EX["Worked example"]
+  EX --> Q["Exercise EX057"]
 ```
 
 ### Logical drawing
@@ -448,7 +636,9 @@ flowchart LR
   N3["4.3 An incident card"]
   N4["4.4 A practice drill"]
   N5["4.5 The plan ahead"]
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> Q["EX039"]
+  N6["Concepts — a copy, a test, a card, a drill"]
+  N7["Data — restore evidence and the Monday fallback"]
+  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7 --> Q["EX057"]
 ```
 
 ```text
@@ -470,7 +660,13 @@ flowchart LR
 [4.5 The plan ahead]
     |
     v
-[Worked example] --> [Exercise EX039]
+[Concepts — a copy, a test, a card, a drill]
+    |
+    v
+[Data — restore evidence and the Monday fallback]
+    |
+    v
+[Worked example] --> [Exercise EX057]
 ```
 <!-- cyberabc:lesson-figures:end ch-04 -->
 
@@ -509,6 +705,63 @@ Sofia adds a backup for email and files, tests a restore that fails once then su
 
 Assuming a cloud provider will recover your deleted or encrypted files can leave the business with no copy.
 
+### Concepts — a copy, a test, a card, a drill
+
+A backup that has never been restored is a claim. Hollybank separates four artefacts. Each one answers a different question, and none of them replaces the others.
+
+| Artefact | Question it answers | What Hollybank learned | What would still be missing |
+|---|---|---|---|
+| Provider retention | How far back can the practice system go? | Daily copies, kept 30 days, restore quoted within a day | The clinic's email and shared files were not in that promise |
+| Separate backup | Who holds a copy of email and files? | Dr. Moss approved one after the gap was named | An untested job can still be empty |
+| Restore test | Can a named folder and a named mailbox return? | The folder returned in minutes. The mailbox failed until the first full copy finished, then worked a week later | A test does not restore the whole clinic |
+| Incident card and drill | What do people do in the first hour, and does the fallback work? | Call Sofia, then Dr. Moss, then the technician. Disconnect an affected computer. The paper list was three weeks old | A card nobody has rehearsed |
+
+The provider keeping its own service running is not a copy of a file the clinic deleted or that an attacker encrypted. That distinction is why the email backup exists.
+
+### Data — restore evidence and the Monday fallback
+
+| Check | Result | Where it is written |
+|---|---|---|
+| Practice-system retention | 30 days, daily | Sofia's note from the provider |
+| Email and shared files before the new service | No separate backup | The gap Dr. Moss approved spending to close |
+| Folder restore | Minutes, into a test area | Change log |
+| First mailbox restore | Failed. The first full copy had not finished | Change log, including the failure |
+| Second mailbox restore | Worked a week later | Change log |
+| Drill | 20 minutes. System treated as down for four hours | Paper notes entered later |
+| Printed client list | Three weeks old, missing new clients | Weekly reminder: print a fresh list and lock it away |
+| Monthly routine | Sharing check, leavers' accounts, one ten-minute session, one restore test | Set at the last session |
+
+Both restore results stay in the log. Recording only the success would hide the week in which the mailbox copy did not exist.
+
+### Decision flow — the practice system is down, or a screen asks for money
+
+```mermaid
+flowchart TD
+  A["Monday morning problem"] --> B{"Is a computer showing a ransom note or acting on its own?"}
+  B -->|Yes| C["Disconnect that computer from the network"]
+  C --> D["Call Sofia, then Dr. Moss, then the technician"]
+  B -->|No| E{"Is the practice system unavailable?"}
+  E -->|Yes| F["Use today's paper appointment sheet"]
+  F --> G["Phone urgent clients from a list printed this week and locked away"]
+  G --> H["Write treatments on paper for entry after the system returns"]
+  E -->|No| I{"Is the message demanding a new bank account?"}
+  I -->|Yes| J["Use the phone-back rule. The incident card does not authorise the payment"]
+  I -->|No| D
+```
+
+The card and the payment rule stay in force together. A frightening screen is not a reason to pay the account number printed on that screen.
+
+### Worked example — a full copy that is not a finished backup
+
+The new backup service shows a green dashboard glyph on Thursday. Sofia does not record the backup as tested. The glyph appeared before the first full copy of the mailbox finished, which is the same condition that made the first restore fail. She asks the technician to restore one mailbox into the test area and waits for that result. The restore fails. She writes the failure, leaves the glyph out of the monthly routine, and schedules the second attempt for the following week. Only the second, successful restore of that named mailbox goes into the change log as a passed test.
+
+> **Synthetic case.** The green dashboard glyph, the mailbox nickname and the seven-day wait are invented. The failure condition matches the restore already recorded in section 4.2.
+
+### Apply
+
+- **EX057 — Whose copy is it?** The practice-system provider keeps 30 days of daily backups. A receptionist deletes a shared-folder file that was never in the practice system. Which copy brings it back, and which promise does not? *Rubric:* 3 = only the separate email-and-files backup, after a restore of that folder has succeeded; the provider's 30 days never held this file;; 2 = the separate backup without the test;; 1 = the provider;; 0 = none.
+- **EX058 — Ransom screen at reception.** State the first technical step, the call order, and whether the account number on the screen may be paid. *Rubric:* 3 = disconnect that computer; call Sofia, then Dr. Moss, then the technician; pay nothing from the screen, the phone-back rule still applies;; 2 = disconnect and the call order;; 1 = one of those;; 0 = none.
+
 ### Exercises
 
 - **EX039 — Provider backups.** How long does the practice system provider keep backups? *Rubric:* 3 = thirty days;; 2 = partly correct;; 1 = wrong;; 0 = none.
@@ -536,7 +789,7 @@ The chapter index leads to the next course in the study path.
 
 ## Worked results
 
-Model answers for EX001–EX050. Sofia Lindqvist, Mr. Tomasz Nowak, Eastgate Training Centre, Hollybank Veterinary Practice and every figure are synthetic. Lab answers quote verified outputs. Any answer meeting the rubric scores equally.
+Model answers for EX001–EX058. Sofia Lindqvist, Mr. Tomasz Nowak, Eastgate Training Centre, Hollybank Veterinary Practice and every figure are synthetic. Lab answers quote verified outputs. Any answer meeting the rubric scores equally.
 
 **EX001.** One month, with four weekly sessions.
 
@@ -637,6 +890,23 @@ Model answers for EX001–EX050. Sofia Lindqvist, Mr. Tomasz Nowak, Eastgate Tra
 **EX049.** Rerun the sharing check and test one restore.
 
 **EX050.** The data governance rapid course, to address retention of old client records.
+
+
+**EX051.** Confidentiality is high because the client is named. Integrity is high because a wrong result would change the treatment. If the email is missing when the vet needs it, availability is the goal threatened first.
+
+**EX052.** The ground rule is to write each change, with the date and the reason, when it happens. On Wednesday the shared copy may still be open, and the move cannot be traced.
+
+**EX053.** A personal account with a second factor must exist before the first patient, and Dr. Moss approves it in the change log. That log names the account to disable when the locum leaves.
+
+**EX054.** Close the 8 client files and the 4 finance files first. Move the rotas behind sign-in. The 25 marketing files may stay because those images are already public.
+
+**EX055.** Use only the number already stored. The second person approves nothing until that call confirms the change. Nothing is paid before the call.
+
+**EX056.** Reset the password that morning, check the account for misuse, and remember that the second factor would block a later sign-in with that password. Dr. Moss promised no criticism for a report made quickly.
+
+**EX057.** Only the separate backup of email and shared files can bring the file back, and only after a restore of that folder has succeeded. The provider's 30 daily days never held a file that was not in the practice system.
+
+**EX058.** Disconnect that computer from the network. Call Sofia, then Dr. Moss, then the technician. Pay nothing shown on the screen. The phone-back rule still applies.
 
 <a id="references"></a>
 ## References
