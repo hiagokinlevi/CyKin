@@ -49,21 +49,31 @@ Leila Ahmadi is the practice manager and only IT person at the fictional Oakfiel
 
 NIST SP 800-145 describes cloud computing as on-demand access to shared computing resources managed by a provider. For Oakfield, that means the storage service, the email service and the hosted platform running the booking container. The clinic owns no servers.
 
+Because Oakfield owns no servers, every security question becomes a question about accounts and settings in someone else's service. The patient letters folder shows it: no hardware was broken into; one sharing setting in the storage service, chosen by a colleague in January, made a folder of treatment letters open to anyone holding a link.
+
 ### 1.3 Containers in plain terms
 
 A container is a packaged application with everything it needs to run. The booking app container was built by the developer from a base image; if the base image is old, the app inherits its flaws even if the clinic never touches the code.
+
+The clinic sees only the booking pages, so the age of the base image was invisible to Leila until she asked. The developer's answer, an older image last rebuilt a year ago, meant a year of fixes to the image's system libraries had never reached the clinic's app, even though nobody had changed the app's own code.
 
 ### 1.4 Who does what
 
 Each provider's shared responsibility page explains that the provider secures its infrastructure while the customer controls accounts, sharing settings, data and what it runs. Oakfield's sharing mistake sits entirely on the clinic's side.
 
+The storage provider's systems worked exactly as designed: a link set to "anyone with the link" opened without login because the clinic had chosen that setting. No complaint to the provider would have fixed it. The booking container is split: the hosting company runs the platform, the developer builds the image, and the clinic must agree how often it is rebuilt.
+
 ### 1.5 Proportionate decisions
 
 A small clinic cannot do everything at once. Ben suggests three first decisions: fix sharing on sensitive folders today, turn on multi-factor authentication for every account this week, and agree with the developer how the booking container will be kept updated.
 
+The order follows harm and effort. The open folder was exposing patient letters now, and fixing it took one setting change, so it came first, that afternoon. Multi-factor authentication needed every staff member's time and two hardware keys, so it took the week. The container needed the developer's agreement, so the first step there was a conversation, not a change.
+
 ### 1.6 Recording decisions
 
 Leila writes each decision with date, reason and owner in a one-page log.
+
+The first entries show the pattern: "Patient letters folder set to staff-only — April, afternoon of the patient's report — exposure of treatment letters — Leila." When Mark later decided, as data controller, how to handle the exposure, his decision went into the same log with its reason. A log kept from the first day means that, months later, nobody has to remember why invoices became staff-only or why the old backup was deleted.
 
 ### Worked example
 
@@ -111,29 +121,43 @@ You will (1) work within the clinic's authority and data protection duties; (2) 
 
 As practice manager, Leila is authorised by the clinic's owner, physiotherapist Mark Ellis, to manage accounts and settings. She confirms this in writing for the course and agrees she will only review Oakfield's own services.
 
+Getting this in writing is not a formality. Leila will change sharing settings, remove the shared reception login and delete an old backup; each could upset a colleague or touch patient data. Mark's written authority shows she acted for the clinic. Limiting herself to Oakfield's own services means she does not probe the hospital's system, the developer's other clients or the providers' infrastructure.
+
 ### 2.2 Evidence first
 
 Before changing more settings, Leila exports the storage service's sharing report and the activity log for the patient letters folder. She saves them with date and time in a restricted folder.
+
+Order matters because the storage service may show only the current settings. Once a folder is changed to staff-only, the sharing report shows staff-only, and the record of who opened the letters while the link was open survives only in the activity log. When a colleague later suggests deleting the log to tidy up, Leila keeps it: it is the clinic's proof of what happened.
 
 ### 2.3 What the log shows
 
 The activity log shows the folder was set to anyone-with-link in January when a colleague shared one letter with a hospital. The log records four views from outside the clinic: three match the hospital's domain, one is the patient's own forwarded view.
 
+Those four views are what turn worry into an answer. Three came from the hospital the letter was meant for; the fourth was the patient opening the link she had been forwarded. No view came from an unknown address. That is why Leila can record the risk as low, while still recording that the folder was open from January to April.
+
 ### 2.4 Data protection
 
 Leila follows the regulator's guidance for small organisations, recording what happened, who was affected and why she judges the risk low. Mark, as data controller, makes the final decision and records it.
+
+Her record states the facts from the log: the folder was open by link from January to April, four outside views were recorded, three matched the hospital's domain and the fourth was the patient's own. It also states her reasoning about risk. Mark makes the decision because the clinic, not its practice manager, is legally responsible for patient data, and his decision is recorded alongside hers.
 
 ### 2.5 Safe practice
 
 Leila does not try to "test" whether other links work by guessing addresses or using outside tools. She uses the provider's own reports and settings pages.
 
+Guessing link addresses might reach someone else's files, and outside scanning tools might break the provider's terms. The provider's sharing report already lists every item shared by link, which is what the course lab checks against the clinic's rule. Using it gives Leila a complete answer without touching anything she is not authorised to test.
+
 ### 2.6 Accounts
 
 Each staff member has their own account; the shared reception login is replaced, so the logs show who did what.
 
+The shared reception login was the gap here. If the patient letters folder had been changed by someone signed in as reception, the activity log could not say which of the eight staff did it. With named accounts, the log shows who shared what, and a leaver's access can be removed without changing everyone else's password. The monthly routine's leavers check depends on this.
+
 ### 2.7 Multi-factor authentication
 
 All accounts get a second factor. Two staff without smartphones receive hardware keys.
+
+Multi-factor authentication matters most for the accounts that can change sharing settings: a stolen password alone could otherwise reopen the patient letters folder to the world. The two hardware keys solve a practical problem rather than forcing the two staff members to buy smartphones. Leila records which staff have which factor, so the monthly admin check can confirm that nobody has slipped back to password only. Each key is labelled with its owner's name, and a spare is kept locked in the office.
 
 ### Leavers
 
@@ -185,11 +209,17 @@ You will (1) list the clinic's data and where it is shared; (2) check sharing ag
 
 Leila writes a one-line rule: sensitive items may be shared only with staff or administrators; non-sensitive items may also be public. Patient letters, referrals, invoices, backups and the booking app configuration count as sensitive.
 
+The rule is short enough for any of the eight staff to apply without asking Leila. The list of sensitive items comes from what the clinic holds: treatment letters and referrals about patients, invoices with their details, backups that contain all of these, and the booking app configuration that holds a database password.
+
 ### 3.2 Checking every item
 
 The April problem might not be the only one, so she checks every top-level item in storage against the rule.
 
-### Lab — Lab — sharing check
+A problem found by luck, through one patient's forwarded link, says nothing about what else is shared. The lab checks the sharing setting of all 8 top-level items against the rule. It looks only at what the provider's sharing report lists, so it touches no file and opens no link.
+
+Its result found two items, invoices and old-backup.zip, that nobody had reported.
+
+### Lab — sharing check
 
 ```python
 """List synthetic cloud storage items shared more widely than policy allows (stdlib only)."""
@@ -215,21 +245,33 @@ items 8, sensitive 5, shared too widely 3
 
 Of 8 items, 5 are sensitive and 3 are shared too widely: patient-letters (already fixed in chapter 1, still in the April export), invoices and old-backup.zip, all set to anyone-with-link.
 
+The patient letters folder appears because the sharing report was exported before Leila changed it; that is the evidence copy, not a new problem. The two new findings matter: invoices hold patients' names and payment details, and old-backup.zip holds a full copy of data from the previous system. Both had been open to anyone with the link.
+
 ### 3.4 Acting
 
 Invoices are set to staff-only. The old backup, from a previous system, is no longer needed; after checking with Mark and noting the clinic's retention rules, Leila deletes it. Fewer copies mean less to protect.
+
+Leila records both changes in her decision log with their dates and reasons, and checks the activity log for each item before acting, as she did for the patient letters. The rota, price list and logo stay as they are: they are not sensitive, and the rule allows the price list and logo to be public.
 
 ### 3.5 The booking container
 
 Leila asks the developer which base image the booking app uses and how often it is rebuilt. The answer is an older image last rebuilt a year ago. NIST SP 800-190 advises rebuilding images regularly from maintained bases and using trusted registries; Shu et al. (2017) found many public images carried known vulnerabilities.
 
+A year without a rebuild means that fixes released for the base image in that time never reached the booking app. Leila does not need to read container files to act on this; she needs an agreement with the developer about how often images are rebuilt and how the clinic will know it happened.
+
 ### 3.6 Agreement with the developer
 
 They agree on a monthly rebuild from a maintained base, with the developer sending a one-line confirmation each time.
 
+The one-line confirmation turns the agreement into something Leila can check. The monthly routine includes "confirm the booking app image was rebuilt", and the confirmation email is the evidence. In June it was missing because the developer was on holiday, which is why they later agreed a backup contact.
+
+Leila files each confirmation in the decision log, so a missing month is visible at a glance, as June's was.
+
 ### 3.7 Secrets
 
 The booking app's configuration contains a database password. The developer moves it into the platform's secret settings, following the Kubernetes good-practice idea of keeping secrets out of images and files.
+
+A password written in a configuration file travels with every copy of that file: into backups, into the developer's laptop and, in Oakfield's case, into a storage item that is now on the sensitive list. Moving it to the platform's secret settings means a leaked backup or image no longer reveals the database password. The developer also changes the password, because the old one may already have been copied.
 
 ### Worked example
 
@@ -276,11 +318,17 @@ You will (1) set up a monthly routine; (2) measure it over three months; (3) bri
 
 Ben helps Leila write six monthly tasks: review sharing links, check admin accounts and multi-factor authentication, check that a backup can be restored, confirm the booking app image was rebuilt, review leavers' access, and read the providers' security notices.
 
+Each task can be done by someone who is not an IT specialist, with a clear result: a list of sharing links checked against the rule, a list of accounts with their second factor, a test folder restored, a confirmation email from the developer, a leavers list compared with active accounts, and the providers' notices read.
+
 ### 4.2 Why these six
 
 Each task matches something that went wrong or nearly did: sharing, accounts, backups, the old image, leavers and changes announced by providers.
 
-### Lab — Lab — routine record
+Sharing comes from the patient letters link. Accounts come from the shared reception login and the missing second factors. Backups come from old-backup.zip. The old image comes from the year without a rebuild. The leavers task protects named accounts, and the providers' notices are how the clinic learns of changes like new sharing defaults.
+
+A task with no such origin would be the first to be skipped on a busy Monday.
+
+### Lab — routine record
 
 ```python
 """Score a synthetic monthly cloud security routine over three months (stdlib only)."""
@@ -304,21 +352,37 @@ July: 6/6 done
 
 May: 3 of 6 tasks done; missed backup restore, image update and reading notices. June: 5 of 6; the image update was still missing. July: 6 of 6.
 
+The trend is the useful part. May's three misses each had a different cause; June fixed two of them; the image update was the slowest because it depended on someone outside the clinic. Recording the routine as numbers makes this visible: without the lab, "we mostly did it" would have hidden the fact that the image was not updated for two months in a row.
+
 ### 4.4 Fixing the gaps
 
 The backup restore was missed in May because nobody knew how; Leila practises in June with a test folder. The image update was late because the developer was on holiday; they agree a backup contact.
+
+Both fixes target the cause, not the symptom. Practising a restore on a test folder in June means the next real restore is not the first one. A backup contact at the developer means the clinic's monthly rebuild no longer depends on one person being available, which is the same idea Leila later applies to herself by training the deputy manager.
 
 ### 4.5 Keeping it light
 
 The routine takes about an hour a month. Leila books it in the calendar for the first Monday.
 
+One hour on a fixed day is what makes the routine survive a busy clinic. When Leila is on leave, the deputy manager follows the one-page instructions; August's routine was completed that way with Leila watching.
+
+The routine is kept short on purpose: a two-day audit would be postponed whenever the clinic was busy, while one hour on a fixed Monday gets done. Leila records each month's result on the one-page log, so the trend from May to July is there for Mark to read, and the deputy can see what was missed last time before starting.
+
 ### 4.6 Course synthesis
 
 In one month Leila moved from a forwarded link to a working routine: understand what the clinic controls, work within authority, keep evidence, check everything against a simple rule, keep dependencies current and repeat monthly.
 
+Each step has a matching piece of evidence: the shared responsibility pages, Mark's written authority, the exported activity log, the sharing lab result, the developer's monthly confirmation and the routine record. A new practice manager could pick up Oakfield's security from those documents alone.
+
+The deputy manager's August routine, done with Leila watching, tested exactly that.
+
 ### 4.7 Further steps
 
 The CIS Benchmarks and CSA CCM v4 are more detailed than a small clinic needs now, but Leila keeps them as references if Oakfield grows.
+
+If Oakfield opened a second clinic or moved the booking app to Kubernetes, Leila would start from the parts that match what already exists: the access and data-protection controls in CCM, and the benchmark for whichever storage service the clinic uses, rather than reading either document from start to finish.
+
+Until then, the six monthly tasks cover what an eight-person clinic actually runs.
 
 ### Recording
 
