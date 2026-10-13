@@ -1,7 +1,7 @@
 # Operações de Segurança e Blue Team: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 130, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–24 de 50 já estão escritos em português, com os exercícios EX001–EX072 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 25–50 (EX073–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–28 de 50 já estão escritos em português, com os exercícios EX001–EX084 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 29–50 (EX085–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, construir, verificar e operar sistemas de monitoramento de segurança e os processos de SOC em torno deles.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limite ético e legal: monitore e responda apenas em sistemas que você está autorizado a defender; nada de código de exploração, *payloads*, procedimentos de ataque ou instruções para escapar da detecção. As detecções são ensinadas do lado do defensor, com telemetria sintética. Todas as evidências, pessoas e organizações são **sintéticas**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ NIST [SP 800-61r3](https://doi.org/10.6028/NIST.SP.800-61r3), [SP 800-92](https:
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) |
 
-Capítulos 25–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-25), até a chegada dos próximos lotes.
+Capítulos 29–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-29), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1600,11 +1600,263 @@ Projete variantes de regras para propósitos distintos e escolha-as por resultad
 
 [← Capítulo 23 (rascunho)](#ch-23) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 25 (rascunho) →](#ch-25)
 
+<a id="ch-25"></a>
+
+## Capítulo 25 — Ateliê de projeto I
+
+### Objetivos de aprendizagem
+
+Você vai (1) trabalhar em equipe num problema aberto de projeto de SOC; (2) gerar e comparar projetos alternativos; (3) apresentar um projeto com sua justificativa; (4) responder à crítica num ambiente de ateliê.
+
+### 25.1 O problema do ateliê
+
+As equipes projetam o monitoramento das redes dos depósitos da Lindqvist, onde os leitores portáteis e as estações de trabalho antigas não conseguem rodar agentes. O projeto precisa detectar conexões incomuns dos depósitos para os sistemas de negócio. Conexões incomuns podem incluir um leitor conversando com um servidor do financeiro, ou uma estação de trabalho de depósito alcançando sistemas que nunca usou antes. Sem agentes, o projeto precisa se apoiar na observação da rede. As equipes também precisam considerar que os depósitos diferem em tamanho e conectividade, de modo que um único projeto precisa funcionar num pequeno depósito rural e num grande centro de distribuição.
+
+### 25.2 Gerando alternativas
+
+A equipe de Amara lista três opções: monitoramento de fluxos na fronteira entre depósitos e negócio; um sensor de detecção de rede com análise de protocolos; e o aperto das regras de *firewall*, com registro das conexões negadas. Listar várias opções antes de avaliar qualquer uma impede que a primeira ideia vire a única. As três diferem em natureza: uma observa fluxos, uma inspeciona conteúdo, uma restringe o tráfego e registra as recusas. Cada uma tem custos e pontos cegos diferentes, que a comparação por critérios vai evidenciar, e uma solução híbrida pode surgir quando as peças forem compreendidas.
+
+### 25.3 Critérios
+
+Eles comparam as opções em visibilidade, custo, carga operacional, privacidade e modos de falha, usando uma tabela ponderada. A visibilidade pergunta o que cada opção consegue ver; o custo inclui *hardware*, licenças e tempo da equipe; a carga operacional pergunta quem a mantém; a privacidade considera se o conteúdo do tráfego dos funcionários é coletado; os modos de falha perguntam o que acontece quando ela quebra. Os pesos são acordados antes da pontuação, e cada nota cita uma evidência, como uma folha de dados do fornecedor ou uma medição. A privacidade tem peso alto porque os funcionários dos depósitos usam a mesma rede para mensagens pessoais nos intervalos, e a política de monitoramento da empresa limita a coleta de conteúdo.
+
+### 25.4 Crítica no ateliê
+
+Cada equipe apresenta por dez minutos; colegas e professores contestam as suposições. O ateliê valoriza o raciocínio claro mais do que *slides* bem acabados. A crítica mira o projeto, não as pessoas. Contestações típicas são "o que acontece se o sensor falhar?" ou "como vocês vão saber que as regras funcionam?". *Slides* com diagramas impressionantes, mas sem raciocínio, recebem notas baixas. Os professores anotam fraquezas recorrentes entre as equipes e as tratam na aula seguinte. O retorno é escrito em cartões e entregue a cada equipe depois de sua vez, para que os comentários não se percam e os alunos mais calados também possam contribuir.
+
+### 25.5 Iteração
+
+Depois da crítica, as equipes revisam. A equipe de Amara descobre que o *firewall* da fronteira já registra os fluxos permitidos e negados; combinar os logs do *firewall* com um pequeno número de regras de permissão sai mais barato do que um novo sensor. A descoberta veio de perguntar à equipe de TI dos depósitos durante a crítica, o que mostra o valor de envolver quem conhece os sistemas existentes. Usar os logs que o *firewall* já produz custa quase nada em *hardware*. Regras de permissão estritas reduzem o tráfego normal a uma lista curta, de modo que qualquer fluxo negado ou inesperado se destaca com clareza nos logs.
+
+### 25.6 Documentação
+
+O projeto final inclui um diagrama, os fluxos de dados, os requisitos atendidos, os riscos e um plano de testes. O diagrama mostra de onde vêm os logs e para onde vão; os fluxos de dados dão formatos e volumes; os requisitos atendidos remetem ao enunciado; os riscos dizem o que pode dar errado; o plano de testes mostra como o projeto será comprovado. Um revisor que não assistiu à apresentação deve entender o projeto só pelo documento. A equipe de Amara limita o documento a seis páginas. Os apêndices guardam os detalhes.
+
+### 25.7 Trabalho em equipe
+
+Os papéis se revezam: apresentador, relator, crítico. Todos explicam todas as partes. Revezar os papéis impede que um membro confiante apresente tudo enquanto os outros ficam calados. O relator registra decisões e críticas; o crítico procura fraquezas antes que pessoas de fora o façam. Exigir que todos expliquem todas as partes significa que os professores podem questionar qualquer membro, o que revela se o entendimento é compartilhado ou está nas mãos de uma única pessoa. No fim, cada membro escreve uma nota curta sobre o que contribuiu e o que aprendeu com outro membro, que os professores leem junto com o projeto da equipe.
+
+### Privacidade no projeto
+
+Os dispositivos dos depósitos são usados por motoristas e funcionários do armazém. O projeto registra apenas metadados das conexões, não o conteúdo, e os guarda por 30 dias, o que o responsável pela privacidade revisa e aprova. As equipes incluem essas revisões no plano, em vez de acrescentá-las no fim.
+
+### Exemplo resolvido
+
+O projeto final da equipe: restringir o tráfego entre depósitos e negócio a cinco serviços necessários, registrar todas as tentativas negadas, alertar quando um dispositivo de depósito tentar um destino novo mais de três vezes numa hora e revisar semanalmente. Custo estimado: apenas tempo de configuração. Risco principal: falha da alimentação de logs do *firewall*, coberta por monitoramento de *heartbeat*.
+
+> **Caso sintético.** O ateliê e os projetos são inventados.
+
+### Erros e limites
+
+Os projetos do ateliê não foram testados; o laboratório do capítulo 30 os verifica.
+
+### Exercícios
+
+- **EX073 — Três opções.** Liste as três opções de monitoramento dos depósitos consideradas. *Rubrica:* 3 = monitoramento de fluxos, sensor de rede, aperto do *firewall* com registro; 2 = duas; 1 = uma; 0 = nada.
+- **EX074 — Resultado da crítica.** O que a crítica mudou no projeto? *Rubrica:* 3 = uso dos logs existentes do *firewall*; mais barato que um sensor novo; 2 = parcial; 1 = vago; 0 = nada.
+- **EX075 — Projeto final.** Resuma o projeto final e seu risco principal. *Rubrica:* 3 = 5 serviços permitidos, negações registradas, alerta para destinos novos repetidos, revisão semanal; risco de falha da alimentação; 2 = parcial; 1 = vago; 0 = nada.
+
+### Síntese
+
+Os ateliês ensinam projeto por meio de alternativas, critérios e crítica; o bom projeto mais barato muitas vezes reaproveita o que já existe.
+
+### Continue estudando — capítulo 25 de 50
+
+[← Capítulo 24 (rascunho)](#ch-24) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 26 (rascunho) →](#ch-26)
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Operações de segurança e blue team: alternativas de arquitetura
+
+### Objetivos de aprendizagem
+
+Você vai (1) comparar modelos de arquitetura de SOC, como centralizado, distribuído e híbrido; (2) avaliar opções de SIEM, de *data lake* e de serviço gerenciado; (3) pesar decisões de construir ou comprar; (4) documentar as decisões de arquitetura com seus motivos.
+
+### 26.1 Modelos de SOC
+
+Zimmerman (2014) e Knerler, Parker e Zimmerman (2022) descrevem estruturas de SOC que vão de pequenas equipes centralizadas a modelos em níveis, distribuídos e federados. A Lindqvist, com uma sede e quarenta depósitos, mantém um pequeno SOC central, com a equipe de TI dos depósitos como contatos locais. A estrutura acompanha o tamanho e a dispersão. Um modelo em níveis com muitos especialistas convém a uma organização grande; um modelo federado convém a uma com unidades de negócio independentes. Os quarenta depósitos da Lindqvist são numerosos demais para a equipe central visitá-los, mas pequenos demais para terem os próprios analistas, então os contatos de TI dos depósitos atuam como olhos e mãos no local quando necessário.
+
+### 26.2 Opções de plataforma de dados
+
+Um SIEM tradicional indexa eventos para busca rápida e regras embutidas. Uma abordagem de *data lake* armazena barato e consulta com flexibilidade, mas exige mais engenharia. Muitos SOCs combinam os dois: SIEM quente para dados recentes e de alto valor e um *lake* para dados volumosos e de longo prazo. A indexação de um SIEM torna as buscas rápidas, mas custa armazenamento e licenças cobradas por volume. Um *lake* guarda dados brutos com baixo custo, mas busca mais devagar e exige engenheiros para construir consultas e *pipelines*. Combinar os dois põe os dados onde seu uso justifica o custo: logs de autenticação recentes no SIEM, meses de logs de *firewall* no *lake*.
+
+### 26.3 Serviços gerenciados
+
+Um provedor de detecção gerenciada pode vigiar à noite e trazer um conhecimento de ameaças mais amplo, mas conhece menos o contexto local e exige acordos de escalonamento claros. A Lindqvist considera usar um para a cobertura noturna. A cobertura noturna por um provedor pode sair mais barata do que um turno da noite interno completo. Os riscos são o provedor escalonar demais ou de menos, ou não ter contexto para julgar os alertas. Acordos claros declaram quais alertas o provedor trata, o que ele pode fazer por conta própria e com que rapidez precisa chamar o engenheiro de plantão da Lindqvist.
+
+### 26.4 Construir ou comprar
+
+Construir dá controle e aderência; comprar dá rapidez e suporte. Os engenheiros estimam o custo total ao longo de vários anos, incluindo o tempo da equipe, e não apenas o preço da licença. Uma ferramenta construída se encaixa exatamente, mas precisa de pessoas para mantê-la depois que seus autores seguem adiante. Uma ferramenta comprada vem com atualizações e suporte, mas pode obrigar os processos a se ajustarem ao seu desenho. Comparar os custos em cinco anos, incluindo as horas da equipe para integração e manutenção, muitas vezes muda o quadro em relação ao preço da licença sozinho. A comparação da Lindqvist para seu sistema de casos mostra que uma licença mais barata custaria mais em trabalho de integração em dois anos, o que decide a escolha.
+
+### 26.5 Registros de decisão
+
+Cada escolha importante é escrita como um registro de decisão de arquitetura: contexto, opções, decisão, consequências. Futuros engenheiros conseguem ver por que as coisas são como são. Os registros são curtos, muitas vezes de uma página, e escritos no momento da decisão. As consequências incluem benefícios e custos, como a dependência de um formato do fornecedor. Quando uma equipe posterior se perguntar por que o *lake* usa um formato específico, o registro explica o raciocínio e as opções rejeitadas, poupando-a de repetir a análise. A Lindqvist os guarda junto do código.
+
+### 26.6 Reversibilidade
+
+Prefira escolhas que possam ser desfeitas. Manter os logs brutos num formato aberto torna possível trocar de plataforma mais tarde. Algumas escolhas são difíceis de reverter: dados guardados apenas num formato proprietário podem exigir uma conversão cara para serem movidos. Manter os logs brutos em formatos abertos, como linhas JSON, ao lado da cópia da própria plataforma preserva as opções. Escolhas reversíveis permitem a uma equipe andar mais depressa, já que um erro pode ser corrigido sem um grande projeto. Os termos do contrato também contam: um prazo inicial curto com um fornecedor é mais fácil de deixar do que um compromisso de cinco anos assinado em troca de desconto.
+
+### 26.7 Caso
+
+Com o armazenamento crescendo (capítulo 6), a Lindqvist precisa decidir se expande o SIEM ou acrescenta um *lake* para os logs de *firewall* e de DNS. Expandir o SIEM mantém tudo num só lugar, mas custa mais à medida que o volume cresce. Acrescentar um *lake* para os logs de *firewall* e de DNS, que são volumosos, mas pesquisados com menos frequência, mantém o SIEM para os dados de alto valor. Amara prepara a comparação com estimativas de custo em cinco anos e o efeito sobre a velocidade de investigação para cada tipo de log. A decisão vai ao CISO com uma recomendação e é registrada como registro de decisão.
+
+### Exemplo resolvido
+
+O registro de decisão de Amara recomenda manter os dados do portal, de identidade e de *endpoint* no SIEM por 90 dias e enviar os logs de *firewall* e de DNS para um *lake* depois de 14 dias, com buscas no *lake* para as investigações. Consequência anotada: as consultas ao *lake* levam minutos, não segundos, então os *playbooks* de caça precisam levar isso em conta.
+
+> **Caso sintético.** As opções e as decisões são inventadas.
+
+### Erros e limites
+
+As alegações dos fornecedores sobre escala e custo precisam ser testadas com seus próprios dados.
+
+### Exercícios
+
+- **EX076 — Plataforma híbrida.** Explique a abordagem híbrida de SIEM mais *lake*. *Rubrica:* 3 = SIEM quente para dados recentes de alto valor, *lake* para volume/longo prazo; 2 = parcial; 1 = só um; 0 = nada.
+- **EX077 — Cobertura noturna gerenciada.** Cite um benefício e um risco de um provedor gerenciado para as noites. *Rubrica:* 3 = cobertura e conhecimento mais amplo vs menos contexto local, acordos de escalonamento; 2 = um lado; 1 = vago; 0 = nada.
+- **EX078 — Registro de decisão.** Que seções compõem um registro de decisão de arquitetura? *Rubrica:* 3 = contexto, opções, decisão, consequências; 2 = três; 1 = uma; 0 = nada.
+
+### Síntese
+
+Compare estruturas de SOC e plataformas de dados pelo custo total, pela aderência e pela reversibilidade, e registre por que as decisões foram tomadas.
+
+### Continue estudando — capítulo 26 de 50
+
+[← Capítulo 25 (rascunho)](#ch-25) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 27 (rascunho) →](#ch-27)
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Operações de segurança e blue team: projeto de controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar controles de detecção e de resposta com gatilhos e ações definidos; (2) especificar *playbooks* para alertas comuns; (3) projetar salvaguardas contra ações automatizadas nocivas; (4) mapear os controles às técnicas do D3FEND.
+
+### 27.1 Controles de detecção e de resposta
+
+Um controle de detecção encontra a atividade; um controle de resposta age sobre ela. Para a tomada de conta no portal, a detecção é a regra de possível tomada de conta; a resposta é bloquear a conta, invalidar as sessões e contatar o cliente. Cada um precisa do outro. Uma detecção sem resposta planejada deixa os analistas inseguros sobre o que fazer às 3 da manhã, enquanto uma resposta sem detecção confiável ou nunca é acionada ou é acionada nas contas erradas. Projetá-los juntos permite a Amara casar a força da evidência com a força da ação: uma tomada de conta provável justifica invalidar as sessões, enquanto uma mera tentativa não justifica deixar o cliente sem acesso.
+
+### 27.2 *Playbooks*
+
+Um *playbook* lista os passos que um analista segue para um tipo de alerta: verificar, delimitar, conter, notificar, registrar. Ele nomeia os dados a conferir e os pontos de decisão. O NIST SP 800-61r3 situa essas atividades de resposta no ciclo mais amplo de gestão de riscos. Os pontos de decisão são onde o *playbook* pede ao analista que julgue, em vez de seguir: o sucesso veio do dispositivo habitual do cliente? O endereço já foi alterado? Nomear os dados a conferir em cada ponto impede os analistas de pularem evidências sob pressão. O *playbook* também diz quando parar e escalonar, para que os analistas conheçam os limites de sua própria autoridade durante um incidente.
+
+### 27.3 Ações automatizadas
+
+Alguns passos podem ser automatizados: invalidar uma sessão é rápido e de baixo risco. Outros, como bloquear uma faixa de rede, podem prejudicar usuários legítimos e exigem uma decisão humana. Invalidar uma sessão força um novo login; se o cliente for legítimo, ele simplesmente entra de novo, então uma decisão errada custa pouco. Bloquear uma faixa de rede poderia cortar uma operadora móvel que atende milhares de clientes, então uma decisão errada custa muito. Amara classifica cada ação candidata pelo custo de errar e automatiza apenas aquelas em que um erro é barato e fácil de reverter.
+
+### 27.4 Salvaguardas
+
+A automação precisa de limites: número máximo de ações por hora, exclusões para contas críticas e alertas automáticos se os limites forem atingidos. Uma automação descontrolada pode deixar milhares de clientes sem acesso. Um defeito numa regra ou uma enxurrada de eventos de teste sintéticos poderia acionar a automação milhares de vezes em minutos. Um teto de ações por hora transforma um possível desastre num problema contido. Contas críticas, como as usadas pelos sistemas dos depósitos, ficam excluídas porque bloqueá-las pararia as entregas. Atingir um limite pausa a automação e aciona um engenheiro, que decide se ela continua.
+
+### 27.5 Mapeamento ao D3FEND
+
+O D3FEND nomeia técnicas defensivas como a limiarização de eventos de autenticação e o bloqueio de contas. Mapear os controles a ele esclarece o que cada controle de fato faz e ajuda a encontrar lacunas. Os nomes de produtos e os termos de *marketing* variam, o que dificulta saber se duas ferramentas se sobrepõem ou deixam lacunas. O D3FEND oferece um vocabulário comum que descreve o que um controle faz com a atividade do adversário. Mapear os controles do portal da Lindqvist mostra que a limiarização e o bloqueio de contas estão presentes, enquanto nada ainda analisa o comportamento da sessão depois do login, o que sugere onde investir em seguida.
+
+### 27.6 Testando os controles
+
+Cada controle é testado com eventos sintéticos seguros, e os *playbooks* de resposta são ensaiados em exercícios. Os eventos sintéticos verificam se a detecção dispara e se a automação age dentro de seus limites. Os exercícios verificam as partes humanas: o analista encontra o *playbook*, o atendimento ao cliente sabe o que dizer a um cliente bloqueado, o contato de escalonamento atende? Os exercícios muitas vezes revelam pequenos problemas, como um número de telefone desatualizado, que nenhum teste técnico pegaria. As constatações de cada exercício são registradas com um responsável e uma data para a correção.
+
+### 27.7 Caso
+
+Amara projeta o *playbook* de possível tomada de conta com Paolo e com a gerente de atendimento ao cliente. Envolver o atendimento ao cliente cedo importa porque é ele que vai falar com os clientes cujas contas foram bloqueadas. A gerente pede um roteiro curto explicando por que o acesso foi redefinido e como recuperá-lo, e um campo no alerta mostrando se o cliente já foi contatado. Os dois pedidos entram no *playbook* antes de ele ser testado. O *playbook* pronto é ensaiado uma vez com um alerta sintético antes da entrada em produção, com a gerente de atendimento fazendo o papel do cliente.
+
+### Experiência do cliente
+
+Os controles de resposta tocam os clientes. A mensagem de suspensão no portal explica que a conta está pausada por segurança e dá o número do suporte, para que os clientes legítimos não fiquem confusos.
+
+### Exemplo resolvido
+
+O *playbook* automatiza a invalidação de sessões e uma suspensão temporária da conta, com teto de 20 contas por hora; acima disso, a automação pausa e aciona o engenheiro de plantão. Um analista confirma em até 30 minutos, contata o cliente pelo telefone cadastrado e registra o resultado.
+
+> **Caso sintético.** O *playbook* é inventado.
+
+### Erros e limites
+
+Os *playbooks* envelhecem à medida que os sistemas mudam; revise-os após cada uso.
+
+### Exercícios
+
+- **EX079 — Detecção versus resposta.** Dê um controle de detecção e um de resposta para a tomada de conta no portal. *Rubrica:* 3 = regra de possível tomada de conta; bloquear a conta/invalidar sessões; 2 = um; 1 = confuso; 0 = nada.
+- **EX080 — Salvaguarda da automação.** Que salvaguarda limita a suspensão automatizada? *Rubrica:* 3 = teto de 20 contas/hora; pausar e acionar acima dele; 2 = parcial; 1 = vago; 0 = nada.
+- **EX081 — Decisão humana.** Por que o bloqueio de faixas de rede deve exigir uma pessoa? *Rubrica:* 3 = pode prejudicar usuários legítimos; exige julgamento; 2 = parcial; 1 = velocidade; 0 = nada.
+
+### Síntese
+
+Projete os controles como detecção mais resposta, automatize os passos de baixo risco com limites e mapeie os controles a técnicas defensivas nomeadas.
+
+### Continue estudando — capítulo 27 de 50
+
+[← Capítulo 26 (rascunho)](#ch-26) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 28 (rascunho) →](#ch-28)
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Operações de segurança e blue team: implementação I
+
+### Objetivos de aprendizagem
+
+Você vai (1) implementar uma detecção e as mudanças correspondentes no *pipeline*; (2) usar ambientes em etapas; (3) gerenciar a configuração como código; (4) registrar a evidência da implementação.
+
+### 28.1 Do projeto à construção
+
+A implementação transforma o R-07 e o *playbook* em peças funcionando: o encaminhamento dos logs do balanceador de carga, as atualizações do analisador, a regra, o roteamento dos alertas e a automação. R-07 é o identificador do requisito de detecção de possível tomada de conta, e manter esse rótulo ao longo da implementação permite que cada componente remeta ao motivo de sua existência. Construir as peças na ordem das dependências importa: a regra não pode ser testada até que o analisador produza os campos de que ela precisa, e o roteamento não pode ser conferido até que a regra crie alertas. Amara elabora um plano de construção curto com essa ordem.
+
+### 28.2 Ambientes
+
+As mudanças vão primeiro para um SIEM de teste com dados sintéticos reproduzidos, depois para a produção em modo só monitoramento e depois para o alerta. Cada etapa tem critérios de entrada e de saída. Os critérios de entrada dizem o que precisa ser verdade antes de uma mudança entrar numa etapa, como passar nos testes unitários. Os critérios de saída dizem o que precisa ser mostrado antes de ela sair, como uma semana em modo só monitoramento com alertas falsos abaixo do limite. Pular etapas poupa dias, mas arrisca descobrir problemas em produção, onde eles afetam analistas e clientes.
+
+### 28.3 Configuração como código
+
+As configurações dos analisadores, as regras e o roteamento ficam no controle de versão e são implantados por um *pipeline*, e não editados à mão em consoles. Isso torna as mudanças revisáveis e reversíveis. Edições manuais num console não deixam registro claro de quem mudou o quê e por quê, e são fáceis de fazer por engano. Um *pipeline* aplica a mesma configuração revisada todas as vezes. Se uma mudança causar problemas, reverter o *commit* e reimplantar restaura o estado anterior em minutos, com um registro completo do que aconteceu.
+
+### 28.4 Atualizações do analisador
+
+Os logs do balanceador de carga usam um formato novo. Amara escreve um analisador, testa-o com 1.000 linhas de amostra e verifica se cada campo se mapeia para o modelo de eventos. As mil linhas incluem requisições normais, falhas, caracteres incomuns em nomes de usuário e algumas linhas malformadas. Amara conta quantas linhas são analisadas por completo, quantas em parte e quantas falham, e confere uma amostra à mão contra o texto bruto. Campos como o endereço do cliente precisam se mapear para o campo de origem do modelo de eventos, ou a regra vai agrupar os valores errados.
+
+### 28.5 Gestão de mudanças
+
+As mudanças em produção seguem o processo de mudanças da Lindqvist: um chamado, uma revisão, uma janela e um plano de reversão. O chamado descreve a mudança e seu propósito; a revisão confere o risco; a janela escolhe um horário em que os problemas afetem o menor número de pessoas; a reversão diz exatamente como desfazê-la. As mudanças de detecção às vezes são tratadas como de baixo risco, mas uma mudança de analisador pode quebrar muitas regras de uma vez, por isso elas seguem o mesmo processo das outras mudanças em produção. O primeiro chamado de Amara é revisado por Paolo e pelo administrador do SIEM.
+
+### 28.6 Evidência
+
+Os registros da implementação incluem *commits*, resultados de testes, chamados de mudança e capturas de tela dos resultados em modo só monitoramento. Auditores e futuros engenheiros os usam. Meses depois, alguém pode perguntar quando a regra entrou em produção e se foi testada. Os *commits* respondem o que mudou; os resultados de testes, se funcionou; os chamados, quem aprovou; os resultados em modo só monitoramento, como ela se comportou com dados reais antes de alertar. Manter tudo isso junto poupa tempo em auditorias e em revisões de incidentes. Amara liga os quatro a partir da linha do requisito na tabela de rastreabilidade, para que a trilha comece no R-07.
+
+### 28.7 Trabalho em par
+
+Amara trabalha em par com um analista durante a configuração do roteamento, para que os alertas caiam onde os analistas esperam. Os engenheiros pensam em termos de regras e filas; os analistas, em termos de turnos e cargas de trabalho. O analista aponta que os alertas roteados para uma fila geral seriam perdidos à noite, quando só a fila do plantão é observada. O trabalho em par pega esse tipo de descompasso antes da implantação e dá ao analista um senso de responsabilidade pelos novos alertas. Eles terminam com um alerta de teste que o analista abre na tela do plantão.
+
+### Ensaio da reversão
+
+Antes da mudança em produção, Amara ensaia a reversão no SIEM de teste: implanta o novo analisador, depois restaura a versão anterior a partir do controle de versão e verifica se a análise volta ao comportamento antigo. Uma reversão nunca praticada é uma esperança, não um plano. O ensaio leva dez minutos e é registrado no chamado de mudança.
+
+### Exemplo resolvido
+
+Durante a etapa de teste, 12 de 1.000 linhas de amostra falham na análise: contêm um campo extra acrescentado por uma atualização do balanceador. Amara amplia o analisador, acrescenta as 12 linhas como casos de teste e roda de novo: as 1.000 são analisadas sem erros. Só então ela pede a mudança em produção.
+
+> **Caso sintético.** As linhas e as contagens são inventadas.
+
+### Erros e limites
+
+Os dados de teste podem não incluir todas as variantes de produção; monitore os erros de análise depois da liberação.
+
+### Exercícios
+
+- **EX082 — Etapas.** Descreva as três etapas da implementação. *Rubrica:* 3 = SIEM de teste com reprodução, produção em só monitoramento, alerta; 2 = duas; 1 = uma; 0 = nada.
+- **EX083 — Falhas de análise.** O que causou as 12 falhas de análise, e como foram tratadas? *Rubrica:* 3 = campo extra de uma atualização do balanceador; analisador ampliado, linhas acrescentadas como testes; 2 = parcial; 1 = ignoradas; 0 = nada.
+- **EX084 — Configuração como código.** Por que implantar a configuração a partir do controle de versão? *Rubrica:* 3 = revisável, reversível, consistente; 2 = parcial; 1 = estilo; 0 = nada.
+
+### Síntese
+
+Implemente por meio de ambientes em etapas, configuração sob controle de versão e evidência registrada.
+
+### Continue estudando — capítulo 28 de 50
+
+[← Capítulo 27 (rascunho)](#ch-27) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 29 (rascunho) →](#ch-29)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX072 (as de EX073–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Amara Osei, Paolo Ricci, a Kingsbridge Engineering University, a Lindqvist Freight e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX084 (as de EX085–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Amara Osei, Paolo Ricci, a Kingsbridge Engineering University, a Lindqvist Freight e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** O acúmulo varia segundo dB/dt = A(t) − C(t): chegadas por hora menos alertas resolvidos por hora.
 
@@ -1749,6 +2001,30 @@ Respostas-modelo para EX001–EX072 (as de EX073–EX150 estão na edição em i
 **EX071.** Uma detecta tentativas, para o trabalho diurno de ajuste; a outra detecta comprometimento provável e aciona o turno da noite.
 
 **EX072.** O ataque das 10:10 não tinha tido sucesso, então não havia comprometimento para acionar o plantão; a regra de tentativas ainda o registra.
+
+**EX073.** Monitoramento de fluxos na fronteira, um sensor de detecção de rede e regras de *firewall* mais estritas com registro das conexões negadas.
+
+**EX074.** Descobriram que o *firewall* da fronteira já registrava os fluxos, então os logs do *firewall* com regras de permissão superaram a compra de um sensor.
+
+**EX075.** Permitir cinco serviços, registrar as negações, alertar quando um dispositivo de depósito tentar um destino novo mais de três vezes numa hora, revisar semanalmente; o risco principal é a falha da alimentação de logs.
+
+**EX076.** Os dados recentes de alto valor ficam no SIEM para busca rápida, enquanto os dados volumosos e mais antigos vão para um *lake* mais barato.
+
+**EX077.** Acrescenta cobertura noturna e um conhecimento de ameaças mais amplo, mas conhece menos o contexto local e depende de acordos de escalonamento claros.
+
+**EX078.** Contexto, opções consideradas, a decisão e suas consequências.
+
+**EX079.** Detecção: a regra de possível tomada de conta; resposta: bloquear a conta e invalidar suas sessões.
+
+**EX080.** Um teto de 20 contas por hora, acima do qual a automação pausa e aciona o engenheiro de plantão.
+
+**EX081.** Porque bloquear uma faixa pode cortar clientes ou parceiros legítimos, o que exige julgamento humano.
+
+**EX082.** Um SIEM de teste com dados sintéticos reproduzidos, depois a produção em modo só monitoramento e depois o alerta completo.
+
+**EX083.** Um campo extra vindo de uma atualização do balanceador; o analisador foi ampliado e as linhas foram mantidas como casos de teste.
+
+**EX084.** Torna cada mudança revisável, reversível e consistente entre os ambientes.
 
 <a id="references"></a>
 ## Referências
