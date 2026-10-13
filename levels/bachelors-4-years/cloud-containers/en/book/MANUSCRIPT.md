@@ -1757,29 +1757,43 @@ You will (1) track images, base layers and library dependencies; (2) understand 
 
 Each image depends on a base image, operating system packages and application libraries. A vulnerability in any of them is a vulnerability in the image.
 
+records-api, for instance, builds on the shared Python base, which itself builds on a minimal operating system image, and adds about forty libraries from the package index. A flaw in any of those layers is shipped with records-api whether or not its own code uses the affected feature. Samuel's research study showed how much the choice of base alone changes the number of high-severity findings an image carries.
+
 ### 22.2 Base images
 
 A shared, regularly rebuilt base image (chapter 18) reduces vulnerabilities and gives one place to apply fixes.
+
+When an operating system package needs patching, the cloud team updates the shared base once, and every image built on it picks up the fix at its next rebuild. With many different public bases, the same fix would need to be found and applied separately in each. The pipeline check from the research chapter keeps teams on the approved base, and exceptions are recorded with a reason and an owner.
 
 ### 22.3 Inventories
 
 A software bill of materials lists components in each image, so Westmere can answer "which images contain this library?" quickly when an advisory appears.
 
+Without an inventory, answering that question means unpacking and searching every image by hand, which took the team about a week when they estimated it for the compression-library advisory. With one, a search returns the list in minutes. Inventories also help in the other direction: they show which images carry a library nobody remembers adding. Each list is tied to an image digest.
+
 ### 22.4 Third-party images
 
 Images from public registries are mirrored into Westmere's registry after checking their digest and scanning them; the cluster runs only images from the internal registry.
+
+Mirroring gives Westmere a copy it controls, so an upstream image being changed or removed cannot alter what StudyHub runs. Checking the digest confirms the mirrored copy matches what was reviewed, and scanning catches known vulnerabilities before the image is admitted. The admission control that accepts only internal images enforces this rule at deployment time.
 
 ### 22.5 Managed service dependencies
 
 StudyHub depends on the managed database, identity provider and storage. Their availability and security notices are monitored.
 
+A notice from the provider about a database vulnerability or an identity provider change can affect StudyHub even though Westmere does not run those services. The cloud team subscribes to the provider's notices and records which StudyHub components each one affects. Outages are tracked too, since availability is part of security. For each managed service, Samuel's dependency table records the provider's status page, the notice channel and the StudyHub components that would be affected by an outage or a security change, so the team can judge quickly whether a notice needs action.
+
 ### 22.6 Update plan
 
 Base images rebuild weekly; application images rebuild when their base changes; critical advisories trigger immediate rebuilds.
 
+The schedule balances speed and stability. Weekly rebuilds keep images current without surprise; rebuilding application images when the base changes means patches propagate within days; critical advisories skip the queue. Every rebuild passes through the test cluster first, so even an urgent fix is tested before it reaches students. Samuel's checker reports any running image whose base is more than two weekly rebuilds behind the current one. That turns the plan into something measurable, and the weekly report shows how many images are current.
+
 ### 22.7 Removing dependencies
 
 Unused libraries and services are removed to shrink what must be tracked.
+
+Each library removed is one fewer item to watch for advisories and one fewer path for a vulnerability. When Samuel compared records-api's inventory with its imports, he found several libraries from an old feature that no longer existed. Removing them shrank the image and removed two known vulnerabilities at once. Unused managed services are treated the same way: an old queue that nothing published to was deleted after a month of empty logs and a confirmation from its owner. Every removal is recorded in the inventory history.
 
 ### Generating inventories
 
@@ -1821,6 +1835,8 @@ You will (1) review registry configuration systematically; (2) check anonymous a
 
 For each repository: is anonymous pull enabled? How old is the newest image? Has it ever been scanned? Who owns it?
 
+Each question links to a risk from the opening case or later chapters. Anonymous pull exposes images; old images are likely unpatched; unscanned images may carry anything; and a repository without an owner has nobody to fix its problems. Asking the same four questions of every repository makes the review repeatable and comparable between rounds. The answers go into a table, one row per repository.
+
 ### Lab — Lab — registry review
 
 ```python
@@ -1845,17 +1861,25 @@ tools/base-python        newest image 200 d old
 
 studyhub/web is ok. studyhub/records-api has anonymous pull enabled. studyhub/legacy-import has anonymous pull enabled, its newest image is 540 days old and it was never scanned. tools/base-python's newest image is 200 days old, which matters because many services build on it.
 
+The four results match the opening case: records-api's anonymous pull is the setting the internal review found. legacy-import adds three problems at once and was not in the original findings, which shows the value of reviewing every repository rather than only the ones already known to be risky.
+
 ### 23.3 Prioritising
 
 Anonymous pull is fixed first because it exposes images to anyone. The stale base image is next because its age spreads to dependent images. legacy-import is checked for use; unused repositories are archived.
+
+Ordering by reach and ease of exploitation puts anonymous pull first, since an outsider needs nothing to exploit it. The stale base comes next because its age is inherited by every image built on it. legacy-import's problems may vanish entirely if it is unused, so checking before fixing saves effort.
 
 ### 23.4 Verifying fixes
 
 After changes, an anonymous pull test from outside the network must be refused, and the review is rerun.
 
+Testing from outside the network matters because a test from inside might succeed through internal access and look like the setting still works. The refused request is the evidence that the fix took effect. Samuel records the time, the source and the response in his evidence log for each repository he tests. Rerunning the review on fresh exports then confirms that the settings and the behaviour agree. If they ever disagree, for instance a setting showing private while an anonymous pull succeeds, that disagreement is itself a serious finding.
+
 ### 23.5 Prevention
 
 Registry settings are defined in infrastructure code with private access by default; the organisation guardrail rejects public registry settings.
+
+With private access as the default in code, a new repository is private unless someone deliberately changes it and a reviewer approves. The guardrail adds a second layer that blocks public settings even if the code is bypassed. Together they make the opening case's mistake much harder to repeat. The repository definitions also require an owner field, so a repository cannot be created without someone responsible for it, which addresses the fourth question of the method directly and keeps future reviews short.
 
 ### Writing the review up
 
@@ -1901,29 +1925,43 @@ You will (1) select and implement controls for StudyHub; (2) cover prevention, d
 
 Organisation guardrails, private registry, admission control for signed images and Restricted pods, default-deny network policies, short-lived identities.
 
+Each of these would have stopped part of the opening case. The guardrail and private registry stop anonymous pulls; short-lived identities remove the secret from the image; signed-image admission stops images from outside the build system. Preventive controls are the first priority because they act before any harm is possible. Default-deny network policies and Restricted pods limit what any compromised workload can reach or do. Each control is configured in code and tested, so its presence can be shown rather than assumed, and the register records its last test result.
+
 ### 24.2 Detective controls
 
 Central audit logs, alerts on high-risk changes, weekly configuration checks, image scanning.
+
+Detective controls answer the question the opening case could not: did anything happen? Central logs record pulls and changes; alerts on high-risk changes notice a repository being made public within minutes; weekly checks catch slower drift; scanning finds vulnerable images. Each feeds a person who is expected to act. Alerts are tuned to avoid noise, since a team that receives dozens of meaningless alerts a day stops reading them. The alert for public registry settings has fired once since it was introduced, during a deliberate test, and the on-call engineer responded within ten minutes.
 
 ### 24.3 Response controls
 
 Runbooks for credential exposure, public resources and suspicious activity; ability to revoke credentials and isolate namespaces quickly.
 
+For a credential exposure like the opening case, the runbook lists the steps: revoke or rotate the credential, check logs for its use, remove it from images and record the timeline. Being able to isolate a namespace quickly matters if a workload appears compromised. Runbooks are rehearsed each term in the test environment. Revocation is tested by revoking a synthetic credential and confirming it stops working everywhere it was used. Isolation is tested by applying a deny-all policy to a test namespace and checking that its pods can no longer reach anything.
+
 ### 24.4 Mapping
 
 Each control maps to CSA CCM v4 domains and relevant CIS Benchmark sections, which helps auditors and shows coverage.
+
+The mapping lets Westmere answer an auditor's question, such as which controls address identity management, by pointing to register entries rather than writing a new explanation. It also shows gaps: a domain with no mapped control needs either a control or a written reason why it does not apply. Samuel keeps the mapping in the register itself, one column per framework, so it stays current when controls change rather than living in a separate document that drifts out of date.
 
 ### 24.5 Control register
 
 A register lists each control, owner, evidence source, test method and last test date.
 
+The register makes each control's status visible at a glance. A control with no recent test date is treated as unverified, whatever its configuration says. The evidence source tells auditors where to look, and the owner column tells the team whom to ask when a test fails. Samuel built the first version from the controls named in earlier chapters, then asked each owner to confirm the details. Several owners discovered controls they had not known they owned, which was itself useful. The register is stored in the team's repository and reviewed monthly.
+
 ### 24.6 Prioritising
 
 Controls addressing the opening case (registry access, secrets in images, logging) come first.
 
+Starting with the opening case's controls is sensible because those weaknesses are known to have existed, not merely possible. Other controls follow by risk, using the threat model and the failure analysis. Samuel's register orders entries by priority so the team works from the top. Registry access, secrets in images and logging each have a preventive and a detective control in the register, so a failure of one is caught by the other. Lower-priority controls, such as the password policy for break-glass accounts, are scheduled after these are verified.
+
 ### 24.7 Cost and effort
 
 Most controls use built-in platform features, keeping cost low.
+
+Guardrails, logging, admission control and workload identity are all features of the platform Westmere already pays for, so their cost is mostly engineer time to configure and test them. The pipeline secret scan uses a free tool. Samuel estimates the effort for each control in engineer-days, which helps the team plan sprints. Where a control would need a new paid product, Samuel's register notes the cost and the risk it reduces, so the decision can be made on evidence. So far, every control in the register uses features Westmere already has, which made approval straightforward.
 
 ### Testing controls
 
@@ -1973,29 +2011,43 @@ You will (1) practise configuration review on a synthetic environment; (2) apply
 
 A synthetic export set models a small university platform: three accounts, a registry, a cluster and identities. No real systems are involved.
 
+The synthetic platform resembles StudyHub closely enough that the lessons transfer, but every name, setting and identity is invented. Students cannot accidentally touch a real system, and the lab can be shared freely between cohorts. The export files are the same format as real cloud exports, so the scripts work unchanged. Each pair receives the same files, so results can be compared.
+
 ### 25.2 Tasks
 
 Run the registry review, the account review and the logging coverage check; build the role graph; list findings by severity.
+
+The tasks reuse scripts from earlier chapters on new data, which tests whether students understood the methods rather than memorised the original results. Building the role graph from the lab's identities may produce a different path from the one in the discrete structures chapter, which is part of the exercise. Pairs decide the order in which to run the checks, and record it in their log. Most start with the registry, since it echoes the opening case, but the instructions do not require any particular order.
 
 ### 25.3 Findings expected
 
 Students should find an anonymous repository, an account without MFA, missing logging in one region and a role path from a support account to an admin role.
 
+Each expected finding corresponds to one of the course's main lessons: registry exposure, identity hygiene, logging coverage and privilege paths. A report missing one suggests a check was not run or its output was misread. Finding extra issues earns credit if they are supported by evidence. Dr Jensen's marking guide lists the expected findings with the evidence that supports each, so marking is consistent between pairs.
+
 ### 25.4 Report
 
 One page: summary, findings with evidence, recommended fixes and order.
+
+One page forces choices: each finding gets a sentence of evidence and a sentence of action, and the order shows priority. The format mirrors what Tom expects from Samuel in the real project, where managers will not read long reports. Samuel's pair wrote theirs as a numbered list with four findings, each giving the resource, the evidence line from the export, the risk in one sentence and the fix in one sentence. A short paragraph at the top stated the assumptions behind their ranking, such as treating outside attackers and insiders as equally likely.
 
 ### 25.5 Assessment
 
 Completeness, accuracy, prioritisation and clarity.
 
+Accuracy means each finding is correct and supported; completeness means the expected findings are present; prioritisation means the order is justified; clarity means a non-specialist could act on it. Each counts for a share of the mark, so a long report with poor ordering does not score well. Feedback names the strongest and weakest of the four for each pair. In Samuel's cohort, accuracy was generally high and prioritisation the weakest, because many pairs ranked findings without explaining why. The debrief addresses that directly, using anonymised examples from the reports.
+
 ### 25.6 Safety
 
 All data synthetic; scripts read files only.
 
+Scripts that only read files cannot change anything, even if run against the wrong directory by mistake. Students are told to keep the lab files separate from any real exports they might have access to through work, so data from the two never mix in a report. The scripts were reviewed by Dr Jensen before the lab to confirm they contain no network calls or write operations. Students may not add any, and their logs of commands run would show it if they did. This keeps the lab safe even if a student's laptop has real credentials configured for other work.
+
 ### 25.7 Debrief
 
 Students compare reports and discuss differences in prioritisation.
+
+Differences usually come from assumptions: one pair might weight outside attackers highest, another insider misuse. Discussing them shows that priorities depend on threat models, and that stating assumptions is what makes a ranking defensible. Samuel's pair ranked the support-to-admin path first because of its impact, while another pair ranked the anonymous repository first because outsiders could exploit it with no effort. Both reasons were sound, and the discussion settled on fixing both together. Dr Jensen used the exchange to show that a ranking is only as good as the assumptions written beside it.
 
 ### Lab preparation
 
@@ -2045,6 +2097,8 @@ You will (1) assess cloud accounts against a benchmark-style checklist; (2) inte
 
 The CIS Benchmarks provide consensus configuration recommendations for cloud accounts and Kubernetes. Samuel uses a small subset adapted for Westmere, keeping each item's reason.
 
+Adapting means choosing the items that apply to Westmere's services and leaving out those that do not, while keeping each item's original reasoning. Samuel's subset has a column for the benchmark reference, so auditors can see where each check came from and how it was interpreted. Items he leaves out are listed with the reason. Reviewers can challenge those reasons.
+
 ### Lab — Lab — account checklist
 
 ```python
@@ -2074,21 +2128,31 @@ score 4/7 = 57%
 
 Four of seven checks pass: owner account MFA, no owner access keys, storage public access blocked and log files encrypted. Three fail: audit logging in all regions, password policy length at least 14, and the default network having no open administration ports. The score is 57%.
 
+The failures cluster in the account's networking and logging, which is consistent with an account created before guardrails existed. The passing items, such as MFA and encrypted logs, cover the owner account and storage. Samuel checks each failure against the account's history before recommending changes.
+
 ### 26.3 Interpreting
 
 A percentage hides differences in importance. Open administration ports and missing logging matter more than password length, since staff sign in through the identity provider rather than local passwords.
+
+Two accounts could both score 57% while one has open administration ports and the other only a short password policy. Reporting the individual results, not just the score, prevents that confusion. Samuel shows the score for trends but makes decisions from the list of failures. Samuel adds a severity to each item.
 
 ### 26.4 Prioritising
 
 Fix open ports first, then logging (already planned centrally), then password policy for the few local accounts.
 
+Open administration ports are reachable from the internet and invite automated attacks, so they come first. Logging is already being fixed through the organisation-wide configuration. The password policy affects only break-glass and a few local accounts, so it is real but less urgent. The order follows exposure: ports reachable from anywhere first, missing evidence second, a weak policy affecting very few accounts last. Samuel records the reasons beside the order so the team can revisit it if circumstances change, for example if more local accounts are created.
+
 ### 26.5 Tracking
 
 The checklist runs monthly; results are charted per account.
 
+Charts per account show whether each one improves or slips. A new account should start at full marks because the automated creation process applies the baseline. A drop in an established account suggests a manual change that bypassed review, which the team investigates. Each month's results are stored with the date and the checklist version, so changes in the score can be traced to either a real change in the account or a change in the checklist itself. A drop is investigated within the week.
+
 ### 26.6 Limits
 
 Benchmarks cover common settings, not Westmere-specific risks such as role paths.
+
+The role path from support-cy to cluster-admin would pass every benchmark item, because each permission involved is ordinary. Benchmarks also say nothing about secrets in images. Westmere's own checks fill these gaps, which is why Samuel added them to the checklist. Samuel's adapted checklist adds Westmere-specific checks for exactly these reasons, as described below. Even so, he presents the benchmark score as one input among several, alongside the role graph, the registry review and the control tests, rather than as a single measure of how secure an account is.
 
 ### Adapting the benchmark
 
@@ -2130,6 +2194,8 @@ You will (1) verify that controls behave as intended with safe tests; (2) compar
 
 Configuration can say a control is on while it does not work, for example because of a wrong label or an old version. Verification observes behaviour.
 
+The failed lab test is an example: the Restricted profile was configured for the cluster, but the test namespace lacked the label that applied it, so a privileged pod was admitted. Reading the configuration would have suggested the control worked; trying to break it showed it did not. Samuel's lab test list covers the main controls.
+
 ### Lab — Lab — control verification
 
 ```python
@@ -2157,21 +2223,31 @@ PASS  audit log written          expected written   observed written
 
 Four of five tests pass: anonymous pull refused, public bucket blocked, MFA required for console and audit log written. One fails: a privileged test pod was admitted when it should have been rejected.
 
+Four passing tests confirm that the controls for the opening case's main weaknesses, registry access and audit logging, work as intended. The one failure shows why each control needs its own test: a single missing label undermined pod security in that namespace while everything else looked fine.
+
 ### 27.3 Investigating
 
 The failure traces to the test namespace lacking the label that enforces the Restricted profile. The label is added and the test passes; a check now ensures every application namespace carries it.
+
+The fix had two parts: adding the label to the namespace, and adding a check so that any application namespace without it is reported. The second part matters more, because it prevents the same mistake in namespaces created later. Samuel reran the full test set after the fix to confirm nothing else had changed.
 
 ### 27.4 Safe tests
 
 Tests use synthetic pods and objects in a test namespace or account; they never touch student data.
 
+A test that tries to create a privileged pod in a production namespace could succeed if the control is broken, which is exactly what the test is looking for. Running it in a dedicated test namespace means a failure exposes nothing, while still showing whether the cluster's controls behave as expected. Synthetic objects are named with a test prefix and deleted after each run, so they never linger or confuse other checks.
+
 ### 27.5 Evidence
 
 Each test run records date, environment, expected and observed results and the configuration version.
 
+Recording the configuration version ties each result to the exact state that was tested. If a later change breaks a control, the evidence shows when it last passed and which change came after. Auditors can see both the result and the conditions under which it was obtained. Samuel stores the results in the same evidence log as his exports, with a hash of each test output. This makes test evidence as trustworthy as the configuration data it complements, and keeps all project evidence in one place.
+
 ### 27.6 Regular runs
 
 Tests run after changes and monthly.
+
+Running after changes catches breakage close to its cause, when it is easiest to fix. Monthly runs catch drift that no single change caused, such as a provider update. Results go into the control register, which updates each control's last test date automatically. The monthly run happens on a fixed day so its results line up with the configuration checks. When a monthly run fails a test that passed after the last change, the team knows something drifted between, which narrows the search. Results older than a month mark the control as unverified in the register.
 
 ### Writing good tests
 
@@ -2213,29 +2289,43 @@ You will (1) analyse how StudyHub controls could fail; (2) consider technical an
 
 For each important control, ask how it could fail, how failure would be noticed and how service would recover.
 
+The three questions turn a list of controls into a list of risks. For the registry, failure means images become public again; noticing it depends on the alert for public settings; recovery means reverting the change and checking pull logs. Asking all three for every control finds the silent ones. Samuel works through the register one control at a time. Answers go into the failure table.
+
 ### 28.2 Admission control failure
 
 If the admission service is down, deployments may be blocked (fail closed) or allowed without checks (fail open). Westmere chooses fail closed for production with alerts and a runbook.
+
+Fail closed means a broken admission service stops deployments rather than letting unchecked pods through. That protects students' data but can delay urgent fixes, so the runbook explains how to restore the admission service quickly. The alert ensures someone knows within minutes. Test clusters fail open to keep development moving, which is acceptable because they hold no student data.
 
 ### 28.3 Identity provider outage
 
 Staff cannot sign in; break-glass accounts allow emergency access.
 
+Without break-glass accounts, an identity provider outage would lock staff out of the cloud console at exactly the moment they might need it. The accounts' sealed credentials and immediate alerts on use keep them from becoming a back door. Their twice-yearly test confirms they still work. Using them also raises an alert, so an outage is never quietly used as cover for unreviewed changes. After each use, the credentials are resealed and the use is recorded in the access review, with who used them and why.
+
 ### 28.4 Logging failure
 
 If log delivery stops, an alert fires when no logs arrive for 30 minutes.
+
+Thirty minutes is short enough that a gap in evidence stays small and long enough to avoid alerts from normal delivery delays. The alert goes to the cloud team's on-call rota. The opening case shows why this matters: a logging gap that nobody noticed made the incident impossible to measure. The alert checks the central log account for each source, so a gap in one account is noticed even when others are still delivering. Samuel tested it by pausing delivery from the test account and confirming the alert fired on time.
 
 ### 28.5 Human failures
 
 A rushed console change during an incident; a mistaken guardrail exception. Controls: changes through code where possible, exceptions with expiry.
 
+During an incident, pressure tempts people to click through console changes that bypass review. Making changes through code, even urgent ones, keeps a record and allows a quick second look. Exceptions with expiry dates ensure that a temporary guardrail relaxation does not quietly become permanent. Samuel's register records each guardrail exception with its owner and expiry date. A weekly check lists exceptions due to expire, so owners can renew them deliberately or let them lapse. In the first month, two expired exceptions were found still in place and removed.
+
 ### 28.6 Prioritising
 
 Failures that would be silent rank highest, because they can last long unnoticed, as in the opening case.
 
+In the opening case, the missing logs were a silent failure: nothing alerted, so nobody knew how long the registry was open. Loud failures, such as blocked deployments, get fixed quickly because people complain. Ranking silent failures first targets the ones most likely to persist. The failure table marks each failure as loud or silent, and silent ones receive a detection check before anything else. For the secret scanner, that meant making its crash fail the build, as the worked example below shows.
+
 ### 28.7 Exercises
 
 Failure scenarios are rehearsed in the test environment each term.
+
+Each rehearsal picks one scenario from the failure table, such as the admission service going down, and the team follows the runbook in the test environment. Timings and problems are recorded, and the runbook is updated. Rehearsals have twice found steps that no longer matched the current setup. Rehearsals are short, usually under an hour, so they can run during normal working time. Each one ends with a note of what went well, what did not, and changes made. The note is linked from the failure table, so the next person to rehearse the same scenario starts from the latest lessons.
 
 ### Failure table
 
