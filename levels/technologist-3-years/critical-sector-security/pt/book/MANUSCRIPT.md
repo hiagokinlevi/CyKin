@@ -377,7 +377,7 @@ Uma função de validação que só retorna "válido" ou "inválido" força uma 
 
 Quatro hábitos tornam as pequenas ferramentas confiáveis. Mantenha **uma função por decisão**, para que ela possa ser testada sozinha. Torne o **estado explícito** — a última sequência vista por estação é passada como argumento, e não escondida numa global. **Falhe fechado** — qualquer caminho que você não previu termina em rejeição, e não em aceitação. E **teste primeiro com casos ruins**: para cada verificação, escreva pelo menos uma entrada que deveria falhar nela, e execute todas depois de cada mudança.
 
-O Laboratório 3 segue os quatro. A verificação de sequência recebe como argumento o último número aceito por estação, e é por isso que o 102 repetido pode ser testado sozinho; e a regra de plausibilidade do cloro é uma função separada, e é por isso que 9,80 mg/L pode ser quarentenado em vez de rejeitado sem mexer no parser.
+O Laboratório 3 segue os quatro em pequena escala: todas as decisões ficam em uma única função curta, `validate()`, que pode ser testada sozinha. A verificação de sequência recebe como argumento o último número aceito por estação, e é por isso que o 102 repetido pode ser testado sozinho; e a regra de plausibilidade do cloro é uma etapa separada, guiada pela tabela `LIMITS` depois que o valor é convertido, e é por isso que 9,80 mg/L pode ser quarentenado em vez de rejeitado sem mexer no parser.
 
 ### 3.5 Exemplo resolvido: o validador de mensagens das estações (sintético)
 
@@ -685,7 +685,7 @@ Para o validador de mensagens, um cartão completo fica assim: risco, mensagens 
 - Ler relatórios de incidentes como guias de como fazer, ou repetir um primeiro relato depois que ele foi revisto.
 - Chamar todo evento de incidente, o que esgota os respondedores; ou não chamar nada de incidente, o que atrasa a resposta.
 
-Cada um deles aparece no relatório de situação deste capítulo antes de ser reescrito. "O LANTERN é seguro" é o primeiro erro. "Os firewalls estão instalados" conta um controle sem dizer que um caminho corporativo→PS-04 não declarado precisou ser fechado sob a CHG-121. "O monitoramento está ativo" escondia que a Regra B detectou apenas 7 de 10 testes.
+Três deles aparecem no relatório de situação deste capítulo antes de ser reescrito. "O LANTERN é seguro" é o primeiro erro. "Os firewalls estão instalados" conta um controle sem dizer que um caminho corporativo→PS-04 não declarado precisou ser fechado sob a CHG-121. "O monitoramento está ativo" escondia que a Regra B detectou apenas 7 de 10 testes.
 
 ### Exercícios — capítulo 5
 
@@ -3455,7 +3455,7 @@ Cada resolução mostra uma resposta defensável e explica o que a rubrica recom
 
 **EX005 — Atualize a declaração.** Atualizações do relay: ou acrescentar um conduíte estreito (relay → espelho de atualização nomeado ou, melhor, um servidor de atualização interno da FSTS, tcp/443, propósito "atualizações do SO", responsável Plataforma da FSTS, revisão anual) ou remover o acesso direto à internet e apontar o relay para o servidor de atualização interno; a segunda opção é a preferida, porque o relay não deveria alcançar a internet. Laptop do engenheiro: remover o caminho corporativo → estação; declarar um caminho de engenharia a partir do host de salto de gerenciamento (MFA, registro de sessões) até a interface de engenharia da estação, responsável a engenharia da Água, propósito "configuração do CLP", habilitado apenas para trabalho aprovado. A nota máxima se recusa a "permitir o que foi observado" e põe responsáveis e propósitos em cada nova entrada.
 
-**EX006 — Estenda o laboratório.** Uma mudança mínima: no laço, depois de calcular `key`, acrescente `if "unknown" in key[:2]: print(f"UNKNOWN ZONE {s:>12} -> {d:<12} {p}/{port} n={count}"); continue`. Com a linha acrescentada `10.50.1.9,10.30.0.5,tcp,443,5`, a nova saída inclui `UNKNOWN ZONE    10.50.1.9 -> 10.30.0.5 tcp/443 n=5`. A nota máxima explica que "zona desconhecida" significa que o inventário ou o mapa de zonas está incompleto — uma constatação diferente de um caminho não declarado entre zonas conhecidas.
+**EX006 — Estenda o laboratório.** Uma mudança mínima: no laço, depois de calcular `key`, acrescente `if "unknown" in key[:2]: print(f"UNKNOWN ZONE {s:>12} -> {d:<12} {p}/{port} n={count}"); continue`. Com a linha acrescentada `10.50.1.9,10.30.0.5,tcp,443,5`, a nova saída inclui `UNKNOWN ZONE    10.50.1.9 -> 10.30.0.5    tcp/443 n=5`. A nota máxima explica que "zona desconhecida" significa que o inventário ou o mapa de zonas está incompleto — uma constatação diferente de um caminho não declarado entre zonas conhecidas.
 
 ### Capítulo 3: EX007–EX009
 
