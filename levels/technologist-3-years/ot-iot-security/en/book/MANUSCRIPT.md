@@ -719,7 +719,7 @@ approved but not seen: [('HMI-C', 'PLC-R2', 502)]
 
 The lab compares those four approved flows with five observed conversations.
 
-The approved flows are HMI-C to each PLC, the historian polling PLC-R1, and GW-LOG to the cloud on 443. Chapter 27 later shows that the list was missing the historian's polling of PLC-R2, an approved flow nobody had written down.
+The two unapproved rows, OFFICE-7 talking to PLC-R2 and GW-LOG reaching PLC-R1, are the ones to investigate first, while the unseen HMI-C to PLC-R2 flow may simply not have occurred during the capture. Chapter 27 later shows that the list was missing the historian's polling of PLC-R2, an approved flow nobody had written down.
 
 ### 12.2 Unapproved flows
 
