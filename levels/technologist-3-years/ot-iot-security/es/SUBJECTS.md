@@ -33,12 +33,12 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 | 5 | [21](book/PLAN.md#ch-21) | Seguridad de TO, IoT y sistemas ciberfísicos: integración de servicios | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-21) | [22 · Borrador](book/MANUSCRIPT.md#ch-22) |
 | 5 | [22](book/PLAN.md#ch-22) | Seguridad de TO, IoT y sistemas ciberfísicos: automatización | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-22) | [23 · Borrador](book/MANUSCRIPT.md#ch-23) |
 | 5 | [23](book/PLAN.md#ch-23) | Seguridad de TO, IoT y sistemas ciberfísicos: evaluación | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-23) | [24 · Borrador](book/MANUSCRIPT.md#ch-24) |
-| 5 | [24](book/PLAN.md#ch-24) | Métodos de investigación aplicada | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-24) | [25 · Plan](book/PLAN.md#ch-25) |
-| 5 | [25](book/PLAN.md#ch-25) | Taller de proyecto en equipo | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-25)) | [26 · Plan](book/PLAN.md#ch-26) |
-| 6 | [26](book/PLAN.md#ch-26) | Seguridad de TO, IoT y sistemas ciberfísicos: traspaso operativo | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-26)) | [27 · Plan](book/PLAN.md#ch-27) |
-| 6 | [27](book/PLAN.md#ch-27) | Despliegue y validación | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-27)) | [28 · Plan](book/PLAN.md#ch-28) |
-| 6 | [28](book/PLAN.md#ch-28) | Práctica de campo | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-28)) | [29 · Plan](book/PLAN.md#ch-29) |
-| 6 | [29](book/PLAN.md#ch-29) | Construcción del proyecto final | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-29)) | [30 · Plan](book/PLAN.md#ch-30) |
-| 6 | [30](book/PLAN.md#ch-30) | Evaluación del proyecto final | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-30)) | [Curso 092 →](../../critical-sector-security/es/SUBJECTS.md) |
+| 5 | [24](book/PLAN.md#ch-24) | Métodos de investigación aplicada | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-24) | [25 · Borrador](book/MANUSCRIPT.md#ch-25) |
+| 5 | [25](book/PLAN.md#ch-25) | Taller de proyecto en equipo | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-25) | [26 · Borrador](book/MANUSCRIPT.md#ch-26) |
+| 6 | [26](book/PLAN.md#ch-26) | Seguridad de TO, IoT y sistemas ciberfísicos: traspaso operativo | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-26) | [27 · Borrador](book/MANUSCRIPT.md#ch-27) |
+| 6 | [27](book/PLAN.md#ch-27) | Despliegue y validación | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-27) | [28 · Borrador](book/MANUSCRIPT.md#ch-28) |
+| 6 | [28](book/PLAN.md#ch-28) | Práctica de campo | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-28) | [29 · Borrador](book/MANUSCRIPT.md#ch-29) |
+| 6 | [29](book/PLAN.md#ch-29) | Construcción del proyecto final | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-29) | [30 · Borrador](book/MANUSCRIPT.md#ch-30) |
+| 6 | [30](book/PLAN.md#ch-30) | Evaluación del proyecto final | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-30) | [Curso 092 →](../../critical-sector-security/es/SUBJECTS.md) |
 
 Un siguiente paso planificado es un destino de navegación, no una lección escrita. Las columnas de páginas y ejercicios son metas editoriales. El libro solo estará completo cuando su contenido y su maquetación A4 cumplan el criterio de publicación.

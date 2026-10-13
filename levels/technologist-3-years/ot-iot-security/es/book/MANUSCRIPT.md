@@ -28,7 +28,7 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [serie I
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
 
@@ -1320,7 +1320,317 @@ La investigación aplicada plantea una pregunta real del emplazamiento, mide fre
 
 ### Siga estudiando — capítulo 24 de 30
 
-[← Capítulo 23 (borrador)](#ch-23) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 25 (borrador) →](../../en/book/MANUSCRIPT.md#ch-25)
+[← Capítulo 23 (borrador)](#ch-23) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 25 (borrador) →](#ch-25)
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Taller de proyecto en equipo
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) planificar un proyecto en equipo con funciones e hitos; (2) dirigir revisiones de diseño breves; (3) gestionar el alcance y las dependencias; y (4) producir un entregable que un emplazamiento pueda usar.
+
+### 25.1 El proyecto del taller
+
+Equipos de tres personas llevan una mejora de NCS desde la idea hasta el entregable en seis semanas. El encargo de esta promoción: un «paquete para las visitas de la empresa contratista», es decir, el procedimiento, los formularios y las comprobaciones que permiten a una empresa contratista de refrigeración hacer trabajos en remoto o en el emplazamiento de forma segura sin retrasar las reparaciones. El equipo de Priya asumió este encargo, y su primera versión suspendió la prueba más importante: la del operador de noche. Con la primera versión, la empresa contratista tardaba 14 minutos en completarlo, y el operador de noche no encontraba a quién llamar para la aprobación. El equipo tenía seis semanas, tres responsables y una revisión semanal con el responsable de instalaciones, que es donde se informó de ese fallo y se actuó en consecuencia.
+
+### 25.2 Funciones
+
+Un estudiante es responsable del texto del procedimiento; otro, de las comprobaciones técnicas (configuración del servidor de salto, integración del registro de visitas con la supervisión del capítulo 19); y otro, de la prueba con usuarios con una empresa contratista y un operador reales. Cada función tiene un revisor designado del emplazamiento. El trabajo compartido vive en una única carpeta con control de versiones. En el equipo de Priya, el responsable de la prueba con usuarios dirigió la sesión con la empresa contratista y el operador de noche que puso al descubierto el formulario de 14 minutos. El responsable de las comprobaciones técnicas vinculó el registro de visitas con las alertas de interlocutor nuevo del capítulo 19, de modo que un portátil de la empresa contratista en el emplazamiento durante un tique se considera previsto en lugar de señalarse.
+
+### 25.3 Revisiones
+
+Las revisiones semanales de 20 minutos siguen un único formato: qué ha cambiado, qué hemos aprendido, qué necesitamos, qué está en riesgo. El revisor del emplazamiento puede detener el trabajo que afecte a las operaciones. En NCS el revisor del emplazamiento era el responsable de instalaciones, y el formato funcionó en la tercera semana, cuando el equipo informó del resultado de la prueba de 14 minutos en «qué hemos aprendido» y de la falta del número del aprobador en «qué está en riesgo». La revisión decidió poner el turno rotativo de aprobadores en la primera página antes de escribir más texto del procedimiento.
+
+### 25.4 Alcance y dependencias
+
+El paquete depende de que exista el servidor de salto y del turno rotativo de aprobadores de guardia (capítulo 18). Si alguno se retrasa, el equipo redacta el paquete conforme al diseño acordado y marca la dependencia, en lugar de inventar una solución provisional. En el equipo de Priya la dependencia era real: el servidor de salto todavía se estaba configurando cuando se redactó el paquete. Por eso el paquete describe el diseño acordado, sesiones a través del servidor de salto habilitadas por tique, y marca los pasos del servidor de salto como «pendiente del despliegue de C-04», en lugar de describir una solución provisional mediante la herramienta de escritorio compartido que el proyecto pretendía eliminar.
+
+### 25.5 Entregables utilizables
+
+Pruébelo con las personas que lo van a usar. Si la empresa contratista no puede completar el formulario de visita en menos de cinco minutos a las 3 de la madrugada, se lo saltará. El equipo de Priya lo aprendió directamente. La primera versión del paquete para las visitas de la empresa contratista tardaba 14 minutos en completarse, y el operador de noche no encontraba el número del aprobador. La segunda versión puso el turno rotativo de aprobadores en la primera página, redujo el formulario a seis campos y rellenó de antemano los datos del emplazamiento. La nueva prueba duró cuatro minutos, y la empresa contratista pidió una copia para usarla en otro emplazamiento, que es la mejor evidencia que puede producir una prueba de usabilidad.
+
+### Ejemplo resuelto (NCS sintética)
+
+El equipo de Priya prueba el paquete con la empresa contratista y el operador de noche. La primera versión tardaba 14 minutos en completarse; el operador no encontraba el número del aprobador. La segunda versión pone el turno rotativo de aprobadores en la primera página, reduce el formulario a seis campos y rellena de antemano los datos del emplazamiento. La nueva prueba dura cuatro minutos, y la empresa contratista pide una copia para otro emplazamiento.
+
+> **Caso sintético — Northgate Cold Storage.** El equipo, el paquete y los tiempos son inventados.
+
+### Errores y límites
+
+Los equipos subestiman el tiempo de revisión; planifíquelo. Un paquete del que el emplazamiento no se haga cargo tras el traspaso se deteriorará.
+
+### Ejercicios — capítulo 25
+
+- **EX073 — Un informe de revisión.** Escriba la revisión semanal de cuatro líneas de la tercera semana. *Rúbrica:* 3 = cambios, aprendizajes, necesidades y riesgos, todos concretos; 2 = tres; 1 = vago; 0 = nada.
+- **EX074 — Gestionar una dependencia retrasada.** El servidor de salto se retrasa cuatro semanas. ¿Qué hace el equipo? *Rúbrica:* 3 = redactar conforme al diseño, marcar la dependencia, informar al emplazamiento, sin solución provisional; 2 = parcial; 1 = inventar una solución provisional; 0 = nada.
+- **EX075 — Medir la usabilidad.** Proponga dos medidas para la prueba con usuarios. *Rúbrica:* 3 = tiempo de cumplimentación y errores o pasos omitidos (o valoración de los usuarios); 2 = una; 1 = «opiniones»; 0 = nada.
+
+### Síntesis del capítulo
+
+El trabajo de taller sale bien cuando las funciones, las revisiones y las dependencias son explícitas y el entregable lo prueban las personas que deben usarlo.
+
+### Siga estudiando — capítulo 25 de 30
+
+[← Capítulo 24 (borrador)](#ch-24) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 26 (borrador) →](#ch-26)
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Seguridad de TO, IoT y sistemas ciberfísicos: traspaso operativo
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) definir qué debe entregar a operaciones una mejora de seguridad; (2) comprobar si un paquete de traspaso está completo; (3) transferir la responsabilidad con una firma de aceptación; y (4) planificar los primeros meses tras el traspaso.
+
+### 26.1 Los proyectos terminan, los sistemas continúan
+
+Los cambios del cortafuegos, la supervisión y el paquete para la empresa contratista solo protegen NCS si alguien los opera cuando el equipo del proyecto se marcha. Un traspaso transfiere el conocimiento, los documentos y la responsabilidad del proyecto a las personas que gestionan el emplazamiento en el día a día.
+
+```python
+"""Lab 26: check a synthetic operational handoff package for required items."""
+REQUIRED = ["asset list", "flow matrix", "runbook", "contacts", "backup location", "open risks", "restore test date"]
+package = {"asset list": "v3", "flow matrix": "v2", "runbook": "v1", "contacts": "", "backup location": "NAS-OT/backups", "open risks": "3 items"}
+missing = [r for r in REQUIRED if not package.get(r)]
+print(f"present {len(REQUIRED)-len(missing)}/{len(REQUIRED)}; missing: {missing}")
+print("handoff", "BLOCKED" if missing else "ready")
+```
+
+Ejecútelo con `python3 lab_handoff.py`. Salida verificada:
+
+```text
+present 5/7; missing: ['contacts', 'restore test date']
+handoff BLOCKED
+```
+
+En NCS el responsable que lo recibe es el responsable de instalaciones, y quienes lo operan son los operadores de noche, que serán los primeros en ver las alertas. La lista de comprobación del traspaso de Priya tiene siete elementos; la primera ejecución encontró cinco presentes y marcó el traspaso como `BLOCKED`.
+
+### 26.2 Leer la comprobación
+
+Al paquete le faltan los contactos y la fecha de una prueba de restauración. Sin contactos, a las 3 de la madrugada nadie sabe a quién llamar por el servidor de salto o por el proveedor de los registradores. Sin evidencia de restauración, la copia de seguridad del paquete podría no funcionar. Ambas cosas bloquean el traspaso porque cada una falla justo cuando el emplazamiento la necesita. Priya corrigió las dos antes de la firma: añadió una hoja de contactos con el turno rotativo de aprobadores, la empresa contratista, el proveedor de los registradores, el proveedor de internet y el responsable de seguridad, y restauró HIST en una máquina virtual aislada, registrando 2026-10-09 como fecha de la prueba. La nueva ejecución mostró 7/7 elementos presentes.
+
+### 26.3 Firma de aceptación
+
+El responsable que lo recibe, el responsable de instalaciones, firma que entiende cada elemento y acepta la responsabilidad. Una firma sin un recorrido conjunto es una firma, no un traspaso; recorran juntos el manual de operación y deje que el operador realice una tarea mientras usted observa. El recorrido de Priya con el operador de noche encontró lo que una revisión documental había pasado por alto: el manual de operación hacía referencia a un menú al que el proveedor de la HMI había cambiado el nombre. El paso se corrigió antes de la firma. Esa única corrección habría costado muchos minutos a un operador desconcertado durante una alerta real, a una hora en que nadie del equipo del proyecto contestaría al teléfono.
+
+### 26.4 Acompañamiento intensivo
+
+Durante las cuatro primeras semanas, el equipo del proyecto sigue de guardia, revisa las alertas con operaciones cada semana y corrige las lagunas de documentación que aparecen con el uso real. Después, la responsabilidad pasa por completo al emplazamiento. En NCS esas cuatro semanas incluirían al menos una visita de la empresa contratista, de modo que el paquete de visitas, la aprobación en el servidor de salto y el vínculo con las alertas de interlocutor nuevo se ejercitan una vez en uso real. Las revisiones semanales repasan con el responsable de instalaciones el informe del detector de deriva y los tiques de certificados. Las lagunas encontradas pasan al manual de operación esa misma semana, y el final del acompañamiento intensivo se registra en el expediente del traspaso con la lista de correcciones hechas.
+
+### Ejemplo resuelto (NCS sintética)
+
+Priya añade la hoja de contactos (turno rotativo de aprobadores, empresa contratista, proveedor de los registradores, proveedor de internet, responsable de seguridad) y realiza una prueba de restauración de HIST en una máquina virtual aislada, registrando 2026-10-09 como fecha. La nueva ejecución muestra 7/7 elementos presentes. Durante el recorrido conjunto, el operador de noche descubre que el manual de operación hace referencia a un menú al que el proveedor de la HMI cambió el nombre; el paso se corrige antes de la firma.
+
+> **Caso sintético — Northgate Cold Storage.** El contenido del paquete es inventado.
+
+### Errores y límites
+
+Una lista de comprobación completa no demuestra la calidad; el recorrido conjunto sí. Los contactos quedan obsoletos enseguida; póngales una fecha de revisión.
+
+### Ejercicios — capítulo 26
+
+- **EX076 — Tras añadir solo los contactos.** Si solo se añade `"contacts": "sheet v1"`, ¿qué imprime el laboratorio? *Rúbrica:* 3 = `present 6/7`, falta `restore test date`, `BLOCKED`; 2 = una línea correcta; 1 = `ready`; 0 = nada.
+- **EX077 — Por qué los contactos bloquean el traspaso.** Explíquelo en una frase. *Rúbrica:* 3 = en un incidente nadie sabe a quién llamar; fallo en el momento crítico; 2 = parcial; 1 = vago; 0 = nada.
+- **EX078 — Diseñar una tarea para el recorrido conjunto.** Elija una tarea que el operador deba realizar durante el recorrido y justifíquela. *Rúbrica:* 3 = tarea concreta, frecuente o crítica (aprobar una sesión de la empresa contratista, revisar una alerta); 2 = solo la tarea; 1 = leer el documento; 0 = nada.
+
+### Síntesis del capítulo
+
+Un traspaso está completo cuando el paquete está entero, el responsable lo ha recorrido y firmado, y un breve periodo de acompañamiento intensivo ha detectado lo que los documentos pasaron por alto.
+
+### Siga estudiando — capítulo 26 de 30
+
+[← Capítulo 25 (borrador)](#ch-25) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 27 (borrador) →](#ch-27)
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Despliegue y validación
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) planificar el despliegue de un cambio de seguridad en un emplazamiento de TO; (2) definir las comprobaciones de validación y la reversión; (3) coordinarse con operaciones y con las empresas contratistas; y (4) registrar el despliegue como evidencia.
+
+### 27.1 El cambio
+
+NCS desplegará el nuevo conjunto de reglas del cortafuegos de la zona de control, que sustituye la regla 9 por flujos explícitos. El cambio es pequeño en texto pero grande en efecto: si falta un flujo necesario, una HMI podría perder los valores de su PLC o el historiador podría dejar de registrar. El primer despliegue de Priya lo demostró: a la matriz le faltaba la consulta del historiador a PLC-R2, y HIST perdió esas etiquetas cuatro minutos después del cambio. El flujo no había aparecido durante la ventana de captura de 72 horas, y nadie lo había anotado de memoria. El plan de reversión, ensayado de antemano, es lo que convirtió esa laguna en una interrupción de cinco minutos en lugar de una mañana perdida de registros de temperatura.
+
+### 27.2 El plan
+
+Requisitos previos: matriz de flujos aprobada (capítulo 12); reglas revisadas por una segunda persona; pruebas en un cortafuegos de banco con tráfico reproducido; ventana de mantenimiento acordada en un periodo de baja carga; empresa contratista de guardia. Pasos: hacer una copia de seguridad del conjunto de reglas actual; aplicar el nuevo conjunto; validar; supervisar durante 24 horas. Reversión: restaurar la copia de seguridad, lo que lleva dos minutos y está ensayado. El despliegue de Priya siguió este plan un martes a las 06:00. A las 06:04 HIST dejó de recibir las etiquetas de PLC-R2; ella revirtió el cambio a las 06:09 y los valores se recuperaron. El flujo que faltaba se añadió con la confirmación del proveedor del historiador, y el segundo despliegue, el jueves, superó las cuatro comprobaciones de validación.
+
+### 27.3 Comprobaciones de validación
+
+Definidas de antemano y observables: HMI-C muestra valores en vivo de ambos PLC; HIST registra nuevos puntos de datos para cada grupo de etiquetas; las subidas de GW-LOG se completan; la prueba desde OFFICE-7 a PLC-R2:502 se rechaza y queda registrada. Cualquier fallo en las tres primeras desencadena la reversión, salvo que se corrija en menos de diez minutos. En el intento del martes falló la segunda comprobación: HIST dejó de registrar el grupo de etiquetas de PLC-R2 a las 06:04. Como el fallo se entendía pero no podía corregirse en menos de diez minutos, Priya revirtió a las 06:09 en lugar de editar las reglas en vivo. La cuarta comprobación es la de seguridad; se superó las dos veces, lo que muestra que un conjunto de reglas puede ser seguro y aun así romper las operaciones.
+
+### 27.4 Registro
+
+Registre las horas, quién hizo qué, el hash del conjunto de reglas antiguo y del nuevo, los resultados de la validación y cualquier desviación. Este registro es evidencia para la evaluación del capítulo 23 y para futuras auditorías. El registro de Priya de los dos despliegues muestra su valor: la entrada del martes recoge el fallo de las 06:04, la reversión de las 06:09 y el flujo HIST → PLC-R2 que faltaba como causa; la entrada del jueves recoge el hash del conjunto de reglas corregido y las cuatro comprobaciones superadas. La evaluación del capítulo 23 cita ambas, y un auditor que la lea más adelante puede ver que el primer intento falló de forma segura, lo que en sí mismo es evidencia de que la reversión funciona.
+
+### Ejemplo resuelto (NCS sintética)
+
+Despliegue el martes a las 06:00. A las 06:04 HIST deja de recibir las etiquetas de PLC-R2: la matriz solo recogía HIST → PLC-R1, porque la consulta del historiador a PLC-R2 se había escapado en la ventana de observación. Priya revierte a las 06:09, los valores se recuperan y el flujo que faltaba se añade a la matriz con la confirmación del proveedor del historiador. El segundo despliegue, el jueves, supera las cuatro comprobaciones.
+
+> **Caso sintético — Northgate Cold Storage.** La cronología es inventada.
+
+### Errores y límites
+
+Las pruebas en banco no pueden reproducir todos los comportamientos de los dispositivos. La validación solo cubre lo que se le ocurrió comprobar; siga supervisando después de la ventana.
+
+### Ejercicios — capítulo 27
+
+- **EX079 — Ordenar los pasos.** Ordene: validar, aplicar las nuevas reglas, copiar las reglas actuales, supervisar 24 h. *Rúbrica:* 3 = copiar, aplicar, validar, supervisar; 2 = un intercambio; 1 = al azar; 0 = nada.
+- **EX080 — Por qué se escapó el flujo de HIST.** Explique cómo el flujo que faltaba esquivó la matriz y cómo evitarlo la próxima vez. *Rúbrica:* 3 = la ventana de observación no captó la consulta del historiador; confirmar con los responsables y capturas más largas; 2 = una; 1 = culpar a alguien; 0 = nada.
+- **EX081 — Un criterio de reversión.** Escriba el criterio de reversión de la comprobación de GW-LOG. *Rúbrica:* 3 = subidas fallidas durante > 10 minutos tras el cambio → reversión; 2 = plazo vago; 1 = intento mínimo; 0 = nada.
+
+### Síntesis del capítulo
+
+En TO, un despliegue se planifica, se valida frente a comprobaciones definidas de antemano, puede revertirse en minutos y se registra como evidencia; y una reversión es un éxito, no un fracaso.
+
+### Siga estudiando — capítulo 27 de 30
+
+[← Capítulo 26 (borrador)](#ch-26) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 28 (borrador) →](#ch-28)
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Práctica de campo
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) trabajar de forma segura en un emplazamiento industrial bajo supervisión; (2) seguir las normas del emplazamiento sobre permisos de trabajo, EPI y bloqueo; (3) comunicarse con operadores, empresas contratistas y directivos; y (4) reflexionar sobre la experiencia de campo.
+
+### 28.1 Primero, la seguridad en el emplazamiento
+
+Una planta de refrigeración por amoníaco tiene peligros que un estudiante de informática quizá no espere: gas tóxico, maquinaria en movimiento, cámaras frigoríficas donde la exposición es limitada, carretillas elevadoras en el muelle. Antes de cualquier visita: formación de acogida en el emplazamiento, el EPI obligatorio, conocer las señales de alarma y los puntos de reunión, y un acompañante. Nunca entre en la sala de máquinas sin el permiso del ingeniero de refrigeración. Las visitas de Priya empiezan siempre con la formación de acogida en la portería, y solo entra en la sala de máquinas con la empresa contratista o con el ingeniero de refrigeración. La formación de acogida cubre las alarmas de amoníaco y los puntos de reunión, que se aplican a ella como a cualquier otra persona.
+
+### 28.2 Permisos de trabajo y bloqueo
+
+El trabajo en los cuadros puede requerir un permiso de trabajo y, para el aislamiento eléctrico, un bloqueo y etiquetado a cargo de personal cualificado. Un tecnólogo que lee la pantalla de un panel frontal puede necesitar un acompañante; tocar cualquier cosa dentro de un cuadro en tensión no forma parte de su función. En NCS, Priya leyó la versión de PLC-R2 en la pantalla de su panel frontal con la empresa contratista a su lado; eso es observación, no trabajo en el cuadro. El router celular de MP-2 se fotografió, no se desconectó: retirarlo fue decisión del responsable de instalaciones, tomada después de que la empresa contratista confirmara para qué servía.
+
+### 28.3 Comunicación
+
+Los operadores conocen la planta; escuche primero. Explique qué va a hacer, cuánto tiempo le llevará y cómo podría afectarles. Antes de marcharse, cuente al jefe de turno qué hizo y qué encontró que les importe hoy. En su tercera visita, cuando un operador le pidió que reiniciara una HMI bloqueada, Priya explicó por qué no lo haría y qué podía hacer en su lugar: comprobar los contadores del puerto del conmutador, algo permitido en modo de solo lectura, y llamar a la empresa contratista. Antes de marcharse, contó al jefe de turno la causa, una fuente de alimentación que estaba fallando, y que no se había encontrado ningún problema de seguridad.
+
+### 28.4 Reflexión
+
+Después de cada visita, escriba: qué hice, qué observé, qué haría de otra manera y cualquier cuestión de seguridad o ética. La reflexión se evalúa en este capítulo porque es así como crece el criterio de campo. La entrada de Priya de su tercera visita podría decir: hice, comprobar los contadores del puerto del conmutador ante una HMI bloqueada y llamar a la empresa contratista; observé, una fuente de alimentación que fallaba como causa, confirmada por la empresa contratista; de otra manera, preguntar al llegar quién atiende las averías de la HMI en ese turno; cuestión ética, la petición del operador de que ella reiniciara la HMI por ser «la persona de informática», que rechazó porque un reinicio podía destruir evidencia y no era tarea suya según el procedimiento del emplazamiento. Los evaluadores se fijan sobre todo en la última línea.
+
+### Ejemplo resuelto (NCS sintética)
+
+En la tercera visita de Priya, un operador le pide que «reinicie rápidamente» una HMI bloqueada porque ella es «la persona de informática». Ella se niega: según el procedimiento del emplazamiento, reiniciar la HMI es tarea del operador o de la empresa contratista, y un reinicio podría destruir evidencia si el bloqueo tiene una causa cibernética. Ayuda comprobando los contadores del puerto del conmutador (algo permitido en modo de solo lectura) y llama a la empresa contratista, que encuentra una fuente de alimentación que está fallando.
+
+> **Caso sintético — Northgate Cold Storage.** La visita es inventada.
+
+### Errores y límites
+
+Las estancias de campo varían; siga las normas de la organización anfitriona aunque difieran de este libro. Las notas de reflexión no deben incluir datos de clientes ni credenciales.
+
+### Ejercicios — capítulo 28
+
+- **EX082 — Lista previa a la visita.** Enumere cuatro cosas que debe tener antes de entrar en la sala de máquinas de NCS. *Rúbrica:* 3 = formación de acogida, EPI, acompañante o permiso, conocimiento de las alarmas y del punto de reunión; 2 = tres; 1 = el portátil; 0 = nada.
+- **EX083 — Rechazar el reinicio con cortesía.** Escriba lo que Priya le dice al operador. *Rúbrica:* 3 = se niega, explica su función y la razón de la evidencia, ofrece ayuda, llama a la persona adecuada; 2 = parcial; 1 = se niega con brusquedad; 0 = reinicia.
+- **EX084 — Una entrada de reflexión.** Escriba la línea «qué haría de otra manera» de esa visita. *Rúbrica:* 3 = mejora concreta y aplicable; 2 = vaga; 1 = intento mínimo; 0 = nada.
+
+### Síntesis del capítulo
+
+La práctica de campo crea los hábitos que mantienen a salvo a las personas y la confianza de la planta en el personal de seguridad: preparación, mantenerse en su función, comunicación clara y reflexión.
+
+### Siga estudiando — capítulo 28 de 30
+
+[← Capítulo 27 (borrador)](#ch-27) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 29 (borrador) →](#ch-29)
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Construcción del proyecto final
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) construir un artefacto de proyecto final que resuelva un problema definido de NCS; (2) trabajar por incrementos con pruebas; (3) llevar un registro de decisiones; y (4) preparar el artefacto para la evaluación y el traspaso.
+
+### 29.1 El encargo del proyecto final
+
+El proyecto final de Priya: un «detector de deriva de TO» que se ejecuta cada semana en el equipo de gestión de NCS y combina la comparación de inventario del capítulo 11, la comparación de flujos del capítulo 12, la comprobación de interlocutores nuevos del capítulo 19 y la comprobación de certificados del capítulo 22 en un único informe con un único estado de salida. Solo lee archivos exportados y nunca contacta con los dispositivos. Cada una de las cuatro comprobaciones ya existe y se ha ejecutado con datos de NCS; el trabajo del proyecto final consiste en combinarlas, validar sus entradas y hacer del resultado algo que el responsable de instalaciones pueda ejecutar sin Priya.
+
+### 29.2 Incrementos
+
+Semana 1: un script que ejecuta las cuatro comprobaciones sobre archivos de ejemplo e imprime secciones. Semana 2: un formato de salida común (comprobación, elemento, estado, archivo de evidencia). Semana 3: pruebas de cada comprobación con pequeños datos de prueba, incluidas entradas vacías. Semana 4: programación, registro y la alerta de «el trabajo no se ejecutó». Cada incremento funciona de principio a fin antes de empezar el siguiente. La semana 3 encontró un defecto real: un archivo de captura vacío hacía que la comprobación de interlocutores nuevos informara de que faltaban todos los equipos de la línea base, en lugar de indicar «sin datos». Priya añadió un estado «sin datos» que hace fallar la ejecución, porque una entrada vacía suele significar que la captura falló.
+
+### 29.3 Registro de decisiones
+
+Ejemplos: «Decisión 3: devolver un estado de salida distinto de cero si alguna comprobación devuelve `UNAPPROVED`, `EXPIRED` o `VERSION-CONFLICT`; alternativa (siempre cero) rechazada porque el programador de tareas no podría alertar». «Decisión 5: sin corrección automática; todas las acciones mediante tiques». De la semana 3 salió otra decisión: «Decisión 6: un archivo de entrada vacío produce el estado `NO-DATA` y una salida distinta de cero; alternativa (tratarlo como cero eventos) rechazada porque informaba de que faltaban todos los equipos de la línea base, y una captura vacía suele significar que la captura falló». Cada entrada nombra la alternativa y la razón por la que se descartó, para que un evaluador pueda discrepar de la razón en lugar de tener que adivinarla.
+
+### 29.4 Listo para la evaluación
+
+La carpeta del artefacto contiene el código, las pruebas, las entradas de ejemplo, un README que explica cómo ejecutarlo, el registro de decisiones y una breve guía de operaciones. Un evaluador debe poder ejecutarlo desde una copia limpia del repositorio y obtener la salida documentada. La carpeta de Priya lo cumplía, con 23 pruebas que se superan desde una copia limpia. La guía de operaciones es donde su evaluador encontró más tarde la laguna: el responsable de instalaciones podía ejecutar el detector, pero todavía necesitaba ayuda para interpretar `VERSION-CONFLICT`. Un revisor puede seguir cada estado desde los archivos de entrada hasta el informe sin preguntarle a ella.
+
+### Ejemplo resuelto (NCS sintética)
+
+En la semana 3, las pruebas de Priya revelan que un archivo de captura vacío hace que la comprobación de interlocutores nuevos informe de que faltan todos los equipos de la línea base, en lugar de indicar «sin datos». Añade un estado «sin datos» que hace fallar la ejecución, porque una entrada vacía suele significar que la captura falló, que es exactamente lo que el emplazamiento necesita saber.
+
+> **Caso sintético — Northgate Cold Storage.** El proyecto final es un ejemplo didáctico.
+
+### Errores y límites
+
+Combinar comprobaciones multiplica las formas en que los archivos de entrada pueden estar mal; valide primero las entradas. Una herramienta que solo Priya puede ejecutar no está terminada.
+
+### Ejercicios — capítulo 29
+
+- **EX085 — Elegir los estados de salida.** ¿Qué estados deberían hacer que el detector de deriva devuelva una salida distinta de cero? *Rúbrica:* 3 = `UNAPPROVED`, `EXPIRED`, `VERSION-CONFLICT`, sin datos (cualquier problema); 2 = algunos; 1 = vago; 0 = nada.
+- **EX086 — Un dato de prueba.** Describa un dato de prueba que compruebe el límite de 30 días de la comprobación de certificados. *Rúbrica:* 3 = un certificado a exactamente 30 días espera `renew-now`, a 31 espera `plan`; 2 = uno; 1 = vago; 0 = nada.
+- **EX087 — ¿Por qué sin corrección automática?** Justifique la decisión 5 en dos frases. *Rúbrica:* 3 = las acciones en TO necesitan aprobación y contexto; los errores automatizados podrían detener las operaciones; 2 = una; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+Construir un proyecto final es avanzar por pequeños incrementos, probar los casos límite, registrar las decisiones y producir un artefacto que otra persona pueda ejecutar.
+
+### Siga estudiando — capítulo 29 de 30
+
+[← Capítulo 28 (borrador)](#ch-28) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 30 (borrador) →](#ch-30)
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Evaluación del proyecto final
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) evaluar un proyecto final frente a su encargo y sus criterios; (2) presentar los resultados a públicos técnicos y del emplazamiento; (3) responder preguntas sobre las limitaciones; y (4) planificar sus próximos pasos de aprendizaje.
+
+### 30.1 Criterios
+
+El proyecto final se evalúa por: adecuación al problema (¿responde a una necesidad de NCS?), corrección técnica (¿se superan las pruebas y coinciden las salidas?), seguridad y autorización (solo lectura, sin contacto con dispositivos, alcance documentado), usabilidad (¿puede ejecutarlo el emplazamiento?) y honestidad (¿se declaran las limitaciones?). Cada criterio se puntúa de 0 a 3 con evidencia escrita. Priya se puntuó a sí misma con 3, 3, 3, 2 y 3 en estos criterios, con la usabilidad en 2 porque interpretar `VERSION-CONFLICT` todavía requería ayuda. El evaluador coincidió en todos los criterios y sugirió una columna de «qué hacer» en lenguaje llano para cada estado. La columna se añadió antes de la entrega final.
+
+### 30.2 Demostración
+
+Ejecute la herramienta en directo desde una copia limpia del repositorio con entradas de ejemplo y después muestre el informe de una semana real (aprobada por el responsable y depurada). Narre un hallazgo del informe hasta su resolución: el detector de deriva señaló un `VERSION-CONFLICT` en una pasarela de registradores tras una actualización del proveedor, y se corrigió el inventario. El hallazgo que narra Priya sigue la salida del detector de deriva desde `VERSION-CONFLICT` hasta una fila corregida del inventario, el mismo camino que siguió a mano el conflicto 2.4/2.1 de PLC-R2 en el capítulo 11. Mostrar primero la ejecución desde una copia limpia demuestra que la herramienta funciona; mostrar la semana real demuestra que el emplazamiento la usa.
+
+### 30.3 Preguntas para las que prepararse
+
+«¿Qué ocurre si la captura procede del conmutador equivocado?» «¿Cómo sabe que la matriz de flujos es correcta?» «¿Qué haría un atacante que conociera el detector?» «¿Quién lo mantiene cuando usted se vaya?» Responda con evidencia o con «no lo sé, y así es como lo averiguaría». La página de limitaciones de Priya ya responde a dos: nombra la ubicación de la captura (una captura del conmutador equivocado no mostraría nada del tráfico de los PLC) y el envenenamiento de la línea base (un atacante presente durante la semana de la línea base se trataría como normal). Su respuesta a «quién lo mantiene» es el responsable de instalaciones, con la guía de operaciones y las 23 pruebas.
+
+### 30.4 Próximos pasos
+
+Los tecnólogos continúan con estudios de grado, certificaciones de proveedores o sectoriales, o puestos en operaciones de TO. Siga los avisos de ICS de CISA para los productos que mantiene y vuelva a NIST SP 800-82r3 y a las partes de IEC 62443 que se aplican a su función. Para un tecnólogo que deja NCS, los productos que seguir son los del inventario de Priya: los PLC de refrigeración, la versión de Windows y el software de HMI de HMI-C, GW-LOG y los registradores, y las cámaras del muelle. Un aviso de CISA que nombre cualquiera de ellos debería llevar directamente a la tabla de activos, a la columna de firmware y a la siguiente ejecución del detector de deriva.
+
+### Ejemplo resuelto (NCS sintética)
+
+Autoevaluación de Priya: adecuación al problema 3 (el emplazamiento lo usa cada semana); corrección 3 (las 23 pruebas se superan desde una copia limpia); seguridad 3 (solo lectura, permiso archivado); usabilidad 2 (el responsable de instalaciones lo ejecuta, pero interpretar `VERSION-CONFLICT` todavía requiere ayuda); honestidad 3 (la página de limitaciones recoge la ubicación de la captura y el envenenamiento de la línea base). El evaluador coincide en todos los criterios, incluida la usabilidad en 2 por la misma razón, y sugiere una columna de «qué hacer» en lenguaje llano.
+
+> **Caso sintético — Northgate Cold Storage.** Las puntuaciones son ilustrativas.
+
+### Errores y límites
+
+Las demostraciones con datos seleccionados pueden ocultar fragilidad; incluya una entrada desordenada. La autoevaluación tiende a ser generosa con la usabilidad.
+
+### Ejercicios — capítulo 30
+
+- **EX088 — Puntuar la honestidad.** ¿Qué evidencia justificaría un 3 en honestidad? *Rúbrica:* 3 = una sección explícita de limitaciones con modos de fallo concretos y áreas no probadas; 2 = una advertencia breve; 1 = vago; 0 = nada.
+- **EX089 — La pregunta del atacante.** Redacte una respuesta a «¿qué haría un atacante que conociera el detector?». *Rúbrica:* 3 = actuar entre ejecuciones semanales o envenenar la línea base o el inventario; mitigaciones; 2 = parcial; 1 = lo niega; 0 = nada.
+- **EX090 — La mejora de usabilidad.** Escriba el texto de «qué hacer» para una línea `VERSION-CONFLICT`. *Rúbrica:* 3 = pasos sencillos: confirmar en el dispositivo con la empresa contratista, actualizar el inventario, revisar los avisos; 2 = parcial; 1 = jerga; 0 = nada.
+
+### Síntesis del capítulo
+
+La evaluación de un proyecto final comprueba la adecuación, la corrección, la seguridad, la usabilidad y la honestidad; y las mejores respuestas a las preguntas difíciles nombran los límites y los siguientes pasos.
+
+### Siga estudiando — capítulo 30 de 30
+
+[← Capítulo 29 (borrador)](#ch-29) · [Índice de capítulos del curso](../SUBJECTS.md) · [Resultados resueltos ↓](#worked-results) · [Siguiente curso a través del índice de capítulos →](../SUBJECTS.md)
 
 <a id="worked-results"></a>
 
@@ -1471,6 +1781,42 @@ Respuestas modelo para EX001–EX090. Northgate Cold Storage, Priya Nair y todas
 **EX071.** NCS ya depende de la alerta de la nube, así que la decisión es si añadir la comprobación de dos sondas; comparar con la práctica actual muestra el valor añadido, mientras que comparar con «ninguna comprobación» lo exageraría.
 
 **EX072.** Giraldo et al. describen la detección de ataques contrastando los datos de los sensores con lo que cabe esperar físicamente; la comparación de dos sondas de Priya es un caso sencillo de esa idea, así que la revisión encuadra y justifica el enfoque sin demostrar que funcione en NCS.
+
+**EX073.** Cambios: formulario reducido a seis campos, con los datos del emplazamiento rellenados de antemano. Aprendizajes: el operador de noche no encontraba el número del aprobador. Necesidades: el turno rotativo actual de aprobadores de guardia, del responsable de instalaciones. Riesgos: la configuración del servidor de salto todavía no se ha probado de principio a fin.
+
+**EX074.** Seguir redactando el paquete para el diseño acordado del servidor de salto, marcar los pasos que dependen de él como «pendiente del servidor de salto», informar al revisor del emplazamiento y no crear un camino provisional, como reabrir la antigua herramienta remota.
+
+**EX075.** El tiempo que tarda la empresa contratista en completar el formulario de visita (objetivo: menos de cinco minutos) y el número de pasos omitidos o hechos en un orden incorrecto durante la prueba observada.
+
+**EX076.** `present 6/7; missing: ['restore test date']` seguido de `handoff BLOCKED`.
+
+**EX077.** Sin una hoja de contactos, durante un incidente nocturno el operador no puede localizar al aprobador, a la empresa contratista ni al proveedor, así que los controles fallan en el momento en que se necesitan.
+
+**EX078.** Aprobar y después cerrar una sesión remota de la empresa contratista a través del servidor de salto: es la tarea con más probabilidades de producirse de noche y bajo presión, y ver al operador hacerla muestra si los pasos del manual de operación son claros.
+
+**EX079.** Hacer una copia de seguridad del conjunto de reglas actual; aplicar las nuevas reglas; validar las cuatro comprobaciones; supervisar durante 24 horas.
+
+**EX080.** La captura de 72 horas, o su puerto del conmutador, no incluyó la consulta del historiador a PLC-R2, así que el flujo nunca entró en la matriz; la próxima vez, confirme cada lista de flujos con el responsable de cada sistema (aquí, el proveedor del historiador) y compárela con la propia configuración del historiador, no solo con las capturas.
+
+**EX081.** «Si las subidas de GW-LOG fallan (ninguna subida correcta en el portal del proveedor) durante más de 10 minutos tras el cambio, restaurar el conjunto de reglas anterior».
+
+**EX082.** La formación de acogida en el emplazamiento completada; el EPI obligatorio (por ejemplo, detector de gas, ropa para cámaras frigoríficas, botas de seguridad); permiso explícito y un acompañante del ingeniero de refrigeración; conocer la señal de alarma de amoníaco y el punto de reunión.
+
+**EX083.** «No puedo reiniciar la HMI: eso está en el procedimiento de operadores y empresa contratista, y si algo raro ha causado el bloqueo perderíamos la evidencia. Puedo comprobar ahora mismo el puerto de red y llamo yo a la empresa contratista».
+
+**EX084.** «Antes de las visitas preguntaré al jefe de turno qué tareas esperan los operadores de "informática", para poder explicar mi función al principio y no en mitad de una avería».
+
+**EX085.** Cualquier estado que indique un problema: `UNAPPROVED` (flujo), `EXPIRED` o `renew-now` (certificado), `VERSION-CONFLICT` u `only-on-network` (inventario), interlocutores nuevos y el nuevo estado sin datos para las entradas vacías.
+
+**EX086.** Un dato de prueba con «hoy» fijado en 2026-10-12, un certificado que caduca el 2026-11-11 (30 días, se espera `renew-now`) y otro que caduca el 2026-11-12 (31 días, se espera `plan`).
+
+**EX087.** Los cambios en cortafuegos, dispositivos o certificados de TO necesitan contexto operativo y aprobación, y un script semanal no tiene ninguna de las dos cosas. Una «corrección» automática que salga mal podría dejar sin visibilidad la refrigeración o cortar el acceso de la empresa contratista cuando el emplazamiento lo necesita.
+
+**EX088.** Una sección de limitaciones que nombra modos de fallo concretos (punto de captura equivocado, línea base capturada durante un compromiso, cambios del lado del proveedor que no se ven), enumera lo que no se probó y está enlazada desde la primera página del informe.
+
+**EX089.** «Podrían actuar dentro de la semana que pasa entre ejecuciones, o conseguir que su dispositivo entre en la línea base o en el inventario para que parezca normal. El detector estrecha la ventana, pero no la cierra; las ejecuciones diarias, la revisión mediante tiques de cambio de las incorporaciones a la línea base y la supervisión en tiempo real de las escrituras en la zona de control reducen ese hueco».
+
+**EX090.** «El dispositivo informa de una versión de firmware distinta de la de nuestros registros. Pida a la empresa contratista o al proveedor que confirme la versión en el dispositivo, actualice el inventario con la versión confirmada y su fuente, y después revise los avisos de CISA para esa versión».
 
 <a id="references"></a>
 
