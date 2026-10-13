@@ -1,7 +1,7 @@
 # Governança, Riscos e Compliance de Segurança: Curso de Pós-Graduação
 
 - Idioma: português do Brasil (`pt`); curso 143, curso de pós-graduação (2 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–6 de 12 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 7–12 (EX031–EX060) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–12 de 12 têm texto didático escrito à mão; os exercícios EX001–EX060 têm resoluções correspondentes com rubricas de 0 a 3; os três laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: profissionais em pós-graduação que querem melhorar o modo como uma organização quantifica o risco cibernético, supervisiona fornecedores e informa seu conselho.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios executam um modelo de perdas Monte Carlo no estilo FAIR, um teste de permutação sobre a duração das revisões e uma comparação com o apetite, sempre sobre dados sintéticos. Os números de risco são ilustrações, as normas são citadas pela edição e parafraseadas, e nada aqui é auditoria, atestação ou aconselhamento jurídico reais; os relatórios SOC 2 descritos são fictícios. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ Freund e Jones (2015), [doi:10.1016/C2013-0-09966-5](https://doi.org/10.1016/C20
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) |
-
-Capítulos 7–12: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-07), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -316,11 +314,260 @@ Amostras pequenas. O cegamento pode ser imperfeito se os revisores reconhecerem 
 - **EX029 — Pontuação cega.** Por que o auditor não soube que processo foi usado? *Rubrica:* 3 = para evitar viés nas notas de profundidade;; 2 = cegamento;; 1 = nada;; 0 = nenhuma.
 - **EX030 — Resultado de profundidade.** Os níveis perderam profundidade? *Rubrica:* 3 = não, foram um pouco melhores nos de nível alto;; 2 = não;; 1 = sim;; 0 = nenhuma.
 
+<a id="ch-07"></a>
+
+## Capítulo 7 — Governança, riscos e compliance de segurança: integração organizacional
+
+### Objetivos de aprendizagem
+
+Você vai (1) integrar os níveis de fornecedores às compras e à gestão de riscos; (2) alinhar as três linhas de responsabilidade; (3) gerir a mudança entre departamentos.
+
+### 7.1 Integração com as compras
+
+Daniel trabalha com as compras para embutir os níveis no processo de aquisição. Um formulário curto de entrada agora pergunta sobre acesso a dados, criticidade e conectividade antes de qualquer contrato. As respostas definem o nível automaticamente, e fornecedores de nível alto não podem ser aprovados sem uma revisão de segurança concluída. Ele aprende que a integração funciona quando as etapas de governança ficam dentro dos fluxos de trabalho existentes, no ponto em que as decisões são tomadas, e não num processo à parte que as pessoas precisam lembrar de iniciar. Como o nível é definido na entrada, um fornecedor de nível alto não chega mais à assinatura sem que a revisão de segurança tenha começado.
+
+### 7.2 Linhas de responsabilidade
+
+A Halbrook usa um modelo em que as unidades de negócio são donas do risco e o gerenciam, uma função de riscos e compliance supervisiona e questiona, e a auditoria interna fornece garantia independente. Daniel esclarece o papel de cada linha no risco de fornecedores: compras e donos de negócio gerenciam, sua equipe define os métodos e questiona, e a auditoria interna testa o processo anualmente. Ele aprende que a confusão entre as linhas, como a equipe de riscos fazer revisões que deveria questionar, enfraquece a garantia e borra a responsabilização. Antes da mudança, sua equipe fazia ela mesma algumas revisões de fornecedores, e ninguém independente sobrava para questioná-las.
+
+### 7.3 Gerir a mudança
+
+Algumas unidades de negócio resistem aos níveis porque as revisões de nível alto atrasam os contratos. Daniel se reúne com elas, explica os motivos e oferece um engajamento antecipado, para que as revisões comecem antes de os contratos virarem urgência. Também publica os tempos de revisão, para que as unidades possam se planejar. A resistência cai. Ele aprende que a mudança dá certo quando as pessoas entendem os motivos, recebem ajuda prática e têm suas preocupações legítimas, como os prazos, atendidas em vez de descartadas como obstrução. Publicar os tempos também dá às unidades uma medida pela qual cobrar a equipe dele, o que gera confiança no novo processo.
+
+### Exemplo resolvido
+
+Daniel embute os níveis nas compras, esclarece as três linhas de responsabilidade e reduz a resistência com engajamento antecipado e tempos publicados.
+
+> **Caso sintético.** Os processos são sintéticos.
+
+### Erros e limites
+
+Os formulários de entrada podem ser manipulados. Os modelos de linhas variam entre organizações.
+
+### Exercícios
+
+- **EX031 — Barreira na entrada.** O que impede que fornecedores de nível alto sejam aprovados sem revisão? *Rubrica:* 3 = o formulário de entrada das compras define o nível e bloqueia a aprovação;; 2 = barreira;; 1 = nada;; 0 = nenhuma.
+- **EX032 — Primeira linha.** Quem gerencia o risco de fornecedores na primeira linha? *Rubrica:* 3 = compras e donos de negócio;; 2 = donos;; 1 = auditoria;; 0 = nenhuma.
+- **EX033 — Confusão entre linhas.** O que enfraquece a garantia entre as linhas? *Rubrica:* 3 = a equipe de riscos fazer revisões que deveria questionar;; 2 = confusão;; 1 = nada;; 0 = nenhuma.
+- **EX034 — Causa da resistência.** Por que algumas unidades resistiram aos níveis? *Rubrica:* 3 = as revisões de nível alto atrasavam os contratos;; 2 = atraso;; 1 = nada;; 0 = nenhuma.
+- **EX035 — Solução da resistência.** Como a resistência foi reduzida? *Rubrica:* 3 = engajamento antecipado e tempos de revisão publicados;; 2 = engajamento;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Governança, riscos e compliance de segurança: casos difíceis
+
+### Objetivos de aprendizagem
+
+Você vai (1) lidar com conflitos entre compliance e risco; (2) decidir com evidências incompletas; (3) escalar de forma adequada.
+
+### 8.1 Um fornecedor crítico falha
+
+O relatório SOC 2 tipo 2 de um fornecedor de sinistros de nível alto mostra exceções: as revisões de acesso não foram feitas durante dois trimestres. O fornecedor é crítico, e substituí-lo levaria um ano. Daniel precisa recomendar o que fazer. Ele considera as opções: aceitar com controles compensatórios, exigir um plano de remediação com marcos, aumentar o monitoramento ou iniciar um plano de saída. Recomenda um plano de remediação, monitoramento extra do acesso do fornecedor aos dados da Halbrook e uma avaliação de saída em paralelo. A avaliação de saída em paralelo evita que a Halbrook fique presa se os marcos da remediação atrasarem.
+
+### 8.2 Evidências incompletas
+
+Um novo provedor de nuvem para análise de fraudes oferece apenas um certificado ISO/IEC 27001:2022 recente, cujo escopo não inclui claramente o serviço de análise. Daniel não consegue confirmar os controles diretamente. Recomenda um piloto limitado com dados sintéticos, direitos contratuais de auditoria e o pedido de uma declaração de escopo. Ele aprende que os casos difíceis raramente oferecem evidências completas, e que a boa prática é limitar a exposição enquanto as evidências são reunidas, em vez de escolher entre confiança cega e recusa. O piloto com dados sintéticos permite que os analistas de fraude testem o serviço sem expor dados de segurados a controles não confirmados.
+
+### 8.3 Escalonamento
+
+Um diretor de negócio quer seguir com o provedor de análise usando dados reais de segurados antes que a declaração de escopo chegue. Daniel escala para o diretor de riscos (CRO) com um memorando curto: a decisão necessária, as opções, o risco e sua recomendação. O CRO apoia o piloto apenas com dados sintéticos. Daniel aprende que o escalonamento é uma ferramenta normal de governança, e que um memorando claro faz dele um processo de decisão, e não uma disputa pessoal. O memorando também deixa um registro mostrando que tanto o pedido do diretor quanto o raciocínio de risco foram considerados.
+
+### Exemplo resolvido
+
+Daniel trata as exceções do SOC 2 num fornecedor crítico, limita a exposição a um provedor incerto e escala uma decisão sobre dados com um memorando claro.
+
+> **Caso sintético.** Os fornecedores e as decisões são sintéticos; o SOC 2 e a ISO/IEC 27001:2022 são reais.
+
+### Erros e limites
+
+Os controles compensatórios podem mascarar o risco. O escalonamento pode desgastar relações.
+
+### Exercícios
+
+- **EX036 — Exceção no SOC 2.** Que exceção o relatório do fornecedor mostrou? *Rubrica:* 3 = revisões de acesso não feitas durante dois trimestres;; 2 = revisão de acesso;; 1 = nada;; 0 = nenhuma.
+- **EX037 — Plano para o fornecedor crítico.** O que Daniel recomendou para o fornecedor crítico? *Rubrica:* 3 = plano de remediação, monitoramento extra e avaliação de saída em paralelo;; 2 = três;; 1 = substituir imediatamente;; 0 = nenhuma.
+- **EX038 — Dúvida de escopo.** Por que o certificado do provedor era insuficiente? *Rubrica:* 3 = o escopo não incluía claramente o serviço de análise;; 2 = escopo;; 1 = nada;; 0 = nenhuma.
+- **EX039 — Exposição limitada.** Como Daniel limitou a exposição enquanto reunia evidências? *Rubrica:* 3 = piloto com dados sintéticos e direitos de auditoria;; 2 = piloto;; 1 = nada;; 0 = nenhuma.
+- **EX040 — Memorando de escalonamento.** O que continha o memorando de Daniel? *Rubrica:* 3 = decisão necessária, opções, risco e recomendação;; 2 = memorando;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Governança, riscos e compliance de segurança: liderança e garantia
+
+### Objetivos de aprendizagem
+
+Você vai (1) expressar o apetite a risco em termos quantitativos; (2) comparar as estimativas de risco com o apetite; (3) conduzir conversas de garantia com o conselho.
+
+### 9.1 Apetite quantificado
+
+O conselho da Halbrook tem uma declaração de apetite qualitativa: baixa tolerância ao risco cibernético. Daniel ajuda a traduzi-la em limites de excedência: a probabilidade de as perdas cibernéticas anuais passarem de determinados valores não deve superar limiares acordados, por exemplo, no máximo cinco por cento de chance de passar de um milhão num ano. Ele aprende que o apetite quantificado torna concretas as discussões de risco e permite ao conselho comparar o risco cibernético com suas tolerâncias para outros riscos financeiros. O limite de cinco por cento em um milhão vira a referência contra a qual a curva combinada é testada na seção seguinte.
+
+### 9.2 Comparar com o apetite
+
+A equipe de Daniel estima uma curva de excedência de perda para todos os cenários cibernéticos combinados. O laboratório compara cinco pontos com o apetite. As estimativas ficam dentro do apetite em duzentos e cinquenta mil e em quinhentos mil, mas o excedem em um milhão, dois milhões e cinco milhões: por exemplo, oito por cento de chance de passar de um milhão contra um apetite de cinco por cento. É a cauda, e não o ano típico, que viola o apetite. Ele recomenda tratamentos voltados aos cenários graves. Tratamentos como o isolamento de backups encolhem a cauda sem mudar muito os anos comuns.
+
+### Laboratório — Estimativas de excedência de perda contra o apetite do conselho
+
+```python
+"""Compare loss exceedance points with board appetite (synthetic, thousands)."""
+lec = {250: 0.42, 500: 0.21, 1000: 0.08, 2000: 0.02, 5000: 0.004}
+appetite = {250: 0.50, 500: 0.25, 1000: 0.05, 2000: 0.01, 5000: 0.002}
+for x in lec:
+    s = "within" if lec[x] <= appetite[x] else "EXCEEDS"
+    print(f"P(loss > {x}k): estimate {lec[x]:.3f} appetite {appetite[x]:.3f} {s}")
+```
+
+Execute com `python3 lab_appetite.py`. Saída verificada:
+
+```text
+P(loss > 250k): estimate 0.420 appetite 0.500 within
+P(loss > 500k): estimate 0.210 appetite 0.250 within
+P(loss > 1000k): estimate 0.080 appetite 0.050 EXCEEDS
+P(loss > 2000k): estimate 0.020 appetite 0.010 EXCEEDS
+P(loss > 5000k): estimate 0.004 appetite 0.002 EXCEEDS
+```
+
+### 9.3 Garantia ao conselho
+
+Daniel apresenta a comparação ao conselho com a incerteza por trás da curva e os tratamentos propostos: melhor isolamento dos backups e uma revisão do seguro. Um conselheiro pergunta se as estimativas são confiáveis. Ele explica como as entradas foram reunidas, que a auditoria interna revisou o método e que os resultados são faixas. O conselho aprova os tratamentos e pede uma atualização em seis meses. Ele aprende que a garantia ao conselho depende tanto da transparência sobre os métodos quanto dos números. A Dra. Varga observa que a atualização em seis meses dá ao conselho um meio de ver se os tratamentos realmente moveram a cauda.
+
+### Exemplo resolvido
+
+Daniel traduz o apetite em limites de excedência, constata que a cauda excede o apetite em três pontos e conduz uma discussão transparente com o conselho.
+
+> **Caso sintético.** As curvas e o apetite são sintéticos.
+
+### Erros e limites
+
+As curvas combinadas dependem de premissas de correlação. Os limiares de apetite são julgamentos.
+
+### Exercícios
+
+- **EX041 — Exemplo de apetite.** Dê o exemplo de limite de excedência. *Rubrica:* 3 = no máximo 5% de chance de passar de 1 milhão;; 2 = 5% em 1 milhão;; 1 = nada;; 0 = nenhuma.
+- **EX042 — Dentro do apetite.** Em que pontos a estimativa está dentro do apetite? *Rubrica:* 3 = 250 mil e 500 mil;; 2 = dois;; 1 = nada;; 0 = nenhuma.
+- **EX043 — Violação em um milhão.** Qual é a estimativa em um milhão em relação ao apetite? *Rubrica:* 3 = 8% contra 5%;; 2 = excede;; 1 = nada;; 0 = nenhuma.
+- **EX044 — Onde ocorre a violação.** Que parte da curva viola o apetite? *Rubrica:* 3 = a cauda;; 2 = cauda;; 1 = ano típico;; 0 = nenhuma.
+- **EX045 — Resposta sobre confiança.** Como Daniel respondeu se as estimativas eram confiáveis? *Rubrica:* 3 = explicou as entradas, a revisão da auditoria e as faixas;; 2 = transparência;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Leitura e crítica de pesquisas
+
+### Objetivos de aprendizagem
+
+Você vai (1) ler pesquisas de GRC com olhar crítico; (2) avaliar métodos e afirmações; (3) relacionar os achados à prática.
+
+### 10.1 Estratégia de leitura
+
+Daniel lê quatro fontes: Gordon e Loeb (2002), sobre a economia do investimento em segurança; Cox (2008), sobre matrizes de risco; Spears e Barki (2010), sobre a participação dos usuários na gestão de riscos de segurança; e Hubbard e Seiersen (2016), sobre mensuração. Para cada uma, registra a pergunta, o método, os dados, a afirmação principal e os limites. Ele aprende que ler pesquisas para a prática significa perguntar não só se uma afirmação é verdadeira, mas se ela se aplica ao contexto da sua organização. Registrar os mesmos cinco campos para cada fonte facilita comparar os trabalhos analíticos, de survey e baseados na prática que vêm a seguir.
+
+### 10.2 Avaliar os métodos
+
+Gordon e Loeb oferecem um modelo analítico com premissas sobre as funções de vulnerabilidade e de perda; a ideia de que o investimento ótimo é limitado é robusta, mas os números exatos dependem das premissas. Cox analisa propriedades matemáticas das matrizes; suas conclusões são lógicas, e não empíricas. Spears e Barki usam dados de survey e entrevistas com gestores; os achados dependem do contexto. Hubbard e Seiersen sintetizam prática e pesquisa para defender a quantificação. Daniel observa os diferentes tipos de evidência de cada um. Um argumento lógico como o de Cox pode mostrar que as matrizes enganam em princípio, mas não diz com que frequência enganaram o comitê da Halbrook.
+
+### 10.3 Relacionar à prática
+
+Daniel relaciona cada fonte à Halbrook. Gordon e Loeb apoiam comparar os investimentos com a redução esperada de perdas. Cox apoia abandonar as matrizes nos relatórios ao conselho. Spears e Barki apoiam envolver os donos de negócio nas decisões de risco de fornecedores, o que os níveis fizeram. Hubbard e Seiersen apoiam o treinamento de calibração para quem estima. Ele escreve uma crítica observando que nenhuma estudou diretamente a supervisão de fornecedores de uma seguradora, de modo que sua própria avaliação acrescenta evidência local. A avaliação dos níveis em vinte revisões é a evidência local que as fontes publicadas não podiam oferecer.
+
+### Exemplo resolvido
+
+Daniel lê quatro fontes, registra método e limites, distingue evidência analítica de empírica e liga cada uma à prática da Halbrook.
+
+> **Caso sintético.** A crítica é sintética; as quatro fontes são reais.
+
+### Erros e limites
+
+Os resumos simplificam as fontes. Os contextos diferem do da Halbrook.
+
+### Exercícios
+
+- **EX046 — Campos de leitura.** O que Daniel registra para cada fonte? *Rubrica:* 3 = pergunta, método, dados, afirmação principal, limites;; 2 = cinco;; 1 = nada;; 0 = nenhuma.
+- **EX047 — Evidência de Cox.** Que tipo de evidência Cox (2008) oferece? *Rubrica:* 3 = análise lógica das propriedades das matrizes;; 2 = analítica;; 1 = empírica;; 0 = nenhuma.
+- **EX048 — Método de Spears.** Que método Spears e Barki (2010) usam? *Rubrica:* 3 = dados de survey e entrevistas com gestores;; 2 = survey;; 1 = nada;; 0 = nenhuma.
+- **EX049 — Gordon-Loeb na prática.** Como o trabalho de Gordon e Loeb se aplica na Halbrook? *Rubrica:* 3 = comparar investimentos com a redução esperada de perdas;; 2 = investimento;; 1 = nada;; 0 = nenhuma.
+- **EX050 — Lacuna de pesquisa.** Que lacuna a avaliação de Daniel preenche? *Rubrica:* 3 = nenhuma estudou diretamente a supervisão de fornecedores de seguradoras;; 2 = evidência local;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Projeto aplicado
+
+### Objetivos de aprendizagem
+
+Você vai (1) entregar uma melhoria aplicada de GRC; (2) medir os resultados contra os objetivos; (3) documentar para a passagem de bastão.
+
+### 11.1 Escopo do projeto
+
+O projeto aplicado de Daniel reúne seu trabalho: relatórios de risco quantificados para o conselho, níveis de fornecedores e apetite em termos de excedência. Ao longo de seis meses, ele implanta os níveis para os trezentos fornecedores, introduz relatórios de excedência de perda para os dez principais cenários cibernéticos e treina seis estimadores em calibração. Os objetivos incluem reduzir pela metade o tempo médio de revisão, concluir revisões profundas de todos os fornecedores de nível alto e apresentar os cenários em termos financeiros em todas as reuniões do conselho. Cada objetivo é mensurável, para que a seção de resultados possa relatá-lo como cumprido, parcialmente cumprido ou não cumprido.
+
+### 11.2 Resultados
+
+Depois de seis meses, o tempo médio de revisão caiu de cerca de trinta e nove para vinte e quatro dias, perto do objetivo. Os quarenta e dois fornecedores de nível alto concluíram revisões profundas, que revelaram três com exceções significativas, agora em remediação. O conselho recebe cenários quantificados todo trimestre e aprovou dois tratamentos. Os testes de calibração mostram que as faixas dos estimadores capturam as respostas verdadeiras com mais frequência após o treinamento. Daniel relata um objetivo, reduzir à metade o tempo de revisão, como quase, mas não totalmente, cumprido. Os três fornecedores com exceções significativas mostram que as revisões profundas acharam problemas que os questionários antigos tinham deixado passar.
+
+### 11.3 Passagem de bastão
+
+Daniel documenta os métodos, as ferramentas, as orientações aos estimadores e as regras dos níveis, e treina um colega para conduzir o processo. Registra as limitações conhecidas: as estimativas dependem de um pequeno grupo de especialistas, e os dados de perdas são escassos. Recomenda coletar dados internos de custo de incidentes para melhorar as estimativas futuras. Ele aprende que os projetos aplicados só geram valor duradouro quando outros podem continuá-los, e que relatar com honestidade os objetivos parcialmente cumpridos gera credibilidade. Registrar a dependência de um pequeno grupo de especialistas avisa seu sucessor de onde as estimativas são mais frágeis.
+
+### Exemplo resolvido
+
+Daniel implanta os níveis e os relatórios quantificados, quase reduz à metade o tempo de revisão, conclui quarenta e duas revisões profundas e passa o bastão com os limites documentados.
+
+> **Caso sintético.** Os resultados são sintéticos.
+
+### Erros e limites
+
+Seis meses é pouco tempo. Os ganhos de calibração podem se dissipar.
+
+### Exercícios
+
+- **EX051 — Resultado do tempo de revisão.** Como mudou o tempo médio de revisão? *Rubrica:* 3 = de cerca de trinta e nove para vinte e quatro dias;; 2 = quase pela metade;; 1 = nada;; 0 = nenhuma.
+- **EX052 — Revisões de nível alto.** Quantos fornecedores de nível alto concluíram revisões profundas? *Rubrica:* 3 = quarenta e dois;; 2 = 42;; 1 = nada;; 0 = nenhuma.
+- **EX053 — Exceções encontradas.** Quantos fornecedores de nível alto tinham exceções significativas? *Rubrica:* 3 = três;; 2 = 3;; 1 = nada;; 0 = nenhuma.
+- **EX054 — Parcialmente cumprido.** Que objetivo foi apenas quase cumprido? *Rubrica:* 3 = reduzir à metade o tempo de revisão;; 2 = tempo de revisão;; 1 = nada;; 0 = nenhuma.
+- **EX055 — Recomendação de dados.** Que dados Daniel recomenda coletar? *Rubrica:* 3 = dados internos de custo de incidentes;; 2 = custos de incidentes;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Revisão final e transferência
+
+### Objetivos de aprendizagem
+
+Você vai (1) revisar criticamente o que aprendeu na pós-graduação; (2) transferir métodos para novos contextos; (3) planejar o desenvolvimento contínuo.
+
+### 12.1 Revisão final
+
+Daniel apresenta seu trabalho à Dra. Varga e a um examinador externo de outra seguradora. Resume as decisões, as evidências e os resultados e responde às perguntas. O examinador pergunta se a quantificação vai sobreviver à saída dele. Daniel aponta a passagem de bastão, o colega treinado e a revisão do método pela auditoria interna. A Dra. Varga pergunta o que ele faria diferente; ele responde que coletaria dados de custo de incidentes desde o início e envolveria os corretores mais cedo. As duas respostas apontam para dados e partes interessadas que ele poderia ter envolvido antes, e não para falhas nos próprios métodos.
+
+### 12.2 Transferência
+
+Daniel considera como seus métodos se transferem. Os níveis se aplicam a qualquer organização com muitos fornecedores. Os relatórios de excedência de perda servem a organizações cujos conselhos estão acostumados ao risco financeiro, como bancos ou fundos de pensão, mas podem precisar de simplificação para pequenas organizações beneficentes. O treinamento de calibração se aplica onde quer que especialistas estimem quantidades incertas. Ele aprende que os métodos se transferem melhor quando suas premissas são explícitas, para que novos usuários verifiquem se elas valem no seu contexto. Numa pequena entidade beneficente, por exemplo, uma única regra de nível baseada no acesso a dados pode bastar, onde a Halbrook precisou de três critérios.
+
+### 12.3 Desenvolvimento contínuo
+
+Daniel planeja seu desenvolvimento contínuo: estudo mais profundo de estatística para riscos, acompanhamento das atualizações do NIST CSF e das normas ISO e participação numa comunidade profissional de quantificação de riscos. Também se compromete a ser mentor de um colega júnior. A Dra. Varga observa que a prática de GRC muda depressa e que seus hábitos de leitura crítica, avaliação controlada e relato transparente continuarão úteis à medida que os frameworks específicos mudarem. Ela também sugere que ele guarde seus registros de calibração, para poder verificar mais tarde se as próprias estimativas continuam bem calibradas.
+
+### Exemplo resolvido
+
+Daniel defende seu trabalho, explica como os métodos se transferem com premissas explícitas e planeja seu desenvolvimento contínuo.
+
+> **Caso sintético.** A revisão é sintética.
+
+### Erros e limites
+
+A autoavaliação pode ser generosa. A transferência exige teste local.
+
+### Exercícios
+
+- **EX056 — Resposta sobre a continuidade.** Como Daniel mostrou que a quantificação sobreviveria à sua saída? *Rubrica:* 3 = passagem de bastão, colega treinado e revisão da auditoria;; 2 = continuidade;; 1 = nada;; 0 = nenhuma.
+- **EX057 — Fazer diferente.** O que Daniel faria diferente? *Rubrica:* 3 = coletar dados de custo de incidentes desde o início e envolver os corretores mais cedo;; 2 = retrospectiva;; 1 = nada;; 0 = nenhuma.
+- **EX058 — Condição de transferência.** Quando os métodos se transferem melhor? *Rubrica:* 3 = quando as premissas são explícitas;; 2 = premissas;; 1 = nada;; 0 = nenhuma.
+- **EX059 — Pequenas beneficentes.** Que ajuste os relatórios de excedência de perda podem exigir em pequenas organizações beneficentes? *Rubrica:* 3 = simplificação;; 2 = mais simples;; 1 = nada;; 0 = nenhuma.
+- **EX060 — Hábitos duradouros.** Que hábitos continuarão úteis quando os frameworks mudarem? *Rubrica:* 3 = leitura crítica, avaliação controlada, relato transparente;; 2 = hábitos;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX030 (as de EX031–EX060 estão na edição em inglês até a tradução dos capítulos correspondentes). Daniel Mensah, a Dra. Elena Varga, a Wexford School of Management, a Halbrook Mutual e todos os números são sintéticos; os relatórios SOC 2 descritos são fictícios. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060. Daniel Mensah, a Dra. Elena Varga, a Wexford School of Management, a Halbrook Mutual e todos os números são sintéticos; os relatórios SOC 2 descritos são fictícios. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Pelo sentido que a escolha fazia diante das informações, dos valores e do tempo disponíveis.
 
@@ -381,6 +628,66 @@ Respostas-modelo para EX001–EX030 (as de EX031–EX060 estão na edição em i
 **EX029.** Para evitar viés na pontuação da profundidade de cada revisão.
 
 **EX030.** Não; foi um pouco melhor nos fornecedores de nível alto nesta amostra.
+
+**EX031.** O formulário de entrada define o nível, e a aprovação fica bloqueada até a revisão de segurança ser concluída.
+
+**EX032.** Compras e donos de negócio.
+
+**EX033.** Confusões como a equipe de riscos fazer revisões que deveria questionar de forma independente.
+
+**EX034.** Porque as revisões de nível alto atrasavam seus contratos.
+
+**EX035.** Com engajamento antecipado e a publicação dos tempos de revisão, para que as unidades pudessem se planejar.
+
+**EX036.** As revisões de acesso não foram feitas durante dois trimestres.
+
+**EX037.** Um plano de remediação com marcos, monitoramento extra e uma avaliação de saída em paralelo.
+
+**EX038.** Seu escopo não incluía claramente o serviço de análise.
+
+**EX039.** Um piloto limitado com dados sintéticos, direitos de auditoria e o pedido de uma declaração de escopo.
+
+**EX040.** A decisão necessária, as opções, o risco e sua recomendação.
+
+**EX041.** No máximo 5% de chance de as perdas cibernéticas anuais passarem de um milhão.
+
+**EX042.** Em 250 mil e 500 mil.
+
+**EX043.** Uma chance estimada de 8% contra um apetite de 5%.
+
+**EX044.** A cauda, que cobre as perdas graves.
+
+**EX045.** Explicando como as entradas foram reunidas, que a auditoria interna revisou o método e que os resultados são faixas.
+
+**EX046.** A pergunta, o método, os dados, a afirmação principal e os limites.
+
+**EX047.** Análise lógica e matemática das propriedades das matrizes de risco.
+
+**EX048.** Dados de survey e entrevistas com gestores.
+
+**EX049.** Apoia comparar os investimentos em segurança com a redução esperada de perdas.
+
+**EX050.** Nenhuma das fontes estudou diretamente a supervisão de fornecedores de uma seguradora.
+
+**EX051.** De cerca de trinta e nove para vinte e quatro dias.
+
+**EX052.** Todos os quarenta e dois.
+
+**EX053.** Três, agora em remediação.
+
+**EX054.** Reduzir à metade o tempo médio de revisão.
+
+**EX055.** Dados internos de custo de incidentes, para melhorar as estimativas futuras.
+
+**EX056.** Apontando a passagem de bastão, o colega treinado e a revisão do método pela auditoria interna.
+
+**EX057.** Coletar dados de custo de incidentes desde o início e envolver os corretores mais cedo.
+
+**EX058.** Quando suas premissas são explícitas, para que novos usuários possam verificá-las.
+
+**EX059.** Simplificação.
+
+**EX060.** Leitura crítica, avaliação controlada e relato transparente.
 
 <a id="references"></a>
 ## Referências
