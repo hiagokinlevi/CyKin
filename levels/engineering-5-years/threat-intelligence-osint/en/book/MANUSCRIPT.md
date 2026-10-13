@@ -763,21 +763,31 @@ You will (1) explain HTTPS as the transport for TAXII 2.1; (2) read DNS records 
 
 TAXII 2.1 is a RESTful API over HTTPS. Clients discover API roots, list collections and get or add objects with pagination. Mutual authentication and TLS protect the channel; the TAXII specification defines the endpoints and media types, not the trust relationships, which come from agreements.
 
+For Lantern this means a partner's server presents a certificate that Kofi's collector checks, and the collector presents its own certificate so the partner knows who is asking. Which collections BEN may read is set by the sharing agreement and enforced by the partner. A valid connection does not make the content trustworthy; it only shows where it came from.
+
 ### 11.2 DNS in intelligence
 
 A domain indicator resolves through DNS to addresses that may change hourly. A records, CNAMEs and name servers each tell a different story. Passive DNS — historical resolution data from licensed providers — shows how infrastructure moved.
+
+Kofi records the time of every resolution Lantern performs, because an answer without a time cannot be compared with anything. A domain that pointed at a hostile address last month may point at a parked page today. Passive DNS lets an analyst ask what the domain resolved to on the day of a sighting, which is the question an investigation usually needs answered. The provider's licence limits how long that history may be kept, and Lantern follows it.
 
 ### 11.3 NAT and shared hosting
 
 Many devices can sit behind one public address; many websites can share one hosting address. Blocking such an address can cause collateral damage, and associating everything behind it with an adversary is a classic analytic mistake.
 
+BEN met this when a partner listed an address used by a cloud provider's shared gateway. Blocking it would have cut off several services that BEN depends on. The worked example shows the safer route: block the specific domain at the DNS layer, where it does not affect other tenants, and record why the address was not blocked. Analysts should say that an address hosted hostile content, not that it belongs to the adversary.
+
 ### 11.4 Rate limits and politeness
 
 Collection from partner TAXII servers follows their published limits. Back off on HTTP 429 responses; never rotate identities to evade limits.
 
+A response with that status asks the client to slow down, and many servers say how long to wait. Lantern's collector honours that value, doubles its wait on repeated refusals and stops after a set number of tries, raising an alert for an engineer. Using many accounts or addresses to get around a limit would break the agreement and damage BEN's standing with the partner. A collector that respects limits keeps its access; one that does not loses it.
+
 ### 11.5 Ports and protocols in ATT&CK
 
 ATT&CK technique T1071 Application Layer Protocol describes adversaries communicating over common protocols to blend in. Network indicators alone therefore miss much command-and-control; behavioural analytics complement them.
+
+An attacker who sends commands over ordinary web traffic to a fresh domain leaves no indicator Lantern already knows. What may still stand out is the pattern: regular check-ins at fixed intervals, unusual amounts of data or connections from a host that never browses. Kofi passes these analytics to the detection team as a complement to the indicator feeds rather than a replacement.
 
 ### Practice note — Pagination and completeness
 
@@ -819,21 +829,31 @@ You will (1) run intelligence services under least-privilege accounts; (2) use O
 
 Lantern's collector runs as a dedicated account with permission only to its working directory and outbound HTTPS to partner servers. It cannot read the firewall configuration it eventually influences; a separate, audited service does that.
 
+If the collector were compromised through a malicious partner file, the attacker would hold an account that can only read its own folder and talk to partner servers. They could not change firewall rules or reach the analysts' reports. Kofi lists each service account with its permissions and reviews the list after every release, removing any right that crept in for a test and was never taken back.
+
 ### 12.2 Logs as platform evidence
 
 Authentication logs, process starts and file modifications show what the platform itself did. When a partner asks whether a TLP:RED report was accessed, the OS and application logs answer.
+
+That question needs logs that were kept, protected from change and synchronised in time. Lantern sends host logs to a separate store where platform administrators can read but not delete them. Kofi tested the answer once by opening a test report and checking that the access appeared within a minute, with the user, the time and the object. A partner who trusts BEN with restricted material may ask for such a check, and BEN should be able to answer it confidently.
 
 ### 12.3 Isolating parsers
 
 Partner files are untrusted input. Parsers run in a container or sandbox with no network access beyond what they need, read-only file systems where possible, and memory limits. A bug in a parser then cannot become a foothold in the SOC.
 
+Kofi tests the sandbox by giving the parser a file that tries to open a network connection and another that tries to write outside its folder. Both attempts fail and are logged. A failed test would block the release until the sandbox is fixed.
+
 ### 12.4 Patching
 
 Platforms facing the internet need prompt patching. A maintenance window, a tested image and a rollback snapshot let BEN patch weekly without long outages.
 
+Kofi's routine applies patches first to a test host that replays a day of synthetic feed traffic. If the pipeline output matches the expected snapshot, the same image goes to production in the weekly window. A snapshot taken just before lets the team return to the previous state within minutes if something breaks. Urgent fixes for actively exploited flaws can skip the weekly wait, with the same test and rollback steps compressed into hours.
+
 ### 12.5 Time and scheduling
 
 Cron or systemd timers schedule polls and decay recalculations. Record timers in configuration management so changes are reviewed.
+
+An unreviewed timer is easy to miss. Kofi once found a decay job set to run every minute after a test, which loaded the database for no reason. Because timers now live in configuration management, such a change shows up in review and in the host baseline. Each timer records its purpose and owner, so nobody has to guess whether it can be removed. Times are set in UTC to avoid surprises when the clocks change.
 
 ### Practice note — Host baselines
 
@@ -875,6 +895,8 @@ You will (1) normalise and de-duplicate indicators before storage; (2) choose ke
 
 The same domain can arrive as `C2.Example.`, `c2.example` or defanged text. Without normalisation the store fills with duplicates and match counts lie.
 
+The lab shows the effect: seven inputs, four real values. A match count based on raw strings would claim BEN saw seven distinct indicators when it saw four. Kofi's normaliser lowers case where case does not matter, removes a trailing dot from domains, strips spaces and refangs text, each step tested on its own. The order of the steps is fixed and documented.
+
 ### Lab 4 — normalise and de-duplicate
 
 ```python
@@ -908,17 +930,25 @@ raw=7 unique=4
 
 Seven raw strings collapse to four unique values. The trailing dot, capitals, defanging and surrounding spaces were all noise. Normalisation rules must be documented, versioned and idempotent.
 
+Kofi treats the rules as part of the data model. Each rule has a written reason, a test, and a version number stored with every record it produced. Running the normaliser on its own output must give the same result, which the property tests in the programming chapter check. If a rule changes, older records can be found by version and reprocessed, rather than leaving two different normal forms in the store at once.
+
 ### 13.3 Keys and indexes
 
 STIX 2.1 objects carry an `id` of the form `type--UUID`. Lantern keys objects by that id and indexes normalised indicator values for fast matching. Sightings are keyed by indicator id and time.
+
+The identifier never changes, even if the indicator's description or confidence does, so references from relationships and sightings stay valid. Indexes are chosen from the questions analysts ask most. Kofi measured matching speed with and without the value index and found the difference large enough to justify its storage cost. Rarely used queries can run more slowly instead of having their own indexes.
 
 ### 13.4 Provenance
 
 Each object records its source, TLP label, collection time and parser version. Duplicate indicators from two sources are stored once with both provenance entries, so analysts see corroboration.
 
+Corroboration only counts if the sources are independent. If partner B simply copies partner A's feed, two entries add nothing. Kofi's model records where each partner says it obtained an indicator when the partner provides that, so analysts can spot repeated rather than independent reporting. The most restrictive label of any source travels with the shared record, so merging never relaxes a sharing limit.
+
 ### 13.5 Retention
 
 Retention follows agreements and law. Deletion must reach backups within a stated period; "deleted from the UI" is not deletion.
+
+Kofi's design gives each source a retention period from its agreement. A scheduled job removes expired records from the live store, and backups older than the longest period are destroyed on a fixed cycle, so nothing survives longer than allowed. The job writes a log of counts removed per source, which the privacy officer reviews. If a partner asks for deletion, the same log shows when it was done.
 
 ### Practice note — Query patterns
 
@@ -960,21 +990,31 @@ You will (1) apply version control, code review and continuous integration to a 
 
 Every change to Lantern goes through a branch, an automated test run and a second engineer's review. Parser changes need a reviewer who understands the partner format.
 
+Review is more than reading code. The reviewer runs the tests, checks that the change matches what was asked and asks what happens with bad input. For parser changes, a sample of real partner records under the agreement is run through both versions. Kofi has seen reviews catch a field being read from the wrong position, which tests on clean synthetic data had passed.
+
 ### 14.2 Continuous integration
 
 CI runs unit tests, property tests and a replay of a synthetic feed through the whole pipeline, comparing outputs with a known-good snapshot. A difference fails the build until explained.
+
+The replay is what made the change in the worked example visible: the snapshot showed exactly how many indicators would stay in blocking. A failing replay is not always a bug. Sometimes the change is intended, and the engineer updates the snapshot with a note explaining why. What matters is that every difference in output is explained before release.
 
 ### 14.3 Dependencies
 
 Third-party libraries can carry vulnerabilities or be compromised. Pin versions, review updates, and prefer the standard library for small tasks. ATT&CK T1195 Supply Chain Compromise reminds defenders that their own tooling is a target.
 
+Kofi's rule is that each new library needs a reason the standard library cannot meet, a named owner and a check of its maintainers and recent history. Updates arrive in a weekly batch, read before merging, and the build fails if a dependency is fetched without a fixed version and hash. Lantern holds partner data and influences firewalls, which makes a compromised library in its build an attractive route for an attacker.
+
 ### 14.4 Traceability
 
 Each change cites the requirement or defect it addresses. When an auditor asks why the TLP gate allows AMBER to "org", the history links to the requirement and the TLP 2.0 definition.
 
+Kofi links each commit to a ticket, and each ticket to a requirement number in the requirements document. An auditor can follow the chain from code back to the reason for it in a few clicks. Changes without a linked reason are not merged. This also helps when removing code: if the requirement has been withdrawn, the link shows which parts can go.
+
 ### 14.5 Configuration
 
 Partner endpoints, credentials references and thresholds live in configuration, not code. Secrets live in a vault; configuration stores only references.
+
+Separating them means the same tested code can run in test and production with different settings, and changing a threshold does not need a new build. Configuration changes still go through review, because a wrong threshold can do as much harm as a bug. Kofi keeps a short description beside each setting saying what it controls and who may change it. A credential is never pasted into configuration, even temporarily; the vault reference is the only thing stored.
 
 ### Practice note — Release notes
 
@@ -1016,21 +1056,31 @@ You will (1) apply confidentiality, integrity and availability to intelligence d
 
 Confidentiality: TLP:RED reports must reach only named recipients. Integrity: a tampered indicator could block a legitimate supplier or, worse, a safety system's update server. Availability: when a campaign starts, analysts need the platform most.
 
+Kofi writes a short note for each kind of data in Lantern stating which of the three properties matters most. Partner reports are mainly about confidentiality, block lists about integrity, and the matching service about availability. Controls are chosen from that note rather than applied equally everywhere.
+
 ### 15.2 Threat, vulnerability, risk
 
 A threat is a potential cause of harm (an adversary or an accident). A vulnerability is a weakness that could be used. Risk combines likelihood and impact. CTI informs the threat side: which adversaries, which techniques, which targets.
+
+Kofi keeps the terms apart in his reports. A partner bulletin about an actor targeting energy companies is threat information. An unpatched remote-access server at BEN is a vulnerability. The risk is that this actor uses that server, judged by how likely and how damaging that would be. Intelligence changes the likelihood estimate; it does not fix the server.
 
 ### 15.3 CTI in CSF 2.0
 
 NIST CSF 2.0 organises outcomes as Govern, Identify, Protect, Detect, Respond and Recover. Threat intelligence feeds Identify (risk assessment), Detect (rules) and Respond (context), and sharing agreements are a Govern matter.
 
+Placing intelligence work in these functions helps BEN explain its value. A new detection rule written from a partner report is a Detect outcome; a briefing that changes the risk register is Identify. Agreements about what BEN may share, with whom and under what label sit under Govern, because they set obligations for the whole organisation rather than one team. Kofi tags each Lantern output with the function it serves.
+
 ### 15.4 The platform as target
 
 An adversary who poisons Lantern could make BEN block its own suppliers or ignore real threats. Integrity controls — signed feeds where available, source reputation, anomaly checks on volume — protect against poisoning.
 
+Kofi's anomaly checks compare each delivery with that source's history. A sudden jump in volume, many indicators for well-known services or entries that match BEN's allow-list all hold the delivery for review. Source reputation falls when a partner's entries are later found wrong, which lowers the confidence of its future deliveries until the record improves.
+
 ### 15.5 Kill chain as defensive map
 
 Hutchins et al. argued that defenders can act at every phase. Lantern's outputs map to phases: domain blocks to delivery and command and control, behavioural analytics to installation and actions on objectives.
+
+The mapping shows where BEN's defences are thin. When Kofi tallied Lantern's outputs by phase, most fell in delivery and command and control, because indicators are easy to share for those phases. Few addressed what an intruder does after gaining a foothold. That gap became a request to the detection team for behavioural analytics on internal hosts.
 
 ### Practice note — Accountability
 
