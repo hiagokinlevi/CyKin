@@ -1,7 +1,7 @@
 # Criptografia e Serviços de Confiança: Curso de Pós-Graduação
 
 - Idioma: português do Brasil (`pt`); curso 146, curso de pós-graduação (2 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–6 de 12 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 7–12 (EX031–EX060) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–12 de 12 têm texto didático escrito à mão; os exercícios EX001–EX060 têm resoluções correspondentes com rubricas de 0 a 3; os quatro laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: profissionais experientes que conduzem decisões criptográficas em escala organizacional.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios resumem inventários, pontuações, tamanhos e dados de avaliação; não implementam criptografia. Sistemas de produção usam bibliotecas avaliadas, HSMs e produtos de fornecedores; nunca crie sua própria criptografia. Pessoas, organizações e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ Katz e Lindell (3ª ed.); Boneh e Shoup, [*A Graduate Course in Applied Cryptogr
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) |
-
-Capítulos 7–12: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-07), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -453,11 +451,311 @@ Desenhos de antes e depois sem controles são vulneráveis a mudanças simultân
 
 Avaliações pareadas pré-registradas, com ameaças e custos, transformam uma linha de base promissora em evidência para decisões em toda a organização.
 
+<a id="ch-07"></a>
+
+## Capítulo 7 — Criptografia e serviços de confiança: integração organizacional
+
+### Objetivos de aprendizagem
+
+Você vai (1) incorporar normas criptográficas aos processos organizacionais; (2) atribuir a propriedade entre as unidades; (3) integrar-se às compras, à revisão de arquitetura e ao gerenciamento de mudanças.
+
+### 7.1 Das normas aos processos
+
+Uma linha de base num documento não faz nada até que os processos a usem. Leila incorpora a norma criptográfica da Corvane a quatro processos: a revisão de arquitetura, em que os novos projetos precisam declarar os algoritmos e a propriedade das chaves; as compras, em que os fornecedores respondem a um questionário de criptografia; o gerenciamento de mudanças, em que as mudanças de TLS e de chaves precisam de um plano de reversão; e a integração de novos funcionários, em que os engenheiros aprendem a norma e suas razões. Ela publica a norma com uma lista de algoritmos aprovados e datas de desativação, seguindo a abordagem de transição da SP 800-131A, e designa a equipe de arquitetura de segurança para mantê-la.
+
+### 7.2 Propriedade entre as unidades
+
+Cada unidade de negócio indica um responsável por criptografia, encarregado do seu inventário, das renovações e das migrações. Leila conduz um fórum mensal em que os responsáveis compartilham problemas e avanços. A propriedade resolve um padrão observado no inventário: os certificados e as chaves sem dono claro eram justamente os que expiravam ou permaneciam em algoritmos descontinuados. Ela define uma matriz RACI: as unidades são responsáveis pelos seus sistemas, a arquitetura de segurança responde pela norma, as operações são consultadas sobre as mudanças e o comitê de riscos é informado trimestralmente.
+
+### 7.3 Compras e fornecedores
+
+As compras se tornam uma alavanca. Os novos contratos exigem suporte ao TLS 1.3, gerenciamento de chaves documentado, notificação de comprometimento de chaves dentro de um prazo definido e um roteiro de migração pós-quântica. Leila fornece um guia de pontuação para que a equipe de compras, que não é de criptógrafos, possa avaliar as respostas. A primeira licitação que usa o questionário rejeita um fornecedor cujas respostas revelaram chaves embutidas no código do seu produto. Ela observa que as compras não conseguem corrigir rapidamente os contratos existentes, de modo que as renovações se tornam a principal oportunidade com os fornecedores mais antigos. Ela também oferece à equipe de compras um treinamento curto sobre o guia.
+
+### 7.4 Gerenciamento de mudanças
+
+Mudanças criptográficas podem quebrar sistemas em silêncio, por exemplo a remoção de uma suíte de cifras que desconecta um parceiro. Leila acrescenta um modelo de mudança criptográfica: o que muda, quais clientes podem falhar, como detectar a falha, os passos de reversão e a notificação dos parceiros. As mudanças no EDI legado exigem aviso aos parceiros com semanas de antecedência. Depois que uma mudança desconecta inesperadamente um pequeno parceiro, ela acrescenta uma varredura de compatibilidade dos clientes antes de cada mudança. Integrar a criptografia ao gerenciamento de mudanças reduz tanto as indisponibilidades quanto a tentação de evitar mudanças de segurança por medo de quebrar alguma coisa.
+
+### Exemplo resolvido
+
+Leila incorpora a norma à revisão de arquitetura, às compras, ao gerenciamento de mudanças e à integração de novos funcionários, nomeia responsáveis nas unidades com uma matriz RACI e acrescenta uma varredura de compatibilidade depois da desconexão de um parceiro.
+
+> **Caso sintético.** Os processos da Corvane são inventados; a SP 800-131A é real.
+
+### Erros e limites
+
+Normas sem donos se degradam. Questionários de compras precisam de orientação de pontuação, ou as respostas ficam sem conferência.
+
+### Exercícios
+
+- **EX031 — Quatro processos.** Em quais quatro processos a norma foi incorporada? *Rubrica:* 3 = revisão de arquitetura, compras, gerenciamento de mudanças, integração de novos funcionários;; 2 = três;; 1 = um;; 0 = nenhuma.
+
+- **EX032 — Padrão de propriedade.** Que padrão do inventário a propriedade nas unidades resolveu? *Rubrica:* 3 = os certificados e as chaves sem dono eram os que expiravam ou ficavam em algoritmos descontinuados;; 2 = padrão;; 1 = nada;; 0 = nenhuma.
+
+- **EX033 — Requisitos contratuais.** Liste três requisitos contratuais para os novos fornecedores. *Rubrica:* 3 = três entre TLS 1.3, gerenciamento de chaves documentado, notificação de comprometimento, roteiro pós-quântico;; 2 = dois;; 1 = um;; 0 = nenhuma.
+
+- **EX034 — Rejeição na licitação.** Por que um fornecedor foi rejeitado na primeira licitação? *Rubrica:* 3 = as respostas revelaram chaves embutidas no código do seu produto;; 2 = chaves embutidas;; 1 = preço;; 0 = nenhuma.
+
+- **EX035 — Varredura de compatibilidade.** O que motivou a varredura de compatibilidade antes das mudanças? *Rubrica:* 3 = uma mudança desconectou inesperadamente um pequeno parceiro;; 2 = indisponibilidade;; 1 = auditoria;; 0 = nenhuma.
+
+### Síntese
+
+A criptografia se torna prática organizacional quando as normas conduzem os processos, existem responsáveis em todas as unidades e as mudanças são gerenciadas quanto à compatibilidade.
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Criptografia e serviços de confiança: casos difíceis
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar casos em que uma boa criptografia entra em conflito com as operações ou com a lei; (2) tratar pedidos de acesso legal e de inspeção; (3) resolver conflitos entre a disponibilidade e a proteção das chaves.
+
+### 8.1 Inspeção de TLS
+
+A equipe de redes da Corvane quer decifrar o tráfego TLS de saída para detectar malware, usando proxies de inspeção que reassinam as conexões com uma autoridade corporativa. Leila analisa o compromisso: a inspeção pode capturar ameaças, mas quebra as garantias de ponta a ponta, concentra uma chave de assinatura poderosa no proxy e pode enfraquecer as conexões se o TLS do proxy estiver desatualizado. Ela recomenda uma inspeção limitada às categorias de alto risco, isenções para o tráfego bancário, de saúde e dos parceiros, proteção rigorosa da chave do proxy e verificações regulares de que o próprio proxy atende à linha de base de TLS.
+
+### 8.2 Pedidos de acesso legal
+
+Uma autoridade aduaneira pede à Corvane que forneça registros de embarques decifrados para uma investigação. Leila trabalha com o assessor jurídico: o pedido é válido segundo a lei aplicável, e a Corvane detém as chaves dos seus próprios dados, de modo que pode atender aos registros específicos solicitados. Ela garante que o processo siga um procedimento documentado, com aprovações, registro em log e divulgação mínima. Ela também observa o contraste com os sistemas com cifração de ponta a ponta, em que a Corvane não deteria as chaves, e explica que as escolhas de projeto determinam o que uma organização pode ser obrigada a fornecer.
+
+### 8.3 Disponibilidade versus proteção
+
+O HSM de um terminal portuário falha num período de pico, e as operações pedem para exportar as chaves de assinatura para um servidor de reserva sem HSM, a fim de restaurar o serviço rapidamente. Leila recusa a exportação em claro, que violaria os requisitos de proteção da chave, e ativa em vez disso o HSM de reserva documentado, o que leva duas horas a mais. Ela registra o incidente e propõe um segundo HSM no local. Os casos difíceis testam se os controles se sustentam sob pressão, e as decisões tomadas sob estresse devem seguir planos combinados com calma.
+
+### 8.4 Aprender com os casos difíceis
+
+Leila descreve cada caso com a mesma estrutura: contexto, objetivos em conflito, opções, decisão, justificativa e acompanhamento. Ela compartilha versões anonimizadas com sua turma da pós-graduação. Colegas de outros setores descrevem conflitos semelhantes, como hospitais que inspecionam o tráfego ou bancos que tratam pedidos de reguladores. A Prof.ª Rao enfatiza que os casos difíceis raramente têm respostas perfeitas; a tarefa profissional é tornar os compromissos visíveis, seguir a lei e as políticas e deixar um registro auditável. Vários membros da turma adotam a mesma estrutura nas suas próprias organizações, e os casos compartilhados se tornam material para um seminário posterior sobre julgamento profissional.
+
+### Exemplo resolvido
+
+Leila limita a inspeção de TLS com isenções, trata um pedido aduaneiro por meio de um processo legal documentado e recusa a exportação de chaves em claro durante uma falha de HSM, preferindo o HSM de reserva.
+
+> **Caso sintético.** Os casos são inventados; os requisitos legais variam conforme a jurisdição.
+
+### Erros e limites
+
+Os proxies de inspeção se tornam alvos de alto valor. A pressão durante os incidentes é o momento em que os controles são contornados com mais frequência.
+
+### Exercícios
+
+- **EX036 — Riscos da inspeção.** Cite dois riscos da inspeção de TLS. *Rubrica:* 3 = dois entre quebrar as garantias de ponta a ponta, concentrar a chave de assinatura, TLS desatualizado do proxy enfraquecendo as conexões;; 2 = um;; 1 = nada;; 0 = nenhuma.
+
+- **EX037 — Isenções da inspeção.** Que tráfego Leila isentou da inspeção? *Rubrica:* 3 = tráfego bancário, de saúde e dos parceiros;; 2 = dois;; 1 = nada;; 0 = nenhuma.
+
+- **EX038 — Pedido legal.** Por que a Corvane pôde atender ao pedido aduaneiro? *Rubrica:* 3 = detém as chaves dos seus próprios dados e o pedido era válido; seguiu um procedimento documentado;; 2 = detém as chaves;; 1 = recusou;; 0 = nenhuma.
+
+- **EX039 — Falha do HSM.** O que Leila fez quando as operações pediram para exportar as chaves de assinatura? *Rubrica:* 3 = recusou a exportação em claro; ativou o HSM de reserva apesar do atraso de duas horas;; 2 = recusou;; 1 = exportou;; 0 = nenhuma.
+
+- **EX040 — Estrutura dos casos.** Que estrutura Leila usa para descrever os casos? *Rubrica:* 3 = contexto, objetivos em conflito, opções, decisão, justificativa, acompanhamento;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Os casos difíceis forçam compromissos entre segurança, operações e lei; procedimentos documentados e um raciocínio visível mantêm as decisões defensáveis.
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Criptografia e serviços de confiança: liderança e garantia
+
+### Objetivos de aprendizagem
+
+Você vai (1) liderar um programa de modernização criptográfica; (2) dar garantia aos conselhos e aos reguladores; (3) definir as métricas e os relatórios do programa.
+
+### 9.1 Liderar o programa
+
+Leila se torna a líder do programa. Ela define um roteiro de dois anos em fases: inventário e linha de base nos primeiros seis meses, consolidação do gerenciamento de chaves nos nove seguintes e pilotos de prontidão pós-quântica nos nove finais, com a desativação do EDI legado correndo ao longo de todo o período. Cada fase tem entregas, donos e critérios de saída. Ela se reúne mensalmente com os responsáveis das unidades e trimestralmente com o comitê diretor. Liderar significa remover obstáculos, como negociar tempo com as unidades de negócio, mais do que projetar criptografia. Ela mantém um roteiro de uma única página visível para todas as unidades, de modo que os avanços e os atrasos fiquem evidentes para todos.
+
+### 9.2 Garantia ao conselho
+
+O conselho quer a garantia de que o programa reduz o risco. Leila relata um pequeno conjunto de métricas: endpoints que aceitam protocolos legados, parcela de certificados automatizados, chaves sem dono, sistemas com avaliações de prontidão pós-quântica e incidentes relacionados à criptografia. Cada métrica tem uma linha de base, uma meta e uma tendência. Ela combina as métricas com uma narrativa: o que mudou, o que atrasou e por quê. Ela evita métricas de vaidade, como o número de políticas publicadas, que dizem pouco sobre o risco. O relatório de cada trimestre cabe em duas páginas, para que conselheiros ocupados de fato o leiam.
+
+### 9.3 Garantia independente
+
+A equipe de auditoria interna da Corvane revisa o programa na metade do caminho. Os auditores amostram evidências: registros de mudança, entradas do inventário e atas de cerimônias de chaves. Eles concluem que o inventário é preciso para os sistemas voltados para a internet, mas incompleto para os serviços internos, e que os responsáveis de duas unidades raramente comparecem ao fórum. Leila aceita os achados, acrescenta varreduras internas e escala a questão da presença por meio dos chefes das unidades. Ela valoriza a garantia independente porque ela testa se o programa funciona como relatado, e não apenas como projetado. Ela compartilha o relatório de auditoria com todos os responsáveis das unidades.
+
+### 9.4 Relacionamento com os reguladores
+
+A divisão financeira da Corvane é regulada e precisa demonstrar um gerenciamento de chaves sólido. Leila prepara um pacote para o regulador: a norma criptográfica, o resumo do inventário, a arquitetura de gerenciamento de chaves, as evidências dos controles e o plano pós-quântico. Ela explica as premissas abertamente, incluindo o cenário de planejamento escolhido no Capítulo 4. O regulador pergunta como a Corvane responderia ao comprometimento de uma raiz de assinatura; Leila percorre o procedimento ensaiado. Um relacionamento transparente constrói uma credibilidade que ajuda quando surgem problemas mais tarde. Ela mantém um registro de todas as perguntas do regulador e das respostas.
+
+### Exemplo resolvido
+
+Leila lidera um roteiro de dois anos em fases, relata cinco métricas de risco com narrativa, aceita os achados da auditoria sobre o inventário interno e a presença no fórum e apresenta ao regulador as premissas e a resposta a comprometimentos.
+
+> **Caso sintético.** O programa e a auditoria são inventados.
+
+### Erros e limites
+
+Métricas relatadas sem narrativa convidam a leituras erradas. Uma garantia limitada ao projeto não verifica se os controles operam.
+
+### Exercícios
+
+- **EX041 — Fases do roteiro.** Descreva as três fases do roteiro. *Rubrica:* 3 = inventário e linha de base (6 meses), consolidação de chaves (9), pilotos pós-quânticos (9), com a desativação do EDI ao longo de todo o período;; 2 = parcial;; 1 = nada;; 0 = nenhuma.
+
+- **EX042 — Métricas do conselho.** Cite três métricas que Leila relata. *Rubrica:* 3 = três entre endpoints legados, parcela de certificados automatizados, chaves sem dono, avaliações pós-quânticas, incidentes criptográficos;; 2 = duas;; 1 = de vaidade;; 0 = nenhuma.
+
+- **EX043 — Achados da auditoria.** O que a auditoria interna encontrou? *Rubrica:* 3 = inventário incompleto para os serviços internos; responsáveis de duas unidades raramente comparecem;; 2 = um;; 1 = nada;; 0 = nenhuma.
+
+- **EX044 — Pacote do regulador.** Liste três itens do pacote para o regulador. *Rubrica:* 3 = três entre norma, resumo do inventário, arquitetura, evidências dos controles, plano pós-quântico;; 2 = dois;; 1 = um;; 0 = nenhuma.
+
+- **EX045 — Pergunta do regulador.** O que o regulador perguntou, e como Leila respondeu? *Rubrica:* 3 = a resposta ao comprometimento de uma raiz de assinatura; percorreu o procedimento ensaiado;; 2 = ambos;; 1 = um;; 0 = nenhuma.
+
+### Síntese
+
+A liderança transforma os planos criptográficos em mudanças entregues, e métricas honestas com garantia independente dão aos conselhos e aos reguladores uma confiança justificada.
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Leitura e crítica de pesquisas
+
+### Objetivos de aprendizagem
+
+Você vai (1) ler pesquisas em criptografia de forma crítica, como profissional; (2) avaliar afirmações sobre ataques e desempenho; (3) traduzir as pesquisas em relevância para a organização.
+
+### 10.1 Ler como profissional
+
+A turma de Leila lê artigos de pesquisa e normas sobre temas que afetam a Corvane: ataques de canal lateral a implementações pós-quânticas, estudos sobre a implantação do TLS e análises dos ecossistemas de certificados. A Prof.ª Rao ensina um método de leitura: identificar a afirmação, o modelo de ameaça, as evidências e as condições sob as quais a afirmação vale. Leila o aplica aos capítulos de Boneh e Shoup sobre cifração autenticada e ao artigo de Shoup sobre sequências de jogos, publicado no arquivo ePrint da IACR, aprendendo como as provas de segurança estruturam seus argumentos passo a passo.
+
+### 10.2 Avaliar afirmações sobre ataques
+
+Muitas manchetes anunciam que um algoritmo foi "quebrado". Leila aprende a perguntar se o ataque é prático, de que recursos ele precisa, se ele visa o algoritmo ou uma implementação específica e se existem correções. Um ataque de canal lateral a uma implementação, que exige acesso físico, não significa que a norma esteja quebrada. Por outro lado, um ataque criptanalítico à estrutura de um algoritmo, mesmo que ainda não seja prático, sinaliza a necessidade de planejar a migração. Ela escreve resumos de um parágrafo que traduzem os artigos em "o que isto significa para a Corvane".
+
+### 10.3 Avaliar afirmações sobre desempenho
+
+Os estudos de desempenho dos algoritmos pós-quânticos relatam tempos de handshake e tamanhos. Leila confere o hardware, as versões de software e as condições de rede, comparando-os com o ambiente da Corvane. Um estudo em processadores de servidor diz pouco sobre as unidades de telemática. Ela replica um benchmark nos próprios dispositivos de teste da Corvane, usando bibliotecas dos fornecedores, e obtém resultados próximos dos números publicados para os servidores, mas mais lentos nas unidades de telemática, o que confirma que os testes locais são necessários para os sistemas com recursos limitados. Ela publica internamente seu método de medição, para que outras equipes possam repeti-lo nos seus próprios dispositivos antes de planejar as migrações.
+
+### 10.4 Traduzir as pesquisas
+
+Leila mantém uma lista de acompanhamento de pesquisas para o programa: temas, artigos principais, situação das normas e graus de relevância. A cada trimestre, ela informa o comitê diretor sobre as mudanças, como um novo documento do IETF sobre troca de chaves híbrida ou uma vulnerabilidade de implementação numa biblioteca que a Corvane usa. Ela evita inundar os executivos com artigos; relata apenas os itens que mudam os riscos ou os planos. A leitura de pesquisas se torna, assim, uma entrada do programa, e não um exercício acadêmico. Os executivos dizem que esse resumo é a página mais útil do seu pacote.
+
+### Exemplo resolvido
+
+Leila aplica um método de afirmação, ameaça, evidências e condições, separa os ataques a implementações das quebras de algoritmos, replica um benchmark nas unidades de telemática e mantém uma lista trimestral de acompanhamento de pesquisas.
+
+> **Caso sintético.** A lista de acompanhamento e os benchmarks são inventados; Boneh–Shoup e Shoup (2004) são reais.
+
+### Erros e limites
+
+As manchetes exageram; leia o artigo. Os benchmarks raramente se transferem entre hardwares diferentes.
+
+### Exercícios
+
+- **EX046 — Método de leitura.** Quais quatro elementos o método da Prof.ª Rao identifica? *Rubrica:* 3 = afirmação, modelo de ameaça, evidências, condições;; 2 = três;; 1 = um;; 0 = nenhuma.
+
+- **EX047 — Afirmações de quebra.** Que perguntas Leila faz diante de uma manchete de "quebrado"? *Rubrica:* 3 = praticidade, recursos, algoritmo versus implementação, correções;; 2 = três;; 1 = nada;; 0 = nenhuma.
+
+- **EX048 — Significado do canal lateral.** Um ataque físico de canal lateral a uma implementação quebra a norma? *Rubrica:* 3 = não; ele visa uma implementação e exige acesso físico;; 2 = não;; 1 = sim;; 0 = nenhuma.
+
+- **EX049 — Replicação do benchmark.** O que a replicação de Leila mostrou? *Rubrica:* 3 = próximo dos números publicados nos servidores, mais lento nas unidades de telemática;; 2 = ambos;; 1 = um;; 0 = nenhuma.
+
+- **EX050 — Regra da lista.** O que Leila relata aos executivos a partir da lista de acompanhamento? *Rubrica:* 3 = apenas os itens que mudam os riscos ou os planos;; 2 = filtro;; 1 = tudo;; 0 = nenhuma.
+
+### Síntese
+
+Os profissionais leem pesquisas em busca de afirmações, modelos de ameaça e condições e depois traduzem apenas o que muda o risco da organização.
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Projeto aplicado
+
+### Objetivos de aprendizagem
+
+Você vai (1) entregar um projeto aplicado que desativa a criptografia legada do EDI; (2) coordenar os parceiros ao longo de uma transição; (3) medir os resultados e o risco residual.
+
+### 11.1 Definição do projeto
+
+O projeto aplicado de Leila desativa a criptografia legada da plataforma EDI: doze endpoints que aceitam TLS 1.1 ou anterior, certificados manuais de dois anos e chaves RSA 2048. O objetivo é que todo endpoint EDI atenda à linha de base, que os certificados sejam renovados automaticamente e que todos os parceiros ativos migrem sem perda de embarques. O escopo inclui 140 parceiros, de transportadoras globais a pequenos despachantes aduaneiros. Ela define as medidas de sucesso, os riscos e um plano de comunicação antes de qualquer mudança técnica. Ela também garante uma rubrica orçamentária para o apoio aos parceiros, reconhecendo que a maior parte do esforço será humana, e não técnica, e a combina com o diretor financeiro.
+
+### 11.2 Transição dos parceiros
+
+Leila segmenta os parceiros por prontidão. Os parceiros grandes já suportam TLS 1.3 e migram no primeiro mês. Os parceiros médios precisam de ajuda com a configuração, oferecida por uma central de suporte. Os pequenos despachantes que usam software cliente antigo recebem clientes atualizados gratuitos e guias passo a passo, com um endpoint de teste em que podem conferir as conexões antes do prazo. Lembretes mensais mostram a situação de cada parceiro. Ela negocia uma prorrogação curta para três despachantes afetados por uma queda local de internet, documentando a exceção e seus controles compensatórios. Painéis semanais de situação a ajudam a concentrar o esforço.
+
+### 11.3 Mudanças técnicas
+
+A equipe implanta novos gateways EDI configurados conforme a linha de base, com certificados do serviço ACME interno renovados a cada noventa dias e chaves geradas nos próprios gateways. Os endpoints antigos funcionam em paralelo durante a migração, monitorados quanto às conexões restantes. Quando o tráfego num endpoint antigo cai a zero por duas semanas, ele é desligado. Leila insiste em configurações suportadas pelos fornecedores e em nenhum código criptográfico próprio e executa a varredura de compatibilidade do Capítulo 7 antes de cada virada. Cada virada tem um engenheiro nomeado de plantão.
+
+### 11.4 Resultados e risco residual
+
+Depois de seis meses, os doze endpoints legados estão desativados; 138 dos 140 parceiros migraram, e os dois restantes, inativos havia um ano, são formalmente desligados. Nenhum embarque foi perdido, embora quatro parceiros tenham tido atrasos de menos de um dia. Os certificados agora se renovam automaticamente. Os riscos residuais incluem chaves RSA 2048 do lado de alguns parceiros, fora do controle da Corvane, e o limite de tamanho de mensagem do protocolo EDI, que pode complicar as assinaturas pós-quânticas. Leila registra os dois no registro de riscos, com donos. Ela apresenta os resultados ao comitê diretor.
+
+### Exemplo resolvido
+
+O projeto de Leila desativa os doze endpoints EDI legados, migra 138 dos 140 parceiros sem perda de embarques, automatiza os certificados e registra os riscos residuais.
+
+> **Caso sintético.** As contagens de parceiros e os resultados são inventados.
+
+### Erros e limites
+
+Prazos rígidos sem apoio prejudicam os pequenos parceiros; as exceções precisam de controles compensatórios. O funcionamento em paralelo precisa terminar, ou os endpoints antigos permanecem.
+
+### Exercícios
+
+- **EX051 — Objetivo do projeto.** Enuncie o objetivo do projeto. *Rubrica:* 3 = todo endpoint EDI atende à linha de base, renovação automática, todos os parceiros ativos migram sem perda de embarques;; 2 = parcial;; 1 = vago;; 0 = nenhuma.
+
+- **EX052 — Apoio aos pequenos despachantes.** Que apoio os pequenos despachantes receberam? *Rubrica:* 3 = clientes atualizados gratuitos, guias, um endpoint de teste, lembretes;; 2 = dois;; 1 = nada;; 0 = nenhuma.
+
+- **EX053 — Regra de desligamento.** Quando um endpoint antigo é desligado? *Rubrica:* 3 = depois que o tráfego fica em zero por duas semanas;; 2 = regra;; 1 = imediatamente;; 0 = nenhuma.
+
+- **EX054 — Resultado da migração.** Quantos parceiros migraram, e o que aconteceu com os demais? *Rubrica:* 3 = 138 de 140; dois parceiros inativos desligados;; 2 = contagem;; 1 = errado;; 0 = nenhuma.
+
+- **EX055 — Risco residual do EDI.** Cite um risco residual registrado. *Rubrica:* 3 = chaves RSA 2048 do lado dos parceiros ou limite de tamanho de mensagem do EDI para as assinaturas pós-quânticas;; 2 = um;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Os projetos aplicados dão certo quando a mudança técnica vem acompanhada de apoio aos parceiros, funcionamento em paralelo monitorado e registros honestos de risco residual.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Revisão final e transferência
+
+### Objetivos de aprendizagem
+
+Você vai (1) revisar os resultados do programa em relação às suas metas; (2) transferir a propriedade para as equipes da operação rotineira; (3) planejar a melhoria contínua e o desenvolvimento pessoal.
+
+### 12.1 Resultados em relação às metas
+
+Ao fim dos dois anos, Leila revisa os resultados. Os endpoints que aceitam protocolos legados caíram de vinte e cinco para zero nos sistemas voltados para a internet; os certificados estão automatizados em todas as unidades; as chaves têm donos e vivem na arquitetura híbrida; e as avaliações de prontidão pós-quântica cobrem todos os sistemas críticos, com pilotos de troca de chaves híbrida em serviços internos. Duas metas atrasaram: dois controladores portuários aguardam o firmware do fornecedor, e o inventário dos serviços internos continua noventa por cento completo. Ela relata os sucessos e os atrasos com a mesma clareza. Ela anexa as tendências das métricas como apêndice.
+
+### 12.2 Transferência para as operações
+
+Os programas terminam; as operações continuam. Leila transfere cada capacidade a um dono: a norma para a arquitetura de segurança, o inventário e as renovações para as operações, os requisitos dos fornecedores para as compras e o planejamento pós-quântico para um pequeno grupo de trabalho. Cada um recebe documentação, runbooks, métricas e uma sessão de passagem. Ela define o que significa "concluído" numa transferência: a equipe que recebe executa o processo por um trimestre sem a ajuda do programa. Duas transferências precisam de apoio extra, que ela oferece antes de encerrar. Ela mantém uma lista de verificação da transferência assinada por cada dono que recebe.
+
+### 12.3 Melhoria contínua
+
+Leila escreve um plano de melhoria contínua: revisão anual da norma diante das novas publicações do NIST e do IETF; revisão bienal do cenário de planejamento quântico escolhido no Capítulo 4; métricas trimestrais para o comitê de riscos; e uma sessão de lições aprendidas depois de qualquer incidente relacionado à criptografia. Ela recomenda que o próximo programa se concentre na migração pós-quântica das assinaturas dos dispositivos de vida longa, em que as dependências de fornecedores tornam essencial agir cedo. Cada elemento tem um dono nomeado e uma data no calendário, para que o plano não dependa de Leila continuar no cargo. O comitê de riscos o adota formalmente na sua reunião seguinte.
+
+### 12.4 Desenvolvimento pessoal
+
+Na sua reflexão final da pós-graduação, Leila observa que seu conhecimento técnico importou mais ao fazer a tradução entre engenheiros, executivos, advogados e parceiros. Ela lista as competências desenvolvidas: enquadramento de decisões, desenho de avaliações, negociação e comunicação regulatória. Ela também anota os erros: subestimar as necessidades de apoio dos parceiros e, no início, apresentar premissas como fatos. A Prof.ª Rao a aconselha a orientar arquitetos juniores, já que ensinar consolida a aprendizagem. Leila planeja apresentar o projeto do EDI num fórum do setor, compartilhando as lições sem revelar detalhes sensíveis. Ela também agenda uma conversa de acompanhamento com a Prof.ª Rao dali a um ano.
+
+### Exemplo resolvido
+
+Leila relata zero endpoints legados voltados para a internet e automação completa dos certificados, duas metas atrasadas, transfere as capacidades com um teste de "concluído" de um trimestre e escreve um plano de melhoria e uma reflexão pessoal.
+
+> **Caso sintético.** Os resultados são inventados.
+
+### Erros e limites
+
+Declarar vitória esconde os atrasos; relate-os. Transferências sem período de teste costumam falhar em silêncio.
+
+### Exercícios
+
+- **EX056 — Metas atrasadas.** Quais duas metas atrasaram? *Rubrica:* 3 = dois controladores portuários aguardando o firmware do fornecedor; inventário interno 90 por cento completo;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+
+- **EX057 — Transferência concluída.** Como se define uma transferência concluída? *Rubrica:* 3 = a equipe que recebe executa o processo por um trimestre sem a ajuda do programa;; 2 = definição;; 1 = reunião de passagem;; 0 = nenhuma.
+
+- **EX058 — Plano de melhoria.** Cite três elementos do plano de melhoria contínua. *Rubrica:* 3 = três entre revisão anual da norma, revisão bienal do cenário, métricas trimestrais, lições após incidentes;; 2 = dois;; 1 = um;; 0 = nenhuma.
+
+- **EX059 — Próximo foco.** Em que o próximo programa deve se concentrar, e por quê? *Rubrica:* 3 = migração pós-quântica das assinaturas dos dispositivos de vida longa, por causa das dependências de fornecedores;; 2 = foco;; 1 = nada;; 0 = nenhuma.
+
+- **EX060 — Erros de Leila.** Que erros Leila reconheceu? *Rubrica:* 3 = subestimar as necessidades de apoio dos parceiros e apresentar premissas como fatos;; 2 = um;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Encerrar um programa significa resultados honestos, transferências testadas, um plano de melhoria contínua e uma reflexão que forma o próximo líder.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX030 (as de EX031–EX060 estão na edição em inglês até a tradução dos capítulos correspondentes). Leila Moradi, a Prof.ª Anika Rao, a Westbrook School of Security, a Corvane Logistics e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060. Leila Moradi, a Prof.ª Anika Rao, a Westbrook School of Security, a Corvane Logistics e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Desativar o TLS legado, consolidar o gerenciamento de chaves e preparar a migração pós-quântica em dois anos.
 
@@ -518,6 +816,66 @@ Respostas-modelo para EX001–EX030 (as de EX031–EX060 estão na edição em i
 **EX029.** Uma mudança simultânea, como uma campanha separada de patches, poderia responder por parte da melhoria.
 
 **EX030.** Para que o conselho possa pesar este programa contra outros que disputam o mesmo orçamento.
+
+**EX031.** Revisão de arquitetura, compras, gerenciamento de mudanças e integração de novos funcionários.
+
+**EX032.** Os certificados e as chaves sem dono eram os que expiravam ou permaneciam em algoritmos descontinuados.
+
+**EX033.** Suporte ao TLS 1.3, gerenciamento de chaves documentado e notificação tempestiva de comprometimento de chaves.
+
+**EX034.** Suas respostas mostraram que seu produto continha chaves embutidas no código.
+
+**EX035.** Uma desconexão inesperada de um pequeno parceiro depois de uma mudança criptográfica.
+
+**EX036.** Ela quebra a proteção de ponta a ponta e concentra uma chave de assinatura poderosa no proxy.
+
+**EX037.** Tráfego bancário, de saúde e dos parceiros.
+
+**EX038.** A Corvane detinha as chaves dos seus próprios registros e o pedido era legal, então ela o atendeu por meio de um procedimento documentado.
+
+**EX039.** Ela recusou a exportação em claro e ativou o HSM de reserva documentado, aceitando um atraso de duas horas.
+
+**EX040.** Contexto, objetivos em conflito, opções, decisão, justificativa e acompanhamento.
+
+**EX041.** Primeiro o inventário e a linha de base, depois a consolidação do gerenciamento de chaves, depois os pilotos pós-quânticos, com a desativação do EDI atravessando as três fases.
+
+**EX042.** Os endpoints que aceitam protocolos legados, a parcela de certificados automatizados e as chaves sem dono.
+
+**EX043.** O inventário deixava de fora os serviços internos, e os responsáveis de duas unidades raramente compareciam ao fórum.
+
+**EX044.** A norma criptográfica, um resumo do inventário e o plano pós-quântico.
+
+**EX045.** Como a Corvane trataria uma raiz de assinatura comprometida, respondido percorrendo o procedimento ensaiado.
+
+**EX046.** A afirmação, o modelo de ameaça, as evidências e as condições sob as quais ela vale.
+
+**EX047.** Se o ataque é prático, de que ele precisa, se atinge o algoritmo ou uma implementação e se existem correções.
+
+**EX048.** Não, ele afeta aquela implementação mediante acesso físico, e não a norma em si.
+
+**EX049.** Os resultados coincidiram com os números publicados para servidores, mas foram mais lentos nas unidades de telemática.
+
+**EX050.** Apenas as mudanças em pesquisas ou normas que alteram os riscos ou os planos da Corvane.
+
+**EX051.** Todos os endpoints EDI atendem à linha de base com renovação automatizada, e todo parceiro ativo migra sem perder embarques.
+
+**EX052.** Software cliente atualizado gratuito, guias passo a passo, um endpoint de teste e lembretes mensais.
+
+**EX053.** Assim que fica duas semanas sem tráfego.
+
+**EX054.** 138 de 140 migraram, e os dois inativos havia um ano foram desligados.
+
+**EX055.** O limite de tamanho de mensagem do protocolo EDI, que pode atrapalhar as assinaturas pós-quânticas.
+
+**EX056.** Dois controladores portuários ainda precisam do firmware do fornecedor, e o inventário dos serviços internos está apenas noventa por cento completo.
+
+**EX057.** A equipe que recebe opera o processo por um trimestre sem ajuda do programa.
+
+**EX058.** Uma revisão anual da norma, uma revisão bienal do cenário quântico e métricas trimestrais para o comitê de riscos.
+
+**EX059.** A migração pós-quântica das assinaturas nos dispositivos de vida longa, porque as dependências de fornecedores exigem ação antecipada.
+
+**EX060.** Subestimar quanto apoio os parceiros precisavam e, no início, enunciar premissas como fatos.
 
 <a id="references"></a>
 ## Referências
