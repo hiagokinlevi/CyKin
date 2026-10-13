@@ -1,7 +1,7 @@
 # Segurança Ofensiva Autorizada e Red Team: Um Livro para o Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso de tecnólogo, três anos; aproximadamente 2.400 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–15 de 30 já estão escritos em português, com os exercícios EX001–EX045 e suas resoluções com rubricas de 0 a 3 e 6 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 16–30 (EX046–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–19 de 30 já estão escritos em português, com os exercícios EX001–EX057 e suas resoluções com rubricas de 0 a 3 e 7 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 20–30 (EX058–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: implementadores e administradores de tecnologia que vão construir, operar e medir a capacidade de avaliação autorizada de uma organização, trabalhando ao lado de seus defensores.
 - Relação com os livros vizinhos: o [livro técnico](../../../../technical-18-months/offensive-security-red-team/en/book/MANUSCRIPT.md) enfatiza a disciplina no uso de ferramentas e a verificação; o [livro de bacharelado](../../../../bachelors-4-years/offensive-security-red-team/pt/book/MANUSCRIPT.md) acrescenta teoria mais ampla. **Este livro trata da integração de serviços, controles, operações e medição em torno de testes autorizados.**
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -31,9 +31,9 @@ NIST [SP 800-115](https://doi.org/10.6028/NIST.SP.800-115); [PTES](https://pente
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) |
 
-Capítulos 16–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-16), até a chegada dos próximos lotes.
+Capítulos 20–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-20), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -957,11 +957,243 @@ Três controles rígidos, um registro só com o que passou e o julgamento humano
 
 [← Capítulo 14 (rascunho)](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 (rascunho) →](#ch-16)
 
+<a id="ch-16"></a>
+
+## Capítulo 16 — Segurança ofensiva autorizada e red team: métodos II
+
+### Objetivos de aprendizagem
+
+Você vai (1) contrastar o letramento em testes de aplicações web (OWASP WSTG) com métodos centrados em rede; (2) explicar o que os frameworks guiados por ameaças (TIBER-EU, CBEST) acrescentam; (3) escolher uma combinação de métodos para uma operadora de transporte que não é um banco; (4) escrever uma redação de exclusão que resista ao contato com a realidade.
+
+### 16.1 O OWASP WSTG como catálogo
+
+O OWASP Web Security Testing Guide organiza verificações para aplicações web: configuração, identidade, tratamento de entradas, lógica de negócio e mais. Um tecnólogo o usa como lista de verificação de cobertura para o portal dos funcionários e a API de horários, e não como licença para executar todas as verificações. Cada verificação selecionada continua precisando de uma linha nas ROE. No ENG-712, Priya marca quais áreas do WSTG foram executadas contra o portal dos funcionários, quais contra a API de horários e quais foram deixadas de fora de propósito. É esse registro que dá sentido a uma declaração de cobertura para os leitores. Um relatório que diz apenas que a equipe seguiu o WSTG não permite ao leitor saber se as verificações de lógica de negócio na API foram feitas ou puladas.
+
+### 16.2 Garantia guiada por ameaças
+
+O TIBER-EU e o CBEST descrevem exercícios guiados por inteligência, usados especialmente na infraestrutura do mercado financeiro. Eles acrescentam uma fase de inteligência de ameaças, uma função de controle da equipe branca e uma repetição voltada ao aprendizado. A TRT não é um banco, mas tomar emprestadas as ideias de equipe branca e de revisão de aprendizado melhora qualquer exercício de red team. As ideias do TIBER/CBEST — inteligência, equipe branca, repetição para aprendizado — são tomadas emprestadas com cautela pela TRT. Priya não alega conformidade com o CBEST para uma operadora de ônibus. Ela alega alcançabilidade da equipe branca e chamados purple, e seus slides dizem explicitamente que tomar essas ideias emprestadas não permite à TRT alegar conformidade no estilo bancário.
+
+### 16.3 Misturar métodos sem misturar escopos
+
+Um único engajamento pode incluir uma revisão do portal orientada pelo WSTG e um inventário de rede limitado, desde que os dois fiquem dentro do mesmo acordo e das mesmas exclusões. Acrescentar uma "olhada rápida" não declarada nos sistemas de pagamento de tarifas viola o acordo, mesmo que o método seja brando. O acordo do ENG-712 abriga tanto a revisão do portal quanto o inventário de rede, com as mesmas exclusões valendo para os dois. Uma olhada discreta num host de pagamento de tarifas continuaria sendo contato com um sistema excluído, e o verificador de escopo devolveria STOP para ela. O aumento de escopo é tratado como condição de parada, nunca como meta ousada para uma tarde tranquila.
+
+### 16.4 Uma redação de exclusão que funciona
+
+"Os sistemas de pagamento de tarifas, incluindo os hosts em 192.0.2.64/27 e qualquer nome de host sob fare.trt.example, estão excluídos de todas as atividades." Isso é melhor do que "sistemas sensíveis estão fora de escopo", que ninguém consegue verificar. A versão precisa pode ser carregada diretamente no verificador de escopo, que então devolve STOP para qualquer endereço em 192.0.2.64/27 ou qualquer nome sob fare.trt.example. A revisão por pares rejeita redações vagas de exclusão porque nenhuma ferramenta e nenhum revisor conseguem testar contra elas. Na abertura, strings de exclusão verificáveis são um controle tão firme quanto ter um contato de emergência nas ROE.
+
+### Exemplo resolvido
+
+Priya propõe para o próximo trimestre: verificações de configuração e de identidade no portal dos funcionários, orientadas pelo WSTG; inventário dos prefixos em escopo; uma repetição purple de meio dia de T1078 e T1133 com o SOC. O pagamento de tarifas continua excluído por prefixo e por padrão de nome de host. O CISO aceita a combinação porque cada peça corresponde a uma decisão.
+
+> **Caso sintético.** A combinação trimestral é um artefato de planejamento fictício.
+
+### Erros e limites
+
+Citar o TIBER-EU sem um provedor de inteligência de ameaças ou uma equipe branca é teatro. Percentuais de cobertura do WSTG sem contexto de severidade enganam os conselhos.
+
+### Exercícios
+
+- **EX046 — Prática emprestada.** Nomeie duas ideias do TIBER-EU/CBEST que a TRT pode tomar emprestadas sem ser um banco. *Rubrica:* 3 = controle da equipe branca + revisão de aprendizado/repetição (ou desenho de cenários guiado por inteligência de ameaças); 2 = uma; 1 = alegar certificação CBEST completa; 0 = nada.
+- **EX047 — Reescrita da exclusão.** Melhore "sistemas sensíveis estão fora de escopo" para o segmento de tarifas da TRT. *Rubrica:* 3 = nomeia o prefixo e/ou o padrão de nome de host e "todas as atividades"; 2 = nomeia os sistemas de forma vaga; 1 = mantém o original; 0 = nada.
+- **EX048 — Seleção no WSTG.** Por que Priya poderia escolher verificações de identidade e pular o fuzzing intrusivo de lógica de negócio no primeiro engajamento do portal? *Rubrica:* 3 = limites de risco/fragilidade/ROE / necessidades da decisão; 2 = cautela vaga; 1 = sempre executar tudo; 0 = nada.
+
+### Síntese
+
+Escolha catálogos para a cobertura, tome emprestada dos frameworks guiados por ameaças a disciplina da equipe branca e escreva exclusões que um script consiga verificar.
+
+### Continue estudando — capítulo 16 de 30
+
+[← Capítulo 15 (rascunho)](#ch-15) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 17 (rascunho) →](#ch-17)
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Segurança ofensiva autorizada e red team: ferramentas
+
+### Objetivos de aprendizagem
+
+Você vai (1) inventariar as ferramentas de avaliação com responsável, finalidade e dados tratados; (2) aplicar uma nota de controle de mudanças antes de atualizar uma ferramenta no meio do engajamento; (3) explicar o risco de cadeia de suprimentos das ferramentas de avaliação; (4) manter os laboratórios de sala de aula na biblioteca padrão do Python.
+
+### 17.1 As ferramentas estão no escopo da governança
+
+Tudo o que toca sistemas ou dados do cliente faz parte da superfície de ataque do engajamento — inclusive o notebook e os scanners do próprio testador. Um inventário lista cada ferramenta, quem a mantém, que dados ela guarda e se pode sair do ambiente aprovado. No ENG-712, cada notebook e cada scanner ganham uma linha no inventário que registra a criptografia de disco e por quanto tempo qualquer cache local de evidências é mantido. A evidência guardada na máquina de um testador corre no mesmo relógio de retenção que a evidência no cofre. Um notebook perdido segue o mesmo caminho de incidente que um crachá perdido, porque qualquer um dos dois pode expor dados do cliente.
+
+### 17.2 Controle de mudanças em pleno voo
+
+Atualizar um scanner no meio de uma janela pode mudar seu comportamento e invalidar comparações. Anote a versão na abertura; adie atualizações, a menos que a equipe branca concorde que uma correção de segurança na própria ferramenta as exige. Versões fixadas protegem as comparações de antes e depois no trabalho purple: se o scanner mudar entre as execuções, uma diferença nos resultados pode vir da ferramenta, e não dos controles do cliente. Quando uma correção de segurança na própria ferramenta não pode esperar, a equipe branca rubrica a atualização, e a rubrica fica guardada no registro ao lado da versão fixada.
+
+### 17.3 Cadeia de suprimentos das ferramentas
+
+O software de avaliação vem de fornecedores e de projetos de código aberto. Prefira versões assinadas, verifique os checksums quando fornecidos e evite scripts aleatórios da internet. O T1195 Supply Chain Compromise do ATT&CK costuma ser discutido como técnica adversária contra o cliente; ele também se aplica à equipe de testes. Priya verifica os checksums antes de a janela abrir, e esse passo é uma linha da lista de verificação da abertura. Um script encontrado na internet que diz apenas interpretar JSON continua sendo recusado se não for assinado nem revisado, porque rodaria numa máquina que guarda evidências do cliente. Uma ferramenta de teste comprometida poderia causar exatamente o dano que o T1195 descreve para os clientes.
+
+### 17.4 Restrição de sala de aula
+
+Todo laboratório deste livro usa apenas a biblioteca padrão do Python 3 e dados sintéticos. Isso é intencional: os alunos praticam a lógica de decisão sem depender de scanners comerciais nem construir ferramentas de ataque. A restrição também mantém cada laboratório reproduzível em qualquer máquina com Python 3, sem licenças nem acesso à rede. Scanners comerciais podem aparecer mais tarde no trabalho, mas chegam pela aquisição e pelo controle de mudanças da TRT, com linhas próprias no inventário e versões fixadas. As decisões praticadas aqui, sobre controles, escopo e evidência, valem sem alteração para essas ferramentas.
+
+### Exemplo resolvido
+
+A lista de kit da Northpoint para a TRT nomeia dois scanners de inventário (com versões fixadas), um cofre para anotações e os verificadores de ROE deste curso. Um júnior sugere acrescentar um novo "verificador de credenciais" encontrado na internet. Priya o rejeita: sem responsável, sem checksum, sem entrada no controle de mudanças, e as ROE não listam atividades de adivinhação de credenciais.
+
+> **Caso sintético.** A lista de kit e a ferramenta rejeitada são inventadas.
+
+### Erros e limites
+
+Uma versão antiga fixada com uma vulnerabilidade conhecida na ferramenta também é um risco; planeje as atualizações entre engajamentos. A sincronização da saída das ferramentas com uma nuvem pessoal pode vazar evidências.
+
+### Exercícios
+
+- **EX049 — Campos do kit.** Nomeie quatro campos que toda entrada de ferramenta na lista de kit deve ter. *Rubrica:* 3 = quatro entre nome/versão/responsável/finalidade/dados tratados/ambiente aprovado; 2 = dois; 1 = só o nome; 0 = nada.
+- **EX050 — Atualização no meio da janela.** Um fornecedor de scanner lança uma atualização de funcionalidades no segundo dia da janela. Qual é a ação padrão? *Rubrica:* 3 = adiar; manter a versão fixada; atualizar apenas com concordância da equipe branca se uma correção de segurança exigir; 2 = só adiar; 1 = atualizar imediatamente; 0 = nada.
+- **EX051 — Script aleatório.** Por que recusar um script sem controle que "só verifica senhas"? *Rubrica:* 3 = sem responsável/checksum + a atividade pode estar fora das ROE + tratamento de evidências/dados desconhecido; 2 = um motivo; 1 = permitir se funcionar; 0 = nada.
+
+### Síntese
+
+Inventarie o kit, fixe as versões, leve a sério a cadeia de suprimentos das ferramentas e mantenha os laboratórios didáticos entediantes de propósito.
+
+### Continue estudando — capítulo 17 de 30
+
+[← Capítulo 16 (rascunho)](#ch-16) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 18 (rascunho) →](#ch-18)
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Segurança ofensiva autorizada e red team: controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) mapear achados comuns de avaliação para famílias de controles na linguagem do NIST SP 800-53 e do CSF 2.0; (2) distinguir controles compensatórios de controles ausentes; (3) escrever uma recomendação de correção que nomeie um controle, um responsável e uma verificação; (4) evitar prometer "segurança total".
+
+### 18.1 Controles como respostas aos achados
+
+Um achado é uma lacuna; um controle é a forma como a organização a fecha. O NIST SP 800-53 Rev. 5 traz famílias de controles (controle de acesso, auditoria e responsabilização, identificação e autenticação, e muitas outras). O NIST CSF 2.0 organiza os resultados em Govern, Identify, Protect, Detect, Respond e Recover. Relatórios que recomendam "tenha cuidado" não ajudam ninguém; relatórios que recomendam "aplicar MFA em todos os caminhos da VPN (controle da família IA); responsável: equipe de identidade; verificação: revisão trimestral de contas" criam trabalho.
+
+Na linha de recomendação, os achados são mapeados para as famílias do SP 800-53 e para as funções do CSF. O F-01 aponta para controles de identidade; o T1021 que passou despercebido aponta para trabalho de detecção e resposta. Os responsáveis veem um verbo de controle, e não apenas um problema.
+
+### 18.2 Controles compensatórios
+
+Se o MFA ainda não puder cobrir um caminho legado, um controle compensatório pode ser um jump host com gravação de sessões e um tempo limite de sessão mais curto. Documente a compensação e o plano para removê-la. Os avaliadores devem testar se a compensação realmente funciona, e não apenas se está escrita. Toda compensação leva uma data de término e um gancho de reteste, para que não se torne permanente em silêncio. Os avaliadores verificam se o jump host realmente grava as sessões e se o tempo limite mais curto realmente encerra as sessões ociosas, em vez de aceitar o documento de desenho. Uma compensação nunca revisitada vira um risco aceito sem aprovador nomeado.
+
+### 18.3 Detectar e responder também são controles
+
+O trabalho purple muitas vezes descobre que a prevenção falhou, mas a detecção também. As recomendações então caem nas funções Detect e Respond: um novo alerta, um passo de runbook, um link para um playbook. O D3FEND oferece um vocabulário de técnicas defensivas que pode ficar ao lado dos IDs do ATT&CK num programa maduro. Quando o ENG-712 descobriu que a prevenção e a detecção falharam para uma técnica, o resultado foi um chamado DET e um passo de runbook, e não o conselho de monitorar mais. Os verbos do D3FEND tornam a recomendação específica o bastante para que um engenheiro de detecção aja sobre ela e para que um exercício posterior a reteste. Cada recomendação também nomeia um responsável, para chegar a alguém que possa agir.
+
+### 18.4 Frases de garantia proibidas
+
+"Totalmente seguro", "garantido", "à prova de ataques" e "100% de cobertura" são falsas e proibidas nos relatórios da TRT. Declarações limitadas no tempo e no escopo são a alternativa profissional. A TRT lista essas frases no apêndice das ROE, para que os fornecedores não possam alegar que não sabiam, e os rascunhos que as contêm são devolvidos até serem reescritos. A declaração substituta do ENG-712 é limitada no tempo e no escopo e diz o que foi testado, em qual janela e dentro de quais limites. A revisão confere cada rascunho em busca das frases listadas antes de o pacote chegar ao CISO, e um revisor que encontra uma delas também confere o parágrafo em volta em busca de uma afirmação ilimitada.
+
+### Exemplo resolvido
+
+Para o F-07 (contas de VPN de ex-terceirizados), Priya recomenda: desativar as três contas em 48 horas (Protect / controle de acesso); instituir uma revisão de admissões, mudanças e desligamentos a cada 90 dias (Govern); acrescentar um alerta no SIEM para logins na VPN de contas com contratos encerrados (Detect). Ela recusa um rascunho de fornecedor que chamava a VPN de "totalmente segura após a correção".
+
+> **Caso sintético.** As recomendações de controle foram inventadas para o F-07 da TRT.
+
+### Erros e limites
+
+Os catálogos de controles são grandes; escolha os poucos que correspondem ao achado. Mapear cada achado para vinte controles gera ruído.
+
+### Exercícios
+
+- **EX052 — Trio de controle.** Para o F-09 (senha em texto claro na wiki), escreva controle + responsável + verificação. *Rubrica:* 3 = por exemplo, remover o segredo + cofre de segredos / responsável pela wiki / verificação por varredura ou revisão; 2 = duas partes; 1 = "conserte"; 0 = nada.
+- **EX053 — Compensação.** Dê um controle compensatório para um caminho legado de VPN que ainda não suporta MFA. *Rubrica:* 3 = compensação concreta (jump host, gravação, tempo limite curto, lista de permissões) + caráter temporário; 2 = monitoramento extra vago; 1 = ignorar; 0 = nada.
+- **EX054 — Frase proibida.** Reescreva "O portal agora está à prova de ataques" como uma frase profissional. *Rubrica:* 3 = garantia limitada no tempo/escopo, sem afirmações absolutas; 2 = mais branda, mas ainda absoluta; 1 = mantém "à prova de ataques"; 0 = nada.
+
+### Síntese
+
+Nomeie o controle, o responsável e a verificação; permita compensações temporárias; nunca venda segurança absoluta.
+
+### Continue estudando — capítulo 18 de 30
+
+[← Capítulo 17 (rascunho)](#ch-17) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 19 (rascunho) →](#ch-19)
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Segurança ofensiva autorizada e red team: monitoramento
+
+### Objetivos de aprendizagem
+
+Você vai (1) construir uma matriz de cobertura do ATT&CK a partir do registro de um exercício purple; (2) interpretar os resultados alerted, logged e missed; (3) propor uma melhoria de detecção para cada técnica não detectada; (4) manter a matriz restrita ao exercício.
+
+### 19.1 Cobertura como conversa
+
+Uma matriz de cobertura não afirma que a organização detecta "tudo". Ela mostra, para as técnicas exercitadas numa janela nomeada, se o SOC alertou, apenas registrou em log ou deixou passar. Essa conversa orienta o investimento. Os slides de cobertura da TRT abrem com as datas da janela e a lista de técnicas exercitadas, para que a matriz não possa ser lida como uma declaração sobre tudo. Qualquer alegação de detecção universal é apagada na revisão, porque sete técnicas numa noite não conseguem sustentá-la. As discussões sobre investimento usam então as três palavras alerted, logged e missed, que apontam diretamente para o que precisa ser construído.
+
+### 19.2 Alerted, logged, missed
+
+Alerted significa que uma pessoa ou um playbook foi notificado a tempo de agir. Logged significa que a telemetria existia, mas ninguém foi acordado. Missed significa que o comportamento não deixou telemetria utilizável. Logged não é sucesso se o exercício pressupunha um analista respondendo. Os líderes do SOC às vezes leem logged como "funcionou em parte", então Priya o explica em relação ao objetivo do exercício. Se o exercício pressupunha que um analista responderia, uma técnica apenas registrada em log conta como falha para esse objetivo. Ela ainda abre um chamado DET, mesmo com a telemetria existindo, porque ninguém agiu a tempo.
+
+### Laboratório G — matriz de cobertura
+
+```python
+"""Lab F (ch 19): ATT&CK technique coverage matrix from a synthetic purple-team log."""
+log = [
+    ("T1078", "Initial Access", "alerted"), ("T1133", "Initial Access", "logged"),
+    ("T1087", "Discovery", "missed"), ("T1069", "Discovery", "alerted"),
+    ("T1021", "Lateral Movement", "missed"), ("T1213", "Collection", "logged"),
+    ("T1567", "Exfiltration", "alerted"),
+]
+order = ["alerted", "logged", "missed"]
+for tid, tactic, outcome in log:
+    print(f"{tid:6} {tactic:17} " + " ".join("X" if o == outcome else "." for o in order))
+n = len(log)
+for o in order:
+    k = sum(1 for _, _, x in log if x == o)
+    print(f"{o:8} {k}/{n} = {100 * k / n:.1f}%")
+```
+
+Execute com `python3 lab_coverage.py`. Saída verificada:
+
+```text
+T1078  Initial Access    X . .
+T1133  Initial Access    . X .
+T1087  Discovery         . . X
+T1069  Discovery         X . .
+T1021  Lateral Movement  . . X
+T1213  Collection        . X .
+T1567  Exfiltration      X . .
+alerted  3/7 = 42.9%
+logged   2/7 = 28.6%
+missed   2/7 = 28.6%
+```
+
+### 19.3 Da falha ao backlog
+
+Cada técnica não detectada vira um item de backlog: qual fonte de log, qual lógica de alerta, qual responsável, qual teste para prová-lo depois. Ligue o item ao ID do ATT&CK para que os exercícios futuros possam retestar a mesma célula. O DET-19 e o DET-20 seguem esse padrão para o T1021 e o T1087: cada um nomeia a fonte de log, a lógica de alerta, um responsável e um plano de reteste. A etiqueta do ATT&CK permite que o próximo ciclo purple encontre a mesma célula. Uma falha registrada sem etiqueta tende a cair na fila errada e nunca é retestada.
+
+### 19.4 Navigator e D3FEND
+
+O ATT&CK Navigator visualiza camadas de cobertura. O D3FEND nomeia técnicas defensivas que podem contrapor uma dada técnica ofensiva. Juntos, ajudam um tecnólogo a falar com as equipes red e blue sem inventar um vocabulário particular. Priya importa para o Navigator o conjunto de técnicas efetivamente exercitadas no ENG-712, em vez de exibir um mapa de calor corporativo genérico. Os links do D3FEND ficam nas células onde uma recomendação é feita. Um mapa de calor que não reflete o conjunto exercitado é rejeitado como decoração, porque sugere uma cobertura que ninguém mediu.
+
+### 19.5 Retestar as mesmas células
+
+Uma matriz de cobertura só se justifica se o exercício seguinte reabrir as mesmas células. Priya etiqueta o DET-19 e o DET-20 com T1021 e T1087 para que o ciclo purple seguinte possa imprimir uma linha de antes e depois. Sem essa disciplina, a organização redescobre as mesmas falhas e as chama de nova descoberta. Exercitar técnicas novas e interessantes não desculpa pular as células que falharam da última vez. Se essas linhas ainda mostrarem uma falha, os itens de backlog são reabertos com seus responsáveis.
+
+### Exemplo resolvido
+
+O registro purple da TRT cobre sete técnicas. Três geraram alerta (42.9%), duas foram registradas em log (28.6%), duas passaram despercebidas (28.6%). As falhas são o T1087 Account Discovery e o T1021 Remote Services. Priya abre dois chamados de backlog: envio dos logs de auditoria do diretório ao SIEM para o T1087 e alertas de sessão no jump host para o T1021.
+
+> **Caso sintético.** O registro de sete técnicas e os percentuais são inventados.
+
+### Erros e limites
+
+Uma matriz de um único exercício não é uma pontuação de maturidade corporativa. Não esconda as falhas para poupar sentimentos; o aprendizado é o produto.
+
+### Exercícios
+
+- **EX055 — Percentuais.** Cite os três percentuais de resultado impressos pelo laboratório. *Rubrica:* 3 = alerted 42.9%, logged 28.6%, missed 28.6%; 2 = dois corretos; 1 = um; 0 = nada.
+- **EX056 — Item de backlog.** Escreva o título de um chamado de backlog para a falha do T1021. *Rubrica:* 3 = nomeia o T1021 + objetivo de detecção/alerta + sistema (jump host/serviços remotos); 2 = chamado de detecção vago; 1 = "esforce-se mais"; 0 = nada.
+- **EX057 — Logged ≠ concluído.** Por que um resultado "logged" para o T1133 não basta se o exercício esperava um analista respondendo? *Rubrica:* 3 = telemetria sem notificação/resposta não cumpre o objetivo de detectar e responder; 2 = parcial; 1 = logged é sucesso; 0 = nada.
+
+### Síntese
+
+Meça o que este exercício exercitou, diga a verdade sobre as falhas e transforme cada falha numa tarefa de detecção nomeada.
+
+### Continue estudando — capítulo 19 de 30
+
+[← Capítulo 18 (rascunho)](#ch-18) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 20 (rascunho) →](#ch-20)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX045 (as de EX046–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). A Tidewater Regional Transit, Priya Natarajan, a Northpoint Assurance e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX057 (as de EX058–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). A Tidewater Regional Transit, Priya Natarajan, a Northpoint Assurance e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** O BMC é acessível por uma porta de rede própria, recebe correções pelo firmware do fabricante e não pelo sistema operacional, e pode ficar numa VLAN de gerenciamento fora do escopo escrito. Um registro separado obriga a reunião de escopo a incluí-lo ou excluí-lo explicitamente.
 
@@ -1052,6 +1284,30 @@ Respostas-modelo para EX001–EX045 (as de EX046–EX090 estão na edição em i
 **EX044.** `['A1', 'A4']`. A lista é a evidência de que apenas as ações que passaram pelos controles de alvo, horário e atividade foram registradas como executadas.
 
 **EX045.** Respeitar a nota de fragilidade das ROE — limitar a taxa ou passar para revisão de configuração — e, se a nota não estiver clara, perguntar à equipe branca antes de prosseguir, mesmo que os controles rígidos tenham passado.
+
+**EX046.** Uma equipe branca com autoridade de parada e uma revisão estruturada de aprendizado ou de repetição depois do exercício. O desenho de cenários guiado por inteligência de ameaças também é aceito como segunda ideia.
+
+**EX047.** Exemplo: "Todos os sistemas de pagamento de tarifas estão excluídos de todas as atividades, incluindo os hosts em 192.0.2.64/27 e qualquer nome sob fare.trt.example."
+
+**EX048.** A decisão do primeiro engajamento é sobre a eficácia dos controles de identidade; o fuzzing intrusivo aumenta o risco ligado à fragilidade e pode exceder as ROE. Escolha verificações que respondam à decisão dentro dos limites combinados.
+
+**EX049.** Quaisquer quatro entre: nome, versão, responsável/mantenedor, finalidade, dados tratados, ambiente aprovado, referência de checksum/assinatura.
+
+**EX050.** Manter a versão fixada. Adiar a atualização de funcionalidades para depois da janela; só considerar uma mudança no meio da janela se for uma correção de segurança e a equipe branca concordar por escrito.
+
+**EX051.** O script não tem responsável nem verificação de integridade, pode executar atividades que as ROE proíbem e pode guardar ou transmitir evidências fora das regras de tratamento aprovadas.
+
+**EX052.** Exemplo: remover a senha da wiki e guardá-la no cofre de segredos aprovado (Protect); responsável = responsável pela wiki/pelo serviço; verificação = varredura automatizada de segredos no espaço da wiki mais uma revisão por amostragem em 30 dias.
+
+**EX053.** Exemplo: forçar o caminho legado a passar por um jump host com MFA e gravação de sessões, reduzir a duração da sessão para uma hora e acompanhar uma data para aposentar o caminho legado.
+
+**EX054.** Exemplo: "Em 2026-11-10, dentro do escopo do portal dos funcionários do ENG-712, os achados de identidade relatados anteriormente foram corrigidos e retestados; o risco residual fora desse escopo permanece."
+
+**EX055.** alerted 3/7 = 42.9%; logged 2/7 = 28.6%; missed 2/7 = 28.6%.
+
+**EX056.** Exemplo: "Detectar T1021 Remote Services nos jump hosts — alertar o SOC sobre sessões interativas fora das janelas de mudança."
+
+**EX057.** O objetivo do exercício era detecção e resposta. Uma linha de log que ninguém vê não produz resposta, então o resultado não cumpre o objetivo, mesmo com a telemetria existindo.
 
 <a id="references"></a>
 ## Referências

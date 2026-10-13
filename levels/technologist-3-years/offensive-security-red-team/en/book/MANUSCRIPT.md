@@ -1087,9 +1087,7 @@ For ENG-712 Priya marks which WSTG areas were run against the staff portal and w
 
 TIBER-EU and CBEST describe intelligence-led exercises used especially in financial-market infrastructure. They add a threat-intelligence phase, a white-team control function and a learning-focused replay. TRT is not a bank, but borrowing the white-team and learning-review ideas improves any red-team exercise.
 
-TIBER/CBEST ideas — intel, white team, learning replay — are borrowed cautiously for TRT. Priya does not claim CBEST compliance for a bus operator. She claims white-team reachability and purple tickets.
-
-Borrowing white-team and purple learning from TIBER/CBEST ideas does not let TRT claim bank-style compliance. Priya's slides say so explicitly.
+TIBER/CBEST ideas — intel, white team, learning replay — are borrowed cautiously for TRT. Priya does not claim CBEST compliance for a bus operator. She claims white-team reachability and purple tickets, and her slides say explicitly that borrowing these ideas does not let TRT claim bank-style compliance.
 
 ### 16.3 Mixing methods without mixing scopes
 
@@ -1099,7 +1097,7 @@ The ENG-712 agreement holds both the portal review and the network inventory, wi
 
 ### 16.4 Exclusion language that works
 
-"Fare-payment systems, including hosts in 192.0.2.64/27 and any hostname under fare.trt.example, are excluded from all activities." Beats "sensitive systems are out of scope", which nobody can check.
+"Fare-payment systems, including hosts in 192.0.2.64/27 and any hostname under fare.trt.example, are excluded from all activities." This beats "sensitive systems are out of scope", which nobody can check.
 
 The precise version can be loaded straight into the scope checker, which can then return STOP for any address in 192.0.2.64/27 or any name under fare.trt.example. Peer review rejects vague exclusion wording because no tool and no reviewer can test against it. At kickoff, checkable exclusion strings are a gate as firm as having an emergency contact on the ROE.
 
@@ -1309,7 +1307,7 @@ Priya imports the set of techniques actually exercised in ENG-712 into Navigator
 
 A coverage matrix earns its keep only if the next exercise reopens the same cells. Priya tags DET-19 and DET-20 with T1021 and T1087 so the following purple cycle can print a before/after row. Without that discipline the organisation rediscovers the same misses and calls it a new insight.
 
-The next purple cycle prints a before and after row for DET-19 and DET-20, which is the main reason the matrix exists. Exercising new and interesting techniques does not excuse skipping the cells that missed last time. If those rows still show a miss, the backlog items are reopened with their owners.
+Exercising new and interesting techniques does not excuse skipping the cells that missed last time. If those rows still show a miss, the backlog items are reopened with their owners.
 
 ### Worked example
 
