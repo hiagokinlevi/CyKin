@@ -1679,6 +1679,8 @@ The Spillover Study had one primary outcome (arrivals), three sites and one seco
 
 Every number in the text should come from the analysis output, not from memory or an earlier draft. Three practices help: generate results tables directly from scripts; keep a machine-readable results file from the final run; and check the text against it before submission. Lab 7 below automates a first pass.
 
+Rounding deserves its own rule. The Spillover Study's main estimate is 24.4% in Table 4.2 and 24% in the rewritten abstract; both are correct only if the dissertation states that the abstract rounds to whole percentages. Keep the same precision for the same quantity in every chapter, and record units beside each value in the results file, so that a percentage cannot be confused with a count of minutes. When a figure changes in a late rerun, search the whole text for the old value, including captions, the abstract and the appendices, before resubmitting the draft.
+
 ### 7.5 Reporting guidelines as checklists
 
 Reporting guidelines list what a reader needs to assess a study; using them as a writing checklist prevents omissions. Relevant ones for this field:
