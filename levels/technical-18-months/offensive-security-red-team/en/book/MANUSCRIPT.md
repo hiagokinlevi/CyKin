@@ -781,21 +781,13 @@ Personal data turning up in a ticket is a stop even though nothing is broken, be
 
 Prefer tools that fail closed (stop on error) rather than retrying into a storm.
 
-Safe tool failure means scripts exit and release hosts when errors repeat. The 401 loop drill teaches failing closed rather than retrying forever against staging. Safe failure exits release sockets and print a halt reason. Retry storms are treated as tool defects, not thoroughness.
-
-Colour maps print red amber green black for managers who only skim exclusion paragraphs in the ROE appendix.
-
-When auth checks loop, Sam's script exits, drops sockets and prints a halt reason instead of retrying into a storm against staging.
+Safe tool failure means a script exits and releases its hosts when errors repeat, rather than retrying forever against staging. The 401 loop drill teaches exactly this: when the auth checks loop, Sam's script drops its sockets and prints a halt reason that names the cause. A tool that keeps retrying into a storm is treated as defective, however thorough it looks, because the extra traffic eats the noise budget and hides the original error from the responders who have to read the logs.
 
 ### 8.4 Communicating stop
 
 Say what you were doing, what you observed, what you halted, and ask for guidance — short and factual.
 
-Communicating stop uses the engagement channel: ENG-512 stop — looping auth checks on staging API — halted 10:12 — need guidance. Factual headers beat apologies in the moment. Stop messages follow ENG-512 stop — cause — halted HH:MM — need guidance. Softener words are deleted before send.
-
-Broken staging-mirrors-prod beliefs become ROE text or findings rather than unspoken footnotes that surprise retests.
-
-His channel post mirrors the drill: ENG-512 stop, looping auth on staging API, halted 10:12, need guidance — no apologies in the first line.
+The stop message goes to the engagement channel in a fixed shape: ENG-512 stop, cause, halted HH:MM, need guidance. On the drill it reads "ENG-512 stop — looping auth checks on staging API — halted 10:12 — need guidance." Softening words and apologies are deleted before sending, because the on-call responder has to act on the first line. A factual header lets them see what stopped, when it stopped and what decision is now waiting on them.
 
 ### 8.5 Rehearsal
 
@@ -809,11 +801,7 @@ Modelling field discipline delays tool start when dated diagram, colours, assump
 
 Stop first; investigate cause after systems are stable.
 
-No blame in the moment: stop first, analyse later. The after-action can discuss the loop; the channel message during ENG-512 only states halt and need guidance. After-action owns the learning; the live channel owns only halt facts. Blame language in the stop thread is moderated out.
-
-Log requests cover only ENG-512 clock-window slices rather than multi-day production dumps that expose riders.
-
-During the halt he forbids blame talk; the after-action later owns learning while the live thread stays factual.
+No blame belongs in the moment. During ENG-512 the live channel carries only halt facts and the request for guidance, and any blame language that appears in the stop thread is moderated out. Discussion of why the auth checks looped waits for the after-action review, which owns the learning. Separating the two keeps responders focused on stabilising staging, and it gives the later review a clean timeline instead of an argument recorded in the middle of the incident.
 
 ### 8.7 Secondary contact
 
@@ -874,21 +862,13 @@ You will (1) choose methods from WSTG themes; (2) configure tools with rate limi
 
 Each card: purpose, ROE reference, tool/settings, stop conditions, evidence expected.
 
-Method cards name the check, the rate limit, the harm mode and the evidence expected. Cards without those four fields stay out of Sam's Saturday stack for ENG-512. Method cards missing rate, harm, evidence or check name are rejected from the stack. Four fields are the minimum for ENG-512.
-
-Ten-twelve loop confirmation needs API logs and jump clock agreeing within two minutes before evidence is graded usable.
-
-A card enters the Saturday stack only when check name, rate limit, harm mode and expected evidence are all filled.
+On top of those fields, every card must name the check, the rate limit, the harm mode and the evidence expected. Those four entries are the minimum for ENG-512: a card that lacks any of them is rejected at peer review and stays out of Sam's Saturday stack. The rule keeps improvised checks off the engagement, because a technician cannot run a method whose rate and harm were never written down and agreed.
 
 ### 9.2 Rate limits
 
 Scanners get explicit rate limits below what staging can take. Faster is not better.
 
-Rate limits on API auth checks prevent the 401 loop pattern. Sam's card for staging login checks caps attempts per minute and fails closed when the cap trips. Auth check cards hard-cap attempts per minute to protect the noise budget. Cap trip equals fail closed, not slow down quietly.
-
-Kickoff NTP checks fail the start if skew exceeds two minutes on the jump host versus the API VIP address.
-
-Journey-planner auth cards hard-stop at the agreed attempts-per-minute; a cap trip ends the job rather than whispering slower retries.
+On the staging login checks this means a hard cap on attempts per minute, set so the 401 loop pattern cannot recur and the noise budget stays intact. When the cap trips, the job fails closed and ends; it does not quietly slow down and keep retrying. Journey-planner auth cards follow the same rule, so a peer reading any auth card can see the agreed rate and know exactly what happens when it is reached.
 
 ### 9.3 WSTG selection
 
@@ -902,31 +882,19 @@ Detection feedback lists method cards and stop times because silence must never 
 
 Map each tool alert to a model element before promoting it to a finding.
 
-Interpretation of a tool hit still needs a human path. An outdated banner at low confidence stays discovery until Sam confirms exposure and impact with evidence. Human interpretation turns tool hits into findings with impact. Banner-only noise stays in discovery until exposure is shown.
-
-Five-minute auth samples beat day-long exports for rider privacy and for Sam's review time when writing findings.
-
-An outdated banner stays discovery until Sam shows exposure and impact a peer can reproduce on staging.
+A tool hit becomes a finding only after a human has traced a path to impact. An outdated banner reported at low confidence stays in discovery until Sam shows exposure and impact with evidence that a peer can reproduce on staging. This keeps banner-only noise out of the report, and it means every finding the owner receives already explains which part of the system model is affected and why it matters.
 
 ### 9.5 Version pin
 
 Record tool versions on the method card.
 
-Version pin on scanners and scripts goes in the notebook beside ENG-512. Unpinned tools make retests argue about setup instead of fixes. Scanner and script versions are pinned in the notebook before the window. Unpinned tools make FIXED versus STILL OPEN arguments about setup.
-
-Emails, PANs and precise GPS are redacted before vault entry even when the finding itself is about authentication flaws.
-
-Scanner and script digests sit in the notebook before kickoff so FIXED versus STILL OPEN cannot become a setup argument.
+Scanner and script versions are pinned in the notebook beside ENG-512 before the window opens. Without pins, a retest can turn into an argument about setup: the owner says FIXED, the tester sees STILL OPEN, and nobody can tell whether the tool changed in between. With the versions written down, the second run uses the same tools as the first, so any difference in the result points at the fix rather than at the tooling.
 
 ### 9.6 Forbidden methods
 
 Password spraying and DoS remain forbidden at NMT.
 
-Forbidden methods include password spraying, fare-network probes and anything not on a method card. Sam's card library lists forbidden items on the cover so peers see them at kickoff. Forbidden methods cover password spraying and any fare touch. The cover of the card library prints that list for kickoff reading.
-
-Telemetry field discipline is sample, redact, sync and notify using the four-oh-one loop stop as the coordination model.
-
-The card-library cover lists password spraying and fare probes as forbidden; kickoff reads that cover aloud.
+The forbidden list also covers fare-network probes and anything that is not on an approved method card. Sam's card library prints that list on its cover, and the cover is read aloud at kickoff so every peer hears the same limits before the first check runs. A method that is missing from the library is not a grey area to be argued in the window; it is out of scope until a new card is reviewed and agreed.
 
 ### 9.7 Card library
 
@@ -995,11 +963,7 @@ Safe failure releases sockets and prints halt reasons instead of building retry 
 
 Logic bugs in authorization need developer changes and regression tests.
 
-Code findings in NMT apps are reported with file and line when the ROE allows read access; Sam does not decompile fare vendor binaries under ENG-512. When ROE allows read of app config, Sam cites file and key. Decompiling fare vendor code stays forbidden under ENG-512.
-
-Stop messages follow cause and clock pattern without softener words that muddy the engagement channel for responders.
-
-When ROE allows config read, findings cite file and key; fare-vendor binaries stay off-limits for decompilation under ENG-512.
+When the ROE allows read access to NMT app code or config, Sam cites the file and the line or key in the finding, so the developer can go straight to the place that needs changing. Fare vendor binaries are a different matter: decompiling them stays forbidden under ENG-512, whatever a tool suggests. Findings in that area are described from observed behaviour on staging and routed to the fare owner instead of being backed by reverse engineering.
 
 ### 10.3 Safe proposals
 
@@ -1013,57 +977,31 @@ Lab II grades rehearsal stop posts before any live window is scheduled for that 
 
 Owners apply changes through their pipeline; Sam verifies.
 
-Owner verification means the journey planner owner confirms the fix before Sam retests. A fix without an owner name stays open. Owner verification is a checkbox on the ticket before retest. Unowned fixes cannot reach FIXED in lab_retest language.
-
-Live channels carry halt facts; after-action owns learning without blame language appearing in the stop thread.
-
-Retest cannot show FIXED until the journey planner owner checkbox is ticked on the ticket.
-
-Sam leaves the owner checkbox blank until the journey planner lead confirms in the ticket thread.
+Verification starts with the owner. The journey planner owner must confirm the fix in the ticket thread and tick the owner checkbox before Sam retests anything. Sam leaves that box blank until the lead has written the confirmation, and a fix with no owner name attached stays open. Unowned fixes therefore cannot reach FIXED in lab_retest language, which stops a change nobody is accountable for from being reported as closed. The ticket history then shows who confirmed the change and when.
 
 ### 10.5 Baselines
 
 NMT's hardening baseline is the checklist; deviations need tickets.
 
-Baselines for TLS and cookie flags are written in the runbook. Drift from baseline is the finding language Sam uses instead of looks bad. Baselines for TLS versions and cookie flags live in the runbook tag named by the ROE. Looks bad is not baseline language.
-
-Secondary contacts are dialled from the ROE card at five minutes when the primary on-call does not answer.
-
-TLS and cookie baselines live in the runbook tag the ROE cites; looks-bad wording is rewritten into drift language.
+Baselines for TLS versions and cookie flags live in the runbook tag that the ROE names. Sam writes findings as drift from that baseline, quoting the expected value and the observed value, and any "looks bad" wording is rewritten before the report goes out. Drift language gives the owner a concrete target to restore and gives the retest a clear pass condition, which an opinion about appearance cannot provide. The same tag is used again at retest, so both runs measure against one baseline.
 
 ### 10.6 Drift
 
 Config drift after emergency changes is a recurring finding source.
 
-Drift after a CDN change is checked against the dated model. Sam opens a ticket when staging cookies regress even if no new ENG window is booked. Post-CDN cookie drift opens a ticket even between ENG windows. Sam does not wait for the next Saturday to name a regression.
-
-Untested kill switches keep automation off the Saturday list until Lab II checks the disable path end to end.
-
-Cookie regressions after a CDN cut open tickets mid-week; Sam does not wait for the next Saturday slot.
+After a CDN change, Sam compares staging against the dated model. If cookie flags have regressed, a ticket is opened mid-week, even when no new ENG window is booked, because waiting for the next Saturday slot would leave a known regression unnamed for days. The ticket quotes the baseline and the observed values, so the owner can see exactly which change introduced the drift and where it needs to be reversed.
 
 ### 10.7 Rollback tested
 
 A config proposal without a tested rollback is incomplete. Sam asks the owner how they would undo the change in fifteen minutes.
 
-Rollback tested on staging is required before Sam agrees a risky config change is the fix. Untested rollback is itself a risk note in the ticket. Rollback drills on staging are attached as evidence when risky fixes are proposed. Untested rollback keeps the ticket open.
-
-Failure-mode field discipline requires written stops, rehearsed messages, secondary names and tested kills in one checklist.
-
-Risky fixes attach a staging rollback drill as evidence before anyone claims production readiness.
+Sam will not agree that a risky config change is the fix until its rollback has been drilled on staging and the drill is attached to the ticket as evidence. An untested rollback is recorded as a risk note and keeps the ticket open. Nobody claims production readiness before that drill exists, because a fix that cannot be reversed quickly can turn a minor finding into an outage during the change window.
 
 ### 10.8 Staging first
 
 Production config findings are reproduced on staging when possible before urging a production change.
 
-Staging first is absolute for ENG-512 config work. Production changes wait for owner change windows; Sam's retests stay on amber until then.
-
-Method cards missing rate, harm, evidence or check name are rejected from the stack at peer review before Saturday.
-
-Amber-zone verification finishes first; production change claims wait on owner windows Sam does not control.
-
-He will not type a production-ready claim while amber retests are still running.
-
-Production-ready wording waits until amber is green and owners control the change window.
+For ENG-512 config work, staging first is absolute. Sam finishes the amber-zone verification before any production change is discussed, and production changes then wait for the owners' change windows, which Sam does not control. Until those windows run, the retests stay amber, and Sam does not write production-ready wording in the report or the ticket. The status changes only when the amber retests pass and the owner has applied the change in production.
 
 ### 10.9 10.x Field discipline
 
@@ -1249,13 +1187,7 @@ Exchange port lists; score agreement with the approved map.
 
 Peer check scores notebook completeness before sign-off. Missing emergency contact or fare exclusion fails the peer gate. Those two fields are checked first because either gap would have stopped a real ENG-512 window at kickoff. Completeness beats neat handwriting.
 
-Safe proposals include staging paths and rollback notes before anyone discusses production tweaks with managers.
-
-Peers fail the notebook if fare exclusion or emergency contact is missing, neat penmanship notwithstanding.
-
-Emergency contact and fare exclusion are the first two peer-check boxes every time.
-
-Those two boxes fail closed; everything else in peer check is secondary.
+The peers then compare the port list in each notebook against the approved map line by line, and every listener that is missing or not approved is marked on the score sheet. A notebook that lists a port the map never approved fails that line, even if the port really answered on staging.
 
 ### 12.3 Planted fault
 
@@ -1344,25 +1276,13 @@ You will (1) follow a troubleshooting tree for failed checks; (2) separate tool 
 
 Symptom → reproduce → check scope/account/tool → check staging health → escalate.
 
-Troubleshooting tree starts with scope, then tool health, then environment. Sam checks whether 8080 was ever approved before debugging why lab_ports reported it. Troubleshooting asks whether 8080 was approved before debugging lab_ports. Scope first prevents false tool hunts.
-
-FIXED without after-hash remains incomplete regardless of owner enthusiasm typed into chat threads.
-
-The tree asks whether 8080 was ever approved before anyone debugs lab_ports output about it.
-
-Approval status of the listener is question one on the troubleshooting card.
+In practice the tree starts with scope, then tool health, then the environment. Approval status of the listener is the first question on the troubleshooting card, so Sam checks whether port 8080 was ever approved before debugging why lab_ports reported it. Putting scope first prevents false tool hunts: an hour spent fixing a scanner that correctly flagged an unapproved port is an hour taken from the window for nothing. Only after scope is settled does the card move on to tool and environment checks.
 
 ### 13.2 Tool failure
 
 Certificate errors on the tester laptop are not API findings.
 
-Tool failure — crash or empty output — is logged with version pin. Sam switches to a known-good baseline script rather than improvising flags. Crashes log version pins and switch to the known-good script. Improvised flags mid-incident are forbidden.
-
-Clean slides that hide STILL OPEN fail supervisors and are sent back for rewrite before the meeting.
-
-On crash, Sam logs the pin and switches to last week's known-good script instead of inventing flags.
-
-Known-good rollback is a script path in the notebook, not a memory of flags.
+A tool failure, such as a crash or empty output, is logged together with the tool's version pin. Sam then switches to the known-good baseline script, last week's version, whose path is written in the notebook rather than held in memory. Improvising new flags in the middle of an incident is forbidden, because an untested flag can change the traffic pattern and break the rate limits agreed on the method card.
 
 ### 13.3 Escalation packet
 
@@ -1376,81 +1296,43 @@ Sam's ENG-512 escalation packet has four fields: the ticket identifier, the last
 
 Temporary tool flags are logged and removed after; they are not silent permanent config.
 
-Workarounds that change scope are forbidden. A workaround that probes a new host waits for ROE update. Workarounds that touch new hosts wait for ROE text. Scope-changing cleverness is not troubleshooting.
-
-Tool-suggested hosts during retest wait for the next ROE instead of widening a frozen scope mid-flight.
-
-Workarounds that touch new hosts wait for ROE language; clever scope changes are not troubleshooting.
-
-ROE update requests are the only legal way a workaround may add a host.
+Workarounds that change scope are forbidden outright. If a workaround would probe a host that is not on the ENG-512 list, it waits for updated ROE text, and an ROE update request is the only legitimate way a workaround may add a host. Clever scope changes made in the middle of a stuck session are not troubleshooting; they are unapproved testing, and they are recorded as such in the after-action review rather than excused because the original tool was failing.
 
 ### 13.5 Pair debugging
 
 Hard issues get a second technician after fifteen minutes.
 
-Pair debugging puts a second technician on the jump host view. Solo rabbit holes past the time box are cut by the peer.
-
-SOC hears STILL OPEN the same day rather than discovering the gap inside a monthly management pack.
-
-A second technician on the jump-host view cuts rabbit holes that burn past the time box.
-
-Pair sessions are scheduled; hoping someone wanders by is not pairing.
-
-Calendar holds the pair slot before the stuck engineer keeps solo digging.
+Pair debugging puts that second technician on the jump-host view, where they can see the same output and cut a rabbit hole that has burned past the time box. Pair sessions are booked on the calendar before the window opens, so the slot exists before anyone gets stuck. Hoping that a colleague happens to wander past is not pairing, and it usually means the stuck engineer keeps digging alone until most of the window has gone.
 
 ### 13.6 Customer impact
 
 If riders may be affected, stop and call the emergency contact before deep debugging.
 
-Customer impact means riders seeing errors on the journey planner. Any hint of rider-facing harm is a stop before root-cause analysis continues. Rider-facing errors on the journey planner stop all ENG work immediately. Impact beats root-cause curiosity.
-
-Cookie retests reuse the cookie card rather than a new scanner profile that invents an easy pass.
-
-Journey-planner errors visible to riders halt ENG immediately; impact outranks unfinished root cause.
-
-Rider-visible errors trigger the same stop template used for auth loops.
+Customer impact means riders seeing errors on the journey planner. Any hint of rider-facing harm stops all ENG work immediately, before root-cause analysis continues, and the stop uses the same message template as the auth loop drill. Impact outranks curiosity about an unfinished root cause: the cause can be investigated after the emergency contact has confirmed that riders are no longer affected and staging is stable again.
 
 ### 13.7 Known-good baseline
 
 Sam keeps a known-good curl to the staging health endpoint. If that fails, the environment is broken and findings wait.
 
-Known-good baseline is last week's pinned script that printed the expected ok lines. Sam diffs against that before blaming the network.
-
-Owner demos beat screenshot-only closure when examiners ask who personally saw the FIXED state on staging.
-
-Diff against last week's pinned ok lines before blaming network for a sudden NOT APPROVED storm.
-
-Pinned ok output from last week is opened before any network blame thread starts.
+Alongside the curl, the known-good baseline is last week's pinned script and the ok lines it printed. When a sudden NOT APPROVED storm appears, Sam opens that pinned output and diffs the new run against it before anyone starts a thread blaming the network. If the old script still prints the expected lines, the change is in the target or the scope; if it does not, the environment is the first suspect.
 
 ### 13.8 Timeboxing ego
 
 After fifteen minutes alone, he must ask for help. Heroic silence wastes engagement window.
 
-Timeboxing ego: thirty minutes on a stuck tool, then escalate. Pride that burns the ENG-512 window helps nobody. Thirty minutes stuck, then escalate. Ego that burns the Saturday window is called out in after-action.
-
-Verification field discipline accepts two-fixed one-open truth as a legitimate ENG-512 result worth publishing.
-
-Thirty minutes stuck, then escalate; after-action names ego that burned the Saturday window.
-
-After-action bullets name the minute count when ego delayed the escalate call.
+The time box exists to protect the ENG-512 window from pride. Fifteen minutes stuck on a tool means escalating to the pair or the lead, not trying one more flag in silence. When ego does delay the call, the after-action review names it plainly and records how many minutes were lost, so the pattern is visible to the whole team. Early escalation is rewarded in that review rather than treated as a sign of weakness.
 
 ### 13.9 13.x Field discipline
 
 Sam's troubleshooting notes use the same Fact/Guess labels as casework. "Guess: WAF blocking my IP" becomes a Fact only after the WAF log shows the block. That discipline keeps him from "fixing" the WAF with volume to see what happens — a behaviour that looks like a DoS and violates the ROE.
 
-Field discipline for troubleshooting is tree, baseline, pair, time box, stop on rider impact. Sam's after-action rewards early escalation.
-
-Forced zero-open narratives are programme defects Sam refuses to publish to leadership or examiners.
+Field discipline for troubleshooting is tree, baseline, pair, time box, stop on rider impact. Sam's after-action rewards early escalation. Those habits matter more than solving every fault, because each one keeps a stuck session from turning into unapproved or unsafe testing.
 
 ### 13.10 13.y Closing note
 
 When escalation is required, Sam notifies the engagement lead and the product owner together so nobody hears second-hand that staging is unhealthy.
 
-Closing note: troubleshooting protects the window. Finding the planted fault matters less than stopping when fare alerts appear anywhere. Good troubleshooting stops for fare alerts even when the plant is unsolved. Safety outranks completion.
-
-Lab I notebooks stay append-only including ugly pauses that later teach stop discipline under time pressure.
-
-Fare alerts end troubleshooting even when the planted fault is still unsolved — safety first.
+The closing rule is that troubleshooting exists to protect the window and the systems behind it. Finding the planted fault matters less than stopping when fare alerts appear anywhere, so a fare alert ends troubleshooting even while the plant is still unsolved. An unsolved fault can be picked up in the next session, but a test that kept running through a fare alert is a safety failure that no later fix can undo.
 
 ### Worked example (synthetic NMT)
 
@@ -1489,107 +1371,55 @@ You will (1) decide what to automate; (2) keep humans for validation; (3) schedu
 
 Hashing, port list diffs, ticket field checks, report skeletons.
 
-Automate inventory checks and hashing that Sam already performs the same way every week. Automation that invents new methods is refused for ENG-512. Automation covers inventory classify and hashing Sam already does weekly. New attack methods are never the automation goal.
-
-Missing fare exclusion fails peer check regardless of neat handwriting on every other notebook page.
-
-Jobs may classify inventories and hash evidence Sam already runs weekly; they may not invent new methods.
-
-Method invention stays off the automation backlog; only proven weekly paths qualify.
+The rule is to automate only the checks Sam already performs the same way every week, such as classifying inventories and hashing evidence. Jobs may repeat those proven paths, but they may not invent new methods, and automation that would introduce a new attack technique is refused for ENG-512. Method invention therefore stays off the automation backlog entirely; a new technique has to be written as a method card, reviewed and run by hand first.
 
 ### 14.2 Do not automate
 
 Exploitation, scope decisions, severity without review.
 
-Do not automate stop decisions or scope expansion. Humans halt on fare alerts; jobs do not decide to continue. Stop and scope decisions stay human. Jobs must not continue after a fare alert flag.
-
-Missing the planted 3389 fails Lab I despite otherwise excellent prose filling the rest of the notebook.
-
-Stop and scope choices stay human; automation must freeze when a fare alert flag appears.
-
-Fare-alert flags are hard stops in job code, not soft suggestions operators may ignore.
+Stop decisions and scope expansion also stay human. Operators halt on fare alerts, and jobs never decide on their own to continue. In job code, a fare-alert flag is a hard stop that freezes the run, not a soft warning that an operator may dismiss. Keeping these choices out of automation means a script cannot widen ENG-512 or keep testing through an alert simply because nobody was watching the console at that moment. Severity ratings likewise wait for a human reviewer before any ticket is raised.
 
 ### 14.3 Windows
 
 Automation runs only inside the engagement window with the same rate limits.
 
-Windows for automated jobs match the ROE Saturday window. Overnight freestyle jobs against staging are change-control violations. Job schedules match the ROE Saturday window only. Overnight freestyle against staging violates change control.
-
-Lab I clock stop means vault and hands off the keyboard with no silent overtime minutes afterward.
-
-Schedulers match the ROE Saturday window; overnight freestyle against staging violates change control.
-
-Scheduler ACLs deny overnight ENG users outside the signed Saturday window.
+Job schedules match the ROE Saturday window exactly. Overnight freestyle jobs against staging are change-control violations, however convenient they would be, and the scheduler access controls deny ENG users outside the signed window so the rule does not depend on memory. This keeps automated traffic inside the period when owners and on-call responders expect it and can tell a test from a real problem. When a job is still running as the window closes, it stops and the remainder waits for the next agreed slot.
 
 ### 14.4 Loop detection
 
 Caps on retries and maximum runtime are mandatory.
 
-Loop detection kills jobs that repeat 401s beyond the noise budget. The synthetic drill's 10:12 stop is the pattern automation must copy. Loop detectors kill 401 storms past the noise budget, copying the 10:12 drill behaviour.
-
-Production rider data in classroom packs is a hard zero even when someone wants it only for illustration.
-
-Loop detectors halt auth storms past the noise budget using the same 10:12 behaviour as the drill.
-
-Noise-budget counters in the job emit the same halt string the drill taught.
+Loop detection in each job kills the run when 401 responses repeat beyond the noise budget. The synthetic drill's 10:12 stop is the pattern automation must copy: the job halts, releases its connections and emits the same halt string the drill taught, so the engagement channel receives a message responders already recognise. A job without a retry cap and a runtime cap is not ready for the Saturday window, however well it performed in a quick test.
 
 ### 14.5 Output review
 
 Every automated finding candidate gets human validation.
 
-Output review is mandatory before findings ship. Automated NOT APPROVED lines still need Sam's eyes for name mismatches. Humans still read NOT APPROVED lines for name mismatches before tickets open. Blind auto-filing is refused.
-
-Unsigned labs stay practice outside portfolios until supervisor signature follows a passed peer check.
-
-Before tickets open, a human scans NOT APPROVED lines for DNS name mismatches the job cannot judge.
-
-Name-mismatch review is a required human gate before auto-ticket creation runs.
-
-Auto-ticket jobs stay dark until the human mismatch gate returns approve.
+Output review is mandatory before any finding ships. Automated NOT APPROVED lines still need a human to check for DNS name mismatches, which the job cannot judge, so blind auto-filing is refused. Auto-ticket jobs stay disabled until that human mismatch gate returns approve. The review costs a few minutes per run, and it prevents owners from receiving tickets about hosts that were simply listed under a different name. Reviewers also confirm that each candidate maps to an approved host before it becomes a ticket.
 
 ### 14.6 Change control
 
 Automation scripts are versioned like production code.
 
-Change control on automation matches ROE change control. A new job cannot enter Saturday without peer review and SOC notice. New jobs need peer review and SOC notice like ROE changes. Silent job adds are defects.
-
-Post-sign-off notebook edits need a new review cycle rather than quiet fixes nobody can audit later.
-
-New automation needs peer review and SOC notice equal to a ROE change before it may run.
-
-SOC notice for new jobs uses the same template as ROE change announcements.
+Change control on automation matches ROE change control. A new job cannot enter the Saturday window until it has passed peer review and the SOC has been notified, using the same template as an ROE change announcement. Adding a job silently is treated as a defect, because the SOC would see unexpected traffic with no notice explaining it and might respond as if it were a real attack. The job's version and its approving reviewer are recorded with the change notice.
 
 ### 14.7 Idempotent jobs
 
 Automated diffs can run twice without doubling tickets. Sam keys tickets on host+port+date to avoid duplicates.
 
-Idempotent jobs can re-run without doubling tickets. Sam designs ENG-512 reporters to upsert by listener key. Idempotent reporters upsert by listener key so re-runs do not double tickets.
-
-SMS with passwords is forbidden; the course forum holds questions without ever carrying vault secrets.
-
-Reporters upsert by listener key so a re-run cannot open duplicate tickets for the same port.
-
-Listener-key upserts are covered by a unit test in the automation repo.
+Idempotent design is what makes those re-runs safe. Sam's ENG-512 reporters upsert by listener key, so running a job a second time updates the existing ticket for that port instead of opening a duplicate. The listener-key upsert is covered by a unit test in the automation repo, so a later change to the reporter cannot quietly reintroduce duplicate tickets for owners to close.
 
 ### 14.8 Disable switch
 
 Automation has a global disable flag the SOC can request. Sam tests that flag on day one of the engagement.
 
-Disable switch is tested in rehearsal. Sam can turn off all ENG automation with one flag if the journey planner misbehaves. Disable-switch tests are Lab II items. Untested disables keep jobs dark.
-
-Lab I credit needs notebook, peer, plant, time box and synthetic-only as five gates that all must pass.
-
-Lab II must exercise the disable flag; paper-only switches leave the job off the Saturday list.
+With that one flag, Sam can turn off all ENG automation if the journey planner misbehaves. The disable test is a Lab II item, and the switch must be exercised end to end in rehearsal; a switch that exists only on paper keeps the job off the Saturday list. Testing it early means that, if it is ever needed during a live window, nobody is discovering for the first time whether it actually works.
 
 ### 14.9 14.x Field discipline
 
 Automation pull requests need a safety block: rate limits, kill switch, dry-run, and which ROE clause allows the job. Without that block, reviewers reject the PR. Sam added the template after a well-meaning script once ran outside the window because cron used UTC and the author thought in local time.
 
-Field discipline for automation is windowed, loop-aware, reviewed, disableable. Unattended cleverness is not a goal at NMT.
-
-Lab I builds muscle memory without putting riders in the blast radius of early technician mistakes.
-
-Windowed, loop-aware, reviewed and disableable — those four adjectives gate every ENG automation job.
+Field discipline for automation is windowed, loop-aware, reviewed, disableable. Unattended cleverness is not a goal at NMT. A job that fails any one of those four properties stays off the Saturday list until the gap is fixed and reviewed again by a peer.
 
 ### 14.10 14.y Closing note
 
@@ -1597,19 +1427,13 @@ Sam charts automation runtime per night. A job that suddenly takes ten times lon
 
 Closing note: automation multiplies good method cards and also multiplies mistakes. Sam ships jobs only after a manual ENG-512 proved the path.
 
-Troubleshooting asks approval status of a listener before debugging why lab_ports reported it as NOT APPROVED.
-
-Manual ENG-512 success is the prerequisite; automation multiplies mistakes if the path was never proven.
+In practice that means a job is automated only after a manual ENG-512 run has succeeded on the same path, with the method card, rate and evidence already reviewed. Automating an unproven path simply repeats an untested mistake on every scheduled run.
 
 ### 14.11 14.z Extra
 
 Caps include both retry count and wall-clock minutes. Sam's port-diff job dies after 20 minutes and pages him; a silent hang is treated like a failed stop switch.
 
-Extra practice: Sam writes a disable drill into every automation README. If the disable switch is untested, the job stays off the Saturday list. Every automation README includes a disable drill Sam has actually run. Paper switches do not count.
-
-Crashes log version pins and switch to known-good scripts instead of improvised flags invented under stress.
-
-Each automation README contains a disable drill Sam has actually executed on the jump host.
+As extra practice, Sam writes a disable drill into every automation README and actually runs it on the jump host before the job is scheduled. If the disable switch is untested, the job stays off the Saturday list, because a switch that has never been flipped gives no assurance at all. The README records when the drill was last run, so a reviewer can see that the switch was exercised recently.
 
 ### Worked example (synthetic NMT)
 
@@ -1654,101 +1478,49 @@ Dependencies also include map-tile CDNs and identity providers, and Sam lists th
 
 Testing the SMS vendor's core needs the vendor's authorization.
 
-Separate auth for vendors means NMT's signature never authorizes a fare processor's systems. Sam records third parties as out of scope explicitly. Fare processors need their own written auth; NMT's ROE never covers them. Third parties are explicit exclusions.
-
-Scope-changing workarounds wait for ROE text before any new host is touched during a stuck investigation.
-
-Fare processors appear as explicit exclusions; NMT's signature never authorizes another company's systems.
-
-Exclusion rows for processors quote the contract clause id next to the name.
+In the same way, NMT's signature never authorizes a fare processor's systems; those processors need their own written authorization. Sam records such third parties as explicit exclusions in the scope table, and each exclusion row quotes the contract clause id next to the processor's name. An explicit row prevents later argument about whether a vendor endpoint was implicitly covered just because NMT traffic happens to reach it. When a vendor wants its own systems tested, it arranges that authorization directly with its own security team.
 
 ### 15.3 NMT's side
 
 Sam can test how NMT handles vendor callbacks and secrets storage when those paths are in scope.
 
-NMT's side of a dependency finding is the config NMT controls — redirects, API keys stored at NMT, WAF rules. Vendor patch schedules are noted but not owned by Sam. NMT-side fixes are WAF rules, stored keys and redirects Sam's owners control. Vendor patch dates are notes, not Sam's tickets.
-
-Pair debugging cuts solo rabbit holes that burn past the troubleshoot time box without escalating.
-
-Sam's tickets target WAF rules, NMT-stored keys and redirects — vendor patch calendars are notes only.
+NMT's side of a dependency finding is the configuration NMT controls: redirects, API keys stored at NMT and WAF rules. Sam's tickets target those items, because NMT's owners can change them. Vendor patch schedules are recorded as notes in the finding, but they are not Sam's tickets and Sam does not own them. This keeps each remediation item assigned to someone who actually has the authority and access to make the fix.
 
 ### 15.4 Responsibility matrix
 
 Who patches what is written down so findings land on the right owner.
 
-Responsibility matrix names NMT owner versus vendor owner for each dependency. Tickets without that split bounce in review.
-
-Rider-facing journey planner errors stop ENG immediately before root-cause curiosity continues on the jump host.
-
-Every dependency ticket names an NMT owner column and a vendor owner column before review accepts it.
-
-Blank vendor-owner cells bounce at triage with a checklist comment.
-
-Triage bots comment need matrix when either owner cell is empty.
-
-Empty cells mean the ticket returns to the reporter before anyone assigns work.
+The responsibility matrix names an NMT owner and a vendor owner for every dependency. Each dependency ticket must fill both columns before review accepts it. When either owner cell is empty, the triage bot comments that the matrix is needed, and the ticket returns to the reporter before anyone assigns work. The split prevents findings from bouncing between NMT and a vendor while both sides assume the other is responsible for fixing them.
 
 ### 15.5 Breaks
 
 Vendor outages during tests are stops, not opportunities to try harder.
 
-Breaks in a CDN path are correlated with ENG-512 times before Sam claims causation. Clock sync and SOC notice prevent false blame. CDN breaks during ENG-512 need clock-aligned SOC notice before causation claims.
-
-Last week's pinned ok output is the known-good diff base before anyone blames the network team wrongly.
-
-Causation claims about CDN breaks wait on clock-aligned SOC notice matching the ENG window.
-
-ENG clock brackets are pasted into CDN incident notes before causation language.
+When a CDN path breaks during ENG-512, Sam does not claim causation until the break has been correlated with the engagement times. The ENG clock brackets are pasted into the CDN incident notes, and the claim waits for clock-aligned SOC notice that matches the window. Synchronised clocks and prior SOC notice protect both sides from false blame, whether the test caused the outage or merely happened to run while it began.
 
 ### 15.6 Contracts
 
 Security contact clauses in vendor contracts speed responsible disclosure.
 
-Contracts may forbid testing vendor systems. Sam reads the clause before proposing any vendor-facing check. Contract clauses forbidding vendor tests are pasted into the exclusion list. Sam reads before proposing.
-
-Thirty minutes stuck then escalate; ego that burns the Saturday window is named in the after-action note.
-
-Forbid-test clauses from contracts are pasted into the ROE exclusion list before any vendor proposal.
-
-Legal review initials appear beside pasted forbid-test clauses in the ROE appendix.
-
-Without legal initials the forbid-test paste is treated as incomplete ROE text.
+Contracts may also forbid testing vendor systems, so Sam reads the relevant clause before proposing any vendor-facing check. Forbid-test clauses are pasted into the ROE exclusion list, and legal review initials appear beside each pasted clause in the appendix. Without those initials the paste is treated as incomplete ROE text, because a misread clause could commit NMT to testing that the vendor contract does not allow. Any doubt about a clause goes back to legal before the proposal is drafted at all.
 
 ### 15.7 Callback authenticity
 
 When testing NMT's handling of vendor callbacks, Sam uses documented test harnesses, not forged traffic to production payment endpoints.
 
-Callback authenticity for vendor webhooks is verified with staging secrets, not production. Sam's tests never replay live rider callbacks. Webhook tests use staging secrets only. Live rider callbacks are never replayed.
-
-Troubleshooting field discipline lists tree, baseline, pair, time box and rider-stop as the required order.
-
-Webhook exercises use staging secrets exclusively; live rider callbacks are never replayed for demos.
-
-Staging secret IDs used for webhook tests are listed in the evidence index.
+Callback authenticity for vendor webhooks is verified with staging secrets only, never production secrets. Sam's tests never replay live rider callbacks, not even for a demonstration. The staging secret IDs used in each webhook test are listed in the evidence index, so a reviewer can confirm which credentials were exercised and that no production secret or rider data entered the test at any point.
 
 ### 15.8 Secret scanning scope
 
 Secret scans run on NMT-owned repos listed in the ROE, not on every public fork on the Internet.
 
-Secret scanning scope stays inside NMT repos authorized for ENG-512. Scanning a vendor's public GitHub without written leave is out of scope.
-
-Unsolved plants still yield to fare alerts because safety outranks lab completion every time.
-
-Secret scanning stays inside authorized NMT repositories; vendor GitHub fishing remains out of scope.
-
-Scope text for secret scanning names repository paths, not the whole internet.
-
-Path allow lists for scanners are reviewed when new NMT repos appear.
+Secret scanning scope stays inside the NMT repositories authorized for ENG-512, and the scope text names repository paths rather than the whole internet. Scanning a vendor's public GitHub without written leave is out of scope, however tempting a quick search may be. The path allow list for the scanners is reviewed whenever new NMT repositories appear, so coverage grows only through a recorded scope decision.
 
 ### 15.9 15.x Field discipline
 
 Sam's dependency map includes a "data shared" column: what NMT sends to each vendor. If NMT should not send rider phone numbers to the map tile provider, that becomes both a privacy control and a test check: inspect outbound requests for unexpected fields during authorized staging tests.
 
-Field discipline for dependencies is matrix, separate auth, NMT-side fixes first. Fare vendors stay out of ordinary probes.
-
-Automation only repeats weekly inventory and hash paths already proven manually on a prior ENG-512.
-
-Matrix, separate auth and NMT-side-first fixes are the dependency field discipline Sam teaches shadows.
+Field discipline for dependencies is matrix, separate auth, NMT-side fixes first. Fare vendors stay out of ordinary probes. The data-shared column ties these together, because it shows which vendor flows NMT can test on its own side and which belong to the vendor.
 
 ### 15.10 15.y Closing note
 
@@ -1756,11 +1528,7 @@ If a vendor asks Sam to "just quickly test" their portal using NMT credentials, 
 
 Closing note: dependency clarity keeps Sam from promising SWIFT-like coverage NMT never bought — here, fare-processor coverage it never authorized.
 
-Jobs must not continue after fare alert flags even if the inventory classify run is only half finished.
-
-Clear exclusions stop Sam from promising fare-processor coverage Northline never purchased or authorized.
-
-Closing dependency work restates what NMT did not authorize vendors to undergo.
+The dependency chapter therefore ends where the scope table does: by stating plainly which vendor systems NMT did not authorize for testing. Sam repeats that list in the report, so readers do not assume fare-processor coverage that Northline Municipal Transit never purchased.
 
 ### Worked example (synthetic NMT)
 
@@ -1799,51 +1567,25 @@ You will (1) write runbooks for authorized checks; (2) keep safety warnings visi
 
 Step-by-step for each recurring check, with ROE references and stop conditions at the top in bold.
 
-Runbooks for ENG-512 list kickoff, method cards, stop messages and cleanup. Sam links the runbook hash in the ticket so peers share one version.
-
-Overnight freestyle staging jobs violate change control and are disabled when found in the scheduler.
-
-ENG-512 tickets cite the runbook git hash so every peer works from the same kickoff and stop chapters.
-
-Peers paste the runbook hash into their own notebook at kickoff as a receipt.
+The ENG-512 runbook covers kickoff, method cards, stop messages and cleanup. Each ticket cites the runbook git hash, and every peer pastes the same hash into their notebook at kickoff as a receipt. That way everyone works from one version of the kickoff and stop chapters, and a later edit to the runbook cannot leave two technicians following different stop rules during the same Saturday window.
 
 ### 16.2 Safety warnings
 
 Do not run against production is the first line of the staging port-diff runbook.
 
-Safety warnings on the first page restate fare black and no freestyle scanning. Buried warnings fail review.
-
-Loop detectors copy ten-twelve halt behaviour when the agreed noise budget is exceeded by auth checks.
-
-Page one opens with fare black and no freestyle scanning; warnings buried on page nine fail audit.
-
-Audit samples open page one first; buried fare warnings fail that sample.
-
-Sample audits that find fare warnings only on late pages reopen the runbook ticket.
+Page one of every runbook states the safety warnings: the fare network is black and freestyle scanning is forbidden. Audit samples always open page one first, and a runbook whose fare warning appears only on a late page fails the sample and has its ticket reopened. Warnings buried on page nine do not protect anyone, because a technician working under time pressure reads the opening steps and rarely the appendix.
 
 ### 16.3 Versioning
 
 Documents show version, date and owner; old versions archived.
 
-Versioning of runbooks uses git tags. Sam will not follow a printed copy older than the tag named in the ROE. Git tags beat printed copies. Sam follows only the tag named in the ROE.
-
-Humans read NOT APPROVED lines for name mismatches before any auto-filing creates tickets for owners.
-
-Kickoff refuses printed copies older than the git tag named in the ROE.
-
-Kickoff checklist includes a git describe against the ROE-named tag.
-
-Mismatch between git describe and the ROE tag cancels kickoff until aligned.
+Runbook versions are tracked with git tags, and Sam will not follow a printed copy older than the tag named in the ROE. The kickoff checklist includes a git describe against that tag; if the output does not match, kickoff is cancelled until the copy is aligned. A printed page can be convenient at the desk, but only the tagged version is authoritative when a stop rule or contact has changed.
 
 ### 16.4 Retirement
 
 Methods that used retired tools are marked obsolete so newcomers do not follow them.
 
-Retirement removes cards that mention decommissioned hosts. Retired pages are archived, not left to confuse the next ENG window. Retired cards for dead hosts move to archive the week of decommission. Stale pages confuse the next window.
-
-New jobs need peer review and SOC notice the same way ROE changes need signatures before effect.
-
-Cards for decommissioned hosts move to archive the same week so stale checks cannot return next Saturday.
+Retirement also removes cards that mention decommissioned hosts. Those cards move to the archive in the same week that the host is decommissioned, so a stale check cannot return to the stack on the next Saturday. Leaving retired pages in the active library would confuse the next window, because a newcomer could follow a method aimed at a host that no longer exists or now belongs to someone else.
 
 ### 16.5 Audience
 
@@ -1855,75 +1597,37 @@ The readers are technicians and the SOC, not marketing, so each step is written 
 
 Runbooks reviewed every six months or after any stop incident.
 
-Review cadence is quarterly or after any architecture change. Missed reviews open a programme debt ticket. Quarterly review or post-architecture-change review opens debt tickets when missed.
-
-Untested disables keep jobs dark until Lab II checks the switch path from README to halt.
-
-Missed quarterly reviews — or skipped post-architecture reviews — open visible programme debt tickets.
-
-Debt tickets for missed reviews carry owners and due dates like any finding.
-
-CISO packs list open documentation debt beside technical findings.
+An architecture change also triggers a review, even when the six-month date is still some way off. A missed review opens a programme debt ticket that carries an owner and a due date like any finding, and the CISO pack lists open documentation debt beside the technical findings. Making the debt visible keeps outdated runbooks from drifting quietly until the next stop incident exposes them. Each review is logged with the runbook tag it produced, so readers can see when a page was last confirmed.
 
 ### 16.7 Screenshots in runbooks
 
 Runbooks prefer text steps over screenshots that rot when the UI changes. Where screenshots help, they are dated.
 
-Screenshots in runbooks are synthetic and redacted. Real rider screens never illustrate a procedure. Illustrations are synthetic redacted UI only. Real rider screens never teach procedures.
-
-Automation field discipline is windowed, loop-aware, reviewed and disableable without exception for clever jobs.
-
-Procedure figures use synthetic redacted UI only; real rider screens never teach a step.
-
-Course materials CI rejects PRs that add non-synthetic rider screenshots.
-
-Synthetic-only screenshot policy is enforced by the same CI that builds the book.
+All screenshots in runbooks are synthetic and redacted; real rider screens never illustrate a procedure. The same CI that builds the course materials rejects pull requests that add non-synthetic rider screenshots, so the policy does not depend on reviewers noticing. Synthetic figures still show the steps clearly, and they remove the risk that a training document becomes an accidental store of rider personal data.
 
 ### 16.8 Translation
 
 If a contractor shift speaks another language, critical stop warnings appear in both languages used on site.
 
-Translation of stop phrases into the SOC's preferred wording is agreed once and reused. Freelanced empathy in a stop message is not a control.
-
-Jobs ship only after a manual ENG-512 proved the path end to end with peers watching.
-
-SOC-preferred halt phrases are agreed once; freelanced soft wording is not treated as a control.
-
-Agreed halt phrases are versioned beside the ethics charter excerpt.
-
-Charter-adjacent versioning means halt phrase edits need the same owners as ethics text.
+The wording of stop phrases is agreed once with the SOC and then reused, rather than improvised during an incident. Freelanced empathy or softened wording in a stop message is not a control. The agreed halt phrases are versioned beside the ethics charter excerpt, so any edit to them needs the same owners as an edit to the ethics text and cannot slip in unnoticed between windows.
 
 ### 16.9 16.x Field discipline
 
 When a stop incident happens, Sam updates the runbook the same week or files a ticket why not. Documentation delayed until "after the busy period" is documentation that never happens. His managers accept shorter runbooks that are current over long ones that describe retired tools.
 
-Field discipline for documentation is versioned, warned, retired cleanly, synthetic screenshots. Sam's ENG-512 depends on the tagged runbook, not memory.
-
-Automation READMEs include disable drills Sam has actually run on the jump host during Lab II.
-
-Versioned, warned, cleanly retired and synthetic-illustrated — that is documentation field discipline at NMT.
+Field discipline for documentation is versioned, warned, retired cleanly, synthetic screenshots. Sam's ENG-512 depends on the tagged runbook, not memory. A runbook that cannot be followed without asking Sam is treated as unfinished, whatever its length or polish.
 
 ### 16.10 16.y Closing note
 
 Obsolete runbooks are moved to an /archive folder that CI checks no active link points to. Broken links to retired methods fail the documentation build.
 
-Closing note: documentation is how NMT survives Sam's holiday. A missing stop phrase in the runbook is a defect, not a style choice. Missing stop phrases are defects. Docs keep NMT safe when Sam is on leave.
-
-CDN timeouts need ENG-time correlation before anyone blames the journey planner API for a vendor blip.
-
-Deputies must find stop phrases without Sam; missing phrases are defects, not style choices.
+Documentation is how NMT survives Sam's holiday. A deputy must be able to find the stop phrases and the fare exclusion in the runbook without asking Sam, so a missing stop phrase is treated as a defect rather than a style choice. When the documents are complete and current, the programme can keep testing safely while the usual lead is on leave.
 
 ### 16.11 16.z Extra
 
 Sam prints the stop-conditions page of the active runbook and keeps it on the desk during windows — screens lock, paper still readable when seconds matter.
 
-Extra: Sam adds a one-page ENG-512 cheat sheet with emergency contacts and fare exclusion. The cheat sheet hangs beside the jump host and matches the ROE date.
-
-Fare processors need their own written auth listed in exclusions beside NMT signatures on the ROE.
-
-The taped jump-host cheat sheet mirrors ROE date, emergency contacts and fare exclusion on one page.
-
-Tape on the jump host is replaced whenever the ROE date rolls forward.
+As an extra, Sam keeps a one-page ENG-512 cheat sheet taped beside the jump host. It carries the ROE date, the emergency contacts and the fare exclusion, and it is replaced whenever the ROE date rolls forward. A sheet that matches the current ROE gives the technician the essential limits at a glance, without opening a document while a stop is in progress.
 
 ### Worked example (synthetic NMT)
 
@@ -1962,109 +1666,49 @@ You will (1) combine method cards with labs; (2) produce a mini retest report; (
 
 Create one method card; run lab_retest; write a one-page retest report.
 
-Lab II builds a mini ENG-512: inventory, lab_ports, hash evidence, stop drill, retest statuses. Pass requires planted NOT APPROVED found and a rehearsed stop message.
-
-NMT-side fixes are WAF rules, stored keys and redirects that NMT owners control without vendor tickets.
-
-Learners reuse the Lab I inventory with a fresh planted fault, so a remembered answer does not pass.
-
-Planted fault, hashes, stop drill and retest table are the Lab II deliverable set.
+Lab II builds a mini ENG-512 around that card: inventory, lab_ports, hashed evidence, a stop drill and retest statuses. Learners reuse the Lab I inventory with a fresh planted fault, so a remembered answer from the first lab does not pass. To pass, the learner must find the planted NOT APPROVED listener and deliver a rehearsed stop message, alongside the hashes and the retest table that make up the deliverable set.
 
 ### 17.2 Stop drill
 
 At a random time the supervisor calls stop; learner must post a compliant stop message within two minutes.
 
-Stop drill replays the 401 loop: halt, post ENG-512 stop with time, wait for guidance. Continuing for one more objective fails Lab II. Stop drill fails if Sam continues after the loop for one more objective. Halt and post first.
-
-Tickets without NMT-versus-vendor split bounce in review until the responsibility matrix cells are filled.
-
-Continuing for one more objective after the loop fails the stop drill; halt and post come first.
+The drill replays the 401 loop: halt, post the ENG-512 stop message with the time, and wait for guidance. A learner who continues after the loop to finish one more objective fails Lab II, however close that objective seemed. Halting and posting come first, because the habit being graded is stopping on cue, and a live engagement will not offer a convenient moment to wrap up the current task.
 
 ### 17.3 Evidence index
 
 Table of file, hash, finding id.
 
-Evidence index for Lab II lists every PNG and TXT with hash prefixes. MISMATCH handling must show two-person approval to update expected hashes.
-
-Clock-aligned SOC notice precedes CDN causation claims in after-action write-ups that examiners may read.
-
-Every Lab II artefact appears in the evidence index; MISMATCH rows show two-person hash handling.
-
-Index completeness is graded before any narrative prose in Lab II.
-
-Narrative chapters in Lab II earn zero points if the index is incomplete.
-
-Graders open the index first and only then read Lab II narrative pages.
+The Lab II evidence index lists every PNG and TXT file with its hash prefix. Any MISMATCH row must show two-person approval before the expected hash is updated. Graders open the index first and grade its completeness before reading any narrative, and narrative chapters earn zero points if the index is incomplete. The order reflects real casework, where a well-written story cannot rescue evidence whose integrity cannot be shown. Hash prefixes in the index must also match the files in the vault copy that the grader opens.
 
 ### 17.4 Peer challenge
 
 Peer tries to get you to attach a mismatched file; you refuse.
 
-Peer challenge tries to find a missing fare exclusion or empty emergency contact. Calm repair scores; defensiveness fails.
-
-Contract forbid-test clauses are pasted into exclusion lists before proposals for vendor checks are drafted.
-
-Challengers hunt empty emergency_contact or missing fare exclusion; calm repair scores, defensiveness fails.
-
-Defensive arguing during peer challenge loses points even if the artefact is later fixed.
-
-Score sheets separate artefact quality from tone during the challenge.
-
-Tone scores and artefact scores are separate columns on the challenge sheet.
+The peer challenge also hunts for a missing fare exclusion or an empty emergency contact. Calm repair of a gap scores well, while defensive arguing loses points even if the artefact is later fixed. The score sheet keeps tone and artefact quality in separate columns, so a learner who repairs the notebook gracefully is credited for both, and a correct artefact defended badly still shows the lost tone points.
 
 ### 17.5 Time box
 
 Two hours.
 
-Time box for Lab II is fixed on the course calendar. Overruns become notes, not silent extra minutes. Lab II clock is calendar-fixed. Overrun notes replace silent extra minutes.
-
-Webhook tests use staging secrets; live rider callbacks are never replayed for convenience or demos.
-
-The Lab II calendar clock is fixed; overruns become written notes instead of silent extra minutes.
-
-Calendar-fixed Lab II ends write notes titled overrun rather than hidden typing.
-
-Overrun notes list what remained unfinished when the calendar bell rang.
+The Lab II time box is fixed on the course calendar. When the calendar bell rings, typing stops, and any overrun is recorded as a written note titled overrun that lists what remained unfinished. Silent extra minutes are not allowed, because the lab is practising the discipline of a real engagement window, where work outside the agreed time is unauthorised regardless of how close the learner was to finishing. The overrun note is graded honestly, and an unfinished item listed there costs less than hidden extra work.
 
 ### 17.6 Pass bar
 
 Stop drill + refusal + coherent report.
 
-Pass bar: planted fault reported, stop drill clean, hashes MATCH or explained, peer check passed. Charm without those artefacts does not pass. Pass bar is plant reported, stop clean, hashes explained, peer passed — charm optional.
-
-Secret scanning stays inside authorized NMT repos and never wanders into vendor public GitHub without leave.
-
-Plant reported, stop clean, hashes explained, peer passed — charm without those artefacts does not pass.
-
-Charm is irrelevant when plant, stop, hashes or peer pass is missing.
-
-Missing any of the four artefacts fails Lab II even with perfect demeanour.
+In detail, the pass bar has four parts: the planted fault reported, the stop drill clean, every hash showing MATCH or an explained MISMATCH, and the peer check passed. Missing any one of the four fails Lab II, even with perfect demeanour. Charm and confident presentation do not substitute for those artefacts, because an examiner reviewing the portfolio later sees only the files, not how the learner sounded. Graders record which of the four failed, so the learner knows exactly what to repeat.
 
 ### 17.7 Stress without harm
 
 The stop drill is stressful on purpose; harming systems is not. Supervisors never plant production-impacting faults.
 
-Stress without harm means synthetic load only. No Lab II scenario touches real fare gear or rider production. Stress scenarios stay synthetic. Real fare gear is never a Lab II prop.
-
-Runbook hashes land in tickets so peers share one version during the entire ENG-512 window.
-
-Stress scenarios stay on synthetic data; real fare gear is never a Lab II prop.
-
-Prop lists for Lab II explicitly forbid fare hardware and production data.
+Stress without harm means synthetic load only. No Lab II scenario touches real fare equipment or rider production systems, and the prop list for the lab explicitly forbids fare hardware and production data. The pressure comes from the clock and the random stop call, not from any risk to real systems, so a learner's mistake under stress costs marks rather than service for riders.
 
 ### 17.8 After-action
 
 Each Lab II ends with three minutes of after-action: what almost went wrong, what to change in the runbook.
 
-After-action notes three improvements for the next ENG-512. Sam files them before sign-off or Lab II stays incomplete.
-
-Buried safety warnings fail audit; fare black must open page one of every runbook used on Saturday.
-
-Three improvement lines file before sign-off or Lab II remains incomplete on the roster.
-
-Improvement lines are ticketed before the supervisor will ink Lab II sign-off.
-
-Sign-off ink waits on three ticketed improvements linked from the Lab II report.
+The after-action produces three improvements for the next ENG-512. Each improvement is ticketed and linked from the Lab II report before sign-off, and the supervisor will not ink the sign-off until all three tickets exist. Without them, Lab II stays incomplete on the roster. Requiring tickets rather than spoken ideas means the lessons from a near miss actually reach the runbook instead of fading after the session.
 
 ### 17.9 17.x Field discipline
 
@@ -2080,23 +1724,13 @@ Sam's stop message in the drill uses the same template as production engagements
 
 Closing note: Lab II is the last gate before Sam's project. A failed stop drill blocks portfolio credit until rehearsed clean.
 
-Retired cards for dead hosts archive the same week as decommission so stale checks cannot return.
-
-A failed stop drill blocks project start until a clean rehearsal earns peer pass.
-
-Project repos stay locked until Lab II stop drill shows a clean peer pass.
+The block is enforced in practice: project repositories stay locked until the learner's stop drill shows a clean peer pass, so the gate cannot be skipped by starting the project early. A learner who fails the drill simply rehearses again until it is clean.
 
 ### 17.11 17.z Extra
 
 If the stop drill message is late, the lab fails even if the report is perfect. Speed of stopping is the skill being measured.
 
-Extra: Sam keeps the Lab II stop message text as a template in the runbook. Real ENG-512 stops copy the structure, not freestyle prose.
-
-Swagger marketing language is edited out of technician runbooks before they are published to the team.
-
-The Lab II halt sentence is copied into the runbook as the live ENG-512 stop template.
-
-Runbook PRs that update the live stop template require Lab II cohort sign-off.
+As an extra, Sam keeps the Lab II stop message text as a template in the runbook, and real ENG-512 stops copy its structure rather than freestyle prose. Because the template is now the live one, any pull request that changes it needs sign-off from the Lab II cohort. That keeps the rehearsed wording and the live wording identical, so the habit learned in the drill is the habit used on Saturday.
 
 ### Worked example (synthetic NMT)
 
@@ -2137,9 +1771,7 @@ Using only synthetic exports, produce: updated approved-port diff, two validated
 
 Project brief: deliver a scoped ENG-style pack for synthetic NMT — diagram, ROE checklist, lab_ports result, hashes, retest FIXED/STILL OPEN, stop drill record. No fare probes, no production data.
 
-Missed quarterly reviews open programme debt tickets visible in the CISO pack until closed.
-
-The project delivers diagram, ROE checklist, lab_ports, hashes, FIXED/STILL OPEN and stop record for synthetic NMT with fare untouched.
+The two lists describe the same pack from two angles: the deliverables above are what the supervisor grades, and the brief names the artefacts that must back them. Every item is built from the synthetic exports, with the fare network left untouched.
 
 ### 18.2 Presentation
 
@@ -2151,93 +1783,43 @@ Sam's presentation opens with the exclusions and the items still open, such as F
 
 Runbooks and scripts in the team repo with versions.
 
-Handover includes vault path, open items, and emergency contacts. Email alone is incomplete; a jump-host walkthrough is scheduled.
-
-SOC-preferred stop wording is agreed once and reused rather than freelanced differently each halt.
-
-Handover books a jump-host walkthrough plus vault path and open tickets; email alone fails transfer.
-
-Transfer checklists require the walkthrough calendar invite as an attachment.
-
-Invite attachments prove the walkthrough was scheduled, not merely promised.
-
-Promised walkthroughs without calendar proof fail the handover checklist.
+Handover also includes the vault path, the open items and the emergency contacts. Email alone is an incomplete transfer, so a jump-host walkthrough is scheduled, and the transfer checklist requires the calendar invite as an attachment to prove the walkthrough was booked rather than merely promised. A walkthrough lets the receiving technician see the tools running and ask questions before they own the work. The walkthrough also confirms that the receiver can open the vault path before Sam steps away.
 
 ### 18.4 Limits
 
 Sam still does not perform exploit development or threat-led scenario design — topics for longer courses.
 
-Limits page states fare out of scope, synthetic only, and no authority to test real systems. Hidden limits invent coverage.
-
-Documentation field discipline is versioned, warned, retired clean and synthetic in every illustration.
-
-Each limit points to the ROE line that sets it, so examiners can check that the page does not overstate authority.
-
-Plain examiner-facing limits language is reviewed by a peer before project submit.
-
-Peer-reviewed limits language is the first appendix examiners are told to read.
+The limits page states that the fare network is out of scope, that all work used synthetic data and that Sam has no authority to test real systems. Each limit points to the ROE line that sets it, so examiners can check that the page does not overstate authority. A peer reviews the limits wording before submission, and examiners are told to read that appendix first, because hidden limits invent coverage that never existed.
 
 ### 18.5 Next course
 
 AI security (066) is next in the curriculum path.
 
-Next course is the technologist book for design and integration depth. This technical book ends at procedural competence under ROE. Technologist course is next for design depth; this book stops at procedural ROE competence.
-
-Missing stop phrases are defects when Sam is on leave and deputies must halt without him.
-
-Design-heavy work waits for the technologist book; this course ends at procedural ROE competence.
-
-Sam tells finishers which habits transfer and which authority does not carry forward.
+Within the red team track itself, the next book is the technologist level, which adds design and integration depth. This technical book ends at procedural competence under an ROE, so design-heavy work waits for that course. Before finishers move on, Sam tells them which habits transfer directly, such as stop discipline and evidence hashing, and which authority does not carry forward to any new engagement. The AI security book named above follows later on the wider curriculum path.
 
 ### 18.6 Safety cover sheet
 
 Project cover states synthetic-only and no live scanning.
 
-Safety cover sheet restates staging first, fare black, stop conditions, and delete-within retention. It is page one of the project repo.
-
-Jump-host cheat sheets mirror ROE date, emergency contacts and fare exclusion on a single taped page.
-
-Repo page one is the safety cover: staging first, fare black, stop conditions, retention — before any code.
-
-Merges fail if safety cover is not the first file reviewers see in the tree.
-
-First-file checks in review bots reject trees whose safety cover is nested away.
+The safety cover sheet repeats the core rules: staging first, the fare network black, the stop conditions and the delete-within retention period. It is page one of the project repository, before any code. A review bot checks that it is the first file reviewers see in the tree, and merges fail if the cover is nested away, so nobody can read the scripts without first reading the limits that govern them. Graders check the cover before any other file in the submission.
 
 ### 18.7 Repository hygiene
 
 Project scripts land in the team repo without credentials, with README and license headers matching NMT policy.
 
-Repository hygiene: no secrets, synthetic inventories only, README with disable and stop instructions. A secret in git fails the project regardless of findings quality. Repo hygiene bans secrets and real inventories. README must show disable and stop instructions.
-
-Lab II pass needs planted NOT APPROVED found and a clean stop drill before any portfolio credit.
-
-Clones with secrets or real inventories fail; README must show disable and stop instructions up front.
+Repository hygiene bans secrets and real inventories; only synthetic inventories may be committed. A secret in git fails the project regardless of the quality of the findings, and so does a clone containing real inventory data. The README must show the disable and stop instructions up front, so anyone who runs the scripts later knows how to halt them before they know how to start them.
 
 ### 18.8 Feedback loop
 
 Supervisor feedback becomes two runbook edits within a week — project done means process improved.
 
-Feedback loop from supervisor comments becomes runbook patches the same week. Sam does not archive feedback unread.
-
-Continuing after the loop for one more objective fails Lab II with no partial-credit middle grade.
-
-Supervisor comments become runbook patches the same week; unread feedback archives are defects.
-
-Same-week patch links from feedback are pasted into the project handover note.
-
-Handover notes without same-week patch links are sent back incomplete.
-
-Incomplete handover notes bounce until patch links from feedback are present.
+Supervisor comments become runbook patches in the same week, and Sam never archives feedback unread. The links to those same-week patches are pasted into the project handover note. A handover note without them is sent back as incomplete until the links are present, which ensures that the feedback has visibly changed the process rather than being acknowledged and forgotten. The supervisor can then see each comment matched to the change it produced.
 
 ### 18.9 18.x Field discipline
 
 The supervised project cover sheet is single-page: synthetic-only declaration, engagement id of the classroom data pack, list of deliverables with hashes, supervisor signature, and Sam's statement of limits. Without the cover sheet the project is incomplete even if the technical work is excellent.
 
-Field discipline for the project is brief, limits, safety cover, clean repo, honest STILL OPEN. Those five are the pass bar.
-
-Lab II evidence indexes list every hash; MISMATCH rows must show two-person handling in the notes.
-
-Brief, limits, safety cover, clean repo and honest STILL OPEN form the project pass bar together.
+Field discipline for the project is brief, limits, safety cover, clean repo, honest STILL OPEN. Those five are the pass bar. A project that meets all five passes even when it reports open items, while a project missing one of them fails however polished its findings look.
 
 ### 18.10 18.y Closing note
 
@@ -2245,21 +1827,13 @@ After acceptance, Sam books a thirty-minute coaching session on OWASP WSTG acces
 
 Closing note: the project proves Sam can run ENG-512 habits without a teacher in the room. Portfolio credit needs artefacts, not intention. Portfolio credit needs artefacts proving solo ENG-512 habits — intention is not enough.
 
-Peer challenge hunts empty emergency contact; calm repair scores well and defensiveness fails the challenge.
-
-Portfolio credit needs solo ENG-512 artefacts; intention without files does not earn the mark.
+The artefacts are the evidence that those habits are real: a pack that shows the stop drill, the hashes and the honest retest statuses earns the mark, while a promise to work that way does not.
 
 ### 18.11 18.z Extra
 
 The SOC observer's question is usually about detection: Sam prepares one ATT&CK technique and one log source he would recommend for each finding.
 
-Extra: Sam attaches lab_ports and lab_hash outputs verbatim in an appendix. Examiners should reproduce MATCH/MISMATCH and NOT APPROVED lines without asking him.
-
-Lab II overruns become notes, not silent extra minutes past the calendar clock printed for the cohort.
-
-Appendices paste lab_ports and lab_hash verbatim so examiners reproduce NOT APPROVED and MATCH/MISMATCH alone.
-
-Verbatim lab appendices let examiners diff MATCH/MISMATCH without a meeting.
+As an extra, Sam attaches the lab_ports and lab_hash outputs verbatim in an appendix. Examiners can then reproduce the NOT APPROVED, MATCH and MISMATCH lines on their own and diff them against the findings, without needing a meeting to ask how a result was produced. Verbatim output also prevents a summary from quietly softening a result that the tools reported more starkly.
 
 ### Worked example (synthetic NMT)
 
