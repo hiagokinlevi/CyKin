@@ -3053,29 +3053,43 @@ You will (1) design detections and pipelines that remain maintainable; (2) manag
 
 Every rule, parser and integration costs time to maintain. A SOC with 400 rules nobody understands is weaker than one with 150 well-kept rules.
 
+Each rule needs someone to check that its data source still exists, that its fields have not been renamed and that its threshold still suits current traffic. Multiply that by hundreds and a small team cannot keep up, so rules decay quietly. Fewer, better-understood rules mean each gets attention, analysts trust what fires, and gaps are easier to see when the set is reviewed against the threat analysis.
+
 ### 39.2 Rule lifecycle
 
 Rules move through proposed, testing, monitor-only, active, under review and retired. Each state has entry criteria. Rules that never fire or never lead to action are reviewed for retirement.
+
+Entry criteria stop rules from skipping steps: a rule cannot become active without a passing test and a week in monitor-only mode with acceptable results. 'Under review' is a holding state for rules whose data source changed or whose precision fell. A rule that has not fired in a year may be protecting against something rare, so retirement needs a reason, not just silence, and is approved by Paolo.
 
 ### 39.3 Readable rules
 
 Clear names, comments explaining intent, and references to the requirement and ATT&CK technique let others maintain rules when the author leaves.
 
+A rule named 'portal_burst_v3_final' tells a maintainer little; 'portal possible takeover: failures then success from one network' tells them what it is for. Comments explain choices, such as why the window is ten minutes. References link the rule to R-07 and the relevant technique, so a reviewer can judge whether a proposed change still serves the original need.
+
 ### 39.4 Shared components
 
 Common logic, such as "is this address in a depot subnet?", lives in one shared lookup rather than copied into twenty rules, so a change happens in one place.
+
+If twenty rules each contain their own list of depot subnets, adding a new depot means editing twenty files, and one will be missed. A shared lookup fed from the asset inventory updates every rule at once. Shared components need tests and an owner of their own, since a mistake there affects every rule that uses them.
 
 ### 39.5 Toil
 
 Toil is repetitive manual work that scales with load: restarting a stuck collector by hand, copying alert fields into tickets. Engineers automate toil to free analysts.
 
+Toil grows with the business: more depots mean more collectors to restart, more alerts mean more fields to copy. It also wears people down and invites mistakes. Amara measures how many minutes a week analysts spend copying alert fields into tickets and finds it is over three hours. Automating the copy is a small engineering task with a clear return.
+
 ### 39.6 Documentation
 
 Runbooks, architecture records and rule notes are kept beside the code and reviewed with changes.
 
+Documentation kept elsewhere drifts away from what the code actually does. Keeping it beside the code means a reviewer sees both together and can ask why a runbook was not updated when the rule changed. Review checklists include a documentation line, so changes without updated notes are sent back. Runbooks are tested by someone other than their author at least once a year: they follow the steps on a test system and note anything unclear or out of date.
+
 ### 39.7 Knowledge transfer
 
 Before Amara's placement ends, she runs a handover session and pairs Paolo's next junior with her on two rules.
+
+A handover session explains how the depot logging works, where its weak points are and which decisions are still open. Pairing on real rules teaches more than reading notes, because the junior asks questions as problems arise. Amara records the session and updates the runbooks with every question the junior asked that the documentation did not answer. Paolo attends the session and signs off the handover list.
 
 ### Dependency tracking
 
@@ -3117,9 +3131,13 @@ You will (1) verify an end-to-end requirement under varied conditions; (2) analy
 
 Laboratory II verifies requirement R-07 — possible-takeover alert acknowledged within 15 minutes — not just in quiet conditions but during busy periods, at night and at shift handover.
 
+Quiet-condition tests from the first laboratory showed the rule works; they did not show the whole response chain meets its time target when conditions are difficult. Busy periods slow pipelines and distract analysts; nights have fewer staff; handovers split attention. Testing the requirement under those conditions shows whether it holds when it matters most. Each condition gets its own run.
+
 ### 40.2 Method
 
 Five timed synthetic injections run in production under a test customer account, with analysts aware a test may happen but not when. Times are captured at ingestion, detection and acknowledgement.
+
+Running in production is necessary because the laboratory cannot reproduce real load or real analyst behaviour. A reserved test account keeps the injections away from real customers. Telling analysts a test may happen, without saying when, respects them while keeping their behaviour natural. Timestamps at each stage let the team see where any delay occurred.
 
 ### Lab — timing five runs
 
@@ -3151,17 +3169,25 @@ R5 handover  ingest= 110s detect= 220s ack= 680s total= 16.8 min FAIL
 
 Three runs pass (11.5, 10.2 and 13.7 minutes). The busy-period run fails at 19.7 minutes: ingestion slowed to 240 seconds and acknowledgement took 660 seconds. The handover run fails at 16.8 minutes, almost entirely from slow acknowledgement.
 
+The total for the busy run, 19.7 minutes, breaks down into four minutes of ingestion, about five minutes of detection and eleven of acknowledgement. Both slow stages exceeded their budgets. The handover failure is a single-stage problem: the pipeline was fine, but nobody picked up the alert quickly while shifts changed over.
+
 ### 40.4 Stage analysis
 
 Detection time stays near 200–280 seconds in all runs. The failures come from ingestion under load and from analyst acknowledgement under load or handover.
+
+Stable detection times mean the rule itself is not the problem; effort spent making it faster would not fix the failures. Ingestion slows under load because portal logs compete with everything else in the queue. Acknowledgement slows when analysts are busy or changing shifts. Separating stages makes the right fixes obvious. Amara plots each run as a stacked bar, one segment per stage, which makes the pattern visible at a glance.
 
 ### 40.5 Fixes
 
 Ingestion: raise the priority of portal logs in the pipeline queue. Acknowledgement: page the possible-takeover alert to a dedicated device rather than the shared queue, and keep the 15-minute handover overlap.
 
+Raising priority for portal logs means they move ahead of bulk logs when the pipeline is busy. A dedicated paging device for takeover alerts makes them stand out from the general queue, so they are not lost among routine work. Keeping the handover overlap gives the incoming analyst time to pick up urgent alerts.
+
 ### 40.6 Re-verification
 
 After fixes, two further busy and handover runs pass at 12.9 and 13.4 minutes.
+
+Re-running the conditions that failed is essential; passing quiet-condition tests again would prove nothing new. Both new results fall comfortably under fifteen minutes. Two runs are still a small sample, so the timed injections continue monthly, and the results feed the requirement's verification record. If a later monthly run fails, the same stage analysis is repeated before any fix is chosen. A new failure in a stage that passed before suggests something changed, such as higher volume or a new shift pattern, and that change is investigated first.
 
 ### Test hygiene in production
 
@@ -3203,29 +3229,43 @@ You will (1) optimise SOC performance across detection quality, speed and cost; 
 
 The SOC balances detection quality, time to respond, analyst load and cost. Improving one can harm another: cheaper storage slows investigations; more rules raise load.
 
+Optimising one measure in isolation can make the SOC worse overall. A team that only cut cost might move all logs to slow storage and lose hours in each investigation. Naming the four measures together keeps trade-offs visible, and proposals must state their expected effect on each. Amara writes the four measures at the top of every optimisation proposal, with current values, so readers can see what is at stake.
+
 ### 41.2 Finding bottlenecks
 
 Laboratory II showed acknowledgement, not detection, limited response time. Optimising rule speed further would have changed nothing. Optimisation starts at the bottleneck.
+
+In any chain, the slowest stage limits the whole. The rule took about four minutes; acknowledgement took up to eleven. Halving rule time would save two minutes at best, while fixing acknowledgement saved far more. Measuring each stage before optimising avoids spending effort where it cannot help. Amara compares the stage times side by side in one table before suggesting any change, and she circles the slowest stage in each run.
 
 ### 41.3 Data-driven targets
 
 Amara ranks candidate improvements by expected effect on the 90th-percentile response time and analyst minutes per day, using measured data from earlier chapters.
 
+Ranking by expected effect uses numbers already gathered: stage times from the laboratory, alert volumes from the night-load study and handling times from triage records. Each candidate gets an estimate with its assumptions. The ranking guides where to start, and actual results later show how good the estimates were. Paolo reviews the assumptions before work starts on any of them.
+
 ### 41.4 Local versus global
 
 Moving rules to a morning queue optimised night load but could slow response to those alerts. The team tracks the moved rules' outcomes to make sure the global effect is positive.
+
+A change can look good in its own area while causing harm elsewhere. Moving rules to the morning lightened the night, but if one of those rules ever caught a real attack at night, the delay could matter. Tracking outcomes of the moved rules checks that the overall result is still positive.
 
 ### 41.5 Automation priorities
 
 Automated enrichment saved two minutes per alert; automating customer phone lookup saves another minute for takeover alerts. Small savings on frequent tasks add up.
 
+A minute saved on an alert that occurs twice a month barely matters; a minute saved on one that occurs fifty times a day adds up to hours each week. Phone lookup for takeover alerts is frequent and repetitive, so automating it is worth the effort. Amara lists candidates by frequency times time saved. Phone lookup goes first.
+
 ### 41.6 Post-deployment review
 
 Each optimisation is reviewed after a month: did the metric move, and did anything else get worse?
 
+A month gives enough data to see whether the targeted metric moved. Checking other metrics catches side effects, such as faster acknowledgement but more errors in closure reasons. If the change did not help, it is rolled back or adjusted rather than kept because it was planned. The review is a short written note with the before-and-after figures, signed off by Paolo. Notes for changes that were rolled back are kept too, since they record what did not work and stop the same idea being retried without new evidence.
+
 ### 41.7 Diminishing returns
 
 After the main bottlenecks are fixed, further gains cost more; at some point, effort is better spent on validation gaps.
+
+The first fixes remove large, obvious delays; later ones chase seconds at rising cost. Once response time is well within target, effort may do more good closing a technique that currently leaves no trace. Choosing when to stop optimising is itself an engineering decision, made with data. Amara proposes a simple rule: once the 90th percentile sits well inside target for three months, optimisation pauses and validation gaps take priority.
 
 ### Cost optimisation
 
@@ -3267,29 +3307,43 @@ You will (1) frame an engineering research question from SOC data; (2) review re
 
 Engineers often need evidence their organisation lacks. Applied research answers a local question with a careful method, borrowing ideas from published studies.
 
+Published studies rarely match a particular SOC's data, tools and customers. Applied research asks a narrow question that matters locally, uses data the organisation already holds and states its limits honestly. Borrowing methods from published work, such as how to label alerts or measure outcomes, gives the local study a stronger foundation. Results are written up so others can check them.
+
 ### 42.2 The question
 
 Amara asks: "Does adding device continuity (same device as usual) to takeover alerts reduce false escalations without missing real takeovers?" It comes from her queue day in chapter 37.
+
+During her queue days, Amara noticed that many takeover alerts turned out to be customers logging in from their usual phone after mistyping passwords. Device continuity, whether the device matches the customer's history, might separate these from real takeovers. Framing the question with both benefits and risks keeps the study balanced. She writes the question down first.
 
 ### 42.3 Literature
 
 Alahmadi et al. (2022) argue alarms should be contextual; Hassan et al. (2019) show context from provenance can rank alerts. Sommer and Paxson (2010) caution that patterns learned in one environment may not transfer.
 
+The literature supports the idea that context helps analysts judge alerts, which justifies testing device continuity. The caution about transfer matters too: results found at Lindqvist may not hold at another company, and patterns may shift over time even at Lindqvist. Amara uses these sources to frame her method and limits.
+
 ### 42.4 Method
 
 Amara labels three months of takeover alerts (82 in total) as real or benign using case outcomes, then checks how device continuity would have changed the decision. She pre-states her measure: escalations avoided and real takeovers that would have been de-prioritised.
+
+Stating the measure before looking at the data prevents choosing whichever result looks best afterwards. Case outcomes give labels grounded in investigation rather than guesses. Asking how device continuity would have changed each decision is a retrospective test, which avoids putting customers at risk while the idea is evaluated.
 
 ### 42.5 Ethics
 
 The study uses existing case records; customer identifiers are removed before analysis, and the privacy officer approves the use.
 
+Even though the records already exist, using them for research is a new purpose that needs approval. Removing identifiers before analysis means Amara does not see which customer each alert concerned. The privacy officer checks that the purpose is legitimate and that results will be reported only in aggregate. The approval and its conditions are filed with the study, and the de-identified data set is deleted once the results have been reviewed.
+
 ### 42.6 Results
 
 Device continuity would have de-prioritised 29 of 70 benign alerts and 1 of 12 real takeovers. The missed case involved a customer whose phone had been stolen.
 
+De-prioritising 29 of 70 benign alerts would save real analyst time. Missing one of twelve real takeovers is a serious cost, because that customer suffered harm. The stolen-phone case shows the weakness: an attacker using the victim's own device looks continuous by design. The result shows why a single signal should not decide alone. Amara reports both counts together so neither the saving nor the miss is hidden.
+
 ### 42.7 Decision
 
 The team adds device continuity as information on the alert, not as an automatic de-prioritiser, and logs analyst decisions for review.
+
+Showing device continuity as information lets analysts use it while still judging each case, so the stolen-phone pattern would not be automatically dismissed. Logging their decisions creates new data to check later whether analysts use the field well. The team can revisit automation if more evidence accumulates. A review after three months will check whether analysts use the field well and whether any real takeover was wrongly set aside.
 
 ### Sharing results
 
@@ -3331,29 +3385,43 @@ You will (1) work in a professional SOC setting under supervision; (2) apply pro
 
 Amara's final-year practice period is a full-time term in Lindqvist's SOC, supervised by Paolo with learning goals agreed with her university tutor.
 
+A full-time term lets Amara work on projects long enough to see them through, rather than observing from the side. Learning goals agreed with her tutor ensure the placement serves her education as well as Lindqvist's needs. Paolo's supervision gives her someone accountable for her work and her development. Halfway through, the tutor visits to check progress against the goals and to hear from Paolo how the placement is going.
+
 ### 43.2 Conduct
 
 She signs confidentiality terms, follows access rules and never takes data off company systems. Coursework uses only synthetic or approved anonymised material.
+
+Real customer and company data are confidential, and a student moving between university and workplace is a possible leak point. Keeping data on company systems removes that risk. Using only synthetic or approved anonymised material for coursework lets her write about her work without exposing anything sensitive. Breaking these rules would end the placement and could carry legal consequences, which the induction explains plainly.
 
 ### 43.3 Contributions
 
 Her goals: deliver the depot logging project, maintain three rules, spend one day per week in the queue and write two runbooks.
 
+The goals mix project delivery, ongoing maintenance, operational exposure and documentation, so she sees several sides of SOC engineering. Each is concrete enough to check at the end: the project delivered or not, the rules maintained or not. Paolo and the tutor agree them at the start. Progress against each goal is noted at every weekly meeting, so slippage shows up early and can be discussed while there is still time to adjust.
+
 ### 43.4 Supervision
 
 Weekly meetings review progress, problems and learning. Paolo signs off production changes.
+
+Weekly meetings catch problems early, before they derail a project. Discussing learning, not just tasks, keeps the placement educational. Requiring Paolo's sign-off on production changes protects Lindqvist and Amara alike: a mistake by a student is caught before it affects customers. Meeting notes are kept, and actions from one week are checked at the start of the next. Amara brings an agenda; Paolo adds topics he wants to raise, such as feedback from analysts on her rules. The notes later support her placement report.
 
 ### 43.5 Professional relationships
 
 Working with IT operations, customer service and depot managers teaches negotiation: depot managers care about dispatch, not detections, so she frames requests in their terms.
 
+Framing requests in terms others care about makes cooperation easier. Asking a depot manager to accept a logging change for better detections may get a shrug; explaining that it helps keep dispatch running safely gets attention. Amara learns to listen first to what each group needs. She also learns to put agreements in writing after meetings, so everyone remembers the same commitments.
+
 ### 43.6 Reflection
 
 A weekly journal records what happened, what she learned and what she would change. The tutor reviews it.
 
+Writing weekly turns experience into learning. Recording what she would change makes her think about alternatives while the details are fresh. The tutor's comments point out patterns she might miss, such as underestimating how long reviews take. Entries are short, often half a page. Over the term the journal shows how her judgement changed, which becomes evidence in her placement report. She also notes moments when she was unsure what to do and how she decided.
+
 ### 43.7 Public-service angle
 
 Lindqvist shares anonymised indicators of credential stuffing with a sector information-sharing group, a practice Knerler, Parker and Zimmerman (2022) encourage. Amara prepares one submission under supervision.
+
+Sharing indicators helps other firms block the same credential-stuffing sources and spot similar patterns. Anonymising protects Lindqvist's customers. Preparing a submission under supervision teaches what can and cannot be shared, and how to describe indicators so others can use them. The submission is checked by Paolo and the privacy officer before sending. She learns that indicators age quickly, so each one carries a first-seen and last-seen date.
 
 ### Learning agreement
 
@@ -3395,29 +3463,43 @@ You will (1) define a capstone project with scope, requirements and plan; (2) ju
 
 Amara's capstone closes the depot gap found in validation: "Detect remote logons from depot networks to domain controllers within 15 minutes, with no more than 5 false alerts per week."
 
+Choosing a gap found by validation means the capstone addresses a real, evidenced weakness rather than a topic picked for interest alone. The requirement states the behaviour, the time limit and the acceptable noise, so success can be measured objectively at the end. Her tutor and Paolo approve the choice before work begins.
+
 ### 44.2 Evidence for the need
 
 Two simulated techniques left no trace in depot networks (chapter 38); the threat analysis ranks depot-to-domain-controller movement high (chapter 23).
+
+Two sources point to the same gap: simulations showed the SOC was blind there, and the threat analysis ranked the risk highly. Together they justify the effort. A capstone resting on a single weak signal would be harder to defend to the panel. Amara cites both in the capstone proposal, quoting the exact simulation outcomes and the risk ranking, so assessors can trace the motivation to evidence rather than to her own preference.
 
 ### 44.3 Scope
 
 In: allowed-connection logging at the depot boundary for domain-controller ports; enrichment; one detection; playbook. Out: agents on depot devices; changes to depot applications.
 
+Stating what is out matters as much as what is in. Agents on depot devices are excluded because the old software cannot host them; application changes are excluded because they belong to other teams. A tight scope makes twelve weeks realistic and keeps the project focused on the logging and detection that close the gap. Any request to widen the scope goes through the change log.
+
 ### 44.4 Requirements
 
 Functional: log allowed depot-to-DC connections; alert on interactive logons from depot devices not on the approved list. Non-functional: 15-minute latency; completeness 99.9%; ≤5 false alerts per week.
+
+Each requirement can be tested: logs either arrive or not, alerts either fire for unapproved devices or not, times and rates can be measured. The approved list is the key design element, since it decides which logons count as suspicious, and it needs an owner to keep it current. Each requirement has an identifier and appears in a traceability table, linked to its source and its planned test.
 
 ### 44.5 Plan
 
 Weeks 1–3 design and review; 4–6 build in test; 7–8 pilot at three depots; 9–10 rollout; 11–12 verification, validation and report.
 
+Three weeks of design and review give time to catch problems before building. Building in the test environment avoids disrupting depots. A three-depot pilot tests real conditions on a small scale. Two weeks of rollout and two of evaluation complete the cycle, with the report at the end. Fortnightly reviews with Paolo check progress against these dates. If the pilot slips by more than a week, rollout is shortened rather than evaluation, because evaluation produces the evidence the capstone depends on.
+
 ### 44.6 Verification and validation plan
 
 Unit tests for logic, pipeline tests, timed synthetic logons, and a purple-team re-test of the two missed techniques.
 
+Unit and pipeline tests verify the build; timed synthetic logons verify the latency requirement. Re-testing the two missed techniques with the purple team validates that the gap is actually closed, which is the point of the project. Each test has expected results written before it runs, so outcomes are judged against criteria rather than impressions. The purple-team re-test uses the same technique descriptions as the original validation, making the before-and-after comparison fair.
+
 ### 44.7 Risks
 
 Log volume could exceed estimates; depot changes could disrupt dispatch. Mitigations: volume estimate from a one-day capture; pilots and change windows.
+
+A one-day capture gives a real measurement of log volume before committing to the design, rather than relying on guesses. Pilots and change windows reduce the chance of disrupting dispatch. Each risk has an owner and a trigger for action if it begins to materialise. The risk list is reviewed at each fortnightly meeting with Paolo. New risks are added as they appear.
 
 ### Stakeholder map
 
