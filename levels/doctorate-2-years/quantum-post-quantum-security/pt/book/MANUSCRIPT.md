@@ -455,7 +455,7 @@ canonical uses found:   2  -> recall 0.67
 
 Uma "revocação" acima de 1 é o sinal mais claro possível de um erro de unidade, mas uma inflação mais sutil — digamos, de 0,61 para 0,97 — parece plausível e sobrevive à revisão, a menos que a unidade de contagem seja declarada. O uso de SSH ausente em `srv-040` também ilustra o modelo de observador: o sensor de TLS não consegue encontrá-lo.
 
-O laboratório separa duas verificações fáceis de confundir. Os testes unitários mostram que o classificador mapeia corretamente os codepoints conhecidos, incluindo um desconhecido. A etapa de contagem mostra como o mesmo servidor, com quatro nomes e endereços, pode inflar a revocação. Mantenha as duas no conjunto de testes do instrumento e execute-as antes de cada coleta, registrando a data de obtenção do registro da IANA ao lado dos resultados.
+O laboratório separa duas verificações fáceis de confundir. Os testes unitários mostram que o classificador mapeia corretamente os codepoints conhecidos, incluindo um desconhecido. A etapa de contagem mostra como o mesmo servidor, registrado repetidas vezes e com dois nomes, pode inflar a revocação. Mantenha as duas no conjunto de testes do instrumento e execute-as antes de cada coleta, registrando a data de obtenção do registro da IANA ao lado dos resultados.
 
 ### 4.5 Ajustar sem vazamento
 
