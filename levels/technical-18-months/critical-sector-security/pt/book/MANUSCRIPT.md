@@ -1,7 +1,7 @@
 # Infraestrutura Crítica e Segurança Setorial: Prática Técnica Aplicada
 
 - Idioma: português do Brasil (`pt`); curso técnico, dezoito meses; aproximadamente 1.200 horas de estudo planejado (curso 069 de 207 da [trilha de estudo](../../../../../STUDY_PATH.md)). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–10 de 18 já estão escritos em português, com os exercícios EX001–EX040 e suas resoluções; os capítulos 11–18 (EX041–EX072) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–14 de 18 já estão escritos em português, com os exercícios EX001–EX056 e suas resoluções; os capítulos 15–18 (EX057–EX072) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: operadores técnicos — técnicos de redes e de sistemas, técnicos de SCADA e de telemetria, analistas de segurança júnior em centros de operações — que já conhecem redes, sistemas operacionais e scripts básicos e agora trabalham em sistemas que movem água, energia ou o ar dos pacientes. Conhecimento de entrada: redes, sistemas operacionais, scripts e prática segura de laboratório.
 - Como este curso difere dos vizinhos. O [livro de tecnólogo](../../../../technologist-3-years/critical-sector-security/en/book/MANUSCRIPT.md) ensina implementadores a construir, operar e entregar um serviço monitorado completo. Os cursos [profissional](../../../../professional-6-months/critical-sector-security/en/book/MANUSCRIPT.md) e [rápido](../../../../rapid-1-month/critical-sector-security/en/book/MANUSCRIPT.md) tratam de decisões gerenciais e de uma primeira introdução. **Este livro técnico trata da profundidade técnica prática**: abrir os pacotes dos protocolos industriais, auditar e endurecer hosts, configurar e verificar firewalls de conduítes, detectar modos de falha e comandos não autorizados, resolver problemas eliminando hipóteses e produzir evidências que outro técnico possa conferir. Todo capítulo pergunta: *o que exatamente você digitaria, leria, mudaria ou testaria, e como provaria isso?*
 - Autoria e responsabilidade editorial: [hiagokinlevi](https://github.com/hiagokinlevi). O texto didático original, de titularidade do mantenedor, é dedicado sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus próprios direitos e não são relicenciadas aqui.
@@ -58,8 +58,12 @@ Toda afirmação factual sobre um protocolo, uma norma, um incidente público ou
 8. [Infraestrutura crítica e segurança setorial: modos de falha](#ch-08) — lacunas, valores travados, picos e regras explicáveis.
 9. [Infraestrutura crítica e segurança setorial: ferramentas e métodos](#ch-09) — escolha de método, validação de ferramentas e o CRC do DNP3.
 10. [Infraestrutura crítica e segurança setorial: configuração de controles](#ch-10) — políticas de primeira correspondência, sombreamento e acesso de fornecedores.
+11. [Infraestrutura crítica e segurança setorial: verificação](#ch-11) — testes positivos e negativos rastreáveis.
+12. [Laboratório contido I](#ch-12) — um respondedor Modbus com política de escrita e respostas de exceção.
+13. [Infraestrutura crítica e segurança setorial: resolução de problemas](#ch-13) — hipóteses, previsões, eliminação e escalonamento.
+14. [Infraestrutura crítica e segurança setorial: automação](#ch-14) — detecção de deriva baseada em hash e automação segura.
 
-Capítulos 11–18: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-11), até a chegada dos próximos lotes.
+Capítulos 15–18: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-15), até a chegada dos próximos lotes.
 
 Apêndices: [Resoluções e notas de avaliação](#worked-results) · [Glossário](#glossary) · [Referências](#references).
 
@@ -1373,7 +1377,566 @@ Um conjunto de regras de firewall é um programa de primeira correspondência, e
 <!-- cyberabc:chapter-navigation:start ch-10 -->
 ### Continue estudando — capítulo 10 de 18
 
-[← Capítulo 09](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 (inglês) →](../../en/book/MANUSCRIPT.md#ch-11)
+[← Capítulo 09](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Infraestrutura crítica e segurança setorial: verificação
+
+### Objetivos de aprendizagem e conexão
+
+Ao final deste capítulo, você deverá ser capaz de:
+
+- escrever requisitos como afirmações testáveis e vincular cada um a pelo menos um teste (**rastreabilidade**);
+- desenhar testes **positivos** (a função necessária continua funcionando) e testes **negativos** (a ação proibida falha) para toda mudança de controle;
+- recusar-se a contar um teste sem evidência e relatar os requisitos como verificados, falhos ou não testados;
+- verificar sem prejudicar o processo: testes pequenos, com escopo, em janelas combinadas.
+
+O Capítulo 10 mudou a configuração. Uma mudança não termina quando é aplicada; termina quando se mostra que os seus requisitos se sustentam. Este capítulo torna essa demonstração sistemática.
+
+### 11.1 Requisitos que podem ser testados
+
+"O historiador está endurecido" não pode ser testado. "O SSH no hist-02 escuta apenas em 10.90.0.21" pode. Escreva cada requisito de modo que um teste nomeado, executado por outra pessoa, possa reprová-lo. Divida os requisitos compostos: "apenas o servidor SCADA e a estação de engenharia alcançam tcp/502 das estações" precisa de um teste positivo (o SCADA continua varrendo) **e** de um teste negativo (outro host do centro de controle é recusado).
+
+Escreva cada requisito de modo que um teste nomeado possa reprová-lo. Divida os compostos: "apenas o servidor SCADA e a estação de engenharia podem alcançar tcp/502 das estações" precisa de uma varredura positiva a partir do servidor SCADA e de uma recusa negativa a partir de outro host do centro de controle. Ponha os identificadores dos requisitos no registro de mudança antes de o trabalho começar.
+
+### 11.2 Testes positivos e negativos
+
+Os **testes negativos** mostram que um controle bloqueia o que deveria; os **testes positivos** mostram que ele não bloqueia o que as operações precisam. Uma mudança de firewall que passa em todos os testes negativos, mas para a coleta do historiador, falhou. Em ambientes de controle, os testes positivos importam tanto quanto os negativos: a disponibilidade costuma ser a primeira prioridade. O guia de testes do NIST discute o planejamento e a execução de testes técnicos ([SP 800-115](https://csrc.nist.gov/pubs/sp/800/115/final)); as orientações de monitoramento contínuo enfatizam que a eficácia dos controles precisa ser demonstrada de novo ao longo do tempo, não presumida ([SP 800-137](https://csrc.nist.gov/pubs/sp/800/137/final)).
+
+### 11.3 Regras de evidência
+
+Um teste só conta se tiver: um identificador, o requisito que verifica, o método, o horário, a pessoa, o resultado e um arquivo de evidência (Capítulo 5). Uma "apenas revisão de configuração" sem saída registrada é uma atividade útil, mas não é resultado de teste. Um requisito sem nenhum teste contado está **não testado** — nem verificado, nem falho. Relatar o não testado como verificado é a forma mais comum de a verificação enganar.
+
+Uma revisão de configuração sem saída registrada é uma atividade útil, mas não um teste contado. O REQ-6 do Laboratório 11 continua não testado até que alguém produza uma linha de negação vinda do coletor; relatá-lo como verificado porque a regra existe esconderia a lacuna. Mantenha os arquivos de evidência ao lado dos identificadores dos testes no registro de verificação.
+
+### 11.4 Exemplo resolvido: verificar a CHG-2207 (sintético)
+
+A CHG-2207 endureceu o SSH no hist-02 e deveria fechar o acesso corporativo ao centro de controle no fw-01. O registro de verificação:
+
+**Laboratório 11** (salve como `lab11.py` e execute com `python3 lab11.py`):
+
+```python
+# Lab 11 - requirement-to-test traceability after a hardening change (offline, stdlib)
+# Synthetic verification record for change CHG-2207 on HIST-02 and fw-01, 2026-10-12.
+requirements = {
+ "REQ-1": "SSH listens only on management address 10.90.0.21",
+ "REQ-2": "Root cannot log in over SSH",
+ "REQ-3": "Corporate desks cannot reach control-centre RDP",
+ "REQ-4": "Only SCADA server and engineering workstation reach station tcp/502",
+ "REQ-5": "Historian still receives KW-01..KW-12 readings after change",
+ "REQ-6": "Firewall denies are logged to the collector",
+}
+tests = [  # test id, requirement, method, positive/negative, result, evidence
+ ("T1", "REQ-1", "listening-socket listing on host", "neg", "pass", "ss-output-0612.txt"),
+ ("T2", "REQ-1", "connect to 10.20.0.21:22 from jump host", "neg", "pass", "conn-0614.txt"),
+ ("T3", "REQ-2", "root login attempt from jump host", "neg", "pass", "auth-0615.log"),
+ ("T4", "REQ-3", "RDP connect from 10.30.3.7", "neg", "fail", "conn-0618.txt"),
+ ("T5", "REQ-4", "Modbus read from 10.20.0.12", "neg", "fail", "conn-0620.txt"),
+ ("T6", "REQ-4", "Modbus read from SCADA 10.20.0.10", "pos", "pass", "poll-0621.txt"),
+ ("T7", "REQ-5", "count stations reporting 06:30-06:40Z", "pos", "pass", "hist-count.csv"),
+ ("T8", "REQ-2", "config review only", "neg", "pass", ""),
+]
+status = {}
+for tid, req, method, kind, res, ev in tests:
+    if not ev: print(f"{tid} {req} ignored: no evidence file recorded ({method})"); continue
+    status.setdefault(req, []).append((tid, kind, res))
+for req, text in requirements.items():
+    rs = status.get(req, [])
+    if not rs: verdict = "UNTESTED"
+    elif any(r == "fail" for _, _, r in rs): verdict = "FAILED"
+    else: verdict = "verified"
+    kinds = "+".join(sorted({k for _, k, _ in rs})) or "-"
+    print(f"{req} {verdict:<9} tests={','.join(t for t, _, _ in rs) or '-':<6} kinds={kinds:<7} {text}")
+v = sum(1 for r in requirements if status.get(r) and all(x[2] == "pass" for x in status[r]))
+print(f"verified {v}/{len(requirements)}; the change is not complete until every requirement is verified")
+```
+
+Saída esperada (Python 3.13.5):
+
+```text
+T8 REQ-2 ignored: no evidence file recorded (config review only)
+REQ-1 verified  tests=T1,T2  kinds=neg     SSH listens only on management address 10.90.0.21
+REQ-2 verified  tests=T3     kinds=neg     Root cannot log in over SSH
+REQ-3 FAILED    tests=T4     kinds=neg     Corporate desks cannot reach control-centre RDP
+REQ-4 FAILED    tests=T5,T6  kinds=neg+pos Only SCADA server and engineering workstation reach station tcp/502
+REQ-5 verified  tests=T7     kinds=pos     Historian still receives KW-01..KW-12 readings after change
+REQ-6 UNTESTED  tests=-      kinds=-       Firewall denies are logged to the collector
+verified 3/6; the change is not complete until every requirement is verified
+```
+
+Três requisitos verificados, dois falhos, um não testado. O REQ-3 falhou porque a R4 foi deixada no lugar: o chamado dizia "consertar a regra de RDP", e o engenheiro corrigiu a R5, e não a regra que a sombreava — um padrão comum quando uma mudança é escrita como edição de linha, e não como requisito. O REQ-4 falhou no teste negativo (10.20.0.12 ainda consegue ler as estações, via R6), enquanto o teste positivo passou — exatamente por isso os dois tipos são necessários. O REQ-6 não tem teste algum; ninguém verificou se as negações chegam ao coletor, de modo que as detecções do Capítulo 17 ficariam cegas às tentativas negadas. O T8 foi ignorado porque não tem arquivo de evidência. A mudança volta para "em andamento" com três itens em aberto, cada um com um responsável.
+
+### 11.5 Verificação segura em redes de controle
+
+- Prefira ler resultados que o sistema já registra (logs de firewall, contagens do historiador) a gerar tráfego.
+- Ao gerar tráfego, use uma origem de teste identificada (por exemplo, 10.30.99.9), a menor ação possível (uma conexão TCP sem carga) e uma janela combinada, com as operações informadas.
+- Nunca verifique um bloqueio de escrita tentando escrever num controlador em produção; verifique-o com um teste de conexão e o log do firewall, ou frente a um dispositivo reserva num laboratório (Capítulo 12).
+- Pare ao primeiro comportamento inesperado.
+
+Prefira as contagens do historiador e os logs do firewall a gerar tráfego. Quando precisar gerar tráfego, use uma origem de teste identificada, como 10.30.99.9, uma conexão TCP sem carga Modbus e uma janela combinada, com as operações informadas. Nunca verifique um bloqueio de escrita escrevendo num controlador em produção.
+
+### 11.6 Atividade prática
+
+Escreva um teste para o REQ-6 que não toque em nenhuma estação: uma tentativa de conexão da mesa de testes identificada para uma porta do centro de controle que deveria ser negada, seguida de uma consulta ao coletor pela linha de negação correspondente em até 60 s. Acrescente-o ao Laboratório 11 como T9, com um nome de arquivo de evidência, e execute de novo.
+
+Use a mesa de testes identificada e depois consulte o coletor pela negação correspondente em até sessenta segundos. Acrescente o teste como T9, com um nome de arquivo de evidência, e execute de novo o Laboratório 11, para que o REQ-6 passe de não testado para verificado ou falho. Guarde o texto da consulta ao coletor no arquivo de evidência, para que o teste possa ser repetido.
+
+### 11.7 Erros comuns e limites
+
+- Apenas testes negativos; a mudança quebra as operações sem que ninguém perceba.
+- Contar um teste sem evidência.
+- Relatar "5 de 6 testes passaram" em vez da situação de cada requisito.
+- Verificar uma vez e presumir para sempre; verifique de novo depois de mudanças relacionadas.
+- O Laboratório 11 trata qualquer teste falho como requisito falho; um requisito também pode estar *parcialmente* verificado, se um teste cobrir só parte do seu escopo — diga isso com palavras.
+
+- Executar apenas testes negativos e não perceber que a coleta do historiador parou.
+- Contar um teste sem arquivo de evidência.
+- Relatar que cinco de seis testes passaram em vez da situação de cada requisito.
+- Verificar uma vez e nunca mais depois de uma mudança relacionada.
+
+### Exercícios — capítulo 11
+
+**EX041 — Torne testável.** *Objetivo:* reescrever requisitos. *Insumos:* "O acesso remoto é seguro", "O tempo está sincronizado", "Os logs são mantidos". *Passos:* reescrever cada um como um ou mais requisitos testáveis para o KVROC. *Evidência esperada:* requisitos reescritos, com uma ideia de teste para cada. *Rubrica:* 3 = afirmações específicas como "o acesso do fornecedor à SS-3 só é possível via jump-01, com MFA, durante uma janela habilitada", "todos os hosts da Z2 a menos de 1 s do ntp-ops", "os eventos de permissão e de negação do fw-01 chegam ao coletor em até 60 s e são retidos por 12 meses"; cada uma com um teste; 2 = um vago; 1 = reformulado; 0 = nada.
+
+**EX042 — Acrescente o teste que falta.** *Objetivo:* fechar um requisito não testado. *Insumos:* o Laboratório 11 e a atividade da 11.6. *Passos:* acrescentar o T9 para o REQ-6 com resultado pass e arquivo de evidência `collector-0630.txt`; executar. *Evidência esperada:* saída. *Rubrica:* 3 = REQ-6 verificado via T9, total "verified 4/6"; explica que o REQ-3 e o REQ-4 continuam impedindo a conclusão; 2 = apenas a saída; 1 = tentativa; 0 = nada.
+
+**EX043 — Testes positivos para uma mudança de firewall.** *Objetivo:* proteger a disponibilidade. *Insumos:* a correção do fw-01 do EX038. *Passos:* listar os testes positivos necessários antes de fechar a mudança. *Evidência esperada:* lista com método e evidência. *Rubrica:* 3 = o SCADA varre as doze estações (contagem do historiador), a estação de engenharia consegue se conectar a uma estação numa janela aprovada, o SSH do jump-01 para a Z2 funciona, a exportação diária do hist-02 continua chegando; cada um com a fonte da evidência; 2 = alguns; 1 = nenhum positivo; 0 = nada.
+
+**EX044 — Não testado não é verificado.** *Objetivo:* relatar com honestidade. *Insumos:* o resumo de um gerente: "CHG-2207: 7 de 8 testes passaram, concluída". *Passos:* escrever a situação corrigida em um parágrafo. *Evidência esperada:* parágrafo. *Rubrica:* 3 = declara a situação por requisito (3 verificados, 2 falhos, 1 não testado), nomeia os itens em aberto e os responsáveis, diz que a mudança não está concluída; 2 = correto, mas sem responsáveis; 1 = edição menor; 0 = nada.
+
+### Síntese do capítulo
+
+A verificação transforma uma mudança de configuração num resultado demonstrado. Escreva requisitos que possam falhar, teste cada um com testes positivos e negativos, conte apenas os testes com evidência e relate cada requisito como verificado, falho ou não testado. Em redes de controle, verifique com as menores ações com escopo, e nunca fazendo experiências no processo em produção.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — capítulo 11 de 18
+
+[← Capítulo 10](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Laboratório contido I
+
+### Objetivos de aprendizagem e conexão
+
+Ao final deste capítulo, você deverá ser capaz de:
+
+- construir um laboratório **contido**, no qual o comportamento de um protocolo pode ser estudado sem rede nem dispositivo real;
+- implementar um respondedor Modbus/TCP mínimo com uma **política de escrita**: quais registradores podem ser escritos, dentro de qual faixa de valores;
+- gerar e ler **respostas de exceção** do Modbus (função ilegal, endereço de dados ilegal, valor de dados ilegal);
+- avaliar um laboratório segundo uma rubrica: contenção, reprodutibilidade, evidências e honestidade sobre o que o laboratório não modela.
+
+Os Capítulos 1–11 analisaram tráfego e configuração. Este capítulo constrói algo que você pode quebrar com segurança. É o primeiro de dois laboratórios avaliados; o Capítulo 17 é o segundo.
+
+### 12.1 O que "contido" significa
+
+Um laboratório contido não consegue afetar nada fora de si mesmo. Neste livro, isso é garantido tecnicamente, não por boas intenções: o Laboratório 12 usa `socket.socketpair()`, que cria dois sockets conectados **dentro de um único processo** ([Python socket](https://docs.python.org/3/library/socket.html)). Nada escuta numa porta, nada é roteado, e o programa não consegue alcançar um controlador real nem por engano. Laboratórios maiores usam redes virtuais isoladas, sem rota para fora, ou hardware reserva numa bancada, com o cabo de rede não indo a lugar nenhum. Anote a propriedade de contenção de cada laboratório que construir, e como você a verificou.
+
+### 12.2 O trabalho do respondedor
+
+Um controlador real decide se executa uma escrita com base na sua própria lógica, o que, nos dispositivos Modbus clássicos, muitas vezes significa "sempre". Alguns dispositivos e gateways de protocolo permitem proteção contra escrita por faixa de registradores; muitos não. O respondedor do laboratório torna a política explícita:
+
+- **leituras** de registradores de retenção (função 3) são permitidas dentro da tabela, com quantidade de 1 a 125 (o limite do protocolo para uma leitura);
+- **escritas** de um único registrador (função 6) são permitidas apenas no registrador 7, o setpoint da bomba, e apenas para valores de 100 a 400;
+- qualquer outra coisa devolve uma **exceção**: o código de função com o bit mais alto ligado (código + 0x80) e um código de exceção — 01 função ilegal, 02 endereço de dados ilegal, 03 valor de dados ilegal —, conforme definido na especificação Modbus Application Protocol ([Modbus specifications](https://www.modbus.org/modbus-specifications)).
+
+Uma resposta normal à função 6 ecoa a requisição. Uma resposta normal à função 3 carrega uma contagem de bytes e os valores dos registradores.
+
+### 12.3 Registro dentro do dispositivo
+
+O respondedor registra toda leitura, toda escrita aceita, com o valor antigo e o novo, e toda exceção. Em equipamentos reais, esses são exatamente os registros que você gostaria de ter tido no Capítulo 7. Uma rajada de respostas de exceção 02 vindas de uma única origem é um forte sinal de alguém mapeando o espaço de registradores; uma sequência de exceções 03 é alguém testando limites.
+
+Em equipamentos reais, esses logs muitas vezes não existem, e é por isso que o laboratório os torna visíveis. Uma rajada de exceções de endereço ilegal vindas de uma única origem é sinal de mapeamento; uma sequência de exceções de valor ilegal é alguém testando limites. Guarde o log do laboratório junto com as respostas em hexadecimal, para que um revisor possa associar cada exceção a uma requisição.
+
+### 12.4 Exemplo resolvido: o respondedor de bancada (sintético)
+
+**Laboratório 12** (salve como `lab12.py` e execute com `python3 lab12.py`):
+
+```python
+# Lab 12 - contained Modbus/TCP responder with a write policy (offline, standard library only)
+# Uses socket.socketpair(): both ends live inside this process; nothing touches a real network.
+import socket, struct
+regs = [0] * 10; regs[0], regs[1], regs[7] = 342, 61, 250      # level cm, chlorine x100, pump setpoint
+WRITABLE = {7: (100, 400)}                                      # register: allowed value range
+log = []
+def respond(req: bytes) -> bytes:
+    tid, pid, length, unit, fc = struct.unpack(">HHHBB", req[:8])
+    def exc(code):
+        log.append(f"tid={tid} fc={fc} exception {code}")
+        return struct.pack(">HHHBBB", tid, 0, 3, unit, fc | 0x80, code)
+    if pid != 0 or length != len(req) - 6: return exc(3)
+    if fc == 3:
+        addr, qty = struct.unpack(">HH", req[8:12])
+        if not 1 <= qty <= 125 or addr + qty > len(regs): return exc(2)
+        data = struct.pack(f">{qty}H", *regs[addr:addr + qty])
+        log.append(f"tid={tid} read {addr}..{addr + qty - 1}")
+        return struct.pack(">HHHBBB", tid, 0, 3 + len(data), unit, 3, len(data)) + data
+    if fc == 6:
+        addr, val = struct.unpack(">HH", req[8:12])
+        if addr not in WRITABLE: return exc(2)
+        lo, hi = WRITABLE[addr]
+        if not lo <= val <= hi: return exc(3)
+        old, regs[addr] = regs[addr], val
+        log.append(f"tid={tid} WRITE reg {addr} {old}->{val}")
+        return req[:12]                                         # echo is the normal fc 6 reply
+    return exc(1)
+client, server = socket.socketpair()
+def call(tid, fc, a, b):
+    client.sendall(struct.pack(">HHHBBHH", tid, 0, 6, 1, fc, a, b))
+    server.sendall(respond(server.recv(260)))
+    r = client.recv(260)
+    return r.hex()
+print("read 0..2     ", call(1, 3, 0, 3))
+print("write 7=300   ", call(2, 6, 7, 300))
+print("write 7=900   ", call(3, 6, 7, 900))
+print("write 0=0     ", call(4, 6, 0, 0))
+print("fc 8 diag     ", call(5, 8, 0, 0))
+print("read 8..12    ", call(6, 3, 8, 5))
+client.close(); server.close()
+print("registers", regs[:3], "setpoint", regs[7])
+for entry in log: print("log:", entry)
+```
+
+Saída esperada (Python 3.13.5):
+
+```text
+read 0..2      0001000000090103060156003d0000
+write 7=300    00020000000601060007012c
+write 7=900    000300000003018603
+write 0=0      000400000003018602
+fc 8 diag      000500000003018801
+read 8..12     000600000003018302
+registers [342, 61, 0] setpoint 300
+log: tid=1 read 0..2
+log: tid=2 WRITE reg 7 250->300
+log: tid=3 fc=6 exception 3
+log: tid=4 fc=6 exception 2
+log: tid=5 fc=8 exception 1
+log: tid=6 fc=3 exception 2
+```
+
+Leia as respostas em hexadecimal. A primeira é uma leitura normal: `03 06` (função 3, seis bytes), seguido de 0x0156 = 342, 0x003D = 61 e 0. A escrita de 300 no registrador 7 é ecoada, e o log registra 250 → 300. Escrever 900 devolve `86 03` — função 6 + 0x80, exceção 3, valor ilegal. Escrever no registrador 0 devolve `86 02`, endereço ilegal — o registrador 0 é uma medição, não é gravável. A função 8 (diagnóstico) devolve `88 01`, função ilegal. Uma leitura de cinco registradores a partir do 8 ultrapassa a tabela de 10 registradores e devolve `83 02`. Os registradores no final mostram que só a escrita aprovada teve efeito.
+
+### 12.5 Rubrica de avaliação de um laboratório contido
+
+| Critério | 3 (excelente) | 1 (fraco) |
+|---|---|---|
+| Contenção | Tecnicamente impossível alcançar um dispositivo real; propriedade declarada e verificada | Depende de "não vou apontá-lo para nada" |
+| Reprodutibilidade | Entradas fixas; saída exata registrada com a versão do Python | A saída varia ou não é registrada |
+| Declaração de fidelidade | Lista o que o laboratório modela e o que não modela | Afirma representar dispositivos reais |
+| Evidências | Logs e saídas guardados, com hash, vinculados aos exercícios | Apenas capturas de tela |
+| Segurança das extensões | Mudanças revisadas para que não possam remover a contenção | Acrescenta código de rede real sem revisão |
+
+### 12.6 O que o laboratório não modela
+
+Os dispositivos reais diferem: alguns ignoram os identificadores de unidade, alguns aceitam escritas em qualquer registrador, alguns travam com requisições malformadas, e poucos registram alguma coisa. O respondedor trata uma requisição de cada vez, não tem concorrência, timeouts nem leituras parciais. O seu valor está em tornar visíveis a política e as exceções, não em prever o comportamento de um fornecedor em particular. Nunca use os resultados de um laboratório para decidir como um dispositivo em produção responderá a um teste.
+
+Nunca use os resultados de um laboratório para decidir como um dispositivo em produção responderá a um teste. Os dispositivos reais diferem no tratamento do identificador de unidade, na proteção contra escrita e no registro, e muitos travam com requisições malformadas. Declare essas lacunas na avaliação e mantenha a verificação em produção restrita aos métodos com escopo e autorizados do Capítulo 11.
+
+### 12.7 Atividade prática
+
+Acrescente ao respondedor a função 16 (escrever vários registradores), com a mesma política: todo registrador da faixa precisa ser gravável e todo valor estar dentro dos limites, ou a escrita inteira é recusada. Teste quatro casos: tudo permitido; um endereço não gravável; um valor fora da faixa; contagem de bytes inconsistente com a quantidade.
+
+Recuse a escrita inteira se algum registrador não for gravável ou algum valor estiver fora dos limites. Teste tudo permitido, um endereço não gravável, um valor fora da faixa e uma contagem de bytes que não corresponda à quantidade. Registre as quatro respostas em hexadecimal e as linhas de log ao lado delas.
+
+### 12.8 Erros comuns e limites
+
+- Usar um socket de rede real "só para testar" e deixá-lo vinculado a todas as interfaces.
+- Aceitar escritas parciais de vários registradores.
+- Esquecer que a resposta à função 6 é um eco, e então interpretá-la errado.
+- Tratar o comportamento do laboratório como comportamento do fornecedor.
+
+- Vincular um socket real em escuta para testes e deixá-lo em todas as interfaces.
+- Aceitar uma escrita parcial de vários registradores que muda alguns registradores antes de recusar outros.
+- Tratar o comportamento de exceções do laboratório como comportamento de um fornecedor. Declare a contenção como propriedade técnica em todo relatório de laboratório.
+
+### Exercícios — capítulo 12
+
+**EX045 — Leia as respostas.** *Objetivo:* decodificar respostas de exceção e normais. *Insumos:* a saída do Laboratório 12. *Passos:* para cada uma das seis respostas, dar o id de transação, a função (com ou sem o bit de exceção) e o significado. *Evidência esperada:* seis linhas. *Rubrica:* 3 = as seis corretas, incluindo 0x86 = exceção à 6, 0x88 = exceção à 8, 0x83 = exceção à 3; 2 = uma errada; 1 = apenas as respostas normais; 0 = nada.
+
+**EX046 — Implemente a função 16.** *Objetivo:* estender o respondedor com segurança. *Insumos:* atividade 12.7. *Passos:* implementar e executar os quatro casos. *Evidência esperada:* código e saídas. *Rubrica:* 3 = comportamento tudo ou nada; exceção 02 para um endereço não gravável, 03 para um valor fora da faixa, 03 (ou um tratamento de requisição malformada, com justificativa) para uma contagem de bytes inconsistente; a resposta normal ecoa apenas o endereço e a quantidade; linhas de log para cada caso; 2 = funciona, com um código errado; 1 = aceita escritas parciais; 0 = nada.
+
+**EX047 — Detecte tentativas de mapeamento.** *Objetivo:* usar logs do lado do dispositivo. *Insumos:* o log do respondedor. *Passos:* escrever uma regra que alerte sobre comportamento de mapeamento ou de teste de limites e testá-la acrescentando cinco leituras de endereços fora da faixa a partir de uma sequência de transações. *Evidência esperada:* regra e saída. *Rubrica:* 3 = por exemplo, "≥3 respostas de exceção 02 em 60 s vindas de uma única origem"; demonstra que ela dispara no teste e não nas seis requisições originais (que contêm apenas duas respostas de exceção 02; contar 02 e 03 juntas já chegaria a três e dispararia); 2 = dispara nos dois; 1 = apenas a regra; 0 = nada.
+
+**EX048 — Avalie um laboratório.** *Objetivo:* aplicar a rubrica. *Insumos:* o laboratório de um colega que executa um servidor Modbus em `0.0.0.0:502` num notebook "usado só no escritório". *Passos:* pontuá-lo em contenção e fidelidade e propor uma correção. *Evidência esperada:* pontuações e correção. *Rubrica:* 3 = contenção 1 (alcançável a partir de qualquer rede em que o notebook entre, e o notebook pode ser levado às estações); correção com socketpair ou vinculação apenas ao loopback, mais firewall de host, ou uma rede de VMs isolada; declaração de fidelidade exigida; 2 = correção sem raciocínio; 1 = aceita; 0 = nada.
+
+### Síntese do capítulo
+
+Um laboratório contido é aquele em que a segurança é uma propriedade técnica. O Laboratório 12 constrói um respondedor Modbus que aplica uma política de escrita e devolve exceções adequadas, tornando visível o que a maioria dos dispositivos reais esconde: quais requisições foram recusadas, e por quê. Avalie todo laboratório quanto a contenção, reprodutibilidade, evidências e uma declaração franca do que ele não modela.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — capítulo 12 de 18
+
+[← Capítulo 11](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Infraestrutura crítica e segurança setorial: resolução de problemas
+
+### Objetivos de aprendizagem e conexão
+
+Ao final deste capítulo, você deverá ser capaz de:
+
+- aplicar um método estruturado de resolução de problemas — definir o sintoma, coletar observações somente de leitura, listar hipóteses, testar previsões, preservar e só então mudar;
+- eliminar hipóteses comparando o que cada uma prevê com o que você observou, de um modo que outras pessoas possam conferir;
+- reconhecer quando uma investigação de falha se torna um incidente de segurança, e o que preservar nesse momento;
+- manter um **registro de resolução de problemas** que também seja evidência.
+
+O Capítulo 8 descreveu sintomas; os Capítulos 7, 9 e 11 lhe deram observações. Este capítulo os reúne sob pressão de tempo, quando uma estação silenciou e os operadores a querem de volta.
+
+### 13.1 O método
+
+1. **Defina o sintoma** com precisão: qual tag, desde quando (UTC), como foi detectado, o que ainda funciona.
+2. **Colete observações somente de leitura** em ordem de custo: a situação das outras estações; contadores do enlace e do roteador; logs do firewall; um teste de conexão TCP a partir da origem normal de varredura; uma leitura de protocolo; registros de configuração do dispositivo.
+3. **Liste hipóteses** — pelo menos uma comum e uma relevante para a segurança — antes de testar qualquer uma.
+4. **Escreva as previsões de cada hipótese**: o que você observaria se ela fosse verdadeira?
+5. **Compare** as previsões com as observações. Uma hipótese contrariada por uma observação confiável é refutada; uma coerente com todas elas permanece.
+6. **Preserve** tudo o que possa ser evidência antes de mudá-lo (Capítulo 5).
+7. **Mude** uma coisa, sob um registro de mudança, e verifique (Capítulo 11).
+8. **Registre** a causa, as evidências e o que a teria detectado mais cedo.
+
+A disciplina de escrever as previsões *antes* de comparar é o que impede a primeira história plausível de virar a conclusão.
+
+### 13.2 Da falha ao incidente
+
+Um exercício de resolução de problemas se torna um possível incidente quando uma observação não é explicada por nenhuma atividade aprovada: uma sessão de configuração não aprovada, uma origem desconhecida, um arquivo alterado sem registro de mudança. Nesse ponto, pare de mudar as coisas, preserve (configuração, logs, registros de sessão) e passe adiante pelo processo de incidentes. As recomendações de resposta a incidentes do NIST situam essa decisão dentro da gestão de riscos mais ampla da organização ([SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final)). O trabalho do técnico não é decidir que um ataque aconteceu; é perceber que falta a explicação e manter as evidências intactas.
+
+### 13.3 Exemplo resolvido: a KW-09 silencia (sintético)
+
+Às 07:05Z de 12 de outubro, as leituras da KW-09 param de chegar; todas as outras estações estão bem. Você coleta observações somente de leitura por quinze minutos e lista cinco hipóteses.
+
+**Laboratório 13** (salve como `lab13.py` e execute com `python3 lab13.py`):
+
+```python
+# Lab 13 - eliminate hypotheses for "KW-09 readings missing" (offline, standard library only)
+# Synthetic observations collected read-only between 07:05 and 07:20Z on 2026-10-12.
+observed = {
+ "rtu_ping": True,              # RTU answers ICMP from the SCADA server
+ "tcp502_handshake": True,      # TCP connect to 10.10.9.2:502 succeeds from SCADA server
+ "modbus_reply": "exception 2", # read of registers 0..3 returns illegal data address
+ "fw_denies": False,            # no fw-01 denies for 10.10.9.2 in the window
+ "radio_errors": False,         # cellular router CRC/error counters flat
+ "rtu_config_changed": True,    # rtu-kw09 config session at 06:41Z (clock-corrected) by user eng
+ "change_ticket": False,        # no approved change ticket for KW-09 today
+ "other_stations_ok": True,
+}
+hypotheses = {  # what each hypothesis predicts we would observe
+ "H1 radio/link failure":           {"rtu_ping": False, "tcp502_handshake": False, "radio_errors": True},
+ "H2 firewall change blocks polls": {"tcp502_handshake": False, "fw_denies": True},
+ "H3 SCADA server fault":           {"other_stations_ok": False},
+ "H4 RTU register map changed":     {"rtu_ping": True, "tcp502_handshake": True, "modbus_reply": "exception 2",
+                                     "rtu_config_changed": True},
+ "H5 RTU powered off":              {"rtu_ping": False},
+}
+for h, pred in hypotheses.items():
+    clash = [k for k, v in pred.items() if observed[k] != v]
+    print(f"{h:<32} {'REFUTED by ' + ', '.join(clash) if clash else 'CONSISTENT with all observations'}")
+print("unapproved RTU configuration session -> preserve RTU config and session logs, then treat as possible incident"
+      if observed["rtu_config_changed"] and not observed["change_ticket"] else "change was approved")
+```
+
+Saída esperada (Python 3.13.5):
+
+```text
+H1 radio/link failure            REFUTED by rtu_ping, tcp502_handshake, radio_errors
+H2 firewall change blocks polls  REFUTED by tcp502_handshake, fw_denies
+H3 SCADA server fault            REFUTED by other_stations_ok
+H4 RTU register map changed      CONSISTENT with all observations
+H5 RTU powered off               REFUTED by rtu_ping
+unapproved RTU configuration session -> preserve RTU config and session logs, then treat as possible incident
+```
+
+Quatro hipóteses são refutadas por observações específicas: o enlace está ativo (ping, handshake, contadores de erro estáveis); o firewall não está negando; o servidor SCADA está varrendo outras estações com sucesso; a RTU está ligada. Uma continua coerente: o mapa de registradores da RTU mudou, de modo que as leituras do servidor SCADA agora atingem endereços que o dispositivo não tem mais — exceção 02, exatamente como no laboratório do Capítulo 12. E a RTU registrou uma sessão de configuração às 06:41Z (relógio corrigido), sem chamado de mudança.
+
+Essa última observação transforma uma falha num possível incidente. As próximas etapas corretas são: preservar a exportação da configuração atual da RTU e o seu log de sessões, e os logs do host de salto e da estação de engenharia de 06:30–06:50Z; informar o gerente de plantão da Kestrel Water de que os valores da KW-09 estão indisponíveis (talvez seja preciso uma visita ao local para leituras manuais); abrir um registro de incidente. Restaurar a configuração anterior é a correção — mas só depois da preservação e com a concordância do líder do incidente.
+
+### 13.4 Segundo caso: a mesa corporativa na KW-04
+
+O Capítulo 10 deixou um item em aberto: o fw-01 nega o tráfego das mesas corporativas para as estações, mas uma captura na KW-04 mostrou escritas vindas de 10.30.3.7. Hipóteses: (a) o endereço de origem da captura foi traduzido por algum dispositivo; (b) existe outro caminho até a KW-04 que contorna o fw-01. Verificações somente de leitura: a exportação da configuração do roteador celular da KW-04 mostra um redirecionamento de porta (port-forward) de tcp/502 a partir do seu endereço privado do lado da operadora, e a rede privada da operadora também é alcançável a partir da VPN corporativa de acesso remoto. A hipótese (b) é coerente; o caminho foi instalado durante um comissionamento em 2024 e nunca removido. A lição é arquitetural (Capítulo 15): todo roteador de estação é uma fronteira potencial, e o modelo do Capítulo 6 precisa incluí-lo.
+
+### 13.5 O registro de resolução de problemas
+
+Escreva à medida que avança, em UTC, com os quatro rótulos: *observado*, *inferido*, *feito*, *em aberto*. Um bom registro permite que um colega que assume na troca de turno continue sem lhe perguntar nada, e permite que um investigador reconstrua depois o que foi mudado e quando. O Capítulo 16 dá um modelo; o Capítulo 18 o sela como evidência do projeto.
+
+Escreva à medida que avança, em UTC, com os quatro rótulos, para que um colega na troca de turno possa continuar sem lhe perguntar nada. Inclua referências de evidência para cada observação, como o hash da exportação da configuração da RTU e o intervalo do log do host de salto. O Capítulo 16 dá um modelo; o Capítulo 18 sela o registro como evidência do projeto.
+
+### 13.6 Atividade prática
+
+Acrescente ao Laboratório 13 a hipótese H6, "o firmware da RTU travou num modo degradado", com as previsões que você acha que ela faz, e observe se as observações existentes a refutam. Se não refutarem, nomeie a única observação adicional, somente de leitura, que a refutaria.
+
+Se as observações existentes não refutarem a H6, nomeie uma verificação adicional somente de leitura, como um diagnóstico do fornecedor que informe o estado do firmware, que a refutaria. Escreva as previsões antes de inventar a verificação, para que a nova observação tenha algo a contrariar. Mantenha a H6 na lista até que ela seja refutada ou que o processo de incidentes assuma.
+
+### 13.7 Erros comuns e limites
+
+- Reiniciar primeiro, o que destrói evidências voláteis e muitas vezes esconde a causa.
+- Testar as hipóteses uma de cada vez e parar na primeira que "se encaixa".
+- Tratar uma hipótese coerente como provada; ela está apenas *ainda não refutada*.
+- Mudar várias coisas ao mesmo tempo.
+- O Laboratório 13 compara valores previstos exatos; as observações reais têm incerteza, e uma única observação pouco confiável não deve refutar uma hipótese sozinha.
+
+- Reiniciar primeiro e destruir evidências voláteis.
+- Parar na primeira hipótese que se encaixa em vez de testar as previsões frente a todas as observações.
+- Tratar uma hipótese coerente como provada; ela está apenas ainda não refutada.
+- Mudar várias coisas ao mesmo tempo, de modo que a correção não pode ser atribuída.
+
+### Exercícios — capítulo 13
+
+**EX049 — Previsões primeiro.** *Objetivo:* praticar o método. *Insumos:* a lacuna de sete minutos da KW-05, do Capítulo 8. *Passos:* listar três hipóteses com as suas previsões para ping, handshake TCP, resposta Modbus, contadores do rádio e outras estações. *Evidência esperada:* uma tabela. *Rubrica:* 3 = pelo menos uma hipótese de enlace, uma de varredura/SCADA e uma relevante para a segurança, com previsões distintas, de modo que as observações possam separá-las; 2 = previsões sobrepostas; 1 = apenas hipóteses; 0 = nada.
+
+**EX050 — Acrescente a H6.** *Objetivo:* estender o laboratório. *Insumos:* atividade 13.6. *Passos:* implementar e executar. *Evidência esperada:* código, saída e a observação extra. *Rubrica:* 3 = previsões plausíveis (por exemplo, ping verdadeiro, handshake verdadeiro, resposta com timeout ou exceção 04); reconhece que, se a H6 previr exceção 02, ela não é refutada, e propõe uma verificação somente de leitura, como a página de diagnóstico ou o contador de tempo ligado da RTU; 2 = executa, sem raciocínio; 1 = tentativa; 0 = nada.
+
+**EX051 — O momento do escalonamento.** *Objetivo:* reconhecer quando parar e preservar. *Insumos:* o caso da KW-09. *Passos:* escrever a mensagem de escalonamento ao líder do incidente e a lista dos itens preservados, com horários. *Evidência esperada:* mensagem e lista. *Rubrica:* 3 = a mensagem declara os fatos observados e a sessão não explicada, separa a inferência, pede uma decisão sobre a restauração; os itens preservados incluem a exportação da configuração e o log de sessões da RTU, os logs do jump-01 e da eng-ws-15 para a janela e o próprio registro de resolução de problemas, cada um com hash; 2 = bom, mas sem hashes; 1 = "fomos hackeados"; 0 = nada.
+
+**EX052 — Feche o caminho da KW-04.** *Objetivo:* corrigir o desvio encontrado na 13.4. *Insumos:* o redirecionamento de porta do roteador e a alcançabilidade pela VPN. *Passos:* propor a mudança, a sua etapa de preservação, os seus testes e o seu responsável. *Evidência esperada:* plano de mudança. *Rubrica:* 3 = preservar primeiro a configuração do roteador; remover o redirecionamento de porta; restringir a rede privada da operadora a partir da VPN corporativa; teste negativo a partir de um cliente VPN identificado e teste positivo da varredura do SCADA; verificar todos os outros roteadores de estação quanto ao mesmo padrão; responsável nomeado; 2 = correção sem a verificação ampla; 1 = apenas remover; 0 = nada.
+
+### Síntese do capítulo
+
+Resolver problemas num serviço crítico é um método, não um palpite: defina o sintoma, observe somente lendo, escreva hipóteses com previsões, elimine-as pelas evidências, preserve, depois mude uma coisa e verifique. Quando uma observação não é explicada por uma atividade aprovada, a falha se tornou um possível incidente; pare, preserve e escalone. O registro que você mantém é, ao mesmo tempo, a passagem de turno e a evidência.
+
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue estudando — capítulo 13 de 18
+
+[← Capítulo 12](#ch-12) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Infraestrutura crítica e segurança setorial: automação
+
+### Objetivos de aprendizagem e conexão
+
+Ao final deste capítulo, você deverá ser capaz de:
+
+- automatizar a **detecção de deriva** de configuração com hashes criptográficos e um manifesto aprovado;
+- classificar as diferenças como ausente, nova, mudança aprovada ou mudança não aprovada, e agir de modo diferente em cada caso;
+- desenhar uma automação segura em ambientes de controle: somente leitura por padrão, raio de impacto pequeno, preservar antes de reverter e aprovação humana para tudo o que toca o processo;
+- proteger a própria automação, já que uma ferramenta capaz de mudar todos os hosts é um alvo.
+
+Os Capítulos 10–13 mudaram, verificaram e resolveram problemas à mão. Este capítulo torna automáticas as verificações repetíveis, para que a atenção do técnico vá para as diferenças que importam.
+
+### 14.1 Por que hashes
+
+Um resumo SHA-256 ([FIPS 180-4](https://csrc.nist.gov/pubs/fips/180-4/upd1/final)) de um arquivo muda se qualquer byte mudar, e é inviável construir um arquivo diferente com o mesmo resumo. Comparar os resumos com um manifesto registrado num momento sabidamente bom diz **quais** arquivos mudaram, de modo barato e sem guardar cópias. Não diz **como** mudaram — para isso, você precisa da cópia aprovada, mantida em controle de versão — e não diz **se** a mudança foi legítima — para isso, você precisa dos registros de mudança. O `hashlib` do Python fornece o SHA-256 na biblioteca padrão ([Python hashlib](https://docs.python.org/3/library/hashlib.html)).
+
+### 14.2 Quatro resultados, quatro ações
+
+| Resultado | Significado | Ação |
+|---|---|---|
+| Inalterado | Corresponde ao manifesto | Nada |
+| Alterado, aprovado | Um registro de mudança o cobre | Verificar (Capítulo 11) e depois atualizar o manifesto |
+| Alterado, não aprovado | Nenhum registro | **Preservar**, investigar e depois reverter sob uma mudança |
+| Novo ou ausente | O arquivo apareceu ou sumiu | Investigar antes de apagar ou restaurar |
+
+O erro de automação mais perigoso é "reverter toda deriva automaticamente". Isso destrói a evidência de uma mudança não aprovada e pode desfazer uma correção de emergência feita às 03:00 que ainda não foi registrada. A *detecção* automatizada é barata e segura; a *correção* automatizada precisa de uma lista curta e explícita do que pode ser corrigido automaticamente, e de nada que toque o controle do processo.
+
+### 14.3 Exemplo resolvido: deriva no hist-02 (sintético)
+
+Um job noturno compara os arquivos-chave do hist-02 com o manifesto aprovado depois da CHG-2207. O Laboratório 14 simula uma noite, usando um diretório temporário.
+
+**Laboratório 14** (salve como `lab14.py` e execute com `python3 lab14.py`):
+
+```python
+# Lab 14 - detect configuration drift against an approved manifest (offline, standard library only)
+# Files are created in a temporary directory that is removed at the end.
+import hashlib, json, pathlib, tempfile
+def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+with tempfile.TemporaryDirectory() as tmp:
+    root = pathlib.Path(tmp)
+    files = {"sshd_config": "ListenAddress 10.90.0.21\nPermitRootLogin no\nPasswordAuthentication no\n",
+             "ntp.conf": "server 10.90.0.5 iburst\n",
+             "fw-01.rules": "R1 allow 10.20.0.10 10.10.0.0/16 tcp 502\nR7 deny any any\n"}
+    for n, t in files.items(): (root / n).write_text(t)
+    manifest = {n: sha(root / n) for n in files}                       # approved baseline
+    approved_changes = {"ntp.conf": "CHG-2210"}
+    (root / "ntp.conf").write_text("server 10.90.0.5 iburst\nserver 10.90.0.6 iburst\n")   # approved
+    (root / "sshd_config").write_text(files["sshd_config"].replace("PermitRootLogin no", "PermitRootLogin yes"))
+    (root / "debug.sh").write_text("nc -l -p 9000\n")                  # new, unexpected file
+    current = {p.name: sha(p) for p in sorted(root.iterdir())}
+    for name in sorted(set(manifest) | set(current)):
+        if name not in current: print(f"MISSING   {name}")
+        elif name not in manifest: print(f"NEW       {name}  -> investigate before removing")
+        elif current[name] != manifest[name]:
+            tag = f"approved ({approved_changes[name]}) -> update baseline" if name in approved_changes else "UNAPPROVED -> preserve, then revert"
+            print(f"CHANGED   {name}  {tag}")
+        else: print(f"unchanged {name}")
+    print("manifest digest", hashlib.sha256(json.dumps(manifest, sort_keys=True).encode()).hexdigest()[:16])
+```
+
+Saída esperada (Python 3.13.5):
+
+```text
+NEW       debug.sh  -> investigate before removing
+unchanged fw-01.rules
+CHANGED   ntp.conf  approved (CHG-2210) -> update baseline
+CHANGED   sshd_config  UNAPPROVED -> preserve, then revert
+manifest digest fdea74f1d09e359c
+```
+
+O `fw-01.rules` está inalterado. O `ntp.conf` mudou, e a CHG-2210 o cobre (um segundo servidor NTP foi acrescentado): verifique que o tempo está sincronizado e depois atualize o manifesto. O `sshd_config` mudou sem registro — alguém reabilitou o login de root. O `debug.sh` é novo e contém um comando de escuta. Ambos são preservados (cópia, hash, timestamps, a conta que os gravou por último, se o host registrar isso) antes que qualquer coisa seja revertida, e o segundo muito provavelmente se tornará um incidente. O resumo do próprio manifesto é impresso para que o manifesto possa ser conferido; guarde esse resumo num lugar que os administradores do host não possam alterar (Capítulo 18).
+
+### 14.4 Automação segura em ambientes de controle
+
+- **Somente leitura primeiro.** A maior parte da automação valiosa apenas coleta e compara: configurações, versões de firmware, listas de contas, regras de firewall, validade de certificados.
+- **Raio de impacto pequeno.** Aja sobre um host ou poucos; pare se muitos hosts diferirem do mesmo modo, o que geralmente significa que o estado desejado ou o coletor está errado.
+- **Taxa e horário.** O tráfego de coleta para dispositivos de campo precisa respeitar o orçamento de varredura (Capítulo 1) e nunca rodar durante períodos críticos do processo sem acordo.
+- **Aprovação humana** para toda mudança que possa afetar o processo, por menor que seja.
+- **Registre cada execução** no coletor, com o que foi lido e o que foi mudado.
+
+### 14.5 Proteger a automação
+
+A conta da automação consegue ler ou mudar todos os hosts que gerencia; portanto: guarde as suas credenciais num cofre e troque-as; restrinja de onde ela pode se conectar; exija revisão das mudanças no seu estado desejado; alerte sobre execuções fora do agendamento. O alerta da CISA sobre acesso de longo prazo à infraestrutura crítica descreve atores usando ferramentas legítimas de administração e contas válidas ([CISA AA24-038A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-038a)); uma conta de automação com privilégios excessivos é exatamente uma dessas ferramentas.
+
+Guarde as credenciais da automação num cofre, restrinja de onde a conta pode se conectar e alerte sobre execuções fora do agendamento. Uma ferramenta que consegue mudar todos os hosts é tão atraente para um adversário quanto uma estação de engenharia. Revise as mudanças no seu estado desejado do mesmo modo que revisa as mudanças de firewall.
+
+### 14.6 Atividade prática
+
+Estenda o Laboratório 14 para que, diante de uma mudança não aprovada, ele grave um registro de preservação — nome do arquivo, resumo antigo, resumo novo, tamanho e horário de modificação — no diretório temporário antes de imprimir a constatação, e imprima o SHA-256 do próprio registro de preservação.
+
+Grave o registro de preservação antes de imprimir a constatação e inclua na saída o resumo do próprio registro. Assim, um investigador posterior pode mostrar que a cópia feita no momento da detecção corresponde ao que o job afirmou ter guardado. Mantenha a limpeza do diretório temporário depois que os hashes forem registrados.
+
+### 14.7 Erros comuns e limites
+
+- Reversão automática de toda deriva.
+- Manifestos guardados no host que protegem.
+- Apenas hashes; nenhuma cópia aprovada com a qual comparar o conteúdo.
+- Automação varrendo os dispositivos de campo de forma agressiva e degradando o processo.
+- O Laboratório 14 ignora permissões, propriedade e timestamps, que importam tanto quanto o conteúdo (um arquivo de serviço gravável por todos é deriva).
+
+- Reverter automaticamente toda deriva e destruir a evidência de uma mudança não aprovada.
+- Guardar o manifesto no host que ele protege.
+- Calcular hash apenas do conteúdo e ignorar permissões que tornam um arquivo de serviço gravável por todos.
+- Varrer os dispositivos de campo com tanta agressividade que o ciclo de varredura deixa de ser atendido.
+
+### Exercícios — capítulo 14
+
+**EX053 — Classifique e aja.** *Objetivo:* aplicar os quatro resultados. *Insumos:* a saída do Laboratório 14. *Passos:* escrever a ação e o responsável para cada linha, na ordem de execução. *Evidência esperada:* lista ordenada. *Rubrica:* 3 = preservar primeiro o sshd_config e o debug.sh (cópia, hash, metadados), avisar a líder de segurança; investigar o debug.sh antes da remoção; reverter o sshd_config sob uma mudança, depois da preservação; verificar o NTP e atualizar o manifesto para o ntp.conf; nada para o fw-01.rules; 2 = ordem errada; 1 = reverter tudo; 0 = nada.
+
+**EX054 — Lista de correções automáticas.** *Objetivo:* limitar a automação. *Insumos:* correções automáticas candidatas: reabilitar o encaminhamento de logs, redefinir o sshd_config, reiniciar o serviço do historiador, corrigir a lista de servidores NTP, publicar regras de firewall, redefinir um setpoint de CLP. *Passos:* marcar cada uma como correção automática, chamado ou nunca automatizar, com justificativas. *Evidência esperada:* seis linhas. *Rubrica:* 3 = encaminhamento de logs e lista de NTP como correção automática (restauram a visibilidade e o tempo, baixo risco para o processo); sshd_config e publicação de firewall com chamado (risco de preservação e de trancamento); reinício do historiador com chamado, junto com as operações; setpoint de CLP nunca automatizado por ferramentas de segurança; 2 = um errado; 1 = tudo automático; 0 = nada.
+
+**EX055 — Trava de parada.** *Objetivo:* reduzir o raio de impacto. *Insumos:* uma frota de 14 hosts; numa noite, 9 mostram o `ntp.conf` alterado de modo idêntico. *Passos:* propor uma condição de trava e explicar o que o padrão provavelmente significa. *Evidência esperada:* trava e explicação. *Rubrica:* 3 = parar quando mais do que uma proporção definida (por exemplo, 25 %) dos hosts mostrar a mesma mudança; o mais provável é uma mudança de frota deliberada, mas não registrada, ou um manifesto errado — confirmar com o calendário de mudanças antes de qualquer ação; ainda assim, tratar como constatação até ser explicada; 2 = trava sem interpretação; 1 = reverter os nove; 0 = nada.
+
+**EX056 — Registro de preservação.** *Objetivo:* estender o laboratório. *Insumos:* atividade 14.6. *Passos:* implementar e mostrar a saída. *Evidência esperada:* código e saída. *Rubrica:* 3 = registro gravado antes da linha da constatação, contendo os campos exigidos, com o seu resumo impresso; explica por que o resumo do registro precisa ser guardado fora do host; 2 = registro sem resumo; 1 = tentativa; 0 = nada.
+
+### Síntese do capítulo
+
+Automatize as verificações que nunca mudam: coletar, calcular hash, comparar com um manifesto aprovado e classificar as diferenças. Aja de modo diferente sobre os itens aprovados, não aprovados, novos e ausentes — preserve antes de reverter e restrinja a correção automática a uma lista curta que nunca toque o processo. Proteja a automação como a ferramenta poderosa que ela é.
+
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue estudando — capítulo 14 de 18
+
+[← Capítulo 13](#ch-13) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 15 (inglês) →](../../en/book/MANUSCRIPT.md#ch-15)
 
 Os próximos capítulos ainda estão apenas na edição em inglês.
 <!-- cyberabc:chapter-navigation:end -->
@@ -1382,7 +1945,7 @@ Os próximos capítulos ainda estão apenas na edição em inglês.
 
 ## Resoluções e notas de avaliação
 
-Cada resolução mostra uma resposta defensável e o que a rubrica recompensa. Uma resposta diferente recebe a pontuação máxima quando atende ao mesmo padrão de evidências, escopo e honestidade sobre os limites. Os resultados numéricos vêm dos laboratórios offline deste livro, executados com o Python 3.13.5 e apenas a biblioteca padrão; quando um resultado depende de um laboratório modificado, a modificação é descrita para que você possa reproduzi-la. Todos os números descrevem dados sintéticos; nunca os apresente como constatações sobre operadores reais. Esta edição parcial traz as resoluções de EX001–EX040; as de EX041–EX072 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Cada resolução mostra uma resposta defensável e o que a rubrica recompensa. Uma resposta diferente recebe a pontuação máxima quando atende ao mesmo padrão de evidências, escopo e honestidade sobre os limites. Os resultados numéricos vêm dos laboratórios offline deste livro, executados com o Python 3.13.5 e apenas a biblioteca padrão; quando um resultado depende de um laboratório modificado, a modificação é descrita para que você possa reproduzi-la. Todos os números descrevem dados sintéticos; nunca os apresente como constatações sobre operadores reais. Esta edição parcial traz as resoluções de EX001–EX056; as de EX057–EX072 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
 
 ### Capítulo 1: EX001–EX004
 
@@ -1483,6 +2046,54 @@ Cada resolução mostra uma resposta defensável e o que a rubrica recompensa. U
 **EX039 — Configuração do acesso de fornecedores.** `vendor-ss3` desabilitada por padrão. A Kestrel Grid abre um chamado; o plantão do KVROC habilita a conta por uma janela fixa (por exemplo, 4 h) na ferramenta de acesso; o fornecedor se conecta ao jump-01 com MFA; a sessão é gravada; o jump-01 permite apenas o endereço de gerência do gateway do fornecedor e a porta de engenharia específica na SS-3, nunca a rede inteira da subestação; um alerta dispara em qualquer login fora de uma janela habilitada; a conta se desabilita automaticamente; no dia útil seguinte, o log da sessão é revisado frente ao chamado.
 
 **EX040 — Detecte ampliações.** Acrescentar: `def overlaps(a, b): return ip_network(a[2]).overlaps(ip_network(b[2])) and ip_network(a[3]).overlaps(ip_network(b[3])) and (a[4] in ("any", b[4]) or b[4] == "any") and (a[5] is None or b[5] is None or a[5] == b[5])` e, para uma regra posterior com a mesma ação que se sobrepõe, mas não está coberta, relatá-la quando a sua origem ou o seu destino não for uma sub-rede da anterior. A saída verificada acrescenta `R6 broadens R1: same action, wider source 10.20.0.0/24`, o mesmo para a R2, e `R7 broadens R5` — esta última é a negação padrão pretendida e deve ser excluída (por exemplo, pulando as regras cuja origem e cujo destino são ambos `0.0.0.0/0`). A revisão é necessária porque, numa leitura rápida, a regra parece uma duplicata, mas concede à sub-rede inteira do centro de controle acesso de escrita à KW-04.
+
+### Capítulo 11: EX041–EX044
+
+**EX041 — Torne testável.** "O acesso remoto é seguro" → "O acesso do fornecedor à SS-3 só é possível via jump-01, com MFA, durante uma janela habilitada" (teste: uma tentativa fora da janela é recusada e gera alerta). "O tempo está sincronizado" → "Todos os hosts da Z2 e da Z5 estão a menos de 1 s do ntp-ops" (teste: relatório de deslocamentos). "Os logs são mantidos" → "Os eventos de permissão e de negação do fw-01 chegam ao coletor em até 60 s e são retidos por 12 meses" (teste: tentativa de conexão identificada, seguida de consulta ao coletor; verificação de retenção do registro mais antigo).
+
+**EX042 — Acrescente o teste que falta.** Com o T9 para o REQ-6, a saída mostra o REQ-6 verificado via T9 e "verified 4/6". O REQ-3 e o REQ-4 continuam falhando, de modo que a CHG-2207 não está concluída.
+
+**EX043 — Testes positivos para uma mudança de firewall.** O SCADA varre as doze estações (a contagem do historiador numa janela de 10 minutos é igual a 12 estações); conexão da eng-ws-15 à estação do chamado, numa janela; SSH do jump-01 para o hist-02 e o scada-01; a exportação diária do hist-02 chega ao servidor de relatórios; as sessões da IHM com o scada-01 não são afetadas. Evidências: saída da consulta ao historiador, logs de conexão, entradas no coletor.
+
+**EX044 — Não testado não é verificado.** "A CHG-2207 não está concluída. Dos seis requisitos, três estão verificados com evidências (REQ-1, REQ-2, REQ-5), dois falharam (REQ-3: o RDP corporativo continua permitido porque a R4 permanece; REQ-4: 10.20.0.12 consegue alcançar o Modbus das estações por causa da R6) e um não foi testado (REQ-6, registro das negações). O T8 foi uma revisão de configuração sem saída registrada e não é contado. Responsáveis: remoção da R4 e da R6 — R. Kaur, sob uma nova mudança; teste do REQ-6 — J. Tan. Nova verificação depois da correção."
+
+### Capítulo 12: EX045–EX048
+
+**EX045 — Leia as respostas.** tid 1: função 3, normal, 6 bytes: 342, 61, 0. tid 2: função 6, eco normal — registrador 7 = 300 escrito. tid 3: 0x86 = exceção à função 6, código 03 valor de dados ilegal (900 fora de 100–400). tid 4: 0x86, código 02 endereço de dados ilegal (registrador 0 não gravável). tid 5: 0x88 = exceção à função 8, código 01 função ilegal. tid 6: 0x83 = exceção à função 3, código 02 (a faixa 8–12 ultrapassa a tabela).
+
+**EX046 — Implemente a função 16.** Interpretar `addr, qty, bc = struct.unpack(">HHB", req[8:13])`; se `bc != 2 * qty or len(req) != 13 + bc`, devolver a exceção 03; decodificar os valores; se algum endereço em `addr..addr+qty-1` não estiver em WRITABLE, devolver 02; se algum valor estiver fora da sua faixa, devolver 03; caso contrário, escrever todos e devolver `struct.pack(">HHHBBHH", tid, 0, 6, unit, 16, addr, qty)`. Registrar cada resultado. Nenhuma escrita parcial.
+
+**EX047 — Detecte tentativas de mapeamento.** Regra: três ou mais respostas de exceção 02 para uma única origem em 60 s. As seis requisições originais produzem duas respostas de exceção 02 (tid 4 e tid 6), de modo que ela não dispara; acrescentar cinco leituras fora da faixa produz sete, e ela dispara. Contar 02 e 03 juntas já chegaria a três na execução original (tids 3, 4, 6) e dispararia com erros comuns; manter separada a regra de teste de limites (exceção 03) dá alertas mais claros.
+
+**EX048 — Avalie um laboratório.** Contenção 1: um servidor em `0.0.0.0:502` é alcançável a partir de qualquer rede em que o notebook entre, inclusive a rede de uma estação, se o notebook for usado no local. Fidelidade: nenhuma declaração, pontuação 1. Correção: `socketpair()` ou vinculação a 127.0.0.1 com uma regra de firewall de host, ou uma rede de VMs isolada sem rota para fora; acrescentar uma declaração de fidelidade; registrar as saídas com a versão do Python.
+
+### Capítulo 13: EX049–EX052
+
+**EX049 — Previsões primeiro.**
+
+| Hipótese | Ping | TCP 502 | Resposta Modbus | Contadores do rádio/celular | Outras estações |
+|---|---|---|---|---|---|
+| Queda do enlace | falha | falha | nenhuma | erros subindo | ok |
+| Sobrecarga da varredura do SCADA (Capítulo 1) | ok | ok | ok quando varrida, mas as varreduras atrasam | estáveis | também atrasadas |
+| Tráfego bloqueado ou inundado por um host não autorizado | ok ou falha | falha ou lento | timeouts | estáveis | ok |
+
+As observações que as separam são os contadores (enlace), a atualidade das outras estações (SCADA) e os logs de firewall/fluxo (relevante para a segurança).
+
+**EX050 — Acrescente a H6.** Exemplo: `"H6 RTU firmware degraded": {"rtu_ping": True, "tcp502_handshake": True, "modbus_reply": "timeout"}` é refutada por `modbus_reply` (observada a exceção 2). Se você, em vez disso, previr a exceção 02 (alguns dispositivos a devolvem num modo degradado), a H6 continua coerente, e a observação extra somente de leitura é a página de diagnóstico ou de status da RTU (tempo ligado, modo) pela ferramenta do fornecedor em modo somente de leitura, ou o seu log de eventos mostrando um reinício.
+
+**EX051 — O momento do escalonamento.** Mensagem: "07:22Z — as leituras da KW-09 pararam às 07:05Z. Observado: enlace, firewall e SCADA saudáveis; a RTU responde com exceção 02 às leituras normais; a RTU registrou uma sessão de configuração às 06:41Z (relógio corrigido) pelo usuário 'eng', sem chamado de mudança. Inferido: mapa de registradores alterado por essa sessão; quem e por quê, desconhecidos. Feito: nada mudado. Pedido: decisão sobre restaurar a configuração anterior depois da preservação. Gerente de plantão da Kestrel Water informado às 07:20Z." Preservados: exportação da configuração da RTU (07:25Z) e log de sessões; logs do jump-01 e da eng-ws-15 de 06:30–06:50Z; logs do fw-01 para 10.10.9.2; o registro de resolução de problemas — cada um com SHA-256 e horário de coleta.
+
+**EX052 — Feche o caminho da KW-04.** Preservar a configuração do roteador e os seus logs de conexão; remover o redirecionamento de porta tcp/502 sob uma mudança aprovada pela Kestrel Water; pedir à operadora (por meio do responsável pelo contrato) que remova a alcançabilidade da VPN corporativa de acesso remoto para a rede privada das estações; teste negativo a partir de um cliente VPN identificado para o endereço da KW-04 na operadora; teste positivo da varredura do SCADA; depois, exportar e verificar os outros onze roteadores de estação quanto a redirecionamentos de porta e exposição da gerência; acrescentar as configurações dos roteadores à detecção de deriva. Responsável: o líder de redes do KVROC, com aprovação da Kestrel Water.
+
+### Capítulo 14: EX053–EX056
+
+**EX053 — Classifique e aja.** (1) Preservar o `sshd_config` e o `debug.sh`: cópias, resumos, tamanho, mtime, proprietário e os logs de autenticação relevantes; informar L. Ferreira. (2) Investigar o `debug.sh` (quem o criou, se foi executado, se há um processo escutando) antes de removê-lo — provável incidente. (3) Reverter o `sshd_config` para a versão aprovada sob uma mudança, depois da preservação; verificar com `sshd -T`. (4) Para o `ntp.conf`: verificar o deslocamento frente aos dois servidores e depois atualizar o manifesto com a referência CHG-2210. (5) `fw-01.rules`: nada.
+
+**EX054 — Lista de correções automáticas.** Reabilitar o encaminhamento de logs: correção automática (restaura a visibilidade, sem efeito no processo). Corrigir a lista de servidores NTP: correção automática (integridade do tempo, baixo risco). Redefinir o `sshd_config`: chamado (preservar primeiro; risco de trancamento). Reiniciar o historiador: chamado, junto com as operações (lacuna nos dados). Publicar regras de firewall: chamado, com testes (pode cortar a varredura). Redefinir um setpoint de CLP: nunca automatizado por ferramentas de segurança — o controle do processo pertence às operações.
+
+**EX055 — Trava de parada.** Parar se a mesma chave mudar de modo idêntico em mais de 25 % dos hosts (aqui, 9 de 14 = 64 %). O mais provável é uma mudança de frota não registrada feita pela equipe de plataforma, ou um manifesto desatualizado; verificar o calendário de mudanças e o repositório do estado desejado. Até ser explicada, continua sendo uma constatação — um atacante com a conta da automação poderia produzir o mesmo padrão.
+
+**EX056 — Registro de preservação.** Antes de imprimir a linha da mudança não aprovada: `rec = {"file": name, "old": manifest[name], "new": current[name], "size": p.stat().st_size, "mtime": p.stat().st_mtime}`; gravá-lo como JSON em `root / f"preserve-{name}.json"` e imprimir o seu SHA-256. O resumo do registro precisa ser guardado fora do host (registro do caso ou coletor), porque, caso contrário, um administrador do host poderia reescrever tanto o arquivo quanto o registro.
 
 <a id="glossary"></a>
 
