@@ -1819,29 +1819,43 @@ You will (1) run an end-to-end mini pipeline on synthetic data; (2) combine vali
 
 This laboratory combines earlier labs into one exercise. Students receive a synthetic HSSC CSV feed, validate it (chapter 8), load accepted rows into SQLite (chapter 9), redact a synthetic phishing sample (chapter 14) and produce a one-page shareable summary filtered to TLP:CLEAR and TLP:GREEN.
 
+The point of combining them is to see how errors carry through: a row accepted by mistake at validation can end up in the shareable summary. Students trace at least one item from the raw feed to the final page and explain each decision made along the way, which is what an analyst at HCHT must be able to do for any indicator that leaves the trust.
+
 ### 25.2 Environment rules
 
 Work only in the course virtual machine with no internet route. Use standard-library Python. Do not paste real HCHT data or real indicators from work into the lab. If a lab file seems to contain real personal data, stop and tell the instructor.
+
+These rules mirror HCHT's own: work stays in an approved environment, uses approved tools and never mixes coursework with real intelligence. The isolated machine also means a mistake, such as a script that tries to fetch a domain, cannot reach the internet or alert anyone.
 
 ### 25.3 Steps
 
 First, run validation and note rejections with reasons. Second, load accepted rows and query by type and label. Third, redact the sample and confirm the adversary address survives. Fourth, write the summary: what was received, what was rejected, what may be shared and with whom.
 
+Students record the output of each step before moving on, so a problem can be traced to where it began. The summary is written last and must agree with the counts from the earlier steps.
+
 ### 25.4 The lab report
 
 A lab report has aim, method, results, problems and reflections. Results include exact counts and script outputs; problems include anything that surprised you. Reflection asks what would change with real data.
+
+Amara's own report notes that one rejected row would have been accepted if she had trusted the spreadsheet view, which shows why the validation step matters. Reflections should be specific: what would break with a larger feed, a new column or a different TLP mix, and what she would change first.
 
 ### 25.5 Assessment
 
 Marks reward correct outputs, clear reasoning, honest problems and correct handling labels. Pretty formatting earns nothing extra.
 
+A correct output with no explanation earns little, because the course is teaching judgment as much as scripting. Honest reporting of problems, including a step that did not work, earns credit; hiding it loses more than the problem itself. Mislabelled TLP in the summary is treated as a serious error, since in practice it would breach a sharing agreement. Feedback explains each mark, so students can improve the next report.
+
 ### 25.6 Reproducibility
 
 A classmate should be able to repeat your work from the report alone. Record script versions, input file names, the order of steps and any manual edits. If you corrected a value by hand, say so; hidden manual fixes make results impossible to reproduce.
 
+Students test this by swapping reports and trying to reproduce each other's counts. Where counts differ, the pair works out whether the report or the script was unclear, and the report is corrected. Amara's first report missed the order in which she ran two queries, which changed one count; the classmate's attempt revealed it.
+
 ### 25.7 Pairing
 
 Students work in pairs: one runs the scripts, the other checks outputs against expectations and records discrepancies. Roles swap halfway. Pairing catches mistakes early and practises the review habit that real teams rely on.
+
+The checker writes down what each output should be before the script runs, so the comparison is a real test rather than agreement after the fact. Discrepancies are listed in the lab report with how they were resolved. Pairs also agree beforehand how to record a disagreement, so that neither simply defers to the other.
 
 ### Worked example
 
@@ -1879,6 +1893,8 @@ You will (1) grade sources and information with the Admiralty system; (2) decide
 
 The Admiralty (NATO) system grades source reliability from A (completely reliable) to F (cannot be judged) and information credibility from 1 (confirmed) to 6 (cannot be judged). A reliable source can pass on doubtful information; an unknown source can report something confirmed by other evidence.
 
+Keeping the two grades separate stops the reputation of a source from making weak information look strong. Amara grades every item that reaches analysis and records the two grades in the database, so later reviewers can see how the judgment was formed.
+
 ### Lab — grading and use
 
 ```python
@@ -1910,21 +1926,31 @@ I-5 F6 cannot judge - seek corroboration
 
 I-1 is B2 — usually reliable, probably true — use for action. I-2 is E3 — unreliable source, possibly true — hold. I-3 is A5 — completely reliable source but improbable information — hold until checked; even good sources make mistakes. I-4 is C3 — fairly reliable, possibly true — use with a caveat. I-5 is F6 — cannot be judged on either axis.
 
+Amara records the reason for each decision next to the grade. The F6 item is not discarded: it is stored and checked again if other sources mention it. Amara writes each decision with a one-line reason, so the security lead can see why I-3 waits despite its excellent source, and adds the date of the next check.
+
 ### 26.3 Decision rules
 
 The lab encodes simple rules: act on combinations of A–B with 1–2; caveat C with 3; hold anything with E or 5; F6 needs more information. Teams agree their rules in advance so grading drives consistent decisions.
+
+Amara's team writes the rules into its procedures so that every analyst grades and decides the same way. Rules are reviewed after a quarter by checking how often held items later proved true and how often acted items proved false. If the rules hold back too many useful items, they are adjusted, and the change is recorded with the evidence that justified it.
 
 ### 26.4 Reasons
 
 Write why: "B — HSSC has been accurate in 18 of 20 past items" is reviewable; "B — seems fine" is not.
 
+Amara keeps a simple record of each source's past accuracy, so reliability grades rest on counts rather than impressions. Credibility reasons name the evidence: confirmed by internal logs, consistent with a second source, or unconfirmed. A reviewer reading a grade months later can then understand it without asking the original analyst, who may have moved on. The record is updated after each item.
+
 ### 26.5 Re-grading
 
 Grades change as evidence arrives. Keep history so later reviewers know what was believed when.
 
+Amara's database stores each grade with the date and reason, and a new grade is added rather than overwriting the old one. When an E3 item is later confirmed by HCHT's own logs, its credibility rises and the action changes, and the record shows both states. That history matters in reviews: an analyst who held an item that later proved true acted correctly on what was known at the time.
+
 ### 26.6 Grading OSINT
 
 Open sources range from official advisories to anonymous posts. A national agency advisory might rate B; an anonymous social-media claim, E or F until corroborated. Grade the specific author or channel, not "the internet", and remember that a reliable outlet can still repeat someone else's unverified claim.
+
+Amara applies this when two news sites repeat an anonymous claim. Amara grades the outlets that repeated it as reliable for their own reporting but traces the claim itself to its anonymous origin, which keeps its credibility low. The item stays on hold until an independent source confirms it, and she records which outlets carried it in case it spreads further.
 
 ### Worked example
 
@@ -1962,25 +1988,37 @@ You will (1) verify indicators passively before action; (2) corroborate claims w
 
 Check indicators without touching adversary systems: public DNS records, certificate-transparency logs, registration data where available, and reputable public reputation services. Visiting a live phishing page from a work device is not passive and is not allowed.
 
+Amara keeps a list of approved passive sources and checks each indicator against them in the same order, recording what each returned. If a check would require visiting the site, she stops and asks whether an isolated analysis environment is available. Most indicators can be judged well enough without it, and the record shows how each conclusion was reached.
+
 ### 27.2 Independence
 
 Two reports are independent only if they rest on different observations. Ask each source what its claim is based on. Citations to the same vendor blog do not corroborate each other.
+
+Amara asks HSSC members to state whether a report comes from their own observation or repeats another source. Two members who saw the same phishing messages in their own mail gateways count as independent; two who both cite one vendor blog do not. The distinction is recorded in the item's provenance so it is not lost when the item is shared again.
 
 ### 27.3 Environmental match
 
 An advisory about a product HCHT does not run is lower priority, however severe. Check the inventory, versions and exposure.
 
+Amara checks every advisory against the inventory before analysing it further. If HCHT runs the product, she notes the versions and whether the affected system is reachable from the internet. If not, the advisory is logged as not applicable with the date of the check, so it can be revisited if the inventory changes. This simple step removes most advisories from the analysis queue within minutes.
+
 ### 27.4 Internal corroboration
 
 The best verification is often internal: did HCHT's mail gateway receive messages from the reported sender? Did any device contact the domain? Internal sightings both verify and measure relevance.
+
+Amara runs these searches for every domain and sender in HSSC reports that pass triage. A sighting raises credibility and makes the item urgent for HCHT; no sighting, given good log coverage, lowers its priority. She records the time range and log sources searched, since a clean result means little if the logs did not cover the relevant period.
 
 ### 27.5 Recording
 
 A verification record lists each check, its result, the time and the analyst. Others can repeat or challenge it.
 
+Amara's records are short: one line per check with the source, result and time. They are stored with the item in the database, so verification and grading sit together. When a reviewer questioned one of her grades, the record showed exactly what had been checked and when, and the grade was confirmed without repeating the work. Records also show which checks find most problems.
+
 ### 27.6 Verifying claims, not only indicators
 
 Narrative claims need checking too: "the group always demands payment within 48 hours" may come from one case. Trace the claim to its original source, see what evidence it cited and whether later reporting confirmed it. Unverified claims stay in the report only with a clear caveat.
+
+Amara traced that claim to a single vendor report. The report described one case, and later reporting showed other cases with longer deadlines. Amara rewrites the sentence in her draft to say that one case involved a 48-hour demand, citing the source, and removes the word "always". Narrative claims spread easily, so each one in her reports carries its source.
 
 ### Time-boxing verification
 
@@ -2022,25 +2060,37 @@ You will (1) analyse intelligence failures without blame; (2) distinguish collec
 
 Collection failure: the signal never arrived. Analysis failure: it arrived but was misjudged. Dissemination failure: the judgment was right but reached the wrong person or too late. Action failure: the right person received it but did not act. Each needs a different fix.
 
+Amara uses these categories to sort the findings of every review, which helps the team see whether its problems cluster in one stage. In her first quarter, most findings were dissemination failures, such as advisories reaching a shared mailbox nobody owned, which pointed to process fixes rather than more analysis training. Each finding is tagged with its category in the review record.
+
 ### 28.2 Cognitive biases
 
 Heuer's Psychology of Intelligence Analysis describes how analysts see what they expect, anchor on first impressions and favour evidence that confirms their view. Structured techniques such as analysis of competing hypotheses push analysts to test alternatives.
+
+Amara's team uses competing hypotheses for any judgment that would lead to a major action, such as declaring an incident. Listing alternatives and the evidence for each makes it harder to fix on the first explanation. The technique takes time, so it is kept for decisions where an error would be costly. Peer review of drafts gives a lighter check for routine products.
 
 ### 28.3 Blameless review
 
 Reviews ask what happened and why, not who to punish. People who fear blame hide mistakes, and the organisation stops learning.
 
+At HCHT, reviews start by saying that the purpose is to improve the system. Amara saw the effect in her first review, where a colleague admitted missing an advisory because it arrived in an unmonitored mailbox; that admission led to the real fix. Without it, the review would have blamed one person and left the mailbox unmonitored, ready to cause the same failure again.
+
 ### 28.4 Timeline first
 
 Build a timeline of when information arrived, who saw it and what they did. Failures often sit in gaps between teams.
+
+Amara builds timelines from logs, tickets and email timestamps rather than memory. Each entry records what was known at that moment, not what was learned later, so the review judges decisions fairly. Gaps of several hours between one team receiving information and the next acting on it are marked, because they show where handovers need clearer owners. Amara uses a simple shared table.
 
 ### 28.5 Lessons that change things
 
 "Be more careful" is not a lesson. "Add an owner field to every advisory and confirm receipt within one day" is.
 
+Amara checks each lesson by asking who will do what by when, and how anyone will know it was done. Lessons that cannot answer those questions are rewritten. Each one gets an owner and a date, and the team reviews progress monthly. A lesson is closed only when the change has been made and checked, such as a test showing that advisories now get an owner within a day.
+
 ### 28.6 Near misses
 
 A near miss — a phishing email noticed by chance before anyone clicked — is free learning. Reviewing near misses with the same structure as incidents reveals weak points before they cause harm, and staff find these reviews less threatening because nothing went wrong.
+
+Amara reviewed one near miss in her internship. A nurse noticed an unusual sender and reported the message before anyone clicked. The review showed that the email filter had a rule for the sender's domain but it had been disabled during an outage. Restoring it, and adding email filter rules to the quarterly control check, came from that review, and the nurse's report was praised to encourage others.
 
 ### Worked example
 
@@ -2078,25 +2128,37 @@ You will (1) run a weekly CTI cycle; (2) prioritise with intelligence requiremen
 
 Monday: review requirements and open items. Daily: triage incoming items, verify urgent ones, push indicators. Thursday: draft the weekly brief. Friday: send feedback to HSSC and close items. A rhythm keeps a small team predictable.
 
+Amara keeps to the rhythm even in quiet weeks, because regular briefs and feedback build trust with readers and HSSC. When an urgent item arrives, the rhythm bends but the log records what was moved, so nothing is quietly dropped. The rhythm is written on the team's board.
+
 ### 29.2 Requirements
 
 HCHT's priority intelligence requirements include: campaigns targeting UK and EU health providers; vulnerabilities in products in the inventory; credential exposure of HCHT accounts; threats to medical devices. Items outside them get a light touch.
+
+Each requirement has a named customer, such as the identity team for credential exposure and clinical engineering for device threats, and is reviewed every six months. Amara checks each item against the list during triage, which makes her decisions quicker and easier to explain. Items outside the requirements are logged briefly in case they become relevant later.
 
 ### 29.3 TLP in practice
 
 TLP:CLEAR may be shared publicly. TLP:GREEN within the community but not publicly. TLP:AMBER within the recipient organisation and its clients on a need-to-know basis; AMBER+STRICT within the organisation only. TLP:RED to named recipients only. When HCHT re-shares, it keeps the original label or stricter.
 
+Amara checks the label before forwarding anything and keeps it on any summary she writes from a labelled report. Amara learned that AMBER allows sharing with HCHT's clients on a need-to-know basis, but AMBER+STRICT does not, which matters when a supplier asks for details. When unsure, she asks the original source before sharing, and records the answer.
+
 ### 29.4 Work log
 
 Record each item: arrival, source, TLP, grade, decision, actions, closure. The log supports handover, audit and failure review.
+
+Amara's log is a table in the team's database with one row per item and a column for each field. Closure records the outcome, such as "blocked", "no action, not applicable" or "shared back to HSSC". The log makes the weekly brief quicker to write, since most of its content comes straight from the week's closed items, and it shows at a glance what is still open.
 
 ### 29.5 Handover
 
 When Amara is away, the log tells her supervisor what is pending.
 
+Each open item shows its next step and deadline, so the supervisor can continue without calling her. Amara adds a short note to items that need context not obvious from the fields, such as a pending answer from a supplier. Before leave, she spends half an hour checking that every open item is current. After returning, she reads what changed before resuming work, which takes minutes rather than an anxious morning of catching up.
+
 ### 29.6 Urgent path
 
 Some items cannot wait for the weekly rhythm: a campaign actively hitting HCHT mailboxes, or a vulnerability under exploitation in an internet-facing product HCHT runs. The urgent path skips the brief: phone the owner, open a priority ticket, record decisions in the log, and summarise in the next weekly brief.
+
+Amara has used it once, for an actively exploited flaw in a remote access product. The owner was phoned within the hour, the service was restricted to known supplier addresses that afternoon and patched the next morning. The log recorded each step, and the weekly brief summarised what happened. A short review afterwards confirmed the urgent path worked.
 
 ### Worked example
 
@@ -2134,29 +2196,43 @@ You will (1) produce a STIX 2.1-style bundle by hand from a synthetic incident; 
 
 From a synthetic incident description — a phishing email, a credential page, a later suspicious login — students write a JSON bundle containing an indicator, an attack-pattern for T1566, an attack-pattern for T1078, a relationship linking them, and a report object. Each object gets an identifier, created and modified timestamps and a TLP marking reference.
 
+The incident is small on purpose, so students can focus on modelling it correctly rather than on volume. Students are reminded that the bundle will be reviewed by a peer and must be correct enough that another HSSC member could import it without fixing anything by hand.
+
 ### 30.2 Why by hand
 
 Writing objects by hand teaches what each field means before tools hide it. Students use Python's `json` module only to check that the file parses.
+
+Amara finds that writing the relationship object by hand makes her think about direction: does the indicator indicate the attack pattern, or the other way round? The specification answers it, and she checks it rather than guessing. Tools are allowed later in the course, once students know what a correct object looks like and can spot when a tool produces one that is wrong.
 
 ### 30.3 Patterns
 
 STIX indicators carry a pattern in STIX pattern language, for example matching a domain name value. Students copy the form from the specification rather than inventing syntax, and cite the section.
 
+Amara copies the pattern for a domain name exactly, then checks that the value inside it matches the indicator in the incident description. A typo in a pattern produces a valid file that matches nothing, which would leave HCHT believing it was protected. Peer reviewers are asked to check each pattern against the incident text.
+
 ### 30.4 Peer review
 
 Pairs swap bundles and check: does every relationship point to objects that exist? Are timestamps in UTC? Is the TLP marking present on each object? Is any personal data present?
+
+Reviewers write their findings as comments on the bundle, each naming the object and the problem. Personal data is the easiest mistake to miss, since the synthetic incident includes a staff name that does not belong in a shareable bundle. Authors fix the problems and reply to each comment, which shows how they dealt with it.
 
 ### 30.5 Memo
 
 A half-page memo explains modelling choices: why a relationship type was chosen, what was left out and why.
 
+Amara's memo explains that she left out the victim's identity because it is not needed by other members and would add personal data. She chose the "indicates" relationship between the indicator and the phishing attack pattern, following the specification. A second relationship, linking phishing to the later login, was omitted because the evidence connecting them is only the timing, and she did not want the bundle to state as fact what is an inference.
+
 ### 30.6 Identifiers and versions
 
 STIX identifiers combine the object type and a UUID. When an object changes, its identifier stays the same and the modified timestamp moves forward. Students who create a new identifier for every edit break references from other objects, a mistake peer reviewers learn to spot quickly.
 
+Amara's reviewer found that she had done this once. She had created a new identifier when correcting the indicator's pattern, which left the relationship pointing to the old object. Fixing it meant restoring the original identifier and updating the modified timestamp. The mistake is now on the class checklist for peer review, and Amara checks her own bundles for it before submitting.
+
 ### 30.7 Assessment
 
 Marks reward a valid, minimal bundle with correct references and labels, a thoughtful memo and constructive review comments on a peer's work.
+
+Marks are higher for a bundle that contains only what the incident supports. Extra objects that add guesses or personal data lose marks, because in practice they would mislead or expose others. The memo is judged on whether it explains choices clearly and honestly, including what was left out. Review comments earn credit when they are specific and help the author fix a problem.
 
 ### Worked example
 
