@@ -14,6 +14,8 @@
 .course-sidebar p { color: var(--muted); font-size: .82rem; margin: 0; }
 .course-sidebar-head a { display: inline-block; color: var(--gold); font-size: .82rem; margin-top: 14px; }
 .course-sidebar nav { display: grid; padding: 8px 0 18px; }
+.course-sidebar .course-index-heading { margin: 13px 18px 5px; color: var(--gold); font-size: .82rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.course-index-note { margin: 5px 18px 12px; color: var(--muted); font-size: .81rem; }
 .course-module { border-bottom: 1px solid var(--line); }
 .course-module summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer; padding: 12px 18px; list-style: none; font-size: .84rem; font-weight: 600; }
 .course-module summary::-webkit-details-marker { display: none; }
@@ -24,6 +26,7 @@
 .course-lesson { display: grid; grid-template-columns: 27px minmax(0, 1fr); column-gap: 9px; border-left: 3px solid transparent; padding: 10px 17px; font-size: .84rem; line-height: 1.35; }
 .course-lesson:hover, .course-lesson.active { color: var(--text); background: var(--surface-2); }
 .course-lesson.active { border-left-color: var(--gold); }
+.course-lesson:has(.lesson-state) { text-decoration: none; }
 .course-lesson .lesson-number { color: var(--gold); font-weight: 600; }
 .course-lesson .lesson-state { grid-column: 2; color: var(--muted); font-size: .72rem; margin-top: 2px; }
 .course-lesson.active .lesson-state { color: var(--gold); }

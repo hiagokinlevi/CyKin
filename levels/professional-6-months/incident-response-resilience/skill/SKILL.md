@@ -6,7 +6,7 @@ license: CC0-1.0
 
 # Incident response and cyber resilience — Professional course skill
 
-Use this **one skill for the whole 6 months course**. The course has one principal book per language; each of its 12 subjects is a chapter of that book. Read the actual manuscript when available and never present a plan as a completed lesson.
+Use this **one skill for the whole 6 months course**. The course has one principal book per language. Its 12 authored subject chapters remain intact; Chapter 1 now contains a distinct five-day Week 1 sequence. Do not count the other chapters as 125 already authored daily lessons. Read the actual manuscript when available and never present a plan as a completed lesson.
 
 ## Course sources
 
@@ -21,6 +21,8 @@ Use this **one skill for the whole 6 months course**. The course has one princip
 ## Navigation rule
 
 At the end of an authored chapter or a book-plan chapter summary, use its **Continue studying** block for the previous chapter, course index and next chapter. Keep the learner's course and chapter position visible. If the next link is a plan, explain that the lesson is not yet authored and do not mark it complete. The course chapter index connects its final row to the next course in the same language.
+
+For Week 1, teach [Day 1](../en/book/MANUSCRIPT.md#week-01-day-01) through [Day 5](../en/book/MANUSCRIPT.md#week-01-day-05) separately. Each day contains a worked W1 example, a link to one existing EX001–EX005 prompt, its worked answer, and previous/next navigation. W1 is an isolated synthetic rehearsal, not new CTN evidence. Ask the learner to state the difference between a proposed test and an observed receipt before showing the answer. The remaining 12-chapter route is readable as legacy subject teaching, while the daily curriculum is still being authored.
 
 
 ## Authored twelve-subject route

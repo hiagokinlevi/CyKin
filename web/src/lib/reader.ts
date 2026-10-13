@@ -17,7 +17,7 @@ function sourcePath(url: URL): string | null {
 }
 
 export function internalSourceLink(href: string, sourceUrl: string, language: string, mode: 'book' | 'lesson' | 'reference' = 'lesson'): string | null {
-  if (href.startsWith('#') && (mode !== 'lesson' || !/^#(?:ch|lesson)-\d{2,4}$/i.test(href))) return href;
+  if (href.startsWith('#') && (mode !== 'lesson' || !/^#(?:ch-\d{2,4}|lesson-\d{2,4}|week-\d{2,4}-day-\d{2})$/i.test(href))) return href;
   let url: URL;
   try { url = new URL(href, sourceUrl); } catch { return null; }
   const path = sourcePath(url);
@@ -32,16 +32,20 @@ export function internalSourceLink(href: string, sourceUrl: string, language: st
     if (file === 'book/MANUSCRIPT.md') {
       if (mode === 'book' && sourcePath(new URL(sourceUrl)) === path && url.hash) return url.hash;
       const lesson = url.hash.match(/^#lesson-(\d{2,4})$/i);
-      if (lesson) { query.set('chapter', String(Number(lesson[1]))); return coursePage + '?' + query; }
+      if (lesson) { query.set('unit', 'daily'); query.set('chapter', String(Number(lesson[1]))); return coursePage + '?' + query; }
+      const weekday = url.hash.match(/^#week-(\d{2,4})-day-(\d{2})$/i);
+      if (weekday) { query.set('unit', 'daily'); query.set('chapter', String((Number(weekday[1]) - 1) * 5 + Number(weekday[2]))); return coursePage + '?' + query; }
       const chapter = url.hash.match(/^#ch-(\d{2,4})$/i);
-      if (chapter && mode === 'lesson' && !/^#lesson-\d{2,4}$/i.test(new URL(sourceUrl).hash)) { query.set('chapter', String(Number(chapter[1]))); return coursePage + '?' + query; }
+      if (chapter && mode === 'lesson') { query.set('unit', 'chapter'); query.set('chapter', String(Number(chapter[1]))); return coursePage + '?' + query; }
       return '/book/?' + new URLSearchParams({ level, area, lang }) + url.hash;
     }
     if (file === 'SUBJECTS.md' || file === 'README.md') {
       const lesson = url.hash.match(/^#lesson-(\d{2,4})$/i);
+      const weekday = url.hash.match(/^#week-(\d{2,4})-day-(\d{2})$/i);
       const chapter = url.hash.match(/^#ch-(\d{2,4})$/i);
-      if (chapter) return '/book/?' + new URLSearchParams({ level, area, lang }) + url.hash;
-      if (lesson) query.set('chapter', String(Number(lesson[1])));
+      if (chapter) { query.set('unit', 'chapter'); query.set('chapter', String(Number(chapter[1]))); return coursePage + '?' + query; }
+      if (lesson) { query.set('unit', 'daily'); query.set('chapter', String(Number(lesson[1]))); }
+      if (weekday) { query.set('unit', 'daily'); query.set('chapter', String((Number(weekday[1]) - 1) * 5 + Number(weekday[2]))); }
       return coursePage + '?' + query;
     }
   }

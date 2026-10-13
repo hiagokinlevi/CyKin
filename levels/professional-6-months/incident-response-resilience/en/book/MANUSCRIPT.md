@@ -10,7 +10,7 @@
 
 ## How to study this draft
 
-Read the twelve authored chapters in order. Each chapter is one curricular subject. Work the exercises before opening the answer section; every exercise specifies an artifact that another responder could inspect. Keep four columns in your notes: **observation, inference, decision, verification**. A plausible inference is not a collected fact. A proposed action is not approval, execution or a measured result. These distinctions matter more than a dramatic incident narrative.
+Read the twelve authored subject chapters in order. Chapter 1 now includes a [five-day professional study sequence](#week-01-day-01); the other chapters retain their earlier subject structure while distinct weekday teaching is developed. Five published daily units are not the 130 lessons of the six-month curriculum. Work each exercise before opening its answer; every exercise specifies an artifact that another responder could inspect. Keep four columns in your notes: **observation, inference, decision, verification**. A plausible inference is not a collected fact. A proposed action is not approval, execution or a measured result. These distinctions matter more than a dramatic incident narrative.
 
 This course's fictional case is **Cedar Training Network (CTN)**, an invented organization with an enrollment portal. All names, accounts, ticket IDs, timestamps, systems, policies, records and retention windows below are synthetic classroom data. There are no real personal records or reachable services. Record IDs `C01`–`C33` are case cards, not externally sourced facts. A card's *event time*, *ingestion time* and *release time* can differ. Unless a chapter expressly releases a later card, use only the information available at that chapter's checkpoint. Exercise variants marked `V` and playbook specimens `P0`/`P1` are separate simulations or teaching artifacts and do not rewrite the main case.
 
@@ -18,7 +18,7 @@ The recommended starting point for organizational incident-response outcomes is 
 
 ## Contents
 
-1. [Incident lifecycle and organizational readiness](#ch-01) — define the service, owners, evidence readiness and first handoff.
+1. [Incident lifecycle and organizational readiness](#ch-01) — define the service, owners, evidence readiness and first handoff; [Week 1: five applied daily lessons](#week-01-day-01).
 2. [Authority, scope and response roles](#ch-02) — turn a charter into approval gates and reversible proposals.
 3. [Alert intake and severity assessment](#ch-03) — reconcile signals and assign a reviewable priority.
 4. [Evidence preservation and case records](#ch-04) — collect bounded copies and document provenance and limits.
@@ -330,6 +330,104 @@ Compare two synthetic backlog items. Item A is missing an after-hours identity a
 
 **Synthesis and next chapter boundary:** Chapter 1's C01 describes preparedness *before an incident*. The S41 training experiments here remain proposals and invented offline exercises. When C02 appears at 09:04 in Chapter 2, do not import the synthetic PASS state as evidence that CTN actually audited anything. Instead, carry the gaps forward as explicit owner/authority questions.
 
+### Week 1 — five applied daily lessons
+
+The sections above supply the chapter's reference explanation and two offline classifiers. The following five lessons turn that reference into a supervised practice sequence. **W1** below is a separate, wholly invented training-tenant design; its rows are neither new CTN case cards nor claims about a working CTN deployment. The sequence deliberately moves from service behavior to evidence, authority, time and handoff. Complete one day's artifact and compare it with the existing numbered exercise answer before continuing. The five exercises remain EX001–EX005; the lessons do not inflate the exercise count.
+
+| Day | Question to settle | Submitted artifact | Exercise |
+|---|---|---|---|
+| [1](#week-01-day-01) | What would a correct enrollment transaction do? | A service invariant and typed dependency map | [EX001](#exercise-ex001) |
+| [2](#week-01-day-02) | Which write routes are actually observable? | A falsifiable, route-specific evidence contract | [EX002](#exercise-ex002) |
+| [3](#week-01-day-03) | Who may ask, approve and execute? | An authority and alternate-path matrix | [EX003](#exercise-ex003) |
+| [4](#week-01-day-04) | What does a time window really bound? | A clock and retention-question sheet | [EX004](#exercise-ex004) |
+| [5](#week-01-day-05) | What can the next shift safely conclude? | A reviewed handoff with owners and retests | [EX005](#exercise-ex005) |
+
+<a id="week-01-day-01"></a>
+
+#### Day 1 — Model a service transaction before a security signal
+
+**Learning decision.** Given a reported change to a class slot, decide which state transition would be acceptable and which dependency could explain a deviation. An event feed cannot answer this until the expected business behavior is written down. [NIST CSF 2.0](https://www.nist.gov/publications/nist-cybersecurity-framework-csf-20) provides high-level risk-management outcomes, while [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) places response within that wider process. The transaction model below is CyKin's teaching construction, not a NIST-prescribed schema or a verified CTN implementation.
+
+For the separate **W1** rehearsal, suppose a training class has one seat remaining. A client sends reservation request `q-A`; an unreliable network makes the client retry the *same* request; another client sends `q-B`. Specify the intended behavior *before* seeing logs: exactly one successful reservation may consume the remaining seat, a retry of `q-A` must not consume it twice if the service promises idempotency, and a rejected request must not decrement availability. Whether CTN has an idempotency key, a serial transaction or a version check is **unknown**. The model is a question for the application owner, not a reason to assert that CTN satisfies it.
+
+The write path and the observation path have different failure points:
+
+```mermaid
+flowchart LR
+  C["Client request q-A"] --> A["Enrollment API"] --> D["Authoritative slot state"]
+  A -. "proposed audit event" .-> P["Source audit producer"] --> K["Collector"] --> X["Scoped export"]
+  I["Identity service"] -. "session evidence, if emitted" .-> K
+  O["Service owner"] -. "defines acceptable transition" .-> D
+```
+
+The solid path represents the proposed business transaction; dotted paths represent claims to test. Even a complete export from `X` would not, by itself, establish that `D` committed a valid result. A reservation receipt might be returned before a delayed write, and a notification could be queued before a rollback. Ask the service owner which record is authoritative, which request or version key joins client and write records, and how an authorized isolated test would distinguish a duplicate retry from a second successful booking. If no stable key exists, do not substitute a shared minute or account label for identity of an operation.
+
+**Worked example.** Under the *hypothetical* contract, start at one available seat. If `q-A` succeeds, availability becomes zero and its retry returns the same reservation reference without another decrement. `q-B` then fails with an unchanged zero. A displayed success for both requests would violate the contract or indicate that the assumed contract is wrong; a single application log line cannot choose between those explanations. The first supervisor question is therefore “Is idempotency promised on this route, and which authoritative state/version verifies it?” rather than “Which attacker booked twice?” This is an example of deriving a testable question from an invariant, not an observation about C01.
+
+**Practice.** Complete [EX001](#exercise-ex001) using C01, but add to its five-row map one proposed W1 invariant and label every graph edge **data**, **evidence**, **authority** or **recovery**. Give one possible falsifier for the API-audit edge and one for the backup-to-restore edge. The existing [worked answer](#answer-ex001) supplies the decision/owner pattern; your extra W1 contract may differ if it states its assumptions and does not assert deployment facts. **Limit:** a diagram documents what to verify; it cannot verify it. [Previous: chapter start](#ch-01) · [Week index](#ch-01) · [Next: Day 2](#week-01-day-02).
+
+<a id="week-01-day-02"></a>
+
+#### Day 2 — Test coverage by write route and by evidence layer
+
+**Learning decision.** Decide whether a planned evidence source can support a *particular* decision, not whether “logging is on.” An audit producer may record scheduled jobs but omit manual edits; a collector may receive both but lose a join field; an export may filter out the correct source. [NIST SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final) describes log management as an enterprise process rather than a guarantee that every individual route is captured. This book's route matrix is a local rehearsal method, not a control requirement quoted from that publication.
+
+Design separate, permitted training inputs: a scheduled S41 change with request `train-17`, a manual S41 change with request `train-18`, and an unrelated S40 change with request `train-19`. For each input, define what the *producer* should emit, what the *collector* should retain, and what the *bounded export* should return. A successful S41 selector must include the intended route's event and exclude S40; it must also preserve enough source metadata to explain why that row was selected. A missing event, absent request key and overbroad selection are three different defects, each with a different custodian question.
+
+| W1 rehearsal row, all hypothetical | Producer record | Collector record | Selected export | Defensible interpretation |
+|---|---|---|---|---|
+| Scheduled S41 / `train-17` | Slot and request key expected | Receipt time to measure | Matching S41 row expected | A pass would cover only this route and test window. |
+| Manual S41 / `train-18` | Request key *not yet established* | Visibility unknown | Query result unknown | Cannot borrow the scheduled result. |
+| Unrelated S40 / `train-19` | Distinct slot expected | Visibility to check | Must not match S41 selector | A false match falsifies selector specificity. |
+
+**Worked example.** Suppose a *fictional rehearsal result* shows `train-17` at the producer and collector, but the export drops the `request_id` column. “Scheduled events are emitted” may be supported by the producer receipt; “the exported record can be joined to the reservation request” is not. If S40 also appears in the S41 export, narrowing the predicate is a query repair to test, not evidence that source logging was repaired. Conversely, an empty export cannot prove absence of a write until producer coverage, collector path, query semantics, clock conversion and permissions have been checked. Never fabricate these receipts for C01, whose training test remains only proposed.
+
+**Practice.** Work [EX002](#exercise-ex002): write the six contract fields, state the authorized training tenant, exact start of a 20-minute clock, positive `S41` event and `S40` negative control, and name the evidence that would fail each layer. Compare with its [worked answer](#answer-ex002). A test plan is complete when another authorized person could run it and recognize failure; a “green logging dashboard” is insufficient. **Limit:** even a passed trial samples one route, time and configuration. [Previous: Day 1](#week-01-day-01) · [Week index](#ch-01) · [Next: Day 3](#week-01-day-03).
+
+<a id="week-01-day-03"></a>
+
+#### Day 3 — Separate availability of a person from authority to decide
+
+**Learning decision.** A contact directory is useful only if the contacted role can make the required decision for this scope and time. Split four powers: request an action; approve access to evidence; approve disruption to service; perform the approved action. A single person may hold several powers under a real policy, but the case record must say *which power was exercised and under which rule*. C01 names neither an after-hours identity alternate nor a service-owner fallback. A learner cannot fill those blanks by guessing who is on call.
+
+Use a minimal decision gate before any controlled rehearsal: `(action, target, environment, window, purpose, approver role, operator role, evidence to record, stop condition)`. The tuple is a teaching aid. A right to view an IdP dashboard does not imply permission to export detailed events, and an export permission does not imply permission to revoke a session. The same separation applies when urgency rises later in Chapter 2. The [NIST incident-response recommendations](https://csrc.nist.gov/pubs/sp/800/61/r3/final) support planned response capability; they do not issue tenant-specific delegations to a learner.
+
+**Worked example.** In W1 at a synthetic 02:00 shift, suppose the analyst needs to confirm whether detailed IdP session fields can be obtained before a *hypothetical* source becomes unavailable. The primary identity custodian is unreachable; C01 has no alternate. The analyst may prepare a bounded request and record the contact failure. They may not ask a convenient administrator to use their credential, infer permission from read-only access, or perform a disruptive session reset. The incident lead can route the missing authority question to the organization's actual escalation mechanism if one exists; where no route is documented, status remains **awaiting authorized path**. This records a service-readiness defect without accusing anyone of causing an incident.
+
+Make the negative path explicit. If an approved alternate exists but can only authorize data collection, that still leaves session revocation gated. If the service owner can approve a pause but no operator is available, the pause is approved but **not executed**. If an operator reports execution, the next record is verification of effect and service impact; do not convert the operator's statement into measured containment. Separating these states prevents a generic “handled” label from hiding missing evidence.
+
+**Practice.** Complete [EX003](#exercise-ex003) as a role and alternate matrix. For identity export, session restriction and service-outage tolerance, name the distinct requested decision, approval source, operator and exact unknown if the primary is absent. Compare with its [worked answer](#answer-ex003). **Limit:** this public example supplies no real organization policy or emergency delegation. [Previous: Day 2](#week-01-day-02) · [Week index](#ch-01) · [Next: Day 4](#week-01-day-04).
+
+<a id="week-01-day-04"></a>
+
+#### Day 4 — Reason about clocks without inventing a deletion deadline
+
+**Learning decision.** A retention claim is not a deadline until its dataset, anchor event, configuration and observed behavior are known. The phrase “24 hours” in C01 might describe source event age, collector query visibility or export artifact life. An analyst who adds 24 hours to the time C01 was *read* has chosen an anchor unsupported by the worksheet. [NIST SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final) motivates planned log-management processes; it does not determine CTN's storage policy or the safety of waiting until a calculated minute.
+
+For a separate W1 arithmetic illustration, suppose a synthetic event has **event time 08:00**, **collector receipt 08:07** and **export creation 08:10 UTC** on day D. Under three *different hypothetical* 24-hour policies, nominal cutoffs would be D+1 at 08:00, 08:07 and 08:10 respectively. Those values are conditional calculations, not confirmed expiry times: clock error, ingestion delay, policy exceptions and query lag remain unmeasured. A fourth possibility is that “24 hours” is a contractual objective not implemented by any of those components. Ask the application and logging custodians which dataset and clock each rule covers, and test retrieval in an approved nonproduction environment before scheduling any edge-of-window exercise.
+
+Now separate **retrieval latency** from **retention**. In the proposed S41 rehearsal, if an authorized training event occurs at 09:00 and the verified matching producer/export receipt is obtained at 09:19, the 20-minute goal passes for that test. A query *submitted* at 09:19 but a usable, checked record obtained at 09:23 fails that goal. An analyst's screen showing “found one result” is not yet a verified receipt if the slot, request key, source and time basis were not checked. Conversely, missing evidence from a broad query is not a measured expiration. State precisely where measurement starts and ends.
+
+**Worked example.** A supervisor asks, “Can we defer the rehearsal until tomorrow at 08:40?” The correct answer is “C01 cannot support that decision.” If the source-event policy from the illustration applies, a day-D 08:00 event would reach its *nominal* D+1 08:00 boundary before the proposed meeting. If the export-artifact rule applies instead, the meeting may still be too late or irrelevant because no export was created. The conservative action is to obtain the custodian's policy and a permitted earlier test, not to declare that a 24-hour deadline has been proven.
+
+**Practice.** Complete [EX004](#exercise-ex004) with three plausible interpretations of “24 hours,” a different required owner record for each, and a cautious next action. Use the [worked answer](#answer-ex004) to check the reasoning. **Limit:** simulated arithmetic does not measure clock skew or prove actual retention. [Previous: Day 3](#week-01-day-03) · [Week index](#ch-01) · [Next: Day 5](#week-01-day-05).
+
+<a id="week-01-day-05"></a>
+
+#### Day 5 — Hand over a readiness decision that another shift can falsify
+
+**Learning decision.** A professional handoff is a decision instrument, not a narrative of everything the analyst read. Carry forward the service outcome, two highest-consequence unknowns, the authorized owner for each next check, the proposed negative control, and the exact point at which a claim can be revised. Organize each statement by status: **worksheet observation**, **inference**, **proposed test**, **authorized test**, **executed result**, or **owner acceptance**. In C01, only the worksheet and its omissions are case observations. The W1 transaction, matrix and clock examples are teaching variants; importing their apparent passes into the main CTN case would corrupt the later investigation.
+
+Use an operational priority rule: ask which missing fact could close a decision window and what harmless action is possible now. The undocumented identity alternate may affect access to short-lived detail; the unverified restore may affect later recovery acceptance. Neither is a percentage. Rank by the decision harmed and the evidence needed, then assign a check to an actual role. An issue is not closed because a named person has been contacted; closure requires the specified proof, reviewer and retest when the relevant condition changes. [NIST SP 800-84](https://csrc.nist.gov/pubs/sp/800/84/final) discusses designing and evaluating training and exercises; the exact CTN scoring and handoff fields here are original teaching choices, not mandated NIST paperwork.
+
+**Worked example.** The reviewer receives two candidate handoffs. “CTN is ready: logs show the scheduled job is fine, and IT will restore if needed” fails: C01 supplies no executed log test, “IT” is not an owner, and a backup job is not a verified restore. A defensible alternative is: “C01 lists enrollment dependencies but leaves the identity alternate and service-owner fallback blank. The API-audit 24-hour claim lacks an anchor. The application custodian should seek approval for a training S41 scheduled write and S40 exclusion control, then record request fields and verified retrieval time. The identity owner should confirm a delegated after-hours export route; the recovery lead should propose an isolated acceptance check. All tests are pending; no incident is inferred.” This record is short because its boundaries are explicit, not because the situation is resolved.
+
+Review the draft as if you were the next shift. Can you identify who will do the S41 test, what would falsify it, which clock they will use and which decision remains blocked if the identity route is unavailable? If any answer is missing, send it back for revision. Keep the classification of **test proposed** distinct from **test run**; the event time and actual execution record must be added only after a permitted rehearsal occurs. This allows the next shift to check progress without pretending that a plan is a result.
+
+**Practice.** Submit [EX005](#exercise-ex005) using your EX001–EX004 artifacts; write the required 90–140-word handoff and a two-row owner/retest table. Compare its [worked answer](#answer-ex005), which is one defensible example rather than a unique script. **Limit:** another organization may allocate roles differently under its own approved policy; never infer local authority from this fictional handoff. [Previous: Day 4](#week-01-day-04) · [Week index](#ch-01) · [Next: Chapter 2](#ch-02).
+
+<a id="week-01-end"></a>
+
 ### Common mistakes and limits
 
 - Treating a planned log source as a collected record. Corrective action: write a rehearsal result or mark coverage unknown.
@@ -343,17 +441,27 @@ In a synthetic worksheet, build the five-row map, mark unverified fields and wri
 
 ### Exercises — subject 1
 
+<a id="exercise-ex001"></a>
+
 **EX001 — Service dependency map.** Input: `C01` and the six CTN dependencies above. Produce a table with at least five dependencies, a decision each might support, custodian role and one unverified assumption. Assessment: 0 = missing decision/owner; 1 = map with vague assumptions; 2 = actionable, bounded map that does not claim the source is already verified.
+
+<a id="exercise-ex002"></a>
 
 **EX002 — Evidence-readiness contract.** Input: the proposed S41 scheduled-job change and unrelated S40 control. Produce all six contract fields, including expected fields, a 20-minute collection window and a falsifiable failure signal. State that the rehearsal requires a permitted training tenant. Use the EX001 rubric, with 2 requiring a negative control.
 
 **C1 extension for EX002:** Identify the approved custodian, the request-ID coverage question, the precise start and end of the 20-minute test, and what a missing scheduled-path field would invalidate. Run the separate C1 offline fixture only to practice interpreting unknown statuses; its output is not a real collection receipt.
 
+<a id="exercise-ex003"></a>
+
 **EX003 — Owner escalation.** Input: `C01` has no after-hours identity alternate or service-owner fallback. Write a role-based primary/alternate matrix and the exact unanswered decision if each is unavailable. No personal contacts may be invented. A 2-point result distinguishes collection permission from disruptive-action approval.
+
+<a id="exercise-ex004"></a>
 
 **EX004 — Retention ambiguity.** Input: “API audit: 24 hours” in `C01`. Give three plausible meanings, one question to the custodian and a conservative readiness action. A 2-point result does not calculate a deletion deadline from an unanchored claim.
 
 **C1 extension for EX004:** For each proposed retention anchor, name a different measurement or record that the application custodian would need to supply. An edge-of-window rehearsal is a *proposal* until authorized and executed.
+
+<a id="exercise-ex005"></a>
 
 **EX005 — Readiness handoff.** Input: your EX001–EX004 artifacts. Write a 90–140-word shift handoff with service outcome, top two gaps, owners, proposed tests and no incident conclusion. A 2-point result labels tests as proposed and assigns owners.
 
@@ -3742,25 +3850,52 @@ These are model results for the **fictional** CTN case. Each exercise's local 0�
 
 ### Subject 1: EX001–EX005
 
+<a id="answer-ex001"></a>
+
 **EX001 — Model service map.** A sufficient table includes (1) API audit → identify slot S42 write/request ID → application custodian → scheduled-route coverage unknown; (2) IdP → sign-in/session fields → identity custodian → detailed retention unknown; (3) support → symptom and receipt → support lead → reporter's observation not verified state; (4) change calendar → approved slot scope → service owner → addendum process unknown; (5) backup → candidate restore copy → recovery lead → last isolated restore unknown. This is a *readiness map*. It does not assert that S42 was changed or that these sources were collected at 08:40. Two points require a decision and a real gap in every row; “IT owns everything” earns at most one.
 
 **Additional worked reasoning (EX001 — Why each dependency supports a different decision.):** A reviewable map should include five or more rows such as: API audit → “which request changed S41?” → application custodian → scheduled/manual coverage unverified; IdP → “which account/session fields can be produced?” → identity custodian → no after-hours alternate; support → “what was reported and received?” → support lead → no authoritative backend state; change ledger → “was S41 in a permitted task version?” → service owner → addendum process unknown; backup → “can selected slot values be reconstructed?” → recovery lead → restore correctness untested. Every row states *how to falsify readiness*: a missing scheduled route, unusable key, unavailable alternate or failed isolated restoration. C01 does not supply results for these tests. A table simply saying “SIEM: green” has no operational decision linkage.
+
+**Week 1 Day 1 extension — worked result.** A possible W1 invariant is “with one seat left, the first accepted `q-A` consumes one seat, its retry consumes none, and rejected `q-B` consumes none.” Label client → API → slot store as **data**, API → source audit → collector as **evidence**, service owner → acceptance criterion as **authority**, and backup copy → isolated restore as **recovery**. The API-audit edge would fail if an authorized scheduled `q-A` test produced no stable request key; the restore edge would fail if a permitted isolated restore returned a slot count different from the approved target. These are **proposed falsifiers**, not executed findings. A response earns the second rubric point only when it distinguishes the intended transaction from a measured implementation and names owners for its proposed checks.
+
+<a id="answer-ex002"></a>
 
 **EX002 — Model contract.** Decision question: can a responder retrieve a scheduled-job change to S41 within 20 minutes and distinguish it from unrelated S40? Expected producer: API audit, with slot ID, request ID, producer, UTC event time and collection time to verify. Time/retention: ask the custodian how long each event remains and start a 20-minute test clock at the authorized event. Access: application custodian in a permitted training tenant, with no personal enrollment data. Positive test: execute a *synthetic authorized* S41 change and recover its record. Negative control: query the same bounded selector and confirm unrelated S40 is absent; also check whether an alternate write route emits an event. Failure: missing `request_id`, wrong slot, missing event, inaccessible export or collection after 20 minutes. Fallback: retain the failed result, ask the owner for a narrower alternative source, and revise correlation plans. This is a **test plan**, not a successful test report.
 
 **Additional worked reasoning (EX002 — Falsifiable supervised rehearsal.):** Define a permission-gated nonproduction change to S41, a known unrelated S40 event, the intended query predicate (exact slot plus stable request ID), expected producer UTC time, *start at actual test event*, twenty-minute maximum until a verified matching source receipt, and a separate observed query return. An approved test procedure is not its execution; the reviewer records both. Reject if S41 is absent, S40 is wrongly included, the ID is missing, the clock cannot be interpreted or the collection is late. The original C1 fixture's “yes” does not satisfy these conditions, and C1X's PASS_DECLARED_FIXTURE is only a consistency check. This prevents using a toy result to justify a real CTN collection.
 
+**Week 1 Day 2 extension — worked result.** For W1 `train-17`, the producer must attest that a scheduled S41 event with that key was emitted; the collector must record receiving that exact source event; the restricted export must preserve key, slot, event time and query metadata. For `train-18`, repeat those checks on the *manual* route rather than inheriting the scheduled result. For `train-19`, verify that the S41 export excludes unrelated S40. If the export drops the key, the producer path might pass while **decision-useful export coverage fails**. If S40 appears, selection specificity fails even if the source is intact. If the producer never emitted a manual event, repairing a query will not repair producer coverage. Two points require all three layers, the negative control, and an explicit refusal to call a planned check an observed receipt.
+
+<a id="answer-ex003"></a>
+
 **EX003 — Model escalation matrix.** Identity export: primary identity custodian, alternate **missing in C01**, response lead can request but cannot appoint an unauthorized substitute. Account/session restriction: identity owner plus service owner/emergency-change approver decide scope; an authorized identity operator executes; fallback approval route **not supplied**. Service-outage tolerance: service owner decides; after-hours delegate **missing**. Case coordination: incident lead records the owner gap and escalates through the organization's actual supervisor process if available. The unanswered decision is who can approve time-sensitive identity collection or disruption when the primary is absent. A plan that names a made-up person or treats the analyst as approver loses the boundary point.
 
 **Additional worked reasoning (EX003 — Missing authority is an explicit finding.):** The identity custodian may have delegated evidence-export rights but the identity owner separately decides about session/account restrictions under the applicable plan. With the alternate and service-owner fallback unlisted, the correct cells are *unknown/await approved escalation*, not invented names. The incident lead can record contact attempts and seek organizational authorization; the analyst may not create an emergency power. An outcome that names a responsible role but leaves the authorization source undefined is **incomplete**, not approved.
+
+**Week 1 Day 3 extension — worked result.** A role matrix can say: “IdP detail: analyst **requests**, identity custodian/data owner **approves** under actual policy, authorized custodian **exports**, incident lead **records**; after-hours alternate **not supplied in C01**.” For session restriction, use a separate identity/service-owner decision and an identity operator; neither the export approval nor the analyst's request covers that action. For service-outage tolerance, name the service owner and mark the fallback **not supplied**. At 02:00, an unreachable primary changes the route to *pending authorized escalation*, not to *approved by urgency*. Two points require this separation and an explicit blocked decision for each missing alternate.
+
+<a id="answer-ex004"></a>
 
 **EX004 — Model retention clarification.** “24 hours” might mean a rolling window measured from source event time, an export queue lifespan measured from request time, or a contractual maximum that has not been technically checked. Ask the application custodian: “For which exact dataset and anchor event does the 24-hour period begin, and can a permitted test verify availability near the edge?” Conservative action: document the ambiguity, prepare a bounded query and test in a training tenant; do not compute a deletion deadline or declare the source safe for a day.
 
 **Additional worked reasoning (EX004 — What “24 hours” cannot mean without proof.):** A source-event retention period requires source configuration and event-time semantics. A collector query horizon requires index settings and a representative filter/ingestion check. An export queue lifetime requires request/creation and expiration receipts. These mechanisms lead to different safe collection windows; C01 supplies none. Prepare a bounded source question rather than calculating “C01 at 08:40 means expiry tomorrow at 08:40.” If an edge-of-window rehearsal is proposed, obtain consent for its **nondestructive** method; never try deleting relevant incident material to prove protection.
 
+**Week 1 Day 4 extension — worked result.** For the separate W1 numbers only, 08:00 event time + 24 hours gives D+1 08:00; 08:07 collector receipt + 24 hours gives D+1 08:07; 08:10 export creation + 24 hours gives D+1 08:10. These are three *conditional* nominal boundaries, not three measured CTN expirations. A 09:00 authorized test with a verified matching receipt at 09:19 has 19 minutes of measured retrieval latency; a query sent at 09:19 but verified at 09:23 has 23 minutes and fails the proposed 20-minute goal. The owner must identify the actual retention dataset/anchor and provide a permitted measurement before a live deadline is claimed. Two points require both the conditional arithmetic and the refusal to turn C01's 08:40 discovery into an expiration clock.
+
+<a id="answer-ex005"></a>
+
 **EX005 — Model handoff (102 words).** “CTN enrollment depends on the API, IdP, support and recovery services. C01 names an application and recovery lead, but it leaves the after-hours identity alternate and service-owner fallback blank. The asserted API-audit 24-hour window has no defined anchor. The response lead should ask the application custodian to test one synthetic scheduled S41 change and an unrelated S40 control, recording fields and retrieval time. The identity custodian should verify detailed-log retention and its authorized export path. The service owner should assign an emergency delegate and define an isolated restore acceptance test. These are proposed readiness checks; C01 contains no incident observation.” A shorter result can earn two points if it retains all required roles, gaps and status distinctions.
 
 **Additional worked reasoning (EX005 — Model 108-word handoff.):** “At 08:40 UTC the CTN readiness worksheet identifies enrollment dependencies but not an after-hours identity alternate or a service-owner fallback. Its twenty-four-hour API audit claim has no verified source or clock anchor. I recommend two supervisor-approved rehearsals: first, use a harmless S41 scheduled change and unrelated S40 control to verify request-ID coverage and retrieval within twenty minutes; second, verify an authorized identity-custodian path when the primary is unavailable. The application owner should document manual-write audit coverage, and the recovery lead should propose an isolated restore acceptance test. All tests and approvals remain pending. C01 contains no evidence of a live incident or compromise.” Assess the stated owner, two measurable gaps, absence of invented outcomes and usable next shift action, not style alone.
+
+**Week 1 Day 5 extension — worked owner/retest table.** The handoff above is the 90–140-word response. Add an artifact such as:
+
+| Gap carried forward | Owner and proposed next evidence | Retest and closure condition |
+|---|---|---|
+| Scheduled/manual API-audit coverage unverified | Application custodian requests an approved S41/S40 training rehearsal; record producer fields, collector receipt, export selector and verified retrieval time. | Re-run on each permitted route after a relevant configuration change; close only for the tested route/window when both positive event and negative control satisfy the contract. |
+| After-hours identity route absent | Identity owner identifies an actually delegated export alternate under local rules; incident lead records the documented path. | During a permitted timed exercise, contact the delegate and confirm the exact data scope they may approve; close only when the path and decision right work, not when a name is written down. |
+
+An isolated restore check remains a separate recovery-lead proposal. Neither a filled table nor the model handoff turns C01 into evidence of an incident. Two points require a usable role, evidence, falsifier and honest status for each row; a vague “follow up later” earns at most one.
 
 **C1 worked coverage rehearsal for EX002/EX004.** Executing the exact Chapter 1 Python fixture prints:
 

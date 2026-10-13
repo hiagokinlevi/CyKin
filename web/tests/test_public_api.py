@@ -1,6 +1,7 @@
 """The public course route must never confuse an outline with a lesson."""
 
 import json
+import hashlib
 from pathlib import Path
 
 import pytest
@@ -50,6 +51,8 @@ def test_public_guide_and_lesson(client):
     ]
     assert guide.json()["lessons"][0]["subject"] == "Incident readiness, roles and authorized scope"
     assert guide.json()["daily_schedule_ready"] is True
+    assert len(guide.json()["legacy_chapters"]) == 4
+    assert guide.json()["legacy_chapters"][0]["published"] is True
 
     lesson = client.get("/api/lessons/rapid-1-month/incident-response-resilience/en/1")
     assert lesson.status_code == 200
@@ -59,6 +62,7 @@ def test_public_guide_and_lesson(client):
     assert lesson.json()["exercise_ids"] == ["001"]
     assert "EX001" in lesson.json()["worked_answers"]
     assert "EX002" not in lesson.json()["worked_answers"]
+    assert client.get("/api/chapters/rapid-1-month/incident-response-resilience/en/1").status_code == 200
 
 
 def test_unwritten_chapter_is_not_served_as_lesson(client):
@@ -77,6 +81,7 @@ def test_full_book_and_internal_reference_source(client):
     assert book.status_code == 200
     assert '<a id="ch-01"></a>' in book.text
     assert '<a id="answers"></a>' in book.text
+    assert book.headers['x-cykin-source-sha256'] == hashlib.sha256(book.content).hexdigest()
 
     plan = client.get('/api/source', params={
         'path': 'levels/rapid-1-month/incident-response-resilience/en/book/PLAN.md',
@@ -93,7 +98,7 @@ def test_stateless_mcp_public_and_progress_private(client):
     assert initialize.status_code == 200
     assert initialize.json()["result"]["protocolVersion"] == "2025-06-18"
     tools = client.post("/mcp", headers=headers, json={"jsonrpc": "2.0", "id": 2, "method": "tools/list"})
-    assert {tool["name"] for tool in tools.json()["result"]["tools"]} == {"list_courses", "list_lessons", "read_lesson", "search_course"}
+    assert {tool["name"] for tool in tools.json()["result"]["tools"]} == {"list_courses", "list_lessons", "read_lesson", "read_chapter", "search_course"}
     assert client.post("/mcp", headers={**headers, "Origin": "https://evil.example"}, json={"jsonrpc": "2.0", "id": 3, "method": "ping"}).status_code == 403
     assert client.get("/private/me").status_code == 503
     assert client.post("/private/progress/lesson", json={"level": "rapid-1-month", "area": "cybersecurity", "language": "en", "chapter": 1, "status": "completed"}).status_code == 403
@@ -135,5 +140,51 @@ def test_weekly_chapters_group_130_daily_lessons_into_26_weeks(client):
         assert lesson['exercise_ids'] == ['1000']
         assert lesson['week_chapter'] == 20
         assert 'Worked result' in lesson['worked_answers']
+    finally:
+        app.state.source_override = original_source
+
+
+def test_partial_daily_conversion_keeps_chapters_and_reads_new_public_text(client):
+    path = 'levels/professional-6-months/incident-response-resilience/en/book/MANUSCRIPT.md'
+    original_source = app.state.source_override
+    revised = None
+
+    async def source(filename):
+        text = await original_source(filename)
+        if filename == path and revised is not None:
+            return revised
+        return text
+
+    app.state.source_override = source
+    try:
+        guide = client.get('/api/courses/professional-6-months/incident-response-resilience/en').json()
+        assert guide['planned_lessons'] == 130
+        assert guide['published_lessons'] == 5
+        assert guide['published_chapters'] == 12
+        assert [day['published'] for day in guide['daily_slots'][:6]] == [True] * 5 + [False]
+        assert len(guide['legacy_chapters']) == 12
+
+        day = client.get('/api/lessons/professional-6-months/incident-response-resilience/en/1')
+        assert day.status_code == 200
+        assert day.headers['cache-control'] == 'no-store'
+        assert day.json()['content_kind'] == 'daily_lesson'
+        assert day.json()['source_sha256'] == hashlib.sha256((ROOT / path).read_bytes()).hexdigest()
+        assert '#week-01-day-01' in day.json()['source_url']
+        assert '<a id="exercise-ex001"></a>' in day.json()['markdown']
+        assert '<a id="answer-ex001"></a>' in day.json()['worked_answers']
+        assert 'answer-ex002' not in day.json()['worked_answers']
+
+        chapter = client.get('/api/chapters/professional-6-months/incident-response-resilience/en/2')
+        assert chapter.status_code == 200
+        assert chapter.json()['content_kind'] == 'legacy_chapter'
+        assert 'EX006' in chapter.json()['markdown']
+        assert client.get('/api/lessons/professional-6-months/incident-response-resilience/en/6').status_code == 404
+
+        original = (ROOT / path).read_text(encoding='utf-8')
+        revised = original.replace('The write path and the observation path have different failure points:', 'The updated write path and observation path have different failure points:', 1)
+        assert revised != original
+        updated = client.get('/api/lessons/professional-6-months/incident-response-resilience/en/1').json()
+        assert 'updated write path' in updated['markdown']
+        assert updated['content_sha256'] != day.json()['content_sha256']
     finally:
         app.state.source_override = original_source

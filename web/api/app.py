@@ -3,8 +3,10 @@
 from __future__ import annotations
 
 import asyncio
+import hashlib
 import json
 import re
+import time
 from pathlib import Path
 from typing import Any
 from urllib.error import HTTPError
@@ -23,9 +25,10 @@ GITHUB_VIEW = "https://github.com/hiagokinlevi/CyKin/blob/main/"
 CATALOG_PATH = Path(__file__).resolve().parents[1] / "public" / "catalog.json"
 ANCHOR = re.compile(r'^<a id="ch-(\d{2,4})"></a>\s*$', re.M)
 LESSON_ANCHOR = re.compile(r'^<a id="lesson-(\d{2,4})"></a>\s*$', re.M)
+WEEK_DAY_ANCHOR = re.compile(r'^<a id="week-(\d{2,4})-day-(\d{2})"></a>\s*$', re.M)
 EXERCISE = re.compile(r'\bEX(\d{3,4})\b')
 EXERCISE_HEADING = re.compile(r'^#{3,6}\s+EX(\d{3,4})\b', re.M)
-ANSWER = re.compile(r'^###\s+EX(\d{3,4})\b.*$', re.M)
+ANSWER = re.compile(r'^###\s+EX(\d{3,4})\b.*$|^\*\*EX(\d{3,4})\s+[—-]\s+.*$', re.M)
 MCP_VERSION = "2025-06-18"
 ALLOWED_ORIGINS = {"https://cykin.org", "https://www.cykin.org", "http://localhost:4321", "http://localhost:8787", "http://127.0.0.1:8787"}
 MAX_SOURCE_CHARS = 24_000_000
@@ -50,7 +53,10 @@ class ExerciseAttempt(LessonProgress):
 async def canonical_domain(request: Request, call_next):
     if request.headers.get("host") == "www.cykin.org":
         return RedirectResponse("https://cykin.org" + request.url.path + ("?" + request.url.query if request.url.query else ""), status_code=308)
-    return await call_next(request)
+    response = await call_next(request)
+    if request.url.path.startswith(("/api/", "/mcp")):
+        response.headers["Cache-Control"] = "no-store"
+    return response
 
 
 def same_origin(request: Request) -> None:
@@ -100,7 +106,9 @@ async def source_text(request: Request, path: str) -> str | None:
     """Read a fixed public GitHub path; 404 means this edition has only a plan."""
     if override := getattr(app.state, "source_override", None):
         return await override(path)
-    url = GITHUB_RAW + path
+    # Each read resolves main again. A unique query keeps intermediate CDN caches
+    # from serving an older version after a lesson is edited in the repository.
+    url = GITHUB_RAW + path + f"?source={time.time_ns()}"
     try:
         from js import fetch  # type: ignore[import-not-found]
     except ImportError:
@@ -161,24 +169,37 @@ def chapter_sections(markdown: str) -> dict[int, dict[str, str]]:
 def lesson_sections(markdown: str) -> dict[int, dict[str, Any]]:
     """Return authored daily lessons and their enclosing weekly chapters."""
     lessons: dict[int, dict[str, Any]] = {}
-    anchors = list(LESSON_ANCHOR.finditer(markdown))
+    anchors = sorted(
+        [(match, int(match.group(1)), None, f"lesson-{match.group(1)}") for match in LESSON_ANCHOR.finditer(markdown)]
+        + [(match, (int(match.group(1)) - 1) * 5 + int(match.group(2)), int(match.group(1)),
+            f"week-{match.group(1)}-day-{match.group(2)}") for match in WEEK_DAY_ANCHOR.finditer(markdown)
+           if 1 <= int(match.group(2)) <= 5],
+        key=lambda item: item[0].start(),
+    )
     chapters = list(ANCHOR.finditer(markdown))
-    appendix = re.search(r'^<a id="answers"></a>\s*$', markdown, re.M)
-    for index, match in enumerate(anchors):
+    appendix = re.search(r'^##\s+(?:Worked results|Worked answers|Answer key|Gabarito|Respostas|Resultados|Soluciones)\b', markdown, re.M | re.I)
+    for index, (match, number, declared_week, anchor) in enumerate(anchors):
         stops = [chap.start() for chap in chapters if chap.start() > match.start()]
         if index + 1 < len(anchors):
-            stops.append(anchors[index + 1].start())
+            stops.append(anchors[index + 1][0].start())
         if appendix and appendix.start() > match.start():
             stops.append(appendix.start())
+        if declared_week is not None:
+            end_marker = re.search(rf'^<a id="week-{declared_week:02d}-end"></a>\s*$', markdown[match.end():], re.M)
+            if end_marker:
+                stops.append(match.end() + end_marker.start())
         body = markdown[match.start():min(stops) if stops else len(markdown)].strip()
         heading = re.search(r'^#{3,4}\s+(.+)$', body, re.M)
         if heading is None:
             continue
-        week = next((int(chap.group(1)) for chap in reversed(chapters) if chap.start() < match.start()), None)
-        lessons[int(match.group(1))] = {
-            "title": re.sub(r'^(?:Lesson|Aula|Lección)\s+\d+\s+[—-]\s*', '', heading.group(1).strip()),
-            "markdown": body, "chapter": week,
-            "exercise_ids": sorted(set(EXERCISE_HEADING.findall(body))),
+        week = declared_week or next((int(chap.group(1)) for chap in reversed(chapters) if chap.start() < match.start()), None)
+        exercises = set(EXERCISE_HEADING.findall(body))
+        if declared_week is not None:
+            exercises.update(re.findall(r'\[EX(\d{3,4})\]\(#exercise-ex\d{3,4}\)', body))
+        lessons[number] = {
+            "title": re.sub(r'^(?:Lesson|Aula|Lección|Day)\s+\d+\s+[—-]\s*', '', heading.group(1).strip()),
+            "markdown": body, "chapter": week, "anchor": anchor,
+            "exercise_ids": sorted(exercises),
         }
     return lessons
 
@@ -187,17 +208,37 @@ def worked_answers(book: str, chapter: str, exercise_ids: list[str] | None = Non
     numbers = set(exercise_ids) if exercise_ids is not None else set(EXERCISE.findall(chapter))
     if not numbers:
         return ""
-    matches = list(ANSWER.finditer(book))
+    appendix = re.search(r'^##\s+(?:Worked results|Worked answers|Answer key|Gabarito|Respostas|Resultados|Soluciones)\b', book, re.M | re.I)
+    if not appendix:
+        return ""
+    answers = book[appendix.end():]
+    matches = list(ANSWER.finditer(answers))
     pieces = []
     for index, match in enumerate(matches):
-        if match.group(1) not in numbers:
+        if (match.group(1) or match.group(2)) not in numbers:
             continue
-        end = matches[index + 1].start() if index + 1 < len(matches) else len(book)
-        piece = book[match.start():end]
-        next_section = re.search(r'^##\s+', piece[match.end() - match.start():], re.M)
+        end = matches[index + 1].start() if index + 1 < len(matches) else len(answers)
+        piece = answers[match.start():end]
+        next_section = re.search(r'^#{2,3}\s+(?!EX\d{3,4}\b)', piece[match.end() - match.start():], re.M)
         if next_section:
             piece = piece[:match.end() - match.start() + next_section.start()]
-        pieces.append(piece.strip())
+        digits = match.group(1) or match.group(2)
+        piece = re.sub(r'(?:\n\s*<a id="answer-ex\d{3,4}"></a>\s*)+$', '', piece)
+        pieces.append(f'<a id="answer-ex{digits}"></a>\n' + piece.strip())
+    return "\n\n".join(pieces)
+
+
+def exercise_prompts(book: str, exercise_ids: list[str]) -> str:
+    """Bring a linked legacy prompt into an individual daily lesson."""
+    if not exercise_ids:
+        return ""
+    appendix = re.search(r'^##\s+(?:Worked results|Worked answers|Answer key)\b', book, re.M | re.I)
+    teaching = book[:appendix.start()] if appendix else book
+    pieces = []
+    for digits in exercise_ids:
+        match = re.search(rf'^\*\*EX{re.escape(digits)}\s+[—-]\s+[^\n]+|^#{{3,6}}\s+EX{re.escape(digits)}\b[^\n]*', teaching, re.M)
+        if match:
+            pieces.append(f'<a id="exercise-ex{digits}"></a>\n' + match.group(0))
     return "\n\n".join(pieces)
 
 
@@ -239,6 +280,27 @@ async def course_details(request: Request, level: str, area: str, language: str)
     authored_daily = lesson_sections(book) if book is not None else {}
     has_daily_lessons = bool(planned_daily or authored_daily)
     daily_schedule_ready = has_daily_lessons and len(planned_daily.keys() | authored_daily.keys()) >= item["daily_lesson_target"]
+    daily_target = max(item["daily_lesson_target"], *(planned_daily.keys() | authored_daily.keys()), 0)
+    daily_slots: list[dict[str, Any]] = []
+    for number in range(1, daily_target + 1):
+        section = authored_daily.get(number) or planned_daily.get(number)
+        period = section.get("chapter") if section else (number - 1) // 5 + 1
+        published = number in authored_daily
+        source_anchor = section.get("anchor") if section else None
+        daily_slots.append({
+            "chapter": number,
+            "module": period,
+            "title": section["title"] if section else f"Study day {number} — teaching not yet written",
+            "published": published,
+            "source_url": (GITHUB_VIEW + (manuscript_path if published else plan_path) + "#" + source_anchor)
+            if source_anchor else None,
+        })
+    legacy_chapters = [
+        {"chapter": number, "title": (authored.get(number) or planned[number])["title"],
+         "published": number in authored, "module": schedule.get(number, (1, ""))[0],
+         "source_url": GITHUB_VIEW + manuscript_path + f"#ch-{number:02d}" if number in authored else None}
+        for number in sorted(planned.keys() | authored.keys())
+    ]
     lessons = []
     modules: list[dict[str, Any]] = []
     source_planned = planned_daily if has_daily_lessons else planned
@@ -257,7 +319,8 @@ async def course_details(request: Request, level: str, area: str, language: str)
             "subject": subject,
             "module": period,
             "published": number in source_authored,
-            "source_url": GITHUB_VIEW + (manuscript_path if number in source_authored else plan_path) + f"#{'lesson' if has_daily_lessons else 'ch'}-{number:02d}",
+            "source_url": GITHUB_VIEW + (manuscript_path if number in source_authored else plan_path) + "#" + (
+                section.get("anchor", f"lesson-{number:02d}") if has_daily_lessons else f"ch-{number:02d}"),
         })
         if not modules or modules[-1]["number"] != period:
             modules.append({"number": period, "kind": "Chapter" if has_daily_lessons else period_kind, "title": subject, "chapters": []})
@@ -267,19 +330,22 @@ async def course_details(request: Request, level: str, area: str, language: str)
         "language": language,
         "lessons": lessons,
         "modules": modules,
+        "daily_slots": daily_slots,
+        "legacy_chapters": legacy_chapters,
         "published_chapters": len(authored),
         "planned_chapters": len(planned.keys() | authored.keys()),
         "published_lessons": len(authored_daily),
-        "planned_lessons": len(planned_daily.keys() | authored_daily.keys()) if has_daily_lessons else item["daily_lesson_target"],
+        "planned_lessons": daily_target,
         "has_daily_lessons": has_daily_lessons,
         "daily_schedule_ready": daily_schedule_ready,
         "book_url": GITHUB_VIEW + manuscript_path if authored else None,
+        "source_sha256": hashlib.sha256(book.encode("utf-8")).hexdigest() if book is not None else None,
         "source_branch": "main",
         "notice": "A published lesson may still need editorial review. A plan is not a lesson. Lesson length is not a quota.",
     }
 
 
-async def lesson_details(request: Request, level: str, area: str, language: str, chapter: int) -> dict[str, Any]:
+async def lesson_details(request: Request, level: str, area: str, language: str, chapter: int, legacy: bool = False) -> dict[str, Any]:
     get_course(await catalog(request), level, area, language)
     if chapter < 1 or chapter > 9999:
         raise HTTPException(404, "Unknown chapter")
@@ -288,23 +354,31 @@ async def lesson_details(request: Request, level: str, area: str, language: str,
     if book is None:
         raise HTTPException(404, "This edition has no authored manuscript yet")
     daily = lesson_sections(book)
-    sections = daily if daily else chapter_sections(book)
+    sections = chapter_sections(book) if legacy or not daily else daily
     section = sections.get(chapter)
     if section is None:
         raise HTTPException(404, "This chapter is still a plan")
     chapters = sorted(sections)
     exercise_ids = section.get("exercise_ids", sorted(set(EXERCISE.findall(section["markdown"]))))
+    markdown = section["markdown"]
+    if daily and not legacy and not EXERCISE_HEADING.search(markdown):
+        prompts = exercise_prompts(book, exercise_ids)
+        if prompts:
+            markdown += "\n\n### Exercise for this lesson\n\n" + prompts
     return {
         "course": {"level": level, "area": area, "language": language},
         "chapter": chapter,
         "title": section["title"],
-        "markdown": section["markdown"],
-        "worked_answers": worked_answers(book, section["markdown"], exercise_ids),
+        "markdown": markdown,
+        "worked_answers": worked_answers(book, markdown, exercise_ids),
         "exercise_ids": exercise_ids,
         "week_chapter": section.get("chapter"),
+        "content_kind": "legacy_chapter" if legacy or not daily else "daily_lesson",
         "previous": max((n for n in chapters if n < chapter), default=None),
         "next": min((n for n in chapters if n > chapter), default=None),
-        "source_url": GITHUB_VIEW + path + f"#{'lesson' if daily else 'ch'}-{chapter:02d}",
+        "source_url": GITHUB_VIEW + path + "#" + (section.get("anchor", f"lesson-{chapter:02d}") if daily and not legacy else f"ch-{chapter:02d}"),
+        "source_sha256": hashlib.sha256(book.encode("utf-8")).hexdigest(),
+        "content_sha256": hashlib.sha256(markdown.encode("utf-8")).hexdigest(),
         "source_branch": "main",
         "editorial_note": "Public teaching text; publication does not certify that the complete book passed editorial review.",
     }
@@ -373,13 +447,19 @@ async def api_lesson(request: Request, level: str, area: str, language: str, cha
     return await lesson_details(request, level, area, language, chapter)
 
 
+@app.get("/api/chapters/{level}/{area}/{language}/{chapter}")
+async def api_chapter(request: Request, level: str, area: str, language: str, chapter: int) -> dict[str, Any]:
+    """Read an authored subject chapter even during a partial daily conversion."""
+    return await lesson_details(request, level, area, language, chapter, legacy=True)
+
+
 @app.get("/api/books/{level}/{area}/{language}")
 async def api_book(request: Request, level: str, area: str, language: str) -> Response:
     get_course(await catalog(request), level, area, language)
     book = await source_text(request, book_path(level, area, language, "MANUSCRIPT.md"))
     if book is None:
         raise HTTPException(404, "This edition has no authored manuscript yet")
-    return PlainTextResponse(book, media_type="text/markdown; charset=utf-8", headers={"Cache-Control": "public, max-age=60"})
+    return PlainTextResponse(book, media_type="text/markdown; charset=utf-8", headers={"Cache-Control": "no-store", "X-CyKin-Source-SHA256": hashlib.sha256(book.encode("utf-8")).hexdigest()})
 
 
 @app.get("/api/source")
@@ -423,6 +503,7 @@ TOOLS = [
     {"name": "list_courses", "description": "Discover the 207 public CyKin courses. Optional language, level, area or title query filters.", "inputSchema": {"type": "object", "properties": {"language": {"type": "string"}, "level": {"type": "string"}, "area": {"type": "string"}, "query": {"type": "string"}}}},
     {"name": "list_lessons", "description": "List planned and authored lessons for one course. Only published=true represents written teaching.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}}, "required": ["level", "area", "language"]}},
     {"name": "read_lesson", "description": "Read the public Markdown for an authored lesson and its worked answers, with its GitHub source URL.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}, "chapter": {"type": "integer"}, "start": {"type": "integer", "minimum": 0}, "max_chars": {"type": "integer", "minimum": 1000, "maximum": 50000}}, "required": ["level", "area", "language", "chapter"]}},
+    {"name": "read_chapter", "description": "Read an authored legacy subject chapter during conversion to weekday lessons; plans are not returned as teaching.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}, "chapter": {"type": "integer"}, "start": {"type": "integer", "minimum": 0}, "max_chars": {"type": "integer", "minimum": 1000, "maximum": 50000}}, "required": ["level", "area", "language", "chapter"]}},
     {"name": "search_course", "description": "Search within one authored manuscript; returns bounded snippets and chapter numbers.", "inputSchema": {"type": "object", "properties": {"level": {"type": "string"}, "area": {"type": "string"}, "language": {"type": "string"}, "query": {"type": "string"}}, "required": ["level", "area", "language", "query"]}},
 ]
 
@@ -461,16 +542,19 @@ async def mcp(request: Request) -> Response:
         if method == "resources/list":
             return JSONResponse(rpc_result(identifier, {"resources": [{"uri": "cykin://catalog", "name": "CyKin course catalog", "mimeType": "application/json", "description": "207 courses in study order"}]}))
         if method == "resources/templates/list":
-            return JSONResponse(rpc_result(identifier, {"resourceTemplates": [{"uriTemplate": "cykin://lesson/{level}/{area}/{language}/{chapter}", "name": "CyKin lesson", "mimeType": "text/markdown", "description": "A public chapter from the current GitHub manuscript"}]}))
+            return JSONResponse(rpc_result(identifier, {"resourceTemplates": [
+                {"uriTemplate": "cykin://lesson/{level}/{area}/{language}/{chapter}", "name": "CyKin lesson", "mimeType": "text/markdown", "description": "A published daily lesson, or a legacy chapter when this edition has no daily lessons"},
+                {"uriTemplate": "cykin://chapter/{level}/{area}/{language}/{chapter}", "name": "CyKin subject chapter", "mimeType": "text/markdown", "description": "An authored legacy chapter retained during the daily lesson conversion"},
+            ]}))
         if method == "resources/read":
             uri = params.get("uri", "")
             if uri == "cykin://catalog":
                 contents = [{"uri": uri, "mimeType": "application/json", "text": json.dumps(await catalog(request), ensure_ascii=False)}]
             else:
-                match = re.fullmatch(r'cykin://lesson/([a-z0-9-]+)/([a-z0-9-]+)/([a-z]{2})/(\d{1,2})', str(uri))
+                match = re.fullmatch(r'cykin://(lesson|chapter)/([a-z0-9-]+)/([a-z0-9-]+)/([a-z]{2})/(\d{1,4})', str(uri))
                 if not match:
                     return JSONResponse(rpc_error(identifier, -32602, "Unknown resource URI"))
-                result = await lesson_details(request, match[1], match[2], match[3], int(match[4]))
+                result = await lesson_details(request, match[2], match[3], match[4], int(match[5]), legacy=match[1] == "chapter")
                 contents = [{"uri": uri, "mimeType": "text/markdown", "text": result["markdown"] + "\n\n## Worked answers for this lesson\n\n" + result["worked_answers"] + "\n\nSource: " + result["source_url"]}]
             return JSONResponse(rpc_result(identifier, {"contents": contents}))
         if method == "tools/call":
@@ -488,8 +572,8 @@ async def mcp(request: Request) -> Response:
                 result = {"courses": courses, "total": len(courses), "source": data["source"]}
             elif name == "list_lessons":
                 result = await course_details(request, args["level"], args["area"], args["language"])
-            elif name == "read_lesson":
-                result = await lesson_details(request, args["level"], args["area"], args["language"], int(args["chapter"]))
+            elif name in {"read_lesson", "read_chapter"}:
+                result = await lesson_details(request, args["level"], args["area"], args["language"], int(args["chapter"]), legacy=name == "read_chapter")
                 start = max(0, int(args.get("start", 0)))
                 length = min(50_000, max(1000, int(args.get("max_chars", 30000))))
                 text = result.pop("markdown")

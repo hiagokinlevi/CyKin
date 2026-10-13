@@ -1,6 +1,6 @@
 # Principal book plan — Incident response and cyber resilience / Professional course / English
 
-**One book for this course and language.** 12 curricular subjects are its chapters. Duration: 6 months; planned effort: approximately 360 hours. Audience: Entry-level practitioners. Entry knowledge: Security basics and the relevant system fundamentals. Intended outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience.
+**One book for this course and language.** The existing 12 curricular subjects remain authored as chapters. Chapter 1 now contains the first [five applied weekday lessons](MANUSCRIPT.md#week-01-day-01); the other chapters retain their subject structure pending substantive expansion into the 26-week/130-day curriculum. Duration: 6 months; planned effort: approximately 360 hours. Audience: Entry-level practitioners. Entry knowledge: Security basics and the relevant system fundamentals. Intended outcome: operate a repeatable workflow and communicate findings in incident response and cyber resilience.
 
 **Editorial state:** draft manuscript exists; release A4 validation and review pending. English reference edition.
 
@@ -27,7 +27,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 ### Chapter 01 — Incident lifecycle and organizational readiness
 
-**Stage 1; 30 planned A4 pages; 5 planned exercises.** [Read authored draft](MANUSCRIPT.md#ch-01)
+**Stage 1; 30 planned A4 pages in the earlier outline; 5 existing exercises.** [Read authored chapter](MANUSCRIPT.md#ch-01) and [Week 1 daily sequence](MANUSCRIPT.md#week-01-day-01). The daily sequence treats transaction invariants, route-specific evidence, decision rights, clock semantics and reviewable handoff as separate lessons; it reuses EX001–EX005 and their worked answers without claiming the rest of the 130-day course has been authored.
 
 **Teaching purpose and relevance:** Establish how preparation, detection, response and recovery interact in a repeatable organizational workflow.
 
