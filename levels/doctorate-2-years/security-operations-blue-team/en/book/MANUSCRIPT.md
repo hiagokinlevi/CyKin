@@ -307,7 +307,7 @@ n=20 observed agreement=0.90 chance=0.625 kappa=0.73
 
 ### 4.3 Reading the result
 
-The two analysts agree on 18 of 20 alerts (0.90). Chance agreement, given how often each says "malicious", is 0.625, so Cohen's kappa is 0.73 — "substantial" on the Landis and Koch (1977) scale. The two disagreements are discussed; one label is corrected and one alert is rewritten to remove ambiguity. Kappa is lower than the raw agreement because both analysts called many alerts malicious, which makes chance agreement high. The corrected label and the rewritten alert are recorded in the change log, including alert 17. With these fixes, Nadia treats the corpus labels as reliable enough to score the main study.
+The two analysts agree on 18 of 20 alerts (0.90). Chance agreement, given how often each says "malicious", is 0.625, so Cohen's kappa is 0.73 — "substantial" on the Landis and Koch (1977) scale. The two disagreements are discussed; one label is corrected and one alert is rewritten to remove ambiguity. Kappa is lower than the raw agreement because both analysts called most alerts benign, which makes chance agreement high. The corrected label and the rewritten alert are recorded in the change log, including alert 17. With these fixes, Nadia treats the corpus labels as reliable enough to score the main study.
 
 ### 4.4 The pilot
 
@@ -315,7 +315,7 @@ Two volunteer analysts not in the main study triage 40 alerts, 20 in each condit
 
 ### 4.5 What the pilot found
 
-Analysts did not notice the asset criticality field because it sat at the bottom of the card; logging missed disposition changes; 40 alerts took 70 minutes, causing fatigue. Nadia moves context fields near the top, fixes logging, and splits the 40 alerts into two sessions of 20. Each change is listed in the v1.1 change log before the main study begins. The fatigue finding matters for validity: tired analysts make more errors late in a session, which could bias whichever condition comes second. The pilot also confirmed that the logging worked: every disposition and change was recorded with a timestamp, so no fix was needed there.
+Analysts did not notice the asset criticality field because it sat at the bottom of the card; logging missed disposition changes; 40 alerts took 70 minutes, causing fatigue. Nadia moves context fields near the top, fixes logging, and splits the 40 alerts into two sessions of 20. Each change is listed in the v1.1 change log before the main study begins. The fatigue finding matters for validity: tired analysts make more errors late in a session, which could bias whichever condition comes second.
 
 ### 4.6 Pilot data
 
@@ -389,7 +389,7 @@ enriched  139/160 = 0.869  95% CI [0.808, 0.913]
 
 ### 5.3 Reading the result
 
-Baseline accuracy is 118/160 = 0.738 (95% CI 0.664–0.800); enriched is 139/160 = 0.869 (0.808–0.913). The intervals barely overlap, and the difference of 13 points is consistent with the hypothesis. Because the same analysts did both conditions, the registered paired analysis is the main test; the Wilson intervals describe each condition. They treat the 160 pooled decisions as independent, although each analyst contributes 20 of them, so they are likely somewhat too narrow if analysts differ in skill; this is why they are descriptive only. Nadia reports the interval for each condition and leaves the main inference to the registered paired test. The two intervals together show readers the scale of the change. Neither interval is used to claim significance on its own, since overlapping or separate intervals are not a formal test.
+Baseline accuracy is 118/160 = 0.738 (95% CI 0.664–0.800); enriched is 139/160 = 0.869 (0.808–0.913). The intervals do not quite overlap (0.800 against 0.808), and the difference of 13 points is consistent with the hypothesis. Because the same analysts did both conditions, the registered paired analysis is the main test; the Wilson intervals describe each condition. They treat the 160 pooled decisions as independent, although each analyst contributes 20 of them, so they are likely somewhat too narrow if analysts differ in skill; this is why they are descriptive only. Nadia reports the interval for each condition and leaves the main inference to the registered paired test. The two intervals together show readers the scale of the change. Neither interval is used to claim significance on its own, since overlapping or separate intervals are not a formal test.
 
 ### 5.4 Harms
 
@@ -397,7 +397,7 @@ Of the 21 additional correct decisions, most were benign triggers correctly clos
 
 ### 5.5 Independent validation
 
-A statistician at another university reruns the analysis from Nadia's raw logs and scripts without seeing her results. Her figures match to three decimals. The statistician received the registered plan and the anonymised logs, not Nadia's tables, so agreement shows that the analysis follows from the plan and the data. Matching to three decimals also checks that the scripts are complete. The validation report is in the archive with her name and university. Prof. Grant arranged the statistician through Calder University, someone with no part in the study or in Nadia's supervision.
+A statistician at another university reruns the analysis from Nadia's raw logs and scripts without seeing her results. Her figures match to three decimals, which also checks that the scripts are complete. The statistician received the registered plan and the anonymised logs, not Nadia's tables, so agreement shows that the analysis follows from the plan and the data. The validation report is in the archive with her name and university. Prof. Grant arranged the statistician through Calder University, someone with no part in the study or in Nadia's supervision.
 
 ### 5.6 Time
 
@@ -515,7 +515,7 @@ The archive contains: the alert generator and seed; the 320-alert corpus with la
 
 ### 7.4 Testing the archive
 
-A fellow student downloads the archive on a clean machine and regenerates all tables. Two figures differ in the fourth decimal because of a rounding call; Nadia fixes the script and notes it. The differences were small, but finding them shows that the test checks the archive itself. Nadia records the fix in the change log and tags a new archive version. A colleague at Calder ran the test on a clean machine, using only the archive's instructions. Her rebuilt tables differed in two rounding places, traced to an unpinned library version. Pinning that version made the outputs match exactly.
+A fellow student downloads the archive on a clean machine and regenerates all tables, using only the archive's instructions. Two figures differ in the fourth decimal because of a rounding call; Nadia fixes the script and notes it. The differences were small, but finding them shows that the test checks the archive itself rather than Nadia's own machine. Nadia records the fix in the change log and tags a new archive version, and the student's second run on the clean machine makes the outputs match exactly.
 
 ### 7.5 Licensing and privacy
 
@@ -566,7 +566,7 @@ You will (1) prepare for a doctoral defense; (2) anticipate hard questions; (3) 
 
 ### 8.1 The defense
 
-The defense tests whether the candidate can explain, justify and limit the work. Nadia prepares a 40-minute talk: problem, design, results, harm, limits, contributions. Nadia gives the harm finding its own slide immediately after the accuracy result, so examiners see both together. She rehearses with Prof. Grant and with a colleague who plays the external examiner, and keeps backup slides for the follow-up study and the archive test. The talk itself lasts about forty minutes. Nadia ends it with the limits of a synthetic corpus and the planned operational pilot, so the examiners' questions start from what the study cannot show.
+The defense tests whether the candidate can explain, justify and limit the work. Nadia prepares a 40-minute talk: problem, design, results, harm, limits, contributions. Nadia gives the harm finding its own slide immediately after the accuracy result, so examiners see both together. She rehearses with Prof. Grant and with a colleague who plays the external examiner, and keeps backup slides for the follow-up study and the archive test. Nadia ends it with the limits of a synthetic corpus and the planned operational pilot, so the examiners' questions start from what the study cannot show.
 
 ### 8.2 Hard questions
 
