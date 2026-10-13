@@ -1,7 +1,7 @@
 # Criptografia e Serviços de Confiança: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 123, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–40 de 50 já estão escritos em português, com os exercícios EX001–EX120 e suas resoluções com rubricas de 0 a 3 e 8 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 41–50 (EX121–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–50 de 50 têm texto didático escrito à mão; os exercícios EX001–EX150 têm resoluções correspondentes com rubricas de 0 a 3; os oito laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, construir e operar serviços criptográficos de confiança para infraestruturas críticas.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios existem para entender e verificar comportamentos em relação a normas e vetores de teste. Sistemas de produção usam bibliotecas avaliadas e módulos de segurança de hardware (HSMs); nunca crie sua própria criptografia. Pessoas, organizações, chaves e dispositivos são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ Katz e Lindell (3ª ed.); Boneh e Shoup, [*A Graduate Course in Applied Cryptogr
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) |
-
-Capítulos 41–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-41), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) · [41](#ch-41) · [42](#ch-42) · [43](#ch-43) · [44](#ch-44) · [45](#ch-45) · [46](#ch-46) · [47](#ch-47) · [48](#ch-48) · [49](#ch-49) · [50](#ch-50) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1790,11 +1788,391 @@ Os testes de canal lateral são limitados pelo orçamento e pela técnica. As de
 
 - **EX120 — Exemplo de risco residual.** Dê um risco residual aceito e sua justificativa. *Rubrica:* 3 = extração da chave de um medidor por atacante avançado, limitada pelas chaves por medidor (ou perda dos dois data centers, recuperação offline);; 2 = exemplo;; 1 = nenhum;; 0 = nenhuma.
 
+<a id="ch-41"></a>
+
+## Capítulo 41 — Criptografia e serviços de confiança: otimização do sistema
+
+### Objetivos de aprendizagem
+
+Você vai (1) otimizar o serviço de confiança em custo e energia sem enfraquecer a segurança; (2) reduzir o trabalho operacional repetitivo por meio da automação; (3) avaliar as otimizações em relação aos requisitos.
+
+### 41.1 Energia nos medidores
+
+As baterias dos medidores precisam durar quinze anos. Aiyana mede a energia por leitura: a transmissão de rádio domina, e o cálculo do HMAC no elemento seguro custa uma pequena fração. Ela otimiza agrupando quatro leituras horárias numa única transmissão, com uma única tag cobrindo o lote, o que reduz os despertares do rádio. A tag do lote cobre cada leitura e seu contador, de modo que nenhuma leitura pode ser removida ou reordenada sem ser detectada. Ela confere que o agrupamento não viola o requisito de que o faturamento receba as leituras em até seis horas e documenta o trade-off na latência.
+
+### 41.2 Reduzir o trabalho repetitivo
+
+A equipe de operações gasta horas por mês em solicitações manuais de certificados para serviços web internos que ficam fora do sistema ACME. Aiyana estende a emissão automatizada a esses serviços e acrescenta um relatório semanal dos certificados descobertos por varredura que não estão no inventário. Os passos manuais caem cerca de dois terços. Ela trata a própria automação como um sistema a proteger: as credenciais do serviço ACME ficam guardadas no serviço de chaves, e seus logs de emissão alimentam o monitoramento, para que a automação não vire um caminho não monitorado até os certificados.
+
+### 41.3 Avaliar as otimizações
+
+Cada otimização é avaliada em relação aos requisitos antes de ser adotada. Uma proposta de encurtar as tags das leituras para 8 bytes, para economizar mais energia, é rejeitada: a resistência à falsificação de 64 bits fica abaixo da meta do modelo de ameaça, e a economia é marginal, já que o custo do rádio é determinado pelos cabeçalhos. Uma proposta de reduzir os parâmetros do Argon2 para cortar custos de servidor também é rejeitada. Aiyana registra as otimizações rejeitadas com os motivos, evitando que as mesmas ideias voltem sem novas evidências. Cada ideia rejeitada é guardada com os dados que a refutaram, para que um futuro proponente veja exatamente que nova evidência seria necessária para reabri-la.
+
+### Exemplo resolvido
+
+Aiyana agrupa quatro leituras sob uma tag para economizar energia, automatiza os certificados internos para cortar dois terços do trabalho repetitivo e rejeita as tags de 8 bytes e os parâmetros mais fracos do Argon2, com os motivos registrados.
+
+> **Caso sintético.** As medições são inventadas.
+
+### Erros e limites
+
+Otimizações que reduzem as margens de segurança costumam parecer atraentes isoladamente. O agrupamento muda a latência e a semântica do replay, o que precisa ser testado de novo.
+
+### Exercícios
+
+- **EX121 — Cobertura da tag do lote.** O que a tag do lote precisa cobrir, e por quê? *Rubrica:* 3 = cada leitura e seu contador, para que nenhuma possa ser removida ou reordenada sem detecção;; 2 = leituras;; 1 = só o cabeçalho;; 0 = nenhuma.
+
+- **EX122 — Segurança da automação.** Como a própria automação é protegida? *Rubrica:* 3 = credenciais do serviço ACME no serviço de chaves e logs de emissão monitorados;; 2 = logs;; 1 = desnecessário;; 0 = nenhuma.
+
+- **EX123 — Corte de tag rejeitado.** Por que encurtar as tags para 8 bytes foi rejeitado? *Rubrica:* 3 = resistência à falsificação de 64 bits abaixo da meta do modelo de ameaça e economia marginal;; 2 = segurança;; 1 = custo;; 0 = nenhuma.
+
+<a id="ch-42"></a>
+
+## Capítulo 42 — Criptografia e serviços de confiança: pesquisa aplicada
+
+### Objetivos de aprendizagem
+
+Você vai (1) formular uma questão de pesquisa aplicada a partir de dados operacionais; (2) desenhar um estudo pequeno com dados sintéticos ou autorizados; (3) relatar os achados com seus limites.
+
+### 42.1 Uma questão vinda das operações
+
+Os dados operacionais mostram que as falhas de verificação se concentram em certos concentradores ao amanhecer. Aiyana formula uma questão de pesquisa aplicada: as falhas do amanhecer são causadas pela deriva dos relógios dos medidores além da tolerância de timestamp depois de noites frias, e não por ataques ou ruído de rádio? A questão importa porque ampliar a tolerância enfraquece a proteção contra replay, enquanto apertá-la causa rejeições falsas. A pesquisa aplicada na engenharia responde a questões que melhoram um sistema específico, usando métodos rigorosos numa escala modesta. Respondê-la poderia evitar tanto alertas desnecessários quanto uma proteção mais fraca.
+
+### 42.2 Desenhar o estudo
+
+Aiyana desenha um estudo com dados autorizados do piloto: para cada falha, ela registra o concentrador, o horário, a temperatura de uma fonte meteorológica pública e o desvio de relógio informado pelo medidor. Ela define antecipadamente que a explicação pela deriva é sustentada se as falhas se correlacionarem com temperaturas baixas e desvios grandes, e que a explicação por ataque mostraria tags falhando, e não timestamps. Ela usa apenas identificadores de medidor pseudonimizados. O plano do estudo é curto, mas escrito antes da análise, um hábito dos métodos de pesquisa que evita ajustar histórias aos dados.
+
+### 42.3 Achados e limites
+
+Os dados mostram que a maioria das falhas do amanhecer tem tags válidas, mas timestamps fora da tolerância, e ocorre depois de noites abaixo de zero, com desvios maiores nos medidores mais antigos. A explicação pela deriva é sustentada. Aiyana recomenda uma sincronização periódica de horário a partir dos concentradores, autenticada com a chave do medidor, em vez de ampliar a tolerância. Ela relata os limites: um distrito, um inverno e correlação, e não um experimento controlado. Ela compartilha o método com outras companhias pelo grupo de trabalho do regulador, sem nenhum identificador de medidor. Ela planeja um acompanhamento controlado com medidores de teste deliberadamente resfriados.
+
+### Exemplo resolvido
+
+O estudo de Aiyana liga as falhas do amanhecer à deriva de relógio provocada pelo frio, com tags válidas, e recomenda uma sincronização de horário autenticada, em vez de uma tolerância maior.
+
+> **Caso sintético.** Os dados e os achados são inventados.
+
+### Erros e limites
+
+Correlação não prova causa; um teste controlado a fortaleceria. Compartilhar métodos não pode revelar detalhes da infraestrutura.
+
+### Exercícios
+
+- **EX124 — Questão de pesquisa.** Enuncie a questão de pesquisa aplicada de Aiyana. *Rubrica:* 3 = se as falhas do amanhecer vêm da deriva de relógio provocada pelo frio além da tolerância, e não de ataques ou ruído;; 2 = parcial;; 1 = vaga;; 0 = nenhuma.
+
+- **EX125 — Distinguir um ataque.** Que evidência indicaria ataque, e não deriva? *Rubrica:* 3 = tags falhando, e não timestamps;; 2 = falhas de tag;; 1 = temperatura;; 0 = nenhuma.
+
+- **EX126 — Recomendação.** O que ela recomendou em vez de ampliar a tolerância? *Rubrica:* 3 = sincronização periódica e autenticada do horário a partir dos concentradores;; 2 = sincronização;; 1 = ampliar;; 0 = nenhuma.
+
+<a id="ch-43"></a>
+
+## Capítulo 43 — Prática na indústria ou no serviço público
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar os conhecimentos do curso durante um estágio numa companhia; (2) trabalhar dentro da governança e do controle de mudanças; (3) refletir sobre a prática profissional.
+
+### 43.1 O estágio
+
+Aiyana passa um período de estágio na equipe de operações de segurança da Ridgeway, agora como engenheira júnior supervisionada. Suas tarefas incluem fazer a triagem dos alertas de verificação, ajudar numa rotação trimestral de chaves e atualizar runbooks. Marcus Webb supervisiona e aprova seu trabalho. Ela aprende que a maioria dos dias é rotineira e que o valor de um bom projeto aparece em operações sem incidentes. Ela também aprende quanto contexto os engenheiros precisam antes de agir diante de um alerta, como as mudanças recentes e os medidores sabidamente defeituosos. Ela mantém um registro de cada tarefa e do que aprendeu com ela.
+
+### 43.2 Controle de mudanças
+
+Toda mudança em produção na Ridgeway passa pelo controle de mudanças: um pedido escrito, avaliação de risco, aprovação e um plano de rollback. Aiyana envia sua primeira mudança, o ajuste de um limiar de alerta, e é solicitada a mostrar evidências a partir dos dados de linha de base. De início, ela vê o processo como lento; depois, vê seu valor quando uma mudança não revisada de outra equipe na configuração do gateway desativa brevemente as verificações de certificados de cliente em homologação, o que é pego antes de chegar à produção. As configurações criptográficas são especialmente sensíveis a pequenas mudanças, então um controle de mudanças disciplinado as protege.
+
+### 43.3 Reflexão profissional
+
+No fim do estágio, Aiyana escreve uma reflexão. Ela anota que seus projetos acadêmicos subestimaram o tempo necessário para a coordenação com fornecedores e equipes de campo, que runbooks claros reduziram o estresse durante um incidente menor e que uma vez se sentiu tentada a contornar uma aprovação lenta para corrigir um alerta, mas não o fez. Ela identifica competências a desenvolver: negociar requisitos de segurança com fornecedores e explicar riscos a gestores. A reflexão transforma a experiência em aprendizagem deliberada. Ela compartilha a reflexão com Marcus e combina duas metas para o seu primeiro ano.
+
+### Exemplo resolvido
+
+Aiyana faz a triagem de alertas, ajuda numa rotação e atualiza runbooks sob supervisão, segue o controle de mudanças e escreve uma reflexão que identifica a negociação com fornecedores como lacuna de competência.
+
+> **Caso sintético.** O estágio e os eventos são inventados.
+
+### Erros e limites
+
+Estágios podem virar observação passiva; defina tarefas e revisões concretas. O controle de mudanças pode virar burocracia se ignorar os níveis de risco.
+
+### Exercícios
+
+- **EX127 — Tarefas do estágio.** Cite duas tarefas que Aiyana realizou no estágio. *Rubrica:* 3 = duas entre triagem de alertas, ajuda na rotação, atualização de runbooks;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX128 — Lição do controle de mudanças.** Que evento mostrou o valor do controle de mudanças? *Rubrica:* 3 = uma mudança não revisada no gateway desativou as verificações de certificados de cliente em homologação, pega antes da produção;; 2 = evento;; 1 = nenhum;; 0 = nenhuma.
+
+- **EX129 — Lacuna de competência.** Que competências ela identificou para desenvolver? *Rubrica:* 3 = negociar requisitos de segurança com fornecedores e explicar riscos a gestores;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-44"></a>
+
+## Capítulo 44 — Projeto final de engenharia I
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir o escopo de um projeto final sobre o serviço de confiança; (2) planejar marcos e evidências; (3) identificar os riscos ao próprio projeto.
+
+### 44.1 Escolher o projeto final
+
+Para o seu projeto final, Aiyana escolhe projetar e prototipar o pipeline automatizado de revogação: quando um medidor é dado como roubado ou há suspeita de que uma chave foi exposta, a revogação precisa chegar a todos os verificadores em até um minuto e ser auditável. O projeto combina temas anteriores: estados das chaves, filas de mensagens, monitoramento e runbooks. Ela escreve uma declaração de escopo que inclui o projeto, um protótipo em homologação, testes e a passagem para as operações, e exclui mudanças no firmware dos medidores, que exigiriam um envolvimento do fornecedor além do tempo do projeto final.
+
+### 44.2 Marcos e evidências
+
+Aiyana planeja os marcos: requisitos e modelo de ameaça até a terceira semana, revisão de projeto até a sexta, protótipo até a décima, testes de verificação até a décima segunda e passagem até a décima quinta. Para cada marco, ela define as evidências: documentos, atas de revisão, resultados de testes e uma gravação da demonstração. Seu orientador e Marcus concordam que as evidências serão avaliadas segundo os critérios do programa de engenharia. Definir as evidências cedo evita a falha comum dos projetos finais: um protótipo que funciona sem raciocínio documentado. A falta de evidências num marco conta como marco não cumprido.
+
+### 44.3 Riscos do projeto
+
+Aiyana lista os riscos ao projeto: a disponibilidade do ambiente de homologação, a dependência do tempo da equipe de operações e a possibilidade de seu projeto conflitar com uma atualização planejada do serviço de chaves. As mitigações incluem reservar horários de homologação cedo, combinar uma hora semanal com as operações e se reunir com a equipe do serviço de chaves na segunda semana. Ela mantém um registro de riscos atualizado semanalmente. Tratar o projeto final como um projeto de engenharia, com seus próprios riscos e controles, pratica os hábitos de que ela vai precisar na vida profissional. Os riscos que crescem são escalados ao orientador na mesma semana.
+
+### Exemplo resolvido
+
+Aiyana define o escopo de um projeto final com um pipeline de revogação auditável em um minuto, estabelece cinco marcos sustentados por evidências e registra três riscos do projeto com mitigações.
+
+> **Caso sintético.** O plano do projeto final é inventado.
+
+### Erros e limites
+
+Projetos finais costumam ter escopo grande demais; exclusões firmes protegem a entrega. Evidências planejadas tarde costumam ficar incompletas.
+
+### Exercícios
+
+- **EX130 — Meta do projeto final.** O que o pipeline de revogação precisa alcançar? *Rubrica:* 3 = a revogação chega a todos os verificadores em até um minuto e é auditável;; 2 = um minuto;; 1 = vago;; 0 = nenhuma.
+
+- **EX131 — Exclusão.** O que Aiyana excluiu do escopo, e por quê? *Rubrica:* 3 = mudanças no firmware dos medidores, que exigiriam envolvimento do fornecedor além do tempo disponível;; 2 = firmware;; 1 = nada;; 0 = nenhuma.
+
+- **EX132 — Risco do projeto.** Cite um risco do projeto e sua mitigação. *Rubrica:* 3 = por exemplo, conflito com a atualização do serviço de chaves, mitigado por uma reunião cedo;; 2 = só o risco;; 1 = nenhum;; 0 = nenhuma.
+
+<a id="ch-45"></a>
+
+## Capítulo 45 — Revisão independente de projeto
+
+### Objetivos de aprendizagem
+
+Você vai (1) preparar um projeto para revisão independente; (2) responder aos achados da revisão; (3) distinguir achados bloqueantes de achados consultivos.
+
+### 45.1 Preparar a revisão
+
+O projeto de revogação de Aiyana vai para uma banca de revisão independente: um criptógrafo de outra companhia, uma engenheira de confiabilidade e um auditor. Ela envia um pacote com uma semana de antecedência, com os requisitos, o modelo de ameaça, a arquitetura, os contratos de interface, o plano de testes e as questões em aberto. Ela lista as premissas explicitamente, como a de que a fila de mensagens preserva a ordem por medidor. Um bom pacote permite que os revisores gastem seu tempo com julgamento, e não reconstruindo o projeto a partir de anotações dispersas. Ela também inclui uma lista das fraquezas conhecidas, para que os revisores partam de uma base honesta.
+
+### 45.2 Achados da revisão
+
+A banca levanta cinco achados. Dois são bloqueantes: as mensagens de revogação não são autenticadas, de modo que um atacante na rede interna poderia forjar revogações e causar negação de serviço, e não há comportamento definido se um verificador perder mensagens enquanto estiver offline. Três são consultivos: nomenclatura, disposição do painel e uma sugestão de reutilizar um repositório de auditoria existente. Aiyana valoriza especialmente o primeiro achado: ela tinha protegido as leituras com cuidado, mas tratado as mensagens internas de controle como confiáveis. Cada achado é registrado com sua severidade e o revisor que o levantou.
+
+### 45.3 Responder
+
+Para os achados bloqueantes, Aiyana assina as mensagens de revogação com uma chave dedicada guardada no serviço de chaves e verificada por todos os assinantes da fila, e acrescenta uma etapa de reconciliação em que os verificadores, ao se reconectar, baixam a lista completa de revogação e comparam um hash dela com o valor publicado. Dos achados consultivos, ela aceita dois e recusa um, com uma justificativa. Ela reapresenta à banca o projeto alterado, e a banca encerra os achados bloqueantes. A revisão independente pegou uma falha que teria custado caro em produção.
+
+### Exemplo resolvido
+
+A banca encontra mensagens de revogação não autenticadas e falta de comportamento offline; Aiyana acrescenta revogações assinadas e a reconciliação na reconexão e encerra os dois achados bloqueantes.
+
+> **Caso sintético.** A banca e os achados são inventados.
+
+### Erros e limites
+
+Pacotes de revisão que escondem premissas recebem revisões superficiais. Tratar as mensagens internas como confiáveis é uma falha de projeto comum.
+
+### Exercícios
+
+- **EX133 — Pacote de revisão.** Liste quatro itens do pacote de revisão de Aiyana. *Rubrica:* 3 = quatro entre requisitos, modelo de ameaça, arquitetura, contratos, plano de testes, questões em aberto, premissas;; 2 = três;; 1 = um;; 0 = nenhuma.
+
+- **EX134 — Revogação forjada.** Por que as mensagens de revogação não autenticadas foram um achado bloqueante? *Rubrica:* 3 = atacantes na rede interna poderiam forjar revogações, causando negação de serviço;; 2 = falsificação;; 1 = menor;; 0 = nenhuma.
+
+- **EX135 — Correção offline.** Como o projeto revisado trata os verificadores que estiveram offline? *Rubrica:* 3 = baixam a lista completa de revogação na reconexão e comparam seu hash com o valor publicado;; 2 = baixar;; 1 = ignorar;; 0 = nenhuma.
+
+<a id="ch-46"></a>
+
+## Capítulo 46 — Projeto final de engenharia II
+
+### Objetivos de aprendizagem
+
+Você vai (1) construir e testar o protótipo do projeto final; (2) medi-lo em relação aos requisitos; (3) entregá-lo às operações.
+
+### 46.1 Construir o protótipo
+
+Aiyana constrói o pipeline de revogação em homologação. Um pedido de revogação feito por um operador autorizado cria uma mensagem assinada com o identificador da chave, o motivo, o horário e um número de sequência. A fila de mensagens a entrega ao faturamento, ao serviço de configuração dos concentradores e ao monitoramento. Cada assinante verifica a assinatura com a biblioteca avaliada, confere o número de sequência, atualiza seu cache de estados das chaves e confirma o recebimento. Entregas não confirmadas disparam alertas. O protótipo usa apenas componentes existentes e aprovados, para que possa ir à produção sem novas aprovações de segurança para tecnologias desconhecidas.
+
+### 46.2 Medir os resultados
+
+Aiyana executa 1.000 revogações de teste. O tempo mediano para alcançar todos os verificadores é de quatro segundos, e o mais lento é de trinta e oito segundos, dentro do requisito de um minuto. Revogações forjadas, assinadas com uma chave errada, são rejeitadas por todos os assinantes. Um verificador deixado offline por uma hora se reconcilia corretamente na reconexão. Ela também mede o esforço do operador: emitir uma revogação leva menos de um minuto pela interface aprovada. Ela relata uma lacuna: os painéis de monitoramento mostram as revogações, mas não as confirmações por assinante, o que ela acrescenta. Todas as execuções são roteirizadas, para que outras pessoas possam repeti-las.
+
+### 46.3 Passagem
+
+A passagem inclui o projeto, os registros de decisão, os runbooks para emitir e auditar revogações, os resultados dos testes e uma sessão de treinamento para os operadores. As operações executam elas mesmas um exercício de revogação antes de aceitar o sistema. Aiyana fica disponível por duas semanas de suporte. Ela registra as limitações conhecidas, como a dependência da disponibilidade da fila de mensagens, com um runbook alternativo para a distribuição manual das revogações. Um projeto final que termina com uma passagem que funciona, e não apenas com uma demonstração, mostra completude profissional. As operações assinam uma nota de aceitação que lista as pendências e seus donos.
+
+### Exemplo resolvido
+
+O protótipo atinge a meta de um minuto, com mediana de quatro segundos e máximo de trinta e oito, rejeita falsificações, reconcilia verificadores offline e é entregue depois de um exercício conduzido pelas operações.
+
+> **Caso sintético.** As medições são inventadas.
+
+### Erros e limites
+
+O desempenho em homologação pode diferir do de produção. Uma passagem sem prática dos operadores deixa o conhecimento com quem construiu.
+
+### Exercícios
+
+- **EX136 — Mensagem de revogação.** Que campos uma mensagem de revogação contém? *Rubrica:* 3 = identificador da chave, motivo, horário, número de sequência, assinada;; 2 = três;; 1 = um;; 0 = nenhuma.
+
+- **EX137 — Resultados de tempo.** Informe os tempos mediano e máximo de revogação. *Rubrica:* 3 = mediana de quatro segundos, máximo de trinta e oito segundos;; 2 = um;; 1 = errado;; 0 = nenhuma.
+
+- **EX138 — Condição da passagem.** O que as operações fizeram antes de aceitar o sistema? *Rubrica:* 3 = executaram elas mesmas um exercício de revogação;; 2 = exercício;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-47"></a>
+
+## Capítulo 47 — Ensaio de falha e recuperação
+
+### Objetivos de aprendizagem
+
+Você vai (1) planejar um exercício de recuperação em grande escala; (2) recuperar a raiz do firmware a partir das partes dos custodiantes; (3) aprender com os achados do exercício.
+
+### 47.1 Planejar o ensaio
+
+A Ridgeway faz um ensaio anual de falha e recuperação, e Aiyana ajuda a planejar o cenário deste ano: o HSM primário de assinatura é destruído num incêndio simulado, e uma correção de segurança precisa ser assinada e publicada em até quarenta e oito horas. O ensaio usa os procedimentos reais de backup, mas uma raiz de teste e medidores de teste, de modo que nenhuma chave de produção é exposta. Os objetivos, os critérios de sucesso, os observadores e uma regra de interrupção são combinados antecipadamente. O planejamento garante que o exercício teste os procedimentos, e não a improvisação. Um responsável pela segurança pode interromper o ensaio a qualquer momento se um passo puser em risco sistemas reais.
+
+### 47.2 Executar a recuperação
+
+Três dos cinco custodiantes são chamados; um está no exterior e outro está inalcançável, mas o quórum de três de cinco do Capítulo 32 permite a recuperação. Eles se reúnem no site de backup, restauram a raiz de teste num HSM sobressalente a partir das partes cifradas, emitem uma nova intermediária numa cerimônia e assinam a correção. Os medidores de teste a aceitam. O tempo total é de trinta e uma horas. Os observadores registram cada passo. Um atraso surge porque o firmware do HSM sobressalente era mais antigo do que o exigido e precisou de uma atualização durante o ensaio.
+
+### 47.3 Aprender com o ensaio
+
+A revisão posterior ao ensaio lista os achados sem buscar culpados: o HSM sobressalente não era mantido com o mesmo firmware da produção; a lista de contatos dos custodiantes tinha um número de telefone desatualizado; e o roteiro da cerimônia não tinha um passo para registrar a nova intermediária no inventário. Cada achado recebe um dono e um prazo. Aiyana atualiza o roteiro da cerimônia e acrescenta verificações do firmware do HSM sobressalente ao checklist mensal das operações. O valor do ensaio está nesses achados, descobertos na prática, e não durante uma emergência real.
+
+### Exemplo resolvido
+
+O ensaio recupera uma raiz de teste a partir das partes de três custodiantes, assina uma correção em trinta e uma horas e produz três achados sem culpados, com donos.
+
+> **Caso sintético.** O cenário e os tempos são inventados.
+
+### Erros e limites
+
+Exercícios com condições irreais dão uma falsa confiança. Usar chaves de produção em ensaios arrisca uma exposição real.
+
+### Exercícios
+
+- **EX139 — Raiz de teste.** Por que o ensaio usa uma raiz de teste e medidores de teste? *Rubrica:* 3 = para exercitar os procedimentos reais sem expor chaves de produção;; 2 = segurança;; 1 = realismo;; 0 = nenhuma.
+
+- **EX140 — Quórum na prática.** Como o projeto de quórum ajudou durante o ensaio? *Rubrica:* 3 = só três de cinco custodiantes estavam disponíveis, o suficiente para a recuperação;; 2 = quórum;; 1 = não ajudou;; 0 = nenhuma.
+
+- **EX141 — Achados do ensaio.** Cite dois achados da revisão posterior ao ensaio. *Rubrica:* 3 = dois entre firmware desatualizado do HSM sobressalente, telefone errado, passo de inventário ausente;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
+
+<a id="ch-48"></a>
+
+## Capítulo 48 — Dossiê de evidências
+
+### Objetivos de aprendizagem
+
+Você vai (1) montar um dossiê de evidências para reguladores e avaliadores; (2) ligar as evidências aos requisitos e aos riscos; (3) proteger as evidências sensíveis.
+
+### 48.1 Propósito do dossiê
+
+O regulador exige que a Ridgeway demonstre que seu serviço de confiança da medição está adequadamente protegido. Aiyana monta um dossiê de evidências: requisitos, arquitetura, registro de riscos, mapa de controles, relatórios de testes, resumo dos testes independentes, atas das cerimônias, achados do ensaio e declarações de risco residual. O dossiê é organizado por requisito, para que um avaliador possa seguir qualquer requisito até seu projeto, seus testes e suas evidências operacionais. Um dossiê transforma anos de trabalho num argumento auditável, e não numa pilha de documentos. Ele também dá aos futuros engenheiros um mapa único de por que o sistema é como é.
+
+### 48.2 Ligar as evidências
+
+Para cada requisito, o dossiê inclui uma afirmação curta, as evidências que a sustentam e quaisquer limitações. Por exemplo, a afirmação de que as leituras não podem ser forjadas sem uma chave de medidor se liga ao projeto do HMAC, aos testes negativos do laboratório, ao teste independente que não encontrou falsificação e aos dados de monitoramento que mostram as falhas de verificação investigadas. Onde as evidências são mais fracas, como a resistência a canais laterais testada numa única revisão de hardware, o dossiê diz isso. Aiyana usa digests SHA-256 para identificar cada arquivo de evidência, para que os avaliadores possam confirmar que examinaram exatamente as versões referenciadas.
+
+### 48.3 Proteger as evidências sensíveis
+
+Algumas evidências ajudariam os atacantes, como relatórios detalhados de testes de intrusão ou a configuração dos HSMs. Aiyana classifica cada item: resumos públicos, material exclusivo do regulador e material apenas interno, disponível para inspeção no local. Material de chave nunca aparece em nenhum dossiê. As atas das cerimônias incluem identificadores de chave e impressões digitais, mas não as chaves. Ela combina com o regulador as regras de manuseio. As evidências que protegem o público não podem se tornar, elas próprias, um risco para o público. O acesso ao material exclusivo do regulador e ao material interno é registrado, e as cópias são numeradas, para que qualquer vazamento possa ser rastreado até um destinatário específico.
+
+### Exemplo resolvido
+
+O dossiê de Aiyana organiza as evidências por requisito, liga as afirmações aos testes e às operações com digests e classifica os itens sensíveis com regras de manuseio combinadas.
+
+> **Caso sintético.** O dossiê é inventado.
+
+### Erros e limites
+
+Dossiês que escondem evidências fracas perdem credibilidade quando os avaliadores encontram as lacunas. Compartilhar demais relatórios de testes detalhados aumenta o risco.
+
+### Exercícios
+
+- **EX142 — Organização do dossiê.** Como o dossiê é organizado, e por quê? *Rubrica:* 3 = por requisito, para que os avaliadores rastreiem cada um até o projeto, os testes e as operações;; 2 = requisito;; 1 = data;; 0 = nenhuma.
+
+- **EX143 — Evidências fracas.** Como o dossiê trata as evidências mais fracas? *Rubrica:* 3 = declara abertamente seus limites, por exemplo testes de canal lateral numa só revisão;; 2 = honesto;; 1 = esconde;; 0 = nenhuma.
+
+- **EX144 — Atas das cerimônias.** O que as atas das cerimônias incluem e excluem? *Rubrica:* 3 = identificadores de chave e impressões digitais, nunca material de chave;; 2 = impressões digitais;; 1 = chaves;; 0 = nenhuma.
+
+<a id="ch-49"></a>
+
+## Capítulo 49 — Tese de engenharia
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever uma tese de engenharia sobre o serviço de confiança; (2) apresentar o raciocínio de projeto e as evidências; (3) declarar as contribuições e as limitações.
+
+### 49.1 Estrutura da tese
+
+A tese de Aiyana apresenta o projeto e a avaliação do serviço de confiança da medição da Ridgeway, com foco no seu pipeline de revogação e no plano de migração pós-quântica. Os capítulos cobrem o problema e os requisitos, as normas relacionadas, a arquitetura e as alternativas, a implementação, a verificação e a validação, as operações e as conclusões. Cada decisão de projeto cita seu requisito e suas evidências. A tese não é um diário do projeto; é um argumento de que o projeto atende aos seus requisitos sob premissas declaradas. Ela usa o dossiê de evidências como espinha dorsal, para que cada afirmação da tese aponte para um artefato existente.
+
+### 49.2 Evidências e raciocínio
+
+A tese relata os resultados medidos: revogação chegando a todos os verificadores numa mediana de quatro segundos; testes independentes sem leituras forjadas; alcance do firmware de 97 por cento no piloto; e recuperação em trinta e uma horas no ensaio. Ela explica por que as alternativas foram rejeitadas, como as leituras com chave pública que excediam o orçamento das mensagens. Aiyana inclui os programas dos laboratórios como apêndices, todos usando apenas a biblioteca padrão sobre dados sintéticos, e declara claramente que os sistemas de produção usam bibliotecas criptográficas avaliadas e HSMs. Cada número cita o teste ou o log que o produziu.
+
+### 49.3 Contribuições e limites
+
+Ela declara as contribuições: um projeto de pipeline de revogação com mensagens autenticadas e reconciliação, uma abordagem medida da migração pós-quântica para medidores de vida longa e um conjunto de métricas operacionais ligado às etapas do ciclo de vida do SP 800-57. Os limites incluem uma única companhia, um piloto em vez de uma implantação completa e a dependência de implementações de fornecedores que ela não pôde inspecionar. Ela sugere trabalhos futuros sobre o desempenho das assinaturas híbridas nas diferentes gerações de medidores. Limites claros tornam as contribuições mais críveis. Seu orientador lê primeiro a seção de limites, como os examinadores costumam fazer, e pede que ela torne cada limite específico sobre quem poderia ver resultados diferentes.
+
+### Exemplo resolvido
+
+A tese de Aiyana argumenta que o serviço de confiança atende aos seus requisitos, relata os resultados medidos, explica as alternativas rejeitadas e declara três contribuições com seus limites.
+
+> **Caso sintético.** Os resultados são inventados; o SP 800-57 é real.
+
+### Erros e limites
+
+Teses que listam atividades em vez de argumentar afirmações são fracas. Afirmar mais do que as evidências sustentam convida à reprovação.
+
+### Exercícios
+
+- **EX145 — Natureza da tese.** O que é a tese, segundo o capítulo? *Rubrica:* 3 = um argumento de que o projeto atende aos requisitos sob premissas declaradas, não um diário;; 2 = argumento;; 1 = diário;; 0 = nenhuma.
+
+- **EX146 — Declaração sobre os apêndices de laboratório.** O que a tese diz sobre os programas dos laboratórios? *Rubrica:* 3 = só biblioteca padrão sobre dados sintéticos; a produção usa bibliotecas avaliadas e HSMs;; 2 = biblioteca padrão;; 1 = código de produção;; 0 = nenhuma.
+
+- **EX147 — Limites da tese.** Cite dois limites que Aiyana declara. *Rubrica:* 3 = dois entre uma única companhia, piloto e não implantação completa, implementações de fornecedores não inspecionadas;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
+
+<a id="ch-50"></a>
+
+## Capítulo 50 — Defesa final
+
+### Objetivos de aprendizagem
+
+Você vai (1) defender as decisões de projeto diante de uma banca examinadora; (2) responder a perguntas sobre trade-offs de segurança; (3) refletir sobre a responsabilidade contínua da engenheira.
+
+### 50.1 Preparar a defesa
+
+Aiyana prepara uma apresentação de vinte minutos: o problema, as principais escolhas de projeto, as evidências e os limites. Ela antecipa as perguntas: por que chaves simétricas para as leituras, por que três de cinco custodiantes, por que assinaturas pós-quânticas híbridas e o que acontece se o serviço de chaves for comprometido. Para cada uma, prepara uma resposta concisa que aponta para as evidências na tese ou no dossiê. Marcus e seu orientador fazem uma defesa simulada, pressionando-a sobre premissas de custo que ela não tinha justificado plenamente, e ela as reforça. Ela ensaia as respostas em voz alta até que cada uma caiba em menos de dois minutos.
+
+### 50.2 Responder a perguntas sobre trade-offs
+
+Durante a defesa, um examinador pergunta por que a Ridgeway não usou assinaturas de chave pública nas leituras para eliminar o risco central das chaves. Aiyana explica o orçamento de 32 bytes por mensagem e as restrições de energia, as mitigações do risco central (HSMs, derivação por medidor, monitoramento e controle duplo) e a condição sob a qual ela reverteria a decisão. Outro examinador pergunta se o código dos laboratórios poderia ser usado em produção; ela responde com firmeza que não, porque ele existe para verificar a compreensão contra vetores de teste, enquanto a produção depende de bibliotecas avaliadas.
+
+### 50.3 Responsabilidade contínua
+
+Ao concluir, Aiyana reflete que o serviço de confiança vai durar mais do que o envolvimento dela. Algoritmos ficarão obsoletos, a computação quântica pode amadurecer, a equipe vai mudar e as ameaças vão evoluir. Sua responsabilidade como engenheira é deixar um sistema que outras pessoas consigam entender, operar, testar e mudar com segurança, com documentação, runbooks, métricas e uma trilha de evidências. A banca aprova sua tese, destacando a clareza dos seus limites. Ela começa a trabalhar na Ridgeway como engenheira de segurança no mês seguinte. Ela agenda sua própria primeira revisão do sistema para dali a um ano.
+
+### Exemplo resolvido
+
+Aiyana defende o projeto simétrico das leituras, o quórum de custodiantes e a migração híbrida, recusa-se a chamar o código dos laboratórios de pronto para produção e enquadra sua responsabilidade como deixar um sistema manutenível.
+
+> **Caso sintético.** A defesa e o resultado são inventados.
+
+### Erros e limites
+
+Defender todas as decisões como perfeitas mina a credibilidade; reconheça os trade-offs. A responsabilidade da engenharia continua depois da passagem.
+
+### Exercícios
+
+- **EX148 — Lição da defesa simulada.** Que fraqueza a defesa simulada expôs? *Rubrica:* 3 = premissas de custo não totalmente justificadas;; 2 = custos;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX149 — Mitigações do risco central.** Que mitigações ela citou para o risco central das chaves? *Rubrica:* 3 = HSMs, derivação por medidor, monitoramento, controle duplo;; 2 = três;; 1 = uma;; 0 = nenhuma.
+
+- **EX150 — Responsabilidade da engenheira.** Como Aiyana descreve sua responsabilidade contínua? *Rubrica:* 3 = deixar um sistema que outros consigam entender, operar, testar e mudar com segurança, com documentação e evidências;; 2 = parcial;; 1 = nenhuma;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX120 (as de EX121–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Aiyana Torres, Marcus Webb, o Halden Institute of Engineering, a Ridgeway Water Utility e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX150. Aiyana Torres, Marcus Webb, o Halden Institute of Engineering, a Ridgeway Water Utility e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Cada bit acrescentado dobra o espaço de chaves, então o trabalho se multiplica, em vez de aumentar num passo fixo.
 
@@ -2035,6 +2413,66 @@ Respostas-modelo para EX001–EX120 (as de EX121–EX150 estão na edição em i
 **EX119.** O gateway rejeitou corretamente o certificado ainda não válido, mas o alerta do concentrador não era claro e foi reescrito.
 
 **EX120.** A extração da chave de um medidor por um atacante bem financiado, aceita porque as chaves por medidor confinam o dano àquele medidor.
+
+**EX121.** As quatro leituras e seus contadores, para que a remoção ou a reordenação seja detectada.
+
+**EX122.** Suas credenciais ficam no serviço de chaves, e seus logs de emissão vão para o monitoramento.
+
+**EX123.** A resistência à falsificação de sessenta e quatro bits fica abaixo da meta do modelo de ameaça, e de qualquer forma os cabeçalhos de rádio dominam o consumo de energia.
+
+**EX124.** As falhas de verificação do amanhecer são causadas pela deriva dos relógios dos medidores além da tolerância de timestamp depois de noites frias, e não por ataques ou ruído de rádio?
+
+**EX125.** Falhas na própria verificação da tag, e não timestamps fora da tolerância.
+
+**EX126.** Sincronização regular do horário a partir dos concentradores, autenticada com a chave de cada medidor.
+
+**EX127.** A triagem de alertas de verificação e a ajuda numa rotação trimestral de chaves.
+
+**EX128.** Uma mudança não revisada de outra equipe desativou as verificações de certificados de cliente em homologação e foi pega antes da produção.
+
+**EX129.** Negociar requisitos de segurança com fornecedores e comunicar riscos a gestores.
+
+**EX130.** As revogações precisam chegar a todos os verificadores em até um minuto, com uma trilha de auditoria.
+
+**EX131.** Mudanças no firmware dos medidores, que exigiriam trabalho do fornecedor além do cronograma do projeto final.
+
+**EX132.** Um conflito com a atualização planejada do serviço de chaves, mitigado por uma reunião com essa equipe na segunda semana.
+
+**EX133.** Requisitos, modelo de ameaça, arquitetura e plano de testes (além dos contratos e das questões em aberto).
+
+**EX134.** Um atacante interno poderia forjar revogações e derrubar medidores legítimos.
+
+**EX135.** Ao se reconectar, os verificadores baixam a lista completa de revogação e conferem seu hash com o valor publicado.
+
+**EX136.** O identificador da chave, o motivo, o timestamp e o número de sequência, tudo assinado.
+
+**EX137.** Uma mediana de quatro segundos e um máximo de trinta e oito segundos.
+
+**EX138.** Executaram o próprio exercício de revogação.
+
+**EX139.** Para que os procedimentos reais sejam praticados sem arriscar as chaves de produção.
+
+**EX140.** Dois custodiantes estavam indisponíveis, mas três de cinco bastaram para a recuperação.
+
+**EX141.** O firmware do HSM sobressalente estava desatualizado, e o número de telefone de um custodiante estava errado.
+
+**EX142.** Por requisito, permitindo que um avaliador rastreie cada um pelo projeto, pelos testes e pelas operações.
+
+**EX143.** Declara a limitação abertamente, como os testes de canal lateral feitos em apenas uma revisão de hardware.
+
+**EX144.** Incluem identificadores de chave e impressões digitais, mas nunca material de chave.
+
+**EX145.** Um argumento de que o projeto satisfaz seus requisitos sob premissas declaradas, e não um registro do projeto.
+
+**EX146.** Eles usam apenas a biblioteca padrão sobre dados sintéticos, enquanto a produção depende de bibliotecas avaliadas e HSMs.
+
+**EX147.** Uma única companhia e um piloto, em vez de uma implantação completa.
+
+**EX148.** Suas premissas de custo não tinham sido justificadas adequadamente.
+
+**EX149.** Módulos de segurança de hardware, derivação de chaves por medidor, monitoramento e controle duplo.
+
+**EX150.** Deixar um sistema que outras pessoas consigam entender, operar, testar e mudar com segurança, apoiado em documentação, runbooks, métricas e evidências.
 
 <a id="references"></a>
 ## Referências
