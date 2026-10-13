@@ -310,7 +310,7 @@ Reading the output line by line: the SCADA reads are normal; the engineering wor
 
 Decode the three frames below by hand, then add them to Lab 2 and confirm: `000900000006010100000010`, `000a0000000601050003 0000` (remove the space), `000b00000006020300640001`. Write down the function, address and quantity or value of each, and whether the unit identifier is what you expect for KW-04.
 
-Write the function, address and quantity or value for each frame, and whether the unit identifier matches what KW-04 uses. Then add the frames to Lab 2 and confirm that your hand decode matches the script. If a frame has a space in the hex, remove it before pasting; spaces are not part of the capture.
+The second frame carries function 05, a single-coil write, so record whether the SCADA server is ever expected to send one to KW-04. Then add the frames to Lab 2 and confirm that your hand decode matches the script. If a frame has a space in the hex, remove it before pasting; spaces are not part of the capture.
 
 ### 2.6 Common errors and limits
 
@@ -1215,7 +1215,7 @@ Construct the frame with one full sixteen-byte block and a one-byte block, each 
 
 - Mixing Modbus big-endian fields with DNP3 little-endian addresses in the same decoder without stating the byte order.
 - Treating a valid CRC as proof of authenticity when the source address is unknown.
-- Active probing when a passive capture or a configuration export answers the question.
+- Reading the Lab 9 ALERT for source address 77 as proof of an attack; it only shows an address missing from the master list.
 
 ### Exercises — chapter 9
 
@@ -1359,8 +1359,8 @@ Put each allow above the default deny, with ticket and owner in the comment. Rem
 - Lab 10 models a stateless first-match policy with exact containment; real firewalls add state, objects, NAT and zones, and their own analysis tools.
 
 - Reviewing a new rule without reading the rules above it that may already allow or deny the same traffic.
-- Deleting a broad rule without checking the firewall logs for current users.
-- Leaving supplier access permanently enabled for emergencies.
+- Narrowing R4 to fix the tcp/3389 and tcp/445 failures without first checking the logs for corporate hosts that rely on it today.
+- Enabling a supplier account for a ticketed job and forgetting to disable it when the fixed window closes.
 
 ### Exercises — chapter 10
 
@@ -1403,7 +1403,7 @@ Chapter 10 changed configuration. A change is not finished when it is applied; i
 
 "The historian is hardened" cannot be tested. "SSH on hist-02 listens only on 10.90.0.21" can. Write each requirement so that a named test, run by someone else, could fail it. Split compound requirements: "only the SCADA server and engineering workstation reach station tcp/502" needs a positive test (SCADA still polls) **and** a negative test (another control-centre host is refused).
 
-Write each requirement so that a named test could fail it. Split compounds: only the SCADA server and engineering workstation may reach station tcp/502 needs a positive poll from the SCADA server and a negative refusal from another control-centre host. Put the requirement identifiers in the change record before the work starts.
+REQ-1 in Lab 11 passes this check: SSH listening only on 10.90.0.21 is something tests T1 and T2 could have failed. REQ-4 shows the split in practice: T5 and T6 cover its negative and positive halves, and the requirement fails if either half fails. Put the requirement identifiers in the change record before the work starts.
 
 ### 11.2 Positive and negative tests
 
@@ -1413,7 +1413,7 @@ Write each requirement so that a named test could fail it. Split compounds: only
 
 A test counts only if it has: an identifier, the requirement it verifies, the method, the time, the person, the result and an evidence file (Chapter 5). A "config review only" with no recorded output is a useful activity but not a test result. A requirement with no counted test is **untested** — not verified, and not failed. Reporting untested as verified is the single most common way verification misleads.
 
-A config review with no recorded output is useful activity but not a counted test. REQ-6 in Lab 11 stays untested until someone produces a deny line from the collector; reporting it as verified because the rule exists would hide the gap. Keep evidence files next to the test identifiers in the verification record.
+Lab 11 applies the rule to T8, a config review of REQ-2 with no evidence file, which the script ignores. REQ-6 in Lab 11 stays untested until someone produces a deny line from the collector; reporting it as verified because the rule exists would hide the gap. Keep evidence files next to the test identifiers in the verification record.
 
 ### 11.4 Worked example: verifying CHG-2207 (synthetic)
 
@@ -1479,7 +1479,7 @@ Three requirements verified, two failed, one untested. REQ-3 failed because R4 w
 - Never verify a write-block by attempting a write to a live controller; verify it with a connect test and the firewall log, or against a spare device in a lab (Chapter 12).
 - Stop at the first unexpected behaviour.
 
-Prefer historian counts and firewall logs over generating traffic. When you must generate traffic, use a marked test source such as 10.30.99.9, a TCP connect with no Modbus payload, and an agreed window with operations informed. Never verify a write-block by writing to a live controller.
+Prefer historian counts and firewall logs over generating traffic. Operations should know before the first connect that 10.30.99.9 is the test source, so its traffic is not mistaken for an intruder. Never verify a write-block by writing to a live controller.
 
 ### 11.6 Practical activity
 
@@ -1496,7 +1496,7 @@ Use the marked test desk, then query the collector for the matching deny within 
 - Lab 11 treats any failing test as a failed requirement; a requirement can also be *partly* verified if a test covers only some of its scope — say so in words.
 
 - Running only negative tests and missing that historian collection stopped.
-- Counting a test without an evidence file.
+- Leaving REQ-6 untested because producing a deny line at the collector seemed harder than reading the firewall rule.
 - Reporting five of six tests passed instead of each requirement's status.
 - Verifying once and never again after a related change.
 
@@ -1640,7 +1640,7 @@ Read the hex responses. The first is a normal read: `03 06` (function 3, six byt
 
 Real devices differ: some ignore unit identifiers, some accept writes to any register, some crash on malformed requests, and few log anything. The responder handles one request at a time, has no concurrency, timeouts or partial reads. Its value is in making policy and exceptions visible, not in predicting a particular vendor's behaviour. Never use results from a lab to decide how a live device will respond to a test.
 
-Never use lab results to decide how a live device will respond to a test. Real devices differ in unit-identifier handling, write protection and logging, and many crash on malformed requests. State those gaps in the assessment, and keep live verification to scoped, authorized methods from Chapter 11.
+If the responder returns exception 2 for a read of registers 8 to 12, that says nothing about what a real KW-04 RTU would do. Real devices differ in unit-identifier handling, write protection and logging, and many crash on malformed requests. State those gaps in the assessment, and keep live verification to scoped, authorized methods from Chapter 11.
 
 ### 12.7 Practical activity
 
@@ -1770,7 +1770,7 @@ Chapter 10 left an open item: fw-01 denies corporate-desk traffic to stations, y
 
 Write as you go, in UTC, with the four labels: *observed*, *inferred*, *done*, *open*. A good log lets a colleague taking over at shift change continue without asking you anything, and lets an investigator later reconstruct what was changed and when. Chapter 16 gives a template; Chapter 18 seals it as project evidence.
 
-Write as you go in UTC with the four labels, so a colleague at shift change can continue without asking you anything. Include evidence references for each observation, such as the RTU config export hash and the jump-host log interval. Chapter 16 gives a template; Chapter 18 seals the log as project evidence.
+Write as you go in UTC with the four labels, so a colleague at shift change can continue without asking you anything. Include evidence references for each observation, such as the RTU config export hash and the jump-host log interval. In Lab 18 the log becomes 05-troubleshooting-log.md, and its manifest hash verifies OK when the package is checked.
 
 ### 13.6 Practical activity
 
@@ -1788,7 +1788,7 @@ If the existing observations do not refute H6, name one additional read-only che
 
 - Rebooting first and destroying volatile evidence.
 - Stopping at the first hypothesis that fits instead of testing predictions against all observations.
-- Treating a consistent hypothesis as proven; it is only not yet refuted.
+- Calling H4, the changed RTU register map, the cause before a config export confirms it; Lab 13 only shows it is consistent.
 - Changing several things at once so that the fix cannot be attributed.
 
 ### Exercises — chapter 13
@@ -2047,9 +2047,9 @@ After the change, record which components are shared by all three services and p
 - Lab 15's graph is binary (needs / does not need); real dependencies have degraded modes and timers (a cached credential works for hours; a clock drifts slowly).
 
 - Listing only direct dependencies and missing the hypervisor under the directory.
-- Treating the directory and time service as infrastructure with no service owner.
+- Leaving gps-clock without a named owner, although Lab 15 shows grid telecontrol and water telemetry both depending on it.
 - Assuming a carrier isolates customer private networks without checking.
-- Counting dependants without looking at which services and through which paths.
+- Ranking esx-03 by its seven dependants instead of noting that it is the one asset shared by all three services.
 
 ### Exercises — chapter 15
 
@@ -2146,7 +2146,7 @@ Include preservation of the router's configuration before the change, positive a
 - One laptop for everything.
 - Documentation written after the work, from memory.
 
-- Writing steps without expected results.
+- Leaving the rollback for a fw-01 rule change out of the site procedure, so a failed change has no tested way back.
 - Putting credentials or full firewall exports into a widely shared ticket.
 - Skipping the permit or the control-room call because the task looks like ordinary IT.
 - Using one laptop for corporate, control-centre and site work.

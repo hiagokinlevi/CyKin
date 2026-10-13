@@ -310,7 +310,7 @@ Lendo a saída linha a linha: as leituras do SCADA são normais; a estação de 
 
 Decodifique à mão os três quadros abaixo, depois acrescente-os ao Laboratório 2 e confirme: `000900000006010100000010`, `000a0000000601050003 0000` (remova o espaço), `000b00000006020300640001`. Anote a função, o endereço e a quantidade ou o valor de cada um, e se o identificador de unidade é o que você espera para a KW-04.
 
-Escreva a função, o endereço e a quantidade ou o valor de cada quadro, e se o identificador de unidade corresponde ao que a KW-04 usa. Depois acrescente os quadros ao Laboratório 2 e confirme que a sua decodificação à mão coincide com a do script. Se um quadro tiver um espaço no hexadecimal, remova-o antes de colar; os espaços não fazem parte da captura.
+O segundo quadro traz a função 05, uma escrita de bobina única, então registre se o servidor SCADA deveria algum dia enviá-la à KW-04. Depois acrescente os quadros ao Laboratório 2 e confirme que a sua decodificação à mão coincide com a do script. Se um quadro tiver um espaço no hexadecimal, remova-o antes de colar; os espaços não fazem parte da captura.
 
 ### 2.6 Erros comuns e limites
 
@@ -1215,7 +1215,7 @@ Construa o quadro com um bloco completo de dezesseis bytes e um bloco de um byte
 
 - Misturar campos big-endian do Modbus com endereços little-endian do DNP3 no mesmo decodificador sem declarar a ordem dos bytes.
 - Tratar um CRC válido como prova de autenticidade quando o endereço de origem é desconhecido.
-- Sondagem ativa quando uma captura passiva ou uma exportação de configuração responde à pergunta.
+- Ler o ALERT do Laboratório 9 para o endereço de origem 77 como prova de ataque; ele só mostra um endereço ausente da lista do mestre.
 
 ### Exercícios — capítulo 9
 
@@ -1359,8 +1359,8 @@ Ponha cada permissão acima da negação padrão, com chamado e responsável no 
 - O Laboratório 10 modela uma política de primeira correspondência sem estado, com contenção exata; firewalls reais acrescentam estado, objetos, NAT e zonas, e têm as suas próprias ferramentas de análise.
 
 - Revisar uma regra nova sem ler as regras acima dela, que podem já permitir ou negar o mesmo tráfego.
-- Apagar uma regra ampla sem verificar nos logs do firewall os usuários atuais.
-- Deixar o acesso de fornecedores permanentemente habilitado para emergências.
+- Estreitar a R4 para corrigir as falhas em tcp/3389 e tcp/445 sem antes verificar nos logs quais hosts corporativos dependem dela hoje.
+- Habilitar a conta de um fornecedor para um serviço com chamado e esquecer de desabilitá-la quando a janela fixa termina.
 
 ### Exercícios — capítulo 10
 
@@ -1403,7 +1403,7 @@ O Capítulo 10 mudou a configuração. Uma mudança não termina quando é aplic
 
 "O historiador está endurecido" não pode ser testado. "O SSH no hist-02 escuta apenas em 10.90.0.21" pode. Escreva cada requisito de modo que um teste nomeado, executado por outra pessoa, possa reprová-lo. Divida os requisitos compostos: "apenas o servidor SCADA e a estação de engenharia alcançam tcp/502 das estações" precisa de um teste positivo (o SCADA continua varrendo) **e** de um teste negativo (outro host do centro de controle é recusado).
 
-Escreva cada requisito de modo que um teste nomeado possa reprová-lo. Divida os compostos: "apenas o servidor SCADA e a estação de engenharia podem alcançar tcp/502 das estações" precisa de uma varredura positiva a partir do servidor SCADA e de uma recusa negativa a partir de outro host do centro de controle. Ponha os identificadores dos requisitos no registro de mudança antes de o trabalho começar.
+O REQ-1 do Laboratório 11 passa nesta verificação: o SSH escutando apenas em 10.90.0.21 é algo que os testes T1 e T2 poderiam ter reprovado. O REQ-4 mostra a divisão na prática: T5 e T6 cobrem as suas metades negativa e positiva, e o requisito falha se qualquer uma delas falhar. Ponha os identificadores dos requisitos no registro de mudança antes de o trabalho começar.
 
 ### 11.2 Testes positivos e negativos
 
@@ -1413,7 +1413,7 @@ Os **testes negativos** mostram que um controle bloqueia o que deveria; os **tes
 
 Um teste só conta se tiver: um identificador, o requisito que verifica, o método, o horário, a pessoa, o resultado e um arquivo de evidência (Capítulo 5). Uma "apenas revisão de configuração" sem saída registrada é uma atividade útil, mas não é resultado de teste. Um requisito sem nenhum teste contado está **não testado** — nem verificado, nem falho. Relatar o não testado como verificado é a forma mais comum de a verificação enganar.
 
-Uma revisão de configuração sem saída registrada é uma atividade útil, mas não um teste contado. O REQ-6 do Laboratório 11 continua não testado até que alguém produza uma linha de negação vinda do coletor; relatá-lo como verificado porque a regra existe esconderia a lacuna. Mantenha os arquivos de evidência ao lado dos identificadores dos testes no registro de verificação.
+O Laboratório 11 aplica a regra ao T8, uma revisão de configuração do REQ-2 sem arquivo de evidência, que o script ignora. O REQ-6 do Laboratório 11 continua não testado até que alguém produza uma linha de negação vinda do coletor; relatá-lo como verificado porque a regra existe esconderia a lacuna. Mantenha os arquivos de evidência ao lado dos identificadores dos testes no registro de verificação.
 
 ### 11.4 Exemplo resolvido: verificar a CHG-2207 (sintético)
 
@@ -1479,7 +1479,7 @@ Três requisitos verificados, dois falhos, um não testado. O REQ-3 falhou porqu
 - Nunca verifique um bloqueio de escrita tentando escrever num controlador em produção; verifique-o com um teste de conexão e o log do firewall, ou frente a um dispositivo reserva num laboratório (Capítulo 12).
 - Pare ao primeiro comportamento inesperado.
 
-Prefira as contagens do historiador e os logs do firewall a gerar tráfego. Quando precisar gerar tráfego, use uma origem de teste identificada, como 10.30.99.9, uma conexão TCP sem carga Modbus e uma janela combinada, com as operações informadas. Nunca verifique um bloqueio de escrita escrevendo num controlador em produção.
+Prefira as contagens do historiador e os logs do firewall a gerar tráfego. As operações devem saber, antes da primeira conexão, que 10.30.99.9 é a origem de teste, para que o seu tráfego não seja confundido com um intruso. Nunca verifique um bloqueio de escrita escrevendo num controlador em produção.
 
 ### 11.6 Atividade prática
 
@@ -1496,7 +1496,7 @@ Use a mesa de testes identificada e depois consulte o coletor pela negação cor
 - O Laboratório 11 trata qualquer teste falho como requisito falho; um requisito também pode estar *parcialmente* verificado, se um teste cobrir só parte do seu escopo — diga isso com palavras.
 
 - Executar apenas testes negativos e não perceber que a coleta do historiador parou.
-- Contar um teste sem arquivo de evidência.
+- Deixar o REQ-6 sem teste porque produzir uma linha de negação no coletor parecia mais difícil do que ler a regra do firewall.
 - Relatar que cinco de seis testes passaram em vez da situação de cada requisito.
 - Verificar uma vez e nunca mais depois de uma mudança relacionada.
 
@@ -1640,7 +1640,7 @@ Leia as respostas em hexadecimal. A primeira é uma leitura normal: `03 06` (fun
 
 Os dispositivos reais diferem: alguns ignoram os identificadores de unidade, alguns aceitam escritas em qualquer registrador, alguns travam com requisições malformadas, e poucos registram alguma coisa. O respondedor trata uma requisição de cada vez, não tem concorrência, timeouts nem leituras parciais. O seu valor está em tornar visíveis a política e as exceções, não em prever o comportamento de um fornecedor em particular. Nunca use os resultados de um laboratório para decidir como um dispositivo em produção responderá a um teste.
 
-Nunca use os resultados de um laboratório para decidir como um dispositivo em produção responderá a um teste. Os dispositivos reais diferem no tratamento do identificador de unidade, na proteção contra escrita e no registro, e muitos travam com requisições malformadas. Declare essas lacunas na avaliação e mantenha a verificação em produção restrita aos métodos com escopo e autorizados do Capítulo 11.
+Se o respondedor devolve a exceção 2 para uma leitura dos registradores 8 a 12, isso nada diz sobre o que uma RTU real da KW-04 faria. Os dispositivos reais diferem no tratamento do identificador de unidade, na proteção contra escrita e no registro, e muitos travam com requisições malformadas. Declare essas lacunas na avaliação e mantenha a verificação em produção restrita aos métodos com escopo e autorizados do Capítulo 11.
 
 ### 12.7 Atividade prática
 
@@ -1770,7 +1770,7 @@ O Capítulo 10 deixou um item em aberto: o fw-01 nega o tráfego das mesas corpo
 
 Escreva à medida que avança, em UTC, com os quatro rótulos: *observado*, *inferido*, *feito*, *em aberto*. Um bom registro permite que um colega que assume na troca de turno continue sem lhe perguntar nada, e permite que um investigador reconstrua depois o que foi mudado e quando. O Capítulo 16 dá um modelo; o Capítulo 18 o sela como evidência do projeto.
 
-Escreva à medida que avança, em UTC, com os quatro rótulos, para que um colega na troca de turno possa continuar sem lhe perguntar nada. Inclua referências de evidência para cada observação, como o hash da exportação da configuração da RTU e o intervalo do log do host de salto. O Capítulo 16 dá um modelo; o Capítulo 18 sela o registro como evidência do projeto.
+Escreva à medida que avança, em UTC, com os quatro rótulos, para que um colega na troca de turno possa continuar sem lhe perguntar nada. Inclua referências de evidência para cada observação, como o hash da exportação da configuração da RTU e o intervalo do log do host de salto. No Laboratório 18 o registro vira 05-troubleshooting-log.md, e o seu hash no manifesto é verificado como OK quando o pacote é conferido.
 
 ### 13.6 Atividade prática
 
@@ -1788,7 +1788,7 @@ Se as observações existentes não refutarem a H6, nomeie uma verificação adi
 
 - Reiniciar primeiro e destruir evidências voláteis.
 - Parar na primeira hipótese que se encaixa em vez de testar as previsões frente a todas as observações.
-- Tratar uma hipótese coerente como provada; ela está apenas ainda não refutada.
+- Chamar a H4, o mapa de registradores da RTU alterado, de causa antes que uma exportação de configuração a confirme; o Laboratório 13 só mostra que ela é coerente.
 - Mudar várias coisas ao mesmo tempo, de modo que a correção não pode ser atribuída.
 
 ### Exercícios — capítulo 13
@@ -2047,9 +2047,9 @@ Depois da mudança, registre quais componentes são compartilhados pelos três s
 - O grafo do Laboratório 15 é binário (precisa / não precisa); as dependências reais têm modos degradados e temporizadores (uma credencial em cache funciona por horas; um relógio deriva devagar).
 
 - Listar apenas as dependências diretas e não perceber o hipervisor sob o diretório.
-- Tratar o diretório e o serviço de tempo como infraestrutura sem dono de serviço.
+- Deixar o gps-clock sem dono nomeado, embora o Laboratório 15 mostre que a telecontrol da rede elétrica e a telemetria de água dependem dele.
 - Presumir que uma operadora isola as redes privadas dos clientes sem verificar.
-- Contar dependentes sem olhar quais serviços são afetados e por quais caminhos.
+- Classificar o esx-03 pelos seus sete dependentes em vez de notar que ele é o único ativo compartilhado pelos três serviços.
 
 ### Exercícios — capítulo 15
 
@@ -2146,7 +2146,7 @@ Inclua a preservação da configuração do roteador antes da mudança, testes p
 - Um notebook para tudo.
 - Documentação escrita depois do trabalho, de memória.
 
-- Escrever etapas sem resultados esperados.
+- Deixar de fora do procedimento de campo o rollback de uma mudança de regra no fw-01, de modo que uma mudança falha não tem caminho de volta testado.
 - Pôr credenciais ou exportações completas de firewall num chamado amplamente compartilhado.
 - Pular a permissão ou a ligação para a sala de controle porque a tarefa parece TI comum.
 - Usar um único notebook para o trabalho corporativo, no centro de controle e nos locais.
