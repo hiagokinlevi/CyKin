@@ -377,7 +377,7 @@ A validation function that returns only "valid" or "invalid" forces a bad choice
 
 Four habits make small tools trustworthy. Keep **one function per decision**, so it can be tested alone. Make the **state explicit** — the last-seen sequence per station is passed in, not hidden in a global. **Fail closed** — any path you did not anticipate ends in reject, not accept. And **test with bad cases first**: for every check, write at least one input that should fail it, and run them all after every change.
 
-Lab 3 follows all four. The sequence check receives the last accepted number per station as an argument, which is why the repeated 102 can be tested on its own, and the chlorine plausibility rule is a separate function, which is why 9.80 mg/L can be quarantined rather than rejected without touching the parser.
+Lab 3 follows all four at small scale: every decision sits in one short `validate()` function that can be tested alone. The sequence check receives the last accepted number per station as an argument, which is why the repeated 102 can be tested on its own, and the chlorine plausibility rule is a separate step driven by the `LIMITS` table after the value is parsed, which is why 9.80 mg/L can be quarantined rather than rejected without touching the parser.
 
 ### 3.5 Worked example: the station message validator (synthetic)
 
@@ -685,7 +685,7 @@ For the message validator, a complete card reads: risk, forged, replayed or malf
 - Reading incident reports as how-to guides, or repeating a first account after it has been revised.
 - Calling every event an incident, which exhausts responders; or calling nothing an incident, which delays response.
 
-Each of these appears in this chapter's status report before it was rewritten. "LANTERN is secure" is the first error. "Firewalls are in place" counts a control without saying that one undeclared corporate→PS-04 path had to be closed under CHG-121. "Monitoring is active" hid that Rule B detected only 7 of 10 tests.
+Three of these appear in this chapter's status report before it was rewritten. "LANTERN is secure" is the first error. "Firewalls are in place" counts a control without saying that one undeclared corporate→PS-04 path had to be closed under CHG-121. "Monitoring is active" hid that Rule B detected only 7 of 10 tests.
 
 ### Exercises — chapter 5
 
@@ -3455,7 +3455,7 @@ Each worked result shows one defensible answer and explains what the rubric rewa
 
 **EX005 — Update the declaration.** Relay updates: either add a narrow conduit (relay → named update mirror or, better, an internal FSTS update server, tcp/443, purpose "OS updates", owner FSTS Platform, review yearly) or remove direct internet access and point the relay at the internal update server; the second is preferred because the relay should not reach the internet. Engineer's laptop: remove the corporate → station path; declare an engineering path from the management jump host (MFA, session logging) to the station engineering interface, owner Water engineering, purpose "PLC configuration", enabled only for approved work. Full credit refuses to "allow what was observed" and puts owners and purposes on every new entry.
 
-**EX006 — Extend the lab.** A minimal change: in the loop, after computing `key`, add `if "unknown" in key[:2]: print(f"UNKNOWN ZONE {s:>12} -> {d:<12} {p}/{port} n={count}"); continue`. With the added line `10.50.1.9,10.30.0.5,tcp,443,5`, the new output includes `UNKNOWN ZONE    10.50.1.9 -> 10.30.0.5 tcp/443 n=5`. Full credit explains that "unknown zone" means the inventory or zone map is incomplete — a different finding from an undeclared path between known zones.
+**EX006 — Extend the lab.** A minimal change: in the loop, after computing `key`, add `if "unknown" in key[:2]: print(f"UNKNOWN ZONE {s:>12} -> {d:<12} {p}/{port} n={count}"); continue`. With the added line `10.50.1.9,10.30.0.5,tcp,443,5`, the new output includes `UNKNOWN ZONE    10.50.1.9 -> 10.30.0.5    tcp/443 n=5`. Full credit explains that "unknown zone" means the inventory or zone map is incomplete — a different finding from an undeclared path between known zones.
 
 ### Chapter 3: EX007–EX009
 
