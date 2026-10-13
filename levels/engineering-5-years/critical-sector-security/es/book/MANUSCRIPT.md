@@ -64,12 +64,12 @@ Toda afirmación factual sobre una ley, una norma, un incidente o un estudio pub
 26. [Infraestructura crítica y seguridad sectorial: alternativas de arquitectura](#ch-26)
 27. [Infraestructura crítica y seguridad sectorial: diseño de controles](#ch-27)
 28. [Infraestructura crítica y seguridad sectorial: implementación I](#ch-28)
-29. [Infraestructura crítica y seguridad sectorial: medición](../../en/book/MANUSCRIPT.md#ch-29)
-30. [Laboratorio de verificación I](../../en/book/MANUSCRIPT.md#ch-30)
-31. [Infraestructura crítica y seguridad sectorial: implementación II](../../en/book/MANUSCRIPT.md#ch-31)
-32. [Infraestructura crítica y seguridad sectorial: confiabilidad](../../en/book/MANUSCRIPT.md#ch-32)
-33. [Infraestructura crítica y seguridad sectorial: seguridad funcional y resiliencia](../../en/book/MANUSCRIPT.md#ch-33)
-34. [Infraestructura crítica y seguridad sectorial: integración](../../en/book/MANUSCRIPT.md#ch-34)
+29. [Infraestructura crítica y seguridad sectorial: medición](#ch-29)
+30. [Laboratorio de verificación I](#ch-30)
+31. [Infraestructura crítica y seguridad sectorial: implementación II](#ch-31)
+32. [Infraestructura crítica y seguridad sectorial: confiabilidad](#ch-32)
+33. [Infraestructura crítica y seguridad sectorial: seguridad funcional y resiliencia](#ch-33)
+34. [Infraestructura crítica y seguridad sectorial: integración](#ch-34)
 35. [Taller de diseño II](../../en/book/MANUSCRIPT.md#ch-35)
 36. [Infraestructura crítica y seguridad sectorial: desempeño y escala](../../en/book/MANUSCRIPT.md#ch-36)
 37. [Infraestructura crítica y seguridad sectorial: operaciones](../../en/book/MANUSCRIPT.md#ch-37)
@@ -2234,7 +2234,467 @@ Implemente los controles a partir de las especificaciones, con pruebas para cada
 <!-- cyberabc:chapter-navigation:start ch-28 -->
 ### Siga estudiando — capítulo 28 de 50
 
-[← Capítulo 27](#ch-27) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 29 →](../../en/book/MANUSCRIPT.md#ch-29)
+[← Capítulo 27](#ch-27) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Infraestructura crítica y seguridad sectorial: medición
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) definir métricas de seguridad y resiliencia que respalden decisiones; (2) calcular métricas de detección —precisión, exhaustividad, F1, tasa de falsas alarmas, tiempo de detección— a partir de pruebas etiquetadas; (3) medir la resiliencia como el desempeño del servicio a lo largo del tiempo durante una perturbación; y (4) evitar métricas que recompensen el comportamiento equivocado. Se apoya en los capítulos 7 y 28 y prepara los capítulos 30, 38 y 40.
+
+### 29.1 Qué medir
+
+Una métrica es útil si cambia una decisión. Hay tres familias: **desempeño de los controles** (¿hace el control lo que se especificó?: tasas de rechazo, tiempos de detección); **exposición** (¿cuánta superficie de ataque o vulnerabilidad existe?: conductos sin autenticación, vulnerabilidades alcanzables sin parchear, cuentas compartidas); y **resiliencia del servicio** (¿cómo se degrada y se recupera el servicio?). Use el enfoque objetivo–pregunta–métrica: enuncie el objetivo, la pregunta que mostraría el avance y, solo entonces, la métrica. En el TMRP, la latencia de alarma de R7 mide el desempeño de los controles, el número de conductos sin autenticación mide la exposición y la proporción de la demanda atendida durante el ensayo de recuperación mide la resiliencia.
+
+### 29.2 Métricas de detección
+
+De un conjunto de prueba etiquetado se obtienen verdaderos positivos (TP), falsos positivos (FP), falsos negativos (FN) y verdaderos negativos (TN). **Precisión** = TP/(TP+FP): de las alarmas, cuántas eran reales. **Exhaustividad** (*recall*) = TP/(TP+FN): de los eventos reales, cuántos se encontraron. **F1** es su media armónica. Informe la precisión y la exhaustividad junto con la tasa base del conjunto de prueba; la precisión en un conjunto de prueba con un 50 % de ataques dice poco sobre una operación con un 0,1 % (capítulo 7). El **tiempo de detección** es una distribución; informe la mediana y los peores casos, no solo la media. [Arp et al. (2022)](https://www.usenix.org/conference/usenixsecurity22/presentation/arp) enumeran errores frecuentes al evaluar sistemas de seguridad basados en aprendizaje automático, entre ellos tasas base poco realistas y la contaminación por espionaje de datos (*data snooping*); [Kim et al. (2022)](https://ojs.aaai.org/index.php/AAAI/article/view/20680) muestran cómo la evaluación con ajuste por puntos puede inflar las puntuaciones de detección de anomalías en series temporales.
+
+### 29.3 La resiliencia como desempeño a lo largo del tiempo
+
+Represente el desempeño del servicio $Q(t)$ —para la LRWA, la fracción de la demanda atendida— durante una perturbación. [Bruneau et al. (2003)](https://doi.org/10.1193/1.1623497) propusieron medir la pérdida de resiliencia como el área entre el desempeño pleno y $Q(t)$, desde la perturbación hasta la recuperación. La curva muestra la robustez (cuánto cae el desempeño), la rapidez (con qué velocidad se recupera) y la pérdida total. Los requisitos de ingeniería se proyectan sobre ella: R4 mantiene la caída poco profunda; R6 acorta la recuperación.
+
+El ensayo de recuperación del TMRP ofrece una curva real, ya que el suministro se mantuvo en modo local mientras se restablecía la operación remota.
+
+### 29.4 Métricas que engañan
+
+Contar los ataques bloqueados recompensa a los cortafuegos ruidosos; contar los parches aplicados ignora cuáles importaban; el tiempo medio de detección oculta el único evento detectado al cabo de tres semanas. Cuando una métrica se convierte en objetivo, las personas optimizan la métrica. Prefiera métricas ligadas a las consecuencias y verificadas mediante pruebas. La prueba de aceptación del detector del TMRP los evita al informar de las omisiones y de la detección más lenta, no solo de un promedio. Los dos eventos de reconocimiento no detectados permanecen en el informe, porque son el resultado que cambia cuánto puede confiar la LRWA en el detector.
+
+### 29.5 Ejemplo resuelto: prueba de aceptación de un detector de anomalías (sintético)
+
+La prueba de aceptación del TMRP para un detector de anomalías de red usa 14 eventos etiquetados de una semana de pruebas en el banco (Lab 10): 7 maliciosos (inundaciones de escrituras, códigos de función no autorizados, una nueva conexión de ingeniería) y 7 benignos (mantenimiento, copia de seguridad del firmware, una conmutación por error). Resultados: precisión 0,625, exhaustividad 0,714, F1 0,667; tiempo de detección de los eventos detectados de 2 a 30 minutos, mediana 7. Los dos ataques no detectados fueron ambos reconocimientos lentos y de bajo volumen. La decisión de aceptación: desplegarlo para detectar ataques de alto volumen, no confiar en él para el reconocimiento y dejar constancia de que la tasa base del 50 % del conjunto de prueba hace que la precisión operativa sea mucho menor.
+
+### 29.6 Actividad práctica: Lab 10
+
+```python
+# Lab 10 - detection metrics and time-to-detect from a labelled synthetic test week (offline)
+# (event_id, truly_malicious, alerted, minutes_from_start_to_alert or None)
+EV = [(1,1,1,4),(2,1,1,11),(3,1,0,None),(4,0,1,None),(5,0,0,None),(6,1,1,2),(7,0,1,None),
+      (8,0,0,None),(9,1,1,30),(10,0,0,None),(11,0,0,None),(12,1,0,None),(13,0,1,None),(14,1,1,7)]
+tp = sum(1 for e in EV if e[1] and e[2]); fp = sum(1 for e in EV if not e[1] and e[2])
+fn = sum(1 for e in EV if e[1] and not e[2]); tn = sum(1 for e in EV if not e[1] and not e[2])
+prec, rec = tp / (tp + fp), tp / (tp + fn)
+print(f"TP={tp} FP={fp} FN={fn} TN={tn} precision={prec:.3f} recall={rec:.3f} F1={2*prec*rec/(prec+rec):.3f}")
+ttd = sorted(e[3] for e in EV if e[1] and e[2])
+print("time to detect (min):", ttd, "mean", round(sum(ttd)/len(ttd), 1), "median", ttd[len(ttd)//2])
+```
+
+Salida esperada:
+
+```text
+TP=5 FP=3 FN=2 TN=4 precision=0.625 recall=0.714 F1=0.667
+time to detect (min): [2, 4, 7, 11, 30] mean 10.8 median 7
+```
+
+Los recuentos coinciden con el ejemplo resuelto: cinco ataques detectados, tres eventos benignos que generaron alarma, dos ataques no detectados y cuatro eventos benignos sin alarma. Los dos ataques no detectados fueron reconocimientos lentos y de bajo volumen, que el detector no ve. Los tiempos de detección muestran por qué importa la mediana: un evento tardó treinta minutos, mientras que la mayoría se encontró en menos de diez. Como la mitad de los eventos de prueba eran maliciosos, la precisión aquí es muy superior a la que la LRWA observaría en operación, como muestra el EX057.
+
+### 29.7 Errores comunes y límites
+
+- Métricas que nadie usa para tomar una decisión.
+- Precisión obtenida en conjuntos de prueba equilibrados presentada como si fuera operativa.
+- Tiempo medio de detección sin distribución ni omisiones.
+- Resiliencia informada solo como tiempo de disponibilidad.
+- Métricas que se convierten en objetivos.
+
+La prueba de aceptación del TMRP informa de las omisiones y de la detección más lenta, y su precisión se enuncia junto con la tasa base del cincuenta por ciento del conjunto de prueba, para que nadie la confunda con la precisión operativa. La resiliencia se muestra como la proporción de la demanda atendida a lo largo del tiempo, no como tiempo de disponibilidad. Cada métrica que contiene informa la decisión de despliegue.
+
+### Ejercicios — capítulo 29
+
+**EX057 — Precisión operativa.** *Objetivo:* trasladar las métricas de prueba a la operación. *Entradas:* exhaustividad del Lab 10 de 0,714 y tasa de FP de la prueba de 3/7; tasa base operativa de 1 evento malicioso por cada 1.000 eventos. *Pasos:* calcule la precisión operativa y las falsas alarmas esperadas por cada 1.000 eventos; interprete. *Evidencia esperada:* cifras e interpretación. *Rúbrica:* 3 = cálculo correcto (precisión ≈ 0,0017; ≈ 428 falsas alarmas por cada 1.000 eventos), con la interpretación de que la estimación de FP a partir de 7 eventos benignos es demasiado incierta y de que el detector es inutilizable sin una FPR mucho menor; 2 = cifras correctas; 1 = fórmula errónea; 0 = nada.
+
+**EX058 — Curva de resiliencia.** *Objetivo:* calcular la pérdida de resiliencia. *Entradas:* $Q(t)$ sintética: 100 % hasta t = 0; 60 % de 0 a 4 h; recuperación lineal hasta el 100 % de 4 h a 12 h. *Pasos:* calcule el área de pérdida en %·h; recalcúlela si el modo manual local (R4) mantiene $Q$ en el 85 % de 0 a 4 h. *Evidencia esperada:* dos cifras y una frase. *Rúbrica:* 3 = 160+160 = 320 %·h y 60+60 = 120 %·h con una interpretación clara; 2 = un error; 1 = solo el método; 0 = nada.
+
+### Síntesis del capítulo
+
+Mida lo que cambia las decisiones: el desempeño de los controles, la exposición y la resiliencia del servicio. Informe la precisión y la exhaustividad con las tasas base, y distribuciones del tiempo de detección que incluyan las omisiones. Represente la resiliencia como desempeño a lo largo del tiempo. Desconfíe de las métricas que pueden manipularse o que ocultan el peor caso.
+
+<!-- cyberabc:chapter-navigation:start ch-29 -->
+### Siga estudiando — capítulo 29 de 50
+
+[← Capítulo 28](#ch-28) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Laboratorio de verificación I
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) planificar y ejecutar una campaña de verificación de controles de seguridad con criterios de aprobación y rechazo definidos; (2) usar pruebas basadas en ejemplos, de límites, negativas y basadas en propiedades; (3) registrar los resultados de modo que otro ingeniero pueda reproducirlos; y (4) tratar con honestidad las pruebas fallidas, incluida la repetición de la prueba tras las correcciones. Verifica la implementación del capítulo 28 y prepara el capítulo 38 (validación) y el capítulo 40 (Laboratorio de verificación II).
+
+### 30.1 La verificación como campaña
+
+La verificación responde a la pregunta: ¿cumple la implementación su especificación? Un plan de campaña enumera, para cada requisito, los casos de prueba, el entorno, las entradas, el procedimiento, el resultado esperado, el criterio de aprobación y quién la ejecuta. Las pruebas se escriben antes de la ejecución y no se modifican para que los resultados aprueben. Los resultados incluyen los detalles del entorno (versiones de software, semillas, configuración) para que la prueba pueda repetirse. El plan de campaña del TMRP enumera las pruebas T1 a T7 frente a R1 a R8, con criterios de aprobación fijados antes de ejecutar ninguna prueba; R9 aún no tiene prueba asignada, lo que el mapa de evidencias pone de manifiesto más adelante. Cada prueba indica su entorno y quién la ejecuta.
+
+### 30.2 Tipos de prueba
+
+- Las **pruebas basadas en ejemplos** comprueban el comportamiento típico.
+- Las **pruebas de límites** comprueban los bordes: exactamente en los límites, justo dentro, justo fuera.
+- Las **pruebas negativas** comprueban que se rechaza la entrada no válida: malformada, falsificada, repetida, fuera de rango.
+- Las **pruebas basadas en propiedades** enuncian una propiedad que debe cumplirse para todas las entradas («nunca se acepta una consigna insegura») y la comprueban sobre muchas entradas generadas, incluidos valores especiales. Encuentran casos que a nadie se le ocurrió escribir.
+- Las **pruebas de inyección de fallos** (capítulo 40) perturban el entorno: descartan, retrasan o corrompen mensajes; reinician componentes.
+
+Las pruebas basadas en ejemplos muestran la presencia de un comportamiento correcto en los casos elegidos; las pruebas basadas en propiedades y las de inyección de fallos buscan de forma más amplia la ausencia de comportamiento incorrecto. Ninguna demuestra la corrección para todas las entradas, salvo en dominios finitos pequeños (capítulo 2).
+
+### 30.3 Reproducibilidad
+
+Fije la semilla de todo generador aleatorio e imprímala; registre las versiones de herramientas y bibliotecas; conserve las entradas de prueba; almacene los resultados junto con la revisión del código fuente. Una prueba fallida que no puede reproducirse no puede corregirse ni volver a verificarse. El registro de T3 del TMRP sigue esta regla: indica la semilla, el número de casos generados y la versión de Python, de modo que cualquiera puede volver a ejecutar la prueba basada en propiedades y ver las mismas treinta y una aceptaciones de NaN en v1 y ninguna en v2. Sin la semilla, un revisor solo podría aceptar el resultado por confianza. El mismo registro almacena la revisión del código fuente de cada versión del validador.
+
+### 30.4 Pruebas fallidas
+
+Una prueba fallida es información. Regístrela como fallida, con evidencia; analice la causa raíz; corrija; vuelva a ejecutar la prueba fallida y el conjunto de regresión; registre la nueva prueba. Nunca vuelva a etiquetar un fallo como «no aplicable» porque se acerca el plazo (capítulo 10). Si un fallo se acepta temporalmente, necesita un control compensatorio, un responsable y una fecha. T3 es el modelo: falló en v1, se corrigió en v2, se volvió a probar y se registró. El fallo de v1 nunca se reetiquetó, y el control compensatorio PS4 tenía responsable y fecha.
+
+### 30.5 Ejemplo resuelto: límites de consigna en T3 (sintético)
+
+La prueba T3 verifica R3. Las pruebas basadas en ejemplos sobre v1 (dentro del rango, por encima, por debajo, paso grande) aprueban. La prueba basada en propiedades genera 2.000 casos con la semilla 30, uno de cada diez extraído de valores especiales (NaN, ±∞, límites exactos). v1 acepta 31 valores inseguros, todos NaN. v2 no acepta ninguno. T3 se registra como **fallida en v1**, con la causa raíz «las comparaciones negativas son falsas para NaN», se corrige en v2, se vuelve a probar y queda **aprobada en v2**, con la semilla y la versión de Python registradas.
+
+Ambos resultados permanecen en el registro. El resultado de la nueva prueba se anota después en la matriz de trazabilidad.
+
+### 30.6 Actividad práctica: Lab 11
+
+```python
+# Lab 11 - property-based testing of a setpoint validator finds what example tests missed (offline)
+import random, math
+def validate_v1(new, old, lo=0.5, hi=5.5, max_step=0.5):
+    if new < lo: return False
+    if new > hi: return False
+    if abs(new - old) > max_step: return False
+    return True
+def validate_v2(new, old, lo=0.5, hi=5.5, max_step=0.5):
+    if not (isinstance(new, float) and math.isfinite(new)): return False
+    return lo <= new <= hi and abs(new - old) <= max_step
+examples = [(3.0, 3.2), (6.0, 5.8), (0.2, 0.6), (4.0, 3.0)]
+print("example tests v1:", [validate_v1(n, o) for n, o in examples])
+rng = random.Random(30)
+specials = [float("nan"), float("inf"), -float("inf"), 5.5, 0.5]
+def prop(f, trials=2000):
+    fails = []
+    for i in range(trials):
+        old = rng.uniform(0.5, 5.5)
+        new = rng.choice(specials) if i % 10 == 0 else rng.uniform(-1, 7)
+        ok = f(new, old)
+        safe = math.isfinite(new) and 0.5 <= new <= 5.5 and abs(new - old) <= 0.5
+        if ok and not safe: fails.append(new)
+    return fails
+f1 = prop(validate_v1); f2 = prop(validate_v2)
+print("v1 unsafe acceptances:", len(f1), "first:", f1[:1])
+print("v2 unsafe acceptances:", len(f2))
+```
+
+Salida esperada:
+
+```text
+example tests v1: [True, False, False, False]
+v1 unsafe acceptances: 31 first: [nan]
+v2 unsafe acceptances: 0
+```
+
+Las pruebas basadas en ejemplos dan las mismas respuestas para ambos validadores, de modo que no pueden distinguir v1 de v2. Lo que los separa es la ejecución basada en propiedades: v1 acepta treinta y un valores inseguros, todos NaN, mientras que v2 no acepta ninguno. La semilla treinta hace que la ejecución sea repetible. Observe que el generador extrae valores especiales solo una vez de cada diez; sin eso, NaN casi nunca aparecería y el error seguiría oculto por muchos casos aleatorios que se probaran. Registre la semilla junto con el resultado.
+
+### 30.7 Errores comunes y límites
+
+- Pruebas escritas después de ver los resultados.
+- Solo pruebas basadas en ejemplos.
+- Pruebas aleatorias sin semilla; resultados sin versiones.
+- Fallos reetiquetados en lugar de corregidos.
+- Afirmar que las pruebas basadas en propiedades demuestran la corrección.
+
+El registro de T3 del TMRP evita cada uno de estos errores. Su propiedad se escribió antes de la ejecución, su generador tiene semilla, el fallo en v1 siguió registrado como fallido y el informe afirma solo que no se encontró ningún valor inseguro entre los casos generados, no que v2 sea correcto para cualquier entrada. La semilla y la versión se almacenan con el resultado.
+
+### Ejercicios — capítulo 30
+
+**EX059 — Cuente los fallos.** *Objetivo:* razonar sobre pruebas generadas. *Entradas:* Lab 11. *Pasos:* (1) explique por qué las 31 aceptaciones inseguras son NaN; (2) estime cuántos casos NaN produjo el generador (uno de cada diez casos es un valor especial, elegido de manera uniforme entre cinco) y compárelo con 31; (3) explique por qué no todo caso NaN es una aceptación insegura en v1, o demuestre que todo NaN se acepta. *Evidencia esperada:* razonamiento y cifras. *Rúbrica:* 3 = ≈ 200 casos especiales × 1/5 ≈ 40 NaN esperados, 31 observados, compatible con la variación aleatoria, y todo NaN es aceptado por v1, de modo que 31 es el número de NaN; 2 = parcial; 1 = sin cifras; 0 = nada.
+
+**EX060 — Plan de verificación para R2.** *Objetivo:* planificar pruebas de rechazo de repeticiones. *Entradas:* R2 y el Lab 8. *Pasos:* redacte un plan de pruebas con al menos seis casos (incluido el reinicio de cada lado, el desbordamiento o el máximo del contador y la entrega fuera de orden), resultados esperados y criterios de aprobación. *Evidencia esperada:* tabla. *Rúbrica:* 3 = los casos cubren el reinicio y el orden, los resultados esperados son coherentes con el diseño del §19.5 y los criterios no son ambiguos; 2 = falta el reinicio; 1 = solo el camino feliz; 0 = nada.
+
+### Síntesis del capítulo
+
+La verificación es una campaña planificada con criterios fijados de antemano. Combine pruebas basadas en ejemplos, de límites, negativas, basadas en propiedades y de inyección de fallos; haga reproducible cada ejecución; y trate los fallos como información que debe corregirse y volver a verificarse, nunca reetiquetarse.
+
+<!-- cyberabc:chapter-navigation:start ch-30 -->
+### Siga estudiando — capítulo 30 de 50
+
+[← Capítulo 29](#ch-29) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 31 →](#ch-31)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-31"></a>
+
+## Capítulo 31 — Infraestructura crítica y seguridad sectorial: implementación II
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) desplegar controles en entornos operativos mediante una implantación por etapas con reversión; (2) gestionar claves, configuración y secretos en producción; (3) integrar equipos heredados mediante pasarelas y controles compensatorios; y (4) poner en servicio un control con pruebas de aceptación y traspaso a los operadores. Lleva al terreno la implementación de banco del capítulo 28 y prepara los capítulos 32–34.
+
+### 31.1 Despliegue por etapas
+
+El despliegue en campo sigue etapas, cada una con criterios de entrada y de salida: banco (todas las pruebas aprueban); emplazamiento piloto de baja consecuencia; un emplazamiento de alta consecuencia con supervisión adicional y un plan de reversión; flota. Cada etapa tiene una **reversión** —la capacidad de volver con rapidez al estado anterior conocido como correcto—, probada antes de necesitarla. Programe los cambios fuera de los picos de demanda y con los operadores informados; en el sector del agua, evite cambios durante periodos de alta demanda o cuando el almacenamiento esté bajo.
+
+Las etapas del TMRP son el banco, PS2 como piloto de baja consecuencia, PS4 como primer emplazamiento de alta consecuencia y, después, la flota.
+
+### 31.2 Gestión de claves y secretos en producción
+
+En el banco, las claves son archivos; en producción, son ciclos de vida. Genere las claves en módulos de seguridad de hardware o en elementos seguros de los dispositivos; registre los dispositivos mediante una ceremonia auditable (dos personas, con registro); guarde el inventario de qué clave pertenece a qué dispositivo y su fecha de rotación; rótelas; y revóquelas sin demora cuando un dispositivo se pierda o se dé de baja. Los secretos de las cuentas de servicio van a una bóveda con registro de accesos, no a scripts. Un inventario de claves es, en sí mismo, información sensible.
+
+En el TMRP, las claves se generan en el elemento seguro de la pasarela durante el registro.
+
+### 31.3 Integración de equipos heredados
+
+Los dispositivos heredados que no pueden autenticarse se envuelven: una pasarela colocada físicamente al lado (en el mismo armario) añade autenticación en el lado de la red y habla el protocolo heredado por un enlace corto y protegido físicamente. La pasarela pasa a formar parte de la frontera de seguridad del dispositivo, de modo que necesita su propio bastionado, su propia supervisión y su propio camino de actualización. Los controles compensatorios cubren lo que la pasarela no puede cubrir: alarmas de manipulación del armario, registro local y restricciones sobre qué códigos de función pasan.
+
+En PS2, la pasarela se encuentra en el armario de la RTU, con un enlace serie de 30 cm, y deja pasar solo dos códigos de función.
+
+### 31.4 Puesta en servicio y traspaso
+
+La puesta en servicio verifica el sistema instalado en su entorno real: las pruebas de aceptación en el emplazamiento repiten en el lugar las pruebas clave del banco (la autenticación rechaza tramas falsificadas; se rechaza la repetición; la conmutación a automático local funciona; las alarmas llegan a la sala de control en 60 s). El traspaso entrega a los operadores procedimientos, formación, contactos y las limitaciones conocidas. Mientras los operadores no puedan manejar y recuperar el sistema, el control no está en servicio.
+
+En PS2, la aceptación en el emplazamiento también detectó la deriva del reloj de la pasarela, que se corrigió y se volvió a probar antes del traspaso. Primero se formó a los operadores.
+
+### 31.5 Ejemplo resuelto: piloto en PS2 (sintético)
+
+El emplazamiento piloto del TMRP es PS2: RTU-A heredada, de baja consecuencia. Criterios de entrada: T1, T2, T3 (v2) y T5 aprobadas en el banco; imagen de reversión preparada; operadores informados. La pasarela se instala en el armario de la RTU; el enlace serie mide 30 cm dentro del armario cerrado con llave; la pasarela deja pasar solo los códigos de función 3 (lectura) y 6 (escritura de un único registro) para el rango de registros configurado. Aceptación en el emplazamiento: las tramas falsificadas y repetidas se rechazan y generan alarma; al retirar la antena LTE se pasa a operación automática local y salta una alarma de pérdida de comunicación en 60 s; al reponer la antena se reanuda la telemetría con los contadores en continuidad. Un hallazgo: el reloj de la pasarela derivó 40 s en 48 h porque NTP no era alcanzable a través del nuevo conducto; se corrigió añadiendo una fuente de tiempo interna a la lista de permitidos del conducto. Criterios de salida cumplidos tras la nueva prueba; PS4 es el siguiente.
+
+### 31.6 Actividad práctica
+
+Redacte el plan de etapas para la implantación del TMRP en la flota, con criterios de entrada y salida y reversión para cada etapa, y una nota de traspaso de dos páginas para los operadores sobre la pasarela. Use el piloto de PS2 como modelo de criterios de entrada y salida y, después, extienda el plan a PS4 y a las estaciones restantes. Para cada etapa, indique cómo se realiza la reversión y quién decide aplicarla. En la nota de traspaso, indique a los operadores las alarmas que genera la pasarela, qué significa cada una, cómo pasar a operación manual local y a quién llamar. Enumere con claridad las limitaciones conocidas, como la dependencia de una fuente de tiempo interna aprendida en PS2.
+
+### 31.7 Errores comunes y límites
+
+- Despliegue «de golpe» sin piloto ni reversión.
+- Planes de reversión nunca probados.
+- Registro de claves hecho por una sola persona y sin constancia.
+- Pasarelas tratadas como transparentes en lugar de como dispositivos críticos para la seguridad.
+- Puesta en servicio sin operadores; traspaso sin limitaciones conocidas.
+
+El piloto de PS2 del TMRP evitó estos errores: tenía una imagen de reversión, se informó a los operadores antes de la instalación y el hallazgo de la deriva del reloj se trató como una corrección de interfaz y se volvió a probar antes de empezar con PS4. El registro de claves sigue la ceremonia de dos personas con registro descrita arriba, y la pasarela se trató como un dispositivo crítico para la seguridad, con su propio bastionado y su propio camino de actualización.
+
+### Ejercicios — capítulo 31
+
+**EX061 — Criterios de reversión.** *Objetivo:* definir cuándo revertir. *Entradas:* el despliegue en PS4. *Pasos:* defina tres desencadenantes medibles de reversión, quién decide y el tiempo máximo para completar la reversión. *Evidencia esperada:* lista. *Rúbrica:* 3 = desencadenantes medibles (p. ej., pérdida de telemetría > 5 min no explicada por pérdida del enlace, cualquier mensaje aceptado que no supere la auditoría, latencia de alarma > 60 s en alarmas prioritarias), responsable de la decisión designado por su función, tiempo de reversión coherente con la reserva del hospital; 2 = desencadenantes vagos; 1 = sin responsable; 0 = nada.
+
+**EX062 — La pasarela como frontera.** *Objetivo:* proteger un envoltorio para equipos heredados. *Entradas:* la pasarela de PS2. *Pasos:* enumere seis controles que necesita la propia pasarela y el riesgo residual si un atacante obtiene acceso físico al armario. *Evidencia esperada:* lista y enunciado del riesgo residual. *Rúbrica:* 3 = bastionado, actualizaciones firmadas, protección de claves, filtrado de códigos de función, detección de manipulación, registro; riesgo residual honesto (un atacante físico puede eludirla a través del enlace serie); 2 = falta el riesgo residual; 1 = genérico; 0 = nada.
+
+### Síntesis del capítulo
+
+Despliegue por etapas con criterios de entrada y de salida y una reversión probada. Gestione las claves y los secretos como ciclos de vida con ceremonias auditables. Envuelva los dispositivos heredados con pasarelas que se traten a su vez como críticas para la seguridad, junto con controles físicos compensatorios. Un control solo está en servicio tras la aceptación en el emplazamiento y el traspaso a los operadores.
+
+<!-- cyberabc:chapter-navigation:start ch-31 -->
+### Siga estudiando — capítulo 31 de 50
+
+[← Capítulo 30](#ch-30) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 32 →](#ch-32)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-32"></a>
+
+## Capítulo 32 — Infraestructura crítica y seguridad sectorial: confiabilidad
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) usar medidas de confiabilidad: tasa de fallos, MTBF, MTTR y disponibilidad; (2) calcular la disponibilidad de sistemas en serie, en paralelo y redundantes reparables con modelos de Markov; (3) mostrar cómo la capacidad de reparación y las causas comunes modifican los beneficios de la redundancia; y (4) vincular la ingeniería de confiabilidad con la seguridad, donde los fallos pueden ser provocados. Se apoya en el capítulo 7 y prepara los capítulos 33 y 41.
+
+### 32.1 Medidas
+
+Para un componente con tasa de fallos constante $\lambda$ (fallos por hora), el tiempo medio entre fallos es $1/\lambda$. Con un tiempo medio de reparación $1/\mu$, la disponibilidad en régimen estacionario es $A = \mu/(\lambda+\mu) = \text{MTBF}/(\text{MTBF}+\text{MTTR})$. Las tasas de fallos constantes se ajustan al periodo de vida útil de la electrónica; los fallos tempranos y por desgaste necesitan otras distribuciones (Weibull). En los componentes en **serie** (todos necesarios), las tasas se suman: $\lambda_s = \sum\lambda_i$. Los componentes en **paralelo** (basta con uno cualquiera) solo fallan cuando fallan todos a la vez.
+
+En PS4, la tasa de fallos de cada bomba, de uno cada dos mil horas, y su tiempo de reparación de 24 horas dan la disponibilidad de una sola bomba que se usa en el Lab 12.
+
+### 32.2 Redundancia reparable
+
+Las fórmulas sencillas para sistemas en paralelo suponen unidades independientes, cada una reparada de forma independiente. Los emplazamientos reales suelen tener una sola cuadrilla de reparación, de modo que, cuando ambas unidades están caídas, una espera. Una cadena de Markov de tiempo continuo modela esta situación: estados 0, 1 y 2 unidades averiadas; transiciones con tasa $2\lambda$ de 0 a 1 y $\lambda$ de 1 a 2, y con tasa $\mu$ de vuelta desde 1 y desde 2 con una sola cuadrilla. Resolver las ecuaciones de equilibrio da las probabilidades en régimen estacionario; la indisponibilidad es la probabilidad del estado 2.
+
+PS4 tiene exactamente esta restricción: dos bombas y una cuadrilla de reparación. El modelo de Markov del Lab 12 recoge la espera.
+
+### 32.3 Fallos provocados
+
+Los modelos de confiabilidad suponen que los fallos llegan al azar. Un adversario elige cuándo. Si un atacante puede inutilizar una bomba a distancia y esperar a que falle la otra, o inutilizar ambas, las cifras de Markov dejan de describir el riesgo. La ingeniería de confiabilidad sigue siendo importante para la seguridad: indica la **línea de base** que el atacante debe superar, la **capacidad de reparación** que determina la velocidad de recuperación y las existencias de repuestos que hacen real la reserva en frío. Los requisitos de seguridad buscan entonces que los fallos provocados exijan compromisos independientes (el condicionamiento del capítulo 23).
+
+### 32.4 Ejemplo resuelto: bombas de servicio y reserva de PS4 (sintético)
+
+Cada bomba de PS4 tiene una tasa de fallos de 1 cada 2.000 h y un tiempo medio de reparación de 24 h con una cuadrilla. El Lab 12 da una disponibilidad de una sola bomba de 0,98814 (unas 104 h de parada al año). El par 1 de 2 con una cuadrilla tiene una disponibilidad de 0,999719: ambas bombas paradas unos 148 minutos al año. La fórmula ingenua $1-(1-A)^2$ da 0,999859, la mitad de la indisponibilidad real, porque ignora que el segundo fallo puede producirse mientras la única cuadrilla está ocupada. Para la cadena de control del grupo de bombeo —bomba, arrancador y RTU en serie, con MTBF de 2.000, 5.000 y 10.000 h—, el MTBF en serie es de 1.250 h: la cadena es menos confiable que su elemento más débil.
+
+### 32.5 Actividad práctica: Lab 12
+
+```python
+# Lab 12 - availability of a duplicated pump set with repair (two-state units, one repair crew; offline)
+lam, mu = 1 / 2000, 1 / 24     # failures per hour per pump, repairs per hour
+A1 = mu / (lam + mu)
+# states: 0 = both up, 1 = one down, 2 = both down; one crew repairs one pump at a time
+# balance: p1 = (2 lam / mu) p0 ; p2 = (lam / mu) p1
+p0 = 1 / (1 + 2 * lam / mu + 2 * (lam / mu) ** 2)
+p1 = 2 * lam / mu * p0; p2 = lam / mu * p1
+print(f"single pump availability {A1:.6f}  downtime h/yr {8760*(1-A1):.1f}")
+print(f"1oo2 availability {1-p2:.8f}  P(both down) {p2:.2e}  downtime min/yr {8760*60*p2:.2f}")
+print(f"naive independent 1-(1-A1)^2 = {1-(1-A1)**2:.8f}")
+mtbf_series = 1 / (1/2000 + 1/5000 + 1/10000)
+print(f"series MTBF pump+starter+RTU: {mtbf_series:.0f} h")
+```
+
+Salida esperada:
+
+```text
+single pump availability 0.988142  downtime h/yr 103.9
+1oo2 availability 0.99971883  P(both down) 2.81e-04  downtime min/yr 147.78
+naive independent 1-(1-A1)^2 = 0.99985939
+series MTBF pump+starter+RTU: 1250 h
+```
+
+Una sola bomba está parada unas 104 horas al año. El par con una cuadrilla está parado a la vez unos 148 minutos al año, aproximadamente el doble de lo que sugiere la fórmula ingenua, porque el segundo fallo puede llegar mientras la cuadrilla aún repara el primero. La cifra en serie muestra la debilidad de la cadena de control: bomba, arrancador y RTU juntos tienen un tiempo medio entre fallos de 1.250 horas, menor que el de cualquiera de ellos por separado. La diferencia la determina la capacidad de reparación, no la calidad de las bombas.
+
+### 32.6 Errores comunes y límites
+
+- Fórmulas de reparación independiente con una sola cuadrilla.
+- Tasas de fallos constantes para equipos que envejecen.
+- Ignorar las causas comunes (cuadro de arrancadores compartido, alimentación compartida).
+- Cifras de confiabilidad presentadas como protección frente a ataques deliberados.
+- Cifras de MTBF del fabricante usadas sin conocer sus condiciones de prueba.
+
+En PS4, el primer error reduce a la mitad el tiempo de parada previsto, y el tercero ignora que ambas bombas comparten un cuadro de arrancadores y un alimentador. Las cifras de MTBF del fabricante para la RTU deberían contrastarse con los propios registros de mantenimiento de la LRWA antes de incorporarse al expediente, y ninguna de estas cifras dice nada sobre un atacante que detenga ambas bombas de forma deliberada.
+
+### Ejercicios — capítulo 32
+
+**EX063 — Dos cuadrillas.** *Objetivo:* modelar la capacidad de reparación. *Entradas:* Lab 12. *Pasos:* modifique el modelo de Markov para dos cuadrillas independientes (tasa de reparación $2\mu$ desde el estado 2) y calcule la indisponibilidad; compárela con una cuadrilla y con la fórmula ingenua. *Evidencia esperada:* cifras y conclusión. *Rúbrica:* 3 = el resultado con dos cuadrillas coincide con la fórmula ingenua independiente (explique por qué) y con una cuadrilla es aproximadamente el doble; 2 = cifras correctas, sin explicación; 1 = no se ejecutó; 0 = nada.
+
+**EX064 — Decisión sobre repuestos.** *Objetivo:* vincular la confiabilidad con la logística. *Entradas:* el tiempo de reparación de 24 h supone una bomba de repuesto en almacén; sin repuesto, la reparación tarda 21 días (504 h). *Pasos:* calcule la indisponibilidad 1oo2 con una cuadrilla y un MTTR de 504 h, y recomiende si conviene mantener un repuesto. *Evidencia esperada:* cifra y recomendación. *Rúbrica:* 3 = cálculo correcto (use la fórmula del laboratorio con μ = 1/504) y recomendación ligada a la consecuencia para el hospital; 2 = cifra correcta; 1 = tasa errónea; 0 = nada.
+
+### Síntesis del capítulo
+
+La confiabilidad se mide con tasas de fallos, tiempos de reparación y disponibilidad; las cadenas en serie son más débiles que su eslabón más débil; la redundancia reparable depende de la capacidad de reparación, que las fórmulas sencillas ignoran. Los adversarios provocan fallos según su propio calendario, de modo que la confiabilidad aporta la línea de base y la capacidad de recuperación, mientras que la seguridad debe lograr que los fallos provocados exijan compromisos independientes.
+
+<!-- cyberabc:chapter-navigation:start ch-32 -->
+### Siga estudiando — capítulo 32 de 50
+
+[← Capítulo 31](#ch-31) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 33 →](#ch-33)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-33"></a>
+
+## Capítulo 33 — Infraestructura crítica y seguridad sectorial: seguridad funcional y resiliencia
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) aplicar el análisis de procesos basado en la teoría de sistemas (STPA) a una estructura de control, incluidas las causas relacionadas con la seguridad; (2) describir los sistemas instrumentados de seguridad y por qué necesitan independencia; (3) definir y diseñar la resiliencia: anticipar, resistir, recuperarse, adaptarse; y (4) integrar la seguridad funcional, la seguridad y la resiliencia en un único análisis. Se apoya en los capítulos 10, 17, 23 y 32 y prepara los capítulos 34 y 47.
+
+### 33.1 STPA
+
+[Leveson (2004)](https://doi.org/10.1016/S0925-7535(03)00047-X) propuso STAMP, un modelo de accidentes que trata la seguridad funcional como un problema de control: los accidentes surgen cuando no se hacen cumplir las restricciones sobre el comportamiento del sistema. STPA, el método de análisis construido sobre él, procede así: (1) definir las pérdidas y los peligros; (2) modelar la estructura de control: controladores, acciones de control, retroalimentación; (3) identificar las **acciones de control inseguras** (UCA) de cuatro tipos: no proporcionada cuando se necesita, proporcionada cuando es insegura, proporcionada demasiado pronto o demasiado tarde o en el orden equivocado, detenida demasiado pronto o aplicada durante demasiado tiempo; (4) identificar los escenarios de pérdida, es decir, por qué podría producirse cada UCA, incluidas la retroalimentación defectuosa, los modelos de proceso defectuosos y, en seguridad (STPA-Sec), la acción de un adversario. La fortaleza de STPA es que encuentra peligros derivados de interacciones en las que ningún componente ha fallado, que es exactamente la situación de un ataque de datos falsos.
+
+### 33.2 Sistemas instrumentados de seguridad e independencia
+
+Un sistema instrumentado de seguridad (SIS) lleva un proceso a un estado seguro cuando se detecta una condición peligrosa, con independencia del sistema básico de control del proceso. Las normas de seguridad funcional (IEC 61508 y sus derivadas sectoriales) asignan niveles de integridad de seguridad. La independencia implica sensores, lógica y elementos finales separados y, en términos actuales, redes y acceso de ingeniería separados, porque una estación de trabajo de ingeniería comprometida que puede reprogramar tanto la lógica de control como la de seguridad elimina la independencia. TRITON atacó directamente controladores de SIS ([informe HatMan de la CISA](https://www.cisa.gov/sites/default/files/documents/MAR-17-352-01%20HatMan%20-%20Safety%20System%20Targeted%20Malware%20%28Update%20B%29.pdf)).
+
+### 33.3 Resiliencia
+
+[NIST SP 800-160 Vol. 2 Rev. 1](https://doi.org/10.6028/NIST.SP.800-160v2r1) articula la ciberresiliencia en torno a los objetivos de anticipar, resistir, recuperarse y adaptarse, con técnicas como la diversidad, la segmentación, la redundancia, la no persistencia y la respuesta adaptativa. [Haimes (2009)](https://doi.org/10.1111/j.1539-6924.2009.01216.x) sostiene que la resiliencia debe definirse en relación con amenazas y estados del sistema concretos. Diseñar la resiliencia significa: diseñar modos degradados (capítulo 22), mantener capacidad y reservas (almacenamiento, baterías, repuestos), lograr que la recuperación sea rápida y esté ensayada (capítulo 47) y aprender después de los eventos.
+
+En la LRWA, el depósito del hospital, las baterías de los armarios y las 72 horas de operación automática local son reservas; el ensayo de recuperación es práctica.
+
+### 33.4 Ejemplo resuelto: STPA sobre el control de nivel de Hollin Hill (sintético)
+
+Pérdida L1: hospital sin agua; L2: desbordamiento del depósito e inundación. Peligros: H1, nivel por debajo del mínimo mientras continúa la demanda; H2, nivel por encima del rebosadero. Estructura de control: operador del SCADA → controlador PI (velocidad de la bomba de PS3) → bomba → depósito; retroalimentación mediante el transmisor de nivel. UCA: UCA1 «el controlador reduce el caudal de entrada cuando el nivel es bajo» (proporcionada cuando es insegura → H1); UCA2 «el operador no interviene cuando el nivel baja» (no proporcionada → H1); UCA3 «el controlador aumenta el caudal de entrada cuando el nivel es alto» (→ H2). Escenario de UCA1: el modelo de proceso del controlador cree que el nivel es alto porque la retroalimentación de nivel está falsificada (Lab 7). Escenario de UCA2: la pantalla del operador muestra el mismo nivel falsificado. Restricciones: medición de nivel independiente con alarma (EX034); disparo cableado de la bomba por nivel alto para H2; alarma de nivel bajo al operador a partir de la medición independiente. STPA llegó al mismo control que el detector de residuos, pero desde el peligro y no desde el ataque.
+
+### 33.5 Actividad práctica
+
+Amplíe el §33.4 con el lazo de dosificación: pérdidas, peligros, estructura de control, al menos cuatro UCA (una de cada tipo) y un escenario de pérdida para cada una, uno de ellos adversarial. Empiece por pérdidas como el daño a los consumidores por sobredosificación o subdosificación, y por peligros como un cloro residual fuera de sus límites. Dibuje la estructura de control: el operador, el controlador de dosificación, la bomba dosificadora y el analizador que retroalimenta el residual. Use los límites del lado del controlador y la alarma del analizador independiente de los controles de dosificación del TMRP al derivar las restricciones, y haga que su escenario adversarial sea uno en el que la retroalimentación del controlador esté falsificada.
+
+### 33.6 Errores comunes y límites
+
+- Análisis de peligros que ignora a los adversarios, o análisis de seguridad que ignora los peligros.
+- «Independencia» del SIS con estación de trabajo de ingeniería o red compartidas.
+- Resiliencia definida como «tiempo de disponibilidad».
+- STPA reducido a una lista de comprobación sin estructura de control.
+
+El EX066 muestra el segundo error en Fenwick, donde el sistema de parada por fuga de cloro gaseoso comparte la estación de trabajo de ingeniería y el conmutador de red con los controladores del proceso. El análisis de Hollin Hill del TMRP evita el primer error al incluir la retroalimentación de nivel falsificada como escenario de pérdida junto a los fallos aleatorios, y trata la resiliencia como servicio prestado a lo largo del tiempo, no como tiempo de disponibilidad de los servidores.
+
+### Ejercicios — capítulo 33
+
+**EX065 — Tabla de UCA.** *Objetivo:* identificar acciones de control inseguras. *Entradas:* §33.5. *Pasos:* elabore la tabla de UCA con los cuatro tipos y los escenarios. *Evidencia esperada:* tabla. *Rúbrica:* 3 = los cuatro tipos aplicados correctamente, escenarios que incluyen retroalimentación defectuosa y acción de un adversario, restricciones derivadas; 2 = tipos confundidos; 1 = lista de fallos, no de acciones de control; 0 = nada.
+
+**EX066 — Auditoría de independencia.** *Objetivo:* comprobar la independencia del SIS. *Entradas:* el sistema de parada por fuga de cloro gaseoso de Fenwick comparte la estación de trabajo de ingeniería y el conmutador de red con los controladores del proceso. *Pasos:* identifique las violaciones de la independencia y proponga una arquitectura que la restablezca, con los riesgos residuales. *Evidencia esperada:* media página. *Rúbrica:* 3 = se identifican la estación de trabajo y el conmutador compartidos, acceso de ingeniería separado con llave física o estación de trabajo separada, red separada o cableado directo, riesgo residual enunciado; 2 = falta una violación; 1 = genérico; 0 = nada.
+
+### Síntesis del capítulo
+
+STPA trata las pérdidas como fallos de control y encuentra acciones de control inseguras que surgen de las interacciones, incluidas las adversariales. Los sistemas instrumentados de seguridad deben ser independientes en sensores, lógica, redes y acceso de ingeniería. La resiliencia —anticipar, resistir, recuperarse, adaptarse— debe definirse frente a amenazas concretas y diseñarse mediante modos degradados, reservas y una recuperación ensayada.
+
+<!-- cyberabc:chapter-navigation:start ch-33 -->
+### Siga estudiando — capítulo 33 de 50
+
+[← Capítulo 32](#ch-32) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 34 →](#ch-34)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-34"></a>
+
+## Capítulo 34 — Infraestructura crítica y seguridad sectorial: integración
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) planificar la integración del sistema de forma incremental, con pruebas de interfaz; (2) integrar los controles de seguridad con las operaciones: alarmas, procedimientos, supervisión y respuesta a incidentes; (3) gestionar las interfaces organizativas con fabricantes, operadores de telecomunicaciones y otras empresas de servicios; y (4) reconocer el comportamiento emergente que aparece solo cuando los componentes se combinan. Sigue a los capítulos 31–33 y prepara el Taller de diseño II (capítulo 35).
+
+### 34.1 Integración incremental
+
+Integre en pequeños incrementos, con pruebas de interfaz en cada paso: pasarela con RTU; pasarela con SCADA; SCADA con la réplica del historiador; sensores de supervisión con el colector de registros. Cada paso usa el documento de control de interfaces (capítulo 16) como especificación de prueba. Cuando una prueba de integración falla, la especificación de la interfaz indica qué lado está mal, o revela que la especificación era ambigua. El orden del TMRP sigue los documentos de control de interfaces: primero pasarela con RTU en PS2, después pasarela con SCADA y, por último, la réplica de la DMZ.
+
+### 34.2 Comportamiento emergente
+
+Combinar componentes correctos puede producir sistemas incorrectos. Ejemplos: una pasarela de autenticación que almacena mensajes durante una pérdida del enlace y luego libera una ráfaga al reconectarse, inundando el sondeador del SCADA; una conmutación por error del par SCADA que reinicia los contadores contra repeticiones; un detector de anomalías que marca como ataque cada retransmisión de la pasarela. Las pruebas de integración deben incluir escenarios de sistema completo —pérdida y recuperación del enlace, conmutación por error, modo de mantenimiento—, no solo la conformidad de las interfaces.
+
+El TMRP se encontró con el primer ejemplo en las pruebas de integración, como describe el ejemplo resuelto más abajo. Cada uno necesita una prueba de escenario.
+
+### 34.3 Integración con las operaciones
+
+Un control no está integrado hasta que las operaciones pueden usarlo: alarmas con significado, prioridad y procedimientos de respuesta claros; paneles que muestren el estado de seguridad junto al estado del proceso; guías de actuación que vinculen las alarmas de seguridad con las decisiones operativas (¿pasar a manual local?, ¿llamar al jefe de turno?); y formación. La práctica de gestión de alarmas —racionalizar las alarmas para que cada una exija una acción del operador— importa porque las avalanchas de alarmas sin sentido ocultan las reales.
+
+En la LRWA, la guía de actuación ante un cambio inesperado de consigna es el medio por el que las alarmas de la pasarela llegan a las decisiones operativas. Cada nueva alarma se racionaliza antes de su puesta en marcha.
+
+### 34.4 Interfaces organizativas
+
+La seguridad de la infraestructura depende de organizaciones que usted no controla: el operador de LTE, el fabricante de las RTU, el integrador, la distribuidora eléctrica y las empresas de servicios vecinas para la ayuda mutua. Haga explícitas las interfaces en contratos y acuerdos: obligaciones de notificación de incidentes y vulnerabilidades, condiciones de acceso, tiempos de respuesta del soporte y ejercicios conjuntos. Un incidente en el operador de telecomunicaciones también es su incidente. Para la LRWA, el operador de LTE es el ejemplo más claro, ya que todo el conducto de campo del TMRP pasa por su red. El contrato debería fijar plazos de notificación y ejercicios conjuntos con condiciones medibles.
+
+### 34.5 Ejemplo resuelto: la ráfaga de reconexión (sintético)
+
+Durante las pruebas de integración, el equipo desconecta la cabecera LTE durante 30 minutos. Al reconectarse, cada una de las 42 pasarelas libera de golpe 180 lecturas almacenadas. El frontal del SCADA, dimensionado para el régimen estacionario, pone en cola la ráfaga; las alarmas prioritarias se retrasan más de dos minutos, lo que incumple R7. El modelo de colas del Lab 13 explica por qué: una utilización superior a 0,9 hace que el retardo se dispare. Corrección: las pasarelas reenvían de inmediato solo el valor más reciente y cualquier alarma, y después completan el histórico a una frecuencia limitada hacia el historiador, no hacia el sondeador del SCADA. La corrección se registra como un cambio de interfaz (revisión del ICD) y una prueba de regresión.
+
+### 34.6 Actividad práctica
+
+Diseñe una prueba de integración que combine la conmutación por error del SCADA con la protección contra repeticiones, indicando el comportamiento esperado, las observaciones y el criterio de aprobación. Describa la secuencia: un servidor SCADA conmuta a su pareja mientras las pasarelas siguen enviando mensajes autenticados. El comportamiento esperado es que el lado receptor siga rechazando las repeticiones tras la conmutación, lo que significa que el último contador aceptado de cada estación debe compartirse o persistirse. Observe si se acepta algún mensaje antiguo y si las alarmas siguen llegando en 60 segundos. El criterio de aprobación es cero repeticiones aceptadas y ninguna interrupción en la entrega de alarmas.
+
+### 34.7 Errores comunes y límites
+
+- Integración «de golpe» al final.
+- Solo pruebas de interfaz, sin escenarios de sistema completo.
+- Alarmas de seguridad sin procedimientos operativos.
+- Contratos que no dicen nada sobre la notificación de incidentes ni la divulgación de vulnerabilidades.
+- Tratar los problemas emergentes como el error de un componente en lugar de como un problema de interfaz.
+
+La ráfaga de reconexión muestra el segundo y el último error: cada componente superó sus pruebas de interfaz y, sin embargo, juntos retrasaron las alarmas, y la corrección fue un cambio de interfaz, no un único error. La integración en la LRWA avanza interfaz por interfaz. Cada paso tiene su propia prueba de interfaz.
+
+### Ejercicios — capítulo 34
+
+**EX067 — Aritmética de la ráfaga.** *Objetivo:* cuantificar la ráfaga de reconexión. *Entradas:* 42 pasarelas × 180 lecturas liberadas en 10 s; el frontal del SCADA procesa 50 mensajes/s. *Pasos:* calcule el tiempo necesario para vaciar la ráfaga suponiendo que llega toda a la vez; calcule el tiempo que espera una alarma prioritaria situada al final de la cola; compárelo con R7. *Evidencia esperada:* cifras. *Rúbrica:* 3 = 7.560 mensajes / 50 por s = 151,2 s, incumple los 60 s, explica la cola con prioridad o la corrección del valor más reciente; 2 = aritmética correcta, sin corrección; 1 = aritmética errónea; 0 = nada.
+
+**EX068 — Acuerdo con el operador de telecomunicaciones.** *Objetivo:* especificar una interfaz organizativa. *Entradas:* el contrato con el operador de LTE. *Pasos:* enumere seis cláusulas relevantes para la seguridad con condiciones medibles. *Evidencia esperada:* lista. *Rúbrica:* 3 = plazo de notificación de incidentes, divulgación de vulnerabilidades, notificación de mantenimientos, prioridades de restablecimiento, registro de accesos, ejercicio conjunto, con cifras; 2 = sin cifras; 1 = genérico; 0 = nada.
+
+### Síntesis del capítulo
+
+Integre de forma incremental, con pruebas de interfaz y escenarios de sistema completo, porque el comportamiento emergente solo aparece en combinación. Integre los controles en las operaciones mediante alarmas con sentido, guías de actuación y formación. Haga explícitas y medibles las interfaces organizativas; su seguridad depende de organizaciones que usted no controla.
+
+<!-- cyberabc:chapter-navigation:start ch-34 -->
+### Siga estudiando — capítulo 34 de 50
+
+[← Capítulo 33](#ch-33) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 35 →](../../en/book/MANUSCRIPT.md#ch-35)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -2412,6 +2872,42 @@ Cada resultado muestra una respuesta defendible. Los resultados numéricos se ob
 **EX055.** Con `old` = 5.2: v1: NaN aceptado (todas las comparaciones son falsas); +∞ rechazado (`> hi`); −∞ rechazado (`< lo`); 5,5 aceptado (|5,5 − 5,2| = 0,3 ≤ 0,5, límite inclusivo); 5,50001 rechazado (`> hi`). v2 rechaza NaN y ±∞ mediante `isfinite`, acepta 5,5 y rechaza 5,50001.
 
 **EX056.** Campos: marca de tiempo UTC y fuente de tiempo; ID de la pasarela; ID de la estación; código de motivo (etiqueta, repetición, sin datos recientes, forma, rango); valor del contador (si puede analizarse); último contador aceptado; SHA-256 de la trama recibida; dirección de origen. Excluya el material de claves y la carga útil completa de las órdenes cuando pueda revelar consignas sensibles a quienes leen los registros; el hash de la trama permite correlacionar sin divulgar.
+
+### Capítulo 29
+
+**EX057.** Exhaustividad 5/7 ≈ 0,714; FPR de la prueba 3/7 ≈ 0,429. Por cada 1.000 eventos con uno malicioso: TP esperados ≈ 0,714, FP ≈ 428. Precisión operativa ≈ 0,0017. Interpretación: la estimación de la FPR a partir de 7 eventos benignos es sumamente incierta, pero incluso una mejora de un orden de magnitud deja el detector inutilizable para avisos de guardia; necesita una FPR mucho menor, medida sobre muchos más datos benignos.
+
+**EX058.** Base: 40 % × 4 h = 160 %·h, más el triángulo de recuperación 0,5 × 8 × 40 = 160 → 320 %·h. Con el modo manual local al 85 %: 15 × 4 = 60, más 0,5 × 8 × 15 = 60 → 120 %·h. R4 reduce la pérdida de resiliencia en torno a un 62 % en este caso sintético.
+
+### Capítulo 30
+
+**EX059.** NaN da falso en cualquier comparación, de modo que las comprobaciones negativas de v1 nunca lo rechazan, mientras que ±∞ fallan en `> hi` o en `< lo`. Unos 2.000/10 = 200 casos de valores especiales, una quinta parte NaN → unos 40 esperados; 31 observados (el generador extrajo 31 casos NaN con la semilla 30), dentro de la variación aleatoria (desviación típica binomial ≈ 5,7). Todo caso NaN es una aceptación insegura de v1, así que los 31 fallos son exactamente los casos NaN.
+
+**EX060.** Casos: (1) contadores 1, 2, 3 → todos aceptados; (2) repetición de 2 → rechazado; (3) contador inferior → rechazado; (4) reinicio del receptor y luego repetición de un mensaje antiguo → rechazado (requiere estado persistido o rotación de claves); (5) reinicio del emisor → reanuda en el valor persistido + 1.000, aceptado; contadores antiguos rechazados; (6) entrega fuera de orden (3 antes que 2) → 3 aceptado, 2 rechazado y registrado (comportamiento documentado); (7) contador en el máximo 2⁶⁴ − 1 → se requiere rotación de claves antes del desbordamiento; pruebe que el emisor se niega a desbordar. Criterios de aprobación: resultados exactos de aceptación o rechazo y entradas de registro.
+
+### Capítulo 31
+
+**EX061.** Desencadenantes: falta telemetría de PS4 durante > 5 min con el enlace activo; cualquier trama aceptada que no supere la auditoría posterior; latencia de alarmas prioritarias > 60 s en dos eventos en una hora; cambio inesperado del estado de una bomba. Responsable de la decisión: el jefe de operaciones de turno. Reversión completada en 1 h (muy por debajo de la reserva de 4 h del hospital), con PS4 en automático local durante todo el proceso.
+
+**EX062.** Controles: bastionado del sistema operativo y de los servicios; actualizaciones de firmware firmadas; clave en un elemento seguro; filtrado de códigos de función y de rango de registros; interruptor de manipulación del armario con alarma hacia el SCADA; registro local y reenviado; puertos no usados deshabilitados; cerraduras físicas. Riesgo residual: un atacante con acceso físico al armario abierto puede conectarse al enlace serie heredado y dar órdenes directamente a la RTU; la detección de manipulación reduce el tiempo de permanencia, pero no lo impide.
+
+### Capítulo 32
+
+**EX063.** Con dos cuadrillas, la transición del estado 2 de vuelta al estado 1 tiene tasa 2μ, de modo que $p_2 = p_0 \cdot 2r \cdot r/2 = p_0 r^2$, con $r = \lambda/\mu$. Indisponibilidad ≈ 1,41 × 10⁻⁴, igual a la de la fórmula ingenua independiente, porque la reparación independiente es exactamente lo que esa fórmula supone. Con una cuadrilla: 2,81 × 10⁻⁴, aproximadamente el doble.
+
+**EX064.** Con un MTTR de 504 h y una cuadrilla: indisponibilidad ≈ 0,078 (unos 28 días al año con ambas bombas paradas), frente a 2,8 × 10⁻⁴ con un repuesto. Mantenga una bomba de repuesto: su coste es insignificante frente a semanas de suministro por una sola vía al hospital.
+
+### Capítulo 33
+
+**EX065.** Filas modelo para el lazo de dosificación (pérdidas: agua no apta; daño por sobredosificación): no proporcionada: el controlador no aumenta la dosis cuando sube la demanda (retroalimentación de caudal defectuosa); proporcionada cuando es insegura: el controlador aumenta la dosis cuando el residual ya es alto (lectura del analizador falsificada por un atacante); momento equivocado: el aumento de dosis se aplica después de que el caudal haya bajado (retardo en la retroalimentación); demasiado tiempo: la dosificación continúa después de que el caudal se detiene (señal de caudal bloqueada). Restricciones: supervisión independiente del residual, dosis enclavada con el caudal, límite físico de carrera.
+
+**EX066.** Violaciones: estación de trabajo de ingeniería compartida (un solo compromiso puede reprogramar tanto la lógica de control como la de seguridad) y conmutador compartido (camino de red y fallo común). Arquitectura: estación de trabajo de ingeniería del SIS dedicada y mantenida sin conexión, cambios en el programa del SIS habilitados solo con un interruptor de llave física, SIS en una red separada o cableado directamente a sus sensores y elementos finales, exportación de datos de solo lectura hacia el sistema de control. Riesgo residual: un interno con la llave física, compromiso de la cadena de suministro del firmware del SIS.
+
+### Capítulo 34
+
+**EX067.** 42 × 180 = 7.560 mensajes; a 50 por segundo, 151,2 s para vaciar la cola; una alarma prioritaria situada al final espera unos 151 s, lo que incumple R7 (60 s). Corrección: cola con prioridad para las alarmas y reenvío del valor más reciente, con relleno del histórico a frecuencia limitada hacia el historiador.
+
+**EX068.** Cláusulas: notificación de incidentes a la LRWA en 1 h desde su detección; divulgación en 72 h de las vulnerabilidades que afecten a la red privada; mantenimientos planificados notificados con 10 días hábiles de antelación; prioridad de restablecimiento para los emplazamientos de la LRWA con un objetivo de 4 h; registros de acceso al APN de la LRWA entregados mensualmente; ejercicio conjunto anual.
 
 <a id="glossary"></a>
 
