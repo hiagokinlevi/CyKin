@@ -14,7 +14,7 @@ This is one course. It has **one course skill** and **one principal book in each
 
 ## Position in the complete study path
 
-**Course 016 of 207.** In English, read [Chapters 01–20](en/SUBJECTS.md) in order, then continue to the next course. In another language, inspect that edition's actual index and manuscript availability before studying. Previous: [Security operations and blue team / Rapid course](../security-operations-blue-team/README.md). Next: [Digital forensics and malware analysis / Rapid course](../digital-forensics-malware/README.md).
+**Course 016 of 207.** In English, read [Lessons 01–20 within weekly Chapters 01–04](en/SUBJECTS.md) in order, then continue to the next course. In another language, inspect that edition's actual index and manuscript availability before studying. Previous: [Security operations and blue team / Rapid course](../security-operations-blue-team/README.md). Next: [Digital forensics and malware analysis / Rapid course](../digital-forensics-malware/README.md).
 
 ## Language editions
 
@@ -35,6 +35,17 @@ This is one course. It has **one course skill** and **one principal book in each
 ## English chapter sequence
 
 The [English chapter index](en/SUBJECTS.md) groups the four modules and lists every authored weekday lesson with its exercise IDs and next link. The [book plan](en/book/PLAN.md) gives short briefs; teaching lives in the single principal manuscript.
+
+| Weekly chapter in the same book | Daily lesson range | Begin the week's reading |
+|---|---|---|
+| [01 — Readiness, roles and scope](en/book/MANUSCRIPT.md#ch-01) | 01–05 | [Lesson 01](en/book/MANUSCRIPT.md#lesson-01) |
+| [02 — Alert triage and evidence preservation](en/book/MANUSCRIPT.md#ch-02) | 06–10 | [Lesson 06](en/book/MANUSCRIPT.md#lesson-06) |
+| [03 — Containment, eradication and recovery](en/book/MANUSCRIPT.md#ch-03) | 11–15 | [Lesson 11](en/book/MANUSCRIPT.md#lesson-11) |
+| [04 — Simulation and after-action review](en/book/MANUSCRIPT.md#ch-04) | 16–20 | [Lesson 16](en/book/MANUSCRIPT.md#lesson-16) |
+
+For each lesson, study its explanation and worked example, attempt the exercises assigned in the [daily index](en/SUBJECTS.md), then compare the [worked answers in the same book](en/book/MANUSCRIPT.md#answers). Use the [single course skill](skill/SKILL.md) for tutoring and assessment boundaries. The table describes the existing English sequence; it does not publish the same lessons in another language or create additional books.
+
+**Study dates:** four instructional weeks contain 20 lessons. A specific civil month can require a different number of weekdays. Use the [study-calendar convention](../../../STUDY_CALENDAR.md) to show the actual required dates, missing allocations and any extension. Do not repeat exercises or count an empty date as a completed lesson. The fictional incident's timestamps are separate from the learner's calendar.
 
 **Related project:** [hiagokinlevi/ir-playbooks-automation](https://github.com/hiagokinlevi/ir-playbooks-automation). Its source material is supplementary and retains its own rights. Original CyKin material is dedicated under [CC0 1.0](../../../LICENSE).
 
