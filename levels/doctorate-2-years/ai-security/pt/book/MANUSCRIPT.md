@@ -229,12 +229,12 @@ Ana mapeou 31 artigos sobre defesas contra injeção de prompt numa tabela com a
 
 ### 2.7 Erros e limites
 
-Cada uma das confusões listadas abaixo leva ao estudo errado. Uma defesa contra jailbreak não trata dados que contrabandeiam instruções, que é o problema de Ana. Uma categoria de framework registra que um risco existe, não com que frequência ele ocorre. Um limite certificado não diz nada sobre texto injetado nem sobre perturbações fora da sua norma. Uma leitura descuidada das datas do AI Act leva a afirmações erradas sobre quais obrigações se aplicam agora. Verifique cada uma delas no seu capítulo de trabalhos relacionados.
+Cada uma destas confusões leva ao estudo errado; verifique cada uma delas no seu capítulo de trabalhos relacionados:
 
-- Igualar jailbreak (evasão de políticas) a injeção de prompt (contrabando de instruções por meio de dados).
-- Citar uma categoria de framework como se fosse uma constatação empírica.
-- Tratar limites de robustez certificada como se cobrissem ameaças fora da sua bola de norma.
-- Ler com descuido as datas de aplicação do AI Act da UE; as obrigações entram em vigor de forma gradual entre 2025 e 2027.
+- Igualar jailbreak (evasão de políticas) a injeção de prompt (contrabando de instruções por meio de dados); uma defesa contra jailbreak não trata dados que contrabandeiam instruções, que é o problema de Ana.
+- Citar uma categoria de framework como se fosse uma constatação empírica; uma categoria registra que um risco existe, não com que frequência ele ocorre.
+- Tratar limites de robustez certificada como se cobrissem ameaças fora da sua bola de norma; um limite certificado não diz nada sobre texto injetado nem sobre perturbações fora da sua norma.
+- Ler com descuido as datas de aplicação do AI Act da UE; as obrigações entram em vigor de forma gradual entre 2025 e 2027, e uma leitura descuidada leva a afirmações erradas sobre quais obrigações se aplicam agora.
 
 ### Exercícios
 
@@ -333,13 +333,13 @@ defence=separate  exfil_calls= 0/20 any_injected_call= 0/20 benign_calls=0/20
 
 ### 3.7 Erros e limites
 
-Cada um dos erros listados abaixo permite que a banca rejeite a proposta ou, pior, aprove um estudo que não consegue responder à sua pergunta. Sem regras de decisão, qualquer resultado pode ser chamado de sucesso. Métricas escolhidas depois dos resultados convidam ao viés. Uma linha de base fraca faz qualquer defesa parecer boa, e é por isso que Ana incluiu a lista de permissões. Um texto de ética que não lista artefatos não pode ser verificado. O Laboratório I é um motor de regras, então o seu resultado limpo não diz nada sobre como um modelo real se comporta.
+Cada um destes erros permite que a banca rejeite a proposta ou, pior, aprove um estudo que não consegue responder à sua pergunta:
 
-- Hipóteses sem tamanhos de efeito ou regras de decisão.
-- Métricas escolhidas depois de ver os resultados.
-- Uma "linha de base" que nenhum profissional competente implantaria.
-- Seções de ética que não listam artefatos.
-- Generalizar a partir de um brinquedo (como o laboratório) para o comportamento de um LLM real.
+- Hipóteses sem tamanhos de efeito ou regras de decisão, de modo que qualquer resultado pode ser chamado de sucesso.
+- Métricas escolhidas depois de ver os resultados, o que convida ao viés.
+- Uma "linha de base" que nenhum profissional competente implantaria; uma linha de base fraca faz qualquer defesa parecer boa, e é por isso que Ana incluiu a lista de permissões.
+- Seções de ética que não listam artefatos, o que não pode ser verificado.
+- Generalizar a partir de um brinquedo (como o laboratório) para o comportamento de um LLM real; o Laboratório I é um motor de regras, então o seu resultado limpo não diz nada sobre como um modelo real se comporta.
 
 ### Exercícios
 
