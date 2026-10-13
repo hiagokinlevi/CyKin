@@ -361,7 +361,7 @@ AI-specific risks often reuse classic paths: a cloned voice is phishing by anoth
 
 ### Exercises
 
-- **EX013 — CIA.** Give a CIA example for DocSort. Rubric: 3 = one example each, accurate; 2 = two; 1 = one; 0 = none.
+- **EX013 — CIA.** Give one confidentiality, one integrity and one availability example for DocSort. Rubric: 3 = one example each, accurate; 2 = two; 1 = one; 0 = none.
 - **EX014 — Vocabulary.** For the voice-clone case, state threat, vulnerability, impact and control. Rubric: 3 = all four coherent; 2 = three; 1 = one or two; 0 = none.
 - **EX015 — Practices.** List three safe practices for using AI assistants at work. Rubric: 3 = no secrets/personal data, verify outputs, approved tools only; 2 = two; 1 = one; 0 = none.
 
@@ -3758,6 +3758,7 @@ Model answers; any answer meeting the rubric scores equally. Lumen Community Hea
 
 **EX120.** Monthly: one authorised lab or CTF with AI tasks; read OWASP/NIST/ATLAS updates and two papers; contribute to an open-source evaluation tool; keep a learning log; review ethics commitments; at year end publish a short portfolio write-up.
 
+<a id="references"></a>
 ## References
 
 Links checked 12 October 2026; frameworks change, so re-verify. arXiv identifiers were opened and titles checked.
