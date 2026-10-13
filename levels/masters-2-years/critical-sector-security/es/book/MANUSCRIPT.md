@@ -43,8 +43,8 @@ Cada enunciado factual sobre una ley, una norma, un incidente público o un estu
 
 1. [Pregunta de investigación y método de revisión de la literatura](#ch-01) — del tema a una pregunta respondible, alcance de la afirmación, búsqueda documentada entre disciplinas y en la literatura gris, deduplicación, cribado doble y la matriz de conceptos.
 2. [Infraestructura crítica y seguridad sectorial: seminario avanzado](#ch-02) — perfiles sectoriales y unidades de consecuencia, lo que los catálogos públicos de incidentes pueden y no pueden decirle, lectura y presentación de un artículo sectorial y casos documentados cuyo primer relato fue revisado.
-3. [Diseño del estudio, ética y reproducibilidad](../../en/book/MANUSCRIPT.md#ch-03) — elección entre diseños cuasiexperimentales y cualitativos, análisis del diseño antes de los datos, revisión ética, protección de datos y sensibilidad de la información de infraestructura, y un proyecto reproducible.
-4. [Infraestructura crítica y seguridad sectorial: explicaciones rivales](../../en/book/MANUSCRIPT.md#ch-04) — múltiples hipótesis de trabajo, diagramas causales, regiones de comparación, controles negativos, pruebas placebo y dosis-respuesta como evidencia discriminante.
+3. [Diseño del estudio, ética y reproducibilidad](#ch-03) — elección entre diseños cuasiexperimentales y cualitativos, análisis del diseño antes de los datos, revisión ética, protección de datos y sensibilidad de la información de infraestructura, y un proyecto reproducible.
+4. [Infraestructura crítica y seguridad sectorial: explicaciones rivales](#ch-04) — múltiples hipótesis de trabajo, diagramas causales, regiones de comparación, controles negativos, pruebas placebo y dosis-respuesta como evidencia discriminante.
 5. [Propuesta y piloto](../../en/book/MANUSCRIPT.md#ch-05) — la propuesta como contrato, cronograma y registro de riesgos, acuerdos de acceso a datos, pilotos de viabilidad con criterios de continuar o no continuar declarados de antemano y una auditoría de los datos del piloto.
 6. [Recogida y análisis de datos](../../en/book/MANUSCRIPT.md#ch-06) — series temporales interrumpidas controladas con intervalos robustos a la autocorrelación, ventanas placebo, entrevistas y análisis temático, acuerdo entre codificadores e integración de las dos vertientes.
 7. [Redacción de la tesis y limitaciones](../../en/book/MANUSCRIPT.md#ch-07) — estructura y argumento, comunicación honesta de los resultados, procedencia de los números, guías de comunicación, limitaciones direccionales, figuras accesibles y disponibilidad de datos bajo sensibilidad.
@@ -548,7 +548,542 @@ Los sectores se diferencian en lo que pierden, con qué rapidez y para quién; e
 <!-- cyberabc:chapter-navigation:start ch-02 -->
 ### Siga estudiando — capítulo 02 de 08
 
-[← Capítulo 01](#ch-01) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 03 →](../../en/book/MANUSCRIPT.md#ch-03)
+[← Capítulo 01](#ch-01) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-03"></a>
+
+## Capítulo 3 — Diseño del estudio, ética y reproducibilidad
+
+### Resultados de aprendizaje y conexión
+
+Al final de este capítulo, el estudiante será capaz de:
+
+1. Comparar los diseños disponibles para una pregunta causal sobre un evento de infraestructura no planificado —antes-después, serie temporal interrumpida, serie temporal interrumpida controlada, diferencias en diferencias, control sintético, estudio de caso y métodos mixtos— y elegir uno según los supuestos que necesita y los datos que requiere.
+2. Nombrar las principales amenazas a la validez interna, de constructo, de conclusión estadística y externa, y asociar cada una a un rasgo del diseño que la reduzca.
+3. Realizar un **análisis del diseño** antes de acceder a los datos: estimar qué tamaño de efecto puede detectar el diseño previsto y cuán sesgado sería un diseño más simple.
+4. Preparar una solicitud ética para un estudio que combina datos operativos agregados y entrevistas, incluidos los riesgos para el personal, las organizaciones y el público, y las salvaguardas de sensibilidad de la información.
+5. Especificar acuerdos de datos y un plan de gestión de datos proporcionado a la sensibilidad de los datos.
+6. Montar un proyecto reproducible —estructura, entorno, semillas, libro de códigos, control de versiones y un plan de preanálisis registrado— antes de que lleguen los primeros datos.
+
+El capítulo convierte el estimando del capítulo 1 en un diseño. El capítulo 4 examina las explicaciones rivales que el diseño debe derrotar; el capítulo 5 pone a prueba la viabilidad; el capítulo 6 ejecuta el análisis especificado aquí.
+
+### 3.1 Diseños para un evento que nadie asignó
+
+#### 3.1.1 El problema central
+
+Un ataque de ransomware no es un experimento: nadie lo asignó al azar a Kestrel ni eligió su momento para ayudar a los investigadores. Por eso, todo diseño para el Estudio de Desbordamiento es una forma de **aproximar el contrafactual** —cuáles habrían sido las llegadas a Alder Point sin el desvío— a partir de datos que existen. Los diseños difieren en dónde encuentran esa aproximación y en los supuestos que la hacen válida.
+
+| Diseño | El contrafactual procede de | Supuesto clave | Datos necesarios | Debilidad principal |
+|---|---|---|---|---|
+| Antes-después | El nivel de las mismas unidades antes del evento | Nada más cambió entre los periodos | Unas pocas semanas antes y durante | Confundido por la estación, las tendencias y los eventos concurrentes |
+| Serie temporal interrumpida (STI) | La tendencia previa al evento de las mismas unidades, proyectada hacia delante | La tendencia previa habría continuado; no hay un choque concurrente | Muchos puntos temporales antes y después ([Wagner et al., 2002](https://doi.org/10.1046/j.1365-2710.2002.00430.x); [Lopez Bernal et al., 2017](https://doi.org/10.1093/ije/dyw098)) | Un choque concurrente (una epidemia, un cambio de política) se atribuye al evento |
+| STI controlada / diferencias en diferencias | La tendencia previa más el cambio concurrente en unidades de comparación no expuestas | Las unidades tratadas y las de comparación habrían cambiado igual («tendencias paralelas») | Series temporales de las unidades tratadas y de comparación | Falla si la región de comparación sufre un choque distinto ([Roth et al., 2023](https://doi.org/10.1016/j.jeconom.2023.03.008)) |
+| Control sintético | Una combinación ponderada de muchas unidades no expuestas que reproduce la trayectoria previa de la unidad tratada | La combinación ponderada habría seguido a la unidad sin el evento | Muchas unidades donantes potenciales y un periodo previo largo ([Abadie, 2021](https://doi.org/10.1257/jel.20191450)) | Pocos donantes en una región; mal ajuste en el periodo previo |
+| Estudio de caso / rastreo de procesos | Relatos de lo que ocurrió y por qué | Relatos convergentes e independientes | Documentos, entrevistas, registros | No puede cuantificar por sí solo un tamaño de efecto |
+| Métodos mixtos | Estimación cuantitativa más evidencia de proceso | Cada vertiente es válida en sus propios términos; la integración es explícita | Ambos de los anteriores ([Fetters et al., 2013](https://doi.org/10.1111/1475-6773.12117)) | El doble de trabajo; la integración a menudo queda implícita |
+
+Si el estudio agrupa varios eventos en momentos distintos —por ejemplo, ataques a distintos sistemas hospitalarios en años distintos—, las diferencias en diferencias estándar con efectos fijos bidireccionales pueden asignar ponderaciones engañosas a algunas comparaciones; [Goodman-Bacon (2021)](https://doi.org/10.1016/j.jeconom.2021.03.014) descompone el estimador y Roth et al. (2023) revisan las alternativas. Un estudio de maestría de un solo evento evita ese problema, pero renuncia a la generalidad.
+
+#### 3.1.2 La elección del Estudio de Desbordamiento
+
+El estudio usa una **serie temporal interrumpida controlada** para PI1 y PI2: llegadas diarias de ambulancias a cada SU vecino durante 180 días antes y 90 días después del día 0, en relación con los SU de Wexmoor agrupados, con una tendencia lineal, un escalón para la ventana de desvío de 21 días y un escalón para el periodo siguiente. Añade **entrevistas** para PI3. Las razones, registradas en la propuesta: la región de comparación elimina el cambio estacional compartido (una STI no controlada no puede); dos SU de Wexmoor son muy pocos donantes para un control sintético; los datos diarios dan suficientes puntos temporales para la tendencia; y los planificadores necesitan el *mecanismo* (PI3) tanto como la cifra.
+
+Una revisión metodológica de estudios de STI que evaluaban intervenciones en sistemas de salud encontró que el 81 % no usaba ninguna serie de control, que solo el 55 % consideraba la autocorrelación, el 20,8 % la estacionalidad y el 8,3 % la no estacionariedad, y que solo el 49,2 % especificaba la forma esperada del impacto ([Hategeka et al., 2020](https://doi.org/10.1136/bmjgh-2020-003567)). Esos son los fallos comunes que el diseño de este capítulo está construido para evitar.
+
+### 3.2 Amenazas a la validez
+
+El vocabulario siguiente es estándar en los métodos cuasiexperimentales. Asocie cada amenaza al rasgo del diseño que la aborda y admita las amenazas que ningún rasgo aborda.
+
+| Validez | Amenaza | En el Estudio de Desbordamiento | Respuesta del diseño |
+|---|---|---|---|
+| Interna | **Historia**: otro evento coincide con la exposición | Una temporada de enfermedades respiratorias comienza cerca del día 0 | Región de comparación con la misma estación; pruebas placebo (capítulo 4) |
+| Interna | **Maduración / tendencia** | El crecimiento de la población aumenta lentamente las llegadas | Tendencia lineal sobre 180 días previos al evento |
+| Interna | **Instrumentación**: cambios en la medición | Alder Point cambia su sistema de registro de llegadas | Preguntar a los socios por cambios de sistema; comprobar discontinuidades (capítulo 5) |
+| Interna | **Regresión a la media** | El evento «empezó» en un día elegido precisamente porque parecía inusual | El día 0 se define por el registro de desvíos de los SEM, no por los datos de resultado ([Barnett et al., 2005](https://doi.org/10.1093/ije/dyh299)) |
+| Interna | **Selección** | La región de comparación difiere sistemáticamente | Comprobar que las trayectorias previas son similares; informar de las diferencias |
+| De constructo | El resultado no mide el constructo | «Llegadas de ambulancias» cuenta traslados, no la necesidad de los pacientes | Enunciar el constructo con exactitud; triangular con entrevistas |
+| De conclusión estadística | Baja potencia; autocorrelación; muchos resultados | Un evento, recuentos diarios, dos resultados | Análisis del diseño (§3.3); intervalos robustos (capítulo 6); un resultado primario |
+| Externa | Transferencia a otras regiones | Una región con un sistema dominante | Acotar la afirmación; describir la estructura de la región para que otros puedan juzgar la transferencia |
+
+### 3.3 Análisis del diseño antes de los datos
+
+#### 3.3.1 Por qué calcular antes de recopilar
+
+En un experimento planificado, un cálculo del tamaño muestral fija cuántos participantes reclutar. Un estudio observacional de un solo evento no puede reclutar más eventos, pero puede y debe preguntarse antes de acceder a los datos: **¿qué tamaño de efecto podría detectar este diseño y cuánto se equivocaría un diseño más simple?** [Lakens (2022)](https://doi.org/10.1525/collabra.33267) enumera seis formas de justificar un tamaño muestral, entre ellas medir (casi) toda la población, aceptar las limitaciones de recursos y planificar para una precisión deseada; sea cual sea la que se use, el investigador debe enunciar qué efectos pueden informar los datos y cuáles no. En el Estudio de Desbordamiento, la muestra la fija el evento: un desvío de 21 días y tantos días previos al evento como puedan aportar los socios.
+
+#### 3.3.2 El menor efecto de interés
+
+Un análisis del diseño necesita un efecto de referencia. La coalición de Tamsin Valley (sintética) activa la ayuda mutua cuando un SU espera cuatro o más llegadas de ambulancias adicionales al día, alrededor del 10 % sobre la línea de base de 40 de Alder Point. Eso da al estudio un **menor efecto de interés** basado en una decisión real: el 10 %. Escriba de dónde salió la cifra; un tamaño de efecto inventado para que un estudio parezca tener potencia suficiente es una debilidad común y fácil de detectar.
+
+#### 3.3.3 Simular el diseño
+
+El laboratorio siguiente simula muchas veces el estudio previsto bajo verdades conocidas, con llegadas diarias sintéticas que tienen variación por día de la semana y variación adicional de un día a otro. Compara un diseño **no controlado** (el cambio del SU tratado respecto de su propia línea de base) con un diseño **controlado** (el mismo cambio menos el cambio en un SU de comparación no afectado), para líneas de base de 28, 90 y 180 días, con y sin un aumento estacional compartido que comienza cerca del día 0. Informa del efecto estimado medio (sesgo) y de la proporción de estudios simulados en los que el intervalo del 95 % excluye el cero («señalados»).
+
+```python
+# Lab 3 - design check before data access: bias and detection of two designs (offline, standard library only)
+# Synthetic daily ambulance arrivals at a neighbouring hospital (treated) and an unaffected comparison hospital.
+# Days -pre..-1 are baseline; days 0..20 are the 21-day diversion window at the attacked hospital.
+import math, random
+
+DOW = [1.08, 1.02, 1.00, 0.98, 1.00, 0.96, 0.96]
+
+def poisson(rng, lam):                        # Knuth's method; adequate for lam < ~500
+    L, k, p = math.exp(-lam), 0, 1.0
+    while True:
+        p *= rng.random()
+        if p <= L:
+            return k
+        k += 1
+
+def season(t, ramp):                          # respiratory season starting around day 0, shared by both
+    return 1 + (0.18 / (1 + math.exp(-(t - 10) / 6)) if ramp else 0.0)
+
+def day(rng, base, t, effect, ramp):
+    lam = base * DOW[t % 7] * season(t, ramp) * (1 + effect) * rng.gammavariate(60, 1 / 60)
+    return poisson(rng, lam)
+
+def mean_var(x):
+    m = sum(x) / len(x)
+    return m, sum((v - m) ** 2 for v in x) / (len(x) - 1)
+
+def log_ratio(pre, ev):                       # log(mean_event / mean_pre) and its approximate SE
+    mp, vp = mean_var(pre)
+    me, ve = mean_var(ev)
+    return math.log(me / mp), math.sqrt(ve / (len(ev) * me ** 2) + vp / (len(pre) * mp ** 2))
+
+def one_study(rng, pre_len, effect, ramp):
+    days = range(-pre_len, 21)
+    tr = {t: day(rng, 40, t, effect if t >= 0 else 0.0, ramp) for t in days}
+    co = {t: day(rng, 35, t, 0.0, ramp) for t in days}
+    pre, ev = [t for t in days if t < 0], [t for t in days if t >= 0]
+    u, su = log_ratio([tr[t] for t in pre], [tr[t] for t in ev])           # uncontrolled pre/post
+    c1, s1 = log_ratio([co[t] for t in pre], [co[t] for t in ev])
+    return (u, su), (u - c1, math.sqrt(su ** 2 + s1 ** 2))                  # controlled (DiD on logs)
+
+def run(pre_len, effect, ramp, sims=400, seed=11):
+    rng = random.Random(seed)
+    res = {"uncontrolled": [], "controlled": []}
+    for _ in range(sims):
+        a, b = one_study(rng, pre_len, effect, ramp)
+        res["uncontrolled"].append(a)
+        res["controlled"].append(b)
+    out = {}
+    for k, v in res.items():
+        est = [math.exp(e) - 1 for e, _ in v]
+        hits = sum(abs(e) / s > 1.96 for e, s in v) / sims
+        out[k] = (sum(est) / sims, hits)
+    return out
+
+if __name__ == "__main__":
+    print("season  true  pre_days  design        mean_est  share_flagged")
+    for ramp in (False, True):
+        for effect in (0.0, 0.10):
+            for pre_len in (28, 90, 180):
+                r = run(pre_len, effect, ramp)
+                for k in ("uncontrolled", "controlled"):
+                    m, h = r[k]
+                    print(f"{'ramp' if ramp else 'flat':6}  {effect:4.2f}  {pre_len:8d}  {k:12}  {m:+8.3f}  {h:13.2f}")
+```
+
+Salida esperada (unos tres segundos):
+
+```text
+season  true  pre_days  design        mean_est  share_flagged
+flat    0.00        28  uncontrolled    +0.004           0.06
+flat    0.00        28  controlled      +0.010           0.04
+flat    0.00        90  uncontrolled    +0.001           0.04
+flat    0.00        90  controlled      +0.004           0.02
+flat    0.00       180  uncontrolled    +0.004           0.05
+flat    0.00       180  controlled      +0.000           0.04
+flat    0.10        28  uncontrolled    +0.102           0.39
+flat    0.10        28  controlled      +0.115           0.24
+flat    0.10        90  uncontrolled    +0.105           0.52
+flat    0.10        90  controlled      +0.110           0.33
+flat    0.10       180  uncontrolled    +0.101           0.52
+flat    0.10       180  controlled      +0.109           0.29
+ramp    0.00        28  uncontrolled    +0.084           0.27
+ramp    0.00        28  controlled      +0.003           0.07
+ramp    0.00        90  uncontrolled    +0.088           0.40
+ramp    0.00        90  controlled      +0.002           0.06
+ramp    0.00       180  uncontrolled    +0.096           0.52
+ramp    0.00       180  controlled      +0.006           0.07
+ramp    0.10        28  uncontrolled    +0.191           0.84
+ramp    0.10        28  controlled      +0.105           0.23
+ramp    0.10        90  uncontrolled    +0.198           0.94
+ramp    0.10        90  controlled      +0.106           0.28
+ramp    0.10       180  uncontrolled    +0.202           0.97
+ramp    0.10       180  controlled      +0.106           0.31
+```
+
+De ello se siguen cuatro conclusiones, y la propuesta debe enunciarlas antes de ver ningún dato:
+
+1. **Sin un desplazamiento estacional, ambos diseños son insesgados**, y el diseño no controlado señala un efecto verdadero del 10 % con más frecuencia (alrededor del 52 % frente a alrededor del 30 % con 90 o 180 días de línea de base), porque restar una serie de comparación añade su ruido.
+2. **Con un aumento estacional compartido, el diseño no controlado está muy sesgado.** Cuando el efecto verdadero es cero, estima alrededor de +8 % a +10 % y señala un efecto inexistente en el 27 % al 52 % de los estudios —*con más frecuencia cuanto más larga es la línea de base*, porque entonces la línea de base se remonta más hacia la temporada baja—. Más datos no resolvieron un problema de diseño; hicieron más confiada la conclusión falsa.
+3. **El diseño controlado elimina el sesgo estacional** (estimaciones medias cercanas a cero; señalado en el 6–7 % de los estudios nulos, cerca del 5 % nominal dados los errores estándar aproximados), pero detecta un efecto verdadero del 10 % solo en el 23–31 % de los estudios.
+4. Por tanto, **un solo SU vecino no puede detectar de forma fiable el menor efecto de interés**. El estudio debe plantearse como *estimación con intervalos*, no como una prueba que «demuestra» el desbordamiento; debe informar del intervalo y de los efectos que descarta; y el gradiente de distancia de PI2 debe leerse a través de los tres vecinos, no a partir de una sola prueba. (Las estimaciones controladas promedian alrededor de 0,105–0,115 cuando la verdad es 0,10 porque la media de los cocientes logarítmicos exponenciados es ligeramente mayor que la media exponenciada: un sesgo pequeño y conocido).
+
+### 3.4 Revisión ética
+
+#### 3.4.1 Qué necesita revisión
+
+Las entrevistas con responsables de SU, supervisores de SEM y personal de la coalición son investigación con participantes humanos en casi todas las jurisdicciones y necesitan la aprobación del comité de ética de la investigación o del comité institucional de revisión de la institución antes del reclutamiento. En los Estados Unidos, la [Common Rule (45 CFR Part 46)](https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-A/part-46) define la investigación con seres humanos y las categorías que pueden quedar exentas; es la institución, no el estudiante, quien decide si un estudio cumple los requisitos. Los recuentos diarios agregados por SU no suelen contener información sobre personas, pero la institución puede exigir igualmente una revisión, y un custodio de datos puede exigir su propia aprobación. En la UE, los datos de salud son una categoría especial según el [artículo 9 del RGPD](https://eur-lex.europa.eu/eli/reg/2016/679/oj), y el tratamiento con fines de investigación científica se apoya en las garantías del artículo 89. *Nota para el lector hispanohablante:* en España, el RGPD se complementa con la Ley Orgánica 3/2018, de Protección de Datos Personales y garantía de los derechos digitales; en América Latina rige la ley de cada país, por ejemplo la Ley 25.326 en Argentina o la Ley 1581 de 2012 en Colombia. Si alguna vez se necesitaran registros individuales, los datos de salud estadounidenses traerían consigo los estándares de desidentificación de la HIPAA Privacy Rule y, para un conjunto de datos limitado, un acuerdo de uso de datos ([orientación del HHS](https://www.hhs.gov/hipaa/for-professionals/special-topics/de-identification/index.html)). El Estudio de Desbordamiento evita por completo los registros individuales: la minimización de datos es la salvaguarda ética más fuerte disponible.
+
+#### 3.4.2 Riesgos propios de los estudios de infraestructura
+
+Los principios del [Menlo Report](https://www.dhs.gov/sites/default/files/publications/CSD-MenloPrinciplesCORE-20120803_1.pdf) —respeto por las personas, beneficencia, justicia, y respeto por la ley y el interés público— estructuran el análisis de riesgos. En este estudio, los riesgos principales son:
+
+- **Para los entrevistados:** que se les culpe de decisiones tomadas durante el incidente; la revelación de su identidad mediante la combinación de función y organización (hay un solo supervisor de operaciones de SEM en Tamsin Valley); consecuencias profesionales por criticar a un empleador o a un hospital vecino.
+- **Para las organizaciones:** daño reputacional («Alder Point no pudo hacer frente»); exposición regulatoria; revelación de debilidades de seguridad en Kestrel.
+- **Para el público:** un hallazgo publicado como «los SU de esta región pierden una cuarta parte de su capacidad sobrante cuando un sistema desvía» podría, combinado con otra información, ayudar a un adversario a elegir un objetivo que maximice el daño regional. Se aplica la [prueba de sensibilidad de la información](../../../../doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md#ch-01) del libro de doctorado: ¿identifica un artefacto un activo concreto, su vulnerabilidad o su dependencia de un modo que ayudaría a alguien a dañarlo?
+- **Para el investigador:** presión de los socios para suavizar los resultados; acceso a información para cuyo tratamiento el investigador no está formado.
+
+#### 3.4.3 Salvaguardas
+
+| Riesgo | Salvaguarda |
+|---|---|
+| Identificación de los entrevistados | Categorías de función lo bastante amplias para contener a varias personas; citas revisadas en busca de detalles identificativos; nombres de organizaciones sustituidos en todos los productos |
+| Culpa | Preguntas sobre sistemas y limitaciones, no sobre decisiones individuales; el formulario de consentimiento indica que los datos no se compartirán con los empleadores |
+| Retirada | Los participantes pueden retirarse hasta una fecha indicada antes de que se cierre el análisis; sus datos se eliminan entonces |
+| Daño a las organizaciones | Los socios revisan los borradores en busca de errores de hecho e información protegida dentro de un plazo fijo, sin veto sobre los hallazgos |
+| Riesgo de selección de objetivos por el público | No se publican cifras de capacidad por instalación; solo síntesis regional; los hallazgos sobre debilidades concretas se comunican en privado a la organización afectada |
+| Celdas pequeñas | Suprimir o agregar los recuentos por debajo del tamaño mínimo de celda del custodio |
+| Contacto con sistemas | Ninguno: el estudio nunca toca, escanea ni prueba ningún sistema hospitalario, de SEM o de despacho; usa solo datos aportados por los custodios y entrevistas |
+
+#### 3.4.4 La solicitud
+
+Una solicitud típica contiene: la pregunta y su beneficio; el diseño y las fuentes de datos; el reclutamiento, el consentimiento y la retirada; los riesgos y las salvaguardas; el tratamiento, almacenamiento, conservación y destrucción de los datos; la difusión; los conflictos de intereses; y la formación del investigador. Adjunte la guía de entrevista, la hoja informativa, el formulario de consentimiento y los acuerdos de datos. Escriba para un miembro del comité que no sea especialista en seguridad: explique en lenguaje llano por qué un hallazgo sobre la capacidad regional es sensible.
+
+### 3.5 Acuerdos de datos y plan de gestión de datos
+
+Antes de que se mueva ningún dato, ponga por escrito: qué datos, con qué nivel de agregación y para qué periodo; la limitación de la finalidad; la ubicación del almacenamiento y el acceso; la conservación y la destrucción; la revisión previa a la publicación (solo revisión de hechos y de información protegida, dentro de un número fijo de días, sin veto); el reconocimiento y la autoría; y la notificación de brechas. Un **plan de gestión de datos** registra después, para cada activo de datos, su fuente, nivel de sensibilidad, formato, ubicación, quién puede acceder, la conservación y qué puede compartirse al final. Use los niveles de sensibilidad de forma coherente en todo el proyecto:
+
+| Nivel | Contenido en el Estudio de Desbordamiento | Tratamiento |
+|---|---|---|
+| Público | Código, datos de prueba sintéticos, libro de códigos, resultados regionales agregados | Repositorio |
+| Restringido | Recuentos diarios por SU procedentes de los custodios | Almacenamiento institucional cifrado; acceso nominativo; destruidos tras el periodo de conservación |
+| Confidencial | Grabaciones de entrevistas, transcripciones antes de la desidentificación, formularios de consentimiento | Cifrado, separado de los datos; grabaciones destruidas tras la transcripción si así lo indica el consentimiento |
+
+### 3.6 Un proyecto reproducible desde el primer día
+
+La reproducibilidad es más fácil de construir que de añadir a posteriori. [Sandve et al. (2013)](https://doi.org/10.1371/journal.pcbi.1003285) dan diez reglas, entre ellas: registrar cómo se produjo cada resultado; evitar la manipulación manual de los datos; archivar las versiones exactas de los programas externos; poner bajo control de versiones los scripts propios; registrar los resultados intermedios; y anotar las semillas de los procesos aleatorios. El manual comunitario [The Turing Way](https://book.the-turing-way.org/) las desarrolla en la práctica. Los [principios FAIR](https://doi.org/10.1038/sdata.2016.18) —localizable, accesible, interoperable, reutilizable— se aplican a lo que puede compartirse; para datos restringidos, los metadatos FAIR pueden describir un conjunto de datos que no puede publicarse.
+
+Una estructura mínima:
+
+```text
+spillover-study/
+  README.md            question, how to run everything, environment, contacts
+  data/raw/            read-only copies as received (restricted; never in version control)
+  data/derived/        produced only by scripts
+  code/01_audit.py     numbered in execution order
+  code/02_build.py
+  code/03_analysis.py
+  output/              tables and figures, regenerated by scripts
+  docs/codebook.md     every variable: source, definition, unit, missing-value code
+  docs/deviations.md   every change to the plan, dated, with reason and whether results had been seen
+  docs/environment.txt Python version and package versions
+```
+
+Un **plan de preanálisis** fija, antes de examinar los datos de resultado: los estimandos, los resultados primarios y secundarios, las unidades de comparación, las ventanas, el modelo, el método de intervalos, las comprobaciones de robustez y cómo se informará de las desviaciones. Registrarlo con una marca de tiempo —por ejemplo, en los [OSF Registries](https://osf.io/registries)— hace verificable el plan; [Nosek et al. (2018)](https://doi.org/10.1073/pnas.1708274114) explican por qué el prerregistro distingue la predicción de la posdicción. En un estudio observacional, los datos pueden existir ya, así que indique con honestidad qué se había visto cuando se registró el plan (por ejemplo, «los datos previos al evento de un SU se examinaron durante el piloto solo para comprobar su completitud»).
+
+### 3.7 Ejemplo resuelto: las preguntas del comité de ética (sintético)
+
+El comité devolvió la primera solicitud del candidato con cinco preguntas. Las respuestas del candidato:
+
+| Pregunta del comité | Respuesta |
+|---|---|
+| «¿Por qué se necesitan entrevistas? ¿Podrían los datos responder solos a la pregunta?» | Los datos estiman *cuánta* carga se desplazó (PI1–2), pero no *cómo* (PI3). Los planificadores necesitan el mecanismo para cambiar los protocolos. Diez entrevistas de 45 minutos cada una. |
+| «¿Podrían identificarse los participantes?» | Sí, por función y organización. Las funciones se comunicarán como «dirección de SU», «operaciones de SEM» o «coalición», cada una con al menos tres participantes; se eliminarán los nombres de las organizaciones; se revisarán las citas. |
+| «¿Y si un participante describe un error que perjudicó a un paciente?» | La guía evita los casos clínicos individuales. Si alguien relata uno por iniciativa propia, no se registra de forma identificable; la hoja informativa explica los límites de la confidencialidad que impone la ley. |
+| «¿Podrían los resultados ayudar a un atacante?» | No se publicarán estimaciones de capacidad por instalación; la tesis informa de patrones regionales y del gradiente de distancia. Las debilidades concretas se comunicarán en privado a la organización afectada. |
+| «¿Quién puede detener el estudio?» | El supervisor, el comité y cualquier socio respecto de sus propios datos; los participantes respecto de sus propias entrevistas hasta la fecha de retirada indicada. |
+
+La solicitud se aprobó con una condición: el formulario de consentimiento debía indicar que el investigador no trabaja para ninguna organización participante y que no compartirá con ellas datos identificables.
+
+### 3.8 Errores comunes y límites
+
+- Elegir un diseño antes-después porque los datos son fáciles y después afirmar un efecto causal.
+- Usar una STI no controlada cuando es plausible un choque compartido (estación, epidemia, política).
+- Suponer tendencias paralelas sin inspeccionar las trayectorias previas al evento.
+- Realizar un cálculo de potencia con un tamaño de efecto elegido para que el estudio parezca adecuado, en lugar de un menor efecto de interés ligado a una decisión.
+- Creer que más datos de línea de base siempre reducen el sesgo; con una tendencia o un desplazamiento estacional, pueden aumentarlo.
+- Presentar una solicitud ética que trata los datos agregados de infraestructura como exentos de riesgo.
+- Aceptar una revisión por parte de un socio sin plazo y sin una cláusula de «sin veto sobre los hallazgos».
+- Montar la reproducibilidad al final; ediciones manuales de archivos de datos que ningún script registra.
+- Registrar un plan de preanálisis sin indicar qué datos se habían visto ya.
+
+El límite del diseño es que solo puede reducir, no eliminar, la dependencia de supuestos no comprobables. Una STI controlada solo es creíble si la región de comparación no sufrió un choque distinto al mismo tiempo; el capítulo 4 pone a prueba ese supuesto hasta donde lo permiten los datos.
+
+### Ejercicios — capítulo 3
+
+**EX015 — Elegir y defender un diseño.** *Objetivo:* seleccionar un diseño según los supuestos y los datos. *Entradas:* los diseños del §3.1.1; un escenario en el que un procesador regional de pagos sufrió una interrupción de tres días y usted dispone de recuentos semanales de transacciones con tarjeta para 40 categorías de comercios en la región afectada y en tres regiones no afectadas durante dos años. *Restricciones:* un diseño primario y un diseño de robustez. *Pasos:* (1) enuncie el estimando; (2) compare al menos tres diseños en cuanto a supuesto, datos y debilidad; (3) elija; (4) diga qué le haría abandonar la elección. *Evidencia esperada:* una página. *Rúbrica:* 3 = se reconoce la consecuencia de la resolución semanal para un evento de tres días, se enuncian supuestos de tendencias paralelas o de grupo de donantes comprobables y la condición de abandono es concreta; 2 = un diseño mal descrito; 1 = sin supuestos; 0 = nada.
+
+**EX016 — Análisis del diseño.** *Objetivo:* encontrar el menor efecto de desbordamiento que un diseño antes-después controlado puede detectar de forma fiable y replantear PI1 para que se ajuste a esa potencia. *Entradas:* código del laboratorio 3. *Restricciones:* sin conexión; mantener la semilla 11 y 400 simulaciones. *Pasos:* (1) ejecute el laboratorio y registre la salida; (2) añada un efecto verdadero de 0,20 e informe de la proporción señalada del diseño controlado para 28, 90 y 180 días de línea de base con el aumento estacional; (3) enuncie el menor efecto que el diseño controlado detecta en al menos alrededor de tres cuartas partes de los estudios con 180 días; (4) reescriba PI1 como una pregunta de estimación que este diseño pueda responder con honestidad. *Evidencia esperada:* salidas, una frase sobre los efectos detectables, PI1 revisada. *Rúbrica:* 3 = valores correctos, efecto detectable enunciado como alrededor del 20 % y no del 10 %, PI1 replanteada hacia la estimación; 2 = un valor erróneo; 1 = no ejecutado; 0 = nada.
+
+**EX017 — Riesgos de la solicitud ética.** *Objetivo:* identificar y mitigar riesgos. *Entradas:* un estudio que entrevista a operadores de una empresa de agua sobre una interrupción del sistema de desinfección en una empresa pequeña. *Restricciones:* usar los cuatro principios del Menlo Report; al menos cinco partes interesadas. *Pasos:* (1) enumere las partes interesadas y los riesgos; (2) proponga salvaguardas; (3) identifique el riesgo de sensibilidad de la información propio de una empresa pequeña; (4) redacte las dos frases de la hoja informativa sobre los límites de la confidencialidad. *Evidencia esperada:* tabla y texto redactado. *Rúbrica:* 3 = se reconoce el riesgo de identificación en una población pequeña, se aborda el riesgo de selección de objetivos por el público, las salvaguardas son concretas y el texto de la hoja informativa es honesto sobre los límites; 2 = un principio poco desarrollado; 1 = genérico; 0 = nada.
+
+**EX018 — Plan de gestión de datos.** *Objetivo:* clasificar por niveles y tratar los datos. *Entradas:* los activos del Estudio de Desbordamiento: recuentos diarios de los custodios; recuentos de Wexmoor de un panel público; grabaciones de entrevistas; transcripciones; libro de códigos; código de análisis; formularios de consentimiento; los umbrales de ayuda mutua de la coalición. *Restricciones:* los tres niveles del §3.5. *Pasos:* asigne a cada uno un nivel, almacenamiento, acceso, conservación y forma de compartirlo al final del proyecto. *Evidencia esperada:* tabla. *Rúbrica:* 3 = niveles coherentes con la sensibilidad (grabaciones y formularios de consentimiento confidenciales, recuentos de los custodios restringidos, código y libro de códigos públicos), datos del panel público tratados según sus condiciones, umbrales de ayuda mutua tratados como sensibles; 2 = uno mal asignado; 1 = todo público o todo confidencial; 0 = nada.
+
+**EX019 — Plan de preanálisis.** *Objetivo:* fijar el análisis antes de ver los resultados. *Entradas:* el §3.1.2 y los estimandos del capítulo 1. *Restricciones:* dos páginas como máximo. *Pasos:* especifique los estimandos, los resultados (primario y secundario), la comparación, las ventanas, el modelo, el método de intervalos, las comprobaciones de robustez, el tratamiento de la multiplicidad y la regla de desviaciones; indique qué datos se habían visto en el momento del registro. *Evidencia esperada:* plan. *Rúbrica:* 3 = cada elemento es lo bastante específico para que otro analista produzca la misma estimación, la regla de desviaciones es explícita y se divulga el acceso previo a los datos; 2 = un elemento vago; 1 = modelo sin especificar; 0 = nada.
+
+**EX020 — Auditoría de reproducibilidad.** *Objetivo:* comprobar si un proyecto puede volver a ejecutarse. *Entradas:* una carpeta con los laboratorios de los capítulos 1 y 3 y sus salidas. *Restricciones:* una segunda persona lo vuelve a ejecutar solo a partir del README. *Pasos:* (1) escriba el README; (2) registre el entorno; (3) pida a otra persona que lo vuelva a ejecutar; (4) enumere cada punto en el que tuvo que preguntarle algo y corríjalo. *Evidencia esperada:* README, archivo de entorno y una lista de incidencias con sus correcciones. *Rúbrica:* 3 = la nueva ejecución tuvo éxito con salidas idénticas y cada pregunta queda respondida en el README; 2 = queda un paso manual; 1 = las salidas difieren sin explicación; 0 = nada.
+
+### Síntesis del capítulo
+
+Un evento de infraestructura no planificado no ofrece aleatorización, así que todo diseño es una aproximación a un contrafactual, y su credibilidad descansa en supuestos que usted debe enunciar. Una serie temporal interrumpida controlada elimina los choques estacionales compartidos que un diseño antes-después o una STI no controlada atribuirían al evento; las entrevistas aportan el mecanismo. Asocie cada amenaza a la validez a un rasgo del diseño, o admítala. Simule el diseño antes de acceder a los datos: el laboratorio 3 muestra que un aumento estacional compartido hace que un diseño no controlado se equivoque con confianza —más aún con líneas de base más largas—, mientras que el diseño controlado es casi insesgado pero demasiado impreciso para detectar un efecto del 10 % en un solo SU. Plantee el estudio como estimación. La revisión ética debe abarcar a los entrevistados, a las organizaciones y al público, porque los hallazgos sobre la capacidad regional pueden ser sensibles. Los acuerdos, los niveles y un proyecto reproducible con un plan de preanálisis registrado van antes del primer archivo de datos.
+
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Siga estudiando — capítulo 03 de 08
+
+[← Capítulo 02](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 →](#ch-04)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-04"></a>
+
+## Capítulo 4 — Infraestructura crítica y seguridad sectorial: explicaciones en competencia
+
+### Resultados de aprendizaje y conexión
+
+Al final de este capítulo, el estudiante será capaz de:
+
+1. Aplicar el método de las hipótesis de trabajo múltiples: enumerar todas las explicaciones que podrían producir los datos observados antes de favorecer una.
+2. Derivar, para cada rival, una **predicción que difiere** de la predicción de la hipótesis principal, y elegir datos capaces de distinguirlas.
+3. Dibujar un diagrama causal para un evento de infraestructura, identificar los caminos que sesgarían una comparación y nombrar lo que debe medirse o resolverse mediante el diseño.
+4. Usar poblaciones de comparación, controles negativos, fechas placebo, gradientes dosis-respuesta y la alineación temporal como evidencia discriminante, y enunciar el supuesto en que se apoya cada uno.
+5. Analizar casos públicos documentados en los que una explicación cibernética compitió con otra explicación, y decir qué evidencia decidió entre ellas.
+6. Ejecutar un laboratorio en el que una comparación ingenua atribuye un aumento estacional a un incidente, y mostrar cómo una región de comparación y unas ventanas placebo lo ponen al descubierto.
+
+El capítulo 3 eligió un diseño; este capítulo lo ataca. La tabla de rivales construida aquí se convierte en la sección de robustez del capítulo 6, en las limitaciones del capítulo 7 y en las preguntas de los examinadores del capítulo 8.
+
+### 4.1 Hipótesis de trabajo múltiples e inferencia fuerte
+
+En 1890, el geólogo T. C. Chamberlin advirtió contra la «teoría dominante»: en cuanto un investigador tiene una explicación favorita, selecciona inconscientemente la evidencia para que encaje con ella. Su remedio era mantener a la vez **hipótesis de trabajo múltiples**, de modo que cada observación se sopese frente a todas ellas ([Chamberlin, reimpreso en 1965](https://doi.org/10.1126/science.148.3671.754)). [Platt (1964)](https://doi.org/10.1126/science.146.3642.347) convirtió esta idea en un procedimiento al que llamó **inferencia fuerte**: idear hipótesis alternativas; idear un experimento crucial cuyos resultados posibles excluyan una o más de ellas; llevarlo a cabo; repetir. Los investigadores de infraestructura rara vez realizan experimentos, pero la lógica sobrevive: para cada rival, encuentre una observación que el rival predice de forma distinta que su hipótesis.
+
+La regla práctica de este curso: **una explicación rival no está abordada hasta que usted haya enunciado qué predice que su hipótesis no predice, y lo haya comprobado.** «Controlamos la estacionalidad» no es una respuesta; «un aumento estacional aparecería también en Wexmoor, y la estimación es neta del cambio de Wexmoor» sí lo es.
+
+### 4.2 Qué predice la hipótesis del desbordamiento
+
+Antes de enumerar los rivales, escriba el patrón completo de predicciones de la hipótesis principal. Si el desvío de ambulancias de Kestrel desplazó carga a sus vecinos, entonces:
+
+1. **Momento:** las llegadas a los vecinos aumentan cuando el registro de desvíos de los SEM indica que comenzó el desvío, no antes, y vuelven a bajar cuando termina (quizá con una cola breve).
+2. **Lugar:** el aumento es mayor en los SU más cercanos (un gradiente de distancia).
+3. **Población:** no hay un aumento correspondiente en una región no afectada durante los mismos días.
+4. **Canal:** las llegadas en ambulancia aumentan más que las llegadas por cuenta propia, si el SU de Kestrel siguió abierto a quienes llegaban por su cuenta.
+5. **Mecanismo:** los registros de destino de los SEM muestran traslados que normalmente habrían ido a Kestrel yendo a los vecinos; el personal describe la redistribución.
+
+Un rival que reproduzca las cinco predicciones no puede distinguirse con estos datos. La mayoría de los rivales falla en al menos una, y ese fallo es la prueba.
+
+### 4.3 Rivales en el Estudio de Desbordamiento
+
+| Rival | Qué predeciría | Evidencia discriminante |
+|---|---|---|
+| R1 Repunte estacional de enfermedades respiratorias | Aumento en los SU de todas las regiones, que comienza con la estación y no con el desvío; sin gradiente de distancia; también aumentan las llegadas por cuenta propia | Cambio en la región de comparación; canal de llegadas por cuenta propia; fechas placebo en estaciones anteriores |
+| R2 Evento regional concurrente (ola de calor, concentración multitudinaria, cierre de carreteras) | Aumento ligado a las fechas y la geografía del evento | Calendarios de eventos; meteorología; datos viales; alineación temporal |
+| R3 Cambio de política de los SEM al mismo tiempo | Cambio de destinos que comienza en la fecha de la política y que puede durar más allá del desvío | Registro de políticas de los SEM; entrevistas; persistencia después del día 20 |
+| R4 Cambio en la medición (nuevo sistema de registro en un vecino; pérdida de datos propia de Kestrel) | Escalón en la serie que coincide con el cambio de sistema; posiblemente en todos los resultados de ese sistema | Preguntas a los socios; comprobación de discontinuidades en resultados no relacionados del mismo sistema |
+| R5 Regresión a la media | Evento fechado por un valor inusual del resultado; descenso posterior hacia la media | Día 0 definido a partir del registro de desvíos, con independencia de los resultados ([Barnett et al., 2005](https://doi.org/10.1093/ije/dyh299)) |
+| R6 Anticipación | Cambio antes del día 0 (rumores, interrupciones parciales) | Inspeccionar los días −14 a −1; entrevistas sobre la fase inicial del incidente |
+| R7 Azar | Estimaciones dentro del rango de los eventos ficticios en periodos normales | Distribución de placebos en el tiempo; intervalos |
+| R8 Choque distinto en la región de comparación | Wexmoor cambia por sus propias razones y sesga la diferencia | Comparar cada SU de Wexmoor por separado; comprobar los eventos propios de Wexmoor; unidades de comparación alternativas (capítulo 8) |
+| R9 Desvíos no cibernéticos en Kestrel en otros momentos | Aumentos similares en otros episodios de desvío | Analizar los desvíos no cibernéticos como comprobación del mecanismo (una fortaleza, no una amenaza, si el patrón es similar) |
+
+Observe el papel de R9. Si los desvíos ordinarios de Kestrel por saturación también desplazan carga a Alder Point, eso respalda el mecanismo y sugiere que lo que importa es el **desvío**, no el **ransomware**, lo que estrecha la afirmación con honestidad. La exposición del estudio es el «desvío inducido por ransomware»; si un desvío por ransomware difiere de uno ordinario (más largo, menos previsible, con los sistemas de información caídos en el hospital que desvía) es otra pregunta.
+
+### 4.4 Diagramas causales
+
+Un **diagrama causal** (grafo acíclico dirigido, DAG) dibuja las variables como nodos y los efectos causales supuestos como flechas. Su valor está en que hace visibles los supuestos y le dice qué comparaciones quedan sesgadas por qué caminos ([Greenland, Pearl and Robins, 1999](https://doi.org/10.1097/00001648-199901000-00008); [Hernán and Robins, *Causal Inference: What If*](https://miguelhernan.org/whatifbook)). En el Estudio de Desbordamiento, piense en la «exposición» como *estar en el periodo de desvío* y en el resultado como *las llegadas a Alder Point ese día*:
+
+```text
+Attack ──► Diversion ──► EMS destination choices ──► Arrivals at AP
+                                                       ▲   ▲
+Calendar time ──► Season ──────────────────────────────┘   │
+      │                                                     │
+      └──────────► (period: before vs during) ── Trend ─────┘
+
+Season ──► Arrivals in Wexmoor          Distance (AP, BF, CG) modifies EMS destination choices
+```
+
+Descripción textual del diagrama: el ataque causa el desvío, que cambia las elecciones de destino de los SEM, que aumentan las llegadas a Alder Point. El tiempo de calendario determina tanto si un día está en el periodo de desvío como la estación; la estación también aumenta las llegadas a Alder Point y en Wexmoor. La distancia modifica la intensidad con que el desvío cambia los destinos en cada vecino.
+
+El diagrama muestra por qué una comparación antes-después está sesgada: «antes frente a durante» está ligado al tiempo de calendario, y el tiempo de calendario llega al resultado a través de la estación, un **camino por la puerta trasera** desde el periodo de exposición hasta el resultado que no pasa por el desvío. Ajustar directamente por la estación es imposible (no se mide con precisión), pero las llegadas de Wexmoor las causa la estación y no el desvío, así que restar el cambio de Wexmoor elimina el camino estacional *si* la estación afecta por igual a ambas regiones. Ese «si» es el supuesto de tendencias paralelas del capítulo 3, ahora visible como un supuesto sobre flechas.
+
+### 4.5 Herramientas discriminantes y sus supuestos
+
+| Herramienta | Cómo funciona | Supuesto en que se apoya |
+|---|---|---|
+| **Población de comparación** | Una población no expuesta comparte las causas rivales; su cambio estima la contribución de los rivales | Comparte los rivales por igual y no tiene ningún rival propio (R8) |
+| **Población de control negativo** | Una población que *no puede* verse afectada por la exposición; cualquier «efecto» en ella revela un sesgo del método ([Lipsitch et al., 2010](https://doi.org/10.1097/EDE.0b013e3181d61eeb)) | Está sujeta a los mismos sesgos que la población tratada |
+| **Resultado de control negativo** | Un resultado que la exposición no puede afectar pero los factores de confusión sí; un «efecto» sobre él señala confusión (misma fuente) | La exposición realmente no puede afectarlo: argumentarlo, no suponerlo |
+| **Placebo en el tiempo** | Aplicar el análisis a fechas de evento ficticias en las que no ocurrió nada; la estimación real debería ser inusual entre ellas | Las ventanas ficticias se parecen a la real en estación y ruido |
+| **Dosis-respuesta** | Una exposición mayor (SU más cercano) debería producir un efecto mayor | La distancia es un indicador válido de la intensidad de la exposición |
+| **Alineación temporal** | El cambio debería comenzar y terminar con la exposición tal como se registra con independencia del resultado | Existen registros independientes de la exposición y son exactos |
+| **Evidencia del mecanismo** | Los registros de destino y las entrevistas muestran la vía | Los registros están completos; los relatos no están moldeados por la retrospectiva |
+
+Dos advertencias. Primera: los controles negativos necesitan argumentos, no etiquetas. Las llegadas por cuenta propia a Alder Point parecen un resultado de control negativo para un desvío de *ambulancias*, pero si los pacientes que habrían acudido por su cuenta a Kestrel también fueron a otro lugar, esas llegadas están parcialmente expuestas; úselas como comparación de canal (predicción 4), no como control negativo puro. Segunda: las entrevistas realizadas después de un incidente están sujetas al **sesgo retrospectivo**: conocer el resultado cambia el juicio de las personas sobre cuán previsible era ([Fischhoff, 1975](https://doi.org/10.1037/0096-1523.1.3.288)). Pregunte por lo que se sabía y se decidió en cada momento, anclado a registros fechados, en lugar de «qué salió mal».
+
+### 4.6 Explicaciones en competencia en casos documentados
+
+Los incidentes públicos de infraestructura muestran una y otra vez una explicación cibernética que compite con otra. Los casos siguientes se describen solo al nivel que informan sus fuentes públicas.
+
+| Caso | Explicaciones en competencia | Evidencia que discriminó, según la información pública | Lección para el diseño de la investigación |
+|---|---|---|---|
+| Planta de agua de Oldsmar, 2021 | Intrusión remota frente a acción de un empleado | Según el exadministrador de la ciudad, el FBI no encontró evidencia de acceso externo; un portavoz del FBI dijo que no podía confirmar una intrusión dirigida ([WUSF, 2023](https://www.wusf.org/local-state/2023-04-13/official-hack-oldsmar-city-water-treatment-plant-2021)); el aviso [AA21-042A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa21-042a) de CISA había informado de un compromiso | Codificar las causas de los incidentes con su estado y su fuente; un aviso no es una conclusión definitiva |
+| Hospital de Düsseldorf, 2020 | Retraso del tratamiento causado por el ataque frente a la enfermedad de base del paciente | La fiscalía concluyó tras la autopsia que el retraso no fue determinante ([MIT Technology Review, 2020](https://www.technologyreview.com/2020/11/12/1012015/ransomware-did-not-kill-a-german-hospital-patient/)) | Las afirmaciones sobre resultados individuales necesitan un contrafactual para el individuo; los diseños a nivel de población plantean una pregunta distinta |
+| Colonial Pipeline, 2021 | Oleoducto detenido porque se atacaron los sistemas operativos frente a una parada preventiva tras un ataque de ransomware contra la empresa | El DOE describe que la empresa «cerró de forma proactiva su sistema de oleoductos en respuesta a un ataque de ransomware» ([DOE](https://www.energy.gov/ceser/colonial-pipeline-cyber-incident)) | Una consecuencia puede deberse a la *respuesta* a un ataque; un estudio debe modelar las decisiones, no solo los compromisos |
+| Interrupción mundial de julio de 2024 | Ciberataque frente a actualización de software defectuosa | Microsoft atribuyó la interrupción a una actualización defectuosa de un software de seguridad en 8,5 millones de dispositivos ([Microsoft, 2024](https://blogs.microsoft.com/blog/2024/07/20/helping-our-customers-through-the-crowdstrike-outage/)) | Los fallos no maliciosos producen consecuencias de apariencia cibernética; son a la vez rivales y comparaciones útiles |
+
+La fila de Colonial merece énfasis para el Estudio de Desbordamiento. El desvío de Kestrel fue una **decisión** tomada en respuesta al ataque, no una consecuencia mecánica de este. El mismo ataque en un hospital con otra dirección, otros procedimientos u otra información podría haber llevado a un desvío más corto o a ninguno. Por eso, la exposición del estudio es el desvío y su afirmación trata de las consecuencias del desvío; no debe leerse como una estimación del efecto del ransomware en sí.
+
+### 4.7 Ejemplo resuelto: la tabla de rivales en la propuesta (sintético)
+
+El primer párrafo sobre rivales del candidato decía: *«Los posibles factores de confusión, como la estacionalidad, se controlaron mediante el uso de una región de comparación».* El supervisor pidió la predicción distintiva y la prueba de cada rival. La sección revisada de la propuesta:
+
+- **R1 Estación.** Predice también un aumento en Wexmoor. *Prueba:* informar del propio cambio antes/después de Wexmoor (una población de control negativo); estimar los efectos netos de Wexmoor; ejecutar ventanas placebo. *Si falla:* si el cambio de Wexmoor es tan grande como el de Alder Point, la estimación del desbordamiento es cercana a cero y el estudio lo dice.
+- **R3 Política de los SEM.** Predice un cambio que comienza en la fecha de una política y persiste. *Prueba:* solicitar el registro de políticas de los SEM para los días −60 a +90; preguntar a los supervisores de los SEM (PI3). *Si falla:* informar del cambio de política como cointervención y estrechar la afirmación.
+- **R4 Medición.** Predice un escalón en todos los resultados del sistema de Alder Point. *Prueba:* preguntar al custodio por cambios de sistema; inspeccionar si las llegadas por cuenta propia y los tiempos de espera muestran el mismo escalón.
+- **R6 Anticipación.** Predice un cambio antes del día 0. *Prueba:* inspeccionar los días −14 a −1 en el gráfico de estudio de eventos; preguntar a los entrevistados cuándo supieron del ataque.
+- **R7 Azar.** *Prueba:* la posición de la estimación real entre las ventanas placebo; intervalos.
+- **R8 Choque en la comparación.** *Prueba:* estimar frente a cada SU de Wexmoor por separado y agrupados (la curva de especificaciones del capítulo 8); preguntar al custodio de Wexmoor por eventos.
+
+Un rival que el estudio no puede poner a prueba —por ejemplo, un cambio no registrado en la forma en que se despachaban las propias ambulancias de Kestrel— va a las limitaciones con su dirección probable (capítulo 7).
+
+### 4.8 Actividad práctica: la estación que parecía desbordamiento
+
+Guarde el archivo siguiente como `lab4_data.py`; los laboratorios 6 y 8 lo importan. Genera los datos sintéticos de Tamsin Valley y Wexmoor para los días −180 a +89 con variación por día de la semana, variación adicional de un día a otro, dos festivos regionales y una estación respiratoria que empieza a subir cerca del día 0 en ambas regiones. Los efectos verdaderos de desbordamiento están fijados en el diccionario `TRUE`: +22 % en Alder Point durante los días 0–20 (+5 % en los días 21–34), +10 % en Brookfield (+2 %) y ninguno en Calloway. Después, el script compara una estimación ingenua antes-después (28 días antes frente a los días 0–20) con el mismo cambio expresado en relación con Wexmoor, y ejecuta la comparación ingenua en 19 ventanas ficticias de 21 días en la línea de base.
+
+```python
+# Lab 4 - competing explanations for a post-incident rise in ambulance arrivals (offline, standard library only)
+# Save as lab4_data.py: Labs 6 and 8 import make_region() from it.
+# Synthetic Tamsin Valley (treated region) and Wexmoor (comparison region); day 0 = start of the
+# 21-day ambulance diversion at the attacked Kestrel hospitals. Days -180..89.
+import math, random
+
+DOW = [1.08, 1.02, 1.00, 0.98, 1.00, 0.96, 0.96]
+BASE = {"AP": 40, "BF": 30, "CG": 22, "W1": 35, "W2": 28}           # ambulance arrivals per day
+DIST_KM = {"AP": 6, "BF": 14, "CG": 38}                            # distance from Kestrel
+TRUE = {"AP": (0.22, 0.05), "BF": (0.10, 0.02), "CG": (0.0, 0.0)}  # (days 0-20, days 21-34)
+HOLIDAYS = {-100, 45}                                              # regional holidays, both regions
+DAYS = range(-180, 90)
+
+def poisson(rng, lam):
+    L, k, p = math.exp(-lam), 0, 1.0
+    while True:
+        p *= rng.random()
+        if p <= L:
+            return k
+        k += 1
+
+def season(t, amp):
+    return 1 + amp / (1 + math.exp(-(t - 10) / 6))
+
+def effect(site, t):
+    during, tail = TRUE.get(site, (0.0, 0.0))
+    return during if 0 <= t <= 20 else tail if 21 <= t <= 34 else 0.0
+
+def make_region(seed=2026):
+    rng = random.Random(seed)
+    data = {}
+    for site, base in BASE.items():
+        amp = 0.18 if site in TRUE else 0.17
+        series = {}
+        for t in DAYS:
+            lam = base * DOW[t % 7] * season(t, amp) * (1 + effect(site, t))
+            lam *= (0.85 if t in HOLIDAYS else 1.0) * rng.gammavariate(60, 1 / 60)
+            series[t] = poisson(rng, lam)
+        data[site] = series
+    wait = {}                                                     # AP median minutes to provider
+    for t in DAYS:
+        wait[t] = max(5.0, rng.gauss(28 + (4 if 0 <= t <= 20 else 0) + 3 * (season(t, 0.18) - 1) / 0.18, 6))
+    data["AP_wait"] = wait
+    return data
+
+def mean(xs):
+    xs = list(xs)
+    return sum(xs) / len(xs)
+
+def naive(series, pre=(-28, -1), ev=(0, 20)):
+    return mean(series[t] for t in range(pre[0], pre[1] + 1)), mean(series[t] for t in range(ev[0], ev[1] + 1))
+
+if __name__ == "__main__":
+    d = make_region()
+    comp = {t: d["W1"][t] + d["W2"][t] for t in DAYS}
+    print("site  km  pre28  event  naive_change  relative_to_Wexmoor")
+    cp, ce = naive(comp)
+    for s in ("AP", "BF", "CG", "W1", "W2"):
+        p, e = naive(d[s])
+        rel = (e / p) / (ce / cp) - 1
+        km = DIST_KM.get(s, "-")
+        print(f"{s:4}  {str(km):>2}  {p:5.1f}  {e:5.1f}  {e / p - 1:+12.3f}  {rel:+19.3f}")
+    print(f"Wexmoor pooled pre/post change: {ce / cp - 1:+.3f}  (no exposure: a negative-control population)")
+    # placebo-in-time: the same naive comparison at 21-day windows that end before day 0
+    pl = []
+    for start in range(-150, -21, 7):
+        p, e = naive(d["AP"], pre=(start - 28, start - 1), ev=(start, start + 20))
+        pl.append(e / p - 1)
+    print(f"AP naive placebo windows: n={len(pl)} min={min(pl):+.3f} max={max(pl):+.3f}")
+```
+
+Salida esperada:
+
+```text
+site  km  pre28  event  naive_change  relative_to_Wexmoor
+AP     6   38.4   51.1        +0.330               +0.246
+BF    14   30.4   33.8        +0.112               +0.042
+CG    38   22.6   24.5        +0.081               +0.013
+W1     -   33.5   37.0        +0.106               +0.036
+W2     -   28.1   28.7        +0.022               -0.043
+Wexmoor pooled pre/post change: +0.067  (no exposure: a negative-control population)
+AP naive placebo windows: n=19 min=-0.064 max=+0.091
+```
+
+Lea la salida como lo haría un seminario:
+
+- **Las estimaciones ingenuas exageran en todas partes.** Alder Point parece subir un 33,0 % cuando la verdad del generador es el 22 %; Calloway, a 38 km y realmente no afectado, parece subir un 8,1 %.
+- **La población de control negativo pone al descubierto el sesgo.** Wexmoor, que no puede verse afectado por el desvío de Kestrel, «subió» un 6,7 % (W1, un 10,6 %). Cualquier método que encuentre un efecto en Wexmoor está midiendo algo distinto del desbordamiento: aquí, la estación.
+- **En relación con Wexmoor, aparece un gradiente:** +24,6 % a 6 km, +4,2 % a 14 km y +1,3 % a 38 km. La estimación de Alder Point se acerca a la verdad. La de Brookfield es menos de la mitad de su 10 % verdadero: las estimaciones de un solo SU son ruidosas, como advirtió el laboratorio 3.
+- **Las ventanas placebo calibran el método ingenuo.** En 19 ventanas ficticias durante periodos ordinarios de la línea de base, el cambio ingenuo en Alder Point osciló entre −6,4 % y +9,1 %. Un cambio de +33 % queda muy fuera de ese rango, así que el azar (R7) es una explicación improbable para Alder Point; pero las ventanas placebo están en una línea de base sin estación, así que no ponen a prueba R1. Por eso se necesitan ambas herramientas.
+
+Las cifras relativas a Wexmoor de este laboratorio son cocientes toscos de medias. El capítulo 6 las sustituye por una serie temporal interrumpida controlada que también modela la tendencia y da intervalos robustos a la autocorrelación.
+
+### 4.9 Errores comunes y límites
+
+- Nombrar un rival y declararlo «controlado» sin enunciar su predicción distintiva.
+- Tratar una región de comparación como automáticamente válida; las tendencias paralelas son un supuesto que puede fallar.
+- Etiquetar un resultado como control negativo sin argumentar que la exposición no puede afectarlo.
+- Usar ventanas placebo de otra estación y tratarlas como una prueba de la confusión estacional.
+- Entrevistar preguntando «qué salió mal» y recibir retrospectiva.
+- Afirmar el efecto del «ransomware» cuando la exposición fue una decisión humana tomada en respuesta a él.
+- Repetir el primer relato público de un caso (Oldsmar, Düsseldorf) como si estuviera zanjado.
+- Detener la búsqueda de rivales cuando se ha abordado el primero.
+
+El límite de las herramientas de este capítulo es que cada una se apoya en un supuesto que no puede comprobarse por completo con los mismos datos. La defensa frente a ese límite es la triangulación: cuando la evidencia de momento, lugar, población, canal y mecanismo apunta en la misma dirección, los rivales restantes deben explicarla toda a la vez.
+
+### Ejercicios — capítulo 4
+
+**EX021 — Tabla de rivales.** *Objetivo:* enumerar rivales con predicciones distintivas. *Entradas:* un hallazgo sintético: «tras un ataque de ransomware contra una cadena regional de farmacias, las dispensaciones de recetas en farmacias independientes situadas a menos de 10 km aumentaron un 18 % en las dos semanas siguientes». *Restricciones:* al menos seis rivales. *Pasos:* (1) enuncie las cinco predicciones de la hipótesis principal (momento, lugar, población, canal, mecanismo); (2) para cada rival, enuncie qué predice de forma distinta; (3) nombre los datos que discriminarían. *Evidencia esperada:* tabla. *Rúbrica:* 3 = los rivales incluyen la estación, los eventos concurrentes (por ejemplo, cambios de las aseguradoras), la medición y un choque en la región de comparación, cada uno con una predicción distintiva y comprobable; 2 = un rival sin predicción distintiva; 1 = lista genérica; 0 = nada.
+
+**EX022 — Longitud de la línea de base y estimación ingenua.** *Objetivo:* mostrar por qué un periodo previo más largo desplaza la estimación ingenua antes-después mientras que la estimación relativa a Wexmoor apenas se mueve. *Entradas:* código del laboratorio 4. *Restricciones:* sin conexión; no cambiar la semilla. *Pasos:* (1) ejecute el laboratorio y registre la salida; (2) cambie la línea de base ingenua de 28 a 56 días (`pre=(-56, -1)`) para todos los centros, incluida la comparación agrupada, e informe de los cambios ingenuos y relativos a Wexmoor; (3) explique por qué las estimaciones ingenuas cambiaron pero las relativas cambiaron poco. *Evidencia esperada:* salidas y un párrafo. *Rúbrica:* 3 = valores correctos, explicación de que la estación llega a ambas regiones, de modo que el cociente anula la mayor parte de su efecto, mientras que la estimación ingenua depende de cuánta línea de base anterior a la estación incluye; 2 = un valor erróneo; 1 = no ejecutado; 0 = nada.
+
+**EX023 — Diagrama causal.** *Objetivo:* explicitar los supuestos. *Entradas:* el Estudio de Desbordamiento con un hecho añadido: durante el desvío, el condado abrió también una carpa temporal de atención urgente cerca de Brookfield. *Restricciones:* DAG textual o dibujado con una descripción textual. *Pasos:* (1) añada la carpa al diagrama; (2) identifique cómo sesga la estimación de Brookfield y en qué dirección; (3) proponga datos o un diseño para abordarlo; (4) indique si amenaza la estimación de Alder Point. *Evidencia esperada:* diagrama, descripción y párrafo. *Rúbrica:* 3 = la carpa aparece como una cointervención que afecta a las llegadas de Brookfield (probablemente reduce las llegadas por cuenta propia y quizá las de ambulancia), la dirección está razonada, la respuesta es concreta (análisis por canal, datos de asistencia a la carpa, sensibilidad) y Alder Point se evalúa por distancia y área de influencia; 2 = dirección sin enunciar; 1 = diagrama sin razonamiento; 0 = nada.
+
+**EX024 — Controles negativos.** *Objetivo:* argumentar, no etiquetar. *Entradas:* controles negativos candidatos: (a) llegadas en ambulancia a Wexmoor; (b) llegadas por cuenta propia a Alder Point; (c) infusiones ambulatorias programadas en Alder Point; (d) llegadas en ambulancia a Calloway. *Restricciones:* usar la lógica de Lipsitch et al. *Pasos:* para cada uno, indique si es una población o un resultado de control negativo, si la exposición podría afectarlo, si comparte los factores de confusión y su veredicto. *Evidencia esperada:* tabla. *Rúbrica:* 3 = (a) aceptado como población con la salvedad de la estación paralela, (b) rechazado como control negativo puro pero útil para el canal, (c) no afectado por el desvío pero probablemente tampoco por la estación, así que débil, (d) rechazado porque Calloway forma parte del gradiente de distancia de la hipótesis; 2 = un veredicto sin justificar; 1 = solo etiquetas; 0 = nada.
+
+**EX025 — Una explicación en competencia documentada.** *Objetivo:* analizar un caso público. *Entradas:* las fuentes sobre Düsseldorf del §4.6 y del §2.5. *Restricciones:* no especular más allá de las fuentes. *Pasos:* (1) enuncie las dos explicaciones en competencia; (2) enuncie qué evidencia decidió entre ellas, según la información publicada; (3) explique por qué una afirmación sobre una muerte individual y una afirmación a nivel de población sobre el desvío y los resultados requieren diseños distintos; (4) proponga una pregunta a nivel de población que pueda estudiarse de forma ética. *Evidencia esperada:* una página. *Rúbrica:* 3 = explicaciones enunciadas, conclusión basada en la autopsia comunicada con su fuente, contrafactual individual distinguido del poblacional, diseño poblacional ético propuesto (por ejemplo, urgencias dependientes del tiempo durante los desvíos con datos agregados de registros); 2 = falta un elemento; 1 = especulación; 0 = nada.
+
+**EX026 — La decisión como exposición.** *Objetivo:* separar el ataque de la respuesta. *Entradas:* la fila de Colonial Pipeline del §4.6 y el desvío de Kestrel. *Restricciones:* media página. *Pasos:* (1) explique por qué la exposición del Estudio de Desbordamiento es el desvío; (2) enumere dos formas en que el mismo ataque podría haber producido un desvío distinto; (3) reescriba la afirmación del estudio para que no exagere el papel del ransomware; (4) proponga una pregunta sobre las *decisiones* de desvío para un estudio posterior. *Evidencia esperada:* párrafo y afirmación. *Rúbrica:* 3 = se articula la respuesta como causa, decisiones alternativas plausibles, afirmación acotada al desvío, pregunta sobre decisiones respondible; 2 = la afirmación sigue tratando del ransomware en general; 1 = confunde el ataque y el desvío; 0 = nada.
+
+### Síntesis del capítulo
+
+Mantenga varias explicaciones a la vez y busque observaciones que las separen. Escriba el patrón completo de la hipótesis principal —momento, lugar, población, canal, mecanismo— y exija a cada rival que lo explique entero. Un diagrama causal muestra por qué una comparación antes-después está sesgada por la estación y qué supuesto necesita una región de comparación. Las poblaciones de comparación, los controles negativos, las fechas placebo, la dosis-respuesta y la alineación temporal discriminan cada uno bajo un supuesto que usted debe argumentar. Los casos públicos muestran explicaciones cibernéticas que compiten con errores de operadores, enfermedades de base, decisiones preventivas y actualizaciones defectuosas; la lección es registrar el estado y modelar las decisiones. El laboratorio 4 muestra un método ingenuo que encuentra «desbordamiento» a 38 km y en una región no afectada, y una región de comparación que revela un gradiente cercano a la verdad.
+
+<!-- cyberabc:chapter-navigation:start ch-04 -->
+### Siga estudiando — capítulo 04 de 08
+
+[← Capítulo 03](#ch-03) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 05 →](../../en/book/MANUSCRIPT.md#ch-05)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -609,6 +1144,62 @@ La rúbrica premia reconocer «ambos» cuando la sustitución sigue a un fallo d
 **EX013 — Contradicción aparente.** Dimensiones de la matriz: unidades (*trusts* infectados frente a vecinos no afectados), dirección esperada (la actividad cae frente a sube), sistema de salud y año (NHS 2017 frente a San Diego 2021), duración (alrededor de una semana frente a un mes), resultados (ingresos, atenciones, cancelaciones, muertes en A&E frente a censo, llegadas, esperas, indicadores de ictus), diseño (datos administrativos con referencia y comparación infectados/no infectados frente a antes-después dentro de los vecinos). No se contradicen: miden extremos opuestos de la misma transferencia de carga. Un estudio combinado mediría tanto la actividad perdida por la organización atacada como la actividad ganada por los vecinos en el mismo evento, con una región de comparación no afectada, de modo que puedan estimarse juntos el efecto regional neto y su redistribución.
 
 **EX014 — Presentación en el seminario.** Se evalúa con la rúbrica. Una entrega de máxima calificación resume el artículo en sus propios términos antes de la crítica; enuncia los rivales como preguntas («¿Podría el cambio de abril a mayo reflejar la estación?»); y usa los tres registros en las respuestas preparadas, por ejemplo: «El artículo dice que la organización atacada gestionaba alrededor de una cuarta parte de las altas de la región. Infiero que la retirada de una organización más pequeña desplazaría menos carga. No sé en qué diferiría el resultado en una región con muchos proveedores; haría falta una comparación entre varias regiones». La reflexión nombra un cambio concreto en la lectura provocado por los pares.
+
+### Capítulo 3: EX015–EX020
+
+**EX015 — Elegir y defender un diseño.** Estimando: variación porcentual de las transacciones semanales con tarjeta por categoría de comercio en la región afectada durante la semana de la interrupción, en relación con el contrafactual derivado de la propia tendencia de la región y de las regiones no afectadas. Comparación: STI no controlada (falla si esa semana se produce un choque nacional: festivos, días de pago); STI controlada/diferencias en diferencias con tres regiones no afectadas (necesita tendencias paralelas; comprobables con dos años de datos semanales); control sintético con tres regiones donantes × 40 categorías (posible a nivel de categoría, pero tres regiones donantes son un grupo escaso). Elección: STI controlada por categoría, con un control sintético como robustez. Idea clave para la máxima calificación: la resolución semanal diluye una interrupción de tres días —la interrupción ocupa como mucho tres séptimos de una semana—, así que los efectos se atenuarán y la recuperación dentro de la misma semana puede compensar parte de la caída; pida datos diarios antes de comprometerse. Abandono: los cocientes del periodo previo entre la región afectada y las de comparación muestran tendencias divergentes o rupturas que el modelo no puede absorber.
+
+**EX016 — Análisis del diseño.** (1) Salida como en el §3.3.3. (2) Con un efecto verdadero de 0,20 bajo el aumento estacional, las estimaciones medias del diseño controlado son alrededor de +0,196, +0,202 y +0,199 y sus proporciones señaladas son 0,56 (28 días), 0,73 (90 días) y 0,77 (180 días); el diseño no controlado señala todos los estudios simulados (1,00), pero sus estimaciones medias rondan +0,30, sesgadas al alza por la estación. (3) El diseño controlado detecta un efecto de alrededor del 20 % en aproximadamente tres cuartas partes de los estudios con 180 días de línea de base; no puede detectar de forma fiable el 10 %. (4) PI1 revisada: «¿Cuánto cambiaron las llegadas diarias de ambulancias a cada SU vecino durante el desvío en relación con el contrafactual ajustado por la comparación, y qué cambios pueden descartar los datos?». La rúbrica premia pasar de un planteamiento de prueba a uno de estimación y enunciar con honestidad el efecto detectable.
+
+**EX017 — Riesgos de la solicitud ética.** Partes interesadas: los operadores entrevistados; la empresa de agua; sus clientes; el organismo estatal competente; las empresas vecinas que comparten personal o interconexiones; el investigador. Riesgos y salvaguardas por principio del Menlo Report: *respeto por las personas* — una empresa pequeña puede tener dos o tres operadores, así que cualquier descripción de función los identifica; comunicar las funciones solo a nivel sectorial, revisar las citas, permitir la retirada; *beneficencia* — publicar que la vigilancia de la desinfección de una empresa pequeña falló durante horas podría revelar una debilidad que otros podrían explotar; omitir la identidad de la instalación y los detalles técnicos y compartir los pormenores en privado con la empresa; *justicia* — evitar concentrar la carga de la investigación en empresas pequeñas con pocos recursos que no pueden negarse ante un investigador vinculado al regulador; *ley e interés público* — cumplir las obligaciones de confidencialidad que existan sobre la información de seguridad de las empresas de agua y las normas de la institución sobre investigación con personas. Texto de la hoja informativa: «No usaremos su nombre ni el de su empresa en nada de lo que publiquemos, y eliminaremos los detalles que pudieran identificarle. Como pocas personas desempeñan su trabajo en esta región, alguien que conozca bien la empresa podría aun así reconocerle, y no podemos descartarlo por completo».
+
+**EX018 — Plan de gestión de datos.**
+
+| Activo | Nivel | Almacenamiento y acceso | Conservación | Forma de compartir al final del proyecto |
+|---|---|---|---|---|
+| Recuentos diarios de los custodios | Restringido | Almacenamiento institucional cifrado; candidato y supervisor | Según el acuerdo (por ejemplo, cinco años), y después destrucción | No se comparten; acceso a través de los custodios |
+| Recuentos del panel de Wexmoor | Fuente pública, condiciones registradas | Almacenamiento del proyecto con fecha de captura | Según las condiciones del panel | Se comparten si las condiciones permiten la redistribución; si no, se comparte el método de captura |
+| Grabaciones de entrevistas | Confidencial | Cifradas, separadas de los datos | Destruidas tras la transcripción y la verificación | Nunca |
+| Transcripciones desidentificadas | Confidencial (restringido como mucho) | Cifradas | Según el consentimiento | No se comparten; solo citas en la tesis |
+| Libro de códigos (datos y cualitativo) | Público | Repositorio | Permanente | Se comparte |
+| Código de análisis y datos de prueba sintéticos | Público | Repositorio | Permanente | Se comparten con una licencia abierta |
+| Formularios de consentimiento | Confidencial | Bajo llave o cifrados, separados | Según la política institucional | Nunca |
+| Umbrales de ayuda mutua de la coalición | Restringido (sensible) | Cifrados | Según el acuerdo | No se comparten; solo se describen en términos generales |
+
+**EX019 — Plan de preanálisis.** Un plan de máxima calificación fija: los estimandos (EX007); el resultado primario (llegadas diarias de ambulancias tal como se definen en los diccionarios de datos de los custodios) y el secundario (mediana diaria de minutos desde la llegada hasta el primer clínico); la comparación (SU de Wexmoor agrupados); las ventanas (días −180 a +89; desvío 0–20; posterior 21–89); el modelo (§6.2, cociente logarítmico con desplazamiento de 0,5, tendencia lineal, dos escalones); los intervalos (Newey–West, retardo 7; retardos 0 y 14 como sensibilidad); la robustez (cada SU de Wexmoor por separado; líneas de base de 90 y 120 días; ventanas del evento de 14 y 28 días; festivos excluidos; ventanas placebo); la multiplicidad (un resultado primario; tres centros comunicados juntos; el resultado secundario descrito como tal); las desviaciones (registro fechado con el motivo y si se habían visto los resultados); el acceso previo a los datos («un extracto de 35 días de línea de base de Alder Point, anterior al día −60, se examinó solo para comprobar su completitud»).
+
+**EX020 — Auditoría de reproducibilidad.** Se evalúa con la rúbrica. Incidencias típicas que encuentra una segunda persona: el README no dice que el laboratorio 6 necesita el laboratorio 4 guardado como `lab4_data.py` en la misma carpeta; no se registra la versión de Python; una salida se produjo con una semilla modificada; el laboratorio 3 tarda varios segundos y parece colgado. Correcciones: orden de ejecución y nombres de archivo explícitos; `python3 --version` registrado en `environment.txt`; semillas indicadas junto a cada orden; tiempos de ejecución esperados indicados.
+
+### Capítulo 4: EX021–EX026
+
+**EX021 — Tabla de rivales (ejemplo de las farmacias).** Predicciones de la hipótesis principal: las dispensaciones aumentan en las independientes cuando empieza la interrupción de la cadena y vuelven a bajar cuando termina; el aumento es mayor cerca de las tiendas de la cadena; no hay aumento en zonas comparables no afectadas; el canal son los traslados de nuevos clientes (pacientes nuevos para la farmacia independiente) y no que los pacientes existentes retiren más; los farmacéuticos informan de traslados. Rivales: *estación* (recetas de la temporada respiratoria: predice aumentos en todas partes; se comprueba con una zona de comparación); *cambio de aseguradora o de formulario esa semana* (predice cambios ligados a fármacos o planes concretos; se comprueba por clase de fármaco y pagador); *medición* (un atasco del sistema de reclamaciones que libera dispensaciones retrasadas: predice un pico de dispensaciones fechadas antes pero procesadas tarde; se comprueba comparando la fecha de dispensación con la de procesamiento); *choque en la comparación* (se comprueba cada zona de comparación por separado); *cierres de tiendas de la cadena no relacionados con el ataque* (se comprueban los registros por tienda); *azar* (semanas placebo). La máxima calificación exige predicciones distintivas, no una lista de temas.
+
+**EX022 — Longitud de la línea de base y estimación ingenua.** Con `pre=(-56, -1)` para todos los centros y para la comparación agrupada:
+
+| Centro | Previo (56 días) | Evento | Cambio ingenuo | Relativo a Wexmoor |
+|---|---:|---:|---:|---:|
+| AP | 39.2 | 51.1 | +0.302 | +0.235 |
+| BF | 30.2 | 33.8 | +0.118 | +0.060 |
+| CG | 22.9 | 24.5 | +0.069 | +0.014 |
+| W1 | 35.3 | 37.0 | +0.050 | −0.004 |
+| W2 | 27.1 | 28.7 | +0.059 | +0.005 |
+
+El cambio de Wexmoor agrupado es +0.054. Las estimaciones ingenuas cambian (Alder Point pasa de +33,0 % a +30,2 %) porque la línea de base abarca ahora otro tramo de la serie, con otro ruido y un nivel estacional ligeramente distinto; las estimaciones relativas cambian poco (Alder Point, de +24,6 % a +23,5 %; Calloway, de +1,3 % a +1,4 %) porque la estación afecta de forma similar a ambas regiones, así que la parte de la estación que incluya la línea de base se anula en gran medida en el cociente. W1 y W2 en relación con Wexmoor agrupado son cercanos a cero por construcción, ya que forman la comparación agrupada.
+
+**EX023 — Diagrama causal.** Añada un nodo «Carpa» con las flechas Carpa → llegadas por cuenta propia a Brookfield (fuerte) y Carpa → llegadas en ambulancia a Brookfield (posible, si los SEM llevaron a la carpa a pacientes de baja gravedad). La carpa es una **cointervención** concurrente con el desvío y concentrada cerca de Brookfield. Si absorbió pacientes de baja gravedad, *reduce* las llegadas a Brookfield y sesga la estimación del desbordamiento en Brookfield **hacia cero** (o por debajo). También distorsiona el gradiente de PI2 y hace que el descenso de Alder Point a Brookfield parezca más pronunciado. Respuestas: obtener la asistencia diaria a la carpa; analizar por separado los canales de ambulancia y por cuenta propia; realizar un análisis de sensibilidad que vuelva a sumar las atenciones de la carpa que los registros de los SEM atribuyen al área de influencia de Brookfield. Alder Point se ve menos afectado si su área de influencia no se solapa con la de la carpa; compruébelo con los registros de destino de los SEM.
+
+**EX024 — Controles negativos.**
+
+| Candidato | Tipo | ¿Podría afectarlo la exposición? | ¿Comparte los factores de confusión? | Veredicto |
+|---|---|---|---|---|
+| (a) Llegadas a Wexmoor | Población | No (otra región, sin SEM compartidos) | Sí, la estación, si es similar | Aceptar, con la salvedad de la estación paralela |
+| (b) Llegadas por cuenta propia a Alder Point | Resultado | Sí, si los pacientes que habrían acudido por su cuenta a Kestrel fueron a otro lugar | Sí | Rechazar como control negativo puro; usar como comparación de canal |
+| (c) Infusiones ambulatorias programadas en Alder Point | Resultado | Improbable | Probablemente no: la atención programada no depende de la estación respiratoria | Débil: no revelaría la confusión estacional |
+| (d) Llegadas a Calloway | Población/resultado | Posiblemente, en pequeña medida: forma parte de la hipótesis de distancia | Sí | Rechazar: usarlo como control negativo presupone la respuesta a PI2 |
+
+**EX025 — Una explicación en competencia documentada.** Explicaciones: el retraso del tratamiento causado por el desvío derivado del ataque causó la muerte, frente a la enfermedad de base de la paciente. Según la información publicada, la fiscalía concluyó tras la autopsia que el retraso no fue determinante y que la enfermedad por sí sola causó la muerte (MIT Technology Review, noviembre de 2020). Una afirmación sobre una muerte individual requiere el contrafactual individual —¿habría sobrevivido *esta* paciente con un tratamiento más temprano?—, que una autopsia y una revisión clínica pueden a veces abordar; una afirmación a nivel de población pregunta si los resultados de un *grupo* de pacientes con urgencias dependientes del tiempo empeoran durante los desvíos, lo que requiere comparar grupos y no dice nada definitivo sobre una muerte concreta. Pregunta poblacional ética: «Durante los desvíos de ambulancias en un centro regional de ictus, ¿cambiaron los tiempos puerta-tratamiento de los pacientes con ictus de la región en relación con periodos comparables sin desvío?», con datos agregados o de registros y las aprobaciones adecuadas.
+
+**EX026 — La decisión como exposición.** La exposición del estudio es el desvío porque fue lo que movió las ambulancias; el ataque importó a través de la decisión de desviar. Dos decisiones alternativas: Kestrel podría haber seguido abierto a las ambulancias con procedimientos de contingencia (sin desvío, poco desbordamiento), o haber desviado solo categorías concretas como el ictus y el trauma (desbordamiento parcial concentrado en centros especializados). Afirmación reescrita: «En un evento sintético, un desvío de ambulancias de 21 días tras un ataque de ransomware fue seguido de un aumento estimado del 24 % en las llegadas en ambulancia al SU vecino más cercano; el resultado se refiere a las consecuencias del desvío tal como se decidió, no al ransomware en sí». Pregunta posterior: «¿Qué información y qué criterios usan los directivos hospitalarios para decidir si desvían ambulancias durante un ciberincidente y durante cuánto tiempo, y cómo varían esas decisiones?».
 
 <a id="glossary"></a>
 
