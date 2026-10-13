@@ -1,7 +1,7 @@
 # Governança, Riscos e Compliance de Segurança: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 120, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–40 de 50 já estão escritos em português, com os exercícios EX001–EX120 e suas resoluções com rubricas de 0 a 3 e 6 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 41–50 (EX121–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–50 de 50 têm texto didático escrito à mão; os exercícios EX001–EX150 têm resoluções correspondentes com rubricas de 0 a 3; os oito laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que projetam, verificam e operam um programa de governança, riscos e compliance de segurança como um sistema de engenharia.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios calculam perda esperada, validação de registros, risco residual, taxas de aprovação de controles, falha em camadas, limites de amostragem por atributos, otimização de orçamento e digests de evidências, sempre sobre dados sintéticos. Os números de risco são ilustrações, as normas são citadas pela edição e parafraseadas, e nada aqui é auditoria, atestação ou aconselhamento jurídico reais. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ ISO 31000:2018 (no Brasil, ABNT NBR ISO 31000:2018); ISO/IEC 27001:2022 (no Bras
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) |
-
-Capítulos 41–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-41), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) · [41](#ch-41) · [42](#ch-42) · [43](#ch-43) · [44](#ch-44) · [45](#ch-45) · [46](#ch-46) · [47](#ch-47) · [48](#ch-48) · [49](#ch-49) · [50](#ch-50) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -784,11 +782,11 @@ Você vai (1) definir governança, gestão de riscos e compliance e como se rela
 
 ### 20.1 Três disciplinas relacionadas
 
-Nadia começa agora as disciplinas centrais de GRC. A governança define direção, responsabilização e supervisão: quem decide, qual é o apetite a riscos e como o desempenho é monitorado. A gestão de riscos identifica, analisa, avalia e trata os riscos, seguindo um processo como o descrito na ISO 31000:2018, adotada no Brasil como ABNT NBR ISO 31000:2018. O compliance garante que a organização cumpra as obrigações vindas de leis, regulamentos, contratos e normas adotadas. As três se sobrepõem, mas diferem. O COBIT 2019 separa a governança, que avalia, direciona e monitora, da gestão, que planeja, constrói, executa e monitora. Na Ardwell, a revisão trimestral dos relatórios pelo conselho é governança no sentido do COBIT; o gestor de segurança que conduz o processo de riscos faz gestão.
+Nadia começa agora as disciplinas centrais de GRC. A governança define direção, responsabilização e supervisão: quem decide, qual é o apetite a riscos e como o desempenho é monitorado. A gestão de riscos identifica, analisa, avalia e trata os riscos, seguindo um processo como o descrito na ISO 31000:2018, adotada no Brasil como ABNT NBR ISO 31000:2018. O compliance garante que a organização cumpra as obrigações vindas de leis, regulamentos, contratos e normas adotadas. As três se sobrepõem, mas diferem. O COBIT 2019 separa a governança, que avalia, direciona e monitora, da gestão, que planeja, constrói, executa e monitora. Na Ardwell, a revisão trimestral dos relatórios pelo conselho é governança no sentido do COBIT; a gestora de segurança que conduz o processo de riscos faz gestão.
 
 ### 20.2 Lugar na organização
 
-Na Ardwell, o conselho aprova o apetite a riscos e recebe relatórios trimestrais. Um gestor de segurança da informação conduz o processo de riscos e se reporta ao diretor de operações. As obrigações de compliance ficam com uma responsável jurídica e de compliance, enquanto a auditoria interna dá garantia independente ao comitê de auditoria do conselho. Nadia desenha essas relações e observa que linhas de reporte claras evitam conflitos de interesse, como a pessoa que opera os controles também julgar se eles funcionam, o que enfraqueceria a garantia. É o reporte da auditoria interna ao comitê de auditoria, e não ao diretor de operações, que mantém sua garantia independente.
+Na Ardwell, o conselho aprova o apetite a riscos e recebe relatórios trimestrais. Uma gestora de segurança da informação conduz o processo de riscos e se reporta ao diretor de operações. As obrigações de compliance ficam com uma responsável jurídica e de compliance, enquanto a auditoria interna dá garantia independente ao comitê de auditoria do conselho. Nadia desenha essas relações e observa que linhas de reporte claras evitam conflitos de interesse, como a pessoa que opera os controles também julgar se eles funcionam, o que enfraqueceria a garantia. É o reporte da auditoria interna ao comitê de auditoria, e não ao diretor de operações, que mantém sua garantia independente.
 
 ### 20.3 Obrigações
 
@@ -828,7 +826,7 @@ Nadia aprende a escrever requisitos que possam ser testados. Um requisito vago, 
 
 ### 21.3 Priorizar
 
-Nem todo requisito é igualmente urgente. Nadia os ordena pela consequência de uma falha e por serem ou não compulsórios. Os requisitos ligados à segurança do fornecimento de energia e às obrigações contratuais de cartão ficam no topo. Os que apoiam a certificação voluntária vêm em seguida. As melhorias de eficiência ficam por último. Ela apresenta a ordem ao gestor de segurança da informação com os motivos, para que o tempo limitado da equipe vá primeiro aos requisitos cuja falha prejudicaria clientes ou violaria obrigações. Ordenar com motivos também permite ao gestor contestar a ordem se um item voluntário tiver passado a ser contratual.
+Nem todo requisito é igualmente urgente. Nadia os ordena pela consequência de uma falha e por serem ou não compulsórios. Os requisitos ligados à segurança do fornecimento de energia e às obrigações contratuais de cartão ficam no topo. Os que apoiam a certificação voluntária vêm em seguida. As melhorias de eficiência ficam por último. Ela apresenta a ordem à gestora de segurança da informação com os motivos, para que o tempo limitado da equipe vá primeiro aos requisitos cuja falha prejudicaria clientes ou violaria obrigações. Ordenar com motivos também permite à gestora contestar a ordem se um item voluntário tiver passado a ser contratual.
 
 ### Exemplo resolvido
 
@@ -987,7 +985,7 @@ Você vai (1) projetar uma solução de governança para um problema definido; (
 
 ### 25.1 O briefing
 
-No primeiro ateliê de projeto, a equipe de Nadia recebe um briefing da Ardwell: projetar uma forma de gerenciar o acesso remoto de fornecedores que atenda à segurança, mantenha rápida a resposta a interrupções e produza evidências para auditorias. A equipe entrevista um engenheiro de controle, um técnico de fornecedor e o gestor de segurança da informação. Cada um quer algo diferente. O engenheiro quer fornecedores conectados em minutos durante as interrupções. O técnico quer um único login, e não cinco. O gestor quer cada sessão aprovada, registrada e revisada. Essas três posições viram as restrições do projeto: rapidez, login único e responsabilização completa.
+No primeiro ateliê de projeto, a equipe de Nadia recebe um briefing da Ardwell: projetar uma forma de gerenciar o acesso remoto de fornecedores que atenda à segurança, mantenha rápida a resposta a interrupções e produza evidências para auditorias. A equipe entrevista um engenheiro de controle, um técnico de fornecedor e a gestora de segurança da informação. Cada um quer algo diferente. O engenheiro quer fornecedores conectados em minutos durante as interrupções. O técnico quer um único login, e não cinco. A gestora quer cada sessão aprovada, registrada e revisada. Essas três posições viram as restrições do projeto: rapidez, login único e responsabilização completa.
 
 ### 25.2 O projeto
 
@@ -1027,7 +1025,7 @@ A Ardwell precisa decidir como operar seu programa de GRC no dia a dia. Nadia co
 
 ### 26.2 Critérios e pesos
 
-Nadia combina os critérios com o gestor de segurança: integridade dos dados e trilha de auditoria, esforço para os responsáveis pelos controles, relatórios ao conselho, custo em três anos e dependência de competências escassas. Ela dá os maiores pesos à integridade e ao esforço dos responsáveis, refletindo a constatação anterior de que os controles falham quando os responsáveis não têm tempo. As planilhas pontuam mal em integridade. A plataforma comercial pontua bem em relatórios, mas exige um administrador especializado. A opção dos tickets pontua bem no esforço dos responsáveis, porque a equipe já usa o sistema. Ela publica as notas e os pesos para que os revisores possam contestá-los.
+Nadia combina os critérios com a gestora de segurança: integridade dos dados e trilha de auditoria, esforço para os responsáveis pelos controles, relatórios ao conselho, custo em três anos e dependência de competências escassas. Ela dá os maiores pesos à integridade e ao esforço dos responsáveis, refletindo a constatação anterior de que os controles falham quando os responsáveis não têm tempo. As planilhas pontuam mal em integridade. A plataforma comercial pontua bem em relatórios, mas exige um administrador especializado. A opção dos tickets pontua bem no esforço dos responsáveis, porque a equipe já usa o sistema. Ela publica as notas e os pesos para que os revisores possam contestá-los.
 
 ### 26.3 A escolha
 
@@ -1622,11 +1620,419 @@ As suítes de regressão envelhecem. Nem toda mudança dispara os testes.
 - **EX119 — Defeito do relatório.** Que erro de relatório Nadia encontrou? *Rubrica:* 3 = achados reabertos contados duas vezes;; 2 = contagem dupla;; 1 = nada;; 0 = nenhuma.
 - **EX120 — Princípio da verificação.** Que princípio o laboratório ilustra? *Rubrica:* 3 = a verificação precisa ser repetida sempre que o sistema muda;; 2 = repetir;; 1 = evento único;; 0 = nenhuma.
 
+<a id="ch-41"></a>
+
+## Capítulo 41 — Governança, riscos e compliance de segurança: otimização do sistema
+
+### Objetivos de aprendizagem
+
+Você vai (1) escolher investimentos em controles sob um orçamento; (2) comparar a escolha ótima com a intuitiva; (3) reconhecer os limites da otimização.
+
+### 41.1 O problema do orçamento
+
+O conselho da Ardwell aprova duzentos mil para novos controles de segurança no próximo ano. Nadia lista seis opções, com custos e reduções estimadas da perda anual esperada: autenticação multifator para o acesso remoto, backups offline, uma extensão do broker de acesso de fornecedores, tokenização de cartões, uma reciclagem de conscientização e monitoramento de logs. O custo total passa do orçamento, então é preciso escolher. Ela enquadra isso como um problema de otimização: maximizar a redução total estimada da perda mantendo o custo dentro do orçamento. Esse enquadramento também deixa explícito que o valor de cada opção depende de uma estimativa de oficina.
+
+### 41.2 Encontrar o melhor conjunto
+
+Com só seis opções, o laboratório confere todas as combinações. O melhor conjunto dentro do orçamento custa cento e noventa mil e reduz a perda estimada em seiscentos e trinta mil: autenticação multifator, backups offline e tokenização de cartões. Nadia compara isso com uma escolha intuitiva sugerida pela gestão, a extensão do broker e o monitoramento de logs, que consome a maior parte do orçamento para uma redução muito menor. A busca exaustiva mostra com clareza quanto valor a intuição pode deixar para trás. A escolha intuitiva mira o acesso de fornecedores e os logs, que importam, mas compra muito menos redução por mil gastos.
+
+### Laboratório — Melhor conjunto de controles dentro de um orçamento
+
+```python
+"""Choose controls under a budget to maximise expected loss reduction (exhaustive search)."""
+from itertools import combinations
+opts = [("MFA for remote access", 40, 150), ("offline backups", 60, 220), ("vendor access broker", 80, 190),
+        ("card tokenisation", 90, 260), ("awareness refresh", 20, 40), ("log monitoring", 70, 120)]
+B = 200; best = (0, 0, ())
+for r in range(len(opts)+1):
+    for s in combinations(opts, r):
+        c = sum(o[1] for o in s); g = sum(o[2] for o in s)
+        if c <= B and g > best[0]: best = (g, c, s)
+print(f"budget {B}k; best reduction {best[0]}k at cost {best[1]}k")
+for o in best[2]: print(" -", o[0])
+```
+
+Execute com `python3 lab_budget.py`. Saída verificada:
+
+```text
+budget 200k; best reduction 630k at cost 190k
+ - MFA for remote access
+ - offline backups
+ - card tokenisation
+```
+
+### 41.3 Limites
+
+Nadia relata o resultado com ressalvas. As estimativas de redução vêm de oficinas e são incertas. As opções podem interagir; backups e tokenização tratam riscos diferentes, mas outros pares poderiam se sobrepor. Alguns benefícios, como evidências melhores para auditorias, não são capturados. Gordon e Loeb (2002) a lembram de que o valor do investimento depende da vulnerabilidade e da perda potencial, e não só do custo. Ela recomenda usar o conjunto ótimo como ponto de partida da discussão, com verificações de sensibilidade nas estimativas mais incertas, como ver se reduzir à metade a estimativa da tokenização mudaria o conjunto escolhido.
+
+### Exemplo resolvido
+
+Nadia encontra o melhor conjunto dentro de duzentos mil, que reduz a perda em seiscentos e trinta mil a um custo de cento e noventa mil, e declara seus limites.
+
+> **Caso sintético.** Os custos e as reduções são sintéticos; Gordon e Loeb (2002) é real.
+
+### Erros e limites
+
+As estimativas são incertas. As interações entre os controles são ignoradas.
+
+### Exercícios
+
+- **EX121 — Melhor conjunto.** Que controles formam o melhor conjunto? *Rubrica:* 3 = MFA, backups offline e tokenização de cartões;; 2 = três;; 1 = broker;; 0 = nenhuma.
+- **EX122 — Custo do melhor.** A que custo o melhor conjunto entrega sua redução de 630 mil? *Rubrica:* 3 = 190 mil;; 2 = 190;; 1 = 200;; 0 = nenhuma.
+- **EX123 — Valor do investimento.** Segundo Gordon e Loeb, o que determina o valor do investimento em segurança? *Rubrica:* 3 = vulnerabilidade e perda potencial;; 2 = não só o custo;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-42"></a>
+
+## Capítulo 42 — Governança, riscos e compliance de segurança: pesquisa aplicada
+
+### Objetivos de aprendizagem
+
+Você vai (1) formular uma pergunta de pesquisa aplicada em GRC; (2) escolher um método adequado a uma organização em operação; (3) revisar as evidências criticamente.
+
+### 42.1 Uma pergunta aplicada
+
+Nadia escolhe uma pergunta de pesquisa aplicada para o último ano: a nova prática da Ardwell de relatar faixas de perda esperada ao conselho muda as decisões que ele toma, em comparação com o antigo mapa de calor? Ela a reduz a termos mensuráveis: o número de decisões de tratamento de riscos por trimestre, o tempo entre a proposta e a decisão e se as decisões seguem os maiores riscos residuais. As três medidas podem ser contadas nas atas do conselho, o que torna a comparação repetível. Ela registra que o estudo pode descrever mudanças, mas não consegue separar totalmente o efeito dos relatórios de outras mudanças.
+
+### 42.2 Método
+
+Ela usa uma comparação antes e depois das atas do conselho, quatro trimestres antes e quatro depois da mudança, codificando cada decisão com um livro de códigos que pilota com um colega, o que também reduz o risco de seu próprio viés decidir a codificação. Também entrevista dois conselheiros. Wohlin e colegas (2012) descrevem ameaças à validade que ela adapta: mudanças na composição do conselho, um incidente grave que poderia provocar ação e o viés dela própria, que ajudou a projetar o novo pacote. Ela registra como cada uma poderia afetar os resultados, para que os examinadores possam pesá-las ao ler as conclusões.
+
+### 42.3 Leitura crítica
+
+Nadia revisa as evidências publicadas. Hubbard e Seiersen (2016) defendem métodos quantitativos, enquanto Cox (2008) analisa as fraquezas das matrizes de risco. Spears e Barki (2010) mostram que envolver os usuários de negócio melhora a gestão de riscos de segurança. Ela observa que a maioria das fontes é analítica ou vem de outros contextos, e poucas medem diretamente as decisões dos conselhos. Seu estudo pode acrescentar uma pequena e honesta evidência de uma cooperativa, desde que relate seus limites e não a trate como prova geral. Sua contribuição é descrita, portanto, como evidência local de uma organização, e não como teste das afirmações publicadas.
+
+### Exemplo resolvido
+
+Nadia formula um estudo antes e depois sobre as decisões do conselho, lista as ameaças à validade, incluindo o próprio viés, e o posiciona diante das evidências publicadas.
+
+> **Caso sintético.** O estudo é sintético; as obras citadas são reais.
+
+### Erros e limites
+
+Desenhos antes e depois confundem efeitos de época. As atas são registros incompletos.
+
+### Exercícios
+
+- **EX124 — Desfechos medidos.** Que desfechos Nadia mede? *Rubrica:* 3 = decisões por trimestre, tempo até a decisão e alinhamento com os maiores riscos;; 2 = três;; 1 = nada;; 0 = nenhuma.
+- **EX125 — Viés próprio.** Por que o papel da própria Nadia é uma ameaça à validade? *Rubrica:* 3 = ela ajudou a projetar o novo pacote;; 2 = viés;; 1 = nada;; 0 = nenhuma.
+- **EX126 — Lacuna de evidência.** O que falta nas evidências publicadas? *Rubrica:* 3 = medição direta das decisões dos conselhos;; 2 = lacuna;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-43"></a>
+
+## Capítulo 43 — Prática na indústria ou no serviço público
+
+### Objetivos de aprendizagem
+
+Você vai (1) trabalhar dentro de uma função real de governança; (2) observar auditorias e interações com o regulador; (3) refletir sobre a prática em comparação com a teoria.
+
+### 43.1 Estágio
+
+Nadia passa um semestre em estágio na equipe de governança da Ardwell. Ela apoia a preparação da primeira auditoria de certificação da cooperativa na ISO/IEC 27001:2022 (no Brasil, ABNT NBR ISO/IEC 27001:2022), ajudando os responsáveis a reunir evidências e conferindo a declaração de aplicabilidade contra a prática real. Descobre que alguns controles funcionam bem, mas estão mal documentados, enquanto outros estão bem documentados, mas raramente são executados. Os primeiros só precisam ser escritos; os segundos exigem trabalho de verdade. Ela aprende que as auditorias testam o vínculo entre os documentos e a prática, e que esse vínculo costuma ser mais fraco do que os gestores pensam.
+
+### 43.2 Auditoria e regulador
+
+Ela observa a auditoria de estágio um, em que o organismo de certificação revisa a documentação e a prontidão. Os auditores perguntam como as decisões de aceitação de riscos são tomadas e quem as aprova. A resposta da Ardwell é clara graças ao trabalho anterior com os registros de decisão do capítulo 18, que agora rendem frutos diretos. Mais tarde, ela participa de uma reunião com o regulador de energia sobre as expectativas de comunicação de incidentes. Ela nota como os reguladores se concentram em resultados, como os tempos de restabelecimento e a comunicação, enquanto a certificação se concentra nos processos do sistema de gestão.
+
+### 43.3 Reflexão
+
+Nadia escreve uma reflexão que compara a prática com as disciplinas do curso. A teoria apresentava os controles como bem desenhados e testados; a prática envolvia negociação, prazos concorrentes e dados incompletos. Ainda assim, a teoria ajudou: modelos de dados, requisitos testáveis e amostragem lhe deram ferramentas para pôr ordem em situações bagunçadas. Ela também aprende o valor dos relacionamentos: os responsáveis cooperavam mais depressa quando entendiam os motivos dos pedidos, como quando ela explicava a que requisito cada evidência servia. O Prof. Brenner observa que a prática reflexiva transforma experiência em conhecimento transferível.
+
+### Exemplo resolvido
+
+Nadia apoia a prontidão para a certificação, observa a auditoria de estágio um e as reuniões com o regulador e reflete sobre a teoria em comparação com a prática.
+
+> **Caso sintético.** O estágio, a auditoria e as reuniões são sintéticos; a ISO/IEC 27001:2022 (ABNT NBR ISO/IEC 27001:2022) é real.
+
+### Erros e limites
+
+Um estágio é um único contexto. As observações podem ser seletivas.
+
+### Exercícios
+
+- **EX127 — Lacuna documental.** Que lacuna Nadia encontrou entre os documentos e a prática? *Rubrica:* 3 = alguns controles funcionam sem documentação, outros estão documentados mas raramente são feitos;; 2 = descompasso;; 1 = nada;; 0 = nenhuma.
+- **EX128 — Foco do estágio um.** Sobre o que os auditores perguntaram no estágio um? *Rubrica:* 3 = como as decisões de aceitação de riscos são tomadas e aprovadas;; 2 = aceitação;; 1 = nada;; 0 = nenhuma.
+- **EX129 — Foco do regulador.** Como o foco do regulador diferia do da certificação? *Rubrica:* 3 = resultados como restabelecimento e comunicação, contra processos;; 2 = resultados;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-44"></a>
+
+## Capítulo 44 — Projeto final de engenharia I
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir o escopo de um projeto final de engenharia de governança; (2) definir critérios de sucesso com um cliente; (3) planejar o risco e a qualidade do próprio projeto.
+
+### 44.1 Escopo
+
+No projeto final, Nadia trabalha com a nova gestora de segurança da Ardwell num serviço de monitoramento contínuo de controles: coleta automática de evidências de vinte controles de alto valor, com alertas quando um controle falha e um painel para os responsáveis. O escopo exclui os controles que exigem julgamento humano, o que mantém a meta de vinte controles alcançável. Ela escreve uma declaração de escopo, lista as partes interessadas e combina as restrições: só a biblioteca padrão e os sistemas existentes, nenhum acesso a dados de produção além do que os responsáveis já compartilham e entrega em dois períodos letivos.
+
+### 44.2 Critérios de sucesso
+
+Com a cliente, Nadia define os critérios de sucesso: evidências de pelo menos dezoito dos vinte controles coletadas automaticamente; alertas em até um dia depois de uma falha de controle nos testes; responsáveis gastando menos tempo com evidências do que antes, medido por uma pesquisa curta; e nenhum encerramento falso de achados, o que retoma sua regra anterior de que só a analista encerra achados. Cada critério tem um método de medição. Ela aprende que combinar os critérios cedo evita disputas depois e mantém o projeto focado nos resultados que a cliente valoriza, e não em funcionalidades apenas interessantes.
+
+### 44.3 Risco do projeto
+
+Nadia aplica a gestão de riscos ao próprio projeto. Os riscos incluem atrasos no acesso aos dados, mudanças nos sistemas durante o projeto, seu próprio tempo limitado e a chance de os responsáveis ignorarem os alertas. Para cada um, ela registra uma resposta: pedidos de acesso antecipados, verificações de interface, uma folga no cronograma e o envolvimento dos responsáveis no desenho dos alertas, que também reduz a chance de serem ignorados. Ela aprende que uma engenheira de GRC que não gerencia os riscos do próprio projeto mina sua credibilidade, e que os hábitos que ensina aos outros valem também para o seu trabalho.
+
+### Exemplo resolvido
+
+Nadia define o escopo de um serviço de monitoramento contínuo para vinte controles, combina quatro critérios de sucesso mensuráveis e gerencia os riscos do próprio projeto.
+
+> **Caso sintético.** O projeto final é sintético.
+
+### Erros e limites
+
+Os escopos crescem. As pesquisas medem percepção, não tempo.
+
+### Exercícios
+
+- **EX130 — Controles excluídos.** Que controles ficam fora do escopo? *Rubrica:* 3 = os que exigem julgamento humano;; 2 = julgamento;; 1 = nada;; 0 = nenhuma.
+- **EX131 — Critério de cobertura.** Qual é o critério de sucesso de cobertura de evidências? *Rubrica:* 3 = pelo menos dezoito de vinte controles automatizados;; 2 = 18/20;; 1 = nada;; 0 = nenhuma.
+- **EX132 — Risco dos alertas.** Como Nadia responde ao risco de os responsáveis ignorarem os alertas? *Rubrica:* 3 = envolvendo os responsáveis no desenho dos alertas;; 2 = envolvimento;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-45"></a>
+
+## Capítulo 45 — Revisão independente de projeto
+
+### Objetivos de aprendizagem
+
+Você vai (1) preparar um projeto para revisão independente; (2) responder às preocupações dos revisores; (3) registrar os resultados da revisão.
+
+### 45.1 Preparar
+
+Antes de construir, Nadia submete o projeto de monitoramento à revisão independente de um engenheiro de outra concessionária e do auditor interno da Ardwell. Ela prepara um documento de projeto curto: finalidade, escopo, arquitetura, fluxos de dados, controles cobertos, modos de falha e como a integridade das evidências é protegida. Inclui explicitamente suas premissas, como a de que os sistemas de origem informam timestamps corretos. A revisão independente funciona melhor quando os revisores veem o que a projetista supôs, porque as premissas ocultas são onde eles agregam mais valor; declarar a premissa dos timestamps convida a perguntar o que acontece se um relógio de origem estiver errado.
+
+### 45.2 Preocupações levantadas
+
+O auditor pergunta se as evidências automáticas poderiam ser manipuladas pelas pessoas cujos controles elas monitoram. O engenheiro pergunta o que acontece quando um sistema de origem está indisponível: um relatório ausente conta como aprovação ou como falha? Nadia percebe que seu projeto tratava o silêncio como sucesso. Ela o muda para que a evidência ausente dispare um alerta e conte como coleta falha, fechando a lacuna em que uma origem indisponível pareceria um controle aprovado. Também acrescenta o hash dos arquivos de evidência e o armazenamento num local que as equipes monitoradas não conseguem alterar.
+
+### 45.3 Registrar os resultados
+
+Nadia registra cada preocupação, sua resposta e se os revisores a aceitaram. Duas preocupações menores sobre a redação do painel são adiadas para uma versão posterior, com os motivos registrados para que os examinadores vejam que foram pesadas, e não ignoradas. O registro vai para o arquivo do projeto e depois para seu dossiê de evidências. Ela aprende que os registros de revisão mostram aos auditores e examinadores não só o projeto final, mas como ele melhorou, e que um projeto capaz de absorver críticas é mais forte do que um que nunca as enfrentou.
+
+### Exemplo resolvido
+
+Nadia prepara um pacote de revisão com as premissas, corrige o silêncio tratado como sucesso e os problemas de integridade das evidências e registra os resultados.
+
+> **Caso sintético.** Os revisores e o projeto são sintéticos.
+
+### Erros e limites
+
+Os revisores têm tempo limitado. Os itens adiados podem ser esquecidos.
+
+### Exercícios
+
+- **EX133 — Exemplo de premissa.** Que premissa Nadia declarou explicitamente? *Rubrica:* 3 = os sistemas de origem informam timestamps corretos;; 2 = timestamps;; 1 = nada;; 0 = nenhuma.
+- **EX134 — Correção do silêncio.** Como foi corrigida a falha do silêncio tratado como sucesso? *Rubrica:* 3 = a evidência ausente dispara um alerta e conta como coleta falha;; 2 = falhar fechado;; 1 = aprovação;; 0 = nenhuma.
+- **EX135 — Medidas de integridade.** O que protege as evidências contra manipulação? *Rubrica:* 3 = hash e armazenamento que as equipes monitoradas não conseguem alterar;; 2 = hash;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-46"></a>
+
+## Capítulo 46 — Projeto final de engenharia II
+
+### Objetivos de aprendizagem
+
+Você vai (1) construir e implantar o serviço de monitoramento; (2) medi-lo contra os critérios de sucesso; (3) entregá-lo para operação.
+
+### 46.1 Construir
+
+Nadia constrói o serviço em etapas, começando pelos cinco controles cujas evidências são mais fáceis de coletar, o que lhe permite testar o agendador e o hash antes das fontes mais difíceis. Cada coletor é um pequeno script com testes, logs e um responsável claro. O agendador executa os coletores diariamente, guarda as evidências com hash e dispara alertas para falhas ou dados ausentes. Ela implanta primeiro num ambiente de teste e depois em produção, com a aprovação da gestora de segurança pela gestão de mudanças. Mantém um diário de cada decisão e problema para a tese.
+
+### 46.2 Medir
+
+Depois de dois meses, Nadia mede contra os critérios. Dezenove de vinte controles têm evidência automatizada; um depende de um sistema de fornecedor sem exportação, então continua manual e é registrado como limite conhecido. Nos testes, os alertas chegam poucas horas depois de uma falha simulada. A pesquisa com os responsáveis mostra que a maioria gasta menos tempo com evidências, embora dois achem os alertas frequentes demais. Nenhum achado foi encerrado falsamente. Ela relata os resultados com honestidade, incluindo o controle manual e as queixas sobre os alertas. Dezenove de vinte atende ao critério de pelo menos dezoito.
+
+### 46.3 Entrega
+
+Nadia entrega o serviço à equipe de operações da Ardwell com um runbook, um responsável para cada coletor, casos de teste e uma lista de problemas conhecidos. Ela treina duas pessoas para acrescentar novos coletores. Antes de sair, ajusta os limiares dos alertas com os dois responsáveis insatisfeitos, respondendo às queixas registradas nas medições. Ela aprende que um projeto final só tem sucesso se o cliente conseguir operá-lo sem ela, e que a documentação de entrega é um produto tão importante quanto o próprio código, porque é ela que permite à equipe manter e ampliar o serviço.
+
+### Exemplo resolvido
+
+Nadia constrói o serviço em etapas, atende plenamente a três critérios e parcialmente a um, com dezenove de vinte controles automatizados, e o entrega com um runbook.
+
+> **Caso sintético.** O serviço e as medições são sintéticos.
+
+### Erros e limites
+
+Dois meses é pouco tempo. As respostas da pesquisa são autodeclaradas.
+
+### Exercícios
+
+- **EX136 — Resultado de cobertura.** Quantos controles tinham evidência automatizada? *Rubrica:* 3 = dezenove de vinte;; 2 = 19;; 1 = 20;; 0 = nenhuma.
+- **EX137 — Controle manual.** Por que um controle continuou manual? *Rubrica:* 3 = seu sistema de fornecedor não tem exportação;; 2 = sem exportação;; 1 = nada;; 0 = nenhuma.
+- **EX138 — Itens da entrega.** Que itens Nadia entregou? *Rubrica:* 3 = runbook, responsáveis pelos coletores, casos de teste e problemas conhecidos;; 2 = entrega;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-47"></a>
+
+## Capítulo 47 — Ensaio de falha e recuperação
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar um ensaio de falha para um serviço de GRC; (2) observar a detecção e a recuperação; (3) melhorar o serviço a partir dos resultados.
+
+### 47.1 Projetar o ensaio
+
+Com a gestora de segurança, Nadia planeja um ensaio de como o serviço de monitoramento se comporta sob falha. Três falhas são injetadas numa janela controlada, com os responsáveis avisados de antemão, para que nenhuma falha injetada seja tratada como incidente real: um script coletor trava, um sistema de origem fica indisponível e um arquivo de evidência é alterado depois de guardado. O ensaio testa se cada falha é detectada, com que rapidez e se a recuperação restaura a evidência correta. As regras excluem qualquer ação sobre os sistemas de controle em produção ou sobre dados de clientes.
+
+### 47.2 Observações
+
+O coletor travado é detectado na execução agendada seguinte e alerta o responsável em menos de um dia. A origem indisponível dispara um alerta de evidência ausente, como projetado. O arquivo alterado é detectado por divergência de hash na verificação semanal de integridade, mas não antes. A recuperação do travamento leva duas horas, porque o runbook omite um passo. Nadia registra cada observação com timestamps e a compara com o esperado, notando que a detecção de adulteração é mais lenta do que a equipe supunha. O Prof. Brenner pergunta por quanto tempo um arquivo alterado poderia passar despercebido, e a resposta, até uma semana, motiva a verificação diária.
+
+### 47.3 Melhorias
+
+A equipe acrescenta o passo que faltava no runbook e passa as verificações de integridade de semanais para diárias. Também acrescenta um alerta para quando as próprias verificações de integridade deixam de rodar, fechando a mesma lacuna do silêncio tratado como sucesso corrigida na revisão de projeto. Nadia observa que o ensaio revelou fraquezas que continuariam ocultas na operação normal. Ela aprende que os ensaios de falha planejados são o equivalente de governança aos simulados de incêndio: provam se a detecção e a recuperação funcionam, e só são seguros e úteis quando têm escopo cuidadoso e são anunciados.
+
+### Exemplo resolvido
+
+Nadia executa três injeções de falha anunciadas, encontra a detecção lenta de adulteração e uma lacuna no runbook e corrige as duas.
+
+> **Caso sintético.** O ensaio é sintético e excluiu os sistemas de controle em produção.
+
+### Erros e limites
+
+Ensaios anunciados diferem de falhas reais. As verificações diárias acrescentam carga.
+
+### Exercícios
+
+- **EX139 — Falhas injetadas.** Que três falhas foram injetadas? *Rubrica:* 3 = travamento do coletor, origem indisponível, arquivo de evidência alterado;; 2 = três;; 1 = nada;; 0 = nenhuma.
+- **EX140 — Detecção lenta.** Que falha foi detectada lentamente? *Rubrica:* 3 = o arquivo de evidência alterado, na verificação semanal;; 2 = adulteração;; 1 = nada;; 0 = nenhuma.
+- **EX141 — Mudança na verificação.** Com que frequência as verificações de integridade rodam depois do ensaio? *Rubrica:* 3 = diariamente;; 2 = diária;; 1 = semanal;; 0 = nenhuma.
+
+<a id="ch-48"></a>
+
+## Capítulo 48 — Dossiê de evidências
+
+### Objetivos de aprendizagem
+
+Você vai (1) montar um dossiê de evidências de um programa de governança; (2) protegê-lo com um manifesto de digests; (3) detectar e explicar mudanças.
+
+### 48.1 Montar
+
+Para a tese e para os auditores da Ardwell, Nadia monta um dossiê de evidências: o extrato do registro de riscos, os resultados trimestrais dos testes de controles, a declaração de aplicabilidade e as atas do conselho que aprovam o apetite a riscos. Cada item tem origem, data e responsável. Ela escreve um índice curto que explica o que cada item prova e como se liga aos requisitos; o índice liga, por exemplo, as atas à afirmação de que o apetite foi formalmente aprovado. Ela aprende que um dossiê é um argumento, e não uma pilha de arquivos: deve permitir ao leitor seguir a afirmação de que os controles funcionam até as evidências.
+
+### 48.2 Manifesto e divergência
+
+Nadia calcula um digest de cada arquivo e guarda o manifesto separadamente. Semanas depois, ela confere de novo. Três arquivos batem, mas os resultados dos testes de controles não: o laboratório mostra uma divergência nesse arquivo. A investigação revela que uma responsável por testes editou o arquivo para mudar quarenta e cinco testes aprovados para quarenta e sete, depois de executar de novo dois testes. A mudança pode ser legítima e refletir novos testes reais, mas editar a evidência no próprio arquivo destrói o registro do resultado original, que deixa de estar visível.
+
+### Laboratório — Detectar um arquivo de evidência alterado
+
+```python
+"""Evidence dossier manifest: detect a changed file by SHA-256 (synthetic contents)."""
+import hashlib
+files = {"risk_register.csv": "R01,IT ops,12\nR02,Finance,8\n", "control_tests.csv": "access,48,45\n",
+         "soa.md": "Statement of applicability v3\n", "board_minutes.md": "Risk appetite approved\n"}
+man = {f: hashlib.sha256(c.encode()).hexdigest()[:12] for f, c in files.items()}
+files["control_tests.csv"] = "access,48,47\n"
+for f in sorted(files):
+    now = hashlib.sha256(files[f].encode()).hexdigest()[:12]
+    print(f, man[f], "OK" if now == man[f] else "MISMATCH")
+```
+
+Execute com `python3 lab_dossier.py`. Saída verificada:
+
+```text
+board_minutes.md a112873ae77e OK
+control_tests.csv 33fdcc0a788f MISMATCH
+risk_register.csv 5e0ebfd61225 OK
+soa.md ac050567962d OK
+```
+
+### 48.3 Tratar as mudanças
+
+Nadia restaura o arquivo original a partir do arquivo-morto e pede à responsável que registre o novo teste como evidência nova, com data própria, para que os dois resultados fiquem visíveis e rastreáveis pelos auditores. Ela atualiza o procedimento para proibir a edição de evidências já arquivadas. Observa que os digests detectam a mudança, mas não dizem se ela foi honesta. O Prof. Brenner explica que a integridade das evidências sustenta toda afirmação de garantia, e que os programas maduros tratam as evidências como append-only, registrando as correções como novas entradas em vez de sobrescrever as antigas.
+
+### Exemplo resolvido
+
+Nadia monta um dossiê indexado, detecta pelo digest um arquivo de testes alterado e restabelece o tratamento append-only.
+
+> **Caso sintético.** O conteúdo do dossiê é sintético.
+
+### Erros e limites
+
+Os digests provam a mudança, não a intenção. Os manifestos também precisam ser protegidos.
+
+### Exercícios
+
+- **EX142 — Dossiê como argumento.** Por que um dossiê é um argumento, e não uma pilha de arquivos? *Rubrica:* 3 = permite ao leitor rastrear as afirmações até as evidências;; 2 = rastreabilidade;; 1 = nada;; 0 = nenhuma.
+- **EX143 — Arquivo divergente.** Que arquivo mostrou divergência? *Rubrica:* 3 = control_tests.csv;; 2 = resultados dos testes;; 1 = nada;; 0 = nenhuma.
+- **EX144 — Tratamento correto.** Como um novo teste deve ser registrado? *Rubrica:* 3 = como evidência nova, com data própria;; 2 = acrescentar;; 1 = editar no arquivo;; 0 = nenhuma.
+
+<a id="ch-49"></a>
+
+## Capítulo 49 — Tese de engenharia
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever uma tese de engenharia sobre um sistema de GRC; (2) combinar projeto, medição e pesquisa; (3) declarar as contribuições e os limites.
+
+### 49.1 Estrutura
+
+A tese de Nadia combina o projeto final e a pesquisa aplicada. Os capítulos cobrem o problema, os fundamentos e as normas, os requisitos, o projeto e as revisões, a implementação, a verificação e os ensaios de falha, a medição contra os critérios, o estudo sobre os relatórios ao conselho e as conclusões. Cada capítulo se liga às evidências do dossiê. Ela mantém o texto principal focado em decisões e resultados, levando o código e os registros detalhados de testes para os apêndices, o que deixa o argumento legível para examinadores que não vão executar os scripts. Escreve para engenheiros que poderiam construir um serviço semelhante e para os examinadores.
+
+### 49.2 Achados
+
+A tese relata que as evidências automatizadas cobriram dezenove de vinte controles, que os alertas chegaram em poucas horas, que os responsáveis relataram menos esforço com evidências e que um ensaio de falha revelou uma detecção lenta de adulteração, depois corrigida. O estudo do conselho encontrou mais decisões de tratamento por trimestre depois que as faixas substituíram o mapa de calor, mas um incidente grave no período também provocou ação, então ela não consegue separar os efeitos. É a mesma ameaça à validade que registrou ao desenhar o estudo no capítulo 42. Ela declara os dois achados com clareza, com a incerteza de cada um.
+
+### 49.3 Contribuições e limites
+
+Nadia reivindica três contribuições: um projeto testado de monitoramento contínuo de controles de baixo custo, evidência de que os ensaios de falha revelam fraquezas ocultas nas ferramentas de GRC e um pequeno estudo observacional sobre os relatórios ao conselho. Os limites incluem uma única organização, um período curto de operação, esforço autodeclarado e uma comparação antes e depois com fator de confusão. O esforço autodeclarado, por exemplo, pode exagerar a economia, porque os responsáveis sabiam que o serviço era projeto dela. Ela recomenda trabalhos futuros em várias concessionárias. O Prof. Brenner observa que declarar os limites com clareza torna as contribuições mais críveis, e não menos.
+
+### Exemplo resolvido
+
+Nadia estrutura a tese em torno de decisões e resultados, relata os achados com sua incerteza e declara três contribuições com seus limites.
+
+> **Caso sintético.** A tese é sintética.
+
+### Erros e limites
+
+Estudos de uma só organização limitam a generalização. O fator de confusão permanece.
+
+### Exercícios
+
+- **EX145 — Achado do conselho.** O que o estudo do conselho encontrou, e por que é incerto? *Rubrica:* 3 = mais decisões, mas um incidente grave também provocou ação;; 2 = confundido;; 1 = nada;; 0 = nenhuma.
+- **EX146 — Lista de contribuições.** Cite uma das três contribuições de Nadia. *Rubrica:* 3 = projeto testado de monitoramento contínuo de baixo custo;; 2 = contribuição;; 1 = nada;; 0 = nenhuma.
+- **EX147 — Limites da tese.** Liste dois limites da tese. *Rubrica:* 3 = uma única organização e período curto de operação;; 2 = limites;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-50"></a>
+
+## Capítulo 50 — Defesa final
+
+### Objetivos de aprendizagem
+
+Você vai (1) defender uma tese de engenharia em GRC; (2) responder a perguntas sobre projeto, evidências e ética; (3) refletir sobre seu desenvolvimento profissional.
+
+### 50.1 Apresentação
+
+Nadia apresenta a tese em vinte minutos: o problema da Ardwell, o projeto, como as revisões e os ensaios o melhoraram, os resultados contra os critérios e o estudo do conselho com seus limites. Ela faz uma demonstração curta de um alerta para um controle que falhou e da verificação de integridade detectando um arquivo alterado, o que remete diretamente ao arquivo de testes alterado que encontrou no dossiê. Encerra com lições para outras organizações. A banca reúne o Prof. Brenner, um engenheiro externo de uma concessionária e uma auditora interna de outro setor, cobrindo a academia, a engenharia e a garantia.
+
+### 50.2 Perguntas
+
+O engenheiro externo pergunta se a automação poderia deixar os responsáveis acomodados. Nadia responde que o serviço coleta as evidências, mas os responsáveis continuam revisando as exceções, e que a amostragem pela analista continua. A auditora pergunta se as evidências bastariam para uma auditoria externa. Ela responde que as evidências apoiam a auditoria, mas não substituem os testes do próprio auditor, na mesma linha da distinção entre atestação e trabalho interno do capítulo 38. O Prof. Brenner pergunta sobre ética. Ela explica como tratou o acesso aos dados dos funcionários e por que o ensaio de falha foi anunciado e excluiu os sistemas de controle em produção.
+
+### 50.3 Reflexão
+
+A banca aprova a tese e elogia o tratamento honesto do estudo do conselho. Na reflexão, Nadia observa que o curso a ensinou a ver a governança como engenharia: requisitos, projeto, verificação, operação e melhoria. Também aprendeu que a governança depende de pessoas, confiança e comunicação clara. Ela planeja entrar na equipe de governança da Ardwell, o que mantém o serviço de monitoramento ao alcance de sua projetista, e conservar, em todos os papéis que assumir, os hábitos de testar premissas, registrar decisões e relatar a incerteza com honestidade.
+
+### Exemplo resolvido
+
+Nadia apresenta e demonstra seu serviço, responde sobre acomodação, confiança das auditorias e ética, e é aprovada na defesa.
+
+> **Caso sintético.** A defesa é sintética.
+
+### Erros e limites
+
+As defesas amostram o conhecimento. As reflexões podem ser idealizadas.
+
+### Exercícios
+
+- **EX148 — Resposta sobre acomodação.** Como Nadia respondeu à preocupação com a acomodação dos responsáveis? *Rubrica:* 3 = os responsáveis continuam revisando exceções e a analista amostra;; 2 = supervisão;; 1 = nada;; 0 = nenhuma.
+- **EX149 — Confiança da auditoria.** O serviço substitui os testes da auditoria externa? *Rubrica:* 3 = não, apoia, mas não substitui;; 2 = não;; 1 = sim;; 0 = nenhuma.
+- **EX150 — Plano de carreira.** O que Nadia planeja depois de se formar? *Rubrica:* 3 = entrar na equipe de governança da Ardwell;; 2 = Ardwell;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX120 (as de EX121–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Nadia Okafor, o Prof. Tomas Brenner, a Kestrel Polytechnic, a Ardwell Power Cooperative e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX150. Nadia Okafor, o Prof. Tomas Brenner, a Kestrel Polytechnic, a Ardwell Power Cooperative e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Se o backlog de achados em aberto está diminuindo, estável ou crescendo.
 
@@ -1867,6 +2273,66 @@ Respostas-modelo para EX001–EX120 (as de EX121–EX150 estão na edição em i
 **EX119.** Um relatório contava duas vezes os achados reabertos, inflando o número em aberto.
 
 **EX120.** Que a verificação precisa ser repetida sempre que o sistema muda.
+
+**EX121.** Autenticação multifator para o acesso remoto, backups offline e tokenização de cartões.
+
+**EX122.** 190 mil.
+
+**EX123.** A vulnerabilidade e a perda potencial, e não só o custo.
+
+**EX124.** Decisões de tratamento por trimestre, tempo entre a proposta e a decisão e se as decisões seguem os maiores riscos residuais.
+
+**EX125.** Porque ela ajudou a projetar o novo pacote do conselho e pode favorecê-lo.
+
+**EX126.** Medição direta de como os relatórios afetam as decisões do conselho.
+
+**EX127.** Alguns controles funcionavam, mas estavam mal documentados, enquanto outros estavam documentados, mas raramente eram executados.
+
+**EX128.** Como as decisões de aceitação de riscos são tomadas e quem as aprova.
+
+**EX129.** O regulador se concentrou em resultados, como tempos de restabelecimento e comunicação, enquanto a certificação se concentrou nos processos do sistema de gestão.
+
+**EX130.** Os controles que exigem julgamento humano.
+
+**EX131.** Evidências automatizadas para pelo menos dezoito de vinte controles.
+
+**EX132.** Envolvendo os responsáveis no desenho dos alertas.
+
+**EX133.** Que os sistemas de origem informam timestamps corretos.
+
+**EX134.** A evidência ausente agora dispara um alerta e conta como coleta falha.
+
+**EX135.** Hash dos arquivos de evidência e armazenamento onde as equipes monitoradas não conseguem alterá-los.
+
+**EX136.** Dezenove de vinte.
+
+**EX137.** Porque depende de um sistema de fornecedor sem exportação.
+
+**EX138.** Um runbook, um responsável para cada coletor, casos de teste e uma lista de problemas conhecidos.
+
+**EX139.** Travamento de um coletor, sistema de origem indisponível e arquivo de evidência alterado.
+
+**EX140.** O arquivo de evidência alterado, detectado só na verificação semanal de integridade.
+
+**EX141.** Diariamente.
+
+**EX142.** Porque permite ao leitor seguir a afirmação de que os controles funcionam até as evidências.
+
+**EX143.** O arquivo de resultados dos testes de controles, control_tests.csv.
+
+**EX144.** Como evidência nova, com data própria, mantendo o resultado original.
+
+**EX145.** Mais decisões de tratamento por trimestre, mas um incidente grave no período pode explicar a mudança.
+
+**EX146.** Por exemplo, um projeto testado de monitoramento contínuo de controles de baixo custo.
+
+**EX147.** Por exemplo, uma única organização e um período curto de operação (também esforço autodeclarado e fator de confusão).
+
+**EX148.** Os responsáveis continuam revisando as exceções e a analista continua amostrando.
+
+**EX149.** Não; apoia uma auditoria externa, mas não substitui os testes do próprio auditor.
+
+**EX150.** Entrar na equipe de governança da Ardwell.
 
 <a id="references"></a>
 ## Referências
