@@ -149,7 +149,7 @@ Amara's literature matrix of 34 sources supports this statement: only four repor
 
 ### Worked example
 
-Amara builds a literature matrix of 34 sources with columns for claim, method, data, setting and limitation. Only four report any measured exposure time, and none compares admission control with scanning in the same organisation. Prof. Lund accepts the gap statement after she removes one claim that rested on a vendor blog without data.
+Amara builds a literature matrix of 34 sources with columns for claim, method, data, setting and limitation. The method and data columns are what let her separate the four sources with measured exposure times from the rest.
 
 > **Synthetic case.** The matrix counts are synthetic.
 
@@ -238,7 +238,7 @@ Half the labelled sample is drawn from workloads with documented host-access nee
 
 ### Worked example
 
-The proposal panel asks why kappa rather than raw agreement. Amara shows that with an uneven mix of labels, chance agreement is high, so raw agreement flatters the labels; kappa corrects for that. The panel approves the proposal with one condition: report the exception workloads separately.
+The proposal panel asks why kappa rather than raw agreement. Amara shows that with an uneven mix of labels, chance agreement is high, so raw agreement flatters the labels; kappa corrects for that. The panel then approves the proposal with the condition recorded in 3.5.
 
 > **Synthetic case.** Labels and panel are synthetic.
 
