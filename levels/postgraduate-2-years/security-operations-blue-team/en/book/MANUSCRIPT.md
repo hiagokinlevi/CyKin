@@ -46,13 +46,29 @@ You will (1) frame SOC decisions under uncertainty with explicit costs; (2) comp
 
 **Daniel Okoro** leads the SOC of the fictional **Meridian Health Insurance** and studies on a postgraduate programme at the fictional **Hollins College**, tutored by **Prof. Miriam Achebe**. Every night his analysts decide whether to contain, monitor or close alerts without knowing for certain what is happening. Postgraduate practice makes those decisions explicit.
 
+Section one point one develops advanced security decision-making with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section one point one, Prof. Miriam Achebe expects advanced claims to carry owners and dates.
+
 ### 1.2 The case
 
 At 23:40 an alert reports a contractor account exporting claims records from an unusual address. Analysts estimate a 30% chance it is malicious. Disabling the account would stop a contractor's legitimate batch job; waiting risks a large disclosure of health data.
 
+Section one point two develops advanced security decision-making with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section one point two, Prof. Miriam Achebe expects advanced claims to carry owners and dates.
+
+Section one point two treats decisions under uncertainty the as testable only when evidence and ticket IDs are recorded.
+
 ### 1.3 Expected cost
 
 Each option has a cost if the activity is malicious and a cost if benign. Multiplying by probabilities and summing gives an expected cost. It does not predict what will happen; it shows which option is least costly on average given current beliefs.
+
+Section one point three develops advanced security decision-making with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section one point three, Prof. Miriam Achebe expects advanced claims to carry owners and dates.
+
+Section one point three treats decisions under uncertainty the as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — comparing response options
 
@@ -86,13 +102,33 @@ p(malicious)=0.30 -> lowest expected cost: contain now (disable account)
 
 At a 30% chance of malice, containing now has an expected cost of 11.6k, against 42.4k for monitoring and 180k for closing. At 5%, monitoring becomes cheaper. The best choice depends on the probability, so better evidence is worth gathering quickly.
 
+Section one point four develops advanced security decision-making with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section one point four, Prof. Miriam Achebe expects advanced claims to carry owners and dates.
+
+Section one point four treats decisions under uncertainty the as testable only when evidence and ticket IDs are recorded.
+
 ### 1.5 Beyond numbers
 
 Costs of health-data disclosure include regulatory, contractual and human harm that is hard to price. Decisions also respect legal duties that are not trade-offs. Expected cost informs judgement; it does not replace it.
 
+Section one point five develops advanced security decision-making with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section one point five, Prof. Miriam Achebe expects advanced claims to carry owners and dates.
+
+Section one point five treats decisions under uncertainty the as testable only when evidence and ticket IDs are recorded.
+
 ### 1.6 Recording decisions
 
 The on-call manager logs the decision, the probability estimate, the evidence and who decided. Reviewers can later judge the decision on what was known, not on hindsight.
+
+Section one point six develops advanced security decision-making with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section one point six, Prof. Miriam Achebe expects advanced claims to carry owners and dates.
+
+Section one point six treats decisions under uncertainty the as testable only when evidence and ticket IDs are recorded.
+
+For section one point six, Meridian Health Insurance will not accept advanced work without a written trail.
 
 ### Worked example
 
@@ -132,29 +168,81 @@ You will (1) survey current SOC practice and its tensions; (2) relate practice t
 
 Current SOCs combine SIEM or data platforms, endpoint detection, identity analytics, case management and automation. Many use managed services for some hours or functions. Knerler, Parker and Zimmerman (2022) describe eleven strategies covering mission, authority, structure, staffing, response, intelligence, data, tools, communication, measurement and expansion.
 
+Section two point one develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section two point one, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section two point one treats the modern soc detection as testable only when evidence and ticket IDs are recorded.
+
 ### 2.2 Detection engineering
 
 Detections are increasingly managed as code in shared formats such as Sigma, mapped to MITRE ATT&CK and tested before release. This shifts SOCs from buying content to engineering it.
+
+Section two point two develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section two point two, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section two point two treats the modern soc detection as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 Alert overload
 
 Studies continue to report alert fatigue and benign triggers (Alahmadi et al., 2022). Automation and better context are common responses, with mixed results.
 
+Section two point three develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section two point three, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section two point three treats the modern soc detection as testable only when evidence and ticket IDs are recorded.
+
+For section two point three, Meridian Health Insurance will not accept security work without a written trail.
+
 ### 2.4 Managed detection and response
 
 Outsourcing night or tier-1 work gives coverage but risks losing local knowledge. Contracts need clear escalation, data access and quality measures.
+
+Section two point four develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section two point four, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section two point four treats the modern soc detection as testable only when evidence and ticket IDs are recorded.
+
+For section two point four, Meridian Health Insurance will not accept security work without a written trail.
 
 ### 2.5 Maturity assessment
 
 The SOC-CMM (van Os, 2016) lets SOCs self-assess across business, people, process, technology and services. Meridian's last assessment showed strong tooling but weak service definitions.
 
+Section two point five develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section two point five, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section two point five treats the modern soc detection as testable only when evidence and ticket IDs are recorded.
+
+For section two point five, Meridian Health Insurance will not accept security work without a written trail.
+
 ### 2.6 Regulation
 
 Health insurers face data protection and sector regulation; incident reporting timelines shape SOC procedures.
 
+Section two point six develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section two point six, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section two point six treats the modern soc detection as testable only when evidence and ticket IDs are recorded.
+
+For section two point six, Meridian Health Insurance will not accept security work without a written trail.
+
 ### 2.7 Comparing with peers
 
 Daniel joins a sector forum where SOC leads share anonymised practices and metrics.
+
+Section two point seven develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section two point seven, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section two point seven treats the modern soc detection as testable only when evidence and ticket IDs are recorded.
+
+For section two point seven, Meridian Health Insurance will not accept security work without a written trail.
 
 ### Threat-informed defence
 
@@ -198,13 +286,33 @@ You will (1) use specialist evidence such as access logs, peer baselines and bus
 
 Some SOC questions need evidence beyond network and endpoint logs: application access logs, HR role data and business workload. At Meridian, claims-system logs record each record a handler opens.
 
+Section three point one develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section three point one, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section three point one treats specialist evidence insider risk as testable only when evidence and ticket IDs are recorded.
+
 ### 3.2 Insider risk
 
 Insurers worry about staff viewing records without business need, for curiosity or fraud. Monitoring such access must be fair: people are compared with peers doing similar work, not with the whole company.
 
+Section three point two develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section three point two, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section three point two treats specialist evidence insider risk as testable only when evidence and ticket IDs are recorded.
+
 ### 3.3 Peer baselines
 
 A peer-group median is robust to one unusual person. Comparing each handler's weekly views with their team's median highlights unusual workloads.
+
+Section three point three develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section three point three, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section three point three treats specialist evidence insider risk as testable only when evidence and ticket IDs are recorded.
+
+For section three point three, Meridian Health Insurance will not accept security work without a written trail.
 
 ### Lab — peer comparison
 
@@ -239,13 +347,31 @@ team-B h15 views=  131 peer median=  128 ratio=1.02
 
 In team A, h04 viewed 1,260 records against a peer median of 410 — a ratio of 3.07, flagged for review. All other handlers in both teams are within 0.92–1.05 of their medians. Team B's lower volumes do not distort team A's comparison because each team has its own baseline.
 
+Section three point four develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section three point four, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
 ### 3.5 Interpreting outliers
 
 A flag is a question, not an accusation. High volume may reflect assignment to a backlog, a special project or a data-quality task.
 
+Section three point five develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section three point five, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section three point five treats specialist evidence insider risk as testable only when evidence and ticket IDs are recorded.
+
+For section three point five, Meridian Health Insurance will not accept security work without a written trail.
+
 ### 3.6 Fairness and privacy
 
 Insider-risk monitoring is governed by policy agreed with HR, legal and staff representatives. Reviews are done by a small, trained group; managers are not told of flags unless review finds a concern.
+
+Section three point six develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section three point six, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section three point six treats specialist evidence insider risk as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -285,29 +411,81 @@ You will (1) analyse SOC risk decisions with ethical frameworks; (2) balance sec
 
 SOC decisions are risk decisions with ethical content: monitoring staff, sharing data with partners and choosing whom to notify after a breach.
 
+Section four point one develops advanced risk and ethics with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section four point one, Prof. Miriam Achebe expects advanced claims to carry owners and dates.
+
+Section four point one treats risk and ethics together as testable only when evidence and ticket IDs are recorded.
+
+For section four point one, Meridian Health Insurance will not accept advanced work without a written trail.
+
 ### 4.2 Ethical lenses
 
 Consequences ask which choice produces the least harm. Duties ask what obligations apply regardless of outcome, such as honesty to affected people. Fairness asks whether burdens fall equally. Using several lenses reveals considerations one would miss.
+
+Section four point two develops advanced risk and ethics with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section four point two, Prof. Miriam Achebe expects advanced claims to carry owners and dates.
+
+Section four point two treats risk and ethics together as testable only when evidence and ticket IDs are recorded.
 
 ### 4.3 Business pressure
 
 After the contractor incident, a business manager asks the SOC to delay notifying affected policyholders until after a product launch. Legal duties and honesty make that unacceptable; Daniel escalates to the CISO and the data protection officer.
 
+Section four point three develops advanced risk and ethics with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section four point three, Prof. Miriam Achebe expects advanced claims to carry owners and dates.
+
+Section four point three treats risk and ethics together as testable only when evidence and ticket IDs are recorded.
+
 ### 4.4 Employee trust
 
 Heavy-handed monitoring can damage trust and reporting. Transparent policies, proportionate monitoring and fair review keep trust.
+
+Section four point four develops advanced risk and ethics with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section four point four, Prof. Miriam Achebe expects advanced claims to carry owners and dates.
+
+Section four point four treats risk and ethics together as testable only when evidence and ticket IDs are recorded.
+
+For section four point four, Meridian Health Insurance will not accept advanced work without a written trail.
 
 ### 4.5 Safeguards
 
 Meridian's safeguards: written purpose for each monitoring use, minimum access for reviewers, audit of SOC searches, and an ethics review for new monitoring of people.
 
+Section four point five develops advanced risk and ethics with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section four point five, Prof. Miriam Achebe expects advanced claims to carry owners and dates.
+
+Section four point five treats risk and ethics together as testable only when evidence and ticket IDs are recorded.
+
+For section four point five, Meridian Health Insurance will not accept advanced work without a written trail.
+
 ### 4.6 Third parties
 
 Contractors and partners have access too; contracts set their security obligations and the SOC's rights to monitor and investigate.
 
+Section four point six develops advanced risk and ethics with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section four point six, Prof. Miriam Achebe expects advanced claims to carry owners and dates.
+
+Section four point six treats risk and ethics together as testable only when evidence and ticket IDs are recorded.
+
+For section four point six, Meridian Health Insurance will not accept advanced work without a written trail.
+
 ### 4.7 Accountability
 
 Decisions with ethical weight are recorded with the reasoning, so they can be examined later.
+
+Section four point seven develops advanced risk and ethics with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section four point seven, Prof. Miriam Achebe expects advanced claims to carry owners and dates.
+
+Section four point seven treats risk and ethics together as testable only when evidence and ticket IDs are recorded.
+
+For section four point seven, Meridian Health Insurance will not accept advanced work without a written trail.
 
 ### Speaking up
 
@@ -351,29 +529,79 @@ You will (1) generate alternative designs for SOC coverage; (2) evaluate in-hous
 
 Meridian's SOC is staffed 07:00–19:00; nights rely on on-call engineers. The contractor incident at 23:40 was caught only because the on-call engineer was awake. The board asks for 24/7 coverage options.
 
+Section five point one develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section five point one, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section five point one treats the design question alternatives as testable only when evidence and ticket IDs are recorded.
+
 ### 5.2 Alternatives
 
 Option A: hire for in-house 24/7 (five more analysts). Option B: managed detection and response for nights. Option C: hybrid — managed tier-1 at night with in-house escalation and an automated containment playbook for high-confidence alerts.
+
+Section five point two develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section five point two, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section five point two treats the design question alternatives as testable only when evidence and ticket IDs are recorded.
 
 ### 5.3 Criteria
 
 Detection quality, response speed, cost, local knowledge, data control and resilience. Each is weighted with the CISO.
 
+Section five point three develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section five point three, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section five point three treats the design question alternatives as testable only when evidence and ticket IDs are recorded.
+
+For section five point three, Meridian Health Insurance will not accept security work without a written trail.
+
 ### 5.4 Scoring
 
 A scores high on knowledge and control but high cost and hiring risk; B is cheapest but weakest on knowledge; C balances them.
+
+Section five point four develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section five point four, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section five point four treats the design question alternatives as testable only when evidence and ticket IDs are recorded.
+
+For section five point four, Meridian Health Insurance will not accept security work without a written trail.
 
 ### 5.5 Sensitivity
 
 Daniel checks whether the recommendation changes if weights shift. C stays best unless cost weight is doubled, when B wins narrowly. The recommendation is therefore robust to reasonable disagreement.
 
+Section five point five develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section five point five, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section five point five treats the design question alternatives as testable only when evidence and ticket IDs are recorded.
+
 ### 5.6 Risks of C
 
 Managed analysts may escalate too much or too little; automation could wrongly disable accounts. Mitigations: quality reviews, escalation targets, automation limits.
 
+Section five point six develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section five point six, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section five point six treats the design question alternatives as testable only when evidence and ticket IDs are recorded.
+
+For section five point six, Meridian Health Insurance will not accept security work without a written trail.
+
 ### 5.7 Presenting
 
 The board paper shows options, scores, sensitivity and risks on two pages.
+
+Section five point seven develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section five point seven, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section five point seven treats the design question alternatives as testable only when evidence and ticket IDs are recorded.
+
+For section five point seven, Meridian Health Insurance will not accept security work without a written trail.
 
 ### Stakeholder views
 
@@ -417,13 +645,33 @@ You will (1) design a controlled evaluation of a SOC process change; (2) analyse
 
 Daniel's team writes a new triage playbook for claims-export alerts that starts with three automated enrichment lookups — assignment data, contractor status and export destination — before analyst review.
 
+Section six point one develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section six point one, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section six point one treats the change evaluation design as testable only when evidence and ticket IDs are recorded.
+
 ### 6.2 Evaluation design
 
 For four weeks, alerts are assigned alternately to the old and new playbook by alert number, so busy and quiet periods fall into both groups. Analysts rotate between playbooks. Sixteen alerts fall in each group.
 
+Section six point two develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section six point two, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section six point two treats the change evaluation design as testable only when evidence and ticket IDs are recorded.
+
 ### 6.3 Measure
 
 Triage time in minutes from pickup to decision, plus decision accuracy checked by a senior analyst.
+
+Section six point three develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section six point three, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section six point three treats the change evaluation design as testable only when evidence and ticket IDs are recorded.
+
+For section six point three, Meridian Health Insurance will not accept security work without a written trail.
 
 ### Lab — bootstrap difference in medians
 
@@ -454,13 +702,33 @@ bootstrap 95% interval [3.5, 11.0]
 
 The median triage time fell from 24.5 to 17.5 minutes, a difference of 7.0. The bootstrap 95% interval for the difference is 3.5 to 11.0 minutes, which excludes zero. Medians suit skewed times; bootstrapping gives an interval without assuming a distribution.
 
+Section six point four develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section six point four, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section six point four treats the change evaluation design as testable only when evidence and ticket IDs are recorded.
+
 ### 6.5 Accuracy
 
 The senior analyst found one wrong decision in each group, so faster triage did not cost accuracy in this sample.
 
+Section six point five develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section six point five, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section six point five treats the change evaluation design as testable only when evidence and ticket IDs are recorded.
+
+For section six point five, Meridian Health Insurance will not accept security work without a written trail.
+
 ### 6.6 Confounding
 
 Alternating assignment protects against time-of-day effects; rotation protects against one fast analyst using one playbook. Remaining risk: analysts knew which playbook they used and may have tried harder with the new one.
+
+Section six point six develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section six point six, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section six point six treats the change evaluation design as testable only when evidence and ticket IDs are recorded.
 
 ### Practical significance
 
@@ -508,29 +776,81 @@ You will (1) integrate the SOC with business units, IT, legal and HR; (2) define
 
 NIST CSF 2.0's Govern function places cybersecurity within enterprise risk management. The SOC is one part: it detects and responds, but depends on business units for context and on IT for action.
 
+Section seven point one develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section seven point one, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section seven point one treats the soc in the as testable only when evidence and ticket IDs are recorded.
+
 ### 7.2 Service levels
 
 Daniel's service catalogue sets levels: P1 alerts acknowledged in 15 minutes, investigations started within 4 hours, monthly reports to each business unit.
+
+Section seven point two develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section seven point two, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section seven point two treats the soc in the as testable only when evidence and ticket IDs are recorded.
+
+For section seven point two, Meridian Health Insurance will not accept security work without a written trail.
 
 ### 7.3 Escalation paths
 
 For claims-system alerts, escalation goes to the claims operations manager for business context, to IT for account actions, to legal and the DPO for possible breaches, and to HR only when misconduct is suspected after review.
 
+Section seven point three develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section seven point three, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section seven point three treats the soc in the as testable only when evidence and ticket IDs are recorded.
+
 ### 7.4 Risk reporting
 
 The SOC reports risks in business terms to the enterprise risk committee: likelihood and impact of data disclosure, trends and treatment actions.
+
+Section seven point four develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section seven point four, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section seven point four treats the soc in the as testable only when evidence and ticket IDs are recorded.
+
+For section seven point four, Meridian Health Insurance will not accept security work without a written trail.
 
 ### 7.5 Hybrid model integration
 
 With the managed night service, integration includes data access agreements, an escalation runbook and a shared case system.
 
+Section seven point five develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section seven point five, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section seven point five treats the soc in the as testable only when evidence and ticket IDs are recorded.
+
+For section seven point five, Meridian Health Insurance will not accept security work without a written trail.
+
 ### 7.6 Change management
 
 New monitoring or response capabilities are introduced with communication to affected teams, training and feedback.
 
+Section seven point six develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section seven point six, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section seven point six treats the soc in the as testable only when evidence and ticket IDs are recorded.
+
+For section seven point six, Meridian Health Insurance will not accept security work without a written trail.
+
 ### 7.7 Relationships
 
 Daniel meets each business unit lead quarterly; regular contact makes incident calls smoother.
+
+Section seven point seven develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section seven point seven, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section seven point seven treats the soc in the as testable only when evidence and ticket IDs are recorded.
+
+For section seven point seven, Meridian Health Insurance will not accept security work without a written trail.
 
 ### Measuring integration
 
@@ -574,29 +894,77 @@ You will (1) handle ambiguous cases where evidence conflicts; (2) manage cases i
 
 Difficult cases are those where evidence points in several directions, stakes are high and time is short. The SOC must decide without certainty and revise as evidence arrives.
 
+Section eight point one develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section eight point one, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section eight point one treats ambiguity case one the as testable only when evidence and ticket IDs are recorded.
+
 ### 8.2 Case one: the partner
 
 A claims-processing partner reports that one of its staff may have copied Meridian policyholder data. Meridian's logs show the partner account accessed 2,300 records over a weekend, within its contract scope but at an unusual time.
+
+Section eight point two develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section eight point two, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section eight point two treats ambiguity case one the as testable only when evidence and ticket IDs are recorded.
 
 ### 8.3 Conflicting evidence
 
 The partner says the weekend work was approved overtime; the partner's own SOC suspects misuse. Meridian cannot see the partner's internal systems.
 
+Section eight point three develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section eight point three, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section eight point three treats ambiguity case one the as testable only when evidence and ticket IDs are recorded.
+
+For section eight point three, Meridian Health Insurance will not accept security work without a written trail.
+
 ### 8.4 Actions
 
 Daniel's team preserves Meridian's logs, suspends the partner account's export rights pending review, informs the DPO and legal, and asks the partner for its evidence under the contract's incident clause.
+
+Section eight point four develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section eight point four, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section eight point four treats ambiguity case one the as testable only when evidence and ticket IDs are recorded.
 
 ### 8.5 Communicating uncertainty
 
 To the CISO, Daniel writes: "We know the account accessed 2,300 records within scope at unusual hours. We do not yet know whether data was copied. Likelihood of misuse: moderate, based on the partner SOC's concern. Next update: 18:00."
 
+Section eight point five develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section eight point five, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section eight point five treats ambiguity case one the as testable only when evidence and ticket IDs are recorded.
+
 ### 8.6 Revising
 
 The partner's evidence shows a USB copy of an export. The case becomes a confirmed breach; notification begins.
 
+Section eight point six develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section eight point six, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section eight point six treats ambiguity case one the as testable only when evidence and ticket IDs are recorded.
+
+For section eight point six, Meridian Health Insurance will not accept security work without a written trail.
+
 ### 8.7 Pressure
 
 Under pressure, teams jump to conclusions or freeze. Written hypotheses and update times keep thinking clear.
+
+Section eight point seven develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section eight point seven, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section eight point seven treats ambiguity case one the as testable only when evidence and ticket IDs are recorded.
+
+For section eight point seven, Meridian Health Insurance will not accept security work without a written trail.
 
 ### Regulators
 
@@ -640,9 +1008,23 @@ You will (1) lead a SOC team through change; (2) provide assurance to executives
 
 Leading a SOC means setting direction, protecting analysts from overload, developing people and representing the SOC to the organisation. Knerler, Parker and Zimmerman (2022) stress hiring and growing staff as a core strategy.
 
+Section nine point one develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section nine point one, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section nine point one treats leadership assurance reading the as testable only when evidence and ticket IDs are recorded.
+
 ### 9.2 Assurance
 
 Executives and auditors ask: is the SOC working? Assurance answers with evidence: service-level performance, tested detection coverage, exercise results and incident outcomes.
+
+Section nine point two develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section nine point two, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section nine point two treats leadership assurance reading the as testable only when evidence and ticket IDs are recorded.
+
+For section nine point two, Meridian Health Insurance will not accept security work without a written trail.
 
 ### Lab — assurance indicators
 
@@ -670,17 +1052,47 @@ Jun P1 acknowledged within 15 min: 21/22 = 95%  tested coverage: 68%
 
 P1 acknowledgement within 15 minutes rose from 85% in January to 95% by June, with a dip to 79% in March. Tested coverage of priority techniques rose steadily from 52% to 68%. The March dip coincided with two analysts leaving; the hybrid night model began in April.
 
+Section nine point three develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section nine point three, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section nine point three treats leadership assurance reading the as testable only when evidence and ticket IDs are recorded.
+
 ### 9.4 Honest reporting
 
 Daniel reports the dip and its cause rather than averaging it away. Assurance that hides problems loses credibility when problems appear.
+
+Section nine point four develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section nine point four, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section nine point four treats leadership assurance reading the as testable only when evidence and ticket IDs are recorded.
+
+For section nine point four, Meridian Health Insurance will not accept security work without a written trail.
 
 ### 9.5 Culture
 
 Blameless reviews, time for learning and recognition of good escalations build a culture where analysts raise problems early.
 
+Section nine point five develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section nine point five, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section nine point five treats leadership assurance reading the as testable only when evidence and ticket IDs are recorded.
+
+For section nine point five, Meridian Health Insurance will not accept security work without a written trail.
+
 ### 9.6 People development
 
 Each analyst has a development plan: training, rotation into detection engineering and mentoring.
+
+Section nine point six develops security operations and blue team with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section nine point six, Prof. Miriam Achebe expects security claims to carry owners and dates.
+
+Section nine point six treats leadership assurance reading the as testable only when evidence and ticket IDs are recorded.
+
+For section nine point six, Meridian Health Insurance will not accept security work without a written trail.
 
 ### Managing the provider
 
@@ -724,29 +1136,79 @@ You will (1) read SOC research papers critically; (2) assess methods, samples an
 
 Research can test ideas SOCs adopt on faith. Daniel's programme asks students to critique three papers relevant to their work.
 
+Section ten point one develops research reading and critique with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section ten point one, Prof. Miriam Achebe expects research claims to carry owners and dates.
+
+Section ten point one treats why read research paper as testable only when evidence and ticket IDs are recorded.
+
+For section ten point one, Meridian Health Insurance will not accept research work without a written trail.
+
 ### 10.2 Paper one
 
 Kokulu et al. (2019) interviewed SOC staff and found mismatches between managers and analysts on issues such as metrics and automation. Strength: rich qualitative data from several SOCs. Limit: interview samples may not represent all SOCs.
+
+Section ten point two develops research reading and critique with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section ten point two, Prof. Miriam Achebe expects research claims to carry owners and dates.
+
+Section ten point two treats why read research paper as testable only when evidence and ticket IDs are recorded.
 
 ### 10.3 Paper two
 
 Alahmadi, Axon and Martinovic (2022) surveyed and interviewed SOC practitioners about false positives, finding many are benign triggers. Strength: distinguishes types of false positive. Limit: self-reported perceptions, not measured alert data.
 
+Section ten point three develops research reading and critique with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section ten point three, Prof. Miriam Achebe expects research claims to carry owners and dates.
+
+Section ten point three treats why read research paper as testable only when evidence and ticket IDs are recorded.
+
 ### 10.4 Paper three
 
 Hassan et al. (2019) proposed NoDoze, ranking alerts using provenance graphs, and evaluated it on enterprise data. Strength: quantitative evaluation. Limit: requires detailed provenance data many SOCs do not collect.
+
+Section ten point four develops research reading and critique with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section ten point four, Prof. Miriam Achebe expects research claims to carry owners and dates.
+
+Section ten point four treats why read research paper as testable only when evidence and ticket IDs are recorded.
 
 ### 10.5 Critique structure
 
 Question, method, sample, findings, validity, relevance to practice and open questions.
 
+Section ten point five develops research reading and critique with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section ten point five, Prof. Miriam Achebe expects research claims to carry owners and dates.
+
+Section ten point five treats why read research paper as testable only when evidence and ticket IDs are recorded.
+
+For section ten point five, Meridian Health Insurance will not accept research work without a written trail.
+
 ### 10.6 Relating to Meridian
 
 Kokulu's mismatch finding prompts Daniel to survey his own analysts about metrics; Alahmadi's distinction informs how Meridian labels closed alerts.
 
+Section ten point six develops research reading and critique with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section ten point six, Prof. Miriam Achebe expects research claims to carry owners and dates.
+
+Section ten point six treats why read research paper as testable only when evidence and ticket IDs are recorded.
+
+For section ten point six, Meridian Health Insurance will not accept research work without a written trail.
+
 ### 10.7 Avoiding cherry-picking
 
 Daniel searches for studies disagreeing with each paper's conclusions and notes them.
+
+Section ten point seven develops research reading and critique with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section ten point seven, Prof. Miriam Achebe expects research claims to carry owners and dates.
+
+Section ten point seven treats why read research paper as testable only when evidence and ticket IDs are recorded.
+
+For section ten point seven, Meridian Health Insurance will not accept research work without a written trail.
 
 ### Reading groups
 
@@ -790,29 +1252,83 @@ You will (1) plan and execute an applied SOC improvement project; (2) measure ba
 
 Daniel's applied project reduces time to contain compromised contractor accounts, the weakness exposed in chapter 1.
 
+Section eleven point one develops applied project with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section eleven point one, Prof. Miriam Achebe expects applied claims to carry owners and dates.
+
+Section eleven point one treats the project baseline interventions as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point one, Meridian Health Insurance will not accept applied work without a written trail.
+
 ### 11.2 Baseline
 
 Over the previous six months, four contractor compromises took a median of 3.5 hours from first alert to containment, mostly waiting for contractor managers to confirm activity.
+
+Section eleven point two develops applied project with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section eleven point two, Prof. Miriam Achebe expects applied claims to carry owners and dates.
+
+Section eleven point two treats the project baseline interventions as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point two, Meridian Health Insurance will not accept applied work without a written trail.
 
 ### 11.3 Interventions
 
 A contractor directory with 24/7 contacts; an automated step that sends the contractor's manager a confirmation request; and a rule allowing analysts to suspend contractor export rights immediately for high-severity alerts, with review within four hours.
 
+Section eleven point three develops applied project with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section eleven point three, Prof. Miriam Achebe expects applied claims to carry owners and dates.
+
+Section eleven point three treats the project baseline interventions as testable only when evidence and ticket IDs are recorded.
+
 ### 11.4 Stakeholders
 
 Procurement (contracts must require 24/7 contacts), contractor managers, IT and legal. Procurement adds a clause to new contracts.
+
+Section eleven point four develops applied project with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section eleven point four, Prof. Miriam Achebe expects applied claims to carry owners and dates.
+
+Section eleven point four treats the project baseline interventions as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point four, Meridian Health Insurance will not accept applied work without a written trail.
 
 ### 11.5 Risks
 
 Wrongful suspension disrupts contractor work; mitigated by fast review and limiting suspension to export rights, not all access.
 
+Section eleven point five develops applied project with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section eleven point five, Prof. Miriam Achebe expects applied claims to carry owners and dates.
+
+Section eleven point five treats the project baseline interventions as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point five, Meridian Health Insurance will not accept applied work without a written trail.
+
 ### 11.6 Measurement
 
 Time to contain for contractor compromises and test scenarios; count of wrongful suspensions.
 
+Section eleven point six develops applied project with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section eleven point six, Prof. Miriam Achebe expects applied claims to carry owners and dates.
+
+Section eleven point six treats the project baseline interventions as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point six, Meridian Health Insurance will not accept applied work without a written trail.
+
 ### 11.7 Result
 
 Over the next four months, two real compromises and six test scenarios were contained in a median of 22 minutes. One wrongful suspension lasted 40 minutes before review restored access.
+
+Section eleven point seven develops applied project with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section eleven point seven, Prof. Miriam Achebe expects applied claims to carry owners and dates.
+
+Section eleven point seven treats the project baseline interventions as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point seven, Meridian Health Insurance will not accept applied work without a written trail.
 
 ### Project governance
 
@@ -860,29 +1376,81 @@ You will (1) review learning and outcomes across the programme; (2) transfer met
 
 The programme took Daniel from explicit decision-making (chapter 1) through specialist evidence, ethics, design, evaluation, integration, difficult cases, assurance and research to an applied project.
 
+Section twelve point one develops final review and transfer with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section twelve point one, Prof. Miriam Achebe expects final claims to carry owners and dates.
+
+Section twelve point one treats looking back transferable methods as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point one, Meridian Health Insurance will not accept final work without a written trail.
+
 ### 12.2 Transferable methods
 
 Expected-cost reasoning, peer baselines, controlled evaluation with robust statistics, structured critique and honest assurance apply beyond claims and contractors.
+
+Section twelve point two develops final review and transfer with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section twelve point two, Prof. Miriam Achebe expects final claims to carry owners and dates.
+
+Section twelve point two treats looking back transferable methods as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point two, Meridian Health Insurance will not accept final work without a written trail.
 
 ### 12.3 Transfer example
 
 Daniel applies controlled evaluation to the managed provider's escalation quality, comparing escalations before and after a template change.
 
+Section twelve point three develops final review and transfer with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section twelve point three, Prof. Miriam Achebe expects final claims to carry owners and dates.
+
+Section twelve point three treats looking back transferable methods as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point three, Meridian Health Insurance will not accept final work without a written trail.
+
 ### 12.4 Sustainability
 
 Improvements must survive staff changes: playbooks documented, owners named, metrics automated and reviews scheduled.
+
+Section twelve point four develops final review and transfer with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section twelve point four, Prof. Miriam Achebe expects final claims to carry owners and dates.
+
+Section twelve point four treats looking back transferable methods as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point four, Meridian Health Insurance will not accept final work without a written trail.
 
 ### 12.5 Final review
 
 The programme's final review is a viva with Prof. Achebe and an external SOC leader. Questions probe judgement: "When would you not use expected cost?" "How would you know insider monitoring had become unfair?"
 
+Section twelve point five develops final review and transfer with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section twelve point five, Prof. Miriam Achebe expects final claims to carry owners and dates.
+
+Section twelve point five treats looking back transferable methods as testable only when evidence and ticket IDs are recorded.
+
 ### 12.6 Answers
 
 On fairness, Daniel cites indicators: rising flags concentrated in one team or role without business explanation, or complaints through staff representatives. Such signs trigger a policy review.
 
+Section twelve point six develops final review and transfer with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section twelve point six, Prof. Miriam Achebe expects final claims to carry owners and dates.
+
+Section twelve point six treats looking back transferable methods as testable only when evidence and ticket IDs are recorded.
+
 ### 12.7 Development
 
 Daniel plans to mentor a senior analyst into team leadership and to present the contractor project at the sector forum.
+
+Section twelve point seven develops final review and transfer with a Meridian Health Insurance note Daniel Okoro can demo offline.
+
+Under section twelve point seven, Prof. Miriam Achebe expects final claims to carry owners and dates.
+
+Section twelve point seven treats looking back transferable methods as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point seven, Meridian Health Insurance will not accept final work without a written trail.
 
 ### Feedback from the team
 
