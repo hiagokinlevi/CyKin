@@ -1,7 +1,7 @@
 # Privacidade e Proteção de Dados: Curso Técnico
 
 - Idioma: português do Brasil (`pt`); curso 050, curso técnico (18 meses). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–12 de 18 já estão escritos em português, com os exercícios EX001–EX048 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 13–18 (EX049–EX072) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–18 de 18 têm texto didático escrito à mão; os exercícios EX001–EX072 têm resoluções correspondentes com rubricas de 0 a 3; os quatro laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de curso técnico que configuram, verificam e documentam os sistemas que guardam dados pessoais numa pequena empresa de saúde.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios encontram dados pessoais em linhas de log sintéticas, conferem que cookies um site sintético grava antes do consentimento, sinalizam visualizações de prontuários fora da clínica do funcionário num log de auditoria sintético e aplicam uma regra de retenção a registros sintéticos de lembretes. A análise jurídica é didática e não constitui aconselhamento jurídico; a LGPD e os atos da ANPD são citados pelo texto oficial e parafraseados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ Regulamento (UE) 2016/679 (GDPR), artigos 4(15), 5, 9(2)(h), 15, 17, 28, 30, 32 
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
-
-Capítulos 13–18: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-13), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -618,11 +616,279 @@ Um acesso incomum é um sinal, não uma prova; siga um procedimento justo.
 - **EX047 — Explicações.** Cite duas explicações possíveis para o padrão de S07. *Rubrica:* 3 = cargo regional, designação temporária, conta compartilhada, curiosidade;; 2 = duas;; 1 = uma;; 0 = nenhuma.
 - **EX048 — Direitos da equipe.** O que a equipe precisa saber sobre os logs de auditoria? *Rubrica:* 3 = os acessos são registrados e revisados;; 2 = correta;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-13"></a>
+
+## Capítulo 13 — Privacidade e proteção de dados: solução de problemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) diagnosticar uma falha de privacidade com método; (2) encontrar a causa raiz; (3) evitar a recorrência.
+
+### 13.1 O sintoma
+
+Uma paciente reclama que recebeu por e-mail uma oferta de clareamento, embora nunca tenha aceitado receber marketing. O encarregado pede a Leila que investigue tecnicamente. Ela começa anotando exatamente o que se sabe: o equivalente sintético da paciente para teste, a data do e-mail, o nome da campanha e a configuração atual de marketing da paciente, que está desligada. Ela resiste a adivinhar as causas antes de reunir os fatos, porque os palpites iniciais tendem a concentrar a atenção no sistema errado e a desperdiçar tempo. Primeiro os fatos, depois as teorias.
+
+### 13.2 Seguir os dados
+
+Leila rastreia como a lista da campanha foi montada. A plataforma de marketing recebe toda noite uma exportação do sistema de gestão clínica com os pacientes que consentiram em receber marketing. Ela compara a exportação da data da campanha com a tabela de consentimentos e descobre que a consulta de exportação usou o campo dos lembretes de consulta, e não o do consentimento para marketing. Todos os pacientes que aceitaram lembretes, cerca de quatro vezes mais pessoas do que as que aceitaram marketing, entraram na lista da campanha naquela noite. A lista afetada é reconstruída para identificar todos os pacientes atingidos.
+
+### 13.3 Causa raiz
+
+A consulta tinha sido editada duas semanas antes, quando o fornecedor do sistema de gestão clínica renomeou vários campos numa atualização que não foi documentada. Quem atualizou a consulta escolheu o campo errado, porque os dois tinham nomes parecidos: contact_ok e marketing_ok. Não havia nenhum teste que conferisse se a exportação continha só pacientes que consentiram. Leila identifica três causas: nomes de campos confusos, nenhuma revisão da mudança na consulta e nenhuma verificação automática. Ela observa que culpar a pessoa deixaria as três causas no lugar, prontas para gerar o próximo erro parecido.
+
+### 13.4 Evitar a recorrência
+
+Leila acrescenta uma verificação automática que compara cada exportação com a tabela de consentimentos antes do envio e interrompe a exportação se algum paciente não tiver consentido; a verificação vale também para as listas de SMS. As mudanças nas consultas passam a exigir revisão por uma segunda pessoa, e o fornecedor é solicitado a documentar com clareza o significado dos campos. A Marlow suprime o marketing para todos os pacientes afetados, envia um pedido de desculpas e registra o evento, cabendo ao encarregado decidir se a notificação é exigida pelo artigo 33 do GDPR, em até 72 horas, ou pela Resolução CD/ANPD nº 15/2024, em três dias úteis.
+
+### Exemplo resolvido
+
+Leila liga um e-mail de marketing indesejado a uma consulta de exportação que usou o campo dos lembretes depois que o fornecedor renomeou os campos, e acrescenta uma verificação automática do consentimento e a revisão por uma segunda pessoa.
+
+> **Caso sintético.** A falha é sintética; o artigo 33 do GDPR e a Resolução CD/ANPD nº 15/2024 são reais.
+
+### Erros e limites
+
+Uma correção rápida só na consulta não impediria o próximo erro parecido.
+
+### Exercícios
+
+- **EX049 — Primeiro passo.** O que Leila fez antes de adivinhar as causas? *Rubrica:* 3 = anotou os fatos conhecidos;; 2 = menciona fatos;; 1 = adivinhou;; 0 = nenhuma.
+- **EX050 — Campo errado.** Que campo a exportação usou por engano? *Rubrica:* 3 = o campo dos lembretes, contact_ok;; 2 = correta;; 1 = nada;; 0 = nenhuma.
+- **EX051 — Três causas.** Cite as três causas que Leila encontrou. *Rubrica:* 3 = nomes confusos, nenhuma revisão, nenhuma verificação automática;; 2 = todas;; 1 = uma;; 0 = nenhuma.
+- **EX052 — Verificação automática.** O que faz a nova verificação? *Rubrica:* 3 = interrompe exportações com pacientes que não consentiram;; 2 = correta;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Privacidade e proteção de dados: automação
+
+### Objetivos de aprendizagem
+
+Você vai (1) automatizar uma regra de retenção; (2) tratar as exceções; (3) monitorar a automação.
+
+### 14.1 A regra de retenção
+
+Os registros de lembretes de consulta, que guardam o telefone, o horário da consulta e a situação da entrega, são necessários por cerca de um ano para resolver reclamações e conferir problemas de entrega. A tabela de retenção da Marlow fixa 365 dias. Os prontuários clínicos seguem regras profissionais mais longas e não fazem parte desta rotina. Leila escreve a regra com precisão: excluir os registros de lembrete cuja data de consulta seja mais de 365 dias anterior à data da execução, exceto os ligados a uma reclamação em aberto. Uma regra precisa é mais fácil de automatizar e de explicar aos auditores.
+
+### 14.2 O laboratório da retenção
+
+O laboratório aplica a regra a 1.200 registros sintéticos de lembretes. Encontra 712, 59,3%, com mais de 365 dias, e o registro mais antigo tem 900 dias. O resultado mostra que os lembretes nunca foram excluídos desde o início do serviço de SMS, então a maioria já ultrapassou sua finalidade. Leila aponta que cada registro em excesso contém um telefone ligado a uma consulta odontológica, que ficaria exposto se o banco de lembretes sofresse uma violação; a exclusão, portanto, reduz o risco diretamente. Apagar os 712 registros vencidos remove a maior parte dos telefones do banco sem afetar nenhuma consulta atual.
+
+### 14.3 Exceções e segurança
+
+Antes de ativar a exclusão, Leila acrescenta uma marcação de exceção para os registros ligados a reclamações em aberto, definida pela equipe de reclamações. Ela roda a rotina primeiro em modo somente relatório, listando o que seria excluído sem excluir nada, e o diretor de operações revisa as contagens. Só então a exclusão é ligada. Toda noite, a rotina grava num log um resumo das contagens excluídas e retidas, sem listar telefones. Ela explica que as execuções somente relatório são uma forma simples de pegar erros nas regras antes que os dados se percam de forma irreversível.
+
+### 14.4 Monitorar a rotina
+
+A rotina envia uma mensagem diária de sucesso com as contagens. Se nenhuma mensagem chegar, o prestador de TI recebe um alerta. A cada trimestre, Leila confere se o registro de lembrete mais antigo tem menos de 366 dias e se os registros retidos têm uma referência de reclamação vigente; as duas verificações levam minutos. Esse monitoramento enfrenta a falha silenciosa do capítulo 8. O Sr. Okafor observa que a automação aplica a limitação da conservação com confiabilidade, mas só se alguém perceber quando ela para, e é por isso que a mensagem de sucesso importa tanto quanto a própria rotina.
+
+### Laboratório — Registros de lembretes além do prazo de retenção
+
+```python
+"""Apply a retention rule to synthetic appointment-reminder records (stdlib only)."""
+import random, datetime
+random.seed(11)
+today = datetime.date(2026, 10, 1)
+recs = [(i, today - datetime.timedelta(days=random.randint(0, 900))) for i in range(1200)]
+keep_days = 365
+expired = [r for r in recs if (today - r[1]).days > keep_days]
+oldest = max((today - d).days for _, d in recs)
+print(f"reminder records {len(recs)}; older than {keep_days} days {len(expired)} ({100*len(expired)/len(recs):.1f}%)")
+print(f"oldest record {oldest} days")
+```
+
+Execute com `python3 lab_retention.py`. Saída verificada:
+
+```text
+reminder records 1200; older than 365 days 712 (59.3%)
+oldest record 900 days
+```
+
+### Exemplo resolvido
+
+Leila encontra 712 de 1.200 registros de lembretes (59,3%) com mais de 365 dias, acrescenta uma exceção para reclamações, roda primeiro em modo somente relatório e depois ativa a exclusão, com mensagens diárias de sucesso e verificações trimestrais.
+
+> **Caso sintético.** Os registros são sintéticos.
+
+### Erros e limites
+
+Os backups ainda podem guardar registros excluídos até expirarem; documente a retenção dos backups.
+
+### Exercícios
+
+- **EX053 — Além da retenção.** Quantos registros de lembretes estavam além do prazo? *Rubrica:* 3 = 712 de 1.200, 59,3%;; 2 = aproximada;; 1 = errada;; 0 = nenhuma.
+- **EX054 — Registro mais antigo.** Qual era a idade do registro mais antigo? *Rubrica:* 3 = 900 dias;; 2 = correta;; 1 = errada;; 0 = nenhuma.
+- **EX055 — Somente relatório.** Por que rodar primeiro em modo somente relatório? *Rubrica:* 3 = pegar erros na regra antes de perder dados;; 2 = menciona erros;; 1 = nada;; 0 = nenhuma.
+- **EX056 — Exceção.** Que registros ficam retidos? *Rubrica:* 3 = os ligados a reclamações em aberto;; 2 = correta;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Privacidade e proteção de dados: integração e dependências
+
+### Objetivos de aprendizagem
+
+Você vai (1) avaliar uma nova integração; (2) mapear as dependências; (3) limitar os dados compartilhados.
+
+### 15.1 A nova integração
+
+A Marlow quer ligar o sistema de gestão clínica a um serviço de avaliações online que envia e-mails aos pacientes depois das consultas pedindo uma nota. Leila avalia tecnicamente a integração antes de qualquer conexão. Pergunta de que dados o serviço precisa, o que guarda, onde, por quanto tempo, quem são seus suboperadores e como os pacientes podem recusar. A integração padrão do fornecedor pede nomes, e-mails, tipos de consulta e nomes dos dentistas, e publica por padrão as avaliações com o primeiro nome e o tipo de consulta. Leila registra cada resposta por escrito.
+
+### 15.2 Dependências
+
+Leila mapeia as dependências: o serviço de avaliações depende de um provedor de envio de e-mails e de uma empresa de hospedagem em nuvem, ambos suboperadores listados no contrato. A integração depende da interface do sistema de gestão clínica, que muda quando o fornecedor faz atualizações. Uma falha em qualquer parte poderia enviar e-mails a pacientes que recusaram ou publicar detalhes que eles não esperavam. Ela observa que cada dependência acrescenta uma parte que pode tratar dados de pacientes e um ponto onde a configuração pode se desviar, então as dependências pertencem ao modelo de tratamento.
+
+### 15.3 Limitar os dados
+
+Leila recomenda enviar só o primeiro nome, o e-mail e a clínica, sem o tipo de consulta nem o dentista, porque um pedido de avaliação não precisa deles, e tipos de consulta como implantes ou ortodontia revelam informações de saúde. A publicação dos tipos de consulta é desligada. Os pacientes que recusaram mensagens não essenciais são excluídos na origem, por um filtro na exportação, e não pelo serviço de avaliações. O encarregado pede uma avaliação de legítimo interesse e um contrato de operador antes de a integração entrar em produção, para que a base legal e as obrigações do fornecedor fiquem documentadas.
+
+### 15.4 Testar a integração
+
+Leila testa com pacientes sintéticos, incluindo um que recusou mensagens e outro com consulta de implante. O que recusou não recebe nada. O pedido do paciente do implante não traz o tipo de consulta, e uma avaliação de teste é publicada sem detalhes do tratamento. Ela também confere que excluir um paciente no sistema clínico leva à exclusão no serviço de avaliações dentro dos trinta dias combinados. Os três testes passam. A integração entra em produção numa clínica, e Leila agenda um novo teste para depois da próxima atualização do fornecedor, porque as atualizações costumam mudar os padrões.
+
+### Exemplo resolvido
+
+Leila avalia uma integração de avaliações, mapeia os suboperadores e as dependências da interface, limita os campos compartilhados a primeiro nome, e-mail e clínica, filtra as recusas na origem e testa com pacientes sintéticos.
+
+> **Caso sintético.** A integração é sintética; os contratos do artigo 28 do GDPR e as avaliações de legítimo interesse são exigências reais.
+
+### Erros e limites
+
+Os fornecedores mudam os padrões nas atualizações; teste de novo depois de cada uma.
+
+### Exercícios
+
+- **EX057 — Campos padrão.** O que a integração padrão do fornecedor pedia? *Rubrica:* 3 = nomes, e-mails, tipos de consulta, nomes dos dentistas;; 2 = a maioria;; 1 = um;; 0 = nenhuma.
+- **EX058 — Tipo de consulta.** Por que retirar o tipo de consulta? *Rubrica:* 3 = revela informações de saúde e é desnecessário;; 2 = menciona saúde;; 1 = nada;; 0 = nenhuma.
+- **EX059 — Filtro das recusas.** Onde os pacientes que recusaram são filtrados? *Rubrica:* 3 = na exportação de origem;; 2 = correta;; 1 = no fornecedor;; 0 = nenhuma.
+- **EX060 — Teste de exclusão.** Que comportamento de exclusão foi testado? *Rubrica:* 3 = a exclusão chega ao serviço de avaliações em até trinta dias;; 2 = correta;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Documentação técnica e segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever documentação técnica clara para os controles de privacidade; (2) incluir segurança e reversão; (3) manter a documentação atualizada.
+
+### 16.1 Por que a documentação importa
+
+O prestador de TI da Marlow troca de equipe a cada poucos anos, e os gerentes mudam de clínica. Leila descobre que várias configurações de privacidade, como as zonas de rede e a rotina de exclusão dos lembretes, são entendidas por uma única pessoa; hoje, um único técnico do prestador concentra a maior parte desse conhecimento. Se essa pessoa sair, ninguém saberá por que uma configuração existe nem como conferi-la. O artigo 5(2) exige que a Marlow demonstre a conformidade, o que é impossível se ninguém consegue explicar os controles. A documentação transforma conhecimento pessoal em conhecimento da organização.
+
+### 16.2 Estrutura de um documento de controle
+
+Leila escreve um documento curto por controle, com estrutura fixa: finalidade, risco enfrentado, onde está configurado, como conferir que funciona, como são os resultados normais, o que fazer diante de resultados anormais, quem é o responsável e quando foi revisto pela última vez. O documento da rotina de exclusão, por exemplo, mostra onde ela roda, a mensagem diária esperada e a verificação trimestral. Ela mantém os documentos com menos de duas páginas e usa capturas de tela do ambiente de teste, nunca de telas com pacientes reais, para que os próprios documentos não exponham dados.
+
+### 16.3 Segurança e reversão
+
+Todo procedimento de mudança inclui passos de segurança. Antes de mudar as regras de rede, o prestador registra a configuração atual para poder restaurá-la. Antes de ativar a exclusão, a rotina roda em modo somente relatório. Antes de mudar perfis, uma conta de teste confirma que as tarefas diárias continuam funcionando. Cada procedimento diz como reverter e quando a reversão não é possível, como depois que os dados foram excluídos, e os passos de reversão também são testados. Leila explica que os passos irreversíveis merecem verificações extras, porque um erro não pode ser desfeito depois que os dados dos pacientes se foram.
+
+### 16.4 Manter atualizada
+
+Os documentos se afastam da realidade à medida que os sistemas mudam. Leila acrescenta uma data de revisão a cada documento e liga as revisões aos chamados de mudança: qualquer chamado que mexa num controle documentado precisa atualizar o documento antes de ser fechado. A cada seis meses, o encarregado recebe a lista dos documentos com a revisão vencida. O Sr. Okafor revisa os documentos de Leila e pede que ela retire dois parágrafos de teoria, porque a equipe operacional precisa de instruções e razões, e não de aulas, quando algo dá errado numa clínica movimentada.
+
+### Exemplo resolvido
+
+Leila escreve documentos de controle de duas páginas com finalidade, risco, local, verificações, resultados normais, ações diante de anomalias, responsável e data de revisão, acrescenta passos de reversão e liga as atualizações aos chamados de mudança.
+
+> **Caso sintético.** Os documentos são sintéticos; o artigo 5(2) do GDPR é real.
+
+### Erros e limites
+
+Documentos escritos uma vez e nunca revistos acabam enganando.
+
+### Exercícios
+
+- **EX061 — Conhecimento concentrado.** Por que o conhecimento de uma só pessoa era um risco? *Rubrica:* 3 = ninguém conseguiria explicar os controles se essa pessoa saísse;; 2 = menciona a saída;; 1 = nada;; 0 = nenhuma.
+- **EX062 — Partes do documento.** Cite quatro partes de um documento de controle. *Rubrica:* 3 = finalidade, risco, local, verificações, resultados, ações, responsável, data de revisão;; 2 = quatro;; 1 = duas;; 0 = nenhuma.
+- **EX063 — Passos irreversíveis.** Por que os passos irreversíveis exigem verificações extras? *Rubrica:* 3 = os erros não podem ser desfeitos depois da exclusão;; 2 = menciona exclusão;; 1 = nada;; 0 = nenhuma.
+- **EX064 — Manter atualizado.** Como os documentos são mantidos atualizados? *Rubrica:* 3 = datas de revisão e chamados de mudança que precisam atualizá-los;; 2 = menciona chamados;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Laboratório controlado II
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir um teste de ponta a ponta com um paciente sintético; (2) verificar o atendimento aos direitos; (3) relatar as lacunas.
+
+### 17.1 O paciente sintético
+
+No segundo laboratório controlado, Leila cria no ambiente de teste da Marlow um paciente sintético que agenda online, recebe um lembrete, comparece a uma consulta com radiografia, paga, é encaminhado a um especialista e deixa uma avaliação. Depois, o paciente exerce dois direitos: o acesso, pelo artigo 15 do GDPR, e a eliminação dos dados não clínicos, pelo artigo 17, quando cabível; na LGPD, os incisos II e VI do art. 18. O laboratório segue os dados do paciente por todos os sistemas do modelo de tratamento, testando se o modelo e os controles se sustentam na prática. Nenhum paciente real é envolvido.
+
+### 17.2 Pedido de acesso
+
+Leila envia um pedido de acesso como o paciente sintético. A resposta inclui o registro do sistema de gestão clínica, a radiografia e a fatura, mas deixa de fora o histórico de lembretes, o registro no serviço de avaliações e a carta de encaminhamento na caixa de e-mail compartilhada. Leila observa que os itens esquecidos ficam todos em sistemas acrescentados ou alterados recentemente, que a lista de verificação não acompanhou. Ela os acrescenta à lista e recomenda que toda nova integração, como o serviço de avaliações, atualize a lista antes de entrar em produção, para que as respostas continuem completas.
+
+### 17.3 Eliminação
+
+O paciente então pede a exclusão dos dados de marketing e de avaliações, enquanto os prontuários clínicos ficam guardados por exigência das regras profissionais. Leila confere cada sistema: a plataforma de marketing remove o paciente, o serviço de avaliações remove a avaliação depois de nove dias, mas o banco de lembretes guarda o telefone até a regra anual removê-lo. Ela recomenda que os pedidos de eliminação acionem a exclusão imediata dos lembretes. Confirma também que os prontuários clínicos permanecem e que a carta de resposta, que lista cada sistema, explica com clareza por que eles são mantidos.
+
+### 17.4 Relatar as lacunas
+
+O relatório do laboratório lista cada sistema, o resultado esperado, o resultado observado e uma correção recomendada. São encontradas três lacunas: itens faltando na resposta de acesso, exclusão lenta dos lembretes e nenhum registro da cópia da carta de encaminhamento. Todas recebem responsáveis. O encarregado pede que o laboratório se repita todo ano. O Sr. Okafor observa que um único paciente sintético exercitou mais controles de privacidade da Marlow numa tarde do que meses de revisão de documentos, porque o teste seguiu de ponta a ponta os caminhos reais dos dados.
+
+### Exemplo resolvido
+
+Leila acompanha um paciente sintético pelo agendamento, tratamento, encaminhamento e avaliação, descobre respostas de acesso sem três fontes, encontra a exclusão lenta dos lembretes e relata correções com responsáveis.
+
+> **Caso sintético.** O paciente é sintético; os artigos 15 e 17 do GDPR e o art. 18 da LGPD são reais.
+
+### Erros e limites
+
+A eliminação não se aplica aos registros que a Marlow é obrigada a guardar por lei; explique isso com clareza.
+
+### Exercícios
+
+- **EX065 — Itens faltantes.** Que itens faltaram na resposta de acesso? *Rubrica:* 3 = histórico de lembretes, registro de avaliações, carta de encaminhamento;; 2 = dois;; 1 = um;; 0 = nenhuma.
+- **EX066 — Sistemas novos.** Por que os itens faltantes estavam em sistemas recentes? *Rubrica:* 3 = a lista não foi atualizada quando os sistemas mudaram;; 2 = menciona a lista;; 1 = nada;; 0 = nenhuma.
+- **EX067 — Eliminação dos lembretes.** O que Leila recomendou para os lembretes na eliminação? *Rubrica:* 3 = excluí-los imediatamente a pedido;; 2 = correta;; 1 = anualmente;; 0 = nenhuma.
+- **EX068 — Prontuários clínicos.** Por que os prontuários clínicos são mantidos depois dos pedidos de eliminação? *Rubrica:* 3 = as regras profissionais exigem a guarda;; 2 = menciona regras;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Projeto técnico supervisionado
+
+### Objetivos de aprendizagem
+
+Você vai (1) planejar e entregar um projeto de privacidade supervisionado; (2) medir o resultado; (3) passar o trabalho à equipe de operações.
+
+### 18.1 Escolher o projeto
+
+No projeto final, Leila escolhe estender a segmentação da rede às sete clínicas ainda não cobertas, porque seu relatório de verificação a apontava como o maior controle não verificado e a exposição pelo Wi-Fi de visitantes afetava as imagens dos pacientes. Ela escreve um plano com escopo, cronograma, testes, passos de reversão e responsáveis. O diretor de operações aprova o plano, e o prestador de TI aceita fazer as mudanças de configuração fora do horário das clínicas, enquanto Leila prepara os testes e a documentação de cada clínica, com uma folha de teste própria para cada uma.
+
+### 18.2 Entrega
+
+O projeto avança uma clínica por semana. Em cada uma, o prestador registra a configuração atual, aplica o desenho de três zonas, e Leila testa a partir da rede de visitantes, da zona administrativa e da zona clínica. Na quarta clínica, as câmeras intraorais param de enviar imagens, porque usavam um endereço fora da zona clínica. O plano de reversão restabelece o serviço em vinte minutos, os endereços das câmeras são corrigidos, e a mudança é reaplicada na semana seguinte, com um teste a mais para a transferência das imagens das câmeras, que passa a fazer parte da folha de teste.
+
+### 18.3 Medir o resultado
+
+Depois de oito semanas, as oito clínicas têm três zonas, e, nos testes de Leila, o Wi-Fi de visitantes não alcança nenhum servidor de imagens. O relatório de verificação agora marca a segmentação como verificada em todas as clínicas. Ela também mede os efeitos colaterais: nenhum aumento nas chamadas de suporte depois da primeira semana e tempos de transferência das imagens inalterados. Apresenta os resultados com o registro das evidências, que acompanham cada afirmação, e anota o risco que resta: o tráfego DICOM dentro da zona clínica continua sem criptografia, o que exige um futuro projeto com o fornecedor.
+
+### 18.4 Entrega e reflexão
+
+Leila entrega o documento de controle, os scripts de teste e as evidências ao prestador de TI e ao encarregado, que combinam um novo teste anual. Na reflexão, ela observa que o trabalho técnico de privacidade é sobretudo configuração, teste e documentação cuidadosos, e não descobertas dramáticas. O Sr. Okafor encerra o curso lembrando que cada mudança técnica que ela fez, do conteúdo dos lembretes às zonas de rede, reduziu a chance de as informações de saúde de um paciente chegarem a quem não deveria vê-las. Leila é contratada pela Marlow como técnica.
+
+### Exemplo resolvido
+
+Leila estende a segmentação da rede a mais sete clínicas, recupera-se de uma falha das câmeras com a reversão, verifica as oito clínicas e entrega documentos e testes.
+
+> **Caso sintético.** O projeto é sintético.
+
+### Erros e limites
+
+Projetos que terminam sem entrega à operação perdem seus controles; combine os responsáveis antes de encerrar.
+
+### Exercícios
+
+- **EX069 — Escolha do projeto.** Por que Leila escolheu a segmentação da rede? *Rubrica:* 3 = maior controle não verificado, com exposição das imagens dos pacientes;; 2 = menciona exposição;; 1 = nada;; 0 = nenhuma.
+- **EX070 — Falha das câmeras.** O que falhou na quarta clínica? *Rubrica:* 3 = as câmeras intraorais não conseguiam enviar imagens;; 2 = correta;; 1 = nada;; 0 = nenhuma.
+- **EX071 — Risco restante.** Que risco resta depois do projeto? *Rubrica:* 3 = DICOM sem criptografia dentro da zona clínica;; 2 = correta;; 1 = nada;; 0 = nenhuma.
+- **EX072 — Entrega.** Quem recebe a entrega? *Rubrica:* 3 = o prestador de TI e o encarregado;; 2 = os dois;; 1 = um;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX048 (as de EX049–EX072 estão na edição em inglês até a tradução dos capítulos correspondentes). Leila Haddad, o Sr. Daniel Okafor, o Riverside Technical College, o Marlow Dental Group e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX072. Leila Haddad, o Sr. Daniel Okafor, o Riverside Technical College, o Marlow Dental Group e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Revelam informações sobre a saúde do paciente, que o artigo 4(15) abrange.
 
@@ -719,6 +985,54 @@ Respostas-modelo para EX001–EX048 (as de EX049–EX072 estão na edição em i
 **EX047.** Uma designação temporária ou uma conta compartilhada (também um cargo regional ou curiosidade).
 
 **EX048.** Que seus acessos aos prontuários são registrados e revisados.
+
+**EX049.** Anotou primeiro os fatos conhecidos.
+
+**EX050.** O campo dos lembretes (contact_ok) em vez de marketing_ok.
+
+**EX051.** Nomes de campos confusos, nenhuma revisão da mudança e nenhuma verificação automática.
+
+**EX052.** Interrompe qualquer exportação que inclua um paciente sem consentimento para marketing.
+
+**EX053.** 712 de 1.200 (59,3%).
+
+**EX054.** 900 dias.
+
+**EX055.** Para conferir o que seria excluído antes de excluir qualquer coisa.
+
+**EX056.** Os registros ligados a uma reclamação em aberto.
+
+**EX057.** Nomes, e-mails, tipos de consulta e nomes dos dentistas.
+
+**EX058.** Revela informações de saúde, e um pedido de avaliação não precisa dele.
+
+**EX059.** Na exportação da Marlow, antes de os dados chegarem ao fornecedor.
+
+**EX060.** Que excluir um paciente o remove do serviço de avaliações em até trinta dias.
+
+**EX061.** Se essa pessoa saísse, ninguém saberia por que as configurações existem nem como conferi-las.
+
+**EX062.** Finalidade, risco, onde está configurado e responsável (além de verificações, resultados, ações e data de revisão).
+
+**EX063.** Depois que os dados dos pacientes são excluídos, um erro não pode ser desfeito.
+
+**EX064.** Cada um tem data de revisão, e os chamados de mudança precisam atualizar os documentos afetados.
+
+**EX065.** O histórico de lembretes, o registro no serviço de avaliações e a carta de encaminhamento.
+
+**EX066.** A lista de verificação não foi atualizada quando os sistemas foram acrescentados ou alterados.
+
+**EX067.** Os pedidos de eliminação devem acionar a exclusão imediata dos lembretes.
+
+**EX068.** As regras profissionais obrigam a Marlow a guardá-los, o que a carta explica.
+
+**EX069.** Era o maior controle não verificado e expunha as imagens dos pacientes ao Wi-Fi de visitantes.
+
+**EX070.** As câmeras intraorais pararam de enviar imagens por causa dos seus endereços.
+
+**EX071.** O tráfego DICOM dentro da zona clínica continua sem criptografia.
+
+**EX072.** O prestador de TI e o encarregado.
 
 <a id="references"></a>
 ## Referências
