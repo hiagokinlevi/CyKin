@@ -2997,21 +2997,31 @@ You will (1) assess performance impacts; (2) plan for growth; (3) avoid bottlene
 
 Application control adds negligible delay to program start; restore runs after hours.
 
+Mateo measured both claims rather than assuming them. The start-time comparison below shows the delay from application control is too small for patrons to notice. Running the restore after closing means its cost in processing and disk activity falls on hours when nobody uses the PCs, so patrons never wait for it. The only daytime cost of the design is the logoff clean-up, which takes a few seconds between sessions and was timed during the pilot.
+
 ### 36.2 Network load
 
 Weekly full reimages generate large traffic; they are staggered by branch.
+
+A full image is many times larger than the patron area, so three hundred PCs reimaging at once would saturate the links, especially at Eastgate. Mateo schedules each branch in its own slot on Sunday night, with Eastgate given the longest slot because its link is slowest. Within a branch, PCs start in small groups. The load test confirms that staggered reimages finish well before Monday opening. The schedule is in the shared change calendar.
 
 ### 36.3 Growth
 
 Fernhill plans 60 more PCs. Restore server capacity is checked: current peak use is 40%.
 
+Forty per cent at peak leaves room for growth, but Mateo checks what peak means: it is the Sunday reimage, not the nightly restore, which uses the local copy and barely touches the server. Adding sixty PCs raises the reimage load in proportion, which the worked example estimates. He also checks disk space on the server for the extra image versions the new PCs will need. Both checks are repeated before the new PCs arrive.
+
 ### 36.4 Bottlenecks
 
 Eastgate's link is the main bottleneck; upgrading it is recommended.
 
+The timing measurements and the load test both point to the same link. Staggering works around it for now, but any growth at Eastgate, or a larger image after a major update, could push reimages past their slot. Mateo writes the recommendation with the evidence: slow nights, the supplier's link records and the load test result. The upgrade cost goes to the board with the next quarterly update. Until then, Eastgate's slot is watched each week.
+
 ### 36.5 Monitoring
 
 Performance metrics join the dashboard.
+
+The dashboard gains three performance figures: restore duration by branch, weekly reimage duration and server load during the reimage window. Each has a warning level set from the pilot measurements, such as the thirteen-minute restore warning. Marta sees trends over months rather than single nights, which is what capacity planning needs. Librarians' view of the dashboard does not include these figures, since they cannot act on them. Warning levels are reviewed when hardware or the image changes significantly.
 
 ### Measuring performance impact
 
@@ -3087,21 +3097,31 @@ You will (1) define daily operations; (2) set alerts and runbooks; (3) train sta
 
 Each morning the technician checks the restore report and repairs failed PCs before opening.
 
+The report lists every PC whose restore failed or did not report, grouped by branch. The technician starts with the branch that opens first and works through the list using the failed-restore runbook. If a PC cannot be repaired before opening, it stays on the out-of-service screen and is swapped later. The routine takes a few minutes on a normal morning, since most nights have zero to two failures.
+
 ### 37.2 Alerts
 
 Per-PC restore failures and the five-failure incident threshold from chapter 7 alert IT.
+
+Per-PC alerts go to the technician's queue for the morning check. The incident alert, fired when five or more PCs fail in one night, goes to Marta directly, because the probability work showed that such a cluster is very unlikely unless something shared has gone wrong. Mateo tested both alerts with synthetic failures on lab PCs before the first operational night. Alerts are tested again after any change to the monitoring system or the contact list.
 
 ### 37.3 Runbooks
 
 Short runbooks cover failed restore, out-of-service PCs and image rollback.
 
+Each runbook fits on one page and starts with how to recognise the problem. Steps are numbered, with the expected result after each, so the person following it knows when something unexpected has happened and should escalate. The runbooks link to each other where needed: a failed restore that keeps failing leads into the out-of-service runbook. Printed copies are kept in each branch. Runbooks are updated after every real use that reveals a missing or unclear step.
+
 ### 37.4 Patching
 
 Monthly OS updates follow SP 800-40r4 planning: test in lab, release to one branch, then all.
 
+The cycle runs on a fixed calendar so service owners know when to expect changes. Millbrook goes first because it is the smallest branch, which limits the effect of any problem. The image's tests and the integration test both run before release. If an update fails at Millbrook, the other branches stay on the previous image, and the failure is fixed in the next build.
+
 ### 37.5 Training
 
 Librarians learn to recognise an out-of-service screen and call IT.
+
+The training takes about twenty minutes and is given at each branch's staff meeting. Librarians see the out-of-service screen on a lab PC, learn which number to call and practise explaining the overnight reset to a patron. They are not asked to repair PCs. Mateo hands out a single card summarising what they need to know, with the dashboard address and the IT phone number. New librarians receive the same session during their first week at a branch.
 
 ### Patch management
 
@@ -3111,7 +3131,7 @@ Each release's dates and results are recorded, giving evidence of timely patchin
 
 ### Escalation
 
-If more than five PCs fail at a branch, the technician escalates to Marta immediately.
+If five or more PCs fail in one night, the technician escalates to Marta immediately.
 
 ### Weekly review
 
@@ -3177,6 +3197,8 @@ You will (1) validate that requirements are met in operation; (2) trace requirem
 
 Validation asks whether the system meets user needs in real use; verification asked whether it met requirements in tests.
 
+Verification used lab PCs, synthetic sessions and written tests. Validation looks at the branches in normal use: do patrons find PCs ready, do they lose work they expected to keep, do librarians spend less time on PC problems? These questions can only be answered by watching the system in service and asking the people who use it. Some answers will show needs the requirements missed.
+
 ### Lab — Lab — traceability
 
 ```python
@@ -3202,13 +3224,19 @@ requirements 10: pass 8, fail 1, untested 1
 
 Of 10 requirements, 8 pass, 1 fails (R7 remote logging) and 1 is untested (R9 restore alert in production).
 
+The lab output gives the same summary in its first line and lists the two items that need attention. The remote logging failure is the firewall rule found during the first verification lab, not yet fixed on the PC the table recorded. The restore alert had been tested on lab PCs but not yet in production, so it is marked untested here rather than counted as a pass.
+
 ### 38.3 Closing
 
 R7's firewall fix is applied and re-tested; R9 is tested by deliberately failing a lab PC's restore and checking the alert.
 
+Deliberately failing a restore on a lab PC connected to the production management server tests the full path: the failure is detected, the alert is raised and the technician receives it. Mateo records the time from failure to alert. After both fixes, the table is rerun and the worked example shows the result. Each fix is recorded with its evidence.
+
 ### 38.4 User validation
 
 Librarians report fewer patron complaints and no leftover files found in a month.
+
+No leftover files in a month is the outcome the project was started for. Mateo is careful about what it shows: spot checks find files only on the PCs checked, and a month is a short period. He reports it as a strong early sign, not proof, and plans to continue spot checks for the rest of the year. Complaint numbers are compared with the baseline month.
 
 ### Verification versus validation
 
@@ -3280,21 +3308,31 @@ You will (1) design for long-term maintenance; (2) document; (3) plan for staff 
 
 The repository holds image definitions, scripts, runbooks and decision records.
 
+Keeping everything in one repository means a new technician has one place to look. The image definitions show what the PCs contain, the scripts show how they are built and restored, the runbooks show how to operate them, and the decision records explain why. Each document carries the date of its last review, so stale ones can be spotted quickly. Marta checks the dates each quarter and asks owners to review anything more than a year old.
+
 ### 39.2 Simplicity
 
 One image for all public PCs and few custom scripts keep maintenance manageable.
+
+Every custom script is something a future technician must understand and maintain. Mateo kept his to three: build the image, check measurements and produce the morning report. Everything else uses standard tools from the operating system or the management product. One image for all three hundred PCs means one set of tests and one release process, rather than variations to keep in step. Any proposal for a new script must explain why a standard tool cannot do the job.
 
 ### 39.3 Staff changes
 
 Two people can perform every task; documentation is tested by a new technician.
 
+Mateo and the technician cross-trained during the pilot, so each could do the other's tasks. A technician from another library network, who had never seen the system, then followed the documents alone for a week; the worked example describes what she found. Testing documentation with a newcomer is the only reliable way to find steps that make sense only to the person who wrote them. Her notes were added to the repository with the fixes.
+
 ### 39.4 Vendor changes
 
 Hardware refreshes require testing firmware and Secure Boot settings on new models.
 
+New models may have different firmware menus, different TPM behaviour or different restore times. Before a new model enters service, it goes through the full set of requirement and integration tests on a lab unit, and its settings are added to the firmware configuration. Mateo's notes list what had to change for each existing model, which gives a starting point for the next one. Models that cannot meet a requirement are not bought for public use.
+
 ### 39.5 Review cycle
 
 The design is reviewed annually against updated benchmarks.
+
+The annual review compares the image with the current benchmarks, checks whether requirements are still needed, reviews firmware support dates and updates the documentation. It also looks at the year's incidents and asks whether any reveal a weakness in the design itself. The review is recorded as a decision record, so later reviews can see what was considered and what changed. Marta and the technician attend; Dr Novak joined the first review as an outside reader and suggested two checks that were added.
 
 ### Maintaining baselines
 
@@ -3374,21 +3412,31 @@ You will (1) verify resilience features; (2) test recovery; (3) record results.
 
 Mateo tests rollback, server outage, firmware recovery and restore alert.
 
+These four test the resilience features designed earlier: rollback for a bad image, the local copy for a server outage, the recovery tool for a failed firmware update and the alert for a failed restore. Each feature exists because a scenario or a studio question showed it was needed. Until tested, each is only a claim in the design documents. Mateo writes the expected result for each test before running it, and keeps the written procedures with the evidence.
+
 ### 40.2 Rollback
 
 A deliberately broken image on a lab PC is rolled back in ten minutes.
+
+The broken image was a synthetic release with a deliberately faulty policy file that prevented logon. The PC detected the failure after the first start, rolled back to the previous signed image and returned to service. Ten minutes included detection, rollback and the digest check. Mateo repeated the test on each hardware model, and all completed within a similar time. The faulty release was then deleted from the lab server.
 
 ### 40.3 Outage
 
 With the server disconnected for three days, lab PCs restore from local copies each night.
 
+Three nights is shorter than the week the design promises, but long enough to show that restores keep working without the server and that nothing builds up in the logs or on disk. Each morning the PCs showed a successful restore, recorded locally. When the server was reconnected, the stored results were delivered and appeared on the dashboard with their original times. Marta watched the first morning's check.
+
 ### 40.4 Firmware recovery
 
 A simulated failed firmware update on a lab PC is recovered with the vendor's recovery tool.
 
+The failure was simulated by interrupting the update on a lab PC set aside for the purpose, with the vendor's guidance. The recovery tool restored the previous firmware, and Mateo then checked that Secure Boot, the firmware password and the boot order were as required. The test found one practical gap, described in the worked example. Each step and its timing were written down so the recovery could be repeated by someone else.
+
 ### 40.5 Results
 
 All four tests pass; results are recorded with evidence.
+
+All four tests matched their expected results, and the evidence for each is stored with the procedure, the image version and the date. A pass here means the feature worked on lab PCs under the tested conditions. Mateo notes what was not tested, such as an outage longer than three nights, so readers know the limits of the evidence. The results feed the evidence dossier. Marta signed the results before they were filed.
 
 ### Test design for resilience
 
