@@ -1365,25 +1365,37 @@ You will (1) define CTI and OSINT; (2) explain the role of models such as the ki
 
 Cyber threat intelligence is analysed knowledge about adversaries' intent, capability and activity that supports defensive decisions. OSINT is intelligence derived from publicly available sources, collected lawfully. NIST SP 800-150 frames threat information sharing as a way for organisations to improve defences collectively.
 
+For HCHT, the defining word is "supports": an item that does not help a decision about defending the trust is information, however interesting. Amara keeps the definitions at the front of her notebook and uses them to sort what arrives each day, so that analysis time goes to items that can change what HCHT does.
+
 ### 19.2 Models
 
 Hutchins, Cloppert and Amin's intrusion kill chain (2011) breaks intrusions into phases from reconnaissance to actions on objectives, showing defenders can act at any phase. The Diamond Model (Caltagirone et al., 2013) describes each event by adversary, capability, infrastructure and victim. MITRE ATT&CK catalogues techniques observed in real intrusions.
+
+Each model highlights different things, so Amara uses all three on one HSSC report and compares the results. The kill chain shows that the attack was stopped at delivery; the Diamond Model links its infrastructure to an earlier event; ATT&CK lists the techniques for detection work.
 
 ### 19.3 Sharing standards
 
 STIX 2.1 defines a JSON vocabulary for indicators, threat actors, attack patterns and relationships. TAXII 2.1 defines how to exchange STIX over HTTPS. FIRST TLP 2.0 labels tell recipients how widely they may share.
 
+HCHT receives HSSC material over TAXII and stores it in its own database, mapped to STIX fields where possible. Amara learns that the TLP marking travels with each object, so a script can check whether an object may be shared before it leaves HCHT. Following the standards means HCHT's tools can read what other members send without custom conversion, which saves time in a small team.
+
 ### 19.4 CTI and risk
 
 CTI changes the likelihood estimates in risk assessments and informs which controls to prioritise. Without a link to risk decisions, CTI becomes a news service.
+
+Amara's notes for each item end with the risk it affects: which system, which consequence and how the likelihood may have changed. When the security lead updates HCHT's risk register, these notes are the evidence for each change. Items that change no risk are archived for later searches, which keeps the team's reports focused on decisions rather than news.
 
 ### 19.5 Theory and practice
 
 Models are lenses, not laws. Each simplifies; analysts choose the one that answers the question at hand.
 
+Amara learns this when one HSSC report fits the kill chain poorly: the attacker used a stolen supplier account and skipped delivery altogether. The model still helps, by showing which phases were skipped, but it does not force the event into a shape it does not have. She notes the mismatch in her analysis, which is more honest than forcing every phase to have an entry, and explains which model she relied on instead.
+
 ### 19.6 Choosing a model
 
 Use the kill chain when asking where to interrupt an intrusion, the Diamond Model when asking how events connect through shared infrastructure or capability, and ATT&CK when asking which behaviours to detect. Mixing them is fine if the report says which lens produced each conclusion.
+
+Amara adds a line to each report naming the model used for each conclusion. Readers can then judge each conclusion by the strengths and limits of the lens behind it, and a reviewer can ask whether a different model would have led somewhere else. The line costs a few words and prevents a common confusion.
 
 ### Worked example
 
@@ -1421,25 +1433,37 @@ You will (1) analyse published cases that shaped CTI practice; (2) extract lesso
 
 Hutchins et al. described defenders tracking a persistent adversary across repeated intrusions, using indicators from earlier phases to block later attempts. The lesson: intelligence from one intrusion protects against the next, and defenders gain when they analyse failed attempts too.
 
+Amara applies this at HCHT by recording blocked phishing attempts with the same care as successful ones. Patterns in failed attempts, such as the same sender infrastructure, often appear before an attack succeeds. She also notes which phase each attempt reached.
+
 ### 20.2 Group reporting
 
 Public reporting on long-running groups, catalogued in ATT&CK group entries such as G0016 (APT29), showed that adversaries reuse techniques more stably than infrastructure. The lesson: behavioural detection outlasts indicator lists.
+
+Amara uses this lesson when deciding how to spend the team's limited time: a detection for a technique seen across many sector reports is worth more effort than updating a long list of addresses that may change next week. Indicators still matter for quick blocks, but they are expected to age, while behavioural detections are reviewed less often and remain useful for longer.
 
 ### 20.3 Ransomware against health
 
 Many public advisories describe ransomware disrupting hospitals. Common lessons: phishing or exposed services as entry, valid-account abuse, encryption for impact (T1486), and the decisive role of tested, isolated backups.
 
+Amara reads several public advisories and lists the recurring lessons in a short table for HCHT's infrastructure team. The table supports their request for funds to isolate backups and test restores more often. It cites each advisory, so the evidence can be checked and updated when new advisories appear, and it notes which lessons HCHT has already acted on.
+
 ### 20.4 Supply chain
 
 Compromises of trusted software updates (Supply Chain Compromise, T1195) showed that trusted channels can deliver malicious code. The lesson for HCHT: supplier intelligence and update monitoring matter.
+
+HCHT relies on many suppliers for clinical and administrative software, and some push updates automatically. Amara helps compile a list of those suppliers and the systems they update, so that intelligence about a supplier compromise can be checked against it in minutes. The infrastructure team adds monitoring for unexpected changes after updates on the most critical systems, and the list is reviewed every quarter.
 
 ### 20.5 Reading cases ethically
 
 Case studies teach patterns; reproducing malware or step-by-step procedures is unnecessary and inappropriate in coursework.
 
+Amara's coursework describes cases at the level of techniques and lessons, citing public sources. She does not download samples or repeat attack steps, even in a lab, because the course asks for defensive understanding. If a case seems to need deeper technical detail, she asks her supervisor whether it is necessary and how to obtain it safely, and she records the answer with her notes.
+
 ### 20.6 Comparing cases
 
 A comparison table helps: for each case list entry technique, persistence approach, impact and the defensive lesson. Patterns across rows — credentials appear again and again — are more useful than any single dramatic story, and the table keeps attention on defence rather than on adversary mystique.
+
+Amara builds such a table from five public cases. Two rows share the use of stolen credentials, and three end with encryption and a long recovery. She presents the table to the security team as a summary of what defences mattered most, with each row citing its public source, and adds new cases each quarter.
 
 ### From case to local question
 
@@ -1481,25 +1505,37 @@ You will (1) model the HCHT intelligence system as inputs, processes and outputs
 
 Inputs: HSSC reports, public advisories, vendor feeds, internal incidents. Processes: triage, validation, enrichment, analysis, storage. Outputs: blocks, hunts, briefings, shared reports. Feedback: consumers report what helped. Drawing this flow shows where work piles up.
 
+Amara draws the flow for HCHT on one page and counts what passes through each stage in a typical week. The drawing makes plain that analysis is the narrowest point, which explains why reports often arrive late. It also shows that feedback rarely reaches the start of the flow, so direction is weak, and the team agrees to add a monthly review of what consumers asked for.
+
 ### 21.2 Bottlenecks
 
 At HCHT, analysis is done by one supervisor and one intern. If triage passes every item to analysis, the queue grows faster than it shrinks. A triage rule — only items matching HCHT assets or the sector proceed — keeps the system stable.
+
+Amara tests the rule on a month of past items and finds that about a third would pass, which the team can handle. Items held back are stored and searchable, so nothing is lost if they later become relevant. The rule is reviewed each quarter against what was missed.
 
 ### 21.3 Feedback loops
 
 Positive loop: useful briefings bring more questions, which sharpen direction. Negative loop: too many false-positive blocks make the network team ignore CTI requests. Healthy systems monitor both.
 
+Amara watches for the negative loop by tracking how many blocks were reversed after complaints. When reversals rise, she checks the source of the blocked indicators and tightens the confidence threshold for that source. The positive loop is supported by answering questions quickly and noting in each briefing what the security team asked for and what changed as a result.
+
 ### 21.4 STIX as a data model
 
 STIX 2.1 represents intelligence as objects: indicator, malware, threat-actor, attack-pattern, campaign, identity, report, and relationship objects linking them. Each object has an identifier, timestamps and optional marking definitions such as TLP. Mapping HCHT's database columns to STIX makes later sharing easier.
+
+Amara maps her own columns to STIX properties. Her value column becomes the indicator pattern, first_seen and last_seen become the indicator's validity times, and the TLP column becomes a marking definition. Two columns, status and outcome, have no direct STIX equivalent, so she keeps them as local fields and documents the choice for future analysts.
 
 ### 21.5 Boundaries
 
 The model's boundary excludes clinical decisions; CTI informs them through owners, not directly.
 
+For example, intelligence about attacks on infusion pumps goes to clinical engineering, who decide what changes are safe for patients. The CTI team supplies facts and options, never instructions to clinical staff. Amara draws the boundary on her diagram as a line that intelligence can cross only through a named owner, which reminds the team where its authority ends and where clinical judgment takes over. Recording this boundary prevents well-meant but unsafe recommendations.
+
 ### 21.6 Capacity arithmetic
 
 If forty items arrive per week and each takes thirty minutes to analyse, twenty analyst-hours are needed. Two people with other duties may provide eight. Without triage the backlog grows by about twenty-four items weekly; writing this arithmetic down makes the case for stricter filters or more staff in plain terms.
+
+Amara presents this calculation to the security lead. The numbers make the trade-off plain. The lead agrees to the triage rule and asks for a monthly report of the queue, so growth is noticed early. Amara also measures her analysis time per item, which turns out closer to twenty minutes for routine items, and updates the arithmetic.
 
 ### Service levels
 
@@ -1541,25 +1577,37 @@ You will (1) catalogue HCHT's intelligence sources and their dependencies; (2) a
 
 For each source record: provider, content type, format, delivery method, licence or terms, TLP, cost and owner. HSSC (STIX over TAXII 2.1, membership agreement), a national advisory service (public web pages), a commercial feed (contract), and internal incident records.
 
+Amara builds the catalogue in a shared spreadsheet that is reviewed each quarter. Several fields were unknown at first, such as the commercial feed's exact redistribution terms, and finding them out took longer than recording everything else. The catalogue now answers most questions about a source in seconds.
+
 ### 22.2 Dependencies
 
 The commercial feed depends on a contract renewal; HSSC depends on volunteer staff; the import scripts depend on one analyst's knowledge. Each is a dependency that can fail.
+
+Amara adds each dependency to the catalogue with what would happen if it failed and how quickly the team would notice. The contract renewal date goes into the team's calendar with a reminder two months ahead. For HSSC, she notes the backup contact the community provides. The script dependency is the one the team controls most directly, which leads to the work on documentation and training described next.
 
 ### 22.3 Terms and licences
 
 Commercial feeds often forbid redistribution. Before sharing an indicator learned from a paid feed with HSSC, Amara checks the licence. Public advisories may permit reuse with attribution.
 
+When the licence forbids sharing, Amara shares only HCHT's own observation, for example that the domain was seen in its logs, if the licence allows that, and otherwise tells HSSC only that a paid feed lists the item. She records each decision in the catalogue entry for the source, so the same question is answered consistently.
+
 ### 22.4 Single points of failure
 
 If the only person who understands the import script leaves, the pipeline stops. Documentation, a second trained person and simple code reduce that risk.
+
+Amara writes a short guide to the import script, explaining each step and the common errors, and trains a colleague to run it. The colleague runs the import for two weeks while Amara watches, which reveals two undocumented steps that are now in the guide. Simplifying the code also made it easier to review and test.
 
 ### 22.5 Coverage gaps
 
 Sources cover some threats better than others. National advisories may underweight medical-device threats; vendor feeds may focus on commodity malware. A coverage table shows gaps.
 
+Amara builds the table with threat types as rows and sources as columns, marking where each source provides useful coverage. The empty cells show where HCHT relies on chance. Medical-device threats are the clearest gap, so the team asks clinical engineering whether device manufacturers publish advisories that could be added as a source. Two manufacturers do, and their notices are added to the catalogue with an owner.
+
 ### 22.6 Source evaluation over time
 
 Sources change: a once-excellent feed may degrade after an acquisition, or a volunteer group may stop publishing. A quarterly check — volume, timeliness, proportion of items leading to action — catches decline before analysts notice that a source has quietly become noise.
+
+Amara records the check results in the catalogue next to each source. Over a year the checks show the commercial feed's timeliness worsening after a change of owner, while the manufacturers' notices prove more useful than expected. The team uses the figures at contract renewal, asking the vendor to explain the decline, and adjusts how much weight each source gets in triage.
 
 ### Internal sources
 
@@ -1601,6 +1649,8 @@ You will (1) code reports to ATT&CK techniques; (2) compute technique frequency;
 
 Read each report and tag techniques with ATT&CK identifiers, citing the sentence that supports each tag. Avoid tagging from headlines; tag only what the text describes.
 
+Amara keeps the supporting sentence next to each tag in her coding sheet, so a reviewer can check the tag without rereading the whole report. When the text is vague, such as "the attacker gained access", she codes "unknown" rather than guessing a technique. Tags are checked by a second reader on a sample.
+
 ### Lab — technique frequency
 
 ```python
@@ -1631,21 +1681,31 @@ T1021 in 1/5 reports
 
 Across five synthetic HSSC reports, Phishing (T1566) and Data Encrypted for Impact (T1486) appear in three each. User Execution (T1204), Command and Scripting Interpreter (T1059) and Valid Accounts (T1078) appear in two. Exploit Public-Facing Application (T1190) and Remote Services (T1021) appear once.
 
+Amara checks the counts against the coding sheet before reporting them. Each count links to the report sentences behind it, so a reader can see how the figure was produced. The figures describe these five reports only and are presented as a summary of the sample, with the period and source stated. Amara includes the table in a short note for the security lead.
+
 ### 23.3 Caution
 
 Five reports is tiny. Frequency reflects what reporters noticed and wrote down, not what happened. A technique appearing once may matter more if HCHT is exposed to it — an unpatched internet-facing system makes T1190 relevant despite its low count.
+
+Amara adds an exposure column to her table, noting for each technique whether HCHT has the systems or weaknesses it targets. That changes the reading: a technique seen once but matching an exposed system moves up, while a frequent one already well controlled moves down. Counts are a starting point for analysis, not its conclusion.
 
 ### 23.4 From frequency to priority
 
 Priority combines frequency, HCHT exposure and control gaps. Phishing is frequent, and HCHT already has training and filtering; remote services appear once, but supplier remote access is poorly monitored. The final priority list might rank remote-service monitoring above more phishing training.
 
+Amara writes the reasoning for each position on the list, so the security lead can disagree with a specific judgment rather than the whole ranking. The list is reviewed after each quarter's reports and after any incident at HCHT, since either may change exposure or reveal a new gap. Changes are recorded with their reason.
+
 ### 23.5 Recording
 
 Keep the coding sheet with report identifiers and supporting sentences so others can verify.
 
+The sheet lists each report by identifier and date, each code with its supporting sentence, and any codes that were discussed and changed. Amara stores it with the analysis and links it from the final report. Another analyst can then recheck any count or apply the same scheme to the next quarter's reports, which makes trends over time comparable. The sheet is versioned in the team's repository.
+
 ### 23.6 Coding granularity
 
 ATT&CK has techniques and sub-techniques. Coding at sub-technique level gives detail but splits small samples into tiny counts; coding at technique level is coarser but more stable. Choose one level for a given study and state it, or counts become incomparable.
+
+Amara codes at technique level for her quarterly counts. Sub-technique detail is kept in the sheet for reference, so a later study with more reports can use it. Amara notes the chosen level in the report's method paragraph, and when comparing with HSSC's own counts, she checks which level they used before drawing any conclusion.
 
 ### Comparing with internal incidents
 
@@ -1687,25 +1747,37 @@ You will (1) map techniques to mitigations using ATT&CK; (2) write an intelligen
 
 Each ATT&CK technique page lists mitigations — for phishing, user training, filtering and restricting web content; for valid accounts, multi-factor authentication and privileged account management. These are starting points, not prescriptions.
 
+Amara checks each suggested mitigation against what HCHT already has, so that a request asks only for what is missing. For valid accounts, multi-factor authentication is in place for staff but not for some supplier accounts, so the request focuses there. Mitigations that would conflict with clinical work are discussed with the system owner before being proposed.
+
 ### 24.2 The control request
 
 A good request states: the intelligence (with source and TLP), the technique, the proposed control, the expected benefit, side effects, owner and a deadline. It does not demand; it informs the owner's decision.
+
+Amara uses a short template for every request, which makes it easy for owners to compare requests and decide quickly. The TLP label shows how far the owner may pass on the intelligence. Owners can accept, change or decline the request, and their decision is recorded with the reason. Declined requests are not failures; they show where intelligence and operational needs differ.
 
 ### 24.3 Side effects
 
 Blocking macros in documents stops one delivery route but may break a laboratory spreadsheet used daily. Ask owners about impact before proposing.
 
+Amara learned this when a proposed macro block was found to affect a spreadsheet the laboratory uses to record test results. The owner suggested signing the laboratory's own macros and blocking unsigned ones instead, which stops the same delivery route without disrupting work. Asking first turned a rejected request into a better control, and the laboratory team now raise similar concerns early.
+
 ### 24.4 Verification
 
 After a control is applied, test it safely: send a harmless test document through the filter, or confirm a blocked domain fails to resolve. Record the test.
+
+Amara writes the test steps into the request, so the owner knows what will be checked. Tests use harmless files and known test domains, never real malicious samples, and they run in agreement with the owner. A control that fails its test is reported to the owner immediately with the evidence, and the request stays open until a retest passes.
 
 ### 24.5 Decay
 
 Controls decay: exceptions are added, rules disabled during outages and never re-enabled. Recheck quarterly.
 
+Amara schedules a quarterly check of every control created from intelligence, comparing its current configuration with the recorded one. Exceptions are listed with their owner and reason; any without a reason are raised with the owner. In her first check she found a blocked domain that had been removed during an outage and never restored, and she reported it at once. The check takes about two hours each quarter.
+
 ### 24.6 Detection as a control
 
 Not every risk can be prevented. Where prevention would break clinical work, a detection rule plus a rehearsed response may be the right control. The request then names who receives alerts, how fast they must act and what they will do, so the detection does not become an unread dashboard.
+
+Amara drafts such requests with the clinical system owners. The requests name the alert recipients, who are reachable at all hours, and describe a short response that does not interrupt patient care, such as isolating a workstation while a clinical colleague continues on another. The response is rehearsed once with the owners before the rule goes live.
 
 ### Prioritising requests
 
