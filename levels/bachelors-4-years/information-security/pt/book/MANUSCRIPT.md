@@ -1,7 +1,7 @@
 # Segurança da Informação: Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); curso 094, curso de bacharelado (4 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 40 já estão escritos em português, com os exercícios EX001–EX090 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 31–40 (EX091–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–40 de 40 têm texto didático escrito à mão; os exercícios EX001–EX120 têm resoluções correspondentes com rubricas de 0 a 3; os três laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de bacharelado que aprendem como uma pequena organização financeira protege as informações dos seus associados por meio da governança, dos controles técnicos, das operações e da medição.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios revisam acessos sintéticos a aplicações em relação à situação no RH e ao cargo, medem achados sintéticos de vulnerabilidades em relação às metas de correção e geram hashes de senhas sintéticas com PBKDF2 com sal, conferindo-as contra uma pequena lista de senhas vazadas. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ Anderson (2020), [doi:10.1002/9781119644682](https://doi.org/10.1002/97811196446
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
-
-Capítulos 31–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1376,11 +1374,431 @@ Conferir que uma política existe não é o mesmo que conferir que ela é seguid
 
 - **EX090 — Ciclo de melhoria.** Que ciclo mantém a segurança sensível às mudanças? *Rubrica:* 3 = planejar, fazer, checar, agir;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
+<a id="ch-31"></a>
+
+## Capítulo 31 — Gestão de mudanças
+
+### Objetivos de aprendizagem
+
+Você vai (1) planejar mudanças de segurança que afetam as pessoas; (2) comunicar e apoiar a mudança; (3) medir a adoção.
+
+### 31.1 As mudanças de segurança afetam as pessoas
+
+No último ano, Aisha estuda como as mudanças de segurança dão certo ou fracassam. A Ashfield planeja introduzir a autenticação multifator por aplicativo em todo o acesso remoto da equipe. Tecnicamente simples, a mudança afeta a forma como cada funcionário trabalha de casa. O Dr. Carrow explica que muitos projetos de segurança fracassam não porque a tecnologia esteja errada, mas porque as pessoas foram pegas de surpresa, ficaram sem apoio ou não se convenceram. A tarefa de Aisha é planejar a mudança para que os funcionários a entendam, consigam usá-la e não procurem soluções de contorno. Ela começa entrevistando cinco funcionários.
+
+### 31.2 Planejando a comunicação
+
+Aisha planeja a comunicação em etapas. Primeiro, o diretor executivo explica por que a mudança importa, usando o exemplo real de uma cooperativa de crédito cujas contas de funcionários foram comprometidas. Depois, os funcionários recebem guias passo a passo, com capturas de tela, e uma data para o cadastro. Os multiplicadores das agências, um por agência, ajudam os colegas a configurar os celulares. Ela aprende que as mensagens dos líderes têm peso, enquanto a ajuda dos colegas constrói a confiança no uso do novo método. Ela mesma escreve os guias e os testa com dois funcionários que nunca usaram um aplicativo autenticador, revisando os passos pouco claros.
+
+### 31.3 Apoiando as pessoas
+
+Alguns funcionários não têm smartphone ou não querem aplicativos de trabalho nos aparelhos pessoais. Aisha recomenda tokens físicos para eles, fornecidos pela Ashfield. Ela também organiza plantões de atendimento sem hora marcada em cada agência durante a semana de cadastro. O gerente de TI prepara respostas para as perguntas mais comuns. Ela aprende que oferecer alternativas evita que uma minoria seja excluída e reduz a resistência, porque os funcionários que se sentem forçados a algo muitas vezes encontram formas de contorná-lo. O gerente de TI encomenda vinte tokens, e sete funcionários os escolhem durante o cadastro, na maioria funcionários mais velhos e dois que preferem manter o trabalho fora dos celulares pessoais.
+
+### 31.4 Medindo a adoção
+
+Aisha acompanha os cadastros diariamente durante a implantação. Depois de duas semanas, a maioria dos funcionários está cadastrada, mas uma agência está atrasada. Ela descobre que o multiplicador da agência estava de férias. Outro funcionário assume, e os cadastros se completam na semana seguinte. Na data da virada, o acesso remoto sem segundo fator deixa de funcionar. Os chamados de suporte atingem o pico no primeiro dia e caem depressa. Ela aprende que medir a adoção revela cedo os problemas locais. Ela traça os cadastros por agência a cada dia num gráfico simples compartilhado com os gerentes das agências, o que deixa evidente a agência atrasada e estimula uma competição amigável entre as outras.
+
+### Exemplo resolvido
+
+Aisha planeja uma mudança para a autenticação multifator com mensagens dos líderes, guias e multiplicadores nas agências, oferece tokens físicos como alternativa e acompanha os cadastros para encontrar uma agência atrasada.
+
+> **Caso sintético.** A implantação é sintética.
+
+### Erros e limites
+
+As mudanças que pegam a equipe de surpresa muitas vezes geram soluções de contorno.
+
+### Exercícios
+
+- **EX091 — Mensagem do líder.** Quem explica por que a mudança importa? *Rubrica:* 3 = o diretor executivo;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX092 — Método alternativo.** O que é oferecido aos funcionários sem celulares adequados? *Rubrica:* 3 = tokens físicos;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX093 — Agência atrasada.** Por que uma agência se atrasou? *Rubrica:* 3 = seu multiplicador estava de férias;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-32"></a>
+
+## Capítulo 32 — Caso de negócio
+
+### Objetivos de aprendizagem
+
+Você vai (1) montar um caso de negócio para um investimento em segurança; (2) estimar os custos e os benefícios; (3) apresentar opções a quem decide.
+
+### 32.1 A necessidade
+
+O conselho da Ashfield pergunta se deve contratar um serviço gerenciado de detecção, que monitora os sistemas vinte e quatro horas por dia. Aisha prepara um caso de negócio. Ela começa pelo problema: o gerente de TI revisa os alertas apenas nas manhãs dos dias úteis, então um ataque iniciado numa sexta-feira à noite poderia correr despercebido até segunda-feira. Ela usa o registro de riscos para mostrar que o ransomware e o comprometimento de contas são os principais riscos, e ambos se espalham depressa quando não são percebidos. Ela também lista dois incidentes de fim de semana do ano anterior que só foram encontrados nas manhãs de segunda-feira.
+
+### 32.2 Custos e benefícios
+
+Aisha estima os custos: a mensalidade anual do serviço, o trabalho de implantação e o tempo da equipe para responder aos alertas. Quanto aos benefícios, ela estima quanto mais rápido os ataques seriam detectados e que danos isso poderia evitar, usando as classificações de impacto do registro de riscos. Ela toma o cuidado de apresentar os benefícios como faixas com premissas declaradas, e não como economias precisas. O Dr. Carrow observa que os benefícios de segurança são incertos, então a honestidade sobre as premissas constrói confiança. Ela mostra ao conselho uma tabela simples com estimativas baixa, intermediária e alta e lista as premissas logo abaixo, em linguagem simples.
+
+### 32.3 Opções
+
+Aisha apresenta três opções: não fazer nada, ampliar o horário do gerente de TI com uma escala de plantão ou contratar o serviço gerenciado. Não fazer nada custa menos, mas deixa os fins de semana sem monitoramento. A escala de plantão é mais barata do que o serviço, mas esgotaria os dois funcionários de TI. O serviço gerenciado custa mais, mas oferece monitoramento contínuo e analistas especializados. Ela recomenda o serviço gerenciado com um teste de um ano e medidas de desempenho claras. Ela define as medidas para o teste, como o tempo entre o alerta e a notificação da Ashfield, e um relatório mensal do prestador ao gerente de TI.
+
+### 32.4 Apresentando
+
+Aisha apresenta o caso de negócio ao conselho em quinze minutos. Ela começa pelo problema e pela recomendação e depois mostra as opções, os custos e os riscos. Um conselheiro pergunta o que acontece se o prestador deixar passar um ataque. Ela explica os termos do contrato e a revisão mensal dos alertas e das respostas. O conselho aprova um teste de um ano. Ela aprende que os casos de negócio dão certo quando ligam a segurança a resultados que o conselho valoriza. Depois da reunião, o presidente pede que ela apresente os resultados do teste ao conselho dali a um ano.
+
+### Exemplo resolvido
+
+Aisha monta um caso de negócio para a detecção gerenciada, estima os custos e benefícios em faixas, compara três opções e obtém a aprovação de um teste de um ano.
+
+> **Caso sintético.** Os números são sintéticos.
+
+### Erros e limites
+
+Apresentar benefícios incertos como economias precisas prejudica a credibilidade.
+
+### Exercícios
+
+- **EX094 — Lacuna do fim de semana.** Por que os ataques de fim de semana poderiam passar despercebidos? *Rubrica:* 3 = alertas revisados apenas nas manhãs dos dias úteis;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX095 — Desvantagem da escala.** Qual é a desvantagem da escala de plantão? *Rubrica:* 3 = esgotaria os dois funcionários de TI;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX096 — Decisão do conselho.** O que o conselho aprova? *Rubrica:* 3 = um teste de um ano;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+<a id="ch-33"></a>
+
+## Capítulo 33 — Projeto em grupo I: plano
+
+### Objetivos de aprendizagem
+
+Você vai (1) planejar um projeto de segurança em equipe; (2) dividir o trabalho de forma justa; (3) gerenciar os riscos do projeto.
+
+### 33.1 O projeto
+
+O projeto em grupo de Aisha, com três colegas, é projetar uma campanha de conscientização em segurança para os associados da Ashfield, voltada para evitar fraudes. O cliente, o gerente de marketing da Ashfield, quer que os associados reconheçam ligações e mensagens de golpe que dizem vir da Ashfield. O grupo precisa entregar os materiais da campanha, um plano de execução e uma forma de medir o impacto em dez semanas. O Dr. Carrow supervisiona e se reúne com o grupo quinzenalmente. O grupo se reúne com o gerente de marketing na primeira semana para acordar o escopo, as entregas e a frequência dos relatos de progresso, e registra o acordo num termo de abertura do projeto de uma página.
+
+### 33.2 Entendendo os associados
+
+O grupo começa por entender os associados. Usando dados sintéticos, eles descobrem que muitos associados são mais velhos, que muitos usam o internet banking, mas que alguns dependem das idas à agência e das ligações telefônicas. As comunicações de fraude mostram golpistas se passando por funcionários da Ashfield ao telefone e pedindo códigos de uso único. O grupo decide a mensagem central: a Ashfield nunca vai pedir o seu código. Eles escolhem formatos adequados a associados diferentes: cartazes, folhetos, e-mails e breves conversas nas agências. Eles também entrevistam seis associados numa agência, que confirmam que as ligações de golpe parecem convincentes e que os associados sentem vergonha de contar que foram enganados.
+
+### 33.3 Dividindo o trabalho
+
+O grupo divide o trabalho pelos pontos fortes: um integrante projeta os materiais, um planeja a execução, um projeta a medição e Aisha coordena e escreve o relatório final. Eles combinam reuniões semanais de acompanhamento e uma lista de tarefas compartilhada. O Dr. Carrow adverte que os papéis de coordenação podem se tornar invisíveis, então Aisha também assume as entrevistas com os associados. O grupo escreve um breve acordo sobre os prazos e sobre como levantar problemas. O acordo também diz o que acontece se alguém perder um prazo: o grupo discute o assunto na reunião seguinte e, se isso se repetir, eles o levam juntos ao Dr. Carrow.
+
+### 33.4 Riscos do projeto
+
+O grupo lista os riscos do projeto: o cliente pode demorar a aprovar os materiais, os associados podem não responder aos pedidos de entrevista e um dos colegas tem um emprego de meio período que limita sua disponibilidade. Eles planejam respostas: rascunhos enviados cedo ao cliente, entrevistas marcadas por meio da equipe das agências e trabalho agendado em torno dos turnos do colega. Aisha aprende que os projetos precisam da sua própria gestão de riscos, assim como os sistemas que protegem. Eles registram cada risco, com seu dono e sua resposta, na lista de tarefas compartilhada e revisam a lista em cada reunião semanal para ver se algum ficou mais provável.
+
+### Exemplo resolvido
+
+O grupo de Aisha planeja uma campanha de conscientização contra fraudes para os associados, encontra golpes que pedem códigos, define a mensagem central, divide o trabalho e planeja os riscos do projeto.
+
+> **Caso sintético.** O projeto é sintético.
+
+### Erros e limites
+
+O trabalho de coordenação pode se tornar invisível nos projetos em grupo.
+
+### Exercícios
+
+- **EX097 — Mensagem central.** Qual é a mensagem central da campanha? *Rubrica:* 3 = a Ashfield nunca vai pedir o seu código;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX098 — Método do golpe.** Como os golpistas se passam pela Ashfield? *Rubrica:* 3 = ao telefone, pedindo códigos de uso único;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX099 — Papéis de Aisha.** Que papéis Aisha assume? *Rubrica:* 3 = coordenação, relatório e entrevistas com os associados;; 2 = correto;; 1 = alguns;; 0 = nenhuma.
+
+<a id="ch-34"></a>
+
+## Capítulo 34 — Projeto em grupo II: entrega
+
+### Objetivos de aprendizagem
+
+Você vai (1) entregar um projeto a um cliente; (2) medir o impacto de uma campanha; (3) refletir sobre o trabalho em equipe.
+
+### 34.1 Entregando
+
+O grupo entrega os materiais: um cartaz para as agências, um folheto enviado com os extratos, um e-mail para os associados on-line e um roteiro para a equipe usar no balcão. O gerente de marketing os aprova depois de uma rodada de alterações, que simplifica a redação para dar clareza. A campanha dura quatro semanas. Aisha coordena o calendário para que todos os formatos apareçam na mesma semana, reforçando a mensagem. A equipe das agências pratica o roteiro do balcão numa breve sessão antes do início da campanha e relata que os associados reagem bem quando os funcionários mencionam a mensagem durante as conversas comuns sobre suas contas.
+
+### 34.2 Medindo o impacto
+
+O plano de medição compara números sintéticos das quatro semanas antes e depois da campanha: as ligações de associados à Ashfield comunicando contatos suspeitos e as perdas com golpes de compartilhamento de códigos. As comunicações de ligações suspeitas sobem visivelmente, o que sugere que os associados reconhecem os golpes com mais frequência. As perdas caem, mas os números são pequenos. Aisha relata que a evidência é animadora, mas não consegue provar que a campanha causou a mudança, porque a atividade dos golpistas também varia. O grupo apresenta os dois números com as semanas lado a lado, para que o cliente veja o tamanho das mudanças e o quão pequenos são os números de perdas.
+
+### 34.3 Retorno do cliente
+
+O gerente de marketing diz que a campanha foi clara e prática e pede que o grupo recomende como repeti-la. Eles sugerem uma campanha anual com exemplos renovados e a inclusão permanente da mensagem na página de login do internet banking. Aisha observa que o cliente valorizou mais o plano de medição, porque ele mostrou uma forma de julgar as campanhas futuras. O grupo também escreve um breve guia explicando como a própria Ashfield pode repetir a medição no ano seguinte, usando as mesmas semanas e as mesmas definições, para que os resultados possam ser comparados de forma justa entre as campanhas.
+
+### 34.4 Reflexão sobre o trabalho em equipe
+
+Aisha reflete sobre o trabalho em equipe. As reuniões semanais mantiveram o trabalho nos trilhos, mas um prazo escorregou quando o cliente ficou doente. O grupo se ajustou antecipando o plano de execução. O colega com emprego de meio período contribuiu bastante graças à agenda flexível. O Dr. Carrow pede que cada integrante escreva uma reflexão individual. Aisha observa que os acordos claros no início tornaram os problemas posteriores mais fáceis de resolver, sem conflito. Sua reflexão também observa que ela poderia ter delegado mais a redação do relatório, e ela planeja praticar isso em equipes futuras.
+
+### Exemplo resolvido
+
+O grupo de Aisha entrega quatro formatos de campanha, mede um aumento das comunicações de ligações suspeitas e uma pequena queda das perdas, relata os limites e reflete sobre o trabalho em equipe.
+
+> **Caso sintético.** Os resultados são sintéticos.
+
+### Erros e limites
+
+Uma comparação de antes e depois não consegue, por si só, provar que uma campanha causou uma mudança.
+
+### Exercícios
+
+- **EX100 — Formatos da campanha.** Cite um formato da campanha. *Rubrica:* 3 = o cartaz nas agências;; 2 = um;; 1 = nada;; 0 = nenhuma.
+
+- **EX101 — Limite do impacto.** Por que o grupo não consegue provar a causalidade? *Rubrica:* 3 = a atividade dos golpistas também varia;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX102 — Valor para o cliente.** O que o cliente mais valorizou? *Rubrica:* 3 = o plano de medição;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+<a id="ch-35"></a>
+
+## Capítulo 35 — Estágio
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar o aprendizado num ambiente de trabalho; (2) tratar informações confidenciais; (3) refletir sobre o desenvolvimento profissional.
+
+### 35.1 O estágio
+
+Aisha passa doze semanas trabalhando na equipe de TI da Ashfield. Ela ajuda nas revisões diárias de alertas, na revisão trimestral de acessos e na preparação do teste da detecção gerenciada. Ela vê quanto do trabalho de segurança envolve comunicação: explicar pedidos à equipe das agências, coordenar com os fornecedores e escrever relatórios. O Dr. Carrow a visita no meio do estágio e pergunta o que a surpreendeu. Ela responde que os problemas técnicos foram mais fáceis do que convencer as pessoas a mudar suas rotinas. Ela mantém um diário semanal de tarefas e lições, que usa depois para escrever a reflexão do estágio.
+
+### 35.2 Confidencialidade
+
+Durante o estágio, Aisha vê informações reais de associados e fraquezas de segurança reais. Ela assina um acordo de confidencialidade e mantém seus trabalhos do curso baseados apenas em dados sintéticos. Quando uma amiga pergunta sobre a segurança da Ashfield, ela se recusa a falar do assunto. Ela aprende que a confiança na equipe de segurança depende da discrição, e que compartilhar até mesmo fraquezas genéricas poderia ajudar os atacantes a mirar a organização. No fim do estágio, ela devolve o crachá de acesso, confirma que suas contas foram desativadas e apaga as anotações de trabalho guardadas nos seus aparelhos pessoais, como o acordo exige.
+
+### 35.3 Contribuições
+
+Aisha contribui com um procedimento simplificado de revisão de acessos, que reduz o tempo que o gerente de TI gasta nas revisões trimestrais ao organizar os dados antes das reuniões com os donos. Ela também escreve um guia para a equipe das agências sobre como comunicar ligações suspeitas. O gerente de TI adota os dois. Ela aprende que as melhorias pequenas e práticas muitas vezes são mais valorizadas do que as propostas ambiciosas que exigem grandes investimentos. O procedimento de revisão de acessos reduz visivelmente o tempo de preparação do gerente de TI, porque os donos recebem listas ordenadas com antecedência e podem confirmar a maioria das entradas antes da reunião, e não durante ela. O guia de comunicação fica afixado na sala da equipe de cada agência.
+
+### 35.4 Reflexão
+
+A reflexão de Aisha sobre o estágio registra três lições: a segurança depende de relacionamentos em toda a organização, a documentação economiza tempo depois e as organizações pequenas precisam de controles simples que consigam sustentar. Ela também registra habilidades a desenvolver: a confiança para apresentar à alta gerência e um conhecimento mais aprofundado dos serviços em nuvem. O Dr. Carrow sugere que ela escolha um tema de trabalho de conclusão ligado à experiência do estágio. Ela também escreve sobre um momento em que discordou do gerente de TI sobre a prioridade de um achado, e sobre como ouvir as razões dele quanto à carga de trabalho das agências mudou sua visão. O Dr. Carrow diz que esse tipo de reflexão mostra maturidade profissional.
+
+### Exemplo resolvido
+
+Aisha trabalha na equipe de TI da Ashfield, mantém os detalhes reais em sigilo, contribui com um procedimento de revisão de acessos mais simples e um guia de comunicação e reflete sobre as lições e as habilidades.
+
+> **Caso sintético.** O estágio é sintético.
+
+### Erros e limites
+
+Compartilhar as fraquezas de um empregador, mesmo de forma casual, pode ajudar os atacantes.
+
+### Exercícios
+
+- **EX103 — Surpresa do estágio.** O que mais surpreendeu Aisha? *Rubrica:* 3 = convencer as pessoas foi mais difícil do que os problemas técnicos;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX104 — Contribuição no estágio.** Cite uma contribuição de Aisha. *Rubrica:* 3 = o procedimento simplificado de revisão de acessos;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+
+- **EX105 — Habilidade a desenvolver.** Cite uma habilidade que Aisha quer desenvolver. *Rubrica:* 3 = apresentar à alta gerência;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-36"></a>
+
+## Capítulo 36 — Métodos de pesquisa
+
+### Objetivos de aprendizagem
+
+Você vai (1) formular uma pergunta de pesquisa; (2) escolher um desenho adequado; (3) planejar uma coleta de dados ética.
+
+### 36.1 Perguntas de pesquisa
+
+Aisha aprende a formular perguntas de pesquisa que possam ser respondidas com evidências. Sua primeira ideia, se a segurança da Ashfield é boa, é ampla demais. Ela a estreita: a introdução de um processo automatizado de desligamento encurtou o tempo em que as contas dos desligados permanecem ativas? A pergunta nomeia uma intervenção, um resultado e uma comparação. O Dr. Carrow observa que as perguntas estreitas produzem respostas claras, enquanto as amplas produzem opiniões. Ela escreve a pergunta no topo de cada documento de planejamento, para que cada decisão posterior sobre os dados e a análise possa ser conferida em relação a ela. O Dr. Carrow aprova a redação.
+
+### 36.2 Desenhos
+
+Aisha considera os desenhos. Um ensaio randomizado é impossível, porque o processo de desligamento se aplica a todos. Uma comparação de antes e depois é possível: os tempos de remoção das contas dos desligados no ano anterior ao processo automatizado e no ano seguinte. Ela aprende, com o trabalho de Shadish, Cook e Campbell sobre os quase-experimentos, que essas comparações são vulneráveis a outras mudanças que aconteçam ao mesmo tempo, como menos desligamentos ou um novo funcionário de TI. Ela lista cada explicação rival em que consegue pensar e planeja uma forma de conferi-la com os dados disponíveis.
+
+### 36.3 Dados e medidas
+
+Aisha define sua medida: os dias entre o último dia de trabalho de um desligado, segundo os registros dos recursos humanos, e a desativação da conta, segundo os logs do sistema. Ela planeja usar registros anonimizados, com a Ashfield removendo os nomes antes de compartilhá-los. Ela vai relatar a mediana de dias e a parcela desativada em até um dia. Ela aprende que definir as medidas com precisão antes de coletar os dados evita mudar as definições depois para obter uma resposta preferida. Ela também decide como tratar os desligados cujo último dia de trabalho falta nos registros: eles serão excluídos e contados separadamente, para que os leitores saibam quantos eram.
+
+### 36.4 Ética
+
+O comitê de ética da universidade revisa seu plano. Como os registros dizem respeito a ex-funcionários, ele exige a anonimização pela Ashfield, o armazenamento apenas em sistemas da universidade e a apresentação de resultados agregados. Aisha concorda. O Dr. Carrow observa que até dados de segurança aparentemente inofensivos podem se referir a pessoas identificáveis, então a revisão ética protege tanto os participantes quanto os pesquisadores. O comitê também pede que ela explique como vai tratar qualquer evidência de uso indevido que descobrir nos logs. Ela concorda em comunicá-la apenas ao gerente de TI da Ashfield e em não incluí-la no trabalho de conclusão, já que investigar usos indevidos não é o propósito da sua pesquisa. O comitê aprova o plano com essas condições registradas.
+
+### Exemplo resolvido
+
+Aisha estreita sua pergunta para o tempo de remoção dos desligados, escolhe um desenho de antes e depois, registrando as mudanças rivais, define a medida e obtém a aprovação ética com dados anonimizados.
+
+> **Caso sintético.** O plano é sintético.
+
+### Erros e limites
+
+Mudar as definições das medidas depois de ver os dados enviesa os resultados.
+
+### Exercícios
+
+- **EX106 — Pergunta de pesquisa.** Qual é a pergunta estreitada de Aisha? *Rubrica:* 3 = o processo automatizado de desligamento encurtou o tempo de remoção;; 2 = correto;; 1 = vaga;; 0 = nenhuma.
+
+- **EX107 — Fraqueza do desenho.** O que enfraquece um desenho de antes e depois? *Rubrica:* 3 = outras mudanças ao mesmo tempo;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX108 — Condição ética.** Cite uma condição ética. *Rubrica:* 3 = anonimização pela Ashfield;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-37"></a>
+
+## Capítulo 37 — Trabalho de conclusão I: proposta
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever a proposta de um trabalho de conclusão; (2) revisar a literatura relevante; (3) planejar a análise e o cronograma.
+
+### 37.1 Estrutura da proposta
+
+Aisha escreve sua proposta com uma introdução que declara o problema, uma revisão da literatura, a pergunta de pesquisa, o desenho, as medidas, a ética, o plano de análise e o cronograma. Ela a mantém em oito páginas. O Dr. Carrow a revisa e pede que ela explique por que a remoção dos desligados importa, para que leitores de fora da segurança entendam o que está em jogo. Ela acrescenta um parágrafo explicando que as contas de ex-funcionários podem ser usadas indevidamente pelo próprio ex-funcionário ou por atacantes que as encontrem sem monitoramento. O Dr. Carrow aprova a proposta depois de uma rodada de comentários.
+
+### 37.2 Literatura
+
+Aisha revisa a literatura sobre a gestão de acessos. Normas como a ISO/IEC 27002:2022 dão orientações sobre a gestão dos direitos de acesso, inclusive sua remoção quando o vínculo de trabalho termina. A NIST SP 800-53 Revisão 5 inclui controles de gestão de contas que exigem a desativação oportuna. Ela encontra poucos estudos publicados que meçam os tempos de remoção em organizações pequenas, o que dá ao seu trabalho de conclusão uma contribuição modesta, mas real. O Dr. Carrow lembra que ela deve citar as normas pela edição. Ela também lê o Security Engineering de Anderson, que discute como as organizações muitas vezes têm dificuldade para manter os direitos de acesso alinhados aos cargos atuais das pessoas. Ela registra a passagem na revisão da literatura como contexto para explicar por que os atrasos na remoção ocorrem na prática.
+
+### 37.3 Plano de análise
+
+Aisha planeja sua análise: comparar a mediana de dias até a desativação antes e depois, comparar a parcela desativada em até um dia e examinar individualmente os desligados com atrasos longos. Ela também vai conferir as explicações rivais, como mudanças no número de desligamentos ou na equipe de TI. Ela escreve o plano antes de receber os dados, e o Dr. Carrow o assina. Ela aprende que um plano escrito a protege de escolher as análises depois de ver os resultados. Ela guarda o plano assinado junto com a aprovação ética, para que os examinadores possam ver que ele é anterior aos dados.
+
+### 37.4 Cronograma
+
+O cronograma de Aisha reserva quatro semanas para a coleta de dados, quatro para a análise, seis para a redação e duas para a revisão. Ela inclui uma folga de duas semanas para atrasos. O Dr. Carrow observa que o acesso aos dados muitas vezes leva mais tempo do que o esperado nas organizações reais. Ela envia cedo o pedido de dados à Ashfield, com a aprovação ética anexada. A Ashfield responde em uma semana, e o gerente de TI concorda em fornecer os registros anonimizados em até um mês. Aisha registra no diário do projeto a data do pedido e a data de entrega prometida, para que qualquer atraso possa ser explicado no trabalho de conclusão, se necessário.
+
+### Exemplo resolvido
+
+Aisha escreve uma proposta de oito páginas, revisa as orientações da ISO/IEC 27002 e da SP 800-53 sobre a remoção de acessos, escreve um plano de análise antes dos dados e monta um cronograma com folga.
+
+> **Caso sintético.** A proposta é sintética.
+
+### Erros e limites
+
+Escolher as análises depois de ver os resultados abre espaço para o viés.
+
+### Exercícios
+
+- **EX109 — Parágrafo do que está em jogo.** Por que a remoção dos desligados importa? *Rubrica:* 3 = as contas antigas podem ser usadas indevidamente;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX110 — Lacuna na literatura.** Que lacuna Aisha encontra? *Rubrica:* 3 = poucos estudos medindo os tempos de remoção em organizações pequenas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX111 — Folga.** Qual é o tamanho da folga do cronograma? *Rubrica:* 3 = duas semanas;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+<a id="ch-38"></a>
+
+## Capítulo 38 — Trabalho de conclusão II: achados
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar os dados de acordo com o plano; (2) conferir as explicações rivais; (3) relatar os achados com a devida cautela.
+
+### 38.1 Resultados
+
+Aisha recebe registros sintéticos anonimizados dos desligados no ano anterior e no ano seguinte ao processo automatizado. Antes, a mediana do tempo até a desativação era de cinco dias, e um quarto das contas era desativado em até um dia. Depois, a mediana foi de zero dia, com a maioria das contas desativada no último dia de trabalho. Algumas contas do período posterior ainda levaram mais tempo, e ela as examina individualmente. Ela apresenta os resultados numa tabela que mostra as medianas, a parcela desativada em até um dia e o número de desligados em cada ano, ao lado de um gráfico simples dos tempos de remoção.
+
+### 38.2 Atrasos longos
+
+Aisha investiga os atrasos do período posterior. A maioria envolve temporários cujas datas de término não foram lançadas no sistema dos recursos humanos, de modo que o processo automatizado não foi disparado. Isso é uma lacuna no processo, e não uma falha da automação. Ela recomenda que os contratos temporários sempre incluam uma data de término no sistema. O Dr. Carrow a elogia por examinar as exceções, em vez de relatar apenas a mediana. Ela conta os casos de temporários e os lista por mês, o que mostra que estavam espalhados ao longo do ano, e não concentrados num único período movimentado.
+
+### 38.3 Explicações rivais
+
+Aisha confere as rivais. O número de desligamentos foi parecido nos dois anos. Um novo funcionário de TI entrou durante o período posterior, o que também poderia ter melhorado as remoções manuais. Ela examina os logs de remoção e descobre que quase todas as remoções do período posterior foram feitas automaticamente, e não à mão, o que torna menos provável a explicação pela equipe. Ela relata essa conferência e seus limites abertamente. Ela também confere se o tipo de desligado mudou entre os anos, por exemplo, mais temporários num dos anos, e descobre que a composição foi, em linhas gerais, parecida. Ela relata cada conferência numa breve tabela, para que os examinadores possam ver o que foi examinado e o que foi encontrado.
+
+### 38.4 Conclusões cautelosas
+
+Aisha conclui que, na Ashfield, a introdução do processo automatizado de desligamento foi seguida de uma remoção de contas muito mais rápida, com os atrasos restantes concentrados entre os temporários. Ela não afirma que o resultado se aplica a todas as organizações. Ela observa que uma única organização ao longo de dois anos é uma base de evidências pequena. O Dr. Carrow observa que as conclusões cautelosas e bem fundamentadas valem mais do que as afirmações ousadas. Ela escreve a conclusão num único parágrafo e confere que cada frase é sustentada por um resultado ou por uma conferência relatados antes. Ela remove uma frase que sugeria que o processo funcionaria igualmente bem em organizações maiores.
+
+### Exemplo resolvido
+
+Aisha descobre que a mediana da remoção caiu de cinco dias para zero, rastreia os atrasos restantes até a falta de datas de término dos temporários, confere as explicações rivais usando os logs e conclui com cautela.
+
+> **Caso sintético.** Os resultados são sintéticos.
+
+### Erros e limites
+
+Relatar apenas a mediana esconde as exceções que revelam lacunas de processo.
+
+### Exercícios
+
+- **EX112 — Mediana anterior.** Qual era a mediana do tempo de remoção antes? *Rubrica:* 3 = cinco dias;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX113 — Causa dos atrasos.** O que causou a maioria dos atrasos do período posterior? *Rubrica:* 3 = falta de datas de término dos temporários;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX114 — Rival da equipe.** Como a rival da equipe de TI é enfraquecida? *Rubrica:* 3 = as remoções foram feitas automaticamente;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-39"></a>
+
+## Capítulo 39 — Trabalho de conclusão III: redação
+
+### Objetivos de aprendizagem
+
+Você vai (1) estruturar com clareza um trabalho de conclusão; (2) escrever as limitações com honestidade; (3) revisar a partir do retorno recebido.
+
+### 39.1 Estrutura
+
+Aisha estrutura seu trabalho de conclusão: introdução, revisão da literatura, método, resultados, discussão, limitações, recomendações e conclusão. Cada capítulo começa com seu propósito e termina com um resumo. Ela coloca a pergunta de pesquisa na primeira página. O Dr. Carrow lê um rascunho e sugere mover a investigação dos atrasos dos temporários para os resultados, já que é um achado, e não apenas discussão. Ela também acrescenta uma breve lista de siglas e termos no início, porque examinadores de fora da segurança podem não conhecer termos como autenticação multifator ou revisão de acessos. Uma colega de outro curso lê a introdução e confirma que ela está clara.
+
+### 39.2 Limitações
+
+Aisha escreve suas limitações de forma específica: uma única organização, um desenho de antes e depois sem grupo de comparação, os possíveis efeitos do novo funcionário de TI e as datas dos recursos humanos, que podem elas próprias estar atrasadas. Para cada uma, ela explica como ela poderia afetar suas conclusões. O Dr. Carrow observa que as limitações específicas ajudam os leitores a julgar os achados, enquanto declarações vagas como são necessárias mais pesquisas acrescentam pouco. Ela coloca a seção de limitações antes das recomendações, para que os leitores considerem os limites antes de ler o que ela sugere que a Ashfield faça em seguida.
+
+### 39.3 Recomendações
+
+Aisha separa os achados das recomendações. Suas recomendações para a Ashfield são: exigir datas de término nos contratos temporários, revisar anualmente o processo automatizado e incluir as contas de prestadores de serviço no mesmo processo. Para outras organizações pequenas, ela sugere medir os tempos de remoção antes e depois das mudanças. Ela rotula as recomendações como julgamentos baseados em evidências, para que os leitores possam pesá-las. Ela discute as recomendações com o gerente de TI antes da submissão, e ele confirma que são práticas para a Ashfield. Ela registra os comentários dele num apêndice, observando que uma das recomendações, a inclusão das contas de prestadores, vai exigir acordo com os fornecedores.
+
+### 39.4 Revisão
+
+Aisha revisa seu rascunho três vezes. A revisão de um colega aponta termos pouco claros, e o retorno do Dr. Carrow melhora a estrutura. Ela confere cada citação com a sua fonte, confirmando as edições e os identificadores. Ela lê a versão final em voz alta para pegar frases truncadas. Ela aprende que a revisão muitas vezes melhora um trabalho de conclusão mais do que uma análise adicional melhoraria. Ela mantém um registro de revisões, listando cada mudança e seu motivo, o que a ajuda a explicar suas decisões na defesa oral. O Dr. Carrow lê o rascunho final e confirma que ele está pronto para a submissão, observando que as citações estão precisas e completas.
+
+### Exemplo resolvido
+
+Aisha estrutura o trabalho de conclusão, escreve quatro limitações específicas, separa as recomendações dos achados e revisa três vezes, conferindo cada citação.
+
+> **Caso sintético.** O trabalho de conclusão é sintético.
+
+### Erros e limites
+
+Limitações vagas como são necessárias mais pesquisas acrescentam pouco.
+
+### Exercícios
+
+- **EX115 — Seção movida.** O que é movido para os resultados? *Rubrica:* 3 = a investigação dos atrasos dos temporários;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX116 — Limitação dos dados de RH.** Que limitação diz respeito às datas do RH? *Rubrica:* 3 = podem elas próprias estar atrasadas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX117 — Número de revisões.** Quantas vezes Aisha revisa? *Rubrica:* 3 = três;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+<a id="ch-40"></a>
+
+## Capítulo 40 — Apresentação e defesa oral
+
+### Objetivos de aprendizagem
+
+Você vai (1) apresentar uma pesquisa com clareza; (2) responder às perguntas dos examinadores; (3) planejar os próximos passos depois da formatura.
+
+### 40.1 Apresentação
+
+Aisha prepara uma apresentação de quinze minutos: o problema, a pergunta, o método, os achados, os limites e as recomendações. Ela usa gráficos simples que mostram os tempos de remoção antes e depois. Ela ensaia com os colegas e cronometra cada seção. O Dr. Carrow a aconselha a declarar os achados exatamente como estão escritos no trabalho de conclusão, evitando afirmações mais fortes sob pressão. Ela mantém cada gráfico simples, com rótulos claros e o número de desligados ao lado de cada barra. Ela prepara respostas para as perguntas prováveis sobre o desenho e o achado dos temporários e as pratica em voz alta com o Dr. Carrow, que faz o papel de um examinador exigente e faz perguntas de acompanhamento.
+
+### 40.2 Defesa oral
+
+Na defesa oral, um examinador pergunta se o processo automatizado poderia criar novos riscos. Aisha explica que datas de término lançadas por engano poderiam desativar contas de funcionários atuais, e que a Ashfield acrescentou uma etapa de confirmação para as desativações antecipadas. Outro pergunta por que ela não usou uma organização de comparação. Ela explica que nenhuma estava disponível e que discute esse limite. Os examinadores apreciam suas respostas claras e honestas. Eles também perguntam como ela ampliaria o estudo, e ela sugere comparar várias organizações pequenas ao longo de um período mais longo.
+
+### 40.3 Resultado
+
+Aisha é aprovada com uma nota alta. Os examinadores elogiam a medida clara, a investigação das exceções e as limitações honestas. O gerente de TI da Ashfield adota sua recomendação sobre as datas de término dos contratos temporários. Aisha reflete que seus quatro anos ligaram o conhecimento técnico à governança, à comunicação e à pesquisa numa única prática. O diretor executivo da Ashfield escreve para agradecer o trabalho, observando que a recomendação já foi posta em prática. O Dr. Carrow a convida para falar aos estudantes do ano seguinte sobre seu trabalho de conclusão e seu estágio. Ela aceita e prepara uma breve palestra sobre como escolher uma pergunta focada.
+
+### 40.4 Próximos passos
+
+Aisha aceita um cargo de analista de segurança júnior numa sociedade regional de crédito imobiliário. Ela planeja continuar aprendendo por meio de certificações profissionais e manter um diário, como fazia em Pennick. O Dr. Carrow lembra que as normas mudam; a ISO/IEC 27000, por exemplo, foi revisada em 2026. O próximo curso desta área, governança de dados, examina como são tomadas as decisões sobre a qualidade e o uso dos dados, o que complementa seu conhecimento de segurança. Ela também planeja manter contato com o Dr. Carrow e com a equipe de TI da Ashfield, que a convidam a voltar para ver a próxima revisão de acessos.
+
+### Exemplo resolvido
+
+Aisha apresenta os achados, responde a perguntas da defesa oral sobre novos riscos e grupos de comparação, é aprovada com uma nota alta e planeja a continuidade do aprendizado.
+
+> **Caso sintético.** A defesa oral é sintética.
+
+### Erros e limites
+
+Exagerar os achados sob questionamento prejudica a credibilidade.
+
+### Exercícios
+
+- **EX118 — Novo risco.** Que novo risco a automação poderia criar? *Rubrica:* 3 = datas de término erradas desativando funcionários atuais;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX119 — Resposta sobre a comparação.** Por que não houve uma organização de comparação? *Rubrica:* 3 = nenhuma estava disponível;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX120 — Recomendação adotada.** Que recomendação a Ashfield adota? *Rubrica:* 3 = datas de término nos contratos temporários;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX090 (as de EX091–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Aisha Rahimi, o Dr. Neil Carrow, a Pennick University, a Ashfield Credit Union e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX120. Aisha Rahimi, o Dr. Neil Carrow, a Pennick University, a Ashfield Credit Union e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Aproximadamente 35.000 associados.
 
@@ -1561,6 +1979,66 @@ Respostas-modelo para EX001–EX090 (as de EX091–EX120 estão na edição em i
 **EX089.** Nenhuma revisão dos acessos dos fornecedores.
 
 **EX090.** Planejar, fazer, checar e agir.
+
+**EX091.** O diretor executivo.
+
+**EX092.** Tokens físicos fornecidos pela Ashfield.
+
+**EX093.** Seu multiplicador estava de férias.
+
+**EX094.** Os alertas são revisados apenas nas manhãs dos dias úteis.
+
+**EX095.** Ela esgotaria os dois funcionários de TI.
+
+**EX096.** Um teste de um ano do serviço gerenciado.
+
+**EX097.** A Ashfield nunca vai pedir o seu código.
+
+**EX098.** Por telefone, pedindo códigos de uso único.
+
+**EX099.** A coordenação, o relatório final e as entrevistas com os associados.
+
+**EX100.** Um cartaz nas agências.
+
+**EX101.** Porque a atividade dos golpistas também varia com o tempo.
+
+**EX102.** O plano de medição.
+
+**EX103.** Convencer as pessoas a mudar suas rotinas foi mais difícil do que os problemas técnicos.
+
+**EX104.** Um procedimento simplificado de revisão de acessos.
+
+**EX105.** A confiança para apresentar à alta gerência.
+
+**EX106.** Se o processo automatizado de desligamento encurtou o tempo em que as contas dos desligados permanecem ativas.
+
+**EX107.** Outras mudanças acontecendo ao mesmo tempo.
+
+**EX108.** A anonimização dos registros pela Ashfield.
+
+**EX109.** As contas de ex-funcionários podem ser usadas indevidamente por eles ou por atacantes.
+
+**EX110.** Poucos estudos medem os tempos de remoção em organizações pequenas.
+
+**EX111.** Duas semanas.
+
+**EX112.** Cinco dias.
+
+**EX113.** Temporários sem data de término no sistema dos recursos humanos.
+
+**EX114.** Os logs mostram que quase todas as remoções foram automáticas.
+
+**EX115.** A investigação dos atrasos dos temporários.
+
+**EX116.** As datas do RH podem elas próprias ter sido registradas com atraso.
+
+**EX117.** Três vezes.
+
+**EX118.** Datas de término lançadas por engano desativando contas de funcionários atuais.
+
+**EX119.** Nenhuma estava disponível.
+
+**EX120.** Exigir datas de término nos contratos temporários.
 
 <a id="references"></a>
 ## Referências
