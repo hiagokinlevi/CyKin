@@ -48,17 +48,25 @@ Authorized offensive security means looking for weaknesses in systems with the o
 
 Defenders need to know what an attacker could actually do, not only what a checklist says. NIST SP 800-115 describes several kinds of security testing and assessment, from reviews to technical tests. The Penetration Testing Execution Standard (PTES) organises a pentest into stages such as scoping, intelligence gathering, vulnerability analysis, exploitation, post-exploitation and reporting. Threat-led programmes such as TIBER-EU and CBEST use intelligence to make the test look like a real adversary against financial institutions.
 
+For Riverside Civic College, the value is practical: the outside firm's test of the staff portal will show whether a real attacker could misuse it, and Maya's team will use the report to decide which fixes come first.
+
 ### 1.3 What this course will not teach
 
 You will not be given exploit code, payloads or step-by-step attack procedures for real products. Labs use synthetic data and offline scripts. You will learn to check scope, keep evidence, write findings and stay inside the rules.
+
+Instead, the labs are short Python scripts that read local, invented data, such as a target list and four draft findings for Riverside Civic College. You will practise the decisions that keep testing safe and useful: what may be touched, what must be left alone, how serious a finding is and how to tell the people who must act. Those skills are needed before any technical testing is allowed.
 
 ### 1.4 Who says yes
 
 Permission comes from someone who owns or is authorised to speak for the system — often a business owner and a security lead, recorded in a signed document. Your manager, a friend or a public website's "report a bug" page is not enough unless the written rules say so. When in doubt, do not test.
 
+At Riverside Civic College, the staff portal test is allowed because the college's portal owner and IT security lead have signed an agreement with the outside firm. Maya's manager cannot add systems to that agreement by asking, and neither can Maya. A bug bounty page counts only for its own published scope and rules. If a system's owner is unclear, find out who it is before anything is tested.
+
 ### 1.5 Shared language for techniques
 
 MITRE ATT&CK gives public names for adversary techniques, such as T1078 Valid Accounts. Testers and defenders use those names so a finding and a detection rule describe the same behaviour.
+
+For example, a grading system where several staff share one admin login relates to T1078 Valid Accounts, because anyone with the password acts as a legitimate user and nobody can tell who did what. Maya will use this name in Chapter 3. A name does not score the finding or prove an attack happened; it gives testers and defenders a common reference, so a detection team can look up the technique and check whether they would notice it.
 
 ### Worked example (synthetic RCC)
 
@@ -106,6 +114,8 @@ You will (1) list what a written authorization must contain; (2) check proposed 
 
 Before any testing, a written agreement — sometimes called rules of engagement — must name the systems and people in scope, what is out of scope, which methods are allowed, the start and end times, who to call in an emergency, how findings will be reported, and how data will be handled afterwards. NIST SP 800-115 and PTES both treat scoping as a first-class stage, not a formality.
 
+If any of these items is missing, testing waits until the agreement is corrected and signed again. Maya's classroom pack covers 192.0.2.0/25, excludes the payroll server at 192.0.2.10 and allows only a configuration and policy review.
+
 ### 2.2 Checking a target list
 
 Testers compare every proposed address or hostname with the written scope. Excluded systems — payroll, medical devices, safety systems — must never be touched even if they share a network. A simple local check catches mistakes before anyone sends a packet.
@@ -136,13 +146,19 @@ Run with `python3 lab_scope.py`. Verified output:
 198.51.100.7   OUT OF SCOPE - do not test
 ```
 
+The lab script compares four addresses with one allowed range and one excluded address, and sends no traffic. Only 192.0.2.5 is in scope: 192.0.2.10 is the excluded payroll server, and 192.0.2.130 and 198.51.100.7 fall outside 192.0.2.0/25. Run it whenever the list changes, and keep the output with the plan as a record that the check happened before any work began.
+
 ### 2.3 Stop conditions and out of bounds
 
 Stop conditions are events that end or pause testing at once: the owner asks to stop, an unexpected outage appears, safety systems are involved, or sensitive data is exposed beyond the test's purpose. Out-of-bounds rules list methods that are never allowed, such as denial-of-service or social engineering of students, unless the paper explicitly permits them.
 
+When a stop condition occurs, pause at once, contact the emergency contact named in the agreement and write down the time and what you were doing. Testing resumes only when the authorizing contact says so. For Maya's classroom exercise, a slow staff portal test page is enough reason to pause and call.
+
 ### 2.4 When someone asks you to break the rules
 
 Colleagues sometimes ask for a "quick check" of a system that is not in scope. The answer is always no until the authorization is changed in writing. Being helpful does not create permission.
+
+If the request is genuine, the person should ask the system's owner to change the agreement in writing. In Maya's exercise, a classmate asks her to add a personal blog, and she refuses: the college's authorization covers only agreed college systems, and pressure or friendship does not change that. Record each refused request, so your manager can see that the rules held.
 
 ### Worked example (synthetic RCC)
 
@@ -184,27 +200,37 @@ Written scope, exclusions and stop conditions decide every action; anything uncl
 
 ### Learning outcomes
 
-You will (1) describe what makes a useful finding; (2) keep simple evidence without attacking systems; (3) map a finding to an ATT&CK technique name; and (4) write a short, audience-aware report section.
+You will (1) describe what makes a useful finding; (2) keep simple evidence without attacking systems; (3) map a finding to an ATT&CK technique name; and (4) write a short, audience-aware report.
 
 ### 3.1 What a finding is
 
 A finding is a specific, evidenced weakness or gap that matters to the organisation. It states what was observed, where, when, why it matters, how to reproduce the observation within the rules, and a suggested fix. Vague statements such as "security is weak" are not findings.
 
+For example, Maya's finding F3 states that the grading system uses one shared admin account, so logs cannot show which staff member changed a mark. It names the system, gives the evidence, explains the harm to student records and suggests named accounts as the fix. An owner can check it and act on it.
+
 ### 3.2 Evidence without harm
 
 Evidence can be configuration screenshots, log lines, policy excerpts or the output of authorized tools. You keep only what the agreement allows, mark it with time and source, and never share it beyond the agreed audience. This course's labs never touch live targets.
+
+If evidence contains personal data, such as student names in a screenshot, redact them or replace the screenshot with a synthetic sample that still shows the issue. Store evidence where only the agreed people can read it, and delete or return it when the agreement says.
 
 ### 3.3 Naming techniques
 
 Linking a finding to MITRE ATT&CK helps defenders search for related detections. For example, a shared password reused across systems relates to T1078 Valid Accounts. The name describes the behaviour; it does not prove who the attacker would be.
 
+Use the technique name as a pointer, not a conclusion. Maya's F3 maps to T1078 because shared credentials let anyone holding them act as a legitimate user without leaving their own name in the logs. Defenders can then check whether their monitoring would notice that behaviour on the grading system. Map a finding only when the behaviour clearly matches.
+
 ### 3.4 Honest severity
 
 Severity combines how easy the issue is to use and how much harm it could cause. Industry scores such as CVSS exist, but many organisations also use a simple likelihood × impact scale agreed with the client. Overstating severity destroys trust; understating it leaves risk unaddressed.
 
+Maya's scale multiplies likelihood and impact, each from 1 to 3. F3 scores 2 × 3 = 6: the shared admin account is not trivial to misuse, but altered grades with no accountability would harm students and the college's trust. Use CVSS only if the organisation already does and the scores follow its method.
+
 ### 3.5 Who reads the report
 
 Executives need short risk language and decisions; system owners need reproduction steps and fixes; defenders need technique names and detection ideas. One report often has a summary for leaders and detail for engineers.
+
+For F3, Maya writes one paragraph telling the IT director why shared admin access threatens grade integrity, and a fix list telling the application owner to replace the shared login with named accounts and record user identity in the audit log. Detailed evidence sits in an attachment for engineers. Check that every version tells the same facts.
 
 ### Worked example (synthetic RCC)
 
@@ -251,6 +277,8 @@ You will (1) combine scope checking and finding ranking into one short exercise;
 
 Maya is given a synthetic engagement pack: a one-page authorization for documentation addresses in 192.0.2.0/25, an exclusion of 192.0.2.10, a list of four draft findings from a policy and configuration review (no live exploitation), and a request for a one-page summary for the IT director.
 
+Before starting, Maya runs the scope check on any address mentioned in the pack, and confirms that her work is limited to the review the authorization permits. The four findings cover reused portal passwords, an old web server banner, a shared grading admin account and guest Wi-Fi reaching a printer admin page. Her output is a ranked list and a one-page summary for the IT director, with evidence attached.
+
 ### 4.2 Ranking for the summary
 
 Not every finding fits the first page. Ranking by likelihood × impact puts the issues that most need decisions first.
@@ -276,21 +304,31 @@ F4 score=4 medium Guest Wi-Fi reaches printer admin page
 F2 score=2 low    Old web server banner shows version
 ```
 
+The script multiplies likelihood by impact, sorts by score and breaks ties by finding id. F1 and F3 both score 6 and are high; F4 scores 4 and is medium; F2 scores 2 and is low. The first page gives F1 and F3 most space, and F2 can sit in the attachment, since a version banner alone rarely enables much harm.
+
 ### 4.3 Writing the page
 
 The summary states the authorization, the window, how testing was limited (configuration and policy review only), the top findings with scores, and the decisions needed. Detail sits in an attachment.
 
+Maya's page states that the work covered 192.0.2.0/25 except 192.0.2.10, that it was a configuration and policy review with no live exploitation, and that F1 and F3 scored highest. It asks the director to approve named grading accounts and a password-reuse control for the portal within thirty days. Full write-ups, evidence and reproduction steps go in the attachment.
+
 ### 4.4 Pressure scenarios
 
-During the exercise a classmate asks Maya to add their blog to the scan, and a draft finding mentions a medical clinic server that is not in the college scope. She refuses the blog and removes the clinic server note as out of scope.
+During the exercise a classmate asks Maya to add their blog to the target list, and a draft finding mentions a medical clinic server that is not in the college scope. She refuses the blog and removes the clinic server note as out of scope.
+
+The blog is a personal system outside the college's agreement, and the clinic server belongs to another owner, so even listing it as a target would be improper. Maya records both decisions in her notes. If the portal test page becomes slow during a permitted check, she pauses, calls the emergency contact and records the time.
 
 ### 4.5 After the course
 
 The next course in this curriculum is about AI security. Longer red-team courses deepen scoping, methods, tooling, reporting and threat-led testing. Keep a record of exercises completed.
 
+This course gives no authority to test real systems. Before any real engagement you will need further training, supervised practice and, above all, a signed agreement from the system's owner. Maya's next step is to help her team review the outside firm's staff portal report, using the scope, evidence and severity skills from this course.
+
 ### 4.6 Recording the exercise
 
 Maya files the one-pager, the ranked list, the scope-check output and a note of the two refused requests. That packet is what her manager reviews, and it becomes her evidence that the classroom engagement stayed inside the rules.
+
+A reviewer should be able to trace each finding on the page back to its evidence, and each address back to the scope-check output. If something is missing, Maya adds it before filing. Keep the packet only for as long as the agreement allows, and store it where only her manager and the team can read it.
 
 ### Worked example (synthetic)
 
@@ -306,7 +344,7 @@ A classroom ranking is not a full professional report. Real engagements need the
 
 - **EX039 — Authorization one-liner.** Write the authorization sentence Maya puts at the top of the page. *Rubric:* 3 = who authorized, what scope, what methods, what window; 2 = three; 1 = one; 0 = none.
 - **EX040 — Why F2 is last.** Why does the banner finding rank below password reuse? *Rubric:* 3 = lower likelihood×impact; less harm than credential issues; 2 = partial; 1 = banners always first; 0 = none.
-- **EX041 — Lab reorder.** If F4's impact rises to 3, what new order does the lab print? *Rubric:* 3 = F1 and F4 first (score 6), then F3 (6) — actually F1/F3/F4 all 6 sorted by id, F2 last; 2 = partial; 1 = same; 0 = none.
+- **EX041 — Lab reorder.** If F4's impact rises to 3, what new order does the lab print? *Rubric:* 3 = F1, F3 and F4 all score 6 and are sorted by id, then F2; 2 = partial; 1 = same; 0 = none.
 - **EX042 — Blog request again.** Under time pressure the classmate repeats the blog ask. Maya's answer? *Rubric:* 3 = still refuse; no written authorization; 2 = refuse; 1 = quick scan; 0 = agree.
 - **EX043 — Clinic server note.** Why remove the medical clinic server from the draft? *Rubric:* 3 = out of college scope / authorization; possible separate legal duties; 2 = partial; 1 = keep it; 0 = none.
 - **EX044 — Decision request.** What decision does Maya ask of the IT director? *Rubric:* 3 = approve named grading accounts and portal password-reuse control within 30 days; 2 = partial; 1 = "fix security"; 0 = none.
@@ -407,7 +445,7 @@ Model answers for EX001–EX050. Riverside Civic College, Maya Chen and all figu
 
 **EX038.** "Multiple systems accept the same privileged password, so a single compromise grants broad access; individual accountability for changes is not available."
 
-**EX039.** "Authorized by RCC IT security for a configuration and policy review of 192.0.2.0/25 excluding 192.0.2.10, 12–16 October 2026, no live exploitation."
+**EX039.** "Authorized by RCC (portal owner and IT security lead) for a configuration and policy review of 192.0.2.0/25 excluding 192.0.2.10, 12–16 October 2026, no live exploitation."
 
 **EX040.** Its score is 2 against 6 for credential issues; a version banner alone rarely enables the same harm as reused or shared privileged passwords.
 
