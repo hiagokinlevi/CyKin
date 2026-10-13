@@ -63,9 +63,9 @@ Toda afirmación factual sobre un protocolo, una norma, un incidente público o 
 13. [Infraestructura crítica y seguridad sectorial: diagnóstico de averías](#ch-13): hipótesis, predicciones, descarte y escalado.
 14. [Infraestructura crítica y seguridad sectorial: automatización](#ch-14): detección de derivas basada en hashes y automatización segura.
 15. [Infraestructura crítica y seguridad sectorial: integración y dependencias](#ch-15): grafos de dependencias y puntos de integración en las fronteras.
-16. [Documentación técnica y seguridad física](../../en/book/MANUSCRIPT.md#ch-16): documentos ejecutables, autoridad de seguridad física y dispositivos transitorios.
-17. [Laboratorio contenido II](../../en/book/MANUSCRIPT.md#ch-17): una cadena de detección integrada y que se supervisa a sí misma.
-18. [Proyecto técnico supervisado](../../en/book/MANUSCRIPT.md#ch-18): fases del proyecto y un paquete de evidencia sellado.
+16. [Documentación técnica y seguridad física](#ch-16): documentos ejecutables, autoridad de seguridad física y dispositivos transitorios.
+17. [Laboratorio contenido II](#ch-17): una cadena de detección integrada y que se supervisa a sí misma.
+18. [Proyecto técnico supervisado](#ch-18): fases del proyecto y un paquete de evidencia sellado.
 
 Apéndices: [Resultados resueltos y notas de evaluación](#worked-results) · [Glosario](#glossary) · [Referencias](#references).
 
@@ -1983,9 +1983,403 @@ Los servicios fallan a través de aquello de lo que dependen, y las dependencias
 <!-- cyberabc:chapter-navigation:start ch-15 -->
 ### Siga estudiando — capítulo 15 de 18
 
-[← Capítulo 14](#ch-14) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 16 →](../../en/book/MANUSCRIPT.md#ch-16)
+[← Capítulo 14](#ch-14) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
 
 Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Documentación técnica y seguridad física
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo debería ser capaz de:
+
+- redactar documentos técnicos que otro técnico pueda ejecutar con seguridad: instrucciones de trabajo, registros de diagnóstico, registros de cambio y registros de la configuración tal como se construyó;
+- integrar la **seguridad física y del proceso** en el trabajo técnico: permisos, aislamiento, la autoridad de operaciones y las condiciones de parada;
+- controlar los **dispositivos transitorios** (portátiles y soportes extraíbles que se llevan a las instalaciones) para que no transporten malware ni datos entre zonas;
+- mantener los secretos fuera de los documentos.
+
+Los capítulos 1–15 produjeron hallazgos, cambios y evidencia. Este capítulo trata de los documentos que hacen que ese trabajo sea repetible y seguro, y de las reglas de seguridad física que prevalecen sobre cualquier plan técnico.
+
+### 16.1 Los documentos de los que es responsable un técnico
+
+| Documento | Finalidad | Debe contener |
+|---|---|---|
+| **Instrucción de trabajo** | Permite que un colega competente realice una tarea correctamente | Condiciones previas, pasos numerados con resultados esperados, condiciones de parada, reversión, a quién llamar |
+| **Registro de diagnóstico** | Registra una investigación mientras ocurre | Horas UTC, cuatro etiquetas (observado, inferido, hecho, abierto), referencias a la evidencia |
+| **Registro de cambio** | Autoriza y registra un cambio | Antes/después, motivo, pruebas (capítulo 11), reversión, ventana, quién aprueba, quién verifica |
+| **Registro de la configuración tal como se construyó** | Indica lo que está realmente configurado | Versiones, resúmenes de la configuración (capítulo 14), desviaciones respecto al diseño y su aprobación |
+
+Redacte los pasos como acciones en imperativo con un resultado observable: «Ejecute `sshd -T | grep -i passwordauthentication`; se espera `passwordauthentication no`». Un paso sin resultado esperado no puede comprobarse, y un documento que no puede comprobarse se irá alejando de la realidad.
+
+### 16.2 La seguridad física es lo primero y corresponde a operaciones
+
+En una planta de agua, una subestación o una sala de máquinas de un hospital, las personas responsables del proceso físico tienen autoridad sobre él. El trabajo de un técnico allí empieza con su permiso y se detiene a petición suya. Reglas prácticas:
+
+- **Permisos y aislamiento**: el trabajo en los equipos del proceso o cerca de ellos sigue los procedimientos de permiso de trabajo y de aislamiento de la instalación; una tarea de seguridad no le exime.
+- **Los sistemas de protección y de seguridad funcional** nunca se tocan en un trabajo de ciberseguridad: relés de protección de una subestación, sistemas instrumentados de seguridad, alarmas de gases medicinales.
+- **Informe antes de actuar**: la sala de control sabe cuándo empieza, qué está haciendo y cuándo termina.
+- **Las condiciones de parada** se escriben en toda instrucción de trabajo (capítulo 5) y se respetan de inmediato.
+
+NIST SP 800-82 Rev. 3 trata la relación entre la seguridad de la TO y la seguridad funcional ([SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final)); el Cyber Assessment Framework del NCSC del Reino Unido considera que el conocimiento que tiene el operador de sus funciones esenciales es un fundamento de la seguridad ([NCSC CAF](https://www.ncsc.gov.uk/collection/caf)).
+
+### 16.3 Dispositivos y soportes transitorios
+
+Un portátil que visita las estaciones, el centro de control y la oficina corporativa es un puente a través de todas las zonas. Controles que puede aplicar un técnico:
+
+- portátiles de ingeniería dedicados que nunca se unen a la red corporativa ni a internet;
+- una imagen de referencia conocida y correcta, actualizada y analizada en un punto controlado antes de cada visita a una instalación;
+- soportes extraíbles solo de un conjunto controlado, analizados antes de su uso, con un registro de dónde ha estado cada uno;
+- ningún dispositivo personal en las redes de control;
+- un registro de cada conexión hecha en una instalación (qué puerto, qué dispositivo, cuándo).
+
+Los objetivos de rendimiento de CISA incluyen controles sobre los soportes extraíbles y sobre la configuración de los dispositivos ([CISA CPGs](https://www.cisa.gov/cross-sector-cybersecurity-performance-goals)).
+
+### 16.4 Secretos e información sensible
+
+Los documentos no deben contener contraseñas, claves privadas, tokens de API ni códigos de un solo uso. Escriba «credencial de la entrada de la bóveda `kw-rtu-eng`» en lugar de la credencial. Los diagramas de red, los mapas de registros y las exportaciones de cortafuegos de infraestructuras críticas son sensibles: guárdelos con control de acceso, compártalos según la necesidad de conocer y elimínelos de las incidencias que van a los proveedores. Este libro imprime algunos valores falsos solo porque son falsos.
+
+El nombre de la entrada de la bóveda puede figurar sin riesgo en una incidencia de cambio, porque indica a un ingeniero autorizado dónde buscar sin revelar nada que un tercero pueda aprovechar. Los mapas de registros y las exportaciones de cortafuegos reales merecen el mismo cuidado que las credenciales, ya que juntos describen cómo puede cambiarse una estación y desde dónde.
+
+### 16.5 Ejemplo resuelto: una instrucción de trabajo (sintético)
+
+**WI-KW-07 — Exportar la configuración de la RTU de KW-04 para la línea base de derivas.** *Condiciones previas*: registro de cambio CHG-2219 aprobado; sala de control de Kestrel Water informada; portátil de ingeniería ENG-L3 analizado hoy (anotado en el registro de soportes). *Pasos*: (1) a las 10:00 hora local, llame a la sala de control; anote el nombre del operador. (2) En ENG-L3, abra la herramienta del fabricante en modo de solo lectura; resultado esperado: la barra de estado muestra «Online — read only». (3) Exporte la configuración a `KW04-20261013.cfg`; resultado esperado: tamaño del archivo entre 40 y 60 kB. (4) Ejecute `sha256sum KW04-20261013.cfg`; anote el resumen en CHG-2219. (5) Desconéctese; informe a la sala de control. *Condiciones de parada*: cualquier alarma en KW-04; la herramienta pide pasar a «online edit»; petición del operador. *Reversión*: no hace falta (solo lectura), pero si se sospecha alguna escritura, informe de inmediato a operaciones y abra un incidente. *Evidencia*: archivo, resumen, horas de las llamadas.
+
+### 16.6 Actividad práctica
+
+Redacte una instrucción de trabajo para el cambio del router de KW-04 de EX052, que incluya la conservación, el cambio, las pruebas positivas y negativas, la reversión y las condiciones de parada. Pida a otra persona que la lea y que enumere cada paso en el que tendría que adivinar. Incluya la conservación de la configuración del router antes del cambio, pruebas positivas y negativas después, los pasos de reversión y condiciones de parada que incluyan cualquier alarma de KW-04. Pida a un colega que marque cada paso en el que tendría que adivinar; esos pasos necesitan un resultado esperado o una captura de pantalla de la herramienta del fabricante. Guarde la copia revisada con el registro de cambio.
+
+### 16.7 Errores comunes y límites
+
+- Pasos sin resultados esperados.
+- Documentos que contienen credenciales o se comparten demasiado.
+- Tratar una visita a una instalación como una tarea de TI y saltarse el permiso o la llamada a la sala de control.
+- Un portátil para todo.
+- Documentación redactada después del trabajo, de memoria.
+
+- Dejar fuera del procedimiento de la instalación la reversión de un cambio de regla de fw-01, de modo que un cambio fallido no tiene una vuelta atrás probada.
+- Poner credenciales o exportaciones completas del cortafuegos en una incidencia de amplia difusión.
+- Saltarse el permiso o la llamada a la sala de control porque la tarea parece TI corriente.
+- Usar un mismo portátil para el trabajo corporativo, el del centro de control y el de las instalaciones.
+- Redactar el documento de memoria después del trabajo.
+
+### Ejercicios — capítulo 16
+
+**EX061 — Repare una instrucción de trabajo.** *Objetivo:* hacer ejecutables los pasos. *Entradas:* «Inicie sesión en la RTU (contraseña Kestrel2024!) y revise los ajustes. Corrija lo que esté mal. Avise a operaciones al terminar». *Pasos:* enumere los defectos y reescríbala. *Evidencia esperada:* lista de defectos e instrucción reescrita. *Rúbrica:* 3 = elimina la credencial (y recomienda rotarla, puesto que se ha escrito), añade condiciones previas, modo de solo lectura, resultados esperados, condiciones de parada, informa antes a operaciones, sustituye «corrija lo que esté mal» por un registro de cambio; 2 = la mayoría; 1 = cosmético; 0 = nada.
+
+**EX062 — Política de dispositivos transitorios.** *Objetivo:* controlar un puente entre zonas. *Entradas:* un ingeniero usa el mismo portátil para el correo y para el trabajo en las estaciones. *Pasos:* redacte una política técnica breve y el plan de transición. *Evidencia esperada:* política y plan. *Rúbrica:* 3 = portátiles de ingeniería dedicados con una imagen controlada, sin uso corporativo ni de internet, comprobación previa a la visita, conjunto y registro de soportes, registro de conexiones; una transición que conserve los archivos de proyecto del portátil actual tras analizarlos; 2 = política sin transición; 1 = «tenga cuidado»; 0 = nada.
+
+**EX063 — Límites de seguridad física.** *Objetivo:* reconocer lo que está fuera de los límites. *Entradas:* durante una visita a una subestación, encuentra un relé de protección con una contraseña web por defecto. *Pasos:* indique lo que hace y lo que no hace, y cómo lo registra. *Evidencia esperada:* procedimiento breve. *Rúbrica:* 3 = no iniciar sesión ni cambiarla; registrar la observación (dispositivo, hora, cómo se advirtió); comunicarlo al ingeniero de protecciones de Kestrel Grid y a la responsable de seguridad del KVROC; los ingenieros de protecciones deciden y actúan; hallazgo sensible tratado según la necesidad de conocer; 2 = acciones correctas, registro débil; 1 = cambia la contraseña; 0 = nada.
+
+**EX064 — Registro de la configuración tal como se construyó.** *Objetivo:* documentar la realidad. *Entradas:* fw-01 tras la corrección de EX038 y hist-02 tras CHG-2207. *Pasos:* redacte un borrador del registro con versiones, resúmenes (se admiten marcadores), desviaciones y aprobaciones. *Evidencia esperada:* registro de una página. *Rúbrica:* 3 = indica la configuración real, incluye los resúmenes y dónde se guardan, enumera las desviaciones abiertas (REQ-3/4 antes de la corrección) con sus aprobaciones o incidencias, fechado y firmado; 2 = sin desviaciones; 1 = copia el diseño; 0 = nada.
+
+### Síntesis del capítulo
+
+Los buenos documentos técnicos son ejecutables y comprobables: pasos numerados con resultados esperados, condiciones de parada, reversión y evidencia. La seguridad física y la autoridad de operaciones prevalecen sobre todo plan técnico; los sistemas de protección y de seguridad funcional quedan fuera de los límites. Los portátiles y los soportes que se desplazan entre zonas necesitan sus propios controles, y los secretos nunca deben figurar en los documentos.
+
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Siga estudiando — capítulo 16 de 18
+
+[← Capítulo 15](#ch-15) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Laboratorio contenido II
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo debería ser capaz de:
+
+- integrar las técnicas del curso (decodificación, capítulo 2; validación, capítulo 4; reglas de detección, capítulos 8 y 10; episodios y autocomprobaciones) en una única cadena de detección;
+- redactar reglas de detección a partir del modelo del sistema, no del catálogo de un producto: interlocutor nuevo, escritura no autorizada, consulta de identificación;
+- agrupar las alertas en **episodios** y explicar el compromiso que supone la ventana de agrupación;
+- hacer que la cadena se supervise a sí misma: cada registro de entrada o se analiza o se cuenta como descartado;
+- evaluar la cadena con una rúbrica e identificar sus puntos ciegos.
+
+El capítulo 12 construyó un dispositivo. Este segundo laboratorio evaluado construye el vigilante, de la misma forma contenida: entradas sintéticas fijas, solo la biblioteca estándar, sin red.
+
+### 17.1 Reglas a partir del modelo
+
+Cada regla se deriva de un enunciado del modelo del sistema:
+
+- **NEW-TALKER**: el modelo enumera los equipos que pueden hablar Modbus con las estaciones (scada-01, eng-ws-15). Cualquier otro origen es un hallazgo.
+- **UNAUTH-WRITE**: solo la estación de ingeniería puede escribir (capítulo 2).
+- **DEVICE-ID-QUERY**: la función 43 tiene forma de reconocimiento; alertar, con contexto.
+
+Son deliberadamente sencillas y explicables (capítulo 8). MITRE ATT&CK for ICS cataloga las técnicas de los adversarios con las que se relacionan estas reglas, entre ellas el descubrimiento y los mensajes de órdenes no autorizadas ([ATT&CK for ICS](https://attack.mitre.org/matrices/ics/)); úselo para comprobar la cobertura, no como fuente de las reglas.
+
+### 17.2 Episodios
+
+Un único equipo no autorizado puede generar decenas de alertas en un minuto. Agrupar las alertas con la misma regla y el mismo origen en un **episodio** (que se prolonga mientras lleguen alertas nuevas dentro de una ventana desde la anterior) da al analista un único elemento con un recuento y un intervalo de tiempo. La ventana es un compromiso: si es demasiado corta, una sola actividad se convierte en muchos episodios; si es demasiado larga, dos actividades distintas se fusionan. Anote la ventana elegida y por qué.
+
+En el Lab 17, la ventana se mide desde la última alerta del episodio, no desde la primera, de modo que un goteo constante de alertas cada cuatro minutos prolongaría un episodio indefinidamente; limite la duración del episodio (por ejemplo, a una hora) o notifique los episodios largos como en curso con su hora más reciente. Una ventana de cinco minutos separa la escritura de las 07:12 en su propio episodio, que es lo que se quiere si, de otro modo, un analista podría pensar que la actividad se había detenido; una ventana mucho más larga la fusionaría con la ráfaga anterior y ocultaría la pausa.
+
+### 17.3 La cadena se supervisa a sí misma
+
+Un detector que descarta en silencio los registros que no puede analizar está ciego justo donde un atacante envía tráfico mal formado. La cadena debe dar cuenta de cada entrada: *registros = analizados + descartados*, comprobado con un assert, con los registros descartados enumerados y contados. Las orientaciones del NIST sobre supervisión continua plantean lo mismo a escala de programa: la propia supervisión debe supervisarse ([SP 800-137](https://csrc.nist.gov/pubs/sp/800/137/final)). En el Lab 17, la comprobación es la línea `assert parsed + len(dropped) == len(recs)`, y la línea de resumen imprime la propia lista de descartados: un registro, a las 07:03:03 desde 10.20.0.31, cuyo campo de longitud anuncia seis bytes a continuación cuando solo llegan dos. El descarte se cuenta, pero no genera ninguna alerta, porque las reglas solo se ejecutan sobre las tramas analizadas: la laguna que cierra la actividad práctica. Durante la guardia, trate el recuento de descartes como una señal en sí misma: un sensor que de pronto descarta muchos registros tiene un fallo de captura, un error de análisis o un interlocutor que envía tráfico mal formado a propósito, y cada una de esas causas merece una incidencia.
+
+### 17.4 Ejemplo resuelto: la actividad de las 07:03 (sintético)
+
+Diez registros del sensor del centro de control del 12 de octubre. **Lab 17** (guárdelo como `lab17.py` y ejecútelo con `python3 lab17.py`):
+
+```python
+# Lab 17 - contained detection pipeline for station traffic (offline, standard library only)
+# Synthetic records: (UTC time, source, destination, Modbus/TCP frame hex). Rules come from Chapters 2, 9 and 10.
+import struct
+from datetime import datetime, timedelta
+KNOWN = {"10.20.0.10": "scada-01", "10.20.0.15": "eng-ws-15"}
+WRITERS = {"10.20.0.15"}
+WRITE_FC = {5, 6, 15, 16}
+recs = [
+ ("07:00:00", "10.20.0.10", "10.10.4.2", "000100000006010300000004"),
+ ("07:00:05", "10.20.0.10", "10.10.5.2", "000200000006010300000004"),
+ ("07:02:10", "10.20.0.15", "10.10.4.2", "00030000000601060007012c"),
+ ("07:03:00", "10.20.0.31", "10.10.4.2", "000400000006012b0e010000"),
+ ("07:03:01", "10.20.0.31", "10.10.5.2", "000500000006012b0e010000"),
+ ("07:03:02", "10.20.0.31", "10.10.6.2", "000600000006012b0e010000"),
+ ("07:03:03", "10.20.0.31", "10.10.7.2", "0007000000060103"),
+ ("07:04:40", "10.20.0.31", "10.10.4.2", "00080000000601060007ffff"),
+ ("07:05:30", "10.20.0.31", "10.10.4.2", "00090000000601060007ffff"),
+ ("07:12:00", "10.20.0.31", "10.10.4.2", "000a0000000601060007ffff"),
+]
+alerts, dropped, parsed = [], [], 0
+for t, src, dst, hx in recs:
+    b = bytes.fromhex(hx)
+    if len(b) < 8 or struct.unpack(">H", b[4:6])[0] != len(b) - 6:
+        dropped.append((t, src, "malformed")); continue
+    parsed += 1; fc = b[7]
+    if src not in KNOWN: alerts.append((t, "NEW-TALKER", src))
+    if fc in WRITE_FC and src not in WRITERS: alerts.append((t, "UNAUTH-WRITE", src))
+    if fc == 43: alerts.append((t, "DEVICE-ID-QUERY", src))
+assert parsed + len(dropped) == len(recs), "pipeline lost records"
+episodes = []   # merge same rule+source within 5 minutes of the previous alert in the episode
+for t, rule, src in alerts:
+    ts = datetime.strptime(t, "%H:%M:%S")
+    e = next((e for e in episodes if e["key"] == (rule, src) and ts - e["last"] <= timedelta(minutes=5)), None)
+    if e: e["count"] += 1; e["last"] = ts
+    else: episodes.append({"key": (rule, src), "first": ts, "last": ts, "count": 1})
+for e in episodes:
+    print(f"{e['first']:%H:%M:%S}-{e['last']:%H:%M:%S}Z {e['key'][0]:<15} {e['key'][1]:<11} x{e['count']}")
+print(f"records {len(recs)} parsed {parsed} dropped {len(dropped)} {dropped} alerts {len(alerts)} episodes {len(episodes)}")
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+07:03:00-07:05:30Z NEW-TALKER      10.20.0.31  x5
+07:03:00-07:03:02Z DEVICE-ID-QUERY 10.20.0.31  x3
+07:04:40-07:05:30Z UNAUTH-WRITE    10.20.0.31  x2
+07:12:00-07:12:00Z NEW-TALKER      10.20.0.31  x1
+07:12:00-07:12:00Z UNAUTH-WRITE    10.20.0.31  x1
+records 10 parsed 9 dropped 1 [('07:03:03', '10.20.0.31', 'malformed')] alerts 12 episodes 5
+```
+
+Interpretación: un equipo nunca visto, 10.20.0.31, consultó la identificación de dispositivo de tres estaciones en tres segundos, envió una trama mal formada a una cuarta y después escribió 0xFFFF en el registro 7 (el punto de consigna de la bomba) de KW-04 dos veces, y otra vez seis minutos y medio después. Cinco episodios resumen doce alertas. Dos observaciones importan más allá de las propias alertas:
+
+1. La **escritura de las 07:12** es un episodio aparte porque llegó más de cinco minutos después de la alerta anterior. Un analista que leyera solo los tres primeros episodios podría pensar que la actividad se había detenido.
+2. La **trama mal formada** del interlocutor nuevo se descartó y no produjo ninguna alerta; la autocomprobación lo muestra, y es lo primero que hay que corregir: el tráfico no analizable desde un equipo desconocido debería generar por sí mismo NEW-TALKER, ya que la dirección de origen se conoce aunque la carga útil no.
+
+El valor 0xFFFF (65.535) en un registro de punto de consigna cuyo rango de política es 100–400 es el tipo de escritura que el respondedor del Lab 12 rechazaría con la excepción 03, si el dispositivo tuviera esa política. La mayoría no la tiene, así que la detección del lado de la red y el cortafuegos (capítulo 10) son lo único que se interpone entre este equipo y el proceso. En la historia del KVROC, este es el momento de conservar, informar a Kestrel Water y abrir un incidente (capítulo 13).
+
+### 17.5 Rúbrica de evaluación
+
+| Criterio | 3 | 1 |
+|---|---|---|
+| Contención | Entradas fijas; sin red; declarada | Lee tráfico en servicio sin alcance definido |
+| Procedencia de las reglas | Cada regla cita el enunciado del modelo que aplica | Reglas de una lista sin justificación |
+| Autosupervisión | Se da cuenta de los registros; descartados enumerados | Descartes silenciosos |
+| Diseño de los episodios | Ventana declarada con su compromiso | Arbitraria o inexistente |
+| Puntos ciegos | Enumera lo que el sensor no puede ver (tráfico local de las estaciones, enlaces cifrados) | Afirma una cobertura completa |
+| Reproducibilidad | Salida registrada con la versión de Python | Sin registrar |
+
+Puntúe el Lab 17 en cada fila y escriba una mejora para cada puntuación inferior a tres. Los puntos ciegos deben incluir el tráfico local de las estaciones y cualquier ruta que no pase por el sensor del centro de control, como encontró el capítulo 13 para KW-04. Guarde la rúbrica puntuada con la salida del laboratorio y la versión de Python.
+
+### 17.6 Actividad práctica
+
+Cambie la cadena para que un registro descartado (mal formado) desde un origen desconocido genere NEW-TALKER, y añada una regla que alerte de cualquier escritura cuyo valor esté fuera del rango de política del registro, usando la tabla de política del Lab 12. Anote la nueva salida y cómo cambian los episodios. Antes de cambiar el código, guarde la salida actual como referencia y anote su predicción: qué episodio debería crecer y cuántas alertas debería añadir la regla de rango de valores. Tras el cambio, la línea de registros debe seguir cuadrando en diez (nueve analizados, uno descartado): corregir el descarte ciego cambia lo que produce el registro descartado, no si se cuenta. Pruebe la regla de rango de valores en ambos sentidos (debe dispararse con las escrituras de 0xFFFF y permanecer en silencio con la escritura de 300 (0x012c) de eng-ws-15 a las 07:02:10) y vuelva a puntuar después las filas de autosupervisión y de procedencia de las reglas de 17.5.
+
+### 17.7 Errores comunes y límites
+
+- Reglas copiadas de un catálogo sin un enunciado del modelo que las respalde.
+- Episodios tan largos que la actividad diferenciada desaparece.
+- Descartar en silencio los registros mal formados.
+- Creer que el sensor lo ve todo: el capítulo 13 encontró una ruta hacia KW-04 que no pasaba por este sensor.
+- Las marcas de tiempo de la cadena son las del sensor; corrija su reloj como cualquier otro (capítulo 7).
+
+Comprobaciones que detectan estos errores:
+
+- Para cada regla, cite la línea del modelo del sistema que aplica; una regla sin ella se elimina, o primero se actualiza el modelo.
+- Ejecute los episodios con dos ventanas (como en EX067) y confirme que la escritura de las 07:12 sigue siendo visible, ya sea como elemento propio o como un intervalo prolongado.
+- Haga fallar la ejecución cuando los registros no sean iguales a los analizados más los descartados, y revise la lista de descartados en cada turno.
+- Mantenga una lista escrita de las rutas que eluden el sensor (routers celulares de las estaciones, tráfico de la HMI local de las estaciones) junto a la declaración de cobertura de la detección.
+
+### Ejercicios — capítulo 17
+
+**EX065 — Lea los episodios.** *Objetivo:* interpretar la salida de la cadena. *Entradas:* la salida del Lab 17. *Pasos:* redacte un resumen de cinco líneas para el jefe de turno del KVROC usando las cuatro etiquetas. *Evidencia esperada:* resumen. *Rúbrica:* 3 = observado: equipo desconocido 10.20.0.31, consultas de identificación a tres estaciones, escrituras de 65.535 en el registro 7 de KW-04 a las 07:04:40, 07:05:30 y 07:12:00, una trama mal formada; inferido: reconocimiento seguido de intentos de cambiar el punto de consigna; hecho: no se cambió nada; abierto: identidad del equipo, efecto sobre KW-04, ruta; pide a operaciones que compruebe la bomba 2 de KW-04; 2 = sin etiquetas; 1 = vago; 0 = nada.
+
+**EX066 — Corrija el descarte ciego.** *Objetivo:* mejorar la autosupervisión. *Entradas:* la actividad 17.6 (primera mitad). *Pasos:* impleméntela y ejecútela. *Evidencia esperada:* código y salida. *Rúbrica:* 3 = el episodio NEW-TALKER de 10.20.0.31 se amplía ahora a seis registros dentro del mismo episodio (07:03:00–07:05:30 x6), total de alertas 13; se sigue dando cuenta de los registros; 2 = funciona, recuentos sin explicar; 1 = intentado; 0 = nada.
+
+**EX067 — Compromiso de la ventana.** *Objetivo:* razonar sobre la agrupación. *Entradas:* el Lab 17. *Pasos:* prediga el número de episodios con ventanas de 1 minuto y de 10 minutos, y después ejecute. *Evidencia esperada:* predicciones y salidas. *Rúbrica:* 3 = 1 minuto: NEW-TALKER se divide (07:03:00–07:03:02, 07:04:40–07:05:30, 07:12:00), UNAUTH-WRITE se divide en 07:04:40–07:05:30 y 07:12:00, DEVICE-ID uno → 6 episodios; 10 minutos: NEW-TALKER y UNAUTH-WRITE un episodio cada uno → 3 episodios; recomienda un valor con su motivo; 2 = casi todo correcto; 1 = conjeturas; 0 = nada.
+
+**EX068 — Regla de rango de valores.** *Objetivo:* combinar la política del dispositivo y la detección en la red. *Entradas:* la actividad 17.6 (segunda mitad). *Pasos:* impleméntela para las funciones 6 y 16 y ejecútela. *Evidencia esperada:* código y salida. *Rúbrica:* 3 = alerta de las tres escrituras de 0xFFFF y no de la escritura de 300 de eng-ws-15; explica que la regla detecta pero no impide, así que el cortafuegos sigue siendo necesario; 2 = solo la función 6; 1 = intentado; 0 = nada.
+
+### Síntesis del capítulo
+
+Una cadena de detección es un pequeño sistema con sus propios requisitos: reglas que remiten al modelo del sistema, episodios que resumen sin ocultar y una autocomprobación que da cuenta de cada registro. Construida de forma contenida y evaluada con honestidad, incluidos sus puntos ciegos, convierte las técnicas separadas del curso en algo sobre lo que un jefe de turno puede actuar.
+
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Siga estudiando — capítulo 17 de 18
+
+[← Capítulo 16](#ch-16) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Proyecto técnico supervisado
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo debería ser capaz de:
+
+- planificar y ejecutar bajo supervisión un proyecto técnico acotado en un entorno crítico: alcance, línea base, cambio, verificación, registro de diagnóstico y traspaso;
+- reunir el **paquete de evidencias** de un proyecto y sellarlo con un manifiesto de resúmenes SHA-256 y un sello registrado por separado;
+- detectar cualquier cambio posterior en la evidencia sellada y explicar lo que un sello demuestra y lo que no;
+- presentar el proyecto para su evaluación con una rúbrica y declarar con honestidad sus puntos abiertos.
+
+Este capítulo cierra el curso. Aplica todo lo anterior a una única tarea realista, y su resultado es lo que un empleador o un evaluador pediría ver: no una afirmación de competencia, sino la evidencia de ella.
+
+### 18.1 Elegir un proyecto
+
+Un buen proyecto supervisado es acotado, valioso y comprobable. Ejemplos tomados de este libro: bastionar el conducto entre la red corporativa y el centro de control y verificarlo (capítulos 10–11); cerrar la elusión por los routers de estación en todas las estaciones (capítulo 13); desplegar la detección de derivas en los servidores del centro de control (capítulo 14); construir y probar la cadena de detección con una captura saneada y reproducida (capítulo 17). Todo proyecto necesita un **supervisor** (aquí L. Ferreira) y un **autorizador** responsable de los sistemas afectados (aquí A. Mensah, por Kestrel Water).
+
+Acuerde antes del primer día el supervisor, el responsable que firma el alcance y los criterios de éxito. Elija un conducto o una clase de equipos, no el programa entero. Anote los puntos abiertos que espera dejar, de modo que la honestidad sobre los límites se planifique en lugar de improvisarse en la evaluación.
+
+### 18.2 Fases
+
+1. **Alcance** (capítulo 5): propósito, sistemas, acciones, ventana, personas, condiciones de parada, tratamiento de la evidencia, firmado.
+2. **Línea base**: exportaciones de configuración y resúmenes antes de cambiar nada (capítulo 14); resultados actuales de las pruebas (capítulo 11).
+3. **Cambio**: bajo un registro de cambio con marcha atrás (capítulo 10).
+4. **Verificación**: pruebas positivas y negativas, cada requisito verificado, fallido o sin probar.
+5. **Registro de diagnóstico** durante todo el proyecto, con las cuatro etiquetas (capítulo 13).
+6. **Traspaso**: registro de la configuración tal como se construyó, instrucciones de trabajo, puntos abiertos con responsables (capítulo 16).
+7. **Paquete de evidencias**: todo lo anterior, sellado.
+
+No omita los resúmenes de la línea base aunque el cambio parezca pequeño; sin ellos no puede demostrar qué cambió. Mantenga abierto el registro de diagnóstico durante toda la ventana, incluidas las interrupciones y los intentos fallidos. El paquete de evidencias va al final, cuando ya existen los documentos de traspaso que incluir en él.
+
+### 18.3 Sellar la evidencia
+
+Un **manifiesto** enumera cada elemento con su resumen SHA-256 ([FIPS 180-4](https://csrc.nist.gov/pubs/fips/180-4/upd1/final)). El **sello** es el resumen del propio manifiesto. Registre el sello **fuera** del paquete (en el registro de cambio, en un correo al supervisor, en el formulario de evaluación), porque quien pueda editar el paquete también puede editar un manifiesto guardado dentro de él. Más adelante, recalcular los resúmenes de los elementos muestra si algo ha cambiado; recalcular el resumen del manifiesto y compararlo con el sello registrado externamente muestra si el manifiesto se ha alterado.
+
+Lo que un sello demuestra: que los elementos son, byte a byte, lo que eran cuando se sellaron. Lo que no demuestra: que fueran ciertos, completos o creados cuando afirman. Eso depende de cómo se recogieron (capítulo 5) y de registros independientes (registros del cortafuegos en el recolector, tickets de cambio en su propio sistema). Para garantías más sólidas, las organizaciones usan firmas con claves custodiadas por un tercero o un sellado de tiempo de confianza; el principio es el mismo.
+
+### 18.4 Ejemplo resuelto: el proyecto del conducto de KW-04 (sintético)
+
+El proyecto de R. Kaur eliminó la regla corporativa amplia R4 de fw-01 (CHG-2215), verificó el resultado e investigó por el camino el evento de KW-09. El paquete de evidencias se sella y, una semana después, se vuelve a verificar. **Lab 18** (guárdelo como `lab18.py` y ejecútelo con `python3 lab18.py`):
+
+```python
+# Lab 18 - seal and re-verify a project evidence package (offline, standard library only)
+# Synthetic artefacts from the supervised project; written only inside a temporary directory.
+import hashlib, pathlib, tempfile
+artefacts = {
+ "01-scope.md": "Scope: KW-04 conduit hardening; authorized by A. Mensah (Kestrel Water) 2026-10-05.\n",
+ "02-before-fw.txt": "R4 allow 10.30.0.0/16 10.20.0.0/24 tcp any\n",
+ "03-after-fw.txt": "R4 removed CHG-2215\n",
+ "04-tests.csv": "test,result\nT4,pass\nT5,pass\nT9,pass\n",
+ "05-troubleshooting-log.md": "07:05Z KW-09 missing; H4 consistent; RTU config preserved as E-17.\n",
+}
+with tempfile.TemporaryDirectory() as tmp:
+    d = pathlib.Path(tmp)
+    for n, t in artefacts.items(): (d / n).write_text(t)
+    lines = [f"{hashlib.sha256((d / n).read_bytes()).hexdigest()}  {n}" for n in sorted(artefacts)]
+    (d / "MANIFEST.sha256").write_text("\n".join(lines) + "\n")
+    seal = hashlib.sha256((d / "MANIFEST.sha256").read_bytes()).hexdigest()
+    print("manifest:")
+    for l in lines: print(" ", l[:16] + "...", l.split("  ")[1])
+    print("seal (record this outside the package):", seal[:24])
+    (d / "04-tests.csv").write_text("test,result\nT4,pass\nT5,pass\nT9,pass\nT10,pass\n")   # later edit
+    for l in (d / "MANIFEST.sha256").read_text().splitlines():
+        h, n = l.split("  ")
+        ok = hashlib.sha256((d / n).read_bytes()).hexdigest() == h
+        print(f"verify {n:<26} {'OK' if ok else 'MISMATCH'}")
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+manifest:
+  72d8be01e70067c7... 01-scope.md
+  8d52d15a3e02b7f8... 02-before-fw.txt
+  2cd59665641b4779... 03-after-fw.txt
+  d6eccc2e2ac61ecb... 04-tests.csv
+  6d2525605f11521c... 05-troubleshooting-log.md
+seal (record this outside the package): 062b9a1fd700dd0eac04b3a8
+verify 01-scope.md                OK
+verify 02-before-fw.txt           OK
+verify 03-after-fw.txt            OK
+verify 04-tests.csv               MISMATCH
+verify 05-troubleshooting-log.md  OK
+```
+
+Cuatro elementos se verifican; `04-tests.csv` no. Alguien añadió una línea T10 después del sellado. Puede ser una prueba posterior legítima, pero debe añadirse como un elemento nuevo, fechado por separado y con su propia entrada, no editando un archivo sellado. El evaluador pide a R. Kaur que restaure la versión sellada desde el archivo (su resumen debe coincidir con el manifiesto) y que presente T10 como `06-tests-addendum.csv` en una versión nueva y resellada del paquete, con ambos sellos registrados.
+
+### 18.5 Rúbrica de evaluación del proyecto
+
+| Criterio | 3 (cumple el resultado técnico) | 1 |
+|---|---|---|
+| Alcance y autorización | Alcance firmado con responsable, ventana y condiciones de parada | Aprobación verbal |
+| Corrección técnica | El cambio cumple los requisitos; sin daños colaterales | Parcial o perjudicial |
+| Verificación | Todos los requisitos verificados o explícitamente abiertos, pruebas positivas y negativas con evidencia | Solo recuentos de aprobados |
+| Diagnóstico | Hipótesis, predicciones, descartes, conservación | Narración |
+| Documentación | Instrucciones de trabajo ejecutables, registro de la configuración tal como se construyó, sin secretos | Notas de memoria |
+| Evidencia | Manifiesto, sello externo, ejecución de verificación | Carpeta de capturas de pantalla |
+| Honestidad sobre los límites | Puntos abiertos con responsables; puntos ciegos declarados | «Todo hecho» |
+
+### 18.6 Práctica continua
+
+Después del curso, mantenga tres hábitos: verificar antes de informar, conservar antes de cambiar y corregir los relojes antes de ordenar los eventos. Mantenga los laboratorios contenidos y no pruebe nunca una infraestructura real sin la autorización escrita de su responsable. Revise las normas y orientaciones cuando cambien; todas las fuentes de este libro están fechadas en octubre de 2026. Convierta el trabajo del curso en un portafolio: planes con alcance, salidas de los laboratorios con sus versiones de Python, registros de diagnóstico y el paquete sellado de este capítulo, con cada sello registrado fuera de su paquete. Cuando pase a una versión nueva de Python, vuelva a ejecutar los laboratorios y compare las salidas; una diferencia es un hallazgo que hay que explicar, no ocultar. Busque trabajo supervisado en el que pueda repetir el ciclo completo (alcance, línea base, cambio, verificación, traspaso) sobre un sistema real con la firma de su responsable, y pida a su supervisor que lo puntúe con la rúbrica de 18.5.
+
+### 18.7 Errores comunes y límites
+
+- Proyectos demasiado amplios para verificarlos.
+- Sellos guardados dentro del paquete.
+- Editar elementos sellados en lugar de añadir otros nuevos.
+- Informar solo de los éxitos.
+- El Lab 18 usa texto en memoria y un directorio temporal; los paquetes reales incluyen exportaciones binarias y capturas grandes, que se resumen igual pero necesitan un almacenamiento con control de acceso.
+
+Comprobaciones que detectan estos errores:
+
+- Antes del primer día, escriba cada requisito como una prueba con un resultado esperado; si un requisito no puede probarse dentro de la ventana, reduzca el alcance.
+- Registre el sello al menos en un lugar que los editores del paquete no puedan cambiar, como el registro de cambio (CHG-2215) o un correo al supervisor.
+- Antes del traspaso, vuelva a ejecutar la verificación del manifiesto; resuelva cualquier MISMATCH restaurando el archivo sellado y añadiendo un anexo fechado (EX071), nunca resellando encima de la versión 1.
+- Enumere en el traspaso los requisitos fallidos y sin probar, con sus responsables, como hace EX072.
+
+### Ejercicios — capítulo 18
+
+**EX069 — Alcance del proyecto.** *Objetivo:* definir un proyecto supervisado. *Entradas:* elija un proyecto de 18.1. *Pasos:* redacte el alcance, los requisitos (comprobables) y la lista de elementos que contendrá el paquete de evidencias. *Evidencia esperada:* plan de una página. *Rúbrica:* 3 = todos los elementos del alcance, al menos cuatro requisitos comprobables con pruebas positivas y negativas, elementos asociados a las fases, supervisor y autorizador nombrados; 2 = una laguna; 1 = genérico; 0 = nada.
+
+**EX070 — Verifique un sello.** *Objetivo:* usar el sello correctamente. *Entradas:* el Lab 18. *Pasos:* modifique el programa para que, al final, recalcule también el resumen del manifiesto y lo compare con el sello registrado; después edite también `MANIFEST.sha256` para que coincida con el archivo de pruebas manipulado y muestre lo que informa la comparación del sello. *Evidencia esperada:* código y salidas de ambos casos. *Rúbrica:* 3 = primer caso: el sello coincide (manifiesto intacto) mientras un elemento no coincide; segundo caso: todos los elementos «OK» frente al manifiesto editado, pero la comparación del sello falla; explica por qué el sello debe guardarse fuera; 2 = un caso; 1 = intentado; 0 = nada.
+
+**EX071 — Gestione la adición tardía.** *Objetivo:* gestionar los cambios en la evidencia. *Entradas:* la edición de T10. *Pasos:* redacte paso a paso el procedimiento que describió el evaluador, incluido qué se registra y dónde. *Evidencia esperada:* procedimiento. *Rúbrica:* 3 = restaurar el original sellado desde el archivo y comprobar su resumen; añadir el anexo como elemento nuevo con fecha y recolector; generar una nueva versión del manifiesto y un nuevo sello; registrar ambos sellos externamente con el motivo; no sobrescribir nunca la versión 1; 2 = falta el registro externo; 1 = «editar y resellar»; 0 = nada.
+
+**EX072 — Autoevaluación.** *Objetivo:* aplicar la rúbrica con honestidad. *Entradas:* el proyecto de R. Kaur tal como se describe en este capítulo y en los capítulos 10–13. *Pasos:* puntúe cada criterio de la rúbrica con una frase de evidencia y enumere los puntos abiertos. *Evidencia esperada:* tabla puntuada y puntos abiertos. *Rúbrica:* 3 = puntuaciones justificadas a partir del texto (por ejemplo, verificación limitada por REQ-4 hasta que se elimine R6; criterio de evidencia rebajado por la edición posterior al sellado hasta que se corrija), los puntos abiertos incluyen R6, la elusión por el router de KW-04 en las demás estaciones, la cobertura de REQ-6 y el desenlace del incidente de KW-09, cada uno con responsable; 2 = puntuaciones sin evidencia; 1 = todo 3; 0 = nada.
+
+### Síntesis del capítulo
+
+Un proyecto supervisado muestra la competencia técnica como evidencia: un alcance firmado, una línea base, un cambio controlado, la verificación de cada requisito, un registro de diagnóstico, documentación ejecutable y un paquete sellado. Un sello demuestra que la evidencia no ha cambiado desde el sellado, si se registra fuera del paquete; no demuestra que la evidencia fuera cierta. Declare qué queda abierto, quién es su responsable y qué no pudo ver.
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Siga estudiando — capítulo 18 de 18
+
+[← Capítulo 17](#ch-17) · [Índice de capítulos del curso](../SUBJECTS.md) · [Siguiente curso desde el índice de capítulos →](../SUBJECTS.md)
+
+Este es el último capítulo de este curso; el índice enlaza con el siguiente curso del itinerario completo de estudio.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
@@ -2151,6 +2545,36 @@ Las observaciones que las separan son los contadores (enlace), la frescura de la
 **EX059 — Prueba en modo degradado.** Primero en una réplica o en una HMI de reserva: bloquear su tráfico hacia el directorio y probar el inicio de sesión con credenciales en caché y con la cuenta local de emergencia documentada. En producción, en una ventana acordada y con operaciones de Kestrel Water presente: bloquear durante 10 minutos en fw-01 la ruta de la HMI hacia ad-ops; confirmar que los operadores pueden iniciar sesión y actuar y que el sondeo de scada-01 continúa (recuento del historiador). Condiciones de parada: cualquier pérdida de la visión o del control del operador, cualquier alarma; eliminación inmediata de la regla como reversión. Evidencia: registro del cambio de regla, registros de inicio de sesión, recuentos del historiador.
 
 **EX060 — Sentido de la exportación.** hist-02 envía el CSV por HTTPS a report-01 con una credencial de servicio que solo puede subir archivos; se eliminan la cuenta corporativa y la contraseña guardada que se usaban para iniciar sesión en hist-02, y se rota la contraseña; fw-01 solo permite hist-02 → report-01 tcp/443, y nada desde Z6 hacia hist-02; incluir un resumen SHA-256 del archivo en los metadatos de la subida y comprobarlo al recibirlo; alertar si no ha llegado ningún envío a las 06:30.
+
+### Capítulo 16: EX061–EX064
+
+**EX061 — Repare una instrucción de trabajo.** Defectos: contraseña en el documento (y, por tanto, comprometida: rótela); sin condiciones previas ni registro de cambio; sin modo de solo lectura; sin resultados esperados; «corrija lo que esté mal» autoriza cambios no planificados; a operaciones solo se le informa después; sin condiciones de parada ni reversión. Reescritura con el patrón de WI-KW-07: registro de cambio, llamada previa a la sala de control, referencia a la bóveda para la credencial, exportación de solo lectura con resultados esperados, hallazgos registrados para un cambio aparte, condiciones de parada, llamada al final.
+
+**EX062 — Política de dispositivos transitorios.** Política: el trabajo de ingeniería en los sistemas de control solo desde portátiles dedicados construidos a partir de una imagen controlada, que nunca se usan para el correo ni para internet; actualización y análisis antimalware antes de cada visita en un puesto controlado, con registro; soportes extraíbles de un conjunto numerado, analizados y registrados; cada conexión en una instalación, registrada. Transición: analizar los archivos de proyecto del portátil actual en un sistema aislado, copiar los archivos verificados al nuevo portátil de ingeniería, registrar los resúmenes y después devolver el portátil antiguo solo al uso corporativo.
+
+**EX063 — Límites de seguridad física.** No inicie sesión, no pruebe ni cambie nada. Registre la identidad del dispositivo, la ubicación, la hora y cómo se advirtió la situación (por ejemplo, la página de inicio de sesión mostraba un aviso de credenciales por defecto descrito en la documentación del fabricante; no hubo intento de inicio de sesión). Comuníquelo el mismo día al ingeniero de protecciones de Kestrel Grid y a L. Ferreira; los ingenieros de protecciones deciden y realizan cualquier cambio conforme a sus procedimientos. Guarde el hallazgo con acceso restringido.
+
+**EX064 — Registro de la configuración tal como se construyó.** Ejemplo: fw-01, versión de firmware x.y; resumen del conjunto de reglas (marcador) guardado en CHG-2215 y en el colector; reglas R1, R2, R3, R7 tal como se construyeron; desviación: R5 conservada para el registro (aprobada por L. Ferreira). hist-02: versión de OpenSSH; resumen de la configuración efectiva obtenido con `sshd -T`; desviación abierta hasta completar EX010: el intérprete de `histsvc`; fechado y firmado por quien lo implantó y quien lo verificó.
+
+### Capítulo 17: EX065–EX068
+
+**EX065 — Lea los episodios.** «*Observado:* 07:03–07:12Z, el equipo desconocido 10.20.0.31 envió consultas de identificación de dispositivo a KW-04, KW-05 y KW-06, una trama mal formada a KW-07, y escribió 65.535 en el registro 7 de KW-04 (punto de consigna de la bomba 2) a las 07:04:40, 07:05:30 y 07:12:00. *Inferido:* reconocimiento seguido de intentos de cambiar el punto de consigna. *Hecho:* nada. *Abierto:* identidad y responsable de 10.20.0.31; si KW-04 aceptó las escrituras; cómo llegó el equipo a Z2. Petición: que Kestrel Water compruebe ahora la bomba 2 y el punto de consigna de KW-04; conservar los datos del sensor».
+
+**EX066 — Corrija el descarte ciego.** En la rama de las tramas mal formadas, añada NEW-TALKER cuando el origen sea desconocido, antes de `continue`. Salida verificada: NEW-TALKER 07:03:00–07:05:30Z ×6, alertas 13, episodios 5, y se sigue dando cuenta de los registros (10 = 9 analizados + 1 descartado).
+
+**EX067 — Compromiso de la ventana.** 1 minuto: 6 episodios; NEW-TALKER se divide en 07:03:00–07:03:02 (×3), 07:04:40–07:05:30 (×2) y 07:12:00 (×1); UNAUTH-WRITE en 07:04:40–07:05:30 (×2) y 07:12:00; DEVICE-ID uno. 10 minutos: 3 episodios; NEW-TALKER 07:03:00–07:12:00 ×6, DEVICE-ID ×3, UNAUTH-WRITE 07:04:40–07:12:00 ×3. Todo verificado ejecutándolo. Cinco minutos es un valor por defecto razonable para una actividad a ritmo humano; la configuración de 10 minutos mantiene visible la escritura de las 07:12 como parte de la misma actividad, lo que aquí es posiblemente mejor: anote la elección y revísela con datos reales.
+
+**EX068 — Regla de rango de valores.** Añada `POLICY = {7: (100, 400)}`; para la función 6, decodifique `addr, val` de los bytes 8–12; para la 16, decodifique cada valor; genere la alerta `VALUE-RANGE` cuando una dirección de POLICY reciba un valor fuera de su rango. Se dispara con las tres escrituras de 0xFFFF y no con la escritura de 300 de eng-ws-15. Detecta pero no impide: el dispositivo puede seguir aceptando la escritura, así que el cortafuegos y los controles de acceso siguen siendo la capa preventiva.
+
+### Capítulo 18: EX069–EX072
+
+**EX069 — Alcance del proyecto.** Ejemplo (elusión por los routers de estación): propósito: eliminar las rutas no autorizadas hacia el Modbus de las estaciones a través de routers celulares; sistemas: doce routers de estación (lectura), cambios solo en los routers con hallazgos; ventana: acordada por estación con Kestrel Water; autorizador A. Mensah; supervisor L. Ferreira; condiciones de parada: cualquier pérdida de comunicación o alarma. Requisitos: ninguna redirección de puerto a tcp/502 en ningún router (negativa: comprobación de la configuración y prueba de conexión con un cliente VPN); el SCADA sondea todas las estaciones (positiva: recuento del histórico); configuraciones de los routers bajo detección de derivas (prueba: se detecta un cambio inocuo inyectado); gestión de los routers solo desde jump-01 (prueba negativa). Elementos: alcance, exportaciones de la línea base y resúmenes, registros de cambio, resultados de las pruebas, registro de diagnóstico, registro de la configuración tal como se construyó, manifiesto y sello.
+
+**EX070 — Verifique un sello.** Tras la verificación, calcule `hashlib.sha256((d / "MANIFEST.sha256").read_bytes()).hexdigest()` y compárelo con `seal`: el caso 1 imprime «seal OK» mientras `04-tests.csv` no coincide. Caso 2: reescriba la línea del manifiesto de `04-tests.csv` con el nuevo resumen; ahora todos los elementos se verifican «OK», pero el resumen del manifiesto difiere del sello registrado, así que la comprobación del sello falla. Solo un sello guardado externamente revela que se editó el propio manifiesto.
+
+**EX071 — Gestione la adición tardía.** (1) Recupere la versión 1 del paquete desde el archivo; compruebe cada elemento y el manifiesto frente al sello registrado externamente. (2) Restaure `04-tests.csv` al contenido sellado. (3) Guarde los resultados de T10 como `06-tests-addendum.csv` con el recolector y la hora UTC. (4) Cree la versión 2 del manifiesto con los seis elementos; calcule el sello 2. (5) Registre el sello 2 en el registro de cambio y en el formulario de evaluación con el motivo, conservando el sello 1. (6) No sobrescriba nunca la versión 1.
+
+**EX072 — Autoevaluación.** Alcance 3 (firmado, responsable y condiciones de parada). Corrección técnica 2 (R4 eliminada; R6 sigue presente). Verificación 2 (REQ-4 falla hasta que se elimine R6; REQ-6 solo se probó después de EX042). Diagnóstico 3 (hipótesis, predicciones y conservación en KW-09). Documentación 2 (registro de la configuración tal como se construyó pendiente para los hallazgos de los routers). Evidencia 2 hasta que se corrija la edición posterior al sellado; después, 3. Honestidad 3 si se enumeran los puntos abiertos. Puntos abiertos: eliminar R6 (R. Kaur); comprobación de la elusión por los routers en todas las estaciones (responsable de red); prueba de regresión mensual de REQ-6 (J. Tan); desenlace del incidente de KW-09 (L. Ferreira).
 
 <a id="glossary"></a>
 
