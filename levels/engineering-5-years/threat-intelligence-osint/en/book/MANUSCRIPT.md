@@ -3422,7 +3422,7 @@ Kofi lists how each assumption is checked. Mislabelled TLP from partners shows u
 
 Unseen partner formats, adversary poisoning that mimics legitimate patterns, staff turnover. Each risk has an owner and acceptance by an accountable manager.
 
-Kofi writes each risk with what would happen if it occurred and what reduces it. Poisoning that looks legitimate is the hardest, since the allow-list catches only known suppliers, as the final defence later acknowledged. Staff turnover is reduced by documentation and pairing. The accountable manager signs the acceptance, which makes clear that the risk is a business decision rather than an engineering oversight.
+Kofi writes each risk with what would happen if it occurred and what reduces it. Poisoning that looks legitimate is the hardest, since the allow-list catches only known suppliers, a gap Kofi also concedes at the final defence in Chapter 50. Staff turnover is reduced by documentation and pairing. The accountable manager signs the acceptance, which makes clear that the risk is a business decision rather than an engineering oversight.
 
 ### 48.5 Audience
 
@@ -3888,7 +3888,7 @@ Model answers for EX001–EX150. Brightwater Energy Networks, Lantern, Kofi Mens
 
 **EX140.** RTO: the maximum acceptable time the service may be down. RPO: the maximum acceptable amount of data loss, measured in time.
 
-**EX141.** When it is a documented decision showing the cache can be fully rebuilt from stored data without harm, not a convenience to pass the drill.
+**EX141.** When it is a documented decision showing the cache can be rebuilt from the enrichment providers (about half an hour, within their query limits) with no partner data lost, not a convenience to pass the drill.
 
 **EX142.** Timeliness, accuracy, TLP and privacy compliance, OT recommendation safety (reliability and maintainability also count).
 
