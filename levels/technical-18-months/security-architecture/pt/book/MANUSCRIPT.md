@@ -1,7 +1,7 @@
 # Arquitetura e Engenharia de Segurança: Curso Técnico
 
 - Idioma: português do Brasil (`pt`); curso 053, curso técnico (18 meses). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–12 de 18 já estão escritos em português, com os exercícios EX001–EX048 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 13–18 (EX049–EX072) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–18 de 18 têm texto didático escrito à mão; os exercícios EX001–EX072 têm resoluções correspondentes com rubricas de 0 a 3; os cinco laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente e a verificação de 300 páginas A4 continuam em aberto.
 - Público: alunos de curso técnico que vão configurar, verificar e manter controles de segurança em organizações pequenas.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios conferem resultados de backup, testam regras de firewall, simulam a alcançabilidade, comparam configurações com uma baseline e comparam regras de login, sempre sobre dados sintéticos em modelos isolados; nada toca uma rede real e nenhum malware é usado. Projetos de produção usam produtos e normas avaliados; nunca crie sua própria criptografia. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,7 @@ NIST [SP 800-207](https://doi.org/10.6028/NIST.SP.800-207); Shostack, *Threat Mo
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
-
-Capítulos 13–18: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-13), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -609,11 +607,299 @@ As simulações simplificam o comportamento do atacante. Os PCs dos consultório
 
 - **EX048 — Resultado mais valioso.** Por que a restrição do servidor de backup é o resultado mais valioso? *Rubrica:* 3 = mantém a recuperação possível;; 2 = recuperação;; 1 = nenhuma;; 0 = nenhuma.
 
+<a id="ch-13"></a>
+
+## Capítulo 13 — Arquitetura e engenharia de segurança: solução de problemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) diagnosticar um problema causado por uma mudança de segurança; (2) usar os logs para encontrar a causa; (3) corrigi-lo mantendo o controle.
+
+### 13.1 O problema
+
+Duas semanas depois da segmentação, a clínica de Norbury relata que as imagens de raio X levam minutos para aparecer nos consultórios. A equipe suspeita do novo firewall. Nadia começa descrevendo o sintoma com exatidão: as imagens carregam, mas devagar, só em dois dos quatro consultórios e só desde terça-feira. Ela pergunta o que mudou na terça e descobre que um novo sensor de raio X foi instalado no consultório três. Sintomas precisos estreitam a busca muito mais depressa do que queixas genéricas de que a rede está lenta. Ela escreve esses detalhes no chamado antes de investigar mais.
+
+### 13.2 Usar os logs
+
+Nadia confere os logs do firewall do roteador, que mostram conexões repetidamente bloqueadas dos PCs dos consultórios para o servidor de imagens numa segunda porta. O software do novo sensor usa uma porta extra para as prévias das imagens, que as regras não permitem. O visualizador tenta de novo antes de recorrer ao método mais lento, o que causa os atrasos. A causa é um fluxo novo e legítimo, e não um defeito do projeto. Os logs transformaram uma queixa vaga numa regra específica que faltava em vinte minutos. Ela salva as linhas de log relevantes como evidência no chamado.
+
+### 13.3 Corrigir do jeito certo
+
+Nadia confirma a porta na documentação do fornecedor do sensor e depois acrescenta uma regra que permite que os PCs dos consultórios alcancem o servidor de imagens apenas nessa porta, com o propósito e o responsável registrados. Ela roda de novo os testes de verificação do capítulo 11 e acrescenta a nova porta à lista de fluxos esperados. As imagens voltam a carregar normalmente. Ela também acrescenta uma etapa ao procedimento de mudanças: os novos dispositivos clínicos precisam ter suas necessidades de rede documentadas antes da instalação, para que o próximo dispositivo não cause o mesmo atraso.
+
+### Exemplo resolvido
+
+Nadia estreita uma queixa de lentidão nas imagens, encontra conexões bloqueadas nos logs, acrescenta uma regra documentada e atualiza o procedimento de mudanças.
+
+> **Caso sintético.** Os dispositivos e as portas são sintéticos.
+
+### Erros e limites
+
+A documentação dos fornecedores pode estar incompleta. O comportamento de nova tentativa esconde os bloqueios dos usuários.
+
+### Exercícios
+
+- **EX049 — Sintoma preciso.** Que sintoma preciso Nadia registrou? *Rubrica:* 3 = carregamento lento das imagens em dois de quatro consultórios desde terça;; 2 = preciso;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX050 — Evidência nos logs.** O que os logs do firewall mostraram? *Rubrica:* 3 = conexões bloqueadas dos PCs dos consultórios para o servidor de imagens numa segunda porta;; 2 = bloqueios;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX051 — Correção certa.** Como o problema foi corrigido? *Rubrica:* 3 = uma regra documentada só para aquela porta, seguida de novos testes;; 2 = regra estreita;; 1 = liberar tudo;; 0 = nenhuma.
+
+- **EX052 — Prevenção.** O que evita uma repetição? *Rubrica:* 3 = documentar as necessidades de rede dos novos dispositivos antes da instalação;; 2 = procedimento de mudanças;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Arquitetura e engenharia de segurança: automação
+
+### Objetivos de aprendizagem
+
+Você vai (1) automatizar uma comparação de configurações entre as clínicas; (2) relatar a deriva; (3) manter a automação segura.
+
+### 14.1 Deriva entre os locais
+
+As cinco clínicas deveriam compartilhar a mesma baseline, mas as configurações derivam à medida que as pessoas fazem mudanças locais. Nadia escreve um script que compara as configurações exportadas do roteador de cada clínica com uma baseline de referência e lista as diferenças. Grace exporta as configurações todo mês. A deriva importa porque uma única mudança esquecida, como uma regra temporária deixada aberta, pode desfazer a proteção que o projeto oferece. A automação permite que uma equipe pequena confira cinco locais de forma consistente em minutos, em vez de ler longos arquivos de configuração a olho. Grace concorda em rodar a comparação na primeira segunda-feira de cada mês.
+
+### Laboratório — Comparação das configurações das clínicas com uma baseline
+
+```python
+# Compare practice router settings with a baseline (synthetic exports).
+base = {"smb1": "off", "remote_admin_wan": "off", "guest_isolation": "on", "rule_preview_9443": "absent", "ntp": "on"}
+sites = {"Elmfield": dict(base), "Ashby": dict(base), "Kingsley": dict(base),
+         "Norbury": dict(base, rule_preview_9443="present"), "Westcott": dict(base, remote_admin_wan="on")}
+for s, cfg in sites.items():
+    diff = {k: (base[k], v) for k, v in cfg.items() if base[k] != v}
+    print(f"{s}: " + ("matches baseline" if not diff else f"differs {diff}"))
+```
+
+Execute com `python3 lab_drift.py`. Saída verificada:
+
+```text
+Elmfield: matches baseline
+Ashby: matches baseline
+Kingsley: matches baseline
+Norbury: differs {'rule_preview_9443': ('absent', 'present')}
+Westcott: differs {'remote_admin_wan': ('off', 'on')}
+```
+
+### 14.2 Relatar a deriva
+
+O laboratório compara cinco clínicas. Três correspondem à baseline. Norbury tem a regra documentada da porta de prévias do capítulo 13, que Nadia acrescenta à baseline porque todas as clínicas em breve terão os novos sensores. Westcott tem a administração remota habilitada a partir da internet, o que ninguém consegue explicar. Grace a desativa e troca a senha do roteador para o caso de ela ter sido usada. O relatório lista cada diferença com uma ação recomendada, separando as mudanças aprovadas das inexplicadas. Os achados e as ações são registrados, para que o relatório mensal seguinte possa confirmar que continuaram corrigidos.
+
+### 14.3 Automação segura
+
+O script lê as exportações e relata; ele nunca altera as configurações do roteador. As mudanças continuam sendo uma decisão humana depois de revisão. Nadia guarda o script e a baseline no repositório da Linden com histórico de mudanças, para que as atualizações da baseline fiquem visíveis. Ela acrescenta um teste que falha se uma exportação vier vazia, o que de outro modo poderia parecer conformidade perfeita. Daniel observa que a automação somente de leitura é o primeiro passo certo para equipes pequenas, já que acrescenta visibilidade sem acrescentar o risco de erros automatizados.
+
+### Exemplo resolvido
+
+Nadia compara as configurações dos roteadores de cinco clínicas com uma baseline, atualiza a baseline para uma mudança aprovada e encontra uma administração remota inexplicada.
+
+> **Caso sintético.** As configurações e as clínicas são sintéticas.
+
+### Erros e limites
+
+As exportações podem omitir algumas configurações. As baselines precisam de responsáveis para se manterem atualizadas.
+
+### Exercícios
+
+- **EX053 — Por que a deriva importa.** Por que a deriva importa? *Rubrica:* 3 = uma mudança esquecida pode desfazer a proteção do projeto;; 2 = desfazer;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX054 — Achado em Westcott.** O que o laboratório encontrou em Westcott? *Rubrica:* 3 = administração remota habilitada a partir da internet;; 2 = administração remota;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX055 — Atualização da baseline.** Por que a diferença de Norbury foi acrescentada à baseline? *Rubrica:* 3 = todas as clínicas em breve terão os novos sensores;; 2 = aprovada;; 1 = ignorada;; 0 = nenhuma.
+
+- **EX056 — Exportação vazia.** Por que testar exportações vazias? *Rubrica:* 3 = uma exportação vazia poderia parecer conformidade perfeita;; 2 = falsa aprovação;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Arquitetura e engenharia de segurança: integração e dependências
+
+### Objetivos de aprendizagem
+
+Você vai (1) listar as dependências externas da Linden; (2) avaliar o acesso dos fornecedores; (3) planejar para a falha de um fornecedor.
+
+### 15.1 Dependências
+
+Nadia lista os serviços externos dos quais a Linden depende: o fornecedor do sistema de gestão clínica em nuvem, o provedor de e-mail, o provedor de pagamentos, o fornecedor do software de raio X com suporte remoto, os provedores de internet de cada clínica e o serviço de lembretes por mensagem de texto. Para cada um, ela registra que dados ele guarda, quem administra o contrato e o que acontece se ele falhar. O fornecedor do sistema de gestão clínica é a dependência mais profunda, já que toda consulta e todo prontuário vivem ali. As dependências fazem parte da arquitetura, mesmo que a Linden não as opere.
+
+### 15.2 Acesso dos fornecedores
+
+O fornecedor de raio X se conecta remotamente aos servidores de imagens para dar suporte, usando uma ferramenta de acesso remoto sempre ligada. Nadia recomenda que as sessões só sejam habilitadas sob demanda e aprovadas por Grace, com o fornecedor usando contas nominais e login multifator. Ela também pergunta ao serviço de lembretes por mensagem que dados de pacientes ele recebe e descobre que ele recebe o nome completo e o tipo de tratamento, embora só sejam necessários o primeiro nome e o horário. Grace pede ao fornecedor que reduza os dados enviados. Os dois pedidos são registrados na pasta do fornecedor.
+
+### 15.3 Falha de fornecedor
+
+Nadia pede a cada fornecedor crítico seus compromissos de recuperação e verifica o que a Linden consegue fazer sozinha. Se o sistema de gestão clínica falhar, as clínicas podem imprimir toda noite as listas do dia seguinte como contingência. Se o fornecedor de raio X desaparecer, o software de imagens continua rodando localmente, mas não pode ser atualizado. Ela acrescenta isso aos cartões de resposta do capítulo 8. Planejar para a falha de fornecedores faz parte da resiliência, porque a indisponibilidade longa mais provável numa pequena organização muitas vezes é problema de outra pessoa. Cada contingência é praticada uma vez por ano.
+
+### Exemplo resolvido
+
+Nadia lista seis dependências, restringe o acesso sempre ligado do fornecedor, reduz os dados enviados a um serviço de mensagens e acrescenta contingências para a falha de fornecedores.
+
+> **Caso sintético.** Os fornecedores e os dados são sintéticos.
+
+### Erros e limites
+
+Os compromissos dos fornecedores podem não ser cumpridos. As contingências precisam de prática regular.
+
+### Exercícios
+
+- **EX057 — Dependência mais profunda.** Qual é a dependência mais profunda, e por quê? *Rubrica:* 3 = o fornecedor do sistema de gestão clínica; todas as consultas e prontuários vivem ali;; 2 = sistema clínico;; 1 = e-mail;; 0 = nenhuma.
+
+- **EX058 — Mudança no acesso do fornecedor.** Como deve mudar o acesso do fornecedor de raio X? *Rubrica:* 3 = habilitado sob demanda, aprovado, contas nominais com multifator;; 2 = sob demanda;; 1 = sempre ligado;; 0 = nenhuma.
+
+- **EX059 — Dados do serviço de mensagens.** De que dados o serviço de mensagens realmente precisa? *Rubrica:* 3 = primeiro nome e horário da consulta;; 2 = mínimos;; 1 = prontuários completos;; 0 = nenhuma.
+
+- **EX060 — Contingência dos prontuários.** Qual é a contingência se o sistema clínico falhar? *Rubrica:* 3 = imprimir toda noite as listas do dia seguinte;; 2 = imprimir;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Documentação técnica e segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever documentação técnica clara; (2) incluir avisos de segurança e de privacidade; (3) manter os documentos atualizados.
+
+### 16.1 Escrever para o leitor
+
+Nadia reescreve as anotações dispersas da Linden num conjunto curto de documentação: um diagrama de rede por clínica, a lista de regras de firewall com os propósitos, as baselines dos dispositivos, os cartões de resposta e runbooks para as tarefas de rotina. Ela escreve para a pessoa que vai usar cada documento sob pressão, muitas vezes um gerente de clínica durante uma indisponibilidade. Cada documento começa com seu propósito e quem deve usá-lo, usa passos numerados e evita jargão. Daniel lembra a ela que a documentação é julgada por se outra pessoa consegue segui-la corretamente sem ajuda.
+
+### 16.2 Avisos de segurança e de privacidade
+
+Algumas tarefas trazem riscos para os pacientes ou para os dados. Reiniciar o servidor de imagens durante o horário de atendimento poderia interromper um raio X em andamento, então o runbook manda consultar os consultórios primeiro. Exportar logs para uma investigação poderia expor nomes de pacientes, então o runbook manda guardar as exportações apenas na pasta restrita de logs. Nadia coloca os avisos imediatamente antes do passo a que se aplicam, e não numa seção separada, porque as pessoas sob pressão pulam avisos gerais, mas percebem os que estão no lugar onde agem.
+
+### 16.3 Manter os documentos atualizados
+
+Os documentos envelhecem rápido. Nadia acrescenta uma versão, uma data e um responsável a cada um e liga as atualizações ao procedimento de mudanças: qualquer mudança numa rede, regra ou dispositivo precisa atualizar o documento correspondente antes que a mudança seja encerrada. Grace agenda uma verificação trimestral em que um gerente de clínica segue um runbook e relata os problemas. A primeira verificação encontra uma captura de tela de uma interface de roteador mais antiga. Tratar os documentos como parte do sistema, e não como algo secundário, os mantém úteis quando são mais necessários.
+
+### Exemplo resolvido
+
+Nadia escreve documentos focados no leitor, com avisos de segurança e de privacidade junto aos passos, e liga as atualizações ao controle de mudanças e a verificações trimestrais.
+
+> **Caso sintético.** Os documentos e as verificações são sintéticos.
+
+### Erros e limites
+
+Os documentos derivam quando as mudanças pulam o procedimento. Avisos demais diluem a atenção.
+
+### Exercícios
+
+- **EX061 — Teste da documentação.** Como a documentação é julgada? *Rubrica:* 3 = por se outra pessoa consegue segui-la corretamente sem ajuda;; 2 = usabilidade;; 1 = extensão;; 0 = nenhuma.
+
+- **EX062 — Aviso sobre reiniciar o servidor de imagens.** Que aviso se aplica a reiniciar o servidor de imagens? *Rubrica:* 3 = consultar os consultórios primeiro para não interromper um raio X;; 2 = consultar os consultórios;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX063 — Onde pôr os avisos.** Onde os avisos devem ser colocados? *Rubrica:* 3 = imediatamente antes do passo a que se aplicam;; 2 = junto ao passo;; 1 = apêndice;; 0 = nenhuma.
+
+- **EX064 — Achado da verificação trimestral.** O que a primeira verificação trimestral encontrou? *Rubrica:* 3 = uma captura de tela desatualizada do roteador;; 2 = captura de tela;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Laboratório isolado II
+
+### Objetivos de aprendizagem
+
+Você vai (1) testar num laboratório a detecção de logins suspeitos; (2) medir detecções e alarmes falsos; (3) recomendar configurações para a Linden.
+
+### 17.1 A tarefa do laboratório
+
+O segundo laboratório de Daniel usa registros sintéticos de login de um sistema clínico em nuvem. Cada registro mostra o usuário, a hora, o local e se o login teve sucesso, com alguns logins maliciosos plantados. Nadia precisa desenhar uma regra que alerte sobre logins suspeitos sem inundar Grace de alarmes. A equipe da Linden trabalha em cinco cidades, principalmente entre as sete da manhã e as sete da noite, então ela começa descrevendo, a partir dos dados, o comportamento normal antes de escrever qualquer regra. Ela escreve sua descrição do normal em poucas frases e pede que Daniel a confira antes de começar a programar.
+
+### Laboratório — Detecção de logins suspeitos em registros sintéticos
+
+```python
+# Compare two sign-in alert rules on synthetic records: (user, hour, town, attack?)
+recs = [("dr.ali", 9, "Elmfield", 0), ("dr.ali", 23, "Elmfield", 0), ("n.ross", 8, "Norbury", 0),
+        ("n.ross", 14, "Norbury", 0), ("dr.ali", 3, "Lisbon", 1), ("k.chan", 10, "Ashby", 0),
+        ("k.chan", 2, "Unknown", 1), ("m.ojo", 12, "Kingsley", 0), ("m.ojo", 22, "Riga", 1),
+        ("p.lee", 18, "Westcott", 0), ("p.lee", 11, "Westcott", 0)]
+seen = {}
+for u, h, t, _ in recs:
+    if 7 <= h < 19: seen.setdefault(u, set()).add(t)
+def rule_a(r): return not (7 <= r[1] < 19)
+def rule_b(r): return rule_a(r) and r[2] not in seen.get(r[0], set())
+for name, rule in (("Rule A", rule_a), ("Rule B", rule_b)):
+    hits = [r for r in recs if rule(r)]
+    caught = sum(r[3] for r in hits)
+    print(f"{name}: {len(hits)} alerts, {caught} attacks caught, {len(hits) - caught} false alarms")
+```
+
+Execute com `python3 lab_signin.py`. Saída verificada:
+
+```text
+Rule A: 4 alerts, 3 attacks caught, 1 false alarms
+Rule B: 3 alerts, 3 attacks caught, 0 false alarms
+```
+
+### 17.2 Medir
+
+Nadia testa duas regras. A regra A alerta sobre qualquer login fora do horário de trabalho. A regra B alerta sobre logins fora do horário de trabalho que também venham de um local nunca usado antes por aquele usuário. O laboratório conta, para cada uma, os alertas, os ataques plantados detectados e os alarmes falsos. A regra A detecta todos os ataques plantados, mas também sinaliza um dentista que confere a agenda tarde da noite. A regra B detecta os mesmos ataques com menos alarmes falsos. Medir os dois resultados mostra o trade-off com clareza. Ela guarda as contagens para o relatório.
+
+### 17.3 Recomendar
+
+Nadia recomenda a regra B para a Linden, com alertas enviados a Grace e uma revisão semanal, e anota seus limites: um atacante usando uma senha roubada durante o horário de trabalho, a partir de uma cidade habitual, não seria sinalizado. Ela acrescenta que o login multifator no sistema clínico importa mais do que qualquer regra de alerta, já que ele bloqueia de saída a maioria dos ataques com senhas roubadas. Daniel concorda, observando que a detecção complementa a prevenção, mas não pode substituí-la. Ela escreve a recomendação como uma nota de uma página para Grace, listando a regra, quem recebe os alertas, a revisão semanal e o ponto cego conhecido, para que a decisão possa ser revista se os padrões de trabalho da Linden mudarem.
+
+### Exemplo resolvido
+
+Nadia compara duas regras de alerta de login em dados sintéticos, escolhe a que tem menos alarmes falsos e declara seu ponto cego.
+
+> **Caso sintético.** Os registros e os ataques são sintéticos.
+
+### Erros e limites
+
+Os ataques plantados podem ser mais fáceis que os reais. Os dados de localização podem estar errados.
+
+### Exercícios
+
+- **EX065 — Normal primeiro.** O que Nadia descreveu antes de escrever as regras? *Rubrica:* 3 = o comportamento normal: cinco cidades, das 7h às 19h;; 2 = normal;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX066 — Resultado da regra A.** Quais foram os resultados da regra A? *Rubrica:* 3 = 4 alertas, 3 ataques detectados, 1 alarme falso;; 2 = números;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX067 — Resultado da regra B.** Quais foram os resultados da regra B? *Rubrica:* 3 = 3 alertas, 3 ataques detectados, 0 alarme falso;; 2 = números;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX068 — Ponto cego.** O que a regra B deixaria passar? *Rubrica:* 3 = uma senha roubada usada no horário de trabalho a partir de uma cidade habitual;; 2 = horário de trabalho;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Projeto técnico supervisionado
+
+### Objetivos de aprendizagem
+
+Você vai (1) entregar um projeto técnico completo sob supervisão; (2) apresentar os resultados ao cliente; (3) refletir sobre o seu desenvolvimento.
+
+### 18.1 O projeto
+
+O projeto supervisionado de Nadia é implantar o projeto segmentado nas quatro clínicas restantes da Linden. Ela planeja uma clínica por semana, fora do horário de atendimento, usando a lista de regras, a baseline, os testes e os documentos construídos durante o curso. Antes de cada implantação, ela confirma as listas de dispositivos com o gerente da clínica e verifica se há dispositivos novos. Grace supervisiona a primeira implantação e revisa as demais. O projeto reúne modelagem, configuração, verificação, solução de problemas, automação e documentação num único trabalho real. Ela mantém um log curto de cada noite de implantação.
+
+### 18.2 Entrega e resultados
+
+As quatro implantações são concluídas dentro do prazo. Os testes de verificação passam de primeira em três clínicas; em Ashby, uma maquininha de cartão falha no teste porque estava conectada à porta errada do switch, o que Grace corrige. O script de deriva confirma que as cinco clínicas agora correspondem à baseline. Nadia apresenta os resultados ao diretor de operações da Linden: segmentação implantada, backups protegidos, cartões de resposta testados e documentos atualizados. Ela também lista o que falta: login multifator no sistema clínico e treinamento da equipe. O diretor aprova os dois itens para o ano que vem.
+
+### 18.3 Reflexão
+
+Em sua reflexão, Nadia registra o que agora consegue fazer sozinha: ler redes, configurar e verificar regras de firewall, escrever scripts e documentação úteis, resolver problemas a partir dos logs e trabalhar com fornecedores. Ela anota onde ainda precisa de apoio, como na negociação com fornecedores. A Linden lhe oferece uma vaga de meio período enquanto ela termina o curso. O retorno final de Daniel diz que o hábito mais forte dela é testar antes e depois de cada mudança, o que lhe servirá em qualquer função técnica. Ela arquiva a reflexão no portfólio do curso.
+
+### Exemplo resolvido
+
+Nadia implanta a segmentação em quatro clínicas, corrige a porta de uma maquininha, apresenta os resultados com as lacunas restantes e reflete sobre suas habilidades.
+
+> **Caso sintético.** As implantações e as pessoas são sintéticas.
+
+### Erros e limites
+
+A supervisão pode esconder lacunas na habilidade independente. As lacunas restantes precisam de responsáveis depois do projeto.
+
+### Exercícios
+
+- **EX069 — Verificação antes da implantação.** O que Nadia confirmava antes de cada implantação? *Rubrica:* 3 = as listas de dispositivos com o gerente da clínica e eventuais dispositivos novos;; 2 = dispositivos;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX070 — Problema em Ashby.** Que problema ocorreu em Ashby? *Rubrica:* 3 = uma maquininha de cartão na porta errada do switch;; 2 = porta;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX071 — Trabalho restante.** O que Nadia listou como restante? *Rubrica:* 3 = login multifator no sistema clínico e treinamento da equipe;; 2 = os dois;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX072 — Hábito mais forte.** Qual Daniel disse ser o hábito mais forte dela? *Rubrica:* 3 = testar antes e depois de cada mudança;; 2 = testar;; 1 = nenhuma;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX048 (as de EX049–EX072 estão na edição em inglês até a tradução dos capítulos correspondentes). Nadia Kowalczyk, Daniel Mercer, Grace Mwangi, o Harbourside Technical College, o Linden Dental Group e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX072. Nadia Kowalczyk, Daniel Mercer, Grace Mwangi, o Harbourside Technical College, o Linden Dental Group e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Porque um dispositivo só é importante pelos serviços que sustenta.
 
@@ -710,6 +996,54 @@ Respostas-modelo para EX001–EX048 (as de EX049–EX072 estão na edição em i
 **EX047.** Três, apenas os PCs da recepção.
 
 **EX048.** Porque mantém a recuperação possível depois de uma infecção.
+
+**EX049.** Imagens carregando devagar em dois de quatro consultórios, só desde terça-feira.
+
+**EX050.** Conexões repetidamente bloqueadas numa segunda porta, usada para as prévias.
+
+**EX051.** Acrescentando uma regra documentada apenas para aquela porta e rodando de novo os testes de verificação.
+
+**EX052.** Exigir que as necessidades de rede dos novos dispositivos clínicos sejam documentadas antes da instalação.
+
+**EX053.** Porque uma mudança esquecida, como uma regra temporária aberta, pode desfazer a proteção.
+
+**EX054.** Administração remota habilitada a partir da internet, que ninguém conseguia explicar.
+
+**EX055.** Porque a regra documentada da porta de prévias em breve será necessária em todas as clínicas.
+
+**EX056.** Porque uma exportação vazia poderia, de outro modo, parecer conformidade perfeita.
+
+**EX057.** O fornecedor do sistema de gestão clínica em nuvem, porque toda consulta e todo prontuário vivem ali.
+
+**EX058.** Sessões habilitadas apenas sob demanda e aprovadas por Grace, com contas nominais e login multifator.
+
+**EX059.** Apenas o primeiro nome e o horário da consulta.
+
+**EX060.** Imprimir toda noite as listas de consultas do dia seguinte.
+
+**EX061.** Por se outra pessoa consegue segui-la corretamente sem ajuda.
+
+**EX062.** Consultar os consultórios primeiro, para que um raio X em andamento não seja interrompido.
+
+**EX063.** Imediatamente antes do passo a que se aplicam.
+
+**EX064.** Uma captura de tela de uma interface de roteador mais antiga.
+
+**EX065.** O comportamento normal, com a equipe em cinco cidades trabalhando principalmente das 7h às 19h.
+
+**EX066.** Gerou 4 alertas, detectando 3 ataques com 1 alarme falso.
+
+**EX067.** Gerou 3 alertas, detectando os 3 ataques sem nenhum alarme falso.
+
+**EX068.** Um atacante usando uma senha roubada durante o horário de trabalho a partir de uma cidade habitual.
+
+**EX069.** As listas de dispositivos com o gerente da clínica, incluindo eventuais dispositivos novos.
+
+**EX070.** Uma maquininha de cartão estava conectada à porta errada do switch.
+
+**EX071.** Login multifator no sistema clínico e treinamento da equipe.
+
+**EX072.** Testar antes e depois de cada mudança.
 
 <a id="references"></a>
 ## Referências
