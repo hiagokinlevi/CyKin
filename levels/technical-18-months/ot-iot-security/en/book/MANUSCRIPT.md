@@ -48,9 +48,15 @@ A packaging line turns film, trays and product into sealed, labelled packs. Prog
 
 In an office, losing confidentiality of a spreadsheet is the classic harm. On a line, the first questions are: can someone get hurt, will food be unsafe, will the line stop? A sealing heater that runs too hot can burn a worker or leave packs unsealed and contaminated. That is why availability and safe behaviour come before confidentiality here, and why you never "just reboot" a controller to see what happens.
 
+Section one point two develops what operational technology is on with a HPFL note Tomás Reyes can demo offline.
+
 ### 1.3 What an attacker or a mistake can change
 
 The same changes come from malice or error: a setpoint altered, a program replaced, an HMI locked, a network flooded. MITRE ATT&CK for ICS lists, for example, T0836 Modify Parameter. Your job as a technician is to notice such changes, report them and help restore safely — not to investigate devices by yourself.
+
+Section one point three develops what operational technology is on with a HPFL note Tomás Reyes can demo offline.
+
+Under section one point three, HPFL maintenance expects what claims to carry owners and dates.
 
 ### Worked example (synthetic HPFL)
 
@@ -89,17 +95,35 @@ You will (1) explain how permits to work and lockout protect people; (2) state w
 
 Light curtains, emergency stops and guard interlocks keep hands away from moving parts. They are designed and verified by safety engineers and they must keep working whatever happens to the network. A security technician never disables, bridges or reconfigures them, even "temporarily for testing".
 
+Section two point one develops safety first permits consequence and with a HPFL note Tomás Reyes can demo offline.
+
+Under section two point one, HPFL maintenance expects safety claims to carry owners and dates.
+
+Section two point one treats safety systems are not as testable only when evidence and ticket IDs are recorded.
+
 ### 2.2 Permits and lockout
 
 Work on a running plant needs a permit: a written record of who does what, where, when, which hazards exist and how they are controlled. Lockout/tagout isolates energy before hands go into a machine. Plugging a laptop into the wrapper's switch is also work on the plant: it can change traffic the PLC sees, so it goes through the same permit process.
+
+Section two point two develops safety first permits consequence and with a HPFL note Tomás Reyes can demo offline.
 
 ### 2.3 Who decides
 
 The shift supervisor decides whether the line runs. The controls engineer owns PLC programs. The quality manager decides whether product is safe to ship. Security staff advise and report; they do not make those decisions alone. Knowing this chain saves time in an incident because you call the right person first.
 
+Section two point three develops safety first permits consequence and with a HPFL note Tomás Reyes can demo offline.
+
+Under section two point three, HPFL maintenance expects safety claims to carry owners and dates.
+
 ### 2.4 Stop conditions
 
 Every task has written stop conditions: for example, stop if any alarm appears that is not explained, if an operator asks you to stop, or if a device behaves differently from the plan. Stopping is never a failure.
+
+Section two point four develops safety first permits consequence and with a HPFL note Tomás Reyes can demo offline.
+
+Under section two point four, HPFL maintenance expects safety claims to carry owners and dates.
+
+Section two point four treats safety systems are not as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic HPFL)
 
@@ -138,21 +162,49 @@ You will (1) read an IP address and subnet mask; (2) explain what switches, VLAN
 
 Every networked device has an IP address such as 10.20.1.11. A /24 mask means the first three numbers name the network and the last names the device, so 10.20.1.11 and 10.20.1.12 are neighbours on 10.20.1.0/24. Devices on the same subnet can talk directly; traffic to another subnet goes through a router or firewall.
 
+Section three point one develops network basics on the line with a HPFL note Tomás Reyes can demo offline.
+
+Under section three point one, HPFL maintenance expects network claims to carry owners and dates.
+
 ### 3.2 Switches and VLANs
 
 A switch connects devices with cables. A VLAN splits one physical switch into separate logical networks, so the line devices and office PCs can share hardware without sharing traffic. A mistake in a VLAN setting can quietly connect two networks that were meant to be apart, which is why switch changes need the same care as PLC changes.
+
+Section three point two develops network basics on the line with a HPFL note Tomás Reyes can demo offline.
+
+Under section three point two, HPFL maintenance expects network claims to carry owners and dates.
 
 ### 3.3 Firewalls
 
 A firewall forwards or blocks traffic between networks according to rules: source, destination, port and action. On a plant, the important firewall sits between the office network and the line. Good rules name specific hosts and ports; "any to any" rules defeat the purpose.
 
+Section three point three develops network basics on the line with a HPFL note Tomás Reyes can demo offline.
+
+Under section three point three, HPFL maintenance expects network claims to carry owners and dates.
+
+Section three point three treats addresses and subnets switches as testable only when evidence and ticket IDs are recorded.
+
 ### 3.4 Unmanaged switches and wireless
 
 Small unmanaged switches inside cabinets and wireless bridges are common and are often missing from drawings. They matter because they create connections nobody reviews.
 
+Section three point four develops network basics on the line with a HPFL note Tomás Reyes can demo offline.
+
+Under section three point four, HPFL maintenance expects network claims to carry owners and dates.
+
+Section three point four treats addresses and subnets switches as testable only when evidence and ticket IDs are recorded.
+
+For section three point four, HPFL will not accept network work without a written trail.
+
 ### 3.5 Addresses you should not assume
 
 Devices can have a second network card, a serial port or a cellular modem that does not show on the drawing. Ask the owner for every interface, not just the main address.
+
+Section three point five develops network basics on the line with a HPFL note Tomás Reyes can demo offline.
+
+Under section three point five, HPFL maintenance expects network claims to carry owners and dates.
+
+Section three point five treats addresses and subnets switches as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic HPFL)
 
@@ -191,17 +243,35 @@ You will (1) describe what Modbus/TCP and similar industrial protocols carry; (2
 
 HMIs and PLCs exchange values: temperatures, speeds, counts, start and stop bits. Modbus, published by the Modbus Organization, is one widely used example; over Ethernet it is called Modbus/TCP and normally uses port 502. A request says "read registers 100–110" or "write value 180 to register 205". Other common families include EtherNet/IP and PROFINET; the idea is similar.
 
+Section four point one develops industrial protocols at the operator's with a HPFL note Tomás Reyes can demo offline.
+
+Under section four point one, HPFL maintenance expects industrial claims to carry owners and dates.
+
 ### 4.2 Why authentication is missing
 
 Classic Modbus has no built-in way to check who sends a request. If a device can reach the PLC on port 502, it can usually read and often write. This was acceptable when the network was a closed cable inside a cabinet. It is not acceptable once that network connects to offices or the internet, which is why segmentation (Chapter 12) carries so much weight.
+
+Section four point two develops industrial protocols at the operator's with a HPFL note Tomás Reyes can demo offline.
 
 ### 4.3 Normal patterns
 
 On a healthy line the pattern is boring: HMI-1 reads the same registers every second, and writes happen when operators press buttons. A new device sending writes, or reads of unusual register ranges, is worth reporting. You do not need to decode packets yourself; you need to know what normal looks like and who to call.
 
+Section four point three develops industrial protocols at the operator's with a HPFL note Tomás Reyes can demo offline.
+
+Under section four point three, HPFL maintenance expects industrial claims to carry owners and dates.
+
 ### 4.4 Do not experiment
 
 Sending test requests to a live PLC can change outputs. Protocol learning happens on a simulator or a lab PLC, never on the line.
+
+Section four point four develops industrial protocols at the operator's with a HPFL note Tomás Reyes can demo offline.
+
+Under section four point four, HPFL maintenance expects industrial claims to carry owners and dates.
+
+Section four point four treats what the protocols carry as testable only when evidence and ticket IDs are recorded.
+
+For section four point four, HPFL will not accept industrial work without a written trail.
 
 ### Worked example (synthetic HPFL)
 
@@ -240,9 +310,21 @@ You will (1) list the fields a useful OT asset register needs; (2) find gaps in 
 
 For every device: identifier, location, zone or VLAN, owner, make and model, firmware version, network address and what it controls. NIST SP 800-82r3 treats inventory as a foundation because every later activity — patching, monitoring, incident response — depends on knowing what exists.
 
+Section five point one develops keeping an asset register with a HPFL note Tomás Reyes can demo offline.
+
+Under section five point one, HPFL maintenance expects keeping claims to carry owners and dates.
+
+Section five point one treats what to record where as testable only when evidence and ticket IDs are recorded.
+
 ### 5.2 Where the data comes from
 
 Purchase records, contractor drawings, cabinet labels, the engineering software project and, carried out by the network owner, passive network monitoring. Each source misses something, so they are compared.
+
+Section five point two develops keeping an asset register with a HPFL note Tomás Reyes can demo offline.
+
+Under section five point two, HPFL maintenance expects keeping claims to carry owners and dates.
+
+Section five point two treats what to record where as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab 5: check a synthetic HPFL asset register for missing owner or firmware fields (no scanning)."""
@@ -274,13 +356,27 @@ complete: 3 of 5
 
 The script prints which records are incomplete. PLC-WRAP has no firmware recorded, so nobody can tell whether a new advisory applies. HMI-1 has no owner, so nobody would be called if it misbehaved. Three of five records are complete; that ratio is a simple measure to track each month.
 
+Section five point three develops keeping an asset register with a HPFL note Tomás Reyes can demo offline.
+
+Under section five point three, HPFL maintenance expects keeping claims to carry owners and dates.
+
 ### 5.4 Keeping it alive
 
 A register is only useful if it is updated when things change. Tie updates to change tickets: no device is installed, moved or replaced without the record changing in the same ticket.
 
+Section five point four develops keeping an asset register with a HPFL note Tomás Reyes can demo offline.
+
+Under section five point four, HPFL maintenance expects keeping claims to carry owners and dates.
+
+Section five point four treats what to record where as testable only when evidence and ticket IDs are recorded.
+
 ### 5.5 Spares and retired devices
 
 Spare PLCs on a shelf and devices removed from service belong in the register too, marked as spare or retired. A spare loaded with an old program may be installed in a hurry during a breakdown, and a retired HMI thrown in a skip may still hold passwords and network settings.
+
+Section five point five develops keeping an asset register with a HPFL note Tomás Reyes can demo offline.
+
+Under section five point five, HPFL maintenance expects keeping claims to carry owners and dates.
 
 ### Worked example (synthetic HPFL)
 
@@ -319,21 +415,51 @@ You will (1) explain the risks of shared and default accounts; (2) apply simple 
 
 Many HMIs ship with one "operator" account used by every shift. Then logs say "operator did it" and nobody knows who. Where the system supports it, give each person their own account; where it does not, record who was on shift and keep the shared password known only to the crew.
 
+Section six point one develops accounts and passwords on hmis with a HPFL note Tomás Reyes can demo offline.
+
+Under section six point one, HPFL maintenance expects accounts claims to carry owners and dates.
+
 ### 6.2 Default passwords
 
 Default credentials are published in manuals, so anyone can look them up. ETSI EN 303 645 makes "no universal default passwords" its first provision for consumer IoT, and the same idea applies to plant devices: change defaults before a device goes into service.
+
+Section six point two develops accounts and passwords on hmis with a HPFL note Tomás Reyes can demo offline.
+
+Under section six point two, HPFL maintenance expects accounts claims to carry owners and dates.
+
+Section six point two treats shared accounts default passwords as testable only when evidence and ticket IDs are recorded.
 
 ### 6.3 Privileged accounts
 
 Admin accounts on HMI-1 and the engineering software can change screens, users and logic. They are used only for planned work, by named people, and their use is reviewed. They are not the everyday login.
 
+Section six point three develops accounts and passwords on hmis with a HPFL note Tomás Reyes can demo offline.
+
+Under section six point three, HPFL maintenance expects accounts claims to carry owners and dates.
+
+Section six point three treats shared accounts default passwords as testable only when evidence and ticket IDs are recorded.
+
 ### 6.4 Practical rules
 
 Use passphrases that are long but typeable with gloves; do not write passwords on the panel; lock the screen or log out when leaving; never share a password over the radio or by text.
 
+Section six point four develops accounts and passwords on hmis with a HPFL note Tomás Reyes can demo offline.
+
+Under section six point four, HPFL maintenance expects accounts claims to carry owners and dates.
+
+Section six point four treats shared accounts default passwords as testable only when evidence and ticket IDs are recorded.
+
 ### 6.5 When a password leaks
 
 Report it, then the owner changes it at a time that will not disturb the line. Look at recent logins for that account (Chapter 9).
+
+Section six point five develops accounts and passwords on hmis with a HPFL note Tomás Reyes can demo offline.
+
+Under section six point five, HPFL maintenance expects accounts claims to carry owners and dates.
+
+Section six point five treats shared accounts default passwords as testable only when evidence and ticket IDs are recorded.
+
+For section six point five, HPFL will not accept accounts work without a written trail.
 
 ### Worked example (synthetic HPFL)
 
@@ -372,17 +498,37 @@ You will (1) explain how USB drives and laptops carry malware into plants; (2) a
 
 Lines without internet links still receive files: firmware updates, recipe files, vendor tools and photos. Each comes on a USB drive or laptop that has been elsewhere. NIST SP 800-82r3 lists removable media as a common path into OT, and well-known incidents spread exactly this way.
 
+Section seven point one develops removable media and laptops with a HPFL note Tomás Reyes can demo offline.
+
+Under section seven point one, HPFL maintenance expects removable claims to carry owners and dates.
+
+Section seven point one treats how malware crosses the as testable only when evidence and ticket IDs are recorded.
+
 ### 7.2 A media routine
 
 Use only drives issued by the site. Before any drive reaches a line device, scan it on a dedicated, up-to-date scanning station outside the line, record the drive number, file names, scan result and person in a log, and keep the drive under control until it is used. Unknown drives found on the floor are handed to security, never plugged in "to see whose it is".
+
+Section seven point two develops removable media and laptops with a HPFL note Tomás Reyes can demo offline.
 
 ### 7.3 Laptops
 
 Only ENG-LT and approved vendor laptops connect to line equipment. An approved laptop is patched, runs anti-malware, has no personal software and is checked before each visit. A vendor laptop that cannot meet that standard uses a site-owned laptop with the vendor's tools installed instead.
 
+Section seven point three develops removable media and laptops with a HPFL note Tomás Reyes can demo offline.
+
+Under section seven point three, HPFL maintenance expects removable claims to carry owners and dates.
+
+Section seven point three treats how malware crosses the as testable only when evidence and ticket IDs are recorded.
+
 ### 7.4 Transferring files without USB
 
 Some sites move files through a controlled transfer server in the DMZ instead of drives. That keeps a record of every file and removes the need to plug media into line devices at all.
+
+Section seven point four develops removable media and laptops with a HPFL note Tomás Reyes can demo offline.
+
+Under section seven point four, HPFL maintenance expects removable claims to carry owners and dates.
+
+Section seven point four treats how malware crosses the as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic HPFL)
 
@@ -421,17 +567,37 @@ You will (1) describe how vendors reach plant systems remotely; (2) explain less
 
 Machine builders support their equipment remotely to diagnose faults without travelling. That is useful, but a permanent, always-on link into the line is also a permanent way in for anyone who steals the credentials.
 
+Section eight point one develops remote access for vendors with a HPFL note Tomás Reyes can demo offline.
+
+Under section eight point one, HPFL maintenance expects remote claims to carry owners and dates.
+
+Section eight point one treats why vendors connect what as testable only when evidence and ticket IDs are recorded.
+
 ### 8.2 What the advisory found
 
 CISA advisory AA21-042A describes the compromise of a U.S. water treatment facility in 2021 in which remote access software was used to reach a control system. Its recommendations include using multi-factor authentication, strong passwords for remote desktop, closing unused remote desktop ports and auditing remote connections. Those points apply directly to a packaging line.
+
+Section eight point two develops remote access for vendors with a HPFL note Tomás Reyes can demo offline.
+
+Under section eight point two, HPFL maintenance expects remote claims to carry owners and dates.
 
 ### 8.3 A safer pattern
 
 Remote access goes through one site-controlled gateway in the DMZ, never software installed directly on HMIs. Each vendor has a named account with multi-factor authentication. The connection is disabled by default and enabled for a ticketed session window. Someone at the site watches the session and can end it. Sessions are logged and reviewed.
 
+Section eight point three develops remote access for vendors with a HPFL note Tomás Reyes can demo offline.
+
+Under section eight point three, HPFL maintenance expects remote claims to carry owners and dates.
+
 ### 8.4 Ending the session
 
 When work finishes, the account is disabled again, the change is recorded, and the operator confirms the line behaves normally. A session left enabled "for next time" is the commonest failure.
+
+Section eight point four develops remote access for vendors with a HPFL note Tomás Reyes can demo offline.
+
+Under section eight point four, HPFL maintenance expects remote claims to carry owners and dates.
+
+Section eight point four treats why vendors connect what as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic HPFL)
 
@@ -470,9 +636,19 @@ You will (1) tell process alarms from security-relevant events; (2) filter a log
 
 HMIs and PLCs report process alarms such as low film or a jam. They also record logins, setting changes and program downloads. Process alarms are handled by operators; the second kind tells you who did what to the system, and that is where security clues usually appear.
 
+Section nine point one develops reading logs and alarms with a HPFL note Tomás Reyes can demo offline.
+
+Under section nine point one, HPFL maintenance expects reading claims to carry owners and dates.
+
+Section nine point one treats two kinds of messages as testable only when evidence and ticket IDs are recorded.
+
 ### 9.2 Patterns that matter
 
 Several failed logins followed by a success can mean someone guessed a password. A setpoint changed outside a planned job, a program download nobody expected, or an admin login at an odd hour all deserve a look. One event alone is often innocent; the sequence is what matters.
+
+Section nine point two develops reading logs and alarms with a HPFL note Tomás Reyes can demo offline.
+
+Under section nine point two, HPFL maintenance expects reading claims to carry owners and dates.
 
 ```python
 """Lab 9: filter a synthetic HMI event log for security-relevant entries."""
@@ -506,13 +682,33 @@ failed logins: 3
 
 The script counts three failed admin logins, then shows a successful admin login at 07:43 and a wrapper speed change from 120 to 180 two minutes later. Together that is a story worth checking: was a planned change happening at 07:45, and who was logged in?
 
+Section nine point three develops reading logs and alarms with a HPFL note Tomás Reyes can demo offline.
+
+Under section nine point three, HPFL maintenance expects reading claims to carry owners and dates.
+
+Section nine point three treats two kinds of messages as testable only when evidence and ticket IDs are recorded.
+
 ### 9.4 Escalate, do not investigate alone
 
 Tomás's job is to notice and report with evidence: the log lines, the time, what the line did. The controls engineer and security lead decide what happens next.
 
+Section nine point four develops reading logs and alarms with a HPFL note Tomás Reyes can demo offline.
+
+Under section nine point four, HPFL maintenance expects reading claims to carry owners and dates.
+
+Section nine point four treats two kinds of messages as testable only when evidence and ticket IDs are recorded.
+
 ### 9.5 Time matters
 
 Logs are only comparable if device clocks agree. Note any clock difference you know of in your report.
+
+Section nine point five develops reading logs and alarms with a HPFL note Tomás Reyes can demo offline.
+
+Under section nine point five, HPFL maintenance expects reading claims to carry owners and dates.
+
+Section nine point five treats two kinds of messages as testable only when evidence and ticket IDs are recorded.
+
+For section nine point five, HPFL will not accept reading work without a written trail.
 
 ### Worked example (synthetic HPFL)
 
@@ -551,21 +747,51 @@ You will (1) read an ICS advisory and find the facts that matter; (2) match an a
 
 Vendors and CISA publish advisories for industrial products; CISA's index lists them with product names, affected versions, impact and mitigations. An advisory is the starting point, not the decision.
 
+Section ten point one develops patches and security advisories with a HPFL note Tomás Reyes can demo offline.
+
+Under section ten point one, HPFL maintenance expects patches claims to carry owners and dates.
+
+Section ten point one treats where advisories come from as testable only when evidence and ticket IDs are recorded.
+
 ### 10.2 Reading one
 
 Find five facts: product and model, affected versions, what an attacker could do, whether it needs network or physical access, and the vendor's fix or workaround. Then look up the register: do we have that model, at that version, reachable in that way?
+
+Section ten point two develops patches and security advisories with a HPFL note Tomás Reyes can demo offline.
+
+Under section ten point two, HPFL maintenance expects patches claims to carry owners and dates.
+
+Section ten point two treats where advisories come from as testable only when evidence and ticket IDs are recorded.
 
 ### 10.3 Why not patch immediately
 
 A firmware update on a PLC stops it, may change behaviour and needs testing with the program. Food plants also need quality checks after changes. So the usual order is: confirm exposure, apply a mitigation quickly (for example, block the vulnerable service at the firewall), then schedule the patch for a planned stop with a rollback plan.
 
+Section ten point three develops patches and security advisories with a HPFL note Tomás Reyes can demo offline.
+
+Under section ten point three, HPFL maintenance expects patches claims to carry owners and dates.
+
 ### 10.4 Recording the decision
 
 Each advisory gets a record: applies or not, why, mitigation, planned patch date, owner. A decision not to patch, with reasons and a review date, is still a decision.
 
+Section ten point four develops patches and security advisories with a HPFL note Tomás Reyes can demo offline.
+
+Under section ten point four, HPFL maintenance expects patches claims to carry owners and dates.
+
+Section ten point four treats where advisories come from as testable only when evidence and ticket IDs are recorded.
+
 ### 10.5 HMI and laptop updates
 
 Windows-based HMIs and ENG-LT also need operating system updates, but only those the HMI vendor has approved, installed during planned stops.
+
+Section ten point five develops patches and security advisories with a HPFL note Tomás Reyes can demo offline.
+
+Under section ten point five, HPFL maintenance expects patches claims to carry owners and dates.
+
+Section ten point five treats where advisories come from as testable only when evidence and ticket IDs are recorded.
+
+For section ten point five, HPFL will not accept patches work without a written trail.
 
 ### Worked example (synthetic HPFL)
 
@@ -604,13 +830,33 @@ You will (1) list what must be backed up on a line; (2) verify backup integrity 
 
 PLC programs, HMI projects and screens, recipe files, device configurations (switches, firewall, camera settings) and the engineering software licence details. Without them, recovering from failure or attack means rebuilding from memory.
 
+Section eleven point one develops backups and restore with a HPFL note Tomás Reyes can demo offline.
+
+Under section eleven point one, HPFL maintenance expects backups claims to carry owners and dates.
+
+Section eleven point one treats what to back up as testable only when evidence and ticket IDs are recorded.
+
 ### 11.2 Where to keep backups
 
 At least one copy off the line network, ideally offline, so malware that encrypts the line cannot reach it. Label each with device, date and version.
 
+Section eleven point two develops backups and restore with a HPFL note Tomás Reyes can demo offline.
+
+Under section eleven point two, HPFL maintenance expects backups claims to carry owners and dates.
+
+Section eleven point two treats what to back up as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point two, HPFL will not accept backups work without a written trail.
+
 ### 11.3 Checking integrity
 
 A hash such as SHA-256 is a fingerprint of a file: any change gives a different value. Record the hash when the backup is made; check it before restoring.
+
+Section eleven point three develops backups and restore with a HPFL note Tomás Reyes can demo offline.
+
+Under section eleven point three, HPFL maintenance expects backups claims to carry owners and dates.
+
+Section eleven point three treats what to back up as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab 11: verify synthetic PLC backup files against recorded SHA-256 values."""
@@ -635,13 +881,33 @@ PLC-WRAP_2026-09.bak   9974ecb17bab MISMATCH - do not restore
 
 The filler backup matches its recorded hash. The wrapper backup does not: its content was edited after the hash was recorded. Restoring it could load a program nobody approved, so it is set aside and reported.
 
+Section eleven point four develops backups and restore with a HPFL note Tomás Reyes can demo offline.
+
+Under section eleven point four, HPFL maintenance expects backups claims to carry owners and dates.
+
+Section eleven point four treats what to back up as testable only when evidence and ticket IDs are recorded.
+
 ### 11.5 Test restores
 
 A backup never restored is a hope, not a plan. Once or twice a year, restore a program to a spare or lab PLC and compare it with the running one.
 
+Section eleven point five develops backups and restore with a HPFL note Tomás Reyes can demo offline.
+
+Under section eleven point five, HPFL maintenance expects backups claims to carry owners and dates.
+
+Section eleven point five treats what to back up as testable only when evidence and ticket IDs are recorded.
+
 ### 11.6 How often
 
 Back up after every approved change and on a fixed monthly date, whichever comes first, so the newest good copy is never far behind the running program.
+
+Section eleven point six develops backups and restore with a HPFL note Tomás Reyes can demo offline.
+
+Under section eleven point six, HPFL maintenance expects backups claims to carry owners and dates.
+
+Section eleven point six treats what to back up as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point six, HPFL will not accept backups work without a written trail.
 
 ### Worked example (synthetic HPFL)
 
@@ -680,21 +946,53 @@ You will (1) explain zones and conduits from IEC 62443 in plain words; (2) read 
 
 IEC 62443 groups assets with similar security needs into zones and calls the controlled connections between them conduits. At HPFL: the line zone (PLCs, HMI, camera), a DMZ (historian copy, remote access gateway, file transfer server) and the office zone. Traffic only crosses through conduits that are firewalled and documented.
 
+Section twelve point one develops segmentation and firewall rules with a HPFL note Tomás Reyes can demo offline.
+
+Under section twelve point one, HPFL maintenance expects segmentation claims to carry owners and dates.
+
 ### 12.2 The DMZ
 
 Office users want production data; the line must not accept office connections. So the line pushes data to a server in the DMZ and the office reads it there. No connection then needs to go straight from office to line.
+
+Section twelve point two develops segmentation and firewall rules with a HPFL note Tomás Reyes can demo offline.
+
+Under section twelve point two, HPFL maintenance expects segmentation claims to carry owners and dates.
+
+Section twelve point two treats zones and conduits the as testable only when evidence and ticket IDs are recorded.
 
 ### 12.3 Reading rules
 
 Each rule has source, destination, port and action, read top to bottom; the first match wins. A last "deny everything" rule makes anything not listed blocked.
 
+Section twelve point three develops segmentation and firewall rules with a HPFL note Tomás Reyes can demo offline.
+
+Under section twelve point three, HPFL maintenance expects segmentation claims to carry owners and dates.
+
+Section twelve point three treats zones and conduits the as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point three, HPFL will not accept segmentation work without a written trail.
+
 ### 12.4 Weak rules
 
 Look for "any" sources, broad port ranges, rules with no comment or owner, and temporary rules that were never removed. Each one should be questioned and either justified or removed through change control.
 
+Section twelve point four develops segmentation and firewall rules with a HPFL note Tomás Reyes can demo offline.
+
+Under section twelve point four, HPFL maintenance expects segmentation claims to carry owners and dates.
+
+Section twelve point four treats zones and conduits the as testable only when evidence and ticket IDs are recorded.
+
 ### 12.5 Do not edit on your own
 
 Firewall changes are made by the network owner with a change ticket and a rollback plan; a wrong rule can stop the line.
+
+Section twelve point five develops segmentation and firewall rules with a HPFL note Tomás Reyes can demo offline.
+
+Under section twelve point five, HPFL maintenance expects segmentation claims to carry owners and dates.
+
+Section twelve point five treats zones and conduits the as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point five, HPFL will not accept segmentation work without a written trail.
 
 ### Worked example (synthetic HPFL)
 
@@ -733,17 +1031,39 @@ You will (1) identify IoT devices on a line; (2) check them against a baseline o
 
 Smart energy meters, wireless vibration sensors, the vision camera, a cloud-connected label printer and tablets used by quality staff. They often arrive through purchasing rather than engineering, so nobody checks them first.
 
+Section thirteen point one develops iot devices on the factory with a HPFL note Tomás Reyes can demo offline.
+
+Under section thirteen point one, HPFL maintenance expects iot claims to carry owners and dates.
+
+Section thirteen point one treats what counts as iot as testable only when evidence and ticket IDs are recorded.
+
 ### 13.2 A baseline to check against
 
 ETSI EN 303 645 sets baseline security provisions for consumer IoT, and NIST IR 8259 describes what manufacturers should do. Both are useful checklists for plant devices too. Questions to ask a supplier: are there universal default passwords? Is there a way to report vulnerabilities? Will software updates be provided and for how long? Is communication encrypted? Can the device be reset and its data deleted?
+
+Section thirteen point two develops iot devices on the factory with a HPFL note Tomás Reyes can demo offline.
 
 ### 13.3 Connecting safely
 
 IoT devices that talk to a vendor cloud belong in their own segment, not the line VLAN. Allow only the cloud addresses they need, block them from reaching PLCs, and record them in the register with an owner and an update plan.
 
+Section thirteen point three develops iot devices on the factory with a HPFL note Tomás Reyes can demo offline.
+
+Under section thirteen point three, HPFL maintenance expects iot claims to carry owners and dates.
+
+Section thirteen point three treats what counts as iot as testable only when evidence and ticket IDs are recorded.
+
 ### 13.4 End of support
 
 When a supplier stops publishing updates, plan replacement. A cheap sensor left unpatched for years on the line network is an easy foothold.
+
+Section thirteen point four develops iot devices on the factory with a HPFL note Tomás Reyes can demo offline.
+
+Under section thirteen point four, HPFL maintenance expects iot claims to carry owners and dates.
+
+Section thirteen point four treats what counts as iot as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point four, HPFL will not accept iot work without a written trail.
 
 ### Worked example (synthetic HPFL)
 
@@ -782,21 +1102,51 @@ You will (1) describe what normal looks like for the HPFL line; (2) recognise si
 
 Operators know the line's sound, rhythm and screens. Technicians add network and system normal: which devices talk, which accounts log in, how often programs change. Write it down; "normal" kept only in people's heads disappears with shift changes.
 
+Section fourteen point one develops recognising abnormal behaviour with a HPFL note Tomás Reyes can demo offline.
+
+Under section fourteen point one, HPFL maintenance expects recognising claims to carry owners and dates.
+
+Section fourteen point one treats knowing normal signs to as testable only when evidence and ticket IDs are recorded.
+
 ### 14.2 Signs to report
 
 A setpoint changes without anyone pressing a button. HMI screens freeze or show values that disagree with gauges. A program download appears in the log with no job. A new device appears on the network. Remote sessions occur outside a ticket. The line stops with no mechanical cause.
+
+Section fourteen point two develops recognising abnormal behaviour with a HPFL note Tomás Reyes can demo offline.
+
+Under section fourteen point two, HPFL maintenance expects recognising claims to carry owners and dates.
+
+Section fourteen point two treats knowing normal signs to as testable only when evidence and ticket IDs are recorded.
 
 ### 14.3 Naming what you saw
 
 MITRE ATT&CK for ICS gives shared names: T0836 Modify Parameter for altered setpoints, T0886 Remote Services for misuse of remote access, T0843 Program Download for unexpected logic changes. Using these names in a report helps the security team, but report what you observed, not a guess at the attacker.
 
+Section fourteen point three develops recognising abnormal behaviour with a HPFL note Tomás Reyes can demo offline.
+
+Under section fourteen point three, HPFL maintenance expects recognising claims to carry owners and dates.
+
 ### 14.4 Fault or attack?
 
 Most abnormal events are faults or mistakes. That does not matter at first: the response is the same — keep people safe, preserve evidence, report. Deciding the cause comes later.
 
+Section fourteen point four develops recognising abnormal behaviour with a HPFL note Tomás Reyes can demo offline.
+
+Under section fourteen point four, HPFL maintenance expects recognising claims to carry owners and dates.
+
+Section fourteen point four treats knowing normal signs to as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point four, HPFL will not accept recognising work without a written trail.
+
 ### 14.5 What not to do
 
 Do not reboot devices, delete logs, unplug cables or "fix" values before the supervisor and engineer agree; you could destroy the evidence of what happened or create a new hazard.
+
+Section fourteen point five develops recognising abnormal behaviour with a HPFL note Tomás Reyes can demo offline.
+
+Under section fourteen point five, HPFL maintenance expects recognising claims to carry owners and dates.
+
+Section fourteen point five treats knowing normal signs to as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic HPFL)
 
@@ -835,21 +1185,51 @@ You will (1) follow the HPFL first-response steps; (2) write a clear first repor
 
 Make people safe: the supervisor decides whether to stop or isolate the affected part of the line using normal procedures. Then call the incident contact on the site sheet. Record what you see as you go. Do not try to remove malware or restore systems yourself.
 
+Section fifteen point one develops reporting an incident and first with a HPFL note Tomás Reyes can demo offline.
+
+Under section fifteen point one, HPFL maintenance expects reporting claims to carry owners and dates.
+
+Section fifteen point one treats first steps good first as testable only when evidence and ticket IDs are recorded.
+
 ### 15.2 A good first report
 
 It answers: what did you notice, where, when, which devices, what the line is doing now, what has been done so far and who you have told. Short facts beat long theories. NIST SP 800-82r3 stresses that OT incident response must be planned with operations, because actions taken in panic can hurt the process.
+
+Section fifteen point two develops reporting an incident and first with a HPFL note Tomás Reyes can demo offline.
+
+Under section fifteen point two, HPFL maintenance expects reporting claims to carry owners and dates.
 
 ### 15.3 Preserving evidence
 
 Photograph screens, keep a written timeline, and leave devices as they are unless safety requires otherwise. If a device must be isolated, the engineer does it by a planned method — for example, disabling a switch port — and records exactly when.
 
+Section fifteen point three develops reporting an incident and first with a HPFL note Tomás Reyes can demo offline.
+
+Under section fifteen point three, HPFL maintenance expects reporting claims to carry owners and dates.
+
+Section fifteen point three treats first steps good first as testable only when evidence and ticket IDs are recorded.
+
 ### 15.4 Communication
 
 Use the site's contact list. Do not post about the incident on social media or chat groups. Do not contact vendors or authorities yourself unless the incident lead asks.
 
+Section fifteen point four develops reporting an incident and first with a HPFL note Tomás Reyes can demo offline.
+
+Under section fifteen point four, HPFL maintenance expects reporting claims to carry owners and dates.
+
+Section fifteen point four treats first steps good first as testable only when evidence and ticket IDs are recorded.
+
 ### 15.5 Notification duties
 
 Some sectors and countries require reports to regulators or to CISA within set times; the incident lead handles this, but your timeline is what makes it possible.
+
+Section fifteen point five develops reporting an incident and first with a HPFL note Tomás Reyes can demo offline.
+
+Under section fifteen point five, HPFL maintenance expects reporting claims to carry owners and dates.
+
+Section fifteen point five treats first steps good first as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point five, HPFL will not accept reporting work without a written trail.
 
 ### Worked example (synthetic HPFL)
 
@@ -888,25 +1268,67 @@ You will (1) describe the steps to restore a line after an incident; (2) verify 
 
 Recovery is planned by the incident lead, controls engineer and operations. Usually: confirm the cause is contained, rebuild affected computers from known-good images, restore PLC programs from verified backups (Chapter 11), change passwords that may be exposed, then test.
 
+Section sixteen point one develops recovery and returning to production with a HPFL note Tomás Reyes can demo offline.
+
+Under section sixteen point one, HPFL maintenance expects recovery claims to carry owners and dates.
+
+Section sixteen point one treats order of recovery verification as testable only when evidence and ticket IDs are recorded.
+
 ### 16.2 Verification before restart
 
 Compare restored PLC programs with verified copies, check HMI screens show correct values against local gauges, confirm firewall rules match the approved table, and run the line empty through a test cycle. Quality signs off before product runs.
+
+Section sixteen point two develops recovery and returning to production with a HPFL note Tomás Reyes can demo offline.
+
+Under section sixteen point two, HPFL maintenance expects recovery claims to carry owners and dates.
+
+Section sixteen point two treats order of recovery verification as testable only when evidence and ticket IDs are recorded.
 
 ### 16.3 Watching afterwards
 
 Attackers sometimes return. For days after restart, watch logins, remote sessions and new devices more closely, and report anything unusual immediately.
 
+Section sixteen point three develops recovery and returning to production with a HPFL note Tomás Reyes can demo offline.
+
+Under section sixteen point three, HPFL maintenance expects recovery claims to carry owners and dates.
+
+Section sixteen point three treats order of recovery verification as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point three, HPFL will not accept recovery work without a written trail.
+
 ### 16.4 Lessons learned
 
 A short meeting within two weeks answers: what happened, what worked, what did not, what changes. Each change has an owner and date. A lessons session that changes nothing has failed.
+
+Section sixteen point four develops recovery and returning to production with a HPFL note Tomás Reyes can demo offline.
+
+Under section sixteen point four, HPFL maintenance expects recovery claims to carry owners and dates.
+
+Section sixteen point four treats order of recovery verification as testable only when evidence and ticket IDs are recorded.
 
 ### 16.5 Record keeping
 
 Keep the timeline, photographs, decisions and test results together. They support insurance, regulators and the next improvement.
 
+Section sixteen point five develops recovery and returning to production with a HPFL note Tomás Reyes can demo offline.
+
+Under section sixteen point five, HPFL maintenance expects recovery claims to carry owners and dates.
+
+Section sixteen point five treats order of recovery verification as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point five, HPFL will not accept recovery work without a written trail.
+
 ### 16.6 Communicating the restart
 
 Tell every shift what changed: new passwords, any screens that look different, and which unusual signs to report during the watch period.
+
+Section sixteen point six develops recovery and returning to production with a HPFL note Tomás Reyes can demo offline.
+
+Under section sixteen point six, HPFL maintenance expects recovery claims to carry owners and dates.
+
+Section sixteen point six treats order of recovery verification as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point six, HPFL will not accept recovery work without a written trail.
 
 ### Worked example (synthetic HPFL)
 
@@ -945,21 +1367,51 @@ You will (1) explain why every change on the line needs a ticket; (2) write a ch
 
 Most problems on plants come from changes nobody recorded: a firewall rule added in a hurry, a program edited during a breakdown, a camera bolted on by a contractor. Change control means every change is requested, reviewed, approved, carried out and recorded. It also makes it easy to notice an unrecorded change, which may be the first sign of an attack.
 
+Section seventeen point one develops change management and documentation with a HPFL note Tomás Reyes can demo offline.
+
+Under section seventeen point one, HPFL maintenance expects change claims to carry owners and dates.
+
 ### 17.2 A change request
 
 It states what will change, why, which devices, who does it, when, the risk to the process, how success is checked, and how to undo it. Emergency changes during a breakdown are allowed but get recorded afterwards within one shift.
+
+Section seventeen point two develops change management and documentation with a HPFL note Tomás Reyes can demo offline.
+
+Under section seventeen point two, HPFL maintenance expects change claims to carry owners and dates.
+
+Section seventeen point two treats why change control is as testable only when evidence and ticket IDs are recorded.
 
 ### 17.3 Rollback
 
 Before the change, save the current program or configuration and its hash. If the check fails, restore it. A change with no rollback is a gamble.
 
+Section seventeen point three develops change management and documentation with a HPFL note Tomás Reyes can demo offline.
+
+Under section seventeen point three, HPFL maintenance expects change claims to carry owners and dates.
+
+Section seventeen point three treats why change control is as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point three, HPFL will not accept change work without a written trail.
+
 ### 17.4 Keeping documents current
 
 Update the asset register, network drawing and rule table in the same ticket. Mark drawings with a revision number and date.
 
+Section seventeen point four develops change management and documentation with a HPFL note Tomás Reyes can demo offline.
+
+Under section seventeen point four, HPFL maintenance expects change claims to carry owners and dates.
+
+Section seventeen point four treats why change control is as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point four, HPFL will not accept change work without a written trail.
+
 ### 17.5 Reviewers
 
 The person who makes a change should not be the only person who approves it. At HPFL the controls engineer reviews program changes, the network owner reviews firewall and switch changes, and the supervisor confirms the production window. A second pair of eyes catches typing errors in addresses and values before they reach the line.
+
+Section seventeen point five develops change management and documentation with a HPFL note Tomás Reyes can demo offline.
+
+Under section seventeen point five, HPFL maintenance expects change claims to carry owners and dates.
 
 ### Worked example (synthetic HPFL)
 
@@ -998,25 +1450,65 @@ You will (1) combine the book's skills into one planned walk-through; (2) produc
 
 Agree scope, date and permit with the supervisor: which cabinets, which records, no connections to devices, stop conditions. Bring the asset register, network drawing, rule table and media and remote-access logs.
 
+Section eighteen point one develops capstone security walk-through of the with a HPFL note Tomás Reyes can demo offline.
+
+Under section eighteen point one, HPFL maintenance expects capstone claims to carry owners and dates.
+
+Section eighteen point one treats planning what to check as testable only when evidence and ticket IDs are recorded.
+
 ### 18.2 What to check
 
 Physical: cabinets locked, no unexplained modems or switches, no passwords on panels, no loose USB drives. Records: register complete, backups recent and hashes matching, advisories recorded, changes closed. Access: vendor accounts disabled outside sessions, admin use limited.
+
+Section eighteen point two develops capstone security walk-through of the with a HPFL note Tomás Reyes can demo offline.
+
+Under section eighteen point two, HPFL maintenance expects capstone claims to carry owners and dates.
+
+Section eighteen point two treats planning what to check as testable only when evidence and ticket IDs are recorded.
 
 ### 18.3 Writing findings
 
 Each finding: what you saw, where, why it matters (consequence), suggested fix, owner. Keep evidence (photographs, log extracts) with it.
 
+Section eighteen point three develops capstone security walk-through of the with a HPFL note Tomás Reyes can demo offline.
+
+Under section eighteen point three, HPFL maintenance expects capstone claims to carry owners and dates.
+
+Section eighteen point three treats planning what to check as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point three, HPFL will not accept capstone work without a written trail.
+
 ### 18.4 Prioritising
 
 Order by consequence and ease: anything that gives an unreviewed path to PLCs comes first; tidy-ups last. Present the top three clearly; long lists hide the important items.
+
+Section eighteen point four develops capstone security walk-through of the with a HPFL note Tomás Reyes can demo offline.
+
+Under section eighteen point four, HPFL maintenance expects capstone claims to carry owners and dates.
+
+Section eighteen point four treats planning what to check as testable only when evidence and ticket IDs are recorded.
 
 ### 18.5 Following up
 
 Agree owners and dates in the meeting, then check progress monthly.
 
+Section eighteen point five develops capstone security walk-through of the with a HPFL note Tomás Reyes can demo offline.
+
+Under section eighteen point five, HPFL maintenance expects capstone claims to carry owners and dates.
+
+Section eighteen point five treats planning what to check as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point five, HPFL will not accept capstone work without a written trail.
+
+Section eighteen point five fails closed if capstone evidence is missing rather than guessing.
+
 ### 18.6 Presenting to the supervisor
 
 Use plain language and consequences the supervisor cares about: "this modem could let someone change the filler from outside" works better than protocol names. Bring photographs, keep to ten minutes, and end with the decisions you need: owner, date and any production window. Thank the operators who helped; their cooperation decides whether the next walk-through is welcome.
+
+Section eighteen point six develops capstone security walk-through of the with a HPFL note Tomás Reyes can demo offline.
+
+Under section eighteen point six, HPFL maintenance expects capstone claims to carry owners and dates.
 
 ### Worked example (synthetic HPFL)
 
