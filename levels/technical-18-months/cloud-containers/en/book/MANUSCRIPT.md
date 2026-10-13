@@ -596,8 +596,6 @@ They test a provider tool but keep their script, because it is simple and unders
 
 Tomás tests the provider's policy tool on a staging account. It finds the same issues as his script plus two settings he had not considered, such as object ownership controls. He adds these to the policy as future rules. The comparison shows that a simple script and a richer tool can complement each other: the script is easy to explain, and the tool reveals what the script misses.
 
-He records results in a short note: what each method found, how long it took and how easy the output was to read.
-
 ### Starting small
 
 Grace prefers four well-enforced rules over forty ignored ones.
@@ -786,13 +784,9 @@ The site-assets exception is recorded with owner, reason and annual review date.
 
 The check is scheduled daily so new buckets are covered automatically.
 
-### Owner sign-off
-
-Each bucket owner confirms the fixes for their bucket, and the confirmation is stored with the evidence.
-
 ### Lessons
 
-Verification across all buckets, not just the one in the incident, found the most serious problem. Tomás recommends checking every similar resource after any incident.
+Tomás recommends checking every similar resource after any incident.
 
 ### Worked example
 
@@ -956,10 +950,6 @@ He also records how long each breakage lasted. Both cases in March were fixed wi
 
 Most breakages could have been found in staging if staging had matched production. Tomás adds the marketing tool to staging tests.
 
-### Guide format
-
-The guide uses symptom, cause, fix and a link to the change.
-
 ### After action
 
 Each breakage gets a short note in the guide within a day.
@@ -1110,10 +1100,6 @@ The partner is asked to confirm in writing how they store and delete files, and 
 
 Tomás also asks whether the partner needs full manifests. They need only parcel identifiers and postcodes, so the export is reduced.
 
-### Dependency list
-
-The dependency list records each external service, data it receives, owner and review date.
-
 ### Image updates
 
 Base images are rebuilt monthly, and the inventory confirms the cluster runs the new version.
@@ -1192,10 +1178,6 @@ The documentation also records the incident review and actions, showing that les
 ### Writing style
 
 Tomás uses headings that match questions readers ask, such as "What do I do when the alert fires?"
-
-### Versioning documents
-
-Documents are versioned with the code, so the history shows when procedures changed.
 
 ### Diagrams
 
@@ -1297,18 +1279,6 @@ He adds a rule: urgent manual changes must be recorded in the repository within 
 
 Vendor access now uses a temporary account on the private network that expires after the session.
 
-### Nightly results
-
-Nightly drift results are posted with a count, so a rising number is noticed.
-
-### Trend
-
-After a month, nightly drift averages under one item.
-
-### Recording
-
-Each drift decision is logged with reasons and date.
-
 ### Worked example
 
 Tomás finds that the endpoint was opened during a support call to let a vendor connect. Grace arranges vendor access through the private network instead.
@@ -1344,7 +1314,7 @@ You will (1) complete a supervised project; (2) show measured results; (3) refle
 
 ### 18.1 Project
 
-Tomás's project: a storage guardrail pack with policy, verification, alerts, drift check, sharing procedure and runbooks. The pack brings together the course's practical work: the storage policy, the verification script, the public-access alert, the nightly drift check, the signed-link sharing procedure and the runbooks. Each part addresses a cause found in March or a gap found afterwards. The project is supervised by Grace and assessed by Hollins tutors against criteria agreed at the start. Tomás agrees the project criteria with his tutors before starting the work.
+Tomás's project: a storage guardrail pack with policy, verification, alerts, drift check, sharing procedure and runbooks. The pack brings together the course's practical work: the storage policy, the verification script, the public-access alert, the nightly drift check, the signed-link sharing procedure and the runbooks. Each part addresses a cause found in March or a gap found afterwards. The project is supervised by Grace and assessed by Hollins tutors against criteria agreed at the start. Each criterion names the evidence Tomás must show, such as a verification run or a tested runbook.
 
 ### 18.2 Results
 
