@@ -456,7 +456,7 @@ Elena runs ten baseline engagements on the fixed NHUSTL topology. Scoring the ba
 
 Enable the checker that evaluates proposals before execution. Record allows, denies and reasons. Watch for false stops that frustrate operators without improving safety.
 
-Elena's pilot runs ten engagements with the checker on. She logs every allow and deny with its reason, and notes whether a deny was a false stop, such as a mistyped host that was actually in scope. False stops are a secondary measure: too many mean the checker is unusable, even if out-of-scope probes fall. Too many false stops mean the checker is unusable even if probe rates fall.
+Elena's pilot runs ten engagements with the checker on. She logs every allow and deny with its reason, and notes whether a deny was a false stop, such as a mistyped host that was actually in scope. False stops are a secondary measure: too many mean the checker is unusable, even if out-of-scope probes fall. In the pilot, both false stops came from one operator mistyping an in-scope host, which points to an interface fix rather than a policy change.
 
 ### 4.3 Estimation
 
@@ -501,7 +501,7 @@ stop reason present: yes
 events=8 phases=7
 ```
 
-Elena reports pilot rates with intervals and does not test H1 yet. Operator effects are noted so the main study can plan for them, for example by modelling operator as a factor or by balancing slots across people. Keep the pilot analysis in a separate notebook from the main study. Keep pilot analysis in a separate notebook from the main study.
+Elena reports pilot rates with intervals and does not test H1 yet. Operator effects are noted so the main study can plan for them, for example by modelling operator as a factor or by balancing slots across people. Keep the pilot analysis in a separate notebook from the main study. The synthetic timeline lab gives a concrete check: 25 minutes passed between the SYN-001 note and the stop, a latency the main study should track.
 
 ### 4.4 Instrument refinement
 
@@ -519,7 +519,7 @@ Elena's go decision lists all four. A no-go example is a false-stop rate above a
 
 Brief operators identically in both arms: same ROE text length, same topology map, same allowed tool categories. Differences should come from the checker, not from unequal preparation. Record briefing duration and attendance.
 
-Elena's briefing script is identical in both arms and lasts the same number of minutes. Attendance is recorded so missing briefings can be reported as a limitation if they cluster in one arm. Unequal preparation would confound the comparison, so differences should come from the checker alone. Differences should come from the checker alone.
+Elena's briefing script is identical in both arms and lasts the same number of minutes. Attendance is recorded so missing briefings can be reported as a limitation if they cluster in one arm. Unequal preparation would confound the comparison, so differences should come from the checker alone. The briefing pack also shows the same scoped inventory of twelve hosts in both arms, so neither group starts with a clearer map.
 
 ### 4.6 Worked example (synthetic NHUSTL case)
 
@@ -609,19 +609,19 @@ per-seed rates: 0.110 0.130 0.135 0.105 0.145 mean=0.125 sd=0.017
 baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 ```
 
-Lab S habits apply: report counts and intervals, not a single p-value story. Small samples produce wide Wilson intervals, so Elena's claim rests on twenty engagements per arm and on the interval for the difference. Secondary measures are reported with the same discipline, and labelled secondary. Secondary measures use the same discipline and are labelled secondary.
+Lab S habits apply: report counts and intervals, not a single p-value story. Small samples produce wide Wilson intervals, so Elena's claim rests on twenty engagements per arm and on the interval for the difference. Secondary measures are reported with the same discipline, and labelled secondary. The lab makes the point concrete: the same 0.150 rate gives a Wilson interval of 0.052 to 0.360 at 3/20, but 0.135 to 0.166 at 300/2000.
 
 ### 5.3 Independent validation
 
 Ask researchers who did not build the checker to repeat the scoring of out-of-scope events from raw logs, or to re-run a subset of engagements. Independence catches optimistic grading.
 
-Elena's validators are two researchers who did not build the checker. They re-score out-of-scope labels from redacted logs, blind to arm, and report percent agreement. Disagreements are adjudicated and counted. Agreement below a pre-set threshold triggers adjudication of the full set, not only the disagreements. Agreement below a pre-set threshold triggers adjudication of the full set.
+Elena's validators are two researchers who did not build the checker. They re-score out-of-scope labels from redacted logs, blind to arm, and report percent agreement. Disagreements are adjudicated and counted. Agreement below a pre-set threshold triggers adjudication of the full set, not only the disagreements. Validators record each disagreement with the log line and both labels, so the adjudicator sees evidence rather than two competing opinions.
 
 ### 5.4 Confirmatory vs exploratory
 
 Confirmatory results answer the pre-registered question. Exploratory analyses (for example, which deny-reasons dominate) are labelled as such and do not rescue a failed primary hypothesis.
 
-Elena's confirmatory claim is the difference in out-of-scope probes per hour. That port-not-in-scope dominated denies is exploratory: useful for operators, not a rescue if the primary had failed. Keep the line bright in every table and figure caption, so a reader cannot mistake an exploratory plot for the primary result. Keep that line bright in every table and figure caption.
+Elena's confirmatory claim is the difference in out-of-scope probes per hour. That port-not-in-scope dominated denies is exploratory: useful for operators, not a rescue if the primary had failed. Keep the line bright in every table and figure caption, so a reader cannot mistake an exploratory plot for the primary result. In her results chapter, the deny-reason breakdown sits in a separate exploratory section placed after the primary rate table.
 
 ### 5.4b Negative results
 
@@ -647,7 +647,7 @@ The primary result supports H1 under the stated conditions. Independent agreemen
 - Validators who co-authored the tool.
 - Hiding exclusions.
 
-Each error biases the result. Peeking and stopping early when results look good inflates false findings. Validators who co-authored the tool share the incentive to find an effect. Hiding exclusions lets the researcher shape the data without readers knowing. Check the analysis and validation plan for all three. Elena's analysis plan, written before collection, addresses all three. Elena's analysis plan, written before collection, addresses all three.
+Each error biases the result. Peeking and stopping early when results look good inflates false findings. Validators who co-authored the tool share the incentive to find an effect. Hiding exclusions lets the researcher shape the data without readers knowing. Check the analysis and validation plan for all three. Elena's analysis plan, written before collection, addresses all three. It fixes twenty engagements per arm, names validators outside the checker team, and lists every excluded engagement with its reason.
 
 ### Exercises
 
@@ -760,7 +760,7 @@ The limitation and planned external replication answer the practitioner without 
 - Quietly changing the primary measure.
 - Defensive responses without evidence.
 
-Each error damages honesty. Ignoring major critique leaves validity questions for examiners to find. Quietly changing the primary measure moves the goalposts after seeing results. Defensive responses without evidence do not convince reviewers or examiners. Check the response trail for all three before the next revision. Elena's response trail shows major issues first, with evidence for each reply. Elena's response trail shows major issues first, with evidence for each reply.
+Each error damages honesty. Ignoring major critique leaves validity questions for examiners to find. Quietly changing the primary measure moves the goalposts after seeing results. Defensive responses without evidence do not convince reviewers or examiners. Check the response trail for all three before the next revision. Elena's response trail shows major issues first, with evidence for each reply. When a reviewer questioned the false-stop rate, she answered with the pilot logs and the typo fix rather than an argument.
 
 ### Exercises
 
@@ -852,7 +852,7 @@ Elena's abstract states the question, measure and primary result in under 250 wo
 
 Include a two-page reading guide at the front of the archive: how to install, how to replay the primary table, and which files are deliberately absent (and why). Busy assessors will not reverse-engineer your repository layout.
 
-Elena's guide names the missing files — signed authorizations, any real vulnerability details — and the dual-use reason they are absent. Install and replay steps are numbered, with expected output matching the primary table. Busy assessors will not reverse-engineer your repository layout. Number the install and replay steps, and show the expected primary table.
+Elena's guide names the missing files — signed authorizations, any real vulnerability details — and the dual-use reason they are absent. Install and replay steps are numbered, with expected output matching the primary table. A colleague outside the project tests the guide on a clean machine before submission and reports any step that fails. Number the install and replay steps, and show the expected primary table.
 
 ### 7.6 Worked example (synthetic NHUSTL case)
 
@@ -866,7 +866,7 @@ The public repository is what examiners and later researchers can run. The priva
 - Claims broader than conditions.
 - Mixing client secrets into public artefacts.
 
-Each error weakens the thesis. Archives that do not run cannot support the reproducibility claim. Claims broader than the conditions invite readers to apply results where they were never tested. Client secrets in public artefacts turn research into an exposure. Check the archive and synthesis chapter for all three before submission. Ask a reviewer to check them too. Ask a reviewer to check them before submission.
+Each error weakens the thesis. Archives that do not run cannot support the reproducibility claim. Claims broader than the conditions invite readers to apply results where they were never tested. Client secrets in public artefacts turn research into an exposure. Check the archive and synthesis chapter for all three before submission. Ask a reviewer to check them too. Elena's reviewer replays the primary table from the public archive and searches it for client names before she submits.
 
 ### Exercises
 
@@ -950,7 +950,7 @@ T1021 Remote Services                    PLANNED-NOT-SEEN
 coverage=5/7 (71%)
 ```
 
-Elena's next-research page lists these four, each with a one-line authorization note. External replication comes first: another lab running the same checker and measures under its own approval. Enterprise pilots need separate authorization from the lab study, and must not reuse NHUSTL's synthetic-only approval. Enterprise pilots need separate authorization and must not reuse the synthetic-only approval.
+Elena's next-research page lists these four, each with a one-line authorization note. External replication comes first: another lab running the same checker and measures under its own approval. Enterprise pilots need separate authorization from the lab study, and must not reuse NHUSTL's synthetic-only approval. The human-factors study builds on the pilot's two false stops, asking how checker messages could help operators notice a mistyped in-scope host.
 
 ### 8.5 Leaving the lab safer
 
@@ -970,7 +970,7 @@ The CBEST answer is complementary, not substitute: a scope-compliance instrument
 - Publishing bypass recipes.
 - Leaving temporary wide scope rules enabled.
 
-Each error undoes earlier care. Overclaiming generalisation to live enterprises goes beyond synthetic labs and student operators. Publishing bypass recipes turns measurement research into an attack resource. Leaving temporary wide scope rules enabled is a risk to the next cohort. Check the defence and handoff plan for all three. Elena's handoff checklist names each one. Elena's handoff checklist names each one and records when it was done.
+Each error undoes earlier care. Overclaiming generalisation to live enterprises goes beyond synthetic labs and student operators. Publishing bypass recipes turns measurement research into an attack resource. Leaving temporary wide scope rules enabled is a risk to the next cohort. Check the defence and handoff plan for all three. Elena's handoff checklist names each one. Temporary wide scope rules are removed from the checker configuration, and the removal date is recorded on the checklist.
 
 ### Exercises
 

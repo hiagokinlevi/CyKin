@@ -422,7 +422,7 @@ Execute a prática atual — ROE em prosa lidas no início — sobre uma topolog
 
 ### 4.2 Piloto da intervenção
 
-Ative o verificador que avalia as propostas antes da execução. Registre permissões, negações e motivos. Fique atento a paradas falsas, que frustram os operadores sem melhorar a segurança. O piloto de Elena tem dez engajamentos com o verificador ligado. Ela registra cada permissão e cada negação com seu motivo e anota se uma negação foi uma parada falsa, como um host digitado errado que na verdade estava no escopo. As paradas falsas são uma medida secundária: em excesso, tornam o verificador inutilizável, mesmo que as sondagens fora do escopo caiam. Paradas falsas em excesso tornam o verificador inutilizável mesmo que as taxas de sondagem caiam.
+Ative o verificador que avalia as propostas antes da execução. Registre permissões, negações e motivos. Fique atento a paradas falsas, que frustram os operadores sem melhorar a segurança. O piloto de Elena tem dez engajamentos com o verificador ligado. Ela registra cada permissão e cada negação com seu motivo e anota se uma negação foi uma parada falsa, como um host digitado errado que na verdade estava no escopo. As paradas falsas são uma medida secundária: em excesso, tornam o verificador inutilizável, mesmo que as sondagens fora do escopo caiam. No piloto, as duas paradas falsas vieram de um operador que digitou errado um host no escopo, o que aponta para uma correção de interface, e não para uma mudança de política.
 
 ### 4.3 Estimação
 
@@ -467,7 +467,7 @@ stop reason present: yes
 events=8 phases=7
 ```
 
-Elena relata as taxas do piloto com intervalos e ainda não testa H1. Os efeitos de operador são anotados para que o estudo principal possa se planejar para eles, por exemplo modelando o operador como fator ou equilibrando os horários entre as pessoas. Mantenha a análise do piloto num caderno separado do estudo principal. Mantenha a análise do piloto num caderno separado do estudo principal.
+Elena relata as taxas do piloto com intervalos e ainda não testa H1. Os efeitos de operador são anotados para que o estudo principal possa se planejar para eles, por exemplo modelando o operador como fator ou equilibrando os horários entre as pessoas. Mantenha a análise do piloto num caderno separado do estudo principal. O laboratório de linha do tempo sintética dá uma verificação concreta: passaram-se 25 minutos entre a anotação do SYN-001 e a parada, uma latência que o estudo principal deve acompanhar.
 
 ### 4.4 Refinamento dos instrumentos
 
@@ -479,7 +479,7 @@ Siga (go) se: a autorização continua válida; os instrumentos estão estáveis
 
 ### 4.5b Briefing dos operadores
 
-Faça o briefing dos operadores de modo idêntico nos dois braços: mesmo comprimento do texto das ROE, mesmo mapa da topologia, mesmas categorias de ferramentas permitidas. As diferenças devem vir do verificador, não de uma preparação desigual. Registre a duração do briefing e a presença. O roteiro de briefing de Elena é idêntico nos dois braços e dura o mesmo número de minutos. A presença é registrada para que briefings perdidos possam ser relatados como limitação, caso se concentrem num braço. Uma preparação desigual confundiria a comparação, por isso as diferenças devem vir apenas do verificador. As diferenças devem vir apenas do verificador.
+Faça o briefing dos operadores de modo idêntico nos dois braços: mesmo comprimento do texto das ROE, mesmo mapa da topologia, mesmas categorias de ferramentas permitidas. As diferenças devem vir do verificador, não de uma preparação desigual. Registre a duração do briefing e a presença. O roteiro de briefing de Elena é idêntico nos dois braços e dura o mesmo número de minutos. A presença é registrada para que briefings perdidos possam ser relatados como limitação, caso se concentrem num braço. Uma preparação desigual confundiria a comparação, por isso as diferenças devem vir apenas do verificador. O pacote de briefing também mostra o mesmo inventário de doze hosts no escopo nos dois braços, para que nenhum grupo comece com um mapa mais claro.
 
 ### 4.6 Exemplo resolvido (caso sintético do NHUSTL)
 
@@ -561,15 +561,15 @@ per-seed rates: 0.110 0.130 0.135 0.105 0.145 mean=0.125 sd=0.017
 baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 ```
 
-Os hábitos do Lab S se aplicam: relate contagens e intervalos, não a história de um único valor-p. Amostras pequenas produzem intervalos de Wilson largos, por isso a alegação de Elena se apoia em vinte engajamentos por braço e no intervalo da diferença. As medidas secundárias são relatadas com a mesma disciplina, e rotuladas como secundárias. As medidas secundárias usam a mesma disciplina e são rotuladas como secundárias.
+Os hábitos do Lab S se aplicam: relate contagens e intervalos, não a história de um único valor-p. Amostras pequenas produzem intervalos de Wilson largos, por isso a alegação de Elena se apoia em vinte engajamentos por braço e no intervalo da diferença. As medidas secundárias são relatadas com a mesma disciplina, e rotuladas como secundárias. O laboratório torna o ponto concreto: a mesma taxa de 0,150 gera um intervalo de Wilson de 0,052 a 0,360 com 3/20, mas de 0,135 a 0,166 com 300/2000.
 
 ### 5.3 Validação independente
 
-Peça a pesquisadores que não construíram o verificador que refaçam a pontuação dos eventos fora do escopo a partir dos logs brutos, ou que repitam um subconjunto dos engajamentos. A independência flagra a avaliação otimista. Os validadores de Elena são dois pesquisadores que não construíram o verificador. Eles repontuam os rótulos de fora do escopo a partir de logs com dados ocultados, sem saber o braço, e relatam a porcentagem de concordância. As discordâncias são arbitradas e contadas. Uma concordância abaixo de um limiar predefinido aciona a arbitragem do conjunto inteiro, não só das discordâncias. Uma concordância abaixo de um limiar predefinido aciona a arbitragem do conjunto inteiro.
+Peça a pesquisadores que não construíram o verificador que refaçam a pontuação dos eventos fora do escopo a partir dos logs brutos, ou que repitam um subconjunto dos engajamentos. A independência flagra a avaliação otimista. Os validadores de Elena são dois pesquisadores que não construíram o verificador. Eles repontuam os rótulos de fora do escopo a partir de logs com dados ocultados, sem saber o braço, e relatam a porcentagem de concordância. As discordâncias são arbitradas e contadas. Uma concordância abaixo de um limiar predefinido aciona a arbitragem do conjunto inteiro, não só das discordâncias. Os validadores registram cada discordância com a linha de log e os dois rótulos, para que o árbitro veja evidências, e não duas opiniões concorrentes.
 
 ### 5.4 Confirmatório vs exploratório
 
-Resultados confirmatórios respondem à pergunta pré-registrada. Análises exploratórias (por exemplo, quais motivos de negação predominam) são rotuladas como tais e não resgatam uma hipótese primária que falhou. A alegação confirmatória de Elena é a diferença nas sondagens fora do escopo por hora. O fato de port-not-in-scope ter predominado nas negações é exploratório: útil para os operadores, não um resgate caso a primária tivesse falhado. Mantenha essa linha nítida em cada tabela e legenda de figura, para que um leitor não confunda um gráfico exploratório com o resultado primário. Mantenha essa linha nítida em cada tabela e legenda de figura.
+Resultados confirmatórios respondem à pergunta pré-registrada. Análises exploratórias (por exemplo, quais motivos de negação predominam) são rotuladas como tais e não resgatam uma hipótese primária que falhou. A alegação confirmatória de Elena é a diferença nas sondagens fora do escopo por hora. O fato de port-not-in-scope ter predominado nas negações é exploratório: útil para os operadores, não um resgate caso a primária tivesse falhado. Mantenha essa linha nítida em cada tabela e legenda de figura, para que um leitor não confunda um gráfico exploratório com o resultado primário. No capítulo de resultados dela, a distribuição dos motivos de negação fica numa seção exploratória separada, posicionada depois da tabela da taxa primária.
 
 ### 5.4b Resultados negativos
 
@@ -585,7 +585,7 @@ Estudo principal (20+20 engajamentos): prosa 0,17 por hora (intervalo 0,12–0,2
 
 ### 5.6 Erros e limites
 
-Três erros são comuns: espiar os dados e parar cedo quando os resultados parecem bons; validadores que são coautores da ferramenta; e esconder exclusões. Cada erro enviesa o resultado. Espiar e parar cedo quando os resultados parecem bons infla os achados falsos. Validadores coautores da ferramenta compartilham o incentivo de encontrar um efeito. Esconder exclusões permite ao pesquisador moldar os dados sem que os leitores saibam. Verifique os três pontos no plano de análise e de validação. O plano de análise de Elena, escrito antes da coleta, trata dos três. O plano de análise de Elena, escrito antes da coleta, trata dos três.
+Três erros são comuns: espiar os dados e parar cedo quando os resultados parecem bons; validadores que são coautores da ferramenta; e esconder exclusões. Cada erro enviesa o resultado. Espiar e parar cedo quando os resultados parecem bons infla os achados falsos. Validadores coautores da ferramenta compartilham o incentivo de encontrar um efeito. Esconder exclusões permite ao pesquisador moldar os dados sem que os leitores saibam. Verifique os três pontos no plano de análise e de validação. O plano de análise de Elena, escrito antes da coleta, trata dos três. Ele fixa vinte engajamentos por braço, nomeia validadores de fora da equipe do verificador e lista cada engajamento excluído com seu motivo.
 
 ### Exercícios
 
@@ -682,7 +682,7 @@ Um profissional argumenta que a topologia do NHUSTL é limpa demais em comparaç
 
 ### 6.6 Erros e limites
 
-Três erros são comuns: ignorar crítica maior; trocar discretamente a medida primária; e respostas defensivas sem evidências. Cada erro prejudica a honestidade. Ignorar crítica maior deixa questões de validade para os examinadores encontrarem. Trocar discretamente a medida primária muda as regras do jogo depois de ver os resultados. Respostas defensivas sem evidências não convencem revisores nem examinadores. Verifique os três pontos na trilha de resposta antes da próxima revisão. A trilha de resposta de Elena mostra primeiro as questões maiores, com evidências para cada resposta. A trilha de resposta de Elena mostra primeiro as questões maiores, com evidências para cada resposta.
+Três erros são comuns: ignorar crítica maior; trocar discretamente a medida primária; e respostas defensivas sem evidências. Cada erro prejudica a honestidade. Ignorar crítica maior deixa questões de validade para os examinadores encontrarem. Trocar discretamente a medida primária muda as regras do jogo depois de ver os resultados. Respostas defensivas sem evidências não convencem revisores nem examinadores. Verifique os três pontos na trilha de resposta antes da próxima revisão. A trilha de resposta de Elena mostra primeiro as questões maiores, com evidências para cada resposta. Quando um revisor questionou a taxa de paradas falsas, ela respondeu com os logs do piloto e a correção do erro de digitação, e não com um argumento.
 
 ### Exercícios
 
@@ -764,7 +764,7 @@ Introdução; fundamentação (NIST 800-115, PTES, ATT&CK, TIBER-EU/CBEST, crít
 
 ### 7.5b Guia de leitura para profissionais
 
-Inclua um guia de leitura de duas páginas no início do arquivo: como instalar, como reproduzir a tabela primária e quais arquivos estão deliberadamente ausentes (e por quê). Avaliadores ocupados não vão fazer engenharia reversa da organização do seu repositório. O guia de Elena nomeia os arquivos ausentes — autorizações assinadas, quaisquer detalhes de vulnerabilidades reais — e o motivo de uso dual de sua ausência. Os passos de instalação e reprodução são numerados, com saída esperada igual à tabela primária. Avaliadores ocupados não vão fazer engenharia reversa da organização do seu repositório. Numere os passos de instalação e reprodução e mostre a tabela primária esperada.
+Inclua um guia de leitura de duas páginas no início do arquivo: como instalar, como reproduzir a tabela primária e quais arquivos estão deliberadamente ausentes (e por quê). Avaliadores ocupados não vão fazer engenharia reversa da organização do seu repositório. O guia de Elena nomeia os arquivos ausentes — autorizações assinadas, quaisquer detalhes de vulnerabilidades reais — e o motivo de uso dual de sua ausência. Os passos de instalação e reprodução são numerados, com saída esperada igual à tabela primária. Um colega de fora do projeto testa o guia numa máquina limpa antes da submissão e relata qualquer passo que falhe. Numere os passos de instalação e reprodução e mostre a tabela primária esperada.
 
 ### 7.6 Exemplo resolvido (caso sintético do NHUSTL)
 
@@ -772,7 +772,7 @@ O arquivo de Elena é um repositório público com dados sintéticos e o verific
 
 ### 7.7 Erros e limites
 
-Três erros são comuns: arquivos que não rodam; alegações mais amplas que as condições; e misturar segredos de clientes em artefatos públicos. Cada erro enfraquece a tese. Arquivos que não rodam não podem sustentar a alegação de reprodutibilidade. Alegações mais amplas que as condições convidam os leitores a aplicar os resultados onde eles nunca foram testados. Segredos de clientes em artefatos públicos transformam a pesquisa numa exposição. Verifique os três pontos no arquivo e no capítulo de síntese antes da submissão. Peça também a um revisor que os verifique. Peça a um revisor que os verifique antes da submissão.
+Três erros são comuns: arquivos que não rodam; alegações mais amplas que as condições; e misturar segredos de clientes em artefatos públicos. Cada erro enfraquece a tese. Arquivos que não rodam não podem sustentar a alegação de reprodutibilidade. Alegações mais amplas que as condições convidam os leitores a aplicar os resultados onde eles nunca foram testados. Segredos de clientes em artefatos públicos transformam a pesquisa numa exposição. Verifique os três pontos no arquivo e no capítulo de síntese antes da submissão. Peça também a um revisor que os verifique. O revisor de Elena reproduz a tabela primária a partir do arquivo público e procura nele nomes de clientes antes da submissão.
 
 ### Exercícios
 
@@ -850,7 +850,7 @@ T1021 Remote Services                    PLANNED-NOT-SEEN
 coverage=5/7 (71%)
 ```
 
-A página de pesquisa seguinte de Elena lista essas quatro, cada uma com uma nota de autorização de uma linha. A replicação externa vem primeiro: outro laboratório executando o mesmo verificador e as mesmas medidas sob sua própria aprovação. Pilotos corporativos precisam de autorização separada da do estudo de laboratório e não devem reutilizar a aprovação do NHUSTL, restrita a dados sintéticos. Pilotos corporativos precisam de autorização separada e não devem reutilizar a aprovação restrita a dados sintéticos.
+A página de pesquisa seguinte de Elena lista essas quatro, cada uma com uma nota de autorização de uma linha. A replicação externa vem primeiro: outro laboratório executando o mesmo verificador e as mesmas medidas sob sua própria aprovação. Pilotos corporativos precisam de autorização separada da do estudo de laboratório e não devem reutilizar a aprovação do NHUSTL, restrita a dados sintéticos. O estudo de fatores humanos parte das duas paradas falsas do piloto e pergunta como as mensagens do verificador poderiam ajudar os operadores a perceber um host no escopo digitado errado.
 
 ### 8.5 Deixando o laboratório mais seguro
 
@@ -864,7 +864,7 @@ A resposta sobre o CBEST é de complemento, não de substituição: um instrumen
 
 ### 8.7 Erros e limites
 
-Três erros são comuns: alegar generalização excessiva para empresas ao vivo; publicar receitas de contorno; e deixar regras temporárias de escopo amplo ativadas. Cada erro desfaz o cuidado anterior. Alegar generalização excessiva para empresas ao vivo vai além de laboratórios sintéticos e operadores estudantes. Publicar receitas de contorno transforma a pesquisa de medição num recurso de ataque. Deixar regras temporárias de escopo amplo ativadas é um risco para a próxima turma. Verifique os três pontos no plano de defesa e de passagem. A lista de passagem de Elena nomeia cada um. A lista de passagem de Elena nomeia cada um e registra quando foi feito.
+Três erros são comuns: alegar generalização excessiva para empresas ao vivo; publicar receitas de contorno; e deixar regras temporárias de escopo amplo ativadas. Cada erro desfaz o cuidado anterior. Alegar generalização excessiva para empresas ao vivo vai além de laboratórios sintéticos e operadores estudantes. Publicar receitas de contorno transforma a pesquisa de medição num recurso de ataque. Deixar regras temporárias de escopo amplo ativadas é um risco para a próxima turma. Verifique os três pontos no plano de defesa e de passagem. A lista de passagem de Elena nomeia cada um. As regras temporárias de escopo amplo são removidas da configuração do verificador, e a data da remoção fica registrada na lista.
 
 ### Exercícios
 
