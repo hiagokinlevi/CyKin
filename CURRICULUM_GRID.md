@@ -1,17 +1,23 @@
-# Course levels and subject counts
+# Course levels, subject-chapters and daily lessons
 
-One curricular subject becomes one chapter inside the course's single principal book. Each chapter must teach the subject, show examples and give exercises; the book ends with worked answers. These are **planned grades**, not accredited credit schedules.
+**Editorial responsibility: hiagokinlevi. Daily policy effective 2026-10-13.** One curricular subject remains one chapter inside the course's single principal book. Each chapter now contains multiple consecutive daily lessons. One lesson per Monday–Friday study day must contain substantive teaching, a worked example and a distinct exercise with its final-book answer. These are educational plans, not accredited credit schedules.
 
-| Formation level | Duration | Subjects / chapters | Planned study hours | Planned A4 pages | Planned exercises | Completion minimum | Browse |
-|---|---:|---:|---:|---:|---:|---:|---|
-| Rapid course | 1 month | 4 | 80 | 320 | 50 | 50 | [Open 23 areas](levels/rapid-1-month/README.md) |
-| Professional course | 6 months | 12 | 360 | 360 | 60 | 50 | [Open 23 areas](levels/professional-6-months/README.md) |
-| Technical course | 18 months | 18 | 1200 | 540 | 72 | 50 | [Open 23 areas](levels/technical-18-months/README.md) |
-| Technologist course | 3 years | 30 | 2400 | 900 | 90 | 50 | [Open 23 areas](levels/technologist-3-years/README.md) |
-| Bachelor's course | 4 years | 40 | 3200 | 1200 | 120 | 50 | [Open 23 areas](levels/bachelors-4-years/README.md) |
-| Engineering course | 5 years | 50 | 4000 | 1500 | 150 | 50 | [Open 23 areas](levels/engineering-5-years/README.md) |
-| Postgraduate course | 2 years | 12 | 600 | 420 | 60 | 50 | [Open 23 areas](levels/postgraduate-2-years/README.md) |
-| Master's course | 2 years | 8 | 1200 | 600 | 50 | 50 | [Open 23 areas](levels/masters-2-years/README.md) |
-| Doctoral research track | 2 years | 8 | 1600 | 600 | 50 | 50 | [Open 23 areas](levels/doctorate-2-years/README.md) |
+[Daily-study standard and calendar method](DAILY_STUDY_STANDARD.md) · [Migration status](DAILY_STUDY_PROGRESS.md) · [Book gate](BOOK_STANDARD.md)
 
-The book length is verified from the final A4 rendering, never from a planned page budget. English production and full review precede Portuguese, Spanish and the remaining DAI languages.
+| Formation level | Duration | Subject-chapters | Reference daily lessons | Reference minimum exercises | Existing planned hours | Browse |
+|---|---:|---:|---:|---:|---:|---|
+| Rapid course | 1 month | 4 | 22 | 50 | 80 | [23 areas](levels/rapid-1-month/README.md) |
+| Professional course | 6 months | 12 | 130 | 130 | 360 | [23 areas](levels/professional-6-months/README.md) |
+| Technical course | 18 months | 18 | 390 | 390 | 1,200 | [23 areas](levels/technical-18-months/README.md) |
+| Technologist course | 3 years | 30 | 780 | 780 | 2,400 | [23 areas](levels/technologist-3-years/README.md) |
+| Bachelor's course | 4 years | 40 | 1,040 | 1,040 | 3,200 | [23 areas](levels/bachelors-4-years/README.md) |
+| Engineering course | 5 years | 50 | 1,300 | 1,300 | 4,000 | [23 areas](levels/engineering-5-years/README.md) |
+| Postgraduate course | 2 years | 12 | 520 | 520 | 600 | [23 areas](levels/postgraduate-2-years/README.md) |
+| Master's course | 2 years | 8 | 520 | 520 | 1,200 | [23 areas](levels/masters-2-years/README.md) |
+| Doctoral research track | 2 years | 8 | 520 | 520 | 1,600 | [23 areas](levels/doctorate-2-years/README.md) |
+
+The reference formula is `ceil(months × 52 × 5 / 12)`. A dated cohort must count actual Monday–Friday dates across its stated calendar-month span; no holidays or vacations are silently excluded. Show any difference from the reference and resolve it with an explicit, fully authored allocation before claiming the duration is covered. The complete-edition exercise floor is `max(50, required daily lessons)`, with a different primary task each day; additional substantial tasks may increase that count. These are requirements, not counts of written lessons or exercises.
+
+The previous page budgets (320, 360, 540, 900, 1,200, 1,500, 420, 600 and 600) are historical estimates, **not ceilings** for the expanded books. Re-estimate length and daily workload from the actual lesson design. The retained hour budgets are planning inputs requiring recalibration, not measured reading or practice times. Verify actual A4 length independently; at least 300 qualifying pages remain mandatory, without padding or compression. More days demand more distinct learning and practice, not repeated prose. Research tracks differ in intellectual burden even when their durations match.
+
+All 23 areas inherit this policy for all nine language editions. For example, Cybersecurity has nine level-books per language, each with its own daily sequence, not nine copies of one text. English production and full review precede Portuguese, Spanish, Hebrew, French, Russian, German, Chinese and Japanese, one language pass at a time. Preserve existing translations and label their actual availability. Chapter draft coverage remains separate from daily allocation and full-book completion.

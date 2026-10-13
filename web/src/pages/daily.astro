@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { catalog, subjects } from '../lib/catalog';
+const languages = {en:'English',pt:'Português',es:'Español',he:'עברית',fr:'Français',ru:'Русский',de:'Deutsch',zh:'中文',ja:'日本語'};
+---
+<BaseLayout title="Daily study · CyKin" description="One book per course, with a Monday–Friday reading plan, worked examples and exercises.">
+  <main class="shell daily-shell">
+    <h1>Daily study</h1>
+    <p>One book per course and language. One lesson, an explained example and an exercise on each study weekday. A planned position is not a written lesson.</p>
+    <form method="get" action="/daily/" class="card daily-controls">
+      <label>Level<select name="level" id="daily-level">{catalog.level_order.map(level => <option value={level}>{catalog.level_names[level].en}</option>)}</select></label>
+      <label>Subject<select name="area" id="daily-area">{subjects.map(course => <option value={course.area}>{course.title}</option>)}</select></label>
+      <label>Book language<select name="lang" id="daily-language">{Object.entries(languages).map(([code,name]) => <option value={code}>{name}</option>)}</select></label>
+      <label>Optional first study date<input type="date" name="start" id="daily-start" min="1900-01-01" max="2090-12-31" /></label>
+      <button type="submit" class="button gold">Open daily plan</button>
+    </form>
+    <p id="daily-status" role="status" aria-live="polite">Loading the selected edition…</p>
+    <section class="card daily-summary" aria-label="Planning and availability"><div id="daily-summary"></div><p id="daily-calendar"></p><div id="daily-links" class="daily-links"></div></section>
+    <section class="card daily-picker" aria-label="Choose a study day"><label>Study week <select id="daily-week" aria-label="Study week"></select></label><nav id="daily-days" aria-label="Study days"></nav></section>
+    <section class="card daily-reader"><p id="daily-state" class="muted"></p><h2 id="daily-title">Selected day</h2><nav id="daily-navigation" aria-label="Daily navigation"></nav><div id="daily-content"></div></section>
+    <p>Daily mapping and calendar passage do not mark study complete. Existing account progress remains chapter-based; no chapter completion is converted into completed daily lessons.</p>
+    <noscript><p>This daily selector requires JavaScript. Read the <a href="https://github.com/hiagokinlevi/CyKin/blob/main/DAILY_STUDY_STANDARD.md">daily-study standard</a> or the public Markdown books without signing in.</p></noscript>
+  </main>
+  <script>import '../lib/daily-reader';</script>
+</BaseLayout>
+<style>
+.daily-shell{padding-block:2rem 4rem;max-width:1100px}.daily-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1rem;padding:1.5rem}.daily-controls label{display:grid;gap:.45rem}.daily-controls select,.daily-controls input,#daily-week{width:100%;font:inherit;padding:.6rem;min-height:44px}.daily-summary,.daily-picker,.daily-reader{padding:1.5rem;margin-block:1.2rem}.daily-links,#daily-days,#daily-navigation{display:flex;gap:.65rem;flex-wrap:wrap;margin-block:1rem}#daily-days button{min-height:48px;text-align:start;flex:1 1 140px;white-space:normal}#daily-days button[aria-current="page"]{outline:2px solid currentColor;outline-offset:2px}.daily-picker label{display:block;max-width:230px}.daily-reader{overflow-wrap:anywhere}.daily-reader :global(pre){overflow-x:auto;max-width:100%}.daily-reader :global(details){margin-block:1rem;padding:1rem;border:1px solid currentColor}.daily-reader :global(summary){cursor:pointer;font-weight:600}.daily-reader :global(.prose){min-width:0}#daily-navigation{justify-content:space-between}
+</style>
