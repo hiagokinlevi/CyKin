@@ -1,0 +1,25 @@
+# To enable: copy this file to .github/workflows/manuscript-gates.yml (needs a token with workflow scope).
+name: Manuscript gates
+
+on:
+  pull_request:
+    paths:
+      - 'levels/**/MANUSCRIPT.md'
+      - 'tools/dupgate.py'
+      - '.github/workflows/manuscript-gates.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  duplicate-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fail on new near-duplicate sentence pairs
+        run: python3 tools/dupgate.py "origin/${{ github.base_ref }}"
