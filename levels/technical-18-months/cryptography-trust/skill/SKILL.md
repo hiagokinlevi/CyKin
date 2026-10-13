@@ -1,6 +1,6 @@
 ---
 name: cyberabc-cryptography-trust-technical-4fd2c9bb
-description: "Guide a learner through the technical course in Cryptography and trust services, its one book, subject chapters, exercises and reviewed sources."
+description: "Guide a learner through the CRYPT technical course draft: 18 chapters following synthetic student Tomás Reyes at Lumen Freight Logistics, seven stdlib labs and EX001–EX072 with worked answers."
 license: CC0-1.0
 ---
 
@@ -16,21 +16,35 @@ Use this **one skill for the whole 18 months course**. The course has one princi
 - [English book plan](../en/book/PLAN.md): summaries and planned exercises.
 - [Materials](../en/MATERIALS.md): practice and assessment links.
 - [Supplementary playbooks](../../../../playbooks/cryptography-trust/README.md): source-linked practice.
+- [Authored English book draft](../en/book/MANUSCRIPT.md): use only chapters, labs and exercises actually present; review is pending.
 
 ## Navigation rule
 
 At the end of an authored chapter or a book-plan chapter summary, use its **Continue studying** block for the previous chapter, course index and next chapter. Keep the learner's course and chapter position visible. If the next link is a plan, explain that the lesson is not yet authored and do not mark it complete. The course chapter index connects its final row to the next course in the same language.
 
+## Eighteen-chapter technical route
 
-## Tutor workflow
+This is the eighteen-month **technical course** in cryptography and trust services. The book follows synthetic student **Tomás Reyes** of the fictional **Eastbrook Technical Institute**, on placement with mentor **Priya Nandakumar** in IT operations at the fictional **Lumen Freight Logistics**: key files, integrity manifests, certificate expiry, TLS configuration, HMAC callbacks, troubleshooting, rotation planning, password storage and a supervised Wi-Fi trust-chain project.
 
-1. Ask for the learner's level and language; use this course's chapter index to select the relevant subject. English is the editorial reference until other editions are reviewed.
-2. Check whether that chapter is authored. If only the plan exists, say so and label any added explanation or practice as new supplementary material.
-3. Teach from the available chapter with a clear example, then use its authored exercises and worked answers. Keep the response at the course's planned depth.
-4. Cite the exact Markdown source and any underlying external reference. Use only authorized, synthetic or sanitized practical environments. Never claim accreditation or a completed 300-page book from a folder alone.
+| Chapters | Read and teach | Labs / exercises |
+|---|---|---|
+| 1–6 | Architecture, protocol layers, key files and service accounts, encoding vs hashing, scope and evidence, trust model | lab_manifest.py (4); EX001–EX024 |
+| 7–12 | Telemetry and expiry, failure classes, inspection tools, TLS control configuration, verification, contained lab I | lab_expiry.py (7), lab_tlsctx.py (10), lab_hmac.py (11); EX025–EX048 |
+| 13–18 | Troubleshooting, automation and rotation, integrations, documentation and safety, password storage lab, supervised project | lab_triage.py (13), lab_rotation.py (14), lab_scrypt.py (17); EX049–EX072 |
+
+Verified lab facts (synthetic unless cited): manifest flags routes_tue.csv as CHANGED; staging certificate expired 12 days before review; default context CERT_REQUIRED with check_hostname True; RFC 4231 TC1 matches, edited and stale callbacks fail; 12 of 20 failures are unknown_ca from handhelds; sftp-partner-b key overdue by 41 days; hashlib.scrypt matches the RFC 7914 vector and salted hashes differ.
+
+## Teaching guardrails
+
+- Labs call standard-library functions on synthetic data; production uses vetted libraries, ACME clients, vaults and HSMs. Never suggest custom cryptography or disabling certificate verification.
+- Scan and test only in-scope systems with approval; report found secrets by location, never by value.
 
 ## Continue the curriculum
 
-After chapter 18, check the chapter index and the learner's exercise record. The next stop is [course 055: Web3, blockchain and cryptoasset security / Technical course](../../web3-blockchain-security/en/SUBJECTS.md). For navigation in another language, open that course's matching language index; teach from it only when its manuscript is authored and reviewed. A planned chapter does not count as studied merely because navigation points to the next stop.
+After chapter 18, the next stop is [course 055: Web3, blockchain and cryptoasset security / Technical course](../../web3-blockchain-security/en/SUBJECTS.md).
+
+## Editorial status and language
+
+Check the [book standard](../../../../BOOK_STANDARD.md) before claiming a chapter or edition is complete. English chapter drafts and exercise–answer pairs exist, but the book has not passed independent review or the 300-page A4 gate. Other language folders are working outlines until their own translation and review. Teach in the learner's language if helpful while identifying English as the only authored reference edition.
 
 Original maintainer-owned content is dedicated under [CC0 1.0](../../../../LICENSE); third-party sources retain their own rights.
