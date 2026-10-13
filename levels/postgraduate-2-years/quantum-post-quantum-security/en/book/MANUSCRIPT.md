@@ -52,6 +52,8 @@ Specialists are rarely short of opinions about when a cryptographically relevant
 
 A prioritisation score is not neutral. Multiplying records by harm weight favours volume; treating each person's lifetime privacy as paramount favours long-lived data regardless of volume. Lab D makes the point concrete.
 
+At NRHT the choice is between weights that count records and weights that reflect the lifetime of harm to each patient. Neither is wrong as arithmetic, but they lead to different first projects. The board should see both rankings and choose, with the reason recorded in the decision record, rather than inherit a choice buried in a spreadsheet formula.
+
 ### 1.4 Practical activity — Lab D
 
 ```python
@@ -80,9 +82,13 @@ ranking by weighted exposure: ['EHR site replication', 'imaging to cloud reader'
 
 The volume-weighted score ranks imaging above genomics even though genomic data is exposed in every scenario and stays sensitive for 50 years. The arithmetic is correct; the question is whether the board accepts its values. A specialist's job is to show both the "late in" column, which is value-light, and the weighted ranking, which is value-laden, and to make the choice of weights an explicit governance decision.
 
+Change the harm weight for genomics from 5 to 50 and rerun: the ranking changes, though no fact about the flows has changed. That is the point to show the board. Keep the late-in column as the primary evidence and present the weighted ranking as one view among several, labelled with the weights used.
+
 ### 1.5 Buying information
 
 Some uncertainty can be reduced cheaply: whether a vendor will ship hybrid IKEv2 next year, how many devices are unknown, what the real retention period of a dataset is. *Value of information* reasoning asks whether resolving an uncertainty could change the decision; if not, do not wait for it. CRQC timing usually cannot be bought; inventory facts usually can.
+
+At NRHT the decision to act on the two long-lived flows did not depend on knowing z more precisely, so waiting for better estimates would have bought nothing. The device inventory, by contrast, was cheap to improve and could change which devices are handled first. Record which uncertainties were bought down and what they cost.
 
 ### 1.6 Worked case
 
@@ -93,6 +99,8 @@ NRHT's board must decide whether to fund an 18-month programme for hybrid key ex
 - Treating a single CRQC date as the planning basis.
 - Hiding value judgments inside scoring weights.
 - Waiting for information that cannot change the decision.
+
+Each error has a guard used in this chapter. Sweep z across scenarios and report which choices hold in all of them. Show the weights in any score and record who approved them. Before commissioning a study, ask whether any plausible result would change the decision; if not, decide now and note why.  Keep the scenario table in the decision record.
 
 ### Exercises
 
@@ -134,15 +142,21 @@ Hybrid key exchange in TLS moved from experiment to default in a few years. Chro
 
 NRHT's state-of-practice brief, one page, dated: final standards (FIPS 203/204/205, SP 800-208); drafts (IR 8547 dates); in development (FN-DSA, HQC); deployment (hybrid TLS widely available in browsers and CDNs; NRHT's PACS cloud reader already negotiates X25519MLKEM768; VPN appliances: vendor A supports RFC 9370 in current firmware, vendor B "roadmap 2027"); gaps (no public CA issuing ML-DSA certificates for the web PKI at scale; medical-device vendors mostly silent). The brief is reviewed quarterly and every claim has a link.
 
+Assign an owner to each line of the brief and a date for its next check. When a status changes, such as a draft being finalised, update the line and keep the previous version so readers can see what changed. The brief then becomes evidence in its own right for auditors.
+
 ### 2.5 Practice task
 
 Write your organization's (or NRHT's) state-of-practice brief. Mark each item final, draft, in development or vendor claim.
+
+Keep the brief to one page with a date at the top and a link beside every claim. Include at least one item from each category, and add a column for what each item means for the organization. Ask a colleague to check that no draft is described as final and that every vendor claim is labelled as a claim. Set a date for the next quarterly review before you file it.
 
 ### 2.6 Common errors and limits
 
 - Citing draft dates as mandates.
 - Assuming web deployment status applies to VPNs, devices or PKI.
 - Briefs without dates, which age silently.
+
+Each error has a guard in NRHT's brief: a status label on every document, separate lines for web, VPN, PKI and devices, and a date at the top with a quarterly review. When citing IR 8547, quote its draft status in the same sentence as its dates. Treat any vendor statement as a claim until it is observed in operation.
 
 ### Exercises
 
@@ -172,9 +186,13 @@ You will (1) design an organization-scale cryptographic inventory programme; (2)
 
 At organization scale, a cryptographic bill of materials (CBOM) is not a one-off spreadsheet but a programme with owners, sources, schedules and quality metrics. Sources include passive network sensors, configuration management databases, certificate management systems, code and binary scanners, cloud provider APIs, HSM audit logs and supplier attestations. Each feeds observations — asset, function, algorithm, parameter, implementation, method, date — into a store that can be queried and diffed over time.
 
+Assign an owner for each source and a schedule for refreshing it, and record when each observation was last confirmed. Diffs between snapshots show change over time, including reversions such as a hybrid group being switched off. Lab I shows the simplest version of this aggregation for a handful of synthetic NRHT assets.
+
 ### 3.2 Evidence grading
 
 Not all observations are equal. A practical grading: **A** — observed in operation (handshake, HSM log); **B** — read from authoritative configuration; **C** — inferred from code or binary analysis; **D** — supplier statement; **U** — unknown. Decisions about urgent work should rest on A or B evidence where possible; D evidence triggers verification for high-priority assets. Grading also guides investment: if most high-priority assets have only D evidence, the next spend is verification, not migration.
+
+Record the grade with each observation and let it decay: an A-grade handshake seen a year ago should be treated as weaker than one seen last week. Use the grade to choose the next action. At NRHT the large share of tier-1 assets resting on grade D supplier statements is what made verification, not migration, the first funded step.
 
 ### 3.3 Practical activity — Lab I
 
@@ -204,23 +222,33 @@ hybrid key exchange present on: ['pacs-gateway']
 
 Even in this small synthetic set, one asset of six is unknown, and the hybrid that exists covers only key exchange on one gateway. At NRHT scale, a 17 % unknown share across 40,000 assets would be 6,800 assets — a programme in itself.
 
+The lab treats an asset as unknown when its only record has no algorithm, and counts quantum-vulnerable uses by function, not by asset. The pacs-gateway appears twice because it has a hybrid key exchange and a classical signature, which shows why key exchange and signatures must be tracked separately.
+
 ### 3.4 Supplier evidence
 
 Suppliers control much of the cryptography in a hospital: EHR platforms, PACS, devices, cloud services. Ask for structured inventories (algorithms, libraries, versions), roadmaps with dates and versions, and test access. Contract clauses should require disclosure and notification of cryptographic changes. Treat silence as *unknown*, never as *compliant*.
+
+Record each supplier's answer with its date, the person who gave it and the evidence grade it supports, usually D until verified. Ask the suppliers behind the most tier-1 assets first; at NRHT 40 suppliers account for 80 % of tier 1. Repeat the questions at each contract renewal.
 
 ### 3.5 Presenting evidence
 
 Executives need answers to three questions: what share of priority flows is protected, how confident are we, and what is unknown? Present coverage by evidence grade and priority tier, not raw counts. Show trends over quarters; a falling unknown share is progress even before any algorithm changes.
 
+At NRHT the first board report led with the confirmed share of tier-1 assets, 22 %, rather than with a total count. A chart showing grades by tier over successive quarters lets the board see verification progress even when no algorithm has yet changed. Keep the underlying data available for anyone who asks.
+
 ### 3.6 Worked case
 
 NRHT's first-quarter inventory (synthetic): 41,200 assets; priority tier 1 (long-lived confidentiality or long-lived trust) 1,850 assets. Of tier 1: 22 % grade A/B, 31 % grade C, 29 % grade D, 18 % unknown. The board report leads with "we can confirm the cryptography of only 22 % of our most important assets"; the funded response is sensor coverage on inter-site links and a supplier questionnaire to the 40 suppliers behind 80 % of tier 1.
+
+The report is uncomfortable but honest, and it leads directly to a funded action. In later quarters the same breakdown shows whether verification is working; by the year-two review the unknown share of tier-1 had fallen, which is the measure the board can follow.
 
 ### 3.7 Common errors and limits
 
 - Treating supplier statements as observations.
 - Reporting asset counts without tier and grade.
 - Deleting stale observations instead of downgrading them.
+
+Each error has a guard. Grade supplier statements as D until observed. Report counts by tier and grade, never alone. Keep stale observations, downgrade them and record the date they were last confirmed, so the history remains visible and a reversion can be detected.  At NRHT, the 29 % of tier-1 assets resting on supplier statements were reported as grade D, not as covered, which is why the board funded verification first. Keep the grade with every count in the same table.
 
 ### Exercises
 
@@ -250,21 +278,31 @@ You will (1) quantify quantum risk with scenario-based exposure measures; (2) ha
 
 Harvest-now-decrypt-later (HNDL) risk is latent: the loss event (collection) may already have happened, and the harm (decryption) happens later and cannot be undone. Standard risk registers, built for events with immediate detection and recovery, misrepresent it. Represent HNDL as *exposure accumulated per year*: the volume of long-lived data crossing interceptable links under classical key exchange each year, weighted by harm, under each timeline scenario. Each year of delay adds a year's exposure that no later migration removes.
 
+For NRHT the genomics link shows the pattern: 20,000 records a year cross it under classical key exchange, and each year adds to what an interceptor might already hold. Report this exposure by year and scenario in the risk register, and say plainly that past exposure cannot be reduced by later migration.
+
 ### 4.2 Forge-later and systemic risk
 
 Forge-later risk depends on trust anchors and update channels. A forged code-signing key for a widely deployed medical device could affect patient safety across many hospitals simultaneously; the risk is systemic, not local. Specialists should identify trust anchors whose compromise has correlated effects and prioritise their migration or compensating controls, such as multiple signatures or hardware-bound verification keys that can be rotated.
+
+At NRHT the infusion pump fleet is the clearest example: its firmware is verified with an RSA signature by a boot ROM that cannot change. A forged signature would affect every pump at once. List such trust anchors separately in the register, with the number of devices and sites that depend on each.
 
 ### 4.3 Obligations to data subjects
 
 A patient's genomic data reveals information about relatives and remains sensitive for generations. The organization's planning horizon (budget cycles, contracts) is shorter than the harm horizon. Ethically, the people bearing the risk — patients — are not party to the decision, which strengthens the duty of care. Specialists should insist that harm horizons, not organizational retention schedules, set *x* for such data, and that minimization (Chapter 5) is considered before cryptographic controls.
 
+For genomic data this means setting x at around 50 years even if the retention schedule is shorter, because copies held by others do not follow NRHT's schedule. Record this reasoning in the privacy impact assessment. Where possible, involve patient representatives in decisions about data that affects relatives.
+
 ### 4.4 Dual use and disclosure
 
 Organization-scale inventories are maps of weakness. Restrict access, publish only aggregates, and treat vulnerability reports from suppliers under coordinated disclosure. Active testing of negotiation, downgrade or fault behaviour belongs in isolated, authorized testbeds; a specialist who directs others is responsible for ensuring those boundaries are written down.
 
+Write down who may see the full inventory and who receives only aggregates, and review the list each year. Testing in isolated environments should be approved in writing with a named owner and an end date. A supplier report of a weakness is handled under agreed disclosure, with the supplier told before anything is published.
+
 ### 4.5 Residual-risk acceptance
 
 When a risk cannot be reduced in time — a legacy imaging modality that cannot be upgraded — the accountable executive accepts it formally: scope, rationale, compensating controls, expiry date and review trigger. Acceptance without expiry becomes permanent by default.
+
+Record each acceptance in the residual-risk register with the accountable executive's name and the date. Review it before expiry; if the risk still cannot be reduced, the executive must accept it again with a new date. At NRHT's year-two review six acceptances had passed expiry without review, which led to automatic escalation.
 
 ### 4.6 Worked case
 
@@ -275,6 +313,8 @@ NRHT's genomics service sends 20,000 records a year to an external research part
 - Scoring HNDL like an ordinary incident with immediate impact.
 - Letting retention schedules define harm horizons.
 - Risk acceptances without expiry.
+
+Each error has a guard. Represent harvest-now-decrypt-later as yearly exposure that cannot be removed later. Set x for each dataset from the harm horizon, not from retention. Give every acceptance an expiry date and a named reviewer, and escalate automatically when one passes.  At NRHT the genomics link was recorded as yearly exposure with a 50-year horizon, and the acceptance for earlier transfers was noted in the privacy impact assessment with a review date. Use that entry as a model for others.
 
 ### Exercises
 
@@ -308,6 +348,8 @@ You will (1) enumerate design alternatives for key establishment, authentication
 
 Options for certificates: keep classical certificates while monitoring ecosystem readiness (acceptable where forge-later risk is low and certificates are short-lived); issue ML-DSA certificates in closed ecosystems such as internal PKI and device fleets first; use dual or composite certificate approaches during transition where standards and products support them; and use hash-based signatures (SLH-DSA, LMS, XMSS) where conservatism or verification simplicity matters, notably for firmware.
 
+Choose by ecosystem. NRHT's internal PKI and device fleets are closed, so ML-DSA can start there. Public web certificates stay classical until browsers and certificate authorities support post-quantum issuance at scale. For firmware, hash-based signatures fit the conservative case, provided state is managed correctly.
+
 ### 5.3 Practical activity — Lab B
 
 ```python
@@ -335,19 +377,27 @@ SLH-DSA-SHA2-128s    ~ 40144 bytes of certificates and signatures
 
 For an internal service mesh on a data-centre network, 15 kB per handshake is acceptable. For clinic devices on constrained links, or protocols with small message limits, it may not be. The design response is to choose where post-quantum authentication goes first, trim chains, and measure — not to assume.
 
+The lab's sizes come from the standards; the 400 bytes of other certificate fields and the two embedded signatures are rough assumptions. Change the chain depth or the number of embedded signatures to see how quickly the totals grow. Use the result to decide where to measure first, then measure on real handshakes in a lab.
+
 ### 5.4 Parameter policy
 
 Parameter sets map to NIST categories: ML-KEM-512/768/1024 to categories 1/3/5; ML-DSA-44/65/87 to 2/3/5. A specialist sets policy explicitly (for example, category 3 by default, category 5 for national-security-adjacent partners) and records why. Uniform maximum parameters waste bytes and cycles; ad hoc choices make audits painful.
 
+Write the policy into the cryptographic standard, with a short reason for each default and each exception. At NRHT the default for new key establishment is hybrid with ML-KEM-768. Review the policy when standards change, such as when FN-DSA is final.
+
 ### 5.5 Worked case
 
 NRHT's inter-site EHR replication runs over IPsec. Alternatives: (a) hybrid IKEv2 with ML-KEM-768 on vendor A's appliances (supported now); (b) RFC 8784 PSKs for the two vendor-B sites until 2027; (c) re-architect replication to send only deltas, cutting volume by 70 %; (d) pure ML-KEM — rejected because vendor A's implementation is new and the hedge is valuable. Chosen: (a) + (b) + (c), with (b) expiring when vendor B ships hybrid support. Authentication stays classical for now; the internal PKI plan (Chapter 8) addresses it.
+
+Record the rejected alternative and its reason in the design record, so that it can be reconsidered when vendor A's implementation matures.
 
 ### 5.6 Common errors and limits
 
 - Choosing pure PQ to "be modern" without considering the hedge.
 - PSK schemes without rotation and secure distribution.
 - Ignoring minimization because it is not cryptography.
+
+Each error has a guard. Keep the hybrid unless there is a reason to drop it and record that reason. For PSKs, write down how keys are generated, distributed and rotated, and when they expire. Count minimization as a security control alongside cryptographic ones.  At NRHT the vendor-B PSKs were given an expiry tied to hybrid support, and replication was redesigned to send deltas, cutting volume by 70 %.
 
 ### Exercises
 
@@ -377,9 +427,13 @@ You will (1) design controlled evaluations of migration changes; (2) set decisio
 
 Specialist evaluation answers decision questions: does enabling a hybrid group on the PACS gateway keep failure rates within budget? Does ML-DSA in the internal PKI break any clinical application? Which VPN firmware versions negotiate the intended methods? Each question needs a population, a measure, a threshold set in advance and a decision rule.
 
+At NRHT the PACS gateway question was answered with a population of real client types, a failure-rate measure, a threshold of 0.09 % agreed in advance and a rule to promote, hold or exclude. Write the same four elements for each question before collecting data, and file them with the change record.
+
 ### 6.2 Thresholds before data
 
 Set failure budgets and latency thresholds before the experiment, agreed with service owners. Thresholds set afterwards drift toward whatever the data show. A typical budget: handshake failure rate may rise by at most 0.04 percentage points over baseline, judged by the 95 % upper confidence bound.
+
+Agree the budget with the service owner in writing and record it before the first canary. At NRHT the budget of 0.04 percentage points over a 0.05 % baseline produced the 0.09 % threshold used for the PACS gateway. If the budget needs changing, change it before the next stage, not after looking at results.
 
 ### 6.3 Practical activity — Lab K
 
@@ -405,23 +459,33 @@ Expected output:
 
 The first stage holds on uncertainty, not on evidence of harm; the proxy site holds on evidence of harm. These are different findings and deserve different actions — extend the first stage; investigate the second.
 
+The gate uses the Wilson upper bound because small failure counts make simpler intervals unreliable. The first stage holds only because 5,000 attempts are too few to show the rate is within budget. The proxy site holds because its upper bound is well above budget. Record both decisions with the stage size and the date.
+
 ### 6.4 Interoperability matrices
 
 Hospitals have long tails of clients: old browsers on clinical workstations, embedded browsers in devices, partner systems. An interoperability matrix lists client types × server configurations with observed outcomes. Build it in a lab with representative clients first, then confirm with production telemetry. Gaps in the matrix are unknowns to resolve before broad rollout.
+
+At NRHT the lab matrix of 14 client types found two embedded viewers that failed with the larger ClientHello before any production rollout. Keep the matrix with dates and versions, and update it as clients are upgraded or retired. A cell marked unknown blocks broad rollout until it is filled.
 
 ### 6.5 Validity
 
 Lab evaluations have external-validity limits: real inspection proxies, Wi-Fi conditions and device firmware differ. Production canaries have internal-validity limits: concurrent changes and weekly cycles. Report both and prefer conclusions supported by lab and canary evidence together.
 
+State in each evaluation report which conclusions rest on lab evidence, which on canary evidence and which on both. At NRHT the inspection proxy problem appeared in a production canary, not in the lab, which is why both kinds of evidence are needed. List concurrent changes during the canary period.
+
 ### 6.6 Worked case
 
-NRHT evaluates hybrid key exchange on the PACS gateway. Pre-set threshold: upper bound ≤ 0.09 % failures. Lab matrix: 14 client types; two embedded viewers fail with the larger ClientHello. Canary 1 % for two weeks: promote. Canary 10 %: one hospital exceeds the threshold — its legacy inspection proxy. Decision: exclude that hospital, upgrade the proxy, continue elsewhere; the two embedded viewers are routed through a classical-only listener with documented residual risk and a vendor ticket.
+NRHT evaluates hybrid key exchange on the PACS gateway. Pre-set threshold: upper bound ≤ 0.09 % failures. Lab matrix: 14 client types; two embedded viewers fail with the larger ClientHello. Canary 1 %, extended to two weeks until the upper bound fell within the threshold: promote. Canary 10 %: one hospital exceeds the threshold — its legacy inspection proxy. Decision: exclude that hospital, upgrade the proxy, continue elsewhere; the two embedded viewers are routed through a classical-only listener with documented residual risk and a vendor ticket.
+
+The decision treats each problem separately, which pooled results would have hidden. Record the excluded hospital and the classical-only listener in the exception register, each with an owner and an expiry date.
 
 ### 6.7 Common errors and limits
 
 - Setting thresholds after seeing data.
 - Pooling sites, which hides a failing one.
 - Lab-only conclusions for production decisions.
+
+Each error has a guard in the PACS evaluation: a threshold agreed before any data, results reported by site, and decisions based on both the lab matrix and production canaries. A pooled result that looks acceptable can hide a site such as the hospital with the legacy proxy.  Write the threshold, the site breakdown and the evidence source into every rollout decision, so a reviewer can check each one.
 
 ### Exercises
 
@@ -451,9 +515,13 @@ You will (1) integrate PQC migration into architecture, change, procurement and 
 
 A migration run as a separate project ends with a report and leaves the organization as rigid as before. Integrated into normal processes, it leaves a capability: architecture reviews ask about algorithms and agility; change management records cryptographic changes; procurement requires inventories and algorithm support; risk management tracks quantum exposure. [CSWP 39](https://doi.org/10.6028/NIST.CSWP.39-upd1) frames this as crypto-agility at the organizational as well as technical level.
 
+At NRHT the Cryptography Authority is the mechanism for this: it owns the cryptographic standard and reviews architecture decisions, while procurement adds clauses to contracts. Measure integration by whether normal processes now ask cryptographic questions without the programme team prompting them.
+
 ### 7.2 Policy-driven platforms
 
 Platforms that read cryptographic choices from policy let the organization change algorithms by configuration. The algorithm identifier must travel with data and be authenticated, so that a verifier can refuse a retired algorithm.
+
+Lab A shows the pattern with message authentication codes, but the same design applies to KEMs and signatures. A platform built this way can move from classical to hybrid, and later to a new algorithm, with a policy change and a transition period. Hard-coded algorithms require code releases for every change.
 
 ### 7.3 Practical activity — Lab A
 
@@ -488,27 +556,39 @@ old tag after retirement: False
 
 The same pattern — registry, policy, accepted list, retirement — applies to KEMs and signatures in real platforms.
 
+The lab records the algorithm identifier with each tag and checks it against the accepted list, so a retired algorithm can be refused. During the transition both algorithms verify; after retirement the old tag fails. In a real platform the identifier must be protected by the tag or signature itself, so that an attacker cannot change it.  Try retiring the old algorithm before switching the default, and note what breaks.
+
 ### 7.4 Governance and decision rights
 
 Define who decides cryptographic policy (a cryptography authority or board), who owns each platform's implementation, who approves exceptions, and who accepts residual risk. Publish a cryptographic standard listing approved algorithms and parameters, transition dates and the exception process.
+
+Write the decision rights into the standard and publish them so that platform owners know whom to ask. Exceptions should be time-limited and recorded in a register that the Cryptography Authority reviews. At NRHT the CISO chairs the authority and the accountable executive signs residual-risk acceptances.
 
 ### 7.5 Refresh cycles and budget
 
 Most hardware is replaced on cycles of five to ten years. Aligning PQC requirements with those cycles avoids premature replacement; it requires procurement clauses now so that equipment bought in 2027 does not need replacing in 2031. Software subscriptions are faster; require roadmaps with dates.
 
+Map each tier-1 platform to its next refresh date and the clause that will apply to its replacement. Where a refresh falls after the date by which migration is needed, plan an interim measure such as a gateway or PSK. At NRHT the infusion pump fleet replacement in 2031 is planned this way.
+
 ### 7.6 Measuring progress
 
 Count outcomes, not activities: share of tier-1 flows with hybrid key exchange (grade A/B evidence); share of new contracts with PQC clauses; median time to change an algorithm on policy-driven platforms; tier-1 unknown share. Avoid vanity metrics such as "number of meetings held".
 
+Report each metric with its source and its evidence grade, and show trends over quarters. At NRHT's year-two review tier-1 hybrid coverage was 64 % with grade A or B evidence, and unknown share was 7 %. Metrics without a denominator or a source should not appear in board reports.
+
 ### 7.7 Worked case
 
 NRHT establishes a Cryptography Authority chaired by the CISO with architecture, PKI, clinical engineering and procurement members. Its standard (synthetic) sets ML-KEM-768 hybrid as the default for new key establishment, requires algorithm identifiers in new data formats, and adds PQC clauses to all contracts above a threshold. Progress metrics are reviewed quarterly by the audit committee.
+
+The authority's first decisions are recorded with their reasons and review dates, so that later members can see why the defaults were chosen. Its standard is short enough for platform owners to read and includes the exception process. Membership spans the teams whose systems will change.
 
 ### 7.8 Common errors and limits
 
 - Treating migration as a one-off project.
 - No exception process, leading to silent non-compliance.
 - Activity metrics instead of outcome metrics.
+
+Each error has a guard. Integrate cryptographic questions into architecture, change and procurement processes. Publish an exception process with expiries. Report outcomes such as coverage with evidence grades, not counts of meetings or documents produced.  At NRHT the Cryptography Authority's standard includes an exception process with expiry dates, and its progress metrics are reviewed quarterly by the audit committee. Check each new metric for a denominator and a source before adding it to the board report.
 
 ### Exercises
 
@@ -538,31 +618,45 @@ You will (1) analyse migrations involving medical and embedded devices, internal
 
 Devices have regulatory approvals, long lives and vendor-controlled firmware. Changing cryptography may require recertification. Options: vendor firmware with hybrid key exchange where offered; network segmentation and gateways that terminate post-quantum protocols in front of devices; minimised data flows; and procurement requirements for replacements. Patient safety governs change windows.
 
+At NRHT the infusion pump fleet illustrates the choices: hybrid key exchange arrives with a vendor firmware release after clinical testing, while boot verification cannot change and is handled with compensating controls until replacement. Agree change windows with clinical engineering and record the safety testing done before each update.
+
 ### 8.2 Internal PKI
 
 The internal PKI anchors VPNs, device identities and service-to-service TLS. A post-quantum PKI plan: stand up an ML-DSA root and intermediates in HSMs that support FIPS 204; distribute the new root to relying parties; issue post-quantum certificates in closed ecosystems first; keep classical hierarchy in parallel; and set end dates for classical issuance aligned with the internal standard.
+
+Plan the distribution of the new root to every relying party before issuing from it; a root that clients do not trust breaks services. Test issuance and validation in a lab with representative clients first. Record in the plan which ecosystems move first and the date classical issuance ends for each.
 
 ### 8.3 Stateful hash-based signatures
 
 [SP 800-208](https://doi.org/10.6028/NIST.SP.800-208) approves LMS and XMSS with the requirement that keys and state are managed in hardware modules and not exported. They suit firmware signing. Plan signature capacity, protect state against rollback during HSM failover, and test disaster recovery so that recovery never reuses an index.
 
+Record the number of signatures each key can produce and track usage against it. Test HSM failover in a way that proves the state cannot roll back, because reusing an index breaks security. Keep the plan with the firmware signing procedure and review it after each HSM change.
+
 ### 8.4 Long-term signatures and archives
 
 Signed clinical documents and consent forms must remain verifiable for decades. Archive timestamping and evidence-record renewal can preserve validity across algorithm transitions, provided renewal happens while the older algorithm is still trustworthy. Encrypted archives already exposed in transit cannot be repaired by re-encryption.
+
+Schedule renewal well before the older algorithm becomes untrustworthy, and record each renewal. For encrypted archives, distinguish data at rest, which can be re-encrypted, from copies that crossed networks under classical key exchange, which cannot be repaired. Report both in the risk register.
 
 ### 8.5 Algorithm-break response
 
 Rainbow (Beullens, 2022) and SIKE (Castryck and Decru, 2022) show that candidate schemes can fall quickly; KyberSlash (Bernstein et al., 2024) shows that implementations can leak. A response plan names the decision forum, the configuration paths to disable an algorithm, the systems needing releases or hardware, the fallback (hybrids help), and communications to suppliers and regulators. HQC's selection as a backup KEM gives a future alternative with a different mathematical basis.
 
+Rehearse the plan once a year with a tabletop exercise, using a realistic case such as a weakness found in one ML-KEM implementation. Record how long it takes to disable the algorithm on each platform; platforms that take longest are the first candidates for policy-driven agility.
+
 ### 8.6 Worked case
 
 NRHT's infusion pump fleet (synthetic, 4,000 units) uses RSA-signed firmware verified by a boot ROM and ECDH to a management hub. Vendor offers hybrid key exchange in a 2027 firmware release; boot verification cannot change. Plan: segment pumps into a dedicated VLAN; adopt the 2027 firmware after clinical safety testing; accept forge-later residual risk for firmware until fleet replacement in 2031, with compensating controls (signed-update allow-listing at the hub, anomaly monitoring); require ML-DSA or LMS boot verification in the replacement tender.
+
+Record the residual risk in the register with its expiry tied to the 2031 replacement, and review it if the replacement date slips. Make sure the replacement tender's requirement for post-quantum boot verification is written into procurement now.
 
 ### 8.7 Common errors and limits
 
 - Applying IT change windows to clinical devices.
 - Building a PQ root without a relying-party distribution plan.
 - Software-only LMS signing.
+
+Each error has a guard in this chapter. Agree clinical change windows with clinical engineering. Write the relying-party distribution plan before standing up a post-quantum root. Keep LMS and XMSS keys and state in hardware modules, as SP 800-208 requires, and test failover.  At NRHT the pump firmware plan was agreed with clinical engineering, the internal ML-DSA root has a distribution plan for relying parties, and firmware signing keys stay in hardware modules with failover tested so that no index is reused.
 
 ### Exercises
 
@@ -592,31 +686,45 @@ You will (1) lead a multi-year migration programme with clear objectives; (2) de
 
 A multi-year programme needs a mission ("protect long-lived confidentiality and trust against quantum attack without harming clinical services"), objectives with dates, a roadmap by tier, a budget envelope with ranges, and governance. The leader's job is to keep priorities aligned with evidence as both guidance and technology change, and to protect the programme from being reduced to a compliance checklist.
 
+Write the mission and objectives in a short document that the board approves, and revisit them at each annual review. Keep the roadmap by tier so that it shows what is protected first and why. When guidance or technology changes, record the change and its effect on priorities.
+
 ### 9.2 Three lines of assurance
 
 The first line (platform owners) implements and self-tests; the second line (security and risk) sets standards and monitors; the third line (internal audit) independently tests. For PQC, independent verification means re-observing negotiated algorithms, sampling certificates, reviewing exception registers and testing agility claims, not reading status reports.
+
+At NRHT internal audit re-observed tier-1 flows and found three with classical fallback, which status reports had not shown. The first and second lines should expect such findings and treat them as information. Agree in advance how findings are reported and who acts on them.
 
 ### 9.3 Evidence for auditors and regulators
 
 Prepare an evidence pack: cryptographic standard and its approval; inventory with coverage and grades; prioritisation method and decisions; progress metrics with sources; exception and residual-risk register with expiries; test reports; supplier assurance. Each item should be generated by normal operation, so the pack is cheap to refresh.
 
+Keep the pack in one location with a short index and the date each item was generated. When an auditor asks for something not in the pack, add it to the normal process so it is there next time. Avoid creating documents only for audits; they age immediately and cannot be trusted.
+
 ### 9.4 Communication
 
 Boards need decisions and risk posture; clinicians need assurance that changes will not disrupt care and clear change windows; suppliers need clear requirements and timelines; staff need to know what changes for them. Messages should be calm and specific; avoid both alarm and complacency.
+
+Use the same facts for every audience but change the emphasis. A board paper leads with posture and decisions needed; a clinical briefing leads with change windows and fallbacks; a supplier letter leads with requirements and dates. Keep copies with dates, so that messages can be checked against what happened later.
 
 ### 9.5 Sustaining
 
 Guidance will change: IR 8547 may be finalised with different dates; FN-DSA and HQC standards will appear. Build review cycles into governance, keep decision records, train successors, and keep the inventory alive. A programme that depends on one expert is fragile.
 
+Name a deputy for each key role and keep decision records current, so that a departure does not stop the programme. Run the review cycle on a calendar rather than waiting for news. When a standard changes, update the brief, the standard and any affected decisions in the same review.
+
 ### 9.6 Worked case
 
 NRHT's year-two assurance review (synthetic): internal audit samples 60 tier-1 flows and re-observes 57 (95 %) with the reported algorithm; three show classical fallback due to a reverted configuration — a finding that leads to configuration-drift monitoring. The exception register has 41 entries; six have passed expiry without review — a finding that leads to automatic escalation. The board receives a one-page posture: tier-1 hybrid coverage 64 % (A/B evidence), unknown 7 %, PKI plan on track, two high residual risks accepted with expiry.
+
+Each finding leads to a process change rather than a one-off fix, and the board posture shows both progress and residual risk. Record the audit sample size and method so the next review can compare results.
 
 ### 9.7 Common errors and limits
 
 - Assurance by status report.
 - Evidence packs built specially before audits.
 - Programmes dependent on a single expert.
+
+Each error has a guard. Re-observe negotiated algorithms instead of reading reports. Generate evidence from normal operations. Train successors and keep decision records, so the programme continues if its lead leaves.  At NRHT internal audit re-observed 60 tier-1 flows rather than reading status reports, and found three with classical fallback. The evidence pack is generated from normal operation and refreshed each quarter. A named deputy can run each review if the lead is absent, and decision records explain why each choice was made, so a newcomer can continue the work.
 
 ### Exercises
 
@@ -646,31 +754,45 @@ You will (1) read cryptanalysis, resource-estimate and deployment papers critica
 
 Cryptanalysis papers state attack models, complexity and experiments. Ask: does the attack apply to the standardised parameter set or to a variant? Is it classical or quantum? Is complexity asymptotic or concrete? Has it been reproduced? Beullens's Rainbow break (2022) applied to submitted parameters with concrete laptop-scale experiments — decisive. Many claimed lattice attacks improve constants slightly without changing security categories — important but not urgent.
 
+Record your reading in a short table: scheme and parameter set, classical or quantum, concrete or asymptotic, reproduced or not, and the practical implication. Share it with the Cryptography Authority when a paper affects an algorithm in use. Most papers will not require action; a few will, and the table shows which.
+
 ### 10.2 Reading resource estimates
 
 Resource-estimate papers such as Gidney and Ekerå (2021) and Gidney (2025) assume physical error rates, connectivity, code distance, cycle time and algorithmic choices. Extract them into a table. Ask which assumptions current hardware meets and which it does not. A falling estimate under optimistic assumptions is a signal about the direction of travel, not a date.
+
+Keep the assumptions table for each paper and add a column for whether current hardware meets each one. Compare the tables across papers to see which assumptions changed. Present the result to the board as direction of travel, as NRHT's critique of Gidney (2025) does.
 
 ### 10.3 Reading deployment studies
 
 Deployment papers report negotiated groups, failure rates and performance from measurements. Ask: what population, which vantage point, which period, what biases (for example, scanning only popular websites)? Do results transfer to enterprise or clinical environments?
 
+Write the answers to these questions in your critique, and say explicitly whether the results apply to NRHT's clinical networks. Internet-wide measurements may miss legacy inspection proxies and embedded clients, which NRHT's own evaluation found to matter. Treat a deployment paper as a prior to test locally.
+
 ### 10.4 Preprints and vendor research
 
 Preprints (arXiv, IACR ePrint) are often the first credible source and are routinely cited in this field; weigh them by author track record, reproducibility and subsequent review. Vendor research may be careful but has interests; check whether data and methods are published.
+
+Note the status of each source in your critique, and check later whether a preprint has been revised or published. For vendor research, ask whether results can be reproduced without the vendor's product. Weigh sources consistently, so that a convenient result is not given more credit than an inconvenient one.
 
 ### 10.5 Structured critique
 
 A critique summarises the claim, evaluates evidence and assumptions, identifies what would change the conclusion, and states implications for practice. Keep it to one page for practitioners.
 
+Use the same headings for every critique so that readers can compare them. End with one sentence on what NRHT should do differently, if anything. Keep the critique with the decision records it informs, dated, so it can be revisited when new work appears.  Ask a colleague to check that the summary of the claim is fair.
+
 ### 10.6 Worked case
 
 Critique of Gidney (2025) for NRHT's board, one page: claim — RSA-2048 could be factored with under one million noisy qubits in under a week; key assumptions — physical error rate around 10^−3, surface-code style error correction, specific connectivity and cycle times; status — preprint by an established author building on peer-reviewed predecessors; implication — the resource gap is narrowing, supporting the board's robust "act now on long-lived flows" decision; it does not give a date and should not be quoted as one.
+
+The critique is short, cites the paper's assumptions and avoids converting them into a date. It also connects the paper to an existing decision rather than proposing a new one. File it with the decision record and revisit it when a revised estimate appears.
 
 ### 10.7 Common errors and limits
 
 - Treating every new attack paper as urgent.
 - Quoting resource estimates as forecasts.
 - Dismissing preprints wholesale.
+
+Each error has a guard. Ask whether a new attack applies to standardised parameters before calling it urgent. Present resource estimates with their assumptions and never as dates. Weigh preprints by author, method and reproduction rather than dismissing them.  At NRHT the Gidney (2025) critique was presented as direction of travel and connected to an existing decision, not as a date. Apply the same discipline to cryptanalysis: check the parameter set first, then ask whether the attack has been reproduced before raising urgency.
 
 ### Exercises
 
@@ -700,31 +822,46 @@ You will (1) scope an applied specialist project with an organizational sponsor;
 
 Suitable projects: designing and piloting an inventory programme for one division; producing an internal cryptographic standard with a transition plan; leading an evaluated pilot of hybrid key exchange on one platform; designing a post-quantum PKI roadmap; or building a supplier assurance process. Each produces artefacts the organization will use.
 
+Choose a project that the sponsor will use whatever the result. A pilot that finds hybrid key exchange cannot be enabled on one platform is still useful, if it is evaluated against criteria set in advance. Avoid projects that only describe the problem.
+
 ### 11.2 Scoping with a sponsor
 
 Agree with a sponsor: the decision the project supports, scope, deliverables, access, authorization, success criteria, and how results will be used. Written authorization must cover any observation or testing; prefer isolated labs for active tests.
+
+Write the agreement down and have the sponsor sign it before any data are collected. Include what happens to project data at the end and who may see results. Review the scope with the sponsor at the midpoint, and record any changes.  Keep a copy with the project records.
 
 ### 11.3 Deliverables
 
 Decision-ready deliverables include a short decision paper, the evidence behind it (inventory extracts, evaluation results, assumption tables), implementation artefacts (policy text, configuration baselines, procurement clauses) and a handover plan.
 
+Each deliverable should have an owner who will use it after the project. At NRHT the radiology project produced a questionnaire, a scoring rubric and contract clauses as well as a decision paper. Test usable artefacts with the people who will apply them before handover.  Agree the handover date with each owner.
+
 ### 11.4 Data protection
 
 Projects in healthcare touch sensitive systems. Collect metadata, not content; minimise identifiers; store project data securely; and delete it per the agreement.
+
+Record in the project plan which data will be collected, who can access it, where it will be stored and when it will be deleted. Check that the data protection officer agrees before collection starts. At the end, confirm deletion in writing.  Pseudonymise asset names in any project extract that leaves NRHT systems, and keep the mapping on NRHT systems only. Report any accidental collection of content to the sponsor straight away.
 
 ### 11.5 Impact evaluation
 
 Define impact before starting: for example, "tier-1 unknown share in the radiology division reduced from 25 % to below 10 %" or "supplier questionnaire adopted for all new radiology contracts". Measure after a defined period.
 
+Set a baseline measure before starting and agree the target and the date for measuring it. At NRHT's radiology project the unknown share started at 31 % and was measured again after six months. Report the result whether or not it meets the target.  Choose measures the organization already collects where possible.
+
 ### 11.6 Worked case
 
 Project (synthetic): "Supplier assurance for post-quantum readiness in NRHT radiology." Sponsor: Director of Radiology IT. Deliverables: questionnaire, scoring rubric, contract clauses, results for 18 suppliers, decision paper. Results: 5 suppliers with dated roadmaps and test access; 7 with undated claims; 6 silent. Decision: PQC clauses mandatory in all renewals; silent suppliers escalated to procurement; two suppliers invited to joint lab pilots. Impact after six months: unknown share in radiology fell from 31 % to 12 %.
+
+The result is reported with its baseline and its measurement date, and the decision paper turned findings into procurement actions. Keep the questionnaire and rubric so other divisions can reuse them.
 
 ### 11.7 Common errors and limits
 
 - Projects without a decision to support.
 - Deliverables that are reports only, without usable artefacts.
 - Impact measures defined after the fact.
+
+Each error has a guard. Agree the decision the project supports before starting. Deliver artefacts such as policy text, clauses and configuration baselines along with the report. Define impact measures and baselines before work begins, and report the outcome even when it falls short.  At NRHT the radiology project was tied to a procurement decision, delivered a questionnaire, rubric and clauses, and measured unknown share against a 31 % baseline after six months. Use that structure as a template for other divisions.
+
 ### 11.8 Working with resistance
 
 Applied projects meet resistance: service owners worried about outages, suppliers reluctant to disclose, budget holders sceptical of a risk that has not materialised. Treat resistance as information. An owner's fear of outage is a requirement for staged rollout and rollback; a supplier's reluctance is a procurement lever; scepticism is a request for the robust-decision argument of Chapter 1. Record objections and how the project addressed them in the decision paper, because the same objections will return when the work scales beyond the pilot.
@@ -757,31 +894,46 @@ You will (1) review your portfolio against course outcomes; (2) present and defe
 
 Assemble: the decision records from Chapter 1; state-of-practice brief (2); inventory design and metrics (3); risk and ethics analysis (4); design alternatives (5); evaluation (6); governance model (7); difficult-case plans (8); assurance design (9); research critiques (10); project deliverables (11). For each, note what evidence shows the outcome was met.
 
+Present the portfolio in the same order as the course so that examiners can follow it. For each item, include a short note on what you would change now. Missing evidence should be named rather than hidden.  Ask a peer to read it before submission.
+
 ### 12.2 Defence
 
 Expect challenges on assumptions (timelines, harm horizons), values (scoring weights), evidence grades, residual-risk acceptance, and status of guidance. Defend with evidence and acknowledge uncertainty.
+
+Prepare a short answer to each challenge with a pointer to evidence in the portfolio, such as the decision record for internal dates or the scoring weights approved by the board. Where you are uncertain, say what evidence would resolve it. Rehearse with someone who disagrees with your choices.  Keep the answers short and specific.  Note any question you could not answer.
 
 ### 12.3 Transfer
 
 The methods transfer: robust decisions under uncertainty, evidence grading, controlled evaluation, policy-driven agility and assurance by re-observation apply to any future cryptographic transition — a break in a deployed algorithm, a new standard such as FN-DSA, or the eventual retirement of today's hybrids. They also transfer to other long-latency risks.
 
+To show transfer, apply one method to a new case in the portfolio, such as using the canary gate for a planned change of signature algorithm. Note which parts of the method needed adapting and which did not.
+
 ### 12.4 Continuing development
 
 Track standards (NIST, IETF), sector guidance, cryptanalysis and deployment research. Maintain your state-of-practice brief quarterly. Participate in professional communities and share anonymised lessons.
+
+Write a plan with specific sources and a schedule, and review it each year. Keep a short log of what you read and what changed in your practice because of it.  Share one anonymised lesson each year with a professional community, and invite comments from peers who work in other sectors, since their transitions may face similar problems and offer useful comparisons.
 
 ### 12.5 Legacy
 
 Leave the organization with a living inventory, a cryptographic standard with a review cycle, decision records, an exception register with expiries and trained successors. Success is a programme that continues without you.
 
+Check the legacy by asking a successor to run the quarterly review without you, and fix any step they could not complete. Record where each key document lives and who owns it.  A test run by the successor before you leave is the best evidence that the legacy works, so schedule one and record what had to be fixed.
+
 ### 12.6 Worked case
 
 At NRHT's final review the programme lead presents: tier-1 hybrid coverage 78 % with A/B evidence; unknown 5 %; ML-DSA internal root in place with 40 % of internal service certificates migrated; 12 accepted residual risks, all with expiry; agility test passed on four platforms. An examiner asks what happens if IR 8547 is finalised with earlier dates; the lead shows the decision record for setting internal dates and the governance trigger for review.
+
+The final review shows progress with evidence grades and names the residual risks, each with an expiry. The examiner's question is answered with a governance mechanism rather than a prediction, which is the kind of answer a robust programme should be able to give.
 
 ### 12.7 Common errors and limits
 
 - Portfolios without evidence of outcomes.
 - Defences that overclaim certainty.
 - Legacy that depends on the departing lead.
+
+Each error has a guard. Attach evidence of outcomes to each portfolio item. In the defence, state assumptions and uncertainties plainly. Train successors and document processes so that the programme continues after you leave.  At NRHT the final review presented coverage with evidence grades, residual risks with expiries and an agility test on four platforms. The examiner's question about IR 8547 was answered with a governance trigger. Use that structure: outcome, evidence, residual risk and the mechanism that will respond to change after you leave.
+
 ### 12.8 Reflecting on judgment
 
 Close the portfolio with a reflective note on your own judgment: one decision you would make again, one you would change with what you now know, and one assumption you are least sure of. Specialists are trusted not because they are always right but because they show how they reason and update. The note also helps successors understand which parts of the programme rest on firm evidence and which on considered bets.
