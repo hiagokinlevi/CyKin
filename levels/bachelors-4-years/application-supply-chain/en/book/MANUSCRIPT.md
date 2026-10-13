@@ -1563,7 +1563,7 @@ Transitive dependencies are those pulled in by the packages CampusEats chose, an
 
 Ladisa et al. (2023) describe attacks on build systems and distribution channels. Lesson: isolated builds, signed artifacts, hash checks and provenance.
 
-For CampusEats, the build service is the most valuable target: anything it produces is deployed to every student. Lena checks who can change its configuration, confirms that changes need review and that each build records its inputs. Signing the deployed bundle is noted as a future step, since the hosting platform currently accepts only unsigned uploads from the build service.
+For CampusEats, the build service is the most valuable target: anything it produces is deployed to every student. Lena checks who can change its configuration, confirms that changes need review and that each build records its inputs. Later in the course the society adds signatures and provenance, so the deployment step can verify that a bundle really came from that build service.
 
 ### 20.5 Trust in open source
 
@@ -1961,6 +1961,8 @@ You will (1) check an application's HTTP security headers; (2) interpret missing
 
 Browsers apply extra protections when servers send certain headers: Content-Security-Policy limits which scripts and resources can load; Strict-Transport-Security makes the browser use HTTPS only; X-Content-Type-Options stops the browser guessing content types; Referrer-Policy limits information in links to other sites. OWASP's testing guide (WSTG v4.2) includes checks for such configuration.
 
+Headers are a cheap layer of defence because one server setting protects every page. Lena checks the headers already listed in her earlier notes from the networks chapter and adds the ones the lab is about to test, with a short note on what each prevents for CampusEats.
+
 ### Lab — Lab — header check
 
 ```python
@@ -1985,21 +1987,31 @@ Referrer-Policy             MISSING
 
 Strict-Transport-Security and X-Content-Type-Options are present. Content-Security-Policy and Referrer-Policy are missing. The response also reveals a "Server" header naming the software version, which gives unnecessary information.
 
+Lena records the result in the private tracker, with each missing header as a separate item and an owner. None is an emergency, since the encoding checks already protect review pages, but each missing header removes a layer that would help if another control failed. The Server header is a small information leak rather than a flaw, and it is the easiest of the three to fix.
+
 ### 25.3 Adding headers
 
 Referrer-Policy is simple to add. Content-Security-Policy needs care: a strict policy can break pages that load scripts from other places. Lena starts with a report-only policy that logs violations without blocking, reviews the reports for two weeks, then enforces.
+
+The reports show two legitimate scripts that the first draft of the policy would have blocked, the payment provider's form and a font loader, and the policy is adjusted for them before enforcement. Referrer-Policy is enforced at once, since it cannot break pages. Lena records both changes in a decision record.
 
 ### 25.4 Removing information
 
 The Server header is reduced to a generic value.
 
+Hiding the version does not fix any flaw, but it stops the response from advertising which software and version the server runs, so anyone looking for known weaknesses has to work harder. The change is made in the hosting platform's configuration and confirmed by repeating the lab request. Lena notes in the tracker that this is a minor hardening step and that keeping the software updated matters far more than concealing it.
+
 ### 25.5 Automated tests
 
 A CI test requests key pages in the test environment and checks headers, so a later change cannot silently remove them.
 
+The test lists the expected headers and their values in one file, so changing a policy is a reviewed edit to that file. It checks the home page, the order page and the staff screens, since these use different templates and a header could be set on one but not the others. A failed check stops deployment, like any other test.
+
 ### 25.6 Lab practice
 
 All checks run against the test environment, never against systems the society does not own.
+
+Lena's permission covers the test environment only, so she never points the lab tools at the live service, the payment provider or the university's other sites. Where a check needs to compare test and production, such as confirming the same headers are sent, she asks the administrators to export the production configuration instead of probing it. This keeps the lab within its agreed scope. Her notes record the scope.
 
 ### Recording results
 
@@ -2045,25 +2057,37 @@ You will (1) sign build artifacts and verify signatures before deployment; (2) r
 
 A hash shows the bytes match a reference; a signature shows who produced them. CampusEats' build service signs each release bundle, and the deployment step verifies the signature before installing.
 
+Together they answer two questions: are these the expected bytes, and did our build service produce them? Lena notes that verification happens at deployment, so a bundle altered after the build would be refused. Signatures matter most at the step between build and deployment, which is where an attacker with access to the artifact store could otherwise swap a bundle without changing any hash in the lockfile.
+
 ### 26.2 Keyless signing
 
 Long-lived signing keys can leak, like the token did. Sigstore (Newman et al., 2022) issues short-lived certificates tied to the build service's identity and records signatures in a public transparency log. CampusEats adopts this approach for its release bundles.
+
+Without a long-lived key there is nothing to steal from a developer's laptop or a configuration file. Lena checks the transparency log entry for one release and confirms it names the expected build identity. The public log also means the society could notice a signature it did not expect, such as one made by a stolen build credential.
 
 ### 26.3 Provenance
 
 Provenance is a record of how an artifact was built: which source commit, which build service, which steps. SLSA v1.0 defines build levels: Level 1 requires provenance to exist; Level 2 requires a hosted build platform that signs provenance; Level 3 requires a hardened platform that resists tampering by build users.
 
+Lena reads the provenance for one CampusEats release and confirms it names the commit and the workflow that built it. Lena explains the levels to the society with the CampusEats build as the example, since abstract definitions are harder to remember than a familiar pipeline.
+
 ### 26.4 CampusEats' level
 
 Builds run on a hosted CI service that generates signed provenance, roughly matching Build Level 2. Level 3 depends on the CI provider's guarantees, which the society reviews.
+
+Lena notes in a decision record why Level 3 is not claimed: the society cannot itself verify how isolated the CI provider's builds are. The record names what evidence would allow a higher claim, such as a provider statement describing build isolation, and sets a date to check again. Claiming only what the evidence supports keeps the release reports honest.
 
 ### 26.5 Verifying at deployment
 
 The deployment step checks: the signature is valid and from the expected build identity; the provenance shows the expected repository and a reviewed commit. If any check fails, deployment stops.
 
+Lena tests each check in the test environment by trying to deploy a bundle signed by a different identity and a bundle built from an unreviewed branch; both are refused with a clear message. A rule that has never been seen to fail cannot be trusted to work, so these tests run whenever the deployment step changes.
+
 ### 26.6 in-toto
 
 in-toto (Torres-Arias et al., 2019) generalises this idea, recording and verifying every step in the chain.
+
+Where SLSA describes the build, in-toto can describe the whole path, including tests, review and packaging, and check that each step was done by the expected party. For CampusEats, Lena judges it more than the project needs today, since the hosted CI provenance already covers the step most at risk. She records it in the society's notes as an option if the release process grows.
 
 ### Transparency logs
 
@@ -2105,25 +2129,37 @@ You will (1) verify an application against ASVS requirements; (2) plan authorise
 
 The OWASP Application Security Verification Standard lists testable requirements at three levels. CampusEats targets ASVS 4.0.3 Level 1 for most areas and Level 2 for authentication, session management and access control, because it handles payments and personal data. ASVS 5.0.0 reorganised chapters; Lena notes both identifiers for each requirement she checks.
 
+Lena records the level chosen for each area in a decision record, so the reason for the higher target on authentication is clear to later members. The target levels are reviewed each year, since new features may handle more sensitive data.
+
 ### 27.2 Planning tests
 
 Using the WSTG v4.2, Lena selects tests for configuration, authentication, authorisation, session management, input validation and error handling. Testing happens only in the test environment, under the society's written permission.
+
+Each test is linked to the ASVS requirements it checks, so the results can be reported against the standard. Lena writes the plan before testing, including which tests are out of scope and why, such as load tests that could disrupt the shared hosting platform. The plan is reviewed by Grace and shared with the society.
 
 ### 27.3 Evidence
 
 Each requirement gets pass, fail or not applicable, with evidence: a test log, a configuration screenshot or code reference.
 
+Evidence is stored in the private tracker with the date and the version tested. A pass without evidence is treated as not tested. Not applicable needs a reason too, such as a requirement about file uploads when CampusEats has no upload feature. Lena checks a sample of results with a second member, who confirms the evidence supports the verdict before the report is shared.
+
 ### 27.4 Results
 
 46 requirements checked: 41 pass, 4 fail, 1 not applicable. Failures: password reset links valid too long for staff accounts, missing rate limit on login for staff, verbose error page in one admin screen, and missing audit log for menu price changes.
+
+Each failure is logged as an issue with an owner and a severity, and the not-applicable item is explained in the report. None of the failures had been exploited, as far as logs show. The four findings concentrate on staff and admin functions, which the first tests had covered less thoroughly than student ones, so Lena adds staff scenarios to the regular test suite.
 
 ### 27.5 Prioritising
 
 Fixes are ordered by risk: rate limit and reset link first (account takeover risk), then audit log and error page.
 
+Each fix has an owner and a target date, following the society's advisory deadlines: seven days for high risk and thirty for medium. Lena puts the rate limit first because a guessed staff password would allow price changes and refunds. The audit log fix also closes a gap noted in the threat model, where repudiation of price changes had no control.
+
 ### 27.6 Retesting
 
 Each fix is retested by someone else.
+
+The retester did not write the fix and works from the original finding, not the developer's description of what changed. This catches fixes that address the symptom but not the cause, such as a rate limit applied to one login form but not the staff one. Each retest is recorded with its own evidence, and an item is closed only after it passes. Lena repeats the full ASVS check before the next major release.
 
 ### Automating checks
 
@@ -2169,25 +2205,37 @@ You will (1) analyse incidents and near misses without blame; (2) find root caus
 
 The goal is to understand how the system allowed a failure, not to blame a person. People make mistakes; systems should catch them.
 
+Lena writes the analysis in neutral language: what happened, what made it possible and what would make it less likely. People involved are invited to explain their view without fear, because hidden mistakes cannot be fixed. The developer who pushed the token helps write the timeline. Lena uses a short template so every analysis follows the same structure and can be compared later.
+
 ### 28.2 The token leak
 
 Timeline: test token added to config/test.env; .gitignore excluded the wrong path; commit pushed to public repository; server-side scanner flagged it two hours later; token revoked within fifteen minutes of the alert.
+
+The timeline is built from logs, not memory: the commit time, the scanner alert and the provider's revocation record. Lena notes that the provider's logs showed no use of the token while it was exposed. Each entry in the timeline has its source noted, so anyone reading the analysis can check it.
 
 ### 28.3 Root cause and factors
 
 Root cause: secrets were kept in files inside the repository folder. Contributing factors: no pre-commit hook; the .gitignore mistake; unclear guidance about test keys.
 
+Each factor made the leak more likely, but none alone would have been enough. Lena separates them so that each can have its own action. The unclear guidance mattered because the developer believed a test key was harmless, which the analysis shows was a reasonable belief given what the society had written at the time. Fixing them separately helps.
+
 ### 28.4 Actions
 
 Move all secrets to the secret store; add the pre-commit hook; write guidance; add a CI check that fails if any .env file is committed.
+
+Each action has an owner and a date, and Lena checks at the next term's review that all were completed. The CI check is a second line behind the hook: even if a developer bypasses the hook, the build fails when an environment file appears in the repository. The guidance now explains why test keys still need protection, with the society's own incident as the example.
 
 ### 28.5 Near misses
 
 The pay-client hash mismatch was a near miss handled well; its analysis records what worked (the check, not overriding it) so it is kept.
 
+Recording what worked matters as much as recording failures, because a control that is never credited is easy to remove later as an inconvenience. Lena notes that a member could have overridden the check to get the build working, and that not doing so is the behaviour the society wants to encourage. Near misses are cheap lessons.
+
 ### 28.6 Sharing
 
 A short write-up is shared with other student projects at the university.
+
+The write-up removes names and details that could identify the developer and focuses on the lessons that apply to any student project: keep secrets out of the repository folder, scan before and after pushes and respect integrity checks. Grace circulates it through the security office, and two other student projects adopt the pre-commit hook within the term. Lena also offers to help those projects set up the scanner, and records the questions they ask for the next version of the write-up.
 
 ### Tracking actions
 
@@ -2229,25 +2277,37 @@ You will (1) operate the application securely; (2) monitor logs and alerts; (3) 
 
 CampusEats logs sign-ins, role changes, failed authorisation, payment callback verification failures and deployments. Alerts go to two on-call members during term.
 
+Each alert has a short instruction saying what to check first. Lena tests the alerts each term by causing a harmless event, such as a failed callback signature in the test environment, and confirming that both on-call members receive it. Outside term, alerts go to one administrator, since ordering is closed. Logs needed for alerts are kept ninety days, as agreed earlier.
+
 ### 29.2 Routine updates
 
 A bot opens weekly pull requests updating dependencies within allowed ranges; tests run automatically, and members merge them on Mondays. Major version updates are planned separately.
+
+Merging on a fixed day spreads the work and keeps updates small, so a failure points to one or two packages rather than dozens. The owner of each dependency reviews its update. Major updates get their own branch, a test plan and a decision record, since they may change behaviour in ways the tests do not cover.
 
 ### 29.3 Advisory response
 
 High-severity advisories affecting CampusEats are fixed within 7 days, medium within 30.
 
+The deadlines run from the time the advisory is published, which matches the measure in the termly summary. If a fix is not available in time, the owner records an exception with a mitigation, such as disabling the affected feature, and an expiry date. Lena reports the share of advisories fixed within deadline each term, alongside the median fix time recorded in her earlier baseline. Low-severity advisories are handled in the weekly updates.
+
 ### 29.4 Incident process
 
 Detect, assess, contain, fix, recover, review. A short template records each incident.
+
+The template asks for a timeline, the impact, the actions taken and the lessons, in a page or less. Even small incidents are recorded, because patterns across several minor events often reveal a weakness that no single event shows. The review step follows the blameless approach used for the token leak, and its actions are tracked until they are done. Lena keeps the incident records together in the tracker, so the review at the end of each term can look across them.
 
 ### 29.5 Holidays
 
 During holidays, ordering is closed and the app shows a notice; updates continue so the app is current when term starts.
 
+Keeping updates running avoids a large backlog at the start of term, when the society is busiest and new members are joining. A reduced on-call arrangement covers the period, and advisory deadlines still apply. Lena checks after each holiday that no exceptions expired unnoticed and that the first lunchtime of term works as expected. Holiday notices tell students when ordering reopens.
+
 ### 29.6 Hand-over
 
 Each year graduating members hand over roles and access is reviewed.
+
+The handover includes the owner lists for dependencies and secrets, open exceptions and the runbook. Leaving members' access is removed the same week, and secrets they could read are rotated. Lena runs the review with the new committee so they understand each role before taking it on, which avoids the gaps that appeared when the build service had no owner. The review is recorded with the date and the names of the new owners.
 
 ### On-call guide
 
@@ -2293,29 +2353,43 @@ You will (1) run a complete supply-chain check on a release; (2) combine SBOM, h
 
 Lena runs a full check on the CampusEats release candidate in the test environment: generate the SBOM, check advisories, verify lockfile hashes, verify the signature and provenance, run ASVS-related tests.
 
+The exercise brings together the checks from earlier chapters into one routine that can be repeated for every release. Lena times each step and finds the whole check takes under an hour. Every step has a pass condition written before the check begins, so the result cannot be judged generously afterwards. The checks run against the exact bundle that would be deployed.
+
 ### 30.2 SBOM and advisories
 
 The SBOM lists 84 components; one medium advisory affects a development-only tool that does not ship; it is recorded as not applicable.
+
+Lena confirms the tool is development-only by checking the SBOM's dependency relationships and the built bundle, which does not contain it. The decision is recorded with the evidence and an expiry date, so it is reviewed again if the tool's role changes. Recording it rather than ignoring it shows readers of the report that the advisory was considered. It is a small note.
 
 ### 30.3 Hashes
 
 All packages match lockfile hashes.
 
+Every package in the release matches the hash recorded in the lockfile, so the installed code is what the society reviewed. Lena also confirms that the lockfile itself was not changed since the last reviewed commit, since an altered lockfile with new hashes would pass the check while installing different code. The check takes seconds and is the same one that stopped the build in her first week. The result goes into the report. No package failed.
+
 ### 30.4 Signature and provenance
 
 The bundle is signed by the expected build identity; provenance shows the expected repository and a reviewed commit.
+
+Lena checks the identity against the value configured in the deployment step and the commit against the main branch's history. Both match. She also confirms the transparency log entry exists, which shows the signature was publicly recorded at build time. The reviewed commit is the one approved in the pull request, so the release contains only reviewed code. If any of these checks had failed, the release would have stopped until the cause was understood.
 
 ### 30.5 Tests
 
 All authorisation, encoding and header tests pass.
 
+The tests include the fixes from the ASVS review: the staff login rate limit, the shorter reset link lifetime, the audit log for price changes and the generic admin error page. Lena checks that each fix has its own test, so a later change that undoes it would be caught. A passing test suite is evidence of what was tested, not of the absence of flaws, and the report says so. Lena reruns them twice.
+
 ### 30.6 Report
 
 A one-page release verification report lists each check, result and evidence link; it becomes part of the release.
 
+Lena writes the report so that a member who was not involved can follow it and repeat each check. It records the release candidate's version and the date, and it states anything not checked, such as performance under load. Keeping reports with each release lets the society show later exactly what was verified before any version went live. Grace receives a copy each term.
+
 ### 30.7 Conduct
 
 All work is done in the test environment under permission; findings are recorded in the private tracker.
+
+The private tracker keeps findings from public view until they are fixed, so an issue is not advertised before CampusEats is protected. Lena's permission letter is linked from the report. If the exercise had turned up a flaw in a third-party package, she would follow the society's disclosure process and report it to the maintainer privately. She closes each finding with its fix linked.
 
 ### Comparing releases
 
