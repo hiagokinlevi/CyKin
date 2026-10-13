@@ -55,7 +55,7 @@ Priscila separates constraints from trade-offs. Constraints are requirements tha
 
 ### 1.4 Recording decisions
 
-Priscila introduces a decision record at Corvina: the question, options considered, evidence, legal constraints, chosen option, residual risk and owner. She uses it for the GPS decision. Accountability under GDPR Article 5(2) and LGPD Article 6(X) requires demonstrating compliance, and decision records are strong evidence. Dr. Ward notes that records also improve future decisions, because the organisation can look back at what it expected and what actually happened, and learn from the difference. Her template has five fields: the question, options considered, evidence used, decision and owner, plus a date for checking the expected outcome.
+Priscila introduces a decision record at Corvina: the question, options considered, evidence, legal constraints, chosen option, residual risk and owner. She uses it for the GPS decision. Accountability under GDPR Article 5(2) and LGPD Article 6(X) requires demonstrating compliance, and decision records are strong evidence. Dr. Ward notes that records also improve future decisions, because the organisation can look back at what it expected and what actually happened, and learn from the difference. Her template has seven fields: the question, options considered, evidence, legal constraints, chosen option, residual risk and owner, plus a date for checking the expected outcome.
 
 ### Worked example
 
@@ -231,7 +231,7 @@ Corvina's marketing team proposes using transaction data to infer life events, s
 
 ### 4.3 Conflicts of interest
 
-The data protection officer reports to the chief operating officer, who is also responsible for marketing revenue. Priscila notes the risk of a conflict, since GDPR Article 38(6) requires that other tasks of the DPO do not result in a conflict of interests. She recommends that the DPO report to the board's risk committee for privacy matters. The executive committee agrees after discussion. Dr. Ward notes that governance structures shape outcomes as much as individual decisions do. The privacy lead now reports directly to the audit committee.
+The data protection officer reports to the chief operating officer, who is also responsible for marketing revenue. Priscila notes the risk of a conflict, since GDPR Article 38(6) requires that other tasks of the DPO do not result in a conflict of interests. She recommends that the DPO report to the board's risk committee for privacy matters. The executive committee agrees after discussion. Dr. Ward notes that governance structures shape outcomes as much as individual decisions do. The DPO now reports directly to the board's risk committee on privacy matters.
 
 ### 4.4 Ethical reasoning
 
@@ -394,7 +394,7 @@ You will (1) embed privacy in product and procurement processes; (2) align priva
 
 ### 7.1 Product process
 
-Priscila integrates privacy into Corvina's product process. Each product change passes a short screening: does it collect new data, use data for a new purpose, involve a new vendor or affect many customers? A yes triggers a full DPIA. This closes the gap found in Chapter 2, where changes to existing products escaped review. In the first quarter, screening triggers three DPIAs, including one for changes to the fraud model. Screening uses six yes-or-no questions about new data, new purposes, new recipients and automation.
+Priscila integrates privacy into Corvina's product process. Each product change passes a short screening: does it collect new data, use data for a new purpose, involve a new vendor or affect many customers? A yes triggers a full DPIA. This closes the gap found in Chapter 2, where changes to existing products escaped review. In the first quarter, screening triggers three DPIAs, including one for changes to the fraud model. Screening uses these four yes-or-no questions, about new data, new purposes, new vendors and scale.
 
 ### 7.2 Procurement
 
@@ -494,7 +494,7 @@ You will (1) report privacy risk to a board with indicators; (2) set appetite th
 
 ### 9.1 Board reporting
 
-Corvina's board wants to understand privacy risk. Priscila proposes six key risk indicators with thresholds approved by the board as its risk appetite: rights requests answered late, breaches notified late, processors without agreements, records past retention, DPIAs overdue for review and staff training overdue. Each has an amber threshold equal to the appetite and a red threshold at one and a half times the appetite. The indicators summarise complex operations in a form the board can monitor. Four indicators are chosen. Each has a clear source.
+Corvina's board wants to understand privacy risk. Priscila proposes six key risk indicators with thresholds approved by the board as its risk appetite: rights requests answered late, breaches notified late, processors without agreements, records past retention, DPIAs overdue for review and staff training overdue. Each has an amber threshold equal to the appetite and a red threshold at one and a half times the appetite. The indicators summarise complex operations in a form the board can monitor. Six indicators are chosen. Each has a clear source.
 
 ### 9.2 The dashboard
 
@@ -674,7 +674,7 @@ Dr. Ward asks what Priscila would transfer to another organisation. She lists pr
 
 ### 12.3 Limits
 
-Priscila notes limits of her experience. Corvina is a mid-sized firm with board support; smaller firms may lack resources, and larger ones may face more complexity. Her evidence from tests is local. She avoids presenting her programme as a template. She also notes that laws evolve, such as the 2025 edition of ISO/IEC 27701, so practices must be updated over time. Her results come from one firm in two countries, with synthetic data in the labs and a particular regulatory history. A different culture or regulator could change what works best.
+Priscila notes limits of her experience. Corvina is a mid-sized firm with board support; smaller firms may lack resources, and larger ones may face more complexity. Her evidence from tests is local. She avoids presenting her programme as a template. She also notes that laws and standards evolve, as the 2025 edition of ISO/IEC 27701 shows, so practices must be updated over time. Her results come from one firm in two countries, with synthetic data in the labs and a particular regulatory history. A different culture or regulator could change what works best.
 
 ### 12.4 Development
 
