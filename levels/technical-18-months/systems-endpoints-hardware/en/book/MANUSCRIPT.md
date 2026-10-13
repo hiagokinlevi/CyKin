@@ -51,13 +51,23 @@ Nadia Petrova is on an eighteen-month technical programme at the fictional Brook
 
 Support technicians set up PCs, install software, reset passwords and fix problems. Every one of those tasks affects security. A PC set up with weak settings stays weak for years; a password reset done without checking identity can hand an account to the wrong person; software installed carelessly can bring unwanted programs. Good support work and good security work are largely the same work done carefully.
 
+Section one point two develops the support technician's view of with a Harlow & Pike note Nadia Petrova can demo offline.
+
 ### 1.3 What this course covers
 
 The course moves from the parts of a PC and Windows administration to accounts, updates, protection software, encryption, backups and safe support habits. In the final chapters Nadia carries out a small improvement project at Harlow & Pike, measuring local administrator rights and update status before and after her changes.
 
+Section one point three develops the support technician's view of with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section one point three, Lena Brooks expects the claims to carry owners and dates.
+
 ### 1.4 Working within limits
 
 Nadia works only on systems she is asked to support, with a placement agreement signed by her supervisor at the firm, office manager Lena Brooks. She never uses tools that probe or attack systems. Client financial data are confidential, so she does not open client files, and all examples in this book use synthetic data.
+
+Section one point four develops the support technician's view of with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section one point four, Lena Brooks expects the claims to carry owners and dates.
 
 ### Worked example
 
@@ -96,17 +106,37 @@ You will (1) identify PC components; (2) check firmware settings; (3) record har
 
 A PC contains a processor, memory, a storage drive, network adapters and a motherboard with firmware. Knowing these helps diagnose faults and plan upgrades. For security, the storage drive matters because it holds data that must be protected if the PC is stolen or disposed of, and the firmware matters because it starts everything else.
 
+Section two point one develops pc hardware and firmware with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section two point one, Lena Brooks expects pc claims to carry owners and dates.
+
 ### 2.2 UEFI settings
 
 The firmware, usually UEFI, has settings for boot order, Secure Boot and the TPM. Secure Boot checks that the startup software is signed by a trusted publisher. The TPM is a chip that stores keys used by BitLocker. Nadia checks these settings on three PCs using the firmware setup screen and the Windows System Information tool, only looking, not changing.
+
+Section two point two develops pc hardware and firmware with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section two point two, Lena Brooks expects pc claims to carry owners and dates.
 
 ### 2.3 Firmware passwords
 
 A firmware administrator password stops someone from changing boot settings, for example to start the PC from a USB stick and bypass Windows. Harlow & Pike's PCs have none. Lena agrees that the IT supplier will set one, stored in the password manager.
 
+Section two point three develops pc hardware and firmware with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section two point three, Lena Brooks expects pc claims to carry owners and dates.
+
+Section two point three treats components uefi settings firmware as testable only when evidence and ticket IDs are recorded.
+
 ### 2.4 Recording details
 
 Nadia records for each PC: model, serial number, TPM present and enabled, Secure Boot on or off, and firmware version. This takes ten minutes per PC and gives a clear picture of which PCs are ready for encryption.
+
+Section two point four develops pc hardware and firmware with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section two point four, Lena Brooks expects pc claims to carry owners and dates.
+
+Section two point four treats components uefi settings firmware as testable only when evidence and ticket IDs are recorded.
 
 ### Firmware updates
 
@@ -149,13 +179,27 @@ You will (1) explain standard and administrator accounts; (2) use separate admin
 
 Windows accounts are either standard users or administrators. Standard users run programs and save their own work. Administrators can install software, change settings and read any file. At Harlow & Pike, staff were given admin rights years ago so they could install printer drivers, and nobody took them away.
 
+Section three point one develops windows accounts and rights with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section three point one, Lena Brooks expects windows claims to carry owners and dates.
+
 ### 3.2 Separate admin accounts
 
 The IT supplier and Nadia use separate accounts for admin work. Day-to-day email and browsing happen in a standard account, so a malicious email attachment opened by mistake runs without admin rights. This is the principle of least privilege described by Saltzer and Schroeder in 1975.
 
+Section three point two develops windows accounts and rights with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section three point two, Lena Brooks expects windows claims to carry owners and dates.
+
+Section three point two treats two kinds of account as testable only when evidence and ticket IDs are recorded.
+
 ### 3.3 User Account Control
 
 User Account Control, or UAC, asks for confirmation or credentials before a program gets admin rights. For a standard user, UAC asks for an admin password, which they do not have, so the installation stops. For an administrator, UAC only asks for a click, which people approve without thinking.
+
+Section three point three develops windows accounts and rights with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section three point three, Lena Brooks expects windows claims to carry owners and dates.
 
 ### Lab — Finding extra administrators
 
@@ -182,6 +226,12 @@ PCs with extra admins: 4 of 10; extra accounts: 5
 ### 3.4 Reading the result
 
 In a sample of ten PCs, four have extra administrators, five accounts in total, including a leftover account called temp. Each must be checked with the user and removed, with an alternative way to get software they need.
+
+Section three point four develops windows accounts and rights with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section three point four, Lena Brooks expects windows claims to carry owners and dates.
+
+Section three point four treats two kinds of account as testable only when evidence and ticket IDs are recorded.
 
 ### Leftover accounts
 
@@ -224,17 +274,37 @@ You will (1) explain good password practice; (2) set up multi-factor authenticat
 
 Long passphrases are easier to remember and harder to guess than short complex passwords. NIST guidance on digital identity recommends checking new passwords against lists of known breached passwords rather than forcing frequent changes. Harlow & Pike sets a minimum of fourteen characters and blocks common and breached passwords.
 
+Section four point one develops passwords mfa and password resets with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section four point one, Lena Brooks expects passwords claims to carry owners and dates.
+
 ### 4.2 Password manager
 
 Staff use many systems: email, accounting software, tax portals and client portals. A password manager lets them use a different strong password for each. The firm adopts a business password manager with shared vaults for team accounts.
+
+Section four point two develops passwords mfa and password resets with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section four point two, Lena Brooks expects passwords claims to carry owners and dates.
+
+Section four point two treats password practice password manager as testable only when evidence and ticket IDs are recorded.
 
 ### 4.3 Multi-factor authentication
 
 Multi-factor authentication asks for something more than a password, such as approval in an app. Even if a password is phished, the attacker cannot sign in without the second factor. The firm turns it on for email and remote access first.
 
+Section four point three develops passwords mfa and password resets with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section four point three, Lena Brooks expects passwords claims to carry owners and dates.
+
+Section four point three treats password practice password manager as testable only when evidence and ticket IDs are recorded.
+
 ### 4.4 Safe resets
 
 Password resets are a common route for impersonation. Nadia follows a procedure: confirm identity by calling the staff member back on their known number or in person, then set a temporary password that must be changed at first sign-in. She never resets a password based only on an email request.
+
+Section four point four develops passwords mfa and password resets with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section four point four, Lena Brooks expects passwords claims to carry owners and dates.
 
 ### Shared mailboxes and lockout
 
@@ -277,9 +347,21 @@ You will (1) configure updates; (2) check update status; (3) handle failed updat
 
 Microsoft releases security updates monthly. The firm's PCs receive them through Windows Update for Business, managed by the IT supplier. Updates install automatically, with restarts outside working hours and a deadline so that PCs cannot postpone forever. NIST SP 800-40 Rev. 4 describes patching as routine maintenance rather than emergency work.
 
+Section five point one develops updating windows and applications with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section five point one, Lena Brooks expects updating claims to carry owners and dates.
+
 ### 5.2 Applications
 
 Browsers usually update themselves. Other applications, such as PDF readers and the accounting software, need managing. The supplier deploys these through its management tool so they update centrally.
+
+Section five point two develops updating windows and applications with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section five point two, Lena Brooks expects updating claims to carry owners and dates.
+
+Section five point two treats windows updates applications reading as testable only when evidence and ticket IDs are recorded.
+
+For section five point two, Harlow & Pike will not accept updating work without a written trail.
 
 ### Lab — Checking update status
 
@@ -302,9 +384,21 @@ oldest 60 days
 
 Twenty-five of thirty PCs updated within fourteen days. Five are late, the oldest by sixty days. Nadia checks each: two are rarely used spare PCs, one is a partner's laptop that is often off, one has a full disk and one has a broken update service.
 
+Section five point three develops updating windows and applications with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section five point three, Lena Brooks expects updating claims to carry owners and dates.
+
+Section five point three treats windows updates applications reading as testable only when evidence and ticket IDs are recorded.
+
 ### 5.4 Fixing failures
 
 Spare PCs are switched on weekly to update. The full disk is cleaned. The broken update service is repaired by the supplier using the standard repair steps. The partner's laptop is set to update when it connects.
+
+Section five point four develops updating windows and applications with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section five point four, Lena Brooks expects updating claims to carry owners and dates.
+
+Section five point four treats windows updates applications reading as testable only when evidence and ticket IDs are recorded.
 
 ### Feature updates and pauses
 
@@ -347,17 +441,43 @@ You will (1) check antivirus status; (2) understand tamper protection; (3) respo
 
 Microsoft Defender Antivirus is built into Windows and is enough for many small offices when kept updated and managed centrally. It scans files, watches behaviour and checks downloads. The firm's supplier manages it from a cloud console showing every PC's status.
 
+Section six point one develops protection software with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section six point one, Lena Brooks expects protection claims to carry owners and dates.
+
+Section six point one treats built-in protection checking status as testable only when evidence and ticket IDs are recorded.
+
 ### 6.2 Checking status
 
 Nadia compares the console's list with the PC inventory and finds two PCs missing. One was rebuilt and never enrolled; the other had Defender turned off when a staff member installed a different free antivirus. Both are fixed and the free product removed.
+
+Section six point two develops protection software with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section six point two, Lena Brooks expects protection claims to carry owners and dates.
+
+Section six point two treats built-in protection checking status as testable only when evidence and ticket IDs are recorded.
 
 ### 6.3 Tamper protection
 
 Tamper protection stops users and programs from turning off Defender. The supplier enables it across all PCs.
 
+Section six point three develops protection software with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section six point three, Lena Brooks expects protection claims to carry owners and dates.
+
+Section six point three treats built-in protection checking status as testable only when evidence and ticket IDs are recorded.
+
+For section six point three, Harlow & Pike will not accept protection work without a written trail.
+
 ### 6.4 Responding to alerts
 
 When Defender blocks something, the alert appears in the console. Most are routine. If an alert says a threat was found but not removed, Nadia disconnects the PC from the network and tells the supplier immediately.
+
+Section six point four develops protection software with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section six point four, Lena Brooks expects protection claims to carry owners and dates.
+
+Section six point four treats built-in protection checking status as testable only when evidence and ticket IDs are recorded.
 
 ### Scans, performance and quarantine
 
@@ -400,17 +520,45 @@ You will (1) choose trusted sources; (2) verify downloads; (3) record installed 
 
 Software should come from the vendor's official site, the Microsoft Store or the supplier's managed catalogue. Free tools from download sites often bundle unwanted programs, which is how the adware arrived.
 
+Section seven point one develops safe software installation with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section seven point one, Lena Brooks expects safe claims to carry owners and dates.
+
+Section seven point one treats trusted sources verifying downloads as testable only when evidence and ticket IDs are recorded.
+
 ### 7.2 Verifying downloads
 
 Many vendors publish a checksum for each download. Nadia shows staff how the supplier checks a downloaded installer's SHA-256 hash against the vendor's published value before adding it to the catalogue. A matching hash shows the file was not corrupted or replaced.
+
+Section seven point two develops safe software installation with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section seven point two, Lena Brooks expects safe claims to carry owners and dates.
+
+Section seven point two treats trusted sources verifying downloads as testable only when evidence and ticket IDs are recorded.
 
 ### 7.3 Approving software
 
 New software requests go to Lena, who checks the business need, and to the supplier, who checks the source and licence. Approved software goes into the catalogue.
 
+Section seven point three develops safe software installation with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section seven point three, Lena Brooks expects safe claims to carry owners and dates.
+
+Section seven point three treats trusted sources verifying downloads as testable only when evidence and ticket IDs are recorded.
+
+For section seven point three, Harlow & Pike will not accept safe work without a written trail.
+
 ### 7.4 Recording
 
 The supplier keeps a list of approved software and versions. CIS Controls v8 Control 2 asks organisations to keep a software inventory and allow only authorised software.
+
+Section seven point four develops safe software installation with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section seven point four, Lena Brooks expects safe claims to carry owners and dates.
+
+Section seven point four treats trusted sources verifying downloads as testable only when evidence and ticket IDs are recorded.
+
+For section seven point four, Harlow & Pike will not accept safe work without a written trail.
 
 ### Browser extensions and unused software
 
@@ -453,17 +601,45 @@ You will (1) apply key settings; (2) check them; (3) record exceptions.
 
 Nadia and the supplier choose ten settings from the CIS Benchmark and Microsoft security baseline: firewall on, screen lock after ten minutes, guest account off, autorun off, SMBv1 off, Defender PUA blocking, macros from the internet blocked, LAPS, remote desktop off and PowerShell logging.
 
+Section eight point one develops windows security settings with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section eight point one, Lena Brooks expects windows claims to carry owners and dates.
+
+Section eight point one treats key settings applying checking as testable only when evidence and ticket IDs are recorded.
+
 ### 8.2 Applying
 
 The supplier applies them through its management tool to a pilot group of three PCs for a week. One accountant's old tax tool needs a macro from an internet-downloaded template; the template is saved to a trusted location instead.
+
+Section eight point two develops windows security settings with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section eight point two, Lena Brooks expects windows claims to carry owners and dates.
+
+Section eight point two treats key settings applying checking as testable only when evidence and ticket IDs are recorded.
 
 ### 8.3 Checking
 
 The management tool reports compliance. Nadia spot-checks two PCs by opening the settings directly.
 
+Section eight point three develops windows security settings with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section eight point three, Lena Brooks expects windows claims to carry owners and dates.
+
+Section eight point three treats key settings applying checking as testable only when evidence and ticket IDs are recorded.
+
+For section eight point three, Harlow & Pike will not accept windows work without a written trail.
+
 ### 8.4 Exceptions
 
 Any PC that cannot take a setting gets a recorded exception with a reason and review date.
+
+Section eight point four develops windows security settings with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section eight point four, Lena Brooks expects windows claims to carry owners and dates.
+
+Section eight point four treats key settings applying checking as testable only when evidence and ticket IDs are recorded.
+
+For section eight point four, Harlow & Pike will not accept windows work without a written trail.
 
 ### Explaining settings to staff
 
@@ -514,17 +690,47 @@ You will (1) enable BitLocker; (2) store recovery keys; (3) verify encryption.
 
 Accountants carry laptops to clients. If one is stolen, BitLocker makes the drive unreadable without the key. Client financial data are confidential, so encryption is essential.
 
+Section nine point one develops disk encryption with bitlocker with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section nine point one, Lena Brooks expects disk claims to carry owners and dates.
+
+Section nine point one treats purpose enabling verifying recovery as testable only when evidence and ticket IDs are recorded.
+
+For section nine point one, Harlow & Pike will not accept disk work without a written trail.
+
 ### 9.2 Enabling
 
 The supplier enables BitLocker with TPM protection through the management tool, storing recovery keys in the directory. The PC with a disabled TPM from chapter 2 has it enabled first.
+
+Section nine point two develops disk encryption with bitlocker with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section nine point two, Lena Brooks expects disk claims to carry owners and dates.
+
+Section nine point two treats purpose enabling verifying recovery as testable only when evidence and ticket IDs are recorded.
 
 ### 9.3 Verifying
 
 Nadia checks encryption status in the console and with the manage-bde status command on two PCs. All laptops show fully encrypted with protection on.
 
+Section nine point three develops disk encryption with bitlocker with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section nine point three, Lena Brooks expects disk claims to carry owners and dates.
+
+Section nine point three treats purpose enabling verifying recovery as testable only when evidence and ticket IDs are recorded.
+
+For section nine point three, Harlow & Pike will not accept disk work without a written trail.
+
 ### 9.4 Recovery keys
 
 If BitLocker asks for a recovery key, the user calls IT, who verifies identity before reading out the key. Retrieval is logged.
+
+Section nine point four develops disk encryption with bitlocker with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section nine point four, Lena Brooks expects disk claims to carry owners and dates.
+
+Section nine point four treats purpose enabling verifying recovery as testable only when evidence and ticket IDs are recorded.
+
+For section nine point four, Harlow & Pike will not accept disk work without a written trail.
 
 ### Desktops too
 
@@ -575,17 +781,45 @@ You will (1) explain backup types; (2) check backups; (3) test restores.
 
 The file server holds client files and is backed up nightly to the network storage box, with a weekly copy to cloud storage. PCs store work on the file server, so they need little backing up.
 
+Section ten point one develops backups with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section ten point one, Lena Brooks expects backups claims to carry owners and dates.
+
+Section ten point one treats what is backed up as testable only when evidence and ticket IDs are recorded.
+
 ### 10.2 Why separation matters
 
 Ransomware can encrypt anything it can reach, including the backup box if it is mapped as a drive. The supplier sets the box so that backups are written by the backup software only, and the cloud copy keeps older versions that cannot be changed for thirty days.
+
+Section ten point two develops backups with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section ten point two, Lena Brooks expects backups claims to carry owners and dates.
+
+Section ten point two treats what is backed up as testable only when evidence and ticket IDs are recorded.
 
 ### 10.3 Checking
 
 Each morning, the backup software emails a report. Nadia sets up a rule to flag failures and checks the report weekly with the supplier.
 
+Section ten point three develops backups with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section ten point three, Lena Brooks expects backups claims to carry owners and dates.
+
+Section ten point three treats what is backed up as testable only when evidence and ticket IDs are recorded.
+
+For section ten point three, Harlow & Pike will not accept backups work without a written trail.
+
 ### 10.4 Restore tests
 
 Once a month, she restores one folder to a test location and confirms the files open. CIS Controls v8 Control 11 includes testing recovery.
+
+Section ten point four develops backups with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section ten point four, Lena Brooks expects backups claims to carry owners and dates.
+
+Section ten point four treats what is backed up as testable only when evidence and ticket IDs are recorded.
+
+For section ten point four, Harlow & Pike will not accept backups work without a written trail.
 
 ### Recovery time
 
@@ -636,17 +870,47 @@ You will (1) check router and Wi-Fi settings; (2) separate guest access; (3) use
 
 The router connects the office to the internet. Its firmware needs updates and its admin password must be known and strong. With the old supplier's help, the admin password is reset, firmware updated and remote management from the internet turned off.
 
+Section eleven point one develops network basics for technicians with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section eleven point one, Lena Brooks expects network claims to carry owners and dates.
+
+Section eleven point one treats the router wi-fi host as testable only when evidence and ticket IDs are recorded.
+
 ### 11.2 Wi-Fi
 
 Staff Wi-Fi uses WPA2 or WPA3 with a strong password. Clients visiting the office use a separate guest network that cannot reach the file server.
+
+Section eleven point two develops network basics for technicians with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section eleven point two, Lena Brooks expects network claims to carry owners and dates.
+
+Section eleven point two treats the router wi-fi host as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point two, Harlow & Pike will not accept network work without a written trail.
 
 ### 11.3 Host firewalls
 
 Windows Defender Firewall stays on for all profiles, so PCs are protected on hotel or client networks.
 
+Section eleven point three develops network basics for technicians with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section eleven point three, Lena Brooks expects network claims to carry owners and dates.
+
+Section eleven point three treats the router wi-fi host as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point three, Harlow & Pike will not accept network work without a written trail.
+
 ### 11.4 Printers
 
 Network printers also have admin pages and firmware; their default passwords are changed.
+
+Section eleven point four develops network basics for technicians with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section eleven point four, Lena Brooks expects network claims to carry owners and dates.
+
+Section eleven point four treats the router wi-fi host as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point four, Harlow & Pike will not accept network work without a written trail.
 
 ### Router firmware routine
 
@@ -701,17 +965,49 @@ You will (1) provide secure remote access; (2) protect home working; (3) support
 
 Partners reach the file server through the supplier's VPN with MFA. Each user has their own account.
 
+Section twelve point one develops remote access and working from with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section twelve point one, Lena Brooks expects remote claims to carry owners and dates.
+
+Section twelve point one treats vpn remote desktop home as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point one, Harlow & Pike will not accept remote work without a written trail.
+
 ### 12.2 Remote desktop
 
 Remote desktop to office PCs is only available through the VPN, never directly from the internet.
+
+Section twelve point two develops remote access and working from with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section twelve point two, Lena Brooks expects remote claims to carry owners and dates.
+
+Section twelve point two treats vpn remote desktop home as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point two, Harlow & Pike will not accept remote work without a written trail.
 
 ### 12.3 Home networks
 
 Staff are asked to keep their home router updated and not to share work laptops with family.
 
+Section twelve point three develops remote access and working from with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section twelve point three, Lena Brooks expects remote claims to carry owners and dates.
+
+Section twelve point three treats vpn remote desktop home as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point three, Harlow & Pike will not accept remote work without a written trail.
+
 ### 12.4 Remote support
 
 When Nadia helps a remote user, she uses the supplier's remote support tool, which asks the user to accept each session.
+
+Section twelve point four develops remote access and working from with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section twelve point four, Lena Brooks expects remote claims to carry owners and dates.
+
+Section twelve point four treats vpn remote desktop home as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point four, Harlow & Pike will not accept remote work without a written trail.
 
 ### Supporting remote users safely
 
@@ -762,17 +1058,47 @@ You will (1) recognise phishing reports; (2) respond to clicks; (3) support staf
 
 Staff forward suspicious emails to a report address. Nadia checks headers and links without opening attachments, and the supplier blocks the sender if malicious.
 
+Section thirteen point one develops phishing and the help desk with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section thirteen point one, Lena Brooks expects phishing claims to carry owners and dates.
+
+Section thirteen point one treats reports when someone clicks as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point one, Harlow & Pike will not accept phishing work without a written trail.
+
 ### 13.2 When someone clicks
 
 If a staff member entered their password on a fake page, Nadia resets the password, checks for new email forwarding rules and confirms MFA was not approved by mistake.
+
+Section thirteen point two develops phishing and the help desk with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section thirteen point two, Lena Brooks expects phishing claims to carry owners and dates.
+
+Section thirteen point two treats reports when someone clicks as testable only when evidence and ticket IDs are recorded.
 
 ### 13.3 Awareness
 
 Short monthly tips cover tax-season phishing, which targets accountants with fake revenue authority messages.
 
+Section thirteen point three develops phishing and the help desk with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section thirteen point three, Lena Brooks expects phishing claims to carry owners and dates.
+
+Section thirteen point three treats reports when someone clicks as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point three, Harlow & Pike will not accept phishing work without a written trail.
+
 ### 13.4 Blame-free reporting
 
 Staff who report a click quickly get thanks, not blame, so they keep reporting.
+
+Section thirteen point four develops phishing and the help desk with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section thirteen point four, Lena Brooks expects phishing claims to carry owners and dates.
+
+Section thirteen point four treats reports when someone clicks as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point four, Harlow & Pike will not accept phishing work without a written trail.
 
 ### Checking a reported email
 
@@ -831,17 +1157,51 @@ You will (1) set up new PCs consistently; (2) reassign PCs; (3) dispose securely
 
 New PCs are enrolled in the management tool on first start, receiving settings, apps and encryption automatically.
 
+Section fourteen point one develops device lifecycle with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section fourteen point one, Lena Brooks expects device claims to carry owners and dates.
+
+Section fourteen point one treats new pcs reassigning leavers as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point one, Harlow & Pike will not accept device work without a written trail.
+
 ### 14.2 Reassigning
 
 When a PC moves to a new user, it is reset and re-enrolled rather than just handed over.
+
+Section fourteen point two develops device lifecycle with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section fourteen point two, Lena Brooks expects device claims to carry owners and dates.
+
+Section fourteen point two treats new pcs reassigning leavers as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point two, Harlow & Pike will not accept device work without a written trail.
 
 ### 14.3 Leavers
 
 A leaver's account is disabled on their last day and their PC is collected.
 
+Section fourteen point three develops device lifecycle with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section fourteen point three, Lena Brooks expects device claims to carry owners and dates.
+
+Section fourteen point three treats new pcs reassigning leavers as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point three, Harlow & Pike will not accept device work without a written trail.
+
+Section fourteen point three fails closed if device evidence is missing rather than guessing.
+
 ### 14.4 Disposal
 
 Old drives are wiped using the manufacturer's secure erase or destroyed, with a certificate, following NIST SP 800-88.
+
+Section fourteen point four develops device lifecycle with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section fourteen point four, Lena Brooks expects device claims to carry owners and dates.
+
+Section fourteen point four treats new pcs reassigning leavers as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point four, Harlow & Pike will not accept device work without a written trail.
 
 ### Joiner setup
 
@@ -896,17 +1256,53 @@ You will (1) document setups; (2) record changes; (3) write useful tickets.
 
 Each system has a short page: what it is, how it is set up, who looks after it and where passwords are stored.
 
+Section fifteen point one develops documentation and change records with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section fifteen point one, Lena Brooks expects documentation claims to carry owners and dates.
+
+Section fifteen point one treats documentation change records tickets as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point one, Harlow & Pike will not accept documentation work without a written trail.
+
 ### 15.2 Change records
 
 Every change is noted with date, who, what and why.
+
+Section fifteen point two develops documentation and change records with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section fifteen point two, Lena Brooks expects documentation claims to carry owners and dates.
+
+Section fifteen point two treats documentation change records tickets as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point two, Harlow & Pike will not accept documentation work without a written trail.
+
+Section fifteen point two fails closed if documentation evidence is missing rather than guessing.
 
 ### 15.3 Tickets
 
 Good tickets describe the problem, steps taken and outcome, so others can learn.
 
+Section fifteen point three develops documentation and change records with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section fifteen point three, Lena Brooks expects documentation claims to carry owners and dates.
+
+Section fifteen point three treats documentation change records tickets as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point three, Harlow & Pike will not accept documentation work without a written trail.
+
 ### 15.4 Standards
 
 NIST SP 800-128 links configuration management with documentation and change control.
+
+Section fifteen point four develops documentation and change records with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section fifteen point four, Lena Brooks expects documentation claims to carry owners and dates.
+
+Section fifteen point four treats documentation change records tickets as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point four, Harlow & Pike will not accept documentation work without a written trail.
+
+Section fifteen point four fails closed if documentation evidence is missing rather than guessing.
 
 ### Where passwords live
 
@@ -957,17 +1353,53 @@ You will (1) plan a small project; (2) measure admin rights and updates; (3) rec
 
 Nadia's project measures local admin rights and update status across all thirty PCs, then reduces both.
 
+Section sixteen point one develops placement project measuring with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section sixteen point one, Lena Brooks expects placement claims to carry owners and dates.
+
+Section sixteen point one treats plan measuring method agreement as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point one, Harlow & Pike will not accept placement work without a written trail.
+
 ### 16.2 Measuring
 
 Using exports and the labs, she finds 12 of 30 PCs with extra admins and 25 of 30 within 14 days of updates.
+
+Section sixteen point two develops placement project measuring with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section sixteen point two, Lena Brooks expects placement claims to carry owners and dates.
+
+Section sixteen point two treats plan measuring method agreement as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point two, Harlow & Pike will not accept placement work without a written trail.
 
 ### 16.3 Method
 
 She records the export date and steps so she can repeat them.
 
+Section sixteen point three develops placement project measuring with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section sixteen point three, Lena Brooks expects placement claims to carry owners and dates.
+
+Section sixteen point three treats plan measuring method agreement as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point three, Harlow & Pike will not accept placement work without a written trail.
+
+Section sixteen point three fails closed if placement evidence is missing rather than guessing.
+
 ### 16.4 Agreement
 
 Lena approves the plan and measures.
+
+Section sixteen point four develops placement project measuring with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section sixteen point four, Lena Brooks expects placement claims to carry owners and dates.
+
+Section sixteen point four treats plan measuring method agreement as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point four, Harlow & Pike will not accept placement work without a written trail.
+
+Section sixteen point four fails closed if placement evidence is missing rather than guessing.
 
 ### Why these two measures
 
@@ -1022,17 +1454,49 @@ You will (1) make changes safely; (2) re-measure; (3) report.
 
 Extra admin rights are removed after talking to each user, and the self-service catalogue is introduced. Update failures are fixed as in chapter 5.
 
+Section seventeen point one develops placement project changes and results with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section seventeen point one, Lena Brooks expects placement claims to carry owners and dates.
+
+Section seventeen point one treats changes results remaining staff as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point one, Harlow & Pike will not accept placement work without a written trail.
+
 ### 17.2 Results
 
 Extra admins fall from 12 to 0 PCs; updates within 14 days rise from 25 to 29 of 30.
+
+Section seventeen point two develops placement project changes and results with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section seventeen point two, Lena Brooks expects placement claims to carry owners and dates.
+
+Section seventeen point two treats changes results remaining staff as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point two, Harlow & Pike will not accept placement work without a written trail.
 
 ### 17.3 Remaining
 
 One PC stays late because it is a partner's laptop often off; a reminder is set.
 
+Section seventeen point three develops placement project changes and results with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section seventeen point three, Lena Brooks expects placement claims to carry owners and dates.
+
+Section seventeen point three treats changes results remaining staff as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point three, Harlow & Pike will not accept placement work without a written trail.
+
 ### 17.4 Staff reaction
 
 Most staff did not notice the change; two asked for software via the catalogue.
+
+Section seventeen point four develops placement project changes and results with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section seventeen point four, Lena Brooks expects placement claims to carry owners and dates.
+
+Section seventeen point four treats changes results remaining staff as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point four, Harlow & Pike will not accept placement work without a written trail.
 
 ### Talking to each user
 
@@ -1091,17 +1555,55 @@ You will (1) reflect on learning; (2) recommend next steps; (3) hand over.
 
 Nadia learned that security work is mostly careful support.
 
+Section eighteen point one develops reflection and next steps with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section eighteen point one, Lena Brooks expects reflection claims to carry owners and dates.
+
+Section eighteen point one treats reflection recommendations handover assessment as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point one, Harlow & Pike will not accept reflection work without a written trail.
+
+Section eighteen point one fails closed if reflection evidence is missing rather than guessing.
+
 ### 18.2 Recommendations
 
 Quarterly admin and update checks, MFA for all systems, and router firmware checks.
+
+Section eighteen point two develops reflection and next steps with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section eighteen point two, Lena Brooks expects reflection claims to carry owners and dates.
+
+Section eighteen point two treats reflection recommendations handover assessment as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point two, Harlow & Pike will not accept reflection work without a written trail.
 
 ### 18.3 Handover
 
 Scripts and notes are handed to the supplier.
 
+Section eighteen point three develops reflection and next steps with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section eighteen point three, Lena Brooks expects reflection claims to carry owners and dates.
+
+Section eighteen point three treats reflection recommendations handover assessment as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point three, Harlow & Pike will not accept reflection work without a written trail.
+
+Section eighteen point three fails closed if reflection evidence is missing rather than guessing.
+
 ### 18.4 Assessment
 
 Sam assesses the report and Lena's feedback.
+
+Section eighteen point four develops reflection and next steps with a Harlow & Pike note Nadia Petrova can demo offline.
+
+Under section eighteen point four, Lena Brooks expects reflection claims to carry owners and dates.
+
+Section eighteen point four treats reflection recommendations handover assessment as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point four, Harlow & Pike will not accept reflection work without a written trail.
+
+Section eighteen point four fails closed if reflection evidence is missing rather than guessing.
 
 ### What worked and what the firm said
 
