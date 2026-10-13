@@ -1004,6 +1004,8 @@ You will (1) compute a Wilson interval; (2) explain base rates; (3) avoid overcl
 
 Detection rate k/n needs uncertainty. Seven of ten is not the same as seventy of one hundred.
 
+Both give seventy per cent, but they support very different claims. With ten trials, a single extra miss or detection moves the rate by ten points, so the true rate could plausibly be anywhere from about forty to nearly ninety per cent. With a hundred trials the plausible range narrows to roughly sixty to seventy-eight. When the SOC reports that its new rule caught seven of the ten techniques Sam ran in a purple-team session, the honest summary is that the rule probably works more often than not, and that a stronger claim needs more trials.
+
 ### 12.2 Wilson interval
 
 lab_wilson prints 95% intervals for synthetic purple-team detection counts.
@@ -1027,49 +1029,73 @@ detected 7/10 rate=0.70 95% CI=(0.40, 0.89)
 detected 70/100 rate=0.70 95% CI=(0.60, 0.78)
 ```
 
+The Wilson interval is preferred to the textbook formula of p plus or minus 1.96 standard errors because that formula behaves badly with small samples and rates near zero or one. It can produce intervals below zero or above one hundred per cent, and it claims too much certainty when only a few trials were run. Wilson's version pulls the centre slightly towards one half and keeps the bounds inside the possible range. Purple-team exercises are exactly the small-sample, high-rate setting where that matters. Comparing the two printed lines shows the practical point: the same seventy per cent carries a range more than twice as wide at ten trials.
+
 ### 12.3 Base rates
 
 Rare true issues drowned in noisy scanners waste fixer time.
+
+Suppose a scanner flags a weakness correctly on ninety per cent of vulnerable hosts and wrongly on five per cent of patched ones, and only two per cent of TRB's thousand staging hosts are actually vulnerable. It will find about eighteen of the twenty real cases and raise about forty-nine false alarms, so roughly seven in ten flags are wrong. Developers who chase those false alarms learn to ignore the scanner. The base rate, the share of hosts that truly have the problem, decides how useful a positive result is, and that is why Sam confirms scanner output by hand before turning it into findings.
 
 ### 12.4 Ranking defences
 
 Prefer intervals that do not overlap when claiming A beats B.
 
+If one control stopped fourteen of twenty simulated phishing clicks and another stopped eleven of twenty, the first looks better, seventy against fifty-five per cent. Their Wilson intervals run from about forty-eight to eighty-five and from about thirty-four to seventy-four, which overlap widely, so the data cannot separate the two. Overlap does not prove the controls are equal. It shows that the experiment was too small to tell. Non-overlap is a rough, conservative rule: a formal test for the difference between two proportions is better, but the overlap check stops the most common overclaim before it reaches a slide.
+
 ### 12.5 Reporting
 
 Managers hear counts and intervals in plain language.
+
+A sentence such as detection was 0.7 with a 95% Wilson CI of 0.40 to 0.89 is correct and almost useless to a reader who has to decide something. Sam rewrites it as follows. The SOC detected seven of the ten techniques we tried. With so few trials, the real rate could be as low as four in ten or as high as nine in ten, so we recommend another round before changing the budget. The counts go first because people can picture them, the range comes next in words, and the sentence ends with what the uncertainty means for the decision.
 
 ### 12.6 Limits
 
 Independence assumptions fail when tests share environment faults.
 
-### 12.7 12.7 Applied note
+The interval calculations assume each trial is a separate draw, so that one result does not influence another. Real exercises break that assumption. If a log forwarder was down for an hour, every technique Sam ran in that hour went undetected for the same reason, and ten misses really amount to one fault counted ten times. The interval then looks narrower than the evidence justifies. Sam records the time and the target host for each trial, checks whether failures cluster, and reports a clustered failure as a single infrastructure finding rather than as a low detection rate.
+
+### 12.7 Pulling a ranking slide
 
 When intervals overlap, Sam forbids ranking defences as winners. A slide once claimed MFA beat phishing training on overlapping Wilson intervals; he pulled the slide and asked for more trials instead of a louder font.
 
-### 12.8 12.8 Plain-language CI
+The slide's author was not wrong that MFA probably helps more; prior knowledge suggests it does. The problem was that the slide presented the exercise data as proof, and the data could not carry that weight. Sam suggested wording that kept the prior and the evidence apart: industry experience favours MFA, and this exercise was too small to confirm or contradict that. He also proposed the trial count needed for a clearer answer next quarter.
+
+### 12.8 Every interval in words
 
 Sam requires every interval in a deck to appear once in words: "between about X and Y". Charts alone are not enough for board packs.
 
-### 12.9 12.9 Sample size planner
+Error bars on a chart are easy to overlook and hard to read when slides are printed in greyscale or skimmed on a phone. A sentence survives both. The rule also catches mistakes, because writing that the rate was between about forty and ninety per cent makes a reviewer notice how wide that is, where a neat bar with a thin whisker does not. Board members who read the words consistently ask better questions, usually how to make the range narrower.
+
+### 12.9 Planning the number of trials
 
 A small tool suggests n for a target CI width. Sam uses it before promising detection rates to executives.
 
-### 12.10 12.11 Scene
+The planner inverts the interval: give it the rate you expect and how wide a range you can accept, and it returns roughly how many trials you need. For a rate near one half and a range of ten points either side, the answer is close to ninety-six trials. Running it before an exercise changes the conversation. A promise to measure detection to within ten points becomes either a commitment to about a hundred trials or an honest decision to report a wider range from the twenty trials the window allows.
+
+### 12.10 Finance asks for one number
 
 Finance asks for a single detection percentage for the annual report. Sam gives two sentences with intervals instead. Legal prefers his version because it cannot be read as a warranty. Uncertainty language protects the bank.
 
-### 12.11 12.12 Extension
+A single figure printed in an annual report becomes a public statement about the bank's defences. If TRB published that it detects seventy per cent of attacks, a regulator or litigant after a breach could treat that as a representation the bank failed to meet. Sam's sentences describe what was measured, in which exercise and with what uncertainty, which is accurate and much harder to misread. Finance gets a number to cite, and the bank does not promise more than its evidence shows.
+
+### 12.11 Shrinking the claim
 
 Sample size planner told Sam he needed n≈96 for a tight interval. He cut the claim instead of inventing data. Planners exist to shrink promises.
 
-### 12.12 12.16 Pad
+The exercise window allowed about thirty trials. Sam could have run the same techniques three times each to reach ninety-six, but repeated runs against the same hosts are not independent, so the narrower interval would have been false. Instead the report claimed what thirty independent trials supported: detection was probably above one half, and finer comparisons would need a larger exercise. The planner's main value was making that limit visible before anyone had promised more.
+
+### 12.12 An appendix explaining the refusal
 
 Board packs that insist on a single number get Sam's appendix with the refusal rationale. Legal endorsed the appendix.
 
-### 12.13 12.20 Extra
+The appendix is one page. It shows the counts, the interval and two short paragraphs. The first explains why a single percentage would overstate what the exercise measured. The second states what the bank can safely say. Writing it once saves arguing the same point every quarter, and attaching it whenever someone asks for a single figure moves the discussion from Sam's opinion to an agreed bank position. Legal's endorsement matters because the risk it addresses is legal as much as statistical.
+
+### 12.13 Recording legal's endorsement
 
 Refusal appendix has legal's endorsement email hash attached. Sam loves boring integrity.
+
+The hash lets anyone later confirm that the appendix in a board pack is the version legal approved, not an edited copy. The endorsement email is stored in the governance archive, and its SHA-256 value is printed at the foot of the appendix. If the wording changes, the hash no longer matches and the change needs a new endorsement. This uses the same integrity habit as evidence handling: a document whose authority matters should be checkable without trusting whoever forwarded it.
 
 ### Worked example (synthetic TRB)
 
@@ -1107,57 +1133,85 @@ You will (1) separate AuthN and AuthZ; (2) least-privilege test accounts; (3) ma
 
 Proving identity versus allowing actions. IDOR is AuthZ failure after AuthN.
 
+Authentication answers who is making the request, through a password, passkey or token. Authorization answers whether that person may do this particular thing to this particular object. An insecure direct object reference happens when an application checks the first and skips the second. A customer logs in correctly, then changes an account number in a statement URL and receives someone else's statement. At TRB, Sam tests authorization by logging in as one synthetic customer and requesting objects that belong to a second synthetic customer, so a success proves the flaw without touching any real person's data.
+
 ### 13.2 Test accounts
 
 Named, timed, vaulted, least privilege.
+
+Each property prevents a particular failure. A named account, such as rt-sam-cust01, ties every action in the logs to one tester, which a shared account cannot do. A timed account expires when the window closes, so a forgotten credential becomes useless rather than becoming a back door. Storing credentials in the vault keeps them out of chat messages and notes files. Least privilege means the account has only the rights the planned tests need. Testing a customer-facing flaw with an administrator account would prove nothing about what a customer can do, and would add risk if the session were hijacked.
 
 ### 13.3 Shared admins
 
 Accountability loss; ATT&CK T1078 Valid Accounts.
 
+When five administrators share one account, the log shows that admin made a change but not which person made it. That hampers investigations and lets mistakes go unclaimed. Shared credentials also travel. They get written into scripts, onboarding documents and configuration files, so they outlive the people who knew them. ATT&CK lists the abuse of legitimate credentials as Valid Accounts because an attacker using a real admin password looks like normal administration. Sam's finding for a shared admin account recommends named accounts that can elevate rights, and it records where the shared password was found stored.
+
 ### 13.4 MFA
 
 Verify by config review, not phishing staff.
+
+The question is whether multi-factor authentication is enforced on every route that matters, and the identity provider's configuration answers it directly: which applications require it, which groups are exempt, and whether legacy protocols that bypass it are still enabled. Sending real staff phishing emails to find out would involve people who did not consent to being tested in this engagement and would measure their behaviour rather than the control. Sam exports the conditional-access policies and confirms one exemption with an authorized test account. The finding names the gap precisely, for example that an IMAP endpoint accepts passwords without a second factor.
 
 ### 13.5 Service accounts
 
 Owners and rotation dates required.
 
+Service accounts let applications talk to databases and APIs without a person present, which also means nobody notices when they are misused. An account with no named owner cannot be rotated safely, because nobody knows which systems will break when its password changes, so it usually never changes. Sam's review lists every service account with its owner, the last rotation date and the rights it holds, then flags those with no owner, those rotated more than a year ago and those with interactive logon rights they should not need. The most common fix is making the account non-interactive.
+
 ### 13.6 Leavers
 
 Access lingering after HR termination is a classic finding.
 
-### 13.7 13.7 Applied note
+The gap usually comes from a process with several hand-offs. HR records the leaving date, IT disables the directory account, and nobody removes the local accounts, the SaaS logins created outside single sign-on, or the VPN certificate. Sam tests this by taking a synthetic leaver record and checking each system the role had access to. Finding one surviving login is enough for a finding. The recommendation addresses the process, for example driving deprovisioning from the HR event and listing every system that sits outside single sign-on, not just the one account that happened to be found.
+
+### 13.7 Expiring test accounts automatically
 
 Test account expiry is enforced by a job that disables accounts at window end and pages Sam if disable fails. Manual reminders failed twice historically; the job is now a control, not a convenience.
 
-### 13.8 13.8 Break-glass accounts
+The page on failure is the important part. A job that silently fails is worse than no job, because everyone believes the accounts are disabled. Disabling can fail when the identity service is in maintenance or when an account was renamed, and each failure leaves a working credential in the wild. The page goes to the tester and the security lead together. Neither may close the engagement until both confirm the account is disabled.
+
+### 13.8 Break-glass accounts
 
 Break-glass admins are monitored and rare. Sam's review checks that break-glass was not used as daily driver during the window.
 
-### 13.9 13.9 Vault MFA
+A break-glass account exists for the day the normal identity system fails. It bypasses single sign-on and usually multi-factor authentication, which makes it powerful and dangerous. Its credentials are sealed, and any use should produce an alert and a written justification. The test is simple: count its logins over the last quarter and compare them with recorded emergencies. If logins outnumber emergencies, someone is using the account for convenience. The finding then recommends fixing whatever normal access problem drove people to it.
+
+### 13.9 Confirming the vault denies access without MFA
 
 Vault access for credentials requires MFA. Sam tested denial without MFA and filed the deny as a positive control demo.
 
-### 13.10 13.11 Scene
+Controls deserve evidence when they work, not only when they fail. The test used a test account with a correct password and no second factor, and recorded the vault's refusal along with its log entry. Filing that refusal as a positive control means the next audit can rely on dated evidence instead of a configuration screenshot. It also sets a baseline. If a later test with the same account succeeds, something has changed, and the earlier record shows exactly when the control was last known to work.
+
+### 13.10 A rotated password found in a printer
 
 A shared admin password on the loan system is rotated, but the same password is later found in a printer config. Sam's leaver-and-secrets checklist now includes "search for password reuse artefacts" after any shared-admin finding.
 
-### 13.11 13.12 Extension
+Rotation fixed one system and left the old secret working wherever else it had been reused. Someone had set up scan-to-folder on the printer with the loan administrator's credentials years earlier, and the printer's web interface showed the password to anyone on the network. A shared password usually has a history, so the search covers scripts, scheduled tasks, device settings and documentation, not only the system where it was first found.
+
+### 13.11 Testing the break-glass alert
 
 Break-glass use during a window pages the CISO channel automatically. Sam tested the page with a staging break-glass and got a stern but correct phone call.
 
-### 13.12 13.14 Note 11
+The call was the evidence that the alert works, because it showed that a person responded, not just that a message was sent. Before the test, Sam agreed the time with the security lead and recorded it in the engagement log, so the call could be resolved quickly. The responder still followed the full procedure and asked who was using the account, why and under which authority. That is the right behaviour, since an attacker could claim to be running a test too.
+
+### 13.12 Auditing the leaver automation
 
 Leaver tickets auto-open from HR events within an hour; Sam audits the automation weekly.
 
-### 13.13 13.16 Pad
+Automation moves the risk rather than removing it. If the link between the HR system and the ticketing tool breaks, leavers silently stop generating tickets and nobody sees a missing ticket. The weekly audit compares that week's HR terminations with the tickets opened, and checks that each ticket was closed with every listed system confirmed. One week the counts differed by three. A schema change in the HR export had renamed the leaving-date field, so the integration had skipped those records without reporting an error.
+
+### 13.13 Searching device configurations for secrets
 
 Printer configs are now in the secret-search path after the reuse incident. Strange places hide passwords.
 
-### 13.14 13.20 Extra
+Printers, network storage, door controllers and conference-room systems often authenticate to servers, and their settings pages may store those credentials in readable form. Few teams think of them as places secrets live, so they are seldom rotated or reviewed. The expanded search uses configuration exports gathered by the device owners with permission, not logins to each device during testing. Found credentials are reported to their owners and rotated. The tester does not use them, because using a credential found in a device would test a system outside the agreed methods.
+
+### 13.14 Keeping the secret search in scope
 
 Secret-search path expansions are logged; scope creep in search is still scope.
+
+Each new location added to the search, such as printer exports, a wiki space or a file share, is recorded with the date, the approver and the reason. A search for passwords reads data that may contain personal information and other teams' secrets, so it needs the same authorization as any other test method. The log also explains the results. A sudden jump in found secrets in one quarter is meaningful only if readers know whether the bank got worse or the search simply looked in more places.
 
 ### Worked example (synthetic TRB)
 
