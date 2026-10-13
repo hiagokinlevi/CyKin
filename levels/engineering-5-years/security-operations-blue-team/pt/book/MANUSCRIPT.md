@@ -1,7 +1,7 @@
 # Operações de Segurança e Blue Team: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 130, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–8 de 50 já estão escritos em português, com os exercícios EX001–EX024 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 9–50 (EX025–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–12 de 50 já estão escritos em português, com os exercícios EX001–EX036 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 13–50 (EX037–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, construir, verificar e operar sistemas de monitoramento de segurança e os processos de SOC em torno deles.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limite ético e legal: monitore e responda apenas em sistemas que você está autorizado a defender; nada de código de exploração, *payloads*, procedimentos de ataque ou instruções para escapar da detecção. As detecções são ensinadas do lado do defensor, com telemetria sintética. Todas as evidências, pessoas e organizações são **sintéticas**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ NIST [SP 800-61r3](https://doi.org/10.6028/NIST.SP.800-61r3), [SP 800-92](https:
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
 
-Capítulos 9–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-09), até a chegada dos próximos lotes.
+Capítulos 13–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-13), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -549,11 +549,284 @@ A arquitetura explica que telemetria existe, quanto ela custa e onde pode se per
 
 [← Capítulo 07 (rascunho)](#ch-07) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 09 (rascunho) →](#ch-09)
 
+<a id="ch-09"></a>
+
+## Capítulo 9 — Programação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) estruturar programas maiores em módulos; (2) usar estruturas de dados para buscas eficientes; (3) tratar erros e casos-limite de forma deliberada; (4) escrever testes unitários para a lógica de detecção.
+
+### 9.1 De scripts a programas
+
+À medida que as ferramentas de Amara crescem, ela separa a análise sintática, a lógica e a saída em módulos. Cada um pode ser testado e substituído sem mexer nos outros. Um único script longo mistura responsabilidades: mudar o formato de saída arrisca quebrar o analisador. Módulos com fronteiras claras permitem a Amara trocar o analisador por um novo formato de log enquanto a lógica de contagem permanece intocada e testada. A estrutura também permite a Paolo revisar um módulo de cada vez, o que mantém as revisões curtas e focadas. Cada módulo tem seus próprios testes, e um pequeno programa principal os une.
+
+### 9.2 Estruturas de dados
+
+Dicionários dão buscas rápidas — por exemplo, mapear um nome de usuário à sua contagem de falhas. Conjuntos respondem rapidamente a perguntas de pertinência. Escolher a estrutura certa transforma minutos em segundos em logs grandes. Procurar um nome de usuário numa lista significa percorrer cada entrada até aparecer uma correspondência; com um milhão de entradas, isso fica lento quando se repete para cada linha de log. Um dicionário salta para a entrada quase diretamente. Os conjuntos fazem o mesmo para perguntas do tipo "já vi isto antes?", que a lógica de detecção faz o tempo todo, como saber se um endereço já está numa lista de observação.
+
+### 9.3 Erros
+
+Os programas encontram campos ausentes, codificações estranhas e linhas enormes. O tratamento deliberado — capturar erros específicos, contá-los e continuar — mantém as análises completas e honestas. Capturar todos os erros com um único tratador amplo esconde defeitos reais, como um nome de variável digitado errado. Capturar erros específicos, como um valor que não pode ser lido como horário, trata os problemas esperados e deixa os inesperados aparecerem. A contagem de erros tratados vai para a saída, para que os leitores saibam quantos registros foram deixados de lado. O silêncio é pior.
+
+### 9.4 Testes unitários
+
+O módulo unittest do Python permite a Amara escrever testes como "cinco falhas para usuários distintos numa rede devem disparar; quatro não". Os testes rodam automaticamente antes de cada mudança ser incorporada. Um par de testes, um de cada lado do limiar, fixa exatamente onde o comportamento da regra muda. Rodar os testes automaticamente antes da incorporação faz com que uma mudança posterior que desloque o limiar por acidente falhe de imediato, em vez de ser descoberta quando um ataque real passar despercebido. Os testes também servem de documentação do que a regra deve fazer.
+
+### 9.5 Casos-limite
+
+Valores de fronteira (exatamente o limiar), entrada vazia e eventos duplicados são onde o código de detecção costuma quebrar. Os testes miram neles primeiro. Uma regra que dispara com "mais de cinco" e uma que dispara com "cinco ou mais" diferem apenas em exatamente cinco, e é aí que os defeitos se escondem. Testes com entrada vazia verificam se o código não relata nada em vez de travar. Eventos duplicados, comuns quando um encaminhador de logs tenta de novo, verificam se a mesma falha não é contada duas vezes. Amara lista esses casos antes de escrever a regra, e não depois que aparece um defeito.
+
+### 9.6 Desempenho
+
+Para um dia de logs do portal (2 milhões de linhas), ler linha a linha usa pouca memória; carregar tudo numa lista pode esgotá-la. Dois milhões de linhas de algumas centenas de bytes cada podem ocupar muito mais memória quando cada linha vira um objeto Python separado. Ler uma linha de cada vez e atualizar contadores mantém o uso de memória estável. Amara mede as duas abordagens num dia de amostra e registra o pico de memória de cada uma, o que justifica o desenho em fluxo na revisão.
+
+### 9.7 Revisões
+
+Paolo revisa o código quanto à correção e à clareza; um segundo par de olhos pega deslizes de lógica que os testes deixaram passar. Os testes verificam aquilo que o autor pensou em testar; um revisor pergunta pelo que não foi considerado. Paolo percebe que o código de Amara trata os nomes de usuário diferenciando maiúsculas de minúsculas, enquanto o portal não faz isso, de modo que "U5" e "u5" eram contados separadamente. Acrescenta-se um teste para esse caso, e as notas de revisão viram uma lista de verificação para futuros códigos de detecção. As revisões são registradas com o nome do revisor, para que leitores posteriores saibam que alguém conferiu o código antes de ele entrar em produção.
+
+### Registro de log dentro das ferramentas
+
+As ferramentas de Amara registram as próprias ações: arquivo de entrada, seu *hash*, registros lidos, registros pulados e saída gravada. Quando um resultado é questionado semanas depois, o log da ferramenta mostra exatamente o que ela processou. Esse autorregistro custa algumas linhas de código e poupa horas de dúvida.
+
+### Exemplo resolvido
+
+O teste de Amara para "exatamente 5 falhas" falha: o código dela usa "> 5", enquanto o documento de projeto diz "pelo menos 5". Ela pergunta a Paolo qual é a intenção; eles escolhem "≥ 5", atualizam juntos o documento de projeto e o código e mantêm o teste.
+
+> **Caso sintético.** Os testes e os dados são sintéticos.
+
+### Erros e limites
+
+Os testes codificam o entendimento do momento em que foram escritos; se a ameaça mudar, eles podem impor uma lógica desatualizada.
+
+### Exercícios
+
+- **EX025 — Escolha da estrutura de dados.** Que estrutura serve para contar falhas por usuário, e por quê? *Rubrica:* 3 = dicionário: atualizações rápidas por chave; 2 = parcial; 1 = lista; 0 = nada.
+- **EX026 — Defeito de fronteira.** O que o teste de "exatamente 5" revelou, e como foi corrigido? *Rubrica:* 3 = o código usava > 5 e o projeto, ≥ 5; projeto, código e teste foram alinhados; 2 = parcial; 1 = ignorado; 0 = nada.
+- **EX027 — Leitura em fluxo.** Por que ler logs grandes linha a linha? *Rubrica:* 3 = baixo uso de memória; evita esgotá-la; 2 = parcial; 1 = sempre mais rápido; 0 = nada.
+
+### Síntese
+
+Código estruturado, estruturas de dados adequadas e testes de casos-limite tornam confiável a lógica de detecção.
+
+### Continue estudando — capítulo 09 de 50
+
+[← Capítulo 08 (rascunho)](#ch-08) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 10 (rascunho) →](#ch-10)
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Ética e segurança na engenharia
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar a ética da engenharia às operações de segurança; (2) equilibrar monitoramento e privacidade; (3) lidar com conflitos entre rapidez e segurança; (4) relatar preocupações de forma responsável.
+
+### 10.1 Deveres
+
+Os engenheiros têm deveres para com o público, os empregadores e os colegas. Num SOC, o monitoramento protege as pessoas, mas também as observa. A prática ética significa coletar o que a finalidade exige, e nada mais. O dever para com o público inclui os clientes cujas contas são protegidas e cujos dados passam por sistemas monitorados. O dever para com o empregador significa fazer um trabalho competente e honesto. O dever para com os colegas significa não monitorá-los além do que a política permite. Coletar apenas o que a finalidade exige limita o dano caso os dados de monitoramento sejam algum dia mal usados ou vazados.
+
+### 10.2 Privacidade e monitoramento
+
+Funcionários e clientes têm interesses de privacidade. A política de monitoramento da Lindqvist informa aos funcionários o que é monitorado e por quê; o acesso do SOC ao conteúdo (como o corpo de e-mails) exige aprovação por caso. Informar aos funcionários o que é monitorado é ao mesmo tempo justo e prático: quem conhece as regras tem menos chance de se sentir traído quando o monitoramento revela um problema. Metadados, como quem mandou e-mail a quem e quando, são menos invasivos do que o conteúdo. Exigir aprovação por caso antes de ler o conteúdo mantém o passo mais invasivo ligado a uma necessidade específica e justificada.
+
+### 10.3 Segurança das ações
+
+As ações de resposta podem prejudicar as operações: bloquear uma rede poderia interromper as atualizações de rota dos caminhões de entrega. Os engenheiros consideram os efeitos colaterais e usam *playbooks* aprovados. Os caminhões da Lindqvist dependem de acesso à rede para atualizações de rota e de entrega, então cortar um segmento de rede durante uma resposta poderia deixar motoristas sem orientação ou atrasar remessas. Os *playbooks* listam as dependências conhecidas de cada ação e quem precisa ser avisado antes que ela seja tomada. Onde o risco é alto, tenta-se uma ação mais estreita, como bloquear um único endereço, antes de uma ampla.
+
+### 10.4 Honestidade
+
+Os relatórios não devem esconder falhas, como uma detecção perdida, mesmo quando constrangedoras. Escondê-las impede o aprendizado. Uma detecção perdida é informação: mostra uma lacuna nos dados, na lógica ou no processo. Relatá-la permite à equipe fechar a lacuna e aos gestores julgar o risco com precisão. Ocultá-la deixa a lacuna aberta e corrói a confiança quando ela vem à tona mais tarde, o que costuma acontecer durante a revisão do incidente seguinte. Na Lindqvist, as detecções perdidas aparecem no relatório mensal com o que foi mudado depois, para que a mesma lacuna seja fechada de forma visível, e não esquecida em silêncio.
+
+### 10.5 Conflitos
+
+Quando um gestor pede o monitoramento de um funcionário sem um pedido de investigação, Amara recusa e remete à política e ao processo de RH. Monitorar um único funcionário sem um pedido formal poderia servir a uma disputa pessoal em vez de a uma necessidade de segurança e pode violar a legislação trabalhista ou a política de monitoramento. Amara não julga os motivos do gestor; ela explica o processo e indica o RH, que pode abrir uma investigação se houver motivo. Ela registra o pedido e sua resposta.
+
+### 10.6 Levantando preocupações
+
+Se uma prática parece insegura ou ilegal, os engenheiros a levantam pelos canais definidos, documentando os fatos. Os canais definidos incluem o gestor direto, o líder de segurança, a equipe de conformidade e, quando estes falham, qualquer canal de denúncia que a organização ofereça. Documentar fatos em vez de opiniões mantém a preocupação específica e verificável. Levantá-la cedo, antes que ocorra dano, dá à organização a chance de corrigir a prática discretamente. Amara descobre onde está publicada a política de denúncias da Lindqvist já na primeira semana. A retaliação contra alguém que levanta uma preocupação de boa-fé é, ela própria, uma violação da maioria dos códigos e de muitas leis.
+
+### 10.7 Códigos profissionais
+
+Entidades de engenharia e de computação publicam códigos que enfatizam o bem público, a competência e a honestidade; Amara lê o código de sua universidade durante a integração. Os códigos são curtos e gerais, então orientam o julgamento em vez de substituí-lo. Amara anota três pontos relevantes para seu estágio: agir dentro de sua competência, ser honesta quanto a resultados e limites e pôr a segurança pública à frente da conveniência. Ela volta a eles quando o pedido de monitoramento em seu estágio põe esses princípios à prova. As entidades de classe podem punir membros que os violam, o que dá peso aos códigos.
+
+### Consentimento e transparência
+
+O aviso de privacidade do portal informa aos clientes que a atividade de login é registrada por segurança. A transparência não substitui a minimização, mas permite que as pessoas entendam o monitoramento e reclamem se ele for mal usado. O SOC revisa o aviso com a equipe jurídica todo ano, para que ele corresponda à prática real.
+
+### Exemplo resolvido
+
+Durante o incidente do portal, um colega sugere bloquear permanentemente toda a faixa 203.0.113.0/24. Amara observa que a faixa pertence a um provedor de nuvem também usado por um parceiro logístico. Paolo concorda com um bloqueio temporário, com monitoramento e uma revisão após 24 horas, documentado no chamado.
+
+> **Caso sintético.** A situação e as pessoas são inventadas.
+
+### Erros e limites
+
+A ética orienta o julgamento, mas não dá respostas automáticas; discuta os casos difíceis com os supervisores.
+
+### Exercícios
+
+- **EX028 — Coleta mínima.** O que significa "coletar o que a finalidade exige" num SOC? *Rubrica:* 3 = monitorar para uma finalidade definida, sem conteúdo extra sem aprovação; 2 = parcial; 1 = coletar tudo; 0 = nada.
+- **EX029 — Recusando um pedido.** Por que Amara recusou monitorar um funcionário? *Rubrica:* 3 = não havia pedido de investigação; remeteu à política e ao RH; 2 = parcial; 1 = atendeu; 0 = nada.
+- **EX030 — Bloqueio da faixa.** Por que o bloqueio permanente foi rejeitado? *Rubrica:* 3 = faixa compartilhada com um parceiro; em vez disso, bloqueio temporário com revisão; 2 = parcial; 1 = bloqueou; 0 = nada.
+
+### Síntese
+
+A engenharia ética de SOC limita o monitoramento à sua finalidade, pesa os efeitos colaterais das ações e relata com honestidade.
+
+### Continue estudando — capítulo 10 de 50
+
+[← Capítulo 09 (rascunho)](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 (rascunho) →](#ch-11)
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Redes e protocolos
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar endereçamento, portas e protocolos comuns; (2) ler telemetria de rede, como fluxos e logs web; (3) agregar a atividade por rede; (4) reconhecer os limites da atribuição baseada em IP.
+
+### 11.1 Camadas
+
+As redes movem dados em camadas: enlaces físicos, endereçamento e roteamento IP, transporte TCP ou UDP e aplicações como o HTTPS. Existe telemetria em cada camada: estatísticas de enlace, registros de fluxo e logs de aplicação. Cada camada responde a perguntas diferentes. As estatísticas de enlace mostram se um cabo ou porta está saturado; os registros de fluxo mostram quem falou com quem, por quanto tempo e quantos bytes trafegaram; os logs de aplicação mostram o que foi pedido e o que voltou. Durante a rajada no portal, os fluxos revelam o volume vindo de uma rede, mas só os logs do servidor web mostram quais nomes de usuário foram tentados.
+
+### 11.2 Endereços e redes
+
+Os endereços IPv4 são agrupados em redes por prefixo. Uma rede /24 compartilha os três primeiros octetos. O tráfego de ataque vindo de um provedor de hospedagem muitas vezes se espalha por muitos endereços em poucas redes, então agregar por rede revela rajadas que as contagens por endereço escondem. Contar por endereço pode fazer um ataque distribuído parecer inofensivo: cinquenta endereços com duas tentativas cada nunca acionam um limiar de cinco por endereço. Agrupar por /24 os reúne numa única rede com cem tentativas. A escolha do comprimento do prefixo é uma troca, já que um prefixo mais largo pega atividades mais espalhadas, mas também junta clientes sem relação entre si atrás do mesmo provedor.
+
+### Laboratório — falhas por rede
+
+```python
+"""Count failed portal logins by source /24 network and by distinct usernames (synthetic)."""
+from collections import defaultdict
+log = [("203.0.113.10","u1","fail"),("203.0.113.11","u2","fail"),("203.0.113.12","u3","fail"),
+       ("203.0.113.13","u4","fail"),("203.0.113.14","u5","ok"),("198.51.100.20","u6","fail"),
+       ("198.51.100.20","u6","fail"),("198.51.100.20","u6","ok"),("203.0.113.15","u7","fail"),
+       ("203.0.113.16","u8","fail")]
+fails = defaultdict(int); users = defaultdict(set)
+for ip, user, res in log:
+    net = ".".join(ip.split(".")[:3]) + ".0/24"
+    users[net].add(user)
+    if res == "fail": fails[net] += 1
+for net in sorted(fails):
+    print(f"{net:17} failures={fails[net]} distinct_users={len(users[net])}")
+```
+
+Execute com `python3 lab_failed.py`. Saída verificada:
+
+```text
+198.51.100.0/24   failures=2 distinct_users=1
+203.0.113.0/24    failures=6 distinct_users=7
+```
+
+### 11.3 Lendo o resultado
+
+A rede 203.0.113.0/24 produziu 6 falhas, uma contra cada um de seis nomes de usuário, e tocou 7 nomes de usuário distintos ao todo quando se conta o sucesso de u5 — muitas contas, poucas tentativas cada, o padrão do *credential stuffing*. A 198.51.100.0/24 mostra 2 falhas e um sucesso para um único usuário: um cliente digitando a senha errada. O padrão importa mais do que os totais. Muitos nomes de usuário com uma tentativa cada sugerem alguém percorrendo uma lista de credenciais vazadas, na esperança de que alguns clientes tenham reutilizado senhas. Um único nome de usuário com algumas falhas e depois um sucesso parece uma pessoa comum que esqueceu qual senha usou. Uma regra que só contasse falhas trataria as duas redes da mesma forma e perderia essa distinção.
+
+### 11.4 Visibilidade do HTTPS
+
+O tráfego web cifrado esconde o conteúdo dos sensores de rede; os próprios logs do servidor web mostram caminhos, códigos de status e nomes de usuário. Escolher onde observar é uma decisão de engenharia. Quebrar a cifragem na rede para inspecionar o conteúdo é possível com *proxies* de interceptação, mas acrescenta risco, custo e preocupações de privacidade. No portal, o servidor já vê as requisições decifradas, então seus logs são o lugar natural para observar os logins. Os sensores de rede ainda ajudam com volume e tempo, enquanto os logs do servidor fornecem o significado de cada requisição.
+
+### 11.5 Limites da atribuição
+
+Um endereço identifica um ponto de conexão, não uma pessoa. *Proxies* compartilhados, faixas de nuvem e reutilização de endereços tornam imprecisos o bloqueio e a atribuição. Muitos clientes podem compartilhar um endereço atrás do *gateway* de uma operadora de telefonia móvel, então bloqueá-lo pode impedir o acesso de usuários inocentes. Os atacantes alugam servidores na nuvem e os abandonam em poucas horas, de modo que um endereço hostil ontem pode pertencer a outra pessoa amanhã. Por isso, os relatórios do SOC descrevem os endereços como fontes de atividade, em vez de nomear quem estava por trás deles. Os bloqueios de endereços recebem datas de expiração.
+
+### 11.6 Conhecimento de protocolo
+
+Saber que o login usa POST para /login e devolve 401 em caso de falha permite a Amara escrever uma análise sintática precisa. Sem esse conhecimento, um analisador poderia contar como tentativa toda requisição à página de login, inclusive de pessoas que apenas carregam o formulário. Conhecer o método, o caminho e os códigos de status permite a Amara contar apenas as credenciais enviadas e separar falhas de sucessos. Ela confirma os detalhes com os desenvolvedores do portal em vez de adivinhá-los a partir de uma amostra, já que um redirecionamento depois do login poderia esconder o resultado real.
+
+### DNS e tempo
+
+Os logs de DNS mostram quais nomes os hosts consultam, muitas vezes revelando contatos antes que as conexões aconteçam. Os dispositivos de rede precisam compartilhar um horário sincronizado para que fluxos, DNS e logs web se alinhem; sem isso, a correlação entre camadas vira adivinhação.
+
+### Exemplo resolvido
+
+Amara nota que um endereço, 203.0.113.14, produziu o sucesso de u5. Ela confere o log web: a mesma sessão depois requisitou /account/address, com uma alteração às 10:07. Ela acrescenta isso ao chamado como uma possível ação de tomada de conta.
+
+> **Caso sintético.** Os endereços usam faixas de documentação; os eventos são sintéticos.
+
+### Erros e limites
+
+Agregar por /24 pode juntar usuários sem relação entre si de grandes provedores; confirme com outros sinais.
+
+### Exercícios
+
+- **EX031 — Agregação por rede.** Por que agregar falhas por rede /24? *Rubrica:* 3 = rajadas espalhadas por muitos endereços aparecem juntas; 2 = parcial; 1 = nenhum motivo; 0 = nada.
+- **EX032 — Padrão de *stuffing*.** Que rede mostra *credential stuffing*, e por quê? *Rubrica:* 3 = 203.0.113.0/24: muitos usuários, poucas tentativas cada; 2 = só a rede; 1 = errado; 0 = nada.
+- **EX033 — Ação seguinte.** O que a sessão bem-sucedida fez em seguida? *Rubrica:* 3 = requisitou alteração de endereço às 10:07; possível tomada de conta; 2 = parcial; 1 = vago; 0 = nada.
+
+### Síntese
+
+A telemetria de rede ganha significado com a agregação e o conhecimento de protocolo, dentro dos limites da atribuição por IP.
+
+### Continue estudando — capítulo 11 de 50
+
+[← Capítulo 10 (rascunho)](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 (rascunho) →](#ch-12)
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Sistemas operacionais
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar como os sistemas operacionais gerenciam processos, arquivos, usuários e logs; (2) localizar os principais eventos de segurança no Windows e no Linux; (3) relacionar as configurações de auditoria do SO à cobertura de detecção; (4) reconhecer como a configuração muda a telemetria.
+
+### 12.1 O que um SO faz
+
+O sistema operacional escalona processos, gerencia a memória, controla o acesso a arquivos e dispositivos e autentica usuários. Cada uma dessas funções pode produzir eventos de segurança se a auditoria estiver ativada. A auditoria transforma essas funções de bastidor em registros: um processo iniciando, um arquivo aberto, um usuário entrando. A maioria dos sistemas vem com apenas parte disso ativada, porque a auditoria completa produz grandes volumes e algum custo de desempenho. Escolher quais funções auditar é, portanto, uma decisão de projeto ligada às detecções que o SOC pretende executar.
+
+### 12.2 Eventos do Windows
+
+O Windows registra logons, criação de processos, instalação de serviços e mudanças de política em seus logs de eventos quando a política de auditoria os ativa. A criação de processos com linha de comando, por exemplo, precisa ser ligada de forma deliberada; sem ela, muitas detecções de *endpoint* não têm com o que casar. Uma instalação padrão pode registrar que um processo iniciou, mas não a linha de comando que recebeu, que é onde fica boa parte do detalhe útil. A Política de Grupo permite aos administradores ativar a auditoria de forma consistente em muitas máquinas. Amara verifica uma amostra de servidores do portal e descobre que a configuração de linha de comando não está aplicada de maneira uniforme, uma lacuna que sua tabela de cobertura depois atribui a um modelo de *build* mais antigo.
+
+### 12.3 Logs do Linux
+
+Os sistemas Linux registram a autenticação nos logs do sistema, e o subsistema de auditoria pode registrar acesso a arquivos e execução de programas conforme regras. Como no Windows, a cobertura depende da configuração. As mensagens de autenticação vão para arquivos como o log de autenticação do sistema ou para o *journal* do systemd, conforme a distribuição. O subsistema de auditoria usa regras que nomeiam o que observar, por exemplo a execução de qualquer programa por uma conta de serviço web. Cada regra acrescenta volume, então as regras são escritas para riscos específicos, em vez de registrar tudo o que o sistema faz.
+
+### 12.4 Usuários e privilégio
+
+Os sistemas operacionais separam usuários comuns de administradores. Eventos que mudam privilégio — acrescentar um usuário a um grupo de administradores, por exemplo — são sinais de alto valor para a detecção. Atacantes que conseguem um ponto de apoio geralmente querem mais direitos, então mudanças de pertencimento a grupos costumam aparecer cedo numa intrusão. Essas mudanças também são raras na operação normal, o que as torna boas candidatas à detecção, com poucos falsos positivos. Mudanças legítimas ainda acontecem, por isso os alertas são conferidos contra o registro da gestão de mudanças em busca de um pedido aprovado. As remoções de grupos privilegiados também são registradas.
+
+### 12.5 Serviços e tarefas agendadas
+
+Programas podem ser configurados para iniciar automaticamente. Novos serviços e tarefas agendadas são mecanismos comuns de persistência descritos no MITRE ATT&CK, por isso vale a pena registrar sua criação. A persistência permite que o programa de um atacante sobreviva a uma reinicialização ou ao *logout* de um usuário. Softwares legítimos também instalam serviços, sobretudo durante atualizações, então um alerta bruto a cada novo serviço seria ruidoso. As detecções estreitam o foco, por exemplo a serviços que rodam a partir de pastas graváveis pelo usuário ou a tarefas criadas por processos pais incomuns, e os analistas comparam com as implantações de software conhecidas.
+
+### 12.6 Configuração como cobertura
+
+A cobertura de detecção só é tão boa quanto a configuração de auditoria. Amara monta uma tabela que lista cada regra de detecção e a configuração do SO de que ela depende, e depois verifica se as configurações estão implantadas por política em todas as classes de servidor. A tabela revela lacunas que só os testes das regras não pegariam: uma regra pode passar nos testes em laboratório e mesmo assim nunca disparar em produção, porque o evento de que precisa não é gerado ali. A verificação de Amara descobre que uma classe de servidor registra a criação de processos sem a linha de comando. Corrigir a política restaura de uma vez a cobertura de várias regras, e a tabela é conferida de novo após cada mudança de *build*.
+
+### 12.7 Tamanho e rotação dos logs
+
+Os logs de eventos têm tamanho máximo; quando cheios, os eventos antigos são sobrescritos. Encaminhar os logs ao SIEM sem demora evita a perda. Num servidor ocupado, um log de eventos pequeno pode dar a volta em horas, de modo que a evidência de um ataque pela manhã pode ter sumido à tarde. Os atacantes às vezes geram ruído de propósito para empurrar as entradas mais antigas para fora. Encaminhar os eventos ao SIEM em segundos mantém uma cópia fora do host, e alertas sobre lacunas no encaminhamento mostram quando um servidor para de enviar. As configurações de tamanho dos logs fazem parte do padrão de *build*.
+
+### Exemplo resolvido
+
+A tabela de Amara revela que os servidores web do portal não têm registro da linha de comando na criação de processos porque foram construídos a partir de um modelo mais antigo. Três regras de detecção, portanto, nunca poderiam disparar nesses servidores. Paolo abre uma mudança para atualizar o modelo e verifica depois com um processo de teste inofensivo.
+
+> **Caso sintético.** Os servidores, os modelos e as regras são inventados.
+
+### Erros e limites
+
+Ativar mais auditoria aumenta o volume e o custo; ative o que as detecções e as investigações precisam.
+
+### Exercícios
+
+- **EX034 — Dependência da cobertura.** Por que uma regra de detecção pode nunca disparar em alguns servidores? *Rubrica:* 3 = a configuração de auditoria exigida (por exemplo, registro da linha de comando) não está ativada; 2 = parcial; 1 = defeito na regra; 0 = nada.
+- **EX035 — Eventos de privilégio.** Por que as mudanças de pertencimento a grupos são sinais de alto valor? *Rubrica:* 3 = mudam o privilégio; atacantes buscam direitos de administrador; 2 = parcial; 1 = ruído; 0 = nada.
+- **EX036 — Correção do modelo.** Como a lacuna dos servidores web foi corrigida e verificada? *Rubrica:* 3 = modelo de *build* atualizado; um processo de teste inofensivo confirmou o registro; 2 = parcial; 1 = ignorada; 0 = nada.
+
+### Síntese
+
+Os sistemas operacionais só produzem eventos de segurança ricos quando configurados para isso; mapear as regras às configurações revela pontos cegos.
+
+### Continue estudando — capítulo 12 de 50
+
+[← Capítulo 11 (rascunho)](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 (rascunho) →](#ch-13)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX024 (as de EX025–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Amara Osei, Paolo Ricci, a Kingsbridge Engineering University, a Lindqvist Freight e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX036 (as de EX037–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Amara Osei, Paolo Ricci, a Kingsbridge Engineering University, a Lindqvist Freight e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** O acúmulo varia segundo dB/dt = A(t) − C(t): chegadas por hora menos alertas resolvidos por hora.
 
@@ -602,6 +875,30 @@ Respostas-modelo para EX001–EX024 (as de EX025–EX150 estão na edição em i
 **EX023.** O *buffer* do agente encheu enquanto o enlace estava saturado pela rajada, então os eventos mais antigos foram descartados.
 
 **EX024.** Equilibram a visibilidade contra o custo de CPU e memória e testam as configurações em máquinas parecidas com as de produção.
+
+**EX025.** Um dicionário, porque cada nome de usuário aponta diretamente para sua contagem, com buscas e atualizações rápidas.
+
+**EX026.** O código usava "maior que", enquanto o projeto queria "pelo menos"; os dois foram alinhados em ≥ 5 e o teste foi mantido.
+
+**EX027.** Mantém pequeno o uso de memória, enquanto carregar milhões de linhas de uma vez pode esgotá-la.
+
+**EX028.** Monitorar apenas o que a finalidade de segurança exige e acessar conteúdo, como o corpo de e-mails, somente com aprovação por caso.
+
+**EX029.** Não havia investigação autorizada, então ela remeteu o gestor à política e ao processo de RH.
+
+**EX030.** A faixa também atendia um parceiro logístico, então um bloqueio temporário com revisão em 24 horas evitou interromper tráfego legítimo.
+
+**EX031.** Os atacantes espalham as tentativas por muitos endereços nas mesmas redes, então agrupar revela rajadas que as contagens por endereço escondem.
+
+**EX032.** 203.0.113.0/24, porque suas seis falhas atingiram seis nomes de usuário diferentes, uma tentativa cada, e sete nomes de usuário aparecem ali ao todo.
+
+**EX033.** Requisitou uma alteração de endereço às 10:07, o que sugere que a conta foi tomada.
+
+**EX034.** Porque a configuração de auditoria de que a regra depende, como o registro da linha de comando dos processos, não está ativada ali.
+
+**EX035.** Concedem mais privilégio, que é o que os atacantes buscam, então as mudanças merecem atenção.
+
+**EX036.** O modelo do servidor foi atualizado por meio de uma mudança, e um processo de teste inofensivo confirmou que as linhas de comando passaram a ser registradas.
 
 <a id="references"></a>
 ## Referências
