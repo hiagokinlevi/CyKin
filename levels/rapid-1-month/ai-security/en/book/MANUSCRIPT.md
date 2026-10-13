@@ -41,6 +41,8 @@ You will (1) explain in plain terms how AI systems work and fail; (2) name the m
 
 A machine-learning model learns patterns from examples and then makes predictions — ReceiptSort learns which receipts are travel, meals or supplies. A language model predicts text; an AI assistant wraps a language model with instructions (a system prompt), access to data (emails, documents) and tools (send email, create events). The assistant's behaviour depends on everything in its input, not only on your instructions.
 
+For Tallis & Co this matters because InboxAide reads email written by people outside the firm. Any of that text becomes part of the assistant's input, alongside Omar's instructions and the firm's documents.
+
 ### 1.2 How they fail or are attacked
 
 - **Prompt injection.** Text inside an email or document can instruct the assistant to do something else — for example, forward a client file. This was demonstrated against real applications (Greshake et al., arXiv:2302.12173).
@@ -56,13 +58,19 @@ The OWASP Top 10 for LLM Applications 2025 names these risks: LLM01 Prompt Injec
 
 NIST AI 100-1 (AI RMF) gives four functions. **Govern**: who owns the decision and the risk? **Map**: what is the system for, who is affected, what data and tools does it touch? **Measure**: what evidence do we have about the risks? **Manage**: what controls, monitoring and plans for when things go wrong? The Generative AI Profile (NIST AI 600-1) lists risks specific to generative systems to include in the Map step.
 
+Omar used the four functions as headings for his first page of notes on InboxAide.
+
 ### 1.4 Options
 
 Always compare more than "yes or no": (a) not now; (b) limited pilot — read and draft only, a few volunteers, no client data; (c) wider use with controls — sending requires a human click, shared documents limited; (d) full use. Prefer reversible options and expand with evidence.
 
+For InboxAide, option (b) can be stopped at any time and teaches the firm something either way, while option (d) would expose shared client folders from the first day. For ReceiptSort the options are narrower, because it has no tools and reads no outside text. Write each option with its main risk and what it would cost to reverse.
+
 ### 1.5 Recording the decision
 
 Write: the question, options, evidence, risks to clients and staff, chosen option, owner, conditions and review triggers (date, incident, vendor change).
+
+Omar's record for InboxAide fits on one page: the question was whether to adopt the assistant, the chosen option was a four-week draft-only pilot, the owner is the managing partner, and the triggers are the end of the pilot, any incident or a vendor feature change. Keep the record where the owner and IT can both find it, and update it when a trigger fires rather than writing a new one.
 
 ### 1.6 Worked example (synthetic Tallis & Co case)
 
@@ -73,6 +81,8 @@ Omar maps InboxAide. It reads all email — including emails from outsiders, whi
 - Deciding on vendor demos alone.
 - Only "yes or no" options.
 - No owner or review trigger.
+
+Each error leads to a weak decision. A vendor demo shows the product at its best, with friendly inputs and no outside text, so it says little about prompt injection in real email. Only yes or no hides cheaper, reversible options such as Omar's draft-only pilot. Without an owner and review triggers, nobody notices when the vendor changes a feature or an incident occurs. Check your own decision record for all three.
 
 ### Exercises
 
@@ -110,13 +120,19 @@ You will (1) obtain and respect written permission for any AI-security testing; 
 
 Testing an AI system — even your own company's — needs written permission from whoever owns it, naming systems, activities, dates, data and contacts. For a vendor service, check the vendor's terms: many allow testing only in specific ways, or not at all, without agreement. Testing without permission can break laws and contracts and harm people.
 
+Omar's permission came from the managing partner, and he checked InboxAide's testing policy before starting. Keep a copy of both with the evidence. Ask again if the scope changes.
+
 ### 2.2 Scope and rules
 
 Scope says what is in and out: "InboxAide pilot tenant; test mailboxes only; no client data; no sending outside the firm's test domain". Rules of engagement say how: working hours, stop conditions (any real data appears, any unexpected external action), and who to call.
 
+Write both on one page and share it with anyone involved. If a stop condition is met, stop first and then decide with the owner whether to continue. At Tallis & Co, a real client name appearing in a test would be a stop condition.
+
 ### 2.3 Safe environments
 
 Use a separate tenant or test accounts with synthetic emails and documents. Never plant test injections in mailboxes that real clients or staff use. Tell the vendor and your staff what you are doing when appropriate.
+
+At Tallis & Co, Omar created five test mailboxes with synthetic clients, so no real email or client document was touched. Delete or archive test content when testing ends, and record what was created and where, so nothing is left behind in a live system.
 
 ### 2.4 Evidence and measurement
 
@@ -161,9 +177,13 @@ per-seed rates: 0.110 0.130 0.135 0.105 0.145 mean=0.125 sd=0.017
 baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 ```
 
+The lab shows why counts matter: the same 15% rate is uncertain with 20 tries and much firmer with 2,000. Omar reported his 6 of 20 result with its interval for the same reason. Keep each test's record with its inputs, so another person could repeat it and get comparable results.
+
 ### 2.5 Handling findings
 
 Report findings to the system owner with steps, impact and suggested fixes. If you find a weakness in the vendor's product, report it privately to the vendor and agree on timing before telling anyone else. If you see signs of a real attack or real data exposure, stop and follow the incident process.
+
+Omar sent his evidence to InboxAide's security contact. He agreed with the vendor how long to wait before mentioning the finding outside the firm, and kept the pilot in draft-only mode meanwhile. Write each finding so the owner can act on it: what was tested, what happened, how often, and what would reduce the risk.
 
 ### 2.6 Worked example (synthetic Tallis & Co case)
 
@@ -174,6 +194,8 @@ Omar gets written permission from the managing partner and checks the vendor's t
 - Testing in real mailboxes.
 - Ignoring vendor terms.
 - Drawing conclusions from one or two tries.
+
+Each error causes harm or a wrong conclusion. Test injections in real mailboxes can reach staff or clients and may trigger real actions. Ignoring vendor terms can breach the contract and end the firm's right to test. One or two tries say little: Omar's 6 of 20 still left an interval from about 15% to 52%. Check your test plan for all three. Fix any you find before testing. Note what you changed.
 
 ### Exercises
 
@@ -211,13 +233,19 @@ You will (1) draw how data and instructions flow through an AI assistant; (2) id
 
 Draw boxes: staff user; InboxAide; the language model (vendor); the mailbox; shared documents; calendar; outgoing email. Draw arrows for data. Mark where content from outside the firm enters (incoming email, shared documents from clients) and where the assistant can act (send, create events, share files). Danger lies on paths from outside content to actions.
 
+Omar's diagram for InboxAide showed one dangerous path at once: a client email with hidden text, read by the assistant, followed by external sharing of a folder.
+
 ### 3.2 Untrusted content
 
 Every incoming email and client document is untrusted: its author may be an attacker. The assistant cannot reliably tell instructions from content, so treat its output as possibly steered whenever it has read untrusted content.
 
+For Tallis & Co this means any draft produced after reading client email may carry an attacker's suggestion, as Omar's tests showed with 6 of 20 drafts. Staff should read drafts before acting on them, and the controls described below should not rely on the assistant noticing injected text.
+
 ### 3.3 Data access
 
 The assistant should see only what the user is allowed to see, and only what the task needs. Avoid connecting it to all shared client folders "for convenience". Check that access follows the user's permissions, not a broad service account.
+
+At Tallis & Co the pilot limits InboxAide to each user's own mailbox, without shared client folders. If a user cannot open a folder, the assistant acting for them should not be able to either. Check this with a test account before the pilot starts, and again after any vendor update.
 
 ### 3.4 Dependencies
 
@@ -253,6 +281,8 @@ config.yaml     MISMATCH
 model.bin       MISMATCH
 tokenizer.json  OK
 ```
+
+Lab H shows the hash check: a single changed byte in the model file and an added line in the configuration are both detected, while the unchanged tokenizer passes.
 
 ### 3.5 Controls that bound harm
 
@@ -301,6 +331,8 @@ defence=allowlist exfil_calls= 0/20 any_injected_call= 3/20 benign_calls=0/20
 defence=separate  exfil_calls= 0/20 any_injected_call= 0/20 benign_calls=0/20
 ```
 
+At Tallis & Co, sending is disabled in the pilot and external sharing can be blocked with an admin switch.
+
 ### 3.6 Worked example (synthetic Tallis & Co case)
 
 Omar's flow diagram shows that InboxAide, if fully enabled, could read a client email with hidden instructions and then share a folder externally. The lab illustrates why controls outside the model matter: keyword filtering still allowed 10 of 20 exfiltration attempts, while restricting tools and separating untrusted content brought it to 0. He keeps sending disabled in the pilot, limits access to each user's own mailbox, and asks the vendor four dependency questions; the vendor confirms no training on customer data and 30-day retention, and offers an admin switch to block external sharing.
@@ -310,6 +342,8 @@ Omar's flow diagram shows that InboxAide, if fully enabled, could read a client 
 - Connecting the assistant to everything.
 - Relying on prompt instructions as a security boundary.
 - Not asking vendors about data use and changes.
+
+Each error widens what an attacker can reach. Connecting InboxAide to every shared client folder would let one injected email expose many clients. Prompt instructions can be overridden by injected text, so they cannot be the boundary; Lab I shows that only controls outside the model reached zero. Without vendor answers on training, retention and changes, the firm cannot judge its own risk. Check your plan for each.
 
 ### Exercises
 
@@ -345,6 +379,8 @@ You will (1) run four short offline labs and interpret their outputs; (2) connec
 ### 4.1 Lab rules
 
 The labs run offline with Python 3 and synthetic data. They are toy models that make ideas measurable. Do not use them, or anything like them, against systems you are not authorised to test.
+
+Read each lab's output and its lesson before moving on. Change one input at a time and predict the result before running it. If a number differs from the expected output, check your Python version and that you copied the code exactly. Keep notes of what you changed.
 
 ### 4.2 Lab 1 — evasion
 
@@ -394,6 +430,8 @@ eps=1.00 accuracy=0.505
 
 A tiny classifier's accuracy falls from 0.985 to 0.505 as inputs are nudged in the worst direction. Lesson for ReceiptSort: do not let a single model output make important decisions without checks; review unusual or high-value items.
 
+Run it, then change the largest epsilon and watch accuracy fall further. For ReceiptSort, an altered receipt image could be classified wrongly in the same way, which is why Omar's plan adds manual review for receipts above €500 or with low confidence. Keep notes of each run.
+
 ### 4.3 Lab 2 — rate limits
 
 ```python
@@ -425,6 +463,8 @@ limit=1/s burst= 5 normal_served= 62/90 flood_served=  64/3000
 
 At 2 requests per second with a burst of 10, all normal requests are served while a flood is cut to 129 of 3,000. At 1 per second, normal users suffer. Lesson: set limits to protect cost and availability without blocking real work.
 
+For InboxAide, a limit protects the firm's bill and the vendor service if an account is misused. Choose limits from normal use, as the 90-request client shows, and review them when usage grows. Note the limit you would choose and why.
+
 ### 4.4 Lab 3 — base rates
 
 ```python
@@ -455,13 +495,19 @@ tpr=0.80 fpr=0.001 prevalence=0.001 precision=0.445 alerts_per_10k=18
 
 A detector with 95% detection and 5% false alarms finds mostly false alarms when real attacks are rare (precision 1.9% at 0.1% prevalence). Lesson: choose alerts that are rare and meaningful, or staff will learn to ignore them.
 
+For Tallis & Co, this means an alert on every suspicious prompt would mostly fire on harmless email, since injected email is rare. Omar's plan instead watches actions such as external sends and unusual volumes, which are rarer and more meaningful. Note which detector you would accept.
+
 ### 4.5 Lab 4 — measuring defences
 
 The statistics lab from Chapter 2 showed how intervals shrink with more trials and how to compare a defended and undefended system (attack success 0.35 vs 0.19, reduction 12–20 points). Lesson: ask vendors and colleagues for numbers with sample sizes.
 
+Run Lab S again from Chapter 2 and look at the last line. When a vendor says a defence works, ask how many trials were run, what the rate was with and without the defence, and how wide the interval is. A claim without these numbers cannot be compared with Omar's own results.
+
 ### 4.6 The adoption plan
 
 One page: purpose; options considered; chosen option; controls (access, actions, limits, confirmation); evidence so far; monitoring (actions per user, external sends, unusual volumes); incident steps (disable feature, preserve logs, notify owner, inform affected clients if needed); owner; review triggers.
+
+Omar's plan for InboxAide fits this list and fits on one page. It records draft-only use as the evidence so far, sends initiated only by a human click as the main control, monthly review of action logs as monitoring, and the admin switch as the first incident step. Each item names who does it. Review the plan at each trigger and keep earlier versions.
 
 ### 4.7 Worked example (synthetic Tallis & Co case)
 
@@ -471,11 +517,15 @@ After the four-week pilot — 10 users, 2,400 drafts, no sending — Omar's plan
 
 Follow OWASP LLM Top 10 and NIST updates; look at MITRE ATLAS case studies; consider the six-month professional course for deeper practice.
 
+Set a date each quarter to check for new versions of the OWASP list and the NIST profiles, and note any change that affects Tallis & Co's plan. Bring one ATLAS case study to the next review as an example of what could go wrong. Share what you learn with the managing partner, so the decision record stays current. Keep a short log of what changed.
+
 ### 4.9 Errors and limits
 
 - Treating toy lab numbers as real-world rates.
 - Plans without incident steps.
 - No review after adoption.
+
+Each error weakens the plan. Lab numbers come from toy models and synthetic data; they teach ideas, not real attack rates. A plan without incident steps leaves staff unsure what to do when something goes wrong, which is why Omar tested the admin switch in a drill. Without a review after adoption, vendor changes and new features go unchecked. Check your plan for all three.
 
 ### Exercises
 
