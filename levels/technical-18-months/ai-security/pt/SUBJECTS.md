@@ -20,11 +20,11 @@ Edição em português do Brasil, escrita a partir da edição de referência em
 | 2 | [08](book/PLAN.md#ch-08) | Segurança de IA e aprendizado de máquina: modos de falha | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-08) | [09 · Rascunho](book/MANUSCRIPT.md#ch-09) |
 | 2 | [09](book/PLAN.md#ch-09) | Segurança de IA e aprendizado de máquina: ferramentas e métodos | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-09) | [10 · Rascunho](book/MANUSCRIPT.md#ch-10) |
 | 2 | [10](book/PLAN.md#ch-10) | Segurança de IA e aprendizado de máquina: configuração de controles | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-10) | [11 · Rascunho](book/MANUSCRIPT.md#ch-11) |
-| 2 | [11](book/PLAN.md#ch-11) | Segurança de IA e aprendizado de máquina: verificação | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-11) | [12 · Plano](book/PLAN.md#ch-12) |
-| 2 | [12](book/PLAN.md#ch-12) | Laboratório contido I | 67 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-12)) | [13 · Plano](book/PLAN.md#ch-13) |
-| 3 | [13](book/PLAN.md#ch-13) | Segurança de IA e aprendizado de máquina: solução de problemas | 66 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-13)) | [14 · Plano](book/PLAN.md#ch-14) |
-| 3 | [14](book/PLAN.md#ch-14) | Segurança de IA e aprendizado de máquina: automação | 66 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-14)) | [15 · Plano](book/PLAN.md#ch-15) |
-| 3 | [15](book/PLAN.md#ch-15) | Segurança de IA e aprendizado de máquina: integração e dependências | 66 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-15)) | [16 · Plano](book/PLAN.md#ch-16) |
+| 2 | [11](book/PLAN.md#ch-11) | Segurança de IA e aprendizado de máquina: verificação | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-11) | [12 · Rascunho](book/MANUSCRIPT.md#ch-12) |
+| 2 | [12](book/PLAN.md#ch-12) | Laboratório contido I | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-12) | [13 · Rascunho](book/MANUSCRIPT.md#ch-13) |
+| 3 | [13](book/PLAN.md#ch-13) | Segurança de IA e aprendizado de máquina: solução de problemas | 66 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-13) | [14 · Rascunho](book/MANUSCRIPT.md#ch-14) |
+| 3 | [14](book/PLAN.md#ch-14) | Segurança de IA e aprendizado de máquina: automação | 66 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-14) | [15 · Rascunho](book/MANUSCRIPT.md#ch-15) |
+| 3 | [15](book/PLAN.md#ch-15) | Segurança de IA e aprendizado de máquina: integração e dependências | 66 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-15) | [16 · Plano](book/PLAN.md#ch-16) |
 | 3 | [16](book/PLAN.md#ch-16) | Documentação técnica e segurança | 66 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-16)) | [17 · Plano](book/PLAN.md#ch-17) |
 | 3 | [17](book/PLAN.md#ch-17) | Laboratório contido II | 66 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-17)) | [18 · Plano](book/PLAN.md#ch-18) |
 | 3 | [18](book/PLAN.md#ch-18) | Projeto técnico supervisionado | 66 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-18)) | [Curso 067 →](../../quantum-post-quantum-security/pt/SUBJECTS.md) |

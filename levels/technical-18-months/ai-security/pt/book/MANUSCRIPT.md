@@ -1,7 +1,7 @@
 # Segurança de IA e Aprendizado de Máquina: Livro do Curso Técnico
 
 - Idioma: português do Brasil (`pt`); curso técnico, 18 meses; aproximadamente 1.200 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–11 de 18 já estão escritos em português, com os exercícios EX001–EX044 e suas resoluções com rubricas de 0 a 3; os capítulos 12–18 (EX045–EX072) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–15 de 18 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3; os capítulos 16–18 (EX061–EX072) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: técnicos que instalam, configuram, operam e diagnosticam serviços com IA, sob supervisão.
 - Relação com os livros vizinhos: o [livro de tecnólogo](../../../../technologist-3-years/ai-security/en/book/MANUSCRIPT.md) aprofunda projeto e automação; o [livro profissional](../../../../professional-6-months/ai-security/en/book/MANUSCRIPT.md) é mais curto. **Este livro é procedimental**: configurar, verificar, diagnosticar e documentar controles de segurança de IA com segurança.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -25,9 +25,9 @@ As fontes foram conferidas em 12 de outubro de 2026: NIST [AI 100-1](https://doi
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) |
 
-Capítulos 12–18: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-12), até a chegada dos próximos lotes.
+Capítulos 16–18: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-16), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -952,11 +952,390 @@ A verificação transforma a configuração em evidência: testes positivos e ne
 
 [← Capítulo 10 (rascunho)](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 (rascunho) →](#ch-12)
 
+<a id="ch-12"></a>
+
+## Capítulo 12 — Laboratório contido I
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir laboratórios contidos com segurança; (2) observar evasão, inferência de pertencimento e extração em modelos de brinquedo; (3) relacionar cada uma delas à configuração do serviço; (4) escrever um registro de laboratório.
+
+### 12.1 Regras do laboratório
+
+Rode os laboratórios apenas na sua própria máquina ou no ambiente do curso, *offline*, com dados sintéticos. São modelos de brinquedo para tornar as ideias mensuráveis, não ferramentas para sistemas reais. Neste curso, isso significa que os arquivos de laboratório rodam com python3 e a biblioteca padrão na máquina do curso, sem chamadas de rede e sem dados reais de clientes. O laboratório de extração consulta uma função de pontuação definida no próprio arquivo, não o SpamShield. Aplicar essas técnicas à API de parceiros da Kestrel ou a qualquer serviço real exigiria uma autorização por escrito separada, e o curso não a fornece. Os resultados descrevem modelos de brinquedo construídos para tornar um mecanismo mensurável.
+
+### 12.2 Inferência de pertencimento
+
+```python
+"""Lab M: membership inference against an overfit 1-nearest-neighbour 'model'
+that returns a confidence score. Synthetic records only; teaching model."""
+import random, math
+rng = random.Random(5)
+def rec(): 
+    y = rng.random() < 0.5
+    return [rng.gauss(0.6 if y else -0.6, 1.0) for _ in range(4)], int(y)
+members = [rec() for _ in range(150)]; nonmembers = [rec() for _ in range(150)]
+def confidence(x, y, k):
+    # k-NN vote share for the true label, computed over the training set
+    d = sorted((sum((a-b)**2 for a, b in zip(x, m)), my) for m, my in members)
+    return sum(1 for _, my in d[:k] if my == y)/k
+def auc(pos, neg):
+    s = sum((p > n) + 0.5*(p == n) for p in pos for n in neg)
+    return s/(len(pos)*len(neg))
+for k in (1, 5, 25):
+    pos = [confidence(x, y, k) for x, y in members]
+    neg = [confidence(x, y, k) for x, y in nonmembers]
+    best = max(sum(p >= t for p in pos)/len(pos) - sum(n >= t for n in neg)/len(neg)
+               for t in sorted(set(pos + neg)))
+    print(f"k={k:2d} attack_auc={auc(pos, neg):.3f} best_advantage={best:.3f}")
+```
+
+Saída esperada:
+
+```text
+k= 1 attack_auc=0.600 best_advantage=0.200
+k= 5 attack_auc=0.521 best_advantage=0.073
+k=25 attack_auc=0.520 best_advantage=0.060
+```
+
+A inferência de pertencimento pergunta se um registro estava nos dados de treinamento (Shokri et al., arXiv:1610.05820). No laboratório, a vantagem do ataque é de 0,20 quando a pontuação vem do registro de treinamento mais próximo (k = 1) e cai para cerca de 0,06 quando ela tira a média de 25 vizinhos. Relevância para o serviço: limitar o detalhe da saída (rótulos em vez de pontuações exatas) e manter os dados de treinamento no mínimo necessário. Os valores de k mostram o mecanismo. Com k = 1, a pontuação depende de um único registro de treinamento, então o próprio registro de um membro sempre vota em seu rótulo e o atacante ganha uma vantagem de 0,20 sobre o chute. Tirar a média de 5 ou 25 vizinhos borra esse sinal para 0,073 e 0,060. Pontuações exatas dão ao atacante mais material para trabalhar, e é por isso que a recomendação para o SpamShield, mais abaixo, devolve categorias.
+
+### 12.3 Extração de modelos
+
+```python
+"""Lab X: model extraction of a toy linear scoring API by querying it.
+The 'API' returns a real-valued score; d+1 well-chosen queries recover the
+weights exactly, and rounding the output limits fidelity. Synthetic model."""
+import random
+rng = random.Random(9)
+d = 5
+secret_w = [round(rng.uniform(-2, 2), 3) for _ in range(d)]; secret_b = 0.42
+def api(x, decimals=None):
+    s = sum(a*b for a, b in zip(secret_w, x)) + secret_b
+    return round(s, decimals) if decimals is not None else s
+for dec in (None, 2, 0):
+    b = api([0]*d, dec)
+    w = [api([1 if j == i else 0 for j in range(d)], dec) - b for i in range(d)]
+    err = max(abs(a-c) for a, c in zip(w, secret_w))
+    test = [[rng.uniform(-1, 1) for _ in range(d)] for _ in range(500)]
+    agree = sum((sum(a*c for a, c in zip(w, x))+b > 0) == (api(x) > 0) for x in test)/500
+    print(f"output_rounding={str(dec):4s} queries={d+1} max_weight_error={err:.3f} label_agreement={agree:.3f}")
+```
+
+Saída esperada:
+
+```text
+output_rounding=None queries=6 max_weight_error=0.000 label_agreement=1.000
+output_rounding=2    queries=6 max_weight_error=0.004 label_agreement=0.998
+output_rounding=0    queries=6 max_weight_error=0.534 label_agreement=0.882
+```
+
+Com pontuações exatas, seis consultas recuperam exatamente o modelo de brinquedo; arredondar para duas casas decimais mantém o erro pequeno (0,004); arredondar para números inteiros o eleva para 0,534. Relevância para o serviço: devolver saídas grosseiras, limitar a taxa e monitorar as APIs de pontuação (Tramèr et al., arXiv:1609.02943). As linhas de arredondamento são a lição útil. Com pontuações exatas, as seis consultas recuperam todos os pesos com erro zero, e o modelo copiado concorda com o original em todas as 500 entradas de teste. Arredondar para duas casas decimais quase não muda nada: erro de 0,004, concordância de 0,998. Só arredondar para números inteiros remove informação suficiente para levar o erro a 0,534 e a concordância a 0,882. Um arredondamento leve, portanto, não é uma defesa; devolver apenas uma categoria, como Ana recomendou para o SpamShield, remove muito mais.
+
+### 12.4 Relação com a configuração
+
+Cada laboratório sugere configurações: granularidade da saída, limites de taxa, monitoramento dos padrões de consulta e controle de acesso aos *endpoints* de pontuação. Para a API de parceiros do SpamShield, os laboratórios se traduzem em quatro configurações. Devolver "spam / não é spam / revisão" em vez de probabilidades, o que remove tanto o sinal de pertencimento quanto a maior parte do que a extração exige. Definir limites de taxa por parceiro, para que recuperar um modelo leve muito mais que seis consultas. Alertar sobre parceiros cujo volume de consultas seja um valor muito discrepante, como no laboratório do escore z robusto. Exigir uma chave por parceiro, para que um parceiro que se comporte mal possa ser limitado sem afetar os demais.
+
+### 12.5 Registro de laboratório
+
+Registre: nome do laboratório, o que foi variado, resultados, o que ele mostra, o que ele não mostra e a configuração que ele sugere. O registro de Ana para o laboratório de extração: nome, Lab X; variado, arredondamento da saída (nenhum, duas casas decimais, números inteiros); resultados, erro de 0,000, 0,004 e 0,534, com concordância de 1,000, 0,998 e 0,882; mostra, pontuações exatas permitem copiar um modelo linear com d + 1 consultas; não mostra, quantas consultas um modelo real não linear como o SpamShield exigiria; sugere, saída só com categorias, limites por parceiro e alertas de volume. O campo "não mostra" é o que mais costuma ficar em branco, e é ele que impede que um resultado de brinquedo seja citado como um fato sobre o SpamShield.
+
+### 12.5b Compartilhando os resultados
+
+Compartilhe os registros de laboratório com a equipe numa nota curta: uma tabela, três frases sobre o significado e os limites e a configuração recomendada. Peça a um colega que rode o laboratório de novo para conferir se as saídas coincidem. Laboratórios cujos resultados não podem ser reproduzidos não devem motivar mudanças de configuração. A nota de Ana sobre a extração foi executada de novo por um colega em outro *notebook*, e as três linhas de saída coincidiram exatamente, que é o que a semente aleatória fixa de cada laboratório garante. Quando duas execuções discordam, as causas habituais são uma versão diferente do Python ou uma linha editada, e vale a pena encontrar as duas antes que alguém mude uma configuração.
+
+### 12.6 Exemplo resolvido (caso sintético da Kestrel)
+
+O SpamShield expõe uma API interna que devolve probabilidades exatas de spam para os aplicativos parceiros. Depois do laboratório de extração, Ana recomenda devolver apenas "spam / não é spam / revisão", acrescentar limites de taxa por parceiro e alertar sobre parceiros cujo volume de consultas esteja muito acima do normal. O laboratório de extração motivou a primeira mudança, e o de pertencimento, a segunda: as probabilidades exatas são o que alimenta os dois ataques. Os limites de taxa usam a mesma abordagem de balde de fichas do *gateway* do HelpBot, definidos por chave de parceiro, para que o pico de um parceiro não afete os outros. Ana não afirmou que o SpamShield podia ser copiado com seis consultas; afirmou apenas que pontuações exatas facilitam a cópia e que os parceiros não precisam delas.
+
+### 12.7 Erros e limites
+
+Dois erros são comuns: rodar os laboratórios contra serviços reais; e ler números de brinquedo como taxas do mundo real. Rodar o padrão de consultas do Lab X contra a API de parceiros do SpamShield seria um teste não autorizado de um serviço em produção, qualquer que fosse a intenção. Ler números de brinquedo como taxas reais é o erro mais sutil: a vantagem de 0,20 do laboratório vem de um modelo de 1 vizinho mais próximo sobre 150 registros sintéticos e não diz nada sobre quanto o SpamShield vaza. Os laboratórios justificam a direção de uma configuração, saídas mais grosseiras e limites mais estritos, não uma afirmação sobre o risco no mundo real. Por isso a nota de recomendação de Ana dizia "pontuações exatas facilitam a cópia", e nunca "o SpamShield pode ser copiado".
+
+### Exercícios
+
+- **EX045 — Inferência de pertencimento.** Explique o que significa "vantagem de 0,20". Rubrica: 3 = o atacante supera o chute em 20 pontos; 2 = parcial; 1 = vago; 0 = errado.
+- **EX046 — Extração.** Por que arredondar para números inteiros aumenta tanto o erro? Rubrica: 3 = menos informação por consulta; 2 = parcial; 1 = vago; 0 = errado.
+- **EX047 — Configuração.** Dê três configurações da API do SpamShield sugeridas pelos laboratórios. Rubrica: 3 = saída grosseira, limite de taxa, monitoramento; 2 = duas; 1 = uma; 0 = nenhuma.
+- **EX048 — Registro de laboratório.** Escreva um registro de laboratório para o laboratório de extração. Rubrica: 3 = os seis campos; 2 = quatro; 1 = dois; 0 = nenhum.
+
+### Síntese
+
+Os laboratórios contidos tornam visíveis os ataques de privacidade e de extração e apontam diretamente para configurações de saída, de taxa e de monitoramento.
+
+### Continue estudando — capítulo 12 de 18
+
+[← Capítulo 11 (rascunho)](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 (rascunho) →](#ch-13)
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Segurança de IA e aprendizado de máquina: solução de problemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) diagnosticar problemas de serviços de IA passo a passo; (2) usar rastros, versões e registros de mudanças; (3) separar causas de dados, de configuração, de modelo e de ataque; (4) escalar corretamente.
+
+### 13.1 Passo a passo
+
+1. Defina o sintoma: o quê, quem, desde quando, com que frequência. 2. Verifique as mudanças recentes: versão do modelo, *prompt*, fontes de recuperação, ferramentas, configuração. 3. Obtenha os rastros dos casos que falham. 4. Formule hipóteses e teste-as uma de cada vez na homologação. 5. Corrija, verifique, registre. No caso da restauração de fábrica, as etapas levaram menos de um dia. O sintoma: clientes orientados a restaurar as configurações de fábrica por problemas pequenos, desde dois dias antes, em muitas contas. Mudanças: nenhuma mudança no modelo ou no *prompt*, mas um artigo novo. Rastros: toda resposta com falha recuperava esse artigo. Hipótese: o passo 1 do artigo causava o problema; testada na homologação removendo o artigo e repetindo as perguntas das reclamações, que passaram a receber orientações normais. Correção: remover, avisar o responsável, acrescentar um teste de regressão, registrar.
+
+### 13.2 Ferramentas
+
+Os IDs de requisição ligam a mensagem do cliente, os documentos recuperados, a resposta do modelo, as chamadas de ferramentas e as decisões de política. O histórico de versões mostra o que mudou. Os painéis mostram quando o sintoma começou. Comparar um caso que falha com um caso semelhante que funciona costuma mostrar a diferença rapidamente. A comparação de Ana no caso da restauração de fábrica foi entre uma conversa com falha e uma que funcionava, ambas perguntando sobre Wi-Fi lento. Mesma versão do modelo, mesma versão do *prompt*, mesmo tipo de cliente; a única diferença no rastro era a lista de documentos recuperados, em que a conversa com falha incluía "Advanced troubleshooting". O painel datou a primeira reclamação no horário de publicação do artigo. Sem IDs de requisição juntando resposta, recuperação e chamadas de ferramentas, essa comparação teria levado horas.
+
+### 13.3 Causas
+
+Dados (um artigo está errado, vencido ou é malicioso); configuração (um limite removido, uma permissão de ferramenta ampliada); modelo (o fornecedor atualizou o modelo); ataque (alguém está provocando o problema de propósito). Várias causas podem se combinar. Os incidentes da Kestrel cobrem as quatro. Dados: o artigo da restauração de fábrica e o artigo que mandava o HelpBot reiniciar roteadores cinco vezes. Configuração: a ferramenta de reinicialização que aceitava qualquer roteador e a falta de um limite por conta no *gateway*. Modelo: a deriva do LineWatch foi uma mudança nos dados, e não no modelo, mas uma atualização do fornecedor no modelo do HelpBot ficaria aqui. Ataque: as 900 denúncias em massa de "não é spam". O artigo editado das reinicializações combinou duas causas: conteúdo ruim, mais uma ferramenta sem teto diário que limitasse seu efeito.
+
+### 13.4 Escalonamento
+
+Escale imediatamente se vir sinais de exposição de dados de clientes, ações em contas erradas ou ataque deliberado. Siga o processo de incidentes: preserve as evidências, avise o líder de plantão e não tente correções arriscadas sozinho.
+
+```python
+"""Lab A: spotting extraction-style abuse in a synthetic API log.
+Flags clients whose query volume or input diversity is anomalous."""
+import random, statistics
+rng = random.Random(21)
+log = []
+for c in range(12):
+    for _ in range(rng.randint(40, 90)):
+        log.append((f"client{c:02d}", round(rng.gauss(0, 1), 1)))
+for i in range(600):                      # synthetic scraper: many, grid-like inputs
+    log.append(("client99", round(-3 + 6*(i % 61)/60, 1)))
+by = {}
+for c, x in log: by.setdefault(c, []).append(x)
+vol = {c: len(v) for c, v in by.items()}
+med = statistics.median(vol.values()); mad = statistics.median(abs(v-med) for v in vol.values())
+for c in sorted(by):
+    z = (vol[c]-med)/(1.4826*mad); uniq = len(set(by[c]))/len(by[c])
+    flag = "FLAG" if z > 3.5 else "ok"
+    print(f"{c} queries={vol[c]:3d} robust_z={z:6.2f} distinct_ratio={uniq:.2f} {flag}")
+```
+
+Saída esperada:
+
+```text
+client00 queries= 50 robust_z= -0.34 distinct_ratio=0.56 ok
+client01 queries= 64 robust_z=  0.45 distinct_ratio=0.52 ok
+client02 queries= 81 robust_z=  1.41 distinct_ratio=0.44 ok
+client03 queries= 46 robust_z= -0.56 distinct_ratio=0.52 ok
+client04 queries= 52 robust_z= -0.22 distinct_ratio=0.48 ok
+client05 queries= 40 robust_z= -0.90 distinct_ratio=0.57 ok
+client06 queries= 42 robust_z= -0.79 distinct_ratio=0.57 ok
+client07 queries= 87 robust_z=  1.74 distinct_ratio=0.48 ok
+client08 queries= 56 robust_z=  0.00 distinct_ratio=0.52 ok
+client09 queries= 50 robust_z= -0.34 distinct_ratio=0.62 ok
+client10 queries= 68 robust_z=  0.67 distinct_ratio=0.50 ok
+client11 queries= 89 robust_z=  1.85 distinct_ratio=0.42 ok
+client99 queries=600 robust_z= 30.58 distinct_ratio=0.10 FLAG
+```
+
+O achado do canário de Ana é um exemplo de quando escalar na hora: uma frase exclusiva da equipe aparecendo numa resposta a cliente é exposição de dados voltada ao cliente, mesmo na homologação, porque o mesmo arquivamento errado poderia existir na produção. Ela exportou o rastro, avisou o líder de plantão e deixou a mudança na coleção para o responsável pelo conteúdo. O caso da restauração de fábrica, por outro lado, não precisou de escalonamento de emergência depois que os rastros mostraram um erro de conteúdo, mas ainda assim passou pelo chamado de incidente normal.
+
+### 13.5 Exemplo resolvido (caso sintético da Kestrel)
+
+Os clientes relatam que o HelpBot os manda "restaurar as configurações de fábrica" por problemas pequenos — o que apaga a configuração deles. Ana verifica as mudanças: nenhuma no modelo ou no *prompt*. Os rastros mostram que toda resposta com falha recuperou um artigo novo, "Advanced troubleshooting", publicado dois dias antes pela conta de um prestador de serviço. O artigo contém a orientação de restauração de fábrica no passo 1. Não há instruções escondidas — é um erro de conteúdo, não um ataque. Ela remove o artigo, avisa o responsável pelo conteúdo e acrescenta um teste de regressão. Uma verificação separada no painel, usando escores z robustos como os do laboratório, não mostra atividade incomum em nenhuma conta. A saída do laboratório mostra o que a verificação do painel procura. Doze clientes comuns enviaram entre 40 e 89 consultas, com escores z robustos de cerca de -0,9 a 1,9; o raspador sintético enviou 600 consultas, com escore z robusto de cerca de 31 e apenas 10% de entradas distintas, uma varredura em forma de grade. No caso da restauração de fábrica, nenhuma conta chegou perto disso, o que apoiou a conclusão de que o artigo foi um engano, e não um ataque plantado.
+
+### 13.6 Erros e limites
+
+Três erros são comuns: mudar várias coisas ao mesmo tempo; corrigir em produção sem testes na homologação; e não escalar uma possível exposição de dados. Mudar várias coisas ao mesmo tempo teria tornado ambígua a correção da restauração de fábrica: se Ana tivesse removido o artigo e também mudado o *prompt*, não poderia dizer qual mudança resolveu o problema. Corrigir em produção sem testes na homologação arrisca uma segunda interrupção em cima da primeira. Não escalar uma possível exposição de dados é o mais grave dos três, porque as pessoas que precisam notificar clientes ou reguladores não podem agir sobre o que não lhes é contado.
+
+### 13.6b Documentando a correção
+
+Depois do diagnóstico, o técnico registra no chamado o sintoma, a causa, a correção e como ela foi verificada. A próxima pessoa que encontrar o mesmo sintoma no HelpBot acha a resposta em minutos, em vez de repetir a investigação. O chamado de Ana para o caso da restauração de fábrica tinha quatro linhas: sintoma (orientação de restauração de fábrica para problemas pequenos, desde a data de publicação); causa (passo 1 do artigo "Advanced troubleshooting" do prestador de serviço); correção (artigo removido, responsável avisado, teste de regressão acrescentado); verificação (perguntas das reclamações repetidas na homologação e na produção, com orientações normais como resposta). O chamado também nomeava o teste de regressão que agora faz a pergunta da reclamação original.
+
+### Exercícios
+
+- **EX049 — Etapas.** Aplique as cinco etapas a "o HelpBot responde no idioma errado". Rubrica: 3 = as cinco, de forma concreta; 2 = quatro; 1 = duas; 0 = nenhuma.
+- **EX050 — Comparar.** Como comparar um caso que falha com um que funciona ajuda? Rubrica: 3 = isola diferenças de recuperação, versão, entrada; 2 = parcial; 1 = vago; 0 = nada.
+- **EX051 — Escalonamento.** Liste três sintomas que exigem escalonamento imediato. Rubrica: 3 = três pertinentes; 2 = dois; 1 = um; 0 = nenhum.
+- **EX052 — Laboratório de monitoramento.** O que um escore z robusto de 30 para uma conta sugeriria? Rubrica: 3 = valor muito discrepante, possível raspagem/extração, investigar; 2 = parcial; 1 = vago; 0 = errado.
+
+### Síntese
+
+Diagnosticar serviços de IA é um trabalho sistemático: definir, verificar mudanças, rastrear, testar hipóteses, corrigir e registrar — escalando na hora quando os clientes puderem ser prejudicados.
+
+### Continue estudando — capítulo 13 de 18
+
+[← Capítulo 12 (rascunho)](#ch-12) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 14 (rascunho) →](#ch-14)
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Segurança de IA e aprendizado de máquina: automação
+
+### Objetivos de aprendizagem
+
+Você vai (1) automatizar verificações de rotina de segurança de IA; (2) acrescentar testes de segurança aos *pipelines* de implantação; (3) automatizar etapas seguras de contenção; (4) manter segura a própria automação.
+
+### 14.1 Verificações de rotina
+
+Automatize, toda noite: verificações de *hash* dos arquivos de modelo; buscas por canários nos registros; contagens de chamadas de ferramentas por conta; documentos vencidos no índice; limites atingidos; custo por dia. Envie um relatório curto e alerte quando os limiares forem ultrapassados. O relatório noturno da Kestrel tem seis linhas. A verificação de *hash* dos arquivos de modelo cobre o LineWatch e qualquer modelo hospedado pela própria empresa. Uma busca por canários percorre as respostas do HelpBot do dia anterior. As reinicializações por conta geram alerta acima de 5 por dia, o limiar do *script* de Ana. Os artigos vencidos que ainda estão no índice são listados para seus responsáveis. As contas que atingiram o orçamento diário de *tokens* são nomeadas. O custo total do fornecedor é comparado com o da semana anterior, o que teria mostrado o fim de semana das 40.000 mensagens já no sábado de manhã.
+
+### 14.2 Testes no pipeline
+
+A cada mudança em *prompts*, modelos, fontes de recuperação, ferramentas ou configuração, o *pipeline* roda a bateria de testes na homologação e bloqueia a implantação se algum critério falhar (por exemplo, qualquer ação entre clientes ou vazamento de canário). Exceções exigem um aprovador nomeado e uma justificativa por escrito. O portão do HelpBot falha se acontecer qualquer uma das seguintes coisas na homologação: uma ação entre clientes em qualquer teste de agência, uma frase canário em qualquer resposta, um chamado ou uma reinicialização injetados na bateria de injeção, ou menos de 47 das 50 tarefas normais concluídas. O último critério protege os clientes contra uma correção que recusa tudo. Quando a ferramenta de senha do Wi-Fi foi reprovada no portão, ninguém pediu exceção; a verificação de titularidade foi acrescentada e o portão passou na execução seguinte.
+
+### 14.3 Contenção automática segura
+
+Algumas ações podem ser automáticas porque são seguras e reversíveis: limitar a taxa de uma conta cujo uso seja um valor muito discrepante; desativar uma única ferramenta quando as negações de política disparam; retirar da recuperação um documento que provoca muitas negações. Cada ação automática notifica a equipe de plantão e é registrada. Cada exemplo da Kestrel é reversível em minutos. Limitar a taxa de uma conta discrepante, como a que enviou 40.000 mensagens, a desacelera sem encerrá-la, e o plantão pode retirar o limite. Desativar a ferramenta de reinicialização quando as negações disparam deixa o HelpBot respondendo perguntas enquanto os chamados continuam funcionando. Retirar um documento que provoca muitas negações tira um artigo da recuperação até que seu responsável o revise. Encerrar contas ou apagar dados nunca é automático, porque nenhuma das duas coisas pode ser desfeita.
+
+### 14.4 Protegendo a automação
+
+Os *scripts* de automação precisam de credenciais; dê a eles só os direitos de que precisam, guarde os segredos de forma adequada e revise as mudanças nos *scripts*. Não deixe um assistente de programação com IA modificar testes de segurança sem revisão humana.
+
+```python
+"""Lab H: integrity of model artefacts with SHA-256 manifests (stdlib only).
+Creates synthetic 'artefact' bytes, records a manifest, then detects a
+one-byte tampering and a swapped file. No real models are involved."""
+import hashlib, json
+files = {"model.bin": bytes(range(256)) * 40, "tokenizer.json": b'{"vocab": ["a", "b"]}',
+         "config.yaml": b"layers: 4\nheads: 8\n"}
+manifest = {n: hashlib.sha256(b).hexdigest() for n, b in files.items()}
+print(json.dumps({k: v[:16] for k, v in manifest.items()}, indent=1))
+received = dict(files)
+tampered = bytearray(received["model.bin"]); tampered[5000] ^= 1
+received["model.bin"] = bytes(tampered)
+received["config.yaml"] = b"layers: 4\nheads: 8\ntrust_remote_code: true\n"
+for n, b in sorted(received.items()):
+    ok = hashlib.sha256(b).hexdigest() == manifest[n]
+    print(f"{n:15s} {'OK' if ok else 'MISMATCH'}")
+```
+
+Saída esperada:
+
+```text
+{
+ "model.bin": "e96760a87768717b",
+ "tokenizer.json": "f63d2ddabc61f2d9",
+ "config.yaml": "e5bbb570ca0fcb87"
+}
+config.yaml     MISMATCH
+model.bin       MISMATCH
+tokenizer.json  OK
+```
+
+Os *scripts* noturnos da Kestrel rodam com uma conta dedicada que pode ler os registros, os metadados do índice e os arquivos de modelo e escrever apenas na pasta de relatórios; ela não pode publicar artigos nem implantar modelos. Suas credenciais ficam no cofre de segredos, como a credencial do roteador que Ana encontrou num arquivo de configuração na primeira semana. Mudanças na bateria de testes do HelpBot exigem um segundo revisor, porque enfraquecer um teste é o jeito mais fácil de fazer passar um portão que está falhando.
+
+### 14.4b Mantendo a automação
+
+Revise as verificações automatizadas a cada trimestre: os limiares ainda estão certos, os alertas ainda chegam a alguém e os *scripts* ainda rodam sobre as versões atuais? Falhas silenciosas da automação são comuns depois de atualizações. A primeira revisão trimestral de Ana descobriu que o alerta de reinicializações ainda era enviado por e-mail a um colega que tinha mudado de equipe, então durante um mês ninguém o tinha visto. A correção foi enviar os alertas para a escala de plantão, e não para pessoas. A mesma revisão conferiu se o *script* de *hash* ainda lia o novo caminho do modelo do LineWatch depois de uma mudança de diretório numa atualização.
+
+### 14.5 Exemplo resolvido (caso sintético da Kestrel)
+
+Ana automatiza três verificações noturnas e um portão no *pipeline*. Um mês depois, a verificação noturna de *hash* relata uma divergência no arquivo de modelo do LineWatch (como as linhas MISMATCH do laboratório). O registro de implantação mostra que uma atualização aprovada não tinha atualizado o *hash* armazenado. Era uma lacuna de processo, não um ataque — ela acrescenta a atualização do *hash* ao *script* de implantação, para que os dois não possam divergir. A resposta seguiu a regra para uma divergência sem explicação: tratá-la como possível adulteração até que se prove o contrário. O LineWatch ficou no contêiner em execução enquanto Ana comparava o *hash* do novo arquivo com o da versão aprovada e lia o registro de implantação. Só quando os dois coincidiram com a atualização aprovada ela registrou a causa como uma lacuna de processo. Vincular a atualização do manifesto à implantação eliminou a lacuna sem enfraquecer a verificação.
+
+### 14.6 Erros e limites
+
+Três erros são comuns: ações automáticas difíceis de reverter; portões no *pipeline* com exceções silenciosas fáceis; e contas de automação com direitos amplos. Ações automáticas difíceis de reverter, como encerrar uma conta, poderiam punir um cliente por um alerta falso. Um portão com uma exceção silenciosa fácil teria deixado a ferramenta de senha do Wi-Fi ir para a produção sem a verificação de titularidade, já que um prazo é sempre um motivo para abrir exceção. Uma conta de automação com direitos amplos se torna a credencial mais valiosa da Kestrel, porque quem a controla pode mudar testes, modelos e artigos de uma só vez.
+
+### Exercícios
+
+- **EX053 — Verificações noturnas.** Liste cinco verificações noturnas e seus limiares. Rubrica: 3 = cinco com limiares; 2 = quatro; 1 = duas; 0 = nenhuma.
+- **EX054 — Portão.** Escreva os critérios do portão para o HelpBot. Rubrica: 3 = critérios mensuráveis, regra de exceção; 2 = só os critérios; 1 = vago; 0 = nada.
+- **EX055 — Contenção.** Que ação automática você não permitiria, e por quê? Rubrica: 3 = exemplo irreversível ou de alto impacto, com a razão; 2 = só o exemplo; 1 = vago; 0 = nada.
+- **EX056 — Divergência de hash.** Qual é a resposta correta à divergência noturna antes de se conhecer a causa? Rubrica: 3 = tratar como possível adulteração, verificar, conferir os registros, bloquear até resolver; 2 = parcial; 1 = ignorar; 0 = nada.
+
+### Síntese
+
+A automação torna as verificações rotineiras e a contenção rápida, desde que as ações sejam reversíveis, os portões sejam firmes e o próprio acesso da automação seja limitado.
+
+### Continue estudando — capítulo 14 de 18
+
+[← Capítulo 13 (rascunho)](#ch-13) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 15 (rascunho) →](#ch-15)
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Segurança de IA e aprendizado de máquina: integração e dependências
+
+### Objetivos de aprendizagem
+
+Você vai (1) listar as dependências de um serviço de IA; (2) verificar componentes de fornecedores e de código aberto; (3) proteger as integrações entre serviços; (4) responder a avisos de segurança sobre dependências.
+
+### 15.1 Dependências
+
+Um serviço de IA depende de: o modelo (API do fornecedor ou arquivo), bibliotecas (orquestração, recuperação, análise de documentos), o banco de dados vetorial, os serviços de ferramentas, o provedor de identidade e o cofre de segredos. Uma falha na cadeia de suprimentos de qualquer um deles afeta o serviço — OWASP LLM03 *Supply Chain*. No HelpBot, isso significa: a API do modelo do fornecedor, a biblioteca de orquestração, a biblioteca de análise de documentos usada na ingestão, o banco de dados vetorial que guarda o índice de artigos, os serviços de chamados e de gerenciamento de roteadores, o provedor de identidade que autentica os clientes e o cofre de segredos que guarda a chave de API e a credencial do roteador. O aviso sobre a biblioteca de análise de documentos mostrou que uma biblioteca que os clientes nunca veem ainda pode ser o ponto mais fraco, já que ela processa todos os arquivos enviados ao índice.
+
+### 15.2 Verificações de fornecedores e de código aberto
+
+Para fornecedores de modelos: uso e retenção dos dados, fixação de versão, aviso de mudanças, notificação de incidentes. Para modelos e bibliotecas de código aberto: origem, licença, manutenção, vulnerabilidades conhecidas, formato de arquivo (evite formatos que executam código ao carregar) e fixação por *hash*. Mantenha uma lista de todos os componentes e versões (uma lista de materiais). A lista de materiais da Kestrel registra cada componente do HelpBot com sua versão e sua imagem. A lacuna dela era o modelo do fornecedor, que não tinha entrada porque ninguém o instalou; Ana acrescentou a versão fixada do modelo e o endereço de avisos de mudança do fornecedor. Para o modelo do LineWatch, hospedado pela própria empresa, a verificação inclui o formato do arquivo: um formato que roda código ao carregar, combinado com trust_remote_code na configuração, é o caso que a divergência em config.yaml no laboratório de *hashes* ilustra.
+
+### 15.3 Integrações seguras
+
+Cada integração tem um contrato escrito: dados trocados, formato, validação, autenticação, limites, tratamento de erros. Trate os dados vindos de outros serviços — inclusive de outros serviços de IA — como não confiáveis. Em caso de erro, falhe de forma fechada. O contrato do HelpBot com o serviço de gerenciamento de roteadores é um exemplo: o serviço de ferramentas envia um ID de roteador que corresponde a R- mais cinco dígitos e a identidade do cliente, por TLS mútuo, com no máximo 3 reinicializações por roteador por dia; qualquer erro, tempo esgotado ou campo inesperado significa nenhuma reinicialização e uma negação registrada. Falhar de forma fechada significa que, quando o banco de dados de contas está inacessível, a verificação de titularidade recusa em vez de permitir, como fez com o cliente cujo ID de roteador estava ausente.
+
+### 15.4 Avisos de segurança
+
+Quando um aviso de segurança é publicado (uma vulnerabilidade de biblioteca, um incidente de fornecedor), consulte a lista de materiais, avalie a exposição, corrija ou mitigue, verifique com a bateria de testes e registre o que foi feito.
+
+```python
+"""Lab V: an AI system inventory scored for review priority (synthetic).
+Each system lists exposure, autonomy, data sensitivity and whether it reads
+untrusted content; mapping to OWASP LLM Top 10 (2025) IDs is illustrative."""
+import json
+inv = json.loads("""[
+ {"name":"support-chatbot","exposure":"public","autonomy":"tools","data":"customer","untrusted_input":true},
+ {"name":"invoice-ocr-model","exposure":"internal","autonomy":"none","data":"financial","untrusted_input":true},
+ {"name":"code-assistant","exposure":"internal","autonomy":"suggest","data":"source","untrusted_input":true},
+ {"name":"churn-predictor","exposure":"internal","autonomy":"none","data":"customer","untrusted_input":false},
+ {"name":"hr-cv-screener","exposure":"internal","autonomy":"decide","data":"personal","untrusted_input":true}
+]""")
+E = {"public": 3, "internal": 1}; A = {"none": 0, "suggest": 1, "tools": 3, "decide": 3}
+D = {"customer": 2, "financial": 2, "source": 2, "personal": 3}
+for s in inv:
+    s["score"] = E[s["exposure"]] + A[s["autonomy"]] + D[s["data"]] + (2 if s["untrusted_input"] else 0)
+    risks = []
+    if s["untrusted_input"]: risks.append("LLM01")
+    if s["autonomy"] in ("tools", "decide"): risks.append("LLM06")
+    if s["data"] in ("customer", "personal"): risks.append("LLM02")
+    s["owasp"] = ",".join(risks) or "-"
+for s in sorted(inv, key=lambda s: -s["score"]):
+    print(f"{s['name']:18s} score={s['score']:2d} owasp={s['owasp']}")
+```
+
+Saída esperada:
+
+```text
+support-chatbot    score=10 owasp=LLM01,LLM06,LLM02
+hr-cv-screener     score= 9 owasp=LLM01,LLM06,LLM02
+code-assistant     score= 6 owasp=LLM01
+invoice-ocr-model  score= 5 owasp=LLM01
+churn-predictor    score= 3 owasp=LLM02
+```
+
+No aviso sobre a biblioteca de análise de documentos, essas etapas levaram dois dias. A lista de materiais mostrou que a imagem de ingestão do HelpBot usava uma versão afetada. A exposição era real, mas estreita: só os arquivos que entravam no índice eram analisados, então pausar a ingestão a conteve. A atualização foi reconstruída pelo *pipeline*, a bateria do HelpBot rodou na homologação e passou, a ingestão foi retomada, e o registro listou o aviso, as versões antes e depois e os resultados dos testes.
+
+### 15.4b Acompanhando as mudanças
+
+Assine os avisos de segurança das suas principais bibliotecas e os avisos de mudança do fornecedor do seu modelo. Quando um fornecedor anunciar uma atualização de modelo, planeje um novo teste na homologação antes que a mudança chegue à produção, ou fixe a versão antiga até tê-lo feito. A Kestrel fixa a versão do modelo do fornecedor do HelpBot e recebe os avisos de mudança do fornecedor na caixa de correio das operações de serviço. Quando uma nova versão é anunciada, a bateria do HelpBot roda primeiro contra ela na homologação; a versão antiga continua fixada até o portão passar. É isso que mantém o "modelo" como uma causa verificada no diagnóstico, e não um palpite.
+
+### 15.5 Exemplo resolvido (caso sintético da Kestrel)
+
+Uma biblioteca popular de análise de documentos, usada pelo *pipeline* de recuperação do HelpBot, tem uma vulnerabilidade que permite que arquivos construídos executem código. Ana consulta a lista de materiais: a versão é afetada. Mitigação no mesmo dia: pausar a ingestão de documentos novos; no dia seguinte: atualizar, reconstruir, rodar a bateria, retomar a ingestão. Ela também acrescenta à lista de materiais a versão do modelo do fornecedor, que estava faltando. A pausa da ingestão foi escolhida porque eliminava a exposição sem tirar o HelpBot do ar: os clientes continuaram recebendo respostas a partir do índice existente, e só os artigos novos esperaram um dia. A versão do modelo que faltava foi encontrada porque Ana percorreu a lista de materiais linha por linha durante o aviso, e não apenas a biblioteca afetada.
+
+### 15.6 Erros e limites
+
+Três erros são comuns: não ter lista de materiais; confiar na saída de outro serviço; e carregar arquivos de modelo em formatos que executam código. Sem uma lista de materiais, o aviso sobre a biblioteca de análise teria exigido conferir cada imagem à mão enquanto a ingestão continuava aberta. Confiar na saída de outro serviço deixaria um sistema de chamados comprometido devolver instruções ao HelpBot pelo texto dos chamados. Carregar arquivos de modelo em formatos que executam código transforma um modelo do LineWatch trocado em código rodando dentro da rede da Kestrel, e é por isso que a verificação de *hash* e a montagem somente leitura andam juntas. Durante o aviso sobre a biblioteca de análise, Ana confirmou que o arquivo de modelo do LineWatch usava um formato que não roda código ao carregar.
+
+### Exercícios
+
+- **EX057 — Dependências.** Liste oito dependências do HelpBot. Rubrica: 3 = oito pertinentes; 2 = seis; 1 = três; 0 = menos.
+- **EX058 — Perguntas ao fornecedor.** Escreva quatro perguntas para um fornecedor de modelos. Rubrica: 3 = quatro pertinentes; 2 = três; 1 = uma ou duas; 0 = nenhuma.
+- **EX059 — Aviso de segurança.** Escreva como procedimento as etapas que Ana seguiu. Rubrica: 3 = consultar a lista de materiais, avaliar, mitigar, corrigir, verificar, registrar; 2 = quatro; 1 = duas; 0 = nenhuma.
+- **EX060 — Laboratório de inventário.** Por que o laboratório dá pontuação mais alta a alguns sistemas? Rubrica: 3 = entrada não confiável, ferramentas, dados; 2 = dois; 1 = um; 0 = errado.
+
+### Síntese
+
+Os serviços de IA só são tão seguros quanto suas dependências: liste-as, verifique-as, defina contratos de integração e responda rapidamente aos avisos de segurança.
+
+### Continue estudando — capítulo 15 de 18
+
+[← Capítulo 14 (rascunho)](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 (rascunho) →](#ch-16)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX044 (as de EX045–EX072 estão na edição em inglês até a tradução dos capítulos correspondentes). A Kestrel Telecom, Ana e todos os seus números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060 (as de EX061–EX072 estão na edição em inglês até a tradução dos capítulos correspondentes). A Kestrel Telecom, Ana e todos os seus números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.**
 
@@ -1130,6 +1509,68 @@ Respostas-modelo para EX001–EX044 (as de EX045–EX072 estão na edição em i
 - Data: 12 de outubro de 2026.
 - Resultados: testes positivos 5/5 aprovados; testes negativos 0/30 com sucesso.
 - Responsável pelo teste: A. Ribeiro.
+
+**EX045.** O atacante identifica os membros do treinamento 20 pontos percentuais melhor que um chute aleatório, no melhor limiar.
+
+**EX046.** Saídas em números inteiros revelam muito menos sobre os valores internos do modelo, então as mesmas consultas carregam informação de menos para recuperar os pesos.
+
+**EX047.** Devolver só uma categoria (spam / não é spam / revisão), definir limites de taxa por parceiro e alertar sobre volumes de consulta discrepantes.
+
+**EX048.**
+- Laboratório: extração.
+- Variado: arredondamento da saída (nenhum, 2 casas decimais, números inteiros).
+- Resultados: erro dos pesos 0,000, 0,004 e 0,534; concordância dos rótulos 1,000, 0,998 e 0,882.
+- Mostra: saídas detalhadas tornam a cópia fácil.
+- Não mostra: o comportamento de uma API real.
+- Sugere: saídas grosseiras e limites de taxa.
+
+**EX049.**
+1. Definir: as respostas vêm em inglês para clientes que falam português, desde segunda-feira, em cerca de 30% dos chats.
+2. Mudanças: o *prompt* foi editado, o modelo foi atualizado ou foram acrescentados artigos?
+3. Rastros: comparar os artigos recuperados e as versões do *prompt*.
+4. Hipóteses: testar cada uma na homologação, por exemplo "um artigo novo só em inglês domina a recuperação".
+5. Corrigir, verificar com um teste de regressão de idioma e registrar.
+
+**EX050.** As diferenças entre os dois rastros apontam a causa: um artigo recuperado, uma versão do *prompt* ou uma forma de entrada diferentes. Isso estreita rapidamente as hipóteses.
+
+**EX051.** Dados de outro cliente aparecem numa resposta. Ações são executadas na conta errada. Há um padrão de sondagem deliberada ou uma instrução injetada provocando ações.
+
+**EX052.** A atividade da conta está muito fora do normal. As causas possíveis são raspagem, extração ou uma integração comprometida. Investigar e limitar a taxa.
+
+**EX053.**
+- Divergência de *hash* do modelo: qualquer uma.
+- Canário nos registros: qualquer ocorrência.
+- Reinicializações por conta acima de 5 por dia.
+- Documentos vencidos ainda indexados: qualquer um.
+- Custo diário acima de 150% da mediana de 30 dias.
+
+**EX054.** Critérios: 0 ações entre clientes; 0 vazamentos de canário; 0 reinicializações sem confirmação na bateria reservada; pelo menos 47 das 50 tarefas normais concluídas. Exceções exigem o nome do responsável pelo serviço e uma justificativa por escrito, ambos registrados.
+
+**EX055.** Não permitir a exclusão automática de documentos do índice ou de dados de clientes, nem o desligamento automático do serviço inteiro. São ações difíceis de reverter ou de alto impacto, então pessoas devem decidir.
+
+**EX056.** Tratar como possível adulteração até ser explicada:
+1. Bloquear recarregamentos do arquivo.
+2. Compará-lo com o artefato confiável.
+3. Conferir os registros de implantação e de acesso.
+4. Retomar só quando a causa estiver confirmada.
+
+**EX057.** A API do modelo do fornecedor, a biblioteca de orquestração, a biblioteca de análise de documentos, o banco de dados vetorial, o serviço de chamados, o serviço de gerenciamento de roteadores, o provedor de identidade e o cofre de segredos.
+
+**EX058.**
+1. Nossos dados são usados para treinamento, e por quanto tempo são retidos?
+2. Podemos fixar versões e receber aviso prévio de mudanças?
+3. Qual é o prazo de notificação de incidentes?
+4. Que testes de segurança vocês fazem, e podemos ver um resumo?
+
+**EX059.**
+1. Consultar a lista de materiais para o componente e a versão afetados.
+2. Avaliar a exposição: que caminhos processam arquivos não confiáveis.
+3. Mitigar imediatamente, por exemplo pausando a ingestão.
+4. Corrigir ou atualizar e depois reconstruir.
+5. Rodar a bateria de testes.
+6. Retomar e registrar as ações e as datas.
+
+**EX060.** Sistemas com entrada não confiável, ferramentas que agem e dados pessoais recebem pontuação mais alta, porque mais coisas podem dar errado e o dano é maior.
 
 <a id="references"></a>
 ## Referências
