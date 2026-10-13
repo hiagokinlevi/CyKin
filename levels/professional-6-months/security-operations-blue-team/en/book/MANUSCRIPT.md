@@ -629,7 +629,7 @@ Copies of logs are saved with time stamps and hashes, and originals stay in the 
 
 ### 9.6 Research
 
-Hassan et al. (2019) showed that provenance (how events connect) helps reduce false alarms and speeds investigation; the same idea underlies good timelines. The research applies to Fenwick's investigation in a simple form: linking the VPN login to the admin change and the file reads through the same account and address showed one connected event, not three separate alerts. Priya uses this idea to explain to Tom why connecting events matters more than looking at each alert alone. Tom keeps this in mind when he writes runbooks.
+Hassan et al. (2019) showed that provenance (how events connect) helps reduce false alarms and speeds investigation; the same idea underlies good timelines. The research applies to Fenwick's investigation in a simple form: linking the VPN login to the admin change and the file reads through the same account and address showed one connected event, not three separate alerts. Priya uses this idea to explain to Tom why connecting events matters more than looking at each alert alone. Tom writes this into the compromised-account runbook, which now tells the analyst to search for other events from the same account and address before closing an alert.
 
 ### Gaps stated
 
@@ -675,7 +675,7 @@ Priya picks: log coverage of critical assets, time to acknowledge critical alert
 
 ### 10.2 Medians and trends
 
-Medians and month-to-month trends avoid being misled by one unusual case. A single slow response could distort an average, while the median shows typical performance. Priya still reports the worst case, such as the 26-minute provider test, so that unusual cases are not hidden. Trends over several months show whether the SOC is improving, which matters more to the board than a single month's figure. Each chart on the board page shows at least six months. Tom checks each chart against the raw records.
+Medians and month-to-month trends avoid being misled by one unusual case. A single slow response could distort an average, while the median shows typical performance. Priya still reports the worst case, such as the 26-minute provider test, so that unusual cases are not hidden. Trends over several months show whether the SOC is improving, which matters more to the board than a single month's figure. Each chart on the board page shows at least six months. Tom checks each chart against the provider's acknowledgement records and his own triage notes before the page goes to the board.
 
 ### 10.3 Misleading metrics
 
@@ -819,7 +819,7 @@ Monitoring staff is sensitive; the staff council's annual review found no misuse
 
 ### 12.6 Next steps
 
-Priya plans further study in incident response and resilience; Tom starts a technical course. Priya's study will deepen her knowledge of response planning, which she now leads at Fenwick. Tom's course will help him improve rules and investigations, and support the year-two quarterly rule reviews. Both plans are part of the year-two budget approved by the board. Priya also plans to share Fenwick's experience with other manufacturers in her region, describing the hybrid model and its first-year results. Tom's course is scheduled around his triage duties.
+Priya plans further study in incident response and resilience; Tom starts a technical course. Priya's study will deepen her knowledge of response planning, which she now leads at Fenwick. Tom's course will help him improve rules and investigations, and support the year-two quarterly rule reviews. Both plans are part of the year-two budget approved by the board. Priya also plans to share Fenwick's experience with other manufacturers in her region, describing the hybrid model and its first-year results. Tom's course is scheduled around his morning review of night notes, and the provider covers daytime triage on his study days.
 
 ### Costs
 

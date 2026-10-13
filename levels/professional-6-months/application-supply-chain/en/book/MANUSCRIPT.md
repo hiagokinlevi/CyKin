@@ -177,7 +177,7 @@ The build log showing hl-auth fetched from the public registry, the lock file en
 
 ### 3.4 Personal data
 
-Build logs rarely contain personal data, but application logs do; Priya uses synthetic test data in any reproduction. TrackPort's application logs include customer names, addresses and shipment details, which are not needed to understand a build problem. When Priya needs to reproduce an issue, such as how a package is resolved, she uses synthetic customers and shipments in a test environment. This keeps customer data out of her evidence and her reports. Marcus confirms the approach before she begins. Reproductions are deleted afterwards.
+Build logs rarely contain personal data, but application logs do; Priya uses synthetic test data in any reproduction. TrackPort's application logs include customer names, addresses and shipment details, which are not needed to understand a build problem. When Priya needs to reproduce an issue, such as how a package is resolved, she uses synthetic customers and shipments in a test environment. This keeps customer data out of her evidence and her reports. Marcus confirms the approach before she begins. Test environments used for reproductions are cleared afterwards, so not even synthetic shipment data is left behind.
 
 ### 3.5 Decision records
 
@@ -415,15 +415,15 @@ Scanner or review finding → Priya checks and ranks → ticket in TrackPort's b
 
 ### 6.2 Targets
 
-Remediation targets by severity: critical 7 days, high 30, medium 90. Targets are agreed with the product manager so they compete fairly with features. Agreeing targets with the product manager makes them part of planning rather than a demand from security. A critical finding needs a fix within a week, which may displace feature work, so the product manager must accept that trade-off in advance. Priya measures each finding against its target from the ticket dates. The targets are reviewed each quarter. Each target is recorded on the ticket.
+Remediation targets by severity: critical 7 days, high 30, medium 90. Targets are agreed with the product manager so they compete fairly with features. Agreeing targets with the product manager makes them part of planning rather than a demand from security. A critical finding needs a fix within a week, which may displace feature work, so the product manager must accept that trade-off in advance. Priya measures each finding against its target from the ticket dates. The targets are reviewed each quarter. Each ticket shows its target date from creation, so developers can plan around it without asking security.
 
 ### 6.3 Ownership
 
-Each ticket has one owner. Platform issues go to the platform team, application issues to TrackPort. One owner means one person is responsible for moving the ticket forward. Platform issues, such as registry settings, go to the platform team because only they can change the build service. When an owner moves teams, the ticket must be reassigned, as the late medium finding later showed. Priya checks the weekly view for tickets without an active owner. Unowned tickets are reassigned within a day.
+Each ticket has one owner. Platform issues go to the platform team, application issues to TrackPort. One owner means one person is responsible for moving the ticket forward. Platform issues, such as registry settings, go to the platform team because only they can change the build service. When an owner moves teams, the ticket must be reassigned, as the late medium finding later showed. Priya checks the weekly view for tickets without an active owner. A ticket left without an active owner is reassigned within a day, which is the fix for the medium finding that was forgotten when its owner moved teams.
 
 ### 6.4 Tracking
 
-A weekly view shows open findings by age and severity. The view shows Priya and the TrackPort lead which findings are approaching their target and which have passed it. Sorting by age makes old findings visible before they are forgotten. They review it in a short meeting each week, and any finding near its target is discussed so that blocked work can be raised early. The same data feeds the remediation measures Priya reports each quarter. Marcus sees the same view at month end.
+A weekly view shows open findings by age and severity. The view shows Priya and the TrackPort lead which findings are approaching their target and which have passed it. Sorting by age makes old findings visible before they are forgotten. They review it in a short meeting each week, and any finding near its target is discussed so that blocked work can be raised early. The same data feeds the remediation measures Priya reports each quarter. Marcus sees the same view at month end, so he can spot findings that need his authority, such as a risk acceptance for the product manager.
 
 ### 6.5 Escalation
 
@@ -539,7 +539,7 @@ Marcus asks Priya to analyse a synthetic case from another Harbourline team: a m
 
 ### 8.2 Timeline
 
-Day 0 the update was merged with a lock file change of 400 lines; day 3 released; day 20 a customer asked about data collection; day 22 the library was rolled back. The timeline shows that the change was released three days after merging and ran for nearly three weeks before a customer noticed. Rolling it back took two days once the question arrived. Priya lists each step with its source, such as the merge record and release log. The mobile team confirms the dates from its records.
+Day 0 the update was merged with a lock file change of 400 lines; day 3 released; day 20 a customer asked about data collection; day 22 the library was rolled back. The timeline shows that the change was released three days after merging and ran for nearly three weeks before a customer noticed. Rolling it back took two days once the question arrived. Priya lists each step with its source, such as the merge record and release log. The mobile team confirms each date from its merge and release records, so the timeline rests on evidence rather than memory.
 
 ### 8.3 Causes
 
@@ -551,7 +551,7 @@ The library's release notes mentioned the new collection feature; nobody read th
 
 ### 8.5 Recommendations
 
-Separate pull requests for analytics and advertising libraries; release-note reading for those libraries; a privacy check in the release checklist. Each recommendation addresses a cause. Separate pull requests make analytics updates visible instead of hiding them among others. Reading release notes for those libraries catches new features. A privacy check in the release checklist gives a final chance to ask whether data collection changed. The mobile team adopts all three, and Priya records them in the case report. Each has an owner.
+Separate pull requests for analytics and advertising libraries; release-note reading for those libraries; a privacy check in the release checklist. Each recommendation addresses a cause. Separate pull requests make analytics updates visible instead of hiding them among others. Reading release notes for those libraries catches new features. A privacy check in the release checklist gives a final chance to ask whether data collection changed. The mobile team adopts all three, and Priya records them in the case report. Each recommendation has a named owner in the mobile team and a date for the first check that it is being followed.
 
 ### 8.6 Proportion
 
@@ -609,7 +609,7 @@ Say what is known and unknown: "No harmful content was found in the public hl-au
 
 ### 9.4 Ethics
 
-Findings about other organisations' packages are reported through official channels, never publicised to embarrass. Information about weaknesses is shared only with those who need it. The public hl-auth package was published by mistake, apparently by a former contractor, and reporting it through the registry operator's official process fixed the problem without blame. Publicising it would have exposed Harbourline's mistake and helped nobody. Priya and Marcus share details of unfixed weaknesses only with the teams that need them to act. Marcus approves exceptions.
+Findings about other organisations' packages are reported through official channels, never publicised to embarrass. Information about weaknesses is shared only with those who need it. The public hl-auth package was published by mistake, apparently by a former contractor, and reporting it through the registry operator's official process fixed the problem without blame. Publicising it would have exposed Harbourline's mistake and helped nobody. Priya and Marcus share details of unfixed weaknesses only with the teams that need them to act. Any exception, such as sharing details with a vendor's support team, needs Marcus's approval and is recorded with its reason.
 
 ### 9.5 External reporting
 
@@ -692,7 +692,7 @@ Priya reviews each missed target. The late critical waited two days for a platfo
 
 ### 10.4 Improvements
 
-Platform requests for criticals get a same-day contact; ownership transfers when people move; blocked items get risk acceptances earlier. Each improvement answers one cause. A same-day platform contact means criticals are not left waiting for another team's queue. Transferring ownership when people move keeps tickets alive. Earlier risk acceptances make blocked items visible and controlled rather than quietly late. In the next quarter, all criticals were fixed on time and highs reached 90% on time, with small sample sizes stated. Each is recorded with an owner.
+Platform requests for criticals get a same-day contact; ownership transfers when people move; blocked items get risk acceptances earlier. Each improvement answers one cause. A same-day platform contact means criticals are not left waiting for another team's queue. Transferring ownership when people move keeps tickets alive. Earlier risk acceptances make blocked items visible and controlled rather than quietly late. In the next quarter, all criticals were fixed on time and highs reached 90% on time, with small sample sizes stated. Each improvement is recorded with an owner and a review date, so Priya can check next quarter whether it was actually used.
 
 ### 10.5 Troubleshooting tools
 
@@ -754,7 +754,7 @@ Marcus observes, answers questions about context, and stops any step that would 
 
 ### 11.4 The report
 
-A two-page report with findings, evidence, recommendations and an executive summary of five lines. Keeping the report to two pages forces Priya to choose what matters. The five-line summary is written for a manager who will read nothing else. Findings follow the standard structure with evidence, impact, recommendation, owner and target. Marcus marked one recommendation as unclear about its owner, and Priya fixed it. The report became a training example for the next trainee. Marcus keeps the original draft for comparison.
+A two-page report with findings, evidence, recommendations and an executive summary of five lines. Keeping the report to two pages forces Priya to choose what matters. The five-line summary is written for a manager who will read nothing else. Findings follow the standard structure with evidence, impact, recommendation, owner and target. Marcus marked one recommendation as unclear about its owner, and Priya fixed it. The report became a training example for the next trainee. Marcus keeps the original draft beside the corrected one, so the training example shows how an unclear owner was fixed.
 
 ### 11.5 Assessment
 
@@ -816,19 +816,19 @@ Priya maps each item to SSDF practice groups and to OWASP SAMM v2 practices such
 
 ### 12.3 Outcomes
 
-Internal names can no longer resolve publicly; criticals are fixed on time; findings arrive checked and ranked; releases carry provenance. Each outcome is supported by evidence in the portfolio: the weekly tests show internal names cannot resolve publicly, the next quarter's tickets show criticals fixed on time, the TrackPort team's tickets show findings arriving checked and ranked, and the deployment system's records show releases carry provenance. Priya states each outcome only as far as the evidence supports. Marcus confirms each item.
+Internal names can no longer resolve publicly; criticals are fixed on time; findings arrive checked and ranked; releases carry provenance. Each outcome is supported by evidence in the portfolio: the weekly tests show internal names cannot resolve publicly, the next quarter's tickets show criticals fixed on time, the TrackPort team's tickets show findings arriving checked and ranked, and the deployment system's records show releases carry provenance. Priya states each outcome only as far as the evidence supports. Marcus checks each outcome against the evidence before the portfolio goes to the assessor, and notes the weekly test log as the strongest item.
 
 ### 12.4 Limits
 
-Coverage is TrackPort and the shared build service; other teams have not yet adopted the triage workflow; reachability is judged manually. These limits show where further work is needed. Other teams use the shared build service but not the triage workflow, so their findings may still arrive unchecked. Manual reachability judgements depend on Priya's reading of the code. She records each limit in her portfolio, so assessors and Marcus can see what the project did not cover. Marcus agrees with her list.
+Coverage is TrackPort and the shared build service; other teams have not yet adopted the triage workflow; reachability is judged manually. These limits show where further work is needed. Other teams use the shared build service but not the triage workflow, so their findings may still arrive unchecked. Manual reachability judgements depend on Priya's reading of the code. She records each limit in her portfolio, so assessors and Marcus can see what the project did not cover. Marcus agrees with her list and adds that the next teams to adopt the workflow should be chosen with their leads' agreement.
 
 ### 12.5 Reflection
 
-Priya writes that her quality-engineering habits, careful reproduction and clear evidence, transferred directly to security work. Careful reproduction helped her confirm the hl-auth finding and check each scanner result before sending it to developers. Clear evidence made her tickets easy to act on. She also notes what was new: judging risk, deciding priorities and writing for managers. Marcus agrees and adds that her careful approach made the platform team trust her findings quickly. She keeps both habits in her new role.
+Priya writes that her quality-engineering habits, careful reproduction and clear evidence, transferred directly to security work. Careful reproduction helped her confirm the hl-auth finding and check each scanner result before sending it to developers. Clear evidence made her tickets easy to act on. She also notes what was new: judging risk, deciding priorities and writing for managers. Marcus agrees and adds that her careful approach made the platform team trust her findings quickly. In her new role for the logistics product group, she plans to keep both habits by reproducing every finding before raising a ticket.
 
 ### 12.6 Development plan
 
-Next: threat modelling with Shostack's (2014) four questions for new TrackPort features, and extending the workflow to two more teams. Threat modelling would help the team find risks in new features before they are built, which complements finding issues in dependencies and code. Shostack's four questions are simple enough for developers to use in planning meetings. Extending the workflow to two more teams tests whether it works beyond TrackPort. Marcus agrees to review progress after three months. The plan is filed with her portfolio.
+Next: threat modelling with Shostack's (2014) four questions for new TrackPort features, and extending the workflow to two more teams. Threat modelling would help the team find risks in new features before they are built, which complements finding issues in dependencies and code. Shostack's four questions are simple enough for developers to use in planning meetings. Extending the workflow to two more teams tests whether it works beyond TrackPort. Marcus agrees to review progress after three months. The plan is filed with her portfolio, with dates for the threat-modelling sessions and the first meeting with each of the two new teams.
 
 ### Assessor feedback
 
