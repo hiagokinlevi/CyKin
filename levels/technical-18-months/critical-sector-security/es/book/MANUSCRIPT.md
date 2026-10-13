@@ -54,9 +54,9 @@ Toda afirmación factual sobre un protocolo, una norma, un incidente público o 
 4. [Scripts y formatos de datos](#ch-04): análisis estricto de CSV/JSON, orden de validación y coordenadas del registro.
 5. [Alcance de seguridad y evidencia](#ch-05): alcance técnico, primero lo pasivo, evidencia verificable.
 6. [Infraestructura crítica y seguridad sectorial: modelo del sistema](#ch-06): zonas, conductos y diferencias entre sectores.
-7. [Infraestructura crítica y seguridad sectorial: datos y telemetría](../../en/book/MANUSCRIPT.md#ch-07): syslog, relojes y cronologías en UTC.
-8. [Infraestructura crítica y seguridad sectorial: modos de fallo](../../en/book/MANUSCRIPT.md#ch-08): lagunas, valores congelados, picos y reglas explicables.
-9. [Infraestructura crítica y seguridad sectorial: herramientas y métodos](../../en/book/MANUSCRIPT.md#ch-09): elección del método, validación de herramientas y el CRC de DNP3.
+7. [Infraestructura crítica y seguridad sectorial: datos y telemetría](#ch-07): syslog, relojes y cronologías en UTC.
+8. [Infraestructura crítica y seguridad sectorial: modos de fallo](#ch-08): lagunas, valores congelados, picos y reglas explicables.
+9. [Infraestructura crítica y seguridad sectorial: herramientas y métodos](#ch-09): elección del método, validación de herramientas y el CRC de DNP3.
 10. [Infraestructura crítica y seguridad sectorial: configuración de controles](../../en/book/MANUSCRIPT.md#ch-10): políticas de primera coincidencia, sombreado y acceso de proveedores.
 11. [Infraestructura crítica y seguridad sectorial: verificación](../../en/book/MANUSCRIPT.md#ch-11): pruebas positivas y negativas trazables.
 12. [Laboratorio contenido I](../../en/book/MANUSCRIPT.md#ch-12): un respondedor Modbus con una política de escritura y respuestas de excepción.
@@ -802,7 +802,388 @@ El modelo del sistema reúne activos, zonas, conductos y consecuencias en un ún
 <!-- cyberabc:chapter-navigation:start ch-06 -->
 ### Siga estudiando — capítulo 06 de 18
 
-[← Capítulo 05](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 →](../../en/book/MANUSCRIPT.md#ch-07)
+[← Capítulo 05](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Infraestructura crítica y seguridad sectorial: datos y telemetría
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo debería ser capaz de:
+
+- nombrar las fuentes de telemetría que usa un técnico en un entorno de control (datos del proceso, registros de dispositivos, registros del cortafuegos y de los equipos, registros de flujos, capturas pasivas) y lo que cada una puede mostrar y lo que no;
+- analizar syslog RFC 5424, calcular la instalación y la severidad a partir del valor de prioridad y tratar las líneas que no son RFC 5424;
+- medir y corregir los desfases de reloj frente a una referencia NTP y construir una única cronología en UTC;
+- explicar cómo un reloj sin corregir invierte la causa y el efecto.
+
+El capítulo 6 dijo dónde están las cosas. Este capítulo trata de lo que le cuentan y de si usted puede poner sus relatos en el orden correcto.
+
+### 7.1 Fuentes y puntos ciegos
+
+| Fuente | Muestra | No muestra |
+|---|---|---|
+| Datos del proceso (historiador) | Valores y alarmas a lo largo del tiempo | Quién causó un cambio |
+| Registros de eventos de la HMI y del SCADA | Acciones del operador, reconocimientos de alarmas | Acciones realizadas directamente sobre el controlador |
+| Registros del controlador/RTU | Sesiones de configuración, cambios de modo (si se admiten y están activados) | A menudo nada; muchos dispositivos registran poco |
+| Registros del cortafuegos | Conexiones permitidas y denegadas en el límite | Tráfico dentro de una zona |
+| Registros de los equipos (servidor de salto, servidores) | Inicios de sesión, órdenes, eventos de servicio | Actividad en dispositivos sin registro |
+| Captura pasiva / registros de flujos | Quién habló con quién y con qué función | Contenido cifrado; tráfico que no pasa por el sensor |
+
+La guía de gestión de registros del NIST describe la recogida, la conservación y la protección de estos registros ([SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final)). La primera tarea del técnico es saber qué fuente responde a qué pregunta, y qué preguntas no responde ninguna fuente.
+
+### 7.2 Estructura de syslog
+
+La RFC 5424 define el formato moderno de syslog: `<PRI>VERSION TIMESTAMP HOSTNAME APP-NAME PROCID MSGID STRUCTURED-DATA MSG` ([RFC 5424](https://www.rfc-editor.org/rfc/rfc5424)). El valor de prioridad es *instalación × 8 + severidad*: `<38>` es la instalación 4 (seguridad/autorización), severidad 6 (informativa). La marca de tiempo es RFC 3339 con desfase, y un guion (`-`) significa «nulo»; en una marca de tiempo, *el emisor no conocía la hora*. Muchos dispositivos siguen enviando el formato BSD antiguo (`<13>Oct 11 23:15:02 host app: ...`), sin año ni zona; cuente esas líneas y analícelas por separado en lugar de descartarlas.
+
+### 7.3 Tiempo
+
+Una cronología solo es tan buena como sus relojes. NTP (RFC 5905) permite a los equipos medir su **desfase** respecto a una referencia ([RFC 5905](https://www.rfc-editor.org/rfc/rfc5905)). En los entornos de control, algunos dispositivos no tienen cliente NTP, derivan varios minutos o están aislados deliberadamente de las fuentes de hora. Registre, para cada equipo que aporte datos a una cronología, su desfase medido en un momento conocido, y corrija sus marcas de tiempo restándolo: *corregida = notificada − (reloj del equipo − referencia)*. Convierta todo a UTC antes de ordenar; los desfases locales como `+01:00` son correctos, pero es fácil ordenarlos mal a simple vista.
+
+### 7.4 Ejemplo resuelto: la secuencia de las 23:14 (sintético)
+
+La noche del 11 de octubre, un operador informó de que la bomba 2 de KW-04 había arrancado de forma inesperada. Usted recogió seis líneas y midió los desfases de los relojes a la mañana siguiente (la RTU iba 212 s por detrás de la referencia). **Lab 7** (guárdelo como `lab07.py` y ejecútelo con `python3 lab07.py`):
+
+```python
+# Lab 7 - parse RFC 5424 syslog, correct clock offsets and build a UTC timeline (offline, stdlib)
+# Synthetic lines from the Kestrel Vale operations centre; offsets measured against the NTP reference.
+import re
+from datetime import datetime, timedelta, timezone
+lines = [
+ "<38>1 2026-10-11T23:14:05.120Z fw-01 filterlog - - - block tcp 10.30.3.7:51544 -> 10.10.4.2:502",
+ "<86>1 2026-10-12T00:13:58+01:00 jump-01 sshd 812 - - Accepted publickey for jtan from 10.90.0.40",
+ "<134>1 2026-10-11T23:16:40Z hmi-02 hmi - - - operator setpoint change KW-04 PUMP2 start",
+ "<38>1 2026-10-11T23:15:31Z rtu-kw04 auth - - - config session opened user=eng",
+ "<13>Oct 11 23:15:02 eng-ws-15 app: project download started",
+ "<38>1 - hist-02 histd - - - archive rollover",
+]
+offset_s = {"fw-01": 0.0, "jump-01": 0.4, "hmi-02": 0.0, "rtu-kw04": -212.0}   # host clock minus reference
+pat = re.compile(r"^<(\d{1,3})>1 (\S+) (\S+) (\S+) (\S+) (\S+) (\S+) ?(.*)$")
+events, unparsed = [], []
+for ln in lines:
+    m = pat.match(ln)
+    if not m: unparsed.append(("not RFC 5424", ln)); continue
+    pri, ts, host, app, _pid, _msgid, _sd, msg = m.groups()
+    if ts == "-": unparsed.append(("no timestamp", ln)); continue
+    t = datetime.fromisoformat(ts.replace("Z", "+00:00")).astimezone(timezone.utc)
+    t_corr = t - timedelta(seconds=offset_s.get(host, 0.0))
+    fac, sev = divmod(int(pri), 8)
+    events.append((t_corr, host, f"fac={fac} sev={sev}", msg, offset_s.get(host, 0.0)))
+for t, host, fs, msg, off in sorted(events):
+    note = f" (clock corrected {-off:+.1f} s)" if off else ""
+    print(f"{t.strftime('%H:%M:%S.%f')[:-3]}Z {host:<9} {fs:<11} {msg}{note}")
+for why, ln in unparsed: print("UNPARSED", why, "|", ln)
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+23:13:57.600Z jump-01   fac=10 sev=6 Accepted publickey for jtan from 10.90.0.40 (clock corrected -0.4 s)
+23:14:05.120Z fw-01     fac=4 sev=6 block tcp 10.30.3.7:51544 -> 10.10.4.2:502
+23:16:40.000Z hmi-02    fac=16 sev=6 operator setpoint change KW-04 PUMP2 start
+23:19:03.000Z rtu-kw04  fac=4 sev=6 config session opened user=eng (clock corrected +212.0 s)
+UNPARSED not RFC 5424 | <13>Oct 11 23:15:02 eng-ws-15 app: project download started
+UNPARSED no timestamp | <38>1 - hist-02 histd - - - archive rollover
+```
+
+Antes de la corrección, la línea de la RTU (23:15:31Z) aparecía *antes* del cambio de punto de consigna en la HMI (23:16:40Z), lo que sugería que alguien configuró la RTU y que después actuó el operador. Tras la corrección, la sesión de la RTU ocurrió a las 23:19:03Z, **después** de la orden de arranque del operador. El relato pasa de «alguien manipuló primero» a «una sesión de ingeniería siguió a la acción del operador», lo que lleva a otra pregunta (quién abrió una sesión de configuración a las 23:19 y por qué). Dos líneas no pudieron situarse: la línea en formato BSD de la estación de ingeniería no tiene año ni zona, y la línea del historiador tiene una marca de tiempo nula. Se notifican, no se descartan; el «project download started» de la estación de ingeniería es posiblemente la línea más importante de todas, y situarla requiere su propia comprobación de reloj y los registros locales de la estación de trabajo.
+
+### 7.5 Actividad práctica
+
+Mida el desfase de una máquina de su propiedad frente a un servidor NTP público o local (por ejemplo, `chronyc tracking` o `ntpq -p` en Linux, `w32tm /stripchart` en Windows), regístrelo con la hora de la medición y repita al cabo de 24 horas para ver la deriva. Registre el equipo, la referencia, el desfase y la hora de la medición. Al cabo de veinticuatro horas, compare el nuevo desfase con el anterior para ver la deriva. Guarde ambas lecturas junto con el trabajo de cronología del Lab 7, para que una investigación posterior sepa cuán incierta sería una corrección hecha a partir de una sola medición.
+
+### 7.6 Errores comunes y límites
+
+- Ordenar por el texto de marcas de tiempo con desfases mezclados.
+- Corregir los relojes en el sentido equivocado; escriba cada vez que la corregida es igual a la notificada menos el desfase.
+- Descartar las líneas que no se analizan; cuéntelas y notifíquelas.
+- Suponer que un desfase medido hoy se aplicaba anoche; la deriva y la resincronización lo cambian, así que indique la incertidumbre.
+- Suponer que la ausencia de una línea de registro significa la ausencia de un evento; muchos dispositivos sencillamente no registran.
+- Fusionar registros de dispositivos cuyos desfases se midieron en momentos distintos sin anotar la hora de cada medición junto a su desfase.
+- Dar una hora corregida al segundo cuando el propio desfase solo se conoce con un margen de unos segundos.
+
+### Ejercicios — capítulo 7
+
+**EX025 — Decodifique prioridades.** *Objetivo:* calcular la instalación y la severidad. *Entradas:* `<86>`, `<134>`, `<11>`, `<165>`. *Pasos:* calcule cada una. *Evidencia esperada:* cuatro pares con sus nombres. *Rúbrica:* 3 = 86 → 10/6 (authpriv, informativa); 134 → 16/6 (local0, informativa); 11 → 1/3 (user, error); 165 → 20/5 (local4, aviso); 2 = aritmética correcta, faltan los nombres; 1 = parcial; 0 = nada.
+
+**EX026 — Corrija un reloj.** *Objetivo:* aplicar la fórmula del desfase. *Entradas:* fep-01 registra un evento a las 02:10:00Z; su desfase, medido una hora después, era de +47 s (el equipo iba adelantado). *Pasos:* dé la hora corregida y la incertidumbre que indicaría. *Evidencia esperada:* hora corregida y una frase sobre la incertidumbre. *Rúbrica:* 3 = 02:09:13Z; incertidumbre porque el desfase se midió más tarde y la deriva es desconocida, p. ej., «± unos segundos; desfase medido a las 03:10Z»; 2 = hora correcta sin incertidumbre; 1 = sentido equivocado; 0 = nada.
+
+**EX027 — Sitúe la línea BSD.** *Objetivo:* tratar con seguridad los formatos heredados. *Entradas:* la línea de `eng-ws-15` del Lab 7. *Pasos:* enumere lo que necesita para situarla en la cronología y escriba la regla de análisis que añadiría. *Evidencia esperada:* lista y regla. *Rúbrica:* 3 = el año a partir del contexto de la recogida, la zona horaria configurada en el equipo y su desfase medido; analizar con asignación explícita de zona y marcar el resultado como «zona supuesta»; 2 = regla sin registrar las suposiciones; 1 = descartarla; 0 = nada.
+
+**EX028 — Pregunta de punto ciego.** *Objetivo:* emparejar preguntas con fuentes. *Entradas:* «¿Escribió alguien en KW-04 directamente desde el puerto local para portátil de la estación?». *Pasos:* indique qué fuentes podrían responderla, cuáles no y qué tendría que añadir. *Evidencia esperada:* análisis breve. *Rúbrica:* 3 = el cortafuegos y la captura del centro de control no pueden ver el tráfico local de la estación; los registros de la RTU podrían, si registra la configuración y las escrituras; añadir un sensor en la estación o el registro de la RTU y los registros de acceso físico; 2 = en parte; 1 = «revisar el cortafuegos»; 0 = nada.
+
+### Síntesis del capítulo
+
+La telemetría es un conjunto de testigos parciales. Sepa lo que puede ver cada fuente, analice los formatos de forma estricta contando lo que no puede analizar y corrija cada reloj frente a una referencia antes de ordenar los eventos. Una cronología construida sobre relojes sin corregir puede invertir la causa y el efecto; una construida sobre relojes corregidos, con sus incertidumbres indicadas, es evidencia.
+
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Siga estudiando — capítulo 07 de 18
+
+[← Capítulo 06](#ch-06) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Infraestructura crítica y seguridad sectorial: modos de fallo
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo debería ser capaz de:
+
+- nombrar los modos de fallo técnicos habituales de la telemetría y del control (laguna, valor congelado, pico, deriva, fuera de rango, marca de tiempo obsoleta, pérdida de la autoridad de control) y sus causas habituales;
+- detectarlos en una serie temporal con reglas sencillas y explicables;
+- explicar por qué un valor dentro de rango puede seguir siendo falso y por qué un valor perfectamente constante es sospechoso;
+- mantener abiertas a la vez las hipótesis de fallo y de ataque hasta que la evidencia las separe.
+
+El capítulo 7 puso los eventos en orden. Este capítulo pregunta de cada medición: ¿es verdadera? Muchos eventos de seguridad aparecen primero como «datos erróneos», y muchos eventos de datos erróneos son fallos corrientes. Un técnico debe reconocer ambos.
+
+### 8.1 Un catálogo de modos de fallo
+
+| Modo | Aspecto | Causas corrientes | Causas relevantes para la seguridad |
+|---|---|---|---|
+| **Laguna** | Muestras que faltan | Caída del enlace, sobrecarga del sondeo (capítulo 1), reinicio del dispositivo | Tráfico bloqueado o descartado, denegación de servicio |
+| **Congelado / línea plana** | Valores idénticos durante más tiempo del que el proceso permite | Sensor congelado, entrada analógica averiada, SCADA que sirve el último valor conocido | Valores reproducidos o congelados que ocultan un cambio real |
+| **Pico** | Un salto más rápido de lo que permite la física | Ruido eléctrico, error de escalado, muestra errónea | Valor inyectado |
+| **Deriva** | Divergencia lenta respecto a la realidad | Ensuciamiento del sensor, antigüedad de la calibración | Manipulación lenta (rara, difícil de detectar) |
+| **Fuera de rango** | Valor imposible | Fallo de cableado, escalado erróneo | Valor fabricado |
+| **Marca de tiempo obsoleta** | Valor con una hora antigua o futura | Error de reloj (capítulo 7), datos en búfer | Reproducción |
+| **Pérdida de la autoridad de control** | Órdenes no ejecutadas o ejecutadas por otra persona | Selector local/remoto dejado en local, enclavamiento | Escritura no autorizada |
+
+El sentido de la tabla no es que toda laguna sea un ataque. Es que el mismo síntoma tiene ambos tipos de causa, de modo que las detecciones deben notificar el **síntoma** con precisión, y la investigación (capítulo 13) separa las causas.
+
+### 8.2 Reglas que se explican solas
+
+Cada detección de este capítulo es una regla que una persona puede leer y verificar:
+
+- **Laguna**: más de *N* muestras consecutivas que faltan, donde *N* se fija a partir del ciclo de sondeo y de la tolerancia del proceso.
+- **Congelado**: más de *M* lecturas consecutivas idénticas, donde *M* refleja cuánto varía de forma natural un sensor sano. Un analizador de cloro que informa exactamente de 0,62 durante veinte minutos es sospechoso, porque los analizadores reales fluctúan en su último dígito.
+- **Pico**: un cambio entre muestras consecutivas mayor que el **paso máximo físicamente verosímil**; un depósito de 12 m no puede subir 6,8 m en un minuto. Esto detecta valores que las comprobaciones de rango no ven.
+- **Rango**: fuera de los límites del instrumento o del proceso (capítulo 4).
+
+Estas reglas son toscas pero transparentes: cuando una se dispara, todo el mundo puede ver por qué. Los detectores de anomalías estadísticos o aprendidos pueden añadir sensibilidad más adelante; no deben sustituir a reglas que los operadores entienden.
+
+### 8.3 Dentro de rango no es verdadero
+
+Un valor de 9,80 m en un depósito de 12 m supera todas las comprobaciones de rango. Si el minuto anterior marcaba 2,96 m y el siguiente 2,97 m, el 9,80 es imposible como medición. A la inversa, un valor constante siempre está «dentro de rango». Las comprobaciones de rango protegen contra lo absurdo; las de **velocidad de cambio** y **variación** protegen contra lo falso de apariencia verosímil. Use un paso máximo derivado del proceso, como medio metro por minuto para el nivel de un depósito, para que una única muestra disparatada se detecte aunque esté dentro del rango del instrumento. Escriba el límite de paso junto al límite de rango en el esquema de la etiqueta y revise ambos después de cada falsa alarma.
+
+### 8.4 Ejemplo resuelto: cuatro etiquetas, veinte minutos (sintético)
+
+**Lab 8** (guárdelo como `lab08.py` y ejecútelo con `python3 lab08.py`):
+
+```python
+# Lab 8 - classify telemetry failure modes (offline, standard library only)
+# Synthetic one-minute readings from four Kestrel Water tags, 06:00-06:19Z on 2026-10-12.
+series = {
+ "KW-01 LEVEL_M": [3.40,3.41,3.41,3.42,3.43,3.43,3.44,3.45,3.45,3.46,3.47,3.47,3.48,3.49,3.49,3.50,3.51,3.51,3.52,3.53],
+ "KW-02 CL2_MGL": [0.62,0.62,0.62,0.62,0.62,0.62,0.62,0.62,0.62,0.62,0.62,0.62,0.62,0.62,0.62,0.62,0.62,0.62,0.62,0.62],
+ "KW-05 FLOW_LS": [41.0,40.8,41.2,40.9,None,None,None,None,None,None,None,41.1,40.7,41.0,41.3,40.9,41.2,41.0,40.8,41.1],
+ "KW-07 LEVEL_M": [2.95,2.96,2.95,2.97,2.96,2.96,9.80,2.97,2.96,2.98,2.97,2.97,2.98,2.97,2.99,2.98,2.98,2.99,2.98,2.99],
+}
+LIMITS = {"LEVEL_M": (0.0, 12.0), "CL2_MGL": (0.0, 5.0), "FLOW_LS": (0.0, 400.0)}
+MAX_STEP = {"LEVEL_M": 0.5, "CL2_MGL": 0.3, "FLOW_LS": 25.0}   # physically plausible change per minute
+STUCK_MIN, GAP_MIN = 15, 5
+for name, xs in series.items():
+    tag = name.split()[1]; lo, hi = LIMITS[tag]; out = []
+    run, longest = 0, 0
+    for i in range(len(xs)):                     # gaps
+        run = run + 1 if xs[i] is None else 0; longest = max(longest, run)
+    if longest >= GAP_MIN: out.append(f"gap: {longest} consecutive missing minutes")
+    vals = [(i, v) for i, v in enumerate(xs) if v is not None]
+    same, best = 1, 1
+    for (i0, a), (i1, b) in zip(vals, vals[1:]):  # stuck / flatline (exact repeats)
+        same = same + 1 if a == b else 1; best = max(best, same)
+        if abs(b - a) > MAX_STEP[tag] and i1 - i0 == 1:
+            out.append(f"spike: 06:{i1:02d}Z jump {a} -> {b} exceeds {MAX_STEP[tag]}/min")
+    if best >= STUCK_MIN: out.append(f"stuck: {best} identical readings in a row")
+    out += [f"range: {v} outside {lo}-{hi}" for _, v in vals if not lo <= v <= hi]
+    print(f"{name:<14} {'; '.join(out) if out else 'no failure mode detected'}")
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+KW-01 LEVEL_M  no failure mode detected
+KW-02 CL2_MGL  stuck: 20 identical readings in a row
+KW-05 FLOW_LS  gap: 7 consecutive missing minutes
+KW-07 LEVEL_M  spike: 06:06Z jump 2.96 -> 9.8 exceeds 0.5/min; spike: 06:07Z jump 9.8 -> 2.97 exceeds 0.5/min
+```
+
+KW-01 se comporta como un depósito que se llena lentamente: ningún hallazgo. El cloro de KW-02 es idéntico en las veinte lecturas: o bien el analizador se ha congelado, o la RTU devuelve un valor almacenado, o el valor lo está suministrando algo distinto del analizador. KW-05 tiene una laguna de siete minutos: compruebe primero el enlace y el sondeo (capítulo 13). KW-07 muestra una desviación de una sola muestra hasta 9,80 m y de vuelta: un fallo típico de ruido o de escalado, pero también exactamente el aspecto que tendría una escritura inyectada puntual en un registro de notificación. Cada línea es un síntoma con una descripción precisa; ninguna es todavía una causa.
+
+### 8.5 Elegir los umbrales
+
+Fije los umbrales a partir de la evidencia, no de conjeturas: examine una semana de datos sanos por etiqueta, encuentre el mayor paso natural y la racha natural más larga de valores idénticos, y fije la regla por encima de ellos con un margen. Anote el motivo junto a la cifra y revise tras cada falsa alarma y cada evento no detectado. Una regla de valor congelado sobre una etiqueta que legítimamente se queda en 0,00 (una bomba parada) necesita una condición; por ejemplo, aplicarla solo mientras la bomba funciona.
+
+### 8.6 Actividad práctica
+
+Añada al Lab 8 una comprobación de **deriva**: compare la media de cada etiqueta en los primeros cinco minutos con su media en los últimos cinco y marque un cambio mayor que un límite específico de la etiqueta. Explique por qué la subida constante de KW-01 *no* debería marcarse y qué información adicional (estado de la bomba, caudal de entrada) haría significativa la detección de derivas. La subida constante de KW-01 es comportamiento del proceso mientras una bomba llena el depósito, así que una comparación ingenua de medias la marcaría erróneamente. La deriva adquiere sentido cuando se conoce el estado de la bomba o el caudal de entrada, o cuando se comparan dos sensores que deberían coincidir. Fije el límite específico de la etiqueta a partir de una semana de datos sanos y anote el motivo junto a la cifra.
+
+### 8.7 Errores comunes y límites
+
+- Tratar todo valor erróneo como un ataque, o ninguno.
+- Solo comprobaciones de rango.
+- Reglas de valor congelado sobre etiquetas que legítimamente permanecen quietas.
+- Umbrales sin justificación registrada.
+- El Lab 8 ve una serie cada vez; una investigación real compara etiquetas relacionadas (una bomba en marcha con caudal cero es una incoherencia entre etiquetas).
+
+- Aplicar una regla de valor congelado a una etiqueta que legítimamente se queda en cero mientras una bomba está parada.
+- Fijar los umbrales a partir de una conjetura en lugar de a partir de datos sanos con una justificación registrada.
+- Investigar una serie de forma aislada cuando un bit de bomba en marcha y un caudal cero mostrarían un fallo entre etiquetas.
+
+### Ejercicios — capítulo 8
+
+**EX029 — Nombre el modo.** *Objetivo:* clasificar síntomas. *Entradas:* (a) el nivel sube 0,01 m/min mientras la válvula de entrada indica que está cerrada; (b) el caudal marca 0,00 durante 40 minutos mientras la bomba 1 indica que está en marcha; (c) el historiador muestra valores con marcas de 03:00–03:10 que llegaron a las 03:25; (d) la bomba 2 no arranca tras una orden de la HMI y la RTU indica «local». *Pasos:* nombre el modo y dos causas candidatas de cada uno. *Evidencia esperada:* cuatro filas. *Rúbrica:* 3 = (a) incoherencia entre etiquetas/deriva: fallo de la realimentación de la válvula o fuga/derivación; (b) congelado o incoherencia entre etiquetas: caudalímetro averiado o valor congelado; (c) datos en búfer/obsoletos: caída del enlace con almacenamiento y reenvío, o reproducción; (d) pérdida de la autoridad de control: selector local en la instalación, o enclavamiento; 2 = modos correctos, causas escasas; 1 = parcial; 0 = nada.
+
+**EX030 — Prediga un cambio de regla.** *Objetivo:* razonar sobre los umbrales. *Entradas:* el Lab 8 con `STUCK_MIN = 25` y `MAX_STEP["LEVEL_M"] = 7.0`. *Pasos:* prediga la nueva salida y después ejecute. *Evidencia esperada:* predicción y salida real. *Rúbrica:* 3 = KW-02 ya no se marca (20 < 25), el pico de KW-07 ya no se marca (6,84 < 7,0, 6,83 < 7,0), la laguna de KW-05 se sigue marcando; explica lo que se pierde; 2 = casi todo correcto; 1 = conjeturas; 0 = nada.
+
+**EX031 — Regla de valor congelado condicional.** *Objetivo:* reducir las falsas alarmas. *Entradas:* una etiqueta de caudal marca legítimamente 0,0 cuando su bomba está parada. *Pasos:* escriba la regla en pseudocódigo usando el estado de la bomba. *Evidencia esperada:* regla y un caso de prueba. *Rúbrica:* 3 = aplicar la detección de valor congelado solo mientras el estado de la bomba = en marcha durante al menos el intervalo de sondeo; incluye una prueba con la bomba parada (sin alerta) y en marcha con caudal constante distinto de cero (alerta); 2 = sin prueba; 1 = desactiva la regla; 0 = nada.
+
+**EX032 — Plan de fallo o ataque.** *Objetivo:* mantener abiertas ambas hipótesis. *Entradas:* KW-02 congelado en 0,62. *Pasos:* enumere tres comprobaciones que apuntarían a un fallo y tres que apuntarían a una manipulación, todas de solo lectura. *Evidencia esperada:* seis comprobaciones. *Rúbrica:* 3 = fallo: pantalla local del analizador, diagnóstico de la entrada analógica de la RTU, registros de mantenimiento; manipulación: escrituras inesperadas en el registro de notificación en las capturas, registros de sesiones de configuración, comparación con una muestra manual tomada por operaciones; 2 = un lado escaso; 1 = solo una hipótesis; 0 = nada.
+
+### Síntesis del capítulo
+
+La telemetría falla de un pequeño número de maneras reconocibles, y cada síntoma tiene causas tanto corrientes como maliciosas. Detecte los síntomas con reglas transparentes (laguna, congelado, pico, rango) cuyos umbrales procedan de datos sanos y cuyos motivos estén escritos. Estar dentro de rango no es lo mismo que ser verdadero. Notifique el síntoma con precisión y deje la causa a la investigación.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Siga estudiando — capítulo 08 de 18
+
+[← Capítulo 07](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Infraestructura crítica y seguridad sectorial: herramientas y métodos
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo debería ser capaz de:
+
+- elegir la herramienta técnica adecuada para una pregunta en un entorno de control: exportación de configuración, captura pasiva, decodificador de protocolos, consulta de registros, herramienta de ingeniería del fabricante o prueba activa;
+- implementar y verificar una comprobación de integridad a partir de sus parámetros publicados, con el CRC de la capa de enlace de DNP3 como ejemplo;
+- explicar la diferencia entre un **código de detección de errores** y la **autenticación**, y por qué un CRC válido no demuestra nada sobre quién envió una trama;
+- validar una herramienta antes de confiar en ella: pruebas de respuesta conocida, pruebas negativas y versiones documentadas.
+
+Los capítulos 7 y 8 usaron la telemetría. Este capítulo trata de los propios instrumentos: cómo elegirlos, cómo construir bien los pequeños y cómo saber cuándo mienten.
+
+### 9.1 Elegir un método
+
+| Pregunta | Preferir | Evitar salvo con alcance definido |
+|---|---|---|
+| ¿Qué está configurado? | Exportación de configuración, vista de solo lectura de la herramienta del fabricante | Sondear puertos para deducir la configuración |
+| ¿Quién habla con quién? | Registros de flujos, captura pasiva en un puerto SPAN o un derivador (*tap*) | Escaneo activo |
+| ¿Qué ejecuta un dispositivo? | Registros de activos, inventario de la herramienta de ingeniería durante una sesión aprobada | Identificación de huellas mediante sondeo |
+| ¿Funciona una regla de denegación? | Registros del cortafuegos más una prueba de conexión delimitada | Escaneos amplios |
+| ¿Está bien formada una trama? | Decodificador con comprobaciones del protocolo (capítulo 2, este capítulo) | Mirar el hexadecimal a ojo |
+
+La guía de seguridad de TO NIST SP 800-82 Rev. 3 trata la supervisión pasiva y los riesgos de las técnicas activas ([SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final)). Los analizadores de paquetes como Wireshark incluyen disectores para Modbus y DNP3; sus propios scripts sirven para las comprobaciones que esas herramientas no hacen por usted y para una automatización repetible y revisable.
+
+### 9.2 DNP3 en la capa de enlace
+
+DNP3 se usa ampliamente en el telecontrol eléctrico y del agua. Cada trama de la capa de enlace empieza con una cabecera de 10 bytes: los bytes de inicio `05 64`, un byte de **longitud**, un byte de **control**, una dirección de **destino** de 2 bytes y una de **origen** de 2 bytes (*little-endian*), y un **CRC** de 2 bytes. Los datos de usuario siguen en bloques de hasta 16 bytes, cada uno con su propio CRC. En el byte de control, el bit 7 (DIR) está activado en las tramas que envía la maestra, el bit 6 (PRM) en las tramas primarias (iniciadoras), y los cuatro bits bajos son el código de función del enlace; por ejemplo, primaria 0 «reiniciar los estados del enlace», primaria 4 «datos de usuario no confirmados», secundaria 11 «estado del enlace». El DNP Users Group publica una visión general; la norma completa es IEEE 1815 ([DNP3 overview](https://www.dnp.org/About/Overview-of-DNP3-Protocol)).
+
+El CRC es **CRC-16/DNP**: polinomio 0x3D65, valor inicial 0, entrada y salida reflejadas, XOR final 0xFFFF, con el valor de comprobación del catálogo 0xEA82 para la cadena ASCII `123456789` ([CRC catalogue](https://reveng.sourceforge.io/crc-catalogue/16.htm)). Reflejado, el polinomio es 0xA6BC, que es la constante que se usa en una implementación bit a bit.
+
+### 9.3 Valide primero la herramienta
+
+Una rutina de CRC sutilmente errónea sigue produciendo números. Antes de usarla, ejecute una **prueba de respuesta conocida**: calcule el CRC de `123456789` y compárelo con 0xEA82. Después, una **prueba negativa**: cambie un bit de una trama válida y confirme que la comprobación falla. El Lab 9 hace ambas (la línea `assert` es la prueba de respuesta conocida), y anote la versión de Python, porque el resultado de cualquier herramienta solo es evidencia si la herramienta está identificada. Mantenga en el script el assert que comprueba el valor del catálogo y haga fallar la tarea si deja de cumplirse tras un cambio en la función de CRC. Anote la versión de Python junto a cada resultado que vaya a usarse como evidencia. Ejecute la prueba negativa sobre una trama que haya corrompido usted mismo, para saber que el comprobador rechaza los CRC erróneos antes de confiar en él sobre una captura.
+
+### 9.4 Detectar errores no es autenticar
+
+Un CRC se calcula a partir de parámetros públicos; cualquiera que pueda enviar una trama puede calcular un CRC válido. Detecta la corrupción accidental, no la falsificación. El Lab 9 lo muestra directamente: una trama de una dirección de origen desconocida (77) tiene un CRC **válido**. Distinguir lo auténtico de lo falsificado exige autenticación criptográfica (DNP3 Secure Authentication o un túnel protegido) o contexto: direcciones de origen conocidas, rutas conocidas, tiempos esperados. Compárelo con el capítulo 15 del libro de tecnólogo, que usa HMAC (RFC 2104) para la autenticidad ([RFC 2104](https://www.rfc-editor.org/rfc/rfc2104)).
+
+### 9.5 Ejemplo resuelto: comprobación de las cabeceras de SS-3 (sintético)
+
+La maestra de Kestrel Grid (dirección DNP3 1) sondea la estación remota de la subestación SS-3 (dirección 10) a través de fep-01. Un técnico capturó seis cabeceras de enlace. **Lab 9** (guárdelo como `lab09.py` y ejecútelo con `python3 lab09.py`):
+
+```python
+# Lab 9 - check DNP3 link-layer headers and their CRC (offline, standard library only)
+# CRC-16/DNP: poly 0x3D65 (reflected 0xA6BC), init 0x0000, reflected in/out, xorout 0xFFFF.
+# Synthetic frames between the Kestrel Grid master (address 1) and substation SS-3 outstation (address 10).
+import struct
+def crc_dnp(data: bytes) -> int:
+    crc = 0
+    for byte in data:
+        crc ^= byte
+        for _ in range(8):
+            crc = (crc >> 1) ^ 0xA6BC if crc & 1 else crc >> 1
+    return crc ^ 0xFFFF
+assert crc_dnp(b"123456789") == 0xEA82          # catalogue check value
+def header(length, ctrl, dest, src):
+    h = bytes([0x05, 0x64, length, ctrl]) + struct.pack("<HH", dest, src)
+    return h + struct.pack("<H", crc_dnp(h))
+capture = [
+    ("master->SS-3", header(0x05, 0xC0, 10, 1).hex()),     # primary function 0: reset link states
+    ("SS-3->master", header(0x05, 0x0B, 1, 10).hex()),     # secondary function 11: link status
+    ("master->SS-3", header(0x11, 0xC4, 10, 1).hex()),     # primary function 4: unconfirmed user data
+    ("master->SS-3", "056411c40a000100" + "ffff"),          # wrong CRC
+    ("unknown->SS-3", header(0x11, 0xC4, 10, 77).hex()),   # source not in station table
+    ("master->SS-3", "0565" + header(0x05, 0xC0, 10, 1).hex()[4:]),  # bad start bytes
+]
+KNOWN_SOURCES = {1}
+for label, hx in capture:
+    b = bytes.fromhex(hx)
+    if b[:2] != b"\x05\x64": print(f"{label:<14} {hx}  REJECT start bytes {b[:2].hex()}"); continue
+    got = struct.unpack("<H", b[8:10])[0]; want = crc_dnp(b[:8])
+    length, ctrl, dest, src = b[2], b[3], *struct.unpack("<HH", b[4:8])
+    if got != want: print(f"{label:<14} {hx}  REJECT crc {got:04x} != {want:04x}"); continue
+    direction = "from master" if ctrl & 0x80 else "from outstation"
+    note = "" if src in KNOWN_SOURCES or src == 10 else "  ALERT unknown source address"
+    print(f"{label:<14} {hx}  ok len={length} ctrl=0x{ctrl:02x} ({direction}, fc={ctrl & 0x0F}) dest={dest} src={src}{note}")
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+master->SS-3   056405c00a000100b1ac  ok len=5 ctrl=0xc0 (from master, fc=0) dest=10 src=1
+SS-3->master   0564050b01000a006ded  ok len=5 ctrl=0x0b (from outstation, fc=11) dest=1 src=10
+master->SS-3   056411c40a0001000615  ok len=17 ctrl=0xc4 (from master, fc=4) dest=10 src=1
+master->SS-3   056411c40a000100ffff  REJECT crc ffff != 1506
+unknown->SS-3  056411c40a004d0073e6  ok len=17 ctrl=0xc4 (from master, fc=4) dest=10 src=77  ALERT unknown source address
+master->SS-3   056505c00a000100b1ac  REJECT start bytes 0565
+```
+
+Tres tramas son válidas y esperadas. Una tiene el CRC `ffff` donde se esperaba `1506`: corrupción o una trama fabricada; en un enlace ruidoso, una racha de fallos de CRC es un hallazgo de calidad del enlace para el proveedor de telecomunicaciones. Otra tiene bytes de inicio erróneos y se rechaza antes de leer nada más. La línea más importante es la que *supera* el CRC: la dirección de origen 77 no está en la tabla de estaciones. El CRC dice que los bytes llegaron intactos; solo la comprobación de la dirección dice que procedían de un lugar inesperado.
+
+### 9.6 Actividad práctica
+
+Amplíe el Lab 9 para verificar el CRC de cada bloque de datos de usuario de 16 bytes que sigue a la cabecera. Construya una trama con 17 bytes de datos de usuario (un bloque completo y un bloque de 1 byte), calcule los CRC de ambos bloques y corrompa un byte del segundo bloque para mostrar que la comprobación lo detecta. Construya la trama con un bloque completo de dieciséis bytes y un bloque de un byte, cada uno con su propio CRC. Corrompa un byte del segundo bloque y confirme que solo falla la comprobación de ese bloque. Guarde los pasos de construcción en las notas del laboratorio para que un revisor pueda reconstruir la misma trama.
+
+### 9.7 Errores comunes y límites
+
+- Confiar en un comprobador casero sin una prueba de respuesta conocida.
+- Equivocarse con el orden de los bytes: las direcciones y el CRC de DNP3 son *little-endian*; los campos de Modbus son *big-endian*.
+- Tratar «CRC válido» como «auténtico».
+- Sondear activamente cuando una fuente pasiva responde a la pregunta.
+- El Lab 9 solo comprueba las cabeceras; las capas de transporte y de aplicación llevan las órdenes y necesitan su propia decodificación.
+- Decodificar una captura sin anotar la versión de la herramienta ni los ajustes de orden de bytes usados, de modo que nadie puede reproducir el resultado.
+
+- Leer la ALERT del Lab 9 para la dirección de origen 77 como prueba de un ataque; solo muestra una dirección que falta en la lista de la maestra.
+
+### Ejercicios — capítulo 9
+
+**EX033 — Prueba de respuesta conocida.** *Objetivo:* validar una herramienta. *Entradas:* la función `crc_dnp` del Lab 9. *Pasos:* (1) sustituya `0xA6BC` por `0x3D65` y ejecute; (2) explique el resultado. *Evidencia esperada:* salida y explicación. *Rúbrica:* 3 = el assert falla porque un algoritmo con desplazamiento a la derecha (reflejado) necesita el polinomio reflejado; la prueba de respuesta conocida detectó un error verosímil antes de juzgar ninguna trama; 2 = observa el fallo sin explicarlo; 1 = intentado; 0 = nada.
+
+**EX034 — Decodifique el byte de control.** *Objetivo:* leer los campos de enlace de DNP3. *Entradas:* los bytes de control 0xC9, 0x44 y 0x0B. *Pasos:* dé DIR, PRM y el código de función de cada uno y nombre la función. *Evidencia esperada:* tres filas. *Rúbrica:* 3 = 0xC9: DIR 1, PRM 1, fc 9 solicitar el estado del enlace; 0x44: DIR 0, PRM 1, fc 4 datos de usuario no confirmados desde una estación remota (por ejemplo, una respuesta no solicitada); 0x0B: DIR 0, PRM 0, fc 11 estado del enlace; 2 = uno erróneo; 1 = solo los bits; 0 = nada.
+
+**EX035 — Experimento mental de falsificación.** *Objetivo:* separar integridad y autenticidad. *Entradas:* una trama con CRC válido, dirección de origen 1 y destino 10, que llega a la estación remota desde una dirección de la red MPLS que no es fep-01. *Pasos:* explique lo que muestra el CRC, lo que muestra la dirección y lo que establecería realmente la autenticidad. *Evidencia esperada:* explicación breve. *Rúbrica:* 3 = el CRC muestra que no hubo corrupción accidental; la dirección DNP3 1 la declara el propio emisor; la autenticidad requiere Secure Authentication o un túnel criptográfico que termine en extremos conocidos, más la aplicación de la ruta en la red; 2 = parcial; 1 = «CRC válido, luego auténtica»; 0 = nada.
+
+**EX036 — Selección del método.** *Objetivo:* elegir el método menos intrusivo. *Entradas:* preguntas: (a) qué direcciones de maestra DNP3 ha visto SS-3 este mes; (b) si el cortafuegos de fep-01 solo permite la estación remota; (c) la versión de firmware de la estación remota. *Pasos:* elija un método para cada una y justifíquelo. *Evidencia esperada:* tres elecciones. *Rúbrica:* 3 = (a) captura pasiva o registros de fep-01 analizados con un decodificador; (b) exportación de configuración más registros y, después, una prueba delimitada si hace falta; (c) registro de activos o herramienta del fabricante durante una sesión aprobada con el acuerdo del ingeniero de protecciones; 2 = una elección intrusiva; 1 = escaneo; 0 = nada.
+
+### Síntesis del capítulo
+
+Elija el método menos intrusivo que responda a la pregunta y valide toda herramienta antes de confiar en ella: pruebas de respuesta conocida, pruebas negativas, versiones registradas. El CRC de la capa de enlace de DNP3 muestra esta disciplina en miniatura (implementarlo a partir de los parámetros publicados, comprobarlo con el valor del catálogo) y también su límite: la detección de errores demuestra que los bytes llegaron intactos, nunca quién los envió.
+
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Siga estudiando — capítulo 09 de 18
+
+[← Capítulo 08](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 →](../../en/book/MANUSCRIPT.md#ch-10)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -872,6 +1253,36 @@ Cada resultado resuelto muestra una respuesta defendible y lo que premia la rúb
 **EX023 — Contraste entre sectores.** Agua: confirmar que hay un servidor SCADA redundante o programar fuera de los periodos críticos; duración de la interrupción del sondeo acordada con operaciones. Red eléctrica: reinicios del procesador de comunicaciones acordados con la sala de control de la red, con los procedimientos ante pérdida del telecontrol preparados; la protección no se ve afectada, pero confírmelo. Hospital: la ingeniería clínica y el nivel de parches admitido por el fabricante del BMS; continuidad de las alarmas de ventilación y de las habitaciones de aislamiento durante el reinicio. Un único calendario semanal no sirve para ninguno de ellos.
 
 **EX024 — Modelo frente a captura.** No lo explican los conductos declarados: las escrituras de 10.30.3.7 → KW-04 (no hay conducto de la red corporativa a Z1); la consulta de la función 43 desde scada-01 si C1 se declara solo como «sondeos de lectura» (añádala explícitamente si se confirma como funcionalidad); dos tramas mal formadas desde scada-01, una anomalía que explicar (fallo del controlador de software o un programa distinto en ese equipo).
+
+### Capítulo 7: EX025–EX028
+
+**EX025 — Decodifique prioridades.** `<86>`: 86 = 10 × 8 + 6 → instalación 10 (authpriv), severidad 6 (informativa). `<134>`: 16 × 8 + 6 → local0, informativa. `<11>`: 1 × 8 + 3 → user, error. `<165>`: 20 × 8 + 5 → local4, aviso.
+
+**EX026 — Corrija un reloj.** Un desfase de +47 s significa que el equipo va adelantado; corregida = 02:10:00 − 47 s = **02:09:13Z**. Indique la incertidumbre: «desfase medido hacia las 03:10Z; deriva durante esa hora desconocida; tratar como ±5 s salvo que se disponga de datos de deriva».
+
+**EX027 — Sitúe la línea BSD.** Se necesitan: el año (a partir del contexto de la recogida, la fecha de la exportación), la zona horaria configurada en la estación de trabajo y su desfase medido. Regla: las líneas que coinciden con `^<\d+>[A-Z][a-z]{2} [ \d]\d \d\d:\d\d:\d\d ` se analizan con un año y una zona explícitos tomados de una tabla por equipo, y el evento se marca con `assumed_zone=true` en la cronología. Si se desconocen la zona o el desfase del equipo, póngalo en una lista aparte de «sin situar» en lugar de adivinar.
+
+**EX028 — Pregunta de punto ciego.** Los registros del cortafuegos del centro de control y el sensor de Z2 no pueden ver el tráfico entre un portátil y la RTU por el conmutador local o el puerto serie de la estación. Los registros de la propia RTU podrían, si registra las sesiones de configuración y las escrituras y si el registro está activado. Añadir: registro de eventos de la RTU reenviado cuando el enlace está activo, un sensor pasivo en la estación donde esté justificado y registros de acceso físico (alarmas de puertas, registro de visitas a la instalación).
+
+### Capítulo 8: EX029–EX032
+
+**EX029 — Nombre el modo.** (a) Incoherencia entre etiquetas o deriva: fallo de la realimentación de posición de la válvula, o caudal que entra por otra vía (derivación, fuga, válvula manual). (b) Valor congelado / incoherencia entre etiquetas: caudalímetro averiado, o un valor congelado o sustituido. (c) Datos obsoletos/en búfer: almacenamiento y reenvío tras una caída del enlace, o una reproducción. (d) Pérdida de la autoridad de control: selector local/remoto dejado en «local» después del mantenimiento, o un enclavamiento que impide el arranque.
+
+**EX030 — Prediga un cambio de regla.** Con `STUCK_MIN = 25` y `MAX_STEP = 7.0` para el nivel: KW-02 ya no se marca (20 < 25); los pasos de 6,84 y 6,83 de KW-07 están por debajo de 7,0, así que no hay pico; la laguna de KW-05 se sigue notificando; KW-01 sin cambios. Salida verificada: solo `KW-05 FLOW_LS gap: 7 consecutive missing minutes`. Lo que se pierde: el analizador congelado y la desviación de una sola muestra, ambos potencialmente relevantes para la seguridad física.
+
+**EX031 — Regla de valor congelado condicional.** `if pump_state == "running" for the whole run and run_length_identical(flow) >= M: alert("flow stuck while pump running")`. Pruebas: bomba parada durante 40 min con caudal 0,0 → sin alerta; bomba en marcha con caudal exactamente 41,0 durante M muestras → alerta; bomba en marcha con variación natural → sin alerta.
+
+**EX032 — Plan de fallo o ataque.** Indicadores de fallo: la pantalla local del analizador difiere del valor notificado o muestra un código de fallo; diagnóstico de la entrada analógica de la RTU (lazo abierto, entrada congelada); registros de mantenimiento que muestran una calibración o trabajos en el analizador. Indicadores de manipulación: escrituras capturadas en el registro de notificación o en un registro de escalado relacionado; una sesión de configuración de la RTU en la ventana; una muestra manual puntual tomada por operaciones que discrepa de 0,62 mientras la pantalla del analizador coincide con la muestra. Todas son de solo lectura o las realiza operaciones.
+
+### Capítulo 9: EX033–EX036
+
+**EX033 — Prueba de respuesta conocida.** Con `0x3D65` en el bucle con desplazamiento a la derecha, el assert falla (`AssertionError`) y el programa se detiene antes de juzgar ninguna trama. Una implementación con bits reflejados (primero el menos significativo) debe usar el polinomio reflejado 0xA6BC; la forma normal 0x3D65 corresponde a las implementaciones que empiezan por el bit más significativo. La prueba de respuesta conocida convirtió un error silencioso y verosímil en un fallo inmediato.
+
+**EX034 — Decodifique el byte de control.** 0xC9 = 1100 1001: DIR 1 (desde la maestra), PRM 1, función 9, solicitar el estado del enlace. 0x44 = 0100 0100: DIR 0 (desde la estación remota), PRM 1 (primaria), función 4, datos de usuario no confirmados, como los que usa, por ejemplo, la respuesta no solicitada de una estación remota. 0x0B = 0000 1011: DIR 0, PRM 0, función 11, estado del enlace (secundaria).
+
+**EX035 — Experimento mental de falsificación.** El CRC solo muestra que los bytes no se corrompieron accidentalmente. La dirección de origen DNP3 1 es un campo que escribe el emisor; cualquier equipo puede atribuírsela. La autenticidad requiere protección criptográfica (DNP3 Secure Authentication, o un túnel cuyos extremos estén autenticados, por ejemplo TLS que termine en fep-01 y en la estación remota o su pasarela), más la aplicación en la red de que solo la ruta de fep-01 alcanza la estación remota. El origen de red inesperado es en sí mismo el hallazgo.
+
+**EX036 — Selección del método.** (a) Pasivo: decodificar una captura en fep-01 o sus registros a lo largo del mes y enumerar las direcciones de origen. (b) Exportación de la configuración del cortafuegos de fep-01 y sus registros; una única prueba de conexión delimitada solo si la exportación es ambigua. (c) Registro de activos; si no, la herramienta del fabricante en modo de solo lectura durante una sesión aprobada y organizada con el ingeniero de protecciones o de telecontrol de Kestrel Grid; nunca sondeando la estación remota.
 
 <a id="glossary"></a>
 
